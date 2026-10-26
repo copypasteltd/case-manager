@@ -8,6 +8,7 @@ import { go } from '../../platform/page';
 import type { Schemas } from '../../platform/session';
 import { TaskActions } from '../detail/mutations';
 import { ResourceActions } from './resource-forms';
+import { TaskManagement } from './task-forms';
 import { Action, Busy, Empty, Fact, Field, Notice, Row, Section, date } from '../../ui';
 
 const severity = { low: '低', medium: '中', high: '高', critical: '严重' };
@@ -33,7 +34,8 @@ export function TaskCollaboration({ task, me, onCommitted }: { task: Schemas['Ta
   const readonly = !project.value || !members.value || ['closing', 'archived', 'cancelled'].includes(project.value.state) || members.value.memberships?.find(member => member.user_id === me.user.id)?.project_role === 'viewer';
   return <>
     <Notice error={project.error ?? members.error} />
-    <Section title='任务责任与前置条件'><Fact label='任务负责人'><Text>{members.value?.items.find(user => user.id === task.assignee_id)?.display_name ?? (task.assignee_id ? '当前姓名不可查阅' : '未分配')}</Text></Fact><Notice error={dependencies.error} />{dependencies.loading ? <Busy /> : dependencies.value?.items.length ? dependencies.value.items.map(edge => <Row key={edge.predecessor_id} title={edge.title} state={edge.state} subtitle='前置任务' onClick={() => go('task', edge.predecessor_id)} />) : !dependencies.error && <Empty>未设置前置任务。</Empty>}</Section>
+    <Section title='任务责任与前置条件'><Fact label='任务负责人'><Text>{members.value?.items.find(user => user.id === task.assignee_id)?.display_name ?? (task.assignee_id ? '当前姓名不可查阅' : '未分配')}</Text></Fact><Notice error={dependencies.error} />{dependencies.loading ? <Busy /> : dependencies.value?.items.length ? dependencies.value.items.map(edge => <Row key={edge.predecessor_id} title={edge.title} state={edge.state} subtitle='当前可读前置任务' onClick={() => go('task', edge.predecessor_id)} />) : !dependencies.error && <Empty>没有当前可读的前置任务。</Empty>}</Section>
+    {project.value && members.value && <TaskManagement key={task.id + ':' + task.version + ':' + me.authorization_version} {...{ task, me, onCommitted }} project={project.value} members={members.value} dependencies={dependencies.value} />}
     {project.loading || members.loading ? <Busy /> : readonly ? <View className='cp-notice'><Text>当前以只读方式查阅任务。</Text></View> : <TaskActions key={task.id + ':' + task.version} task={task} me={me} onCommitted={onCommitted} />}
     <TaskComments task={task} me={me} readonly={readonly} />
   </>;

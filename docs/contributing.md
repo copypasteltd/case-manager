@@ -40,11 +40,15 @@ Do not launch local Docker, WSL, VMs or emulators, or delegate to subagents. Clo
 
 Reuse evidence only when complete relevant sources match and its original scope is sufficient. Cached Android results are not new executions. H5, controlled storage, synthetic data and disabled-model evidence cannot become cloud/device/production acceptance. Preserve historical dates and failures; write new verification to a new evidence group.
 
+原始构建日志和attempts历史快照按准确字节保留，.gitattributes只对这两类证据关闭Git空白样式检查；当前应用源码与使用文档仍检查，敏感信息／链接／体积检查仍覆盖所有选中内容。不要为了消除终端进度空格或旧EOF空行而改写已归档证据。
+
+Raw machine logs and immutable attempt snapshots preserve exact bytes. Their Git whitespace exemptions do not apply to current application sources or guides; secret/link/size checks still cover all selected content. Do not normalize archived logs or snapshots to remove terminal spacing or an old final blank line.
+
 ## 4. 提交与推送 / Commit and push
 
-原始录制帧、凭据、本地配置、`.env`、`.local`、`.tools`、`node_modules`、构建缓存、数据库、签名密钥和 APK 均不提交。`.env.example` 与 Android Gradle wrapper 是明确的源码依赖例外。媒体压缩后提交；本次单个媒体不到 1 MB。不得将凭据放入截图、录屏或 GIF。
+原始录制帧、凭据、本地配置、`.env`、`.local`、`.tools`、`node_modules`、构建缓存、数据库、签名密钥和 APK 均不提交。`.env.example` 与 Android Gradle wrapper 是明确的源码依赖例外。媒体压缩后提交；当前单个媒体不到 2 MB。不得将凭据放入截图、录屏或 GIF。
 
-Do not commit raw capture frames, credentials, local configuration, `.env`, `.local`, `.tools`, `node_modules`, build caches, databases, signing keys or APKs. `.env.example` and the Gradle wrapper are intentional source prerequisites. Commit compressed media; current individual media files are below 1 MB. Credentials must not appear in screenshots or recordings.
+Do not commit raw capture frames, credentials, local configuration, `.env`, `.local`, `.tools`, `node_modules`, build caches, databases, signing keys or APKs. `.env.example` and the Gradle wrapper are intentional source prerequisites. Commit compressed media; current individual media files are below 2 MB. Credentials must not appear in screenshots or recordings.
 
 从仓库根执行，提交信息按实际改动填写：
 

@@ -1,12 +1,13 @@
 import { copyProjectInput, projectInputCharacters, type ProjectInput } from './project-input';
 import { copyResourceInput, resourceInputCharacters, type ResourceInput } from './project-resource-input';
+import { copyTaskInput, taskInputCharacters, type TaskInput } from './task-input';
 import { businessInputCharacters, copyBusinessInput, type BusinessInput } from './business-input';
 import { copyIncidentInput, incidentInputCharacters, type IncidentInput } from './incident-input';
 // Short-lived, explicitly whitelisted inputs only. Never credentials, fixed
 // evidence, MFA, acknowledgement flags, API responses or command payloads.
-export type DraftFields = { reason: string; action: string; name?: string; criteria?: string; description?: string; body?: string; owner?: string; milestone?: string; business?: BusinessInput; incident?: IncidentInput; project?: ProjectInput; resource?: ResourceInput };
+export type DraftFields = { reason: string; action: string; name?: string; criteria?: string; description?: string; body?: string; owner?: string; milestone?: string; business?: BusinessInput; incident?: IncidentInput; project?: ProjectInput; resource?: ResourceInput; task?: TaskInput };
 export type DraftAuthority = { epoch: number; userID: string; authorizationVersion: number };
-export type DraftTarget = { kind: 'task' | 'deliverable-create' | 'deliverable-edit' | 'deliverable-submit' | 'comment-create' | 'comment-edit'; id: string; version: number } | {
+export type DraftTarget = { kind: 'task' | 'task-create' | 'task-edit' | 'task-dependency' | 'deliverable-create' | 'deliverable-edit' | 'deliverable-submit' | 'comment-create' | 'comment-edit'; id: string; version: number } | {
   kind: 'approval'; id: string; version: number; revision: string; hash: string; step: string; stepVersion: number;
 } | {
   kind: 'deliverable-decision'; id: string; version: number; revision: string; hash: string;
@@ -39,7 +40,7 @@ export class MemoryDrafts {
     const key = JSON.stringify(target.kind === 'approval' ? ['approval', target.id, target.version, target.revision, target.hash, target.step, target.stepVersion] : target.kind === 'deliverable-decision' ? [target.kind, target.id, target.version, target.revision, target.hash] : [target.kind, target.id, target.version]);
     const valid = () => { const state = this.session(); return state.authenticated && state.epoch === epoch && this.authority === bound; };
     return {
-      read: () => { if (!valid()) return; this.sweep(); const value = this.entries.get(key); return value ? { ...value.fields, ...(value.fields.business ? { business: copyBusinessInput(value.fields.business) } : {}), ...(value.fields.incident ? { incident: copyIncidentInput(value.fields.incident) } : {}), ...(value.fields.project ? { project: copyProjectInput(value.fields.project) } : {}), ...(value.fields.resource ? { resource: copyResourceInput(value.fields.resource) } : {}) } : undefined; },
+      read: () => { if (!valid()) return; this.sweep(); const value = this.entries.get(key); return value ? { ...value.fields, ...(value.fields.business ? { business: copyBusinessInput(value.fields.business) } : {}), ...(value.fields.incident ? { incident: copyIncidentInput(value.fields.incident) } : {}), ...(value.fields.project ? { project: copyProjectInput(value.fields.project) } : {}), ...(value.fields.resource ? { resource: copyResourceInput(value.fields.resource) } : {}), ...(value.fields.task ? { task: copyTaskInput(value.fields.task) } : {}) } : undefined; },
       write: fields => {
         if (!valid() || typeof fields.reason !== 'string' || typeof fields.action !== 'string') return false;
         const limits = { reason: 20000, action: 40, name: 200, criteria: 20000, description: 20000, body: 20000, owner: 36, milestone: 36 };
@@ -70,9 +71,14 @@ export class MemoryDrafts {
           if (!resource) return false;
           copy.resource = resource;
         }
+        if (fields.task !== undefined) {
+          const task = copyTaskInput(fields.task);
+          if (!task) return false;
+          copy.task = task;
+        }
         this.sweep(); this.entries.delete(key);
         this.entries.set(key, { fields: copy as DraftFields, changed: this.now() });
-        const length = (value: DraftFields) => Object.entries(value).reduce((sum, [key, text]) => sum + (typeof text === 'string' ? text.length : key === 'incident' ? incidentInputCharacters(text as IncidentInput) : key === 'project' ? projectInputCharacters(text as ProjectInput) : key === 'resource' ? resourceInputCharacters(text as ResourceInput) : businessInputCharacters(text as BusinessInput)), 0);
+        const length = (value: DraftFields) => Object.entries(value).reduce((sum, [key, text]) => sum + (typeof text === 'string' ? text.length : key === 'incident' ? incidentInputCharacters(text as IncidentInput) : key === 'project' ? projectInputCharacters(text as ProjectInput) : key === 'resource' ? resourceInputCharacters(text as ResourceInput) : key === 'task' ? taskInputCharacters(text as TaskInput) : businessInputCharacters(text as BusinessInput)), 0);
         let characters = [...this.entries.values()].reduce((sum, entry) => sum + length(entry.fields), 0);
         for (const [oldest, entry] of this.entries) {
           if (this.entries.size <= MAX_ENTRIES && characters <= MAX_CHARACTERS) break;

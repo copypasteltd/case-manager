@@ -11,7 +11,7 @@ import { Action, Field, Notice } from '../ui';
 const keys = new CommandKeys(() => client.operationKey());
 client.subscribe(() => { if (!client.authenticated) keys.clear(); });
 
-export function useCommand<T = unknown>(onCommitted: (value: T) => void, binding: string, validate?: (value: T) => boolean) {
+export function useCommand<T = unknown>(onCommitted: (value: T) => void, binding: string, validate?: (value: T) => boolean | Promise<boolean>) {
   const [busy, setBusy] = useState(false), [error, setError] = useState<unknown>(), [blocked, setBlocked] = useState(false);
   const pending = useRef(false), alive = useRef(true);
   useEffect(() => { alive.current = true; return () => { alive.current = false; }; }, []);
@@ -27,7 +27,7 @@ export function useCommand<T = unknown>(onCommitted: (value: T) => void, binding
       key = keys.reserve(binding, serialized);
       const value = await client.request<T>(path, { method, body, key });
       responseReceived = true;
-      if (!value || typeof value !== 'object' || Array.isArray(value) || validate && !validate(value)) throw new MobileError('INVALID_RESPONSE', '操作返回的资料不完整，结果尚未核对。请先刷新业务列表和当前记录。');
+      if (!value || typeof value !== 'object' || Array.isArray(value) || validate && !await validate(value)) throw new MobileError('INVALID_RESPONSE', '操作返回的资料不完整，结果尚未核对。请先刷新业务列表和当前记录。');
       if (alive.current) { setBlocked(true); onCommitted(value); }
       keys.settle(binding, key, 'succeeded', alive.current);
     } catch (cause) {

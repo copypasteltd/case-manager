@@ -1,0 +1,99 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T10:52:52.819Z",
+  "source_sha256": "ceae0f70ad515c5a1f7e7aaa0c9e8ccfccdd8798b251219670548e38822d90a4",
+  "source_after_sha256": "ceae0f70ad515c5a1f7e7aaa0c9e8ccfccdd8798b251219670548e38822d90a4",
+  "source_unchanged": true,
+  "source_count": 596,
+  "checks": [
+    "Actual mobile creation retains responsible member, full content and Hong Kong microseconds; impossible dates send no command, with real task pagination.",
+    "Creating a subtask binds its real parent and selected milestone; an explicit dependency is verified through actual edge and task reads.",
+    "Parent candidate pagination is real; editing explicitly unlinks parent/milestone and clears existing dates with null while preserving assignment permission semantics.",
+    "Original server rejects an incomplete prerequisite and a real dependency cycle; completing the predecessor permits start, and explicit removal reconciles the actual edge.",
+    "A committed dependency whose asynchronous relationship proof is incomplete blocks success and replay; explicit refresh reads the real edge and task revision.",
+    "An incomplete success receipt and an actual concurrent revision preserve typed input, block replay and require reading the real committed version.",
+    "A committed creation with a lost browser response produces exactly one task and blocks repeat creation until the actual record is reconciled.",
+    "A currently accessible foreign task cannot open an editing form beneath a different project."
+  ],
+  "layouts": [
+    {
+      "page": "task-create",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "task-create",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "task-create",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "task-dependencies",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "task-dependencies",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "task-dependencies",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-task-workflow",
+      "frame_count": 32,
+      "duration_ms": 6509,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-task-workflow/frames.json",
+      "manifest_sha256": "c361fa46a1213215abcaf5481225308b15dc3b768d6d627121cf7230d12842f8"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-task-form.png",
+      "caption": "实际Taro任务表单；合成数据，H5 / Actual shared Taro task form; synthetic H5.",
+      "sha256": "a28d8bf28155871a0b99bc10c7966f7b6102f8864a17ee37e94b8d6fc0587d1f",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-task-dependencies.png",
+      "caption": "实际子任务、里程碑和已核对的前置依赖 / Actual subtask, milestone and reconciled prerequisite.",
+      "sha256": "22fe7baa68da15e00801638216e07c666e4596be577dfc95bc8048982f268da5",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: PATCH /projects/70ff9ea7-e856-4ece-9682-1b9ceab0317c: 422 REQUIRED_BUSINESS_FIELD\n    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_tasks.mjs:43:138)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_tasks.mjs:191:13",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 4,
+  "browser_contexts_closed": 4,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "ceae0f70ad515c5a1f7e7aaa0c9e8ccfccdd8798b251219670548e38822d90a4",
+  "source_sha256_after_build": "ceae0f70ad515c5a1f7e7aaa0c9e8ccfccdd8798b251219670548e38822d90a4",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

@@ -173,7 +173,8 @@
 
 | 最近增量 | 已实现内容 |
 | --- | --- |
-| [仓库整理、双语指南与实际演示](development/77-repository-publication-and-bilingual-readmes.md) | 双语完整README、15张截图、3段MP4／3个GIF、来源绑定与提交检查、后续同步推送约束；不改变生产放行状态 |
+| [移动任务、子任务与前置依赖](development/78-mobile-task-editing-and-dependencies.md) | 手工新建／编辑、实际候选、空值解除和依赖回读；124项移动测试、9组真实流程、6项布局，新增2张截图及任务MP4／GIF |
+| [仓库整理、双语指南与实际演示](development/77-repository-publication-and-bilingual-readmes.md) | 双语完整README、15张初始截图、3段MP4／3个GIF、来源绑定与提交检查、后续同步推送约束；不改变生产放行状态 |
 | [TG群通知、回执与对账](development/64-telegram-delivery.md) | 原群阶段登录链接、持久准备、共享限流、未知投递人工对账及 Web／Taro 本人查询 |
 | [Android原生宿主与业务接入](development/65-android-native-foundation.md) | Taro／RN宿主、原生请求与私有阅读；实际调试APK、11项Android测试及14项包检查通过 |
 | [Android原生分片上传与恢复](development/66-android-resumable-uploads.md) | SAF原件授权、流式分片、前台通知／暂停、本人恢复队列、准确候选提交；25项Android测试及17项包检查通过 |
@@ -188,4 +189,4 @@
 | [移动项目立项与成员管理](development/75-mobile-project-setup-and-members.md) | 新建立项、准确模板、资料编辑、角色／移除及负责人移交；99项移动测试、7条真实流程和新Android开发APK |
 | [移动里程碑、风险与问题](development/76-mobile-project-milestones-risks-and-issues.md) | 三类事项新建／编辑、明确状态、风险转实际问题及冲突恢复；114项移动测试、8条真实流程及新Android开发APK |
 
-最近功能增量见[移动里程碑、风险与问题](development/76-mobile-project-milestones-risks-and-issues.md)：三类事项的新建、编辑和独立状态操作已接通原接口；风险发生沿真实问题继续处理，版本冲突和未知响应先核对结果。最终114项移动测试、类型检查、双小程序各16页、8条真实API／H5流程及9项布局通过。新Android开发APK的17项包检查通过，25项原生测试为Gradle保留结果，未计作新执行。未改动的后端、运行时、Web及Linux产物按完整源码摘要复算准确复用增量74证据，本轮未重新执行；日常69项迁移只读核对通过。真实模型、云／TG／平台、设备和生产验收等完整Goal余项见[实施台账](delivery/02-implementation-ledger.md)和[Goal差异表](delivery/03-goal-gap-assessment.md)。
+最近功能增量见[移动任务、子任务与前置依赖](development/78-mobile-task-editing-and-dependencies.md)：任务创建、资料编辑、子任务及单条依赖操作接通原接口，日期保留香港时区及六位微秒，未知结果或关系回读不完整时先核对。最终124项移动测试、类型检查、双小程序各16页、9组真实API／H5流程及6项布局通过，5个所属上下文、临时服务及测试库已清理。新增2张截图、1段MP4和1个GIF；Android编译、原生测试执行范围与准确复用的后端／运行时／Web证据见[本次验证记录](quality/evidence/mobile-tasks/verification.md)。日常69项迁移只读核对通过。真实模型、云／TG／平台、设备和生产验收等完整Goal余项见[实施台账](delivery/02-implementation-ledger.md)和[Goal差异表](delivery/03-goal-gap-assessment.md)。

@@ -35,6 +35,12 @@ GIFs are lightweight previews, with modest acceleration for the longer clip. MP4
 
 [Web 项目操作 MP4 / Web project MP4](docs/media/videos/web-project-flow.mp4) · [业务台账浏览 MP4 / Operations tour MP4](docs/media/videos/web-operations-tour.mp4) · [移动风险与问题 MP4 / Mobile risk/issue MP4](docs/media/videos/mobile-risk-issue.mp4)
 
+最新移动任务操作：任务新建 → 子任务 → 里程碑关联 → 前置依赖及实际回读。Latest mobile task flow: create a task, create a subtask, select a milestone and reconcile a prerequisite through actual reads.
+
+![移动任务、子任务与前置依赖 / Mobile task, subtask and prerequisite](docs/media/gifs/mobile-task-workflow.gif)
+
+[移动任务 MP4 / Mobile task MP4](docs/media/videos/mobile-task-workflow.mp4) · [具体操作与约束 / Workflow protocol](docs/development/78-mobile-task-editing-and-dependencies.md) · 6.7 s · Taro H5
+
 ## 使用与开发 / Usage and development
 
 1. 按[中文指南](docs/README.zh-CN.md)或 [English guide](docs/README.en.md)准备原生工具、安装依赖、迁移数据库并初始化开发身份。
@@ -89,8 +95,8 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线：后端 146 个顶层测试／919 条结果，运行时 39 项、Web 81 项、移动 114 项；两小程序各 16 个页面，新 Android 开发包 17 项检查。未改动的后端／Web／运行时证据按完整来源摘要复用，25 项 Android 原生测试为 Gradle 保留结果。计数的确切执行范围见[增量76验证记录](docs/quality/evidence/mobile-project-resources/verification.md)，不代表四端生产放行。
+当前功能基线（增量78）：后端 146 个顶层测试／919 条结果，运行时 39 项、Web 81 项、移动 124 项；两小程序各 16 个页面。新增移动任务创建／编辑、子任务和前置依赖，9 组实际 API／H5 流程及 6 项布局通过；新 Android 开发包的17项检查通过，25项原生测试为Gradle保留结果，见[增量78验证记录](docs/quality/evidence/mobile-tasks/verification.md)。未改动的后端／Web／运行时按完整来源摘要复用，完整四端生产放行继续开放。
 
-The current functional baseline includes 146 top-level backend tests/919 result records, 39 runtime tests, 81 Web tests and 114 mobile tests, 16 pages in each mini-program build, and 17 development APK checks. Unchanged backend/Web/runtime evidence is reused only when complete source digests match. The 25 Android unit results were retained by Gradle, not newly executed. See the [scoped verification record](docs/quality/evidence/mobile-project-resources/verification.md).
+The current functional baseline (increment78) includes 146 top-level backend tests/919 result records, 39 runtime tests, 81 Web tests and 124 mobile tests, with 16 pages in each mini-program build. Mobile creation/editing, subtasks and prerequisites passed nine actual API/H5 flows and six layout checks. The new APK passed 17 inspections; 25 native test results were retained by Gradle, not newly executed. See the [scoped verification record](docs/quality/evidence/mobile-tasks/verification.md). Unchanged backend/Web/runtime evidence is reused only at matching complete source digests; full production acceptance remains open.
 
 后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.

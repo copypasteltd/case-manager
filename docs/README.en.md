@@ -56,7 +56,7 @@ Routine API processes do not receive migration credentials. Each worker receives
 | Module | Implemented | Remaining implementation or independent acceptance |
 | --- | --- | --- |
 | Identity and authorization | Users, roles/actions, project membership, classification/ACL, MFA, session revocation, password recovery, audit | Actual organization policy, security review and production identity operations |
-| Projects | Template revisions, creation, members, tasks/dependencies, board/timeline, milestones, risks/issues, deliverables, changes, budgets, closeout/archive | Additional mobile task/dependency, change application, budget and closeout workflows; full client matrix |
+| Projects | Template revisions, creation, members, tasks/dependencies, board/timeline, milestones, risks/issues, deliverables, changes, budgets, closeout/archive | Additional mobile change application, budget and closeout workflows; full client matrix |
 | Office workflows | Parties, contract revisions, purchase/claim drafts, fixed submissions, sequential approvals, execution, signature and fulfillment history | Remaining client editors/attachments and actual company approval policies |
 | Finance and subscriptions | Canonical actual costs, allocations, payments, refunds/reversals, cash/incurred reports, billing periods and forecasts | Real reconciliation samples, further mobile operations and business acceptance |
 | Files and knowledge | Namespaces/ACL/fixed versions, multipart protocol, verification/scanning, promotion, replication/recovery, knowledge drafts/publication/history | Real OSS/R2 identities and policies, 120 GB tests, 2 TB migration, recovery drills and more formats |
@@ -84,6 +84,8 @@ Use the dashboard for visible projects, outstanding work and notifications. Open
 6. Run thirteen categories of business/finance closeout checks, record the retrospective and satisfy the authentication requirement before archiving. Controlled reopening preserves history.
 
 The project overview aggregates sixteen business domains with original-currency decimal precision, links to original records and current read permissions. Pagination and query scope remain visible; a partial page cannot be represented as a complete dataset.
+
+On mobile, open Project → Tasks → New task. Enter the title, acceptance text, an actual project member, priority, review requirement and Hong Kong schedule; choose a parent/milestone from the current paginated project records, verify and save. Task details support editing, child creation and separately confirmed prerequisite addition/removal. Emptying an existing date or association explicitly clears it. State transitions use the original commands, which reject incomplete prerequisites, cycles and read-only projects. On conflicts, incomplete receipts or lost responses, preserve the input and read the actual task/edges before deciding the next action; do not repeatedly create it. See the [task protocol](development/78-mobile-task-editing-and-dependencies.md) and [actual demonstration](media/README.md#4-移动任务子任务与前置依赖--mobile-task-subtask-and-prerequisite).
 
 ### Contracts, procurement and claims
 
@@ -212,7 +214,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment76 verification record](quality/evidence/mobile-project-resources/verification.md) identifies executions, reuse and failed attempts.
+Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment78 verification record](quality/evidence/mobile-tasks/verification.md) identifies executions, reuse and failed attempts.
 
 ## 7. Production deployment and storage plan
 
@@ -230,11 +232,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 | --- | --- | --- |
 | Go / PostgreSQL | 146 top-level tests, 919 result records/832 leaf scenarios, eight passing batches | Complete unchanged Go/SQL/contract source digest reuses increment74; not a new full execution in this publication |
 | Runtime / Web | 39 / 81 passing tests and builds | Reused unchanged sources; real model remains disabled |
-| Taro | 114 passing tests; 16 pages in each WeChat/Douyin build | Executed in increment76; H5/layout checks are not device acceptance |
-| Android | New development APK, 17 inspection checks, 25 native unit results | The 25 results were retained by Gradle; physical devices, signing and release remain open |
-| Repository media | 14 new screenshots, three MP4s, three GIFs, plus one source-attributed crop of an earlier secretary-plan screen | Isolated synthetic data, actual browser/API actions; no real cloud/model/TG delivery |
+| Taro | 124 passing tests; 16 pages in each WeChat/Douyin build | Executed in increment78, with nine actual task flows and six layout checks; H5 is not device acceptance |
+| Android | Increment78 APK: 42,832,852 bytes, 17 inspections, 25 native results | UP-TO-DATE results retained, not newly executed; physical devices, signing and release remain open |
+| Repository media | 17 PNGs, four MP4s and four GIFs in total; this increment adds two task images and one recording/GIF pair | Isolated synthetic data, actual browser/API actions; earlier captures retain their historical commit provenance, with no real cloud/model/TG delivery |
 
-The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This documentation/media publication does not upgrade dependencies or turn the historical audit into a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
+The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This mobile increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 
 Continue with business/client gaps, real model/isolation/Skill and cloud integration, actual TG/platform/Android devices, 120 GB/2 TB capacity and security acceptance, then backup recovery and production cutover. Items needing missing server/account input remain explicit while independent implementation continues. Completion claims must link to exact sources, commands, receipts and remaining work.
 

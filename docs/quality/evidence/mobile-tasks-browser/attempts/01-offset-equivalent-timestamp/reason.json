@@ -1,0 +1,6 @@
+{
+  "reason": "The checker compared an actual +08:00 response timestamp with a Z string. They represent the same microsecond instant; application receipt normalization already accepted it. Fix the checker, preserve exact wire precision.",
+  "native_fixture_exit_code": 0,
+  "owned_browser_closed": true,
+  "owned_review_server_stopped": true
+}

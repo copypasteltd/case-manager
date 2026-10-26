@@ -42,8 +42,8 @@ def git(*args):
     return subprocess.check_output(['git', '-C', str(ROOT), *args])
 
 
-def index_bytes(names):
-    requests = ''.join(':' + name + '\n' for name in names).encode('utf-8')
+def object_bytes(names, prefix=':'):
+    requests = ''.join(prefix + name + '\n' for name in names).encode('utf-8')
     raw = subprocess.run(['git', '-C', str(ROOT), 'cat-file', '--batch'], input=requests,
                          capture_output=True, check=True).stdout
     stream = io.BytesIO(raw)
@@ -56,6 +56,38 @@ def index_bytes(names):
         result[name] = stream.read(size)
         assert stream.read(1) == b'\n'
     return result
+
+
+def archived_capture_digest(manifest, baseline):
+    commit = baseline['historical_capture_commit']
+    if not re.fullmatch(r'[a-f0-9]{40}', commit):
+        return None
+    receipt = read(ROOT / baseline['historical_capture_source_record'])
+    if not (receipt['passed'] and receipt['source_commit'] == commit
+            and receipt['original_capture_source_sha256'] == receipt['reconstructed_source_sha256'] == manifest['sha256']
+            and receipt['original_manifest_sha256'] == sha(EVIDENCE / 'source-manifest.json')
+            and receipt['preparation_script_sha256'] == sha(APP / 'scripts/record_historical_capture_sources.py')
+            and not receipt['generated_cache_bytes_published']
+            and [entry['name'] for entry in receipt['files']] == manifest['files']):
+        return None
+    committed = [entry for entry in receipt['files'] if entry['origin'] == 'historical-git-blob']
+    generated = [entry for entry in receipt['files'] if entry['origin'] == 'ignored-generated-cache']
+    if not (len(committed) + len(generated) == len(manifest['files']) == receipt['source_count']
+            and len(committed) == receipt['git_source_count'] and len(generated) == receipt['generated_cache_count'] == 1
+            and {entry['name'] for entry in generated} == {'web/tsconfig.tsbuildinfo'}):
+        return None
+    blobs = object_bytes(['app/' + entry['name'] for entry in committed], commit + ':')
+    value = hashlib.sha256()
+    for entry in receipt['files']:
+        name = entry['name']
+        if entry['origin'] == 'historical-git-blob':
+            data = blobs['app/' + name]
+            if hashlib.sha256(data).hexdigest() != entry['sha256'] or len(data) != entry['bytes']:
+                return None
+        elif not re.fullmatch(r'[a-f0-9]{64}', entry['sha256']) or not isinstance(entry['bytes'], int) or entry['bytes'] < 1:
+            return None
+        value.update(name.encode() + b'\0' + entry['sha256'].encode() + b'\0')
+    return manifest['sha256'] if value.hexdigest() == receipt['per_file_hash_manifest_sha256'] else None
 
 
 def private_values():
@@ -90,7 +122,9 @@ def main():
     parser.add_argument('--staged', action='store_true', help='Check actual index bytes; do not rewrite the saved report.')
     args = parser.parse_args()
     names = sorted(set(n.decode('utf-8') for n in git('ls-files', '-z', *([] if args.staged else ['--cached', '--others', '--exclude-standard'])).split(b'\0') if n))
-    staged_data = index_bytes(names) if args.staged else None
+    staged_data = object_bytes(names) if args.staged else None
+    baseline_path = ROOT / 'docs/quality/current-functional-baseline.json'
+    baseline = read(baseline_path) if baseline_path.exists() else None
     known_private = private_values()
     private_matches = []
     checks, findings = [], []
@@ -151,6 +185,17 @@ def main():
           'run_repository_showcase.py', 'capture_repository_showcase.mjs', 'encode_repository_showcase.py',
           'verify_repository_publication_development.py', 'verify_repository_publication.py')],
     ]
+    if baseline:
+        publication_files += [
+            'docs/development/78-mobile-task-editing-and-dependencies.md',
+            'docs/quality/evidence/mobile-tasks/verification.md',
+            'app/mobile/src/pages/project/task-forms.tsx',
+            'app/mobile/src/platform/task-input.ts', 'app/mobile/src/platform/task-input.test.ts',
+            *['app/scripts/' + n for n in ('mobile_tasks_sources.py', 'run_mobile_tasks_browser.py',
+              'check_mobile_tasks.mjs', 'encode_mobile_tasks_media.py',
+              'verify_mobile_tasks_development.py', 'verify_mobile_tasks_sources.py',
+              'record_historical_capture_sources.py')],
+        ]
     whitespace = []
     for name in publication_files:
         data = staged_data[name] if args.staged else (ROOT / name).read_bytes()
@@ -183,15 +228,18 @@ def main():
                 broken.append({'file': name, 'target': target})
     check('All parsed local Markdown links resolve to selected repository files/directories', not broken)
     guides = [markdown.get('docs/README.zh-CN.md', ''), markdown.get('docs/README.en.md', '')]
-    terms = ('120 GB', '2 TB', 'PostgreSQL', 'OSS', 'R2', 'Codex', 'TG', 'Android', '114', 'MFA',
+    terms = ('120 GB', '2 TB', 'PostgreSQL', 'OSS', 'R2', 'Codex', 'TG', 'Android',
+             str(baseline['mobile_tests'] if baseline else 114), 'MFA',
              'run_backend.py', 'dev_database.py', 'build:weapp', 'build:tt', 'build_android.py', 'CHANGELOG.md')
     check('Both full language guides cover architecture, workflows, setup, clients, gates and updates',
           all(all(term in guide for term in terms) for guide in guides))
     capture = read(EVIDENCE / 'result.json')
     current = module('repository_showcase_sources.py')
-    check('Capture source manifest matches complete current application and capture scripts',
-          capture['passed'] and capture['source_unchanged'] and capture['source_sha256'] == current.digest()
-          and read(EVIDENCE / 'source-manifest.json')['files'] == current.sources())
+    capture_manifest = read(EVIDENCE / 'source-manifest.json')
+    capture_digest = archived_capture_digest(capture_manifest, baseline) if baseline else current.digest()
+    check('Initial capture matches historical Git sources and its explicitly recorded ignored-cache supplement' if baseline else 'Capture source manifest matches complete current application and capture scripts',
+          capture['passed'] and capture['source_unchanged'] and capture['source_sha256'] == capture_manifest['sha256'] == capture_digest
+          and (bool(baseline) or capture_manifest['files'] == current.sources()))
     check('Capture fixture, owned servers and isolated native database cleaned up',
           capture['native_fixture_exit_code'] == 0 and capture['isolated_database_cleanup_passed']
           and capture['owned_servers_closed'] and capture['private_fixture_removed']
@@ -233,16 +281,28 @@ def main():
     web = read(previous / 'web-build.json')
     check('Retained Web proof matches unchanged listed sources; eighty-one tests', web['passed']
           and web['source_sha256'] == digest(web['sources']) and web['tests']['numPassedTests'] == 81)
-    mobile = read(EVIDENCE.parent / 'mobile-project-resources/mobile-build.json')
-    check('Retained mobile proof matches complete unchanged source; one hundred fourteen tests', mobile['passed']
-          and mobile['source_sha256'] == module('verify_mobile.py').digest()[0] and mobile['tests']['pass'] == 114)
-    android = read(EVIDENCE.parent / 'mobile-project-resources/build.json')
-    check('Retained Android build binds unchanged native and portable sources; no new execution claimed',
+    functional = EVIDENCE.parent / (baseline['evidence_group'] if baseline else 'mobile-project-resources')
+    mobile = read(functional / 'mobile-build.json')
+    check('Current mobile proof matches complete source and recorded passing test count', mobile['passed']
+          and mobile['source_sha256'] == module('verify_mobile.py').digest()[0]
+          and mobile['tests']['pass'] == (baseline['mobile_tests'] if baseline else 114)
+          and mobile['tests']['fail'] == mobile['tests']['skipped'] == mobile['tests']['cancelled'] == 0)
+    android = read(functional / 'build.json')
+    check('Current Android build binds complete native and portable sources' if baseline
+          else 'Retained Android build binds unchanged native and portable sources; no new execution claimed',
           android['passed'] and android['source_sha256'] == digest(android['sources']))
-    check('Fresh read-only development inspection passed, with no test databases/external activation',
-          read(EVIDENCE / 'development-check.json')['passed'] and read(EVIDENCE / 'development-runtime.json')['passed']
-          and read(EVIDENCE / 'development-project-resources.json')['passed']
-          and read(EVIDENCE / 'development-project-resources.json')['database']['disposable_test_databases'] == 0)
+    development = functional if baseline else EVIDENCE
+    check('Current read-only development inspection passed, with no test databases/external activation',
+          (bool(baseline) or read(development / 'development-check.json')['passed']) and read(development / 'development-runtime.json')['passed']
+          and read(development / 'development-project-resources.json')['passed']
+          and read(development / 'development-project-resources.json')['database']['disposable_test_databases'] == 0)
+    if baseline:
+        proof = read(functional / 'final-source-check.json')
+        check('Latest functional evidence binds current sources, browser flows, media and verification script',
+              proof['passed'] and proof['mobile_source_sha256'] == module('verify_mobile.py').digest()[0]
+              and proof['browser_source_sha256'] == module(baseline['browser_sources']).digest()
+              and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
+              and all(item['passed'] for item in proof['checks']) and not proof['full_goal_complete'])
     skills = [read(p) for p in sorted((APP / 'skills').glob('*/manifest.json'))]
     audit = read(EVIDENCE.parent / 'android-native/dependency-audit.json')
     check('All eight Skills remain draft and unchanged dependency security gate remains open',
@@ -259,10 +319,11 @@ def main():
               'publication_whitespace_findings': whitespace,
               'oversize_files': large, 'index_worktree_differences': changed_index, 'broken_local_links': broken,
               'secret_scan_scope': 'High-confidence text patterns, not exhaustive secret detection or pixel OCR.',
-              'functional_evidence': 'Existing evidence reused by matching sources; not newly executed.',
+              'functional_evidence': 'New mobile/browser/APK proof and unchanged backend/runtime/Web reuse.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
+              'current_functional_increment': baseline['increment'] if baseline else 76,
               'verification_script_sha256': sha(Path(__file__)), 'production_ready': False}
     if not args.staged:
-        (EVIDENCE / 'repository-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        ((functional if baseline else EVIDENCE) / 'repository-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': report['passed'], 'files': len(names), 'MiB': round(total / 1024 / 1024, 2),
                       'checks': len(checks), 'failed': [c['name'] for c in checks if not c['passed']],
                       'sensitive_findings': findings, 'forbidden_paths': sorted(set(forbidden)), 'broken_local_links': broken[:30],

@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-10-26T11:39:24.870801+00:00",
+  "original_diff_exit_code": 2,
+  "raw_evidence_findings": 60,
+  "files": [
+    {
+      "path": "docs/quality/evidence/mobile-tasks-browser/attempts/01-offset-equivalent-timestamp/check_mobile_tasks.mjs",
+      "sha256": "21d0ad8cc0f3b664a33eab22161c80c193697ec23c2ca96df54140384ae9ed8a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-tasks-browser/attempts/02-owner-transfer-required-fields/check_mobile_tasks.mjs",
+      "sha256": "833e4486d02c0c794518fd9fee5b8a3be38a683a7dfb7477b291a4981faffd96"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-tasks-browser/attempts/03-owner-transfer-extra-field/check_mobile_tasks.mjs",
+      "sha256": "90f40a49a9d3c0de17cafc8d7af1f2835bfcbe92128cf9281ed8bdf97b25b21a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-tasks-browser/attempts/04-before-checker-eof-normalization/check_mobile_tasks.mjs",
+      "sha256": "2191b0c613054ea01fb82a1006d7f9ad49125ee88c9bd961eefffbf49cc21904"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-tasks/attempts/01-before-reference-readiness/mobile-verification.log",
+      "sha256": "3df17eb0dcd2dcca78492dd5745497e399694f825273a2734dd5e27ab2b48f11"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-tasks/native-build.log",
+      "sha256": "e875c6ac1a09ac2b3b11e5c3630f6d81f460425c53bc2bd83ed5c71c0adf4b8a"
+    }
+  ],
+  "raw_bytes_modified": false,
+  "active_application_and_guide_checks_retained": true,
+  "scope": "Only machine evidence logs and immutable attempts are exempt from Git whitespace style checks. All selected bytes still undergo publication secret/link/size/source checks. No original log or snapshot is normalized."
+}

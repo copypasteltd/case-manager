@@ -1,0 +1,29 @@
+{
+  "reviewed": true,
+  "checked_at": "2026-10-26T11:08:29.066690+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/mobile-task-form.png",
+      "sha256": "a28d8bf28155871a0b99bc10c7966f7b6102f8864a17ee37e94b8d6fc0587d1f"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-task-dependencies.png",
+      "sha256": "caa2a3b17c432ceee8c04a792197c24dec776ddf4c4b49133bb1aae94add2f5d"
+    },
+    {
+      "file": "docs/media/gifs/mobile-task-workflow.gif",
+      "sha256": "e6eacdabbd3e446af64d9f4787fa0e896347bb0f5d34691617b249044d35be9a"
+    }
+  ],
+  "inspected_screenshots": 2,
+  "gif_frames": 41,
+  "gif_sample_indices_zero_based": [
+    0,
+    20,
+    40
+  ],
+  "scope": "Viewed both actual PNGs and a first/middle/last GIF contact sheet. The form PNG shows the lower assignment/date/association/save region; the second PNG shows the subtask, current prerequisite and milestone links. Sampled frames show actual form, native-style review picker and resulting subtask. No visible password, MFA secret, token or real company record. MP4 verified structurally with ffprobe; not a claim of exhaustive frame/pixel/OCR inspection.",
+  "synthetic_data": true,
+  "real_device": false,
+  "owned_browser_contexts_closed": 5
+}

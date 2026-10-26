@@ -4,6 +4,16 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-26 · 移动任务、子任务与依赖 / Mobile tasks, subtasks and prerequisites · increment78
+
+- 补齐移动任务手工创建、完整资料编辑、子任务、父／里程碑候选及明确解除；按香港时间保留六位微秒。Added manual mobile task creation/editing, subtasks, real paginated parent/milestone selection and explicit clearing, with six-digit Hong Kong schedule precision.
+- 前置添加／移除独立确认原版本，实际任务与关系列表回读后才完成；并发、未知响应或证明不完整保留输入并阻止重放。Prerequisite changes use the original version and succeed only after actual task/edge reads; conflicts, unknown responses and incomplete proof retain input and block replay.
+- 124项移动测试、类型检查、微信／抖音各16页构建、9组实际API／H5流程及6项布局通过，5个浏览器上下文和临时夹具均清理。124 mobile tests, types, both 16-page mini-program builds, nine actual API/H5 flows and six layouts passed; all five contexts and temporary fixtures were cleaned up.
+- 新增2张实际截图、6.7秒MP4和GIF，同步中英指南、编号差异与更新记录；旧媒体保留准确历史提交来源。Added two actual screenshots and a 6.7-second MP4/GIF pair, updated both guides, gap IDs and notes, and retained exact historical provenance for older media.
+- 新Android开发APK的17项检查通过；25项原生测试为Gradle保留结果。实际执行范围、未改后端／运行时／Web的来源复用见[验证记录](quality/evidence/mobile-tasks/verification.md)。The new APK passed 17 inspections; 25 native results were retained by Gradle. Full execution scope and unchanged backend/runtime/Web reuse are recorded in the [verification report](quality/evidence/mobile-tasks/verification.md). Production, real platform/device/cloud/model/TG and security gates remain open.
+
+协议与实现见[增量78](development/78-mobile-task-editing-and-dependencies.md)。Protocol and implementation: [increment78](development/78-mobile-task-editing-and-dependencies.md).
+
 ## 2026-10-26 · 仓库初始发布 / Initial repository publication · increment77
 
 - 整理现有 `app/` 实现与 `docs/` 协议、设计和验证历史，建立仓库双语入口、完整中英文方案／使用指南、维护与同步规则。Organized implementation and documentation with bilingual landing/full guides and maintenance/synchronization rules.

@@ -51,6 +51,9 @@ export function projectSection(id: string, section: 'setup' | 'overview' | 'mile
 export function projectResourceForm(kind: 'milestone' | 'risk' | 'issue', projectID: string, resourceID?: string) {
   void Taro.navigateTo({ url: '/pages/project/index?section=resource-form&kind=' + kind + '&id=' + identifier(projectID) + (resourceID ? '&resource_id=' + identifier(resourceID) : '') });
 }
+export function projectTaskForm(projectID: string, taskID?: string, parentID?: string) {
+  void Taro.navigateTo({ url: '/pages/project/index?section=task-form&id=' + identifier(projectID) + (taskID ? '&task_id=' + identifier(taskID) : '') + (parentID ? '&parent_id=' + identifier(parentID) : '') });
+}
 export function goVersion(fileID: string, versionID: string) {
   void Taro.navigateTo({ url: '/pages/detail/index?kind=file&id=' + identifier(fileID) + '&version=' + identifier(versionID) });
 }

@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T11:35:08.322030+00:00",
+  "source_sha256": "b917a2696f4c81c1d22c3c2d65b2fd7ef6b3025c7400bedddce01f9b389d6465",
+  "browser_result_sha256": "b7e429f3edb2471fb9fb7ad77edcd091dba4f14becfa68d97e10acbd49865dd5",
+  "frame_manifest_sha256": "ce20e90bb9556c94d762844bff88d896273114393811b515dea32e22918a8544",
+  "source_frames": 32,
+  "source_duration_ms": 6529,
+  "gif_speed_factor": 1.0,
+  "artifacts": [
+    {
+      "file": "docs/media/videos/mobile-task-workflow.mp4",
+      "sha256": "e1e9ca16f02e6980dc810546a8e6594da510656a679c0c1f7470a3ca119fba21",
+      "bytes": 248185
+    },
+    {
+      "file": "docs/media/gifs/mobile-task-workflow.gif",
+      "sha256": "f79cef98ab80cd01479881ecbe99bcc79cb76510359e7c3a3dc8ae56f6abbeb1",
+      "bytes": 1046751
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "67",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "6.700000"
+    }
+  },
+  "encoder_sha256": "dee078bbb22e9ed9528b77fd35f6c8cc84d676f0fc50865d223856a47a6e19f0",
+  "helper_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "audio": false,
+  "real_browser_pixels": true,
+  "synthetic_data": true,
+  "real_device": false,
+  "credentials_excluded": true
+}

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { MemoryDrafts, type DraftAuthority, type DraftTarget } from './drafts';
 import { currentProjectInput } from './project-input';
 import { currentResourceInput } from './project-resource-input';
+import { currentTaskInput } from './task-input';
 import type { Schemas } from './session';
 
 function harness() {
@@ -13,6 +14,21 @@ function harness() {
   return { drafts, session, authority, target, advance(ms: number) { now += ms; }, open(value: DraftTarget = target, auth: DraftAuthority = authority) { return drafts.open(auth, value)!; } };
 }
 const fields = { reason: 'Unsubmitted human reason', action: 'start' };
+
+test('task editors share bounded memory, copy only text and isolate creation, editing, dependencies and revisions', () => {
+  const h = harness(), target: DraftTarget = { kind: 'task-create', id: 'project:root', version: 3 };
+  const task = { ...currentTaskInput(), title: 'Unsubmitted task', body: 'x'.repeat(20000), access_token: 'not-retained', approved: true, payload: { secret: 'not-retained' } };
+  const saved = h.open(target); assert.equal(saved.write({ ...fields, task }), true);
+  assert.deepEqual(saved.read()?.task, { ...currentTaskInput(), title: task.title, body: task.body });
+  const result = saved.read()!; result.task!.title = 'Caller mutation'; assert.equal(saved.read()?.task?.title, task.title);
+  for (const kind of ['task-edit', 'task-dependency', 'task'] as const) assert.equal(h.open({ ...target, kind }).read(), undefined);
+  assert.equal(h.open({ ...target, version: 4 }).read(), undefined);
+  assert.equal(saved.write({ ...fields, task: { ...task, body: 'x'.repeat(20001) } }), false);
+  for (let n = 0; n < 5; n++) h.open({ ...target, id: 'other:' + n }).write({ ...fields, task });
+  assert.equal(saved.read(), undefined); assert.equal(h.open({ ...target, id: 'other:4' }).read()?.task?.body.length, 20000);
+  const current = h.open(target, { ...h.authority, authorizationVersion: 2 });
+  assert.equal(current.read(), undefined); assert.equal(saved.write({ ...fields, task }), false);
+});
 
 test('resource inputs share authority and item versions, with defensive copies and no retained command evidence', () => {
   const h = harness(), target: DraftTarget = { kind: 'resource-edit', id: 'risk:owned-risk', version: 4 };

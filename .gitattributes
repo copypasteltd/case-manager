@@ -1,6 +1,9 @@
 # Evidence binds exact source bytes. Preserve line endings on every platform.
 # New text files should be UTF-8 without BOM. Do not mass-normalize old sources.
 * -text whitespace=cr-at-eol
+# Raw machine logs and immutable attempt snapshots retain original whitespace.
+docs/quality/evidence/**/*.log -whitespace
+docs/quality/evidence/**/attempts/** -whitespace
 *.png binary
 *.jpg binary
 *.jpeg binary
