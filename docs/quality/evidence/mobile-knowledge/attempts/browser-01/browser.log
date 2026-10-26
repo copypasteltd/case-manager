@@ -1,0 +1,7 @@
+locator.fill: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('input[aria-label="知识标题"],textarea[aria-label="知识标题"]')[22m
+
+    at D:\dev\copypasted\内部管理\app\scripts\check_mobile_knowledge.mjs:85:29
+Active page: {"route":"#/pages/detail/index?kind=post&mode=new&project_id=9dbe4a92-884a-4a73-a402-5e486e72a460","titles":["新建知识记录."],"actions":["我的","重新读取最新知识资料"]}
+{"passed":false,"checks":0,"closed":true}

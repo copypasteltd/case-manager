@@ -4,6 +4,20 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-27 · 移动知识与项目博客 / Mobile knowledge and project blog · increment83
+
+- 补齐四类公司／项目知识的手工创建、编辑、安全Markdown、准确附件、正文修订、独立发布／归档／退回草稿、历史恢复和修订讨论。Added complete shared mobile knowledge workflows with explicit attachment modes and immutable history.
+- 文字评论修改默认保留服务器原附件；明确替换先核对全部旧／新附件，新回执和幂等重放按当前权限过滤。Text-only edits preserve original pins; explicit replacement rechecks every original/replacement and receipts reapply current visibility.
+- 新增按固定版本ID解析元数据，复用当前文件ACL，不替换历史版本、不暴露存储坐标。Added exact version-ID resolution through current file authorization.
+- 新完整后端155顶层／986结果／894末级、Web81、运行时39、移动178项、双小程序16页编译、12组真实流程和9项布局通过。Fresh source-bound backend, Web, runtime, mobile and actual UI checks passed.
+- 新42,881,123字节Android开发APK及17项检查通过；25项JVM结果本次为Gradle缓存，四份XML及原日志保留。Fresh debug APK inspected; cached JVM scope is explicit.
+- 新增3张截图、2.8秒MP4／17帧GIF；演示素材目录合计32／9／9。25项最终复算、805份当前采集来源及793份旧TG原Git来源可追溯。Added actual safe media, current capture provenance and exact historical reconstruction.
+- 保留类型、页面定位和数据库清理失败；同源重跑后完整通过，两个确认为本轮残留且无连接的测试库已清理；69项迁移、10项只读探针和集成关闭状态核对通过。Retained failures, exact-source reruns and scoped fixture cleanup; daily native services were inspected without enabling integrations.
+- 同步双语README、接口契约、操作／开发约束、差异表和媒体目录；发布检查按当前基线选择新的运行时证据组。Updated bilingual guides, contract, constraints, gap register and publication checks together. Real devices/cloud/model/TG, large-file capacity and production acceptance remain open.
+
+详见[方案与使用](development/83-mobile-knowledge-workflows.md)、[准确验证](quality/evidence/mobile-knowledge/verification.md)和[实际演示](media/README.md)。See the linked workflow, evidence and actual media.
+- 提交前恢复四份Go文件原LF，重新完整验证受影响的后端、Linux和页面；修正检查器等待页面归档状态的时序。旧完整证据与5份媒体准确保留，[来源沿革](quality/evidence/mobile-knowledge/source-normalization.json)可重构原始摘要。Restored original LF conventions, reran affected checks and fixed a browser assertion race; exact earlier proofs/media remain retained.
+
 ## 2026-10-27 · 移动TG身份与准确入口 / Mobile TG identity and exact channels · increment82
 
 - 补齐移动本人私聊证明、原登录数字身份确认、取消和撤销；保留原请求及投递回执。Added own-identity challenge/confirmation/cancellation/revocation with existing requests and delivery receipts.

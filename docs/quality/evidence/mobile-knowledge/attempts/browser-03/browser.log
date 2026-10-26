@@ -1,0 +1,12 @@
+Completed actual flow 1: The real project meeting-note editor saves Unicode tags, safe Markdown and both follow-current/fixed historical attachments with corroborated immutable history.
+Completed actual flow 2: Saving an already published record creates a different current body while retaining the original published pointer; no implicit publication occurs.
+Completed actual flow 3: A second exact edit and explicit reason/acknowledgement publish complete through actual UI/API, recorded only after authentication.
+Completed actual flow 4: Historical restoration copies the first body into a fourth immutable revision and preserves the separately published revision.
+Completed actual flow 5: Comments bind the actual body revision, resolve a historical pin directly, and append immutable text-only edits without replacing original attachments.
+locator.waitFor: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('香港项目 · 固定版本一').first() to be visible[22m
+
+    at D:\dev\copypasted\内部管理\app\scripts\check_mobile_knowledge.mjs:148:74
+Active page: {"route":"#/pages/content/index?id=c42bf797-a6f9-441b-8cba-0f57fca07009&version=6eabfc60-c960-449e-9b46-d5b0f3348dd9","titles":["固定版本阅读."],"actions":["我的","读取这个版本的内容","返回文件资料","刷新权限与资料"]}
+{"passed":false,"checks":5,"closed":true}

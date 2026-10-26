@@ -7,13 +7,14 @@ import { MobileError, type Page as ResultPage, type Schemas } from '../../platfo
 import { go, identifier, usePage } from '../../platform/page';
 import { Action, Busy, Empty, Field, Notice, Page, Row } from '../../ui';
 import { ProjectTaskList } from '../project/task-forms';
+import { KnowledgeList } from '../knowledge';
 
 type Item = Schemas['Project'] | Schemas['Task'] | Schemas['Folder'] | Schemas['File'] | Schemas['Post'] | Schemas['Request'] | Schemas['ApprovalTask'] | Schemas['Conversation'] | Schemas['Contract'] | Schemas['Spend'] | Schemas['Cost'] | Schemas['Payment'] | Schemas['Subscription'];
 const lists = { projects: ['项目', '/projects', 'project'], tasks: ['项目任务', '', 'task'], folders: ['文件目录', '/folders', 'folder'], files: ['文件', '/files', 'file'], posts: ['知识与记录', '/posts', 'post'], requests: ['业务申请', '/requests', 'request'], approvals: ['待我审批', '/approval-tasks', 'request'], conversations: ['公司秘书', '/conversations', 'conversation'], contracts: ['合同', '/contracts', 'contract'], purchases: ['采购', '/purchases', 'purchase'], claims: ['报销', '/claims', 'claim'], costs: ['实际费用', '/costs', 'cost'], payments: ['收付款', '/payments', 'payment'], subscriptions: ['订阅', '/subscriptions', 'subscription'] } as const;
 type Kind = keyof typeof lists;
 export default function ListPage() {
   const params = useRouter().params;
-  return params.kind === 'tasks' ? <ProjectTaskList projectID={params.project_id} /> : <RegularListPage />;
+  return params.kind === 'tasks' ? <ProjectTaskList projectID={params.project_id} /> : params.kind === 'posts' ? <KnowledgeList projectID={params.project_id} /> : <RegularListPage />;
 }
 function RegularListPage() {
   const params = useRouter().params, kind = params.kind as Kind, entry = Object.prototype.hasOwnProperty.call(lists, kind) ? lists[kind] : undefined;

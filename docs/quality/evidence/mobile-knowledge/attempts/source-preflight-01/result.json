@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-26T19:07:10.983887+00:00",
+  "stage": "Final verification precondition",
+  "error": "apk-inspection.json was missing; final checker stopped before producing a pass.",
+  "resolution": "Executed inspect_android_apk.py --evidence-group mobile-knowledge; all17 inspections passed; final verification then passed24 checks."
+}

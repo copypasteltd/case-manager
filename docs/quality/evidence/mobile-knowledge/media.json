@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T19:41:49.678288+00:00",
+  "source_sha256": "8ca75b2a5a6190a980ea814fd32bb186c0c62122ddb4bd5498a697707345c3cd",
+  "browser_result_sha256": "c4271198a0751060d7ce239e86f0665c36b8356ec0fe05b231752d69c4ca8da0",
+  "frame_manifest_sha256": "8dbb92be10d126173ccf7420d01643d5dc7a8ccf3d280363bf730c3bf2ee3923",
+  "source_frames": 13,
+  "source_duration_ms": 2656,
+  "gif_speed_factor": 1.0,
+  "artifacts": [
+    {
+      "file": "docs/media/videos/mobile-knowledge-access.mp4",
+      "sha256": "0401ff841c6d7468786ee711d3c25d16c1089af909d9fbef48b5f300f4d7e40c",
+      "bytes": 92165
+    },
+    {
+      "file": "docs/media/gifs/mobile-knowledge-access.gif",
+      "sha256": "23f7b02593d5243f6658bde8ac318963377ef2724126f51d5ddb6204101f0322",
+      "bytes": 355954
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "28",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.800000"
+    }
+  },
+  "encoder_sha256": "66457b816b46bd7eb53d11c4782e17a7dd1ee31cab8b08288f16f7f32c571730",
+  "helper_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "audio": false,
+  "real_browser_pixels": true,
+  "synthetic_data": true,
+  "real_device": false,
+  "credentials_excluded": true
+}

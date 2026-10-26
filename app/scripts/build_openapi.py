@@ -1349,6 +1349,7 @@ PATHS["/files"]["get"]["parameters"].append({"name": "company_only", "in": "quer
 operation("/files/{id}", "get", "getFile", "File")
 operation("/files/{id}/versions", "get", "listFileVersions", "FileVersion", listing=True)
 operation("/files/{id}/versions/{version}", "get", "getFileVersion", "FileVersion")
+operation("/file-versions/{id}", "get", "getFileVersionByID", "FileVersion")
 operation("/files/{id}/history-restores", "post", "createHistoryRestore", "HistoryRestore", "HistoryRestoreCreate", code=202)
 operation("/storage/retention-policies", "get", "listRetentionPolicies", "RetentionPolicy", listing=True)
 operation("/storage/retention-policies", "post", "publishRetentionPolicy", "RetentionPolicy", "RetentionPolicyInput", 201)

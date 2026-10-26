@@ -54,6 +54,9 @@ func (s *Server) filesRoutes(mux *http.ServeMux) {
 		}
 		return service.Versions(ctx, a, r.PathValue("id"), f.Cursor, f.Limit)
 	}))
+	mux.HandleFunc("GET /v1/file-versions/{id}", read(s, "FileVersionResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		return service.VersionByID(ctx, a, r.PathValue("id"))
+	}))
 	mux.HandleFunc("GET /v1/files/{id}/versions/{version}", read(s, "FileVersionResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.Version(ctx, a, r.PathValue("id"), r.PathValue("version"))
 	}))

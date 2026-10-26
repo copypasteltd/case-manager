@@ -261,12 +261,29 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 	if len([]rune(strings.TrimSpace(input.Body))) < 1 || len([]rune(input.Body)) > 20000 {
 		return core.Result{}, core.Invalid("body", "评论需为1至20000字符")
 	}
-	return s.Commands.Do(ctx, c, func(tx pgx.Tx) error {
+	preserveAttachments := previousID != "" && input.AttachmentVersions == nil
+	result, err := s.Commands.Do(ctx, c, func(tx pgx.Tx) error {
 		if _, err := commentResource(ctx, tx, c.Actor, kind, id, true, false); err != nil {
 			return err
 		}
-		_, err := commentWriteContext(ctx, tx, c.Actor, kind, id, previousID, input)
-		return err
+		if _, err := commentWriteContext(ctx, tx, c.Actor, kind, id, previousID, input); err != nil {
+			return err
+		}
+		// A filtered client list must not silently replace inaccessible originals.
+		// Check before idempotency lookup as well as under the mutation lock.
+		if previousID != "" && !preserveAttachments {
+			prior, err := scanComment(tx.QueryRow(ctx, "SELECT "+commentColumns+" FROM comments c WHERE c.org_id=$1 AND c.id=$2", c.Actor.OrgID, previousID))
+			if err != nil {
+				return err
+			}
+			if err = commentAttachments(ctx, tx, c.Actor, prior.AttachmentVersions); err != nil {
+				return err
+			}
+		}
+		if preserveAttachments {
+			return nil
+		}
+		return commentAttachments(ctx, tx, c.Actor, input.AttachmentVersions)
 	}, func(tx pgx.Tx) (core.Result, error) {
 		if _, err := commentResource(ctx, tx, c.Actor, kind, id, true, true); err != nil {
 			return core.Result{}, err
@@ -288,6 +305,11 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 				return core.Result{}, err
 			}
 			beforeDigest = core.Digest(priorJSON)
+			if preserveAttachments {
+				input.AttachmentVersions = append([]string{}, prior.AttachmentVersions...)
+			} else if err = commentAttachments(ctx, tx, c.Actor, prior.AttachmentVersions); err != nil {
+				return core.Result{}, err
+			}
 			var author, storedKind, storedResource string
 			var successor bool
 			var previousContext *string
@@ -316,8 +338,10 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 			seq++
 			previous = &previousID
 		}
-		if err := commentAttachments(ctx, tx, c.Actor, input.AttachmentVersions); err != nil {
-			return core.Result{}, err
+		if !preserveAttachments {
+			if err := commentAttachments(ctx, tx, c.Actor, input.AttachmentVersions); err != nil {
+				return core.Result{}, err
+			}
 		}
 		if input.AttachmentVersions == nil {
 			input.AttachmentVersions = []string{}
@@ -335,6 +359,24 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 		}
 		return core.Result{Status: 201, Data: value, Event: core.Event{Type: event, ResourceType: "comment", ResourceID: commentID, Version: seq, BeforeDigest: beforeDigest, Payload: map[string]any{"resource_type": kind, "resource_id": id, "replaces_id": previous}}}, err
 	})
+	if err != nil {
+		return result, err
+	}
+	// Reapply current attachment visibility on both a new mutation and a replay.
+	encoded, err := json.Marshal(result.Data)
+	if err != nil {
+		return core.Result{}, err
+	}
+	var value Comment
+	if err = json.Unmarshal(encoded, &value); err != nil {
+		return core.Result{}, err
+	}
+	value.AttachmentVersions, err = filterCommentAttachments(ctx, s.DB, c.Actor, value.AttachmentVersions)
+	if err != nil {
+		return core.Result{}, err
+	}
+	result.Data = value
+	return result, nil
 }
 func (s *Service) EditComment(ctx context.Context, c core.Command, id string, input CommentInput) (core.Result, error) {
 	if !core.ValidID(id) {

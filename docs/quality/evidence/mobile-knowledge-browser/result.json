@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T19:41:08.986Z",
+  "source_sha256": "8ca75b2a5a6190a980ea814fd32bb186c0c62122ddb4bd5498a697707345c3cd",
+  "source_after_sha256": "8ca75b2a5a6190a980ea814fd32bb186c0c62122ddb4bd5498a697707345c3cd",
+  "source_unchanged": true,
+  "source_count": 805,
+  "checks": [
+    "The real project meeting-note editor saves Unicode tags, safe Markdown and both follow-current/fixed historical attachments with corroborated immutable history.",
+    "Saving an already published record creates a different current body while retaining the original published pointer; no implicit publication occurs.",
+    "A second exact edit and explicit reason/acknowledgement publish complete through actual UI/API, recorded only after authentication.",
+    "Historical restoration copies the first body into a fourth immutable revision and preserves the separately published revision.",
+    "Comments bind the actual body revision, resolve a historical pin directly, and append immutable text-only edits without replacing original attachments.",
+    "Actual scoped content reads distinguish the pinned historical bytes from the follow-current bytes and render literal script text without execution.",
+    "A real concurrent body update returns409; the editor keeps local input, disables repeat submission and explicitly rereads the latest body.",
+    "A real body-context change refuses the stale comment with409, preserves its text and prevents previous-body discussion from appearing under the new revision.",
+    "A labelled controlled response fault strips one field after the real server commits; the client stops as unconfirmed and never repeats the PATCH.",
+    "A labelled controlled filtered-reference read retains the complete server hash; editing/publication stay closed until complete authorized evidence is reread.",
+    "Actual archive/draft transitions enforce read-only archived controls, and all other three knowledge types save from the company-scope editor.",
+    "Real title/body/tag search and opaque22-record pagination work; a separately labelled synthetic403 clears cached rows, and a second actual identity owns an independent session."
+  ],
+  "layouts": [
+    {
+      "page": "knowledge-editor",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "knowledge-editor",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "knowledge-editor",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "knowledge-published",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "knowledge-published",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "knowledge-published",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "knowledge-comments-history",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "knowledge-comments-history",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "knowledge-comments-history",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-knowledge-edit-publish",
+      "frame_count": 13,
+      "duration_ms": 2656,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-knowledge-edit-publish/frames.json",
+      "manifest_sha256": "8dbb92be10d126173ccf7420d01643d5dc7a8ccf3d280363bf730c3bf2ee3923"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-editor.png",
+      "caption": "Synthetic mobile meeting-note editor with scope, tags, Markdown and explicit attachment modes.",
+      "sha256": "c2b3194ece78f4c7c21c7f8c5864e18a45a8c23e539dcf80cb7ec34d030bb010",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-published.png",
+      "caption": "Actual published knowledge view; immutable current and published body pointers agree.",
+      "sha256": "9beb62575291dcab2899949bdfe465cb0901e513a5551b85adf29d282a105e52",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-comments.png",
+      "caption": "Revision-bound discussion, fixed attachments and immutable comment history.",
+      "sha256": "0fb873dbe3f25918ad7fb68f5fdc4fbbd463efecb99e37013afa2cc0289c3935",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "incomplete committed post receipt",
+    "knowledge-list permission403",
+    "filtered body reference set"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "8ca75b2a5a6190a980ea814fd32bb186c0c62122ddb4bd5498a697707345c3cd",
+  "source_sha256_after_build": "8ca75b2a5a6190a980ea814fd32bb186c0c62122ddb4bd5498a697707345c3cd",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

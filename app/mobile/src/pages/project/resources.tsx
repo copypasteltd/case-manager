@@ -68,7 +68,7 @@ function CommentEditor({ task, comment, me, onCommitted }: { task: Schemas['Task
   const disabled = command.busy || command.blocked;
   return <View><DraftNotice restored={draft.restored} /><Notice error={command.error} /><CommandNotice blocked={command.blocked} />
     <Field label={comment ? '修改评论文字' : '写一条评论'}><Textarea ariaLabel={comment ? '修改评论文字' : '任务评论'} className='cp-textarea' value={body} maxlength={20000} disabled={disabled} onInput={event => draft.update({ body: event.detail.value })} /></Field>
-    <Action loading={command.busy} disabled={disabled || !body.trim()} onClick={() => void command.submit(comment ? '/comments/' + comment.id : '/tasks/' + task.id + '/comments', comment ? { expected_revision: comment.revision, body: body.trim(), attachment_versions: comment.attachment_versions } satisfies Schemas['CommentPatch'] : { body: body.trim() } satisfies Schemas['CommentCreate'], comment ? 'PATCH' : 'POST')}>{comment ? '保存评论修订' : '发布任务评论'}</Action>
+    <Action loading={command.busy} disabled={disabled || !body.trim()} onClick={() => void command.submit(comment ? '/comments/' + comment.id : '/tasks/' + task.id + '/comments', comment ? { expected_revision: comment.revision, body: body.trim() } satisfies Schemas['CommentPatch'] : { body: body.trim() } satisfies Schemas['CommentCreate'], comment ? 'PATCH' : 'POST')}>{comment ? '保存评论修订' : '发布任务评论'}</Action>
   </View>;
 }
 

@@ -1,0 +1,31 @@
+{
+  "retained_at": "2026-10-26T19:15:44.291519+00:00",
+  "reason": "Restore the four original Go LF conventions; previous passed proofs and media remain archived. Reexecute every affected complete source-bound check.",
+  "changed_files": [
+    {
+      "file": "backend/internal/knowledge/comments.go",
+      "before_sha256": "4d0795e221dc5adc9878e625bb4cb6dc6661f2058aede7bb36d6ae957aed1dd9",
+      "after_sha256": "67f39dc5c8e52bc2142b0dd53b65028c697bbb06f87e03925caa59405a0e936e",
+      "restored_original_lf": true
+    },
+    {
+      "file": "backend/internal/files/versions.go",
+      "before_sha256": "9513ad8fc04ec12bfe374118a3f5aa3b1f4f7b002216750491270ffe7830fb5a",
+      "after_sha256": "a5556943abe3e8c5fc0e0bf6efebd2512e1f6def2131fcd6ba8bc911709469ef",
+      "restored_original_lf": true
+    },
+    {
+      "file": "backend/internal/httpapi/files.go",
+      "before_sha256": "74cab85fa21b964587717314cffd1084e2d65b722a685d97bc007e3c1fe7013d",
+      "after_sha256": "7964ae700c71fbab66a82d793acefecf1412be25ce8cc587e6043c93dd7c56b5",
+      "restored_original_lf": true
+    },
+    {
+      "file": "backend/internal/httpapi/file_version_integration_test.go",
+      "before_sha256": "21ff7e2cebf74a1760d5e4c33aab81f56212f75b400b63533e06ceeea263f0da",
+      "after_sha256": "4eebca45f8cca6829d4d77129b2d3571aa1160d821b4324e93f9aeb21ca77838",
+      "restored_original_lf": true
+    }
+  ],
+  "code_tokens_changed": false
+}

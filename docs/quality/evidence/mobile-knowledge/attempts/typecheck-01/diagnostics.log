@@ -1,0 +1,50 @@
+
+> @copypaste/mobile@0.1.0 typecheck
+> tsc --noEmit
+
+src/pages/knowledge/index.tsx(22,167): error TS2339: Property 'authz_version' does not exist on type '{ user: { id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; display_name: string; status: "disabled" | "active" | "invited"; }; actions: string[]; authorization_version: number; session_expires_at: string; mfa_verified_at: string | null; }'.
+src/pages/knowledge/index.tsx(33,198): error TS2538: Type 'undefined' cannot be used as an index type.
+src/pages/knowledge/index.tsx(33,230): error TS18048: 'p.tags' is possibly 'undefined'.
+src/pages/knowledge/index.tsx(49,122): error TS2339: Property 'authz_version' does not exist on type '{ user: { id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; display_name: string; status: "disabled" | "active" | "invited"; }; actions: string[]; authorization_version: number; session_expires_at: string; mfa_verified_at: string | null; }'.
+src/pages/knowledge/index.tsx(50,116): error TS2339: Property 'authz_version' does not exist on type '{ user: { id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; display_name: string; status: "disabled" | "active" | "invited"; }; actions: string[]; authorization_version: number; session_expires_at: string; mfa_verified_at: string | null; }'.
+src/pages/knowledge/index.tsx(81,31): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/pages/knowledge/index.tsx(82,31): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/pages/knowledge/index.tsx(99,137): error TS2538: Type 'undefined' cannot be used as an index type.
+src/pages/knowledge/index.tsx(99,164): error TS2538: Type 'undefined' cannot be used as an index type.
+src/pages/knowledge/index.tsx(105,90): error TS18048: 'post.tags' is possibly 'undefined'.
+src/pages/knowledge/index.tsx(105,129): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/pages/knowledge/index.tsx(108,38): error TS18048: 'post.source_refs' is possibly 'undefined'.
+src/pages/knowledge/index.tsx(108,72): error TS2322: Type '{ type: string; id: string; version_id?: string | null | undefined; }[] | undefined' is not assignable to type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+  Type 'undefined' is not assignable to type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+src/pages/knowledge/index.tsx(108,103): error TS18048: 'post.source_refs' is possibly 'undefined'.
+src/pages/knowledge/index.tsx(137,212): error TS18048: 'selected.tags' is possibly 'undefined'.
+src/pages/knowledge/index.tsx(137,287): error TS2322: Type '{ type: string; id: string; version_id?: string | null | undefined; }[] | undefined' is not assignable to type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+  Type 'undefined' is not assignable to type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+src/platform/post-input.ts(25,41): error TS18048: 'post.tags' is possibly 'undefined'.
+src/platform/post-input.ts(38,140): error TS2345: Argument of type '{ type: string; id: string; version_id?: string | null | undefined; }[] | undefined' is not assignable to parameter of type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+  Type 'undefined' is not assignable to type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+src/platform/post-input.ts(43,26): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/platform/post-input.ts(46,56): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'PropertyKey'.
+  Type 'undefined' is not assignable to type 'PropertyKey'.
+src/platform/post-input.ts(46,122): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'PropertyKey'.
+  Type 'undefined' is not assignable to type 'PropertyKey'.
+src/platform/post-input.ts(53,16): error TS2322: Type '{ project_id: string | null; type: "article" | "project_log" | "meeting_note" | "sop" | undefined; classification: "internal" | "project_restricted" | "confidential" | undefined; ... 4 more ...; source_refs: { ...; }[]; }' is not assignable to type '{ project_id?: string | null | undefined; type: "article" | "project_log" | "meeting_note" | "sop"; title: string; body: string; summary?: string | undefined; tags?: string[] | undefined; classification: "internal" | ... 1 more ... | "confidential"; source_refs?: { ...; }[] | undefined; } | { ...; }'.
+  Type '{ project_id: string | null; type: "article" | "project_log" | "meeting_note" | "sop" | undefined; classification: "internal" | "project_restricted" | "confidential" | undefined; ... 4 more ...; source_refs: { ...; }[]; }' is missing the following properties from type '{ expected_version: number; project_id?: string | null | undefined; type?: "article" | "project_log" | "meeting_note" | "sop" | undefined; title?: string | undefined; body?: string | undefined; ... 4 more ...; base_revision_id: string; }': expected_version, base_revision_id
+src/platform/post-input.ts(60,146): error TS2345: Argument of type '{ type: string; id: string; version_id?: string | null | undefined; }[] | undefined' is not assignable to parameter of type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+  Type 'undefined' is not assignable to type '{ type: string; id: string; version_id?: string | null | undefined; }[]'.
+src/platform/post-input.ts(66,5): error TS2322: Type 'boolean | undefined' is not assignable to type 'boolean'.
+  Type 'undefined' is not assignable to type 'boolean'.
+src/platform/post-input.ts(86,142): error TS18048: 'post.body' is possibly 'undefined'.
+src/platform/post-input.ts(100,3): error TS2322: Type 'boolean | undefined' is not assignable to type 'boolean'.
+  Type 'undefined' is not assignable to type 'boolean'.
+npm error Lifecycle script `typecheck` failed with error:
+npm error code 2
+npm error path D:\dev\copypasted\内部管理\app\mobile
+npm error workspace @copypaste/mobile@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\mobile
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc --noEmit

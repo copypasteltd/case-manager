@@ -115,6 +115,8 @@ Choose an exact folder/project. The API issues short-lived grants restricted to 
 
 Downloads and references bind current authorization and fixed versions. Revocation, expiry or ambiguous sources prevent reading. Temporary local copies do not become formal originals. Knowledge/project-blog content uses drafts, published revisions, comments and exact attachments; restoring history produces a traceable revision instead of deleting the audit trail.
 
+Mobile users can now create and edit project logs, meeting notes, SOPs and internal articles; explicitly publish/archive/return to draft; restore history into new revisions; and discuss the displayed body. Knowledge attachments explicitly follow the current version or pin an immutable version. Text-only comment edits preserve original server-side attachments. Context conflicts and uncertain receipts retain input and stop repeats. See the [mobile knowledge workflow](development/83-mobile-knowledge-workflows.md) for usage, limits and APIs.
+
 ### Company secretary and Telegram
 
 An employee states a goal in an authorized conversation. The secretary reads permitted content and prepares a bounded plan. Project creation, file changes, directory organization, OA submission or knowledge publication require checking exact objects, revisions, differences, scope and the user's required approval before invoking original business commands. The UI reports actual committed receipts; a casual chat reply does not replace formal approval or recent MFA.
@@ -133,7 +135,7 @@ Service operators publish an exact source revision and Ed25519 public key in Web
 
 The bridge reads original scrape timestamps through six bounded queries, persists each exact signed body before delivery and retries uncertain outcomes with the same bytes. Repeated scrapes do not extend freshness or advance failure/recovery counts; a failed scrape produces no healthy/failed fact, so old evidence expires to unknown. The existing Web and Taro pages show threshold-based outages, recovery and immutable signed evidence. The included browser recording uses a controlled Prometheus protocol endpoint and a real native bridge/API; actual monitor installation, host metrics and independent external alerts still require deployment acceptance.
 
-## Native local development
+## 5. Native local development
 
 The supplied helpers target the current native Windows development environment. Do not launch Docker, WSL, VMs or Android emulators. A persistent local development PostgreSQL cluster is a development tool; production application hosts still retain only temporary file data.
 
@@ -242,11 +244,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Retained 154 top-level/984 results/892 leaf scenarios, eight batches | Complete sources match81; targeted TG fixture ran freshly, full batches were not rerun |
-| Runtime / Web | Exactly retained 39 /81 tests | Runtime74 and Web 81 complete sources match; real model remains disabled |
-| Taro | Fresh 167 tests/types and 16 pages per mini-program | Increment82: nine actual TG identity/configuration flows and nine layouts; H5 is not device acceptance |
-| Android | Fresh 42,867,115-byte APK, 17 inspections, 25 newly executed JVM tests | Current complete sources; actual Gradle execution and four exact XML/log records; device/release gates remain |
-| Repository media | 29 PNGs, 8 MP4s, 8 GIFs; three new TG images,4.9-second MP4 and 29-frame GIF | Actual API/browser with synthetic data; historical captures retain commits; no real cloud/model/TG delivery |
+| Go / PostgreSQL | Fresh 155 top-level/986 results/894 leaf scenarios, eight batches passed | Failed cleanup in batch5 retained and rerun at unchanged source; complete current Go/SQL/contract coverage |
+| Runtime / Web | Fresh 39 /81 tests and builds passed | Both full checks rerun after shared-contract changes; no real model execution |
+| Taro | Fresh 178 tests/types and16 pages per mini-program | Increment83: 12 actual knowledge flows, 9 layouts and 805 complete capture sources; H5 is not device acceptance |
+| Android | Fresh 42,881,123-byte APK, 17 inspections; 25 JVM results reused from Gradle cache | Exact four XML results/task log retained; no new JVM execution claim, device or release acceptance |
+| Media catalog | 32 PNGs, 9 MP4s, 9 GIFs; three knowledge images,2.8-second MP4 and 17-frame GIF added | Actual synthetic API/browser; 793 historical TG sources reconstructed from Git; no real cloud/model/TG delivery |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

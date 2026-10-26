@@ -22,7 +22,7 @@ export default function Comments({ type, id, revisionID = '', me, readonly }: { 
     getNextPageParam: page => page.next_cursor ?? undefined,
   });
   const mutation = useMutation({
-    mutationFn: () => api<Comment>(editing ? '/comments/' + editing.id : '/' + (type === 'post' ? 'posts' : 'tasks') + '/' + id + '/comments', { method: editing ? 'PATCH' : 'POST', body: { body, ...(type === 'post' ? { expected_context_revision_id: editing?.context_revision_id ?? revisionID } : {}), ...(editing ? { expected_revision: editing.revision, attachment_versions: editing.attachment_versions } : {}) } }),
+    mutationFn: () => api<Comment>(editing ? '/comments/' + editing.id : '/' + (type === 'post' ? 'posts' : 'tasks') + '/' + id + '/comments', { method: editing ? 'PATCH' : 'POST', body: { body, ...(type === 'post' ? { expected_context_revision_id: editing?.context_revision_id ?? revisionID } : {}), ...(editing ? { expected_revision: editing.revision } : {}) } }),
     onSuccess: async () => { setBody(''); setEditing(null); await cache.invalidateQueries({ queryKey: ['comments', type, id] }); },
     onError: error => { if (error instanceof ApiError && error.code === 'COMMENT_CONTEXT_CHANGED') void cache.invalidateQueries({ queryKey: ['post', id] }); },
   });

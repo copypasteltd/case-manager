@@ -281,8 +281,9 @@ def main():
           and backend['discovered_top_level_tests'] == (baseline.get('backend_top_level_tests', 146) if baseline else 146)
           and len(backend['checks']) == (baseline.get('backend_result_records', 919) if baseline else 919)
           and all(item['Action'] == 'pass' for item in backend['checks']))
-    runtime = read(previous / 'runtime-build.json')
-    check('Retained runtime proof matches complete unchanged source; thirty-nine tests', runtime['status'] == 'passed'
+    runtime_group = baseline.get('runtime_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
+    runtime = read(EVIDENCE.parent / runtime_group / 'runtime-build.json')
+    check('Runtime proof matches complete current source and declared execution group; thirty-nine tests', runtime['status'] == 'passed'
           and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0] and runtime['tests']['pass'] == 39)
     web_group = baseline.get('web_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
     web = read(EVIDENCE.parent / web_group / 'web-build.json')
@@ -326,7 +327,7 @@ def main():
               'publication_whitespace_findings': whitespace,
               'oversize_files': large, 'index_worktree_differences': changed_index, 'broken_local_links': broken,
               'secret_scan_scope': 'High-confidence text patterns, not exhaustive secret detection or pixel OCR.',
-              'functional_evidence': 'Current source-bound backend/Web/mobile/browser/native artifacts and exact unchanged runtime reuse; see the baseline and final proof.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
+              'functional_evidence': 'Current source-bound backend/Web/runtime/mobile/browser/native artifacts and declared retained foundation proofs; see the baseline and final proof.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
               'current_functional_increment': baseline['increment'] if baseline else 76,
               'verification_script_sha256': sha(Path(__file__)), 'production_ready': False}
     if not args.staged:

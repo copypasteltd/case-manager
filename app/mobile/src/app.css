@@ -75,3 +75,11 @@ page { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'P
 .cp-status-proof { border-left: 6px solid var(--cp-accent-fg); padding: 16px 0 16px 24px; margin: 24px 0; }
 .cp-status-verified { display: block; color: var(--cp-status-success-fg); }
 .cp-status-text { display: block; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.cp-md-block { margin-bottom: 20px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cp-md-heading { font-size: 34px; font-weight: 700; }
+.cp-md-code { font-family: monospace; }
+.cp-md-strong { font-weight: 700; }
+.cp-md-em { font-style: italic; }
+.cp-md-link { color: var(--cp-accent-fg); text-decoration-line: underline; }
+.cp-md-quote { border-left-width: 4px; border-left-color: var(--cp-accent-fg); padding-left: 20px; }

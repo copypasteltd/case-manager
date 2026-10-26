@@ -36,6 +36,19 @@ func (s *Service) Version(ctx context.Context, a core.Actor, id, versionID strin
 	return v, nil
 }
 
+// VersionByID resolves comment attachment pins through the same current file ACL.
+// It never substitutes the current version and exposes no storage coordinates.
+func (s *Service) VersionByID(ctx context.Context, a core.Actor, versionID string) (Version, error) {
+	if !core.ValidID(versionID) {
+		return Version{}, core.Missing()
+	}
+	var fileID string
+	if err := s.DB.QueryRow(ctx, "SELECT file_id FROM file_versions WHERE org_id=$1 AND id=$2", a.OrgID, versionID).Scan(&fileID); err != nil {
+		return Version{}, platform.DatabaseError(err)
+	}
+	return s.Version(ctx, a, fileID, versionID)
+}
+
 func (s *Service) Versions(ctx context.Context, a core.Actor, id, cursor string, limit int) (core.Page[Version], error) {
 	out := core.Page[Version]{Items: []Version{}}
 	if _, err := authorizeFile(ctx, s.DB, a, id, "file.read"); err != nil {

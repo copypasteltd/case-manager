@@ -788,3 +788,17 @@ Go／SQL／契约、运行时、Web、依赖及Skill未改；完整后端SHA-256
 - 完整后端154顶层/984结果、Web81和运行时39按相同来源复用；旧81状态画面按提交9c710a0的787份Git原blob复算。真实四端/TG/云/模型/容量和生产门继续开放。
 
 完整使用与约束见[开发82](../development/82-mobile-telegram-access.md)，新执行/准确复用、实际错误及画面来源见[验证记录](../quality/evidence/mobile-telegram/verification.md)。
+
+## 57. 移动知识与项目博客完整工作流（增量83）
+
+- 延续16个注册页面，补项目日志、会议纪要、SOP、内部文章的公司／项目手工创建、编辑、标签、摘要及受限Markdown；明确区分保存修订、人工发布、归档和退回草稿。
+- 知识附件保留100项能力，明确跟随当前版／固定版本，独立核查权限、可用性及扫描；公开附件集合与原完整摘要不符时不允许覆盖或发布。
+- 正文历史恢复创建新修订并保留原已发布指针；评论绑定呈现正文，修改创建后继评论、保留原历史，支持20个固定版本与历史查阅。
+- 修复Web／移动任务／知识文字评论误覆盖权限过滤后的附件列表；省略替换即保留服务器原件，明确替换先核对原件，新回执与重放均过滤当前不可见版本。
+- 新增GET /v1/file-versions/{id}，沿用准确版本及当前文件ACL；内嵌／文档OpenAPI和生成类型同步，无新增迁移。
+- 本轮新执行完整后端155顶层／986结果／894末级（8批）、Web81、运行时39、移动178项、两小程序各16页编译及Linux编译；12组实际流程／9项布局通过。失败第5批清理时限保留后同源重跑通过，两个无连接残留测试库按严格范围清理。
+- 新42,881,123字节Android开发APK，SHA-2568108a630fd9bb90ba5fe2ceaa8e432beaba1967fa391f29f700193a5b8b08fbf；17项检查通过，25项JVM本次按Gradle UP-TO-DATE准确复用。25项最终来源／产物／清理复核通过。
+- 新3张截图、2.8秒MP4与17帧GIF来自13张实际JPEG／2656ms；805份完整当前采集来源、793份旧TG原Git blob来源保留。演示素材目录合计32 PNG／9 MP4／9 GIF。
+- 双语README、开发／使用约束、媒体目录、差异表和发布检查同步；真实四端、云／模型／TG、120GB／2TB及生产门继续开放。
+
+The shared mobile knowledge/blog workflows, original-comment preservation and exact pin resolver now have fresh complete source-bound checks and actual safe media. Gradle's cached native-test status and historical capture scope are explicit. See the [workflow](../development/83-mobile-knowledge-workflows.md) and [verification](../quality/evidence/mobile-knowledge/verification.md). The full platform goal remains open.

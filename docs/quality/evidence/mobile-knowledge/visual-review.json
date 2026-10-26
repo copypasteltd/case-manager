@@ -1,0 +1,48 @@
+{
+  "reviewed": true,
+  "checked_at": "2026-10-26T19:43:59.274090+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-editor.png",
+      "sha256": "c2b3194ece78f4c7c21c7f8c5864e18a45a8c23e539dcf80cb7ec34d030bb010"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-published.png",
+      "sha256": "9beb62575291dcab2899949bdfe465cb0901e513a5551b85adf29d282a105e52"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-comments.png",
+      "sha256": "0fb873dbe3f25918ad7fb68f5fdc4fbbd463efecb99e37013afa2cc0289c3935"
+    },
+    {
+      "file": "docs/media/videos/mobile-knowledge-access.mp4",
+      "sha256": "0401ff841c6d7468786ee711d3c25d16c1089af909d9fbef48b5f300f4d7e40c"
+    },
+    {
+      "file": "docs/media/gifs/mobile-knowledge-access.gif",
+      "sha256": "23f7b02593d5243f6658bde8ac318963377ef2724126f51d5ddb6204101f0322"
+    }
+  ],
+  "screenshots_reviewed": 3,
+  "gif_frames": 17,
+  "gif_duration_ms": 2840,
+  "gif_sampled_frames": [
+    0,
+    5,
+    11,
+    16
+  ],
+  "observations": [
+    "Reviewed all three actual390x900 screenshots and sampled GIF contact sheet.",
+    "Editor shows scope, type/classification, title, summary, tags and Markdown.",
+    "Published view shows matched actual current/published pointers, literal HTML/image text and differentiated reference modes.",
+    "Discussion shows version-bound original pins, latest text-only edit and immutable history.",
+    "GIF samples show actual current/published pointer changes and the final published body. The explicit reason/acknowledgement controls are validated by the browser workflow; they are outside the sampled viewport."
+  ],
+  "limits": [
+    "Synthetic data and shared Taro H5; no real device or production claim.",
+    "GIF review samples four frames; full capture is bound separately by immutable frame hashes."
+  ],
+  "credentials_excluded": true,
+  "synthetic_data": true
+}

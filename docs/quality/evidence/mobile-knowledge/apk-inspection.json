@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T19:00:18.186446+00:00",
+  "checks": [
+    {
+      "name": "Development application ID is separate from production",
+      "passed": true
+    },
+    {
+      "name": "Only network, upload service, notification and private receiver permissions are packaged",
+      "passed": true
+    },
+    {
+      "name": "Only the intended physical-device ABI is packaged",
+      "passed": true
+    },
+    {
+      "name": "Supported SDK bounds are present",
+      "passed": true
+    },
+    {
+      "name": "System backup is disabled",
+      "passed": true
+    },
+    {
+      "name": "The native launcher is present",
+      "passed": true
+    },
+    {
+      "name": "Any private receiver permission is signature protected",
+      "passed": true
+    },
+    {
+      "name": "APK signature verification succeeds",
+      "passed": true
+    },
+    {
+      "name": "All twenty-five Android transport, cache and upload tests pass",
+      "passed": true
+    },
+    {
+      "name": "Packaged business code matches the current offline bundle",
+      "passed": true
+    },
+    {
+      "name": "Native engine and application code are included",
+      "passed": true
+    },
+    {
+      "name": "The actual native upload bridge, streaming transport and service are packaged",
+      "passed": true
+    },
+    {
+      "name": "The business graph uses the intended native platform adapters",
+      "passed": true
+    },
+    {
+      "name": "No Expo extension or WebView entered the offline business graph",
+      "passed": true
+    },
+    {
+      "name": "All sixteen registered business pages including finance are included",
+      "passed": true
+    },
+    {
+      "name": "The user-started dataSync upload service is private",
+      "passed": true
+    },
+    {
+      "name": "Upload does not register a boot-time restart receiver",
+      "passed": true
+    }
+  ],
+  "apk_sha256": "8108a630fd9bb90ba5fe2ceaa8e432beaba1967fa391f29f700193a5b8b08fbf",
+  "apk_bytes": 42881123,
+  "application_id": "hk.copypaste.workspace.debug",
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.FOREGROUND_SERVICE",
+    "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+    "android.permission.POST_NOTIFICATIONS",
+    "hk.copypaste.workspace.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "architectures": [
+    "arm64-v8a"
+  ],
+  "tests": [
+    {
+      "name": "hk.copypaste.workspace.ApiHTTPTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "hk.copypaste.workspace.ReadCacheTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "hk.copypaste.workspace.UploadBoundariesTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "hk.copypaste.workspace.UploadTransferTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "device_executed": false,
+  "emulator_started": false,
+  "production_release": false
+}

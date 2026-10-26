@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T19:51:34.488902+00:00",
+  "changed_files": [
+    {
+      "file": "backend/internal/knowledge/comments.go",
+      "before_sha256": "4d0795e221dc5adc9878e625bb4cb6dc6661f2058aede7bb36d6ae957aed1dd9",
+      "after_sha256": "67f39dc5c8e52bc2142b0dd53b65028c697bbb06f87e03925caa59405a0e936e",
+      "restored_original_lf": true
+    },
+    {
+      "file": "backend/internal/files/versions.go",
+      "before_sha256": "9513ad8fc04ec12bfe374118a3f5aa3b1f4f7b002216750491270ffe7830fb5a",
+      "after_sha256": "a5556943abe3e8c5fc0e0bf6efebd2512e1f6def2131fcd6ba8bc911709469ef",
+      "restored_original_lf": true
+    },
+    {
+      "file": "backend/internal/httpapi/files.go",
+      "before_sha256": "74cab85fa21b964587717314cffd1084e2d65b722a685d97bc007e3c1fe7013d",
+      "after_sha256": "7964ae700c71fbab66a82d793acefecf1412be25ce8cc587e6043c93dd7c56b5",
+      "restored_original_lf": true
+    },
+    {
+      "file": "backend/internal/httpapi/file_version_integration_test.go",
+      "before_sha256": "21ff7e2cebf74a1760d5e4c33aab81f56212f75b400b63533e06ceeea263f0da",
+      "after_sha256": "4eebca45f8cca6829d4d77129b2d3571aa1160d821b4324e93f9aeb21ca77838",
+      "restored_original_lf": true
+    }
+  ],
+  "all_other_capture_bytes_unchanged": true,
+  "capture_wait_fix": {
+    "checked_at": "2026-10-26T19:34:47.236140+00:00",
+    "file": "scripts/check_mobile_knowledge.mjs",
+    "before_sha256": "280b33bbdcaf157398e6f1039bbabdf9868301727705c120ced447a962562942",
+    "after_sha256": "33545ac7ede050676bb479d7387f234ac1fee567528ce429e0b1df34345daa70",
+    "retained_source": "checker-before.mjs.txt",
+    "reason": "Wait for the transition dialog to unmount and the actual resulting state to render before asserting archived controls; original API/UI behavior unchanged.",
+    "application_code_changed": false,
+    "source_manifest_sha256": "89a8395cbedc77655013ed104e832cce94c32748372b5f935d8656dfb87686ae",
+    "isolated_cleanup_passed": true
+  },
+  "before_browser_source_sha256": "d8ff01c35be320e0e8c5fad077f573ae35cfe496d5be450699243bbf98c73613",
+  "after_browser_source_sha256": "8ca75b2a5a6190a980ea814fd32bb186c0c62122ddb4bd5498a697707345c3cd",
+  "before_backend_source_sha256": "a2aff2fe496acc86e254cc4cc928aca15df7b0f6e92f96af8bd325f771a1fe7e",
+  "after_backend_source_sha256": "f58641238a65b8ec9a6f31d26c2a362281ce8c3dfa03a30aed3c3fb5c0075411",
+  "archived_manifest_sha256": "1b84ce9524d63a5523ff3f259e8166703eccd75752a1e9b335ab67b05953c1b1",
+  "archived_media_exact": true,
+  "archived_artifact_map_sha256": "67ee71f6eade71f2f431639ee166c07623632c84dcebbf4982ddfe4c53d6eea7",
+  "archived_backend_result_sha256": "99ee61cb40ef13a7b4726d3b056870429d633e29828ad64a05ce92fdcd8b9034",
+  "verification_script_sha256": "694dc4bb976b56d19f43ef21b7527019b5ccd018a3d50ad3ed8930cd5f7946ae",
+  "historical_evidence_modified": false,
+  "scope": "Four Go CRLF-to-original-LF byte restorations and one declared browser-checker wait correction. Reconstruct the original complete proofs from retained bytes; current backend/Linux/browser checks run afresh."
+}

@@ -1,0 +1,24 @@
+{
+  "started_at": "2026-10-26T18:58:32.230783+00:00",
+  "expected_residual_fixtures": 2,
+  "before_count": 2,
+  "all_owned_by_test_administrator": true,
+  "all_inactive_before_cleanup": true,
+  "only_strict_fixture_names_selected": true,
+  "force_used": false,
+  "production_database_touched": false,
+  "databases": [
+    {
+      "name_sha256": "49f53fa9e1c3cae4b9b140fb51b4754935c5ade22088cec33f85e19dc6af860e",
+      "dropped": true
+    },
+    {
+      "name_sha256": "9af92b7b2cf03c056e5319ed5687d2b661f024173501f50c68f6c36722b47120",
+      "dropped": true
+    }
+  ],
+  "after_count": 0,
+  "passed": true,
+  "completed_at": "2026-10-26T18:58:34.605296+00:00",
+  "scope": "Two residual isolated fixtures from the retained batch5 cleanup deadlines; all browser fixtures and backend tests had already exited. Native daily API/worker/database and unrelated services are preserved."
+}

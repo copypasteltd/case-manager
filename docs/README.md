@@ -6,6 +6,8 @@
 
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 
+本轮功能文档：[移动知识与项目博客完整工作流 / Mobile knowledge and project blog](development/83-mobile-knowledge-workflows.md)。
+
 ## 1. 阅读路径
 
 负责人先读产品需求、OA/费用、决策登记和工作包；开发读工程/数据/接口及负责模块；前端和设计读页面矩阵及风格设计体系；AI开发先读权限与工具；测试/运维读追踪、配置及部署恢复。用户已确认要求优先；细化设计优先于原v0.2举例。
@@ -174,6 +176,7 @@
 | 最近增量 | 已实现内容 |
 | --- | --- |
 | [原生Prometheus／Blackbox桥接](development/81-native-prometheus-status-bridge.md) | 原采样时刻、受限读取、持久序号及签名正文、准确回执、既有Web／Taro故障／恢复与历史验证 |
+| [移动知识与项目博客完整工作流](development/83-mobile-knowledge-workflows.md) | 四类知识、准确附件、正文／评论修订、发布／恢复、权限与回执约束 |
 | [移动项目变更与预算修订](development/80-mobile-project-changes-and-budgets.md) | 完整项目／币种基线、固定提案、原申请修订及独立审批、本人MFA明确实施、实际项目／预算证明及不可变历史 |
 | [移动项目结项与固定归档](development/79-mobile-project-closeout-and-archive.md) | 十三类完整核查、阶段操作、固定复盘、两项声明与本人MFA、冲突保留、实际项目／历史证明及受控重开 |
 | [移动任务、子任务与前置依赖](development/78-mobile-task-editing-and-dependencies.md) | 手工新建／编辑、实际候选、空值解除和依赖回读；124项移动测试、9组真实流程、6项布局，新增2张截图及任务MP4／GIF |
@@ -192,4 +195,4 @@
 | [移动项目立项与成员管理](development/75-mobile-project-setup-and-members.md) | 新建立项、准确模板、资料编辑、角色／移除及负责人移交；99项移动测试、7条真实流程和新Android开发APK |
 | [移动里程碑、风险与问题](development/76-mobile-project-milestones-risks-and-issues.md) | 三类事项新建／编辑、明确状态、风险转实际问题及冲突恢复；114项移动测试、8条真实流程及新Android开发APK |
 
-最近功能增量见[移动TG身份与准确入口](development/82-mobile-telegram-access.md)：本人私聊证明、原登录数字身份确认、取消/撤销、管理员完整配置与历史分页。新167项移动测试、两小程序编译、9组实际流程、9项布局、新开发APK/17项检查及新执行25项JVM测试通过；23项[来源核验](quality/evidence/mobile-telegram/final-source-check.json)通过。新增3张截图、4.9秒MP4/29帧GIF，所属浏览器/夹具已清理。完整后端、Web、运行时按相同来源复用；旧监控媒体保留787项Git历史来源。详见[准确验证](quality/evidence/mobile-telegram/verification.md)及[28项差异](delivery/03-goal-gap-assessment.md)。
+最近功能增量见[移动知识与项目博客](development/83-mobile-knowledge-workflows.md)：完整手工编辑／发布／恢复、准确附件和评论历史，修复隐藏评论附件保留。新155顶层／986结果后端、Web81、运行时39、移动178项、两小程序编译、12组实际流程、9项布局、新Android开发APK及17项包检查通过；25项JVM结果按Gradle缓存准确记录。[25项来源核验](quality/evidence/mobile-knowledge/final-source-check.json)通过，新增3张截图、2.8秒MP4及17帧GIF。详见[准确验证](quality/evidence/mobile-knowledge/verification.md)及[28项差异](delivery/03-goal-gap-assessment.md)。

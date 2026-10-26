@@ -44,6 +44,7 @@ func TestPinnedFileVersionMetadata(t *testing.T) {
 		t.Fatal(err)
 	}
 	route := "/v1/files/" + fileID + "/versions/" + versions[0]
+	globalRoute := "/v1/file-versions/" + versions[0]
 	t.Run("exact history beyond the first page remains pinned after a rename", func(t *testing.T) {
 		f := f.with(t)
 		rec, result := f.request("GET", "/v1/files/"+fileID+"/versions?limit=20", f.aliceToken, "", nil, nil)
@@ -61,6 +62,21 @@ func TestPinnedFileVersionMetadata(t *testing.T) {
 		if value.ID != versions[0] || value.Seq != 1 || value.SizeBytes != "120000000000" || value.SHA256 != sha || value.OriginalName == nil || *value.OriginalName != "original.bin" {
 			t.Fatal("requested history was substituted", value)
 		}
+	})
+	t.Run("attachment version IDs resolve exactly with no current-version substitution", func(t *testing.T) {
+		f := f.with(t)
+		rec, result := f.request("GET", globalRoute, f.aliceToken, "", nil, nil)
+		expect(t, rec, 200, result)
+		value := data[storage.Version](t, result)
+		if value.ID != versions[0] || value.FileID != fileID || value.Seq != 1 || value.SHA256 != sha {
+			t.Fatal("attachment pin changed", value)
+		}
+		for _, id := range []string{core.NewID(), "not-a-version"} {
+			rec, result = f.request("GET", "/v1/file-versions/"+id, f.aliceToken, "", nil, nil)
+			expect(t, rec, 404, result)
+		}
+		rec, result = f.request("GET", globalRoute, "", "", nil, nil)
+		expect(t, rec, 401, result)
 	})
 	t.Run("wrong-file unknown and malformed versions cannot resolve", func(t *testing.T) {
 		f := f.with(t)
@@ -83,6 +99,8 @@ func TestPinnedFileVersionMetadata(t *testing.T) {
 		}
 		rec, result := f.request("GET", route, f.bobToken, "", nil, nil)
 		expect(t, rec, 200, result)
+		rec, result = f.request("GET", globalRoute, f.bobToken, "", nil, nil)
+		expect(t, rec, 200, result)
 		value := data[storage.Version](t, result)
 		if value.ReplicaState == nil || *value.ReplicaState != "failed" || len(value.Replicas) != 2 {
 			t.Fatal("invalid replica proof reported as verified", value)
@@ -102,5 +120,9 @@ func TestPinnedFileVersionMetadata(t *testing.T) {
 		}
 		rec, result = f.request("GET", route, f.bobToken, "", nil, nil)
 		expect(t, rec, 404, result)
+		for _, token := range []string{f.memberToken, f.bobToken} {
+			rec, result = f.request("GET", globalRoute, token, "", nil, nil)
+			expect(t, rec, 404, result)
+		}
 	})
 }

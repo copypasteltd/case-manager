@@ -1,0 +1,232 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+import { createHash, randomUUID } from 'node:crypto';
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { recordViewport } from './knowledge_recording.mjs';
+import { otp } from './notification_browser_common.mjs';
+import { mobileScreen as screen, selectMobile as select, stableMobile as stable } from './mobile_picker_browser.mjs';
+
+const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const evidence = path.join(app, '../docs/quality/evidence/mobile-knowledge-browser');
+const fixture = JSON.parse(await readFile(path.join(app, '.local/business-browser-fixture.json'), 'utf8'));
+assert.equal(fixture.fixture_kind, 'mobile-business'); assert.equal(fixture.isolated_database, true);
+const manifest = JSON.parse(await readFile(path.join(evidence, 'source-manifest.json'), 'utf8'));
+async function digest() { const h = createHash('sha256'); for (const file of manifest.files) { h.update(file + '\0'); h.update(await readFile(path.join(app, file))); h.update('\0'); } return h.digest('hex'); }
+const before = await digest(); assert.equal(before, manifest.sha256);
+const temporary = path.join(app, '.local/browser-temp'); await mkdir(temporary, { recursive: true }); process.env.TMP = temporary; process.env.TEMP = temporary;
+const executablePath = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'; await access(executablePath);
+const contexts = [], closedContexts = new Set(), checks = [], layouts = [], errors = [], serverErrors = [], cleanupErrors = [], recordings = [], screenshots = [];
+const button = (page, name) => screen(page).getByRole('button', { name, exact: true });
+const field = (page, label) => screen(page).locator('input[aria-label="' + label + '"],textarea[aria-label="' + label + '"]');
+let browser, mainPage, passed = false, failure;
+async function heading(page, title) { await screen(page).locator('.cp-title').filter({ hasText: title }).waitFor(); }
+async function navigate(page, url) { await page.evaluate(value => { window.location.hash = '#' + value; }, url); await stable(page); }
+async function closeOwned(context) { if (!closedContexts.has(context)) { await context.close(); closedContexts.add(context); } }
+async function login(account, existing) {
+  const context = existing?.context ?? await browser.newContext({ viewport: { width: 390, height: 900 }, reducedMotion: 'reduce' }); if (!existing) contexts.push(context);
+  const page = existing?.page ?? await context.newPage(); page.setDefaultTimeout(25000);
+  page.on('pageerror', error => errors.push(error.message)); page.on('response', r => { if (r.status() >= 500) serverErrors.push({ status: r.status(), path: new URL(r.url()).pathname }); });
+  await page.goto(fixture.origin); await field(page, '内部账号').fill(account.login); await field(page, '密码').fill(account.password);
+  const pending = page.waitForResponse(r => r.url().endsWith('/v1/auth/login') && r.request().method() === 'POST'); await button(page, '登录工作空间 ↗').click(); let result = await (await pending).json();
+  if (account.mfa_secret) {
+    while (Math.floor(Date.now() / 30000) <= account.last_step) await page.waitForTimeout(500);
+    const step = Math.floor(Date.now() / 30000); await screen(page).locator('input[maxlength="6"]').fill(otp(account.mfa_secret, step));
+    const verified = page.waitForResponse(r => r.url().endsWith('/v1/auth/mfa/verify') && r.request().method() === 'POST'); await button(page, '验证并继续 ↗').click(); result = await (await verified).json(); account.last_step = step;
+  }
+  assert.equal(result.data?.step, 'authenticated'); await heading(page, '工作从这里开始'); return { page, context, token: result.data.access_token };
+}
+async function response(token, route, method = 'GET', body) {
+  return fetch(fixture.api_origin + '/v1' + route, { method, headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json', ...(method === 'GET' ? {} : { 'Idempotency-Key': 'knowledge-setup:' + randomUUID() }) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+}
+async function request(token, route, method, body) { const r = await response(token, route, method, body), data = await r.json(); assert.ok(r.ok, `${method ?? 'GET'} ${route}: ${r.status} ${data.error?.code ?? ''}`); return data.data; }
+async function submit(page, label, route, method, status = 200) {
+  const [r] = await Promise.all([page.waitForResponse(r => new URL(r.url()).pathname === '/v1' + route && r.request().method() === method), button(page, label).click()]);
+  assert.equal(r.status(), status, route); return { body: r.request().postDataJSON(), value: (await r.json()).data };
+}
+async function layout(page, name) {
+  for (const width of [320, 390, 768]) {
+    await page.setViewportSize({ width, height: 900 }); await stable(page);
+    const value = await screen(page).evaluate(node => ({ width: node.getBoundingClientRect().width, overflow: document.documentElement.scrollWidth > innerWidth + 1, small: [...node.querySelectorAll('.cp-button,.cp-row')].filter(n => { const r = n.getBoundingClientRect(); return r.width && r.height < 43.5; }).map(n => n.textContent) }));
+    assert.equal(value.overflow, false, name + ' horizontal overflow'); assert.ok(Math.abs(value.width - width) <= 1); assert.deepEqual(value.small, []); layouts.push({ page: name, width, passed: true });
+  }
+  await page.setViewportSize({ width: 390, height: 900 }); await stable(page); await assertSafe(page); await page.screenshot({ path: path.join(evidence, name + '.png'), fullPage: true });
+}
+
+
+function done(message) { checks.push(message); console.log('Completed actual flow ' + checks.length + ': ' + message); }
+async function assertSafe(page) { assert.equal(await page.locator('input[type="password"]:visible,input[maxlength="6"]:visible,.cp-secret:visible').count(), 0); }
+async function image(page, name, caption) {
+  await stable(page); await assertSafe(page); const file = path.join(app, '../docs/media/screenshots/' + name + '.png');
+  await page.screenshot({ path: file, fullPage: false });
+  screenshots.push({ file: 'docs/media/screenshots/' + name + '.png', caption, sha256: createHash('sha256').update(await readFile(file)).digest('hex'), synthetic_data: true, real_device: false });
+}
+
+const content = '# 项目会议纪要\n**决议**：完成移动知识工作流。\n- 核对交付依据\n> 保留原始修订\n```html\n<script>window.__cpKnowledgeExecuted=true</script>\n```\n![不加载外部图片](https://invalid.example/knowledge-pixel.png)';
+const acknowledgement = '我已核对当前正文、附件引用方式和本次状态变更';
+async function check(page, label) { await screen(page).locator('label').filter({ hasText: label }).click(); }
+async function openPost(page, id) { await navigate(page, '/pages/detail/index?kind=post&id=' + id); await button(page, '重新读取最新知识资料').waitFor(); await stable(page); }
+async function edit(page) { await button(page, '编辑知识正文').click(); await field(page, 'Markdown 正文').waitFor(); }
+async function transition(page, post, action, label) {
+  await button(page, label).click(); await field(page, '知识操作原因').fill('隔离合成演示：已人工核对正文、权限与完整依据。'); await check(page, acknowledgement);
+  const result = await submit(page, '确认' + label, '/posts/' + post.id + '/publish', 'POST');
+  assert.equal(result.body.action, action); await button(page, '重新读取最新知识资料').waitFor(); await stable(page);
+  return result.value;
+}
+
+try {
+  assert.equal(fixture.content_fixture, true);
+  browser = await chromium.launch({ executablePath, headless: true });
+  const alice = await login(fixture.alice), bob = await login(fixture.bob); mainPage = alice.page;
+  const page = alice.page, original = fixture.content_files.historical;
+  const file = await request(alice.token, '/files/' + original.file_id);
+  await navigate(page, '/pages/detail/index?kind=post&mode=new&project_id=' + fixture.project_id);
+  await field(page, '知识标题').fill('移动知识验收 · 项目会议');
+  await select(page, '知识类型', '会议纪要');
+  await field(page, '知识摘要').fill('中英文检索、完整正文修订与准确的附件依据。');
+  await field(page, '知识标签').fill('会议,Release,移动端'); await field(page, 'Markdown 正文').fill(content);
+  await button(page, '预览正文').click(); assert.equal(await page.evaluate(() => window.__cpKnowledgeExecuted), undefined);
+  assert.equal(await page.locator('img[src*="invalid.example"]').count(), 0);
+  await screen(page).getByRole('button', { name: new RegExp('^' + file.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) }).click();
+  await button(page, '添加跟随当前版本').click(); await button(page, '引用固定版本 1').click();
+  await layout(page, 'knowledge-editor');
+  await field(page, '知识标题').scrollIntoViewIfNeeded(); await image(page, 'mobile-knowledge-editor', 'Synthetic mobile meeting-note editor with scope, tags, Markdown and explicit attachment modes.');
+  const created = await submit(page, '保存知识草稿', '/posts', 'POST', 201); let post = created.value;
+  assert.equal(created.body.type, 'meeting_note'); assert.equal(created.body.project_id, fixture.project_id);
+  assert.deepEqual(created.body.source_refs, [{ type: 'file', id: original.file_id }, { type: 'file', id: original.file_id, version_id: original.version_id }]);
+  await button(page, '编辑知识正文').waitFor(); assert.equal((await request(alice.token, '/posts/' + post.id)).body, content);
+  done('The real project meeting-note editor saves Unicode tags, safe Markdown and both follow-current/fixed historical attachments with corroborated immutable history.');
+
+  post = await transition(page, post, 'publish', '发布当前修订'); const firstRevision = post.current_revision_id;
+  await edit(page); await field(page, 'Markdown 正文').fill(content + '\n\n第二次修订：待独立发布。');
+  const saved = await submit(page, '保存知识新修订', '/posts/' + post.id, 'PATCH'); post = saved.value;
+  assert.equal(saved.body.base_revision_id, firstRevision); assert.equal(post.published_revision_id, firstRevision); assert.equal(post.has_unpublished_changes, true);
+  await button(page, '编辑知识正文').waitFor();
+  done('Saving an already published record creates a different current body while retaining the original published pointer; no implicit publication occurs.');
+
+  recordings.push(await recordViewport(page, app, 'mobile-knowledge-edit-publish', async () => {
+    await edit(page); await field(page, 'Markdown 正文').fill(content + '\n\n第三次修订：人工确认后发布。');
+    const updated = await submit(page, '保存知识新修订', '/posts/' + post.id, 'PATCH'); post = updated.value; await button(page, '编辑知识正文').waitFor();
+    post = await transition(page, post, 'publish', '发布当前修订'); await screen(page).locator('.cp-title').scrollIntoViewIfNeeded(); await page.waitForTimeout(600);
+  }));
+  assert.equal(post.published_revision_id, post.current_revision_id); assert.equal(post.has_unpublished_changes, false);
+  await layout(page, 'knowledge-published'); await screen(page).locator('.cp-title').scrollIntoViewIfNeeded();
+  await image(page, 'mobile-knowledge-published', 'Actual published knowledge view; immutable current and published body pointers agree.');
+  done('A second exact edit and explicit reason/acknowledgement publish complete through actual UI/API, recorded only after authentication.');
+
+  await button(page, '查看知识历史').click();
+  await screen(page).getByRole('button', { name: /^正文修订 1 ·/ }).click();
+  await field(page, '恢复知识原因').fill('隔离验收：复制首个会议纪要为新的修订，不修改原始历史。');
+  await check(page, '我已核对历史正文与全部依据，确认建立新的正文修订');
+  const oldPublished = post.published_revision_id;
+  const restored = await submit(page, '恢复为新的知识修订', '/posts/' + post.id + '/restore', 'POST'); post = restored.value;
+  assert.notEqual(post.current_revision_id, firstRevision); assert.equal(post.body, content); assert.equal(post.published_revision_id, oldPublished);
+  await button(page, '编辑知识正文').waitFor();
+  const history = await request(alice.token, '/posts/' + post.id + '/revisions?limit=20'); assert.equal(history.items.length, 4);
+  done('Historical restoration copies the first body into a fourth immutable revision and preserves the separately published revision.');
+
+  await button(page, '为此正文新增评论').click(); await field(page, '知识评论文字').fill('固定依据评论：核对历史原件，不跟随后续文件变化。');
+  await button(page, '选择评论固定附件').click();
+  await screen(page).getByRole('button', { name: new RegExp('^' + file.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) }).click();
+  await button(page, '引用固定版本 1').click();
+  const added = await submit(page, '保存此正文评论', '/posts/' + post.id + '/comments', 'POST', 201); let comment = added.value;
+  assert.equal(comment.context_revision_id, post.current_revision_id); assert.deepEqual(comment.attachment_versions, [original.version_id]);
+  await button(page, '修改我的评论').waitFor(); await button(page, '修改我的评论').click(); await field(page, '知识评论文字').fill('只修改文字：服务器保留原始固定附件。');
+  const edited = await submit(page, '保存评论新修订', '/comments/' + comment.id, 'PATCH', 201);
+  assert.equal(Object.hasOwn(edited.body, 'attachment_versions'), false); assert.equal(edited.value.replaces_id, comment.id); assert.notEqual(edited.value.id, comment.id); comment = edited.value;
+  await button(page, '查看评论历史').waitFor(); await button(page, '查看评论历史').click();
+  await screen(page).getByRole('button', { name: /^评论修订 1/ }).click(); await screen(page).getByText('固定依据评论：核对历史原件，不跟随后续文件变化。', { exact: true }).waitFor();
+  await layout(page, 'knowledge-comments-history');
+  await screen(page).getByText('此正文修订的讨论', { exact: true }).scrollIntoViewIfNeeded(); await image(page, 'mobile-knowledge-comments', 'Revision-bound discussion, fixed attachments and immutable comment history.');
+  const pinned = await request(alice.token, '/file-versions/' + original.version_id); assert.equal(pinned.file_id, original.file_id); assert.equal(pinned.seq, 1);
+  done('Comments bind the actual body revision, resolve a historical pin directly, and append immutable text-only edits without replacing original attachments.');
+
+  // The two explicit references must resolve different actual versions.
+  const cards = screen(page).locator('.cp-section').filter({ hasText: '知识附件 · 当前可见 2' });
+  await cards.getByRole('button', { name: '查阅此附件内容', exact: true }).nth(1).click();
+  await button(page, '读取这个版本的内容').click();
+  await screen(page).getByText('香港项目 · 固定版本一', { exact: false }).first().waitFor();
+  assert.equal(await page.evaluate(() => window.__cpFileScriptExecuted), undefined);
+  await openPost(page, post.id); await button(page, '编辑知识正文').waitFor();
+  const followCards = screen(page).locator('.cp-section').filter({ hasText: '知识附件 · 当前可见 2' });
+  await followCards.getByRole('button', { name: '查阅此附件内容', exact: true }).nth(0).click();
+  await button(page, '读取这个版本的内容').click();
+  await screen(page).getByText('这是后续的当前版本', { exact: false }).first().waitFor();
+  await openPost(page, post.id); await button(page, '编辑知识正文').waitFor();
+  done('Actual scoped content reads distinguish the pinned historical bytes from the follow-current bytes and render literal script text without execution.');
+
+  await edit(page); await field(page, 'Markdown 正文').fill('发生冲突后仍需保留的本地文字。');
+  const concurrent = await request(alice.token, '/posts/' + post.id, 'PATCH', { expected_version: post.version, base_revision_id: post.current_revision_id, body: '另一操作已保存的新正文。' });
+  await submit(page, '保存知识新修订', '/posts/' + post.id, 'PATCH', 409);
+  assert.equal(await field(page, 'Markdown 正文').inputValue(), '发生冲突后仍需保留的本地文字。'); assert.equal(await button(page, '保存知识新修订').isDisabled(), true);
+  await button(page, '关闭表单并核对资料').click(); await button(page, '编辑知识正文').waitFor(); post = concurrent;
+  done('A real concurrent body update returns409; the editor keeps local input, disables repeat submission and explicitly rereads the latest body.');
+
+  await button(page, '为此正文新增评论').click(); await field(page, '知识评论文字').fill('旧正文上下文的尚未提交评论。');
+  post = await request(alice.token, '/posts/' + post.id, 'PATCH', { expected_version: post.version, base_revision_id: post.current_revision_id, body: '讨论上下文再次变化。' });
+  await submit(page, '保存此正文评论', '/posts/' + post.id + '/comments', 'POST', 409);
+  assert.equal(await field(page, '知识评论文字').inputValue(), '旧正文上下文的尚未提交评论。'); assert.equal(await button(page, '保存此正文评论').isDisabled(), true);
+  await button(page, '重新读取最新知识资料').click(); await button(page, '编辑知识正文').waitFor();
+  assert.equal(await button(page, '修改我的评论').count(), 0);
+  done('A real body-context change refuses the stale comment with409, preserves its text and prevents previous-body discussion from appearing under the new revision.');
+
+  let intercepted = 0;
+  await page.route('**/v1/posts/' + post.id, async route => {
+    if (route.request().method() !== 'PATCH') return route.continue();
+    intercepted++; const upstream = await route.fetch(); assert.equal(upstream.status(), 200); const envelope = await upstream.json();
+    delete envelope.data.current_revision_id; await route.fulfill({ response: upstream, json: envelope });
+  });
+  await edit(page); await field(page, 'Markdown 正文').fill('真实保存成功，但控制实验移除回执字段。');
+  await submit(page, '保存知识新修订', '/posts/' + post.id, 'PATCH');
+  await screen(page).getByText('操作返回的资料不完整，结果尚未核对。请先刷新业务列表和当前记录。', { exact: true }).waitFor();
+  assert.equal(await button(page, '保存知识新修订').isDisabled(), true); assert.equal(intercepted, 1);
+  await page.unroute('**/v1/posts/' + post.id); post = await request(alice.token, '/posts/' + post.id);
+  assert.equal(post.body, '真实保存成功，但控制实验移除回执字段。'); await button(page, '关闭表单并核对资料').click(); await button(page, '编辑知识正文').waitFor();
+  done('A labelled controlled response fault strips one field after the real server commits; the client stops as unconfirmed and never repeats the PATCH.');
+
+  await page.route('**/v1/posts/' + post.id, async route => {
+    if (route.request().method() !== 'GET') return route.continue();
+    const upstream = await route.fetch(), envelope = await upstream.json(); envelope.data.source_refs = [];
+    await route.fulfill({ response: upstream, json: envelope });
+  });
+  await button(page, '重新读取最新知识资料').click();
+  await screen(page).getByText('当前附件集合可能经过权限过滤。请先核对完整依据；正文编辑与发布暂不开放，以免遗漏原附件。', { exact: true }).waitFor();
+  assert.equal(await button(page, '编辑知识正文').count(), 0); assert.equal(await button(page, '发布当前修订').count(), 0);
+  await page.unroute('**/v1/posts/' + post.id); await button(page, '重新读取最新知识资料').click(); await button(page, '编辑知识正文').waitFor();
+  done('A labelled controlled filtered-reference read retains the complete server hash; editing/publication stay closed until complete authorized evidence is reread.');
+
+  post = await transition(page, post, 'archive', '归档知识'); assert.equal(post.state, 'archived');
+  assert.equal(await button(page, '编辑知识正文').count(), 0); assert.equal(await button(page, '为此正文新增评论').count(), 0);
+  post = await transition(page, post, 'draft', '退回草稿'); assert.equal(post.state, 'draft'); await button(page, '编辑知识正文').waitFor();
+  for (const [type, label] of [['project_log', '项目日志'], ['sop', '操作规范'], ['article', '内部文章']]) {
+    await navigate(page, '/pages/detail/index?kind=post&mode=new'); await field(page, '知识标题').fill('移动公司知识 · ' + label); await select(page, '知识类型', label);
+    await field(page, 'Markdown 正文').fill('公司公共资料 · ' + label + ' · English knowledge');
+    const item = await submit(page, '保存知识草稿', '/posts', 'POST', 201); assert.equal(item.body.type, type); assert.equal(item.body.project_id, null); await button(page, '编辑知识正文').waitFor();
+  }
+  done('Actual archive/draft transitions enforce read-only archived controls, and all other three knowledge types save from the company-scope editor.');
+
+  for (let i = 0; i < 22; i++) await request(alice.token, '/posts', 'POST', { type: 'article', title: '知识分页 ' + String(i).padStart(2, '0'), body: 'Pagination body 中文检索', summary: 'Synthetic fixture', classification: 'internal' });
+  await navigate(page, '/pages/list/index?kind=posts'); await field(page, '查找知识与记录').fill('知识分页'); await button(page, '查找 / 刷新知识').click();
+  await button(page, '更多知识记录').waitFor(); assert.equal(await screen(page).locator('.cp-row').count(), 20); await button(page, '更多知识记录').click();
+  await screen(page).locator('.cp-row').nth(21).waitFor(); assert.equal(await screen(page).locator('.cp-row').count(), 22);
+  await page.route('**/v1/posts?*', route => route.fulfill({ status: 403, contentType: 'application/json', body: JSON.stringify({ error: { code: 'FORBIDDEN', message: 'Labelled synthetic knowledge-list withdrawal', request_id: 'synthetic' } }) }));
+  await button(page, '查找 / 刷新知识').click(); await screen(page).getByText('Labelled synthetic knowledge-list withdrawal', { exact: true }).waitFor(); assert.equal(await screen(page).locator('.cp-row').count(), 0); await page.unroute('**/v1/posts?*');
+  await navigate(bob.page, '/pages/list/index?kind=posts'); await field(bob.page, '查找知识与记录').waitFor();
+  done('Real title/body/tag search and opaque22-record pagination work; a separately labelled synthetic403 clears cached rows, and a second actual identity owns an independent session.');
+  assert.deepEqual(errors, []); assert.deepEqual(serverErrors, []); passed = true;
+} catch (error) {
+  failure = String(error.stack ?? error);
+  if (mainPage && !mainPage.isClosed()) {
+    try { failure += '\nActive page: ' + JSON.stringify({ route: new URL(mainPage.url()).hash, titles: await screen(mainPage).locator('.cp-title').allTextContents(), actions: await screen(mainPage).getByRole('button').allTextContents() });
+      await mainPage.screenshot({ path: path.join(evidence, 'failure.png'), fullPage: true, mask: [mainPage.locator('input[type="password"],input[maxlength="6"],.cp-secret,.cp-code')] }); } catch { /* Preserve original failure. */ }
+  }
+  for (const account of [fixture.alice, fixture.bob, fixture.administrator]) for (const key of ['password', 'mfa_secret']) if (account?.[key]) failure = failure.replaceAll(account[key], '[redacted]');
+  process.stderr.write(failure + '\n');
+} finally {
+  for (const context of contexts) { try { await closeOwned(context); } catch { cleanupErrors.push('owned context cleanup failed'); } }
+  if (browser) { try { await browser.close(); } catch { cleanupErrors.push('owned browser cleanup failed'); } }
+  const after = await digest(), closed = !browser || !browser.isConnected();
+  const result = { passed: passed && before === after && closed && !cleanupErrors.length && closedContexts.size === contexts.length, checked_at: new Date().toISOString(), source_sha256: before, source_after_sha256: after, source_unchanged: before === after, source_count: manifest.files.length, checks, layouts, recordings, screenshots, errors, server_errors: serverErrors, cleanup_errors: cleanupErrors, failure, owned_browser_closed: closed, browser_contexts_created: contexts.length, browser_contexts_closed: closedContexts.size, real_native_api: true, real_model: false, real_cloud: false, real_device: false, real_telegram_network: false, controlled_response_faults: ['incomplete committed post receipt', 'knowledge-list permission403', 'filtered body reference set'] };
+  await writeFile(path.join(evidence, 'result.json'), JSON.stringify(result, null, 2) + '\n'); console.log(JSON.stringify({ passed: result.passed, checks: checks.length, closed })); if (!result.passed) process.exitCode = 1;
+}

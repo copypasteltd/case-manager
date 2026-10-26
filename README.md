@@ -34,6 +34,12 @@ GIFs are lightweight previews, with modest acceleration for the longer clip. MP4
 
 移动 TG 入口：本人数字身份绑定、管理员准确群配置和完整历史。录屏仅展示核对后的配置与历史，不录制私聊能力或 MFA。Mobile TG access adds own-identity binding, exact channel configuration and complete history. The recording excludes private proof capabilities and MFA inputs.
 
+移动知识操作：准确附件 → 草稿修订 → 人工确认发布 → 历史恢复及修订讨论。Mobile knowledge: explicit attachments, draft revisions, confirmed publication, restoration and revision-bound discussion.
+
+![移动知识编辑与发布 / Mobile knowledge edit and publication](docs/media/gifs/mobile-knowledge-access.gif)
+
+[完整 MP4 / Full MP4](docs/media/videos/mobile-knowledge-access.mp4) · [使用、接口与约束 / Workflow, API and constraints](docs/development/83-mobile-knowledge-workflows.md) · [编辑页面 / Editor screenshot](docs/media/screenshots/mobile-knowledge-editor.png)
+
 ![移动 TG 入口与完整历史 / Mobile TG access and complete history](docs/media/gifs/mobile-telegram-access.gif)
 
 [TG 操作 MP4 / TG interaction MP4](docs/media/videos/mobile-telegram-access.mp4) · [方案和使用逻辑 / Protocol and workflow](docs/development/82-mobile-telegram-access.md) · [入口截图 / Channel screenshot](docs/media/screenshots/mobile-telegram-channel-config.png) · Taro H5
@@ -122,8 +128,16 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量82）：补齐移动TG本人绑定、取消／撤销、管理员准确群／话题／项目配置与完整历史。新167项移动测试、类型、两小程序各16页、9组实际页面流程和9项布局通过；两个所属上下文、临时服务和数据库均清理。当前Android开发APK为42,867,115字节，17项包检查通过，25项原生JVM测试本次实际执行。完整后端154顶层／984结果、Web 81与运行时39按完整未变来源准确复用。新增3张截图、4.9秒MP4及29帧GIF；仓库共29 PNG、8 MP4、8 GIF。23项最终来源核验及完整失败记录见[增量82验证](docs/quality/evidence/mobile-telegram/verification.md)。真实四端、TG／云／模型、容量及生产放行继续开放。
+当前功能基线（增量83）：补齐移动端项目日志、会议纪要、SOP和内部文章的完整手工工作流，包括公司／项目范围、Markdown、跟随／固定附件、正文修订、独立发布、历史恢复与修订讨论；同时修复Web和移动评论文字修改可能丢失隐藏原附件的问题。
 
-The current functional baseline (increment82) adds mobile own-identity binding/cancellation/revocation and exact administrator channel/project configuration with complete history. Fresh 167 mobile tests, types, both 16-page mini-program builds, nine actual UI/API flows and nine layouts passed; all owned contexts, temporary services and databases were cleaned. The fresh 42,867,115-byte debug APK passed 17 inspections, and 25 native JVM tests actually executed. Full backend 154/984, Web 81 and runtime 39 proofs are retained at identical complete sources. Three new screenshots, a 4.9-second MP4 and 29-frame GIF bring media totals to 29 PNGs, 8 MP4s and8 GIFs. See [increment82 verification](docs/quality/evidence/mobile-telegram/verification.md) for 23 final source checks and preserved failures. Real platforms/devices, TG/cloud/model, capacity and production acceptance remain open.
+本轮新执行完整后端155顶层／986结果、Web81、运行时39和移动178项检查，微信／抖音各16页编译、12组实际流程及9项布局通过。新Android开发APK为42,881,123字节、17项包检查通过；25项JVM结果本次按实际Gradle标记使用缓存。25项最终来源复核通过。
+
+新增3张截图、2.8秒MP4和17帧GIF；演示素材目录共32 PNG、9 MP4、9 GIF。旧TG采集按ec8c0fc的793份原Git blob保留准确历史来源。完整记录见[增量83验证](docs/quality/evidence/mobile-knowledge/verification.md)。真实四端／TG／云／模型、容量和生产放行继续开放。
+
+The current functional baseline (increment83) adds complete mobile workflows for project logs, meeting notes, SOPs and internal articles: company/project scope, safe Markdown, follow-current/fixed attachments, immutable revisions, separate publication, historical restoration and revision-bound discussion. Text-only comment edits across Web/mobile now preserve original server-side attachments.
+
+Fresh checks passed for the complete backend (155 top-level tests/986 results), Web (81), runtime (39), mobile (178), both 16-page mini-program builds, 12 actual flows and 9 layouts. The new 42,881,123-byte Android debug APK passed 17 inspections; 25 JVM results were reused from Gradle cache as explicitly recorded. All 25 final source checks passed.
+
+Three new screenshots, a 2.8-second MP4 and 17-frame GIF bring the media catalog to 32 PNGs, 9 MP4s and 9 GIFs. Earlier TG capture is bound to 793 original Git blobs at ec8c0fc. See [increment83 verification](docs/quality/evidence/mobile-knowledge/verification.md) for source bindings, cleanup and retained failures. Real devices/platforms, TG/cloud/model, capacity and production gates remain open.
 
 后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.

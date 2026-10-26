@@ -1,0 +1,44 @@
+{
+  "passed": false,
+  "retained_at": "2026-10-26T18:35:19.332078+00:00",
+  "failed_batch": 5,
+  "source_sha256": "a2aff2fe496acc86e254cc4cc928aca15df7b0f6e92f96af8bd325f771a1fe7e",
+  "failure_events": [
+    {
+      "Time": "2026-10-27T02:25:08.8312789+08:00",
+      "Action": "output",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectCollaborationIntegration",
+      "Output": "    server_integration_test.go:86: timeout: context deadline exceeded\n",
+      "OutputType": "error"
+    },
+    {
+      "Time": "2026-10-27T02:25:08.8312789+08:00",
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectCollaborationIntegration",
+      "Elapsed": 128.86
+    },
+    {
+      "Time": "2026-10-27T02:31:34.2632574+08:00",
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+      "Elapsed": 127.13
+    },
+    {
+      "Time": "2026-10-27T02:31:39.2554336+08:00",
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration",
+      "Elapsed": 140.6
+    },
+    {
+      "Time": "2026-10-27T02:31:39.2926427+08:00",
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Elapsed": 523.633
+    }
+  ],
+  "notes": "Native fixture cleanup/checkpoint deadlines occurred during concurrent native builds. Preserve exact failed evidence, then rerun failed batch and pending batches at unchanged source."
+}

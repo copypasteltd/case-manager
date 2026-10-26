@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-26T19:34:47.236140+00:00",
+  "file": "scripts/check_mobile_knowledge.mjs",
+  "before_sha256": "280b33bbdcaf157398e6f1039bbabdf9868301727705c120ced447a962562942",
+  "after_sha256": "33545ac7ede050676bb479d7387f234ac1fee567528ce429e0b1df34345daa70",
+  "retained_source": "checker-before.mjs.txt",
+  "reason": "Wait for the transition dialog to unmount and the actual resulting state to render before asserting archived controls; original API/UI behavior unchanged.",
+  "application_code_changed": false,
+  "source_manifest_sha256": "89a8395cbedc77655013ed104e832cce94c32748372b5f935d8656dfb87686ae",
+  "isolated_cleanup_passed": true
+}

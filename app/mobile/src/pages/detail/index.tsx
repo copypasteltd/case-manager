@@ -10,9 +10,13 @@ import { RequestSnapshot } from './snapshot';
 import { RequestActions } from '../business/request-actions';
 import { ProjectSetupEntry } from '../project/setup';
 import { UploadEntry } from '../../platform/upload-entry';
+import { KnowledgePage } from '../knowledge';
 
-type Detail = { kind: 'project'; item: Schemas['Project'] } | { kind: 'milestone'; item: Schemas['Milestone'] } | { kind: 'risk'; item: Schemas['Risk'] } | { kind: 'issue'; item: Schemas['Issue'] } | { kind: 'task'; item: Schemas['Task'] } | { kind: 'folder'; item: Schemas['Folder'] } | { kind: 'file'; item: Schemas['File']; versions: ResultPage<Schemas['FileVersion']>; pinned: boolean } | { kind: 'post'; item: Schemas['Post'] } | { kind: 'request'; item: Schemas['Request'] } | { kind: 'conversation'; item: Schemas['Conversation'] };
+type Detail = { kind: 'project'; item: Schemas['Project'] } | { kind: 'milestone'; item: Schemas['Milestone'] } | { kind: 'risk'; item: Schemas['Risk'] } | { kind: 'issue'; item: Schemas['Issue'] } | { kind: 'task'; item: Schemas['Task'] } | { kind: 'folder'; item: Schemas['Folder'] } | { kind: 'file'; item: Schemas['File']; versions: ResultPage<Schemas['FileVersion']>; pinned: boolean } | { kind: 'request'; item: Schemas['Request'] } | { kind: 'conversation'; item: Schemas['Conversation'] };
 export default function DetailPage() {
+  return useRouter().params.kind === 'post' ? <KnowledgePage /> : <RegularDetailPage />;
+}
+function RegularDetailPage() {
   const params = useRouter().params;
   const page = usePage<Detail>(async scope => {
     const id = identifier(params.id), options = { scope };
@@ -32,7 +36,6 @@ export default function DetailPage() {
         const versions = await client.request<ResultPage<Schemas['FileVersion']>>('/files/' + id + '/versions?limit=20', options);
         return { kind: 'file', item, versions, pinned: false };
       }
-      case 'post': return { kind: 'post', item: await client.request<Schemas['Post']>('/posts/' + id, options) };
       case 'request': return { kind: 'request', item: await client.request<Schemas['Request']>('/requests/' + id, options) };
       case 'conversation': return { kind: 'conversation', item: await client.request<Schemas['Conversation']>('/conversations/' + id, options) };
       default: throw new MobileError('INVALID_RESOURCE', '资料地址无效，请从列表重新打开。');
@@ -46,7 +49,6 @@ export default function DetailPage() {
     {value.kind === 'folder' && <Section title='目录内容'><Row title='查看子目录' onClick={() => browse('folders', { folder_id: value.item.id })} /><Row title='查看目录文件' onClick={() => browse('files', { folder_id: value.item.id })} /><UploadEntry folder={value.item} /></Section>}
     {value.kind === 'file' && !value.pinned && <UploadEntry file={value.item} />}
     {value.kind === 'file' && <><Section title={value.pinned ? '本次引用的固定版本' : '正式版本'}>{value.versions.items.length ? value.versions.items.map(version => <View key={version.id}><Fact label={'版本 ' + version.seq + (version.id === value.item.current_version_id ? ' · 当前' : ' · 历史')}><Text>{version.original_name ?? '原文件名未提供'}</Text><Text className='cp-muted cp-small'>{bytes(version.size_bytes)} · {date(version.created_at)}</Text><View className='cp-choice'><State value={version.availability} /><State value={version.scan_state} /></View><Text className='cp-muted cp-small'>SHA-256</Text><Text className='cp-code' selectable>{version.sha256}</Text><Action secondary onClick={() => readVersion(value.item.id, version.id)}>查阅这个版本的内容</Action>{version.replicas.map(replica => <View key={replica.id} className='cp-paragraph'><Text>{replica.provider === 'oss' ? 'OSS 原件' : 'R2 副本'} · </Text><State value={replica.state} /></View>)}</Fact></View>) : <Empty>此文件还没有正式版本。</Empty>}</Section>{value.versions.next_cursor && <Text className='cp-notice'>当前显示最近20个版本。</Text>}{value.pinned && <Action secondary onClick={() => go('file', value.item.id)}>查看文件记录与历史</Action>}</>}
-    {value.kind === 'post' && <><View className='cp-notice'><Text>{value.item.has_unpublished_changes ? '当前有未发布修改，请按你看到的修订核对。' : value.item.state === 'published' ? '当前为已发布内容。' : '当前为未发布草稿。'}</Text></View><Section title='内容'><View className='cp-pad'><Text className='cp-paragraph' selectable>{value.item.body || '暂无正文。'}</Text></View></Section></>}
     {value.kind === 'request' && <><RequestSnapshot request={value.item} me={page.result!.me} /><RequestActions key={value.item.id + ":" + value.item.version} request={value.item} me={page.result!.me} onCommitted={() => void page.reload()} /><Section title='审批顺序'>{value.item.steps.length ? value.item.steps.map(step => <View key={step.id} className='cp-pad'><Text className='cp-row-title'>{step.seq} · {step.title}</Text><Text className='cp-muted cp-small'>{step.assigned_user_name}{!step.assigned_user_active && ' · 账号已停用'}</Text><State value={step.state} />{step.decision_reason && <Text className='cp-paragraph'>{step.decision_reason}</Text>}{step.can_decide && <DecisionForm key={step.id + ':' + step.version} request={value.item} step={step} me={page.result!.me} onCommitted={() => void page.reload()} />}</View>) : <Empty>此申请尚未进入审批。</Empty>}</Section></>}
     {value.kind === 'conversation' && <><Section title='会话成员'>{value.item.members.map(member => <Fact key={member.user_id} label={member.is_creator ? '发起人' : '已明确加入'}><Text>{member.display_name}{!member.available && ' · 当前不可用'}</Text></Fact>)}</Section><Action onClick={() => go('conversation', value.item.id)}>打开会话消息与任务</Action></>}
   </>}<Action secondary onClick={() => void page.reload()} loading={page.loading}>刷新资料</Action></Page>;

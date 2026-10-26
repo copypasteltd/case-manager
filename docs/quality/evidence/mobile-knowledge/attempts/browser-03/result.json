@@ -1,0 +1,124 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T18:25:26.751Z",
+  "source_sha256": "c17d5d7c6dc00cdf0f25613c036a54196f9fee79a687b38b0edf2f12b2e2e8f5",
+  "source_after_sha256": "c17d5d7c6dc00cdf0f25613c036a54196f9fee79a687b38b0edf2f12b2e2e8f5",
+  "source_unchanged": true,
+  "source_count": 805,
+  "checks": [
+    "The real project meeting-note editor saves Unicode tags, safe Markdown and both follow-current/fixed historical attachments with corroborated immutable history.",
+    "Saving an already published record creates a different current body while retaining the original published pointer; no implicit publication occurs.",
+    "A second exact edit and explicit reason/acknowledgement publish complete through actual UI/API, recorded only after authentication.",
+    "Historical restoration copies the first body into a fourth immutable revision and preserves the separately published revision.",
+    "Comments bind the actual body revision, resolve a historical pin directly, and append immutable text-only edits without replacing original attachments."
+  ],
+  "layouts": [
+    {
+      "page": "knowledge-editor",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "knowledge-editor",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "knowledge-editor",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "knowledge-published",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "knowledge-published",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "knowledge-published",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "knowledge-comments-history",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "knowledge-comments-history",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "knowledge-comments-history",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-knowledge-edit-publish",
+      "frame_count": 13,
+      "duration_ms": 2827,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-knowledge-edit-publish/frames.json",
+      "manifest_sha256": "c95d885bc6c9603156d1da9521a12917de046ff3aca9bd8d9d3b3c51c1f1ae7b"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-editor.png",
+      "caption": "Synthetic mobile meeting-note editor with scope, tags, Markdown and explicit attachment modes.",
+      "sha256": "c2b3194ece78f4c7c21c7f8c5864e18a45a8c23e539dcf80cb7ec34d030bb010",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-published.png",
+      "caption": "Actual published knowledge view; immutable current and published body pointers agree.",
+      "sha256": "022ddec286fc89ac753c35a429e15463639a09c0e32ae177029431f34570b7bc",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-comments.png",
+      "caption": "Revision-bound discussion, fixed attachments and immutable comment history.",
+      "sha256": "313f44f99012a2d2251c7aeb178b7c5b27381fcf9136682aa1bcad0165a55758",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('香港项目 · 固定版本一').first() to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_knowledge.mjs:148:74\nActive page: {\"route\":\"#/pages/content/index?id=c42bf797-a6f9-441b-8cba-0f57fca07009&version=6eabfc60-c960-449e-9b46-d5b0f3348dd9\",\"titles\":[\"固定版本阅读.\"],\"actions\":[\"我的\",\"读取这个版本的内容\",\"返回文件资料\",\"刷新权限与资料\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "incomplete committed post receipt",
+    "knowledge-list permission403",
+    "filtered body reference set"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "c17d5d7c6dc00cdf0f25613c036a54196f9fee79a687b38b0edf2f12b2e2e8f5",
+  "source_sha256_after_build": "c17d5d7c6dc00cdf0f25613c036a54196f9fee79a687b38b0edf2f12b2e2e8f5",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

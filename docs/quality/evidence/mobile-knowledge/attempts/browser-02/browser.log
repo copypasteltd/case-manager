@@ -1,0 +1,12 @@
+Completed actual flow 1: The real project meeting-note editor saves Unicode tags, safe Markdown and both follow-current/fixed historical attachments with corroborated immutable history.
+Completed actual flow 2: Saving an already published record creates a different current body while retaining the original published pointer; no implicit publication occurs.
+Completed actual flow 3: A second exact edit and explicit reason/acknowledgement publish complete through actual UI/API, recorded only after authentication.
+Completed actual flow 4: Historical restoration copies the first body into a fourth immutable revision and preserves the separately published revision.
+Completed actual flow 5: Comments bind the actual body revision, resolve a historical pin directly, and append immutable text-only edits without replacing original attachments.
+locator.click: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-section').filter({ has: locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('知识附件 · 当前可见 2', { exact: true }) }).getByRole('button', { name: '查阅此附件内容', exact: true }).nth(1)[22m
+
+    at D:\dev\copypasted\内部管理\app\scripts\check_mobile_knowledge.mjs:147:76
+Active page: {"route":"#/pages/detail/index?kind=post&id=d7905245-3cc0-49e5-ae99-9d1043db63df","titles":["移动知识验收 · 项目会议."],"actions":["我的","查阅此附件内容","查阅此附件内容","编辑知识正文","发布当前修订","归档知识","退回草稿","查看知识历史","查阅此附件内容","修改我的评论","查看评论历史","重新读取当前讨论","为此正文新增评论","评论修订 22026-10-27 02:18 · 香港 · alice↗","评论修订 12026-10-27 02:18 · 香港 · alice↗","查阅此附件内容","收起评论历史","重新读取最新知识资料"]}
+{"passed":false,"checks":5,"closed":true}

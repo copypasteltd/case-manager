@@ -106,7 +106,23 @@ Own-identity challenge/confirmation/revocation are checked against the real loca
 
 增量81状态桥接画面属于提交 `9c710a0f4c785a02539441ec1611bc6678f0050d`；本轮移动源码变化后，以该提交和原来源清单解释旧录制，不将旧画面宣称为新源码采集。The increment81 status capture is historical at that commit and its original manifest; this mobile change does not relabel it as a fresh capture.
 
-## 9. 页面截图 / Screenshots
+## 9. 移动知识编辑、发布与讨论 / Mobile knowledge, publication and discussion
+
+真实操作覆盖项目日志、会议纪要、SOP、内部文章，公司／项目范围、Markdown、跟随／固定附件、正文修订、明确发布、历史恢复、评论和异常停止。画面来自共享 Taro H5 和原生 Go／PostgreSQL 隔离夹具，不代表手机真机录制。
+
+Actual shared Taro H5 interactions use the native isolated Go/PostgreSQL fixture. The workflow covers four knowledge types, explicit attachment modes, immutable body/comment revisions, publication/restoration and conflict handling. No real-device capture or external cloud/model operation is claimed.
+
+![移动知识编辑与发布 / Mobile knowledge edit and publication](gifs/mobile-knowledge-access.gif)
+
+[完整 MP4 / Full MP4](videos/mobile-knowledge-access.mp4) · 390 × 900 · 无声 / silent · [方案与操作 / Workflow](../development/83-mobile-knowledge-workflows.md) · [准确验证 / Evidence](../quality/evidence/mobile-knowledge/verification.md)
+
+| 截图 / Screenshot | 内容 / Contents |
+| --- | --- |
+| [编辑 / Editor](screenshots/mobile-knowledge-editor.png) | 类型、分类、摘要、标签、正文和准确引用 / Type, classification, summary, tags, body and references |
+| [发布 / Published](screenshots/mobile-knowledge-published.png) | 实际当前／已发布修订及正文 / Actual current/published revisions and body |
+| [评论 / Discussion](screenshots/mobile-knowledge-comments.png) | 正文上下文、固定版本附件、不可变评论历史 / Body context, fixed pins and immutable comment history |
+
+## 10. 页面截图 / Screenshots
 
 | 页面 / Page | 图片 / Image | 范围 / Scope |
 | --- | --- | --- |
@@ -145,10 +161,14 @@ Own-identity challenge/confirmation/revocation are checked against the real loca
 
 The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
 
-## 10. 来源、编码与复现 / Provenance, encoding and reproduction
+## 11. 来源、编码与复现 / Provenance, encoding and reproduction
 
 | 记录 / Record | 内容 / Contents |
 | --- | --- |
+| [知识来源清单](../quality/evidence/mobile-knowledge-browser/source-manifest.json)／[实际结果](../quality/evidence/mobile-knowledge-browser/result.json) | 805份完整来源，12组实际流程、9项布局、所属浏览器与原生夹具清理 /805 complete sources,12 actual flows,9 layouts and owned-resource cleanup |
+| [知识媒体](../quality/evidence/mobile-knowledge/media.json)／[原始帧清单](../quality/evidence/mobile-knowledge/recording-frames.json)／[视觉抽样](../quality/evidence/mobile-knowledge/visual-review.json) |13张实际JPEG源帧／2656ms，2.8秒MP4及17帧GIF；实际截图、来源和输出摘要 /13 real source frames,2.8-second MP4,17-frame GIF and inspected actual outputs |
+| [本轮来源沿革](../quality/evidence/mobile-knowledge/source-normalization.json)／[首轮5份媒体](../quality/evidence/mobile-knowledge/attempts/before-lf-restoration/artifact-map.json) | 恢复四份Go文件原LF并修正检查器等待；原完整来源及5份旧媒体可准确重构、当前页面重新采集 / Four original Go LF conventions and one checker wait corrected; complete prior source reconstruction and five retained exact media, with fresh current capture |
+| [旧TG来源复算](../quality/evidence/mobile-knowledge/historical-telegram-capture.json) | 按ec8c0fc的793份原Git blob还原旧采集；不将旧画面冒充当前源码 /793 historical Git blobs; no current-source claim for old media |
 | [result.json](../quality/evidence/repository-showcase/result.json) | 完整源码前后摘要、两个阶段、原生夹具与临时服务清理 / Source stability, phases and native fixture/server cleanup |
 | [web.json](../quality/evidence/repository-showcase/web.json)、[mobile.json](../quality/evidence/repository-showcase/mobile.json) | 实际 HTTP 方法／路径／状态、截图摘要、浏览器关闭 / Actual HTTP method/path/status, image digests and browser closure |
 | [media.json](../quality/evidence/repository-showcase/media.json) | 逐帧清单摘要、输出摘要／体积、编码器版本、ffprobe结果 / Frame-manifest digests, output hashes/sizes, encoder version and probes |
@@ -171,7 +191,7 @@ python scripts/verify_repository_publication_development.py
 python scripts/verify_repository_publication.py
 ```
 
-任务、结项、变更复现须分别检出增量78、79、80的历史提交；以下为80的历史变更命令，当前81状态复现见后续步骤。所有采集共用端口与原生夹具，须先后运行：
+任务、结项、变更复现须分别检出增量78、79、80的历史提交；以下为80的历史变更命令，81状态历史复现见后续步骤，当前83知识命令见本节末尾。所有采集共用端口与原生夹具，须先后运行：
 
 Check out increments78/79/80 for historical task/closeout/change captures. The following change commands belong to80; current81 status reproduction follows. All captures share a port/fixture and must run sequentially:
 
@@ -183,7 +203,7 @@ python scripts/encode_mobile_changes_media.py
 python scripts/verify_mobile_changes_development.py
 ```
 
-当前81在原生工具、测试库、Edge及桥接二进制准备后，从`app/`顺序运行；先归档此前证据，再重新生成独立来源和实际视觉查看。完整构建／复核命令见[验证记录](../quality/evidence/status-bridge/verification.md)。
+历史81在原生工具、测试库、Edge及桥接二进制准备后，从`app/`顺序运行；先归档此前证据，再重新生成独立来源和实际视觉查看。完整构建／复核命令见[验证记录](../quality/evidence/status-bridge/verification.md)。
 
 For81, prepare the native toolchain/test database/Edge/bridge binary, archive previous evidence, then run sequentially from `app/`. A rebuild needs new source bindings and actual visual review.
 
@@ -201,3 +221,16 @@ Capture owns an isolated database and uses local port 5189 sequentially. Its cle
 手动视觉检查是另一个步骤，脚本重建后须实际查看新图再更新记录；不能仅沿用上次“看过”的结论。完整凭据检查基于采集前置条件、数据隔离、提交扫描和实际画面检查；并不宣称对所有像素完成自动 OCR 审计。后续受影响的功能截图、录屏、GIF 与中英文说明应同步更新，见[维护约定](../contributing.md)。
 
 Manual visual inspection is a separate step: inspect rebuilt media before updating its review record. Credential exclusion relies on capture preconditions, isolation, commit scanning and actual visual inspection; this is not a claim of exhaustive pixel OCR. Update affected media and both language guides together with future changes; see [maintenance rules](../contributing.md).
+
+### 当前83复现 / Current increment83 reproduction
+
+从`app/`顺序执行，先保留此前完成或失败的证据。需原生测试数据库、Node工具链和Edge；每次重新采集均要重新核对来源并实际查看新输出。Both capture and encoding require native tooling; archive existing evidence before a new run and inspect the resulting media again.
+
+```powershell
+$env:PYTHONUTF8='1'
+python scripts/run_mobile_knowledge_browser.py
+python scripts/freeze_mobile_knowledge_evidence.py --capture-only
+python scripts/encode_mobile_knowledge_media.py
+```
+
+本轮输出为3张实际页面截图、2.8秒无声MP4和17帧GIF；源为13张JPEG／2656ms。来源为805份当前源码及采集帮助程序；实际检查12组流程及9项布局，两个上下文、临时服务与隔离夹具都已关闭。旧媒体保留原提交来源。Current output: three actual screenshots, a2.8-second silent MP4 and17-frame GIF from13 real JPEGs/2656ms. Twelve flows and nine layouts bind805 complete sources; both contexts, the temporary server and isolated fixture closed. Earlier media retains its historical source attribution.
