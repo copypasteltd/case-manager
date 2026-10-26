@@ -1,9 +1,9 @@
 ---
 name: project-update
-description: 创建里程碑或交付草稿，更新项目、任务、里程碑与交付资料；固定准确授权、基础版本及真实业务回执。
+description: 创建里程碑、交付草稿、风险或问题，更新项目、任务、里程碑、交付及风险问题资料；固定准确授权、基础版本及真实业务回执。
 ---
 
-创建里程碑或交付草稿，更新项目、任务、里程碑与交付资料；保留基础版本及验收依据。
+创建里程碑、交付草稿、风险或问题，更新项目、任务、里程碑、交付及风险问题资料；保留基础版本及验收依据。
 
 执行前遵守[共同业务边界](../execution-boundaries.md)。本技能当前为未发布源码包，实际可用工具与授权以服务端登记为准。
 
@@ -38,3 +38,13 @@ description: 创建里程碑或交付草稿，更新项目、任务、里程碑�
 `create_deliverable` 消费完整的本次 `authorized_mutation`：`id`为父项目ID，`expected_version`为父项目版本，另须完整固定`name`、`acceptance_criteria`、`owner_id`、明确的`milestone_id`或null以及`reason`。员工确认发送前的选择和预览不执行创建；普通消息、旧历史及模型推断均不能补足缺项。沿用原项目阶段、`deliverable.create`权限、有效项目成员、同项目开放里程碑、共同AI受众、原登录和取消约束。
 
 调用原交付创建命令，只建立协议1的草稿；不接收状态、正式修订、文件或验收参数。新ID由业务分配，实际回执仅含新`id`、`version:1`和`revision_id:null`，与父项目基础版本分别核对。重试复用同一原操作及新ID，不能再建第二个交付。只有本次真实创建的交付可后续受控读取；要更新其资料须由员工另发针对新ID和版本的准确请求。提交、固定文件和验收继续在原交付页面由人员办理。
+
+## 项目风险与问题（1.5.0）
+
+`create_risk`、`create_issue` 使用父项目的准确 `id` 与 `expected_version`；`update_risk`、`update_issue` 使用事项自身的准确 ID 与当前版本。四个工具都须完整固定 `title`、`description`、`owner_id`、`severity`、明确的 `due_at` 或 null、`reason`。风险还须完整固定明确的 `probability` 或 null 和 `mitigation`；问题须完整固定 `resolution`。未改动字段也属于本次员工核对的完整资料，不得由模型从历史或新版本补写。仅 `project-update` 包可调用，工具不能补建负责人、项目或外部文件。
+
+截止时刻须含时区，最多六位有效小数，超出数据库精度应停止；null 明确清空。概率只能为 low/medium/high 或 null，严重程度为 low/medium/high/critical。保持原状态时省略 `state`；显式指定状态时严格遵守原状态机：风险 open→mitigating/closed/realized、mitigating→closed/realized、closed→open；问题 open→investigating/resolved、investigating→resolved、resolved→closed/investigating、closed→open。相同状态不能伪装转换，已发生风险只读，关闭事项须先明确重新打开；解决或关闭问题须有非空的解决说明。
+
+调用原业务创建／更新命令，复核有效项目成员、项目阶段、当前共同 AI 受众、原登录与取消状态。创建得到由业务分配的新 ID、version:1、state:open；修改保留原创建人并产生基础版本加一。创建不等于修改父项目版本。风险显式转 realized 会在同一原业务事务创建一条关联问题，必须同时具有 risk.update 与 issue.create 权限，并在员工发送前明确告知并确认这一影响；问题的 ID 不得由模型预设。审计、outbox、幂等操作和运行提交回执一起提交，任一失败时风险与新问题全部回滚；准确重试只能复用同一结果。
+
+读取只允许本次授权事项、实际新建事项及本次风险转问题真正生成的关联问题，仍逐次复核全体当前受众。引用固定本次 agent_mutation 来源，不开放项目内其他事项枚举。关联问题版本改变后停止后续执行，保留此前真实提交历史，不能自动刷新版本或再创建替代问题。只有本次工具真实 committed 回执、业务操作 ID、完整实际结果和准确资源引用都匹配，才能声明完成；普通会话、工具描述或模型文本均不能代替该证据。八个技能继续保持 draft，受控本地夹具不代表真实模型、Telegram 或生产已启用。

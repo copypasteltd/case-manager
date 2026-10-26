@@ -33,7 +33,7 @@ func toolDefinitions(skill string) []any {
 		props["plan_states"] = map[string]any{"type": "array", "maxItems": 4, "uniqueItems": true, "items": str(map[string]any{"enum": []string{"proposed", "approved", "committed", "revoked"}})}
 	}
 	if skill == "project-update" {
-		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "deliverable", "milestone", "agent_mutation"}})
+		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "deliverable", "milestone", "risk", "issue", "agent_mutation"}})
 	}
 	if skill == "information-organize" {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_organization_plan"}})
@@ -83,6 +83,31 @@ func toolDefinitions(skill string) []any {
 		{"propose_project", "在发起人的公司私密会话中固定项目创建计划；返回待本人批准的计划，不创建项目。", propose},
 		{"create_project", "仅消费本人已通过两步验证批准的准确计划；原子创建项目并返回真实业务操作回执。不能批准计划。", create}}
 	if skill == "project-update" {
+		for _, tool := range []string{"create_risk", "update_risk", "create_issue", "update_issue"} {
+			risk, creating := tool == "create_risk" || tool == "update_risk", tool == "create_risk" || tool == "create_issue"
+			props := map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name,
+				"description": str(map[string]any{"maxLength": 20000}), "owner_id": uuid,
+				"severity": str(map[string]any{"enum": []string{"low", "medium", "high", "critical"}}), "due_at": nullable(str(map[string]any{"format": "date-time"}))}
+			required := []string{"id", "expected_version", "reason", "title", "description", "owner_id", "severity", "due_at"}
+			states := []string{"open", "investigating", "resolved", "closed"}
+			if risk {
+				props["probability"] = nullable(str(map[string]any{"enum": []string{"low", "medium", "high"}}))
+				props["mitigation"] = str(map[string]any{"maxLength": 20000})
+				required = append(required, "probability", "mitigation")
+				states = []string{"open", "mitigating", "closed", "realized"}
+			} else {
+				props["resolution"] = str(map[string]any{"maxLength": 20000})
+				required = append(required, "resolution")
+			}
+			if !creating {
+				props["state"] = str(map[string]any{"enum": states})
+			}
+			definitions = append(definitions, struct {
+				name, description string
+				schema            any
+			}{tool,
+				"仅执行完整 authorized_mutation：创建使用父项目版本，修改使用事项版本；状态省略时不变，明确风险发生会原子创建一个关联问题。不能补齐字段、改版本或自动解决事项。", schema(props, required)})
+		}
 		definitions = append(definitions, struct {
 			name, description string
 			schema            any
@@ -229,7 +254,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"propose_project", "create_project", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"propose_project", "create_project", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T21:48:44.954Z",
+  "finished_at": "2026-10-26T21:48:59.549Z",
+  "checks": [
+    "Actual MFA login reads a committed risk creation receipt with a new child ID and version one."
+  ],
+  "source_count": 641,
+  "source_sha256": "16dbbe7c55972d4cbfa7b06a403b1773290fb897d5decbbb122984b85e36d923",
+  "source_after_sha256": "16dbbe7c55972d4cbfa7b06a403b1773290fb897d5decbbb122984b85e36d923",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Do not record a password, MFA code or enrollment/recovery secret.\n\n1 !== 0\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "70b212794b370e2b75de64b441dfbaca320936d45d0b1a240d6155c8565ce3e9",
+  "build_source_after_sha256": "70b212794b370e2b75de64b441dfbaca320936d45d0b1a240d6155c8565ce3e9",
+  "build_source_unchanged": true
+}

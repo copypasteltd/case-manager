@@ -44039,6 +44039,10 @@
               "project",
               "task",
               "post",
+              "milestone",
+              "deliverable",
+              "risk",
+              "issue",
               "file",
               "service",
               "agent_plan",
@@ -44237,6 +44241,53 @@
               "achieve",
               "miss"
             ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "probability": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mitigation": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "resolution": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "open",
+              "mitigating",
+              "realized",
+              "investigating",
+              "resolved",
+              "closed"
+            ]
           }
         },
         "additionalProperties": false,
@@ -44252,6 +44303,10 @@
           "tool": {
             "type": "string",
             "enum": [
+              "create_risk",
+              "update_risk",
+              "create_issue",
+              "update_issue",
               "create_deliverable",
               "update_deliverable",
               "create_milestone",
@@ -44283,6 +44338,10 @@
           "tool": {
             "type": "string",
             "enum": [
+              "create_risk",
+              "update_risk",
+              "create_issue",
+              "update_issue",
               "create_deliverable",
               "update_deliverable",
               "create_milestone",
@@ -44300,7 +44359,9 @@
               "project",
               "task",
               "milestone",
-              "deliverable"
+              "deliverable",
+              "risk",
+              "issue"
             ]
           },
           "resource_id": {
@@ -57501,15 +57562,29 @@
             ]
           },
           "due_at": {
-            "type": "string",
-            "format": "date-time"
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "probability": {
-            "type": "string",
-            "enum": [
-              "low",
-              "medium",
-              "high"
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "mitigation": {
@@ -57698,8 +57773,15 @@
             ]
           },
           "due_at": {
-            "type": "string",
-            "format": "date-time"
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "resolution": {
             "type": "string",

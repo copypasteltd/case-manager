@@ -127,6 +127,8 @@ Employees can open **Telegram access** from the mobile workspace: choose a speci
 
 Administrators configure the exact chat/topic, company or visible-project scope, complete allowed/default tasks and stage-link notifications on the same page. New channels start paused and locations are immutable. Every save corroborates the complete receipt and immutable history; conflicts or uncertain receipts preserve input and block retries. See the [mobile TG protocol and usage guide](development/82-mobile-telegram-access.md).
 
+The secretary can now create/update complete project risks and issues, explicitly set/clear nullable date/probability fields, and use the original state machines. Realizing a risk atomically creates a linked issue and requires both business permissions and explicit confirmation. Creation binds the parent version; updates bind the child version. A preview does not execute; sending fixes authority, and only a genuine receipt establishes completion. See [secretary concern workflows](development/84-secretary-project-concerns.md).
+
 ### Service status
 
 Service pages show observation time, validity, maintenance and incidents. Missing or stale observations remain unknown/stale; maintenance does not erase incident history. Real host probes and backup-failure events must have genuine sources before production status can be asserted.
@@ -244,11 +246,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Fresh 155 top-level/986 results/894 leaf scenarios, eight batches passed | Failed cleanup in batch5 retained and rerun at unchanged source; complete current Go/SQL/contract coverage |
-| Runtime / Web | Fresh 39 /81 tests and builds passed | Both full checks rerun after shared-contract changes; no real model execution |
-| Taro | Fresh 178 tests/types and16 pages per mini-program | Increment83: 12 actual knowledge flows, 9 layouts and 805 complete capture sources; H5 is not device acceptance |
-| Android | Fresh 42,881,123-byte APK, 17 inspections; 25 JVM results reused from Gradle cache | Exact four XML results/task log retained; no new JVM execution claim, device or release acceptance |
-| Media catalog | 32 PNGs, 9 MP4s, 9 GIFs; three knowledge images,2.8-second MP4 and 17-frame GIF added | Actual synthetic API/browser; 793 historical TG sources reconstructed from Git; no real cloud/model/TG delivery |
+| Go / PostgreSQL | Fresh 156 top-level/1,001 results/908 leaf scenarios, eight batches, 70 migrations | Fourteen new secretary concern scenarios; failed attempts retained; complete current Go/SQL/contract binding |
+| Runtime / Web | Fresh 43 /88 tests and builds passed | Four new tools belong only to project-update 1.5.0; all eight Skills remain draft; no real model execution |
+| Taro | Fresh 183 tests/types and 16 pages per mini-program | Eight actual flows and three layouts per Web/Taro client; complete metadata, realization confirmation, exact send/retry/cancel |
+| Android | Fresh 42,885,880-byte APK, 17 inspections;25 JVM results from Gradle cache | Exact four XML results and task log retained; no new JVM execution or device acceptance claim |
+| Media catalog |36 PNGs, 11 MP4s, 11 GIFs; four new concern screenshots and two actual Web/mobile recording pairs | Actual isolated API/browser;805 increment83 capture sources reconstructed from Git; no real cloud/model/TG delivery |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

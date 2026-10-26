@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.test.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "outDir": "../.local/mobile-concern-tests"
+  },
+  "include": [
+    "src/platform/concern-mutation.test.ts"
+  ]
+}

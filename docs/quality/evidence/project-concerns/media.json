@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-26T22:41:30.292905+00:00",
+  "encoder_script_sha256": "b880587d8ff213e41b908643214716587d167b19eac144f232e714a218b2262f",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "ab37e62742778b4580210ff8ec34f9d6fa70aeb88c8b9f3e4d4e65d9a4be5e1e",
+      "build_source_sha256": "13e210075540a94db51bd72aca2a1f8fcb215a0ad28b61063d845e9d95b6f785",
+      "capture_manifest": "docs/quality/evidence/project-concerns/web-capture-manifest.json",
+      "capture_manifest_sha256": "278713f14c83d99cd0a0aaf3defcaeb894025d2cf86440aa8d7f9a581c072c65",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 1853,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "20",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-concerns-web.mp4",
+          "sha256": "be2e1d3beb4727157b990740d9384503e18c5214dfdc621de919d512d4214359",
+          "bytes": 137932
+        },
+        {
+          "file": "docs/media/gifs/secretary-concerns-web.gif",
+          "sha256": "59efa5aa3fe40ddb5bcf060556ccc751a9b39fb194b4a5fb85bea9360f8f08cd",
+          "bytes": 231224
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "7ce3387d670d205a24852c288b02be649db44d62c6732390edad00b6c719ae11",
+      "build_source_sha256": "13e210075540a94db51bd72aca2a1f8fcb215a0ad28b61063d845e9d95b6f785",
+      "capture_manifest": "docs/quality/evidence/project-concerns/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "e815f190923f29065be5a240a4a555a23600007d865dc9d49334fc19f5fe7b19",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 1833,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "20",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-concerns-mobile.mp4",
+          "sha256": "df0dd36c09af92fab37087e599013a7be21250cd576c84eabad9cb69e270366b",
+          "bytes": 72550
+        },
+        {
+          "file": "docs/media/gifs/secretary-concerns-mobile.gif",
+          "sha256": "d00727d2784cf67a078d2ba5edf7a8c05b4f82bfdb9d16e33d66331a5c6ce209",
+          "bytes": 187069
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

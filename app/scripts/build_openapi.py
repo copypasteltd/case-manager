@@ -596,16 +596,19 @@ add("NotificationFailure", notification_failure, tuple(notification_failure))
 add("RuntimeProfile", profile, tuple(profile))
 add("RuntimeOptions", {"available": {"type": "boolean"}, "reason": nullable(NAME),
     "profiles": array(ref("RuntimeProfile"), maxItems=8)}, ("available", "reason", "profiles"))
-source_snapshot = {"type": enum("project", "task", "post", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_oa_request", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
+source_snapshot = {"type": enum("project", "task", "post", "milestone", "deliverable", "risk", "issue", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_oa_request", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
     "resource_version": VERSION, "sha256": HASH}
 add("AgentSourceSnapshot", source_snapshot, ("type", "id", "resource_version", "sha256"))
 mutation_arguments = {"id": ID, **EXPECTED, "reason": NAME, "name": NAME, "scope": TEXT, "type": NAME,
     "start_date": nullable(DATE), "due_date": nullable(DATE), "title": NAME, "body": TEXT,
     "priority": enum("low", "normal", "high", "urgent"), "assignee_id": nullable(ID), "parent_id": nullable(ID), "milestone_id": nullable(ID),
     "start_at": nullable(TIME), "due_at": nullable(TIME), "owner_id": ID, "acceptance_criteria": {"type": "string", "minLength": 1, "maxLength": 20000}, "action": enum("start", "review", "return", "complete", "block", "resume", "cancel", "reopen", "activate", "hold", "close", "achieve", "miss")}
+mutation_arguments.update({"description":TEXT,"severity":enum("low","medium","high","critical"),
+    "probability":nullable(enum("low","medium","high")),"mitigation":TEXT,"resolution":TEXT,
+    "state":enum("open","mitigating","realized","investigating","resolved","closed")})
 add("AgentMutationArguments", mutation_arguments, ("id", "expected_version", "reason"))
-add("AgentMutationInput", {"tool": enum("create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "arguments": ref("AgentMutationArguments")}, ("tool", "arguments"))
-mutation_view = {"run_id": ID, "tool": enum("create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "resource_type": enum("project", "task", "milestone", "deliverable"),
+add("AgentMutationInput", {"tool": enum("create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "arguments": ref("AgentMutationArguments")}, ("tool", "arguments"))
+mutation_view = {"run_id": ID, "tool": enum("create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "resource_type": enum("project", "task", "milestone", "deliverable", "risk", "issue"),
     "resource_id": ID, "base_version": VERSION, "intent_sha256": HASH, "arguments": ref("AgentMutationArguments"),
     "before": {"type": "object", "additionalProperties": True}, "status": enum("authorized", "committed"),
     "operation_id": nullable(ID), "result_version": nullable(VERSION), "result": nullable({"type": "object", "additionalProperties": True})}
@@ -1121,6 +1124,9 @@ for entity, states in (("Risk", ("open", "mitigating", "closed", "realized")),
         fields["resolution"] = TEXT
     add(entity + "Create", fields, ("title", "description", "owner_id", "severity"))
     add(entity + "Patch", {**EXPECTED, **fields, "state": enum(*states), "reason": NAME}, ("expected_version",))
+    SCHEMAS[entity + "Patch"]["properties"]["due_at"] = nullable(TIME)
+    if entity == "Risk":
+        SCHEMAS[entity + "Patch"]["properties"]["probability"] = nullable(enum("low", "medium", "high"))
     output_fields = {**RECORD, **fields, "project_id": ID, "creator_id": ID, "state": enum(*states)}
     if entity == "Risk":
         output_fields["issue_id"] = ID

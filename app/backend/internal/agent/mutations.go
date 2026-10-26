@@ -47,7 +47,7 @@ type mutationArguments struct {
 }
 
 func mutationTool(tool string) bool {
-	return slices.Contains([]string{"create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"}, tool)
+	return slices.Contains([]string{"create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"}, tool)
 }
 
 // Keep the original field mask, including absent versus explicit null dates.
@@ -68,6 +68,9 @@ func parseMutation(in MutationInput) (mutationArguments, string, json.RawMessage
 	rawBase, _ := json.Marshal(map[string]json.RawMessage{"id": fields["id"], "reason": fields["reason"], "expected_version": fields["expected_version"]})
 	if strictArguments(rawBase, &base) != nil || !core.ValidID(base.ID) || base.ID != strings.ToLower(base.ID) || core.RequireVersion(base.ExpectedVersion) != nil || core.Name(base.Reason) != nil {
 		return base, "", nil, core.Invalid("mutation", "请核对对象、基础版本和更新原因")
+	}
+	if concernMutationTool(in.Tool) {
+		return parseConcernMutation(in.Tool, base, canonical, fields)
 	}
 	allowed := []string{"id", "expected_version", "reason"}
 	kind := "task"
@@ -212,6 +215,9 @@ func mutationBefore(ctx context.Context, tx pgx.Tx, a core.Actor, kind, id strin
 	if kind == "deliverable" {
 		query = `SELECT jsonb_build_object('id',id,'version',version,'project_id',project_id,'name',name,'acceptance_criteria',acceptance_criteria,'owner_id',owner_id,'milestone_id',milestone_id,'state',state,'protocol_version',protocol_version,'current_revision_id',current_revision_id) FROM deliverables WHERE org_id=$1 AND id=$2`
 	}
+	if kind == "risk" || kind == "issue" {
+		query = "SELECT to_jsonb(r)-'org_id' FROM " + kind + "s r WHERE r.org_id=$1 AND r.id=$2"
+	}
 	err := tx.QueryRow(ctx, query, a.OrgID, id).Scan(&raw)
 	return raw, platform.DatabaseError(err)
 }
@@ -221,6 +227,13 @@ func mutationAudience(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 		return contextDocument{}, core.Missing()
 	}
 	kind, id := m.ResourceType, m.ResourceID
+	if concernCreationTool(m.Tool) && m.OperationID != nil {
+		var created project.Concern
+		if json.Unmarshal(m.Result, &created) != nil || !core.ValidID(created.ID) || created.ProjectID != m.ProjectID {
+			return contextDocument{}, runtimeFailure("MUTATION_RECEIPT_INVALID")
+		}
+		kind, id = strings.TrimPrefix(m.Tool, "create_"), created.ID
+	}
 	if m.Tool == "create_milestone" && m.OperationID != nil {
 		var created project.Milestone
 		if json.Unmarshal(m.Result, &created) != nil || !core.ValidID(created.ID) || created.ProjectID != m.ProjectID {
@@ -242,6 +255,15 @@ func mutationAudience(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 	if err = resourceAudience(ctx, tx, a, c, doc, members); err != nil {
 		return doc, err
 	}
+	if child := mutationRealizedIssue(&m); child != "" {
+		linked, e := contextDocumentRead(ctx, tx, a, c, ContextSource{Type: "issue", ID: child}, members)
+		if e != nil {
+			return doc, e
+		}
+		if e = resourceAudience(ctx, tx, a, c, linked, members); e != nil {
+			return doc, e
+		}
+	}
 	return doc, nil
 }
 
@@ -250,6 +272,13 @@ func mutationTargets(m *mutationRecord, kind, id string) bool {
 		return false
 	}
 	if m.ResourceType == kind && m.ResourceID == id {
+		return true
+	}
+	if concernCreationTool(m.Tool) && m.OperationID != nil && kind == strings.TrimPrefix(m.Tool, "create_") {
+		var created project.Concern
+		return json.Unmarshal(m.Result, &created) == nil && created.ID == id && created.ProjectID == m.ProjectID
+	}
+	if kind == "issue" && mutationRealizedIssue(m) == id {
 		return true
 	}
 	if m.Tool == "create_milestone" && m.OperationID != nil && kind == "milestone" {
@@ -295,6 +324,11 @@ func prepareMutation(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 			return nil, platform.DatabaseError(err)
 		}
 	}
+	if kind == "risk" || kind == "issue" {
+		if err = tx.QueryRow(ctx, "SELECT id FROM "+kind+"s WHERE org_id=$1 AND id=$2 FOR SHARE", a.OrgID, base.ID).Scan(&locked); err != nil {
+			return nil, platform.DatabaseError(err)
+		}
+	}
 	ai := a
 	ai.RunID = runID
 	m := mutationRecord{MutationView: MutationView{RunID: runID, Tool: in.Tool, ResourceType: kind, ResourceID: base.ID, BaseVersion: base.ExpectedVersion, Arguments: args, Status: "authorized"}, OrgID: a.OrgID, ActorID: a.UserID, ConversationID: c.ID, ProjectID: *c.ProjectID}
@@ -336,7 +370,7 @@ func authorizeMutation(ctx context.Context, tx pgx.Tx, a core.Actor, doc context
 	if m.Tool == "update_deliverable" {
 		action = "deliverable.create"
 	}
-	if m.Tool == "create_milestone" || m.Tool == "create_deliverable" {
+	if m.Tool == "create_milestone" || m.Tool == "create_deliverable" || concernCreationTool(m.Tool) {
 		// Authorize against the parent on every attempt, including replay. A
 		// created child is read separately with the whole current audience.
 		parent, err := contextDocumentRead(ctx, tx, a, Conversation{ProjectID: &m.ProjectID}, ContextSource{Type: "project", ID: m.ProjectID}, nil)
@@ -346,6 +380,9 @@ func authorizeMutation(ctx context.Context, tx pgx.Tx, a core.Actor, doc context
 		doc, action = parent, "milestone.create"
 		if m.Tool == "create_deliverable" {
 			action = "deliverable.create"
+		}
+		if concernCreationTool(m.Tool) {
+			action = strings.TrimPrefix(m.Tool, "create_") + ".create"
 		}
 	}
 	var args map[string]json.RawMessage
@@ -375,6 +412,20 @@ func authorizeMutation(ctx context.Context, tx pgx.Tx, a core.Actor, doc context
 		_ = json.Unmarshal(args["action"], &name)
 		if name == "reopen" {
 			action = "project.reopen"
+		}
+	}
+	if m.Tool == "update_risk" {
+		var state string
+		_ = json.Unmarshal(args["state"], &state)
+		if state == "realized" {
+			parentDoc, e := contextDocumentRead(ctx, tx, a, Conversation{ProjectID: &m.ProjectID}, ContextSource{Type: "project", ID: m.ProjectID}, nil)
+			if e != nil {
+				return e
+			}
+			parent := authz.Resource{Type: "project", ID: m.ProjectID, OwnerID: &parentDoc.Creator, ProjectID: &m.ProjectID, Classification: parentDoc.Class}
+			if err := authz.Require(ctx, tx, a, "issue.create", parent); err != nil {
+				return err
+			}
 		}
 	}
 	resource := authz.Resource{Type: doc.Type, ID: doc.ID, OwnerID: &doc.Creator, ProjectID: doc.ProjectID, Classification: doc.Class}
@@ -456,6 +507,15 @@ func executionMutationState(ctx context.Context, tx pgx.Tx, st executionState) (
 	if version != doc.ResourceVersion || hash != want {
 		return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
 	}
+	if child := mutationRealizedIssue(m); child != "" {
+		linked, e := contextDocumentRead(ctx, tx, ai, st.Conversation, ContextSource{Type: "issue", ID: child}, st.Run.audience)
+		if e != nil {
+			return nil, e
+		}
+		if linked.ResourceVersion != 1 {
+			return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
+		}
+	}
 	if err = authorizeMutation(ctx, tx, ai, doc, *m); err != nil {
 		return nil, err
 	}
@@ -491,6 +551,14 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 		body, _ := json.Marshal(fields)
 		var result core.Result
 		switch tool {
+		case "create_risk", "create_issue":
+			var input project.ConcernCreate
+			_ = json.Unmarshal(body, &input)
+			result, err = business.CreateConcern(ctx, command, m.ProjectID, strings.TrimPrefix(tool, "create_"), input)
+		case "update_risk", "update_issue":
+			var input project.ConcernPatch
+			_ = json.Unmarshal(canonical, &input)
+			result, err = business.UpdateConcern(ctx, command, m.ResourceID, strings.TrimPrefix(tool, "update_"), input)
 		case "create_deliverable":
 			var input project.DeliverableCreate
 			_ = json.Unmarshal(canonical, &input)
@@ -550,9 +618,13 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 			validReceipt = json.Unmarshal(raw, &created) == nil && core.ValidID(created.ID) && created.ID != m.ResourceID && created.Version == 1 && created.RevisionID == nil
 			m.OperationID, m.Result = &result.OperationID, raw
 		}
+		if concernMutationTool(tool) {
+			validReceipt = concernMutationReceipt(*m, raw)
+		}
 		if !validReceipt || !core.ValidID(result.OperationID) {
 			return nil, nil, runtimeFailure("MUTATION_RECEIPT_INVALID")
 		}
+		m.OperationID, m.Result = &result.OperationID, raw
 		doc, e := mutationAudience(ctx, tx, ai, st.Conversation, *m, st.Run.audience)
 		if e != nil {
 			return nil, nil, e
@@ -574,6 +646,11 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 		return nil, nil, err
 	}
 	kind, id := m.ResourceType, m.ResourceID
+	if concernCreationTool(tool) {
+		var created project.Concern
+		_ = json.Unmarshal(m.Result, &created)
+		kind, id = strings.TrimPrefix(tool, "create_"), created.ID
+	}
 	if tool == "create_milestone" {
 		var created project.Milestone
 		_ = json.Unmarshal(m.Result, &created)
@@ -584,7 +661,11 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 		_ = json.Unmarshal(m.Result, &created)
 		kind, id = "deliverable", created.ID
 	}
-	return map[string]any{"status": "succeeded", "resource_refs": []ResultReference{{Type: kind, ID: id}}, "source_refs": []ResultReference{reference(src)}, "operation_id": m.OperationID, "committed": true,
+	refs := []ResultReference{{Type: kind, ID: id}}
+	if child := mutationRealizedIssue(m); child != "" {
+		refs = append(refs, ResultReference{Type: "issue", ID: child})
+	}
+	return map[string]any{"status": "succeeded", "resource_refs": refs, "source_refs": []ResultReference{reference(src)}, "operation_id": m.OperationID, "committed": true,
 		"safe_summary": "已按发送时明确指定的对象、基础版本和字段完成更新", "retryable": false, "next_action": "", "content": m.MutationView}, []SourceSnapshot{src}, nil
 }
 

@@ -4,6 +4,15 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-27 · 秘书风险与问题 / Secretary risks and issues · increment84
+
+- 增加四个准确工具，完整核对字段、父项目／事项版本和真实回执；项目成员、阶段、共同受众及原登录继续约束每一步。风险转问题要求双权限并原子提交，失败回滚，准确重试不重复创建。
+- Web／Taro增加完整表单、清空语义、状态选择和风险发生确认；普通PATCH可显式清空截止时刻／概率。Skill1.5.0仍为draft，四个工具不进入其他技能。
+- Fresh backend156 top-level/1,001 results/908 leaf checks, runtime43, Web88, mobile183, both 16-page mini-program builds and eight actual flows/three layouts per browser client passed. The 42,885,880-byte Android debug APK passed 17 inspections;25 JVM results retain their actual Gradle cache marker.
+- 新增4张截图、两对实际MP4／GIF；原生开发API更新至70项迁移，10项只读探针通过，外部集成未启用。增量83的805份采集原Git来源保留，失败尝试不覆盖。
+
+[方案与使用 / Workflow](development/84-secretary-project-concerns.md) · [准确验证 / Evidence](quality/evidence/project-concerns/verification.md) · [实际演示 / Media](media/README.md)。真实设备、云、模型、TG、安全、120GB／2TB及生产验收继续开放。Real devices/cloud/model/TG, security, capacity and production acceptance remain open.
+
 ## 2026-10-27 · 移动知识与项目博客 / Mobile knowledge and project blog · increment83
 
 - 补齐四类公司／项目知识的手工创建、编辑、安全Markdown、准确附件、正文修订、独立发布／归档／退回草稿、历史恢复和修订讨论。Added complete shared mobile knowledge workflows with explicit attachment modes and immutable history.
@@ -34,7 +43,7 @@ This log records deliverable changes, verification scope and open release gates.
 - 新增独立Go桥接，读取成熟Prometheus／Blackbox的完整标签与原采样时间；复用原签名观测、投影、权限、历史和站内通知。Added a separate native bridge from mature monitoring to the original signed-ingress/status/history path.
 - 增加私密配置、端点／IP许可、禁代理／重定向、独立读令牌、独占持久journal、准确重放与完整回执绑定；来源变更须新修订。Added bounded networking, independent credentials, durable exclusive journals, exact retries and bound ACKs; rebinding requires a new source revision.
 - 后端新154顶层／984结果／892末级、Web81、移动154及双小程序编译通过；Windows实际桥接与Linux编译通过。Fresh backend/Web/mobile tests and builds passed; Windows bridge executed, Linux compile only.
-- 六组实际Web／H5流程、12次CLI、9项布局及25项最终来源核验通过；所有所属浏览器与夹具清理。Six actual flows,12 CLI invocations,nine layouts and25 final source checks passed, with owned-resource cleanup.
+- 六组实际Web／H5流程、12次CLI、9项布局及25项最终来源核验通过；所有所属浏览器与夹具清理。Six actual flows, 12 CLI invocations,nine layouts and 25 final source checks passed, with owned-resource cleanup.
 - 新增3张截图、6秒MP4／36帧GIF、双语使用／部署协议、运维及失败历史。Added affected captures and bilingual usage, deployment, operations and honest attempt history.
 - Android在当前来源下重新编译并通过17项检查，APK与80字节相同；25项原生结果为UP-TO-DATE。39项运行时按不变来源准确复用。Android build/inspection is fresh; its APK bytes are unchanged, native tests are cached and runtime proof is exact-source reuse.
 - API须先升级再启用桥接；真实Prometheus／Blackbox安装、主机指标、独立告警、真机／云／模型／TG、容量／安全／恢复继续开放。Upgrade the API first; actual deployment, independent alerts and full production acceptance remain open.

@@ -1,6 +1,6 @@
 {
   "skill_id": "project-update",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "state": "draft",
   "owner_role": "business_admin",
   "runtime_compatibility": "codex-sdk@0.164.0",
@@ -16,7 +16,11 @@
     "transition_milestone",
     "create_milestone",
     "update_deliverable",
-    "create_deliverable"
+    "create_deliverable",
+    "create_risk",
+    "update_risk",
+    "create_issue",
+    "update_issue"
   ],
   "completion_tools": [
     "update_project",
@@ -27,7 +31,11 @@
     "transition_milestone",
     "create_milestone",
     "update_deliverable",
-    "create_deliverable"
+    "create_deliverable",
+    "create_risk",
+    "update_risk",
+    "create_issue",
+    "update_issue"
   ],
   "input_schema_ref": "input.schema.json",
   "output_schema_ref": "output.schema.json",

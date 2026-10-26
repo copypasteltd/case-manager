@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T20:29:36.838126+00:00",
+  "command": "python app/scripts/test_backend.py --package ./internal/httpapi -run ^TestProjectCollaborationIntegration$ -timeout 6m -v",
+  "exit_code": 1,
+  "error": "migration 0070_agent_project_concerns.sql failed: ERROR: syntax error at end of input (SQLSTATE 42601)",
+  "backend_source_sha256": "825157899c370c02aa72bc2d733734e6cda9e57f4ebcb510baef02e0242fc2c5",
+  "migration_sha256": "c1b4bb20dc73a2eaa00d965d81c6839e33cf032c2058b4108e1595739613ddad",
+  "fixture_cleanup_registered": true
+}

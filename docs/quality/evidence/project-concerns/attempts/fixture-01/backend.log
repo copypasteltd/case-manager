@@ -1,0 +1,34 @@
+=== RUN   TestAgentProjectConcerns
+=== RUN   TestAgentProjectConcerns/complete_inputs_reject_omission_cross_kind_fields_state_null_and_unrepresentable_time
+=== RUN   TestAgentProjectConcerns/risk_creation_has_real_parent_child_receipts_and_two_exact_retries
+=== RUN   TestAgentProjectConcerns/issue_creation_keeps_an_explicitly_empty_date_and_does_not_resolve_it
+=== RUN   TestAgentProjectConcerns/full_risk_update_clears_date_probability_and_keeps_omitted_state
+=== RUN   TestAgentProjectConcerns/issue_resolution_closure_and_reopening_follow_the_original_state_machine
+=== RUN   TestAgentProjectConcerns/normal_public_patches_distinguish_omission_from_explicit_null
+=== RUN   TestAgentProjectConcerns/foreign_project_and_changed_parent_are_not_substituted
+=== RUN   TestAgentProjectConcerns/exact_arguments_and_changed_concern_are_not_replaced
+=== RUN   TestAgentProjectConcerns/receipt_failure_rolls_back_risk_and_new_issue_then_exact_retry_commits_once
+=== RUN   TestAgentProjectConcerns/new_linked_issue_changes_stop_later_model_reads_without_rewriting_history
+=== RUN   TestAgentProjectConcerns/invalid_member_and_read_only_project_create_no_concerns
+=== RUN   TestAgentProjectConcerns/risk_realization_requires_issue_creation_authority_at_preparation
+    agent_project_concerns_integration_test.go:527: ERROR: column "org_id" is of type uuid but expression is of type text (SQLSTATE 42804)
+=== RUN   TestAgentProjectConcerns/cancellation_and_append_only_concern_history
+=== RUN   TestAgentProjectConcerns/revoked_origin_cannot_create_a_concern
+--- FAIL: TestAgentProjectConcerns (6.43s)
+    --- PASS: TestAgentProjectConcerns/complete_inputs_reject_omission_cross_kind_fields_state_null_and_unrepresentable_time (0.08s)
+    --- PASS: TestAgentProjectConcerns/risk_creation_has_real_parent_child_receipts_and_two_exact_retries (0.22s)
+    --- PASS: TestAgentProjectConcerns/issue_creation_keeps_an_explicitly_empty_date_and_does_not_resolve_it (0.09s)
+    --- PASS: TestAgentProjectConcerns/full_risk_update_clears_date_probability_and_keeps_omitted_state (0.06s)
+    --- PASS: TestAgentProjectConcerns/issue_resolution_closure_and_reopening_follow_the_original_state_machine (0.22s)
+    --- PASS: TestAgentProjectConcerns/normal_public_patches_distinguish_omission_from_explicit_null (0.01s)
+    --- PASS: TestAgentProjectConcerns/foreign_project_and_changed_parent_are_not_substituted (0.04s)
+    --- PASS: TestAgentProjectConcerns/exact_arguments_and_changed_concern_are_not_replaced (0.06s)
+    --- PASS: TestAgentProjectConcerns/receipt_failure_rolls_back_risk_and_new_issue_then_exact_retry_commits_once (0.14s)
+    --- PASS: TestAgentProjectConcerns/new_linked_issue_changes_stop_later_model_reads_without_rewriting_history (0.11s)
+    --- PASS: TestAgentProjectConcerns/invalid_member_and_read_only_project_create_no_concerns (0.07s)
+    --- FAIL: TestAgentProjectConcerns/risk_realization_requires_issue_creation_authority_at_preparation (0.07s)
+    --- PASS: TestAgentProjectConcerns/cancellation_and_append_only_concern_history (0.04s)
+    --- PASS: TestAgentProjectConcerns/revoked_origin_cannot_create_a_concern (0.04s)
+FAIL
+FAIL	copypaste.hk/platform/internal/httpapi	8.441s
+FAIL

@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T22:50:12.024560+00:00",
+  "checks": [
+    {
+      "name": "All 156 discovered backend tests and 1001 recorded results pass in eight source-bound batches",
+      "passed": true
+    },
+    {
+      "name": "Fourteen native concern scenarios prove original commands, authority, atomic rollback, exact retry, version stopping and immutable history",
+      "passed": true
+    },
+    {
+      "name": "Original manual collaboration and nullable PATCH semantics pass with the new migration",
+      "passed": true
+    },
+    {
+      "name": "Migration70 is additive and all 69 previously applied migration files retain exact original bytes",
+      "passed": true
+    },
+    {
+      "name": "Both OpenAPI copies match with 271 paths, 338 operations and 589 schemas",
+      "passed": true
+    },
+    {
+      "name": "Fresh runtime build and 43 tests bind complete current runtime and Skill bytes",
+      "passed": true
+    },
+    {
+      "name": "Fresh Web build and 88 tests match every declared source byte",
+      "passed": true
+    },
+    {
+      "name": "Fresh mobile typecheck, both mini-program builds and 183 tests pass across both actual TAP suites",
+      "passed": true
+    },
+    {
+      "name": "Both mini-program outputs retain sixteen registered pages",
+      "passed": true
+    },
+    {
+      "name": "The current Android development APK matches the complete native and portable source manifest",
+      "passed": true
+    },
+    {
+      "name": "Seventeen package inspections bind the actual new APK",
+      "passed": true
+    },
+    {
+      "name": "Twenty-five JVM results retain exact XML/log bytes and the actual Gradle execution/cache marker",
+      "passed": true
+    },
+    {
+      "name": "Linux compilation matches current backend without execution or deployment",
+      "passed": true
+    },
+    {
+      "name": "web: eight actual MFA/API/form/send/retry/cancel flows and three responsive sizes pass with owned cleanup",
+      "passed": true
+    },
+    {
+      "name": "mobile: eight actual MFA/API/form/send/retry/cancel flows and three responsive sizes pass with owned cleanup",
+      "passed": true
+    },
+    {
+      "name": "Two actual frame manifests and four MP4/GIF artifacts match the encoder, capture and output digests",
+      "passed": true
+    },
+    {
+      "name": "Both GIFs retain actual animated frames with bounded capture-derived timing",
+      "passed": true
+    },
+    {
+      "name": "Manual pixel review binds four complete screenshots and both actual GIFs",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft; project-update1.5.0 has exactly fifteen tools and thirteen completion tools",
+      "passed": true
+    },
+    {
+      "name": "Only the verified owned development API was updated to the reviewed complete backend source",
+      "passed": true
+    },
+    {
+      "name": "Fresh read-only native probes confirm migration70, owned services, disabled integrations and zero test databases",
+      "passed": true
+    },
+    {
+      "name": "Retained increment83 capture recomputes from exactly 805 original Git blobs without relabeling old evidence",
+      "passed": true
+    },
+    {
+      "name": "Owned browser port is released and private fixture file is removed",
+      "passed": true
+    },
+    {
+      "name": "Launch gates remain explicit and all twenty-eight stable gap IDs remain in the register",
+      "passed": true
+    },
+    {
+      "name": "Every recorded failed schema, fixture, runtime and browser attempt remains available",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "315a9b73b39abc2d9760401ff673c3f4fb2c7e184eac588525fd21fd72b2c50c",
+  "browser_source_sha256": "13e210075540a94db51bd72aca2a1f8fcb215a0ad28b61063d845e9d95b6f785",
+  "mobile_source_sha256": "0e7b5b7a59bffed9cd240465ad620070b7d463d8e748152c0e19484f4b25f329",
+  "full_goal_complete": false,
+  "verification_script_sha256": "c55dde8242d5de4538b0c596fa3ba71ef9f68fd205d50dbe7e21012227fb594f",
+  "scope": "Source-bound native local checks and synthetic browser recordings; cached JVM scope explicit; no real model/device/cloud/production acceptance."
+}

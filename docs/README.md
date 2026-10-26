@@ -6,7 +6,7 @@
 
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 
-本轮功能文档：[移动知识与项目博客完整工作流 / Mobile knowledge and project blog](development/83-mobile-knowledge-workflows.md)。
+本轮功能文档：[秘书风险与问题完整工作流 / Secretary risk and issue workflows](development/84-secretary-project-concerns.md)。
 
 ## 1. 阅读路径
 
@@ -195,4 +195,6 @@
 | [移动项目立项与成员管理](development/75-mobile-project-setup-and-members.md) | 新建立项、准确模板、资料编辑、角色／移除及负责人移交；99项移动测试、7条真实流程和新Android开发APK |
 | [移动里程碑、风险与问题](development/76-mobile-project-milestones-risks-and-issues.md) | 三类事项新建／编辑、明确状态、风险转实际问题及冲突恢复；114项移动测试、8条真实流程及新Android开发APK |
 
-最近功能增量见[移动知识与项目博客](development/83-mobile-knowledge-workflows.md)：完整手工编辑／发布／恢复、准确附件和评论历史，修复隐藏评论附件保留。新155顶层／986结果后端、Web81、运行时39、移动178项、两小程序编译、12组实际流程、9项布局、新Android开发APK及17项包检查通过；25项JVM结果按Gradle缓存准确记录。[25项来源核验](quality/evidence/mobile-knowledge/final-source-check.json)通过，新增3张截图、2.8秒MP4及17帧GIF。详见[准确验证](quality/evidence/mobile-knowledge/verification.md)及[28项差异](delivery/03-goal-gap-assessment.md)。
+增量83历史功能见[移动知识与项目博客](development/83-mobile-knowledge-workflows.md)：完整手工编辑／发布／恢复、准确附件和评论历史，修复隐藏评论附件保留。新155顶层／986结果后端、Web81、运行时39、移动178项、两小程序编译、12组实际流程、9项布局、新Android开发APK及17项包检查通过；25项JVM结果按Gradle缓存准确记录。[25项来源核验](quality/evidence/mobile-knowledge/final-source-check.json)通过，新增3张截图、2.8秒MP4及17帧GIF。详见[准确验证](quality/evidence/mobile-knowledge/verification.md)及[28项差异](delivery/03-goal-gap-assessment.md)。
+
+[增量84：秘书风险与问题](development/84-secretary-project-concerns.md)提供四个完整工具、准确字段／版本、原状态机、风险转问题和真实回执；156顶层／1,001结果、Web88、运行时43、移动183、两小程序编译、新Android包与17项检查，以及两端实际流程通过。25项JVM结果按Gradle缓存记录，真实平台／云／模型验收另行完成。见[验证](quality/evidence/project-concerns/verification.md)。

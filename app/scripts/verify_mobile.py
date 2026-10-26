@@ -74,7 +74,8 @@ def main():
                              'elapsed_seconds': round(time.monotonic() - began, 3)})
             print(script + ': ' + ('passed' if status == 0 else 'failed'), flush=True)
             if script == 'test':
-                tests = {name: int(value) for name, value in re.findall(r'^# (tests|pass|fail|cancelled|skipped) (\d+)\s*$', combined, re.MULTILINE)}
+                tests = {name: sum(int(value) for value in re.findall(r'^# ' + name + r' (\d+)\s*$', combined, re.MULTILINE)) for name in ('tests', 'pass', 'fail', 'cancelled', 'skipped')}
+                tests['suites'] = len(re.findall(r'^# tests (\d+)\s*$', combined, re.MULTILINE))
             if status:
                 # Windows GBK consoles must not prevent saving a failed report.
                 print(combined[-5000:].encode(sys.stdout.encoding or 'utf-8', errors='backslashreplace').decode(sys.stdout.encoding or 'utf-8'), flush=True)
@@ -86,7 +87,7 @@ def main():
         files = list(root.rglob('*')) if root.exists() else []
         files = [p for p in files if p.is_file()]
         artifacts[target] = {'files': len(files), 'bytes': sum(p.stat().st_size for p in files), 'app_json_exists': (root / 'app.json').is_file(), 'status_page_exists': (root / 'pages/status/index.js').is_file()}
-    passed = len(commands) == 4 and all(item['exit_code'] == 0 for item in commands) and before == after and tests is not None and tests.get('tests', 0) > 0 and tests.get('fail') == 0 and tests.get('skipped') == 0 and all(item['app_json_exists'] and item['status_page_exists'] for item in artifacts.values())
+    passed = len(commands) == 4 and all(item['exit_code'] == 0 for item in commands) and before == after and tests is not None and tests.get('tests', 0) > 0 and tests.get('tests') == tests.get('pass') and tests.get('cancelled') == 0 and tests.get('fail') == 0 and tests.get('skipped') == 0 and all(item['app_json_exists'] and item['status_page_exists'] for item in artifacts.values())
     result = {'started_at': started, 'completed_at': datetime.now(timezone.utc).isoformat(), 'commands': commands, 'tests': tests, 'source_sha256': before, 'source_files': count, 'source_unchanged_during_run': before == after, 'artifacts': artifacts, 'environment': 'Native Windows Node/TypeScript/Taro; no Docker, WSL or emulator', 'taro_version': '4.3.1', 'api_origin': environment['CP_MOBILE_API_ORIGIN'], 'build_profile': 'local', 'actual_mini_program_runtime_invoked': False, 'actual_android_runtime_invoked': False, 'actual_cloud_invoked': False, 'scope': 'Portable memory-only session, shared draft budget, intent-key, fixed-content reader and business-input validation/serialization tests; TypeScript and two mini-program compilation targets. Excludes real devices, native document/file-system execution, platform submission, Android native transfer and end-to-end acceptance', 'passed': passed}
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

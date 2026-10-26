@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T21:53:04.470Z",
+  "finished_at": "2026-10-26T21:53:36.790Z",
+  "checks": [
+    "Actual MFA login reads a committed risk creation receipt with a new child ID and version one.",
+    "创建项目风险: complete actual metadata and the correct project/child version are previewed without execution.",
+    "Risk realization requires a visible confirmation before its exact intent can be prepared.",
+    "修改风险资料与状态: complete actual metadata and the correct project/child version are previewed without execution.",
+    "修改问题资料与状态: complete actual metadata and the correct project/child version are previewed without execution.",
+    "创建项目问题: complete actual metadata and the correct project/child version are previewed without execution.",
+    "The real send fixes the parent version, complete issue fields and explicit empty date without claiming a business write.",
+    "The exact resend reuses one run; cancelling before execution leaves both actual concern collections unchanged."
+  ],
+  "source_count": 619,
+  "source_sha256": "f5163c407848a106616f74862a8d47b1f0c8ea1ddb40222517555e3052205e56",
+  "source_after_sha256": "f5163c407848a106616f74862a8d47b1f0c8ea1ddb40222517555e3052205e56",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "d43efc36b2807d307886d889e6b99bea280c24f223a61f8c7aa7d28655b1e69e",
+  "build_source_after_sha256": "d43efc36b2807d307886d889e6b99bea280c24f223a61f8c7aa7d28655b1e69e",
+  "build_source_unchanged": true
+}

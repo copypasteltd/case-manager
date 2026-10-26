@@ -3,7 +3,7 @@ import type { ExecutionReceipt } from './evidence.js';
 import { RuntimeError } from './skills.js';
 
 const GATEWAY_TOOLS = ['list_subscriptions', 'read_subscription_review', 'read_finance_record', 'read_finance_summary', 'read_service_summary', 'read_resource', 'search_resources', 'inspect_operation', 'propose_project', 'create_project',
-  'create_deliverable', 'update_deliverable', 'create_milestone', 'update_project', 'update_task', 'transition_task', 'transition_project', 'update_milestone', 'transition_milestone', 'create_file_draft', 'propose_file_update', 'commit_file_update', 'stage_file_create', 'propose_file_create', 'commit_file_create',
+  'create_risk', 'update_risk', 'create_issue', 'update_issue', 'create_deliverable', 'update_deliverable', 'create_milestone', 'update_project', 'update_task', 'transition_task', 'transition_project', 'update_milestone', 'transition_milestone', 'create_file_draft', 'propose_file_update', 'commit_file_update', 'stage_file_create', 'propose_file_create', 'commit_file_create',
   'list_directory', 'propose_organization', 'commit_organization', 'draft_request', 'submit_request', 'draft_post', 'publish_post'];
 const SAFE_CODES = new Set(['RUNTIME_AUTHORITY_CHANGED', 'RUNTIME_CANCEL_REQUESTED', 'RUNTIME_DEADLINE_EXCEEDED',
   'RUNTIME_CONFINEMENT_UNVERIFIED', 'RUNTIME_TOOL_BUDGET_EXCEEDED', 'RUNTIME_USAGE_BUDGET_EXCEEDED']);

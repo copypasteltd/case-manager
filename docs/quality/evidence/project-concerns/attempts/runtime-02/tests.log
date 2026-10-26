@@ -1,0 +1,294 @@
+
+> @copypaste/agent-runtime@0.1.0 test
+> npm run build && node --test dist/*.test.js
+
+
+> @copypaste/agent-runtime@0.1.0 build
+> tsc -p tsconfig.json
+
+TAP version 13
+# Subtest: worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider
+ok 1 - worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider
+  ---
+  duration_ms: 747.369
+  ...
+# Subtest: deployment inspection uses the exact SDK configuration digest and never publishes a draft skill
+ok 2 - deployment inspection uses the exact SDK configuration digest and never publishes a draft skill
+  ---
+  duration_ms: 256.4575
+  ...
+# Subtest: SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output
+ok 3 - SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output
+  ---
+  duration_ms: 1.5728
+  ...
+# Subtest: disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process
+ok 4 - disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process
+  ---
+  duration_ms: 1.8852
+  ...
+# Subtest: invented formal completion is rejected even when the model emits valid JSON and an operation UUID
+ok 5 - invented formal completion is rejected even when the model emits valid JSON and an operation UUID
+  ---
+  duration_ms: 1.9742
+  ...
+# Subtest: native shell, file, web and other MCP tools abort the adapter without publishing their arguments
+ok 6 - native shell, file, web and other MCP tools abort the adapter without publishing their arguments
+  ---
+  duration_ms: 2.9752
+  ...
+# Subtest: changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback
+ok 7 - changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback
+  ---
+  duration_ms: 0.9022
+  ...
+# Subtest: stable tool IDs count once while new calls and actual provider usage respect the reserved bounds
+ok 8 - stable tool IDs count once while new calls and actual provider usage respect the reserved bounds
+  ---
+  duration_ms: 2.041
+  ...
+# Subtest: cancellation and a stalled native stream expire without claiming that a prior business write was undone
+ok 9 - cancellation and a stalled native stream expire without claiming that a prior business write was undone
+  ---
+  duration_ms: 1510.1877
+  ...
+# Subtest: durable event failure stops processing and provider diagnostics never enter public events
+ok 10 - durable event failure stops processing and provider diagnostics never enter public events
+  ---
+  duration_ms: 2.7125
+  ...
+# Subtest: verified business commits are independent of native MCP success text and incomplete streams cannot publish completion
+ok 11 - verified business commits are independent of native MCP success text and incomplete streams cannot publish completion
+  ---
+  duration_ms: 2.7837
+  ...
+# Subtest: Telegram profile exposes only reads and binds a separate SDK configuration digest
+ok 12 - Telegram profile exposes only reads and binds a separate SDK configuration digest
+  ---
+  duration_ms: 125.3886
+  ...
+# Subtest: Telegram runtime rejects write observations and unsupported skill scopes
+ok 13 - Telegram runtime rejects write observations and unsupported skill scopes
+  ---
+  duration_ms: 1.6994
+  ...
+# Subtest: incident summary exposes four implemented reads in both channels and keeps its release draft
+ok 14 - incident summary exposes four implemented reads in both channels and keeps its release draft
+  ---
+  duration_ms: 129.8288
+  ...
+# Subtest: monthly finance exposes its implemented reads only on the business channel and stays draft
+ok 15 - monthly finance exposes its implemented reads only on the business channel and stays draft
+  ---
+  duration_ms: 105.1049
+  ...
+# Subtest: create_risk binds complete reviewed fields and current committed business evidence
+not ok 16 - create_risk binds complete reviewed fields and current committed business evidence
+  ---
+  duration_ms: 16.9952
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\concerns.test.js:9:5'
+  failureType: 'testCodeFailure'
+  error: 'SKILL_OUTPUT_INVALID'
+  code: 'SKILL_OUTPUT_INVALID'
+  stack: |-
+    SkillPackage.validateOutput (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:133:15)
+    verifyResult (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/evidence.js:4:11)
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/concerns.test.js:44:26)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:979:25)
+    Test.start (node:internal/test_runner/test:877:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: update_risk binds complete reviewed fields and current committed business evidence
+not ok 17 - update_risk binds complete reviewed fields and current committed business evidence
+  ---
+  duration_ms: 3.0028
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\concerns.test.js:9:5'
+  failureType: 'testCodeFailure'
+  error: 'SKILL_OUTPUT_INVALID'
+  code: 'SKILL_OUTPUT_INVALID'
+  stack: |-
+    SkillPackage.validateOutput (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:133:15)
+    verifyResult (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/evidence.js:4:11)
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/concerns.test.js:44:26)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:979:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:677:18)
+    Test.postRun (node:internal/test_runner/test:1090:19)
+    Test.run (node:internal/test_runner/test:1018:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: create_issue binds complete reviewed fields and current committed business evidence
+not ok 18 - create_issue binds complete reviewed fields and current committed business evidence
+  ---
+  duration_ms: 1.4661
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\concerns.test.js:9:5'
+  failureType: 'testCodeFailure'
+  error: 'SKILL_OUTPUT_INVALID'
+  code: 'SKILL_OUTPUT_INVALID'
+  stack: |-
+    SkillPackage.validateOutput (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:133:15)
+    verifyResult (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/evidence.js:4:11)
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/concerns.test.js:44:26)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:979:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:677:18)
+    Test.postRun (node:internal/test_runner/test:1090:19)
+    Test.run (node:internal/test_runner/test:1018:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:677:7)
+  ...
+# Subtest: update_issue binds complete reviewed fields and current committed business evidence
+not ok 19 - update_issue binds complete reviewed fields and current committed business evidence
+  ---
+  duration_ms: 3.6688
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\concerns.test.js:9:5'
+  failureType: 'testCodeFailure'
+  error: 'SKILL_OUTPUT_INVALID'
+  code: 'SKILL_OUTPUT_INVALID'
+  stack: |-
+    SkillPackage.validateOutput (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:133:15)
+    verifyResult (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/evidence.js:4:11)
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/concerns.test.js:44:26)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:979:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:677:18)
+    Test.postRun (node:internal/test_runner/test:1090:19)
+    Test.run (node:internal/test_runner/test:1018:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:677:7)
+  ...
+# Subtest: local boundary sends only a task bearer and never accepts a different run or redirects its credential
+ok 20 - local boundary sends only a task bearer and never accepts a different run or redirects its credential
+  ---
+  duration_ms: 91.6071
+  ...
+# Subtest: changed sources and revoked task credentials suppress results without exposing service diagnostics
+ok 21 - changed sources and revoked task credentials suppress results without exposing service diagnostics
+  ---
+  duration_ms: 32.9297
+  ...
+# Subtest: deliverable draft creation requires all parent fields and a real current-run creation receipt
+ok 22 - deliverable draft creation requires all parent fields and a real current-run creation receipt
+  ---
+  duration_ms: 13.4878
+  ...
+# Subtest: deliverable updates require every reviewed metadata field and genuine write evidence
+ok 23 - deliverable updates require every reviewed metadata field and genuine write evidence
+  ---
+  duration_ms: 3.5665
+  ...
+# Subtest: milestone creation requires all fixed fields and a committed current-run receipt
+ok 24 - milestone creation requires all fixed fields and a committed current-run receipt
+  ---
+  duration_ms: 3.9135
+  ...
+# Subtest: monthly finance completion requires a cited successful finance snapshot from this run
+ok 25 - monthly finance completion requires a cited successful finance snapshot from this run
+  ---
+  duration_ms: 2.1202
+  ...
+# Subtest: knowledge writes require real current-run commits while ordinary briefings remain read-only
+ok 26 - knowledge writes require real current-run commits while ordinary briefings remain read-only
+  ---
+  duration_ms: 1.6157
+  ...
+# Subtest: OA completion requires the exact current-run saved draft or real submission receipt
+ok 27 - OA completion requires the exact current-run saved draft or real submission receipt
+  ---
+  duration_ms: 1.4768
+  ...
+# Subtest: new text files require exact current-run formal creation evidence; staging and proposed content stay pending
+ok 28 - new text files require exact current-run formal creation evidence; staging and proposed content stay pending
+  ---
+  duration_ms: 1.8198
+  ...
+# Subtest: organization completion requires its exact current-run commit receipt rather than a proposed plan
+ok 29 - organization completion requires its exact current-run commit receipt rather than a proposed plan
+  ---
+  duration_ms: 1.5306
+  ...
+# Subtest: conversation requests accept partial business intent without accepting caller identity paths or grants
+ok 30 - conversation requests accept partial business intent without accepting caller identity paths or grants
+  ---
+  duration_ms: 10.5245
+  ...
+# Subtest: all eight bounded packages load while identity injection and unsupported operations are rejected
+ok 31 - all eight bounded packages load while identity injection and unsupported operations are rejected
+  ---
+  duration_ms: 1.6135
+  ...
+# Subtest: bounded report windows reject impossible dates and reversed ranges; native output schemas contain no external references
+ok 32 - bounded report windows reject impossible dates and reversed ranges; native output schemas contain no external references
+  ---
+  duration_ms: 2.5421
+  ...
+# Subtest: formal completion needs the current run and current authority ledger evidence
+ok 33 - formal completion needs the current run and current authority ledger evidence
+  ---
+  duration_ms: 0.6417
+  ...
+# Subtest: a staged file draft and its fixed intent remain pending without a formal version receipt
+ok 34 - a staged file draft and its fixed intent remain pending without a formal version receipt
+  ---
+  duration_ms: 0.2629
+  ...
+# Subtest: a pending project proposal cites its exact intent without claiming a committed operation
+ok 35 - a pending project proposal cites its exact intent without claiming a committed operation
+  ---
+  duration_ms: 1.2014
+  ...
+# Subtest: successful plan discovery proves only observation and cannot claim a created project
+ok 36 - successful plan discovery proves only observation and cannot claim a created project
+  ---
+  duration_ms: 1.0592
+  ...
+# Subtest: a read briefing requires genuine source evidence and cannot invent a sent notification
+ok 37 - a read briefing requires genuine source evidence and cannot invent a sent notification
+  ---
+  duration_ms: 0.3721
+  ...
+# Subtest: L1 project updates require a genuine current-run business write receipt, never the fixed intent or inspection alone
+ok 38 - L1 project updates require a genuine current-run business write receipt, never the fixed intent or inspection alone
+  ---
+  duration_ms: 0.4701
+  ...
+# Subtest: exact project stage inputs validate real calendar dates, field masks and permitted transitions
+ok 39 - exact project stage inputs validate real calendar dates, field masks and permitted transitions
+  ---
+  duration_ms: 1.0207
+  ...
+# Subtest: milestone and project stage completion requires the actual current-run command, not an observation
+ok 40 - milestone and project stage completion requires the actual current-run command, not an observation
+  ---
+  duration_ms: 0.5131
+  ...
+# Subtest: release hashes bind linked instructions and unpublished or changed tools cannot enter a live run
+ok 41 - release hashes bind linked instructions and unpublished or changed tools cannot enter a live run
+  ---
+  duration_ms: 516.058
+  ...
+# Subtest: subscription discovery never proves a detailed review; actual detail and record receipts must match this run and cited snapshot
+ok 42 - subscription discovery never proves a detailed review; actual detail and record receipts must match this run and cited snapshot
+  ---
+  duration_ms: 0.5234
+  ...
+# Subtest: explicit subscription detail input accepts actual dates and UUID but rejects arbitrary scopes or invalid calendar dates
+ok 43 - explicit subscription detail input accepts actual dates and UUID but rejects arbitrary scopes or invalid calendar dates
+  ---
+  duration_ms: 0.5213
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 39
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3207.6275
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path D:\dev\copypasted\内部管理\app\agent-runtime
+npm error workspace @copypaste/agent-runtime@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\agent-runtime
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c npm run build && node --test dist/*.test.js

@@ -1,0 +1,7 @@
+{
+  "phase": "Go test compilation; business subcases did not execute",
+  "exit_code": 1,
+  "error": "test helper attempted to read absent ExecutionReceipt.Content; decode structured content separately",
+  "intermediate_test_sha256": "9c6b18535dce47c50121b10f9b275ecac884b9c7a9579460f210ec308dc0d0ef",
+  "source_binding": "Diagnostic only: original failing source was not frozen. The hash records an intermediate corrected helper before audit-query cleanup."
+}

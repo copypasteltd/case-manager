@@ -40,17 +40,17 @@ type ConcernCreate struct {
 	Resolution  string     `json:"resolution,omitempty"`
 }
 type ConcernPatch struct {
-	ExpectedVersion int64      `json:"expected_version"`
-	Title           *string    `json:"title,omitempty"`
-	Description     *string    `json:"description,omitempty"`
-	OwnerID         *string    `json:"owner_id,omitempty"`
-	Severity        *string    `json:"severity,omitempty"`
-	DueAt           *time.Time `json:"due_at,omitempty"`
-	Probability     *string    `json:"probability,omitempty"`
-	Mitigation      *string    `json:"mitigation,omitempty"`
-	Resolution      *string    `json:"resolution,omitempty"`
-	State           *string    `json:"state,omitempty"`
-	Reason          string     `json:"reason,omitempty"`
+	ExpectedVersion int64                    `json:"expected_version"`
+	Title           *string                  `json:"title,omitempty"`
+	Description     *string                  `json:"description,omitempty"`
+	OwnerID         *string                  `json:"owner_id,omitempty"`
+	Severity        *string                  `json:"severity,omitempty"`
+	DueAt           core.Nullable[time.Time] `json:"due_at,omitempty"`
+	Probability     core.Nullable[string]    `json:"probability,omitempty"`
+	Mitigation      *string                  `json:"mitigation,omitempty"`
+	Resolution      *string                  `json:"resolution,omitempty"`
+	State           *string                  `json:"state,omitempty"`
+	Reason          string                   `json:"reason,omitempty"`
 }
 
 const concernBase = `r.id,r.version,r.created_at,r.updated_at,r.project_id,r.creator_id,r.title,r.description,r.owner_id,r.severity,r.state,r.due_at`
@@ -233,11 +233,11 @@ func (s *Service) UpdateConcern(ctx context.Context, c core.Command, id, kind st
 		if input.Severity != nil {
 			r.Severity = *input.Severity
 		}
-		if input.DueAt != nil {
-			r.DueAt = input.DueAt
+		if input.DueAt.Set {
+			r.DueAt = input.DueAt.Value
 		}
-		if input.Probability != nil {
-			r.Probability = input.Probability
+		if input.Probability.Set {
+			r.Probability = input.Probability.Value
 		}
 		if input.Mitigation != nil {
 			r.Mitigation = *input.Mitigation

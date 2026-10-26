@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **26张PNG、7段MP4、7个GIF**：增量77初始15张图及三组录制，78／79／80分别补任务、结项和变更媒体；增量81新增三张真实状态截图及一对原生监控工作流MP4／GIF。全部使用隔离合成业务数据；不含真实合同、员工资料、密码、MFA、私钥或令牌。
+本目录包含 **36张PNG、11段MP4、11个GIF**。增量84新增四张秘书风险／问题截图和Web、Taro各一对实际录屏／GIF；此前知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成业务数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
 
-This catalog contains **26 PNGs, seven MP4s and seven GIFs**: initial captures from77, task/closeout/change additions in78–80, and three new actual status images plus a native-monitor recording/GIF pair in81. All media uses isolated synthetic records and excludes real business records and credentials.
+This catalog contains **36 PNGs,11 MP4s and11 GIFs**. Increment84 adds four secretary concern screenshots and an actual recording/GIF pair for each of Web and Taro. Earlier knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records or credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -122,7 +122,22 @@ Actual shared Taro H5 interactions use the native isolated Go/PostgreSQL fixture
 | [发布 / Published](screenshots/mobile-knowledge-published.png) | 实际当前／已发布修订及正文 / Actual current/published revisions and body |
 | [评论 / Discussion](screenshots/mobile-knowledge-comments.png) | 正文上下文、固定版本附件、不可变评论历史 / Body context, fixed pins and immutable comment history |
 
-## 10. 页面截图 / Screenshots
+## 10. 秘书风险与问题 / Secretary risks and issues
+
+创建或修改完整资料，明确风险发生会新增关联问题，然后预览固定字段及版本。实际发送／重试／取消另有API断言；画面中的已提交历史来自同一隔离原业务夹具。Create/update complete metadata, explicitly confirm a linked issue, then preview the fixed fields/version. Separate actual API checks verify send/retry/cancel; committed history comes from the same isolated original business fixture.
+
+![Web风险与问题预览 / Web concern preview](gifs/secretary-concerns-web.gif)
+
+[Web MP4](videos/secretary-concerns-web.mp4) · [Mobile MP4](videos/secretary-concerns-mobile.mp4) · [Mobile GIF](gifs/secretary-concerns-mobile.gif) · [方案 / Workflow](../development/84-secretary-project-concerns.md) · [验证 / Evidence](../quality/evidence/project-concerns/verification.md)
+
+| 页面 / Page | 实际截图 / Actual capture |
+| --- | --- |
+| Web准确预览 / Exact preview | [Web preview](screenshots/secretary-concerns-web-preview.png) |
+| Web真实回执 / Actual receipt | [Web receipt](screenshots/secretary-concerns-web-receipt.png) |
+| Taro准确预览 / Exact preview | [Mobile preview](screenshots/secretary-concerns-mobile-preview.png) |
+| Taro真实回执 / Actual receipt | [Mobile receipt](screenshots/secretary-concerns-mobile-receipt.png) |
+
+## 11. 页面截图 / Screenshots
 
 | 页面 / Page | 图片 / Image | 范围 / Scope |
 | --- | --- | --- |
@@ -161,7 +176,7 @@ Actual shared Taro H5 interactions use the native isolated Go/PostgreSQL fixture
 
 The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
 
-## 11. 来源、编码与复现 / Provenance, encoding and reproduction
+## 12. 来源、编码与复现 / Provenance, encoding and reproduction
 
 | 记录 / Record | 内容 / Contents |
 | --- | --- |
@@ -191,7 +206,7 @@ python scripts/verify_repository_publication_development.py
 python scripts/verify_repository_publication.py
 ```
 
-任务、结项、变更复现须分别检出增量78、79、80的历史提交；以下为80的历史变更命令，81状态历史复现见后续步骤，当前83知识命令见本节末尾。所有采集共用端口与原生夹具，须先后运行：
+任务、结项、变更复现须分别检出增量78、79、80的历史提交；以下为80的历史变更命令，81状态历史复现见后续步骤，历史83知识命令与当前84命令见本节末尾。所有采集共用端口与原生夹具，须先后运行：
 
 Check out increments78/79/80 for historical task/closeout/change captures. The following change commands belong to80; current81 status reproduction follows. All captures share a port/fixture and must run sequentially:
 
@@ -222,7 +237,7 @@ Capture owns an isolated database and uses local port 5189 sequentially. Its cle
 
 Manual visual inspection is a separate step: inspect rebuilt media before updating its review record. Credential exclusion relies on capture preconditions, isolation, commit scanning and actual visual inspection; this is not a claim of exhaustive pixel OCR. Update affected media and both language guides together with future changes; see [maintenance rules](../contributing.md).
 
-### 当前83复现 / Current increment83 reproduction
+### 历史83复现 / Historical increment83 reproduction
 
 从`app/`顺序执行，先保留此前完成或失败的证据。需原生测试数据库、Node工具链和Edge；每次重新采集均要重新核对来源并实际查看新输出。Both capture and encoding require native tooling; archive existing evidence before a new run and inspect the resulting media again.
 
@@ -234,3 +249,16 @@ python scripts/encode_mobile_knowledge_media.py
 ```
 
 本轮输出为3张实际页面截图、2.8秒无声MP4和17帧GIF；源为13张JPEG／2656ms。来源为805份当前源码及采集帮助程序；实际检查12组流程及9项布局，两个上下文、临时服务与隔离夹具都已关闭。旧媒体保留原提交来源。Current output: three actual screenshots, a2.8-second silent MP4 and17-frame GIF from13 real JPEGs/2656ms. Twelve flows and nine layouts bind805 complete sources; both contexts, the temporary server and isolated fixture closed. Earlier media retains its historical source attribution.
+
+### 当前84复现 / Current increment84 reproduction
+
+检出对应增量84提交，按双语指南准备原生依赖与隔离数据库；先归档已有证据记录，然后顺序运行，保留失败记录。Check out increment84 and prepare native dependencies/an isolated database. Archive existing evidence first; run captures sequentially and retain failures.
+
+```powershell
+$env:PYTHONUTF8='1'
+python app/scripts/run_project_concerns_browser.py
+python app/scripts/run_project_concerns_browser.py --mobile
+python app/scripts/encode_project_concerns_media.py
+```
+
+采集只记录认证后的会话，不录制登录、MFA或私有能力。实际Taro滚轮与候选列表均由可见控件操作，不注入组件状态。结束即关闭所有自建上下文、浏览器、临时Web/H5服务和夹具数据库，保留日常API／Worker／PostgreSQL。Captures exclude login/MFA/private capabilities, operate the visible controls and close every owned browser/context/server/fixture afterward.

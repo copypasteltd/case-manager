@@ -283,12 +283,12 @@ def main():
           and all(item['Action'] == 'pass' for item in backend['checks']))
     runtime_group = baseline.get('runtime_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
     runtime = read(EVIDENCE.parent / runtime_group / 'runtime-build.json')
-    check('Runtime proof matches complete current source and declared execution group; thirty-nine tests', runtime['status'] == 'passed'
-          and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0] and runtime['tests']['pass'] == 39)
+    check('Runtime proof matches complete current source and declared test scope', runtime['status'] == 'passed'
+          and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0] and runtime['tests']['pass'] == (baseline.get('runtime_tests', 39) if baseline else 39))
     web_group = baseline.get('web_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
     web = read(EVIDENCE.parent / web_group / 'web-build.json')
-    check('Web proof matches current listed sources; eighty-one tests', web['passed']
-          and web['source_sha256'] == digest(web['sources']) and web['tests']['numPassedTests'] == 81)
+    check('Web proof matches current listed sources and declared test scope', web['passed']
+          and web['source_sha256'] == digest(web['sources']) and web['tests']['numPassedTests'] == (baseline.get('web_tests', 81) if baseline else 81))
     functional = EVIDENCE.parent / (baseline['evidence_group'] if baseline else 'mobile-project-resources')
     mobile = read(functional / 'mobile-build.json')
     check('Current mobile proof matches complete source and recorded passing test count', mobile['passed']

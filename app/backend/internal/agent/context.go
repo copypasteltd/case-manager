@@ -219,6 +219,8 @@ func contextDocumentRead(ctx context.Context, tx pgx.Tx, a core.Actor, c Convers
 		err = tx.QueryRow(ctx, `SELECT m.title,jsonb_build_object('title',m.title,'owner_id',m.owner_id,'due_at',m.due_at,'state',m.state)::text,m.state,p.classification,m.creator_id,m.project_id,m.version
  FROM milestones m JOIN projects p ON p.org_id=m.org_id AND p.id=m.project_id WHERE m.org_id=$1 AND m.id=$2`, a.OrgID, in.ID).
 			Scan(&d.Title, &d.Body, &d.State, &d.Class, &d.Creator, &d.ProjectID, &d.ResourceVersion)
+	case "risk", "issue":
+		err = tx.QueryRow(ctx, "SELECT r.title,(to_jsonb(r)-ARRAY['id','org_id','created_at','updated_at','creator_id','project_id','version'])::text,r.state,p.classification,r.creator_id,r.project_id,r.version FROM "+in.Type+"s r JOIN projects p ON p.org_id=r.org_id AND p.id=r.project_id WHERE r.org_id=$1 AND r.id=$2", a.OrgID, in.ID).Scan(&d.Title, &d.Body, &d.State, &d.Class, &d.Creator, &d.ProjectID, &d.ResourceVersion)
 	case "post":
 		return contextPost(ctx, tx, a, c, in, members)
 	case "file":

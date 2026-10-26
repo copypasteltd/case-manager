@@ -7278,7 +7278,7 @@ export interface components {
         };
         AgentSourceSnapshot: {
             /** @enum {string} */
-            type: "project" | "task" | "post" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_oa_request" | "agent_post_write" | "agent_finance_report";
+            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_oa_request" | "agent_post_write" | "agent_finance_report";
             /** Format: uuid */
             id: string;
             version_id?: string | null;
@@ -7309,19 +7309,27 @@ export interface components {
             acceptance_criteria?: string;
             /** @enum {string} */
             action?: "start" | "review" | "return" | "complete" | "block" | "resume" | "cancel" | "reopen" | "activate" | "hold" | "close" | "achieve" | "miss";
+            description?: string;
+            /** @enum {string} */
+            severity?: "low" | "medium" | "high" | "critical";
+            probability?: ("low" | "medium" | "high") | null;
+            mitigation?: string;
+            resolution?: string;
+            /** @enum {string} */
+            state?: "open" | "mitigating" | "realized" | "investigating" | "resolved" | "closed";
         };
         AgentMutationInput: {
             /** @enum {string} */
-            tool: "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             arguments: components["schemas"]["AgentMutationArguments"];
         };
         AgentMutationView: {
             /** Format: uuid */
             run_id: string;
             /** @enum {string} */
-            tool: "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             /** @enum {string} */
-            resource_type: "project" | "task" | "milestone" | "deliverable";
+            resource_type: "project" | "task" | "milestone" | "deliverable" | "risk" | "issue";
             /** Format: uuid */
             resource_id: string;
             base_version: number;
@@ -9873,10 +9881,8 @@ export interface components {
             owner_id?: string;
             /** @enum {string} */
             severity?: "low" | "medium" | "high" | "critical";
-            /** Format: date-time */
-            due_at?: string;
-            /** @enum {string} */
-            probability?: "low" | "medium" | "high";
+            due_at?: string | null;
+            probability?: ("low" | "medium" | "high") | null;
             mitigation?: string;
             /** @enum {string} */
             state?: "open" | "mitigating" | "closed" | "realized";
@@ -9929,8 +9935,7 @@ export interface components {
             owner_id?: string;
             /** @enum {string} */
             severity?: "low" | "medium" | "high" | "critical";
-            /** Format: date-time */
-            due_at?: string;
+            due_at?: string | null;
             resolution?: string;
             /** @enum {string} */
             state?: "open" | "investigating" | "resolved" | "closed";

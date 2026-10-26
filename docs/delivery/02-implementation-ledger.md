@@ -802,3 +802,11 @@ Go／SQL／契约、运行时、Web、依赖及Skill未改；完整后端SHA-256
 - 双语README、开发／使用约束、媒体目录、差异表和发布检查同步；真实四端、云／模型／TG、120GB／2TB及生产门继续开放。
 
 The shared mobile knowledge/blog workflows, original-comment preservation and exact pin resolver now have fresh complete source-bound checks and actual safe media. Gradle's cached native-test status and historical capture scope are explicit. See the [workflow](../development/83-mobile-knowledge-workflows.md) and [verification](../quality/evidence/mobile-knowledge/verification.md). The full platform goal remains open.
+
+## 58. 秘书风险与问题完整授权与回执（增量84）
+
+新增四个准确工具与Web／Taro完整表单，创建使用父项目版本、修改使用事项版本；风险发生明确确认并要求双权限，沿用原事务创建关联问题、审计／outbox及幂等回执。迁移70绑定完整原资料、实际新ID／版本和结果；普通PATCH支持显式清空时刻／概率。关联问题变更后停止执行并保留已提交历史，八项Skill均保持draft。
+
+新完整后端156顶层／1,001结果／908末级（8批）、运行时43、Web88、移动183项、两小程序各16页编译通过；两端各8实际流程、3项布局；新42,885,880字节Android开发APK与17项检查通过，25项JVM结果按Gradle缓存记录。原生开发API更新至70项迁移，10项只读探针、0活动模型／启用TG／测试库；Linux新编译未运行。25项最终复核通过，新增4张图和两对实际MP4／GIF，旧83采集按805份原Git blob复算。失败尝试保留；真实设备／云／模型／TG、依赖安全、120GB／2TB及生产仍按差异表推进。
+
+[实现与用法](../development/84-secretary-project-concerns.md) · [验证](../quality/evidence/project-concerns/verification.md) · [演示](../media/README.md)。后续继续优先功能代码及对应测试／双语使用说明，完成后提交并推送。

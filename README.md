@@ -32,6 +32,12 @@ GIF 为轻量预览，较长片段适度加速；MP4 保留完整屏幕操作。
 
 GIFs are lightweight previews, with modest acceleration for the longer clip. MP4 recordings retain the complete interaction. See the [media catalog](docs/media/README.md) for scope, provenance and reproduction.
 
+秘书风险与问题：核对完整资料 → 确认风险发生会新增问题 → 准确预览。Secretary concerns: review complete metadata, explicitly confirm the linked-issue effect, then preview the exact instruction.
+
+![Web秘书风险与问题 / Web secretary concerns](docs/media/gifs/secretary-concerns-web.gif)
+
+[Web MP4](docs/media/videos/secretary-concerns-web.mp4) · [移动MP4 / Mobile MP4](docs/media/videos/secretary-concerns-mobile.mp4) · [移动GIF / Mobile GIF](docs/media/gifs/secretary-concerns-mobile.gif) · [完整方案 / Workflow](docs/development/84-secretary-project-concerns.md) · [页面预览 / Screenshot](docs/media/screenshots/secretary-concerns-web-preview.png)
+
 移动 TG 入口：本人数字身份绑定、管理员准确群配置和完整历史。录屏仅展示核对后的配置与历史，不录制私聊能力或 MFA。Mobile TG access adds own-identity binding, exact channel configuration and complete history. The recording excludes private proof capabilities and MFA inputs.
 
 移动知识操作：准确附件 → 草稿修订 → 人工确认发布 → 历史恢复及修订讨论。Mobile knowledge: explicit attachments, draft revisions, confirmed publication, restoration and revision-bound discussion.
@@ -128,16 +134,16 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量83）：补齐移动端项目日志、会议纪要、SOP和内部文章的完整手工工作流，包括公司／项目范围、Markdown、跟随／固定附件、正文修订、独立发布、历史恢复与修订讨论；同时修复Web和移动评论文字修改可能丢失隐藏原附件的问题。
+当前功能基线（增量84）：秘书新增项目风险／问题的完整创建与修改，包含明确状态、截止时刻／概率清空、风险转实际问题、原权限和真实业务回执。Web与Taro共用准确字段和版本规则，`project-update` 1.5.0仍为草稿。使用流程、参数、状态机和迁移见[方案](docs/development/84-secretary-project-concerns.md)。
 
-本轮新执行完整后端155顶层／986结果、Web81、运行时39和移动178项检查，微信／抖音各16页编译、12组实际流程及9项布局通过。新Android开发APK为42,881,123字节、17项包检查通过；25项JVM结果本次按实际Gradle标记使用缓存。25项最终来源复核通过。
+完整后端156顶层／1,001结果、Web88、运行时43、移动183项及两小程序各16页编译通过；Web和Taro各8组实际流程、各3项布局通过。Android开发APK为42,885,880字节、17项包检查通过；25项JVM结果按Gradle标记使用缓存。25项最终来源复核通过。
 
-新增3张截图、2.8秒MP4和17帧GIF；演示素材目录共32 PNG、9 MP4、9 GIF。旧TG采集按ec8c0fc的793份原Git blob保留准确历史来源。完整记录见[增量83验证](docs/quality/evidence/mobile-knowledge/verification.md)。真实四端／TG／云／模型、容量和生产放行继续开放。
+新增4张截图和Web／移动两对MP4／GIF，演示素材目录共36 PNG、11 MP4、11 GIF。原生开发API已更新至70项迁移；10项只读探针通过，0活动模型／启用TG／测试库。增量83的805份采集来源按afbb926原Git blob保留。完整记录见[增量84验证](docs/quality/evidence/project-concerns/verification.md)，真实四端、云／模型／TG、容量、安全和生产放行继续开放。
 
-The current functional baseline (increment83) adds complete mobile workflows for project logs, meeting notes, SOPs and internal articles: company/project scope, safe Markdown, follow-current/fixed attachments, immutable revisions, separate publication, historical restoration and revision-bound discussion. Text-only comment edits across Web/mobile now preserve original server-side attachments.
+The current functional baseline (increment84) adds complete secretary risk/issue creation and updates, explicit state transitions, nullable date/probability clearing, atomic risk-to-issue conversion and genuine business receipts. Web and Taro share exact field/version rules. The `project-update` 1.5.0 Skill remains draft; see the [workflow, parameters and migration](docs/development/84-secretary-project-concerns.md).
 
-Fresh checks passed for the complete backend (155 top-level tests/986 results), Web (81), runtime (39), mobile (178), both 16-page mini-program builds, 12 actual flows and 9 layouts. The new 42,881,123-byte Android debug APK passed 17 inspections; 25 JVM results were reused from Gradle cache as explicitly recorded. All 25 final source checks passed.
+Fresh checks passed for the complete backend (156 top-level tests/1,001 results), Web (88), runtime (43), mobile (183), both 16-page mini-program builds, eight actual flows and three layouts per browser client. The new 42,885,880-byte Android debug APK passed 17 inspections;25 JVM results were reused from Gradle cache as recorded. All 25 final source checks passed.
 
-Three new screenshots, a 2.8-second MP4 and 17-frame GIF bring the media catalog to 32 PNGs, 9 MP4s and 9 GIFs. Earlier TG capture is bound to 793 original Git blobs at ec8c0fc. See [increment83 verification](docs/quality/evidence/mobile-knowledge/verification.md) for source bindings, cleanup and retained failures. Real devices/platforms, TG/cloud/model, capacity and production gates remain open.
+Four screenshots and two actual Web/mobile MP4/GIF pairs bring the media catalog to 36 PNGs, 11 MP4s and 11 GIFs. The owned native development API now uses70 migrations;10 read-only probes passed with zero active model profiles, enabled TG channels or test databases. Increment83 remains bound to 805 original Git blobs at afbb926. See [increment84 verification](docs/quality/evidence/project-concerns/verification.md). Real devices/platforms, cloud/model/TG, capacity, security and production gates remain open.
 
 后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.

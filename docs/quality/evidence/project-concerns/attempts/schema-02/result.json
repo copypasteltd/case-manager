@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T20:33:41.441507+00:00",
+  "command": "python app/scripts/test_backend.py --package ./internal/httpapi -run ^TestProjectCollaborationIntegration$ -timeout 6m -v",
+  "exit_code": 1,
+  "error": "migration 0070_agent_project_concerns.sql failed: ERROR: mismatched parentheses at or near ; (SQLSTATE 42601)",
+  "backend_source_sha256": "03f640ad106cc75d05ccac3c28252de68d9a2ae5cac2d579e65e1aa7b7bf307a",
+  "migration_sha256": "444309151e896c90cb1eb677d5a7ce5bbdb74b41e65afe3ddcf6bbfbbdcab54b"
+}

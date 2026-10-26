@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T22:09:55.711Z",
+  "finished_at": "2026-10-26T22:11:11.135Z",
+  "checks": [
+    "Actual MFA login reads a committed risk creation receipt with a new child ID and version one.",
+    "创建项目风险: complete actual metadata and the correct project/child version are previewed without execution."
+  ],
+  "source_count": 642,
+  "source_sha256": "8678900d299209f9b47f02f7d5d181c6e41382e7d609a16227067a3a4270cd48",
+  "source_after_sha256": "8678900d299209f9b47f02f7d5d181c6e41382e7d609a16227067a3a4270cd48",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('Risk for a risk-only actor · 待处理', { exact: true })\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "0d74404f9cd61bbdc43fac0652454a7dc48ed271b5516623f2961fee431e3280",
+  "build_source_after_sha256": "0d74404f9cd61bbdc43fac0652454a7dc48ed271b5516623f2961fee431e3280",
+  "build_source_unchanged": true
+}

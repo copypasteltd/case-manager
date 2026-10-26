@@ -10,7 +10,12 @@ EVIDENCE = APP.parent / 'docs/quality/evidence/repository-showcase'
 
 
 def main():
-    filename = APP / 'scripts/verify_mobile_project_resources_development.py'
+    global EVIDENCE
+    baseline_path = APP.parent / 'docs/quality/current-functional-baseline.json'
+    baseline = json.loads(baseline_path.read_text(encoding='utf-8')) if baseline_path.exists() else {}
+    if baseline:
+        EVIDENCE = APP.parent / 'docs/quality/evidence' / baseline['evidence_group']
+    filename = APP / 'scripts' / baseline.get('development_verification_script', 'verify_mobile_project_resources_development.py')
     spec = importlib.util.spec_from_file_location('publication_development_probe', filename)
     probe = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(probe)

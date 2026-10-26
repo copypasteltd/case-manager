@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T22:28:29.081Z",
+  "finished_at": "2026-10-26T22:30:05.481Z",
+  "checks": [
+    "Actual MFA login reads a committed risk creation receipt with a new child ID and version one.",
+    "创建项目风险: complete actual metadata and the correct project/child version are previewed without execution.",
+    "Risk realization requires a visible confirmation before its exact intent can be prepared.",
+    "修改风险资料与状态: complete actual metadata and the correct project/child version are previewed without execution.",
+    "修改问题资料与状态: complete actual metadata and the correct project/child version are previewed without execution.",
+    "创建项目问题: complete actual metadata and the correct project/child version are previewed without execution.",
+    "The real send fixes the parent version, complete issue fields and explicit empty date without claiming a business write.",
+    "The exact resend reuses one run; cancelling before execution leaves both actual concern collections unchanged."
+  ],
+  "source_count": 642,
+  "source_sha256": "7ce3387d670d205a24852c288b02be649db44d62c6732390edad00b6c719ae11",
+  "source_after_sha256": "7ce3387d670d205a24852c288b02be649db44d62c6732390edad00b6c719ae11",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "13e210075540a94db51bd72aca2a1f8fcb215a0ad28b61063d845e9d95b6f785",
+  "build_source_after_sha256": "13e210075540a94db51bd72aca2a1f8fcb215a0ad28b61063d845e9d95b6f785",
+  "build_source_unchanged": true
+}

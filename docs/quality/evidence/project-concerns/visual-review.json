@@ -1,0 +1,40 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-26T22:50:05.316377+00:00",
+  "files": [
+    {
+      "file": "docs/media/screenshots/secretary-concerns-web-receipt.png",
+      "sha256": "1ba2ab29c50236b26d1dd4ba3155bb1398727b9b521e8f92e5f182514a519394"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-web-preview.png",
+      "sha256": "35c264e71b07bff30a9999e3879053a260e5a81f21cc9fdfca032c304f0b907d"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-mobile-receipt.png",
+      "sha256": "565f6fc5731b66bb8d6bad4d7a5f70b92ac1809edb1c54360c30634aed028230"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-mobile-preview.png",
+      "sha256": "882c00acdb2ae9a9d3e147a29f98ebbd58ce9042ddc6ad513adcd03580a8e8e1"
+    },
+    {
+      "file": "docs/media/gifs/secretary-concerns-web.gif",
+      "sha256": "59efa5aa3fe40ddb5bcf060556ccc751a9b39fb194b4a5fb85bea9360f8f08cd"
+    },
+    {
+      "file": "docs/media/gifs/secretary-concerns-mobile.gif",
+      "sha256": "d00727d2784cf67a078d2ba5edf7a8c05b4f82bfdb9d16e33d66331a5c6ce209"
+    }
+  ],
+  "method": "Inspected original Web/mobile previews and a contact sheet of both receipts plus first/middle/last actual GIF frames.",
+  "checks": [
+    "Complete concern fields and correct parent/child version labels are visible.",
+    "Risk realization confirmation and the explicit linked-issue effect are visible.",
+    "Actual receipts remain distinct from unexecuted previews.",
+    "No passwords, MFA, private capabilities or real business data appear.",
+    "Chinese text, narrow layouts and escaped untrusted fixture text remain readable."
+  ],
+  "real_device": false,
+  "real_model": false
+}
