@@ -166,3 +166,21 @@ test('new text fields share the memory budget and reject overlong content withou
   h.open({ ...target, id: 'second' }).write(input); h.open({ ...target, id: 'third' }).write(input);
   assert.equal(first.read(), undefined); assert.equal(h.open({ ...target, id: 'third' }).read()?.criteria?.length, 20000);
 });
+
+
+test('change inputs and operation reasons are bound to exact basis, head and content; attestations and credentials never restore', () => {
+  const h = harness(), target: DraftTarget = { kind: 'change-create', id: 'project:HKD:new', version: 7, hash: 'a'.repeat(64) };
+  const change = { title: 'Proposal', category: 'Delivery', currency: 'HKD', scope: 'Complete scope', scopeDelta: 'Scope impact', scheduleDelta: 'Date impact', start: '', due: '', budgetMode: 'replace', lines: [{ id: 'stable-row', category: 'Delivery', start: '', end: '', amount: '0.000001' }] };
+  const handle = h.open(target);
+  assert.equal(handle.write({ ...fields, change, basis: { private: true }, files: ['version'], accepted: true, checked: true, fresh: true, code: '123456' } as any), true);
+  assert.deepEqual(handle.read(), { ...fields, change });
+  const copy = handle.read()!; copy.change!.lines[0].amount = '999'; assert.equal(handle.read()?.change?.lines[0].amount, '0.000001');
+  assert.equal(h.open({ ...target, hash: 'b'.repeat(64) }).read(), undefined);
+  assert.equal(h.open({ ...target, kind: 'change-edit' }).read(), undefined);
+  assert.equal(h.drafts.open(h.authority, { ...target, hash: 'invalid' }), undefined);
+  const implement: DraftTarget = { kind: 'change-implement', id: 'change', version: 8, revision: 'fixed-revision', hash: 'c'.repeat(64) };
+  h.open(implement).write(fields);
+  assert.equal(h.open({ ...implement, revision: 'new-revision' }).read(), undefined);
+  assert.equal(h.open({ ...implement, kind: 'change-prepare' }).read(), undefined);
+  assert.equal(h.open(implement).read()?.reason, fields.reason);
+});

@@ -1,0 +1,13 @@
+Completed actual flow 1: A real mobile proposal stores complete scope, exact decimal budget and an explicitly chosen historical file; project/current budget remain unchanged.
+AssertionError [ERR_ASSERTION]: /changes/dacb111c-cd09-479b-a2ab-1d4c39177ac0/submit
+
+201 !== 200
+
+    at submit (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:47:10)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:459:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)
+    at async prepare (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:113:18)
+    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:173:41
+Active page: {"route":"#/pages/finance/index?kind=change&id=dacb111c-cd09-479b-a2ab-1d4c39177ac0","titles":["项目变更资料."],"actions":["我的","返回项目变更列表","查看项目预算历史","查看此固定附件资料 ↗","保存变更申请草稿","返回当前变更操作","重新读取项目变更"]}
+{"passed":false,"checks":1,"closed":true}

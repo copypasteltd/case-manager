@@ -1,0 +1,1 @@
+The real change/request preparation succeeded. The checker then changed window.location.hash into a previously cached Taro page and retained the earlier create-page route context. Final checks use actual Taro navigation buttons for subsequent same-page routes. Raw capture metadata, original source/result/logs and cleanup proof are retained; raw frames remain ignored.

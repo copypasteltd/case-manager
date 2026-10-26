@@ -8,6 +8,7 @@ import { MobileError, type Schemas } from '../../platform/session';
 import { businessNames, businessRoutes, currentBusinessPayload, requestReceipt, type Business, type BusinessKind } from '../../platform/business-input';
 import { Action, Busy, Check, Empty, Fact, Notice, Section, State, date } from '../../ui';
 import { PayloadSnapshot } from '../detail/snapshot';
+import { currentChange, currentChangePayload, changeRequestProof } from '../../platform/change-input';
 import { TextField } from './controls';
 
 export function PrepareRequest({ kind, business, me, onCancel }: { kind: BusinessKind; business: Business; me: Schemas['Me']; onCancel(): void }) {
@@ -23,7 +24,7 @@ export function PrepareRequest({ kind, business, me, onCancel }: { kind: Busines
 function nameOf(kind: BusinessKind) { return businessNames[kind]; }
 export function RequestActions({ request, me, onCommitted }: { request: Schemas['Request']; me: Schemas['Me']; onCommitted(): void }) {
   const [mode, setMode] = useState<'none' | 'submit' | 'revise' | 'withdraw' | 'history'>('none');
-  const supported = request.kind === 'contract' || request.kind === 'purchase' || request.kind === 'claim';
+  const supported = request.kind === 'contract' || request.kind === 'purchase' || request.kind === 'claim' || request.kind === 'change';
   return <Section title='申请操作与历史'><View className='cp-pad'>
     {mode === 'none' ? <>
       {supported && <Action secondary onClick={() => go(request.kind, request.business_id)}>查看当前业务资料</Action>}
@@ -33,7 +34,7 @@ export function RequestActions({ request, me, onCommitted }: { request: Schemas[
       <Action secondary onClick={() => setMode('history')}>查看申请修订历史</Action>
     </> : <>
       {mode === 'submit' && request.can_submit && <SubmitRequest request={request} me={me} onCommitted={onCommitted} />}
-      {mode === 'revise' && supported && request.can_revise && <ReviseRequest request={request} me={me} onCommitted={onCommitted} />}
+      {mode === 'revise' && supported && request.can_revise && (request.kind === 'change' ? <ReviseChangeRequest request={request} me={me} onCommitted={onCommitted} /> : <ReviseRequest request={request} me={me} onCommitted={onCommitted} />)}
       {mode === 'withdraw' && request.can_withdraw && <WithdrawRequest request={request} me={me} onCommitted={onCommitted} />}
       {mode === 'history' && <RequestHistory request={request} me={me} />}
       <Action secondary onClick={() => setMode('none')}>返回申请详情</Action>
@@ -74,6 +75,30 @@ function ReviseRequest({ request, me, onCommitted }: { request: Schemas['Request
       <TextField name='revise-reason' label='更新申请依据' value={draft.fields.reason} onChange={reason => draft.update({ reason })} max={200} multiline disabled={command.busy || command.blocked} />
       <Check checked={checked} disabled={command.busy || command.blocked} onChange={setChecked}>我已核对本次将采用的完整业务修订</Check>
       <Action loading={command.busy} disabled={!checked || !draft.fields.reason.trim() || command.blocked} onClick={() => void command.submit('/requests/' + request.id + '/revisions', { expected_version: request.version, expected_business_version: value.version, business_revision_id: value.current_revision_id, business_content_hash: value.content_hash, reason: draft.fields.reason.trim() } satisfies Schemas['RequestRevise'])}>确认更新申请草稿</Action>
+    </>}
+  </>;
+}
+function ReviseChangeRequest({ request, me, onCommitted }: { request: Schemas['Request']; me: Schemas['Me']; onCommitted(): void }) {
+  const business = useRecord<Schemas['Change']>('/changes/' + request.business_id), draft = useReason(request, me, 'request-revise');
+  const [checked, setChecked] = useState(false);
+  let value: Schemas['Change'] | undefined, error: unknown;
+  if (business.value) {
+    try { value = currentChange(business.value, request.business_id); }
+    catch (cause) { error = cause; }
+  }
+  const command = useCommand<Schemas['Request']>(() => { draft.forget(); onCommitted(); }, draft.binding,
+    result => Boolean(value && changeRequestProof(result, value, 'draft', request)));
+  const blocked = command.busy || command.blocked;
+  return <><DraftNotice restored={draft.restored} /><Notice error={business.error ?? error ?? command.error} /><CommandNotice blocked={command.blocked} />
+    {business.loading ? <Busy /> : value && <>
+      <Text className='cp-notice cp-paragraph'>重新固定当前完整变更提案、项目预算基线与文件。旧申请内容及决定保留；此动作不会重新送审或沿用原批准。</Text>
+      <PayloadSnapshot snapshot={currentChangePayload(value)} digest={value.revision.content_hash} me={me} />
+      <TextField name='change-revise-request-reason' label='更新变更申请依据' value={draft.fields.reason} max={200} multiline disabled={blocked} onChange={reason => { draft.update({ reason }); setChecked(false); }} />
+      <Check checked={checked} disabled={blocked} onChange={setChecked}>我已核对本次将采用的完整变更修订与预算基线</Check>
+      <Action loading={command.busy} disabled={blocked || !checked || !draft.fields.reason.trim()} onClick={() => void command.submit('/requests/' + request.id + '/revisions', {
+        expected_version: request.version, expected_business_version: value.version, business_revision_id: value.current_revision_id,
+        business_content_hash: value.revision.content_hash, reason: draft.fields.reason.trim(),
+      } satisfies Schemas['RequestRevise'])}>确认更新变更申请草稿</Action>
     </>}
   </>;
 }

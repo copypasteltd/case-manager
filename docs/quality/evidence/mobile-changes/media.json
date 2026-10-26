@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T14:27:15.407134+00:00",
+  "source_sha256": "75c46bcfc7965ccfce612b324e05190cab66092a6f09ed6e3afa6d5dd59034d6",
+  "browser_result_sha256": "def985e21eefb0682c3055ba524d0e6ef5149df9c8453c1e23553aa68eeed9e6",
+  "frame_manifest_sha256": "7c1ab7ea1a2c8e7583d1f14982b20fbcb8638138b11bd744def3706dd424b30d",
+  "source_frames": 35,
+  "source_duration_ms": 7178,
+  "gif_speed_factor": 1.0,
+  "artifacts": [
+    {
+      "file": "docs/media/videos/mobile-project-change-workflow.mp4",
+      "sha256": "e8e7dd7f551c23a45fbb20ecd5383bb82db7d93e1d92f27ea3bb392ef4ca4d9b",
+      "bytes": 240725
+    },
+    {
+      "file": "docs/media/gifs/mobile-project-change-workflow.gif",
+      "sha256": "15d6642a4c1b937ae85ea0971b6d528a47fdaf9afdaae1de8d46bddff3089fb5",
+      "bytes": 802047
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "73",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "7.300000"
+    }
+  },
+  "encoder_sha256": "21ff665331b0087565ca06edd15274d71f12cbce9bd96d2d866677af766374f7",
+  "helper_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "audio": false,
+  "real_browser_pixels": true,
+  "synthetic_data": true,
+  "real_device": false,
+  "credentials_excluded": true
+}

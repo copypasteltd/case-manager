@@ -1,0 +1,120 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T14:16:09.158Z",
+  "source_sha256": "07bc479b829f133d7308ae59f75304222b5f1c3517208c23a42c42b09d9ef5e7",
+  "source_after_sha256": "07bc479b829f133d7308ae59f75304222b5f1c3517208c23a42c42b09d9ef5e7",
+  "source_unchanged": true,
+  "source_count": 604,
+  "checks": [
+    "A real mobile proposal stores complete scope, exact decimal budget and an explicitly chosen historical file; project/current budget remain unchanged.",
+    "Editing appends an immutable revision; the original request is explicitly revised to the new full proposal without silent resubmission or inherited approval.",
+    "Original preview/submission and an independent reviewer approve the exact revised payload; approval itself changes neither project nor current budget.",
+    "Separate human scope/budget attestations and fresh interactive MFA implement the exact approved revision; actual project, implementation record and current budget are reconciled.",
+    "The explicit keep mode sends null and a separate approved/implemented change retains the exact original budget identity and total.",
+    "Explicit empty replacement sends [], activates a zero-line budget only after approval and implementation, and retains the actual superseded predecessor in currency/state history.",
+    "A deliberately incomplete real-write response keeps text/reason, blocks replay and never announces success; actual source reads confirm exactly one created proposal."
+  ],
+  "layouts": [
+    {
+      "page": "change-editor",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "change-editor",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "change-editor",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "approved-change",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "approved-change",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "approved-change",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "budget-revisions",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "budget-revisions",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "budget-revisions",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-project-change-workflow",
+      "frame_count": 35,
+      "duration_ms": 7148,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-project-change-workflow/frames.json",
+      "manifest_sha256": "19b981c385fe8c542b27d061b7dcb594c842113594cfd4801345cca9586d6318"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-change-editor.png",
+      "caption": "Actual shared mobile editor with explicit full proposal and per-currency replacement.",
+      "sha256": "579c6f26d51c55a204c9dc7baf03fb29ee0f88480ed6c81924382a945a34f1f4",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-approved.png",
+      "caption": "Actual independent approval still requires separate implementation.",
+      "sha256": "5097ef4a7cc91de94f7538419a358837f59d7432e17fdd93832925d30ea31374",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-budget-history.png",
+      "caption": "Actual current and historical budget revisions are read with currency/state filters.",
+      "sha256": "b1e3031d5ec65f9808422793fa39401f7b700567dcd5adf7ef3d21110ff7a653",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:233:10\nActive page: {\"route\":\"#/pages/project/index?section=change-form&id=962cfa76-635c-4499-a558-124dc3ab8fb2&change_id=d45df657-2e5a-4e72-8a7b-78d1923fb633\",\"titles\":[\"编辑项目变更.\"],\"actions\":[\"我的\",\"返回变更列表核对结果\",\"重新读取并核对基线\",\"查找变更文件\",\"replica-source.bin选择文件后再选择准确版本↗\",\"保存新的变更修订\",\"刷新变更编辑资料\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 3,
+  "browser_contexts_closed": 3,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "07bc479b829f133d7308ae59f75304222b5f1c3517208c23a42c42b09d9ef5e7",
+  "source_sha256_after_build": "07bc479b829f133d7308ae59f75304222b5f1c3517208c23a42c42b09d9ef5e7",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

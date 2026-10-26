@@ -56,7 +56,7 @@ Routine API processes do not receive migration credentials. Each worker receives
 | Module | Implemented | Remaining implementation or independent acceptance |
 | --- | --- | --- |
 | Identity and authorization | Users, roles/actions, project membership, classification/ACL, MFA, session revocation, password recovery, audit | Actual organization policy, security review and production identity operations |
-| Projects | Template revisions, creation, members, tasks/dependencies, board/timeline, milestones, risks/issues, deliverables, changes, budgets, closeout/archive | Additional mobile change application and budget workflows; full client matrix |
+| Projects | Template revisions, creation, members, tasks/dependencies, board/timeline, milestones, risks/issues, deliverables, full changes/budgets, closeout/archive | Complete journeys across OA/finance and full client coverage verification |
 | Office workflows | Parties, contract revisions, purchase/claim drafts, fixed submissions, sequential approvals, execution, signature and fulfillment history | Remaining client editors/attachments and actual company approval policies |
 | Finance and subscriptions | Canonical actual costs, allocations, payments, refunds/reversals, cash/incurred reports, billing periods and forecasts | Real reconciliation samples, further mobile operations and business acceptance |
 | Files and knowledge | Namespaces/ACL/fixed versions, multipart protocol, verification/scanning, promotion, replication/recovery, knowledge drafts/publication/history | Real OSS/R2 identities and policies, 120 GB tests, 2 TB migration, recovery drills and more formats |
@@ -88,6 +88,8 @@ The project overview aggregates sixteen business domains with original-currency 
 On mobile, open Project → Tasks → New task. Enter the title, acceptance text, an actual project member, priority, review requirement and Hong Kong schedule; choose a parent/milestone from the current paginated project records, verify and save. Task details support editing, child creation and separately confirmed prerequisite addition/removal. Emptying an existing date or association explicitly clears it. State transitions use the original commands, which reject incomplete prerequisites, cycles and read-only projects. On conflicts, incomplete receipts or lost responses, preserve the input and read the actual task/edges before deciding the next action; do not repeatedly create it. See the [task protocol](development/78-mobile-task-editing-and-dependencies.md) and [actual demonstration](media/README.md#4-移动任务子任务与前置依赖--mobile-task-subtask-and-prerequisite).
 
 On mobile, open Project → Closeout and archive. Inspect all thirteen categories and dispose original blockers, explicitly enter closing, then record outcomes, lessons, follow-up and the reason. Select zero to twenty formal file versions if needed, attest business and financial closure separately, complete current MFA and confirm archive. Success also reconciles the actual project and new history. Conflicts and unknown results retain text and block replay; explicit reread refreshes authority/source facts and resets attestations/MFA. History loads ten reviews at a time; restricted reads expose no counts. Controlled reopening preserves the old review and marks its basis changed. See the [closeout protocol](development/79-mobile-project-closeout-and-archive.md) and [actual demonstration](media/README.md).
+
+On mobile, open Project → Changes → New complete proposal, or propose an adjustment from Budget revisions. Enter an explicitly configured currency, read and accept the complete current project/budget basis, and enter full scope, dates, impact explanations and exact formal file versions. Choose keep (null), full replacement (an array) or clearing (an empty array). Saving a proposal prepares no approval automatically: prepare the original request, explicitly revise it after proposal edits, inspect its original workflow and submit for an independent decision. Approval still changes neither project nor budget. Implementation requires the exact approved request and current basis, separate scope/date and budget attestations, a reason and fresh interactive MFA; actual project, implementation and current/predecessor budget reads must corroborate success. Proposal history loads ten revisions and budgets twenty at a time, with independent currency/state filters. See the [complete change/budget protocol](development/80-mobile-project-changes-and-budgets.md) and [actual media](media/README.md).
 
 ### Contracts, procurement and claims
 
@@ -216,7 +218,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment79 verification record](quality/evidence/mobile-closeout/verification.md) identifies executions, reuse and failed attempts.
+Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment80 verification record](quality/evidence/mobile-changes/verification.md) identifies executions, reuse and failed attempts.
 
 ## 7. Production deployment and storage plan
 
@@ -234,9 +236,9 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 | --- | --- | --- |
 | Go / PostgreSQL | 146 top-level tests, 919 result records/832 leaf scenarios, eight passing batches | Complete unchanged Go/SQL/contract source digest reuses increment74; not a new full execution in this publication |
 | Runtime / Web | 39 / 81 passing tests and builds | Reused unchanged sources; real model remains disabled |
-| Taro | 137 passing tests; 16 pages in each WeChat/Douyin build | Executed in increment79: nine actual closeout/archive flows and nine layouts; H5 is not device acceptance |
-| Android | Increment79 APK: 42,842,779 bytes, 17 inspections, 25 native results | UP-TO-DATE results retained, not newly executed; physical devices, signing and release remain open |
-| Repository media | 20 PNGs, five MP4s and five GIFs; this increment adds three closeout/retrospective images and one recording/GIF pair | Isolated synthetic data and actual browser/API actions; historical captures retain provenance, with no real cloud/model/TG delivery |
+| Taro | 154 passing tests; 16 pages in each WeChat/Douyin build | Executed in increment80: ten actual change/budget flows and nine layouts; H5 is not device acceptance |
+| Android | Increment80 APK: 42,858,139 bytes, 17 inspections, 25 native results | UP-TO-DATE results retained, not newly executed; physical devices, signing and release remain open |
+| Repository media | 23 PNGs, six MP4s and six GIFs; this increment adds three change/budget images and one proposal recording/GIF pair | Isolated synthetic data and actual browser/API actions; historical captures retain provenance, with no real cloud/model/TG delivery |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This mobile increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

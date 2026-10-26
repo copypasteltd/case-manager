@@ -173,6 +173,7 @@
 
 | 最近增量 | 已实现内容 |
 | --- | --- |
+| [移动项目变更与预算修订](development/80-mobile-project-changes-and-budgets.md) | 完整项目／币种基线、固定提案、原申请修订及独立审批、本人MFA明确实施、实际项目／预算证明及不可变历史 |
 | [移动项目结项与固定归档](development/79-mobile-project-closeout-and-archive.md) | 十三类完整核查、阶段操作、固定复盘、两项声明与本人MFA、冲突保留、实际项目／历史证明及受控重开 |
 | [移动任务、子任务与前置依赖](development/78-mobile-task-editing-and-dependencies.md) | 手工新建／编辑、实际候选、空值解除和依赖回读；124项移动测试、9组真实流程、6项布局，新增2张截图及任务MP4／GIF |
 | [仓库整理、双语指南与实际演示](development/77-repository-publication-and-bilingual-readmes.md) | 双语完整README、15张初始截图、3段MP4／3个GIF、来源绑定与提交检查、后续同步推送约束；不改变生产放行状态 |
@@ -190,4 +191,4 @@
 | [移动项目立项与成员管理](development/75-mobile-project-setup-and-members.md) | 新建立项、准确模板、资料编辑、角色／移除及负责人移交；99项移动测试、7条真实流程和新Android开发APK |
 | [移动里程碑、风险与问题](development/76-mobile-project-milestones-risks-and-issues.md) | 三类事项新建／编辑、明确状态、风险转实际问题及冲突恢复；114项移动测试、8条真实流程及新Android开发APK |
 
-最近功能增量见[移动项目结项与固定归档](development/79-mobile-project-closeout-and-archive.md)：十三类完整核查、原项目阶段、三项复盘、两项声明、本人MFA、正式文件及实际项目／历史证明均接通原接口。最终137项移动测试、类型检查、双小程序各16页、9组实际API／H5流程及9项布局通过，5个所属上下文、临时服务及测试库已清理。新增3张截图、3.6秒MP4及GIF；Android产物、原生测试实际执行范围和准确复用的后端／运行时／Web证据见[本次验证记录](quality/evidence/mobile-closeout/verification.md)。日常69项迁移只读核对通过。完整四端首发、真实模型／云／TG／平台／设备、120GB／2TB、安全、部署及恢复继续见[实施台账](delivery/02-implementation-ledger.md)与[Goal差异表](delivery/03-goal-gap-assessment.md)。
+最近功能增量见[移动项目变更与预算修订](development/80-mobile-project-changes-and-budgets.md)：明确项目／币种完整基线、固定提案与文件、原申请修订／独立审批、双项核实与本人MFA实施、预算保持／替换／清空及实际项目／历史证明。最终154项移动测试、类型检查、双小程序各16页、10组实际API／H5流程及9项布局通过，5个所属上下文、临时服务及测试库已清理。新增3张截图、7.3秒MP4及44帧GIF；42,858,139字节Android开发APK及17项包检查通过，原生测试范围和准确复用证据见[本次验证记录](quality/evidence/mobile-changes/verification.md)。日常69项迁移只读核对通过。完整四端首发、真实模型／云／TG／平台／设备、120GB／2TB、安全、部署及恢复继续见[实施台账](delivery/02-implementation-ledger.md)与[Goal差异表](delivery/03-goal-gap-assessment.md)。

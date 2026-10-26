@@ -41,11 +41,17 @@ GIFs are lightweight previews, with modest acceleration for the longer clip. MP4
 
 [移动任务 MP4 / Mobile task MP4](docs/media/videos/mobile-task-workflow.mp4) · [具体操作与约束 / Workflow protocol](docs/development/78-mobile-task-editing-and-dependencies.md) · 6.7 s · Taro H5
 
-最新移动结项操作：完整清单 → 明确结项 → 复盘／双项核实／MFA → 归档及实际回读 → 受控重开。Latest closeout flow: complete checklist → closing → retrospective, attestations and MFA → archive with actual proof → controlled reopen.
+移动结项操作：完整清单 → 明确结项 → 复盘／双项核实／MFA → 归档及实际回读 → 受控重开。Closeout flow: complete checklist → closing → retrospective, attestations and MFA → archive with actual proof → controlled reopen.
 
 ![移动项目结项与复盘 / Mobile project closeout and retrospective](docs/media/gifs/mobile-project-closeout-workflow.gif)
 
 [移动结项 MP4 / Mobile closeout MP4](docs/media/videos/mobile-project-closeout-workflow.mp4) · [操作与约束 / Workflow protocol](docs/development/79-mobile-project-closeout-and-archive.md) · Taro H5
+
+移动项目变更：明确采用项目／币种预算基线 → 完整提案与固定文件 → 原申请修订及独立审批 → 双项核实／MFA → 明确实施及实际回读。Mobile changes: accept the exact project/currency basis → full proposal and fixed files → original request revision and independent approval → two attestations/MFA → explicit implementation with actual source proof.
+
+![移动完整变更与预算提案 / Mobile full change and budget proposal](docs/media/gifs/mobile-project-change-workflow.gif)
+
+[移动变更 MP4 / Mobile change MP4](docs/media/videos/mobile-project-change-workflow.mp4) · [完整操作约束 / Complete workflow](docs/development/80-mobile-project-changes-and-budgets.md) · Taro H5；录制展示初次提案，审批与实施结果见验证记录 / Capture shows initial drafting; approval/implementation are documented in the verification record.
 
 ## 使用与开发 / Usage and development
 
@@ -101,8 +107,8 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量79）：后端146个顶层测试／919条结果，运行时39项、Web81项、移动137项；两小程序各16页。新增移动十三类结项、项目阶段、固定复盘归档、历史分页与受控重开，9组实际API／H5流程和9项布局通过。新Android开发APK为42,842,779字节，17项包检查通过；25项原生测试为Gradle保留结果，本轮未新执行，见[增量79验证记录](docs/quality/evidence/mobile-closeout/verification.md)。后端／Web／运行时只在完整来源摘要匹配时复用；完整四端生产放行继续开放。
+当前功能基线（增量80）：后端146个顶层测试／919条结果，运行时39项、Web81项、移动154项；两小程序各16页。新增移动完整变更、原申请修订／独立审批、本人MFA明确实施及预算保持／替换／清空，10组实际API／H5流程和9项布局通过。新Android开发APK为42,858,139字节，17项包检查通过；25项原生测试为Gradle保留结果，本轮未新执行，见[增量80验证记录](docs/quality/evidence/mobile-changes/verification.md)。后端／Web／运行时只在完整来源摘要匹配时复用；完整四端生产放行继续开放。
 
-The current functional baseline (increment79) includes 146 top-level backend tests/919 result records, 39 runtime tests, 81 Web tests and 137 mobile tests, with 16 pages per mini-program. Mobile closeout, lifecycle, immutable retrospective, history pagination and controlled reopen passed nine actual API/H5 flows and nine layouts. The new 42,842,779-byte APK passed 17 inspections; 25 native results were retained by Gradle, not newly executed. See [increment79 verification](docs/quality/evidence/mobile-closeout/verification.md). Backend/Web/runtime proofs are reused only at matching complete source digests; full production acceptance remains open.
+The current functional baseline (increment80) includes 146 top-level backend tests/919 result records, 39 runtime tests, 81 Web tests and 154 mobile tests, with 16 pages per mini-program. Complete mobile proposals, original request revision/independent approval, explicit MFA implementation and keep/replace/clear budgets passed ten actual API/H5 flows and nine layouts. The new 42,858,139-byte APK passed 17 inspections; 25 native results were retained by Gradle, not newly executed. See [increment80 verification](docs/quality/evidence/mobile-changes/verification.md). Backend/Web/runtime proofs are reused only at matching complete source digests; full production acceptance remains open.
 
 后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.

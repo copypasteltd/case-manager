@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T13:56:23.909Z",
+  "source_sha256": "0d68a5f182f5d4ca1275acfd1cf32ef2d38b7f3d3069546e42c0e5c0bca1961d",
+  "source_after_sha256": "0d68a5f182f5d4ca1275acfd1cf32ef2d38b7f3d3069546e42c0e5c0bca1961d",
+  "source_unchanged": true,
+  "source_count": 604,
+  "checks": [
+    "A real mobile proposal stores complete scope, exact decimal budget and an explicitly chosen historical file; project/current budget remain unchanged."
+  ],
+  "layouts": [],
+  "recordings": [
+    {
+      "name": "mobile-project-change-workflow",
+      "frame_count": 36,
+      "duration_ms": 7397,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-project-change-workflow/frames.json",
+      "manifest_sha256": "9edb62b39d72c506942575964dfb815edac8a67f108b0c596611ddf1ea9fda10"
+    }
+  ],
+  "screenshots": [],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: /changes/dacb111c-cd09-479b-a2ab-1d4c39177ac0/submit\n\n201 !== 200\n\n    at submit (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:47:10)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:459:9)\n    at process.callbackTrampoline (node:internal/async_hooks:130:17)\n    at async prepare (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:113:18)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:173:41\nActive page: {\"route\":\"#/pages/finance/index?kind=change&id=dacb111c-cd09-479b-a2ab-1d4c39177ac0\",\"titles\":[\"项目变更资料.\"],\"actions\":[\"我的\",\"返回项目变更列表\",\"查看项目预算历史\",\"查看此固定附件资料 ↗\",\"保存变更申请草稿\",\"返回当前变更操作\",\"重新读取项目变更\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 3,
+  "browser_contexts_closed": 3,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "0d68a5f182f5d4ca1275acfd1cf32ef2d38b7f3d3069546e42c0e5c0bca1961d",
+  "source_sha256_after_build": "0d68a5f182f5d4ca1275acfd1cf32ef2d38b7f3d3069546e42c0e5c0bca1961d",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

@@ -1,0 +1,1 @@
+Initial fixed-source compilation failed: test project dates used null rather than optional dates, and a whitelisted row id needed explicit type narrowing. The new test also needed registration in the existing explicit npm test list. Raw report and log are retained; no runtime or cloud was invoked.

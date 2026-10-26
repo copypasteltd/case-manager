@@ -4,6 +4,18 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-26 · 移动完整变更与预算 / Mobile full changes and budgets · increment80
+
+- 完整项目／币种基线、固定文件、不可变提案、原申请修订与独立审批、两项核实／本人MFA明确实施，成功须读回实际项目和预算。Full basis, fixed files, immutable proposals, original request revision/independent approval and separate MFA implementation require actual source proof.
+- 明确区分保持null、替换明细和清空[]；十进制字符串、真实日期及原币口径沿用原后端，预算不能代替费用或付款。Keep/null, replacement and clear/[] retain exact decimals and original-currency semantics; budgets do not create expenses/payments.
+- 409、403或不完整回执清除不再可读的事实，保留可编辑文字并阻止重放；显式重读重置基线采用和声明。Conflicts, rejected reads and incomplete receipts protect current facts, preserve text and block replay; reread resets acceptance/attestations.
+- 154项移动测试、类型、双小程序各16页、10组实际API／H5流程和9项布局通过，5个所属上下文、临时服务及隔离数据库均回收。154 tests, types, both 16-page builds, ten actual flows and nine layouts passed; all owned resources were cleaned up.
+- 新开发APK 42,858,139字节、17项包检查；25项原生测试为UP-TO-DATE保留结果，本轮未新执行。New 42,858,139-byte APK passed 17 inspections; 25 cached native results were not re-executed.
+- 新3张截图、7.3秒MP4、44帧GIF及真实逐帧来源，双语指南、使用逻辑和稳定GAP同步更新；22项最终来源检查通过。Adds three PNGs, a 7.3-second MP4, 44-frame GIF, provenance and synchronized bilingual guides; 22 source checks passed.
+- 后端146顶层／919条结果、运行时39、Web81及Linux按未变来源准确复用；8项Skill仍draft，真实模型／云／TG／平台／设备、120GB／2TB、安全和生产恢复继续开放。Unchanged proofs are reused at exact sources; real integrations and full production acceptance remain open.
+
+[完整方案与命令 / Protocol and commands](development/80-mobile-project-changes-and-budgets.md) · [执行及失败历史 / Verification and attempts](quality/evidence/mobile-changes/verification.md)
+
 ## 2026-10-26 · 移动结项与固定归档 / Mobile closeout and immutable archive · increment79
 
 - 接通原项目阶段、十三类完整核查、复盘、两项声明／本人MFA、可选正式文件、实际项目及历史证明、分页与受控重开。Connects original lifecycle, complete checks, retrospective, separate attestations/MFA, optional formal files, actual project/history proof, pagination and controlled reopen.

@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T14:35:15.572967+00:00",
+  "environment": "owned native loopback development only",
+  "database": {
+    "role": "copypaste_app",
+    "superuser": false,
+    "bypass_rls": false,
+    "create_database": false,
+    "create_roles": false,
+    "create_public_objects": false,
+    "read_private_migration_ledger": false,
+    "write_runtime_profiles": false,
+    "insert_execution_evidence": true,
+    "rewrite_execution_evidence": false,
+    "immutable_execution_guards": 6,
+    "deferred_execution_guards": 6,
+    "active_runtime_profiles": 0,
+    "migration_count": 69,
+    "latest_migration": "0069_agent_deliverable_creation.sql",
+    "migration_manifest_matches_source": true
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "GET",
+      "path": "/v1/conversations",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "GET",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/runtime-options",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "GET",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/messages",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "POST",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/runs",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": "empty"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/runs/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "GET",
+      "path": "/v1/runs/00000000-0000-4000-8000-000000000000/event-log",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "GET",
+      "path": "/v1/runs/00000000-0000-4000-8000-000000000000/events",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": null
+    },
+    {
+      "method": "POST",
+      "path": "/v1/runs/00000000-0000-4000-8000-000000000000/cancel",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "request_body": "empty"
+    }
+  ],
+  "production_deployment": false,
+  "worker_started": false,
+  "actual_model_or_cloud": false,
+  "verification_script_sha256": "70f8c70a9c7704ac425282cec6909a5eb9bda620e0ff5648b8c9f9c0606bc20b"
+}

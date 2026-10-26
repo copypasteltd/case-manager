@@ -1,0 +1,14 @@
+Completed actual flow 1: A real mobile proposal stores complete scope, exact decimal budget and an explicitly chosen historical file; project/current budget remain unchanged.
+Completed actual flow 2: Editing appends an immutable revision; the original request is explicitly revised to the new full proposal without silent resubmission or inherited approval.
+Completed actual flow 3: Original preview/submission and an independent reviewer approve the exact revised payload; approval itself changes neither project nor current budget.
+Completed actual flow 4: Separate human scope/budget attestations and fresh interactive MFA implement the exact approved revision; actual project, implementation record and current budget are reconciled.
+Completed actual flow 5: The explicit keep mode sends null and a separate approved/implemented change retains the exact original budget identity and total.
+Completed actual flow 6: Explicit empty replacement sends [], activates a zero-line budget only after approval and implementation, and retains the actual superseded predecessor in currency/state history.
+Completed actual flow 7: A deliberately incomplete real-write response keeps text/reason, blocks replay and never announces success; actual source reads confirm exactly one created proposal.
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+true !== false
+
+    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:233:10
+Active page: {"route":"#/pages/project/index?section=change-form&id=962cfa76-635c-4499-a558-124dc3ab8fb2&change_id=d45df657-2e5a-4e72-8a7b-78d1923fb633","titles":["编辑项目变更."],"actions":["我的","返回变更列表核对结果","重新读取并核对基线","查找变更文件","replica-source.bin选择文件后再选择准确版本↗","保存新的变更修订","刷新变更编辑资料"]}
+{"passed":false,"checks":7,"closed":true}

@@ -54,6 +54,9 @@ export function projectResourceForm(kind: 'milestone' | 'risk' | 'issue', projec
 export function projectTaskForm(projectID: string, taskID?: string, parentID?: string) {
   void Taro.navigateTo({ url: '/pages/project/index?section=task-form&id=' + identifier(projectID) + (taskID ? '&task_id=' + identifier(taskID) : '') + (parentID ? '&parent_id=' + identifier(parentID) : '') });
 }
+export function projectChangeForm(projectID: string, changeID?: string, currency?: string) {
+  void Taro.navigateTo({ url: '/pages/project/index?section=change-form&id=' + identifier(projectID) + (changeID ? '&change_id=' + identifier(changeID) : '') + (currency ? '&currency=' + encodeURIComponent(currency) : '') });
+}
 export function goVersion(fileID: string, versionID: string) {
   void Taro.navigateTo({ url: '/pages/detail/index?kind=file&id=' + identifier(fileID) + '&version=' + identifier(versionID) });
 }

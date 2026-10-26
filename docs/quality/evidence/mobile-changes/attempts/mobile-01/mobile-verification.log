@@ -1,0 +1,39 @@
+
+test
+
+> @copypaste/mobile@0.1.0 test
+> tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/native-wire.test.js ../.local/mobile-tests/platform/upload-transfer.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js ../.local/mobile-tests/platform/project-overview.test.js ../.local/mobile-tests/platform/project-input.test.js ../.local/mobile-tests/platform/project-resource-input.test.js ../.local/mobile-tests/platform/task-input.test.js ../.local/mobile-tests/platform/project-closeout.test.js
+
+src/platform/change-input.test.ts(16,65): error TS2322: Type '"internal" | "project_restricted" | "confidential" | undefined' is not assignable to type '"internal" | "project_restricted" | "confidential"'.
+  Type 'undefined' is not assignable to type '"internal" | "project_restricted" | "confidential"'.
+src/platform/change-input.test.ts(25,116): error TS2322: Type '"internal" | "project_restricted" | "confidential" | undefined' is not assignable to type '"internal" | "project_restricted" | "confidential"'.
+  Type 'undefined' is not assignable to type '"internal" | "project_restricted" | "confidential"'.
+src/platform/change-input.test.ts(88,71): error TS18048: 'members.memberships' is possibly 'undefined'.
+src/platform/change-input.test.ts(144,67): error TS2345: Argument of type '{ version: number; scope: string; start_date: string | null; due_date: string | null; id: string; created_at?: string; updated_at?: string; name: string; type?: string; owner_id: string; member_ids?: string[]; ... 6 more ...; initialization_state?: "pending" | "complete" | "partial_failed"; }' is not assignable to parameter of type '{ id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; name: string; scope: string; type?: string | undefined; owner_id: string; member_ids?: string[] | undefined; ... 8 more ...; initialization_state?: "pending" | ... 2 more ... | undefined; }'.
+  Types of property 'start_date' are incompatible.
+    Type 'string | null' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+src/platform/change-input.test.ts(151,55): error TS2345: Argument of type '{ version: number; scope: string; start_date: string | null; due_date: string | null; id: string; created_at?: string; updated_at?: string; name: string; type?: string; owner_id: string; member_ids?: string[]; ... 6 more ...; initialization_state?: "pending" | "complete" | "partial_failed"; }' is not assignable to parameter of type '{ id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; name: string; scope: string; type?: string | undefined; owner_id: string; member_ids?: string[] | undefined; ... 8 more ...; initialization_state?: "pending" | ... 2 more ... | undefined; }'.
+  Types of property 'start_date' are incompatible.
+    Type 'string | null' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+src/platform/change-input.test.ts(158,55): error TS2345: Argument of type '{ version: number; scope: string; start_date: string | null; due_date: string | null; id: string; created_at?: string; updated_at?: string; name: string; type?: string; owner_id: string; member_ids?: string[]; ... 6 more ...; initialization_state?: "pending" | "complete" | "partial_failed"; }' is not assignable to parameter of type '{ id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; name: string; scope: string; type?: string | undefined; owner_id: string; member_ids?: string[] | undefined; ... 8 more ...; initialization_state?: "pending" | ... 2 more ... | undefined; }'.
+  Types of property 'start_date' are incompatible.
+    Type 'string | null' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+src/platform/change-input.test.ts(159,55): error TS2345: Argument of type '{ version: number; scope: string; start_date: string | null; due_date: string | null; id: string; created_at?: string; updated_at?: string; name: string; type?: string; owner_id: string; member_ids?: string[]; ... 6 more ...; initialization_state?: "pending" | "complete" | "partial_failed"; }' is not assignable to parameter of type '{ id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; name: string; scope: string; type?: string | undefined; owner_id: string; member_ids?: string[] | undefined; ... 8 more ...; initialization_state?: "pending" | ... 2 more ... | undefined; }'.
+  Types of property 'start_date' are incompatible.
+    Type 'string | null' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+src/platform/change-input.test.ts(160,55): error TS2345: Argument of type '{ version: number; scope: string; start_date: string | null; due_date: string | null; id: string; created_at?: string; updated_at?: string; name: string; type?: string; owner_id: string; member_ids?: string[]; ... 6 more ...; initialization_state?: "pending" | "complete" | "partial_failed"; }' is not assignable to parameter of type '{ id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; name: string; scope: string; type?: string | undefined; owner_id: string; member_ids?: string[] | undefined; ... 8 more ...; initialization_state?: "pending" | ... 2 more ... | undefined; }'.
+  Types of property 'start_date' are incompatible.
+    Type 'string | null' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+src/platform/change-input.ts(117,22): error TS2322: Type 'unknown' is not assignable to type 'string'.
+npm error Lifecycle script `test` failed with error:
+npm error code 2
+npm error path D:\dev\copypasted\内部管理\app\mobile
+npm error workspace @copypaste/mobile@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\mobile
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/native-wire.test.js ../.local/mobile-tests/platform/upload-transfer.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js ../.local/mobile-tests/platform/project-overview.test.js ../.local/mobile-tests/platform/project-input.test.js ../.local/mobile-tests/platform/project-resource-input.test.js ../.local/mobile-tests/platform/task-input.test.js ../.local/mobile-tests/platform/project-closeout.test.js

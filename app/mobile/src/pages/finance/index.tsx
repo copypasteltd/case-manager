@@ -7,10 +7,15 @@ import { exactAmount, financialKind, financialReadPath, overviewState } from '..
 import { MobileError, type Schemas } from '../../platform/session';
 import { client } from '../../platform/taro';
 import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, dateOnly } from '../../ui';
+import ProjectChangePage from '../project/change';
 import { overviewClock } from '../../platform/project-overview';
 
 type Record = { kind: 'cost'; value: Schemas['Cost'] } | { kind: 'payment'; value: Schemas['Payment'] } | { kind: 'subscription'; value: Schemas['Subscription'] } | { kind: 'change'; value: Schemas['Change'] };
 export default function FinanceDetailPage() {
+  const params = useRouter().params;
+  return params.kind === 'change' ? <ProjectChangePage changeID={params.id} /> : <FinancialRecordPage />;
+}
+function FinancialRecordPage() {
   const params = useRouter().params;
   const page = usePage<Record>(async scope => {
     const kind = financialKind(params.kind), id = identifier(params.id), path = financialReadPath(kind, id);

@@ -1,0 +1,10 @@
+Completed actual flow 1: A real mobile proposal stores complete scope, exact decimal budget and an explicitly chosen historical file; project/current budget remain unchanged.
+locator.waitFor: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-title').filter({ hasText: '编辑项目变更' }) to be visible[22m
+
+    at heading (D:\dev\copypasted\内部管理\app\scripts\check_mobile_changes.mjs:24:106)
+    at editor (D:\dev\copypasted\内部管理\app\scripts\check_mobile_changes.mjs:86:9)
+    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_changes.mjs:175:3
+Active page: {"route":"#/pages/project/index?section=change-form&id=dfd24451-aaa0-4803-94ec-6cea57e56a87&change_id=ace4ba71-1920-4a07-85fd-fa2a4783f261","titles":["新建项目变更."],"actions":["我的","返回变更列表核对结果","读取项目与预算基线","刷新变更编辑资料"]}
+{"passed":false,"checks":1,"closed":true}

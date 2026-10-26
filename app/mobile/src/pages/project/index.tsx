@@ -14,6 +14,7 @@ import ProjectOverviewPage from './overview';
 import ProjectBusinessPage from './business';
 import TaskFormPage from './task-forms';
 import ProjectCloseoutPage from './closeout';
+import ProjectChangeFormPage from './change-form';
 
 const titles = { milestones: '项目里程碑', risks: '项目风险', issues: '项目问题', members: '项目成员', deliverables: '项目交付' };
 type Kind = keyof typeof titles;
@@ -25,6 +26,7 @@ export default function ProjectSectionPage() {
   if (params.section === 'setup') return <ProjectSetupPage projectID={params.id} />;
   if (params.section === 'resource-form') return <ResourceFormPage kind={params.kind} projectID={params.id} resourceID={params.resource_id} />;
   if (params.section === 'task-form') return <TaskFormPage projectID={params.id} taskID={params.task_id} parentID={params.parent_id} />;
+  if (params.section === 'change-form') return <ProjectChangeFormPage projectID={params.id} changeID={params.change_id} currency={params.currency} />;
   if (params.section === 'closeout') return <ProjectCloseoutPage projectID={params.id} />;
   if (params.section === 'overview') return <ProjectOverviewPage projectID={params.id} />;
   if (params.section === 'changes' || params.section === 'budgets') return <ProjectBusinessPage projectID={params.id} section={params.section} focus={params.focus} />;

@@ -1,0 +1,39 @@
+=== RUN   TestContractSignatureAndActivation
+=== RUN   TestContractSignatureAndActivation/only_the_exact_approved_content_and_an_actual_nonfuture_signature_can_be_recorded
+=== RUN   TestContractSignatureAndActivation/signature_fixes_the_approved_request_and_signed_file_without_activating_future_content
+=== RUN   TestContractSignatureAndActivation/future_activation_is_blocked_by_service_and_deferred_database_evidence
+=== RUN   TestContractSignatureAndActivation/reached_approved_date_requires_explicit_activation_and_preserves_all_approved_content
+=== RUN   TestContractSignatureAndActivation/two_devices_cannot_record_duplicate_signature_facts
+=== RUN   TestContractSignatureAndActivation/contract_due_scheduling_requires_an_explicit_organization_timezone_and_advance_policy
+=== RUN   TestContractSignatureAndActivation/concurrent_activation_has_one_event_and_old_signature_replay_does_not_activate_again
+=== RUN   TestContractSignatureAndActivation/a_supplement_waits_for_its_parent_and_never_replaces_the_parents_effective_content
+=== RUN   TestContractSignatureAndActivation/schedule_revisions_are_exact_immutable_facts_and_reject_stale_invalid_or_incomplete_plans
+=== RUN   TestContractSignatureAndActivation/activation_materializes_only_the_exact_approved_plan_without_recording_actual_money_movement
+=== RUN   TestContractSignatureAndActivation/explicit_no_payment_terms_are_distinct_from_unknown_and_create_no_execution_nodes
+=== RUN   TestContractSignatureAndActivation/legacy_schema_one_drafts_and_digests_survive_new_schedule_revisions
+=== RUN   TestContractSignatureAndActivation/signature_audit_failure_rolls_back_signature_file_pin_head_version_and_replay_result
+=== RUN   TestContractSignatureAndActivation/activation_audit_failure_preserves_signed_pending_content_and_retries_safely
+=== RUN   TestContractSignatureAndActivation/manual_session_MFA_is_checked_before_replay_and_actor_timestamps_cannot_spoof_it
+=== RUN   TestContractSignatureAndActivation/current_file_access_and_availability_fence_recording_and_cached_linked_disclosure
+=== NAME  TestContractSignatureAndActivation
+    contract_signatures_integration_test.go:592: isolated native browser fixture ready
+    contract_signatures_integration_test.go:592: browser released isolated native fixture
+--- PASS: TestContractSignatureAndActivation (99.90s)
+    --- PASS: TestContractSignatureAndActivation/only_the_exact_approved_content_and_an_actual_nonfuture_signature_can_be_recorded (0.33s)
+    --- PASS: TestContractSignatureAndActivation/signature_fixes_the_approved_request_and_signed_file_without_activating_future_content (0.04s)
+    --- PASS: TestContractSignatureAndActivation/future_activation_is_blocked_by_service_and_deferred_database_evidence (0.03s)
+    --- PASS: TestContractSignatureAndActivation/reached_approved_date_requires_explicit_activation_and_preserves_all_approved_content (0.17s)
+    --- PASS: TestContractSignatureAndActivation/two_devices_cannot_record_duplicate_signature_facts (0.29s)
+    --- PASS: TestContractSignatureAndActivation/contract_due_scheduling_requires_an_explicit_organization_timezone_and_advance_policy (0.18s)
+    --- PASS: TestContractSignatureAndActivation/concurrent_activation_has_one_event_and_old_signature_replay_does_not_activate_again (0.28s)
+    --- PASS: TestContractSignatureAndActivation/a_supplement_waits_for_its_parent_and_never_replaces_the_parents_effective_content (0.41s)
+    --- PASS: TestContractSignatureAndActivation/schedule_revisions_are_exact_immutable_facts_and_reject_stale_invalid_or_incomplete_plans (0.15s)
+    --- PASS: TestContractSignatureAndActivation/activation_materializes_only_the_exact_approved_plan_without_recording_actual_money_movement (0.28s)
+    --- PASS: TestContractSignatureAndActivation/explicit_no_payment_terms_are_distinct_from_unknown_and_create_no_execution_nodes (0.15s)
+    --- PASS: TestContractSignatureAndActivation/legacy_schema_one_drafts_and_digests_survive_new_schedule_revisions (0.08s)
+    --- PASS: TestContractSignatureAndActivation/signature_audit_failure_rolls_back_signature_file_pin_head_version_and_replay_result (0.20s)
+    --- PASS: TestContractSignatureAndActivation/activation_audit_failure_preserves_signed_pending_content_and_retries_safely (0.19s)
+    --- PASS: TestContractSignatureAndActivation/manual_session_MFA_is_checked_before_replay_and_actor_timestamps_cannot_spoof_it (0.01s)
+    --- PASS: TestContractSignatureAndActivation/current_file_access_and_availability_fence_recording_and_cached_linked_disclosure (0.16s)
+PASS
+ok  	copypaste.hk/platform/internal/httpapi	102.351s

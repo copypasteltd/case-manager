@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **20 张 PNG、5 段 MP4、5 个 GIF**：增量77的14张实际截图、1张历史秘书计划来源裁剪，以及增量78新增的2张任务截图和1对任务录屏／GIF；增量79新增3张结项截图和1对结项录屏／GIF。画面来自真实应用与实际 API，数据是隔离合成测试资料；不含真实合同、员工资料、登录密码、MFA 秘钥或访问令牌。无真实云传输、模型调用或 TG 群外发。移动画面是 390 × 900 的 Taro H5，共享界面不能作为 Android／小程序真机验收。
+本目录包含 **23 张 PNG、6 段 MP4、6 个 GIF**：增量77的14张实际截图、1张历史秘书计划来源裁剪，以及增量78新增的2张任务截图和1对任务录屏／GIF；增量79新增3张结项截图和1对结项录屏／GIF；增量80新增3张变更／预算截图和1对变更提案录屏／GIF。画面来自真实应用与实际 API，数据是隔离合成测试资料；不含真实合同、员工资料、登录密码、MFA 秘钥或访问令牌。无真实云传输、模型调用或 TG 群外发。移动画面是 390 × 900 的 Taro H5，共享界面不能作为 Android／小程序真机验收。
 
-This catalog contains **20 PNGs, five MP4s and five GIFs**: increment77 supplied 14 actual captures and one attributed earlier secretary-plan crop; increment78 adds two task screenshots and one task recording/GIF pair; increment79 adds three closeout images and one closeout recording/GIF pair. These are real application/API interactions with isolated synthetic data. They exclude real company records, passwords, MFA secrets and access tokens. No real cloud transfer, model call or TG group delivery occurred. Mobile captures show the shared Taro H5 interface at 390 × 900, not physical-device acceptance.
+This catalog contains **23 PNGs, six MP4s and six GIFs**: increment77 supplied 14 actual captures and one attributed earlier secretary-plan crop; increment78 adds two task screenshots and one task recording/GIF pair; increment79 adds three closeout images and one closeout recording/GIF pair; increment80 adds three change/budget images and one proposal recording/GIF pair. These are real application/API interactions with isolated synthetic data. They exclude real company records, passwords, MFA secrets and access tokens. No real cloud transfer, model call or TG group delivery occurred. Mobile captures show the shared Taro H5 interface at 390 × 900, not physical-device acceptance.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -60,11 +60,25 @@ Actual actions: submit a completed retrospective after separate attestations and
 
 [完整 MP4 / Full MP4](videos/mobile-project-closeout-workflow.mp4) · 390 × 900 · 3.6 s · 无声 / silent · GIF 1× · H5
 
-本轮完整源码前后摘要、真实并发／断网／历史分页／限制角色与所属浏览器清理见[页面结果](../quality/evidence/mobile-closeout-browser/result.json)及[源码清单](../quality/evidence/mobile-closeout-browser/source-manifest.json)。编码逐帧核对真实 JPEG 清单，[公开原始帧清单](../quality/evidence/mobile-closeout/recording-frames.json)仅保留时间与摘要，原JPEG留在忽略目录；见[媒体摘要](../quality/evidence/mobile-closeout/media.json)及[实际视觉检查](../quality/evidence/mobile-closeout/visual-review.json)。
+增量79历史采集属于提交 `8f77924a06cfd3141c9d1b9cd1c574bfa2191d89`，完整源码前后摘要、真实并发／断网／历史分页／限制角色与所属浏览器清理见[页面结果](../quality/evidence/mobile-closeout-browser/result.json)及[源码清单](../quality/evidence/mobile-closeout-browser/source-manifest.json)。编码逐帧核对真实 JPEG 清单，[公开原始帧清单](../quality/evidence/mobile-closeout/recording-frames.json)仅保留时间与摘要，原JPEG留在忽略目录；见[媒体摘要](../quality/evidence/mobile-closeout/media.json)及[实际视觉检查](../quality/evidence/mobile-closeout/visual-review.json)。
 
-Source stability, real concurrency, lost responses, pagination, restricted roles and owned-resource cleanup are recorded in the [browser result](../quality/evidence/mobile-closeout-browser/result.json) and [source manifest](../quality/evidence/mobile-closeout-browser/source-manifest.json). [Media evidence](../quality/evidence/mobile-closeout/media.json) binds every actual JPEG frame to the outputs; [visual review](../quality/evidence/mobile-closeout/visual-review.json) records inspected samples.
+The increment79 capture belongs to historical commit `8f77924a06cfd3141c9d1b9cd1c574bfa2191d89`. Source stability, real concurrency, lost responses, pagination, restricted roles and owned-resource cleanup are recorded in the [browser result](../quality/evidence/mobile-closeout-browser/result.json) and [source manifest](../quality/evidence/mobile-closeout-browser/source-manifest.json). [Media evidence](../quality/evidence/mobile-closeout/media.json) binds every actual JPEG frame to the outputs; [visual review](../quality/evidence/mobile-closeout/visual-review.json) records inspected samples.
 
-## 6. 页面截图 / Screenshots
+## 6. 移动完整变更提案 / Mobile complete change proposal
+
+实际录制：选择明确币种 → 读取并采用完整项目／预算基线 → 填写范围、日期和100.01预算替换行 → 选定正式文件版本 → 保存并读回固定草稿。录像仅覆盖初次提案，不把随后审批或实施剪入同一过程。另两张截图来自后续120.01修订获批及独立实施清空预算后的真实页面；完整十组流程另含保持预算、原申请修订、独立审批、本人MFA实施、409、403、限制角色及历史分页。
+
+Actual capture: choose the currency, read and accept the full project/budget basis, enter scope/dates and a 100.01 replacement line, select a formal file version, then save and reconcile the immutable draft. The recording covers initial drafting. Separate screenshots show the later 120.01 approved revision and the zero-line budget after a separately approved/implemented clearing proposal. Ten verified flows also cover keep mode, original request revision, independent approval, MFA implementation, conflicts, access loss, restricted roles and history pagination.
+
+![移动完整变更提案 / Mobile full change proposal](gifs/mobile-project-change-workflow.gif)
+
+[完整 MP4 / Full MP4](videos/mobile-project-change-workflow.mp4) · 390 × 900 · 7.3 s · 无声 / silent · GIF 1× · H5
+
+35个真实JPEG源帧、7178毫秒时间记录及其摘要绑定编码结果，GIF含44帧。采集器允许公开合成业务ID／摘要，拒绝登录密码、验证码和令牌；未通过遮盖重绘业务界面。3张PNG及GIF首／中／末帧已实际查看，表单截图仅覆盖当时可见区域。完整依据见[浏览器结果](../quality/evidence/mobile-changes-browser/result.json)、[源码清单](../quality/evidence/mobile-changes-browser/source-manifest.json)、[逐帧清单](../quality/evidence/mobile-changes/recording-frames.json)、[采集证明](../quality/evidence/mobile-changes/recording-provenance.json)、[编码记录](../quality/evidence/mobile-changes/media.json)及[视觉检查](../quality/evidence/mobile-changes/visual-review.json)。
+
+The output binds 35 actual JPEGs and their original 7178 ms timestamps/hashes; the GIF has 44 frames. Public synthetic business IDs/hashes remain visible. Capture rejects credential inputs and does not redraw the UI. All three PNGs and first/middle/last GIF samples were inspected; form images cover their actual visible regions. [Verification](../quality/evidence/mobile-changes/verification.md) distinguishes these H5/API checks from device and external acceptance.
+
+## 7. 页面截图 / Screenshots
 
 | 页面 / Page | 图片 / Image | 范围 / Scope |
 | --- | --- | --- |
@@ -88,6 +102,9 @@ Source stability, real concurrency, lost responses, pagination, restricted roles
 | 移动结项清单 / Mobile closeout checklist | [mobile-project-closeout.png](screenshots/mobile-project-closeout.png) | 实际未完成任务及十三类完整核查 / Actual unfinished task and complete thirteen-category check |
 | 移动复盘表单 / Mobile retrospective form | [mobile-project-archive-form.png](screenshots/mobile-project-archive-form.png) | 成果、经验与跟进，验证码输入已清除 / Outcomes, lessons and follow-up after MFA input is cleared |
 | 移动固定历史 / Mobile immutable history | [mobile-project-archive-history.png](screenshots/mobile-project-archive-history.png) | 实际归档后复盘与原清单 / Retrospective and fixed checklist after an actual commit |
+| 移动变更表单 / Mobile change editor | [mobile-change-editor.png](screenshots/mobile-change-editor.png) | 修订后完整范围与日期，可见区域 / Revised full scope and dates in the actual viewport |
+| 移动已批提案 / Mobile approved proposal | [mobile-change-approved.png](screenshots/mobile-change-approved.png) | 固定修订、原申请入口，批准仍需明确实施 / Fixed revision and original request; implementation remains separate |
+| 移动预算修订 / Mobile budget revisions | [mobile-change-budget-history.png](screenshots/mobile-change-budget-history.png) | 明确币种／状态筛选和已实施清空后的当前预算 / Currency/state filter and current zero-line budget after implementation |
 
 ![项目业务概览 / Project overview](screenshots/web-overview.png)
 
@@ -97,7 +114,7 @@ Source stability, real concurrency, lost responses, pagination, restricted roles
 
 The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
 
-## 7. 来源、编码与复现 / Provenance, encoding and reproduction
+## 8. 来源、编码与复现 / Provenance, encoding and reproduction
 
 | 记录 / Record | 内容 / Contents |
 | --- | --- |
@@ -108,7 +125,7 @@ The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow e
 | [visual-review.json](../quality/evidence/repository-showcase/visual-review.json) | 初始画面的实际查看、抽样范围与限制 / Initial image inspection, sampling scope and limits |
 | [任务来源清单](../quality/evidence/mobile-tasks-browser/source-manifest.json)／[页面结果](../quality/evidence/mobile-tasks-browser/result.json) | 新任务采集的完整源码及真实流程／清理 / Complete new task sources, actual flows and cleanup |
 | [任务媒体](../quality/evidence/mobile-tasks/media.json)／[视觉查看](../quality/evidence/mobile-tasks/visual-review.json) | 32个真实源帧、输出摘要、ffprobe及GIF首中尾抽样 / 32 actual source frames, output digests, probe and first/middle/last GIF samples |
-| [当前功能来源](../quality/current-functional-baseline.json)／[最终复算](../quality/evidence/mobile-tasks/final-source-check.json) | 当前增量与历史媒体提交的明确区分 / Current functional increment and explicit historical-media commit |
+| [当前功能来源](../quality/current-functional-baseline.json)／[最终复算](../quality/evidence/mobile-changes/final-source-check.json) | 当前增量与历史媒体提交的明确区分 / Current functional increment and explicit historical-media commit |
 | [历史来源补充](../quality/evidence/mobile-tasks/historical-capture-sources.json) | 原712项字节流完整重建通过：711项Git源码及1项忽略编译缓存；仅发布摘要，不提交缓存字节 / Exact original 712-entry reconstruction: 711 Git blobs plus one ignored generated cache; digests published, cache bytes excluded |
 
 在已有原生开发工具、依赖、测试数据库和 Edge 的环境，从 `app/` 执行。以下初始三段采集的精确复现以提交 `9e87869397112e0807dd28abdbc691c7b5abb15b` 为准；当前源码下运行会产生新的采集，必须新建相应证据，不能覆盖历史来源说明：
@@ -123,15 +140,16 @@ python scripts/verify_repository_publication_development.py
 python scripts/verify_repository_publication.py
 ```
 
-任务流程复现须检出增量78的历史提交；本轮结项使用当前增量源码，执行下列命令。两组页面采集共用端口与原生夹具，须先后运行，不能并发：
+任务和结项复现须分别检出增量78、79的历史提交；当前增量80变更提案执行以下命令。所有采集共用端口与原生夹具，须先后运行：
 
-Check out increment78 to reproduce its historical task capture; use the current sources for closeout. Both captures share a port/fixture and must run sequentially:
+Check out increments78/79 for their historical task/closeout captures. Use the current increment80 sources for changes below. All captures share a port/fixture and must run sequentially:
 
 ```powershell
 $env:PYTHONUTF8='1'
-python scripts/run_mobile_closeout_browser.py
-python scripts/encode_mobile_closeout_media.py
-python scripts/verify_mobile_closeout_development.py
+python scripts/run_mobile_changes_browser.py
+python scripts/freeze_mobile_changes_evidence.py --capture-only
+python scripts/encode_mobile_changes_media.py
+python scripts/verify_mobile_changes_development.py
 ```
 
 采集会创建自己的隔离数据库，顺序使用本机 5189 端口，并在 finally 中关闭自己的浏览器、服务与夹具。若已有同名私有夹具，脚本会拒绝接管。原始 JPEG 帧与登录资料留在忽略的 `app/.local/`，编码器只接受摘要核对通过的真实帧，输出无声 H.264 MP4 与调色板 GIF。MP4 保留实际时间间隔，以 10 fps 编码；GIF 6 fps，桌面宽 960、移动宽 390，长片段适度加速。没有插帧生成或重新绘制页面。

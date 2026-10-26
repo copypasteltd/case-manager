@@ -1,0 +1,39 @@
+{
+  "reviewed": true,
+  "checked_at": "2026-10-26T14:33:20.609359+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/mobile-change-editor.png",
+      "sha256": "579c6f26d51c55a204c9dc7baf03fb29ee0f88480ed6c81924382a945a34f1f4"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-approved.png",
+      "sha256": "9ace697a0ded1e4e1c32ab18e48083ebb547a2b2760c97189530168b8511fe1b"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-budget-history.png",
+      "sha256": "151bf80fb7859f00167b4ac1c16ac2e3869579cfdd0f9af68fa5043248ff3c2d"
+    },
+    {
+      "file": "docs/media/gifs/mobile-project-change-workflow.gif",
+      "sha256": "15d6642a4c1b937ae85ea0971b6d528a47fdaf9afdaae1de8d46bddff3089fb5"
+    }
+  ],
+  "screenshots_reviewed": 3,
+  "gif_frames": 44,
+  "gif_sample_indices": [
+    0,
+    22,
+    43
+  ],
+  "method": "Actual native image tool inspection of all three PNGs and a contact sheet sampled from the encoded GIF; no browser opened for review.",
+  "findings": [
+    "Actual 390x900 shared Taro pages retain the company wordmark, blue accent and single-column form; no horizontal clipping observed in checked regions.",
+    "The editor capture is scrolled to the revised complete proposal and blank dates; the remaining budget/file controls are outside this viewport.",
+    "The approved detail displays the exact fixed proposal revision and original request link; approval does not itself show an implemented project.",
+    "The budget screenshot shows an explicitly filtered HKD approved revision with a zero-line total after the separately implemented clearing proposal.",
+    "Actual GIF samples show initial proposal creation, a 100.01 replacement line and the resulting immutable draft detail. Later screenshots show the separate 120.01 revised proposal.",
+    "No password, MFA code or token is visible in sampled pixels; public synthetic business identifiers are intentionally retained."
+  ],
+  "limits": "The 7.3-second silent recording runs at automation speed. Three sampled GIF frames do not review every encoded pixel or establish real-device, cloud, model, Telegram or production acceptance."
+}
