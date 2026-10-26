@@ -17,14 +17,14 @@ export function FixedFiles({ files }: { files: FixedFile[] }) {
   </View>)}</>;
 }
 
-export function FixedFilePicker({ projectID, value, onChange, disabled }: { projectID: string; value: FixedFile[]; onChange(files: FixedFile[]): void; disabled: boolean }) {
+export function FixedFilePicker({ projectID, value, onChange, disabled, optional = false, purpose = '交付' }: { projectID: string; value: FixedFile[]; onChange(files: FixedFile[]): void; disabled: boolean; optional?: boolean; purpose?: string }) {
   const [search, setSearch] = useState(''), [query, setQuery] = useState(''), [company, setCompany] = useState(false);
   const [selected, setSelected] = useState<Schemas['File']>();
   const files = useCollection<Schemas['File']>('/files?limit=20&state=active' + (company ? '&company_only=true' : '&project_id=' + projectID) + (query ? '&q=' + encodeURIComponent(query) : ''));
   return <View>
-    <Text className='cp-muted cp-small cp-paragraph'>选择1—20个正式版本。仅列出当前可用、扫描通过或已有扫描例外的候选；提交时服务器会再次核查。未上传的文件请先在文件中心完成上传。</Text>
-    <Field label='查找文件'><Input ariaLabel='查找交付文件' className='cp-input' value={search} maxlength={200} disabled={disabled} onInput={event => setSearch(event.detail.value)} />
-      <Action secondary disabled={disabled} onClick={() => { setQuery(search.trim()); setSelected(undefined); files.reload(); }}>查找交付文件</Action>
+    <Text className='cp-muted cp-small cp-paragraph'>选择{optional ? 0 : 1}—20个正式版本。仅列出当前可用、扫描通过或已有扫描例外的候选；提交时服务器会再次核查。未上传的文件请先在文件中心完成上传。</Text>
+    <Field label='查找文件'><Input ariaLabel={'查找' + purpose + '文件'} className='cp-input' value={search} maxlength={200} disabled={disabled} onInput={event => setSearch(event.detail.value)} />
+      <Action secondary disabled={disabled} onClick={() => { setQuery(search.trim()); setSelected(undefined); files.reload(); }}>查找{purpose}文件</Action>
     </Field>
     <Field label='文件范围'><Picker ariaLabel='文件范围' mode='selector' range={['本项目文件', '公司公共文件']} value={company ? 1 : 0} disabled={disabled} onChange={event => { setCompany(Number(event.detail.value) === 1); setSelected(undefined); }}><View className='cp-picker'>{company ? '公司公共文件' : '本项目文件'}</View></Picker></Field>
     <Notice error={files.error} />{files.loading ? <Busy /> : <View className='cp-panel'>{files.items.length ? files.items.map(file => <Row key={file.id} title={file.name} subtitle='选择文件后再选择准确版本' onClick={() => { if (!disabled) setSelected(file); }} />) : !files.error && <Empty>没有符合条件的可见文件。</Empty>}</View>}

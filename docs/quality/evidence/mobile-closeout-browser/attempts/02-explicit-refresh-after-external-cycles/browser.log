@@ -1,0 +1,9 @@
+locator.waitFor: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/^项目版本 39 ·/) to be visible[22m
+
+    at freshProject (D:\dev\copypasted\内部管理\app\scripts\check_mobile_closeout.mjs:62:111)
+    at async openCloseout (D:\dev\copypasted\内部管理\app\scripts\check_mobile_closeout.mjs:64:126)
+    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_closeout.mjs:164:61
+Active page: {"route":"#/pages/project/index?section=closeout&id=c3357ba4-b4f1-4f19-8297-3c30ed552210","titles":["项目结项与归档."],"actions":["我的","返回项目资料","展开任务清单","确认暂停项目","收起本次完整复盘","展开任务清单","重新读取归档历史","重新读取项目结项"]}
+{"passed":false,"checks":4,"closed":true}

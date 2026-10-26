@@ -1,0 +1,6 @@
+AssertionError [ERR_ASSERTION]: PATCH /projects/0166378a-4d08-43ec-98f2-fb2767a5a215: 409 PROJECT_SCOPE_REQUIRES_APPROVED_CHANGE
+    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_closeout.mjs:43:138)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_closeout.mjs:136:72
+Active page: {"route":"#/pages/project/index?section=closeout&id=0166378a-4d08-43ec-98f2-fb2767a5a215","titles":["项目结项与归档."],"actions":["我的","返回项目资料","展开任务清单","确认恢复进行","查找复盘文件","确认复盘并归档","保留文字和选定版本，重新核查","重新读取归档历史","重新读取项目结项"]}
+{"passed":false,"checks":2,"closed":true}

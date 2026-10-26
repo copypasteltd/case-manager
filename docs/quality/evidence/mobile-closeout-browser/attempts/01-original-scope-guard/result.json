@@ -1,0 +1,58 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T12:29:31.213Z",
+  "source_sha256": "8d916ec1ea98ecab132703bd2860073174a5a695f2c8e983ae80e17e79bc6114",
+  "source_after_sha256": "8d916ec1ea98ecab132703bd2860073174a5a695f2c8e983ae80e17e79bc6114",
+  "source_unchanged": true,
+  "source_count": 599,
+  "checks": [
+    "Actual project detail opens closeout; original mobile activate, hold and resume commands advance only the intended project revision.",
+    "All thirteen actual categories are loaded; an unfinished task blocks closing, its original record link works, and explicit disposition permits the separate closing stage."
+  ],
+  "layouts": [
+    {
+      "page": "closeout-checklist",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "closeout-checklist",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "closeout-checklist",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-project-closeout.png",
+      "caption": "实际十三类结项核查与未完成任务；合成H5 / Actual thirteen-category checklist and unfinished work; synthetic H5.",
+      "sha256": "38e14f7494fd8826b38ad3a1cd635225dbe6364d5ae26cd37402fd5fbdce651c",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: PATCH /projects/0166378a-4d08-43ec-98f2-fb2767a5a215: 409 PROJECT_SCOPE_REQUIRES_APPROVED_CHANGE\n    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_closeout.mjs:43:138)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_closeout.mjs:136:72\nActive page: {\"route\":\"#/pages/project/index?section=closeout&id=0166378a-4d08-43ec-98f2-fb2767a5a215\",\"titles\":[\"项目结项与归档.\"],\"actions\":[\"我的\",\"返回项目资料\",\"展开任务清单\",\"确认恢复进行\",\"查找复盘文件\",\"确认复盘并归档\",\"保留文字和选定版本，重新核查\",\"重新读取归档历史\",\"重新读取项目结项\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 3,
+  "browser_contexts_closed": 3,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "8d916ec1ea98ecab132703bd2860073174a5a695f2c8e983ae80e17e79bc6114",
+  "source_sha256_after_build": "8d916ec1ea98ecab132703bd2860073174a5a695f2c8e983ae80e17e79bc6114",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

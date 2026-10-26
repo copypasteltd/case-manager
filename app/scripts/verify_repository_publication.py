@@ -196,6 +196,8 @@ def main():
               'verify_mobile_tasks_development.py', 'verify_mobile_tasks_sources.py',
               'record_historical_capture_sources.py')],
         ]
+    publication_files += baseline.get('publication_files', []) if baseline else []
+    publication_files = list(dict.fromkeys(publication_files))
     whitespace = []
     for name in publication_files:
         data = staged_data[name] if args.staged else (ROOT / name).read_bytes()

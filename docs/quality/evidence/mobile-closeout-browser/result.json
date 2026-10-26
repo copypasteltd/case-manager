@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T12:42:01.452Z",
+  "source_sha256": "e4792f2a402030067555f840be7a670a1b6ca983989823b0bf6c684ae0a4af59",
+  "source_after_sha256": "e4792f2a402030067555f840be7a670a1b6ca983989823b0bf6c684ae0a4af59",
+  "source_unchanged": true,
+  "source_count": 599,
+  "checks": [
+    "Actual project detail opens closeout; original mobile activate, hold and resume commands advance only the intended project revision.",
+    "All thirteen actual categories are loaded; an unfinished task blocks closing, its original record link works, and explicit disposition permits the separate closing stage.",
+    "A real concurrent project revision rejects stale archive without creating history; explicit reread preserves text while resetting both attestations and current MFA.",
+    "Actual archive requires complete notes, two explicit attestations and recent MFA; success reconciles the current project and actual history, and controlled reopen preserves the immutable old review.",
+    "Eleven real original-command archive cycles produce distinct immutable records; the actual cursor loads ten then eleven reviews with no duplicate or false complete count.",
+    "An actual committed archive with concealed asynchronous history proof blocks false success and replay, retains input, and is reconciled by an explicit read of the real archived project.",
+    "A real archive transaction with a lost browser response produces exactly one history record, blocks repeat submission, and requires explicit reconciliation.",
+    "A reader missing complete source authority sees restricted null counts and no history metadata; a mismatched project receipt cannot open the closeout workspace.",
+    "After a real ownership transfer and member-role restriction, a fresh MFA login reads the project as viewer and exposes no lifecycle or archive write controls."
+  ],
+  "layouts": [
+    {
+      "page": "closeout-checklist",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "closeout-checklist",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "closeout-checklist",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "archive-form",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "archive-form",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "archive-form",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "restricted-closeout",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "restricted-closeout",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "restricted-closeout",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-project-closeout-workflow",
+      "frame_count": 17,
+      "duration_ms": 3459,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-project-closeout-workflow/frames.json",
+      "manifest_sha256": "7da55c644181ff43d85f795ffee590e2c45d6ae4fdf3767eb9f6555a6f0e8465"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-project-closeout.png",
+      "caption": "实际十三类结项核查与未完成任务；合成H5 / Actual thirteen-category checklist and unfinished work; synthetic H5.",
+      "sha256": "c6e7b221ceb6a7e65762577484bb1d5217824a12eccab71afa5ad944aef9095a",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-form.png",
+      "caption": "实际复盘表单；已清除验证码，需明确确认 / Actual retrospective form; MFA input cleared, explicit confirmation required.",
+      "sha256": "9638014f168c4609802267c386e49fb0e338bd63bda10e763036225f9f2c4fd5",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-history.png",
+      "caption": "原服务提交后的固定复盘与归档时清单 / Immutable retrospective and checklist after an actual server commit.",
+      "sha256": "464d1919e4d06c92d04c3d1b8cb224ee10410fea8582328db2e32d21cf1223ca",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 5,
+  "browser_contexts_closed": 5,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "e4792f2a402030067555f840be7a670a1b6ca983989823b0bf6c684ae0a4af59",
+  "source_sha256_after_build": "e4792f2a402030067555f840be7a670a1b6ca983989823b0bf6c684ae0a4af59",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

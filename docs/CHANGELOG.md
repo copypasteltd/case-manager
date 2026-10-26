@@ -4,6 +4,17 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-26 · 移动结项与固定归档 / Mobile closeout and immutable archive · increment79
+
+- 接通原项目阶段、十三类完整核查、复盘、两项声明／本人MFA、可选正式文件、实际项目及历史证明、分页与受控重开。Connects original lifecycle, complete checks, retrospective, separate attestations/MFA, optional formal files, actual project/history proof, pagination and controlled reopen.
+- 并发409、响应丢失或历史证明不完整时保留文字、阻止重放；显式重读重新核对权限／依据并重置声明与MFA。Concurrent, lost or incomplete results retain input and block replay; explicit reread refreshes authority/facts and resets attestations/MFA.
+- 137项移动测试、类型、双小程序各16页、9组实际API／H5流程及9项布局通过，5个所属上下文、临时服务与隔离数据库均清理。137 mobile tests, types, both 16-page builds, nine actual flows and nine layouts passed, with owned browser/server/database cleanup.
+- 新开发APK 42,842,779字节、17项包检查；原生25项为UP-TO-DATE保留结果，本轮未新执行。New 42,842,779-byte APK passed 17 inspections; 25 native results were retained, not re-executed.
+- 新增3张实际截图、3.6秒MP4及22帧GIF；21项最终来源核对通过，旧媒体保留历史来源。Adds three actual screenshots, a 3.6-second MP4 and 22-frame GIF; 21 source checks passed, with historical media preserved.
+- 后端146顶层／919条结果、运行时39、Web81与Linux产物按未变完整来源复用；8项Skill仍draft，真实集成及完整生产验收继续开放。Unchanged backend/runtime/Web/Linux evidence is reused at exact source digests; Skills remain draft and real integrations/full release remain open.
+
+协议与命令见[增量79](development/79-mobile-project-closeout-and-archive.md)，准确执行／失败历史见[验证记录](quality/evidence/mobile-closeout/verification.md)。[Protocol](development/79-mobile-project-closeout-and-archive.md) and [verification](quality/evidence/mobile-closeout/verification.md).
+
 ## 2026-10-26 · 移动任务、子任务与依赖 / Mobile tasks, subtasks and prerequisites · increment78
 
 - 补齐移动任务手工创建、完整资料编辑、子任务、父／里程碑候选及明确解除；按香港时间保留六位微秒。Added manual mobile task creation/editing, subtasks, real paginated parent/milestone selection and explicit clearing, with six-digit Hong Kong schedule precision.

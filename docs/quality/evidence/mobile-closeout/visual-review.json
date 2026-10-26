@@ -1,0 +1,39 @@
+{
+  "reviewed": true,
+  "checked_at": "2026-10-26T12:45:58.390716+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/mobile-project-closeout.png",
+      "sha256": "c6e7b221ceb6a7e65762577484bb1d5217824a12eccab71afa5ad944aef9095a"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-form.png",
+      "sha256": "9638014f168c4609802267c386e49fb0e338bd63bda10e763036225f9f2c4fd5"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-history.png",
+      "sha256": "464d1919e4d06c92d04c3d1b8cb224ee10410fea8582328db2e32d21cf1223ca"
+    },
+    {
+      "file": "docs/media/gifs/mobile-project-closeout-workflow.gif",
+      "sha256": "60deb0fb50720e346ccaca4e15158b6d481a5cb22d492946fb0bc681e942bd77"
+    }
+  ],
+  "screenshots_reviewed": 3,
+  "gif_frames": 22,
+  "gif_sample_indices": [
+    0,
+    11,
+    21
+  ],
+  "method": "Actual native image tool inspection of all three PNGs and a first/middle/last GIF contact sheet; no browser opened for review.",
+  "findings": [
+    "390x900 actual Taro viewport, no horizontal clipping observed in checked regions.",
+    "Checklist shows an actual open task and restricted conditions remain distinct from zero.",
+    "Retrospective screenshot covers the three filled notes; lower attestations are outside this viewport.",
+    "History screenshot covers actual archive version, current-name attribution and fixed notes.",
+    "GIF samples show the actual form, archived history and preserved changed-basis history after reopening.",
+    "Credentials are excluded by capture preconditions; sampled pixels show no password, MFA code or token."
+  ],
+  "limits": "Automation is fast: 3.6-second silent MP4 and 22-frame GIF; inspected samples are not an exhaustive review of every encoded pixel, device acceptance or cloud/model/TG execution."
+}

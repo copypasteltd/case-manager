@@ -45,7 +45,7 @@ export function go(kind: string, id?: string) {
   if (kind === 'deliverable' && id) { void Taro.navigateTo({ url: '/pages/deliverable/index?id=' + identifier(id) }); return; }
   void Taro.navigateTo({ url: '/pages/' + (id ? 'detail' : 'list') + '/index?kind=' + encodeURIComponent(kind) + (id ? '&id=' + encodeURIComponent(id) : '') });
 }
-export function projectSection(id: string, section: 'setup' | 'overview' | 'milestones' | 'risks' | 'issues' | 'members' | 'deliverables' | 'changes' | 'budgets') {
+export function projectSection(id: string, section: 'setup' | 'overview' | 'milestones' | 'risks' | 'issues' | 'members' | 'deliverables' | 'changes' | 'budgets' | 'closeout') {
   void Taro.navigateTo({ url: '/pages/project/index?id=' + identifier(id) + '&section=' + section });
 }
 export function projectResourceForm(kind: 'milestone' | 'risk' | 'issue', projectID: string, resourceID?: string) {

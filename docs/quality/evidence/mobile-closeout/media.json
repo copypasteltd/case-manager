@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T12:44:12.521396+00:00",
+  "source_sha256": "e4792f2a402030067555f840be7a670a1b6ca983989823b0bf6c684ae0a4af59",
+  "browser_result_sha256": "9e6097830dc742f07d0e7d6bea509bc8d6ebce6957c0de0d01f230180ec54c28",
+  "frame_manifest_sha256": "7da55c644181ff43d85f795ffee590e2c45d6ae4fdf3767eb9f6555a6f0e8465",
+  "source_frames": 17,
+  "source_duration_ms": 3459,
+  "gif_speed_factor": 1.0,
+  "artifacts": [
+    {
+      "file": "docs/media/videos/mobile-project-closeout-workflow.mp4",
+      "sha256": "9c79a16a0e11e6fcc3114981e2ece462f4eeb7d7dc69111ee05cdd3460857ba4",
+      "bytes": 155699
+    },
+    {
+      "file": "docs/media/gifs/mobile-project-closeout-workflow.gif",
+      "sha256": "60deb0fb50720e346ccaca4e15158b6d481a5cb22d492946fb0bc681e942bd77",
+      "bytes": 617779
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "36",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.600000"
+    }
+  },
+  "encoder_sha256": "13d3ca5fb2217e4f51bab918e192b9759531c5fc478082a3d2e12eb613e63149",
+  "helper_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "audio": false,
+  "real_browser_pixels": true,
+  "synthetic_data": true,
+  "real_device": false,
+  "credentials_excluded": true
+}

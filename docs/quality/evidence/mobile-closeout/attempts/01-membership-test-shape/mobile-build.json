@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-10-26T12:21:59.687551+00:00",
+  "completed_at": "2026-10-26T12:22:08.501193+00:00",
+  "commands": [
+    {
+      "script": "test",
+      "exit_code": 2,
+      "timed_out": false,
+      "elapsed_seconds": 8.643
+    }
+  ],
+  "tests": {},
+  "source_sha256": "3ee570213c20ddf7cb510ff5f28719b84748705eef8ba2e4eb4cfb4e72a5170d",
+  "source_files": 131,
+  "source_unchanged_during_run": true,
+  "artifacts": {
+    "weapp": {
+      "files": 65,
+      "bytes": 958247,
+      "app_json_exists": true,
+      "status_page_exists": true
+    },
+    "tt": {
+      "files": 62,
+      "bytes": 897952,
+      "app_json_exists": true,
+      "status_page_exists": true
+    }
+  },
+  "environment": "Native Windows Node/TypeScript/Taro; no Docker, WSL or emulator",
+  "taro_version": "4.3.1",
+  "api_origin": "http://127.0.0.1:18080",
+  "build_profile": "local",
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "actual_cloud_invoked": false,
+  "scope": "Portable memory-only session, shared draft budget, intent-key, fixed-content reader and business-input validation/serialization tests; TypeScript and two mini-program compilation targets. Excludes real devices, native document/file-system execution, platform submission, Android native transfer and end-to-end acceptance",
+  "passed": false
+}

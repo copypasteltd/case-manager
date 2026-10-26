@@ -1,0 +1,102 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T12:36:00.133Z",
+  "source_sha256": "127401ea18bd4158cf5681df510ff1d7464af315cc8c43b129389ca4bbb9eb52",
+  "source_after_sha256": "127401ea18bd4158cf5681df510ff1d7464af315cc8c43b129389ca4bbb9eb52",
+  "source_unchanged": true,
+  "source_count": 599,
+  "checks": [
+    "Actual project detail opens closeout; original mobile activate, hold and resume commands advance only the intended project revision.",
+    "All thirteen actual categories are loaded; an unfinished task blocks closing, its original record link works, and explicit disposition permits the separate closing stage.",
+    "A real concurrent project revision rejects stale archive without creating history; explicit reread preserves text while resetting both attestations and current MFA.",
+    "Actual archive requires complete notes, two explicit attestations and recent MFA; success reconciles the current project and actual history, and controlled reopen preserves the immutable old review."
+  ],
+  "layouts": [
+    {
+      "page": "closeout-checklist",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "closeout-checklist",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "closeout-checklist",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "archive-form",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "archive-form",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "archive-form",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-project-closeout-workflow",
+      "frame_count": 16,
+      "duration_ms": 3272,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-project-closeout-workflow/frames.json",
+      "manifest_sha256": "99692062957b8f4e0c4df4e2e44a766674867f14fff5a27d06ed312a6c757b17"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-project-closeout.png",
+      "caption": "实际十三类结项核查与未完成任务；合成H5 / Actual thirteen-category checklist and unfinished work; synthetic H5.",
+      "sha256": "c0bca5b26b4f2b48e8ba522080139f80534392d7480501a4a1880dcbcd91b0d7",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-form.png",
+      "caption": "实际复盘表单；已清除验证码，需明确确认 / Actual retrospective form; MFA input cleared, explicit confirmation required.",
+      "sha256": "9638014f168c4609802267c386e49fb0e338bd63bda10e763036225f9f2c4fd5",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-history.png",
+      "caption": "原服务提交后的固定复盘与归档时清单 / Immutable retrospective and checklist after an actual server commit.",
+      "sha256": "83a23be399cb0eae3510f155a6883da6fe2f968a8ef2933faf08ec9d64a57e60",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/^项目版本 39 ·/) to be visible\u001b[22m\n\n    at freshProject (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_closeout.mjs:62:111)\n    at async openCloseout (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_closeout.mjs:64:126)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_closeout.mjs:164:61\nActive page: {\"route\":\"#/pages/project/index?section=closeout&id=c3357ba4-b4f1-4f19-8297-3c30ed552210\",\"titles\":[\"项目结项与归档.\"],\"actions\":[\"我的\",\"返回项目资料\",\"展开任务清单\",\"确认暂停项目\",\"收起本次完整复盘\",\"展开任务清单\",\"重新读取归档历史\",\"重新读取项目结项\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 3,
+  "browser_contexts_closed": 3,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "127401ea18bd4158cf5681df510ff1d7464af315cc8c43b129389ca4bbb9eb52",
+  "source_sha256_after_build": "127401ea18bd4158cf5681df510ff1d7464af315cc8c43b129389ca4bbb9eb52",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

@@ -10,9 +10,11 @@ export type DraftAuthority = { epoch: number; userID: string; authorizationVersi
 export type DraftTarget = { kind: 'task' | 'task-create' | 'task-edit' | 'task-dependency' | 'deliverable-create' | 'deliverable-edit' | 'deliverable-submit' | 'comment-create' | 'comment-edit'; id: string; version: number } | {
   kind: 'approval'; id: string; version: number; revision: string; hash: string; step: string; stepVersion: number;
 } | {
+  kind: 'project-archive'; id: string; version: number; hash: string;
+} | {
   kind: 'deliverable-decision'; id: string; version: number; revision: string; hash: string;
 } | {
-  kind: 'resource-create' | 'resource-edit' | 'resource-transition' | 'project-create' | 'project-edit' | 'project-member' | 'project-owner' | 'business-contract' | 'business-purchase' | 'business-claim' | 'request-prepare' | 'request-submit' | 'request-revise' | 'request-withdraw' | 'incident-create' | 'incident-update' | 'conversation-create' | 'conversation-edit' | 'conversation-member' | 'run-create' | 'run-cancel' | 'agent-project-plan' | 'agent-plan-action' | 'agent-organization-action'; id: string; version: number;
+  kind: 'project-closeout-transition' | 'resource-create' | 'resource-edit' | 'resource-transition' | 'project-create' | 'project-edit' | 'project-member' | 'project-owner' | 'business-contract' | 'business-purchase' | 'business-claim' | 'request-prepare' | 'request-submit' | 'request-revise' | 'request-withdraw' | 'incident-create' | 'incident-update' | 'conversation-create' | 'conversation-edit' | 'conversation-member' | 'run-create' | 'run-cancel' | 'agent-project-plan' | 'agent-plan-action' | 'agent-organization-action'; id: string; version: number;
 };
 export interface DraftHandle { read(): DraftFields | undefined; write(fields: DraftFields): boolean; forget(): void }
 type Entry = { fields: DraftFields; changed: number };
@@ -30,14 +32,14 @@ export class MemoryDrafts {
   open(authority: DraftAuthority, target: DraftTarget): DraftHandle | undefined {
     const current = this.session();
     if (!current.authenticated || current.epoch !== authority.epoch || !authority.userID || !Number.isSafeInteger(authority.authorizationVersion) || authority.authorizationVersion < 1) return;
-    if (!Number.isSafeInteger(target.version) || target.version < 1 || !target.id || (target.kind === 'approval' && (!target.revision || !target.hash || !target.step || !Number.isSafeInteger(target.stepVersion) || target.stepVersion < 1)) || (target.kind === 'deliverable-decision' && (!target.revision || !/^[a-f0-9]{64}$/.test(target.hash)))) return;
+    if (!Number.isSafeInteger(target.version) || target.version < 1 || !target.id || (target.kind === 'approval' && (!target.revision || !target.hash || !target.step || !Number.isSafeInteger(target.stepVersion) || target.stepVersion < 1)) || (target.kind === 'project-archive' && !/^[a-f0-9]{32}$/.test(target.hash)) || (target.kind === 'deliverable-decision' && (!target.revision || !/^[a-f0-9]{64}$/.test(target.hash)))) return;
     if (this.authority?.epoch === authority.epoch && (this.authority.userID !== authority.userID || this.authority.authorizationVersion > authority.authorizationVersion)) return;
     if (!this.authority || this.authority.epoch !== authority.epoch || this.authority.authorizationVersion !== authority.authorizationVersion) {
       this.clear(); this.authority = { ...authority };
     }
     const bound = this.authority, epoch = authority.epoch;
     // Fixed field order prevents accidental equivalence between revisions.
-    const key = JSON.stringify(target.kind === 'approval' ? ['approval', target.id, target.version, target.revision, target.hash, target.step, target.stepVersion] : target.kind === 'deliverable-decision' ? [target.kind, target.id, target.version, target.revision, target.hash] : [target.kind, target.id, target.version]);
+    const key = JSON.stringify(target.kind === 'approval' ? ['approval', target.id, target.version, target.revision, target.hash, target.step, target.stepVersion] : target.kind === 'deliverable-decision' ? [target.kind, target.id, target.version, target.revision, target.hash] : target.kind === 'project-archive' ? [target.kind, target.id, target.version, target.hash] : [target.kind, target.id, target.version]);
     const valid = () => { const state = this.session(); return state.authenticated && state.epoch === epoch && this.authority === bound; };
     return {
       read: () => { if (!valid()) return; this.sweep(); const value = this.entries.get(key); return value ? { ...value.fields, ...(value.fields.business ? { business: copyBusinessInput(value.fields.business) } : {}), ...(value.fields.incident ? { incident: copyIncidentInput(value.fields.incident) } : {}), ...(value.fields.project ? { project: copyProjectInput(value.fields.project) } : {}), ...(value.fields.resource ? { resource: copyResourceInput(value.fields.resource) } : {}), ...(value.fields.task ? { task: copyTaskInput(value.fields.task) } : {}) } : undefined; },

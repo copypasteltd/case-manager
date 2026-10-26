@@ -15,6 +15,20 @@ function harness() {
 }
 const fields = { reason: 'Unsubmitted human reason', action: 'start' };
 
+test('archive notes are bound to both the project revision and exact closeout fingerprint; only bounded text survives', () => {
+  const h = harness(), target: DraftTarget = { kind: 'project-archive', id: 'project', version: 4, hash: 'a'.repeat(32) };
+  const input = { reason: 'Actual archive reason', action: 'archive', description: 's'.repeat(20000), body: 'l'.repeat(20000), criteria: 'f'.repeat(20000),
+    business_verified: true, financial_verified: true, fresh: true, code: '123456', file_version_ids: ['version'], files: [{ secret: 'not-retained' }] };
+  const saved = h.open(target); assert.equal(saved.write(input), true);
+  assert.deepEqual(saved.read(), { reason: input.reason, action: input.action, description: input.description, body: input.body, criteria: input.criteria });
+  assert.equal(h.open({ ...target, hash: 'b'.repeat(32) }).read(), undefined);
+  assert.equal(h.open({ ...target, version: 5 }).read(), undefined);
+  assert.equal(h.drafts.open(h.authority, { ...target, hash: 'a'.repeat(64) }), undefined);
+  h.open({ ...target, id: 'second-project' }).write(input); assert.equal(saved.read(), undefined);
+  const old = h.open(target); old.write(input); h.open(target, { ...h.authority, authorizationVersion: 2 });
+  assert.equal(old.read(), undefined); assert.equal(old.write(input), false);
+});
+
 test('task editors share bounded memory, copy only text and isolate creation, editing, dependencies and revisions', () => {
   const h = harness(), target: DraftTarget = { kind: 'task-create', id: 'project:root', version: 3 };
   const task = { ...currentTaskInput(), title: 'Unsubmitted task', body: 'x'.repeat(20000), access_token: 'not-retained', approved: true, payload: { secret: 'not-retained' } };

@@ -1,0 +1,21 @@
+
+test
+
+> @copypaste/mobile@0.1.0 test
+> tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/native-wire.test.js ../.local/mobile-tests/platform/upload-transfer.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js ../.local/mobile-tests/platform/project-overview.test.js ../.local/mobile-tests/platform/project-input.test.js ../.local/mobile-tests/platform/project-resource-input.test.js ../.local/mobile-tests/platform/task-input.test.js ../.local/mobile-tests/platform/project-closeout.test.js
+
+src/platform/project-closeout.test.ts(9,17): error TS2352: Conversion of type '{ items: never[]; memberships: { user_id: string; project_role: "manager"; }[]; }' to type '{ items: { id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; display_name: string; status: "active" | "invited" | "disabled"; }[]; memberships?: { ...; }[] | undefined; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'memberships' are incompatible.
+    Type '{ user_id: string; project_role: "manager"; }[]' is not comparable to type '{ user_id: string; project_role: "member" | "manager" | "viewer" | "owner"; authorization_version: number; }[]'.
+      Property 'authorization_version' is missing in type '{ user_id: string; project_role: "manager"; }' but required in type '{ user_id: string; project_role: "member" | "manager" | "viewer" | "owner"; authorization_version: number; }'.
+src/platform/project-closeout.test.ts(64,102): error TS2352: Conversion of type '{ memberships: { user_id: string; project_role: "viewer"; created_at: string; }[]; items: components["schemas"]["User"][]; }' to type '{ items: { id: string; version: number; created_at?: string | undefined; updated_at?: string | undefined; display_name: string; status: "active" | "invited" | "disabled"; }[]; memberships?: { ...; }[] | undefined; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'memberships' are incompatible.
+    Type '{ user_id: string; project_role: "viewer"; created_at: string; }[]' is not comparable to type '{ user_id: string; project_role: "member" | "manager" | "viewer" | "owner"; authorization_version: number; }[]'.
+      Object literal may only specify known properties, and 'created_at' does not exist in type '{ user_id: string; project_role: "member" | "manager" | "viewer" | "owner"; authorization_version: number; }'.
+npm error Lifecycle script `test` failed with error:
+npm error code 2
+npm error path D:\dev\copypasted\内部管理\app\mobile
+npm error workspace @copypaste/mobile@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\mobile
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/native-wire.test.js ../.local/mobile-tests/platform/upload-transfer.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js ../.local/mobile-tests/platform/project-overview.test.js ../.local/mobile-tests/platform/project-input.test.js ../.local/mobile-tests/platform/project-resource-input.test.js ../.local/mobile-tests/platform/task-input.test.js ../.local/mobile-tests/platform/project-closeout.test.js
