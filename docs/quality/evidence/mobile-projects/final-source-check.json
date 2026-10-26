@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T10:14:31.738506+00:00",
+  "backend_source_sha256": "cc7e52695116afeed50f90ae392ca90a33c3be2b2ccea9901964ccfa2ae2910d",
+  "backend_source_files": 318,
+  "matches_unchanged_0046_backend": true,
+  "web_source_sha256": "b296e6c8767c960d1d0134b8075737462da7c7c995174222d5a6c776dfbb665c",
+  "matches_unchanged_web_build": true,
+  "browser_source_sha256": "19eb239d029654bfd46b9be6c301767dcfa5ca49ad92ee9439f86ed797835dd6",
+  "browser_source_files": 366,
+  "matches_browser_record": true,
+  "mobile_source_sha256": "aa6da52a4bfd9c4f0a9aa1d8411ed276b08574cc58fc3bce46c49cd7a2d0cbb8",
+  "mobile_source_files": 45,
+  "matches_mobile_build": true,
+  "matches_visual_review_and_images": true,
+  "document_and_embedded_openapi_match": true,
+  "browser_cleanup": {
+    "all_browser_contexts_closed": true,
+    "all_browser_tabs_closed": true,
+    "isolated_database_cleanup_passed": true,
+    "owned_review_server_stopped": true
+  },
+  "temporary_fixture_absent": true,
+  "remaining_disposable_databases": 0,
+  "development_web_probes": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 627
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "bytes": 18
+    }
+  ],
+  "production_deployment": false,
+  "actual_android_or_mini_program_runtime": false
+}

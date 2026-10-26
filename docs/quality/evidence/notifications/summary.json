@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "generated_at": "2026-10-25T03:03:40.471131+00:00",
+  "increment": 53,
+  "backend": {
+    "source_sha256": "fcfd31b14e4cef4d2518bd8a1b818e71ee7530b18a287c8942091dfd1fb663bb",
+    "batches": 14,
+    "top_level_tests": 112,
+    "recorded_results": 662,
+    "leaf_scenarios": 600,
+    "failed": 0,
+    "skipped": 0
+  },
+  "web_tests": 39,
+  "mobile_tests": 58,
+  "runtime_tests": 23,
+  "web_browser_checks": 6,
+  "mobile_h5_checks": 7,
+  "final_source_and_cleanup_checks": 19,
+  "schema_migrations": 52,
+  "notification_guards": 10,
+  "deferred_notification_guards": 3,
+  "mobile_shared_pages": 13,
+  "actual_in_app_worker_delivery_verified": true,
+  "contract_reminder_policy_configured_in_development": false,
+  "actual_cloud_invoked": false,
+  "actual_model_invoked": false,
+  "actual_android_or_mini_program_device_invoked": false,
+  "external_message_sent": false,
+  "production_deployed": false,
+  "full_goal_complete": false,
+  "documentation_checks": {
+    "passed": true,
+    "documents": 6,
+    "local_links": 425,
+    "gap_ids": 28
+  }
+}

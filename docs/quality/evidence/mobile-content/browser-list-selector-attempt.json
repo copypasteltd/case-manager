@@ -1,0 +1,54 @@
+{
+  "started_at": "2026-10-24T11:25:20.174Z",
+  "completed_at": "2026-10-24T11:26:04.837Z",
+  "source_sha256": "9eeeb101aa03480fe386273361472f47b43afd3f473205ffb920f218647d2e56",
+  "source_files": 373,
+  "source_unchanged_during_run": true,
+  "checks": [
+    {
+      "name": "Historical fixed version is read through actual API/provider bytes and rendered literally without executing markup or substituting current content",
+      "passed": true
+    },
+    {
+      "name": "Explicit clear and actual page hide discard content; returning requires a fresh authorized read",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "historical-text",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    }
+  ],
+  "blob_lifetimes": [],
+  "javascript_errors": [],
+  "unexpected_server_errors": [],
+  "expected_server_errors": [],
+  "network_failures": [],
+  "all_browser_contexts_closed": true,
+  "all_browser_tabs_closed": true,
+  "actual_cloud_invoked": false,
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "scope": "Native Edge Taro H5 common UI, actual local API/PostgreSQL and small controlled provider bytes; PDF embedding is not a rendering or device proof",
+  "passed": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "9eeeb101aa03480fe386273361472f47b43afd3f473205ffb920f218647d2e56",
+  "source_sha256_after_build": "9eeeb101aa03480fe386273361472f47b43afd3f473205ffb920f218647d2e56",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true,
+  "failure_reason": "The real file list labels its search field 查找资料; the browser return helper incorrectly waited for 搜索名称."
+}

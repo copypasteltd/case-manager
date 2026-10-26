@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T06:27:14.414Z",
+  "finished_at": "2026-10-25T06:27:30.378Z",
+  "checks": [
+    "Taro H5 reads the real first formal file version and renders the generated text and creation receipt.",
+    "Mobile shows the actual pending second replica and does not present staging as a formal file.",
+    "Mobile explicitly chooses an authorized directory and new filename without sending or mixing an update.",
+    "One actual mobile request fixes directory revision, filename and format while leaving the new file uncommitted.",
+    "The mobile sender message stores the original creation intent digest.",
+    "Mobile cancellation prevents a formal new file while retaining the prior completed file and its history."
+  ],
+  "source_count": 484,
+  "source_sha256": "c3e5151bfd83cb01d51ca23cd7038269d3835d5e125fc6c9d90855a3501c6755",
+  "source_after_sha256": "c3e5151bfd83cb01d51ca23cd7038269d3835d5e125fc6c9d90855a3501c6755",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "c3e5151bfd83cb01d51ca23cd7038269d3835d5e125fc6c9d90855a3501c6755",
+  "source_sha256_after_build": "c3e5151bfd83cb01d51ca23cd7038269d3835d5e125fc6c9d90855a3501c6755",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

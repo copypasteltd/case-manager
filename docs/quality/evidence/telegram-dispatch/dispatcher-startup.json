@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T13:48:30.188149+00:00",
+  "backend_source_sha256": "645da5440b862cea45e352f7caf8b9ba388a84e7a09df12148a49fb63290e43c",
+  "command": "python app/scripts/run_backend.py worker-telegram",
+  "configuration": "explicitly disabled",
+  "exit_code": 1,
+  "timed_out": false,
+  "expected_configuration_error_observed": true,
+  "owned_process_exited": true,
+  "sources": {
+    "scripts/verify_telegram_dispatch_startup.py": "9de91297c35520a726d939e07baee007285061db9266c729b43eacc227318d8d",
+    "scripts/run_backend.py": "0cd7726b66f3f30c2c7ef082e01183e0e53375dc21f4b5112260e94c04771aaa"
+  },
+  "scope": "Actual native command startup only; no dispatcher loop, model, Telegram or production activation."
+}

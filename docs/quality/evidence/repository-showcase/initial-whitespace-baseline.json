@@ -1,0 +1,86 @@
+{
+  "full_initial_import_exit_code": 2,
+  "finding_count": 3440,
+  "types": {
+    "new blank line at EOF": 8,
+    "trailing whitespace": 3432
+  },
+  "files": [
+    {
+      "file": "app/scripts/check_project_closeout.mjs",
+      "finding_count": 1,
+      "sha256": "b20ec7e6feb04ba1c4ffb81c4db17cbf093bca2374eee6a2cca0348b6ea18e16"
+    },
+    {
+      "file": "app/scripts/check_requests.mjs",
+      "finding_count": 1,
+      "sha256": "cea8eadd144420ce16483bd3baa166b18043fcbb05ad1f8575b49ed26f51920d"
+    },
+    {
+      "file": "app/scripts/verify_purchase_variance_development.py",
+      "finding_count": 1,
+      "sha256": "de27d959db7227cc1009927abdbf3766a157b6d3ab41e00297a6e423bb88b187"
+    },
+    {
+      "file": "app/web/src/Payments.tsx",
+      "finding_count": 1,
+      "sha256": "4f2ffc41148f0d8c9627fe4beeb666325e33d89aa5bb896816595933674741ca"
+    },
+    {
+      "file": "docs/design/assets/official-logo-dark.svg",
+      "finding_count": 1340,
+      "sha256": "dc28b1ae8c29c08b7dab43339e1f17acf9e565efd8b52ad25b3e695369d67914"
+    },
+    {
+      "file": "docs/design/assets/official-logo-light.svg",
+      "finding_count": 1852,
+      "sha256": "0ae8b9599a54a6ce62c5220aae899c9f52a5178e42417030498acbbd5d67228e"
+    },
+    {
+      "file": "docs/development/07-agent-tools-and-skills.md",
+      "finding_count": 1,
+      "sha256": "4e36fc66a3be22c688ab670c391e9edfbe214eea3764677f1f71f84969344f3a"
+    },
+    {
+      "file": "docs/quality/02-traceability-and-release.md",
+      "finding_count": 1,
+      "sha256": "39afd44414d4298bb849198c51a4affe246fb933e48bbdaebac0d57c4631453a"
+    },
+    {
+      "file": "docs/quality/evidence/mobile-project-resources/native-build.log",
+      "finding_count": 1,
+      "sha256": "401a47cb7556fd59d9dfb1e6c03d18ac5815c3cea7381e4d3e0970e4922b305a"
+    },
+    {
+      "file": "docs/quality/evidence/mobile-project-setup/native-build.log",
+      "finding_count": 1,
+      "sha256": "1580c07362d80a6339905ec47c16ef636b1a7c18221d5b8b2be501110aa508dd"
+    },
+    {
+      "file": "docs/quality/evidence/secretary-mutations/attempts/mobile-before-shared-loader/h5-build.log",
+      "finding_count": 87,
+      "sha256": "3e4a5ac12ef169230b873a2a1dc39a54441c6e26fbb5c888dccd8c02dcf6a5b6"
+    },
+    {
+      "file": "docs/quality/evidence/secretary-mutations/attempts/mobile-before-shared-loader/mini-build.log",
+      "finding_count": 42,
+      "sha256": "443eab7c33278831ee5a335f2589cce176bcbdc3eb29e1a2b7441915d18183f4"
+    },
+    {
+      "file": "docs/quality/evidence/secretary-post-writes-mobile/attempts/01-h5-api-origin/browser-mobile-build.log",
+      "finding_count": 109,
+      "sha256": "1d95639701d192a505f93e945bb26ebaa933e090342fbd57ac060925bed5da76"
+    },
+    {
+      "file": "docs/requirements/03-projects-and-knowledge.md",
+      "finding_count": 1,
+      "sha256": "28394f3e06009782abcb518ee6fa61607456980fd17ebe22038c1cc5647f0ba7"
+    },
+    {
+      "file": "docs/requirements/07-secretary-and-channels.md",
+      "finding_count": 1,
+      "sha256": "5220ad1fc303eb93cb14b2e842f91fb6e0498848f61a7cd5382afb07528bead4"
+    }
+  ],
+  "scope": "Existing baseline files imported byte-for-byte. Raw logs, official SVGs and prior source bytes are retained; no blanket whitespace normalization. Publication-only changed files are checked separately."
+}

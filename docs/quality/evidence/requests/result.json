@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T06:19:45.031Z",
+  "real_api": true,
+  "synthetic_business_data": true,
+  "production_policy_published": false,
+  "real_cloud_file_evidence": false,
+  "positive_approval_execution_tested_in_isolated_pg": true,
+  "temporary_bindings_revoked": true,
+  "checks": [
+    "A real contract action creates an explicit nullable application draft with no invented workflow, approval, amount or file",
+    "Missing business facts block real submission preview and disable confirmation; explicit retry retains the typed reason",
+    "Changing the real business draft keeps the prior request snapshot; a second write causes a visible conflict and preserves the typed revision reason",
+    "An explicit real refresh creates a new application revision; the UI history retains both original and updated business snapshots",
+    "Both themes and five widths fit; the actual application list finds the refreshed request and the reviewer workbench reads an empty current task set",
+    "Configuration administration and an unrelated employee cannot read the private application or its fixed snapshot"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "all_browser_contexts_closed": true
+}

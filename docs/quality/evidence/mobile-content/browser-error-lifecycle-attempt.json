@@ -1,0 +1,150 @@
+{
+  "started_at": "2026-10-24T11:28:43.276Z",
+  "completed_at": "2026-10-24T11:29:53.363Z",
+  "source_sha256": "6203d8e38a17e291c5496d862c7a347c28c49371514ba6dbbfc07f42cd85e5bd",
+  "source_files": 373,
+  "source_unchanged_during_run": true,
+  "checks": [
+    {
+      "name": "Historical fixed version is read through actual API/provider bytes and rendered literally without executing markup or substituting current content",
+      "passed": true
+    },
+    {
+      "name": "Explicit clear and actual page hide discard content; returning requires a fresh authorized read",
+      "passed": true
+    },
+    {
+      "name": "The later current version remains independently readable",
+      "passed": true
+    },
+    {
+      "name": "Actual committed PNG decodes at its expected dimensions; owned Blob URLs are revoked on hide and clear",
+      "passed": true
+    },
+    {
+      "name": "A real committed PDF crosses two bounded ranges and completes full digest verification; browser PDF embedding only, native rendering remains unverified",
+      "passed": true
+    },
+    {
+      "name": "Unsupported formats and text above the bounded reading budget show an honest fallback and issue no preview grant",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "historical-text",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "fixed-image",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "unsupported-format",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "oversized-text",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    }
+  ],
+  "blob_lifetimes": [
+    {
+      "phase": "explicit image clear",
+      "created": 3,
+      "revoked": 3,
+      "active": 0
+    }
+  ],
+  "javascript_errors": [],
+  "unexpected_server_errors": [],
+  "expected_server_errors": [
+    {
+      "path": "/v1/downloads/a867f753-4bdd-4add-92ad-c03bd067b4c9/chunks",
+      "status": 502
+    }
+  ],
+  "network_failures": [
+    {
+      "path": "http://localhost:5189/6578ebc4-6950-485f-ac6a-cf975b87d186",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/6578ebc4-6950-485f-ac6a-cf975b87d186",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/6578ebc4-6950-485f-ac6a-cf975b87d186",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/6578ebc4-6950-485f-ac6a-cf975b87d186",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/6578ebc4-6950-485f-ac6a-cf975b87d186",
+      "error": "net::ERR_BLOCKED_BY_CLIENT",
+      "expected": false
+    }
+  ],
+  "all_browser_contexts_closed": true,
+  "all_browser_tabs_closed": true,
+  "actual_cloud_invoked": false,
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "scope": "Native Edge Taro H5 common UI, actual local API/PostgreSQL and small controlled provider bytes; PDF embedding is not a rendering or device proof",
+  "passed": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "6203d8e38a17e291c5496d862c7a347c28c49371514ba6dbbfc07f42cd85e5bd",
+  "source_sha256_after_build": "6203d8e38a17e291c5496d862c7a347c28c49371514ba6dbbfc07f42cd85e5bd",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true,
+  "failure_reason": "Changing theme hides the reader and correctly clears its transient error; the visual helper must explicitly request the truncated file again before capturing that state."
+}

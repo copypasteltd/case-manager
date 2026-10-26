@@ -1,0 +1,4 @@
+{
+  "reason": "The checker used an organization administrator who had no grant or membership for a project-restricted project. The actual API correctly returned 404. Concurrent edits now use the authorized owner; later independent restriction uses an administrator explicitly added by the owner through the original member command.",
+  "product_change": false
+}

@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T05:14:56.002Z",
+  "source_sha256": "5fdd1590b333bb8235d645607da8d9043fe574a472f1fa735648302c03d8c6a2",
+  "source_file_count": 420,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": [
+    "15",
+    "17"
+  ],
+  "production_deliveries": false,
+  "checks": [
+    {
+      "name": "Actual Web creates exact project and dated-budget proposal, fixes the old formal file version, and leaves the live project unchanged",
+      "passed": true
+    },
+    {
+      "name": "Separate human reviewer uses complete fixed Web approval snapshots; approval alone does not create an active budget",
+      "passed": true
+    },
+    {
+      "name": "Two initially unchecked human declarations plus actual current MFA gate explicit implementation and preserve exact project-version evidence",
+      "passed": true
+    },
+    {
+      "name": "Actual Web revision retains complete immutable history and exact old/new files; net-zero budget still exposes positive approval amount",
+      "passed": true
+    },
+    {
+      "name": "A genuinely changed live project causes a real 409, preserves human input and declarations, prevents retry, and leaves the active budget unchanged",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "change-create-dialog",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "change-approved-request",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "change-implementation-dialog",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "change-implemented-detail",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "change-active-budget",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "change-net-zero-increase",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

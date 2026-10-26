@@ -1,0 +1,441 @@
+{
+  "passed": false,
+  "target": "web",
+  "checked_at": "2026-10-26T09:19:41.747Z",
+  "checks": [
+    "Real Web UI creates a project and a task, starts/completes it and renders the actual board."
+  ],
+  "recordings": [
+    {
+      "name": "web-project-flow",
+      "frame_count": 21,
+      "duration_ms": 4360,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/web-project-flow/frames.json",
+      "manifest_sha256": "0b23af302cf4d32bf69f756c52c941a3946273cf48514509c568156cd7dbb772"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/web-dashboard.png",
+      "caption": "实际Web工作台；隔离合成数据 / Actual Web dashboard with synthetic data.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "c97d37036b943bf2f4c285d218e8c244a6fbccebacc24df034b7a67e469c2027",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-project.png",
+      "caption": "实际项目资料和协作入口 / Actual project details and collaboration.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "9a4f445797aa00f667a446904cac01ee1cb160f201f55dc0a18eed8e9f51a6de",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-task.png",
+      "caption": "真实创建、开始和完成的任务 / A task created, started and completed through real commands.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "9092945138542de3a3fc828aace652bf57b39d2c170718953b1fab55cf6ef2ea",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-project-board.png",
+      "caption": "任务看板显示原业务状态 / Task board with actual business state.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "2a19d9f2dc5501174b5a4e6bba6383ff43947a2fc50fdfa253f77b43b2e7663b",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-overview.png",
+      "caption": "项目16类业务聚合；合成金额用于精度核验 / Sixteen-domain project overview with synthetic precision fixtures.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "67b899ca07ffed2351f2440fc88f20ba1214c92ce5888dcb87441ffe30391e05",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-contract.png",
+      "caption": "合同、固定业务修订及执行入口 / Contract revisions and execution entry.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "5078b0794b4ca4164d24d1900a7151dbf6b593346981e6b935efc6a23053895b",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-finance.png",
+      "caption": "实际费用台账；合成数据 / Actual-cost ledger with synthetic data.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "1174741f5428302544896f735005b8ecf108baeaa1439a80f7b71b7c25baefe9",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-files.png",
+      "caption": "文件资料界面；元数据夹具不代表真实云传输 / File metadata interface; no real cloud transfer is implied.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "cb4d6ae6b9fc0b7c1f938925bf890505b08395ce5b7df8442cf1ed1027f1da46",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/web-knowledge.png",
+      "caption": "知识与项目记录入口 / Knowledge and project records.",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "sha256": "cf76f1b07831478443910a69a3c212f840c4a99501f5ee0d3e0be1bbd5ad323b",
+      "synthetic_data": true
+    }
+  ],
+  "events": [
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/dashboard",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/projects",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/milestones",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/tasks",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd/comments",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd/comments",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd/dependencies",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd/transition",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/tasks",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd/transition",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tasks/8b2fe62b-1025-4cac-a3ec-376a566040bd",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/2f84591c-c8b6-4bf2-ba53-852a8d7fd8d6/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/99bb6c7b-1678-4942-8dc3-10023b78acab",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/99bb6c7b-1678-4942-8dc3-10023b78acab/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/99bb6c7b-1678-4942-8dc3-10023b78acab/tasks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/99bb6c7b-1678-4942-8dc3-10023b78acab/overview",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/contracts/62b6fad9-5f98-41fb-a735-d94eb547747a",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/folders",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/files",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/posts",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/storage/upload-capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/uploads",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main h1').first() to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\capture_repository_showcase.mjs:124:86\n    at async recordViewport (D:\\dev\\copypasted\\内部管理\\app\\scripts\\repository_recording.mjs:38:5)\n    at async webShowcase (D:\\dev\\copypasted\\内部管理\\app\\scripts\\capture_repository_showcase.mjs:113:19)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/capture_repository_showcase.mjs:166:25",
+  "owned_browser_closed": true,
+  "contexts_closed": 1,
+  "credentials_excluded": true,
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "tests": {
+    "tests": 2,
+    "pass": 2,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "source_sha256": "a1d3b636918981df8abba38088c31742f385714d57f9dd44cfb5d2ebad7f06a5",
+  "sources": [
+    "scripts/test_native_upload_layout.cjs",
+    "mobile/src/platform/primitives.rn.tsx",
+    "mobile/src/platform/native-styles.ts",
+    "package-lock.json"
+  ],
+  "native_device_executed": false
+}

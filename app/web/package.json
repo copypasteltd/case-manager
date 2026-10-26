@@ -1,0 +1,29 @@
+{
+  "name": "@copypaste/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5178 --strictPort",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@copypaste/contracts": "0.1.0",
+    "@copypaste/design": "0.1.0",
+    "@tanstack/react-query": "5.104.5",
+    "lucide-react": "1.61.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "7.18.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  }
+}

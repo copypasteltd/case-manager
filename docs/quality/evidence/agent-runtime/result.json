@@ -1,0 +1,22 @@
+{
+  "started_at": "2026-10-23T11:29:35.776931+00:00",
+  "completed_at": "2026-10-23T11:29:47.976784+00:00",
+  "command": "npm run test --workspace @copypaste/agent-runtime",
+  "environment": "Windows native Node/TypeScript; controlled SDK factory, no virtualization",
+  "exit_code": 0,
+  "results": {
+    "tests": 14,
+    "pass": 14,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "source_sha256": "d44a64345ce4e8b648632d6a6bdf6387e2a8b16468a57766e2583b13a355881c",
+  "source_files": 45,
+  "source_unchanged_during_run": true,
+  "codex_sdk_version": "0.164.0",
+  "actual_native_codex_invoked": false,
+  "actual_model_invoked": false,
+  "scope": "Skill loading and schemas, verified result references, controlled SDK event mapping/cancellation/bounds; not a real model, Go gateway, OS confinement, Telegram or end-to-end acceptance",
+  "passed": true
+}

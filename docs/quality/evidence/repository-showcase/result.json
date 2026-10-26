@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T09:26:55.634223+00:00",
+  "source_sha256": "418ae923cabb933fb1ef42c27d543a824aad0d0126727969804a552178a626d4",
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "completed_at": "2026-10-26T09:28:39.867907+00:00",
+  "source_after_sha256": "418ae923cabb933fb1ef42c27d543a824aad0d0126727969804a552178a626d4",
+  "source_unchanged": true,
+  "phases": [
+    {
+      "target": "web",
+      "exit_code": 0
+    },
+    {
+      "target": "mobile",
+      "exit_code": 0
+    }
+  ],
+  "failure": null,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_servers_closed": true,
+  "private_fixture_removed": true
+}

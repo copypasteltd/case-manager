@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+const screen = page => page.locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page');
+const button = (page, name) => screen(page).getByRole('button', { name, exact: true });
+
+await notificationBrowser(true, async ({ page, context, fixture, checks }) => {
+ let token; page.on('request', r => { if (r.headers().authorization) token = r.headers().authorization; });
+ await page.goto(fixture.origin);
+ await screen(page).getByRole('textbox', { name: '内部账号', exact: true }).fill(fixture.alice.login);
+ await screen(page).getByRole('textbox', { name: '密码', exact: true }).fill(fixture.alice.password);
+ await button(page, '登录工作空间 ↗').click();
+ await screen(page).locator('input[aria-label="六位验证码"]').fill(await waitOTP(fixture));
+ await button(page, '验证并继续 ↗').click();
+ await screen(page).locator('.cp-title').filter({ hasText: '工作从这里开始' }).waitFor();
+ await page.goto(fixture.origin + '/#/pages/telegram/index?request=' + fixture.request_id);
+ await screen(page).getByText('受理通知 · 投递结果未知', { exact: true }).waitFor();
+ assert.match(await screen(page).textContent(), /结果未知时不会自动重发/);
+ checks.push({ name: 'Taro opens the original employee request and actual unknown notification receipt', passed: true });
+ await button(page, '核对此通知是否已发送').click();
+ await screen(page).locator('input[aria-label="对账原因"]').fill('移动端核对原群后，保留未知事实并放弃重发。');
+ const nextCode = await waitOTP({ ...fixture, alice: { ...fixture.alice, last_step: Math.floor(Date.now() / 30000) } });
+ await screen(page).locator('input[aria-label="验证器六位验证码"]').fill(nextCode);
+ await button(page, '确认本人操作').click();
+ await screen(page).getByText('已通过本次两步验证，请继续核对并确认操作。', { exact: true }).waitFor();
+ const save = button(page, '保存此次对账');
+ assert.ok(await save.isEnabled(), 'Reconciliation is disabled; visible notices: ' + (await screen(page).locator('.cp-notice').allTextContents()).join(' | '));
+ const [saved] = await Promise.all([page.waitForResponse(r => r.url().includes('/deliveries/' + fixture.delivery_id + '/reconcile') && r.request().method() === 'POST'), save.click()]);
+ assert.equal(saved.status(), 200, 'actual mobile reconciliation response');
+ await screen(page).getByText('受理通知 · 本人已放弃重发', { exact: true }).waitFor();
+ assert.ok(token);
+ const response = await context.request.get(fixture.api_origin + '/v1/me/telegram/requests/' + fixture.request_id + '/deliveries', { headers: { Authorization: token } });
+ assert.equal(response.status(), 200, 'independent native API receipt verification'); const value = (await response.json()).data;
+ assert.equal(value.deliveries[0].state, 'abandoned'); assert.equal(value.events.length, 4);
+ assert.equal(value.events[2].state, 'delivery_unknown'); assert.equal(value.events[3].reason_code, 'manual_abandoned');
+ checks.push({ name: 'Taro performs MFA-protected reconciliation and preserves original uncertain delivery history', passed: true });
+}, 'telegram-delivery');

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T11:07:01.763Z",
+  "finished_at": "2026-10-25T11:07:26.009Z",
+  "checks": [
+    "Taro H5 displays actual committed milestone history after real MFA login.",
+    "Mobile milestone selection uses the actual project member list and does not send on selection.",
+    "Mobile project phase preview retains the explicit action without executing it.",
+    "Mobile confirmed send creates only the exact milestone authorization and keeps a real write separate.",
+    "Identical mobile retries preserve the same current-run intent.",
+    "Mobile cancellation leaves the milestone and project phase intact."
+  ],
+  "source_count": 498,
+  "source_sha256": "aa96e7dfcd88483663233788865871cd1339883133f06b8043542b3d3aa9211c",
+  "source_after_sha256": "aa96e7dfcd88483663233788865871cd1339883133f06b8043542b3d3aa9211c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "aa96e7dfcd88483663233788865871cd1339883133f06b8043542b3d3aa9211c",
+  "source_sha256_after_build": "aa96e7dfcd88483663233788865871cd1339883133f06b8043542b3d3aa9211c",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

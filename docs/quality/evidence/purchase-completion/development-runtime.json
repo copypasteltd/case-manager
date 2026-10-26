@@ -1,0 +1,135 @@
+{
+  "checked_at": "2026-10-24T02:21:48.901434+00:00",
+  "passed": true,
+  "environment": "owned native loopback development only",
+  "database": {
+    "role": "copypaste_app",
+    "is_superuser": false,
+    "can_bypass_row_security": false,
+    "can_create_database": false,
+    "can_create_roles": false,
+    "can_read_migration_ledger": false,
+    "can_create_public_objects": false,
+    "can_insert_completion_facts": true,
+    "can_rewrite_completion_facts": false,
+    "completer_role_count": 1,
+    "completer_role_bindings": 0,
+    "completer_requires_mfa": true,
+    "completion_consistency_constraints": 4,
+    "completion_immutable_guards": 2,
+    "completed_purchase_variance_guards": 2,
+    "completion_reference_guard": 1,
+    "migration_count": 43,
+    "latest_migration": "0043_purchase_completion_unused_amount.sql",
+    "migration_manifest_matches_source": true
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/completion-preview",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/completion",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/completion",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/fulfillment",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/execution-plan",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/variances",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/orders",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/receipts",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/requests",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/workflow-definitions",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "production_deployment": false,
+  "worker_started": false
+}

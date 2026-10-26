@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+
+await notificationBrowser(false,async({page,context,fixture,checks})=>{
+ await page.goto(fixture.origin);
+ await page.getByLabel('内部账号',{exact:true}).fill(fixture.alice.login);
+ await page.getByLabel('密码',{exact:true}).fill(fixture.alice.password);
+ await page.getByRole('button',{name:'登录工作空间',exact:true}).click();
+ await page.getByLabel('六位验证码').fill(await waitOTP(fixture));
+ await page.getByRole('button',{name:'验证并继续',exact:true}).click();
+ await page.getByRole('heading',{name:/工作从这里开始/}).waitFor();
+ await page.goto(fixture.origin+'/conversations/'+fixture.conversation_id);
+ await page.getByRole('button',{name:'查看固定状态快照',exact:true}).click();
+ const report=page.locator('section.context-preview').filter({has:page.getByRole('heading',{name:'固定状态快照',exact:true})});
+ await report.getByText(/captured_at/).waitFor();
+ assert.match(await report.textContent(),/历史证据/);
+ checks.push({name:'actual completed incident task opens its fixed permission checked report',passed:true});
+ const response=await context.request.get(fixture.origin+'/v1/conversations/'+fixture.conversation_id+'/context-sources/service/'+fixture.service_id+'?context_security_version=1&max_chars=10000&version_id='+fixture.service_report_id);
+ assert.equal(response.status(),200);
+ const view=(await response.json()).data,content=JSON.parse(view.text);
+ assert.equal(view.version_id,fixture.service_report_id);assert.equal(content.state_as_of_capture.observed_state,'down');assert.equal(content.state_as_of_capture.state,'maintenance');
+ assert.equal(content.incidents.length,1);assert.ok(!view.text.includes('DO_NOT_DISCLOSE'));
+ const live=await context.request.get(fixture.origin+'/v1/services/'+fixture.service_id);
+ assert.equal(live.status(),200);assert.equal((await live.json()).data.observed_state,'operational');
+ checks.push({name:'new healthy observation leaves original failure evidence and filtered incident intact',passed:true});
+ await page.getByLabel('资料类型',{exact:true}).selectOption('service');
+ await page.getByLabel('选择资料',{exact:true}).selectOption(fixture.service_id);
+ await page.getByRole('button',{name:'核对并预览',exact:true}).click();
+ await page.getByRole('button',{name:'将这份准确资料加入本次请求',exact:true}).waitFor();
+ checks.push({name:'Web service picker reads real common audience metadata',passed:true});
+},'service-summary');

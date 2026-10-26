@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T10:56:32.602Z",
+  "finished_at": "2026-10-25T10:57:06.816Z",
+  "checks": [
+    "Web renders the real committed milestone revision and operation from authenticated history.",
+    "Milestone selection reads a current version and an actual project member; selecting it alone sends nothing.",
+    "Project phase preview shows the exact action without silently executing it or offering archive.",
+    "One confirmed send persists the exact milestone, version, title and reason, without claiming business completion.",
+    "An identical Web transport retry preserves the original run and exact intent.",
+    "Cancellation before execution leaves the milestone and project phase unchanged."
+  ],
+  "source_count": 528,
+  "source_sha256": "b4ca777d6b38d4590b553f79ca9a5ed8d0d8a8337b4660f9f7638b7c67935f6c",
+  "source_after_sha256": "b4ca777d6b38d4590b553f79ca9a5ed8d0d8a8337b4660f9f7638b7c67935f6c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

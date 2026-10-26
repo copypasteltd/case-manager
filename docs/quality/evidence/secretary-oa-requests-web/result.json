@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T08:31:42.264Z",
+  "finished_at": "2026-10-25T08:32:05.488Z",
+  "checks": [
+    "Web renders the actual committed OA submission and preserves its pending employee approval state.",
+    "The real submission preview shows the published rule and assigned employee and requires explicit human confirmation before selection.",
+    "One real Web send freezes the exact saved business revision and receives authorization without claiming a completed application.",
+    "The persisted sender source binds the immutable OA intent without exposing its original session identifier.",
+    "An identical HTTP retry returns the same run and exact OA authorization.",
+    "Actual cancellation leaves the selected business unlinked to any new application and preserves earlier submission history."
+  ],
+  "source_count": 519,
+  "source_sha256": "615993f0da2b8eaac2fa6e816e8c6bef621ce386f9039b63171666e12e04ea28",
+  "source_after_sha256": "615993f0da2b8eaac2fa6e816e8c6bef621ce386f9039b63171666e12e04ea28",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "reason": "Business checks passed, but the source collector included generated Android build files that changed during the H5 run. The collector now excludes the native output tree.",
+  "canonical_next_evidence": "../../result.json"
+}

@@ -1,0 +1,34 @@
+# Native Linux deployment candidate. Instances: small or large. Not installed.
+[Unit]
+Description=CopyPaste fixed-source verification worker (%i)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/copypaste/verify-%i.env
+
+[Service]
+Type=simple
+User=copypaste-verify
+Group=copypaste-verify
+WorkingDirectory=/opt/copypaste/current
+EnvironmentFile=/etc/copypaste/verify-%i.env
+ExecStart=/opt/copypaste/current/bin/platform worker-verify-%i
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+LockPersonality=yes
+CacheDirectory=copypaste-verify
+ReadWritePaths=/var/cache/copypaste-verify
+
+[Install]
+WantedBy=multi-user.target

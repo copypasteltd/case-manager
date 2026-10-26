@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T06:00:47.147Z",
+  "finished_at": "2026-10-26T06:01:25.636Z",
+  "checks": [
+    "Web reads a real version-one creation receipt while its later human acceptance remains intact.",
+    "Web previews complete new-draft metadata and explicit null without creating business data.",
+    "Web chooses a real same-project milestone for the complete new draft.",
+    "Web send fixes the exact parent version and all reviewed creation fields.",
+    "Web retry reuses the run and cancellation creates no draft."
+  ],
+  "source_count": 597,
+  "source_sha256": "19c7a7ae99c4f48f2e9b6efe35e7921a931e82c95c5f9e239f2e66822c3e9a12",
+  "source_after_sha256": "19c7a7ae99c4f48f2e9b6efe35e7921a931e82c95c5f9e239f2e66822c3e9a12",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

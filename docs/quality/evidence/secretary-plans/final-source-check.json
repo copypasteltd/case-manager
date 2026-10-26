@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T20:47:19.661199+00:00",
+  "checks": [
+    {
+      "name": "backend-result.json",
+      "passed": true,
+      "source_sha256": "4842354c2e267a3fcb841babe6f3698d9c4d9cde6070023162a273acffafcd65"
+    },
+    {
+      "name": "linux-build.json",
+      "passed": true,
+      "source_sha256": "4842354c2e267a3fcb841babe6f3698d9c4d9cde6070023162a273acffafcd65"
+    },
+    {
+      "name": "runtime-build.json",
+      "passed": true,
+      "source_sha256": "fa97b90c5ad55539694848a8b46a2b40d32c5528a2f2659f1d2529504223dcc7"
+    },
+    {
+      "name": "mobile-build.json",
+      "passed": true,
+      "source_sha256": "a229eddd9254580ee088ad4ee10409130425e786cfd7feec84d07eeeb0c0c7b1"
+    },
+    {
+      "name": "web-build.json",
+      "passed": true,
+      "source_sha256": "9250967d128aed71ca8552367f6a4d1e8d98dff355612b35ffd28fcf99895362"
+    },
+    {
+      "name": "secretary-plans-web",
+      "passed": true,
+      "source_sha256": "f2ed56b0414aeceba8d2cf084adf72ae8f37cc53e30f372749844f830e5c6f38",
+      "checks": 7
+    },
+    {
+      "name": "secretary-plans-mobile",
+      "passed": true,
+      "source_sha256": "7ccc378d1891360af24027d06fdbae37bad783dd0016fca226bcbd389a0b957d",
+      "checks": 4
+    },
+    {
+      "name": "development plans and unauthorized route probes",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI embedded and documented copies",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "scope": "Fixed source verification, local readiness and owned cleanup; no production, real model, cloud, device or capacity acceptance."
+}

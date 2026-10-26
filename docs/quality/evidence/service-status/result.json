@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T13:08:51.000Z",
+  "source_sha256": "feec1ebe62b457a3cc5cebf755225c5e5e2393c97a670a113c96bbe5da200caf",
+  "source_file_count": 269,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_signed_observations": true,
+  "production_monitoring": false,
+  "checks": [
+    "Real Web creation starts unknown with no monitoring data; the system administrator cannot read content and a scoped reader cannot edit",
+    "The UI publishes an immutable public-key source and real signed HTTP observations produce three-failure down and two-success recovery",
+    "The browser verifies original Ed25519 bytes and SHA-256 using the exact historical public key and exports only the selected evidence",
+    "Real maintenance creation overlays current evidence; cancellation appends history and restores the evaluated underlying state",
+    "A stalled real refresh cannot keep a cached green badge past its server deadline; service detail fits five widths in both themes",
+    "A real UI incident fixes both impact services, and a reader of only one receives neither the event nor a partial list summary",
+    "A second-device conflict preserves input and disables blind resubmission; resolution and later postmortem append four immutable entries without changing first resolution, across both themes and five widths",
+    "Disabling a source publishes a new revision, immediately returns unknown and retains the prior complete configuration"
+  ],
+  "errors": [],
+  "server_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T11:20:45.542654+00:00",
+  "document_count": 10,
+  "local_links_checked": 554,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 goal gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment 59",
+      "passed": true
+    },
+    {
+      "name": "Current backend source appears in ledger and baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Project stage tools remain partial scope and the 13-page mobile baseline is explicit",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "80be0242cce13299f73e242b45a7549b5690790398871e243210d76a9620d583"
+    },
+    {
+      "path": "docs/development/59-secretary-project-stages.md",
+      "sha256": "44453b599d07129401a2231f4950cdaf73617b8324b8833f18599b1f1cc59b32"
+    },
+    {
+      "path": "docs/requirements/07-secretary-and-channels.md",
+      "sha256": "642307712222270778b3de7137a2163d6ee962baac82e16ad692b75aa4fda159"
+    },
+    {
+      "path": "docs/development/07-agent-tools-and-skills.md",
+      "sha256": "ac8e52ef5e120374b9bbbad3594ce7c0b8ef87d8b2b127378b97493ba1b9c09a"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "853e3c9ee80de341576fecadbc0e3540f6d4649c56f76d98d84d5c85cab38377"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "062f9b0f995e46ec464f69a61d01f485285394c8873d0639041f7117a0cfc99a"
+    },
+    {
+      "path": "docs/quality/evidence/secretary-project-stages/verification.md",
+      "sha256": "9a1ef88307922a6934fb84745a0498a37a7bc25917526a05757fed6f1145080a"
+    },
+    {
+      "path": "docs/skills/project-update/SKILL.md",
+      "sha256": "eb9c5214c3269fdc400fcd0fd429855b5d21e27e4147a7deb19bacac54e7c09e"
+    },
+    {
+      "path": "docs/quality/01-test-strategy-and-cases.md",
+      "sha256": "3e791319bc59f04153841e27239abebb2b3701d7d76f635a1a4b5d9f87a5e7ea"
+    },
+    {
+      "path": "docs/requirements/03-projects-and-knowledge.md",
+      "sha256": "3837b91c3e566bc1858d0b9f19b47794ecd0847b49a1d01f96942ecd963ab490"
+    }
+  ]
+}

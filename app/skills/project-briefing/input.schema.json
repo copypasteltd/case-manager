@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/project-briefing.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "post_write": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "draft_post"
+                },
+                "post_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "expected_version": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "base_revision_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "content_hash": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "type": {
+                  "enum": [
+                    "project_log",
+                    "meeting_note",
+                    "sop",
+                    "article"
+                  ]
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "classification": {
+                  "enum": [
+                    "internal",
+                    "project_restricted"
+                  ]
+                },
+                "source_refs": {
+                  "type": "array",
+                  "maxItems": 20,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "type": {
+                        "const": "file"
+                      },
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "version_id": {
+                        "type": "string",
+                        "format": "uuid"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "id",
+                      "version_id"
+                    ]
+                  }
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              },
+              "required": [
+                "tool",
+                "type",
+                "title",
+                "classification",
+                "reason"
+              ],
+              "dependentRequired": {
+                "post_id": [
+                  "post_id",
+                  "expected_version",
+                  "base_revision_id",
+                  "content_hash"
+                ],
+                "expected_version": [
+                  "post_id",
+                  "expected_version",
+                  "base_revision_id",
+                  "content_hash"
+                ],
+                "base_revision_id": [
+                  "post_id",
+                  "expected_version",
+                  "base_revision_id",
+                  "content_hash"
+                ],
+                "content_hash": [
+                  "post_id",
+                  "expected_version",
+                  "base_revision_id",
+                  "content_hash"
+                ]
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "publish_post"
+                },
+                "post_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "expected_version": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "base_revision_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "content_hash": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              },
+              "required": [
+                "tool",
+                "post_id",
+                "expected_version",
+                "base_revision_id",
+                "content_hash",
+                "reason"
+              ]
+            }
+          ]
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "post_write",
+        "instructions"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "window": {
+          "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/window"
+        },
+        "focus": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "project_id",
+        "window"
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T21:36:39.531473+00:00",
+  "environment": "Owned native loopback development only",
+  "database": {
+    "can_read_plans": true,
+    "can_insert_plans": true,
+    "can_update_plan_head": true,
+    "can_delete_plans": false,
+    "can_insert_events": true,
+    "can_rewrite_events": false,
+    "plan_guards": 6,
+    "operator_role_installed": true,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/plans",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/plans",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/plans/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/plans/00000000-0000-4000-8000-000000000000/approve",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/plans/00000000-0000-4000-8000-000000000000/revoke",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/plans/00000000-0000-4000-8000-000000000000/commit",
+      "status": 401,
+      "passed": true
+    }
+  ],
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "real_model_invoked": false,
+  "production_deployed": false
+}

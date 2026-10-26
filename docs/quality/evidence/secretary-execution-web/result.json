@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "phase": "current member withdrawal",
+  "started_at": "2026-10-24T17:19:57.917Z",
+  "completed_at": "2026-10-24T17:20:14.219Z",
+  "real_api": true,
+  "isolated_native_postgresql": true,
+  "actual_model_or_cloud": false,
+  "source_files": [
+    "backend/internal/agent/runs.go",
+    "backend/internal/agent/run_reads.go",
+    "backend/internal/agent/run_cancel.go",
+    "backend/internal/httpapi/agent_runs.go",
+    "backend/internal/httpapi/agent_context_integration_test.go",
+    "backend/internal/httpapi/agent_runs_integration_test.go",
+    "backend/migrations/0047_agent_runs_and_messages.sql",
+    "backend/migrations/0048_agent_execution_and_receipts.sql",
+    "backend/internal/agent/execution.go",
+    "backend/internal/jobqueue/queue.go",
+    "web/src/ConversationMessages.tsx",
+    "web/src/ConversationSources.tsx",
+    "web/src/Conversations.tsx",
+    "web/src/App.tsx",
+    "packages/contracts/src/api.d.ts",
+    "scripts/check_agent_runs.mjs",
+    "scripts/run_agent_browser.py"
+  ],
+  "source_sha256": "f91fa62312c8ae0f1c5544d95d7887c992f10d1a44cd7ec40fe7b691a4d1d2a0",
+  "source_unchanged": true,
+  "checks": [
+    "Web submits a real queued run with a fixed published source and clears text only after a matching receipt",
+    "A shared reader sees persisted messages and task events while only the requester can cancel",
+    "A lost response remains a bounded memory-only pending intent across navigation; explicit retry uses the original key and creates no duplicate",
+    "Removing a member through Web causes their already open page to clear message and run facts after current authorization is checked"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "intentionally_aborted_commit_responses": 1,
+  "all_browser_contexts_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T16:27:45.979Z",
+  "finished_at": "2026-10-25T16:27:56.408Z",
+  "checks": [
+    {
+      "name": "Taro opens the actual completed monthly financial snapshot with its scope notice",
+      "passed": true
+    },
+    {
+      "name": "Taro verifies historical money strings against the current authorized source digest and closes the reader",
+      "passed": true
+    }
+  ],
+  "source_count": 528,
+  "source_sha256": "07a7eb1949f7530f201e43980d46729d6a3222396998372b230bb4df26a567e1",
+  "source_after_sha256": "07a7eb1949f7530f201e43980d46729d6a3222396998372b230bb4df26a567e1",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "07a7eb1949f7530f201e43980d46729d6a3222396998372b230bb4df26a567e1",
+  "source_sha256_after_build": "07a7eb1949f7530f201e43980d46729d6a3222396998372b230bb4df26a567e1",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

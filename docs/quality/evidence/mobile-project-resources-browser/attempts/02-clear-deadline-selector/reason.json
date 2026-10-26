@@ -1,0 +1,4 @@
+{
+  "reason": "The product correctly rejected unsupported deadline clearing without a write. The checker matched both the field hint and the actual error message; it now locates the exact error inside the existing error notice.",
+  "product_change": false
+}

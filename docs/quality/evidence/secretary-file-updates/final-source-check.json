@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T01:40:44.705972+00:00",
+  "checks": [
+    {
+      "name": "backend-result.json",
+      "passed": true,
+      "source_sha256": "f798ad627b4cab1d568a9e3802f16283af14eb36b6c398e0c13d6f81f5fb525f"
+    },
+    {
+      "name": "linux-build.json",
+      "passed": true,
+      "source_sha256": "f798ad627b4cab1d568a9e3802f16283af14eb36b6c398e0c13d6f81f5fb525f"
+    },
+    {
+      "name": "runtime-build.json",
+      "passed": true,
+      "source_sha256": "f9bc4b3372d5a0f360359bf105275ab11667ef3803cc1bb1a6e7291051fe4bc0"
+    },
+    {
+      "name": "mobile-build.json",
+      "passed": true,
+      "source_sha256": "532ca973eb7f4f4549f63ffe3073c1344943565d4f6fb486c76dbd22ae310c0f"
+    },
+    {
+      "name": "web-build.json",
+      "passed": true,
+      "source_sha256": "6d1b66326fd281d3520fe5f8cd02dc6866393c3d751cd18b54806b14b201de6a"
+    },
+    {
+      "name": "secretary-file-updates-web",
+      "passed": true,
+      "source_sha256": "0255a2afe886d7f7368630ee3757f02a52b73d7266ea820ce26f8769165dd6e7",
+      "checks": 6
+    },
+    {
+      "name": "secretary-file-updates-mobile",
+      "passed": true,
+      "source_sha256": "0ee0d5b4b1d6aa053cf910e1299af362ca9f48123daa781bb420830f6fa9f9c2",
+      "checks": 6
+    },
+    {
+      "name": "Owned development file evidence and disabled cloud role",
+      "passed": true
+    },
+    {
+      "name": "Development verification script source",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI embedded and documented copies",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "scope": "Fixed-source native implementation, controlled draft and formal object bytes and cleanup; excludes production, real model/cloud, devices and capacity acceptance."
+}

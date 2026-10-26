@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T01:40:55.230909+00:00",
+  "files": [
+    {
+      "path": "docs/README.md",
+      "sha256": "193fad8d9e9b4b4fefc8c24648184867a119e24904eaad5d0f478e0d683338b4"
+    },
+    {
+      "path": "docs/development/52-secretary-file-updates.md",
+      "sha256": "f49612ffcfea81148084bb3d6f3097e1304f400e304ac486b5ec94c39d2c0e8f"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "b24f6c9632764ac18e5759be243dcdb81d4a05a605fe7ad29124f4d92c5ee6dc"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "cd35c8f89907ab0ab9939747af722dad4f05dbb29dff52edcde2d5284f98aaf8"
+    },
+    {
+      "path": "docs/skills/file-update/SKILL.md",
+      "sha256": "144c504dcd8a1dd0eef24e904aa61fb9314fea448dfb75efa9c29e84101bffaf"
+    },
+    {
+      "path": "docs/quality/evidence/secretary-file-updates/verification.md",
+      "sha256": "3310459da77b5ea3490e48d327c814e13631aa2ca86e08cb04aad4e74b235a54"
+    }
+  ],
+  "local_links_checked": 419,
+  "missing_targets": [],
+  "goal_gap_rows": 28,
+  "goal_gap_ids_complete_and_unique": true,
+  "scope": "Current six documents, local Markdown target existence and exact GAP-01 through GAP-28 row IDs; excludes remote URLs and anchor resolution."
+}

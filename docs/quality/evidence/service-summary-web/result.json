@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T15:04:31.492Z",
+  "finished_at": "2026-10-25T15:04:57.660Z",
+  "checks": [
+    {
+      "name": "actual completed incident task opens its fixed permission checked report",
+      "passed": true
+    },
+    {
+      "name": "new healthy observation leaves original failure evidence and filtered incident intact",
+      "passed": true
+    },
+    {
+      "name": "Web service picker reads real common audience metadata",
+      "passed": true
+    }
+  ],
+  "source_count": 554,
+  "source_sha256": "8a95e1103457c104cfa8591e4cff827ca01fee72011de7e01c76efc654c048de",
+  "source_after_sha256": "8a95e1103457c104cfa8591e4cff827ca01fee72011de7e01c76efc654c048de",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

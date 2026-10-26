@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T02:54:57.972118+00:00",
+  "finished_at": "2026-10-26T02:54:58.935050+00:00",
+  "database": "cp_test_2b32044b5d2c4f998790ee31c89cd5ab",
+  "ownership_evidence": "Exact database named by this run failed DROP statement at 2026-10-26 10:37:12.378; prior increment had no disposable databases; all current batches are settled.",
+  "failed_cleanup_log_sha256": "677bf0ea610a4007819bcdf4a972982f5c6a3a22314347e349f04c5e9f21f7d3",
+  "state_before_drop": {
+    "name": "cp_test_2b32044b5d2c4f998790ee31c89cd5ab",
+    "owner": "postgres",
+    "connection_limit": -2,
+    "connections": 0
+  },
+  "contents_not_read": "The partially dropped fixture rejects connections; no attempt to repair or resume its business data.",
+  "force_used": false,
+  "daily_database_modified": false,
+  "postgres_restarted": false,
+  "external_integration_started": false
+}

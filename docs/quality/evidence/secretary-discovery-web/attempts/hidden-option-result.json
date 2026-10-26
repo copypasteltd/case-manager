@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "started_at": "2026-10-24T21:12:08.471Z",
+  "finished_at": "2026-10-24T21:12:59.073Z",
+  "source_sha256": "913b1d08e156856e2d7ec9448bf64a657c73f9f1b017f8ec1dc9382d026ade51",
+  "source_after_sha256": "913b1d08e156856e2d7ec9448bf64a657c73f9f1b017f8ec1dc9382d026ade51",
+  "source_files": [
+    "backend/internal/agent/plan_discovery.go",
+    "backend/internal/agent/plan_tools.go",
+    "backend/internal/agent/execution_tools.go",
+    "backend/internal/agent/runs.go",
+    "backend/internal/agentworker/mcp.go",
+    "backend/internal/httpapi/agent_project_tools_integration_test.go",
+    "web/src/ConversationPlans.tsx",
+    "web/src/ConversationMessages.tsx",
+    "packages/contracts/src/api.d.ts",
+    "scripts/check_agent_plan_discovery.mjs",
+    "scripts/run_agent_browser.py"
+  ],
+  "checks": [
+    {
+      "name": "Web exposes the exact existing plan ID and immutable hash in its current card",
+      "passed": true
+    }
+  ],
+  "errors": [
+    "TimeoutError: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('本次秘书任务', { exact: true }).locator('option').filter({ hasText: '整理项目简报' }) to be visible\u001b[22m\n\u001b[2m    53 × locator resolved to hidden <option value=\"1414d576-9705-4865-9f3b-03fa4a09bfce\">整理项目简报 · controlled-test</option>\u001b[22m\n"
+  ],
+  "server_errors": [],
+  "owned_contexts_closed": true,
+  "owned_browser_closed": true,
+  "scope": "Real Web/native isolated API and controlled MCP fixture; no actual SDK model, cloud or production activation.",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

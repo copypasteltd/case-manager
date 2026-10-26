@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-10-24T11:14:30.561505+00:00",
+  "passed": false,
+  "phase": "starting owned native fixture",
+  "native_fixture_exit_code": 1,
+  "browser_exit_code": null,
+  "isolated_database_cleanup_passed": false,
+  "owned_review_server_stopped": false,
+  "recorded_at": "2026-10-24T11:18:11.383998+00:00",
+  "failure_reason": "The disposable MFA setup selected a role without login MFA, so enrollment had no challenge. This was a fixture setup failure before any browser launched.",
+  "actual_browser_invoked": false,
+  "actual_cloud_invoked": false,
+  "fixture_file_created": false,
+  "owned_browser_tabs_created": 0
+}

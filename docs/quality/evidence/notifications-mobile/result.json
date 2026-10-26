@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T03:00:57.389Z",
+  "finished_at": "2026-10-25T03:01:10.185Z",
+  "checks": [
+    "The Taro workbench badge opens the actual employee inbox without another recipient’s task.",
+    "The mobile session cannot read another employee’s notification by ID.",
+    "Marking the observed notification read preserves the actual outstanding task.",
+    "Actual Taro picker gestures filter unread, duty and business category pages.",
+    "Authorized mobile operators see sanitized delivery failure metadata.",
+    "Opening the notification rechecks permission and reads the exact live task.",
+    "Notification navigation leaves no authentication secrets or private event bodies in generic browser storage."
+  ],
+  "source_count": 464,
+  "source_sha256": "9a64bbc95f8375b038516dbc626216aea9bd93c426f6d643de85613b226d98ea",
+  "source_after_sha256": "9a64bbc95f8375b038516dbc626216aea9bd93c426f6d643de85613b226d98ea",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "9a64bbc95f8375b038516dbc626216aea9bd93c426f6d643de85613b226d98ea",
+  "source_sha256_after_build": "9a64bbc95f8375b038516dbc626216aea9bd93c426f6d643de85613b226d98ea",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

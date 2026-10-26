@@ -1,0 +1,35 @@
+{
+  "skill_id": "file-update",
+  "version": "1.1.0",
+  "state": "draft",
+  "owner_role": "business_admin",
+  "runtime_compatibility": "codex-sdk@0.164.0",
+  "authorization_level": "L1",
+  "allowed_tools": [
+    "read_resource",
+    "create_file_draft",
+    "propose_file_update",
+    "commit_file_update",
+    "inspect_operation",
+    "stage_file_create",
+    "propose_file_create",
+    "commit_file_create"
+  ],
+  "completion_tools": [
+    "commit_file_update",
+    "commit_file_create"
+  ],
+  "input_schema_ref": "input.schema.json",
+  "output_schema_ref": "output.schema.json",
+  "instructions_ref": "file-update/SKILL.md",
+  "reference_docs": [
+    "execution-boundaries.md"
+  ],
+  "max_tool_calls": 20,
+  "timeout_seconds": 900,
+  "test_case_refs": [
+    "TC-AI-01",
+    "TC-AI-02",
+    "TC-AI-03"
+  ]
+}

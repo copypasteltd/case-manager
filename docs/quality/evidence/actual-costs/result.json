@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T17:49:22.803Z",
+  "source_sha256": "3a353ef69f7b7e5a07009ed0a1982d18b30f6d8db2969bc148c58b79e662b4c1",
+  "source_file_count": 304,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_payments": false,
+  "checks": [
+    {
+      "name": "Web saves a genuinely incomplete draft, permanent source identity rejects a second record, administration has no cost read grant",
+      "passed": true
+    },
+    {
+      "name": "Actual editor fixes party and file revisions, preserves stale concurrent input, rejects unbalanced confirmation and accepts balanced human confirmation",
+      "passed": true
+    },
+    {
+      "name": "The first incomplete historical revision stays exact after later confirmation",
+      "passed": true
+    },
+    {
+      "name": "Web chooses exact approved purchase and claim plus a signed effective payable contract; all three trace one economic cost and count only once",
+      "passed": true
+    },
+    {
+      "name": "A real read-only browser sees facts without write controls and the API also rejects its reversal",
+      "passed": true
+    },
+    {
+      "name": "Narrow-screen human reversal appends a complete inverse record and retains eight immutable original events",
+      "passed": true
+    },
+    {
+      "name": "Actual monthly report preserves January 100 and February company reversal minus 40; allocation drilldown yields exactly its contributing inverse record",
+      "passed": true
+    },
+    {
+      "name": "Loaded detail, monthly report and drilldown pass both themes at five widths with no horizontal overflow, undersized controls or browser/server errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

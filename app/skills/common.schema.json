@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/common.v1.json",
+  "$defs": {
+    "resource_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "project",
+            "task",
+            "milestone",
+            "deliverable",
+            "file",
+            "post",
+            "contract",
+            "purchase",
+            "claim",
+            "subscription",
+            "cost",
+            "service",
+            "incident",
+            "agent_plan",
+            "agent_mutation",
+            "agent_file_update",
+            "agent_file_create",
+            "agent_file_draft",
+            "folder",
+            "agent_organization_plan",
+            "agent_directory",
+            "agent_oa_request",
+            "request",
+            "agent_post_write",
+            "agent_finance_report"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "version_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "type",
+        "id"
+      ]
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "to": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "from",
+        "to"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "project_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "maxItems": 100,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "include_company": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "project_ids",
+        "include_company"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "pending",
+            "awaiting_input",
+            "completed",
+            "conflict",
+            "denied",
+            "failed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "resource_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "enum": [
+                  "project",
+                  "task",
+                  "milestone",
+                  "deliverable",
+                  "file",
+                  "post",
+                  "contract",
+                  "purchase",
+                  "claim",
+                  "subscription",
+                  "cost",
+                  "service",
+                  "incident",
+                  "agent_plan",
+                  "agent_mutation",
+                  "agent_file_update",
+                  "agent_file_create",
+                  "agent_file_draft",
+                  "folder",
+                  "agent_organization_plan",
+                  "agent_directory",
+                  "agent_oa_request",
+                  "request",
+                  "agent_post_write",
+                  "agent_finance_report"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "version_id": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "type",
+              "id"
+            ]
+          },
+          "maxItems": 100,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "enum": [
+                  "project",
+                  "task",
+                  "milestone",
+                  "deliverable",
+                  "file",
+                  "post",
+                  "contract",
+                  "purchase",
+                  "claim",
+                  "subscription",
+                  "cost",
+                  "service",
+                  "incident",
+                  "agent_plan",
+                  "agent_mutation",
+                  "agent_file_update",
+                  "agent_file_create",
+                  "agent_file_draft",
+                  "folder",
+                  "agent_organization_plan",
+                  "agent_directory",
+                  "agent_oa_request",
+                  "request",
+                  "agent_post_write",
+                  "agent_finance_report"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "version_id": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "type",
+              "id"
+            ]
+          },
+          "maxItems": 100,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "operation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "maxItems": 100,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "maxItems": 30,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "next_action": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "resource_refs",
+        "source_refs",
+        "operation_ids",
+        "missing_fields",
+        "next_action"
+      ]
+    },
+    "conversation_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "context_project_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "request"
+      ]
+    }
+  }
+}

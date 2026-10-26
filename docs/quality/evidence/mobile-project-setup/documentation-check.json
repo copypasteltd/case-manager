@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T07:14:30.297591+00:00",
+  "document_count": 9,
+  "local_links_checked": 670,
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "missing_links": [],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "79bb0dfbac81ae66d5a8a84fac898eda75fbf7591d63d50c381574f958a0ccbe"
+    },
+    {
+      "path": "docs/development/75-mobile-project-setup-and-members.md",
+      "sha256": "b90c9b14c906794168c713bf5a2c6ce9a44715bece48cd5c07b78e35bfc2c305"
+    },
+    {
+      "path": "docs/requirements/03-projects-and-knowledge.md",
+      "sha256": "5e10332309d3e0c82e625f494b6609702334f635a6fe017a75460fb9ea18d1d5"
+    },
+    {
+      "path": "docs/development/06-clients-and-pages.md",
+      "sha256": "096b2b0753e4daf6944d3886f3f662ff2c6d15c59c3fa671a536b5303b9e8b77"
+    },
+    {
+      "path": "docs/development/31-mobile-client-foundation.md",
+      "sha256": "1f2d3294dc98e04c565625f0e9a2bedf0bb6ed3f76afbc55ec1a0c28a86f9ebf"
+    },
+    {
+      "path": "docs/development/45-mobile-project-collaboration.md",
+      "sha256": "7af2c09da87c41aedd1846bcfd67955a084fe1f015f5c6a8d721bf1078acc192"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "9f0f219c1c3edf155ccbc1efd80f7b3aec02ce1154f84bae6773e50d36c967d7"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "1f20f819dbab4a8151f7da517f54db8d519952f5bb4c064f4dd766234e1a24f0"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-project-setup/verification.md",
+      "sha256": "c30df440edb65a9a1d4061086ecbff81b058e3b222d61b516e33b4dd5026d84e"
+    }
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All twenty-eight gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment75 and its functional implementation",
+      "passed": true
+    },
+    {
+      "name": "Ledger and gap baseline identify unchanged backend source and explicit evidence reuse",
+      "passed": true
+    },
+    {
+      "name": "Final source and fresh sixty-nine-migration development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Mobile setup and member entry are implemented while remaining mobile coverage stays open",
+      "passed": true
+    },
+    {
+      "name": "Real model and Skill publication remain open with the unchanged draft package version",
+      "passed": true
+    },
+    {
+      "name": "Fresh mobile and Android evidence is distinct from cached tests, device and production release claims",
+      "passed": true
+    }
+  ]
+}

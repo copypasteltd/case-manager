@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-26T00:21:19.531Z",
+  "source_sha256": "3911ef51e400758da36f9d35ce5dc9972a20147e8648bb28494d218eb2f6f0c4",
+  "source_file_count": 569,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": null,
+  "checks": [
+    {
+      "name": "Actual sixteen-domain readable counts match the API beyond five-row previews; precise project allocations, currency separation, original costs and reversals render at three sizes",
+      "passed": true
+    },
+    {
+      "name": "Stable task IDs open the original task dialog; same-page tab links and contract/cost/file/log/service detail links complete real API navigation without substituted responses",
+      "passed": true
+    },
+    {
+      "name": "Narrow viewer receives only currently authorized counts and published log revisions; actual membership removal revokes the session and clears all cached overview facts",
+      "passed": true
+    },
+    {
+      "name": "Cancelled project retains accurate incurred/payment history and readable references while the original project remains read-only",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "project-overview",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "project-overview",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "project-overview",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "name": "project-overview-reader",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "project-overview-reader",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "project-overview-reader",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

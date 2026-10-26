@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "tests": 25,
+  "source_sha256": "eb8d6a5a6ac7e93a13a9ffc3fae4a8551d2eca095a84dab1883ade05db374c4a",
+  "sources": [
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/ApiHTTP.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/ReadCache.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadLayout.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadSource.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadPermit.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadTransfer.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/ApiHTTPTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/ReadCacheTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/UploadBoundariesTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/UploadTransferTest.java"
+  ],
+  "xml_sha256": {
+    "TEST-hk.copypaste.workspace.ApiHTTPTest.xml": "54083860b2c70c00c93cae51595fd9e8d68fd7467721996a854488a2ea1cfe1a",
+    "TEST-hk.copypaste.workspace.ReadCacheTest.xml": "29742c666f42ce2965c26525827e824cddfce727d6e8efae71cceb8215413dc2",
+    "TEST-hk.copypaste.workspace.UploadBoundariesTest.xml": "947571f47c4b8f294fda1f893f54feb83718232fe7455d2ee6454f44261afbbd",
+    "TEST-hk.copypaste.workspace.UploadTransferTest.xml": "87b0399d0743901c9a1f72f4a08a00ae2aecd7ed739639d1264280a2dfbee9c8"
+  },
+  "scope": "Actual unchanged pure-Java sources and HTTP tests; excludes SAF, SQLite, activity and service device execution."
+}

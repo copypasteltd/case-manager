@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T00:07:21.621792+00:00",
+  "checks": [
+    {
+      "name": "backend-result.json",
+      "passed": true,
+      "source_sha256": "8dc5496579d8d3041012a0311e139f10625b0f9a1e5396bb866a7ae00da90c58"
+    },
+    {
+      "name": "linux-build.json",
+      "passed": true,
+      "source_sha256": "8dc5496579d8d3041012a0311e139f10625b0f9a1e5396bb866a7ae00da90c58"
+    },
+    {
+      "name": "runtime-build.json",
+      "passed": true,
+      "source_sha256": "e85742ca609bc59be72e16691c0bafc8bbb23cea80b431e5c48cdac72394ff4d"
+    },
+    {
+      "name": "mobile-build.json",
+      "passed": true,
+      "source_sha256": "6b2adbe919ae40fa492f5aa2a787fac874dd1e1c47e51cc59718d48d40b654f5"
+    },
+    {
+      "name": "web-build.json",
+      "passed": true,
+      "source_sha256": "2182d9c041ed0aa9eefd862ae9af9b1846962dd6ac82e31b4ad17347fe1d89a7"
+    },
+    {
+      "name": "secretary-files-web",
+      "passed": true,
+      "source_sha256": "9131a168b0bf13b4becd85eeed894b8ab59c120a2fa531dc9e2c45f0caddf4ea",
+      "checks": 6
+    },
+    {
+      "name": "secretary-files-mobile",
+      "passed": true,
+      "source_sha256": "a1d1430f5367dbe364a42be758c83739b0d3205ec86e33955208e5c19de74620",
+      "checks": 6
+    },
+    {
+      "name": "Owned development file evidence and disabled cloud role",
+      "passed": true
+    },
+    {
+      "name": "Development verification script source",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI embedded and documented copies",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "scope": "Fixed-source native implementation, controlled object bytes and cleanup; excludes production, real model/cloud, devices and capacity acceptance."
+}

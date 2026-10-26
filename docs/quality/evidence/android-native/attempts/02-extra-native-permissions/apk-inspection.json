@@ -1,0 +1,93 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-25T20:38:59.579284+00:00",
+  "checks": [
+    {
+      "name": "Development application ID is separate from production",
+      "passed": true
+    },
+    {
+      "name": "Only internet and the app private receiver permission are packaged",
+      "passed": false
+    },
+    {
+      "name": "Only the intended physical-device ABI is packaged",
+      "passed": true
+    },
+    {
+      "name": "Supported SDK bounds are present",
+      "passed": true
+    },
+    {
+      "name": "System backup is disabled",
+      "passed": false
+    },
+    {
+      "name": "The native launcher is present",
+      "passed": true
+    },
+    {
+      "name": "Any private receiver permission is signature protected",
+      "passed": false
+    },
+    {
+      "name": "APK signature verification succeeds",
+      "passed": true
+    },
+    {
+      "name": "All eleven Android transport and scratch-file tests pass",
+      "passed": true
+    },
+    {
+      "name": "Packaged business code matches the current offline bundle",
+      "passed": true
+    },
+    {
+      "name": "Native engine and application code are included",
+      "passed": true
+    },
+    {
+      "name": "The business graph uses the intended native platform adapters",
+      "passed": true
+    },
+    {
+      "name": "No Expo extension or WebView entered the offline business graph",
+      "passed": true
+    },
+    {
+      "name": "All fourteen registered business pages are included",
+      "passed": true
+    }
+  ],
+  "apk_sha256": "d1ab39fc4b368fed560506e8501ac7cdffc4787b3b644ac9afeae48fbf6b8ffe",
+  "apk_bytes": 42189124,
+  "application_id": "hk.copypaste.workspace.debug",
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.SYSTEM_ALERT_WINDOW",
+    "hk.copypaste.workspace.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"
+  ],
+  "architectures": [
+    "arm64-v8a"
+  ],
+  "tests": [
+    {
+      "name": "hk.copypaste.workspace.ApiHTTPTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "hk.copypaste.workspace.ReadCacheTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "device_executed": false,
+  "emulator_started": false,
+  "production_release": false
+}

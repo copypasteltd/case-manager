@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T23:05:24.422186+00:00",
+  "checks": [
+    {
+      "name": "backend-result.json",
+      "passed": true,
+      "source_sha256": "12dfdc50f9c1879efb46554563d4f4363bba376f7ddda9b9258fbab1cb8f4428"
+    },
+    {
+      "name": "linux-build.json",
+      "passed": true,
+      "source_sha256": "12dfdc50f9c1879efb46554563d4f4363bba376f7ddda9b9258fbab1cb8f4428"
+    },
+    {
+      "name": "runtime-build.json",
+      "passed": true,
+      "source_sha256": "649016ddc4b754c8d2cd66be0f3175c8dbe143de3c78dba953a4425fb24aadb6"
+    },
+    {
+      "name": "mobile-build.json",
+      "passed": true,
+      "source_sha256": "424607301ebdf866332f9ea7145a57b3c859dd453520299d2e2c487d5ab655d3"
+    },
+    {
+      "name": "web-build.json",
+      "passed": true,
+      "source_sha256": "d7b1a061716a0e41372c6d1c1ac28e2a203b05d728ac379d2384b6f08abb9d4e"
+    },
+    {
+      "name": "secretary-mutations-web",
+      "passed": true,
+      "source_sha256": "3683d08de2039d05261328704fa713177f95ac8e68b1779b674cab2679137b23",
+      "checks": 6
+    },
+    {
+      "name": "secretary-mutations-mobile",
+      "passed": true,
+      "source_sha256": "45a566ae818f8973cff9cab001edb91378ab89ea5a0963e4d1e2c97ec260e7f7",
+      "checks": 6
+    },
+    {
+      "name": "Owned development migration and immutable mutation records",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI embedded and documented copies",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "scope": "Fixed-source native implementation and cleanup; excludes production, real model, cloud, device and capacity acceptance."
+}

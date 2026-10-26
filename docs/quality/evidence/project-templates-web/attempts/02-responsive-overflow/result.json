@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-25T22:37:15.682Z",
+  "source_sha256": "8a3009dcf0cd86aef1f4eb5b36f9509d721fc660285d99a66a34b5dd7a3cbbfb",
+  "source_file_count": 557,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": "AssertionError [ERR_ASSERTION]: template-published overflows 390\n\ntrue !== false\n\n    at layout (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_templates.mjs:24:268)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_templates.mjs:32:173",
+  "checks": [],
+  "layouts": [
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

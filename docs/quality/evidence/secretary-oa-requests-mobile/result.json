@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T08:22:42.481Z",
+  "finished_at": "2026-10-25T08:23:03.767Z",
+  "checks": [
+    "Taro H5 reads the actual OA operation and keeps the real submission in employee review.",
+    "Mobile displays complete fixed submission content and real policy/reviewer, requiring human confirmation without sending on selection.",
+    "One actual mobile send freezes the original saved business revision and keeps authorization separate from a committed request.",
+    "Mobile history preserves the sender intent digest without disclosing the originating login session.",
+    "Mobile cancellation creates no application and retains earlier real submission evidence."
+  ],
+  "source_count": 490,
+  "source_sha256": "3d6e79898a9168ace513b3b86c21247719e2acaa95325c5c0e1eaf57d147506d",
+  "source_after_sha256": "3d6e79898a9168ace513b3b86c21247719e2acaa95325c5c0e1eaf57d147506d",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "3d6e79898a9168ace513b3b86c21247719e2acaa95325c5c0e1eaf57d147506d",
+  "source_sha256_after_build": "3d6e79898a9168ace513b3b86c21247719e2acaa95325c5c0e1eaf57d147506d",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

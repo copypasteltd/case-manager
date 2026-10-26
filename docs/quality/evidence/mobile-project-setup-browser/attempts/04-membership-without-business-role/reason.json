@@ -1,0 +1,4 @@
+{
+  "reason": "Project membership grants eligibility, not business actions. A system administrator added as a project manager still has no project.read role, and the API correctly refused access. The final checker assigns the existing project_manager business role for this exact project to the actual successor through the original MFA-protected role-binding API, then uses that successor to restrict the former owner.",
+  "product_change": false
+}

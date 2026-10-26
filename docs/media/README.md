@@ -1,0 +1,95 @@
+# 实际页面与操作演示 / Actual pages and interactions
+
+[中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
+
+本目录包含 **15 张 PNG、3 段 MP4、3 个 GIF**：14 张本次截图和 1 张历史秘书计划界面的来源裁剪。画面来自真实应用与实际 API，数据是隔离合成测试资料；不含真实合同、员工资料、登录密码、MFA 秘钥或访问令牌。无真实云传输、模型调用或 TG 群外发。移动画面是 390 × 900 的 Taro H5，共享界面不能作为 Android／小程序真机验收。
+
+This catalog contains **15 PNGs, three MP4s and three GIFs**: 14 new captures and one source-attributed crop of an earlier secretary-plan screen. These are real application/API interactions with isolated synthetic data. They exclude real company records, passwords, MFA secrets and access tokens. No real cloud transfer, model call or TG group delivery occurred. Mobile captures show the shared Taro H5 interface at 390 × 900, not physical-device acceptance.
+
+## 1. Web 项目创建与任务闭环 / Project and task workflow
+
+实际操作：创建项目 → 创建带负责人及日期的任务 → 开始 → 完成 → 打开看板。录制在登录与 MFA 完成后才开始，不录制身份输入。操作由自动化执行，MP4 可使用播放器慢速查看。
+
+Actual actions: create a project, create an assigned/dated task, start and complete it, then open the board. Recording starts after authentication/MFA. Automation performs the actions quickly; use a slower playback rate to inspect individual steps.
+
+![Web项目与任务 / Project and task](gifs/web-project-flow.gif)
+
+[完整 MP4 / Full MP4](videos/web-project-flow.mp4) · 1440 × 900 · 4.2 s · 无声 / silent · GIF 1×
+
+## 2. 业务页面浏览 / Operations tour
+
+依次查看十六类项目概览、合同、实际费用、文件、知识、秘书权限边界和服务状态。文件与服务使用明确标记的元数据／观测夹具；费用的大额与小数用于精度验证。当前身份没有秘书读取动作，页面正确拒绝进入会话；录制不临时扩权。
+
+The tour visits the sixteen-domain project overview, contract, actual costs, files, knowledge, secretary access boundary and service status. File metadata/service observations are controlled fixtures, and unusual monetary values exercise precision. This identity lacks secretary-read permission, so the screen correctly denies access; the recording does not add privileges.
+
+![业务页面浏览 / Operations tour](gifs/web-operations-tour.gif)
+
+[完整 MP4 / Full MP4](videos/web-operations-tour.mp4) · 1440 × 900 · 16.6 s · 无声 / silent · GIF 约 / approximately 1.09×
+
+## 3. 移动风险转问题与处理 / Mobile risk-to-issue workflow
+
+实际操作：从同一个新项目进入风险 → 新建风险及应对措施 → 明确发生 → 沿真实关联问题链接 → 调查 → 填写解决结果 → 解决并关闭。后台确认实际风险、问题及最终状态。
+
+Actual actions: open risks for the newly created project, create a risk and mitigation, explicitly realize it, follow the actual linked issue, investigate, record the resolution, resolve and close. The backend verifies the real records and final state.
+
+![移动风险与问题 / Mobile risk and issue](gifs/mobile-risk-issue.gif)
+
+[完整 MP4 / Full MP4](videos/mobile-risk-issue.mp4) · 390 × 900 · 6.9 s · 无声 / silent · GIF 1× · H5
+
+## 4. 页面截图 / Screenshots
+
+| 页面 / Page | 图片 / Image | 范围 / Scope |
+| --- | --- | --- |
+| 工作台 / Dashboard | [web-dashboard.png](screenshots/web-dashboard.png) | 当前身份、可见项目 / Current identity and visible projects |
+| 项目资料 / Project | [web-project.png](screenshots/web-project.png) | 实际新项目、尚无任务时 / Newly created project before task creation |
+| 任务 / Task | [web-task.png](screenshots/web-task.png) | 实际完成任务及操作原因 / Actual completed task and reason |
+| 看板 / Board | [web-project-board.png](screenshots/web-project-board.png) | 六状态横向看板，按实际窗口裁取 / Horizontal board in the actual viewport |
+| 项目概览 / Overview | [web-overview.png](screenshots/web-overview.png) | 合成的完整业务聚合 / Synthetic business aggregation |
+| 合同 / Contract | [web-contract.png](screenshots/web-contract.png) | 原合同与固定依据 / Original contract and fixed evidence |
+| 实际费用 / Actual costs | [web-finance.png](screenshots/web-finance.png) | 原币精度与原记录 / Original-currency precision and records |
+| 文件 / Files | [web-files.png](screenshots/web-files.png) | 元数据、目录；非云传输证明 / Metadata and folders, not transfer proof |
+| 知识 / Knowledge | [web-knowledge.png](screenshots/web-knowledge.png) | 已发布与草稿入口 / Published/draft entry points |
+| 秘书权限 / Secretary access | [web-secretary.png](screenshots/web-secretary.png) | 当前账号正确拒绝 / Correct current-identity denial |
+| 服务 / Services | [web-status.png](screenshots/web-status.png) | 服务与无观测提示 / Services and missing-observation state |
+| 移动项目 / Mobile project | [mobile-project.png](screenshots/mobile-project.png) | Taro共享界面 / Shared Taro UI |
+| 移动风险 / Mobile risk | [mobile-risk.png](screenshots/mobile-risk.png) | 实际创建风险 / Actual created risk |
+| 移动问题 / Mobile issue | [mobile-issue.png](screenshots/mobile-issue.png) | 真实问题已关闭 / Actual closed issue |
+| 秘书准确计划 / Secretary exact plan | [web-secretary-plan.png](screenshots/web-secretary-plan.png) | 历史受控流程的顶部裁剪，非本次模型运行 / Top crop of an earlier controlled flow, not a new model run |
+
+![项目业务概览 / Project overview](screenshots/web-overview.png)
+
+![秘书准确计划，历史来源 / Exact secretary plan, historical source](screenshots/web-secretary-plan.png)
+
+历史计划图的原图为[既有实际秘书流程证据](../quality/evidence/secretary-discovery-web/plan-reference.png)，只裁取顶部 1440 × 900，未生成或改写界面。来源摘要与裁剪坐标见[来源记录](../quality/evidence/repository-showcase/historical-media.json)。
+
+The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
+
+## 5. 来源、编码与复现 / Provenance, encoding and reproduction
+
+| 记录 / Record | 内容 / Contents |
+| --- | --- |
+| [result.json](../quality/evidence/repository-showcase/result.json) | 完整源码前后摘要、两个阶段、原生夹具与临时服务清理 / Source stability, phases and native fixture/server cleanup |
+| [web.json](../quality/evidence/repository-showcase/web.json)、[mobile.json](../quality/evidence/repository-showcase/mobile.json) | 实际 HTTP 方法／路径／状态、截图摘要、浏览器关闭 / Actual HTTP method/path/status, image digests and browser closure |
+| [media.json](../quality/evidence/repository-showcase/media.json) | 逐帧清单摘要、输出摘要／体积、编码器版本、ffprobe结果 / Frame-manifest digests, output hashes/sizes, encoder version and probes |
+| [source-manifest.json](../quality/evidence/repository-showcase/source-manifest.json) | 完整来源文件与摘要 / Complete capture source manifest |
+| [visual-review.json](../quality/evidence/repository-showcase/visual-review.json) | 实际查看过的画面、抽样范围与限制 / Inspected images, sampling scope and limits |
+
+在已有原生开发工具、依赖、测试数据库和 Edge 的环境，从 `app/` 执行：
+
+With native development tools, dependencies, test database access and Edge prepared, run from `app/`:
+
+```powershell
+$env:PYTHONUTF8='1'
+python scripts/run_repository_showcase.py
+python scripts/encode_repository_showcase.py
+python scripts/verify_repository_publication_development.py
+python scripts/verify_repository_publication.py
+```
+
+采集会创建自己的隔离数据库，顺序使用本机 5189 端口，并在 finally 中关闭自己的浏览器、服务与夹具。若已有同名私有夹具，脚本会拒绝接管。原始 JPEG 帧与登录资料留在忽略的 `app/.local/`，编码器只接受摘要核对通过的真实帧，输出无声 H.264 MP4 与调色板 GIF。MP4 保留实际时间间隔，以 10 fps 编码；GIF 6 fps，桌面宽 960、移动宽 390，长片段适度加速。没有插帧生成或重新绘制页面。
+
+Capture owns an isolated database and uses local port 5189 sequentially. Its cleanup closes owned browsers, servers and fixtures; it refuses an existing private fixture. Raw JPEG frames and login material remain under ignored `app/.local/`. The encoder verifies frame hashes before producing silent H.264 MP4 and palette GIF output. MP4 preserves recorded intervals at 10 fps; GIF uses 6 fps, desktop width 960/mobile width 390, with modest acceleration for the long clip. No generated UI or synthesized in-between frames are used.
+
+手动视觉检查是另一个步骤，脚本重建后须实际查看新图再更新记录；不能仅沿用上次“看过”的结论。完整凭据检查基于采集前置条件、数据隔离、提交扫描和实际画面检查；并不宣称对所有像素完成自动 OCR 审计。后续受影响的功能截图、录屏、GIF 与中英文说明应同步更新，见[维护约定](../contributing.md)。
+
+Manual visual inspection is a separate step: inspect rebuilt media before updating its review record. Credential exclusion relies on capture preconditions, isolation, commit scanning and actual visual inspection; this is not a claim of exhaustive pixel OCR. Update affected media and both language guides together with future changes; see [maintenance rules](../contributing.md).

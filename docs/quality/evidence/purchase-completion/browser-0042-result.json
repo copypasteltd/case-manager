@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T01:51:24.725Z",
+  "source_sha256": "c02c4354a973c047ef9038600046ca8ca9d18b1e235c677f2edf26b239d2b945",
+  "source_file_count": 402,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_orders": false,
+  "checks": [
+    {
+      "name": "Actual linked confirmed expense blocks completion until its real payment allocation is recorded",
+      "passed": true
+    },
+    {
+      "name": "Web requires three initially unchecked manual declarations explicit settlement mode accurate file and recent MFA before saving immutable complete facts",
+      "passed": true
+    },
+    {
+      "name": "Completed Web purchase permits only an exact source return while retaining original completion delivery and clearly displaying changed current obligations",
+      "passed": true
+    },
+    {
+      "name": "Human explicitly records no payable obligation with a disposition and fixed evidence while creating no invented expense or payment",
+      "passed": true
+    },
+    {
+      "name": "Financial change with unchanged purchase version rejects stale completion and preserves mode declarations reasons and fixed files with error focus and disabled resubmission",
+      "passed": true
+    },
+    {
+      "name": "Limited purchase reader sees unknown completeness with no partial financial facts or historical completion data",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "purchase-completion-unsettled",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "purchase-completion-attestation",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "purchase-completed-fixed",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "purchase-completed-basis-changed",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "purchase-completion-conflict-preserved",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "purchase-completion-restricted",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

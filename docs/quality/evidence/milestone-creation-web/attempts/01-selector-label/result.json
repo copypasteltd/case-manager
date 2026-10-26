@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T03:23:09.461Z",
+  "finished_at": "2026-10-26T03:23:57.383Z",
+  "checks": [
+    "Web displays a genuine created milestone ID, child version and original operation receipt."
+  ],
+  "source_count": 592,
+  "source_sha256": "2fb320ec328c7208224a8e2d0a86cc658198fe79d75443a88459a443ffe0a966",
+  "source_after_sha256": "3d04368bc0e0f7240029ace58d4945014d8b749d05eb886a2fb326a9425021f5",
+  "source_unchanged": false,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.selectOption: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('关联里程碑的新值', { exact: true })\u001b[22m\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,6 @@
+{
+  "reason": "Original shared audience must bound later model reads of historical mutation intents. Backend fixed and integration test extended. Previous partial batch evidence has a changed source digest and will not be reused. Full native verification and both browser flows are rerun.",
+  "previous_source_sha256": "e20443042b94fe7f60f9561241a018220ee276e51d14b2d1a4bc6dd1dd1f3f87",
+  "completed_batches": 11,
+  "source_change_detected": true
+}

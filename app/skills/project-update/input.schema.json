@@ -1,0 +1,634 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/project-update.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mutation": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "update_project"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "scope": {
+                      "type": "string",
+                      "maxLength": 20000
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "start_date": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date"
+                    },
+                    "due_date": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason"
+                  ],
+                  "minProperties": 4
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "update_task"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 20000
+                    },
+                    "priority": {
+                      "enum": [
+                        "low",
+                        "normal",
+                        "high",
+                        "urgent"
+                      ]
+                    },
+                    "assignee_id": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "parent_id": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "milestone_id": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "start_at": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "due_at": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason"
+                  ],
+                  "minProperties": 4
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "transition_task"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "action": {
+                      "enum": [
+                        "start",
+                        "review",
+                        "return",
+                        "complete",
+                        "block",
+                        "resume",
+                        "cancel",
+                        "reopen"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason",
+                    "action"
+                  ],
+                  "minProperties": 4
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "transition_project"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "action": {
+                      "enum": [
+                        "activate",
+                        "hold",
+                        "resume",
+                        "close",
+                        "cancel",
+                        "reopen"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason",
+                    "action"
+                  ],
+                  "minProperties": 4
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "update_milestone"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "owner_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "due_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason"
+                  ],
+                  "minProperties": 4
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "transition_milestone"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "action": {
+                      "enum": [
+                        "achieve",
+                        "miss",
+                        "cancel",
+                        "reopen"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason",
+                    "action"
+                  ],
+                  "minProperties": 4
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "create_milestone"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "owner_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "due_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason",
+                    "title",
+                    "owner_id",
+                    "due_at"
+                  ]
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "update_deliverable"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "acceptance_criteria": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 20000
+                    },
+                    "owner_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "milestone_id": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason",
+                    "name",
+                    "acceptance_criteria",
+                    "owner_id",
+                    "milestone_id"
+                  ]
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
+                  "const": "create_deliverable"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "acceptance_criteria": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 20000
+                    },
+                    "owner_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "milestone_id": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "reason",
+                    "name",
+                    "acceptance_criteria",
+                    "owner_id",
+                    "milestone_id"
+                  ]
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            }
+          ]
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "mutation",
+        "instructions"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "enum": [
+                "project",
+                "task",
+                "milestone"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "expected_version": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "type",
+            "id",
+            "expected_version"
+          ]
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "target",
+        "instructions",
+        "reason"
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+
+> @copypaste/agent-runtime@0.1.0 test
+> npm run build && node --test dist/*.test.js
+
+
+> @copypaste/agent-runtime@0.1.0 build
+> tsc -p tsconfig.json
+
+TAP version 13
+# Subtest: worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider
+not ok 1 - worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider
+  ---
+  duration_ms: 288.6107
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:73:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: deployment inspection uses the exact SDK configuration digest and never publishes a draft skill
+not ok 2 - deployment inspection uses the exact SDK configuration digest and never publishes a draft skill
+  ---
+  duration_ms: 0.6351
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:149:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output
+not ok 3 - SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output
+  ---
+  duration_ms: 0.0883
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:164:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process
+not ok 4 - disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process
+  ---
+  duration_ms: 0.1873
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:194:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: invented formal completion is rejected even when the model emits valid JSON and an operation UUID
+not ok 5 - invented formal completion is rejected even when the model emits valid JSON and an operation UUID
+  ---
+  duration_ms: 0.0724
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:212:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: native shell, file, web and other MCP tools abort the adapter without publishing their arguments
+not ok 6 - native shell, file, web and other MCP tools abort the adapter without publishing their arguments
+  ---
+  duration_ms: 0.0311
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:222:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback
+not ok 7 - changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback
+  ---
+  duration_ms: 0.0681
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:238:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: stable tool IDs count once while new calls and actual provider usage respect the reserved bounds
+not ok 8 - stable tool IDs count once while new calls and actual provider usage respect the reserved bounds
+  ---
+  duration_ms: 0.0303
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:246:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: cancellation and a stalled native stream expire without claiming that a prior business write was undone
+not ok 9 - cancellation and a stalled native stream expire without claiming that a prior business write was undone
+  ---
+  duration_ms: 0.2112
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:262:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: durable event failure stops processing and provider diagnostics never enter public events
+not ok 10 - durable event failure stops processing and provider diagnostics never enter public events
+  ---
+  duration_ms: 0.1661
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:276:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: verified business commits are independent of native MCP success text and incomplete streams cannot publish completion
+not ok 11 - verified business commits are independent of native MCP success text and incomplete streams cannot publish completion
+  ---
+  duration_ms: 0.04
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:292:1'
+  failureType: 'hookFailed'
+  error: 'unknown format "date" ignored in schema at path "#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    unknownFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:63:23)
+    validateFormat (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:50:17)
+    Object.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\vocabularies\format\format.js:22:13)
+    keywordCode (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:464:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:222:17
+    CodeGen.code (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:439:13)
+    CodeGen.block (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\codegen\index.js:568:18)
+    iterateKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:219:9)
+    groupKeywords (D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:200:13)
+    D:\dev\copypasted\内部管理\app\node_modules\ajv\dist\compile\validate\index.js:192:13
+  ...
+# Subtest: local boundary sends only a task bearer and never accepts a different run or redirects its credential
+ok 12 - local boundary sends only a task bearer and never accepts a different run or redirects its credential
+  ---
+  duration_ms: 87.8245
+  ...
+# Subtest: changed sources and revoked task credentials suppress results without exposing service diagnostics
+ok 13 - changed sources and revoked task credentials suppress results without exposing service diagnostics
+  ---
+  duration_ms: 29.5395
+  ...
+# D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\vocabularies\\format\\format.js:63
+#                 throw new Error(unknownMsg());
+#                       ^
+# Error: unknown format "date" ignored in schema at path "\#/oneOf/0/properties/mutation/oneOf/0/properties/arguments/properties/start_date"
+#     at unknownFormat (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\vocabularies\\format\\format.js:63:23)
+#     at validateFormat (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\vocabularies\\format\\format.js:50:17)
+#     at Object.code (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\vocabularies\\format\\format.js:22:13)
+#     at keywordCode (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\validate\\index.js:464:13)
+#     at D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\validate\\index.js:222:17
+#     at CodeGen.code (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\codegen\\index.js:439:13)
+#     at CodeGen.block (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\codegen\\index.js:568:18)
+#     at iterateKeywords (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\validate\\index.js:219:9)
+#     at groupKeywords (D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\validate\\index.js:200:13)
+#     at D:\\dev\\copypasted\\内部管理\\app\\node_modules\\ajv\\dist\\compile\\validate\\index.js:192:13
+# Node.js v22.14.0
+# Subtest: dist\\skills.test.js
+not ok 3 - dist\\skills.test.js
+  ---
+  duration_ms: 494.2134
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\skills.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 2
+# fail 12
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 640.5268
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path D:\dev\copypasted\内部管理\app\agent-runtime
+npm error workspace @copypaste/agent-runtime@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\agent-runtime
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c npm run build && node --test dist/*.test.js

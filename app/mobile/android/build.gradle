@@ -1,0 +1,23 @@
+buildscript {
+    ext {
+        buildToolsVersion = '34.0.0'
+        minSdkVersion = 23
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        kotlinVersion = '1.8.10'
+        REACT_NATIVE_NODE_MODULES_DIR = new File(['node', '--print', "require.resolve('react-native/package.json')"].execute(null, rootDir.parentFile).text.trim()).parentFile.absolutePath
+    }
+    repositories { google(); mavenCentral() }
+    dependencies {
+        classpath('com.android.tools.build:gradle:8.1.1')
+        classpath('com.facebook.react:react-native-gradle-plugin')
+        classpath('org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10')
+    }
+}
+apply plugin: 'com.facebook.react.rootproject'
+allprojects {
+    repositories { google(); mavenCentral() }
+    plugins.withId('com.android.library') {
+        android.buildToolsVersion = rootProject.ext.buildToolsVersion
+    }
+}

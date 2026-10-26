@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T18:45:49.645522+00:00",
+  "document_count": 12,
+  "local_links_checked": 612,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 goal gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment 64",
+      "passed": true
+    },
+    {
+      "name": "Current backend source appears in ledger and baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Telegram remains partial scope and the 14-page mobile baseline is explicit",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "8f2e43fc22885ba97bde90363b89086c33fb3ac25222cd7259cc4c0ed44ada97"
+    },
+    {
+      "path": "docs/development/64-telegram-delivery.md",
+      "sha256": "1ee6f16d13d999dd1f94b61366b52a95b250fc89846e5ad10a8e9e5935601e53"
+    },
+    {
+      "path": "docs/requirements/07-secretary-and-channels.md",
+      "sha256": "0d54f19ddeb8e2fd0f5f928a6f956a4c34f5cbb8e002b4b8cd0a1c4aa4c12c91"
+    },
+    {
+      "path": "docs/development/07-agent-tools-and-skills.md",
+      "sha256": "e6cfb2f4abe6a4b900719efb60955dcd2e4916d2d3a0e8c47ad5abdf29a11453"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "08861e8e3d0f1909104d1c56353707b6db9977cdf23904747b6bc9a8ad90c360"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "bfef3d9f7bc5237e6e6337ca0d0c351236c26049819d0b2a4b66c75fb4f83092"
+    },
+    {
+      "path": "docs/quality/evidence/telegram-delivery/verification.md",
+      "sha256": "5c1f556f20b10f14da4320f8e89a8376e5393e5046946ec2d186822b2f25dad6"
+    },
+    {
+      "path": "docs/operations/01-deployment-and-operations.md",
+      "sha256": "314b977a6cdba845d57bc013298ed9cc8cb82cc2741350a12ac8881a62f90ea3"
+    },
+    {
+      "path": "docs/quality/01-test-strategy-and-cases.md",
+      "sha256": "a76d7f0eaebc0872f5b6317e37b1c5d240ec58ce774ffa1b775898964b619da4"
+    },
+    {
+      "path": "docs/governance/03-configuration-catalog.md",
+      "sha256": "e72987c2196ec94c897b0a47576d2034eafb8226dfe2cd72f70c315b1a58013c"
+    },
+    {
+      "path": "docs/03-ai-secretary-and-telegram.md",
+      "sha256": "ebbb04e1cd00b7db77876fc398ce4b4aa16497e75bac7fbd681b860c3a5a2415"
+    },
+    {
+      "path": "docs/requirements/05-finance-and-subscriptions.md",
+      "sha256": "bd2c4409f2203dfa3813a9bcab07ca7d7e1ec4ecf905c421b21842bbec0dbb81"
+    }
+  ]
+}

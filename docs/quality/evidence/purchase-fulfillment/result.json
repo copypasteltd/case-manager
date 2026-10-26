@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T15:59:08.703Z",
+  "source_sha256": "e39bffbe55242fd50ccf2267500006788482ba675607984e98c23b908fc53fd0",
+  "source_file_count": 290,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_payments": false,
+  "checks": [
+    {
+      "name": "Web registers an exact approved order with fixed evidence and immutable original quantities",
+      "passed": true
+    },
+    {
+      "name": "Web appends one batch with accepted and rejected lines while net acceptance stays four",
+      "passed": true
+    },
+    {
+      "name": "Overreceipt preserves input and cancellation releases only unaccepted commitment without rewriting order facts",
+      "passed": true
+    },
+    {
+      "name": "Two actual browser sessions reject stale order submission and preserve the complete entered draft",
+      "passed": true
+    },
+    {
+      "name": "Source-specific returns remain appendable after order and whole-purchase cancellation and retain cancelled lifecycle",
+      "passed": true
+    },
+    {
+      "name": "Readers see bounded immutable history, cannot execute, and system administration grants no procurement content access",
+      "passed": true
+    },
+    {
+      "name": "Loaded procurement pages pass both themes at 320, 390, 768, 1024 and 1440 widths; actual source-return dialog captured on narrow screen",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

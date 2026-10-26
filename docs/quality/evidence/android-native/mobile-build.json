@@ -1,0 +1,63 @@
+{
+  "started_at": "2026-10-25T20:20:42.864637+00:00",
+  "completed_at": "2026-10-25T20:21:39.578797+00:00",
+  "commands": [
+    {
+      "script": "test",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 5.394
+    },
+    {
+      "script": "typecheck",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 8.44
+    },
+    {
+      "script": "build:weapp",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 20.244
+    },
+    {
+      "script": "build:tt",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 22.581
+    }
+  ],
+  "tests": {
+    "tests": 66,
+    "pass": 66,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "source_sha256": "ee51d120ab0d56d72e146b864428e69c5ac51bbdf8ec0eaddd0369608ad219c5",
+  "source_files": 104,
+  "source_unchanged_during_run": true,
+  "artifacts": {
+    "weapp": {
+      "files": 59,
+      "bytes": 841411,
+      "app_json_exists": true,
+      "status_page_exists": true
+    },
+    "tt": {
+      "files": 56,
+      "bytes": 781154,
+      "app_json_exists": true,
+      "status_page_exists": true
+    }
+  },
+  "environment": "Native Windows Node/TypeScript/Taro; no Docker, WSL or emulator",
+  "taro_version": "4.3.1",
+  "api_origin": "http://127.0.0.1:18080",
+  "build_profile": "local",
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "actual_cloud_invoked": false,
+  "scope": "Portable memory-only session, shared draft budget, intent-key, fixed-content reader and business-input validation/serialization tests; TypeScript and two mini-program compilation targets. Excludes real devices, native document/file-system execution, platform submission, Android native transfer and end-to-end acceptance",
+  "passed": true
+}

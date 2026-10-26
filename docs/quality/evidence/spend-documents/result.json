@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T14:36:06.525Z",
+  "source_sha256": "1fa49b0701f3a1d93d628b2ba65cd13c48f5b7ef18d5b0c73bf0ba509864c019",
+  "source_file_count": 283,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "production_payments": false,
+  "checks": [
+    "Purchase is created through the real project, supplier and pinned-file selectors with exact currency arithmetic and both themes at five widths",
+    "A stale editor keeps unsaved text and refuses to overwrite a concurrent committed revision",
+    "The purchase snapshot is submitted and approved by its actual assigned reviewer without inventing an order, receipt or payment",
+    "Claim entry keeps gross tax, receipt evidence and company-paid expenses separate from employee advances at ten theme and width combinations",
+    "Return, business revision, request revision, resubmission and withdrawal retain the original reviewer decision and fixed evidence in real dialogs",
+    "Readable matching receipts or supplier/date/currency/amount candidates produce a warning and require an explicit submission explanation",
+    "An incomplete draft keeps unknown money null and archive retains readable immutable business history",
+    "Revoking current purchase visibility removes the formerly assigned reviewer task and refuses its fixed snapshot after a fresh login"
+  ],
+  "errors": [],
+  "server_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

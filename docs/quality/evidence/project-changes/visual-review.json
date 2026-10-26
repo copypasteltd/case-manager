@@ -1,0 +1,29 @@
+{
+  "reviewed_at": "2026-10-24T05:21:24.678139+00:00",
+  "scope": "Visual inspection of four final synthetic-data screenshots; excludes real devices and assistive technology",
+  "browser_source_sha256": "5fdd1590b333bb8235d645607da8d9043fe574a472f1fa735648302c03d8c6a2",
+  "screenshots": [
+    {
+      "file": "change-create-dialog-light-1440.png",
+      "sha256": "fc0159d161391bc823f96d11bda10c367010f5c4b83a97c199f3dc9e6881c599",
+      "observation": "固定项目基线与完整提案分开；持续字段标签、正文和滚动模态清楚。"
+    },
+    {
+      "file": "change-implementation-dialog-light-1440.png",
+      "sha256": "209f996243a61da532944b2a0ee0fa269e89753ee4d7443f46307aa6acc882b0",
+      "observation": "原项目与建议范围、原币预算对照可读；截图上方依据与下方核实区由独立滚动和实际操作断言共同覆盖。"
+    },
+    {
+      "file": "change-implemented-detail-dark-390.png",
+      "sha256": "6ba2dcfed87f029640e1dffde17cd6182bfaf29578654d7ae1650c2bfb22cafe",
+      "observation": "长标题、实施事实、固定范围／预算及旧正式文件纵向重排，版本与指纹可换行。"
+    },
+    {
+      "file": "change-net-zero-increase-dark-390.png",
+      "sha256": "fa153b84845511e02ad8cbc9e675ed1045eea10dd1b47bbeb3acf628f07f0c63",
+      "observation": "完整100→60+40对照、净变化0与审批增加合计40分开，修订与新正式文件固定。"
+    }
+  ],
+  "business_facts_verified_by": "result.json actual Web/API checks, not inferred solely from screenshots",
+  "observed_layout_issues": []
+}

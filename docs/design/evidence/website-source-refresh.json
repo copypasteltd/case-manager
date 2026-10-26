@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-10-24T13:31:40.757379+00:00",
+  "method": "Windows native Python HTTPS; SHA-256 of actual response bytes",
+  "previous_capture_at": "2026-10-22T20:51:41.141Z",
+  "browser_invoked": false,
+  "scope": "Homepage, shared stylesheet/script and both currently used PNG logos; not a new browser or full-site audit",
+  "script": "app/scripts/check_website_design_sources.py",
+  "resources": [
+    {
+      "url": "https://copypaste.hk/",
+      "previous_sha256": "73beb5926791072498ced08ba04204b067e29a5b8b119dc8edbac31997e680ed",
+      "status": 200,
+      "bytes": 14408,
+      "sha256": "73beb5926791072498ced08ba04204b067e29a5b8b119dc8edbac31997e680ed",
+      "unchanged": true
+    },
+    {
+      "url": "https://copypaste.hk/styles.css",
+      "previous_sha256": "8b7a00e48e7d53637e68f5bd8be970f286a881d53e9c86970fffb01888003e0e",
+      "status": 200,
+      "bytes": 22078,
+      "sha256": "8b7a00e48e7d53637e68f5bd8be970f286a881d53e9c86970fffb01888003e0e",
+      "unchanged": true
+    },
+    {
+      "url": "https://copypaste.hk/app.js",
+      "previous_sha256": "1de2d4ea0ec1933b6eb72c88f40c98705e7eae27aabf33e681099718e38abd1d",
+      "status": 200,
+      "bytes": 27281,
+      "sha256": "1de2d4ea0ec1933b6eb72c88f40c98705e7eae27aabf33e681099718e38abd1d",
+      "unchanged": true
+    },
+    {
+      "url": "https://copypaste.hk/assets/logo/CopyPaste_Light.png",
+      "previous_sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7",
+      "status": 200,
+      "bytes": 28897,
+      "sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7",
+      "unchanged": true,
+      "local_file": "assets/official-logo-light.png",
+      "local_sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7",
+      "local_matches_reference": true,
+      "local_matches_current": true
+    },
+    {
+      "url": "https://copypaste.hk/assets/logo/CopyPaste_Dark.png",
+      "previous_sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1",
+      "status": 200,
+      "bytes": 27918,
+      "sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1",
+      "unchanged": true,
+      "local_file": "assets/official-logo-dark.png",
+      "local_sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1",
+      "local_matches_reference": true,
+      "local_matches_current": true
+    }
+  ],
+  "errors": [],
+  "all_sources_unchanged": true,
+  "all_local_logos_match": true
+}

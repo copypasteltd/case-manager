@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T10:05:52.960460+00:00",
+  "document_count": 10,
+  "local_links_checked": 534,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 goal gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment 58",
+      "passed": true
+    },
+    {
+      "name": "Current backend source appears in ledger and baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Knowledge writes remain partial scope and the 13-page mobile baseline is explicit",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "a4dec534bbebf6a36b281a894708112f320b0afcb5190bff9344492e60b7c587"
+    },
+    {
+      "path": "docs/development/58-secretary-knowledge-writes.md",
+      "sha256": "f38a67975492e505c22d31b88b539560ab03a65d9266e9b07456a1b927e9a03a"
+    },
+    {
+      "path": "docs/requirements/07-secretary-and-channels.md",
+      "sha256": "09e9552348cc6105e98bd7277a5ca90d1e1393d6fd5b55a369387f319562316d"
+    },
+    {
+      "path": "docs/development/07-agent-tools-and-skills.md",
+      "sha256": "28b5dbf728f21a894f1725587703c87129aa2470515ecbd51c35d404a6da3e4c"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "537070fa9fb4c3c8d147d57956f1ec26a274f1f85be6a21aae289dff69d4e5f9"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "066dab8aad5a08f17736fc582e8d7c94784eb997cba715f1505ae586e57ef417"
+    },
+    {
+      "path": "docs/quality/evidence/secretary-post-writes/verification.md",
+      "sha256": "ff87c3eaab2c94e6f968319675133377918536312c15e01f3166125427238dee"
+    },
+    {
+      "path": "docs/skills/project-briefing/SKILL.md",
+      "sha256": "37a0d5c2001ac197211945823e956e254d17e9c675e30c33a7e7640a00eeadff"
+    },
+    {
+      "path": "docs/quality/01-test-strategy-and-cases.md",
+      "sha256": "93a2b6445dfe7ce14ce1c62659e2feafd373c8858c9255c74086c763440382d1"
+    },
+    {
+      "path": "docs/requirements/03-projects-and-knowledge.md",
+      "sha256": "577d3e4018fbd945db0ebeab5ddcbf6214a17b54e14c64c82d5373fd1a0daf11"
+    }
+  ]
+}

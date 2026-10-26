@@ -1,0 +1,27 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T05:03:35.983Z",
+  "finished_at": "2026-10-26T05:04:04.828Z",
+  "checks": [
+    "Taro displays genuine completed deliverable metadata history after actual MFA login.",
+    "Taro previews full metadata and explicit null association without a write."
+  ],
+  "source_count": 582,
+  "source_sha256": "e37c44fe158127ee78a4ccd65afce20be74f755509623f2fcf3d16c9b225f0cb",
+  "source_after_sha256": "e37c44fe158127ee78a4ccd65afce20be74f755509623f2fcf3d16c9b225f0cb",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "交付负责人 missing alice",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "e37c44fe158127ee78a4ccd65afce20be74f755509623f2fcf3d16c9b225f0cb",
+  "source_sha256_after_build": "e37c44fe158127ee78a4ccd65afce20be74f755509623f2fcf3d16c9b225f0cb",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

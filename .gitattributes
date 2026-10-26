@@ -1,0 +1,12 @@
+# Evidence binds exact source bytes. Preserve line endings on every platform.
+# New text files should be UTF-8 without BOM. Do not mass-normalize old sources.
+* -text whitespace=cr-at-eol
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.mp4 binary
+*.webm binary
+*.ico binary
+*.jar binary
+*.pdf binary

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T00:35:41.991Z",
+  "checks": [
+    "Real directory creation, Unicode duplicate rejection with retained input, rename and same-scope directory move",
+    "Two immutable metadata versions render decimal 120 GB size, unavailable scan/source and independent queued/failed replicas without false verification or private storage detail",
+    "Replica retry dialog uses the real API, retains reason when its metadata-only source is unavailable, and does not claim a cloud copy was queued",
+    "Unscannable missing metadata fixtures cannot start downloads; the UI explains unmet availability and scanning conditions without inventing usable cloud bytes",
+    "File rename, trash and untrash preserve current immutable version and original names",
+    "A nonmember receives no file metadata or version history in the UI",
+    "File details fit five viewport widths and both themes; 120 GB is metadata only, never an upload test"
+  ],
+  "metadata_fixture_only": true,
+  "cloud_objects_created": false,
+  "javascript_errors": [],
+  "server_errors": [],
+  "browser_closed": true
+}

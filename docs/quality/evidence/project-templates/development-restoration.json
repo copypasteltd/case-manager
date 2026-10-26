@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T23:14:06.811406+00:00",
+  "source_sha256": "fe2ff213312d3f6c86ecef325113f281bc60ba051fba423b6e43235916556555",
+  "restored_after_confirmed_process_exit": true,
+  "live_process_terminated": false,
+  "new_processes": [
+    {
+      "kind": "api",
+      "pid": 24384,
+      "live": true
+    },
+    {
+      "kind": "worker-notification",
+      "pid": 17164,
+      "live": true
+    },
+    {
+      "kind": "vite",
+      "pid": 10880,
+      "live": true
+    }
+  ],
+  "pg_cluster_reinitialized": false,
+  "external_integration_started": false,
+  "production_deployed": false
+}

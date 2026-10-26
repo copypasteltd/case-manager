@@ -1,0 +1,5 @@
+{
+  "reason": "The original overview business assertions passed. Requesting the optional mobile/admin fixture then queried an administrator MFA credential which that overview fixture does not create. Capture uses only the already MFA-enabled Alice identity, so use the standard business fixture without the unneeded administrator option. No application or Go test source changed.",
+  "browser_started": false,
+  "native_fixture_exit_code": 1
+}

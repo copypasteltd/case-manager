@@ -1,0 +1,19 @@
+{
+  "name": "@copypaste/agent-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/*.test.js",
+    "check:skills": "npm run build && node dist/check-skills.js",
+    "profile:describe": "npm run build && node dist/describe-profile.js"
+  },
+  "dependencies": {
+    "@openai/codex-sdk": "0.164.0",
+    "ajv": "8.20.0",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": { "@types/node": "22.18.6" }
+}

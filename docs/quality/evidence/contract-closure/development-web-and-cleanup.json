@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T23:30:22.258364+00:00",
+  "scope": "Owned local development Web/API proxy and disposable native test database cleanup; not production",
+  "web_origin": "http://localhost:5178",
+  "web_probes": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected_status": 200,
+      "content_type": "text/html",
+      "content_type_matches": true,
+      "bytes": 627
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "content_type_matches": true,
+      "bytes": 18
+    }
+  ],
+  "remaining_disposable_databases": 0,
+  "temporary_browser_fixture_absent": true,
+  "browser_cleanup": {
+    "all_owned_browser_contexts_closed": true,
+    "all_owned_browser_tabs_closed": true,
+    "temporary_bindings_revoked": true,
+    "isolated_database_cleanup_passed": true,
+    "owned_vite_stopped": true
+  },
+  "production_deployment": false,
+  "worker_started": false
+}

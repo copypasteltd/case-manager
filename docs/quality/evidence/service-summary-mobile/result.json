@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T15:24:04.964Z",
+  "finished_at": "2026-10-25T15:24:24.814Z",
+  "checks": [
+    {
+      "name": "Taro opens the real immutable service report with its original failure facts",
+      "passed": true
+    },
+    {
+      "name": "Taro service picker uses the actual permission checked source endpoint",
+      "passed": true
+    }
+  ],
+  "source_count": 523,
+  "source_sha256": "36c796658a9c016f7ee226ea29af1b721af7fc9463c642429348c59b550debf1",
+  "source_after_sha256": "36c796658a9c016f7ee226ea29af1b721af7fc9463c642429348c59b550debf1",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "36c796658a9c016f7ee226ea29af1b721af7fc9463c642429348c59b550debf1",
+  "source_sha256_after_build": "36c796658a9c016f7ee226ea29af1b721af7fc9463c642429348c59b550debf1",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

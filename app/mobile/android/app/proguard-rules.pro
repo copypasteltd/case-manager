@@ -1,0 +1,5 @@
+-keep class hk.copypaste.workspace.CPHTTPModule { *; }
+-keep class hk.copypaste.workspace.CPReadCacheModule { *; }
+-keep class expo.modules.** { *; }
+-keep class com.facebook.react.** { *; }
+-keepattributes Signature,InnerClasses,EnclosingMethod

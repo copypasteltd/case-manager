@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T17:47:07.992948+00:00",
+  "scope": "Owned local development database and API; not a production deployment",
+  "native_database": true,
+  "database": {
+    "role": "copypaste_app",
+    "is_superuser": false,
+    "can_create_database": false,
+    "can_create_roles": false,
+    "can_read_migration_ledger": false,
+    "can_create_public_objects": false,
+    "can_insert_cost_heads": true,
+    "can_update_cost_heads": true,
+    "can_delete_cost_heads": false,
+    "can_insert_cost_events": true,
+    "can_update_cost_revisions": false,
+    "can_delete_cost_allocations": false,
+    "financial_role_count": 5,
+    "financial_role_bindings": 0,
+    "migration_count": 36,
+    "latest_migration": "0036_actual_costs.sql",
+    "migration_manifest_matches_source": true
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/costs",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/reports/expenses?kind=incurred",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000/confirm",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000/reverse",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000/links",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000/revisions",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000/revisions/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs/00000000-0000-4000-8000-000000000000/events",
+      "status": 401,
+      "expected_status": 401
+    }
+  ]
+}

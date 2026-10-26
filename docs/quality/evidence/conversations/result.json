@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "started_at": "2026-10-23T09:08:51.455Z",
+  "completed_at": "2026-10-23T09:09:11.357Z",
+  "real_api": true,
+  "synthetic_data": true,
+  "source_files": [
+    "backend/internal/agent/conversations.go",
+    "backend/internal/agent/conversation_mutations.go",
+    "backend/internal/agent/context.go",
+    "backend/internal/httpapi/conversations.go",
+    "backend/migrations/0031_agent_conversations.sql",
+    "web/src/Conversations.tsx",
+    "web/src/ConversationSources.tsx",
+    "web/src/App.tsx",
+    "web/src/styles.css",
+    "packages/contracts/src/api.d.ts"
+  ],
+  "source_sha256": "f06ad1eafacc26c0728efdcfaf9e67ea3241a8222a167da49fa3ed345b5a8cd9",
+  "source_unchanged": true,
+  "temporary_bindings_created": 2,
+  "temporary_bindings_revoked": 2,
+  "checks": [
+    "A real UI personal conversation remains accessible only to its creator; an unrelated employee and a configuration administrator receive 404",
+    "Project membership alone cannot reveal a shared conversation; the UI explicitly adds an eligible member and advances its context security epoch",
+    "A second real member changes the version; the stale editor reports a conflict and retains the unsaved local title",
+    "Real project and knowledge choices are available by title; the default AI prohibition rejects both reads without displaying source bodies, and changing a choice clears the prior result",
+    "Both themes and five widths fit the real conversation; the 390px member dialog keeps controls inside its bounds",
+    "Archive and restore change immutable conversation revisions while retaining the unchanged security epoch and blocking archived member changes",
+    "A non-creator removes themself through the real UI, clears the cached detail, leaves the conversation and loses API access immediately"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "all_browser_contexts_closed": true
+}

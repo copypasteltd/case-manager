@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T10:10:24.108340+00:00",
+  "scope": "Tracked and non-ignored candidate working files",
+  "file_count": 2557,
+  "total_bytes": 98794535,
+  "binary_files": 502,
+  "markdown_files": 174,
+  "checks": [
+    {
+      "name": "Publication contains code, documentation and bilingual entry points",
+      "passed": true
+    },
+    {
+      "name": "No local tools, credentials, caches, databases or release binaries selected",
+      "passed": true
+    },
+    {
+      "name": "All selected Git blobs are smaller than 100 MiB",
+      "passed": true
+    },
+    {
+      "name": "High-confidence private key/token patterns absent from selected text",
+      "passed": true
+    },
+    {
+      "name": "Known private generated development values absent from all selected bytes",
+      "passed": true
+    },
+    {
+      "name": "Publication code and guides have no trailing whitespace or extra EOF blank lines",
+      "passed": true
+    },
+    {
+      "name": "All parsed local Markdown links resolve to selected repository files/directories",
+      "passed": true
+    },
+    {
+      "name": "Both full language guides cover architecture, workflows, setup, clients, gates and updates",
+      "passed": true
+    },
+    {
+      "name": "Capture source manifest matches complete current application and capture scripts",
+      "passed": true
+    },
+    {
+      "name": "Capture fixture, owned servers and isolated native database cleaned up",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser port5189 released",
+      "passed": true
+    },
+    {
+      "name": "web actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "mobile actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "All fifteen screenshots and historical source match recorded hashes",
+      "passed": true
+    },
+    {
+      "name": "Three MP4/GIF pairs match verified encoder/capture and output digests",
+      "passed": true
+    },
+    {
+      "name": "Media manual review binds the exact inspected screenshots and GIFs",
+      "passed": true
+    },
+    {
+      "name": "Retained full backend proof matches complete unchanged Go/SQL/contract source",
+      "passed": true
+    },
+    {
+      "name": "Retained runtime proof matches complete unchanged source; thirty-nine tests",
+      "passed": true
+    },
+    {
+      "name": "Retained Web proof matches unchanged listed sources; eighty-one tests",
+      "passed": true
+    },
+    {
+      "name": "Retained mobile proof matches complete unchanged source; one hundred fourteen tests",
+      "passed": true
+    },
+    {
+      "name": "Retained Android build binds unchanged native and portable sources; no new execution claimed",
+      "passed": true
+    },
+    {
+      "name": "Fresh read-only development inspection passed, with no test databases/external activation",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and unchanged dependency security gate remains open",
+      "passed": true
+    },
+    {
+      "name": "Gap register retains all twenty-eight stable IDs",
+      "passed": true
+    }
+  ],
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "known_private_value_count": 8,
+  "known_private_value_matches": [],
+  "publication_whitespace_findings": [],
+  "oversize_files": [],
+  "index_worktree_differences": [],
+  "broken_local_links": [],
+  "secret_scan_scope": "High-confidence text patterns, not exhaustive secret detection or pixel OCR.",
+  "functional_evidence": "Existing evidence reused by matching sources; not newly executed.",
+  "verification_script_sha256": "da868e5badfbfc3ca16332f86b6fdb586af1db1c86dc694f885e5cd27fe8dbe2",
+  "production_ready": false
+}

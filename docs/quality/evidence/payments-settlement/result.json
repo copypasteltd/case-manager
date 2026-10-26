@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T19:27:14.400Z",
+  "source_sha256": "befefa62ac15784f24b16e4e083fe51f699be1e6982d749ad33f9fc97f1b55d6",
+  "source_file_count": 322,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_payments": false,
+  "checks": [
+    {
+      "name": "Actual Web saves incomplete payment draft without inventing cash, administration lacks payment read",
+      "passed": true
+    },
+    {
+      "name": "Fixed party and file pickers, Hong Kong timestamp with seconds, human recording and stale concurrent input preservation work through the Web",
+      "passed": true
+    },
+    {
+      "name": "Partial allocation and release conserve cash and cost balances, fence cost reversal, and remain read-only for a separate user",
+      "passed": true
+    },
+    {
+      "name": "Refund draft pins its original payment; recording atomically releases a selected source and later refund allocation appends a second exact inverse",
+      "passed": true
+    },
+    {
+      "name": "Narrow-screen refund reversal and original cash reversal preserve facts, compensate every allocation leg and restore zero effective cost settlement",
+      "passed": true
+    },
+    {
+      "name": "Actual monthly cash report and company drilldown preserve February net 80, unallocated 60 and March corrections minus 80",
+      "passed": true
+    },
+    {
+      "name": "Web chooses approved claim employee, exact advance line and linked canonical cost; the actual claim shows eligible 200, paid 100 and outstanding 100",
+      "passed": true
+    },
+    {
+      "name": "Both themes and five widths pass real payment detail, cash report, drilldown and employee settlement with no browser/server errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

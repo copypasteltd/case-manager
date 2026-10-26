@@ -1,0 +1,34 @@
+# Deployment template only; not installed or executed by local development.
+[Unit]
+Description=CopyPaste upload control worker
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/copypaste/upload-worker.env
+
+[Service]
+Type=simple
+User=copypaste-upload
+Group=copypaste-upload
+WorkingDirectory=/opt/copypaste/current
+EnvironmentFile=/etc/copypaste/upload-worker.env
+ExecStart=/opt/copypaste/current/bin/platform worker-upload
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+LockPersonality=yes
+CacheDirectory=copypaste-upload
+ReadWritePaths=/var/cache/copypaste-upload
+
+[Install]
+WantedBy=multi-user.target

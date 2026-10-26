@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T01:12:03.407Z",
+  "checks": [
+    "Target upload capability is distinct from explicitly disabled storage configuration",
+    "120 GB metadata and missing source display accurately; mismatched re-selection stops before signing",
+    "Queue intent survives route navigation; reload drops local source and requires re-selection without claiming background upload",
+    "Explicit termination records a real API state change without deleting or inventing cloud content",
+    "Queue states fit five viewport widths in both visual themes",
+    "Other users see no owner queue records and cannot open policy administration",
+    "Recent MFA is renewed inside a retained policy form; invalid policy is rejected without publishing a revision"
+  ],
+  "metadata_fixture_only": true,
+  "cloud_objects_created": false,
+  "scan_reports_created": false,
+  "javascript_errors": [],
+  "server_errors": [],
+  "browser_closed": true
+}

@@ -1,0 +1,198 @@
+
+> @copypaste/agent-runtime@0.1.0 test
+> npm run build && node --test dist/*.test.js
+
+
+> @copypaste/agent-runtime@0.1.0 build
+> tsc -p tsconfig.json
+
+TAP version 13
+# Subtest: worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider
+not ok 1 - worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider
+  ---
+  duration_ms: 348.9078
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:73:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: deployment inspection uses the exact SDK configuration digest and never publishes a draft skill
+not ok 2 - deployment inspection uses the exact SDK configuration digest and never publishes a draft skill
+  ---
+  duration_ms: 0.8413
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:149:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output
+not ok 3 - SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output
+  ---
+  duration_ms: 0.0868
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:164:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process
+not ok 4 - disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process
+  ---
+  duration_ms: 0.1965
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:194:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: invented formal completion is rejected even when the model emits valid JSON and an operation UUID
+not ok 5 - invented formal completion is rejected even when the model emits valid JSON and an operation UUID
+  ---
+  duration_ms: 0.0732
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:212:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: native shell, file, web and other MCP tools abort the adapter without publishing their arguments
+not ok 6 - native shell, file, web and other MCP tools abort the adapter without publishing their arguments
+  ---
+  duration_ms: 0.1017
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:222:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback
+not ok 7 - changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback
+  ---
+  duration_ms: 0.1859
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:238:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: stable tool IDs count once while new calls and actual provider usage respect the reserved bounds
+not ok 8 - stable tool IDs count once while new calls and actual provider usage respect the reserved bounds
+  ---
+  duration_ms: 0.0479
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:246:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: cancellation and a stalled native stream expire without claiming that a prior business write was undone
+not ok 9 - cancellation and a stalled native stream expire without claiming that a prior business write was undone
+  ---
+  duration_ms: 0.3419
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:262:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: durable event failure stops processing and provider diagnostics never enter public events
+not ok 10 - durable event failure stops processing and provider diagnostics never enter public events
+  ---
+  duration_ms: 0.1813
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:276:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: verified business commits are independent of native MCP success text and incomplete streams cannot publish completion
+not ok 11 - verified business commits are independent of native MCP success text and incomplete streams cannot publish completion
+  ---
+  duration_ms: 0.1633
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\codex-adapter.test.js:292:1'
+  failureType: 'hookFailed'
+  error: 'SKILL_TOOL_POLICY_INVALID'
+  code: 'SKILL_TOOL_POLICY_INVALID'
+  stack: |-
+    loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/codex-adapter.test.js:27:15)
+    async TestHook.run (node:internal/test_runner/test:980:9)
+  ...
+# Subtest: local boundary sends only a task bearer and never accepts a different run or redirects its credential
+ok 12 - local boundary sends only a task bearer and never accepts a different run or redirects its credential
+  ---
+  duration_ms: 93.177
+  ...
+# Subtest: changed sources and revoked task credentials suppress results without exposing service diagnostics
+ok 13 - changed sources and revoked task credentials suppress results without exposing service diagnostics
+  ---
+  duration_ms: 42.2318
+  ...
+# file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160
+#             throw new RuntimeError('SKILL_TOOL_POLICY_INVALID');
+#                   ^
+# RuntimeError: SKILL_TOOL_POLICY_INVALID
+#     at loadSkills (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.js:160:19)
+#     at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/agent-runtime/dist/skills.test.js:10:17 {
+#   code: 'SKILL_TOOL_POLICY_INVALID'
+# }
+# Node.js v22.14.0
+# Subtest: dist\\skills.test.js
+not ok 3 - dist\\skills.test.js
+  ---
+  duration_ms: 17722.8128
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\agent-runtime\\dist\\skills.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 2
+# fail 12
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17929.7891
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path D:\dev\copypasted\内部管理\app\agent-runtime
+npm error workspace @copypaste/agent-runtime@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\agent-runtime
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c npm run build && node --test dist/*.test.js

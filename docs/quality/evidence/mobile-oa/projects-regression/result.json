@@ -1,0 +1,232 @@
+{
+  "started_at": "2026-10-24T13:09:41.135Z",
+  "completed_at": "2026-10-24T13:12:44.193Z",
+  "source_sha256": "ddc6af5dfec4162c7b017166adddfab2a256d0715fd547ad2f57310d9edc8115",
+  "source_files": 381,
+  "source_unchanged_during_run": true,
+  "checks": [
+    {
+      "name": "Real mobile-channel login and MFA; no credentials in local storage",
+      "passed": true
+    },
+    {
+      "name": "Real project list and scoped detail",
+      "passed": true
+    },
+    {
+      "name": "API-seeded task changed through real versioned mobile form; both themes at 320/390/768 and touch targets",
+      "passed": true
+    },
+    {
+      "name": "Real controlled-provider file versions, scan and replica facts; two themes and three widths",
+      "passed": true
+    },
+    {
+      "name": "Complete fixed contract facts and exact version metadata navigation; returning preserves review input without substituting current content",
+      "passed": true
+    },
+    {
+      "name": "Task and approval input survive real page hide/show only in memory, without automatic submission; committed task input is cleared",
+      "passed": true
+    },
+    {
+      "name": "API-prepared fixed request reviewed through mobile UI; independent approval, two-device conflict preserves reason and stops resubmission",
+      "passed": true
+    },
+    {
+      "name": "Full review-page reload discards memory credentials and old business content",
+      "passed": true
+    },
+    {
+      "name": "API-prepared milestones risks issues and memberships are read through real scoped native-page UI with resolved names and dates",
+      "passed": true
+    },
+    {
+      "name": "Real mobile task comments create and patch immutable revisions; predecessor facts and exact-version memory input survive actual page navigation",
+      "passed": true
+    },
+    {
+      "name": "Real UI creates a named deliverable with member and milestone; fixed historical file version submission survives hide without retaining file selection or auto-posting",
+      "passed": true
+    },
+    {
+      "name": "Actual independent MFA return, UI criteria edit and resubmission preserve the original file, criteria hash and return record",
+      "passed": true
+    },
+    {
+      "name": "Independent acceptance requires two actual unchecked attestations and fresh step-up; hide resets checks and MFA; competing real-session decision returns 409 and preserves blocked input",
+      "passed": true
+    },
+    {
+      "name": "Fixed history and old acceptance survive a new submission; membership change actually revokes the old session with 401; real MFA login as project viewer suppresses create and review despite broad roles",
+      "passed": true
+    },
+    {
+      "name": "A real successful creation response held across page hide/show reuses the original command key on explicit reconciliation and produces exactly one deliverable",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "task",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "file",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "approved-request",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "project-risk",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "task-discussion",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "project-deliverables",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "deliverable-editor",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "deliverable-submitted",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "deliverable-review",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "deliverable-history",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    }
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "network_failures": [
+    {
+      "method": "GET",
+      "path": "/v1/tasks/3a7a2ee3-9b9a-4895-b953-d50257478563/dependencies",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "all_browser_contexts_closed": true,
+  "all_browser_tabs_closed": true,
+  "environment": "Native Edge, Taro H5 local review build and disposable native PostgreSQL",
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "actual_cloud_invoked": false,
+  "scope": "Real API and Taro common UI; H5 is only a local review target, not platform acceptance",
+  "passed": true,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true
+}

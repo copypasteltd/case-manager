@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T08:13:34.793Z",
+  "source_sha256": "48c4021710834a11d011e12198b90f9d8af2148118441564493cf2478b505138",
+  "source_after_sha256": "48c4021710834a11d011e12198b90f9d8af2148118441564493cf2478b505138",
+  "source_unchanged": true,
+  "source_count": 592,
+  "checks": [
+    "Actual milestone creation rejects invalid dates without a request; exact Hong Kong time, owner, microseconds, missed state and versioned editing persist.",
+    "Milestone achievement refuses missing evidence without mutation, succeeds after an original completed associated task and supports exact reopen/cancel commands.",
+    "Actual risk creation, revision, closure and reopening preserve optional probability, show mitigation, prevent false date clearing and retain text on a real concurrent 409.",
+    "A committed risk realization with a lost response blocks replay, creates exactly one real issue and exposes its actual link even when probability is unset.",
+    "The actual linked issue follows investigation, resolution, closure and reopening; empty resolution sends no request and the original solution persists.",
+    "Direct issue creation and editing use the original commands, preserve absent deadlines and keep editing separate from an explicit state decision.",
+    "A real accessible item from another project cannot open an editing form under the wrong project and remains unchanged.",
+    "Real membership restriction invalidates the old login; fresh MFA viewer and cancelled-project manager cannot create, edit or follow state-changing deep links."
+  ],
+  "layouts": [
+    {
+      "page": "milestone-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "milestone-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "milestone-creation",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "risk-follow-up",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "risk-follow-up",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "risk-follow-up",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "issue-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "issue-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "issue-creation",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 9,
+  "browser_contexts_closed": 9,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "48c4021710834a11d011e12198b90f9d8af2148118441564493cf2478b505138",
+  "source_sha256_after_build": "48c4021710834a11d011e12198b90f9d8af2148118441564493cf2478b505138",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

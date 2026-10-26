@@ -1,0 +1,121 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T09:59:36.655917+00:00",
+  "scope": "Tracked and non-ignored candidate working files",
+  "file_count": 2552,
+  "total_bytes": 98774401,
+  "binary_files": 502,
+  "markdown_files": 173,
+  "checks": [
+    {
+      "name": "Publication contains code, documentation and bilingual entry points",
+      "passed": true
+    },
+    {
+      "name": "No local tools, credentials, caches, databases or release binaries selected",
+      "passed": true
+    },
+    {
+      "name": "All selected Git blobs are smaller than 100 MiB",
+      "passed": true
+    },
+    {
+      "name": "High-confidence private key/token patterns absent from selected text",
+      "passed": true
+    },
+    {
+      "name": "All parsed local Markdown links resolve to selected repository files/directories",
+      "passed": false
+    },
+    {
+      "name": "Both full language guides cover architecture, workflows, setup, clients, gates and updates",
+      "passed": true
+    },
+    {
+      "name": "Capture source manifest matches complete current application and capture scripts",
+      "passed": true
+    },
+    {
+      "name": "Capture fixture, owned servers and isolated native database cleaned up",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser port5189 released",
+      "passed": true
+    },
+    {
+      "name": "web actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "mobile actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "All fifteen screenshots and historical source match recorded hashes",
+      "passed": true
+    },
+    {
+      "name": "Three MP4/GIF pairs match verified encoder/capture and output digests",
+      "passed": true
+    },
+    {
+      "name": "Media manual review binds the exact inspected screenshots and GIFs",
+      "passed": true
+    },
+    {
+      "name": "Retained full backend proof matches complete unchanged Go/SQL/contract source",
+      "passed": true
+    },
+    {
+      "name": "Retained runtime proof matches complete unchanged source; thirty-nine tests",
+      "passed": true
+    },
+    {
+      "name": "Retained Web proof matches unchanged listed sources; eighty-one tests",
+      "passed": true
+    },
+    {
+      "name": "Retained mobile proof matches complete unchanged source; one hundred fourteen tests",
+      "passed": true
+    },
+    {
+      "name": "Retained Android build binds unchanged native and portable sources; no new execution claimed",
+      "passed": true
+    },
+    {
+      "name": "Fresh read-only development inspection passed, with no test databases/external activation",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and unchanged dependency security gate remains open",
+      "passed": true
+    },
+    {
+      "name": "Gap register retains all twenty-eight stable IDs",
+      "passed": true
+    }
+  ],
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "oversize_files": [],
+  "index_worktree_differences": [],
+  "broken_local_links": [
+    {
+      "file": "docs/quality/evidence/android-native/verification.md",
+      "target": "../../../../app/.local/android/artifacts/android-native/fe4d85dfc0b6b948/app-debug.apk"
+    },
+    {
+      "file": "docs/quality/evidence/android-upload/verification.md",
+      "target": "../../../../app/.local/android/artifacts/android-upload/6d692bdbb05eba4530c8be83f15b3d89142ad0bddf9ea4981e3b53252323fae9/app-debug.apk"
+    },
+    {
+      "file": "docs/quality/evidence/mobile-project-overview/verification.md",
+      "target": "../../../../app/.local/android/artifacts/mobile-project-overview/5e8c6cbfcd272dd15672df260d18df2c79eb37a7b59487ef2d5e092bda4bf2cc/app-debug.apk"
+    }
+  ],
+  "secret_scan_scope": "High-confidence text patterns, not exhaustive secret detection or pixel OCR.",
+  "functional_evidence": "Existing evidence reused by matching sources; not newly executed.",
+  "verification_script_sha256": "a81a74f23b474a327d3df9afa9a59e128be2c62c06aa641d0a15f65977d4d14d",
+  "production_ready": false
+}

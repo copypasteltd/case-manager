@@ -1,0 +1,16 @@
+.project-change-facts, .project-change-facts section, .change-budget-line, .change-budget-editor { min-width: 0; overflow-wrap: anywhere; }
+.change-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-block: 20px; }
+.change-comparison > section { padding: 16px; border: 1px solid var(--cp-border-subtle); border-radius: 16px; }
+.change-comparison h4 { margin-top: 0; }
+.change-budget-lines, .project-budget-list { display: grid; gap: 16px; }
+.change-budget-line { padding-block: 12px; border-bottom: 1px solid var(--cp-border-subtle); margin: 0; }
+.change-budget-line:last-child { border-bottom: 0; }
+.change-money { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.change-money small { display: block; color: var(--cp-fg-muted); }
+.change-budget-editor { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; border: 1px solid var(--cp-border-control); border-radius: 10px; padding: 16px; margin-block: 16px; }
+.change-budget-editor legend { padding-inline: 6px; }
+.project-change-action .checkbox { display: flex; align-items: flex-start; gap: 12px; min-height: 44px; margin-block: 16px; overflow-wrap: anywhere; }
+.project-change-action input[type="checkbox"] { width: 24px; height: 24px; min-height: 24px; flex: 0 0 24px; }
+@media (max-width: 640px) {
+  .change-comparison, .change-budget-editor { grid-template-columns: minmax(0, 1fr); }
+}

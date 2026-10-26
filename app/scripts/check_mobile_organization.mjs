@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+const screen = page => page.locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last();
+const button = (page, name) => screen(page).getByRole('button', { name, exact: true });
+
+await notificationBrowser(true, async ({ page, fixture, checks }) => {
+  await page.goto(fixture.origin); await screen(page).locator('input[aria-label="内部账号"]').fill(fixture.alice.login);
+  await screen(page).locator('input[aria-label="密码"]').fill(fixture.alice.password); await button(page, '登录工作空间 ↗').click();
+  await screen(page).locator('input[aria-label="六位验证码"]').fill(await waitOTP(fixture)); await button(page, '验证并继续 ↗').click();
+  await screen(page).locator('.cp-title').filter({ hasText: '工作从这里开始' }).waitFor();
+  await screen(page).locator('.cp-row-title').getByText('公司秘书', { exact: true }).click();
+  await screen(page).locator('.cp-row-title').getByText('资料整理私密会话', { exact: true }).click();
+  await screen(page).getByText('2项资料整理 · 待本人批准', { exact: true }).waitFor();
+  checks.push('Taro H5 opens the real private conversation and its pending organization plan.');
+  let card = screen(page).getByText('2项资料整理 · 待本人批准', { exact: true }).locator('..');
+  const text = await card.innerText(); assert.match(text, /原始目录/); assert.match(text, /移动端已核对目录/); assert.match(text, /归档资料/); assert.match(text, /目标目录版本/);
+  checks.push('Mobile review shows both original and target locations, names, classifications and versions.');
+  await card.locator('input[aria-label="整理操作说明"]').fill('Approve exact reviewed mobile plan');
+  const [approved] = await Promise.all([page.waitForResponse(r => /\/v1\/organization-plans\/[^/]+\/approve$/.test(new URL(r.url()).pathname)), card.getByRole('button', { name: '批准这份整理计划', exact: true }).click()]);
+  assert.equal(approved.status(), 200); let plan = (await approved.json()).data; assert.equal(plan.state, 'approved'); assert.equal(plan.operation_id, null); assert.deepEqual(plan.results, []);
+  checks.push('Recent interactive MFA approves the plan without a namespace write.');
+  card = screen(page).getByText('2项资料整理 · 已批准，等待整理', { exact: true }).locator('..'); await card.locator('input[aria-label="整理操作说明"]').fill('Execute only the exact approved batch');
+  const [committed] = await Promise.all([page.waitForResponse(r => new URL(r.url()).pathname === '/v1/organization-plans/' + plan.id + '/commit'), card.getByRole('button', { name: '按已批准计划整理资料', exact: true }).click()]);
+  assert.equal(committed.status(), 200); plan = (await committed.json()).data; assert.equal(plan.state, 'committed'); assert.equal(plan.results.length, 2);
+  assert.equal(plan.results[0].data.id, fixture.source_id); assert.equal(plan.results[0].data.name, '移动端已核对目录'); assert.equal(plan.results[1].data.id, fixture.file_id); assert.equal(plan.results[1].data.folder_id, fixture.target_id);
+  await screen(page).getByText('2项资料整理 · 资料已整理', { exact: true }).waitFor();
+  checks.push('Mobile commits the atomic rename-and-file-move batch and renders two genuine business receipts.');
+  const [refreshed] = await Promise.all([page.waitForResponse(r => new URL(r.url()).pathname === '/v1/conversations/' + fixture.conversation_id + '/organization-plans'), button(page, '重新核对整理计划').click()]);
+  assert.equal(refreshed.status(), 200); const current = (await refreshed.json()).data.items.find(p => p.id === plan.id); assert.equal(current.operation_id, plan.operation_id); assert.equal(current.results.length, 2);
+  await screen(page).getByText('2项资料整理 · 资料已整理', { exact: true }).waitFor();
+  checks.push('A fresh mobile read preserves the completed batch and each original operation receipt.');
+}, 'secretary-organization');

@@ -1,0 +1,6 @@
+rootProject.name = 'CopyPasteWorkspace'
+def resolvePackage = { name -> new File(['node', '--print', "require.resolve('${name}/package.json')"].execute(null, rootDir.parentFile).text.trim()).parentFile }
+apply from: new File(resolvePackage('@react-native-community/cli-platform-android'), 'native_modules.gradle')
+applyNativeModulesSettingsGradle(settings)
+include ':app'
+includeBuild(resolvePackage('@react-native/gradle-plugin'))

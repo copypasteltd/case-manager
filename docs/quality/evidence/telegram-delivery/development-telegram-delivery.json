@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "verification_script_sha256": "2392fc241e7b485631d6b3d304aec9a9e7193736c88953c21eaebbfb5cadedd6",
+  "checked_at": "2026-10-25T18:45:05.782309+00:00",
+  "migration_count": 63,
+  "database": {
+    "journal_append_only": true,
+    "head_no_delete": true,
+    "delivery_guards": 3,
+    "deferred_event_binding": 1,
+    "enabled_channels": 0,
+    "delivery_count": 0,
+    "event_count": 0,
+    "worker_budget_count": 0,
+    "active_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/v1/me/telegram/requests/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me/telegram/requests/00000000-0000-4000-8000-000000000000/deliveries",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/me/telegram/requests/00000000-0000-4000-8000-000000000000/deliveries/00000000-0000-4000-8000-000000000000/reconcile",
+      "status": 401,
+      "passed": true
+    }
+  ],
+  "all_eight_skills_draft": true,
+  "production_integrations_disabled": true,
+  "actual_model_invoked": false,
+  "actual_telegram_contacted": false,
+  "schema_applied_to_owned_development_only": true
+}

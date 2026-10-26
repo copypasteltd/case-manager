@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T09:33:22.299Z",
+  "finished_at": "2026-10-25T09:33:43.966Z",
+  "checks": [
+    "Web shows the actual generated draft revision without claiming internal publication.",
+    "Internal publication displays the complete saved revision and requires explicit human review; selection does not send a run.",
+    "Confirmed Web send creates one exact private knowledge authorization with a generated-body boundary and no fabricated post.",
+    "An identical transport retry returns the original run and immutable knowledge intent.",
+    "Actual cancellation leaves no generated document and preserves the previous published content."
+  ],
+  "source_count": 526,
+  "source_sha256": "42aff3f0588bc17b095dcfe188f8cf4603a1d67d253423ef67868481ef3d7370",
+  "source_after_sha256": "42aff3f0588bc17b095dcfe188f8cf4603a1d67d253423ef67868481ef3d7370",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

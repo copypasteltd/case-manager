@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/project-create.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "owner_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "classification": {
+          "enum": [
+            "internal",
+            "project_restricted"
+          ]
+        },
+        "member_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "maxItems": 30,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "template_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "name",
+        "owner_id",
+        "classification",
+        "instructions"
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

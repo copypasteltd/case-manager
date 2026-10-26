@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T23:18:33.752567+00:00",
+  "database": "cp_test_521c1eb70f4a41c0b900acdb9bd545f2",
+  "before": {
+    "owner": "postgres",
+    "template": false,
+    "connections": 0
+  },
+  "migration_hashes": [
+    {
+      "name": "0001_identity_platform.sql",
+      "sha256": "d61afb66b356737b28db411495158c82f04f0b286a8d52c203df3fa6cbfb1a00"
+    },
+    {
+      "name": "0002_projects_knowledge.sql",
+      "sha256": "c49b574a8896b1d85287e13f074366e79b16c40a10e3914717b15b14892afca6"
+    }
+  ],
+  "empty_fixture_verified": true,
+  "already_absent": false,
+  "forced_disconnect": false,
+  "application_database_selected": false,
+  "scope": "Exact disconnected empty partial fixture from interrupted increment67; current running tests unaffected."
+}

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T06:21:16.908Z",
+  "finished_at": "2026-10-25T06:21:33.858Z",
+  "checks": [
+    "Web renders a genuinely committed new file, its generated text and first scanned formal version.",
+    "The page preserves the true pending second replica instead of claiming two-cloud completion.",
+    "Directory and filename selection fixes one new-file request without sending or mixing an existing-file update.",
+    "One real Web request pins directory revision, name and format and receives authorization without a formal file.",
+    "The sender message stores the exact immutable new-file intent digest.",
+    "Rechecking the identical sender request returns the same run and exact creation scope.",
+    "Cancelling the queued request produces a real cancellation receipt and creates no formal file."
+  ],
+  "source_count": 512,
+  "source_sha256": "53c5a27e99cedb6677a746bb8ba5f60f5ccb9cc576afa31910b780acf9fe4fb7",
+  "source_after_sha256": "53c5a27e99cedb6677a746bb8ba5f60f5ccb9cc576afa31910b780acf9fe4fb7",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

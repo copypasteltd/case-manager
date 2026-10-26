@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-22T21:18:31.381Z",
+  "checks": [
+    "System theme follows the OS; explicit theme persists and can return to system mode",
+    "Create and preview a real project SOP, safely render untrusted Markdown, and publish its fixed revision",
+    "Comment editing creates a new revision and the original remains readable in its history",
+    "A stale comment is rejected; its text survives refresh and requires review before submission on the new revision",
+    "A project viewer sees the published title, body and discussion while the new draft and its comments remain hidden",
+    "Edit a draft and restore an immutable historical revision into a new draft before publishing it",
+    "Knowledge pages fit five viewport widths; mobile navigation hides fully, traps focus while open and restores focus when closed",
+    "Archived posts retain readable revision history and expose no ordinary edit, comment or restore action"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "external_image_requests": [],
+  "browser_closed": true
+}

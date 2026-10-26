@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T00:07:01.525707+00:00",
+  "database": {
+    "can_read_file_evidence": true,
+    "historical_creator_nullable": true,
+    "historical_original_name_nullable": true,
+    "original_name_immutable_guards": 1,
+    "can_rewrite_tool_receipts": false,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 50,
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "file_context_probe": {
+    "method": "GET",
+    "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/context-sources/file/00000000-0000-4000-8000-000000000000?context_security_version=1&version_id=00000000-0000-4000-8000-000000000000",
+    "status": 401,
+    "expected": 401,
+    "passed": true
+  },
+  "agent_file_reading_disabled_in_development_configuration": true,
+  "environment": "owned native Windows Go/PostgreSQL; no virtualization",
+  "verification_script_sha256": "58e87453f2cb1584885b81c3762981db9971c7638b13c0736fa2f2c86849c05c",
+  "real_model_invoked": false,
+  "actual_cloud_invoked": false,
+  "production_deployed": false
+}

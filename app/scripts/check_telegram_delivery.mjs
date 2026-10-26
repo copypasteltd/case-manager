@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+
+await notificationBrowser(false, async ({ page, context, fixture, checks }) => {
+ const target = fixture.origin + '/telegram?request=' + fixture.request_id;
+ await page.goto(target);
+ await page.getByLabel('内部账号', { exact: true }).fill(fixture.alice.login);
+ await page.getByLabel('密码', { exact: true }).fill(fixture.alice.password);
+ await page.getByRole('button', { name: '登录工作空间', exact: true }).click();
+ await page.getByLabel('六位验证码').fill(await waitOTP(fixture));
+ await page.getByRole('button', { name: '验证并继续', exact: true }).click();
+ await page.getByRole('heading', { name: '链接对应的本人请求', exact: true }).waitFor();
+ assert.equal(new URL(page.url()).searchParams.get('request'), fixture.request_id);
+ checks.push({ name: 'Web login preserves the authenticated Telegram request deep link', passed: true });
+ const card = page.locator('[data-delivery-id="' + fixture.delivery_id + '"]');
+ await card.getByRole('heading', { name: '受理通知 · 投递结果未知', exact: true }).waitFor();
+ const read = await context.request.get(fixture.origin + '/v1/me/telegram/requests/' + fixture.request_id + '/deliveries');
+ assert.equal(read.status(), 200); const before = (await read.json()).data;
+ assert.equal(before.deliveries[0].state, 'delivery_unknown');
+ assert.equal(before.events.length, 3); assert.ok(before.events.every(e => e.delivery_id === fixture.delivery_id));
+ checks.push({ name: 'Web shows actual immutable preparation and unknown-outcome receipts without claiming delivery', passed: true });
+ await card.getByRole('button', { name: '核对此通知是否已发送', exact: true }).click();
+ const dialog = page.getByRole('dialog', { name: '人工核对群通知' });
+ await dialog.getByLabel('对账原因', { exact: true }).fill('浏览器核对原群后，保留未知事实并放弃重发。');
+ const saved = page.waitForResponse(r => r.url().includes('/deliveries/' + fixture.delivery_id + '/reconcile') && r.request().method() === 'POST');
+ await dialog.getByRole('button', { name: '保存此次对账', exact: true }).click();
+ assert.equal((await saved).status(), 200);
+ await card.getByRole('heading', { name: '受理通知 · 本人已放弃重发', exact: true }).waitFor();
+ const final = await context.request.get(fixture.origin + '/v1/me/telegram/requests/' + fixture.request_id + '/deliveries');
+ assert.equal(final.status(), 200); const after = (await final.json()).data;
+ assert.equal(after.deliveries[0].state, 'abandoned'); assert.equal(after.events.length, 4);
+ assert.equal(after.events[2].state, 'delivery_unknown'); assert.equal(after.events[3].reason_code, 'manual_abandoned');
+ checks.push({ name: 'Web reconciliation commits a new actor-attributed event and retains the uncertain send', passed: true });
+}, 'telegram-delivery');

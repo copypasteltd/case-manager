@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-26T05:48:22.745394+00:00",
+  "finished_at": "2026-10-26T05:48:40.862946+00:00",
+  "source_sha256": "66c85958075489dfd33499766d2064a5a79efe326f028fce58cff6f7732ebef2",
+  "source_after_sha256": "66c85958075489dfd33499766d2064a5a79efe326f028fce58cff6f7732ebef2",
+  "source_files": 50,
+  "commands": [
+    {
+      "name": "test",
+      "exit_code": 0,
+      "elapsed_seconds": 14.73
+    },
+    {
+      "name": "check:skills",
+      "exit_code": 0,
+      "elapsed_seconds": 3.367
+    }
+  ],
+  "tests": {
+    "tests": 39,
+    "pass": 39,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "execution_mode": "Controlled SDK clients and loopback HTTP only; no real provider invocation or production activation."
+}

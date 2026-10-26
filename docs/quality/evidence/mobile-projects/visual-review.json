@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T10:13:30.799382+00:00",
+  "browser_executed_at": "2026-10-24T10:11:44.114Z",
+  "browser_source_sha256": "19eb239d029654bfd46b9be6c301767dcfa5ca49ad92ee9439f86ed797835dd6",
+  "review_method": "Codex inspected four actual final-run screenshots; no additional browser launched",
+  "layout_configuration_count": 60,
+  "saved_screenshot_count": 22,
+  "images": [
+    {
+      "file": "deliverable-editor-light-390.png",
+      "sha256": "e102c18a8dc9599f6158b439dbb581bc33854bf2e6250bca2238a006a2068b1b",
+      "observation": "暖白画布、白色单列面板、黑色主动作和品牌蓝符合官网衍生规范；负责人、里程碑、原因与恢复提示在390px可见区域内独立分组。"
+    },
+    {
+      "file": "task-discussion-dark-390.png",
+      "sha256": "fa04d5669903735ac7c9f6391241a697bccb1323969e3f00dd84aae52b5d3e83",
+      "observation": "深色任务概况、负责人和前置任务分层清楚，来源入口与阶段徽标不挤压名称；任务处理区域保持独立。截图下方的评论由实际UI创建／修改断言验证。"
+    },
+    {
+      "file": "deliverable-review-dark-390.png",
+      "sha256": "00286e2a12a4c0e7d2449975747645ebb05c0f1705298166dd51145618509101",
+      "observation": "长英文交付名与当前准则完整换行，深色面板和待人工验收徽标可辨认；当前资料与第二次提交固定依据分组。声明／验证码位于下方，另由真实操作断言验证。"
+    },
+    {
+      "file": "deliverable-history-light-390.png",
+      "sha256": "add2b03aa34419698d5c4ca967c0b3a0dc99d17af5b75cfc576fa88996344767",
+      "observation": "顶部明确写当前交付阶段为已验收，第一修订独立显示历史固定依据与当时已退回；固定原件版本1、完整摘要和原准则保留，未借用第二次修订。"
+    }
+  ],
+  "open_findings": [
+    {
+      "severity": "P3",
+      "status": "open",
+      "file": "deliverable-review-dark-390.png",
+      "observation": "极长英文标题末尾的品牌装饰点单独换行；未遮挡业务信息，后续需优化标题排版。该记录不构成正式发布缺陷豁免。"
+    }
+  ],
+  "limitations": [
+    "截图仅覆盖Taro H5页面当时可见区域；内部滚动区域下方的评论、声明、MFA及提交结果以实际操作断言补充，不把截图称为全内容视觉验收。",
+    "本轮查阅和选择固定文件元信息，没有声称移动端已实际打开文件内容。",
+    "不替代辅助技术、微信／抖音真机、Android宿主、120GB、真实双云或正式首发验收。"
+  ],
+  "production_release_approved": false
+}

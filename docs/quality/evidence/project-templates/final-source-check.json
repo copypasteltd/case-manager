@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T23:21:13.216317+00:00",
+  "backend_source_sha256": "fe2ff213312d3f6c86ecef325113f281bc60ba051fba423b6e43235916556555",
+  "checks": [
+    {
+      "name": "All discovered backend tests executed without failures or skips against current sources",
+      "passed": true
+    },
+    {
+      "name": "New PostgreSQL/HTTP template authorization, lifecycle, concurrency and rollback cases all passed",
+      "passed": true
+    },
+    {
+      "name": "Secretary exact-plan and existing project/closeout/financial regressions ran",
+      "passed": true
+    },
+    {
+      "name": "Current backend compiles to preserved Linux artifact without executing it",
+      "passed": true
+    },
+    {
+      "name": "Generated backend contract and documented OpenAPI are identical",
+      "passed": true
+    },
+    {
+      "name": "Web tests and production build match final source files",
+      "passed": true
+    },
+    {
+      "name": "Four actual API browser chains and six settled responsive checks match current sources",
+      "passed": true
+    },
+    {
+      "name": "Owned browser, tabs, temporary Vite and isolated test database closed",
+      "passed": true
+    },
+    {
+      "name": "Current shared types pass mobile tests, typecheck and both mini-program builds",
+      "passed": true
+    },
+    {
+      "name": "weapp retains all fifteen public pages",
+      "passed": true
+    },
+    {
+      "name": "tt retains all fifteen public pages",
+      "passed": true
+    },
+    {
+      "name": "Unchanged runtime reuses its passing 34-test source-bound evidence",
+      "passed": true
+    },
+    {
+      "name": "Previous frozen Android upload APK remains intact; not claimed as a new native build",
+      "passed": true
+    },
+    {
+      "name": "Owned API runs current source and exact 64-migration manifest with append-only history",
+      "passed": true
+    },
+    {
+      "name": "Storage/model/TG remain disabled in development",
+      "passed": true
+    },
+    {
+      "name": "API and notification-worker identities match recorded creation times",
+      "passed": true
+    },
+    {
+      "name": "Interrupted services restored after confirmed exit without terminating live processes or reinitializing PG",
+      "passed": true
+    },
+    {
+      "name": "Empty interrupted fixture verified and removed without forced disconnect; no disposable databases remain",
+      "passed": true
+    },
+    {
+      "name": "Temporary review port and private fixture metadata released",
+      "passed": true
+    },
+    {
+      "name": "Existing owned service is ready: http://127.0.0.1:18080/health/ready",
+      "passed": true
+    },
+    {
+      "name": "Existing owned service is ready: http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "Existing owned service is ready: http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "Dependency lock remains the previously audited one with unresolved findings retained",
+      "passed": true
+    }
+  ],
+  "full_goal_complete": false,
+  "real_cloud_verified": false,
+  "real_model_verified": false,
+  "real_device_verified": false,
+  "production_deployed": false,
+  "native_apk_reference": "previous increment66 frozen upload APK; unchanged artifact, no new native feature claimed",
+  "runtime_reference": "unchanged source reuses increment65 controlled-runtime evidence",
+  "scope": "Project-template management and exact transactional project initialization; excludes project boards/timelines, real resources, all-client template administration and complete first release."
+}

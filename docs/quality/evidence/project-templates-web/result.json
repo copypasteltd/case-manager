@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-25T22:57:42.152Z",
+  "source_sha256": "6712db769095c22fa092c95ef07d36e3da3bf4e7cc9b53f7c3d112bd243b11e8",
+  "source_file_count": 557,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": null,
+  "checks": [
+    {
+      "name": "Admin creates and publishes structured template; actual employee selects exact revision and initializes project/tasks/milestones through real API",
+      "passed": true
+    },
+    {
+      "name": "Actual concurrent draft update returns conflict, retains human fields, blocks retry until explicit latest-content comparison; old published revision unchanged",
+      "passed": true
+    },
+    {
+      "name": "Ordinary creator cannot see draft/configuration; retirement between selection and creation rejects original intent without silent fallback; previous project retains tasks",
+      "passed": true
+    },
+    {
+      "name": "Actual publication commits before the browser loses its response; frozen original intent and same idempotency key recover one publication and one history record",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "name": "template-projects",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "template-projects",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "template-projects",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

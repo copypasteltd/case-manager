@@ -1,0 +1,48 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T06:51:22.495Z",
+  "source_sha256": "a846ed149037d23649a8cfb62d50bf2523682d7f53ec1554036eed58ab2b21a7",
+  "source_after_sha256": "a846ed149037d23649a8cfb62d50bf2523682d7f53ec1554036eed58ab2b21a7",
+  "source_unchanged": true,
+  "source_count": 589,
+  "checks": [
+    "Actual mobile template creation fixes owner, dates and exact revision and initializes real tasks, milestones and logical folders once.",
+    "Draft editing uses the actual project version and explicit date clearing without changing owner, classification or selected template.",
+    "A real committed update with a lost browser response blocks resubmission and explicit reread reconciles its actual result."
+  ],
+  "layouts": [
+    {
+      "page": "project-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: PATCH /projects/2519f06b-3856-4542-a732-16301a125daa: 404 RESOURCE_NOT_FOUND\n    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_setup.mjs:41:138)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_setup.mjs:93:76",
+  "owned_browser_closed": true,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "a846ed149037d23649a8cfb62d50bf2523682d7f53ec1554036eed58ab2b21a7",
+  "source_sha256_after_build": "a846ed149037d23649a8cfb62d50bf2523682d7f53ec1554036eed58ab2b21a7",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

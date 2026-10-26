@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "Several deliberate expense/rollback/draft cases have the same title. The checker must choose the corresponding ordered preview and verify the actual stable GET ID rather than assume globally unique titles. No UI/data permission is changed.",
+  "owned_browser_closed": true,
+  "native_fixture_exit_code": 0
+}

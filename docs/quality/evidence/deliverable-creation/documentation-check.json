@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T06:21:39.546926+00:00",
+  "document_count": 9,
+  "local_links_checked": 664,
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "missing_links": [],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "31cef3548f76f004e064ac4cfa23805b74e1b3b816e762b424d59a3554e12e05"
+    },
+    {
+      "path": "docs/development/74-secretary-deliverable-creation.md",
+      "sha256": "a20d3eeb88c6c158b1f41750ce67efde5b945b8fdff1f1a20ea366580043949d"
+    },
+    {
+      "path": "docs/requirements/03-projects-and-knowledge.md",
+      "sha256": "e31d8f5005efb02732238c31250cc6a9f564d75669fe1bf8691a3294c180f30b"
+    },
+    {
+      "path": "docs/requirements/07-secretary-and-channels.md",
+      "sha256": "5220ad1fc303eb93cb14b2e842f91fb6e0498848f61a7cd5382afb07528bead4"
+    },
+    {
+      "path": "docs/development/07-agent-tools-and-skills.md",
+      "sha256": "4e36fc66a3be22c688ab670c391e9edfbe214eea3764677f1f71f84969344f3a"
+    },
+    {
+      "path": "docs/skills/project-update/SKILL.md",
+      "sha256": "ced7d92d7030369c638c84747aefd1d1fa672b50491a2c5d540dff15fa263d40"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "52c050f2c8d784ca9b128cc05cc5968d8824d9523dd064c582163bad788db239"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "c606060a84878dfed0e396d4fa1ec1824e6a12bc05740492313fb90c10840d26"
+    },
+    {
+      "path": "docs/quality/evidence/deliverable-creation/verification.md",
+      "sha256": "dc228951099a42e24fec8a407c30a020e8bf2f17b1923e5bb02000f870db01f1"
+    }
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All twenty-eight gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment74 and its functional implementation",
+      "passed": true
+    },
+    {
+      "name": "Ledger and current gap baseline bind the actual newly executed backend source",
+      "passed": true
+    },
+    {
+      "name": "Current final source and sixty-nine-migration development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Remaining real model and Skill publication work stays open with the correct draft package version",
+      "passed": true
+    },
+    {
+      "name": "Fresh Web, mobile and Android evidence remains distinct from device or production release claims",
+      "passed": true
+    }
+  ]
+}

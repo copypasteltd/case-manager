@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T19:30:06.533525+00:00",
+  "scope": "Owned local development database and API; not a production deployment",
+  "native_database": true,
+  "database": {
+    "role": "copypaste_app",
+    "is_superuser": false,
+    "can_bypass_row_security": false,
+    "can_create_database": false,
+    "can_create_roles": false,
+    "can_read_migration_ledger": false,
+    "can_create_public_objects": false,
+    "can_insert_payment_heads": true,
+    "can_update_payment_heads": true,
+    "can_delete_payment_heads": false,
+    "can_insert_immutable_facts": true,
+    "can_rewrite_immutable_facts": false,
+    "financial_role_count": 4,
+    "financial_role_bindings": 0,
+    "migration_count": 37,
+    "latest_migration": "0037_payments_and_settlement.sql",
+    "migration_manifest_matches_source": true
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/payments",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/record",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/reverse",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/allocations",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/refund-allocations",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/allocations/00000000-0000-4000-8000-000000000000/release",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/allocations",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/revisions",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/revisions/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments/00000000-0000-4000-8000-000000000000/events",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/claims/00000000-0000-4000-8000-000000000000/settlement",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/reports/cash",
+      "status": 401,
+      "expected_status": 401
+    }
+  ]
+}

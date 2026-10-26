@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T21:36:50.600625+00:00",
+  "checks": [
+    {
+      "name": "backend-result.json",
+      "passed": true,
+      "source_sha256": "c6a46cd5193a428adcf6855e4c4effd33b5f40096bea62c0169fcdd8d95eebd5"
+    },
+    {
+      "name": "linux-build.json",
+      "passed": true,
+      "source_sha256": "c6a46cd5193a428adcf6855e4c4effd33b5f40096bea62c0169fcdd8d95eebd5"
+    },
+    {
+      "name": "runtime-build.json",
+      "passed": true,
+      "source_sha256": "dcb9e31cf304caef46d1d0cd3ff300b191cae8f3e2408709c202c1997b19b99d"
+    },
+    {
+      "name": "mobile-build.json",
+      "passed": true,
+      "source_sha256": "9b2affbb09e1e1bf4fac7bdb5c645abfab85182f30682ac6b1b0b5dbce641d83"
+    },
+    {
+      "name": "web-build.json",
+      "passed": true,
+      "source_sha256": "df91d0aa020714e6aa0373dd0a63eeaa58ed9cbb883e19aabff1ae9e511a1d55"
+    },
+    {
+      "name": "secretary-discovery-web",
+      "passed": true,
+      "source_sha256": "6757e36df1338d54c10b32dbda32437c235c51c64ee2c586b52c64cca1f17493",
+      "checks": 5
+    },
+    {
+      "name": "secretary-discovery-mobile",
+      "passed": true,
+      "source_sha256": "a00b14763d597a77b6d32ee493a1a50d465f366b58aebf629809e14d769edd32",
+      "checks": 5
+    },
+    {
+      "name": "development plans and unauthorized route probes",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI embedded and documented copies",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "scope": "Fixed source verification, local readiness and owned cleanup; no production, real model, cloud, device or capacity acceptance."
+}

@@ -1,0 +1,8 @@
+{"completed_check":"Actual service pages paginate, search and filter by a real project; registration without observations remains unknown"}
+{"completed_check":"Real Ed25519 observations produce failure/recovery thresholds; late facts, exact history and portable raw-byte signature verification remain distinct from current health"}
+{"completed_check":"Maintenance preserves underlying observations and cancellation history; a held real refresh and device wall-clock rollback cannot keep an expired green status"}
+MFA incident creation and all-service visibility: locator.fill: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('textbox', { name: '验证器六位验证码', exact: true })[22m
+
+{"passed":false,"checks":4,"layouts":4,"closed_contexts":5}

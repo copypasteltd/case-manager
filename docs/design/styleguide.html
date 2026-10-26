@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>CopyPaste · 内部平台风格样板</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styleguide.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳至主内容</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h5l3 4h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></symbol>
+    <symbol id="i-agent" viewBox="0 0 24 24"><path d="M12 3v4M10 3h4M7 20v1m10-1v1M3 11v5m18-5v5"/><rect x="5" y="7" width="14" height="13" rx="4"/><path d="M9 12h.01M15 12h.01M9 16h6"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 12h5l3-8 4 16 3-8h5"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="样板导航">
+      <a class="brand" href="#workbench"><img class="brand-logo" src="assets/official-logo-light.png" alt="CopyPaste" width="40" height="40"><span>CopyPaste<small>内部管理平台</small></span></a>
+      <div class="workspace-label">公司工作空间</div>
+      <nav class="nav-list">
+        <a href="#workbench" class="active" aria-current="page" aria-label="工作台"><svg class="icon"><use href="#i-grid"/></svg><span>工作台</span><span class="nav-count">03</span></a>
+        <a href="#projects" aria-label="项目"><svg class="icon"><use href="#i-folder"/></svg><span>项目</span></a>
+        <a href="#files" aria-label="文件与知识"><svg class="icon"><use href="#i-file"/></svg><span>文件与知识</span></a>
+        <a href="#approvals" aria-label="审批与费用"><svg class="icon"><use href="#i-check"/></svg><span>审批与费用</span></a>
+      </nav>
+      <div class="workspace-label second-label">协作与系统</div>
+      <nav class="nav-list">
+        <a href="#secretary" aria-label="公司秘书"><svg class="icon"><use href="#i-agent"/></svg><span>公司秘书</span><span class="tiny-dot" aria-hidden="true"></span></a>
+        <a href="#service" aria-label="服务状态"><svg class="icon"><use href="#i-pulse"/></svg><span>服务状态</span></a>
+        <a href="#components" aria-label="设计规范"><svg class="icon"><use href="#i-settings"/></svg><span>设计规范</span></a>
+      </nav>
+      <div class="sidebar-bottom"><span class="avatar">CP</span><div>公司工作空间<small>风格样板 / v1.0 draft</small></div></div>
+    </aside>
+    <div class="app-main">
+      <header class="topbar">
+        <span class="breadcrumb">内部平台 <span>/</span> 工作台</span>
+        <span class="preview-label">风格样板 · 演示数据</span>
+        <button id="theme-toggle" class="icon-button" type="button" aria-label="切换为深色主题" aria-pressed="false"><svg class="icon"><use href="#i-moon"/></svg></button>
+      </header>
+      <main id="main" tabindex="-1">
+        <section id="workbench" class="page-heading">
+          <div><span class="eyebrow">COPYPASTE / WORKSPACE</span><h1>工作台</h1><p>项目、审批与公司资料，在这里有序推进。</p></div>
+          <div class="heading-actions"><a class="button secondary" href="#secretary">打开秘书 <svg class="icon"><use href="#i-arrow"/></svg></a><button class="button primary sample-action" type="button" data-sample="新建项目"><svg class="icon"><use href="#i-plus"/></svg>新建项目</button></div>
+        </section>
+        <div class="metrics" aria-label="演示指标">
+          <div><span class="metric-label">待处理审批</span><strong>03<small>项</small></strong><span class="muted">2 项申请 · 1 项秘书计划</span></div>
+          <div><span class="metric-label">进行中项目</span><strong>04<small>个</small></strong><span class="muted">下一里程碑 · 10月28日</span></div>
+          <div><span class="metric-label">本月预计开支 <span class="pill neutral">示例 HKD</span></span><strong class="amount">12,680<small>.00</small></strong><span class="muted">预计口径，尚未结算</span></div>
+          <div><span class="metric-label">文件保护</span><strong class="metric-status">1 项待复制</strong><span class="muted">主存储可用 · R2 处理中</span></div>
+        </div>
+        <div class="dashboard-grid">
+          <div class="primary-column">
+            <section id="approvals" class="panel">
+              <div class="panel-heading"><div><h2>需要你处理</h2><p>优先查看待审批与待确认事项</p></div><span class="pill warning">3 项待办</span></div>
+              <div class="task-row"><span class="task-icon"><svg class="icon"><use href="#i-check"/></svg></span><div class="task-content"><h3>网站基础设施升级采购</h3><p>采购申请 · 修订 2 · 今日 10:24</p></div><div class="task-value"><strong>HK$ 4,800.00</strong><span class="pill warning">待审批</span></div></div>
+              <div class="task-row"><span class="task-icon"><svg class="icon"><use href="#i-file"/></svg></span><div class="task-content"><h3>9月项目差旅报销</h3><p>报销申请 · 修订 1 · 昨日 16:05</p></div><div class="task-value"><strong>HK$ 860.00</strong><span class="pill warning">待审批</span></div></div>
+              <div class="task-row"><span class="task-icon"><svg class="icon"><use href="#i-agent"/></svg></span><div class="task-content"><h3>项目资料批量整理</h3><p>秘书计划 · 8 个文件 · 等待范围确认</p></div><div class="task-value"><a class="text-link" href="#secretary">查看计划 <span aria-hidden="true">↗</span></a></div></div>
+            </section>
+            <section id="projects" class="panel">
+              <div class="panel-heading"><div><h2>项目进展</h2><p>当前工作与下一步交付</p></div><span class="meta-label">示例项目</span></div>
+              <div class="project-list">
+                <div class="project-row"><div><h3>公司内部管理平台</h3><p>下一步：需求与设计基线评审</p></div><span class="pill info">规划中</span></div>
+                <div class="project-row"><div><h3>跨境服务资料库</h3><p>下一步：合同与技术资料归档</p></div><span class="pill neutral">待整理</span></div>
+              </div>
+              <div class="panel-note">展示阶段与下一步，不以单一百分比代替验收状态。</div>
+            </section>
+            <section id="files" class="panel">
+              <div class="panel-heading"><div><h2>文件与副本</h2><p>传输、正式版本与双云保护分别可见</p></div><svg class="icon muted"><use href="#i-folder"/></svg></div>
+              <div class="file-detail"><div class="file-title"><span class="file-mark">ZIP</span><div><h3>项目素材归档.zip</h3><p>120 GB · 正式版本 v3 · 演示文件</p></div></div><div class="progress-label"><span>传输完成</span><strong>100%</strong></div><div class="progress-track" role="progressbar" aria-label="演示文件传输进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span></span></div><div class="replica-row"><span class="pill success">✓ OSS 可用</span><span class="pill warning">◷ R2 待复制</span><span class="muted">上传完成 ≠ 双云保护完成</span></div></div>
+            </section>
+          </div>
+          <div class="secondary-column">
+            <section id="secretary" class="panel secretary-panel">
+              <div class="panel-heading"><div class="agent-heading"><span class="agent-icon"><svg class="icon"><use href="#i-agent"/></svg></span><div><h2>公司秘书</h2><p>有来源，也有执行依据</p></div></div><span class="pill info">样式示例</span></div>
+              <div class="agent-body"><span class="eyebrow">资料整理 / 计划待确认</span><p class="agent-summary">已整理本次更新范围。请先检查文件清单与版本，再批准这项批量计划。</p><div class="citation"><strong><svg class="icon"><use href="#i-file"/></svg>项目资料目录</strong><span>来源：示例项目 · 版本 v3</span><span>范围：合同与技术文档，共 8 项</span></div><dl class="plan-fields"><div><dt>执行范围</dt><dd>当前项目 / 8 个文件</dd></div><div><dt>预计变更</dt><dd>归类、重命名、生成索引</dd></div><div><dt>可见性</dt><dd>不改变原有访问范围</dd></div></dl><button class="button secondary full sample-action" type="button" data-sample="查看完整固定计划">查看完整计划 <svg class="icon"><use href="#i-arrow"/></svg></button><p class="small-note">此处展示计划卡样式，不会执行任何文件操作。</p></div>
+            </section>
+            <section id="service" class="panel service-panel"><div class="panel-heading"><h2>服务观测</h2><span class="meta-label">演示</span></div><div class="service-row"><span>业务 API</span><span class="pill success">✓ 正常</span></div><div class="service-row"><span>R2 副本队列</span><span class="pill warning">◷ 待处理</span></div><div class="service-row"><span>备用探针</span><span class="pill neutral">— 未知</span></div><p class="panel-note">样例数据，未连接真实监控。</p></section>
+          </div>
+        </div>
+        <section id="components" class="component-section">
+          <div class="section-title"><span class="eyebrow">DESIGN FOUNDATIONS</span><h2>同一套品牌，清晰的工作界面。</h2><p>延续官网暖白、墨色与蓝色。以下为可检查的视觉基础与组件状态。</p></div>
+          <div class="foundation-grid">
+            <section class="panel token-panel"><div class="panel-heading"><h3>语义色板</h3><span class="meta-label">跟随主题</span></div><div class="swatches">
+              <div><span class="swatch canvas" aria-hidden="true"></span><strong>画布</strong><code>bg.canvas</code><code class="color-value" data-token-value="bg-canvas"></code></div>
+              <div><span class="swatch surface" aria-hidden="true"></span><strong>面板</strong><code>bg.surface</code><code class="color-value" data-token-value="bg-surface"></code></div>
+              <div><span class="swatch ink" aria-hidden="true"></span><strong>主操作</strong><code>action.fill</code><code class="color-value" data-token-value="action-fill"></code></div>
+              <div><span class="swatch blue" aria-hidden="true"></span><strong>强调蓝</strong><code>accent.fg</code><code class="color-value" data-token-value="accent-fg"></code></div>
+              <div><span class="swatch text" aria-hidden="true"></span><strong>主要文字</strong><code>fg.default</code><code class="color-value" data-token-value="fg-default"></code></div>
+              <div><span class="swatch muted-text" aria-hidden="true"></span><strong>次级文字</strong><code>fg.muted</code><code class="color-value" data-token-value="fg-muted"></code></div>
+              <div><span class="swatch selection" aria-hidden="true"></span><strong>选中背景</strong><code>bg.selected</code><code class="color-value" data-token-value="bg-selected"></code></div>
+              <div><span class="swatch control-edge" aria-hidden="true"></span><strong>控件边界</strong><code>border.control</code><code class="color-value" data-token-value="border-control"></code></div>
+            </div><p class="panel-note">色值读取当前主题令牌。蓝色负责强调；主要操作沿用官网黑白反差。选中背景搭配专用选中文字色。</p></section>
+            <section class="panel token-panel"><div class="panel-heading"><h3>文字与层级</h3><span class="meta-label">系统字体回退</span></div><div class="type-samples">
+              <div><span class="type-caption">品牌标题 · 桌面40 / 52，移动28 / 40</span><span class="display-sample">有序，且可追溯。</span></div>
+              <div><span class="type-caption">业务页标题 · 桌面28 / 40，窄屏24 / 34</span><span class="page-title-sample">合同与项目资料</span></div>
+              <div><span class="type-caption">工作正文 · 无衬线 14 / 22</span><span class="body-sample">项目与资料保持清楚的上下文。</span></div>
+              <div><span class="type-caption">移动与阅读 · 无衬线 16 / 26</span><span class="reading-sample">审批、签署和付款分别核对。</span></div>
+              <div><span class="type-caption">金额 · 等宽数字，明确原币</span><span class="money-sample">HKD 12,680.00</span></div>
+              <div><span class="type-caption">辅助 / 12 · 版本与时间</span><code>version_03 · 2026-10-24</code></div>
+            </div></section>
+          </div>
+          <section class="panel controls-panel"><div class="panel-heading"><h3>按钮、状态与表单反馈</h3><span class="meta-label">组件样例</span></div><div class="control-examples"><button class="button primary sample-action" type="button" data-sample="提交申请">提交申请</button><button class="button secondary sample-action" type="button" data-sample="保存草稿">保存草稿</button><button class="button danger sample-action" type="button" data-sample="删除草稿">删除草稿</button><button class="button secondary" type="button" disabled>条件未满足</button><a class="text-link" href="03-components-and-patterns.md">阅读组件规范 <span aria-hidden="true">↗</span></a></div><div class="status-examples"><span class="pill neutral">草稿</span><span class="pill info">处理中</span><span class="pill warning">待审批</span><span class="pill success">审批通过</span><span class="pill danger">复制失败</span></div><form id="sample-form" novalidate><div id="error-summary" class="error-summary" tabindex="-1" hidden><strong>有 1 个字段需要检查</strong><a href="#sample-name">请填写项目名称</a></div><div class="form-example"><div><label for="sample-name">项目名称 <span class="muted">（必填）</span></label><input id="sample-name" name="project-name" autocomplete="off" placeholder="例如：公司资料库" aria-describedby="sample-name-help"><p id="sample-name-help" class="field-help">仅演示校验和焦点，不创建项目。</p><p id="sample-name-error" class="field-error" hidden>请填写项目名称。</p></div><button class="button secondary" type="submit">检查示例表单</button></div></form></section>
+        </section>
+        <footer class="page-footer"><span>CopyPaste Design System · v1.0.0-draft</span><span>所有金额、项目与状态均为演示数据 · 未连接业务服务</span><a href="00-style-design-specification.md">风格设计总规范 ↗</a><a href="README.md">设计文档索引 ↗</a></footer>
+      </main>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="移动样板导航"><a href="#workbench" aria-current="page"><svg class="icon"><use href="#i-grid"/></svg>工作台</a><a href="#projects"><svg class="icon"><use href="#i-folder"/></svg>项目</a><a href="#approvals"><svg class="icon"><use href="#i-check"/></svg>待办</a><a href="#secretary"><svg class="icon"><use href="#i-agent"/></svg>秘书</a><a href="#components"><svg class="icon"><use href="#i-settings"/></svg>规范</a></nav>
+  <div id="sample-feedback" class="sample-feedback" role="status" aria-live="polite" hidden>交互示例不会提交业务数据。</div>
+  <script src="styleguide.js"></script>
+</body>
+</html>

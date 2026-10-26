@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-26T01:38:55.540686+00:00",
+  "browser_source_sha256": "c16c0c590b64e0ac8c0a1c935201928d98593cebe4d7a7ebb852ee3b9b4d8b42",
+  "images": [
+    {
+      "path": "mobile-project-overview-light-390.png",
+      "sha256": "e0dbea93b868d47e652e55435abe68e6e2ee9c94552f290fd00e49ba4b715b0c"
+    },
+    {
+      "path": "mobile-project-cost-dark-390.png",
+      "sha256": "581c31f302d6583ee3f3acf423a1de011b38514aa7c383245d57c692bc913be4"
+    },
+    {
+      "path": "mobile-project-reader-light-390.png",
+      "sha256": "be5efc669803c4d71c151e1d34621adb864ae58395ca9b8b65332fa3dde7b01b"
+    }
+  ],
+  "observations": [
+    "Light overview shows separate exact original/reversal/net project amounts, unconfirmed count and no approved budget.",
+    "Dark actual-cost detail retains exact large decimal amount, revision, original business date and reversal navigation without clipped hit areas.",
+    "Narrow reader overview shows financial scope unavailable and authorized task records; no hidden financial amount is visible."
+  ],
+  "scope": "Human visual review of three current 390px screenshots, supported by eighteen automated 320/390/768 layout checks; no device execution."
+}

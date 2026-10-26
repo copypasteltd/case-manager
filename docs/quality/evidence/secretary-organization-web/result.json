@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T05:11:43.050Z",
+  "finished_at": "2026-10-25T05:12:03.047Z",
+  "checks": [
+    "Web reads the real pending multi-item plan with original and target namespace metadata.",
+    "The directory picker lists real authorized metadata without manually entering object IDs.",
+    "Saving a Web plan returns a fixed proposal and no business commit receipt.",
+    "Current interactive MFA approves the immutable plan without executing it.",
+    "Web executes the existing folder business command and renders its committed receipt.",
+    "Repeating a confirmed batch preserves the original business operation and created folder.",
+    "An unexecuted multi-item plan can be explicitly revoked from the Web conversation."
+  ],
+  "source_count": 505,
+  "source_sha256": "c1533a14cc4594b60fc8f18b8d0ec3e9731c4314a4a01d94cdbdebaf19f842f7",
+  "source_after_sha256": "c1533a14cc4594b60fc8f18b8d0ec3e9731c4314a4a01d94cdbdebaf19f842f7",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

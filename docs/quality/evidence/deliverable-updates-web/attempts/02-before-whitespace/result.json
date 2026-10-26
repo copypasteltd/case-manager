@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T04:47:04.600Z",
+  "finished_at": "2026-10-26T04:47:34.012Z",
+  "checks": [
+    "Web reads an actual committed deliverable command and its unchanged human revision.",
+    "Web previews complete metadata and explicit null association without changing business state.",
+    "Web selects a real same-project milestone and includes all four reviewed fields.",
+    "Web confirmed send stores exactly the full human instruction without claiming a write.",
+    "Web retry reuses the run and cancellation preserves the original deliverable."
+  ],
+  "source_count": 594,
+  "source_sha256": "01e9f28f9cd91d61885021f9f0e70636cdb3c34920aa14c4f8d50667c1023bfc",
+  "source_after_sha256": "01e9f28f9cd91d61885021f9f0e70636cdb3c34920aa14c4f8d50667c1023bfc",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

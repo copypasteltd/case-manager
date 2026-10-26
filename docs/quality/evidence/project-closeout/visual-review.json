@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T07:44:38.800427+00:00",
+  "browser_executed_at": "2026-10-24T07:42:16.064Z",
+  "browser_source_sha256": "6fe5d4bd660b089157908105b83d234efc7b280ac11e25879f026769e8456269",
+  "review_method": "Codex visual inspection of four actual browser screenshots; no new browser launched for image review",
+  "layout_configuration_count": 60,
+  "saved_screenshot_count": 12,
+  "images": [
+    {
+      "file": "archive-review-dialog-light-1440.png",
+      "sha256": "f609cf15c1a2741710364856c77537b5e6d61e0837068ae8a4d0d67bbe67bb16",
+      "observation": "暖白画布、白色弹窗及官网蓝链接延续既有风格；长项目名在弹窗内换行，预算参考徽标为中性色，区别于系统未发现阻塞状态。"
+    },
+    {
+      "file": "archive-stale-review-dark-390.png",
+      "sha256": "f56ed1cb019a0dd81ad3777d86060e8bfbed11bde9738d54cb7e7731a34a6ec6",
+      "observation": "深色窄屏弹窗保持视口边界；版本错误、保留输入提示和明确重新核查入口分组显示，连续英文项目名换行。"
+    },
+    {
+      "file": "closeout-existing-obligations-light-1440.png",
+      "sha256": "df4a9aa3e7c7838691e9cb9d681f6200f928f93384c134c6a2596f7ac437e1e2",
+      "observation": "十三类清单有清楚层级；合同阻塞展开并逐条提供来源，预算为中性参考版本，未结事项提示不遮挡记录。"
+    },
+    {
+      "file": "archive-complete-history-dark-390.png",
+      "sha256": "7041576af4459320f36a4eeb3059731a500a388568cf3d994ba100d0505e2a04",
+      "observation": "窄屏单列展示归档后的只读状态、复盘段落、操作者当前姓名及归档时清单；长标题和正文换行，预算仍为中性参考。"
+    }
+  ],
+  "limitations": [
+    "复核限于这四张截图的可见区域；弹窗下部字段、两项核实和提交结果另由实际操作断言支持。",
+    "本轮浏览器归档为零附件，固定附件与保留引用由后端场景核验；不能替代完整嵌套选择及真实文件验收。",
+    "不替代完整辅助技术、真实微信／抖音／Android设备、120 GB上传或生产验收。"
+  ]
+}

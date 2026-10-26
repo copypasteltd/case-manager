@@ -1,0 +1,34 @@
+# Native Linux candidate only. Instances: small or large. Not installed.
+[Unit]
+Description=CopyPaste fixed historical-content restoration worker (%i)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/copypaste/restore-%i.env
+
+[Service]
+Type=simple
+User=copypaste-restore
+Group=copypaste-restore
+WorkingDirectory=/opt/copypaste/current
+EnvironmentFile=/etc/copypaste/restore-%i.env
+ExecStart=/opt/copypaste/current/bin/platform worker-restore-%i
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+LockPersonality=yes
+CacheDirectory=copypaste-restore
+ReadWritePaths=/var/cache/copypaste-restore
+
+[Install]
+WantedBy=multi-user.target

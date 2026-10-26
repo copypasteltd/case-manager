@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T04:06:58.282609+00:00",
+  "database": {
+    "mutation_append_only": true,
+    "creation_tool_constraints": 3,
+    "creation_scope_constraint": 1,
+    "creation_receipt_function": true,
+    "deferred_evidence": 2,
+    "active_profiles": 0,
+    "enabled_telegram_channels": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 66,
+  "all_eight_skills_draft": true,
+  "integrations_disabled": true,
+  "ownership": {
+    "api": true,
+    "notification_worker": true
+  },
+  "production_deployment": false,
+  "real_cloud_or_model": false,
+  "verification_script_sha256": "78e40f2c3706bc81b7accfaec9f019ed6bcc45305c1691af797aef4bd63fbd3a"
+}

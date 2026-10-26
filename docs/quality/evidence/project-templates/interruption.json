@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-25T23:08:52.841920+00:00",
+  "source_sha256": "fe2ff213312d3f6c86ecef325113f281bc60ba051fba423b6e43235916556555",
+  "completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "incomplete_batches": [
+    7,
+    8
+  ],
+  "cause": "Continuation observed original tool session missing; CIM confirmed no PostgreSQL/Go/backend test processes and native ports 14660/18080/5178 closed. No test restart based solely on timeout.",
+  "incomplete_batch_counted_as_pass": false,
+  "ignored_partial_logs": "app/.local/project-templates-interrupted/",
+  "restoration_required": true
+}

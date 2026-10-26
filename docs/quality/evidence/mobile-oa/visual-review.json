@@ -1,0 +1,90 @@
+{
+  "reviewed_at": "2026-10-24T13:10:19.309765+00:00",
+  "browser_executed_at": "2026-10-24T13:08:48.448Z",
+  "browser_source_sha256": "5c3abe9429aeb50e1cd2471d96b72ebb4b1af6acfce9f23dbaf153c0e5ae2c59",
+  "method": "Assistant opened and visually inspected each of the eight actual final PNG files; automated layout probes are separate.",
+  "images": [
+    {
+      "file": "contract-draft-light-390.png",
+      "sha256": "86442714f52c50f747969b022b820d90dc494100edd029f4a766f30aa92b302e",
+      "observation": "浅色合同草稿继承官网蓝色标识、暖白画布、细线表单、原分类和文字恢复说明；无可见重叠。"
+    },
+    {
+      "file": "contract-draft-dark-390.png",
+      "sha256": "4680691157795052303bff899301a723899ec11826c0d41d05592bdc7532efe6",
+      "observation": "深色合同草稿的画布、面板、输入、正文及提示均使用深色令牌，未残留浅色输入背景。"
+    },
+    {
+      "file": "purchase-draft-dark-390.png",
+      "sha256": "23015557ce24b7643c4b2bc92e763ee6ed333115daa58f38306c61f783e35fc0",
+      "observation": "深色采购表单以单列分段呈现，负责人双操作按钮可见，沿用官网标识与间距。"
+    },
+    {
+      "file": "claim-draft-light-390.png",
+      "sha256": "116154289fa7d3509bb82a03a41802841dd92c29b5a6632544c8ebf338fa63d8",
+      "observation": "浅色报销表单使用同一业务视觉层级，项目、分类和负责人清晰，未新增模块专属颜色。"
+    },
+    {
+      "file": "contract-preview-light-390.png",
+      "sha256": "333dfb238f12ccc2ca1b69080aa0f932b52c47bd9a4200860d9578e3b19d5da8",
+      "observation": "浅色送审区实际显示固定计划、制度、独立审批人、自审和撤回政策；核对框初始未勾选，按钮禁用。"
+    },
+    {
+      "file": "contract-preview-dark-390.png",
+      "sha256": "7704395973799a5433587aea2e943ff2437507be97ab7f8db0ab8f874c78e0c3",
+      "observation": "深色送审区显示相同固定制度及未勾选确认，文字与细线面板可辨识，按钮状态明确。"
+    },
+    {
+      "file": "claim-current-dark-390.png",
+      "sha256": "ddb6a67ad1d3264be14ff6e47ac2ea26c3f78d07cb4c594e58a392152b5d438d",
+      "observation": "报销显示中文“尚未送审”，费用合计 HKD15.700000 与其中员工垫付 HKD10.500000 分列，未混作付款。"
+    },
+    {
+      "file": "claim-history-dark-390.png",
+      "sha256": "482fcf9e049e0a909542d13bba5058e1477184220770dd9e99f764b16c633bdc",
+      "observation": "历史区实际显示四条修订，第一修订展开，明确标记“当时”内容，原用途与后续修改用途不同。"
+    }
+  ],
+  "layouts": {
+    "groups": 6,
+    "configurations": 60,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "viewports": [
+      "320x900",
+      "375x900",
+      "390x900",
+      "768x900",
+      "844x390"
+    ]
+  },
+  "fixed_during_review": [
+    "not_submitted now displays 尚未送审; final browser explicitly verifies this label",
+    "Preview and history captures now show their actual target region rather than the top of the current request"
+  ],
+  "new_blocking_findings_in_reviewed_regions": [],
+  "inherited_open_findings": [
+    {
+      "id": "MCR-VIS-01",
+      "priority": "P3",
+      "status": "open",
+      "description": "The fixed-content byte display rounds a one-byte-over-limit value; this OA increment does not close that reader issue.",
+      "release_waiver": false
+    },
+    {
+      "id": "mobile-projects-long-title",
+      "priority": "P3",
+      "status": "open",
+      "description": "Extreme English titles can place the brand dot on its own line; this OA increment does not close that shared typography issue.",
+      "release_waiver": false
+    }
+  ],
+  "limitations": [
+    "Screenshots capture only the actual visible region of Taro internal scrolling, not every field in the long form.",
+    "Full read-screen, native keyboard, safe areas, dynamic system font sizes and mini-program/Android devices were not exercised.",
+    "Fixture data is fictional, file bytes are small and controlled, and no real cloud/production/model/TG operation was performed."
+  ],
+  "passed": true
+}

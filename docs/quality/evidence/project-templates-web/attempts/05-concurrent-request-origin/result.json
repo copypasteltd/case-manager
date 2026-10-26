@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-25T22:44:13.723Z",
+  "source_sha256": "7e70cdf44ea94e963d81ad9e9e4415ba724eb3a868522b1e863cde49fd105fe0",
+  "source_file_count": 557,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": "AssertionError [ERR_ASSERTION]: PATCH /project-templates/348fc2ea-dd09-41fb-998a-eff8956e2e6a returned 403 FORBIDDEN\n    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_templates.mjs:21:452)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_templates.mjs:35:660",
+  "checks": [
+    {
+      "name": "Admin creates and publishes structured template; actual employee selects exact revision and initializes project/tasks/milestones through real API",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

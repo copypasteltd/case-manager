@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T21:09:23.757Z",
+  "source_sha256": "8d9e31176389ab81007d33e59f340d916f7ded0326650303702c94a783744ebe",
+  "source_file_count": 346,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_payments": false,
+  "checks": [
+    {
+      "name": "Web creates a scoped subscription with fixed supplier, named owner, month-end anchor, exact price and explicit human activation",
+      "passed": true
+    },
+    {
+      "name": "Human generation persists three anchored forecasts and keeps actual costs absent",
+      "passed": true
+    },
+    {
+      "name": "Web links 40 and 80 actual expenses once, retains forecast 100, and explicitly confirms overcharge 120 with fixed evidence and missing invoice",
+      "passed": true
+    },
+    {
+      "name": "Reader cannot infer a subscription containing unreadable actual expenses or obtain write controls",
+      "passed": true
+    },
+    {
+      "name": "Another session reverses a real cost without changing the period version; exact actual fingerprint rejects the old open form and preserves its input and historical cost snapshot",
+      "passed": true
+    },
+    {
+      "name": "Forecast 100 and actual incurred 120 retain separate date bases; drilldown preserves exact forecast eligibility and original-currency scope",
+      "passed": true
+    },
+    {
+      "name": "Future repricing preserves existing forecasts; internal cancellation stays separate from actual vendor stop and fixed proof",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

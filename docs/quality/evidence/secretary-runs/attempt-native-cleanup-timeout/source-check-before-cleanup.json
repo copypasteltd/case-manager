@@ -1,0 +1,42 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-24T16:09:44.704552+00:00",
+  "matches_full_backend_regression": true,
+  "backend_source_sha256": "78f6d46af1c20a45de6ce4b18f2c8bab77af5e1aea30f044e579d7a11d67e42a",
+  "matches_web_build": true,
+  "matches_mobile_build": true,
+  "browser_records": [
+    {
+      "platform": "web",
+      "passed": true,
+      "current_source_matches": true,
+      "cleanup_passed": true,
+      "checks": 4
+    },
+    {
+      "platform": "mobile",
+      "passed": true,
+      "current_source_matches": true,
+      "cleanup_passed": true,
+      "checks": 7
+    }
+  ],
+  "document_and_embedded_openapi_match": true,
+  "remaining_disposable_databases": 1,
+  "temporary_fixture_absent": true,
+  "development_web_probes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/health/ready",
+      "status": 200
+    }
+  ],
+  "original_development_services_restarted": false,
+  "production_deployment": false,
+  "actual_model_or_cloud": false,
+  "actual_mini_program_or_android_runtime": false,
+  "verification_script_sha256": "596786d9ce827a8593c6d8c5ba526799badec80cbcb41735c27ad08832a527c6"
+}

@@ -1,0 +1,1 @@
+Initial APK inspection found unused overlay and Play installation-referrer permissions. The final manifest removes both and the app excludes the optional attribution library. AAPT2 boolean/hex output parsing was corrected against the actual manifest.

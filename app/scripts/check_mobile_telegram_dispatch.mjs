@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+const screen = page => page.locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last();
+const button = (page, name) => screen(page).getByRole('button', { name, exact: true });
+
+await notificationBrowser(true, async ({ page, context, fixture, checks }) => {
+  let token;
+  page.on('request', request => { if (request.headers().authorization?.startsWith('Bearer ')) token = request.headers().authorization; });
+  await page.goto(fixture.origin);
+  await screen(page).getByRole('textbox', { name: '内部账号', exact: true }).fill(fixture.alice.login);
+  await screen(page).getByRole('textbox', { name: '密码', exact: true }).fill(fixture.alice.password);
+  await button(page, '登录工作空间 ↗').click();
+  await screen(page).locator('input[aria-label="六位验证码"]').fill(await waitOTP(fixture));
+  await button(page, '验证并继续 ↗').click();
+  await screen(page).locator('.cp-title').filter({ hasText: '工作从这里开始' }).waitFor();
+  await screen(page).locator('.cp-row-title').getByText('公司秘书', { exact: true }).click();
+  assert.ok(token);
+  const response = await context.request.get(fixture.api_origin + '/v1/conversations/' + fixture.conversation_id, { headers: { Authorization: token } });
+  assert.equal(response.status(), 200);
+  const conversation = (await response.json()).data;
+  assert.equal(conversation.type, 'telegram'); assert.equal(conversation.can_edit, false); assert.equal(conversation.can_manage_members, false);
+  await screen(page).getByText('TG渠道 · 1 位成员 · 使用中', { exact: true }).first().waitFor();
+  checks.push('A real Android-channel login lists its Telegram context with a distinct channel label and server-enforced read-only management.');
+  await page.goto(fixture.origin + '/#/pages/secretary/index?kind=conversation&id=' + fixture.conversation_id + '&run=' + fixture.completed_run_id);
+  await screen(page).getByText('TG渠道会话 · 本人请求与结果', { exact: false }).waitFor();
+  await screen(page).getByText('此会话由TG入口管理，请从指定群话题发送新的请求。', { exact: true }).waitFor();
+  assert.equal(await screen(page).getByRole('textbox', { name: '本次消息内容', exact: true }).count(), 0);
+  checks.push('The actual Taro page opens a Telegram run link and directs new requests back to the group without rendering a task input.');
+  await screen(page).getByText('已核对浏览器指定项目的真实资料。', { exact: false }).waitFor();
+  await screen(page).getByText('任务当前进展', { exact: true }).waitFor();
+  const run = await context.request.get(fixture.api_origin + '/v1/runs/' + fixture.completed_run_id, { headers: { Authorization: token } });
+  assert.equal(run.status(), 200); const actual = (await run.json()).data;
+  assert.equal(actual.conversation_id, fixture.conversation_id); assert.equal(actual.state, 'succeeded');
+  checks.push('The Taro result and task detail reference the actual completed native run; no mini-program device or store approval is claimed.');
+}, 'telegram-dispatch');

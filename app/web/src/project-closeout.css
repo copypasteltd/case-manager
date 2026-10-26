@@ -1,0 +1,27 @@
+.project-closeout, .closeout-group, .closeout-archive, .project-archive-form { min-width: 0; overflow-wrap: anywhere; }
+.closeout-context, .closeout-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-block: 16px; }
+.closeout-context { color: var(--cp-fg-muted); font-size: 13px; }
+.closeout-groups { display: grid; gap: 12px; margin-block: 20px; }
+.closeout-group, .closeout-archive { border: 1px solid var(--cp-border-subtle); border-radius: 16px; padding: 16px; background: var(--cp-bg-surface); }
+.closeout-group > summary, .closeout-archive > summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; min-height: 44px; }
+.closeout-group > summary::before, .closeout-archive > summary::before { content: '＋'; color: var(--cp-fg-muted); }
+.closeout-group[open] > summary::before, .closeout-archive[open] > summary::before { content: '−'; }
+.closeout-group summary small { color: var(--cp-fg-muted); }
+.closeout-items, .closeout-files { list-style: none; padding: 0; margin: 0; }
+.closeout-items li, .closeout-files li { display: flex; justify-content: space-between; align-items: start; gap: 16px; border-block-start: 1px solid var(--cp-border-subtle); padding-block: 12px; }
+.closeout-items li > div, .closeout-files li > div { min-width: 0; }
+.closeout-items a { display: inline-block; min-height: 32px; }
+.closeout-items small, .closeout-files small { display: block; color: var(--cp-fg-muted); }
+.closeout-history { margin-block-start: 40px; }
+.closeout-archive { margin-block: 16px; }
+.closeout-prose { white-space: pre-wrap; }
+.project-archive-form { display: grid; gap: 16px; }
+.project-archive-form .closeout-groups { margin: 0; }
+.closeout-attestation { display: flex; gap: 12px; align-items: flex-start; min-height: 44px; cursor: pointer; }
+.closeout-attestation input[type='checkbox'] { width: 24px; height: 24px; min-height: 24px; flex: 0 0 24px; }
+@media (max-width: 640px) {
+  .closeout-group, .closeout-archive { padding: 12px; }
+  .closeout-items li { display: block; }
+  .closeout-items li > .badge { margin-block-start: 8px; }
+  .closeout-group > summary, .closeout-archive > summary { gap: 8px; }
+}

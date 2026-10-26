@@ -1,0 +1,71 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-26T01:12:09.615Z",
+  "source_sha256": "bf6520b7d10414bac5f264eb5c132e3ff1f796b167a613ec381e368b06ae7b2e",
+  "source_file_count": 573,
+  "source_unchanged_during_tests": true,
+  "real_taro_h5_api": true,
+  "isolated_native_database": true,
+  "actual_cloud": false,
+  "actual_model": false,
+  "actual_device": false,
+  "transport_fault_injection": true,
+  "failure": "locator.click: Error: strict mode violation: locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-section-title').filter({ hasText: /^实际费用 · 5$/ }).locator('..').locator('.cp-row-title').getByText('Overview canonical HKD', { exact: true }) resolved to 4 elements:\n    1) <taro-text-core class=\"cp-row-title\">…</taro-text-core> aka getByRole('button', { name: 'Overview canonical HKD 已冲销 ·' })\n    2) <taro-text-core class=\"cp-row-title\">…</taro-text-core> aka getByRole('button', { name: 'Overview canonical HKD 已确认 ·' }).first()\n    3) <taro-text-core class=\"cp-row-title\">…</taro-text-core> aka getByRole('button', { name: 'Overview canonical HKD 草稿 ·' })\n    4) <taro-text-core class=\"cp-row-title\">…</taro-text-core> aka getByRole('button', { name: 'Overview canonical HKD 已确认 ·' }).nth(1)\n\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-section-title').filter({ hasText: /^实际费用 · 5$/ }).locator('..').locator('.cp-row-title').getByText('Overview canonical HKD', { exact: true })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_project_overview.mjs:78:114",
+  "checks": [
+    {
+      "name": "Actual sixteen authorized categories, complete counts beyond five previews, precise project allocations/reversals and unapproved-budget separation match native HTTP facts",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "bf6520b7d10414bac5f264eb5c132e3ff1f796b167a613ec381e368b06ae7b2e",
+  "source_sha256_after_build": "bf6520b7d10414bac5f264eb5c132e3ff1f796b167a613ec381e368b06ae7b2e",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

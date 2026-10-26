@@ -1,0 +1,3 @@
+{
+  "reason": "Review found agent drafts could occupy the human upload queue before LIMIT, producing empty pages. Added SQL filter and real limit=1 regression. Earlier backend batches and browser/Linux/runtime evidence are retained as prior source; only a fresh complete matching run will count."
+}

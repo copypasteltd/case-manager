@@ -1,0 +1,43 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "noEmit": false,
+    "rootDir": "src",
+    "outDir": "../.local/mobile-tests",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src/platform/session.ts",
+    "src/platform/session.test.ts",
+    "src/platform/native-wire.ts",
+    "src/platform/native-wire.test.ts",
+    "src/platform/upload-transfer.ts",
+    "src/platform/upload-transfer.test.ts",
+    "src/platform/drafts.ts",
+    "src/platform/drafts.test.ts",
+    "src/platform/command-keys.ts",
+    "src/platform/command-keys.test.ts",
+    "src/platform/content.ts",
+    "src/platform/content.test.ts",
+    "src/platform/business-input.ts",
+    "src/platform/business-input.test.ts",
+    "src/platform/status.test.ts",
+    "src/platform/secretary.test.ts",
+    "src/platform/project-overview.ts",
+    "src/platform/project-overview.test.ts",
+    "src/platform/project-input.ts",
+    "src/platform/project-input.test.ts",
+    "src/platform/project-resource-input.ts",
+    "src/platform/project-resource-input.test.ts"
+  ],
+  "exclude": []
+}

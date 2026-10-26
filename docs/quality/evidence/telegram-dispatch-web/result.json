@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T13:32:39.714Z",
+  "finished_at": "2026-10-25T13:33:05.193Z",
+  "checks": [
+    "The completed inbound request opens its actual Telegram conversation and receipt-backed result; portal task injection has no input.",
+    "The real conversation list filters Telegram contexts through the public contract.",
+    "A separate administrator session saves the explicit default task but cannot read the requester’s conversation.",
+    "The real automatic dispatcher converts repeated webhook delivery into one durable run; a changed channel revision gets a new context.",
+    "The original requester cancels the actual queued run in the UI, and the Telegram receipt displays the committed cancelled state.",
+    "A real group membership loss withdraws active work and records the channel revision while preserving the previously completed result.",
+    "The UI states that task completion does not mean Telegram delivery; the test invokes neither a provider nor Telegram outbound."
+  ],
+  "source_count": 547,
+  "source_sha256": "f01b1475d3ca994bd064e18709ad19ac649f1ea846fdcbccda8925e7cc631308",
+  "source_after_sha256": "f01b1475d3ca994bd064e18709ad19ac649f1ea846fdcbccda8925e7cc631308",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T14:16:06.764609+00:00",
+  "checks": [
+    {
+      "name": "Every discovered backend test passes with current source",
+      "passed": true
+    },
+    {
+      "name": "Native TG dispatch and task/configuration regression tests were executed",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured native dispatcher command exits with its expected error",
+      "passed": true
+    },
+    {
+      "name": "Linux compilation matches current source; artifact not executed or deployed",
+      "passed": true
+    },
+    {
+      "name": "Web tests and production build match current source",
+      "passed": true
+    },
+    {
+      "name": "Mobile tests and both mini-program builds match current source",
+      "passed": true
+    },
+    {
+      "name": "Runtime regression and eight draft Skill checks match current source",
+      "passed": true
+    },
+    {
+      "name": "telegram-dispatch-web browser results match current source",
+      "passed": true
+    },
+    {
+      "name": "telegram-dispatch-web browser, fixture and temporary server closed",
+      "passed": true
+    },
+    {
+      "name": "telegram-dispatch-mobile browser results match current source",
+      "passed": true
+    },
+    {
+      "name": "telegram-dispatch-mobile browser, fixture and temporary server closed",
+      "passed": true
+    },
+    {
+      "name": "Mobile fixture, H5 build and browser used identical source",
+      "passed": true
+    },
+    {
+      "name": "Owned development schema, privileges, routes and fixture cleanup",
+      "passed": true
+    },
+    {
+      "name": "Development evidence matches verification script",
+      "passed": true
+    },
+    {
+      "name": "Documented and embedded OpenAPI copies match",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Owned API and notification worker identities match recorded start time",
+      "passed": true
+    },
+    {
+      "name": "Temporary review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "645da5440b862cea45e352f7caf8b9ba388a84e7a09df12148a49fb63290e43c",
+  "scope": "TG isolated read-only agent contexts, identity-only dispatcher, atomic queue admission, channel-fenced MCP/SDK profiles, portal results and cancellation; Telegram identity proof and portal confirmation, exact group/topic allowlists, durable deduplicated inbound requests, native API and two owned Web sessions; excludes production, actual mini-program/Android devices, external delivery and full platform acceptance."
+}

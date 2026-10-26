@@ -1,0 +1,23 @@
+{
+  "status": "failed",
+  "started_at": "2026-10-25T01:01:17.206160+00:00",
+  "finished_at": "2026-10-25T01:01:35.004229+00:00",
+  "source_sha256": "da50343f1e5d2b3d7b22c7a91529efeba83e5c7dad5b7c84203afdbedf5b583e",
+  "source_after_sha256": "da50343f1e5d2b3d7b22c7a91529efeba83e5c7dad5b7c84203afdbedf5b583e",
+  "source_files": 50,
+  "commands": [
+    {
+      "name": "test",
+      "exit_code": 1,
+      "elapsed_seconds": 17.768
+    }
+  ],
+  "tests": {
+    "tests": 23,
+    "pass": 22,
+    "fail": 1,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "execution_mode": "Controlled SDK clients and loopback HTTP only; no real provider invocation or production activation."
+}

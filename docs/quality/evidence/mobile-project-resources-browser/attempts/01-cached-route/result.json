@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T07:38:55.390Z",
+  "source_sha256": "79861328c84ff2fb09931028886cea426acc75962f3e811d8b27df11abc7a895",
+  "source_after_sha256": "79861328c84ff2fb09931028886cea426acc75962f3e811d8b27df11abc7a895",
+  "source_unchanged": true,
+  "source_count": 592,
+  "checks": [
+    "Actual milestone creation rejects invalid dates without a request; exact Hong Kong time, owner, microseconds, missed state and versioned editing persist.",
+    "Milestone achievement refuses missing evidence without mutation, succeeds after an original completed associated task and supports exact reopen/cancel commands."
+  ],
+  "layouts": [
+    {
+      "page": "milestone-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "milestone-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "milestone-creation",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: '新建风险', exact: true })\u001b[22m\n\n    at createForm (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_project_resources.mjs:63:42)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_resources.mjs:110:3",
+  "owned_browser_closed": true,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "79861328c84ff2fb09931028886cea426acc75962f3e811d8b27df11abc7a895",
+  "source_sha256_after_build": "79861328c84ff2fb09931028886cea426acc75962f3e811d8b27df11abc7a895",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

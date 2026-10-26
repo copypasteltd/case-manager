@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T00:44:22.210968+00:00",
+  "backend_source_sha256": "d60a7d146c8ac1fcdf36ca8523ddc661542ad46f56f3b6d3bc66fc3df321c822",
+  "checks": [
+    {
+      "name": "All 142 discovered backend tests and 872 results pass on current source without skips",
+      "passed": true
+    },
+    {
+      "name": "All eight native backend batches bind the same unchanged source",
+      "passed": true
+    },
+    {
+      "name": "New overview and real controlled-budget lifecycle tests ran in the full regression",
+      "passed": true
+    },
+    {
+      "name": "Current Linux artifact is source-bound and has never been executed or deployed",
+      "passed": true
+    },
+    {
+      "name": "Current Web passes 75 tests, type checking and the production build",
+      "passed": true
+    },
+    {
+      "name": "Four actual Web/API overview, navigation, permission and read-only chains match current source",
+      "passed": true
+    },
+    {
+      "name": "Both full and narrow reader overviews pass all six 320/390/1440 layouts",
+      "passed": true
+    },
+    {
+      "name": "Owned browser, contexts, tabs, Vite and isolated database were released",
+      "passed": true
+    },
+    {
+      "name": "Current light desktop and dark narrow screenshots were visually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Updated shared types pass 79 mobile tests, typecheck and both mini-program builds",
+      "passed": true
+    },
+    {
+      "name": "Unchanged controlled runtime retains its source-bound 34-test evidence",
+      "passed": true
+    },
+    {
+      "name": "Increment66 frozen Android upload APK remains intact; no new device/build claim",
+      "passed": true
+    },
+    {
+      "name": "All 64 owned migration hashes match current source; no test database remains",
+      "passed": true
+    },
+    {
+      "name": "Owned daily API loads the overview route and requires authentication",
+      "passed": true
+    },
+    {
+      "name": "Only the verified owned development API was updated to the current source",
+      "passed": true
+    },
+    {
+      "name": "Cloud, model and Telegram integrations remain disabled",
+      "passed": true
+    },
+    {
+      "name": "Current API and original notification worker creation times match their owner records",
+      "passed": true
+    },
+    {
+      "name": "Documented/embedded OpenAPI agree on the new route and exact contract inventory",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed and temporary port5189 released",
+      "passed": true
+    },
+    {
+      "name": "Owned daily development is ready: http://127.0.0.1:18080/health/ready",
+      "passed": true
+    },
+    {
+      "name": "Owned daily development is ready: http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "Owned daily development is ready: http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "Dependency lock is unchanged; the unresolved production security gate remains open",
+      "passed": true
+    }
+  ],
+  "verification_script_sha256": "32bfeaf6b0eea0506f1a2a6a3658078918cadb2f29c5980a03adcfd295c37d6b",
+  "full_goal_complete": false,
+  "production_deployed": false,
+  "real_cloud_verified": false,
+  "real_model_verified": false,
+  "real_device_verified": false,
+  "reused_evidence": {
+    "runtime": "increment65 unchanged",
+    "android": "increment66 frozen APK"
+  },
+  "scope": "Read-authorized Web project aggregation and exact financial relationships; cross-platform parity, complete company journeys and the production first release remain open."
+}

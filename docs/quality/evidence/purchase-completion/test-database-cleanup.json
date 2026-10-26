@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T02:38:51.853651+00:00",
+  "scope": "Exact two owned native 0042 disposable fixture databases; no application database",
+  "application_database_selected": false,
+  "checks": [
+    {
+      "database": "cp_test_4b119cc30eb14919a8fec3bb7e794151",
+      "before": {
+        "owner": "postgres",
+        "template": false,
+        "connections": 0
+      },
+      "cancelled_fixture_cleanup_found": true,
+      "forced_disconnect": false,
+      "removed": true,
+      "passed": true
+    },
+    {
+      "database": "cp_test_3ca630e6f0164b548368685d068f13d8",
+      "before": {
+        "owner": "postgres",
+        "template": false,
+        "connections": 0
+      },
+      "cancelled_fixture_cleanup_found": true,
+      "forced_disconnect": false,
+      "removed": true,
+      "passed": true
+    }
+  ]
+}

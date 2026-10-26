@@ -1,0 +1,45 @@
+{
+  "skill_id": "project-update",
+  "version": "1.4.0",
+  "state": "draft",
+  "owner_role": "business_admin",
+  "runtime_compatibility": "codex-sdk@0.164.0",
+  "authorization_level": "L1",
+  "allowed_tools": [
+    "read_resource",
+    "update_project",
+    "update_task",
+    "transition_task",
+    "inspect_operation",
+    "transition_project",
+    "update_milestone",
+    "transition_milestone",
+    "create_milestone",
+    "update_deliverable",
+    "create_deliverable"
+  ],
+  "completion_tools": [
+    "update_project",
+    "update_task",
+    "transition_task",
+    "transition_project",
+    "update_milestone",
+    "transition_milestone",
+    "create_milestone",
+    "update_deliverable",
+    "create_deliverable"
+  ],
+  "input_schema_ref": "input.schema.json",
+  "output_schema_ref": "output.schema.json",
+  "instructions_ref": "project-update/SKILL.md",
+  "reference_docs": [
+    "execution-boundaries.md"
+  ],
+  "max_tool_calls": 20,
+  "timeout_seconds": 900,
+  "test_case_refs": [
+    "TC-AI-01",
+    "TC-AI-02",
+    "TC-AI-03"
+  ]
+}

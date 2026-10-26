@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-10-24T20:21:42.587376+00:00",
+  "passed": false,
+  "source_sha256": "c6469c1659a89a71d83d12f89f53f43a5e5aebafb1b1e6e279d7aa2393c88486",
+  "failed_test": "TestAgentBusinessReadBoundaries",
+  "business_subtests_passed": 5,
+  "stage": "DROP DATABASE cleanup at server_integration_test.go:84, not initial/admin connection",
+  "finding": "Native PostgreSQL immediate checkpoint completed in 56.438 seconds during the fixture DROP; cleanup had a 45 second context. Raise only fixture cleanup budget to 2 minutes. Preserve SQL assertions, durability and database isolation. No fsync or production settings changed.",
+  "checkpoint_observations": [
+    {
+      "at": "2026-10-25 04:06:45.620",
+      "sync_seconds": 45.627,
+      "total_seconds": 46.235
+    },
+    {
+      "at": "2026-10-25 04:20:17.708",
+      "sync_seconds": 54.176,
+      "total_seconds": 56.438
+    }
+  ],
+  "raw_test_log_archived": false
+}

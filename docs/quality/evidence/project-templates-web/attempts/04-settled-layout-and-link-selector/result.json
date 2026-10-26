@@ -1,0 +1,41 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-25T22:42:37.068Z",
+  "source_sha256": "64c48448eec8a22dc195b9c9f3dfb7b145b92258359eea9196d37ceae3f70f4c",
+  "source_file_count": 557,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": "locator.click: Error: strict mode violation: getByRole('link', { name: /Synthetic exact template project/ }) resolved to 2 elements:\n    1) <a class=\"row-link\" data-discover=\"true\" href=\"/projects/8d0f84ad-4837-4e2c-ac8e-6ea5222e224c\">…</a> aka getByRole('link', { name: 'Synthetic exact template project PRJ-' })\n    2) <a class=\"icon-button\" data-discover=\"true\" aria-label=\"查看项目 Synthetic exact template project\" href=\"/projects/8d0f84ad-4837-4e2c-ac8e-6ea5222e224c\">…</a> aka getByRole('link', { name: '查看项目 Synthetic exact template' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: /Synthetic exact template project/ })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_project_templates.mjs:33:701",
+  "checks": [],
+  "layouts": [
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

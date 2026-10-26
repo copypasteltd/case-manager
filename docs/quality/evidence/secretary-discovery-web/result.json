@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "started_at": "2026-10-24T21:14:12.420Z",
+  "finished_at": "2026-10-24T21:14:33.011Z",
+  "source_sha256": "6757e36df1338d54c10b32dbda32437c235c51c64ee2c586b52c64cca1f17493",
+  "source_after_sha256": "6757e36df1338d54c10b32dbda32437c235c51c64ee2c586b52c64cca1f17493",
+  "source_files": [
+    "backend/internal/agent/plan_discovery.go",
+    "backend/internal/agent/plan_tools.go",
+    "backend/internal/agent/execution_tools.go",
+    "backend/internal/agent/runs.go",
+    "backend/internal/agentworker/mcp.go",
+    "backend/internal/httpapi/agent_project_tools_integration_test.go",
+    "web/src/ConversationPlans.tsx",
+    "web/src/ConversationMessages.tsx",
+    "packages/contracts/src/api.d.ts",
+    "scripts/check_agent_plan_discovery.mjs",
+    "scripts/run_agent_browser.py"
+  ],
+  "checks": [
+    {
+      "name": "Web exposes the exact existing plan ID and immutable hash in its current card",
+      "passed": true
+    },
+    {
+      "name": "Explicit plan selection chooses project-create and excludes incompatible skills",
+      "passed": true
+    },
+    {
+      "name": "Removing a selected plan restores task choices without sending a request",
+      "passed": true
+    },
+    {
+      "name": "A real RunCreate persists the exact selected intent and server-verified source hash",
+      "passed": true
+    },
+    {
+      "name": "Cancellation feedback agrees with the actual server state",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_contexts_closed": true,
+  "owned_browser_closed": true,
+  "scope": "Real Web/native isolated API and controlled MCP fixture; no actual SDK model, cloud or production activation.",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

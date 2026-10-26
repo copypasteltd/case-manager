@@ -1,0 +1,16 @@
+{
+  "source_sha256": "56cb21cc41d0ef1d38dc86e940124df6833c060400224b3af9d60288bb7e3587",
+  "failed_batch": 6,
+  "failed_package": "copypaste.hk/platform/internal/contract.test",
+  "failure": "fatal error: runtime: cannot allocate memory",
+  "failed_test_cases": [],
+  "all_eight_selected_top_level_tests_passed": true,
+  "raw_output_sha256": "a5fdef5df72f1250746c4f3aad8e64ad44cee8c79feff0b88bf29af995b2019d",
+  "raw_output": "Ignored app/.local/backend-batch-6-memory-failure.log",
+  "retry_environment": {
+    "GOFLAGS": "-p=1",
+    "GOMAXPROCS": "2"
+  },
+  "original_browsers_and_services_not_modified": true,
+  "recorded_at": "2026-10-24T17:39:59.123459+00:00"
+}

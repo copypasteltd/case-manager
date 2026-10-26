@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T05:15:28.949Z",
+  "finished_at": "2026-10-25T05:16:02.358Z",
+  "checks": [
+    "Taro H5 opens the real private conversation and its pending organization plan.",
+    "Mobile review shows both original and target locations, names, classifications and versions.",
+    "Recent interactive MFA approves the plan without a namespace write.",
+    "Mobile commits the atomic rename-and-file-move batch and renders two genuine business receipts.",
+    "A fresh mobile read preserves the completed batch and each original operation receipt."
+  ],
+  "source_count": 478,
+  "source_sha256": "e76d3a7f07fa01d66d5aa800d647bd01a301308e00547c2b4e721b974b9ca7e4",
+  "source_after_sha256": "e76d3a7f07fa01d66d5aa800d647bd01a301308e00547c2b4e721b974b9ca7e4",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "e76d3a7f07fa01d66d5aa800d647bd01a301308e00547c2b4e721b974b9ca7e4",
+  "source_sha256_after_build": "e76d3a7f07fa01d66d5aa800d647bd01a301308e00547c2b4e721b974b9ca7e4",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

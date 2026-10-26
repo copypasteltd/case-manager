@@ -1,0 +1,2603 @@
+{
+  "reviewed_at": "2026-10-24T13:34:40.519Z",
+  "artifact": "docs/design/styleguide.html",
+  "environment": "Windows native Edge headless / file URL / synthetic data",
+  "pages": [
+    {
+      "name": "styleguide-light",
+      "viewport": 1440,
+      "document_width": 1440,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-dark",
+      "viewport": 1440,
+      "document_width": 1440,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "dark",
+      "canvas": "rgb(15, 19, 26)",
+      "primary_background": "rgb(232, 237, 248)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为浅色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#0F131A",
+          "swatch_background": "rgb(15, 19, 26)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#171D29",
+          "swatch_background": "rgb(23, 29, 41)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#79A2FF",
+          "swatch_background": "rgb(121, 162, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#A0ACC2",
+          "swatch_background": "rgb(160, 172, 194)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#1C2C4F",
+          "swatch_background": "rgb(28, 44, 79)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#687A96",
+          "swatch_background": "rgb(104, 122, 150)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-compact",
+      "viewport": 1024,
+      "document_width": 1024,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-tablet",
+      "viewport": 768,
+      "document_width": 768,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-mobile",
+      "viewport": 390,
+      "document_width": 390,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 28,
+          "line_height": "36.4px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 16,
+          "line_height": "26px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 48
+        },
+        {
+          "name": "打开秘书",
+          "height": 48
+        },
+        {
+          "name": "新建项目",
+          "height": 48
+        },
+        {
+          "name": "检查示例表单",
+          "height": 48
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "24px",
+          "line_height": "34px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-mobile-dark",
+      "viewport": 390,
+      "document_width": 390,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 28,
+          "line_height": "36.4px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 16,
+          "line_height": "26px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "dark",
+      "canvas": "rgb(15, 19, 26)",
+      "primary_background": "rgb(232, 237, 248)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为浅色主题",
+          "height": 48
+        },
+        {
+          "name": "打开秘书",
+          "height": 48
+        },
+        {
+          "name": "新建项目",
+          "height": 48
+        },
+        {
+          "name": "检查示例表单",
+          "height": 48
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#0F131A",
+          "swatch_background": "rgb(15, 19, 26)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#171D29",
+          "swatch_background": "rgb(23, 29, 41)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#79A2FF",
+          "swatch_background": "rgb(121, 162, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#A0ACC2",
+          "swatch_background": "rgb(160, 172, 194)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#1C2C4F",
+          "swatch_background": "rgb(28, 44, 79)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#687A96",
+          "swatch_background": "rgb(104, 122, 150)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "24px",
+          "line_height": "34px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-small",
+      "viewport": 320,
+      "document_width": 320,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 28,
+          "line_height": "36.4px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 16,
+          "line_height": "26px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 48
+        },
+        {
+          "name": "打开秘书",
+          "height": 48
+        },
+        {
+          "name": "新建项目",
+          "height": 48
+        },
+        {
+          "name": "检查示例表单",
+          "height": 48
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "24px",
+          "line_height": "34px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "name": "styleguide-light: layout and assets",
+      "passed": true,
+      "viewport": 1440,
+      "document_width": 1440,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-light: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-light: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-light: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 40,
+        "line_height": "52px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "sample action stays local",
+      "passed": true
+    },
+    {
+      "name": "empty form focus and field error",
+      "passed": true
+    },
+    {
+      "name": "summary links to input",
+      "passed": true
+    },
+    {
+      "name": "valid form stays local and clears error",
+      "passed": true
+    },
+    {
+      "name": "navigation has current location",
+      "passed": true
+    },
+    {
+      "name": "keyboard focus visible",
+      "passed": true
+    },
+    {
+      "name": "styleguide-dark: layout and assets",
+      "passed": true,
+      "viewport": 1440,
+      "document_width": 1440,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "dark",
+      "canvas": "rgb(15, 19, 26)",
+      "primary_background": "rgb(232, 237, 248)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为浅色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#0F131A",
+          "swatch_background": "rgb(15, 19, 26)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#171D29",
+          "swatch_background": "rgb(23, 29, 41)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#79A2FF",
+          "swatch_background": "rgb(121, 162, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#A0ACC2",
+          "swatch_background": "rgb(160, 172, 194)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#1C2C4F",
+          "swatch_background": "rgb(28, 44, 79)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#687A96",
+          "swatch_background": "rgb(104, 122, 150)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-dark: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-dark: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-dark: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 40,
+        "line_height": "52px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "styleguide-compact: layout and assets",
+      "passed": true,
+      "viewport": 1024,
+      "document_width": 1024,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-compact: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-compact: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-compact: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 40,
+        "line_height": "52px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "styleguide-tablet: layout and assets",
+      "passed": true,
+      "viewport": 768,
+      "document_width": 768,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 40,
+          "line_height": "52px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 44
+        },
+        {
+          "name": "打开秘书",
+          "height": 44
+        },
+        {
+          "name": "新建项目",
+          "height": 44
+        },
+        {
+          "name": "检查示例表单",
+          "height": 44
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "40px",
+          "line_height": "52px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-tablet: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-tablet: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-tablet: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 40,
+        "line_height": "52px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "styleguide-mobile: layout and assets",
+      "passed": true,
+      "viewport": 390,
+      "document_width": 390,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 28,
+          "line_height": "36.4px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 16,
+          "line_height": "26px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 48
+        },
+        {
+          "name": "打开秘书",
+          "height": 48
+        },
+        {
+          "name": "新建项目",
+          "height": 48
+        },
+        {
+          "name": "检查示例表单",
+          "height": 48
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "24px",
+          "line_height": "34px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-mobile: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-mobile: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-mobile: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 28,
+        "line_height": "36.4px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 16,
+        "line_height": "26px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "styleguide-mobile: mobile core targets",
+      "passed": true
+    },
+    {
+      "name": "styleguide-mobile-dark: layout and assets",
+      "passed": true,
+      "viewport": 390,
+      "document_width": 390,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 28,
+          "line_height": "36.4px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 16,
+          "line_height": "26px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "dark",
+      "canvas": "rgb(15, 19, 26)",
+      "primary_background": "rgb(232, 237, 248)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为浅色主题",
+          "height": 48
+        },
+        {
+          "name": "打开秘书",
+          "height": 48
+        },
+        {
+          "name": "新建项目",
+          "height": 48
+        },
+        {
+          "name": "检查示例表单",
+          "height": 48
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#0F131A",
+          "swatch_background": "rgb(15, 19, 26)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#171D29",
+          "swatch_background": "rgb(23, 29, 41)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#79A2FF",
+          "swatch_background": "rgb(121, 162, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#E8EDF8",
+          "swatch_background": "rgb(232, 237, 248)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#A0ACC2",
+          "swatch_background": "rgb(160, 172, 194)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#1C2C4F",
+          "swatch_background": "rgb(28, 44, 79)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#687A96",
+          "swatch_background": "rgb(104, 122, 150)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "24px",
+          "line_height": "34px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-mobile-dark: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-mobile-dark: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-mobile-dark: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 28,
+        "line_height": "36.4px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 16,
+        "line_height": "26px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "styleguide-mobile-dark: mobile core targets",
+      "passed": true
+    },
+    {
+      "name": "styleguide-small: layout and assets",
+      "passed": true,
+      "viewport": 320,
+      "document_width": 320,
+      "overflow": [],
+      "typography": {
+        "body": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        "h1": {
+          "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "size": 28,
+          "line_height": "36.4px"
+        },
+        ".task-content h3": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 16,
+          "line_height": "26px"
+        },
+        ".task-value strong": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        },
+        ".button.primary": {
+          "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+          "size": 14,
+          "line_height": "22px"
+        }
+      },
+      "theme": "light",
+      "canvas": "rgb(246, 246, 244)",
+      "primary_background": "rgb(21, 23, 26)",
+      "missing_images": [],
+      "unnamed_controls": [],
+      "mobile_target_heights": [
+        {
+          "name": "切换为深色主题",
+          "height": 48
+        },
+        {
+          "name": "打开秘书",
+          "height": 48
+        },
+        {
+          "name": "新建项目",
+          "height": 48
+        },
+        {
+          "name": "检查示例表单",
+          "height": 48
+        },
+        {
+          "name": "工作台",
+          "height": 48
+        },
+        {
+          "name": "项目",
+          "height": 48
+        },
+        {
+          "name": "待办",
+          "height": 48
+        },
+        {
+          "name": "秘书",
+          "height": 48
+        },
+        {
+          "name": "规范",
+          "height": 48
+        }
+      ],
+      "reduced_motion": "0s",
+      "palette": [
+        {
+          "token": "bg-canvas",
+          "displayed_value": "#F6F6F4",
+          "swatch_background": "rgb(246, 246, 244)"
+        },
+        {
+          "token": "bg-surface",
+          "displayed_value": "#FFFFFF",
+          "swatch_background": "rgb(255, 255, 255)"
+        },
+        {
+          "token": "action-fill",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "accent-fg",
+          "displayed_value": "#1F5EFF",
+          "swatch_background": "rgb(31, 94, 255)"
+        },
+        {
+          "token": "fg-default",
+          "displayed_value": "#15171A",
+          "swatch_background": "rgb(21, 23, 26)"
+        },
+        {
+          "token": "fg-muted",
+          "displayed_value": "#5D636D",
+          "swatch_background": "rgb(93, 99, 109)"
+        },
+        {
+          "token": "bg-selected",
+          "displayed_value": "#EBF0FF",
+          "swatch_background": "rgb(235, 240, 255)"
+        },
+        {
+          "token": "border-control",
+          "displayed_value": "#7D8593",
+          "swatch_background": "rgb(125, 133, 147)"
+        }
+      ],
+      "type_samples": [
+        {
+          "sample": "display-sample",
+          "font_size": "28px",
+          "line_height": "40px",
+          "font_family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif"
+        },
+        {
+          "sample": "page-title-sample",
+          "font_size": "24px",
+          "line_height": "34px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "body-sample",
+          "font_size": "14px",
+          "line_height": "22px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "reading-sample",
+          "font_size": "16px",
+          "line_height": "26px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "sample": "money-sample",
+          "font_size": "24px",
+          "line_height": "32px",
+          "font_family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "platform_fonts": {
+        "h1": [
+          {
+            "familyName": "Noto Serif SC",
+            "postScriptName": "Noto-Serif-SC-SemiBold",
+            "isCustomFont": false,
+            "glyphCount": 3
+          }
+        ],
+        ".task-content h3": [
+          {
+            "familyName": "Noto Sans SC",
+            "postScriptName": "Noto-Sans-SC-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "styleguide-small: theme",
+      "passed": true
+    },
+    {
+      "name": "styleguide-small: reduced motion",
+      "passed": true
+    },
+    {
+      "name": "styleguide-small: work text typography",
+      "passed": true,
+      "body": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      "h1": {
+        "family": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+        "size": 28,
+        "line_height": "36.4px"
+      },
+      ".task-content h3": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 16,
+        "line_height": "26px"
+      },
+      ".task-value strong": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      },
+      ".button.primary": {
+        "family": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+        "size": 14,
+        "line_height": "22px"
+      }
+    },
+    {
+      "name": "styleguide-small: mobile core targets",
+      "passed": true
+    },
+    {
+      "name": "styleguide sources unchanged during review",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "console_errors": [],
+  "sources_unchanged": true,
+  "cleanup": {
+    "contexts_closed": true,
+    "browser_closed": true
+  },
+  "sources": [
+    {
+      "file": "styleguide.html",
+      "sha256": "d69f91ffb097069a09ad52027b6b41bd207eb124066000af0a01ecf6848cee78"
+    },
+    {
+      "file": "styleguide.css",
+      "sha256": "59f60f6ece98999b6598c49da3cdc15c857c44534c60ab6984149ebe31f7e4bd"
+    },
+    {
+      "file": "styleguide.js",
+      "sha256": "a4199920124bd71de370b1efe99e4e9626e5b68ba760c9ce112a87d316fb9026"
+    },
+    {
+      "file": "tokens.json",
+      "sha256": "ddd5aa7093e82dccfbe4b5c2b2f01d7dcd32a82f8a2eb6c74ad49336289809ce"
+    },
+    {
+      "file": "tokens.css",
+      "sha256": "03aee7ea9fda64465f117298a8fb80954c3499a3dfdf1b9c010dc4087ccb4933"
+    },
+    {
+      "file": "assets/official-logo-light.png",
+      "sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7"
+    },
+    {
+      "file": "assets/official-logo-dark.png",
+      "sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1"
+    },
+    {
+      "file": "review_styleguide.cjs",
+      "sha256": "2633e5736a420feaf75447dece4f7b7e9d6a47c066e4ab80a8c9473bda2fa259"
+    }
+  ],
+  "source_sha256": "66af81286658c7755dc6611f8c537576e7c222ab698fdb56bbb5c9dd4a448eef"
+}

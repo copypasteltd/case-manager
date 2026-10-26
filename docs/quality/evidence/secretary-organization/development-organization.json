@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T05:36:49.946283+00:00",
+  "database": {
+    "plan_privileges": true,
+    "immutable_evidence_privileges": true,
+    "organization_guards": 7,
+    "plan_index": true,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 54,
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/directories/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/organization-plans",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/organization-plans",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/organization-plans/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/organization-plans/00000000-0000-4000-8000-000000000000/approve",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/organization-plans/00000000-0000-4000-8000-000000000000/revoke",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/organization-plans/00000000-0000-4000-8000-000000000000/commit",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "real_model_and_cloud_disabled": true,
+  "production_deployed": false,
+  "external_messages_sent": false,
+  "verification_script_sha256": "26e4b3bc92000e0cb5c08ff6fe39cb4417e11542987396ebcf86649eec20f37a"
+}

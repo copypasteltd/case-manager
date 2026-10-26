@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-25T23:37:03.349Z",
+  "source_sha256": "4d4645188c5e2578c5db99e1c6224d8d38cd49e578a6759b35833b0c821d1b72",
+  "source_file_count": 562,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": null,
+  "checks": [
+    {
+      "name": "Real 35-task project spans two server pages; six board states and loaded-only counts match current API facts",
+      "passed": true
+    },
+    {
+      "name": "Server title/state filtering persists across views; Hong Kong schedule shows ranges, single dates and undated work; actual dependency blocks start until predecessor completes",
+      "passed": true
+    },
+    {
+      "name": "Actual viewer can read board and task facts without write controls; membership revocation invalidates credentials and removes cached task views on refetch",
+      "passed": true
+    },
+    {
+      "name": "Cancelled project retains real timeline facts while both UI and existing API keep tasks read-only",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "project-board",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "project-board",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "project-board",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "name": "project-timeline",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "project-timeline",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "project-timeline",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

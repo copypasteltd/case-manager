@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T00:51:52.423Z",
+  "source_sha256": "70d1d16506c000e74b746dad802431ac95a6f54ec89c150e93bba2998858971d",
+  "source_file_count": 395,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_orders": false,
+  "checks": [
+    {
+      "name": "Web creates a full proposal from the fixed current basis and independently submits/reviews both complete scopes without activating it",
+      "passed": true
+    },
+    {
+      "name": "Explicit human MFA activation enables the reviewed cap and Web order uses its fixed new price while old orders and original approval remain intact",
+      "passed": true
+    },
+    {
+      "name": "An external order changes an open activation form basis; stale activation is rejected, preserves the human reason and disables resubmission",
+      "passed": true
+    },
+    {
+      "name": "A limited reader can review current fixed business evidence with no update activation or commercial-history controls",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

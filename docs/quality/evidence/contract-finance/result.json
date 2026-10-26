@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T22:21:16.756Z",
+  "source_sha256": "5e425f21d3818bd806b8e1ac0269a58f9b558d9fcbcbcbc29198f9d9ab01e6d5",
+  "source_file_count": 355,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_payments": false,
+  "checks": [
+    {
+      "name": "Web fixes real confirmed cost 30 and cash 50 separately against approved milestone 60 without revising contract terms",
+      "passed": true
+    },
+    {
+      "name": "Actual unclassified refund stales an old review without changing finance version; explicit Web attribution changes net cash to 40",
+      "passed": true
+    },
+    {
+      "name": "Web partial release retains ledger history, reveals unclassified refund and records conditions separately from financial review",
+      "passed": true
+    },
+    {
+      "name": "Old open review is rejected on actual refund reversal, preserves disabled input, and historical fixed source facts remain readable",
+      "passed": true
+    },
+    {
+      "name": "Receivable Web handles income 100 and return 25; reserved cash blocks duplicate expense settlement and original reversal; scoped cash report and actual reversal remain consistent",
+      "passed": true
+    },
+    {
+      "name": "Contract reader sees unknown financial facts with no write/history controls and cannot obtain source fingerprints or event history",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

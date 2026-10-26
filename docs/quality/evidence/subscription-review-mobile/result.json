@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T02:36:45.393Z",
+  "finished_at": "2026-10-26T02:37:11.906Z",
+  "checks": [
+    {
+      "name": "Taro opens genuine completed review evidence under current mobile authorization",
+      "passed": true
+    },
+    {
+      "name": "Mobile finance detail retains exact forecast, incurred cost, allocations, outstanding balance and original record scope",
+      "passed": true
+    },
+    {
+      "name": "Taro traverses all source chunks, returns to the first chunk and closes all readers",
+      "passed": true,
+      "pages": 5
+    }
+  ],
+  "source_count": 578,
+  "source_sha256": "de5632525d40d50dd2a3762748397a23f42b96fc0e4a1508f01cf5a444331185",
+  "source_after_sha256": "de5632525d40d50dd2a3762748397a23f42b96fc0e4a1508f01cf5a444331185",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "de5632525d40d50dd2a3762748397a23f42b96fc0e4a1508f01cf5a444331185",
+  "source_sha256_after_build": "de5632525d40d50dd2a3762748397a23f42b96fc0e4a1508f01cf5a444331185",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

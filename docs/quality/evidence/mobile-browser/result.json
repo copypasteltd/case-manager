@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-10-23T11:37:36.984Z",
+  "completed_at": "2026-10-23T11:38:05.474Z",
+  "source_sha256": "212c404b8c62a7df1c8ee0ad30236932023a8bf75ab71b4b92b0b8a7843b8cf6",
+  "source_files": 244,
+  "source_unchanged_during_run": true,
+  "checks": [
+    {
+      "name": "Real mobile-channel login and MFA; no credentials in local storage",
+      "passed": true
+    },
+    {
+      "name": "Real project list and scoped detail",
+      "passed": true
+    },
+    {
+      "name": "API-seeded task changed through real versioned mobile form; both themes at 320/390/768 and touch targets",
+      "passed": true
+    },
+    {
+      "name": "Real controlled-provider file versions, scan and replica facts; two themes and three widths",
+      "passed": true
+    },
+    {
+      "name": "Complete fixed contract facts and exact version metadata navigation; returning preserves review input without substituting current content",
+      "passed": true
+    },
+    {
+      "name": "Task and approval input survive real page hide/show only in memory, without automatic submission; committed task input is cleared",
+      "passed": true
+    },
+    {
+      "name": "API-prepared fixed request reviewed through mobile UI; independent approval, two-device conflict preserves reason and stops resubmission",
+      "passed": true
+    },
+    {
+      "name": "Full review-page reload discards memory credentials and old business content",
+      "passed": true
+    }
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "network_failures": [],
+  "all_browser_contexts_closed": true,
+  "environment": "Native Edge, Taro H5 local review build and disposable native PostgreSQL",
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "actual_cloud_invoked": false,
+  "scope": "Real API and Taro common UI; H5 is only a local review target, not platform acceptance",
+  "passed": true,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true
+}

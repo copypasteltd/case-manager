@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T02:59:12.925Z",
+  "finished_at": "2026-10-25T02:59:32.186Z",
+  "checks": [
+    "Real business events produce only the signed-in employee’s current notification and navigation badge.",
+    "Guessing another employee’s notification returns no title or target.",
+    "The displayed sequence is acknowledged, while the actual task remains todo and still needs action.",
+    "Unread, outstanding-duty and category filters use real server pages and preserve read-versus-done semantics.",
+    "Authorized operators see sanitized actual dead-letter metadata without business payloads.",
+    "Opening a notification rechecks its current permission and opens the exact project task dialog."
+  ],
+  "source_count": 490,
+  "source_sha256": "720f81a08127a5a9cd30e4a194fe2ca2df2534e24beea576e7c62527ba3e4070",
+  "source_after_sha256": "720f81a08127a5a9cd30e4a194fe2ca2df2534e24beea576e7c62527ba3e4070",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T03:02:51.544923+00:00",
+  "database": {
+    "append_only_delivery_tables": true,
+    "head_privileges": true,
+    "notification_guards": 10,
+    "deferred_notification_guards": 3,
+    "operator_role_bindings": 0,
+    "actual_in_app_deliveries": 1,
+    "actual_successful_delivery_jobs": 5,
+    "invalid_job_results": 0,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 52,
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/v1/notifications",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/notifications/00000000-0000-4000-8000-000000000000/read",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notification-delivery-failures",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "contract_reminders_explicitly_unconfigured": true,
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "real_model_and_cloud_disabled": true,
+  "environment": "owned native Windows Go/PostgreSQL with actual in-app worker receipts; no virtualization",
+  "production_deployed": false,
+  "actual_model_or_cloud_invoked": false,
+  "verification_script_sha256": "0ae962e71160e328aa8e5e854d78d0d4b0f730a72adc2a37d3c9e47c1a59a5e1"
+}

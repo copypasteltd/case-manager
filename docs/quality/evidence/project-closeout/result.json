@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T07:42:16.064Z",
+  "source_sha256": "6fe5d4bd660b089157908105b83d234efc7b280ac11e25879f026769e8456269",
+  "source_file_count": 429,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "archive_file_pin_verified_by_backend_only": true,
+  "production_deliveries": false,
+  "checks": [
+    {
+      "name": "existing contract and financial obligations are checked without being changed",
+      "passed": true
+    },
+    {
+      "name": "an unfinished task blocks closing; explicit disposition allows a separate closing step",
+      "passed": true
+    },
+    {
+      "name": "server field validation keeps the retrospective and its error link focuses the exact labeled input",
+      "passed": true
+    },
+    {
+      "name": "stale project versions cannot archive; an explicit refresh retains input and resets declarations before a real commit",
+      "passed": true
+    },
+    {
+      "name": "a reader missing financial source authority sees no historical retrospective, counts, items or fingerprint",
+      "passed": true
+    },
+    {
+      "name": "controlled reopening preserves the original retrospective and labels its basis as changed",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "closeout-existing-obligations",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "closeout-open-task",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "archive-review-dialog",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "archive-stale-review",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "archive-complete-history",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "archive-restricted-history",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

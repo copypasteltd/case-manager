@@ -1,0 +1,31 @@
+{
+  "skill_id": "oa-assist",
+  "version": "1.1.0",
+  "state": "draft",
+  "owner_role": "business_admin",
+  "runtime_compatibility": "codex-sdk@0.164.0",
+  "authorization_level": "L1",
+  "allowed_tools": [
+    "read_resource",
+    "draft_request",
+    "submit_request",
+    "inspect_operation"
+  ],
+  "completion_tools": [
+    "draft_request",
+    "submit_request"
+  ],
+  "input_schema_ref": "input.schema.json",
+  "output_schema_ref": "output.schema.json",
+  "instructions_ref": "oa-assist/SKILL.md",
+  "reference_docs": [
+    "execution-boundaries.md"
+  ],
+  "max_tool_calls": 20,
+  "timeout_seconds": 900,
+  "test_case_refs": [
+    "TC-AI-01",
+    "TC-AI-02",
+    "TC-AI-03"
+  ]
+}

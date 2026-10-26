@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "The test directly changed a hash query while remaining on the same retained Taro project page. Use actual UI navigation to the oldest proposal first, then open the old-budget deep link from a different registered page, matching a real new page entry. All eleven record reads and twelve overview/cost layouts had passed.",
+  "owned_browser_closed": true,
+  "native_fixture_exit_code": 0
+}

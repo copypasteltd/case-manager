@@ -1,0 +1,535 @@
+
+test
+
+> @copypaste/mobile@0.1.0 test
+> tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js
+
+TAP version 13
+# Subtest: contract money and unknowns survive without floating point, with fixed party/body and exact plan identities
+ok 1 - contract money and unknowns survive without floating point, with fixed party/body and exact plan identities
+  ---
+  duration_ms: 1.7996
+  ...
+# Subtest: claim row identity keeps fixed receipts, supplier and employee/company funding across reorder and deletion
+ok 2 - claim row identity keeps fixed receipts, supplier and employee/company funding across reorder and deletion
+  ---
+  duration_ms: 0.3296
+  ...
+# Subtest: 100 real line inputs and a long valid request fit bounded intent reconciliation; no unresolved key is evicted
+ok 3 - 100 real line inputs and a long valid request fit bounded intent reconciliation; no unresolved key is evicted
+  ---
+  duration_ms: 0.9411
+  ...
+# Subtest: memory-only business input strips every unlisted scalar and nested evidence/secret, and defensively copies arrays
+ok 4 - memory-only business input strips every unlisted scalar and nested evidence/secret, and defensively copies arrays
+  ---
+  duration_ms: 0.5138
+  ...
+# Subtest: business inputs share the existing global text budget, exact-version authority, TTL and logout isolation
+ok 5 - business inputs share the existing global text budget, exact-version authority, TTL and logout isolation
+  ---
+  duration_ms: 0.9488
+  ...
+# Subtest: financial drafts preserve invalid editable input but clearly identify scientific notation, zero quantity and invalid calendar dates
+ok 6 - financial drafts preserve invalid editable input but clearly identify scientific notation, zero quantity and invalid calendar dates
+  ---
+  duration_ms: 0.3131
+  ...
+# Subtest: missing current evidence stops editing and factual display retains the authoritative original reference IDs
+ok 7 - missing current evidence stops editing and factual display retains the authoritative original reference IDs
+  ---
+  duration_ms: 0.3197
+  ...
+# Subtest: server field errors map to real fields or an explicit summary location; decimal input is never reinterpreted
+ok 8 - server field errors map to real fields or an explicit summary location; decimal input is never reinterpreted
+  ---
+  duration_ms: 0.4115
+  ...
+# Subtest: new line/plan IDs derive from public independent intent values and remain stable within a single intent
+ok 9 - new line/plan IDs derive from public independent intent values and remain stable within a single intent
+  ---
+  duration_ms: 1.238
+  ...
+# Subtest: UTF-8 limits count actual wire bytes and work without browser encoding globals
+ok 10 - UTF-8 limits count actual wire bytes and work without browser encoding globals
+  ---
+  duration_ms: 10.1482
+  ...
+# Subtest: business and request receipts must match actual identity, new version and fixed request basis before input can be cleared
+ok 11 - business and request receipts must match actual identity, new version and fixed request basis before input can be cleared
+  ---
+  duration_ms: 0.5261
+  ...
+# Subtest: a page recreated while a write is in flight reuses the same exact intent key
+ok 12 - a page recreated while a write is in flight reuses the same exact intent key
+  ---
+  duration_ms: 1.4658
+  ...
+# Subtest: uncertain outcomes retain the original key and forbid silently substituting another request
+ok 13 - uncertain outcomes retain the original key and forbid silently substituting another request
+  ---
+  duration_ms: 0.2228
+  ...
+# Subtest: bounded command records refuse new work without evicting unresolved keys; logout clears the old lifetime
+ok 14 - bounded command records refuse new work without evicting unresolved keys; logout clears the old lifetime
+  ---
+  duration_ms: 0.2861
+  ...
+# Subtest: fixed content transfers sequential bounded ranges and validates the full SHA with an independent oracle
+ok 15 - fixed content transfers sequential bounded ranges and validates the full SHA with an independent oracle
+  ---
+  duration_ms: 41.697
+  ...
+# Subtest: an empty text version still authenticates one empty range and validates the empty SHA
+ok 16 - an empty text version still authenticates one empty range and validates the empty SHA
+  ---
+  duration_ms: 0.4382
+  ...
+# Subtest: a permit cannot change the fixed version, hash, size, source mode or required headers
+ok 17 - a permit cannot change the fixed version, hash, size, source mode or required headers
+  ---
+  duration_ms: 1.539
+  ...
+# Subtest: range identity, canonical base64 and each chunk digest are verified before any sink write
+ok 18 - range identity, canonical base64 and each chunk digest are verified before any sink write
+  ---
+  duration_ms: 0.9579
+  ...
+# Subtest: self-consistent chunk digests do not bypass a mismatching full-version digest
+ok 19 - self-consistent chunk digests do not bypass a mismatching full-version digest
+  ---
+  duration_ms: 0.3035
+  ...
+# Subtest: closing the scope while a response is pending discards late bytes and aborts the sink
+ok 20 - closing the scope while a response is pending discards late bytes and aborts the sink
+  ---
+  duration_ms: 3.3816
+  ...
+# Subtest: expiry is checked before each range and never replaces a file version or automatically grants again
+ok 21 - expiry is checked before each range and never replaces a file version or automatically grants again
+  ---
+  duration_ms: 37.5755
+  ...
+# Subtest: a failed sink never produces a completed artifact
+ok 22 - a failed sink never produces a completed artifact
+  ---
+  duration_ms: 0.4665
+  ...
+# Subtest: format signatures reject an active-document disguise before writing or exposing content
+ok 23 - format signatures reject an active-document disguise before writing or exposing content
+  ---
+  duration_ms: 0.391
+  ...
+# Subtest: unavailable, waived, unsupported and excessive versions do not create a download permit
+ok 24 - unavailable, waived, unsupported and excessive versions do not create a download permit
+  ---
+  duration_ms: 0.6253
+  ...
+# Subtest: base64 decoder rejects noncanonical padding, whitespace and length mismatches
+ok 25 - base64 decoder rejects noncanonical padding, whitespace and length mismatches
+  ---
+  duration_ms: 0.5123
+  ...
+# Subtest: portable UTF-8 decoding preserves Chinese, emoji and literal markup and rejects malformed sequences
+ok 26 - portable UTF-8 decoding preserves Chinese, emoji and literal markup and rejects malformed sequences
+  ---
+  duration_ms: 0.3885
+  ...
+# Subtest: form input survives page recreation within the same authority and resource version, without shared mutable objects
+ok 27 - form input survives page recreation within the same authority and resource version, without shared mutable objects
+  ---
+  duration_ms: 1.7794
+  ...
+# Subtest: logout, a new login and explicit clearing invalidate old handles before they can restore or resurrect input
+ok 28 - logout, a new login and explicit clearing invalidate old handles before they can restore or resurrect input
+  ---
+  duration_ms: 0.8935
+  ...
+# Subtest: a newer server authorization version clears drafts and an older page cannot roll the authority backward
+ok 29 - a newer server authorization version clears drafts and an older page cannot roll the authority backward
+  ---
+  duration_ms: 0.3406
+  ...
+# Subtest: task versions and every fixed approval revision or step remain separate and do not inherit an old decision
+ok 30 - task versions and every fixed approval revision or step remain separate and do not inherit an old decision
+  ---
+  duration_ms: 0.2904
+  ...
+# Subtest: reading a draft does not prolong its 15-minute input lifetime
+ok 31 - reading a draft does not prolong its 15-minute input lifetime
+  ---
+  duration_ms: 0.1633
+  ...
+# Subtest: bounded drafts evict oldest input, cap total text and refuse oversized fields without truncating a human reason
+ok 32 - bounded drafts evict oldest input, cap total text and refuse oversized fields without truncating a human reason
+  ---
+  duration_ms: 0.5614
+  ...
+# Subtest: deliverable input stays bound to the exact form, head and fixed acceptance revision
+ok 33 - deliverable input stays bound to the exact form, head and fixed acceptance revision
+  ---
+  duration_ms: 0.2811
+  ...
+# Subtest: only whitelisted textual input is retained; file selections, credentials and human verification never restore
+ok 34 - only whitelisted textual input is retained; file selections, credentials and human verification never restore
+  ---
+  duration_ms: 0.1556
+  ...
+# Subtest: new text fields share the memory budget and reject overlong content without replacing valid input
+ok 35 - new text fields share the memory budget and reject overlong content without replacing valid input
+  ---
+  duration_ms: 0.5542
+  ...
+# Subtest: a run receipt must belong to the exact actor conversation profile and client message
+ok 36 - a run receipt must belong to the exact actor conversation profile and client message
+  ---
+  duration_ms: 0.9352
+  ...
+# Subtest: a reconciled terminal receipt remains valid without inventing a new queued task
+ok 37 - a reconciled terminal receipt remains valid without inventing a new queued task
+  ---
+  duration_ms: 0.1237
+  ...
+# Subtest: a successful secretary turn distinguishes a response from completion of its business request
+ok 38 - a successful secretary turn distinguishes a response from completion of its business request
+  ---
+  duration_ms: 0.9245
+  ...
+# Subtest: unavailable source messages never render a supplied stale body
+ok 39 - unavailable source messages never render a supplied stale body
+  ---
+  duration_ms: 0.1874
+  ...
+# Subtest: secretary drafts keep input text and request identity while excluding source contents and permissions
+ok 40 - secretary drafts keep input text and request identity while excluding source contents and permissions
+  ---
+  duration_ms: 0.8984
+  ...
+# Subtest: server validation exposes only bounded public field messages, without carrying response extras or arbitrary details
+ok 41 - server validation exposes only bounded public field messages, without carrying response extras or arbitrary details
+  ---
+  duration_ms: 2.2885
+  ...
+# Subtest: content chunks use a fixed relative endpoint and validated If-Range while retaining normal session lifetime checks
+ok 42 - content chunks use a fixed relative endpoint and validated If-Range while retaining normal session lifetime checks
+  ---
+  duration_ms: 0.6676
+  ...
+# Subtest: mobile login declares its channel, keeps operation IDs independent of secrets, rejects malformed login results
+ok 43 - mobile login declares its channel, keeps operation IDs independent of secrets, rejects malformed login results
+  ---
+  duration_ms: 0.9953
+  ...
+# Subtest: concurrent reads share one refresh rotation and use the new bearer only
+ok 44 - concurrent reads share one refresh rotation and use the new bearer only
+  ---
+  duration_ms: 4.0921
+  ...
+# Subtest: an old refresh failing after a new login cannot clear or overwrite the new session
+ok 45 - an old refresh failing after a new login cannot clear or overwrite the new session
+  ---
+  duration_ms: 0.312
+  ...
+# Subtest: late reads after logout are discarded and closing a page aborts its wire request
+ok 46 - late reads after logout are discarded and closing a page aborts its wire request
+  ---
+  duration_ms: 0.4916
+  ...
+# Subtest: commands require an explicit intent key, never automatically replay on 401 or network ambiguity
+ok 47 - commands require an explicit intent key, never automatically replay on 401 or network ambiguity
+  ---
+  duration_ms: 0.4399
+  ...
+# Subtest: GET 401 renews once and a second 401 stops without a retry loop
+ok 48 - GET 401 renews once and a second 401 stops without a retry loop
+  ---
+  duration_ms: 1.1378
+  ...
+# Subtest: MFA uses the same challenge/code contract; hostile route inputs never receive a bearer
+ok 49 - MFA uses the same challenge/code contract; hostile route inputs never receive a bearer
+  ---
+  duration_ms: 0.6194
+  ...
+# Subtest: MFA enrollment returns a setting secret without a repeated challenge or an authenticated session
+ok 50 - MFA enrollment returns a setting secret without a repeated challenge or an authenticated session
+  ---
+  duration_ms: 0.623
+  ...
+# Subtest: a status lease consumes the whole network flight and expires exactly at its monotonic boundary
+ok 51 - a status lease consumes the whole network flight and expires exactly at its monotonic boundary
+  ---
+  duration_ms: 0.7395
+  ...
+# Subtest: invalid timestamps, clocks, negative leases and clock rollback cannot keep a status live
+ok 52 - invalid timestamps, clocks, negative leases and clock rollback cannot keep a status live
+  ---
+  duration_ms: 0.3553
+  ...
+# Subtest: portable verification accepts the actual raw bytes signed independently by Node/OpenSSL
+ok 53 - portable verification accepts the actual raw bytes signed independently by Node/OpenSSL
+  ---
+  duration_ms: 37.4474
+  ...
+# Subtest: signature, source domain, digest, historical key and selected row are all independently bound
+ok 54 - signature, source domain, digest, historical key and selected row are all independently bound
+  ---
+  duration_ms: 8.4087
+  ...
+# Subtest: proof decoding bounds bytes and rejects unsafe sequences, noncanonical encodings and weak signatures
+ok 55 - proof decoding bounds bytes and rejects unsafe sequences, noncanonical encodings and weak signatures
+  ---
+  duration_ms: 4.8898
+  ...
+# Subtest: incident input requires actual affected services and resolution, and never reopens resolved records
+ok 56 - incident input requires actual affected services and resolution, and never reopens resolved records
+  ---
+  duration_ms: 0.9604
+  ...
+# Subtest: incident commands preserve exact versions and fixed service sets; receipts cannot claim another intent
+ok 57 - incident commands preserve exact versions and fixed service sets; receipts cannot claim another intent
+  ---
+  duration_ms: 0.3903
+  ...
+# Subtest: incident drafts whitelist only input strings, isolate copies and use the existing shared authority and budget
+ok 58 - incident drafts whitelist only input strings, isolate copies and use the existing shared authority and budget
+  ---
+  duration_ms: 2.2802
+  ...
+1..58
+# tests 58
+# suites 0
+# pass 58
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1429.4324
+
+typecheck
+
+> @copypaste/mobile@0.1.0 typecheck
+> tsc --noEmit
+
+
+build:weapp
+
+> @copypaste/mobile@0.1.0 build:weapp
+> taro build --type weapp
+
+👽 Taro v4.3.1
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+● Webpack █████████████████████████  (0%)  
+ 
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ mini-css-extract-plugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ setup (9%) compilation 
+ CssMinimizerPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/15 entries 13/15 dependen
+cies 0/13 modules 1 active 
+ babel-loader › src\app.config.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/15 entries 13/15 dependen
+cies 0/13 modules 1 active 
+ babel-loader › src\app.config.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/15 entries 13/15 dependen
+cies 0/13 modules 2 active 
+ babel-loader › src\app.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/15 entries 13/15 dependen
+cies 0/13 modules 3 active 
+ babel-loader › src\pages\login\index.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/15 entries 14/15 dependen
+cies 0/13 modules 13 active 
+ babel-loader › src\pages\secretary\index.tsx
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/15 entries 15/15 dependen
+cies 1/15 modules 14 active 
+ ...oader › ..\node_modules\@tarojs\webpack5-runner\dist\template\custom-wrapp
+er.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 116/204 depend
+encies 1/50 modules 28 active 
+ babel-loader › node_modules\@tarojs\plugin-framework-react\dist\runtime.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 131/204 depend
+encies 1/60 modules 50 active 
+ babel-loader › src\platform\secretary.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 142/300 depend
+encies 1/61 modules 53 active 
+ babel-loader › src\pages\status\live.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 300/429 depend
+encies 2/94 modules 52 active 
+ babel-loader › src\pages\status\live.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%)  
+ import loader ..\node_modules\css-loader\dist\cjs.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%)  
+ import loader ..\node_modules\postcss-loader\dist\cjs.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 399/440 depend
+encies 3/117 modules 59 active 
+ css-loader › postcss-loader › src\tokens.css
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 399/441 depend
+encies 3/117 modules 60 active 
+ css-loader › postcss-loader › src\app.css
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 411/442 depend
+encies 3/121 modules 113 active 
+ babel-loader › src\platform\command-keys.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 434/442 depend
+encies 3/124 modules 121 active 
+ babel-loader › ..\node_modules\@tarojs\taro\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 438/449 depend
+encies 4/126 modules 122 active 
+ ..\packages\contracts\src\mutation.ts
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 547/683 depend
+encies 13/131 modules 113 active 
+ babel-loader › ..\node_modules\@tarojs\shared\dist\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 701/734 depend
+encies 19/146 modules 127 active 
+ json|D:\dev\copypasted\内部管理\app\packages\design\src\tokens.json
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 711/737 depend
+encies 23/149 modules 125 active 
+ ..\node_modules\react\cjs\react-jsx-runtime.production.min.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 730/782 depend
+encies 24/164 modules 138 active 
+ ...copypasted\内部管理\app\node_modules\@babel\runtime\helpers\esm\isNativeFu
+nction.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 782/803 depend
+encies 32/178 modules 133 active 
+ ...D:\dev\copypasted\内部管理\app\node_modules\@babel\runtime\helpers\esm\con
+struct.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 800/811 depend
+encies 75/183 modules 108 active 
+ ...-loader › ..\node_modules\@tarojs\runtime\dist\dom-external\inner-html\uti
+ls.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 840/868 depend
+encies 90/187 modules 97 active 
+ ...asted\内部管理\app\node_modules\@babel\runtime\helpers\esm\assertThisIniti
+alized.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (13%) 1/15 entries 868/872 depend
+encies 120/189 modules 68 active 
+ javascript\esm|D:\dev\copypasted\内部管理\app\node_modules\tslib\tslib.es6.mj
+s
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 3/15 entries 903/907 depend
+encies 155/201 modules 46 active 
+ ...ipt\esm|D:\dev\copypasted\内部管理\app\node_modules\@noble\curves\abstract
+\frost.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 3/15 entries 910/914 depend
+encies 160/204 modules 43 active 
+ babel-loader › ..\node_modules\@tarojs\api\dist\tools.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 3/15 entries 916/916 depend
+encies 164/208 modules 43 active 
+ babel-loader › ..\node_modules\@tarojs\api\dist\interceptor\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 3/15 entries 921/922 depend
+encies 164/209 modules 45 active 
+ babel-loader › ..\node_modules\@tarojs\api\dist\interceptor\chain.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (21%) 3/15 entries 929/929 depend
+encies 171/211 modules 40 active 
+ babel-loader › ..\node_modules\@tarojs\api\dist\interceptor\index.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (61%) 14/15 entries 933/933 depen
+dencies 205/213 modules 7 active 
+ ..\node_modules\css-loader\dist\runtime\noSourceMaps.js
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (71%) dependencies optimization 
+ FlagDependencyUsagePlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (78%)  
+ chunk modules optimization
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ CssMinimizerPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%) asset processing 
+ RealContentHashPlugin
+
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+✖ Webpack
+  Compiled with some errors in 2.02m
+
+✖ Errors: 
+
+ModuleParseError: Module parse failed: Unexpected token (1:12)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> import type { components } from './api';
+| 
+| export type Mutation = components['schemas']['AgentMutationInput'];
+
+npm error Lifecycle script `build:weapp` failed with error:
+npm error code 1
+npm error path D:\dev\copypasted\内部管理\app\mobile
+npm error workspace @copypaste/mobile@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\mobile
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c taro build --type weapp

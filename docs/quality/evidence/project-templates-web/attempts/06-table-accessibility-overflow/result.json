@@ -1,0 +1,138 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-25T22:45:46.526Z",
+  "source_sha256": "6463c9cbb90de483b1cf8dc6a2ad5bab439f42fba30f19125a49ebb1a399b022",
+  "source_file_count": 557,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "real_model": false,
+  "real_cloud": false,
+  "failure": "AssertionError [ERR_ASSERTION]: template-projects overflows 390\n\ntrue !== false\n\n    at layout (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_templates.mjs:24:948)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_templates.mjs:37:1554",
+  "checks": [
+    {
+      "name": "Admin creates and publishes structured template; actual employee selects exact revision and initializes project/tasks/milestones through real API",
+      "passed": true
+    },
+    {
+      "name": "Actual concurrent draft update returns conflict, retains human fields, blocks retry until explicit latest-content comparison; old published revision unchanged",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "name": "template-published",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "name": "template-projects",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "name": "template-projects",
+      "theme": "dark",
+      "width": 390,
+      "passed": false,
+      "overflow": {
+        "width": 390,
+        "scroll": 690,
+        "nodes": [
+          {
+            "tag": "TABLE",
+            "classes": "",
+            "text": "项目状态访问范围截止日期最近更新查看Synthetic exact template projectPRJ-000006草稿项目受限未设置2",
+            "width": 740,
+            "right": 757
+          },
+          {
+            "tag": "THEAD",
+            "classes": "",
+            "text": "项目状态访问范围截止日期最近更新查看",
+            "width": 740,
+            "right": 757
+          },
+          {
+            "tag": "TR",
+            "classes": "",
+            "text": "项目状态访问范围截止日期最近更新查看",
+            "width": 740,
+            "right": 757
+          },
+          {
+            "tag": "TH",
+            "classes": "",
+            "text": "访问范围",
+            "width": 92,
+            "right": 473.59375
+          },
+          {
+            "tag": "TH",
+            "classes": "",
+            "text": "截止日期",
+            "width": 89.203125,
+            "right": 562.796875
+          },
+          {
+            "tag": "TH",
+            "classes": "",
+            "text": "最近更新",
+            "width": 106.203125,
+            "right": 669
+          },
+          {
+            "tag": "TH",
+            "classes": "",
+            "text": "查看",
+            "width": 88,
+            "right": 757
+          },
+          {
+            "tag": "SPAN",
+            "classes": "sr-only",
+            "text": "查看",
+            "width": 1,
+            "right": 690
+          },
+          {
+            "tag": "TBODY",
+            "classes": "",
+            "text": "Synthetic exact template projectPRJ-000006草稿项目受限未设置26/10/2026From Synt",
+            "width": 740,
+            "right": 757
+          },
+          {
+            "tag": "TR",
+            "classes": "",
+            "text": "Synthetic exact template projectPRJ-000006草稿项目受限未设置26/10/2026",
+            "width": 740,
+            "right": 757
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

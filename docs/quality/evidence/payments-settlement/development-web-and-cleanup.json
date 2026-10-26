@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T19:31:20.896180+00:00",
+  "scope": "Owned local development Web/API proxy and disposable test database cleanup; not production",
+  "web_origin": "http://127.0.0.1:5178",
+  "web_probes": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200
+    }
+  ],
+  "remaining_disposable_databases": 0,
+  "temporary_browser_fixture_absent": true
+}

@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T21:43:53.861007+00:00",
+  "checks": [
+    {
+      "name": "The successful native build matches the current frozen inputs",
+      "passed": true
+    },
+    {
+      "name": "The inspected APK is the preserved artifact from this build",
+      "passed": true
+    },
+    {
+      "name": "All seventy-nine mobile tests and both mini builds match current source",
+      "passed": true
+    },
+    {
+      "name": "The current application registers fifteen pages including the upload route",
+      "passed": true
+    },
+    {
+      "name": "The reused fifty-four Web tests and production build still match unchanged source",
+      "passed": true
+    },
+    {
+      "name": "The reused thirty-four runtime tests and draft skill checks still match source",
+      "passed": true
+    },
+    {
+      "name": "The prior complete backend regression matches unchanged backend source",
+      "passed": true
+    },
+    {
+      "name": "The fresh actual-API H5 regression matches current source and closed its resources",
+      "passed": true
+    },
+    {
+      "name": "The private browser fixture has been removed",
+      "passed": true
+    },
+    {
+      "name": "The owned H5 review listener is closed",
+      "passed": true
+    },
+    {
+      "name": "Both actual Taro native Babel transforms pass",
+      "passed": true
+    },
+    {
+      "name": "Actual native page functions handle transformed classes and scrolling",
+      "passed": true
+    },
+    {
+      "name": "All twenty-five standalone JVM cases match current actual Java inputs",
+      "passed": true
+    },
+    {
+      "name": "The dependency audit matches the unchanged lock and keeps the production gate open",
+      "passed": true
+    },
+    {
+      "name": "The prior Android artifact remains preserved independently",
+      "passed": true
+    }
+  ],
+  "native_source_sha256": "057cb5071df0caf881f550bee6732c67570370981f51e1120f27b681019ba5ac",
+  "backend_sha256": "cd059e07b85c2446a6d48013ac8d5b28f30086bc7739805f4b10bcf3aa6ef8cb",
+  "package_lock_sha256": "48af18363fb82f19b8a7dbb1cede8c4b4260de8267de97490445c2cf4b3fb0d5",
+  "reused_evidence": {
+    "web": "../android-native/web-build.json",
+    "runtime": "../android-native/runtime-build.json",
+    "backend": "../telegram-delivery/result.json",
+    "audit": "../android-native/dependency-audit.json"
+  },
+  "verifier_sha256": "629c6602c65ee71dafc0c5c1c6230513034c54d2453fedf92fb5216d33a46931",
+  "device_executed": false,
+  "real_120gb_executed": false,
+  "virtualization_used": false,
+  "production_release": false,
+  "full_goal_complete": false
+}

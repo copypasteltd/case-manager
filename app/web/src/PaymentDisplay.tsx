@@ -1,0 +1,23 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { api, type Schemas } from './api';
+import { money } from './ContractDisplay';
+import { DownloadDialog, type DownloadVersion } from './DownloadDialog';
+import { useQueryClient } from '@tanstack/react-query';
+
+export type Payment = Schemas['Payment'];
+export const paymentStates = { draft: '待核实草稿', recorded: '已登记实际资金', reversed: '原资金已冲销' };
+export const directions = { outgoing: '实际付款', incoming: '实际收款', refund: '收到退款', transfer: '内部转账' };
+export const paymentBase = (p: Payment, reason: string) => ({ expected_version: p.version, revision_id: p.current_revision_id, content_hash: p.content_hash, reason });
+export const refreshPayments = (cache: ReturnType<typeof useQueryClient>) => Promise.all(['payments', 'payment', 'payment-allocations', 'costs', 'cost', 'cash-report', 'claim-settlement', 'contract-finance', 'contract-finance-events', 'contract-closure-preview', 'contract-closure'].map(name => cache.invalidateQueries({ queryKey: [name] })));
+export const hongKongInput = (value: string | null) => { if (!value) return ''; const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Hong_Kong', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' }).formatToParts(new Date(value)); const v = (key: string) => parts.find(p => p.type === key)?.value ?? ''; return `${v('year')}-${v('month')}-${v('day')}T${v('hour')}:${v('minute')}:${v('second')}`; };
+export const fromHongKongInput = (value: string) => value ? new Date(value + '+08:00').toISOString() : null;
+export const paymentTimestamp = (value: string) => new Intl.DateTimeFormat('zh-HK', { timeZone: 'Asia/Hong_Kong', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' }).format(new Date(value));
+export function PaymentBadge({ value }: { value: Pick<Payment, 'state' | 'record_kind'> }) { return <span className={'badge ' + (value.record_kind === 'reversal' || value.state === 'reversed' ? 'warning' : value.state === 'recorded' ? 'success' : 'neutral')}>{value.record_kind === 'reversal' ? '全额冲销记录' : paymentStates[value.state]}</span>; }
+type Facts = Schemas['PaymentContent'] & Pick<Payment, 'counterparty_evidence' | 'attachments'>;
+export function PaymentFacts({ value }: { value: Facts }) {
+  const [download, setDownload] = useState<DownloadVersion | null>(null);
+  return <><dl className="file-facts"><div><dt>资金方向</dt><dd>{value.direction ? directions[value.direction] : '尚未确定'}</dd></div><div><dt>实际发生时间</dt><dd>{value.paid_at ? paymentTimestamp(value.paid_at) + '（香港时间）' : '尚未确定'}</dd></div><div><dt>原币金额</dt><dd>{value.amount === null ? '尚未确定' : money(value.amount, value.currency)}</dd></div><div><dt>资金类别</dt><dd>{value.category || '尚未填写'}</dd></div><div><dt>往来方／收款员工</dt><dd>{value.employee_id ? '员工报销收款人（由报销明细固定）' : value.counterparty_evidence?.name ?? (value.counterparty ? '往来资料当前不可查阅' : value.direction === 'transfer' ? '公司内部账户' : '尚未选择')}</dd></div><div><dt>付款方式</dt><dd>{value.method_label || '尚未填写'}</dd></div><div><dt>外部流水标识</dt><dd className="cost-source-key">{value.external_ref || '尚未填写'}</dd></div></dl>{value.refund_of_id && <Link className="text-button" to={'/payments/' + value.refund_of_id}>核对原实际付款</Link>}<h3>固定资金凭证</h3>{value.evidence_version_ids.length ? <div className="reference-options">{value.evidence_version_ids.map(id => { const file = value.attachments.find(f => f.version_id === id); return <div key={id} className="reference-option">{file ? <><strong>{file.name}</strong><small>固定版本 {file.seq}</small><button className="text-button" type="button" onClick={() => setDownload({ id: file.version_id, seq: file.seq, size_bytes: file.size_bytes, sha256: file.sha256, original_name: file.name, scan_state: file.scan_state })}>查看付款凭证</button></> : <span>此固定资金凭证当前不可查阅</span>}</div>; })}</div> : <p className="muted">尚未选择资金凭证。</p>}{value.notes && <div className="party-notes"><h3>备注</h3><p>{value.notes}</p></div>}{download && <DownloadDialog version={download} onClose={() => setDownload(null)} />}</>;
+}
+
+export function useClaimSettlement(id: string, enabled: boolean) { return { queryKey: ['claim-settlement', id], enabled, queryFn: ({ signal }: { signal: AbortSignal }) => api<Schemas['ClaimSettlement']>('/claims/' + id + '/settlement', { signal }) }; }

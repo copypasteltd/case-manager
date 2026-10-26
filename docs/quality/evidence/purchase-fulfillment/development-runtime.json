@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T16:19:21.493249+00:00",
+  "scope": "Owned local development database and API; not a production deployment",
+  "native_database": true,
+  "database": {
+    "role": "copypaste_app",
+    "is_superuser": false,
+    "can_create_database": false,
+    "can_create_roles": false,
+    "can_read_migration_ledger": false,
+    "can_insert_purchase_orders": true,
+    "can_update_purchase_orders": false,
+    "can_delete_purchase_receipts": false,
+    "purchase_operator_count": 1,
+    "purchase_operator_bindings": 0,
+    "migration_count": 35,
+    "latest_migration": "0035_purchase_fulfillment.sql",
+    "migration_manifest_matches_source": true
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/claims",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/fulfillment",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/orders",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/receipts",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/execution-events",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/orders",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/receipts",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/cancel",
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/v1/purchases/00000000-0000-4000-8000-000000000000/orders/00000000-0000-4000-8000-000000000000/cancel",
+      "status": 401,
+      "expected_status": 401
+    }
+  ]
+}

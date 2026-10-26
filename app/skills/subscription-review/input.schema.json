@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/subscription-review.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/scope"
+        },
+        "month": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+        },
+        "view": {
+          "enum": [
+            "forecast",
+            "actual",
+            "cash"
+          ]
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      },
+      "required": [
+        "scope",
+        "month",
+        "view"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/scope"
+        },
+        "subscription_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "from": {
+          "type": "string",
+          "format": "date"
+        },
+        "to": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "scope",
+        "subscription_id",
+        "from",
+        "to"
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

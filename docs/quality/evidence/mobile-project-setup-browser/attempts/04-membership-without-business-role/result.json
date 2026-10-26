@@ -1,0 +1,66 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T06:59:04.275Z",
+  "source_sha256": "6ce00f2fe05eb1f1a06db78fbe73f7932d687a677a9d6c353a417571959cd776",
+  "source_after_sha256": "6ce00f2fe05eb1f1a06db78fbe73f7932d687a677a9d6c353a417571959cd776",
+  "source_unchanged": true,
+  "source_count": 589,
+  "checks": [
+    "Actual mobile template creation fixes owner, dates and exact revision and initializes real tasks, milestones and logical folders once.",
+    "Draft editing uses the actual project version and explicit date clearing without changing owner, classification or selected template.",
+    "A real committed update with a lost browser response blocks resubmission and explicit reread reconciles its actual result.",
+    "Concurrent edits preserve unsubmitted text and block stale writes; active project scope and dates are read-only and absent from ordinary updates.",
+    "Actual member role changes and removal use exact versions, identities and reasons, then reload authoritative membership.",
+    "Owner handover uses a distinct command, returns the actual new owner and retains the former owner as manager."
+  ],
+  "layouts": [
+    {
+      "page": "project-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "project-members",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "project-members",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "project-members",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: GET /projects/5ae3b825-9ada-4371-81ae-33190ea39712: 404 RESOURCE_NOT_FOUND\n    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_setup.mjs:41:138)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_setup.mjs:122:19",
+  "owned_browser_closed": true,
+  "browser_contexts_closed": 3,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "6ce00f2fe05eb1f1a06db78fbe73f7932d687a677a9d6c353a417571959cd776",
+  "source_sha256_after_build": "6ce00f2fe05eb1f1a06db78fbe73f7932d687a677a9d6c353a417571959cd776",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

@@ -1,0 +1,22 @@
+.project-overview { display: grid; gap: var(--cp-space-16); margin-top: var(--cp-space-20); min-width: 0; }
+.project-overview > .section-heading { align-items: flex-start; gap: var(--cp-space-12); flex-wrap: wrap; }
+.project-overview h2, .project-overview h3 { margin: 0; }
+.overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cp-space-16); }
+.overview-card, .overview-finance { padding: var(--cp-space-20); min-width: 0; }
+.overview-count { font-size: 28px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.overview-scope { color: var(--cp-fg-muted); font-size: 12px; }
+.overview-states, .overview-items, .overview-budget ul { list-style: none; padding: 0; margin: var(--cp-space-12) 0; }
+.overview-states { display: flex; gap: var(--cp-space-8); flex-wrap: wrap; }
+.overview-states li { display: flex; gap: var(--cp-space-8); font-size: 12px; background: var(--cp-bg-subtle); padding: var(--cp-space-4) var(--cp-space-8); border-radius: var(--cp-radius-inset); }
+.overview-items li { border-top: 1px solid var(--cp-border-subtle); padding: var(--cp-space-12) 0; }
+.overview-items a { display: flex; align-items: flex-start; gap: var(--cp-space-8); color: var(--cp-fg-default); text-decoration: none; }
+.overview-items a span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.overview-items a svg { flex-shrink: 0; margin-top: 3px; }
+.overview-items a:hover { color: var(--cp-accent-fg); }
+.overview-items small { display: block; margin-top: var(--cp-space-4); color: var(--cp-fg-muted); }
+.overview-finance { display: grid; gap: var(--cp-space-12); }
+.overview-finance td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.overview-budget { border-top: 1px solid var(--cp-border-subtle); padding-top: var(--cp-space-16); }
+.overview-budget li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--cp-space-12); font-variant-numeric: tabular-nums; }
+@media (max-width: 1199px) { .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .overview-grid { grid-template-columns: minmax(0, 1fr); } .overview-card, .overview-finance { padding: var(--cp-space-16); } }

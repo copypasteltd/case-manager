@@ -1,0 +1,11 @@
+.template-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.template-fields { border: 0; margin: 0; padding: 0; min-width: 0; }
+.template-facts { min-width: 0; overflow-wrap: anywhere; }
+.template-facts details { margin: 16px 0; }
+.template-facts summary { cursor: pointer; min-height: 32px; padding-block: 6px; }
+.template-task, .template-selection, .template-option { border: 1px solid var(--cp-border-subtle); border-radius: 16px; padding: 16px; margin-block: 16px; min-width: 0; }
+.template-selection > button + button { margin-left: 12px; }
+.template-selection .section-heading { flex-wrap: wrap; }
+.template-selection .template-facts h3 { font-size: 1rem; }
+.template-facts ul, .template-facts ol { padding-left: 1.5rem; }
+@media (max-width: 599px) { .template-actions { width: 100%; } .template-actions button { flex: 1 1 auto; } .template-selection > button + button { margin: 12px 0 0; } }

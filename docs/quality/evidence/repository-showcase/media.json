@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T09:34:49.792928+00:00",
+  "capture_source_sha256": "418ae923cabb933fb1ef42c27d543a824aad0d0126727969804a552178a626d4",
+  "capture_result_sha256": "2e9dd52a92353dd20e108e850e6e79d7ff3d4bc870b37d92bc0d887c98b596ef",
+  "encoder_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "ffmpeg_version": "ffmpeg version 8.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+  "credentials_excluded": true,
+  "raw_frames_ignored": true,
+  "recordings": [
+    {
+      "name": "web-project-flow",
+      "source_manifest_sha256": "0d5f4c5f3973c9ea0037d70b1c97b77374657b821d2dc9a27c2f6d396d774c3a",
+      "source_frame_count": 20,
+      "source_duration_ms": 4093,
+      "mp4": {
+        "file": "docs/media/videos/web-project-flow.mp4",
+        "sha256": "dd8012869f8bbebb36aa013b43c919d4d40a900c63da4b6b9dd1b048ee594f4e",
+        "bytes": 288481,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1440,
+              "height": 900,
+              "r_frame_rate": "10/1",
+              "nb_frames": "42",
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "4.200000"
+          }
+        }
+      },
+      "gif": {
+        "file": "docs/media/gifs/web-project-flow.gif",
+        "sha256": "ec762c58a32127e6facc18b27c13aa91903360afda8e345acfe8dc9464d35c57",
+        "bytes": 487876,
+        "speed_factor": 1.0,
+        "fps": 6,
+        "width": 960
+      },
+      "audio": false,
+      "synthetic_data": true,
+      "real_browser_pixels": true,
+      "real_device": false
+    },
+    {
+      "name": "web-operations-tour",
+      "source_manifest_sha256": "39e9ef0212d8986ffced7ff6bc6b0ef668127ddfd4fb8d35f2d82168f92dca83",
+      "source_frame_count": 80,
+      "source_duration_ms": 16348,
+      "mp4": {
+        "file": "docs/media/videos/web-operations-tour.mp4",
+        "sha256": "7d377c8fd811e33dde139aa8650965fce8ec11b16021f123b0201254d9a94fb3",
+        "bytes": 361792,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1440,
+              "height": 900,
+              "r_frame_rate": "10/1",
+              "nb_frames": "166",
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "16.600000"
+          }
+        }
+      },
+      "gif": {
+        "file": "docs/media/gifs/web-operations-tour.gif",
+        "sha256": "b112dff097e352ff3da82b7f3909f81623a33c8e073b4d03365acaf39ad7c5fa",
+        "bytes": 592401,
+        "speed_factor": 1.089867,
+        "fps": 6,
+        "width": 960
+      },
+      "audio": false,
+      "synthetic_data": true,
+      "real_browser_pixels": true,
+      "real_device": false
+    },
+    {
+      "name": "mobile-risk-issue",
+      "source_manifest_sha256": "72f4888fea7fe93b9f9c8a292bed9b5947ef467499c7e6bee79eb0def6f0fa74",
+      "source_frame_count": 33,
+      "source_duration_ms": 6758,
+      "mp4": {
+        "file": "docs/media/videos/mobile-risk-issue.mp4",
+        "sha256": "6f41e942b6d43ed635ea8063a0fba73855a000fa367e7a37e7152e26fadbe95e",
+        "bytes": 191142,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 390,
+              "height": 900,
+              "r_frame_rate": "10/1",
+              "nb_frames": "69",
+              "side_data_list": [
+                {}
+              ]
+            }
+          ],
+          "format": {
+            "duration": "6.900000"
+          }
+        }
+      },
+      "gif": {
+        "file": "docs/media/gifs/mobile-risk-issue.gif",
+        "sha256": "410614269f826613f0e7c0140714bbe950f227080742707b80e764122b330770",
+        "bytes": 881807,
+        "speed_factor": 1.0,
+        "fps": 6,
+        "width": 390
+      },
+      "audio": false,
+      "synthetic_data": true,
+      "real_browser_pixels": true,
+      "real_device": false
+    }
+  ]
+}

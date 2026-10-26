@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-24T23:01:58.931838+00:00",
+  "database": {
+    "can_read_intents": true,
+    "can_insert_intents": true,
+    "can_rewrite_intents": false,
+    "can_read_commits": true,
+    "can_insert_commits": true,
+    "can_rewrite_commits": false,
+    "mutation_guards": 6,
+    "deferred_mutation_guards": 2,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 50,
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "environment": "owned native Windows Go/PostgreSQL; no virtualization",
+  "real_model_invoked": false,
+  "production_deployed": false
+}

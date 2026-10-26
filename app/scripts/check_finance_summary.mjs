@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+
+await notificationBrowser(false,async({page,context,fixture,checks})=>{
+ await page.goto(fixture.origin);
+ await page.getByLabel('内部账号',{exact:true}).fill(fixture.alice.login);
+ await page.getByLabel('密码',{exact:true}).fill(fixture.alice.password);
+ await page.getByRole('button',{name:'登录工作空间',exact:true}).click();
+ await page.getByLabel('六位验证码').fill(await waitOTP(fixture));
+ await page.getByRole('button',{name:'验证并继续',exact:true}).click();
+ await page.getByRole('heading',{name:/工作从这里开始/}).waitFor();
+ await page.goto(fixture.origin+'/conversations/'+fixture.conversation_id);
+ await page.getByRole('button',{name:'查看固定财务快照',exact:true}).first().click();
+ const report=page.locator('section.context-preview').filter({has:page.getByRole('heading',{name:'固定财务快照',exact:true})});
+ await report.getByText(/100.120000/).waitFor();
+ assert.match(await report.textContent(),/原币种不合并/);
+ assert.match(await report.textContent(),/project_allocations/);
+ checks.push({name:'Web opens an actual monthly finance snapshot and explains its accounting scope',passed:true});
+ const response=await context.request.get(fixture.origin+'/v1/conversations/'+fixture.conversation_id+'/context-sources/agent_finance_report/'+fixture.finance_report_id+'?context_security_version=1&max_chars=10000');
+ assert.equal(response.status(),200);const view=(await response.json()).data,content=JSON.parse(view.text);
+ assert.equal(content.month,'2025-01');assert.equal(content.view,'actual');assert.equal(view.version_id,null);
+ assert.deepEqual(content.report.totals.map(t=>[t.currency,t.net_amount]),[['HKD','100.120000'],['USD','7.010000']]);
+ const messages=await context.request.get(fixture.origin+'/v1/conversations/'+fixture.conversation_id+'/messages?limit=20');assert.equal(messages.status(),200);
+ assert.ok((await messages.json()).data.items.some(m=>m.role==='assistant'&&m.visibility==='available'&&m.source_refs.some(s=>s.type==='agent_finance_report'&&s.id===fixture.finance_report_id&&s.sha256===view.source_sha256)));
+ checks.push({name:'Web report digest matches the completed task and its currently visible evidence',passed:true});
+ const current=await context.request.get(fixture.origin+'/v1/reports/expenses?from=2025-01-01&to=2025-02-01&project_id='+fixture.project_id);assert.equal(current.status(),200);
+ assert.equal((await current.json()).data.totals[0].net_amount,'110.120000');
+ await page.getByRole('button',{name:'收起财务快照',exact:true}).click();await report.waitFor({state:'hidden'});
+ checks.push({name:'Later costs change the live report while historical financial evidence keeps its original totals',passed:true});
+},'finance-summary');

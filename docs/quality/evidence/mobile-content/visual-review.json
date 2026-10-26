@@ -1,0 +1,53 @@
+{
+  "reviewed_at": "2026-10-24T11:42:59.201889+00:00",
+  "method": "Actual final PNGs inspected using local image viewing; no browser or virtualization launched for this visual review",
+  "browser_executed_at": "2026-10-24T11:38:54.430Z",
+  "browser_source_sha256": "f17eb162273eddf6eb016b478b12c862cf5f8b7b8fc37c7cce636beedbc0e898",
+  "images": [
+    {
+      "file": "historical-text-light-390.png",
+      "sha256": "93a93469cfac7539f4f80c91a41b6b2cbfa834b9703e51352506f0b06ae7cc45",
+      "observations": [
+        "暖灰白画布、墨色主按钮及蓝色来源沿用官网令牌。",
+        "历史版本标签与完整摘要可读；中文、表情及脚本标签作为文字显示，没有已阅读或验收声明。"
+      ]
+    },
+    {
+      "file": "fixed-image-dark-390.png",
+      "sha256": "667c4bec56e0657e6b6a5bc286be1c4744b76e6f1af6bd1e906f2ee8ae2c64d8",
+      "observations": [
+        "蓝灰黑画布、反转主按钮及深色品牌标识配对。",
+        "图片保持原件暖白／墨色／蓝色，没有为了深色主题改写文件颜色；宽度未越界。"
+      ]
+    },
+    {
+      "file": "oversized-text-light-390.png",
+      "sha256": "abfa339410b855454cb1d2deb5a3eed234766cfbd87c3a8ffa913a2f8d2b2251",
+      "observations": [
+        "超出阅读预算有明确 Web 原件下载说明，不提供预览动作。",
+        "边界样本大小被格式化为1.0MiB，实际为1MiB+1字节，精度提示仍可改善。"
+      ]
+    },
+    {
+      "file": "truncated-content-dark-390.png",
+      "sha256": "e2a825259c630b1ac0ed044e7682a5e179082be2fad5e1acb9be0cc908d306c5",
+      "observations": [
+        "红色错误及查询编号可见，正文与完整性成功标识缺席。",
+        "读取、返回与刷新按钮清楚，单个最强动作及触控边界完整。"
+      ]
+    }
+  ],
+  "scope": "Four 390px visible-area captures, two themes; Taro internal scrolling means a fullPage capture is not proof of all offscreen content",
+  "open_findings": [
+    {
+      "id": "MCR-VIS-01",
+      "priority": "P3",
+      "status": "open",
+      "description": "Size display rounds 1048577 bytes to 1.0 MiB; a future budget notice should expose the exact bytes or limit to explain a one-byte boundary.",
+      "release_waiver": false
+    }
+  ],
+  "prior_global_long_heading_finding_closed": false,
+  "blocking_visual_findings": [],
+  "passed": true
+}

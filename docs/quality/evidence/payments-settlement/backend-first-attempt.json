@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-23T18:52:19.434051+00:00",
+  "source_sha256": "766325d8d64f2a15089235d55956e91ad2c59d6435ecf9a0f8cf47593fff0913",
+  "source_unchanged_during_tests": false,
+  "recorded_test_results": 402,
+  "failures": [
+    {
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCloudReplicas/exhaustion_before_the_first_domain_transaction_does_not_strand_the_queued_replica",
+      "Elapsed": 54.74
+    },
+    {
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCloudReplicas",
+      "Elapsed": 151.67
+    }
+  ],
+  "diagnosis": "A CrossCloudReplicas fixture teardown exceeded its 45-second DROP DATABASE cleanup deadline while a separate browser fixture shared the native cluster. Domain assertions in that leaf completed. Backend source was also edited during the run. This run is not acceptance evidence; the final source requires a separate run without another database/browser fixture."
+}

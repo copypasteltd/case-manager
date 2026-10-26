@@ -1,0 +1,275 @@
+{
+  "passed": true,
+  "target": "mobile",
+  "checked_at": "2026-10-26T09:28:38.474Z",
+  "checks": [
+    "Real Taro UI creates a risk, realizes it into the actual linked issue and investigates/resolves/closes that issue."
+  ],
+  "recordings": [
+    {
+      "name": "mobile-risk-issue",
+      "frame_count": 33,
+      "duration_ms": 6758,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-risk-issue/frames.json",
+      "manifest_sha256": "72f4888fea7fe93b9f9c8a292bed9b5947ef467499c7e6bee79eb0def6f0fa74"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-project.png",
+      "caption": "Taro共享移动界面，H5实际录制；非真机 / Shared Taro UI recorded in H5, not on a device.",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "sha256": "f191d7ea82e30271b1f0125fde419c4692ffdfd77ff936ccbb9e14acfd20fa21",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/mobile-risk.png",
+      "caption": "实际新建风险及应对措施 / Actual risk creation and mitigation.",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "sha256": "c52db80f0028167a86b611ddc321428a689027e79a9bf985eb9f21419db4f2e9",
+      "synthetic_data": true
+    },
+    {
+      "file": "docs/media/screenshots/mobile-issue.png",
+      "caption": "真实关联问题调查、解决及关闭 / Actual linked issue investigated, resolved and closed.",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "sha256": "bc16301bb34b698eaf295a64818a6f8cfa7448ae163e79f9ba55d5a0ad400abb",
+      "synthetic_data": true
+    }
+  ],
+  "events": [
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/dashboard",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/risks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/risks",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/risks/2a8d92f4-e971-42d8-9979-c2012dd30c37",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/risks/2a8d92f4-e971-42d8-9979-c2012dd30c37",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/risks/2a8d92f4-e971-42d8-9979-c2012dd30c37",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/issues/47fced46-7463-4daf-8d42-e042682f2dcf",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/e045069d-c1bd-4039-ac7f-199afb205b00/members",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "contexts_closed": 1,
+  "credentials_excluded": true,
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false
+}

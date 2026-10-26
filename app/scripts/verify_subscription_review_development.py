@@ -1,0 +1,88 @@
+"""Read-only inspection of the owned development schema, process identities and disabled integrations."""
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import subprocess
+from urllib.parse import unquote, urlsplit
+
+APP = Path(__file__).resolve().parents[1]
+EVIDENCE = APP.parent / 'docs/quality/evidence/subscription-review'
+
+
+def load(name, filename):
+    spec = importlib.util.spec_from_file_location(name, APP / 'scripts' / filename)
+    result = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(result)
+    return result
+
+
+def main():
+    values = json.loads((APP / '.local/environment.json').read_text(encoding='utf-8'))
+    db = urlsplit(values['CP_DATABASE_URL'])
+    if db.hostname != '127.0.0.1' or db.port != 14660 or values.get('CP_HTTP_ADDR') != '127.0.0.1:18080':
+        raise SystemExit('Only the exact owned native loopback services may be inspected.')
+    base = load('review_runtime_probe', 'verify_agent_execution_development.py')
+    base.EVIDENCE = EVIDENCE
+    if base.main():
+        return 1
+    common = json.loads((EVIDENCE / 'development-runtime.json').read_text(encoding='utf-8'))
+    environment = {**os.environ, 'PGHOST': db.hostname, 'PGPORT': str(db.port), 'PGUSER': unquote(db.username),
+                   'PGPASSWORD': unquote(db.password), 'PGDATABASE': unquote(db.path[1:]), 'PGCONNECT_TIMEOUT': '5'}
+    query = """SELECT json_build_object(
+      'report_append_only',has_table_privilege(current_user,'agent_finance_reports','SELECT')
+        AND has_table_privilege(current_user,'agent_finance_reports','INSERT')
+        AND NOT has_table_privilege(current_user,'agent_finance_reports','UPDATE')
+        AND NOT has_table_privilege(current_user,'agent_finance_reports','DELETE'),
+      'report_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O'
+        AND tgname IN ('agent_finance_report_immutable','agent_finance_report_binding','agent_finance_report_receipt')),
+      'deferred_report_receipt',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O'
+        AND tgname='agent_finance_report_receipt' AND tgdeferrable AND tginitdeferred),
+      'typed_payload_constraint',(SELECT count(*) FROM pg_constraint WHERE conrelid='agent_finance_reports'::regclass
+        AND conname='agent_finance_reports_payload' AND convalidated AND pg_get_constraintdef(oid) LIKE '%subscription_review%'),
+      'detail_tool_constraints',(SELECT count(*) FROM pg_constraint WHERE conname IN
+        ('agent_tool_receipts_tool_check','agent_execution_observations_tool_check') AND convalidated
+        AND pg_get_constraintdef(oid) LIKE '%list_subscriptions%' AND pg_get_constraintdef(oid) LIKE '%read_subscription_review%'
+        AND pg_get_constraintdef(oid) LIKE '%read_finance_record%'),
+      'typed_receipt_function',pg_get_functiondef('verify_agent_finance_report_receipt()'::regprocedure) LIKE '%read_subscription_review%'
+        AND pg_get_functiondef('verify_agent_finance_report_receipt()'::regprocedure) LIKE '%read_finance_record%',
+      'telegram_finance_forbidden',(SELECT count(*) FROM pg_constraint WHERE conrelid='agent_runtime_profiles'::regclass
+        AND conname='agent_runtime_profiles_telegram_configuration_sha256_check' AND pg_get_constraintdef(oid) LIKE '%incident-summary%'),
+      'report_count',(SELECT count(*) FROM agent_finance_reports),
+      'active_profiles',(SELECT count(*) FROM agent_runtime_profiles WHERE state='active'),
+      'enabled_telegram_channels',(SELECT count(*) FROM telegram_channels WHERE delivery_enabled),
+      'disposable_test_databases',(SELECT count(*) FROM pg_database WHERE datname ~ '^cp_test_[0-9a-f]{32}$'))"""
+    result = subprocess.run([str(APP / '.tools/pgsql/bin/psql.exe'), '-X', '-A', '-t', '-q', '-v', 'ON_ERROR_STOP=1', '-c', query],
+                            env=environment, capture_output=True, text=True, encoding='utf-8', timeout=15,
+                            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+    if result.returncode:
+        raise SystemExit('Owned schema inspection failed; private diagnostics withheld.')
+    actual = json.loads(result.stdout)
+    manifests = [json.loads(path.read_text(encoding='utf-8')) for path in sorted((APP / 'skills').glob('*/manifest.json'))]
+    effective = {**os.environ, **values}
+    disabled = (values.get('CP_STORAGE_DRIVER') == 'disabled'
+                and effective.get('CP_AGENT_RUNTIME_ENABLED', 'false') in ('false', 'disabled')
+                and not effective.get('CP_TELEGRAM_BOTS') and not effective.get('CP_TELEGRAM_DISPATCH_BOTS'))
+    owned = load('review_process_owner', 'verify_notifications_sources.py').owned_process
+    ownership = {'api': owned('project-templates-api-owner.json', 'api'),
+                 'notification_worker': owned('project-templates-worker-owner.json', 'worker-notification')}
+    draft = len(manifests) == 8 and all(m['state'] == 'draft' for m in manifests)
+    passed = (common['passed'] and common['database']['migration_count'] == 65 and actual['report_append_only']
+              and actual['report_guards'] == 3 and actual['deferred_report_receipt'] == actual['typed_payload_constraint'] == 1
+              and actual['detail_tool_constraints'] == 2 and actual['typed_receipt_function'] and actual['telegram_finance_forbidden'] == 1
+              and actual['report_count'] == actual['active_profiles'] == actual['enabled_telegram_channels'] == actual['disposable_test_databases'] == 0
+              and draft and disabled and all(ownership.values()))
+    report = {'passed': bool(passed), 'checked_at': datetime.now(timezone.utc).isoformat(), 'database': actual,
+              'migration_count': common['database']['migration_count'], 'all_eight_skills_draft': draft,
+              'integrations_disabled': disabled, 'ownership': ownership, 'production_deployment': False,
+              'real_cloud_or_model': False, 'verification_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    (EVIDENCE / 'development-subscription-review.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'passed': bool(passed), 'migration_count': report['migration_count'], 'integrations_disabled': disabled,
+                      'disposable_test_databases': actual['disposable_test_databases']}))
+    return 0 if passed else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

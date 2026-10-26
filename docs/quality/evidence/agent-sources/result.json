@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "started_at": "2026-10-23T09:47:06.485Z",
+  "completed_at": "2026-10-23T09:47:39.204Z",
+  "real_api": true,
+  "isolated_native_postgresql": true,
+  "controlled_file_provider": true,
+  "genuine_web_sessions_and_mfa": true,
+  "synthetic_company_policy_and_data": true,
+  "actual_model_or_cloud": false,
+  "source_files": [
+    "backend/internal/agent/context.go",
+    "backend/internal/agent/conversations.go",
+    "backend/internal/identity/classification.go",
+    "backend/internal/httpapi/administration.go",
+    "backend/internal/httpapi/conversations.go",
+    "backend/migrations/0032_classification_policy_publication.sql",
+    "web/src/ClassificationPolicies.tsx",
+    "web/src/ConversationSources.tsx",
+    "web/src/Conversations.tsx",
+    "web/src/App.tsx",
+    "web/src/styles.css",
+    "packages/contracts/src/api.d.ts"
+  ],
+  "source_sha256": "ee42d822a9cd6360fe3e0380858cd6f6c133c9b813a45745be576e8ee376acbb",
+  "source_unchanged": true,
+  "checks": [
+    "The configuration administrator sees current classification policies through a real MFA session but receives 404 for the business conversation",
+    "The shared conversation previews the exact published knowledge revision with its historical formal file version and withholds the newer private draft",
+    "Both themes and five widths fit an authorized source preview; the author’s separate personal conversation can explicitly read its own current draft without changing the shared view",
+    "A real second-device policy publication invalidates the stale editor without losing its reason; withdrawing AI admission prevents a fresh source read",
+    "The real policy form publishes with current MFA, exposes both immutable history entries, and fits both themes and five widths including the 390px dialog",
+    "A real member exit advances the security epoch; an old page gets 409 and clears prior text, and a reload rebuilds an authorized source view"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "all_browser_contexts_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T03:45:32.405Z",
+  "source_sha256": "e13ef9278e1e4f61acabf8741fb4253646950c48e377619a1b2b0f9d04ccd3a0",
+  "source_file_count": 410,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": [
+    "15",
+    "17"
+  ],
+  "production_deliveries": false,
+  "checks": [
+    {
+      "name": "Web creates a real draft and submits the specifically selected older formal file version with immutable criteria and content hash",
+      "passed": true
+    },
+    {
+      "name": "Submitting user cannot accept their own revision in either the actual Web form or API command",
+      "passed": true
+    },
+    {
+      "name": "Independent reviewer returns then accepts a new revision only after two explicit unchecked attestations; old criteria files hash and return decision remain fixed",
+      "passed": true
+    },
+    {
+      "name": "An actual external new submission produces 409 and preserves selected files description and reason with error focus and disabled stale resubmission",
+      "passed": true
+    },
+    {
+      "name": "Explicit new submission after acceptance leaves the old accepted revision intact and creates a separate pending revision",
+      "passed": true
+    },
+    {
+      "name": "Project viewer role overrides broad business roles and actual Web hides write and acceptance controls while retaining authorized fixed history",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "deliverable-create",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "deliverable-submit",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "deliverable-acceptance",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "deliverable-fixed-history",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "deliverable-conflict-preserved",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "name": "deliverable-readonly",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

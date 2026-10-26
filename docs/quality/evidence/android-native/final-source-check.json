@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T20:48:23.477687+00:00",
+  "checks": [
+    {
+      "name": "Native build and Android tests pass with current frozen source",
+      "passed": true
+    },
+    {
+      "name": "The inspected APK is the exact artifact from the recorded build",
+      "passed": true
+    },
+    {
+      "name": "All fifty-four Web tests and production build match current source",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six mobile tests and both mini builds match current source",
+      "passed": true
+    },
+    {
+      "name": "Thirty-four runtime tests and all draft skill checks match source",
+      "passed": true
+    },
+    {
+      "name": "The existing full backend proof still matches unchanged backend code",
+      "passed": true
+    },
+    {
+      "name": "The actual mobile browser regression is current and all owned resources closed",
+      "passed": true
+    },
+    {
+      "name": "The private browser fixture was removed",
+      "passed": true
+    },
+    {
+      "name": "The owned H5 review listener is closed",
+      "passed": true
+    },
+    {
+      "name": "Both actual native Babel transform tests pass with unchanged inputs",
+      "passed": true
+    },
+    {
+      "name": "The separate JVM boundary suite executed all eleven current cases",
+      "passed": true
+    },
+    {
+      "name": "Dependency warnings are recorded as an open production gate",
+      "passed": true
+    }
+  ],
+  "backend_sha256": "cd059e07b85c2446a6d48013ac8d5b28f30086bc7739805f4b10bcf3aa6ef8cb",
+  "native_source_sha256": "fe4d85dfc0b6b94859f689567bcbd31ddef6db5828db8a188efab147aefb86c3",
+  "package_lock_sha256": "48af18363fb82f19b8a7dbb1cede8c4b4260de8267de97490445c2cf4b3fb0d5",
+  "virtualization_used": false,
+  "device_executed": false,
+  "production_release": false,
+  "full_goal_complete": false
+}

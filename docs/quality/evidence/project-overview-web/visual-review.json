@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-26T00:24:33.092123+00:00",
+  "browser_source_sha256": "3911ef51e400758da36f9d35ce5dc9972a20147e8648bb28494d218eb2f6f0c4",
+  "images": [
+    {
+      "path": "review-crops/project-overview-light-1440.png",
+      "sha256": "6728069d749a52f2a9d22b8155c84fb55bfc95ba300d7d0872c9a35e5b7eba9a"
+    },
+    {
+      "path": "review-crops/project-overview-dark-390.png",
+      "sha256": "1b1819e54c902453ebfe6b5325e60aa7b239e4406ed5d26f73a218f950629410"
+    }
+  ],
+  "observations": [
+    "Readable scope, full counts and capped preview are visible.",
+    "Exact monetary strings remain readable inside a contained scrolling table.",
+    "The Hong Kong snapshot includes date, time and seconds.",
+    "Light desktop and dark narrow layouts retain existing design tokens."
+  ],
+  "review_method": "Assistant viewed both current actual-browser screenshot crops; no design-only preview or mocked business data response."
+}

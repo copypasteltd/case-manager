@@ -1,0 +1,21 @@
+import org.gradle.api.artifacts.repositories.MavenArtifactRepository
+
+// Opt-in fallback for build hosts where the Google Maven endpoint is
+// unreachable. TLS stays enabled; Maven Central and plugin portals stay put.
+def configureGoogle = { repository ->
+    if (repository instanceof MavenArtifactRepository && repository.url.host in ['dl.google.com', 'maven.google.com']) {
+        logger.lifecycle('Android build: using the opt-in Google Maven mirror.')
+        repository.url = uri('https://maven.aliyun.com/repository/google')
+        repository.content {
+            includeGroupByRegex('com\\.android.*')
+            includeGroupByRegex('androidx\\..*')
+            includeGroupByRegex('com\\.google\\.android.*')
+            includeGroupByRegex('com\\.google\\.testing\\.platform.*')
+        }
+    }
+}
+gradle.beforeProject { project ->
+    project.repositories.configureEach(configureGoogle)
+    project.buildscript.repositories.configureEach(configureGoogle)
+}
+gradle.beforeSettings { settings -> settings.pluginManagement.repositories.configureEach(configureGoogle) }

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,63}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "state": {
+      "enum": [
+        "draft",
+        "tested",
+        "pilot",
+        "published",
+        "disabled"
+      ]
+    },
+    "owner_role": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "runtime_compatibility": {
+      "const": "codex-sdk@0.164.0"
+    },
+    "authorization_level": {
+      "enum": [
+        "L0",
+        "L1",
+        "L2"
+      ]
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{1,63}$"
+      },
+      "minItems": 1,
+      "maxItems": 30,
+      "uniqueItems": true
+    },
+    "completion_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "input_schema_ref": {
+      "const": "input.schema.json"
+    },
+    "output_schema_ref": {
+      "const": "output.schema.json"
+    },
+    "instructions_ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,63}/SKILL\\.md$"
+    },
+    "reference_docs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]{1,63}\\.md$"
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "max_tool_calls": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1800
+    },
+    "test_case_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 50
+      },
+      "minItems": 1,
+      "maxItems": 50,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "skill_id",
+    "version",
+    "state",
+    "owner_role",
+    "runtime_compatibility",
+    "authorization_level",
+    "allowed_tools",
+    "completion_tools",
+    "input_schema_ref",
+    "output_schema_ref",
+    "instructions_ref",
+    "reference_docs",
+    "max_tool_calls",
+    "timeout_seconds",
+    "test_case_refs"
+  ]
+}

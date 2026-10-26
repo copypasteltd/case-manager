@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "phase": "current member withdrawal",
+  "started_at": "2026-10-24T15:40:00.934Z",
+  "completed_at": "2026-10-24T15:40:17.457Z",
+  "real_api": true,
+  "isolated_native_postgresql": true,
+  "actual_model_or_cloud": false,
+  "source_files": [
+    "backend/internal/agent/runs.go",
+    "backend/internal/agent/run_reads.go",
+    "backend/internal/agent/run_cancel.go",
+    "backend/internal/httpapi/agent_runs.go",
+    "backend/internal/httpapi/agent_context_integration_test.go",
+    "backend/internal/httpapi/agent_runs_integration_test.go",
+    "backend/migrations/0047_agent_runs_and_messages.sql",
+    "web/src/ConversationMessages.tsx",
+    "web/src/ConversationSources.tsx",
+    "web/src/Conversations.tsx",
+    "web/src/App.tsx",
+    "packages/contracts/src/api.d.ts",
+    "scripts/check_agent_runs.mjs",
+    "scripts/run_agent_browser.py"
+  ],
+  "source_sha256": "0e240339f0be06815e2c459b516caad8f4eee12018aab02671d8a9305cb9b149",
+  "source_unchanged": true,
+  "checks": [
+    "Web submits a real queued run with a fixed published source and clears text only after a matching receipt",
+    "A shared reader sees persisted messages and task events while only the requester can cancel",
+    "A lost response remains a bounded memory-only pending intent across navigation; explicit retry uses the original key and creates no duplicate",
+    "Removing a member through Web causes their already open page to clear message and run facts after current authorization is checked"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "intentionally_aborted_commit_responses": 1,
+  "all_browser_contexts_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

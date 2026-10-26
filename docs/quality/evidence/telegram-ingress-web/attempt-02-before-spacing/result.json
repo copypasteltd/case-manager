@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T12:18:27.462Z",
+  "finished_at": "2026-10-25T12:18:40.760Z",
+  "checks": [
+    "The real authenticated portal shows ingress availability separately from the unavailable executor and delivery.",
+    "A recent MFA login issues a private single-use link; issuing it grants no binding and status reloads reveal no link token.",
+    "A real private webhook proves the numeric identity; only the original portal login explicitly confirming creates the formal binding.",
+    "A separate administrator session explicitly enables the exact group and topic with a versioned, audited portal change.",
+    "The bound sender can inspect one durable request after identical webhook retries; another portal identity cannot see it and no executor completion is claimed.",
+    "A membership update pauses the group, withdraws pending work and appears as the latest actual channel revision in the portal.",
+    "The actual owner revokes the versioned binding in the UI; no active browser-created binding remains."
+  ],
+  "source_count": 540,
+  "source_sha256": "0de4480d6fb48843d644a5686a3bf6a5998041ec2e5ad23d140490b78a5a7483",
+  "source_after_sha256": "0de4480d6fb48843d644a5686a3bf6a5998041ec2e5ad23d140490b78a5a7483",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.facebook.react'
+
+def resolvePackage = { name -> new File(['node', '--print', "require.resolve('${name}/package.json')"].execute(null, rootDir.parentFile).text.trim()).parentFile }
+def originValue = System.getenv('CP_MOBILE_API_ORIGIN')
+if (!originValue) throw new GradleException('CP_MOBILE_API_ORIGIN is required for native Android builds.')
+def origin = new URI(originValue)
+def localBuild = System.getenv('CP_MOBILE_BUILD_PROFILE') == 'local'
+def localHTTP = localBuild && origin.scheme == 'http' && origin.host in ['127.0.0.1', 'localhost']
+if ((!localHTTP && origin.scheme != 'https') || !origin.host || origin.rawUserInfo || origin.rawQuery || origin.rawFragment || !(origin.rawPath in ['', '/']) || origin.port > 65535 || origin.port == 0) throw new GradleException('Android requires an explicit HTTPS API origin; only a local profile permits loopback HTTP.')
+def apiOrigin = new URI(origin.scheme, null, origin.host, origin.port, null, null, null).toASCIIString()
+react {
+    root = rootDir.parentFile
+    reactNativeDir = resolvePackage('react-native')
+    codegenDir = resolvePackage('@react-native/codegen')
+    cliFile = new File(resolvePackage('react-native'), 'cli.js')
+    // Taro supplies an already frozen offline bundle for every build type.
+    debuggableVariants = ['debug', 'release']
+}
+android {
+    namespace 'hk.copypaste.workspace'
+    compileSdk rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId 'hk.copypaste.workspace'
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName '0.1.0'
+        buildConfigField 'String', 'CP_API_ORIGIN', '"' + apiOrigin + '"'
+        buildConfigField 'boolean', 'CP_LOCAL_HTTP', localHTTP.toString()
+        manifestPlaceholders = [cpCleartext: localHTTP.toString()]
+        ndk { abiFilters 'arm64-v8a' }
+    }
+    buildFeatures { buildConfig true }
+    sourceSets {
+        // Local cleartext exceptions exist only in an explicit local build.
+        debug.res.setSrcDirs(localHTTP ? ['src/local/res'] : [])
+    }
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('../../.local/android/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-local'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    packagingOptions { jniLibs { useLegacyPackaging false; keepDebugSymbols += ['**/*.so'] } }
+}
+dependencies {
+    implementation('com.facebook.react:react-android')
+    implementation('com.facebook.react:hermes-android')
+    implementation('androidx.core:core:1.12.0')
+    testImplementation('junit:junit:4.13.2')
+    testImplementation('com.squareup.okhttp3:mockwebserver:4.9.2')
+}
+// Device model/layout information does not need Play installation attribution.
+configurations.configureEach { exclude group: 'com.android.installreferrer', module: 'installreferrer' }
+apply from: new File(resolvePackage('@react-native-community/cli-platform-android'), 'native_modules.gradle')
+applyNativeModulesAppBuildGradle(project)
+tasks.configureEach { task ->
+    if (task.name in ['preDebugBuild', 'preReleaseBuild']) task.doFirst {
+        if (!file('src/main/assets/index.android.bundle').isFile()) throw new GradleException('Build the current Taro Android bundle before packaging.')
+    }
+    if (task.name in ['assembleRelease', 'bundleRelease', 'preReleaseBuild']) task.doFirst {
+        if (localBuild) throw new GradleException('A local-profile build cannot be released.')
+    }
+}

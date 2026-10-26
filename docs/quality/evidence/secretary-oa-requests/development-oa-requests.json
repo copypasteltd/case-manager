@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T08:41:58.706193+00:00",
+  "database": {
+    "can_read_file_evidence": true,
+    "historical_creator_nullable": true,
+    "historical_original_name_nullable": true,
+    "append_only_file_tables": true,
+    "file_update_guards": 13,
+    "original_name_immutable_guards": 1,
+    "creation_ids_nullable": true,
+    "legacy_update_default": true,
+    "mode_scope_enforced": true,
+    "exact_creation_binding": true,
+    "creation_source_and_tool_evidence": true,
+    "oa_append_only_tables": true,
+    "oa_guards": 6,
+    "oa_original_session_binding": true,
+    "oa_exact_arguments_and_receipt": true,
+    "oa_sender_and_tool_evidence": true,
+    "oa_tool_allowlists": 2,
+    "can_rewrite_tool_receipts": false,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 56,
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "file_context_probe": {
+    "method": "GET",
+    "path": "/v1/conversations/00000000-0000-4000-8000-000000000000/context-sources/file/00000000-0000-4000-8000-000000000000?context_security_version=1&version_id=00000000-0000-4000-8000-000000000000",
+    "status": 401,
+    "expected": 401,
+    "passed": true
+  },
+  "agent_file_reading_disabled_in_development_configuration": true,
+  "agent_file_writing_disabled_in_development_configuration": true,
+  "environment": "owned native Windows Go/PostgreSQL; no virtualization",
+  "verification_script_sha256": "176b67465d0263f0d0465e382f5ad20fab918ea4086f0e8639993a89459e2d00",
+  "real_model_invoked": false,
+  "actual_cloud_invoked": false,
+  "production_deployed": false
+}

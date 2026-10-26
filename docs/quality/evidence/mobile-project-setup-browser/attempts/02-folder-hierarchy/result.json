@@ -1,0 +1,44 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T06:48:51.330Z",
+  "source_sha256": "741add389bc143c0ce229cd5c1c49288e564f5dff78de1bcf98073079a3f5450",
+  "source_after_sha256": "741add389bc143c0ce229cd5c1c49288e564f5dff78de1bcf98073079a3f5450",
+  "source_unchanged": true,
+  "source_count": 589,
+  "checks": [],
+  "layouts": [
+    {
+      "page": "project-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: 合同\n    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_setup.mjs:75:88\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+  "owned_browser_closed": true,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "741add389bc143c0ce229cd5c1c49288e564f5dff78de1bcf98073079a3f5450",
+  "source_sha256_after_build": "741add389bc143c0ce229cd5c1c49288e564f5dff78de1bcf98073079a3f5450",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

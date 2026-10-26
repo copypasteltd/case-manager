@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-10-24T20:10:15.845089+00:00",
+  "source_sha256": "b03c83d7349d37eb1bff6a54a06d1416e5ec3b9dad27381d779ebbeb41521555",
+  "batch": 5,
+  "passed": false,
+  "failed_test": "TestDurableJobLeases",
+  "failure": "server_integration_test.go:84: timeout: context deadline exceeded",
+  "stage": "DROP DATABASE cleanup at server_integration_test.go:84",
+  "other_top_level_tests_passed": 7,
+  "completed_prior_batches": 4,
+  "raw_log_preserved": false,
+  "note": "Structured failure retained from tool-observed output; resume reused the ignored raw-log filename. Failed batch is rerun against unchanged backend source.",
+  "correction": "Source line inspection identifies DROP execution, not connection establishment."
+}

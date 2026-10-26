@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "started_at": "2026-10-24T22:20:23.378Z",
+  "finished_at": "2026-10-24T22:20:35.901Z",
+  "source_sha256": "e160456603e695734994c6ab64fe6409876a70aeb0ae03aecdc6d985d8dc80ff",
+  "source_after_sha256": "e160456603e695734994c6ab64fe6409876a70aeb0ae03aecdc6d985d8dc80ff",
+  "source_files": [
+    "backend/migrations/0050_agent_run_mutations.sql",
+    "backend/internal/agent/mutations.go",
+    "backend/internal/agent/execution.go",
+    "backend/internal/agent/execution_tools.go",
+    "backend/internal/agent/execution_results.go",
+    "backend/internal/agent/runs.go",
+    "backend/internal/agent/run_reads.go",
+    "backend/internal/agentworker/mcp.go",
+    "backend/internal/agentworker/bridge.go",
+    "backend/internal/httpapi/agent_mutations_integration_test.go",
+    "web/src/ConversationMutation.tsx",
+    "web/src/ConversationMessages.tsx",
+    "packages/contracts/src/api.d.ts",
+    "packages/contracts/src/mutation.ts",
+    "scripts/check_agent_mutations.mjs",
+    "scripts/run_agent_browser.py"
+  ],
+  "checks": [
+    {
+      "name": "Web reads the actual committed update with exact before/after and business operation receipt",
+      "passed": true
+    },
+    {
+      "name": "Selecting and previewing an exact target version does not send or execute the update",
+      "passed": true
+    },
+    {
+      "name": "A user can withdraw the selected change before sending without creating a mutation grant",
+      "passed": true
+    },
+    {
+      "name": "One explicit send persists the exact server-bound L1 instruction and immutable source hash",
+      "passed": true
+    },
+    {
+      "name": "Queued updates show authorized scope without a false completion claim or a second approval",
+      "passed": true
+    },
+    {
+      "name": "Cancelling the queued update preserves its intent, creates no business commit, and leaves the target unchanged",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_contexts_closed": true,
+  "owned_browser_closed": true,
+  "scope": "Real Web/native isolated API and controlled MCP fixture; no actual SDK model, cloud or production activation.",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

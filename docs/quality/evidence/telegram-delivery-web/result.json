@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T17:59:37.116Z",
+  "finished_at": "2026-10-25T18:00:05.681Z",
+  "checks": [
+    {
+      "name": "Web login preserves the authenticated Telegram request deep link",
+      "passed": true
+    },
+    {
+      "name": "Web shows actual immutable preparation and unknown-outcome receipts without claiming delivery",
+      "passed": true
+    },
+    {
+      "name": "Web reconciliation commits a new actor-attributed event and retains the uncertain send",
+      "passed": true
+    }
+  ],
+  "source_count": 568,
+  "source_sha256": "4b831a3ae1dc20d27a3ba74a604576af0708885a7f3823990ee870fc8c1592aa",
+  "source_after_sha256": "4b831a3ae1dc20d27a3ba74a604576af0708885a7f3823990ee870fc8c1592aa",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

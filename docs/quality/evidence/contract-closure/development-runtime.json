@@ -1,0 +1,133 @@
+{
+  "checked_at": "2026-10-23T23:16:20.350601+00:00",
+  "passed": true,
+  "environment": "owned native loopback development only",
+  "database": {
+    "role": "copypaste_app",
+    "is_superuser": false,
+    "can_bypass_row_security": false,
+    "can_create_database": false,
+    "can_create_roles": false,
+    "can_read_migration_ledger": false,
+    "can_create_public_objects": false,
+    "can_insert_immutable_facts": true,
+    "can_rewrite_immutable_facts": false,
+    "closure_role_count": 1,
+    "closure_role_bindings": 0,
+    "closer_requires_mfa": true,
+    "closure_consistency_constraints": 3,
+    "closure_immutable_guards": 2,
+    "migration_count": 40,
+    "latest_migration": "0040_contract_closure.sql",
+    "migration_manifest_matches_source": true
+  },
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/closure-preview",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/closure",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/closure",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/finance",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/finance/events",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/finance/entries",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/finance/entries/00000000-0000-4000-8000-000000000000/release",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000/finance/milestones/00000000-0000-4000-8000-000000000000/review",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payments",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/costs",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/reports/cash",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/reports/expenses",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/contracts/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "production_deployment": false,
+  "worker_started": false
+}

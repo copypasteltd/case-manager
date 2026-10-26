@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T03:31:04.647Z",
+  "finished_at": "2026-10-26T03:31:32.461Z",
+  "checks": [
+    "Web displays a genuine created milestone ID, child version and original operation receipt.",
+    "Web selects an actual same-project milestone and previews one task association without sending.",
+    "Web previews complete creation fields and the parent project version before sending.",
+    "Web confirmed send persists the complete exact creation instruction with no completion claim.",
+    "Web retry preserves the run; cancellation leaves the existing milestone and task unchanged."
+  ],
+  "source_count": 592,
+  "source_sha256": "4c1abd25b09e7724d3fbe6df42eb24dd5d206d9cae2f65cb5750e067b5110854",
+  "source_after_sha256": "4c1abd25b09e7724d3fbe6df42eb24dd5d206d9cae2f65cb5750e067b5110854",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

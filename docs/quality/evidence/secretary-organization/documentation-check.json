@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T05:38:15.579488+00:00",
+  "document_count": 8,
+  "local_links_checked": 455,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 goal gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment 55",
+      "passed": true
+    },
+    {
+      "name": "Current backend source appears in ledger and baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Directory plans remain partial scope and the 13-page mobile baseline is explicit",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "a9ebd27df376996b81591e14d07ba67f185f89fadd5f9fe2ddafa4bf1decb06d"
+    },
+    {
+      "path": "docs/development/55-secretary-directory-organization.md",
+      "sha256": "43fea14f361f1fbc956eb01729c41c11db551389c834e2fd6a26a737058bfeb0"
+    },
+    {
+      "path": "docs/requirements/07-secretary-and-channels.md",
+      "sha256": "4d05b24034f4d183e0a7a741f5c8b116b009609c6e8778a5968ba4f291b667fc"
+    },
+    {
+      "path": "docs/development/07-agent-tools-and-skills.md",
+      "sha256": "951459be656da13e35761698d0a749d58e0e9914bdadfca0bba598961e0bd5fd"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "c497b97570f962123adfb3a6b36c9b793173a20d7cddcb770f720d8432400626"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "93e30d320b13cc48d143352df8aed7aed3f75fc9b420bf1bf28bf6d6b150bcfe"
+    },
+    {
+      "path": "docs/quality/evidence/secretary-organization/verification.md",
+      "sha256": "4f7ec717a4a60f833d677fae3cc078ea291f965befc36c4bac705c96b3cee016"
+    },
+    {
+      "path": "docs/skills/information-organize/SKILL.md",
+      "sha256": "d3365e1503324b21d96f094957d25eaa5af424f6ed95d2563f683d46736ce1cd"
+    }
+  ]
+}

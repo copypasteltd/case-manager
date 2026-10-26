@@ -1,0 +1,17 @@
+ALTER TABLE milestones ADD COLUMN creator_id uuid;
+ALTER TABLE risks ADD COLUMN creator_id uuid;
+ALTER TABLE issues ADD COLUMN creator_id uuid;
+UPDATE milestones m SET creator_id=p.creator_id FROM projects p WHERE p.org_id=m.org_id AND p.id=m.project_id;
+UPDATE risks r SET creator_id=p.creator_id FROM projects p WHERE p.org_id=r.org_id AND p.id=r.project_id;
+UPDATE issues i SET creator_id=p.creator_id FROM projects p WHERE p.org_id=i.org_id AND p.id=i.project_id;
+ALTER TABLE milestones ALTER COLUMN creator_id SET NOT NULL;
+ALTER TABLE risks ALTER COLUMN creator_id SET NOT NULL;
+ALTER TABLE issues ALTER COLUMN creator_id SET NOT NULL;
+ALTER TABLE milestones ADD FOREIGN KEY(org_id,creator_id) REFERENCES users(org_id,id);
+ALTER TABLE risks ADD FOREIGN KEY(org_id,creator_id) REFERENCES users(org_id,id);
+ALTER TABLE issues ADD FOREIGN KEY(org_id,creator_id) REFERENCES users(org_id,id);
+ALTER TABLE deliverables ADD COLUMN milestone_id uuid;
+ALTER TABLE deliverables ADD FOREIGN KEY(org_id,project_id,milestone_id) REFERENCES milestones(org_id,project_id,id);
+CREATE INDEX milestones_list ON milestones(org_id,project_id,updated_at DESC,id DESC);
+CREATE INDEX risks_list ON risks(org_id,project_id,updated_at DESC,id DESC);
+CREATE INDEX issues_list ON issues(org_id,project_id,updated_at DESC,id DESC);

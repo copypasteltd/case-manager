@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "started_at": "2026-10-24T20:03:47.437Z",
+  "finished_at": "2026-10-24T20:03:59.262Z",
+  "source_sha256": "010299f7d57c3b046aac64e60b351dd29244add435ad44b0d87b6dfe3e42e6ac",
+  "source_after_sha256": "010299f7d57c3b046aac64e60b351dd29244add435ad44b0d87b6dfe3e42e6ac",
+  "source_files": [
+    "mobile/src/pages/secretary/plans.tsx",
+    "mobile/src/pages/secretary/index.tsx",
+    "mobile/src/platform/drafts.ts",
+    "mobile/src/platform/command.tsx",
+    "backend/internal/agent/plans.go",
+    "backend/internal/agent/plan_mutations.go",
+    "backend/migrations/0049_agent_project_plans.sql",
+    "packages/contracts/src/api.d.ts",
+    "scripts/check_mobile_plans.mjs",
+    "scripts/run_mobile_browser.py"
+  ],
+  "checks": [
+    {
+      "name": "Taro H5 creates a fixed proposal without creating a project",
+      "passed": true
+    },
+    {
+      "name": "Mobile consumes current interactive MFA proof for exact human approval",
+      "passed": true
+    },
+    {
+      "name": "Mobile creates the exact approved project and shows a real business receipt",
+      "passed": true
+    },
+    {
+      "name": "Created project opens through actual Taro project navigation",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_contexts_closed": true,
+  "owned_browser_closed": true,
+  "scope": "Real Taro H5 and native isolated API only; WeChat/Douyin/Android device execution remains unverified.",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "0d398d59299a8bd9d6dbc43f48d8200947ce1acc8a37c297922b42f98c059014",
+  "source_sha256_after_build": "0d398d59299a8bd9d6dbc43f48d8200947ce1acc8a37c297922b42f98c059014",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": false
+}

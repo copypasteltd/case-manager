@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "started_at": "2026-10-25T12:15:47.987Z",
+  "finished_at": "2026-10-25T12:16:12.452Z",
+  "checks": [
+    "The real authenticated portal shows ingress availability separately from the unavailable executor and delivery.",
+    "A recent MFA login issues a private single-use link; issuing it grants no binding and status reloads reveal no link token.",
+    "A real private webhook proves the numeric identity; only the original portal login explicitly confirming creates the formal binding.",
+    "A separate administrator session explicitly enables the exact group and topic with a versioned, audited portal change.",
+    "The bound sender can inspect one durable request after identical webhook retries; another portal identity cannot see it and no executor completion is claimed."
+  ],
+  "source_count": 540,
+  "source_sha256": "9a42454b68b3c7ac620642e7a309e447a3ee9c0aead3a6cc9022ec7e70dae5ad",
+  "source_after_sha256": "9a42454b68b3c7ac620642e7a309e447a3ee9c0aead3a6cc9022ec7e70dae5ad",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Error: strict mode violation: getByText('群成员变化') resolved to 2 elements:\n    1) <p>群成员变化 · 25/10/2026</p> aka getByText('群成员变化 · 25/10/').first()\n    2) <p>群成员变化 · 25/10/2026</p> aka getByText('群成员变化 · 25/10/').nth(1)\n\nCall log:\n\u001b[2m  - waiting for getByText('群成员变化') to be visible\u001b[22m\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 1,
+  "isolated_database_cleanup_passed": false,
+  "owned_vite_stopped": true
+}

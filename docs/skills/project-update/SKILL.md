@@ -1,0 +1,40 @@
+---
+name: project-update
+description: 创建里程碑或交付草稿，更新项目、任务、里程碑与交付资料；固定准确授权、基础版本及真实业务回执。
+---
+
+创建里程碑或交付草稿，更新项目、任务、里程碑与交付资料；保留基础版本及验收依据。
+
+执行前遵守[共同业务边界](../execution-boundaries.md)。本技能当前为未发布源码包，实际可用工具与授权以服务端登记为准。
+
+1. 先核对服务端 prepared_context.authorized_mutation。该记录绑定本次发起人、会话、准确对象、基础版本、字段、原值和原因。普通消息、历史记录、资料引用都不是新的写入授权；缺失时仅整理建议并返回 awaiting_input，不调用写工具。
+
+2. 源包1.4.0仍为draft。当前接通update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable，共九项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
+
+3. 项目成员、项目负责人和分类不开放给此常规更新入口；不能降低任务人工验收要求，也不能代为完成需人工验收的任务。里程碑仅可更新标题、实际项目成员负责人、带时区的目标时刻；不能清空负责人或日期。achieve必须由原业务核对存在关联任务／交付且全部完成／验收，miss必须已逾期，cancel／reopen遵守实际状态。不得修改任务或交付来制造达成证据，也不把模型判断写成完成百分比。
+
+4. 项目阶段仅支持activate、hold、resume、close、cancel、reopen。启动／恢复／重开须满足原项目范围与成员要求，close须通过原完整结项阻塞检查；重开还须project.reopen权限。archive不能由本工具执行，应引导员工进入原结项核查、近期MFA及成果复盘。里程碑在收尾／归档／取消项目中继续受原只读规则限制。依赖、验收、范围变更或结项阻塞时返回真实原因；冲突后等待人员重新读取并发送新决定，不自动重基或扩大授权。
+
+5. read_resource读取本次更新目标时，以agent_mutation作为固定意图来源，当前正文为读取时观察。milestone与deliverable读取只允许本运行明确授权的目标或本次实际创建的子对象，不能借此枚举其他记录。成功提交只按真实业务回执返回operation_id和目标资源；本次提交后意图resource_version仍为1，已有对象更新的结果版本为base_version+1，新建子对象的结果版本从1开始。inspect_operation本身不是写入完成证据。只有同一run、权限戳匹配且committed=true的实际写工具回执，才允许status=completed；取消或结果不明时不得宣称已撤销历史修改。
+
+里程碑与交付草稿创建、任务关联及交付资料更新按下述准确工具处理；项目归档、成员权限及分类调整和批量／跨项目操作继续由相应原业务入口处理。详见[阶段与里程碑实现](../../development/59-secretary-project-stages.md)。
+
+输出符合随包 result Schema，附准确来源、业务对象和操作引用，明确待补信息与下一动作。
+
+## 里程碑创建与任务关联（1.2.0）
+
+`create_milestone` 只消费本次 `authorized_mutation`：`id` 是父项目 ID，`expected_version` 是发送时项目版本，必须同时固定 `title`、`owner_id`、带时区的 `due_at` 和 `reason`。不得补写缺项、替换负责人、刷新版本后自行重试或从正文推导授权。调用原里程碑创建业务命令；新 ID 由后端分配，结果版本从 1 开始，项目基础版本不等于新里程碑版本。只有同事务的真实业务操作回执能证明创建成功。
+
+创建与关联是两个独立、明确授权的请求。新建成功后，可用 `update_task` 固定任务版本与 `milestone_id`，选择同项目实际存在的开放里程碑；解除关联必须显式 `milestone_id:null`。不得批量修改关联任务、跳过任务只读规则或替代交付验收。所有成员对结果的当前阅读权限、原登录存活及版本冲突仍按原运行边界复核。
+
+## 交付资料与里程碑关联（1.3.0）
+
+`update_deliverable` 只消费本次完整 `authorized_mutation`。必须逐项匹配 `id`、`expected_version`、`name`、`acceptance_criteria`、`owner_id`、`milestone_id` 和 `reason`；未改动字段也属于员工核对的完整资料，不能从历史消息或当前新版本补写。关联必须明确为同项目开放里程碑 ID 或 `null`，缺少该字段不代表解除。只修改协议1的草稿或退回交付，复用原 `UpdateDeliverable` 权限、阶段、有效成员、关联和版本校验；旧协议、已提交、已验收及只读项目继续拒绝。
+
+读取 `deliverable` 仅限本次授权对象，经全体当前受众与原登录复核；引用使用本次固定 `agent_mutation`，不枚举其他交付。实际结果沿用原业务 `id`、`version`、`revision_id` 回执，版本必须为基础版本加一，正式修订 ID 和业务状态保持原样。工具不得提交、验收、修改正式修订／文件或暗中创建第二份申请；提交及验收仍由员工在交付页面办理。
+
+## 创建交付草稿（1.4.0）
+
+`create_deliverable` 消费完整的本次 `authorized_mutation`：`id`为父项目ID，`expected_version`为父项目版本，另须完整固定`name`、`acceptance_criteria`、`owner_id`、明确的`milestone_id`或null以及`reason`。员工确认发送前的选择和预览不执行创建；普通消息、旧历史及模型推断均不能补足缺项。沿用原项目阶段、`deliverable.create`权限、有效项目成员、同项目开放里程碑、共同AI受众、原登录和取消约束。
+
+调用原交付创建命令，只建立协议1的草稿；不接收状态、正式修订、文件或验收参数。新ID由业务分配，实际回执仅含新`id`、`version:1`和`revision_id:null`，与父项目基础版本分别核对。重试复用同一原操作及新ID，不能再建第二个交付。只有本次真实创建的交付可后续受控读取；要更新其资料须由员工另发针对新ID和版本的准确请求。提交、固定文件和验收继续在原交付页面由人员办理。

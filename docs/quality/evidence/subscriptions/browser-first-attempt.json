@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-23T20:59:01.481Z",
+  "source_sha256": "ae605736838c6c0819b416798a47ad3456bc821e314b459cb87d2d736efe0e66",
+  "source_file_count": 346,
+  "source_unchanged_during_tests": true,
+  "real_web_api": true,
+  "isolated_native_database": true,
+  "controlled_file_provider": true,
+  "controlled_file_size_bytes": "15",
+  "production_payments": false,
+  "checks": [
+    {
+      "name": "Web creates a scoped subscription with fixed supplier, named owner, month-end anchor, exact price and explicit human activation",
+      "passed": true
+    },
+    {
+      "name": "Human generation persists three anchored forecasts and keeps actual costs absent",
+      "passed": true
+    },
+    {
+      "name": "Web links 40 and 80 actual expenses once, retains forecast 100, and explicitly confirms overcharge 120 with fixed evidence and missing invoice",
+      "passed": true
+    },
+    {
+      "name": "Reader cannot infer a subscription containing unreadable actual expenses or obtain write controls",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "temporary_bindings_revoked": true,
+  "all_owned_browser_contexts_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

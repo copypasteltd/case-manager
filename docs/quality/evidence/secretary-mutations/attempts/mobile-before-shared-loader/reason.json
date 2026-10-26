@@ -1,0 +1,4 @@
+{
+  "status": "failed",
+  "reason": "Taro did not transpile shared workspace runtime TypeScript. Added explicit compile.include for contracts/src in mini and H5. A GBK console printing failure also prevented the initial mini build report from being written; report printing now preserves Unicode safely."
+}

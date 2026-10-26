@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T16:12:41.771159+00:00",
+  "database": "cp_test_8765fd12537d4489997bcec25dbd324a",
+  "oid": "21141134",
+  "active_connections_before": 0,
+  "scope": "Only the exact isolated database named in this run's cancelled DROP DATABASE statement",
+  "proof_native_log_timestamp": "2026-10-24 23:37:33.103 CST",
+  "proof_test_failure_timestamp": "2026-10-24T23:37:33.1318342+08:00",
+  "proof_test": "TestCrossCloudReplicas/backup_survives_owner_deactivation_archived_project_and_trash_while_requiring_complete_target_bytes",
+  "operation": "DROP DATABASE without FORCE using the same local test-cluster owner after identity ownership and idle-state verification",
+  "original_development_database_changed": false,
+  "reason": "The initial failure occurred during the 45-second fixture cleanup, not migration initialization. The unchanged batch subsequently passed.",
+  "initial_application_role_cleanup_refused": true
+}

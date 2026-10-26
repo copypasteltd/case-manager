@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/oa-assist.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "enum": [
+            "draft_request",
+            "submit_request"
+          ]
+        },
+        "arguments": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "contract",
+                    "purchase",
+                    "claim"
+                  ]
+                },
+                "business_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "expected_business_version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "business_revision_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "business_content_hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "request_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "expected_version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "business_id",
+                "expected_business_version",
+                "business_revision_id",
+                "business_content_hash",
+                "reason"
+              ],
+              "dependentRequired": {
+                "request_id": [
+                  "expected_version"
+                ],
+                "expected_version": [
+                  "request_id"
+                ]
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "request_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "expected_version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "revision_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "content_hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "workflow_definition_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "preview_hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "request_id",
+                "expected_version",
+                "revision_id",
+                "content_hash",
+                "workflow_definition_id",
+                "preview_hash",
+                "reason"
+              ]
+            }
+          ]
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "tool",
+        "arguments",
+        "instructions"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tool": {
+                "const": "draft_request"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "arguments": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "contract",
+                      "purchase",
+                      "claim"
+                    ]
+                  },
+                  "business_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "expected_business_version": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "business_revision_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "business_content_hash": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "expected_version": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "business_id",
+                  "expected_business_version",
+                  "business_revision_id",
+                  "business_content_hash",
+                  "reason"
+                ],
+                "dependentRequired": {
+                  "request_id": [
+                    "expected_version"
+                  ],
+                  "expected_version": [
+                    "request_id"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tool": {
+                "const": "submit_request"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "arguments": {
+                "type": "object",
+                "properties": {
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "expected_version": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "revision_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "content_hash": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "workflow_definition_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "preview_hash": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "request_id",
+                  "expected_version",
+                  "revision_id",
+                  "content_hash",
+                  "workflow_definition_id",
+                  "preview_hash",
+                  "reason"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

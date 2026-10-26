@@ -1,0 +1,111 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-26T01:24:50.404Z",
+  "source_sha256": "12d2f5ef0fef956ce994031cceb88706041b0a5dfc13320d4c04e9239e0d156e",
+  "source_file_count": 573,
+  "source_unchanged_during_tests": true,
+  "real_taro_h5_api": true,
+  "isolated_native_database": true,
+  "actual_cloud": false,
+  "actual_model": false,
+  "actual_device": false,
+  "transport_fault_injection": true,
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-title').filter({ hasText: '项目预算修订' }) to be visible\u001b[22m\n\n    at heading (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_project_overview.mjs:27:100)\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_project_overview.mjs:89:99",
+  "checks": [
+    {
+      "name": "Actual sixteen authorized categories, complete counts beyond five previews, precise project allocations/reversals and unapproved-budget separation match native HTTP facts",
+      "passed": true
+    },
+    {
+      "name": "Eleven original task/business/file/log/service/finance routes complete real reads; exact cost revisions, actual payment allocations and subscription empty obligations remain distinct; navigation issues no business commands",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "12d2f5ef0fef956ce994031cceb88706041b0a5dfc13320d4c04e9239e0d156e",
+  "source_sha256_after_build": "12d2f5ef0fef956ce994031cceb88706041b0a5dfc13320d4c04e9239e0d156e",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

@@ -1,0 +1,199 @@
+{
+  "started_at": "2026-10-24T11:33:55.661Z",
+  "completed_at": "2026-10-24T11:34:50.846Z",
+  "source_sha256": "3c63974c31ead38631711e0f28f5c43fdfa0203736ec238a65e8848584758978",
+  "source_files": 373,
+  "source_unchanged_during_run": true,
+  "checks": [
+    {
+      "name": "Historical fixed version is read through actual API/provider bytes and rendered literally without executing markup or substituting current content",
+      "passed": true
+    },
+    {
+      "name": "Explicit clear and actual page hide discard content; returning requires a fresh authorized read",
+      "passed": true
+    },
+    {
+      "name": "The later current version remains independently readable",
+      "passed": true
+    },
+    {
+      "name": "Actual committed PNG decodes at its expected dimensions; owned Blob URLs are revoked on hide and clear",
+      "passed": true
+    },
+    {
+      "name": "A real committed PDF crosses two bounded ranges and completes full digest verification; browser PDF embedding only, native rendering remains unverified",
+      "passed": true
+    },
+    {
+      "name": "Unsupported formats and text above the bounded reading budget show an honest fallback and issue no preview grant",
+      "passed": true
+    },
+    {
+      "name": "Actual truncated provider response produces a controlled JSON error and exposes no partial content or completed badge",
+      "passed": true
+    },
+    {
+      "name": "Cancelling a real delayed request aborts its wire call and cannot later reveal content",
+      "passed": true
+    },
+    {
+      "name": "A real project-membership revocation rejects refresh, clears owned content/Blob URLs and returns the old mobile session to login",
+      "passed": true
+    },
+    {
+      "name": "No file content or session secrets enter generic browser storage; full document reload discards memory credentials and content",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "historical-text",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "fixed-image",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "unsupported-format",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "oversized-text",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    },
+    {
+      "page": "truncated-content",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "widths": [
+        320,
+        390,
+        768
+      ],
+      "configurations": 6,
+      "passed": true
+    }
+  ],
+  "blob_lifetimes": [
+    {
+      "phase": "explicit image clear",
+      "created": 3,
+      "revoked": 3,
+      "active": 0
+    },
+    {
+      "phase": "revoked member refresh",
+      "created": 1,
+      "revoked": 1,
+      "active": 0
+    }
+  ],
+  "javascript_errors": [],
+  "unexpected_server_errors": [],
+  "expected_server_errors": [
+    {
+      "path": "/v1/downloads/d39e1e20-3f80-4b7c-84d8-9c9d002bbddd/chunks",
+      "status": 502
+    },
+    {
+      "path": "/v1/downloads/fd683eaf-a9fa-4cfc-91c2-ad721ef0ec35/chunks",
+      "status": 502
+    },
+    {
+      "path": "/v1/downloads/58dbe91a-fc21-4dee-9632-23298abbe147/chunks",
+      "status": 502
+    }
+  ],
+  "network_failures": [
+    {
+      "path": "http://localhost:5189/b0b2d943-77a3-4e5b-b39d-f58d8a551455",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/b0b2d943-77a3-4e5b-b39d-f58d8a551455",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/b0b2d943-77a3-4e5b-b39d-f58d8a551455",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/b0b2d943-77a3-4e5b-b39d-f58d8a551455",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    },
+    {
+      "path": "http://localhost:5189/b0b2d943-77a3-4e5b-b39d-f58d8a551455",
+      "error": "net::ERR_BLOCKED_BY_CLIENT",
+      "expected": false
+    },
+    {
+      "path": "/v1/downloads/eb2caaef-3e67-44e1-96e1-1587db9e192c/chunks",
+      "error": "net::ERR_ABORTED",
+      "expected": true
+    }
+  ],
+  "all_browser_contexts_closed": true,
+  "all_browser_tabs_closed": true,
+  "actual_cloud_invoked": false,
+  "actual_mini_program_runtime_invoked": false,
+  "actual_android_runtime_invoked": false,
+  "scope": "Native Edge Taro H5 common UI, actual local API/PostgreSQL and small controlled provider bytes; PDF embedding is not a rendering or device proof",
+  "passed": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "3c63974c31ead38631711e0f28f5c43fdfa0203736ec238a65e8848584758978",
+  "source_sha256_after_build": "3c63974c31ead38631711e0f28f5c43fdfa0203736ec238a65e8848584758978",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true,
+  "failure_reason": "The local browser blocked the sandboxed Blob PDF iframe (ERR_BLOCKED_BY_CLIENT); all ten functional checks ran, but the final network-error assertion correctly failed. Final H5 behavior now uses an explicit document-format fallback without embedding PDF."
+}

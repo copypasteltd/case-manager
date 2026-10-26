@@ -1,0 +1,31 @@
+{
+  "reviewed_at": "2026-10-26T08:15:38.440740+00:00",
+  "scope": "Manual observation of three actual 390 CSS pixel H5 screenshots; no new design system or device acceptance claim.",
+  "images": [
+    {
+      "path": "milestone-creation.png",
+      "sha256": "6c5cab236fb1a96578bb7355205b9ac6ce485447b0a88dc81dfa938eebc4cb7c",
+      "observations": [
+        "390px实际新建表单完整显示，负责人bob、香港目标时间与六位微秒可见。",
+        "标题、必填提示、保存及重新读取按钮无可见横向截断。"
+      ]
+    },
+    {
+      "path": "risk-follow-up.png",
+      "sha256": "dd62fcf4c948ce868c77b67d3e0cbc64abd0f769eded2f46819a70b68d3c763d",
+      "observations": [
+        "390px实际风险资料显示概率未设置，同时显示应对措施。",
+        "编辑、应对、关闭及转为问题动作可见；截图只覆盖当前视口，下部操作由实际流程断言支持。"
+      ]
+    },
+    {
+      "path": "issue-creation.png",
+      "sha256": "786d3dc28e26215213875e38dc711e0cc3c776048a90962fb6a8da6bf6a9b1a2",
+      "observations": [
+        "390px实际问题表单包含负责人、可空期限、说明、影响及解决说明。",
+        "长表单按单列滚动，保存按钮可见；下部核对入口由实际流程断言支持。"
+      ]
+    }
+  ],
+  "real_device": false
+}

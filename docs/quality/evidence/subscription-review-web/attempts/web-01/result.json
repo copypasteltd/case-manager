@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T02:22:42.205Z",
+  "finished_at": "2026-10-26T02:23:14.520Z",
+  "checks": [
+    {
+      "name": "Completed Web review cites three genuine immutable source digests",
+      "passed": true
+    },
+    {
+      "name": "Forecast, incurred cost, allocated cash and unpaid balance match the ordinary APIs without floating-point conversion",
+      "passed": true
+    },
+    {
+      "name": "Cost and payment drill-down preserve actual associations and fixed evidence; candidate anomalies remain candidates",
+      "passed": true
+    }
+  ],
+  "source_count": 591,
+  "source_sha256": "b08df232829e7fc8697b08b1a1e815254a6500c094d0f8406db5a7b72506b03d",
+  "source_after_sha256": "b08df232829e7fc8697b08b1a1e815254a6500c094d0f8406db5a7b72506b03d",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('section.context-preview').filter({ has: getByRole('heading', { name: '固定财务快照', exact: true }) }).locator('pre').filter({ hasText: '{\"captured_at\":\"2026-10-26T10:22:17.325002+08:00\",\"coverage_notice\":\"仅' }) to be visible\u001b[22m\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

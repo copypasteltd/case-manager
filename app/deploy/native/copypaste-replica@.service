@@ -1,0 +1,34 @@
+# Native Linux candidate only. Instances: small or large. Not installed.
+[Unit]
+Description=CopyPaste verified cross-cloud replica worker (%i)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/copypaste/replica-%i.env
+
+[Service]
+Type=simple
+User=copypaste-replica
+Group=copypaste-replica
+WorkingDirectory=/opt/copypaste/current
+EnvironmentFile=/etc/copypaste/replica-%i.env
+ExecStart=/opt/copypaste/current/bin/platform worker-replica-%i
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+LockPersonality=yes
+CacheDirectory=copypaste-replica
+ReadWritePaths=/var/cache/copypaste-replica
+
+[Install]
+WantedBy=multi-user.target

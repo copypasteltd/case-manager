@@ -1,0 +1,18 @@
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(['milestone-creation','subscription-review','telegram-delivery','finance-summary','service-summary','telegram-dispatch','telegram-ingress','secretary-project-stages','notifications', 'account-security', 'secretary-organization','secretary-file-creates','secretary-oa-requests','secretary-post-writes'].includes(variant))
+
+    at notificationBrowser (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/notification_browser_common.mjs:25:10)
+    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_deliverable_updates.mjs:3:1 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v22.14.0

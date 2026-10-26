@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T13:16:04.179079+00:00",
+  "backend_source_sha256": "fae2fabc02fcb090827f93eedafe144cd886a955dfaadc6b374fd4a0f63c4992",
+  "backend_source_files": 320,
+  "matches_full_backend_regression": true,
+  "web_source_sha256": "a193ebbfe54e88e6a258162dd07dfeae829067c424a165818ff0f2b5534bef1e",
+  "matches_web_build": true,
+  "browser_source_sha256": "5c3abe9429aeb50e1cd2471d96b72ebb4b1af6acfce9f23dbaf153c0e5ae2c59",
+  "browser_source_files": 380,
+  "matches_browser_record": true,
+  "projects_regression_source_sha256": "ddc6af5dfec4162c7b017166adddfab2a256d0715fd547ad2f57310d9edc8115",
+  "projects_regression_source_files": 381,
+  "matches_projects_regression": true,
+  "mobile_source_sha256": "f4513baba9a88ecfc3e6e846fe37e7865479f324f56cffc3580d94eb56940f64",
+  "mobile_source_files": 58,
+  "matches_mobile_build": true,
+  "matches_visual_review_and_images": true,
+  "document_and_embedded_openapi_match": true,
+  "verification_script_sha256": "aa5701e88ba75b4691e163a5e9222c5889954dd4ac0ffb6686b350ad4d1329ba",
+  "browser_cleanup": {
+    "all_browser_contexts_closed": true,
+    "all_browser_tabs_closed": true,
+    "isolated_database_cleanup_passed": true,
+    "owned_review_server_stopped": true
+  },
+  "temporary_fixture_absent": true,
+  "remaining_disposable_databases": 0,
+  "development_web_probes": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 627
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "bytes": 18
+    }
+  ],
+  "production_deployment": false,
+  "actual_android_or_mini_program_runtime": false
+}

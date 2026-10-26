@@ -1,0 +1,5 @@
+{
+  "reason": "Six actual business flows and all nine layouts passed. The test changed the URL hash of an already cached Taro form, so the displayed issue editor did not reopen for the cross-project risk deep link. Reopen explicit deep links through a full page load before evaluating their permission and project guards.",
+  "product_code_changed": false,
+  "browser_and_fixture_cleanup_passed": true
+}

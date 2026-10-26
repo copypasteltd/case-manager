@@ -1,0 +1,31 @@
+{
+  "skill_id": "information-organize",
+  "version": "1.1.0",
+  "state": "draft",
+  "owner_role": "business_admin",
+  "runtime_compatibility": "codex-sdk@0.164.0",
+  "authorization_level": "L2",
+  "allowed_tools": [
+    "list_directory",
+    "read_resource",
+    "propose_organization",
+    "commit_organization",
+    "inspect_operation"
+  ],
+  "completion_tools": [
+    "commit_organization"
+  ],
+  "input_schema_ref": "input.schema.json",
+  "output_schema_ref": "output.schema.json",
+  "instructions_ref": "information-organize/SKILL.md",
+  "reference_docs": [
+    "execution-boundaries.md"
+  ],
+  "max_tool_calls": 30,
+  "timeout_seconds": 900,
+  "test_case_refs": [
+    "TC-AI-01",
+    "TC-AI-02",
+    "TC-AI-03"
+  ]
+}

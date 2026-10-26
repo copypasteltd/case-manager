@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T16:08:29.965Z",
+  "finished_at": "2026-10-25T16:08:48.325Z",
+  "checks": [
+    {
+      "name": "Web opens an actual monthly finance snapshot and explains its accounting scope",
+      "passed": true
+    },
+    {
+      "name": "Web report digest matches the completed task and its currently visible evidence",
+      "passed": true
+    },
+    {
+      "name": "Later costs change the live report while historical financial evidence keeps its original totals",
+      "passed": true
+    }
+  ],
+  "source_count": 559,
+  "source_sha256": "2e13e35964c8016c63f637a093ec4a1a1d5326de39d23d923554625f090c33dd",
+  "source_after_sha256": "2e13e35964c8016c63f637a093ec4a1a1d5326de39d23d923554625f090c33dd",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

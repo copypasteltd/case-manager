@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T21:20:44.499643+00:00",
+  "source_sha256": "85fc5a8c3bd8ebaf8fc97eb014828ba9f5cda187a5015c92b8240439f92c284a",
+  "sources": [
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/ApiHTTP.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPHTTPModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPPlatformPackage.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPReadCacheModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPUploadModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/MainActivity.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/MainApplication.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/ReadCache.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/SAFUploadSource.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadLayout.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadManager.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadPermit.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadServiceHost.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadSource.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadStore.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadTransfer.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/ApiHTTPTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/ReadCacheTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/UploadBoundariesTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/UploadTransferTest.java",
+    "mobile/native/jvm-tests/build.gradle",
+    "mobile/native/jvm-tests/gradle.properties",
+    "mobile/native/jvm-tests/settings.gradle"
+  ],
+  "phases": [
+    {
+      "name": "jvm",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "android",
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "suites": {
+    "jvm": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "android": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "device_executed": false,
+  "virtualization_used": false
+}

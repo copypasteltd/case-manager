@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T19:05:47.116393+00:00",
+  "matches_full_backend_regression": true,
+  "backend_source_sha256": "56cb21cc41d0ef1d38dc86e940124df6833c060400224b3af9d60288bb7e3587",
+  "matches_linux_compilation": true,
+  "matches_web_build": true,
+  "matches_mobile_build": true,
+  "matches_runtime_build": true,
+  "runtime_tests": {
+    "tests": 19,
+    "pass": 19,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "browser_records": [
+    {
+      "platform": "web",
+      "passed": true,
+      "current_source_matches": true,
+      "cleanup_passed": true,
+      "checks": 4
+    },
+    {
+      "platform": "mobile",
+      "passed": true,
+      "current_source_matches": true,
+      "cleanup_passed": true,
+      "checks": 7
+    }
+  ],
+  "document_and_embedded_openapi_match": true,
+  "remaining_disposable_databases": 0,
+  "temporary_fixture_absent": true,
+  "development_web_probes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/health/ready",
+      "status": 200
+    }
+  ],
+  "development_runtime_verified": true,
+  "development_services_started_or_reloaded": true,
+  "development_services_restored_after_process_loss": true,
+  "production_deployment": false,
+  "actual_model_or_cloud": false,
+  "actual_mini_program_or_android_runtime": false,
+  "verification_script_sha256": "05ecad9d688096b29bc89819e35ae79769f6f0fd98bcc9e71548ed9d2419ea5a"
+}

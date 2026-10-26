@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T04:20:09.187057+00:00",
+  "document_count": 6,
+  "local_links_checked": 437,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 distinct goal gap IDs remain in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger link increment 54",
+      "passed": true
+    },
+    {
+      "name": "Current backend source is recorded in ledger and goal baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Account recovery scope and existing mobile page count remain explicit",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "cfd43ff1c42d6588b8645ffc1680e51ef083e39fe4b5a8fd184559871335f904"
+    },
+    {
+      "path": "docs/development/54-account-security-and-recovery.md",
+      "sha256": "500d3c8c845bfb8bf4d27dbbe69b26c18cd63dd6ea0e812cdac6a1b3b9a06bf2"
+    },
+    {
+      "path": "docs/requirements/02-identity-and-permissions.md",
+      "sha256": "57f5877028f79371e5242c5a5f4a2117711c546cee0831654345ed8c3fea84e8"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "54c0b5a0e34b60cb4572c8c553faeef7ce29e9284bed41b60013bc6b6b474059"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "bf37795d1aef8e58d0888730d93332ec47eb232f7ac3ab8cd889b7ec90a736da"
+    },
+    {
+      "path": "docs/quality/evidence/account-security/verification.md",
+      "sha256": "f548712d55a43129473f6c2fde656584bd230eb4072fcb0e92b0a8918b79c8bc"
+    }
+  ]
+}

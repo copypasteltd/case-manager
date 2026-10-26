@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "expected_failure_reproduced": true,
+  "source_sha256": "9657cf5e87349bd101b9ef9bb74a1112058bf39d3b71082f95840241f0ad3dee",
+  "migration_count": 68,
+  "command": "python scripts/test_backend.py --package ./internal/httpapi -run '^TestAgent(MilestoneCreation|ProjectStages)$/^(creates_once_with_original_command_and_exact_result|exact_milestone_fields_retry_read_and_real_completion)$' -timeout=8m",
+  "exit_code": 1,
+  "observed_failures": [
+    "TestAgentMilestoneCreation/creates_once_with_original_command_and_exact_result: INTERNAL_ERROR",
+    "TestAgentProjectStages/exact_milestone_fields_retry_read_and_real_completion: INTERNAL_ERROR"
+  ],
+  "scope": "Actual native PostgreSQL and controlled MCP; no external model or service."
+}

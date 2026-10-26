@@ -1,0 +1,9 @@
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { api, type Page, type Project } from './api';
+import { ErrorNotice, Field } from './components';
+const useProjectList = () => useInfiniteQuery({ queryKey: ['projects', 'party-selector'], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Project>>('/projects?' + new URLSearchParams({ limit: '50', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
+export function ProjectScope({ project, setProject, classification, setClassification }: { project: string; setProject: (value: string) => void; classification: string; setClassification: (value: string) => void }) {
+  const query = useProjectList();
+  const projects = query.error ? [] : query.data?.pages.flatMap(page => page.items) ?? [];
+  return <><ErrorNotice error={query.error} /><Field label="所属项目" hint="留空表示公司业务资料，读取仍遵守对象权限。"><select value={project} onChange={event => { const value = event.target.value; setProject(value); const chosen = projects.find(item => item.id === value); setClassification(chosen?.classification === 'project_restricted' ? 'project_restricted' : 'internal'); }}><option value="">公司业务资料</option>{projects.filter(item => !['closing', 'archived', 'cancelled'].includes(item.state) && item.classification !== 'confidential').map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select></Field>{query.hasNextPage && <button type="button" className="text-button" disabled={query.isFetchingNextPage} onClick={() => void query.fetchNextPage()}>加载更多项目</button>}<Field label="资料分类"><select value={classification} onChange={event => setClassification(event.target.value)}><option value="internal">公司内部</option>{project && <option value="project_restricted">项目受限</option>}</select></Field></>;
+}

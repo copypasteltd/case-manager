@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T09:14:45.252938+00:00",
+  "source_sha256": "6e5a2ced816f5f274f1f96263e6fd26d4044fd5e400677f76e69e4c8e8e77973",
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "completed_at": "2026-10-26T09:19:42.990474+00:00",
+  "source_after_sha256": "6e5a2ced816f5f274f1f96263e6fd26d4044fd5e400677f76e69e4c8e8e77973",
+  "source_unchanged": true,
+  "phases": [
+    {
+      "target": "web",
+      "exit_code": 1
+    }
+  ],
+  "failure": "Owned web showcase capture failed; inspect its sanitized report.",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_servers_closed": true,
+  "private_fixture_removed": true
+}

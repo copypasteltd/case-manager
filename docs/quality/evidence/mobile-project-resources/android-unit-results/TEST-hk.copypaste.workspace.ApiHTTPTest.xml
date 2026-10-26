@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hk.copypaste.workspace.ApiHTTPTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T21:40:04" hostname="WIKIGSPC" time="0.528">
+  <properties/>
+  <testcase name="cancellationStopsItsCallAndDisconnectedWritesAreNotRetried" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.422"/>
+  <testcase name="oversizedAndInvalidUTF8BodiesNeverReachJSAsSuccess" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.058"/>
+  <testcase name="actualJSONAndFixedVersionHeadersReachOnlyTheOriginalPath" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.019"/>
+  <testcase name="redirectCannotForwardCredentialsOrBody" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.014"/>
+  <testcase name="invalidHeadersAndOversizedCommandsFailBeforeNetwork" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.007"/>
+  <testcase name="originAndRelativePathNeverEscapeTheConfiguredAPI" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[10月 26, 2026 5:40:04 上午 okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+警告: MockWebServer[9137] connection from /127.0.0.1 didn't make a request
+]]></system-err>
+</testsuite>

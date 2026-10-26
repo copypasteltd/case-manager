@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "started_at": "2026-10-25T02:33:22.989Z",
+  "finished_at": "2026-10-25T02:33:35.652Z",
+  "checks": [],
+  "source_count": 490,
+  "source_sha256": "ddaad6a84552bcf48b1786ac3e246f31f7e53f7b7c751652ba21d1fb42d136ff",
+  "source_after_sha256": "ddaad6a84552bcf48b1786ac3e246f31f7e53f7b7c751652ba21d1fb42d136ff",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Expected values to be strictly equal:\n\n2 !== 1\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

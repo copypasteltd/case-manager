@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T03:03:42.753845+00:00",
+  "document_count": 6,
+  "local_links_checked": 425,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 distinct goal gap IDs remain in order",
+      "passed": true
+    },
+    {
+      "name": "Index and implementation ledger link increment 53",
+      "passed": true
+    },
+    {
+      "name": "Current backend source is recorded in ledger and gap baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "Notification gap remains explicit and mobile page count is current",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "fc9f1c7c0dc96eaa30e91a5a14ec19cba89ac6b53865d9b8a10d7e6b21f31ce0"
+    },
+    {
+      "path": "docs/development/53-in-app-notifications.md",
+      "sha256": "50a40e193d73d5ed627c9d72febe237ac0e1ffc25d61418ec688ef01adb883b0"
+    },
+    {
+      "path": "docs/requirements/08-status-notifications-and-nfr.md",
+      "sha256": "725fa62d14d794ad4e05e4961c7dbf74f00cdfe0d4e02e35547d6587e6239a1c"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "ed7999c136b456cf7f3913e7db4f1d704a3c925a17dcec3baadabe4cacdd4777"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "40d4232b218b12d9e5355b6d021233d833adbe296b6bd1c89045b62274c7ce0b"
+    },
+    {
+      "path": "docs/quality/evidence/notifications/verification.md",
+      "sha256": "88dea64ebd5240993defaee5771d1d2bf92518a15f9099fc95ebed3c603ea88f"
+    }
+  ]
+}

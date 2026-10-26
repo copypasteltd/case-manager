@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T04:19:51.932326+00:00",
+  "database": {
+    "reset_privileges": true,
+    "credential_indexes": 2,
+    "scoped_reset_authority": true,
+    "notification_guards": 10,
+    "successful_delivery_jobs": 5,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 53,
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/v1/me/sessions",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/me/sessions/00000000-0000-4000-8000-000000000000/revoke",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/me/password",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/users/00000000-0000-4000-8000-000000000000/password-resets",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/password/reset",
+      "status": 422,
+      "expected": 422,
+      "passed": true
+    }
+  ],
+  "actual_skill_states": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+  ],
+  "real_model_and_cloud_disabled": true,
+  "production_deployed": false,
+  "external_messages_sent": false,
+  "verification_script_sha256": "c0938884ea8c4447473dad4485d542e7972207384e0a023c81f500b88d1b3572"
+}

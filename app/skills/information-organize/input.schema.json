@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/information-organize.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "folder_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "create_directory",
+              "rename",
+              "move"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "rules": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "folder_ids",
+        "actions",
+        "rules",
+        "limit"
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

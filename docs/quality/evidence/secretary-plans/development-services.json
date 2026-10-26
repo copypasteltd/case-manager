@@ -1,0 +1,16 @@
+{
+  "environment": "Owned native local development",
+  "restarted_at": "2026-10-24T20:19:26+00:00",
+  "launcher_pid": 17296,
+  "api_process_pid": 23888,
+  "source_business_code_current": true,
+  "source_sha256_at_recording": "4842354c2e267a3fcb841babe6f3698d9c4d9cde6070023162a273acffafcd65",
+  "source_note": "The later backend change only increased an isolated test cleanup timeout. Runtime business code was compiled after MCP versions and owner binding were corrected.",
+  "local_frontend": "http://localhost:5178/",
+  "loopback_api": "http://127.0.0.1:18080",
+  "migration_count": 49,
+  "database_restarted": false,
+  "frontend_restarted": false,
+  "real_worker_started": false,
+  "production_deployed": false
+}

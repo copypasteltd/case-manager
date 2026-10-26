@@ -1,0 +1,79 @@
+"""Read-only checks of the owned native file-text API and disabled cloud role."""
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import subprocess
+from urllib.error import HTTPError
+from urllib.parse import unquote, urlparse
+from urllib.request import urlopen
+
+APP = Path(__file__).resolve().parents[1]
+EVIDENCE = APP.parent / 'docs/quality/evidence/secretary-files'
+
+
+def main():
+    values = json.loads((APP / '.local/environment.json').read_text(encoding='utf-8'))
+    db = urlparse(values['CP_DATABASE_URL'])
+    if (values.get('CP_ENV') not in ('development', 'local') or db.hostname != '127.0.0.1'
+            or db.port != 14660 or values.get('CP_HTTP_ADDR') != '127.0.0.1:18080'):
+        raise SystemExit('Only the owned native loopback development environment is supported.')
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
+    spec = importlib.util.spec_from_file_location('file_runtime_checks', APP / 'scripts/verify_agent_execution_development.py')
+    baseline = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(baseline)
+    baseline.EVIDENCE = EVIDENCE
+    if baseline.main():
+        return 1
+    common = json.loads((EVIDENCE / 'development-runtime.json').read_text(encoding='utf-8'))
+    environment = {**os.environ, 'PGHOST': db.hostname, 'PGPORT': str(db.port), 'PGUSER': unquote(db.username or ''),
+                   'PGPASSWORD': unquote(db.password or ''), 'PGDATABASE': unquote(db.path.lstrip('/')), 'PGCONNECT_TIMEOUT': '5'}
+    query = """SELECT json_build_object(
+      'can_read_file_evidence',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT'))
+        FROM unnest(ARRAY['files','folders','file_versions','file_replicas','storage_targets'])t),
+      'historical_creator_nullable',(SELECT NOT attnotnull FROM pg_attribute WHERE attrelid='files'::regclass AND attname='creator_id'),
+      'historical_original_name_nullable',(SELECT NOT attnotnull FROM pg_attribute WHERE attrelid='file_versions'::regclass AND attname='original_name'),
+      'original_name_immutable_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O'
+        AND tgname='file_version_original_name_immutable'),
+      'can_rewrite_tool_receipts',has_table_privilege(current_user,'agent_tool_receipts','UPDATE')
+        OR has_table_privilege(current_user,'agent_tool_receipts','DELETE'),
+      'active_runtime_profiles',(SELECT count(*) FROM agent_runtime_profiles WHERE state='active'),
+      'disposable_test_databases',(SELECT count(*) FROM pg_database WHERE datname ~ '^cp_test_[0-9a-f]{32}$'))"""
+    result = subprocess.run([str(APP / '.tools/pgsql/bin/psql.exe'), '-X', '-A', '-t', '-q', '-v', 'ON_ERROR_STOP=1', '-c', query],
+                            env=environment, capture_output=True, text=True, encoding='utf-8', timeout=15,
+                            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+    if result.returncode:
+        raise SystemExit('Owned file-text database checks failed; private diagnostics withheld.')
+    database = json.loads(result.stdout)
+    identifier = '00000000-0000-4000-8000-000000000000'
+    route = '/v1/conversations/' + identifier + '/context-sources/file/' + identifier + '?context_security_version=1&version_id=' + identifier
+    try:
+        with urlopen('http://127.0.0.1:18080' + route, timeout=5) as response:
+            status = response.status
+    except HTTPError as error:
+        status = error.code
+        error.close()
+    skill_states = [json.loads(p.read_text(encoding='utf-8'))['state'] for p in sorted((APP / 'skills').glob('*/manifest.json'))]
+    effective = {**os.environ, **values}
+    disabled = effective.get('CP_AGENT_FILE_PROVIDERS', '') in ('', 'disabled')
+    passed = bool(common['passed'] and common['database']['migration_count'] == 50
+                  and database['can_read_file_evidence'] and database['historical_creator_nullable']
+                  and database['historical_original_name_nullable'] and database['original_name_immutable_guards'] == 1
+                  and not database['can_rewrite_tool_receipts'] and database['active_runtime_profiles'] == 0
+                  and database['disposable_test_databases'] == 0 and skill_states == ['draft'] * 8 and status == 401 and disabled)
+    report = {'passed': passed, 'checked_at': datetime.now(timezone.utc).isoformat(), 'database': database,
+              'migration_count': common['database']['migration_count'], 'actual_skill_states': skill_states,
+              'file_context_probe': {'method': 'GET', 'path': route, 'status': status, 'expected': 401, 'passed': status == 401},
+              'agent_file_reading_disabled_in_development_configuration': disabled,
+              'environment': 'owned native Windows Go/PostgreSQL; no virtualization',
+              'verification_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'real_model_invoked': False, 'actual_cloud_invoked': False, 'production_deployed': False}
+    (EVIDENCE / 'development-files.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'passed': passed, 'migration_count': report['migration_count'], 'unauthenticated_file_context_status': status}))
+    return 0 if passed else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

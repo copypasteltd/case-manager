@@ -1,0 +1,45 @@
+{
+  "executed_at": "2026-10-24T14:40:41.511670+00:00",
+  "browser_source_sha256": "116c30c1a21eab338756db2c1f4bb6ef9aa65a858a15a5654acf4701ab91d035",
+  "browser_executed_at": "2026-10-24T14:39:01.143Z",
+  "passed": true,
+  "scope": "Manual inspection of six actual populated H5 captures, with existing appearance unchanged. Functional behavior is established by real UI/API checks, not screenshots.",
+  "images": [
+    {
+      "file": "incident-create-light-390.png",
+      "sha256": "e1983d015da61be88abb213c2728db6f65cb9579844507edad24c2d1f06988df",
+      "observation": "事件标题、范围说明、严重程度、本人和两项明确影响服务可读；截图只覆盖表单上段，MFA与提交由实际流程验证。"
+    },
+    {
+      "file": "incident-create-dark-390.png",
+      "sha256": "5dfde4391677dc707f468ec633b952bc5c743c1cb9aa879507e36523616eb818",
+      "observation": "深色下保留文字恢复提示和两项明确影响服务，未把恢复文字等同于已经提交；仅证明可见区域。"
+    },
+    {
+      "file": "incident-detail-dark-390.png",
+      "sha256": "8b76de4c85774cf71e92d366ddf023b1322b7598a6e5bd3783b72831b28d6fc2",
+      "observation": "当前已解决阶段、准确修订、首次恢复时间、恢复说明与复盘可分别读取；下方时间线由另一截图覆盖。"
+    },
+    {
+      "file": "observation-proof-light-390.png",
+      "sha256": "69aad68380ace6dfd5fa4e36b6aad20729cb273e97b79347e768de00e9e991ca",
+      "observation": "迟到序号4明确标记仅保留事实，观测／接收时间、时延、验签结果与服务当前结论分开。"
+    },
+    {
+      "file": "observation-proof-dark-390.png",
+      "sha256": "b7513346985d513ccce34438790f5cb9cc484831a4dd96705001b6177313b6ee",
+      "observation": "历史来源修订、公钥、完整摘要、原字节与签名可读；说明验签不代表当前健康。"
+    },
+    {
+      "file": "incident-history-light-390.png",
+      "sha256": "9f2ccc4d03b0ee27990c6a9dd3420c09d508e446f4bd51c88186bb20fcdb1c2f",
+      "observation": "两项影响服务及不可变时间线可读，当时解决说明和当时复盘与当前记录分别呈现；该截图只证明本页可见记录。"
+    }
+  ],
+  "limits": [
+    "Only captured visible regions are reviewed; not every scroll position or native runtime.",
+    "The service-list light capture was in a legitimate loading state and is excluded from populated-content visual acceptance. The 60 automatic configurations assert structural conditions, not full populated-page acceptance for every viewport.",
+    "Previously recorded long-title and file-size presentation P3 items remain open; no style redesign was performed."
+  ],
+  "production_or_native_device_acceptance": false
+}

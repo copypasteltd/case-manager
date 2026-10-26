@@ -1,0 +1,5 @@
+{
+  "reason": "The six business flows and nine layouts passed. Full-page reload correctly cleared the in-memory login, so the deep-link check reached the login page. Use normal browser navigation back to the real home page to unload cached form instances, then open the target link within the same authenticated session. No product session persistence or business-state injection is introduced.",
+  "product_code_changed": false,
+  "browser_and_fixture_cleanup_passed": true
+}

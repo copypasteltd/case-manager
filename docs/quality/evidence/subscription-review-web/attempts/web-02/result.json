@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "started_at": "2026-10-26T02:24:52.702Z",
+  "finished_at": "2026-10-26T02:25:12.496Z",
+  "checks": [
+    {
+      "name": "Completed Web review cites three genuine immutable source digests",
+      "passed": true
+    },
+    {
+      "name": "Forecast, incurred cost, allocated cash and unpaid balance match the ordinary APIs without floating-point conversion",
+      "passed": true
+    },
+    {
+      "name": "Cost and payment drill-down preserve actual associations and fixed evidence; candidate anomalies remain candidates",
+      "passed": true
+    }
+  ],
+  "source_count": 591,
+  "source_sha256": "998b6ecf26fce9482e2149fbd390cfe986f4c0477f6a742baeaa315cd1236f36",
+  "source_after_sha256": "998b6ecf26fce9482e2149fbd390cfe986f4c0477f6a742baeaa315cd1236f36",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Expected values to be strictly equal:\n\n4 !== 3\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

@@ -1,0 +1,71 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-26T01:14:51.938Z",
+  "source_sha256": "7ca075ce54f8ec8fcfdf5d7b32175cc849037991b205aa71ea77aed8ffc2ddc9",
+  "source_file_count": 573,
+  "source_unchanged_during_tests": true,
+  "real_taro_h5_api": true,
+  "isolated_native_database": true,
+  "actual_cloud": false,
+  "actual_model": false,
+  "actual_device": false,
+  "transport_fault_injection": true,
+  "failure": "AssertionError [ERR_ASSERTION]: mobile-project-cost touch targets\n+ actual - expected\n\n+ [\n+   '查看对应冲销记录↗'\n+ ]\n- []\n\n    at layout (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_overview.mjs:50:182)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_overview.mjs:79:314",
+  "checks": [
+    {
+      "name": "Actual sixteen authorized categories, complete counts beyond five previews, precise project allocations/reversals and unapproved-budget separation match native HTTP facts",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "7ca075ce54f8ec8fcfdf5d7b32175cc849037991b205aa71ea77aed8ffc2ddc9",
+  "source_sha256_after_build": "7ca075ce54f8ec8fcfdf5d7b32175cc849037991b205aa71ea77aed8ffc2ddc9",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

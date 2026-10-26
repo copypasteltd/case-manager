@@ -1,0 +1,7 @@
+{
+  "recorded_at": "2026-10-24T23:49:03.330291+00:00",
+  "passed": false,
+  "phase": "owned API readiness prerequisite",
+  "reason": "The development probe was started immediately after an owned API restart and before the native Go listener was ready; no passing proof was produced. Final read-only development checks must run after readiness and complete backend database cleanup.",
+  "business_code_changed": false
+}

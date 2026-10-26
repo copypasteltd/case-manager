@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-24T18:59:30.320705+00:00",
+  "database": "cp_test_47d67032a1f544d6b1554b72edfbda76",
+  "before": {
+    "oid": 22794810,
+    "owner": "postgres",
+    "template": false,
+    "connections": 0
+  },
+  "fixture": {
+    "test_organization": true,
+    "seeded_users": true,
+    "created_at": "2026-10-25T01:51:57.001701+08:00",
+    "migration_count": 48
+  },
+  "proof_test": "TestSubscriptionBilling",
+  "proof_test_started_at": "2026-10-25T01:51:51.0484903+08:00",
+  "native_recovery_log_contains_exact_oid": true,
+  "interrupted_batch_never_counted_as_passed": true,
+  "operation": "DROP exact disconnected owned fixture database without FORCE",
+  "application_database_selected": false
+}

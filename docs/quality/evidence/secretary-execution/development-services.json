@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-10-24T19:01:45.833174+00:00",
+  "environment": "owned native loopback development only",
+  "owned_postgresql_started_after_previous_process_loss": true,
+  "api_and_web_absent_before_start": true,
+  "development_schema_migrated_from": 46,
+  "development_schema_migrated_to": 48,
+  "development_services_started_or_reloaded": true,
+  "worker_started": false,
+  "actual_model_or_cloud": false,
+  "production_deployment": false,
+  "processes": [
+    {
+      "service": "api",
+      "launcher_pid": 20116,
+      "started_at": "2026-10-24T19:01:45.785784+00:00"
+    },
+    {
+      "service": "web",
+      "launcher_pid": 15576,
+      "started_at": "2026-10-24T19:01:45.833158+00:00"
+    }
+  ]
+}

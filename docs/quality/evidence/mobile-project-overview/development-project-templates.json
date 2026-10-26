@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T01:38:27.444328+00:00",
+  "database": {
+    "history_append_only": true,
+    "templates_no_delete": true,
+    "revision_guard": 1,
+    "history_guard": 1,
+    "deferred_history_consistency": 1,
+    "one_draft_per_family": 1,
+    "managed_template_count": 0,
+    "enabled_telegram_channels": 0,
+    "active_runtime_profiles": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 64,
+  "probes": [
+    {
+      "method": "GET",
+      "path": "/v1/project-templates",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/project-templates",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/project-templates/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/project-templates/00000000-0000-4000-8000-000000000000",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/project-templates/00000000-0000-4000-8000-000000000000/history",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/project-templates/00000000-0000-4000-8000-000000000000/publish",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/project-templates/00000000-0000-4000-8000-000000000000/retire",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/project-templates/00000000-0000-4000-8000-000000000000/revise",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "ownership": {
+    "api": true,
+    "notification_worker": true
+  },
+  "integrations_disabled": true,
+  "production_deployment": false,
+  "real_cloud_or_model": false
+}

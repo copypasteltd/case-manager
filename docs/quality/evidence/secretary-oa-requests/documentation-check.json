@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T08:45:07.296719+00:00",
+  "document_count": 9,
+  "local_links_checked": 515,
+  "missing_links": [],
+  "gap_ids": [
+    "GAP-01",
+    "GAP-02",
+    "GAP-03",
+    "GAP-04",
+    "GAP-05",
+    "GAP-06",
+    "GAP-07",
+    "GAP-08",
+    "GAP-09",
+    "GAP-10",
+    "GAP-11",
+    "GAP-12",
+    "GAP-13",
+    "GAP-14",
+    "GAP-15",
+    "GAP-16",
+    "GAP-17",
+    "GAP-18",
+    "GAP-19",
+    "GAP-20",
+    "GAP-21",
+    "GAP-22",
+    "GAP-23",
+    "GAP-24",
+    "GAP-25",
+    "GAP-26",
+    "GAP-27",
+    "GAP-28"
+  ],
+  "checks": [
+    {
+      "name": "All selected local document links resolve",
+      "passed": true
+    },
+    {
+      "name": "All 28 goal gap IDs remain distinct and in order",
+      "passed": true
+    },
+    {
+      "name": "Index and ledger identify increment 57",
+      "passed": true
+    },
+    {
+      "name": "Current backend source appears in ledger and baseline",
+      "passed": true
+    },
+    {
+      "name": "Current source and owned development checks pass",
+      "passed": true
+    },
+    {
+      "name": "OA requests remain partial scope and the 13-page mobile baseline is explicit",
+      "passed": true
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/README.md",
+      "sha256": "167184d2a3fc4a5dd4304105d5e11a747931f8538f140f7933660cb25ad62ae7"
+    },
+    {
+      "path": "docs/development/57-secretary-oa-requests.md",
+      "sha256": "bc0b5539578546f181462bb2465c9bed1b0c59ced148a8d3fe2597248358a5bb"
+    },
+    {
+      "path": "docs/requirements/07-secretary-and-channels.md",
+      "sha256": "73b4e7fd25d1fc1e787afa67731e1ef61e091c7c3f92622299c5f54cabe5c448"
+    },
+    {
+      "path": "docs/development/07-agent-tools-and-skills.md",
+      "sha256": "088435ca47c0f207f766efb7d1471550a6bdc2fcc701c7f221edc831e9b1d0fe"
+    },
+    {
+      "path": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "065a9d521e2a70bcdff210b6375df367a1378c4600cabc2f1dc3962860a3da48"
+    },
+    {
+      "path": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "83de946433589b431c6f065c1df48c7ef2a331a0b3f9e4ca1db9785ab8fac02f"
+    },
+    {
+      "path": "docs/quality/evidence/secretary-oa-requests/verification.md",
+      "sha256": "b0a6dab0b5cfdc5798a4d9f3f70da60aa103521d22c0e6cdbd97f06d0e336c95"
+    },
+    {
+      "path": "docs/skills/oa-assist/SKILL.md",
+      "sha256": "9e4a6c27a851798a03de8098525181253f554c4e289a7a0e51cef88cc7876ae4"
+    },
+    {
+      "path": "docs/quality/01-test-strategy-and-cases.md",
+      "sha256": "ebdcc3d5020ac47c5b33d35c026c7f222e8f4821a76a7392c34dc3ce9dc8abf5"
+    }
+  ]
+}

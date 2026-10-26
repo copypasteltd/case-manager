@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-24T11:40:08.448745+00:00",
+  "passed": true,
+  "probes": [
+    {
+      "origin": "http://127.0.0.1:18080",
+      "path": "/health/live",
+      "status": 200,
+      "expected_status": 200,
+      "bytes": 15,
+      "passed": true
+    },
+    {
+      "origin": "http://127.0.0.1:18080",
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200,
+      "bytes": 18,
+      "passed": true
+    },
+    {
+      "origin": "http://localhost:5178",
+      "path": "/",
+      "status": 200,
+      "expected_status": 200,
+      "bytes": 627,
+      "passed": true
+    },
+    {
+      "origin": "http://localhost:5178",
+      "path": "/health/ready",
+      "status": 200,
+      "expected_status": 200,
+      "bytes": 18,
+      "passed": true
+    },
+    {
+      "origin": "http://127.0.0.1:18080",
+      "path": "/v1/downloads/aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee/chunks?offset=0&length=1",
+      "status": 401,
+      "expected_status": 401,
+      "bytes": 185,
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "fae2fabc02fcb090827f93eedafe144cd886a955dfaadc6b374fd4a0f63c4992",
+  "owned_api_restarted": true,
+  "owned_previous_api_pid": 30076,
+  "new_native_runner_pid": 22732,
+  "schema_migration_unchanged": true,
+  "production_deployment": false,
+  "virtualization_invoked": false
+}

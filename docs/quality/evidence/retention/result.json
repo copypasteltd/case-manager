@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T02:27:09.382Z",
+  "checks": [
+    "A temporary project-scoped retention role uses real MFA and creates an immutable hold through the UI; the owner loses trash capability",
+    "Retention records and fixed-version actions fit five widths in both themes with no root horizontal overflow",
+    "A real persisted mobile assessment protects the current version and hold and reports missing replicas; it offers no deletion action",
+    "A real project owner without the dedicated role sees the protection count but cannot retrieve reasons or perform retention actions",
+    "Explicit release preserves the original hold and release reason and restores owner capability without changing either content version",
+    "Four independently versioned policy kinds and an inline-MFA form render responsively; cancelling leaves the undecided company policy unpublished"
+  ],
+  "errors": [],
+  "server_errors": [],
+  "source": "node app/scripts/check_retention.mjs",
+  "temporary_binding_revoked": true,
+  "contexts_closed": true,
+  "browser_closed": true,
+  "scope": "Real API/UI, scoped temporary role and explicitly missing metadata only. No cloud object, scan report, delete, published retention policy or real 120 GB transfer."
+}

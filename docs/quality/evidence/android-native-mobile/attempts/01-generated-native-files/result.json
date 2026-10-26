@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-25T20:16:22.773Z",
+  "finished_at": "2026-10-25T20:16:41.284Z",
+  "checks": [
+    {
+      "name": "Taro opens the original employee request and actual unknown notification receipt",
+      "passed": true
+    },
+    {
+      "name": "Taro performs MFA-protected reconciliation and preserves original uncertain delivery history",
+      "passed": true
+    }
+  ],
+  "source_count": 668,
+  "source_sha256": "83fe669af813c5b6f98e273209eb750294fc9e5922d7defc3dfd20f44b6ab26e",
+  "source_after_sha256": "8cc67f4097aa29d0d77e2f1a849f5b5890225e23ae30b0de5ab05720a7ecadc1",
+  "source_unchanged": false,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim"
+}

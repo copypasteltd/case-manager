@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T07:02:04.850Z",
+  "source_sha256": "6c7a85971cf40767764255f518f3d6cf039ba1b919e14f79964d98e6006d547b",
+  "source_after_sha256": "6c7a85971cf40767764255f518f3d6cf039ba1b919e14f79964d98e6006d547b",
+  "source_unchanged": true,
+  "source_count": 589,
+  "checks": [
+    "Actual mobile template creation fixes owner, dates and exact revision and initializes real tasks, milestones and logical folders once.",
+    "Draft editing uses the actual project version and explicit date clearing without changing owner, classification or selected template.",
+    "A real committed update with a lost browser response blocks resubmission and explicit reread reconciles its actual result.",
+    "Concurrent edits preserve unsubmitted text and block stale writes; active project scope and dates are read-only and absent from ordinary updates.",
+    "Actual member role changes and removal use exact versions, identities and reasons, then reload authoritative membership.",
+    "Owner handover uses a distinct command, returns the actual new owner and retains the former owner as manager.",
+    "Membership restriction invalidates the old login; a fresh real MFA viewer session has no editing, membership or deep-link write form."
+  ],
+  "layouts": [
+    {
+      "page": "project-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "project-creation",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "project-members",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "project-members",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "project-members",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_closed": 4,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "6c7a85971cf40767764255f518f3d6cf039ba1b919e14f79964d98e6006d547b",
+  "source_sha256_after_build": "6c7a85971cf40767764255f518f3d6cf039ba1b919e14f79964d98e6006d547b",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T05:11:27.011Z",
+  "finished_at": "2026-10-26T05:11:43.462Z",
+  "checks": [
+    "Taro displays genuine completed deliverable metadata history after actual MFA login.",
+    "Taro previews full metadata and explicit null association without a write.",
+    "Taro selects a real same-project milestone while preserving the complete reviewed field set.",
+    "Taro confirmed send fixes exactly one complete human metadata instruction.",
+    "Taro retry preserves the run; cancellation leaves actual deliverable metadata unchanged."
+  ],
+  "source_count": 582,
+  "source_sha256": "50119472ebd2b231bb116277c06d6f12428e9eab05281bf1648b6438ea09c2a5",
+  "source_after_sha256": "50119472ebd2b231bb116277c06d6f12428e9eab05281bf1648b6438ea09c2a5",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "50119472ebd2b231bb116277c06d6f12428e9eab05281bf1648b6438ea09c2a5",
+  "source_sha256_after_build": "50119472ebd2b231bb116277c06d6f12428e9eab05281bf1648b6438ea09c2a5",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

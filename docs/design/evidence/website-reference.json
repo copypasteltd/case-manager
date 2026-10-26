@@ -1,0 +1,635 @@
+{
+  "captured_at": "2026-10-22T20:51:41.141Z",
+  "source": "https://copypaste.hk",
+  "browser": "native Microsoft Edge headless",
+  "pages": [
+    {
+      "name": "official-home-light",
+      "url": "https://copypaste.hk/zh-hans/",
+      "status": 200,
+      "variables": {
+        "--color-primary": "#0e1726",
+        "--color-secondary": "#202d45",
+        "--color-accent": "#1f5eff",
+        "--color-bg": "#f6f6f4",
+        "--color-bg-soft": "#efefeb",
+        "--color-surface": "#ffffff",
+        "--color-text": "#15171a",
+        "--color-text-muted": "#5d636d",
+        "--color-border": "#d8d9de",
+        "--color-shadow": "0 12px 28px rgba(12, 21, 35, 0.08)"
+      },
+      "styles": {
+        "body": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgb(246, 246, 244)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "1440px",
+          "minHeight": "0px"
+        },
+        "h1": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "fontSize": "64px",
+          "fontWeight": "600",
+          "lineHeight": "76.8px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "553.766px",
+          "minHeight": "0px"
+        },
+        ".button-primary": {
+          "color": "rgb(246, 246, 244)",
+          "backgroundColor": "rgb(21, 23, 26)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "23.232px",
+          "borderRadius": "999px",
+          "borderColor": "rgba(0, 0, 0, 0)",
+          "boxShadow": "rgba(21, 23, 26, 0.18) 0px 10px 20px 0px",
+          "padding": "0px 18px",
+          "width": "auto",
+          "minHeight": "44px"
+        },
+        ".button-secondary": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "23.232px",
+          "borderRadius": "999px",
+          "borderColor": "rgb(216, 217, 222)",
+          "boxShadow": "none",
+          "padding": "0px 18px",
+          "width": "95.4531px",
+          "minHeight": "44px"
+        },
+        ".metric-card": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "color(srgb 1 1 1 / 0.86)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "14px",
+          "borderColor": "rgb(216, 217, 222) rgb(216, 217, 222) rgb(216, 217, 222) rgb(31, 94, 255)",
+          "boxShadow": "none",
+          "padding": "14px 16px",
+          "width": "553.766px",
+          "minHeight": "auto"
+        },
+        ".hero-orbit": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "26px",
+          "borderColor": "rgb(216, 217, 222)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "520px",
+          "minHeight": "480px"
+        },
+        ".site-header": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "color(srgb 0.964706 0.964706 0.956863 / 0.72)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26) rgb(21, 23, 26) rgba(0, 0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "1440px",
+          "minHeight": "0px"
+        },
+        ".container": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "1140px",
+          "minHeight": "82px"
+        },
+        ".brand-logo": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "40px",
+          "minHeight": "auto"
+        }
+      },
+      "title": "CopyPaste | AI、网络与支付数字基础设施服务",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document_width": 1440,
+      "logo": [
+        {
+          "src": "https://copypaste.hk/assets/logo/CopyPaste_Light.png",
+          "naturalWidth": 1080,
+          "naturalHeight": 1080
+        }
+      ],
+      "loaded_fonts": [],
+      "platform_fonts": {
+        "h1": {
+          "fonts": [
+            {
+              "familyName": "Noto Serif SC",
+              "postScriptName": "Noto-Serif-SC-SemiBold",
+              "isCustomFont": false,
+              "glyphCount": 27
+            }
+          ]
+        },
+        ".hero-text": {
+          "fonts": [
+            {
+              "familyName": "Noto Sans SC",
+              "postScriptName": "Noto-Sans-SC",
+              "isCustomFont": false,
+              "glyphCount": 44
+            },
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "official-home-dark",
+      "url": "https://copypaste.hk/zh-hans/",
+      "status": 200,
+      "variables": {
+        "--color-primary": "#d8deea",
+        "--color-secondary": "#b5c1d8",
+        "--color-accent": "#79a2ff",
+        "--color-bg": "#0f131a",
+        "--color-bg-soft": "#141a24",
+        "--color-surface": "#171d29",
+        "--color-text": "#e8edf8",
+        "--color-text-muted": "#a0acc2",
+        "--color-border": "#2a3344",
+        "--color-shadow": "0 14px 34px rgba(0, 0, 0, 0.32)"
+      },
+      "styles": {
+        "body": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "rgb(15, 19, 26)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(232, 237, 248)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "1440px",
+          "minHeight": "0px"
+        },
+        "h1": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "fontSize": "64px",
+          "fontWeight": "600",
+          "lineHeight": "76.8px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(232, 237, 248)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "553.766px",
+          "minHeight": "0px"
+        },
+        ".button-primary": {
+          "color": "rgb(15, 19, 26)",
+          "backgroundColor": "rgb(232, 237, 248)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "23.232px",
+          "borderRadius": "999px",
+          "borderColor": "rgba(0, 0, 0, 0)",
+          "boxShadow": "rgba(4, 5, 9, 0.45) 0px 10px 24px 0px",
+          "padding": "0px 18px",
+          "width": "auto",
+          "minHeight": "44px"
+        },
+        ".button-secondary": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "rgb(23, 29, 41)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "23.232px",
+          "borderRadius": "999px",
+          "borderColor": "rgb(42, 51, 68)",
+          "boxShadow": "none",
+          "padding": "0px 18px",
+          "width": "95.4531px",
+          "minHeight": "44px"
+        },
+        ".metric-card": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "color(srgb 0.0901961 0.113725 0.160784 / 0.86)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "14px",
+          "borderColor": "rgb(42, 51, 68) rgb(42, 51, 68) rgb(42, 51, 68) rgb(121, 162, 255)",
+          "boxShadow": "none",
+          "padding": "14px 16px",
+          "width": "553.766px",
+          "minHeight": "auto"
+        },
+        ".hero-orbit": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "rgb(23, 29, 41)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "26px",
+          "borderColor": "rgb(42, 51, 68)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "520px",
+          "minHeight": "480px"
+        },
+        ".site-header": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "color(srgb 0.0588235 0.0745098 0.101961 / 0.72)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(232, 237, 248) rgb(232, 237, 248) rgba(0, 0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "1440px",
+          "minHeight": "0px"
+        },
+        ".container": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(232, 237, 248)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "1140px",
+          "minHeight": "82px"
+        },
+        ".brand-logo": {
+          "color": "rgb(232, 237, 248)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(232, 237, 248)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "40px",
+          "minHeight": "auto"
+        }
+      },
+      "title": "CopyPaste | AI、网络与支付数字基础设施服务",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document_width": 1440,
+      "logo": [
+        {
+          "src": "https://copypaste.hk/assets/logo/CopyPaste_Dark.png",
+          "naturalWidth": 1080,
+          "naturalHeight": 1080
+        }
+      ],
+      "loaded_fonts": [],
+      "platform_fonts": {
+        "h1": {
+          "fonts": [
+            {
+              "familyName": "Noto Serif SC",
+              "postScriptName": "Noto-Serif-SC-SemiBold",
+              "isCustomFont": false,
+              "glyphCount": 27
+            }
+          ]
+        },
+        ".hero-text": {
+          "fonts": [
+            {
+              "familyName": "Noto Sans SC",
+              "postScriptName": "Noto-Sans-SC",
+              "isCustomFont": false,
+              "glyphCount": 44
+            },
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "official-home-mobile",
+      "url": "https://copypaste.hk/zh-hans/",
+      "status": 200,
+      "variables": {
+        "--color-primary": "#0e1726",
+        "--color-secondary": "#202d45",
+        "--color-accent": "#1f5eff",
+        "--color-bg": "#f6f6f4",
+        "--color-bg-soft": "#efefeb",
+        "--color-surface": "#ffffff",
+        "--color-text": "#15171a",
+        "--color-text-muted": "#5d636d",
+        "--color-border": "#d8d9de",
+        "--color-shadow": "0 12px 28px rgba(12, 21, 35, 0.08)"
+      },
+      "styles": {
+        "body": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgb(246, 246, 244)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "390px",
+          "minHeight": "0px"
+        },
+        "h1": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Fraunces, \"Iowan Old Style\", \"Noto Serif SC\", \"Songti SC\", serif",
+          "fontSize": "35.2px",
+          "fontWeight": "600",
+          "lineHeight": "42.24px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "360px",
+          "minHeight": "0px"
+        },
+        ".button-primary": {
+          "color": "rgb(246, 246, 244)",
+          "backgroundColor": "rgb(21, 23, 26)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "23.232px",
+          "borderRadius": "999px",
+          "borderColor": "rgba(0, 0, 0, 0)",
+          "boxShadow": "rgba(21, 23, 26, 0.18) 0px 10px 20px 0px",
+          "padding": "0px 18px",
+          "width": "auto",
+          "minHeight": "44px"
+        },
+        ".button-secondary": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "23.232px",
+          "borderRadius": "999px",
+          "borderColor": "rgb(216, 217, 222)",
+          "boxShadow": "none",
+          "padding": "0px 18px",
+          "width": "auto",
+          "minHeight": "44px"
+        },
+        ".metric-card": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "color(srgb 1 1 1 / 0.86)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "14px",
+          "borderColor": "rgb(216, 217, 222) rgb(216, 217, 222) rgb(216, 217, 222) rgb(31, 94, 255)",
+          "boxShadow": "none",
+          "padding": "14px 16px",
+          "width": "360px",
+          "minHeight": "auto"
+        },
+        ".hero-orbit": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "26px",
+          "borderColor": "rgb(216, 217, 222)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "360px",
+          "minHeight": "320px"
+        },
+        ".site-header": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "color(srgb 0.964706 0.964706 0.956863 / 0.72)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26) rgb(21, 23, 26) rgba(0, 0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "390px",
+          "minHeight": "0px"
+        },
+        ".container": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "360px",
+          "minHeight": "74px"
+        },
+        ".brand-logo": {
+          "color": "rgb(21, 23, 26)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Manrope, \"Avenir Next\", \"Segoe UI\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "26.4px",
+          "borderRadius": "0px",
+          "borderColor": "rgb(21, 23, 26)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "width": "32.625px",
+          "minHeight": "auto"
+        }
+      },
+      "title": "CopyPaste | AI、网络与支付数字基础设施服务",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_width": 390,
+      "logo": [
+        {
+          "src": "https://copypaste.hk/assets/logo/CopyPaste_Light.png",
+          "naturalWidth": 1080,
+          "naturalHeight": 1080
+        }
+      ],
+      "loaded_fonts": [],
+      "platform_fonts": {
+        "h1": {
+          "fonts": [
+            {
+              "familyName": "Noto Serif SC",
+              "postScriptName": "Noto-Serif-SC-SemiBold",
+              "isCustomFont": false,
+              "glyphCount": 28
+            }
+          ]
+        },
+        ".hero-text": {
+          "fonts": [
+            {
+              "familyName": "Noto Sans SC",
+              "postScriptName": "Noto-Sans-SC",
+              "isCustomFont": false,
+              "glyphCount": 44
+            },
+            {
+              "familyName": "Segoe UI",
+              "postScriptName": "SegoeUI",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://copypaste.hk/styles.css",
+      "status": 200,
+      "size_bytes": 22078,
+      "sha256": "8b7a00e48e7d53637e68f5bd8be970f286a881d53e9c86970fffb01888003e0e",
+      "content_type": "text/css",
+      "declared_font_faces": 0,
+      "declared_font_imports": 0,
+      "breakpoints": [
+        "(max-width: 1180px)",
+        "(max-width: 900px)",
+        "(max-width: 640px)"
+      ]
+    },
+    {
+      "url": "https://copypaste.hk/app.js",
+      "status": 200,
+      "size_bytes": 27281,
+      "sha256": "1de2d4ea0ec1933b6eb72c88f40c98705e7eae27aabf33e681099718e38abd1d",
+      "content_type": "application/javascript"
+    },
+    {
+      "url": "https://copypaste.hk/",
+      "status": 200,
+      "size_bytes": 14408,
+      "sha256": "73beb5926791072498ced08ba04204b067e29a5b8b119dc8edbac31997e680ed",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://copypaste.hk/assets/logo/CopyPaste_Light.png",
+      "status": 200,
+      "size_bytes": 28897,
+      "sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7",
+      "content_type": "image/png",
+      "local_file": "assets/official-logo-light.png"
+    },
+    {
+      "url": "https://copypaste.hk/assets/logo/CopyPaste_Dark.png",
+      "status": 200,
+      "size_bytes": 27918,
+      "sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1",
+      "content_type": "image/png",
+      "local_file": "assets/official-logo-dark.png"
+    },
+    {
+      "url": "https://copypaste.hk/assets/logo/CopyPaste_Light.svg",
+      "status": 200,
+      "size_bytes": 119197,
+      "sha256": "0ae8b9599a54a6ce62c5220aae899c9f52a5178e42417030498acbbd5d67228e",
+      "content_type": "image/svg+xml",
+      "local_file": "assets/official-logo-light.svg"
+    },
+    {
+      "url": "https://copypaste.hk/assets/logo/CopyPaste_Dark.svg",
+      "status": 200,
+      "size_bytes": 87504,
+      "sha256": "dc28b1ae8c29c08b7dab43339e1f17acf9e565efd8b52ad25b3e695369d67914",
+      "content_type": "image/svg+xml",
+      "local_file": "assets/official-logo-dark.svg"
+    }
+  ],
+  "errors": [],
+  "cleanup": {
+    "contexts_closed": true,
+    "browser_closed": true
+  }
+}

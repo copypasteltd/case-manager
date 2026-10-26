@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T19:12:11.875310+00:00",
+  "scope": "Exact inactive disposable databases on this task-owned native development cluster; application database untouched",
+  "databases": [
+    {
+      "database": "cp_test_98af7dbc1bba48ffb12a658c3ba50642",
+      "connections_before_drop": 0,
+      "dropped": true
+    },
+    {
+      "database": "cp_test_84e6cc40c7c6484bad53a26ef9451bba",
+      "connections_before_drop": 0,
+      "dropped": true
+    },
+    {
+      "database": "cp_test_8da7445c5e6e4da98f2a9b1f4c070ab6",
+      "connections_before_drop": 0,
+      "dropped": true
+    },
+    {
+      "database": "cp_test_f0b2e346084e408ead324aea91afe96c",
+      "connections_before_drop": 0,
+      "dropped": true
+    },
+    {
+      "database": "cp_test_43017fc313a44bc69e9fad87420e8079",
+      "connections_before_drop": 0,
+      "dropped": true,
+      "reason": "Interrupted second verification"
+    }
+  ]
+}

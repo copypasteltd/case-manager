@@ -1,0 +1,145 @@
+"""Read-only verification of native Telegram ingress and identity binding, inherited file guards and disabled external runtime."""
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import subprocess
+from urllib.error import HTTPError
+from urllib.parse import unquote, urlparse
+from urllib.request import urlopen
+
+APP = Path(__file__).resolve().parents[1]
+EVIDENCE = APP.parent / 'docs/quality/evidence/telegram-dispatch'
+
+
+def main():
+    values = json.loads((APP / '.local/environment.json').read_text(encoding='utf-8'))
+    db = urlparse(values['CP_DATABASE_URL'])
+    if (values.get('CP_ENV') not in ('development', 'local') or db.hostname != '127.0.0.1'
+            or db.port != 14660 or values.get('CP_HTTP_ADDR') != '127.0.0.1:18080'):
+        raise SystemExit('Only the owned native loopback development environment is supported.')
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
+    spec = importlib.util.spec_from_file_location('file_runtime_checks', APP / 'scripts/verify_agent_execution_development.py')
+    baseline = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(baseline)
+    baseline.EVIDENCE = EVIDENCE
+    if baseline.main():
+        return 1
+    common = json.loads((EVIDENCE / 'development-runtime.json').read_text(encoding='utf-8'))
+    environment = {**os.environ, 'PGHOST': db.hostname, 'PGPORT': str(db.port), 'PGUSER': unquote(db.username or ''),
+                   'PGPASSWORD': unquote(db.password or ''), 'PGDATABASE': unquote(db.path.lstrip('/')), 'PGCONNECT_TIMEOUT': '5'}
+    query = """SELECT json_build_object(
+      'can_read_file_evidence',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT'))
+        FROM unnest(ARRAY['files','folders','file_versions','file_replicas','storage_targets'])t),
+      'historical_creator_nullable',(SELECT NOT attnotnull FROM pg_attribute WHERE attrelid='files'::regclass AND attname='creator_id'),
+      'historical_original_name_nullable',(SELECT NOT attnotnull FROM pg_attribute WHERE attrelid='file_versions'::regclass AND attname='original_name'),
+      'append_only_file_tables',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND NOT has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['agent_file_intents','agent_file_drafts','agent_file_stages','agent_file_proposals','agent_file_commits'])t),
+      'file_update_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O' AND tgname LIKE 'agent_file_%'),
+      'original_name_immutable_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O'
+        AND tgname='file_version_original_name_immutable'),
+      'creation_ids_nullable',(SELECT count(*)=2 FROM pg_attribute WHERE attrelid='agent_file_intents'::regclass AND attname IN ('file_id','base_version_id') AND NOT attnotnull),
+      'legacy_update_default',(SELECT position('update' in pg_get_expr(d.adbin,d.adrelid))>0 FROM pg_attrdef d JOIN pg_attribute a ON a.attrelid=d.adrelid AND a.attnum=d.adnum WHERE a.attrelid='agent_file_intents'::regclass AND a.attname='mode'),
+      'mode_scope_enforced',(SELECT position('create' in pg_get_constraintdef(oid))>0 AND position('update' in pg_get_constraintdef(oid))>0 AND position('file_version = 0' in pg_get_constraintdef(oid))>0 FROM pg_constraint WHERE conrelid='agent_file_intents'::regclass AND conname='agent_file_intent_mode_scope'),
+      'exact_creation_binding',(SELECT position('creation intent requires its exact current directory' in prosrc)>0 AND position('IS DISTINCT FROM i.file_id' in prosrc)>0 AND position('/internal/agent-files/create' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_file_update_binding'),
+      'creation_source_and_tool_evidence',(SELECT position('agent_file_create' in prosrc)>0 AND position('commit_file_create' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_file_update_evidence'),
+      'oa_append_only_tables',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND NOT has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['agent_oa_intents','agent_oa_commits'])t),
+      'oa_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O' AND tgname LIKE 'agent_oa_%'),
+      'oa_original_session_binding',(SELECT position('sessions s JOIN users' in prosrc)>0 AND position('s.id=i.session_id' in prosrc)>0 AND position('s.device_type=x.channel' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_oa_binding'),
+      'oa_exact_arguments_and_receipt',(SELECT position('expected_business_version' in prosrc)>0 AND position('preview_hash' in prosrc)>0 AND position('o.response_data=NEW.result_data' in prosrc)>0 AND position('approval_steps' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_oa_binding'),
+      'oa_sender_and_tool_evidence',(SELECT position('conversation_messages' in prosrc)>0 AND position('agent_oa_request' in prosrc)>0 AND position('agent_tool_receipts' in prosrc)>0 AND position('operation_id' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_oa_evidence'),
+      'oa_tool_allowlists',(SELECT count(*) FROM pg_constraint WHERE conname IN ('agent_tool_receipts_tool_check','agent_execution_observations_tool_check') AND position('draft_request' in pg_get_constraintdef(oid))>0 AND position('submit_request' in pg_get_constraintdef(oid))>0),
+      'post_append_only_tables',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND NOT has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['agent_post_intents','agent_post_commits'])t),
+      'post_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O' AND tgname LIKE 'agent_post_%'),
+      'post_original_session_binding',(SELECT position('sessions s JOIN users' in prosrc)>0 AND position('s.id=i.session_id' in prosrc)>0 AND position('s.device_type=x.channel' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_post_binding'),
+      'post_exact_content_and_receipt',(SELECT position('r.body=NEW.arguments' in prosrc)>0 AND position('p.published_revision_id<>p.current_revision_id' in prosrc)>0 AND position('o.response_data=NEW.result_data' in prosrc)>0 AND position('base_revision_id' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_post_binding'),
+      'post_sender_and_tool_evidence',(SELECT position('conversation_messages' in prosrc)>0 AND position('agent_post_write' in prosrc)>0 AND position('agent_tool_receipts' in prosrc)>0 AND position('operation_id' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_post_evidence'),
+      'post_tool_allowlists',(SELECT count(*) FROM pg_constraint WHERE conname IN ('agent_tool_receipts_tool_check','agent_execution_observations_tool_check') AND position('draft_post' in pg_get_constraintdef(oid))>0 AND position('publish_post' in pg_get_constraintdef(oid))>0),
+      'mutation_append_only_tables',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND NOT has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['agent_run_mutations','agent_mutation_commits'])t),
+      'mutation_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O' AND tgname LIKE 'agent_mutation_%'),
+      'mutation_legacy_session_nullable',(SELECT NOT attnotnull FROM pg_attribute WHERE attrelid='agent_run_mutations'::regclass AND attname='session_id'),
+      'mutation_session_fk',(SELECT count(*)=1 FROM pg_constraint WHERE conrelid='agent_run_mutations'::regclass AND conname='agent_run_mutations_session_fk' AND contype='f' AND confrelid='sessions'::regclass),
+      'mutation_original_session_binding',(SELECT position('s.id=m.session_id' in prosrc)>0 AND position('s.device_type=r.channel' in prosrc)>0 AND position('s.auth_version=u.auth_version' in prosrc)>0 AND position('o.authorization_version=r.organization_auth_version' in prosrc)>0 AND position('m.intent::jsonb' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_mutation_session'),
+      'mutation_actual_target_receipt',(SELECT position('x.project_id=m.project_id' in prosrc)>0 AND position('m.base_version' in prosrc)>0 AND position('NEW.result_version' in prosrc)>0 AND position('NEW.result_data' in prosrc)>0 AND position('m.arguments' in prosrc)>0 AND position('timestamptz' in prosrc)>0 AND position('authorized action' in prosrc)>0 FROM pg_proc WHERE proname='validate_agent_mutation_session'),
+      'mutation_exact_scope',(SELECT position('transition_project' in pg_get_constraintdef(oid))>0 AND position('update_milestone' in pg_get_constraintdef(oid))>0 AND position('transition_milestone' in pg_get_constraintdef(oid))>0 AND position('project_id' in pg_get_constraintdef(oid))>0 FROM pg_constraint WHERE conrelid='agent_run_mutations'::regclass AND conname='agent_run_mutations_scope_check'),
+      'mutation_tool_allowlists',(SELECT count(*) FROM pg_constraint WHERE conname IN ('agent_tool_receipts_tool_check','agent_execution_observations_tool_check') AND position('transition_project' in pg_get_constraintdef(oid))>0 AND position('update_milestone' in pg_get_constraintdef(oid))>0 AND position('transition_milestone' in pg_get_constraintdef(oid))>0),
+      'telegram_append_only_tables',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND NOT has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['telegram_identity_owners','telegram_channel_revisions'])t),
+      'telegram_state_tables',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['telegram_binding_challenges','telegram_bindings','telegram_channels','telegram_inbox'])t),
+      'telegram_guards',(SELECT count(*) FROM pg_trigger WHERE NOT tgisinternal AND tgenabled='O' AND tgname LIKE 'telegram_%'),
+      'telegram_original_session_binding',(SELECT position('s.id=c.session_id' in prosrc)>0 AND position('s.revoked_at IS NULL' in prosrc)>0 AND position('u.auth_version=c.actor_auth_version' in prosrc)>0 FROM pg_proc WHERE proname='guard_telegram_binding'),
+      'telegram_real_channel_history',(SELECT position('to_jsonb(c)=NEW.snapshot' in prosrc)>0 AND position('c.version=NEW.version' in prosrc)>0 FROM pg_proc WHERE proname='guard_telegram_channel_history'),
+      'telegram_real_inbox_binding',(SELECT position('b.user_id=NEW.requester_id' in prosrc)>0 AND position('u.auth_version=NEW.actor_auth_version' in prosrc)>0 AND position('c.version=NEW.channel_version' in prosrc)>0 FROM pg_proc WHERE proname='guard_telegram_inbox'),
+      'telegram_dispatch_append_only',(SELECT bool_and(has_table_privilege(current_user,t,'SELECT') AND has_table_privilege(current_user,t,'INSERT') AND NOT has_table_privilege(current_user,t,'UPDATE') AND NOT has_table_privilege(current_user,t,'DELETE')) FROM unnest(ARRAY['telegram_conversation_scopes','telegram_run_links'])t),
+      'telegram_readonly_profile_digest',(SELECT position('telegram_configuration_sha256 IS DISTINCT FROM OLD.telegram_configuration_sha256' in prosrc)>0 FROM pg_proc WHERE proname='preserve_agent_profile'),
+      'telegram_real_run_origin',(SELECT position('m.body=i.request_text' in prosrc)>0 AND position('r.client_message_id=i.id' in prosrc)>0 AND position('p.telegram_configuration_sha256 IS NOT NULL' in prosrc)>0 AND position('s.organization_auth_version=o.authorization_version' in prosrc)>0 FROM pg_proc WHERE proname='guard_telegram_run_link'),
+      'telegram_real_scope_binding',(SELECT position('can_access' in prosrc)>0 AND position('telegram_bindings' in prosrc)>0 AND position('actor_auth_version' in prosrc)>0 FROM pg_proc WHERE proname='guard_telegram_conversation_scope'),
+      'can_rewrite_tool_receipts',has_table_privilege(current_user,'agent_tool_receipts','UPDATE')
+        OR has_table_privilege(current_user,'agent_tool_receipts','DELETE'),
+      'active_runtime_profiles',(SELECT count(*) FROM agent_runtime_profiles WHERE state='active'),
+      'disposable_test_databases',(SELECT count(*) FROM pg_database WHERE datname ~ '^cp_test_[0-9a-f]{32}$'))"""
+    result = subprocess.run([str(APP / '.tools/pgsql/bin/psql.exe'), '-X', '-A', '-t', '-q', '-v', 'ON_ERROR_STOP=1', '-c', query],
+                            env=environment, capture_output=True, text=True, encoding='utf-8', timeout=15,
+                            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+    if result.returncode:
+        raise SystemExit('Owned file-creation database checks failed; private diagnostics withheld.')
+    database = json.loads(result.stdout)
+    identifier = '00000000-0000-4000-8000-000000000000'
+    route = '/v1/conversations/' + identifier + '/context-sources/file/' + identifier + '?context_security_version=1&version_id=' + identifier
+    try:
+        with urlopen('http://127.0.0.1:18080' + route, timeout=5) as response:
+            status = response.status
+    except HTTPError as error:
+        status = error.code
+        error.close()
+    skill_states = [json.loads(p.read_text(encoding='utf-8'))['state'] for p in sorted((APP / 'skills').glob('*/manifest.json'))]
+    effective = {**os.environ, **values}
+    disabled = effective.get('CP_AGENT_FILE_PROVIDERS', '') in ('', 'disabled')
+    writing_disabled = effective.get('CP_AGENT_DRAFT_DRIVER', '') in ('', 'disabled')
+    telegram_disabled = effective.get('CP_TELEGRAM_INGRESS', '') in ('', 'disabled')
+    dispatch_disabled = effective.get('CP_TELEGRAM_DISPATCH_BOTS', '') in ('', 'disabled')
+    probes = []
+    for path, expected in (('/v1/me/telegram', 401), ('/v1/integrations/telegram/123456789/webhook', 404)):
+        from urllib.request import Request
+        try:
+            req = Request('http://127.0.0.1:18080' + path, data=b'', headers={'Content-Type':'application/json'}, method='POST') if path.endswith('/webhook') else Request('http://127.0.0.1:18080' + path)
+            with urlopen(req, timeout=5) as response:
+                code = response.status
+        except HTTPError as error:
+            code = error.code
+            error.close()
+        probes.append({'path':path,'status':code,'expected':expected,'passed':code==expected})
+    passed = bool(common['passed'] and common['database']['migration_count'] == 60
+                  and telegram_disabled and dispatch_disabled and all(p['passed'] for p in probes)
+                  and all(database[k] for k in ('telegram_dispatch_append_only','telegram_readonly_profile_digest','telegram_real_run_origin','telegram_real_scope_binding'))
+                  and database['telegram_append_only_tables'] and database['telegram_state_tables'] and database['telegram_guards'] == 14
+                  and all(database[k] for k in ('telegram_original_session_binding','telegram_real_channel_history','telegram_real_inbox_binding'))
+                  and database['mutation_append_only_tables'] and database['mutation_guards'] == 8 and database['mutation_tool_allowlists'] == 2
+                  and all(database[k] for k in ('mutation_legacy_session_nullable','mutation_session_fk','mutation_original_session_binding','mutation_actual_target_receipt','mutation_exact_scope'))
+                  and database['post_append_only_tables'] and database['post_guards'] == 6 and database['post_tool_allowlists'] == 2
+                  and all(database[k] for k in ('post_original_session_binding','post_exact_content_and_receipt','post_sender_and_tool_evidence'))
+                  and database['oa_append_only_tables'] and database['oa_guards'] == 6 and database['oa_tool_allowlists'] == 2
+                  and all(database[k] for k in ('oa_original_session_binding','oa_exact_arguments_and_receipt','oa_sender_and_tool_evidence'))
+                  and database['append_only_file_tables'] and database['file_update_guards'] == 13
+                  and all(database[key] for key in ('creation_ids_nullable','legacy_update_default','mode_scope_enforced','exact_creation_binding','creation_source_and_tool_evidence'))
+                  and database['can_read_file_evidence'] and database['historical_creator_nullable']
+                  and database['historical_original_name_nullable'] and database['original_name_immutable_guards'] == 1
+                  and not database['can_rewrite_tool_receipts'] and database['active_runtime_profiles'] == 0
+                  and database['disposable_test_databases'] == 0 and skill_states == ['draft'] * 8 and status == 401 and disabled and writing_disabled)
+    report = {'passed': passed, 'checked_at': datetime.now(timezone.utc).isoformat(), 'database': database,
+              'migration_count': common['database']['migration_count'], 'actual_skill_states': skill_states,
+              'file_context_probe': {'method': 'GET', 'path': route, 'status': status, 'expected': 401, 'passed': status == 401},
+              'agent_file_reading_disabled_in_development_configuration': disabled,
+              'agent_file_writing_disabled_in_development_configuration': writing_disabled,
+              'environment': 'owned native Windows Go/PostgreSQL; no virtualization',
+              'verification_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'unauthenticated_post_probe_body': 'empty; authentication before body decoding',
+              'telegram_configuration_disabled': telegram_disabled, 'telegram_dispatch_configuration_disabled': dispatch_disabled, 'telegram_route_probes': probes,
+              'actual_telegram_network_invoked': False, 'real_model_invoked': False, 'actual_cloud_invoked': False, 'production_deployed': False}
+    (EVIDENCE / 'development-telegram-dispatch.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'passed': passed, 'migration_count': report['migration_count'], 'unauthenticated_file_context_status': status}))
+    return 0 if passed else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

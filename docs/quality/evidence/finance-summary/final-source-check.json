@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T16:46:03.457750+00:00",
+  "checks": [
+    {
+      "name": "Every discovered backend test passes with current source",
+      "passed": true
+    },
+    {
+      "name": "Native financial summary, MCP, incurred, subscription and service regressions were executed",
+      "passed": true
+    },
+    {
+      "name": "Linux compilation matches current source; artifact not executed or deployed",
+      "passed": true
+    },
+    {
+      "name": "Web tests and production build match current source",
+      "passed": true
+    },
+    {
+      "name": "Mobile tests and both mini-program builds match current source",
+      "passed": true
+    },
+    {
+      "name": "Runtime regression and eight draft Skill checks match current source",
+      "passed": true
+    },
+    {
+      "name": "finance-summary-web browser results match current source",
+      "passed": true
+    },
+    {
+      "name": "finance-summary-web browser, fixture and temporary server closed",
+      "passed": true
+    },
+    {
+      "name": "finance-summary-mobile browser results match current source",
+      "passed": true
+    },
+    {
+      "name": "finance-summary-mobile browser, fixture and temporary server closed",
+      "passed": true
+    },
+    {
+      "name": "Mobile fixture, H5 build and browser used identical source",
+      "passed": true
+    },
+    {
+      "name": "Owned development schema, privileges, routes and fixture cleanup",
+      "passed": true
+    },
+    {
+      "name": "Development evidence matches verification script",
+      "passed": true
+    },
+    {
+      "name": "Documented and embedded OpenAPI copies match",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Subscription review stays draft and exposes only three implemented reads",
+      "passed": true
+    },
+    {
+      "name": "Finance evidence schema has all three immutable origin and receipt guards",
+      "passed": true
+    },
+    {
+      "name": "Owned API and notification worker identities match recorded start time",
+      "passed": true
+    },
+    {
+      "name": "Temporary review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "49ed701c42f96f38df1c1fac51363b79eb71fe4ccb91318b2a29e5c825ae2023",
+  "scope": "Monthly subscription forecast, incurred and cash summary, immutable common-audience Web/Taro financial snapshot review and successful cited receipt checks; native development only, excludes actual models, external delivery, devices, cloud storage and full platform acceptance."
+}

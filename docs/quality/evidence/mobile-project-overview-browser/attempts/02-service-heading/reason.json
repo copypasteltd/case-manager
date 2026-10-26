@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "The existing mobile service page deliberately uses the heading Service details and puts the actual name in a section. The checker incorrectly expected the name as the page heading; its assertion now follows that real UI. The sixteen-category read and six layout cases had passed; this attempt is not the final verification.",
+  "owned_browser_closed": true,
+  "native_fixture_exit_code": 0
+}

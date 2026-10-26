@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T06:21:19.364296+00:00",
+  "checks": [
+    {
+      "name": "Every discovered backend test passes against the current complete source",
+      "passed": true
+    },
+    {
+      "name": "All ten real deliverable draft creation integration scenarios pass",
+      "passed": true
+    },
+    {
+      "name": "Both original milestone whitespace failures are reproduced before migration69 and pass against the current source",
+      "passed": true
+    },
+    {
+      "name": "Current SDK, schemas and Skill instructions pass all thirty-nine controlled tests",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft; project-update 1.4.0 includes exact deliverable draft creation",
+      "passed": true
+    },
+    {
+      "name": "All eighty-one Web tests and production build bind the current source",
+      "passed": true
+    },
+    {
+      "name": "All eighty-nine mobile tests, type checks and both sixteen-page mini-program builds pass",
+      "passed": true
+    },
+    {
+      "name": "web actual browser history, complete metadata, association, retry and cancellation match current sources",
+      "passed": true
+    },
+    {
+      "name": "web owned browser, context, temporary server and native fixture are closed",
+      "passed": true
+    },
+    {
+      "name": "mobile actual browser history, complete metadata, association, retry and cancellation match current sources",
+      "passed": true
+    },
+    {
+      "name": "mobile owned browser, context, temporary server and native fixture are closed",
+      "passed": true
+    },
+    {
+      "name": "Mobile native fixture, fresh H5 build and actual browser use identical fixed sources",
+      "passed": true
+    },
+    {
+      "name": "New frozen Android development APK matches current sources and all seventeen package checks",
+      "passed": true
+    },
+    {
+      "name": "Unchanged pure Java boundaries retain their exact increment66 source and four JVM XML proofs",
+      "passed": true
+    },
+    {
+      "name": "Current backend cross-compiles for Linux without execution or deployment",
+      "passed": true
+    },
+    {
+      "name": "Daily API uses the current backend and sixty-nine exact migrations with unchanged PG, worker and Vite",
+      "passed": true
+    },
+    {
+      "name": "Development deliverable guards, original login and append-only evidence remain enforced",
+      "passed": true
+    },
+    {
+      "name": "External integrations stay disabled and no disposable databases remain",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI copies match exactly",
+      "passed": true
+    },
+    {
+      "name": "Private fixture credentials have been removed",
+      "passed": true
+    },
+    {
+      "name": "Temporary browser review port is released",
+      "passed": true
+    },
+    {
+      "name": "Unchanged dependency lock keeps unresolved production security findings open",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "61754e7e60bdac1ad937c5890330de0fa872deaa72d116f428348ef46bdfb10d",
+  "verification_script_sha256": "c38c99a3186b3eb16d93c6d6d41786970b369eab7c5606f1f42a41cc77864389",
+  "reused_evidence": {
+    "android_unit_tests": "Gradle UP-TO-DATE; 25 retained passing results, not newly executed",
+    "java": "increment66 exact final pure Java source and JVM XML proof"
+  },
+  "full_goal_complete": false,
+  "production_deployed": false,
+  "real_model_verified": false,
+  "real_cloud_verified": false,
+  "real_device_verified": false
+}

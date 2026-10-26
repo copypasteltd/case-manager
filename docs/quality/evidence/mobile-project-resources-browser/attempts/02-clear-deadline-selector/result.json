@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T07:44:18.670Z",
+  "source_sha256": "277a362656fd9dbe5da7d5d6ebfe50586c5a201b8a0b0e32a0b0c30bc2de35b0",
+  "source_after_sha256": "277a362656fd9dbe5da7d5d6ebfe50586c5a201b8a0b0e32a0b0c30bc2de35b0",
+  "source_unchanged": true,
+  "source_count": 592,
+  "checks": [
+    "Actual milestone creation rejects invalid dates without a request; exact Hong Kong time, owner, microseconds, missed state and versioned editing persist.",
+    "Milestone achievement refuses missing evidence without mutation, succeeds after an original completed associated task and supports exact reopen/cancel commands."
+  ],
+  "layouts": [
+    {
+      "page": "milestone-creation",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "milestone-creation",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "milestone-creation",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.waitFor: Error: strict mode violation: locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/暂不支持清空/) resolved to 2 elements:\n    1) <taro-text-core class=\"\">…</taro-text-core> aka getByText('当前事项的截止时间可修改，暂不支持清空；请保留原值或填写新时间。')\n    2) <taro-text-core class=\"cp-muted cp-small\">…</taro-text-core> aka getByText('例如2028-02-29 18:00')\n\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/暂不支持清空/) to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_project_resources.mjs:120:122\nActive page diagnostics: {\"route\":\"#/pages/project/index?section=resource-form&kind=risk&id=a96226b7-3415-4a1f-b583-d17552aa9420&resource_id=1178fa19-5ab4-430e-823e-f756481fd3c3\",\"titles\":[\"编辑风险.\"],\"actions\":[\"我的\",\"确认保存风险\",\"重新读取当前权限与事项\",\"查看项目列表核对结果\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "277a362656fd9dbe5da7d5d6ebfe50586c5a201b8a0b0e32a0b0c30bc2de35b0",
+  "source_sha256_after_build": "277a362656fd9dbe5da7d5d6ebfe50586c5a201b8a0b0e32a0b0c30bc2de35b0",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

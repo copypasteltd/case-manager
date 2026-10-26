@@ -1,0 +1,89 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-26T09:57:53.182561+00:00",
+  "method": "Inspected all fifteen screenshot thumbnails as a contact sheet; original-size project board, mobile closed issue and historical plan crop; first/middle/last frames from each decoded GIF.",
+  "observations": [
+    "Actual CopyPaste interface and expected synthetic business states are visible.",
+    "Mobile issue shows closed state and the actual resolution.",
+    "Web board retains its real horizontal viewport; some columns extend offscreen.",
+    "Secretary tour shows the real access denial; the separately attributed historical plan crop shows a controlled approval UI.",
+    "No authentication inputs, passwords, MFA secrets or access tokens were visible in inspected samples."
+  ],
+  "limits": "Sampled visual inspection, not exhaustive frame-by-frame review or pixel OCR; mobile is H5 and external services were disabled.",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-issue.png",
+      "sha256": "bc16301bb34b698eaf295a64818a6f8cfa7448ae163e79f9ba55d5a0ad400abb"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project.png",
+      "sha256": "f191d7ea82e30271b1f0125fde419c4692ffdfd77ff936ccbb9e14acfd20fa21"
+    },
+    {
+      "file": "docs/media/screenshots/mobile-risk.png",
+      "sha256": "c52db80f0028167a86b611ddc321428a689027e79a9bf985eb9f21419db4f2e9"
+    },
+    {
+      "file": "docs/media/screenshots/web-contract.png",
+      "sha256": "5078b0794b4ca4164d24d1900a7151dbf6b593346981e6b935efc6a23053895b"
+    },
+    {
+      "file": "docs/media/screenshots/web-dashboard.png",
+      "sha256": "576234b6f98930b817c163dd6fdecacfd20de18d453ee2bd8f0f1e38aeeb53fc"
+    },
+    {
+      "file": "docs/media/screenshots/web-files.png",
+      "sha256": "cb4d6ae6b9fc0b7c1f938925bf890505b08395ce5b7df8442cf1ed1027f1da46"
+    },
+    {
+      "file": "docs/media/screenshots/web-finance.png",
+      "sha256": "1174741f5428302544896f735005b8ecf108baeaa1439a80f7b71b7c25baefe9"
+    },
+    {
+      "file": "docs/media/screenshots/web-knowledge.png",
+      "sha256": "cf76f1b07831478443910a69a3c212f840c4a99501f5ee0d3e0be1bbd5ad323b"
+    },
+    {
+      "file": "docs/media/screenshots/web-overview.png",
+      "sha256": "b3c28ca45971acd322d20c352d42a6569f3b06870009cf1514eb21c8b2bd1323"
+    },
+    {
+      "file": "docs/media/screenshots/web-project-board.png",
+      "sha256": "2a19d9f2dc5501174b5a4e6bba6383ff43947a2fc50fdfa253f77b43b2e7663b"
+    },
+    {
+      "file": "docs/media/screenshots/web-project.png",
+      "sha256": "9a4f445797aa00f667a446904cac01ee1cb160f201f55dc0a18eed8e9f51a6de"
+    },
+    {
+      "file": "docs/media/screenshots/web-secretary-plan.png",
+      "sha256": "f0733f9ca69cf64655810c543b7e35d38d2fdc07f8e6dd55efbdc7d26b91063e"
+    },
+    {
+      "file": "docs/media/screenshots/web-secretary.png",
+      "sha256": "97a9819dac08ca2143557dd3909ed24e5c17d0699bd7c48c92ee153236a8f638"
+    },
+    {
+      "file": "docs/media/screenshots/web-status.png",
+      "sha256": "0627523b18988fb00012340313677faba1a410e9d02c006d24c197e63e53292a"
+    },
+    {
+      "file": "docs/media/screenshots/web-task.png",
+      "sha256": "9092945138542de3a3fc828aace652bf57b39d2c170718953b1fab55cf6ef2ea"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/mobile-risk-issue.gif",
+      "sha256": "410614269f826613f0e7c0140714bbe950f227080742707b80e764122b330770"
+    },
+    {
+      "file": "docs/media/gifs/web-operations-tour.gif",
+      "sha256": "b112dff097e352ff3da82b7f3909f81623a33c8e073b4d03365acaf39ad7c5fa"
+    },
+    {
+      "file": "docs/media/gifs/web-project-flow.gif",
+      "sha256": "ec762c58a32127e6facc18b27c13aa91903360afda8e345acfe8dc9464d35c57"
+    }
+  ]
+}

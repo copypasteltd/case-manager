@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "phase": "isolated fixture initialization, before browser launch",
+  "reason": "The fixture attempted to enroll an already enrolled MFA credential a second time. Duplicate enrollment was removed; ordinary business authorization was not changed.",
+  "fixture_exit_code": 1,
+  "owned_browser_started": false,
+  "recorded_at": "2026-10-26T00:15:53.417112+00:00"
+}

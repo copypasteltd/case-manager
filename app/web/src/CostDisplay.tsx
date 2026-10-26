@@ -1,0 +1,21 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { api, type Page, type Schemas, type Project } from './api';
+import { date } from './components';
+import { money } from './ContractDisplay';
+import { DownloadDialog, type DownloadVersion } from './DownloadDialog';
+
+export type Cost = Schemas['Cost'];
+export const costStates: Record<Cost['state'], string> = { draft: '待核实草稿', confirmed: '已确认发生', reversed: '原费用已冲销' };
+export const sourceNames = { purchase: '采购', claim: '报销', contract: '合同' };
+export const costBase = (value: Cost, reason: string) => ({ expected_version: value.version, revision_id: value.current_revision_id, content_hash: value.content_hash, reason });
+export function useCostProjects() { return useInfiniteQuery({ queryKey: ['projects', 'cost-scopes'], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Project>>('/projects?' + new URLSearchParams({ limit: '50', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined }); }
+export function CostBadge({ value }: { value: Pick<Cost, 'state' | 'entry_kind'> }) { return <span className={'badge ' + (value.entry_kind === 'reversal' || value.state === 'reversed' ? 'warning' : value.state === 'confirmed' ? 'success' : 'neutral')}>{value.entry_kind === 'reversal' ? '全额冲销记录' : costStates[value.state]}</span>; }
+type Facts = Schemas['CostContent'] & Pick<Cost, 'counterparty_evidence' | 'attachments'>;
+export function CostFacts({ value }: { value: Facts }) {
+  const [download, setDownload] = useState<DownloadVersion | null>(null), projects = useCostProjects();
+  const names = new Map(projects.data?.pages.flatMap(page => page.items).map(p => [p.id, p.name]));
+  return <><dl className="file-facts"><div><dt>发生日期</dt><dd>{value.occurred_on ?? '尚未确定'}</dd></div><div><dt>费用总额</dt><dd>{value.amount === null ? '尚未确定' : money(value.amount, value.currency)}</dd></div><div><dt>费用类别</dt><dd>{value.category || '尚未填写'}</dd></div><div><dt>固定供应方</dt><dd>{value.counterparty_evidence?.name ?? (value.counterparty ? '资料当前不可查阅' : '尚未选择')}</dd></div></dl><h3>项目与公司分摊</h3>{value.allocations.length ? <div className="cost-allocation-list">{value.allocations.map((line, i) => <div className="cost-allocation-row" key={i}><span>{line.project_id ? names.get(line.project_id) ?? ('项目 ' + line.project_id) : '公司费用'}</span><strong>{money(line.amount, value.currency)}</strong></div>)}</div> : <p className="muted">尚未填写分摊。确认前须使分摊合计与总额一致。</p>}<h3>固定凭证版本</h3>{value.evidence_version_ids.length ? <div className="reference-options">{value.evidence_version_ids.map(id => { const file = value.attachments.find(item => item.version_id === id); return <div key={id} className="reference-option">{file ? <><strong>{file.name}</strong><small>版本 {file.seq} · {file.scan_state === 'waived' ? '已批准扫描例外' : '已通过安全检查'}</small><button type="button" className="text-button" onClick={() => setDownload({ id: file.version_id, seq: file.seq, size_bytes: file.size_bytes, sha256: file.sha256, original_name: file.name, scan_state: file.scan_state })}>查看固定凭证</button></> : <span>此固定凭证当前不可查阅</span>}</div>; })}</div> : <p className="muted">尚未选择凭证。</p>}{value.notes && <div className="party-notes"><h3>备注</h3><p>{value.notes}</p></div>}{download && <DownloadDialog version={download} onClose={() => setDownload(null)} />}</>;
+}
+export function CostBusinessLinks({ value }: { value: Cost }) { return <section className="panel party-detail"><h2>关联业务依据</h2><p className="form-note">关联用于追溯，同一费用不会因关联多张业务单据重复计入。</p>{value.links.length ? value.links.map(link => <article className="cost-business-link" key={link.id}><strong>{link.source_type==='subscription_period'?'订阅账期':sourceNames[link.source_type]}</strong>{link.title ? <Link to={(link.source_type === 'purchase' ? '/purchases/' : link.source_type === 'claim' ? '/claims/' : link.source_type==='subscription_period'?'/subscription-periods/':'/contracts/') + link.source_id}>{link.title}</Link> : <span>业务资料当前不可查阅</span>}<small>固定修订 {link.source_revision_id} · {date(link.created_at)}</small><p>{link.reason}</p></article>) : <p className="muted">尚未关联采购、报销、合同或订阅账期。</p>}</section>; }

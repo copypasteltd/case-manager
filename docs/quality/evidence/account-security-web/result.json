@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-25T03:56:39.563Z",
+  "finished_at": "2026-10-25T03:57:29.643Z",
+  "checks": [
+    "Web lists the actual current refresh family and another signed-in device.",
+    "A foreign employee device cannot be revoked through the real cookie API.",
+    "Revoking another device commits and refreshes its historical state.",
+    "The authorized administrator issues a bounded reset credential through the members UI.",
+    "Forgot-password completion returns to a real login with the replacement credential.",
+    "Changing a password signs out the current Web session and clears all three cookies.",
+    "Self-revocation exits to login and clears cookies without a second authenticated mutation."
+  ],
+  "source_count": 497,
+  "source_sha256": "0da95a7ada793c469d2fd5311a60bcc0b204ec8b208d09f008253d09c8ff96f5",
+  "source_after_sha256": "0da95a7ada793c469d2fd5311a60bcc0b204ec8b208d09f008253d09c8ff96f5",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

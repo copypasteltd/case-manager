@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T02:55:00.539451+00:00",
+  "database": {
+    "report_append_only": true,
+    "report_guards": 3,
+    "deferred_report_receipt": 1,
+    "typed_payload_constraint": 1,
+    "detail_tool_constraints": 2,
+    "typed_receipt_function": true,
+    "telegram_finance_forbidden": 1,
+    "report_count": 0,
+    "active_profiles": 0,
+    "enabled_telegram_channels": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 65,
+  "all_eight_skills_draft": true,
+  "integrations_disabled": true,
+  "ownership": {
+    "api": true,
+    "notification_worker": true
+  },
+  "production_deployment": false,
+  "real_cloud_or_model": false,
+  "verification_script_sha256": "c320f356af57168df34f70a4b20987bd67debd0298e79a9519d397039a1f3727"
+}

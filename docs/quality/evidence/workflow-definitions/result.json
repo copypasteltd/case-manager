@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "executed_at": "2026-10-23T03:17:11.775Z",
+  "real_api": true,
+  "company_policy_published": false,
+  "checks": [
+    "The real policy form leaves company thresholds, self-approval and withdrawal decisions explicit; a new rule begins disabled",
+    "Named approvers, sequence reordering, currency normalization and explicit policy choices retain their values in the same form",
+    "The real form fits five widths in both themes, with usable scroll regions and unchanged draft choices",
+    "Cancelling the UI draft sends no publication request and preserves the existing company rules",
+    "An employee without configuration rights sees no policy editor and receives no rules from the API"
+  ],
+  "javascript_errors": [],
+  "server_errors": [],
+  "all_browser_contexts_closed": true
+}

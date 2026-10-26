@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "started_at": "2026-10-24T20:36:07.980Z",
+  "finished_at": "2026-10-24T20:36:36.082Z",
+  "source_sha256": "f2ed56b0414aeceba8d2cf084adf72ae8f37cc53e30f372749844f830e5c6f38",
+  "source_after_sha256": "f2ed56b0414aeceba8d2cf084adf72ae8f37cc53e30f372749844f830e5c6f38",
+  "source_files": [
+    "backend/internal/agent/plans.go",
+    "backend/internal/agent/plan_mutations.go",
+    "backend/internal/agent/plan_tools.go",
+    "backend/internal/platform/commands.go",
+    "backend/internal/httpapi/agent_plans.go",
+    "backend/internal/httpapi/agent_plans_integration_test.go",
+    "backend/migrations/0049_agent_project_plans.sql",
+    "web/src/ConversationPlans.tsx",
+    "web/src/ConversationMessages.tsx",
+    "packages/contracts/src/api.d.ts",
+    "scripts/check_agent_plans.mjs",
+    "scripts/run_agent_browser.py"
+  ],
+  "checks": [
+    {
+      "name": "Web drafts exact plan without creating business project",
+      "passed": true
+    },
+    {
+      "name": "Server rejects commit before explicit human approval",
+      "passed": true
+    },
+    {
+      "name": "Web approval and commit return a real project and exact business receipt",
+      "passed": true
+    },
+    {
+      "name": "A second commit key reconciles one project and operation",
+      "passed": true
+    },
+    {
+      "name": "Created project opens in the existing functional project page",
+      "passed": true
+    },
+    {
+      "name": "Web revokes unused intent without creating a project",
+      "passed": true
+    },
+    {
+      "name": "Approval card exposes the exact project type and a due date without a start date",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_contexts_closed": true,
+  "owned_browser_closed": true,
+  "scope": "Native isolated API and real Web UI; no model/provider, cloud or production activation.",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

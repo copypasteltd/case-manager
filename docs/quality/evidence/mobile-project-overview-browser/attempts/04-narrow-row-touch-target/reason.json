@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "Actual 320px layout exposed scaled row hit areas below 44 physical CSS pixels. Add an unscaled 44PX minimum to the shared row rule, retain native 54-point rows and rebuild all affected clients.",
+  "owned_browser_closed": true,
+  "native_fixture_exit_code": 0
+}

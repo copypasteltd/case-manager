@@ -1,0 +1,7 @@
+{
+  "reason": "Removed a duplicate MFA enrollment from the opt-in browser fixture while batch 1 was running. Its successful test results are not reusable because the backend manifest changed. Restart the full regression on the final source.",
+  "checks_passed": 120,
+  "test_exit_code": 0,
+  "source_unchanged": false,
+  "recorded_at": "2026-10-26T00:15:53.416008+00:00"
+}

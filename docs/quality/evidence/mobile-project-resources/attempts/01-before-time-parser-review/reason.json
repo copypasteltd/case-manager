@@ -1,0 +1,4 @@
+{
+  "reason": "An early successful mobile build precedes a review correction: display conversion now parses whole seconds and preserves microseconds separately, without depending on nonstandard Date.parse fractional precision. Final mobile builds will be regenerated after browser validation.",
+  "product_test_failure": false
+}

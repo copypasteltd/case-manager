@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-24T20:17:11.949223+00:00",
+  "source_sha256": "b03c83d7349d37eb1bff6a54a06d1416e5ec3b9dad27381d779ebbeb41521555",
+  "passed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "abandoned_batches": [
+    {
+      "index": 8,
+      "status": "failed",
+      "source_unchanged": false,
+      "exit_code": 0
+    }
+  ],
+  "finding": "The proposal MCP interface incorrectly required context versions absent from model execution context. Bound versions and optional self owner are now supplied from the Go lease. Source changed during batch 8. No previous batch is counted toward verification of the corrected source.",
+  "full_run_passed": false
+}

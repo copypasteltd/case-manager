@@ -1,0 +1,159 @@
+{
+  "passed": false,
+  "executed_at": "2026-10-26T01:31:24.678Z",
+  "source_sha256": "4afb4dd8d16a1ddcab3b05b38cfa84173f791f4d76c83ee8268a2e51827fe932",
+  "source_file_count": 573,
+  "source_unchanged_during_tests": true,
+  "real_taro_h5_api": true,
+  "isolated_native_database": true,
+  "actual_cloud": false,
+  "actual_model": false,
+  "actual_device": false,
+  "transport_fault_injection": true,
+  "failure": "AssertionError [ERR_ASSERTION]: POST /projects/5fab3e20-be7b-46b9-86e9-8f2ec3f8d9b1/members/ab9544bc-8b4d-4c97-9f3c-4dcba8271fec: 404 RESOURCE_NOT_FOUND\n    at request (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_overview.mjs:41:43)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_project_overview.mjs:102:65",
+  "checks": [
+    {
+      "name": "Actual sixteen authorized categories, complete counts beyond five previews, precise project allocations/reversals and unapproved-budget separation match native HTTP facts",
+      "passed": true
+    },
+    {
+      "name": "Eleven original task/business/file/log/service/finance routes complete real reads; exact cost revisions, actual payment allocations and subscription empty obligations remain distinct; navigation issues no business commands",
+      "passed": true
+    },
+    {
+      "name": "Actual proposal and budget lists paginate beyond twenty; twenty-two newer proposals move the original clicked preview beyond page one without replacing its selected ID or source proposal",
+      "passed": true
+    },
+    {
+      "name": "Explicit transport fault injection clears prior cost and overview facts; actual API retry restores them without stale amounts or fabricated empty results",
+      "passed": true
+    },
+    {
+      "name": "Narrow viewer retains published knowledge and authorized counts, cannot infer financial amounts/hidden categories, and direct unauthorized finance navigation exposes no cached record",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-overview",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-cost",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-reader",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-reader",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-reader",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-reader",
+      "theme": "dark",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-reader",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "mobile-project-reader",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "all_owned_browser_tabs_closed": true,
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "4afb4dd8d16a1ddcab3b05b38cfa84173f791f4d76c83ee8268a2e51827fe932",
+  "source_sha256_after_build": "4afb4dd8d16a1ddcab3b05b38cfa84173f791f4d76c83ee8268a2e51827fe932",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

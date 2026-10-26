@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T02:27:40.795Z",
+  "finished_at": "2026-10-26T02:27:53.164Z",
+  "checks": [
+    {
+      "name": "Completed Web review cites the genuine detail and original record source digests",
+      "passed": true
+    },
+    {
+      "name": "Forecast, incurred cost, allocated cash and unpaid balance match the ordinary APIs without floating-point conversion",
+      "passed": true
+    },
+    {
+      "name": "Cost and payment drill-down preserve actual associations and fixed evidence; candidate anomalies remain candidates",
+      "passed": true
+    },
+    {
+      "name": "Web traverses every chunk of all four sources including missing-period coverage and closes each reader",
+      "passed": true,
+      "pages": 5
+    }
+  ],
+  "source_count": 591,
+  "source_sha256": "659b41d5ad6df02c0a020fc637721c212becf7013df58066277794de5a56b7ba",
+  "source_after_sha256": "659b41d5ad6df02c0a020fc637721c212becf7013df58066277794de5a56b7ba",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_vite_stopped": true
+}

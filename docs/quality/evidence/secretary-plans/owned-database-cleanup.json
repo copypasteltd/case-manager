@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "started_at": "2026-10-24T20:30:46.983674+00:00",
+  "database": "cp_test_f6f513a276fe4476adec19d221a4e9ce",
+  "before": {
+    "oid": 23799798,
+    "owner": "postgres",
+    "template": false,
+    "connection_limit": -2,
+    "connections": 0
+  },
+  "cluster_data_directory_matches_workspace": true,
+  "exact_fixture_drop_logged_at": [
+    "2026-10-25 04:20:05.764"
+  ],
+  "operation": "DROP only exact disconnected owned failed fixture without FORCE",
+  "application_database_selected": false,
+  "fixture_inspection": "PostgreSQL refuses connection after the interrupted DROP; ownership is bound to exact native fixture DROP log, catalog OID, owner, disconnected state and workspace cluster, not assumed from name alone.",
+  "finished_at": "2026-10-24T20:30:48.083602+00:00",
+  "exact_database_absent": true
+}

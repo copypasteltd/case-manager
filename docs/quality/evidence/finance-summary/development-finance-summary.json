@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "verification_script_sha256": "c074608f0d0a591766cad1d84339875ab5e9d26a782049d2f798e5772025317b",
+  "checked_at": "2026-10-25T16:45:44.711896+00:00",
+  "migration_count": 62,
+  "database": {
+    "report_append_only": true,
+    "report_guards": 3,
+    "incident_telegram_constraint": 1,
+    "finance_tool_constraint": 2,
+    "active_profiles": 0,
+    "development_report_count": 0,
+    "disposable_test_databases": 0
+  },
+  "all_eight_skills_draft": true,
+  "production_integrations_disabled": true,
+  "actual_model_invoked": false,
+  "actual_telegram_contacted": false,
+  "schema_applied_to_owned_development_only": true
+}

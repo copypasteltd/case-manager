@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://copypaste.hk/schemas/company-skills/file-update.input.v1.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "base_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "format": {
+          "enum": [
+            "text/plain",
+            "text/markdown"
+          ]
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "file_id",
+        "base_version_id",
+        "format",
+        "instructions"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "folder_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expected_folder_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "media_type": {
+          "enum": [
+            "text/plain",
+            "text/markdown"
+          ]
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "folder_id",
+        "expected_folder_version",
+        "name",
+        "media_type",
+        "instructions"
+      ]
+    },
+    {
+      "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    }
+  ]
+}

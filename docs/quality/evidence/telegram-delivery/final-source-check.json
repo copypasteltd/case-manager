@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-25T18:45:26.674418+00:00",
+  "checks": [
+    {
+      "name": "Every discovered backend test passes with current source",
+      "passed": true
+    },
+    {
+      "name": "Native outbound delivery, Bot API transport, configuration, dispatch and ingress regressions were executed",
+      "passed": true
+    },
+    {
+      "name": "Linux compilation matches current source; artifact not executed or deployed",
+      "passed": true
+    },
+    {
+      "name": "Web tests and production build match current source",
+      "passed": true
+    },
+    {
+      "name": "Mobile tests and both mini-program builds match current source",
+      "passed": true
+    },
+    {
+      "name": "weapp registers exactly 14 public pages including authenticated Telegram receipts",
+      "passed": true
+    },
+    {
+      "name": "tt registers exactly 14 public pages including authenticated Telegram receipts",
+      "passed": true
+    },
+    {
+      "name": "Runtime regression and eight draft Skill checks match current source",
+      "passed": true
+    },
+    {
+      "name": "telegram-delivery-web browser results match current source",
+      "passed": true
+    },
+    {
+      "name": "telegram-delivery-web browser, fixture and temporary server closed",
+      "passed": true
+    },
+    {
+      "name": "telegram-delivery-mobile browser results match current source",
+      "passed": true
+    },
+    {
+      "name": "telegram-delivery-mobile browser, fixture and temporary server closed",
+      "passed": true
+    },
+    {
+      "name": "Mobile fixture, H5 build and browser used identical source",
+      "passed": true
+    },
+    {
+      "name": "Owned development schema, privileges, routes and fixture cleanup",
+      "passed": true
+    },
+    {
+      "name": "Development evidence matches verification script",
+      "passed": true
+    },
+    {
+      "name": "Documented and embedded OpenAPI copies match",
+      "passed": true
+    },
+    {
+      "name": "Private browser fixture removed",
+      "passed": true
+    },
+    {
+      "name": "Delivery journal is append only and each revision has a deferred exact event",
+      "passed": true
+    },
+    {
+      "name": "Actual delivery command rejects disabled configuration without contacting Telegram",
+      "passed": true
+    },
+    {
+      "name": "Owned development keeps sending, profiles and all Telegram integrations disabled",
+      "passed": true
+    },
+    {
+      "name": "Owned API and notification worker identities match recorded start time",
+      "passed": true
+    },
+    {
+      "name": "Temporary review port released",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/",
+      "passed": true
+    },
+    {
+      "name": "http://localhost:5178/health/ready",
+      "passed": true
+    },
+    {
+      "name": "http://127.0.0.1:18080/health/ready",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "cd059e07b85c2446a6d48013ac8d5b28f30086bc7739805f4b10bcf3aa6ef8cb",
+  "scope": "Telegram portal-only lifecycle notifications, durable preparation, shared rate limits, unknown outcomes, MFA reconciliation and Web/Taro request review; native development only, excludes actual models, external delivery, devices, cloud storage and full platform acceptance."
+}
