@@ -1,0 +1,12 @@
+Completed actual flow 1: The actual employee workspace and existing request page open the mobile access page; a non-administrator has no channel-configuration controls.
+Completed actual flow 2: A real recent-MFA private challenge is created and explicitly cancelled; refresh clears its capability instead of persisting it in a draft.
+Completed actual flow 3: An actual loopback webhook proves a numeric Telegram identity; original-session mobile confirmation and explicit revocation are corroborated by authoritative own-status reads. No Telegram network is used.
+locator.waitFor: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-title').filter({ hasText: 'Telegram 接入' }) to be visible[22m
+
+    at heading (D:\dev\copypasted\内部管理\app\scripts\check_mobile_telegram.mjs:24:106)
+    at openAccess (D:\dev\copypasted\内部管理\app\scripts\check_mobile_telegram.mjs:76:83)
+    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_telegram.mjs:140:23
+Active page: {"route":"#/pages/login/index","titles":["回到工作空间."],"actions":["登录工作空间 ↗","接受公司邀请","忘记密码"]}
+{"passed":false,"checks":3,"closed":true}

@@ -1,0 +1,64 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T17:01:28.603Z",
+  "source_sha256": "a21e15c9f8917f0cf558beb918ca52147601cb077270ca026e1c8400937cdf9b",
+  "source_after_sha256": "a21e15c9f8917f0cf558beb918ca52147601cb077270ca026e1c8400937cdf9b",
+  "source_unchanged": true,
+  "source_count": 793,
+  "checks": [
+    "The actual employee workspace and existing request page open the mobile access page; a non-administrator has no channel-configuration controls.",
+    "A real recent-MFA private challenge is created and explicitly cancelled; refresh clears its capability instead of persisting it in a draft.",
+    "An actual loopback webhook proves a numeric Telegram identity; original-session mobile confirmation and explicit revocation are corroborated by authoritative own-status reads. No Telegram network is used."
+  ],
+  "layouts": [
+    {
+      "page": "telegram-own-binding",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "telegram-own-binding",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "telegram-own-binding",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-telegram-own-binding.png",
+      "caption": "Own numeric identity confirmed through the original mobile login; synthetic loopback webhook.",
+      "sha256": "d9d2f2a5c4575990a409c98cc6ace99dd048d3fbf7a904e6684a826d2070b32e",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-title').filter({ hasText: 'Telegram 接入' }) to be visible\u001b[22m\n\n    at heading (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_telegram.mjs:24:106)\n    at openAccess (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_telegram.mjs:76:83)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_telegram.mjs:140:23\nActive page: {\"route\":\"#/pages/login/index\",\"titles\":[\"回到工作空间.\"],\"actions\":[\"登录工作空间 ↗\",\"接受公司邀请\",\"忘记密码\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "incomplete committed channel receipt",
+    "list permission 403"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "a21e15c9f8917f0cf558beb918ca52147601cb077270ca026e1c8400937cdf9b",
+  "source_sha256_after_build": "a21e15c9f8917f0cf558beb918ca52147601cb077270ca026e1c8400937cdf9b",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

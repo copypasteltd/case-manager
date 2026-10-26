@@ -1,0 +1,30 @@
+=== RUN   TestTelegramIngress
+=== RUN   TestTelegramIngress/webhook_secret_and_size_are_checked_before_persistence
+=== RUN   TestTelegramIngress/durable_inbox_failure_rolls_private_proof_back_and_exact_retry_can_recover
+{"time":"2026-10-27T00:58:59.8431383+08:00","level":"ERROR","msg":"request failed","request_id":"1bcc136a-a795-4771-802a-5f64dccb6a13","code":"INTERNAL_ERROR","error_type":"*pgconn.PgError","database_code":"XX000","constraint":""}
+=== RUN   TestTelegramIngress/proof_is_private_single_use_and_portal_confirmation_remains_separate
+=== RUN   TestTelegramIngress/only_authorized_MFA_administrators_configure_paused_exact_topics
+=== RUN   TestTelegramIngress/unrelated_chats_topics_senders_and_nontriggers_retain_no_text
+=== RUN   TestTelegramIngress/concurrent_duplicate_updates_persist_one_real_request_and_no_model_run
+=== RUN   TestTelegramIngress/membership_change_pauses_all_topics_withdraws_pending_work_and_records_actual_history
+=== RUN   TestTelegramIngress/binding_cancellation_revocation_and_identity_ownership_cannot_be_bypassed
+=== RUN   TestTelegramIngress/original_identity_and_receipt_content_are_immutable_at_database_boundary
+=== RUN   TestTelegramIngress/issuing_a_binding_requires_actual_recent_MFA
+=== NAME  TestTelegramIngress
+    telegram_ingress_integration_test.go:371: isolated native browser fixture ready
+    telegram_ingress_integration_test.go:371: browser released isolated native fixture
+=== RUN   TestTelegramIngress/original_login_revocation_invalidates_unused_private_proof
+--- PASS: TestTelegramIngress (160.79s)
+    --- PASS: TestTelegramIngress/webhook_secret_and_size_are_checked_before_persistence (0.00s)
+    --- PASS: TestTelegramIngress/durable_inbox_failure_rolls_private_proof_back_and_exact_retry_can_recover (0.05s)
+    --- PASS: TestTelegramIngress/proof_is_private_single_use_and_portal_confirmation_remains_separate (0.04s)
+    --- PASS: TestTelegramIngress/only_authorized_MFA_administrators_configure_paused_exact_topics (0.04s)
+    --- PASS: TestTelegramIngress/unrelated_chats_topics_senders_and_nontriggers_retain_no_text (0.01s)
+    --- PASS: TestTelegramIngress/concurrent_duplicate_updates_persist_one_real_request_and_no_model_run (0.12s)
+    --- PASS: TestTelegramIngress/membership_change_pauses_all_topics_withdraws_pending_work_and_records_actual_history (0.03s)
+    --- PASS: TestTelegramIngress/binding_cancellation_revocation_and_identity_ownership_cannot_be_bypassed (0.06s)
+    --- PASS: TestTelegramIngress/original_identity_and_receipt_content_are_immutable_at_database_boundary (0.00s)
+    --- PASS: TestTelegramIngress/issuing_a_binding_requires_actual_recent_MFA (0.01s)
+    --- PASS: TestTelegramIngress/original_login_revocation_invalidates_unused_private_proof (0.10s)
+PASS
+ok  	copypaste.hk/platform/internal/httpapi	163.293s

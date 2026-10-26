@@ -9,6 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 public final class CPPlatformPackage implements ReactPackage {
-    @Override public List<NativeModule> createNativeModules(ReactApplicationContext context) { return Arrays.asList(new CPHTTPModule(context), new CPReadCacheModule(context), new CPUploadModule(context)); }
+    @Override public List<NativeModule> createNativeModules(ReactApplicationContext context) { return Arrays.asList(new CPHTTPModule(context), new CPReadCacheModule(context), new CPUploadModule(context), new CPClipboardModule(context)); }
     @Override public List<ViewManager> createViewManagers(ReactApplicationContext context) { return Collections.emptyList(); }
 }

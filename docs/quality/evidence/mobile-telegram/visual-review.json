@@ -1,0 +1,48 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-26T17:09:49.047585+00:00",
+  "source_sha256": "4e7ac20b73a3b932694d728b0edcbada98e96e1d4a98146adfc9774d523a98bd",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/mobile-telegram-own-binding.png",
+      "caption": "Own numeric identity confirmed through the original mobile login; synthetic loopback webhook.",
+      "sha256": "c7f8f36da535474a9a4512f429e6175e734f889f4e22e412fb2a0a3f391b7412",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-channel-config.png",
+      "caption": "Administrator channel configuration with precise location, complete allowed tasks and portal-only disclosure.",
+      "sha256": "ae30c314e543eaa5b738dad3f343037235487f080c9ff76204156de18de290d0",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-channel-history.png",
+      "caption": "Complete paginated immutable channel snapshots; synthetic history was prepared through the real API.",
+      "sha256": "4c66ba7e28159d5f95db1f5d7c1c075259e71b92ed6fc83488afe3a74262970c",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/videos/mobile-telegram-access.mp4",
+      "sha256": "c08d28822d6a581ad2de1e41c313215099693a4de250fbea1f38c58e68ac27d8",
+      "bytes": 144311
+    },
+    {
+      "file": "docs/media/gifs/mobile-telegram-access.gif",
+      "sha256": "c44babe31881666497d98446ea17b335fc4091ce0f896eedc2228b21fe401406",
+      "bytes": 363812
+    }
+  ],
+  "sampled_gif_frames": [
+    0,
+    14,
+    28
+  ],
+  "gif_frames": 29,
+  "review_scope": "Viewed all three published screenshots and first/middle/last actual GIF frames. Text and configuration are readable; no password, MFA input or proof capability visible in inspected views. Capture guards check every frame. Not a pixel-by-pixel OCR audit.",
+  "synthetic_data": true,
+  "actual_device": false,
+  "private_proof_recorded": false
+}

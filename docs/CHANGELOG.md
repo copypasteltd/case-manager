@@ -4,6 +4,17 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-27 · 移动TG身份与准确入口 / Mobile TG identity and exact channels · increment82
+
+- 补齐移动本人私聊证明、原登录数字身份确认、取消和撤销；保留原请求及投递回执。Added own-identity challenge/confirmation/cancellation/revocation with existing requests and delivery receipts.
+- 管理员完整配置Bot/群/话题、可见项目范围、允许/默认任务与阶段通知，新增始终暂停，完整回执及不可变历史双重核对。Added complete scoped configuration, paused creation and receipt/history corroboration.
+- 新增有界Android前台敏感剪贴板复制；不读剪贴板、不持久化私聊能力。Added bounded foreground sensitive proof copying without clipboard reads or persistent capability storage.
+- 新167项移动测试/双小程序编译、9组实际流程/9项布局、新Android开发APK/17项检查及新执行25项JVM测试通过；23项最终复算通过。Fresh client/build/browser/JVM checks passed with exact-source binding.
+- 新增3张截图、4.9秒MP4/29帧GIF；媒体总计29/8/8。同步双语指南、开发约束、失败历史和787份旧状态捕获Git来源。Added actual safe media, bilingual workflow docs and exact historical capture reconstruction.
+- 后端154顶层/984结果、Web81、运行时39及Linux产物按完整未变来源复用；未启动真实TG/云/模型、真机或生产部署。Unchanged proofs are retained explicitly; external/device/production gates remain open.
+
+[方案 / Protocol](development/82-mobile-telegram-access.md) · [准确验证 / Verification](quality/evidence/mobile-telegram/verification.md) · [演示 / Demo](media/videos/mobile-telegram-access.mp4)
+
 ## 2026-10-27 · 原生Prometheus状态桥接 / Native Prometheus status bridge · increment81
 
 - 新增独立Go桥接，读取成熟Prometheus／Blackbox的完整标签与原采样时间；复用原签名观测、投影、权限、历史和站内通知。Added a separate native bridge from mature monitoring to the original signed-ingress/status/history path.

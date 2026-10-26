@@ -1,0 +1,8 @@
+locator.click: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: 'Telegram 接入', exact: true })[22m
+
+    at openAccess (D:\dev\copypasted\内部管理\app\scripts\check_mobile_telegram.mjs:76:37)
+    at D:\dev\copypasted\内部管理\app\scripts\check_mobile_telegram.mjs:98:9
+Active page: {"route":"#/pages/home/index","titles":["alice，工作从这里开始."],"actions":["我的","Telegram 接入本人数字身份、群入口与请求回执↗","项目查看项目范围、任务与进度↗","文件与资料目录、正式版本与副本状态↗","知识与记录项目日志、会议记录与内部知识↗","通知中心未读 0 · 仍需处理 0↗","刷新工作台"]}
+{"passed":false,"checks":0,"closed":true}

@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T17:07:59.998510+00:00",
+  "source_sha256": "4e7ac20b73a3b932694d728b0edcbada98e96e1d4a98146adfc9774d523a98bd",
+  "browser_result_sha256": "155350790054332e08f76bd1c6514fa54c6619c86f75f80a1018648a75bf25d2",
+  "frame_manifest_sha256": "19172778e63d377de20537d6880609f81c190164297126e363c1040a8f1f210e",
+  "source_frames": 23,
+  "source_duration_ms": 4730,
+  "gif_speed_factor": 1.0,
+  "artifacts": [
+    {
+      "file": "docs/media/videos/mobile-telegram-access.mp4",
+      "sha256": "c08d28822d6a581ad2de1e41c313215099693a4de250fbea1f38c58e68ac27d8",
+      "bytes": 144311
+    },
+    {
+      "file": "docs/media/gifs/mobile-telegram-access.gif",
+      "sha256": "c44babe31881666497d98446ea17b335fc4091ce0f896eedc2228b21fe401406",
+      "bytes": 363812
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "49",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "4.900000"
+    }
+  },
+  "encoder_sha256": "0ec1eee58ad341d85630b3605da9d5e926720d2f3737c3de4cce53c73cd574c3",
+  "helper_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "audio": false,
+  "real_browser_pixels": true,
+  "synthetic_data": true,
+  "real_device": false,
+  "credentials_excluded": true
+}

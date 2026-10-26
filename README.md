@@ -32,6 +32,12 @@ GIF 为轻量预览，较长片段适度加速；MP4 保留完整屏幕操作。
 
 GIFs are lightweight previews, with modest acceleration for the longer clip. MP4 recordings retain the complete interaction. See the [media catalog](docs/media/README.md) for scope, provenance and reproduction.
 
+移动 TG 入口：本人数字身份绑定、管理员准确群配置和完整历史。录屏仅展示核对后的配置与历史，不录制私聊能力或 MFA。Mobile TG access adds own-identity binding, exact channel configuration and complete history. The recording excludes private proof capabilities and MFA inputs.
+
+![移动 TG 入口与完整历史 / Mobile TG access and complete history](docs/media/gifs/mobile-telegram-access.gif)
+
+[TG 操作 MP4 / TG interaction MP4](docs/media/videos/mobile-telegram-access.mp4) · [方案和使用逻辑 / Protocol and workflow](docs/development/82-mobile-telegram-access.md) · [入口截图 / Channel screenshot](docs/media/screenshots/mobile-telegram-channel-config.png) · Taro H5
+
 实际原生状态桥接：失败阈值 → 服务异常 → 恢复阈值 → 原始签名核验。采样由受控 Prometheus 协议端提供；程序、API和页面均实际执行。Native bridge demo: outage threshold → service failure → recovery → original-signature verification, using controlled metric samples and the actual CLI/API/UI.
 
 ![原生监控与实际状态切换 / Native monitor and actual status transitions](docs/media/gifs/native-service-health-workflow.gif)
@@ -116,8 +122,8 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量81）：新增独立原生 Prometheus／Blackbox 桥接，接通持久签名观测、准确回执、故障／恢复与既有 Web／Taro 页面。新执行后端154个顶层测试／984条结果／892末级场景、Web81项和移动154项；两小程序各16页。6组实际页面流程、12次原生CLI调用和9项布局通过；两个所属上下文及临时服务／数据库均清理。当前来源下Android编译和17项包检查通过；25项原生结果为Gradle UP-TO-DATE，开发APK与增量80字节相同。完整范围、来源复算25项、失败记录及39项运行时准确复用见[增量81验证](docs/quality/evidence/status-bridge/verification.md)。真实监控安装、主机指标、独立告警及完整四端生产放行继续开放。
+当前功能基线（增量82）：补齐移动TG本人绑定、取消／撤销、管理员准确群／话题／项目配置与完整历史。新167项移动测试、类型、两小程序各16页、9组实际页面流程和9项布局通过；两个所属上下文、临时服务和数据库均清理。当前Android开发APK为42,867,115字节，17项包检查通过，25项原生JVM测试本次实际执行。完整后端154顶层／984结果、Web 81与运行时39按完整未变来源准确复用。新增3张截图、4.9秒MP4及29帧GIF；仓库共29 PNG、8 MP4、8 GIF。23项最终来源核验及完整失败记录见[增量82验证](docs/quality/evidence/mobile-telegram/verification.md)。真实四端、TG／云／模型、容量及生产放行继续开放。
 
-The current functional baseline (increment81) adds a native Prometheus/Blackbox bridge with durable signed observations, bound receipts and existing Web/Taro outage/recovery views. Fresh checks passed 154 top-level backend tests/984 result records/892 leaf scenarios, 81 Web tests and 154 mobile tests, with 16 pages per mini-program. Six actual UI flows, 12 native CLI invocations and nine layouts passed; both owned contexts, temporary servers and databases were released. Current-source Android compilation and 17 APK inspections passed; 25 native results were UP-TO-DATE, and the debug APK is byte-identical to increment80. See [increment81 verification](docs/quality/evidence/status-bridge/verification.md) for 25 final source checks, failed attempts and exact reuse of 39 runtime tests. Real monitors, host metrics, independent alerts and complete four-client production acceptance remain open.
+The current functional baseline (increment82) adds mobile own-identity binding/cancellation/revocation and exact administrator channel/project configuration with complete history. Fresh 167 mobile tests, types, both 16-page mini-program builds, nine actual UI/API flows and nine layouts passed; all owned contexts, temporary services and databases were cleaned. The fresh 42,867,115-byte debug APK passed 17 inspections, and 25 native JVM tests actually executed. Full backend 154/984, Web 81 and runtime 39 proofs are retained at identical complete sources. Three new screenshots, a 4.9-second MP4 and 29-frame GIF bring media totals to 29 PNGs, 8 MP4s and8 GIFs. See [increment82 verification](docs/quality/evidence/mobile-telegram/verification.md) for 23 final source checks and preserved failures. Real platforms/devices, TG/cloud/model, capacity and production acceptance remain open.
 
 后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.

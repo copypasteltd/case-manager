@@ -92,7 +92,21 @@ The actual native Windows bridge reads a controlled Prometheus protocol endpoint
 
 The [verification record](../quality/evidence/status-bridge/verification.md) separates fresh execution, native cached tests, exact runtime reuse and failed checker attempts. Original JPEGs remain ignored. Earlier change media is historical at commit `ee04df957ea4b590db8bad1510e308f393e876aa`; its bytes and source proof remain unchanged.
 
-## 8. 页面截图 / Screenshots
+## 8. 移动 TG 身份与准确入口 / Mobile TG identity and exact channels
+
+员工本人数字身份的挑战、确认与撤销经过真实本地 API 验证。演示仅录制管理员完整历史的滚动、返回列表及重新打开，刻意在私聊能力和 MFA 输入不存在时采集。历史分页由真实 API 准备合成修订，再通过实际页面读取；未连接 Telegram 网络。
+
+Own-identity challenge/confirmation/revocation are checked against the real local API. This clip captures administrator history scrolling, returning to the list and reopening it after all capability/MFA inputs are absent. Synthetic revisions are prepared through the actual API and read by the real mobile page; Telegram's network is never contacted.
+
+![移动 TG 入口与完整历史 / Mobile TG access and complete history](gifs/mobile-telegram-access.gif)
+
+[完整 MP4 / Full MP4](videos/mobile-telegram-access.mp4) · 390 × 900 · 无声 / silent · Taro H5 · [方案 / Protocol](../development/82-mobile-telegram-access.md) · [验证 / Evidence](../quality/evidence/mobile-telegram/verification.md)
+
+[本人绑定 / Own binding](screenshots/mobile-telegram-own-binding.png) · [准确群配置 / Exact channel](screenshots/mobile-telegram-channel-config.png) · [完整历史 / Complete history](screenshots/mobile-telegram-channel-history.png)
+
+增量81状态桥接画面属于提交 `9c710a0f4c785a02539441ec1611bc6678f0050d`；本轮移动源码变化后，以该提交和原来源清单解释旧录制，不将旧画面宣称为新源码采集。The increment81 status capture is historical at that commit and its original manifest; this mobile change does not relabel it as a fresh capture.
+
+## 9. 页面截图 / Screenshots
 
 | 页面 / Page | 图片 / Image | 范围 / Scope |
 | --- | --- | --- |
@@ -131,7 +145,7 @@ The [verification record](../quality/evidence/status-bridge/verification.md) sep
 
 The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
 
-## 9. 来源、编码与复现 / Provenance, encoding and reproduction
+## 10. 来源、编码与复现 / Provenance, encoding and reproduction
 
 | 记录 / Record | 内容 / Contents |
 | --- | --- |

@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T17:06:37.794Z",
+  "source_sha256": "4e7ac20b73a3b932694d728b0edcbada98e96e1d4a98146adfc9774d523a98bd",
+  "source_after_sha256": "4e7ac20b73a3b932694d728b0edcbada98e96e1d4a98146adfc9774d523a98bd",
+  "source_unchanged": true,
+  "source_count": 793,
+  "checks": [
+    "The actual employee workspace and existing request page open the mobile access page; a non-administrator has no channel-configuration controls.",
+    "A real recent-MFA private challenge is created and explicitly cancelled; refresh clears its capability instead of persisting it in a draft.",
+    "An actual loopback webhook proves a numeric Telegram identity; original-session mobile confirmation and explicit revocation are corroborated by authoritative own-status reads. No Telegram network is used.",
+    "An administrator creates an exact Bot/chat/topic/project channel through the actual project picker; two allowed Skills, explicit default and link-only delivery are persisted and the new channel remains paused.",
+    "An explicit fresh-MFA edit activates the exact immutable location, advances one version and is corroborated against the latest complete immutable history snapshot.",
+    "A real second-writer version conflict returns 409, retains entered text and blocks repeat submission; closing the form rereads the new authoritative version.",
+    "A controlled proxy removes one field after a real committed PATCH: the mobile form rejects the incomplete receipt, retains input and sends no duplicate write before explicit authoritative reread.",
+    "The actual mobile history follows an opaque cursor to the first full revision and renders immutable configuration and reasons; safe viewport frames capture the history/list interaction.",
+    "The real channel list loads its next opaque cursor; a separately labelled synthetic 403 clears cached controls and disables creation instead of exposing stale configuration."
+  ],
+  "layouts": [
+    {
+      "page": "telegram-own-binding",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "telegram-own-binding",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "telegram-own-binding",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "telegram-channel-config",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "telegram-channel-config",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "telegram-channel-config",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "page": "telegram-channel-history",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "page": "telegram-channel-history",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "page": "telegram-channel-history",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-telegram-access",
+      "frame_count": 23,
+      "duration_ms": 4730,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-telegram-access/frames.json",
+      "manifest_sha256": "19172778e63d377de20537d6880609f81c190164297126e363c1040a8f1f210e"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-telegram-own-binding.png",
+      "caption": "Own numeric identity confirmed through the original mobile login; synthetic loopback webhook.",
+      "sha256": "c7f8f36da535474a9a4512f429e6175e734f889f4e22e412fb2a0a3f391b7412",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-channel-config.png",
+      "caption": "Administrator channel configuration with precise location, complete allowed tasks and portal-only disclosure.",
+      "sha256": "ae30c314e543eaa5b738dad3f343037235487f080c9ff76204156de18de290d0",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-channel-history.png",
+      "caption": "Complete paginated immutable channel snapshots; synthetic history was prepared through the real API.",
+      "sha256": "4c66ba7e28159d5f95db1f5d7c1c075259e71b92ed6fc83488afe3a74262970c",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "incomplete committed channel receipt",
+    "list permission 403"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "4e7ac20b73a3b932694d728b0edcbada98e96e1d4a98146adfc9774d523a98bd",
+  "source_sha256_after_build": "4e7ac20b73a3b932694d728b0edcbada98e96e1d4a98146adfc9774d523a98bd",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

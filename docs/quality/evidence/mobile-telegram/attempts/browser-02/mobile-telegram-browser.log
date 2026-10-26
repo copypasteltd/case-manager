@@ -1,0 +1,11 @@
+Completed actual flow 1: The actual employee workspace and existing request page open the mobile access page; a non-administrator has no channel-configuration controls.
+Completed actual flow 2: A real recent-MFA private challenge is created and explicitly cancelled; refresh clears its capability instead of persisting it in a draft.
+Completed actual flow 3: An actual loopback webhook proves a numeric Telegram identity; original-session mobile confirmation and explicit revocation are corroborated by authoritative own-status reads. No Telegram network is used.
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(projects.items.length)
+
+    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_telegram.mjs:136:77
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Active page: {"route":"#/pages/telegram/index?section=access","titles":["Telegram 接入."],"actions":["查看本人TG请求与通知回执","发起本人TG绑定","查找TG可选项目","明确使用公司范围","返回TG入口表单","重新读取TG权限与本人状态"]}
+{"passed":false,"checks":3,"closed":true}

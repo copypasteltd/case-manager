@@ -121,6 +121,10 @@ An employee states a goal in an authorized conversation. The secretary reads per
 
 The eight draft Skills are `project-create`, `project-update`, `file-update`, `information-organize`, `oa-assist`, `subscription-review`, `project-briefing` and `incident-summary`. Changing a manifest from draft to published is not a deployment procedure. Telegram additionally requires identity binding, an exact group/topic and channel restrictions. Group membership does not grant access to all company information. Current TG tools remain restricted to permitted reads; real delivery requires separate acceptance.
 
+Employees can open **Telegram access** from the mobile workspace: choose a specific Bot → pass recent MFA → prove ownership in its private chat → return to the original login → inspect and explicitly confirm the numeric identity. They can also cancel a challenge or revoke a binding. Capabilities remain in page memory; an explicit copy has a separate OS-clipboard lifetime.
+
+Administrators configure the exact chat/topic, company or visible-project scope, complete allowed/default tasks and stage-link notifications on the same page. New channels start paused and locations are immutable. Every save corroborates the complete receipt and immutable history; conflicts or uncertain receipts preserve input and block retries. See the [mobile TG protocol and usage guide](development/82-mobile-telegram-access.md).
+
 ### Service status
 
 Service pages show observation time, validity, maintenance and incidents. Missing or stale observations remain unknown/stale; maintenance does not erase incident history. Real host probes and backup-failure events must have genuine sources before production status can be asserted.
@@ -238,13 +242,13 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Fresh 154 top-level tests, 984 result records/892 leaf scenarios, eight batches | New complete Go/SQL/contract execution; Windows/Linux bridge and Linux platform builds passed |
-| Runtime / Web | 39 / 81 passing tests | Runtime 39 retained at identical sources; Web 81/tests/build freshly executed; real model disabled |
-| Taro | Fresh 154 tests;16 pages per WeChat/Douyin build | Increment81: six actual Web/H5 status flows, 12 native CLI runs, nine layouts; H5 is not device acceptance |
-| Android | Current-source build; 42,858,139-byte APK, 17 inspections, 25 native results | Native results UP-TO-DATE; APK byte-identical to 80 with fresh source binding; device/release gates remain |
-| Repository media | 26 PNGs,seven MP4s,seven GIFs; three new status images, 6-second MP4 and 36-frame GIF | Actual browser/CLI/API with synthetic data; historical captures retain commits; no real cloud/model/TG delivery |
+| Go / PostgreSQL | Retained 154 top-level/984 results/892 leaf scenarios, eight batches | Complete sources match81; targeted TG fixture ran freshly, full batches were not rerun |
+| Runtime / Web | Exactly retained 39 /81 tests | Runtime74 and Web 81 complete sources match; real model remains disabled |
+| Taro | Fresh 167 tests/types and 16 pages per mini-program | Increment82: nine actual TG identity/configuration flows and nine layouts; H5 is not device acceptance |
+| Android | Fresh 42,867,115-byte APK, 17 inspections, 25 newly executed JVM tests | Current complete sources; actual Gradle execution and four exact XML/log records; device/release gates remain |
+| Repository media | 29 PNGs, 8 MP4s, 8 GIFs; three new TG images,4.9-second MP4 and 29-frame GIF | Actual API/browser with synthetic data; historical captures retain commits; no real cloud/model/TG delivery |
 
-The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This bridge increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
+The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 
 Continue with business/client gaps, real model/isolation/Skill and cloud integration, actual TG/platform/Android devices, 120 GB/2 TB capacity and security acceptance, then backup recovery and production cutover. Items needing missing server/account input remain explicit while independent implementation continues. Completion claims must link to exact sources, commands, receipts and remaining work.
 
