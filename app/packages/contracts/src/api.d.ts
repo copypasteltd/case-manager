@@ -7965,6 +7965,12 @@ export interface components {
         ObservationAck: {
             /** Format: uuid */
             id: string;
+            /** Format: uuid */
+            source_id: string;
+            /** Format: uuid */
+            source_revision_id: string;
+            sequence: string;
+            payload_sha256: string;
             applied: boolean;
             /** @enum {string} */
             ignored_reason: "" | "LATE_SEQUENCE" | "LATE_OBSERVATION" | "STALE_SAMPLE";

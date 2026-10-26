@@ -140,6 +140,7 @@ func (s *Service) Ingest(ctx context.Context, source, signature, request string,
 		return out, denied()
 	}
 	digest := core.Digest(body)
+	out.SourceID, out.RevisionID, out.Sequence, out.PayloadSHA256 = source, revision, in.Sequence, digest
 	var previousHash string
 	e = tx.QueryRow(ctx, "SELECT id,applied,ignored_reason,payload_sha256 FROM service_observations WHERE org_id=$1 AND revision_id=$2 AND sequence=$3", org, revision, sequence).Scan(&out.ID, &out.Applied, &out.IgnoredReason, &previousHash)
 	if e == nil {
@@ -172,7 +173,7 @@ func (s *Service) Ingest(ctx context.Context, source, signature, request string,
 	if e != nil {
 		return out, core.Invalid("observation", "观测时间或阈值无效；未来时间最多允许15秒偏差")
 	}
-	out = ObservationAck{ID: core.NewID(), Applied: ignored == "", IgnoredReason: ignored}
+	out.ID, out.Applied, out.IgnoredReason = core.NewID(), ignored == "", ignored
 	_, e = tx.Exec(ctx, `INSERT INTO service_observations(id,org_id,source_id,revision_id,sequence,observed_at,received_at,healthy,latency_ms,signed_payload,signature,payload_sha256,applied,ignored_reason)
  VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`, out.ID, org, source, revision, sequence, in.ObservedAt, now, in.Healthy, in.LatencyMS, body, sig, digest, out.Applied, out.IgnoredReason)
 	if e != nil {

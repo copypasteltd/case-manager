@@ -98,3 +98,9 @@ Android 签名密钥独立加密保管与恢复授权；旧版本升级测试不
 新增 `worker-telegram-delivery` 与[原生服务模板](../../app/deploy/native/copypaste-telegram-delivery-worker.service)。使用独立受限环境文件配置 `CP_TELEGRAM_DELIVERY_BOTS`；接收、入站调度和模型进程不共用发送 Token。发送依赖全部 63 项迁移、固定 HTTPS 门户及显式启用的原群／话题。默认关闭；模板未部署，当前开发环境未启动真实发送。
 
 值守时按逐条回执区分 sent、delivery_unknown 与人工 confirmed_sent；未知不自动重发。恢复后先等过期发送准备进入未知，再由请求本人对账，不清空队列或改写历史。429 冷却存于数据库，扩进程不能绕过。群迁移需要复核新入口，不自动换群。详细[运行与恢复契约](../development/64-telegram-delivery.md)。
+
+## 原生监控桥接增量81 / Native monitor bridge
+
+监控机独立运行成熟 Prometheus／Blackbox；平台 API 保存来源修订、公钥及签名事实。先升级包含完整观测回执的 API，再按[完整桥接部署协议](../development/81-native-prometheus-status-bridge.md)部署独立二进制，填写[配置模板](../../app/deploy/native/status-bridge.example.json)，审阅并按实际环境安装[原生服务模板](../../app/deploy/native/copypaste-status-bridge.service)。此桥接不取得业务数据库或云存储主密钥，也不执行门户展示地址。journal 是专用监控进程的持久协议状态，不能当成可清理缓存；更换标签、端点或签名身份须发布新来源修订。
+
+Run mature Prometheus/Blackbox independently. Upgrade the platform API before enabling the bridge, then follow the linked protocol and review the private configuration/service templates for the actual monitor host. Preserve the exclusive durable journal across restarts and uncertain deliveries. A changed identity, endpoint or label binding requires a new source revision. Native Linux builds are compile checks; no remote installation or actual independent alert delivery is claimed by this repository evidence.

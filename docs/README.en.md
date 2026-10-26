@@ -125,6 +125,10 @@ The eight draft Skills are `project-create`, `project-update`, `file-update`, `i
 
 Service pages show observation time, validity, maintenance and incidents. Missing or stale observations remain unknown/stale; maintenance does not erase incident history. Real host probes and backup-failure events must have genuine sources before production status can be asserted.
 
+Service operators publish an exact source revision and Ed25519 public key in Web. On a separately administered monitor host, deploy Prometheus/Blackbox and the [native status bridge](development/81-native-prometheus-status-bridge.md), fill the private [configuration](../app/deploy/native/status-bridge.example.json) with approved endpoint/IP pairs, full labels and that revision, and protect its key and durable journal. Run `status-bridge --config <private-file> --once` to inspect safe result codes, then install its supervised native service. Deploy the current platform API before enabling the bridge: it requires the new source/revision/sequence/payload-bound acknowledgement and refuses an older incomplete ACK.
+
+The bridge reads original scrape timestamps through six bounded queries, persists each exact signed body before delivery and retries uncertain outcomes with the same bytes. Repeated scrapes do not extend freshness or advance failure/recovery counts; a failed scrape produces no healthy/failed fact, so old evidence expires to unknown. The existing Web and Taro pages show threshold-based outages, recovery and immutable signed evidence. The included browser recording uses a controlled Prometheus protocol endpoint and a real native bridge/API; actual monitor installation, host metrics and independent external alerts still require deployment acceptance.
+
 ## Native local development
 
 The supplied helpers target the current native Windows development environment. Do not launch Docker, WSL, VMs or Android emulators. A persistent local development PostgreSQL cluster is a development tool; production application hosts still retain only temporary file data.
@@ -218,7 +222,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment80 verification record](quality/evidence/mobile-changes/verification.md) identifies executions, reuse and failed attempts.
+Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment81 verification record](quality/evidence/status-bridge/verification.md) identifies executions, reuse and failed attempts.
 
 ## 7. Production deployment and storage plan
 
@@ -234,13 +238,13 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | 146 top-level tests, 919 result records/832 leaf scenarios, eight passing batches | Complete unchanged Go/SQL/contract source digest reuses increment74; not a new full execution in this publication |
-| Runtime / Web | 39 / 81 passing tests and builds | Reused unchanged sources; real model remains disabled |
-| Taro | 154 passing tests; 16 pages in each WeChat/Douyin build | Executed in increment80: ten actual change/budget flows and nine layouts; H5 is not device acceptance |
-| Android | Increment80 APK: 42,858,139 bytes, 17 inspections, 25 native results | UP-TO-DATE results retained, not newly executed; physical devices, signing and release remain open |
-| Repository media | 23 PNGs, six MP4s and six GIFs; this increment adds three change/budget images and one proposal recording/GIF pair | Isolated synthetic data and actual browser/API actions; historical captures retain provenance, with no real cloud/model/TG delivery |
+| Go / PostgreSQL | Fresh 154 top-level tests, 984 result records/892 leaf scenarios, eight batches | New complete Go/SQL/contract execution; Windows/Linux bridge and Linux platform builds passed |
+| Runtime / Web | 39 / 81 passing tests | Runtime 39 retained at identical sources; Web 81/tests/build freshly executed; real model disabled |
+| Taro | Fresh 154 tests;16 pages per WeChat/Douyin build | Increment81: six actual Web/H5 status flows, 12 native CLI runs, nine layouts; H5 is not device acceptance |
+| Android | Current-source build; 42,858,139-byte APK, 17 inspections, 25 native results | Native results UP-TO-DATE; APK byte-identical to 80 with fresh source binding; device/release gates remain |
+| Repository media | 26 PNGs,seven MP4s,seven GIFs; three new status images, 6-second MP4 and 36-frame GIF | Actual browser/CLI/API with synthetic data; historical captures retain commits; no real cloud/model/TG delivery |
 
-The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This mobile increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
+The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This bridge increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 
 Continue with business/client gaps, real model/isolation/Skill and cloud integration, actual TG/platform/Android devices, 120 GB/2 TB capacity and security acceptance, then backup recovery and production cutover. Items needing missing server/account input remain explicit while independent implementation continues. Completion claims must link to exact sources, commands, receipts and remaining work.
 

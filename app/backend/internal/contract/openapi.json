@@ -47295,6 +47295,22 @@
             "type": "string",
             "format": "uuid"
           },
+          "source_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sequence": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,15}$"
+          },
+          "payload_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
           "applied": {
             "type": "boolean"
           },
@@ -47314,6 +47330,10 @@
         "additionalProperties": false,
         "required": [
           "id",
+          "source_id",
+          "source_revision_id",
+          "sequence",
+          "payload_sha256",
           "applied",
           "ignored_reason",
           "replayed"

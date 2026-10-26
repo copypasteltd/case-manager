@@ -1,0 +1,55 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-26T15:51:58.402Z",
+  "client": "web",
+  "source_sha256": "0e06632641f1b66c7488287cd4b56f02f2b73c25af399a5bc8e8c832fcd33106",
+  "source_unchanged": true,
+  "contexts_created": 1,
+  "contexts_closed": 1,
+  "owned_browser_closed": true,
+  "checks": [
+    "Web starts unknown after an actual source revision; no inherited healthy status."
+  ],
+  "layouts": [],
+  "screenshots": [],
+  "recordings": [],
+  "native_cli_executions": [
+    {
+      "code": "ACKNOWLEDGED",
+      "exit_code": 0,
+      "source_id": "b5caf045-24e6-430c-9766-13fa57f01ffc",
+      "sequence": "1",
+      "observation_id": "965958c5-3e18-473b-a4ac-969d3ca1e56d",
+      "applied": true,
+      "replayed": false,
+      "native_binary": true
+    },
+    {
+      "code": "ACKNOWLEDGED",
+      "exit_code": 0,
+      "source_id": "b5caf045-24e6-430c-9766-13fa57f01ffc",
+      "sequence": "2",
+      "observation_id": "eb8cd126-50a2-403a-bed0-450181429b76",
+      "applied": true,
+      "replayed": false,
+      "native_binary": true
+    },
+    {
+      "code": "NO_NEW_SAMPLE",
+      "exit_code": 0,
+      "source_id": "b5caf045-24e6-430c-9766-13fa57f01ffc",
+      "sequence": "",
+      "observation_id": "",
+      "applied": false,
+      "replayed": false,
+      "native_binary": true
+    }
+  ],
+  "errors": [],
+  "serverErrors": [],
+  "cleanupErrors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== '2'\n\n    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_status_bridge.mjs:82:12",
+  "synthetic_data": true,
+  "real_device": false,
+  "real_model": false
+}

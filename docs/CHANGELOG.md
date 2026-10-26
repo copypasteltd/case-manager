@@ -4,6 +4,18 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-27 · 原生Prometheus状态桥接 / Native Prometheus status bridge · increment81
+
+- 新增独立Go桥接，读取成熟Prometheus／Blackbox的完整标签与原采样时间；复用原签名观测、投影、权限、历史和站内通知。Added a separate native bridge from mature monitoring to the original signed-ingress/status/history path.
+- 增加私密配置、端点／IP许可、禁代理／重定向、独立读令牌、独占持久journal、准确重放与完整回执绑定；来源变更须新修订。Added bounded networking, independent credentials, durable exclusive journals, exact retries and bound ACKs; rebinding requires a new source revision.
+- 后端新154顶层／984结果／892末级、Web81、移动154及双小程序编译通过；Windows实际桥接与Linux编译通过。Fresh backend/Web/mobile tests and builds passed; Windows bridge executed, Linux compile only.
+- 六组实际Web／H5流程、12次CLI、9项布局及25项最终来源核验通过；所有所属浏览器与夹具清理。Six actual flows,12 CLI invocations,nine layouts and25 final source checks passed, with owned-resource cleanup.
+- 新增3张截图、6秒MP4／36帧GIF、双语使用／部署协议、运维及失败历史。Added affected captures and bilingual usage, deployment, operations and honest attempt history.
+- Android在当前来源下重新编译并通过17项检查，APK与80字节相同；25项原生结果为UP-TO-DATE。39项运行时按不变来源准确复用。Android build/inspection is fresh; its APK bytes are unchanged, native tests are cached and runtime proof is exact-source reuse.
+- API须先升级再启用桥接；真实Prometheus／Blackbox安装、主机指标、独立告警、真机／云／模型／TG、容量／安全／恢复继续开放。Upgrade the API first; actual deployment, independent alerts and full production acceptance remain open.
+
+[完整方案 / Protocol](development/81-native-prometheus-status-bridge.md) · [验证与失败历史 / Verification and attempts](quality/evidence/status-bridge/verification.md) · [实际演示 / Actual media](media/README.md)
+
 ## 2026-10-26 · 移动完整变更与预算 / Mobile full changes and budgets · increment80
 
 - 完整项目／币种基线、固定文件、不可变提案、原申请修订与独立审批、两项核实／本人MFA明确实施，成功须读回实际项目和预算。Full basis, fixed files, immutable proposals, original request revision/independent approval and separate MFA implementation require actual source proof.

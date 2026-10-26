@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T15:55:31.129474+00:00",
+  "source_sha256": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+  "browser_result_sha256": "23a14f0d359c22756e7340368af3090ec2a12eeba95f570984b9058752863279",
+  "frame_manifest_sha256": "5bd211c31cbd2241d1f8e2d06e44f438120cbd3e0913bdec8d242f3831c4baa6",
+  "source_frames": 28,
+  "source_duration_ms": 5781,
+  "gif_speed_factor": 1.0,
+  "artifacts": [
+    {
+      "file": "docs/media/videos/native-service-health-workflow.mp4",
+      "sha256": "a980af105a56b4b18546a19055a3d297b5bb56d8b020c008645d9c4fe5f77800",
+      "bytes": 221939
+    },
+    {
+      "file": "docs/media/gifs/native-service-health-workflow.gif",
+      "sha256": "d7d4148ceb681fa0b1b50275699f952e7dd3cd437f0cd24ad84cb8dcd7333c59",
+      "bytes": 196432
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 900,
+        "nb_frames": "60",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "6.000000"
+    }
+  },
+  "encoder_sha256": "b2ae8091cb85a243bf7357445bfe4c245461f35cdfd2f9cf42f01b50a6fd6beb",
+  "helper_sha256": "694a92450c93fa9b881ebd737acbb3fa463d4e66803f5cb9118cdfb9cea7782f",
+  "audio": false,
+  "real_browser_pixels": true,
+  "synthetic_data": true,
+  "real_device": false,
+  "credentials_excluded": true
+}

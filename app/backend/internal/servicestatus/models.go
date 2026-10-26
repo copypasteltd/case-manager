@@ -105,6 +105,10 @@ type Observation struct {
 	IgnoredReason string    `json:"ignored_reason"`
 }
 type ObservationAck struct {
+	SourceID      string `json:"source_id"`
+	RevisionID    string `json:"source_revision_id"`
+	Sequence      string `json:"sequence"`
+	PayloadSHA256 string `json:"payload_sha256"`
 	ID            string `json:"id"`
 	Applied       bool   `json:"applied"`
 	IgnoredReason string `json:"ignored_reason"`

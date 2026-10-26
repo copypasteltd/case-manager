@@ -1,0 +1,398 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T15:52:50.298879+00:00",
+  "source_sha256": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+  "source_file_count": 787,
+  "clients": [
+    {
+      "client": "web",
+      "exit_code": 0
+    },
+    {
+      "client": "mobile",
+      "exit_code": 0
+    }
+  ],
+  "phase": "starting owned native fixture",
+  "completed_at": "2026-10-26T15:55:06.623445+00:00",
+  "source_sha256_after_build": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+  "source_sha256_after_browser": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+  "source_unchanged": true,
+  "phases": [
+    {
+      "passed": true,
+      "checked_at": "2026-10-26T15:54:35.642Z",
+      "client": "web",
+      "source_sha256": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+      "source_unchanged": true,
+      "contexts_created": 1,
+      "contexts_closed": 1,
+      "owned_browser_closed": true,
+      "checks": [
+        "Web starts unknown after an actual source revision; no inherited healthy status.",
+        "The Windows CLI reads all six Prometheus queries, signs/durably records observations and deduplicates the exact scrape across process restarts.",
+        "Three native CLI failures make the Web service down; two successes recover it, and the UI verifies the original stored signature.",
+        "A failed Prometheus scrape exits 75 without adding a healthy or failed service fact."
+      ],
+      "layouts": [
+        {
+          "client": "web",
+          "theme": "light",
+          "width": 390,
+          "passed": true
+        },
+        {
+          "client": "web",
+          "theme": "light",
+          "width": 768,
+          "passed": true
+        },
+        {
+          "client": "web",
+          "theme": "light",
+          "width": 1440,
+          "passed": true
+        },
+        {
+          "client": "web",
+          "theme": "dark",
+          "width": 390,
+          "passed": true
+        },
+        {
+          "client": "web",
+          "theme": "dark",
+          "width": 768,
+          "passed": true
+        },
+        {
+          "client": "web",
+          "theme": "dark",
+          "width": 1440,
+          "passed": true
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "docs/media/screenshots/native-status-bridge-operational.png",
+          "caption": "实际原生桥接程序写入签名观测后，Web 显示运行正常；合成数据。",
+          "sha256": "fbc9fffef223948f2a9571e9e3033e68ade9b6a4fc59b4c782e4f87aaeab743c",
+          "synthetic_data": true,
+          "real_device": false
+        },
+        {
+          "file": "docs/media/screenshots/native-status-bridge-down.png",
+          "caption": "三次实际失败观测触发服务不可用；来源、时效与阈值可核对。",
+          "sha256": "00e6df4d1155b78eafe1f491c3c1292896300557dd80988ae4cc23993470c46d",
+          "synthetic_data": true,
+          "real_device": false
+        }
+      ],
+      "recordings": [
+        {
+          "name": "native-service-health-workflow",
+          "frame_count": 28,
+          "duration_ms": 5781,
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "credentials_excluded": true,
+          "manifest": ".local/repository-showcase/native-service-health-workflow/frames.json",
+          "manifest_sha256": "5bd211c31cbd2241d1f8e2d06e44f438120cbd3e0913bdec8d242f3831c4baa6"
+        }
+      ],
+      "native_cli_executions": [
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "1",
+          "observation_id": "9bedd35d-67a1-4ee2-a70b-49a6e158bca0",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "2",
+          "observation_id": "39254e07-2985-494b-a389-dbb865a477dc",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "NO_NEW_SAMPLE",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "",
+          "observation_id": "",
+          "applied": false,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "3",
+          "observation_id": "ec2f10ed-792f-4d55-9b26-5c09afd06d07",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "4",
+          "observation_id": "134b974f-5959-439d-aee5-24cd2324e1bb",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "5",
+          "observation_id": "c38dc30d-2078-4a63-b54d-a65a3e927ac2",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "6",
+          "observation_id": "5126ee2c-965f-4e69-8c0b-5139f2f6b55d",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "7",
+          "observation_id": "272aa584-51e2-48ca-8f3b-fb1685ab3011",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "SCRAPE_UNAVAILABLE",
+          "exit_code": 75,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "",
+          "observation_id": "",
+          "applied": false,
+          "replayed": false,
+          "native_binary": true
+        }
+      ],
+      "errors": [],
+      "serverErrors": [],
+      "cleanupErrors": [],
+      "synthetic_data": true,
+      "real_device": false,
+      "real_model": false
+    },
+    {
+      "passed": true,
+      "checked_at": "2026-10-26T15:55:02.691Z",
+      "client": "mobile",
+      "source_sha256": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+      "source_unchanged": true,
+      "contexts_created": 1,
+      "contexts_closed": 1,
+      "owned_browser_closed": true,
+      "checks": [
+        "The actual Taro H5 reader sees the same CLI-produced outage with no service/source write controls.",
+        "The Taro H5 client reads the original signed observation facts from the same isolated API."
+      ],
+      "layouts": [
+        {
+          "client": "mobile",
+          "theme": "light",
+          "width": 320,
+          "passed": true
+        },
+        {
+          "client": "mobile",
+          "theme": "light",
+          "width": 390,
+          "passed": true
+        },
+        {
+          "client": "mobile",
+          "theme": "light",
+          "width": 768,
+          "passed": true
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "docs/media/screenshots/native-status-bridge-mobile.png",
+          "caption": "Taro H5 只读用户查看由原生桥接写入的故障、来源和观测事实；非真机截图。",
+          "sha256": "269c70cd064397934c818373c1eb2c106a42c829598fbe5ac3029bbecc0a957b",
+          "synthetic_data": true,
+          "real_device": false
+        }
+      ],
+      "recordings": [],
+      "native_cli_executions": [
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "8",
+          "observation_id": "1a34d722-7de3-45bc-aaf8-a6a0dbf3af0e",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "9",
+          "observation_id": "b963c0f9-17f5-4498-a5a5-9b3551fd5d2d",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        },
+        {
+          "code": "ACKNOWLEDGED",
+          "exit_code": 0,
+          "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+          "sequence": "10",
+          "observation_id": "837d90c3-142c-4e6c-a307-fb9cbff1e06e",
+          "applied": true,
+          "replayed": false,
+          "native_binary": true
+        }
+      ],
+      "errors": [],
+      "serverErrors": [],
+      "cleanupErrors": [],
+      "synthetic_data": true,
+      "real_device": false,
+      "real_model": false
+    }
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "owned_vite_stopped": true,
+  "owned_browser_closed": true,
+  "contexts_created": 2,
+  "contexts_closed": 2,
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/native-status-bridge-operational.png",
+      "caption": "实际原生桥接程序写入签名观测后，Web 显示运行正常；合成数据。",
+      "sha256": "fbc9fffef223948f2a9571e9e3033e68ade9b6a4fc59b4c782e4f87aaeab743c",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-down.png",
+      "caption": "三次实际失败观测触发服务不可用；来源、时效与阈值可核对。",
+      "sha256": "00e6df4d1155b78eafe1f491c3c1292896300557dd80988ae4cc23993470c46d",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-mobile.png",
+      "caption": "Taro H5 只读用户查看由原生桥接写入的故障、来源和观测事实；非真机截图。",
+      "sha256": "269c70cd064397934c818373c1eb2c106a42c829598fbe5ac3029bbecc0a957b",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "recordings": [
+    {
+      "name": "native-service-health-workflow",
+      "frame_count": 28,
+      "duration_ms": 5781,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/native-service-health-workflow/frames.json",
+      "manifest_sha256": "5bd211c31cbd2241d1f8e2d06e44f438120cbd3e0913bdec8d242f3831c4baa6"
+    }
+  ],
+  "checks": [
+    "Web starts unknown after an actual source revision; no inherited healthy status.",
+    "The Windows CLI reads all six Prometheus queries, signs/durably records observations and deduplicates the exact scrape across process restarts.",
+    "Three native CLI failures make the Web service down; two successes recover it, and the UI verifies the original stored signature.",
+    "A failed Prometheus scrape exits 75 without adding a healthy or failed service fact.",
+    "The actual Taro H5 reader sees the same CLI-produced outage with no service/source write controls.",
+    "The Taro H5 client reads the original signed observation facts from the same isolated API."
+  ],
+  "layouts": [
+    {
+      "client": "web",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "client": "web",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "client": "web",
+      "theme": "light",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "client": "web",
+      "theme": "dark",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "client": "web",
+      "theme": "dark",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "client": "web",
+      "theme": "dark",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "client": "mobile",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "client": "mobile",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "client": "mobile",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "fixture_metadata_removed": true,
+  "real_device": false,
+  "synthetic_data": true
+}

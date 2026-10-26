@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "stage": "ad hoc checker before its format correction",
+  "reason": "The checker attempted to parse the plain Base64 public-key output as JSON. The CLI succeeded; the private temporary directory was removed by context cleanup.",
+  "product_failure": false,
+  "subsequent_reproducible_check": "app/scripts/verify_status_bridge_key.py",
+  "private_output_published": false
+}

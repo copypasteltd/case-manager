@@ -173,6 +173,7 @@
 
 | 最近增量 | 已实现内容 |
 | --- | --- |
+| [原生Prometheus／Blackbox桥接](development/81-native-prometheus-status-bridge.md) | 原采样时刻、受限读取、持久序号及签名正文、准确回执、既有Web／Taro故障／恢复与历史验证 |
 | [移动项目变更与预算修订](development/80-mobile-project-changes-and-budgets.md) | 完整项目／币种基线、固定提案、原申请修订及独立审批、本人MFA明确实施、实际项目／预算证明及不可变历史 |
 | [移动项目结项与固定归档](development/79-mobile-project-closeout-and-archive.md) | 十三类完整核查、阶段操作、固定复盘、两项声明与本人MFA、冲突保留、实际项目／历史证明及受控重开 |
 | [移动任务、子任务与前置依赖](development/78-mobile-task-editing-and-dependencies.md) | 手工新建／编辑、实际候选、空值解除和依赖回读；124项移动测试、9组真实流程、6项布局，新增2张截图及任务MP4／GIF |
@@ -191,4 +192,4 @@
 | [移动项目立项与成员管理](development/75-mobile-project-setup-and-members.md) | 新建立项、准确模板、资料编辑、角色／移除及负责人移交；99项移动测试、7条真实流程和新Android开发APK |
 | [移动里程碑、风险与问题](development/76-mobile-project-milestones-risks-and-issues.md) | 三类事项新建／编辑、明确状态、风险转实际问题及冲突恢复；114项移动测试、8条真实流程及新Android开发APK |
 
-最近功能增量见[移动项目变更与预算修订](development/80-mobile-project-changes-and-budgets.md)：明确项目／币种完整基线、固定提案与文件、原申请修订／独立审批、双项核实与本人MFA实施、预算保持／替换／清空及实际项目／历史证明。最终154项移动测试、类型检查、双小程序各16页、10组实际API／H5流程及9项布局通过，5个所属上下文、临时服务及测试库已清理。新增3张截图、7.3秒MP4及44帧GIF；42,858,139字节Android开发APK及17项包检查通过，原生测试范围和准确复用证据见[本次验证记录](quality/evidence/mobile-changes/verification.md)。日常69项迁移只读核对通过。完整四端首发、真实模型／云／TG／平台／设备、120GB／2TB、安全、部署及恢复继续见[实施台账](delivery/02-implementation-ledger.md)与[Goal差异表](delivery/03-goal-gap-assessment.md)。
+最近功能增量见[原生Prometheus状态桥接](development/81-native-prometheus-status-bridge.md)：独立二进制读取成熟监控原采样，先持久化准确签名正文，再走原观测入口并核对完整回执。当前后端154顶层／984结果／892末级场景、Web81和移动154新执行通过；6组实际页面流程、12次原生CLI与9项布局通过，两上下文与临时服务／数据库均清理。新增3张状态截图、6秒MP4／36帧GIF，Android当前来源编译及17项检查通过；25项原生结果为UP-TO-DATE，运行时39按相同来源复用。[最终来源核验](quality/evidence/status-bridge/final-source-check.json)25项通过；完整边界及失败记录见[验证记录](quality/evidence/status-bridge/verification.md)。真实监控安装、主机指标、独立外部告警及原完整平台放行项继续见[台账](delivery/02-implementation-ledger.md)和[Goal差异表](delivery/03-goal-gap-assessment.md)。

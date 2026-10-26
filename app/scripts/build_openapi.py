@@ -744,7 +744,7 @@ add("ServiceObservation", observation, tuple(observation))
 proof = {**observation, "signed_payload": {"type": "string", "maxLength": 5464},
     "signature": {"type": "string", "minLength": 88, "maxLength": 88}, "public_key": public_key}
 add("ServiceObservationProof", proof, tuple(proof))
-ack = {"id": ID, "applied": {"type": "boolean"}, "ignored_reason": observation["ignored_reason"], "replayed": {"type": "boolean"}}
+ack = {"id": ID, "source_id": ID, "source_revision_id": ID, "sequence": observation["sequence"], "payload_sha256": HASH, "applied": {"type": "boolean"}, "ignored_reason": observation["ignored_reason"], "replayed": {"type": "boolean"}}
 add("ObservationAck", ack, tuple(ack))
 add("MaintenanceInput", {**EXPECTED, "start_at": TIME, "end_at": TIME, "reason": NAME},
     ("expected_version", "start_at", "end_at", "reason"))

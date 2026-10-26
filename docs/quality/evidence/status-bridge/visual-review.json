@@ -1,0 +1,43 @@
+{
+  "reviewed": true,
+  "method": "Actual visual inspection of all three full viewport screenshots and four sampled frames of the encoded GIF; not a frame-by-frame movie review.",
+  "screenshots": 3,
+  "gif_frames": 36,
+  "sampled_gif_frame_indices": [
+    0,
+    12,
+    24,
+    35
+  ],
+  "findings": [
+    "Consistent CopyPaste blue/neutral brand, readable service evidence and distinct green/red badges.",
+    "Actual transition and signature-proof dialog visible; original MP4 is recommended for small evidence text.",
+    "The mobile screenshot shows the current status and service facts; additional source/history content is below the captured viewport.",
+    "Only isolated synthetic records and public business identifiers/digests are visible; no passwords, MFA input, private keys or tokens."
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/native-status-bridge-operational.png",
+      "sha256": "fbc9fffef223948f2a9571e9e3033e68ade9b6a4fc59b4c782e4f87aaeab743c"
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-down.png",
+      "sha256": "00e6df4d1155b78eafe1f491c3c1292896300557dd80988ae4cc23993470c46d"
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-mobile.png",
+      "sha256": "269c70cd064397934c818373c1eb2c106a42c829598fbe5ac3029bbecc0a957b"
+    },
+    {
+      "file": "docs/media/videos/native-service-health-workflow.mp4",
+      "sha256": "a980af105a56b4b18546a19055a3d297b5bb56d8b020c008645d9c4fe5f77800"
+    },
+    {
+      "file": "docs/media/gifs/native-service-health-workflow.gif",
+      "sha256": "d7d4148ceb681fa0b1b50275699f952e7dd3cd437f0cd24ad84cb8dcd7333c59"
+    }
+  ],
+  "synthetic_data": true,
+  "real_device": false,
+  "audio": false
+}

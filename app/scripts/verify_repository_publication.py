@@ -273,15 +273,20 @@ def main():
           and len(visual['screenshots']) == 15 and all(sha(ROOT / entry['file']) == entry['sha256']
               for entry in visual['screenshots'] + visual['gifs']))
     previous = EVIDENCE.parent / 'deliverable-creation'
-    backend = read(previous / 'result.json')
-    check('Retained full backend proof matches complete unchanged Go/SQL/contract source', backend['passed']
+    backend_group = baseline.get('backend_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
+    backend = read(EVIDENCE.parent / backend_group / 'result.json')
+    check('Full backend proof matches complete current Go/SQL/contract source and the declared test scope', backend['passed']
           and backend['source_sha256'] == module('verify_backend_batches.py').digest()
-          and backend['discovered_top_level_tests'] == 146 and len(backend['checks']) == 919)
+          and backend['source_unchanged_during_tests'] and backend['all_discovered_tests_executed']
+          and backend['discovered_top_level_tests'] == (baseline.get('backend_top_level_tests', 146) if baseline else 146)
+          and len(backend['checks']) == (baseline.get('backend_result_records', 919) if baseline else 919)
+          and all(item['Action'] == 'pass' for item in backend['checks']))
     runtime = read(previous / 'runtime-build.json')
     check('Retained runtime proof matches complete unchanged source; thirty-nine tests', runtime['status'] == 'passed'
           and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0] and runtime['tests']['pass'] == 39)
-    web = read(previous / 'web-build.json')
-    check('Retained Web proof matches unchanged listed sources; eighty-one tests', web['passed']
+    web_group = baseline.get('web_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
+    web = read(EVIDENCE.parent / web_group / 'web-build.json')
+    check('Web proof matches current listed sources; eighty-one tests', web['passed']
           and web['source_sha256'] == digest(web['sources']) and web['tests']['numPassedTests'] == 81)
     functional = EVIDENCE.parent / (baseline['evidence_group'] if baseline else 'mobile-project-resources')
     mobile = read(functional / 'mobile-build.json')
@@ -321,7 +326,7 @@ def main():
               'publication_whitespace_findings': whitespace,
               'oversize_files': large, 'index_worktree_differences': changed_index, 'broken_local_links': broken,
               'secret_scan_scope': 'High-confidence text patterns, not exhaustive secret detection or pixel OCR.',
-              'functional_evidence': 'New mobile/browser/APK proof and unchanged backend/runtime/Web reuse.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
+              'functional_evidence': 'Current source-bound backend/Web/mobile/browser/native artifacts and exact unchanged runtime reuse; see the baseline and final proof.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
               'current_functional_increment': baseline['increment'] if baseline else 76,
               'verification_script_sha256': sha(Path(__file__)), 'production_ready': False}
     if not args.staged:

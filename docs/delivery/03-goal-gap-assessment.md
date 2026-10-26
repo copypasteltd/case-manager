@@ -2,7 +2,7 @@
 
 仓库发布补充（增量77）：整理代码／文档、完整中英文README及实际截图／MP4／GIF，新增来源与提交检查和后续同步约束。业务功能、依赖与生产状态不变，下列28项编号及原验收要求全部保留；见[仓库交付说明](../development/77-repository-publication-and-bilingual-readmes.md)。
 
-评估日期：2026-10-26（Asia/Taipei）。本次增量80推进GAP-01／18，接通移动完整变更、预算保持／替换／清空、原申请修订与独立审批、本人MFA明确实施及实际项目／预算证明。最终154项移动测试、双小程序编译、10组真实API／H5流程和9项布局通过；Android开发APK、17项检查及原生测试实际范围见验证记录。未改后端／运行时／Web按完整来源准确复用74证据。完整平台Goal继续执行。
+评估日期：2026-10-27（Asia/Taipei）。本次增量81推进GAP-23：实现独立原生Prometheus／Blackbox桥接，将原采样、持久签名正文和完整回执接入既有状态／历史。新后端154顶层／984结果、Web81及移动154通过；六组实际页面流程、十二次CLI、九项布局与25项最终来源核验通过。真实成熟监控安装、主机指标、独立告警及完整平台Goal继续开放。
 
 评估目标为：3名员工可在Web、微信小程序、抖音小程序和Android正式使用同一套项目、文件、知识、合同、采购、报销、费用订阅、秘书及状态系统；Web／Android支持120GB文件，2TB存量完成纳管与双云校验；秘书能通过受控技能执行实际业务，并通过指定TG群提供受授权服务。代码在app/，文档在docs/；继续遵守不调用Docker、WSL、虚拟机和模拟器的约束。
 
@@ -12,14 +12,14 @@
 
 | 验证范围 | 当前证据 | 实际覆盖及限制 |
 | --- | --- | --- |
-| [完整后端](../quality/evidence/deliverable-creation/result.json) | 源码未变，准确复用74的8批、146顶层／919条结果／832末级场景，0失败／跳过；本轮未重跑 | 本轮移动操作使用原命令；完整Go／SQL／契约摘要与原证明相同 |
+| [完整后端](../quality/evidence/status-bridge/result.json) | 当前完整Go／SQL／契约新执行：8批、154顶层／984结果／892末级场景，0失败／跳过 | 含签名持久投递、严格回执、实际时间过期、来源轮换、受限网络及独占journal；不复用旧后端证明 |
 | [秘书运行时](../quality/evidence/deliverable-creation/runtime-build.json) | 源码未变，准确复用39项受控测试及8项Skill包校验；project-update 1.4.0 | 九项准确写工具及读取／核对；全部draft，无真实模型运行或正式安装 |
-| [Web](../quality/evidence/deliverable-creation/web-build.json) | 完整来源未变，准确复用81项测试和生产编译，本轮未重跑 | 未增加Web功能；不是生产部署或正式平台验收 |
-| [Taro](../quality/evidence/mobile-changes/mobile-build.json)／[真实流程](../quality/evidence/mobile-changes-browser/result.json) | 新154项测试、类型检查、微信／抖音各16页、10组实际流程和9项布局通过 | 完整基线、固定文件／修订、原申请及独立审批、两项声明／MFA实施、三种预算语义、409／403／不完整回执、13份修订分页和实际只读成员；5个上下文均关闭，H5不替代设备 |
-| [Android开发APK](../quality/evidence/mobile-changes/build.json)／[包检查](../quality/evidence/mobile-changes/apk-inspection.json) | 新冻结编译42,858,139字节、17项检查；[25项原生测试](../quality/evidence/mobile-changes/android-test-scope.json)为Gradle UP-TO-DATE保留结果 | arm64-v8a、16页，含完整变更表单／详情、预算输入与异步证明模块；开发签名，当次日志与4份XML冻结，不计作新执行或设备验收 |
-| [新日常只读核对](../quality/evidence/mobile-changes/development-project-resources.json)／[原Linux](../quality/evidence/deliverable-creation/linux-build.json) | 69项迁移摘要匹配、原API／Worker身份、0测试库／活动模型／启用TG；Linux按相同后端来源复用 | 日常服务未重启；Linux本轮未重建、执行或部署，外部服务仍关闭 |
+| [Web](../quality/evidence/status-bridge/web-build.json) | 新81项测试和生产编译通过 | 使用更新后的共享回执契约；状态／签名页面实际接入本次原生桥接；不是生产部署 |
+| [Taro](../quality/evidence/status-bridge/mobile-build.json)／[真实流程](../quality/evidence/status-bridge-browser/result.json) | 新154测试、类型、两小程序各16页；6组Web／H5流程、12次CLI和9项布局通过 | 原生Windows程序实际读取受控Prometheus协议端，再走真实API；两上下文清理；H5不替代真机，未声称安装真实Prometheus |
+| [Android开发APK](../quality/evidence/status-bridge/build.json)／[包检查](../quality/evidence/status-bridge/apk-inspection.json) | 当前来源新编译42,858,139字节，17项检查；[25项原生结果](../quality/evidence/status-bridge/android-test-scope.json)为UP-TO-DATE | APK与80字节相同，当前来源重新绑定；日志／4份XML冻结，不计作新原生单测或设备验收 |
+| [新日常只读核对](../quality/evidence/status-bridge/development-project-resources.json)／[新Linux](../quality/evidence/status-bridge/linux-build.json) | 69迁移摘要、原API／Worker身份、0测试库／活动模型／启用TG；当前Linux重新编译 | 日常API未重启，不证明新回执已部署；新回执在隔离API实测。Linux未执行或远程部署 |
 
-本轮见[增量80](../development/80-mobile-project-changes-and-budgets.md)及[验证记录](../quality/evidence/mobile-changes/verification.md)。完整后端SHA-256保持`61754e7e60bdac1ad937c5890330de0fa872deaa72d116f428348ef46bdfb10d`。[来源与资源复算](../quality/evidence/mobile-changes/final-source-check.json)22项通过，未改动部分按准确来源复用。新增3张截图、7.3秒MP4及44帧GIF；旧媒体保留历史提交来源。全部28项编号保持稳定，不按条目数量计算完成率。
+本轮见[增量81](../development/81-native-prometheus-status-bridge.md)及[准确验证](../quality/evidence/status-bridge/verification.md)。后端SHA-256为`9422bb5963afb514669192f63bb151c69eab4a51f97f0add717eb3ccdfdef34e`。[来源与资源复算](../quality/evidence/status-bridge/final-source-check.json)25项通过；运行时39项按原完整来源复用。新增3张状态截图、6秒MP4／36帧GIF；旧媒体保留历史来源。28项编号保持稳定，不按条目数量计算完成率。
 
 ## 2. 差异清单
 
@@ -49,7 +49,7 @@ P0表示应优先解决的核心链路或正式首发硬门槛；P1表示同属�
 | GAP-20 | 实际OSS＋R2；FILE-06／09／13、WP-03 | 双云适配、上传／摘要／扫描／正式提交／副本／恢复Worker已有隔离验证，真实云未验收 | 配置实际桶与用途身份、CORS／签名／回读／分片／复制及失败重试，验证副本内容 | 两端真实固定对象摘要与正式版本一致；主可用和副本已校验分别展示；需云账号／区域与最小权限 | P0 |
 | GAP-21 | Web 120GB实测；FILE-04、NFR-04、WP-01／03 | Web上传队列及分片／续传协议已有代码，小样本不代表120GB | 真实120GB香港—境内网络长任务、刷新／断网／重选来源／过期签名、摘要与双云验证 | 120,000,000,000字节从上传到正式版本及副本可复核；记录耗时、内存、临时盘、失败恢复与流量；需样本及真实云 | P0 |
 | GAP-22 | 2TB导入；FILE-08、WP-13 | 已有迁移方案，未完成完整导入工具与真实迁移 | 只读盘点、稳定source_key映射、ACL／分类映射、批次／增量导入、逐条重试、双云核验报告 | 实际约2TB全量对象／字节／摘要及权限映射对上，保留原始来源；需原件、权限归属和迁移窗口 | P0 |
-| GAP-23 | 服务监控与外部告警；OPS-01—04、WP-10 | 服务目录、签名观测、新鲜度、维护、事件／复盘与Web／移动页面已有实现；故障及恢复可进入站内通知；增量62秘书可读取带时间和共同权限的固定状态证据 | 补真实采集／探测适配、主机指标、故障确认与外部告警投递、主应用外的独立告警链 | 实际故障、恢复、采集断流／unknown能正确区分；主应用停机仍能通知责任人；需服务／目标／接收人清单 | P0 |
+| GAP-23 | 服务监控与外部告警；OPS-01—04、WP-10 | 原服务／观测／维护／事件／两端页面与通知已有实现；增量81补独立原生Prometheus／Blackbox桥接、原采样时刻、受限查询、持久签名／序号、准确重试与完整回执；6组实际页面流程通过 | 真实Prometheus／Blackbox与获准目标部署、主机CPU／内存／磁盘、故障确认与外部告警送达、主应用外的独立告警链；未用协议端替代真实监控验收 | 故障、恢复、采集断流／unknown准确区分，主应用停机仍通知责任人；需真实服务／目标／接收人清单及独立演练 | P0 |
 | GAP-24 | 生产部署与发布；NFR-09／11、WP-13 | 本地原生运行、构建脚本及部分Worker的systemd模板存在 | 补完整API／Runtime／Worker与HTTPS服务配置、独立身份与密钥、原生CI/CD、冻结产物及受控迁移／回滚 | 目标服务器可按记录复建与发布，启动／就绪准确，旧客户端兼容；不是在本地开发环境运行即已部署 | P0 |
 | GAP-25 | 数据持久化与恢复；FILE-14、NFR-06／09、WP-13 | 当前PG为开发夹具；生产独立PG、PITR／跨云备份、恢复集及灾备演练未落地 | 部署独立持久PG及备份任务、DB＋对象一致恢复集、配置／密钥恢复、主机重建与必要纪元切换 | 实际演练证明约定RPO／RTO，业务引用和权限仍一致；应用机只保留临时／缓存，不保存唯一业务／恢复资料 | P0 |
 | GAP-26 | 依赖安全与产物；NFR-08、WP-14 | 本轮依赖锁文件未变化，复用增量65审计：114项告警，其中critical 11项、high 32项；尚未关闭 | 区分构建／运行影响，逐项修复、替换或形成有证据的处置，重做依赖／产物检查与受影响回归 | 发布所需安全问题关闭或按既定规则签核；不以全量降级／强制自动修复破坏Taro兼容，也不把包告警数等同实际漏洞利用数 | P0 |

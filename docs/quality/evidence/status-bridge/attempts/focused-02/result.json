@@ -1,0 +1,395 @@
+{
+  "passed": true,
+  "source_sha256": "b758840f03465d4997318911235454dff4cb44010afdbe9cf49be9802e03996d",
+  "source_unchanged": true,
+  "started_at": "2026-10-26T15:25:44.989211+00:00",
+  "completed_at": "2026-10-26T15:26:32.864925+00:00",
+  "exit_code": 0,
+  "checks": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeDeliveryRecovery",
+      "Elapsed": 0.07
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/stale",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/future",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/mismatch",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/wrong_label",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/histogram",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/multiple",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/missing",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/unavailable",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/oversize",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/duplicate_json",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/warnings",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/duration_NaN",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/duration_+Inf",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/duration_-Inf",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/duration_-1",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/duration_3600.01",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/scrape_failure_is_unknown",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries/failed_probe_is_real_sample",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeSampleBoundaries",
+      "Elapsed": 0.32
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/incomplete",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/wrong_source",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/wrong_revision",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/wrong_sequence",
+      "Elapsed": 0.03
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/wrong_hash",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/missing_false",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/null_false",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/contradiction",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/stale_ack_is_retained_fact_not_current_health",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/temporary_failure_replays",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries/revocation_halts_without_replay",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeReceiptBoundaries",
+      "Elapsed": 0.24
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeJournalRecovery",
+      "Elapsed": 0.06
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeJournalCorruptionAndRebinding/completed_checksum_corruption_fails_closed",
+      "Elapsed": 0.04
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeJournalCorruptionAndRebinding/same_revision_different_target_refused",
+      "Elapsed": 0.03
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeJournalCorruptionAndRebinding/new_published_revision_starts_own_sequence",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeJournalCorruptionAndRebinding/pending_cannot_be_overwritten_by_new_sample",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeJournalCorruptionAndRebinding",
+      "Elapsed": 0.1
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/169.254.169.254",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/169.254.170.2",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/100.100.100.200",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/fd00:ec2::254",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/::ffff:169.254.169.254",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/0.0.0.0",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/224.0.0.1",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/::",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/http://example.invalid",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/https://name:secret@example.invalid",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/https://example.invalid/?target=x",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/https://example.invalid/#fragment",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/https://example.invalid/a/../b",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/https://example.invalid/%2fsecret",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/private_network_requires_explicit_permission",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/checked_dns_is_pinned_and_redirect_is_not_followed",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls/environment_proxy_is_ignored",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeTargetControls",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/statusbridge",
+      "Test": "TestStatusBridgeConfigurationBoundaries",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/real_signed_samples_warm_up_and_recover;_duplicates_do_not_advance_streak",
+      "Elapsed": 0.24
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/three_real_failed_probes_cause_down;_a_failed_scrape_makes_no_false_sample",
+      "Elapsed": 0.12
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/two_actual_successes_recover;_measured_high_latency_degrades",
+      "Elapsed": 0.07
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/actual_commit_with_incomplete_receipt_survives_process_reopen_as_exact_replay",
+      "Elapsed": 0.03
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/actual_expiry_becomes_unknown_without_synthetic_failure",
+      "Elapsed": 17.63
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/published_source_rotation_rejects_old_revision_and_new_revision_starts_unknown",
+      "Elapsed": 0.04
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow",
+      "Elapsed": 27.37
+    }
+  ],
+  "scope": "Bridge boundaries and actual native PostgreSQL/API projection; controlled Prometheus HTTP protocol."
+}

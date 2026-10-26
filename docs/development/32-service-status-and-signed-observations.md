@@ -4,7 +4,7 @@
 
 ## 1. 实现范围与依赖
 
-平台管理服务目录、观测来源修订、签名事实、状态投影、维护窗口和人工事件。采集平台应继续使用独立部署的成熟工具。当前 `uptime_kuma/prometheus/adapter` 是来源类型标识，尚未实现或验证相应采集桥接程序；选择该值不会自动开始探测。
+平台管理服务目录、观测来源修订、签名事实、状态投影、维护窗口和人工事件。采集平台应继续使用独立部署的成熟工具。初版中的 `uptime_kuma/prometheus/adapter` 仅是来源类型标识。增量81已补[独立原生 Prometheus／Blackbox 状态桥接](81-native-prometheus-status-bridge.md)，并为签名回执增加来源、修订、序号与原始字节摘要绑定；选择来源类型仍不会自动开始探测。Uptime Kuma 专用适配尚未实现。
 
 ```mermaid
 flowchart LR
@@ -22,7 +22,7 @@ flowchart LR
 
 业务实现位于 `app/backend/internal/servicestatus/`，HTTP 入口位于 `app/backend/internal/httpapi/service_status.go`，迁移为 `0033_service_status.sql`。数据库迁移和组织初始化只创建未绑定的 `status_reader/status_operator` 角色；不会自动给员工、系统管理员、秘书或 TG 群授予业务阅读权。
 
-Web 已提供服务目录、来源发布/历史、维护安排/取消、观测原始签名验证、人工事件及追加复盘页面；实际浏览器结果单独记录。当前尚待完成：采集适配器及部署、主机指标与可信探测目标清单、跨主机独立告警、通知投递、Taro/Android 页面、秘书/TG 状态汇总。首发四端和完整平台目标保持不变。
+Web 已提供服务目录、来源发布/历史、维护安排/取消、观测原始签名验证、人工事件及追加复盘页面；实际浏览器结果单独记录。本段为初版范围。后续已补Taro状态／事件、站内通知、秘书／TG摘要及增量81原生Prometheus桥接；各阶段以[当前差异表](../delivery/03-goal-gap-assessment.md)及其准确证据为准。当前仍需真实监控／可信目标部署、主机指标、跨主机独立告警与四端真机验收。首发四端和完整平台目标保持不变。
 
 ## 2. 服务身份、范围与权限
 

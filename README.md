@@ -21,6 +21,7 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 | 移动端 / Mobile clients | Taro 微信／抖音公共页面及 Android 原生宿主；小程序侧重查阅和审批，Android 提供原生文件传输 / Shared WeChat/Douyin pages and an Android native host; mini-program reading/approval and native Android transfer |
 | 文件与备份 / Files and replicas | OSS + R2 适配、分片、固定源、摘要、扫描、正式版本、复制及恢复；真实环境另验 / OSS/R2 adapters, multipart transfer, frozen sources, checksums, scanning, formal versions, replication and recovery; external acceptance remains required |
 | 公司秘书 / Company secretary | Codex SDK 运行时、8 项草稿 Skill、准确业务授权与真实回执、门户及 TG 调度 / Codex SDK runtime, eight draft Skills, explicit business authorization/receipts, portal and TG orchestration |
+| 服务监控 / Service monitoring | 独立 Go Prometheus／Blackbox 桥接、原采样时刻、持久签名投递与完整回执；既有状态／历史／通知 / Native bridge, original sample times, durable signed delivery and bound ACKs; existing status, history and notifications |
 | 原生运维 / Native operations | 独立 API／Worker／Runtime、最小权限数据库身份和服务模板；不启动本地 Docker／WSL／虚拟机／模拟器 / Separate native processes and least-privilege identities; no local virtualization |
 
 不包含考勤或人事管理。Neither attendance nor HR management is in scope.
@@ -30,6 +31,12 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 GIF 为轻量预览，较长片段适度加速；MP4 保留完整屏幕操作。详情、数据来源、录制范围和重建命令见[演示目录](docs/media/README.md)。
 
 GIFs are lightweight previews, with modest acceleration for the longer clip. MP4 recordings retain the complete interaction. See the [media catalog](docs/media/README.md) for scope, provenance and reproduction.
+
+实际原生状态桥接：失败阈值 → 服务异常 → 恢复阈值 → 原始签名核验。采样由受控 Prometheus 协议端提供；程序、API和页面均实际执行。Native bridge demo: outage threshold → service failure → recovery → original-signature verification, using controlled metric samples and the actual CLI/API/UI.
+
+![原生监控与实际状态切换 / Native monitor and actual status transitions](docs/media/gifs/native-service-health-workflow.gif)
+
+[状态桥接 MP4 / Status bridge MP4](docs/media/videos/native-service-health-workflow.mp4) · 6.0 s · [部署与协议 / Deployment and protocol](docs/development/81-native-prometheus-status-bridge.md) · [实际状态截图 / Actual status screenshot](docs/media/screenshots/native-status-bridge-down.png)
 
 ![Web 项目创建与任务闭环 / Web project and task workflow](docs/media/gifs/web-project-flow.gif)
 
@@ -58,6 +65,8 @@ GIFs are lightweight previews, with modest acceleration for the longer clip. MP4
 1. 按[中文指南](docs/README.zh-CN.md)或 [English guide](docs/README.en.md)准备原生工具、安装依赖、迁移数据库并初始化开发身份。
 2. 在 Web 完成项目与角色配置，按“草稿 → 固定依据 → 明确提交／批准 → 原业务执行 → 历史核对”使用业务流程。Start with projects and roles, then follow draft → fixed evidence → explicit submission/approval → original business execution → history review.
 3. 按需要编译两小程序或 Android 开发包；实际平台账号、域名、签名、设备、存储和模型单独配置及验收。Build client packages and independently configure/accept platform accounts, domains, signing, devices, storage and model access.
+4. 服务监控按[桥接指南](docs/development/81-native-prometheus-status-bridge.md)在独立监控机配置准确来源修订、公钥、标签及端点；先升级 API，再检查一次采集和受控服务。For monitoring, configure the exact source revision/key/labels/endpoints on a dedicated monitor host; upgrade the API before enabling its bridge.
+
 
 工具已准备后，在仓库根目录执行以下本地启动步骤。After preparing native prerequisites, run these commands from the repository root:
 
@@ -107,8 +116,8 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量80）：后端146个顶层测试／919条结果，运行时39项、Web81项、移动154项；两小程序各16页。新增移动完整变更、原申请修订／独立审批、本人MFA明确实施及预算保持／替换／清空，10组实际API／H5流程和9项布局通过。新Android开发APK为42,858,139字节，17项包检查通过；25项原生测试为Gradle保留结果，本轮未新执行，见[增量80验证记录](docs/quality/evidence/mobile-changes/verification.md)。后端／Web／运行时只在完整来源摘要匹配时复用；完整四端生产放行继续开放。
+当前功能基线（增量81）：新增独立原生 Prometheus／Blackbox 桥接，接通持久签名观测、准确回执、故障／恢复与既有 Web／Taro 页面。新执行后端154个顶层测试／984条结果／892末级场景、Web81项和移动154项；两小程序各16页。6组实际页面流程、12次原生CLI调用和9项布局通过；两个所属上下文及临时服务／数据库均清理。当前来源下Android编译和17项包检查通过；25项原生结果为Gradle UP-TO-DATE，开发APK与增量80字节相同。完整范围、来源复算25项、失败记录及39项运行时准确复用见[增量81验证](docs/quality/evidence/status-bridge/verification.md)。真实监控安装、主机指标、独立告警及完整四端生产放行继续开放。
 
-The current functional baseline (increment80) includes 146 top-level backend tests/919 result records, 39 runtime tests, 81 Web tests and 154 mobile tests, with 16 pages per mini-program. Complete mobile proposals, original request revision/independent approval, explicit MFA implementation and keep/replace/clear budgets passed ten actual API/H5 flows and nine layouts. The new 42,858,139-byte APK passed 17 inspections; 25 native results were retained by Gradle, not newly executed. See [increment80 verification](docs/quality/evidence/mobile-changes/verification.md). Backend/Web/runtime proofs are reused only at matching complete source digests; full production acceptance remains open.
+The current functional baseline (increment81) adds a native Prometheus/Blackbox bridge with durable signed observations, bound receipts and existing Web/Taro outage/recovery views. Fresh checks passed 154 top-level backend tests/984 result records/892 leaf scenarios, 81 Web tests and 154 mobile tests, with 16 pages per mini-program. Six actual UI flows, 12 native CLI invocations and nine layouts passed; both owned contexts, temporary servers and databases were released. Current-source Android compilation and 17 APK inspections passed; 25 native results were UP-TO-DATE, and the debug APK is byte-identical to increment80. See [increment81 verification](docs/quality/evidence/status-bridge/verification.md) for 25 final source checks, failed attempts and exact reuse of 39 runtime tests. Real monitors, host metrics, independent alerts and complete four-client production acceptance remain open.
 
 后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.

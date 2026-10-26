@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-26T15:55:02.691Z",
+  "client": "mobile",
+  "source_sha256": "f4b53add6b468e92b9077a9c1acdc22d06cb5788ed553cfb67a9fa17431cd157",
+  "source_unchanged": true,
+  "contexts_created": 1,
+  "contexts_closed": 1,
+  "owned_browser_closed": true,
+  "checks": [
+    "The actual Taro H5 reader sees the same CLI-produced outage with no service/source write controls.",
+    "The Taro H5 client reads the original signed observation facts from the same isolated API."
+  ],
+  "layouts": [
+    {
+      "client": "mobile",
+      "theme": "light",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "client": "mobile",
+      "theme": "light",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "client": "mobile",
+      "theme": "light",
+      "width": 768,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/native-status-bridge-mobile.png",
+      "caption": "Taro H5 只读用户查看由原生桥接写入的故障、来源和观测事实；非真机截图。",
+      "sha256": "269c70cd064397934c818373c1eb2c106a42c829598fbe5ac3029bbecc0a957b",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "recordings": [],
+  "native_cli_executions": [
+    {
+      "code": "ACKNOWLEDGED",
+      "exit_code": 0,
+      "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+      "sequence": "8",
+      "observation_id": "1a34d722-7de3-45bc-aaf8-a6a0dbf3af0e",
+      "applied": true,
+      "replayed": false,
+      "native_binary": true
+    },
+    {
+      "code": "ACKNOWLEDGED",
+      "exit_code": 0,
+      "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+      "sequence": "9",
+      "observation_id": "b963c0f9-17f5-4498-a5a5-9b3551fd5d2d",
+      "applied": true,
+      "replayed": false,
+      "native_binary": true
+    },
+    {
+      "code": "ACKNOWLEDGED",
+      "exit_code": 0,
+      "source_id": "841a69d2-048d-461d-8597-e2c2853455e3",
+      "sequence": "10",
+      "observation_id": "837d90c3-142c-4e6c-a307-fb9cbff1e06e",
+      "applied": true,
+      "replayed": false,
+      "native_binary": true
+    }
+  ],
+  "errors": [],
+  "serverErrors": [],
+  "cleanupErrors": [],
+  "synthetic_data": true,
+  "real_device": false,
+  "real_model": false
+}

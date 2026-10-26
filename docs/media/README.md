@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **23 张 PNG、6 段 MP4、6 个 GIF**：增量77的14张实际截图、1张历史秘书计划来源裁剪，以及增量78新增的2张任务截图和1对任务录屏／GIF；增量79新增3张结项截图和1对结项录屏／GIF；增量80新增3张变更／预算截图和1对变更提案录屏／GIF。画面来自真实应用与实际 API，数据是隔离合成测试资料；不含真实合同、员工资料、登录密码、MFA 秘钥或访问令牌。无真实云传输、模型调用或 TG 群外发。移动画面是 390 × 900 的 Taro H5，共享界面不能作为 Android／小程序真机验收。
+本目录包含 **26张PNG、7段MP4、7个GIF**：增量77初始15张图及三组录制，78／79／80分别补任务、结项和变更媒体；增量81新增三张真实状态截图及一对原生监控工作流MP4／GIF。全部使用隔离合成业务数据；不含真实合同、员工资料、密码、MFA、私钥或令牌。
 
-This catalog contains **23 PNGs, six MP4s and six GIFs**: increment77 supplied 14 actual captures and one attributed earlier secretary-plan crop; increment78 adds two task screenshots and one task recording/GIF pair; increment79 adds three closeout images and one closeout recording/GIF pair; increment80 adds three change/budget images and one proposal recording/GIF pair. These are real application/API interactions with isolated synthetic data. They exclude real company records, passwords, MFA secrets and access tokens. No real cloud transfer, model call or TG group delivery occurred. Mobile captures show the shared Taro H5 interface at 390 × 900, not physical-device acceptance.
+This catalog contains **26 PNGs, seven MP4s and seven GIFs**: initial captures from77, task/closeout/change additions in78–80, and three new actual status images plus a native-monitor recording/GIF pair in81. All media uses isolated synthetic records and excludes real business records and credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -78,10 +78,27 @@ Actual capture: choose the currency, read and accept the full project/budget bas
 
 The output binds 35 actual JPEGs and their original 7178 ms timestamps/hashes; the GIF has 44 frames. Public synthetic business IDs/hashes remain visible. Capture rejects credential inputs and does not redraw the UI. All three PNGs and first/middle/last GIF samples were inspected; form images cover their actual visible regions. [Verification](../quality/evidence/mobile-changes/verification.md) distinguishes these H5/API checks from device and external acceptance.
 
-## 7. 页面截图 / Screenshots
+## 7. 原生监控与状态切换 / Native monitor and status transitions
+
+独立Windows桥接程序实际读取受控Prometheus协议端，经过持久journal／签名投递，让同一Web服务连续三次失败后显示异常、连续两次成功后恢复，并在页面验证原始签名。录制只包含Web服务页、观测历史和签名核对；原生CLI在后台执行，无登录／MFA输入。真实Prometheus／Blackbox尚未安装，协议端不代表实际探测目标验收。
+
+The actual native Windows bridge reads a controlled Prometheus protocol endpoint, journals/signs the observations and drives the original API. The Web page shows three-failure outage, two-success recovery and original-signature verification. The CLI runs in the background; no authentication entry is recorded. Actual Prometheus/Blackbox/targets remain deployment gates.
+
+![原生监控状态流程 / Native monitor status workflow](gifs/native-service-health-workflow.gif)
+
+[完整MP4 / Full MP4](videos/native-service-health-workflow.mp4) · 1440 × 900 · 6.0 s · 无声 / silent · GIF720px、6fps、36帧、1×
+
+28个实际JPEG及5781ms原始记录绑定[编码结果](../quality/evidence/status-bridge/media.json)和[公开帧清单](../quality/evidence/status-bridge/recording-frames.json)。[页面结果](../quality/evidence/status-bridge-browser/result.json)绑定787份完整来源、六组实际流程、12次CLI、九项布局与两上下文清理。三张完整视口图及GIF0/12/24/35帧已[实际查看](../quality/evidence/status-bridge/visual-review.json)；MP4适合核对较小签名文字，移动图仅显示当时可见的服务状态／资料，来源及历史位于下方。
+
+The [verification record](../quality/evidence/status-bridge/verification.md) separates fresh execution, native cached tests, exact runtime reuse and failed checker attempts. Original JPEGs remain ignored. Earlier change media is historical at commit `ee04df957ea4b590db8bad1510e308f393e876aa`; its bytes and source proof remain unchanged.
+
+## 8. 页面截图 / Screenshots
 
 | 页面 / Page | 图片 / Image | 范围 / Scope |
 | --- | --- | --- |
+| 原生桥接正常 / Bridge operational | [native-status-bridge-operational.png](screenshots/native-status-bridge-operational.png) | 实际CLI及API形成的正常状态 / Healthy projection produced by the actual CLI/API |
+| 原生桥接故障 / Bridge outage | [native-status-bridge-down.png](screenshots/native-status-bridge-down.png) | 三次实际失败、当前来源状态 / Three actual failures and current source |
+| 移动状态 / Mobile status | [native-status-bridge-mobile.png](screenshots/native-status-bridge-mobile.png) | 只读Taro H5员工查看同一故障；可见视口 / Reader sees the same outage in the captured H5 viewport |
 | 工作台 / Dashboard | [web-dashboard.png](screenshots/web-dashboard.png) | 当前身份、可见项目 / Current identity and visible projects |
 | 项目资料 / Project | [web-project.png](screenshots/web-project.png) | 实际新项目、尚无任务时 / Newly created project before task creation |
 | 任务 / Task | [web-task.png](screenshots/web-task.png) | 实际完成任务及操作原因 / Actual completed task and reason |
@@ -114,7 +131,7 @@ The output binds 35 actual JPEGs and their original 7178 ms timestamps/hashes; t
 
 The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
 
-## 8. 来源、编码与复现 / Provenance, encoding and reproduction
+## 9. 来源、编码与复现 / Provenance, encoding and reproduction
 
 | 记录 / Record | 内容 / Contents |
 | --- | --- |
@@ -125,7 +142,7 @@ The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow e
 | [visual-review.json](../quality/evidence/repository-showcase/visual-review.json) | 初始画面的实际查看、抽样范围与限制 / Initial image inspection, sampling scope and limits |
 | [任务来源清单](../quality/evidence/mobile-tasks-browser/source-manifest.json)／[页面结果](../quality/evidence/mobile-tasks-browser/result.json) | 新任务采集的完整源码及真实流程／清理 / Complete new task sources, actual flows and cleanup |
 | [任务媒体](../quality/evidence/mobile-tasks/media.json)／[视觉查看](../quality/evidence/mobile-tasks/visual-review.json) | 32个真实源帧、输出摘要、ffprobe及GIF首中尾抽样 / 32 actual source frames, output digests, probe and first/middle/last GIF samples |
-| [当前功能来源](../quality/current-functional-baseline.json)／[最终复算](../quality/evidence/mobile-changes/final-source-check.json) | 当前增量与历史媒体提交的明确区分 / Current functional increment and explicit historical-media commit |
+| [当前功能来源](../quality/current-functional-baseline.json)／[最终复算](../quality/evidence/status-bridge/final-source-check.json) | 当前增量与历史媒体提交的明确区分 / Current functional increment and explicit historical-media commit |
 | [历史来源补充](../quality/evidence/mobile-tasks/historical-capture-sources.json) | 原712项字节流完整重建通过：711项Git源码及1项忽略编译缓存；仅发布摘要，不提交缓存字节 / Exact original 712-entry reconstruction: 711 Git blobs plus one ignored generated cache; digests published, cache bytes excluded |
 
 在已有原生开发工具、依赖、测试数据库和 Edge 的环境，从 `app/` 执行。以下初始三段采集的精确复现以提交 `9e87869397112e0807dd28abdbc691c7b5abb15b` 为准；当前源码下运行会产生新的采集，必须新建相应证据，不能覆盖历史来源说明：
@@ -140,9 +157,9 @@ python scripts/verify_repository_publication_development.py
 python scripts/verify_repository_publication.py
 ```
 
-任务和结项复现须分别检出增量78、79的历史提交；当前增量80变更提案执行以下命令。所有采集共用端口与原生夹具，须先后运行：
+任务、结项、变更复现须分别检出增量78、79、80的历史提交；以下为80的历史变更命令，当前81状态复现见后续步骤。所有采集共用端口与原生夹具，须先后运行：
 
-Check out increments78/79 for their historical task/closeout captures. Use the current increment80 sources for changes below. All captures share a port/fixture and must run sequentially:
+Check out increments78/79/80 for historical task/closeout/change captures. The following change commands belong to80; current81 status reproduction follows. All captures share a port/fixture and must run sequentially:
 
 ```powershell
 $env:PYTHONUTF8='1'
@@ -152,9 +169,20 @@ python scripts/encode_mobile_changes_media.py
 python scripts/verify_mobile_changes_development.py
 ```
 
-采集会创建自己的隔离数据库，顺序使用本机 5189 端口，并在 finally 中关闭自己的浏览器、服务与夹具。若已有同名私有夹具，脚本会拒绝接管。原始 JPEG 帧与登录资料留在忽略的 `app/.local/`，编码器只接受摘要核对通过的真实帧，输出无声 H.264 MP4 与调色板 GIF。MP4 保留实际时间间隔，以 10 fps 编码；GIF 6 fps，桌面宽 960、移动宽 390，长片段适度加速。没有插帧生成或重新绘制页面。
+当前81在原生工具、测试库、Edge及桥接二进制准备后，从`app/`顺序运行；先归档此前证据，再重新生成独立来源和实际视觉查看。完整构建／复核命令见[验证记录](../quality/evidence/status-bridge/verification.md)。
 
-Capture owns an isolated database and uses local port 5189 sequentially. Its cleanup closes owned browsers, servers and fixtures; it refuses an existing private fixture. Raw JPEG frames and login material remain under ignored `app/.local/`. The encoder verifies frame hashes before producing silent H.264 MP4 and palette GIF output. MP4 preserves recorded intervals at 10 fps; GIF uses 6 fps, desktop width 960/mobile width 390, with modest acceleration for the long clip. No generated UI or synthesized in-between frames are used.
+For81, prepare the native toolchain/test database/Edge/bridge binary, archive previous evidence, then run sequentially from `app/`. A rebuild needs new source bindings and actual visual review.
+
+```powershell
+$env:PYTHONUTF8='1'
+python scripts/run_status_bridge_browser.py
+python scripts/freeze_status_bridge_evidence.py --capture-only
+python scripts/encode_status_bridge_media.py
+```
+
+采集会创建自己的隔离数据库，顺序使用本机 5189 端口，并在 finally 中关闭自己的浏览器、服务与夹具。若已有同名私有夹具，脚本会拒绝接管。原始 JPEG 帧与登录资料留在忽略的 `app/.local/`，编码器只接受摘要核对通过的真实帧，输出无声 H.264 MP4 与调色板 GIF。MP4 保留实际时间间隔，以 10 fps 编码；GIF 6 fps，初始桌面宽960、移动宽390；81桥接GIF宽720，长片段适度加速。没有插帧生成或重新绘制页面。
+
+Capture owns an isolated database and uses local port 5189 sequentially. Its cleanup closes owned browsers, servers and fixtures; it refuses an existing private fixture. Raw JPEG frames and login material remain under ignored `app/.local/`. The encoder verifies frame hashes before producing silent H.264 MP4 and palette GIF output. MP4 preserves recorded intervals at 10 fps; GIF uses 6 fps, initial desktop width960/mobile width390; bridge81 width720, with modest acceleration for the long clip. No generated UI or synthesized in-between frames are used.
 
 手动视觉检查是另一个步骤，脚本重建后须实际查看新图再更新记录；不能仅沿用上次“看过”的结论。完整凭据检查基于采集前置条件、数据隔离、提交扫描和实际画面检查；并不宣称对所有像素完成自动 OCR 审计。后续受影响的功能截图、录屏、GIF 与中英文说明应同步更新，见[维护约定](../contributing.md)。
 

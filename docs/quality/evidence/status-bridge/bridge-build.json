@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-26T15:35:15.577640+00:00",
+  "completed_at": "2026-10-26T15:36:32.737637+00:00",
+  "source_sha256": "9422bb5963afb514669192f63bb151c69eab4a51f97f0add717eb3ccdfdef34e",
+  "source_unchanged_during_build": true,
+  "phases": [
+    {
+      "target": "windows/amd64",
+      "passed": true,
+      "exit_code": 0,
+      "artifact": ".local/status-bridge/bin/status-bridge.exe",
+      "sha256": "07f713ca857eb09ae3e35846445ee95725a4926056f9477673616b127353db55",
+      "bytes": 11490816,
+      "executed_by_build": false
+    },
+    {
+      "target": "linux/amd64",
+      "passed": true,
+      "exit_code": 0,
+      "artifact": ".local/status-bridge/bin/status-bridge-linux-amd64",
+      "sha256": "4c7f84d0490d93a4bb0a95c1244a1bb702fac37af5521b07e9280e37669b8b30",
+      "bytes": 11239905,
+      "executed_by_build": false
+    }
+  ],
+  "cgo_enabled": false,
+  "build_script_sha256": "a7ed4e371840b9a7d48b23971d7ceb0f202cd7764eee535bf20f18bf5b8811ac",
+  "deployed": false
+}
