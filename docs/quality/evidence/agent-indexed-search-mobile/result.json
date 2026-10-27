@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T18:48:04.638Z",
+  "finished_at": "2026-10-27T18:48:29.527Z",
+  "checks": [
+    "actual-authenticated-conversation-and-original-source-preparation",
+    "explicit-formal-file-and-version-selection",
+    "actual-DOCX-body-binds-original-and-derived-digests",
+    "extractor-time-digest-and-format-limits-visible",
+    "Unicode-continuation-retains-exact-derivation",
+    "historical-preview-does-not-follow-current-head",
+    "both-exact-context-versions-attached-without-implicit-send",
+    "historical-native-MCP-result-withdraws-after-fixture-authority-and-lifecycle-changes"
+  ],
+  "source_count": 708,
+  "source_sha256": "20fba6aa4d8189b532d1d8259dd174a7ed8aa1523fab86f68ec6f5b02e2e0a13",
+  "source_after_sha256": "20fba6aa4d8189b532d1d8259dd174a7ed8aa1523fab86f68ec6f5b02e2e0a13",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "163e72dc57818bfbdf73345551c1c8d11201f1eae155c083dae1191fb435d72c",
+  "build_source_after_sha256": "163e72dc57818bfbdf73345551c1c8d11201f1eae155c083dae1191fb435d72c",
+  "build_source_unchanged": true
+}

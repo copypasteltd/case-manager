@@ -290,20 +290,36 @@ python scripts/verify_mobile.py my-change
 
 [完整方案与边界](development/92-file-text-search.md) · [独立只读凭据／部署／排查](operations/file-text-search.md) · [截图与演示](media/README.md) · [准确验证](quality/evidence/file-search/verification.md)
 
+## 秘书查找正文与固定DOCX资料（增量93）
+
+1. 打开有权进入的公司／项目会话，在“核对并选择上下文资料”中选准确文件正文，明确文件及正式版本；历史选择不会自动跟随最新版。
+2. 预览已完成提取的DOCX主文档文字，核对原件版本／SHA-256、提取器、索引时间、正文SHA-256及字符数；续读按Unicode位置，证据变化须重新选择。
+3. 点击加入本次请求，可同时附上同一文件的两个准确版本。选择和预览不会自动发送，也不产生修改授权。选择已配置的任务、填写请求后才明确发送；生产任务配置仍需实际安装和评测。
+4. 模型侧原 `search_resources` 在同会话共同权限范围查标题及正文，文件正文仅匹配当前正式版本；`read_resource` 则可以读取明确历史版本。检索片段不是全文已读或写入许可。
+5. 待提取、失败、超限和不支持格式返回真实状态；回收／隔离／撤权阻止缓存正文披露，旧回复会按依赖检查隐藏。UTF-8原件仍走独立只读身份及原摘要核验；DOCX走不可变索引正文。
+
+格式边界：原UTF-8／Markdown／CSV／JSON原件1MiB内；DOCX原件8MiB内、派生正文2MiB内、每次最多10000个Unicode字符。未实现PDF、OCR、其他Office正文或DOCX写入。DOCX的版式、图片和嵌入内容须核对原件；索引时间不代表本次重新访问真实云。
+
+![Web实际资料选择](media/gifs/agent-indexed-search-web.gif)
+
+[Web录屏](media/videos/agent-indexed-search-web.mp4) · [移动H5录屏](media/videos/agent-indexed-search-mobile.mp4) · [移动GIF](media/gifs/agent-indexed-search-mobile.gif) · [完整协议](development/93-secretary-indexed-search.md) · [独立凭据与索引运维](operations/file-text-search.md)
+
+演示使用真实本机API与隔离合成资料，展示预览、续读和两个版本附件；未发送模型请求。正文检索／回执完成由原生受控MCP检查证明，真实模型与TG另验。短片保留自动化的较快原时序，可调慢播放器。
+
 ## 8. 当前证据与放行条件
 
-当前功能更新为[统一搜索与固定版本正文](development/92-file-text-search.md)。所有数字指向本轮来源记录，不替代完整正式交付。
+当前功能更新为[秘书正文检索与固定DOCX资料](development/93-secretary-indexed-search.md)。数字指向本轮来源记录，不替代完整正式交付。
 
 | 层面 | 本轮结果 | 实际边界 |
 | --- | --- | --- |
-| Go / PostgreSQL | 165顶层／1,112结果／1,012末级、9批；75迁移 | 原生全量；新增75，原74迁移字节保留 |
-| Web／运行时 | 126／49项测试及构建 | 绑定当前源码；八项Skill仍draft |
-| Taro | 218项、类型、微信／抖音各19页 | 共享页面实际H5流程，两端各12项检查；未启动平台开发工具或设备 |
-| Android | 当前原生开发APK和18项包检查 | 26项JVM按实际Gradle缓存记录；没有真机／商店通过声明 |
-| 页面与媒体 | 新增4图／两套MP4与GIF；共74 PNG／27 MP4／27 GIF | 真实浏览器像素，隔离合成数据与受控对象来源 |
-| 历史与运维 | 原91完整来源重建，164份原证据／媒体不变；75迁移与归属进程核对 | 云／模型／TG关闭，零隔离测试库；Linux仅编译 |
+| Go / PostgreSQL | 167顶层／1,129结果／1,027末级、9批；75迁移 | 原生全量；全部迁移与已发布92保持原字节 |
+| Web／运行时 | 130／51项测试及构建 | 当前来源与八项draft Skill协议；未运行真实模型 |
+| Taro | 222项、类型、微信／抖音各19页 | Web／共享H5各8项真实资料流程检查；未执行小程序或设备 |
+| Android | 当前原生开发APK、18项包检查 |26项JVM实际为Gradle缓存复用；无真机／商店验收 |
+| 页面与媒体 | 新增4图、两套MP4／GIF；共78 PNG／29 MP4／29 GIF | 实际认证页面像素；合成资料、受控对象来源、无隐式发送 |
+| 历史与运维 | 已发布92完整来源重建，91份原证据／媒体不变；75迁移与归属进程核对 | 外部接入关闭、零隔离测试库；Linux只编译 |
 
-相同锁文件复用原90审计：86项（0 critical、20 high、64 moderate、2 low）。源码审计、设备、真实云／网络、真实模型／TG、大文件／迁移、恢复和生产放行继续在[28项差异](delivery/03-goal-gap-assessment.md)中跟踪。详见[本轮验证](quality/evidence/file-search/verification.md)。
+相同锁文件复用原90审计86项（0 critical、20 high、64 moderate、2 low）。真实模型／TG、设备、云／跨境网络、大文件／迁移、恢复及安全放行继续在[28项差异](delivery/03-goal-gap-assessment.md)中跟踪。详见[本轮准确验证](quality/evidence/agent-indexed-search/verification.md)。
 
 ## 9. 文档与同步维护
 

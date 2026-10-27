@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T18:35:52.717Z",
+  "finished_at": "2026-10-27T18:36:09.749Z",
+  "checks": [
+    "actual-authenticated-conversation-and-original-source-preparation",
+    "explicit-formal-file-and-version-selection",
+    "actual-DOCX-body-binds-original-and-derived-digests",
+    "extractor-time-digest-and-format-limits-visible",
+    "Unicode-continuation-retains-exact-derivation",
+    "historical-preview-does-not-follow-current-head",
+    "both-exact-context-versions-attached-without-implicit-send"
+  ],
+  "source_count": 682,
+  "source_sha256": "dde3c1e4dcb681944a51247b59da4b92fdfec5aaad0cb5acd6cad94f0908dac3",
+  "source_after_sha256": "dde3c1e4dcb681944a51247b59da4b92fdfec5aaad0cb5acd6cad94f0908dac3",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "The expression evaluated to a falsy value:\n\n  assert.ok(answer.source_refs.some(ref => ref.type === 'file' && ref.version_id === fixture.old_version_id))\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "134d7a2f5cf41e36411a015fd9a98196331648afa8cd202c22a976c21e347c10",
+  "build_source_after_sha256": "134d7a2f5cf41e36411a015fd9a98196331648afa8cd202c22a976c21e347c10",
+  "build_source_unchanged": true
+}

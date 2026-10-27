@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 2026-10-28 · Increment93 / 秘书正文检索与固定DOCX资料
+
+原 `search_resources` 接入项目／任务／知识实际正文及当前正式文件的就绪索引，按会话共同权限、分类和准确文件依赖筛选；字面大小写匹配、Unicode片段和绑定查询／运行／授权的游标沿用有界候选保护。`read_resource` 与Web／Taro预览支持固定DOCX派生正文，绑定原件／正文SHA-256、提取器、索引时刻与字符位置；重新核对撤权、回收、扫描、租约、取消、预算及持久回执，保留原UTF-8独立读取路径。八项Skill协议递增仍draft，不增加写授权。
+
+Existing secretary MCP tools now discover permitted body matches and read immutable fixed-version DOCX text. Current authority and original/derived evidence remain bound through preview, Unicode continuation, durable receipts and result withdrawal. The original raw-text reader remains in place. All eight updated Skill packages remain draft; discovery and snippets do not grant mutations.
+
+无新迁移，原75项与已发布92原字节一致；OpenAPI285路径／353操作／622 Schema。当前后端167顶层／1,129结果／1,027末级、9批，Web130、运行时51、移动222及类型、双小程序各19页；Linux只编译。原生开发APK通过18项包检查，26项JVM明确为Gradle缓存；Web／H5各8项实际API／页面流程，新增4PNG及两套MP4／GIF，全目录78／29／29。已发布92完整来源重建，91份证据／媒体、10份入口快照保留原字节。
+
+Fresh results bind unchanged current source bytes. The native fixture's earlier UUID cast failure, three browser observation failures and one limited development-inspection failure retain original status and exact available sources/reports; no failed report was reclassified. The unchanged lock reuses the original90 audit of86 findings, including20 high. Actual cloud/model/TG/device,120GB/2TB, recovery, security and the complete four-client production launch remain open.
+
+[协议 / Protocol](development/93-secretary-indexed-search.md) · [准确验证 / Verification](quality/evidence/agent-indexed-search/verification.md) · [素材 / Media](media/README.md) · [28项差异 / Gaps](delivery/03-goal-gap-assessment.md)
+
 ## 2026-10-28 · Increment92 / 统一搜索与固定版本正文
 
 实现统一搜索项目、任务、目录、可见知识及文件；权限过滤先于分页，游标绑定本人／组织／授权版本及查询条件。当前正式文件版本可按独立只读凭据提取UTF-8文本／Markdown／CSV／JSON与DOCX主文档，复核冻结的云版本、ETag、字节数及SHA-256；IO期间不持有业务锁，发布前重检版本、扫描、权限范围和队列租约。派生正文入PostgreSQL并按固定版本分块预览；Web与Taro新增入口。PDF、OCR、复杂Office及超限文件只支持本轮已实现的元数据检索，不虚报正文支持。

@@ -1,0 +1,118 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-27T19:04:58.306917+00:00",
+  "checks": [
+    {
+      "name": "Full native backend:167 top-level tests,1129 result records,9 batches and stable complete sources",
+      "passed": true
+    },
+    {
+      "name": "Actual indexed-MCP HTTP/PostgreSQL and Unicode body matching cases passed",
+      "passed": true
+    },
+    {
+      "name": "All75 migrations remain byte-identical to published92",
+      "passed": true
+    },
+    {
+      "name": "Matching OpenAPI copies declare285 paths,353 operations,622 schemas and optional derived-context evidence",
+      "passed": true
+    },
+    {
+      "name": "Fresh51 runtime tests and build bind current runtime and Skill bytes",
+      "passed": true
+    },
+    {
+      "name": "Fresh130 Web tests and production bundle bind current unchanged declared source bytes",
+      "passed": true
+    },
+    {
+      "name": "Fresh Linux compile binds current backend; no artifact execution or deployment",
+      "passed": true
+    },
+    {
+      "name": "Fresh222 mobile tests, types and both mini-program builds bind current unchanged sources",
+      "passed": true
+    },
+    {
+      "name": "Both mini-programs register the same19 pages including search",
+      "passed": true
+    },
+    {
+      "name": "Current Android development APK binds current bundle/source and18 artifact checks, without device/release claims",
+      "passed": true
+    },
+    {
+      "name": "26 retained JVM results, native log and freezer hashes preserve the actual Gradle cache scope",
+      "passed": true
+    },
+    {
+      "name": "web:8 actual authenticated UI/API checks bind exact sources and completed owned-resource cleanup",
+      "passed": true
+    },
+    {
+      "name": "web: current exact-version UI preparation and historical result withdrawal; no implicit send or live model",
+      "passed": true
+    },
+    {
+      "name": "mobile:8 actual authenticated UI/API checks bind exact sources and completed owned-resource cleanup",
+      "passed": true
+    },
+    {
+      "name": "mobile: current exact-version UI preparation and historical result withdrawal; no implicit send or live model",
+      "passed": true
+    },
+    {
+      "name": "Actual pixels bind two capture manifests and four bounded MP4/GIF artifacts with original timing",
+      "passed": true
+    },
+    {
+      "name": "Direct review binds all4 screenshots and both GIF first/middle/last samples",
+      "passed": true
+    },
+    {
+      "name": "All8 Skills stay draft; project-update1.8.0 retains17 allowed and15 completion tools",
+      "passed": true
+    },
+    {
+      "name": "Native development75 schema, text guards, least-privilege role and owned processes checked; no test DB or external activation",
+      "passed": true
+    },
+    {
+      "name": "Published92 sources reconstruct from Git; all91 original evidence/media files and8 media remain byte-identical",
+      "passed": true
+    },
+    {
+      "name": "All10 entry-point snapshots retain original published92 bytes",
+      "passed": true
+    },
+    {
+      "name": "Unchanged exact lock explicitly reuses original90 audit:86 findings,20 high and open security gate",
+      "passed": true
+    },
+    {
+      "name": "One original native fixture failure and three original browser observation failures retain exact archived sources and failed status",
+      "passed": false
+    },
+    {
+      "name": "Mobile verification is a fresh current-source run; original misplaced report relocation is disclosed",
+      "passed": true
+    },
+    {
+      "name": "Owned browser port released and private synthetic fixture removed",
+      "passed": true
+    },
+    {
+      "name": "All28 stable gaps and complete four-client/120GB/2TB scope remain explicit",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "334659b223f04b79a5ab3d944f492674aab6871a54a35902ed4423bc2c721669",
+  "browser_source_sha256": "163e72dc57818bfbdf73345551c1c8d11201f1eae155c083dae1191fb435d72c",
+  "mobile_source_sha256": "cf15f6c63138999cd9c331c2f38b86a61099cbf8384f241236dd8de9fef3a287",
+  "verification_script_sha256": "7c5362f3dd09d8ed9332e757c67703d1142f665067f81f8e38469446cebff787",
+  "full_goal_complete": false,
+  "reused_audit_group": "dependency-hardening",
+  "audit_reexecuted": false,
+  "scope": "Fresh native checks and authenticated synthetic browser pixels; JVM cache and old-lock audit scope explicit. No real cloud, model, TG, device, capacity or production acceptance."
+}

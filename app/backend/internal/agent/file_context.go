@@ -13,8 +13,8 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-// A file citation fixes the formal version and whole-content hash, not a mutable
-// head or an extracted plaintext cache. No body is read by sourceSnapshots.
+// A file citation fixes the formal version and whole-content hash. Indexed
+// reads also bind immutable extraction evidence; sourceSnapshots reads no body.
 func contextFile(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, in ContextSource, members []string) (contextDocument, error) {
 	d := contextDocument{ID: in.ID, Type: "file", VersionID: in.VersionID}
 	if !core.ValidID(in.ID) || in.VersionID == nil || !core.ValidID(*in.VersionID) {
@@ -50,13 +50,24 @@ func contextFile(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, i
 	if err = tx.QueryRow(ctx, "SELECT size_bytes FROM file_versions WHERE org_id=$1 AND file_id=$2 AND id=$3", a.OrgID, in.ID, *in.VersionID).Scan(&size); err != nil {
 		return d, platform.DatabaseError(err)
 	}
-	if err = files.AgentTextFormat(evidence.MediaType, size); err != nil {
-		return d, err
+	// The source projection may describe any clean formal file. Unsupported or
+	// pending text is explicit; only ready immutable derivations expose a body.
+	if files.AgentTextFormat(evidence.MediaType, size) != nil {
+		index, e := files.AgentTextIndex(ctx, tx, a, in.ID, *in.VersionID)
+		if e != nil {
+			return d, e
+		}
+		d.TextIndex = &index
 	}
 	d.Title = evidence.Name
 	d.ResourceVersion = evidence.Seq
 	d.Evidence = []fileref.Evidence{evidence}
-	meta, _ := json.Marshal(map[string]any{"file_version": evidence, "content_not_included": true, "read_mode": "verified-utf8-text"})
+	metadata := map[string]any{"file_version": evidence, "content_not_included": true, "read_mode": "verified-utf8-text"}
+	if d.TextIndex != nil {
+		metadata["read_mode"] = "indexed-text"
+		metadata["text_index"] = d.TextIndex
+	}
+	meta, _ := json.Marshal(metadata)
 	d.Body = string(meta)
 	return d, nil
 }
@@ -82,7 +93,7 @@ func fileToolArguments(args json.RawMessage) (ContextSource, error) {
 	if in.MaxChars == 0 {
 		in.MaxChars = 4000
 	}
-	if in.Type != "file" || !core.ValidID(in.ID) || in.VersionID == nil || !core.ValidID(*in.VersionID) || in.Offset < 0 || in.Offset > int(files.AgentTextMaxBytes) || in.MaxChars < 1 || in.MaxChars > 10000 {
+	if in.Type != "file" || !core.ValidID(in.ID) || in.VersionID == nil || !core.ValidID(*in.VersionID) || in.Offset < 0 || in.Offset > files.TextOutputMaxBytes || in.MaxChars < 1 || in.MaxChars > 10000 {
 		return ContextSource{}, core.Invalid("arguments", "请指定准确文件版本及有限字符范围")
 	}
 	v := strings.ToLower(*in.VersionID)
@@ -93,6 +104,10 @@ func (s *Service) prepareFileRead(ctx context.Context, tx pgx.Tx, a core.Actor, 
 	doc, err := contextFile(ctx, tx, a, c, in, members)
 	if err != nil {
 		return out, err
+	}
+	if doc.TextIndex != nil {
+		hash, e := documentDigest(doc)
+		return fileReadPrepared{Document: doc, Hash: hash}, e
 	}
 	source, err := s.FileText.Prepare(ctx, tx, a, in.ID, *in.VersionID)
 	if err != nil {
@@ -107,7 +122,7 @@ func (s *Service) prepareFileRead(ctx context.Context, tx pgx.Tx, a core.Actor, 
 
 func (s *Service) fileContext(ctx context.Context, a core.Actor, id string, in ContextSource) (ContextView, error) {
 	var out ContextView
-	if in.VersionID == nil || !core.ValidID(*in.VersionID) || in.Offset < 0 || in.Offset > int(files.AgentTextMaxBytes) || in.MaxChars < 1 || in.MaxChars > 10000 {
+	if in.VersionID == nil || !core.ValidID(*in.VersionID) || in.Offset < 0 || in.Offset > files.TextOutputMaxBytes || in.MaxChars < 1 || in.MaxChars > 10000 {
 		return out, core.Invalid("context", "请指定准确文件版本及有限字符范围")
 	}
 	ctx, cancel := context.WithTimeout(ctx, 15*time.Second)
@@ -150,9 +165,13 @@ func (s *Service) fileContext(ctx context.Context, a core.Actor, id string, in C
 		}
 		return tx, c, members, ai, p, nil
 	}
-	tx, c, _, _, first, err := prepare()
+	tx, c, initialMembers, ai, first, err := prepare()
 	if err != nil {
 		return out, err
+	}
+	if first.Document.TextIndex != nil {
+		defer tx.Rollback(ctx)
+		return indexedFileContext(ctx, tx, ai, c, initialMembers, in, first)
 	}
 	_ = tx.Rollback(ctx)
 	text, err := s.FileText.Read(ctx, first.Source)

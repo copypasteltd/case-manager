@@ -3,5 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "types": "src/api.d.ts",
-  "exports": { ".": { "types": "./src/api.d.ts" }, "./budget": "./src/budget.ts", "./budget-comparison": "./src/budget-comparison.ts", "./finance-reports": "./src/finance-reports.ts", "./search": "./src/search.ts", "./mutation": "./src/mutation.ts", "./file-update": "./src/file-update.ts", "./oa-request": "./src/oa-request.ts", "./post-write": "./src/post-write.ts", "./notifications": "./src/notifications.ts" }
+  "exports": {
+    ".": {
+      "types": "./src/api.d.ts"
+    },
+    "./budget": "./src/budget.ts",
+    "./budget-comparison": "./src/budget-comparison.ts",
+    "./finance-reports": "./src/finance-reports.ts",
+    "./search": "./src/search.ts",
+    "./mutation": "./src/mutation.ts",
+    "./file-update": "./src/file-update.ts",
+    "./oa-request": "./src/oa-request.ts",
+    "./post-write": "./src/post-write.ts",
+    "./notifications": "./src/notifications.ts",
+    "./indexed-context": "./src/indexed-context.ts"
+  }
 }

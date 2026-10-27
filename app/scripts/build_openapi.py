@@ -575,10 +575,15 @@ add("ConversationCandidates", {"items": array(ref("ConversationMember"), maxItem
 context_view = {"conversation_id": ID, "conversation_revision_id": ID, "context_security_version": VERSION,
     "type": enum("project", "task", "post", "file", "service", "agent_finance_report"), "id": ID, "version_id": nullable(ID), "resource_version": VERSION,
     "title": NAME, "state": NAME, "text": {"type": "string", "maxLength": 10000},
-    "offset": {"type": "integer", "minimum": 0, "maximum": 1048576}, "total_chars": {"type": "integer", "minimum": 0},
+    "offset": {"type": "integer", "minimum": 0, "maximum": 2097152}, "total_chars": {"type": "integer", "minimum": 0},
     "next_offset": nullable({"type": "integer", "minimum": 0}), "source_sha256": HASH, "context_sha256": HASH,
     "evidence": array(ref("BusinessFileReference"), maxItems=20), "untrusted_data": {"const": True}, "observed_at": TIME}
 add("ConversationContextView", context_view, tuple(context_view))
+index_evidence = {"extractor": NAME, "state": enum("pending", "ready", "unsupported", "blocked", "failed"),
+    "source_sha256": HASH, "text_sha256": nullable(HASH), "indexed_at": nullable(TIME),
+    "total_characters": nullable({"type": "integer", "minimum": 0, "maximum": 2097152}), "error_code": nullable(NAME)}
+add("FileTextIndexEvidence", index_evidence, tuple(index_evidence))
+context_view["text_index"] = ref("FileTextIndexEvidence")
 profile = {"id": ID, "skill_id": NAME, "skill_version": NAME, "skill_sha256": HASH,
     "runtime_version": NAME, "configuration_sha256": HASH, "max_input_tokens": VERSION,
     "max_output_tokens": VERSION, "max_tool_calls": VERSION, "timeout_seconds": VERSION}

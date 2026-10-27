@@ -7465,6 +7465,17 @@ export interface components {
             untrusted_data: true;
             /** Format: date-time */
             observed_at: string;
+            text_index?: components["schemas"]["FileTextIndexEvidence"];
+        };
+        FileTextIndexEvidence: {
+            extractor: string;
+            /** @enum {string} */
+            state: "pending" | "ready" | "unsupported" | "blocked" | "failed";
+            source_sha256: string;
+            text_sha256: string | null;
+            indexed_at: string | null;
+            total_characters: number | null;
+            error_code: string | null;
         };
         NotificationTarget: {
             /** @enum {string} */

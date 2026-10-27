@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-27T18:52:22.087162+00:00",
+  "method": "Direct visual inspection of all four PNGs and both GIF first/middle/last decoded frame contact sheets. Private contact sheets are not published.",
+  "files": [
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-mobile-preview.png",
+      "sha256": "daf22ee4b806254acd68a079b47f50023ede4f899253be3850a21e1ba5eebd3b",
+      "review": "Directly viewed actual screenshot: fixed source/version evidence and bounded text, or both attached versions; synthetic data, no credentials."
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-mobile-sources.png",
+      "sha256": "f5abf293915fad5b4678a909c0998806be9102009a26179cd3b1654df343f1f6",
+      "review": "Directly viewed actual screenshot: fixed source/version evidence and bounded text, or both attached versions; synthetic data, no credentials."
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-web-preview.png",
+      "sha256": "b5b2bfd063230bcbe3ac2a0fecc55e7172b1f780e25010d1570c86ea0789a2ab",
+      "review": "Directly viewed actual screenshot: fixed source/version evidence and bounded text, or both attached versions; synthetic data, no credentials."
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-web-sources.png",
+      "sha256": "f2da3a29fbf795653600746b06155a777b155cf1f2d4620268cfaa298933a2c6",
+      "review": "Directly viewed actual screenshot: fixed source/version evidence and bounded text, or both attached versions; synthetic data, no credentials."
+    },
+    {
+      "file": "docs/media/gifs/agent-indexed-search-mobile.gif",
+      "sha256": "833800ce707521600299d174686f36afdc95528c71e4e990b7a3cca7421f2a98",
+      "review": "Directly viewed first/middle/last decoded frames: actual authenticated selection, preview/scroll and both attached versions. Fast original timing; no model request."
+    },
+    {
+      "file": "docs/media/gifs/agent-indexed-search-web.gif",
+      "sha256": "44fc494c799f7b9bcd97798aaec9874cca446ff736dbca15378b41eff72357ee",
+      "review": "Directly viewed first/middle/last decoded frames: actual authenticated selection, preview/scroll and both attached versions. Fast original timing; no model request."
+    }
+  ],
+  "limitations": [
+    "Web full-page screenshots are long; open the originals to inspect detail.",
+    "Mobile preview is an actual scrolled 390x900 viewport with long synthetic text.",
+    "Clips use original fast automated timing and show Taro H5, not devices or a live model."
+  ]
+}

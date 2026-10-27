@@ -2,9 +2,21 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **74张PNG、27段MP4、27个GIF**。增量92新增统一搜索及固定版本正文的4张实际截图和两套MP4／GIF。原91及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
+本目录包含 **78张PNG、29段MP4、29个GIF**。增量93新增秘书固定DOCX资料的4张实际截图和两套MP4／GIF；原92及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
 
-This catalog contains **74 PNGs,27 MP4s and27 GIFs**. Increment92 adds four actual search/text screenshots and two MP4/GIF pairs. Prior media retains its original bytes. Mobile recordings show Taro H5, with synthetic data and controlled object sources rather than a device or real cloud.
+This catalog contains **78 PNGs,29 MP4s and29 GIFs**. Increment93 adds four actual indexed-context screenshots and two MP4/GIF pairs. Earlier media retains its original bytes. Recordings use authenticated synthetic data; mobile clips show Taro H5 rather than a device.
+
+## 最新：秘书正文与固定资料 / Secretary body and fixed context
+
+| 页面 / View | Web | 移动H5 / Mobile H5 |
+| --- | --- | --- |
+| 正文及派生证据 / Text and derivation | [PNG](screenshots/agent-indexed-search-web-preview.png) | [PNG](screenshots/agent-indexed-search-mobile-preview.png) |
+| 两个准确版本附件 / Two exact attached versions | [PNG](screenshots/agent-indexed-search-web-sources.png) | [PNG](screenshots/agent-indexed-search-mobile-sources.png) |
+| 实际操作 / Actual interaction | [MP4](videos/agent-indexed-search-web.mp4) · [GIF](gifs/agent-indexed-search-web.gif) | [MP4](videos/agent-indexed-search-mobile.mp4) · [GIF](gifs/agent-indexed-search-mobile.gif) |
+
+选择文件／准确版本 → DOCX正文及两类摘要 → Unicode续读 → 明确旧版本 → 两个版本加入本次请求。Web原录制14帧约3.0秒、移动28帧约6.0秒；MP4分别3.2秒／6.2秒，GIF保留原时序，建议放慢查看。截图包含实际长正文和移动滚动位置，不是概念效果图。没有自动发送模型请求。
+
+Actual authenticated previews, continuation and attachments use the native API and synthetic records. Both clients have eight UI/API checks; the native controlled MCP fixture separately verifies body search, durable read receipts and result withdrawal. These clips do not demonstrate live model output, real cloud or devices. Long Web PNGs and the scrolled390x900 mobile preview can be opened at full size. See [protocol](../development/93-secretary-indexed-search.md) and [exact verification](../quality/evidence/agent-indexed-search/verification.md).
 
 ## 新增：统一搜索与固定版本正文 / Unified search and version text
 

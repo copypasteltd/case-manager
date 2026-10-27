@@ -12,7 +12,15 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
-最新更新 / Latest update: [秘书任务前置依赖 / Secretary task prerequisites](docs/development/91-secretary-task-dependencies.md)。Web与Taro可选择两个任务、核对版本，明确新增或解除一条依赖；复用原权限、状态与循环检查，按实际业务回执核对结果。
+最新更新 / Latest update: [秘书正文检索与固定DOCX资料 / Secretary body search and fixed DOCX context](docs/development/93-secretary-indexed-search.md)。在会话内选择准确正式文件版本，核对正文、原件／正文摘要和提取状态，再明确加入请求；原MCP工具可检索共同授权范围内的项目、任务、知识和当前文件正文。
+
+Choose an exact formal file version in a conversation, review its extracted text and both content digests, then explicitly attach it. Existing MCP tools search permitted project/task/knowledge bodies and current formal file text. DOCX reads use immutable indexed text with fresh authority checks; unsupported formats report their actual state.
+
+![秘书固定版本资料 / Secretary fixed-version context](docs/media/gifs/agent-indexed-search-web.gif)
+
+[Web MP4](docs/media/videos/agent-indexed-search-web.mp4) · [移动 MP4 / Mobile MP4](docs/media/videos/agent-indexed-search-mobile.mp4) · [移动 GIF / Mobile GIF](docs/media/gifs/agent-indexed-search-mobile.gif) · [实际页面 / Screenshots](docs/media/README.md) · [准确验证 / Verification](docs/quality/evidence/agent-indexed-search/verification.md)。录屏展示真实API的预览、续读与附件选择；无隐式发送或真实模型。Clips show actual API-backed preparation, continuation and attachment; the native MCP fixture is controlled and historical results withdraw after authority changes.
+
+先前更新 / Earlier update: [秘书任务前置依赖 / Secretary task prerequisites](docs/development/91-secretary-task-dependencies.md)。Web与Taro可选择两个任务、核对版本，明确新增或解除一条依赖；复用原权限、状态与循环检查，按实际业务回执核对结果。
 
 Select two actual tasks and their versions, choose add/remove, review the exact request and send it through the secretary. The original business command enforces permissions, state and cycle rules; the actual committed relationship and operation establish success.
 
@@ -172,13 +180,13 @@ Open **Search work material**, enter a phrase and choose a resource type. File b
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前增量92接通统一搜索与固定版本正文：支持UTF-8文本／Markdown／CSV／JSON及有界DOCX，实际权限过滤、版本摘要、正文状态和Web／移动预览。后端165顶层／1,112结果／1,012末级、9批；Web126、运行时49、移动218及类型、双小程序各19页。新增迁移75，原74项保持原字节。见[详细方案](docs/development/92-file-text-search.md)、[运维配置](docs/operations/file-text-search.md)和[准确验证](docs/quality/evidence/file-search/verification.md)。
+当前增量93将正文检索和固定DOCX阅读接入秘书：准确来源、共同权限、Unicode分段、索引证据与持久回执均重新核对。后端167顶层／1,129结果／1,027末级、9批；Web130、运行时51、移动222及类型、双小程序各19页；75项迁移与已发布92保持原字节。见[详细方案](docs/development/93-secretary-indexed-search.md)、[索引运维](docs/operations/file-text-search.md)与[准确验证](docs/quality/evidence/agent-indexed-search/verification.md)。
 
-Increment92 connects unified search and fixed-version plaintext previews, with bounded UTF-8/DOCX extraction, live permissions and explicit processing states. Fresh checks cover165 backend top-level tests /1,112 results /1,012 leaves in9 batches, Web126, runtime49 and mobile218, plus types and two19-page mini-program builds. Migration75 preserves all earlier74 migrations. Android development builds/package inspection and JVM cache scope are recorded separately from device acceptance.
+Increment93 connects the existing secretary tools to body search and immutable indexed DOCX reads. Fresh checks cover167 backend top-level tests /1,129 results /1,027 leaves in9 batches, Web130, runtime51 and mobile222, plus types and both19-page mini-program builds. All75 migrations retain published92 bytes. Android development APK/18 package checks and26 cached JVM results are documented separately from device acceptance.
 
-媒体目录为74PNG／27MP4／27GIF，本轮新增4张真实页面截图和两套MP4／GIF。已发布cb13bd3的增量91完整启动／捕获来源从Git重建，164份历史证据和媒体保持原字节；失败与已替代尝试保留原状态。相同锁文件复用原90审计：86项（0 critical、20 high、64 moderate、2 low），生产安全放行继续开放。真实云／模型／TG、设备、120GB／2TB与恢复验收继续按28项GAP推进。
+媒体目录为78PNG／29MP4／29GIF，本轮新增4张实际截图和两套MP4／GIF。已发布5de7553的增量92完整启动／捕获来源从Git重建，91份历史证据与媒体保留原字节；失败检查保留原状态、来源和过程限制。相同锁文件复用原90审计86项（0 critical、20 high、64 moderate、2 low），未称新扫描。真实云／模型／TG、设备、120GB／2TB、恢复与安全放行继续按28项GAP推进。
 
-The catalog contains74 PNGs,27 MP4s and27 GIFs, including four new actual screenshots and two recording/GIF pairs. Published91 sources reconstruct from Git and164 original evidence/media files keep their bytes. The unchanged lock reuses the original90 audit of86 findings, including20 high. External integration, device, large-data, recovery and security gates remain open.
+The catalog contains78 PNGs,29 MP4s and29 GIFs, including four new actual screenshots and two MP4/GIF pairs. Published92 sources reconstruct from Git and91 original evidence/media files remain unchanged. Original failed observations stay failed. The unchanged lock retains the original90 audit of86 findings, including20 high; external integration, device, large-data, recovery and security gates remain open.
 
 后续完成更新继续同步代码、中英文说明、受影响素材、验证和`docs/CHANGELOG.md`，一并提交并推送至`git@github.com:copypasteltd/case-manager.git`；不强推，不提交凭据、数据库、工具链、缓存或APK。文档统一放在`docs/`，应用实现位于`app/`。
 

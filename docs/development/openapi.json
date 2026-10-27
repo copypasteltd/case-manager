@@ -45441,7 +45441,7 @@
           "offset": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 1048576
+            "maximum": 2097152
           },
           "total_chars": {
             "type": "integer",
@@ -45479,6 +45479,9 @@
           "observed_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "text_index": {
+            "$ref": "#/components/schemas/FileTextIndexEvidence"
           }
         },
         "additionalProperties": false,
@@ -45501,6 +45504,86 @@
           "evidence",
           "untrusted_data",
           "observed_at"
+        ]
+      },
+      "FileTextIndexEvidence": {
+        "type": "object",
+        "properties": {
+          "extractor": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "ready",
+              "unsupported",
+              "blocked",
+              "failed"
+            ]
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "text_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "indexed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "total_characters": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2097152
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "extractor",
+          "state",
+          "source_sha256",
+          "text_sha256",
+          "indexed_at",
+          "total_characters",
+          "error_code"
         ]
       },
       "NotificationTarget": {

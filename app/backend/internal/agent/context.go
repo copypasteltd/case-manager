@@ -9,6 +9,7 @@ import (
 	"copypaste.hk/platform/internal/authz"
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/fileref"
+	"copypaste.hk/platform/internal/files"
 	"copypaste.hk/platform/internal/platform"
 	"github.com/jackc/pgx/v5"
 )
@@ -23,24 +24,25 @@ type ContextSource struct {
 	MaxChars               int     `json:"max_chars"`
 }
 type ContextView struct {
-	ConversationID         string             `json:"conversation_id"`
-	ConversationRevisionID string             `json:"conversation_revision_id"`
-	ContextSecurityVersion int64              `json:"context_security_version"`
-	Type                   string             `json:"type"`
-	ID                     string             `json:"id"`
-	VersionID              *string            `json:"version_id"`
-	ResourceVersion        int64              `json:"resource_version"`
-	Title                  string             `json:"title"`
-	State                  string             `json:"state"`
-	Text                   string             `json:"text"`
-	Offset                 int                `json:"offset"`
-	TotalChars             int                `json:"total_chars"`
-	NextOffset             *int               `json:"next_offset"`
-	SourceSHA256           string             `json:"source_sha256"`
-	ContextSHA256          string             `json:"context_sha256"`
-	Evidence               []fileref.Evidence `json:"evidence"`
-	UntrustedData          bool               `json:"untrusted_data"`
-	ObservedAt             time.Time          `json:"observed_at"`
+	ConversationID         string                     `json:"conversation_id"`
+	ConversationRevisionID string                     `json:"conversation_revision_id"`
+	ContextSecurityVersion int64                      `json:"context_security_version"`
+	Type                   string                     `json:"type"`
+	ID                     string                     `json:"id"`
+	VersionID              *string                    `json:"version_id"`
+	ResourceVersion        int64                      `json:"resource_version"`
+	Title                  string                     `json:"title"`
+	State                  string                     `json:"state"`
+	Text                   string                     `json:"text"`
+	Offset                 int                        `json:"offset"`
+	TotalChars             int                        `json:"total_chars"`
+	NextOffset             *int                       `json:"next_offset"`
+	SourceSHA256           string                     `json:"source_sha256"`
+	ContextSHA256          string                     `json:"context_sha256"`
+	Evidence               []fileref.Evidence         `json:"evidence"`
+	UntrustedData          bool                       `json:"untrusted_data"`
+	ObservedAt             time.Time                  `json:"observed_at"`
+	TextIndex              *files.IndexedTextEvidence `json:"text_index,omitempty"`
 }
 type contextDocument struct {
 	ID, Type, Title, State, Body, Class, Creator string
@@ -48,6 +50,7 @@ type contextDocument struct {
 	VersionID                                    *string
 	ResourceVersion                              int64
 	Evidence                                     []fileref.Evidence
+	TextIndex                                    *files.IndexedTextEvidence
 }
 
 func sameProject(left, right *string) bool {
@@ -101,7 +104,7 @@ func (s *Service) Context(ctx context.Context, a core.Actor, id string, in Conte
 	}
 	maxOffset := 200000
 	if in.Type == "file" {
-		maxOffset = 1 << 20
+		maxOffset = files.TextOutputMaxBytes
 	}
 	if !core.ValidID(in.ID) || core.RequireVersion(in.ContextSecurityVersion) != nil || in.Offset < 0 || in.Offset > maxOffset || in.MaxChars < 1 || in.MaxChars > 10000 {
 		return out, core.Invalid("context", "请指定准确资料、安全版本及有限字符范围")

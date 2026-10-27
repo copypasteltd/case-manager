@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T18:26:35.511Z",
+  "finished_at": "2026-10-27T18:27:07.233Z",
+  "checks": [
+    "actual-authenticated-conversation-and-original-source-preparation",
+    "explicit-formal-file-and-version-selection",
+    "actual-DOCX-body-binds-original-and-derived-digests",
+    "extractor-time-digest-and-format-limits-visible",
+    "Unicode-continuation-retains-exact-derivation",
+    "historical-preview-does-not-follow-current-head",
+    "both-exact-context-versions-attached-without-implicit-send"
+  ],
+  "source_count": 682,
+  "source_sha256": "1024f2057a1f49dda92ba33539b4fe064c694419ff6945be3194ba11a4a57aef",
+  "source_after_sha256": "1024f2057a1f49dda92ba33539b4fe064c694419ff6945be3194ba11a4a57aef",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "The expression evaluated to a falsy value:\n\n  assert.ok(bearer)\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "d90d1a09dbbfad365265f4cc1c41f8ad6bbb3b7fa16efadcd5c8cdd7c83d670f",
+  "build_source_after_sha256": "d90d1a09dbbfad365265f4cc1c41f8ad6bbb3b7fa16efadcd5c8cdd7c83d670f",
+  "build_source_unchanged": true
+}

@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+最新增量93：秘书原MCP工具接通共同权限内正文检索与固定DOCX索引正文阅读，Web／Taro显示准确派生证据并显式附加历史／当前版本。原生后端167顶层／1129结果／1027末级、9批，Web130、运行时51、移动222，原75迁移不变，双小程序各19页；当前Android开发包及18项包检查、26项JVM缓存单列，Web／H5各8项实际流程。91份已发布92证据／媒体原字节保留；云／模型／TG关闭，真实验收继续。见[增量93](../development/93-secretary-indexed-search.md)与[准确验证](../quality/evidence/agent-indexed-search/verification.md)。
+
 最新增量92：接通项目／任务／知识／文件／目录的统一搜索，固定版本正文提取／索引／预览及独立只读worker。原生后端165顶层／1112结果，Web126、运行时49、移动218，75迁移，双小程序各19页；媒体与外部边界见[增量92](../development/92-file-text-search.md)和[准确验证](../quality/evidence/file-search/verification.md)。历史增量和28项差异保持原编号。
 
 最近仓库交付：[增量87：项目预算与实际支出对比](../development/87-project-budget-comparison.md)，完整验证见第61节和[来源记录](../quality/evidence/budget-comparison/verification.md)。四端首发完整Goal仍active，GAP-01／03／18继续保留完整业务与生产验收缺口。早期各节保留当时实现／证据范围。

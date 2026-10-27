@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "recorded_at": "2026-10-27T19:10:53.121678+00:00",
+  "scope": "Exact assembly-checker and original returned report only; not a full historical application-source archive.",
+  "reason": "The checker hashed capture_manifest files when comparing the larger complete-startup digest. Both immutable manifests are present in the original archive; use startup_manifest for startup and source-manifest.json for capture.",
+  "files": [
+    {
+      "source": "app/scripts/verify_agent_indexed_search_sources.py",
+      "snapshot": "docs/quality/evidence/agent-indexed-search/attempts/06-source-manifest-observation/verification-script.py.snapshot",
+      "sha256": "7c5362f3dd09d8ed9332e757c67703d1142f665067f81f8e38469446cebff787"
+    },
+    {
+      "source": "docs/quality/evidence/agent-indexed-search/final-source-check.json",
+      "snapshot": "docs/quality/evidence/agent-indexed-search/attempts/06-source-manifest-observation/final-source-check.json",
+      "sha256": "de462d7e57231b76d431ad94bb8cc8bb200f1181dea27191fdc95ecf87d06499"
+    }
+  ]
+}

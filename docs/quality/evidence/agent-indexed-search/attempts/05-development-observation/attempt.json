@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "recorded_at": "2026-10-27T19:03:35.856253+00:00",
+  "scope": "Exact inspection script and returned reports only; not a complete historical application-source archive. Actual schema, ownership and disabled integrations were observed; no migration or service failure.",
+  "reason": "Copied inspection script renamed an existing SQL index identifier when changing its evidence-group prefix, and still expected the prior draft Skill version. Correct only those observations; keep all three real index names and expect current1.8.0.",
+  "files": [
+    {
+      "source": "app/scripts/verify_agent_indexed_search_development.py",
+      "snapshot": "docs/quality/evidence/agent-indexed-search/attempts/05-development-observation/verification-script.py.snapshot",
+      "sha256": "84a458a52b56139447a0704fa2944a7fcb4f84132d5f667b7b59b5c735a5c424"
+    },
+    {
+      "source": "docs/quality/evidence/agent-indexed-search/development-runtime.json",
+      "snapshot": "docs/quality/evidence/agent-indexed-search/attempts/05-development-observation/development-runtime.json",
+      "sha256": "d0e96ed7b4b11d837db8fa3e7d624ba89725e130aea55378d25975ba72a15bef"
+    },
+    {
+      "source": "docs/quality/evidence/agent-indexed-search/development-project-resources.json",
+      "snapshot": "docs/quality/evidence/agent-indexed-search/attempts/05-development-observation/development-project-resources.json",
+      "sha256": "7fe0c22f868a09bd4fc791dd7546920fb96bec06e5ad88f4087a8aac32ed838c"
+    }
+  ]
+}

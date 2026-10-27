@@ -10,8 +10,10 @@ import (
 	"io"
 	"slices"
 	"strings"
+	"unicode/utf8"
 
 	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/files"
 	"github.com/jackc/pgx/v5"
 )
 
@@ -178,6 +180,19 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 			prepared, e := s.prepareFileRead(ctx, tx, ai, st.Conversation, in, st.Run.audience)
 			if e != nil {
 				return nil, e
+			}
+			if prepared.Document.TextIndex != nil {
+				index := *prepared.Document.TextIndex
+				part, next, total, e := files.ReadAgentIndexedText(ctx, tx, ai, in.ID, *in.VersionID, index, in.Offset, in.MaxChars)
+				if e != nil {
+					return nil, e
+				}
+				content = map[string]any{"type": "file", "id": in.ID, "version_id": in.VersionID, "resource_version": prepared.Document.ResourceVersion,
+					"title": prepared.Document.Title, "state": prepared.Document.State, "text": part, "offset": in.Offset, "next_offset": next,
+					"total_chars": total, "source_sha256": prepared.Hash, "content_sha256": index.SourceSHA256, "read_mode": "indexed-text",
+					"text_index": index, "verified_content": true, "evidence": prepared.Document.Evidence, "untrusted_data": true}
+				snapshots = []SourceSnapshot{{SourceReference: SourceReference{Type: "file", ID: in.ID, VersionID: in.VersionID}, ResourceVersion: prepared.Document.ResourceVersion, SHA256: prepared.Hash}}
+				break
 			}
 			if work == nil || work.FileRead == nil {
 				// Release authorization and business locks during provider I/O. The
@@ -483,7 +498,7 @@ func executionSearch(ctx context.Context, tx pgx.Tx, st executionState, lease Ex
 		in.Limit = 10
 	}
 	if len(in.Types) == 0 {
-		in.Types = []string{"project", "task", "post"}
+		in.Types = []string{"project", "task", "post", "file"}
 		if st.Profile.SkillID == "incident-summary" {
 			in.Types = []string{"service"}
 		}
@@ -495,17 +510,17 @@ func executionSearch(ctx context.Context, tx pgx.Tx, st executionState, lease Ex
 	if len(in.PlanStates) > 0 {
 		return nil, nil, core.Invalid("plan_states", "计划状态只适用于项目计划查询")
 	}
-	if len([]rune(in.Query)) == 0 || len([]rune(in.Query)) > 200 || in.Limit < 1 || in.Limit > 20 || len(in.Types) > 3 {
+	if !utf8.ValidString(in.Query) || strings.ContainsRune(in.Query, 0) || len([]rune(in.Query)) == 0 || len([]rune(in.Query)) > 200 || in.Limit < 1 || in.Limit > 20 || len(in.Types) > 5 || (len(in.Types) > 4 && st.Profile.SkillID != "incident-summary") {
 		return nil, nil, core.Invalid("arguments", "查找范围无效")
 	}
 	slices.Sort(in.Types)
 	in.Types = slices.Compact(in.Types)
 	for _, kind := range in.Types {
-		if !slices.Contains([]string{"project", "task", "post"}, kind) && !(st.Profile.SkillID == "incident-summary" && kind == "service") {
-			return nil, nil, core.Invalid("resource_types", "此工具只查找项目、任务和知识")
+		if !slices.Contains([]string{"project", "task", "post", "file"}, kind) && !(st.Profile.SkillID == "incident-summary" && kind == "service") {
+			return nil, nil, core.Invalid("resource_types", "此工具只查找会话范围内的项目、任务、知识、文件及允许的服务资料")
 		}
 	}
-	bound, _ := json.Marshal([]any{lease.RunID, lease.AuthorityStamp, in.Query, in.Types, in.Limit})
+	bound, _ := json.Marshal([]any{"body-and-indexed-file-v1", lease.RunID, lease.AuthorityStamp, in.Query, in.Types, in.Limit})
 	binding := core.Digest(bound)
 	if lease.credentialSHA256 == "" {
 		return nil, nil, runtimeFailure("RUNTIME_CREDENTIAL_INVALID")
@@ -529,11 +544,13 @@ func executionSearch(ctx context.Context, tx pgx.Tx, st executionState, lease Ex
 		}
 	}
 	// Candidate identities are never returned before the common source view and all file dependencies are checked.
-	rows, err := tx.Query(ctx, `SELECT kind,id FROM (
- SELECT 'project'::text kind,id FROM projects WHERE org_id=$1 AND id=$2::uuid
- UNION ALL SELECT 'task',id FROM tasks WHERE org_id=$1 AND project_id=$2::uuid
- UNION ALL SELECT 'post',id FROM posts WHERE org_id=$1 AND project_id IS NOT DISTINCT FROM $2::uuid
- UNION ALL SELECT 'service',id FROM services WHERE org_id=$1 AND project_id IS NOT DISTINCT FROM $2::uuid
+	rows, err := tx.Query(ctx, `SELECT kind,id,version_id FROM (
+ SELECT 'project'::text kind,id,NULL::uuid version_id FROM projects WHERE org_id=$1 AND id=$2::uuid
+ UNION ALL SELECT 'task',id,NULL::uuid FROM tasks WHERE org_id=$1 AND project_id=$2::uuid
+ UNION ALL SELECT 'post',id,NULL::uuid FROM posts WHERE org_id=$1 AND project_id IS NOT DISTINCT FROM $2::uuid
+ UNION ALL SELECT 'service',id,NULL::uuid FROM services WHERE org_id=$1 AND project_id IS NOT DISTINCT FROM $2::uuid
+ UNION ALL SELECT 'file',f.id,f.current_version_id FROM files f JOIN folders d ON d.org_id=f.org_id AND d.id=f.folder_id
+ WHERE f.org_id=$1 AND d.project_id IS NOT DISTINCT FROM $2::uuid AND f.state='active' AND f.current_version_id IS NOT NULL
  ) x WHERE kind=ANY($3::text[]) AND ($4='' OR (kind,id) > ($4,$5::uuid)) ORDER BY kind,id LIMIT 10001`, st.Actor.OrgID, st.Conversation.ProjectID, in.Types, after.Type, func() any {
 		if after.ID == "" {
 			return nil
@@ -543,11 +560,14 @@ func executionSearch(ctx context.Context, tx pgx.Tx, st executionState, lease Ex
 	if err != nil {
 		return nil, nil, err
 	}
-	type candidate struct{ kind, id string }
+	type candidate struct {
+		kind, id string
+		version  *string
+	}
 	candidates := []candidate{}
 	for rows.Next() {
 		var c candidate
-		if err = rows.Scan(&c.kind, &c.id); err != nil {
+		if err = rows.Scan(&c.kind, &c.id, &c.version); err != nil {
 			rows.Close()
 			return nil, nil, err
 		}
@@ -568,18 +588,24 @@ func executionSearch(ctx context.Context, tx pgx.Tx, st executionState, lease Ex
 	ai := st.Actor
 	ai.RunID = st.Run.ID
 	for _, c := range candidates {
-		doc, e := contextDocumentRead(ctx, tx, ai, st.Conversation, ContextSource{Type: c.kind, ID: c.id}, st.Run.audience)
+		doc, e := contextDocumentRead(ctx, tx, ai, st.Conversation, ContextSource{Type: c.kind, ID: c.id, VersionID: c.version}, st.Run.audience)
 		if e == nil {
 			e = resourceAudience(ctx, tx, ai, st.Conversation, doc, st.Run.audience)
 		}
 		if e != nil {
 			status := core.PublicError(e).Status
-			if status == 403 || status == 404 || status == 409 {
+			if status == 403 || status == 404 || status == 409 || (c.kind == "file" && status == 422) {
 				continue
 			}
 			return nil, nil, e
 		}
-		if !strings.Contains(strings.ToLower(doc.Title), strings.ToLower(in.Query)) {
+		matchedTitle := strings.Contains(strings.ToLower(doc.Title), strings.ToLower(in.Query))
+		body, index, e := executionSearchBody(ctx, tx, ai, doc, in.Query)
+		if e != nil {
+			return nil, nil, e
+		}
+		matchedBody := body != ""
+		if !matchedTitle && !matchedBody {
 			continue
 		}
 		if len(items) == in.Limit {
@@ -591,7 +617,16 @@ func executionSearch(ctx context.Context, tx pgx.Tx, st executionState, lease Ex
 			return nil, nil, e
 		}
 		snapshots = append(snapshots, SourceSnapshot{SourceReference: SourceReference{Type: doc.Type, ID: doc.ID, VersionID: doc.VersionID}, ResourceVersion: doc.ResourceVersion, SHA256: hash})
-		items = append(items, map[string]any{"type": doc.Type, "id": doc.ID, "version_id": doc.VersionID, "title": doc.Title, "state": doc.State, "resource_version": doc.ResourceVersion, "source_sha256": hash, "untrusted_data": true})
+		matchTypes := []string{}
+		if matchedTitle {
+			matchTypes = append(matchTypes, "title")
+		}
+		if matchedBody {
+			matchTypes = append(matchTypes, "body")
+		}
+		items = append(items, map[string]any{"type": doc.Type, "id": doc.ID, "version_id": doc.VersionID, "title": doc.Title,
+			"state": doc.State, "resource_version": doc.ResourceVersion, "source_sha256": hash, "untrusted_data": true,
+			"snippet": body, "match_types": matchTypes, "text_index": index})
 		last = c
 	}
 	var next *string

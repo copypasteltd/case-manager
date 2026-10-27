@@ -1,5 +1,7 @@
 # 公司秘书、Skill 与渠道需求
 
+实现协议补充（增量93）：原秘书检索支持共同可读项目／任务／知识正文与当前正式文件索引；准确DOCX阅读固定原件版本及不可变派生证据。检索片段、资料文本均属不可信数据，不产生写授权；全部成员权限、分类、文件生命周期、租约／取消／预算和持久回执在披露时重检。八项Skill源码已升级仍draft；需按[实现与格式约束](../development/93-secretary-indexed-search.md)、[工具执行边界](../skills/execution-boundaries.md)及[准确验证](../quality/evidence/agent-indexed-search/verification.md)验收，不以本地受控MCP或H5演示代替真实模型／TG／四端放行。
+
 版本：v1.0-draft；日期：2026-10-23；关联 U-07—10。Codex 接入资格与 Runtime PoC 是放行前提（Q-02），不是已接通事实。技术依据沿用 [2026-10-22 核实记录](../07-research-sources.md)。
 
 2026-10-25 实现增量：AI-10已有目录盘点、准确整理计划、本人MFA批准及原子业务执行；Web可选择目录拟定，Web／Taro可核对原／目标位置并处理计划。每份最多10项，盘点最多50个可见直接子项，仅本人私密会话、同项目和同分类；跨范围、其余工具、Skill正式发布与真实运行仍待完成，详见[目录整理实现约束](../development/55-secretary-directory-organization.md)。
@@ -99,4 +101,3 @@ AI-08 新增 `update_deliverable`，一次授权固定一个准确交付及完�
 AI-08 增加 `create_deliverable`：仅消费本次固定的父项目 ID／版本及完整名称、验收准则、实际负责人、明确里程碑 ID 或 `null` 和原因。原业务创建新草稿并返回准确新 ID、版本1及空正式修订；两种重试均复用同一原操作。提交、正式文件和独立验收不属于该工具参数，仍沿用人工流程。
 
 成功后读取范围仅扩展到本次真实新交付，原登录、当前权限与共同受众逐次重查。取消、冲突或撤权时不得继续创建，也不能把普通消息、模型推断和历史授权补成新决定。当前八项包仍 draft，`project-update` 源码1.4.0具九项准确写工具及两项读取／核对；TG继续不开放该写入。详细实现与真实模型、平台及生产边界见[增量74](../development/74-secretary-deliverable-creation.md)。
-

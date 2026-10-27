@@ -290,20 +290,36 @@ A separate native worker validates the exact object metadata and complete hash. 
 
 [Protocol and limits](development/92-file-text-search.md) · [Read-only credentials, deployment and diagnosis](operations/file-text-search.md) · [Screenshots and demonstrations](media/README.md) · [Exact verification](quality/evidence/file-search/verification.md)
 
+## Secretary body discovery and fixed DOCX context (increment93)
+
+1. Open an authorized company/project conversation. Choose exact file text, then explicitly select the formal file and version; historical selection never follows the latest head.
+2. Preview extracted DOCX main-document text and review the original version/SHA-256, extractor, index time, text SHA-256 and character count. Continuation uses Unicode offsets and requires the same derivation.
+3. Explicitly attach the context; both versions of one file can be attached. Selection and preview do not send a request or grant a mutation. Choose an installed task, enter the request and deliberately send; production profiles still require actual installation and evaluation.
+4. Existing MCP `search_resources` matches permitted titles and bodies under the conversation's shared authority; file body discovery uses the current formal version. `read_resource` can read an explicitly chosen historical version. A snippet does not prove a full read or authorize a write.
+5. Pending, failed, oversized and unsupported sources expose their real state. Trash, quarantine and revoked access block cached disclosure; dependent old replies can be withheld. Original UTF-8 files retain the independently credentialed, digest-checked reader; DOCX uses immutable indexed text.
+
+Limits: UTF-8/Markdown/CSV/JSON originals up to1MiB; DOCX originals up to8MiB, extracted text up to2MiB and10000 Unicode characters per read. PDF, OCR, other Office bodies and DOCX writes are not implemented. Check originals for layout, images and embedded objects. Index time is not a fresh real-cloud access time.
+
+![Actual Web source preparation](media/gifs/agent-indexed-search-web.gif)
+
+[Web recording](media/videos/agent-indexed-search-web.mp4) · [Mobile H5 recording](media/videos/agent-indexed-search-mobile.mp4) · [Mobile GIF](media/gifs/agent-indexed-search-mobile.gif) · [Full protocol](development/93-secretary-indexed-search.md) · [Independent reader configuration](operations/file-text-search.md)
+
+Clips use the actual native API with isolated synthetic records: preview, continuation and attachment without a model request. Body discovery and completion receipts are covered by the controlled native MCP fixture, separately from real models or Telegram. Short clips retain fast automated timing; slow playback for detail.
+
 ## 8. Evidence and release gates
 
-The current update is [unified search and fixed-version text](development/92-file-text-search.md). Counts refer to source-bound local evidence and do not establish full production delivery.
+The current implementation is [secretary body discovery and fixed DOCX context](development/93-secretary-indexed-search.md). Counts bind current local sources and do not establish production delivery.
 
 | Layer | Current result | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | 165 top-level /1,112 results /1,012 leaves in9 batches;75 migrations | Native full run; previous74 migration bytes preserved |
-| Web/runtime | 126/49 tests and builds | Current sources; all eight Skills remain draft |
-| Taro | 218 tests, types and19 pages per WeChat/Douyin build | Actual shared H5 flows,12 checks per client; no platform tool or device execution |
-| Android | Current native development APK and18 package checks |26 JVM results retain exact Gradle cache scope; no device/store claim |
-| UI/media | Four new screenshots/two MP4-GIF pairs;74 PNGs/27 MP4s/27 GIFs total | Actual browser pixels with isolated synthetic data and controlled object bytes |
-| History/operations | Published91 sources reconstruct;164 original evidence/media records unchanged;75 migrations and exact owned processes checked | Integrations disabled and no disposable databases; Linux compile only |
+| Go / PostgreSQL |167 top-level /1,129 results /1,027 leaves in9 batches;75 migrations | Native full run; every migration remains byte-identical to published92 |
+| Web/runtime |130/51 tests and builds | Current sources and eight draft Skill packages; no live model |
+| Taro |222 tests, types and19 pages per WeChat/Douyin build | Eight actual UI/API checks each for Web/shared H5; no mini-program/device execution |
+| Android | Current native development APK and18 package checks |26 JVM results explicitly reused through Gradle cache; no device/store acceptance |
+| UI/media | Four new PNGs/two MP4-GIF pairs;78 PNGs/29 MP4s/29 GIFs total | Actual authenticated browser pixels, synthetic records, controlled object bytes and no implicit request |
+| History/operations | Published92 sources reconstructed;91 original evidence/media files unchanged;75 migrations and owned processes checked | Integrations disabled and no disposable databases; Linux compile only |
 
-The unchanged lock reuses the original90 audit:86 findings, comprising0 critical,20 high,64 moderate and2 low. Devices, cloud/network/model/TG, large files/migration, recovery and production security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [verification details](quality/evidence/file-search/verification.md).
+The unchanged lock reuses the original90 audit:86 findings, comprising0 critical,20 high,64 moderate and2 low. Real models/TG, devices, cloud/network, large transfers/migration, recovery and security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [exact verification](quality/evidence/agent-indexed-search/verification.md).
 
 ## 9. Documentation and synchronization
 

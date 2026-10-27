@@ -1,5 +1,7 @@
 # Android 原生宿主与业务接入（增量65）
 
+当前来源补充（增量93）/ Current-source addendum: 原生宿主已包含增量66之后的上传等实现及当前19页共享业务包；下文14页及“尚无上传”属于最初65阶段历史基线。The14-page/no-upload statements below describe the original65 milestone, not current capability. 本轮完整原生开发包绑定固定DOCX资料页面，通过18项包检查；26项JVM任务为UP-TO-DATE缓存，未作真机或正式签名／分发验收。见[当前方案](93-secretary-indexed-search.md)、[包证据](../quality/evidence/agent-indexed-search/build.json)及[缓存范围](../quality/evidence/agent-indexed-search/android-test-scope.json)。
+
 本文记录增量65交付时的实现与限制。后续原生上传代码及当前验收边界见[增量66](66-android-resumable-uploads.md)，当前整体状态以[差异表](../delivery/03-goal-gap-assessment.md)为准。
 
 本增量推进 GAP-16／18：建立 Taro／React Native Android 工程，接入现有移动业务、原生请求、私有临时阅读文件和本地签名构建。完整四端正式首发仍按原 Goal 验收，Android 120 GB 原生上传属于 GAP-17，尚未实现。
