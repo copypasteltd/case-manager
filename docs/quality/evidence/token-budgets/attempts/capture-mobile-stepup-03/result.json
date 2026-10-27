@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T03:06:05.869Z",
+  "finished_at": "2026-10-27T03:07:21.097Z",
+  "checks": [
+    "Real MFA login loads the organization ledger with a conservative pending charge and no invented historical usage."
+  ],
+  "source_count": 655,
+  "source_sha256": "a325c456ee9f94256792641392d3632aa3a1b35d6d8447f016856b4f5e69d9a6",
+  "source_after_sha256": "a325c456ee9f94256792641392d3632aa3a1b35d6d8447f016856b4f5e69d9a6",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.isEnabled: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: '确认本次操作', exact: true })\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "b3eb8c0ad5a74645def69f6faed9422fec66e73b456540e1bf2d088e0e897f3e",
+  "build_source_after_sha256": "b3eb8c0ad5a74645def69f6faed9422fec66e73b456540e1bf2d088e0e897f3e",
+  "build_source_unchanged": true
+}

@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "cause": "The final source checker retained the previous sixteen-page assertion. Current compiled WeChat and Douyin outputs contain seventeen pages, including pages/budget/index.",
+  "correction": "Require exactly seventeen matching pages and explicitly verify the budget route; no application or capture scope source changes.",
+  "original_checker_sha256": "423444dfebbc7bbeb76bda7bbbc4037106ed8aaec4f1371857951177a77416f8",
+  "failed_checks": 1
+}

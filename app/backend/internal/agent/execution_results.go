@@ -83,6 +83,9 @@ func (s *Service) CompleteExecution(ctx context.Context, lease ExecutionLease, r
 	if usage.InputTokens < 0 || usage.OutputTokens < 0 || usage.CacheWriteInputTokens < 0 || usage.ReasoningOutputTokens < 0 || usage.CachedInputTokens < 0 || usage.CachedInputTokens > usage.InputTokens || usage.InputTokens > int64(st.Profile.MaxInputTokens) || usage.OutputTokens > int64(st.Profile.MaxOutputTokens) {
 		return runtimeFailure("RUNTIME_USAGE_BUDGET_EXCEEDED")
 	}
+	if err = recordBudgetUsage(ctx, tx, lease.OrgID, lease.RunID, usage); err != nil {
+		return err
+	}
 	receipts, readSources, err := readExecutionReceipts(ctx, tx, st, lease)
 	if err != nil {
 		return err

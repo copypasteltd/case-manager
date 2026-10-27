@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "reason": "The mobile checker omitted the existing per-operation MFA confirmation; policy publication remained disabled and no POST was sent.",
+  "repair": "Enter fresh synthetic OTPs for both sensitive mobile operations and await each response. Recapture both clients because the shared checker belongs to their source bindings.",
+  "superseded_web_passed": true,
+  "all_owned_contexts_closed": true,
+  "isolated_databases_cleaned": true,
+  "raw_frames": "Retained only in the ignored archive-token-budget-stepup-01 directory."
+}

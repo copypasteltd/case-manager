@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "reason": "The inspector still required exactly16 registered pages, while the current app correctly contains17 including the new budget route. The other16 package checks passed.",
+  "repair": "Require17 pages plus the explicit budget route in the actual bundle source map. No application source or APK change is required."
+}

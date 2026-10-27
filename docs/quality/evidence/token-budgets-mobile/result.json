@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T03:26:01.908Z",
+  "finished_at": "2026-10-27T03:27:16.744Z",
+  "checks": [
+    "Real MFA login loads the organization ledger with a conservative pending charge and no invented historical usage.",
+    "Publishing all four explicit monthly allowances creates a real policy revision with an audit reason; already admitted usage remains.",
+    "Human reconciliation commits exact known tokens and a reference, releases the unused estimate and updates organization totals.",
+    "The actual ledger stays usable at 390, 768 and 1440 pixels.",
+    "Project-filtered reporting uses the original project account, rather than only the current conversation.",
+    "Returning to the own-user account preserves access to an independent user quota."
+  ],
+  "source_count": 655,
+  "source_sha256": "98da852bbb8afc1fa60a8e3a6e9e124b3b3189c754eaf703c3b709db714dd09d",
+  "source_after_sha256": "98da852bbb8afc1fa60a8e3a6e9e124b3b3189c754eaf703c3b709db714dd09d",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+  "build_source_after_sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+  "build_source_unchanged": true
+}

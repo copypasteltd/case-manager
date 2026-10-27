@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "reason": "The new shared budget tests used node:test in a Vitest workspace; 95 preexisting checks passed but the new suite was not registered.",
+  "repair": "Use the workspace Vitest test API; keep the assertions and scenarios."
+}

@@ -1,6 +1,6 @@
 # 代码实施与验证台账
 
-最近仓库交付：[增量81：原生Prometheus／Blackbox桥接](../development/81-native-prometheus-status-bridge.md)，完整验证见第55节和[来源记录](../quality/evidence/status-bridge/verification.md)。四端首发完整Goal仍active，本轮不关闭生产GAP。早期各节保留当时实现／证据范围。
+最近仓库交付：[增量86：秘书Token额度、预留与凭证核对](../development/86-secretary-token-budgets.md)，完整验证见第60节和[来源记录](../quality/evidence/token-budgets/verification.md)。四端首发完整Goal仍active，GAP-14继续保留金额／供应商及分段执行缺口。早期各节保留当时实现／证据范围。
 
 开始日期：2026-10-23。用户新增约束：全部后续开发代码在app/；所有文档仍在docs/。目标仍覆盖全部需求和四端首发，分阶段完成不能改称缩小版已完成。
 
@@ -819,3 +819,15 @@ The shared mobile knowledge/blog workflows, original-comment preservation and ex
 迁移71、前70份原字节不变；完整157顶层／1,014结果／920末级、8批，Web95、运行时45、移动187／双小程序各16页；新42,888,501字节Android包、17检查、25项缓存JVM结果及Linux编译。Web／Taro各7实际流程和3布局；4新PNG／2MP4／2GIF，媒体总40／13／13。初次类型／读取边界失败、临时库删除超时与缓存采集重录均保留；旧84完整启动来源及642移动来源重建，旧Web619项已提交来源重建、未冻结缓存无法复现的限制显式记录。
 
 Implemented exact task/subtask creation with complete human decisions and genuine original-command evidence. Both clients, the additive database guard, source-bound checks and actual demos are updated. Cached JVM evidence and the old unfrozen Web cache limitation remain explicit. All eight Skills stay draft; actual model/cloud/TG/device/capacity/security/recovery/production gates remain open. See [方案](../development/85-secretary-task-creation.md)、[验证](../quality/evidence/task-creation/verification.md)及[媒体](../media/README.md)。
+
+
+## 60. 增量86：秘书Token额度、接单预留与凭证核对
+
+- 通过第72项增量迁移加入四张不可变表及结算视图；前71项迁移逐字节保留。组织、员工、项目、Skill四类额度共用同一Go接单入口，预留与运行、消息、队列单事务，幂等重放不重复计数。
+- 已启动、未知用量的终态保守记入待核对；未启动释放；已知失败、取消和越限照实记账。SDK先提交可信用量，再验收回复。管理员凭据核对只可追加一次，保留原预留与策略修订，执行原有MFA／权限／审计／outbox。
+- Web和Taro共用完整整数与凭据校验，提供策略发布、本人／组织／员工／项目／Skill查询、签名分页、未知用量核对。共享移动页面增至17页。
+- 原生后端158顶层、1,029结果／934末级、8批；14组预算集成场景。Web98、运行时47、移动187；Android、Linux、浏览器与实际媒体范围以本增量验证记录为准。
+- 保留首次演示等待旧状态、测试运行器注册和早期类型／测试请求错误的记录；上一增量85完整启动和Web／移动捕获来源从Git重建，不重绑旧媒体。浏览器／上下文、隔离数据库和临时5189服务按归属清理。
+- Token数量不等于金额账单；无生产默认额度，不激活真实模型／TG，不进行供应商外发。八项Skill保持draft，当前完整Goal继续active；费用价格、供应商账单、分段控制与28项原验收约束继续有效。
+
+[实现与升级](../development/86-secretary-token-budgets.md) · [检查](../quality/evidence/token-budgets/verification.md) · [演示](../media/README.md)

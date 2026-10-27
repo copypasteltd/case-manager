@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "reason": "Explicit mobile step-up still did not reach the expected successful response; retained as an unresolved diagnostic attempt, not passing evidence.",
+  "repair": "Capture only route/status diagnostics, mask every identity input in failure screenshots, then resolve the observed UI path before current recapture.",
+  "owned_browsers_closed": true,
+  "isolated_databases_cleaned": true,
+  "raw_frames": "Ignored; superseded Web captures remain excluded from current proof."
+}

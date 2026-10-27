@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "reason": "The response predicate timed out after the MFA confirmation control had already disappeared. Diagnostic isEnabled then also timed out on the absent control, masking the original wait failure.",
+  "repair": "Wait for explicit user-visible confirmation and editor completion, then verify the durable account using the authenticated native API. Do not infer success from an already visible background button.",
+  "owned_browsers_closed": true,
+  "isolated_database_cleanup_passed": true,
+  "identity_inputs_masked": true
+}

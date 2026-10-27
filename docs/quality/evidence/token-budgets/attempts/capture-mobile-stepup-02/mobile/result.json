@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T02:56:45.786Z",
+  "finished_at": "2026-10-27T02:57:25.934Z",
+  "checks": [
+    "Real MFA login loads the organization ledger with a conservative pending charge and no invented historical usage."
+  ],
+  "source_count": 655,
+  "source_sha256": "1ce9cf686bf9fe0bb2565555c77afa35106393c9894e9ca8bad332e523538762",
+  "source_after_sha256": "1ce9cf686bf9fe0bb2565555c77afa35106393c9894e9ca8bad332e523538762",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "page.waitForResponse: Timeout 25000ms exceeded while waiting for event \"response\"",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "13b4e2c36c6e87929ba78dad5d83271d916203ae4e8061c2dc24ca0656206e91",
+  "build_source_after_sha256": "13b4e2c36c6e87929ba78dad5d83271d916203ae4e8061c2dc24ca0656206e91",
+  "build_source_unchanged": true
+}

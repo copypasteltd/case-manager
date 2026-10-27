@@ -4,6 +4,8 @@
 
 **当前细化基线：v1.0-draft，2026-10-24；视觉设计基线：v1.0.0-draft。** 全部后续文档保存在 `docs/`，全部开发实现位于 `app/`。身份/权限、项目协作、知识修订、文件元数据和部分 Web 页面已进入本地实现与验证；完整平台仍在建设，尚未生产部署或完成首发验收。真实进度见[代码实施台账](delivery/02-implementation-ledger.md)。
 
+最新实现：[增量86 · 秘书Token额度、预留与凭证核对](development/86-secretary-token-budgets.md) · [完整检查与演示来源](quality/evidence/token-budgets/verification.md)。
+
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 
 本轮功能文档：[秘书准确创建任务与子任务 / Exact secretary task and subtask creation](development/85-secretary-task-creation.md)。

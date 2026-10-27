@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "confirmed_root_cause": "The existing MFA button is labelled 确认本人操作; the checker incorrectly searched for 确认本次操作. No MFA request was issued by those failed button lookups.",
+  "supersedes_hypotheses": "Earlier missing-response/hidden-control interpretations in stepup02/03 were incorrect; exact source inspection established the label mismatch.",
+  "repair": "Use the actual button label, await the verified UI and editor closure, then check durable API receipts. Application and MFA source are unchanged.",
+  "owned_browsers_closed": true,
+  "isolated_database_cleanup_passed": true,
+  "identity_inputs_masked": true
+}

@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-27T03:31:58.756252+00:00",
+  "encoder_script_sha256": "39ffba16b3391016e8c1394ea3502220ec81e4d58d50be8cd7b8df57303f6170",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "e57dcb6310faa564639e02c93c631a45eab5b7ed99aeed2096837cf13bab5841",
+      "build_source_sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+      "capture_manifest": "docs/quality/evidence/token-budgets/web-capture-manifest.json",
+      "capture_manifest_sha256": "7ff69271944f8edfd49b49eadf131ec4d2e1a688d09b5e42281a0642fd54d981",
+      "capture_frame_count": 15,
+      "capture_duration_ms": 3057,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "32",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-token-budgets-web.mp4",
+          "sha256": "8c4e8ad7f701b60308e6f9959e7ade561a1aca499b904c17cc91ffaaed90019f",
+          "bytes": 196794
+        },
+        {
+          "file": "docs/media/gifs/secretary-token-budgets-web.gif",
+          "sha256": "7e025f3f67204320633f45e16f9ddbff5bb36556af3dce4e32124fda3acabc1b",
+          "bytes": 262831
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "98da852bbb8afc1fa60a8e3a6e9e124b3b3189c754eaf703c3b709db714dd09d",
+      "build_source_sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+      "capture_manifest": "docs/quality/evidence/token-budgets/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "1f586decc0e069a8a30522ba7553d92f77d6807d8d40568b82f9afb61352a1e6",
+      "capture_frame_count": 38,
+      "capture_duration_ms": 7735,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "79",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-token-budgets-mobile.mp4",
+          "sha256": "df169b0f1388aec0fb0afe44660a87a77cec51173973c0ee0eb9d81094146dc5",
+          "bytes": 142483
+        },
+        {
+          "file": "docs/media/gifs/secretary-token-budgets-mobile.gif",
+          "sha256": "e5e71c8de36747869557a8a43cab9a856ac01790c241d85374b8f2066d58daa6",
+          "bytes": 587222
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

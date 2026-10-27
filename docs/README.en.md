@@ -137,7 +137,9 @@ Service operators publish an exact source revision and Ed25519 public key in Web
 
 The bridge reads original scrape timestamps through six bounded queries, persists each exact signed body before delivery and retries uncertain outcomes with the same bytes. Repeated scrapes do not extend freshness or advance failure/recovery counts; a failed scrape produces no healthy/failed fact, so old evidence expires to unknown. The existing Web and Taro pages show threshold-based outages, recovery and immutable signed evidence. The included browser recording uses a controlled Prometheus protocol endpoint and a real native bridge/API; actual monitor installation, host metrics and independent external alerts still require deployment acceptance.
 
-For exact task/subtask creation, select **Create task or subtask** in a project conversation, review all nine fields plus reason, and explicitly choose the human-review requirement. Parent/milestone candidates are paged; mobile navigation preserves inputs. Preview performs no write. After sending, wait for a genuine commit; use the task page for dependencies and human acceptance. See the [complete workflow](development/85-secretary-task-creation.md), [actual demos](media/README.md) and [verification](quality/evidence/task-creation/verification.md).
+For exact task/subtask creation, select **Create task or subtask** in a project conversation, review all nine fields plus reason, and explicitly choose the human-review requirement. Parent/milestone candidates are paged; mobile navigation preserves inputs. Preview performs no write. After sending, wait for a genuine commit; use the task page for dependencies and human acceptance. See the [complete workflow](development/85-secretary-task-creation.md), [actual demos](media/README.md) and [verification](quality/evidence/token-budgets/verification.md).
+
+For secretary allowances, open **Secretary budget** in the Web sidebar or **My workspace → Secretary tokens** on mobile. A manager with fresh MFA publishes all four ceilings. Each admission reserves the profile’s input-plus-output ceiling. Review your own or authorized scoped accounts and reconcile unknown terminal usage using explicit counts and a reference. Production starts without an allowance; no currency is inferred. See the [rules and upgrade order](development/86-secretary-token-budgets.md).
 
 ## 5. Native local development
 
@@ -248,11 +250,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Fresh157 top-level/1,014 results/920 leaves, eight batches,71 migrations | Twelve new exact task creation scenarios; failed/cleanup timeout attempts retained; current Go/SQL/contract binding |
-| Runtime / Web | Fresh45 /95 tests and builds passed | The new tool belongs only to project-update1.6.0; all eight Skills remain draft; real model execution disabled |
-| Taro | Fresh187 tests/types and16 pages per mini-program | Seven actual flows and three layouts per Web/Taro client; complete task, explicit review choice, exact send/retry/cancel |
-| Android | Fresh42,888,501-byte APK,17 inspections;25 JVM results from Gradle cache | Exact four XML results and task log retained; no new JVM execution or device acceptance claim |
-| Media catalog |40 PNGs,13 MP4s,13 GIFs; four new screenshots and two actual Web/mobile recording pairs | Actual isolated API/browser; increment84 startup/mobile sources reconstruct; its unfrozen ignored Web cache remains an explicit limitation |
+| Go / PostgreSQL | 158 top-level /1,029 results /934 leaves;8 batches;72 migrations | 14 native budget scenarios; additive migration and original task workflows retained |
+| Runtime / Web | 47 /98 tests and builds | Meter before reply rejection; all eight Skills remain draft |
+| Taro | 187 tests; types;17 pages in both mini-program builds | Six Web/Taro flows and three layouts per client; actual H5, no device claim |
+| Android | Current development APK and17 package checks | Actual build hash and cached25 JVM result scope in current evidence; no device claim |
+| Media catalog | 44 PNG /15 MP4 /15 GIF | Four new budget screenshots and two actual recording/GIF pairs; increment85 capture provenance retained |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

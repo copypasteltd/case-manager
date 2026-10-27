@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## 2026-10-27 · Increment86 / 秘书Token额度与用量
+
+新增Go／PostgreSQL月度额度账本：组织、员工、项目、Skill共用原子接单预留；未知用量保守保留，已知失败、取消及越限用量不被抹除。管理员通过Web／Taro发布完整策略、按范围查账，并凭据核对未知终态用量。迁移72不预设生产额度；SDK用量先记账再校验回复，不将Token数量视为金额账单。
+
+Adds monthly token accounts across organization, user, project and Skill scopes, atomic admission reservations, observed failure/cancellation accounting and evidenced human reconciliation of unknown terminal usage. Web and Taro expose the same policy and reporting workflows. Migration72 supplies no production allowance. Observed usage is metered before reply validation; provider monetary billing and the full production goal remain open.
+
+[规则 / Workflow](development/86-secretary-token-budgets.md) · [检查 / Evidence](quality/evidence/token-budgets/verification.md) · [截图与录屏 / Media](media/README.md)
+
+
 本文件记录可交付改动、验证范围和仍未放行的事项。完整逐轮历史见[实施台账](delivery/02-implementation-ledger.md)，所有未完成项保留[稳定 GAP 编号](delivery/03-goal-gap-assessment.md)。
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.

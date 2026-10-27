@@ -12,6 +12,12 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
+最新功能 / Latest workflow: [秘书Token额度与结算 / Secretary token budgeting](docs/development/86-secretary-token-budgets.md).
+
+![实际秘书额度账本 / Actual secretary budget account](docs/media/gifs/secretary-token-budgets-web.gif)
+
+[Web MP4](docs/media/videos/secretary-token-budgets-web.mp4) · [Mobile MP4](docs/media/videos/secretary-token-budgets-mobile.mp4) · [Mobile GIF](docs/media/gifs/secretary-token-budgets-mobile.gif). 合成数据／真实本机API；移动为Taro H5。Synthetic data and real native API; mobile is Taro H5.
+
 ## 方案与能力 / Architecture and capabilities
 
 | 组成 / Component | 实现与职责 / Implementation and responsibility |
@@ -140,14 +146,14 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量85）新增秘书准确创建任务／子任务：完整核对九项资料、人工验收要求及原因，复用原任务权限与命令，保留真实新任务ID、版本1和操作回执。Web／Taro共用参数和回执校验；`project-update` 1.6.0具16项工具／14项准确写工具，八项Skill继续draft。见[流程与契约](docs/development/85-secretary-task-creation.md)。
+当前功能基线（增量86）新增秘书月度Token额度与用量账本：接单时同时检查组织、员工、项目和Skill额度，原子预留；已知失败／取消用量照实记录，未知用量保守记账并由管理员凭证核对。Web与Taro提供配置、范围查询和核对流程。生产不预设额度，不将Token账本冒称金额账单。见[完整规则](docs/development/86-secretary-token-budgets.md)与[验证记录](docs/quality/evidence/token-budgets/verification.md)。
 
-本轮完整后端157顶层、1,014结果／920末级、8批，71份迁移；Web95、运行时45、移动187项及两小程序各16页构建。新Android开发包42,888,501字节、17项包检查，25项JVM结果来自Gradle缓存；Linux仅交叉编译。实际Web／Taro各7组流程、3项布局。完整数量、源码摘要、失败尝试及限制见[验证记录](docs/quality/evidence/task-creation/verification.md)。
+本轮后端158顶层、1,029结果／934末级、8批，72项迁移；Web98、运行时47、移动187项及两小程序各17页。Web／Taro各6组实际流程、3项布局；Android开发包、缓存JVM范围及Linux仅编译证据见[验证记录](docs/quality/evidence/token-budgets/verification.md)。四端生产验收、真实模型／TG、金额计费及其余编号差异仍未完成。
 
-演示目录共40 PNG、13 MP4、13 GIF；新增四张图和两端各一对实际MP4／GIF。旧84完整启动来源和642项移动采集来源按24ad850原Git重建；旧Web620项中619项可从Git重建，未冻结的忽略编译缓存明确无法复现，未伪造补齐。日常本地API升级至71份迁移，真实模型／TG保持关闭。四端真机、云、模型隔离、容量、安全、备份恢复与生产放行继续开放。
+演示目录共44 PNG、15 MP4、15 GIF；本轮新增四张额度账本截图与Web／Taro各一对实际录屏。增量85的完整启动及两端捕获来源按已发布83bf468完整重建；更早84的未冻结编译缓存限制仍保留。日常API使用72项迁移，真实模型／TG关闭。完整四端、云、模型、容量、安全与恢复验收仍开放。
 
-The current functional baseline (increment85) adds exact secretary task/subtask creation: review all nine fields, human-review choice and reason, reuse the original task command/authority, and retain an actual new task ID, version1 and operation receipt. Web/Taro share payload and receipt checks. `project-update` 1.6.0 has16 tools/14 exact write tools; all eight Skills remain draft. See the [workflow and contract](docs/development/85-secretary-task-creation.md).
+The current functional baseline (increment86) adds monthly secretary token allowances, atomic reservations across organization/user/project/Skill accounts, observed failure/cancellation usage and conservative accounting for unknown usage. Web and Taro expose policy publication, filtered reporting and evidenced reconciliation. Production receives no invented allowance; tokens are not a monetary invoice. See the [workflow](docs/development/86-secretary-token-budgets.md) and [verification](docs/quality/evidence/token-budgets/verification.md).
 
-This round includes157 backend top-level tests,1,014 results/920 leaves across eight batches and71 migrations;95 Web,45 runtime and187 mobile tests with16 pages per mini-program. The new42,888,501-byte development APK passed17 inspections;25 JVM results came from Gradle cache. Linux is compilation only. Each actual Web/Taro capture covers seven flows and three layouts. The [verification record](docs/quality/evidence/task-creation/verification.md) retains source hashes, failures and scope limits.
+This round records158 backend top-level tests,1,029 results/934 leaves in eight batches and72 migrations;98 Web,47 runtime and187 mobile tests, with17 pages per mini-program. Each Web/Taro demonstration checks six actual flows and three layouts. APK details, cached JVM scope and Linux compilation are recorded in the [evidence](docs/quality/evidence/token-budgets/verification.md). Production acceptance, live model/TG operation, monetary billing and the other numbered gaps remain open.
 
-The catalog contains40 PNGs,13 MP4s and13 GIFs. Four new screenshots and two real Web/mobile recording pairs are included. Original increment84 startup/mobile sources reconstruct from24ad850;619 of620 old Web entries reconstruct from Git, while its unfrozen ignored compiler cache remains an explicit limitation. The owned native API uses71 migrations with real model/TG integrations disabled. Full device/cloud/model/isolation/capacity/security/recovery/production gates remain open.
+The catalog contains44 PNGs,15 MP4s and15 GIFs, including four new token account screenshots and an actual recording/GIF pair for each client. Increment85 complete startup and both capture manifests reconstruct from published83bf468; earlier increment84 cache limitations remain explicit. The owned API uses72 migrations, with real model/TG integrations disabled. Full device/cloud/model/capacity/security/recovery/production acceptance remains open.

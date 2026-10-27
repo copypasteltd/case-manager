@@ -3050,6 +3050,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/agent-budget": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getAgentBudget */
+        get: operations["getAgentBudget"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/agent-budget/entries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listAgentBudgetEntries */
+        get: operations["listAgentBudgetEntries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/agent-budget/policies": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** publishAgentBudgetPolicy */
+        post: operations["publishAgentBudgetPolicy"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/agent-budget/entries/{id}/reconcile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** reconcileAgentBudget */
+        post: operations["reconcileAgentBudget"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversations/{id}/runtime-options": {
         parameters: {
             query?: never;
@@ -7258,6 +7326,75 @@ export interface components {
             /** Format: date-time */
             updated_at: string;
         };
+        BudgetPolicyInput: {
+            expected_version: number;
+            organization_tokens: number;
+            user_tokens: number;
+            project_tokens: number;
+            skill_tokens: number;
+            reason: string;
+        };
+        BudgetPolicy: {
+            organization_tokens: number;
+            user_tokens: number;
+            project_tokens: number;
+            skill_tokens: number;
+            reason: string;
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            published_by: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        BudgetSummary: {
+            policy: components["schemas"]["BudgetPolicy"] | null;
+            month: string;
+            /** @enum {string} */
+            scope: "user" | "organization" | "project" | "skill";
+            scope_id: string | null;
+            limit_tokens: number | null;
+            reserved_tokens: number;
+            charged_tokens: number;
+            pending_tokens: number;
+            available_tokens: number | null;
+            unbudgeted_runs: number;
+        };
+        BudgetEntry: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            policy_id: string;
+            /** Format: uuid */
+            actor_id: string;
+            project_id: string | null;
+            skill_id: string;
+            run_version: number;
+            /** @enum {string} */
+            run_state: "queued" | "running" | "awaiting_approval" | "committing" | "succeeded" | "failed" | "cancelled" | "interrupted";
+            /** @enum {string} */
+            status: "reserved" | "settled" | "pending" | "released" | "reconciled";
+            estimated_tokens: number;
+            reserved_tokens: number;
+            charged_tokens: number;
+            pending_tokens: number;
+            input_tokens: number | null;
+            output_tokens: number | null;
+            evidence_reference: string | null;
+            reconciliation_reason: string | null;
+            reconciled_by: string | null;
+            reconciled_at: string | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        BudgetReconcileInput: {
+            expected_version: number;
+            input_tokens: number;
+            output_tokens: number;
+            evidence_reference: string;
+            reason: string;
+        };
         RuntimeProfile: {
             /** Format: uuid */
             id: string;
@@ -10927,6 +11064,25 @@ export interface components {
                 items: components["schemas"]["NotificationFailure"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        BudgetSummaryResponse: {
+            data: components["schemas"]["BudgetSummary"];
+            meta: components["schemas"]["Meta"];
+        };
+        BudgetEntryListResponse: {
+            data: {
+                items: components["schemas"]["BudgetEntry"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        BudgetPolicyResponse: {
+            data: components["schemas"]["BudgetPolicy"];
+            meta: components["schemas"]["Meta"];
+        };
+        BudgetEntryResponse: {
+            data: components["schemas"]["BudgetEntry"];
             meta: components["schemas"]["Meta"];
         };
         RuntimeOptionsResponse: {
@@ -19679,6 +19835,164 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["NotificationFailureListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getAgentBudget: {
+        parameters: {
+            query?: {
+                month?: string;
+                scope?: "mine" | "organization" | "user" | "project" | "skill";
+                scope_id?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BudgetSummaryResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listAgentBudgetEntries: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                month?: string;
+                scope?: "mine" | "organization" | "user" | "project" | "skill";
+                scope_id?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BudgetEntryListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    publishAgentBudgetPolicy: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BudgetPolicyInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BudgetPolicyResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    reconcileAgentBudget: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BudgetReconcileInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BudgetEntryResponse"];
                 };
             };
             400: components["responses"]["Failure"];

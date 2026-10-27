@@ -1,0 +1,38 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-27T03:36:37.928023+00:00",
+  "files": [
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-web-ledger.png",
+      "sha256": "0a05df8c68bef54cddd3a4e3c1c335a0929d377d90f6d37940d498762a0a4513"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-web-reconciled.png",
+      "sha256": "f592c2148bd7c8cb18d1eac06004a74a1fe041f39368fe469873825724c97bc0"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-mobile-ledger.png",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-mobile-reconciled.png",
+      "sha256": "edcf44e03b9da55745251f23e49826f6cd4466f3b5e22f2a570fec32a2a5b540"
+    },
+    {
+      "file": "docs/media/gifs/secretary-token-budgets-web.gif",
+      "sha256": "7e025f3f67204320633f45e16f9ddbff5bb36556af3dce4e32124fda3acabc1b"
+    },
+    {
+      "file": "docs/media/gifs/secretary-token-budgets-mobile.gif",
+      "sha256": "e5e71c8de36747869557a8a43cab9a856ac01790c241d85374b8f2066d58daa6"
+    }
+  ],
+  "method": "Manual review of all four final PNGs and four evenly spaced decoded frames per final GIF; frame count, duration and encoding integrity are independently checked in media.json.",
+  "observations": [
+    "Actual authenticated Web and Taro interfaces; readable organization totals before and after reconciliation.",
+    "Web reconciled capture retains the actual horizontally scrolled ledger position after the reconciliation action; table columns can be scrolled.",
+    "Mobile captures show the current summary viewport, not the entire long ledger.",
+    "GIFs show actual scope switching after sensitive actions. Passwords, MFA input and private capabilities are outside these recordings."
+  ],
+  "scope": "Synthetic local business data; no provider call, real-device or production acceptance."
+}

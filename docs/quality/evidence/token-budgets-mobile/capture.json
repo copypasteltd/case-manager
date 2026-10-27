@@ -1,0 +1,39 @@
+{
+  "mobile": true,
+  "recordings": [
+    {
+      "name": "token-budgets-mobile",
+      "frame_count": 38,
+      "duration_ms": 7735,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/token-budgets-mobile/frames.json",
+      "manifest_sha256": "1f586decc0e069a8a30522ba7553d92f77d6807d8d40568b82f9afb61352a1e6"
+    }
+  ],
+  "layouts": [
+    {
+      "viewport_width": 390,
+      "width": 390,
+      "pageWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "viewport_width": 768,
+      "width": 768,
+      "pageWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "viewport_width": 1440,
+      "width": 1440,
+      "pageWidth": 1440,
+      "scrollWidth": 1440
+    }
+  ],
+  "synthetic_data": true,
+  "scope": "Authenticated Web/Taro H5 and native PostgreSQL token budgets; synthetic controller usage only, no provider invoice or device acceptance."
+}

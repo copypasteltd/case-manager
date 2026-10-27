@@ -687,3 +687,9 @@ input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--cp-action-
 .telegram-form .field label:has(input[type="checkbox"]) { display: flex; align-items: center; gap: 10px; }
 .telegram-form .field input[type="checkbox"] { width: 18px; height: 18px; min-height: 18px; padding: 0; flex: 0 0 18px; }
 @media (max-width: 640px) { .telegram-page > .panel { padding: 18px; } }
+
+.budget-filter { display: flex; gap: 1rem; align-items: end; flex-wrap: wrap; }
+.budget-filter .field { min-width: 10rem; flex: 1; }
+.budget-metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 1.2rem; margin: 1.2rem 0; }
+.budget-metrics span { display: block; color: var(--cp-text-secondary); font-size: .82rem; }
+.budget-metrics strong { display: block; font-size: 1.5rem; margin-top: .4rem; }

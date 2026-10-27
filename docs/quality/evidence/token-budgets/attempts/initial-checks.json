@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "scope": "Honest summary only; initial failed source states were not fully frozen. Private raw logs remain ignored. This is not current passing evidence.",
+  "failures": [
+    "Go event payload used a struct where the original event contract requires a map; fixed.",
+    "Synthetic cancellation omitted the required cancel action; fixed.",
+    "Fixture expectations used403/422 where existing authority/cursor contracts return404/400; aligned without changing those public contracts.",
+    "Taro SelectField expects tuple options; corrected."
+  ],
+  "final_proof": "Current complete suites and capture results are recorded separately against their complete source digests."
+}

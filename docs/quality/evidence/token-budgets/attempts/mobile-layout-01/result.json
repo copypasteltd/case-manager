@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T03:21:20.678Z",
+  "finished_at": "2026-10-27T03:22:33.931Z",
+  "checks": [
+    "Real MFA login loads the organization ledger with a conservative pending charge and no invented historical usage.",
+    "Publishing all four explicit monthly allowances creates a real policy revision with an audit reason; already admitted usage remains.",
+    "Human reconciliation commits exact known tokens and a reference, releases the unused estimate and updates organization totals."
+  ],
+  "source_count": 655,
+  "source_sha256": "062c828b9069dc324163d71dd13fbb0349e587fb88528b44ce09bd7c5599b1ea",
+  "source_after_sha256": "062c828b9069dc324163d71dd13fbb0349e587fb88528b44ce09bd7c5599b1ea",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.evaluate: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-page')\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "98dd7cd5e2d92e6dfc16fdddda8953b4a5cb8a770fd5ed1547905c4b314c1350",
+  "build_source_after_sha256": "98dd7cd5e2d92e6dfc16fdddda8953b4a5cb8a770fd5ed1547905c4b314c1350",
+  "build_source_unchanged": true
+}

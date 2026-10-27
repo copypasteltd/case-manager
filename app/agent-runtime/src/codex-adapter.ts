@@ -21,6 +21,7 @@ export interface NativeProfileRequest {
 export type PublicEvent =
   | { type: 'run.started' }
   | { type: 'tool.started' | 'tool.finished'; tool: string }
+  | { type: 'run.usage'; usage: Usage }
   | { type: 'run.completed'; result: ProposedResult; usage: Usage }
   | { type: 'run.interrupted'; code: string; reconciliation_required: boolean };
 // Implementations must authenticate the run and use the Go authority/ledger, not model claims.
@@ -156,6 +157,8 @@ export class CodexAdapter {
         if (event.type === 'turn.completed') {
           if (completed) throw new RuntimeError('RUNTIME_PROTOCOL_INVALID');
           usage = validateUsage(event.usage); completed = true;
+          const accounting = new AbortController(); const accountingTimer = setTimeout(() => accounting.abort(), 3000);
+          try { await withAbort(this.boundary.append(run, { type: 'run.usage', usage }, accounting.signal), accounting.signal); } finally { clearTimeout(accountingTimer); }
           if (usage.input_tokens > run.max_input_tokens || usage.output_tokens > run.max_output_tokens) throw new RuntimeError('RUNTIME_USAGE_BUDGET_EXCEEDED');
           continue;
         }

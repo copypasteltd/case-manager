@@ -39,6 +39,7 @@ func eventPosition(r *http.Request) (int64, int, error) {
 }
 func (s *Server) agentRunRoutes(mux *http.ServeMux) {
 	service := &agent.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	s.agentBudgetRoutes(mux, service)
 	mux.HandleFunc("GET /v1/conversations/{id}/runtime-options", read(s, "RuntimeOptionsResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.RuntimeOptions(ctx, a, r.PathValue("id"))
 	}))

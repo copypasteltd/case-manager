@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "reason": "A copied probe incorrectly looked for a token budget error phrase inside the unchanged task creation function. All new budget tables/guards, migration72, ownership and disabled integration checks passed.",
+  "repair": "Preserve the original task creation function marker and label; rerun the read-only inspection without changing application code."
+}

@@ -179,6 +179,12 @@ func (b *Bridge) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				} else {
 					err = b.Service.StartExecution(ctx, lease)
 				}
+			case "run.usage":
+				if in.Usage == nil || in.Result != nil || in.Tool != "" || in.Code != "" || in.ReconciliationRequired {
+					err = core.Invalid("event", "用量事件只接受准确用量")
+				} else {
+					err = b.Service.RecordExecutionUsage(ctx, lease, *in.Usage)
+				}
 			case "run.completed":
 				if in.Result == nil || in.Usage == nil || in.Tool != "" || in.Code != "" || in.ReconciliationRequired {
 					err = core.Invalid("event", "结果与用量必须准确提供")

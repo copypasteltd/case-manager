@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **40张PNG、13段MP4、13个GIF**。增量85新增四张秘书任务／子任务截图和Web、Taro各一对实际录屏／GIF；此前知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成业务数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
+本目录包含 **44张PNG、15段MP4、15个GIF**。增量86新增四张秘书Token账本截图和Web、Taro各一对实际录屏／GIF；此前知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成业务数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
 
-This catalog contains **40 PNGs,13 MP4s and13 GIFs**. Increment85 adds four secretary task creation screenshots and an actual recording/GIF pair for each of Web and Taro. Earlier knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records or credentials.
+This catalog contains **44 PNGs,15 MP4s and15 GIFs**. Increment86 adds four secretary token account screenshots and an actual recording/GIF pair for each of Web and Taro. Earlier knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records or credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -295,3 +295,25 @@ python app/scripts/verify_task_creation_sources.py
 ```
 
 当前采集明确排除忽略的tsbuildinfo编译缓存。历史84的完整启动来源及642项移动来源可从24ad850重建；旧Web620项中619份Git文件可重建，但原缓存未提交／冻结，完整旧Web采集清单不能重建，不以当前缓存伪造补齐，见[历史核对](../quality/evidence/task-creation/historical-84.json)。Current captures exclude ignored compiler caches. Increment84 complete startup/mobile sources reconstruct from24ad850;619 of620 Web entries reconstruct, while its unfrozen ignored cache remains unavailable. The historical full Web capture digest is retained without a fabricated reconstruction.
+
+
+## 14. 秘书Token额度与凭据核对 / Secretary token budgets
+
+真实Web／Taro页面：完成MFA登录 → 查询组织账本 → 发布完整四维策略修订 → 凭据核对未知终态用量 → 查验实际核对回执和汇总 → 切换本人／组织／项目范围。14项原生业务场景先运行，浏览器连接同一个隔离API；不调用真实模型或供应商。
+
+Actual authenticated Web/Taro pages query organization accounts, publish a complete policy, reconcile an unknown terminal run with a synthetic reference, inspect its durable counts and switch report scopes. Native business scenarios run first against the same disposable API. No real provider is invoked. Recordings show authenticated account queries after reconciliation; policy/MFA input is outside the recording.
+
+![Web秘书账本](screenshots/secretary-token-budgets-web-ledger.png)
+![Web凭据核对后的账本](screenshots/secretary-token-budgets-web-reconciled.png)
+![移动秘书账本](screenshots/secretary-token-budgets-mobile-ledger.png)
+![移动凭据核对后的账本](screenshots/secretary-token-budgets-mobile-reconciled.png)
+
+![Web账本范围查询](gifs/secretary-token-budgets-web.gif)
+[Web MP4](videos/secretary-token-budgets-web.mp4)
+
+![Taro账本范围查询](gifs/secretary-token-budgets-mobile.gif)
+[Taro MP4](videos/secretary-token-budgets-mobile.mp4)
+
+复现顺序 / Reproduction: `python app/scripts/run_token_budget_browser.py` → `python app/scripts/run_token_budget_browser.py --mobile` → `python app/scripts/encode_token_budget_media.py`。两个浏览器检查须串行；各自关闭全部上下文、测试API、隔离数据库及临时5189服务。素材来自实际捕获帧，无密码／MFA／令牌；Taro H5不代表小程序或Android真机验收。首次Web检查过早读到旧状态的尝试保留，不复用为当前通过证据。
+
+完整来源、帧时间、失败修复、历史证据和本增量实际构建范围见[验证记录](../quality/evidence/token-budgets/verification.md)；操作和金额边界见[方案](../development/86-secretary-token-budgets.md)。

@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "reason": "The checker waited for an already visible background query button instead of the reconciliation POST response and observed the prior pending record.",
+  "source_was_unchanged": true,
+  "owned_browser_closed": true,
+  "isolated_database_cleanup_passed": true,
+  "repair": "Await the exact successful write response and the closed editor before querying its durable result."
+}

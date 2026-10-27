@@ -1,0 +1,271 @@
+{
+  "commit": "83bf46819fca3e670f5d3101b0234fbe46a2ad23",
+  "complete_startup_source": {
+    "source_count": 853,
+    "sha256": "f09ef0b641e1060c07a20ac01128d122f89b5f8e5685310b72daffc27ed3fff1",
+    "reconstructed": true
+  },
+  "clients": {
+    "web": {
+      "recorded_sha256": "407243b6d15352358fd598ea281ebaf7b7d09cbb9e4a7a4c3d4d8274c81b3583",
+      "recorded_startup_sha256": "f09ef0b641e1060c07a20ac01128d122f89b5f8e5685310b72daffc27ed3fff1",
+      "reconstructed_sha256": "407243b6d15352358fd598ea281ebaf7b7d09cbb9e4a7a4c3d4d8274c81b3583",
+      "source_count": 626,
+      "complete_capture_manifest_reconstructed": true
+    },
+    "mobile": {
+      "recorded_sha256": "8d69eecb3a88b1f81e601003fc107c708adedc554351c3a67553e8e98f6de50f",
+      "recorded_startup_sha256": "f09ef0b641e1060c07a20ac01128d122f89b5f8e5685310b72daffc27ed3fff1",
+      "reconstructed_sha256": "8d69eecb3a88b1f81e601003fc107c708adedc554351c3a67553e8e98f6de50f",
+      "source_count": 649,
+      "complete_capture_manifest_reconstructed": true
+    }
+  },
+  "preserved_evidence": [
+    {
+      "path": "docs/quality/evidence/task-creation-mobile/capture.json",
+      "sha256": "50748a2e74d0eca9ca7d3d2eeedb78aa817cf50707fbc2abfe2221a12e0eaafc"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-mobile/inbox.png",
+      "sha256": "dfe5d5f5571e032a6a1906a3f84f89a9f7aee026dc590fc08f6d327df02c3b04"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-mobile/result.json",
+      "sha256": "930e71148025b740adc91034f1710070da0bf3b96e72bdef219109ce2587f7d1"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-mobile/source-manifest.json",
+      "sha256": "ed1e8108721045481605d2299d52813395ac3af7ee7b1e157ca39c71b7d05d64"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-web/capture.json",
+      "sha256": "1283e8013f9cf151e89c0e0c8fc9b8654d792670c7d3e433f4d4d67d5a8d591a"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-web/inbox.png",
+      "sha256": "905118afce629869cd0808269328dbcb799842d207b702f5a427907c6da13a84"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-web/result.json",
+      "sha256": "db7f2cb87218ff13ade1c444e4d83dd90daeff395a44e3ff0c3c02655dd46c9d"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation-web/source-manifest.json",
+      "sha256": "19bd049d6dfa211abc21dafbc24799e5f47fded4070a430512f90d35b4ea7572"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/android-test-scope.json",
+      "sha256": "9df6c07676e7a74101e6f0f88080f1039457fea32fbff7af0a1eb99bf09cd9b3"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "3943f4dcccd1775defe153e3547319484b0aaa3615c50bab017cdca16d84c09b"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "359c2c3bd6340def28c5d22afb0175a399f71697f839342b6218fa0758b512ae"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "8ad83d69ef50e84dc4b31e9a8a0127b6580d482a81dfb86c80c272f4de95aceb"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "21e15d0f7fd35adce7517596db56ad8e438b53b90ea6f0ed7f0f769a6e6eb886"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/apk-inspection.json",
+      "sha256": "61ee10d42cc17aa236d47cbaeb549abed187c5004ca43d750fabde240b76a864"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/backend-cleanup-01/batch-progress.json",
+      "sha256": "5a9f40b0a1e07c2ce53ea9fdb555b85ea69023267e9bb43e22fb78a107f95c41"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/backend-cleanup-01/diagnosis.json",
+      "sha256": "345e9603127e79058ea4c4366d3dfac03c63471dedaf06ca037433befa3c38ed"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/diagnosis.json",
+      "sha256": "612bdfe0ea8183cce6610f2c07a0637ecc96ef97dfd0c8c8e7ea313a9b7c7fc7"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media.json",
+      "sha256": "e8113c77264a8f015c67cec257d912e281b4616a3cb9c9897564b167790caa65"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/gifs/secretary-task-creation-mobile.gif",
+      "sha256": "6383cd2e495f63ec4f373b1ed0f3a2b9a9c5d6b3ff452b857d2684edda67b869"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/gifs/secretary-task-creation-web.gif",
+      "sha256": "3b3da66efe10b50819ae4bb3670e23b9ccfe48210e80140c09cacb24951c71ba"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/screenshots/secretary-task-creation-mobile-preview.png",
+      "sha256": "e4ee94328bef61a85e4037917f651d28e20b447b831c594814a2e97606c9cb79"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/screenshots/secretary-task-creation-mobile-receipt.png",
+      "sha256": "9d6c4363090b22df741c9ff65f7d0f3d7d21b6a022ee13fe4f96d7771aa60735"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/screenshots/secretary-task-creation-web-preview.png",
+      "sha256": "762f45555f828294e0e73a713e9f550c11c882c321fdc81715df803cc7054cfa"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/screenshots/secretary-task-creation-web-receipt.png",
+      "sha256": "e89dcfb575eaec34d59fad652feb8683c083b537c6cd6638408346f35a0456ba"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/videos/secretary-task-creation-mobile.mp4",
+      "sha256": "cdcbd4e47ca85147c485c92ade5e95b3068961586239e52b9c97144d59ea9c8f"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/media/videos/secretary-task-creation-web.mp4",
+      "sha256": "b53293ea710898f8cfaedc5a4110aae43dc6cb806bf6ee69aa6b992958509a5e"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/mobile-capture-manifest.json",
+      "sha256": "6b7f281a100808abe535d49035bb8e88e28190380e9aff6ed5afa0d8ff03775c"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/mobile/capture.json",
+      "sha256": "893329beaef784a389b5e7f1d75532e12ca3eb4b0fb77bb5654d1820d656e71b"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/mobile/inbox.png",
+      "sha256": "297d69512295a6892bb0e3082318bfbbfee631758f9236b82f8bd82cc1a39c57"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/mobile/result.json",
+      "sha256": "51d188cd94b0d65e609ed7de10e1258611dd73ceffad96858526898c14cfd90e"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/mobile/source-manifest.json",
+      "sha256": "76f69d65e33a24435016638e3bc87c8bbf779806367ae057c72a22d3870584aa"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/web-capture-manifest.json",
+      "sha256": "9146784d9b7a22d6fcd0c16fd0457352812524c4230eadfe0033401ba035af82"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/web/capture.json",
+      "sha256": "b6cf36bed517c8420932fdb0e1dd01541c31d292eb5135f87f2a1622b7821fab"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/web/inbox.png",
+      "sha256": "d54334614d6726f06d2f861dc7c61d700d2839c0cf94e4e925cf7346d5025603"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/web/result.json",
+      "sha256": "0c1e53b71bc86282b83c15aca9cbc77a1c911803ad0fdca5e3598c2bbdf80781"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/capture-cache-01/web/source-manifest.json",
+      "sha256": "871862a6d80dd260e4d008231ceba5d5c4fa0c8c435cb6952c33d4145f08ad9c"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/initial-focused-checks/diagnosis.json",
+      "sha256": "70178b34c492f18fe1123840ca33e88ab076016a52677d53070db1df5f905a17"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/initial-focused-checks/mobile-build.json",
+      "sha256": "3a51ab3e305840bd22568968713ab2346214a81e533d1be7d575810f6f97319d"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/attempts/initial-focused-checks/web-build.json",
+      "sha256": "118d107d8fca2beaf1ad4157fba3b24a98c08eedb5817918530509ae0cc4cf50"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/batch-progress.json",
+      "sha256": "5cf5e98ff37a82e6a21c31a3f855c331b3b7baf7db7ab6f19d5ff50cd38313de"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/build.json",
+      "sha256": "1dce3ab1c23aad52ce0237bfbd2d47378c2f64735966b67576e4197f121812f3"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/development-check.json",
+      "sha256": "028928a4c041e29f26903f8746ce6b84b955fa87b441de198a31478bed6c6a3e"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/development-project-resources.json",
+      "sha256": "00e874756ce38026a18a71c408b4a4d92b5502679303b2f448b1c15623813c63"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/development-runtime.json",
+      "sha256": "3aacf9134e6795a110dc4bedcf39fe5d0891b6f864ac640a14c6215464f40317"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/development-update.json",
+      "sha256": "1c7b83cdb3d76bf90dbaa8246f10f2ad6a9057d2d20cfd0c6b7ccb8f9e215af8"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/final-source-check.json",
+      "sha256": "a565b8a721d2301a59ff5d25a2d6dafd8b15e41f43de3ec6dfbb4ff14c1d2196"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/historical-84.json",
+      "sha256": "8df58626df209f4696c5081eae6201e31683d19fb88ba34556b1c3894afc97c4"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/linux-build.json",
+      "sha256": "aecb29fa5cb9adef1e64e8868ef537820069a87504bfb166b5764c7f784fe59c"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/media.json",
+      "sha256": "a8de53063365215f5ced05a8a3a2bc406d5be6f4f45f7c0e72b8182cc662acbd"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/mobile-build.json",
+      "sha256": "2d33402888474a8065de51e30806bd7bd7ba7e40eb794f13e175551cb7d38610"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/mobile-capture-manifest.json",
+      "sha256": "8c111fa0b174bd77f8b43023bf360de3a8e3896147efdd76a030dc23eda406fe"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/mobile-verification.log",
+      "sha256": "97bb12aabb861a020d303f588531e8126a0444ecc8e80c0dd5ded136d0dc8fc5"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/native-build.log",
+      "sha256": "ff62cf02f89d1e010cd86b5b87ec1ae16c1386376802e6d148f022b837e5da09"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/orphan-cleanup.json",
+      "sha256": "c3a20e4f736fc12c38615066d59a9d244dad190873a451d7f5fe8cd8cb1f30af"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/repository-check.json",
+      "sha256": "07d25fca4ee5f595c13062849ce4ab4e01738fb309ccbd9cbc79ce1882809cae"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/result.json",
+      "sha256": "7bfc07918ea557b122d8009e4ae24699b18cb3e02e233e14e2b4cc6b2bbb6a91"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/runtime-build.json",
+      "sha256": "e8a551e933f85ca4df5eca2d502afe6a7abc4f1bed7c4c6ca98024eec7bc84d7"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/verification.md",
+      "sha256": "17ac4d7500fc904e7aebfb7ed8c2ba4b65f4ed93f78be01333a8e78791e49f52"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/visual-review.json",
+      "sha256": "7599f91722728aeaf6e66f4ecd822f5b6185f232d7e97709c66c91f71f71f414"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/web-build.json",
+      "sha256": "512aa55c15cc43fdbd8823106d12e5bea29d8f2aa50e3779a5b534ca60fc746e"
+    },
+    {
+      "path": "docs/quality/evidence/task-creation/web-capture-manifest.json",
+      "sha256": "b453ebd2f8a881eb5ce9c943d506523dd10e2b8d1cc9eb8f46100e568e0d58e0"
+    }
+  ],
+  "scope": "Published increment85 complete startup and both complete client capture manifests reconstruct from Git. Earlier increment84 cache limitations remain unchanged in its retained provenance."
+}

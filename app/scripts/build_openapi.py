@@ -593,6 +593,27 @@ notification_failure = {"job_id": ID, "state": enum("retry_wait", "dead"), "safe
     "first_failed_at": nullable(TIME), "updated_at": TIME}
 add("NotificationFailure", notification_failure, tuple(notification_failure))
 
+budget_tokens = {"type": "integer", "minimum": 0, "maximum": 1000000000000}
+budget_policy_input = {"expected_version": {"type": "integer", "minimum": 0},
+    "organization_tokens": budget_tokens, "user_tokens": budget_tokens, "project_tokens": budget_tokens, "skill_tokens": budget_tokens, "reason": NAME}
+add("BudgetPolicyInput", budget_policy_input, tuple(budget_policy_input))
+budget_policy = {k:v for k,v in budget_policy_input.items() if k != "expected_version"}
+budget_policy.update({"id": ID, "version": VERSION, "published_by": ID, "created_at": TIME})
+add("BudgetPolicy", budget_policy, tuple(budget_policy))
+budget_summary = {"policy": nullable(ref("BudgetPolicy")), "month": {"type":"string","pattern":r"^\d{4}-\d{2}$"},
+    "scope": enum("user","organization","project","skill"), "scope_id": nullable(NAME),
+    "limit_tokens": nullable(budget_tokens), "reserved_tokens": {"type":"integer","minimum":0}, "charged_tokens": {"type":"integer","minimum":0},
+    "pending_tokens": {"type":"integer","minimum":0}, "available_tokens": nullable({"type":"integer"}), "unbudgeted_runs": {"type":"integer","minimum":0}}
+add("BudgetSummary", budget_summary, tuple(budget_summary))
+budget_entry = {"id": ID, "policy_id": ID, "actor_id": ID, "project_id": nullable(ID), "skill_id": NAME, "run_version":VERSION,
+    "run_state":enum("queued","running","awaiting_approval","committing","succeeded","failed","cancelled","interrupted"),
+    "status":enum("reserved","settled","pending","released","reconciled"),
+    "estimated_tokens":{"type":"integer","minimum":1}, "reserved_tokens":{"type":"integer","minimum":0}, "charged_tokens":{"type":"integer","minimum":0},
+    "pending_tokens":{"type":"integer","minimum":0}, "input_tokens":nullable(budget_tokens), "output_tokens":nullable(budget_tokens),
+    "evidence_reference":nullable(NAME), "reconciliation_reason":nullable(NAME), "reconciled_by":nullable(ID), "reconciled_at":nullable(TIME), "created_at":TIME}
+add("BudgetEntry", budget_entry, tuple(budget_entry))
+budget_reconcile = {"expected_version":VERSION,"input_tokens":budget_tokens,"output_tokens":budget_tokens,"evidence_reference":NAME,"reason":NAME}
+add("BudgetReconcileInput", budget_reconcile, tuple(budget_reconcile))
 add("RuntimeProfile", profile, tuple(profile))
 add("RuntimeOptions", {"available": {"type": "boolean"}, "reason": nullable(NAME),
     "profiles": array(ref("RuntimeProfile"), maxItems=8)}, ("available", "reason", "profiles"))
@@ -1522,6 +1543,15 @@ operation("/notifications/{id}/read", "post", "markNotificationRead", "Notificat
 operation("/notification-delivery-failures", "get", "listNotificationDeliveryFailures", "NotificationFailure", listing=True)
 for parameter in PATHS["/notification-delivery-failures"]["get"]["parameters"]:
     if parameter["name"] == "limit": parameter["schema"] = {"type": "integer", "minimum": 1, "maximum": 50, "default": 20}
+operation("/agent-budget", "get", "getAgentBudget", "BudgetSummary")
+operation("/agent-budget/entries", "get", "listAgentBudgetEntries", "BudgetEntry", listing=True)
+operation("/agent-budget/policies", "post", "publishAgentBudgetPolicy", "BudgetPolicy", "BudgetPolicyInput", 201)
+operation("/agent-budget/entries/{id}/reconcile", "post", "reconcileAgentBudget", "BudgetEntry", "BudgetReconcileInput")
+for path in ("/agent-budget", "/agent-budget/entries"):
+    PATHS[path]["get"].setdefault("parameters", []).extend([
+        {"name":"month","in":"query","schema":{"type":"string","pattern":r"^\d{4}-\d{2}$"}},
+        {"name":"scope","in":"query","schema":enum("mine","organization","user","project","skill")},
+        {"name":"scope_id","in":"query","schema":NAME}])
 operation("/conversations/{id}/runtime-options", "get", "getRuntimeOptions", "RuntimeOptions")
 operation("/conversations/{id}/runs", "post", "createRun", "Run", "RunCreate", 202)
 operation("/runs/{id}", "get", "getRun", "Run")

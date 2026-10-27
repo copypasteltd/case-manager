@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T02:02:17.828Z",
+  "finished_at": "2026-10-27T02:02:32.331Z",
+  "checks": [
+    "Real MFA login loads the organization ledger with a conservative pending charge and no invented historical usage.",
+    "Publishing all four explicit monthly allowances creates a real policy revision with an audit reason; already admitted usage remains."
+  ],
+  "source_count": 633,
+  "source_sha256": "951ecaca6f01b2b3e017ef6b82f156c64fee22b1f46edacec2d1aa17e8e2bbc2",
+  "source_after_sha256": "951ecaca6f01b2b3e017ef6b82f156c64fee22b1f46edacec2d1aa17e8e2bbc2",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'pending'\n- 'reconciled'\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "1cf66b74702430aebb001f09a360025a0678bb248296a079d248370368e51a33",
+  "build_source_after_sha256": "1cf66b74702430aebb001f09a360025a0678bb248296a079d248370368e51a33",
+  "build_source_unchanged": true
+}

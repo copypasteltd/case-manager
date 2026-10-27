@@ -31,6 +31,9 @@ func checkRunCapacity(ctx context.Context, tx pgx.Tx, org, actor, conversation s
 }
 
 func (s *Service) enqueueRun(ctx context.Context, tx pgx.Tx, org, run string) error {
+	if err := reserveRunBudget(ctx, tx, org, run); err != nil {
+		return err
+	}
 	if err := appendRunEvent(ctx, tx, org, run, 1, "run.queued", "queued", nil); err != nil {
 		return err
 	}

@@ -123,7 +123,7 @@ test('SDK configuration is explicit, credentials are excluded from prompts and p
   assert.equal(value.options?.env?.CP_DATABASE_URL, undefined); assert.equal(value.options?.env?.CODEX_HOME, undefined);
   assert.ok(!value.prompt.includes(value.run.task_credential)); assert.ok(!value.prompt.includes(value.run.authority_stamp));
   assert.equal((value.options?.config?.mcp_servers as { company: { enabled_tools: string[] } }).company.enabled_tools.length, value.skill.manifest.allowed_tools.length);
-  assert.deepEqual(value.events.map(event => event.type), ['run.started', 'tool.started', 'tool.finished', 'run.completed']);
+  assert.deepEqual(value.events.map(event => event.type), ['run.started', 'tool.started', 'tool.finished', 'run.usage', 'run.completed']);
   assert.ok(!JSON.stringify(value.events).includes('private reasoning')); assert.ok(!JSON.stringify(value.events).includes('not-for-events'));
   assert.ok(!JSON.stringify(value.events).includes('private-native-thread'));
 });
@@ -262,4 +262,28 @@ test('monthly finance exposes its implemented reads only on the business channel
  assert.throws(()=>nativeConfiguration(skill,value.settings,'telegram'),/SKILL_TOOLS_UNAVAILABLE/);
  const description=await describeProfile({skill_id:'subscription-review',profile_id:randomUUID(),model:value.settings.model,working_directory:value.settings.working_directory,mcp_endpoint:value.settings.mcp_endpoint},temporary);
  assert.deepEqual(description.missing_tools,[]);assert.equal(description.telegram_native,null);assert.equal(description.skill_state,'draft');assert.equal(description.ready_for_controlled_installation,false);
+});
+
+
+test('metering is durable before an oversized turn or invalid answer can be rejected', async () => {
+  const over = setup(); over.run.max_output_tokens = 1;
+  const stopped = await over.adapter().startRun(over.skill, over.run);
+  assert.equal(stopped.code, 'RUNTIME_USAGE_BUDGET_EXCEEDED');
+  assert.deepEqual(over.events.filter(e => e.type === 'run.usage'), [{ type: 'run.usage', usage: tokens }]);
+  assert.equal(over.events.at(-1)?.type, 'run.interrupted');
+  const malformed = setup(); malformed.setStream(async function* () {
+    yield { type: 'item.completed', item: { type: 'agent_message', id: 'invalid', text: 'invalid JSON answer' } };
+    yield { type: 'turn.completed', usage: tokens };
+  });
+  assert.equal((await malformed.adapter().startRun(malformed.skill, malformed.run)).state, 'interrupted');
+  assert.ok(malformed.events.some(e => e.type === 'run.usage'));
+  assert.ok(!malformed.events.some(e => e.type === 'run.completed'));
+});
+
+test('an accounting transport failure cannot be presented as a completed business reply', async () => {
+  const value = setup(); const append = value.boundary.append.bind(value.boundary);
+  value.boundary.append = async (run, event, signal) => { if (event.type === 'run.usage') throw new RuntimeError('RUNTIME_UNAVAILABLE'); await append(run, event, signal); };
+  const outcome = await value.adapter().startRun(value.skill, value.run);
+  assert.equal(outcome.state, 'interrupted'); assert.equal(outcome.reconciliation_required, true);
+  assert.deepEqual(outcome.usage, tokens); assert.ok(!value.events.some(e => e.type === 'run.completed'));
 });

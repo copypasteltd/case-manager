@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T02:23:45.917Z",
+  "finished_at": "2026-10-27T02:24:05.543Z",
+  "checks": [
+    "Real MFA login loads the organization ledger with a conservative pending charge and no invented historical usage.",
+    "Publishing all four explicit monthly allowances creates a real policy revision with an audit reason; already admitted usage remains.",
+    "Human reconciliation commits exact known tokens and a reference, releases the unused estimate and updates organization totals.",
+    "The actual ledger stays usable at 390, 768 and 1440 pixels.",
+    "Project-filtered reporting uses the original project account, rather than only the current conversation.",
+    "Returning to the own-user account preserves access to an independent user quota."
+  ],
+  "source_count": 633,
+  "source_sha256": "77106dd42d443ded43c5b1bdf634c73a950c32fdc200716afc4128264f98ae41",
+  "source_after_sha256": "77106dd42d443ded43c5b1bdf634c73a950c32fdc200716afc4128264f98ae41",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "4880242ea8b122766d62b95efbc2c6a4b97f74144f8c051c052edd1826e6a74d",
+  "build_source_after_sha256": "4880242ea8b122766d62b95efbc2c6a4b97f74144f8c051c052edd1826e6a74d",
+  "build_source_unchanged": true
+}
