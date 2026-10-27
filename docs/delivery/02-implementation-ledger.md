@@ -810,3 +810,12 @@ The shared mobile knowledge/blog workflows, original-comment preservation and ex
 新完整后端156顶层／1,001结果／908末级（8批）、运行时43、Web88、移动183项、两小程序各16页编译通过；两端各8实际流程、3项布局；新42,885,880字节Android开发APK与17项检查通过，25项JVM结果按Gradle缓存记录。原生开发API更新至70项迁移，10项只读探针、0活动模型／启用TG／测试库；Linux新编译未运行。25项最终复核通过，新增4张图和两对实际MP4／GIF，旧83采集按805份原Git blob复算。失败尝试保留；真实设备／云／模型／TG、依赖安全、120GB／2TB及生产仍按差异表推进。
 
 [实现与用法](../development/84-secretary-project-concerns.md) · [验证](../quality/evidence/project-concerns/verification.md) · [演示](../media/README.md)。后续继续优先功能代码及对应测试／双语使用说明，完成后提交并推送。
+
+
+## 59. 秘书完整授权创建任务与子任务（增量85）
+
+新增create_task准确工具与两端完整九项表单，员工显式确认人工验收、负责人、父任务、里程碑、时刻和优先级；引用候选分页、移动返回保留输入。复用原CreateTask，创建真实todo／版本1、新ID与操作回执，任务与审计／outbox／幂等／工具证据同事务；取消／原登录撤回／资源变更停止，两种准确重试不重复。分配他人要求task.assign，自己／暂不分配遵守原命令，创建运行只读实际新任务。
+
+迁移71、前70份原字节不变；完整157顶层／1,014结果／920末级、8批，Web95、运行时45、移动187／双小程序各16页；新42,888,501字节Android包、17检查、25项缓存JVM结果及Linux编译。Web／Taro各7实际流程和3布局；4新PNG／2MP4／2GIF，媒体总40／13／13。初次类型／读取边界失败、临时库删除超时与缓存采集重录均保留；旧84完整启动来源及642移动来源重建，旧Web619项已提交来源重建、未冻结缓存无法复现的限制显式记录。
+
+Implemented exact task/subtask creation with complete human decisions and genuine original-command evidence. Both clients, the additive database guard, source-bound checks and actual demos are updated. Cached JVM evidence and the old unfrozen Web cache limitation remain explicit. All eight Skills stay draft; actual model/cloud/TG/device/capacity/security/recovery/production gates remain open. See [方案](../development/85-secretary-task-creation.md)、[验证](../quality/evidence/task-creation/verification.md)及[媒体](../media/README.md)。

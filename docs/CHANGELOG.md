@@ -4,6 +4,17 @@
 
 This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
 
+## 2026-10-27 · 秘书准确创建任务与子任务 / Exact secretary task and subtask creation · increment85
+
+- 新增 `create_task`：完整九项资料及原因，显式负责人／父任务／里程碑／日期、优先级与人工验收要求；复用原 CreateTask 权限及事务，真实新 ID／todo／版本1回执，两种准确重试不重复创建。
+- Web／Taro完整表单、分页关联与保留输入、缺少验收选择及微秒日期倒序校验、准确预览／发送／取消同步；新Android开发包42,888,501字节、17项检查，25项JVM结果明确来自Gradle缓存。
+- 迁移71增量接入，前70份迁移不变；157顶层／1,014结果／920末级、Web95、运行时45、移动187、两小程序各16页、两端各7流程／3布局。失败尝试保留，包括原生临时库删除超时及未冻结编译缓存导致的历史复现限制。
+- 新增4 PNG、2 MP4、2 GIF，媒体目录40／13／13；完整中英文说明、GAP编号、来源检查同步。八项Skill仍draft，真实模型／云／TG、设备／容量／安全／恢复／生产仍待验收。
+
+Added complete `create_task` authorization, original business authority/atomic receipts and exact replay; shared Web/Taro forms preserve all nine decisions and explicit review. Additive migration71, current native regression/build checks, actual seven-flow captures per client, four screenshots and two MP4/GIF pairs are included. Cache and historical provenance limits are explicit; all Skills remain draft and real release gates remain open.
+
+[方案 / Workflow](development/85-secretary-task-creation.md) · [验证 / Verification](quality/evidence/task-creation/verification.md) · [演示 / Media](media/README.md)
+
 ## 2026-10-27 · 秘书风险与问题 / Secretary risks and issues · increment84
 
 - 增加四个准确工具，完整核对字段、父项目／事项版本和真实回执；项目成员、阶段、共同受众及原登录继续约束每一步。风险转问题要求双权限并原子提交，失败回滚，准确重试不重复创建。

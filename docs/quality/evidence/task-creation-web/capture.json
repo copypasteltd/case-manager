@@ -1,0 +1,36 @@
+{
+  "mobile": false,
+  "recordings": [
+    {
+      "name": "secretary-task-creation-web-review",
+      "frame_count": 9,
+      "duration_ms": 1846,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/secretary-task-creation-web-review/frames.json",
+      "manifest_sha256": "b453ebd2f8a881eb5ce9c943d506523dd10e2b8d1cc9eb8f46100e568e0d58e0"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 768,
+      "viewport": 768,
+      "document": 768
+    },
+    {
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1280
+    },
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1440
+    }
+  ],
+  "synthetic_data": true,
+  "scope": "Actual native API and authenticated Web/Taro H5; controlled task creation fixture receipts; no provider, device or production acceptance."
+}

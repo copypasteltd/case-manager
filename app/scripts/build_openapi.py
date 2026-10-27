@@ -603,12 +603,12 @@ mutation_arguments = {"id": ID, **EXPECTED, "reason": NAME, "name": NAME, "scope
     "start_date": nullable(DATE), "due_date": nullable(DATE), "title": NAME, "body": TEXT,
     "priority": enum("low", "normal", "high", "urgent"), "assignee_id": nullable(ID), "parent_id": nullable(ID), "milestone_id": nullable(ID),
     "start_at": nullable(TIME), "due_at": nullable(TIME), "owner_id": ID, "acceptance_criteria": {"type": "string", "minLength": 1, "maxLength": 20000}, "action": enum("start", "review", "return", "complete", "block", "resume", "cancel", "reopen", "activate", "hold", "close", "achieve", "miss")}
-mutation_arguments.update({"description":TEXT,"severity":enum("low","medium","high","critical"),
+mutation_arguments.update({"review_required":{"type":"boolean"},"description":TEXT,"severity":enum("low","medium","high","critical"),
     "probability":nullable(enum("low","medium","high")),"mitigation":TEXT,"resolution":TEXT,
     "state":enum("open","mitigating","realized","investigating","resolved","closed")})
 add("AgentMutationArguments", mutation_arguments, ("id", "expected_version", "reason"))
-add("AgentMutationInput", {"tool": enum("create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "arguments": ref("AgentMutationArguments")}, ("tool", "arguments"))
-mutation_view = {"run_id": ID, "tool": enum("create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "resource_type": enum("project", "task", "milestone", "deliverable", "risk", "issue"),
+add("AgentMutationInput", {"tool": enum("create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "arguments": ref("AgentMutationArguments")}, ("tool", "arguments"))
+mutation_view = {"run_id": ID, "tool": enum("create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "resource_type": enum("project", "task", "milestone", "deliverable", "risk", "issue"),
     "resource_id": ID, "base_version": VERSION, "intent_sha256": HASH, "arguments": ref("AgentMutationArguments"),
     "before": {"type": "object", "additionalProperties": True}, "status": enum("authorized", "committed"),
     "operation_id": nullable(ID), "result_version": nullable(VERSION), "result": nullable({"type": "object", "additionalProperties": True})}

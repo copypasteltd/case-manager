@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-26T23:52:22.804936+00:00",
+  "status": "superseded",
+  "backend_issue": "A newly created task replay test correctly found that generic task reading still allowed other same-project tasks. Creation runs now narrow task reads to their own actual result. Later failures cascaded from the unfinished first run.",
+  "types_issue": "Validated priority was typed as string in the shared complete-task interface; its returned API payload now uses the validated contract type. Web unit tests had passed 95; compilation and mobile tests had failed.",
+  "raw_logs_published": false,
+  "passing_evidence": false,
+  "focused_backend_earlier_failures": {
+    "first": "The initial read-isolation assertion found that a task-creation run could read other project tasks; that failed run caused later CONVERSATION_RUN_ACTIVE cascades. The new run now restricts task reads to its actual result.",
+    "test_query_correction": "A new task dependency assertion originally named a nonexistent task_id column; inspection corrected it to predecessor_id/successor_id before the passing focused/full runs.",
+    "first_edit_script_errors": "Two asserted textual edit scripts stopped on unmatched patterns before subsequent corrections. No passing check was claimed for those edits."
+  },
+  "proof_script_correction": "The first final verifier stopped on a copied increment84 document filename; corrected to increment85 before the final successful source check. No successful final check was claimed for the stopped invocation."
+}

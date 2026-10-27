@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "commit": "24ad850940f5840803fabf325ae33bff92f20ef1",
+  "clients": {
+    "web": {
+      "captured_source_count": 620,
+      "reconstructed_source_count": 619,
+      "committed_source_sha256": "eb356c07cfd0ab39a4d75fc040b4a58b12f155ef0068501c8c28d8828e22067c",
+      "recorded_capture_sha256": "ab37e62742778b4580210ff8ec34f9d6fa70aeb88c8b9f3e4d4e65d9a4be5e1e",
+      "complete_capture_manifest_reconstructed": false,
+      "unfrozen_ignored_artifacts": [
+        "web/tsconfig.tsbuildinfo"
+      ]
+    },
+    "mobile": {
+      "captured_source_count": 642,
+      "reconstructed_source_count": 642,
+      "committed_source_sha256": "7ce3387d670d205a24852c288b02be649db44d62c6732390edad00b6c719ae11",
+      "recorded_capture_sha256": "7ce3387d670d205a24852c288b02be649db44d62c6732390edad00b6c719ae11",
+      "complete_capture_manifest_reconstructed": true,
+      "unfrozen_ignored_artifacts": []
+    }
+  },
+  "retained_files": [
+    {
+      "file": "docs/quality/evidence/project-concerns-web/source-manifest.json",
+      "sha256": "afe340019bd28f312605da86aa7bdafaab8a882f4407ecfc499660c5a2bffb61"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns-web/result.json",
+      "sha256": "64af7bdb04d12e676bf82bcbb26d1f45eae58f6f8d9d7185955ca4d5dced0758"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns-web/capture.json",
+      "sha256": "95e7e4972c39d81263f2e6721669a1c3f4f1795ce79928867a82c852a1aa84fd"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns-mobile/source-manifest.json",
+      "sha256": "365937d649d4f46ac37518a9bcb2dde9e83fd51e57b07cec1fa919b1f1b9958d"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns-mobile/result.json",
+      "sha256": "df532ff9285a92c534303519225c9f10f2c8917cec43b99cd58960be6c5467dd"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns-mobile/capture.json",
+      "sha256": "d5fbc359673c048d08bbf9d637465b78418aa13c1028023612f96fa4cbebddf9"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns/final-source-check.json",
+      "sha256": "4f37bdc7be57edbb7a89dbfd760a08d45574cb4f2bb0dcd0cf964e716946b0e8"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns/result.json",
+      "sha256": "915e458d9c4de8e0e4ad7fa46f8506c201f374472fd4748af7716459e3b531ac"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns/media.json",
+      "sha256": "06050d03273216d658a2d3707b75cf148d736ccd46bf3b76afc80ba34156e2b1"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns/verification.md",
+      "sha256": "bea72c07765344edf523843994c44630b752de838897b2114dbe1f53c4bc97ef"
+    },
+    {
+      "file": "docs/quality/evidence/project-concerns/android-test-scope.json",
+      "sha256": "b25fd22ca4c41cdf04d0f419426034d11cd1ced60e360fcb0ebfae48d6a56de2"
+    }
+  ],
+  "complete_startup_source": {
+    "source_count": 843,
+    "source_sha256": "13e210075540a94db51bd72aca2a1f8fcb215a0ad28b61063d845e9d95b6f785",
+    "reconstructed": true
+  },
+  "scope": "Original complete startup sources and mobile capture reconstructed from Git; Web committed source subset and original evidence retained. The unfrozen ignored Web compiler cache cannot be reconstructed. No current-source or new-execution claim.",
+  "recorded_at": "2026-10-27T00:18:23.135523+00:00"
+}

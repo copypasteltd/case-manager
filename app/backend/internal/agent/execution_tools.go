@@ -209,7 +209,7 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		content, snapshots, err = executionSearch(ctx, tx, st, lease, args)
 	case "propose_project", "create_project":
 		writeOutput, snapshots, err = s.executionProjectPlan(ctx, tx, st, tool, args)
-	case "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone":
+	case "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone":
 		writeOutput, snapshots, err = s.executionMutation(ctx, tx, st, tool, args)
 	case "inspect_operation":
 		var in struct {
@@ -404,6 +404,15 @@ func executionRead(ctx context.Context, tx pgx.Tx, st executionState, args json.
 	}
 	if !slices.Contains([]string{"project", "task", "post", "deliverable", "milestone", "risk", "issue", "service", "agent_finance_report"}, in.Type) || !core.ValidID(in.ID) || in.Offset < 0 || in.Offset > 200000 || in.MaxChars < 1 || in.MaxChars > 10000 || in.VersionID != nil && (!core.ValidID(*in.VersionID) || in.Type != "post" && in.Type != "service") {
 		return nil, nil, core.Invalid("arguments", "请指定准确资料及有限字符范围")
+	}
+	if in.Type == "task" && st.Profile.SkillID == "project-update" {
+		m, e := executionMutationState(ctx, tx, st)
+		if e != nil {
+			return nil, nil, e
+		}
+		if m != nil && m.Tool == "create_task" && !mutationTargets(m, in.Type, in.ID) {
+			return nil, nil, core.Missing()
+		}
 	}
 	if in.Type == "milestone" || in.Type == "deliverable" || in.Type == "risk" || in.Type == "issue" {
 		m, e := executionMutationState(ctx, tx, st)

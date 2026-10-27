@@ -44242,6 +44242,9 @@
               "miss"
             ]
           },
+          "review_required": {
+            "type": "boolean"
+          },
           "description": {
             "type": "string",
             "maxLength": 20000
@@ -44303,6 +44306,7 @@
           "tool": {
             "type": "string",
             "enum": [
+              "create_task",
               "create_risk",
               "update_risk",
               "create_issue",
@@ -44338,6 +44342,7 @@
           "tool": {
             "type": "string",
             "enum": [
+              "create_task",
               "create_risk",
               "update_risk",
               "create_issue",

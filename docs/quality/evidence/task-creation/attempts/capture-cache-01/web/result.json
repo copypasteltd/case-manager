@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T00:00:24.865Z",
+  "finished_at": "2026-10-27T00:00:38.780Z",
+  "checks": [
+    "Actual MFA login displays a committed subtask creation with a new child ID, todo state, version one and an explicit human review requirement.",
+    "The visible form refuses to infer a missing human review decision and sends no run.",
+    "An independent unassigned task previews explicit null references/dates and false review without executing.",
+    "Actual member, parent task and milestone choices survive navigation; microsecond date inversion is rejected before a send.",
+    "The full nine-field subtask authorization previews within three actual viewport widths and is captured from real browser pixels.",
+    "The real authenticated send fixes the exact parent version and all nine fields without falsely claiming creation.",
+    "The exact resend reuses one run; cancelling before execution leaves the actual task collection unchanged."
+  ],
+  "source_count": 627,
+  "source_sha256": "f96db66317d3086b4f39bcccd88f038961e049a33662c93028564e59deb0e4bb",
+  "source_after_sha256": "f96db66317d3086b4f39bcccd88f038961e049a33662c93028564e59deb0e4bb",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "291de13a5a9693ace05d52a789b42e6e9dd8ba9c93e71d3ea2eb0e4348f3ea86",
+  "build_source_after_sha256": "291de13a5a9693ace05d52a789b42e6e9dd8ba9c93e71d3ea2eb0e4348f3ea86",
+  "build_source_unchanged": true
+}

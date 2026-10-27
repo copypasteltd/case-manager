@@ -1,0 +1,7 @@
+{
+  "status": "superseded",
+  "application_flows_passed": true,
+  "reason": "The generic browser source collector included ignored web/tsconfig.tsbuildinfo. Exclude compiler caches, then recapture both clients against complete stable source scopes.",
+  "historical_84_web_limit": "The original ignored compiler cache was never committed or frozen; preserve that capture and its recorded hash, without claiming to reconstruct the missing artifact. Full original startup source and the mobile capture can still be reconstructed from Git.",
+  "raw_private_logs_published": false
+}

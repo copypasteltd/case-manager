@@ -32,6 +32,12 @@ GIF 为轻量预览，较长片段适度加速；MP4 保留完整屏幕操作。
 
 GIFs are lightweight previews, with modest acceleration for the longer clip. MP4 recordings retain the complete interaction. See the [media catalog](docs/media/README.md) for scope, provenance and reproduction.
 
+秘书创建任务／子任务：核对负责人、归属、起止时间、优先级与人工验收要求 → 完整授权预览。Secretary task creation: review assignment, parent, dates, priority and human acceptance, then preview the complete authorization.
+
+![准确创建任务 / Exact task creation](docs/media/gifs/secretary-task-creation-web.gif)
+
+[Web MP4](docs/media/videos/secretary-task-creation-web.mp4) · [移动MP4 / Mobile MP4](docs/media/videos/secretary-task-creation-mobile.mp4) · [移动GIF / Mobile GIF](docs/media/gifs/secretary-task-creation-mobile.gif) · [完整方案 / Workflow](docs/development/85-secretary-task-creation.md) · [完整预览截图 / Preview screenshot](docs/media/screenshots/secretary-task-creation-mobile-preview.png)
+
 秘书风险与问题：核对完整资料 → 确认风险发生会新增问题 → 准确预览。Secretary concerns: review complete metadata, explicitly confirm the linked-issue effect, then preview the exact instruction.
 
 ![Web秘书风险与问题 / Web secretary concerns](docs/media/gifs/secretary-concerns-web.gif)
@@ -134,16 +140,14 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量84）：秘书新增项目风险／问题的完整创建与修改，包含明确状态、截止时刻／概率清空、风险转实际问题、原权限和真实业务回执。Web与Taro共用准确字段和版本规则，`project-update` 1.5.0仍为草稿。使用流程、参数、状态机和迁移见[方案](docs/development/84-secretary-project-concerns.md)。
+当前功能基线（增量85）新增秘书准确创建任务／子任务：完整核对九项资料、人工验收要求及原因，复用原任务权限与命令，保留真实新任务ID、版本1和操作回执。Web／Taro共用参数和回执校验；`project-update` 1.6.0具16项工具／14项准确写工具，八项Skill继续draft。见[流程与契约](docs/development/85-secretary-task-creation.md)。
 
-完整后端156顶层／1,001结果、Web88、运行时43、移动183项及两小程序各16页编译通过；Web和Taro各8组实际流程、各3项布局通过。Android开发APK为42,885,880字节、17项包检查通过；25项JVM结果按Gradle标记使用缓存。25项最终来源复核通过。
+本轮完整后端157顶层、1,014结果／920末级、8批，71份迁移；Web95、运行时45、移动187项及两小程序各16页构建。新Android开发包42,888,501字节、17项包检查，25项JVM结果来自Gradle缓存；Linux仅交叉编译。实际Web／Taro各7组流程、3项布局。完整数量、源码摘要、失败尝试及限制见[验证记录](docs/quality/evidence/task-creation/verification.md)。
 
-新增4张截图和Web／移动两对MP4／GIF，演示素材目录共36 PNG、11 MP4、11 GIF。原生开发API已更新至70项迁移；10项只读探针通过，0活动模型／启用TG／测试库。增量83的805份采集来源按afbb926原Git blob保留。完整记录见[增量84验证](docs/quality/evidence/project-concerns/verification.md)，真实四端、云／模型／TG、容量、安全和生产放行继续开放。
+演示目录共40 PNG、13 MP4、13 GIF；新增四张图和两端各一对实际MP4／GIF。旧84完整启动来源和642项移动采集来源按24ad850原Git重建；旧Web620项中619项可从Git重建，未冻结的忽略编译缓存明确无法复现，未伪造补齐。日常本地API升级至71份迁移，真实模型／TG保持关闭。四端真机、云、模型隔离、容量、安全、备份恢复与生产放行继续开放。
 
-The current functional baseline (increment84) adds complete secretary risk/issue creation and updates, explicit state transitions, nullable date/probability clearing, atomic risk-to-issue conversion and genuine business receipts. Web and Taro share exact field/version rules. The `project-update` 1.5.0 Skill remains draft; see the [workflow, parameters and migration](docs/development/84-secretary-project-concerns.md).
+The current functional baseline (increment85) adds exact secretary task/subtask creation: review all nine fields, human-review choice and reason, reuse the original task command/authority, and retain an actual new task ID, version1 and operation receipt. Web/Taro share payload and receipt checks. `project-update` 1.6.0 has16 tools/14 exact write tools; all eight Skills remain draft. See the [workflow and contract](docs/development/85-secretary-task-creation.md).
 
-Fresh checks passed for the complete backend (156 top-level tests/1,001 results), Web (88), runtime (43), mobile (183), both 16-page mini-program builds, eight actual flows and three layouts per browser client. The new 42,885,880-byte Android debug APK passed 17 inspections;25 JVM results were reused from Gradle cache as recorded. All 25 final source checks passed.
+This round includes157 backend top-level tests,1,014 results/920 leaves across eight batches and71 migrations;95 Web,45 runtime and187 mobile tests with16 pages per mini-program. The new42,888,501-byte development APK passed17 inspections;25 JVM results came from Gradle cache. Linux is compilation only. Each actual Web/Taro capture covers seven flows and three layouts. The [verification record](docs/quality/evidence/task-creation/verification.md) retains source hashes, failures and scope limits.
 
-Four screenshots and two actual Web/mobile MP4/GIF pairs bring the media catalog to 36 PNGs, 11 MP4s and 11 GIFs. The owned native development API now uses70 migrations;10 read-only probes passed with zero active model profiles, enabled TG channels or test databases. Increment83 remains bound to 805 original Git blobs at afbb926. See [increment84 verification](docs/quality/evidence/project-concerns/verification.md). Real devices/platforms, cloud/model/TG, capacity, security and production gates remain open.
-
-后续完成更新时，同步中英文说明、受影响的截图／录屏／GIF、验证证据及更新记录，再连同代码提交并推送到本仓库。Follow [贡献与同步约定 / Contribution and synchronization](docs/contributing.md) and [AGENTS.md](AGENTS.md): update both language guides, affected media, evidence and release notes, then commit and push the corresponding code and documentation together.
+The catalog contains40 PNGs,13 MP4s and13 GIFs. Four new screenshots and two real Web/mobile recording pairs are included. Original increment84 startup/mobile sources reconstruct from24ad850;619 of620 old Web entries reconstruct from Git, while its unfrozen ignored compiler cache remains an explicit limitation. The owned native API uses71 migrations with real model/TG integrations disabled. Full device/cloud/model/isolation/capacity/security/recovery/production gates remain open.

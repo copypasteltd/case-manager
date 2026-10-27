@@ -47,7 +47,7 @@ type mutationArguments struct {
 }
 
 func mutationTool(tool string) bool {
-	return slices.Contains([]string{"create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"}, tool)
+	return slices.Contains([]string{"create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"}, tool)
 }
 
 // Keep the original field mask, including absent versus explicit null dates.
@@ -68,6 +68,9 @@ func parseMutation(in MutationInput) (mutationArguments, string, json.RawMessage
 	rawBase, _ := json.Marshal(map[string]json.RawMessage{"id": fields["id"], "reason": fields["reason"], "expected_version": fields["expected_version"]})
 	if strictArguments(rawBase, &base) != nil || !core.ValidID(base.ID) || base.ID != strings.ToLower(base.ID) || core.RequireVersion(base.ExpectedVersion) != nil || core.Name(base.Reason) != nil {
 		return base, "", nil, core.Invalid("mutation", "请核对对象、基础版本和更新原因")
+	}
+	if in.Tool == "create_task" {
+		return parseTaskCreation(base, canonical, fields)
 	}
 	if concernMutationTool(in.Tool) {
 		return parseConcernMutation(in.Tool, base, canonical, fields)
@@ -227,6 +230,16 @@ func mutationAudience(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 		return contextDocument{}, core.Missing()
 	}
 	kind, id := m.ResourceType, m.ResourceID
+	if err := taskCreationAudience(ctx, tx, a, c, m, members); err != nil {
+		return contextDocument{}, err
+	}
+	if m.Tool == "create_task" && m.OperationID != nil {
+		var created project.Task
+		if !taskCreationReceipt(m, m.Result) || json.Unmarshal(m.Result, &created) != nil {
+			return contextDocument{}, runtimeFailure("MUTATION_RECEIPT_INVALID")
+		}
+		kind, id = "task", created.ID
+	}
 	if concernCreationTool(m.Tool) && m.OperationID != nil {
 		var created project.Concern
 		if json.Unmarshal(m.Result, &created) != nil || !core.ValidID(created.ID) || created.ProjectID != m.ProjectID {
@@ -273,6 +286,10 @@ func mutationTargets(m *mutationRecord, kind, id string) bool {
 	}
 	if m.ResourceType == kind && m.ResourceID == id {
 		return true
+	}
+	if m.Tool == "create_task" && m.OperationID != nil && kind == "task" {
+		var created project.Task
+		return taskCreationReceipt(*m, m.Result) && json.Unmarshal(m.Result, &created) == nil && created.ID == id
 	}
 	if concernCreationTool(m.Tool) && m.OperationID != nil && kind == strings.TrimPrefix(m.Tool, "create_") {
 		var created project.Concern
@@ -370,7 +387,7 @@ func authorizeMutation(ctx context.Context, tx pgx.Tx, a core.Actor, doc context
 	if m.Tool == "update_deliverable" {
 		action = "deliverable.create"
 	}
-	if m.Tool == "create_milestone" || m.Tool == "create_deliverable" || concernCreationTool(m.Tool) {
+	if m.Tool == "create_task" || m.Tool == "create_milestone" || m.Tool == "create_deliverable" || concernCreationTool(m.Tool) {
 		// Authorize against the parent on every attempt, including replay. A
 		// created child is read separately with the whole current audience.
 		parent, err := contextDocumentRead(ctx, tx, a, Conversation{ProjectID: &m.ProjectID}, ContextSource{Type: "project", ID: m.ProjectID}, nil)
@@ -378,6 +395,9 @@ func authorizeMutation(ctx context.Context, tx pgx.Tx, a core.Actor, doc context
 			return err
 		}
 		doc, action = parent, "milestone.create"
+		if m.Tool == "create_task" {
+			action = "task.create"
+		}
 		if m.Tool == "create_deliverable" {
 			action = "deliverable.create"
 		}
@@ -433,6 +453,13 @@ func authorizeMutation(ctx context.Context, tx pgx.Tx, a core.Actor, doc context
 		return err
 	}
 	if _, ok := args["assignee_id"]; ok {
+		if m.Tool == "create_task" {
+			var assignee *string
+			_ = json.Unmarshal(args["assignee_id"], &assignee)
+			if assignee == nil || *assignee == a.UserID {
+				return nil
+			}
+		}
 		return authz.Require(ctx, tx, a, "task.assign", resource)
 	}
 	return nil
@@ -551,6 +578,10 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 		body, _ := json.Marshal(fields)
 		var result core.Result
 		switch tool {
+		case "create_task":
+			var input project.TaskCreate
+			_ = json.Unmarshal(body, &input)
+			result, err = business.CreateTask(ctx, command, m.ProjectID, input)
 		case "create_risk", "create_issue":
 			var input project.ConcernCreate
 			_ = json.Unmarshal(body, &input)
@@ -608,6 +639,10 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 			Version int64  `json:"version"`
 		}
 		validReceipt := json.Unmarshal(raw, &receipt) == nil && receipt.ID == m.ResourceID && receipt.Version == m.BaseVersion+1
+		if tool == "create_task" {
+			validReceipt = taskCreationReceipt(*m, raw)
+			m.OperationID, m.Result = &result.OperationID, raw
+		}
 		if tool == "create_milestone" {
 			var created project.Milestone
 			validReceipt = json.Unmarshal(raw, &created) == nil && core.ValidID(created.ID) && created.ID != m.ResourceID && created.ProjectID == m.ProjectID && created.Version == 1 && created.State == "open"
@@ -646,6 +681,11 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 		return nil, nil, err
 	}
 	kind, id := m.ResourceType, m.ResourceID
+	if tool == "create_task" {
+		var created project.Task
+		_ = json.Unmarshal(m.Result, &created)
+		kind, id = "task", created.ID
+	}
 	if concernCreationTool(tool) {
 		var created project.Concern
 		_ = json.Unmarshal(m.Result, &created)

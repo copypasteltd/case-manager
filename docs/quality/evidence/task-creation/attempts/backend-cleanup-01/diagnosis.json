@@ -1,0 +1,9 @@
+{
+  "status": "superseded",
+  "business_assertion_failure_established": false,
+  "failure_location": "server_integration_test.go:86",
+  "failure": "Disposable native PostgreSQL DROP DATABASE cleanup exceeded its two-minute context in TestCrossCloudReplicas.",
+  "next_action": "Resume the same source-bound failed batch after owned captures and Android build stop; keep already passed batches.",
+  "raw_private_logs_published": false,
+  "resolved": "Same-source batch3 and remaining batches passed on resume. Exact owned leftover fixture database was identified from its directory creation time and cancelled DROP in the private server log, then cleaned after rechecking zero sessions; see ../../orphan-cleanup.json."
+}

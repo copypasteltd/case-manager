@@ -72,6 +72,9 @@ func toolDefinitions(skill string) []any {
 	transitionTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "action": str(map[string]any{"enum": []string{"start", "review", "return", "complete", "block", "resume", "cancel", "reopen"}})}, []string{"id", "expected_version", "reason", "action"})
 	updateDeliverable := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "name": name, "acceptance_criteria": str(map[string]any{"minLength": 1, "maxLength": 20000}), "owner_id": uuid, "milestone_id": nullable(uuid)}, []string{"id", "expected_version", "reason", "name", "acceptance_criteria", "owner_id", "milestone_id"})
 	createDeliverable := updateDeliverable
+	createTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "body": str(map[string]any{"maxLength": 20000}),
+		"assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid), "start_at": nullable(str(map[string]any{"format": "date-time"})), "due_at": nullable(str(map[string]any{"format": "date-time"})),
+		"priority": str(map[string]any{"enum": []string{"low", "normal", "high", "urgent"}}), "review_required": map[string]any{"type": "boolean"}}, []string{"id", "expected_version", "reason", "title", "body", "assignee_id", "parent_id", "milestone_id", "start_at", "due_at", "priority", "review_required"})
 	createMilestone := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "owner_id": uuid, "due_at": str(map[string]any{"format": "date-time"})}, []string{"id", "expected_version", "reason", "title", "owner_id", "due_at"})
 	updateMilestone := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "owner_id": uuid, "due_at": str(map[string]any{"format": "date-time"})}, []string{"id", "expected_version", "reason"})
 	transitionMilestone := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "action": str(map[string]any{"enum": []string{"achieve", "miss", "cancel", "reopen"}})}, []string{"id", "expected_version", "reason", "action"})
@@ -83,6 +86,10 @@ func toolDefinitions(skill string) []any {
 		{"propose_project", "在发起人的公司私密会话中固定项目创建计划；返回待本人批准的计划，不创建项目。", propose},
 		{"create_project", "仅消费本人已通过两步验证批准的准确计划；原子创建项目并返回真实业务操作回执。不能批准计划。", create}}
 	if skill == "project-update" {
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
+		}{"create_task", "仅按本次父项目版本和完整 authorized_mutation 创建一个待处理任务或子任务；九项资料与原因必须一致，不增加依赖、不执行任务、不代替人工验收。", createTask})
 		for _, tool := range []string{"create_risk", "update_risk", "create_issue", "update_issue"} {
 			risk, creating := tool == "create_risk" || tool == "update_risk", tool == "create_risk" || tool == "create_issue"
 			props := map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name,
@@ -254,7 +261,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"propose_project", "create_project", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"propose_project", "create_project", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

@@ -7309,6 +7309,7 @@ export interface components {
             acceptance_criteria?: string;
             /** @enum {string} */
             action?: "start" | "review" | "return" | "complete" | "block" | "resume" | "cancel" | "reopen" | "activate" | "hold" | "close" | "achieve" | "miss";
+            review_required?: boolean;
             description?: string;
             /** @enum {string} */
             severity?: "low" | "medium" | "high" | "critical";
@@ -7320,14 +7321,14 @@ export interface components {
         };
         AgentMutationInput: {
             /** @enum {string} */
-            tool: "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             arguments: components["schemas"]["AgentMutationArguments"];
         };
         AgentMutationView: {
             /** Format: uuid */
             run_id: string;
             /** @enum {string} */
-            tool: "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             /** @enum {string} */
             resource_type: "project" | "task" | "milestone" | "deliverable" | "risk" | "issue";
             /** Format: uuid */

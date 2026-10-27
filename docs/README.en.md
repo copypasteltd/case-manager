@@ -137,6 +137,8 @@ Service operators publish an exact source revision and Ed25519 public key in Web
 
 The bridge reads original scrape timestamps through six bounded queries, persists each exact signed body before delivery and retries uncertain outcomes with the same bytes. Repeated scrapes do not extend freshness or advance failure/recovery counts; a failed scrape produces no healthy/failed fact, so old evidence expires to unknown. The existing Web and Taro pages show threshold-based outages, recovery and immutable signed evidence. The included browser recording uses a controlled Prometheus protocol endpoint and a real native bridge/API; actual monitor installation, host metrics and independent external alerts still require deployment acceptance.
 
+For exact task/subtask creation, select **Create task or subtask** in a project conversation, review all nine fields plus reason, and explicitly choose the human-review requirement. Parent/milestone candidates are paged; mobile navigation preserves inputs. Preview performs no write. After sending, wait for a genuine commit; use the task page for dependencies and human acceptance. See the [complete workflow](development/85-secretary-task-creation.md), [actual demos](media/README.md) and [verification](quality/evidence/task-creation/verification.md).
+
 ## 5. Native local development
 
 The supplied helpers target the current native Windows development environment. Do not launch Docker, WSL, VMs or Android emulators. A persistent local development PostgreSQL cluster is a development tool; production application hosts still retain only temporary file data.
@@ -246,11 +248,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Fresh 156 top-level/1,001 results/908 leaf scenarios, eight batches, 70 migrations | Fourteen new secretary concern scenarios; failed attempts retained; complete current Go/SQL/contract binding |
-| Runtime / Web | Fresh 43 /88 tests and builds passed | Four new tools belong only to project-update 1.5.0; all eight Skills remain draft; no real model execution |
-| Taro | Fresh 183 tests/types and 16 pages per mini-program | Eight actual flows and three layouts per Web/Taro client; complete metadata, realization confirmation, exact send/retry/cancel |
-| Android | Fresh 42,885,880-byte APK, 17 inspections;25 JVM results from Gradle cache | Exact four XML results and task log retained; no new JVM execution or device acceptance claim |
-| Media catalog |36 PNGs, 11 MP4s, 11 GIFs; four new concern screenshots and two actual Web/mobile recording pairs | Actual isolated API/browser;805 increment83 capture sources reconstructed from Git; no real cloud/model/TG delivery |
+| Go / PostgreSQL | Fresh157 top-level/1,014 results/920 leaves, eight batches,71 migrations | Twelve new exact task creation scenarios; failed/cleanup timeout attempts retained; current Go/SQL/contract binding |
+| Runtime / Web | Fresh45 /95 tests and builds passed | The new tool belongs only to project-update1.6.0; all eight Skills remain draft; real model execution disabled |
+| Taro | Fresh187 tests/types and16 pages per mini-program | Seven actual flows and three layouts per Web/Taro client; complete task, explicit review choice, exact send/retry/cancel |
+| Android | Fresh42,888,501-byte APK,17 inspections;25 JVM results from Gradle cache | Exact four XML results and task log retained; no new JVM execution or device acceptance claim |
+| Media catalog |40 PNGs,13 MP4s,13 GIFs; four new screenshots and two actual Web/mobile recording pairs | Actual isolated API/browser; increment84 startup/mobile sources reconstruct; its unfrozen ignored Web cache remains an explicit limitation |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

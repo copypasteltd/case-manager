@@ -1,0 +1,46 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-27T00:28:50.987180+00:00",
+  "files": [
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-web-preview.png",
+      "sha256": "075d1ce985bbdb114f78872612799e72230312706ac3caf6ec5bbf5e3d4a81d9"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-web-receipt.png",
+      "sha256": "1031dc7aa930b9739bfa4cdf9f37e00b488762e1cf68dadfb4e927fc031c6940"
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-creation-web.gif",
+      "sha256": "8862492b5f9a726f33e6c0262c7c019dda30609fd1d30630e4ee49820486eef3",
+      "frames": 12,
+      "duration_ms": 2000,
+      "reviewed_frames": [
+        0,
+        6,
+        11
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-mobile-preview.png",
+      "sha256": "c5df2c93d8486b04639bdc841679e65d9d4e1b44a2f229af8874d079858ad4a4"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-mobile-receipt.png",
+      "sha256": "f6a35575b50d70a6be3212d850f59b4b76d28fffa939f1707ef27cd50d085a78"
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-creation-mobile.gif",
+      "sha256": "0f2d5f6f80bf8b034828502cb34ea8c8c3871615ed6f9f1caee51e1e1159430d",
+      "frames": 12,
+      "duration_ms": 2000,
+      "reviewed_frames": [
+        0,
+        6,
+        11
+      ]
+    }
+  ],
+  "review": "Viewed four original viewport PNGs and actual GIF first/middle/last frames. The complete nine-field preview is readable; receipt images retain their real viewport crop. Synthetic raw script-like text stays escaped as text. No credential fields appear.",
+  "production_acceptance": false
+}

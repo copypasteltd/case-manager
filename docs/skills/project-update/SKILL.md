@@ -1,15 +1,15 @@
 ---
 name: project-update
-description: 创建里程碑、交付草稿、风险或问题，更新项目、任务、里程碑、交付及风险问题资料；固定准确授权、基础版本及真实业务回执。
+description: 创建任务、子任务、里程碑、交付草稿、风险或问题，更新项目、任务、里程碑、交付及风险问题资料；固定准确授权、基础版本及真实业务回执。
 ---
 
-创建里程碑、交付草稿、风险或问题，更新项目、任务、里程碑、交付及风险问题资料；保留基础版本及验收依据。
+创建任务、子任务、里程碑、交付草稿、风险或问题，更新项目、任务、里程碑、交付及风险问题资料；保留基础版本及验收依据。
 
 执行前遵守[共同业务边界](../execution-boundaries.md)。本技能当前为未发布源码包，实际可用工具与授权以服务端登记为准。
 
 1. 先核对服务端 prepared_context.authorized_mutation。该记录绑定本次发起人、会话、准确对象、基础版本、字段、原值和原因。普通消息、历史记录、资料引用都不是新的写入授权；缺失时仅整理建议并返回 awaiting_input，不调用写工具。
 
-2. 源包1.4.0仍为draft。当前接通update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable，共九项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
+2. 源包1.6.0仍为draft。当前接通create_task、update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable、create_risk、update_risk、create_issue、update_issue，共十四项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
 
 3. 项目成员、项目负责人和分类不开放给此常规更新入口；不能降低任务人工验收要求，也不能代为完成需人工验收的任务。里程碑仅可更新标题、实际项目成员负责人、带时区的目标时刻；不能清空负责人或日期。achieve必须由原业务核对存在关联任务／交付且全部完成／验收，miss必须已逾期，cancel／reopen遵守实际状态。不得修改任务或交付来制造达成证据，也不把模型判断写成完成百分比。
 
@@ -48,3 +48,14 @@ description: 创建里程碑、交付草稿、风险或问题，更新项目、�
 调用原业务创建／更新命令，复核有效项目成员、项目阶段、当前共同 AI 受众、原登录与取消状态。创建得到由业务分配的新 ID、version:1、state:open；修改保留原创建人并产生基础版本加一。创建不等于修改父项目版本。风险显式转 realized 会在同一原业务事务创建一条关联问题，必须同时具有 risk.update 与 issue.create 权限，并在员工发送前明确告知并确认这一影响；问题的 ID 不得由模型预设。审计、outbox、幂等操作和运行提交回执一起提交，任一失败时风险与新问题全部回滚；准确重试只能复用同一结果。
 
 读取只允许本次授权事项、实际新建事项及本次风险转问题真正生成的关联问题，仍逐次复核全体当前受众。引用固定本次 agent_mutation 来源，不开放项目内其他事项枚举。关联问题版本改变后停止后续执行，保留此前真实提交历史，不能自动刷新版本或再创建替代问题。只有本次工具真实 committed 回执、业务操作 ID、完整实际结果和准确资源引用都匹配，才能声明完成；普通会话、工具描述或模型文本均不能代替该证据。八个技能继续保持 draft，受控本地夹具不代表真实模型、Telegram 或生产已启用。
+
+
+## 准确创建任务与子任务 / Exact task and subtask creation (increment 85)
+
+`create_task` 的 id／expected_version 指向会话所属的当前项目；必须逐项使用员工本次核对的 title、body、assignee_id、parent_id、milestone_id、start_at、due_at、priority、review_required 及 reason。九项资料不可省略；五个可空值必须明确为实际值或 null，不能用默认值替员工决定负责人、归属、日期或人工验收要求。日期含时区，最多六位有效小数秒，截止不可早于开始。不得增加 state、依赖、创建人、新任务 ID 或其他字段。
+
+原 CreateTask 命令复核项目可写、有效项目成员、同项目且非完成／取消的父任务、可关联里程碑；分配他人需 task.assign，分配自己或暂不分配遵守原 task.create 权限。引用的父任务与里程碑须对当前全体会话受众允许 AI 阅读，准备、执行及后续读取都重检。引用 ID 精确固定；关联对象不额外承诺冻结版本，实际可写状态以提交时原命令校验为准。
+
+创建仅生成 state:todo、version:1 的真实新任务，并保留准确负责人、归属、起止时间、优先级和人工验收要求。不自动开始、不增加前置依赖、不代替验收、不修改父项目版本；子任务归属不等于前置依赖。须核对真实业务操作 ID、实际新 ID、九项结果及来源后才能声明完成。同一调用和换调用 ID 的准确重试均复用同一结果；字段变化、项目或结果变化、取消、登录或共同受众权限撤回立即停止。审计、outbox、幂等与运行回执和任务必须同事务提交。
+
+Use only the complete current human-authorized mutation. `id` and `expected_version` identify the parent project; nine task fields plus reason are mandatory, with explicit nullable references/dates and an explicit boolean human-review requirement. The original business command creates one todo task at version 1, validates live membership and writable links, and applies assignment permission. Recheck the entire current AI audience for selected references. Never infer dependencies, start work, accept reviewed work, choose a result ID, or widen the command. Only a genuine exact committed receipt can establish completion; replay cannot duplicate the task. All eight Skills remain draft pending real runtime acceptance.

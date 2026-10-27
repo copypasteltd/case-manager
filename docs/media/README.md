@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **36张PNG、11段MP4、11个GIF**。增量84新增四张秘书风险／问题截图和Web、Taro各一对实际录屏／GIF；此前知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成业务数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
+本目录包含 **40张PNG、13段MP4、13个GIF**。增量85新增四张秘书任务／子任务截图和Web、Taro各一对实际录屏／GIF；此前知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成业务数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
 
-This catalog contains **36 PNGs,11 MP4s and11 GIFs**. Increment84 adds four secretary concern screenshots and an actual recording/GIF pair for each of Web and Taro. Earlier knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records or credentials.
+This catalog contains **40 PNGs,13 MP4s and13 GIFs**. Increment85 adds four secretary task creation screenshots and an actual recording/GIF pair for each of Web and Taro. Earlier knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records or credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -137,7 +137,24 @@ Actual shared Taro H5 interactions use the native isolated Go/PostgreSQL fixture
 | Taro准确预览 / Exact preview | [Mobile preview](screenshots/secretary-concerns-mobile-preview.png) |
 | Taro真实回执 / Actual receipt | [Mobile receipt](screenshots/secretary-concerns-mobile-receipt.png) |
 
-## 11. 页面截图 / Screenshots
+## 11. 秘书创建任务与子任务 / Secretary task and subtask creation
+
+完整核对九项资料、明确人工验收与关联，然后加入准确授权预览；画面中的历史提交来自原业务隔离夹具。真实发送、重试与取消另有API断言。Review nine complete fields, explicit human acceptance and links, then preview exact authority. Committed history comes from the original isolated business fixture; actual sends/retries/cancellation have separate API assertions.
+
+![准确创建任务 / Exact task creation](gifs/secretary-task-creation-web.gif)
+
+[Web MP4](videos/secretary-task-creation-web.mp4) · [Mobile MP4](videos/secretary-task-creation-mobile.mp4) · [Mobile GIF](gifs/secretary-task-creation-mobile.gif) · [完整流程 / Workflow](../development/85-secretary-task-creation.md) · [验证 / Evidence](../quality/evidence/task-creation/verification.md)
+
+| 页面 / Page | 实际截图 / Actual capture |
+| --- | --- |
+| Web完整授权 / Complete authorization | [Web preview](screenshots/secretary-task-creation-web-preview.png) |
+| Web新任务回执 / New task receipt | [Web receipt](screenshots/secretary-task-creation-web-receipt.png) |
+| Taro完整授权 / Complete authorization | [Mobile preview](screenshots/secretary-task-creation-mobile-preview.png) |
+| Taro新任务回执 / New task receipt | [Mobile receipt](screenshots/secretary-task-creation-mobile-receipt.png) |
+
+两端各9张真实帧，Web1846ms／移动1838ms；两段MP4均2.0s、GIF均12帧／2000ms、1×、无声。截图保留实际视口裁切，移动回执下部需滚动查看；完整字段另见预览。Each clip uses nine actual frames,1846ms Web/1838ms mobile; both MP4s are2.0s and both GIFs are12 frames/2000ms at1×, silent. PNGs retain real viewport crops; the mobile receipt continues below the viewport. The preview shows complete authorization.
+
+## 12. 页面截图 / Screenshots
 
 | 页面 / Page | 图片 / Image | 范围 / Scope |
 | --- | --- | --- |
@@ -176,7 +193,7 @@ Actual shared Taro H5 interactions use the native isolated Go/PostgreSQL fixture
 
 The plan image is a 1440 × 900 top crop of the [earlier actual secretary-flow evidence](../quality/evidence/secretary-discovery-web/plan-reference.png). No UI was synthesized or rewritten. [Provenance](../quality/evidence/repository-showcase/historical-media.json) records source hashes and crop coordinates.
 
-## 12. 来源、编码与复现 / Provenance, encoding and reproduction
+## 13. 来源、编码与复现 / Provenance, encoding and reproduction
 
 | 记录 / Record | 内容 / Contents |
 | --- | --- |
@@ -250,7 +267,7 @@ python scripts/encode_mobile_knowledge_media.py
 
 本轮输出为3张实际页面截图、2.8秒无声MP4和17帧GIF；源为13张JPEG／2656ms。来源为805份当前源码及采集帮助程序；实际检查12组流程及9项布局，两个上下文、临时服务与隔离夹具都已关闭。旧媒体保留原提交来源。Current output: three actual screenshots, a2.8-second silent MP4 and17-frame GIF from13 real JPEGs/2656ms. Twelve flows and nine layouts bind805 complete sources; both contexts, the temporary server and isolated fixture closed. Earlier media retains its historical source attribution.
 
-### 当前84复现 / Current increment84 reproduction
+### 历史84复现 / Historical increment84 reproduction
 
 检出对应增量84提交，按双语指南准备原生依赖与隔离数据库；先归档已有证据记录，然后顺序运行，保留失败记录。Check out increment84 and prepare native dependencies/an isolated database. Archive existing evidence first; run captures sequentially and retain failures.
 
@@ -262,3 +279,19 @@ python app/scripts/encode_project_concerns_media.py
 ```
 
 采集只记录认证后的会话，不录制登录、MFA或私有能力。实际Taro滚轮与候选列表均由可见控件操作，不注入组件状态。结束即关闭所有自建上下文、浏览器、临时Web/H5服务和夹具数据库，保留日常API／Worker／PostgreSQL。Captures exclude login/MFA/private capabilities, operate the visible controls and close every owned browser/context/server/fixture afterward.
+
+
+### 当前85复现 / Current increment85 reproduction
+
+先归档已有证据，准备原生依赖与隔离数据库，按顺序执行。先前失败／重录素材保留在本轮attempts，不能当作当前成功证据。Archive existing evidence, prepare native dependencies/an isolated database, then run sequentially. Superseded attempt media is retained and is not current passing evidence.
+
+```powershell
+$env:PYTHONUTF8='1'
+python app/scripts/run_task_creation_browser.py
+python app/scripts/run_task_creation_browser.py --mobile
+python app/scripts/encode_task_creation_media.py
+python app/scripts/record_task_creation_history.py
+python app/scripts/verify_task_creation_sources.py
+```
+
+当前采集明确排除忽略的tsbuildinfo编译缓存。历史84的完整启动来源及642项移动来源可从24ad850重建；旧Web620项中619份Git文件可重建，但原缓存未提交／冻结，完整旧Web采集清单不能重建，不以当前缓存伪造补齐，见[历史核对](../quality/evidence/task-creation/historical-84.json)。Current captures exclude ignored compiler caches. Increment84 complete startup/mobile sources reconstruct from24ad850;619 of620 Web entries reconstruct, while its unfrozen ignored cache remains unavailable. The historical full Web capture digest is retained without a fabricated reconstruction.

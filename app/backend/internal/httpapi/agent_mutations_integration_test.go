@@ -104,7 +104,7 @@ func TestAgentRunMutations(t *testing.T) {
 		credentials[l.RunID] = x.Credential
 		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation"}}
 		post(l, agentworker.ControlPath+"confinement", native, 409)
-		native.ExpectedTools = append(native.ExpectedTools, "company/create_risk", "company/update_risk", "company/create_issue", "company/update_issue", "company/create_deliverable", "company/update_deliverable", "company/create_milestone", "company/update_project", "company/update_task", "company/transition_task", "company/transition_project", "company/update_milestone", "company/transition_milestone")
+		native.ExpectedTools = append(native.ExpectedTools, "company/create_task", "company/create_risk", "company/update_risk", "company/create_issue", "company/update_issue", "company/create_deliverable", "company/update_deliverable", "company/create_milestone", "company/update_project", "company/update_task", "company/transition_task", "company/transition_project", "company/update_milestone", "company/transition_milestone")
 		post(l, agentworker.ControlPath+"confinement", native, 200)
 		if e = service.StartExecution(ctx, l); e != nil {
 			t.Fatal(e)
@@ -174,8 +174,8 @@ func TestAgentRunMutations(t *testing.T) {
 		} `json:"tools"`
 	}
 	_ = json.Unmarshal(listing["result"], &listed)
-	if len(listed.Tools) != 15 {
-		t.Fatal("project-update did not expose its exact thirteen write and two read tools")
+	if len(listed.Tools) != 16 {
+		t.Fatal("project-update did not expose its exact fourteen write and two read tools")
 	}
 	// The pre-write read cites immutable intent rather than invalidating its own turn.
 	raw, e := tool(l, "read-base", "read_resource", map[string]any{"type": "task", "id": task.ID, "max_chars": 100})

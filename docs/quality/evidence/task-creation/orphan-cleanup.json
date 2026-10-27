@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T00:45:36.956678+00:00",
+  "database_identity_sha256": "3f6de0479da938ba8e5613265378e6fd6626e4e6f4d1b4110e38521c9ba4107e",
+  "owned_failed_batch": 3,
+  "creation_time_within_failed_batch": true,
+  "server_log_proves_cancelled_drop": true,
+  "zero_connections_rechecked": true,
+  "exact_disposable_name_guard": true,
+  "drop_exit_code": 0,
+  "postgres_restarted": false,
+  "other_databases_modified": false,
+  "scope": "Cleaned exactly the synthetic fixture database left by this turn's failed native DROP timeout. Private server log and credentials remain ignored."
+}
