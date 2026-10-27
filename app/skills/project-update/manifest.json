@@ -1,12 +1,13 @@
 {
   "skill_id": "project-update",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "state": "draft",
   "owner_role": "business_admin",
   "runtime_compatibility": "codex-sdk@0.164.0",
   "authorization_level": "L1",
   "allowed_tools": [
     "read_resource",
+    "update_task_dependency",
     "create_task",
     "update_project",
     "update_task",
@@ -24,6 +25,7 @@
     "update_issue"
   ],
   "completion_tools": [
+    "update_task_dependency",
     "create_task",
     "update_project",
     "update_task",

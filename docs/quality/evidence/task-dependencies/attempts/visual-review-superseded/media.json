@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-27T14:39:15.741662+00:00",
+  "encoder_script_sha256": "1f2937e075d178d7f8762a5e9df3eed9b25a0f5bce665f1a9377d25fc137b9fe",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "52cb2c8923dc269120e427dec9996850b745cf1cec8d111cb9bf3f78622117a4",
+      "build_source_sha256": "922e53d9f6a5bbbefc42c035f504b913efcc8fd7c7ecd3adb7a863499f8d0fcf",
+      "capture_manifest": "docs/quality/evidence/task-dependencies/web-capture-manifest.json",
+      "capture_manifest_sha256": "e1763eec8e88b905de0c9bde2136c134710d76e6b3fcbe7ebbad548686cb24f3",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4137,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "43",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-task-dependencies-web.mp4",
+          "sha256": "f6404f9db4f24245449d0092cc888c7500f309513df5fe0c375153754db57d95",
+          "bytes": 314367
+        },
+        {
+          "file": "docs/media/gifs/secretary-task-dependencies-web.gif",
+          "sha256": "922b1357e9c494811f85a88d78b5509695e54c81f688f1eea25e423e922e86ed",
+          "bytes": 697638
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "236d4fc73fd6c1d8b1ad8c55496b8f7c7231cac52a925a41ec88f84009bd0f4b",
+      "build_source_sha256": "922e53d9f6a5bbbefc42c035f504b913efcc8fd7c7ecd3adb7a863499f8d0fcf",
+      "capture_manifest": "docs/quality/evidence/task-dependencies/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "ec31142d128068b7b4f2f3632c10dd8cfd148e51e39037659146e1c764549e9a",
+      "capture_frame_count": 18,
+      "capture_duration_ms": 3719,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "39",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-task-dependencies-mobile.mp4",
+          "sha256": "49150c8b4c3817f8431889248af3f4d46954b24b147f19bd3aca64128d337736",
+          "bytes": 187781
+        },
+        {
+          "file": "docs/media/gifs/secretary-task-dependencies-mobile.gif",
+          "sha256": "d5afd67b54497df7be3ed1196225bf56bb1f14f2441ecdbe06a3b5af67501a79",
+          "bytes": 647542
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

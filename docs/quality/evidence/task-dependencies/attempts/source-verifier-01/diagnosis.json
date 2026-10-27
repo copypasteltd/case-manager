@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Source checker expected eleven publication snapshots; the retained manifest has ten and every byte matched its published Git object. Correct the assertion to the actual manifest count; no application, build, capture or historical snapshot changes.",
+  "original_verifier_sha256": "f8a785a5cab363919a4272414f14c8f1838fd11301a0ac04d443bbd9f8d6ac07",
+  "original_verifier": "verifier.py.source",
+  "scope": "Verifier assertion diagnostic; application proofs retain their own complete source manifests."
+}

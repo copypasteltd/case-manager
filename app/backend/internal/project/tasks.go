@@ -440,6 +440,15 @@ func (s *Service) TransitionTask(ctx context.Context, c core.Command, id string,
 	})
 }
 func (s *Service) Dependency(ctx context.Context, c core.Command, id string, input Dependency) (core.Result, error) {
+	return s.dependency(ctx, c, id, input, nil)
+}
+func (s *Service) DependencyExact(ctx context.Context, c core.Command, id string, input ExactDependency) (core.Result, error) {
+	if err := core.RequireVersion(input.ExpectedPredecessorVersion); err != nil {
+		return core.Result{}, err
+	}
+	return s.dependency(ctx, c, id, input.Dependency, &input.ExpectedPredecessorVersion)
+}
+func (s *Service) dependency(ctx context.Context, c core.Command, id string, input Dependency, predecessorVersion *int64) (core.Result, error) {
 	if err := core.RequireVersion(input.ExpectedVersion); err != nil {
 		return core.Result{}, err
 	}
@@ -481,6 +490,19 @@ func (s *Service) Dependency(ctx context.Context, c core.Command, id string, inp
 		if err = authz.Require(ctx, tx, c.Actor, "task.read", taskResource(p, predecessor)); err != nil {
 			return core.Result{}, err
 		}
+		if predecessorVersion != nil {
+			// The project lock serializes dependency edits and original task commands.
+			if predecessor.Version != *predecessorVersion {
+				return core.Result{}, core.Conflict()
+			}
+			var present bool
+			if err = tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM task_dependencies WHERE org_id=$1 AND predecessor_id=$2 AND successor_id=$3)", c.Actor.OrgID, input.PredecessorID, id).Scan(&present); err != nil {
+				return core.Result{}, err
+			}
+			if present == (input.Action == "add") {
+				return core.Result{}, core.Fail(409, "DEPENDENCY_UNCHANGED", "该依赖关系已变化或本次操作不会改变关系，请重新核对")
+			}
+		}
 		if input.Action == "add" {
 			if t.State != "todo" && t.State != "blocked" && predecessor.State != "done" {
 				return core.Result{}, core.Fail(409, "DEPENDENCY_BLOCKED", "进行中的任务不能新增未完成前置任务")
@@ -510,6 +532,15 @@ func (s *Service) Dependency(ctx context.Context, c core.Command, id string, inp
 		t, err = getTask(ctx, tx, c.Actor.OrgID, id, false)
 		if err != nil {
 			return core.Result{}, err
+		}
+		if predecessorVersion != nil {
+			var present bool
+			if err = tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM task_dependencies WHERE org_id=$1 AND predecessor_id=$2 AND successor_id=$3)", c.Actor.OrgID, input.PredecessorID, id).Scan(&present); err != nil {
+				return core.Result{}, err
+			}
+			result := taskResult(t, "task.dependencies.changed")
+			result.Data = DependencyReceipt{Task: t, PredecessorID: predecessor.ID, PredecessorVersion: predecessor.Version, DependencyAction: input.Action, DependencyPresent: present}
+			return result, nil
 		}
 		return taskResult(t, "task.dependencies.changed"), nil
 	})

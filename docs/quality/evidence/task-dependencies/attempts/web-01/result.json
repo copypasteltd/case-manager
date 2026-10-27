@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T13:55:19.038Z",
+  "finished_at": "2026-10-27T13:56:00.446Z",
+  "checks": [
+    "Actual original-command MCP commits expose exact add/remove edge receipts and agree with the native database-backed dependencies endpoint.",
+    "The visible form requires an actual second task, an explicit action and a real change; missing choices and removing an absent edge cannot grant authority.",
+    "Selecting and previewing the exact two task versions sends no run; three actual viewport widths have no horizontal document overflow."
+  ],
+  "source_count": 662,
+  "source_sha256": "597392eb60354d60ac29bb559aec0b2be0581b14b10790fc7d4402d0ba71ac94",
+  "source_after_sha256": "597392eb60354d60ac29bb559aec0b2be0581b14b10790fc7d4402d0ba71ac94",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('本次交给秘书的内容', { exact: true })\u001b[22m\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "8b16f42eba30756c068e21972e85dca77142ec985eb29c381c77531472ee243a",
+  "build_source_after_sha256": "8b16f42eba30756c068e21972e85dca77142ec985eb29c381c77531472ee243a",
+  "build_source_unchanged": true
+}

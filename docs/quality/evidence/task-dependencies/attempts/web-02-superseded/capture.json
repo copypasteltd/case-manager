@@ -1,0 +1,36 @@
+{
+  "mobile": false,
+  "recordings": [
+    {
+      "name": "secretary-task-dependencies-web-review",
+      "frame_count": 28,
+      "duration_ms": 5816,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/secretary-task-dependencies-web-review/frames.json",
+      "manifest_sha256": "994bc0786174c9559c8d2613bf19fe7096e5c41f5f421d39d9037b9a5162fe26"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 768,
+      "viewport": 768,
+      "document": 768
+    },
+    {
+      "width": 1280,
+      "viewport": 1280,
+      "document": 1280
+    },
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1440
+    }
+  ],
+  "synthetic_data": true,
+  "scope": "Actual authenticated Web/Taro H5 and native PostgreSQL API. UI send is queued then cancelled; completed add/remove views are genuine controlled-MCP fixture commits. No live model, device, cloud or production claim."
+}

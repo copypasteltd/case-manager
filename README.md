@@ -12,9 +12,17 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
-最新更新 / Latest update: [依赖修复与多端兼容 / Dependency hardening](docs/development/90-dependency-hardening.md)。同次完整审计101 → 86，critical 11 → 0，仍有20项high；安全放行继续开放。The complete before/after audit falls from101 to86 findings, with critical11 to0;20 high findings remain and the security gate stays open.
+最新更新 / Latest update: [秘书任务前置依赖 / Secretary task prerequisites](docs/development/91-secretary-task-dependencies.md)。Web与Taro可选择两个任务、核对版本，明确新增或解除一条依赖；复用原权限、状态与循环检查，按实际业务回执核对结果。
 
-最新功能 / Latest workflow: [移动费用、收付款、退款与员工结算 / Mobile expenses, cash, refunds and employee settlement](docs/development/89-mobile-financial-operations.md).
+Select two actual tasks and their versions, choose add/remove, review the exact request and send it through the secretary. The original business command enforces permissions, state and cycle rules; the actual committed relationship and operation establish success.
+
+![秘书前置依赖操作 / Secretary prerequisite workflow](docs/media/gifs/secretary-task-dependencies-web.gif)
+
+[Web MP4](docs/media/videos/secretary-task-dependencies-web.mp4) · [移动 MP4 / Mobile MP4](docs/media/videos/secretary-task-dependencies-mobile.mp4) · [移动 GIF / Mobile GIF](docs/media/gifs/secretary-task-dependencies-mobile.gif) · [验证 / Verification](docs/quality/evidence/task-dependencies/verification.md)。发送演示入队后取消；完成视图为真实原业务及受控MCP回执。UI sends are queued then cancelled; committed views are genuine controlled-MCP fixture results.
+
+前次[依赖修复 / Dependency hardening](docs/development/90-dependency-hardening.md)的完整审计仍为86项（critical0、high20、moderate64、low2）；本轮锁文件未改，不将旧审计称为新扫描。The unchanged lock retains its original audit and open production security gate.
+
+既有功能 / Existing workflow: [移动费用、收付款、退款与员工结算 / Mobile expenses, cash, refunds and employee settlement](docs/development/89-mobile-financial-operations.md).
 
 ![实际移动费用草稿 / Actual mobile expense draft](docs/media/gifs/dependency-hardening-cost-draft.gif)
 
@@ -154,13 +162,13 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前增量90：依赖实际升级、维护中的解包入口与兼容版本固定；12项有界安全回归、2项原生JS、Web112、运行时47、移动204及类型、双小程序各18页重新检查，实际财务页面9组流程／3种宽度和Android开发包另验。后端161顶层／1,057结果及Linux编译仅在完整来源相同时复用原88证据；全部73迁移和接口未改。见[准确验证与失败记录](docs/quality/evidence/dependency-hardening/verification.md)。
+当前增量91实现秘书任务前置依赖：完整六字段授权、两个任务版本、原业务循环／状态约束和真实关系回执。重新执行后端162顶层／1,080结果／982末级、9批，Web120、运行时49、移动212及类型／双小程序各18页；新增迁移74，原73项迁移保持原字节。Linux仅编译；Android开发包和18项包检查单独记录，26项JVM按Gradle缓存实际范围记录。见[准确验证与保留记录](docs/quality/evidence/task-dependencies/verification.md)。
 
-Increment90 updates actual dependencies and a maintained archive adapter, pins compatible versions and reruns12 bounded security cases,2 native JS cases,Web112,runtime47,mobile204,types and both18-page mini-program builds. Actual UI journeys and the native APK have separate evidence. Original88 backend161/1057 and Linux compilation are reused only with complete equal source bytes;73 migrations and APIs are unchanged.
+Increment91 implements exact secretary prerequisite changes with both task versions and factual relationship receipts. Fresh native checks cover162 backend top-level tests /1,080 results /982 leaves in9 batches, Web120, runtime49, mobile212, types and both18-page mini-program builds. Migration74 preserves the previous73 migrations. Linux compilation, Android development artifacts and18 package checks have separate evidence;26 JVM results retain explicit Gradle cache scope.
 
-媒体目录为62PNG／23MP4／23GIF，本轮新增4张实际页面图及2套录屏／GIF。已发布32af136的增量89完整启动／捕获来源从Git重建，103份历史证据及媒体保留原字节；本轮失败记录保留，最初锁文件未完整冻结的限制明确披露。完整28项GAP、四端真实设备、云／模型／TG、120GB／2TB、安全、恢复和生产验收继续开放。
+媒体目录为70PNG／25MP4／25GIF，本轮新增8张实际页面图及两套录屏／GIF。已发布e45c347的增量90完整启动／捕获来源从Git重建，84份历史证据及媒体保持原字节；本轮失败与已替代记录按原状态保留。相同锁文件沿用原90完整审计：86项，含20项high，生产安全放行未通过。完整28项GAP及四端设备、云／模型／TG、120GB／2TB、恢复和生产验收继续开放。
 
-The catalog contains62 PNGs,23 MP4s and23 GIFs. Published89 capture sources reconstruct from Git;103 historical evidence/media files retain exact bytes. Failed attempts remain recorded, including an explicit limitation on the first attempt’s missing original lock bytes. The full28-gap four-client production goal stays active.
+The catalog contains70 PNGs,25 MP4s and25 GIFs, including eight new actual screenshots and two new recording/GIF pairs. Published90 sources reconstruct from Git and84 historical evidence/media files retain exact bytes. Failed and superseded attempts keep their original status. The unchanged lock reuses the original90 audit:86 findings, including20 high; the production security gate and all28 four-client gap IDs remain open.
 
 后续完成更新继续同步代码、中英文说明、受影响素材、验证和`docs/CHANGELOG.md`，一并提交并推送至`git@github.com:copypasteltd/case-manager.git`；不强推，不提交凭据、数据库、工具链、缓存或APK。文档统一放在`docs/`，应用实现位于`app/`。
 

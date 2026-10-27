@@ -7599,7 +7599,10 @@ export interface components {
             owner_id?: string;
             acceptance_criteria?: string;
             /** @enum {string} */
-            action?: "start" | "review" | "return" | "complete" | "block" | "resume" | "cancel" | "reopen" | "activate" | "hold" | "close" | "achieve" | "miss";
+            action?: "add" | "remove" | "start" | "review" | "return" | "complete" | "block" | "resume" | "cancel" | "reopen" | "activate" | "hold" | "close" | "achieve" | "miss";
+            /** Format: uuid */
+            predecessor_id?: string;
+            expected_predecessor_version?: number;
             review_required?: boolean;
             description?: string;
             /** @enum {string} */
@@ -7612,14 +7615,14 @@ export interface components {
         };
         AgentMutationInput: {
             /** @enum {string} */
-            tool: "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             arguments: components["schemas"]["AgentMutationArguments"];
         };
         AgentMutationView: {
             /** Format: uuid */
             run_id: string;
             /** @enum {string} */
-            tool: "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             /** @enum {string} */
             resource_type: "project" | "task" | "milestone" | "deliverable" | "risk" | "issue";
             /** Format: uuid */

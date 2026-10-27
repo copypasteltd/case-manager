@@ -47,7 +47,7 @@ type mutationArguments struct {
 }
 
 func mutationTool(tool string) bool {
-	return slices.Contains([]string{"create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"}, tool)
+	return slices.Contains([]string{"update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"}, tool)
 }
 
 // Keep the original field mask, including absent versus explicit null dates.
@@ -68,6 +68,9 @@ func parseMutation(in MutationInput) (mutationArguments, string, json.RawMessage
 	rawBase, _ := json.Marshal(map[string]json.RawMessage{"id": fields["id"], "reason": fields["reason"], "expected_version": fields["expected_version"]})
 	if strictArguments(rawBase, &base) != nil || !core.ValidID(base.ID) || base.ID != strings.ToLower(base.ID) || core.RequireVersion(base.ExpectedVersion) != nil || core.Name(base.Reason) != nil {
 		return base, "", nil, core.Invalid("mutation", "请核对对象、基础版本和更新原因")
+	}
+	if in.Tool == "update_task_dependency" {
+		return parseTaskDependency(base, canonical, fields)
 	}
 	if in.Tool == "create_task" {
 		return parseTaskCreation(base, canonical, fields)
@@ -230,6 +233,9 @@ func mutationAudience(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 		return contextDocument{}, core.Missing()
 	}
 	kind, id := m.ResourceType, m.ResourceID
+	if err := taskDependencyAudience(ctx, tx, a, c, m, members); err != nil {
+		return contextDocument{}, err
+	}
 	if err := taskCreationAudience(ctx, tx, a, c, m, members); err != nil {
 		return contextDocument{}, err
 	}
@@ -366,6 +372,9 @@ func prepareMutation(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 	}
 	m.Before, err = mutationBefore(ctx, tx, a, kind, base.ID)
 	if err != nil {
+		return nil, err
+	}
+	if err = prepareTaskDependency(ctx, tx, ai, c, &m); err != nil {
 		return nil, err
 	}
 	intent, err := json.Marshal(map[string]any{"run_id": runID, "actor_id": a.UserID, "actor_auth_version": a.AuthVersion, "organization_auth_version": a.OrgAuthVersion,
@@ -543,6 +552,9 @@ func executionMutationState(ctx context.Context, tx pgx.Tx, st executionState) (
 			return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
 		}
 	}
+	if err = executionTaskDependencyState(ctx, tx, ai, st.Conversation, *m); err != nil {
+		return nil, err
+	}
 	if err = authorizeMutation(ctx, tx, ai, doc, *m); err != nil {
 		return nil, err
 	}
@@ -578,6 +590,10 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 		body, _ := json.Marshal(fields)
 		var result core.Result
 		switch tool {
+		case "update_task_dependency":
+			var input project.ExactDependency
+			_ = json.Unmarshal(body, &input)
+			result, err = business.DependencyExact(ctx, command, m.ResourceID, input)
 		case "create_task":
 			var input project.TaskCreate
 			_ = json.Unmarshal(body, &input)
@@ -639,6 +655,9 @@ func (s *Service) executionMutation(ctx context.Context, tx pgx.Tx, st execution
 			Version int64  `json:"version"`
 		}
 		validReceipt := json.Unmarshal(raw, &receipt) == nil && receipt.ID == m.ResourceID && receipt.Version == m.BaseVersion+1
+		if tool == "update_task_dependency" {
+			validReceipt = taskDependencyReceipt(*m, raw)
+		}
 		if tool == "create_task" {
 			validReceipt = taskCreationReceipt(*m, raw)
 			m.OperationID, m.Result = &result.OperationID, raw

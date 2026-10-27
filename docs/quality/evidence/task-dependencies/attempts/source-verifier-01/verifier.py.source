@@ -1,0 +1,207 @@
+"""Bind the actual dependency commands, four client builds, media and retained history."""
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import socket
+import subprocess
+import xml.etree.ElementTree as ET
+import zipfile
+from PIL import Image
+
+APP = Path(__file__).resolve().parents[1]
+ROOT = APP.parent
+E = ROOT / 'docs/quality/evidence/task-dependencies'
+REF = 'e45c347a31cc7496b77585dc5328bcfdec92ec6d'
+
+
+def read(path):
+    return json.loads(path.read_text(encoding='utf-8-sig'))
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def digest(names, content=None):
+    h = hashlib.sha256()
+    for name in names:
+        h.update(name.encode() + b'\0' + (content(name) if content else (APP / name).read_bytes()) + b'\0')
+    return h.hexdigest()
+
+
+def module(filename):
+    spec = importlib.util.spec_from_file_location('dependency_' + filename.replace('.', '_'), APP / 'scripts' / filename)
+    value = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(value)
+    return value
+
+
+def main():
+    checks = []
+
+    def check(name, passed):
+        checks.append({'name': name, 'passed': bool(passed)})
+
+    backend = read(E / 'result.json')
+    backend_sha = module('verify_backend_batches.py').digest()
+    check('Fresh full native backend:162 top-level tests,1080 results,9 batches and stable complete sources',
+        backend['passed'] and backend['source_sha256'] == backend_sha and backend['source_unchanged_during_tests']
+        and backend['all_discovered_tests_executed'] and backend['discovered_top_level_tests'] == 162
+        and backend['batch_count'] == 9 and len(backend['checks']) == 1080 and all(v['Action'] == 'pass' for v in backend['checks']))
+    cases = [c for c in backend['checks'] if c.get('Test', '').startswith('TestAgentTaskDependencies')]
+    check('Actual HTTP/PostgreSQL/MCP dependency suite has22 nested cases, including authority, replay, cycle and receipt rollback',
+        len(cases) == 23 and all(c['Action'] == 'pass' for c in cases))
+    migrations = sorted((APP / 'backend/migrations').glob('*.sql'))
+    check('Additive migration74 preserves exact published bytes of all73 previous migrations',
+        len(migrations) == 74 and migrations[-1].name == '0074_agent_task_dependencies.sql'
+        and all(subprocess.check_output(['git', 'show', REF + ':' + p.relative_to(ROOT).as_posix()], cwd=ROOT) == p.read_bytes() for p in migrations[:-1]))
+    api_file = ROOT / 'docs/development/openapi.json'
+    api = read(api_file)
+    check('Both current OpenAPI copies agree:284 paths,352 operations,619 schemas and the exact dependency tool',
+        api_file.read_bytes() == (APP / 'backend/internal/contract/openapi.json').read_bytes()
+        and len(api['paths']) == 284 and len(api['components']['schemas']) == 619
+        and sum(k in ('get','post','put','patch','delete','head','options','trace') for p in api['paths'].values() for k in p) == 352
+        and all('update_task_dependency' in api['components']['schemas'][s]['properties']['tool']['enum'] for s in ('AgentMutationInput','AgentMutationView')))
+    runtime, web = read(E / 'runtime-build.json'), read(E / 'web-build.json')
+    check('Fresh49 runtime tests and build bind current runtime and Skill bytes',
+        runtime['status'] == 'passed' and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0]
+        and runtime['tests']['tests'] == runtime['tests']['pass'] == 49
+        and all(runtime['tests'][k] == 0 for k in ('fail','skipped','cancelled')))
+    check('Fresh120 Web tests and production bundle bind every declared current source byte',
+        web['passed'] and web['source_unchanged_during_run'] and web['source_sha256'] == digest(web['sources'])
+        and web['tests']['numPassedTests'] == 120 and web['tests']['numFailedTests'] == 0)
+    linux = read(E / 'linux-build.json')
+    check('Fresh Linux compilation matches current complete backend; artifact was not executed or deployed',
+        linux['passed'] and linux['source_sha256'] == linux['source_after_sha256'] == backend_sha
+        and not linux['artifact_executed'] and not linux['deployed'])
+    mobile = read(E / 'mobile-build.json')
+    check('Fresh212 mobile tests, types and both actual mini-program builds bind complete unchanged declared sources',
+        mobile['passed'] and mobile['source_unchanged_during_run'] and mobile['source_sha256'] == module('verify_mobile.py').digest()[0]
+        and mobile['tests']['tests'] == mobile['tests']['pass'] == 212 and mobile['tests']['suites'] == 2
+        and all(mobile['tests'][k] == 0 for k in ('fail','skipped','cancelled'))
+        and len(mobile['commands']) == 4 and all(c['exit_code'] == 0 for c in mobile['commands']))
+    pages = [read(APP / ('mobile/dist/' + target + '/app.json'))['pages'] for target in ('weapp','tt')]
+    check('WeChat and Douyin each register the same18 pages including the secretary',
+        pages[0] == pages[1] and len(pages[0]) == 18 and 'pages/secretary/index' in pages[0])
+    android, inspection, unit = [read(E / n) for n in ('build.json','apk-inspection.json','android-test-scope.json')]
+    check('Current native Android APK binds actual bundle/source bytes and all18 artifact checks; no device or release claim',
+        android['passed'] and android['source_unchanged_during_build'] and android['source_sha256'] == module('build_android.py').sources()[0]
+        and sha(APP / android['artifacts']['apk']['path']) == android['artifacts']['apk']['sha256'] == inspection['apk_sha256']
+        and inspection['passed'] and len(inspection['checks']) == 18 and all(c['passed'] for c in inspection['checks'])
+        and not any(android[k] for k in ('device_executed','production_release','virtualization_used','emulator_started')))
+    native_graph = [n.replace('\\', '/') for n in read(APP / '.local/android/index.android.map')['sources']]
+    check('Actual APK business graph includes the new secretary dependency form and shared exact-input validation',
+        all(any(n.endswith(suffix) for n in native_graph) for suffix in ('/mobile/src/pages/secretary/task-dependency.tsx','/packages/contracts/src/task-dependency.ts')))
+    xml = sorted((E / 'android-unit-results').glob('TEST-*.xml'))
+    suites = [ET.parse(p).getroot() for p in xml]
+    check('All26 JVM results retain exact XML/task bytes and explicitly disclose Gradle cache reuse',
+        unit['passed'] and unit['tests'] == 26 and unit['native_log_sha256'] == sha(E / 'native-build.log')
+        and unit['freezer_sha256'] == sha(APP / 'scripts/freeze_task_dependencies_evidence.py')
+        and len(xml) == 4 and sum(int(s.attrib['tests']) for s in suites) == 26
+        and all(int(s.attrib[k]) == 0 for s in suites for k in ('failures','errors','skipped'))
+        and all(unit['xml_sha256'][p.name] == sha(p) for p in xml)
+        and unit['new_test_execution'] != unit['gradle_cached'] and not unit['device_executed'])
+    full_sha = module('task_dependencies_sources.py').digest()
+    for client in ('web','mobile'):
+        b = E.parent / ('task-dependencies-' + client)
+        browser, manifest, capture = [read(b / n) for n in ('result.json','source-manifest.json','capture.json')]
+        check(client + ': five actual dependency journeys, three widths and complete owned cleanup bind stable full sources',
+            browser['passed'] and len(browser['checks']) == 5 and len(capture['layouts']) == 3
+            and browser['source_sha256'] == browser['source_after_sha256'] == manifest['sha256'] == digest(manifest['files'])
+            and browser['build_source_sha256'] == browser['build_source_after_sha256'] == full_sha
+            and browser['source_unchanged'] and browser['build_source_unchanged']
+            and browser['native_fixture_exit_code'] == 0 and browser['isolated_database_cleanup_passed']
+            and browser['owned_browser_closed'] and browser['owned_review_server_stopped'] and browser['browser_contexts_closed'] == 1
+            and not browser['console_errors'] and not browser['server_errors']
+            and all(v['document'] <= v['width'] + 2 for v in capture['layouts']))
+    media = read(E / 'media.json')
+    media_valid = media['passed'] and media['encoder_script_sha256'] == sha(APP / 'scripts/encode_task_dependencies_media.py') and len(media['recordings']) == 2
+    for r in media['recordings']:
+        result = read(E.parent / ('task-dependencies-' + r['client']) / 'result.json')
+        media_valid = media_valid and r['source_sha256'] == result['source_sha256'] and r['build_source_sha256'] == full_sha
+        media_valid = media_valid and r['capture_manifest_sha256'] == sha(ROOT / r['capture_manifest']) and r['capture_frame_count'] > 5
+        media_valid = media_valid and len(r['artifacts']) == 2 and all(sha(ROOT / a['file']) == a['sha256'] and (ROOT / a['file']).stat().st_size == a['bytes'] for a in r['artifacts'])
+        with Image.open(next(ROOT / a['file'] for a in r['artifacts'] if a['file'].endswith('.gif'))) as picture:
+            duration = 0
+            for index in range(picture.n_frames):
+                picture.seek(index)
+                duration += picture.info.get('duration', 0)
+            media_valid = media_valid and picture.n_frames > 1 and abs(duration * r['gif_speed_multiplier'] - r['capture_duration_ms']) < 800
+    check('Two actual pixel captures bind four MP4/GIF artifacts, frame manifests, encoder and bounded animation timing', media_valid)
+    visual = read(E / 'visual-review.json')
+    check('Actual visual review binds all eight screenshots and both GIF first/middle/last samples',
+        visual['passed'] and len(visual['files']) == 10 and all(sha(ROOT / p['file']) == p['sha256'] for p in visual['files']))
+    skills = [read(p) for p in sorted((APP / 'skills').glob('*/manifest.json'))]
+    update = next(s for s in skills if s['skill_id'] == 'project-update')
+    check('All eight Skills stay draft; project-update1.7.0 has17 allowed and15 completion tools',
+        len(skills) == 8 and all(s['state'] == 'draft' for s in skills) and update['version'] == '1.7.0'
+        and len(update['allowed_tools']) == 17 and len(update['completion_tools']) == 15
+        and 'update_task_dependency' in update['allowed_tools'])
+    dev = read(E / 'development-project-resources.json')
+    check('Fresh development probes establish74 migrations, actual dependency guards, owned DB workers and zero disposable databases',
+        dev['passed'] and dev['migration_count'] == 74 and dev['integrations_disabled'] and dev['all_eight_skills_draft']
+        and dev['database']['disposable_test_databases'] == dev['database']['active_profiles'] == dev['database']['enabled_telegram_channels'] == 0
+        and all(dev['ownership'].values()) and dev['report_worker_source_matches'] and dev['database']['report_guards'] == 4
+        and dev['database']['dependency_tool_constraints'] == 3 and dev['database']['dependency_scope_constraint'] == 1
+        and dev['database']['dependency_guards'] == 2 and dev['database']['dependency_actual_edge_function'])
+    history = read(E / 'historical-90.json')
+    check('Published90 complete startup/capture reconstruct from Git; all84 original evidence/media files remain unchanged',
+        history == module('record_task_dependencies_history.py').reconstruct()
+        and history['complete_startup_source']['reconstructed'] and len(history['preserved_evidence']) == 84
+        and history['preserved_media_count'] == 8 and all(v['complete_capture_manifest_reconstructed'] for v in history['clients'].values()))
+    publication = read(E / 'publication-before.json')
+    check('All11 publication snapshots retain exact original published90 bytes',
+        len(publication['files']) == 11 and all(sha(ROOT / f['snapshot']) == f['sha256']
+            and (ROOT / f['snapshot']).read_bytes() == subprocess.check_output(['git','show',publication['commit'] + ':' + f['file']],cwd=ROOT) for f in publication['files']))
+    audit = read(E.parent / 'dependency-hardening/dependency-audit.json')
+    check('Original90 audit is reused for the unchanged exact lock; all86 findings and the open production security gate remain explicit',
+        audit['package_lock_sha256'] == sha(APP / 'package-lock.json')
+        and (APP / 'package-lock.json').read_bytes() == subprocess.check_output(['git','show',REF + ':app/package-lock.json'],cwd=ROOT)
+        and audit['vulnerabilities']['total'] == 86 and audit['vulnerabilities']['critical'] == 0
+        and audit['vulnerabilities']['high'] == 20 and not audit['production_security_gate_passed'])
+    attempts_valid, attempts = True, []
+    for p in sorted((E / 'attempts').glob('*/attempt.json')):
+        a = read(p)
+        attempts.append(p.parent.name)
+        with zipfile.ZipFile(p.parent / 'sources.zip') as z:
+            attempts_valid = attempts_valid and a['source_zip_sha256'] == sha(p.parent / 'sources.zip') and a['diagnostic_only']
+            if 'startup_manifest' in a:
+                attempts_valid = attempts_valid and len(z.namelist()) == a['source_count']
+                attempts_valid = attempts_valid and digest(a['startup_manifest'],z.read) == a['complete_startup_source_sha256']
+                attempts_valid = attempts_valid and digest(a['source_manifest'],z.read) == a['capture_source_sha256']
+                attempts_valid = attempts_valid and a['owned_browser_closed'] and a['owned_review_server_stopped'] and a['isolated_database_cleanup_passed']
+                attempts_valid = attempts_valid and a['passed'] == read(p.parent / 'result.json')['passed']
+                attempts_valid = attempts_valid and (not a['passed'] or a['superseded'])
+            elif 'complete_source_sha256' in a:
+                attempts_valid = attempts_valid and digest(a['source_manifest'],z.read) == a['complete_source_sha256']
+                if a.get('superseded'):
+                    attempts_valid = attempts_valid and a['passed'] and a['android_build_pass_claimed']
+                    attempts_valid = attempts_valid and all(read(p.parent / n)['passed'] for n in ('mobile-build.json','build.json'))
+                    attempts_valid = attempts_valid and all(read(p.parent / n)['passed'] for n in ('web-build.json','media.json') if (p.parent / n).exists())
+                else:
+                    attempts_valid = attempts_valid and not a['passed'] and not a['android_build_pass_claimed']
+            else:
+                attempts_valid = attempts_valid and digest(a['source_files'],lambda n: z.read('backend/' + n)) == a['backend_source_sha256'] and not a['passed']
+    check('Every retained failed or explicitly superseded attempt preserves exact complete source bytes and its original status', attempts_valid and len(attempts) >= 6)
+    with socket.socket() as probe:
+        probe.settimeout(1)
+        released = probe.connect_ex(('127.0.0.1',5189)) != 0
+    check('Owned review port is released and private fixture removed', released and not (APP / '.local/business-browser-fixture.json').exists())
+    gaps = (ROOT / 'docs/delivery/03-goal-gap-assessment.md').read_text(encoding='utf-8-sig')
+    check('All28 gap IDs and complete four-client scope remain explicit',
+        all('GAP-' + str(i).zfill(2) in gaps for i in range(1,29)) and all(t in gaps for t in ('120GB','2TB','Android','微信','抖音')))
+    report = {'passed': all(c['passed'] for c in checks), 'checked_at': datetime.now(timezone.utc).isoformat(),
+        'checks': checks, 'backend_source_sha256': backend_sha, 'browser_source_sha256': full_sha,
+        'mobile_source_sha256': mobile['source_sha256'], 'full_goal_complete': False,
+        'attempts': attempts, 'reused_audit_group': 'dependency-hardening', 'audit_reexecuted': False,
+        'verification_script_sha256': sha(Path(__file__)),
+        'scope': 'Fresh native backend/Web/runtime/mobile/Linux/Android checks and actual synthetic UI pixels. Explicit JVM cache and old-lock audit reuse. No real model/device/cloud/TG/production acceptance.'}
+    (E / 'final-source-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'passed': report['passed'], 'checks': len(checks), 'failed': [c['name'] for c in checks if not c['passed']]}))
+    return 0 if report['passed'] else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

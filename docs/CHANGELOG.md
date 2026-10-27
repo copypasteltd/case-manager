@@ -1,5 +1,21 @@
 # 更新记录 / Changelog
 
+## 2026-10-27 · Increment91 / 秘书任务前置依赖
+
+实现 `update_task_dependency`：员工在Web／Taro选择同项目两个实际任务，固定两个版本、明确新增／解除和原因，预览后发送。服务端复用原Dependency命令及项目锁、权限、循环／状态规则；数据库独立核对原关系、真实增删关系、未越权任务资料和实际回执。准确重试、失联回执恢复和取消保持一个业务操作。修正输入改正后的旧错误提示，以及会话轮询重建选项数组导致移动滚轮重置的问题。
+
+Implemented exact secretary prerequisite changes with both actual task versions and an explicit add/remove decision. Shared business commands preserve cycle/state/permission rules and atomic audit/outbox/runtime evidence. Database guards verify the actual edge and unchanged task fields. Exact retries cannot duplicate a relationship or version; corrected inputs clear stale validation feedback, and stable option labels keep live polling from resetting an open mobile wheel.
+
+新增迁移74，保留原73项迁移字节；Skill `project-update`1.7.0含15写／2读工具，八项Skill均draft。全量后端162顶层／1,080结果／982末级、9批，Web120、运行时49、移动212及类型、双小程序各18页编译；Linux仅编译，Android当前开发包与18项包检查另验，26项JVM如实记录Gradle缓存复用。两端各5组实际流程／3宽度，新增8截图和两套MP4／GIF，总目录70PNG／25MP4／25GIF。
+
+Migration74 is additive; the earlier73 remain byte-identical. Fresh source-bound checks cover the native backend, Web, runtime, mobile and both mini-program builds. Current native APK inspection and cached JVM results have separate scope. Actual authenticated Web/H5 demonstrations use isolated synthetic records: UI sends are queued then cancelled; committed add/remove views come from original business commands through controlled MCP, without a live model.
+
+已发布增量90的完整来源按e45c347重建，84份原证据／媒体保持原字节。失败与明确替代的通过尝试保留原状态、完整准确来源及清理结果；首轮临时原生用例修正未冻结各次完整旧来源，仅作为过程限制披露。相同锁文件沿用原90完整审计86项（20 high），本轮未重审计，不宣称安全放行。实际模型、设备、TG、云、120GB／2TB、恢复及四端生产首发继续开放。
+
+Published90 sources reconstruct from Git; all84 original evidence/media files retain exact bytes. Failed and superseded attempts preserve status and source archives. Initial ad-hoc native fixture iterations lack complete pre-edit archives and are not presented as current passing evidence. The unchanged lock reuses its original90 audit; real integrations, devices, capacity and production acceptance remain open.
+
+[设计／操作](development/91-secretary-task-dependencies.md) · [准确验证 / Verification](quality/evidence/task-dependencies/verification.md) · [演示 / Media](media/README.md) · [28项差异 / Gaps](delivery/03-goal-gap-assessment.md)
+
 ## 2026-10-27 · Increment90 / 依赖修复与多端兼容
 
 以维护中的解包器11.1.4替换原无维护实现，提供实际CommonJS／Promise兼容入口；升级Swiper12.1.2、tar7.5.22、兼容webpack5.104.1及明确依赖版本，核对安装后真实依赖树。完整同次审计101→86，critical11→0；仍有high20／moderate64／low2，安全放行继续开放。历史114→101属于公告库变化，不算修复。

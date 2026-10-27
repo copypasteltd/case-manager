@@ -14,7 +14,7 @@ export interface Manifest {
   instructions_ref: string; reference_docs: string[]; max_tool_calls: number; timeout_seconds: number; test_case_refs: string[];
 }
 export const KNOWN_TOOLS = new Set(['search_resources', 'list_directory', 'read_resource', 'propose_project', 'create_project',
-  'create_task', 'create_risk', 'update_risk', 'create_issue', 'update_issue', 'create_deliverable', 'update_deliverable', 'create_milestone', 'update_project', 'update_task', 'transition_task', 'transition_project', 'update_milestone', 'transition_milestone', 'create_file_draft', 'propose_file_update', 'commit_file_update', 'stage_file_create', 'propose_file_create', 'commit_file_create', 'propose_organization',
+  'update_task_dependency', 'create_task', 'create_risk', 'update_risk', 'create_issue', 'update_issue', 'create_deliverable', 'update_deliverable', 'create_milestone', 'update_project', 'update_task', 'transition_task', 'transition_project', 'update_milestone', 'transition_milestone', 'create_file_draft', 'propose_file_update', 'commit_file_update', 'stage_file_create', 'propose_file_create', 'commit_file_create', 'propose_organization',
   'commit_organization', 'draft_post', 'publish_post', 'draft_request', 'submit_request', 'list_subscriptions', 'read_subscription_review', 'read_finance_record', 'read_finance_summary',
   'read_service_summary', 'propose_notification', 'send_authorized_notification', 'inspect_operation', 'cancel_run']);
 const READ_TOOLS = new Set(['search_resources', 'list_directory', 'read_resource', 'list_subscriptions', 'read_subscription_review', 'read_finance_record', 'read_finance_summary', 'read_service_summary', 'inspect_operation']);

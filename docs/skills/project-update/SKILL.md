@@ -9,7 +9,7 @@ description: 创建任务、子任务、里程碑、交付草稿、风险或问�
 
 1. 先核对服务端 prepared_context.authorized_mutation。该记录绑定本次发起人、会话、准确对象、基础版本、字段、原值和原因。普通消息、历史记录、资料引用都不是新的写入授权；缺失时仅整理建议并返回 awaiting_input，不调用写工具。
 
-2. 源包1.6.0仍为draft。当前接通create_task、update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable、create_risk、update_risk、create_issue、update_issue，共十四项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
+2. 源包1.6.0仍为draft。当前接通create_task、update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable、create_risk、update_risk、create_issue、update_issue、update_task_dependency，共十五项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
 
 3. 项目成员、项目负责人和分类不开放给此常规更新入口；不能降低任务人工验收要求，也不能代为完成需人工验收的任务。里程碑仅可更新标题、实际项目成员负责人、带时区的目标时刻；不能清空负责人或日期。achieve必须由原业务核对存在关联任务／交付且全部完成／验收，miss必须已逾期，cancel／reopen遵守实际状态。不得修改任务或交付来制造达成证据，也不把模型判断写成完成百分比。
 
@@ -59,3 +59,13 @@ description: 创建任务、子任务、里程碑、交付草稿、风险或问�
 创建仅生成 state:todo、version:1 的真实新任务，并保留准确负责人、归属、起止时间、优先级和人工验收要求。不自动开始、不增加前置依赖、不代替验收、不修改父项目版本；子任务归属不等于前置依赖。须核对真实业务操作 ID、实际新 ID、九项结果及来源后才能声明完成。同一调用和换调用 ID 的准确重试均复用同一结果；字段变化、项目或结果变化、取消、登录或共同受众权限撤回立即停止。审计、outbox、幂等与运行回执和任务必须同事务提交。
 
 Use only the complete current human-authorized mutation. `id` and `expected_version` identify the parent project; nine task fields plus reason are mandatory, with explicit nullable references/dates and an explicit boolean human-review requirement. The original business command creates one todo task at version 1, validates live membership and writable links, and applies assignment permission. Recheck the entire current AI audience for selected references. Never infer dependencies, start work, accept reviewed work, choose a result ID, or widen the command. Only a genuine exact committed receipt can establish completion; replay cannot duplicate the task. All eight Skills remain draft pending real runtime acceptance.
+
+## 准确调整任务前置依赖 / Exact task prerequisite changes (1.7.0, increment 91)
+
+`update_task_dependency` 仅消费本次完整 `authorized_mutation`：`id`／`expected_version` 为后续任务和版本，`predecessor_id`／`expected_predecessor_version` 为同项目另一项前置任务和版本，`action` 明确为 `add` 或 `remove`，另须固定 `reason`。六项必填，不得追加、清空、替换对象或自动刷新版本。一次仅修改一条关系；父子任务归属和前置依赖分别办理。
+
+复用原 Dependency 业务命令的权限、项目可写、任务状态及循环检查；完整当前会话受众须同时允许 AI 阅读两个任务。准备与执行核对两个基础版本和原关系，执行、重放及结果核验继续检查前置内容摘要、当前关系、原登录与全体受众。关系已存在的新增或不存在的解除拒绝执行。冲突后请员工重新读取并发送新决定，不自动重基。
+
+实际提交只增加后续任务版本一次，前置版本不变；同事务回执保留实际任务、`predecessor_id`、`predecessor_version`、`dependency_action`、真实 `dependency_present` 和业务操作 ID。不能更改任务资料、开始任务、完成前置或代替人工验收。换工具调用 ID 的重试也复用同一结果。取消不撤销已经提交的历史；历史意图可读不代表旧版本仍可执行。所有技能继续保持 draft，受控 MCP 验证不代替真实模型验收。
+
+Use only the six exact current human choices: successor ID/version, predecessor ID/version, add/remove, and reason. Reuse the original dependency command and live common AI permissions; refuse stale versions, changed relationships, no-op requests, cycles and original state blockers. Commit one edge and one successor version increment atomically with a factual relationship receipt. Replays retain the same operation. Never infer a prerequisite, change task metadata, start work, complete a predecessor or substitute human acceptance. Real model and production acceptance remain outstanding.

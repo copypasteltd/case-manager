@@ -13,6 +13,61 @@
               "additionalProperties": false,
               "properties": {
                 "tool": {
+                  "const": "update_task_dependency"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "predecessor_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_predecessor_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "action": {
+                      "type": "string",
+                      "enum": [
+                        "add",
+                        "remove"
+                      ]
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "predecessor_id",
+                    "expected_predecessor_version",
+                    "action",
+                    "reason"
+                  ]
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
                   "const": "create_task"
                 },
                 "arguments": {

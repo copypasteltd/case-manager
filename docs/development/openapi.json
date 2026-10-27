@@ -46160,6 +46160,8 @@
           "action": {
             "type": "string",
             "enum": [
+              "add",
+              "remove",
               "start",
               "review",
               "return",
@@ -46174,6 +46176,15 @@
               "achieve",
               "miss"
             ]
+          },
+          "predecessor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_predecessor_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
           },
           "review_required": {
             "type": "boolean"
@@ -46239,6 +46250,7 @@
           "tool": {
             "type": "string",
             "enum": [
+              "update_task_dependency",
               "create_task",
               "create_risk",
               "update_risk",
@@ -46275,6 +46287,7 @@
           "tool": {
             "type": "string",
             "enum": [
+              "update_task_dependency",
               "create_task",
               "create_risk",
               "update_risk",

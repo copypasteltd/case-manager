@@ -270,21 +270,31 @@ File storage uses an explicit primary source plus an independent other-cloud cop
 
 Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, retention/version policy or deletion protection. Drill metadata, object, authorization and full-service recovery; confirm RPO/RTO against actual requirements. See [deployment and operations](operations/01-deployment-and-operations.md), [backup/migration/recovery](operations/02-backup-migration-and-recovery.md) and the [configuration catalog](governance/03-configuration-catalog.md).
 
+## Secretary task prerequisites (increment91)
+
+In a project secretary conversation choose **Update project → Select exact business update → Adjust task prerequisite**. Select the successor and a different actual predecessor in the same project. Review both versions and the current relationship, explicitly choose add/remove, enter the reason, preview, then send. Selection and preview perform no write. A queued run is distinct from a committed update; verify the factual relationship and real business operation receipt.
+
+Only one edge is authorized. Changed task versions, relationship or shared AI permissions stop the old decision; read the new state and send a new decision without silently changing versions. Self-links, cross-project links, cycles, duplicate additions and absent removals are refused. Completed/cancelled tasks need reopening; an in-progress task cannot gain an unfinished prerequisite. The tool does not complete predecessors or accept work. Exact retries retain one run and one operation without another version increment.
+
+The source package `project-update`1.7.0 has17 allowed tools, including15 exact write tools. All eight Skills remain draft. Additive migration74 preserves the previous73 migration bytes. The original Dependency command commits the real edge, successor version, idempotency, audit, outbox and runtime evidence atomically. Web and Taro share the complete six-field authority and receipt checks. Remaining tools, real models/TG, cloud/devices and the full four-client release continue against all28 gaps.
+
+[Design and failure handling](development/91-secretary-task-dependencies.md) · [Actual verification](quality/evidence/task-dependencies/verification.md) · [Web MP4](media/videos/secretary-task-dependencies-web.mp4) · [Mobile MP4](media/videos/secretary-task-dependencies-mobile.mp4)
+
 ## 8. Evidence and release gates
 
-The current maintenance update is [dependency hardening](development/90-dependency-hardening.md): a maintained archive adapter and explicit Swiper/tar/webpack and other pins, with12 bounded security regressions and2 native JS checks. Install the complete lockfile; do not copy node_modules from another environment. MFA step-up is limited to8 attempts per user per15-minute window. Wait before retrying identity verification and inspect receipts before repeating any business action.
+The current functional update is [exact secretary task prerequisites](development/91-secretary-task-dependencies.md). Dependency changes from [increment90](development/90-dependency-hardening.md) remain installed through the complete unchanged lockfile. Do not copy node_modules between environments. MFA step-up allows8 attempts per user per15-minute window; wait when limited and inspect business receipts before retrying.
 
 
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Original88:161 top-level /1,057 results /960 leaves;9 batches;73 migrations | Reused at original paths only with complete equal backend bytes; no new migration or execution |
-| Runtime / Web | Fresh47 /112 tests and builds | Bound to the new lock; eight Skills remain draft |
-| Taro | Current204 tests, types,18 pages per mini-program | Nine actual financial journeys and three widths; H5 is not device acceptance |
-| Android | Current development APK and18 package checks |42,921,174 bytes;26 JVM results cached; APK bytes equal89; no device acceptance |
-| Media catalog |62 PNG /23 MP4 /23 GIF | Four new screenshots and two MP4/GIF pairs; complete89 sources and103 evidence/media files preserved |
+| Go / PostgreSQL | Fresh162 top-level /1,080 results /982 leaves;9 batches;74 migrations | Native PostgreSQL/HTTP/MCP; prior73 migration bytes preserved |
+| Runtime / Web | Fresh49 /120 tests and builds | Source-bound; all eight Skills remain draft |
+| Taro | Fresh212 tests, types,18 pages per mini-program | Five actual prerequisite journeys per Web/H5 client, three widths each; H5 is not device acceptance |
+| Android | Current development APK and18 package checks | Current bundle;26 JVM results with explicit Gradle cache scope; no device acceptance |
+| Media catalog |70 PNG /25 MP4 /25 GIF | Eight new screenshots and two MP4/GIF pairs; original90 sources and84 evidence/media files preserved |
 
-A fresh audit of the unchanged old lock reported101 findings; the changed lock reports **86:0 critical,20 high,64 moderate and2 low**. Production security approval remains open. The older114-to-101 feed change is not remediation. See the [complete current audit](quality/evidence/dependency-hardening/dependency-audit.json), [remaining findings](quality/evidence/dependency-hardening/remaining-findings.json) and [remediation plan](development/90-dependency-hardening.md).
+The unchanged current lock reuses the original increment90 complete audit, rather than a fresh91 audit: **86 findings:0 critical,20 high,64 moderate and2 low**. Production security approval remains open. See the [original audit](quality/evidence/dependency-hardening/dependency-audit.json), [all remaining findings](quality/evidence/dependency-hardening/remaining-findings.json) and [remediation plan](development/90-dependency-hardening.md).
 
 Continue with business/client gaps, real model/isolation/Skill and cloud integration, actual TG/platform/Android devices, 120 GB/2 TB capacity and security acceptance, then backup recovery and production cutover. Items needing missing server/account input remain explicit while independent implementation continues. Completion claims must link to exact sources, commands, receipts and remaining work.
 

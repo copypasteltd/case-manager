@@ -1,0 +1,355 @@
+{
+  "commit": "e45c347a31cc7496b77585dc5328bcfdec92ec6d",
+  "complete_startup_source": {
+    "source_count": 902,
+    "sha256": "19ed7c438f42815262e9cb07ef074b53b30cc58bda5d3d8b9aad12d37970dd3a",
+    "reconstructed": true
+  },
+  "clients": {
+    "mobile": {
+      "source_count": 687,
+      "recorded_sha256": "5f64134ea0c783c56ab1a04494da05d8122b12afdf5fc92ef7fca1634d13d28a",
+      "complete_capture_manifest_reconstructed": true
+    }
+  },
+  "preserved_evidence": [
+    {
+      "path": "docs/quality/evidence/dependency-hardening-mobile/business-proof.json",
+      "sha256": "0357c2c4df72c0e1a9496e875af2df7fd8f0ca8a769bbd7994386bc4f9597952"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening-mobile/capture.json",
+      "sha256": "068fbd5eeb41adda9bfa5270056f47f9c7bc0949767adb6d801c1e3edb06a200"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening-mobile/inbox.png",
+      "sha256": "2f3864bdddb5cde77c596e78e4a039bcdd1eb8835f988009908d9b30e736d13b"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening-mobile/result.json",
+      "sha256": "9698aa3c634346a3e10ab621dc141caa7fe330363e8d3c0165ed5b0f1072ee9b"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening-mobile/source-manifest.json",
+      "sha256": "473990d95921a102d32b4fa4075037e2f9582d3b66dcbcd91c82dd5e77261321"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/android-test-scope.json",
+      "sha256": "20edbdb5d5e13000216720562372cbde095e0ee096fb19e115b12803d1ad3080"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/apk-inspection.json",
+      "sha256": "5f1aa859c5244c653f9d91edb71797d9c0a449deea175842775bb233ee41ec7f"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/attempt.json",
+      "sha256": "4b2ebc2f759c882962341ea2c10a7c5cf12eb180dcc3ce3e93b4eb11a6537950"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/capture-manifests/dependency-hardening-cost-draft.json",
+      "sha256": "6c2ffb4743edb17a58e28777c39d562474089f56666b6dd64b7970673dfdd8f5"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/capture-manifests/dependency-hardening-payment-draft.json",
+      "sha256": "cc5c18c1091836952ddb7d7181436ad3d21b7a3db8fc520e1850394a1c104822"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/dependency-hardening-cost-confirmed.png",
+      "sha256": "3f1bbf258a0f6c7c8dd15bbdf489d0eb9bd2fb00301afc81ca79207e50ba4b2d"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/dependency-hardening-payment-allocations.png",
+      "sha256": "4a8052864f1b5064a8b4e4fb1bf56861d0c35d8530e86f12fe58e3f3fd06b642"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/dependency-hardening-refund.png",
+      "sha256": "8214e0308fa4a3726fdab6b1e42f07f27dfa50f9e503c23caa17c3894d080a6a"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/failure.png",
+      "sha256": "b152932b28d5058941d77185136965ba465fc10de4c107dace7a22e4e64970ab"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/result.json",
+      "sha256": "809eed1e095b795654e474fcde9413539516061e8c7d93fd46fa9e437ff1e1a2"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/source-manifest.json",
+      "sha256": "efe6e4cb9406c4009d3a613b308927d25e1dfbad95cc23ce69607af8c0b0562f"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/browser-01/sources.zip",
+      "sha256": "cc84995d7bdbeb212dda81c3de71dc79c7bb9704f80e12104c7dbc475f234d60"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/publication-01/diagnosis.json",
+      "sha256": "18b65016c9ce9e6367cb3bb06ae7d79ad80cc28e5f56c8e193b9f9fe9c61c0a2"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/publication-01/previous-final-source-check.json",
+      "sha256": "eb93d2d70a29cb5fdd64d986de2c726d3a32126db25537894caf207b6a975ec6"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/publication-01/verify_dependency_hardening_sources.py.source",
+      "sha256": "7370bdc15068877b7a6842b15773aa32c90950771728757c717fcb0856e95e8e"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/publication-links-01/diagnosis.json",
+      "sha256": "35d2caa0f7eb9400a3fbcf94e19da956a85b4f95c4d7d3a7b8176306b4c3cad2"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/publication-links-01/failed-repository-check.json",
+      "sha256": "f8afe8f81964f5ab3baf67d8be84cbdc5de2fd61b09898d10df282a6d6032880"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/audit-after.json",
+      "sha256": "674528a0b980a23755f8765e411da68ad2cc04ec908a40fbd6d022766f9564a0"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/available-sources.zip",
+      "sha256": "8057231ddff797470d2021ebad8b0045fd27476d8b066cd8ddd1ab52a4f0cc70"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/dependency-audit.json",
+      "sha256": "80409e240f730b25958e5ed869de5abd3ceeb151b84acb8621042dee4097366b"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/diagnosis.json",
+      "sha256": "f7f73b4c489fa014498907eb238f02cbe74828a9c2ffdbfddec12bb14597d198"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/mobile-build.json",
+      "sha256": "d89cb75ec2b7f219b50e3446f3e7668beaf11fea76c9925176bb6612d71fe487"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/mobile-verification.log",
+      "sha256": "5af10f36811fafaaf66639c724a2ee90037874d2b4244af74cf844fefa9ad11e"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/runtime-build.json",
+      "sha256": "f1e9758a38ae2777f2a4522677164ad3714fc01b8b94c1552b711d2eac807f79"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/security-tests.log",
+      "sha256": "d57816f1886c8225b4e59ac8412a665c346886e6f9da53c5861510ed7844facf"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/resolution-01/web-build.json",
+      "sha256": "4efde0d66a31ade28515f32008980c2aa56db2971205f2b458d0eea2763b70f0"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/startup-01/attempt.json",
+      "sha256": "24b696bacaa9599f684353e476f349748030542c79ee9b984548c540bfddd2d2"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/attempts/startup-01/sources.zip",
+      "sha256": "cc84995d7bdbeb212dda81c3de71dc79c7bb9704f80e12104c7dbc475f234d60"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/audit-after.json",
+      "sha256": "ac05e378304909c64acb40d95a555365ae4e853f78283b7b33a4901d000d3845"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/audit-before-source.json",
+      "sha256": "b56b40164ffc9b5b3b2ad212faffb11ce6cb8e1733d53a451366326e4e348629"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/audit-before.json",
+      "sha256": "98aeabcf943e84091f4628069e3e99bd4b5146d46056bb34a5dff74af2a4fd8a"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/build.json",
+      "sha256": "52683f9548b91c5f5b9d0b492ab47a04d5b3e1c28927faa01831f3f6f6ef4b30"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/dependency-audit.json",
+      "sha256": "46999d22090ec6848d4b8ec5fba866ba08e39532280b8f1b7efa617474093b93"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/dependency-hardening-cost-draft-capture-manifest.json",
+      "sha256": "b0ddc73ddd6f13ec669f2676d7bd8db55b857d180c801cb4594ca5741b15ac95"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/dependency-hardening-payment-draft-capture-manifest.json",
+      "sha256": "90c99fb5264c952eb85a76b136c2fe19d7b1a78086d59d4f226cf688ffeee136"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/development-project-resources.json",
+      "sha256": "541748039a642bb1bbafdec0faaef714186b975a888b5b763ccb1a6ef680e294"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/development-runtime.json",
+      "sha256": "8e94383efdf8fa7fdc0435bb90530a31c83878059fb89b65cd0f9020e34e574b"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/final-source-check.json",
+      "sha256": "1098a1bbba23d3e8147b90673e7911de840e7e8957693bab7bc1a295651db039"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/historical-89.json",
+      "sha256": "0555b23b0c64c1dce8063c75d52a15574f1f0b02df985bb9174d424765e15202"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/media.json",
+      "sha256": "27a37d347e551af0aeb24a819345bfd2ff675d5966b37aef39a3968489691664"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/mobile-build.json",
+      "sha256": "19d1b7792b9a19c18f247e633e9ceb4d7086084431f5ceedcd64a3b08f630d72"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/mobile-verification.log",
+      "sha256": "b5f59a4a16b65b24e99b50d39d98382127585c06b4054f48932e46acb07cfcba"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/native-build.log",
+      "sha256": "6433963f458da28fcd8415cb177c843ed0b369d4f215d900d276288fb67ad986"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/native-js-tests.log",
+      "sha256": "cb735cc77aed4afab0470d855b199e3a5cc7c1f0fc39c64a41cd97948c24334a"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before.json",
+      "sha256": "f0800700d9cc5e6f48d3d8fd144e19ad56069e59e472dc35f471f90d58cbc927"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/README.md.source",
+      "sha256": "2d62693c67f35dd6eb7dd27164672a7a7e40fd1458dc161dfa58bfab94f7f4e5"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/app/mobile/package.json.source",
+      "sha256": "a91541fe18d6eca58f989a7ae9d74b6f75033fa8bd7aa87c24e99cb97679db10"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/app/package-lock.json.source",
+      "sha256": "48af18363fb82f19b8a7dbb1cede8c4b4260de8267de97490445c2cf4b3fb0d5"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/app/package.json.source",
+      "sha256": "62c653dbb33cd0e10b2518705f762d17883a8fef1f0b81285f59481fe3b1c733"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/CHANGELOG.md.source",
+      "sha256": "2fe8666eec77351842ea2c3ac463a6c11595e59c490b2d04714a0ba8cacd245c"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/README.en.md.source",
+      "sha256": "9921bfc87f1b51d5f849ed0443a93df6525cc2c2ef9c69d1eb887106d7a28060"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/README.md.source",
+      "sha256": "d3547b0ef38fb7209e23c0f329c18c3b84c2fcfd608105a90108217acfe373a8"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/README.zh-CN.md.source",
+      "sha256": "bee0c10556a3c7bfe7d7769f994231cb84008ff995c6f166161e7be0388c4f97"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/delivery/02-implementation-ledger.md.source",
+      "sha256": "30f063ccd40239f818f1c1601153954dbbec69e4f12499f3ecfa68a54dc8edd6"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/delivery/03-goal-gap-assessment.md.source",
+      "sha256": "66a33eb4659bca393b6e27b15b58f02f3c68aadf99f273053dc1f25088309066"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/media/README.md.source",
+      "sha256": "d35197bca9eed3e1b9e1f9ff479532fef6f97fcaeb61a8711f2ccf459d434d5e"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/publication-before/docs/quality/current-functional-baseline.json.source",
+      "sha256": "842f846906b184a4ba07fa64ec05a09c699200def1da18a14ae4b5c2447bc700"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/remaining-findings.json",
+      "sha256": "bee35dcf9f83011559608f2d22a7ea8c05cda31b59187c6d21f5e512051fcbde"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/repository-check.json",
+      "sha256": "d07f5b3498502bf30a9d579d1d6e6ff069ba12bfa9eb091339799d3ab6240ae0"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/runtime-build.json",
+      "sha256": "268d19135534c35364908da6edfd35dbe4b3662d23fb3259161266edba512298"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/security-checks.json",
+      "sha256": "8c6f9cfcb2e69166102fdc92cd98982560e55bb87aaa0922276caa11b17f396a"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/security-tests.log",
+      "sha256": "33ec3d4b69bdf747a83a9354538b51812dbdd8bf022a2fc69403cb36f53549fa"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/selected-dependency-tree.json",
+      "sha256": "b1826b8b4d35d33b00648a6b7149e112b0a86076c3d72421c3980716e04f4187"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/selected-pins.json",
+      "sha256": "7681a3e2c821e9af4596eb5c00c26ec9ebd133956a512c34dfb46a1a8c9e87d5"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/verification.md",
+      "sha256": "cf011ed9044e73892c75384aa04432988d9b506f8270b0117a172f04802c7e84"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/visual-review.json",
+      "sha256": "fe7c43bc51825e807ea6cb60c5bfd8c89a3aa47162b6b4fe0b0c0f25c71d214c"
+    },
+    {
+      "path": "docs/quality/evidence/dependency-hardening/web-build.json",
+      "sha256": "7584d343949336e1d2671cf556cbfe51c71c0f30c9c3233dcd8f77c66edf99d1"
+    },
+    {
+      "path": "docs/media/gifs/dependency-hardening-cost-draft.gif",
+      "sha256": "e0426587e7487283264810ae19c9d84210ddf92c02a5b186dacc4f69da348416"
+    },
+    {
+      "path": "docs/media/gifs/dependency-hardening-payment-draft.gif",
+      "sha256": "3744b8f2a8ae2abaa492150bd16c9fb5cff71a66bb9bdb24e5e2cca67455887e"
+    },
+    {
+      "path": "docs/media/screenshots/dependency-hardening-cost-confirmed.png",
+      "sha256": "e8339ae3df600f37ad9a5dd7384e4ee9443a3e75c7b59173cf1d4f0f8b6aa46b"
+    },
+    {
+      "path": "docs/media/screenshots/dependency-hardening-employee-settlement.png",
+      "sha256": "84d331f1f9804a1d300ee6fac5403891e2630ee3229c9e9079c484cf606d7249"
+    },
+    {
+      "path": "docs/media/screenshots/dependency-hardening-payment-allocations.png",
+      "sha256": "4e565af6d5c3a542ea7950cda80655b9e247a89c6157774ca02c3f9a71efad82"
+    },
+    {
+      "path": "docs/media/screenshots/dependency-hardening-refund.png",
+      "sha256": "fb4e4b229fd075de865b7015a7bca24ff9a0f23c90d800c47251e3d650ab6d07"
+    },
+    {
+      "path": "docs/media/videos/dependency-hardening-cost-draft.mp4",
+      "sha256": "6874cf83da59e9010e4a980d37621c70f9dd0f182ca5ce93d64f6e1b2243b883"
+    },
+    {
+      "path": "docs/media/videos/dependency-hardening-payment-draft.mp4",
+      "sha256": "30723723f7410ad86460ef9365f0db0fd3af545cf0760a0968e7564db155e1a0"
+    }
+  ],
+  "preserved_media_count": 8,
+  "scope": "Published90 complete startup/capture sources reconstructed from exact Git objects. All its evidence and eight original media files remain unchanged. Earlier limitations stay at their original records."
+}

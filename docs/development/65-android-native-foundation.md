@@ -4,6 +4,12 @@
 
 本增量推进 GAP-16／18：建立 Taro／React Native Android 工程，接入现有移动业务、原生请求、私有临时阅读文件和本地签名构建。完整四端正式首发仍按原 Goal 验收，Android 120 GB 原生上传属于 GAP-17，尚未实现。
 
+## 当前补充：增量91
+
+现有原生工程已接入18个注册业务页面和增量66的Android分片上传；本页下文的14页及“尚未实现”描述保留为增量65历史状态。增量91加入秘书前置依赖表单，两任务版本、明确新增／解除及实际关系回执与共享Taro业务一致。当前开发APK、18项包检查及26项JVM结果的实际Gradle缓存范围见[增量91验证](../quality/evidence/task-dependencies/verification.md)；未启动模拟器，不代表实际Android设备、大文件、后台／断点恢复或商店分发验收。原生构建命令继续在app目录运行，APK、签名密钥和工具链保持忽略。
+
+Current source includes18 pages, native uploads and the secretary prerequisite form. The14-page scope below is historical increment65. Consult the linked91 evidence for the exact development APK and cached JVM scope; physical devices,120 GB transfers and distribution remain separate acceptance work.
+
 ## 1. 已实现的工程边界
 
 | 编号 | 实现 | 必须保持的约束 |

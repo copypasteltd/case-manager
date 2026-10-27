@@ -202,3 +202,5 @@
 [增量84：秘书风险与问题](development/84-secretary-project-concerns.md)提供四个完整工具、准确字段／版本、原状态机、风险转问题和真实回执；156顶层／1,001结果、Web88、运行时43、移动183、两小程序编译、新Android包与17项检查，以及两端实际流程通过。25项JVM结果按Gradle缓存记录，真实平台／云／模型验收另行完成。见[验证](quality/evidence/project-concerns/verification.md)。
 
 增量85：[任务／子任务完整创建方案](development/85-secretary-task-creation.md) · [源码绑定验证](quality/evidence/task-creation/verification.md)。
+
+增量91：[秘书任务前置依赖 / Secretary task prerequisites](development/91-secretary-task-dependencies.md) · [准确验证 / Verification](quality/evidence/task-dependencies/verification.md)。Web／Taro完整六字段授权、两任务版本、原关系与真实回执；Skill1.7.0保持draft，完整四端目标继续推进。

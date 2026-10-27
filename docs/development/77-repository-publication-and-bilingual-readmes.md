@@ -36,3 +36,7 @@
 另做当前原生开发环境只读核对、候选／暂存区敏感信息与忽略规则、单文件体积、双语覆盖、Markdown链接、媒体摘要、源码稳定性与清理检查。仓库检查记录存放在[证据组](../quality/evidence/repository-showcase)。不记录或提交服务器私钥、模型／TG／云凭据、开发数据库或原始帧。提交后对照远端main和本地HEAD验证同步，不强推。
 
 完整四端业务矩阵、真实模型与隔离、八项Skill发布、真实云／TG／平台／设备、120GB／2TB、安全、性能与生产恢复仍按原28项GAP推进。本轮记录发布组织与使用逻辑，不将任何生产GAP宣布关闭。
+
+## 后续同步：增量91 / Subsequent publication
+
+本页前述内容为增量77历史交付；当前功能、四端构建、完整来源、真实媒体及验收边界以[增量91](91-secretary-task-dependencies.md)、[当前基线](../quality/current-functional-baseline.json)和[准确验证](../quality/evidence/task-dependencies/verification.md)为准。后续更新继续将代码、双语指南、变更说明及受影响媒体一并验证、提交和推送，保留原始历史证明，不强推。Current implementation and evidence supersede the historical77 baseline only at their own source-bound records; publication keeps code, both language guides, notes and affected media together.

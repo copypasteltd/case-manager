@@ -98,6 +98,20 @@ type Dependency struct {
 	PredecessorID   string `json:"predecessor_id"`
 	Action          string `json:"action"`
 }
+
+// ExactDependency is used by explicit secretary delegation. The manual route
+// retains its existing request and response contract.
+type ExactDependency struct {
+	Dependency
+	ExpectedPredecessorVersion int64 `json:"expected_predecessor_version"`
+}
+type DependencyReceipt struct {
+	Task
+	PredecessorID      string `json:"predecessor_id"`
+	PredecessorVersion int64  `json:"predecessor_version"`
+	DependencyAction   string `json:"dependency_action"`
+	DependencyPresent  bool   `json:"dependency_present"`
+}
 type Filter struct {
 	State  string
 	Query  string

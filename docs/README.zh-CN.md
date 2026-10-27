@@ -270,21 +270,31 @@ python scripts/verify_mobile.py my-change
 
 双云原件副本不替代 PostgreSQL 备份、PITR、密钥恢复、版本／保留策略或删除防护。分别演练元数据恢复、原件恢复、权限恢复与全链路切换，按实际需求确认 RPO／RTO。[部署运维](operations/01-deployment-and-operations.md)、[备份迁移恢复](operations/02-backup-migration-and-recovery.md)和[配置目录](governance/03-configuration-catalog.md)是详细约束。
 
+## 秘书调整任务前置依赖（增量91）
+
+在项目秘书会话选择“更新项目 → 选择准确业务更新 → 调整任务前置依赖”，先选后续任务，再选同项目另一项前置任务。界面显示两个任务版本及当前关系，员工明确新增或解除并填写原因，核对预览后确认发送。选择和预览不写业务；排队受理也不代表已经提交。以“本次更新已提交”、实际关系状态和业务操作回执核对成功。
+
+一次只能调整这一条关系。两个任务版本、当前关系或任何共享受众的AI权限变化后，旧决定停止；重新读取并发送新决定，不自动改版本。自依赖、跨项目、循环依赖、重复新增和不存在的解除拒绝；完成／取消任务须先重开，进行中任务不能新增未完成前置。增加前置不代替完成前置，解除依赖不代替任务验收。准确重试复用同一运行和业务操作，不重复增加版本。
+
+`project-update` 源码包1.7.0含17项允许工具、15项准确写工具；八项Skill继续保持draft。新增迁移74，原73项迁移字节保留。服务端复用原Dependency命令，真实关系、后续版本、幂等、审计、outbox和运行证据同事务提交。Web与Taro共享完整六字段授权及回执核对；更多工具、真实模型／TG、真实云／设备和完整四端首发继续按28项差异推进。
+
+[完整方案与异常处理](development/91-secretary-task-dependencies.md) · [实际验证](quality/evidence/task-dependencies/verification.md) · [Web MP4](media/videos/secretary-task-dependencies-web.mp4) · [移动MP4](media/videos/secretary-task-dependencies-mobile.mp4)
+
 ## 8. 当前证据与放行条件
 
-当前维护更新为[依赖修复与多端兼容](development/90-dependency-hardening.md)：维护中的解包入口、Swiper／tar／webpack及其他明确版本已实际升级；12项有界安全回归及2项原生JS检查。升级后需使用完整锁文件安装，不复制其他环境的node_modules。 连续核实操作受到每用户每15分钟8次MFA限流；遇到限制等待后重试身份核实，先核对回执再决定业务动作，避免重复提交。
+当前功能更新为[秘书任务前置依赖](development/91-secretary-task-dependencies.md)，完整操作见上节。[增量90依赖修复](development/90-dependency-hardening.md)继续通过相同完整锁文件安装，不复制其他环境的node_modules。每用户每15分钟最多8次MFA核实；遇到限制等待后重试，先检查实际回执再决定业务动作。
 
 
 
 | 层面 | 当前功能基线 | 范围说明 |
 | --- | --- | --- |
-| Go / PostgreSQL | 原增量88：161顶层／1,057结果／960末级、9批；73迁移 | 完整后端来源字节相同才复用原路径证据，本轮未重跑或改迁移 |
-| 运行时 / Web | 本轮重新执行47／112项及构建 | 新锁文件绑定；八项Skill仍draft |
-| Taro | 本轮204项、类型检查；双小程序各18页 | 9组真实财务流程、3种宽度；H5不代替真机 |
-| Android | 本轮开发APK及18项包检查 | 42,921,174字节；26项JVM缓存，APK与89字节相同，无设备验收 |
-| 演示媒体目录 | 62 PNG／23 MP4／23 GIF | 新增4图及2套实际MP4／GIF；原89完整来源与103份证据／媒体原字节保留 |
+| Go / PostgreSQL | 本轮162顶层／1,080结果／982末级、9批；74迁移 | 原生PostgreSQL／HTTP／MCP；原73项迁移字节保留 |
+| 运行时 / Web | 本轮49／120项及构建 | 当前来源绑定；八项Skill仍draft |
+| Taro | 本轮212项、类型检查；双小程序各18页 | Web／H5各5组前置依赖流程、各3种宽度；H5不代替真机 |
+| Android | 当前开发APK及18项包检查 | 实际新业务包；26项JVM明确Gradle缓存范围，无设备验收 |
+| 演示媒体目录 | 70 PNG／25 MP4／25 GIF | 新增8图及两套MP4／GIF；原90来源及84份历史证据／媒体原字节保留 |
 
-本次相同更新前锁文件重新审计101项，实际新锁为 **86项：critical 0、high 20、moderate 64、low 2**。生产安全放行仍未通过。旧114项到更新前101项属于公告库变化，不能算本轮修复。见[当前完整审计](quality/evidence/dependency-hardening/dependency-audit.json)、[剩余项](quality/evidence/dependency-hardening/remaining-findings.json)及[处置方案](development/90-dependency-hardening.md)。
+当前锁文件未变，沿用增量90的原始完整审计，本轮91未重新请求审计：**86项：critical 0、high 20、moderate 64、low 2**。生产安全放行仍未通过。见[原始完整审计](quality/evidence/dependency-hardening/dependency-audit.json)、[全部剩余项](quality/evidence/dependency-hardening/remaining-findings.json)及[处置方案](development/90-dependency-hardening.md)。
 
 继续推进顺序：补业务与各端缺口 → 实际模型／隔离／Skill 和云存储联调 → 真实 TG 与平台／Android 设备 → 120 GB／2 TB、容量／安全 → 备份恢复和生产切换。外部账号与服务器信息未提供的项单列等待输入，其他实现继续推进。所有完成结论须能追到准确源码、命令、回执和未完成项。
 

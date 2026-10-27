@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T15:27:59.893379+00:00",
+  "method": "Actual eight screenshot contact sheets and both GIF first/middle/last samples opened with native image inspection. Form feedback correction and readable capture dwell reviewed; no exhaustive OCR or frame-by-frame claim.",
+  "files": [
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-form.png",
+      "sha256": "9426fc2f4d9965a4a50503eec420c6a3dd0ed765fa59afb03a3508d846c55d6a"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-preview.png",
+      "sha256": "f0089a52d7529b00a8cf61952d19f1203c77f070eb0a8119bfad755c5f0e29f0"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-receipt.png",
+      "sha256": "4307ae7445bb43e7b05b919ea2623d329b94c32f10e08b839e90842475d1393b"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-removed.png",
+      "sha256": "0eca4669ec535eb4ff66a6cdcf537a0bf37bf5d39b73408c95cf8c526bd84ed1"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-form.png",
+      "sha256": "d949f05f1a47916d8a85d1ff93e1dbc5b34646e1df492eac53c6d0894fb14afa"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-preview.png",
+      "sha256": "859d044fbcde0be423e0fb74b7c70a0ebca381c260ae2c8fea53618c219161c1"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-receipt.png",
+      "sha256": "0fc0b033e37586a4d4e6ea652c0e5704a5c4f49d8c7c061e65d5e48074fdf360"
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-removed.png",
+      "sha256": "4c32e96120eec8b928007c5c75c4d3f86d967b01358e2f4fabe0befa81a9bb60"
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-dependencies-mobile.gif",
+      "sha256": "8fdcb03a102543a5a19563756f1ccfd4875d0c7c160fac251fe1129c31c4cb7c"
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-dependencies-web.gif",
+      "sha256": "234b5bdd661d1e10b72288255d6d4d5f03c40515000a7e5d296d4243190b6419"
+    }
+  ],
+  "observations": [
+    "Corrected action no longer displays the stale no-op error; actual successor/predecessor versions and reason remain visible.",
+    "Both actual receipt views show the original committed version, add/remove action, factual edge and business operation ID.",
+    "The mobile wheel selection survives live polling, and both clients retain wrapping within tested widths.",
+    "Real route-loading transitions remain in the animation; recorded sends are queued and cancelled before execution.",
+    "Only synthetic identities and records are shown; passwords and MFA precede capture."
+  ],
+  "real_device": false,
+  "real_model": false,
+  "production_acceptance": false
+}

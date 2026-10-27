@@ -66,6 +66,7 @@ func toolDefinitions(skill string) []any {
 	nullable := func(value any) any { return map[string]any{"anyOf": []any{value, map[string]any{"type": "null"}}} }
 	updateProject := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "name": name, "scope": str(map[string]any{"maxLength": 20000}), "type": name,
 		"start_date": nullable(str(map[string]any{"format": "date"})), "due_date": nullable(str(map[string]any{"format": "date"}))}, []string{"id", "expected_version", "reason"})
+	dependency := schema(map[string]any{"id": uuid, "expected_version": version, "predecessor_id": uuid, "expected_predecessor_version": version, "action": str(map[string]any{"enum": []string{"add", "remove"}}), "reason": name}, []string{"id", "expected_version", "predecessor_id", "expected_predecessor_version", "action", "reason"})
 	updateTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "body": str(map[string]any{"maxLength": 20000}),
 		"priority": str(map[string]any{"enum": []string{"low", "normal", "high", "urgent"}}), "assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid),
 		"start_at": nullable(str(map[string]any{"format": "date-time"})), "due_at": nullable(str(map[string]any{"format": "date-time"}))}, []string{"id", "expected_version", "reason"})
@@ -86,6 +87,10 @@ func toolDefinitions(skill string) []any {
 		{"propose_project", "在发起人的公司私密会话中固定项目创建计划；返回待本人批准的计划，不创建项目。", propose},
 		{"create_project", "仅消费本人已通过两步验证批准的准确计划；原子创建项目并返回真实业务操作回执。不能批准计划。", create}}
 	if skill == "project-update" {
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
+		}{"update_task_dependency", "仅按完整 authorized_mutation 新增或解除一条同项目任务前置依赖。两个任务和版本、动作、原因须逐项一致，不能替换任务、增删其他依赖或绕过循环及状态规则。", dependency})
 		definitions = append(definitions, struct {
 			name, description string
 			schema            any
@@ -261,7 +266,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"propose_project", "create_project", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

@@ -1,0 +1,25 @@
+
+> copypaste-internal-platform@0.1.0 build:web
+> npm run build --workspace @copypaste/web
+
+
+> @copypaste/web@0.1.0 build
+> tsc -b && vite build
+
+src/taskDependency.test.ts(7,54): error TS2345: Argument of type '{ id: string; version: number; project_id: string; state: string; }' is not assignable to parameter of type 'Task'.
+  Types of property 'state' are incompatible.
+    Type 'string' is not assignable to type '"done" | "cancelled" | "todo" | "in_progress" | "in_review" | "blocked"'.
+src/taskDependency.test.ts(22,175): error TS2345: Argument of type '{ id: string; version: number; project_id: string; state: string; }' is not assignable to parameter of type 'Task'.
+  Types of property 'state' are incompatible.
+    Type 'string' is not assignable to type '"done" | "cancelled" | "todo" | "in_progress" | "in_review" | "blocked"'.
+src/taskDependency.test.ts(25,213): error TS2345: Argument of type '{ id: string; version: number; project_id: string; state: string; }' is not assignable to parameter of type 'Task'.
+  Types of property 'state' are incompatible.
+    Type 'string' is not assignable to type '"done" | "cancelled" | "todo" | "in_progress" | "in_review" | "blocked"'.
+src/taskDependency.test.ts(28,117): error TS2322: Type 'string' is not assignable to type '"done" | "cancelled" | "todo" | "in_progress" | "in_review" | "blocked"'.
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path D:\dev\copypasted\内部管理\app\web
+npm error workspace @copypaste/web@0.1.0
+npm error location D:\dev\copypasted\内部管理\app\web
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -b && vite build

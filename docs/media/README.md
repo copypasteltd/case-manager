@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **62张PNG、23段MP4、23个GIF**。增量90新增依赖修复后实际页面的4张结果图及2套MP4／GIF；原89及更早素材保留原证据。全部为隔离合成数据，不含真实业务或凭据。
+本目录包含 **70张PNG、25段MP4、25个GIF**。增量91新增秘书前置依赖8张实际页面图及两套MP4／GIF；原90及更早素材保持原证据与字节。全部为隔离合成数据，不含真实业务或凭据。
 
-This catalog contains **62 PNGs,23 MP4s and23 GIFs**. Increment90 adds four actual result screenshots and two recording/GIF pairs after dependency changes. Original89 and earlier media retain their own evidence. All media uses synthetic data and excludes real business records and credentials.
+This catalog contains **70 PNGs,25 MP4s and25 GIFs**. Increment91 adds eight actual prerequisite screenshots and two MP4/GIF pairs. Original90 and earlier media retain their original evidence and bytes. All media uses synthetic data and excludes real business records and credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -418,3 +418,24 @@ Nine actual financial journeys and three layouts run against the changed depende
 MP4按原始时间编码，GIF时间来自实际采样，文件摘要和ffprobe结果见[媒体记录](../quality/evidence/dependency-hardening/media.json)。四图及两GIF首／中／末帧均已检查；原JPEG及私有fixture不提交。浏览器、上下文、临时API、隔离库及5189服务已释放，用户原有无关进程未动。
 
 复现 / Reproduction: 先保留现有证据，再运行`python app/scripts/run_dependency_hardening_browser.py --mobile`和`python app/scripts/encode_dependency_hardening_media.py`。现有限流会使完整页面检查等待实际15分钟窗口；不调整应用限流。见[设计与复现](../development/90-dependency-hardening.md)、[准确验证](../quality/evidence/dependency-hardening/verification.md)和[像素检查](../quality/evidence/dependency-hardening/visual-review.json)。
+
+## 秘书前置依赖 / Secretary prerequisites · Increment91
+
+登录后的实际Web／Taro H5：同项目两任务选择 → 两版本和当前关系 → 缺项及无变化拦截 → 明确新增预览 → 准确发送／相同键重放 → 执行前取消 → 查看实际已提交新增和解除回执。两个已提交视图由隔离原生PostgreSQL、原Dependency命令及受控MCP夹具建立，UI取消的运行没有执行业务；录制不接真实模型。截图保留真实UUID、合成名称和业务操作回执。
+
+Actual authenticated Web/Taro H5 screens show two task versions, explicit edge decisions, validation, preview, queued send/replay/cancel and genuine committed add/remove receipts. The UI run is cancelled before business execution; the committed fixtures use original commands through controlled MCP. There is no live model or device claim. Each client is checked at three real viewport widths.
+
+| 客户端 / Client | 表单 / Form | 准确预览 / Preview | 新增回执 / Added | 解除回执 / Removed |
+| --- | --- | --- | --- | --- |
+| Web | [PNG](screenshots/secretary-task-dependencies-web-form.png) | [PNG](screenshots/secretary-task-dependencies-web-preview.png) | [PNG](screenshots/secretary-task-dependencies-web-receipt.png) | [PNG](screenshots/secretary-task-dependencies-web-removed.png) |
+| Taro H5 | [PNG](screenshots/secretary-task-dependencies-mobile-form.png) | [PNG](screenshots/secretary-task-dependencies-mobile-preview.png) | [PNG](screenshots/secretary-task-dependencies-mobile-receipt.png) | [PNG](screenshots/secretary-task-dependencies-mobile-removed.png) |
+
+![Web prerequisite review](gifs/secretary-task-dependencies-web.gif)
+
+[Web MP4](videos/secretary-task-dependencies-web.mp4) · [Mobile MP4](videos/secretary-task-dependencies-mobile.mp4) · [Mobile GIF](gifs/secretary-task-dependencies-mobile.gif)
+
+本轮MP4：Web1440 × 1100，17.406秒／84捕获帧；移动390 × 900，15.818秒／78捕获帧。GIF约1.1604×／1.0545×，两GIF均91帧；确切时序见媒体JSON。
+
+实际连续像素以原始帧间隔生成无声H.264 MP4，GIF按来源时长有界加速，未重画业务结果。先完成登录／MFA再录制；JPEG帧保持忽略。中途路由加载画面保留，不作无缝剪辑。八张PNG和两GIF首／中／末帧按像素抽样核对；完整时间／帧摘要、编码器、ffprobe及原失败／被替代采集见[验证](../quality/evidence/task-dependencies/verification.md)和[媒体记录](../quality/evidence/task-dependencies/media.json)。
+
+Silent H.264 MP4s preserve actual frame timing; GIF speed derives from capture duration. Login/MFA precede recording, raw JPEGs stay ignored, and real route-loading transitions remain visible. The linked record binds durations, frame digests, encoder and probes; visual review samples all eight screenshots and each GIF's first/middle/last frames. Compilation/development APKs and H5 demonstrations do not replace mini-program or Android device, model, cloud or production acceptance.

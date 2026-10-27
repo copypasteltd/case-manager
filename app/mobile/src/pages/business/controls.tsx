@@ -1,5 +1,5 @@
 import { Text, View } from '@tarojs/components';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Input, Picker, Textarea, semantic } from '../../platform/components';
 import { useCollection } from '../../platform/collection';
 import type { Schemas } from '../../platform/session';
@@ -22,7 +22,10 @@ export function SelectField({ label, value, options, onChange, disabled, hint }:
   label: string; value: string; options: readonly (readonly [string, string])[]; onChange(value: string): void; disabled: boolean; hint?: string;
 }) {
   const index = options.findIndex(item => item[0] === value);
-  return <Field label={label} hint={hint}><Picker ariaLabel={label} mode='selector' range={options.map(item => item[1])} value={Math.max(0, index)} disabled={disabled} onChange={event => { const option = options[Number(event.detail.value)]; if (option) onChange(option[0]); }}>
+  // Conversation polling must not reset an open native/Taro wheel. Keep equal labels stable.
+  const labelsKey = JSON.stringify(options.map(item => item[1]));
+  const range = useMemo<string[]>(() => JSON.parse(labelsKey), [labelsKey]);
+  return <Field label={label} hint={hint}><Picker ariaLabel={label} mode='selector' range={range} value={Math.max(0, index)} disabled={disabled} onChange={event => { const option = options[Number(event.detail.value)]; if (option) onChange(option[0]); }}>
     <View className='cp-picker'>{index >= 0 ? options[index][1] : '当前选择待核对'}</View>
   </Picker></Field>;
 }

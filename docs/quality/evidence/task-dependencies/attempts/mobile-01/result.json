@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T14:18:25.011Z",
+  "finished_at": "2026-10-27T14:19:24.361Z",
+  "checks": [
+    "Actual original-command MCP commits expose exact add/remove edge receipts and agree with the native database-backed dependencies endpoint."
+  ],
+  "source_count": 688,
+  "source_sha256": "5b88d3cd55b3342da9a2e565675354904041bd65ce86f58585db46b179ab8ecf",
+  "source_after_sha256": "5b88d3cd55b3342da9a2e565675354904041bd65ce86f58585db46b179ab8ecf",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "本次更新方式 settled wheel row\n\n9 !== 0\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "36b0e61bd8dce1505d787c90c52f2616bb32324890148bc474a5161fbe95fdc0",
+  "build_source_after_sha256": "36b0e61bd8dce1505d787c90c52f2616bb32324890148bc474a5161fbe95fdc0",
+  "build_source_unchanged": true
+}
