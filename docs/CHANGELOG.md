@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 2026-10-28 · Increment94 / 移动文件与目录整理
+
+共享Taro接入真实文件工作区：按目录层级与名称筛选，目录／文件独立分页；新建目录、同项目／分类改名移动、文件回收与原目录恢复；分页核对正式版本和准确历史阅读。源修订、目标、原因和影响先预览确认，完整回执才显示成功；文字草稿只驻内存，冲突和不确定结果停止重复提交。导航替换当前目录页面以控制原生页面栈；保留Android原生上传与原固定版本读者。
+
+Added actual shared mobile folder/file commands, version history and explicit confirmation. Exact receipts preserve content identity and scope. Text-only drafts survive conflicts and uncertain results; destination selection and confirmation are never restored. Existing backend business rules remain authoritative. No API, migration, dependency or Skill changes.
+
+新执行移动233项、类型、微信／抖音各20页；当前Android开发APK及18项检查，26项JVM按Gradle实际缓存范围保留。真实本机API／隔离PG的9组流程、8项H5布局及4PNG／两套MP4与GIF；当前媒体82／31／31。三次脚本诊断保留失败状态，另一次全通过但过快的录制保留原通过状态与媒体后重新采集；完整来源均归档。后端167顶层／1129结果、Web130、运行时51及Linux按完整来源未变复用93，原90审计86项／20high未重新执行。原93的89份证据／媒体及10份入口快照保持原字节。
+
+Fresh mobile/build/browser evidence is separate from unchanged-source reuse and Gradle caches. Recordings use authenticated synthetic H5 pixels. Actual platforms/devices/cloud/model/TG,120GB/2TB, retention cleanup, cross-scope moves, security and production recovery remain open; the full four-client goal is active.
+
+[方案 / Workflow](development/94-mobile-file-workspace.md) · [验证 / Verification](quality/evidence/mobile-files/verification.md) · [媒体 / Media](media/README.md) · [编号差异 / Gaps](delivery/03-goal-gap-assessment.md)
+
 ## 2026-10-28 · Increment93 / 秘书正文检索与固定DOCX资料
 
 原 `search_resources` 接入项目／任务／知识实际正文及当前正式文件的就绪索引，按会话共同权限、分类和准确文件依赖筛选；字面大小写匹配、Unicode片段和绑定查询／运行／授权的游标沿用有界候选保护。`read_resource` 与Web／Taro预览支持固定DOCX派生正文，绑定原件／正文SHA-256、提取器、索引时刻与字符位置；重新核对撤权、回收、扫描、租约、取消、预算及持久回执，保留原UTF-8独立读取路径。八项Skill协议递增仍draft，不增加写授权。

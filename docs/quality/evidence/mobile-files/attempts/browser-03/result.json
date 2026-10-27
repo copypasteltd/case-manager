@@ -1,0 +1,156 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-27T20:43:19.280Z",
+  "source_sha256": "4c657859dcc7e4f94672c79287c378250b00103def7aa320b2402816baa187ac",
+  "source_after_sha256": "4c657859dcc7e4f94672c79287c378250b00103def7aa320b2402816baa187ac",
+  "source_unchanged": true,
+  "source_count": 945,
+  "checks": [
+    "Actual UI folder creation and rename/move commit exact parent, source revision, name, reason and same project/classification; complete receipts are reread.",
+    "Actual file rename/move, trash and untrash return successive revisions, retain exact formal content and block content reading while trashed.",
+    "The two actual formal versions remain visible; the historical read requests version1 and validates its real SHA256/plain text without executing embedded markup or replacing it with the current version.",
+    "An actual duplicate-name409 preserves the draft and blocks a duplicate submission; no success is inferred.",
+    "A real competing folder revision causes409; the local text survives and does not overwrite the authoritative name.",
+    "A labelled browser transport fault loses an actually committed file response; repeat is blocked and a fresh authoritative read reconciles exactly one revision.",
+    "A separately labelled incomplete receipt after a real create cannot announce success or clear the text draft; the record is verified through a fresh API read.",
+    "An actual name filter and opaque cursor paginate23 same-parent folders as20+3, without mixing other directories or inventing history versions."
+  ],
+  "layouts": [
+    {
+      "name": "folder-directory",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 900,
+      "height": 390,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 1024,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 375,
+      "height": 812,
+      "browser_text_percent": 200,
+      "color_scheme": "dark",
+      "reduced_motion": true,
+      "real_device": false,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 900,
+      "height": 390,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 1024,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 375,
+      "height": 812,
+      "browser_text_percent": 200,
+      "color_scheme": "dark",
+      "reduced_motion": true,
+      "real_device": false,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-files-directory",
+      "frame_count": 16,
+      "duration_ms": 3245,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-files-directory/frames.json",
+      "manifest_sha256": "cfb59ebfe4680949f35302d25a9a872cd75fa23fbd57b597fe8548df252a4fc3"
+    },
+    {
+      "name": "mobile-files-lifecycle",
+      "frame_count": 13,
+      "duration_ms": 2791,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-files-lifecycle/frames.json",
+      "manifest_sha256": "d2016a30e0cd103dfd7c6ade2615f6d7a7787e52dea18bfff5aab48bd551ad3c"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-files-create.png",
+      "caption": "Create a folder under its actual parent with inherited scope and explicit confirmation.",
+      "sha256": "7f17885301d9d189a76e0cb49da0b74d96fe718a0f36f104ebbdf3f1c9e9503d",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-directory.png",
+      "caption": "Authoritative folder move receipt, current revision and inherited project scope.",
+      "sha256": "0568ff42ecf974a6f282965b986b21bad92f8ed07f4bf1a5af4cf128712237f1",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-move.png",
+      "caption": "Review an exact file revision and selected destination before committing.",
+      "sha256": "739e7cf4d0579b745cdcd018a99ab787c27401fa4591ebdde03ce2f7a4496b63",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-restored.png",
+      "caption": "Restored active file with both formal versions, digest and replica state.",
+      "sha256": "6226a350d83363cb59c71c62fdb4355f9c2974e1903241edfccda50ffbf24e92",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-row-title').getByText('同事已更新的目录', { exact: true })\u001b[22m\n\n    at open (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_files.mjs:80:85)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_mobile_files.mjs:191:3\nActive page: {\"route\":\"#/pages/files/index?folder_id=80b9b029-d8d5-4e89-87d2-3f61267704a5\",\"titles\":[\"交付归档 · Delivery.\"],\"actions\":[\"我的\",\"返回上一级\",\"查看所属项目↗\",\"新建目录\",\"改名或移动当前目录\",\"查找目录与文件\",\"分页资料 22项目受限 · 项目资料↗\",\"分页资料 21项目受限 · 项目资料↗\",\"分页资料 20项目受限 · 项目资料↗\",\"分页资料 19项目受限 · 项目资料↗\",\"分页资料 18项目受限 · 项目资料↗\",\"分页资料 17项目受限 · 项目资料↗\",\"分页资料 16项目受限 · 项目资料↗\",\"分页资料 15项目受限 · 项目资料↗\",\"分页资料 14项目受限 · 项目资料↗\",\"分页资料 13项目受限 · 项目资料↗\",\"分页资料 12项目受限 · 项目资料↗\",\"分页资料 11项目受限 · 项目资料↗\",\"分页资料 10项目受限 · 项目资料↗\",\"分页资料 09项目受限 · 项目资料↗\",\"分页资料 08项目受限 · 项目资料↗\",\"分页资料 07项目受限 · 项目资料↗\",\"分页资料 06项目受限 · 项目资料↗\",\"分页资料 05项目受限 · 项目资料↗\",\"分页资料 04项目受限 · 项目资料↗\",\"分页资料 03项目受限 · 项目资料↗\",\"分页资料 02项目受限 · 项目资料↗\",\"分页资料 01项目受限 · 项目资料↗\",\"分页资料 00项目受限 · 项目资料↗\",\"刷新当前资料\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "committed file move response lost at browser transport",
+    "incomplete committed folder receipt"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "4c657859dcc7e4f94672c79287c378250b00103def7aa320b2402816baa187ac",
+  "source_sha256_after_build": "4c657859dcc7e4f94672c79287c378250b00103def7aa320b2402816baa187ac",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

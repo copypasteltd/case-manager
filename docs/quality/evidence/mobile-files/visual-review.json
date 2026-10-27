@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T20:55:34.312950+00:00",
+  "files": [
+    {
+      "file": "docs/media/screenshots/mobile-files-create.png",
+      "sha256": "80a53805355b634db0073d671ef5c5568bb5a920853702d6e392331ec8b44c59",
+      "reviewed": "Direct view of actual390x900 PNG; text, source identifiers, selection and confirmation/result readable within the captured viewport. Long forms/history continue by scrolling.",
+      "passed": true
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-directory.png",
+      "sha256": "1b4b4aab8425c34211f657133b3c4eb5b588e87011fae88a55f474a2d9df5a51",
+      "reviewed": "Direct view of actual390x900 PNG; text, source identifiers, selection and confirmation/result readable within the captured viewport. Long forms/history continue by scrolling.",
+      "passed": true
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-move.png",
+      "sha256": "c92baa9e86126c715bcf281635eccc78ea3bf65bdd8a043a1df4ae9824a5b6c5",
+      "reviewed": "Direct view of actual390x900 PNG; text, source identifiers, selection and confirmation/result readable within the captured viewport. Long forms/history continue by scrolling.",
+      "passed": true
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-restored.png",
+      "sha256": "f9f88fc363999010e8f3a892d73843fc088b97cdfdef146b02b248690d593209",
+      "reviewed": "Direct view of actual390x900 PNG; text, source identifiers, selection and confirmation/result readable within the captured viewport. Long forms/history continue by scrolling.",
+      "passed": true
+    },
+    {
+      "file": "docs/media/gifs/mobile-files-directory.gif",
+      "sha256": "ac920b4890ab37bb06d8132465092953866994d1a28714e7e5a5ff090b1eec93",
+      "sampled_frames": [
+        0,
+        28,
+        56
+      ],
+      "reviewed": "Direct first/middle/last real GIF samples; readable held preview/receipt states, complete original timing retained in MP4.",
+      "passed": true
+    },
+    {
+      "file": "docs/media/gifs/mobile-files-lifecycle.gif",
+      "sha256": "24dc566e5d87be744148f57fd1a11add4f76ba50226fa485074bfa0f30383ff2",
+      "sampled_frames": [
+        0,
+        31,
+        62
+      ],
+      "reviewed": "Direct first/middle/last real GIF samples; readable held preview/receipt states, complete original timing retained in MP4.",
+      "passed": true
+    }
+  ],
+  "scope": "Actual synthetic H5 pixels only. No pixel text/credential OCR or real device claim. Private contact sheets only; no repainted product content.",
+  "reviewer": "Codex direct image inspection",
+  "recording_pauses_added": true,
+  "original_fast_capture_preserved": "attempts/browser-04-fast-capture"
+}

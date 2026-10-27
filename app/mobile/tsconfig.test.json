@@ -16,6 +16,8 @@
     ]
   },
   "include": [
+    "src/platform/file-input.ts",
+    "src/platform/file-input.test.ts",
     "src/platform/session.ts",
     "src/platform/session.test.ts",
     "src/platform/native-wire.ts",

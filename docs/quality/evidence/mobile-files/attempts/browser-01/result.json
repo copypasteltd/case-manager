@@ -1,0 +1,151 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-27T20:36:59.052Z",
+  "source_sha256": "53cf91f53d3d2b7caa137d14f595b94545eb5a7fa3721cf2d98126589923145e",
+  "source_after_sha256": "53cf91f53d3d2b7caa137d14f595b94545eb5a7fa3721cf2d98126589923145e",
+  "source_unchanged": true,
+  "source_count": 945,
+  "checks": [
+    "Actual UI folder creation and rename/move commit exact parent, source revision, name, reason and same project/classification; complete receipts are reread.",
+    "Actual file rename/move, trash and untrash return successive revisions, retain exact formal content and block content reading while trashed.",
+    "The two actual formal versions remain visible; the historical read requests version1 and validates its real SHA256/plain text without executing embedded markup or replacing it with the current version."
+  ],
+  "layouts": [
+    {
+      "name": "folder-directory",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 900,
+      "height": 390,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 1024,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 375,
+      "height": 812,
+      "browser_text_percent": 200,
+      "color_scheme": "dark",
+      "reduced_motion": true,
+      "real_device": false,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 900,
+      "height": 390,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 1024,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 375,
+      "height": 812,
+      "browser_text_percent": 200,
+      "color_scheme": "dark",
+      "reduced_motion": true,
+      "real_device": false,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-files-directory",
+      "frame_count": 11,
+      "duration_ms": 2435,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-files-directory/frames.json",
+      "manifest_sha256": "efc378fbf31de020f2e2dc85b06ad9d211a658512ed9fdcd8e95ade85dde675b"
+    },
+    {
+      "name": "mobile-files-lifecycle",
+      "frame_count": 12,
+      "duration_ms": 2426,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-files-lifecycle/frames.json",
+      "manifest_sha256": "b33f081a302072b2153a2b654f87ddd807837f0065d19c72977fcebd23d1fa47"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-files-create.png",
+      "caption": "Create a folder under its actual parent with inherited scope and explicit confirmation.",
+      "sha256": "9913bcd2cb1517de3313280b34b9d4c4c4a5e71a62888f408ab8d56f0676cb44",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-directory.png",
+      "caption": "Authoritative folder move receipt, current revision and inherited project scope.",
+      "sha256": "18aa40468d2a67db59018d5bbbff59d6897fe77d75ee820558cebc470a4c1470",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-move.png",
+      "caption": "Review an exact file revision and selected destination before committing.",
+      "sha256": "f4daa3b201534f227068a20280f794abed9ef57aed0666da1cb25e0279e0a991",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-restored.png",
+      "caption": "Restored active file with both formal versions, digest and replica state.",
+      "sha256": "364601e5ce46906f73a075133ab388a04fcd5dd1a9b2796c1d550ccf78dbafa6",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: '新建目录', exact: true })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_mobile_files.mjs:150:67\nActive page: {\"route\":\"#/pages/files/index?folder_id=b75a2886-bc31-4535-af10-5ca8ee543651\",\"titles\":[\"项目交付记录 · Final.txt.\"],\"actions\":[\"我的\",\"返回所在目录\",\"查看所属项目↗\",\"改名或移动文件\",\"移入回收站\",\"查阅准确内容版本 2\",\"查阅准确内容版本 1\",\"刷新当前资料\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "committed file move response lost at browser transport",
+    "incomplete committed folder receipt"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "53cf91f53d3d2b7caa137d14f595b94545eb5a7fa3721cf2d98126589923145e",
+  "source_sha256_after_build": "53cf91f53d3d2b7caa137d14f595b94545eb5a7fa3721cf2d98126589923145e",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

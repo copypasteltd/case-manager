@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "The unchanged inspector still required exactly19 pages. The current app registers20 including the new file workspace; correct the count and explicitly require that page, retaining all actual artifact checks.",
+  "scope": "Exact original inspector and failed18-check report only; not a full historical source archive. APK/build source remains unchanged.",
+  "files": [
+    {
+      "path": "docs/quality/evidence/mobile-files/diagnostics/05-apk-page-count/inspect_android_apk.py.snapshot",
+      "sha256": "79742e9dfd7e7bc80bf70356ae41dc01c943faf36b065f87dbba26331f607629"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-files/diagnostics/05-apk-page-count/apk-inspection.json",
+      "sha256": "8e449e3de7f0ec885bb157e49d4832374375603fa7bedad52e3d11a9c3197555"
+    }
+  ]
+}

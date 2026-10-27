@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "The baseline added binary media, source ZIPs and original build logs to the managed code/guide whitespace list. All25 checks otherwise passed, including links/secrets. Preserve the exact report and baseline, then select actual code/guide formats for whitespace only. Media/log/ZIP bytes remain unchanged and remain covered by other publication/source/history checks.",
+  "scope": "Exact original candidate report and baseline only; not a historical application source archive.",
+  "files": [
+    {
+      "path": "docs/quality/evidence/mobile-files/diagnostics/06-publication-scope/repository-check.json",
+      "sha256": "5a7bc828e186c9d308671ca758551b3f6fda3dc117c16eee456d2ef521f971d7"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-files/diagnostics/06-publication-scope/baseline.json.snapshot",
+      "sha256": "b6ca9f457ef72e41cdce9d85f33bdf06f91d5f4a3784ac8508316ddd6805e5ce"
+    }
+  ]
+}

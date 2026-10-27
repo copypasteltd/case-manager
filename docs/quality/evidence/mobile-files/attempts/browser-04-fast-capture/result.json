@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T20:45:57.119Z",
+  "source_sha256": "403d1f33e12faabf1c4c650a650aad1b64a2acf45a42d09910bd061243d2c1f0",
+  "source_after_sha256": "403d1f33e12faabf1c4c650a650aad1b64a2acf45a42d09910bd061243d2c1f0",
+  "source_unchanged": true,
+  "source_count": 945,
+  "checks": [
+    "Actual UI folder creation and rename/move commit exact parent, source revision, name, reason and same project/classification; complete receipts are reread.",
+    "Actual file rename/move, trash and untrash return successive revisions, retain exact formal content and block content reading while trashed.",
+    "The two actual formal versions remain visible; the historical read requests version1 and validates its real SHA256/plain text without executing embedded markup or replacing it with the current version.",
+    "An actual duplicate-name409 preserves the draft and blocks a duplicate submission; no success is inferred.",
+    "A real competing folder revision causes409; the local text survives and does not overwrite the authoritative name.",
+    "A labelled browser transport fault loses an actually committed file response; repeat is blocked and a fresh authoritative read reconciles exactly one revision.",
+    "A separately labelled incomplete receipt after a real create cannot announce success or clear the text draft; the record is verified through a fresh API read.",
+    "An actual name filter and opaque cursor paginate23 same-parent folders as20+3, without mixing other directories or inventing history versions.",
+    "Actual project membership withdrawal invalidates the second identity login; refresh clears the visible file and returns to authentication."
+  ],
+  "layouts": [
+    {
+      "name": "folder-directory",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 900,
+      "height": 390,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 1024,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "name": "folder-directory",
+      "width": 375,
+      "height": 812,
+      "browser_text_percent": 200,
+      "color_scheme": "dark",
+      "reduced_motion": true,
+      "real_device": false,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 900,
+      "height": 390,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 1024,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "name": "file-history",
+      "width": 375,
+      "height": 812,
+      "browser_text_percent": 200,
+      "color_scheme": "dark",
+      "reduced_motion": true,
+      "real_device": false,
+      "passed": true
+    }
+  ],
+  "recordings": [
+    {
+      "name": "mobile-files-directory",
+      "frame_count": 16,
+      "duration_ms": 3312,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-files-directory/frames.json",
+      "manifest_sha256": "b5c41a162c194a6094e1a015354934a3f757c23db4e1b06abda230773945f23c"
+    },
+    {
+      "name": "mobile-files-lifecycle",
+      "frame_count": 13,
+      "duration_ms": 2947,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-files-lifecycle/frames.json",
+      "manifest_sha256": "75926eeabfd8ae248191f50703b2e973e523e233a3fad7e803676793cc6b4498"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-files-create.png",
+      "caption": "Create a folder under its actual parent with inherited scope and explicit confirmation.",
+      "sha256": "6e05e23532439b1c0355b4c51891e8f7deda2906ad6268d58eb3d64253d0b78a",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-directory.png",
+      "caption": "Authoritative folder move receipt, current revision and inherited project scope.",
+      "sha256": "cd2b77378f70cd390d7cafef10b6183e26c05742e476997705806956cd034cd2",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-move.png",
+      "caption": "Review an exact file revision and selected destination before committing.",
+      "sha256": "bef018f43dfabb5b5099e26d28d0fcb4e3eaafbcb5260091cdde9ac9fb768f3b",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-restored.png",
+      "caption": "Restored active file with both formal versions, digest and replica state.",
+      "sha256": "88c998d370d59de336dba1c2d15bf9fba2f4c7f2c57ff7ad75ef0160522043ef",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "committed file move response lost at browser transport",
+    "incomplete committed folder receipt"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "403d1f33e12faabf1c4c650a650aad1b64a2acf45a42d09910bd061243d2c1f0",
+  "source_sha256_after_build": "403d1f33e12faabf1c4c650a650aad1b64a2acf45a42d09910bd061243d2c1f0",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

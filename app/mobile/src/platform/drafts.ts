@@ -18,7 +18,7 @@ export type DraftTarget = { kind: 'task' | 'task-create' | 'task-edit' | 'task-d
 } | {
   kind: 'financial-edit' | 'financial-action' | 'deliverable-decision' | 'change-prepare' | 'change-implement'; id: string; version: number; revision: string; hash: string;
 } | {
-  kind: 'financial-create' | 'project-closeout-transition' | 'resource-create' | 'resource-edit' | 'resource-transition' | 'project-create' | 'project-edit' | 'project-member' | 'project-owner' | 'business-contract' | 'business-purchase' | 'business-claim' | 'request-prepare' | 'request-submit' | 'request-revise' | 'request-withdraw' | 'incident-create' | 'incident-update' | 'conversation-create' | 'conversation-edit' | 'conversation-member' | 'run-create' | 'run-cancel' | 'agent-project-plan' | 'agent-plan-action' | 'agent-organization-action'; id: string; version: number;
+  kind: 'folder-create' | 'folder-organize' | 'file-organize' | 'file-state' | 'financial-create' | 'project-closeout-transition' | 'resource-create' | 'resource-edit' | 'resource-transition' | 'project-create' | 'project-edit' | 'project-member' | 'project-owner' | 'business-contract' | 'business-purchase' | 'business-claim' | 'request-prepare' | 'request-submit' | 'request-revise' | 'request-withdraw' | 'incident-create' | 'incident-update' | 'conversation-create' | 'conversation-edit' | 'conversation-member' | 'run-create' | 'run-cancel' | 'agent-project-plan' | 'agent-plan-action' | 'agent-organization-action'; id: string; version: number;
 };
 export interface DraftHandle { read(): DraftFields | undefined; write(fields: DraftFields): boolean; forget(): void }
 type Entry = { fields: DraftFields; changed: number };
@@ -54,7 +54,7 @@ export class MemoryDrafts {
         for (const name of Object.keys(limits) as (keyof typeof limits)[]) {
           const value = fields[name];
           if (value === undefined && name !== 'reason' && name !== 'action') continue;
-          if (typeof value !== 'string' || value.length > limits[name]) return false;
+          if (typeof value !== 'string' || value.length > (name === 'name' && ['folder-create', 'folder-organize', 'file-organize'].includes(target.kind) ? 400 : limits[name])) return false;
           copy[name] = value;
         }
         if (fields.business !== undefined) {

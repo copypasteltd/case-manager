@@ -1,0 +1,51 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-27T20:40:13.743Z",
+  "source_sha256": "f8de454079de5f53e80d8554f6534cc3ff72c47ede46c65e7c3138e1887c993f",
+  "source_after_sha256": "f8de454079de5f53e80d8554f6534cc3ff72c47ede46c65e7c3138e1887c993f",
+  "source_unchanged": true,
+  "source_count": 945,
+  "checks": [],
+  "layouts": [],
+  "recordings": [],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/mobile-files-create.png",
+      "caption": "Create a folder under its actual parent with inherited scope and explicit confirmation.",
+      "sha256": "d96be0a5d81e9f023374c0fe9be1921a61536d3290bad2abf341e80a388d8ab0",
+      "synthetic_data": true,
+      "real_device": false
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-directory.png",
+      "caption": "Authoritative folder move receipt, current revision and inherited project scope.",
+      "sha256": "8a1219feab430cd75cee9203a5c07173e51fd954dc13178ec918cdf86290269b",
+      "synthetic_data": true,
+      "real_device": false
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "cleanup_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(route.pathname === '/pages/files/index')\n\n    at assertNoCredentials (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/mobile_files_recording.mjs:11:10)\n    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/mobile_files_recording.mjs:27:15\nActive page: {\"route\":\"#/pages/files/index?folder_id=6a76e64b-cc6c-4e7c-a510-ef8e74aff288\",\"titles\":[\"项目资料 · Reviewed.\"],\"actions\":[\"我的\",\"返回上一级\",\"查看所属项目↗\",\"新建目录\",\"改名或移动当前目录\",\"查找目录与文件\",\"刷新当前资料\"]}",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "controlled_response_faults": [
+    "committed file move response lost at browser transport",
+    "incomplete committed folder receipt"
+  ],
+  "native_fixture_exit_code": 0,
+  "browser_exit_code": 1,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "source_sha256_before_fixture_and_build": "f8de454079de5f53e80d8554f6534cc3ff72c47ede46c65e7c3138e1887c993f",
+  "source_sha256_after_build": "f8de454079de5f53e80d8554f6534cc3ff72c47ede46c65e7c3138e1887c993f",
+  "source_unchanged_during_fixture_and_build": true,
+  "build_and_browser_sources_match": true
+}

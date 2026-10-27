@@ -36,6 +36,7 @@ export function usePage<T>(loader: (scope: Scope, me: Schemas['Me']) => Promise<
   return { result, error, loading, reload, scope: scope.current };
 }
 export function go(kind: string, id?: string) {
+  if (['folders', 'files', 'folder', 'file'].includes(kind)) { fileWorkspace(id ? (kind === 'folder' ? { folder_id: id } : { file_id: id }) : {}); return; }
   if (kind === 'new-project') { void Taro.navigateTo({ url: '/pages/project/index?section=setup' }); return; }
   if (id && ['cost', 'payment', 'subscription', 'change'].includes(kind)) { void Taro.navigateTo({ url: financialURL(kind as 'cost' | 'payment' | 'subscription' | 'change', identifier(id)) }); return; }
   if (kind === 'notifications') { void Taro.navigateTo({ url: '/pages/notifications/index' }); return; }
@@ -63,7 +64,13 @@ export function goVersion(fileID: string, versionID: string) {
 export function readVersion(fileID: string, versionID: string) {
   void Taro.navigateTo({ url: '/pages/content/index?id=' + identifier(fileID) + '&version=' + identifier(versionID) });
 }
+export function fileWorkspace(scope: { project_id?: string; folder_id?: string; file_id?: string } = {}, replace = false) {
+  const query = Object.entries(scope).filter(([, value]) => value).map(([key, value]) => key + '=' + identifier(value)).join('&');
+  const url = '/pages/files/index' + (query ? '?' + query : '');
+  void (replace ? Taro.redirectTo({ url }) : Taro.navigateTo({ url }));
+}
 export function browse(kind: string, scope?: { project_id?: string; folder_id?: string }) {
+  if (kind === 'folders' || kind === 'files') { fileWorkspace(scope); return; }
   const suffix = Object.entries(scope ?? {}).filter(([, value]) => value).map(([key, value]) => '&' + key + '=' + encodeURIComponent(value!)).join('');
   void Taro.navigateTo({ url: '/pages/list/index?kind=' + encodeURIComponent(kind) + suffix });
 }

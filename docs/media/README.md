@@ -2,11 +2,23 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **78张PNG、29段MP4、29个GIF**。增量93新增秘书固定DOCX资料的4张实际截图和两套MP4／GIF；原92及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
+本目录包含 **82张PNG、31段MP4、31个GIF**。增量94新增移动文件中心4张实际截图和两套MP4／GIF；原93及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
 
-This catalog contains **78 PNGs,29 MP4s and29 GIFs**. Increment93 adds four actual indexed-context screenshots and two MP4/GIF pairs. Earlier media retains its original bytes. Recordings use authenticated synthetic data; mobile clips show Taro H5 rather than a device.
+This catalog contains **82 PNGs,31 MP4s and31 GIFs**. Increment94 adds four actual mobile-file screenshots and two MP4/GIF pairs. Earlier media retains its original bytes. Recordings use authenticated synthetic data; mobile clips show Taro H5 rather than a device.
 
-## 最新：秘书正文与固定资料 / Secretary body and fixed context
+## 最新：移动文件与目录整理 / Mobile files and folders
+
+![目录整理 / Folder organization](gifs/mobile-files-directory.gif)
+
+[目录MP4](videos/mobile-files-directory.mp4) · [文件回收恢复MP4 / File lifecycle MP4](videos/mobile-files-lifecycle.mp4) · [文件GIF / File GIF](gifs/mobile-files-lifecycle.gif)
+
+[目录创建核对 / Create review](screenshots/mobile-files-create.png) · [目录整理结果 / Folder result](screenshots/mobile-files-directory.png) · [文件移动核对 / Move review](screenshots/mobile-files-move.png) · [恢复与版本 / Restored history](screenshots/mobile-files-restored.png)
+
+两段录制使用真实本机API、隔离PostgreSQL及受控对象字节；认证后才开始，保留原操作时间，无音频。GIF按清单保持原速或为长片加速。9项实际流程、8项H5布局与两项明确标记的响应故障详见[验证](../quality/evidence/mobile-files/verification.md)；历史版本样本是实际两版，23项目录分页另验，不声称20版以上实测。移动截图390×900可全尺寸打开；H5不代替真机。
+
+Two actual authenticated Taro H5 clips use native API/PostgreSQL and controlled synthetic bytes, with original timings and no audio. GIF timing/speed is recorded in the manifest. [Verification](../quality/evidence/mobile-files/verification.md) distinguishes nine flows, eight layouts, two labelled response faults, two actual content versions and23-folder pagination. No real-device or large-transfer claim. Full-size390×900 PNGs are linked above.
+
+## 此前：秘书正文与固定资料 / Secretary body and fixed context
 
 | 页面 / View | Web | 移动H5 / Mobile H5 |
 | --- | --- | --- |

@@ -306,20 +306,30 @@ python scripts/verify_mobile.py my-change
 
 演示使用真实本机API与隔离合成资料，展示预览、续读和两个版本附件；未发送模型请求。正文检索／回执完成由原生受控MCP检查证明，真实模型与TG另验。短片保留自动化的较快原时序，可调慢播放器。
 
+## 移动文件与目录整理（增量94）
+
+从“文件与资料”或项目入口进入真实目录，可新建子目录、改名、选择同项目／同分类目标移动、将文件移入回收站或恢复至原目录。名称、准确对象和源修订、位置、原因与影响核对后明确确认；不永久删除原件。文件详情分页展示全部正式版本、摘要与扫描／副本状态，选择准确历史版本阅读。
+
+文字草稿只在内存中按身份／授权／对象／修订绑定；目标选择与确认不恢复。重名、并发修订、响应丢失或回执不完整时保留输入并停止重复提交，先刷新实际记录核对结果。Android沿用原生上传；小程序承担查阅与审批。跨项目／分类迁移和保留清理执行器仍未由本轮覆盖。
+
+![移动目录整理](media/gifs/mobile-files-directory.gif)
+
+[目录MP4](media/videos/mobile-files-directory.mp4) · [文件回收恢复MP4](media/videos/mobile-files-lifecycle.mp4) · [文件GIF](media/gifs/mobile-files-lifecycle.gif) · [完整流程与接口](development/94-mobile-file-workspace.md) · [准确验证](quality/evidence/mobile-files/verification.md)
+
 ## 8. 当前证据与放行条件
 
-当前功能更新为[秘书正文检索与固定DOCX资料](development/93-secretary-indexed-search.md)。数字指向本轮来源记录，不替代完整正式交付。
+当前功能更新为[移动文件与目录整理](development/94-mobile-file-workspace.md)。本轮新执行与原证据按完整来源复用分别说明，不替代正式交付。
 
-| 层面 | 本轮结果 | 实际边界 |
+| 层面 | 当前结果 | 实际边界 |
 | --- | --- | --- |
-| Go / PostgreSQL | 167顶层／1,129结果／1,027末级、9批；75迁移 | 原生全量；全部迁移与已发布92保持原字节 |
-| Web／运行时 | 130／51项测试及构建 | 当前来源与八项draft Skill协议；未运行真实模型 |
-| Taro | 222项、类型、微信／抖音各19页 | Web／共享H5各8项真实资料流程检查；未执行小程序或设备 |
-| Android | 当前原生开发APK、18项包检查 |26项JVM实际为Gradle缓存复用；无真机／商店验收 |
-| 页面与媒体 | 新增4图、两套MP4／GIF；共78 PNG／29 MP4／29 GIF | 实际认证页面像素；合成资料、受控对象来源、无隐式发送 |
-| 历史与运维 | 已发布92完整来源重建，91份原证据／媒体不变；75迁移与归属进程核对 | 外部接入关闭、零隔离测试库；Linux只编译 |
+| Go / PostgreSQL | 复用93的167顶层／1,129结果／1,027末级、9批；75迁移 | 完整来源未变；本轮未重新运行全量后端 |
+| Web／运行时／Linux | 复用93的130／51项及构建、Linux编译 | 各自完整来源未变；无新执行或部署声明 |
+| Taro | 新执行233项、类型、微信／抖音各20页 | 文件中心9项真实API／H5流程、8项布局；未执行小程序或设备 |
+| Android | 当前原生开发APK、18项包检查 |26项JVM按实际Gradle缓存单列；无真机／商店验收 |
+| 页面与媒体 | 新增4图、两套MP4／GIF；共82 PNG／31 MP4／31 GIF | 认证后的实际页面像素，隔离合成数据；两项响应故障明确标记 |
+| 历史与运维 | 已发布93来源重建，89份证据／媒体不变；10份入口快照 | 本轮只读检查75迁移、归属进程及零测试库；外部接入关闭 |
 
-相同锁文件复用原90审计86项（0 critical、20 high、64 moderate、2 low）。真实模型／TG、设备、云／跨境网络、大文件／迁移、恢复及安全放行继续在[28项差异](delivery/03-goal-gap-assessment.md)中跟踪。详见[本轮准确验证](quality/evidence/agent-indexed-search/verification.md)。
+相同锁文件复用原90审计86项（0 critical、20 high、64 moderate、2 low），未重新扫描。真实模型／TG、设备、云／跨境网络、大文件／迁移、恢复及安全放行继续在[28项差异](delivery/03-goal-gap-assessment.md)中跟踪。详见[准确验证](quality/evidence/mobile-files/verification.md)。
 
 ## 9. 文档与同步维护
 

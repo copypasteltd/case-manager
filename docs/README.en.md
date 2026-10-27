@@ -306,20 +306,30 @@ Limits: UTF-8/Markdown/CSV/JSON originals up to1MiB; DOCX originals up to8MiB, e
 
 Clips use the actual native API with isolated synthetic records: preview, continuation and attachment without a model request. Body discovery and completion receipts are covered by the controlled native MCP fixture, separately from real models or Telegram. Short clips retain fast automated timing; slow playback for detail.
 
+## Mobile files and folders (increment94)
+
+Open File workspace from Home or a project. Create subfolders, rename, choose an actual same-project/classification destination, move a file to trash or restore it to its original directory. Review the exact identity/revision, name, location, reason and impact before confirming. Formal content is retained. File details paginate formal versions with checksums, scan/replica state and exact historical read links.
+
+Memory-only text drafts bind identity, authority, object and revision; destinations and confirmations are never restored. Name/revision conflicts, lost responses and incomplete receipts preserve text and stop repeats until authoritative records are reread. Android retains native upload; mini-programs focus on reading and approval. Cross-scope moves and retention cleanup remain separate work.
+
+![Mobile directory organization](media/gifs/mobile-files-directory.gif)
+
+[Directory MP4](media/videos/mobile-files-directory.mp4) · [Trash/restore MP4](media/videos/mobile-files-lifecycle.mp4) · [File GIF](media/gifs/mobile-files-lifecycle.gif) · [Workflow and API](development/94-mobile-file-workspace.md) · [Exact verification](quality/evidence/mobile-files/verification.md)
+
 ## 8. Evidence and release gates
 
-The current implementation is [secretary body discovery and fixed DOCX context](development/93-secretary-indexed-search.md). Counts bind current local sources and do not establish production delivery.
+The current implementation is [mobile file and folder organization](development/94-mobile-file-workspace.md). Fresh runs and unchanged-source reuse are distinguished; neither establishes production delivery.
 
 | Layer | Current result | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL |167 top-level /1,129 results /1,027 leaves in9 batches;75 migrations | Native full run; every migration remains byte-identical to published92 |
-| Web/runtime |130/51 tests and builds | Current sources and eight draft Skill packages; no live model |
-| Taro |222 tests, types and19 pages per WeChat/Douyin build | Eight actual UI/API checks each for Web/shared H5; no mini-program/device execution |
-| Android | Current native development APK and18 package checks |26 JVM results explicitly reused through Gradle cache; no device/store acceptance |
-| UI/media | Four new PNGs/two MP4-GIF pairs;78 PNGs/29 MP4s/29 GIFs total | Actual authenticated browser pixels, synthetic records, controlled object bytes and no implicit request |
-| History/operations | Published92 sources reconstructed;91 original evidence/media files unchanged;75 migrations and owned processes checked | Integrations disabled and no disposable databases; Linux compile only |
+| Go / PostgreSQL | Reuse93:167 top-level /1,129 results /1,027 leaves in9 batches;75 migrations | Complete source unchanged; no new full backend execution |
+| Web/runtime/Linux | Reuse93:130/51 tests/builds and Linux compile | Respective complete sources unchanged; no fresh execution/deployment claim |
+| Taro | Fresh233 tests, types and20 pages per WeChat/Douyin build | Nine actual API/H5 file flows and eight layouts; no mini-program/device execution |
+| Android | Current development APK and18 artifact checks |26 JVM results retain their actual Gradle cache scope; no device/store acceptance |
+| UI/media | Four new PNGs/two MP4-GIF pairs;82 PNGs/31 MP4s/31 GIFs total | Actual authenticated pixels and synthetic data; two response faults explicitly labelled |
+| History/operations | Published93 reconstructed;89 original evidence/media files and10 entry snapshots retained | Fresh readonly75-migration/process/zero-test-database check; integrations disabled |
 
-The unchanged lock reuses the original90 audit:86 findings, comprising0 critical,20 high,64 moderate and2 low. Real models/TG, devices, cloud/network, large transfers/migration, recovery and security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [exact verification](quality/evidence/agent-indexed-search/verification.md).
+The unchanged lock reuses the original90 audit of86 findings:0 critical,20 high,64 moderate and2 low; it was not rerun. Real models/TG, devices, cloud/network, large transfers/migration, recovery and security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [exact verification](quality/evidence/mobile-files/verification.md).
 
 ## 9. Documentation and synchronization
 

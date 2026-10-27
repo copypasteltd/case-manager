@@ -1,6 +1,8 @@
 # CopyPaste 内部管理平台文档中心
 
-最新功能：[增量93：秘书正文检索与固定DOCX资料](development/93-secretary-indexed-search.md) · [独立索引运维](operations/file-text-search.md) · [准确验证](quality/evidence/agent-indexed-search/verification.md)。Latest: secretary body discovery and fixed-version indexed DOCX reads; all four clients and28 acceptance gaps remain in scope.
+当前功能：[增量94：移动文件与目录整理](development/94-mobile-file-workspace.md) · [真实流程与来源](quality/evidence/mobile-files/verification.md)。Current: shared Taro folder/file operations, exact history and explicit conflict handling; all four clients remain in scope.
+
+此前功能：[增量93：秘书正文检索与固定DOCX资料](development/93-secretary-indexed-search.md) · [独立索引运维](operations/file-text-search.md) · [准确验证](quality/evidence/agent-indexed-search/verification.md)。Latest: secretary body discovery and fixed-version indexed DOCX reads; all four clients and28 acceptance gaps remain in scope.
 
 **仓库使用入口 / Repository guides：[中文完整方案与使用](README.zh-CN.md) · [Complete English guide](README.en.md) · [实际截图、MP4与GIF / Actual media](media/README.md) · [更新记录 / Changelog](CHANGELOG.md) · [贡献与同步 / Maintenance](contributing.md)。**
 

@@ -58,3 +58,11 @@ FILE-13：主端成功与副本成功分开提交。跨云源固定为不可变�
 FILE-14：清理条件同时满足：不为 current、未被合同/交付/有效记录固定引用、未法务保留、超业务保留期、不被仍需保证可恢复的备份集引用、已过待删观察窗口。副本保留与数据库恢复点一起评估。普通删除只改业务可见状态，不发跨云立即 purge。
 
 异步复制失败时主文件仍可用，但界面明确风险与告警；重要项目归档可要求所有必要交付副本已 verified。对象丢失报 missing，不能根据存在同名文件自动认定恢复成功。
+
+## 移动手工整理补充（增量94） / Mobile organization addendum
+
+公共Taro文件中心必须沿用原权限与业务命令：实际父目录继承项目／分类；整理仅选同范围的真实可写目录；提交绑定准确源修订、原因和本人明确确认。回收／原位恢复保持正式版本，历史阅读必须固定准确版本且重新核对当前授权。缺字段、冲突和响应丢失不清空输入或隐式重试，先读取实际结果。目标与确认不从文字草稿恢复。目录／文件／版本各自分页；大文件传输继续由Web／Android承担。
+
+Shared mobile commands inherit the actual parent scope, bind exact source revisions and require explicit confirmation. Trash/untrash preserve formal content. Version reading rechecks current authorization. Incomplete, conflicting or uncertain results retain text and stop repeats. Selection/confirmation are not draft fields. Collections paginate independently; Web/Android retain large-file responsibility.
+
+[实现与范围 / Implementation and scope](../development/94-mobile-file-workspace.md) · [准确验证 / Exact verification](../quality/evidence/mobile-files/verification.md)。跨范围移动、永久清理与正式四端／云／容量验收仍按原需求进行。
