@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "reason": "Read-only development check ran while the explicitly owned browser fixture was still active. The disposable-database count correctly prevented acceptance. Recheck follows after fixture cleanup.",
+  "production_deployment": false
+}

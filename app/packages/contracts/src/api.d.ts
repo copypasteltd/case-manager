@@ -2205,6 +2205,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/files/{id}/versions/{version}/text": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getFileText */
+        get: operations["getFileText"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/parties": {
         parameters: {
             query?: never;
@@ -6221,12 +6238,34 @@ export interface components {
             max_range_bytes: string;
             warnings: ("SCAN_WAIVED_NOT_CLEAN" | "SIGNED_URL_REVOCATION_DELAY")[];
         };
+        FileText: {
+            /** Format: uuid */
+            file_id: string;
+            /** Format: uuid */
+            version_id: string;
+            /** @constant */
+            extractor: "text-v1";
+            /** @enum {string} */
+            state: "pending" | "ready" | "unsupported" | "blocked" | "failed";
+            source_sha256: string;
+            text_sha256: string | null;
+            indexed_at: string | null;
+            error_code: string | null;
+            total_characters: number | null;
+            offset: number;
+            text: string;
+            next_offset: number | null;
+        };
         SearchHit: {
             resource: components["schemas"]["ResourceRef"];
             title: string;
-            snippet?: string;
+            snippet: string;
             /** Format: date-time */
             updated_at: string;
+            project_id: string | null;
+            match_types: ("name" | "body" | "tags")[];
+            text_state: ("pending" | "ready" | "unsupported" | "blocked" | "failed") | null;
+            indexed_at: string | null;
         };
         DownloadChunk: {
             /** Format: uuid */
@@ -11101,6 +11140,10 @@ export interface components {
                 items: components["schemas"]["SearchHit"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        FileTextResponse: {
+            data: components["schemas"]["FileText"];
             meta: components["schemas"]["Meta"];
         };
         PartyListResponse: {
@@ -17808,6 +17851,8 @@ export interface operations {
                 limit?: number;
                 q: string;
                 project_id?: string;
+                type?: "project" | "task" | "post" | "file" | "folder";
+                company_only?: boolean;
             };
             header?: never;
             path?: never;
@@ -17822,6 +17867,44 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SearchHitListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getFileText: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+                version: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileTextResponse"];
                 };
             };
             400: components["responses"]["Failure"];

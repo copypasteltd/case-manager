@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 2026-10-28 · Increment92 / 统一搜索与固定版本正文
+
+实现统一搜索项目、任务、目录、可见知识及文件；权限过滤先于分页，游标绑定本人／组织／授权版本及查询条件。当前正式文件版本可按独立只读凭据提取UTF-8文本／Markdown／CSV／JSON与DOCX主文档，复核冻结的云版本、ETag、字节数及SHA-256；IO期间不持有业务锁，发布前重检版本、扫描、权限范围和队列租约。派生正文入PostgreSQL并按固定版本分块预览；Web与Taro新增入口。PDF、OCR、复杂Office及超限文件只支持本轮已实现的元数据检索，不虚报正文支持。
+
+Implemented unified permission-filtered search, query-bound keyset cursors, independently credentialed native extraction and immutable version-derived text. Cloud reads release database locks and publication rechecks source identity, clean scan state and the fenced lease. Web and Taro expose exact-version, bounded plaintext previews with explicit unsupported/failed states. The restricted DOCX parser never executes document content.
+
+新增迁移75并保留原74项原字节；后端全量165顶层／1,112结果／1,012末级、9批，Web126、运行时49、移动218及类型、微信／抖音各19页编译。Linux只编译；当前Android开发包、18项包检查及26项JVM缓存范围单独记录。真实原生API＋隔离合成资料的Web／H5各12项检查；新增4PNG、两套MP4／GIF，目录74／27／27。原91完整来源重建、164份已发布证据／媒体及10份原入口文档快照保留。
+
+Fresh native checks and actual authenticated browser pixels are source-bound. Earlier failed and superseded attempts retain their original status; fixture-start and concurrent-edit diagnostics do not claim complete old-source reconstruction. Original91 evidence stays byte-identical. The unchanged lock reuses the original90 audit with86 findings, including20 high; no fresh audit or security release is claimed. Real cloud/device/model/TG,120GB/2TB, restore, platform distribution and four-client production acceptance remain open.
+
+[设计 / Design](development/92-file-text-search.md) · [运行 / Operations](operations/file-text-search.md) · [准确验证 / Verification](quality/evidence/file-search/verification.md) · [演示 / Media](media/README.md) · [28项差异 / Gaps](delivery/03-goal-gap-assessment.md)
+
 ## 2026-10-27 · Increment91 / 秘书任务前置依赖
 
 实现 `update_task_dependency`：员工在Web／Taro选择同项目两个实际任务，固定两个版本、明确新增／解除和原因，预览后发送。服务端复用原Dependency命令及项目锁、权限、循环／状态规则；数据库独立核对原关系、真实增删关系、未越权任务资料和实际回执。准确重试、失联回执恢复和取消保持一个业务操作。修正输入改正后的旧错误提示，以及会话轮询重建选项数组导致移动滚轮重置的问题。

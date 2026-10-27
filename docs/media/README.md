@@ -2,9 +2,21 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **70张PNG、25段MP4、25个GIF**。增量91新增秘书前置依赖8张实际页面图及两套MP4／GIF；原90及更早素材保持原证据与字节。全部为隔离合成数据，不含真实业务或凭据。
+本目录包含 **74张PNG、27段MP4、27个GIF**。增量92新增统一搜索及固定版本正文的4张实际截图和两套MP4／GIF。原91及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
 
-This catalog contains **70 PNGs,25 MP4s and25 GIFs**. Increment91 adds eight actual prerequisite screenshots and two MP4/GIF pairs. Original90 and earlier media retain their original evidence and bytes. All media uses synthetic data and excludes real business records and credentials.
+This catalog contains **74 PNGs,27 MP4s and27 GIFs**. Increment92 adds four actual search/text screenshots and two MP4/GIF pairs. Prior media retains its original bytes. Mobile recordings show Taro H5, with synthetic data and controlled object sources rather than a device or real cloud.
+
+## 新增：统一搜索与固定版本正文 / Unified search and version text
+
+| 页面 / View | Web | 移动H5 / Mobile H5 |
+| --- | --- | --- |
+| 正文命中 / Body match | [截图](screenshots/file-search-web-results.png) | [截图](screenshots/file-search-mobile-results.png) |
+| 固定版本正文 / Exact-version text | [截图](screenshots/file-search-web-preview.png) | [截图](screenshots/file-search-mobile-preview.png) |
+| 实际操作 / Interaction | [MP4](videos/file-search-web.mp4) · [GIF](gifs/file-search-web.gif) | [MP4](videos/file-search-mobile.mp4) · [GIF](gifs/file-search-mobile.gif) |
+
+实际流程：正文词句 → 准确版本预览 → 字符分段 → 历史词句不命中当前版 → DOCX正文命中 → 不支持格式的名称检索 → 字面百分号／下划线检索。录制仅包含认证后的页面像素；可使用播放器慢速查看。见[方案](../development/92-file-text-search.md)及[来源验证](../quality/evidence/file-search/verification.md)。
+
+The actual authenticated sequence covers body matching, pinned-version preview/chunks, historical exclusion, DOCX extraction, unsupported-format name search and literal pattern characters. Clips preserve actual timing; use playback controls for slower review. No credentials, real business data, devices or external integrations were recorded.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 

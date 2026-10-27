@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "synthetic_data": true,
+  "controlled_object_source": true,
+  "actual_native_postgresql": true,
+  "actual_authenticated_http": true,
+  "actual_UI": true,
+  "cloud_acceptance": false,
+  "real_device_acceptance": false,
+  "query": "香港正文🙂",
+  "resource_id": "ec9f9768-8dbc-4d0a-9364-e73608006018",
+  "version_id": "10a404ad-8e3d-4fa8-a2f2-5cb32984a43b",
+  "source_sha256": "7f0a68fd63292b663bd9677850e2447dfc0c13eb6ecd784d1114a88b16c69453",
+  "text_sha256": "7f0a68fd63292b663bd9677850e2447dfc0c13eb6ecd784d1114a88b16c69453",
+  "extractor": "text-v1",
+  "recording": {
+    "name": "file-search-web",
+    "frame_count": 21,
+    "duration_ms": 4577,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/file-search-web/frames.json",
+    "manifest_sha256": "ba9e6ad5a9a5fde30f731af4c882e806020b64b12e01ece0c214ca8b8f91eabc"
+  }
+}

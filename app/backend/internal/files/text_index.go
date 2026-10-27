@@ -1,0 +1,319 @@
+package files
+
+import (
+	"context"
+	"encoding/json"
+	"io"
+	"strings"
+	"time"
+
+	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/jobqueue"
+	"copypaste.hk/platform/internal/objectstore"
+	"copypaste.hk/platform/internal/platform"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+const TextJobKind = "file.text.extract.v1"
+const TextJobLane = "file-text"
+
+type TextIndexService struct {
+	DB *pgxpool.Pool
+	// An independent read-only identity, never the human or agent credential.
+	Backends map[string]*AgentTextBackend
+}
+type textJobInput struct {
+	FileID    string `json:"file_id"`
+	VersionID string `json:"version_id"`
+	Extractor string `json:"extractor"`
+}
+
+func textDedup(version string) string { return TextJobKind + "/" + version + "/" + TextExtractor }
+
+// Schedule atomically records a version-specific derivation and its job. It is
+// infrastructure scheduling, not a user mutation or an arbitrary object read.
+func (s *TextIndexService) Schedule(ctx context.Context) (int, error) {
+	tx, err := s.DB.Begin(ctx)
+	if err != nil {
+		return 0, err
+	}
+	defer tx.Rollback(ctx)
+	rows, err := tx.Query(ctx, `SELECT v.org_id,v.file_id,v.id,v.sha256 FROM file_versions v
+        JOIN files f ON f.org_id=v.org_id AND f.id=v.file_id
+        WHERE v.availability='available' AND v.scan_state='clean' AND f.state='active'
+        AND NOT EXISTS(SELECT 1 FROM file_text_derivations d WHERE d.org_id=v.org_id AND d.version_id=v.id AND d.extractor=$1)
+        ORDER BY v.created_at,v.id LIMIT 50`, TextExtractor)
+	if err != nil {
+		return 0, err
+	}
+	type candidate struct{ org, file, version, sha string }
+	items := []candidate{}
+	for rows.Next() {
+		var c candidate
+		if err = rows.Scan(&c.org, &c.file, &c.version, &c.sha); err != nil {
+			rows.Close()
+			return 0, err
+		}
+		items = append(items, c)
+	}
+	err = rows.Err()
+	rows.Close()
+	if err != nil {
+		return 0, err
+	}
+	q := jobqueue.Queue{DB: s.DB}
+	count := 0
+	for _, c := range items {
+		tag, e := tx.Exec(ctx, `INSERT INTO file_text_derivations(org_id,file_id,version_id,extractor,source_sha256)
+            VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING`, c.org, c.file, c.version, TextExtractor, c.sha)
+		if e != nil {
+			return 0, e
+		}
+		if tag.RowsAffected() == 0 {
+			continue
+		}
+		payload, _ := json.Marshal(textJobInput{c.file, c.version, TextExtractor})
+		if _, _, e = q.Enqueue(ctx, tx, jobqueue.Input{OrgID: c.org, Kind: TextJobKind, Lane: TextJobLane, DedupKey: textDedup(c.version), PayloadVersion: 1, Payload: payload, MaxAttempts: 8}); e != nil {
+			return 0, e
+		}
+		count++
+	}
+	return count, tx.Commit(ctx)
+}
+
+func (s *TextIndexService) textTx(ctx context.Context, j jobqueue.Job, in textJobInput) (pgx.Tx, downloadVersionRow, error) {
+	var v downloadVersionRow
+	tx, err := s.DB.Begin(ctx)
+	if err != nil {
+		return nil, v, err
+	}
+	fail := func(e error) (pgx.Tx, downloadVersionRow, error) { _ = tx.Rollback(ctx); return nil, v, e }
+	var id string
+	if err = tx.QueryRow(ctx, "SELECT id FROM organizations WHERE id=$1 FOR SHARE", j.OrgID).Scan(&id); err != nil {
+		return fail(err)
+	}
+	f, err := file(ctx, tx, j.OrgID, in.FileID, false)
+	if err != nil {
+		return fail(err)
+	}
+	if err = replicaNamespace(ctx, tx, j.OrgID, f.ProjectID); err != nil {
+		return fail(err)
+	}
+	if v.File, err = file(ctx, tx, j.OrgID, in.FileID, true); err != nil {
+		return fail(err)
+	}
+	if _, err = tx.Exec(ctx, "SELECT lock_file_text_version($1,$2,$3)", j.OrgID, in.FileID, in.VersionID); err != nil {
+		return fail(err)
+	}
+	if err = tx.QueryRow(ctx, `SELECT id,coalesce(original_name,''),sha256,media_type,scan_state,availability,size_bytes
+        FROM file_versions WHERE org_id=$1 AND file_id=$2 AND id=$3`, j.OrgID, in.FileID, in.VersionID).
+		Scan(&v.ID, &v.Filename, &v.SHA256, &v.MediaType, &v.ScanState, &v.Availability, &v.Size); err != nil {
+		return fail(err)
+	}
+	var state string
+	if err = tx.QueryRow(ctx, `SELECT state FROM file_text_derivations WHERE org_id=$1 AND file_id=$2 AND version_id=$3
+        AND extractor=$4 AND source_sha256=$5 FOR UPDATE`, j.OrgID, in.FileID, in.VersionID, TextExtractor, v.SHA256).Scan(&state); err != nil {
+		return fail(err)
+	}
+	if state != "queued" {
+		return fail(core.Fail(409, "FILE_TEXT_ALREADY_FINAL", "此正文提取已有最终结果"))
+	}
+	if err = (jobqueue.Queue{DB: s.DB}).CheckInTx(ctx, tx, j); err != nil {
+		return fail(err)
+	}
+	return tx, v, nil
+}
+
+func textAvailable(ctx context.Context, db platform.DBTX, org string, v downloadVersionRow) bool {
+	return v.File.State == "active" && v.ScanState == "clean" && v.Availability == "available" && activeAncestors(ctx, db, org, v.File.FolderID) == nil
+}
+
+func (s *TextIndexService) prepareText(ctx context.Context, db platform.DBTX, org string, v downloadVersionRow) (AgentTextSource, error) {
+	var out AgentTextSource
+	rows, err := db.Query(ctx, `SELECT id FROM file_replicas WHERE org_id=$1 AND version_id=$2 AND state='verified'
+        AND expected_sha256=$3 AND actual_sha256=$3 AND verified_at IS NOT NULL AND source_id IS NOT NULL ORDER BY provider,id`, org, v.ID, v.SHA256)
+	if err != nil {
+		return out, err
+	}
+	ids := []string{}
+	for rows.Next() {
+		var id string
+		if err = rows.Scan(&id); err != nil {
+			rows.Close()
+			return out, err
+		}
+		ids = append(ids, id)
+	}
+	err = rows.Err()
+	rows.Close()
+	if err != nil {
+		return out, err
+	}
+	for _, id := range ids {
+		r, e := replica(ctx, db, org, id, false)
+		if e != nil {
+			return out, e
+		}
+		backend := s.Backends[r.Provider]
+		if backend == nil || backend.Provider != r.Provider || backend.Bucket != r.Bucket || backend.Reader == nil {
+			continue
+		}
+		var enabled bool
+		if e = db.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM storage_targets WHERE org_id=$1 AND provider=$2 AND bucket=$3 AND enabled)", org, r.Provider, r.Bucket).Scan(&enabled); e != nil {
+			return out, e
+		}
+		var source objectstore.Source
+		if !enabled || !downloadSourceEvidence(org, v, r, &source) {
+			continue
+		}
+		frozen, _ := json.Marshal([]any{v.File.ID, v.ID, v.SHA256, v.MediaType, v.Size, r.ID, r.Version, r.Provider, r.Bucket, source})
+		return AgentTextSource{FileID: v.File.ID, VersionID: v.ID, SHA256: v.SHA256, MediaType: v.MediaType, Size: v.Size, Fingerprint: core.Digest(frozen), source: source, reader: backend.Reader}, nil
+	}
+	return out, core.Fail(503, "FILE_TEXT_SOURCE_UNAVAILABLE", "尚无完整校验且配置了独立读取身份的副本")
+}
+
+func readTextBytes(ctx context.Context, source AgentTextSource) ([]byte, error) {
+	if source.reader == nil || source.Fingerprint == "" || source.Size < 1 || source.Size > TextSourceMaxBytes || source.source.Size != source.Size {
+		return nil, core.Forbidden()
+	}
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	result, err := source.reader.Read(ctx, source.source, 0, source.Size)
+	if err != nil {
+		return nil, core.Fail(503, "FILE_TEXT_READ_FAILED", "准确来源暂时无法读取")
+	}
+	if result.Body == nil {
+		return nil, textError("CONTENT_INVALID")
+	}
+	defer result.Body.Close()
+	stop := context.AfterFunc(ctx, func() { _ = result.Body.Close() })
+	defer stop()
+	if result.Size != source.Size || result.ETag != source.source.ETag || source.source.VersionID != "" && result.VersionID != source.source.VersionID {
+		return nil, textError("CONTENT_INVALID")
+	}
+	body, err := io.ReadAll(io.LimitReader(result.Body, source.Size+1))
+	if ctx.Err() != nil {
+		return nil, ctx.Err()
+	}
+	if err != nil {
+		return nil, core.Fail(503, "FILE_TEXT_READ_FAILED", "准确来源未完整读取")
+	}
+	if int64(len(body)) != source.Size || core.Digest(body) != source.SHA256 {
+		return nil, textError("CONTENT_INVALID")
+	}
+	return body, nil
+}
+
+func (s *TextIndexService) finishText(ctx context.Context, tx pgx.Tx, j jobqueue.Job, in textJobInput, state, body, code string) error {
+	var content, hash *string
+	var count *int
+	if state == "ready" {
+		content = &body
+		h := core.Digest([]byte(body))
+		hash = &h
+		c := len([]rune(body))
+		count = &c
+	}
+	_, err := tx.Exec(ctx, `UPDATE file_text_derivations SET state=$5,body=$6,text_sha256=$7,character_count=$8,
+        error_code=NULLIF($9,''),indexed_at=clock_timestamp() WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND state='queued'`,
+		j.OrgID, in.FileID, in.VersionID, TextExtractor, state, content, hash, count, code)
+	if err == nil {
+		err = (jobqueue.Queue{DB: s.DB}).CompleteInTx(ctx, tx, j)
+	}
+	if err == nil {
+		err = tx.Commit(ctx)
+	}
+	return err
+}
+
+// Process releases all SQL locks before object I/O, then reacquires namespace,
+// version and lease locks and rechecks the exact source before publication.
+func (s *TextIndexService) Process(ctx context.Context, j jobqueue.Job) error {
+	var in textJobInput
+	if j.Kind != TextJobKind || j.Lane != TextJobLane || j.PayloadVersion != 1 || json.Unmarshal(j.Payload, &in) != nil || !core.ValidID(in.FileID) || !core.ValidID(in.VersionID) || in.Extractor != TextExtractor || j.DedupKey != textDedup(in.VersionID) {
+		return core.Invalid("job", "正文任务固定输入无效")
+	}
+	tx, v, err := s.textTx(ctx, j, in)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback(ctx)
+	if !textAvailable(ctx, tx, j.OrgID, v) {
+		return s.finishText(ctx, tx, j, in, "blocked", "", "FILE_TEXT_SOURCE_BLOCKED")
+	}
+	if _, err = textFormat(v.MediaType, v.Size); err != nil {
+		return s.finishText(ctx, tx, j, in, "unsupported", "", core.PublicError(err).Code)
+	}
+	source, err := s.prepareText(ctx, tx, j.OrgID, v)
+	if err != nil {
+		return err
+	}
+	if err = tx.Commit(ctx); err != nil {
+		return err
+	}
+	body, readErr := readTextBytes(ctx, source)
+	text := ""
+	if readErr == nil {
+		text, readErr = ExtractText(ctx, v.MediaType, body)
+	}
+	if readErr != nil && core.PublicError(readErr).Status != 422 {
+		return readErr
+	}
+	tx, v, err = s.textTx(ctx, j, in)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback(ctx)
+	if !textAvailable(ctx, tx, j.OrgID, v) {
+		return s.finishText(ctx, tx, j, in, "blocked", "", "FILE_TEXT_SOURCE_BLOCKED")
+	}
+	current, err := s.prepareText(ctx, tx, j.OrgID, v)
+	if err != nil || current.Fingerprint != source.Fingerprint {
+		return s.finishText(ctx, tx, j, in, "blocked", "", "FILE_TEXT_SOURCE_CHANGED")
+	}
+	if readErr != nil {
+		code := core.PublicError(readErr).Code
+		state := "failed"
+		if strings.HasSuffix(code, "_UNSUPPORTED") {
+			state = "unsupported"
+		}
+		return s.finishText(ctx, tx, j, in, state, "", code)
+	}
+	return s.finishText(ctx, tx, j, in, "ready", text, "")
+}
+
+func (s *TextIndexService) Fail(ctx context.Context, j jobqueue.Job, cause error) error {
+	var in textJobInput
+	if json.Unmarshal(j.Payload, &in) != nil {
+		return cause
+	}
+	tx, _, err := s.textTx(ctx, j, in)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback(ctx)
+	public := core.PublicError(cause)
+	permanent := public.Status >= 400 && public.Status < 500
+	code := public.Code
+	if !strings.HasPrefix(code, "FILE_TEXT_") {
+		code = "FILE_TEXT_PROCESS_FAILED"
+	}
+	if permanent || j.Attempt >= j.MaxAttempts {
+		if _, err = tx.Exec(ctx, `UPDATE file_text_derivations SET state='failed',error_code=$4,indexed_at=clock_timestamp()
+            WHERE org_id=$1 AND version_id=$2 AND extractor=$3 AND state='queued'`, j.OrgID, in.VersionID, TextExtractor, code); err != nil {
+			return err
+		}
+	}
+	if err = (jobqueue.Queue{DB: s.DB}).FailInTx(ctx, tx, j, code, permanent, time.Duration(1<<min(j.Attempt, 6))*time.Second); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+func (s *TextIndexService) SealDead(ctx context.Context) error {
+	_, err := s.DB.Exec(ctx, `UPDATE file_text_derivations d SET state='failed',error_code='FILE_TEXT_ATTEMPTS_EXHAUSTED',indexed_at=clock_timestamp()
+        WHERE state='queued' AND extractor=$1 AND EXISTS(SELECT 1 FROM jobs j WHERE j.org_id=d.org_id AND j.kind=$2 AND j.lane=$3
+        AND j.dedup_key=$2||'/'||d.version_id::text||'/'||$1 AND j.state='dead')`, TextExtractor, TextJobKind, TextJobLane)
+	return err
+}

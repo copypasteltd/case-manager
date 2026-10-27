@@ -30,6 +30,9 @@ def main():
             return key in common or (verify and key.startswith(('CP_SCAN_','CP_CLAMD_'))) or (key.startswith(('CP_OSS_','CP_R2_')) and
                 (key.endswith(('_ENDPOINT','_REGION','_BUCKET')) or any(role in key for role in roles)))
         env={k:v for k,v in env.items() if not k.startswith('CP_') or worker_setting(k)}
+    if subcommand[0]=='worker-file-text':
+        allowed={'CP_ENV','CP_DATABASE_URL','CP_TEXT_INDEX_PROVIDERS'}
+        env={k:v for k,v in env.items() if not k.startswith('CP_') or k in allowed or (k.startswith(('CP_OSS_','CP_R2_')) and (k.endswith(('_ENDPOINT','_REGION','_BUCKET')) or '_TEXT_INDEX_READER_' in k))}
     if subcommand[0]=='worker-notification':
         allowed={'CP_ENV','CP_DATABASE_URL','CP_NOTIFICATION_CONTRACT_ORG_ID','CP_NOTIFICATION_CONTRACT_TIMEZONE','CP_NOTIFICATION_CONTRACT_DAYS_BEFORE'}
         env={k:v for k,v in env.items() if not k.startswith('CP_') or k in allowed}

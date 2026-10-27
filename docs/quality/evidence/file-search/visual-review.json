@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-27T17:39:55.118598+00:00",
+  "method": "Direct image inspection of four final PNGs and first/middle/last frames of both GIFs; no new browser invocation.",
+  "files": [
+    {
+      "file": "docs/media/screenshots/file-search-web-results.png",
+      "sha256": "1c366b7e77a9e567393fefb02200cadef9294c30c8b712c8ec3fc33a1846143b"
+    },
+    {
+      "file": "docs/media/screenshots/file-search-web-preview.png",
+      "sha256": "002cb2333439561469516aa5701f83b390ed2446c7d2f00466eafd0ef2b53491"
+    },
+    {
+      "file": "docs/media/screenshots/file-search-mobile-results.png",
+      "sha256": "13ad92854dc98b76388c16134d209ef9bccdafa171966405c64ebec993a9faaa"
+    },
+    {
+      "file": "docs/media/screenshots/file-search-mobile-preview.png",
+      "sha256": "c8c60fcb12db88fe894da1ea3638d2462a788da627bcc5ddce8a120d11586d27"
+    },
+    {
+      "file": "docs/media/gifs/file-search-web.gif",
+      "sha256": "b7eb5a2b32a77bfde188bfc46b33ff5c12d2f6ffd91c6ed6e82c0a44e045e282"
+    },
+    {
+      "file": "docs/media/gifs/file-search-mobile.gif",
+      "sha256": "5cd616ac00f0f022e78b94fb469dbda6ab54b7ef0ac0479bc6a8b514957d5a49"
+    }
+  ],
+  "findings": [
+    "Web1440x1100: bounded three-line result snippets; exact version/hash state and chunk controls visible; body uses a bounded scroll area.",
+    "Mobile390px: search/type/preview controls visible, long plaintext wraps inside the viewport and continues through page scrolling.",
+    "GIF samples show actual authenticated synthetic search, type picker and version-preview pixels. Fast native capture timing is retained; use slower playback to inspect.",
+    "Existing neutral surfaces, dark text and blue accents preserved. No credentials or real company records visible in reviewed frames."
+  ],
+  "scope": "Only the recorded viewports and sampled GIF frames, not device, accessibility or exhaustive pixel secret scanning."
+}

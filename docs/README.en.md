@@ -280,23 +280,30 @@ The source package `project-update`1.7.0 has17 allowed tools, including15 exact 
 
 [Design and failure handling](development/91-secretary-task-dependencies.md) · [Actual verification](quality/evidence/task-dependencies/verification.md) · [Web MP4](media/videos/secretary-task-dependencies-web.mp4) · [Mobile MP4](media/videos/secretary-task-dependencies-mobile.mp4)
 
+## Search work material and fixed-version text (increment92)
+
+Open **Search work material** from Web navigation or the mobile dashboard, enter1–200 characters and optionally select projects, tasks, knowledge, files or folders. Queries are literal case-insensitive substrings, including Chinese, English and emoji. Results identify name/body/tag matches and file processing state/time.
+
+File body search uses the current formal version. **Read this version's text** pins that result's version and pages through4000 Unicode characters at a time; original details remain available separately. Knowledge readers search the published revision, while authors/editors search their current revision. Each read rechecks live permissions, folder lifecycle and version availability/scan state.
+
+A separate native worker validates the exact object metadata and complete hash. It supports UTF-8 TXT/Markdown/CSV/JSON up to1MiB and DOCX main-document/table content up to8MiB, with a2MiB output bound. PDF, OCR, spreadsheets, DOCX headers/footers and huge-file prefix extraction are unsupported. PostgreSQL stores derived text/evidence; OSS/R2 retain originals, without durable extraction copies on the application host.
+
+[Protocol and limits](development/92-file-text-search.md) · [Read-only credentials, deployment and diagnosis](operations/file-text-search.md) · [Screenshots and demonstrations](media/README.md) · [Exact verification](quality/evidence/file-search/verification.md)
+
 ## 8. Evidence and release gates
 
-The current functional update is [exact secretary task prerequisites](development/91-secretary-task-dependencies.md). Dependency changes from [increment90](development/90-dependency-hardening.md) remain installed through the complete unchanged lockfile. Do not copy node_modules between environments. MFA step-up allows8 attempts per user per15-minute window; wait when limited and inspect business receipts before retrying.
+The current update is [unified search and fixed-version text](development/92-file-text-search.md). Counts refer to source-bound local evidence and do not establish full production delivery.
 
-
-
-| Layer | Current functional baseline | Scope |
+| Layer | Current result | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Fresh162 top-level /1,080 results /982 leaves;9 batches;74 migrations | Native PostgreSQL/HTTP/MCP; prior73 migration bytes preserved |
-| Runtime / Web | Fresh49 /120 tests and builds | Source-bound; all eight Skills remain draft |
-| Taro | Fresh212 tests, types,18 pages per mini-program | Five actual prerequisite journeys per Web/H5 client, three widths each; H5 is not device acceptance |
-| Android | Current development APK and18 package checks | Current bundle;26 JVM results with explicit Gradle cache scope; no device acceptance |
-| Media catalog |70 PNG /25 MP4 /25 GIF | Eight new screenshots and two MP4/GIF pairs; original90 sources and84 evidence/media files preserved |
+| Go / PostgreSQL | 165 top-level /1,112 results /1,012 leaves in9 batches;75 migrations | Native full run; previous74 migration bytes preserved |
+| Web/runtime | 126/49 tests and builds | Current sources; all eight Skills remain draft |
+| Taro | 218 tests, types and19 pages per WeChat/Douyin build | Actual shared H5 flows,12 checks per client; no platform tool or device execution |
+| Android | Current native development APK and18 package checks |26 JVM results retain exact Gradle cache scope; no device/store claim |
+| UI/media | Four new screenshots/two MP4-GIF pairs;74 PNGs/27 MP4s/27 GIFs total | Actual browser pixels with isolated synthetic data and controlled object bytes |
+| History/operations | Published91 sources reconstruct;164 original evidence/media records unchanged;75 migrations and exact owned processes checked | Integrations disabled and no disposable databases; Linux compile only |
 
-The unchanged current lock reuses the original increment90 complete audit, rather than a fresh91 audit: **86 findings:0 critical,20 high,64 moderate and2 low**. Production security approval remains open. See the [original audit](quality/evidence/dependency-hardening/dependency-audit.json), [all remaining findings](quality/evidence/dependency-hardening/remaining-findings.json) and [remediation plan](development/90-dependency-hardening.md).
-
-Continue with business/client gaps, real model/isolation/Skill and cloud integration, actual TG/platform/Android devices, 120 GB/2 TB capacity and security acceptance, then backup recovery and production cutover. Items needing missing server/account input remain explicit while independent implementation continues. Completion claims must link to exact sources, commands, receipts and remaining work.
+The unchanged lock reuses the original90 audit:86 findings, comprising0 critical,20 high,64 moderate and2 low. Devices, cloud/network/model/TG, large files/migration, recovery and production security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [verification details](quality/evidence/file-search/verification.md).
 
 ## 9. Documentation and synchronization
 

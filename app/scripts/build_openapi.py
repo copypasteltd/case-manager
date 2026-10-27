@@ -370,8 +370,16 @@ add("DownloadResult", {"id": ID, "mode": enum("signed_url", "authenticated_proxy
     "max_range_bytes": BYTES, "warnings": array(enum("SCAN_WAIVED_NOT_CLEAN", "SIGNED_URL_REVOCATION_DELAY"), maxItems=2)},
     ("id", "mode", "url", "method", "required_headers", "expires_at", "permit_expires_at", "file_version_id", "filename",
     "size_bytes", "sha256", "scan_state", "disposition", "max_range_bytes", "warnings"))
-add("SearchHit", {"resource": ref("ResourceRef"), "title": NAME, "snippet": TEXT, "updated_at": TIME},
-    ("resource", "title", "updated_at"))
+text_states=enum("pending","ready","unsupported","blocked","failed")
+file_text={"file_id":ID,"version_id":ID,"extractor":{"const":"text-v1"},"state":text_states,
+    "source_sha256":HASH,"text_sha256":nullable(HASH),"indexed_at":nullable(TIME),"error_code":nullable(NAME),
+    "total_characters":nullable({"type":"integer","minimum":0}),"offset":{"type":"integer","minimum":0},
+    "text":{"type":"string","maxLength":8000},"next_offset":nullable({"type":"integer","minimum":1})}
+add("FileText",file_text,tuple(file_text))
+search_hit={"resource": ref("ResourceRef"), "title": NAME, "snippet": {"type":"string","maxLength":240}, "updated_at": TIME,
+    "project_id":nullable(ID),"match_types":array(enum("name","body","tags"),minItems=1,maxItems=3,uniqueItems=True),
+    "text_state":nullable(text_states),"indexed_at":nullable(TIME)}
+add("SearchHit",search_hit,tuple(search_hit))
 download_chunk = {"download_id": ID, "file_version_id": ID, "offset": BYTES, "length": BYTES,
     "total_size_bytes": BYTES, "sha256": HASH, "chunk_sha256": HASH,
     "data_base64": {"type": "string", "maxLength": 1398104, "pattern": "^[A-Za-z0-9+/]*={0,2}$"}}
@@ -1459,7 +1467,13 @@ for leaf, name, result, body, code in (
     operation("/uploads/{id}/" + leaf, "post", name, result, body, code)
 operation("/search", "get", "search", "SearchHit", listing=True)
 PATHS["/search"]["get"]["parameters"] += [{"name": "q", "in": "query", "required": True, "schema": NAME},
-    {"name": "project_id", "in": "query", "schema": ID}]
+    {"name": "project_id", "in": "query", "schema": ID},
+    {"name":"type","in":"query","schema":enum("project","task","post","file","folder")},
+    {"name":"company_only","in":"query","schema":{"type":"boolean"}}]
+operation("/files/{id}/versions/{version}/text","get","getFileText","FileText")
+PATHS["/files/{id}/versions/{version}/text"]["get"]["parameters"].extend([
+    {"name":"offset","in":"query","schema":{"type":"integer","minimum":0,"default":0}},
+    {"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":8000,"default":4000}}])
 operation("/parties", "get", "listParties", "Party", listing=True)
 PATHS["/parties"]["get"]["parameters"].extend([
     {"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 200}},

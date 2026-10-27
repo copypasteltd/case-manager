@@ -111,6 +111,27 @@ func LoadAgentTextReaders() (map[string]*files.AgentTextBackend, error) {
 	return out, nil
 }
 
+// File indexing never borrows a human, model or upload identity.
+func LoadTextIndexReaders() (map[string]*files.AgentTextBackend, error) {
+	out := map[string]*files.AgentTextBackend{}
+	list := os.Getenv("CP_TEXT_INDEX_PROVIDERS")
+	if list == "" || list == "disabled" {
+		return out, nil
+	}
+	for _, provider := range strings.Split(list, ",") {
+		provider = strings.TrimSpace(provider)
+		if (provider != "oss" && provider != "r2") || out[provider] != nil {
+			return nil, errors.New("CP_TEXT_INDEX_PROVIDERS must be disabled or a unique comma separated list of oss,r2")
+		}
+		reader, settings, err := roleStore(provider, "TEXT_INDEX_READER")
+		if err != nil {
+			return nil, err
+		}
+		out[provider] = &files.AgentTextBackend{Provider: provider, Bucket: settings.Bucket, Reader: reader}
+	}
+	return out, nil
+}
+
 func LoadAgentDraftWriter() (*files.AgentDraftBackend, error) {
 	provider := os.Getenv("CP_AGENT_DRAFT_DRIVER")
 	if provider == "" || provider == "disabled" {

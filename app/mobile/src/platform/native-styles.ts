@@ -20,6 +20,8 @@ export function nativeStyles(theme: NativeTheme): Record<string, Rule> {
     'cp-small': { fontSize: 13, lineHeight: 21 },
     'cp-paragraph': { fontSize: 15, lineHeight: 26, marginVertical: 9 },
     'cp-footer': { fontSize: 10, lineHeight: 17, color: c['fg.muted'], paddingTop: 26, paddingBottom: 5, borderTopColor: c['border.subtle'], borderTopWidth: 1, marginTop: 27, letterSpacing: .5 },
+    'cp-search-hit': { paddingVertical:16, borderBottomWidth:1, borderBottomColor:c['border.subtle'], gap:12 },
+    'cp-search-snippet': { fontSize:15, lineHeight:26 },
     'cp-section': { marginTop: 21 },
     'cp-section-title': { fontSize: 18, fontWeight: '600', marginBottom: 10 },
     'cp-panel': { ...border, borderRadius: 9, backgroundColor: c['bg.surface'], overflow: 'hidden' },

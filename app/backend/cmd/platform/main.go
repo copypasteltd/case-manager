@@ -59,6 +59,9 @@ func run(logger *slog.Logger) error {
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	if command == "worker-file-text" {
+		return runTextWorker(ctx, logger)
+	}
 	if command == "worker-report-export" {
 		return runReportExportWorker(ctx, logger)
 	}

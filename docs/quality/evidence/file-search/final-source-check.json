@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T17:47:00.084358+00:00",
+  "checks": [
+    {
+      "name": "Full native backend:165 top-level tests,1112 result records,9 batches and stable complete sources",
+      "passed": true
+    },
+    {
+      "name": "Actual HTTP/PostgreSQL search, bounded parser and independent-reader cases passed",
+      "passed": true
+    },
+    {
+      "name": "Additive migration75 preserves all74 previous migrations byte-for-byte",
+      "passed": true
+    },
+    {
+      "name": "Matching OpenAPI copies declare285 paths,353 operations,621 schemas and both search/text routes",
+      "passed": true
+    },
+    {
+      "name": "Fresh49 runtime tests and build bind current runtime and Skill bytes",
+      "passed": true
+    },
+    {
+      "name": "Fresh126 Web tests and production bundle bind current unchanged declared source bytes",
+      "passed": true
+    },
+    {
+      "name": "Fresh Linux compile binds current backend; no artifact execution or deployment",
+      "passed": true
+    },
+    {
+      "name": "Fresh218 mobile tests, types and both mini-program builds bind current unchanged sources",
+      "passed": true
+    },
+    {
+      "name": "Both mini-programs register the same19 pages including search",
+      "passed": true
+    },
+    {
+      "name": "Current Android development APK binds current bundle/source and18 artifact checks, without device/release claims",
+      "passed": true
+    },
+    {
+      "name": "26 retained JVM results, native log and freezer hashes preserve the actual Gradle cache scope",
+      "passed": true
+    },
+    {
+      "name": "web:12 actual authenticated UI/API checks bind exact sources and completed owned-resource cleanup",
+      "passed": true
+    },
+    {
+      "name": "mobile:12 actual authenticated UI/API checks bind exact sources and completed owned-resource cleanup",
+      "passed": true
+    },
+    {
+      "name": "Actual pixels bind two capture manifests and four bounded MP4/GIF artifacts with original timing",
+      "passed": true
+    },
+    {
+      "name": "Direct review binds all4 screenshots and both GIF first/middle/last samples",
+      "passed": true
+    },
+    {
+      "name": "All8 Skills stay draft; project-update1.7.0 retains17 allowed and15 completion tools",
+      "passed": true
+    },
+    {
+      "name": "Native development75 schema, text guards, least-privilege role and owned processes checked; no test DB or external activation",
+      "passed": true
+    },
+    {
+      "name": "Published91 sources reconstruct from Git; all164 original evidence/media files and12 media remain byte-identical",
+      "passed": true
+    },
+    {
+      "name": "All10 entry-point snapshots retain original published91 bytes",
+      "passed": true
+    },
+    {
+      "name": "Unchanged exact lock explicitly reuses original90 audit:86 findings,20 high and open security gate",
+      "passed": true
+    },
+    {
+      "name": "Four exact archived browser-source attempts preserve failed/superseded status; limited startup/concurrent-edit diagnostics remain separate",
+      "passed": true
+    },
+    {
+      "name": "Owned browser port released and private synthetic fixture removed",
+      "passed": true
+    },
+    {
+      "name": "All28 stable gaps and complete four-client/120GB/2TB scope remain explicit",
+      "passed": true
+    }
+  ],
+  "backend_source_sha256": "2be51af882bef43f59adfa8af60d3941dca9505d3cf821f5204f87b92cb0ec20",
+  "browser_source_sha256": "ec8d76380111fe7ddd41cfbbe1afc3bd3563ac2e9e462e5068b919e33cec2165",
+  "mobile_source_sha256": "bc5b458e30d5ade530143eaef83b034a0118df95837579114f6ab9098c7edd46",
+  "verification_script_sha256": "25cdf3354df549afb12a30c286e1b50bdebb2be4b977d138c2de159ceb3e53af",
+  "full_goal_complete": false,
+  "reused_audit_group": "dependency-hardening",
+  "audit_reexecuted": false,
+  "scope": "Fresh native checks and authenticated synthetic browser pixels; JVM cache and old-lock audit scope explicit. No real cloud, model, TG, device, capacity or production acceptance."
+}

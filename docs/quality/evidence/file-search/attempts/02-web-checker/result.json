@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T16:59:01.425Z",
+  "finished_at": "2026-10-27T16:59:11.676Z",
+  "checks": [
+    "existing-navigation-opens-real-unified-search",
+    "actual-api-current-body-only-hit-with-version-index-time-and-snippet"
+  ],
+  "source_count": 675,
+  "source_sha256": "4502c48dd2ae3438a348d3ad4208ef82dff7af0eef15b93003b061685271f9af",
+  "source_after_sha256": "4502c48dd2ae3438a348d3ad4208ef82dff7af0eef15b93003b061685271f9af",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "page.innerText: selector: expected string, got undefined",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "91804e12423af51179b75c71432465bf2e14b8e788a57a1aaf3d7354756f8839",
+  "build_source_after_sha256": "91804e12423af51179b75c71432465bf2e14b8e788a57a1aaf3d7354756f8839",
+  "build_source_unchanged": true
+}

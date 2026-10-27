@@ -4,11 +4,11 @@
 
 本增量推进 GAP-16／18：建立 Taro／React Native Android 工程，接入现有移动业务、原生请求、私有临时阅读文件和本地签名构建。完整四端正式首发仍按原 Goal 验收，Android 120 GB 原生上传属于 GAP-17，尚未实现。
 
-## 当前补充：增量91
+## 当前补充：增量92
 
-现有原生工程已接入18个注册业务页面和增量66的Android分片上传；本页下文的14页及“尚未实现”描述保留为增量65历史状态。增量91加入秘书前置依赖表单，两任务版本、明确新增／解除及实际关系回执与共享Taro业务一致。当前开发APK、18项包检查及26项JVM结果的实际Gradle缓存范围见[增量91验证](../quality/evidence/task-dependencies/verification.md)；未启动模拟器，不代表实际Android设备、大文件、后台／断点恢复或商店分发验收。原生构建命令继续在app目录运行，APK、签名密钥和工具链保持忽略。
+当前原生工程包含19个业务页面和增量66的Android分片上传；下文14页及“尚未实现”保留为增量65历史。增量92增加统一搜索和固定版本正文预览，独立RN样式／原生导航继续保留。当前开发APK、18项包检查及26项JVM实际Gradle缓存范围见[增量92验证](../quality/evidence/file-search/verification.md)。未启动模拟器；真机、大文件、后台／断点恢复、签名与分发仍须独立验收。APK、签名私钥和工具链不提交。
 
-Current source includes18 pages, native uploads and the secretary prerequisite form. The14-page scope below is historical increment65. Consult the linked91 evidence for the exact development APK and cached JVM scope; physical devices,120 GB transfers and distribution remain separate acceptance work.
+Current source has19 registered pages, native uploads and unified search/text previews. The14-page descriptions below are historical increment65. Consult increment92 evidence for the current development APK, package inspection and exact JVM cache scope; no device or distribution acceptance is claimed.
 
 ## 1. 已实现的工程边界
 

@@ -1,5 +1,7 @@
 # CopyPaste 内部管理平台文档中心
 
+最新功能：[增量92：统一搜索与固定版本正文](development/92-file-text-search.md) · [独立索引运维](operations/file-text-search.md) · [准确验证](quality/evidence/file-search/verification.md)。Latest: unified search and version-bound text; all four clients and28 acceptance gaps remain in scope.
+
 **仓库使用入口 / Repository guides：[中文完整方案与使用](README.zh-CN.md) · [Complete English guide](README.en.md) · [实际截图、MP4与GIF / Actual media](media/README.md) · [更新记录 / Changelog](CHANGELOG.md) · [贡献与同步 / Maintenance](contributing.md)。**
 
 **当前细化基线：v1.0-draft，2026-10-24；视觉设计基线：v1.0.0-draft。** 全部后续文档保存在 `docs/`，全部开发实现位于 `app/`。身份/权限、项目协作、知识修订、文件元数据和部分 Web 页面已进入本地实现与验证；完整平台仍在建设，尚未生产部署或完成首发验收。真实进度见[代码实施台账](delivery/02-implementation-ledger.md)。

@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "The repository link checker interpreted byte-identical archived README snapshots as current guides, resolving their relative links against the archive directory. Renamed raw snapshots to .snapshot without changing bytes; the manifest retains original logical names. Current guide links were not the failure.",
+  "scope": "Repository packaging diagnostic; no application source changed."
+}

@@ -1,0 +1,55 @@
+import assert from 'node:assert/strict';
+import { writeFile, mkdir } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import { notificationBrowser, waitOTP } from './notification_browser_common.mjs';
+import { mobileScreen, stableMobile, selectMobile } from './mobile_picker_browser.mjs';
+import { recordViewport, assertNoCredentials } from './file_search_recording.mjs';
+
+const mobile=process.argv.includes('--mobile'), app=fileURLToPath(new URL('../',import.meta.url));
+const screenshots=path.join(app,'../docs/media/screenshots');
+await notificationBrowser(mobile,async({page,context,fixture,checks,evidence})=>{
+  const root=()=>mobile?mobileScreen(page):page.locator('body');
+  const field=name=>mobile?root().locator('input[aria-label="'+name+'"]'):page.getByLabel(name,{exact:true});
+  const button=name=>root().getByRole('button',{name,exact:true});
+  let bearer;page.on('request',r=>{if(r.headers().authorization?.startsWith('Bearer '))bearer=r.headers().authorization;});
+  await page.goto(fixture.origin);
+  await field('内部账号').fill(fixture.alice.login);await field('密码').fill(fixture.alice.password);
+  await button(mobile?'登录工作空间 ↗':'登录工作空间').click();
+  await field('六位验证码').fill(await waitOTP(fixture));await button(mobile?'验证并继续 ↗':'验证并继续').click();
+  if(mobile)await root().locator('.cp-title').filter({hasText:'工作从这里开始'}).waitFor();else await page.getByRole('heading',{name:/工作从这里开始/}).waitFor();
+  const route=fixture.origin+(mobile?'/#/pages/search/index':'/search');
+  if(mobile)await root().getByText('搜索工作资料',{exact:true}).click();else await page.getByRole('link',{name:'搜索工作资料',exact:true}).click();
+  await field('搜索工作资料').waitFor();assert.equal(new URL(page.url()).hash?new URL(new URL(page.url()).hash.slice(1),'http://review.invalid').pathname:new URL(page.url()).pathname,mobile?'/pages/search/index':'/search');checks.push('existing-navigation-opens-real-unified-search');
+  const request=async path=>{const res=await context.request.get((mobile?fixture.api_origin:fixture.origin)+'/v1'+path,mobile?{headers:{Authorization:bearer}}:{});assert.equal(res.status(),200,path);return(await res.json()).data;};
+  const doSearch=async text=>{
+    await field('搜索工作资料').fill(text);
+    const response=page.waitForResponse(r=>r.url().includes('/v1/search?')&&r.request().method()==='GET'&&new URL(r.url()).searchParams.get('q')===text);
+    response.catch(()=>{});await button('搜索资料').click();assert.equal((await response).status(),200);await root().getByText('“'+text+'”的搜索结果',{exact:true}).waitFor();await stableMobile(page);
+  };
+  const capture=async(name)=>{await assertNoCredentials(page);await mkdir(screenshots,{recursive:true});await page.screenshot({path:path.join(screenshots,name+'.png'),fullPage:false,animations:'disabled',caret:'hide'});};
+  const name='file-search-'+(mobile?'mobile':'web');
+  const video=await recordViewport(page,app,name,async()=>{
+    await doSearch('香港正文🙂');
+    const hits=await request('/search?q='+encodeURIComponent('香港正文🙂')+'&limit=20');assert.equal(hits.items.length,1);const hit=hits.items[0];assert.equal(hit.resource.id,fixture.file_id);assert.equal(hit.resource.version_id,fixture.version_id);assert.deepEqual(hit.match_types,['body']);assert.equal(hit.text_state,'ready');assert.ok(hit.indexed_at);checks.push('actual-api-current-body-only-hit-with-version-index-time-and-snippet');
+    await root().getByText('设计说明.md',{exact:true}).waitFor();assert.match(await root().innerText(),/正文命中/);
+    await capture(name+'-results');checks.push('body-result-visible-in-real-page');
+    await button('查阅此版本正文').click();await root().getByText('固定版本 '+fixture.version_id,{exact:true}).waitFor();
+    const preview=mobile?root().locator('.cp-section').last():page.getByRole('region',{name:'固定版本正文'});
+    await preview.getByText(/当前交付约定：香港正文🙂/).waitFor();
+    await preview.evaluate(node=>node.scrollIntoView({block:'start'}));await stableMobile(page);await capture(name+'-preview');checks.push('preview-uses-selected-formal-version-and-readable-Unicode');
+    const next=preview.getByRole('button',{name:'下一段正文',exact:true});await next.click();await preview.getByRole('button',{name:'上一段正文',exact:true}).waitFor();checks.push('real-preview-next-and-previous-character-chunks');
+    await preview.getByRole('button',{name:'上一段正文',exact:true}).click();await preview.getByText(/当前交付约定：香港正文🙂/).waitFor();
+    await preview.getByRole('button',{name:'关闭正文',exact:true}).click();
+    await doSearch('历史版本专属词');await root().getByText(/没有找到可见资料/).waitFor();checks.push('old-version-body-is-not-current-search-hit');
+    await doSearch('文档提取验证词🙂');await root().getByText('设计说明.docx',{exact:true}).waitFor();checks.push('DOCX-extracted-body-searches-through-real-API');
+    await doSearch('图纸');await root().getByText(/此格式或大小暂未支持/).waitFor();checks.push('unsupported-format-retains-name-search-with-explicit-state');
+    if(mobile)await selectMobile(page,'资源类型','文件');else await page.getByLabel('资源类型',{exact:true}).selectOption('file');
+    await doSearch('100%_固定\\');await root().getByText('设计说明.md',{exact:true}).waitFor();checks.push('literal-percent-underscore-backslash-are-not-wildcards');
+  });
+  assert.ok(video.frame_count>=2);checks.push('authenticated-viewport-recording-excludes-password-and-MFA');
+  const old=await request('/files/'+fixture.file_id+'/versions/'+fixture.old_version_id+'/text?limit=4000&offset=0');assert.equal(old.version_id,fixture.old_version_id);assert.equal(old.text,'历史版本专属词，香港旧资料');checks.push('explicit-historical-preview-keeps-exact-old-version');
+  const current=await request('/files/'+fixture.file_id+'/versions/'+fixture.version_id+'/text?limit=4000&offset=0');assert.equal(current.version_id,fixture.version_id);assert.equal(current.state,'ready');assert.ok(current.next_offset);checks.push('API-text-evidence-has-extractor-full-digest-and-continuation');
+  await writeFile(path.join(evidence,'capture.json'),JSON.stringify({synthetic_data:true,recordings:[video]},null,2)+'\n');
+  await writeFile(path.join(evidence,'acceptance.json'),JSON.stringify({schema:1,synthetic_data:true,controlled_object_source:true,actual_native_postgresql:true,actual_authenticated_http:true,actual_UI:true,cloud_acceptance:false,real_device_acceptance:false,query:'香港正文🙂',resource_id:fixture.file_id,version_id:fixture.version_id,source_sha256:current.source_sha256,text_sha256:current.text_sha256,extractor:current.extractor,recording:video},null,2)+'\n');
+},'file-search');

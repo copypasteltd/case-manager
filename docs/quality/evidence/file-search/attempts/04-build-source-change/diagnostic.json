@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "Checks started while the preceding source-archive process was still completing its planned UI changes. Build/test commands passed, but source binding correctly rejected both runs. Fresh runs follow after all edits finish.",
+  "original_source_archive": "../03-web-before-layout-polish/sources.zip",
+  "scope": "diagnostic only; never acceptance"
+}

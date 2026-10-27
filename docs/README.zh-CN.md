@@ -280,23 +280,30 @@ python scripts/verify_mobile.py my-change
 
 [完整方案与异常处理](development/91-secretary-task-dependencies.md) · [实际验证](quality/evidence/task-dependencies/verification.md) · [Web MP4](media/videos/secretary-task-dependencies-web.mp4) · [移动MP4](media/videos/secretary-task-dependencies-mobile.mp4)
 
+## 搜索工作资料与版本正文（增量92）
+
+从主导航／移动工作台进入“搜索工作资料”，输入1—200字符的名称或正文词句，并选择全部、项目、任务、知识记录、文件或目录。字面查询支持中文、英文与emoji，百分号和下划线不作为通配符。结果标明名称／正文／标签命中，文件显示提取状态和时间。
+
+文件正文只命中当前正式版本；点击“查阅此版本正文”后固定该版本，按每次4000个Unicode字符前后浏览，并可进入原文件详情。已发布知识对普通读者使用发布修订，作者／编辑者使用当前修订。权限、目录回收、版本隔离在每次读取时重新核对。
+
+独立原生worker使用准确副本证据读取并校验完整摘要，支持≤1MiB的UTF-8文本／Markdown／CSV／JSON及≤8MiB的DOCX主正文／表格，输出≤2MiB。不支持PDF、OCR、Excel、页眉／页脚等时明确显示状态；不将120GB文件前缀当完整索引。数据库保存派生文本和证据，OSS／R2继续保存正式原件，应用机不持久保存提取副本。
+
+[完整方案与边界](development/92-file-text-search.md) · [独立只读凭据／部署／排查](operations/file-text-search.md) · [截图与演示](media/README.md) · [准确验证](quality/evidence/file-search/verification.md)
+
 ## 8. 当前证据与放行条件
 
-当前功能更新为[秘书任务前置依赖](development/91-secretary-task-dependencies.md)，完整操作见上节。[增量90依赖修复](development/90-dependency-hardening.md)继续通过相同完整锁文件安装，不复制其他环境的node_modules。每用户每15分钟最多8次MFA核实；遇到限制等待后重试，先检查实际回执再决定业务动作。
+当前功能更新为[统一搜索与固定版本正文](development/92-file-text-search.md)。所有数字指向本轮来源记录，不替代完整正式交付。
 
-
-
-| 层面 | 当前功能基线 | 范围说明 |
+| 层面 | 本轮结果 | 实际边界 |
 | --- | --- | --- |
-| Go / PostgreSQL | 本轮162顶层／1,080结果／982末级、9批；74迁移 | 原生PostgreSQL／HTTP／MCP；原73项迁移字节保留 |
-| 运行时 / Web | 本轮49／120项及构建 | 当前来源绑定；八项Skill仍draft |
-| Taro | 本轮212项、类型检查；双小程序各18页 | Web／H5各5组前置依赖流程、各3种宽度；H5不代替真机 |
-| Android | 当前开发APK及18项包检查 | 实际新业务包；26项JVM明确Gradle缓存范围，无设备验收 |
-| 演示媒体目录 | 70 PNG／25 MP4／25 GIF | 新增8图及两套MP4／GIF；原90来源及84份历史证据／媒体原字节保留 |
+| Go / PostgreSQL | 165顶层／1,112结果／1,012末级、9批；75迁移 | 原生全量；新增75，原74迁移字节保留 |
+| Web／运行时 | 126／49项测试及构建 | 绑定当前源码；八项Skill仍draft |
+| Taro | 218项、类型、微信／抖音各19页 | 共享页面实际H5流程，两端各12项检查；未启动平台开发工具或设备 |
+| Android | 当前原生开发APK和18项包检查 | 26项JVM按实际Gradle缓存记录；没有真机／商店通过声明 |
+| 页面与媒体 | 新增4图／两套MP4与GIF；共74 PNG／27 MP4／27 GIF | 真实浏览器像素，隔离合成数据与受控对象来源 |
+| 历史与运维 | 原91完整来源重建，164份原证据／媒体不变；75迁移与归属进程核对 | 云／模型／TG关闭，零隔离测试库；Linux仅编译 |
 
-当前锁文件未变，沿用增量90的原始完整审计，本轮91未重新请求审计：**86项：critical 0、high 20、moderate 64、low 2**。生产安全放行仍未通过。见[原始完整审计](quality/evidence/dependency-hardening/dependency-audit.json)、[全部剩余项](quality/evidence/dependency-hardening/remaining-findings.json)及[处置方案](development/90-dependency-hardening.md)。
-
-继续推进顺序：补业务与各端缺口 → 实际模型／隔离／Skill 和云存储联调 → 真实 TG 与平台／Android 设备 → 120 GB／2 TB、容量／安全 → 备份恢复和生产切换。外部账号与服务器信息未提供的项单列等待输入，其他实现继续推进。所有完成结论须能追到准确源码、命令、回执和未完成项。
+相同锁文件复用原90审计：86项（0 critical、20 high、64 moderate、2 low）。源码审计、设备、真实云／网络、真实模型／TG、大文件／迁移、恢复和生产放行继续在[28项差异](delivery/03-goal-gap-assessment.md)中跟踪。详见[本轮验证](quality/evidence/file-search/verification.md)。
 
 ## 9. 文档与同步维护
 

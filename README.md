@@ -160,15 +160,25 @@ docs/
   CHANGELOG.md    Bilingual update notes
 ```
 
+## 搜索与版本正文 / Search and exact-version text
+
+从导航进入“搜索工作资料”，输入名称或正文词句，可按资源类型筛选。文件正文只检索当前正式版本，结果注明命中位置、提取状态和时间；“查阅此版本正文”固定结果的版本ID，并按Unicode字符分段。回收、隔离或权限变化会在查询时重新核对；不支持的格式保留原件和名称查询。
+
+Open **Search work material**, enter a phrase and choose a resource type. File body search uses the current formal version. Preview pins that result's version and reads bounded Unicode chunks, with fresh permission checks. Unsupported formats remain searchable by name. An independent native worker performs bounded extraction; see the [protocol and limits](docs/development/92-file-text-search.md) and [deployment guide](docs/operations/file-text-search.md).
+
+[Web screenshot](docs/media/screenshots/file-search-web-results.png) · [Mobile screenshot](docs/media/screenshots/file-search-mobile-results.png) · [Web MP4](docs/media/videos/file-search-web.mp4) · [Mobile MP4](docs/media/videos/file-search-mobile.mp4) · [Mobile GIF](docs/media/gifs/file-search-mobile.gif)
+
+![Actual authenticated search and fixed-version preview / 实际搜索与固定版本预览](docs/media/gifs/file-search-web.gif)
+
 ## 验证与后续更新 / Verification and maintenance
 
-当前增量91实现秘书任务前置依赖：完整六字段授权、两个任务版本、原业务循环／状态约束和真实关系回执。重新执行后端162顶层／1,080结果／982末级、9批，Web120、运行时49、移动212及类型／双小程序各18页；新增迁移74，原73项迁移保持原字节。Linux仅编译；Android开发包和18项包检查单独记录，26项JVM按Gradle缓存实际范围记录。见[准确验证与保留记录](docs/quality/evidence/task-dependencies/verification.md)。
+当前增量92接通统一搜索与固定版本正文：支持UTF-8文本／Markdown／CSV／JSON及有界DOCX，实际权限过滤、版本摘要、正文状态和Web／移动预览。后端165顶层／1,112结果／1,012末级、9批；Web126、运行时49、移动218及类型、双小程序各19页。新增迁移75，原74项保持原字节。见[详细方案](docs/development/92-file-text-search.md)、[运维配置](docs/operations/file-text-search.md)和[准确验证](docs/quality/evidence/file-search/verification.md)。
 
-Increment91 implements exact secretary prerequisite changes with both task versions and factual relationship receipts. Fresh native checks cover162 backend top-level tests /1,080 results /982 leaves in9 batches, Web120, runtime49, mobile212, types and both18-page mini-program builds. Migration74 preserves the previous73 migrations. Linux compilation, Android development artifacts and18 package checks have separate evidence;26 JVM results retain explicit Gradle cache scope.
+Increment92 connects unified search and fixed-version plaintext previews, with bounded UTF-8/DOCX extraction, live permissions and explicit processing states. Fresh checks cover165 backend top-level tests /1,112 results /1,012 leaves in9 batches, Web126, runtime49 and mobile218, plus types and two19-page mini-program builds. Migration75 preserves all earlier74 migrations. Android development builds/package inspection and JVM cache scope are recorded separately from device acceptance.
 
-媒体目录为70PNG／25MP4／25GIF，本轮新增8张实际页面图及两套录屏／GIF。已发布e45c347的增量90完整启动／捕获来源从Git重建，84份历史证据及媒体保持原字节；本轮失败与已替代记录按原状态保留。相同锁文件沿用原90完整审计：86项，含20项high，生产安全放行未通过。完整28项GAP及四端设备、云／模型／TG、120GB／2TB、恢复和生产验收继续开放。
+媒体目录为74PNG／27MP4／27GIF，本轮新增4张真实页面截图和两套MP4／GIF。已发布cb13bd3的增量91完整启动／捕获来源从Git重建，164份历史证据和媒体保持原字节；失败与已替代尝试保留原状态。相同锁文件复用原90审计：86项（0 critical、20 high、64 moderate、2 low），生产安全放行继续开放。真实云／模型／TG、设备、120GB／2TB与恢复验收继续按28项GAP推进。
 
-The catalog contains70 PNGs,25 MP4s and25 GIFs, including eight new actual screenshots and two new recording/GIF pairs. Published90 sources reconstruct from Git and84 historical evidence/media files retain exact bytes. Failed and superseded attempts keep their original status. The unchanged lock reuses the original90 audit:86 findings, including20 high; the production security gate and all28 four-client gap IDs remain open.
+The catalog contains74 PNGs,27 MP4s and27 GIFs, including four new actual screenshots and two recording/GIF pairs. Published91 sources reconstruct from Git and164 original evidence/media files keep their bytes. The unchanged lock reuses the original90 audit of86 findings, including20 high. External integration, device, large-data, recovery and security gates remain open.
 
 后续完成更新继续同步代码、中英文说明、受影响素材、验证和`docs/CHANGELOG.md`，一并提交并推送至`git@github.com:copypasteltd/case-manager.git`；不强推，不提交凭据、数据库、工具链、缓存或APK。文档统一放在`docs/`，应用实现位于`app/`。
 

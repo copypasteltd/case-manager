@@ -699,3 +699,18 @@ input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--cp-action-
 .budget-comparison .comparison-totals dd { margin: .5rem 0 0; font-size: 1.25rem; font-weight: 650; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .budget-comparison table { min-width: 800px; font-variant-numeric: tabular-nums; }
 .budget-comparison .table-scroll { max-width: 100%; }
+
+.search-form { display:flex; align-items:center; gap:12px; padding:20px; margin-bottom:24px; }
+.search-form .search-field { flex:1; min-width:180px; }
+.search-kind select { min-height:42px; }
+.search-results { display:grid; gap:16px; margin-bottom:20px; }
+.search-hit { padding:22px 26px; }
+.search-hit-heading,.search-hit-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.search-hit h3 { margin:12px 0; font-size:19px; }
+.search-hit h3 a { display:inline-flex; align-items:center; gap:8px; }
+.search-snippet,.file-text-body { white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.8; }
+.search-snippet { margin:12px 0 20px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.file-text-preview { padding:24px; margin-top:24px; scroll-margin-top:24px; }
+.file-text-preview code { overflow-wrap:anywhere; }
+.file-text-body { font:inherit; max-height:60vh; overflow:auto; padding:20px; background:var(--cp-bg-subtle); border-radius:8px; }
+@media(max-width:650px) { .search-form { flex-wrap:wrap; padding:16px; } .search-form .search-field { flex-basis:100%; } .search-hit { padding:18px; } .search-hit-footer { flex-direction:column; align-items:flex-start; } }

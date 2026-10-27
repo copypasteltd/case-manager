@@ -1,0 +1,845 @@
+{
+  "passed": true,
+  "commit": "cb13bd3edaef31103e2209644b768da356404d62",
+  "complete_startup_source": {
+    "source_count": 904,
+    "sha256": "bcddfb1afa9b17986c6ea9193c5c51d5674fc346655dafb2758814365c05dd42",
+    "reconstructed": true
+  },
+  "clients": {
+    "web": {
+      "source_count": 662,
+      "source_sha256": "f9d7b5e19059c79cec0a66d315b32b76ff236f78a932f1c47fbef6dcb856867f",
+      "reconstructed": true
+    },
+    "mobile": {
+      "source_count": 688,
+      "source_sha256": "4e2058649e07ba78d1602cb3230bf76a8a7565c8cc818ae2cce6b1560069b8e3",
+      "reconstructed": true
+    }
+  },
+  "preserved": [
+    {
+      "path": "docs/quality/evidence/task-dependencies-mobile/capture.json",
+      "sha256": "c44c8fc117b10e0d96e95d6238f76020e4d26d47e126c26672b7c1aa4ec6f2c8",
+      "bytes": 979
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-mobile/inbox.png",
+      "sha256": "0eca4669ec535eb4ff66a6cdcf537a0bf37bf5d39b73408c95cf8c526bd84ed1",
+      "bytes": 53691
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-mobile/result.json",
+      "sha256": "bf146653b0ee9eb91a8e925995b216201c0e628bf05ac2714c12962499bbe609",
+      "bytes": 1687
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-mobile/source-manifest.json",
+      "sha256": "35717c068982c45817840ca33ebc774ff9c9c1789e265cbaf18e93a562766af3",
+      "bytes": 34517
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-web/capture.json",
+      "sha256": "616302d5aabc20d72bf00e3ed26e27a99da378e25e6af5123c321f20cefe2e67",
+      "bytes": 982
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-web/inbox.png",
+      "sha256": "df25ad86a6ea1a725ad69db71b558ad8071533d513fe731cc2bc5cabe0b9d348",
+      "bytes": 492994
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-web/result.json",
+      "sha256": "739a4f51c8f191c0b11e5793aa85203d6dba667a24ddc475189dbf10d023f573",
+      "bytes": 1678
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies-web/source-manifest.json",
+      "sha256": "74f24bd44cc9fa1ee9e7b2d6c602852b0f8b8f2814f79e6a48237dd9e18a73db",
+      "bytes": 32214
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/android-test-scope.json",
+      "sha256": "d59c214fb8d40094980338112915db8fb8651edad64e500ea2176f2df7de4ca8",
+      "bytes": 991
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51",
+      "bytes": 1283
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b",
+      "bytes": 1138
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290",
+      "bytes": 1169
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131",
+      "bytes": 1744
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/apk-inspection.json",
+      "sha256": "8661a6609d50e78181014fee2884398cfec2ee35254721eecdb6c16beab75a2f",
+      "bytes": 3385
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/backend-catalog-count-01/attempt.json",
+      "sha256": "3f1f6cc0d6b92357aec6a2c022799b95ec51b52f6f2bf0f9d6c792a280f9e36f",
+      "bytes": 23672
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/backend-catalog-count-01/batch-progress.json",
+      "sha256": "dccddcb0b6d85b068f7e6393c36a0ff89ed37bcc9eecfb9eaac0f7e59f203fe8",
+      "bytes": 104322
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/backend-catalog-count-01/sources.zip",
+      "sha256": "cdb0b4ce79e57d08b9856c72932be8a3938e7f990a4812a35612a7796796935e",
+      "bytes": 1471415
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-01/attempt.json",
+      "sha256": "083567086e1ee2baeec287c5f75d1b5801130351d21e46dacbcd11aefc0b64bd",
+      "bytes": 80519
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-01/failure.png",
+      "sha256": "dafa19b8a1ee468f3ba4961b5d5b51a297ab56ff87de8519bad7947acc59d51a",
+      "bytes": 40079
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-01/result.json",
+      "sha256": "31bbd1d6a423fe02f02d3200d6def1a97158c33061465c3cd90e51a0c02df440",
+      "bytes": 1127
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-01/source-manifest.json",
+      "sha256": "34ac1df8611d5827a699795f2469d6df8e769fd9c9e08c6924e1b316066f90ac",
+      "bytes": 34517
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-01/sources.zip",
+      "sha256": "62713163eebf93e584684bad973e3cc57123c8fdd7d4a1a0eaedccbd21902f61",
+      "bytes": 2922815
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/attempt.json",
+      "sha256": "a936296ac7b8271fb1fab60ce79f3f5b9998547467b3fd8fecd87d1b5cf95dd0",
+      "bytes": 80568
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/capture.json",
+      "sha256": "acf2b6dc711197530fbaf77630f63a472fcb93c6810ab241e553cbd1d063317a",
+      "bytes": 978
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/inbox.png",
+      "sha256": "cbcd85b876c734b17734cb3cd0964f1f20b49c43626a7b11e873ca4cf994b794",
+      "bytes": 53709
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/media/secretary-task-dependencies-mobile-form.png",
+      "sha256": "833f36d1e7a5ab522403474197468b7a34c290af3d9f55d4a9f990605ac00920",
+      "bytes": 59389
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/media/secretary-task-dependencies-mobile-preview.png",
+      "sha256": "99506720af390cfee579c3298b7112be18bff6eed4e99e24dbbecab70c3925f7",
+      "bytes": 57488
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/media/secretary-task-dependencies-mobile-receipt.png",
+      "sha256": "450547d3f1854d9dd6d7e3839e9482a9e0ded15d8f26af1232b7f8b9e5b56a40",
+      "bytes": 53191
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/media/secretary-task-dependencies-mobile-removed.png",
+      "sha256": "cbcd85b876c734b17734cb3cd0964f1f20b49c43626a7b11e873ca4cf994b794",
+      "bytes": 53709
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/result.json",
+      "sha256": "98ecc1727ce4e4065e5461172dc2795c34a0f32ed2ee64b63dbd33c3b477666d",
+      "bytes": 1687
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/source-manifest.json",
+      "sha256": "329eb2bd49aadf1c5a24a6691a97661e82bdd64c374af9cf0dbda454e7f1ed50",
+      "bytes": 34517
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-02-superseded/sources.zip",
+      "sha256": "bfc1109dccca4e41cb0dd4b658d423d19ef93d8ce4b567dd904045c9ad04e4db",
+      "bytes": 2923491
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-03/attempt.json",
+      "sha256": "70f8b593b830ce02acbcf64743524f111691ee7ce45dde1cce0eb17d03d8c46a",
+      "bytes": 80591
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-03/failure.png",
+      "sha256": "b43af9ead12724484f500eeb7444e5641fe022b3c9536be44d4eea06e39c5d23",
+      "bytes": 40791
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-03/result.json",
+      "sha256": "ef985ce86c54bc4c773fe6716a5ffa790c3ad9b5073e807dbec4b5d5cc54c21e",
+      "bytes": 1197
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-03/source-manifest.json",
+      "sha256": "d1d44f272da109b9a1c04de2991ac2a6d0b12b3b54ca0168937b14b6abcc755e",
+      "bytes": 34517
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-03/sources.zip",
+      "sha256": "116d72b2fffacf9df70fd956bf0c029abf3fb71e108b59550d4386d825ba076e",
+      "bytes": 2923572
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-04/attempt.json",
+      "sha256": "b6c92062f913accec39c2ac90321abe52ee71f83046eded02b3a98aa90b583e9",
+      "bytes": 80550
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-04/failure.png",
+      "sha256": "3e6f35ce66d8d40bcf605e26c6c99168cc305ffe37e757f843b349bc93a9c39c",
+      "bytes": 42897
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-04/result.json",
+      "sha256": "1911dd01abf44c69978af6be5996f05c292c108185e5607440ee515f742d3adb",
+      "bytes": 1134
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-04/source-manifest.json",
+      "sha256": "290e63ba170e644a2380010c5121f88e7cad667e12909c4cd9454944ad86c347",
+      "bytes": 34517
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/mobile-04/sources.zip",
+      "sha256": "b308c350e35055305ffce3174beca55cbaa0ba7fc9f0ec5680e8a66cb56fd418",
+      "bytes": 2923604
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/android-test-scope.json",
+      "sha256": "c026638a7211030b6aedc978029c98d304b24820a04859d8aed995e923bc5ff3",
+      "bytes": 991
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51",
+      "bytes": 1283
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b",
+      "bytes": 1138
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290",
+      "bytes": 1169
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131",
+      "bytes": 1744
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/apk-inspection.json",
+      "sha256": "4efaa12ffc5ddfea2f76668802f2a5f9216642c5bb51c38757b1dae996a85472",
+      "bytes": 3385
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/attempt.json",
+      "sha256": "f735b8c6654711a49285ab7f22edf8b322189dd8922b0a353aa32236beab29a9",
+      "bytes": 45310
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/build.json",
+      "sha256": "d102a085bbb6bb1b3620ce3136b3773e5a9f8ebcf4ec440eb90bdbfd61302f1f",
+      "bytes": 11639
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/mobile-build.json",
+      "sha256": "e9d3692e5d9b74c8603fa48b0f5c5dedc9fb1365ef4bfb14e6d370f9d791126b",
+      "bytes": 1882
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/mobile-verification.log",
+      "sha256": "8ff888cd4340750fbcdadfc51d090b24ad5617416b725c0aee4b064eb86cca19",
+      "bytes": 70538
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/native-build.log",
+      "sha256": "ff62cf02f89d1e010cd86b5b87ec1ae16c1386376802e6d148f022b837e5da09",
+      "bytes": 13925
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/polling-range-superseded/sources.zip",
+      "sha256": "f22669434f9b06280c0d871ae6220262ae572435907a8b7189105aec0d0901b7",
+      "bytes": 2895812
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/source-verifier-01/diagnosis.json",
+      "sha256": "82fa8263a75fe69c5408068b103a1121d86942f91f61a34405da32766288c5f8",
+      "bytes": 571
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/source-verifier-01/result.json",
+      "sha256": "57fcdd089724a37d84d5746ad50a528942e4c212baa86dddd9fdcf1b18276806",
+      "bytes": 4734
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/source-verifier-01/verifier.py.source",
+      "sha256": "f8a785a5cab363919a4272414f14c8f1838fd11301a0ac04d443bbd9f8d6ac07",
+      "bytes": 16402
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/attempt.json",
+      "sha256": "1e6809a8ed4a89978788539c67fb2f9246baa5e761b6972eed8e93d0a01c9d17",
+      "bytes": 45304
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/interrupted-android-bundle.log",
+      "sha256": "95e77d838813ba59572339d196acc8143301dfb8abffb072f485bafda34dd7eb",
+      "bytes": 195
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/mobile-build.json",
+      "sha256": "920cfd2f74fd8dc0be901aaa4c5a74d9f039988a4ed676067954d28fa7ca511a",
+      "bytes": 1498
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/mobile-verification.log",
+      "sha256": "4d29a5e9d3b6300b638916ae5333b7dc67e19d40eaabeb10dc4b75e7dbcd7170",
+      "bytes": 52073
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/sources.zip",
+      "sha256": "053d75f2e4f5ca1d56bf7c517c54452a55ac44b9c4bbe63d711704eb096341e2",
+      "bytes": 2885828
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/web-build.json",
+      "sha256": "6e2960014b9048e0b42db38617affab632264520129fd407d0e2668c4aee0d1c",
+      "bytes": 6172
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/typed-fixtures-01/web-build.log",
+      "sha256": "871a0cf999caac4237d8543b49ba80a2d6e0f61dc1ca6d680bf0fa669ba626ab",
+      "bytes": 1690
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/android-test-scope.json",
+      "sha256": "af30cb69b4da630d369c03c015966a51e1200f7275e9274f45080ecc76ea76d9",
+      "bytes": 991
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51",
+      "bytes": 1283
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b",
+      "bytes": 1138
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290",
+      "bytes": 1169
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131",
+      "bytes": 1744
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/apk-inspection.json",
+      "sha256": "e3498d5cf2f1e5b8bf405727b7944dfca1e2fc878cb3bf3e0c3548cb329ba9de",
+      "bytes": 3385
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/attempt.json",
+      "sha256": "0aafb63e03ca6e7a856252358d0354ef746539e58ce24c0122183fdda91772d0",
+      "bytes": 45284
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/build.json",
+      "sha256": "663acfc26d8c420271f874a0609460ebef2e888dc0838a9b46a1e89d7a2afaa3",
+      "bytes": 11639
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/media.json",
+      "sha256": "a0cc1f18faa6c3885e6718e729fdf792e440c4a6e8b51d328105ea605f4a72d9",
+      "bytes": 3284
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/media/secretary-task-dependencies-mobile.gif",
+      "sha256": "d5afd67b54497df7be3ed1196225bf56bb1f14f2441ecdbe06a3b5af67501a79",
+      "bytes": 647542
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/media/secretary-task-dependencies-mobile.mp4",
+      "sha256": "49150c8b4c3817f8431889248af3f4d46954b24b147f19bd3aca64128d337736",
+      "bytes": 187781
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/media/secretary-task-dependencies-web.gif",
+      "sha256": "922b1357e9c494811f85a88d78b5509695e54c81f688f1eea25e423e922e86ed",
+      "bytes": 697638
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/media/secretary-task-dependencies-web.mp4",
+      "sha256": "f6404f9db4f24245449d0092cc888c7500f309513df5fe0c375153754db57d95",
+      "bytes": 314367
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/mobile-build.json",
+      "sha256": "0f0dcba0a9530fd76b40877497e5fd208daf021928dedd0f00c6da54f109dc4c",
+      "bytes": 1882
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/mobile-capture-manifest.json",
+      "sha256": "ec31142d128068b7b4f2f3632c10dd8cfd148e51e39037659146e1c764549e9a",
+      "bytes": 3040
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/mobile-verification.log",
+      "sha256": "64e61bdfb4682d191aa036ac79285c8b2a879fe37e828a3615e009499f81c93a",
+      "bytes": 70858
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/native-build.log",
+      "sha256": "37dd8ffe9d3941609862ad88d04aeeb87dd4f943222676ebdc35ba61456b89ab",
+      "bytes": 13926
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/sources.zip",
+      "sha256": "57cc96be2a21741c737aa929d3c845f57b1e5162eb8078bb1fe83ccfb495b44d",
+      "bytes": 2893855
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/web-build.json",
+      "sha256": "7a650e502cf4d990c64d19c5240a639b6bf7ba81a4c691b1e37a2eee2a836ccb",
+      "bytes": 6170
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/visual-review-superseded/web-capture-manifest.json",
+      "sha256": "e1763eec8e88b905de0c9bde2136c134710d76e6b3fcbe7ebbad548686cb24f3",
+      "bytes": 3341
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/attempt.json",
+      "sha256": "14d371e31f2c69147ddea60f0726395f13f8e7a7267c8cd2ccdb369e55b70c7d",
+      "bytes": 78117
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/failure.png",
+      "sha256": "e9154784512fee76a9c327b034b8b38fc7d9dcd1e16213d8a292c7e37e3ed443",
+      "bytes": 516175
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/media/secretary-task-dependencies-web-form.png",
+      "sha256": "9c678feee60fca5a581a1fe119e8652cd0a987cc9401ca4f29d476dbc627bc68",
+      "bytes": 139336
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/media/secretary-task-dependencies-web-preview.png",
+      "sha256": "eefc10f14d66cecc66489a2bdaa268a3d0a3bf29c4a0322ff8e3f9d8cf718fcb",
+      "bytes": 152470
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/result.json",
+      "sha256": "2bd77f5375bfff19ae37f726a80cd3301712a87527793f662687f6ed93a3e5c4",
+      "bytes": 1521
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/source-manifest.json",
+      "sha256": "637067bcdb821cb915c79c8cbd54ff702354f2a1ce3019819ff84bcdad9daff0",
+      "bytes": 32214
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-01/sources.zip",
+      "sha256": "9c8a4bfc415db0ad0f43d58432c3367272e875d829a1bdae69abefebcc265cfe",
+      "bytes": 2922811
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/attempt.json",
+      "sha256": "5d04264b20890d4929bde1edf9c98370fc6c970fec6f1364e3c9cbad3b68ff35",
+      "bytes": 78241
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/capture.json",
+      "sha256": "630e7867fb69c135b47c842c0f1c3b3a55f0f39863d7e726b1fe22d7c559dd50",
+      "bytes": 981
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/inbox.png",
+      "sha256": "c2be00c61769c2bb1b6f7d0e9fcc166b3b0adec166541689592aaca6cfd0de1f",
+      "bytes": 500832
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/media/secretary-task-dependencies-web-form.png",
+      "sha256": "9c678feee60fca5a581a1fe119e8652cd0a987cc9401ca4f29d476dbc627bc68",
+      "bytes": 139336
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/media/secretary-task-dependencies-web-preview.png",
+      "sha256": "745e15db43079a138472fd3d250af6089e51e903f14659d1415c128b5a0f25b2",
+      "bytes": 152762
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/media/secretary-task-dependencies-web-receipt.png",
+      "sha256": "a47752900e71b7cf53f00e1d772b5dada6cca134dc9ff22a9ad1807e651e6f2c",
+      "bytes": 141321
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/media/secretary-task-dependencies-web-removed.png",
+      "sha256": "c4b10c08f5a2649f533d69947eeca939012f22e9a22593fa9f281ffff7a175d1",
+      "bytes": 141895
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/result.json",
+      "sha256": "9285056b5a54dcdd7eff2971ed9403103d07fc3c6f819af66c3bfc905320a309",
+      "bytes": 1678
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/source-manifest.json",
+      "sha256": "a5f18b4bedaf270947b0d1af198a0db5b702f46a66bad65bc0a960c1dcea6815",
+      "bytes": 32214
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-02-superseded/sources.zip",
+      "sha256": "32139420da885133d8b336ed92c91c2deb86787c64ac29fa492eb5f4deb3cf78",
+      "bytes": 2922807
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/attempt.json",
+      "sha256": "d5b8cf10cd382fa4e8da126640189cdeca04174eff410acad50d2fd04594014e",
+      "bytes": 78174
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/capture.json",
+      "sha256": "f8462e59db257edf03c55ad2e5d72ad3302736ad2a23803b44b7f9aad92d1147",
+      "bytes": 981
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/inbox.png",
+      "sha256": "7d12122fa76e58835ebe060350d66d9f46a9e545e23e48c1b0581d7ac1e01ffb",
+      "bytes": 493208
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/media/secretary-task-dependencies-web-form.png",
+      "sha256": "9c678feee60fca5a581a1fe119e8652cd0a987cc9401ca4f29d476dbc627bc68",
+      "bytes": 139336
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/media/secretary-task-dependencies-web-preview.png",
+      "sha256": "f883d218acbcec03702ce50f84846067a488d80e99b9226c8a290bf9191a9871",
+      "bytes": 152510
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/media/secretary-task-dependencies-web-receipt.png",
+      "sha256": "3f921163e01496bb789239a32060cc5bf078cfcdca7d52566b2b75f7f3c1cb8e",
+      "bytes": 141501
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/media/secretary-task-dependencies-web-removed.png",
+      "sha256": "3ed66b46a6582e5044ebac61686673a46c87dee72e99bdb0dcdf0d09d7b76251",
+      "bytes": 142124
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/result.json",
+      "sha256": "62f6be5f94b9f2047978be7bb4b1614b21d1f8242ea2a86516ff5dcbb8865ba5",
+      "bytes": 1678
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/source-manifest.json",
+      "sha256": "b66bdaef09622e2573d79cd2d7902036ecbd40b8c17a53046049a935aa1e1f28",
+      "bytes": 32214
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-03-superseded/sources.zip",
+      "sha256": "62713163eebf93e584684bad973e3cc57123c8fdd7d4a1a0eaedccbd21902f61",
+      "bytes": 2922815
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/attempt.json",
+      "sha256": "c35bf70e377b557be73c115cf49639a610b68618a6d6124af73b690ad75480d6",
+      "bytes": 78182
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/capture.json",
+      "sha256": "ea186ffd937b4fd7ae6f6526435450b5d8b86b05316b74d70821cefa41c33514",
+      "bytes": 981
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/inbox.png",
+      "sha256": "842e119a9917feec6723f742ea4d23f635768deaf56bb5e29fd85cf80064fc3f",
+      "bytes": 492571
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/media/secretary-task-dependencies-web-form.png",
+      "sha256": "9c678feee60fca5a581a1fe119e8652cd0a987cc9401ca4f29d476dbc627bc68",
+      "bytes": 139336
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/media/secretary-task-dependencies-web-preview.png",
+      "sha256": "c052a95824df61ccf411917b80e985252f55b275063697e5720f769caedfe6b8",
+      "bytes": 152884
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/media/secretary-task-dependencies-web-receipt.png",
+      "sha256": "872b2129bc2214831632a204ed47548fc9257396d9b0d472eb88cdd79ad1095f",
+      "bytes": 119467
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/media/secretary-task-dependencies-web-removed.png",
+      "sha256": "9f08f26f88172ae6e0af58d720b7b8c401d8763337cdbc51f6afb0f6a5fbd412",
+      "bytes": 141837
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/result.json",
+      "sha256": "980cbd5c6b30aedc9260bf321481deb563ff7660a9ecff7f4a195e12fcd14146",
+      "bytes": 1678
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/source-manifest.json",
+      "sha256": "72e3978a48129a7429e2fda27970f63b7d85674889d272dc94f12a4177b97e83",
+      "bytes": 32214
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/attempts/web-04-superseded/sources.zip",
+      "sha256": "bfc1109dccca4e41cb0dd4b658d423d19ef93d8ce4b567dd904045c9ad04e4db",
+      "bytes": 2923491
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/batch-progress.json",
+      "sha256": "9032621f465abfe7080ccb0fb707ef8234d31884d747b221cce7c7d4b0e611d3",
+      "bytes": 294149
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/build.json",
+      "sha256": "c7fff0d0549282f81d73e08d16678080b0f1f63916101db7092f4cc652059758",
+      "bytes": 11639
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/development-project-resources.json",
+      "sha256": "161756d59d1eb95968c9e31360fd2b7069236226e9b2b7e7d1e5b080c8a26b88",
+      "bytes": 1416
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/development-runtime.json",
+      "sha256": "c15e8d2321176ee150e5b484bdd797a627ba2d1e76c9a64be50083d6f4480ed5",
+      "bytes": 2963
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/development-update.json",
+      "sha256": "f5fd719da4487d6c647c019c0af217cbeb939615d79a99ead1c48daff6bd38c7",
+      "bytes": 840
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/final-source-check.json",
+      "sha256": "eadb844f0c5d2c90e65219fe5c80e60500d51b3a617a6021376f97c109408877",
+      "bytes": 4732
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/historical-90.json",
+      "sha256": "836f05164fa803b7f5b4720a92c33e49ffcb35f483f4712f136e0177d582bb0e",
+      "bytes": 17183
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/linux-build.json",
+      "sha256": "ff59cb81a39eaec0ad5643bcd4a55a25a86f39f9f928487d820d27deb823e363",
+      "bytes": 528
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/media.json",
+      "sha256": "45828f589478e78884bfb4e735177115c0b09ec01d16ac03bbfe1781c44778a3",
+      "bytes": 3308
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/mobile-build.json",
+      "sha256": "fdbee5945d9adb0aa4b4f7fc4156e62818a66d3e20e4fb0ea536b3d275b02842",
+      "bytes": 1879
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/mobile-capture-manifest.json",
+      "sha256": "f3578834dfb327a294d791ec4d8703077954538e16c3adb981e263c9002b0bc9",
+      "bytes": 12129
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/mobile-verification.log",
+      "sha256": "536d4d5f1a1d94d43f8b67a8c8e39214466dda84c744522d0af13e4fc8e83517",
+      "bytes": 70003
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/native-build.log",
+      "sha256": "305c41442d0d72896807de31ae48b01eb9236d62dca9e8640b3feacc38304c82",
+      "bytes": 13923
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before.json",
+      "sha256": "31f9af51dd80e6bedc3da116481987c839ac00e3aad8557a87cd453e0e6e2bf8",
+      "bytes": 2787
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/README.md.source",
+      "sha256": "724f5e711f56cde010a4d12b657763ec0413cab723a233d96137cbe3445b29b2",
+      "bytes": 18096
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/CHANGELOG.md.source",
+      "sha256": "4458ced77354d260bdd925b839c39faa20f25b30f267bf522aac1e3bfe616783",
+      "bytes": 29924
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/README.en.md.source",
+      "sha256": "5f2c3cd4537f04d3e468d55f6a595a36ba2f383265b0b6018bc21c497e667c7d",
+      "bytes": 35080
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/README.md.source",
+      "sha256": "d7f38459fe838d69c272adc36e587502270177d91a4780397470d2ffc2ea4a55",
+      "bytes": 27981
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/README.zh-CN.md.source",
+      "sha256": "b9bf0dbeb669e1b5d8e7054c62a6a8a903a3c7a4b18376348e05ac199c4a4839",
+      "bytes": 30912
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/delivery/02-implementation-ledger.md.source",
+      "sha256": "599ae87e83cd0b99ff17be7d6ca191f27afc80c3454172a330b055a11b908649",
+      "bytes": 195713
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/delivery/03-goal-gap-assessment.md.source",
+      "sha256": "e59f12fb7e81b4df7d839124ec62bd94e6eabc733c7429b704c280a704f6a32f",
+      "bytes": 26599
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/development/65-android-native-foundation.md.source",
+      "sha256": "cfa67d27ae7e46029bf9df7c210ac702fa9a00939c483996771378910763cf36",
+      "bytes": 8556
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/media/README.md.source",
+      "sha256": "8ba86e9502768750e50d6062e21e808d9224db657314629d50394e1af4d021e8",
+      "bytes": 48529
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/publication-before/docs/quality/current-functional-baseline.json.source",
+      "sha256": "d73f8598910d4579ebc889c222abda23ceb54bc391bd7cd869d4297ebb81bd7d",
+      "bytes": 26833
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/repository-check.json",
+      "sha256": "9e7bec2a783b7945516dba7183928b5c2a636ab169475d99db2105b0f5cb91ce",
+      "bytes": 4165
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/result.json",
+      "sha256": "0197156ff63abb9d242f9940e016cc2dabff55542be7d1031682d9f1c40f375e",
+      "bytes": 241026
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/runtime-build.json",
+      "sha256": "3a2eb3bdb58dbd60f09daf53ec678358b0ef4a043abacf89b43de4d41ce08118",
+      "bytes": 792
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/verification.md",
+      "sha256": "49660f04ba3998bc593fa679b3bf2ffc84b83fb829e7937158c5a2b40daf83b2",
+      "bytes": 11928
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/visual-review.json",
+      "sha256": "9be97980420bcb1ad11a6058504e3bf233258d86dce4efa3711562f0bb0e1f9f",
+      "bytes": 2850
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/web-build.json",
+      "sha256": "f8cca7c8e34349310acaedb868e17f056f69c2ff43d5a10128d15fcd3caad188",
+      "bytes": 6172
+    },
+    {
+      "path": "docs/quality/evidence/task-dependencies/web-capture-manifest.json",
+      "sha256": "3818dfc17b628e29b280663471a87e2813eb977f6de3aa631ba1373d287fd354",
+      "bytes": 13041
+    },
+    {
+      "path": "docs/media/gifs/secretary-task-dependencies-mobile.gif",
+      "sha256": "8fdcb03a102543a5a19563756f1ccfd4875d0c7c160fac251fe1129c31c4cb7c",
+      "bytes": 759713
+    },
+    {
+      "path": "docs/media/gifs/secretary-task-dependencies-web.gif",
+      "sha256": "234b5bdd661d1e10b72288255d6d4d5f03c40515000a7e5d296d4243190b6419",
+      "bytes": 883110
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-mobile-form.png",
+      "sha256": "9426fc2f4d9965a4a50503eec420c6a3dd0ed765fa59afb03a3508d846c55d6a",
+      "bytes": 57437
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-mobile-preview.png",
+      "sha256": "f0089a52d7529b00a8cf61952d19f1203c77f070eb0a8119bfad755c5f0e29f0",
+      "bytes": 57706
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-mobile-receipt.png",
+      "sha256": "4307ae7445bb43e7b05b919ea2623d329b94c32f10e08b839e90842475d1393b",
+      "bytes": 53506
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-mobile-removed.png",
+      "sha256": "0eca4669ec535eb4ff66a6cdcf537a0bf37bf5d39b73408c95cf8c526bd84ed1",
+      "bytes": 53691
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-web-form.png",
+      "sha256": "d949f05f1a47916d8a85d1ff93e1dbc5b34646e1df492eac53c6d0894fb14afa",
+      "bytes": 143102
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-web-preview.png",
+      "sha256": "859d044fbcde0be423e0fb74b7c70a0ebca381c260ae2c8fea53618c219161c1",
+      "bytes": 152803
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-web-receipt.png",
+      "sha256": "0fc0b033e37586a4d4e6ea652c0e5704a5c4f49d8c7c061e65d5e48074fdf360",
+      "bytes": 141590
+    },
+    {
+      "path": "docs/media/screenshots/secretary-task-dependencies-web-removed.png",
+      "sha256": "4c32e96120eec8b928007c5c75c4d3f86d967b01358e2f4fabe0befa81a9bb60",
+      "bytes": 141826
+    },
+    {
+      "path": "docs/media/videos/secretary-task-dependencies-mobile.mp4",
+      "sha256": "1d68535ea1fea90a8ac415119c6b508c22fc3e59d2a47787cec8513c4b44dc3a",
+      "bytes": 332931
+    },
+    {
+      "path": "docs/media/videos/secretary-task-dependencies-web.mp4",
+      "sha256": "f31ed4364c16a1413f0e4c2e97ffaad6373c0606e4b0cef8fec28440ecd74072",
+      "bytes": 589355
+    }
+  ],
+  "preserved_media_count": 12,
+  "scope": "Exact published91 Git objects; original status and bytes retained, no current-code or external acceptance claim."
+}
