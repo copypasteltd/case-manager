@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "The checker assumed user-list entries expose login names; actual actor identities must come from each authenticated /me response. The unchanged application and the complete failed capture source are retained.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "fefb4690bec6fdbd39c8a15d375d7c27c003f9fe051af244235b6e7c43587ce8",
+  "source_zip_sha256": "9319ddf967cfe80c6398d7c1e400e9b0acd3131e4b96bfbd69980f5dbf586101",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": []
+}

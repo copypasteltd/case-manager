@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T09:19:24.927Z",
+  "finished_at": "2026-10-27T09:19:29.763Z",
+  "checks": [],
+  "source_count": 682,
+  "source_sha256": "8edf551e4f43b0ffe21813e5a439fa76f6295fe793e753fb87ab0f684ba00d94",
+  "source_after_sha256": "8edf551e4f43b0ffe21813e5a439fa76f6295fe793e753fb87ab0f684ba00d94",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "The expression evaluated to a falsy value:\n\n  assert.ok(alice && bob)\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "fefb4690bec6fdbd39c8a15d375d7c27c003f9fe051af244235b6e7c43587ce8",
+  "build_source_after_sha256": "fefb4690bec6fdbd39c8a15d375d7c27c003f9fe051af244235b6e7c43587ce8",
+  "build_source_unchanged": true
+}

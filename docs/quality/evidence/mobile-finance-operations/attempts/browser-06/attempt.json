@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "The browser checker treated a null page.goBack response as missing history, although SPA fragment navigation legitimately has no network response.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "fcb3dbb2639a0b4ce69af240c58884af47f7671b7ff77531be561325ae6b05c0",
+  "source_zip_sha256": "29e6b9d8734a8efb975341d954b883b2b31943321dd60e0952a0ba460abe5124",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": [
+    {
+      "original_path": "docs/media/screenshots/mobile-finance-cost-confirmed.png",
+      "sha256": "2245396c0ba4f52c41ec53d9d115bb26a0122da2ee550589415898d1f3467b78"
+    }
+  ]
+}

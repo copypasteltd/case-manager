@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T09:39:13.305Z",
+  "finished_at": "2026-10-27T09:39:57.756Z",
+  "checks": [],
+  "source_count": 682,
+  "source_sha256": "fd219a1e8a5b94ed526f3bda329ffb436cc2e958a24b1ea50ecfef18ced35873",
+  "source_after_sha256": "fd219a1e8a5b94ed526f3bda329ffb436cc2e958a24b1ea50ecfef18ced35873",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: /^起草实际费用(?:\\s*↗)?$/ }) to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "1e25ab15cd8e34f563dcf410099a9838e4367f144732962b838d2c934b823072",
+  "build_source_after_sha256": "1e25ab15cd8e34f563dcf410099a9838e4367f144732962b838d2c934b823072",
+  "build_source_unchanged": true
+}

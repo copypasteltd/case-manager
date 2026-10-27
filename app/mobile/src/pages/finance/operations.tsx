@@ -1,0 +1,95 @@
+import { Text, View } from '@tarojs/components';
+import Taro, { useRouter } from '@tarojs/taro';
+import { useState } from 'react';
+import { CommandNotice, DraftNotice, MFAConfirmation, useCommand } from '../../platform/command';
+import { FixedFiles } from '../../platform/fixed-files';
+import { useFormDraft } from '../../platform/form';
+import { financialAction, financialAllocation, financialAmountEqual, financialBase, financialCan, financialID, financialInput, financialKind, financialRecordReceipt, financialReversalReceipt, financialRoutes, financialTransitionReceipt, fromHongKongInput, positiveFinancialAmount, settlementEligible, sourceEligible, type FinancialAction, type FinancialInput, type FinancialKind, type FinancialRecord } from '../../platform/financial-input';
+import { identifier, usePage } from '../../platform/page';
+import { type Schemas } from '../../platform/session';
+import { client } from '../../platform/taro';
+import { Action, Busy, Empty, Fact, Notice, Page, Section } from '../../ui';
+import { ChoiceList, SelectField, TextField } from '../business/controls';
+import { FinancialEditor } from './editor';
+
+const names: Record<FinancialAction, string> = { create: '新建财务草稿', edit: '修订财务草稿', confirm: '确认实际费用', reverse: '全额冲销原记录', link: '关联批准业务依据', record: '登记实际资金', allocate: '分配费用结算', release: '释放费用分配', refundAllocate: '关联退款分配' };
+export function financialOperation(kind: FinancialKind, action: FinancialAction, id?: string, refund?: string) {
+  void Taro.navigateTo({ url: '/pages/finance/index?kind=' + kind + '&action=' + action + (id ? '&id=' + identifier(id) : '') + (refund ? '&refund=' + identifier(refund) : '') });
+}
+export function FinancialCommands({ kind, value, me }: { kind: FinancialKind; value: FinancialRecord; me: Schemas['Me'] }) {
+  const actions: FinancialAction[] = kind === 'cost' ? ['edit', 'confirm', 'link', 'reverse'] : ['edit', 'record', 'allocate', 'release', 'refundAllocate', 'reverse'];
+  return <Section title='财务操作'><View className='cp-pad'>{actions.filter(action => financialCan(kind, action, value, me.actions) && !(kind === 'payment' && 'direction' in value && (action === 'allocate' || action === 'release' ? value.direction !== 'outgoing' : action === 'refundAllocate' && value.direction !== 'refund'))).map(action => <Action key={action} secondary={action !== 'confirm' && action !== 'record'} onClick={() => financialOperation(kind, action, value.id)}>{names[action]}</Action>)}{kind === 'payment' && 'direction' in value && value.direction === 'outgoing' && value.record_kind === 'payment' && value.state === 'recorded' && me.actions.includes('payment.record') && <Action secondary onClick={() => financialOperation('payment', 'create', undefined, value.id)}>起草收到退款</Action>}<Text className='cp-muted cp-small'>操作依据当前可执行权限和固定版本；登记是核实已有事实，不会发起银行转账。</Text></View></Section>;
+}
+export function FinanceOperationPage() {
+  const params = useRouter().params;
+  const page = usePage(async scope => {
+    const kind = financialKind(params.kind), action = financialAction(kind, params.action);
+    let value: FinancialRecord | undefined, refund: Schemas['Payment'] | undefined;
+    if (action !== 'create') { value = await client.request<FinancialRecord>(financialRoutes[kind] + '/' + identifier(params.id), { scope }); if (!financialRecordReceipt(value, kind) || value.id !== params.id) throw new Error('财务记录与所选依据不一致。'); }
+    if (params.refund) { if (kind !== 'payment' || action !== 'create') throw new Error('退款入口无效。'); refund = await client.request<Schemas['Payment']>('/payments/' + identifier(params.refund), { scope }); if (refund.id !== params.refund || refund.state !== 'recorded' || refund.direction !== 'outgoing' || refund.record_kind !== 'payment') throw new Error('请选择已登记的原支出资金。'); }
+    return { kind, action, value, refund };
+  });
+  const state = page.result?.value, me = page.result?.me;
+  function committed(value: FinancialRecord) { if (state) void Taro.redirectTo({ url: '/pages/finance/index?kind=' + state.kind + '&id=' + identifier(value.id) }); }
+  function cancel() { if (state?.value) committed(state.value); else void Taro.navigateBack().catch(() => Taro.reLaunch({ url: '/pages/home/index' })); }
+  return <Page title={state ? names[state.action] : '财务操作'} home><Notice error={page.error} />{page.loading ? <Busy /> : state && me && (financialCan(state.kind, state.action, state.value, me.actions) ? state.action === 'create' || state.action === 'edit' ? <FinancialEditor key={state.value?.id + ':' + state.value?.version + ':' + state.refund?.id} kind={state.kind} value={state.value} refund={state.refund} me={me} onCommitted={committed} onCancel={cancel} /> : state.value && <FinancialTransition key={state.value.id + ':' + state.value.version + ':' + state.action} kind={state.kind} value={state.value} action={state.action} me={me} onCommitted={committed} onCancel={cancel} /> : <Empty>当前权限或业务状态不允许此操作，请返回并核对最新资料。</Empty>)}</Page>;
+}
+
+type Picking = 'business' | 'claim' | 'cost' | 'allocation' | 'refund';
+function FinancialTransition({ kind, value, action, me, onCommitted, onCancel }: {
+  kind: FinancialKind; value: FinancialRecord; action: FinancialAction; me: Schemas['Me']; onCommitted(value: FinancialRecord): void; onCancel(): void;
+}) {
+  const draft = useFormDraft(me, { kind: 'financial-action', id: value.id, version: value.version, revision: value.current_revision_id, hash: value.content_hash }, action, { financial: { ...financialInput(kind, value), ...(['allocate', 'release', 'refundAllocate'].includes(action) ? { amount: '' } : {}) } });
+  const input = draft.fields.financial!, [fresh, setFresh] = useState(false), [acknowledged, setAcknowledged] = useState(false), [error, setError] = useState<unknown>();
+  const [picking, setPicking] = useState<Picking>(), [sourceKind, setSourceKind] = useState<'purchase' | 'claim' | 'contract'>('purchase'), [scope, setScope] = useState(value.project_id ?? '');
+  const [source, setSource] = useState<Schemas['Spend'] | Schemas['Contract']>(), [claim, setClaim] = useState<Schemas['Spend']>(), [line, setLine] = useState(''), [cost, setCost] = useState<Schemas['Cost']>();
+  const [allocation, setAllocation] = useState<Schemas['PaymentAllocation']>(), [refundPlans, setRefundPlans] = useState<{ source: Schemas['PaymentAllocation']; amount: string }[]>([]);
+  const payment = kind === 'payment' ? value as Schemas['Payment'] : undefined, expense = kind === 'cost' ? value as Schemas['Cost'] : undefined;
+  const [original, setOriginal] = useState<Schemas['Payment']>();
+  const command = useCommand<FinancialRecord>(result => { draft.forget(); onCommitted(result); }, draft.binding, async result => {
+    if (!financialTransitionReceipt(result, kind, value, action)) return false;
+    if (action === 'reverse' && result.reversal_id) {
+      const reverse = await client.request<FinancialRecord>(financialRoutes[kind] + '/' + result.reversal_id);
+      return financialReversalReceipt(reverse, kind, value, input.effective);
+    }
+    if (action === 'allocate' && cost || action === 'release' && allocation || action === 'refundAllocate' && allocation) {
+      const rows = await client.request<{ items: Schemas['PaymentAllocation'][] }>('/payments/' + value.id + '/allocations?limit=100');
+      return Array.isArray(rows.items) && rows.items.some(row => row.payment_id === value.id && row.reason === input.reason.trim() && row.actor_id === me.user.id && financialAmountEqual(row.amount, input.amount) && (action === 'allocate' ? row.kind === 'allocation' && row.cost_id === cost!.id && row.cost_revision_id === cost!.current_revision_id && row.claim_id === (claim?.id ?? null) && row.claim_revision_id === (claim?.approved_revision_id ?? null) && row.claim_line_id === (line || null) : row.source_allocation_id === allocation!.id && row.kind === (action === 'release' ? 'release' : 'refund')));
+    }
+    return true;
+  });
+  const disabled = command.busy || command.blocked;
+  function change(patch: Partial<FinancialInput>) { draft.update({ financial: { ...input, ...patch } }); setError(undefined); setAcknowledged(false); }
+  async function prepareRefund() {
+    try { if (!payment?.refund_of_id) throw new Error('退款缺少原资金依据。'); const found = await client.request<Schemas['Payment']>('/payments/' + payment.refund_of_id); if (found.id !== payment.refund_of_id || found.state !== 'recorded' || found.direction !== 'outgoing') throw new Error('原资金状态已变化，请重新核对。'); setOriginal(found); setPicking('refund'); }
+    catch (cause) { setError(cause); }
+  }
+  function submit() {
+    try {
+      if (!fresh || !acknowledged) throw new Error('请完成人工核实与两步验证。');
+      const base = financialBase(value, input.reason);
+      let body: unknown = base, route = action === 'link' ? 'links' : action;
+      if (action === 'reverse') body = kind === 'cost' ? { ...base, effective_on: input.effective } : { ...base, effective_at: fromHongKongInput(input.effective) };
+      if (action === 'link') { if (!expense || !source || !sourceEligible(source, expense, scope)) throw new Error('请选择当前批准且符合费用范围的业务依据。'); body = { ...base, source_type: sourceKind, source_id: source.id, source_revision_id: source.current_revision_id, relation: sourceKind === 'purchase' ? 'incurred_for' : sourceKind === 'claim' ? 'reimbursed_via' : 'contractual_basis' }; }
+      if (action === 'record') { if (payment?.direction === 'refund' && !original) throw new Error('请先读取并核对原付款及退款分配。'); body = { ...base, expected_source_version: original?.version ?? null, refund_allocations: refundPlans.filter(v => v.amount !== '').map(v => ({ source_allocation_id: v.source.id, amount: positiveFinancialAmount(v.amount) })) }; }
+      if (action === 'allocate') { if (!payment || !cost) throw new Error('请选择准确已确认费用。'); body = financialAllocation(payment, cost, input.reason, input.amount, claim, line); route = 'allocations'; }
+      if (action === 'release' || action === 'refundAllocate') { if (!allocation || !financialID(allocation.id)) throw new Error('请选择准确原分配。'); body = { ...base, amount: positiveFinancialAmount(input.amount), ...(action === 'refundAllocate' ? { source_allocation_id: allocation.id } : {}) }; route = action === 'release' ? 'allocations/' + allocation.id + '/release' : 'refund-allocations'; }
+      void command.submit(financialRoutes[kind] + '/' + value.id + '/' + route, body);
+    } catch (cause) { setError(cause); }
+  }
+  const scopes = [...new Set([value.project_id, ...(expense?.allocations.map(v => v.project_id) ?? [])].filter((id): id is string => Boolean(id)))];
+  return <>
+    <Section title='固定操作依据'><View className='cp-pad'><Text className='cp-row-title'>{value.title}</Text><Fact label='当前状态与原额'><Text>{value.state} · {value.currency} {value.amount}</Text></Fact><Fact label='固定版本'><Text>版本 {value.version} · {value.current_revision_id}</Text><Text className='cp-code'>{value.content_hash}</Text></Fact><Text className='cp-paragraph'>{action === 'confirm' ? '确认原费用事实，之后通过全额冲销加新费用更正；本操作不登记付款。' : action === 'reverse' ? '新增全额反向更正，保留原月份和证据。实际资金退款应另建退款事实。' : action === 'link' ? '关联同币的已批准业务，固定所选修订，不新建第二项费用或自动结算报销。' : action === 'record' ? '人工核实实际资金时间、收付款对象、原币及凭证；登记不发起银行转账。' : '核对准确费用、分配原额和有效余额；最终由服务器同事务锁定余额及当前权限。'}</Text><DraftNotice restored={draft.restored} /><Notice error={error ?? command.error} /><CommandNotice blocked={command.blocked} /></View></Section>
+    <Section title='原始事实与固定凭证'><View className='cp-pad'><Fact label='业务日期'><Text>{expense?.occurred_on ?? payment?.paid_at ?? '尚未填写'}</Text></Fact><Fact label='类别与往来方'><Text>{value.category || '未填写'} · {value.counterparty_evidence?.name ?? (payment?.employee_id ? '员工 ' + payment.employee_id : '尚未填写或当前不可读')}</Text></Fact>{expense?.allocations.map((share, i) => <Fact key={i} label={share.project_id ? '项目 ' + share.project_id : '公司份额'}><Text>{expense.currency} {share.amount}</Text></Fact>)}<FixedFiles files={value.attachments} /></View></Section>
+    {action === 'reverse' && <Section title='更正生效日期'><View className='cp-pad'><TextField name='finance-effective' label={kind === 'cost' ? '冲销生效日' : '冲销生效时间（香港）'} value={input.effective} max={kind === 'cost' ? 10 : 19} disabled={disabled} hint={kind === 'cost' ? 'YYYY-MM-DD，不能早于原发生日或晚于香港今天。' : 'YYYY-MM-DDTHH:mm:ss，不能早于原资金时刻。'} onChange={effective => change({ effective })} /></View></Section>}
+    {action === 'link' && <Section title='准确批准依据'><View className='cp-pad'><SelectField label='关联业务类型' value={sourceKind} options={[[ 'purchase', '采购' ], [ 'claim', '报销' ], [ 'contract', '合同' ]]} disabled={disabled} onChange={v => { setSourceKind(v as typeof sourceKind); setSource(undefined); }} /><SelectField label='业务依据范围' value={scope} options={[[ '', '公司业务' ], ...scopes.map(id => [id, '项目 ' + id] as [string, string])]} disabled={disabled} onChange={v => { setScope(v); setSource(undefined); }} />{source && <Fact label='所选批准业务'><Text>{source.title} · {source.current_revision_id}</Text></Fact>}<Action secondary disabled={disabled} onClick={() => setPicking('business')}>选择批准业务依据</Action></View></Section>}
+    {action === 'allocate' && payment && <Section title='费用结算分配'><View className='cp-pad'>{payment.employee_id && <><Action secondary disabled={disabled} onClick={() => setPicking('claim')}>选择准确批准报销</Action>{claim && <><Text className='cp-paragraph'>{claim.title} · 批准修订 {claim.approved_revision_id}</Text><SelectField label='员工垫付明细' value={line} options={[[ '', '请选择准确行' ], ...claim.lines.filter(v => v.funding === 'employee_advance').map(v => [v.id, v.description] as [string, string])]} onChange={v => { setLine(v); setCost(undefined); }} disabled={disabled} /></>}</>}<Action secondary disabled={disabled || Boolean(payment.employee_id && (!claim || !line))} onClick={() => setPicking('cost')}>选择准确结算费用</Action>{cost && <Fact label='固定费用依据'><Text>{cost.title} · {cost.currency} {cost.amount}</Text><Text>版本 {cost.version} · {cost.current_revision_id}</Text></Fact>}</View></Section>}
+    {(action === 'release' || action === 'refundAllocate') && <Section title='原分配依据'><View className='cp-pad'><Action secondary disabled={disabled} onClick={() => action === 'refundAllocate' ? void prepareRefund() : setPicking('allocation')}>选择准确原分配</Action>{allocation && <Fact label='所选原分配'><Text className='cp-code'>{allocation.id}</Text><Text>费用 {allocation.cost_id} · 原分配可用 {allocation.remaining_amount}</Text></Fact>}</View></Section>}
+    {action === 'record' && payment?.direction === 'refund' && <Section title='退款与原分配核对'><View className='cp-pad'><Action secondary disabled={disabled} onClick={() => void prepareRefund()}>读取原付款与退款分配</Action>{original && <Text className='cp-paragraph'>{original.title} · 固定版本 {original.version} · 仍未分配 {original.unallocated_amount}</Text>}{refundPlans.map((plan, i) => <View key={plan.source.id} className='cp-fixed-file'><Text className='cp-code'>{plan.source.id}</Text><Text>费用 {plan.source.cost_id} · 可用 {plan.source.remaining_amount}</Text><TextField name={'refund-plan-' + i} label={'原分配退款金额 ' + (i + 1)} value={plan.amount} max={30} disabled={disabled} onChange={amount => setRefundPlans(v => v.map((p, index) => index === i ? { ...p, amount } : p))} /><Action secondary disabled={disabled} onClick={() => setRefundPlans(v => v.filter((_, index) => index !== i))}>移除此退款分配</Action></View>)}<Text className='cp-muted cp-small'>只选择实际退款对应的原分配，可分批添加。未分配资金与已分配资金的退款关系由服务端准确核对；不是按费用额自动猜测。</Text></View></Section>}
+    <Section title='人工核实与提交'><View className='cp-pad'>{['allocate', 'release', 'refundAllocate'].includes(action) && <TextField name='finance-action-amount' label='本次分配金额' value={input.amount} max={30} disabled={disabled} onChange={amount => change({ amount })} />}<TextField name='finance-action-reason' label='财务操作依据' value={input.reason} max={200} multiline disabled={disabled} onChange={reason => change({ reason })} /><SelectField label='人工核实声明' value={acknowledged ? 'yes' : ''} options={[[ '', '尚未确认' ], [ 'yes', '已核对原事实、凭证、金额与所选依据' ]]} onChange={v => setAcknowledged(v === 'yes')} disabled={disabled} /><MFAConfirmation disabled={disabled} onFresh={setFresh} /><Action loading={command.busy} disabled={disabled || !fresh || !acknowledged} onClick={submit}>{names[action]}</Action><Action secondary disabled={command.busy} onClick={onCancel}>返回，保留文字输入</Action></View></Section>
+    {picking === 'business' && expense && <ChoiceList<Schemas['Spend'] | Schemas['Contract']> title='选择当前批准依据' path={(sourceKind === 'contract' ? '/contracts' : sourceKind === 'claim' ? '/claims' : '/purchases') + '?limit=20&approval_state=approved' + (sourceKind === 'contract' ? '&lifecycle=effective' : '') + (scope ? '&project_id=' + scope : '&company_only=true')} label={v => v.title} eligible={v => sourceEligible(v, expense, scope)} onClose={() => setPicking(undefined)} onSelect={v => { setSource(v); setPicking(undefined); }} />}
+    {picking === 'claim' && payment && <ChoiceList<Schemas['Spend']> title='选择准确员工报销依据' path={'/claims?limit=20&approval_state=approved' + (payment.currency ? '&currency=' + payment.currency : '')} label={v => v.title} eligible={v => v.approval_state === 'approved' && v.creator_id === payment.employee_id && v.currency === payment.currency && v.lines.some(l => l.funding === 'employee_advance')} onClose={() => setPicking(undefined)} onSelect={v => { setClaim(v); setLine(''); setCost(undefined); setPicking(undefined); }} />}
+    {picking === 'cost' && payment && <ChoiceList<Schemas['Cost']> title='选择准确已确认费用' path={'/costs?limit=20&state=confirmed' + (payment.currency ? '&currency=' + payment.currency : '')} label={v => v.title + ' · ' + v.currency + ' ' + v.amount} eligible={v => settlementEligible(v, payment, claim, line)} onClose={() => setPicking(undefined)} onSelect={v => { setCost(v); setPicking(undefined); }} />}
+    {(picking === 'allocation' || picking === 'refund') && payment && <ChoiceList<Schemas['PaymentAllocation']> title='选择可用原分配' path={'/payments/' + (picking === 'refund' ? identifier(payment.refund_of_id ?? undefined) : payment.id) + '/allocations?limit=20'} label={v => '费用 ' + v.cost_id + ' · 可用 ' + v.remaining_amount} eligible={v => v.kind === 'allocation' && v.payment_id === (picking === 'refund' ? payment.refund_of_id : payment.id) && /^\d+(\.\d+)?$/.test(v.remaining_amount) && !/^0+(\.0+)?$/.test(v.remaining_amount)} onClose={() => setPicking(undefined)} onSelect={v => { if (action === 'record') setRefundPlans(old => old.some(p => p.source.id === v.id) ? old : [...old, { source: v, amount: '' }]); else setAllocation(v); setPicking(undefined); }} />}
+  </>;
+}

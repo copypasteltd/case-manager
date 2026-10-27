@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Visible workspace navigation reached the payment form correctly; the synthetic payment draft omitted its required actual payment method, so the real backend correctly refused registration.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "821a3c3858dc37a07b95dea59adfe118b9d39b1e6af3ec892538f47d6006bb85",
+  "source_zip_sha256": "34c8abd9195a9b5c308d8a6af01081b5a374fd54ee027806e5cfafe8d9298af0",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": [
+    {
+      "original_path": "docs/media/screenshots/mobile-finance-cost-confirmed.png",
+      "sha256": "f2b6cb24b8bed3af43f93e8891b610846c7ff855e61e9570242749a372e80ed1"
+    }
+  ]
+}

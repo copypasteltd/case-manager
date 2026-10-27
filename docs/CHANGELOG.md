@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 2026-10-27 · Increment89 / 移动费用、资金、退款与员工结算
+
+实现Taro费用／资金起草和修订、固定凭证与往来方、精确原币／香港时间／分摊、MFA确认与登记、批准业务依据、费用分配和释放、退款登记及后补分配、准确员工报销行和全额冲销；固定修订及不可变历史可分页核对。保留输入、版本／摘要与单次意图，真实响应丢失不重复提交。修正费用入口为后端实际cost.record权限。
+
+204项移动测试、类型及双小程序各18页、9组真实页面流程和3种宽度通过；Android开发包42,921,174字节、18包检查，26项JVM本轮缓存复用。后端161／1057、Web112、运行时47和Linux编译只在完整声明来源相同后复用原88证据；全部73迁移、接口、依赖锁文件未改。新增4PNG／2MP4／2GIF，目录58／21／21。保留全部失败来源及被替代构建，按e87656f重建88完整捕获与80份旧证据，清理所有自建临时浏览器／API／库／服务。完整四端及真实设备／云／模型／TG／容量／安全／恢复／生产目标仍开放。
+
+Shared Taro clients now implement expense/cash drafts, exact approved source links, payment allocations/releases, refunds, employee settlement and dated reversals with MFA, source-bound receipts and blocked uncertain writes. Current mobile/native builds and synthetic UI journeys pass. Unchanged backend/Web/runtime evidence is reused explicitly; cached JVM results are not called new executions. Bilingual guides, actual media and retained evidence are updated together.
+
+[操作与设计 / Workflow](development/89-mobile-financial-operations.md) · [准确验证 / Verification](quality/evidence/mobile-finance-operations/verification.md) · [演示 / Media](media/README.md)
+
 ## 2026-10-27 · Increment88 / 财务筛选、规范来源与限时导出
 
 发生、现金、订阅预测现支持完整业务筛选、原币独立合计、可读来源候选及规范明细签名分页。独立report.export授权允许本人排队、查看、取消和24小时内下载；实际worker固定快照，实时授权／围栏／不可变数据库约束保护生成与交付，过期清理派生内容。Web与Taro共用完整分段及SHA校验，原文件继续OSS／R2，CSV不长期落盘；Android／微信／抖音按实际能力交付或明确回退Web。

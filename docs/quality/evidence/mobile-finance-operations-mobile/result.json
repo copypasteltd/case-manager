@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T10:25:21.623Z",
+  "finished_at": "2026-10-27T10:32:31.801Z",
+  "checks": [
+    "Actual mobile login, list entry and full cost draft preserve exact HKD100, project60/company40 and one fixed file; saving remains draft.",
+    "Concurrent editing rejects the old basis without losing text; an actually committed but lost PATCH response is blocked and never resent.",
+    "Mobile confirmation uses fresh MFA and preserves the facts; an independently approved purchase is linked by its exact revision without a second cost.",
+    "Actual mobile cash registration preserves Hong Kong February1 and UTC January31; allocating60 then releasing20 yields exactly40 settled and60 outstanding.",
+    "A real separate refund draft fixes the original payment, records5 against its original allocation and later associates5 more; original refund10 and net settlement30 reconcile.",
+    "Independent claim approval, mobile expense linking and employee settlement fix the original applicant, advance line, supplier and approved revision; claim100 settles60 with40 outstanding.",
+    "A mobile full cash reversal creates the exact Hong Kong effective-time reverse fact and reverses the employee allocation; claim settlement returns to0/100 with history retained.",
+    "After releasing the remaining30, the mobile full cost reversal produces a distinct dated reverse record and retains original project/company shares.",
+    "Canonical fixed revisions, immutable operation history and three responsive widths remain readable without document overflow."
+  ],
+  "source_count": 682,
+  "source_sha256": "79c8578c8ca06a1265e0be1252bdc6ddebf19a22418e1f8ef1276a831ef1ab85",
+  "source_after_sha256": "79c8578c8ca06a1265e0be1252bdc6ddebf19a22418e1f8ef1276a831ef1ab85",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "9d0b3035c0f5143d806e97601a9b3f805bda0bfde3aba6dd190aaac0b63b6255",
+  "build_source_after_sha256": "9d0b3035c0f5143d806e97601a9b3f805bda0bfde3aba6dd190aaac0b63b6255",
+  "build_source_unchanged": true
+}

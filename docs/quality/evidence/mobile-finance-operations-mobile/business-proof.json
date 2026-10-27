@@ -1,0 +1,34 @@
+[
+  {
+    "cost_id": "63843615-5be1-466a-946b-58710c0b106d",
+    "cost_version": 6,
+    "cost_state": "reversed",
+    "reversal_id": "9f6ab14a-7425-40ce-94fe-0bbd7f9864a0",
+    "payment_id": "6e1453f3-caf5-432e-9838-397a55be8a4b",
+    "refund_id": "d4c23c7c-7410-461d-bc86-83a62ec8e2bc",
+    "employee_cost_id": "415ef611-bda4-41a8-8511-bec47278fe05",
+    "employee_payment_id": "1949906b-0900-4347-9ac3-816ec5931c27",
+    "claim_id": "703b2ca8-ef48-4ae5-b2e9-cd61d86f7bca",
+    "employee_settlement_before_correction": {
+      "claim_id": "703b2ca8-ef48-4ae5-b2e9-cd61d86f7bca",
+      "revision_id": "2cc4b377-37c6-4891-b3a4-f95aff608e9c",
+      "currency": "HKD",
+      "eligible_amount": "100.000000",
+      "paid_amount": "60.000000",
+      "outstanding_amount": "40.000000",
+      "state": "partial",
+      "visibility": "complete"
+    },
+    "employee_settlement_after_correction": {
+      "claim_id": "703b2ca8-ef48-4ae5-b2e9-cd61d86f7bca",
+      "revision_id": "2cc4b377-37c6-4891-b3a4-f95aff608e9c",
+      "currency": "HKD",
+      "eligible_amount": "100.000000",
+      "paid_amount": "0.000000",
+      "outstanding_amount": "100.000000",
+      "state": "unsettled",
+      "visibility": "complete"
+    },
+    "synthetic_data": true
+  }
+]

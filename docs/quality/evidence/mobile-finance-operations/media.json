@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-27T10:33:23.617715+00:00",
+  "encoder_script_sha256": "4776c5b6a0b40e35c041c636f404256326942a105e1b7927ed5ecbc62440aa18",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "name": "mobile-finance-cost-draft",
+      "client": "mobile",
+      "source_sha256": "79c8578c8ca06a1265e0be1252bdc6ddebf19a22418e1f8ef1276a831ef1ab85",
+      "build_source_sha256": "9d0b3035c0f5143d806e97601a9b3f805bda0bfde3aba6dd190aaac0b63b6255",
+      "capture_manifest": "docs/quality/evidence/mobile-finance-operations/mobile-finance-cost-draft-capture-manifest.json",
+      "capture_manifest_sha256": "364d5ac95f21eb10fab0e9ec24c1072b018696223a2c500a1101fe1d1b09756a",
+      "capture_frame_count": 27,
+      "capture_duration_ms": 5514,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "57",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "5.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/mobile-finance-cost-draft.mp4",
+          "sha256": "a586a5e6466eefbad6fd94df103bda9b8c1c78df02b14fd86d5f9aeacf34d938",
+          "bytes": 193262
+        },
+        {
+          "file": "docs/media/gifs/mobile-finance-cost-draft.gif",
+          "sha256": "dcf29cfff5badefaf0f433a964b26ee674ab27579b4978603fbccb26efc3d5db",
+          "bytes": 723932
+        }
+      ]
+    },
+    {
+      "name": "mobile-finance-payment-draft",
+      "client": "mobile",
+      "source_sha256": "79c8578c8ca06a1265e0be1252bdc6ddebf19a22418e1f8ef1276a831ef1ab85",
+      "build_source_sha256": "9d0b3035c0f5143d806e97601a9b3f805bda0bfde3aba6dd190aaac0b63b6255",
+      "capture_manifest": "docs/quality/evidence/mobile-finance-operations/mobile-finance-payment-draft-capture-manifest.json",
+      "capture_manifest_sha256": "71bf88af22294a6f1d211297059522240c10ba18ea3ce1e9e7cfc4c930f60e90",
+      "capture_frame_count": 35,
+      "capture_duration_ms": 7122,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "73",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/mobile-finance-payment-draft.mp4",
+          "sha256": "43d44f02f0079eea127e66b4875ecb98a2d440f8425ad902f7c598aabdd112f0",
+          "bytes": 262386
+        },
+        {
+          "file": "docs/media/gifs/mobile-finance-payment-draft.gif",
+          "sha256": "7a33d9aebd78a40dbad08926201fecf737d36324cd458fd9fa8fc1951cd1c190",
+          "bytes": 1018436
+        }
+      ]
+    }
+  ],
+  "scope": "Actual post-login synthetic Taro H5 finance draft frames; silent; excludes MFA and any real device claim."
+}

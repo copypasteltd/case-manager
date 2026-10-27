@@ -1,0 +1,44 @@
+{
+  "recordings": [
+    {
+      "name": "mobile-finance-cost-draft",
+      "frame_count": 27,
+      "duration_ms": 5514,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-finance-cost-draft/frames.json",
+      "manifest_sha256": "364d5ac95f21eb10fab0e9ec24c1072b018696223a2c500a1101fe1d1b09756a"
+    },
+    {
+      "name": "mobile-finance-payment-draft",
+      "frame_count": 35,
+      "duration_ms": 7122,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/mobile-finance-payment-draft/frames.json",
+      "manifest_sha256": "71bf88af22294a6f1d211297059522240c10ba18ea3ce1e9e7cfc4c930f60e90"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "document": 390
+    },
+    {
+      "width": 430,
+      "document": 430
+    },
+    {
+      "width": 768,
+      "document": 768
+    }
+  ],
+  "audio": false,
+  "real_browser_pixels": true
+}

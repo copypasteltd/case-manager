@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **54张PNG、19段MP4、19个GIF**。增量88新增六张财务报表截图和Web、Taro各一对实际MP4／GIF；此前Token账本、知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
+本目录包含 **58张PNG、21段MP4、21个GIF**。增量89新增四张移动财务结果截图、费用与资金草稿各一对实际MP4／GIF；原报表、Token、知识、TG、状态、项目、OA和文件素材保留原证据。全部为隔离合成数据，不含真实业务或凭据。
 
-This catalog contains **54 PNGs,19 MP4s and19 GIFs**. Increment88 adds six financial-report screenshots and an actual recording/GIF pair for each client. Earlier token, knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records and credentials.
+This catalog contains **58 PNGs,21 MP4s and21 GIFs**. Increment89 adds four mobile-finance screenshots and two actual draft recording/GIF pairs. Earlier captures retain original evidence. All media uses synthetic data and excludes real business records and credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -367,3 +367,28 @@ Actual actions apply business filters, page canonical sources, enqueue an export
 原始采样与编码补帧分别记录；操作由自动化较快执行，MP4可用播放器慢速查看。最终6图及两GIF的首／中／末帧已人工目视检查。实际27行CSV摘要与长度在两端download-proof中核对，CSV及原始JPEG不入Git。H5和开发APK不代替平台或Android实体设备验收。
 
 复现 / Reproduction: `python app/scripts/run_financial_reports_browser.py` → `python app/scripts/run_financial_reports_browser.py --mobile` → `python app/scripts/encode_financial_reports_media.py`。归档已有证据后两端串行执行；完成即释放自建浏览器、临时API／库、5189服务和私有fixture。保留失败及被替代通过捕获的完整来源，不将旧通过重绑新源码。详见[设计与操作](../development/88-financial-report-filters-and-exports.md)、[当前验证](../quality/evidence/finance-reports/verification.md)及[准确媒体清单](../quality/evidence/finance-reports/media.json)。
+
+## 17. 移动费用、资金、退款与员工结算 / Mobile expenses, cash, refunds and employee settlement
+
+实际操作录屏从已登录列表开始：起草费用／资金、选择项目与原币、真实日期／香港时间、固定往来方／正式文件、项目60／公司40分摊、保存草稿。MFA及审批操作不录制；完整9组确认、冲突、响应丢失、分配、退款、员工结算及反向更正另有真实UI与API证据。
+
+Actual silent recordings show authenticated expense/cash draft entry and fixed evidence selection. Four screenshots show the resulting canonical financial records. Full MFA and settlement/reversal checks are documented separately; synthetic H5 pixels do not establish device acceptance.
+
+| Actual result | Screenshot |
+| --- | --- |
+| 费用确认与批准依据 / Confirmed expense and approved source | [PNG](screenshots/mobile-finance-cost-confirmed.png) |
+| 付款分配与释放 / Payment allocation and release | [PNG](screenshots/mobile-finance-payment-allocations.png) |
+| 收到退款与后补关联 / Refund and later mapping | [PNG](screenshots/mobile-finance-refund.png) |
+| 准确员工报销结算 / Exact employee settlement | [PNG](screenshots/mobile-finance-employee-settlement.png) |
+
+![mobile-finance-cost-draft](gifs/mobile-finance-cost-draft.gif)
+
+[MP4](videos/mobile-finance-cost-draft.mp4) · 390×900 · 27原始采样帧／5514毫秒 · GIF 1.000×。
+
+![mobile-finance-payment-draft](gifs/mobile-finance-payment-draft.gif)
+
+[MP4](videos/mobile-finance-payment-draft.mp4) · 390×900 · 35原始采样帧／7122毫秒 · GIF 1.000×。
+
+MP4按真实时间编码；GIF倍率与源帧摘要见[media.json](../quality/evidence/mobile-finance-operations/media.json)。4张截图及两GIF首／中／末帧经实际像素检查。原JPEG和私有fixture不提交，所有自建浏览器／临时API／隔离库／5189服务已释放。
+
+复现 / Reproduction: 先归档已有证据，再运行`python app/scripts/run_mobile_finance_browser.py --mobile`及`python app/scripts/encode_mobile_finance_media.py`。失败捕获和被替代构建按准确源码保留，不重绑为当前通过。见[设计与使用](../development/89-mobile-financial-operations.md)、[验证](../quality/evidence/mobile-finance-operations/verification.md)及[像素检查](../quality/evidence/mobile-finance-operations/visual-review.json)。

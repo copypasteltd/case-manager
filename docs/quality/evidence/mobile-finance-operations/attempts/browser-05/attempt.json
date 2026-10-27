@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "After three real business checks passed, direct hash navigation reused an earlier Taro list page with stale query parameters; the verification must use visible workspace navigation rather than query-only hash changes.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "a24215736619be91b07e8eab315ffa0cdbbafc1d1d4a8d6a7baeeb1ceba93cb6",
+  "source_zip_sha256": "be79106d990838ade706df7798bd7112cd0e2411ff04fb48bc56a6c126ae298f",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": [
+    {
+      "original_path": "docs/media/screenshots/mobile-finance-cost-confirmed.png",
+      "sha256": "f4dea9f2521dd0a3dba0722137d6dac4d5242360d8420a4d49b408020b2d78ab"
+    }
+  ]
+}

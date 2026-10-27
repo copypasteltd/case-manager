@@ -4,11 +4,11 @@
 
 **当前细化基线：v1.0-draft，2026-10-24；视觉设计基线：v1.0.0-draft。** 全部后续文档保存在 `docs/`，全部开发实现位于 `app/`。身份/权限、项目协作、知识修订、文件元数据和部分 Web 页面已进入本地实现与验证；完整平台仍在建设，尚未生产部署或完成首发验收。真实进度见[代码实施台账](delivery/02-implementation-ledger.md)。
 
-最新实现：[增量88 · 财务筛选、来源与限时导出](development/88-financial-report-filters-and-exports.md) · [完整检查与演示来源](quality/evidence/finance-reports/verification.md)。包含三种统计口径、完整业务筛选、规范明细、本人异步导出、24小时快照、撤权与过期清理；Web／Taro共享授权与摘要校验，完整四端Goal仍开放。
+最新实现：[增量89 · 移动费用、资金、退款与员工结算](development/89-mobile-financial-operations.md) · [来源、实际检查与媒体](quality/evidence/mobile-finance-operations/verification.md)。新增完整财务表单、准确分配／退款／员工行、MFA和反向更正；完整四端Goal仍开放。
 
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 
-本轮功能文档：[财务筛选、规范来源与限时异步导出 / Financial filters, canonical sources and expiring exports](development/88-financial-report-filters-and-exports.md)。
+本轮功能文档：[移动财务完整操作 / Complete mobile finance operations](development/89-mobile-financial-operations.md)。既有[财务报表与导出](development/88-financial-report-filters-and-exports.md)保留。
 
 ## 1. 阅读路径
 

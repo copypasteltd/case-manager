@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Four actual financial checks passed; the refund draft also needed its explicit real payment-method label before registration. The server correctly rejected the incomplete synthetic refund.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "2d6445108dabbf449baa9c1e8d22ca5382ef5272d8e921fd3f5282706fa0d03f",
+  "source_zip_sha256": "ad2973bdbe72364814be9499bf252171fefc36b0e7d70c9cb4bfb51e52fb8039",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": [
+    {
+      "original_path": "docs/media/screenshots/mobile-finance-cost-confirmed.png",
+      "sha256": "7084ae8dc16bfbc69c090e55380df0d9b8ccd06f3fc029346c07e727136503be"
+    },
+    {
+      "original_path": "docs/media/screenshots/mobile-finance-payment-allocations.png",
+      "sha256": "f83838da75c0965f213dca2665ab6d32056eed2151135656a53acc0bfa91bef6"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T10:02:10.828Z",
+  "finished_at": "2026-10-27T10:03:32.094Z",
+  "checks": [
+    "Actual mobile login, list entry and full cost draft preserve exact HKD100, project60/company40 and one fixed file; saving remains draft.",
+    "Concurrent editing rejects the old basis without losing text; an actually committed but lost PATCH response is blocked and never resent.",
+    "Mobile confirmation uses fresh MFA and preserves the facts; an independently approved purchase is linked by its exact revision without a second cost."
+  ],
+  "source_count": 682,
+  "source_sha256": "6d0855ee94cc658abc8eed2c2c48a2f32314004aae49b4dab8ecf5c612ddafa5",
+  "source_after_sha256": "6d0855ee94cc658abc8eed2c2c48a2f32314004aae49b4dab8ecf5c612ddafa5",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Existing workspace history",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "fcb3dbb2639a0b4ce69af240c58884af47f7671b7ff77531be561325ae6b05c0",
+  "build_source_after_sha256": "fcb3dbb2639a0b4ce69af240c58884af47f7671b7ff77531be561325ae6b05c0",
+  "build_source_unchanged": true
+}

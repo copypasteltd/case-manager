@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T10:05:39.291Z",
+  "finished_at": "2026-10-27T10:07:29.642Z",
+  "checks": [
+    "Actual mobile login, list entry and full cost draft preserve exact HKD100, project60/company40 and one fixed file; saving remains draft.",
+    "Concurrent editing rejects the old basis without losing text; an actually committed but lost PATCH response is blocked and never resent.",
+    "Mobile confirmation uses fresh MFA and preserves the facts; an independently approved purchase is linked by its exact revision without a second cost."
+  ],
+  "source_count": 682,
+  "source_sha256": "0d828d76e488dcf6151c8b77b3c93b154b3c5f9ac817863e3415fc0216abd188",
+  "source_after_sha256": "0d828d76e488dcf6151c8b77b3c93b154b3c5f9ac817863e3415fc0216abd188",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-title').filter({ hasText: '工作从这里开始' }) to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "c7b0200a5bb3edadda51f246fc6b96dba92dd9354fe3f9e3a378e6c608351206",
+  "build_source_after_sha256": "c7b0200a5bb3edadda51f246fc6b96dba92dd9354fe3f9e3a378e6c608351206",
+  "build_source_unchanged": true
+}

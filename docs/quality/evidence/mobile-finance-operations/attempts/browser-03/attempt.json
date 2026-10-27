@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "The existing complete business fixture already contains some of the required roles; seed only missing bindings instead of attempting duplicate grants. No application permissions are relaxed.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "8a18cac664f8b6e742d89f5a3f66ef5a44efc475639b4cf12db52e5dc9abd4df",
+  "source_zip_sha256": "98266ac449b15889c3a031491f4e88afb699823b773ec290d7bd1ab5904802ad",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": []
+}

@@ -12,15 +12,17 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
-最新功能 / Latest workflow: [财务筛选、明细与限时导出 / Financial filters, sources and expiring exports](docs/development/88-financial-report-filters-and-exports.md).
+最新功能 / Latest workflow: [移动费用、收付款、退款与员工结算 / Mobile expenses, cash, refunds and employee settlement](docs/development/89-mobile-financial-operations.md).
 
-![实际财务查询与异步导出 / Actual financial queries and asynchronous exports](docs/media/gifs/financial-reports-web.gif)
+![实际移动费用草稿 / Actual mobile expense draft](docs/media/gifs/mobile-finance-cost-draft.gif)
 
-[Web MP4](docs/media/videos/financial-reports-web.mp4) · [Mobile MP4](docs/media/videos/financial-reports-mobile.mp4) · [Mobile GIF](docs/media/gifs/financial-reports-mobile.gif). 合成数据／真实本机API；移动为Taro H5。Synthetic data and real native API; mobile is Taro H5.
+[费用 MP4 / Expense MP4](docs/media/videos/mobile-finance-cost-draft.mp4) · [资金 MP4 / Cash MP4](docs/media/videos/mobile-finance-payment-draft.mp4) · [资金 GIF / Cash GIF](docs/media/gifs/mobile-finance-payment-draft.gif) · [四张结果截图 / Four result screenshots](docs/media/README.md).
 
-财务报表现支持期间、项目／公司、类别、供应方、经办／负责人、原币和关键词筛选，附原始明细分页。导出使用独立权限与后台任务，固定快照保留24小时；下载前重新鉴权并核对完整摘要。参见[操作、API、worker和四端差异](docs/development/88-financial-report-filters-and-exports.md)。
+移动工作台现可起草和修订实际费用／资金，核对固定供应方、凭证、原币、香港时间与项目分摊；通过本人MFA确认、关联批准采购／报销／合同、分配和释放费用、登记并补关联退款、核对准确员工报销行，以及按真实日期全额冲销。并发或提交响应丢失会保留输入并阻止重复提交。录屏使用真实本机API和隔离合成数据；Taro H5仍需四端实际验收。
 
-Financial reports now include interval, project/company, category, supplier, recorder/owner, original-currency and keyword filters with paged canonical sources. Independently authorized exports run asynchronously, expire after24 hours and reauthorize before verified retrieval. See the [workflow, API, worker and client behavior](docs/development/88-financial-report-filters-and-exports.md).
+The mobile workspace now creates and edits expense/cash drafts, reviews fixed parties/files, original currencies, Hong Kong times and project shares, then uses fresh MFA for confirmation, approved source links, settlement allocations/releases, refunds and exact employee claim lines. Separately dated full reversals preserve history. Stale or lost responses retain text and stop duplicate submission. Media uses the real native API with synthetic data; Taro H5 does not replace device acceptance.
+
+已有[财务筛选、规范来源与限时导出 / Financial filters, canonical sources and expiring exports](docs/development/88-financial-report-filters-and-exports.md)继续保留，包括24小时本人快照、后台worker、实际CSV完整校验与授权下载。
 
 ## 方案与能力 / Architecture and capabilities
 
@@ -150,14 +152,14 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量87）新增项目预算与实际支出对比：在“项目 → 预算”明确选择已配置币种，逐项核对当前已实施的完整预算、原费用的本项目份额、冲销及预算外发生。可按明细／状态分页查来源并打开规范原记录；未确认费用单列。缺失预算与批准清空的零预算不同，历史预算不会冒充当前依据。见[完整使用及接口规则](docs/development/87-project-budget-comparison.md)与[验证记录](docs/quality/evidence/budget-comparison/verification.md)。
+当前增量89：移动204项测试、类型检查、微信／抖音各18页构建、9组实际财务流程与3种宽度通过；Android开发APK为42,921,174字节，18项包检查通过，26项JVM按Gradle缓存复用准确记录。后端161顶层／1,057结果、Web112、运行时47与Linux编译复用原增量88证据，完整声明来源字节保持一致；73项迁移、接口及依赖锁文件均未改变。见[准确验证与失败尝试](docs/quality/evidence/mobile-finance-operations/verification.md)。
 
-本轮后端159顶层、1,041结果／945末级、8批，72项既有迁移保持原字节；Web104、运行时47、移动187项及两小程序各17页通过。Web／Taro各6组实际流程、3项布局；Android开发包18项检查通过，25项JVM测试本轮使用缓存；Linux仅交叉编译。后端隔离库清理超时与捕获检查器的失败记录、相同来源恢复过程均保留。
+Increment89 passes204 mobile tests, types, both18-page mini-program builds, nine actual financial journeys and three widths. The 42,921,174-byte development APK passes18 inspections;26 JVM results are explicitly cached. Original increment88 backend161/1057, Web112, runtime47 and Linux compilation evidence is reused only after complete declared source-byte comparison;73 migrations, APIs and the lockfile are unchanged.
 
-演示目录共48 PNG、17 MP4、17 GIF；本轮新增四张预算对比截图和Web／Taro各一对实际短录屏。增量86完整启动及两端捕获来源按已发布94081c0重建，99份旧证据保持原字节；更早84的未冻结编译缓存限制仍保留。对比始终只代表当前授权费用，不宣称全部项目余额或可用资金。保留全部28项原编号；完整四端、云、模型／TG、120 GB／2 TB、安全、恢复与生产验收仍开放。
+媒体目录为58PNG／21MP4／21GIF，本轮新增4张真实页面截图和2套草稿录屏／GIF。按已发布e87656f重建增量88完整启动和两端捕获来源，80份旧证据保留原字节；本轮失败、修正和被替代构建保留各自完整来源。完整28项GAP、四端实体设备、云／模型／TG、120GB／2TB、安全、恢复和生产验收继续开放。
 
-The current functional baseline (increment87) adds project budget versus actual expenditure. Open **Project → Budget**, select an explicitly configured currency, and compare the complete current implemented plan against this project's canonical expense shares, reversals and out-of-plan activity. Filter and page sources, then open the original record. Drafts remain separate; an absent plan differs from an explicitly cleared zero plan. See the [workflow and API rules](docs/development/87-project-budget-comparison.md) and [verification](docs/quality/evidence/budget-comparison/verification.md).
+The catalog contains58 PNGs,21 MP4s and21 GIFs, including four new result screenshots and two actual draft recordings/GIFs. Published increment88 sources reconstruct from Git and all80 historical evidence artifacts retain exact bytes. Failed attempts and superseded builds keep their original sources. The full28-gap production goal remains active.
 
-This round passes159 backend top-level tests,1,041 results/945 leaves in eight source-bound batches, preserving all72 existing migrations;104 Web,47 runtime and187 mobile tests, with17 pages per mini-program. Each Web/Taro demonstration checks six actual flows and three layouts. The development APK passes18 inspections;25 JVM results are cached this round. Linux evidence establishes cross-compilation only. Retained failures document a disposable-database cleanup timeout and capture-checker assumptions, including the source-checked recovery.
+后续完成更新继续同步代码、中英文说明、受影响素材、验证和`docs/CHANGELOG.md`，一并提交并推送至`git@github.com:copypasteltd/case-manager.git`；不强推，不提交凭据、数据库、工具链、缓存或APK。文档统一放在`docs/`，应用实现位于`app/`。
 
-The catalog contains48 PNGs,17 MP4s and17 GIFs, including four new comparison screenshots and an actual short recording/GIF pair per client. Increment86 complete startup and both captures reconstruct from published94081c0;99 historical evidence files retain exact bytes. Earlier increment84 cache limitations remain explicit. Comparisons cover authorized records only and do not establish total project balances or available funds. All28 gap IDs remain in the register; full device/cloud/model/TG/capacity/security/recovery/production acceptance remains open.
+Future completed updates keep code, both language guides, affected media, verification and the changelog together, then commit and push to the authorized repository without force-pushing. Credentials, databases, toolchains, caches and APKs remain ignored.

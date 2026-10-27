@@ -1,0 +1,347 @@
+{
+  "commit": "e87656f822b44795305dd3d8a4ca4f2042cdb8a5",
+  "complete_startup_source": {
+    "source_count": 890,
+    "sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+    "reconstructed": true
+  },
+  "clients": {
+    "web": {
+      "recorded_sha256": "f67f96a43c86b442a6e6707f1163db91060da1083a84fb526631f023f615a63f",
+      "recorded_startup_sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+      "reconstructed_sha256": "f67f96a43c86b442a6e6707f1163db91060da1083a84fb526631f023f615a63f",
+      "source_count": 656,
+      "complete_capture_manifest_reconstructed": true
+    },
+    "mobile": {
+      "recorded_sha256": "0971ec73442d95fc6bd1c84e468d124de7c762ab263659da49b7e0bc8d238861",
+      "recorded_startup_sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+      "reconstructed_sha256": "0971ec73442d95fc6bd1c84e468d124de7c762ab263659da49b7e0bc8d238861",
+      "source_count": 677,
+      "complete_capture_manifest_reconstructed": true
+    }
+  },
+  "preserved_evidence": [
+    {
+      "path": "docs/quality/evidence/finance-reports/android-test-scope.json",
+      "sha256": "9a1a1cf848ce9bb23a8cccd5c8e40ab93efeece3a1d7ef944af245305c7b2eb5"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/apk-inspection.json",
+      "sha256": "55b1c7dafe99a2143c2df9005da9fa733129d03f1378faa18cb24ccc5dfe587f"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/backend-01/attempt.json",
+      "sha256": "585266e1778568d9600f58bc15749aa5957c86a0a57ed302843fdeb30b91c93d"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/backend-01/backend-sources.zip",
+      "sha256": "f1dfe02253373ca63c351ddc89e715308c9efb319b3014a57f860afac77721a1"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/backend-01/batch-progress.json",
+      "sha256": "9a60ed34ecdecea9ea0ff2f3adc8f80b8cfd489cf2bc0a494c7e23d6f6257fde"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/initial-checks/diagnosis.json",
+      "sha256": "837cb8df993627587fe83d542c2a938b4f2b1bc239a549e530be2532296fd3ca"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/mobile-01/attempt.json",
+      "sha256": "ca7729f1a5f84a4677cb6cceea7f3f2d1ee1334d779e11b50767aa1d9a44f889"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/mobile-01/capture-helper-provenance.json",
+      "sha256": "9bb04f436a9f5a7fae18b44dde69953585e39ca7f6a3846d3312d17eb9b97f2d"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/mobile-01/failure.png",
+      "sha256": "10c488d9c90d973c3e3893012c2169aabd624566bba78eedd9ffb3a3efd235c2"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/mobile-01/result.json",
+      "sha256": "a6d78f248c4b81d6ce35b842014c6519f21c68161e05db74e175d1157c5fe815"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/mobile-01/source-manifest.json",
+      "sha256": "fe934db75e8e2e5e7476e0bcfa7d45b7236efe982b4907965aeba5048e2b23d4"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/mobile-01/sources.zip",
+      "sha256": "860be68e8d8d195fa5b7294f1f5021a8de42fe19a642ee542e814d89e27f0195"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/source-check-01/diagnosis.json",
+      "sha256": "727cfbe86cec259414de970cbc93dff569c31d439e9c53c09a9df711b90cbf6c"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/source-check-01/verifier.py.source",
+      "sha256": "9b0f91a4c764c6955a148209b229cd36f154a7200969f12917969898dd9a5a0b"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-02/attempt.json",
+      "sha256": "2152f20014566dde031d1d3cdf61b31b87d88f8a71ed1b3d277715855ba2c74a"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-02/capture-helper-provenance.json",
+      "sha256": "4cca0ca416e5bcacca082a31de448eb4f2d654929067183f474156d894cb79aa"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-02/failure.png",
+      "sha256": "69ba409baea13368c1d56be864e5ff789006458a1123f1125419aa282e7113ee"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-02/result.json",
+      "sha256": "24f3638507694313601b9bd92086cd1fe9ec260e6213d6a13e3b07bb5b4c3086"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-02/source-manifest.json",
+      "sha256": "ec691778ff9d726d08409fe86adf6a401b26344d5ca2097aa4dd49b65967b037"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-02/sources.zip",
+      "sha256": "cb0e73f0c67e28c76d672f7e55785a073ec19f75fd3f1f60118b9d36c03c4403"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-03/attempt.json",
+      "sha256": "ac3c15db8e0143083e87bde6789161f254e68f48f7d90f3523c6a9f1d251dd25"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-03/capture-helper-provenance.json",
+      "sha256": "0aff46f56388f17b809f42ec306bd32755f6bb7cf4eb52ee0d7b87a1e56bdd8c"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-03/failure.png",
+      "sha256": "1c2552defe5eb4e296fb6004df85cd237260acf7b4baac4858046d36ba763e40"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-03/result.json",
+      "sha256": "564f9c719b259c474142abff5ae60beea696b57ed6729cb92ddd2e914ead3f54"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-03/source-manifest.json",
+      "sha256": "0d5ed033654a7ffd6ae8ecdec96d6331a11c89c0935b03eaf9e2a06c754cca30"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-03/sources.zip",
+      "sha256": "b09ef5f82c054ac7e7b50adf741942095d24e78f1f6a01e5353b2842c4777eaa"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/attempt.json",
+      "sha256": "e16038beb60a6ae14ef480e892450764af6e3151f2c0dc73a604426ac426d9b4"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/capture-helper-provenance.json",
+      "sha256": "eee8622eb0c55038a7f96ca1966b6875b5bea77709402a8d1f2fc32d6b76e6b1"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/download-proof.json",
+      "sha256": "4f1c9b22f24f1ce5cb178fcce4255c2f0d95740bbe8d6e1225f3afeb99ab7041"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/inbox.png",
+      "sha256": "929a81f4cf6093f17b15e113e47df7afae00c2f5e77b56454693624779bfc28b"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/recordings.json",
+      "sha256": "e75fdd8ff172fe85a2f4a276645da2a0e13f30b88e21f7011d170bad43dd7fea"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/result.json",
+      "sha256": "a8e5cc771887125b502ba72ab77684012c2bf92e56a92e9fc56d6979f0dd8da3"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/source-manifest.json",
+      "sha256": "8da75d9ee42a73d43bdf3b696bff20e538397ff5a84a52249dfae6f594019969"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/attempts/web-04/sources.zip",
+      "sha256": "694e34d9764713ad326313baf2de785c0d340161cb3c39e762c84f7c8bec1509"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/batch-progress.json",
+      "sha256": "deedae02fee1e1c1efeef2e3171b58ce7e872cfaec6d24bef6393d2f2b3d02a4"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/build.json",
+      "sha256": "8fa1e0ba7e2727ad8cb411ff29e61aa1f38d285ddb3ad9ab9815832a5d2d2960"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/development-check.json",
+      "sha256": "ce05a3c63e9ff39ec17a27c7dc8f3e62bad85ef8ba1b1bec8357aab0e732f9fc"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/development-project-resources.json",
+      "sha256": "f9d9363cb40e6d78581cb3763d03623e822041efb8185d5d91b65fa4ff4a9941"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/development-runtime.json",
+      "sha256": "aad3128c1e093e086046214969209b9b728b3d17c465f9a917b4f88652e36ac5"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/development-update.json",
+      "sha256": "a91e114218d7a77de54ccba13ecdd6ed30f6e53e1289b636563d3097ac423b2a"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/final-source-check.json",
+      "sha256": "aee49e86f0368de6eaff6213fe18b7b09fbf831552ffc1246d495b89f5505fdc"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/historical-87.json",
+      "sha256": "74c90a6ef791bc259df93038601206c3a3346a1c2dfc04563ab902e710c91c85"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/linux-build.json",
+      "sha256": "ad81e6404341c1ad7ca0f1064074bb43a8b6c68be068cd69ee60006c5407bbd1"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/media.json",
+      "sha256": "3c0d8d7cb40602ddc4df110c8b8a0f448bf764dd408d0fea6df21a0459caf07c"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/mobile-build.json",
+      "sha256": "e9d5b53936cce229061bfe4a51be7fac27a9a918bceb88f62025b08c375e6d08"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/mobile-capture-manifest.json",
+      "sha256": "2b57736ec1c4e023f1af28800d27140f7103c444c660cf5c5ceacdbf56aec3e1"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/mobile-verification.log",
+      "sha256": "6edbe79b2c501b9b32aa5459dfb8b32e3986aedd867e78c778bdf5cd18ac1400"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/native-build.log",
+      "sha256": "91c711fa5f37e6f2e1f456a1036d03092eee08eedd0b348e534e4f954428c832"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before.json",
+      "sha256": "cab35b6d8d3543fb031d110b82db181277da7151f6fb41980a38189ec0c85139"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/README.md.source",
+      "sha256": "0cc531bd9d275c4d2e831468d5b4492af3b828e9d70213d1358b3f70d64d1801"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/CHANGELOG.md.source",
+      "sha256": "603cf446b2e3a6d8f1cb11c14fef68c51b8ae27b2d232c82c328a8ab6005da0e"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/README.en.md.source",
+      "sha256": "14d154e4dd507eae60cee892c309acf3f8975339271a95f568bd6a03bb999a16"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/README.md.source",
+      "sha256": "a56dc31fda38593892e3a714453e58d325da17e61cae374846a1a72cd98db78f"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/README.zh-CN.md.source",
+      "sha256": "208f498ff7d1318f2f9ea4ec6e7128e96f98b940e9fe5aa8bc91f519c8636496"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/delivery/02-implementation-ledger.md.source",
+      "sha256": "39485c4f2ec23070979ab61193109ad020905d7c06ffc1c3e24cc88f9faf0c39"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/delivery/03-goal-gap-assessment.md.source",
+      "sha256": "ce97c37a3b4123b87de79a92fff9f62082a545a307b319a9a9fd54f445e0b847"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/media/README.md.source",
+      "sha256": "3784e0fa7880c352be29a58640759ae8d1d5625d4c9f104cbb1fce308a61b91a"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/quality/current-functional-baseline.json.source",
+      "sha256": "169045b6523742cbe8a430e9cee0d628b922e5a3ed89e767eb181365ef46b501"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/publication-before/docs/requirements/05-finance-and-subscriptions.md.source",
+      "sha256": "9e56f6a6ac8038c25c633a98ae05f35a0ec496fdba0795a0e919b1cf90a8df6b"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/repository-check.json",
+      "sha256": "54bc1ba1bb507502660dcf09d0c0e1dc931be7899a99d3620e53bc070ae558a9"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/result.json",
+      "sha256": "a0d6ce46e66cf9ecb7a957a7738ae35f8c3de346ba255b4d933e704505edbe00"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/runtime-build.json",
+      "sha256": "f376ce8496db109af92d40947bb992b901638b1b9851985a99b29b490ca353b1"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/verification.md",
+      "sha256": "41531e92b18d9989c29400bcae97d439c3a0515bbf29dcc61475ca859240ebe9"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/visual-review.json",
+      "sha256": "1c81c1a784e1567e5a2dd7b3a83325c3b2630426be9ac713be4cb79ea02c9a0c"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/web-build.json",
+      "sha256": "f3ef38530b5a8bf51402070d691993cca85484fb584cefe86397b1030b3ccd05"
+    },
+    {
+      "path": "docs/quality/evidence/finance-reports/web-capture-manifest.json",
+      "sha256": "9bb5190aeaf536d0343d20e7d82d9b65e7d5621469e4ae7f1f74cae5283c451f"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-mobile/capture.json",
+      "sha256": "0021b92753e7f1752dc2eef7c8c13f4c0e87301809da400e7e6911efbd0b6a86"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-mobile/download-proof.json",
+      "sha256": "8dd0bf60a9ad134a68a2b51c47d6096ecdea36b7f461252f906a76bdacfb16cd"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-mobile/inbox.png",
+      "sha256": "69f6effbd39230ffecb01b4ee5ba86b8e1398c741814fc49974f01d7eaed0e74"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-mobile/result.json",
+      "sha256": "9ce36252e5ae2383a9afc5757b9a64116a449c076d42cedab9a4a06b23809891"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-mobile/source-manifest.json",
+      "sha256": "202b47fac0a05d0649c6dbc7f217a5f9fd0680dad6febd07ea90bfafe84ef615"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-web/capture.json",
+      "sha256": "c946dba8bc3750bbaeec503442adc54cfcae1ee5e9341bad3ae7326ffa35b188"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-web/download-proof.json",
+      "sha256": "d52efcef4fd6df0f0ff3003a481225d909bcb9a3617287be1f70e61d98b57471"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-web/inbox.png",
+      "sha256": "929a81f4cf6093f17b15e113e47df7afae00c2f5e77b56454693624779bfc28b"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-web/result.json",
+      "sha256": "c4812e94dc7ba9ef62382e3bb05963a93d75550f2c78a5ff37f882cb255d6643"
+    },
+    {
+      "path": "docs/quality/evidence/financial-reports-web/source-manifest.json",
+      "sha256": "d988f901793f723fd8029a1b8f38944caaff46ce67298b491b1d9139126df800"
+    }
+  ],
+  "scope": "Published increment88 complete startup and both complete client capture manifests reconstruct from Git. Earlier increment84 cache limitations remain unchanged in its retained provenance."
+}

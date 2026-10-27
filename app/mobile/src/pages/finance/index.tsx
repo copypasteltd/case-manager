@@ -1,3 +1,5 @@
+import { FinancialHistory } from './history';
+import { FinancialCommands, FinanceOperationPage } from './operations';
 import { Text, View } from '@tarojs/components';
 import Taro, { useRouter } from '@tarojs/taro';
 import { useCollection } from '../../platform/collection';
@@ -13,7 +15,7 @@ import { overviewClock } from '../../platform/project-overview';
 type Record = { kind: 'cost'; value: Schemas['Cost'] } | { kind: 'payment'; value: Schemas['Payment'] } | { kind: 'subscription'; value: Schemas['Subscription'] } | { kind: 'change'; value: Schemas['Change'] };
 export default function FinanceDetailPage() {
   const params = useRouter().params;
-  return params.kind === 'change' ? <ProjectChangePage changeID={params.id} /> : <FinancialRecordPage />;
+  return params.kind === 'change' ? <ProjectChangePage changeID={params.id} /> : params.action ? <FinanceOperationPage /> : <FinancialRecordPage />;
 }
 function FinancialRecordPage() {
   const params = useRouter().params;
@@ -28,11 +30,13 @@ function FinancialRecordPage() {
   const record = page.result?.value, value = record?.value;
   const title = !record ? '业务资料查阅' : record.kind === 'subscription' ? record.value.product : record.kind === 'change' ? record.value.revision.content.title : record.value.title;
   return <Page title={title} home><Notice error={page.error} />{page.loading ? <Busy /> : record && <>
-    <Section title='当前资料'><Fact label='业务状态'><Text>{overviewState(record.value.state)} · 版本 {record.value.version}</Text></Fact><Fact label='更新时刻'><Text>{overviewClock(record.value.updated_at)}</Text></Fact><Fact label='当前修订'><Text className='cp-code' selectable>{record.value.current_revision_id}</Text></Fact><View className='cp-pad'><Text className='cp-muted cp-small'>本页用于查阅与核对。发生支出、资金记录、预算、审批额度与订阅预测分别判断。</Text></View></Section>
+    <Section title='当前资料'><Fact label='业务状态'><Text>{overviewState(record.value.state)} · 版本 {record.value.version}</Text></Fact><Fact label='更新时刻'><Text>{overviewClock(record.value.updated_at)}</Text></Fact><Fact label='当前修订'><Text className='cp-code' selectable>{record.value.current_revision_id}</Text></Fact><View className='cp-pad'><Text className='cp-muted cp-small'>发生支出、资金记录、预算、审批额度与订阅预测分别判断。</Text></View></Section>
+    {(record.kind === 'cost' || record.kind === 'payment') && page.result && <FinancialCommands kind={record.kind} value={record.value} me={page.result.me} />}
     {record.kind === 'cost' && <CostDetails value={record.value} />}
     {record.kind === 'payment' && <PaymentDetails value={record.value} />}
     {record.kind === 'subscription' && <SubscriptionDetails value={record.value} />}
     {record.kind === 'change' && <ChangeDetails value={record.value} />}
+    {(record.kind === 'cost' || record.kind === 'payment') && <FinancialHistory kind={record.kind} id={record.value.id} />}
     {value?.project_id && <Action secondary onClick={() => go('project', value.project_id!)}>查看所属项目</Action>}
   </>}<Action secondary loading={page.loading} onClick={() => void page.reload()}>刷新业务资料</Action></Page>;
 }

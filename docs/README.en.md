@@ -123,6 +123,16 @@ An independently granted `report.export` action allows entering a purpose and en
 
 Run the native DB-only worker separately: `python app/scripts/run_backend.py worker-report-export`. The Linux unit is `app/deploy/native/copypaste-report-export-worker.service`, with only environment and database settings. Without it, jobs stay queued. Originals remain in OSS/R2; CSV is regenerated on download rather than stored permanently on the server. See the [complete workflow and design](development/88-financial-report-filters-and-exports.md) and [actual captures](media/README.md).
 
+### Mobile expenses, cash, refunds and employee settlement
+
+Open **Actual expenses / Cash payments** from the workspace. Create or edit original-currency drafts with fixed party revisions, formal file versions and project/company shares. Expenses use the actual incurred date; cash uses Hong Kong local time with exact UTC conversion. Drafts may be incomplete. Before confirmation or registration, review the facts and evidence, make the explicit human declaration and complete fresh MFA. Registering cash records a fact and never initiates a bank transfer.
+
+Link a confirmed expense to a same-scope, same-currency approved purchase/claim or effective payable contract. Allocate a recorded outgoing payment to an exact expense and release an explicit partial amount. Employee settlement fixes the original claim applicant, approved revision, advance line and supplier. Start refunds from the original payment, preserving its currency and payee; map original allocations during registration or afterward. A refund remains separate from an expense reversal.
+
+A full reversal requires its real effective date/time and creates a distinct reverse fact with history retained. Correct/release effective cash links before reversing a settled expense; reversing an employee payment also corrects its claim settlement. Read fixed revisions and immutable operations in pages. Stale authority, concurrency or lost responses retain text and stop resubmission until actual records are checked; never invent a new request key to repeat the same intent. Bounded memory drafts exclude selected evidence, MFA and declarations.
+
+See the [fields, permissions, receipts and workflows](development/89-mobile-financial-operations.md), [actual verification](quality/evidence/mobile-finance-operations/verification.md) and [screenshots/MP4/GIFs](media/README.md). Each device/platform still needs acceptance. This increment adds no FX, cross-currency or amortization policy.
+
 ### Files, project blogs and knowledge
 
 Choose an exact folder/project. The API issues short-lived grants restricted to the intended multipart object, and the client uploads directly to the selected object store. Recovery reconciles existing cloud parts first. Upload completion only establishes candidate bytes: source freezing, full checksums, scanning and formal version commit still follow, then replication and verification in the other cloud.
@@ -248,7 +258,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment88 verification record](quality/evidence/finance-reports/verification.md) identifies actual executions, native results and retained failed attempts.
+Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment89 verification record](quality/evidence/mobile-finance-operations/verification.md) identifies actual executions, original evidence reuse, cached native results and retained failed attempts.
 
 ## 7. Production deployment and storage plan
 
@@ -264,11 +274,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | 161 top-level /1,057 results /960 leaves;9 batches;73 migrations | Fourteen financial-report scenarios and exact CSV safety tests; old secretary query compatibility fixed and full regressions pass |
-| Runtime / Web | 47 /112 tests and builds | Complete chunk integrity, original currencies and live authority; all eight Skills remain draft |
-| Taro | 187 tests; types;18 pages in both mini-program builds | Five report flows and three layouts per client; actual verified27-row CSV retrieval; H5 is not device acceptance |
-| Android | Current development APK and18 package checks | 42,905,815 bytes;26 JVM tests newly executed this run; no device acceptance claim |
-| Media catalog | 54 PNG /19 MP4 /19 GIF | Six new report screenshots and two actual MP4/GIF pairs; published increment87 sources and74 historical evidence artifacts preserved |
+| Go / PostgreSQL | Original88:161 top-level /1,057 results /960 leaves;9 batches;73 migrations | Reused at original paths only with complete equal backend bytes; no new migration or execution |
+| Runtime / Web | Original88:47 /112 tests and builds | Complete declared source-byte equality required for reuse; eight Skills remain draft |
+| Taro | Current204 tests, types,18 pages per mini-program | Nine actual financial journeys and three widths; H5 is not device acceptance |
+| Android | Current development APK and18 package checks | 42,921,174 bytes;26 JVM results cached; no device acceptance |
+| Media catalog | 58 PNG /21 MP4 /21 GIF | Four new result screenshots and two actual MP4/GIF pairs; complete88 sources and80 old evidence artifacts preserved |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

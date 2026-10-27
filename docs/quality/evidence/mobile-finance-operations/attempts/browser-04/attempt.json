@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Actual role grants expose cost.record; mobile list and draft guard incorrectly checked cost.create, so no cost creation button was shown.",
+  "source_count": 897,
+  "complete_startup_source_sha256": "1e25ab15cd8e34f563dcf410099a9838e4367f144732962b838d2c934b823072",
+  "source_zip_sha256": "054e68c7b5ae8ad9eba8c6ac4b2bbdc7f575ddea6da77d2cd18c7167d8638eae",
+  "browser_was_started": true,
+  "browser_closed": true,
+  "native_fixture_exit_code": 0,
+  "database_cleanup_passed": true,
+  "media": []
+}
