@@ -1,0 +1,88 @@
+# 87 · 项目预算与实际支出对比 / Project budget reconciliation
+
+本增量推进 GAP-01、03、18：在原预算变更、独立审批、人工实施和规范费用账本上，增加同一币种的逐项预算对比及费用来源分页。应用代码在 `app/`；本文件、验证和实际界面素材均在 `docs/`。不改变审批制度，不自动付款，不默认选定公司基础币种。
+
+This increment advances GAP-01,03,18 with a current implemented budget comparison and paged canonical expense sources in Web and Taro. It builds on independent approval, explicit human implementation and the existing expense ledger. It does not choose a base currency, change approval policy or execute a payment.
+
+## 1. 操作流程 / Workflow
+
+1. 在项目的“预算”页打开“预算与实际支出对比”，填写一个已配置的三位币种代码后查询。Web 当前批准预算也提供“对比该币种实际支出”入口。
+2. 核对读取时间、项目版本、当前预算修订与总额。当前预算必须来自已明确实施的变更；拟议／待审批预算和已被替代的修订不作为本次依据。
+3. 每条明细展示原类别、包含起止日的预算期间、批准预算、原费用份额、冲销份额、净发生支出、差额及未确认条数。“预算差额”是该条批准金额减去该期间内当前可读的净费用份额。
+4. 分别检查预算内、预算外及全期间可见净发生支出。预算外包括没有匹配类别／日期的规范费用；负数可能来自该期间外生效的冲销，不自动表示实际退款。
+5. 通过“核对第 N 项费用”或来源筛选读取原费用。可查已发生或未确认来源，打开规范费用 ID 查阅其当前资料、凭证、原始分摊和资金结算。Web 追加下一页；移动端逐页前后读取。
+6. 项目或预算发生修订时重新查询。每一页都重新读取当前权限与费用，并标注自己的 `as_of`；报告不是冻结的历史财务快照。
+
+Open **Project → Budget → Budget versus actual expenditure**, enter one configured currency and query. Review the current project/budget revision, full category/date lines and canonical source records. Web also offers a shortcut on each current approved currency. Source pages distinguish incurred and draft records; mobile pages support forward/back navigation. Refresh when the basis changes. Each source page has its own current read time.
+
+## 2. 计算和权限口径 / Calculation and authority
+
+| 内容 / Item | 规则 / Rule |
+| --- | --- |
+| 币种 / Currency | 必填，按原币分别查询；不把 HKD、USD、CNY 相加，不补假设汇率。 One original currency per query; no conversion or mixed total. |
+| 预算依据 / Plan | 仅当前 `approved / protocol_version=1` 预算；完整读取最多100条，包含明确清空后的零预算。 Only the current implemented plan, including all100 lines or an explicitly cleared plan. |
+| 无预算 / Absent plan | `budget=null`、`budget_variance=null`；与“已有批准预算且金额为0”不同。 Absence is not an implied zero allowance. |
+| 期间 / Period | 沿用预算的闭区间 `[period_start, period_end]`，不照搬月报的半开区间；不按查询月份擅自摊分预算。 Inclusive budget endpoints, without prorating. |
+| 匹配 / Match | 原币、原类别、发生日匹配。原流程禁止同一类别期间重叠，因此一笔项目份额最多匹配一条。 Category, currency and occurrence date match at most one line. |
+| 项目分摊 / Allocation | 使用当前规范费用修订中的该项目份额，不用费用整额，也不计另一项目或公司的份额。 Only this project's allocation share contributes. |
+| 去重 / Identity | 按规范费用 ID 读取，不联表展开 `cost_links`。采购、合同、订阅、报销共同关联不会重复求和。 Business links do not multiply a canonical fact. |
+| 冲销 / Reversal | 原费用即使已标记 `reversed`，仍在原发生日贡献正额；冲销在自己的发生日贡献负额。费用与现金退款独立。 Original and reversal retain their own dates and signs. |
+| 草稿 / Draft | 单独计数，贡献为0。未填日期仍为null，未填类别仍为空；不补日期／类别，也不漏掉可读的部分草稿。 Drafts stay unconfirmed, including incomplete dates/categories. |
+| 完整性 / Coverage | `scope=authorized_records_only`，只代表当前可读记录。差额不是项目全部剩余额度、可支付金额或完整结项证明。 A visible-scope difference is not a company-wide available balance. |
+
+报告入口同时要求当前 `project.read / budget.read / report.read`。逐条费用复用原发生支出报表的 `can_read_cost` 与费用资源 `report.read`，包括所有分摊项目的读取校验。没有费用权限时不泄漏费用金额、名称、存在性、草稿条数或分页信号；不能仅凭报表或预算权限推断隐藏费用。精确记录授权不会扩大到其他费用。
+
+The entry point requires project, budget and report authority. Each canonical fact reuses the existing incurred-report predicate, including cost authority and access to every allocated project. Hidden facts contribute no amount, title, count or pagination signal. All output states its authorized-only scope, including when it has no readable facts.
+
+金额保持 PostgreSQL `numeric` 十进制文本；原额、分摊、冲销和差额不经 JavaScript 浮点。汇总契约允许比单笔录入更长的金额，避免合法多笔合计被单笔14位上限截断。前端只格式化字符串并核对项目、币种、依据、明细序号和确认状态，不自行换算或重新计算会计口径。
+
+Amounts and differences remain exact PostgreSQL numeric text. Aggregate contracts allow values wider than a single input amount. Both clients validate project/currency/basis and source state while retaining decimal strings.
+
+## 3. 接口与一致性 / API and consistency
+
+| Method | Path | 用途 / Purpose |
+| --- | --- | --- |
+| GET | `/v1/projects/{id}/budget-comparison?currency=HKD` | 当前预算、逐项实际和预算外／全期间授权汇总。 Current basis and authorized comparison. |
+| GET | `/v1/projects/{id}/budget-comparison/entries` | `currency`、`basis_hash`必填；`line`省略为全部、`outside`为预算外、`0..99`为原明细序号；`state=incurred/draft`；`limit=1..100`与签名`cursor`。 Paged canonical sources. |
+
+每次请求在可重复读事务内核对组织授权版本、用户版本与启用状态，并保持授权行共享锁。预算依据和该次查询的所有汇总使用同一事务快照。`basis_hash`固定项目 ID／版本、币种和完整当前预算；与凭证或权限令牌不同，不能凭它获得读取权限。
+
+Each request checks live organization/user authority within a repeatable-read transaction. The summary's basis and totals share that snapshot. The basis hash identifies the implemented plan; it grants no authority and does not freeze later expense state.
+
+签名游标绑定本人／组织授权版本、渠道、项目、币种、预算依据、明细和费用状态。改变筛选、伪造游标或撤权不能继续原结果；预算／项目改变返回 `409 BUDGET_COMPARISON_CHANGED`。非法／重复／未知参数、错误URL编码、非规范序号和非法分页返回错误，不忽略后扩大查询。访问范围不足沿用原隐藏资源错误语义。
+
+Cursors bind actor authority, channel, project, currency, plan and filters. Changed plans require a refresh. Malformed or ambiguous queries reject instead of broadening the result. Each later page reads current authorized facts; new confirmations or corrections can change totals, so refresh the summary when reconciling new activity.
+
+## 4. 代码与验证 / Implementation and verification
+
+- `app/backend/internal/finance/budget_comparison.go`：复用规范费用权限、精确份额及符号，统一完整汇总和分页来源。
+- `app/backend/internal/project/budget_comparison.go`：当前已实施预算、组织／用户授权快照、依据哈希及签名游标。
+- `app/backend/internal/httpapi/budget_comparison.go`：两个只读接口及严格查询校验。无新数据库迁移，既有72项迁移保持原字节。
+- `app/packages/contracts/src/budget-comparison.ts`：两端共用的依据、币种和明细状态校验；契约同步到OpenAPI与生成类型。
+- `app/web/src/ProjectBudgetComparison.tsx`、`app/mobile/src/pages/project/budget-comparison.tsx`：当前预算入口、完整明细及费用原记录。移动复用现有项目页，仍为17个注册页面。
+
+新增原生场景覆盖：无预算、未完整草稿、闭区间边界、多项目份额、冲销自己的日期、原币分列、准确来源与签名分页、坏参数、仅报表／逐条授权及撤权、完整100条明细、预算清空和旧依据失效。客户端回归覆盖缓存串项目／币种、无预算语义、游标编码、大额精确文本与草稿状态。
+
+Native scenarios verify actual HTTP/business transactions and decimal results. Browser evidence uses isolated synthetic records against native Go/PostgreSQL, then captures the real Web/Taro pixels. Compilation, a development APK and browser recordings do not establish device or production acceptance.
+
+按根目录原生工具指南执行相应检查，保留已有证据后再重新录制：
+
+```powershell
+$env:PYTHONUTF8='1'
+python app/scripts/test_backend.py --package ./internal/httpapi -run '^TestProjectBudgetComparison$' -v
+python app/scripts/verify_backend_batches.py --batch-size 20 --evidence-group budget-comparison
+python app/scripts/verify_web.py budget-comparison
+python app/scripts/verify_mobile.py budget-comparison
+python app/scripts/run_budget_comparison_browser.py
+python app/scripts/run_budget_comparison_browser.py --mobile
+python app/scripts/encode_budget_comparison_media.py
+python app/scripts/verify_budget_comparison_sources.py
+```
+
+## 5. 保留的完整目标 / Remaining full scope
+
+本次没有把可见费用差额称为全项目剩余额度，不自动触发采购拦截或付款，也不添加未经确认的汇率／摊销／基础币种。财务完整筛选与异步导出、费用写入移动端完整覆盖、实际公司规则与跨OA旅程、真实云与模型／TG、真机和首发仍需完成。全部28项稳定GAP继续保留。
+
+Full financial filters/async export, mobile financial writing, confirmed company rules, cross-domain journeys, real services/devices and production acceptance remain open. The full four-client goal remains active.
+
+[验证 / Evidence](../quality/evidence/budget-comparison/verification.md) · [媒体 / Media](../media/README.md) · [全部差异 / Gaps](../delivery/03-goal-gap-assessment.md)

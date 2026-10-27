@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "cause": "The mobile checker selected a Taro source picker immediately after mounting the source reader, while its first request still disabled the control. The control rendered normally and the native request succeeded; no picker overlay opened.",
+  "completed_mobile_checks": 1,
+  "cleanup": "Both browser wrappers closed their contexts, native fixtures, test databases and review servers. The earlier successful Web capture is superseded because the shared checker will change.",
+  "correction": "Wait for the actual picker component to be ready and enabled before using the visible wheel. No application/permission or MFA behavior change.",
+  "source_scope": "Original checker and wrapper bytes and source manifests retained; raw frames remain ignored and are not current media."
+}

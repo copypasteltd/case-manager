@@ -30406,6 +30406,224 @@
         }
       }
     },
+    "/projects/{id}/budget-comparison": {
+      "get": {
+        "operationId": "compareProjectBudget",
+        "tags": [
+          "projects"
+        ],
+        "summary": "compareProjectBudget",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "currency",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BudgetComparisonResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/projects/{id}/budget-comparison/entries": {
+      "get": {
+        "operationId": "listBudgetComparisonEntries",
+        "tags": [
+          "projects"
+        ],
+        "summary": "listBudgetComparisonEntries",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "currency",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            }
+          },
+          {
+            "name": "basis_hash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          {
+            "name": "line",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^(outside|[0-9]|[1-9][0-9])$"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "incurred",
+                "draft"
+              ],
+              "default": "incurred"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BudgetComparisonEntriesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/changes/{id}": {
       "get": {
         "operationId": "getChange",
@@ -59881,6 +60099,363 @@
           "created_at"
         ]
       },
+      "BudgetComparisonMetrics": {
+        "type": "object",
+        "properties": {
+          "expense_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "reversal_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "net_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "entry_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unconfirmed_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expense_amount",
+          "reversal_amount",
+          "net_amount",
+          "entry_count",
+          "unconfirmed_count"
+        ]
+      },
+      "BudgetComparisonLine": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 99
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "period_start": {
+            "type": "string",
+            "format": "date"
+          },
+          "period_end": {
+            "type": "string",
+            "format": "date"
+          },
+          "budget_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "variance": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "over_budget": {
+            "type": "boolean"
+          },
+          "expense_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "reversal_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "net_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "entry_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unconfirmed_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "index",
+          "category",
+          "period_start",
+          "period_end",
+          "budget_amount",
+          "variance",
+          "over_budget",
+          "expense_amount",
+          "reversal_amount",
+          "net_amount",
+          "entry_count",
+          "unconfirmed_count"
+        ]
+      },
+      "BudgetComparisonBasis": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "total": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "revision",
+          "total"
+        ]
+      },
+      "BudgetComparison": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "project_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "basis_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "budget": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BudgetComparisonBasis"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "budget_variance": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 80,
+                "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scope": {
+            "const": "authorized_records_only"
+          },
+          "timezone": {
+            "const": "Asia/Hong_Kong"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BudgetComparisonLine"
+            },
+            "maxItems": 100
+          },
+          "matched": {
+            "$ref": "#/components/schemas/BudgetComparisonMetrics"
+          },
+          "outside": {
+            "$ref": "#/components/schemas/BudgetComparisonMetrics"
+          },
+          "lifetime": {
+            "$ref": "#/components/schemas/BudgetComparisonMetrics"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "project_id",
+          "project_version",
+          "currency",
+          "basis_hash",
+          "budget",
+          "budget_variance",
+          "scope",
+          "timezone",
+          "as_of",
+          "lines",
+          "matched",
+          "outside",
+          "lifetime"
+        ]
+      },
+      "BudgetComparisonEntry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "occurred_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "entry_kind": {
+            "type": "string",
+            "enum": [
+              "expense",
+              "reversal"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "confirmed",
+              "reversed"
+            ]
+          },
+          "share_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "signed_amount": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]{1,6})?$"
+          },
+          "line_index": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 99
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "revision_id",
+          "version",
+          "title",
+          "category",
+          "occurred_on",
+          "currency",
+          "entry_kind",
+          "state",
+          "share_amount",
+          "signed_amount",
+          "line_index",
+          "created_at"
+        ]
+      },
+      "BudgetComparisonEntries": {
+        "type": "object",
+        "properties": {
+          "basis_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BudgetComparisonEntry"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "basis_hash",
+          "as_of",
+          "items",
+          "next_cursor"
+        ]
+      },
       "ChangeRequestPayload": {
         "type": "object",
         "properties": {
@@ -65137,6 +65712,38 @@
               "items",
               "next_cursor"
             ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "BudgetComparisonResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BudgetComparison"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "BudgetComparisonEntriesResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BudgetComparisonEntries"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "layouts": [
+    {
+      "width": 390,
+      "body": 390,
+      "tables": []
+    },
+    {
+      "width": 430,
+      "body": 430,
+      "tables": []
+    },
+    {
+      "width": 768,
+      "body": 768,
+      "tables": []
+    }
+  ],
+  "recordings": [
+    {
+      "name": "budget-comparison-mobile",
+      "frame_count": 37,
+      "duration_ms": 7533,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/budget-comparison-mobile/frames.json",
+      "manifest_sha256": "43002558ce7c45a5a3b22c723ba818fd7cb20c1e14eb7eaefa6b572dfa647c0a"
+    }
+  ],
+  "synthetic_data": true,
+  "real_model_cloud_telegram": false
+}

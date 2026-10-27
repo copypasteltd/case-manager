@@ -1,5 +1,7 @@
 # 页面、各端分工与前端开发规范
 
+实现追踪（增量87）：Web／Taro项目预算页新增[预算与实际支出对比](87-project-budget-comparison.md)，包括完整明细、原币查询、发生／草稿筛选、逐笔分页与原费用跳转。仍为17个注册移动页面；实际H5检查、双小程序编译及Android开发包范围见[当前证据](../quality/evidence/budget-comparison/verification.md)，不能替代真机验收。 Both clients share exact-amount/basis guards; device and full four-client coverage remain open.
+
 版本：v1.0-draft；日期：2026-10-23。所有指定端同批首发，能力按工作场景区分，不要求桌面配置页面原样搬到小程序。
 
 视觉实施必须遵守 [官网风格设计体系](../design/README.md)、[组件与交互](../design/03-components-and-patterns.md) 及 [19组页面设计配方](../design/04-page-and-cross-platform-design.md)。主题、字体、密度和可访问性来自统一令牌；不能以界面简化改变本文的能力/业务状态。样板是设计参考，不是业务完成证据。

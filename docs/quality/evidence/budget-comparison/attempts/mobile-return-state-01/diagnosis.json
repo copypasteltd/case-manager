@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "completed_mobile_checks": 5,
+  "cause": "After canonical cost navigation and returning to the cached project route, Taro preserved the already-expanded comparison. The checker waited for the expand label, while the actual control was now collapse.",
+  "correction": "Wait for the loaded project page and reuse its existing currency input; expand only when needed.",
+  "previous_picker_hypothesis_confirmed": "Waiting for the enabled picker allowed the previously blocked source/draft/outside and real pagination flows to pass.",
+  "cleanup": "Owned browser, temporary API/database and review server all closed; failed attempt frames and screenshots retained as superseded evidence."
+}

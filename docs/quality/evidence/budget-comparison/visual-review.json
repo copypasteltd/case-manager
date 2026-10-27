@@ -1,0 +1,37 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-27T04:53:05.631917+00:00",
+  "files": [
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-web-summary.png",
+      "sha256": "035dbd1b31921468bc4a0b5d05ad3af74f67342b1f920cc9345f8bcc4b34adeb"
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-web-sources.png",
+      "sha256": "e286aca5e85e20cee6176a760423a00274f4121484d1dcf872dd4ae8dc58f787"
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-mobile-summary.png",
+      "sha256": "331f971bda028444c6e83905e2fe5d8c05ea67ebcd929c29d15eaf9eebff8f14"
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-mobile-sources.png",
+      "sha256": "10912b8a6d28ecd95c6d5eee09a9a488103e082e5a306049fe63947469fd184a"
+    },
+    {
+      "file": "docs/media/gifs/project-budget-comparison-web.gif",
+      "sha256": "c4cb9ba650c97d99463a03a37f19315721f22d58264c460163a95e262122a5bf"
+    },
+    {
+      "file": "docs/media/gifs/project-budget-comparison-mobile.gif",
+      "sha256": "8039dc758860126634de7865d7ad49275986b256b376a8183940d99cfe8f24d2"
+    }
+  ],
+  "method": "Manual review of all four final viewport PNGs and four evenly spaced decoded frames per final GIF; media.json independently checks actual frame/timing and encoded artifacts.",
+  "observations": [
+    "Web summary retains current plan, currency and authorized scope; sources show the separate outside reversal.",
+    "Mobile captures show actual long-page viewports; the second viewport includes the comparison totals and source controls, not every source row.",
+    "GIF samples show actual source filtering and paging with no identity input. Web uses scrollable ledger tables; mobile uses readable fact rows."
+  ],
+  "scope": "Isolated synthetic business data; no real-device, cloud, model or production acceptance."
+}

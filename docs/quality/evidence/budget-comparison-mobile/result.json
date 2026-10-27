@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T04:41:34.257Z",
+  "finished_at": "2026-10-27T04:42:01.785Z",
+  "checks": [
+    "Actual MFA login, implemented budget and authorized canonical shares reconcile HKD1385 inside, HKD-945 outside and HKD440 lifetime without counting two drafts.",
+    "A budget-line drilldown shows the actual unconfirmed source without treating its share as incurred expenditure.",
+    "A partial draft with no occurrence date or category stays unknown and readable in outside-budget detail.",
+    "Outside-budget detail retains the real reversal contribution on its own date and links canonical sources.",
+    "Real source pagination and a return to the exact line preserve the current budget basis.",
+    "Canonical source navigation opens the real cost; another original currency retains all100 lines, and an absent CNY plan is never reported as a zero allowance."
+  ],
+  "source_count": 663,
+  "source_sha256": "ec4df1de7ae6776f942bcd5c6f4c2f0fca9f723a333cec71b5ec7a4e07010c14",
+  "source_after_sha256": "ec4df1de7ae6776f942bcd5c6f4c2f0fca9f723a333cec71b5ec7a4e07010c14",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+  "build_source_after_sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+  "build_source_unchanged": true
+}

@@ -1,6 +1,6 @@
 # 代码实施与验证台账
 
-最近仓库交付：[增量86：秘书Token额度、预留与凭证核对](../development/86-secretary-token-budgets.md)，完整验证见第60节和[来源记录](../quality/evidence/token-budgets/verification.md)。四端首发完整Goal仍active，GAP-14继续保留金额／供应商及分段执行缺口。早期各节保留当时实现／证据范围。
+最近仓库交付：[增量87：项目预算与实际支出对比](../development/87-project-budget-comparison.md)，完整验证见第61节和[来源记录](../quality/evidence/budget-comparison/verification.md)。四端首发完整Goal仍active，GAP-01／03／18继续保留完整业务与生产验收缺口。早期各节保留当时实现／证据范围。
 
 开始日期：2026-10-23。用户新增约束：全部后续开发代码在app/；所有文档仍在docs/。目标仍覆盖全部需求和四端首发，分阶段完成不能改称缩小版已完成。
 
@@ -831,3 +831,16 @@ Implemented exact task/subtask creation with complete human decisions and genuin
 - Token数量不等于金额账单；无生产默认额度，不激活真实模型／TG，不进行供应商外发。八项Skill保持draft，当前完整Goal继续active；费用价格、供应商账单、分段控制与28项原验收约束继续有效。
 
 [实现与升级](../development/86-secretary-token-budgets.md) · [检查](../quality/evidence/token-budgets/verification.md) · [演示](../media/README.md)
+
+## 61. 增量87：项目预算与实际支出对比
+
+- 在原已批准并明确实施的预算与规范费用上增加只读对比接口，无新迁移，72份迁移保留发布94081c0的原字节。按明确原币、完整最多100条预算、同类别与包含边界的期间精确核算；只计本项目规范分摊，原费用和冲销各按自身发生日期归属。未确认草稿不计实际支出，允许合法未完整草稿的日期／类别为空。
+- 分别显示预算内、预算外与全期间发生，并按明细／状态提供原记录签名分页。读取同时检查项目、预算、报表及逐笔费用权限；受限记录不泄露计数、金额、名称或分页信号。当前项目／预算依据变化拒绝旧游标；页面明确只代表授权记录，不声称全部项目余额或可用资金。
+- Web／Taro均提供实际入口、完整明细、来源筛选／分页与规范费用跳转。六组Web共享守卫回归及11组原生业务场景覆盖人工固定算例、缺失／零预算、完整100条、跨项目份额、冲销日期、草稿、原币、实际撤权、严格参数和过期依据。
+- 原生后端159顶层／1,041结果／945末级、8批；Web104、运行时47、移动187项及双小程序各17页通过。42,896,260字节Android开发包及18项检查通过；25项JVM本轮使用缓存，四份XML和任务标记已冻结。Linux仅交叉编译。API按归属更新，只读探针确认72项迁移、外部集成关闭及零隔离测试库。
+- Web／Taro各6组实际流程与3项布局；新增4张PNG、2段短MP4与2个GIF，总目录48／17／17。最终四张截图及两份动画经人工像素检查。首次选择器就绪、返回已展开页面的检查器假设和第5批既有隔离库清理超时均保留；清理准确无连接测试库后，以相同来源摘要恢复失败批和余下批次，没有更改业务断言、数据库持久化或清理时限。
+- 从已发布94081c0重建增量86完整启动及两端捕获来源，99份历史证据保持原字节；更早84未冻结编译缓存的限制继续保留。所有自建浏览器、隔离API／数据库、临时5189服务和私有夹具均已关闭／移除。
+
+This increment implements authorized project-budget reconciliation with exact canonical shares, reversal dates, incomplete drafts and paged original sources in both clients. Current tests, cached JVM scope, retained failures and source-checked batch recovery are recorded explicitly. All eight Skills remain draft. The full four-client, financial, real cloud/model/TG, device, capacity, dependency-security, recovery and production goal remains active.
+
+[规则与使用](../development/87-project-budget-comparison.md) · [准确验证](../quality/evidence/budget-comparison/verification.md) · [实际素材](../media/README.md)

@@ -4660,6 +4660,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/projects/{id}/budget-comparison": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** compareProjectBudget */
+        get: operations["compareProjectBudget"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/projects/{id}/budget-comparison/entries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listBudgetComparisonEntries */
+        get: operations["listBudgetComparisonEntries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/changes/{id}": {
         parameters: {
             query?: never;
@@ -10360,6 +10394,81 @@ export interface components {
             /** Format: date-time */
             created_at: string;
         };
+        BudgetComparisonMetrics: {
+            expense_amount: string;
+            reversal_amount: string;
+            net_amount: string;
+            entry_count: number;
+            unconfirmed_count: number;
+        };
+        BudgetComparisonLine: {
+            index: number;
+            category: string;
+            /** Format: date */
+            period_start: string;
+            /** Format: date */
+            period_end: string;
+            budget_amount: string;
+            variance: string;
+            over_budget: boolean;
+            expense_amount: string;
+            reversal_amount: string;
+            net_amount: string;
+            entry_count: number;
+            unconfirmed_count: number;
+        };
+        BudgetComparisonBasis: {
+            /** Format: uuid */
+            id: string;
+            revision: number;
+            total: string;
+        };
+        BudgetComparison: {
+            /** Format: uuid */
+            project_id: string;
+            project_version: number;
+            currency: string;
+            basis_hash: string;
+            budget: components["schemas"]["BudgetComparisonBasis"] | null;
+            budget_variance: string | null;
+            /** @constant */
+            scope: "authorized_records_only";
+            /** @constant */
+            timezone: "Asia/Hong_Kong";
+            /** Format: date-time */
+            as_of: string;
+            lines: components["schemas"]["BudgetComparisonLine"][];
+            matched: components["schemas"]["BudgetComparisonMetrics"];
+            outside: components["schemas"]["BudgetComparisonMetrics"];
+            lifetime: components["schemas"]["BudgetComparisonMetrics"];
+        };
+        BudgetComparisonEntry: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            revision_id: string;
+            version: number;
+            title: string;
+            category: string;
+            occurred_on: string | null;
+            currency: string;
+            /** @enum {string} */
+            entry_kind: "expense" | "reversal";
+            /** @enum {string} */
+            state: "draft" | "confirmed" | "reversed";
+            share_amount: string;
+            signed_amount: string;
+            line_index: number | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        BudgetComparisonEntries: {
+            basis_hash: string;
+            /** Format: date-time */
+            as_of: string;
+            items: components["schemas"]["BudgetComparisonEntry"][];
+            next_cursor: string | null;
+        };
         ChangeRequestPayload: {
             /** @constant */
             business_payload_schema_version: 1;
@@ -11423,6 +11532,14 @@ export interface components {
                 items: components["schemas"]["ProjectBudget"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        BudgetComparisonResponse: {
+            data: components["schemas"]["BudgetComparison"];
+            meta: components["schemas"]["Meta"];
+        };
+        BudgetComparisonEntriesResponse: {
+            data: components["schemas"]["BudgetComparisonEntries"];
             meta: components["schemas"]["Meta"];
         };
         ChangeRevisionListResponse: {
@@ -24615,6 +24732,83 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProjectBudgetListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    compareProjectBudget: {
+        parameters: {
+            query: {
+                currency: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BudgetComparisonResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listBudgetComparisonEntries: {
+        parameters: {
+            query: {
+                currency: string;
+                basis_hash: string;
+                line?: string;
+                state?: "incurred" | "draft";
+                limit?: number;
+                cursor?: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BudgetComparisonEntriesResponse"];
                 };
             };
             400: components["responses"]["Failure"];

@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "failed_batch": 5,
+  "failed_test": "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+  "failure_location": "server_integration_test.go:87",
+  "failure": "The existing fixture DROP DATABASE cleanup exceeded its two-minute context deadline; no business assertion failure is recorded.",
+  "read_only_cluster_inspection": {
+    "test_databases": 1,
+    "active_test_connections": 0
+  },
+  "source_unchanged": true,
+  "source_sha256": "31ebdc84cdf59e0444db38f0ae5360e2950a8777bfcff4ceda88ddd883109fdf",
+  "raw_private_log_sha256": "202a4409813ca6d062a6633d2aa43253b28bea9d8594f20b24b6afa210e3be87",
+  "correction": "Inspect and clean the exact inactive isolated fixture; keep durability and test timeouts unchanged. Resume through the existing source-checked batch runner after other builds/captures finish. Previously completed batches remain source-bound; failed batch must run again."
+}

@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T05:05:54.031284+00:00",
+  "database": {
+    "budget_tables": 4,
+    "budget_guards": 4,
+    "budget_immutable": 4,
+    "budget_update_denied": true,
+    "budget_policies": 0,
+    "budget_reservations": 0,
+    "mutation_append_only": true,
+    "deliverable_tool_constraints": 3,
+    "deliverable_scope_constraint": 1,
+    "deliverable_receipt_function": true,
+    "milestone_unicode_whitespace": true,
+    "deferred_evidence": 2,
+    "concern_tool_constraints": 3,
+    "concern_session_function": true,
+    "task_creation_tool_constraints": 3,
+    "task_creation_session_function": true,
+    "active_profiles": 0,
+    "enabled_telegram_channels": 0,
+    "disposable_test_databases": 0
+  },
+  "migration_count": 72,
+  "all_eight_skills_draft": true,
+  "integrations_disabled": true,
+  "ownership": {
+    "api": true,
+    "notification_worker": true
+  },
+  "production_deployment": false,
+  "real_cloud_or_model": false,
+  "verification_script_sha256": "14e60fdddcce6d412b37549a759112ed7d27a829b64088b4ba52941954e8a264"
+}

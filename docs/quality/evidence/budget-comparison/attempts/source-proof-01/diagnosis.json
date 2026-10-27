@@ -1,0 +1,34 @@
+{
+  "kind": "retained_failed_final_proof",
+  "failed_checks": 2,
+  "passing_checks": 23,
+  "cause": [
+    "The new proof checker expected a nonexistent migration basename despite all72 real migration files matching published bytes.",
+    "The new workflow document described remaining client acceptance but omitted the checker-required explicit Chinese phrase for the full four-client goal."
+  ],
+  "actual_last_migration": "0072_agent_token_budgets.sql",
+  "all72_published_migrations_unchanged": true,
+  "missing_document_terms": [
+    "Android",
+    "完整四端"
+  ],
+  "fix": "Use the exact existing migration basename without weakening byte comparison; explicitly state the unchanged full four-client goal in the new workflow document. No product, test, capture, build or external integration behavior changes.",
+  "files": [
+    {
+      "file": "failed-source-check.json",
+      "sha256": "d07e3da2085bfd4da76333eb370cb99157ef257a9677802c7b8abf00cc60b096",
+      "bytes": 4382
+    },
+    {
+      "file": "verify_budget_comparison_sources.py",
+      "sha256": "0a6235597bed582fad59e3ff5bf557de439ccc2cdc6fb38e0d2791c1f8a9637e",
+      "bytes": 13551
+    },
+    {
+      "file": "87-project-budget-comparison.md.source",
+      "sha256": "ac248dba282e6d05f19054d62ec33463a0e3bf1aa55b87dbf88ccc4a27ee1a09",
+      "bytes": 10855,
+      "original_repository_path": "docs/development/87-project-budget-comparison.md"
+    }
+  ]
+}

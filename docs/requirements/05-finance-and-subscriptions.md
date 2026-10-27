@@ -1,5 +1,7 @@
 # 费用、订阅、付款与月报需求
 
+实现追踪（增量87）：[当前预算与实际支出对比](../development/87-project-budget-comparison.md)已在Web／Taro接通完整原币计划、本项目份额、冲销、未确认及预算外来源分页；只代表授权记录。完整筛选／导出、跨域旅程、汇率制度及生产财务验收仍按本需求和GAP-03继续推进。 Implementation trace: authorized current-plan reconciliation is implemented; remaining financial and production acceptance stays open.
+
 版本：v1.0-draft；日期：2026-10-23；关联 U-16、ADR-06、Q-07。系统提供经营台账，不实现会计总账或资金执行。
 
 ## 1. 费用模型与避免重复

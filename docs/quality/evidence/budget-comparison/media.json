@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-27T04:49:36.051171+00:00",
+  "encoder_script_sha256": "ca33ac562bbdd2c730871db08727608b91c31fcf220e37f04026aa8312a0af0a",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "251fd803ce361df02cbd02a00193936540fd63a7cee7db4cc27b54965b2a6494",
+      "build_source_sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+      "capture_manifest": "docs/quality/evidence/budget-comparison/web-capture-manifest.json",
+      "capture_manifest_sha256": "ad6a83997bc375012384fc0b39d3345ba899236679c3d9ee4b4ecf51098c2b4f",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 1841,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "20",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/project-budget-comparison-web.mp4",
+          "sha256": "f01d08147522110181b94d2580cb75df83b34048f1a9f9e474f598965abf2578",
+          "bytes": 163968
+        },
+        {
+          "file": "docs/media/gifs/project-budget-comparison-web.gif",
+          "sha256": "c4cb9ba650c97d99463a03a37f19315721f22d58264c460163a95e262122a5bf",
+          "bytes": 305638
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "ec4df1de7ae6776f942bcd5c6f4c2f0fca9f723a333cec71b5ec7a4e07010c14",
+      "build_source_sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+      "capture_manifest": "docs/quality/evidence/budget-comparison/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "43002558ce7c45a5a3b22c723ba818fd7cb20c1e14eb7eaefa6b572dfa647c0a",
+      "capture_frame_count": 37,
+      "capture_duration_ms": 7533,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "77",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/project-budget-comparison-mobile.mp4",
+          "sha256": "665db77aec7624d2d6e169135858034acce4751b0ad542868ba9b075b234cd06",
+          "bytes": 188143
+        },
+        {
+          "file": "docs/media/gifs/project-budget-comparison-mobile.gif",
+          "sha256": "8039dc758860126634de7865d7ad49275986b256b376a8183940d99cfe8f24d2",
+          "bytes": 670041
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

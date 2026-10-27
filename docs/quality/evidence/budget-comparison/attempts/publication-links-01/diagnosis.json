@@ -1,0 +1,8 @@
+{
+  "kind": "retained_failed_publication_check",
+  "passing_checks": 24,
+  "failed_checks": 1,
+  "cause": "An exact-byte archived copy of the pre-correction workflow retained original-directory relative links but was being parsed as a live Markdown guide in its new evidence directory. The three reported links concern only that archive, not the current guides.",
+  "fix": "Rename the archived byte snapshot to .md.source and update its manifest; preserve all original bytes and keep current Markdown links fully checked.",
+  "failed_report_sha256": "642bfe053bc924d202940b807e4e7a5c7abc85924565c3d46f35ceed2447fa65"
+}

@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **44张PNG、15段MP4、15个GIF**。增量86新增四张秘书Token账本截图和Web、Taro各一对实际录屏／GIF；此前知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成业务数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
+本目录包含 **48张PNG、17段MP4、17个GIF**。增量87新增四张项目预算对比截图和Web、Taro各一对实际短录屏／GIF；此前Token账本、知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
 
-This catalog contains **44 PNGs,15 MP4s and15 GIFs**. Increment86 adds four secretary token account screenshots and an actual recording/GIF pair for each of Web and Taro. Earlier knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records or credentials.
+This catalog contains **48 PNGs,17 MP4s and17 GIFs**. Increment87 adds four project-budget comparison screenshots and an actual short recording/GIF pair for each client. Earlier token, knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records and credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -317,3 +317,30 @@ Actual authenticated Web/Taro pages query organization accounts, publish a compl
 复现顺序 / Reproduction: `python app/scripts/run_token_budget_browser.py` → `python app/scripts/run_token_budget_browser.py --mobile` → `python app/scripts/encode_token_budget_media.py`。两个浏览器检查须串行；各自关闭全部上下文、测试API、隔离数据库及临时5189服务。素材来自实际捕获帧，无密码／MFA／令牌；Taro H5不代表小程序或Android真机验收。首次Web检查过早读到旧状态的尝试保留，不复用为当前通过证据。
 
 完整来源、帧时间、失败修复、历史证据和本增量实际构建范围见[验证记录](../quality/evidence/token-budgets/verification.md)；操作和金额边界见[方案](../development/86-secretary-token-budgets.md)。
+
+## 15. 项目预算与实际支出 / Project budget versus actual expenditure
+
+在项目预算页明确选择币种，查看当前已实施计划、逐项期间、实际项目份额、冲销、未确认草稿和预算外发生；按明细／状态分页打开规范费用。页面明确只代表当前授权记录。人工算例与原生API回归一致，真实数据不进入演示。
+
+Select a configured currency from the project's budget page, inspect the current implemented plan and canonical shares/reversals, then filter and page original incurred/draft sources. The comparison always covers authorized records only. Both clients use the real native API with isolated synthetic fixtures.
+
+| Actual view / 实际页面 | Screenshot |
+| --- | --- |
+| Web完整预算对比 / complete comparison | [PNG](screenshots/project-budget-comparison-web-summary.png) |
+| Web费用来源 / canonical sources | [PNG](screenshots/project-budget-comparison-web-sources.png) |
+| Taro预算逐项对比 / line comparison | [PNG](screenshots/project-budget-comparison-mobile-summary.png) |
+| Taro原费用分页 / paged expense sources | [PNG](screenshots/project-budget-comparison-mobile-sources.png) |
+
+![Web预算对比与来源](gifs/project-budget-comparison-web.gif)
+
+[Web实际短录屏 / Actual short MP4](videos/project-budget-comparison-web.mp4)
+
+![Taro预算来源与分页](gifs/project-budget-comparison-mobile.gif)
+
+[Taro实际短录屏 / Actual short MP4](videos/project-budget-comparison-mobile.mp4)
+
+实际捕获为Web9帧／1841毫秒、Taro37帧／7533毫秒；GIF经编码后分别12帧、46帧，补帧与编码时序以媒体清单为准。它们是预算来源交互的短片段，完整六组实际流程及三个尺寸由各端检查结果另行证明。最终四张PNG及两份GIF已人工目视核对；移动为Taro H5，尚非小程序或Android设备验收。
+
+The short clips record actual source interactions after login. Capture-frame timing differs from encoded playback frames; manifests retain both scopes. Six checked flows and three layouts per client are broader than the bounded recordings. All four final screenshots and both animations received manual pixel review. Taro H5 is not a device acceptance result.
+
+复现顺序 / Reproduction: `python app/scripts/run_budget_comparison_browser.py` → `python app/scripts/run_budget_comparison_browser.py --mobile` → `python app/scripts/encode_budget_comparison_media.py`。两端串行，归属明确的浏览器、临时API／隔离数据库、5189服务和私有夹具在检查结束后释放。保留选择器就绪与缓存页面展开状态的失败捕获及完整来源，旧通过结果不重绑改动后的检查器。完整[计算与操作](../development/87-project-budget-comparison.md)、[验证与来源](../quality/evidence/budget-comparison/verification.md)和[媒体清单](../quality/evidence/budget-comparison/media.json)可逐项核对。

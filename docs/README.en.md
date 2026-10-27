@@ -91,6 +91,12 @@ On mobile, open Project → Closeout and archive. Inspect all thirteen categorie
 
 On mobile, open Project → Changes → New complete proposal, or propose an adjustment from Budget revisions. Enter an explicitly configured currency, read and accept the complete current project/budget basis, and enter full scope, dates, impact explanations and exact formal file versions. Choose keep (null), full replacement (an array) or clearing (an empty array). Saving a proposal prepares no approval automatically: prepare the original request, explicitly revise it after proposal edits, inspect its original workflow and submit for an independent decision. Approval still changes neither project nor budget. Implementation requires the exact approved request and current basis, separate scope/date and budget attestations, a reason and fresh interactive MFA; actual project, implementation and current/predecessor budget reads must corroborate success. Proposal history loads ten revisions and budgets twenty at a time, with independent currency/state filters. See the [complete change/budget protocol](development/80-mobile-project-changes-and-budgets.md) and [actual media](media/README.md).
 
+### Project budget versus actual expenditure
+
+On Web or mobile, open **Project → Budget → Budget versus actual expenditure**, enter an explicitly configured three-letter currency, and load the current implemented plan. Verify project version, budget revision and read time, then compare each original category and inclusive date interval against this project's actual allocation shares. All100 possible plan lines remain available. A shared expense contributes only this project's share and is never duplicated through other links. Confirmed expenses add to expenditure; reversals subtract on their own occurrence dates. Drafts contribute no incurred amount.
+
+Open sources for a line or **Outside the plan**, filter incurred/draft records, page through them and open the canonical expense. Incomplete drafts may lack a date or category; the UI invents neither. The worked example has a1300 budget,1385 matched net expenditure and-85 variance; outside net activity is-945 and lifetime net expenditure440. Every result covers authorized records only, so it does not establish the whole project's balance, available funds or closeout acceptance. An absent plan differs from an explicitly approved cleared zero plan. Reload when the project/plan basis changes. Query currencies separately without implied conversion. See [calculation, authority and API rules](development/87-project-budget-comparison.md), [actual screenshots/short recordings](media/README.md) and [source-bound verification](quality/evidence/budget-comparison/verification.md).
+
 ### Contracts, procurement and claims
 
 Register the party, text, amount and fixed supporting files in an editable draft. Preview the exact revision and explicitly submit it. Approval reads frozen submission evidence and follows the configured sequence; applicant/reviewer independence still applies.
@@ -137,7 +143,7 @@ Service operators publish an exact source revision and Ed25519 public key in Web
 
 The bridge reads original scrape timestamps through six bounded queries, persists each exact signed body before delivery and retries uncertain outcomes with the same bytes. Repeated scrapes do not extend freshness or advance failure/recovery counts; a failed scrape produces no healthy/failed fact, so old evidence expires to unknown. The existing Web and Taro pages show threshold-based outages, recovery and immutable signed evidence. The included browser recording uses a controlled Prometheus protocol endpoint and a real native bridge/API; actual monitor installation, host metrics and independent external alerts still require deployment acceptance.
 
-For exact task/subtask creation, select **Create task or subtask** in a project conversation, review all nine fields plus reason, and explicitly choose the human-review requirement. Parent/milestone candidates are paged; mobile navigation preserves inputs. Preview performs no write. After sending, wait for a genuine commit; use the task page for dependencies and human acceptance. See the [complete workflow](development/85-secretary-task-creation.md), [actual demos](media/README.md) and [verification](quality/evidence/token-budgets/verification.md).
+For exact task/subtask creation, select **Create task or subtask** in a project conversation, review all nine fields plus reason, and explicitly choose the human-review requirement. Parent/milestone candidates are paged; mobile navigation preserves inputs. Preview performs no write. After sending, wait for a genuine commit; use the task page for dependencies and human acceptance. See the [complete workflow](development/85-secretary-task-creation.md), [actual demos](media/README.md) and [verification](quality/evidence/task-creation/verification.md).
 
 For secretary allowances, open **Secretary budget** in the Web sidebar or **My workspace → Secretary tokens** on mobile. A manager with fresh MFA publishes all four ceilings. Each admission reserves the profile’s input-plus-output ceiling. Review your own or authorized scoped accounts and reconcile unknown terminal usage using explicit counts and a reference. Production starts without an allowance; no currency is inferred. See the [rules and upgrade order](development/86-secretary-token-budgets.md).
 
@@ -250,11 +256,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | 158 top-level /1,029 results /934 leaves;8 batches;72 migrations | 14 native budget scenarios; additive migration and original task workflows retained |
-| Runtime / Web | 47 /98 tests and builds | Meter before reply rejection; all eight Skills remain draft |
+| Go / PostgreSQL | 159 top-level /1,041 results /945 leaves;8 batches;72 migrations | Eleven new comparison scenarios; same-source batch recovery and original business regressions pass |
+| Runtime / Web | 47 /104 tests and builds | Exact decimals, current bases and authority checks; all eight Skills remain draft |
 | Taro | 187 tests; types;17 pages in both mini-program builds | Six Web/Taro flows and three layouts per client; actual H5, no device claim |
-| Android | Current development APK and17 package checks | Actual build hash and cached25 JVM result scope in current evidence; no device claim |
-| Media catalog | 44 PNG /15 MP4 /15 GIF | Four new budget screenshots and two actual recording/GIF pairs; increment85 capture provenance retained |
+| Android | Current development APK and18 package checks | 42,896,260 bytes;25 JVM results are cached; no device acceptance claim |
+| Media catalog | 48 PNG /17 MP4 /17 GIF | Four new comparison screenshots and two actual short recording/GIF pairs; increment86 capture provenance retained |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

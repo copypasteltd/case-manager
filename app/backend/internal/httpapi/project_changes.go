@@ -10,6 +10,7 @@ import (
 )
 
 func (s *Server) projectChangeRoutes(mux *http.ServeMux) {
+	s.budgetComparisonRoutes(mux)
 	service := &workflow.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
 	mux.HandleFunc("GET /v1/projects/{id}/changes", read(s, "ChangeListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := filter(r)

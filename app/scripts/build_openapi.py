@@ -1199,6 +1199,20 @@ add("ProjectArchiveList",{"visibility":enum("complete","restricted"),"items":arr
 budget = {"id":ID,"project_id":ID,"revision":VERSION,"state":enum("draft","approved","superseded"),"currency":CURRENCY,"creator_id":ID,
     "change_id":ID,"change_revision_id":ID,"predecessor_id":nullable(ID),"lines":array(ref("ProjectBudgetLine"),maxItems=100),"total":MONEY,"created_at":TIME}
 add("ProjectBudget",budget,tuple(budget))
+# Current implemented project budget against authorized canonical expense shares.
+REPORT_MONEY = {"type":"string","maxLength":80,"pattern":r"^(0|[1-9][0-9]*)(\.[0-9]{1,6})?$"}
+REPORT_SIGNED_MONEY = {**REPORT_MONEY,"pattern":r"^-?(0|[1-9][0-9]*)(\.[0-9]{1,6})?$"}
+comparison_metrics = {"expense_amount":REPORT_MONEY,"reversal_amount":REPORT_MONEY,"net_amount":REPORT_SIGNED_MONEY,"entry_count":{"type":"integer","minimum":0},"unconfirmed_count":{"type":"integer","minimum":0}}
+add("BudgetComparisonMetrics",comparison_metrics,tuple(comparison_metrics))
+comparison_line = {"index":{"type":"integer","minimum":0,"maximum":99},"category":NAME,"period_start":DATE,"period_end":DATE,"budget_amount":MONEY,"variance":REPORT_SIGNED_MONEY,"over_budget":{"type":"boolean"},**comparison_metrics}
+add("BudgetComparisonLine",comparison_line,tuple(comparison_line))
+add("BudgetComparisonBasis",{"id":ID,"revision":VERSION,"total":REPORT_MONEY},("id","revision","total"))
+comparison = {"project_id":ID,"project_version":VERSION,"currency":CURRENCY,"basis_hash":HASH,"budget":nullable(ref("BudgetComparisonBasis")),"budget_variance":nullable(REPORT_SIGNED_MONEY),"scope":{"const":"authorized_records_only"},"timezone":{"const":"Asia/Hong_Kong"},"as_of":TIME,"lines":array(ref("BudgetComparisonLine"),maxItems=100),"matched":ref("BudgetComparisonMetrics"),"outside":ref("BudgetComparisonMetrics"),"lifetime":ref("BudgetComparisonMetrics")}
+add("BudgetComparison",comparison,tuple(comparison))
+comparison_entry = {"id":ID,"revision_id":ID,"version":VERSION,"title":NAME,"category":{"type":"string","maxLength":50},"occurred_on":nullable(DATE),"currency":CURRENCY,"entry_kind":enum("expense","reversal"),"state":enum("draft","confirmed","reversed"),"share_amount":MONEY,"signed_amount":REPORT_SIGNED_MONEY,"line_index":nullable({"type":"integer","minimum":0,"maximum":99}),"created_at":TIME}
+add("BudgetComparisonEntry",comparison_entry,tuple(comparison_entry))
+comparison_entries = {"basis_hash":HASH,"as_of":TIME,"items":array(ref("BudgetComparisonEntry"),maxItems=100),"next_cursor":nullable(CURSOR)}
+add("BudgetComparisonEntries",comparison_entries,tuple(comparison_entries))
 change_snapshot = {"business_payload_schema_version":{"const":1},"kind":{"const":"change"},"business_id":ID,"business_revision_id":ID,"business_content_hash":HASH,
     "project_id":ID,"classification":CLASS,"content":ref("ChangeContent"),"project_change_basis":ref("ChangeBasis"),"project_change_budget_delta":SIGNED_MONEY,"amount":MONEY,"attachments":array(ref("BusinessFileReference"),maxItems=20)}
 add("ChangeRequestPayload",change_snapshot,tuple(change_snapshot))
@@ -1689,6 +1703,10 @@ operation("/projects/{id}/archives", "get", "listProjectArchives", "ProjectArchi
 PATHS["/projects/{id}/archives"]["get"]["parameters"] += [{"name":"cursor","in":"query","schema":CURSOR},{"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":100,"default":20}}]
 operation("/projects/{id}/archive", "post", "archiveProject", "ProjectArchiveReceipt", "ProjectArchiveInput", 201)
 operation("/projects/{id}/budgets", "get", "listProjectBudgets", "ProjectBudget", listing=True)
+operation("/projects/{id}/budget-comparison", "get", "compareProjectBudget", "BudgetComparison")
+operation("/projects/{id}/budget-comparison/entries", "get", "listBudgetComparisonEntries", "BudgetComparisonEntries")
+PATHS["/projects/{id}/budget-comparison"]["get"]["parameters"] += [{"name":"currency","in":"query","required":True,"schema":CURRENCY}]
+PATHS["/projects/{id}/budget-comparison/entries"]["get"]["parameters"] += [{"name":"currency","in":"query","required":True,"schema":CURRENCY},{"name":"basis_hash","in":"query","required":True,"schema":HASH},{"name":"line","in":"query","schema":{"type":"string","pattern":r"^(outside|[0-9]|[1-9][0-9])$"}},{"name":"state","in":"query","schema":{**enum("incurred","draft"),"default":"incurred"}},{"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":100,"default":20}},{"name":"cursor","in":"query","schema":CURSOR}]
 operation("/changes/{id}", "get", "getChange", "Change")
 operation("/changes/{id}", "patch", "updateChange", "ChangeReceipt", "ChangePatch")
 operation("/changes/{id}/revisions", "get", "listChangeRevisions", "ChangeRevision", listing=True)

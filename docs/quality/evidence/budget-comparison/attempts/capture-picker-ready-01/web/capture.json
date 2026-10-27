@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "layouts": [
+    {
+      "width": 1440,
+      "body": 1440,
+      "tables": [
+        {
+          "width": 1082,
+          "contents": 1082,
+          "scrolling": "auto"
+        }
+      ]
+    },
+    {
+      "width": 960,
+      "body": 960,
+      "tables": [
+        {
+          "width": 602,
+          "contents": 1058,
+          "scrolling": "auto"
+        },
+        {
+          "width": 602,
+          "contents": 800,
+          "scrolling": "auto"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "body": 390,
+      "tables": [
+        {
+          "width": 200,
+          "contents": 1058,
+          "scrolling": "auto"
+        },
+        {
+          "width": 200,
+          "contents": 800,
+          "scrolling": "auto"
+        }
+      ]
+    }
+  ],
+  "recordings": [
+    {
+      "name": "budget-comparison-web",
+      "frame_count": 9,
+      "duration_ms": 2032,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/budget-comparison-web/frames.json",
+      "manifest_sha256": "8a2191b087a3140f46f2a4d864c9375652516727f1a6e986881d4df1b76da462"
+    }
+  ],
+  "synthetic_data": true,
+  "real_model_cloud_telegram": false
+}

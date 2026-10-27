@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T04:23:37.470Z",
+  "finished_at": "2026-10-27T04:23:59.914Z",
+  "checks": [
+    "Actual MFA login, implemented budget and authorized canonical shares reconcile HKD1385 inside, HKD-945 outside and HKD440 lifetime without counting two drafts.",
+    "A budget-line drilldown shows the actual unconfirmed source without treating its share as incurred expenditure.",
+    "A partial draft with no occurrence date or category stays unknown and readable in outside-budget detail.",
+    "Outside-budget detail retains the real reversal contribution on its own date and links canonical sources.",
+    "Real source pagination and a return to the exact line preserve the current budget basis.",
+    "Canonical source navigation opens the real cost; another original currency retains all100 lines, and an absent CNY plan is never reported as a zero allowance."
+  ],
+  "source_count": 642,
+  "source_sha256": "c2da418d991f2d44655906f641966865adf2f385900cea5bea10bdc25e0e9642",
+  "source_after_sha256": "c2da418d991f2d44655906f641966865adf2f385900cea5bea10bdc25e0e9642",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "5c92cd29db696ee27e8882774ca14811e82706e75f5e9cd40a175d685c7f1242",
+  "build_source_after_sha256": "5c92cd29db696ee27e8882774ca14811e82706e75f5e9cd40a175d685c7f1242",
+  "build_source_unchanged": true
+}

@@ -1,5 +1,6 @@
 import { Text, View } from '@tarojs/components';
 import { useState } from 'react';
+import ProjectBudgetComparison from './budget-comparison';
 import { changeWriter } from '../../platform/change-input';
 import { SelectField, TextField } from '../business/controls';
 import { useCollection } from '../../platform/collection';
@@ -10,6 +11,7 @@ import { client } from '../../platform/taro';
 import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, dateOnly } from '../../ui';
 
 export default function ProjectBusinessPage({ projectID, section, focus }: { projectID: unknown; section: 'changes' | 'budgets'; focus?: string }) {
+  const [comparison, setComparison] = useState(false);
   const page = usePage(async scope => {
     const id = identifier(projectID);
     if (focus) identifier(focus);
@@ -22,6 +24,7 @@ export default function ProjectBusinessPage({ projectID, section, focus }: { pro
   return <Page title={section === 'budgets' ? '项目预算修订' : '项目变更'} home><Notice error={page.error} />{page.loading ? <Busy /> : project && <>
     <Section title={project.name}><View className='cp-pad'><Text className='cp-muted cp-small'>批准、实际实施、预算和发生支出分别核对。预算调整须通过完整项目变更提案。</Text><Action secondary onClick={() => go('project', project.id)}>返回项目资料</Action></View></Section>
     {canCreate && <Action onClick={() => projectChangeForm(project.id)}>{section === 'budgets' ? '提出完整预算调整' : '新建完整变更提案'}</Action>}
+    {section === 'budgets' && <><Action secondary onClick={() => setComparison(old => !old)}>{comparison ? '收起预算对比' : '预算与实际支出对比'}</Action>{comparison && <ProjectBudgetComparison projectID={project.id} />}</>}
     {section === 'budgets' ? <Budgets key={project.id} projectID={project.id} focus={focus} /> : <Changes key={project.id} projectID={project.id} />}
   </>}<Action secondary loading={page.loading} onClick={() => void page.reload()}>刷新项目业务</Action></Page>;
 }

@@ -68,6 +68,7 @@ def main():
         check('The actual native upload bridge, streaming transport and service are packaged', all(('Lhk/copypaste/workspace/' + name + ';').encode() in dex for name in ('CPUploadModule', 'UploadTransfer', 'UploadServiceHost', 'SAFUploadSource', 'UploadStore')))
     source_map = json.loads((APP / '.local/android/index.android.map').read_text(encoding='utf-8'))
     sources = [name.replace('\\', '/') for name in source_map['sources']]
+    check('Project budget comparison and shared exact-source guards are in the actual business graph', any(name.endswith('/mobile/src/pages/project/budget-comparison.tsx') for name in sources) and any(name.endswith('/packages/contracts/src/budget-comparison.ts') for name in sources))
     required = ['platform/app-root.rn.tsx', 'platform/taro.rn.ts', 'platform/theme.rn.ts', 'platform/content-sink.rn.ts', 'platform/primitives.rn.tsx', 'platform/components.rn.tsx', 'pages/content/view.rn.tsx', 'platform/uploads.rn.ts', 'platform/upload-entry.rn.tsx', 'pages/uploads/view.rn.tsx']
     check('The business graph uses the intended native platform adapters', all(any(name.endswith('/mobile/src/' + suffix) for name in sources) for suffix in required))
     check('No Expo extension or WebView entered the offline business graph', not any(re.search(r'/node_modules/(?:expo(?:-[^/]+)?|@unimodules|react-native-webview)/', name) for name in sources))

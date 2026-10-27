@@ -1,5 +1,18 @@
 # 更新记录 / Changelog
 
+## 2026-10-27 · Increment87 / 项目预算与实际支出对比
+
+新增完整当前预算与实际费用对比API及Web／Taro入口，按明确原币、类别、包含起止日的期间和本项目规范分摊计算；原费用与冲销各用自身发生日期，草稿单列。预算内／外来源支持状态筛选、签名分页与原记录跳转；严格检查逐笔读取权限和当前计划依据，不将可见部分冒充全项目余额。无预算与批准清空的零预算分开显示，无新增迁移。
+
+Adds current implemented project-budget comparison against canonical allocation shares and dated reversals, with separate drafts and out-of-plan activity. Both clients expose complete plan lines, filtered signed pagination and original expense navigation. Exact currency, live record authority and stale-basis checks remain explicit; authorized totals do not establish whole-project balances. No migration is added.
+
+159顶层／1,041结果／945末级后端、Web104、运行时47、移动187及双小程序各17页通过；Android开发包18项检查通过，25项JVM本轮使用缓存；Linux仅编译。新增4图／2短MP4／2GIF，目录48／17／17。保留捕获检查器失败和既有隔离库清理超时；相同来源恢复失败批后全部通过。增量86完整来源按已发布94081c0重建，99份旧证据原字节保留。完整28项GAP、真实设备／云／模型／TG、容量、安全、恢复与生产放行继续开放。
+
+Current source-bound checks and actual media pass with cached JVM scope recorded honestly. Retained attempts document capture-checker assumptions and an isolated-database cleanup timeout, followed by same-source batch recovery. Published increment86 provenance reconstructs without rewriting99 old evidence files. The full production goal remains open.
+
+[计算与使用 / Workflow](development/87-project-budget-comparison.md) · [验证 / Evidence](quality/evidence/budget-comparison/verification.md) · [截图与录屏 / Media](media/README.md)
+
+
 ## 2026-10-27 · Increment86 / 秘书Token额度与用量
 
 新增Go／PostgreSQL月度额度账本：组织、员工、项目、Skill共用原子接单预留；未知用量保守保留，已知失败、取消及越限用量不被抹除。管理员通过Web／Taro发布完整策略、按范围查账，并凭据核对未知终态用量。迁移72不预设生产额度；SDK用量先记账再校验回复，不将Token数量视为金额账单。

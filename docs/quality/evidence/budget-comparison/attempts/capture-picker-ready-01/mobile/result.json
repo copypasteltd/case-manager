@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T04:26:25.390Z",
+  "finished_at": "2026-10-27T04:27:02.859Z",
+  "checks": [
+    "Actual MFA login, implemented budget and authorized canonical shares reconcile HKD1385 inside, HKD-945 outside and HKD440 lifetime without counting two drafts."
+  ],
+  "source_count": 663,
+  "source_sha256": "5a7d47c62e5c6e98d658343f27f6215ff010fa2f9127216ca72d8f379568d9a1",
+  "source_after_sha256": "5a7d47c62e5c6e98d658343f27f6215ff010fa2f9127216ca72d8f379568d9a1",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.weui-picker:visible') to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "5c92cd29db696ee27e8882774ca14811e82706e75f5e9cd40a175d685c7f1242",
+  "build_source_after_sha256": "5c92cd29db696ee27e8882774ca14811e82706e75f5e9cd40a175d685c7f1242",
+  "build_source_unchanged": true
+}

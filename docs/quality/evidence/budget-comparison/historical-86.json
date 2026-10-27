@@ -1,0 +1,423 @@
+{
+  "commit": "94081c0db039c07a04c382816e1e2a44eb9f079a",
+  "complete_startup_source": {
+    "source_count": 862,
+    "sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+    "reconstructed": true
+  },
+  "clients": {
+    "web": {
+      "recorded_sha256": "e57dcb6310faa564639e02c93c631a45eab5b7ed99aeed2096837cf13bab5841",
+      "recorded_startup_sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+      "reconstructed_sha256": "e57dcb6310faa564639e02c93c631a45eab5b7ed99aeed2096837cf13bab5841",
+      "source_count": 633,
+      "complete_capture_manifest_reconstructed": true
+    },
+    "mobile": {
+      "recorded_sha256": "98da852bbb8afc1fa60a8e3a6e9e124b3b3189c754eaf703c3b709db714dd09d",
+      "recorded_startup_sha256": "61d794453deebd4db31d6b65f8e9dce081395964e331d0b14a5a395fb70c8df0",
+      "reconstructed_sha256": "98da852bbb8afc1fa60a8e3a6e9e124b3b3189c754eaf703c3b709db714dd09d",
+      "source_count": 655,
+      "complete_capture_manifest_reconstructed": true
+    }
+  },
+  "preserved_evidence": [
+    {
+      "path": "docs/quality/evidence/token-budgets-mobile/capture.json",
+      "sha256": "5774bb48785b412181c2b14343e02cbb828c3d2f36ab252079309b472022a1f5"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-mobile/inbox.png",
+      "sha256": "2113a5dfabce6649349e77cad45a2edaa051bc502c55ef16e98a548bf23dafcb"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-mobile/result.json",
+      "sha256": "1ec1958dcc328de1cd52c0ee550abf12df11563deadd3a729db4ee4b566ccdcd"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-mobile/source-manifest.json",
+      "sha256": "e6be5543365a7aa24370fabccdbe4bebacad94b95571861452e50f256d54490f"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-web/capture.json",
+      "sha256": "c683c25c912ddd461651a6fe7bc9433e3cc20d0168af012e17ed9a69c6629a02"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-web/inbox.png",
+      "sha256": "58340f268dff0609efdcca014645d94d2892acff3ed4bafbd585b431fa0a5f4f"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-web/result.json",
+      "sha256": "9df1b7a934c95cce2a566eb9c5130e17d5bfb935f8b23018f37f6b7ab20df333"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets-web/source-manifest.json",
+      "sha256": "bbe7610e21e4c1fee1434c6abc84ccbb545edd1d7d37156b1616fd7313786b4e"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/android-test-scope.json",
+      "sha256": "6b988b99ef6e0b16edb6e5b8f59ee933a3a24be234e4132e8d6d7edd3958b10b"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "3943f4dcccd1775defe153e3547319484b0aaa3615c50bab017cdca16d84c09b"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "359c2c3bd6340def28c5d22afb0175a399f71697f839342b6218fa0758b512ae"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "8ad83d69ef50e84dc4b31e9a8a0127b6580d482a81dfb86c80c272f4de95aceb"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "21e15d0f7fd35adce7517596db56ad8e438b53b90ea6f0ed7f0f769a6e6eb886"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/apk-inspection.json",
+      "sha256": "d11d23a2c7e7558afc1c7feab94e849a1745aae86c442ea915834d59e0b57e29"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/apk-page-count-01/apk-inspection.json",
+      "sha256": "2e091811a2ae80445370bb9f9519ba860e8bbc0501c40c406e3cbf61e66e2603"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/apk-page-count-01/diagnosis.json",
+      "sha256": "0a411a084bec4e05888745a7f3c4c16ada58cfaeb308706c1f2dcf37db89d32f"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/apk-page-count-01/inspect_android_apk.py",
+      "sha256": "4f5caf73146f59436036cb9b73de47757467656fb7e5419cf3238dcf8ef8a1a9"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/check_token_budget.mjs",
+      "sha256": "015b9ac5e46a451e0a8ed056d54ab2372ccf57a427ab03d9c714c9ffa1000410"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/diagnosis.json",
+      "sha256": "edd46e7bf53dc7138af49cdf811ab6dcbb1fecc6076aa1b04700835041cb21ac"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/mobile/failure.png",
+      "sha256": "5c34b3fa9109eabef426306116ea7dfae28cbe7037333684b2a9c34d366bd79c"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/mobile/result.json",
+      "sha256": "94be962f77ee71e7e054599e1d73fe72e08e404b1911e19b9e07d692197ad9d2"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/mobile/secretary-token-budgets-mobile-ledger.png",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/mobile/source-manifest.json",
+      "sha256": "cd3b9a5096c75da9e7c1e8841a18d0fae4225f7fee9832fa70f6956fac2ef792"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/web/capture.json",
+      "sha256": "b43e1759a18031ea2bcd97fde667f06eab1252e5855d271abb85d209a2e589b3"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/web/inbox.png",
+      "sha256": "64f31948867f4c33046c8a6058e8a3536024fe39a3a2fc266fdcf0af968fb5aa"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/web/result.json",
+      "sha256": "0c5e401189f7ff61f2b739c1c404914593a165890c9184de06a5e110f59dac35"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/web/secretary-token-budgets-web-ledger.png",
+      "sha256": "8a939eb435fb10d71c277cce1f2302e277ca0e9c0df8bbd05da5023ae52d9f2a"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/web/secretary-token-budgets-web-reconciled.png",
+      "sha256": "2a12060a0e3569af3c5676bf833e382db1ce0cd8b4259d7e447135c2970566f1"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-01/web/source-manifest.json",
+      "sha256": "1d772ffac773bd80ced3d6206069ed3579b170098888f49b2c897256d4c48b6c"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/check_token_budget.mjs",
+      "sha256": "195b9247260806b8cfcc68f0516d97f9ac639855798e87700af43452e9a44243"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/diagnosis.json",
+      "sha256": "62ecb1bd8c6f351eb4961ede924496e95708d224c7b9dd8b5c4061cc943c31a2"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/mobile/failure.png",
+      "sha256": "757511a8b8148b59dd198b26c136b94e9357023226561868bb2d143363062bf3"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/mobile/redaction.json",
+      "sha256": "d63eef52faee9bf31a163b51fe3095486df5a150454b6c39321cbcf23fa9381a"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/mobile/result.json",
+      "sha256": "39aacb3e60e94bb7959475b6dd70ee1424e9bb936703540c9da616d794f09336"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/mobile/secretary-token-budgets-mobile-ledger.png",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/mobile/source-manifest.json",
+      "sha256": "0f3538a15cee525ab2057ab216c12e4182d1ca18bc6184b02cd255ad25c20d73"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/web/capture.json",
+      "sha256": "706cbee45151fc2ed946d5e2d6b1e2a8caa7312a3f4801a883b183b039468552"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/web/inbox.png",
+      "sha256": "5bbb790799bcebebeb7a4d01350c133473811eacc62851399b783fd858448867"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/web/result.json",
+      "sha256": "bf14c7a3853766af854d45f0977deab03ab0705bb38bea47cbdfdefdc9e3b229"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/web/secretary-token-budgets-web-ledger.png",
+      "sha256": "573e6750ecd76444fa22fac10d19b9a263c3767123863618b1e6e223197d8f1a"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/web/secretary-token-budgets-web-reconciled.png",
+      "sha256": "5a2a1678979a8c36b5dd67ab92dc692b0f93cf298ff90d666c2e19b297c87cb9"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-02/web/source-manifest.json",
+      "sha256": "aa9bde479addb96c651e23eb2a4ae6d3b6b36b8137596f2ae37c0318d3c4eec1"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-03/check_token_budget.mjs",
+      "sha256": "dacae48f0c56eb5b2e90ee2249f8d4665228fb43685605a1adea106637bb97ee"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-03/diagnosis.json",
+      "sha256": "0444abf14208dacce54bbaa537e7d7d7a89bf9606d58d6677f8d713fb4c9c9d9"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-03/failure.png",
+      "sha256": "60e36567f33a86ba3d0218aa4db4e4e670524ef0033ebedbe24ae4fb57742098"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-03/result.json",
+      "sha256": "eaae039497fb8407b11298f15e7deb1b7a3bc2e40a0ec3c59c20ca69ab74b6fd"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-03/secretary-token-budgets-mobile-ledger.png",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-03/source-manifest.json",
+      "sha256": "14b2e2980122b137a4fd2a91b11e23b0dcb592e1a20560f0051a2989bb2c6a3f"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-04/check_token_budget.mjs",
+      "sha256": "046fbb522ec5bc0001d2054c38ac5bf9e8be27d55b617c8c3723e79df77fefd7"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-04/diagnosis.json",
+      "sha256": "b546f57bfe03df1baddf6ae69afbfe5c258a711417cdc7e4da939f57d8a6647d"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-04/failure.png",
+      "sha256": "60e36567f33a86ba3d0218aa4db4e4e670524ef0033ebedbe24ae4fb57742098"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-04/result.json",
+      "sha256": "7b99b563e27c6efed0a7ef849cef59eae2db60cd1be5c61c073323919384b9fd"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-04/secretary-token-budgets-mobile-ledger.png",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/capture-mobile-stepup-04/source-manifest.json",
+      "sha256": "452926131753a599ff1e1c8ce9639d4f14e8bf263fe1e1b41cc66a86528625a3"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/development-probe-01/development-project-resources.json",
+      "sha256": "c17268c31c4e13e5788d7fb826b1aad2f86d53b10ec33cbb0a8c0348c5165807"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/development-probe-01/diagnosis.json",
+      "sha256": "e1b017ca549c608fa6fcd38dd9896c130a55baea3c84ab69c02804b5fad80656"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/development-probe-01/verify_token_budget_development.py",
+      "sha256": "82a5be4d513ba1a336b01de4ed20b6dc18653cbae819e589bf64f91b5a1e72fd"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/initial-checks.json",
+      "sha256": "ab5e20109e15333637712e934bfe8499b10f960eebb8d9a33de4898393e1187f"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/capture-manifest.json",
+      "sha256": "4d963245b8cb17e6d3d8e734531f7c85acb306bb5f4be4bfd674230841d2db42"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/check_token_budget.mjs",
+      "sha256": "717ff29f34c2ba1f5cadacd219b1e966474d604c10e04f477cc1e4fc7df3f3b8"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/diagnosis.json",
+      "sha256": "9cd02fbe83a35027ef7a54eab83df8a264cbdb8a27ab61004d62d45ffaae124a"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/failure.png",
+      "sha256": "2affd9d3129a8e5ef85a96f86b400c78250837cb1fb997580f358c105b1fbfbb"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/result.json",
+      "sha256": "13f2597e0f2861052f45a756a0db89b33d12aee281fe95c2c87d792d977f34da"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/secretary-token-budgets-mobile-ledger.png",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/secretary-token-budgets-mobile-reconciled.png",
+      "sha256": "edcf44e03b9da55745251f23e49826f6cd4466f3b5e22f2a570fec32a2a5b540"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/mobile-layout-01/source-manifest.json",
+      "sha256": "090b4e0b730c7c0fb4f4141f0f88b963f5af9b38e8d30294fc6bbd1175ef145b"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/source-page-count-01/diagnosis.json",
+      "sha256": "a428ebfa65824e7fda8174d5cc29dcab153e4ee0dfece54c34835fe0ef61708c"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/source-page-count-01/final-source-check.json",
+      "sha256": "8fce7849ab0608d9a06f2387b1982865dfd2952b98bfa5921dc66913e75b0869"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/source-page-count-01/verify_token_budget_sources.py",
+      "sha256": "423444dfebbc7bbeb76bda7bbbc4037106ed8aaec4f1371857951177a77416f8"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-01/check_token_budget.mjs",
+      "sha256": "40642bf335f5c4dcec374bf456f2f0ca8b3c80fb563a1358bdbdfa6ee470f251"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-01/diagnosis.json",
+      "sha256": "09cd9803e996cd6d85c466b9377d3f0fb386b50c92683566e4e08b66a49ec69a"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-01/failure.png",
+      "sha256": "45ab4d3095a2800a6591db83a21289c3c14efe569c83cc0521d5ad56c6936ba1"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-01/result.json",
+      "sha256": "35965143c4ba4aadaf6e10e6710588eb37e5f402af866d80b0da39e3f5d2a5a8"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-01/secretary-token-budgets-web-ledger.png",
+      "sha256": "53b237332cb4c07f563261558b815af4d056196653a795bf90ea8dfb4fa1c3ce"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-01/source-manifest.json",
+      "sha256": "7dd4e504cb26c2c61335bd7f300cd786ea92c195cbb1526e7b6fa111e7a36ac3"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-test-01/budget.test.ts",
+      "sha256": "0177044fbbcd744ea8173b21a9b4fd9e56da5f7c2852d1386d1e4b367bb5488a"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-test-01/diagnosis.json",
+      "sha256": "be49200cdebb9e4ca5a26772fbb15a7a89cae1c9229edcdee3d549dd4fdf4eaa"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/attempts/web-test-01/web-build.json",
+      "sha256": "bb79cbe0ac184af9645bbdd402ace14ac3d92ad4d2d42a84bf875a241ff115cd"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/batch-progress.json",
+      "sha256": "b1ec4b3848f965567e3bcad2af615341743a657c278ccec3dfb047b06ab493c8"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/build.json",
+      "sha256": "78529028f2a6d17fa77d61969f23d593e033e0cc14a203895df6488ced356456"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/development-check.json",
+      "sha256": "5d7d0154e92566d854ab512ae5b169d38c4c6f599eb60dd2d66c50bd05e43b23"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/development-project-resources.json",
+      "sha256": "a6c928cfee45277448aa4c201fec014147b0036f5b0e9f3f28393bffa1621582"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/development-runtime.json",
+      "sha256": "55a3dbf71aadcd02aaa450e81d4a3a089786dd349bba400d0e63d1259d8a2e90"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/development-update.json",
+      "sha256": "4b74bc46956f86b84ee8037ca7850d922c444ec665c89a056382dcdc479fc538"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/final-source-check.json",
+      "sha256": "e7784527d53322f4f73ed698598e05e8912aa8471c400415042de590dd8f1046"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/historical-85.json",
+      "sha256": "7f246f15fe3a7b177825e972199cd803a66710b536a171d8eaea20201a5cf89b"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/linux-build.json",
+      "sha256": "f113ecae9ed4bb3a6acced4b2fd8a9bd44e67848d02c776b0afcadca9e70c4f6"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/media.json",
+      "sha256": "fb51e9730b77dd01066cd487d872eb12b7acab7ebfd3d6bd5d398edf88cf99d8"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/mobile-build.json",
+      "sha256": "287274b97df43951f88970a070ffc8e1335b939d813bc313ea5532516750cae7"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/mobile-capture-manifest.json",
+      "sha256": "1f586decc0e069a8a30522ba7553d92f77d6807d8d40568b82f9afb61352a1e6"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/mobile-verification.log",
+      "sha256": "bba36e4c78c97f1841c59eaa493d633e79335ee2753fd9632d370e6bb19b822d"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/native-build.log",
+      "sha256": "463c9b8d8342c4df796b5524ccf975b4794b9df0876b6d4e227f4bb989486d67"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/repository-check.json",
+      "sha256": "333cb2921e11bc7b83a5d35909d66506ac30982c7f6498992ffa36cd81c21292"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/result.json",
+      "sha256": "5693a19d2ccba714902fa316a345ed256f7cfd3f5bc1973db3b7a6bbe95f2437"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/runtime-build.json",
+      "sha256": "2690e8d2164cb02286842a90d6286641386dbdc4af7c7fde5aa8ee2dc3f598af"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/verification.md",
+      "sha256": "aa75f1cc0ea6348b2fcc17bf88d66e1e786325b0fdc953e26fb3863dbca24efa"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/visual-review.json",
+      "sha256": "324381752c03c6fe30285993f1fa1c49e627cd57fc422fe6341a53d64d9cef3e"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/web-build.json",
+      "sha256": "4bf4f94fbd1ef61f961a9198aafc45e6feaf0f1ba5162c1c806fd73fbcc4b886"
+    },
+    {
+      "path": "docs/quality/evidence/token-budgets/web-capture-manifest.json",
+      "sha256": "7ff69271944f8edfd49b49eadf131ec4d2e1a688d09b5e42281a0642fd54d981"
+    }
+  ],
+  "scope": "Published increment86 complete startup and both complete client capture manifests reconstruct from Git. Earlier increment84 cache limitations remain unchanged in its retained provenance."
+}

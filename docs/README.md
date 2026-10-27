@@ -4,7 +4,7 @@
 
 **当前细化基线：v1.0-draft，2026-10-24；视觉设计基线：v1.0.0-draft。** 全部后续文档保存在 `docs/`，全部开发实现位于 `app/`。身份/权限、项目协作、知识修订、文件元数据和部分 Web 页面已进入本地实现与验证；完整平台仍在建设，尚未生产部署或完成首发验收。真实进度见[代码实施台账](delivery/02-implementation-ledger.md)。
 
-最新实现：[增量86 · 秘书Token额度、预留与凭证核对](development/86-secretary-token-budgets.md) · [完整检查与演示来源](quality/evidence/token-budgets/verification.md)。
+最新实现：[增量87 · 项目预算与实际支出对比](development/87-project-budget-comparison.md) · [完整检查与演示来源](quality/evidence/budget-comparison/verification.md)。包含完整当前预算、项目实际分摊、冲销、未确认草稿与预算外来源；Web／Taro共享授权口径，完整Goal仍开放。
 
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 

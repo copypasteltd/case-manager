@@ -12,11 +12,11 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
-最新功能 / Latest workflow: [秘书Token额度与结算 / Secretary token budgeting](docs/development/86-secretary-token-budgets.md).
+最新功能 / Latest workflow: [项目预算与实际支出对比 / Project budget versus actual expenditure](docs/development/87-project-budget-comparison.md).
 
-![实际秘书额度账本 / Actual secretary budget account](docs/media/gifs/secretary-token-budgets-web.gif)
+![实际项目预算与费用来源 / Actual project budget and expense sources](docs/media/gifs/project-budget-comparison-web.gif)
 
-[Web MP4](docs/media/videos/secretary-token-budgets-web.mp4) · [Mobile MP4](docs/media/videos/secretary-token-budgets-mobile.mp4) · [Mobile GIF](docs/media/gifs/secretary-token-budgets-mobile.gif). 合成数据／真实本机API；移动为Taro H5。Synthetic data and real native API; mobile is Taro H5.
+[Web MP4](docs/media/videos/project-budget-comparison-web.mp4) · [Mobile MP4](docs/media/videos/project-budget-comparison-mobile.mp4) · [Mobile GIF](docs/media/gifs/project-budget-comparison-mobile.gif). 合成数据／真实本机API；移动为Taro H5。Synthetic data and real native API; mobile is Taro H5.
 
 ## 方案与能力 / Architecture and capabilities
 
@@ -146,14 +146,14 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前功能基线（增量86）新增秘书月度Token额度与用量账本：接单时同时检查组织、员工、项目和Skill额度，原子预留；已知失败／取消用量照实记录，未知用量保守记账并由管理员凭证核对。Web与Taro提供配置、范围查询和核对流程。生产不预设额度，不将Token账本冒称金额账单。见[完整规则](docs/development/86-secretary-token-budgets.md)与[验证记录](docs/quality/evidence/token-budgets/verification.md)。
+当前功能基线（增量87）新增项目预算与实际支出对比：在“项目 → 预算”明确选择已配置币种，逐项核对当前已实施的完整预算、原费用的本项目份额、冲销及预算外发生。可按明细／状态分页查来源并打开规范原记录；未确认费用单列。缺失预算与批准清空的零预算不同，历史预算不会冒充当前依据。见[完整使用及接口规则](docs/development/87-project-budget-comparison.md)与[验证记录](docs/quality/evidence/budget-comparison/verification.md)。
 
-本轮后端158顶层、1,029结果／934末级、8批，72项迁移；Web98、运行时47、移动187项及两小程序各17页。Web／Taro各6组实际流程、3项布局；Android开发包、缓存JVM范围及Linux仅编译证据见[验证记录](docs/quality/evidence/token-budgets/verification.md)。四端生产验收、真实模型／TG、金额计费及其余编号差异仍未完成。
+本轮后端159顶层、1,041结果／945末级、8批，72项既有迁移保持原字节；Web104、运行时47、移动187项及两小程序各17页通过。Web／Taro各6组实际流程、3项布局；Android开发包18项检查通过，25项JVM测试本轮使用缓存；Linux仅交叉编译。后端隔离库清理超时与捕获检查器的失败记录、相同来源恢复过程均保留。
 
-演示目录共44 PNG、15 MP4、15 GIF；本轮新增四张额度账本截图与Web／Taro各一对实际录屏。增量85的完整启动及两端捕获来源按已发布83bf468完整重建；更早84的未冻结编译缓存限制仍保留。日常API使用72项迁移，真实模型／TG关闭。完整四端、云、模型、容量、安全与恢复验收仍开放。
+演示目录共48 PNG、17 MP4、17 GIF；本轮新增四张预算对比截图和Web／Taro各一对实际短录屏。增量86完整启动及两端捕获来源按已发布94081c0重建，99份旧证据保持原字节；更早84的未冻结编译缓存限制仍保留。对比始终只代表当前授权费用，不宣称全部项目余额或可用资金。保留全部28项原编号；完整四端、云、模型／TG、120 GB／2 TB、安全、恢复与生产验收仍开放。
 
-The current functional baseline (increment86) adds monthly secretary token allowances, atomic reservations across organization/user/project/Skill accounts, observed failure/cancellation usage and conservative accounting for unknown usage. Web and Taro expose policy publication, filtered reporting and evidenced reconciliation. Production receives no invented allowance; tokens are not a monetary invoice. See the [workflow](docs/development/86-secretary-token-budgets.md) and [verification](docs/quality/evidence/token-budgets/verification.md).
+The current functional baseline (increment87) adds project budget versus actual expenditure. Open **Project → Budget**, select an explicitly configured currency, and compare the complete current implemented plan against this project's canonical expense shares, reversals and out-of-plan activity. Filter and page sources, then open the original record. Drafts remain separate; an absent plan differs from an explicitly cleared zero plan. See the [workflow and API rules](docs/development/87-project-budget-comparison.md) and [verification](docs/quality/evidence/budget-comparison/verification.md).
 
-This round records158 backend top-level tests,1,029 results/934 leaves in eight batches and72 migrations;98 Web,47 runtime and187 mobile tests, with17 pages per mini-program. Each Web/Taro demonstration checks six actual flows and three layouts. APK details, cached JVM scope and Linux compilation are recorded in the [evidence](docs/quality/evidence/token-budgets/verification.md). Production acceptance, live model/TG operation, monetary billing and the other numbered gaps remain open.
+This round passes159 backend top-level tests,1,041 results/945 leaves in eight source-bound batches, preserving all72 existing migrations;104 Web,47 runtime and187 mobile tests, with17 pages per mini-program. Each Web/Taro demonstration checks six actual flows and three layouts. The development APK passes18 inspections;25 JVM results are cached this round. Linux evidence establishes cross-compilation only. Retained failures document a disposable-database cleanup timeout and capture-checker assumptions, including the source-checked recovery.
 
-The catalog contains44 PNGs,15 MP4s and15 GIFs, including four new token account screenshots and an actual recording/GIF pair for each client. Increment85 complete startup and both capture manifests reconstruct from published83bf468; earlier increment84 cache limitations remain explicit. The owned API uses72 migrations, with real model/TG integrations disabled. Full device/cloud/model/capacity/security/recovery/production acceptance remains open.
+The catalog contains48 PNGs,17 MP4s and17 GIFs, including four new comparison screenshots and an actual short recording/GIF pair per client. Increment86 complete startup and both captures reconstruct from published94081c0;99 historical evidence files retain exact bytes. Earlier increment84 cache limitations remain explicit. Comparisons cover authorized records only and do not establish total project balances or available funds. All28 gap IDs remain in the register; full device/cloud/model/TG/capacity/security/recovery/production acceptance remains open.
