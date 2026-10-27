@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **58张PNG、21段MP4、21个GIF**。增量89新增四张移动财务结果截图、费用与资金草稿各一对实际MP4／GIF；原报表、Token、知识、TG、状态、项目、OA和文件素材保留原证据。全部为隔离合成数据，不含真实业务或凭据。
+本目录包含 **62张PNG、23段MP4、23个GIF**。增量90新增依赖修复后实际页面的4张结果图及2套MP4／GIF；原89及更早素材保留原证据。全部为隔离合成数据，不含真实业务或凭据。
 
-This catalog contains **58 PNGs,21 MP4s and21 GIFs**. Increment89 adds four mobile-finance screenshots and two actual draft recording/GIF pairs. Earlier captures retain original evidence. All media uses synthetic data and excludes real business records and credentials.
+This catalog contains **62 PNGs,23 MP4s and23 GIFs**. Increment90 adds four actual result screenshots and two recording/GIF pairs after dependency changes. Original89 and earlier media retain their own evidence. All media uses synthetic data and excludes real business records and credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -392,3 +392,29 @@ Actual silent recordings show authenticated expense/cash draft entry and fixed e
 MP4按真实时间编码；GIF倍率与源帧摘要见[media.json](../quality/evidence/mobile-finance-operations/media.json)。4张截图及两GIF首／中／末帧经实际像素检查。原JPEG和私有fixture不提交，所有自建浏览器／临时API／隔离库／5189服务已释放。
 
 复现 / Reproduction: 先归档已有证据，再运行`python app/scripts/run_mobile_finance_browser.py --mobile`及`python app/scripts/encode_mobile_finance_media.py`。失败捕获和被替代构建按准确源码保留，不重绑为当前通过。见[设计与使用](../development/89-mobile-financial-operations.md)、[验证](../quality/evidence/mobile-finance-operations/verification.md)及[像素检查](../quality/evidence/mobile-finance-operations/visual-review.json)。
+
+## 18. 依赖修复后页面兼容 / Pages after dependency hardening
+
+新锁下实际完成9组费用、资金、退款、员工结算与冲销流程及3种宽度核对。录屏为共享Taro H5，使用真实原生API及隔离合成库；完整四端真机／平台验收另行开展。登录后才录制，无音频；MFA限流等待不包含在草稿短片中。
+
+Nine actual financial journeys and three layouts run against the changed dependency tree and a native isolated API. Recordings show authenticated shared Taro H5 pages with synthetic data, not device acceptance. Draft clips exclude identity entry and the MFA rate-limit wait.
+
+![已确认费用 / Confirmed expense](screenshots/dependency-hardening-cost-confirmed.png)
+
+![资金登记与分配 / Cash and allocation](screenshots/dependency-hardening-payment-allocations.png)
+
+![已登记退款 / Recorded refund](screenshots/dependency-hardening-refund.png)
+
+![员工结算 / Employee settlement](screenshots/dependency-hardening-employee-settlement.png)
+
+![dependency-hardening-cost-draft](gifs/dependency-hardening-cost-draft.gif)
+
+[MP4](videos/dependency-hardening-cost-draft.mp4) · 390×900 · 28原始采样帧／5701毫秒 · GIF 1.000×。
+
+![dependency-hardening-payment-draft](gifs/dependency-hardening-payment-draft.gif)
+
+[MP4](videos/dependency-hardening-payment-draft.mp4) · 390×900 · 35原始采样帧／7114毫秒 · GIF 1.000×。
+
+MP4按原始时间编码，GIF时间来自实际采样，文件摘要和ffprobe结果见[媒体记录](../quality/evidence/dependency-hardening/media.json)。四图及两GIF首／中／末帧均已检查；原JPEG及私有fixture不提交。浏览器、上下文、临时API、隔离库及5189服务已释放，用户原有无关进程未动。
+
+复现 / Reproduction: 先保留现有证据，再运行`python app/scripts/run_dependency_hardening_browser.py --mobile`和`python app/scripts/encode_dependency_hardening_media.py`。现有限流会使完整页面检查等待实际15分钟窗口；不调整应用限流。见[设计与复现](../development/90-dependency-hardening.md)、[准确验证](../quality/evidence/dependency-hardening/verification.md)和[像素检查](../quality/evidence/dependency-hardening/visual-review.json)。

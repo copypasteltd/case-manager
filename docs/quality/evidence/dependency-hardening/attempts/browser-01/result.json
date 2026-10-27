@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T12:23:01.024Z",
+  "finished_at": "2026-10-27T12:28:28.166Z",
+  "checks": [
+    "Actual mobile login, list entry and full cost draft preserve exact HKD100, project60/company40 and one fixed file; saving remains draft.",
+    "Concurrent editing rejects the old basis without losing text; an actually committed but lost PATCH response is blocked and never resent.",
+    "Mobile confirmation uses fresh MFA and preserves the facts; an independently approved purchase is linked by its exact revision without a second cost.",
+    "Actual mobile cash registration preserves Hong Kong February1 and UTC January31; allocating60 then releasing20 yields exactly40 settled and60 outstanding.",
+    "A real separate refund draft fixes the original payment, records5 against its original allocation and later associates5 more; original refund10 and net settlement30 reconcile."
+  ],
+  "source_count": 687,
+  "source_sha256": "b32b7de2f927dc998a26745fae328b4c29d84396f82badb693e692233fd7c3e6",
+  "source_after_sha256": "b32b7de2f927dc998a26745fae328b4c29d84396f82badb693e692233fd7c3e6",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('已通过本次两步验证，请继续核对并确认操作。', { exact: true }) to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "ce53f77c23d7e0aa67b24558ca05f6a63199d6367a6da20a3c5c6997e59b4736",
+  "build_source_after_sha256": "ce53f77c23d7e0aa67b24558ca05f6a63199d6367a6da20a3c5c6997e59b4736",
+  "build_source_unchanged": true
+}

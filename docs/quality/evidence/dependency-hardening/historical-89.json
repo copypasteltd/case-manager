@@ -1,0 +1,431 @@
+{
+  "commit": "32af13654b94dea7ea5e72f826902cfd46f7b33e",
+  "complete_startup_source": {
+    "source_count": 897,
+    "sha256": "9d0b3035c0f5143d806e97601a9b3f805bda0bfde3aba6dd190aaac0b63b6255",
+    "reconstructed": true
+  },
+  "clients": {
+    "mobile": {
+      "source_count": 682,
+      "recorded_sha256": "79c8578c8ca06a1265e0be1252bdc6ddebf19a22418e1f8ef1276a831ef1ab85",
+      "complete_capture_manifest_reconstructed": true
+    }
+  },
+  "preserved_evidence": [
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations-mobile/business-proof.json",
+      "sha256": "026232cd539722da4c88369f92a0b32a524c06319b2287f749e464c9f7e8c98c"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations-mobile/capture.json",
+      "sha256": "ad9eb09bc30e19bbe543632b0fb2ffd83459e7102445be972245c48494f16a2d"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations-mobile/inbox.png",
+      "sha256": "58844f4bca0bc6e0f236fe31133331218cd80d5dcb359f7efbc4598948c2c57d"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations-mobile/result.json",
+      "sha256": "f149a1a5ebcfc9e07cd51a6c59188aaab24eb15808ba8ad8b0e19b33212aa9c5"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations-mobile/source-manifest.json",
+      "sha256": "cf816498e4bd41dcdb75e4e29d563b3009dbe5e1a1db9be370e5d04dfd3b3453"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/android-test-scope.json",
+      "sha256": "004f05573b2fddbd686183eefd4e90e494510c7264121406834236cfed2ea62e"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/apk-inspection.json",
+      "sha256": "3fefe2cee613e9cadeabe2f88ccc3b301a2c98f3654132f6fa79b0cb59b064db"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-02/attempt.json",
+      "sha256": "49ccd3fc553606ad5defd0ef3bd1484e0ea921b6a4ba85b3c4de2bf8ec713bcb"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-02/failure.png",
+      "sha256": "3041d996afa19b08e53fb21c9dda04644020a7dc610c82f49b04bb1bde862b70"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-02/result.json",
+      "sha256": "168f4395650b89534730b16b0f6ac2bb20f3003baef5e65f50c7f458ac943b15"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-02/source-manifest.json",
+      "sha256": "1246086a7b25270c55bc852961d4498958afcf5efa5fed6f77ebfa64364388e9"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-02/sources.zip",
+      "sha256": "9319ddf967cfe80c6398d7c1e400e9b0acd3131e4b96bfbd69980f5dbf586101"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-03/attempt.json",
+      "sha256": "1ea31bbb3865dd02ac7c70aa2322ee2f6811d609d35a631654258b12b731db93"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-03/failure.png",
+      "sha256": "3041d996afa19b08e53fb21c9dda04644020a7dc610c82f49b04bb1bde862b70"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-03/mobile-build.json",
+      "sha256": "174ad5505799c342f9a93e2cbb4735772842524cf2e3682ab385ca66a53059dc"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-03/result.json",
+      "sha256": "52f75c17b650d288b23852149f38aace3c94537d3f5e47fdff5daac4a01ab564"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-03/source-manifest.json",
+      "sha256": "24c14f1be71aed11bb75afd5a177d53018443bc6661c5e6b58ef849816e291c9"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-03/sources.zip",
+      "sha256": "98266ac449b15889c3a031491f4e88afb699823b773ec290d7bd1ab5904802ad"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/attempt.json",
+      "sha256": "88ae29f7c6b9add422ceed26dd9f2804490bb82e751c76c16602b40e52315c9b"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/failure.png",
+      "sha256": "49aa0650cea16beaa5431345fab8c0014b0e0b90ba1acba0991bf92a73d9604f"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/result.json",
+      "sha256": "793c60cf6404b3683bc3835de1908edf58d2f8b9e7e1c8870c952b68dd20c4fb"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/source-manifest.json",
+      "sha256": "586faa42bce08c31b39c99eebdf07159c7238c18476f43153dc0c7500b4813e1"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/sources.zip",
+      "sha256": "054e68c7b5ae8ad9eba8c6ac4b2bbdc7f575ddea6da77d2cd18c7167d8638eae"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/android-test-scope.json",
+      "sha256": "d947ab524e89d0a68cae0dff216b79fa853a2a62d0c68f2a4e9297e6d9715297"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "0ed5f3951d89e0ac2a6ef8a7018788af735ca6bd82392d9b8be7d60a93b9ee51"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "1571cfeccaea583b8f6a2774db8b35b616f47498b867102e2735c9843d646b7b"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f3401ecda255e4c1dc177998fd0dc7073b81ab32cd6da49fbdc590f655e33290"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "375b88ae8b65eaa0d94cbb4b9bd46039750f086a505166b5890e184299c6d131"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/apk-inspection.json",
+      "sha256": "7d19f3e8463456511c35be06b2ffca91e16c8546f5e04cfb5a34e03e47900b08"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/build.json",
+      "sha256": "e5560974f89119e80c2d5be6e1816daf271330235701249726b62bfb482d221d"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/mobile-build.json",
+      "sha256": "2e266f83c5b9e1f8bb009385c5f6afdc341c0f41be857600817b2ceecf60651b"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/mobile-verification.log",
+      "sha256": "e8efa241c1e802908858fc278d2f773655f62a84ca3543db83e05bf5bfe9e099"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-04/superseded-builds/native-build.log",
+      "sha256": "f4780afc0044ebfb3e50c2d4907f7bc80bf5a093bfb87aaad9878b4a251e32ea"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-05/attempt.json",
+      "sha256": "b4664365189b3b4cb0828f338217e8b980099d9a68e58997edc4ff508a261042"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-05/failure.png",
+      "sha256": "b7ea230e33e17623d30ebb926a3a28fbb3fc1fc4d5914d86b5333792dc62962e"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-05/media/mobile-finance-cost-confirmed.png",
+      "sha256": "f4dea9f2521dd0a3dba0722137d6dac4d5242360d8420a4d49b408020b2d78ab"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-05/result.json",
+      "sha256": "7c26ed4d533b736259593f2118872b7c5ade489744669d8398917fd30d555689"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-05/source-manifest.json",
+      "sha256": "ca7cf8b71c082d20f673c19a3487e57d667ffa55688c4290f71b0c8f979cc9e0"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-05/sources.zip",
+      "sha256": "be79106d990838ade706df7798bd7112cd0e2411ff04fb48bc56a6c126ae298f"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-06/attempt.json",
+      "sha256": "ad96f6b992c06f9152002d6c46e695d51ffe53878e8322b2175fa32abcfd9444"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-06/failure.png",
+      "sha256": "116a2c26f004938add8601d407ffb279ceaae1e41b6f89a05d34a79db516502a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-06/media/mobile-finance-cost-confirmed.png",
+      "sha256": "2245396c0ba4f52c41ec53d9d115bb26a0122da2ee550589415898d1f3467b78"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-06/result.json",
+      "sha256": "757e78c73a259fdcc34427fafecf1bb945ff6e2970d7dcc400d3ac5f5a99687a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-06/source-manifest.json",
+      "sha256": "46874daaca7ca8190b1d6fcd3590d018c8541a098c9dfc874c002b7107190cc5"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-06/sources.zip",
+      "sha256": "29e6b9d8734a8efb975341d954b883b2b31943321dd60e0952a0ba460abe5124"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-07/attempt.json",
+      "sha256": "1778838674c7d9f6e9a50a11fa4cc69f152192e4bae131e0df7bb8ff0005ae2a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-07/failure.png",
+      "sha256": "3041d996afa19b08e53fb21c9dda04644020a7dc610c82f49b04bb1bde862b70"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-07/media/mobile-finance-cost-confirmed.png",
+      "sha256": "e727160f50a523e259f2c6d348b67a0f1125c58fd63562e40a9db479fa572904"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-07/result.json",
+      "sha256": "bba2b50b9d7587d90df4415ff527ff8955f174e10bf099ca9fcb7875522529d1"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-07/source-manifest.json",
+      "sha256": "9d05d780ffc47906ddf9e6a007b8da168e1770ef11347609d22e2c4c4a6368a5"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-07/sources.zip",
+      "sha256": "4c26b32f6bfe38779e881cf4515aea89f824183237224a2039ea5b175f38896d"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-08/attempt.json",
+      "sha256": "1b09f9c55adec33638cafbcf8d93e8596adce93f4127354a40401365f0a11a0a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-08/failure.png",
+      "sha256": "98aa96312f9871aa19e5d4207190eb17302bd12e06d400298b3783366d7b8664"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-08/media/mobile-finance-cost-confirmed.png",
+      "sha256": "f2b6cb24b8bed3af43f93e8891b610846c7ff855e61e9570242749a372e80ed1"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-08/result.json",
+      "sha256": "cd82a791a9c6d8b7bb7a7c908a1bc3fffa7601cdbf6d81360882cce8938cd1a4"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-08/source-manifest.json",
+      "sha256": "e00cf12d3feb6f3b14912901ab736a81d697a129900fc7a33833009788614349"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-08/sources.zip",
+      "sha256": "34c8abd9195a9b5c308d8a6af01081b5a374fd54ee027806e5cfafe8d9298af0"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/attempt.json",
+      "sha256": "c5e16a2a731b0b5c13ceec1ec8ba6eac6777d79f60c0302a007d5de6d8e76073"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/failure.png",
+      "sha256": "84336d0bafd38cd695778f93d65f4407e95e3fd66e92472327fbb5dd0cc952bf"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/media/mobile-finance-cost-confirmed.png",
+      "sha256": "7084ae8dc16bfbc69c090e55380df0d9b8ccd06f3fc029346c07e727136503be"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/media/mobile-finance-payment-allocations.png",
+      "sha256": "f83838da75c0965f213dca2665ab6d32056eed2151135656a53acc0bfa91bef6"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/result.json",
+      "sha256": "2ec0a1e85bf1b1013982b74d3768d0d02e04912133deeb042c1da50c95199eed"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/source-manifest.json",
+      "sha256": "b0c43cd090f4d113c4cbfcaea336995058475b7ab504519f25f931461b3df007"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/browser-09/sources.zip",
+      "sha256": "ad2973bdbe72364814be9499bf252171fefc36b0e7d70c9cb4bfb51e52fb8039"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/startup-01/attempt.json",
+      "sha256": "5945495648a970ff4dd2b08c259fcbc80f8b27e33d6e9b3c6f9103ad86fc9b87"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/attempts/startup-01/sources.zip",
+      "sha256": "bdaebefaa8bd1c7dba8508bc582ca248cfda4fb3d579187853360bc0e6a22b4d"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/build.json",
+      "sha256": "d4d4a178d6fc6e10b3b24753f4fc477a1cb2fb9b98a499b689d4048712b904e9"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/development-check.json",
+      "sha256": "5dad79f3c32c13af561367e77d3562876524f45e882163b88ba5890d5981e97c"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/development-project-resources.json",
+      "sha256": "73e6c0318b5d02c22feb1cf07da3b90dc44c12bf09ca755b989f0d72a51a48be"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/development-runtime.json",
+      "sha256": "813b23c63222762d6305ef5a5f5772c4b6cde66e39557143549c4db830fb2ae9"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/final-source-check.json",
+      "sha256": "2b2116ffc9ddfa9f34a4b60de17607b89309fa53a0dcf1a06d814dc2b7d16e81"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/historical-88.json",
+      "sha256": "bf6743a3693d233e8a7d9351e72da4230cae1f6d59c95a1a0506fa0e991d8344"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/media.json",
+      "sha256": "ff79daaf73ec91a4ff5d96c79bf9129a721fb8b20fb716fec6c290c63ab4c7a4"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/mobile-build.json",
+      "sha256": "596e42894285ad4181ae51d50578fb84ea1b491228ccacb3d646711f7ec8e237"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/mobile-finance-cost-draft-capture-manifest.json",
+      "sha256": "364d5ac95f21eb10fab0e9ec24c1072b018696223a2c500a1101fe1d1b09756a"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/mobile-finance-payment-draft-capture-manifest.json",
+      "sha256": "71bf88af22294a6f1d211297059522240c10ba18ea3ce1e9e7cfc4c930f60e90"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/mobile-verification.log",
+      "sha256": "31c04144b5cd1cea8abecb933ea4c13f4a83d36ee3de9ad88a697e1991786f8c"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/native-build.log",
+      "sha256": "50fe1bd32c7b145542c04c1184c148acc0b9dc84eb3d0f6701bd473b84f124dd"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/README.md.source",
+      "sha256": "65a745457c3aecde67f5573a4cf9d534fd983154e30574fbf5aab84562195f4f"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/CHANGELOG.md.source",
+      "sha256": "55fdc9df312658556c4b569dedf87cf7bb6eb51927fa00e17bad4302ac8bbfb8"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/README.en.md.source",
+      "sha256": "0f3164b549ed1de035cdb352823d8c43754fc8f29aebe67969fef099852c1821"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/README.md.source",
+      "sha256": "e3fb9994bc809f07b4ed1fd0776b5eaa197b723f773fda65202655d02bbefffa"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/README.zh-CN.md.source",
+      "sha256": "9980112331f9020eb23d6dc675de976e5d2baa05040d5c22b28513cb158a49e6"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/delivery/02-implementation-ledger.md.source",
+      "sha256": "2c97b4dc96ce63adde533a5970b5599f12a57b879ca6fe32a7e3e359828fb342"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/delivery/03-goal-gap-assessment.md.source",
+      "sha256": "11b87c7abb89294f45c90c227fbee0fb4a58f2b558013a8bda974a0ce2f126fd"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/media/README.md.source",
+      "sha256": "4a539dac3b0e214039c342f3f1631ab62ce60869b763b80b19087cf41c6f55e3"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/quality/current-functional-baseline.json.source",
+      "sha256": "c2cfd1fc352f3c3e2e0c1d86c5cf10707aa7792eebbde81a1c3fe190c7fb823d"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/publication-before/docs/requirements/05-finance-and-subscriptions.md.source",
+      "sha256": "d35868d92bd91cc5dad9e443e83ffa2d67404ec919357d1949c7715ddac40cee"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/repository-check.json",
+      "sha256": "444415b008f24b4d1974afce2317f08f1d2d56868b0ebc70306c363ad57452c9"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/verification.md",
+      "sha256": "ed4ab5327421cc8f34d0cf602adb098a038cf8bea8c7ec0b0a06699dc4d50a7b"
+    },
+    {
+      "path": "docs/quality/evidence/mobile-finance-operations/visual-review.json",
+      "sha256": "02fef444b402339fa28ad5fa2bd36969686fbab78a2f218ee252759b2f6fba0b"
+    },
+    {
+      "path": "docs/media/gifs/mobile-finance-cost-draft.gif",
+      "sha256": "dcf29cfff5badefaf0f433a964b26ee674ab27579b4978603fbccb26efc3d5db"
+    },
+    {
+      "path": "docs/media/gifs/mobile-finance-payment-draft.gif",
+      "sha256": "7a33d9aebd78a40dbad08926201fecf737d36324cd458fd9fa8fc1951cd1c190"
+    },
+    {
+      "path": "docs/media/screenshots/mobile-finance-cost-confirmed.png",
+      "sha256": "0c15f9d00662450651e27b156080689dc2089afdce0ca3d67e923feae5d435f4"
+    },
+    {
+      "path": "docs/media/screenshots/mobile-finance-employee-settlement.png",
+      "sha256": "e946182a2f8d0dcc4df38d96cdaebf40b8f692b228d072e27e81c0f90aa5a819"
+    },
+    {
+      "path": "docs/media/screenshots/mobile-finance-payment-allocations.png",
+      "sha256": "135429f20e894163928df8d18162cce76155fbdfc073759cb8873a680beeb686"
+    },
+    {
+      "path": "docs/media/screenshots/mobile-finance-refund.png",
+      "sha256": "07e62c72a9da48b10cd34f2d09b62e325ea1a98cbecdba29fcfa99a352efcb7a"
+    },
+    {
+      "path": "docs/media/videos/mobile-finance-cost-draft.mp4",
+      "sha256": "a586a5e6466eefbad6fd94df103bda9b8c1c78df02b14fd86d5f9aeacf34d938"
+    },
+    {
+      "path": "docs/media/videos/mobile-finance-payment-draft.mp4",
+      "sha256": "43d44f02f0079eea127e66b4875ecb98a2d440f8425ad902f7c598aabdd112f0"
+    }
+  ],
+  "preserved_media_count": 8,
+  "scope": "Published89 complete startup/capture sources reconstructed from exact Git objects. All its evidence and eight finance media files remain unchanged. Earlier limitations stay at their original records."
+}

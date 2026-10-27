@@ -258,7 +258,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-后端检查需要已准备的原生 PostgreSQL 测试环境；原生批次会产生并清理隔离测试库。按改动选择相关检查，不用未改动源码重复执行昂贵构建来冒充新证据。修改 OpenAPI 时同步生成契约，修改设计 token 时执行 `npm run tokens`。本次增量89的实际执行、原证据复用、缓存原生测试及保留失败尝试见[验证记录](quality/evidence/mobile-finance-operations/verification.md)。
+后端检查需要已准备的原生 PostgreSQL 测试环境；原生批次会产生并清理隔离测试库。按改动选择相关检查，不用未改动源码重复执行昂贵构建来冒充新证据。修改 OpenAPI 时同步生成契约，修改设计 token 时执行 `npm run tokens`。增量90的实际执行、原证据复用、原生缓存范围及保留失败限制见[验证记录](quality/evidence/dependency-hardening/verification.md)。
 
 ## 7. 生产部署与存储计划
 
@@ -272,15 +272,19 @@ python scripts/verify_mobile.py my-change
 
 ## 8. 当前证据与放行条件
 
+当前维护更新为[依赖修复与多端兼容](development/90-dependency-hardening.md)：维护中的解包入口、Swiper／tar／webpack及其他明确版本已实际升级；12项有界安全回归及2项原生JS检查。升级后需使用完整锁文件安装，不复制其他环境的node_modules。 连续核实操作受到每用户每15分钟8次MFA限流；遇到限制等待后重试身份核实，先核对回执再决定业务动作，避免重复提交。
+
+
+
 | 层面 | 当前功能基线 | 范围说明 |
 | --- | --- | --- |
 | Go / PostgreSQL | 原增量88：161顶层／1,057结果／960末级、9批；73迁移 | 完整后端来源字节相同才复用原路径证据，本轮未重跑或改迁移 |
-| 运行时 / Web | 原增量88：47／112项及构建 | 完整声明来源字节相等才复用；八项Skill仍draft |
+| 运行时 / Web | 本轮重新执行47／112项及构建 | 新锁文件绑定；八项Skill仍draft |
 | Taro | 本轮204项、类型检查；双小程序各18页 | 9组真实财务流程、3种宽度；H5不代替真机 |
-| Android | 本轮开发APK及18项包检查 | 42,921,174字节；26项JVM缓存复用，无设备验收 |
-| 演示媒体目录 | 58 PNG／21 MP4／21 GIF | 新增4张财务结果图及2套实际MP4／GIF；保留增量88完整来源和80份旧证据 |
+| Android | 本轮开发APK及18项包检查 | 42,921,174字节；26项JVM缓存，APK与89字节相同，无设备验收 |
+| 演示媒体目录 | 62 PNG／23 MP4／23 GIF | 新增4图及2套实际MP4／GIF；原89完整来源与103份证据／媒体原字节保留 |
 
-锁文件的既有审计记录包含 **114 项依赖问题，其中 11 项 critical、32 项 high**，生产安全放行未通过。本次移动财务功能未升级依赖，历史审计不能视为当前线上安全证明，详见[保留审计](quality/evidence/android-native/dependency-audit.json)。
+本次相同更新前锁文件重新审计101项，实际新锁为 **86项：critical 0、high 20、moderate 64、low 2**。生产安全放行仍未通过。旧114项到更新前101项属于公告库变化，不能算本轮修复。见[当前完整审计](quality/evidence/dependency-hardening/dependency-audit.json)、[剩余项](quality/evidence/dependency-hardening/remaining-findings.json)及[处置方案](development/90-dependency-hardening.md)。
 
 继续推进顺序：补业务与各端缺口 → 实际模型／隔离／Skill 和云存储联调 → 真实 TG 与平台／Android 设备 → 120 GB／2 TB、容量／安全 → 备份恢复和生产切换。外部账号与服务器信息未提供的项单列等待输入，其他实现继续推进。所有完成结论须能追到准确源码、命令、回执和未完成项。
 

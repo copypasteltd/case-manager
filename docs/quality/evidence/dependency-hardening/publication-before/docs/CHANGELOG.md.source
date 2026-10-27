@@ -1,0 +1,163 @@
+# 更新记录 / Changelog
+
+## 2026-10-27 · Increment89 / 移动费用、资金、退款与员工结算
+
+实现Taro费用／资金起草和修订、固定凭证与往来方、精确原币／香港时间／分摊、MFA确认与登记、批准业务依据、费用分配和释放、退款登记及后补分配、准确员工报销行和全额冲销；固定修订及不可变历史可分页核对。保留输入、版本／摘要与单次意图，真实响应丢失不重复提交。修正费用入口为后端实际cost.record权限。
+
+204项移动测试、类型及双小程序各18页、9组真实页面流程和3种宽度通过；Android开发包42,921,174字节、18包检查，26项JVM本轮缓存复用。后端161／1057、Web112、运行时47和Linux编译只在完整声明来源相同后复用原88证据；全部73迁移、接口、依赖锁文件未改。新增4PNG／2MP4／2GIF，目录58／21／21。保留全部失败来源及被替代构建，按e87656f重建88完整捕获与80份旧证据，清理所有自建临时浏览器／API／库／服务。完整四端及真实设备／云／模型／TG／容量／安全／恢复／生产目标仍开放。
+
+Shared Taro clients now implement expense/cash drafts, exact approved source links, payment allocations/releases, refunds, employee settlement and dated reversals with MFA, source-bound receipts and blocked uncertain writes. Current mobile/native builds and synthetic UI journeys pass. Unchanged backend/Web/runtime evidence is reused explicitly; cached JVM results are not called new executions. Bilingual guides, actual media and retained evidence are updated together.
+
+[操作与设计 / Workflow](development/89-mobile-financial-operations.md) · [准确验证 / Verification](quality/evidence/mobile-finance-operations/verification.md) · [演示 / Media](media/README.md)
+
+## 2026-10-27 · Increment88 / 财务筛选、规范来源与限时导出
+
+发生、现金、订阅预测现支持完整业务筛选、原币独立合计、可读来源候选及规范明细签名分页。独立report.export授权允许本人排队、查看、取消和24小时内下载；实际worker固定快照，实时授权／围栏／不可变数据库约束保护生成与交付，过期清理派生内容。Web与Taro共用完整分段及SHA校验，原文件继续OSS／R2，CSV不长期落盘；Android／微信／抖音按实际能力交付或明确回退Web。
+
+Adds complete business filters and canonical source pagination across incurred, cash and subscription forecasts. A separate report.export permission governs owner-only queued snapshots, cancellation and expiring retrieval. A native DB-only worker freezes complete authorized sources; fencing, immutable guards, expiry and fresh authority protect delivery. Clients verify the full CSV before saving or handing it off. Original documents retain the existing OSS/R2 path.
+
+161顶层／1,057结果／960末级后端9批、Web112、运行时47、移动187、双小程序各18页通过；Android42,905,815字节开发包、18包检查、26项新执行JVM通过；Linux只编译。新增6截图／2MP4／2GIF，目录54／19／19；两端均实际校验27行CSV。新增73迁移，原72项字节不变。保留完整来源的失败及被替代捕获、修复旧秘书查询兼容问题后的全量回归；增量87按已发布73d994b重建，74份旧证据原字节不变。完整四端、真机／云／模型／TG、容量、安全和生产放行继续开放。
+
+Source-bound local checks and actual media pass with the26 JVM tests newly executed. Failed and superseded attempts retain exact sources. Full regression caught and fixed an existing secretary-query compatibility issue before all nine batches passed. Published increment87 provenance and74 prior evidence files remain unchanged. No device, real integration or production acceptance is claimed.
+
+[完整使用与设计 / Workflow](development/88-financial-report-filters-and-exports.md) · [验证 / Evidence](quality/evidence/finance-reports/verification.md) · [截图与录屏 / Media](media/README.md)
+
+## 2026-10-27 · Increment87 / 项目预算与实际支出对比
+
+新增完整当前预算与实际费用对比API及Web／Taro入口，按明确原币、类别、包含起止日的期间和本项目规范分摊计算；原费用与冲销各用自身发生日期，草稿单列。预算内／外来源支持状态筛选、签名分页与原记录跳转；严格检查逐笔读取权限和当前计划依据，不将可见部分冒充全项目余额。无预算与批准清空的零预算分开显示，无新增迁移。
+
+Adds current implemented project-budget comparison against canonical allocation shares and dated reversals, with separate drafts and out-of-plan activity. Both clients expose complete plan lines, filtered signed pagination and original expense navigation. Exact currency, live record authority and stale-basis checks remain explicit; authorized totals do not establish whole-project balances. No migration is added.
+
+159顶层／1,041结果／945末级后端、Web104、运行时47、移动187及双小程序各17页通过；Android开发包18项检查通过，25项JVM本轮使用缓存；Linux仅编译。新增4图／2短MP4／2GIF，目录48／17／17。保留捕获检查器失败和既有隔离库清理超时；相同来源恢复失败批后全部通过。增量86完整来源按已发布94081c0重建，99份旧证据原字节保留。完整28项GAP、真实设备／云／模型／TG、容量、安全、恢复与生产放行继续开放。
+
+Current source-bound checks and actual media pass with cached JVM scope recorded honestly. Retained attempts document capture-checker assumptions and an isolated-database cleanup timeout, followed by same-source batch recovery. Published increment86 provenance reconstructs without rewriting99 old evidence files. The full production goal remains open.
+
+[计算与使用 / Workflow](development/87-project-budget-comparison.md) · [验证 / Evidence](quality/evidence/budget-comparison/verification.md) · [截图与录屏 / Media](media/README.md)
+
+
+## 2026-10-27 · Increment86 / 秘书Token额度与用量
+
+新增Go／PostgreSQL月度额度账本：组织、员工、项目、Skill共用原子接单预留；未知用量保守保留，已知失败、取消及越限用量不被抹除。管理员通过Web／Taro发布完整策略、按范围查账，并凭据核对未知终态用量。迁移72不预设生产额度；SDK用量先记账再校验回复，不将Token数量视为金额账单。
+
+Adds monthly token accounts across organization, user, project and Skill scopes, atomic admission reservations, observed failure/cancellation accounting and evidenced human reconciliation of unknown terminal usage. Web and Taro expose the same policy and reporting workflows. Migration72 supplies no production allowance. Observed usage is metered before reply validation; provider monetary billing and the full production goal remain open.
+
+[规则 / Workflow](development/86-secretary-token-budgets.md) · [检查 / Evidence](quality/evidence/token-budgets/verification.md) · [截图与录屏 / Media](media/README.md)
+
+
+本文件记录可交付改动、验证范围和仍未放行的事项。完整逐轮历史见[实施台账](delivery/02-implementation-ledger.md)，所有未完成项保留[稳定 GAP 编号](delivery/03-goal-gap-assessment.md)。
+
+This log records deliverable changes, verification scope and open release gates. See the [implementation ledger](delivery/02-implementation-ledger.md) for increment history and the [stable gap register](delivery/03-goal-gap-assessment.md) for unfinished work.
+
+## 2026-10-27 · 秘书准确创建任务与子任务 / Exact secretary task and subtask creation · increment85
+
+- 新增 `create_task`：完整九项资料及原因，显式负责人／父任务／里程碑／日期、优先级与人工验收要求；复用原 CreateTask 权限及事务，真实新 ID／todo／版本1回执，两种准确重试不重复创建。
+- Web／Taro完整表单、分页关联与保留输入、缺少验收选择及微秒日期倒序校验、准确预览／发送／取消同步；新Android开发包42,888,501字节、17项检查，25项JVM结果明确来自Gradle缓存。
+- 迁移71增量接入，前70份迁移不变；157顶层／1,014结果／920末级、Web95、运行时45、移动187、两小程序各16页、两端各7流程／3布局。失败尝试保留，包括原生临时库删除超时及未冻结编译缓存导致的历史复现限制。
+- 新增4 PNG、2 MP4、2 GIF，媒体目录40／13／13；完整中英文说明、GAP编号、来源检查同步。八项Skill仍draft，真实模型／云／TG、设备／容量／安全／恢复／生产仍待验收。
+
+Added complete `create_task` authorization, original business authority/atomic receipts and exact replay; shared Web/Taro forms preserve all nine decisions and explicit review. Additive migration71, current native regression/build checks, actual seven-flow captures per client, four screenshots and two MP4/GIF pairs are included. Cache and historical provenance limits are explicit; all Skills remain draft and real release gates remain open.
+
+[方案 / Workflow](development/85-secretary-task-creation.md) · [验证 / Verification](quality/evidence/task-creation/verification.md) · [演示 / Media](media/README.md)
+
+## 2026-10-27 · 秘书风险与问题 / Secretary risks and issues · increment84
+
+- 增加四个准确工具，完整核对字段、父项目／事项版本和真实回执；项目成员、阶段、共同受众及原登录继续约束每一步。风险转问题要求双权限并原子提交，失败回滚，准确重试不重复创建。
+- Web／Taro增加完整表单、清空语义、状态选择和风险发生确认；普通PATCH可显式清空截止时刻／概率。Skill1.5.0仍为draft，四个工具不进入其他技能。
+- Fresh backend156 top-level/1,001 results/908 leaf checks, runtime43, Web88, mobile183, both 16-page mini-program builds and eight actual flows/three layouts per browser client passed. The 42,885,880-byte Android debug APK passed 17 inspections;25 JVM results retain their actual Gradle cache marker.
+- 新增4张截图、两对实际MP4／GIF；原生开发API更新至70项迁移，10项只读探针通过，外部集成未启用。增量83的805份采集原Git来源保留，失败尝试不覆盖。
+
+[方案与使用 / Workflow](development/84-secretary-project-concerns.md) · [准确验证 / Evidence](quality/evidence/project-concerns/verification.md) · [实际演示 / Media](media/README.md)。真实设备、云、模型、TG、安全、120GB／2TB及生产验收继续开放。Real devices/cloud/model/TG, security, capacity and production acceptance remain open.
+
+## 2026-10-27 · 移动知识与项目博客 / Mobile knowledge and project blog · increment83
+
+- 补齐四类公司／项目知识的手工创建、编辑、安全Markdown、准确附件、正文修订、独立发布／归档／退回草稿、历史恢复和修订讨论。Added complete shared mobile knowledge workflows with explicit attachment modes and immutable history.
+- 文字评论修改默认保留服务器原附件；明确替换先核对全部旧／新附件，新回执和幂等重放按当前权限过滤。Text-only edits preserve original pins; explicit replacement rechecks every original/replacement and receipts reapply current visibility.
+- 新增按固定版本ID解析元数据，复用当前文件ACL，不替换历史版本、不暴露存储坐标。Added exact version-ID resolution through current file authorization.
+- 新完整后端155顶层／986结果／894末级、Web81、运行时39、移动178项、双小程序16页编译、12组真实流程和9项布局通过。Fresh source-bound backend, Web, runtime, mobile and actual UI checks passed.
+- 新42,881,123字节Android开发APK及17项检查通过；25项JVM结果本次为Gradle缓存，四份XML及原日志保留。Fresh debug APK inspected; cached JVM scope is explicit.
+- 新增3张截图、2.8秒MP4／17帧GIF；演示素材目录合计32／9／9。25项最终复算、805份当前采集来源及793份旧TG原Git来源可追溯。Added actual safe media, current capture provenance and exact historical reconstruction.
+- 保留类型、页面定位和数据库清理失败；同源重跑后完整通过，两个确认为本轮残留且无连接的测试库已清理；69项迁移、10项只读探针和集成关闭状态核对通过。Retained failures, exact-source reruns and scoped fixture cleanup; daily native services were inspected without enabling integrations.
+- 同步双语README、接口契约、操作／开发约束、差异表和媒体目录；发布检查按当前基线选择新的运行时证据组。Updated bilingual guides, contract, constraints, gap register and publication checks together. Real devices/cloud/model/TG, large-file capacity and production acceptance remain open.
+
+详见[方案与使用](development/83-mobile-knowledge-workflows.md)、[准确验证](quality/evidence/mobile-knowledge/verification.md)和[实际演示](media/README.md)。See the linked workflow, evidence and actual media.
+- 提交前恢复四份Go文件原LF，重新完整验证受影响的后端、Linux和页面；修正检查器等待页面归档状态的时序。旧完整证据与5份媒体准确保留，[来源沿革](quality/evidence/mobile-knowledge/source-normalization.json)可重构原始摘要。Restored original LF conventions, reran affected checks and fixed a browser assertion race; exact earlier proofs/media remain retained.
+
+## 2026-10-27 · 移动TG身份与准确入口 / Mobile TG identity and exact channels · increment82
+
+- 补齐移动本人私聊证明、原登录数字身份确认、取消和撤销；保留原请求及投递回执。Added own-identity challenge/confirmation/cancellation/revocation with existing requests and delivery receipts.
+- 管理员完整配置Bot/群/话题、可见项目范围、允许/默认任务与阶段通知，新增始终暂停，完整回执及不可变历史双重核对。Added complete scoped configuration, paused creation and receipt/history corroboration.
+- 新增有界Android前台敏感剪贴板复制；不读剪贴板、不持久化私聊能力。Added bounded foreground sensitive proof copying without clipboard reads or persistent capability storage.
+- 新167项移动测试/双小程序编译、9组实际流程/9项布局、新Android开发APK/17项检查及新执行25项JVM测试通过；23项最终复算通过。Fresh client/build/browser/JVM checks passed with exact-source binding.
+- 新增3张截图、4.9秒MP4/29帧GIF；媒体总计29/8/8。同步双语指南、开发约束、失败历史和787份旧状态捕获Git来源。Added actual safe media, bilingual workflow docs and exact historical capture reconstruction.
+- 后端154顶层/984结果、Web81、运行时39及Linux产物按完整未变来源复用；未启动真实TG/云/模型、真机或生产部署。Unchanged proofs are retained explicitly; external/device/production gates remain open.
+
+[方案 / Protocol](development/82-mobile-telegram-access.md) · [准确验证 / Verification](quality/evidence/mobile-telegram/verification.md) · [演示 / Demo](media/videos/mobile-telegram-access.mp4)
+
+## 2026-10-27 · 原生Prometheus状态桥接 / Native Prometheus status bridge · increment81
+
+- 新增独立Go桥接，读取成熟Prometheus／Blackbox的完整标签与原采样时间；复用原签名观测、投影、权限、历史和站内通知。Added a separate native bridge from mature monitoring to the original signed-ingress/status/history path.
+- 增加私密配置、端点／IP许可、禁代理／重定向、独立读令牌、独占持久journal、准确重放与完整回执绑定；来源变更须新修订。Added bounded networking, independent credentials, durable exclusive journals, exact retries and bound ACKs; rebinding requires a new source revision.
+- 后端新154顶层／984结果／892末级、Web81、移动154及双小程序编译通过；Windows实际桥接与Linux编译通过。Fresh backend/Web/mobile tests and builds passed; Windows bridge executed, Linux compile only.
+- 六组实际Web／H5流程、12次CLI、9项布局及25项最终来源核验通过；所有所属浏览器与夹具清理。Six actual flows, 12 CLI invocations,nine layouts and 25 final source checks passed, with owned-resource cleanup.
+- 新增3张截图、6秒MP4／36帧GIF、双语使用／部署协议、运维及失败历史。Added affected captures and bilingual usage, deployment, operations and honest attempt history.
+- Android在当前来源下重新编译并通过17项检查，APK与80字节相同；25项原生结果为UP-TO-DATE。39项运行时按不变来源准确复用。Android build/inspection is fresh; its APK bytes are unchanged, native tests are cached and runtime proof is exact-source reuse.
+- API须先升级再启用桥接；真实Prometheus／Blackbox安装、主机指标、独立告警、真机／云／模型／TG、容量／安全／恢复继续开放。Upgrade the API first; actual deployment, independent alerts and full production acceptance remain open.
+
+[完整方案 / Protocol](development/81-native-prometheus-status-bridge.md) · [验证与失败历史 / Verification and attempts](quality/evidence/status-bridge/verification.md) · [实际演示 / Actual media](media/README.md)
+
+## 2026-10-26 · 移动完整变更与预算 / Mobile full changes and budgets · increment80
+
+- 完整项目／币种基线、固定文件、不可变提案、原申请修订与独立审批、两项核实／本人MFA明确实施，成功须读回实际项目和预算。Full basis, fixed files, immutable proposals, original request revision/independent approval and separate MFA implementation require actual source proof.
+- 明确区分保持null、替换明细和清空[]；十进制字符串、真实日期及原币口径沿用原后端，预算不能代替费用或付款。Keep/null, replacement and clear/[] retain exact decimals and original-currency semantics; budgets do not create expenses/payments.
+- 409、403或不完整回执清除不再可读的事实，保留可编辑文字并阻止重放；显式重读重置基线采用和声明。Conflicts, rejected reads and incomplete receipts protect current facts, preserve text and block replay; reread resets acceptance/attestations.
+- 154项移动测试、类型、双小程序各16页、10组实际API／H5流程和9项布局通过，5个所属上下文、临时服务及隔离数据库均回收。154 tests, types, both 16-page builds, ten actual flows and nine layouts passed; all owned resources were cleaned up.
+- 新开发APK 42,858,139字节、17项包检查；25项原生测试为UP-TO-DATE保留结果，本轮未新执行。New 42,858,139-byte APK passed 17 inspections; 25 cached native results were not re-executed.
+- 新3张截图、7.3秒MP4、44帧GIF及真实逐帧来源，双语指南、使用逻辑和稳定GAP同步更新；22项最终来源检查通过。Adds three PNGs, a 7.3-second MP4, 44-frame GIF, provenance and synchronized bilingual guides; 22 source checks passed.
+- 后端146顶层／919条结果、运行时39、Web81及Linux按未变来源准确复用；8项Skill仍draft，真实模型／云／TG／平台／设备、120GB／2TB、安全和生产恢复继续开放。Unchanged proofs are reused at exact sources; real integrations and full production acceptance remain open.
+
+[完整方案与命令 / Protocol and commands](development/80-mobile-project-changes-and-budgets.md) · [执行及失败历史 / Verification and attempts](quality/evidence/mobile-changes/verification.md)
+
+## 2026-10-26 · 移动结项与固定归档 / Mobile closeout and immutable archive · increment79
+
+- 接通原项目阶段、十三类完整核查、复盘、两项声明／本人MFA、可选正式文件、实际项目及历史证明、分页与受控重开。Connects original lifecycle, complete checks, retrospective, separate attestations/MFA, optional formal files, actual project/history proof, pagination and controlled reopen.
+- 并发409、响应丢失或历史证明不完整时保留文字、阻止重放；显式重读重新核对权限／依据并重置声明与MFA。Concurrent, lost or incomplete results retain input and block replay; explicit reread refreshes authority/facts and resets attestations/MFA.
+- 137项移动测试、类型、双小程序各16页、9组实际API／H5流程及9项布局通过，5个所属上下文、临时服务与隔离数据库均清理。137 mobile tests, types, both 16-page builds, nine actual flows and nine layouts passed, with owned browser/server/database cleanup.
+- 新开发APK 42,842,779字节、17项包检查；原生25项为UP-TO-DATE保留结果，本轮未新执行。New 42,842,779-byte APK passed 17 inspections; 25 native results were retained, not re-executed.
+- 新增3张实际截图、3.6秒MP4及22帧GIF；21项最终来源核对通过，旧媒体保留历史来源。Adds three actual screenshots, a 3.6-second MP4 and 22-frame GIF; 21 source checks passed, with historical media preserved.
+- 后端146顶层／919条结果、运行时39、Web81与Linux产物按未变完整来源复用；8项Skill仍draft，真实集成及完整生产验收继续开放。Unchanged backend/runtime/Web/Linux evidence is reused at exact source digests; Skills remain draft and real integrations/full release remain open.
+
+协议与命令见[增量79](development/79-mobile-project-closeout-and-archive.md)，准确执行／失败历史见[验证记录](quality/evidence/mobile-closeout/verification.md)。[Protocol](development/79-mobile-project-closeout-and-archive.md) and [verification](quality/evidence/mobile-closeout/verification.md).
+
+## 2026-10-26 · 移动任务、子任务与依赖 / Mobile tasks, subtasks and prerequisites · increment78
+
+- 补齐移动任务手工创建、完整资料编辑、子任务、父／里程碑候选及明确解除；按香港时间保留六位微秒。Added manual mobile task creation/editing, subtasks, real paginated parent/milestone selection and explicit clearing, with six-digit Hong Kong schedule precision.
+- 前置添加／移除独立确认原版本，实际任务与关系列表回读后才完成；并发、未知响应或证明不完整保留输入并阻止重放。Prerequisite changes use the original version and succeed only after actual task/edge reads; conflicts, unknown responses and incomplete proof retain input and block replay.
+- 124项移动测试、类型检查、微信／抖音各16页构建、9组实际API／H5流程及6项布局通过，5个浏览器上下文和临时夹具均清理。124 mobile tests, types, both 16-page mini-program builds, nine actual API/H5 flows and six layouts passed; all five contexts and temporary fixtures were cleaned up.
+- 新增2张实际截图、6.7秒MP4和GIF，同步中英指南、编号差异与更新记录；旧媒体保留准确历史提交来源。Added two actual screenshots and a 6.7-second MP4/GIF pair, updated both guides, gap IDs and notes, and retained exact historical provenance for older media.
+- 新Android开发APK的17项检查通过；25项原生测试为Gradle保留结果。实际执行范围、未改后端／运行时／Web的来源复用见[验证记录](quality/evidence/mobile-tasks/verification.md)。The new APK passed 17 inspections; 25 native results were retained by Gradle. Full execution scope and unchanged backend/runtime/Web reuse are recorded in the [verification report](quality/evidence/mobile-tasks/verification.md). Production, real platform/device/cloud/model/TG and security gates remain open.
+
+协议与实现见[增量78](development/78-mobile-task-editing-and-dependencies.md)。Protocol and implementation: [increment78](development/78-mobile-task-editing-and-dependencies.md).
+
+## 2026-10-26 · 仓库初始发布 / Initial repository publication · increment77
+
+- 整理现有 `app/` 实现与 `docs/` 协议、设计和验证历史，建立仓库双语入口、完整中英文方案／使用指南、维护与同步规则。Organized implementation and documentation with bilingual landing/full guides and maintenance/synchronization rules.
+- 发布 14 张本次实际页面截图、1 张带来源的历史秘书计划裁剪、3 段实际操作 MP4 和 3 个 GIF；合成数据、无真实模型／云／TG 外发，移动为 Taro H5。Added 14 new real-page screenshots, one attributed historical plan crop, three actual-interaction MP4s and three GIFs; synthetic data, Taro H5, no real external operation.
+- 新增来源绑定采集、原始帧校验编码、仓库敏感信息／链接／媒体检查及只读开发环境核对工具。Added source-bound capture, verified-frame encoding, repository/media/link/secret preflight and read-only development inspection.
+- 将后续完成更新同步中英说明、受影响媒体、验证与更新记录，并连同代码提交推送的约定写入仓库规则。Recorded the standing rule to update both language guides, affected media, evidence and notes and push them with corresponding code.
+- 本次不改变业务源码、依赖、迁移、Skill 状态或生产配置。来源相同的功能证据保留原执行范围；四端生产、真实模型／云／TG、120 GB／2 TB、设备、安全与恢复门槛继续开放。Business sources, dependencies, schema, Skill states and production configuration are unchanged; all production/external acceptance gates remain explicit.
+
+媒体、检查和发布组织细节见[增量77](development/77-repository-publication-and-bilingual-readmes.md)与[媒体目录](media/README.md)。Media, checks and publication structure: [increment77](development/77-repository-publication-and-bilingual-readmes.md) and [media catalog](media/README.md).
+
+## 2026-10-26 · 移动里程碑、风险与问题 / Mobile milestones, risks and issues · increment76
+
+- 在既有 16 个 Taro 页面中补齐三类事项创建、编辑、状态预览、版本核对与内存草稿；风险发生返回真实问题并沿原记录继续处理。Added creation/editing/transitions, exact version checks and in-memory drafts within the existing 16 pages; realized risks link actual issues.
+- 移动单测 114 项、双小程序构建、8 条实际 API/H5 流程、9 项布局、新 Android 开发 APK 的 17 项检查通过。114 mobile tests, both mini-program builds, eight actual API/H5 flows, nine layouts and 17 new-development-APK inspections passed.
+- 25 项 Android 单测是 Gradle 保留的通过结果；后端 146 顶层／919 结果、运行时 39、Web 81 按未改完整来源复用增量74。The 25 Android unit results were retained by Gradle; backend/runtime/Web evidence is reused only against complete unchanged source digests.
+
+协议与失败尝试见[增量76](development/76-mobile-project-milestones-risks-and-issues.md)和[验证记录](quality/evidence/mobile-project-resources/verification.md)。See the protocol and scoped verification, including failed attempts.
+
+## 初始功能基线 / Included functional baseline · increments1–75
+
+包含 Go/PostgreSQL 权限与版本化业务、Web 业务入口、Taro 公共页面及 Android 原生宿主、合同采购报销、费用与订阅、项目模板及协作／交付／变更／结项、文件版本与双云适配、知识、通知、安全、服务状态、受控秘书工具与 TG 渠道实现。增量75加入移动立项、成员与负责人管理。所有能力的精确范围、历史证据和未完成工作以对应协议与差异表为准。
+
+Includes versioned Go/PostgreSQL business and authorization, Web workflows, shared Taro pages and Android host, contracts/procurement/claims, costs/subscriptions, project templates/collaboration/deliverables/changes/closeout, file versions and dual-cloud adapters, knowledge, notifications, security, status, controlled secretary tools and TG channel implementation. Increment75 added mobile project/member/owner management. Exact scope, evidence and remaining work are defined by the relevant protocols and gap register.

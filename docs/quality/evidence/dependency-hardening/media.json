@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-27T12:50:22.430311+00:00",
+  "encoder_script_sha256": "29ac74ae58394830309b2937d8bdd3ade32fd61f976d2fc0972bb65bf400fa80",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "name": "dependency-hardening-cost-draft",
+      "client": "mobile",
+      "source_sha256": "5f64134ea0c783c56ab1a04494da05d8122b12afdf5fc92ef7fca1634d13d28a",
+      "build_source_sha256": "19ed7c438f42815262e9cb07ef074b53b30cc58bda5d3d8b9aad12d37970dd3a",
+      "capture_manifest": "docs/quality/evidence/dependency-hardening/dependency-hardening-cost-draft-capture-manifest.json",
+      "capture_manifest_sha256": "b0ddc73ddd6f13ec669f2676d7bd8db55b857d180c801cb4594ca5741b15ac95",
+      "capture_frame_count": 28,
+      "capture_duration_ms": 5701,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "59",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "5.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/dependency-hardening-cost-draft.mp4",
+          "sha256": "6874cf83da59e9010e4a980d37621c70f9dd0f182ca5ce93d64f6e1b2243b883",
+          "bytes": 183809
+        },
+        {
+          "file": "docs/media/gifs/dependency-hardening-cost-draft.gif",
+          "sha256": "e0426587e7487283264810ae19c9d84210ddf92c02a5b186dacc4f69da348416",
+          "bytes": 716110
+        }
+      ]
+    },
+    {
+      "name": "dependency-hardening-payment-draft",
+      "client": "mobile",
+      "source_sha256": "5f64134ea0c783c56ab1a04494da05d8122b12afdf5fc92ef7fca1634d13d28a",
+      "build_source_sha256": "19ed7c438f42815262e9cb07ef074b53b30cc58bda5d3d8b9aad12d37970dd3a",
+      "capture_manifest": "docs/quality/evidence/dependency-hardening/dependency-hardening-payment-draft-capture-manifest.json",
+      "capture_manifest_sha256": "90c99fb5264c952eb85a76b136c2fe19d7b1a78086d59d4f226cf688ffeee136",
+      "capture_frame_count": 35,
+      "capture_duration_ms": 7114,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "73",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/dependency-hardening-payment-draft.mp4",
+          "sha256": "30723723f7410ad86460ef9365f0db0fd3af545cf0760a0968e7564db155e1a0",
+          "bytes": 251774
+        },
+        {
+          "file": "docs/media/gifs/dependency-hardening-payment-draft.gif",
+          "sha256": "3744b8f2a8ae2abaa492150bd16c9fb5cff71a66bb9bdb24e5e2cca67455887e",
+          "bytes": 1024555
+        }
+      ]
+    }
+  ],
+  "scope": "Actual post-login synthetic Taro H5 finance draft frames; silent; excludes MFA and any real device claim."
+}

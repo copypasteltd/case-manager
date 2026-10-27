@@ -312,8 +312,8 @@ def main():
               and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
               and all(item['passed'] for item in proof['checks']) and not proof['full_goal_complete'])
     skills = [read(p) for p in sorted((APP / 'skills').glob('*/manifest.json'))]
-    audit = read(EVIDENCE.parent / 'android-native/dependency-audit.json')
-    check('All eight Skills remain draft and unchanged dependency security gate remains open',
+    audit = read(ROOT / baseline['dependency_audit_record']) if baseline and baseline.get('dependency_audit_record') else read(EVIDENCE.parent / 'android-native/dependency-audit.json')
+    check('All eight Skills remain draft and source-bound dependency security gate remains open',
           len(skills) == 8 and all(s['state'] == 'draft' for s in skills)
           and sha(APP / 'package-lock.json') == audit['package_lock_sha256'] and not audit['production_security_gate_passed'])
     check('Gap register retains all twenty-eight stable IDs',

@@ -1,0 +1,600 @@
+{
+  "package_lock_sha256": "66bf226646cc7a8159214db65a6f46ff8a516e194e52c588ba475c63ed50434c",
+  "packages": [
+    {
+      "package": "decompress",
+      "published89": [
+        {
+          "path": "node_modules/decompress",
+          "version": "4.2.1",
+          "resolved": "https://registry.npmjs.org/decompress/-/decompress-4.2.1.tgz",
+          "integrity": "sha512-e48kc2IjU+2Zw8cTb6VZcJQ3lgVbS4uuB1TfCHbiZIP/haNXm+SVyhu+87jts5/3ROpd82GSVCoNs/z8l4ZOaQ==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/decompress",
+          "version": null,
+          "resolved": "packages/archive-extraction",
+          "integrity": null,
+          "link": true
+        }
+      ]
+    },
+    {
+      "package": "@xhmikosr/decompress",
+      "published89": [],
+      "current": [
+        {
+          "path": "packages/archive-extraction/node_modules/@xhmikosr/decompress",
+          "version": "11.1.4",
+          "resolved": "https://registry.npmjs.org/@xhmikosr/decompress/-/decompress-11.1.4.tgz",
+          "integrity": "sha512-ZbYL7SAfY37/TMpopqBR3mQiuQ76kI/RNpN4q82YHSw/UxktZNy8P4wgiKPSrTImMAWRaUG8UK1pgEa56YdLaw==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "swiper",
+      "published89": [
+        {
+          "path": "node_modules/swiper",
+          "version": "11.1.15",
+          "resolved": "https://registry.npmjs.org/swiper/-/swiper-11.1.15.tgz",
+          "integrity": "sha512-IzWeU34WwC7gbhjKsjkImTuCRf+lRbO6cnxMGs88iVNKDwV+xQpBCJxZ4bNH6gSrIbbyVJ1kuGzo3JTtz//CBw==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/swiper",
+          "version": "12.1.2",
+          "resolved": "https://registry.npmjs.org/swiper/-/swiper-12.1.2.tgz",
+          "integrity": "sha512-4gILrI3vXZqoZh71I1PALqukCFgk+gpOwe1tOvz5uE9kHtl2gTDzmYflYCwWvR4LOvCrJi6UEEU+gnuW5BtkgQ==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "tar",
+      "published89": [
+        {
+          "path": "node_modules/tar",
+          "version": "6.2.1",
+          "resolved": "https://registry.npmjs.org/tar/-/tar-6.2.1.tgz",
+          "integrity": "sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/tar",
+          "version": "7.5.22",
+          "resolved": "https://registry.npmjs.org/tar/-/tar-7.5.22.tgz",
+          "integrity": "sha512-MFO/QzvtAOmJbkhOaCTvbGcFN9L9b+JunIsDwaKljSOdcLMea3NJ1k9Usz/rjdfSXTq4dfzfeS7W4p4YOAAHeA==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "webpack",
+      "published89": [
+        {
+          "path": "node_modules/webpack",
+          "version": "5.91.0",
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-5.91.0.tgz",
+          "integrity": "sha512-rzVwlLeBWHJbmgTC/8TvAcu5vpJNII+MelQpylD4jNERPwpBJOE2lEcko1zJX3QJeLjTTAnQxn/OJ8bjDzVQaw==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/webpack",
+          "version": "5.104.1",
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-5.104.1.tgz",
+          "integrity": "sha512-Qphch25abbMNtekmEGJmeRUhLDbe+QfiWTiqpKYkpCOWY64v9eyl+KRRLmqOFA2AvKPpc9DC6+u2n76tQLBoaA==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "adm-zip",
+      "published89": [
+        {
+          "path": "node_modules/adm-zip",
+          "version": "0.5.18",
+          "resolved": "https://registry.npmjs.org/adm-zip/-/adm-zip-0.5.18.tgz",
+          "integrity": "sha512-ufJnssQGbxzLNS1Ho9bCtX4rQKCCvoVuDLHoJyc3F9dOGDB4BkWs2Ci0kv53lqocAEQ/Cbi+I2XCsNYGqVYqng==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/adm-zip",
+          "version": "0.6.1",
+          "resolved": "https://registry.npmjs.org/adm-zip/-/adm-zip-0.6.1.tgz",
+          "integrity": "sha512-Xwrja8nx9e5o2N1my4DsKCeKpdrnACyr1wtbPxBDgGzKzKyE9kRtBFA8mWldI+RVlD7CBZNWY/wQ2+ydwOR6kQ==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "serialize-javascript",
+      "published89": [
+        {
+          "path": "node_modules/serialize-javascript",
+          "version": "6.0.2",
+          "resolved": "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-6.0.2.tgz",
+          "integrity": "sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/serialize-javascript",
+          "version": "7.1.4",
+          "resolved": "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-7.1.4.tgz",
+          "integrity": "sha512-FqlEuoTq/zRmA4Lg6aOqyH3lCHbUtCB0bmHCeFniX2GBdDqMJM3FwdvEhlE5Pim1dlt2FfBdVPmUNNiGhhKqpw==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "lodash-es",
+      "published89": [
+        {
+          "path": "node_modules/lodash-es",
+          "version": "4.17.21",
+          "resolved": "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz",
+          "integrity": "sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/lodash-es",
+          "version": "4.18.1",
+          "resolved": "https://registry.npmjs.org/lodash-es/-/lodash-es-4.18.1.tgz",
+          "integrity": "sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "@xmldom/xmldom",
+      "published89": [
+        {
+          "path": "node_modules/@xmldom/xmldom",
+          "version": "0.7.13",
+          "resolved": "https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.7.13.tgz",
+          "integrity": "sha512-lm2GW5PkosIzccsaZIz7tp8cPADSIlIHWDFTR1N0SzfinhhYgeIQjFMz4rYzanCScr3DqQLeomUDArp6MWKm+g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/plist/node_modules/@xmldom/xmldom",
+          "version": "0.9.12",
+          "resolved": "https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.12.tgz",
+          "integrity": "sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/@expo/plist/node_modules/@xmldom/xmldom",
+          "version": "0.8.15",
+          "resolved": "https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.8.15.tgz",
+          "integrity": "sha512-/5NV/vDALVFDXgLmfsy9TRCBlKwO2LNBFzpzvb9iIj+jR+eSc6DLYYvVOdivT/jm7MtU6TebYuRmzEOI7w40UA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/plist/node_modules/@xmldom/xmldom",
+          "version": "0.9.12",
+          "resolved": "https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.12.tgz",
+          "integrity": "sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "postcss",
+      "published89": [
+        {
+          "path": "node_modules/@expo/metro-config/node_modules/postcss",
+          "version": "8.4.49",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.49.tgz",
+          "integrity": "sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/miniprogram-simulate/node_modules/postcss",
+          "version": "7.0.39",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-7.0.39.tgz",
+          "integrity": "sha512-yioayjNbHn6z1/Bywyb2Y4s3yvDAeXGOyxqD+LnVOinq6Mdmd++SW2wUNVzavyyHxd6+DxzWGIuosg6P1Rj8uA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/postcss",
+          "version": "8.5.31",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.31.tgz",
+          "integrity": "sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/miniprogram-simulate/node_modules/postcss",
+          "version": "7.0.39",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-7.0.39.tgz",
+          "integrity": "sha512-yioayjNbHn6z1/Bywyb2Y4s3yvDAeXGOyxqD+LnVOinq6Mdmd++SW2wUNVzavyyHxd6+DxzWGIuosg6P1Rj8uA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/postcss",
+          "version": "8.5.32",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.32.tgz",
+          "integrity": "sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "http-cache-semantics",
+      "published89": [
+        {
+          "path": "node_modules/http-cache-semantics",
+          "version": "3.8.1",
+          "resolved": "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-3.8.1.tgz",
+          "integrity": "sha512-5ai2iksyV8ZXmnZhHH4rWPoxxistEexSi5936zIQ1bnNTW5VnA85B6P/VpXiRM017IgRvb2kKo1a//y+0wSp3w==",
+          "link": false
+        },
+        {
+          "path": "node_modules/package-json/node_modules/http-cache-semantics",
+          "version": "4.3.0",
+          "resolved": "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.3.0.tgz",
+          "integrity": "sha512-M5t5LlJpS1UHMjvwRQVdFHvPISGeLAxNcrWuJkeGh0KxsqCHZ1O3NXZU/8x7cD0BDcGW8kapxMKTvwlqrNkHkA==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/http-cache-semantics",
+          "version": "3.8.1",
+          "resolved": "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-3.8.1.tgz",
+          "integrity": "sha512-5ai2iksyV8ZXmnZhHH4rWPoxxistEexSi5936zIQ1bnNTW5VnA85B6P/VpXiRM017IgRvb2kKo1a//y+0wSp3w==",
+          "link": false
+        },
+        {
+          "path": "node_modules/package-json/node_modules/http-cache-semantics",
+          "version": "4.3.0",
+          "resolved": "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.3.0.tgz",
+          "integrity": "sha512-M5t5LlJpS1UHMjvwRQVdFHvPISGeLAxNcrWuJkeGh0KxsqCHZ1O3NXZU/8x7cD0BDcGW8kapxMKTvwlqrNkHkA==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "semver",
+      "published89": [
+        {
+          "path": "node_modules/@expo/cli/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/config-plugins/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/config/node_modules/semver",
+          "version": "7.5.3",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.5.3.tgz",
+          "integrity": "sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/image-utils/node_modules/semver",
+          "version": "7.3.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.3.2.tgz",
+          "integrity": "sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/package-manager/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/prebuild-config/node_modules/semver",
+          "version": "7.5.3",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.5.3.tgz",
+          "integrity": "sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/spawn-async/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@npmcli/fs/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@react-native-community/cli-doctor/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@react-native-community/cli-tools/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@react-native-community/cli/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@tarojs/cli/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/css-loader/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/expo/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/internal-ip/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/make-dir/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/npm-package-arg/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/postcss-loader/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/semver",
+          "version": "6.3.1",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+          "integrity": "sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/@expo/cli/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/config-plugins/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/config/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/image-utils/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/package-manager/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/prebuild-config/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@expo/spawn-async/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@npmcli/fs/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@react-native-community/cli-doctor/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@react-native-community/cli-tools/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@react-native-community/cli/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@tarojs/cli/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/css-loader/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/expo/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/internal-ip/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/make-dir/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/npm-package-arg/node_modules/semver",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
+          "link": false
+        },
+        {
+          "path": "node_modules/postcss-loader/node_modules/semver",
+          "version": "7.8.5",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
+          "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/semver",
+          "version": "6.3.1",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+          "integrity": "sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "node-forge",
+      "published89": [
+        {
+          "path": "node_modules/node-forge",
+          "version": "1.4.0",
+          "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-1.4.0.tgz",
+          "integrity": "sha512-LarFH0+6VfriEhqMMcLX2F7SwSXeWwnEAJEsYm5QKWchiVYVvJyV9v7UDvUv+w5HO23ZpQTXDv/GxdDdMyOuoQ==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "node_modules/node-forge",
+          "version": "1.4.1",
+          "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-1.4.1.tgz",
+          "integrity": "sha512-w5/MfWaeMrpR/5ba6fZyAUTLSuE6aYz7H/3cYrqwZEmf5eQS3IaaLgJt4MBv7HglGFWmV22K8h4U18RJQmw/ow==",
+          "link": false
+        }
+      ]
+    },
+    {
+      "package": "@babel/core",
+      "published89": [
+        {
+          "path": "node_modules/@babel/core",
+          "version": "7.28.5",
+          "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.28.5.tgz",
+          "integrity": "sha512-e7jT4DxYvIDLk1ZHmU/m/mB19rex9sv0c2ftBtjSBv+kVM/902eh0fINUzD7UwLLNR+jU585GxUJ8/EBfAM5fw==",
+          "link": false
+        }
+      ],
+      "current": [
+        {
+          "path": "mobile/node_modules/@babel/core",
+          "version": "7.29.7",
+          "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.29.7.tgz",
+          "integrity": "sha512-RgHBCvtjbOK2gXSNBNIkNoEc9qoVEtau3hj8gEqKQuL3HZAibKarWFEI3Lfm6EYKkLalOh8eSrj9b+ch9H/VBA==",
+          "link": false
+        },
+        {
+          "path": "node_modules/@babel/core",
+          "version": "7.28.5",
+          "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.28.5.tgz",
+          "integrity": "sha512-e7jT4DxYvIDLk1ZHmU/m/mB19rex9sv0c2ftBtjSBv+kVM/902eh0fINUzD7UwLLNR+jU585GxUJ8/EBfAM5fw==",
+          "link": false
+        }
+      ]
+    }
+  ],
+  "scope": "Complete lock paths for selected pins; older major families such as PostCSS7 and cache semantics3 remain visible and are not claimed fixed."
+}

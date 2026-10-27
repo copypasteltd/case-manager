@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T12:03:25.415183+00:00",
+  "command": [
+    "npm",
+    "audit",
+    "--json"
+  ],
+  "exit_code": 1,
+  "npm_version": "10.9.2",
+  "package_lock_sha256": "24745a3b9afd23dbee2cc6a2bea9d656db8ded2019e7a0a4409e14dfbe4b03f9",
+  "source_unchanged": true,
+  "vulnerabilities": {
+    "info": 0,
+    "low": 2,
+    "moderate": 72,
+    "high": 23,
+    "critical": 0,
+    "total": 97
+  },
+  "before_vulnerabilities": {
+    "info": 0,
+    "low": 2,
+    "moderate": 58,
+    "high": 30,
+    "critical": 11,
+    "total": 101
+  },
+  "before_source_record": "audit-before-source.json",
+  "before_source_record_sha256": "b56b40164ffc9b5b3b2ad212faffb11ce6cb8e1733d53a451366326e4e348629",
+  "raw_report": "audit-after.json",
+  "raw_report_sha256": "674528a0b980a23755f8765e411da68ad2cc04ec908a40fbd6d022766f9564a0",
+  "all_dependency_scopes_included": true,
+  "advisories_suppressed": false,
+  "production_security_gate_passed": false,
+  "scope": "Complete audit of the current lock, including build/development dependencies. A completed audit is not an accepted security gate; remaining findings require reachability review and remediation. Changes from the older increment65 feed are not remediation.",
+  "before_source": {
+    "package_lock_sha256": "48af18363fb82f19b8a7dbb1cede8c4b4260de8267de97490445c2cf4b3fb0d5",
+    "raw_audit_sha256": "98aeabcf943e84091f4628069e3e99bd4b5146d46056bb34a5dff74af2a4fd8a",
+    "commit": "32af13654b94dea7ea5e72f826902cfd46f7b33e",
+    "scope": "New audit feed on unchanged published89 lock;101 findings, not a remediation claim."
+  }
+}

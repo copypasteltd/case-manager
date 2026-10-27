@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 2026-10-27 · Increment90 / 依赖修复与多端兼容
+
+以维护中的解包器11.1.4替换原无维护实现，提供实际CommonJS／Promise兼容入口；升级Swiper12.1.2、tar7.5.22、兼容webpack5.104.1及明确依赖版本，核对安装后真实依赖树。完整同次审计101→86，critical11→0；仍有high20／moderate64／low2，安全放行继续开放。历史114→101属于公告库变化，不算修复。
+
+12项有界安全回归、2项原生JS、Web112、运行时47、移动204／类型／双小程序重新检查；真实页面与Android产物分别验证。后端161／1057及Linux只按完整相同来源复用原88证据；73迁移与接口未改。页面检查遵守现有MFA限流并等待实际窗口，不修改应用限制。新增4PNG／2MP4／2GIF，目录62／23／23，双语说明和28项差异同步维护。
+
+The actual dependency tree now uses a maintained archive extractor behind a callable CommonJS adapter, plus explicit patched and compatible pins. A complete same-run audit drops from101 to86 findings and11 to0 critical;20 high findings remain. Bounded regressions, affected client/runtime builds and actual synthetic journeys are checked separately from device/cloud/production acceptance. Original89 capture sources and103 historical evidence/media files are preserved. Failed attempts retain their actual limits, including the first attempt’s missing original lock bytes. Full four-client acceptance remains open.
+
+[修复方案 / Design](development/90-dependency-hardening.md) · [准确验证 / Verification](quality/evidence/dependency-hardening/verification.md) · [媒体 / Media](media/README.md)
+
 ## 2026-10-27 · Increment89 / 移动费用、资金、退款与员工结算
 
 实现Taro费用／资金起草和修订、固定凭证与往来方、精确原币／香港时间／分摊、MFA确认与登记、批准业务依据、费用分配和释放、退款登记及后补分配、准确员工报销行和全额冲销；固定修订及不可变历史可分页核对。保留输入、版本／摘要与单次意图，真实响应丢失不重复提交。修正费用入口为后端实际cost.record权限。

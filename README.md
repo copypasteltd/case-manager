@@ -12,11 +12,13 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
+最新更新 / Latest update: [依赖修复与多端兼容 / Dependency hardening](docs/development/90-dependency-hardening.md)。同次完整审计101 → 86，critical 11 → 0，仍有20项high；安全放行继续开放。The complete before/after audit falls from101 to86 findings, with critical11 to0;20 high findings remain and the security gate stays open.
+
 最新功能 / Latest workflow: [移动费用、收付款、退款与员工结算 / Mobile expenses, cash, refunds and employee settlement](docs/development/89-mobile-financial-operations.md).
 
-![实际移动费用草稿 / Actual mobile expense draft](docs/media/gifs/mobile-finance-cost-draft.gif)
+![实际移动费用草稿 / Actual mobile expense draft](docs/media/gifs/dependency-hardening-cost-draft.gif)
 
-[费用 MP4 / Expense MP4](docs/media/videos/mobile-finance-cost-draft.mp4) · [资金 MP4 / Cash MP4](docs/media/videos/mobile-finance-payment-draft.mp4) · [资金 GIF / Cash GIF](docs/media/gifs/mobile-finance-payment-draft.gif) · [四张结果截图 / Four result screenshots](docs/media/README.md).
+[费用 MP4 / Expense MP4](docs/media/videos/dependency-hardening-cost-draft.mp4) · [资金 MP4 / Cash MP4](docs/media/videos/dependency-hardening-payment-draft.mp4) · [资金 GIF / Cash GIF](docs/media/gifs/dependency-hardening-payment-draft.gif) · [四张结果截图 / Four result screenshots](docs/media/README.md).
 
 移动工作台现可起草和修订实际费用／资金，核对固定供应方、凭证、原币、香港时间与项目分摊；通过本人MFA确认、关联批准采购／报销／合同、分配和释放费用、登记并补关联退款、核对准确员工报销行，以及按真实日期全额冲销。并发或提交响应丢失会保留输入并阻止重复提交。录屏使用真实本机API和隔离合成数据；Taro H5仍需四端实际验收。
 
@@ -152,13 +154,13 @@ docs/
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前增量89：移动204项测试、类型检查、微信／抖音各18页构建、9组实际财务流程与3种宽度通过；Android开发APK为42,921,174字节，18项包检查通过，26项JVM按Gradle缓存复用准确记录。后端161顶层／1,057结果、Web112、运行时47与Linux编译复用原增量88证据，完整声明来源字节保持一致；73项迁移、接口及依赖锁文件均未改变。见[准确验证与失败尝试](docs/quality/evidence/mobile-finance-operations/verification.md)。
+当前增量90：依赖实际升级、维护中的解包入口与兼容版本固定；12项有界安全回归、2项原生JS、Web112、运行时47、移动204及类型、双小程序各18页重新检查，实际财务页面9组流程／3种宽度和Android开发包另验。后端161顶层／1,057结果及Linux编译仅在完整来源相同时复用原88证据；全部73迁移和接口未改。见[准确验证与失败记录](docs/quality/evidence/dependency-hardening/verification.md)。
 
-Increment89 passes204 mobile tests, types, both18-page mini-program builds, nine actual financial journeys and three widths. The 42,921,174-byte development APK passes18 inspections;26 JVM results are explicitly cached. Original increment88 backend161/1057, Web112, runtime47 and Linux compilation evidence is reused only after complete declared source-byte comparison;73 migrations, APIs and the lockfile are unchanged.
+Increment90 updates actual dependencies and a maintained archive adapter, pins compatible versions and reruns12 bounded security cases,2 native JS cases,Web112,runtime47,mobile204,types and both18-page mini-program builds. Actual UI journeys and the native APK have separate evidence. Original88 backend161/1057 and Linux compilation are reused only with complete equal source bytes;73 migrations and APIs are unchanged.
 
-媒体目录为58PNG／21MP4／21GIF，本轮新增4张真实页面截图和2套草稿录屏／GIF。按已发布e87656f重建增量88完整启动和两端捕获来源，80份旧证据保留原字节；本轮失败、修正和被替代构建保留各自完整来源。完整28项GAP、四端实体设备、云／模型／TG、120GB／2TB、安全、恢复和生产验收继续开放。
+媒体目录为62PNG／23MP4／23GIF，本轮新增4张实际页面图及2套录屏／GIF。已发布32af136的增量89完整启动／捕获来源从Git重建，103份历史证据及媒体保留原字节；本轮失败记录保留，最初锁文件未完整冻结的限制明确披露。完整28项GAP、四端真实设备、云／模型／TG、120GB／2TB、安全、恢复和生产验收继续开放。
 
-The catalog contains58 PNGs,21 MP4s and21 GIFs, including four new result screenshots and two actual draft recordings/GIFs. Published increment88 sources reconstruct from Git and all80 historical evidence artifacts retain exact bytes. Failed attempts and superseded builds keep their original sources. The full28-gap production goal remains active.
+The catalog contains62 PNGs,23 MP4s and23 GIFs. Published89 capture sources reconstruct from Git;103 historical evidence/media files retain exact bytes. Failed attempts remain recorded, including an explicit limitation on the first attempt’s missing original lock bytes. The full28-gap four-client production goal stays active.
 
 后续完成更新继续同步代码、中英文说明、受影响素材、验证和`docs/CHANGELOG.md`，一并提交并推送至`git@github.com:copypasteltd/case-manager.git`；不强推，不提交凭据、数据库、工具链、缓存或APK。文档统一放在`docs/`，应用实现位于`app/`。
 

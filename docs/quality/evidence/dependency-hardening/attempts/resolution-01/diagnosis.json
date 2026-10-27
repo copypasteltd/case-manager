@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "reason": "webpack5.112.2 moved EntryDependency, breaking Taro4.3.1 internal imports. npm install retained three invalid overridden versions; npm update corrected them.",
+  "records": [
+    {
+      "file": "audit-after.json",
+      "sha256": "674528a0b980a23755f8765e411da68ad2cc04ec908a40fbd6d022766f9564a0"
+    },
+    {
+      "file": "dependency-audit.json",
+      "sha256": "80409e240f730b25958e5ed869de5abd3ceeb151b84acb8621042dee4097366b"
+    },
+    {
+      "file": "mobile-build.json",
+      "sha256": "d89cb75ec2b7f219b50e3446f3e7668beaf11fea76c9925176bb6612d71fe487"
+    },
+    {
+      "file": "web-build.json",
+      "sha256": "4efde0d66a31ade28515f32008980c2aa56db2971205f2b458d0eea2763b70f0"
+    },
+    {
+      "file": "runtime-build.json",
+      "sha256": "f1e9758a38ae2777f2a4522677164ad3714fc01b8b94c1552b711d2eac807f79"
+    }
+  ],
+  "available_source_zip_sha256": "8057231ddff797470d2021ebad8b0045fd27476d8b066cd8ddd1ab52a4f0cc70",
+  "original_lock_sha256": "24745a3b9afd23dbee2cc6a2bea9d656db8ded2019e7a0a4409e14dfbe4b03f9",
+  "complete_original_lock_bytes_retained": false,
+  "limitation": "A shell working-directory error started npm update before snapshotting the old lock. Original failed reports/logs and all other then-current source files are retained. The old lock is identified by its recorded digest, not reconstructed or claimed fully reproducible. Final checks use a separately frozen complete lock."
+}

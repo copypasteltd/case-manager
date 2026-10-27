@@ -866,3 +866,13 @@ FIN-12、GAP-03／18：发生、现金、订阅预测共用完整业务筛选与
 新增4图／2MP4／2GIF，目录58／21／21；录屏仅含身份验证结束后的草稿操作。全部失败尝试及被替代构建保留完整ZIP来源；已发布e87656f的88完整启动、两端捕获及80份旧证据原字节保留。临时浏览器／API／隔离库／5189服务及私有fixture全部释放，日常开发原生服务归属核对通过，云／模型／TG仍关闭、8项Skill仍draft。完整28项差异、四端实体设备、真实集成、容量、安全和生产验收继续推进。
 
 [设计与操作](../development/89-mobile-financial-operations.md) · [实际验证](../quality/evidence/mobile-finance-operations/verification.md) · [截图与录像](../media/README.md)
+
+## 64. 增量90：依赖修复与多端兼容
+
+实际替换无维护的decompress为私有CommonJS兼容入口并调用维护包11.1.4，升级Swiper、tar、webpack及明确版本族，安装后核对实际依赖树。最新版webpack内部路径不兼容Taro，保留失败后固定兼容5.104.1。完整审计从同次旧锁101项变为新锁86项，critical11→0，剩余high20／moderate64／low2原样保留，GAP-26仍P0。旧114→101是公告库变化，不计修复。
+
+12项有界安全回归、2项原生JS、Web112、运行时47、移动204／类型／双小程序重新执行；完整财务9组页面／3宽度及Android产物独立验收。后端161／1057与Linux只在完整来源相同后复用原88证据，73迁移及接口未改。MFA页面自动化按真实15分钟限流窗口等待，未改变应用策略。
+
+新增4PNG／2MP4／2GIF，目录62／23／23；已发布89完整来源从Git重建，103份历史证据／媒体原字节保留。首次失败锁文件原字节缺失明确披露，其他启动／捕获失败保留完整来源。开发环境原进程已退出后恢复原生自有服务，外部集成关闭；所有临时浏览器／API／隔离库／服务结束后清理。完整四端及真实云／模型／TG／容量／安全／恢复／生产目标继续开放。
+
+[设计与复现](../development/90-dependency-hardening.md) · [准确验证](../quality/evidence/dependency-hardening/verification.md) · [媒体](../media/README.md)

@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Existing owned native PostgreSQL was not running; the backend fixture failed before any browser started. No browser or temporary review server was opened.",
+  "complete_startup_source_sha256": "ce53f77c23d7e0aa67b24558ca05f6a63199d6367a6da20a3c5c6997e59b4736",
+  "source_count": 902,
+  "source_zip_sha256": "cc84995d7bdbeb212dda81c3de71dc79c7bb9704f80e12104c7dbc475f234d60",
+  "browser_was_started": false,
+  "browser_closed": true,
+  "database_cleanup_passed": true,
+  "fixture_file_absent": true
+}

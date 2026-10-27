@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T12:53:30.721324+00:00",
+  "files": [
+    {
+      "file": "docs/media/screenshots/dependency-hardening-cost-confirmed.png",
+      "sha256": "e8339ae3df600f37ad9a5dd7384e4ee9443a3e75c7b59173cf1d4f0f8b6aa46b"
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-employee-settlement.png",
+      "sha256": "84d331f1f9804a1d300ee6fac5403891e2630ee3229c9e9079c484cf606d7249"
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-payment-allocations.png",
+      "sha256": "4e565af6d5c3a542ea7950cda80655b9e247a89c6157774ca02c3f9a71efad82"
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-refund.png",
+      "sha256": "fb4e4b229fd075de865b7015a7bca24ff9a0f23c90d800c47251e3d650ab6d07"
+    },
+    {
+      "file": "docs/media/gifs/dependency-hardening-cost-draft.gif",
+      "sha256": "e0426587e7487283264810ae19c9d84210ddf92c02a5b186dacc4f69da348416"
+    },
+    {
+      "file": "docs/media/gifs/dependency-hardening-payment-draft.gif",
+      "sha256": "3744b8f2a8ae2abaa492150bd16c9fb5cff71a66bb9bdb24e5e2cca67455887e"
+    }
+  ],
+  "review": "Viewed all four actual390x900 PNGs and first/middle/last frames of both GIFs. Text and actual draft/confirmed/recorded states are readable; no visible passwords, MFA secrets or private capability fields. Synthetic record identifiers are visible intentionally.",
+  "real_pixel_inspection": true,
+  "device_acceptance": false
+}

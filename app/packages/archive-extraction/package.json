@@ -1,0 +1,9 @@
+{
+  "name": "@copypaste/archive-extraction",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CommonJS compatibility boundary for the maintained archive extractor used by build downloads.",
+  "main": "index.cjs",
+  "engines": { "node": ">=22.14.0 <23" },
+  "dependencies": { "@xhmikosr/decompress": "11.1.4" }
+}

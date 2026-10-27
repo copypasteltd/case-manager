@@ -1,0 +1,44 @@
+{
+  "recordings": [
+    {
+      "name": "dependency-hardening-cost-draft",
+      "frame_count": 28,
+      "duration_ms": 5701,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/dependency-hardening-cost-draft/frames.json",
+      "manifest_sha256": "b0ddc73ddd6f13ec669f2676d7bd8db55b857d180c801cb4594ca5741b15ac95"
+    },
+    {
+      "name": "dependency-hardening-payment-draft",
+      "frame_count": 35,
+      "duration_ms": 7114,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/dependency-hardening-payment-draft/frames.json",
+      "manifest_sha256": "90c99fb5264c952eb85a76b136c2fe19d7b1a78086d59d4f226cf688ffeee136"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "document": 390
+    },
+    {
+      "width": 430,
+      "document": 430
+    },
+    {
+      "width": 768,
+      "document": 768
+    }
+  ],
+  "audio": false,
+  "real_browser_pixels": true
+}

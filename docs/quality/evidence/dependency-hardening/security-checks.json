@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T12:11:49.844070+00:00",
+  "source_sha256": "0a0e492d033980d136844f048935924c9766e7ccea0d6cb84ce5092c19be2a80",
+  "sources": [
+    "mobile/native/babel-primitives.test.cjs",
+    "mobile/package.json",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "scripts/dependency_security.test.mjs",
+    "scripts/verify_dependency_security.py"
+  ],
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "security-tests",
+      "passed": true,
+      "exit_code": 0,
+      "tests": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log_sha256": "33ec3d4b69bdf747a83a9354538b51812dbdd8bf022a2fc69403cb36f53549fa"
+    },
+    {
+      "name": "native-js-tests",
+      "passed": true,
+      "exit_code": 0,
+      "tests": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log_sha256": "cb735cc77aed4afab0470d855b199e3a5cc7c1f0fc39c64a41cd97948c24334a"
+    }
+  ],
+  "selected_dependency_tree_valid": true,
+  "selected_dependency_tree_sha256": "b1826b8b4d35d33b00648a6b7149e112b0a86076c3d72421c3980716e04f4187",
+  "scope": "Bounded synthetic native filesystem/network cases and actual upstream CJS download caller. No resource-exhaustion payload, device, cloud or production security acceptance."
+}

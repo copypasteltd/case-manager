@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "scope": "Publication checker parsing, not a failed business test.",
+  "reason": "A broad encoding replacement also changed the source-verifier JSON writer to utf-8-sig, introducing a BOM. The publication reader correctly rejected it. The writer now uses UTF-8 without BOM; immutable previous result and verifier retained.",
+  "previous_verifier_sha256": "7370bdc15068877b7a6842b15773aa32c90950771728757c717fcb0856e95e8e",
+  "previous_result_sha256": "eb93d2d70a29cb5fdd64d986de2c726d3a32126db25537894caf207b6a975ec6"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "copypaste-internal-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CopyPaste internal operations platform; documentation lives in ../docs/",
+  "engines": {
+    "node": ">=22.14.0 <23"
+  },
+  "workspaces": [
+    "web",
+    "mobile",
+    "agent-runtime",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @copypaste/web",
+    "build:web": "npm run build --workspace @copypaste/web",
+    "build:runtime": "npm run build --workspace @copypaste/agent-runtime",
+    "build:weapp": "npm run build:weapp --workspace @copypaste/mobile",
+    "build:tt": "npm run build:tt --workspace @copypaste/mobile",
+    "build:rn": "npm run build:rn --workspace @copypaste/mobile",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "tokens": "python scripts/sync_design.py",
+    "contract": "openapi-typescript ../docs/development/openapi.json -o packages/contracts/src/api.d.ts",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@tarojs/components-rn": "4.3.1",
+    "@tarojs/rn-supporter": "4.3.1",
+    "@tarojs/taro-rn": "4.3.1",
+    "openapi-typescript": "7.13.0",
+    "playwright": "1.62.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.73.11",
+    "stylelint": "16.10.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Existing 8-per-15-minute MFA step-up limit was reached after five completed business journeys. The checker must honor the actual limit window rather than assume an unlimited verification rate.",
+  "source_zip_sha256": "cc84995d7bdbeb212dda81c3de71dc79c7bb9704f80e12104c7dbc475f234d60",
+  "complete_startup_source_sha256": "ce53f77c23d7e0aa67b24558ca05f6a63199d6367a6da20a3c5c6997e59b4736",
+  "source_count": 902,
+  "browser_was_started": true,
+  "browser_closed": true,
+  "database_cleanup_passed": true,
+  "ignored_recording_frames_sha256": "0c799c723c69966d87ad07cfb88cf9d21d52dc965bc079dc12b32603126cbf6c",
+  "raw_recording_frames_ignored": true,
+  "capture_manifests": [
+    {
+      "file": "capture-manifests/dependency-hardening-cost-draft.json",
+      "sha256": "6c2ffb4743edb17a58e28777c39d562474089f56666b6dd64b7970673dfdd8f5"
+    },
+    {
+      "file": "capture-manifests/dependency-hardening-payment-draft.json",
+      "sha256": "cc5c18c1091836952ddb7d7181436ad3d21b7a3db8fc520e1850394a1c104822"
+    }
+  ]
+}

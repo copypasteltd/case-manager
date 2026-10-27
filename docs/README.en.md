@@ -258,7 +258,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment89 verification record](quality/evidence/mobile-finance-operations/verification.md) identifies actual executions, original evidence reuse, cached native results and retained failed attempts.
+Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment90 verification record](quality/evidence/dependency-hardening/verification.md) distinguishes fresh execution, original evidence reuse, native cache scope and limitations of retained failed attempts.
 
 ## 7. Production deployment and storage plan
 
@@ -272,15 +272,19 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 ## 8. Evidence and release gates
 
+The current maintenance update is [dependency hardening](development/90-dependency-hardening.md): a maintained archive adapter and explicit Swiper/tar/webpack and other pins, with12 bounded security regressions and2 native JS checks. Install the complete lockfile; do not copy node_modules from another environment. MFA step-up is limited to8 attempts per user per15-minute window. Wait before retrying identity verification and inspect receipts before repeating any business action.
+
+
+
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
 | Go / PostgreSQL | Original88:161 top-level /1,057 results /960 leaves;9 batches;73 migrations | Reused at original paths only with complete equal backend bytes; no new migration or execution |
-| Runtime / Web | Original88:47 /112 tests and builds | Complete declared source-byte equality required for reuse; eight Skills remain draft |
+| Runtime / Web | Fresh47 /112 tests and builds | Bound to the new lock; eight Skills remain draft |
 | Taro | Current204 tests, types,18 pages per mini-program | Nine actual financial journeys and three widths; H5 is not device acceptance |
-| Android | Current development APK and18 package checks | 42,921,174 bytes;26 JVM results cached; no device acceptance |
-| Media catalog | 58 PNG /21 MP4 /21 GIF | Four new result screenshots and two actual MP4/GIF pairs; complete88 sources and80 old evidence artifacts preserved |
+| Android | Current development APK and18 package checks |42,921,174 bytes;26 JVM results cached; APK bytes equal89; no device acceptance |
+| Media catalog |62 PNG /23 MP4 /23 GIF | Four new screenshots and two MP4/GIF pairs; complete89 sources and103 evidence/media files preserved |
 
-The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
+A fresh audit of the unchanged old lock reported101 findings; the changed lock reports **86:0 critical,20 high,64 moderate and2 low**. Production security approval remains open. The older114-to-101 feed change is not remediation. See the [complete current audit](quality/evidence/dependency-hardening/dependency-audit.json), [remaining findings](quality/evidence/dependency-hardening/remaining-findings.json) and [remediation plan](development/90-dependency-hardening.md).
 
 Continue with business/client gaps, real model/isolation/Skill and cloud integration, actual TG/platform/Android devices, 120 GB/2 TB capacity and security acceptance, then backup recovery and production cutover. Items needing missing server/account input remain explicit while independent implementation continues. Completion claims must link to exact sources, commands, receipts and remaining work.
 
