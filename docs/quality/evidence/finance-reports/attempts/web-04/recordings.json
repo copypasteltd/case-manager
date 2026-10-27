@@ -1,0 +1,32 @@
+{
+  "recordings": [
+    {
+      "name": "financial-reports-web",
+      "frame_count": 40,
+      "duration_ms": 8118,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/financial-reports-web/frames.json",
+      "manifest_sha256": "ac6f8ac331904c37d3fa1654e40a85bc76323af008d501a33c910c462772e2ef"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "document": 1440
+    },
+    {
+      "width": 960,
+      "document": 960
+    },
+    {
+      "width": 390,
+      "document": 390
+    }
+  ],
+  "audio": false,
+  "real_browser_pixels": true
+}

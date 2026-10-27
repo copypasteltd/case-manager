@@ -4780,6 +4780,126 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/finance/reports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFinancialReport */
+        get: operations["readFinancialReport"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/report-exports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listFinancialReportExports */
+        get: operations["listFinancialReportExports"];
+        put?: never;
+        /** createFinancialReportExport */
+        post: operations["createFinancialReportExport"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/report-exports/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFinancialReportExport */
+        get: operations["readFinancialReportExport"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/report-exports/{id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** cancelFinancialReportExport */
+        post: operations["cancelFinancialReportExport"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/report-exports/{id}/chunks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFinancialReportExportChunk */
+        get: operations["readFinancialReportExportChunk"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/report-exports/{id}/download": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** downloadFinancialReportCSV */
+        get: operations["downloadFinancialReportCSV"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/report-options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFinancialReportOptions */
+        get: operations["readFinancialReportOptions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -11551,6 +11671,129 @@ export interface components {
         };
         ChangeRevisionResponse: {
             data: components["schemas"]["ChangeRevision"];
+            meta: components["schemas"]["Meta"];
+        };
+        FinancialReportQuery: {
+            /** @enum {string} */
+            kind: "incurred" | "cash" | "forecast";
+            /** Format: date */
+            from: string;
+            /** Format: date */
+            to: string;
+            currency?: string;
+            category?: string;
+            q?: string;
+            project_id?: string | null;
+            company_only: boolean;
+            supplier_id?: string | null;
+            owner_id?: string | null;
+        };
+        FinancialReportSource: {
+            /** @enum {string} */
+            source_type: "cost" | "payment" | "subscription_period";
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            resource_id: string;
+            /** Format: uuid */
+            revision_id: string;
+            version: number;
+            title: string;
+            /** Format: date */
+            from: string;
+            to: string | null;
+            state: string;
+            /** @enum {string} */
+            entry_kind: "expense" | "reversal" | "payment" | "forecast";
+            currency: string | null;
+            original_amount: string | null;
+            contribution_amount: string | null;
+            category: string;
+            supplier_id: string | null;
+            /** Format: uuid */
+            owner_id: string;
+            project_id: string | null;
+            /** Format: date-time */
+            created_at: string;
+            timezone: string;
+        };
+        FinancialReport: {
+            filters: components["schemas"]["FinancialReportQuery"];
+            /** @enum {string} */
+            scope: "authorized_records_only";
+            summary: components["schemas"]["CostReport"] | components["schemas"]["CashReport"] | components["schemas"]["ForecastReport"];
+            items: components["schemas"]["FinancialReportSource"][];
+            next_cursor: string | null;
+        };
+        FinancialReportExport: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            job_id: string;
+            filters: components["schemas"]["FinancialReportQuery"];
+            /** @enum {string} */
+            state: "queued" | "running" | "retry_wait" | "succeeded" | "dead" | "cancelled" | "expired";
+            attempt: number;
+            error_code: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            expires_at: string;
+            as_of: string | null;
+            row_count: number | null;
+            csv_bytes: number | null;
+            csv_sha256: string | null;
+            can_cancel: boolean;
+            can_download: boolean;
+        };
+        FinancialReportExportCreate: {
+            filters: components["schemas"]["FinancialReportQuery"];
+            reason: string;
+        };
+        FinancialReportExportCancel: {
+            reason: string;
+        };
+        FinancialReportExportChunk: {
+            /** Format: uuid */
+            export_id: string;
+            filename: string;
+            sha256: string;
+            total_size_bytes: string;
+            offset: string;
+            length: string;
+            chunk_sha256: string;
+            data_base64: string;
+        };
+        FinancialReportResponse: {
+            data: components["schemas"]["FinancialReport"];
+            meta: components["schemas"]["Meta"];
+        };
+        FinancialReportExportResponse: {
+            data: components["schemas"]["FinancialReportExport"];
+            meta: components["schemas"]["Meta"];
+        };
+        FinancialReportExportListResponse: {
+            data: {
+                items: components["schemas"]["FinancialReportExport"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        FinancialReportExportChunkResponse: {
+            data: components["schemas"]["FinancialReportExportChunk"];
+            meta: components["schemas"]["Meta"];
+        };
+        FinancialReportOption: {
+            /** Format: uuid */
+            id: string;
+            value: string;
+            label: string;
+        };
+        FinancialReportOptionListResponse: {
+            data: {
+                items: components["schemas"]["FinancialReportOption"][];
+                next_cursor: string | null;
+            };
             meta: components["schemas"]["Meta"];
         };
     };
@@ -25044,6 +25287,325 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ChangeReceiptResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFinancialReport: {
+        parameters: {
+            query: {
+                kind: "incurred" | "cash" | "forecast";
+                from: string;
+                to: string;
+                currency?: string;
+                category?: string;
+                q?: string;
+                project_id?: string;
+                company_only?: boolean;
+                supplier_id?: string;
+                owner_id?: string;
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listFinancialReportExports: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                kind?: "incurred" | "cash" | "forecast";
+                state?: "queued" | "running" | "retry_wait" | "succeeded" | "dead" | "cancelled" | "expired";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportExportListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createFinancialReportExport: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FinancialReportExportCreate"];
+            };
+        };
+        responses: {
+            /** @description Accepted */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportExportResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFinancialReportExport: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportExportResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    cancelFinancialReportExport: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FinancialReportExportCancel"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportExportResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFinancialReportExportChunk: {
+        parameters: {
+            query: {
+                offset: string;
+                length: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportExportChunkResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    downloadFinancialReportCSV: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Reauthorized UTF-8 CSV; fixed source manifest, no durable server file. */
+            200: {
+                headers: {
+                    "X-Content-SHA256"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/csv": string;
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFinancialReportOptions: {
+        parameters: {
+            query: {
+                cursor?: string;
+                limit?: number;
+                kind: "incurred" | "cash" | "forecast";
+                from: string;
+                to: string;
+                currency?: string;
+                category?: string;
+                q?: string;
+                project_id?: string;
+                company_only?: boolean;
+                supplier_id?: string;
+                owner_id?: string;
+                field: "category" | "supplier" | "owner";
+                option_search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinancialReportOptionListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

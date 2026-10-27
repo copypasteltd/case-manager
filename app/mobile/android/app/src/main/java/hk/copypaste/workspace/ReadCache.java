@@ -14,7 +14,7 @@ final class ReadCache {
     static final int MAX_FILE_BYTES = 32 * 1024 * 1024;
     static final int MAX_CHUNK_BYTES = 65536;
     static final String ID = "[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}";
-    private static final String EXT = "png|jpg|gif|webp|pdf|doc|docx|xls|xlsx|ppt|pptx";
+    private static final String EXT = "png|jpg|gif|webp|pdf|csv|doc|docx|xls|xlsx|ppt|pptx";
     private final File root;
     private final Map<String, Entry> entries = new HashMap<>();
     static final class Entry {
@@ -87,6 +87,7 @@ final class ReadCache {
             case "jpg": return "image/jpeg";
             case "gif": return "image/gif";
             case "webp": return "image/webp";
+            case "csv": return "text/csv";
             case "pdf": return "application/pdf";
             case "doc": return "application/msword";
             case "docx": return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";

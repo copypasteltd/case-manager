@@ -1,0 +1,323 @@
+{
+  "commit": "73d994b7426ee143278d610b668a8a32625be00e",
+  "complete_startup_source": {
+    "source_count": 870,
+    "sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+    "reconstructed": true
+  },
+  "clients": {
+    "web": {
+      "recorded_sha256": "251fd803ce361df02cbd02a00193936540fd63a7cee7db4cc27b54965b2a6494",
+      "recorded_startup_sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+      "reconstructed_sha256": "251fd803ce361df02cbd02a00193936540fd63a7cee7db4cc27b54965b2a6494",
+      "source_count": 642,
+      "complete_capture_manifest_reconstructed": true
+    },
+    "mobile": {
+      "recorded_sha256": "ec4df1de7ae6776f942bcd5c6f4c2f0fca9f723a333cec71b5ec7a4e07010c14",
+      "recorded_startup_sha256": "d8dce0d8083a5165d65df79d0ed11c84baffa70bce5b0ac77ff8e6ae9d2d53a0",
+      "reconstructed_sha256": "ec4df1de7ae6776f942bcd5c6f4c2f0fca9f723a333cec71b5ec7a4e07010c14",
+      "source_count": 663,
+      "complete_capture_manifest_reconstructed": true
+    }
+  },
+  "preserved_evidence": [
+    {
+      "path": "docs/quality/evidence/budget-comparison-mobile/capture.json",
+      "sha256": "2a5d479e494b6f41b8e8e435457ebcc3b9687d367fde94d99c78cdc1b30df2e2"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-mobile/inbox.png",
+      "sha256": "3ffd486b97f200a2982110b50d8a7a43bf03d10a5686a65f61489ba8173671a6"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-mobile/result.json",
+      "sha256": "1dd7460355b82bc32b5d0371d4e935ac0837bd862f8b0b1f6156372b565c23a9"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-mobile/source-manifest.json",
+      "sha256": "a3c019869b8797f1c319d8c9436612b91de384c59d66f30ed37213dd81a2bcf3"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-web/capture.json",
+      "sha256": "3c99493ae6b626a74f173d023469433b5b948705ac84e7243eed22ebc678bfef"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-web/inbox.png",
+      "sha256": "05aa04ce1c394ae717d6e2f03eccb02e70434af0025b62d2c9ba5a2246686a52"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-web/result.json",
+      "sha256": "7787c69fa68c389cd51f1dabc54873beb9a9a23baafbb22d0cabf2f43a540644"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison-web/source-manifest.json",
+      "sha256": "b058c526f803af8fa2c302d1c2706d51aae1f9acb437edb00f30a97ae317191b"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/android-test-scope.json",
+      "sha256": "b378e96f4fa94ae1af109f2e44a6a0d7eff203bb30b08736f171d1fd684a942a"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "3943f4dcccd1775defe153e3547319484b0aaa3615c50bab017cdca16d84c09b"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "359c2c3bd6340def28c5d22afb0175a399f71697f839342b6218fa0758b512ae"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "8ad83d69ef50e84dc4b31e9a8a0127b6580d482a81dfb86c80c272f4de95aceb"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "21e15d0f7fd35adce7517596db56ad8e438b53b90ea6f0ed7f0f769a6e6eb886"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/apk-inspection.json",
+      "sha256": "da6fd7f66c170a5d3033d5b6cb5131907c1dd2eebfa28e39a64140402cc95ebd"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/backend-cleanup-01/batch-progress.json",
+      "sha256": "5377a7ab5cb31739174f90c467cb4c962d7d5531db09941e51a9a2579cba356d"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/backend-cleanup-01/cleanup.json",
+      "sha256": "e1d91a3b66b36913d613a1d13ebbe974a8ade32b32a04b7480aa078320ff9d11"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/backend-cleanup-01/diagnosis.json",
+      "sha256": "3bd28ef6e8d75e7d593514766dec6a5795465315d44e29a20a64ae99f28c1cf2"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/budget_comparison_recording.mjs",
+      "sha256": "9349a8ac8240db74849ff698032650677f274c1f96620673b0ee967f99ba8d18"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/budget_comparison_sources.py",
+      "sha256": "ecf01bb18ff8fe6b960e38e5c288d54c607dc8f4f17703d1ca9a5d1cfdd239d0"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/check_budget_comparison.mjs",
+      "sha256": "caa26539ba35db2d557889b9004d3dc4b81b48f860a0b46c278b8dc0ee96fc2d"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/diagnosis.json",
+      "sha256": "935d633d17e46460dd6a143eff27cacd547dd5152acbd6de5c9aa0fb2cb6ec46"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/mobile/failure.png",
+      "sha256": "4fdb55e1a0f7ca59f63ba55558c23db73f31d25eb02a4289e91a5aea87ed0b91"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/mobile/result.json",
+      "sha256": "ce96091352c041218014799190fc76ac78e31e0c64a0432d36db0ea1c7b15940"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/mobile/source-manifest.json",
+      "sha256": "6e497b6abfbb7f1c659ad38a3cbfd096af214e7e71703028d3429f73039905da"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/notification_browser_common.mjs",
+      "sha256": "da691f0f238c912662c626941bc86a5c124e869e3d89e497b8a7b8f958744f5d"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/project-budget-comparison-mobile-summary.png",
+      "sha256": "87f0fdbbc039591e7398be9dec1106ddef5cf83479a424754409c90511ffa0f5"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/project-budget-comparison-web-sources.png",
+      "sha256": "e286aca5e85e20cee6176a760423a00274f4121484d1dcf872dd4ae8dc58f787"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/project-budget-comparison-web-summary.png",
+      "sha256": "035dbd1b31921468bc4a0b5d05ad3af74f67342b1f920cc9345f8bcc4b34adeb"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/run_budget_comparison_browser.py",
+      "sha256": "03600679ee8147b2a1b68e139f69237fdb848d481f92dd51ca0bbee3e21b3de4"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/web-capture-manifest.json",
+      "sha256": "8a2191b087a3140f46f2a4d864c9375652516727f1a6e986881d4df1b76da462"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/web/capture.json",
+      "sha256": "bdec33a9b55f86f1737567dcb405db8a265b49857cfd11549f00b2e4f7f9c00b"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/web/inbox.png",
+      "sha256": "05aa04ce1c394ae717d6e2f03eccb02e70434af0025b62d2c9ba5a2246686a52"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/web/result.json",
+      "sha256": "039022f5a9f05a7972c0dca4a18930a3d5bce7b368ed60f35dc43c2989995671"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/capture-picker-ready-01/web/source-manifest.json",
+      "sha256": "a80c5936b4a9d1e134efe716f9856338e6c67be4ebd3c76e0cebf72fa34d5061"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/initial-checks/diagnosis.json",
+      "sha256": "3b7005e6c9a5fbab82f796cfa9c73f57c5fa05206007eb30bb178b9941419721"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/budget_comparison_recording.mjs",
+      "sha256": "9349a8ac8240db74849ff698032650677f274c1f96620673b0ee967f99ba8d18"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/budget_comparison_sources.py",
+      "sha256": "ecf01bb18ff8fe6b960e38e5c288d54c607dc8f4f17703d1ca9a5d1cfdd239d0"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/check_budget_comparison.mjs",
+      "sha256": "3655e68e7dd1671a3fecc00f1207e3f9f5cf926a4bed1d78e4fca4ca718b0b51"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/diagnosis.json",
+      "sha256": "52b6e1640d99a1296d629f01276905cc56064930109b2bc462b7db98ee8e53af"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/mobile-capture-manifest.json",
+      "sha256": "4bcb7374c5e0893e7a80612a679e62c87f5750dace29c78d13bccce1df4b737a"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/mobile/failure.png",
+      "sha256": "d756979b8c4b13595e6941d320895a6f23f9027bb8453b5318aa5c2ff6365cf8"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/mobile/result.json",
+      "sha256": "a0847a481bb0d18fffeeab3c6490896e99d7c70429a045d11348a3ae9096f519"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/mobile/source-manifest.json",
+      "sha256": "4f4aba0ededb8da3e89b17206a1be334dbf4bf5ab8fe79f3e970567b27695d8c"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/notification_browser_common.mjs",
+      "sha256": "da691f0f238c912662c626941bc86a5c124e869e3d89e497b8a7b8f958744f5d"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/project-budget-comparison-mobile-sources.png",
+      "sha256": "10912b8a6d28ecd95c6d5eee09a9a488103e082e5a306049fe63947469fd184a"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/project-budget-comparison-mobile-summary.png",
+      "sha256": "0fb9fce1131c418e7b6dfe161802f5788a018761e1b2d1c1e566ca025616f80d"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/mobile-return-state-01/run_budget_comparison_browser.py",
+      "sha256": "03600679ee8147b2a1b68e139f69237fdb848d481f92dd51ca0bbee3e21b3de4"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/publication-links-01/diagnosis.json",
+      "sha256": "7acd6f1ec3d5c4b7c17fcecb0f1d2ae1a7b2710d16723e0e76eeb89715d45af8"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/publication-links-01/failed-repository-check.json",
+      "sha256": "642bfe053bc924d202940b807e4e7a5c7abc85924565c3d46f35ceed2447fa65"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/source-proof-01/87-project-budget-comparison.md.source",
+      "sha256": "ac248dba282e6d05f19054d62ec33463a0e3bf1aa55b87dbf88ccc4a27ee1a09"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/source-proof-01/diagnosis.json",
+      "sha256": "f96a1c4f4dce6ffadf3d48baf4966303092f90868d7e7fcdb22b8c7db573e423"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/source-proof-01/failed-source-check.json",
+      "sha256": "d07e3da2085bfd4da76333eb370cb99157ef257a9677802c7b8abf00cc60b096"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/attempts/source-proof-01/verify_budget_comparison_sources.py",
+      "sha256": "0a6235597bed582fad59e3ff5bf557de439ccc2cdc6fb38e0d2791c1f8a9637e"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/batch-progress.json",
+      "sha256": "4222a1f5a7fd87d3c608e07a8a8ed547f7d28b4e231110d97acaef43797ebe0c"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/build.json",
+      "sha256": "1c1a8ab6bb0e1c670df93ad041d8209ae659b9234c0cdb03d4929de79313a767"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/development-check.json",
+      "sha256": "54049f9f91b62c9da05a01bee5d3f2002728bf6bfea90ba116ebd81e55bd2247"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/development-project-resources.json",
+      "sha256": "bdae707204b25e71ad7e3c1efd75709326d09deb4ec50ab89622151917582568"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/development-runtime.json",
+      "sha256": "c35bb49118f68f1148bf0263709cdc2954d604b56ac144a2e9a369ee5a742d6e"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/development-update.json",
+      "sha256": "778f794c9ff76e9fcb6b76abfea0787b1db48fa61a35c53f4eff53251ac1e984"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/final-source-check.json",
+      "sha256": "dc6f44e7a3c58208daa20f557a6177b0295e9349c6aaccb23f085127a2952015"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/historical-86.json",
+      "sha256": "ddd6e8cf2cf8508cc2fc6f401e5ab860fd57ac8599709e92526a90a17ccc1198"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/linux-build.json",
+      "sha256": "cd789590c4a5f6be704ba8a49a97e471461a39c2ee0aa354f1882a662fa2a4b8"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/media.json",
+      "sha256": "7b4c6900a329950b18b41d3db3c17bbbb33df4b57794b893e62075bef3018cdf"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/mobile-build.json",
+      "sha256": "08b64d073184a856ecc4b5d73f4721f9be96f36ec36edbdaf96b3b5faf2df504"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/mobile-capture-manifest.json",
+      "sha256": "43002558ce7c45a5a3b22c723ba818fd7cb20c1e14eb7eaefa6b572dfa647c0a"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/mobile-verification.log",
+      "sha256": "b8389d845784be678c4b17614d620b2487ad1a0fc66c6d0f44be7828dda80608"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/native-build.log",
+      "sha256": "0639120c369e5dea137be85ec883c853112981e8334bbe2224d17325e5501812"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/repository-check.json",
+      "sha256": "dc8f5c3a8e9826f5629548e456931683cf8153d2e2e984f872a6b0f9a8d801f1"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/result.json",
+      "sha256": "d65492d2320c9606a47050e7ab935ccce10dee0eb7fdfbdb12e7432815e9c595"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/runtime-build.json",
+      "sha256": "7ad61897323796a1cb5fa4372b9ad2b985ac08e1a05c1f0995b813362beb0905"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/verification.md",
+      "sha256": "45d2ca3f3e9bcef41d6c1b8559c368bd1bc4ad62b3de7798c30f391199331ce6"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/visual-review.json",
+      "sha256": "5cb9d42d6f09d882a4d88e1f4fa5abab53f26dfe79514b87932020b5882def9b"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/web-build.json",
+      "sha256": "aebb095130ed2843d1045ad1b2fb36d89c3503d3e3e0a6fec7bae69c10a3fa67"
+    },
+    {
+      "path": "docs/quality/evidence/budget-comparison/web-capture-manifest.json",
+      "sha256": "ad6a83997bc375012384fc0b39d3345ba899236679c3d9ee4b4ecf51098c2b4f"
+    }
+  ],
+  "scope": "Published increment87 complete startup and both complete client capture manifests reconstruct from Git. Earlier increment84 cache limitations remain unchanged in its retained provenance."
+}

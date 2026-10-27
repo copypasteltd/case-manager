@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "verifier_sha256": "9b0f91a4c764c6955a148209b229cd36f154a7200969f12917969898dd9a5a0b",
+  "error": "KeyError: scripts/run_agent_browser.py missing from startup-only source archive",
+  "reason": "Capture manifests include unchanged helpers beyond the complete startup scope; reconstruct the helpers from the published Git objects and verify the original capture digest, without changing archived bytes."
+}

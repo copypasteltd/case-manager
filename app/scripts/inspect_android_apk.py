@@ -57,7 +57,7 @@ def main():
     for file in sorted((APP / 'mobile/android/app/build/test-results/testDebugUnitTest').glob('TEST-*.xml')):
         root = ET.parse(file).getroot()
         suites.append({key: root.attrib.get(key) for key in ('name', 'tests', 'failures', 'errors', 'skipped')})
-    check('All twenty-five Android transport, cache and upload tests pass', sum(int(s['tests']) for s in suites) == 25 and all(all(int(s[k]) == 0 for k in ('failures', 'errors', 'skipped')) for s in suites) and any(s['name'].endswith('.UploadTransferTest') for s in suites))
+    check('All twenty-six Android transport, cache, CSV and upload tests pass', sum(int(s['tests']) for s in suites) == 26 and all(all(int(s[k]) == 0 for k in ('failures', 'errors', 'skipped')) for s in suites) and any(s['name'].endswith('.UploadTransferTest') for s in suites))
     with zipfile.ZipFile(apk) as archive:
         bundle = archive.read('assets/index.android.bundle')
         expected = APP / 'mobile/android/app/src/main/assets/index.android.bundle'
@@ -73,7 +73,7 @@ def main():
     check('The business graph uses the intended native platform adapters', all(any(name.endswith('/mobile/src/' + suffix) for name in sources) for suffix in required))
     check('No Expo extension or WebView entered the offline business graph', not any(re.search(r'/node_modules/(?:expo(?:-[^/]+)?|@unimodules|react-native-webview)/', name) for name in sources))
     pages = re.findall(r"'([^']+)'", (APP / 'mobile/src/app.config.ts').read_text(encoding='utf-8').split('window:')[0])
-    check('All seventeen registered business pages including finance and token budgets are included', len(pages) == 17 and 'pages/budget/index' in pages and 'pages/finance/index' in pages and all(any(name.endswith('/mobile/src/' + page + '.tsx') for name in sources) for page in pages))
+    check('All eighteen registered business pages including financial reports and token budgets are included', len(pages) == 18 and 'pages/reports/index' in pages and 'pages/budget/index' in pages and 'pages/finance/index' in pages and all(any(name.endswith('/mobile/src/' + page + '.tsx') for name in sources) for page in pages))
     check('The user-started dataSync upload service is private', any(block.lstrip().startswith('service ') and 'hk.copypaste.workspace.UploadServiceHost' in block and re.search(r'(?:android:|/android:)exported[^\n]*=(?:false|\(type 0x12\)0x0+)\b', block) and re.search(r'(?:android:|/android:)foregroundServiceType[^\n]*0x0*1\b', block) for block in permission_blocks))
     check('Upload does not register a boot-time restart receiver', 'android.intent.action.BOOT_COMPLETED' not in manifest and 'android.permission.RECEIVE_BOOT_COMPLETED' not in permissions)
     report = {'passed': all(c['passed'] for c in checks), 'checked_at': datetime.now(timezone.utc).isoformat(), 'checks': checks,

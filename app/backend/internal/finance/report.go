@@ -27,9 +27,15 @@ const incurredReadPredicate = ` WHERE c.org_id=$1 AND can_read_cost(c.org_id,$2,
 
 const incurredReportPredicate = incurredReadPredicate + `
         AND r.occurred_on>=$5::date AND r.occurred_on<$6::date AND ($7='' OR r.currency=$7) AND ($8='' OR r.category=$8)
-        AND (($9::uuid IS NULL AND NOT $10) OR EXISTS(SELECT 1 FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id IS NOT DISTINCT FROM $9::uuid)) `
+        AND (($9::uuid IS NULL AND NOT $10) OR EXISTS(SELECT 1 FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id IS NOT DISTINCT FROM $9::uuid))
+        AND ($11::uuid IS NULL OR r.counterparty_id=$11) AND ($12::uuid IS NULL OR c.creator_id=$12)
+        AND ($13='' OR position(lower($13) in lower(r.title))>0 OR c.source_key=$13) `
 
 func incurredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, kind string, f Filter) (Report, error) {
+	return incurredFilteredReportInTx(ctx, tx, a, kind, f, nil, nil)
+}
+
+func incurredFilteredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, kind string, f Filter, supplier, owner *string) (Report, error) {
 	out := Report{Kind: "incurred", Timezone: "Asia/Hong_Kong", FXCoverage: "unconfigured", Totals: []Total{}}
 	if kind != "" && kind != "incurred" {
 		return out, core.Fail(409, "REPORT_KIND_NOT_AVAILABLE", "此接口提供发生支出；现金请使用现金报表，预测及摊销仍待接入")
@@ -64,7 +70,7 @@ func incurredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, kind strin
 	out.From = f.From
 	out.To = f.To
 	predicate := incurredReportPredicate
-	args := []any{a.OrgID, a.UserID, a.Channel, a.RunID != "", f.From, f.To, f.Currency, f.Category, f.ProjectID, f.CompanyOnly}
+	args := []any{a.OrgID, a.UserID, a.Channel, a.RunID != "", f.From, f.To, f.Currency, f.Category, f.ProjectID, f.CompanyOnly, supplier, owner, f.Query}
 	rows, err := tx.Query(ctx, `SELECT currency,COALESCE(sum(share) FILTER(WHERE entry_kind='expense'),0)::text,COALESCE(sum(share) FILTER(WHERE entry_kind='reversal'),0)::text,
         sum(CASE entry_kind WHEN 'reversal' THEN -share ELSE share END)::text,count(*) FROM (
         SELECT c.entry_kind,r.currency,CASE WHEN $9::uuid IS NULL AND NOT $10 THEN r.amount ELSE (SELECT sum(a.amount) FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id IS NOT DISTINCT FROM $9::uuid) END share `+currentJoin+predicate+` AND c.state IN ('confirmed','reversed')) entries GROUP BY currency ORDER BY currency`, args...)

@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-27T07:17:53.545007+00:00",
+  "encoder_script_sha256": "90a5e8864f6bf1d30554303c52c9275b20bac6834f95b0c7a49fe5aeb9f9b1bd",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "f67f96a43c86b442a6e6707f1163db91060da1083a84fb526631f023f615a63f",
+      "build_source_sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+      "capture_manifest": "docs/quality/evidence/finance-reports/web-capture-manifest.json",
+      "capture_manifest_sha256": "9bb5190aeaf536d0343d20e7d82d9b65e7d5621469e4ae7f1f74cae5283c451f",
+      "capture_frame_count": 36,
+      "capture_duration_ms": 7311,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "75",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.500000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/financial-reports-web.mp4",
+          "sha256": "155252a99ffe16e5c75cb153dbcf77f1b9308e77f67e0a88cc0744f70d3ccb2e",
+          "bytes": 503772
+        },
+        {
+          "file": "docs/media/gifs/financial-reports-web.gif",
+          "sha256": "18757a9c3a7147da0ccf39a01b3bd984ce90534faf5b7b330d9cc74dc5e8a088",
+          "bytes": 868253
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "0971ec73442d95fc6bd1c84e468d124de7c762ab263659da49b7e0bc8d238861",
+      "build_source_sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+      "capture_manifest": "docs/quality/evidence/finance-reports/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "2b57736ec1c4e023f1af28800d27140f7103c444c660cf5c5ceacdbf56aec3e1",
+      "capture_frame_count": 35,
+      "capture_duration_ms": 7104,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "73",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/financial-reports-mobile.mp4",
+          "sha256": "9751ebfc74d93c077b100ae2de4b704234caa3e265eb6d3f9bec061d6af78246",
+          "bytes": 228968
+        },
+        {
+          "file": "docs/media/gifs/financial-reports-mobile.gif",
+          "sha256": "8342253df73393c22a24d6ab93ca1c46f995e07858cdf048365b93e52bf90fe8",
+          "bytes": 777922
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

@@ -1724,6 +1724,49 @@ PATHS["/projects/{id}/changes"]["get"]["parameters"].extend([
     {"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 200}},
     {"name": "state", "in": "query", "schema": enum("draft", "in_review", "approved", "rejected", "withdrawn", "implemented")}])
 
+# Financial reports and immutable, expiring asynchronous exports.
+report_query_fields = {"kind": enum("incurred", "cash", "forecast"), "from": DATE, "to": DATE,
+    "currency": {"type":"string","pattern":"^([A-Z]{3})?$"}, "category":{"type":"string","maxLength":50},
+    "q":{"type":"string","maxLength":200}, "project_id":nullable(ID), "company_only":{"type":"boolean"},
+    "supplier_id":nullable(ID), "owner_id":nullable(ID)}
+add("FinancialReportQuery", report_query_fields, ("kind","from","to","company_only"))
+report_source_fields = {"source_type":enum("cost","payment","subscription_period"), "id":ID,"resource_id":ID,"revision_id":ID,
+    "version":VERSION,"title":{"type":"string","maxLength":20000},"from":DATE,"to":nullable(DATE),"state":NAME,"entry_kind":enum("expense","reversal","payment","forecast"),
+    "currency":nullable(CURRENCY),"original_amount":nullable(MONEY),"contribution_amount":nullable({"type":"string","pattern":r"^-?(0|[1-9][0-9]*)(\.[0-9]{1,6})?$"}),
+    "category":{"type":"string","maxLength":50},"supplier_id":nullable(ID),"owner_id":ID,"project_id":nullable(ID),"created_at":TIME}
+report_source_fields["timezone"] = {"type":"string","minLength":1,"maxLength":100}
+add("FinancialReportSource", report_source_fields, tuple(report_source_fields))
+add("FinancialReport", {"filters":ref("FinancialReportQuery"),"scope":enum("authorized_records_only"),
+    "summary":{"anyOf":[ref("CostReport"),ref("CashReport"),ref("ForecastReport")]},
+    "items":array(ref("FinancialReportSource")),"next_cursor":nullable(CURSOR)}, ("filters","scope","summary","items","next_cursor"))
+export_fields = {"id":ID,"job_id":ID,"filters":ref("FinancialReportQuery"),"state":enum("queued","running","retry_wait","succeeded","dead","cancelled","expired"),
+    "attempt":{"type":"integer","minimum":0,"maximum":4},"error_code":nullable(TEXT),"created_at":TIME,"expires_at":TIME,"as_of":nullable(TIME),
+    "row_count":nullable({"type":"integer","minimum":0,"maximum":50000}),"csv_bytes":nullable({"type":"integer","minimum":1,"maximum":16777216}),
+    "csv_sha256":nullable(HASH),"can_cancel":{"type":"boolean"},"can_download":{"type":"boolean"}}
+add("FinancialReportExport",export_fields,tuple(export_fields))
+report_reason = {"type":"string","minLength":1,"maxLength":2000}
+add("FinancialReportExportCreate",{"filters":ref("FinancialReportQuery"),"reason":report_reason},("filters","reason"))
+add("FinancialReportExportCancel",{"reason":report_reason},("reason",))
+chunk_fields={"export_id":ID,"filename":NAME,"sha256":HASH,"total_size_bytes":BYTES,"offset":BYTES,"length":BYTES,"chunk_sha256":HASH,"data_base64":{"type":"string","maxLength":699052}}
+add("FinancialReportExportChunk",chunk_fields,tuple(chunk_fields))
+operation("/finance/reports","get","readFinancialReport","FinancialReport")
+PATHS["/finance/reports"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id") else ID} for key,schema in report_query_fields.items()]
+PATHS["/finance/reports"]["get"]["parameters"] += [{"name":"cursor","in":"query","schema":CURSOR},{"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":100,"default":20}}]
+operation("/finance/report-exports","post","createFinancialReportExport","FinancialReportExport","FinancialReportExportCreate",202)
+operation("/finance/report-exports","get","listFinancialReportExports","FinancialReportExport",listing=True)
+PATHS["/finance/report-exports"]["get"]["parameters"] += [{"name":"kind","in":"query","schema":enum("incurred","cash","forecast")},{"name":"state","in":"query","schema":export_fields["state"]}]
+operation("/finance/report-exports/{id}","get","readFinancialReportExport","FinancialReportExport")
+operation("/finance/report-exports/{id}/cancel","post","cancelFinancialReportExport","FinancialReportExport","FinancialReportExportCancel")
+operation("/finance/report-exports/{id}/chunks","get","readFinancialReportExportChunk","FinancialReportExportChunk")
+PATHS["/finance/report-exports/{id}/chunks"]["get"]["parameters"] += [{"name":"offset","in":"query","required":True,"schema":BYTES},{"name":"length","in":"query","required":True,"schema":BYTES}]
+operation("/finance/report-exports/{id}/download","get","downloadFinancialReportCSV","FinancialReportExport")
+PATHS["/finance/report-exports/{id}/download"]["get"]["responses"]["200"]={"description":"Reauthorized UTF-8 CSV; fixed source manifest, no durable server file.","headers":{"X-Content-SHA256":{"schema":HASH}},"content":{"text/csv":{"schema":{"type":"string","format":"binary"}}}}
+
+add("FinancialReportOption",{"id":ID,"value":{"type":"string","maxLength":50},"label":{"type":"string","minLength":1,"maxLength":500}},("id","value","label"))
+operation("/finance/report-options","get","readFinancialReportOptions","FinancialReportOption",listing=True)
+PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id") else ID} for key,schema in report_query_fields.items()]
+PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":"field","in":"query","required":True,"schema":enum("category","supplier","owner")},{"name":"option_search","in":"query","schema":{"type":"string","maxLength":200}}]
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

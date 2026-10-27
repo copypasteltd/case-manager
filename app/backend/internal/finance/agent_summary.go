@@ -116,10 +116,10 @@ func AgentSummary(ctx context.Context, tx pgx.Tx, a core.Actor, project *string,
 	switch view {
 	case "actual":
 		query = "SELECT 'cost',c.id,c.current_revision_id" + currentJoin + incurredReportPredicate + " ORDER BY c.id LIMIT 501"
-		args = []any{a.OrgID, a.UserID, a.Channel, true, f.From, f.To, f.Currency, "", f.ProjectID, f.CompanyOnly}
+		args = []any{a.OrgID, a.UserID, a.Channel, true, f.From, f.To, f.Currency, "", f.ProjectID, f.CompanyOnly, (*string)(nil), (*string)(nil), ""}
 	case "cash":
 		query = "SELECT 'payment',p.id,p.current_revision_id" + paymentJoin + cashReportPredicate + " ORDER BY p.id LIMIT 501"
-		args = []any{a.OrgID, a.UserID, a.Channel, true, f.From, f.To, f.Currency, "", f.ProjectID, f.CompanyOnly}
+		args = []any{a.OrgID, a.UserID, a.Channel, true, f.From, f.To, f.Currency, "", f.ProjectID, f.CompanyOnly, (*string)(nil), (*string)(nil), ""}
 	case "forecast":
 		query = "SELECT 'subscription',s.id,s.current_revision_id" + subscriptionJoin + forecastReportScope + " ORDER BY s.id LIMIT 501"
 		args = []any{a.OrgID, a.UserID, a.Channel, true, "", f.ProjectID, f.CompanyOnly, (*string)(nil), (*string)(nil), ""}

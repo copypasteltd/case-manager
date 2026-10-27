@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T06:44:46.819Z",
+  "finished_at": "2026-10-27T06:45:28.003Z",
+  "checks": [
+    "Real MFA login and native report reconcile HKD76.4 and USD10 separately, with one unconfirmed draft and actual paged sources."
+  ],
+  "source_count": 656,
+  "source_sha256": "bde47dfcc34dc97ceba1d0f5b445bea838bb9ba1049167006705724607f34ca0",
+  "source_after_sha256": "bde47dfcc34dc97ceba1d0f5b445bea838bb9ba1049167006705724607f34ca0",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '上一页明细', exact: true })\u001b[22m\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "c112ea94a51a32077a16dffd7e8905dd68598b56ad53b9bc61161932385862f5",
+  "build_source_after_sha256": "c112ea94a51a32077a16dffd7e8905dd68598b56ad53b9bc61161932385862f5",
+  "build_source_unchanged": true
+}

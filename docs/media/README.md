@@ -2,9 +2,9 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **48张PNG、17段MP4、17个GIF**。增量87新增四张项目预算对比截图和Web、Taro各一对实际短录屏／GIF；此前Token账本、知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
+本目录包含 **54张PNG、19段MP4、19个GIF**。增量88新增六张财务报表截图和Web、Taro各一对实际MP4／GIF；此前Token账本、知识、TG、状态、项目、OA和文件演示按原证据保留。全部使用隔离合成数据，不含真实合同、员工资料、密码、MFA、私钥或令牌。
 
-This catalog contains **48 PNGs,17 MP4s and17 GIFs**. Increment87 adds four project-budget comparison screenshots and an actual short recording/GIF pair for each client. Earlier token, knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records and credentials.
+This catalog contains **54 PNGs,19 MP4s and19 GIFs**. Increment88 adds six financial-report screenshots and an actual recording/GIF pair for each client. Earlier token, knowledge, TG, status, project, OA and file captures retain their original evidence. All media uses isolated synthetic data and excludes real records and credentials.
 
 ## 1. Web 项目创建与任务闭环 / Project and task workflow
 
@@ -344,3 +344,26 @@ Select a configured currency from the project's budget page, inspect the current
 The short clips record actual source interactions after login. Capture-frame timing differs from encoded playback frames; manifests retain both scopes. Six checked flows and three layouts per client are broader than the bounded recordings. All four final screenshots and both animations received manual pixel review. Taro H5 is not a device acceptance result.
 
 复现顺序 / Reproduction: `python app/scripts/run_budget_comparison_browser.py` → `python app/scripts/run_budget_comparison_browser.py --mobile` → `python app/scripts/encode_budget_comparison_media.py`。两端串行，归属明确的浏览器、临时API／隔离数据库、5189服务和私有夹具在检查结束后释放。保留选择器就绪与缓存页面展开状态的失败捕获及完整来源，旧通过结果不重绑改动后的检查器。完整[计算与操作](../development/87-project-budget-comparison.md)、[验证与来源](../quality/evidence/budget-comparison/verification.md)和[媒体清单](../quality/evidence/budget-comparison/media.json)可逐项核对。
+
+## 16. 财务筛选、规范来源与异步导出 / Financial filters, canonical sources and asynchronous exports
+
+实际操作：报表与原币 → 项目、类别、供应方、经办筛选 → 来源分页 → 填用途排队 → 等待worker → 实际CSV校验下载 → 现金／预测查询。每端完整5组检查及3种尺寸另见证据；录屏是其中的连续短片段，身份输入完成后才开始。
+
+Actual actions apply business filters, page canonical sources, enqueue an export, wait for the real native worker, verify and retrieve the CSV, then inspect cash and forecast facts. Media contains isolated synthetic records and actual post-login viewport pixels.
+
+| Client | Summary | Canonical sources | Owner-only exports |
+| --- | --- | --- | --- |
+| Web | [PNG](screenshots/financial-reports-web-summary.png) | [PNG](screenshots/financial-reports-web-sources.png) | [PNG](screenshots/financial-reports-web-exports.png) |
+| Taro H5 | [PNG](screenshots/financial-reports-mobile-summary.png) | [PNG](screenshots/financial-reports-mobile-sources.png) | [PNG](screenshots/financial-reports-mobile-exports.png) |
+
+![Web财务查询与实际导出 / Web financial query and actual export](gifs/financial-reports-web.gif)
+
+[Web MP4](videos/financial-reports-web.mp4) · 1440×1100 · 36原始采样帧／7311毫秒 · GIF1×。
+
+![Taro财务查询与实际导出 / Taro financial query and actual export](gifs/financial-reports-mobile.gif)
+
+[Taro MP4](videos/financial-reports-mobile.mp4) · 390×900 · 35原始采样帧／7104毫秒 · GIF1×。
+
+原始采样与编码补帧分别记录；操作由自动化较快执行，MP4可用播放器慢速查看。最终6图及两GIF的首／中／末帧已人工目视检查。实际27行CSV摘要与长度在两端download-proof中核对，CSV及原始JPEG不入Git。H5和开发APK不代替平台或Android实体设备验收。
+
+复现 / Reproduction: `python app/scripts/run_financial_reports_browser.py` → `python app/scripts/run_financial_reports_browser.py --mobile` → `python app/scripts/encode_financial_reports_media.py`。归档已有证据后两端串行执行；完成即释放自建浏览器、临时API／库、5189服务和私有fixture。保留失败及被替代通过捕获的完整来源，不将旧通过重绑新源码。详见[设计与操作](../development/88-financial-report-filters-and-exports.md)、[当前验证](../quality/evidence/finance-reports/verification.md)及[准确媒体清单](../quality/evidence/finance-reports/media.json)。

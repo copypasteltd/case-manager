@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T06:47:37.044Z",
+  "finished_at": "2026-10-27T06:48:10.643Z",
+  "checks": [
+    "Real MFA login and native report reconcile HKD76.4 and USD10 separately, with one unconfirmed draft and actual paged sources.",
+    "Category, supplier, recorder, currency and keyword choices operate through readable native source records on the actual client.",
+    "A real 202 enqueue becomes a fenced immutable snapshot; actual downloaded CSV has all27 matching sources and its declared whole-file SHA256, without spreadsheet formula execution text.",
+    "Cash retains its own HKD90 recorded/refunded facts, while stored subscription forecasts remain HKD200 with an explicit missing period.",
+    "Three responsive widths retain the report and its honest coverage without document overflow; all owned contexts are closed by the harness."
+  ],
+  "source_count": 656,
+  "source_sha256": "fd5b784bbc3c71d522e11936aa8eef1e6ed6d5771353173d82fa6fe8f5d7d36c",
+  "source_after_sha256": "fd5b784bbc3c71d522e11936aa8eef1e6ed6d5771353173d82fa6fe8f5d7d36c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "5f25003d4741794062b49caf1e3d13b75fe7cf34c8998e199e390cd760dd3fda",
+  "build_source_after_sha256": "5f25003d4741794062b49caf1e3d13b75fe7cf34c8998e199e390cd760dd3fda",
+  "build_source_unchanged": true
+}

@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T07:23:32.595318+00:00",
+  "method": "Six actual viewport PNGs opened for inspection; first/middle/last frames of both actual GIFs inspected in an ignored contact sheet.",
+  "files": [
+    {
+      "file": "docs/media/screenshots/financial-reports-mobile-exports.png",
+      "sha256": "b14ba0cc4484ba38957b1e515b3a672595b812237b576f01b4150ff94bc94dcd",
+      "bytes": 66421,
+      "dimensions": [
+        390,
+        900
+      ],
+      "frames": 1
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-mobile-sources.png",
+      "sha256": "5a8b9e5ebcbe2d828791d866b493762bb9a5373b861dd67351f0e2b4656bff8f",
+      "bytes": 60735,
+      "dimensions": [
+        390,
+        900
+      ],
+      "frames": 1
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-mobile-summary.png",
+      "sha256": "5901ddc1928ac0d9ff273dc0c8d65177d6aa696a5d48d82950b5fb13017842be",
+      "bytes": 57516,
+      "dimensions": [
+        390,
+        900
+      ],
+      "frames": 1
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-web-exports.png",
+      "sha256": "971e4f6ac71e10df7ee58ee54092c977551e7c05265d1648eb04d75ec1e1a353",
+      "bytes": 150526,
+      "dimensions": [
+        1440,
+        1100
+      ],
+      "frames": 1
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-web-sources.png",
+      "sha256": "a703ffe9136991484616fa0b7c76dacd9c26b8c23ef97dc67c4791b036c0c0de",
+      "bytes": 141593,
+      "dimensions": [
+        1440,
+        1100
+      ],
+      "frames": 1
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-web-summary.png",
+      "sha256": "7a20444e0f8afa263a721e76e55ecbcaf9b925c4d779946b308c2593d6df0334",
+      "bytes": 145666,
+      "dimensions": [
+        1440,
+        1100
+      ],
+      "frames": 1
+    },
+    {
+      "file": "docs/media/gifs/financial-reports-mobile.gif",
+      "sha256": "8342253df73393c22a24d6ab93ca1c46f995e07858cdf048365b93e52bf90fe8",
+      "bytes": 777922,
+      "dimensions": [
+        390,
+        900
+      ],
+      "frames": 44
+    },
+    {
+      "file": "docs/media/gifs/financial-reports-web.gif",
+      "sha256": "18757a9c3a7147da0ccf39a01b3bd984ce90534faf5b7b330d9cc74dc5e8a088",
+      "bytes": 868253,
+      "dimensions": [
+        960,
+        734
+      ],
+      "frames": 45
+    }
+  ],
+  "findings": [
+    "Original currencies remain separate and exact; unconfirmed drafts are explicitly excluded.",
+    "Canonical dates, timezones and project contributions remain visible in source rows.",
+    "Export screens show the actual generated27-row filtered job and separate cash/forecast jobs.",
+    "Blue/white/black company palette and existing navigation remain consistent; responsive browser checks report no document overflow.",
+    "Only isolated synthetic business data is visible; no password, MFA, private capability or real record is captured."
+  ],
+  "device_acceptance": false,
+  "production_acceptance": false
+}

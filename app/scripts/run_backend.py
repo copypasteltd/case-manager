@@ -33,7 +33,7 @@ def main():
     if subcommand[0]=='worker-notification':
         allowed={'CP_ENV','CP_DATABASE_URL','CP_NOTIFICATION_CONTRACT_ORG_ID','CP_NOTIFICATION_CONTRACT_TIMEZONE','CP_NOTIFICATION_CONTRACT_DAYS_BEFORE'}
         env={k:v for k,v in env.items() if not k.startswith('CP_') or k in allowed}
-    if subcommand[0]=='worker-subscription':
+    if subcommand[0] in ('worker-subscription','worker-report-export'):
         env={k:v for k,v in env.items() if not k.startswith('CP_') or k in {'CP_ENV','CP_DATABASE_URL'}}
     if subcommand[0]=='worker-telegram':
         env={k:v for k,v in env.items() if not k.startswith('CP_') or k in {'CP_ENV','CP_DATABASE_URL','CP_TELEGRAM_DISPATCH_BOTS'}}

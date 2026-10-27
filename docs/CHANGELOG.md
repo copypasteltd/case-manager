@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 2026-10-27 · Increment88 / 财务筛选、规范来源与限时导出
+
+发生、现金、订阅预测现支持完整业务筛选、原币独立合计、可读来源候选及规范明细签名分页。独立report.export授权允许本人排队、查看、取消和24小时内下载；实际worker固定快照，实时授权／围栏／不可变数据库约束保护生成与交付，过期清理派生内容。Web与Taro共用完整分段及SHA校验，原文件继续OSS／R2，CSV不长期落盘；Android／微信／抖音按实际能力交付或明确回退Web。
+
+Adds complete business filters and canonical source pagination across incurred, cash and subscription forecasts. A separate report.export permission governs owner-only queued snapshots, cancellation and expiring retrieval. A native DB-only worker freezes complete authorized sources; fencing, immutable guards, expiry and fresh authority protect delivery. Clients verify the full CSV before saving or handing it off. Original documents retain the existing OSS/R2 path.
+
+161顶层／1,057结果／960末级后端9批、Web112、运行时47、移动187、双小程序各18页通过；Android42,905,815字节开发包、18包检查、26项新执行JVM通过；Linux只编译。新增6截图／2MP4／2GIF，目录54／19／19；两端均实际校验27行CSV。新增73迁移，原72项字节不变。保留完整来源的失败及被替代捕获、修复旧秘书查询兼容问题后的全量回归；增量87按已发布73d994b重建，74份旧证据原字节不变。完整四端、真机／云／模型／TG、容量、安全和生产放行继续开放。
+
+Source-bound local checks and actual media pass with the26 JVM tests newly executed. Failed and superseded attempts retain exact sources. Full regression caught and fixed an existing secretary-query compatibility issue before all nine batches passed. Published increment87 provenance and74 prior evidence files remain unchanged. No device, real integration or production acceptance is claimed.
+
+[完整使用与设计 / Workflow](development/88-financial-report-filters-and-exports.md) · [验证 / Evidence](quality/evidence/finance-reports/verification.md) · [截图与录屏 / Media](media/README.md)
+
 ## 2026-10-27 · Increment87 / 项目预算与实际支出对比
 
 新增完整当前预算与实际费用对比API及Web／Taro入口，按明确原币、类别、包含起止日的期间和本项目规范分摊计算；原费用与冲销各用自身发生日期，草稿单列。预算内／外来源支持状态筛选、签名分页与原记录跳转；严格检查逐笔读取权限和当前计划依据，不将可见部分冒充全项目余额。无预算与批准清空的零预算分开显示，无新增迁移。

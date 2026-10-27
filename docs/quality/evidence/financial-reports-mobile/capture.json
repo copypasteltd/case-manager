@@ -1,0 +1,32 @@
+{
+  "recordings": [
+    {
+      "name": "financial-reports-mobile",
+      "frame_count": 35,
+      "duration_ms": 7104,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/financial-reports-mobile/frames.json",
+      "manifest_sha256": "2b57736ec1c4e023f1af28800d27140f7103c444c660cf5c5ceacdbf56aec3e1"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "document": 390
+    },
+    {
+      "width": 430,
+      "document": 430
+    },
+    {
+      "width": 768,
+      "document": 768
+    }
+  ],
+  "audio": false,
+  "real_browser_pixels": true
+}

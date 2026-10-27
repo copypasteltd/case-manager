@@ -1,0 +1,22 @@
+[Unit]
+Description=CopyPaste financial report export and expiry worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=copypaste-worker
+Group=copypaste-worker
+WorkingDirectory=/opt/copypaste/app
+EnvironmentFile=/etc/copypaste/report-export-worker.env
+ExecStart=/opt/copypaste/bin/platform worker-report-export
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

@@ -25,6 +25,7 @@ func costFilter(r *http.Request) (finance.Filter, error) {
 	return finance.Filter{Query: q.Get("q"), State: q.Get("state"), Currency: q.Get("currency"), Category: q.Get("category"), From: q.Get("from"), To: q.Get("to"), Cursor: f.Cursor, Limit: f.Limit, ProjectID: project, CompanyOnly: company}, nil
 }
 func (s *Server) costRoutes(mux *http.ServeMux) {
+	s.financeReportRoutes(mux)
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
 	mux.HandleFunc("GET /v1/costs", read(s, "CostListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := costFilter(r)

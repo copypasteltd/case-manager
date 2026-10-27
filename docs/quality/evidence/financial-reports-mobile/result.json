@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-27T07:13:03.252Z",
+  "finished_at": "2026-10-27T07:13:17.314Z",
+  "checks": [
+    "Real MFA login and native report reconcile HKD76.4 and USD10 separately, with one unconfirmed draft and actual paged sources.",
+    "Category, supplier, recorder, currency and keyword choices operate through readable native source records on the actual client.",
+    "A real 202 enqueue becomes a fenced immutable snapshot; actual downloaded CSV has all27 matching sources and its declared whole-file SHA256, without spreadsheet formula execution text.",
+    "Cash retains its own HKD90 recorded/refunded facts, while stored subscription forecasts remain HKD200 with an explicit missing period.",
+    "Three responsive widths retain the report and its honest coverage without document overflow; all owned contexts are closed by the harness."
+  ],
+  "source_count": 677,
+  "source_sha256": "0971ec73442d95fc6bd1c84e468d124de7c762ab263659da49b7e0bc8d238861",
+  "source_after_sha256": "0971ec73442d95fc6bd1c84e468d124de7c762ab263659da49b7e0bc8d238861",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+  "build_source_after_sha256": "084dafe87207b9284e76c4b8e049d517b8d41707081722bf536b915d6fa505f6",
+  "build_source_unchanged": true
+}

@@ -12,11 +12,15 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
-最新功能 / Latest workflow: [项目预算与实际支出对比 / Project budget versus actual expenditure](docs/development/87-project-budget-comparison.md).
+最新功能 / Latest workflow: [财务筛选、明细与限时导出 / Financial filters, sources and expiring exports](docs/development/88-financial-report-filters-and-exports.md).
 
-![实际项目预算与费用来源 / Actual project budget and expense sources](docs/media/gifs/project-budget-comparison-web.gif)
+![实际财务查询与异步导出 / Actual financial queries and asynchronous exports](docs/media/gifs/financial-reports-web.gif)
 
-[Web MP4](docs/media/videos/project-budget-comparison-web.mp4) · [Mobile MP4](docs/media/videos/project-budget-comparison-mobile.mp4) · [Mobile GIF](docs/media/gifs/project-budget-comparison-mobile.gif). 合成数据／真实本机API；移动为Taro H5。Synthetic data and real native API; mobile is Taro H5.
+[Web MP4](docs/media/videos/financial-reports-web.mp4) · [Mobile MP4](docs/media/videos/financial-reports-mobile.mp4) · [Mobile GIF](docs/media/gifs/financial-reports-mobile.gif). 合成数据／真实本机API；移动为Taro H5。Synthetic data and real native API; mobile is Taro H5.
+
+财务报表现支持期间、项目／公司、类别、供应方、经办／负责人、原币和关键词筛选，附原始明细分页。导出使用独立权限与后台任务，固定快照保留24小时；下载前重新鉴权并核对完整摘要。参见[操作、API、worker和四端差异](docs/development/88-financial-report-filters-and-exports.md)。
+
+Financial reports now include interval, project/company, category, supplier, recorder/owner, original-currency and keyword filters with paged canonical sources. Independently authorized exports run asynchronously, expire after24 hours and reauthorize before verified retrieval. See the [workflow, API, worker and client behavior](docs/development/88-financial-report-filters-and-exports.md).
 
 ## 方案与能力 / Architecture and capabilities
 

@@ -1,6 +1,6 @@
 # 费用、订阅、付款与月报需求
 
-实现追踪（增量87）：[当前预算与实际支出对比](../development/87-project-budget-comparison.md)已在Web／Taro接通完整原币计划、本项目份额、冲销、未确认及预算外来源分页；只代表授权记录。完整筛选／导出、跨域旅程、汇率制度及生产财务验收仍按本需求和GAP-03继续推进。 Implementation trace: authorized current-plan reconciliation is implemented; remaining financial and production acceptance stays open.
+实现追踪（增量88）：[完整财务筛选、规范来源与限时异步导出](../development/88-financial-report-filters-and-exports.md)已在Web／Taro接通三种口径、期间／项目或公司／原币／类别／供应方／经办或负责人／关键词、签名明细与本人任务分页、独立导出授权、实际worker快照及24小时重新鉴权下载。增量87的当前预算对比继续保留。只代表授权记录；跨OA旅程、更多财务写入、汇率制度、实体设备及生产验收仍按GAP-03／18推进。 Implementation trace: complete authorized filters, canonical sources and owner-only asynchronous expiring CSV exports are implemented; currency policy, broader workflows and production acceptance remain open.
 
 版本：v1.0-draft；日期：2026-10-23；关联 U-16、ADR-06、Q-07。系统提供经营台账，不实现会计总账或资金执行。
 

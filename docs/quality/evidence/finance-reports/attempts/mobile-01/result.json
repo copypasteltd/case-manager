@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "started_at": "2026-10-27T06:55:23.065Z",
+  "finished_at": "2026-10-27T06:55:55.722Z",
+  "checks": [
+    "Real MFA login and native report reconcile HKD76.4 and USD10 separately, with one unconfirmed draft and actual paged sources.",
+    "Category, supplier, recorder, currency and keyword choices operate through readable native source records on the actual client."
+  ],
+  "source_count": 677,
+  "source_sha256": "c70abad918a01bcf576cced59bf8ab2b30dc00b9b11687e94f2c0a8c076e8b70",
+  "source_after_sha256": "c70abad918a01bcf576cced59bf8ab2b30dc00b9b11687e94f2c0a8c076e8b70",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.cp-fact').filter({ has: locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('导出任务 e567ca31-6d46-4015-bd8a-6fb7e3258026', { exact: true }) }).getByRole('button', { name: '校验并打开 CSV', exact: true }) to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "af99b948afe9927a5db9673c42a72406235140453915b96580980b39ace97088",
+  "build_source_after_sha256": "af99b948afe9927a5db9673c42a72406235140453915b96580980b39ace97088",
+  "build_source_unchanged": true
+}

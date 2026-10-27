@@ -42,6 +42,13 @@ public class ReadCacheTest {
         try (FileOutputStream stream = new FileOutputStream(own, true)) { stream.write(1); }
         assertThrows(IOException.class, () -> cache.finish(handle, 3)); cache.remove(handle);
     }
+    @Test public void verifiedCsvUsesPrivateScratchAndExactMime() throws Exception {
+        ReadCache cache = new ReadCache(directory.getRoot()); String handle = cache.create(VERSION, "csv");
+        cache.append(handle, "77u/YWJjDQo="); String uri = cache.finish(handle, 8);
+        assertEquals("text/csv", ReadCache.mime(cache.byURI(uri).extension));
+        assertEquals(8, cache.byURI(uri).file.length()); cache.remove(handle);
+        assertThrows(IOException.class, () -> cache.byURI(uri));
+    }
     @Test public void processRestartCannotAdoptAnOldHandleAndCleanupPreservesUnownedFiles() throws Exception {
         ReadCache cache = new ReadCache(directory.getRoot()); String handle = cache.create(VERSION, "pdf"); String uri = cache.finish(handle, 0);
         File unrelated = new File(directory.getRoot(), "cp-read/unrelated.keep"); assertTrue(unrelated.createNewFile());

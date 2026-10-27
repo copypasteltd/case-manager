@@ -69,26 +69,25 @@ func forecastReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, f Subscrip
 	out.From = f.From
 	out.To = f.To
 	args := []any{a.OrgID, a.UserID, a.Channel, a.RunID != "", f.From, f.To, f.Currency, f.Category, f.ProjectID, f.CompanyOnly, f.SupplierID, f.OwnerID, f.Query}
-	predicate := ` WHERE p.org_id=$1 AND can_read_subscription(p.org_id,$2,s.id,$3,$4) AND can_access(s.org_id,$2,'report.read','subscription',s.id,s.project_id,s.creator_id,s.classification,$3,$4)
-        AND p.start_date>=$5::date AND p.start_date<$6::date AND ($7='' OR r.currency=$7) AND ($8='' OR r.category=$8) AND ($9::uuid IS NULL OR s.project_id=$9) AND (NOT $10 OR s.project_id IS NULL)
-        AND ($11::uuid IS NULL OR r.supplier_id=$11) AND ($12::uuid IS NULL OR r.owner_id=$12) AND ($13='' OR position(lower($13) in lower(cfg.product))>0 OR s.source_key=$13)
-        AND p.state NOT IN ('waived','void') AND subscription_charge_eligible(s.org_id,s.id,p.start_date) `
+	predicate := reportForecastPredicate
 	rows, err := tx.Query(ctx, `WITH facts AS(SELECT r.currency,r.amount,p.state,p.start_date,r.timezone,
         p.state='confirmed' AND p.review_fingerprint=subscription_actual_fingerprint(p.org_id,p.id) review_current,
         p.invoice_missing OR (p.state='confirmed' AND p.review_fingerprint IS DISTINCT FROM subscription_actual_fingerprint(p.org_id,p.id)) OR actual.reversed>0 OR (actual.n>0 AND actual.amount<>r.amount) anomaly,
         actual.n>0 has_actual `+subscriptionPeriodJoin+` JOIN subscription_revisions cfg ON cfg.org_id=s.org_id AND cfg.id=s.current_revision_id
         LEFT JOIN LATERAL(SELECT count(*) n,COALESCE(sum(v.amount) FILTER(WHERE c.state='confirmed'),0) amount,count(*) FILTER(WHERE c.state='reversed') reversed FROM cost_links l JOIN actual_cost_entries c ON c.org_id=l.org_id AND c.id=l.cost_id JOIN cost_revisions v ON v.org_id=c.org_id AND v.id=c.current_revision_id WHERE l.org_id=p.org_id AND l.source_type='subscription_period' AND l.source_id=p.id) actual ON true `+predicate+`)
-        SELECT currency,round(sum(amount),6)::text,count(*),count(*) FILTER(WHERE (state='forecast' AND (start_date<=(clock_timestamp() AT TIME ZONE timezone)::date OR has_actual)) OR (state='confirmed' AND NOT review_current)),count(*) FILTER(WHERE review_current),count(*) FILTER(WHERE anomaly) FROM facts GROUP BY currency ORDER BY currency`, args...)
+        SELECT currency,round(sum(amount),6)::text,count(*),count(*) FILTER(WHERE (state='forecast' AND (start_date<=(clock_timestamp() AT TIME ZONE timezone)::date OR has_actual)) OR (state='confirmed' AND NOT review_current)),count(*) FILTER(WHERE review_current),count(*) FILTER(WHERE anomaly),array_agg(DISTINCT timezone) FROM facts GROUP BY currency ORDER BY currency`, args...)
 	if err != nil {
 		return out, err
 	}
 	for rows.Next() {
 		var total ForecastTotal
-		if err = rows.Scan(&total.Currency, &total.ExpectedAmount, &total.PeriodCount, &total.AwaitingCount, &total.ReviewedCount, &total.AnomalyCount); err != nil {
+		var zones []string
+		if err = rows.Scan(&total.Currency, &total.ExpectedAmount, &total.PeriodCount, &total.AwaitingCount, &total.ReviewedCount, &total.AnomalyCount, &zones); err != nil {
 			rows.Close()
 			return out, err
 		}
 		out.Totals = append(out.Totals, total)
+		out.Timezones = append(out.Timezones, zones...)
 	}
 	err = rows.Err()
 	rows.Close()

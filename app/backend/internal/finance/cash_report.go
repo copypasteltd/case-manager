@@ -24,9 +24,15 @@ func (s *Service) CashReport(ctx context.Context, a core.Actor, f PaymentFilter)
 
 const cashReportPredicate = ` WHERE p.org_id=$1 AND can_read_payment(p.org_id,$2,p.id,$3,$4) AND can_access(p.org_id,$2,'report.read','payment',p.id,p.project_id,p.creator_id,p.classification,$3,$4)
         AND r.paid_on>=$5::date AND r.paid_on<$6::date AND ($7='' OR r.currency=$7) AND ($8='' OR r.category=$8) AND r.direction IN ('outgoing','refund')
-        AND (($9::uuid IS NULL AND NOT $10) OR EXISTS(SELECT 1 FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id IS NOT DISTINCT FROM $9::uuid) OR contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),$9::uuid)>0) `
+        AND (($9::uuid IS NULL AND NOT $10) OR EXISTS(SELECT 1 FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id IS NOT DISTINCT FROM $9::uuid) OR contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),$9::uuid)>0)
+        AND ($11::uuid IS NULL OR r.counterparty_id=$11) AND ($12::uuid IS NULL OR p.creator_id=$12)
+        AND ($13='' OR position(lower($13) in lower(r.title))>0 OR p.source_key=$13) `
 
 func cashReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, f PaymentFilter) (CashReport, error) {
+	return cashFilteredReportInTx(ctx, tx, a, f, nil, nil)
+}
+
+func cashFilteredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, f PaymentFilter, supplier, owner *string) (CashReport, error) {
 	out := CashReport{Kind: "cash", Timezone: "Asia/Hong_Kong", FXCoverage: "unconfigured", Totals: []CashTotal{}}
 	if err := validatePaymentFilter(f); err != nil {
 		return out, err
@@ -58,10 +64,9 @@ func cashReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, f PaymentFilte
 	out.From = f.From
 	out.To = f.To
 	predicate := cashReportPredicate
-	args := []any{a.OrgID, a.UserID, a.Channel, a.RunID != "", f.From, f.To, f.Currency, f.Category, f.ProjectID, f.CompanyOnly}
+	args := []any{a.OrgID, a.UserID, a.Channel, a.RunID != "", f.From, f.To, f.Currency, f.Category, f.ProjectID, f.CompanyOnly, supplier, owner, f.Query}
 	rows, err := tx.Query(ctx, `WITH facts AS (SELECT r.currency,r.direction,p.record_kind,
-        CASE WHEN $9::uuid IS NULL AND NOT $10 THEN r.amount*(CASE r.direction WHEN 'refund' THEN -1 ELSE 1 END)*(CASE p.record_kind WHEN 'reversal' THEN -1 ELSE 1 END)
-        ELSE COALESCE((SELECT sum(a.effect*sh.amount) FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id IS NOT DISTINCT FROM $9::uuid),0)+contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),$9::uuid)*(CASE p.record_kind WHEN 'reversal' THEN -1 ELSE 1 END) END contribution,
+        `+reportCashContribution+` contribution,
         COALESCE((SELECT sum(a.effect*a.amount) FROM payment_allocations a WHERE a.org_id=p.org_id AND a.payment_id=p.id),0)+contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),p.project_id)*(CASE p.record_kind WHEN 'reversal' THEN -1 ELSE 1 END) assigned `+paymentJoin+predicate+` AND p.state IN ('recorded','reversed'))
         SELECT currency,round(COALESCE(sum(contribution) FILTER(WHERE direction='outgoing' AND record_kind='payment'),0),6)::text,
         round(-COALESCE(sum(contribution) FILTER(WHERE direction='refund' AND record_kind='payment'),0),6)::text,

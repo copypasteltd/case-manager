@@ -115,6 +115,14 @@ An actual cost has one authoritative record and can allocate shares to several p
 
 Amounts retain their original currency and decimal text; no implied HKD conversion is invented. Subscription periods, price changes, cancellation and reconciliation remain explicit. Secretary review can cite individual records but does not create payments or replace financial confirmation.
 
+### Financial filters, canonical sources and expiring exports
+
+Open any Web financial report or **Finance reconciliation → Financial reports** on the mobile home page. Apply an explicit interval (exclusive end), project/company scope, original currency, category, supplier, recorder/owner and keyword. Incurred expenses, cash and subscription forecasts remain separate. Drafts are excluded, and missing forecast periods/prices and unconfigured FX remain explicit. Filter choices derive from readable business facts; source pages open the canonical records.
+
+An independently granted `report.export` action allows entering a purpose and enqueuing a task. A202 receipt only means accepted; the worker fixes the snapshot when it executes. Your tasks expose actual status, cancellation and expiry. Limits are50,000 rows/16 MiB and24 hours; changed authority requires a new export. Web saves verified CSV, Android opens it with a local app, and capable WeChat clients share a temporary CSV. Douyin and unsupported WeChat clients direct retrieval to Web. Import monetary columns as text to preserve exact decimals; no original currency is silently converted.
+
+Run the native DB-only worker separately: `python app/scripts/run_backend.py worker-report-export`. The Linux unit is `app/deploy/native/copypaste-report-export-worker.service`, with only environment and database settings. Without it, jobs stay queued. Originals remain in OSS/R2; CSV is regenerated on download rather than stored permanently on the server. See the [complete workflow and design](development/88-financial-report-filters-and-exports.md) and [actual captures](media/README.md).
+
 ### Files, project blogs and knowledge
 
 Choose an exact folder/project. The API issues short-lived grants restricted to the intended multipart object, and the client uploads directly to the selected object store. Recovery reconciles existing cloud parts first. Upload completion only establishes candidate bytes: source freezing, full checksums, scanning and formal version commit still follow, then replication and verification in the other cloud.
@@ -240,7 +248,7 @@ python scripts/verify_backend_batches.py --evidence-group my-change
 python scripts/verify_mobile.py my-change
 ```
 
-Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment81 verification record](quality/evidence/status-bridge/verification.md) identifies executions, reuse and failed attempts.
+Backend checks require the prepared native PostgreSQL test environment and clean up their isolated test databases. Select checks that match the change. Reuse unchanged evidence only with complete matching source digests; do not describe cached results as new executions. Regenerate contracts after OpenAPI changes and run `npm run tokens` for design-token changes. The [increment88 verification record](quality/evidence/finance-reports/verification.md) identifies actual executions, native results and retained failed attempts.
 
 ## 7. Production deployment and storage plan
 
@@ -256,11 +264,11 @@ Dual-cloud originals do not replace PostgreSQL backups, PITR, key recovery, rete
 
 | Layer | Current functional baseline | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | 159 top-level /1,041 results /945 leaves;8 batches;72 migrations | Eleven new comparison scenarios; same-source batch recovery and original business regressions pass |
-| Runtime / Web | 47 /104 tests and builds | Exact decimals, current bases and authority checks; all eight Skills remain draft |
-| Taro | 187 tests; types;17 pages in both mini-program builds | Six Web/Taro flows and three layouts per client; actual H5, no device claim |
-| Android | Current development APK and18 package checks | 42,896,260 bytes;25 JVM results are cached; no device acceptance claim |
-| Media catalog | 48 PNG /17 MP4 /17 GIF | Four new comparison screenshots and two actual short recording/GIF pairs; increment86 capture provenance retained |
+| Go / PostgreSQL | 161 top-level /1,057 results /960 leaves;9 batches;73 migrations | Fourteen financial-report scenarios and exact CSV safety tests; old secretary query compatibility fixed and full regressions pass |
+| Runtime / Web | 47 /112 tests and builds | Complete chunk integrity, original currencies and live authority; all eight Skills remain draft |
+| Taro | 187 tests; types;18 pages in both mini-program builds | Five report flows and three layouts per client; actual verified27-row CSV retrieval; H5 is not device acceptance |
+| Android | Current development APK and18 package checks | 42,905,815 bytes;26 JVM tests newly executed this run; no device acceptance claim |
+| Media catalog | 54 PNG /19 MP4 /19 GIF | Six new report screenshots and two actual MP4/GIF pairs; published increment87 sources and74 historical evidence artifacts preserved |
 
 The retained lockfile audit reports **114 dependency findings, including 11 critical and 32 high**; the production security gate remains open. This increment does not upgrade dependencies; the historical audit is not a current live-system security assessment. See the [retained audit](quality/evidence/android-native/dependency-audit.json).
 

@@ -1,0 +1,35 @@
+{
+  "kind": "diagnostic_summary_only",
+  "complete_early_source_not_frozen": true,
+  "not_reconstructed_passing_evidence": true,
+  "findings": [
+    "The first compile command used the wrong working directory; corrected before the successful compilation.",
+    "Initial query validation rejected an empty currency even though it means separate original-currency columns; corrected and the independent arithmetic then passed.",
+    "The integration test initially expected422 for a changed signed cursor, while the existing paging protocol correctly returns400; corrected the test.",
+    "A read lock on immutable export requests required UPDATE privilege. Removed the unnecessary request-row lock while retaining organization/user locks, immutable triggers, minimum table privileges and fenced job commits. No UPDATE privilege was added."
+  ],
+  "private_logs": [
+    {
+      "private_log": "financial-reports-initial-native.log",
+      "sha256": "951227a57f5746743103718864da54c68b4bb46823977fe65ebf5e30662269c7",
+      "bytes": 2576
+    },
+    {
+      "private_log": "financial-reports-native-02.log",
+      "sha256": "b00323d0cd4d563d080106be506e31a6100501553a30f438df8a03c4aad145bf",
+      "bytes": 2908
+    }
+  ],
+  "additional_diagnostics": [
+    {
+      "private_log": "financial-reports-native-09.log",
+      "sha256": "2176a58f512e4577980565c24e898291b54f9616dcb74f8064db91c3d2dea4a7",
+      "note": "A synthetic raw role change omitted the normal organization authorization-version increment; the fixture now simulates that increment explicitly."
+    },
+    {
+      "private_log": "financial-reports-web-native.log",
+      "sha256": "d93dfdf023115814fcf68aca6e6fb3854645720eeddc61c16e94a3ed7794780e",
+      "note": "The first browser fixture requested an unused administrator MFA credential. The harness will use the business fixture mode required by this report, without requesting that credential."
+    }
+  ]
+}

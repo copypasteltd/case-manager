@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "backend_source_sha256": "fb9caff5ff837a89216dbebae2ead95e3d3690a7b327570c6a5cefbd136674ec",
+  "source_zip_sha256": "f1dfe02253373ca63c351ddc89e715308c9efb319b3014a57f860afac77721a1",
+  "reason": "Full regression found the secretary finance evidence lookup still passing10 arguments to the now13-argument shared cost/cash predicate. Preserve the failure before fixing both callers.",
+  "failed_test": "TestAgentFinanceSummary",
+  "raw_log_sha256": "23733659af5d3ca0c9b256ade477f8280fd92bec5c321a18e90567692b976d2f"
+}

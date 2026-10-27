@@ -844,3 +844,15 @@ Implemented exact task/subtask creation with complete human decisions and genuin
 This increment implements authorized project-budget reconciliation with exact canonical shares, reversal dates, incomplete drafts and paged original sources in both clients. Current tests, cached JVM scope, retained failures and source-checked batch recovery are recorded explicitly. All eight Skills remain draft. The full four-client, financial, real cloud/model/TG, device, capacity, dependency-security, recovery and production goal remains active.
 
 [规则与使用](../development/87-project-budget-comparison.md) · [准确验证](../quality/evidence/budget-comparison/verification.md) · [实际素材](../media/README.md)
+
+## 62. 增量88：完整财务筛选、来源与限时导出
+
+FIN-12、GAP-03／18：发生、现金、订阅预测共用完整业务筛选与独立签名分页，来源候选仅来自可读规范事实。固定原币、日期及时区、项目份额与冲销，不猜测汇率。Web三入口及Taro新报表页支持来源钻取、本人任务及实际校验下载。
+
+新增独立report.export和未绑定finance_exporter角色；本人不可变申请关联版本化任务，worker实时鉴权并固定完整快照，旧围栏／缺权限／超限／覆盖不完整不生成。24小时后拒绝下载并清理派生JSON；不留持久CSV。50000来源／16MiB、UTF8 BOM／23列、原币精确字符串与文本公式防护；Android限量私有临时CSV，微信能力检测，抖音明确Web回退。新增迁移73及DB-only原生服务模板，原72迁移字节不变。
+
+161顶层／1057结果／960末级的9批后端全过；Web112、运行时47、移动187、两小程序各18页通过。Android42,905,815字节开发包、18项包检查与26项新执行JVM通过；Linux只编译。两端各5组流程／3尺寸，实际生成并下载完整27行CSV；新增6PNG／2MP4／2GIF，目录54／19／19。所有自建浏览器、隔离库、临时服务和fixture清理。
+
+保留早期诊断、三次后续选择器失败、一份被替代通过捕获的完整890文件源码，以及秘书旧查询13参数兼容回归失败的完整后端源码。修复后重新执行全部9批。增量87完整来源按73d994b重建，74份旧证据原字节不变。只更新归属已确认的API及导出worker，保留PostgreSQL／通知worker，不激活云／模型／TG；八项Skill仍draft，完整Goal／28项GAP／依赖安全门保持开放。
+
+[设计、权限与操作](../development/88-financial-report-filters-and-exports.md) · [实际验证与来源](../quality/evidence/finance-reports/verification.md) · [媒体](../media/README.md)

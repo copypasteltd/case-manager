@@ -1,24 +1,3 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { ArrowUpRight } from 'lucide-react';
-import { api, type Me, type Schemas } from './api';
-import { Busy, Empty, ErrorNotice, Field } from './components';
-import { money } from './ContractDisplay';
-import { useCostProjects } from './CostDisplay';
-import { paymentTimestamp } from './PaymentDisplay';
-import { billingMonth, billingMonthRange } from './SubscriptionActions';
-
-type Selection = { month: string; scope: string; currency: string; category: string };
-function parameters(s: Selection) { return new URLSearchParams({ ...billingMonthRange(s.month), ...(s.scope === 'company' ? { company_only: 'true' } : s.scope ? { project_id: s.scope } : {}), ...(s.currency ? { currency: s.currency } : {}), ...(s.category ? { category: s.category } : {}) }); }
-export default function ForecastReport({ me }: { me: Me }) {
-  const [selection, setSelection] = useState<Selection>({ month: billingMonth(), scope: '', currency: '', category: '' }), [applied, setApplied] = useState(selection), projects = useCostProjects();
-  const query = useQuery({ queryKey: ['forecast-report', applied], enabled: me.actions.includes('subscription.read') && me.actions.includes('report.read'), queryFn: ({ signal }) => api<Schemas['ForecastReport']>('/reports/forecast?' + parameters(applied), { signal }) });
-  if (!me.actions.includes('subscription.read') || !me.actions.includes('report.read')) return <Empty title="没有订阅预测报表权限" detail="请联系业务负责人核对订阅与报表授权。" />;
-  const report = query.error ? undefined : query.data;
-  return <><div className="page-heading"><div><h1>月度订阅预测</h1><p>按固定账期和原币查阅已知预计开支，核对缺失范围。</p></div><Link className="button secondary" to="/subscriptions">管理订阅<ArrowUpRight size={17} /></Link></div><div className="post-actions">{me.actions.includes('cost.read') && <Link className="text-button" to="/reports/expenses">月度发生支出</Link>}{me.actions.includes('payment.read') && <Link className="text-button" to="/reports/cash">月度现金支出</Link>}</div>
-    <form className="panel cost-report-filters" onSubmit={e => { e.preventDefault(); setApplied({ ...selection, currency: selection.currency.trim(), category: selection.category.trim() }); }}><Field label="预测月份"><input required type="month" min="2000-01" max="9998-12" value={selection.month} onChange={e => setSelection({ ...selection, month: e.target.value })} /></Field><Field label="订阅范围"><select value={selection.scope} onChange={e => setSelection({ ...selection, scope: e.target.value })}><option value="">全部可见订阅</option><option value="company">仅公司订阅</option>{projects.data?.pages.flatMap(p => p.items).map(p => <option key={p.id} value={p.id}>{p.name}</option>)}</select></Field><Field label="原币币种"><input pattern="[A-Z]{3}|^$" maxLength={3} placeholder="全部币种" value={selection.currency} onChange={e => setSelection({ ...selection, currency: e.target.value.toUpperCase() })} /></Field><Field label="开支类别"><input maxLength={50} value={selection.category} onChange={e => setSelection({ ...selection, category: e.target.value })} /></Field><button className="button primary" disabled={query.isFetching}>查询预测</button>{projects.hasNextPage && <button className="text-button" type="button" disabled={projects.isFetchingNextPage} onClick={() => void projects.fetchNextPage()}>加载更多项目</button>}</form>
-    <ErrorNotice error={query.error ?? projects.error} />{query.isPending ? <Busy /> : report && <><p className="notice neutral">收费日自 {report.from} 起，至 {report.to} 前，按每项订阅的计费本地自然日划分，所涉时区：{report.timezones.join('、') || '当前无持久账期时区'}。原币分别列示，尚未配置统一折算。</p><section className={'notice ' + (report.coverage_complete ? 'neutral' : 'warning')}><div><strong>{report.coverage_complete ? '本次正常预测覆盖完整' : '已知预测，覆盖尚不完整'}</strong><p>缺账期 {report.missing_period_count}；缺价格 {report.missing_price_count}；未补齐草稿 {report.draft_count}；配置不完整 {report.incomplete_subscription_count}。{report.coverage_limit_reached ? '扫描已达到上限，不能判断完整覆盖。' : ''}</p></div></section><div className="section-heading billing-report-heading"><h2>{applied.month} · 已知原币预测</h2><span className="muted">统计于 {paymentTimestamp(report.as_of)}</span></div>
-      {!report.totals.length ? <Empty title="当前筛选没有持久预测金额" detail={report.coverage_complete ? '可调整月份或范围，或到订阅详情核对配置。' : '仍存在缺项，请核对价格、账期生成及未完成配置。'} /> : <div className="cost-report-grid">{report.totals.map(total => { const drill = parameters(applied); drill.set('currency', total.currency); drill.set('forecast_only', 'true'); return <article className="panel cost-report-card" key={total.currency}><h3>{total.currency} · 预计收费</h3><p className="cost-net">{money(total.expected_amount, total.currency)}</p><dl className="file-facts"><div><dt>持久账期数</dt><dd>{total.period_count}</dd></div><div><dt>待核对账期</dt><dd>{total.awaiting_count}</dd></div><div><dt>已有效核对</dt><dd>{total.reviewed_count}</dd></div><div><dt>异常账期</dt><dd>{total.anomaly_count}</dd></div></dl><Link className="text-button" to={'/subscription-periods?' + drill}>核对账期明细<ArrowUpRight size={16} /></Link></article>; })}</div>}<p className="form-note">本页只汇总持久正常预测。暂停、取消后异常扣款请到实际费用与账期中核对；预计收费不代表真实发生或银行付款。</p></>}
-  </>;
-}
+import type { Me } from './api';
+import FinancialReports from './FinancialReports';
+export default function ForecastReport({ me }: { me: Me }) { return <FinancialReports me={me} initialKind="forecast" />; }
