@@ -1234,6 +1234,33 @@ add("ChangeRequestPayload",change_snapshot,tuple(change_snapshot))
 SCHEMAS["RequestPayload"]["oneOf"].append(ref("ChangeRequestPayload"))
 
 
+
+# Native inventory/import admission reuses the existing upload and replica pipeline.
+add("EmptyCommand", {})
+import_batch_fields = {"source_namespace":ID,"inventory_sha256":HASH,"mapping_sha256":HASH,"plan_sha256":HASH,
+    "entry_count":{"type":"integer","minimum":1,"maximum":1000000},"total_bytes":BYTES,"reason":NAME}
+add("FileImportBatchInput",import_batch_fields,tuple(import_batch_fields))
+add("FileImportBatch",{**import_batch_fields,"id":ID,"created_at":TIME,"owner_id":ID,
+    "admitted_count":{"type":"integer","minimum":0},"admitted_bytes":BYTES,"admitted_chain":HASH,
+    "approved":{"type":"boolean"},"approval_expires_at":nullable(TIME)},
+    (*import_batch_fields,"id","created_at","owner_id","admitted_count","admitted_bytes","admitted_chain","approved","approval_expires_at"))
+import_entry_fields={"ordinal":{"type":"integer","minimum":1,"maximum":1000000},
+    "source_path":{"type":"string","minLength":1,"maxLength":1000},"source_key":HASH,"source_sha256":HASH,"size_bytes":BYTES,
+    "source_modified_at":TIME,"source_mode":{"type":"string","maxLength":32},"source_owner":NAME,"mapped_owner_id":ID,
+    "folder_id":ID,"folder_version":VERSION,"project_id":nullable(ID),"classification":CLASS,"name":NAME,"media_type":NAME,
+    "file_id":ID,"base_version_id":ID}
+import_entry_required=tuple(k for k in import_entry_fields if k not in ("file_id","base_version_id"))
+add("FileImportEntryInput",import_entry_fields,import_entry_required)
+SCHEMAS["FileImportEntryInput"]["dependentRequired"]={"file_id":["base_version_id"],"base_version_id":["file_id"]}
+add("FileImportEntry",{**import_entry_fields,"id":ID,"batch_id":ID,"created_at":TIME,
+    "upload":nullable(ref("Upload")),"file_version":nullable(ref("FileVersion")),
+    "verification_state":enum("awaiting_upload","created","uploading","finalizing","verifying","ready","committed","failed","aborted","expired","blocked","primary_verified","replicas_verified","content_mismatch","mapping_changed"),
+    "mapping_current":{"type":"boolean"},"mapped_owner_can_read":{"type":"boolean"}},
+    (*import_entry_required,"id","batch_id","created_at","upload","file_version","verification_state","mapping_current","mapped_owner_can_read"))
+add("FileImportApprovalInput",{"plan_sha256":HASH,"reviewed_mappings":{"const":True},"sources_read_only":{"const":True},"reason":NAME},
+    ("plan_sha256","reviewed_mappings","sources_read_only","reason"))
+add("FileImportRetryInput",{"upload_id":ID,"expected_version":VERSION,"reason":NAME},("upload_id","expected_version","reason"))
+
 def wrapped(name, listing=False):
     key = name + ("ListResponse" if listing else "Response")
     if key not in SCHEMAS:
@@ -1451,6 +1478,18 @@ PATHS["/downloads/{id}/chunks"]["get"]["parameters"] += [
 for status in (416, 428, 502):
     PATHS["/downloads/{id}/chunks"]["get"]["responses"][str(status)] = {"$ref": "#/components/responses/Failure"}
 operation("/storage/upload-capabilities", "get", "getUploadCapabilities", "UploadCapabilities")
+
+operation("/file-imports","post","createFileImport","FileImportBatch","FileImportBatchInput",201)
+operation("/file-imports/{id}","get","getFileImport","FileImportBatch")
+operation("/file-imports/{id}/entries","post","addFileImportEntry","FileImportEntry","FileImportEntryInput",201)
+operation("/file-imports/{id}/entries","get","listFileImportEntries","FileImportEntry",listing=True)
+operation("/file-imports/{id}/approve","post","approveFileImport","FileImportBatch","FileImportApprovalInput")
+operation("/file-import-entries/{id}","get","getFileImportEntry","FileImportEntry")
+operation("/file-import-entries/{id}/uploads","post","startFileImportUpload","FileImportEntry","EmptyCommand",201)
+operation("/file-import-entries/{id}/retry","post","retryFileImportUpload","FileImportEntry","FileImportRetryInput",201)
+for p in ("/file-imports/{id}/entries","/file-import-entries/{id}/uploads"):
+    PATHS[p]["post"]["responses"]["200"]=PATHS[p]["post"]["responses"]["201"]
+
 operation("/uploads", "get", "listUploads", "Upload", listing=True)
 PATHS["/uploads"]["get"]["parameters"].append({"name": "state", "in": "query", "schema": enum("active", "all")})
 operation("/uploads", "post", "createUpload", "Upload", "UploadCreate", 201)

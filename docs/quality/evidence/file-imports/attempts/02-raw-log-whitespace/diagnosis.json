@@ -1,0 +1,6 @@
+{
+  "status": "superseded",
+  "reason": "The new managed-text list included the original Gradle build log, whose raw bytes contain trailing whitespace.",
+  "correction": "Keep the original raw log unchanged and hash-bound. Exclude raw .log artifacts from the source/guide whitespace list; retain all normal source and documentation checks.",
+  "raw_evidence_normalized": false
+}

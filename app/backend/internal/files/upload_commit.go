@@ -23,6 +23,15 @@ type CommitResult struct {
 }
 
 func (s *UploadService) Commit(ctx context.Context, c core.Command, id string, in UploadCommit) (core.Result, error) {
+	// Recheck import provenance before idempotency replay as well as inside the
+	// transaction. Ordinary uploads have no import row and retain normal checks.
+	u, err := upload(ctx, s.Files.DB, c.Actor.OrgID, id, false)
+	if err != nil {
+		return core.Result{}, err
+	}
+	if err = s.checkImportCommit(ctx, s.Files.DB, c.Actor, u, in.SHA256, false); err != nil {
+		return core.Result{}, err
+	}
 	return s.commitMode(ctx, c, id, in, false)
 }
 
@@ -39,6 +48,9 @@ func (s *UploadService) commitMode(ctx context.Context, c core.Command, id strin
 		return core.Result{}, core.Invalid("sha256", "请提交已确认的完整摘要")
 	}
 	return s.mutateMode(ctx, c, id, in.ExpectedVersion, []string{"ready"}, agent, func(tx pgx.Tx, u Upload) (core.Result, error) {
+		if err := s.validateImportCommit(ctx, tx, c.Actor, u, in.SHA256); err != nil {
+			return core.Result{}, err
+		}
 		if agent && u.ScanState != "clean" {
 			return core.Result{}, core.Fail(422, "AGENT_TEXT_SCAN_REQUIRED", "秘书提交要求准确草稿扫描通过")
 		}

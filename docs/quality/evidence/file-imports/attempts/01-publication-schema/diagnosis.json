@@ -1,0 +1,6 @@
+{
+  "status": "superseded",
+  "reason": "Generic publication consumer requires an explicit full_goal_complete field; the initial native proof omitted it. Source checks themselves passed19 checks.",
+  "correction": "Add full_goal_complete=false because external full-system acceptance remains open, then regenerate the native proof and rerun publication checks.",
+  "not_current_acceptance": true
+}

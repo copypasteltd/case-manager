@@ -1,0 +1,17 @@
+{
+  "scope": "Early unpublished targeted checks; not final source acceptance and not a reconstruction of raw logs.",
+  "issues": [
+    {
+      "name": "controlled replica target omitted from fixture",
+      "effect": "Report correctly remained primary-only instead of claiming complete dual evidence.",
+      "resolution": "Configure the explicit controlled replica target, rerun targeted HTTP check, then rerun all181 top-level backend tests.",
+      "current_full_result": "docs/quality/evidence/file-imports-backend/result.json"
+    },
+    {
+      "name": "authority test assumed organization revision invalidates the login",
+      "effect": "The test expected a read rejection although identity correctly refreshed the organization authority.",
+      "resolution": "Assert approval invalidation on organization revision, then actual rejection on importer role revocation. Full current-source backend passed."
+    }
+  ],
+  "raw_early_logs_are_not_published": true
+}

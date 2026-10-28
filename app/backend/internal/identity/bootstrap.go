@@ -22,7 +22,7 @@ type BootstrapResult struct {
 
 // System administrators receive configuration authority. Business content
 // authority must be granted separately; even bootstrap does not bypass ACLs.
-var systemActions = []string{"user.invite", "user.disable", "user.password_reset", "user.read", "role.read", "role.assign", "policy.manage", "config.manage", "skill.release", "service.manage", "audit.read", "audit.export"}
+var systemActions = []string{"user.invite", "user.disable", "user.password_reset", "user.read", "role.read", "role.assign", "policy.manage", "config.manage", "skill.release", "file.import", "service.manage", "audit.read", "audit.export"}
 var projectActions = []string{"project.create", "project.read", "project.update", "project.manage_members", "project.archive", "project.reopen",
 	"task.read", "task.create", "task.update", "task.assign", "task.transition", "task.review", "task.reopen",
 	"milestone.read", "milestone.create", "milestone.update", "deliverable.read", "deliverable.create", "deliverable.submit", "deliverable.decide",
@@ -122,6 +122,7 @@ func Bootstrap(ctx context.Context, db platform.DBTX, input BootstrapInput) (Boo
 		{"status_reader", "服务状态查阅人", false, []string{"service.read"}},
 		{"notification_operator", "通知投递运维", true, []string{"notification.delivery.read"}},
 		{"status_operator", "服务状态维护人", true, []string{"service.read", "service.manage", "incident.update"}},
+		{"file_importer", "文件迁移操作人", true, []string{"file.import", "folder.read", "file.read", "file.upload", "file.update"}},
 		{"member", "项目成员", false, []string{"project.read", "task.read", "task.create", "task.update", "task.transition", "milestone.read", "risk.read", "issue.read", "deliverable.read", "post.read", "post.write", "comment.write", "file.read", "file.upload", "folder.read"}},
 	}
 	for _, role := range roles {

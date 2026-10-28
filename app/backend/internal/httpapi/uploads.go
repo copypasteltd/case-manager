@@ -11,6 +11,7 @@ import (
 
 func (s *Server) uploadRoutes(mux *http.ServeMux, metadata *files.Service) {
 	service := &files.UploadService{Files: metadata, Queue: jobqueue.Queue{DB: s.DB}, Backend: s.Storage}
+	s.fileImportRoutes(mux, service)
 	s.historyRestoreRoutes(mux, service)
 	mux.HandleFunc("GET /v1/storage/upload-capabilities", read(s, "UploadCapabilitiesResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.UploadCapabilities(ctx, a)

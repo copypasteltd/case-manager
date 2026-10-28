@@ -1,0 +1,41 @@
+{
+  "accepted_put_without_receipt_reconciled": true,
+  "after_replica": {
+    "type": "summary",
+    "batch_id": "df0ec31f-d3fa-495c-a971-c3e37a232f8b",
+    "expected": 1,
+    "observed": 1,
+    "observed_bytes": "28",
+    "fully_verified": 1,
+    "pending": 0,
+    "invalid": 0,
+    "all_expected_rows_observed": true,
+    "observed_content_verified": true,
+    "cutover_approved": false,
+    "scope": "Live per-row observations with current authority; not an atomic restore point, source ACL equivalence or cutover approval."
+  },
+  "before_replica": {
+    "type": "summary",
+    "batch_id": "df0ec31f-d3fa-495c-a971-c3e37a232f8b",
+    "expected": 1,
+    "observed": 1,
+    "observed_bytes": "28",
+    "fully_verified": 0,
+    "pending": 1,
+    "invalid": 0,
+    "all_expected_rows_observed": true,
+    "observed_content_verified": false,
+    "cutover_approved": false,
+    "scope": "Live per-row observations with current authority; not an atomic restore point, source ACL equivalence or cutover approval."
+  },
+  "cutover_approved": false,
+  "kind": "native_http_round_trip",
+  "large_file_transport": false,
+  "logical_files": 1,
+  "put_requests": 1,
+  "real_cloud": false,
+  "source_bytes": 28,
+  "source_mutation_rejected": true,
+  "synthetic": true,
+  "upload_sessions": 1
+}

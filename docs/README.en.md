@@ -66,6 +66,12 @@ Routine API processes do not receive migration credentials. Each worker receives
 
 The gap register is authoritative for unfinished work. Publishing a repository, completing a demo or producing an APK does not establish full production readiness.
 
+### Importing and verifying existing originals
+
+The [native import operator](development/96-native-file-import.md) implements a read-only inventory, explicit ownership/folder/project/classification mappings, an immutable reviewed plan, recent MFA approval, normal upload/scan/commit services and per-row dual-provider verification. It reads source files with bounded memory and uses an ordinary employee session plus signed upload URLs, without database or cloud credentials. Rerun the exact saved plan to reconcile existing sessions. Changed source content requires the original logical file and its current base version. Keep all inventory/plan/report files outside Git, and retain source originals.
+
+The six commands are `inventory`, `template`, `plan`, `run`, `report` and the separate reviewed `retry`. The operator guide includes native build commands, authentication and cleanup, JSONL fields, recovery steps and explicit upload origins. A report only counts complete per-row observations with matching mappings and verified OSS/R2 content evidence. It does not establish source ACL equivalence, an atomic restore point, real 2 TB/120 GB performance or permission to cut over. [Verification scope](quality/96-native-file-import-verification.md) separates fresh checks from the retained increment95 page media.
+
 ## 4. Employee and administrator workflows
 
 ### Identity and getting started
@@ -333,18 +339,18 @@ These are each employee's in-app notifications. No additional Telegram, email or
 
 ## 8. Evidence and release gates
 
-The current implementation is [task discussions, fixed attachments and explicit mentions](development/95-task-discussion-and-mentions.md). Fresh execution and cache reuse are recorded separately; neither establishes production delivery.
+The current increment implements the [native source-file import operator](development/96-native-file-import.md). See the [verification scope](quality/96-native-file-import-verification.md) and [final source checks](quality/evidence/file-imports/final-source-check.json).
 
 | Layer | Current result | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Fresh171 top-level /1,133 records in9 batches;76 migrations | Earlier75 migrations unchanged; native PostgreSQL |
-| Web/runtime/Linux | Fresh135/51 tests/builds and Linux cross-compilation | Linux not executed/deployed; eight Skills remain draft |
-| Taro | Fresh238 tests, types and20 pages per WeChat/Douyin build | Eight actual flows per Web/H5 client; no platform/device execution |
-| Android | Current development APK and18 package checks |26 JVM results are Gradle UP-TO-DATE reuse, not fresh execution |
-| UI/media | Eight new PNGs/two original-speed MP4-GIF pairs;90/33/33 total | Authenticated synthetic pixels; committed-response faults explicitly labelled |
-| History/operations |94 entry/application/backend archives;76-migration/owned-process/zero-test-DB check | Native local update only; external integrations disabled |
+| Go/PostgreSQL |181 top-level tests /1,163 result records across10 passed batches; exact result count in the [backend record](quality/evidence/file-imports-backend/result.json);77 migrations | Published76 migrations unchanged; native isolated database, no production execution |
+| Native CLI/HTTP | Seven real Windows CLI checks; accepted-part/missing-receipt resume, normal scan/commit, before/after replica reports, mutation and revocation checks | Synthetic files and controlled provider, not real120 GB/2 TB/cloud acceptance |
+| Web/runtime/Taro | Fresh135/51/238 tests, types and builds;20 pages per WeChat/Douyin target | Eight Skills remain draft; real platform/model checks separate |
+| Android | Current-source development package and18 actual package inspections |26 JVM results explicitly marked as cached or freshly executed in the [task record](quality/evidence/file-imports/android-test-scope.json); no device started |
+| Page media | Original90 PNGs,33 MP4s and33 GIFs preserve their95-or-earlier source scope | No UI change or new browser capture in96 |
+| Operations/Linux |77 migrations, exact owned API/two workers and zero disposable databases; platform/CLI cross-compilation | External integrations disabled; Linux artifacts not executed/deployed |
 
-The unchanged lock retains the original90 audit of86 findings:0 critical,20 high,64 moderate and2 low; no new audit is claimed. Real models/TG, devices, cloud/network, large transfers/migration, recovery and security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [exact verification](quality/95-task-discussion-verification.md).
+The unchanged lock retains the original90 audit:86 findings, including0 critical,20 high,64 moderate and2 low; the production security gate remains open, with no fresh audit claimed. Full four-client, real cloud/model/TG, Hong Kong network,120 GB/2 TB, ACL, restore and cutover acceptance remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). Original95 page/evidence records retain their original status and are not represented as fresh96 interactions.
 
 ## 9. Documentation and synchronization
 

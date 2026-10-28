@@ -1,6 +1,8 @@
 # 代码实施与验证台账
 
-最新增量95：Web／Taro任务讨论、本人不可变修订、固定正式附件、明确成员提及和准确通知定位。原生后端171顶层／1133结果、9批，Web135／运行时51／移动238及类型构建，双小程序各20页；新增迁移76，原75未改。Web／H5各8组真实流程，新增8PNG和两套原速MP4／GIF；当前开发APK及18项包检查，26项JVM缓存复用单列。归属API及两个worker升级当前来源，零隔离库，外部接入关闭。完整四端Goal和28项差异继续保留。见[方案](../development/95-task-discussion-and-mentions.md)及[准确验证](../quality/95-task-discussion-verification.md)。
+最新增量96：原生盘点／逐项映射／固定计划、完整清单批准、原上传复用、明确重试、来源增量与逐项双端核验。新增迁移77，原76字节保留；六个CLI命令及普通授权API已实现。新执行检查和保留证据范围见[设计与操作](../development/96-native-file-import.md)及[准确验证](../quality/96-native-file-import-verification.md)。GAP-22推进至可执行工具，真实2TB／120GB、双云、ACL、恢复／切换仍未验收；四端完整Goal继续active。
+
+此前增量95：Web／Taro任务讨论、本人不可变修订、固定正式附件、明确成员提及和准确通知定位。原生后端171顶层／1133结果、9批，Web135／运行时51／移动238及类型构建，双小程序各20页；新增迁移76，原75未改。Web／H5各8组真实流程，新增8PNG和两套原速MP4／GIF；当前开发APK及18项包检查，26项JVM缓存复用单列。归属API及两个worker升级当前来源，零隔离库，外部接入关闭。完整四端Goal和28项差异继续保留。见[方案](../development/95-task-discussion-and-mentions.md)及[准确验证](../quality/95-task-discussion-verification.md)。
 
 此前增量94：共享Taro新增文件／目录工作区，复用原业务完成新建目录、同项目同分类改名／移动、回收与原位恢复，分页核对全部正式版本并阅读准确历史内容。移动233项、类型、双小程序各20页；当前开发APK及18项包检查，26项JVM缓存范围另列；实际API／H5九组流程与八项布局，新增4PNG和两套MP4／GIF。后端167顶层／1129结果、Web130、运行时51及Linux编译按完整来源未变复用93，未宣称本轮重跑。原93的89份证据／媒体与10份入口快照保留；完整四端与真实验收继续。见[增量94](../development/94-mobile-file-workspace.md)与[准确验证](../quality/evidence/mobile-files/verification.md)。
 

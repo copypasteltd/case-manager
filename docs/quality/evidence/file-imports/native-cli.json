@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "started_at": "2026-10-28T01:49:49.785228+00:00",
+  "finished_at": "2026-10-28T01:49:56.531828+00:00",
+  "source_sha256": "a60dd0300ca7a72bec8127cb3e9df1148ab2aae2f3f0c02a1e311332da5aac8b",
+  "source_after_sha256": "a60dd0300ca7a72bec8127cb3e9df1148ab2aae2f3f0c02a1e311332da5aac8b",
+  "source_unchanged": true,
+  "binaries": [
+    {
+      "target": "windows/amd64",
+      "sha256": "04e1e001db173a068ba6c93654fc23334b4272983abdac904c0da87afcfc73f3",
+      "bytes": 11789824,
+      "artifact_executed": true,
+      "deployed": false
+    },
+    {
+      "target": "linux/amd64",
+      "sha256": "7f551b6def65e7c189811cca7095c13c186827e4533e199f34900fc31c781f4d",
+      "bytes": 11619097,
+      "artifact_executed": false,
+      "deployed": false
+    }
+  ],
+  "checks": [
+    {
+      "name": "actual source inventory",
+      "passed": true,
+      "exit_code": 0,
+      "stdout_sha256": "062af80bf1dc28b5564a9014914106245668958870e3510ef330fdab779618da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "mapping template",
+      "passed": true,
+      "exit_code": 0,
+      "stdout_sha256": "062af80bf1dc28b5564a9014914106245668958870e3510ef330fdab779618da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unreviewed template rejected",
+      "passed": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "652eed2fba6c9756e3ee3ed646cc2777c22e064f52804428e7fb649e60b6c1cb"
+    },
+    {
+      "name": "reviewed plan",
+      "passed": true,
+      "exit_code": 0,
+      "stdout_sha256": "062af80bf1dc28b5564a9014914106245668958870e3510ef330fdab779618da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "existing inventory preserved",
+      "passed": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "abcdda941e08738f7229e6107bc828fe1e0539f71018521b707d01a7297b37c8"
+    },
+    {
+      "name": "inside-source output rejected",
+      "passed": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ced3b37a33089bba5707df99fd9f406a5812a881f320c2ded6afff58a1228e55"
+    },
+    {
+      "name": "missing token rejected",
+      "passed": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "66b5ab252dc0ed3ce9a9d5f15623787403db790e13b7a7ea742dda03a4ff174b"
+    }
+  ],
+  "raw_build_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "synthetic_only": true,
+  "real_cloud": false,
+  "real_2tb_inventory": false,
+  "real_120gb_transport": false,
+  "private_temp_source_and_outputs_removed": true,
+  "verification_script_sha256": "27c1a4b092166a347408ded604ecf09d048ddaa457fca01077cd571fbdced732"
+}

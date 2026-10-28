@@ -308,7 +308,7 @@ def main():
         proof = read(functional / 'final-source-check.json')
         check('Latest functional evidence binds current sources, browser flows, media and verification script',
               proof['passed'] and proof['mobile_source_sha256'] == module('verify_mobile.py').digest()[0]
-              and proof['browser_source_sha256'] == module(baseline['browser_sources']).digest()
+              and (proof['interaction_source_sha256'] == module(baseline['interaction_sources']).digest() and proof['interaction_kind'] == baseline['interaction_kind'] if baseline.get('interaction_kind') else proof['browser_source_sha256'] == module(baseline['browser_sources']).digest())
               and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
               and all(item['passed'] for item in proof['checks']) and not proof['full_goal_complete'])
     skills = [read(p) for p in sorted((APP / 'skills').glob('*/manifest.json'))]

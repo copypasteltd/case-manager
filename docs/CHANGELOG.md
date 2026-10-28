@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量96 · 原生文件迁移 / Native file migration · 2026-10-28
+
+- 新增六个原生CLI命令、逐项来源映射、固定计划与近期MFA批准；复用普通权限、配额、扫描、正式提交及双端复制流程。
+- 原上传对账与明确失败重试保持稳定来源／逻辑文件；源改变需要准确新计划及当前基础版本；旧提交重放同样检查迁移权限。
+- Added a native inventory/plan/import/report operator, immutable manifests, explicit retries and current provenance checks. Per-row OSS/R2 evidence remains separate from restore and cutover approval.
+- 新检查、开发环境与历史页面媒体复用范围见[完整验证](quality/96-native-file-import-verification.md)；真实2TB、120GB、云、设备、模型、TG与生产验收仍分列。
+
 ## 2026-10-28 · Increment95 / 任务讨论、固定附件与明确提及
 
 Web和共享Taro新增真实任务讨论：新建／本人修订、准确正式版本附件、明确成员选择、不可变历史及站内提及通知。省略列表保留完整原关联，完整替换需要再次核对；无权旧关联不会被过滤后静默删除。通知沿真实outbox／租约／幂等管线，文字修改不重复投递，移除后再提及不复活旧通知；打开准确当前修订并自动滚动，超过首20条也可定位。冲突、已提交但丢失／缺失回执保留文字、阻止重复，并允许人工核对后同意图幂等对账。

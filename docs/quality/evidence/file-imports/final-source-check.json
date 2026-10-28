@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T02:39:49.155987+00:00",
+  "checks": [
+    {
+      "name": "Complete fresh native backend covers all discovered tests and import protocol/transport/integration tests",
+      "passed": true
+    },
+    {
+      "name": "Migration77 is additive and all published76 migrations retain exact bytes",
+      "passed": true
+    },
+    {
+      "name": "OpenAPI293 paths/363 operations/635 schemas; all prior operations and models unchanged",
+      "passed": true
+    },
+    {
+      "name": "Generated shared types include exact import approval, fixed update base and report data",
+      "passed": true
+    },
+    {
+      "name": "Actual Windows CLI builds/execution and Linux cross-compile match exact current backend",
+      "passed": true
+    },
+    {
+      "name": "Real synthetic HTTP PUT lost-receipt resume keeps one upload and one logical file",
+      "passed": true
+    },
+    {
+      "name": "Primary completion remains pending until actual controlled replica read/write verification",
+      "passed": true
+    },
+    {
+      "name": "Platform Linux cross-compile matches current backend without execution or deployment",
+      "passed": true
+    },
+    {
+      "name": "Eight fresh client type/test/build commands retain exact source and private raw log bindings",
+      "passed": true
+    },
+    {
+      "name": "Current Web135 and Taro238 tests plus both20-page mini-program builds",
+      "passed": true
+    },
+    {
+      "name": "Current runtime51 tests and draft Skill checks; real model remains unexecuted",
+      "passed": true
+    },
+    {
+      "name": "Fresh Android development build and actual18 APK inspections match current inputs",
+      "passed": true
+    },
+    {
+      "name": "Android JVM26 task is honestly scoped as executed or cached; no device execution",
+      "passed": true
+    },
+    {
+      "name": "All156 existing page media files retain exact published95 bytes and capture scope",
+      "passed": true
+    },
+    {
+      "name": "Original95 evidence is retained byte for byte and is not recast as fresh browser evidence",
+      "passed": true
+    },
+    {
+      "name": "Published bilingual guides, ledger, baseline and migration plan have exact original snapshots",
+      "passed": true
+    },
+    {
+      "name": "Unchanged lock retains original90 dependency audit and open production gate",
+      "passed": true
+    },
+    {
+      "name": "Native development schema77 and exact owned API/workers match sources; integrations remain disabled",
+      "passed": true
+    },
+    {
+      "name": "No completed-check review server remains; no browser was used in96",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "native_cli_and_http",
+  "interaction_source_sha256": "120f4c0fc7fd372a4479fc594941d5213f2c84187c664fe6ad9c741670d6e712",
+  "backend_source_sha256": "a60dd0300ca7a72bec8127cb3e9df1148ab2aae2f3f0c02a1e311332da5aac8b",
+  "mobile_source_sha256": "b595cb857f83ad9a5d2dc63c4d7f4218aeefb36f7f536c67c79d39607a1e4642",
+  "verification_script_sha256": "ab4ff8bb0bac0df0066632d1d1b1ce1a4b9eb028bcdb647fa7c5452b15b7fd06",
+  "full_goal_complete": false,
+  "production_ready": false,
+  "real_cloud": false,
+  "real_120gb_transport": false,
+  "real_2tb_migration": false,
+  "browser_evidence_reused_from_increment": 95,
+  "new_page_capture": false
+}

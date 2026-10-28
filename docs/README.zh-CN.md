@@ -141,6 +141,12 @@ Web和移动均从“项目 → 预算 → 预算与实际支出对比”进入�
 
 移动端现已支持项目日志、会议纪要、SOP 和内部文章的手工新建、编辑、显式发布／归档／退回草稿、历史恢复和修订讨论。知识附件可明确选择跟随当前版或固定版本；评论文字修改默认保留服务器原附件。正文变化或结果不明时保留输入并停止重提。完整操作、限制和接口见[移动知识方案](development/83-mobile-knowledge-workflows.md)。
 
+### 存量原件迁移与核验
+
+迁移操作人使用[原生迁移工具](development/96-native-file-import.md)完成“只读盘点 → 逐项归属／目录／项目／分类映射 → 固定计划 → 近期MFA批准 → 原上传／扫描／提交 → 双端逐项核验”。工具读取明确的源目录，以普通员工权限和短时分片签名上传；不需要数据库或云密钥，单文件采用有界流式读取。使用原计划重新运行会对账已有上传；来源新内容必须提供准确逻辑文件和当前基础版本。输出留在忽略目录／仓库外，源原件保留。
+
+`file-import` 提供 `inventory/template/plan/run/report/retry` 六个命令，完整参数、登录与清理、JSONL格式、错误处置见上述操作指南。只有完整清单、当前映射及OSS／R2已验证内容证据全部匹配，报告才将观察计为双端已验证；报告不替代原ACL等价、同时刻快照、真实2TB／120GB或恢复切换验收。[本轮验证范围](quality/96-native-file-import-verification.md)将新检查和原95页面媒体复用分列。
+
 ### 公司秘书与 TG
 
 员工在有权的会话内提出目标，秘书读取当前允许的内容，生成有界计划。涉及项目创建、文件变更、目录整理、OA 送审或知识发布时，核对准确对象、版本、差异、范围及本人确认，再调用原业务命令。界面通过真实业务回执显示成功；普通聊天中的“同意”不代替协议要求的本人批准或近期 MFA。
@@ -333,18 +339,18 @@ python scripts/verify_mobile.py my-change
 
 ## 8. 当前证据与放行条件
 
-当前实现为[任务讨论、固定附件与明确提及](development/95-task-discussion-and-mentions.md)。以下是本轮实际执行及缓存复用的范围，不代表完整生产交付。
+当前实现为[原生存量文件迁移](development/96-native-file-import.md)。完整来源绑定记录见[本轮验证](quality/96-native-file-import-verification.md)及[最终检查](quality/evidence/file-imports/final-source-check.json)。
 
 | 层面 | 当前结果 | 边界 |
 | --- | --- | --- |
-| Go / PostgreSQL | 新执行171顶层／1,133结果、9批；76迁移 | 原75迁移不变，新增76；实际原生PG |
-| Web／运行时／Linux | 新执行135／51项及构建、Linux交叉编译 | Linux未执行或部署；八项Skill仍draft |
-| Taro | 新执行238项、类型、微信／抖音各20页 | Web／H5各8组实际流程；不替代平台或设备 |
-| Android | 当前开发APK及18项包检查 |26项JVM为Gradle UP-TO-DATE缓存，不计本轮重新执行 |
-| 页面与媒体 | 新增8PNG／两套原速MP4和GIF；总90／33／33 | 认证合成页面；真实提交后的响应故障明确标注 |
-| 历史与运维 |94入口／应用／后端证据归档；76迁移／归属进程／零测试库 | 仅原生本机更新，外部接入关闭 |
+| Go／PostgreSQL | 新执行181个顶层测试／1,163条结果，分10批通过；准确结果数见[后端记录](quality/evidence/file-imports-backend/result.json)；77迁移 | 原76迁移字节保留，新增77；原生隔离PG，非生产 |
+| 原生CLI／HTTP | Windows实际CLI 7项；接收分片无成功回执后续跑、原扫描提交、复制前后报告、变更和撤权检查 | 合成文件与受控对象替身；不代表真实120GB／2TB或双云验收 |
+| Web／运行时／Taro | 新执行135／51／238项、类型与构建，微信／抖音各20页 | 八项Skill仍draft；平台与模型另验 |
+| Android | 当前源码开发包和18项实际包检查 | JVM26项的Gradle缓存／新执行按[原任务](quality/evidence/file-imports/android-test-scope.json)分列；不启动设备 |
+| 页面媒体 | 原90 PNG／33 MP4／33 GIF保持95及更早来源 | 本轮没有UI改动或新浏览器采集 |
+| 运维与Linux |77迁移、准确归属API／两个worker与零隔离库核对；平台及CLI交叉编译 | 真实外部接入关闭；Linux未执行或部署 |
 
-相同锁文件继续引用原90审计86项（0 critical、20 high、64 moderate、2 low），未重跑审计。真实模型／TG、设备、云及网络、大文件／存量迁移、恢复和安全继续按[28项差异](delivery/03-goal-gap-assessment.md)验收。见[本轮完整验证](quality/95-task-discussion-verification.md)。
+相同锁文件继续引用原90审计86项（0 critical、20 high、64 moderate、2 low），未重跑审计，生产安全门槛未通过。完整四端、真实云／模型／TG、香港网络、120GB／2TB、ACL、恢复及切换仍按[28项差异](delivery/03-goal-gap-assessment.md)验收。原95页面与历史证据保留原状态，不改称本轮新执行。
 
 ## 9. 文档与同步维护
 

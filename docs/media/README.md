@@ -6,7 +6,11 @@
 
 This catalog contains **90 PNGs,33 MP4s and33 GIFs**. Increment95 adds eight actual Web/Taro discussion screenshots and two MP4/GIF pairs. Earlier media retains its original bytes. Recordings use authenticated synthetic data; mobile clips show Taro H5 rather than a device.
 
-## 最新：任务讨论与明确提及 / Task discussion and explicit mentions
+增量96仅改变原生迁移工具和后端，没有页面改动；以下原95及更早的PNG／MP4／GIF保持原始字节和来源范围。CLI的实际本地交互证据见[迁移验证](../quality/96-native-file-import-verification.md)。
+
+Increment96 changes the native import tool and backend. The page screenshots, MP4s and GIFs below retain their original bytes and capture scope. Fresh CLI interaction evidence is listed in the [import verification](../quality/96-native-file-import-verification.md).
+
+## 最近页面更新：任务讨论与明确提及 / Task discussion and explicit mentions
 
 ![Web任务讨论 / Web task discussion](gifs/task-mentions-web-collaboration.gif)
 
