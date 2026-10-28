@@ -1,5 +1,12 @@
 # Repository working agreement / 仓库工作约定
 
+## Current scope / 当前范围（用户修订99）
+
+- Follow `docs/delivery/04-current-scope-and-acceptance.md` and `04-current-scope.json`. Keep Web, WeChat, Douyin, Android, Codex secretary, eight Skills and TG. AI execution isolation, authorization, audit and technical resource limits remain required.
+- 用户明确移出真机验证、网络性能／实网120GB专项、历史数据迁移与容灾、AI费用控制。不得把移出项重新作为当前发布门槛；不因此启用模拟器。
+- Preserve production PG persistence, normal schema upgrades, OSS＋R2 storage/replication, ordinary file/version recovery and company OA/finance. Only AI cost/token quota/billing controls are excluded; the existing mandatory budget admission prerequisite is an unresolved GAP-09 adaptation, not already disabled.
+- 当前23项待完成（14 P0／9 P1），5项移出。旧28项ID和原始证据保留，不把取消范围记成测试通过。范围修改需运行 `python app/scripts/verify_current_scope.py`，并继续执行相应仓库发布检查。
+
 - Implement application code under `app/`. Keep specifications, guides, evidence, release notes and media under `docs/`; the root README is the bilingual repository entry point.
 - 应用实现放在 `app/`；需求、开发、使用、验证、更新说明和演示素材放在 `docs/`。根目录 README 作为双语入口。
 - Do not start or use local Docker, WSL, virtual machines or emulators. Use native tools. Close every browser context, tab and temporary server owned by a completed check; preserve the user's unrelated processes and tabs.

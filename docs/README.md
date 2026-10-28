@@ -1,6 +1,8 @@
 # CopyPaste 内部管理平台文档中心
 
-最新增量98：[依赖维护与四端兼容](development/98-dependency-maintenance.md) · [新执行、复用与开放风险](quality/98-dependency-maintenance-verification.md)。Full current audit91→80, high20→13; security acceptance remains open.
+最新修订99：[当前范围与验收](delivery/04-current-scope-and-acceptance.md) · [23项剩余工作](delivery/03-goal-gap-assessment.md) · [验证记录](quality/99-scope-revision-verification.md)。23 active（14 P0／9 P1），5 excluded；只取消AI费用控制，保留秘书、隔离及授权。No device/network-performance/migration/DR/AI-cost gates.
+
+此前增量98：[依赖维护与四端兼容](development/98-dependency-maintenance.md) · [新执行、复用与开放风险](quality/98-dependency-maintenance-verification.md)。Full current audit91→80, high20→13; security acceptance remains open.
 
 此前增量97：[小程序身份绑定、登录与解绑失效](development/97-mini-program-identity.md) · [准确验证与实际媒体](quality/97-mini-program-identity-verification.md)。Employee-confirmed WeChat/Douyin identities, MFA and session revocation.
 

@@ -1,6 +1,8 @@
 # 代码实施与验证台账
 
-最新增量98：移除未使用的Taro RN runner、修复Doctor glob和旧原生代码生成器实际匹配器；当前完整扫描91→80项／high20→13。新执行14项依赖与2项原生JS、Web135／移动248／运行时51及受影响构建；原生Android和JVM缓存范围单列。Go与界面源码未变，后端189／1183、Linux及97PNG／35MP4／35GIF明确复用，不改称新执行。见[方案](../development/98-dependency-maintenance.md)与[准确验证](../quality/98-dependency-maintenance-verification.md)。GAP-26和完整四端Goal仍开放。
+最新修订99：用户更正为仅取消AI费用控制；同时移出真机验证、网络性能、数据迁移与容灾。当前23类待完成（14 P0／9 P1），原GAP-14／17／21／22／27移出，其他项收窄适用验收。保留四端、秘书／Skill／TG、隔离／权限、公司财务、双端存储及持久PG。接单必配Token额度仍需在GAP-09适配。见[当前范围](04-current-scope-and-acceptance.md)及[当前清单](03-goal-gap-assessment.md)；本次无功能源码、构建或媒体采集变化。
+
+此前增量98：移除未使用的Taro RN runner、修复Doctor glob和旧原生代码生成器实际匹配器；当前完整扫描91→80项／high20→13。新执行14项依赖与2项原生JS、Web135／移动248／运行时51及受影响构建；原生Android和JVM缓存范围单列。Go与界面源码未变，后端189／1183、Linux及97PNG／35MP4／35GIF明确复用，不改称新执行。见[方案](../development/98-dependency-maintenance.md)与[准确验证](../quality/98-dependency-maintenance-verification.md)。GAP-26和完整四端Goal仍开放。
 
 此前增量97：微信／抖音身份交换、本人密码及适用MFA确认、两分钟证明、不可变绑定历史、平台登录与解绑失效。新增迁移78，原77保持字节；Web与Taro本人管理、未知结果恢复及真实页面媒体已落实。新执行／缓存／外部验收范围见[设计](../development/97-mini-program-identity.md)和[准确验证](../quality/97-mini-program-identity-verification.md)；GAP-19真实平台与设备仍开放，四端完整Goal继续active。
 

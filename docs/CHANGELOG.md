@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 修订99 · 交付范围调整 / Scope revision · 2026-10-28
+
+- 按用户要求移出真机验证、网络性能、数据迁移与容灾；第四项以用户更正后的AI费用控制为准。
+- 保留四端、Codex秘书、8项Skill、TG、执行隔离／授权、公司财务、OSS＋R2及持久PG。28个原ID中23 active（14 P0／9 P1）、5 excluded，新增完成0项。
+- Retains the secretary and security controls while removing AI cost gates. Documents the existing mandatory monthly-token admission as an unresolved GAP-09 adaptation; no runtime behavior is changed.
+- 同步范围机器清单、剩余项、需求／质量门／决策、运维边界、中英README及仓库约束。原功能检查与媒体保留原范围，见[修订验证](quality/99-scope-revision-verification.md)。
+
 ## 增量98 · 依赖维护 / Dependency maintenance · 2026-10-28
 
 - 移除原生主机构建未使用的Taro RN runner；Doctor glob10固定10.5.0，旧代码生成器真实加载micromatch4.0.8，并移除旧解析器分支。

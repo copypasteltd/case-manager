@@ -2,7 +2,15 @@
 
 [中文](README.zh-CN.md) · [Repository home](../README.md) · [Documentation index](README.md) · [Screenshots, recordings and GIFs](media/README.md) · [Changelog](CHANGELOG.md)
 
-CopyPaste Case Manager connects projects, office workflows, files, knowledge, recurring costs, a company secretary and service status through shared authorization and audit history. This repository includes working implementations, detailed protocols and source-bound evidence. It is a development preview; full production delivery continues against the [28 numbered gaps](delivery/03-goal-gap-assessment.md).
+CopyPaste Case Manager connects projects, office workflows, files, knowledge, recurring costs, a company secretary and service status through shared authorization and audit history. This repository includes working implementations, detailed protocols and source-bound evidence. It is a development preview; full production delivery continues against the [23 active /5 excluded packages](delivery/03-goal-gap-assessment.md).
+
+## Current scope and remaining work (revision99)
+
+The user excludes real-device verification, network performance tests, historical migration/disaster recovery and **AI cost control only**. There are23 active packages (14 P0/9 P1),5 excluded IDs and0 newly completed packages. Web, WeChat, Douyin, Android, the secretary/eight Skills/TG, isolation, authorization and audit remain, alongside company finance/project budgets, persistent PostgreSQL and OSS/R2 storage.
+
+The120 GB design limit and multipart/resume/integrity behavior remain, with functional samples and boundary checks. Live120 GB network acceptance and the2 TB historical import are excluded. Normal database schema upgrades and ordinary file/version recovery remain. The current runtime still requires a monthly-token policy; removing that mandatory cost prerequisite is a pending GAP-09 adaptation, not a change made by this documentation revision.
+
+[Scope and boundaries](delivery/04-current-scope-and-acceptance.md) · [23 remaining packages](delivery/03-goal-gap-assessment.md) · [Revision verification](quality/99-scope-revision-verification.md). This scope overrides conflicting gates in historical sections below.
 
 ## Dependency maintenance and four-client compatibility (increment98)
 
@@ -361,18 +369,18 @@ These are each employee's in-app notifications. No additional Telegram, email or
 
 ## 8. Evidence and release gates
 
-The current maintenance increment is [dependency repair and four-client compatibility](development/98-dependency-maintenance.md). The latest business increment97 adds [mini-program identity](development/97-mini-program-identity.md), following the96 [native file importer](development/96-native-file-import.md). [Current verification](quality/98-dependency-maintenance-verification.md) and [final source checks](quality/evidence/dependency-maintenance/final-source-check.json) distinguish fresh execution from retained evidence.
+Functional evidence remains at increment98; [revision99](delivery/04-current-scope-and-acceptance.md) defines current acceptance. Old checks are not represented as fresh executions.
 
-| Layer | Current result | Scope |
+| Layer | Retained result | Current boundary |
 | --- | --- | --- |
-| Dependencies | Fresh complete audit91→80, high20→13;14 dependency and2 native JS checks pass | All80 findings stay open; completion of an audit is not security acceptance |
-| Go/PostgreSQL | Retains97's189 top-level tests /1,183 result records in10 batches; exact Go digest unchanged;78 migrations | No new Go execution this increment; isolated native database evidence is not production |
-| Web/runtime/Taro | Fresh135/51/248 tests, types and builds;20 pages per WeChat/Douyin target | Eight Skills remain draft; real platform/model checks separate |
-| Android | Fresh Metro/current-lock build; Gradle assemble retains the identical97 APK;18 fresh package checks |26 JVM results state actual execution/cache in the [current Gradle record](quality/evidence/dependency-maintenance/android-test-scope.json); no device execution |
-| Page media | Original97 PNGs,35 MP4s and35 GIFs retain published bytes | No UI change or new browser capture; shared Taro H5 is not a device |
-| Operations/Linux | Fresh read-only inspection of78 migrations, owned API/two workers and zero disposable databases; retains97 Linux cross-build on identical Go sources | External integrations disabled; Linux artifacts not executed/deployed |
+| Dependencies |80 findings:0 critical/13 high/60 moderate/7 low;14 dependency and2 native JS checks | Security remediation remains; the old scan keeps its timestamp |
+| Go/PG |189 top-level/1,183 results in10 batches;78 schema migrations | Retained source proof; persistent PG and normal schema upgrades remain, historical import/DR excluded |
+| Web/runtime/Taro |135/51/248 tests, types/builds;20 pages each for WeChat/Douyin | Functional and source/artifact checks remain; device/network-performance tests excluded |
+| Android | Metro rerun; Gradle assemble retained the identical APK;18 package checks;26 cached JVM tests | Original scope retained; signing/release preparation remains, no device or emulator requirement |
+| Media |97 PNGs/35 MP4s/35 GIFs with original bytes/provenance | No new capture; H5 retains its shared-client evidence label |
+| Integration | Cloud/model/TG/production acceptance incomplete;8 Skills draft |23 active packages remain; AI-cost, device, performance,2 TB migration and DR gates excluded |
 
-The updated lock has80 findings (0 critical,13 high,60 moderate,7 low), compared with91 on the original97 lock against the current feed. The historical86-finding audit is separate. The production security gate remains open. Full four-client, real platform/cloud/model/TG, Hong Kong devices/network,120 GB/2 TB, ACL, restore and cutover acceptance remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). Original results preserve their actual fresh, cached, failed or historical status.
+Admission without a mandatory AI-cost policy is still a pending code adaptation. Isolation, identity/authorization, audit and technical resource limits remain. See the [current checklist](delivery/03-goal-gap-assessment.md).
 
 ## 9. Documentation and synchronization
 

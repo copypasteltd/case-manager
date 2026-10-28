@@ -1,5 +1,7 @@
 # 86 · 秘书月度Token额度与用量账本 / Monthly secretary token budgets
 
+修订99：用户取消AI费用控制，本文件保留既有实现记录，不再作为新增开发或当前发布门槛。Token／金额费用配额、价格与供应商账单控制移出；当前接单仍存在必配月度Token策略，解除该前置阻塞列入GAP-09，尚未修改运行时。执行隔离、身份／授权、审计、超时与技术资源上限继续保留。见[当前范围](../delivery/04-current-scope-and-acceptance.md)。
+
 本增量推进 GAP-14 的接单预留、范围额度、失败结算和可核对报表。它管理 Token 数量，不把 Token 换算成货币，不代表供应商账单，也不能在 SDK 尚未报告用量时阻止已经发生的供应商计费。完整四端平台目标继续有效。首发仍面向香港3位员工、境内服务器、最大120GB原件及2TB存量；真实云、模型、Telegram与真机验收尚未完成。
 
 This increment advances GAP-14 with admission reservations, scoped allowances, failure accounting and reviewable reports. It accounts for tokens without converting them into money. It is neither a provider invoice nor a provider-side spending limit. The full four-client platform remains the delivery goal.

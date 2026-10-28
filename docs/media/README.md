@@ -1,5 +1,9 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 修订99 · 范围调整 / Scope revision
+
+本轮只调整规划与验收门槛，无界面或新浏览器采集；97PNG／35MP4／35GIF仍保持原字节与来源。真机、性能、迁移／容灾和AI费用专项已移出当前范围，历史媒体不改称新验收。参见[当前范围](../delivery/04-current-scope-and-acceptance.md)和[验证记录](../quality/99-scope-revision-verification.md)。
+
 ## 增量98 · 媒体复用说明 / Retained media
 
 本次仅调整依赖与验证流程，界面源码未改；97 PNG／35 MP4／35 GIF全部保留原发布字节。没有启动浏览器或重新采集，不将下方原97及更早媒体标为98或真机演示。新客户端／Android构建与历史媒体分别验证，见[准确范围](../quality/98-dependency-maintenance-verification.md)及[逐文件摘要](../quality/evidence/dependency-maintenance/reused-evidence.json)。

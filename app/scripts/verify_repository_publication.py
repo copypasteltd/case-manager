@@ -312,6 +312,16 @@ def main():
               and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
               and all(item['passed'] for item in proof['checks']) and not proof['full_goal_complete'])
     skills = [read(p) for p in sorted((APP / 'skills').glob('*/manifest.json'))]
+    if baseline and baseline.get('planning_scope_verification_record'):
+        scope = read(ROOT / baseline['planning_scope_manifest'])
+        scoped = read(ROOT / baseline['planning_scope_verification_record'])
+        check('Current user-approved scope and exclusions match source-bound planning evidence',
+              scoped['passed'] and scoped['scope_revision'] == baseline['planning_scope_revision'] == scope['revision']
+              and scoped['counts'] == scope['counts']
+              and scoped['scope_manifest_sha256'] == sha(ROOT / baseline['planning_scope_manifest'])
+              and scoped['verification_script_sha256'] == sha(APP / 'scripts' / baseline['planning_scope_verification_script'])
+              and all(sha(ROOT / row['file']) == row['sha256'] for row in scoped['input_files'])
+              and all(row['passed'] for row in scoped['checks']) and not scoped['full_goal_complete'])
     audit = read(ROOT / baseline['dependency_audit_record']) if baseline and baseline.get('dependency_audit_record') else read(EVIDENCE.parent / 'android-native/dependency-audit.json')
     check('All eight Skills remain draft and source-bound dependency security gate remains open',
           len(skills) == 8 and all(s['state'] == 'draft' for s in skills)
@@ -329,9 +339,11 @@ def main():
               'secret_scan_scope': 'High-confidence text patterns, not exhaustive secret detection or pixel OCR.',
               'functional_evidence': 'Current source-bound backend/Web/runtime/mobile/browser/native artifacts and declared retained foundation proofs; see the baseline and final proof.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
               'current_functional_increment': baseline['increment'] if baseline else 76,
+              'current_scope_revision': baseline.get('planning_scope_revision') if baseline else None,
               'verification_script_sha256': sha(Path(__file__)), 'production_ready': False}
     if not args.staged:
-        ((functional if baseline else EVIDENCE) / 'repository-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        target = ROOT / baseline['planning_publication_record'] if baseline and baseline.get('planning_publication_record') else (functional if baseline else EVIDENCE) / 'repository-check.json'
+        target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': report['passed'], 'files': len(names), 'MiB': round(total / 1024 / 1024, 2),
                       'checks': len(checks), 'failed': [c['name'] for c in checks if not c['passed']],
                       'sensitive_findings': findings, 'forbidden_paths': sorted(set(forbidden)), 'broken_local_links': broken[:30],

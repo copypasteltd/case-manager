@@ -2,7 +2,15 @@
 
 [English](README.en.md) · [仓库首页](../README.md) · [文档索引](README.md) · [截图、录屏与 GIF](media/README.md) · [更新记录](CHANGELOG.md)
 
-这是 CopyPaste 的内部管理平台，把项目、OA、文件、知识、费用订阅、公司秘书和服务状态连接到同一套业务权限与审计体系。本仓库包含可运行实现、详细协议和来源绑定的验证证据；当前为开发预览，四端生产交付仍按 [28 项编号差异](delivery/03-goal-gap-assessment.md)推进。
+这是 CopyPaste 的内部管理平台，把项目、OA、文件、知识、费用订阅、公司秘书和服务状态连接到同一套业务权限与审计体系。本仓库包含可运行实现、详细协议和来源绑定的验证证据；当前为开发预览，四端生产交付仍按 [23项待完成／5项移出](delivery/03-goal-gap-assessment.md)推进。
+
+## 当前范围与剩余工作（修订99）
+
+用户已确认移出真机验证、网络性能、历史数据迁移与容灾、AI费用控制。**当前23项待完成（14 P0／9 P1），5项移出；新增完成0项。** 保留Web、微信、抖音、Android，秘书、8项Skill、TG、执行隔离／权限／审计，公司财务、项目预算、持久PG及OSS＋R2双端存储。
+
+120 GB设计上限与分片／续传／校验能力保留，以功能样本与协议边界核对；实网120GB和2 TB历史导入不再是当前验收前置。数据库建表／正常结构升级、普通文件回收站／版本恢复仍保留。现有秘书接单仍要求月度Token策略，取消这一费用前置条件是GAP-09尚待实现的范围适配；本次没有修改运行时。
+
+[当前范围与边界](delivery/04-current-scope-and-acceptance.md) · [23项具体剩余工作](delivery/03-goal-gap-assessment.md) · [范围修订验证](quality/99-scope-revision-verification.md)。历史段落中被取消的门槛以本修订为准。
 
 ## 依赖维护与四端兼容（增量98）
 
@@ -361,18 +369,18 @@ python scripts/verify_mobile.py my-change
 
 ## 8. 当前证据与放行条件
 
-当前维护增量为[依赖修复与四端兼容](development/98-dependency-maintenance.md)。最新业务增量97为[小程序身份](development/97-mini-program-identity.md)，增量96为[原生迁移工具](development/96-native-file-import.md)。[本轮验证](quality/98-dependency-maintenance-verification.md)和[最终源检查](quality/evidence/dependency-maintenance/final-source-check.json)明确区分新执行与复用。
+功能来源仍为增量98，范围以[修订99](delivery/04-current-scope-and-acceptance.md)为准；本次没有重跑旧功能检查。
 
-| 层面 | 当前结果 | 边界 |
+| 层面 | 已有结果 | 当前适用边界 |
 | --- | --- | --- |
-| 依赖 | 新扫描原97锁91项→98锁80项，high20→13；14项依赖／2项原生JS检查新通过 | 80项开放，不以完成扫描代替安全放行 |
-| Go／PostgreSQL | 复用97的189顶层／1,183结果、10批；完整Go摘要未变；78迁移 | 本次无新Go执行；原生隔离PG证据不代表生产 |
-| Web／运行时／Taro | 新执行135／51／248项、类型与构建，微信／抖音各20页 | 八项Skill仍draft；平台与模型另验 |
-| Android | 新执行Metro；Gradle assemble复用原97相同APK；18项包检查新通过 | JVM26项按[本轮Gradle状态](quality/evidence/dependency-maintenance/android-test-scope.json)标注新执行或缓存；无设备运行 |
-| 页面媒体 | 原97 PNG／35 MP4／35 GIF逐文件保留原发布字节 | 本次无UI变化和新浏览器采集；Taro H5非真机 |
-| 运维与Linux | 新只读核对78迁移、归属API／两个worker与零隔离库；复用97相同Go源码的Linux交叉编译 | 外部接入关闭；Linux未执行或部署 |
+| 依赖 | 原98完整扫描80项：0 critical／13 high／60 moderate／7 low；14依赖／2原生JS检查 | 安全处置仍待完成，旧扫描不改称新扫描 |
+| Go／PG |189顶层／1183结果、10批；78项结构迁移 | 原来源复用；持久PG及正常结构升级继续，历史数据迁移／容灾移出 |
+| Web／运行时／Taro |135／51／248项；类型／构建；微信／抖音各20页 | 保留功能与源码／产物验证，不要求真机或网络性能测试 |
+| Android | Metro重建，Gradle assemble复用同字节APK；18包检查；JVM26缓存 | 保留原范围与正式签名／发布准备；不要求设备或模拟器 |
+| 媒体 |97 PNG／35 MP4／35 GIF原字节与采集来源 | 本次无新采集，H5保持共享客户端证据标签 |
+| 实际接入 | 云／模型／TG／生产环境尚未完整验收，8项Skill仍draft | 当前23项继续推进；AI费用控制、真机、网络性能、2TB迁移与容灾不再阻塞 |
 
-当前锁文件完整审计80项（0 critical、13 high、60 moderate、7 low）；原97锁本次新扫描91项，原90的86项保留为历史。生产安全门槛未通过。完整四端、真实平台／云／模型／TG、香港真机网络、120GB／2TB、ACL、恢复及切换仍按[28项差异](delivery/03-goal-gap-assessment.md)验收。原有记录保持实际新执行、缓存、失败与历史状态。
+新范围下接单无需费用策略的适配仍待实现；执行隔离、身份／权限、审计与技术资源约束继续要求。具体工作见[当前清单](delivery/03-goal-gap-assessment.md)。
 
 ## 9. 文档与同步维护
 
