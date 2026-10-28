@@ -12,7 +12,15 @@ An internal workspace for CopyPaste that connects projects, files, knowledge, co
 
 ![实际项目业务概览 / Actual project business overview](docs/media/screenshots/web-overview.png)
 
-最新更新 / Latest update: [移动文件与目录整理 / Mobile file and folder workspace](docs/development/94-mobile-file-workspace.md)。从真实目录创建、改名及同项目／分类移动，明确确认后回收／恢复文件，分页核对正式版本与准确历史内容。文字草稿、冲突和不确定回执沿用统一处理。
+最新更新 / Latest update: [任务讨论、固定附件与明确提及 / Task discussions and explicit mentions](docs/development/95-task-discussion-and-mentions.md)。从任务详情新增评论，选择准确正式文件版本和有权成员，核对预览后确认；作者修订保留完整历史。提及者从站内通知直接定位当前评论，即使已超出最新20条。
+
+Open a task, write a comment, select exact formal file versions and eligible members, review and confirm. Edits preserve immutable history. An inbox mention opens and scrolls to the exact current discussion, including comments beyond the first page. Textual `@name` alone does not notify anyone.
+
+![任务讨论与明确提及 / Task discussion and explicit mention](docs/media/gifs/task-mentions-web-collaboration.gif)
+
+[Web MP4](docs/media/videos/task-mentions-web-collaboration.mp4) · [移动 MP4 / Mobile MP4](docs/media/videos/task-mentions-mobile-collaboration.mp4) · [移动 GIF / Mobile GIF](docs/media/gifs/task-mentions-mobile-collaboration.gif) · [实际页面 / Screenshots](docs/media/README.md) · [验证 / Verification](docs/quality/95-task-discussion-verification.md)。新增8张真实截图与两套原速录屏；移动为Taro H5，未替代真机验收。Eight actual screenshots and two original-speed recordings; the mobile workflow is H5.
+
+此前更新 / Previous update: [移动文件与目录整理 / Mobile file and folder workspace](docs/development/94-mobile-file-workspace.md)。从真实目录创建、改名及同项目／分类移动，明确确认后回收／恢复文件，分页核对正式版本与准确历史内容。文字草稿、冲突和不确定回执沿用统一处理。
 
 Create and organize real folders, move files within their current scope, explicitly trash/restore and read exact formal versions. Review identity, revision, destination and reason before confirming. Uncertain responses retain text and stop duplicate writes.
 
@@ -188,13 +196,13 @@ Open **Search work material**, enter a phrase and choose a resource type. File b
 
 ## 验证与后续更新 / Verification and maintenance
 
-当前增量93将正文检索和固定DOCX阅读接入秘书：准确来源、共同权限、Unicode分段、索引证据与持久回执均重新核对。后端167顶层／1,129结果／1,027末级、9批；Web130、运行时51、移动222及类型、双小程序各19页；75项迁移与已发布92保持原字节。见[详细方案](docs/development/93-secretary-indexed-search.md)、[索引运维](docs/operations/file-text-search.md)与[准确验证](docs/quality/evidence/agent-indexed-search/verification.md)。
+当前增量95补齐任务讨论与明确提及：新执行后端171顶层／1,133结果、9批；Web135、运行时51、移动238及类型、双小程序各20页；76项迁移（原75项未改），OpenAPI 286路径／355操作／625模型。真实Web与Taro H5各8组流程通过；通知打开后自动滚动到准确评论，撤权、回执缺失及幂等对账均实际验证。
 
-Increment93 connects the existing secretary tools to body search and immutable indexed DOCX reads. Fresh checks cover167 backend top-level tests /1,129 results /1,027 leaves in9 batches, Web130, runtime51 and mobile222, plus types and both19-page mini-program builds. All75 migrations retain published92 bytes. Android development APK/18 package checks and26 cached JVM results are documented separately from device acceptance.
+Increment95 adds task discussions and explicit mentions. Fresh checks cover171 backend top-level tests /1,133 result records in9 batches,135 Web,51 runtime and238 mobile tests, type checking and both20-page mini-program builds. Migration76 preserves the earlier75 files. Eight actual local browser/API flows pass per client. The Android development APK passes18 package checks;26 JVM results are explicitly Gradle UP-TO-DATE reuse. Linux is cross-compiled, not executed or deployed.
 
-媒体目录为78PNG／29MP4／29GIF，本轮新增4张实际截图和两套MP4／GIF。已发布5de7553的增量92完整启动／捕获来源从Git重建，91份历史证据与媒体保留原字节；失败检查保留原状态、来源和过程限制。相同锁文件复用原90审计86项（0 critical、20 high、64 moderate、2 low），未称新扫描。真实云／模型／TG、设备、120GB／2TB、恢复与安全放行继续按28项GAP推进。
+媒体目录现为90 PNG／33 MP4／33 GIF；原94入口、应用来源和后端证据归档，失败与被替代采集保持原状态及准确来源。相同锁文件继续引用原90审计86项（0 critical、20 high、64 moderate、2 low），未重新扫描。真实云／模型／TG、设备、120GB／2TB、恢复与安全放行继续按28项GAP推进。
 
-The catalog contains78 PNGs,29 MP4s and29 GIFs, including four new actual screenshots and two MP4/GIF pairs. Published92 sources reconstruct from Git and91 original evidence/media files remain unchanged. Original failed observations stay failed. The unchanged lock retains the original90 audit of86 findings, including20 high; external integration, device, large-data, recovery and security gates remain open.
+The catalog contains90 PNGs,33 MP4s and33 GIFs. Published94 entry points, application sources and backend evidence are archived; unsuccessful and superseded observations retain their original status and exact sources. The unchanged lock retains the original90 audit of86 findings, including20 high. See [source-bound verification](docs/quality/95-task-discussion-verification.md) and the [28 numbered gaps](docs/delivery/03-goal-gap-assessment.md).
 
 后续完成更新继续同步代码、中英文说明、受影响素材、验证和`docs/CHANGELOG.md`，一并提交并推送至`git@github.com:copypasteltd/case-manager.git`；不强推，不提交凭据、数据库、工具链、缓存或APK。文档统一放在`docs/`，应用实现位于`app/`。
 

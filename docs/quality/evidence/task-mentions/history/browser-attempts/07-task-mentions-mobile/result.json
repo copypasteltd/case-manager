@@ -1,0 +1,77 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-27T22:58:09.987Z",
+  "source_sha256": "05e35f2718a085485dc39f4adc7a3e715d14d1b2007b4e8efd36fd2b24111cb9",
+  "source_after_sha256": "05e35f2718a085485dc39f4adc7a3e715d14d1b2007b4e8efd36fd2b24111cb9",
+  "source_unchanged": true,
+  "source_count": 955,
+  "checks": [
+    "Actual UI creates a fixed historical-version comment with an explicitly selected eligible recipient; exact receipt and immutable-history readback pass.",
+    "UI text-only revision preserves fixed associations and updates the current notification target without repeating delivery.",
+    "Actual notification UI opens the exact current comment beyond the first20 rows for a non-assignee, with canonical task/comment routing."
+  ],
+  "layouts": [
+    {
+      "name": "preview",
+      "width": 390,
+      "document": 390
+    },
+    {
+      "name": "discussion",
+      "width": 390,
+      "document": 390
+    },
+    {
+      "name": "notification",
+      "width": 390,
+      "document": 390
+    },
+    {
+      "name": "exact-discussion",
+      "width": 390,
+      "document": 390
+    }
+  ],
+  "screenshots": [
+    "task-mentions-mobile-preview.png",
+    "task-mentions-mobile-discussion.png",
+    "task-mentions-mobile-notification.png",
+    "task-mentions-mobile-exact-discussion.png"
+  ],
+  "recordings": [
+    {
+      "name": "task-mentions-mobile-collaboration",
+      "frame_count": 28,
+      "duration_ms": 5697,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/task-mentions-mobile-collaboration/frames.json",
+      "manifest_sha256": "42b78e448f4a61c6f87d70899868265da759fa65dfa85693ddda2ca0bce89a64"
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: /^评论修订 1(?: ↗)?$/ })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_task_mentions.mjs:106:304\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_task_mentions.mjs:106:103",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_cloud": false,
+  "real_model": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "client": "Taro H5",
+  "controlled_response_faults": [
+    "incomplete committed201 comment revision",
+    "committed comment creation response lost"
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "05e35f2718a085485dc39f4adc7a3e715d14d1b2007b4e8efd36fd2b24111cb9",
+  "build_source_after_sha256": "05e35f2718a085485dc39f4adc7a3e715d14d1b2007b4e8efd36fd2b24111cb9",
+  "build_source_unchanged": true
+}

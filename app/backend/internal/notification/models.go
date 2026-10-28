@@ -17,6 +17,7 @@ type Target struct {
 	Type        string  `json:"type"`
 	ID          string  `json:"id"`
 	ContainerID *string `json:"container_id"`
+	CommentID   *string `json:"comment_id,omitempty"`
 	WebPath     string  `json:"web_path"`
 }
 type Notification struct {
@@ -67,7 +68,7 @@ type thread struct {
 }
 
 var categories = map[string]string{
-	"task": "任务待推进", "approval": "有申请待你审批", "request_result": "业务申请有新进展",
+	"mention": "有人在任务讨论中提到你", "task": "任务待推进", "approval": "有申请待你审批", "request_result": "业务申请有新进展",
 	"contract_due": "合同到期提醒", "subscription_due": "订阅账期待核对", "replica_failure": "文件副本异常",
 	"incident": "服务事件有新进展", "secretary": "秘书任务有新结果",
 }

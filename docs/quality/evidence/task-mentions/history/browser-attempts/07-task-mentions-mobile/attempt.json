@@ -1,0 +1,25 @@
+{
+  "archived_at": "2026-10-27T23:01:18.004480+00:00",
+  "reason": "Actual mobile create, fixed attachment, text revision and exact notification jump passed. Checker incorrectly searched for the history Row as a button; Row is an existing text-driven navigation control. Preserve3 passing flows and actual captures; click the actual row label, then rerun with final Web source included in the complete fixture manifest.",
+  "source_sha256": "05e35f2718a085485dc39f4adc7a3e715d14d1b2007b4e8efd36fd2b24111cb9",
+  "source_entries": 955,
+  "media": [
+    {
+      "path": "docs/media/screenshots/task-mentions-mobile-discussion.png",
+      "sha256": "4b2f73690db2c5104f8a257892aa71a4aaac5c1b5fdc08dd2f17002cb29c9e94"
+    },
+    {
+      "path": "docs/media/screenshots/task-mentions-mobile-exact-discussion.png",
+      "sha256": "1f75eab598b91d6d82d141c36559082049ff2279150da2585e43039037f31059"
+    },
+    {
+      "path": "docs/media/screenshots/task-mentions-mobile-notification.png",
+      "sha256": "27bb40a6a2820d66a618f816cc053e55c5a6faa775478149a78063816b1f9063"
+    },
+    {
+      "path": "docs/media/screenshots/task-mentions-mobile-preview.png",
+      "sha256": "b3d11b8fac9c397cdd5aa6ca41ad01ca942cbd1bcc8cde080f855b6815ef9201"
+    }
+  ],
+  "archive_sha256": "f82ffbd82781ac53fa8054b848aa2e0d1efcac9ead2a4722ad5b4c63916d1eb3"
+}

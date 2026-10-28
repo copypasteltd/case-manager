@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-28T00:08:47.316008+00:00",
+  "method": "Directly viewed eight actual PNG captures, both exact-comment images at full size and first/middle/last frames of both GIFs. Target comment body is visible after notification navigation without checker scrolling.",
+  "files": [
+    {
+      "file": "docs/media/gifs/task-mentions-mobile-collaboration.gif",
+      "sha256": "152b0b7b0348e8cfe34881702d6cd0b2d76b017686d9f9bcb17f1933dec0d54d",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/gifs/task-mentions-web-collaboration.gif",
+      "sha256": "b2e135ecb684d68b7a97f134be2da60835ecbd466fef21f9795de9ed56a7bf9a",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-discussion.png",
+      "sha256": "4e8a483957f10dd9c0406d1a03fcf76673858f88c6c7f61be47a14ac2a5b6392",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-exact-discussion.png",
+      "sha256": "2ceec61405105e7d21cf685bbbbdd65695a3146247b8f565f12ca9afe14c990b",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-notification.png",
+      "sha256": "72999c33831772f7a80c09b4064671e06664d62e8f236229d34083de3ecc8189",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-preview.png",
+      "sha256": "b3d11b8fac9c397cdd5aa6ca41ad01ca942cbd1bcc8cde080f855b6815ef9201",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-discussion.png",
+      "sha256": "d20ee008b87b4483a2b5f512c1f8f4b8f6c1e5e3e489a2ed5dfa995f96ac5694",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-exact-discussion.png",
+      "sha256": "8886f54ddf377a0404fe21c29f1ac5dc7b2b402ffa9682e9dbf47ff18b57e3dd",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-notification.png",
+      "sha256": "44a6b63b8cac818c73f21f2e3362457d74a386dce815a9e814e8b42ca1e86fb4",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-preview.png",
+      "sha256": "2d3349f7be32d4890e239ee176e4ed97b9647333e69ee8cc7d62f27178c37627",
+      "review": "Readable synthetic authenticated workflow; no credentials; no horizontal overflow."
+    }
+  ],
+  "limitations": [
+    "Synthetic isolated local Web and Taro H5 data only.",
+    "No Android device, mini-program device, cloud, model, Telegram network or production acceptance."
+  ]
+}

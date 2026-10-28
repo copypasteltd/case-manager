@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 2026-10-28 · Increment95 / 任务讨论、固定附件与明确提及
+
+Web和共享Taro新增真实任务讨论：新建／本人修订、准确正式版本附件、明确成员选择、不可变历史及站内提及通知。省略列表保留完整原关联，完整替换需要再次核对；无权旧关联不会被过滤后静默删除。通知沿真实outbox／租约／幂等管线，文字修改不重复投递，移除后再提及不复活旧通知；打开准确当前修订并自动滚动，超过首20条也可定位。冲突、已提交但丢失／缺失回执保留文字、阻止重复，并允许人工核对后同意图幂等对账。
+
+Added actual task discussion and explicit eligible-member mentions to Web/Taro, immutable revisions, fixed-version attachments and exact inbox routing. Delivery and reads recheck live authority; reading never completes a task. No external sender is added. Migration76 adds immutable mention metadata; the prior75 files, dependencies and eight draft Skills remain unchanged. OpenAPI:286 paths/355 operations/625 schemas.
+
+新执行原生后端171顶层／1133结果、9批；Web135、运行时51、移动238、类型／构建及双小程序各20页；Linux交叉编译但未执行／部署。当前Android开发APK、18项包检查，26项JVM明确为Gradle UP-TO-DATE缓存。实际Web／H5各8组流程与8PNG／两套原速MP4和GIF；媒体总90／33／33。原94入口／应用／后端证据、9次脚本或被替代采集及完整来源保留，失败不改写为通过。本机迁移升级76并核对归属API／通知及报表worker、零隔离库；云／模型／TG关闭。
+
+Fresh local checks and source-bound artifacts are separate from JVM cache reuse, historical evidence and external acceptance. The unchanged lock retains the original90 audit (86 findings,20 high); no new scan is claimed. Four-client release, real devices/platforms/cloud/model/TG,120GB/2TB, network, recovery and production security remain open.
+
+[方案 / Workflow](development/95-task-discussion-and-mentions.md) · [验证 / Verification](quality/95-task-discussion-verification.md) · [媒体 / Media](media/README.md) · [编号差异 / Gaps](delivery/03-goal-gap-assessment.md)
+
 ## 2026-10-28 · Increment94 / 移动文件与目录整理
 
 共享Taro接入真实文件工作区：按目录层级与名称筛选，目录／文件独立分页；新建目录、同项目／分类改名移动、文件回收与原目录恢复；分页核对正式版本和准确历史阅读。源修订、目标、原因和影响先预览确认，完整回执才显示成功；文字草稿只驻内存，冲突和不确定结果停止重复提交。导航替换当前目录页面以控制原生页面栈；保留Android原生上传与原固定版本读者。

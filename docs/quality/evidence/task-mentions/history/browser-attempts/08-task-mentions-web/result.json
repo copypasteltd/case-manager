@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T23:02:13.906Z",
+  "source_sha256": "4dd8d09d33c179ac91474f944be31df89d8f5c38783e5489c6e4cffd107375d6",
+  "source_after_sha256": "4dd8d09d33c179ac91474f944be31df89d8f5c38783e5489c6e4cffd107375d6",
+  "source_unchanged": true,
+  "source_count": 955,
+  "checks": [
+    "Actual UI creates a fixed historical-version comment with an explicitly selected eligible recipient; exact receipt and immutable-history readback pass.",
+    "UI text-only revision preserves fixed associations and updates the current notification target without repeating delivery.",
+    "Actual notification UI opens the exact current comment beyond the first20 rows for a non-assignee, with canonical task/comment routing.",
+    "Actual discussion history retains the original body and fixed historical attachment.",
+    "Labelled incomplete201 receipt is a real committed revision; both mention fields removed at browser transport, repeat submit blocked.",
+    "Labelled committed-response loss blocks repeat creation, retains editable text, and actual database readback contains exactly one created comment.",
+    "After explicit list review, reopening restores text only; reconfirming the identical intent reuses its original idempotency key and reconciles the one committed comment without creating another.",
+    "Actual project-membership removal invalidates the other employee session and clears the open task discussion before returning to login."
+  ],
+  "layouts": [
+    {
+      "name": "preview",
+      "width": 1365,
+      "document": 1365
+    },
+    {
+      "name": "discussion",
+      "width": 1365,
+      "document": 1365
+    },
+    {
+      "name": "notification",
+      "width": 1365,
+      "document": 1365
+    },
+    {
+      "name": "exact-discussion",
+      "width": 1365,
+      "document": 1365
+    }
+  ],
+  "screenshots": [
+    "task-mentions-web-preview.png",
+    "task-mentions-web-discussion.png",
+    "task-mentions-web-notification.png",
+    "task-mentions-web-exact-discussion.png"
+  ],
+  "recordings": [
+    {
+      "name": "task-mentions-web-collaboration",
+      "frame_count": 31,
+      "duration_ms": 6465,
+      "viewport": {
+        "width": 1365,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/task-mentions-web-collaboration/frames.json",
+      "manifest_sha256": "7fef7bda67dc35066635e50500c59fce0f8ec8ca576e6b39975c93370d3fe065"
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_cloud": false,
+  "real_model": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "client": "React Web",
+  "controlled_response_faults": [
+    "incomplete committed201 comment revision",
+    "committed comment creation response lost"
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "4dd8d09d33c179ac91474f944be31df89d8f5c38783e5489c6e4cffd107375d6",
+  "build_source_after_sha256": "4dd8d09d33c179ac91474f944be31df89d8f5c38783e5489c6e4cffd107375d6",
+  "build_source_unchanged": true
+}

@@ -255,11 +255,13 @@ add("PostRevision", {"id": ID, "post_id": ID, "seq": VERSION, "base_revision_id"
     ("id", "post_id", "seq", "title", "body", "author_id", "created_at"))
 add("Comment", {"id": ID, "resource_type": enum("post", "task"), "resource_id": ID, "author_id": ID, "author_display_name": NAME,
     "body": TEXT, "revision": VERSION, "attachment_versions": array(ID), "replaces_id": nullable(ID),
-    "context_revision_id": nullable(ID), "created_at": TIME},
+    "context_revision_id": nullable(ID), "mentioned_user_ids": array(ID, maxItems=20, uniqueItems=True), "mentions_filtered": {"type": "boolean"}, "created_at": TIME},
     ("id", "resource_type", "resource_id", "author_id", "author_display_name", "body", "revision", "attachment_versions", "created_at"))
+add("MentionCandidate", {"id": ID, "display_name": NAME}, ("id", "display_name"))
+add("MentionCandidates", {"items": array(ref("MentionCandidate")), "next_cursor": nullable(CURSOR)}, ("items", "next_cursor"))
 add("Comments", {"items": array(ref("Comment")), "next_cursor": nullable(CURSOR)}, ("items", "next_cursor"))
 add("CommentCreate", {"body": {"type": "string", "minLength": 1, "maxLength": 20000},
-    "attachment_versions": array(ID, maxItems=20, uniqueItems=True), "expected_context_revision_id": ID}, ("body",))
+    "attachment_versions": array(ID, maxItems=20, uniqueItems=True), "mentioned_user_ids": array(ID, maxItems=20, uniqueItems=True), "expected_context_revision_id": ID}, ("body",))
 add("PostCommentCreate", SCHEMAS["CommentCreate"]["properties"], ("body", "expected_context_revision_id"))
 add("CommentPatch", {**SCHEMAS["CommentCreate"]["properties"], "expected_revision": VERSION}, ("body", "expected_revision"))
 
@@ -587,10 +589,10 @@ context_view["text_index"] = ref("FileTextIndexEvidence")
 profile = {"id": ID, "skill_id": NAME, "skill_version": NAME, "skill_sha256": HASH,
     "runtime_version": NAME, "configuration_sha256": HASH, "max_input_tokens": VERSION,
     "max_output_tokens": VERSION, "max_tool_calls": VERSION, "timeout_seconds": VERSION}
-notification_categories = enum("task", "approval", "request_result", "contract_due", "subscription_due", "replica_failure", "incident", "secretary")
+notification_categories = enum("mention", "task", "approval", "request_result", "contract_due", "subscription_due", "replica_failure", "incident", "secretary")
 notification_target = {"type": enum("task", "request", "contract", "subscription_period", "file", "incident", "agent_run"),
     "id": ID, "container_id": nullable(ID), "web_path": {"type": "string", "minLength": 1, "maxLength": 300}}
-add("NotificationTarget", notification_target, tuple(notification_target))
+add("NotificationTarget", {**notification_target, "comment_id": ID}, tuple(notification_target))
 notification_fields = {"id": ID, "category": notification_categories, "title": NAME, "resource_label": NAME,
     "current_state": NAME, "attention_required": {"type": "boolean"}, "read": {"type": "boolean"},
     "delivery_seq": VERSION, "read_seq": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
@@ -1242,7 +1244,7 @@ def wrapped(name, listing=False):
 
 def operation(path, method, name, result, body=None, code=200, listing=False):
     params = [{"name": p, "in": "path", "required": True, "schema": ID} for p in re.findall(r"\{([^}]+)\}", path)]
-    if listing or (method == "get" and result == "Comments"):
+    if listing or (method == "get" and result in ("Comments", "MentionCandidates")):
         params += [{"name": "cursor", "in": "query", "schema": CURSOR},
             {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 100, "default": 20}}]
     if method != "get":
@@ -1363,6 +1365,9 @@ operation("/posts/{id}/restore", "post", "restorePostRevision", "Post", "PostRes
 for parent in ("posts", "tasks"):
     operation("/"+parent+"/{id}/comments", "get", "list"+parent.title()+"Comments", "Comments")
     operation("/"+parent+"/{id}/comments", "post", "create"+parent.title()+"Comment", "Comment", "PostCommentCreate" if parent == "posts" else "CommentCreate", 201)
+operation("/comments/{id}", "get", "getComment", "Comment")
+operation("/tasks/{id}/mention-candidates", "get", "listTaskMentionCandidates", "MentionCandidates")
+PATHS["/tasks/{id}/mention-candidates"]["get"]["parameters"] += [{"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 200}}]
 operation("/comments/{id}", "patch", "editComment", "Comment", "CommentPatch", 201)
 operation("/comments/{id}/history", "get", "listCommentHistory", "Comments")
 operation("/subscriptions/{id}/transition", "post", "transitionSubscription", "Subscription", "SubscriptionTransition")

@@ -7126,6 +7126,80 @@
       }
     },
     "/comments/{id}": {
+      "get": {
+        "operationId": "getComment",
+        "tags": [
+          "comments"
+        ],
+        "summary": "getComment",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      },
       "patch": {
         "operationId": "editComment",
         "tags": [
@@ -7213,6 +7287,109 @@
                 "$ref": "#/components/schemas/CommentPatch"
               }
             }
+          }
+        }
+      }
+    },
+    "/tasks/{id}/mention-candidates": {
+      "get": {
+        "operationId": "listTaskMentionCandidates",
+        "tags": [
+          "tasks"
+        ],
+        "summary": "listTaskMentionCandidates",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MentionCandidatesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
           }
         }
       }
@@ -19135,6 +19312,7 @@
             "schema": {
               "type": "string",
               "enum": [
+                "mention",
                 "task",
                 "approval",
                 "request_result",
@@ -36521,6 +36699,18 @@
               }
             ]
           },
+          "mentioned_user_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20,
+            "uniqueItems": true
+          },
+          "mentions_filtered": {
+            "type": "boolean"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time"
@@ -36537,6 +36727,53 @@
           "revision",
           "attachment_versions",
           "created_at"
+        ]
+      },
+      "MentionCandidate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "display_name"
+        ]
+      },
+      "MentionCandidates": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MentionCandidate"
+            }
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "next_cursor"
         ]
       },
       "Comments": {
@@ -36584,6 +36821,15 @@
             "maxItems": 20,
             "uniqueItems": true
           },
+          "mentioned_user_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20,
+            "uniqueItems": true
+          },
           "expected_context_revision_id": {
             "type": "string",
             "format": "uuid"
@@ -36603,6 +36849,15 @@
             "maxLength": 20000
           },
           "attachment_versions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20,
+            "uniqueItems": true
+          },
+          "mentioned_user_ids": {
             "type": "array",
             "items": {
               "type": "string",
@@ -36631,6 +36886,15 @@
             "maxLength": 20000
           },
           "attachment_versions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20,
+            "uniqueItems": true
+          },
+          "mentioned_user_ids": {
             "type": "array",
             "items": {
               "type": "string",
@@ -45620,6 +45884,10 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 300
+          },
+          "comment_id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false,
@@ -45640,6 +45908,7 @@
           "category": {
             "type": "string",
             "enum": [
+              "mention",
               "task",
               "approval",
               "request_result",
@@ -63210,6 +63479,22 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/Comment"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "MentionCandidatesResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/MentionCandidates"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

@@ -1118,7 +1118,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /** getComment */
+        get: operations["getComment"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1126,6 +1127,23 @@ export interface paths {
         head?: never;
         /** editComment */
         patch: operations["editComment"];
+        trace?: never;
+    };
+    "/tasks/{id}/mention-candidates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listTaskMentionCandidates */
+        get: operations["listTaskMentionCandidates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/comments/{id}/history": {
@@ -5817,8 +5835,19 @@ export interface components {
             attachment_versions: string[];
             replaces_id?: string | null;
             context_revision_id?: string | null;
+            mentioned_user_ids?: string[];
+            mentions_filtered?: boolean;
             /** Format: date-time */
             created_at: string;
+        };
+        MentionCandidate: {
+            /** Format: uuid */
+            id: string;
+            display_name: string;
+        };
+        MentionCandidates: {
+            items: components["schemas"]["MentionCandidate"][];
+            next_cursor: string | null;
         };
         Comments: {
             items: components["schemas"]["Comment"][];
@@ -5827,18 +5856,21 @@ export interface components {
         CommentCreate: {
             body: string;
             attachment_versions?: string[];
+            mentioned_user_ids?: string[];
             /** Format: uuid */
             expected_context_revision_id?: string;
         };
         PostCommentCreate: {
             body: string;
             attachment_versions?: string[];
+            mentioned_user_ids?: string[];
             /** Format: uuid */
             expected_context_revision_id: string;
         };
         CommentPatch: {
             body: string;
             attachment_versions?: string[];
+            mentioned_user_ids?: string[];
             /** Format: uuid */
             expected_context_revision_id?: string;
             expected_revision: number;
@@ -7484,12 +7516,14 @@ export interface components {
             id: string;
             container_id: string | null;
             web_path: string;
+            /** Format: uuid */
+            comment_id?: string;
         };
         Notification: {
             /** Format: uuid */
             id: string;
             /** @enum {string} */
-            category: "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary";
+            category: "mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary";
             title: string;
             resource_label: string;
             current_state: string;
@@ -10944,6 +10978,10 @@ export interface components {
         };
         CommentResponse: {
             data: components["schemas"]["Comment"];
+            meta: components["schemas"]["Meta"];
+        };
+        MentionCandidatesResponse: {
+            data: components["schemas"]["MentionCandidates"];
             meta: components["schemas"]["Meta"];
         };
         SubscriptionPeriodListResponse: {
@@ -15107,6 +15145,40 @@ export interface operations {
             503: components["responses"]["Failure"];
         };
     };
+    getComment: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CommentResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
     editComment: {
         parameters: {
             query?: never;
@@ -15134,6 +15206,44 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CommentResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listTaskMentionCandidates: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                q?: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MentionCandidatesResponse"];
                 };
             };
             400: components["responses"]["Failure"];
@@ -20133,7 +20243,7 @@ export interface operations {
                 cursor?: string;
                 limit?: number;
                 state?: "all" | "unread" | "attention";
-                category?: "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary";
+                category?: "mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary";
             };
             header?: never;
             path?: never;

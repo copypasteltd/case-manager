@@ -1,18 +1,20 @@
 # CopyPaste 内部管理平台文档中心
 
-当前功能：[增量94：移动文件与目录整理](development/94-mobile-file-workspace.md) · [真实流程与来源](quality/evidence/mobile-files/verification.md)。Current: shared Taro folder/file operations, exact history and explicit conflict handling; all four clients remain in scope.
+当前功能：[增量95：任务讨论、固定附件与明确提及](development/95-task-discussion-and-mentions.md) · [实际验证与媒体来源](quality/95-task-discussion-verification.md)。Current: task discussion, immutable edits and exact mention notification links; four clients remain in scope.
 
-此前功能：[增量93：秘书正文检索与固定DOCX资料](development/93-secretary-indexed-search.md) · [独立索引运维](operations/file-text-search.md) · [准确验证](quality/evidence/agent-indexed-search/verification.md)。Latest: secretary body discovery and fixed-version indexed DOCX reads; all four clients and28 acceptance gaps remain in scope.
+此前功能：[增量94：移动文件与目录整理](development/94-mobile-file-workspace.md) · [真实流程与来源](quality/evidence/mobile-files/verification.md)。Current: shared Taro folder/file operations, exact history and explicit conflict handling; all four clients remain in scope.
+
+此前功能：[增量93：秘书正文检索与固定DOCX资料](development/93-secretary-indexed-search.md) · [独立索引运维](operations/file-text-search.md) · [准确验证](quality/evidence/agent-indexed-search/verification.md)。Earlier: secretary body discovery and fixed-version indexed DOCX reads; all four clients and28 acceptance gaps remain in scope.
 
 **仓库使用入口 / Repository guides：[中文完整方案与使用](README.zh-CN.md) · [Complete English guide](README.en.md) · [实际截图、MP4与GIF / Actual media](media/README.md) · [更新记录 / Changelog](CHANGELOG.md) · [贡献与同步 / Maintenance](contributing.md)。**
 
 **当前细化基线：v1.0-draft，2026-10-24；视觉设计基线：v1.0.0-draft。** 全部后续文档保存在 `docs/`，全部开发实现位于 `app/`。身份/权限、项目协作、知识修订、文件元数据和部分 Web 页面已进入本地实现与验证；完整平台仍在建设，尚未生产部署或完成首发验收。真实进度见[代码实施台账](delivery/02-implementation-ledger.md)。
 
-最新实现：[增量90 · 依赖修复与多端兼容](development/90-dependency-hardening.md) · [来源、实际检查与媒体](quality/evidence/dependency-hardening/verification.md)。完整审计101→86，critical11→0，仍有20项high；多端重新构建并保留剩余风险，完整四端Goal仍开放。
+依赖维护基线：[增量90 · 依赖修复与多端兼容](development/90-dependency-hardening.md) · [来源、实际检查与媒体](quality/evidence/dependency-hardening/verification.md)。完整审计101→86，critical11→0，仍有20项high；多端重新构建并保留剩余风险，完整四端Goal仍开放。
 
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 
-本轮维护文档：[依赖修复、兼容边界与剩余项](development/90-dependency-hardening.md)。既有[移动财务完整操作](development/89-mobile-financial-operations.md)与[财务报表导出](development/88-financial-report-filters-and-exports.md)保留。
+依赖维护文档：[依赖修复、兼容边界与剩余项](development/90-dependency-hardening.md)。既有[移动财务完整操作](development/89-mobile-financial-operations.md)与[财务报表导出](development/88-financial-report-filters-and-exports.md)保留。
 
 ## 1. 阅读路径
 

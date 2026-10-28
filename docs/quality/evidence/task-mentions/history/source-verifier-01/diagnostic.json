@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "reason": "Initial aggregate verifier expected passed on Go event records; the backend format uses status. Current backend evidence remains untouched.",
+  "script_sha256": "f78b269f2f8c3a5523f71c5ae206378bcb346789dcecc42f8aff43251a83eb81",
+  "error": "KeyError: passed while reading backend checks"
+}

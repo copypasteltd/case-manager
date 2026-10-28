@@ -1,6 +1,8 @@
 # 代码实施与验证台账
 
-最新增量94：共享Taro新增文件／目录工作区，复用原业务完成新建目录、同项目同分类改名／移动、回收与原位恢复，分页核对全部正式版本并阅读准确历史内容。移动233项、类型、双小程序各20页；当前开发APK及18项包检查，26项JVM缓存范围另列；实际API／H5九组流程与八项布局，新增4PNG和两套MP4／GIF。后端167顶层／1129结果、Web130、运行时51及Linux编译按完整来源未变复用93，未宣称本轮重跑。原93的89份证据／媒体与10份入口快照保留；完整四端与真实验收继续。见[增量94](../development/94-mobile-file-workspace.md)与[准确验证](../quality/evidence/mobile-files/verification.md)。
+最新增量95：Web／Taro任务讨论、本人不可变修订、固定正式附件、明确成员提及和准确通知定位。原生后端171顶层／1133结果、9批，Web135／运行时51／移动238及类型构建，双小程序各20页；新增迁移76，原75未改。Web／H5各8组真实流程，新增8PNG和两套原速MP4／GIF；当前开发APK及18项包检查，26项JVM缓存复用单列。归属API及两个worker升级当前来源，零隔离库，外部接入关闭。完整四端Goal和28项差异继续保留。见[方案](../development/95-task-discussion-and-mentions.md)及[准确验证](../quality/95-task-discussion-verification.md)。
+
+此前增量94：共享Taro新增文件／目录工作区，复用原业务完成新建目录、同项目同分类改名／移动、回收与原位恢复，分页核对全部正式版本并阅读准确历史内容。移动233项、类型、双小程序各20页；当前开发APK及18项包检查，26项JVM缓存范围另列；实际API／H5九组流程与八项布局，新增4PNG和两套MP4／GIF。后端167顶层／1129结果、Web130、运行时51及Linux编译按完整来源未变复用93，未宣称本轮重跑。原93的89份证据／媒体与10份入口快照保留；完整四端与真实验收继续。见[增量94](../development/94-mobile-file-workspace.md)与[准确验证](../quality/evidence/mobile-files/verification.md)。
 
 此前增量93：秘书原MCP工具接通共同权限内正文检索与固定DOCX索引正文阅读，Web／Taro显示准确派生证据并显式附加历史／当前版本。原生后端167顶层／1129结果／1027末级、9批，Web130、运行时51、移动222，原75迁移不变，双小程序各19页；当前Android开发包及18项包检查、26项JVM缓存单列，Web／H5各8项实际流程。91份已发布92证据／媒体原字节保留；云／模型／TG关闭，真实验收继续。见[增量93](../development/93-secretary-indexed-search.md)与[准确验证](../quality/evidence/agent-indexed-search/verification.md)。
 
@@ -901,3 +903,14 @@ FIN-12、GAP-03／18：发生、现金、订阅预测共用完整业务筛选与
 - 当前代码不覆盖跨范围移动方案、保留清理执行器、普通本机附件编辑和真实平台／云／容量／恢复验收。GAP-04／18推进，全部28项原编号继续维护，Goal保持active。
 
 [使用与开发](../development/94-mobile-file-workspace.md) · [验证证据](../quality/evidence/mobile-files/verification.md) · [媒体](../media/README.md)
+
+## 增量95 · 任务讨论、固定附件与明确提及
+
+| 工作项 | 本地已实现／验证 | 后续验收 |
+| --- | --- | --- |
+| PM-04／PM-09任务协作 | Web／Taro评论、本人修订与历史，准确正式附件、最多20个明确成员，完整回执／历史对账 | 完整跨OA／财务项目旅程和设备体验 |
+| GAP-08提及生产者 | 真实事件→通知任务→站内通知，实时权限、去重、连续修订链及准确滚动定位 | 更多聚合、运维重放、真实外部渠道／备份失败来源 |
+| GAP-18共享移动 | 既有任务详情内完整讨论，不增加注册页面；20页，238项移动测试 | 微信／抖音和Android真实平台／设备 |
+| 来源与发布 | 新执行171顶层／1133记录，Web135／runtime51；全量源码、历史失败与媒体时序归档 | 安全、云、模型／TG、120GB／2TB和生产恢复 |
+
+[使用与接口](../development/95-task-discussion-and-mentions.md) · [本轮验证](../quality/95-task-discussion-verification.md) · [实际媒体](../media/README.md)

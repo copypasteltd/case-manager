@@ -23,23 +23,29 @@ type Comment struct {
 	AttachmentVersions []string  `json:"attachment_versions"`
 	ReplacesID         *string   `json:"replaces_id"`
 	ContextRevisionID  *string   `json:"context_revision_id"`
+	MentionedUserIDs   []string  `json:"mentioned_user_ids"`
+	MentionsFiltered   bool      `json:"mentions_filtered"`
 	CreatedAt          time.Time `json:"created_at"`
 }
 type CommentInput struct {
 	Body                      string   `json:"body"`
+	MentionedUserIDs          []string `json:"mentioned_user_ids,omitempty"`
 	AttachmentVersions        []string `json:"attachment_versions,omitempty"`
 	ExpectedRevision          int64    `json:"expected_revision,omitempty"`
 	ExpectedContextRevisionID *string  `json:"expected_context_revision_id,omitempty"`
 }
 
 const commentColumns = `c.id,c.resource_type,c.resource_id,c.author_id,c.body,c.revision,c.attachment_versions,c.replaces_id,c.created_at,c.context_revision_id,
-    (SELECT u.display_name FROM users u WHERE u.org_id=c.org_id AND u.id=c.author_id)`
+    (SELECT u.display_name FROM users u WHERE u.org_id=c.org_id AND u.id=c.author_id),c.mentioned_user_ids`
 
 func scanComment(row pgx.Row) (Comment, error) {
 	var c Comment
-	err := row.Scan(&c.ID, &c.ResourceType, &c.ResourceID, &c.AuthorID, &c.Body, &c.Revision, &c.AttachmentVersions, &c.ReplacesID, &c.CreatedAt, &c.ContextRevisionID, &c.AuthorDisplayName)
+	err := row.Scan(&c.ID, &c.ResourceType, &c.ResourceID, &c.AuthorID, &c.Body, &c.Revision, &c.AttachmentVersions, &c.ReplacesID, &c.CreatedAt, &c.ContextRevisionID, &c.AuthorDisplayName, &c.MentionedUserIDs)
 	if c.AttachmentVersions == nil {
 		c.AttachmentVersions = []string{}
+	}
+	if c.MentionedUserIDs == nil {
+		c.MentionedUserIDs = []string{}
 	}
 	return c, platform.DatabaseError(err)
 }
@@ -175,6 +181,9 @@ func (s *Service) commentPage(ctx context.Context, a core.Actor, rows pgx.Rows, 
 			return out, err
 		}
 		out.Items[index].AttachmentVersions = versions
+		if err := filterCommentMentions(ctx, s.DB, a, &out.Items[index]); err != nil {
+			return out, err
+		}
 	}
 	return out, nil
 }
@@ -262,6 +271,7 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 		return core.Result{}, core.Invalid("body", "评论需为1至20000字符")
 	}
 	preserveAttachments := previousID != "" && input.AttachmentVersions == nil
+	preserveMentions := previousID != "" && input.MentionedUserIDs == nil
 	result, err := s.Commands.Do(ctx, c, func(tx pgx.Tx) error {
 		if _, err := commentResource(ctx, tx, c.Actor, kind, id, true, false); err != nil {
 			return err
@@ -280,10 +290,24 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 				return err
 			}
 		}
-		if preserveAttachments {
-			return nil
+		if !preserveAttachments {
+			if err := commentAttachments(ctx, tx, c.Actor, input.AttachmentVersions); err != nil {
+				return err
+			}
 		}
-		return commentAttachments(ctx, tx, c.Actor, input.AttachmentVersions)
+		if !preserveMentions {
+			if previousID != "" {
+				prior, err := scanComment(tx.QueryRow(ctx, "SELECT "+commentColumns+" FROM comments c WHERE c.org_id=$1 AND c.id=$2", c.Actor.OrgID, previousID))
+				if err != nil {
+					return err
+				}
+				if err = commentMentions(ctx, tx, c.Actor, kind, id, c.Actor.UserID, prior.MentionedUserIDs); err != nil {
+					return err
+				}
+			}
+			return commentMentions(ctx, tx, c.Actor, kind, id, c.Actor.UserID, input.MentionedUserIDs)
+		}
+		return nil
 	}, func(tx pgx.Tx) (core.Result, error) {
 		if _, err := commentResource(ctx, tx, c.Actor, kind, id, true, true); err != nil {
 			return core.Result{}, err
@@ -305,6 +329,11 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 				return core.Result{}, err
 			}
 			beforeDigest = core.Digest(priorJSON)
+			if preserveMentions {
+				input.MentionedUserIDs = append([]string{}, prior.MentionedUserIDs...)
+			} else if err = commentMentions(ctx, tx, c.Actor, kind, id, c.Actor.UserID, prior.MentionedUserIDs); err != nil {
+				return core.Result{}, err
+			}
 			if preserveAttachments {
 				input.AttachmentVersions = append([]string{}, prior.AttachmentVersions...)
 			} else if err = commentAttachments(ctx, tx, c.Actor, prior.AttachmentVersions); err != nil {
@@ -346,9 +375,17 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 		if input.AttachmentVersions == nil {
 			input.AttachmentVersions = []string{}
 		}
+		if !preserveMentions {
+			if err := commentMentions(ctx, tx, c.Actor, kind, id, c.Actor.UserID, input.MentionedUserIDs); err != nil {
+				return core.Result{}, err
+			}
+		}
+		if input.MentionedUserIDs == nil {
+			input.MentionedUserIDs = []string{}
+		}
 		commentID := core.NewID()
-		_, err = tx.Exec(ctx, `INSERT INTO comments(id,org_id,resource_type,resource_id,author_id,body,revision,attachment_versions,replaces_id,context_revision_id)
-			VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`, commentID, c.Actor.OrgID, kind, id, c.Actor.UserID, input.Body, seq, input.AttachmentVersions, previous, contextRevision)
+		_, err = tx.Exec(ctx, `INSERT INTO comments(id,org_id,resource_type,resource_id,author_id,body,revision,attachment_versions,replaces_id,context_revision_id,mentioned_user_ids)
+			VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`, commentID, c.Actor.OrgID, kind, id, c.Actor.UserID, input.Body, seq, input.AttachmentVersions, previous, contextRevision, input.MentionedUserIDs)
 		if err != nil {
 			return core.Result{}, err
 		}
@@ -373,6 +410,9 @@ func (s *Service) WriteComment(ctx context.Context, c core.Command, kind, id, pr
 	}
 	value.AttachmentVersions, err = filterCommentAttachments(ctx, s.DB, c.Actor, value.AttachmentVersions)
 	if err != nil {
+		return core.Result{}, err
+	}
+	if err = filterCommentMentions(ctx, s.DB, c.Actor, &value); err != nil {
 		return core.Result{}, err
 	}
 	result.Data = value

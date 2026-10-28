@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T00:07:32.157466+00:00",
+  "encoder_script_sha256": "0406d60d4177f869d222948bd6eae9230c637f690ed018d0d89400ac592a9c3b",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "55d3b07c38e183e9b9a7cde936230e8a49ea3f29880c0fe8564a944f50448a89",
+      "build_source_sha256": "55d3b07c38e183e9b9a7cde936230e8a49ea3f29880c0fe8564a944f50448a89",
+      "capture_manifest": "docs/quality/evidence/task-mentions/web-capture-manifest.json",
+      "capture_manifest_sha256": "3ec551db3d5950e60deab898a6887da2e0e9eb6c386fb3bd617ac1b571e9a72a",
+      "capture_frame_count": 28,
+      "capture_duration_ms": 5669,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1364,
+            "height": 900,
+            "nb_frames": "58",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "5.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/task-mentions-web-collaboration.mp4",
+          "sha256": "2dfd65ab1d2bf35b719e4d839527bc293753fc4c632839dd681e13bf9fedfc12",
+          "bytes": 251325
+        },
+        {
+          "file": "docs/media/gifs/task-mentions-web-collaboration.gif",
+          "sha256": "b2e135ecb684d68b7a97f134be2da60835ecbd466fef21f9795de9ed56a7bf9a",
+          "bytes": 503148
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "55d3b07c38e183e9b9a7cde936230e8a49ea3f29880c0fe8564a944f50448a89",
+      "build_source_sha256": "55d3b07c38e183e9b9a7cde936230e8a49ea3f29880c0fe8564a944f50448a89",
+      "capture_manifest": "docs/quality/evidence/task-mentions/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "633fb71c5df1d890a0a4bf48ccb17994efd0c816ea2d0e37a6cce51705cbd3e1",
+      "capture_frame_count": 27,
+      "capture_duration_ms": 5777,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "59",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "5.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/task-mentions-mobile-collaboration.mp4",
+          "sha256": "a4b920ce9732292e3b68fd0597f1925e40ce57457e5c7157f15b370be64fbcfd",
+          "bytes": 129239
+        },
+        {
+          "file": "docs/media/gifs/task-mentions-mobile-collaboration.gif",
+          "sha256": "152b0b7b0348e8cfe34881702d6cd0b2d76b017686d9f9bcb17f1933dec0d54d",
+          "bytes": 231014
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

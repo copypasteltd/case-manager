@@ -1,0 +1,4 @@
+{
+  "passed": false,
+  "reason": "The common read-only runtime probe passed76 migrations and10 checks; wrapper assumed its database summary included disposable_test_databases, which it does not. Add an explicit catalogue count in the new wrapper; no database mutation occurred."
+}

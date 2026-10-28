@@ -1,0 +1,64 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-27T22:46:08.813Z",
+  "source_sha256": "d765bde42d1d8f3df7f583dc6d21de7fd54014fdbbab57b878ebd9f935e9082f",
+  "source_after_sha256": "d765bde42d1d8f3df7f583dc6d21de7fd54014fdbbab57b878ebd9f935e9082f",
+  "source_unchanged": true,
+  "source_count": 955,
+  "checks": [
+    "Actual UI creates a fixed historical-version comment with an explicitly selected eligible recipient; exact receipt and immutable-history readback pass.",
+    "UI text-only revision preserves fixed associations and updates the current notification target without repeating delivery."
+  ],
+  "layouts": [
+    {
+      "name": "preview",
+      "width": 1365,
+      "document": 1365
+    },
+    {
+      "name": "discussion",
+      "width": 1365,
+      "document": 1365
+    }
+  ],
+  "screenshots": [
+    "task-mentions-web-preview.png",
+    "task-mentions-web-discussion.png"
+  ],
+  "recordings": [
+    {
+      "name": "task-mentions-web-collaboration",
+      "frame_count": 28,
+      "duration_ms": 5689,
+      "viewport": {
+        "width": 1365,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/task-mentions-web-collaboration/frames.json",
+      "manifest_sha256": "557d401cfcc41f5416e2bef9454917854af686730a1d4b8b0caa2a3ff1c9d1ce"
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: /tasks/ddeb28bb-9458-42e5-b690-60a6b4e280fd/comments: 403 FORBIDDEN\n    at api (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_task_mentions.mjs:36:40)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_task_mentions.mjs:99:32",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 2,
+  "browser_contexts_closed": 2,
+  "real_native_api": true,
+  "real_cloud": false,
+  "real_model": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "client": "React Web",
+  "controlled_response_faults": [
+    "incomplete committed201 comment revision",
+    "committed comment creation response lost"
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "d765bde42d1d8f3df7f583dc6d21de7fd54014fdbbab57b878ebd9f935e9082f",
+  "build_source_after_sha256": "d765bde42d1d8f3df7f583dc6d21de7fd54014fdbbab57b878ebd9f935e9082f",
+  "build_source_unchanged": true
+}

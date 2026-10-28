@@ -1,0 +1,1214 @@
+
+> @copypaste/mobile@0.1.0 test
+> tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/file-input.test.js ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/native-wire.test.js ../.local/mobile-tests/platform/upload-transfer.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/financial-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js ../.local/mobile-tests/platform/project-overview.test.js ../.local/mobile-tests/platform/project-input.test.js ../.local/mobile-tests/platform/project-resource-input.test.js ../.local/mobile-tests/platform/task-input.test.js ../.local/mobile-tests/platform/project-closeout.test.js ../.local/mobile-tests/platform/change-input.test.js ../.local/mobile-tests/platform/telegram-input.test.js ../.local/mobile-tests/platform/post-input.test.js ../.local/mobile-tests/platform/post-markdown.test.js && tsc --project tsconfig.concern-test.json && node --test ../.local/mobile-concern-tests/mobile/src/platform/task-comment.test.js ../.local/mobile-concern-tests/mobile/src/platform/concern-mutation.test.js ../.local/mobile-concern-tests/mobile/src/platform/task-creation.test.js ../.local/mobile-concern-tests/mobile/src/platform/task-dependency.test.js ../.local/mobile-concern-tests/mobile/src/platform/search.test.js ../.local/mobile-concern-tests/mobile/src/platform/indexed-context.test.js
+
+TAP version 13
+# Subtest: contract money and unknowns survive without floating point, with fixed party/body and exact plan identities
+ok 1 - contract money and unknowns survive without floating point, with fixed party/body and exact plan identities
+  ---
+  duration_ms: 3.9789
+  ...
+# Subtest: claim row identity keeps fixed receipts, supplier and employee/company funding across reorder and deletion
+ok 2 - claim row identity keeps fixed receipts, supplier and employee/company funding across reorder and deletion
+  ---
+  duration_ms: 0.8427
+  ...
+# Subtest: 100 real line inputs and a long valid request fit bounded intent reconciliation; no unresolved key is evicted
+ok 3 - 100 real line inputs and a long valid request fit bounded intent reconciliation; no unresolved key is evicted
+  ---
+  duration_ms: 2.934
+  ...
+# Subtest: memory-only business input strips every unlisted scalar and nested evidence/secret, and defensively copies arrays
+ok 4 - memory-only business input strips every unlisted scalar and nested evidence/secret, and defensively copies arrays
+  ---
+  duration_ms: 1.7008
+  ...
+# Subtest: business inputs share the existing global text budget, exact-version authority, TTL and logout isolation
+ok 5 - business inputs share the existing global text budget, exact-version authority, TTL and logout isolation
+  ---
+  duration_ms: 2.5488
+  ...
+# Subtest: financial drafts preserve invalid editable input but clearly identify scientific notation, zero quantity and invalid calendar dates
+ok 6 - financial drafts preserve invalid editable input but clearly identify scientific notation, zero quantity and invalid calendar dates
+  ---
+  duration_ms: 6.5723
+  ...
+# Subtest: missing current evidence stops editing and factual display retains the authoritative original reference IDs
+ok 7 - missing current evidence stops editing and factual display retains the authoritative original reference IDs
+  ---
+  duration_ms: 0.9714
+  ...
+# Subtest: server field errors map to real fields or an explicit summary location; decimal input is never reinterpreted
+ok 8 - server field errors map to real fields or an explicit summary location; decimal input is never reinterpreted
+  ---
+  duration_ms: 0.7351
+  ...
+# Subtest: new line/plan IDs derive from public independent intent values and remain stable within a single intent
+ok 9 - new line/plan IDs derive from public independent intent values and remain stable within a single intent
+  ---
+  duration_ms: 3.4082
+  ...
+# Subtest: UTF-8 limits count actual wire bytes and work without browser encoding globals
+ok 10 - UTF-8 limits count actual wire bytes and work without browser encoding globals
+  ---
+  duration_ms: 24.0873
+  ...
+# Subtest: business and request receipts must match actual identity, new version and fixed request basis before input can be cleared
+ok 11 - business and request receipts must match actual identity, new version and fixed request basis before input can be cleared
+  ---
+  duration_ms: 1.096
+  ...
+# Subtest: accepted basis binds full project version, scope, dates, classification, currency and all budget lines
+ok 12 - accepted basis binds full project version, scope, dates, classification, currency and all budget lines
+  ---
+  duration_ms: 6.2495
+  ...
+# Subtest: basis fingerprints are stable across object property order and change for budget identity or details
+ok 13 - basis fingerprints are stable across object property order and change for budget identity or details
+  ---
+  duration_ms: 3.2461
+  ...
+# Subtest: dates enforce real Gregorian days, inclusive ordered periods and explicit null dates
+ok 14 - dates enforce real Gregorian days, inclusive ordered periods and explicit null dates
+  ---
+  duration_ms: 1.6468
+  ...
+# Subtest: keep null, full replacement and explicit empty replacement remain distinct without floating point arithmetic
+ok 15 - keep null, full replacement and explicit empty replacement remain distinct without floating point arithmetic
+  ---
+  duration_ms: 1.4303
+  ...
+# Subtest: overlap, invalid decimal formats, excess precision and row limits fail before a command is sent
+ok 16 - overlap, invalid decimal formats, excess precision and row limits fail before a command is sent
+  ---
+  duration_ms: 1.2758
+  ...
+# Subtest: saved inputs whitelist independent editable text and stable row identities, excluding evidence and authority
+ok 17 - saved inputs whitelist independent editable text and stable row identities, excluding evidence and authority
+  ---
+  duration_ms: 0.5039
+  ...
+# Subtest: writer affordances honor actual member role, operation authority and read-only project phases
+ok 18 - writer affordances honor actual member role, operation authority and read-only project phases
+  ---
+  duration_ms: 0.7684
+  ...
+# Subtest: new proposals require fresh explicit basis acceptance, complete text and ordered unique actual file versions
+ok 19 - new proposals require fresh explicit basis acceptance, complete text and ordered unique actual file versions
+  ---
+  duration_ms: 0.7653
+  ...
+# Subtest: editing appends an exact revision and freezes currency, prior head version and source revision
+ok 20 - editing appends an exact revision and freezes currency, prior head version and source revision
+  ---
+  duration_ms: 1.5546
+  ...
+# Subtest: complete current revisions preserve source attachments and reject mismatched, duplicate, malformed or incomplete proof
+ok 21 - complete current revisions preserve source attachments and reject mismatched, duplicate, malformed or incomplete proof
+  ---
+  duration_ms: 4.192
+  ...
+# Subtest: a three-field save receipt never suffices without exact actual head, content, files, actor and frozen basis
+ok 22 - a three-field save receipt never suffices without exact actual head, content, files, actor and frozen basis
+  ---
+  duration_ms: 2.3065
+  ...
+# Subtest: request draft and revised request proof bind all original business payload fields and server amounts
+ok 23 - request draft and revised request proof bind all original business payload fields and server amounts
+  ---
+  duration_ms: 2.3089
+  ...
+# Subtest: implementation requires exact independent approval, current full basis, both human attestations and fresh MFA
+ok 24 - implementation requires exact independent approval, current full basis, both human attestations and fresh MFA
+  ---
+  duration_ms: 2.333
+  ...
+# Subtest: implementation proof reconciles immutable head, actual project, budget, source approval and actor without trusting receipt alone
+ok 25 - implementation proof reconciles immutable head, actual project, budget, source approval and actor without trusting receipt alone
+  ---
+  duration_ms: 5.5263
+  ...
+# Subtest: replacing a previous budget requires actual superseded predecessor evidence; other currencies cannot satisfy proof
+ok 26 - replacing a previous budget requires actual superseded predecessor evidence; other currencies cannot satisfy proof
+  ---
+  duration_ms: 1.9337
+  ...
+# Subtest: server approval increase and signed net delta are retained independently in fixed snapshots
+ok 27 - server approval increase and signed net delta are retained independently in fixed snapshots
+  ---
+  duration_ms: 0.453
+  ...
+# Subtest: a page recreated while a write is in flight reuses the same exact intent key
+ok 28 - a page recreated while a write is in flight reuses the same exact intent key
+  ---
+  duration_ms: 2.33
+  ...
+# Subtest: uncertain outcomes retain the original key and forbid silently substituting another request
+ok 29 - uncertain outcomes retain the original key and forbid silently substituting another request
+  ---
+  duration_ms: 0.8273
+  ...
+# Subtest: bounded command records refuse new work without evicting unresolved keys; logout clears the old lifetime
+ok 30 - bounded command records refuse new work without evicting unresolved keys; logout clears the old lifetime
+  ---
+  duration_ms: 0.5031
+  ...
+# Subtest: fixed content transfers sequential bounded ranges and validates the full SHA with an independent oracle
+ok 31 - fixed content transfers sequential bounded ranges and validates the full SHA with an independent oracle
+  ---
+  duration_ms: 71.395
+  ...
+# Subtest: an empty text version still authenticates one empty range and validates the empty SHA
+ok 32 - an empty text version still authenticates one empty range and validates the empty SHA
+  ---
+  duration_ms: 0.8226
+  ...
+# Subtest: a permit cannot change the fixed version, hash, size, source mode or required headers
+ok 33 - a permit cannot change the fixed version, hash, size, source mode or required headers
+  ---
+  duration_ms: 2.761
+  ...
+# Subtest: range identity, canonical base64 and each chunk digest are verified before any sink write
+ok 34 - range identity, canonical base64 and each chunk digest are verified before any sink write
+  ---
+  duration_ms: 2.0574
+  ...
+# Subtest: self-consistent chunk digests do not bypass a mismatching full-version digest
+ok 35 - self-consistent chunk digests do not bypass a mismatching full-version digest
+  ---
+  duration_ms: 0.5216
+  ...
+# Subtest: closing the scope while a response is pending discards late bytes and aborts the sink
+ok 36 - closing the scope while a response is pending discards late bytes and aborts the sink
+  ---
+  duration_ms: 7.901
+  ...
+# Subtest: expiry is checked before each range and never replaces a file version or automatically grants again
+ok 37 - expiry is checked before each range and never replaces a file version or automatically grants again
+  ---
+  duration_ms: 43.0703
+  ...
+# Subtest: a failed sink never produces a completed artifact
+ok 38 - a failed sink never produces a completed artifact
+  ---
+  duration_ms: 0.6759
+  ...
+# Subtest: format signatures reject an active-document disguise before writing or exposing content
+ok 39 - format signatures reject an active-document disguise before writing or exposing content
+  ---
+  duration_ms: 0.6932
+  ...
+# Subtest: unavailable, waived, unsupported and excessive versions do not create a download permit
+ok 40 - unavailable, waived, unsupported and excessive versions do not create a download permit
+  ---
+  duration_ms: 1.2475
+  ...
+# Subtest: base64 decoder rejects noncanonical padding, whitespace and length mismatches
+ok 41 - base64 decoder rejects noncanonical padding, whitespace and length mismatches
+  ---
+  duration_ms: 0.9683
+  ...
+# Subtest: portable UTF-8 decoding preserves Chinese, emoji and literal markup and rejects malformed sequences
+ok 42 - portable UTF-8 decoding preserves Chinese, emoji and literal markup and rejects malformed sequences
+  ---
+  duration_ms: 0.6582
+  ...
+# Subtest: archive notes are bound to both the project revision and exact closeout fingerprint; only bounded text survives
+ok 43 - archive notes are bound to both the project revision and exact closeout fingerprint; only bounded text survives
+  ---
+  duration_ms: 4.6351
+  ...
+# Subtest: task editors share bounded memory, copy only text and isolate creation, editing, dependencies and revisions
+ok 44 - task editors share bounded memory, copy only text and isolate creation, editing, dependencies and revisions
+  ---
+  duration_ms: 1.4842
+  ...
+# Subtest: resource inputs share authority and item versions, with defensive copies and no retained command evidence
+ok 45 - resource inputs share authority and item versions, with defensive copies and no retained command evidence
+  ---
+  duration_ms: 1.0514
+  ...
+# Subtest: resource text competes for the same total memory budget and expires without reviving stale decisions
+ok 46 - resource text competes for the same total memory budget and expires without reviving stale decisions
+  ---
+  duration_ms: 0.4764
+  ...
+# Subtest: project text restores only for its exact authority and version and never retains template evidence
+ok 47 - project text restores only for its exact authority and version and never retains template evidence
+  ---
+  duration_ms: 0.6747
+  ...
+# Subtest: project text participates in the shared memory budget and logout immediately invalidates retained input
+ok 48 - project text participates in the shared memory budget and logout immediately invalidates retained input
+  ---
+  duration_ms: 0.3588
+  ...
+# Subtest: form input survives page recreation within the same authority and resource version, without shared mutable objects
+ok 49 - form input survives page recreation within the same authority and resource version, without shared mutable objects
+  ---
+  duration_ms: 0.293
+  ...
+# Subtest: logout, a new login and explicit clearing invalidate old handles before they can restore or resurrect input
+ok 50 - logout, a new login and explicit clearing invalidate old handles before they can restore or resurrect input
+  ---
+  duration_ms: 0.1535
+  ...
+# Subtest: a newer server authorization version clears drafts and an older page cannot roll the authority backward
+ok 51 - a newer server authorization version clears drafts and an older page cannot roll the authority backward
+  ---
+  duration_ms: 0.4351
+  ...
+# Subtest: task versions and every fixed approval revision or step remain separate and do not inherit an old decision
+ok 52 - task versions and every fixed approval revision or step remain separate and do not inherit an old decision
+  ---
+  duration_ms: 0.586
+  ...
+# Subtest: reading a draft does not prolong its 15-minute input lifetime
+ok 53 - reading a draft does not prolong its 15-minute input lifetime
+  ---
+  duration_ms: 0.2552
+  ...
+# Subtest: bounded drafts evict oldest input, cap total text and refuse oversized fields without truncating a human reason
+ok 54 - bounded drafts evict oldest input, cap total text and refuse oversized fields without truncating a human reason
+  ---
+  duration_ms: 1.3955
+  ...
+# Subtest: deliverable input stays bound to the exact form, head and fixed acceptance revision
+ok 55 - deliverable input stays bound to the exact form, head and fixed acceptance revision
+  ---
+  duration_ms: 0.3942
+  ...
+# Subtest: only whitelisted textual input is retained; file selections, credentials and human verification never restore
+ok 56 - only whitelisted textual input is retained; file selections, credentials and human verification never restore
+  ---
+  duration_ms: 0.1736
+  ...
+# Subtest: new text fields share the memory budget and reject overlong content without replacing valid input
+ok 57 - new text fields share the memory budget and reject overlong content without replacing valid input
+  ---
+  duration_ms: 0.177
+  ...
+# Subtest: change inputs and operation reasons are bound to exact basis, head and content; attestations and credentials never restore
+ok 58 - change inputs and operation reasons are bound to exact basis, head and content; attestations and credentials never restore
+  ---
+  duration_ms: 1.0972
+  ...
+# Subtest: storage names preserve Unicode spelling and reject path, control, reserved and normalized unsafe forms
+ok 59 - storage names preserve Unicode spelling and reject path, control, reserved and normalized unsafe forms
+  ---
+  duration_ms: 3.4886
+  ...
+# Subtest: new folders bind actual parent and inherited classification without injecting a project or writable flags
+ok 60 - new folders bind actual parent and inherited classification without injecting a project or writable flags
+  ---
+  duration_ms: 2.4776
+  ...
+# Subtest: move freezes source version, exact name, selected destination ID and reason without broadening intent
+ok 61 - move freezes source version, exact name, selected destination ID and reason without broadening intent
+  ---
+  duration_ms: 0.7319
+  ...
+# Subtest: destination selection rejects wrong project/classification, hidden write permission, self and malformed identities
+ok 62 - destination selection rejects wrong project/classification, hidden write permission, self and malformed identities
+  ---
+  duration_ms: 0.5941
+  ...
+# Subtest: project roots may be renamed but never moved; unchanged requests and missing current write permission are refused
+ok 63 - project roots may be renamed but never moved; unchanged requests and missing current write permission are refused
+  ---
+  duration_ms: 0.5332
+  ...
+# Subtest: folder creation receipts must match the exact parent, scope, name, creator and initial version
+ok 64 - folder creation receipts must match the exact parent, scope, name, creator and initial version
+  ---
+  duration_ms: 0.5753
+  ...
+# Subtest: file move receipts cannot claim success while changing formal content, lifecycle, owner or namespace
+ok 65 - file move receipts cannot claim success while changing formal content, lifecycle, owner or namespace
+  ---
+  duration_ms: 0.5244
+  ...
+# Subtest: folder move receipts preserve the actual folder identity and require the selected parent
+ok 66 - folder move receipts preserve the actual folder identity and require the selected parent
+  ---
+  duration_ms: 0.2258
+  ...
+# Subtest: trash and restore use exact original commands, current capability and state without inventing history restoration
+ok 67 - trash and restore use exact original commands, current capability and state without inventing history restoration
+  ---
+  duration_ms: 0.6809
+  ...
+# Subtest: trash/restore receipts must preserve original name, location and exact formal version
+ok 68 - trash/restore receipts must preserve original name, location and exact formal version
+  ---
+  duration_ms: 0.6619
+  ...
+# Subtest: organizing drafts retain whitelisted text only and never restore destination evidence or confirmation
+ok 69 - organizing drafts retain whitelisted text only and never restore destination evidence or confirmation
+  ---
+  duration_ms: 1.8893
+  ...
+# Subtest: money retains exact fractions and amounts beyond JavaScript safe integer units
+ok 70 - money retains exact fractions and amounts beyond JavaScript safe integer units
+  ---
+  duration_ms: 2.4687
+  ...
+# Subtest: Hong Kong input preserves the business day across UTC midnight and rejects invalid calendar times
+ok 71 - Hong Kong input preserves the business day across UTC midnight and rejects invalid calendar times
+  ---
+  duration_ms: 2.8726
+  ...
+# Subtest: partial drafts preserve null facts and permanent source keys without inventing currency or payment
+ok 72 - partial drafts preserve null facts and permanent source keys without inventing currency or payment
+  ---
+  duration_ms: 1.4566
+  ...
+# Subtest: unreadable original fixed references remain in edits and arrays are independently copied
+ok 73 - unreadable original fixed references remain in edits and arrays are independently copied
+  ---
+  duration_ms: 0.9268
+  ...
+# Subtest: split scopes cannot duplicate company/project or accept invalid amounts and dates
+ok 74 - split scopes cannot duplicate company/project or accept invalid amounts and dates
+  ---
+  duration_ms: 0.7532
+  ...
+# Subtest: transfers, employee payees and refund references remain distinct
+ok 75 - transfers, employee payees and refund references remain distinct
+  ---
+  duration_ms: 0.6786
+  ...
+# Subtest: financial memory drafts retain editable strings, exclude evidence/acknowledgments and bind the exact revision
+ok 76 - financial memory drafts retain editable strings, exclude evidence/acknowledgments and bind the exact revision
+  ---
+  duration_ms: 1.3034
+  ...
+# Subtest: draft copy caps array/scalar sizes and cannot serialize an arbitrary server response
+ok 77 - draft copy caps array/scalar sizes and cannot serialize an arbitrary server response
+  ---
+  duration_ms: 0.2101
+  ...
+# Subtest: draft success rejects wrong record, source, scope, currency, revision version or amount
+ok 78 - draft success rejects wrong record, source, scope, currency, revision version or amount
+  ---
+  duration_ms: 2.168
+  ...
+# Subtest: payment success checks the exact payee, original refund and Hong Kong time
+ok 79 - payment success checks the exact payee, original refund and Hong Kong time
+  ---
+  duration_ms: 2.9181
+  ...
+# Subtest: permission gates use actual payment.record rather than an invented create permission
+ok 80 - permission gates use actual payment.record rather than an invented create permission
+  ---
+  duration_ms: 1.5428
+  ...
+# Subtest: transition receipts reject stale versions, another hash/currency and missing reversal identity
+ok 81 - transition receipts reject stale versions, another hash/currency and missing reversal identity
+  ---
+  duration_ms: 0.7296
+  ...
+# Subtest: business links only accept the correct scope and original currency with current approved payable contracts
+ok 82 - business links only accept the correct scope and original currency with current approved payable contracts
+  ---
+  duration_ms: 0.3262
+  ...
+# Subtest: direct settlement fixes exact cost basis and cannot allocate incoming, draft, reversal or cross-currency facts
+ok 83 - direct settlement fixes exact cost basis and cannot allocate incoming, draft, reversal or cross-currency facts
+  ---
+  duration_ms: 0.5515
+  ...
+# Subtest: employee settlement requires its own approved claim, advance line, exact supplier and linked approved revision
+ok 84 - employee settlement requires its own approved claim, advance line, exact supplier and linked approved revision
+  ---
+  duration_ms: 1.0454
+  ...
+# Subtest: expense reversal receipts retain the exact dated reverse, scope, source files and split shares
+ok 85 - expense reversal receipts retain the exact dated reverse, scope, source files and split shares
+  ---
+  duration_ms: 0.3779
+  ...
+# Subtest: cash reversal receipts check the actual UTC reverse time rather than merely a successful reversed state
+ok 86 - cash reversal receipts check the actual UTC reverse time rather than merely a successful reversed state
+  ---
+  duration_ms: 0.4196
+  ...
+# Subtest: Android authentication and command intent keep their actual device and idempotency identity through the native bridge
+ok 87 - Android authentication and command intent keep their actual device and idempotency identity through the native bridge
+  ---
+  duration_ms: 1.8033
+  ...
+# Subtest: fixed-version read passes the exact range condition and only a relative API path
+ok 88 - fixed-version read passes the exact range condition and only a relative API path
+  ---
+  duration_ms: 0.8757
+  ...
+# Subtest: closing a native page cancels its exact call and never automatically repeats a write
+ok 89 - closing a native page cancels its exact call and never automatically repeats a write
+  ---
+  duration_ms: 1.785
+  ...
+# Subtest: malformed native JSON cannot become a successful business result or disclose native diagnostics
+ok 90 - malformed native JSON cannot become a successful business result or disclose native diagnostics
+  ---
+  duration_ms: 1.4866
+  ...
+# Subtest: complete content detects filtered sources, preserves reference order and distinguishes follow from fixed
+ok 91 - complete content detects filtered sources, preserves reference order and distinguishes follow from fixed
+  ---
+  duration_ms: 7.5525
+  ...
+# Subtest: all four knowledge types accept company/project drafts, Unicode and the full 100-reference limit
+ok 92 - all four knowledge types accept company/project drafts, Unicode and the full 100-reference limit
+  ---
+  duration_ms: 4.2885
+  ...
+# Subtest: edits bind exact version/base revision, reject incomplete source sets and cannot change scope/type/class
+ok 93 - edits bind exact version/base revision, reject incomplete source sets and cannot change scope/type/class
+  ---
+  duration_ms: 2.5946
+  ...
+# Subtest: create and edit receipts reject wrong identity, bodies, publication pointers and missing fields
+ok 94 - create and edit receipts reject wrong identity, bodies, publication pointers and missing fields
+  ---
+  duration_ms: 3.6089
+  ...
+# Subtest: publication requires content/intent/reason and draft/archive keep the published pointer
+ok 95 - publication requires content/intent/reason and draft/archive keep the published pointer
+  ---
+  duration_ms: 1.0502
+  ...
+# Subtest: restoration receipts must establish a new revision and corroborate the immutable history base
+ok 96 - restoration receipts must establish a new revision and corroborate the immutable history base
+  ---
+  duration_ms: 0.6378
+  ...
+# Subtest: text-only comment edits omit attachment replacement; an explicit empty list remains an explicit clear
+ok 97 - text-only comment edits omit attachment replacement; an explicit empty list remains an explicit clear
+  ---
+  duration_ms: 1.2103
+  ...
+# Subtest: comment receipts require a new ID, exact context, preserved pins and immutable predecessor
+ok 98 - comment receipts require a new ID, exact context, preserved pins and immutable predecessor
+  ---
+  duration_ms: 0.4066
+  ...
+# Subtest: Markdown emits headings, paragraphs, quotes, lists and verbatim fenced code as text nodes
+ok 99 - Markdown emits headings, paragraphs, quotes, lists and verbatim fenced code as text nodes
+  ---
+  duration_ms: 3.2097
+  ...
+# Subtest: raw HTML, remote images, script/data/file links and embedded credentials never become active resources
+ok 100 - raw HTML, remote images, script/data/file links and embedded credentials never become active resources
+  ---
+  duration_ms: 0.8544
+  ...
+# Subtest: formatting and explicit http(s) links preserve readable Unicode content without fetching
+ok 101 - formatting and explicit http(s) links preserve readable Unicode content without fetching
+  ---
+  duration_ms: 0.4326
+  ...
+# Subtest: thirteen complete categories and exact counts are required, including resource identity and actual budget revisions
+ok 102 - thirteen complete categories and exact counts are required, including resource identity and actual budget revisions
+  ---
+  duration_ms: 6.0232
+  ...
+# Subtest: restricted categories retain null counts, no items and no complete fingerprint or write affordance
+ok 103 - restricted categories retain null counts, no items and no complete fingerprint or write affordance
+  ---
+  duration_ms: 1.4518
+  ...
+# Subtest: project lifecycle preserves original permissions, state targets and the independent archive boundary
+ok 104 - project lifecycle preserves original permissions, state targets and the independent archive boundary
+  ---
+  duration_ms: 1.8759
+  ...
+# Subtest: viewer and missing business actions cannot transition or archive even when a stale capability says yes
+ok 105 - viewer and missing business actions cannot transition or archive even when a stale capability says yes
+  ---
+  duration_ms: 0.7233
+  ...
+# Subtest: a project transition receipt must preserve the exact header and advance only the intended state and version
+ok 106 - a project transition receipt must preserve the exact header and advance only the intended state and version
+  ---
+  duration_ms: 1.2178
+  ...
+# Subtest: archive inputs bind exact version and fingerprint, require three notes, two explicit attestations and fresh MFA
+ok 107 - archive inputs bind exact version and fingerprint, require three notes, two explicit attestations and fresh MFA
+  ---
+  duration_ms: 0.9384
+  ...
+# Subtest: optional archive attachments use distinct actual fixed versions with a maximum of twenty
+ok 108 - optional archive attachments use distinct actual fixed versions with a maximum of twenty
+  ---
+  duration_ms: 0.7033
+  ...
+# Subtest: full archive receipts reconcile original project, notes, actor, fingerprint, groups and new archive revision
+ok 109 - full archive receipts reconcile original project, notes, actor, fingerprint, groups and new archive revision
+  ---
+  duration_ms: 2.6478
+  ...
+# Subtest: fixed attachment receipts preserve ordered IDs, large byte text, original file identity and complete metadata
+ok 110 - fixed attachment receipts preserve ordered IDs, large byte text, original file identity and complete metadata
+  ---
+  duration_ms: 2.355
+  ...
+# Subtest: historical reads reject mixed projects, missing records and restricted payload leakage instead of showing an empty success
+ok 111 - historical reads reject mixed projects, missing records and restricted payload leakage instead of showing an empty success
+  ---
+  duration_ms: 1.1979
+  ...
+# Subtest: a committed archive needs actual current project and history proof; hidden history or a concurrent reopen blocks success
+ok 112 - a committed archive needs actual current project and history proof; hidden history or a concurrent reopen blocks success
+  ---
+  duration_ms: 1.1502
+  ...
+# Subtest: an unfinished source cannot be represented as ready by an invented capability or incomplete category
+ok 113 - an unfinished source cannot be represented as ready by an invented capability or incomplete category
+  ---
+  duration_ms: 0.3827
+  ...
+# Subtest: project creation fixes the logged-in owner, exact template revision identity and unshifted calendar dates
+ok 114 - project creation fixes the logged-in owner, exact template revision identity and unshifted calendar dates
+  ---
+  duration_ms: 6.0565
+  ...
+# Subtest: invalid or inverted calendar dates never become normalized approved business dates
+ok 115 - invalid or inverted calendar dates never become normalized approved business dates
+  ---
+  duration_ms: 1.9826
+  ...
+# Subtest: draft edits explicitly clear dates, while active scope and dates require their original change workflow
+ok 116 - draft edits explicitly clear dates, while active scope and dates require their original change workflow
+  ---
+  duration_ms: 1.0399
+  ...
+# Subtest: creation receipts must prove the exact new project and template revision without fabricating initialization
+ok 117 - creation receipts must prove the exact new project and template revision without fabricating initialization
+  ---
+  duration_ms: 0.8164
+  ...
+# Subtest: Unicode whitespace normalization and existing resource versions remain bound to the actual project receipt
+ok 118 - Unicode whitespace normalization and existing resource versions remain bound to the actual project receipt
+  ---
+  duration_ms: 1.0786
+  ...
+# Subtest: membership changes preserve the parent version, explicit role and reason and reject self or owner changes
+ok 119 - membership changes preserve the parent version, explicit role and reason and reject self or owner changes
+  ---
+  duration_ms: 1.1028
+  ...
+# Subtest: owner handover uses its distinct command and a receipt for the exact new owner and next project version
+ok 120 - owner handover uses its distinct command and a receipt for the exact new owner and next project version
+  ---
+  duration_ms: 0.8144
+  ...
+# Subtest: retained project input strips template evidence, arbitrary owner and confirmation flags and bounds text
+ok 121 - retained project input strips template evidence, arbitrary owner and confirmation flags and bounds text
+  ---
+  duration_ms: 0.4266
+  ...
+# Subtest: financial decimal text preserves huge, negative, zero and six-place source facts without rounding
+ok 122 - financial decimal text preserves huge, negative, zero and six-place source facts without rounding
+  ---
+  duration_ms: 2.0512
+  ...
+# Subtest: missing, scientific, non-finite and non-contract money never display an invented zero
+ok 123 - missing, scientific, non-finite and non-contract money never display an invented zero
+  ---
+  duration_ms: 0.3536
+  ...
+# Subtest: snapshot clocks retain Hong Kong midnight and seconds independently of device timezone
+ok 124 - snapshot clocks retain Hong Kong midnight and seconds independently of device timezone
+  ---
+  duration_ms: 1.989
+  ...
+# Subtest: all sixteen associated kinds have actual native routes and keep their stable identity
+ok 125 - all sixteen associated kinds have actual native routes and keep their stable identity
+  ---
+  duration_ms: 1.4653
+  ...
+# Subtest: collection links preserve actual project scope and never advertise global services as project-filtered
+ok 126 - collection links preserve actual project scope and never advertise global services as project-filtered
+  ---
+  duration_ms: 0.2714
+  ...
+# Subtest: financial reads use a fixed allowlist and canonical UUIDs instead of arbitrary route/tool input
+ok 127 - financial reads use a fixed allowlist and canonical UUIDs instead of arbitrary route/tool input
+  ---
+  duration_ms: 0.7323
+  ...
+# Subtest: an accurate authorized overview preserves unknown categories as unknown rather than readable zero
+ok 128 - an accurate authorized overview preserves unknown categories as unknown rather than readable zero
+  ---
+  duration_ms: 2.3582
+  ...
+# Subtest: foreign, stale project versions, incomplete categories and invalid snapshot clocks fail closed
+ok 129 - foreign, stale project versions, incomplete categories and invalid snapshot clocks fail closed
+  ---
+  duration_ms: 0.8568
+  ...
+# Subtest: unavailable counts, titles or state statistics cannot enter the factual view
+ok 130 - unavailable counts, titles or state statistics cannot enter the factual view
+  ---
+  duration_ms: 0.998
+  ...
+# Subtest: full readable count is independent of five recent previews; inconsistent states or pagination fail closed
+ok 131 - full readable count is independent of five recent previews; inconsistent states or pagination fail closed
+  ---
+  duration_ms: 1.2683
+  ...
+# Subtest: Hong Kong wall time is explicit, offset-equivalent and lossless at PostgreSQL microsecond precision
+ok 132 - Hong Kong wall time is explicit, offset-equivalent and lossless at PostgreSQL microsecond precision
+  ---
+  duration_ms: 4.1818
+  ...
+# Subtest: invalid calendar dates, fractional rounding and invalid time zones cannot silently normalize a decision
+ok 133 - invalid calendar dates, fractional rounding and invalid time zones cannot silently normalize a decision
+  ---
+  duration_ms: 1.7557
+  ...
+# Subtest: all three creates use original paths and complete fields without invented parent expected-version or state
+ok 134 - all three creates use original paths and complete fields without invented parent expected-version or state
+  ---
+  duration_ms: 2.1817
+  ...
+# Subtest: only actual active project members and writable project records can be selected or edited
+ok 135 - only actual active project members and writable project records can be selected or edited
+  ---
+  duration_ms: 0.8174
+  ...
+# Subtest: edits bind the item version and do not send unselected state changes or another entity-specific field
+ok 136 - edits bind the item version and do not send unselected state changes or another entity-specific field
+  ---
+  duration_ms: 0.4072
+  ...
+# Subtest: optional dates and risk probability remain absent or exact, never falsely reported as cleared
+ok 137 - optional dates and risk probability remain absent or exact, never falsely reported as cleared
+  ---
+  duration_ms: 0.4732
+  ...
+# Subtest: successful creation and edit receipts prove actual identity, fields, project, state and exact version
+ok 138 - successful creation and edit receipts prove actual identity, fields, project, state and exact version
+  ---
+  duration_ms: 0.7345
+  ...
+# Subtest: receipt checks reject sub-millisecond differences and unexpected concern field or issue association changes
+ok 139 - receipt checks reject sub-millisecond differences and unexpected concern field or issue association changes
+  ---
+  duration_ms: 0.3522
+  ...
+# Subtest: state choices respect the original graph and the server-derived overdue fact
+ok 140 - state choices respect the original graph and the server-derived overdue fact
+  ---
+  duration_ms: 0.9288
+  ...
+# Subtest: each transition fixes the exact version and reason; issue closure needs resolution and realization needs issue.create
+ok 141 - each transition fixes the exact version and reason; issue closure needs resolution and realization needs issue.create
+  ---
+  duration_ms: 1.289
+  ...
+# Subtest: transition receipts retain all unchanged facts and require a real new issue ID on risk realization
+ok 142 - transition receipts retain all unchanged facts and require a real new issue ID on risk realization
+  ---
+  duration_ms: 0.9613
+  ...
+# Subtest: legacy template milestones without an owner or date can still cancel or reopen with exact receipts
+ok 143 - legacy template milestones without an owner or date can still cancel or reopen with exact receipts
+  ---
+  duration_ms: 0.3179
+  ...
+# Subtest: only bounded textual resource input is copied; API evidence and confirmation flags never become drafts
+ok 144 - only bounded textual resource input is copied; API evidence and confirmation flags never become drafts
+  ---
+  duration_ms: 0.5158
+  ...
+# Subtest: a run receipt must belong to the exact actor conversation profile and client message
+ok 145 - a run receipt must belong to the exact actor conversation profile and client message
+  ---
+  duration_ms: 1.8986
+  ...
+# Subtest: a reconciled terminal receipt remains valid without inventing a new queued task
+ok 146 - a reconciled terminal receipt remains valid without inventing a new queued task
+  ---
+  duration_ms: 0.235
+  ...
+# Subtest: a successful secretary turn distinguishes a response from completion of its business request
+ok 147 - a successful secretary turn distinguishes a response from completion of its business request
+  ---
+  duration_ms: 0.2359
+  ...
+# Subtest: unavailable source messages never render a supplied stale body
+ok 148 - unavailable source messages never render a supplied stale body
+  ---
+  duration_ms: 0.2453
+  ...
+# Subtest: secretary drafts keep input text and request identity while excluding source contents and permissions
+ok 149 - secretary drafts keep input text and request identity while excluding source contents and permissions
+  ---
+  duration_ms: 1.3467
+  ...
+# Subtest: password recovery is unauthenticated and sends no stored credential
+ok 150 - password recovery is unauthenticated and sends no stored credential
+  ---
+  duration_ms: 3.0939
+  ...
+# Subtest: confirmed password change clears memory credentials while a rejected password leaves the current login intact
+ok 151 - confirmed password change clears memory credentials while a rejected password leaves the current login intact
+  ---
+  duration_ms: 2.3257
+  ...
+# Subtest: a late password change result cannot clear a newer login
+ok 152 - a late password change result cannot clear a newer login
+  ---
+  duration_ms: 0.9441
+  ...
+# Subtest: device revocation keeps other device login and clears only a confirmed current device
+ok 153 - device revocation keeps other device login and clears only a confirmed current device
+  ---
+  duration_ms: 1.5446
+  ...
+# Subtest: server validation exposes only bounded public field messages, without carrying response extras or arbitrary details
+ok 154 - server validation exposes only bounded public field messages, without carrying response extras or arbitrary details
+  ---
+  duration_ms: 0.8179
+  ...
+# Subtest: content chunks use a fixed relative endpoint and validated If-Range while retaining normal session lifetime checks
+ok 155 - content chunks use a fixed relative endpoint and validated If-Range while retaining normal session lifetime checks
+  ---
+  duration_ms: 0.95
+  ...
+# Subtest: mobile login declares its channel, keeps operation IDs independent of secrets, rejects malformed login results
+ok 156 - mobile login declares its channel, keeps operation IDs independent of secrets, rejects malformed login results
+  ---
+  duration_ms: 0.7318
+  ...
+# Subtest: concurrent reads share one refresh rotation and use the new bearer only
+ok 157 - concurrent reads share one refresh rotation and use the new bearer only
+  ---
+  duration_ms: 23.3623
+  ...
+# Subtest: an old refresh failing after a new login cannot clear or overwrite the new session
+ok 158 - an old refresh failing after a new login cannot clear or overwrite the new session
+  ---
+  duration_ms: 1.2711
+  ...
+# Subtest: late reads after logout are discarded and closing a page aborts its wire request
+ok 159 - late reads after logout are discarded and closing a page aborts its wire request
+  ---
+  duration_ms: 1.2144
+  ...
+# Subtest: commands require an explicit intent key, never automatically replay on 401 or network ambiguity
+ok 160 - commands require an explicit intent key, never automatically replay on 401 or network ambiguity
+  ---
+  duration_ms: 1.0374
+  ...
+# Subtest: GET 401 renews once and a second 401 stops without a retry loop
+ok 161 - GET 401 renews once and a second 401 stops without a retry loop
+  ---
+  duration_ms: 2.4538
+  ...
+# Subtest: MFA uses the same challenge/code contract; hostile route inputs never receive a bearer
+ok 162 - MFA uses the same challenge/code contract; hostile route inputs never receive a bearer
+  ---
+  duration_ms: 1.3547
+  ...
+# Subtest: MFA enrollment returns a setting secret without a repeated challenge or an authenticated session
+ok 163 - MFA enrollment returns a setting secret without a repeated challenge or an authenticated session
+  ---
+  duration_ms: 0.4923
+  ...
+# Subtest: a status lease consumes the whole network flight and expires exactly at its monotonic boundary
+ok 164 - a status lease consumes the whole network flight and expires exactly at its monotonic boundary
+  ---
+  duration_ms: 1.0441
+  ...
+# Subtest: invalid timestamps, clocks, negative leases and clock rollback cannot keep a status live
+ok 165 - invalid timestamps, clocks, negative leases and clock rollback cannot keep a status live
+  ---
+  duration_ms: 0.4133
+  ...
+# Subtest: portable verification accepts the actual raw bytes signed independently by Node/OpenSSL
+ok 166 - portable verification accepts the actual raw bytes signed independently by Node/OpenSSL
+  ---
+  duration_ms: 46.0777
+  ...
+# Subtest: signature, source domain, digest, historical key and selected row are all independently bound
+ok 167 - signature, source domain, digest, historical key and selected row are all independently bound
+  ---
+  duration_ms: 11.1856
+  ...
+# Subtest: proof decoding bounds bytes and rejects unsafe sequences, noncanonical encodings and weak signatures
+ok 168 - proof decoding bounds bytes and rejects unsafe sequences, noncanonical encodings and weak signatures
+  ---
+  duration_ms: 8.2797
+  ...
+# Subtest: incident input requires actual affected services and resolution, and never reopens resolved records
+ok 169 - incident input requires actual affected services and resolution, and never reopens resolved records
+  ---
+  duration_ms: 1.1154
+  ...
+# Subtest: incident commands preserve exact versions and fixed service sets; receipts cannot claim another intent
+ok 170 - incident commands preserve exact versions and fixed service sets; receipts cannot claim another intent
+  ---
+  duration_ms: 0.467
+  ...
+# Subtest: incident drafts whitelist only input strings, isolate copies and use the existing shared authority and budget
+ok 171 - incident drafts whitelist only input strings, isolate copies and use the existing shared authority and budget
+  ---
+  duration_ms: 3.7594
+  ...
+# Subtest: creation retains full content, nullable fields and exact Hong Kong instants without a fake parent version
+ok 172 - creation retains full content, nullable fields and exact Hong Kong instants without a fake parent version
+  ---
+  duration_ms: 6.9594
+  ...
+# Subtest: strict date validation rejects impossible dates and reversed times at microsecond precision
+ok 173 - strict date validation rejects impossible dates and reversed times at microsecond precision
+  ---
+  duration_ms: 1.4238
+  ...
+# Subtest: assignment follows original create and update permissions, including explicit clearing
+ok 174 - assignment follows original create and update permissions, including explicit clearing
+  ---
+  duration_ms: 1.4632
+  ...
+# Subtest: parents and milestones require actual same-project readable candidates while unchanged references remain exact
+ok 175 - parents and milestones require actual same-project readable candidates while unchanged references remain exact
+  ---
+  duration_ms: 0.8863
+  ...
+# Subtest: viewer roles, stopped projects, completed tasks and wrong-project deep links remain read only
+ok 176 - viewer roles, stopped projects, completed tasks and wrong-project deep links remain read only
+  ---
+  duration_ms: 0.7049
+  ...
+# Subtest: successful task receipt must match every intended field, identity, version and microsecond
+ok 177 - successful task receipt must match every intended field, identity, version and microsecond
+  ---
+  duration_ms: 0.9175
+  ...
+# Subtest: dependency commands retain exact successor version, same project and lifecycle constraints
+ok 178 - dependency commands retain exact successor version, same project and lifecycle constraints
+  ---
+  duration_ms: 1.4612
+  ...
+# Subtest: dependency success requires a complete task receipt and actual edge proof at the same task revision
+ok 179 - dependency success requires a complete task receipt and actual edge proof at the same task revision
+  ---
+  duration_ms: 0.884
+  ...
+# Subtest: task drafts copy only bounded text fields and reject oversized or mistyped inputs
+ok 180 - task drafts copy only bounded text fields and reject oversized or mistyped inputs
+  ---
+  duration_ms: 0.7295
+  ...
+# Subtest: TG identifiers keep all sixteen decimal digits and explicit zero topic without number coercion
+ok 181 - TG identifiers keep all sixteen decimal digits and explicit zero topic without number coercion
+  ---
+  duration_ms: 1.9519
+  ...
+# Subtest: TG topic rejects empty, rounded, exponent, signed and noncanonical integers
+ok 182 - TG topic rejects empty, rounded, exponent, signed and noncanonical integers
+  ---
+  duration_ms: 3.5893
+  ...
+# Subtest: TG bot and group identity reject unsafe or display-name aliases
+ok 183 - TG bot and group identity reject unsafe or display-name aliases
+  ---
+  duration_ms: 0.5737
+  ...
+# Subtest: TG channel requires explicit current MFA and complete scope acknowledgement
+ok 184 - TG channel requires explicit current MFA and complete scope acknowledgement
+  ---
+  duration_ms: 0.3084
+  ...
+# Subtest: TG defaults must remain in a unique nonempty allowed skill set
+ok 185 - TG defaults must remain in a unique nonempty allowed skill set
+  ---
+  duration_ms: 0.3885
+  ...
+# Subtest: TG new channel is paused and cannot silently enable ingress
+ok 186 - TG new channel is paused and cannot silently enable ingress
+  ---
+  duration_ms: 0.6609
+  ...
+# Subtest: TG patch binds old revision and refuses replacing an existing exact location
+ok 187 - TG patch binds old revision and refuses replacing an existing exact location
+  ---
+  duration_ms: 0.7249
+  ...
+# Subtest: TG receipt detects substituted identity, scope, permissions, revision and delivery policy
+ok 188 - TG receipt detects substituted identity, scope, permissions, revision and delivery policy
+  ---
+  duration_ms: 0.498
+  ...
+# Subtest: TG actual patch receipt must advance exactly one revision on the same channel
+ok 189 - TG actual patch receipt must advance exactly one revision on the same channel
+  ---
+  duration_ms: 0.6402
+  ...
+# Subtest: TG private capability accepts only the exact selected Bot URL and returned token
+ok 190 - TG private capability accepts only the exact selected Bot URL and returned token
+  ---
+  duration_ms: 1.0421
+  ...
+# Subtest: TG binding receipt corroborates the proved numeric identity rather than a display name
+ok 191 - TG binding receipt corroborates the proved numeric identity rather than a display name
+  ---
+  duration_ms: 0.535
+  ...
+# Subtest: TG cancellation and revocation receipt bind the exact object, identity and next revision
+ok 192 - TG cancellation and revocation receipt bind the exact object, identity and next revision
+  ---
+  duration_ms: 0.3331
+  ...
+# Subtest: TG copies keep a separate selected skill list and normalize only explicit human text
+ok 193 - TG copies keep a separate selected skill list and normalize only explicit human text
+  ---
+  duration_ms: 1.375
+  ...
+# Subtest: 120 GB layout and last part retain exact byte counts without reading file content
+ok 194 - 120 GB layout and last part retain exact byte counts without reading file content
+  ---
+  duration_ms: 3.9765
+  ...
+# Subtest: recovery reconciles cloud parts, sends only missing data and finalizes without committing
+ok 195 - recovery reconciles cloud parts, sends only missing data and finalizes without committing
+  ---
+  duration_ms: 8.562
+  ...
+# Subtest: unknown acknowledgement stops immediately; explicit continuation reconciles an unacknowledged cloud part
+ok 196 - unknown acknowledgement stops immediately; explicit continuation reconciles an unacknowledged cloud part
+  ---
+  duration_ms: 3.4494
+  ...
+# Subtest: an unknown create is never automatically replayed; manual reconciliation uses the same durable intent
+ok 197 - an unknown create is never automatically replayed; manual reconciliation uses the same durable intent
+  ---
+  duration_ms: 2.8165
+  ...
+# Subtest: expired preparation and a changed creation target cannot silently establish a replacement intent
+ok 198 - expired preparation and a changed creation target cannot silently establish a replacement intent
+  ---
+  duration_ms: 1.4846
+  ...
+# Subtest: a changed source layout, storage epoch or target prevents any native transfer
+ok 199 - a changed source layout, storage epoch or target prevents any native transfer
+  ---
+  duration_ms: 3.9162
+  ...
+# Subtest: wrong or incomplete permits stop before native network I/O
+ok 200 - wrong or incomplete permits stop before native network I/O
+  ---
+  duration_ms: 1.9458
+  ...
+# Subtest: cancellation during native I/O rejects late receipt and sends no acknowledgement
+ok 201 - cancellation during native I/O rejects late receipt and sends no acknowledgement
+  ---
+  duration_ms: 12.8325
+  ...
+# Subtest: system notification pause affects only the active native run
+ok 202 - system notification pause affects only the active native run
+  ---
+  duration_ms: 3.3818
+  ...
+# Subtest: logout clears visible upload details and prevents late native acknowledgement
+ok 203 - logout clears visible upload details and prevents late native acknowledgement
+  ---
+  duration_ms: 1.7157
+  ...
+# Subtest: finalize requires authoritative cloud reconciliation of the complete layout
+ok 204 - finalize requires authoritative cloud reconciliation of the complete layout
+  ---
+  duration_ms: 1.4149
+  ...
+# Subtest: memory-only credential rotation continues through the existing client and never reaches the provider
+ok 205 - memory-only credential rotation continues through the existing client and never reaches the provider
+  ---
+  duration_ms: 1.7916
+  ...
+# Subtest: already prepared server results and mismatched identity cannot trigger data transmission
+ok 206 - already prepared server results and mismatched identity cannot trigger data transmission
+  ---
+  duration_ms: 0.6314
+  ...
+1..206
+# tests 206
+# suites 0
+# pass 206
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1243.0378
+TAP version 13
+# Subtest: Taro concern payload serialization preserves explicit clears, all metadata and an omitted state
+ok 1 - Taro concern payload serialization preserves explicit clears, all metadata and an omitted state
+  ---
+  duration_ms: 4.537
+  ...
+# Subtest: Taro requires every field, valid Unicode and explicit writable state before preparing a concern
+ok 2 - Taro requires every field, valid Unicode and explicit writable state before preparing a concern
+  ---
+  duration_ms: 3.3012
+  ...
+# Subtest: Taro confirms the exact new child, parent version and sender rather than a parent update
+ok 3 - Taro confirms the exact new child, parent version and sender rather than a parent update
+  ---
+  duration_ms: 13.2578
+  ...
+# Subtest: Taro risk realization cannot use a missing, reused or malformed linked issue
+ok 4 - Taro risk realization cannot use a missing, reused or malformed linked issue
+  ---
+  duration_ms: 1.3439
+  ...
+# Subtest: Taro issue completion requires resolution and follows the original state transitions
+ok 5 - Taro issue completion requires resolution and follows the original state transitions
+  ---
+  duration_ms: 0.6245
+  ...
+# Subtest: keeps raw-text compatibility and accepts exact-version derived Unicode chunks
+ok 6 - keeps raw-text compatibility and accepts exact-version derived Unicode chunks
+  ---
+  duration_ms: 1.5059
+  ...
+# Subtest: rejects evidence for another formal version, file or original hash
+ok 7 - rejects evidence for another formal version, file or original hash
+  ---
+  duration_ms: 0.4691
+  ...
+# Subtest: requires a ready derivation with its own digest, time and total
+ok 8 - requires a ready derivation with its own digest, time and total
+  ---
+  duration_ms: 0.33
+  ...
+# Subtest: rejects malformed Unicode continuation and accepts the exact final chunk
+ok 9 - rejects malformed Unicode continuation and accepts the exact final chunk
+  ---
+  duration_ms: 0.2139
+  ...
+# Subtest: encodes literal search text and only named resource types
+ok 10 - encodes literal search text and only named resource types
+  ---
+  duration_ms: 1.4162
+  ...
+# Subtest: requires fixed formal version evidence for ready file hits
+ok 11 - requires fixed formal version evidence for ready file hits
+  ---
+  duration_ms: 0.7753
+  ...
+# Subtest: rejects duplicate results and oversized or invalid snippets
+ok 12 - rejects duplicate results and oversized or invalid snippets
+  ---
+  duration_ms: 0.288
+  ...
+# Subtest: pins preview to an exact version and Unicode character offset
+ok 13 - pins preview to an exact version and Unicode character offset
+  ---
+  duration_ms: 0.5021
+  ...
+# Subtest: rejects mismatched chunk boundaries, hashes and forged failure plaintext
+ok 14 - rejects mismatched chunk boundaries, hashes and forged failure plaintext
+  ---
+  duration_ms: 3.1222
+  ...
+# Subtest: accepts explicit pending and unsupported states without derived body
+ok 15 - accepts explicit pending and unsupported states without derived body
+  ---
+  duration_ms: 0.4241
+  ...
+# Subtest: task comments preserve hidden original associations on text-only edits
+ok 16 - task comments preserve hidden original associations on text-only edits
+  ---
+  duration_ms: 2.7172
+  ...
+# Subtest: task comment Unicode and unique-identity bounds match the server
+ok 17 - task comment Unicode and unique-identity bounds match the server
+  ---
+  duration_ms: 4.5598
+  ...
+# Subtest: task comment receipts require exact current revision and explicit mention fields
+ok 18 - task comment receipts require exact current revision and explicit mention fields
+  ---
+  duration_ms: 0.9504
+  ...
+# Subtest: task comment edits pin the immutable predecessor and fixed associations
+ok 19 - task comment edits pin the immutable predecessor and fixed associations
+  ---
+  duration_ms: 0.3228
+  ...
+# Subtest: task mention notifications allow only exact canonical comment routes
+ok 20 - task mention notifications allow only exact canonical comment routes
+  ---
+  duration_ms: 0.9293
+  ...
+# Subtest: mobile sends the exact complete nullable task and explicit false review choice
+ok 21 - mobile sends the exact complete nullable task and explicit false review choice
+  ---
+  duration_ms: 3.3752
+  ...
+# Subtest: mobile rejects missing review choices, guessed references and hidden dependencies
+ok 22 - mobile rejects missing review choices, guessed references and hidden dependencies
+  ---
+  duration_ms: 0.6237
+  ...
+# Subtest: mobile compares zoned microsecond instants before creating a subtask
+ok 23 - mobile compares zoned microsecond instants before creating a subtask
+  ---
+  duration_ms: 2.0417
+  ...
+# Subtest: mobile acknowledges only an actual committed task with matching review and assignment
+ok 24 - mobile acknowledges only an actual committed task with matching review and assignment
+  ---
+  duration_ms: 11.5418
+  ...
+# Subtest: fixes both versions, one edge and the exact action without generic patch authority
+ok 25 - fixes both versions, one edge and the exact action without generic patch authority
+  ---
+  duration_ms: 3.1978
+  ...
+# Subtest: requires different same-project tasks with real IDs and positive exact versions
+ok 26 - requires different same-project tasks with real IDs and positive exact versions
+  ---
+  duration_ms: 0.2527
+  ...
+# Subtest: rejects inferred actions, blank reasons, duplicate additions and absent removals
+ok 27 - rejects inferred actions, blank reasons, duplicate additions and absent removals
+  ---
+  duration_ms: 0.3231
+  ...
+# Subtest: retains task state blockers while allowing an already completed prerequisite
+ok 28 - retains task state blockers while allowing an already completed prerequisite
+  ---
+  duration_ms: 0.32
+  ...
+# Subtest: acknowledges both actual add and actual remove receipts
+ok 29 - acknowledges both actual add and actual remove receipts
+  ---
+  duration_ms: 13.1463
+  ...
+# Subtest: preserves task dates at full microsecond precision across native timestamp formats
+ok 30 - preserves task dates at full microsecond precision across native timestamp formats
+  ---
+  duration_ms: 2.0117
+  ...
+# Subtest: rejects forged edges, predecessor versions, actions, projects and unauthorized metadata
+ok 31 - rejects forged edges, predecessor versions, actions, projects and unauthorized metadata
+  ---
+  duration_ms: 1.1001
+  ...
+# Subtest: keeps authorization distinct from commit and requires its original predecessor basis
+ok 32 - keeps authorization distinct from commit and requires its original predecessor basis
+  ---
+  duration_ms: 1.3999
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 323.9201

@@ -7,6 +7,7 @@ import (
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/files"
 	"copypaste.hk/platform/internal/finance"
+	"copypaste.hk/platform/internal/knowledge"
 	"copypaste.hk/platform/internal/platform"
 	"copypaste.hk/platform/internal/project"
 	"copypaste.hk/platform/internal/servicestatus"
@@ -49,7 +50,17 @@ func view(ctx context.Context, tx pgx.Tx, a core.Actor, n thread) (*Notification
 		var t project.Task
 		t, err = project.NotificationTask(ctx, tx, a, n.ResourceID)
 		if err == nil {
-			if t.AssigneeID == nil || *t.AssigneeID != a.UserID {
+			if n.Category == "mention" {
+				if n.ContextID == nil {
+					return nil, core.Missing()
+				}
+				var leaf string
+				leaf, err = knowledge.NotificationTaskMention(ctx, tx, a, *n.ContextID, t.ID)
+				if err != nil {
+					break
+				}
+				v.Target.CommentID = &leaf
+			} else if t.AssigneeID == nil || *t.AssigneeID != a.UserID {
 				return nil, nil
 			}
 			v.ResourceLabel = t.Title
@@ -57,6 +68,10 @@ func view(ctx context.Context, tx pgx.Tx, a core.Actor, n thread) (*Notification
 			v.AttentionRequired = !slices.Contains([]string{"done", "cancelled"}, t.State)
 			v.Target.WebPath = "/projects/" + t.ProjectID + "?task=" + t.ID
 			v.Target.ContainerID = &t.ProjectID
+			if v.Target.CommentID != nil {
+				v.Target.WebPath += "&comment=" + *v.Target.CommentID
+				v.AttentionRequired = !v.Read
+			}
 		}
 	case "request":
 		var r workflow.Request

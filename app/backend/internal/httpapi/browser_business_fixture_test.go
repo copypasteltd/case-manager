@@ -62,6 +62,21 @@ func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any)
 	nonce := identity.Token()
 	mux := http.NewServeMux()
 	mux.Handle("/", f.handler)
+	if values["task_mentions_fixture"] == true {
+		mux.HandleFunc("POST /__fixture/task-mentions/drain", func(w http.ResponseWriter, r *http.Request) {
+			if r.Header.Get("Authorization") != "Bearer "+nonce {
+				w.WriteHeader(http.StatusForbidden)
+				return
+			}
+			if err := drainTaskMentionFixture(r.Context(), f); err != nil {
+				t.Error("owned fixture notification drain", err)
+				w.WriteHeader(500)
+				return
+			}
+			w.WriteHeader(http.StatusNoContent)
+		})
+	}
+
 	mux.HandleFunc("POST /__fixture/stop", func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Authorization") != "Bearer "+nonce {
 			w.WriteHeader(http.StatusForbidden)

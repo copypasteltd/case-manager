@@ -316,20 +316,35 @@ python scripts/verify_mobile.py my-change
 
 [目录MP4](media/videos/mobile-files-directory.mp4) · [文件回收恢复MP4](media/videos/mobile-files-lifecycle.mp4) · [文件GIF](media/gifs/mobile-files-lifecycle.gif) · [完整流程与接口](development/94-mobile-file-workspace.md) · [准确验证](quality/evidence/mobile-files/verification.md)
 
+## 任务讨论、附件与提及（增量95）
+
+1. 在项目中打开任务，选择“新增任务评论”，填写正文。文字里的 `@姓名` 只是正文；通知对象必须从当前有权成员列表明确选择，最多20人，不包括自己。
+2. 如需依据，选择准确正式文件及版本，最多20份。附件固定为该版本；文件后续更新不会替换原依据，查阅仍重新核对权限。
+3. 点击“核对任务评论”，核对任务、原修订、全文、附件与成员后勾选确认。客户端读取已提交记录及历史，完整一致才提示成功。
+4. 作者可以修改自己的准确修订。默认保留全部原附件／提及；只有明确勾选完整替换才使用本次选择，空列表表示清空。原关联部分不可核对时拒绝替换，防止静默删除。
+5. 被提及者从通知中心打开准确任务及当前评论；即使该讨论不在最新20条，仍会准确读取并自动滚动定位。文本修订不重复提醒；移除后再加入会生成新的提醒，原提醒不复活。已读不会完成任务。
+6. 冲突或不确定响应保留会话内文字并停止重复提交。先重新读取列表核对；重新打开只恢复文字，重新选择关联、核对并确认同一意图时复用原幂等键对账，不自动重发或另建评论。撤权后当前页面与会话按原规则失效。
+
+![任务讨论与明确提及](media/gifs/task-mentions-web-collaboration.gif)
+
+[Web MP4](media/videos/task-mentions-web-collaboration.mp4) · [移动 MP4](media/videos/task-mentions-mobile-collaboration.mp4) · [移动 GIF](media/gifs/task-mentions-mobile-collaboration.gif) · [使用、接口与约束](development/95-task-discussion-and-mentions.md) · [准确验证](quality/95-task-discussion-verification.md)
+
+本轮通知是各员工自己的站内通知，不会向TG、邮件或手机推送额外发送消息。共享Taro继续20页，四端完整首发与外部验收保持原要求。
+
 ## 8. 当前证据与放行条件
 
-当前功能更新为[移动文件与目录整理](development/94-mobile-file-workspace.md)。本轮新执行与原证据按完整来源复用分别说明，不替代正式交付。
+当前实现为[任务讨论、固定附件与明确提及](development/95-task-discussion-and-mentions.md)。以下是本轮实际执行及缓存复用的范围，不代表完整生产交付。
 
-| 层面 | 当前结果 | 实际边界 |
+| 层面 | 当前结果 | 边界 |
 | --- | --- | --- |
-| Go / PostgreSQL | 复用93的167顶层／1,129结果／1,027末级、9批；75迁移 | 完整来源未变；本轮未重新运行全量后端 |
-| Web／运行时／Linux | 复用93的130／51项及构建、Linux编译 | 各自完整来源未变；无新执行或部署声明 |
-| Taro | 新执行233项、类型、微信／抖音各20页 | 文件中心9项真实API／H5流程、8项布局；未执行小程序或设备 |
-| Android | 当前原生开发APK、18项包检查 |26项JVM按实际Gradle缓存单列；无真机／商店验收 |
-| 页面与媒体 | 新增4图、两套MP4／GIF；共82 PNG／31 MP4／31 GIF | 认证后的实际页面像素，隔离合成数据；两项响应故障明确标记 |
-| 历史与运维 | 已发布93来源重建，89份证据／媒体不变；10份入口快照 | 本轮只读检查75迁移、归属进程及零测试库；外部接入关闭 |
+| Go / PostgreSQL | 新执行171顶层／1,133结果、9批；76迁移 | 原75迁移不变，新增76；实际原生PG |
+| Web／运行时／Linux | 新执行135／51项及构建、Linux交叉编译 | Linux未执行或部署；八项Skill仍draft |
+| Taro | 新执行238项、类型、微信／抖音各20页 | Web／H5各8组实际流程；不替代平台或设备 |
+| Android | 当前开发APK及18项包检查 |26项JVM为Gradle UP-TO-DATE缓存，不计本轮重新执行 |
+| 页面与媒体 | 新增8PNG／两套原速MP4和GIF；总90／33／33 | 认证合成页面；真实提交后的响应故障明确标注 |
+| 历史与运维 |94入口／应用／后端证据归档；76迁移／归属进程／零测试库 | 仅原生本机更新，外部接入关闭 |
 
-相同锁文件复用原90审计86项（0 critical、20 high、64 moderate、2 low），未重新扫描。真实模型／TG、设备、云／跨境网络、大文件／迁移、恢复及安全放行继续在[28项差异](delivery/03-goal-gap-assessment.md)中跟踪。详见[准确验证](quality/evidence/mobile-files/verification.md)。
+相同锁文件继续引用原90审计86项（0 critical、20 high、64 moderate、2 low），未重跑审计。真实模型／TG、设备、云及网络、大文件／存量迁移、恢复和安全继续按[28项差异](delivery/03-goal-gap-assessment.md)验收。见[本轮完整验证](quality/95-task-discussion-verification.md)。
 
 ## 9. 文档与同步维护
 

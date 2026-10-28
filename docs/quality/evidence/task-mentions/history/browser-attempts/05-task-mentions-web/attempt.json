@@ -1,0 +1,17 @@
+{
+  "archived_at": "2026-10-27T22:49:14.002751+00:00",
+  "reason": "Actual Web create/mention and text-only revision both passed, including durable notification deduplication. Labelled API pagination setup omitted the browser Origin header required with cookie-authenticated writes, so it was correctly denied403. Preserve the two passing flows, actual media and full source; add the Origin only to the checker setup request.",
+  "source_sha256": "d765bde42d1d8f3df7f583dc6d21de7fd54014fdbbab57b878ebd9f935e9082f",
+  "source_entries": 955,
+  "media": [
+    {
+      "path": "docs/media/screenshots/task-mentions-web-discussion.png",
+      "sha256": "0c58eb21cf7e8a865a3af22b805c2a7d3a32a8f7eb4860c87a21f9b9f2d06f85"
+    },
+    {
+      "path": "docs/media/screenshots/task-mentions-web-preview.png",
+      "sha256": "08762897133e3d6ae149e381b31a585629d3b9476801d1055dab81d4e0c24f38"
+    }
+  ],
+  "archive_sha256": "56972e83e443e52f8c2a046053de0ed75fa7ddf200934f11a8181fb163b8f858"
+}

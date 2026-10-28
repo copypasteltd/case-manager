@@ -2,11 +2,30 @@
 
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
-本目录包含 **82张PNG、31段MP4、31个GIF**。增量94新增移动文件中心4张实际截图和两套MP4／GIF；原93及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
+本目录包含 **90张PNG、33段MP4、33个GIF**。增量95新增Web／Taro任务讨论8张实际截图和两套MP4／GIF；原94及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
 
-This catalog contains **82 PNGs,31 MP4s and31 GIFs**. Increment94 adds four actual mobile-file screenshots and two MP4/GIF pairs. Earlier media retains its original bytes. Recordings use authenticated synthetic data; mobile clips show Taro H5 rather than a device.
+This catalog contains **90 PNGs,33 MP4s and33 GIFs**. Increment95 adds eight actual Web/Taro discussion screenshots and two MP4/GIF pairs. Earlier media retains its original bytes. Recordings use authenticated synthetic data; mobile clips show Taro H5 rather than a device.
 
-## 最新：移动文件与目录整理 / Mobile files and folders
+## 最新：任务讨论与明确提及 / Task discussion and explicit mentions
+
+![Web任务讨论 / Web task discussion](gifs/task-mentions-web-collaboration.gif)
+
+[Web MP4](videos/task-mentions-web-collaboration.mp4) · [移动 MP4 / Mobile MP4](videos/task-mentions-mobile-collaboration.mp4) · [移动 GIF / Mobile GIF](gifs/task-mentions-mobile-collaboration.gif)
+
+| 实际页面 / Actual page | Web | Taro H5 |
+| --- | --- | --- |
+| 核对正文、固定附件与明确成员 / Review | [截图 / PNG](screenshots/task-mentions-web-preview.png) | [截图 / PNG](screenshots/task-mentions-mobile-preview.png) |
+| 已提交讨论与固定依据 / Committed discussion | [截图 / PNG](screenshots/task-mentions-web-discussion.png) | [截图 / PNG](screenshots/task-mentions-mobile-discussion.png) |
+| 被提及者自己的站内通知 / Recipient inbox | [截图 / PNG](screenshots/task-mentions-web-notification.png) | [截图 / PNG](screenshots/task-mentions-mobile-notification.png) |
+| 超过首20条后的准确评论定位 / Exact discussion beyond first20 | [截图 / PNG](screenshots/task-mentions-web-exact-discussion.png) | [截图 / PNG](screenshots/task-mentions-mobile-exact-discussion.png) |
+
+本轮使用真实本机API、隔离原生PostgreSQL及两名合成员工；录制发生在登录／MFA之后，不录制凭据或能力链接。MP4为无声H.264，Web1364×900／5.8秒（28捕获帧），移动390×900／5.9秒（27捕获帧）；GIF均1.0×，按原始捕获时序编码。共享移动界面由H5审查，不是Android或小程序真机。PNG另覆盖通知和准确定位，视频仅演示评论创建及真实结果，不声称录到全部故障和通知场景。
+
+Actual authenticated synthetic Web and Taro H5 pixels use the native API and isolated PostgreSQL. Silent MP4s retain capture timing (Web5.8s, mobile5.9s); both GIFs use1.0× speed. Login/MFA precede recording. Clips show comment creation and the committed result; separate PNGs show the inbox and exact navigation. No device, cloud, real model or Telegram network acceptance is implied. All eight PNGs and first/middle/last GIF samples were viewed; exact target text enters the viewport through application navigation, without checker scrolling.
+
+[使用与约束 / Workflow](../development/95-task-discussion-and-mentions.md) · [准确验证 / Verification](../quality/95-task-discussion-verification.md) · [媒体摘要 / Digests and timing](../quality/evidence/task-mentions/media.json) · [像素复核 / Visual review](../quality/evidence/task-mentions/visual-review.json)
+
+## 此前：移动文件与目录整理 / Mobile files and folders
 
 ![目录整理 / Folder organization](gifs/mobile-files-directory.gif)
 

@@ -2,7 +2,7 @@ import type { components } from './api';
 type Schemas = components['schemas'];
 export type Notification = Schemas['Notification'];
 export const notificationCategories: Record<Notification['category'], string> = {
-  task: '任务', approval: '待审批', request_result: '申请进展', contract_due: '合同到期',
+  mention: '讨论提及', task: '任务', approval: '待审批', request_result: '申请进展', contract_due: '合同到期',
   subscription_due: '订阅账期', replica_failure: '文件副本', incident: '服务事件', secretary: '秘书结果',
 };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -14,9 +14,10 @@ function id(value: unknown): string {
 // unrestricted redirect, in either the Web client or a mini-program.
 export function notificationDestination(target: Schemas['NotificationTarget']) {
   const resource = id(target.id);
+  if (target.comment_id !== undefined && target.type !== 'task') throw new Error('讨论地址与资料类型不一致。');
   let web: string, mobile: string;
   switch (target.type) {
-    case 'task': web = '/projects/' + id(target.container_id) + '?task=' + resource; mobile = '/pages/detail/index?kind=task&id=' + resource; break;
+    case 'task': web = '/projects/' + id(target.container_id) + '?task=' + resource; mobile = '/pages/detail/index?kind=task&id=' + resource; if (target.comment_id !== undefined) { const comment = id(target.comment_id); web += '&comment=' + comment; mobile += '&comment_id=' + comment; } break;
     case 'request': web = '/requests/' + resource; mobile = '/pages/detail/index?kind=request&id=' + resource; break;
     case 'contract': web = '/contracts/' + resource; mobile = '/pages/business/index?kind=contract&id=' + resource; break;
     case 'subscription_period': id(target.container_id); web = '/subscription-periods/' + resource; mobile = '/pages/subscription-period/index?id=' + resource; break;

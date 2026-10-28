@@ -1,0 +1,8 @@
+{
+  "archived_at": "2026-10-27T22:45:31.788855+00:00",
+  "reason": "Owned Web fixture and actual UI authentication succeeded. Checker incorrectly assumed Web exposed a bearer token; Web uses HttpOnly session cookies. No business action was attempted. Use the authenticated browser context and its current CSRF cookie for labelled API setup and readback.",
+  "source_sha256": "8712c6ae51cd39ef6e70746eba4057d5dd94214591c4108b66632185ef1dce59",
+  "source_entries": 955,
+  "media": [],
+  "archive_sha256": "d187a43607780032a89955ab6fe0a5e86bf12bb1b7de440155a076d1681a1ace"
+}

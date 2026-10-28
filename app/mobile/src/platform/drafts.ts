@@ -9,7 +9,7 @@ import { copyIncidentInput, incidentInputCharacters, type IncidentInput } from '
 // evidence, MFA, acknowledgement flags, API responses or command payloads.
 export type DraftFields = { reason: string; action: string; name?: string; criteria?: string; description?: string; body?: string; owner?: string; milestone?: string; business?: BusinessInput; incident?: IncidentInput; project?: ProjectInput; resource?: ResourceInput; task?: TaskInput; change?: ChangeInput; financial?: FinancialInput };
 export type DraftAuthority = { epoch: number; userID: string; authorizationVersion: number };
-export type DraftTarget = { kind: 'task' | 'task-create' | 'task-edit' | 'task-dependency' | 'deliverable-create' | 'deliverable-edit' | 'deliverable-submit' | 'comment-create' | 'comment-edit'; id: string; version: number } | {
+export type DraftTarget = { kind: 'task' | 'task-create' | 'task-edit' | 'task-dependency' | 'deliverable-create' | 'deliverable-edit' | 'deliverable-submit' | 'task-comment-create' | 'task-comment-edit' | 'comment-create' | 'comment-edit'; id: string; version: number } | {
   kind: 'approval'; id: string; version: number; revision: string; hash: string; step: string; stepVersion: number;
 } | {
   kind: 'change-create' | 'change-edit'; id: string; version: number; hash: string;

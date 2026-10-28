@@ -1,5 +1,7 @@
 # Android 原生宿主与业务接入（增量65）
 
+当前来源（增量95）/ Current source: 共享包保持20页，任务详情新增讨论、固定版本附件、明确成员提及及准确通知定位；原生上传继续保留。当前开发APK：42,940,937 bytes，SHA-256 `30eb371f3f1c7dc0cfd47b712cd879325bce96de04f2984e4394d14e8bc8a97d`；18项包检查通过，26项JVM明确为Gradle UP-TO-DATE缓存而非新执行。源码摘要 `85b2eec0d19a1525dbd16f1c78859179bfeafbcff1ea8c86e457ef2c81f27dce`。实际包位于忽略的本机产物目录，不提交APK／签名密钥。见[本轮方案](95-task-discussion-and-mentions.md)、[构建来源](../quality/evidence/task-mentions/build.json)、[检查](../quality/evidence/task-mentions/apk-inspection.json)与[缓存范围](../quality/evidence/task-mentions/android-test-scope.json)。No real-device, signing, store, background or120GB acceptance is claimed. 下文各增量说明保留其历史范围。
+
 当前来源补充（增量94）/ Current-source addendum: 原生宿主已包含后续上传与当前20页共享业务包，新增手工目录／文件整理、回收恢复和正式版本列表；下文14页与“尚无上传”是65阶段历史。The original14-page/no-upload baseline below is historical. 当前原生开发APK与18项包检查、26项JVM的实际Gradle缓存范围见[文件方案](94-mobile-file-workspace.md)、[包证据](../quality/evidence/mobile-files/build.json)及[缓存范围](../quality/evidence/mobile-files/android-test-scope.json)。未作真机、正式签名或分发验收。
 
 本文记录增量65交付时的实现与限制。后续原生上传代码及当前验收边界见[增量66](66-android-resumable-uploads.md)，当前整体状态以[差异表](../delivery/03-goal-gap-assessment.md)为准。

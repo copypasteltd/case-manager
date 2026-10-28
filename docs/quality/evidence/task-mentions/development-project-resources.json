@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T23:48:13.784326+00:00",
+  "database": {
+    "role": "copypaste_app",
+    "superuser": false,
+    "bypass_rls": false,
+    "create_database": false,
+    "create_roles": false,
+    "create_public_objects": false,
+    "read_private_migration_ledger": false,
+    "write_runtime_profiles": false,
+    "insert_execution_evidence": true,
+    "rewrite_execution_evidence": false,
+    "immutable_execution_guards": 6,
+    "deferred_execution_guards": 6,
+    "active_runtime_profiles": 0,
+    "migration_count": 76,
+    "latest_migration": "0076_task_comment_mentions.sql",
+    "migration_manifest_matches_source": true,
+    "disposable_test_databases": 0
+  },
+  "mention_metadata": {
+    "mention_array": true,
+    "mention_guard": 1,
+    "comment_immutable_guard": 1,
+    "mention_function_stable": true,
+    "mention_bounds": 1,
+    "notification_context": 1,
+    "notification_category": true,
+    "single_successor": true
+  },
+  "migration_count": 76,
+  "ownership": {
+    "api": true,
+    "notification_worker": true,
+    "report_export_worker": true
+  },
+  "worker_sources_match": true,
+  "backend_source_sha256": "a296d5bad22b83e42f3aac30e2a27b3d9d2ca6608ac6120c59a99783d76cb52e",
+  "integrations_disabled": true,
+  "read_only_inspection": true,
+  "production_deployment": false,
+  "verification_script_sha256": "a27facd623971f428d370b423da648c0e0b878a0cc4641799681e9fc78c3bdab"
+}

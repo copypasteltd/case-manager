@@ -58,6 +58,16 @@ func (s *Server) knowledgeRoutes(mux *http.ServeMux) {
 			return service.WriteComment(ctx, c, parent.kind, r.PathValue("id"), "", input)
 		}))
 	}
+	mux.HandleFunc("GET /v1/comments/{id}", read(s, "CommentResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		return service.GetComment(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("GET /v1/tasks/{id}/mention-candidates", read(s, "MentionCandidatesResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, err := filter(r)
+		if err != nil {
+			return nil, err
+		}
+		return service.MentionCandidates(ctx, a, r.PathValue("id"), knowledge.Filter{Query: f.Query, Cursor: f.Cursor, Limit: f.Limit})
+	}))
 	mux.HandleFunc("PATCH /v1/comments/{id}", command(s, "CommentPatch", "CommentResponse", func(ctx context.Context, c core.Command, r *http.Request, input knowledge.CommentInput) (core.Result, error) {
 		return service.EditComment(ctx, c, r.PathValue("id"), input)
 	}))

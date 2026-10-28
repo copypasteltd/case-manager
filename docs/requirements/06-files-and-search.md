@@ -66,3 +66,7 @@ FILE-14：清理条件同时满足：不为 current、未被合同/交付/有效
 Shared mobile commands inherit the actual parent scope, bind exact source revisions and require explicit confirmation. Trash/untrash preserve formal content. Version reading rechecks current authorization. Incomplete, conflicting or uncertain results retain text and stop repeats. Selection/confirmation are not draft fields. Collections paginate independently; Web/Android retain large-file responsibility.
 
 [实现与范围 / Implementation and scope](../development/94-mobile-file-workspace.md) · [准确验证 / Exact verification](../quality/evidence/mobile-files/verification.md)。跨范围移动、永久清理与正式四端／云／容量验收仍按原需求进行。
+
+## 任务讨论固定依据（增量95） / Fixed discussion evidence
+
+任务评论可明确附加准确正式文件版本，最多20份。正文修订默认保留完整原附件，明确替换才采用本次完整列表；原关联不可核对时拒绝替换。文件新版本不会改变历史讨论依据，读取附件继续核对当前权限、扫描与准确版本状态，不把不可见附件当作已删除，也不在表单中加载120GB原件。真实流程和回执约束见[任务讨论协议](../development/95-task-discussion-and-mentions.md)。Task discussion attachments pin immutable formal versions and retain live access checks; historical content never follows a newer file head.

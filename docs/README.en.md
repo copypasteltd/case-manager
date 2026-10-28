@@ -316,20 +316,35 @@ Memory-only text drafts bind identity, authority, object and revision; destinati
 
 [Directory MP4](media/videos/mobile-files-directory.mp4) · [Trash/restore MP4](media/videos/mobile-files-lifecycle.mp4) · [File GIF](media/gifs/mobile-files-lifecycle.gif) · [Workflow and API](development/94-mobile-file-workspace.md) · [Exact verification](quality/evidence/mobile-files/verification.md)
 
+## Task discussions and explicit mentions (increment95)
+
+1. Open a project task and choose **New task comment**. Write the body. A textual `@name` is ordinary text; explicitly choose up to20 currently eligible project members to notify, excluding yourself.
+2. Optionally select up to20 exact formal file versions. Attachments remain pinned to those versions, even after a newer file is published. Reading independently checks current access.
+3. Review the task, predecessor revision, complete body, attachments and members, then explicitly confirm. Success requires the committed record and immutable history to match the request.
+4. Authors edit their own exact revision. Omitted attachment/mention lists preserve all original associations. Only explicit complete replacement uses the current selection; an empty list clears it. Replacement is blocked when original associations cannot be fully checked.
+5. A recipient opens the exact current comment from the inbox, even beyond the first20 rows; the page automatically scrolls to the discussion. Text-only edits do not repeat delivery. Removing then re-adding a mention creates a new notification without reviving the older one. Read status never completes the task.
+6. Conflicts and uncertain responses preserve memory-only text and block repeats. Reread the list first. Reopening restores text only; explicitly select associations, review and reconfirm the identical intent to reconcile using its original idempotency key. There is no automatic resend. Revocation invalidates the open workflow through existing authority rules.
+
+![Task discussion and explicit mention](media/gifs/task-mentions-web-collaboration.gif)
+
+[Web MP4](media/videos/task-mentions-web-collaboration.mp4) · [Mobile MP4](media/videos/task-mentions-mobile-collaboration.mp4) · [Mobile GIF](media/gifs/task-mentions-mobile-collaboration.gif) · [Workflow, API and constraints](development/95-task-discussion-and-mentions.md) · [Exact verification](quality/95-task-discussion-verification.md)
+
+These are each employee's in-app notifications. No additional Telegram, email or device-push sender is enabled. Taro remains20 registered pages, with all four release clients and external acceptance unchanged.
+
 ## 8. Evidence and release gates
 
-The current implementation is [mobile file and folder organization](development/94-mobile-file-workspace.md). Fresh runs and unchanged-source reuse are distinguished; neither establishes production delivery.
+The current implementation is [task discussions, fixed attachments and explicit mentions](development/95-task-discussion-and-mentions.md). Fresh execution and cache reuse are recorded separately; neither establishes production delivery.
 
 | Layer | Current result | Scope |
 | --- | --- | --- |
-| Go / PostgreSQL | Reuse93:167 top-level /1,129 results /1,027 leaves in9 batches;75 migrations | Complete source unchanged; no new full backend execution |
-| Web/runtime/Linux | Reuse93:130/51 tests/builds and Linux compile | Respective complete sources unchanged; no fresh execution/deployment claim |
-| Taro | Fresh233 tests, types and20 pages per WeChat/Douyin build | Nine actual API/H5 file flows and eight layouts; no mini-program/device execution |
-| Android | Current development APK and18 artifact checks |26 JVM results retain their actual Gradle cache scope; no device/store acceptance |
-| UI/media | Four new PNGs/two MP4-GIF pairs;82 PNGs/31 MP4s/31 GIFs total | Actual authenticated pixels and synthetic data; two response faults explicitly labelled |
-| History/operations | Published93 reconstructed;89 original evidence/media files and10 entry snapshots retained | Fresh readonly75-migration/process/zero-test-database check; integrations disabled |
+| Go / PostgreSQL | Fresh171 top-level /1,133 records in9 batches;76 migrations | Earlier75 migrations unchanged; native PostgreSQL |
+| Web/runtime/Linux | Fresh135/51 tests/builds and Linux cross-compilation | Linux not executed/deployed; eight Skills remain draft |
+| Taro | Fresh238 tests, types and20 pages per WeChat/Douyin build | Eight actual flows per Web/H5 client; no platform/device execution |
+| Android | Current development APK and18 package checks |26 JVM results are Gradle UP-TO-DATE reuse, not fresh execution |
+| UI/media | Eight new PNGs/two original-speed MP4-GIF pairs;90/33/33 total | Authenticated synthetic pixels; committed-response faults explicitly labelled |
+| History/operations |94 entry/application/backend archives;76-migration/owned-process/zero-test-DB check | Native local update only; external integrations disabled |
 
-The unchanged lock reuses the original90 audit of86 findings:0 critical,20 high,64 moderate and2 low; it was not rerun. Real models/TG, devices, cloud/network, large transfers/migration, recovery and security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [exact verification](quality/evidence/mobile-files/verification.md).
+The unchanged lock retains the original90 audit of86 findings:0 critical,20 high,64 moderate and2 low; no new audit is claimed. Real models/TG, devices, cloud/network, large transfers/migration, recovery and security remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). See [exact verification](quality/95-task-discussion-verification.md).
 
 ## 9. Documentation and synchronization
 

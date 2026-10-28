@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-27T23:48:11.713523+00:00",
+  "previous_published94_disposable_count": 0,
+  "inspected_idle_synthetic_databases": 2,
+  "dropped": 2,
+  "remaining": 0,
+  "database_identity_sha256": [
+    "7e4286e3977a2fb7a50e91bab5bba72dbf894b8085c6aa55b1036da4420785ed",
+    "39cfd2833153a9e4f3c9fc097b44006d3f2e66f9222baeb9d3fe24e95943f292"
+  ],
+  "reason": "Two databases remained after explicitly interrupted95 regression preparation. All current owned checks completed before cleanup.",
+  "native_loopback_port": 14660,
+  "force_used": false,
+  "development_database_touched": false,
+  "cleanup_script_sha256": "5c04e7a33ff132857c586d00d46440f5e788222c8ceb2876f69ed0a5bfc0936a"
+}

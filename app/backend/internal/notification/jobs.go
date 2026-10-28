@@ -17,7 +17,7 @@ import (
 
 const JobKind = "notification.deliver.v1"
 
-var EventTypes = []string{"task.created", "task.updated", "task.transitioned", "task.dependencies.changed",
+var EventTypes = []string{"comment.created", "comment.revised", "task.created", "task.updated", "task.transitioned", "task.dependencies.changed",
 	"request.submitted", "approval.step.decided", "subscription.reminder.due", "contract.reminder.due",
 	"replica.failed", "incident.opened", "incident.updated", "run.completed", "run.failed", "run.cancelled", "run.interrupted"}
 
@@ -55,7 +55,7 @@ func decodeJob(j jobqueue.Job) (jobInput, error) {
 }
 func newCandidate(e event, recipient, category, resourceType, resourceID string, context *string) thread {
 	key := category + ":" + resourceID
-	if context != nil && slices.Contains([]string{"approval", "contract_due", "subscription_due", "replica_failure"}, category) {
+	if context != nil && slices.Contains([]string{"mention", "approval", "contract_due", "subscription_due", "replica_failure"}, category) {
 		key += ":" + *context
 	}
 	return thread{OrgID: e.OrgID, RecipientID: recipient, Category: category, ResourceType: resourceType, ResourceID: resourceID,
@@ -92,6 +92,16 @@ func recipients(ctx context.Context, tx pgx.Tx, e event) ([]thread, error) {
 	}
 	args := []any{e.OrgID, e.AggregateID, e.AggregateVersion}
 	switch {
+	case e.Type == "comment.created" || e.Type == "comment.revised":
+		if e.AggregateType != "comment" {
+			return out, core.Invalid("event", "提及事件目标类型不一致")
+		}
+		err := addRows(`SELECT recipient,c.resource_id,c.id FROM comments c
+		CROSS JOIN LATERAL unnest(c.mentioned_user_ids) recipient
+		LEFT JOIN comments prior ON prior.org_id=c.org_id AND prior.id=c.replaces_id
+		WHERE c.org_id=$1 AND c.id=$2 AND c.revision=$3 AND c.resource_type='task'
+		AND recipient<>c.author_id AND NOT recipient=ANY(COALESCE(prior.mentioned_user_ids,'{}'::uuid[]))`, args, "mention", "task", true)
+		return out, err
 	case strings.HasPrefix(e.Type, "task."):
 		if e.AggregateType != "task" {
 			return out, core.Invalid("event", "任务事件目标类型不一致")
