@@ -4,6 +4,14 @@
 
 这是 CopyPaste 的内部管理平台，把项目、OA、文件、知识、费用订阅、公司秘书和服务状态连接到同一套业务权限与审计体系。本仓库包含可运行实现、详细协议和来源绑定的验证证据；当前为开发预览，四端生产交付仍按 [28 项编号差异](delivery/03-goal-gap-assessment.md)推进。
 
+## 依赖维护与四端兼容（增量98）
+
+移除当前原生构建未使用的 `@tarojs/rn-runner`；Doctor glob10固定10.5.0，旧原生代码生成器实际加载micromatch4.0.8。保留Taro4.3.1、React18.2.0、原生React Native0.73.11及完整四端入口和原打包边界。新增真实CLI字面参数及代码变换排除规则检查，14项依赖／2项原生JS检查通过。
+
+当前完整审计按相同公告时点对比91→80项，high20→13；仍有13 high／60 moderate／7 low，生产安全门槛开放。原90审计86项是历史记录，不将公告变化计作修复。新执行类型、Web135／移动248／运行时51项及四端受影响构建；后端、Linux和97 PNG／35 MP4／35 GIF沿用不变源码与原始字节，明确列为复用。
+
+[安装、真实调用、未关闭风险与维护规则](development/98-dependency-maintenance.md) · [本轮准确验证](quality/98-dependency-maintenance-verification.md)。无业务界面、迁移或API改动；8项Skill仍draft，真实平台／设备／云／模型／TG和完整四端验收保持开放。
+
 ## 小程序身份绑定与登录（增量97）
 
 员工首次在公司微信／抖音小程序使用内部账号登录，进入“我的工作空间 → 我的小程序绑定”，输入当前密码；已设置验证器时先完成最近10分钟内的两步验证。客户端取得实际平台单次凭证，员工在两分钟内明确确认后才创建绑定。以后可选择微信／抖音身份登录同一员工账号，继续适用的MFA与业务权限检查。
@@ -353,18 +361,18 @@ python scripts/verify_mobile.py my-change
 
 ## 8. 当前证据与放行条件
 
-当前实现为[原生存量文件迁移](development/96-native-file-import.md)。完整来源绑定记录见[本轮验证](quality/96-native-file-import-verification.md)及[最终检查](quality/evidence/file-imports/final-source-check.json)。
+当前维护增量为[依赖修复与四端兼容](development/98-dependency-maintenance.md)。最新业务增量97为[小程序身份](development/97-mini-program-identity.md)，增量96为[原生迁移工具](development/96-native-file-import.md)。[本轮验证](quality/98-dependency-maintenance-verification.md)和[最终源检查](quality/evidence/dependency-maintenance/final-source-check.json)明确区分新执行与复用。
 
 | 层面 | 当前结果 | 边界 |
 | --- | --- | --- |
-| Go／PostgreSQL | 新执行181个顶层测试／1,163条结果，分10批通过；准确结果数见[后端记录](quality/evidence/file-imports-backend/result.json)；77迁移 | 原76迁移字节保留，新增77；原生隔离PG，非生产 |
-| 原生CLI／HTTP | Windows实际CLI 7项；接收分片无成功回执后续跑、原扫描提交、复制前后报告、变更和撤权检查 | 合成文件与受控对象替身；不代表真实120GB／2TB或双云验收 |
-| Web／运行时／Taro | 新执行135／51／238项、类型与构建，微信／抖音各20页 | 八项Skill仍draft；平台与模型另验 |
-| Android | 当前源码开发包和18项实际包检查 | JVM26项的Gradle缓存／新执行按[原任务](quality/evidence/file-imports/android-test-scope.json)分列；不启动设备 |
-| 页面媒体 | 原90 PNG／33 MP4／33 GIF保持95及更早来源 | 本轮没有UI改动或新浏览器采集 |
-| 运维与Linux |77迁移、准确归属API／两个worker与零隔离库核对；平台及CLI交叉编译 | 真实外部接入关闭；Linux未执行或部署 |
+| 依赖 | 新扫描原97锁91项→98锁80项，high20→13；14项依赖／2项原生JS检查新通过 | 80项开放，不以完成扫描代替安全放行 |
+| Go／PostgreSQL | 复用97的189顶层／1,183结果、10批；完整Go摘要未变；78迁移 | 本次无新Go执行；原生隔离PG证据不代表生产 |
+| Web／运行时／Taro | 新执行135／51／248项、类型与构建，微信／抖音各20页 | 八项Skill仍draft；平台与模型另验 |
+| Android | 新执行Metro；Gradle assemble复用原97相同APK；18项包检查新通过 | JVM26项按[本轮Gradle状态](quality/evidence/dependency-maintenance/android-test-scope.json)标注新执行或缓存；无设备运行 |
+| 页面媒体 | 原97 PNG／35 MP4／35 GIF逐文件保留原发布字节 | 本次无UI变化和新浏览器采集；Taro H5非真机 |
+| 运维与Linux | 新只读核对78迁移、归属API／两个worker与零隔离库；复用97相同Go源码的Linux交叉编译 | 外部接入关闭；Linux未执行或部署 |
 
-相同锁文件继续引用原90审计86项（0 critical、20 high、64 moderate、2 low），未重跑审计，生产安全门槛未通过。完整四端、真实云／模型／TG、香港网络、120GB／2TB、ACL、恢复及切换仍按[28项差异](delivery/03-goal-gap-assessment.md)验收。原95页面与历史证据保留原状态，不改称本轮新执行。
+当前锁文件完整审计80项（0 critical、13 high、60 moderate、7 low）；原97锁本次新扫描91项，原90的86项保留为历史。生产安全门槛未通过。完整四端、真实平台／云／模型／TG、香港真机网络、120GB／2TB、ACL、恢复及切换仍按[28项差异](delivery/03-goal-gap-assessment.md)验收。原有记录保持实际新执行、缓存、失败与历史状态。
 
 ## 9. 文档与同步维护
 

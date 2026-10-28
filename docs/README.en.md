@@ -4,6 +4,14 @@
 
 CopyPaste Case Manager connects projects, office workflows, files, knowledge, recurring costs, a company secretary and service status through shared authorization and audit history. This repository includes working implementations, detailed protocols and source-bound evidence. It is a development preview; full production delivery continues against the [28 numbered gaps](delivery/03-goal-gap-assessment.md).
 
+## Dependency maintenance and four-client compatibility (increment98)
+
+Removes the Taro RN runner unused by the supported native host, patches Doctor glob10 to10.5.0 and makes the legacy native codemod load micromatch4.0.8. Taro4.3.1, React18.2.0, the native React Native0.73.11 host, all four client targets and existing bundle boundaries remain. Fourteen dependency checks and two native JS checks pass, including actual CLI argument handling and codemod exclusions.
+
+A fresh comparison against the same advisory feed falls from91 to80 package findings, including high20→13. The remaining13 high,60 moderate and7 low findings keep the production security gate open. The historical86-finding audit is not a current scan. Type checking,135 Web/248 mobile/51 runtime tests and affected four-client builds are fresh; unchanged Go and97 PNG/35 MP4/35 GIF evidence retain their original provenance.
+
+[Install, real consumers, remaining risks and maintenance](development/98-dependency-maintenance.md) · [Exact verification scope](quality/98-dependency-maintenance-verification.md). No UI, migration or API change. Eight Skills remain draft; real platform/device/cloud/model/TG and complete four-client acceptance remain open.
+
 ## Mini-program identity binding and login (increment97)
 
 First sign in to the company WeChat or Douyin mini-program with an existing internal account. Open My workspace → My mini-program bindings, confirm the current password, and complete a recent MFA step if an authenticator is enrolled. The client checks its actual runtime and AppID before acquiring a one-use platform code: WeChat uses its account API, while Douyin uses `tt.getEnvInfoSync().microapp.appId` (base library2.21.0+). Android has a separate adapter that refuses platform identity acquisition. A two-minute proof becomes a binding only after explicit employee confirmation. Later platform logins identify that same employee and continue the required MFA and business authorization checks.
@@ -353,18 +361,18 @@ These are each employee's in-app notifications. No additional Telegram, email or
 
 ## 8. Evidence and release gates
 
-The previous increment96 implemented the [native source-file import operator](development/96-native-file-import.md). See the [verification scope](quality/96-native-file-import-verification.md) and [final source checks](quality/evidence/file-imports/final-source-check.json).
+The current maintenance increment is [dependency repair and four-client compatibility](development/98-dependency-maintenance.md). The latest business increment97 adds [mini-program identity](development/97-mini-program-identity.md), following the96 [native file importer](development/96-native-file-import.md). [Current verification](quality/98-dependency-maintenance-verification.md) and [final source checks](quality/evidence/dependency-maintenance/final-source-check.json) distinguish fresh execution from retained evidence.
 
 | Layer | Current result | Scope |
 | --- | --- | --- |
-| Go/PostgreSQL |181 top-level tests /1,163 result records across10 passed batches; exact result count in the [backend record](quality/evidence/file-imports-backend/result.json);77 migrations | Published76 migrations unchanged; native isolated database, no production execution |
-| Native CLI/HTTP | Seven real Windows CLI checks; accepted-part/missing-receipt resume, normal scan/commit, before/after replica reports, mutation and revocation checks | Synthetic files and controlled provider, not real120 GB/2 TB/cloud acceptance |
-| Web/runtime/Taro | Fresh135/51/238 tests, types and builds;20 pages per WeChat/Douyin target | Eight Skills remain draft; real platform/model checks separate |
-| Android | Current-source development package and18 actual package inspections |26 JVM results explicitly marked as cached or freshly executed in the [task record](quality/evidence/file-imports/android-test-scope.json); no device started |
-| Page media | Original90 PNGs,33 MP4s and33 GIFs preserve their95-or-earlier source scope | No UI change or new browser capture in96 |
-| Operations/Linux |77 migrations, exact owned API/two workers and zero disposable databases; platform/CLI cross-compilation | External integrations disabled; Linux artifacts not executed/deployed |
+| Dependencies | Fresh complete audit91→80, high20→13;14 dependency and2 native JS checks pass | All80 findings stay open; completion of an audit is not security acceptance |
+| Go/PostgreSQL | Retains97's189 top-level tests /1,183 result records in10 batches; exact Go digest unchanged;78 migrations | No new Go execution this increment; isolated native database evidence is not production |
+| Web/runtime/Taro | Fresh135/51/248 tests, types and builds;20 pages per WeChat/Douyin target | Eight Skills remain draft; real platform/model checks separate |
+| Android | Fresh Metro/current-lock build; Gradle assemble retains the identical97 APK;18 fresh package checks |26 JVM results state actual execution/cache in the [current Gradle record](quality/evidence/dependency-maintenance/android-test-scope.json); no device execution |
+| Page media | Original97 PNGs,35 MP4s and35 GIFs retain published bytes | No UI change or new browser capture; shared Taro H5 is not a device |
+| Operations/Linux | Fresh read-only inspection of78 migrations, owned API/two workers and zero disposable databases; retains97 Linux cross-build on identical Go sources | External integrations disabled; Linux artifacts not executed/deployed |
 
-The unchanged lock retains the original90 audit:86 findings, including0 critical,20 high,64 moderate and2 low; the production security gate remains open, with no fresh audit claimed. Full four-client, real cloud/model/TG, Hong Kong network,120 GB/2 TB, ACL, restore and cutover acceptance remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). Original95 page/evidence records retain their original status and are not represented as fresh96 interactions.
+The updated lock has80 findings (0 critical,13 high,60 moderate,7 low), compared with91 on the original97 lock against the current feed. The historical86-finding audit is separate. The production security gate remains open. Full four-client, real platform/cloud/model/TG, Hong Kong devices/network,120 GB/2 TB, ACL, restore and cutover acceptance remain in the [28 numbered gaps](delivery/03-goal-gap-assessment.md). Original results preserve their actual fresh, cached, failed or historical status.
 
 ## 9. Documentation and synchronization
 

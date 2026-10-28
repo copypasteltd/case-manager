@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T06:53:20.997377+00:00",
+  "command": [
+    "npm",
+    "audit",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "exit_code": 1,
+  "npm_version": "10.9.2",
+  "package_lock_sha256": "a14002ac9152073560ee7a3256c5752cd8cb2ff5e5da3c15a7582ee8ff3b6f44",
+  "source_unchanged": true,
+  "vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 60,
+    "high": 13,
+    "critical": 0,
+    "total": 80
+  },
+  "before_vulnerabilities": {
+    "info": 0,
+    "low": 8,
+    "moderate": 63,
+    "high": 20,
+    "critical": 0,
+    "total": 91
+  },
+  "raw_report": "audit-after.json",
+  "raw_report_sha256": "197e4c28c964558b7fe7234f8368508cda8a9ee28a8a7e97e1a77c16afa470df",
+  "before_source_record": "audit-before-source.json",
+  "before_source_record_sha256": "973fe4c533d291eb3df96970158a469c7f5f551ab700ff9d856d5e94de6292de",
+  "all_dependency_scopes_included": true,
+  "advisories_suppressed": false,
+  "production_security_gate_passed": false,
+  "scope": "Complete current advisory feed, all dependency scopes. Findings remain open; this is not production security acceptance."
+}

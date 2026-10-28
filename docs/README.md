@@ -1,6 +1,8 @@
 # CopyPaste 内部管理平台文档中心
 
-最新增量97：[小程序身份绑定、登录与解绑失效](development/97-mini-program-identity.md) · [准确验证与实际媒体](quality/97-mini-program-identity-verification.md)。Employee-confirmed WeChat/Douyin identities, MFA and session revocation.
+最新增量98：[依赖维护与四端兼容](development/98-dependency-maintenance.md) · [新执行、复用与开放风险](quality/98-dependency-maintenance-verification.md)。Full current audit91→80, high20→13; security acceptance remains open.
+
+此前增量97：[小程序身份绑定、登录与解绑失效](development/97-mini-program-identity.md) · [准确验证与实际媒体](quality/97-mini-program-identity-verification.md)。Employee-confirmed WeChat/Douyin identities, MFA and session revocation.
 
 此前增量96：[原生文件迁移与操作约束](development/96-native-file-import.md) · [准确验证范围](quality/96-native-file-import-verification.md)。Native import operator, reviewed manifests, resume and dual-provider verification.
 
@@ -14,7 +16,7 @@
 
 **当前细化基线：v1.0-draft，2026-10-24；视觉设计基线：v1.0.0-draft。** 全部后续文档保存在 `docs/`，全部开发实现位于 `app/`。身份/权限、项目协作、知识修订、文件元数据和部分 Web 页面已进入本地实现与验证；完整平台仍在建设，尚未生产部署或完成首发验收。真实进度见[代码实施台账](delivery/02-implementation-ledger.md)。
 
-依赖维护基线：[增量90 · 依赖修复与多端兼容](development/90-dependency-hardening.md) · [来源、实际检查与媒体](quality/evidence/dependency-hardening/verification.md)。完整审计101→86，critical11→0，仍有20项high；多端重新构建并保留剩余风险，完整四端Goal仍开放。
+依赖维护基线：[增量98 · 当前修复与剩余项](development/98-dependency-maintenance.md) · [准确验证](quality/98-dependency-maintenance-verification.md)。当前完整扫描91→80项，high20→13；原[增量90](development/90-dependency-hardening.md)的101→86扫描保留历史口径。完整四端Goal仍开放。
 
 确认输入：3名香港员工/3人同时在线；现有境内服务器；2TB原件/最大单文件120GB；Go+PostgreSQL、React/Vite、Taro微信/抖音/Android、Codex秘书与TG；OSS+R2；应用机仅临时数据。四端同批首发，120GB由Web/Android上传，小程序查阅/申请/审批。不做考勤/人事。
 

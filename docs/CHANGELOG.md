@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量98 · 依赖维护 / Dependency maintenance · 2026-10-28
+
+- 移除原生主机构建未使用的Taro RN runner；Doctor glob10固定10.5.0，旧代码生成器真实加载micromatch4.0.8，并移除旧解析器分支。
+- 当前完整审计91→80项、high20→13；全部剩余记录开放，不忽略依赖范围或告警。新增真实CLI参数与代码变换排除规则检查。
+- Removes an unused native runner and patches actual glob/matcher consumers. Fourteen dependency and two native JS checks pass; affected clients rebuild with the current lock. Framework versions and native boundaries remain.
+- 中英指南、台账及GAP-26同步。Go与UI原证据、97PNG／35MP4／35GIF按原字节复用；Android／JVM实际范围见[验证记录](quality/98-dependency-maintenance-verification.md)。完整四端Goal及真实环境验收仍开放。
+
 ## 增量97 · 小程序身份 / Mini-program identity · 2026-10-28
 
 - 新增微信／抖音服务端交换、单次code记录、本人密码与适用MFA、两分钟会话绑定证明及明确确认；平台身份只查找已有员工。

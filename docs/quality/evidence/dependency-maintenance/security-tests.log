@@ -1,0 +1,86 @@
+
+> copypaste-internal-platform@0.1.0 test:dependency-security
+> node --test scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs
+
+TAP version 13
+# Subtest: Taro Doctor glob CLI passes filename metacharacters as literal child arguments
+ok 1 - Taro Doctor glob CLI passes filename metacharacters as literal child arguments
+  ---
+  duration_ms: 582.2515
+  ...
+# Subtest: Legacy native codegen codemod honors actual ignore patterns with the maintained matcher
+ok 2 - Legacy native codegen codemod honors actual ignore patterns with the maintained matcher
+  ---
+  duration_ms: 819.3563
+  ...
+# Subtest: CommonJS adapter remains callable and the default tar/targz readers preserve actual bytes and strip semantics
+ok 3 - CommonJS adapter remains callable and the default tar/targz readers preserve actual bytes and strip semantics
+  ---
+  duration_ms: 177.6957
+  ...
+# (node:38704) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: Actual upstream download CommonJS caller extracts a real loopback ZIP through the maintained adapter
+ok 4 - Actual upstream download CommonJS caller extracts a real loopback ZIP through the maintained adapter
+  ---
+  duration_ms: 84.5821
+  ...
+# Subtest: A sibling whose name starts with the output path cannot receive a traversing archive entry
+ok 5 - A sibling whose name starts with the output path cannot receive a traversing archive entry
+  ---
+  duration_ms: 6.001
+  ...
+# Subtest: An archive hardlink cannot expose the contents of an outside owned sentinel
+ok 6 - An archive hardlink cannot expose the contents of an outside owned sentinel
+  ---
+  duration_ms: 7.3402
+  ...
+# Subtest: Symlink chains in the archive cannot redirect a later write outside extraction
+ok 7 - Symlink chains in the archive cannot redirect a later write outside extraction
+  ---
+  duration_ms: 8.0746
+  ...
+# Subtest: A pre-existing filesystem junction to an output-prefix sibling cannot redirect extraction
+ok 8 - A pre-existing filesystem junction to an output-prefix sibling cannot redirect extraction
+  ---
+  duration_ms: 7.1031
+  ...
+# Subtest: Caller mapping cannot introduce an unchecked escape after otherwise valid archive parsing
+ok 9 - Caller mapping cannot introduce an unchecked escape after otherwise valid archive parsing
+  ---
+  duration_ms: 23.7103
+  ...
+# Subtest: Swiper rejects the published prototype-pollution input even if Array.indexOf is modified
+ok 10 - Swiper rejects the published prototype-pollution input even if Array.indexOf is modified
+  ---
+  duration_ms: 9.3543
+  ...
+# Subtest: Updated JavaScript serialization preserves data while escaping executable HTML text
+ok 11 - Updated JavaScript serialization preserves data while escaping executable HTML text
+  ---
+  duration_ms: 2.9509
+  ...
+# Subtest: Updated XML parser and serializer preserve normal manifest data
+ok 12 - Updated XML parser and serializer preserve normal manifest data
+  ---
+  duration_ms: 13.3297
+  ...
+# Subtest: Updated node-tar extracts normal bounded TAR/GZIP bytes with strip semantics
+ok 13 - Updated node-tar extracts normal bounded TAR/GZIP bytes with strip semantics
+  ---
+  duration_ms: 25.799
+  ...
+# Subtest: Updated node-tar skips archive parent traversal and external hardlinks
+ok 14 - Updated node-tar skips archive parent traversal and external hardlinks
+  ---
+  duration_ms: 6.5399
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1550.8146

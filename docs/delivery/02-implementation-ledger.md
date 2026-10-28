@@ -1,6 +1,8 @@
 # 代码实施与验证台账
 
-最新增量97：微信／抖音身份交换、本人密码及适用MFA确认、两分钟证明、不可变绑定历史、平台登录与解绑失效。新增迁移78，原77保持字节；Web与Taro本人管理、未知结果恢复及真实页面媒体已落实。新执行／缓存／外部验收范围见[设计](../development/97-mini-program-identity.md)和[准确验证](../quality/97-mini-program-identity-verification.md)；GAP-19真实平台与设备仍开放，四端完整Goal继续active。
+最新增量98：移除未使用的Taro RN runner、修复Doctor glob和旧原生代码生成器实际匹配器；当前完整扫描91→80项／high20→13。新执行14项依赖与2项原生JS、Web135／移动248／运行时51及受影响构建；原生Android和JVM缓存范围单列。Go与界面源码未变，后端189／1183、Linux及97PNG／35MP4／35GIF明确复用，不改称新执行。见[方案](../development/98-dependency-maintenance.md)与[准确验证](../quality/98-dependency-maintenance-verification.md)。GAP-26和完整四端Goal仍开放。
+
+此前增量97：微信／抖音身份交换、本人密码及适用MFA确认、两分钟证明、不可变绑定历史、平台登录与解绑失效。新增迁移78，原77保持字节；Web与Taro本人管理、未知结果恢复及真实页面媒体已落实。新执行／缓存／外部验收范围见[设计](../development/97-mini-program-identity.md)和[准确验证](../quality/97-mini-program-identity-verification.md)；GAP-19真实平台与设备仍开放，四端完整Goal继续active。
 
 此前增量96：原生盘点／逐项映射／固定计划、完整清单批准、原上传复用、明确重试、来源增量与逐项双端核验。新增迁移77，原76字节保留；六个CLI命令及普通授权API已实现。新执行检查和保留证据范围见[设计与操作](../development/96-native-file-import.md)及[准确验证](../quality/96-native-file-import-verification.md)。GAP-22推进至可执行工具，真实2TB／120GB、双云、ACL、恢复／切换仍未验收；四端完整Goal继续active。
 

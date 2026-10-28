@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量98 · 媒体复用说明 / Retained media
+
+本次仅调整依赖与验证流程，界面源码未改；97 PNG／35 MP4／35 GIF全部保留原发布字节。没有启动浏览器或重新采集，不将下方原97及更早媒体标为98或真机演示。新客户端／Android构建与历史媒体分别验证，见[准确范围](../quality/98-dependency-maintenance-verification.md)及[逐文件摘要](../quality/evidence/dependency-maintenance/reused-evidence.json)。
+
+Increment98 retains the original UI media byte-for-byte. No new browser capture is claimed. Fresh dependency/client/Android checks and historical media have separate provenance.
+
 ## 增量97 · 本人小程序绑定 / Own mini-program bindings
 
 新画面来自最终源码的真实本地API、隔离原生数据库和合成记录：查看两平台绑定、取消、确认解绑以及已提交但响应丢失后的核对。所有自建浏览器上下文、临时API、页面服务和隔离数据库均在检查后释放。H5不伪造平台登录；不将媒体称为微信／抖音真机或真实平台身份交换证据。[完整验证与来源](../quality/97-mini-program-identity-verification.md)。
