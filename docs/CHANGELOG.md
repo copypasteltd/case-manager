@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量103 · 构建依赖调用链修复 / Build consumer remediation · 2026-10-29
+
+- 实现：本地CommonJS适配保留Taro模板下载／版本查询与Metro图像接口；实际使用image-size2.0.4、latest-version9.0.0、原生fetch／Git及维护版归档提取；移除旧got／git-clone／download链。Android摘要新增本地适配源码。
+- 验证：标准npm ci、31项依赖＋2项原生JS检查、Web151／移动255／运行时52、两小程序各20页、Android构建／18项包检查通过；JVM26按实际缓存范围记录。完整审计80→70（high13→6），余下全部开放。
+- 来源：原189份媒体和未改Go191／1201证明保留原字节；首次安装树／归档失败和npm解析尝试保留。23个完整工作包仍开放。
+- English: Replaced legacy build consumers with disclosed source adapters and maintained parsers/metadata. Fresh clean-install, consumer, portable-client and native-artifact checks pass. Full-scope audit80→70, high13→6; unresolved findings and historical/cached evidence remain explicit. See [implementation](development/103-dependency-consumer-remediation.md) and [verification](quality/103-dependency-remediation-verification.md).
+
 ## 增量102 · 基础币种、人工汇率版本与报表折算 / Explicit FX valuation · 2026-10-29
 
 - 新增迁移81及人工汇率版本发布／历史／详情，明确基础币种、报价来源／日期／区间；发布要求当前员工的组织配置权限、MFA、预期版本与幂等键，内容和历史不可改写。

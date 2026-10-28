@@ -21,7 +21,8 @@ def sources():
     names = {'package.json', 'package-lock.json', 'mobile/package.json',
              'mobile/babel.config.js', 'mobile/metro.config.js', 'mobile/index.js',
              'mobile/react-native.config.js', 'scripts/build_android.py', 'scripts/setup_android_native.py'}
-    for directory in ('mobile/src', 'mobile/config', 'mobile/native', 'mobile/android', 'packages/contracts/src', 'packages/design/src'):
+    for directory in ('mobile/src', 'mobile/config', 'mobile/native', 'mobile/android', 'packages/contracts/src', 'packages/design/src',
+                      'packages/archive-extraction', 'packages/image-size-compat', 'packages/latest-version-compat', 'packages/template-download'):
         for path in (APP / directory).rglob('*'):
             relative = path.relative_to(APP)
             if not path.is_file() or any(part in ('build', '.gradle', 'node_modules', 'assets') for part in relative.parts):

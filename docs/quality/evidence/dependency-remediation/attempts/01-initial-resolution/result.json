@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-28T16:58:08.669288+00:00",
+  "tests": 30,
+  "pass": 27,
+  "fail": 3,
+  "log_sha256": "f69e9d6cb303e996d407bc608d40e96a64b6328f851ac5d2ec5780c52dffe4ca",
+  "private_log": "app/.local/dependency-remediation-security-attempt-01.log",
+  "observed_failures": [
+    "Metro still resolved vulnerable nested image-size1.2.1; disableFS behavior differed",
+    "Malformed ICNS child hit the five-second timeout and was terminated",
+    "Malformed archive produced an empty directory instead of failing"
+  ],
+  "candidate_audit_counts": {
+    "total": 74,
+    "high": 10,
+    "moderate": 57,
+    "low": 7,
+    "critical": 0
+  },
+  "final_source_evidence": false,
+  "scope": "Initial actual installed-tree attempt. Full source digest was not captured before npm update; not used as final proof."
+}

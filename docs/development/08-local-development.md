@@ -109,3 +109,6 @@ docs/design/tokens.json和tokens.css为已评审风格源；python app/scripts/s
 
 
 实际费用检查：在 app/ 运行 `python scripts/run_spend_browser.py --costs`。使用同一原生隔离夹具，验证不完整草稿、固定供应方/凭证、双会话修订冲突、不平衡拒绝及准确确认、采购/报销/生效合同共同关联、全额冲销、历史及月度原币分摊钻取。记录位于 `docs/quality/evidence/actual-costs/`，源码在检查期间必须保持一致；失败或中途改码后重新运行才可形成当前通过证据。脚本负责临时角色、全部自有浏览器/标签、Vite及数据库清理。协议见[唯一实际费用](35-canonical-actual-costs-and-incurred-reports.md)。
+
+
+增量103维护Taro／Metro构建调用链，安装仍使用标准npm ci。实际接口、失败尝试、来源绑定及复现命令见[依赖调用链修复](103-dependency-consumer-remediation.md)与[验证记录](../quality/103-dependency-remediation-verification.md)。

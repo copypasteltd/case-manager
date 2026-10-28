@@ -1,0 +1,2223 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@babel/core": {
+      "name": "@babel/core",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1123528,
+          "name": "@babel/core",
+          "dependency": "@babel/core",
+          "title": "@babel/core: Arbitrary File Read via sourceMappingURL Comment",
+          "url": "https://github.com/advisories/GHSA-4x5r-pxfx-6jf8",
+          "severity": "low",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 3.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N"
+          },
+          "range": "<=7.29.0"
+        }
+      ],
+      "effects": [],
+      "range": "<=7.29.0",
+      "nodes": [
+        "node_modules/@babel/core"
+      ],
+      "fixAvailable": true
+    },
+    "@expo/bunyan": {
+      "name": "@expo/bunyan",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "uuid"
+      ],
+      "effects": [
+        "@expo/rudder-sdk-node"
+      ],
+      "range": ">=3.0.0",
+      "nodes": [
+        "node_modules/@expo/bunyan"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "@expo/cli": {
+      "name": "@expo/cli",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/config",
+        "@expo/config-plugins",
+        "@expo/metro-config",
+        "@expo/prebuild-config",
+        "@expo/rudder-sdk-node",
+        "send"
+      ],
+      "effects": [
+        "expo"
+      ],
+      "range": "<=0.0.0-canary-20231123-1b19f96-4 || 0.0.1-canary-20231125-d600e44 - 1.0.0-canary-20250729-d8899ae || 54.0.3-canary-20250912-b5ce2a8 || 54.0.8-canary-20250919-7a31b96 || 54.1.0-canary-20250930-9dc59d3 - 55.0.0-canary-20260223-05214f1 || 55.0.13-canary-20260424-7bedc9d - 55.0.13-canary-20260429-a5e59cf || 55.0.20-canary-20260327-0789fbc - 55.0.20-canary-20260402-9da566b || 56.0.0-canary-20260128-67ce8d5 - 56.0.2 || 56.1.13-canary-20260526-6cd5e37 - 56.1.13-canary-20260701-9100865 || 57.0.0-canary-20260526-13e89ca - 57.0.0-canary-20260723-64edab9 || 58.0.0-canary-20260806-8c2d007 - 58.0.0-canary-20260909-ea7a89a",
+      "nodes": [
+        "node_modules/@expo/cli"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "@expo/config": {
+      "name": "@expo/config",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/config-plugins"
+      ],
+      "effects": [
+        "@expo/cli",
+        "@expo/metro-config",
+        "@expo/prebuild-config",
+        "expo",
+        "expo-constants",
+        "expo-modules-autolinking"
+      ],
+      "range": "<=0.0.1-canary-20240418-8d74597 || 3.3.23-alpha.0 - 12.0.7 || 12.0.9-canary-20250912-b5ce2a8 || 12.0.10-canary-20250919-7a31b96 - 12.0.10-canary-20250930-9dc59d3 || 12.0.11-canary-20251003-7b9d7ff - 12.0.11-canary-20251127-587bc53 || 12.0.12-canary-20251205-756eb7a - 12.0.12-canary-20251210-1f163e3 || 12.0.13-canary-20251211-7da85ea - 12.0.13-canary-20251216-6e1f9a7 || 12.0.14-canary-20251223-b83b31e - 12.0.14-canary-20260121-a63c0dd || 55.0.0-canary-20260223-05214f1 || 55.0.4-canary-20260128-67ce8d5 || 55.0.9-canary-20260424-7bedc9d - 55.0.9-canary-20260429-a5e59cf || 55.0.12-canary-20260327-0789fbc - 55.0.12-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.0 || 56.0.10-canary-20260526-6cd5e37 - 56.0.10-canary-20260701-9100865 || 57.0.0-canary-20260526-13e89ca - 57.0.0-canary-20260723-64edab9 || 58.0.0-canary-20260806-8c2d007 - 58.0.0-canary-20260909-ea7a89a",
+      "nodes": [
+        "node_modules/@expo/config"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "@expo/config-plugins": {
+      "name": "@expo/config-plugins",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "xcode"
+      ],
+      "effects": [
+        "@expo/cli",
+        "@expo/config",
+        "@expo/prebuild-config",
+        "expo"
+      ],
+      "range": "<=54.0.5 || 54.1.0-canary-20250930-9dc59d3 - 55.0.11 || 56.0.0-canary-20260212-4f61309 - 56.0.16 || 57.0.0-canary-20260526-13e89ca - 57.0.10 || 58.0.0-canary-20260806-8c2d007 - 58.0.9",
+      "nodes": [
+        "node_modules/@expo/config-plugins"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "@expo/metro-config": {
+      "name": "@expo/metro-config",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/config"
+      ],
+      "effects": [
+        "expo"
+      ],
+      "range": "<=0.0.1-canary-20240418-8d74597 || 0.1.49-alpha.0 - 0.21.0-canary-20250729-d8899ae || 0.21.6-canary-20250826-f475166 || 0.21.7-canary-20250830-81bb199 || 1.0.0-canary-20241018-2a482e3 - 1.0.0-canary-20241021-c4b5a93 || 54.0.3-canary-20250912-b5ce2a8 || 54.0.5-canary-20250919-7a31b96 || 54.0.6-canary-20250930-9dc59d3 || 54.0.7-canary-20251003-7b9d7ff - 54.0.7-canary-20251015-a6a1272 || 54.0.8-canary-20251023-4c86f95 || 54.0.9-canary-20251031-b135dff || 54.0.14-canary-20260119-17896bf || 54.1.0-canary-20251118-8f7ee64 - 55.0.0-canary-20260223-05214f1 || 55.0.4-canary-20260128-67ce8d5 || 55.0.10-canary-20260424-7bedc9d - 55.0.10-canary-20260429-a5e59cf || 55.0.12-canary-20260327-0789fbc - 55.0.12-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.1 || 56.0.14-canary-20260526-6cd5e37 - 56.0.14-canary-20260701-9100865 || 57.0.0-canary-20260526-13e89ca - 57.0.0-canary-20260723-64edab9 || 58.0.0-canary-20260806-8c2d007 - 58.0.0-canary-20260909-ea7a89a",
+      "nodes": [
+        "node_modules/@expo/metro-config"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "@expo/prebuild-config": {
+      "name": "@expo/prebuild-config",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/config",
+        "@expo/config-plugins"
+      ],
+      "effects": [],
+      "range": "<=10.0.8 || 54.0.2-canary-20250912-b5ce2a8 || 54.0.4-canary-20250919-7a31b96 - 54.0.4-canary-20250930-9dc59d3 || 54.0.5-canary-20251003-7b9d7ff - 54.0.5-canary-20251009-9919e08 || 54.0.6-canary-20251013-623c5a6 - 54.0.6-canary-20251015-a6a1272 || 54.0.7-canary-20251023-4c86f95 - 54.0.7-canary-20251127-587bc53 || 54.0.8-canary-20251205-756eb7a - 54.0.8-canary-20251216-6e1f9a7 || 54.0.9-canary-20251223-b83b31e - 54.0.9-canary-20260119-17896bf || 55.0.0-canary-20260114-d8e19f5 - 55.0.0-canary-20260223-05214f1 || 55.0.4-canary-20260128-67ce8d5 || 55.0.8-canary-20260424-7bedc9d - 55.0.8-canary-20260429-a5e59cf || 55.0.12-canary-20260327-0789fbc - 55.0.12-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.0 || 56.0.13-canary-20260526-6cd5e37 - 56.0.13-canary-20260701-9100865 || 57.0.0-canary-20260526-13e89ca - 57.0.0-canary-20260723-64edab9 || 58.0.0-canary-20260806-8c2d007 - 58.0.0-canary-20260909-ea7a89a",
+      "nodes": [
+        "node_modules/@expo/prebuild-config"
+      ],
+      "fixAvailable": true
+    },
+    "@expo/rudder-sdk-node": {
+      "name": "@expo/rudder-sdk-node",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/bunyan",
+        "uuid"
+      ],
+      "effects": [
+        "@expo/cli"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@expo/rudder-sdk-node"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-native-community/cli": {
+      "name": "@react-native-community/cli",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-native-community/cli-config",
+        "@react-native-community/cli-doctor",
+        "@react-native-community/cli-hermes",
+        "deepmerge"
+      ],
+      "effects": [
+        "react-native"
+      ],
+      "range": ">=11.0.0-alpha.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-native-community/cli-config": {
+      "name": "@react-native-community/cli-config",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "deepmerge"
+      ],
+      "effects": [
+        "@react-native-community/cli",
+        "@react-native-community/cli-doctor",
+        "@tarojs/rn-supporter"
+      ],
+      "range": ">=11.0.0-alpha.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli-config"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/rn-supporter",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-native-community/cli-doctor": {
+      "name": "@react-native-community/cli-doctor",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-native-community/cli-config",
+        "@react-native-community/cli-platform-android",
+        "@react-native-community/cli-platform-ios",
+        "deepmerge"
+      ],
+      "effects": [],
+      "range": ">=10.2.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli-doctor"
+      ],
+      "fixAvailable": true
+    },
+    "@react-native-community/cli-hermes": {
+      "name": "@react-native-community/cli-hermes",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-native-community/cli-platform-android"
+      ],
+      "effects": [
+        "@react-native-community/cli"
+      ],
+      "range": ">=12.0.0-alpha.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli-hermes"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-native-community/cli-platform-android": {
+      "name": "@react-native-community/cli-platform-android",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "fast-xml-parser"
+      ],
+      "effects": [
+        "@react-native-community/cli-doctor",
+        "@react-native-community/cli-hermes"
+      ],
+      "range": "12.0.0-alpha.0 - 15.1.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli-platform-android"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-native-community/cli-platform-ios": {
+      "name": "@react-native-community/cli-platform-ios",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "fast-xml-parser"
+      ],
+      "effects": [
+        "@react-native-community/cli-doctor",
+        "react-native"
+      ],
+      "range": "10.2.0 - 13.1.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli-platform-ios"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-navigation/bottom-tabs": {
+      "name": "@react-navigation/bottom-tabs",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-navigation/elements",
+        "@react-navigation/native"
+      ],
+      "effects": [],
+      "range": "<=7.0.0-rc.37",
+      "nodes": [
+        "node_modules/@react-navigation/bottom-tabs"
+      ],
+      "fixAvailable": true
+    },
+    "@react-navigation/core": {
+      "name": "@react-navigation/core",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "query-string"
+      ],
+      "effects": [
+        "@react-navigation/native"
+      ],
+      "range": "<=7.22.0 || 8.0.0-alpha.0 - 8.0.0-alpha.9",
+      "nodes": [
+        "node_modules/@react-navigation/core"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/router-rn",
+        "version": "4.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-navigation/elements": {
+      "name": "@react-navigation/elements",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-navigation/native"
+      ],
+      "effects": [
+        "@react-navigation/bottom-tabs",
+        "@react-navigation/native-stack",
+        "@react-navigation/stack"
+      ],
+      "range": "<=2.0.0-rc.26",
+      "nodes": [
+        "node_modules/@react-navigation/elements"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/router-rn",
+        "version": "4.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-navigation/native": {
+      "name": "@react-navigation/native",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-navigation/core"
+      ],
+      "effects": [
+        "@react-navigation/bottom-tabs",
+        "@react-navigation/elements",
+        "@react-navigation/native-stack",
+        "@react-navigation/stack",
+        "@tarojs/router-rn"
+      ],
+      "range": "<=3.0.0-alpha.12 || 3.0.1 - 3.6.5 || 4.0.0-alpha.0 - 6.1.18",
+      "nodes": [
+        "node_modules/@react-navigation/native"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/router-rn",
+        "version": "4.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-navigation/native-stack": {
+      "name": "@react-navigation/native-stack",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-navigation/elements",
+        "@react-navigation/native"
+      ],
+      "effects": [
+        "@tarojs/router-rn"
+      ],
+      "range": "<=5.0.4 || 6.0.0-next.1 - 7.0.0-rc.30",
+      "nodes": [
+        "node_modules/@react-navigation/native-stack"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/router-rn",
+        "version": "4.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@react-navigation/stack": {
+      "name": "@react-navigation/stack",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@react-navigation/elements",
+        "@react-navigation/native"
+      ],
+      "effects": [],
+      "range": "<=7.0.0-rc.29",
+      "nodes": [
+        "node_modules/@react-navigation/stack"
+      ],
+      "fixAvailable": true
+    },
+    "@svgr/plugin-svgo": {
+      "name": "@svgr/plugin-svgo",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "deepmerge"
+      ],
+      "effects": [
+        "react-native-svg-transformer"
+      ],
+      "range": ">=5.5.0",
+      "nodes": [
+        "node_modules/@svgr/plugin-svgo"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/cli": {
+      "name": "@tarojs/cli",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@tarojs/helper",
+        "@tarojs/service",
+        "download-git-repo",
+        "latest-version"
+      ],
+      "effects": [],
+      "range": "0.0.0-experimental.2 || >=0.0.56",
+      "nodes": [
+        "node_modules/@tarojs/cli"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/components": {
+      "name": "@tarojs/components",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/taro"
+      ],
+      "effects": [
+        "@tarojs/components-rn",
+        "@tarojs/taro-h5"
+      ],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.7.0-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/components"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/components",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/components-react": {
+      "name": "@tarojs/components-react",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/components",
+        "@tarojs/taro"
+      ],
+      "effects": [],
+      "range": ">=3.7.0-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/components-react"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/components-rn": {
+      "name": "@tarojs/components-rn",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/components",
+        "@tarojs/router-rn",
+        "expo",
+        "react-native"
+      ],
+      "effects": [
+        "@tarojs/runtime-rn"
+      ],
+      "range": "3.5.0-alpha.0 - 3.5.0-alpha.17 || 3.5.1-aplha.0 - 3.5.1-aplha.1 || >=3.5.2-aplha.1",
+      "nodes": [
+        "node_modules/@tarojs/components-rn"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/components-rn",
+        "version": "4.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/helper": {
+      "name": "@tarojs/helper",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "esbuild"
+      ],
+      "effects": [
+        "@tarojs/cli",
+        "@tarojs/plugin-framework-react",
+        "@tarojs/plugin-platform-h5",
+        "@tarojs/rn-style-transformer",
+        "@tarojs/rn-supporter",
+        "@tarojs/rn-transformer",
+        "@tarojs/runner-utils",
+        "@tarojs/service",
+        "@tarojs/taro",
+        "@tarojs/taro-loader",
+        "@tarojs/webpack5-prebundle",
+        "@tarojs/webpack5-runner",
+        "babel-preset-taro"
+      ],
+      "range": ">=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/helper"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/plugin-framework-react": {
+      "name": "@tarojs/plugin-framework-react",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/helper",
+        "vite"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "mobile/node_modules/@tarojs/plugin-framework-react"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/plugin-framework-react",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/plugin-platform-h5": {
+      "name": "@tarojs/plugin-platform-h5",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/components",
+        "@tarojs/components-react",
+        "@tarojs/helper",
+        "@tarojs/service",
+        "@tarojs/taro-h5"
+      ],
+      "effects": [],
+      "range": ">=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/plugin-platform-h5"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/plugin-platform-h5",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/plugin-platform-tt": {
+      "name": "@tarojs/plugin-platform-tt",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/service"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/plugin-platform-tt"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/plugin-platform-tt",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/plugin-platform-weapp": {
+      "name": "@tarojs/plugin-platform-weapp",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/service"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/plugin-platform-weapp"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/plugin-platform-weapp",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/rn-style-transformer": {
+      "name": "@tarojs/rn-style-transformer",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/helper",
+        "taro-css-to-react-native"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@tarojs/rn-style-transformer"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/rn-supporter": {
+      "name": "@tarojs/rn-supporter",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@react-native-community/cli-config",
+        "@tarojs/helper",
+        "@tarojs/rn-style-transformer",
+        "@tarojs/rn-transformer",
+        "@tarojs/service",
+        "@tarojs/taro",
+        "babel-plugin-transform-react-jsx-to-rn-stylesheet",
+        "react-native-svg-transformer"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/rn-supporter"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/rn-supporter",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/rn-transformer": {
+      "name": "@tarojs/rn-transformer",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/helper"
+      ],
+      "effects": [],
+      "range": ">=3.7.0-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/rn-transformer"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/router": {
+      "name": "@tarojs/router",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/taro"
+      ],
+      "effects": [
+        "@tarojs/taro-h5"
+      ],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.7.0-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/router"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/router-rn": {
+      "name": "@tarojs/router-rn",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@react-navigation/bottom-tabs",
+        "@react-navigation/native",
+        "@react-navigation/native-stack",
+        "@react-navigation/stack",
+        "react-native"
+      ],
+      "effects": [
+        "@tarojs/runtime-rn"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@tarojs/router-rn"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/router-rn",
+        "version": "4.0.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/runner-utils": {
+      "name": "@tarojs/runner-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/helper"
+      ],
+      "effects": [
+        "@tarojs/service"
+      ],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/runner-utils"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/service",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/runtime-rn": {
+      "name": "@tarojs/runtime-rn",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@tarojs/components-rn",
+        "@tarojs/router-rn"
+      ],
+      "effects": [
+        "@tarojs/taro-rn"
+      ],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || 3.5.1-aplha.0 - 3.5.1-aplha.1 || 3.5.2-aplha.1 - 4.0.0-canary.13 || 4.0.1-alpha.0 - 4.0.1 || 4.0.7-alpha.0 - 4.0.7-canary.6 || >=4.0.8-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/runtime-rn"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro-rn",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/service": {
+      "name": "@tarojs/service",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/helper",
+        "@tarojs/runner-utils"
+      ],
+      "effects": [
+        "@tarojs/plugin-platform-h5",
+        "@tarojs/plugin-platform-tt",
+        "@tarojs/plugin-platform-weapp",
+        "@tarojs/rn-supporter"
+      ],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/service"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/service",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/taro": {
+      "name": "@tarojs/taro",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/components",
+        "@tarojs/helper",
+        "webpack-dev-server"
+      ],
+      "effects": [
+        "@tarojs/components",
+        "@tarojs/components-react",
+        "@tarojs/router",
+        "@tarojs/taro-rn"
+      ],
+      "range": ">=3.6.23-nightly.0",
+      "nodes": [
+        "node_modules/@tarojs/taro"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/taro-h5": {
+      "name": "@tarojs/taro-h5",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/components",
+        "@tarojs/router"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.7.0-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/taro-h5"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/taro-loader": {
+      "name": "@tarojs/taro-loader",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/helper"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/taro-loader"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/taro-rn": {
+      "name": "@tarojs/taro-rn",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/runtime-rn",
+        "@tarojs/taro",
+        "expo",
+        "react-native"
+      ],
+      "effects": [
+        "babel-preset-taro"
+      ],
+      "range": "0.0.33 || 3.5.0-alpha.0 - 3.5.0-theta.0 || 3.5.1-aplha.0 - 3.5.1-aplha.1 || >=3.5.2-aplha.1",
+      "nodes": [
+        "node_modules/@tarojs/taro-rn"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro-rn",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "@tarojs/webpack5-prebundle": {
+      "name": "@tarojs/webpack5-prebundle",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@tarojs/helper"
+      ],
+      "effects": [],
+      "range": "<=3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/@tarojs/webpack5-prebundle"
+      ],
+      "fixAvailable": true
+    },
+    "@tarojs/webpack5-runner": {
+      "name": "@tarojs/webpack5-runner",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@tarojs/helper",
+        "@tarojs/runner-utils",
+        "@tarojs/taro-loader",
+        "@tarojs/webpack5-prebundle",
+        "esbuild",
+        "html-minifier",
+        "miniprogram-simulate",
+        "webpack-dev-server"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@tarojs/webpack5-runner"
+      ],
+      "fixAvailable": false
+    },
+    "babel-plugin-transform-react-jsx-to-rn-stylesheet": {
+      "name": "babel-plugin-transform-react-jsx-to-rn-stylesheet",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "taro-css-to-react-native"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/babel-plugin-transform-react-jsx-to-rn-stylesheet"
+      ],
+      "fixAvailable": true
+    },
+    "babel-preset-taro": {
+      "name": "babel-preset-taro",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@tarojs/helper",
+        "@tarojs/taro-rn"
+      ],
+      "effects": [],
+      "range": "3.5.0-alpha.0 - 3.5.0-theta.0 || >=3.6.6-alpha.0",
+      "nodes": [
+        "node_modules/babel-preset-taro"
+      ],
+      "fixAvailable": {
+        "name": "babel-preset-taro",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "cacheable-request": {
+      "name": "cacheable-request",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "http-cache-semantics",
+        "normalize-url"
+      ],
+      "effects": [
+        "got"
+      ],
+      "range": "0.1.0 - 2.1.4",
+      "nodes": [
+        "node_modules/cacheable-request"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "css": {
+      "name": "css",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "source-map-resolve"
+      ],
+      "effects": [
+        "taro-css-to-react-native"
+      ],
+      "range": ">=2.2.2",
+      "nodes": [
+        "node_modules/css"
+      ],
+      "fixAvailable": true
+    },
+    "decode-uri-component": {
+      "name": "decode-uri-component",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1147955,
+          "name": "decode-uri-component",
+          "dependency": "decode-uri-component",
+          "title": "decode-uri-component: Denial of service via exponential decoding of malformed percent-encoded input",
+          "url": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-405",
+            "CWE-407",
+            "CWE-1176"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=0.4.2"
+        }
+      ],
+      "effects": [
+        "query-string",
+        "source-map-resolve"
+      ],
+      "range": "<=0.4.2",
+      "nodes": [
+        "node_modules/decode-uri-component"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "deepmerge": {
+      "name": "deepmerge",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1243505,
+          "name": "deepmerge",
+          "dependency": "deepmerge",
+          "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "severity": "low",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.2.0 <=4.3.1"
+        }
+      ],
+      "effects": [
+        "@react-native-community/cli",
+        "@react-native-community/cli-config",
+        "@react-native-community/cli-doctor",
+        "@svgr/plugin-svgo"
+      ],
+      "range": ">=4.2.0",
+      "nodes": [
+        "node_modules/@react-native-community/cli-config/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli-doctor/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli/node_modules/deepmerge",
+        "node_modules/@svgr/plugin-svgo/node_modules/deepmerge"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "download": {
+      "name": "download",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "got"
+      ],
+      "effects": [
+        "download-git-repo"
+      ],
+      "range": ">=4.0.0",
+      "nodes": [
+        "node_modules/download"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "download-git-repo": {
+      "name": "download-git-repo",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "download",
+        "git-clone"
+      ],
+      "effects": [
+        "@tarojs/cli"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/download-git-repo"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "esbuild": {
+      "name": "esbuild",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1102341,
+          "name": "esbuild",
+          "dependency": "esbuild",
+          "title": "esbuild enables any website to send any requests to the development server and read the response",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-346"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=0.24.2"
+        }
+      ],
+      "effects": [
+        "@tarojs/helper",
+        "@tarojs/webpack5-runner",
+        "vite"
+      ],
+      "range": "<=0.24.2",
+      "nodes": [
+        "mobile/node_modules/esbuild",
+        "node_modules/@tarojs/helper/node_modules/esbuild",
+        "node_modules/@tarojs/webpack5-runner/node_modules/esbuild"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "expo": {
+      "name": "expo",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@expo/cli",
+        "@expo/config",
+        "@expo/config-plugins",
+        "@expo/metro-config",
+        "expo-asset",
+        "expo-modules-autolinking"
+      ],
+      "effects": [
+        "@tarojs/components-rn",
+        "@tarojs/taro-rn"
+      ],
+      "range": "40.0.0-alpha.0 - 40.0.0-beta.5 || 41.0.0-alpha.0 - 44.0.6 || 46.0.0-alpha.0 - 54.0.0-preview.16 || 55.0.0-canary-20250912-b5ce2a8 - 55.0.0-preview.12 || 55.0.3-canary-20260424-7bedc9d - 55.0.3-canary-20260429-a5e59cf || 55.0.10-canary-20260327-0789fbc - 55.0.10-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.0-preview.13 || 56.0.6-canary-20260526-6cd5e37 - 56.0.6-canary-20260701-9100865 || 57.0.0-canary-20260526-13e89ca - 57.0.0-preview.1 || 58.0.0-canary-20260806-8c2d007 - 58.0.0-preview.8",
+      "nodes": [
+        "node_modules/expo"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "expo-asset": {
+      "name": "expo-asset",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "expo-constants"
+      ],
+      "effects": [
+        "expo"
+      ],
+      "range": "<=0.0.1-canary-20240418-8d74597 || 8.6.1 - 12.0.0-canary-20250404-87e2506 || 12.0.5-canary-20250826-f475166 || 12.0.6-canary-20250830-81bb199 || 12.0.9-canary-20250912-b5ce2a8 || 12.0.10-canary-20250919-7a31b96 - 12.0.10-canary-20251031-b135dff || 12.0.11-canary-20251118-4ca99d5 - 12.0.11-canary-20251127-587bc53 || 12.0.12-canary-20251205-756eb7a - 12.0.12-canary-20251216-6e1f9a7 || 12.0.13-canary-20251223-b83b31e - 12.0.13-canary-20260121-a63c0dd || 55.0.0-canary-20260223-05214f1 || 55.0.3-canary-20260128-67ce8d5 || 55.0.11-canary-20260327-0789fbc - 55.0.11-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.0-canary-20260506-964f25d",
+      "nodes": [
+        "node_modules/expo-asset"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "expo-constants": {
+      "name": "expo-constants",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/config"
+      ],
+      "effects": [
+        "expo-asset"
+      ],
+      "range": "<=0.0.1-canary-20240418-8d74597 || 10.1.2 - 18.0.0-canary-20250404-87e2506 || 18.0.5-canary-20250826-f475166 || 18.0.6-canary-20250830-81bb199 || 18.0.9-canary-20250912-b5ce2a8 || 18.0.10-canary-20250919-7a31b96 - 18.0.10-canary-20251015-a6a1272 || 18.0.11-canary-20251023-4c86f95 || 18.0.14-canary-20260119-17896bf || 18.1.0-canary-20251031-b135dff - 55.0.0-canary-20260223-05214f1 || 55.0.3-canary-20260128-67ce8d5 || 55.0.10-canary-20260327-0789fbc - 55.0.10-canary-20260402-9da566b || 56.0.0-canary-20260212-4f61309 - 56.0.0-canary-20260506-964f25d",
+      "nodes": [
+        "node_modules/expo-constants"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "expo-modules-autolinking": {
+      "name": "expo-modules-autolinking",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@expo/config"
+      ],
+      "effects": [
+        "expo"
+      ],
+      "range": "<=0.0.1-canary-20240418-8d74597 || 1.5.0 - 1.10.3",
+      "nodes": [
+        "node_modules/expo-modules-autolinking"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "fast-xml-parser": {
+      "name": "fast-xml-parser",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1117911,
+          "name": "fast-xml-parser",
+          "dependency": "fast-xml-parser",
+          "title": "fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimiters",
+          "url": "https://github.com/advisories/GHSA-gh4j-gqv2-49f6",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-91"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<5.7.0"
+        }
+      ],
+      "effects": [
+        "@react-native-community/cli-platform-android",
+        "@react-native-community/cli-platform-ios"
+      ],
+      "range": "<5.7.0",
+      "nodes": [
+        "node_modules/fast-xml-parser"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "git-clone": {
+      "name": "git-clone",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1093404,
+          "name": "git-clone",
+          "dependency": "git-clone",
+          "title": "Command injection in git-clone",
+          "url": "https://github.com/advisories/GHSA-8jmw-wjr8-2x66",
+          "severity": "high",
+          "cwe": [
+            "CWE-77",
+            "CWE-88"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": "<=0.2.0"
+        }
+      ],
+      "effects": [
+        "download-git-repo"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/git-clone"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "got": {
+      "name": "got",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1088948,
+          "name": "got",
+          "dependency": "got",
+          "title": "Got allows a redirect to a UNIX socket",
+          "url": "https://github.com/advisories/GHSA-pfrx-2q88-qq97",
+          "severity": "moderate",
+          "cwe": [],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<11.8.5"
+        },
+        "cacheable-request"
+      ],
+      "effects": [
+        "download",
+        "package-json"
+      ],
+      "range": "<=11.8.3",
+      "nodes": [
+        "node_modules/got",
+        "node_modules/package-json/node_modules/got"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "html-minifier": {
+      "name": "html-minifier",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1105440,
+          "name": "html-minifier",
+          "dependency": "html-minifier",
+          "title": "kangax html-minifier REDoS vulnerability",
+          "url": "https://github.com/advisories/GHSA-pfq8-rq6v-vf5m",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=4.0.0"
+        }
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/html-minifier"
+      ],
+      "fixAvailable": true
+    },
+    "http-cache-semantics": {
+      "name": "http-cache-semantics",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1102456,
+          "name": "http-cache-semantics",
+          "dependency": "http-cache-semantics",
+          "title": "http-cache-semantics vulnerable to Regular Expression Denial of Service",
+          "url": "https://github.com/advisories/GHSA-rc47-6667-2j5j",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<4.1.1"
+        },
+        {
+          "source": 1240991,
+          "name": "http-cache-semantics",
+          "dependency": "http-cache-semantics",
+          "title": "http-cache-semantics max-stale handling can disclose cross-user cached responses",
+          "url": "https://github.com/advisories/GHSA-ch52-4w7c-c8xp",
+          "severity": "high",
+          "cwe": [
+            "CWE-524"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=4.2.0"
+        }
+      ],
+      "effects": [
+        "cacheable-request"
+      ],
+      "range": "<=4.2.0",
+      "nodes": [
+        "node_modules/http-cache-semantics"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "image-size": {
+      "name": "image-size",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1239765,
+          "name": "image-size",
+          "dependency": "image-size",
+          "title": "image-size: JXL and HEIF parsers allow denial of service through infinite loops",
+          "url": "https://github.com/advisories/GHSA-5p2g-fcmc-qvqq",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=1.2.0 <=2.0.2"
+        },
+        {
+          "source": 1239766,
+          "name": "image-size",
+          "dependency": "image-size",
+          "title": "image-size: ICNS parser allows denial of service through an infinite loop",
+          "url": "https://github.com/advisories/GHSA-w3rx-r6r6-pgpr",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=0.6.3 <=2.0.2"
+        }
+      ],
+      "effects": [],
+      "range": "0.6.3 - 2.0.2",
+      "nodes": [
+        "node_modules/metro/node_modules/image-size"
+      ],
+      "fixAvailable": true
+    },
+    "latest-version": {
+      "name": "latest-version",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "package-json"
+      ],
+      "effects": [
+        "@tarojs/cli"
+      ],
+      "range": "0.2.0 - 5.1.0",
+      "nodes": [
+        "node_modules/latest-version"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "miniprogram-simulate": {
+      "name": "miniprogram-simulate",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "postcss"
+      ],
+      "effects": [],
+      "range": ">=0.1.0",
+      "nodes": [
+        "node_modules/miniprogram-simulate"
+      ],
+      "fixAvailable": true
+    },
+    "normalize-url": {
+      "name": "normalize-url",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "query-string"
+      ],
+      "effects": [
+        "cacheable-request"
+      ],
+      "range": "2.0.0 - 2.0.1",
+      "nodes": [
+        "node_modules/normalize-url"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "package-json": {
+      "name": "package-json",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "got"
+      ],
+      "effects": [
+        "latest-version"
+      ],
+      "range": "<=6.5.0",
+      "nodes": [
+        "node_modules/package-json"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "postcss": {
+      "name": "postcss",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1109574,
+          "name": "postcss",
+          "dependency": "postcss",
+          "title": "PostCSS line return parsing error",
+          "url": "https://github.com/advisories/GHSA-7fh5-64p2-3v2j",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-74",
+            "CWE-144"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<8.4.31"
+        },
+        {
+          "source": 1117015,
+          "name": "postcss",
+          "dependency": "postcss",
+          "title": "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
+          "url": "https://github.com/advisories/GHSA-qx2v-qp2m-jg93",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<8.5.10"
+        },
+        {
+          "source": 1124252,
+          "name": "postcss",
+          "dependency": "postcss",
+          "title": "PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments",
+          "url": "https://github.com/advisories/GHSA-6g55-p6wh-862q",
+          "severity": "high",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=8.5.11"
+        },
+        {
+          "source": 1130709,
+          "name": "postcss",
+          "dependency": "postcss",
+          "title": "PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset",
+          "url": "https://github.com/advisories/GHSA-fxqj-rqcc-2cmp",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=8.5.22"
+        },
+        {
+          "source": 1139510,
+          "name": "postcss",
+          "dependency": "postcss",
+          "title": "PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure",
+          "url": "https://github.com/advisories/GHSA-r28c-9q8g-f849",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=8.5.17"
+        }
+      ],
+      "effects": [
+        "miniprogram-simulate"
+      ],
+      "range": "<=8.5.22",
+      "nodes": [
+        "node_modules/miniprogram-simulate/node_modules/postcss"
+      ],
+      "fixAvailable": true
+    },
+    "query-string": {
+      "name": "query-string",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "decode-uri-component"
+      ],
+      "effects": [
+        "@react-navigation/core",
+        "normalize-url"
+      ],
+      "range": "5.0.0 - 9.4.1",
+      "nodes": [
+        "node_modules/@react-navigation/core/node_modules/query-string",
+        "node_modules/query-string"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/cli",
+        "version": "3.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "react-native": {
+      "name": "react-native",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@react-native-community/cli",
+        "@react-native-community/cli-platform-android",
+        "@react-native-community/cli-platform-ios"
+      ],
+      "effects": [
+        "@tarojs/components-rn",
+        "@tarojs/router-rn"
+      ],
+      "range": "0.71.4 - 0.76.0-rc.6 || >=0.89.0-nightly-20260909-b830082cf",
+      "nodes": [
+        "node_modules/react-native"
+      ],
+      "fixAvailable": {
+        "name": "react-native",
+        "version": "0.88.1",
+        "isSemVerMajor": true
+      }
+    },
+    "react-native-svg-transformer": {
+      "name": "react-native-svg-transformer",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@svgr/plugin-svgo"
+      ],
+      "effects": [],
+      "range": ">=0.20.0",
+      "nodes": [
+        "node_modules/react-native-svg-transformer"
+      ],
+      "fixAvailable": true
+    },
+    "send": {
+      "name": "send",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1109556,
+          "name": "send",
+          "dependency": "send",
+          "title": "send vulnerable to template injection that can lead to XSS",
+          "url": "https://github.com/advisories/GHSA-m6fv-jmcg-4jfg",
+          "severity": "low",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+          },
+          "range": "<0.19.0"
+        }
+      ],
+      "effects": [
+        "@expo/cli"
+      ],
+      "range": "<0.19.0",
+      "nodes": [
+        "node_modules/@expo/cli/node_modules/send"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    },
+    "sockjs": {
+      "name": "sockjs",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "uuid"
+      ],
+      "effects": [
+        "webpack-dev-server"
+      ],
+      "range": ">=0.3.17",
+      "nodes": [
+        "node_modules/sockjs"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "source-map-resolve": {
+      "name": "source-map-resolve",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "decode-uri-component"
+      ],
+      "effects": [
+        "css"
+      ],
+      "range": ">=0.5.1",
+      "nodes": [
+        "node_modules/source-map-resolve"
+      ],
+      "fixAvailable": true
+    },
+    "taro-css-to-react-native": {
+      "name": "taro-css-to-react-native",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "css"
+      ],
+      "effects": [
+        "@tarojs/rn-style-transformer",
+        "babel-plugin-transform-react-jsx-to-rn-stylesheet"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/taro-css-to-react-native"
+      ],
+      "fixAvailable": true
+    },
+    "uuid": {
+      "name": "uuid",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1119441,
+          "name": "uuid",
+          "dependency": "uuid",
+          "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-787",
+            "CWE-1285"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<11.1.1"
+        }
+      ],
+      "effects": [
+        "@expo/bunyan",
+        "@expo/rudder-sdk-node",
+        "sockjs",
+        "xcode"
+      ],
+      "range": "<11.1.1",
+      "nodes": [
+        "node_modules/uuid",
+        "node_modules/xcode/node_modules/uuid"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "vite": {
+      "name": "vite",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1107323,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "Vite middleware may serve files starting with the same name with the public directory",
+          "url": "https://github.com/advisories/GHSA-g4jq-h2w9-997c",
+          "severity": "low",
+          "cwe": [
+            "CWE-22",
+            "CWE-200",
+            "CWE-284"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=5.4.19"
+        },
+        {
+          "source": 1107327,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "Vite's `server.fs` settings were not applied to HTML files",
+          "url": "https://github.com/advisories/GHSA-jqfw-vq24-v9c3",
+          "severity": "low",
+          "cwe": [
+            "CWE-23",
+            "CWE-200",
+            "CWE-284"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=5.4.19"
+        },
+        {
+          "source": 1109132,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "vite allows server.fs.deny bypass via backslash on Windows",
+          "url": "https://github.com/advisories/GHSA-93m4-6634-74q7",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=4.5.3 <5.0.0"
+        },
+        {
+          "source": 1116229,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling",
+          "url": "https://github.com/advisories/GHSA-4w7w-66w2-5vf9",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.1"
+        },
+        {
+          "source": 1120061,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "launch-editor vulnerable to command injection via the crafted request on Windows",
+          "url": "https://github.com/advisories/GHSA-c27g-q93r-2cwf",
+          "severity": "high",
+          "cwe": [
+            "CWE-77"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=5.4.8"
+        },
+        {
+          "source": 1120784,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "launch-editor: NTLMv2 hash disclosure via UNC path handling on Windows",
+          "url": "https://github.com/advisories/GHSA-v6wh-96g9-6wx3",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-73",
+            "CWE-522"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.2"
+        },
+        {
+          "source": 1242622,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows",
+          "url": "https://github.com/advisories/GHSA-698v-4r3x-3vcv",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-78"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.3"
+        },
+        {
+          "source": 1242651,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors",
+          "url": "https://github.com/advisories/GHSA-r825-w8mm-5pxw",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-88"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.3"
+        },
+        {
+          "source": 1242658,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows",
+          "url": "https://github.com/advisories/GHSA-587h-7wmj-h5pm",
+          "severity": "high",
+          "cwe": [
+            "CWE-77"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.3"
+        },
+        {
+          "source": 1242724,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "Vite: Cross origin script execution through Vite custom middleware",
+          "url": "https://github.com/advisories/GHSA-9jrq-w75r-8gcw",
+          "severity": "low",
+          "cwe": [
+            "CWE-80"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.3"
+        },
+        {
+          "source": 1242730,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "Vite: Files outside `server.fs.allow` could be served when project paths match system paths on non-Windows machine",
+          "url": "https://github.com/advisories/GHSA-rq7h-c2jc-7f22",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22",
+            "CWE-284"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.3"
+        },
+        {
+          "source": 1243432,
+          "name": "vite",
+          "dependency": "vite",
+          "title": "vite: `server.fs.deny` bypass on Windows alternate paths",
+          "url": "https://github.com/advisories/GHSA-fx2h-pf6j-xcff",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.4.2"
+        },
+        "esbuild"
+      ],
+      "effects": [
+        "@tarojs/plugin-framework-react"
+      ],
+      "range": "<=6.4.3",
+      "nodes": [
+        "mobile/node_modules/vite"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/plugin-framework-react",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "webpack-dev-middleware": {
+      "name": "webpack-dev-middleware",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240027,
+          "name": "webpack-dev-middleware",
+          "dependency": "webpack-dev-middleware",
+          "title": "webpack-dev-middleware vulnerable to Path Traversal via non-slash-terminated publicPath",
+          "url": "https://github.com/advisories/GHSA-g84c-rxfj-3j2c",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 7.4,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N"
+          },
+          "range": "<7.4.5"
+        }
+      ],
+      "effects": [
+        "webpack-dev-server"
+      ],
+      "range": "<7.4.5",
+      "nodes": [
+        "node_modules/webpack-dev-middleware"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "webpack-dev-server": {
+      "name": "webpack-dev-server",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1108429,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "webpack-dev-server users' source code may be stolen when they access a malicious web site with non-Chromium based browser",
+          "url": "https://github.com/advisories/GHSA-9jgg-88mc-972h",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-346"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=5.2.0"
+        },
+        {
+          "source": 1108430,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "webpack-dev-server users' source code may be stolen when they access a malicious web site",
+          "url": "https://github.com/advisories/GHSA-4v9v-hfq4-rm2v",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-749"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=5.2.0"
+        },
+        {
+          "source": 1119074,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "webpack-dev-server vulnerable to cross-origin source code exposure on non-HTTPS origins",
+          "url": "https://github.com/advisories/GHSA-79cf-xcqc-c78w",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-749"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=5.2.3"
+        },
+        {
+          "source": 1121087,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "webpack-dev-server vulnerable to HMR WebSocket interception via permissive user proxies",
+          "url": "https://github.com/advisories/GHSA-mx8g-39q3-5c79",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-346",
+            "CWE-441"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<5.2.5"
+        },
+        {
+          "source": 1123965,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "webpack-dev-server vulnerable to cross-site request forgery via internal developer endpoints",
+          "url": "https://github.com/advisories/GHSA-f5vj-f2hx-8m93",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-352",
+            "CWE-749"
+          ],
+          "cvss": {
+            "score": 4.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:L"
+          },
+          "range": "<=5.2.5"
+        },
+        {
+          "source": 1123966,
+          "name": "webpack-dev-server",
+          "dependency": "webpack-dev-server",
+          "title": "webpack-dev-server vulnerable to denial of service via a malformed Host or Origin header",
+          "url": "https://github.com/advisories/GHSA-m28w-2pqf-7qgj",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-20",
+            "CWE-248"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=5.2.5"
+        },
+        "sockjs",
+        "webpack-dev-middleware"
+      ],
+      "effects": [
+        "@tarojs/taro"
+      ],
+      "range": "<=5.2.7",
+      "nodes": [
+        "node_modules/webpack-dev-server"
+      ],
+      "fixAvailable": {
+        "name": "@tarojs/taro",
+        "version": "3.6.40",
+        "isSemVerMajor": true
+      }
+    },
+    "xcode": {
+      "name": "xcode",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "uuid"
+      ],
+      "effects": [
+        "@expo/config-plugins"
+      ],
+      "range": "0.9.2 - 3.0.2-nightly.20251125002453809.sha.e6b981ec",
+      "nodes": [
+        "node_modules/xcode"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "58.0.21",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 7,
+      "moderate": 60,
+      "high": 13,
+      "critical": 0,
+      "total": 80
+    },
+    "dependencies": {
+      "prod": 1438,
+      "dev": 786,
+      "optional": 205,
+      "peer": 116,
+      "peerOptional": 0,
+      "total": 2346
+    }
+  }
+}

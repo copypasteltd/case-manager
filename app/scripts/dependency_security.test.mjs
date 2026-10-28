@@ -9,12 +9,13 @@ import { gzipSync } from 'node:zlib';
 import { after, test } from 'node:test';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
+import { promisify } from 'node:util';
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(path.join(app, 'package.json'));
 const extract = require('decompress');
 const AdmZip = require('adm-zip');
-const download = require('download');
+const download = promisify(require('download-git-repo'));
 const local = await realpath(path.join(app, '.local'));
 const workspace = await mkdtemp(path.join(local, 'dependency-security-'));
 after(async () => {
@@ -66,15 +67,15 @@ test('CommonJS adapter remains callable and the default tar/targz readers preser
   assert.equal(memory[0].path, 'report.txt'); assert.equal(memory[0].data.toString(), content);
 });
 
-test('Actual upstream download CommonJS caller extracts a real loopback ZIP through the maintained adapter', async () => {
+test('Taro CommonJS template-download boundary extracts a real loopback ZIP through the maintained adapter', async () => {
   const zip = new AdmZip(); zip.addFile('package/report.txt', Buffer.from('actual CJS download fixture'));
-  const bytes = zip.toBuffer(), { output } = await area();
+  const bytes = zip.toBuffer(), { base } = await area(), output = path.join(base, 'template');
   const server = createServer((request, response) => {
     assert.equal(request.url, '/fixture.zip'); response.writeHead(200, { 'Content-Type': 'application/zip', 'Content-Length': bytes.length }); response.end(bytes);
   });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   try {
-    await download('http://127.0.0.1:' + server.address().port + '/fixture.zip', output, { extract: true, strip: 1, retry: 0, timeout: 5000 });
+    await download('direct:http://127.0.0.1:' + server.address().port + '/fixture.zip', output, { timeout: 5000 });
     assert.equal(await readFile(path.join(output, 'report.txt'), 'utf8'), 'actual CJS download fixture');
   } finally { await new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())); }
   assert.equal(server.listening, false);

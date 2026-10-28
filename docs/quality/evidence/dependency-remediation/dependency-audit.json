@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T17:21:54.687845+00:00",
+  "command": [
+    "npm",
+    "audit",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "exit_code": 1,
+  "npm_version": "10.9.2",
+  "package_lock_sha256": "c695c7070aebcdb54dcf125534668a645baecb1223d3c87992a26d8004b6709d",
+  "source_unchanged": true,
+  "vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 57,
+    "high": 6,
+    "critical": 0,
+    "total": 70
+  },
+  "before_vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 60,
+    "high": 13,
+    "critical": 0,
+    "total": 80
+  },
+  "raw_report": "audit-after.json",
+  "raw_report_sha256": "c5ee06ecc1cf54efba8f4372735260d86df30d9f74c2acf6c801ae18f63b8eb5",
+  "before_source_record": "audit-before-source.json",
+  "before_source_record_sha256": "f69dd06f80080d9f9ecf57a8ac17743022a76ca22ec005d52e021c7727fb01df",
+  "all_dependency_scopes_included": true,
+  "advisories_suppressed": false,
+  "production_security_gate_passed": false,
+  "scope": "Complete current-lock scan including build/development/optional/peer dependencies. A completed scan does not close GAP-26."
+}

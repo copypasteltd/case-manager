@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "scope": "Intermediate npm resolution attempts, not final acceptance.",
+  "normal_install_exit": 0,
+  "targeted_update_exit": 0,
+  "dedupe_exit": 1,
+  "dedupe_reason": "npm ERESOLVE while deduplicating optional React peer ranges; force and legacy-peer-deps were not used.",
+  "resolution": "Removed the two stale nested image-size locations from the candidate lock input and regenerated the lock with standard npm install --package-lock-only. Final npm ci and actual installed-tree/consumer tests must prove the regenerated graph.",
+  "lock_generation_exit": 0,
+  "logs": [
+    {
+      "private_log": "app/.local/dependency-remediation-install.log",
+      "sha256": "d7896be069c643ae4184932dfe955577f44c15db6ac529ae737ab7be5d89c693"
+    },
+    {
+      "private_log": "app/.local/dependency-remediation-resolve-image.log",
+      "sha256": "e23f6caa732595cf445cb725b8871918cd8f0b88c3d5db25ba16d82c132641be"
+    },
+    {
+      "private_log": "app/.local/dependency-remediation-dedupe.log",
+      "sha256": "7bc8bd0c07a83647e7a72e07bee00cf68e1a27e93dda56e1846f1dedf7932cc1"
+    },
+    {
+      "private_log": "app/.local/dependency-remediation-lock-generation.log",
+      "sha256": "e64af586ea357f57559d65d1407e250bb430d9affd6f6fb18035db10efc3efe1"
+    }
+  ],
+  "final_source_evidence": false
+}

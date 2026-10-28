@@ -305,9 +305,13 @@
       "status": "active",
       "priority": "P0",
       "kind": "安全分析＋修复＋回归",
-      "remaining": "核对剩余80项审计记录（13 high／60 moderate／7 low）的可达性，逐项修复、替换或形成有证据的处置；重做受影响回归与产物检查。",
+      "remaining": "核对剩余70项审计记录（6 high／57 moderate／7 low）的可达性，逐项修复、替换或形成有证据的处置；重做受影响回归与产物检查。",
       "acceptance": "安全问题按实际风险和既定规则关闭／签核，不压低框架版本或隐藏公告。",
-      "scope_change": "一般安全、权限和数据完整性要求继续保留。"
+      "scope_change": "一般安全、权限和数据完整性要求继续保留。",
+      "completed_adaptations": [
+        "BUILD-CONSUMERS-103"
+      ],
+      "completed_detail": "增量103完成三类实际构建调用链修复及当前锁复现／回归；完整审计80→70，high13→6。剩余记录均开放，整个工作包保持active。"
     },
     {
       "id": "GAP-27",

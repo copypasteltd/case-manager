@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "audit_completed": false,
+  "timeout_seconds": 180,
+  "command": [
+    "npm",
+    "audit",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "package_lock_sha256": "c695c7070aebcdb54dcf125534668a645baecb1223d3c87992a26d8004b6709d",
+  "verification_script_sha256": "c32e10d3d1cd2b121c4ac1c141fe1adf761477e545ba4ee2eaad4a1b3abb8967",
+  "reason": "The complete audit command exceeded its technical execution deadline; no partial advisory result was promoted to success.",
+  "followup": "Exact matching native audit process was absent after terminal exec result; retry uses direct Node/npm CLI so the timeout owns the actual process.",
+  "used_as_final_evidence": false
+}

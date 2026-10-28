@@ -1,6 +1,12 @@
 # CopyPaste 内部管理平台文档中心
 
-当前增量102：基础币种、人工汇率版本与三类财务报表折算，见[开发与使用](development/102-finance-fx-valuation.md)、[验证与媒体来源](quality/102-finance-fx-verification.md)。公司实际口径需由有权限员工明确发布；跨币种核销和摊销仍开放。四端和AI秘书目标继续保留，23项完整工作包待完成、5项移出。
+增量103 / Increment103：修复Taro模板下载、版本查询和Metro图像解析的实际调用链。完整依赖审计从80项降至70项，高风险13→6；剩余70项仍逐项开放。标准npm ci、31项依赖检查、2项原生JS检查及四端本地构建通过。界面源码未改，原107 PNG／41 MP4／41 GIF按原采集来源保留。
+
+Current increment103 replaces legacy Taro template/update consumers and preserves Metro’s callable API over a maintained image parser. The full audit changes from80 to70 package findings, high13→6; every remaining finding stays open. Standard npm ci,31 dependency checks,2 native JS checks and four-client local builds pass. Original UI media retain their historical capture scope;23 work packages remain active.
+
+[开发说明](development/103-dependency-consumer-remediation.md) · [验证与剩余事项](quality/103-dependency-remediation-verification.md)
+
+此前增量102：基础币种、人工汇率版本与三类财务报表折算，见[开发与使用](development/102-finance-fx-valuation.md)、[验证与媒体来源](quality/102-finance-fx-verification.md)。公司实际口径需由有权限员工明确发布；跨币种核销和摊销仍开放。四端和AI秘书目标继续保留，23项完整工作包待完成、5项移出。
 
 Current increment102 adds explicit manually reviewed FX books and separate incurred/cash/forecast valuation. See the linked design and verification record for usage, exact calculation, evidence and remaining boundaries.
 

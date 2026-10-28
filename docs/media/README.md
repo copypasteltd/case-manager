@@ -1,5 +1,7 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量103 / Increment103：本轮为构建依赖调用链修复，界面源码未改，未新增截图／录屏／GIF。107 PNG、41 MP4、41 GIF逐项保持原发布字节与原采集来源，见[复用清单](../quality/evidence/dependency-remediation/reused-evidence.json)；原102演示继续见下文。 / No new capture; all189 published media are retained byte-for-byte with their original provenance.
+
 增量102的实际合成财务操作：选择缺汇率版本 → 查看不完整合计与USD缺口 → 选择完整版本 → 员工发布新版本 → 排队导出固定版本CSV。录制从登录后的财务页开始；共4张新截图、2段无声MP4、2个GIF。Web与共享Taro H5均连接真实原生API；不声明真机、云端或正式公司报价验收。
 
 | 客户端 | 缺口截图 | 新版本截图 | 录屏 | GIF |

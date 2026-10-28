@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T17:48:47.602729+00:00",
+  "checks": [
+    {
+      "name": "All three CJS replacements use disclosed local package identities and matching overrides",
+      "passed": true
+    },
+    {
+      "name": "No old got, git-clone, download or image-size parser remains in the lock graph",
+      "passed": true
+    },
+    {
+      "name": "Standard npm ci actually completed with scripts enabled and exact committed lock bytes",
+      "passed": true
+    },
+    {
+      "name": "Actual Metro/Taro, archive, malformed image and Git/HTTP security checks pass on current code",
+      "passed": true
+    },
+    {
+      "name": "Full fresh before/after audit is source-bound with no suppressed scope and an open release gate",
+      "passed": true
+    },
+    {
+      "name": "Every remaining npm package finding is individually retained as open",
+      "passed": true
+    },
+    {
+      "name": "Eight client commands pass with unchanged complete portable source inputs",
+      "passed": true
+    },
+    {
+      "name": "Both miniapp builds retain all20 pages and current source input digests",
+      "passed": true
+    },
+    {
+      "name": "Native Android build and18 actual APK checks bind local compatibility source as well as the lock",
+      "passed": true
+    },
+    {
+      "name": "JVM26 accurately records new execution or Gradle cache scope",
+      "passed": true
+    },
+    {
+      "name": "All189 published media remain byte-identical and retain their original capture scope",
+      "passed": true
+    },
+    {
+      "name": "Retained UI source and original Go/browser records remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Retained191/1201 backend evidence still matches all unchanged current Go/SQL sources",
+      "passed": true
+    },
+    {
+      "name": "Retained Linux cross-build agrees with unchanged Go source; no deployment claimed",
+      "passed": true
+    },
+    {
+      "name": "Native development inspection confirms schema81, current owned processes and no test databases",
+      "passed": true
+    },
+    {
+      "name": "Scope retains23 open work packages and excludes AI fees only",
+      "passed": true
+    },
+    {
+      "name": "Eight Skills remain drafts awaiting real model acceptance",
+      "passed": true
+    },
+    {
+      "name": "Owned synthetic security workspaces are removed after completed checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "dependency_consumer_remediation_and_retained_media",
+  "interaction_source_sha256": "137e758cbc5dfacb739b531ddb07cb36ce8a5eaab40affcaab85f8f200d72a3f",
+  "mobile_source_sha256": "76368f00ff00769d728c18314b4f6c6d3317c8df5d12ebd89e6008174a16f241",
+  "backend_source_sha256": "9eab482ded7506ebff3701a60273369555cc447c0a486310dc9b56715933756f",
+  "verification_script_sha256": "1ee394b92d023f7bea093879de666b5582f3873e3dba0bda6385e51b53106239",
+  "new_browser_capture": false,
+  "new_backend_test_execution": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

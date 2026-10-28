@@ -23,7 +23,7 @@
     "tokens": "python scripts/sync_design.py",
     "contract": "openapi-typescript ../docs/development/openapi.json -o packages/contracts/src/api.d.ts",
     "test": "npm run test --workspaces --if-present",
-    "test:dependency-security": "node --test scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs"
+    "test:dependency-security": "node --test scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs"
   },
   "devDependencies": {
     "@tarojs/components-rn": "4.3.1",
@@ -36,10 +36,16 @@
     "react-native": "0.73.11",
     "stylelint": "16.10.0",
     "typescript": "5.9.3",
-    "decompress": "file:packages/archive-extraction"
+    "decompress": "file:packages/archive-extraction",
+    "download-git-repo": "file:packages/template-download",
+    "latest-version": "file:packages/latest-version-compat",
+    "image-size": "file:packages/image-size-compat"
   },
   "overrides": {
     "decompress": "$decompress",
+    "download-git-repo": "$download-git-repo",
+    "latest-version": "$latest-version",
+    "image-size": "$image-size",
     "swiper": "12.1.2",
     "tar": "7.5.22",
     "@xmldom/xmldom@0.7": "0.8.15",

@@ -1,0 +1,9 @@
+{
+  "name": "@copypaste/latest-version-compat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Taro CommonJS update caller backed by maintained latest-version.",
+  "main": "index.cjs",
+  "engines": { "node": ">=22.14.0 <23" },
+  "dependencies": { "@copypaste/latest-version-upstream": "npm:latest-version@9.0.0" }
+}

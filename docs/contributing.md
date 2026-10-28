@@ -1,6 +1,8 @@
 # 开发、文档与仓库同步 / Development and repository synchronization
 
-增量102的当前功能证明由 `app/scripts/verify_finance_fx_sources.py` 汇总；本地后端、客户端、Android、Web／Taro H5和媒体分别保留真实来源及执行记录。发布继续按 `docs/quality/current-functional-baseline.json` 选择当前证据，最后运行范围与仓库发布检查。详见[验证记录](quality/102-finance-fx-verification.md)，不使用旧源／缓存／移出范围替代当前验收。
+增量103使用 `app/scripts/verify_dependency_remediation_sources.py` 汇总当前检查。依赖和客户端／Android检查为本轮执行，未改Go和界面媒体保留102来源；Gradle缓存单独标记。见[开发约束](development/103-dependency-consumer-remediation.md)及[验证记录](quality/103-dependency-remediation-verification.md)。
+
+此前增量102的功能证明由 `app/scripts/verify_finance_fx_sources.py` 汇总；本地后端、客户端、Android、Web／Taro H5和媒体分别保留真实来源及执行记录。发布继续按 `docs/quality/current-functional-baseline.json` 选择当前证据，最后运行范围与仓库发布检查。详见[验证记录](quality/102-finance-fx-verification.md)，不使用旧源／缓存／移出范围替代当前验收。
 
 [中文指南](README.zh-CN.md) · [English guide](README.en.md) · [更新记录 / Changelog](CHANGELOG.md)
 

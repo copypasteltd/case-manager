@@ -21,3 +21,5 @@
 - Increment101 adds selected OA prose proposals and explicit human adoption; keep full contract-body attachments, wider OA tools and real model/Skill acceptance open under GAP-04/12/13. See `docs/development/101-oa-prose-drafting.md`.
 
 - Increment102 adds explicit manual FX book publication and pinned report valuation across four clients. Cross-currency settlement, exchange fees/differences, amortization and full GAP-03 acceptance remain open. See `docs/development/102-finance-fx-valuation.md`.
+
+- Increment103 repairs Taro/Metro build consumers with explicit local compatibility packages. Keep the full remaining dependency register open, bind local package sources into Android evidence and distinguish retained102 media/Go and cached JVM results. See `docs/development/103-dependency-consumer-remediation.md`.

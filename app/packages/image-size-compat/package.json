@@ -1,0 +1,9 @@
+{
+  "name": "@copypaste/image-size-compat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Callable CommonJS boundary for Metro using the maintained image-size parser.",
+  "main": "index.cjs",
+  "engines": { "node": ">=22.14.0 <23" },
+  "dependencies": { "@copypaste/image-size-parser": "npm:image-size@2.0.4" }
+}

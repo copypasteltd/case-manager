@@ -1,0 +1,9 @@
+{
+  "name": "@copypaste/template-download",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Callback-compatible Taro template downloads using native fetch, secure extraction and argument-only Git.",
+  "main": "index.cjs",
+  "engines": { "node": ">=22.14.0 <23" },
+  "dependencies": { "@copypaste/archive-extraction": "0.1.0" }
+}

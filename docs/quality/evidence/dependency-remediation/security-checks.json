@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T17:16:15.845938+00:00",
+  "source_sha256": "2b86585262f63551a7ea15ea55d6efb20902bfe21c305949d28b3171ab732098",
+  "sources": [
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/verify_dependency_remediation_security.py"
+  ],
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "security-tests",
+      "passed": true,
+      "exit_code": 0,
+      "tests": {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "raw_log_sha256": "6c8a8308e3c15bcda596ccd50ec37e7abca7a8a7067d76b4d373bee06ef19cc8",
+      "public_log_sha256": "7f1cb4fbda3068b876e44205911efcc899c319023651490123e7d3676f50a93d"
+    },
+    {
+      "name": "native-js-tests",
+      "passed": true,
+      "exit_code": 0,
+      "tests": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "raw_log_sha256": "35bbcd294912de68fb6c317d4d1ce1bfb468b69883b90b2d1c201acbf130d17a",
+      "public_log_sha256": "28f11b3caecd5abf0f59da3b1fda65f879320fdaf2b4d7563eaeb1b901604f23"
+    }
+  ],
+  "selected_dependency_tree_valid": true,
+  "selected_dependency_tree_exit_code": 0,
+  "selected_dependency_tree_sha256": "ac7c328486389e1fe61c0d0b3efa55c2753f7ec180f68f5ea7b38165cdc4bf77",
+  "scope": "Native synthetic consumer/security checks, actual Taro and Metro entry points. No device, emulator, network performance or production acceptance."
+}

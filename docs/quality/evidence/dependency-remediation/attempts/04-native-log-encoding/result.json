@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "stage": "evidence-freezing",
+  "recorded_at": "2026-10-28T17:46:49.054457+00:00",
+  "native_build_passed": true,
+  "apk_checks_passed": 18,
+  "freezer_sha256": "77f0b2b3412d7df7fafd926225b0c4bbd4f8475a9a21369d4763ade685411022",
+  "native_log_sha256": "9c6a4b7b2ffbad60894ee122083ffec35c4c49dffc96763f2a69e9cb4b2a4b26",
+  "reason": "Strict UTF-8 decoding rejected native Windows JVM output at byte 9166 (0xca). No frozen result was produced; the successful build and original log bytes remain unchanged.",
+  "repair": "Read only ASCII Gradle task markers from original bytes; preserve the complete raw log and digest.",
+  "native_build_rerun_required": false
+}
