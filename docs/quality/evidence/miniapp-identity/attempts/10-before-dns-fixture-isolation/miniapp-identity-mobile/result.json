@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T04:46:10.086Z",
+  "source_sha256": "90c2739bfe6bba07a52411780e0e2e0d26a8924e9eb95a336b6f42a2976b5c3d",
+  "source_after_sha256": "90c2739bfe6bba07a52411780e0e2e0d26a8924e9eb95a336b6f42a2976b5c3d",
+  "source_unchanged": true,
+  "source_count": 983,
+  "checks": [
+    "Actual React Web or Taro H5 reads two current self-owned synthetic bindings from the native API; H5 cannot produce platform codes.",
+    "Explicit cancellation leaves both bindings active.",
+    "A real committed revocation with a deliberately lost response is reconciled by a stored-key replay on Web or an explicit list refresh on Taro.",
+    "Revocation history remains visible, all captured credential inputs stay empty, and layouts fit the viewport."
+  ],
+  "layouts": [
+    {
+      "name": "bindings-light",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "name": "bindings-dark",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "name": "bindings-revoked",
+      "width": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "bindings-light.png",
+      "sha256": "2d37d4cdc6fd833b2441e9318ecfe0be139af98f6afc83701edd56047e42b478",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "bindings-dark.png",
+      "sha256": "7afa927c36412050ce420162f5668cf3ef0bb16c99ed073f1cf7d29ddcadde06",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "bindings-revoked.png",
+      "sha256": "668a4e98e99c2feeabf2534d414da7ead6bbed569a3019056acf5b44a9a82b83",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "recordings": [
+    {
+      "name": "miniapp-identity-mobile-collaboration",
+      "frame_count": 14,
+      "duration_ms": 3383,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/miniapp-identity-mobile-collaboration/frames.json",
+      "manifest_sha256": "892e32bf17f86818cb7f456eefd9ff7d4e8b9c5095894dd51e23b4aec4237ac3"
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 1,
+  "browser_contexts_closed": 1,
+  "real_native_api": true,
+  "real_cloud": false,
+  "real_model": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "real_wechat_or_douyin_exchange": false,
+  "client": "Taro H5",
+  "controlled_response_faults": [
+    "committed mini-program binding revocation response lost"
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "90c2739bfe6bba07a52411780e0e2e0d26a8924e9eb95a336b6f42a2976b5c3d",
+  "build_source_after_sha256": "90c2739bfe6bba07a52411780e0e2e0d26a8924e9eb95a336b6f42a2976b5c3d",
+  "build_source_unchanged": true
+}

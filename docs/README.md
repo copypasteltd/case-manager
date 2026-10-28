@@ -1,6 +1,8 @@
 # CopyPaste 内部管理平台文档中心
 
-最新增量96：[原生文件迁移与操作约束](development/96-native-file-import.md) · [准确验证范围](quality/96-native-file-import-verification.md)。Native import operator, reviewed manifests, resume and dual-provider verification.
+最新增量97：[小程序身份绑定、登录与解绑失效](development/97-mini-program-identity.md) · [准确验证与实际媒体](quality/97-mini-program-identity-verification.md)。Employee-confirmed WeChat/Douyin identities, MFA and session revocation.
+
+此前增量96：[原生文件迁移与操作约束](development/96-native-file-import.md) · [准确验证范围](quality/96-native-file-import-verification.md)。Native import operator, reviewed manifests, resume and dual-provider verification.
 
 此前功能：[增量95：任务讨论、固定附件与明确提及](development/95-task-discussion-and-mentions.md) · [实际验证与媒体来源](quality/95-task-discussion-verification.md)。Previous: task discussion, immutable edits and exact mention notification links; four clients remain in scope.
 

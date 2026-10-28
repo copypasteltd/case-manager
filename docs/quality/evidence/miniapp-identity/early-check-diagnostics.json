@@ -1,0 +1,87 @@
+{
+  "scope": "Early or superseded attempts only; final checks refer to the final source digest.",
+  "items": [
+    {
+      "attempt": "initial-native-device-regression",
+      "result": "failed",
+      "cause": "New miniapp tables initially lacked copypaste_app read grants; corrected in unpublished migration78."
+    },
+    {
+      "attempt": "initial-feature-cursor-test",
+      "result": "failed",
+      "cause": "Cross-user cursor correctly returned existing INVALID_CURSOR400; test expectation corrected from422."
+    },
+    {
+      "attempt": "01-native-fixture-web",
+      "result": "failed",
+      "cause": "New fixture omitted existing synthetic administrator MFA setup; fixture corrected."
+    },
+    {
+      "attempt": "02-browser-login-web",
+      "result": "failed",
+      "cause": "Reused browser helper takes only its account argument; invocation corrected."
+    },
+    {
+      "attempt": "03-revoked-text-web",
+      "result": "failed",
+      "cause": "Web revoked cell includes its timestamp; locator corrected to match the actual cell."
+    },
+    {
+      "attempt": "04-superseded-web and04-superseded-client-checks",
+      "result": "passed on superseded sources",
+      "cause": "Re-executed after MFA and Taro lifecycle fixes; not current-source evidence."
+    },
+    {
+      "attempt": "04-mobile-initial-load",
+      "result": "failed",
+      "cause": "A nested Taro component did not reliably receive initial page-show; mount loading and stale-result sequencing added."
+    },
+    {
+      "attempt": "05-backend-before-mfa-fence",
+      "result": "source consistency gate failed",
+      "cause": "Source changed to fence pre-enrollment platform access/refresh. Completed native tests passed but the batch source gate rejected reuse; all tests restarted on final sources."
+    },
+    {
+      "attempt": "05-superseded-linux-build",
+      "result": "passed on superseded sources",
+      "cause": "Current Linux cross-compile re-executed after the MFA fix."
+    },
+    {
+      "attempt": "android-config-preflight",
+      "result": "rejected before build",
+      "cause": "No explicit origin/profile in first invocation. Re-run uses the explicit loopback development profile; no production claim."
+    },
+    {
+      "attempt": "06-pre-lock-finalization",
+      "result": "passed on superseded backend sources",
+      "cause": "Short proof credential transactions were aligned with refresh/revocation organization locks; a concurrent proof/refresh test was added. Complete backend, Linux and source-bound UI captures restarted; unchanged client/Android sources remain separately bound."
+    },
+    {
+      "attempt": "07-before-android-adapter",
+      "result": "native bundle guard blocked packaging",
+      "cause": "A shared Taro platform-login import required Expo. Added a native adapter that refuses platform identity acquisition; native build, client checks and complete-source UI evidence re-executed."
+    },
+    {
+      "attempt": "08-before-douyin-runtime-adapter",
+      "result": "runtime compatibility corrected before final checks",
+      "cause": "Official Taro support excludes Douyin from getAccountInfoSync. Douyin now reads tt.getEnvInfoSync().microapp.appId with independent tests. Exact owned Android build stopped before final checks; current builds and complete-source UI evidence restarted. An initial timestamp-kind ownership guard refused to stop it; literal UTC identity was re-read and matched before cleanup."
+    },
+    {
+      "attempt": "09-before-test-command-finalization",
+      "result": "test entry and private log collision corrected",
+      "cause": "Seven platform environment tests were compiled but not invoked by the npm mobile test script. Added them to the standard test command. A browser review-server log overwrote the Web build command log; renamed the review log. All affected client, Android and complete-source browser evidence restarted; backend source and Linux build remain unchanged."
+    },
+    {
+      "attempt": "10-before-dns-fixture-isolation",
+      "result": "native batch8 failed; targeted repeated probe reproduced3 failures in20 runs",
+      "cause": "A pre-existing DNS denial test reused its prior allowed client. Give the denial branch an independent immutable resolver/client and use atomic handler counters. Fresh full backend checks run at most two isolated native batches together; Linux and complete-source UI evidence are rerun. Unchanged client and Android proof remain separate."
+    },
+    {
+      "attempt": "11-before-response-interception-wait",
+      "result": "browser timing assertion failed during concurrent native regression; owned fixture/server/browser removed",
+      "cause": "Replaced a fixed900ms committed-response assumption with bounded actual interception completion. Route callback failures are handled without exposing private headers. Full backend, clients and Android sources are unaffected; complete-source Web/H5 capture reruns."
+    }
+  ],
+  "credentials_included": false,
+  "production_acceptance": false
+}

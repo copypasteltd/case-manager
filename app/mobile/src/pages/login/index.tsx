@@ -1,11 +1,12 @@
 import { Checkbox, Text, View } from '@tarojs/components';
 import { Button, Input } from '../../platform/components';
-import Taro, { useDidHide } from '@tarojs/taro';
+import Taro, { useDidHide, useDidShow } from '@tarojs/taro';
 import { useEffect, useRef, useState } from 'react';
 import { client } from '../../platform/taro';
 import type { Schemas } from '../../platform/session';
 import { Action, Field, Notice, Page } from '../../ui';
 import { PasswordRecovery } from './password-recovery';
+import { miniappIdentity, miniappPlatform } from '../../platform/miniapp-login';
 
 export default function LoginPage() {
   const [resetting, setResetting] = useState(false);
@@ -13,26 +14,27 @@ export default function LoginPage() {
   const [login, setLogin] = useState(''), [password, setPassword] = useState(''), [code, setCode] = useState(''), [token, setToken] = useState('');
   const [challenge, setChallenge] = useState(''), [secret, setSecret] = useState(''), [codes, setCodes] = useState<string[]>([]);
   const [recovery, setRecovery] = useState(false), [saved, setSaved] = useState(false), [busy, setBusy] = useState(false), [error, setError] = useState<unknown>(), [notice, setNotice] = useState('');
-  const alive = useRef(true), finished = useRef(false);
-  useDidHide(() => { setPassword(''); setCode(''); });
+  const alive = useRef(true), finished = useRef(false), lifetime = useRef(0);
+  useDidShow(() => { alive.current = true; setBusy(false); });
+  useDidHide(() => { alive.current = false; lifetime.current++; setPassword(''); setCode(''); if (!finished.current) client.clear(); });
   useEffect(() => () => { alive.current = false; if (!finished.current) client.clear(); }, []);
   async function enter() { finished.current = true; setCodes([]); setSecret(''); setChallenge(''); try { await Taro.reLaunch({ url: '/pages/home/index' }); } catch { finished.current = false; setNotice('页面暂时未能打开，请再次进入。'); } }
-  async function submit() {
-    if (busy) return; setBusy(true); setError(undefined); setNotice('');
+  async function submit(platformLogin = false) {
+    if (busy) return; const generation = lifetime.current; setBusy(true); setError(undefined); setNotice('');
     try {
       if (step === 'activate') { await client.activate(token.trim(), password); if (alive.current) { setStep('login'); setToken(''); setPassword(''); setNotice('账号已激活，请使用分配给你的内部账号登录。'); } return; }
       let result: Schemas['LoginResult'];
       if (step === 'login') {
-        result = await client.login(login.trim(), password); setPassword('');
+        if (platformLogin) { const identity = await miniappIdentity(); if (!alive.current || generation !== lifetime.current) return; result = await client.loginMiniapp(identity.app_id, identity.code); } else result = await client.login(login.trim(), password); setPassword('');
         if (result.step === 'mfa_enroll' && result.challenge) { const enrollment = await client.enroll(result.challenge); if (alive.current) setSecret(enrollment.mfa_secret ?? ''); }
       } else result = await client.verify(challenge, code.trim(), recovery);
-      if (!alive.current) return; setCode('');
+      if (!alive.current || generation !== lifetime.current) return; setCode('');
       if (result.step === 'authenticated') { if (result.recovery_codes?.length) { setCodes(result.recovery_codes); setSaved(false); setStep('recovery'); } else await enter(); }
       else { setChallenge(result.challenge ?? ''); setStep(result.step); }
     } catch (cause) { if (alive.current) setError(cause); }
-    finally { if (alive.current) setBusy(false); }
+    finally { if (alive.current && generation === lifetime.current) setBusy(false); }
   }
-  function back() { client.clear(); setStep('login'); setChallenge(''); setCode(''); setSecret(''); setRecovery(false); setError(undefined); }
+  function back() { lifetime.current++; client.clear(); setStep('login'); setChallenge(''); setCode(''); setSecret(''); setRecovery(false); setError(undefined); }
   const valid = step === 'login' ? login.trim() && password : step === 'activate' ? token.trim().length >= 40 && password.length >= 12 : recovery ? /^[A-Za-z0-9_-]{20}$/.test(code.trim()) : /^\d{6}$/.test(code);
   if (resetting) return <PasswordRecovery onBack={() => setResetting(false)} />;
   return <Page title={step === 'login' ? '回到工作空间' : step === 'activate' ? '接受公司邀请' : step === 'mfa_enroll' ? '设置两步验证' : step === 'recovery' ? '保存恢复码' : '确认是你本人'} eyebrow='WELCOME TO COPYPASTE'>
@@ -47,6 +49,7 @@ export default function LoginPage() {
       {step === 'mfa' && <Button className='cp-link' disabled={busy} onClick={() => { setRecovery(v => !v); setCode(''); setError(undefined); }}>{recovery ? '使用验证器验证码' : '使用一次性恢复码'}</Button>}
       {step === 'login' ? <Button className='cp-link' disabled={busy} onClick={() => { setPassword(''); setStep('activate'); setError(undefined); }}>接受公司邀请</Button> : <Button className='cp-link' disabled={busy} onClick={back}>返回登录</Button>}
     </>}
+    {step === 'login' && miniappPlatform() && <Action secondary loading={busy} onClick={() => void submit(true)}>{miniappPlatform() === 'wechat' ? '微信' : '抖音'}身份登录</Action>}
     {step === 'login' && <Action secondary disabled={busy} onClick={() => { setPassword(''); setResetting(true); }}>忘记密码</Action>}
     <Text className='cp-muted cp-small cp-paragraph'>仅限获授权的公司成员使用</Text>
   </Page>;

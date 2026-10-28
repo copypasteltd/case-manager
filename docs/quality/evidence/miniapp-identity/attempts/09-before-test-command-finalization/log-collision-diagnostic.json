@@ -1,0 +1,55 @@
+{
+  "passed": false,
+  "scope": "Superseded evidence; browser Web server shared a private build-log filename. No test failures inferred from a changed log.",
+  "logs": [
+    {
+      "name": "typecheck",
+      "recorded_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "current_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "matched": true
+    },
+    {
+      "name": "web-tests",
+      "recorded_sha256": "a4cdd72229ccad39d93443e958f5e97b449856c8b65fe5552cf63e34acbda4fb",
+      "current_sha256": "a4cdd72229ccad39d93443e958f5e97b449856c8b65fe5552cf63e34acbda4fb",
+      "matched": true
+    },
+    {
+      "name": "mobile-tests",
+      "recorded_sha256": "e0ec0bfff55972ff480e1764cfaac9bdcae864c2c8fdc959d50a2345525026a9",
+      "current_sha256": "e0ec0bfff55972ff480e1764cfaac9bdcae864c2c8fdc959d50a2345525026a9",
+      "matched": true
+    },
+    {
+      "name": "runtime-tests",
+      "recorded_sha256": "10aeba50b8e6b7304c439871a6ec0b614d9ff30b5ed647cce18233e4c77299db",
+      "current_sha256": "10aeba50b8e6b7304c439871a6ec0b614d9ff30b5ed647cce18233e4c77299db",
+      "matched": true
+    },
+    {
+      "name": "web-build",
+      "recorded_sha256": "96b1f6d789a1e7445cf119c20c02b62658783bed1cdb5eb4244aef3b373efc9c",
+      "current_sha256": "6c5f2d1da48f93a9568d2b2979048c329adedf4181e8ba8798edf1ed9e8a5655",
+      "matched": false
+    },
+    {
+      "name": "runtime-build",
+      "recorded_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "current_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "matched": true
+    },
+    {
+      "name": "wechat-build",
+      "recorded_sha256": "0a6f627f5a7da248e1487a837746b47150524d3f8ca09d43e256baff4c70024a",
+      "current_sha256": "0a6f627f5a7da248e1487a837746b47150524d3f8ca09d43e256baff4c70024a",
+      "matched": true
+    },
+    {
+      "name": "douyin-build",
+      "recorded_sha256": "af3704dea785a2732f2b43b0d6474688fae4e114b04d2d84f5033aecfd57d321",
+      "current_sha256": "af3704dea785a2732f2b43b0d6474688fae4e114b04d2d84f5033aecfd57d321",
+      "matched": true
+    }
+  ],
+  "credentials_included": false
+}

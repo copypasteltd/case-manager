@@ -11,6 +11,7 @@ import (
 
 func (s *Server) authRoutes(mux *http.ServeMux) {
 	s.accountSecurityRoutes(mux)
+ s.miniappRoutes(mux)
 	mux.HandleFunc("POST /v1/auth/mfa/step-up", func(w http.ResponseWriter, r *http.Request) {
 		a, err := s.actor(r, true)
 		if err != nil {

@@ -1,4 +1,5 @@
 import { Text, View } from '@tarojs/components';
+import { MiniappBindings } from './miniapp-bindings';
 import Taro, { useDidHide, useDidShow } from '@tarojs/taro';
 import { useEffect, useRef, useState } from 'react';
 import { Input } from '../../platform/components';
@@ -32,7 +33,7 @@ export function AccountSettings({ initial, me, onReload }: { initial: Devices; m
       if (active.current && !item.is_current) await onReload();
     } catch (cause) { if (active.current) setError(cause); } finally { pending.current = false; if (active.current) setBusy(false); }
   }
-  return <><Section title='账号安全'><View className='cp-pad'><Action secondary disabled={busy} onClick={() => setChanging(value => !value)}>{changing ? '关闭密码表单' : '修改密码'}</Action>{changing && <ChangePassword me={me} />}</View></Section><Section title='我的登录设备'><Notice error={error} />{page.items.map(item => <View key={item.id} className='cp-pad'><Fact label='设备'><Text>{devices[item.device_type]}{item.is_current ? ' · 当前设备' : ''}</Text></Fact><Fact label='状态'><Text>{states[item.status]}</Text></Fact><Fact label='首次登录'><Text>{date(item.started_at)}</Text></Fact><Fact label='最近刷新'><Text>{date(item.rotated_at)}</Text></Fact><Fact label='最长会话有效至'><Text>{date(item.refresh_expires_at)}</Text></Fact>{item.status === 'active' && <Action secondary disabled={busy} onClick={() => void revoke(item)}>{item.is_current ? '退出当前设备' : '撤销此设备'}</Action>}</View>)}{page.next_cursor && <Action secondary loading={busy} onClick={() => void more()}>加载更多设备</Action>}<Action secondary disabled={busy} onClick={() => void onReload()}>刷新设备</Action></Section></>;
+  return <><MiniappBindings /><Section title='账号安全'><View className='cp-pad'><Action secondary disabled={busy} onClick={() => setChanging(value => !value)}>{changing ? '关闭密码表单' : '修改密码'}</Action>{changing && <ChangePassword me={me} />}</View></Section><Section title='我的登录设备'><Notice error={error} />{page.items.map(item => <View key={item.id} className='cp-pad'><Fact label='设备'><Text>{devices[item.device_type]}{item.is_current ? ' · 当前设备' : ''}</Text></Fact><Fact label='状态'><Text>{states[item.status]}</Text></Fact><Fact label='首次登录'><Text>{date(item.started_at)}</Text></Fact><Fact label='最近刷新'><Text>{date(item.rotated_at)}</Text></Fact><Fact label='最长会话有效至'><Text>{date(item.refresh_expires_at)}</Text></Fact>{item.status === 'active' && <Action secondary disabled={busy} onClick={() => void revoke(item)}>{item.is_current ? '退出当前设备' : '撤销此设备'}</Action>}</View>)}{page.next_cursor && <Action secondary loading={busy} onClick={() => void more()}>加载更多设备</Action>}<Action secondary disabled={busy} onClick={() => void onReload()}>刷新设备</Action></Section></>;
 }
 function ChangePassword({ me }: { me: Schemas['Me'] }) {
   const [current, setCurrent] = useState(''), [password, setPassword] = useState(''), [confirm, setConfirm] = useState('');

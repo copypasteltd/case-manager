@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## 增量97 · 小程序身份 / Mini-program identity · 2026-10-28
+
+- 新增微信／抖音服务端交换、单次code记录、本人密码与适用MFA、两分钟会话绑定证明及明确确认；平台身份只查找已有员工。
+- 新增Web与共享Taro本人绑定管理、历史和解绑确认；解绑覆盖MFA设置／验证／恢复、刷新轮换及并发，新增验证器也阻止旧平台会话续期。
+- Added fixed-endpoint provider adapters, explicit employee binding, platform login and provenance across MFA/refresh. Revocation invalidates all derived sessions and pending challenges without rewriting binding history.
+- 迁移78保留原77；新执行、缓存、实际截图／MP4／GIF与外部验收范围见[验证记录](quality/97-mini-program-identity-verification.md)。完整四端Goal及真实平台、设备、云、模型、TG和生产验收继续开放。
+
+同时隔离既有状态桥 DNS 拒绝测试的客户端与解析结果，并使用原子命中计数；修正前20次重复出现3次失败，修正后20次新执行全部通过，运行时传输实现保留原发布字节。浏览器故障注入改为等待实际响应拦截完成，原失败记录保留。
+
+Also makes the existing DNS denial fixture deterministic with an independent client/resolver and atomic handler counts: the original20-run probe failed3 times; the corrected20-run probe passes. Runtime transport retains its published bytes. Browser fault injection awaits actual interception completion, with prior failures retained.
+
 ## 增量96 · 原生文件迁移 / Native file migration · 2026-10-28
 
 - 新增六个原生CLI命令、逐项来源映射、固定计划与近期MFA批准；复用普通权限、配额、扫描、正式提交及双端复制流程。

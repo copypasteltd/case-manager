@@ -9,15 +9,17 @@ import (
 	"time"
 
 	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/miniapp"
 	"copypaste.hk/platform/internal/platform"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type Service struct {
-	DB        *pgxpool.Pool
-	Config    platform.Config
-	DummyHash string
+	MiniappExchange miniapp.Exchanger
+	DB              *pgxpool.Pool
+	Config          platform.Config
+	DummyHash       string
 }
 type LoginInput struct {
 	Login    string `json:"login"`
@@ -157,6 +159,13 @@ func (s *Service) Enroll(ctx context.Context, challenge string) (LoginResult, er
 	if err != nil {
 		return out, core.Fail(401, "CHALLENGE_INVALID", "验证已过期，请重新登录")
 	}
+	var challengeDevice string
+	if err = tx.QueryRow(ctx, "SELECT device_type FROM auth_challenges WHERE id=$1", id).Scan(&challengeDevice); err != nil {
+		return out, err
+	}
+	if _, err = s.miniappChallengeSource(ctx, tx, id, org, user, challengeDevice); err != nil {
+		return out, err
+	}
 	if len(cipher) > 0 {
 		return out, core.Fail(409, "ENROLLMENT_ALREADY_STARTED", "设置资料已展示，请完成验证或重新登录")
 	}
@@ -193,6 +202,10 @@ func (s *Service) VerifyMFA(ctx context.Context, input MFAInput, requestID strin
 		core.Digest([]byte(input.Challenge))).Scan(&id, &org, &user, &purpose, &device, &cipher, &version)
 	if err != nil {
 		return out, core.Fail(401, "CHALLENGE_INVALID", "验证已过期，请重新登录")
+	}
+	bindingID, err := s.miniappChallengeSource(ctx, tx, id, org, user, device)
+	if err != nil {
+		return out, err
 	}
 	var lastStep int64
 	if purpose == "mfa" {
@@ -242,6 +255,9 @@ func (s *Service) VerifyMFA(ctx context.Context, input MFAInput, requestID strin
 	if err != nil {
 		return out, err
 	}
+	if err = linkMiniappSession(ctx, tx, out.AccessToken, bindingID); err != nil {
+		return LoginResult{}, err
+	}
 	out.RecoveryCodes = recovery
 	if err = authAudit(ctx, tx, org, user, requestID, "auth.mfa", "succeeded", device); err != nil {
 		return out, err
@@ -266,9 +282,11 @@ func (s *Service) Authenticate(ctx context.Context, token string) (core.Actor, e
 	err := s.DB.QueryRow(ctx, `SELECT u.org_id,u.id,u.display_name,u.auth_version,o.authorization_version,s.id,s.device_type,s.mfa_verified_at
 		FROM sessions s JOIN users u ON u.org_id=s.org_id AND u.id=s.user_id JOIN organizations o ON o.id=u.org_id
 		WHERE s.access_hash=$1 AND s.revoked_at IS NULL AND s.expires_at>now() AND u.status='active' AND s.auth_version=u.auth_version
-		AND (s.mfa_verified_at IS NOT NULL OR NOT EXISTS(SELECT 1 FROM role_bindings rb JOIN roles r ON r.org_id=rb.org_id AND r.id=rb.role_id
+		AND (s.miniapp_binding_id IS NULL OR s.mfa_verified_at IS NOT NULL OR NOT EXISTS(SELECT 1 FROM mfa_credentials mc WHERE mc.org_id=s.org_id AND mc.user_id=s.user_id))
+  AND (s.miniapp_binding_id IS NULL OR EXISTS(SELECT 1 FROM miniapp_bindings b WHERE b.id=s.miniapp_binding_id AND b.org_id=s.org_id AND b.user_id=s.user_id AND b.revoked_at IS NULL AND b.platform=s.device_type AND ((b.platform='wechat' AND b.app_id=$2) OR (b.platform='douyin' AND b.app_id=$3))))
+  AND (s.mfa_verified_at IS NOT NULL OR NOT EXISTS(SELECT 1 FROM role_bindings rb JOIN roles r ON r.org_id=rb.org_id AND r.id=rb.role_id
 			WHERE rb.org_id=u.org_id AND rb.user_id=u.id AND r.requires_mfa AND rb.revoked_at IS NULL AND rb.valid_from<=now() AND (rb.valid_until IS NULL OR rb.valid_until>now())))`,
-		core.Digest([]byte(token))).Scan(&a.OrgID, &a.UserID, &a.DisplayName, &a.AuthVersion, &a.OrgAuthVersion, &a.SessionID, &a.Channel, &a.MFAVerifiedAt)
+		core.Digest([]byte(token)), s.configuredMiniappID("wechat"), s.configuredMiniappID("douyin")).Scan(&a.OrgID, &a.UserID, &a.DisplayName, &a.AuthVersion, &a.OrgAuthVersion, &a.SessionID, &a.Channel, &a.MFAVerifiedAt)
 	if err != nil {
 		return a, core.Fail(401, "UNAUTHENTICATED", "会话已过期或权限已变更，请重新登录")
 	}
@@ -294,6 +312,7 @@ func (s *Service) Refresh(ctx context.Context, refresh, csrf string, cookie bool
 	defer tx.Rollback(ctx)
 	var id, org, user, family, device, csrfHash, status string
 	var revoked, refreshed, mfa *time.Time
+	var miniappBinding *string
 	var storedVersion, currentVersion int64
 	var expires time.Time
 	var sessionOrg string
@@ -303,9 +322,9 @@ func (s *Service) Refresh(ctx context.Context, refresh, csrf string, cookie bool
 	if err = lockOrganization(ctx, tx, sessionOrg); err != nil {
 		return out, err
 	}
-	err = tx.QueryRow(ctx, `SELECT s.id,s.org_id,s.user_id,s.family_id,s.device_type,s.csrf_hash,s.revoked_at,s.refreshed_at,s.refresh_expires_at,s.auth_version,u.auth_version,u.status,s.mfa_verified_at
+	err = tx.QueryRow(ctx, `SELECT s.id,s.org_id,s.user_id,s.family_id,s.device_type,s.csrf_hash,s.revoked_at,s.refreshed_at,s.refresh_expires_at,s.auth_version,u.auth_version,u.status,s.mfa_verified_at,s.miniapp_binding_id
 		FROM sessions s JOIN users u ON u.org_id=s.org_id AND u.id=s.user_id WHERE refresh_hash=$1 FOR UPDATE OF s,u`,
-		core.Digest([]byte(refresh))).Scan(&id, &org, &user, &family, &device, &csrfHash, &revoked, &refreshed, &expires, &storedVersion, &currentVersion, &status, &mfa)
+		core.Digest([]byte(refresh))).Scan(&id, &org, &user, &family, &device, &csrfHash, &revoked, &refreshed, &expires, &storedVersion, &currentVersion, &status, &mfa, &miniappBinding)
 	if err != nil {
 		return out, core.Fail(401, "UNAUTHENTICATED", "请重新登录")
 	}
@@ -330,6 +349,20 @@ func (s *Service) Refresh(ctx context.Context, refresh, csrf string, cookie bool
 	if revoked != nil || !time.Now().Before(expires) || status != "active" || storedVersion != currentVersion {
 		return out, core.Fail(401, "SESSION_REVOKED", "会话已失效，请重新登录")
 	}
+	if miniappBinding != nil {
+		if mfa == nil {
+			var enrolled bool
+			if err = tx.QueryRow(ctx, `SELECT EXISTS(SELECT 1 FROM mfa_credentials WHERE org_id=$1 AND user_id=$2)`, org, user).Scan(&enrolled); err != nil {
+				return out, err
+			}
+			if enrolled {
+				return out, core.Fail(401, "MINIAPP_MFA_REQUIRED", "请重新通过小程序登录并完成两步验证")
+			}
+		}
+		if err = s.checkMiniappBinding(ctx, tx, *miniappBinding, org, user, device); err != nil {
+			return out, err
+		}
+	}
 	_, err = tx.Exec(ctx, "UPDATE sessions SET revoked_at=now(),refreshed_at=now() WHERE id=$1", id)
 	if err != nil {
 		return out, err
@@ -337,6 +370,11 @@ func (s *Service) Refresh(ctx context.Context, refresh, csrf string, cookie bool
 	out, err = s.issue(ctx, tx, org, user, device, family, currentVersion, mfa)
 	if err != nil {
 		return out, err
+	}
+	if miniappBinding != nil {
+		if err = linkMiniappSession(ctx, tx, out.AccessToken, *miniappBinding); err != nil {
+			return LoginResult{}, err
+		}
 	}
 	if err = authAudit(ctx, tx, org, user, requestID, "auth.refresh", "succeeded", device); err != nil {
 		return out, err

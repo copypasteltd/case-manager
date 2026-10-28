@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T05:36:02.799716+00:00",
+  "method": "Agent visual inspection of two final saved viewport screenshots; automated layout and recovery assertions cover all seven final screenshots.",
+  "reviewed": [
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-light.png",
+      "sha256": "3139004f50472737129b54b149c17095f7db3e69297257667662dc56cd8439fc"
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-mobile-bindings-revoked.png",
+      "sha256": "56a7cbfc82c4309f66c30cc133da7d37a751617a296d934eb4a0f93cf68e5003"
+    }
+  ],
+  "observations": [
+    "Web shows both synthetic platform bindings, readable AppIDs/status, revoke actions and an empty MFA input.",
+    "Taro H5 shows the refreshed revoked binding with its timestamp, the second active binding and available actions. The prior connection message remains visible for the lost-response scenario."
+  ],
+  "scope": "Actual synthetic Web and Taro H5 viewports; no real mini-program or device acceptance.",
+  "credentials_included": false,
+  "real_device": false
+}

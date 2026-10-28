@@ -4,6 +4,20 @@
 
 CopyPaste Case Manager connects projects, office workflows, files, knowledge, recurring costs, a company secretary and service status through shared authorization and audit history. This repository includes working implementations, detailed protocols and source-bound evidence. It is a development preview; full production delivery continues against the [28 numbered gaps](delivery/03-goal-gap-assessment.md).
 
+## Mini-program identity binding and login (increment97)
+
+First sign in to the company WeChat or Douyin mini-program with an existing internal account. Open My workspace → My mini-program bindings, confirm the current password, and complete a recent MFA step if an authenticator is enrolled. The client checks its actual runtime and AppID before acquiring a one-use platform code: WeChat uses its account API, while Douyin uses `tt.getEnvInfoSync().microapp.appId` (base library2.21.0+). Android has a separate adapter that refuses platform identity acquisition. A two-minute proof becomes a binding only after explicit employee confirmation. Later platform logins identify that same employee and continue the required MFA and business authorization checks.
+
+All four clients can list their own active and revoked bindings. Unbinding immediately invalidates every binding-derived access/refresh session and pending MFA challenge; independent password sessions remain separate. Rebinding creates a new historical record. Web reconciles a lost committed response using the original idempotency key; Taro blocks duplicate submission until an explicit list refresh confirms the stored result. There is no automatic registration, anonymous employee account, or nickname/phone/UnionID merge.
+
+Operators configure the API privately with `CP_WECHAT_APP_ID`/`CP_WECHAT_APP_SECRET`, `CP_DOUYIN_APP_ID`/`CP_DOUYIN_APP_SECRET`, and `CP_MINIAPP_IDENTITY_KEY` (32 random bytes, Base64). Both providers are disabled by default; partial configuration fails startup. Keep the identity digest key stable across AppSecret rotation and include it in controlled disaster recovery. Never ship secrets to mini-programs, APKs, logs or Git. [Protocol, configuration and recovery](development/97-mini-program-identity.md) · [Actual validation and media provenance](quality/97-mini-program-identity-verification.md). Native synthetic HTTP tests and Taro H5 recordings do not establish real WeChat/Douyin, Hong Kong device or production acceptance.
+
+[Current screenshots, MP4s and GIFs](media/README.md) show self-service bindings and lost-response reconciliation with isolated synthetic data.
+
+Fresh client checks pass 135 Web, 248 mobile and 51 runtime tests, plus both 20-page mini-program builds. Seven new actual page screenshots, two MP4 recordings and two GIFs use isolated synthetic records; they do not establish platform or device acceptance.
+
+Final native checks pass 189 backend top-level tests / 1,183 result records in 10 batches, plus 135 Web, 248 mobile and 51 runtime tests and both 20-page mini-program builds. Migration 78 preserves all 77 earlier files; OpenAPI has 298 paths / 369 operations / 647 schemas. The Android development APK passes 18 package checks and 26 freshly executed JVM tests.
+
 ## 1. Goal and scope
 
 | Confirmed input | Design consequence |
@@ -339,7 +353,7 @@ These are each employee's in-app notifications. No additional Telegram, email or
 
 ## 8. Evidence and release gates
 
-The current increment implements the [native source-file import operator](development/96-native-file-import.md). See the [verification scope](quality/96-native-file-import-verification.md) and [final source checks](quality/evidence/file-imports/final-source-check.json).
+The previous increment96 implemented the [native source-file import operator](development/96-native-file-import.md). See the [verification scope](quality/96-native-file-import-verification.md) and [final source checks](quality/evidence/file-imports/final-source-check.json).
 
 | Layer | Current result | Scope |
 | --- | --- | --- |

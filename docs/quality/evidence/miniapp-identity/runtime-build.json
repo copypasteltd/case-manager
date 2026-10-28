@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-28T04:46:11.503477+00:00",
+  "source_sha256": "09d083b842753da1a4fe81176707c7cb953cf57ce6bafcb0b607c464d9f57968",
+  "source_files": 54,
+  "tests": {
+    "pass": 51,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T04:41:59.437263+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/miniapp-identity-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T04:43:24.669852+00:00",
+      "test_count": 51,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "10f85511a21b67871849ba2f17376275593b5af3a7b0d64a3192fdc30bc7160c",
+      "raw_log": "ignored app/.local/miniapp-identity-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T04:43:51.199251+00:00",
+      "test_count": null,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/miniapp-identity-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "83b1fb735907d7e16c30657b24b2ce5b6fca70a195472573834fec2edd49f273"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "5bb6f08ed048341a73a9080a0aba1cc78d5d30c9c039b4e7d88780ad5ad5072e",
+    "summary_adapter_sha256": "f06389947dc3693c9290944dc02dce56b9fd827401cff23b3fa24aa4d243c8b5",
+    "adapter_reran_tests": false
+  }
+}

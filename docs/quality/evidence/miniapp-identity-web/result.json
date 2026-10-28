@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T05:22:37.211Z",
+  "source_sha256": "0f4bf0e303436384d89593917b545dc610f947daef3edeab3593c2948b78c85b",
+  "source_after_sha256": "0f4bf0e303436384d89593917b545dc610f947daef3edeab3593c2948b78c85b",
+  "source_unchanged": true,
+  "source_count": 984,
+  "checks": [
+    "Actual React Web or Taro H5 reads two current self-owned synthetic bindings from the native API; H5 cannot produce platform codes.",
+    "Explicit cancellation leaves both bindings active.",
+    "A real committed revocation with a deliberately lost response is reconciled by a stored-key replay on Web or an explicit list refresh on Taro.",
+    "Revocation history remains visible, all captured credential inputs stay empty, and layouts fit the viewport."
+  ],
+  "layouts": [
+    {
+      "name": "bindings-light",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "bindings-dark",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "bindings-revoked",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "bindings-narrow",
+      "width": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "bindings-light.png",
+      "sha256": "3139004f50472737129b54b149c17095f7db3e69297257667662dc56cd8439fc",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "bindings-dark.png",
+      "sha256": "51587827efc6b9153557e7a27c5e7a3103906880ae9b959cd6f93ff936f49f7e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "bindings-revoked.png",
+      "sha256": "ad4d06ddad3856ec2dddddb6bf92bc02a973bcdaa010d164df63994ea7d7560f",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "bindings-narrow.png",
+      "sha256": "4400edec7c34788d6ef43a37b5ef7f5529bf00c41ef119704fef82db1bbf6a13",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "recordings": [
+    {
+      "name": "miniapp-identity-web-collaboration",
+      "frame_count": 12,
+      "duration_ms": 2436,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/miniapp-identity-web-collaboration/frames.json",
+      "manifest_sha256": "f4464589571ab23f2521dd16dafa6af2dd033ae28c1d00ec48a7291899fbba11"
+    }
+  ],
+  "errors": [],
+  "server_errors": [],
+  "owned_browser_closed": true,
+  "browser_contexts_created": 1,
+  "browser_contexts_closed": 1,
+  "real_native_api": true,
+  "real_cloud": false,
+  "real_model": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "real_wechat_or_douyin_exchange": false,
+  "client": "React Web",
+  "controlled_response_faults": [
+    "committed mini-program binding revocation response lost"
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "0f4bf0e303436384d89593917b545dc610f947daef3edeab3593c2948b78c85b",
+  "build_source_after_sha256": "0f4bf0e303436384d89593917b545dc610f947daef3edeab3593c2948b78c85b",
+  "build_source_unchanged": true
+}

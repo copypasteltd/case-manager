@@ -1,6 +1,7 @@
 package platform
 
 import (
+	"copypaste.hk/platform/internal/miniapp"
 	"encoding/base64"
 	"errors"
 	"net/url"
@@ -10,6 +11,7 @@ import (
 )
 
 type Config struct {
+	Miniapp              miniapp.Config
 	Environment          string
 	HTTPAddr             string
 	DatabaseURL          string
@@ -44,6 +46,17 @@ func LoadConfig() (Config, error) {
 		return c, errors.New("CP_MFA_KEY must encode 32 random bytes")
 	}
 	c.MFAKey = key
+	c.Miniapp.WeChat = miniapp.Profile{AppID: os.Getenv("CP_WECHAT_APP_ID"), Secret: os.Getenv("CP_WECHAT_APP_SECRET")}
+	c.Miniapp.Douyin = miniapp.Profile{AppID: os.Getenv("CP_DOUYIN_APP_ID"), Secret: os.Getenv("CP_DOUYIN_APP_SECRET")}
+	if configured := os.Getenv("CP_MINIAPP_IDENTITY_KEY"); configured != "" {
+		c.Miniapp.IdentityKey, err = base64.StdEncoding.DecodeString(configured)
+		if err != nil {
+			return c, errors.New("CP_MINIAPP_IDENTITY_KEY must encode 32 random bytes")
+		}
+	}
+	if !c.Miniapp.Valid() {
+		return c, errors.New("mini-program configuration requires a valid app ID, server secret and dedicated 32-byte identity key")
+	}
 	u, err := url.Parse(c.PublicOrigin)
 	if err != nil || u.Host == "" || (u.Scheme != "http" && u.Scheme != "https") {
 		return c, errors.New("CP_PUBLIC_ORIGIN must be an absolute HTTP(S) origin")

@@ -1269,6 +1269,21 @@ def wrapped(name, listing=False):
     return ref(key)
 
 
+MINIAPP = enum("wechat", "douyin")
+MINIAPP_APP_ID = {"type": "string", "pattern": "^[A-Za-z0-9_-]{5,128}$"}
+MINIAPP_CODE = {"type": "string", "minLength": 1, "maxLength": 512}
+add("MiniappProfile", {"platform": MINIAPP, "app_id": MINIAPP_APP_ID}, ("platform", "app_id"))
+add("MiniappProfiles", {"items": array(ref("MiniappProfile"), maxItems=2)}, ("items",))
+add("MiniappCodeInput", {"platform": MINIAPP, "app_id": MINIAPP_APP_ID, "code": MINIAPP_CODE}, ("platform", "app_id", "code"))
+add("MiniappProofInput", {"platform": MINIAPP, "app_id": MINIAPP_APP_ID, "code": MINIAPP_CODE,
+    "current_password": {"type": "string", "minLength": 1, "maxLength": 1024}}, ("platform", "app_id", "code", "current_password"))
+add("MiniappProof", {"id": ID, "platform": MINIAPP, "app_id": MINIAPP_APP_ID, "expires_at": TIME}, ("id", "platform", "app_id", "expires_at"))
+add("MiniappBinding", {"id": ID, "platform": MINIAPP, "app_id": MINIAPP_APP_ID, "version": VERSION, "created_at": TIME,
+    "revoked_at": nullable(TIME), "is_current_session_source": {"type": "boolean"}},
+    ("id", "platform", "app_id", "version", "created_at", "revoked_at", "is_current_session_source"))
+add("MiniappBindInput", {"proof_id": ID, "confirmed": {"type": "boolean", "const": True}, "reason": NAME}, ("proof_id", "confirmed", "reason"))
+add("MiniappRevokeInput", {**EXPECTED, "reason": NAME}, ("expected_version", "reason"))
+
 def operation(path, method, name, result, body=None, code=200, listing=False):
     params = [{"name": p, "in": "path", "required": True, "schema": ID} for p in re.findall(r"\{([^}]+)\}", path)]
     if listing or (method == "get" and result in ("Comments", "MentionCandidates")):
@@ -1317,6 +1332,17 @@ PATHS["/integrations/telegram/{bot_id}/webhook"]={"post":{
     "requestBody":{"required":True,"content":{"application/json":{"schema":{"type":"object","required":["update_id"],"additionalProperties":True,"properties":{"update_id":{"type":"integer","minimum":0,"maximum":9007199254740991}}}}}},
     "responses":{"200":{"description":"Durably received; does not imply a model run or delivery","content":{"application/json":{"schema":ref("TelegramWebhookAck")}}},
         **{str(status):{"$ref":"#/components/responses/Failure"} for status in (400,404,409,413,415,422,500)}}}}
+operation("/auth/miniapps", "get", "getMiniappProfiles", "MiniappProfiles")
+operation("/auth/miniapps/login", "post", "loginMiniapp", "LoginResult", "MiniappCodeInput")
+operation("/me/miniapp-binding-proofs", "post", "createMiniappProof", "MiniappProof", "MiniappProofInput", 201)
+operation("/me/miniapp-bindings", "get", "listOwnMiniappBindings", "MiniappBinding", listing=True)
+operation("/me/miniapp-bindings", "post", "bindOwnMiniapp", "MiniappBinding", "MiniappBindInput", 201)
+operation("/me/miniapp-bindings/{id}/revoke", "post", "revokeOwnMiniapp", "MiniappBinding", "MiniappRevokeInput")
+for miniapp_route in ("/auth/miniapps", "/auth/miniapps/login", "/me/miniapp-binding-proofs"):
+    for miniapp_operation in PATHS[miniapp_route].values():
+        miniapp_operation["parameters"] = [parameter for parameter in miniapp_operation["parameters"] if parameter.get("$ref") != "#/components/parameters/IdempotencyKey"]
+        if miniapp_route.startswith("/auth/"):
+            miniapp_operation["security"] = []
 operation("/me/sessions", "get", "listDeviceSessions", "DeviceSession", listing=True)
 operation("/me/sessions/{id}/revoke", "post", "revokeDeviceSession", "SessionRevocation", "SessionRevokeInput")
 operation("/me/password", "post", "changeOwnPassword", "PasswordChanged", "PasswordChangeInput")

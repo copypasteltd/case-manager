@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T06:01:22.509294+00:00",
+  "source_sha256": "0584e4f921b9dfa125fcae99815cdb480122dd778f0f39a9269858a85900f0c3",
+  "migration_exit_code": 0,
+  "replaced_verified_api_pid": 23360,
+  "api_pid": 9248,
+  "api_ready": true,
+  "postgres_restarted": false,
+  "notification_worker_restarted": true,
+  "vite_restarted": false,
+  "external_integration_started": false,
+  "production_deployment": false,
+  "workers": [
+    {
+      "command": "worker-notification",
+      "replaced_verified_owner": true,
+      "owned": true,
+      "backend_source_sha256": "0584e4f921b9dfa125fcae99815cdb480122dd778f0f39a9269858a85900f0c3",
+      "previous_backend_source_sha256": "a60dd0300ca7a72bec8127cb3e9df1148ab2aae2f3f0c02a1e311332da5aac8b"
+    },
+    {
+      "command": "worker-report-export",
+      "replaced_verified_owner": true,
+      "owned": true,
+      "backend_source_sha256": "0584e4f921b9dfa125fcae99815cdb480122dd778f0f39a9269858a85900f0c3",
+      "previous_backend_source_sha256": "a60dd0300ca7a72bec8127cb3e9df1148ab2aae2f3f0c02a1e311332da5aac8b"
+    }
+  ],
+  "migration": 78,
+  "source_unchanged": true,
+  "updater_sha256": "0e6a4b369804e2c6fb9a6bf81140b8e1f00f0396ef0d25a81a776931a796be1a"
+}

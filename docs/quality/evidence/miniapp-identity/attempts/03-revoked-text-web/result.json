@@ -1,0 +1,65 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-28T03:31:59.543Z",
+  "source_sha256": "1e7459f288a1a00ec6a81caa95b195d634999d01ade99af77743f42cafc21932",
+  "source_after_sha256": "1e7459f288a1a00ec6a81caa95b195d634999d01ade99af77743f42cafc21932",
+  "source_unchanged": true,
+  "source_count": 980,
+  "checks": [
+    "Actual React Web or Taro H5 reads two current self-owned synthetic bindings from the native API; H5 cannot produce platform codes.",
+    "Explicit cancellation leaves both bindings active."
+  ],
+  "layouts": [
+    {
+      "name": "bindings-light",
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "name": "bindings-dark",
+      "width": 1440,
+      "scroll": 1440
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "bindings-light.png",
+      "sha256": "3ae7cf8af34d914fcbad2eb6b145295ca0fa1afe590ac250c813f4e2c6a81d9f",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "bindings-dark.png",
+      "sha256": "f4d95fe8b29899f3795ba9ee848b4c90822207bef9fb07ad33cd0b964c75ae87",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  ],
+  "recordings": [],
+  "errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('body').getByText('已解绑', { exact: true }).first() to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_miniapp_identity.mjs:109:73\n    at async recordViewport (D:\\dev\\copypasted\\内部管理\\app\\scripts\\miniapp_identity_recording.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_miniapp_identity.mjs:90:18",
+  "owned_browser_closed": true,
+  "browser_contexts_created": 1,
+  "browser_contexts_closed": 1,
+  "real_native_api": true,
+  "real_cloud": false,
+  "real_model": false,
+  "real_device": false,
+  "real_telegram_network": false,
+  "real_wechat_or_douyin_exchange": false,
+  "client": "React Web",
+  "controlled_response_faults": [
+    "committed mini-program binding revocation response lost"
+  ],
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "1e7459f288a1a00ec6a81caa95b195d634999d01ade99af77743f42cafc21932",
+  "build_source_after_sha256": "1e7459f288a1a00ec6a81caa95b195d634999d01ade99af77743f42cafc21932",
+  "build_source_unchanged": true
+}

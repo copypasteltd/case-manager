@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "backend_source_sha256": "3feea01abf387a067de79ae604fe0b814e2de9a8833b6e6594d1f26c462a4256",
+  "checked_at": "2026-10-28T05:13:23.897975+00:00",
+  "probes": [
+    {
+      "private_raw_log": "backend-batch-8.log",
+      "sha256": "9a00daa4689120abd2bc12ed5abe08ca77250c2d6df7a95d56ef6ecd4bf5bf20",
+      "failed_tests": [
+        "TestStatusBridgeTargetControls/checked_dns_is_pinned_and_redirect_is_not_followed",
+        "TestStatusBridgeTargetControls"
+      ],
+      "target_pass_count": 0,
+      "target_fail_count": 1
+    },
+    {
+      "private_raw_log": "miniapp-identity-dns-recheck.log",
+      "sha256": "32a9196844156e67efa94c4ff7de007ceb21046cc3980aa0dce6381293e61c67",
+      "failed_tests": [
+        "TestStatusBridgeTargetControls/checked_dns_is_pinned_and_redirect_is_not_followed",
+        "TestStatusBridgeTargetControls",
+        "TestStatusBridgeTargetControls/checked_dns_is_pinned_and_redirect_is_not_followed",
+        "TestStatusBridgeTargetControls",
+        "TestStatusBridgeTargetControls/checked_dns_is_pinned_and_redirect_is_not_followed",
+        "TestStatusBridgeTargetControls"
+      ],
+      "target_pass_count": 17,
+      "target_fail_count": 3
+    }
+  ],
+  "cause": "The mutable DNS denial fixture reused a client after a prior allowed connection. A new client and immutable denied DNS response force a new dial; atomic hit counts also remove shared handler state races. Runtime transport is unchanged. All backend tests, Linux proof and complete-source UI captures are rerun.",
+  "credentials_included": false
+}

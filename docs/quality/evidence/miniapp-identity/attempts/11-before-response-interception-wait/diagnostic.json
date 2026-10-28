@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "failure": "The browser asserted a committed response after a fixed900ms delay. Under concurrent native checks the response was still pending; teardown disposed the request context.",
+  "private_raw_log_sha256": "6305fa3da9b82963579648625d77933635e4900979832986bd2cacee2b467f10",
+  "private_log_committed": false,
+  "owned_headless_playwright_processes_after_check": 0,
+  "native_fixture_exit_code": 0,
+  "fix": "Await bounded interception completion and handle route callback failures without logging request credentials. Application, backend and Android sources are unchanged."
+}

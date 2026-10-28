@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T04:49:19.042422+00:00",
+  "method": "Agent visual inspection of four final saved actual viewport screenshots; automated layout and recovery assertions cover all seven screenshots.",
+  "reviewed": [
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-light.png",
+      "sha256": "3139004f50472737129b54b149c17095f7db3e69297257667662dc56cd8439fc"
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-mobile-bindings-dark.png",
+      "sha256": "7afa927c36412050ce420162f5668cf3ef0bb16c99ed073f1cf7d29ddcadde06"
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-narrow.png",
+      "sha256": "4400edec7c34788d6ef43a37b5ef7f5529bf00c41ef119704fef82db1bbf6a13"
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-mobile-bindings-revoked.png",
+      "sha256": "668a4e98e99c2feeabf2534d414da7ead6bbed569a3019056acf5b44a9a82b83"
+    }
+  ],
+  "observations": [
+    "Web binding table shows both synthetic platforms, readable AppIDs, status and revoke actions. The visible MFA input is empty.",
+    "Taro H5 dark view shows both complete binding cards, readable timestamps, revoke and refresh actions without horizontal clipping.",
+    "The narrow Web viewport contains the binding table in its horizontal scroll region; action columns require horizontal scrolling.",
+    "The Taro lost-response view retains the connection message while the refreshed list explicitly shows the revoked binding and timestamp. Other active binding and refresh actions remain visible."
+  ],
+  "scope": "Synthetic local Web and Taro H5 views, not real mini-program or device acceptance. The Web viewport is scrolled to the binding feature.",
+  "credentials_included": false,
+  "real_device": false
+}

@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync/atomic"
 	"testing"
 	"time"
 )
@@ -41,9 +42,9 @@ func TestStatusBridgeTargetControls(t *testing.T) {
 		}
 	})
 	t.Run("checked_dns_is_pinned_and_redirect_is_not_followed", func(t *testing.T) {
-		hits := 0
+		var hits atomic.Int32
 		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			hits++
+			hits.Add(1)
 			if r.URL.Path == "/redirect" {
 				http.Redirect(w, r, "http://169.254.169.254/", 302)
 				return
@@ -63,16 +64,21 @@ func TestStatusBridgeTargetControls(t *testing.T) {
 			t.Fatal("approved IP not dialed")
 		}
 		res.Body.Close()
-		if res.StatusCode != 302 || hits != 1 {
+		if res.StatusCode != 302 || hits.Load() != 1 {
 			t.Fatal("redirect followed")
 		}
 		client.CloseIdleConnections()
-		dns.ips = []netip.Addr{netip.MustParseAddr("127.0.0.1"), netip.MustParseAddr("169.254.169.254")}
-		if res, err = client.Get(e.URL); err == nil {
+		// Use a fresh transport so denial always checks a new DNS lookup.
+		deniedClient, _, err := endpointClient(e, time.Second, &fixedDNS{[]netip.Addr{netip.MustParseAddr("127.0.0.1"), netip.MustParseAddr("169.254.169.254")}})
+		if err != nil {
+			t.Fatal(SafeCode(err))
+		}
+		defer deniedClient.CloseIdleConnections()
+		if res, err = deniedClient.Get(e.URL); err == nil {
 			res.Body.Close()
 			t.Fatal("DNS rebinding accepted")
 		}
-		if hits != 1 {
+		if hits.Load() != 1 {
 			t.Fatal("denied address contacted")
 		}
 	})

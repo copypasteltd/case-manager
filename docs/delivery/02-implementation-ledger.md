@@ -1,6 +1,8 @@
 # 代码实施与验证台账
 
-最新增量96：原生盘点／逐项映射／固定计划、完整清单批准、原上传复用、明确重试、来源增量与逐项双端核验。新增迁移77，原76字节保留；六个CLI命令及普通授权API已实现。新执行检查和保留证据范围见[设计与操作](../development/96-native-file-import.md)及[准确验证](../quality/96-native-file-import-verification.md)。GAP-22推进至可执行工具，真实2TB／120GB、双云、ACL、恢复／切换仍未验收；四端完整Goal继续active。
+最新增量97：微信／抖音身份交换、本人密码及适用MFA确认、两分钟证明、不可变绑定历史、平台登录与解绑失效。新增迁移78，原77保持字节；Web与Taro本人管理、未知结果恢复及真实页面媒体已落实。新执行／缓存／外部验收范围见[设计](../development/97-mini-program-identity.md)和[准确验证](../quality/97-mini-program-identity-verification.md)；GAP-19真实平台与设备仍开放，四端完整Goal继续active。
+
+此前增量96：原生盘点／逐项映射／固定计划、完整清单批准、原上传复用、明确重试、来源增量与逐项双端核验。新增迁移77，原76字节保留；六个CLI命令及普通授权API已实现。新执行检查和保留证据范围见[设计与操作](../development/96-native-file-import.md)及[准确验证](../quality/96-native-file-import-verification.md)。GAP-22推进至可执行工具，真实2TB／120GB、双云、ACL、恢复／切换仍未验收；四端完整Goal继续active。
 
 此前增量95：Web／Taro任务讨论、本人不可变修订、固定正式附件、明确成员提及和准确通知定位。原生后端171顶层／1133结果、9批，Web135／运行时51／移动238及类型构建，双小程序各20页；新增迁移76，原75未改。Web／H5各8组真实流程，新增8PNG和两套原速MP4／GIF；当前开发APK及18项包检查，26项JVM缓存复用单列。归属API及两个worker升级当前来源，零隔离库，外部接入关闭。完整四端Goal和28项差异继续保留。见[方案](../development/95-task-discussion-and-mentions.md)及[准确验证](../quality/95-task-discussion-verification.md)。
 

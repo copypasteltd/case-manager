@@ -8,7 +8,7 @@ import (
 )
 
 // RecoverMFA consumes a single recovery code under a password-authenticated,
-// short-lived challenge. It does not disable the configured authenticator.
+// short-lived password or bound-platform challenge. It does not disable the configured authenticator.
 func (s *Service) RecoverMFA(ctx context.Context, input MFAInput, requestID string) (LoginResult, error) {
 	var out LoginResult
 	tx, err := s.DB.Begin(ctx)
@@ -27,6 +27,10 @@ func (s *Service) RecoverMFA(ctx context.Context, input MFAInput, requestID stri
         FOR UPDATE OF c,u`, core.Digest([]byte(input.Challenge))).Scan(&challengeID, &org, &user, &device, &version)
 	if err != nil {
 		return out, core.Fail(401, "CHALLENGE_INVALID", "验证已过期，请重新登录")
+	}
+	bindingID, err := s.miniappChallengeSource(ctx, tx, challengeID, org, user, device)
+	if err != nil {
+		return out, err
 	}
 	var hashes []string
 	if err = tx.QueryRow(ctx, "SELECT recovery_hashes FROM mfa_credentials WHERE org_id=$1 AND user_id=$2 FOR UPDATE", org, user).Scan(&hashes); err != nil {
@@ -65,6 +69,9 @@ func (s *Service) RecoverMFA(ctx context.Context, input MFAInput, requestID stri
 	out, err = s.issue(ctx, tx, org, user, device, core.NewID(), version, &at)
 	if err != nil {
 		return out, err
+	}
+	if err = linkMiniappSession(ctx, tx, out.AccessToken, bindingID); err != nil {
+		return LoginResult{}, err
 	}
 	if err = authAudit(ctx, tx, org, user, requestID, "auth.mfa_recovery", "succeeded", device); err != nil {
 		return out, err

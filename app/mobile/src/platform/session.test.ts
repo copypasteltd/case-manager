@@ -123,3 +123,24 @@ test('MFA enrollment returns a setting secret without a repeated challenge or an
   assert.equal((await enrolled).mfa_secret, 'JBSWY3DPEHPK3PXP'); assert.equal(h.client.authenticated, false);
   const late = h.client.enroll('old-challenge'); h.client.clear(); h.pending[1].result.resolve(success({ step: 'mfa_enroll', mfa_secret: 'JBSWY3DPEHPK3PXP' })); await assert.rejects(late, { code: 'SESSION_CHANGED' });
 });
+
+test('platform login uses its compiled channel without an existing bearer and retains MFA challenge state', async () => {
+  const h = harness(); await h.login(); const call = h.client.loginMiniapp('wx-synthetic-app', 'one-use-code');
+  const pending = h.pending.at(-1)!; assert.equal(pending.input.path, '/auth/miniapps/login'); assert.deepEqual(pending.input.headers, {});
+  assert.deepEqual(pending.input.body, { platform: 'wechat', app_id: 'wx-synthetic-app', code: 'one-use-code' });
+  pending.result.resolve(success({ step: 'mfa', challenge: 'server-mfa-challenge' }));
+  assert.equal((await call).step, 'mfa'); assert.equal(h.client.authenticated, false);
+});
+test('late platform login cannot replace a more recent password login', async () => {
+  const h = harness(), old = h.client.loginMiniapp('wx-synthetic-app', 'old-code'), pending = h.pending.at(-1)!;
+  const rejected = assert.rejects(old, { code: 'SESSION_CHANGED' }); await h.login('newer');
+  pending.result.resolve(success(tokens('stale'))); await rejected;
+  const me = h.client.request('/me'); assert.equal(h.pending.at(-1)!.input.headers.Authorization, 'Bearer newer-access-secret');
+  h.pending.at(-1)!.result.resolve(success({})); await me;
+});
+test('Android cannot submit a mini-program login and malformed public profiles are rejected', async () => {
+  let calls = 0; const android = new MobileClient(() => { calls++; throw new Error('must not call wire'); }, 'android');
+  await assert.rejects(android.loginMiniapp('tt-synthetic-app', 'code'), { code: 'MINIAPP_RUNTIME_REQUIRED' }); assert.equal(calls, 0);
+  const h = harness(), profiles = h.client.miniappProfiles(); h.pending.at(-1)!.result.resolve(success({ items: [{ platform: 'android', app_id: 'invalid' }] }));
+  await assert.rejects(profiles, { code: 'INVALID_RESPONSE' });
+});

@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T03:58:46.980105+00:00",
+  "encoder_script_sha256": "cac468592dae47d3faf9631b546c9499fa141e8132a16462afb4927749af9c55",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "e749b4ee7515339499f91a293ac7fa2fa2e51d0ad4305351aa24ca7be1a46d03",
+      "build_source_sha256": "e749b4ee7515339499f91a293ac7fa2fa2e51d0ad4305351aa24ca7be1a46d03",
+      "capture_manifest": "docs/quality/evidence/miniapp-identity/web-capture-manifest.json",
+      "capture_manifest_sha256": "d68391d6117ff60ba2b87afc1a1c170804b3d82940aee9df4b12d186b64e4291",
+      "capture_frame_count": 16,
+      "capture_duration_ms": 3259,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1000,
+            "nb_frames": "34",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/miniapp-identity-web-collaboration.mp4",
+          "sha256": "b70d179638e92ef4be60babddcf108dbee54559a914f4e84a1cdc4fbd247e52d",
+          "bytes": 229920
+        },
+        {
+          "file": "docs/media/gifs/miniapp-identity-web-collaboration.gif",
+          "sha256": "b0fd56e3344a36e918d1ab3e70d445446e57ffae240358fea23c974fd19cd6b1",
+          "bytes": 359722
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "e749b4ee7515339499f91a293ac7fa2fa2e51d0ad4305351aa24ca7be1a46d03",
+      "build_source_sha256": "e749b4ee7515339499f91a293ac7fa2fa2e51d0ad4305351aa24ca7be1a46d03",
+      "capture_manifest": "docs/quality/evidence/miniapp-identity/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "850b973d3d97a8c79b020465934f9112e532e5268fc2066fb82c9073b6278e5c",
+      "capture_frame_count": 15,
+      "capture_duration_ms": 3655,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 844,
+            "nb_frames": "37",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/miniapp-identity-mobile-collaboration.mp4",
+          "sha256": "912376b87b36f3b35b6d23f3a618c182a3a3f8355aef58db06b6e61a854da0df",
+          "bytes": 62875
+        },
+        {
+          "file": "docs/media/gifs/miniapp-identity-mobile-collaboration.gif",
+          "sha256": "47674cdb44274ee2e9df2c0c2146fda9ebdce8356e0549e73c8255f0a478995a",
+          "bytes": 248727
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

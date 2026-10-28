@@ -347,6 +347,92 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/miniapps": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getMiniappProfiles */
+        get: operations["getMiniappProfiles"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/miniapps/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** loginMiniapp */
+        post: operations["loginMiniapp"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/miniapp-binding-proofs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** createMiniappProof */
+        post: operations["createMiniappProof"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/miniapp-bindings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listOwnMiniappBindings */
+        get: operations["listOwnMiniappBindings"];
+        put?: never;
+        /** bindOwnMiniapp */
+        post: operations["bindOwnMiniapp"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/miniapp-bindings/{id}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** revokeOwnMiniapp */
+        post: operations["revokeOwnMiniapp"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/sessions": {
         parameters: {
             query?: never;
@@ -10924,6 +11010,59 @@ export interface components {
             expected_version: number;
             reason: string;
         };
+        MiniappProfile: {
+            /** @enum {string} */
+            platform: "wechat" | "douyin";
+            app_id: string;
+        };
+        MiniappProfiles: {
+            items: components["schemas"]["MiniappProfile"][];
+        };
+        MiniappCodeInput: {
+            /** @enum {string} */
+            platform: "wechat" | "douyin";
+            app_id: string;
+            code: string;
+        };
+        MiniappProofInput: {
+            /** @enum {string} */
+            platform: "wechat" | "douyin";
+            app_id: string;
+            code: string;
+            current_password: string;
+        };
+        MiniappProof: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            platform: "wechat" | "douyin";
+            app_id: string;
+            /** Format: date-time */
+            expires_at: string;
+        };
+        MiniappBinding: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            platform: "wechat" | "douyin";
+            app_id: string;
+            version: number;
+            /** Format: date-time */
+            created_at: string;
+            revoked_at: string | null;
+            is_current_session_source: boolean;
+        };
+        MiniappBindInput: {
+            /** Format: uuid */
+            proof_id: string;
+            /** @constant */
+            confirmed: true;
+            reason: string;
+        };
+        MiniappRevokeInput: {
+            expected_version: number;
+            reason: string;
+        };
         ProjectTemplateListResponse: {
             data: {
                 items: components["schemas"]["ProjectTemplate"][];
@@ -10995,6 +11134,29 @@ export interface components {
             };
             meta: components["schemas"]["Meta"];
         };
+        MiniappProfilesResponse: {
+            data: components["schemas"]["MiniappProfiles"];
+            meta: components["schemas"]["Meta"];
+        };
+        LoginResultResponse: {
+            data: components["schemas"]["LoginResult"];
+            meta: components["schemas"]["Meta"];
+        };
+        MiniappProofResponse: {
+            data: components["schemas"]["MiniappProof"];
+            meta: components["schemas"]["Meta"];
+        };
+        MiniappBindingListResponse: {
+            data: {
+                items: components["schemas"]["MiniappBinding"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        MiniappBindingResponse: {
+            data: components["schemas"]["MiniappBinding"];
+            meta: components["schemas"]["Meta"];
+        };
         DeviceSessionListResponse: {
             data: {
                 items: components["schemas"]["DeviceSession"][];
@@ -11012,10 +11174,6 @@ export interface components {
         };
         PasswordResetReceiptResponse: {
             data: components["schemas"]["PasswordResetReceipt"];
-            meta: components["schemas"]["Meta"];
-        };
-        LoginResultResponse: {
-            data: components["schemas"]["LoginResult"];
             meta: components["schemas"]["Meta"];
         };
         ActivationResultResponse: {
@@ -13054,6 +13212,235 @@ export interface operations {
             415: components["responses"]["Failure"];
             422: components["responses"]["Failure"];
             500: components["responses"]["Failure"];
+        };
+    };
+    getMiniappProfiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MiniappProfilesResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    loginMiniapp: {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MiniappCodeInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LoginResultResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createMiniappProof: {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MiniappProofInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MiniappProofResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listOwnMiniappBindings: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MiniappBindingListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    bindOwnMiniapp: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MiniappBindInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MiniappBindingResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    revokeOwnMiniapp: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MiniappRevokeInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MiniappBindingResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
         };
     };
     listDeviceSessions: {

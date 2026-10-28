@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T05:15:08.607514+00:00",
+  "backend_source_sha256": "0584e4f921b9dfa125fcae99815cdb480122dd778f0f39a9269858a85900f0c3",
+  "command": "../.tools/go/bin/go.exe test ./internal/statusbridge -run ^TestStatusBridgeTargetControls$ -count=20 -json",
+  "cwd": "app/backend",
+  "top_level_passes": 20,
+  "failures": 0,
+  "private_raw_log": "ignored app/.local/miniapp-identity-dns-final.log",
+  "private_raw_log_sha256": "133a4cf4efb4e707f405f19d795fb92e5089c24a309388e11484a7df5f972105",
+  "prior_failure": "attempts/10-before-dns-fixture-isolation/dns-fixture-diagnostic.json",
+  "scope": "Fresh native synthetic HTTP transport tests, independent DNS denial client, atomic handler counters. Runtime transport behavior unchanged.",
+  "real_cloud": false
+}

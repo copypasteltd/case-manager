@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { MiniappBindings } from './MiniappBindings';
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api, type Me, type Schemas } from './api';
 import { Busy, Dialog, Empty, ErrorNotice, Field, date } from './components';
@@ -26,7 +27,8 @@ export default function AccountSecurity({ me }: { me: Me }) {
     <p className="muted">同一次登录的凭证刷新会合并到一个设备会话。到期或撤销的历史记录仍可查阅。</p>
     {sessions.isPending ? <Busy /> : !rows.length ? <Empty title="暂无设备记录" detail="刷新列表后核对登录状态。" /> : <div className="panel table-panel"><div className="table-scroll" tabIndex={0} aria-label="我的登录设备"><table><thead><tr><th>设备</th><th>状态</th><th>首次登录 / 最近刷新</th><th>最长会话有效至</th><th>操作</th></tr></thead><tbody>{rows.map(item => <tr key={item.id} data-session-id={item.id}><td><strong>{devices[item.device_type]}</strong>{item.is_current && <small>当前设备</small>}</td><td>{states[item.status]}</td><td>{date(item.started_at)}<small>{date(item.rotated_at)}</small></td><td>{date(item.refresh_expires_at)}</td><td>{item.status === 'active' && <button className="text-button danger-text" onClick={() => setRevoke(item)}>{item.is_current ? '退出当前设备' : '撤销此设备'}</button>}</td></tr>)}</tbody></table></div></div>}
     {sessions.hasNextPage && <button className="button secondary" disabled={sessions.isFetchingNextPage} onClick={() => void sessions.fetchNextPage()}>加载更多设备</button>}
-    {me.mfa_verified_at && <section className="section-block"><h2>两步验证</h2><AccountVerification /></section>}
+    <MiniappBindings />
+    <section className="section-block"><h2>两步验证</h2><p className="muted">已设置验证器的账号可在这里确认本人操作。</p><AccountVerification /></section>
     {revoke && <RevokeDevice item={revoke} onClose={() => setRevoke(null)} onDone={async () => { if (revoke.is_current) signedOut(); else { setRevoke(null); await refresh(); } }} />}
     {change && <ChangePassword onClose={() => setChange(false)} />}
   </>;

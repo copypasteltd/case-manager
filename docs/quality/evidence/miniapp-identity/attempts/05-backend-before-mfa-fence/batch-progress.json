@@ -1,0 +1,4638 @@
+{
+  "source_sha256": "0dae6e8b22e223e4bde90a07fc430d806dfc72fdcb4e00afab0fac6df0178759",
+  "started_at": "2026-10-28T03:33:03.913252+00:00",
+  "expected_tests": [
+    [
+      "copypaste.hk/platform/cmd/file-import",
+      "TestImportCommandWorkflow"
+    ],
+    [
+      "copypaste.hk/platform/internal/agent",
+      "TestSearchBodyUnicode"
+    ],
+    [
+      "copypaste.hk/platform/internal/agent",
+      "TestServiceEvidenceVersionsDoNotCollide"
+    ],
+    [
+      "copypaste.hk/platform/internal/agentworker",
+      "TestIncidentSummaryMCPBoundary"
+    ],
+    [
+      "copypaste.hk/platform/internal/agentworker",
+      "TestNativeProcessEnvironmentAndCancellation"
+    ],
+    [
+      "copypaste.hk/platform/internal/agentworker",
+      "TestSignedNativeProofBinding"
+    ],
+    [
+      "copypaste.hk/platform/internal/agentworker",
+      "TestSubscriptionReviewMCPBoundary"
+    ],
+    [
+      "copypaste.hk/platform/internal/contract",
+      "TestStrictVersionedSchemas"
+    ],
+    [
+      "copypaste.hk/platform/internal/core",
+      "TestCurrencyRejectsUnsupportedPrecision"
+    ],
+    [
+      "copypaste.hk/platform/internal/core",
+      "TestDecimalPreservesLargeValuesAndReversals"
+    ],
+    [
+      "copypaste.hk/platform/internal/core",
+      "TestQuantityPriceRefusesAmbiguousOrUnrepresentableAmounts"
+    ],
+    [
+      "copypaste.hk/platform/internal/core",
+      "TestQuantityPriceUsesExactProductAndExplicitRounding"
+    ],
+    [
+      "copypaste.hk/platform/internal/core",
+      "TestStorageNameEqualityAndUnsafePaths"
+    ],
+    [
+      "copypaste.hk/platform/internal/fileimport",
+      "TestNativeImportOutput"
+    ],
+    [
+      "copypaste.hk/platform/internal/fileimport",
+      "TestNativeImportPlan"
+    ],
+    [
+      "copypaste.hk/platform/internal/fileimport",
+      "TestNativeImportTransport"
+    ],
+    [
+      "copypaste.hk/platform/internal/files",
+      "TestAgentCreateText"
+    ],
+    [
+      "copypaste.hk/platform/internal/files",
+      "TestAgentTextEditsPreserveExactBytesAndComputeDiff"
+    ],
+    [
+      "copypaste.hk/platform/internal/files",
+      "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats"
+    ],
+    [
+      "copypaste.hk/platform/internal/files",
+      "TestDownloadRangeBoundsDoNotFallbackToFullObject"
+    ],
+    [
+      "copypaste.hk/platform/internal/files",
+      "TestFileTextExtraction"
+    ],
+    [
+      "copypaste.hk/platform/internal/filescan",
+      "TestClamdCancellationClosesSourceAndConnection"
+    ],
+    [
+      "copypaste.hk/platform/internal/filescan",
+      "TestClamdNeverConvertsEngineLimitsIntoClean"
+    ],
+    [
+      "copypaste.hk/platform/internal/filescan",
+      "TestClamdRejectsSourceLengthAndAmbiguousReplies"
+    ],
+    [
+      "copypaste.hk/platform/internal/filescan",
+      "TestClamdRequiresLocalAttestedPolicyAndClosesSkippedSources"
+    ],
+    [
+      "copypaste.hk/platform/internal/filescan",
+      "TestClamdStreamBindsExactBytesAndPolicy"
+    ],
+    [
+      "copypaste.hk/platform/internal/finance",
+      "TestPaymentShareRounding"
+    ],
+    [
+      "copypaste.hk/platform/internal/finance",
+      "TestReportCSVTextSafetyAndExactDecimals"
+    ],
+    [
+      "copypaste.hk/platform/internal/finance",
+      "TestSubscriptionCalendar"
+    ],
+    [
+      "copypaste.hk/platform/internal/finance",
+      "TestSubscriptionPriceTimeline"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAccountDeviceSessions"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAccountPasswordChange"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAccountPasswordRecovery"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAccountRecoveryIssuerChange"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAccountSecurityBrowserFixture"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestActualCosts"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentBusinessReadBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentContextAudience"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentConversations"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentDeliverableCreation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentDeliverableUpdates"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentExecutionController"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentFileCreates"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentFileText"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentFileUpdates"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentFinanceSummary"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentIndexedSearch"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentMilestoneCreation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentOARequests"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentOrganizationBrowserFixture"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentOrganizationGuards"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentOrganizationPlans"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentOrganizationTools"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentPlans"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentPostWrites"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentProjectConcerns"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentProjectStages"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentProjectTools"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentRunLedger"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentRunMutations"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentServiceSummary"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentSubscriptionReview"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentTaskCreation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentTaskDependencies"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestAgentTokenBudgets"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestBusinessParties"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestClassificationPolicyPublication"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestCommentAttachmentPreservation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestCompiledSchemaCompatibility"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestContractCompletionAndTermination"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestContractDraftRevisions"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestContractFinancialReconciliation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestContractSignatureAndActivation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestCrossCloudReplicas"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestDownloadBinaryErrorsUseContractEnvelope"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestDownloadPermitExpiryAndClassificationChanges"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestDownloadSurvivesOnlyNormalDeviceSessionRotation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestDurableJobLeases"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFileImportAuthority"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFileImportCommit"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFileImportManifest"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFileImportNativeRoundTrip"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFileImportRetryAndDelta"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFileTextSearch"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFinancialReportsAndExports"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestFixedVersionDownloads"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestHistoryRestoration"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestIdentityAdministrationIntegration"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestInAppNotifications"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestKnowledgeRevisionsAndComments"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMiniappBindingLifecycle"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMiniappBrowserFixture"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMiniappMFAAndRevocation"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMiniappMFAEnrollmentAndVerify"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMiniappProofBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMiniappRefreshRevocationRace"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMobileContentBrowserFixture"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestMobileContentChunks"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestOutboxConsumerAtomicity"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestPaymentsAndSettlement"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestPinnedFileVersionMetadata"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestPlatformIntegration"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectBudgetComparison"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectChangesAndBudgets"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectCloseoutAndArchive"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectCollaborationIntegration"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectDeliverables"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectOverview"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestProjectTemplateManagement"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestPurchaseCompletion"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestPurchaseFulfillment"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestPurchaseVariance"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestRefreshPermissionMutationLockOrder"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestResourceScopesUseCreatorAndExactTask"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestRetentionManagement"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestScanWaiverBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestSequentialApprovals"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestServiceStatus"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestSessionMFAStepUp"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestSpendDocumentsAndApprovals"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestStatusBridgeNativeFlow"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestStorageNamespaceAndMetadata"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestSubscriptionBilling"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestSubscriptionJobLeases"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTaskCommentMentionAuthority"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTaskCommentMentions"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTaskMentionCandidateBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTaskMentionsBrowserFixture"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTelegramDelivery"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTelegramDispatch"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestTelegramIngress"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestUploadControl"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestUploadCurrentAuthority"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestUploadIntegrity"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestUploadPromotionAndCommit"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestUploadQueue"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestUploadWorkerHost"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestWaiverFixedReport"
+    ],
+    [
+      "copypaste.hk/platform/internal/httpapi",
+      "TestWorkflowDefinitions"
+    ],
+    [
+      "copypaste.hk/platform/internal/identity",
+      "TestArgon2PasswordVerification"
+    ],
+    [
+      "copypaste.hk/platform/internal/identity",
+      "TestTOTPRFC6238VectorsAndBinding"
+    ],
+    [
+      "copypaste.hk/platform/internal/importspec",
+      "TestImportProtocolBounds"
+    ],
+    [
+      "copypaste.hk/platform/internal/miniapp",
+      "TestMiniappProviderFailureBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/miniapp",
+      "TestOfficialMiniappExchange"
+    ],
+    [
+      "copypaste.hk/platform/internal/notification",
+      "TestContractNotificationRuleRequiresAnExplicitCompanyPolicy"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestDownloadResponseOptionsRejectActiveContentAndHeaderInjection"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestDownloadSignaturesPinFormalSourceAndResponse"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestExactHashUsesBoundedMemoryAndRefusesLengthOrCancellation"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestFrozenHashResumesOnlyDurablyAcknowledgedRanges"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestFrozenSourceHashUsesRangesAndClosesEveryBody"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestHashCheckpointsBindSourceAndDetectCorruptionAndRuntimeChanges"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestMultipartReconcileUsesCloudSizesAndRejectsGaps"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestObjectKeysNeverIncludeDisplayNames"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestProviderCompleteOrdersExactManifestAndAbortIsIdempotent"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestProviderErrorsDoNotDiscloseSignedRequests"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestProviderPartsStayPagedAndUploadStreamsHaveKnownLength"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestProviderReadPinsETagRangeAndRejectsDifferentBytes"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestProviderSigningKeepsClientInsideDraftMultipart"
+    ],
+    [
+      "copypaste.hk/platform/internal/objectstore",
+      "TestTransferRequiresSourceConsumptionBeforeRecordingPart"
+    ],
+    [
+      "copypaste.hk/platform/internal/platform",
+      "TestCursorRejectsChangedAuthorityAndTampering"
+    ],
+    [
+      "copypaste.hk/platform/internal/servicestatus",
+      "TestMonitoringClockAndDisabledSourceCannotExtendFreshness"
+    ],
+    [
+      "copypaste.hk/platform/internal/servicestatus",
+      "TestMonitoringFailureAndRecoveryHysteresis"
+    ],
+    [
+      "copypaste.hk/platform/internal/servicestatus",
+      "TestMonitoringLateSamplesNeverReplaceNewerEvidence"
+    ],
+    [
+      "copypaste.hk/platform/internal/servicestatus",
+      "TestMonitoringMissingSequenceAndOutageResetConsecutiveCounts"
+    ],
+    [
+      "copypaste.hk/platform/internal/servicestatus",
+      "TestMonitoringStalenessAndMaintenanceNeverInventHealthyEvidence"
+    ],
+    [
+      "copypaste.hk/platform/internal/spend",
+      "TestCommercialAmountsKeepTaxRoundingAndCashSeparate"
+    ],
+    [
+      "copypaste.hk/platform/internal/spend",
+      "TestCommercialTotalsRejectOverDiscountAndOverflow"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeConfigurationBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeDeliveryRecovery"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeJournalCorruptionAndRebinding"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeJournalRecovery"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeReceiptBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeSampleBoundaries"
+    ],
+    [
+      "copypaste.hk/platform/internal/statusbridge",
+      "TestStatusBridgeTargetControls"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestAgentDraftWriterRequiresIndependentIdentity"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestAgentFileReaderRequiresIndependentIdentity"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestCloudProcessRolesNeverFallBackToOtherCredentials"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestDisabledCloudNeverConstructsAnImplicitWorker"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestDownloadsRequireExplicitIndependentReadAndSigningRoles"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestReplicaWorkerRequiresSourceAndOtherCloudTargetRoles"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestRestoreWorkerRequiresIndependentReadAndWriteRoles"
+    ],
+    [
+      "copypaste.hk/platform/internal/storageconfig",
+      "TestTextIndexRequiresIndependentReader"
+    ],
+    [
+      "copypaste.hk/platform/internal/telegram",
+      "TestTelegramBotAPIOutcomes"
+    ],
+    [
+      "copypaste.hk/platform/internal/telegram",
+      "TestTelegramDeliveryConfiguration"
+    ],
+    [
+      "copypaste.hk/platform/internal/telegram",
+      "TestTelegramDispatchConfiguration"
+    ],
+    [
+      "copypaste.hk/platform/internal/telegram",
+      "TestTelegramIngressConfiguration"
+    ],
+    [
+      "copypaste.hk/platform/internal/telegram",
+      "TestTelegramTaskSelection"
+    ],
+    [
+      "copypaste.hk/platform/internal/telegram",
+      "TestTelegramUpdateProtocol"
+    ],
+    [
+      "copypaste.hk/platform/internal/workflow",
+      "TestLegacySnapshotDigestSurvivesPaymentScheduleUpgrade"
+    ]
+  ],
+  "batches": [
+    {
+      "names": [
+        "TestAccountDeviceSessions",
+        "TestAccountPasswordChange",
+        "TestAccountPasswordRecovery",
+        "TestAccountRecoveryIssuerChange",
+        "TestAccountSecurityBrowserFixture",
+        "TestActualCosts",
+        "TestAgentBusinessReadBoundaries",
+        "TestAgentContextAudience",
+        "TestAgentConversations",
+        "TestAgentCreateText",
+        "TestAgentDeliverableCreation",
+        "TestAgentDeliverableUpdates",
+        "TestAgentDraftWriterRequiresIndependentIdentity",
+        "TestAgentExecutionController",
+        "TestAgentFileCreates",
+        "TestAgentFileReaderRequiresIndependentIdentity",
+        "TestAgentFileText",
+        "TestAgentFileUpdates",
+        "TestAgentFinanceSummary",
+        "TestAgentIndexedSearch"
+      ],
+      "status": "passed",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentCreateText",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestAgentDraftWriterRequiresIndependentIdentity",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestAgentFileReaderRequiresIndependentIdentity",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions/rotation_keeps_one_device_and_stable_creation_time",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions/pagination_binds_to_the_owning_employee",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions/foreign_or_unknown_device_cannot_be_revoked",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions/revoke_blocks_access_and_refresh_and_safely_replays",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions/revocation_wins_against_a_racing_refresh",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions/current_device_can_revoke_itself",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountDeviceSessions",
+          "Elapsed": 4.72
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountRecoveryIssuerChange",
+          "Elapsed": 6.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountSecurityBrowserFixture",
+          "Elapsed": 7.31
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordRecovery/authority_requires_current_MFA_and_explicit_action",
+          "Elapsed": 0.36
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordRecovery/token_excluded_from_persistence_and_replay_stops_after_reissue",
+          "Elapsed": 0.86
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordRecovery/version_and_disabled_account_checks",
+          "Elapsed": 0.47
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordRecovery/single_use_reset_revokes_all_sessions_without_granting_permissions",
+          "Elapsed": 1.3
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordRecovery/reset_preserves_enrolled_MFA_and_consumes_old_challenges",
+          "Elapsed": 0.5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordRecovery",
+          "Elapsed": 11.79
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordChange/wrong_current_password_and_same_password_leave_sessions_valid",
+          "Elapsed": 0.53
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordChange/confirmed_change_invalidates_access_refresh_and_pending_recovery",
+          "Elapsed": 0.39
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordChange/MFA_account_requires_fresh_verification_even_with_correct_password",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAccountPasswordChange",
+          "Elapsed": 11.38
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/manual_content_permission_alone_never_enables_the_AI_context_projection",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/shared_source_selection_respects_the_least_privileged_reader_and_pins_available_historical_file_evidence",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/explicit_conversation_project_boundaries_block_other_otherwise_readable_projects_and_company_sources",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/ranges_count_Unicode_characters_and_stable_source_hashes_exclude_observation_timestamps",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/every_participant_must_retain_permission_to_each_referenced_file_before_any_derived_knowledge_text_is_disclosed",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/membership_changes_invalidate_prior_context_epochs_and_inactive_participants_cannot_be_silently_omitted",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience/archived_conversations_cannot_prepare_a_new_model_context",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentContextAudience",
+          "Elapsed": 8.59
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/requires_complete_parent_instruction_and_explicit_association",
+          "Elapsed": 0.22
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/creates_one_real_draft_with_exact_receipt_and_atomic_evidence",
+          "Elapsed": 0.2
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/explicit_null_creates_an_unassociated_draft",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/invalid_members_and_foreign_or_closed_links_create_nothing",
+          "Elapsed": 0.23
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/changed_parent_version_stops_creation",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/read_only_project_prevents_creation",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/receipt_failure_rolls_back_draft_and_exact_retry_creates_once",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/created_draft_uses_the_original_human_submission_and_acceptance",
+          "Elapsed": 0.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/cancellation_and_append_only_creation_history",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation/revoked_original_login_cannot_create",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableCreation",
+          "Elapsed": 9.3
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/requires_complete_exact_fields_and_explicit_association",
+          "Elapsed": 0.2
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/exact_command_commits_real_metadata_and_atomic_receipt_once",
+          "Elapsed": 0.2
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/explicit_unlink_preserves_other_reviewed_fields",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/rejects_foreign_closed_milestone_and_nonmember_without_writes",
+          "Elapsed": 0.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/stale_basis_and_read_only_project_stop_original_command",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/legacy_protocol_remains_blocked",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/submitted_delivery_stays_read_only_and_returned_revision_is_immutable",
+          "Elapsed": 0.63
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/cancelled_run_and_append_only_history",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates/revoked_originating_session_blocks_later_write",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentDeliverableUpdates",
+          "Elapsed": 9.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/one_live_claim_and_exact_credentials_cannot_start_without_verified_native_confinement",
+          "Elapsed": 0.46
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/real_MCP_reads_have_bounded_schemas_deduplicated_receipts_and_reject_invented_references",
+          "Elapsed": 0.81
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/reply_result_event_audit_outbox_and_queue_success_roll_back_together",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/read_source_changes_revoke_later_receipts_and_suppress_a_stale_answer",
+          "Elapsed": 0.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/final_evidence_check_and_response_commit_fence_concurrent_business_source_updates",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/cancel_reports_do_not_confirm_teardown_until_the_trusted_executor_exits",
+          "Elapsed": 0.26
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/expired_lease_interrupts_without_retrying_a_model_or_inventing_confirmed_cancellation",
+          "Elapsed": 0.45
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/bounded_tool_budget_and_search_scope_do_not_allow_writes_or_other_projects",
+          "Elapsed": 0.32
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/controller_consumes_queue_and_settles_a_verified_reply_without_a_provider",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/running_controller_observes_cancel_and_waits_for_its_executor_to_exit",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController/current_audience_authorization_changes_stop_execution_even_after_native_start",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentExecutionController",
+          "Elapsed": 11.29
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileCreates/exact_new_file_scan_atomic_receipt_and_replay",
+          "Elapsed": 0.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileCreates/existing_name_and_invalid_sender_scope",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileCreates/collision_after_staging_never_overwrites",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileCreates/authority_change_during_provider_io_aborts_unrecorded_stage",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileCreates/draft_limit_and_directory_change_preserve_history",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileCreates",
+          "Elapsed": 5.58
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileText",
+          "Elapsed": 5.71
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFileUpdates",
+          "Elapsed": 5.7
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/general_reads_do_not_prove_a_monthly_review",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/strict_month_currency_scope_and_writes",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/all_participants_must_read_every_contributing_record",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/incurred_decimals_and_currencies_match_ordinary_report",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/missing_forecast_periods_remain_incomplete_rather_than_zero_expenditure",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/a_successful_finance_tool_must_be_cited_for_finance_completion",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/stored_forecast_coverage_remains_separate_from_actual_cost",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/snapshot_is_immutable_and_requires_exact_receipt",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/new_actual_cost_does_not_rewrite_historical_evidence",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/cash_uses_actual_paid_shares_rather_than_incurred_totals",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/snapshots_stay_inside_original_conversation",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary/current_financial_and_AI_access_can_withdraw_old_snapshots",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentFinanceSummary",
+          "Elapsed": 11.66
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/pending_is_explicit_without_object_read",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/DOCX_preview_binds_Unicode_and_two_content_digests",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/MCP_definition_advertises_files_and_bounded_read",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/actual_file_body_search_has_current_version_and_text_evidence",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/task_and_knowledge_body_search_stays_in_conversation_namespace",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/unsupported_files_have_explicit_metadata_only_hits",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/fixed_historical_DOCX_read_and_replay_need_no_cloud",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/cursor_binds_run_and_filters",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/indexed_MCP_output_can_complete_with_persisted_read_receipts",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/trash_and_quarantine_block_cached_discovery_and_read",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/every_shared_member_must_admit_file_and_knowledge_body",
+          "Elapsed": 0.57
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch/cancelled_run_cannot_disclose_indexed_text",
+          "Elapsed": 0.47
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentIndexedSearch",
+          "Elapsed": 37.67
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentBusinessReadBoundaries/AI_disabled_classifications_filter_lists_searches_counts_and_direct_reads_independently_of_manual_roles",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentBusinessReadBoundaries/explicitly_enabled_classification_admits_only_its_current_authorized_project_and_knowledge_data",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentBusinessReadBoundaries/project_task_collaboration_and_knowledge_cursors_cannot_cross_channel_user_versions_or_company_runs",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentBusinessReadBoundaries/withdrawing_AI_data_permission_prevents_new_reads_without_changing_manual_content_grants",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentBusinessReadBoundaries/manual_project_knowledge_and_dashboard_workflows_remain_available_when_AI_is_disabled",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentBusinessReadBoundaries",
+          "Elapsed": 4.31
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/unbound_roles_and_explicit_conversation_membership_protect_personal_and_shared_metadata",
+          "Elapsed": 0.17
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/candidate_identities_are_bounded_to_eligible_current_project_members_and_adding_does_not_grant_business_roles",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/rename_and_archive_use_immutable_complete_revisions_without_changing_the_security_epoch",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/old_snapshots_cannot_be_expanded_and_scope_identity_cannot_be_rewritten",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/a_waiting_editor_reads_the_published_revision_after_acquiring_the_head_lock",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/concurrent_metadata_edits_have_one_successor_and_preserve_the_losing_version",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/audit_failure_rolls_back_membership_context_organization_epoch_and_idempotent_result_together",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/removal_prevents_fresh_reads_and_replay_disclosure_while_invalidating_old_scoped_cursors",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/project_membership_and_revoked_roles_remain_independent_gates_for_a_stored_conversation_member",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations/concurrent_readers_never_combine_a_prior_security_epoch_with_a_newer_membership_snapshot",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentConversations",
+          "Elapsed": 4.87
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/new_financial_roles_are_unbound_and_source_identity_survives_replay_cache_expiry",
+          "Elapsed": 0.17
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/draft_revisions_preserve_exact_history_and_stale_bases_cannot_overwrite",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/confirmation_requires_actual_balanced_facts_currency_precision_and_fixed_evidence",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/confirmation_rejects_future_dates_and_a_file_whose_available_bytes_lost_evidence",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/all_allocation_projects_fence_detail_lists_history_and_report_totals",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/full_reversal_preserves_original_month_and_inherits_company_and_project_shares",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/currencies_remain_separate_and_unconfirmed_costs_do_not_enter_incurred_totals",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/simultaneous_confirmation_and_reversal_have_at_most_one_successor",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/current_database_MFA_and_manual_identity_are_checked_before_cached_confirmation",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/fixed_cost_evidence_protects_retention_and_response_reference_counts",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/audit_failure_rolls_back_revision_head_event_and_the_replay_receipt",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/database_rejects_immutable_rewrites_detached_head_and_unbalanced_confirmation",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/database_rejects_forged_MFA_and_another_humans_session_before_deferred_journal_checks",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/project_read_only_phase_fences_actual_cost_mutations",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/revoked_recorder_cannot_replay_a_previously_successful_draft_creation",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/purchase_reimbursement_and_effective_contract_share_one_cost_without_report_multiplication",
+          "Elapsed": 0.53
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/unapproved_wrong_currency_and_stale_source_revision_cannot_link",
+          "Elapsed": 0.19
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts/source_locking_prevents_concurrent_over-linking_and_reversal_releases_its_active_balance",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestActualCosts",
+          "Elapsed": 6.28
+        }
+      ],
+      "started_at": "2026-10-28T03:33:04.010917+00:00",
+      "source_unchanged_during_tests": true,
+      "completed_at": "2026-10-28T03:35:54.154563+00:00",
+      "exit_code": 0
+    },
+    {
+      "names": [
+        "TestAgentMilestoneCreation",
+        "TestAgentOARequests",
+        "TestAgentOrganizationBrowserFixture",
+        "TestAgentOrganizationGuards",
+        "TestAgentOrganizationPlans",
+        "TestAgentOrganizationTools",
+        "TestAgentPlans",
+        "TestAgentPostWrites",
+        "TestAgentProjectConcerns",
+        "TestAgentProjectStages",
+        "TestAgentProjectTools",
+        "TestAgentRunLedger",
+        "TestAgentRunMutations",
+        "TestAgentServiceSummary",
+        "TestAgentSubscriptionReview",
+        "TestAgentTaskCreation",
+        "TestAgentTaskDependencies",
+        "TestAgentTextEditsPreserveExactBytesAndComputeDiff",
+        "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats",
+        "TestAgentTokenBudgets"
+      ],
+      "status": "passed",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsPreserveExactBytesAndComputeDiff",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/overlap",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/same-position",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/negative",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/past-end",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/no-change",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/empty-result",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/nul",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/invalid-utf8",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/drop-bom",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/add-bom",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/mixed-base",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/change-crlf",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats/too-large",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestAgentTextEditsRejectAmbiguousOrDestructiveFormats",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/no_policy_denies_atomically_and_admin_publishes_explicit_allowance",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/policy_requires_human_mfa_authority_and_current_revision",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/one_reservation_for_command_and_message_replay_then_queued_cancel_releases",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/concurrent_organization_admission_cannot_overreserve",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/user_quota_is_shared_and_independently_enforced",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/project_quota_is_shared_and_independently_enforced",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/skill_quota_is_shared_and_independently_enforced",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/zero_allowance_stops_new_runs_without_revoking_existing_reservations",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/known_failed_usage_is_idempotent_and_cached_tokens_are_not_counted_twice",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/over_limit_usage_remains_accounted_after_runtime_stop",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/cancellation_can_record_usage_without_regaining_business_authority",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/started_unknown_usage_stays_pending_until_audited_reconciliation",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/ledger_is_immutable_and_scope_cursor_cannot_be_reused",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets/reservation_write_failure_rolls_back_run_message_and_queue",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTokenBudgets",
+          "Elapsed": 5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/creation_requires_complete_exact_human_instruction",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/creates_once_with_original_command_and_exact_result",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/task_association_and_explicit_unlink_are_separate_authority",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/task_association_rejects_foreign_and_closed_milestones",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/owner_must_be_a_live_member_of_the_same_project",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/changed_parent_version_conflicts_without_creation",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/read_only_parent_prevents_creation",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/cancel_before_execution_keeps_business_unchanged",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/committed_creation_history_is_immutable",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation/revoked_original_login_cannot_create",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentMilestoneCreation",
+          "Elapsed": 4.9
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunMutations",
+          "Elapsed": 5.94
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/contract_draft_revise_and_exact_submission",
+          "Elapsed": 2.94
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/purchase_draft_revise_and_exact_submission",
+          "Elapsed": 3.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/claim_draft_revise_and_exact_submission",
+          "Elapsed": 4.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/stale_version_and_unbound_scope_denied",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/receipt_failure_rolls_back_and_exact_retry_succeeds",
+          "Elapsed": 0.73
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/cancel_before_write_leaves_no_application",
+          "Elapsed": 0.5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/uncommitted_completion_and_other_tool_denied",
+          "Elapsed": 0.46
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/immutable_intent_and_commit_cannot_be_rewritten",
+          "Elapsed": 0.5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/business_changed_after_authorization_cannot_silently_rebase",
+          "Elapsed": 0.53
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/AI_policy_change_fences_reads_and_writes",
+          "Elapsed": 0.7
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/cancel_after_commit_retains_real_application",
+          "Elapsed": 1.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/foreign_conversation_and_submission_preview_rejected",
+          "Elapsed": 0.31
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests/revoked_original_session_fences_write_and_receipt",
+          "Elapsed": 0.53
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOARequests",
+          "Elapsed": 22.46
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationPlans/exact_batch_requires_approval_then_creates_renames_and_moves_with_immutable_receipts",
+          "Elapsed": 0.63
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationPlans/MFA_wrong_hash_other_actor_and_revoked_plans_cannot_authorize_a_batch",
+          "Elapsed": 0.41
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationPlans/source_target_and_context_changes_fail_before_any_namespace_write",
+          "Elapsed": 0.64
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationPlans/a_later_naming_conflict_rolls_back_earlier_commands_receipts_audit_and_plan_head",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationPlans/bounded_listing_and_plan_scope_exclude_other_projects_cycles_and_closed_projects",
+          "Elapsed": 0.42
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationPlans",
+          "Elapsed": 20.79
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationBrowserFixture",
+          "Elapsed": 11.88
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationGuards/enumeration_stays_bounded_when_the_namespace_exceeds_fifty_direct_items",
+          "Elapsed": 0.98
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationGuards/an_expired_immutable_intent_cannot_be_revived_by_a_current_MFA_session",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationGuards/a_changed_head_cannot_commit_without_a_matching_durable_event",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationGuards/plan_limits_and_parent_dependent_batches_are_rejected",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationGuards/an_AI_classification_revocation_hides_captured_plan_data_and_blocks_execution",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationGuards",
+          "Elapsed": 10.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationTools/confinement_exposes_only_the_five_organization_tools",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationTools/bounded_listing_is_immutable_evidence_and_replayable_with_current_ACL",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationTools/approval_is_human_only_and_tools_cannot_rewrite_fixed_intent",
+          "Elapsed": 0.39
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentOrganizationTools",
+          "Elapsed": 10.5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/proposal_stores_no_project_and_needs_explicit_fresh_interactive_approval",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/bound_hash_actor_version_and_payload_prevent_substituted_authority",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/revocation_is_final_and_old_approvals_cannot_be_reused",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/conversation_revisions_invalidate_approved_plans",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/published_template_cannot_change_and_retirement_invalidates_the_approved_snapshot",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/business_and_plan_receipt_roll_back_together_and_retry_is_safe",
+          "Elapsed": 0.4
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/two_concurrent_commit_keys_consume_one_exact_grant",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/expired_immutable_intent_cannot_be_approved",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/database_prevents_rewritten_intent_history_and_fabricated_commits",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans/authority_changes_invalidate_even_previously_approved_plans",
+          "Elapsed": 0.29
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPlans",
+          "Elapsed": 11.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/generated_draft_has_real_version_and_idempotent_exact_receipts",
+          "Elapsed": 2.32
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/draft_revision_then_separate_reviewed_internal_publication",
+          "Elapsed": 2.62
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/new_draft_keeps_prior_published_revision",
+          "Elapsed": 0.78
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/bounded_multibyte_content_saves_without_oversized_tool_receipt",
+          "Elapsed": 0.68
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/receipt_failure_rolls_back_post_revision_and_commit",
+          "Elapsed": 0.78
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/ordinary_chat_and_read_receipts_cannot_authorize_writes",
+          "Elapsed": 1.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/current_business_revision_changes_fence_all_subsequent_tools",
+          "Elapsed": 0.67
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/invalid_bases_scope_and_metadata_are_rejected_before_admission",
+          "Elapsed": 0.19
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/cancellation_before_write_has_no_business_side_effect",
+          "Elapsed": 0.66
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/immutable_history_and_current_authority_remain_required",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/company_destination_cannot_absorb_project_sources",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/closing_project_fences_admitted_knowledge_work",
+          "Elapsed": 0.72
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/revoked_ai_policy_fences_read_and_write",
+          "Elapsed": 0.68
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites/revoked_original_session_fences_write",
+          "Elapsed": 0.73
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentPostWrites",
+          "Elapsed": 81.64
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/complete_inputs_reject_omission_cross_kind_fields_state_null_and_unrepresentable_time",
+          "Elapsed": 0.42
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/risk_creation_has_real_parent_child_receipts_and_two_exact_retries",
+          "Elapsed": 0.34
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/issue_creation_keeps_an_explicitly_empty_date_and_does_not_resolve_it",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/full_risk_update_clears_date_probability_and_keeps_omitted_state",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/issue_resolution_closure_and_reopening_follow_the_original_state_machine",
+          "Elapsed": 0.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/normal_public_patches_distinguish_omission_from_explicit_null",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/foreign_project_and_changed_parent_are_not_substituted",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/exact_arguments_and_changed_concern_are_not_replaced",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/receipt_failure_rolls_back_risk_and_new_issue_then_exact_retry_commits_once",
+          "Elapsed": 0.18
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/new_linked_issue_changes_stop_later_model_reads_without_rewriting_history",
+          "Elapsed": 0.4
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/invalid_member_and_read_only_project_create_no_concerns",
+          "Elapsed": 0.18
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/risk_realization_requires_issue_creation_authority_at_preparation",
+          "Elapsed": 0.18
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/cancellation_and_append_only_concern_history",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns/revoked_origin_cannot_create_a_concern",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectConcerns",
+          "Elapsed": 14.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/ordinary_chat_and_other_milestone_are_not_authority",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/exact_milestone_fields_retry_read_and_real_completion",
+          "Elapsed": 0.24
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/milestone_owner_must_remain_an_actual_project_member",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/unsupported_fields_nulls_archive_and_foreign_targets_are_rejected",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/achieve_requires_real_completed_associations",
+          "Elapsed": 0.36
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/miss_cancel_and_reopen_follow_the_actual_state_machine",
+          "Elapsed": 1.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/receipt_failure_rolls_back_business_commit_then_exact_retry_succeeds",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/human_edit_invalidates_the_original_target_for_reads_and_writes",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/cancel_before_write_leaves_the_milestone_unchanged",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/project_stages_keep_closeout_blockers_and_separate_archive_review",
+          "Elapsed": 3.84
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/closing_project_keeps_milestone_writes_read_only",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/fixed_history_and_model_intent_never_expose_the_login_identifier",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/policy_withdrawal_stops_a_previously_issued_stage_command",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages/revoked_original_login_stops_all_following_tools",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectStages",
+          "Elapsed": 16.98
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentProjectTools",
+          "Elapsed": 14.57
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/manual_access_does_not_enable_AI_and_no_profile_creates_no_fake_queued_message",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/one_atomic_queued_run_and_message_bind_actor_profile_sources_and_duplicate_intents",
+          "Elapsed": 0.54
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/ordered_resumable_JSON_and_SSE_contain_only_public_ledger_events",
+          "Elapsed": 0.34
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/only_the_requester_cancels_queued_work_and_exact_event_history_remains",
+          "Elapsed": 0.26
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/running_cancellation_requests_stop_commits_but_committing_cannot_claim_rollback",
+          "Elapsed": 0.3
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/late_members_cannot_see_old_messages_or_runs_and_old_cursors_lose_their_audience_binding",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/source_changes_redact_dependent_text_and_references_without_blocking_cancellation",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/database_guards_bind_scope_audience_event_continuity_and_deployment_ownership",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger/rejected_outbox_rolls_back_message_run_event_and_idempotency_reservation",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentRunLedger",
+          "Elapsed": 13.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/service_search_enforces_common_scope",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/outside_conversation_scope_is_denied",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/time_bounds_and_write_tools_are_denied",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/snapshot_preserves_observed_failures_underneath_maintenance_and_omits_secrets",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/report_and_tool_evidence_cannot_be_rewritten_or_inserted_without_receipt",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/new_live_observation_does_not_rewrite_old_evidence_or_break_replay",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary/current_read_policy_still_fences_historical_report",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentServiceSummary",
+          "Elapsed": 10.91
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/discovery_uses_real_subscription_IDs_and_cannot_prove_completion",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/one_participant_without_payment_access_cannot_receive_another_participant_settlement",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/exact_forecast_incurred_cash_and_allocations_match_their_ordinary_APIs",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/missing_generated_periods_remain_missing_obligations_rather_than_zero",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/dates_scopes_and_actual_record_relationships_cannot_be_supplied_arbitrarily",
+          "Elapsed": 0.17
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/associated_original_records_retain_exact_original_amounts_and_fixed_evidence",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/snapshots_are_immutable_receipted_and_exact_invocation_replay_is_stable",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/receipt_storage_failure_rolls_back_the_detailed_snapshot",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/completed_history_keeps_snapshots_inside_the_original_conversation",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/company_conversations_cannot_silently_discover_project_subscriptions",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/discovery_really_continues_after_twenty_rows_and_cursor_binds_query_and_conversation",
+          "Elapsed": 20.8
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/more_than_one_hundred_periods_fail_without_a_persisted_partial_review",
+          "Elapsed": 3.23
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/fixed_file_dependencies_withdraw_old_detailed_metadata_when_a_file_is_trashed",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview/payment_permission_revocation_withdraws_old_rich_snapshots_even_with_cost_reading_retained",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentSubscriptionReview",
+          "Elapsed": 50.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/complete_input_rejects_each_missing_field_invalid_types_hidden_fields_and_dates",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/creates_exact_subtask_with_review_and_microsecond_dates_replays_once",
+          "Elapsed": 0.42
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/explicit_nulls_and_false_create_independent_unassigned_task",
+          "Elapsed": 0.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/model_cannot_widen_any_reviewed_field_or_replace_tool",
+          "Elapsed": 0.51
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/ordinary_chat_and_foreign_project_do_not_authorize_creation",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/changed_project_and_later_human_task_edits_stop_execution",
+          "Elapsed": 0.27
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/invalid_members_foreign_parent_and_foreign_milestone_are_rejected",
+          "Elapsed": 0.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/assigning_others_requires_assignment_permission_but_self_and_null_do_not",
+          "Elapsed": 0.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/closed_parent_and_milestone_at_commit_are_not_ignored",
+          "Elapsed": 0.51
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/receipt_failure_rolls_back_task_audit_outbox_and_exact_retry_succeeds_once",
+          "Elapsed": 0.49
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/cancellation_prevents_creation_and_instruction_is_append_only",
+          "Elapsed": 0.35
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation/revoked_original_login_prevents_task_creation",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskCreation",
+          "Elapsed": 18.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/all_six_fields_are_required_and_no_extra_or_null_authority_is_accepted",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/self_foreign_stale_versions_and_absent_removal_are_rejected",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/add_is_exact_atomic_and_replay_keeps_one_operation_and_task_increment",
+          "Elapsed": 0.32
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/original_task_start_rule_observes_the_new_dependency",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/remove_returns_the_actual_absent_edge_without_changing_predecessor",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/plain_chat_grants_no_dependency_authority_and_arguments_cannot_be_widened",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/cycle_and_in_progress_blockers_use_the_original_dependency_command",
+          "Elapsed": 0.22
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/changed_successor_after_queue_requires_new_human_intent",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/changed_predecessor_after_queue_requires_new_human_intent",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/historical_intent_stays_readable_after_later_predecessor_edits",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/relationship_change_between_queue_and_execution_is_not_rebased",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/business_receipt_failure_rolls_back_edge_and_version_then_retries_once",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/database_rejects_forged_dependency_present_receipt",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/database_rejects_forged_predecessor_id_receipt",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/database_rejects_forged_predecessor_version_receipt",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/database_rejects_forged_dependency_action_receipt",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/database_rejects_forged_body_receipt",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/cancellation_blocks_writes_and_fixed_dependency_intent_is_append_only",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/completed_cancelled_tasks_and_readonly_projects_reject_new_intent",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/current_task_update_permission_is_required_at_execution",
+          "Elapsed": 0.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/every_shared_recipient_must_keep_predecessor_read_permission",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies/revoked_original_login_prevents_dependency_writes",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestAgentTaskDependencies",
+          "Elapsed": 17.31
+        }
+      ],
+      "started_at": "2026-10-28T03:35:54.254883+00:00",
+      "source_unchanged_during_tests": true,
+      "completed_at": "2026-10-28T03:41:42.223377+00:00",
+      "exit_code": 0
+    },
+    {
+      "names": [
+        "TestArgon2PasswordVerification",
+        "TestBusinessParties",
+        "TestClamdCancellationClosesSourceAndConnection",
+        "TestClamdNeverConvertsEngineLimitsIntoClean",
+        "TestClamdRejectsSourceLengthAndAmbiguousReplies",
+        "TestClamdRequiresLocalAttestedPolicyAndClosesSkippedSources",
+        "TestClamdStreamBindsExactBytesAndPolicy",
+        "TestClassificationPolicyPublication",
+        "TestCloudProcessRolesNeverFallBackToOtherCredentials",
+        "TestCommentAttachmentPreservation",
+        "TestCommercialAmountsKeepTaxRoundingAndCashSeparate",
+        "TestCommercialTotalsRejectOverDiscountAndOverflow",
+        "TestCompiledSchemaCompatibility",
+        "TestContractCompletionAndTermination",
+        "TestContractDraftRevisions",
+        "TestContractFinancialReconciliation",
+        "TestContractNotificationRuleRequiresAnExplicitCompanyPolicy",
+        "TestContractSignatureAndActivation",
+        "TestCrossCloudReplicas",
+        "TestCurrencyRejectsUnsupportedPrecision"
+      ],
+      "status": "passed",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/core",
+          "Test": "TestCurrencyRejectsUnsupportedPrecision",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdStreamBindsExactBytesAndPolicy",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/malware",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/archive_limit",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/encrypted_content",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/daemon_stream_limit",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/engine_error",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/disabled_command",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean/definition_reload",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdNeverConvertsEngineLimitsIntoClean",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRejectsSourceLengthAndAmbiguousReplies/short_source",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRejectsSourceLengthAndAmbiguousReplies/long_source",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRejectsSourceLengthAndAmbiguousReplies/multiple_records",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRejectsSourceLengthAndAmbiguousReplies/oversized_diagnostic",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRejectsSourceLengthAndAmbiguousReplies/unknown_reply",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRejectsSourceLengthAndAmbiguousReplies",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdRequiresLocalAttestedPolicyAndClosesSkippedSources",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/filescan",
+          "Test": "TestClamdCancellationClosesSourceAndConnection",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/identity",
+          "Test": "TestArgon2PasswordVerification",
+          "Elapsed": 0.67
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/notification",
+          "Test": "TestContractNotificationRuleRequiresAnExplicitCompanyPolicy",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/spend",
+          "Test": "TestCommercialAmountsKeepTaxRoundingAndCashSeparate",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/spend",
+          "Test": "TestCommercialTotalsRejectOverDiscountAndOverflow",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestCloudProcessRolesNeverFallBackToOtherCredentials/oss",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestCloudProcessRolesNeverFallBackToOtherCredentials/r2",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestCloudProcessRolesNeverFallBackToOtherCredentials",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/configuration_is_separate_from_content_and_AI_remains_disabled_initially",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/publication_requires_actual_recent_interactive_proof_including_replay",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/unsupported_channels_confidentiality_expansion_duplicate_and_unchanged_input_are_rejected",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/a_publication_atomically_records_provenance_authority_audit_and_one_replay_result",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/concurrent_publications_share_one_exact_predecessor",
+          "Elapsed": 0.08
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/old_policies_are_append_only_even_through_the_migration_identity",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/audit_failure_rolls_back_revision_authority_outbox_and_idempotency",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/history_pages_bind_classification_identity_channel_and_current_authority",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication/current_policy_changes_AI_and_channel_gates_without_granting_business_actions",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestClassificationPolicyPublication",
+          "Elapsed": 9.5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCommentAttachmentPreservation",
+          "Elapsed": 9.36
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/independent_closer_starts_unbound_and_limited_readers_see_unknown_basis",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/unpaid_nodes_and_unchecked_conditions_prevent_completion",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/termination_requires_explicit_unresolved_acknowledgement_and_disposition",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/late_actual_financial_attribution_changes_basis_without_reopening_legal_stage",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/scheduled_completion_requires_current_review_and_verified_conditions",
+          "Elapsed": 0.41
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/new_refund_invalidates_an_old_closure_basis_without_changing_financial_head",
+          "Elapsed": 2.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/linked_expense_must_be_settled_even_without_node_cost_attribution",
+          "Elapsed": 1.29
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/explicit_no_payment_agreement_can_complete_with_no_invented_financial_facts",
+          "Elapsed": 1.24
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/unknown_payment_plan_stays_unknown_and_may_only_terminate_with_disposition",
+          "Elapsed": 1.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/effective_supplements_block_parent_until_separately_terminated",
+          "Elapsed": 2.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/parent_termination_and_child_activation_serialize_their_legal_facts",
+          "Elapsed": 1.54
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/actual_date_manual_verification_and_fixed_evidence_are_mandatory",
+          "Elapsed": 1.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/concurrent_devices_append_exactly_one_immutable_closure",
+          "Elapsed": 0.73
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/audit_failure_rolls_back_legal_head_proof_record_and_receipt",
+          "Elapsed": 1.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/database_rejects_detached_terminal_heads_and_immutable_closure_rewrites",
+          "Elapsed": 0.75
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/caller_supplied_MFA_cannot_replace_the_actual_current_database_session",
+          "Elapsed": 0.65
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/database_validates_exact_financial_basis_actual_MFA_and_complete_evidence_set",
+          "Elapsed": 0.98
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination/historical_basis_and_cached_receipts_reauthorize_their_actual_scopes",
+          "Elapsed": 0.95
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractCompletionAndTermination",
+          "Elapsed": 31.64
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/reconciliation_role_starts_unbound_and_contract_readers_see_unknown_financial_axes",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/cost_and_cash_remain_separate_facts_with_immutable_exact_source_revisions",
+          "Elapsed": 0.67
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/unlinked_costs_wrong_cash_directions_and_fractional_minor_units_are_rejected",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/duplicate_assignment_is_capped_across_nodes_while_excess_against_plan_is_explicit",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/concurrent_devices_advance_a_single_financial_head",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/unattributed_actual_refunds_remain_visible_until_classified",
+          "Elapsed": 0.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/releasing_sources_preserves_history_and_cannot_undercut_active_refunds",
+          "Elapsed": 0.26
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/review_stores_fixed_evidence_and_explicit_differences_without_closing_legal_obligations",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/external_cash_reversal_invalidates_review_without_changing_the_financial_head",
+          "Elapsed": 0.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/stale_source_fingerprint_rejects_review_even_with_a_current_contract_head",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/receivables_allocate_income_and_return_cash_without_creating_expenses",
+          "Elapsed": 1.29
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/cost_settlement_and_contract_cash_classification_never_duplicate_the_economic_cash",
+          "Elapsed": 0.48
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/different_contracts_serialize_on_the_same_cash_source_cap",
+          "Elapsed": 0.43
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/audit_failure_rolls_back_financial_journal_fixed_proof_head_and_idempotency_receipt",
+          "Elapsed": 0.41
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/complete_forged_journals_still_fail_database_source_caps",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/event_cursors_bind_the_contract_and_historical_ACL_survives_release",
+          "Elapsed": 0.47
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/external_cost_reversal_preserves_the_historical_review_and_removes_current_incurred_attribution",
+          "Elapsed": 0.41
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/append_only_database_heads_fixed_review_evidence_and_missing_actual_MFA_reject_forgery",
+          "Elapsed": 0.2
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation/cached_identifier_receipts_reauthorize_after_explicit_reconciliation_scope_expiry",
+          "Elapsed": 0.45
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractFinancialReconciliation",
+          "Elapsed": 13.18
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/only_the_exact_approved_content_and_an_actual_nonfuture_signature_can_be_recorded",
+          "Elapsed": 0.29
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/signature_fixes_the_approved_request_and_signed_file_without_activating_future_content",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/future_activation_is_blocked_by_service_and_deferred_database_evidence",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/reached_approved_date_requires_explicit_activation_and_preserves_all_approved_content",
+          "Elapsed": 0.35
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/two_devices_cannot_record_duplicate_signature_facts",
+          "Elapsed": 0.23
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/contract_due_scheduling_requires_an_explicit_organization_timezone_and_advance_policy",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/concurrent_activation_has_one_event_and_old_signature_replay_does_not_activate_again",
+          "Elapsed": 0.23
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/a_supplement_waits_for_its_parent_and_never_replaces_the_parents_effective_content",
+          "Elapsed": 0.4
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/schedule_revisions_are_exact_immutable_facts_and_reject_stale_invalid_or_incomplete_plans",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/activation_materializes_only_the_exact_approved_plan_without_recording_actual_money_movement",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/explicit_no_payment_terms_are_distinct_from_unknown_and_create_no_execution_nodes",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/legacy_schema_one_drafts_and_digests_survive_new_schedule_revisions",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/signature_audit_failure_rolls_back_signature_file_pin_head_version_and_replay_result",
+          "Elapsed": 0.17
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/activation_audit_failure_preserves_signed_pending_content_and_retries_safely",
+          "Elapsed": 0.16
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/manual_session_MFA_is_checked_before_replay_and_actor_timestamps_cannot_spoof_it",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation/current_file_access_and_availability_fence_recording_and_cached_linked_disclosure",
+          "Elapsed": 0.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractSignatureAndActivation",
+          "Elapsed": 11.9
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/reference_selectors_filter_company_scope_before_pagination_and_bind_cursor",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/incomplete_draft_remains_nullable_and_does_not_fabricate_approval_or_signature",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/fixed_party_and_file_revisions_register_references_and_canonical_content_digest",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/currency_precision_date_range_and_reference_pairing_reject_invalid_draft_facts",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/unavailable_files_and_cross_scope_parties_cannot_become_new_business_evidence",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/concurrent_revisions_keep_prior_attachment_and_current_pointer_has_one_successor",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/parent_draft_trash_and_supplement_restore_serialize_the_dependency",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/audit_failure_rolls_back_draft_revisions_file_references_and_retry_result",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions/owner_assignment_never_changes_creator_scope_and_cached_references_respect_current_access",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestContractDraftRevisions",
+          "Elapsed": 8.88
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/business_roles_are_unbound_and_administrators_have_no_implicit_content_rights",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/revisions_preserve_exact_previous_contacts_and_reject_stale_bases",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/concurrent_edits_have_one_successor_to_the_fixed_revision",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/archive_preserves_the_revision_and_restore_does_not_invent_a_content_edit",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/audit_failure_rolls_back_create_edit_and_archive_without_partial_history",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/project_security_own_scope_and_literal_search_are_applied_before_paging",
+          "Elapsed": 9.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties/history_cursors_bind_identity_and_revoked_authority_blocks_old_successful_replay",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestBusinessParties",
+          "Elapsed": 16.24
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/backup_survives_owner_deactivation_archived_project_and_trash_while_requiring_complete_target_bytes",
+          "Elapsed": 8.75
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/partial_cross_cloud_copy_resumes_known_multipart_and_preserves_confirmed_prefix",
+          "Elapsed": 7.68
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/uncertain_initialization_uses_another_physical_key",
+          "Elapsed": 8.89
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/lost_completion_response_is_reconciled_before_repeating_the_mutation",
+          "Elapsed": 9.52
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/corrupt_target_stays_failed_primary_remains_available_and_authorized_retry_is_idempotent",
+          "Elapsed": 10.59
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/old_lease_cannot_persist_a_part_or_verification_after_takeover",
+          "Elapsed": 7.18
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/epoch_switch_during_cloud_write_prevents_further_authoritative_progress",
+          "Elapsed": 9.31
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/verification_and_task_completion_roll_back_with_audit_rejection",
+          "Elapsed": 5.24
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/exhaustion_before_the_first_domain_transaction_does_not_strand_the_queued_replica",
+          "Elapsed": 4.8
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas/exhausted_final_lease_is_reflected_in_domain_state_and_can_be_manually_repaired",
+          "Elapsed": 5.63
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCrossCloudReplicas",
+          "Elapsed": 77.6
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCompiledSchemaCompatibility",
+          "Elapsed": 5.54
+        }
+      ],
+      "started_at": "2026-10-28T03:41:42.327880+00:00",
+      "source_unchanged_during_tests": true,
+      "completed_at": "2026-10-28T03:44:54.873891+00:00",
+      "exit_code": 0
+    },
+    {
+      "names": [
+        "TestCursorRejectsChangedAuthorityAndTampering",
+        "TestDecimalPreservesLargeValuesAndReversals",
+        "TestDisabledCloudNeverConstructsAnImplicitWorker",
+        "TestDownloadBinaryErrorsUseContractEnvelope",
+        "TestDownloadPermitExpiryAndClassificationChanges",
+        "TestDownloadRangeBoundsDoNotFallbackToFullObject",
+        "TestDownloadResponseOptionsRejectActiveContentAndHeaderInjection",
+        "TestDownloadSignaturesPinFormalSourceAndResponse",
+        "TestDownloadSurvivesOnlyNormalDeviceSessionRotation",
+        "TestDownloadsRequireExplicitIndependentReadAndSigningRoles",
+        "TestDurableJobLeases",
+        "TestExactHashUsesBoundedMemoryAndRefusesLengthOrCancellation",
+        "TestFileImportAuthority",
+        "TestFileImportCommit",
+        "TestFileImportManifest",
+        "TestFileImportNativeRoundTrip",
+        "TestFileImportRetryAndDelta",
+        "TestFileTextExtraction",
+        "TestFileTextSearch",
+        "TestFinancialReportsAndExports"
+      ],
+      "status": "passed",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/core",
+          "Test": "TestDecimalPreservesLargeValuesAndReversals",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestDownloadRangeBoundsDoNotFallbackToFullObject",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/docx_paragraphs_tables_and_Unicode",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/UTF8",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/JSON",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/unsupported_PDF",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/invalid_UTF8",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/NUL",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/wrong_charset",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/invalid_JSON",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/text_bound",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/source_bound",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/malformed_ZIP",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/malformed_XML",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/DTD",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/multiple_roots",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/wrong_root",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/path_traversal",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/macro",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/expansion",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/depth",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction/cancellation",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/files",
+          "Test": "TestFileTextExtraction",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/platform",
+          "Test": "TestCursorRejectsChangedAuthorityAndTampering",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestDownloadsRequireExplicitIndependentReadAndSigningRoles",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/storageconfig",
+          "Test": "TestDisabledCloudNeverConstructsAnImplicitWorker",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestDownloadSignaturesPinFormalSourceAndResponse/oss",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestDownloadSignaturesPinFormalSourceAndResponse/r2",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestDownloadSignaturesPinFormalSourceAndResponse",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestDownloadResponseOptionsRejectActiveContentAndHeaderInjection",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestExactHashUsesBoundedMemoryAndRefusesLengthOrCancellation",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDownloadPermitExpiryAndClassificationChanges",
+          "Elapsed": 5.76
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDownloadSurvivesOnlyNormalDeviceSessionRotation",
+          "Elapsed": 5.67
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDownloadBinaryErrorsUseContractEnvelope",
+          "Elapsed": 6.71
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportNativeRoundTrip",
+          "Elapsed": 5.69
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportManifest/complete_exact_plan_required_before_any_upload;_duplicate_admission_and_session_reconcile",
+          "Elapsed": 4.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportManifest/manifest_mismatch_rolls_back_admission_without_counters_or_side_effects",
+          "Elapsed": 4.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportManifest",
+          "Elapsed": 8.53
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportCommit/actual_scan_promotion_commit_binds_durable_logical_file_and_reports_pending_replica_separately",
+          "Elapsed": 4.92
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportCommit/approved_expected_source_hash_prevents_a_valid_but_different_candidate_from_becoming_formal",
+          "Elapsed": 6.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportCommit",
+          "Elapsed": 10.95
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportAuthority",
+          "Elapsed": 5.88
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportRetryAndDelta/expired_restart_is_explicit_and_stale_session_cannot_become_formal",
+          "Elapsed": 5.71
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportRetryAndDelta/changed_source_requires_fixed_logical_file_and_current_base;_replay_rechecks_import_authority",
+          "Elapsed": 6.57
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileImportRetryAndDelta",
+          "Elapsed": 12.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/pending_then_automatic_fixed_version_extraction",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/body_matching_literal_escaping_and_current_head_only",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/names_and_ACL_filter_before_page_limit",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/live_lifecycle_blocks_cached_plaintext",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/selected_knowledge_revision_and_cursor_binding",
+          "Elapsed": 0.35
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/corrupt_bytes_never_produce_a_ready_index",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/source_changed_during_I_O_fails_closed",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/retry_and_stale_fencing",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch/terminal_derivation_is_immutable",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFileTextSearch",
+          "Elapsed": 10.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/original_currency_project_shares_reversals_and_drafts_match_fixed_manual_totals",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/all_filters_are_applied_and_source_pagination_is_signed",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/strict_queries_reject_unknown_duplicate_malformed_and_incompatible_scopes",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/cash_and_forecast_views_keep_independent_facts_and_honest_coverage",
+          "Elapsed": 0.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/source_derived_filter_choices_are_paged_and_do_not_reveal_hidden_records",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/queued_export_is_idempotent_and_not_a_synchronous_download",
+          "Elapsed": 0.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/native_fenced_job_freezes_complete_sources_and_exact_safe_csv",
+          "Elapsed": 0.25
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/later_facts_do_not_rewrite_ready_export",
+          "Elapsed": 0.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/cancelled_export_cannot_be_claimed_or_downloaded",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/cash_and_forecast_exports_use_their_own_complete_sources",
+          "Elapsed": 0.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/export_history_is_owner_only_signed_and_actually_paged",
+          "Elapsed": 0.2
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/database_guards_preserve_fixed_requests_and_live_snapshots",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/expiry_hides_derived_metadata_and_purges_only_payload",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports/changed_authority_revokes_generation_and_old_downloads",
+          "Elapsed": 0.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFinancialReportsAndExports",
+          "Elapsed": 27.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDurableJobLeases/deduplication_pins_input_and_rolls_back_with_its_transaction",
+          "Elapsed": 0.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDurableJobLeases/concurrent_workers_claim_once_and_stale_leases_cannot_renew_fail_or_commit",
+          "Elapsed": 0.14
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDurableJobLeases/lanes_retries_exhaustion_and_stored_diagnostics_remain_controlled",
+          "Elapsed": 0.4
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDurableJobLeases",
+          "Elapsed": 16.1
+        }
+      ],
+      "started_at": "2026-10-28T03:44:54.979903+00:00",
+      "source_unchanged_during_tests": true,
+      "completed_at": "2026-10-28T03:46:57.248928+00:00",
+      "exit_code": 0
+    },
+    {
+      "names": [
+        "TestFixedVersionDownloads",
+        "TestFrozenHashResumesOnlyDurablyAcknowledgedRanges",
+        "TestFrozenSourceHashUsesRangesAndClosesEveryBody",
+        "TestHashCheckpointsBindSourceAndDetectCorruptionAndRuntimeChanges",
+        "TestHistoryRestoration",
+        "TestIdentityAdministrationIntegration",
+        "TestImportCommandWorkflow",
+        "TestImportProtocolBounds",
+        "TestInAppNotifications",
+        "TestIncidentSummaryMCPBoundary",
+        "TestKnowledgeRevisionsAndComments",
+        "TestLegacySnapshotDigestSurvivesPaymentScheduleUpgrade",
+        "TestMiniappBindingLifecycle",
+        "TestMiniappBrowserFixture",
+        "TestMiniappMFAAndRevocation",
+        "TestMiniappMFAEnrollmentAndVerify",
+        "TestMiniappProofBoundaries",
+        "TestMiniappProviderFailureBoundaries",
+        "TestMiniappRefreshRevocationRace",
+        "TestMobileContentBrowserFixture"
+      ],
+      "status": "failed",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/agentworker",
+          "Test": "TestIncidentSummaryMCPBoundary",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/../outside",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds//abs",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/a//b",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/a/../b",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/a\\b",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/file:stream",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/a/hidden\\u202efile",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/trailing_",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/.",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/0",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/01",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/-1",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/120000000001",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds/9223372036854775808",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/importspec",
+          "Test": "TestImportProtocolBounds",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/cmd/file-import",
+          "Test": "TestImportCommandWorkflow",
+          "Elapsed": 0.34
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/provider-error",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/anonymous-only",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/missing-status",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/missing-session-key",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/invalid-json",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/oversized",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/server-error",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries/redirect",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/miniapp",
+          "Test": "TestMiniappProviderFailureBoundaries",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestFrozenHashResumesOnlyDurablyAcknowledgedRanges",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestHashCheckpointsBindSourceAndDetectCorruptionAndRuntimeChanges",
+          "Elapsed": 0.04
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/objectstore",
+          "Test": "TestFrozenSourceHashUsesRangesAndClosesEveryBody",
+          "Elapsed": 0.07
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/workflow",
+          "Test": "TestLegacySnapshotDigestSurvivesPaymentScheduleUpgrade",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestIdentityAdministrationIntegration/invitation_is_single_use_and_secrets_are_excluded_from_idempotency_persistence",
+          "Elapsed": 0.93
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestIdentityAdministrationIntegration/expired_invitation_and_stale_MFA_cannot_administer_accounts",
+          "Elapsed": 0.21
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestIdentityAdministrationIntegration",
+          "Elapsed": 12.89
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/replay_signs_afresh_without_persisting_a_URL_and_checks_current_project_access",
+          "Elapsed": 10.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/confidential_ranges_require_the_original_authenticated_session_and_audit_exact_written_bytes",
+          "Elapsed": 11.79
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/invalid_ranges_source_conditions_and_trash_never_start_provider_reads",
+          "Elapsed": 30.45
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/unverified_or_quarantined_source_evidence_and_administrative_privilege_do_not_grant_downloads",
+          "Elapsed": 10.63
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/verified_secondary_can_serve_reads_independently_of_a_failed_primary",
+          "Elapsed": 13.93
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/revocation_during_signing_returns_no_URL_and_automated_actors_cannot_obtain_raw_grants",
+          "Elapsed": 8.31
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/audit_rejection_fails_before_any_stream_and_outcome_distinguishes_incomplete_provider_bytes",
+          "Elapsed": 56.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads/live_revocation_interrupts_a_blocked_stream_closes_its_body_and_preserves_one_active_stream_per_user",
+          "Elapsed": 11.78
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestFixedVersionDownloads",
+          "Elapsed": 152.94
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/waived_history_preserves_its_original_report_and_a_newer_disabled_policy_blocks_another_publication",
+          "Elapsed": 7.51
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/immutable_fixed_inputs_and_archived_project_block_publication_while_cancellation_remains_available",
+          "Elapsed": 6.79
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/storage_epoch_change_during_copy_records_a_domain_failure_without_publishing",
+          "Elapsed": 6.8
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/fixed_bytes_become_a_new_audited_version_only_after_explicit_idempotent_commit_and_queue_backup",
+          "Elapsed": 6.01
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/commit_conflict_preserves_candidate_and_current_bytes",
+          "Elapsed": 5.9
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/audit_failure_rolls_back_publication_and_permits_the_exact_command_to_retry",
+          "Elapsed": 14.83
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/restore_and_upload_share_quota_reservations_and_cancellation_releases_only_its_own_reservation",
+          "Elapsed": 8.71
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/another_employee_cannot_view_cancel_or_replay_the_original_task_and_paging_binds_identity",
+          "Elapsed": 9.37
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/cancel_during_cloud_write_fences_progress_and_preserves_all_formal_history",
+          "Elapsed": 5.26
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/revoked_authorization_during_cloud_read_is_recorded_as_a_failed_restore",
+          "Elapsed": 5.7
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/corrupted_target_never_becomes_ready",
+          "Elapsed": 13.75
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/known_multipart_resumes_while_unknown_initialization_uses_a_new_physical_key",
+          "Elapsed": 8.63
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/old_lease_cannot_persist_a_new_receipt_and_exhausted_unstarted_work_gets_a_domain_failure",
+          "Elapsed": 10.5
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration",
+          "Elapsed": 109.76
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestKnowledgeRevisionsAndComments/drafts_and_unpublished_revisions_are_filtered_before_search_and_comments",
+          "Elapsed": 0.68
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestKnowledgeRevisionsAndComments/history_restoration_creates_a_new_revision_and_publish_checks_its_exact_base",
+          "Elapsed": 0.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestKnowledgeRevisionsAndComments/comments_bind_the_displayed_revision_and_page_within_caller_and_revision",
+          "Elapsed": 0.59
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestKnowledgeRevisionsAndComments/comment_edits_preserve_history_and_enforce_author_and_version",
+          "Elapsed": 0.31
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestKnowledgeRevisionsAndComments/scope_changes,_unreadable_references_and_archived_writes_are_rejected",
+          "Elapsed": 0.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestKnowledgeRevisionsAndComments",
+          "Elapsed": 17.68
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappBrowserFixture",
+          "Elapsed": 16.73
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappBindingLifecycle/wechat",
+          "Elapsed": 12.33
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappBindingLifecycle/douyin",
+          "Elapsed": 15.76
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappBindingLifecycle",
+          "Elapsed": 28.09
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappProofBoundaries",
+          "Elapsed": 28.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappMFAAndRevocation",
+          "Elapsed": 17.77
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappRefreshRevocationRace",
+          "Elapsed": 13.2
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappMFAEnrollmentAndVerify",
+          "Elapsed": 116.72
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMobileContentBrowserFixture",
+          "Elapsed": 39.32
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestInAppNotifications",
+          "Elapsed": 15.84
+        }
+      ],
+      "started_at": "2026-10-28T03:46:57.337881+00:00",
+      "source_unchanged_during_tests": false,
+      "completed_at": "2026-10-28T03:56:33.762052+00:00",
+      "exit_code": 0
+    },
+    {
+      "names": [
+        "TestMobileContentChunks",
+        "TestMonitoringClockAndDisabledSourceCannotExtendFreshness",
+        "TestMonitoringFailureAndRecoveryHysteresis",
+        "TestMonitoringLateSamplesNeverReplaceNewerEvidence",
+        "TestMonitoringMissingSequenceAndOutageResetConsecutiveCounts",
+        "TestMonitoringStalenessAndMaintenanceNeverInventHealthyEvidence",
+        "TestMultipartReconcileUsesCloudSizesAndRejectsGaps",
+        "TestNativeImportOutput",
+        "TestNativeImportPlan",
+        "TestNativeImportTransport",
+        "TestNativeProcessEnvironmentAndCancellation",
+        "TestObjectKeysNeverIncludeDisplayNames",
+        "TestOfficialMiniappExchange",
+        "TestOutboxConsumerAtomicity",
+        "TestPaymentShareRounding",
+        "TestPaymentsAndSettlement",
+        "TestPinnedFileVersionMetadata",
+        "TestPlatformIntegration",
+        "TestProjectBudgetComparison",
+        "TestProjectChangesAndBudgets"
+      ],
+      "status": "pending",
+      "checks": []
+    },
+    {
+      "names": [
+        "TestProjectCloseoutAndArchive",
+        "TestProjectCollaborationIntegration",
+        "TestProjectDeliverables",
+        "TestProjectOverview",
+        "TestProjectTemplateManagement",
+        "TestProviderCompleteOrdersExactManifestAndAbortIsIdempotent",
+        "TestProviderErrorsDoNotDiscloseSignedRequests",
+        "TestProviderPartsStayPagedAndUploadStreamsHaveKnownLength",
+        "TestProviderReadPinsETagRangeAndRejectsDifferentBytes",
+        "TestProviderSigningKeepsClientInsideDraftMultipart",
+        "TestPurchaseCompletion",
+        "TestPurchaseFulfillment",
+        "TestPurchaseVariance",
+        "TestQuantityPriceRefusesAmbiguousOrUnrepresentableAmounts",
+        "TestQuantityPriceUsesExactProductAndExplicitRounding",
+        "TestRefreshPermissionMutationLockOrder",
+        "TestReplicaWorkerRequiresSourceAndOtherCloudTargetRoles",
+        "TestReportCSVTextSafetyAndExactDecimals",
+        "TestResourceScopesUseCreatorAndExactTask",
+        "TestRestoreWorkerRequiresIndependentReadAndWriteRoles"
+      ],
+      "status": "pending",
+      "checks": []
+    },
+    {
+      "names": [
+        "TestRetentionManagement",
+        "TestScanWaiverBoundaries",
+        "TestSearchBodyUnicode",
+        "TestSequentialApprovals",
+        "TestServiceEvidenceVersionsDoNotCollide",
+        "TestServiceStatus",
+        "TestSessionMFAStepUp",
+        "TestSignedNativeProofBinding",
+        "TestSpendDocumentsAndApprovals",
+        "TestStatusBridgeConfigurationBoundaries",
+        "TestStatusBridgeDeliveryRecovery",
+        "TestStatusBridgeJournalCorruptionAndRebinding",
+        "TestStatusBridgeJournalRecovery",
+        "TestStatusBridgeNativeFlow",
+        "TestStatusBridgeReceiptBoundaries",
+        "TestStatusBridgeSampleBoundaries",
+        "TestStatusBridgeTargetControls",
+        "TestStorageNameEqualityAndUnsafePaths",
+        "TestStorageNamespaceAndMetadata",
+        "TestStrictVersionedSchemas"
+      ],
+      "status": "pending",
+      "checks": []
+    },
+    {
+      "names": [
+        "TestSubscriptionBilling",
+        "TestSubscriptionCalendar",
+        "TestSubscriptionJobLeases",
+        "TestSubscriptionPriceTimeline",
+        "TestSubscriptionReviewMCPBoundary",
+        "TestTOTPRFC6238VectorsAndBinding",
+        "TestTaskCommentMentionAuthority",
+        "TestTaskCommentMentions",
+        "TestTaskMentionCandidateBoundaries",
+        "TestTaskMentionsBrowserFixture",
+        "TestTelegramBotAPIOutcomes",
+        "TestTelegramDelivery",
+        "TestTelegramDeliveryConfiguration",
+        "TestTelegramDispatch",
+        "TestTelegramDispatchConfiguration",
+        "TestTelegramIngress",
+        "TestTelegramIngressConfiguration",
+        "TestTelegramTaskSelection",
+        "TestTelegramUpdateProtocol",
+        "TestTextIndexRequiresIndependentReader"
+      ],
+      "status": "pending",
+      "checks": []
+    },
+    {
+      "names": [
+        "TestTransferRequiresSourceConsumptionBeforeRecordingPart",
+        "TestUploadControl",
+        "TestUploadCurrentAuthority",
+        "TestUploadIntegrity",
+        "TestUploadPromotionAndCommit",
+        "TestUploadQueue",
+        "TestUploadWorkerHost",
+        "TestWaiverFixedReport",
+        "TestWorkflowDefinitions"
+      ],
+      "status": "pending",
+      "checks": []
+    }
+  ]
+}

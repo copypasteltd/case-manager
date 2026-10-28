@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "phase": "bundle",
+  "diagnosis": "Taro platform login pulled Expo dependencies into the native bundle; packaging correctly stopped before Gradle/APK. A dedicated .rn adapter now refuses platform login without importing Taro login APIs.",
+  "raw_log_sha256": "3980298293fc6fa8ebb04fd8cdf4c0dad781eccb3b1631df01b3df52ebc55f6d",
+  "raw_log": "ignored app/.local/miniapp-identity-android-expo-failure.log",
+  "production_build": false,
+  "device_executed": false
+}

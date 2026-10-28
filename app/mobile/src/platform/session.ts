@@ -79,6 +79,17 @@ export class MobileClient {
     this.clear(); const generation = this.generation;
     return this.accept(await this.send({ method: 'POST', path: '/auth/login', headers: {}, body: { login, password, device_type: this.device } }), generation);
   }
+  async miniappProfiles() {
+    const value = await this.send({ method: 'GET', path: '/auth/miniapps', headers: {} });
+    const data = value.data as Schemas['MiniappProfiles'];
+    if (!data || !Array.isArray(data.items) || data.items.length > 2 || data.items.some(item => !['wechat', 'douyin'].includes(item.platform) || typeof item.app_id !== 'string')) throw new MobileError('INVALID_RESPONSE', '小程序登录配置不完整。');
+    return data;
+  }
+  async loginMiniapp(app_id: string, code: string) {
+    if (this.device === 'android') throw new MobileError('MINIAPP_RUNTIME_REQUIRED', '请使用公司小程序进行平台登录。');
+    this.clear(); const generation = this.generation;
+    return this.accept(await this.send({ method: 'POST', path: '/auth/miniapps/login', headers: {}, body: { platform: this.device, app_id, code } }), generation);
+  }
   async enroll(challenge: string) {
     const generation = this.generation;
     const value = await this.send({ method: 'POST', path: '/auth/mfa/enroll', headers: {}, body: { challenge } });

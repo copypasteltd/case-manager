@@ -1,5 +1,20 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量97 · 本人小程序绑定 / Own mini-program bindings
+
+新画面来自最终源码的真实本地API、隔离原生数据库和合成记录：查看两平台绑定、取消、确认解绑以及已提交但响应丢失后的核对。所有自建浏览器上下文、临时API、页面服务和隔离数据库均在检查后释放。H5不伪造平台登录；不将媒体称为微信／抖音真机或真实平台身份交换证据。[完整验证与来源](../quality/97-mini-program-identity-verification.md)。
+
+Fresh final-source Web and Taro H5 captures use the real local API and isolated synthetic data. They show binding review, cancellation, revocation and lost-response recovery, with empty credential inputs. Every owned browser context, fixture and review server is closed. These are not real WeChat/Douyin platform or device acceptance.
+
+| 页面 / Client | 截图 / Screenshots | 录屏 / Recording | GIF |
+| --- | --- | --- | --- |
+| React Web | [浅色](screenshots/miniapp-identity-web-bindings-light.png) · [深色](screenshots/miniapp-identity-web-bindings-dark.png) · [解绑后](screenshots/miniapp-identity-web-bindings-revoked.png) · [窄屏](screenshots/miniapp-identity-web-bindings-narrow.png) | [MP4](videos/miniapp-identity-web-collaboration.mp4) | [GIF](gifs/miniapp-identity-web-collaboration.gif) |
+| Taro H5 | [浅色](screenshots/miniapp-identity-mobile-bindings-light.png) · [深色](screenshots/miniapp-identity-mobile-bindings-dark.png) · [解绑后](screenshots/miniapp-identity-mobile-bindings-revoked.png) | [MP4](videos/miniapp-identity-mobile-collaboration.mp4) | [GIF](gifs/miniapp-identity-mobile-collaboration.gif) |
+
+![Web本人平台绑定与解绑核对 / Web own binding and revocation recovery](gifs/miniapp-identity-web-collaboration.gif)
+
+![Taro H5本人平台绑定与解绑核对 / Taro H5 own binding and revocation recovery](gifs/miniapp-identity-mobile-collaboration.gif)
+
 [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md) · [仓库首页 / Home](../../README.md)
 
 本目录包含 **90张PNG、33段MP4、33个GIF**。增量95新增Web／Taro任务讨论8张实际截图和两套MP4／GIF；原94及更早媒体保留原字节。全部使用隔离合成数据，不含真实业务或凭据；移动录屏为Taro H5。
