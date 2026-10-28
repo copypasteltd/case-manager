@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量101新增实际Web与Taro H5正文核对／采用演示，各2张PNG、1段原速MP4和1段GIF。每端在原生PostgreSQL与真实API上采用合同和采购正文，并发送一条报销起草请求；仅模型推理和执行隔离证明使用受控合成夹具。原99 PNG／37 MP4／37 GIF保持原字节。没有真机、真实模型或生产验收声明。
+
+| 页面 / Client | 核对原文 / Review | 采用结果 / Adopted | 原速录屏 / Recording | GIF |
+| --- | --- | --- | --- | --- |
+| Web | [PNG](screenshots/secretary-oa-prose-web-before.png) | [PNG](screenshots/secretary-oa-prose-web-after.png) | [MP4](videos/secretary-oa-prose-web.mp4) | [GIF](gifs/secretary-oa-prose-web.gif) |
+| Shared Taro H5 | [PNG](screenshots/secretary-oa-prose-mobile-before.png) | [PNG](screenshots/secretary-oa-prose-mobile-after.png) | [MP4](videos/secretary-oa-prose-mobile.mp4) | [GIF](gifs/secretary-oa-prose-mobile.gif) |
+
+[实现与使用](../development/101-oa-prose-drafting.md) · [来源与验证](../quality/101-oa-prose-verification.md)
+
 增量100新增实际Web与Taro H5只读历史页，各1张截图、1段原速MP4及1段GIF。合成数据、真实浏览器像素；无供应商／云／真机验收声明。原97 PNG／35 MP4／35 GIF保留原字节。
 
 | 页面 | 截图 | 录屏 | GIF |

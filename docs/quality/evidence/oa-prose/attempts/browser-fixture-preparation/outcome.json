@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "reason": "The opt-in browser fixture had not enrolled its synthetic employee MFA credential. The normal feature subtests passed; no browser opened.",
+  "corrected": "Enroll an actionless synthetic MFA role before seeding the browser-only drafts.",
+  "raw_log": "ignored app/.local/oa-prose-web-attempt-01-native.log",
+  "raw_log_sha256": "bbfffdf259e48538fb65a452a0e41e7fc625416a0400a3ba5ad13c485c2d7b9c",
+  "owned_browsers_opened": 0,
+  "fixture_file_removed": true,
+  "recorded_at": "2026-10-28T11:42:39.092023+00:00"
+}

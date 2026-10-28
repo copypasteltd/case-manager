@@ -149,7 +149,7 @@ func (b *Bridge) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				expected = []string{"company/read_resource", "company/inspect_operation", "company/list_directory", "company/propose_organization", "company/commit_organization"}
 			}
 			if profile.SkillID == "oa-assist" {
-				expected = []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request"}
+				expected = []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request", "company/draft_business_text"}
 			}
 			if err == nil && (profile.RuntimeVersion != RuntimeVersion || (profile.SkillID != "project-briefing" && profile.SkillID != "project-create" && profile.SkillID != "project-update" && profile.SkillID != "file-update" && profile.SkillID != "information-organize" && profile.SkillID != "oa-assist" && profile.SkillID != "incident-summary" && profile.SkillID != "subscription-review") || in.SDKVersion != "0.164.0" || in.ProfileID != profile.ID || in.ConfigurationSHA256 != profile.ConfigurationSHA256 || in.Model != b.Model || in.WorkingDirectory != b.WorkingDirectory || !sameTools(expected, in.ExpectedTools) || b.Verifier == nil) {
 				err = core.Fail(409, "RUNTIME_CONFINEMENT_UNVERIFIED", "执行环境尚未验证")

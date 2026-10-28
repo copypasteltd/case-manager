@@ -56,6 +56,9 @@ func (s *Server) agentRunRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /v1/runs/{id}", read(s, "RunResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.GetRun(ctx, a, r.PathValue("id"))
 	}))
+	mux.HandleFunc("POST /v1/runs/{id}/oa-text-adoption", command(s, "AgentOATextAdopt", "AgentOARequestViewResponse", func(ctx context.Context, c core.Command, r *http.Request, in agent.OATextAdopt) (core.Result, error) {
+		return service.AdoptOAText(ctx, c, r.PathValue("id"), in)
+	}))
 	mux.HandleFunc("POST /v1/runs/{id}/cancel", command(s, "Transition", "RunResponse", func(ctx context.Context, c core.Command, r *http.Request, in agent.RunCancel) (core.Result, error) {
 		return service.CancelRun(ctx, c, r.PathValue("id"), in)
 	}))

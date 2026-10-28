@@ -21514,6 +21514,98 @@
         }
       }
     },
+    "/runs/{id}/oa-text-adoption": {
+      "post": {
+        "operationId": "adoptOAText",
+        "tags": [
+          "runs"
+        ],
+        "summary": "adoptOAText",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentOARequestViewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentOATextAdopt"
+              }
+            }
+          }
+        }
+      }
+    },
     "/runs/{id}/cancel": {
       "post": {
         "operationId": "cancelRun",
@@ -48691,6 +48783,89 @@
           "reason"
         ]
       },
+      "AgentOATextArguments": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "contract",
+              "purchase",
+              "claim"
+            ]
+          },
+          "business_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_business_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "business_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "business_content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "fields": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "renewal_terms",
+                "termination_terms",
+                "purpose",
+                "notes"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "business_id",
+          "expected_business_version",
+          "business_revision_id",
+          "business_content_hash",
+          "reason",
+          "fields"
+        ]
+      },
+      "AgentOATextAdopt": {
+        "type": "object",
+        "properties": {
+          "draft_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "const": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "draft_sha256",
+          "reviewed",
+          "reason"
+        ]
+      },
       "AgentOARequestInput": {
         "oneOf": [
           {
@@ -48717,6 +48892,22 @@
               },
               "arguments": {
                 "$ref": "#/components/schemas/AgentOASubmitArguments"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "tool": {
+                "const": "draft_business_text"
+              },
+              "arguments": {
+                "$ref": "#/components/schemas/AgentOATextArguments"
               }
             },
             "additionalProperties": false,
@@ -48859,6 +49050,60 @@
           "preview"
         ]
       },
+      "AgentOATextDraftView": {
+        "type": "object",
+        "properties": {
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentSourceSnapshot"
+            },
+            "maxItems": 100
+          },
+          "fields": {
+            "type": "object",
+            "minProperties": 1,
+            "maxProperties": 3,
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 20000
+            }
+          },
+          "draft_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "operation_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentOABusinessView"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "fields",
+          "draft_sha256",
+          "source_refs",
+          "operation_id",
+          "result"
+        ]
+      },
       "AgentOARequestView": {
         "type": "object",
         "properties": {
@@ -48870,7 +49115,8 @@
             "type": "string",
             "enum": [
               "draft_request",
-              "submit_request"
+              "submit_request",
+              "draft_business_text"
             ]
           },
           "kind": {
@@ -48903,6 +49149,9 @@
               },
               {
                 "$ref": "#/components/schemas/AgentOASubmitArguments"
+              },
+              {
+                "$ref": "#/components/schemas/AgentOATextArguments"
               }
             ]
           },
@@ -48917,7 +49166,9 @@
             "type": "string",
             "enum": [
               "authorized",
-              "committed"
+              "committed",
+              "drafted",
+              "adopted"
             ]
           },
           "operation_id": {
@@ -48940,6 +49191,9 @@
                 "type": "null"
               }
             ]
+          },
+          "text_draft": {
+            "$ref": "#/components/schemas/AgentOATextDraftView"
           }
         },
         "additionalProperties": false,
@@ -67737,6 +67991,22 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/Run"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AgentOARequestViewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentOARequestView"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

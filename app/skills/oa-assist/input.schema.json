@@ -270,6 +270,78 @@
     },
     {
       "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "const": "draft_business_text"
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "contract",
+                "purchase",
+                "claim"
+              ]
+            },
+            "business_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "expected_business_version": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "business_revision_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "business_content_hash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "fields": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 3,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "renewal_terms",
+                  "termination_terms",
+                  "purpose",
+                  "notes"
+                ]
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "business_id",
+            "expected_business_version",
+            "business_revision_id",
+            "business_content_hash",
+            "reason",
+            "fields"
+          ]
+        }
+      },
+      "required": [
+        "tool",
+        "arguments"
+      ]
     }
   ]
 }

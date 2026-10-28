@@ -1,3 +1,4 @@
+import { oaTextAccepted } from './oa-text';
 import type { components } from './api';
 type S = components['schemas'];
 export type OARequest = S['AgentOARequestInput'];
@@ -25,6 +26,7 @@ export function makeOASubmit(kind:OAKind,b:OABusiness,r:S['Request'],p:S['Submis
 export function oaRequestAccepted(run:S['Run'],input?:OARequest):boolean {
  const v=run.oa_request;
  if(!input)return !v;
+ if(input.tool==='draft_business_text')return oaTextAccepted(run,input);
  if(!v||run.mutation||run.file_update||run.file_create||v.run_id!==run.id||v.tool!==input.tool||!hash(v.intent_sha256)||Object.keys(input.arguments).length!==Object.keys(v.arguments).length||Object.entries(input.arguments).some(([k,value])=>(v.arguments as Record<string,unknown>)[k]!==value))return false;
  if(v.before.business.id!==v.business_id||v.before.business.kind!==v.kind)return false;
  if(input.tool==='draft_request'&&(v.kind!==input.arguments.kind||v.business_id!==input.arguments.business_id||v.request_id!==(input.arguments.request_id??null)))return false;
@@ -33,6 +35,7 @@ export function oaRequestAccepted(run:S['Run'],input?:OARequest):boolean {
 }
 export function oaRequestReceipt(run:S['Run'],input?:OARequest):boolean {
  const v=run.oa_request, r=v?.result;
+ if(v?.tool==='draft_business_text')return false;
  if(!v||!r||v.run_id!==run.id||v.status!=='committed'||!hash(v.intent_sha256)||!v.operation_id||!id(v.operation_id)||r.kind!==v.kind||r.business_id!==v.business_id||r.applicant_id!==run.actor_id||r.project_id!==v.before.business.project_id||r.payload.business_id!==v.business_id||r.payload.business_revision_id!==v.before.business.current_revision_id||r.payload.business_content_hash!==v.before.business.content_hash||r.version!==((v.arguments as {expected_version?:number}).expected_version??0)+1) return false;
  if(input&&(input.tool!==v.tool||Object.entries(input.arguments).some(([k,value])=>(v.arguments as Record<string,unknown>)[k]!==value))) return false;
  if(v.tool==='draft_request') return r.state==='draft'&&r.active_instance_id===null&&(!v.request_id||v.request_id===r.id);

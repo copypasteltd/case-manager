@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-28T11:42:38.958112+00:00",
+  "source_sha256": "aa554534e9709007cb7e98d727201bf82be6ba9b2ac6da84c86d538821e605bb",
+  "source_files": 54,
+  "tests": {
+    "pass": 52,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:24:47.938469+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/oa-prose-client-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:26:51.223753+00:00",
+      "test_count": 52,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "36e623593808667ac4a4e8b712c4f5333b0ea812dc89db76422932579d6a3750",
+      "raw_log": "ignored app/.local/oa-prose-client-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:27:22.359508+00:00",
+      "test_count": null,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/oa-prose-client-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "fbd0711c24ee19a6300326ae41667746ed1bf54f887a7deaf5b71c67eee54444"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "569e0df27a8b801909e9ad219772e789c3c15d20e588c57b344c5354d76113eb",
+    "summary_adapter_sha256": "80d5bffa7ff9e9aac97e302e0c7ae6cc9fe175e8df17a5b55bb3be75aa934277",
+    "adapter_reran_tests": false
+  }
+}

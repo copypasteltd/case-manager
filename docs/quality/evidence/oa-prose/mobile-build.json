@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T11:42:38.958112+00:00",
+  "source_sha256": "96f0e0b7b583b5a5a2d921206014f2da023cf236f4aa66bf615fb779f690f102",
+  "source_files": 196,
+  "tests": {
+    "pass": 255,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:24:47.938469+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/oa-prose-client-typecheck.log"
+    },
+    {
+      "name": "mobile-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:26:41.889395+00:00",
+      "test_count": 255,
+      "command": "npm run test --workspace @copypaste/mobile",
+      "raw_log_sha256": "4686b4d31906bf07c58e017888582d6c16716fbe6c051f6b36e33cf2f88aa3fa",
+      "raw_log": "ignored app/.local/oa-prose-client-mobile-tests.log"
+    },
+    {
+      "name": "wechat-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:27:25.185983+00:00",
+      "test_count": null,
+      "command": "npm run build:weapp",
+      "raw_log_sha256": "b7832793f0ed0aeeb2d18cf3328a16377fc5f33b7e9ec27810c1f7a3ccacc572",
+      "raw_log": "ignored app/.local/oa-prose-client-wechat-build.log"
+    },
+    {
+      "name": "douyin-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T11:33:47.763369+00:00",
+      "test_count": null,
+      "command": "npm run build:tt",
+      "raw_log_sha256": "950fae5e3332633294c1498bc8bb209c5e4a99a73c1d4833d0296524da9989e5",
+      "raw_log": "ignored app/.local/oa-prose-client-douyin-build.log"
+    }
+  ],
+  "targets": {
+    "weapp": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    },
+    "tt": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    }
+  },
+  "source_unchanged_during_commands": true,
+  "api_origin": "http://127.0.0.1:18080",
+  "profile": "local",
+  "real_device": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "569e0df27a8b801909e9ad219772e789c3c15d20e588c57b344c5354d76113eb",
+    "summary_adapter_sha256": "80d5bffa7ff9e9aac97e302e0c7ae6cc9fe175e8df17a5b55bb3be75aa934277",
+    "adapter_reran_tests": false
+  }
+}

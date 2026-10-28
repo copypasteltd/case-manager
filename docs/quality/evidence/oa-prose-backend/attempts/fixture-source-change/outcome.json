@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "reason": "The opt-in browser MFA fixture was corrected while the first full run was in progress. The runner detected a changed backend digest, drained current batches and refused all later batches.",
+  "reused_as_current": false,
+  "original_progress_preserved": true,
+  "raw_logs": [
+    {
+      "file": "ignored app/.local/oa-prose-attempt-01-backend-batch-1.log",
+      "sha256": "4eaa7c22b335e9fd070a4d48ba41cba839bbc8baae615f153b9f96a7039bdaf0"
+    },
+    {
+      "file": "ignored app/.local/oa-prose-attempt-01-backend-batch-2.log",
+      "sha256": "d80784566c2ac5a6369b18932f75148bf176dace0f15235f2b31960b235f4aa1"
+    },
+    {
+      "file": "ignored app/.local/oa-prose-attempt-01-backend-batch-3.log",
+      "sha256": "d7427acbb45e832a2cf94adbe6c37aac984d5ac100894a522bd86453bc6e6662"
+    },
+    {
+      "file": "ignored app/.local/oa-prose-attempt-01-backend-batch-4.log",
+      "sha256": "f5644237e621f3ab489460383e48ff6bb560290b489495dea7ba6c48e58c1c54"
+    }
+  ],
+  "recorded_at": "2026-10-28T11:52:34.850152+00:00"
+}

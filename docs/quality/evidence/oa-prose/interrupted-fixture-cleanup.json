@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T13:18:24.312619+00:00",
+  "database": "cp_test_773b40dd46dd46c79dc05dfdb0f322e7",
+  "test": "TestMiniappProofBoundaries",
+  "test_started_at": "2026-10-28T20:38:00.394899+08:00",
+  "test_interrupted_at": "2026-10-28T20:39:27.1144485+08:00",
+  "database_directory_created_at": "2026-10-28T12:38:00.442404+00:00",
+  "creation_within_interrupted_case": true,
+  "original_batch_log_sha256": "d626900a0eb5d5bf3e4f083fcd9eef7c257d46aad09170a2542d91b6524d5174",
+  "before": {
+    "oid": "88587012",
+    "owner": "postgres",
+    "template": false,
+    "connections": 0
+  },
+  "standard_synthetic_seed_verified": true,
+  "commercial_records_empty": true,
+  "source_migration_ledger_matched": true,
+  "migration_count": 80,
+  "removed": true,
+  "forced_disconnect": false,
+  "postgres_restarted": false,
+  "production_database_touched": false,
+  "script_sha256": "c8f2545fde37e3720b136fc40aeaadbdd775e3fd4e40af05dc8a82449e3e83c1"
+}

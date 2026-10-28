@@ -149,7 +149,7 @@ func TestAgentOARequests(t *testing.T) {
 		}
 		l.Job = *j
 		credentials[l.RunID] = x.Credential
-		post(l, agentworker.ControlPath+"confinement", agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request"}}, 200)
+		post(l, agentworker.ControlPath+"confinement", agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request", "company/draft_business_text"}}, 200)
 		if e = service.StartExecution(ctx, l); e != nil {
 			t.Fatal(e)
 		}
@@ -207,6 +207,246 @@ func TestAgentOARequests(t *testing.T) {
 			fn(sub)
 		})
 	}
+
+	// The model may save selected prose, but only the actual employee can adopt
+	// it through the normal business update path after a verified draft result.
+	textDraft := func(kind string) (agent.Run, agent.ExecutionLease, map[string]any) {
+		args := createBusiness(kind)
+		fields := []string{"notes"}
+		if kind == "contract" {
+			fields = append(fields, "renewal_terms", "termination_terms")
+		} else {
+			fields = append(fields, "purpose")
+		}
+		args["fields"] = fields
+		run, l := start(input("draft_business_text", args))
+		values := map[string]string{"notes": "Reviewed synthetic business notes\nNo payment instruction."}
+		if kind == "contract" {
+			values["renewal_terms"] = "Renew only after a separate written review."
+			values["termination_terms"] = "Confirm outstanding deliveries before termination."
+		} else {
+			values["purpose"] = "Synthetic project tools for the current delivery."
+		}
+		proposal := map[string]any{"run_id": run.ID, "intent_sha256": run.OARequest.IntentSHA256, "fields": values}
+		return run, l, proposal
+	}
+	completeText := func(l agent.ExecutionLease) {
+		result := agent.ProposedResult{Status: "draft", Summary: "Selected business prose is a suggestion awaiting human adoption", ResourceRefs: []agent.ResultReference{}, SourceRefs: []agent.ResultReference{{Type: "agent_oa_request", ID: l.RunID}}, OperationIDs: []string{}, MissingFields: []string{}, NextAction: "Review the original and proposed prose before adoption"}
+		wrong := result
+		wrong.Status = "completed"
+		if err := service.CompleteExecution(ctx, l, wrong, agent.ExecutionUsage{InputTokens: 8, OutputTokens: 2}); err == nil {
+			t.Fatal("prose suggestion falsely completed a business write")
+		}
+		if err := service.CompleteExecution(ctx, l, result, agent.ExecutionUsage{InputTokens: 8, OutputTokens: 2}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	adoptText := func(id, token, key string, body any, status int) agent.OARequestView {
+		h, v := f.request("POST", "/v1/runs/"+id+"/oa-text-adoption", token, key, body, nil)
+		expect(t, h, status, v)
+		if status != 200 {
+			return agent.OARequestView{}
+		}
+		return data[agent.OARequestView](t, v)
+	}
+	for _, kind := range []string{"contract", "purchase", "claim"} {
+		runTest(kind+"_prose_draft_review_and_human_adoption", func(sub *testing.T) {
+			run, l, proposal := textDraft(kind)
+			bad := map[string]any{"run_id": run.ID, "intent_sha256": run.OARequest.IntentSHA256, "fields": map[string]string{"amount": "99999"}}
+			if _, err := tool(l, "commercial-forgery", "draft_business_text", bad); err == nil {
+				sub.Fatal("model altered commercial fields")
+			}
+			raw, err := tool(l, "propose-prose", "draft_business_text", proposal)
+			if err != nil {
+				sub.Fatal(err)
+			}
+			var receipt struct {
+				Committed   bool                `json:"committed"`
+				OperationID *string             `json:"operation_id"`
+				Content     agent.OARequestView `json:"content"`
+			}
+			if json.Unmarshal(raw, &receipt) != nil || receipt.Committed || receipt.OperationID != nil || receipt.Content.Status != "drafted" || receipt.Content.TextDraft == nil {
+				sub.Fatal("prose was not a noncommitted suggestion")
+			}
+			if _, err = tool(l, "propose-prose-again", "draft_business_text", proposal); err != nil {
+				sub.Fatal(err)
+			}
+			other := map[string]any{"run_id": run.ID, "intent_sha256": run.OARequest.IntentSHA256, "fields": map[string]string{"notes": "Replace an existing suggestion"}}
+			if _, err = tool(l, "different-prose", "draft_business_text", other); err == nil {
+				sub.Fatal("immutable suggestion overwritten")
+			}
+			var currentVersion int64
+			table := "spend_documents"
+			if kind == "contract" {
+				table = "contracts"
+			}
+			if err = f.owner.QueryRow(ctx, "SELECT version FROM "+table+" WHERE id=$1", run.OARequest.BusinessID).Scan(&currentVersion); err != nil || currentVersion != run.OARequest.Before.Business.Version {
+				sub.Fatal("model saved business content", err)
+			}
+			body := agent.OATextAdopt{DraftSHA256: receipt.Content.TextDraft.DraftSHA256, Reviewed: true, Reason: "Human reviewed every selected prose field"}
+			adoptText(run.ID, f.aliceToken, core.NewID(), body, 404)
+			completeText(l)
+			adoptText(run.ID, f.bobToken, core.NewID(), body, 404)
+			unreviewed := body
+			unreviewed.Reviewed = false
+			adoptText(run.ID, f.aliceToken, core.NewID(), unreviewed, 422)
+			wrongHash := body
+			wrongHash.DraftSHA256 = strings.Repeat("0", 64)
+			adoptText(run.ID, f.aliceToken, core.NewID(), wrongHash, 409)
+			key := core.NewID()
+			saved := adoptText(run.ID, f.aliceToken, key, body, 200)
+			replay := adoptText(run.ID, f.aliceToken, key, body, 200)
+			if saved.Status != "adopted" || saved.TextDraft.Result == nil || saved.TextDraft.OperationID == nil || replay.TextDraft.OperationID == nil || *saved.TextDraft.OperationID != *replay.TextDraft.OperationID {
+				sub.Fatal("adoption receipt missing or duplicated")
+			}
+			adoptText(run.ID, f.aliceToken, core.NewID(), body, 409)
+			var before, after map[string]json.RawMessage
+			_ = json.Unmarshal(run.OARequest.Before.Business.Payload.Content, &before)
+			_ = json.Unmarshal(saved.TextDraft.Result.Payload.Content, &after)
+			for field, wanted := range proposal["fields"].(map[string]string) {
+				var actual string
+				_ = json.Unmarshal(after[field], &actual)
+				if actual != wanted {
+					sub.Fatal("selected prose not saved", field)
+				}
+				delete(before, field)
+				delete(after, field)
+			}
+			a, _ := json.Marshal(before)
+			b, _ := json.Marshal(after)
+			a, _ = core.CanonicalJSON(a)
+			b, _ = core.CanonicalJSON(b)
+			if !bytes.Equal(a, b) || saved.TextDraft.Result.Version != run.OARequest.Before.Business.Version+1 {
+				sub.Fatal("unselected commercial facts changed")
+			}
+			actual := getRun(run.ID)
+			if actual.OARequest.Status != "adopted" || actual.Outcome == nil || *actual.Outcome != "draft" {
+				sub.Fatal("business draft conflated with approval completion")
+			}
+			var n int
+			if err = f.owner.QueryRow(ctx, "SELECT count(*) FROM requests WHERE org_id=$1 AND business_id=$2", f.org, run.OARequest.BusinessID).Scan(&n); err != nil || n != 0 {
+				sub.Fatal("adoption created or submitted an approval", err)
+			}
+			if _, err = f.api.DB.Exec(ctx, "UPDATE agent_oa_text_drafts SET fields=fields WHERE run_id=$1", run.ID); err == nil {
+				sub.Fatal("application overwrote proposal")
+			}
+			if _, err = f.api.DB.Exec(ctx, "DELETE FROM agent_oa_text_adoptions WHERE run_id=$1", run.ID); err == nil {
+				sub.Fatal("application removed adoption receipt")
+			}
+		})
+	}
+	runTest("prose_rejects_stale_business_after_completed_suggestion", func(sub *testing.T) {
+		run, l, proposal := textDraft("contract")
+		if _, err := tool(l, "propose", "draft_business_text", proposal); err != nil {
+			sub.Fatal(err)
+		}
+		completeText(l)
+		current := getRun(run.ID)
+		var content contracts.Content
+		_ = json.Unmarshal(run.OARequest.Before.Business.Payload.Content, &content)
+		content.Notes = "Human changed this draft independently"
+		h, v := f.request("PATCH", "/v1/contracts/"+run.OARequest.BusinessID, f.aliceToken, core.NewID(), contracts.Patch{Content: content, ExpectedVersion: run.OARequest.Before.Business.Version, BaseRevisionID: run.OARequest.Before.Business.CurrentRevisionID, Reason: "Independent human edit"}, nil)
+		expect(sub, h, 200, v)
+		adoptText(run.ID, f.aliceToken, core.NewID(), agent.OATextAdopt{DraftSHA256: current.OARequest.TextDraft.DraftSHA256, Reviewed: true, Reason: "Stale adoption must be refused"}, 409)
+	})
+	runTest("prose_proposal_cannot_be_adopted_after_cancellation", func(sub *testing.T) {
+		run, l, proposal := textDraft("purchase")
+		if _, err := tool(l, "propose", "draft_business_text", proposal); err != nil {
+			sub.Fatal(err)
+		}
+		current := getRun(run.ID)
+		h, v := f.request("POST", "/v1/runs/"+run.ID+"/cancel", f.aliceToken, core.NewID(), agent.RunCancel{ExpectedVersion: current.Version, Action: "cancel", Reason: "Stop before human adoption"}, nil)
+		expect(sub, h, 200, v)
+		finish(l)
+		adoptText(run.ID, f.aliceToken, core.NewID(), agent.OATextAdopt{DraftSHA256: current.OARequest.TextDraft.DraftSHA256, Reviewed: true, Reason: "Cancelled adoption must be refused"}, 404)
+	})
+
+	runTest("prose_adoption_is_atomic_when_receipt_insert_fails", func(sub *testing.T) {
+		run, l, proposal := textDraft("claim")
+		if _, err := tool(l, "propose", "draft_business_text", proposal); err != nil {
+			sub.Fatal(err)
+		}
+		completeText(l)
+		current := getRun(run.ID)
+		body := agent.OATextAdopt{DraftSHA256: current.OARequest.TextDraft.DraftSHA256, Reviewed: true, Reason: "Human review with atomic receipt"}
+		key := core.NewID()
+		exec("ALTER TABLE agent_oa_text_adoptions ADD CONSTRAINT controlled_prose_receipt_failure CHECK(false) NOT VALID")
+		defer exec("ALTER TABLE agent_oa_text_adoptions DROP CONSTRAINT IF EXISTS controlled_prose_receipt_failure")
+		adoptText(run.ID, f.aliceToken, key, body, 422)
+		exec("ALTER TABLE agent_oa_text_adoptions DROP CONSTRAINT controlled_prose_receipt_failure")
+		var n int
+		if err := f.owner.QueryRow(ctx, "SELECT count(*) FROM spend_revisions WHERE org_id=$1 AND document_id=$2", f.org, run.OARequest.BusinessID).Scan(&n); err != nil || n != 1 {
+			sub.Fatal("failed adoption leaked a new business revision", err)
+		}
+		adoptText(run.ID, f.aliceToken, key, body, 200)
+	})
+	runTest("prose_rechecks_current_update_permission", func(sub *testing.T) {
+		run, l, proposal := textDraft("contract")
+		if _, err := tool(l, "propose", "draft_business_text", proposal); err != nil {
+			sub.Fatal(err)
+		}
+		completeText(l)
+		current := getRun(run.ID)
+		exec("DELETE FROM role_bindings WHERE org_id=$1 AND user_id=$2 AND role_id IN(SELECT id FROM roles WHERE org_id=$1 AND key='contract_manager')", f.org, f.alice)
+		body := agent.OATextAdopt{DraftSHA256: current.OARequest.TextDraft.DraftSHA256, Reviewed: true, Reason: "A former writer cannot adopt"}
+		h, v := f.request("POST", "/v1/runs/"+run.ID+"/oa-text-adoption", f.aliceToken, core.NewID(), body, nil)
+		if h.Code != 403 && h.Code != 404 {
+			sub.Fatal("revoked writer retained adoption", h.Code, v)
+		}
+		bind(f.alice, "contract_manager")
+		adoptText(run.ID, f.aliceToken, core.NewID(), body, 200)
+	})
+
+	runTest("prose_withdraws_unselected_observed_source_when_it_changes", func(sub *testing.T) {
+		run, l, proposal := textDraft("contract")
+		if _, err := tool(l, "read-project", "read_resource", map[string]any{"type": "project", "id": *evidence.File.ProjectID}); err != nil {
+			sub.Fatal(err)
+		}
+		if _, err := tool(l, "propose", "draft_business_text", proposal); err != nil {
+			sub.Fatal(err)
+		}
+		completeText(l)
+		current := getRun(run.ID)
+		if len(current.OARequest.TextDraft.SourceRefs) < 2 {
+			sub.Fatal("additional read dependency missing")
+		}
+		exec("UPDATE projects SET version=version+1 WHERE org_id=$1 AND id=$2", f.org, *evidence.File.ProjectID)
+		h, v := f.request("GET", "/v1/runs/"+run.ID, f.aliceToken, "", nil, nil)
+		expect(sub, h, 404, v)
+		adoptText(run.ID, f.aliceToken, core.NewID(), agent.OATextAdopt{DraftSHA256: current.OARequest.TextDraft.DraftSHA256, Reviewed: true, Reason: "Changed observed source must be re-read"}, 404)
+	})
+
+	if os.Getenv("CP_BROWSER_OA_PROSE_FIXTURE") == "1" {
+		proofRole := core.NewID()
+		exec("INSERT INTO roles(id,org_id,key,name,requires_mfa) VALUES($1,$2,'oa_prose_browser_proof','Actionless synthetic browser MFA proof',true)", proofRole, f.org)
+		exec("INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type) VALUES($1,$2,$3,$4,'org')", core.NewID(), f.org, f.alice, proofRole)
+		exec("UPDATE users SET auth_version=auth_version+1 WHERE org_id=$1 AND id=$2", f.org, f.alice)
+		exec("UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", f.org)
+		f.aliceToken = memberMFAToken(f, "alice", "android")
+		drafts := map[string]any{"agent_oa_prose_fixture": true, "conversation_id": c.ID, "project_id": *evidence.File.ProjectID, "profile_id": profile}
+		for _, kind := range []string{"contract", "purchase"} {
+			run, l, proposal := textDraft(kind)
+			values := proposal["fields"].(map[string]string)
+			values["notes"] = "本次资料已按交付范围整理。后续变更须记录原因，并重新核对相关业务修订。"
+			if kind == "contract" {
+				values["renewal_terms"] = "到期前由项目负责人核对续约范围、期限与费用，经双方书面确认后另行办理续约。"
+				values["termination_terms"] = "终止前核对已交付成果、未完成事项及资料交接安排，形成双方确认的书面记录。"
+			} else {
+				values["purpose"] = "用于当前项目交付所需的工具订阅，凭证及费用归属由经办人核对后提交审批。"
+			}
+			if _, err := tool(l, "browser-prose", "draft_business_text", proposal); err != nil {
+				t.Fatal(err)
+			}
+			completeText(l)
+			drafts[kind+"_run_id"] = run.ID
+			drafts[kind+"_business_id"] = run.OARequest.BusinessID
+		}
+		target := createBusiness("claim")
+		drafts["claim_business_id"] = target["business_id"]
+		holdBrowserBusinessFixture(t, f, drafts)
+		return
+	}
+
 	var completedRun agent.Run
 	for _, kind := range []string{"contract", "purchase", "claim"} {
 		runTest(kind+"_draft_revise_and_exact_submission", func(sub *testing.T) {

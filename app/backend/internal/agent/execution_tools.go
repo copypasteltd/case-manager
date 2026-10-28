@@ -149,8 +149,8 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		content, snapshots, err = executionServiceSummary(ctx, tx, st, args)
 	case "draft_post", "publish_post":
 		writeOutput, snapshots, err = s.executionPostWrite(ctx, tx, st, tool, args)
-	case "draft_request", "submit_request":
-		writeOutput, snapshots, err = s.executionOARequest(ctx, tx, st, tool, args)
+	case "draft_request", "submit_request", "draft_business_text":
+		writeOutput, snapshots, err = s.executionOARequest(ctx, tx, st, tool, args, observedSources)
 	case "list_directory", "propose_organization", "commit_organization":
 		writeOutput, snapshots, err = s.executionOrganization(ctx, tx, st, tool, args)
 		if tool == "list_directory" {

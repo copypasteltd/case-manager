@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T13:08:39.817588+00:00",
+  "targets": [
+    {
+      "database": "cp_test_4ecfa96f7539453cb53c1d78d36b4f1a",
+      "invalid_before": true,
+      "connections_before": 0,
+      "exact_failed_drop_logged": true,
+      "failed_cleanup_test": "TestHistoryRestoration/waived_history_preserves_its_original_report_and_a_newer_disabled_policy_blocks_another_publication",
+      "cleanup_error_time": "2026-10-28T20:25:56.9317718+08:00",
+      "drop_log_time_matches": true,
+      "removed": true
+    },
+    {
+      "database": "cp_test_ae891aff96514918b69bcabaf5c3e58d",
+      "invalid_before": true,
+      "connections_before": 0,
+      "exact_failed_drop_logged": true,
+      "failed_cleanup_test": "TestHistoryRestoration/old_lease_cannot_persist_a_new_receipt_and_exhausted_unstarted_work_gets_a_domain_failure",
+      "cleanup_error_time": "2026-10-28T20:35:21.1422671+08:00",
+      "drop_log_time_matches": true,
+      "removed": true
+    },
+    {
+      "database": "cp_test_fdb818926ea84aba9e1fd9ab8b64dc8d",
+      "invalid_before": true,
+      "connections_before": 0,
+      "exact_failed_drop_logged": true,
+      "failed_cleanup_test": "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+      "cleanup_error_time": "2026-10-28T20:26:12.7116243+08:00",
+      "drop_log_time_matches": true,
+      "removed": true
+    }
+  ],
+  "inspection_sha256": "c709655c3a3edc30d1d899aa08f40834b06eef63e85e3474b2106454ebfcda30",
+  "script_sha256": "05b9d9ad661d3acd78feb597f80daf5fa147b6df956dc617cd89c2f9169cf86b",
+  "production_database_touched": false,
+  "postgres_restarted": false,
+  "unrelated_database_touched": false
+}

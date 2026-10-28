@@ -1,0 +1,8 @@
+{
+  "scope": "Outcome note from the observed first updater output, not a preserved original raw log or reconstructed original JSON.",
+  "original_raw_log_preserved": false,
+  "first_observed_outcome": "Schema79->80 applied; the updater stopped when the attested old API had not yet released its port. It did not terminate an unknown listener.",
+  "resolution": "After the port closed, the updater ran again, inspected existing schema80 and restarted only owned API/notification/report-export services. The second actual result is development-update.json.",
+  "historical_business_migration_claimed": false,
+  "production_deployment": false
+}

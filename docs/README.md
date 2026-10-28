@@ -1,5 +1,7 @@
 # CopyPaste 内部管理平台文档中心
 
+最新实现101 / Latest implementation101：[OA正文起草与采用](development/101-oa-prose-drafting.md) · [验证记录](quality/101-oa-prose-verification.md) · [剩余23项](delivery/03-goal-gap-assessment.md)。合同／采购／报销选定字段、来源复核、员工原文对照采用及真实业务修订已接入；完整正文附件和更多申请、正式Skill／模型验收仍开放。
+
 最新实现100：[秘书执行无需AI费用额度](development/100-secretary-execution-without-cost-quota.md) · [验证与交付范围](quality/100-secretary-execution-verification.md)。当前仍23项未完成、5项移出；真实模型接入未以本地合成检查替代。
 
 最新修订99：[当前范围与验收](delivery/04-current-scope-and-acceptance.md) · [23项剩余工作](delivery/03-goal-gap-assessment.md) · [验证记录](quality/99-scope-revision-verification.md)。23 active（14 P0／9 P1），5 excluded；只取消AI费用控制，保留秘书、隔离及授权。No device/network-performance/migration/DR/AI-cost gates.

@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量101 · OA正文起草、核对与采用 / OA prose drafting and adoption · 2026-10-28
+
+- 为合同、采购、报销添加白名单正文字段起草。模型保存不可变建议和实际读取来源，员工逐字段核对后通过常规权限采用为业务新修订。
+- 新增迁移80、受限MCP工具及员工采用API；采用与正常合同／采购／报销修订、审计、幂等和回执在同一事务提交，来源变化、过期版本、取消和权限不足时停止。
+- Web原文双栏／窄屏纵排与Taro共享核对页面接入；中英文README、范围清单、开发说明、实际截图／录屏／GIF及[验证记录](quality/101-oa-prose-verification.md)同步更新。
+- Adds immutable prose suggestions and explicit human adoption through existing business commands, with current permissions, source/version checks and atomic receipts. The secretary cannot adopt or approve its own suggestion. Contract body attachments, wider tools and real model/Skill acceptance remain open;23 complete work packages are still active and5 excluded.
+
 ## 增量100 · 秘书执行解除费用前置 / Cost-independent secretary execution · 2026-10-28
 
 - 接单与执行不再要求月度Token策略或费用预留；技术用量经迁移79直接绑定租户／运行，保留原记录及不可改写约束。

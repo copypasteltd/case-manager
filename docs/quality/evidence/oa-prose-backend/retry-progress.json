@@ -1,0 +1,312 @@
+{
+  "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+  "serial_execution": true,
+  "retries": [
+    {
+      "test": "TestHistoryRestoration",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": false,
+      "exit_code": 0,
+      "started_at": "2026-10-28T12:58:59.509644+00:00",
+      "finished_at": "2026-10-28T13:01:36.790653+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-1.log",
+      "raw_output_sha256": "edafa41ed81dcea8c77385970e415730ee39a8514dffdf44143abaebecb0258b",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/waived_history_preserves_its_original_report_and_a_newer_disabled_policy_blocks_another_publication",
+          "Elapsed": 7.77
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/immutable_fixed_inputs_and_archived_project_block_publication_while_cancellation_remains_available",
+          "Elapsed": 7.12
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/storage_epoch_change_during_copy_records_a_domain_failure_without_publishing",
+          "Elapsed": 6.3
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/fixed_bytes_become_a_new_audited_version_only_after_explicit_idempotent_commit_and_queue_backup",
+          "Elapsed": 5.38
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/commit_conflict_preserves_candidate_and_current_bytes",
+          "Elapsed": 11.67
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/audit_failure_rolls_back_publication_and_permits_the_exact_command_to_retry",
+          "Elapsed": 15.98
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/restore_and_upload_share_quota_reservations_and_cancellation_releases_only_its_own_reservation",
+          "Elapsed": 15.13
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/another_employee_cannot_view_cancel_or_replay_the_original_task_and_paging_binds_identity",
+          "Elapsed": 17.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/cancel_during_cloud_write_fences_progress_and_preserves_all_formal_history",
+          "Elapsed": 14.1
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/revoked_authorization_during_cloud_read_is_recorded_as_a_failed_restore",
+          "Elapsed": 13.11
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/corrupted_target_never_becomes_ready",
+          "Elapsed": 11.48
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/known_multipart_resumes_while_unknown_initialization_uses_a_new_physical_key",
+          "Elapsed": 10.93
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration/old_lease_cannot_persist_a_new_receipt_and_exhausted_unstarted_work_gets_a_domain_failure",
+          "Elapsed": 11.28
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestHistoryRestoration",
+          "Elapsed": 147.31
+        }
+      ]
+    },
+    {
+      "test": "TestInAppNotifications",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:01:37.032258+00:00",
+      "finished_at": "2026-10-28T13:01:56.412143+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-2.log",
+      "raw_output_sha256": "f2285ffd2a401edac2dce025f9bc4b0ab0433fb99051e7e5e9fdda58f62160ce",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestInAppNotifications",
+          "Elapsed": 11.08
+        }
+      ]
+    },
+    {
+      "test": "TestMiniappMFAAndRevocation",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:01:56.697228+00:00",
+      "finished_at": "2026-10-28T13:02:49.519513+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-3.log",
+      "raw_output_sha256": "752db9ac521e5d48ef8c16aadb41907d18fd1c4dbfe08a59d09e542773962f43",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappMFAAndRevocation",
+          "Elapsed": 42.06
+        }
+      ]
+    },
+    {
+      "test": "TestMiniappMFAEnrollmentAndVerify",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:02:49.731020+00:00",
+      "finished_at": "2026-10-28T13:03:24.646120+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-4.log",
+      "raw_output_sha256": "a238fa050369d3f39d7deb24757a71bf6f50124d29f55b9ac136e01452da20ca",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappMFAEnrollmentAndVerify",
+          "Elapsed": 26.23
+        }
+      ]
+    },
+    {
+      "test": "TestMiniappProofBoundaries",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:03:24.887414+00:00",
+      "finished_at": "2026-10-28T13:03:55.175415+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-5.log",
+      "raw_output_sha256": "5ac2c592282f292a82e672d71b908d762b4281f6c7ac3ff0bf3c7e367ee0a035",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappProofBoundaries",
+          "Elapsed": 20.67
+        }
+      ]
+    },
+    {
+      "test": "TestMiniappRefreshRevocationRace",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:03:55.392313+00:00",
+      "finished_at": "2026-10-28T13:04:20.471822+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-6.log",
+      "raw_output_sha256": "aa8167a0dd44be0f2320ca8d1c7f83bd3593ff9e98585f0c536e8fea658fc3a3",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappRefreshRevocationRace",
+          "Elapsed": 15.95
+        }
+      ]
+    },
+    {
+      "test": "TestMobileContentBrowserFixture",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:04:20.692388+00:00",
+      "finished_at": "2026-10-28T13:04:46.252025+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-7.log",
+      "raw_output_sha256": "146c5c4d0359ee9e90c434d0d5fb3a55b7f8b0e0fd12712b71808ab5b0bc9d5e",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMobileContentBrowserFixture",
+          "Elapsed": 15.54
+        }
+      ]
+    },
+    {
+      "test": "TestPlatformIntegration",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": false,
+      "exit_code": 0,
+      "started_at": "2026-10-28T13:04:46.585477+00:00",
+      "finished_at": "2026-10-28T13:05:57.574075+00:00",
+      "source_sha256": "3bb4ae0a0a11fa78f3c36240371b02473e23951cceb703463b548cf29458620e",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/oa-prose-backend-retry-8.log",
+      "raw_output_sha256": "348652197e01aac41317dea9b589b461b19c895d9f74918a85d3a62b3eb4ae34",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/application_identity_has_no_superuser_or_audit_mutation_privileges",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/resource_ACL_filters_lists_and_rejects_foreign_projects_before_pagination",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/idempotency_commits_once,_detects_changed_content_and_reauthorizes_replays",
+          "Elapsed": 0.03
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/optimistic_conflict_and_failed_mutation_leave_no_outbox_or_idempotency_record",
+          "Elapsed": 0.02
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/dependency_blocking,_review_and_parent_cycles_enforce_a_real_task_lifecycle",
+          "Elapsed": 0.05
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/concurrent_opposing_edges_cannot_form_a_dependency_cycle",
+          "Elapsed": 0.06
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+          "Elapsed": 51.78
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/web_cookies_require_CSRF_and_refresh_replay_revokes_the_family",
+          "Elapsed": 0.15
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/administrator_MFA_does_not_grant_content_and_credentials_reject_old_challenges",
+          "Elapsed": 0.44
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration/schema_prevents_actor_injection,_invalid_dates_and_missing_required_fields",
+          "Elapsed": 0
+        },
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestPlatformIntegration",
+          "Elapsed": 61.08
+        }
+      ]
+    }
+  ]
+}

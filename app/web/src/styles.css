@@ -714,3 +714,10 @@ input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--cp-action-
 .file-text-preview code { overflow-wrap:anywhere; }
 .file-text-body { font:inherit; max-height:60vh; overflow:auto; padding:20px; background:var(--cp-bg-subtle); border-radius:8px; }
 @media(max-width:650px) { .search-form { flex-wrap:wrap; padding:16px; } .search-form .search-field { flex-basis:100%; } .search-hit { padding:18px; } .search-hit-footer { flex-direction:column; align-items:flex-start; } }
+
+.oa-prose-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.oa-prose-field { margin-block: 1rem; padding-block: .75rem; border-top: 1px solid var(--cp-border-subtle); }
+.oa-prose-field h5 { margin-block: 0 .75rem; font-size: 1rem; }
+.oa-prose-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.oa-prose-review fieldset label { display: block; }
+@media (max-width: 640px) { .oa-prose-comparison { grid-template-columns: minmax(0, 1fr); } }

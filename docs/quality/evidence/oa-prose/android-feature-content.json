@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T12:35:28.485246+00:00",
+  "checks": [
+    {
+      "name": "Exact current bundle is inside the new APK",
+      "passed": true
+    },
+    {
+      "name": "Draft tool and human-only adoption endpoint are present",
+      "passed": true
+    },
+    {
+      "name": "Actual shared review, confirmation and adoption controls are present",
+      "passed": true
+    },
+    {
+      "name": "Selected field and source/digest protocol is included",
+      "passed": true
+    }
+  ],
+  "source_sha256": "5346d691638ea0dbe53c309cc74daaddd292cbac0a2539444ff65568b0d86b60",
+  "bundle_sha256": "e68fcd7c0adcc1f2a0af11bd39a8eccfc935442a45b54f5748924cbb10d0581f",
+  "apk_sha256": "f305ba7d587efb3f0175ca157dbfc910f19fcde3b1249c2fdf79b4143b205aa8",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "0d4cf40ab6af78554e0a17a58f8d903391f7908f4697fa35a78556f6cc4a7a3c"
+}

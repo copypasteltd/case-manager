@@ -671,12 +671,19 @@ add("AgentOADraftArguments", oa_draft, tuple(k for k in oa_draft if k not in ("r
 SCHEMAS["AgentOADraftArguments"]["dependentRequired"] = {"request_id":["expected_version"],"expected_version":["request_id"]}
 oa_submit = {"request_id": ID, **EXPECTED, "revision_id": ID, "content_hash": HASH, "workflow_definition_id": ID, "preview_hash": HASH, "reason": {"type":"string","minLength":1,"maxLength":200}}
 add("AgentOASubmitArguments", oa_submit, tuple(oa_submit))
-SCHEMAS["AgentOARequestInput"] = {"oneOf":[obj({"tool":{"const":"draft_request"},"arguments":ref("AgentOADraftArguments")},("tool","arguments")), obj({"tool":{"const":"submit_request"},"arguments":ref("AgentOASubmitArguments")},("tool","arguments"))]}
+oa_text={k:v for k,v in oa_draft.items() if k not in ("request_id","expected_version")}
+oa_text["fields"]={"type":"array","minItems":1,"maxItems":3,"uniqueItems":True,"items":enum("renewal_terms","termination_terms","purpose","notes")}
+add("AgentOATextArguments",oa_text,tuple(oa_text))
+add("AgentOATextAdopt",{"draft_sha256":HASH,"reviewed":{"const":True},"reason":{"type":"string","minLength":1,"maxLength":200}},("draft_sha256","reviewed","reason"))
+SCHEMAS["AgentOARequestInput"] = {"oneOf":[obj({"tool":{"const":"draft_request"},"arguments":ref("AgentOADraftArguments")},("tool","arguments")), obj({"tool":{"const":"submit_request"},"arguments":ref("AgentOASubmitArguments")},("tool","arguments")), obj({"tool":{"const":"draft_business_text"},"arguments":ref("AgentOATextArguments")},("tool","arguments"))]}
 oa_business = {"id":ID,"kind":enum("contract","purchase","claim"),"version":VERSION,"creator_id":ID,"title":NAME,"project_id":nullable(ID),"classification":CLASS,"lifecycle":NAME,"approval_state":NAME,"current_revision_id":ID,"content_hash":HASH,"request_id":nullable(ID),"payload":ref("RequestPayload")}
 add("AgentOABusinessView",oa_business,tuple(oa_business))
 add("AgentOARequestBasis",{"business":ref("AgentOABusinessView"),"request":nullable(ref("Request")),"preview":nullable(ref("SubmissionPreview"))},("business","request","preview"))
-oa_view = {"run_id":ID,"tool":enum("draft_request","submit_request"),"kind":enum("contract","purchase","claim"),"business_id":ID,"request_id":nullable(ID),"arguments":{"oneOf":[ref("AgentOADraftArguments"),ref("AgentOASubmitArguments")]},"before":ref("AgentOARequestBasis"),"intent_sha256":HASH,"status":enum("authorized","committed"),"operation_id":nullable(ID),"result":nullable(ref("Request"))}
+add("AgentOATextDraftView",{"source_refs":array(ref("AgentSourceSnapshot"),maxItems=100),"fields":{"type":"object","minProperties":1,"maxProperties":3,"additionalProperties":{"type":"string","maxLength":20000}},"draft_sha256":HASH,"operation_id":nullable(ID),"result":nullable(ref("AgentOABusinessView"))},("fields","draft_sha256","source_refs","operation_id","result"))
+oa_view = {"run_id":ID,"tool":enum("draft_request","submit_request","draft_business_text"),"kind":enum("contract","purchase","claim"),"business_id":ID,"request_id":nullable(ID),"arguments":{"oneOf":[ref("AgentOADraftArguments"),ref("AgentOASubmitArguments"),ref("AgentOATextArguments")]},"before":ref("AgentOARequestBasis"),"intent_sha256":HASH,"status":enum("authorized","committed"),"operation_id":nullable(ID),"result":nullable(ref("Request"))}
+oa_view["status"]=enum("authorized","committed","drafted","adopted")
 add("AgentOARequestView",oa_view,tuple(oa_view))
+SCHEMAS["AgentOARequestView"]["properties"]["text_draft"]=ref("AgentOATextDraftView")
 post_base={"post_id":ID,"expected_version":VERSION,"base_revision_id":ID,"content_hash":HASH}
 post_draft={"tool":{"const":"draft_post"},**post_base,"type":enum("project_log","meeting_note","sop","article"),"title":NAME,"classification":enum("internal","project_restricted"),"source_refs":array(ref("ResourceRef"),maxItems=20),"reason":NAME}
 add("AgentPostDraftInput",post_draft,("tool","type","title","classification","reason"))
@@ -1665,6 +1672,7 @@ for path in ("/agent-budget", "/agent-budget/entries"):
 operation("/conversations/{id}/runtime-options", "get", "getRuntimeOptions", "RuntimeOptions")
 operation("/conversations/{id}/runs", "post", "createRun", "Run", "RunCreate", 202)
 operation("/runs/{id}", "get", "getRun", "Run")
+operation("/runs/{id}/oa-text-adoption", "post", "adoptOAText", "AgentOARequestView", "AgentOATextAdopt")
 operation("/runs/{id}/cancel", "post", "cancelRun", "Run", "Transition")
 operation("/runs/{id}/event-log", "get", "getRunEventLog", "RunEventPage")
 PATHS["/runs/{id}/event-log"]["get"]["parameters"] += [

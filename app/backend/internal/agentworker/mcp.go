@@ -209,6 +209,10 @@ func toolDefinitions(skill string) []any {
 		}{"commit_organization", "仅消费本人批准的准确整理计划；整批原子执行现有业务命令并保存逐项回执。不能批准计划。", create})
 	}
 	if skill == "oa-assist" {
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
+		}{"draft_business_text", "仅起草 authorized_oa_request 指定的合同条款/备注或采购报销用途/备注。只保存不可变建议，必须返回draft并等待员工核对采用；不能改金额、交易方、附件、审批人或直接写入业务。", schema(map[string]any{"run_id": uuid, "intent_sha256": str(map[string]any{"pattern": "^[0-9a-f]{64}$"}), "fields": map[string]any{"type": "object", "minProperties": 1, "maxProperties": 3, "additionalProperties": false, "properties": map[string]any{"renewal_terms": str(map[string]any{"minLength": 1, "maxLength": 20000}), "termination_terms": str(map[string]any{"minLength": 1, "maxLength": 20000}), "purpose": str(map[string]any{"minLength": 1, "maxLength": 4000}), "notes": str(map[string]any{"minLength": 1, "maxLength": 20000})}}}, []string{"run_id", "intent_sha256", "fields"})})
 		digest := str(map[string]any{"pattern": "^[0-9a-f]{64}$"})
 		reason := str(map[string]any{"minLength": 1, "maxLength": 200})
 		draft := schema(map[string]any{"kind": str(map[string]any{"enum": []string{"contract", "purchase", "claim"}}), "business_id": uuid, "expected_business_version": version, "business_revision_id": uuid, "business_content_hash": digest, "request_id": uuid, "expected_version": version, "reason": reason}, []string{"kind", "business_id", "expected_business_version", "business_revision_id", "business_content_hash", "reason"})
@@ -266,7 +270,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

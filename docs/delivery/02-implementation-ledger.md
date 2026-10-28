@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+最新增量101：完成GAP-12中的合同条款／备注、采购／报销用途／备注起草子流程。员工固定字段和业务修订，秘书保存不可变建议及已读来源，员工对照核对后原子采用；已接入Web和共享Taro组件、MCP及迁移80。正式合同正文附件、更多OA申请、跨任务能力及真实模型／Skill评测仍在GAP-04／12／13。23个完整工作包保持开放，5项移出。见[实现](../development/101-oa-prose-drafting.md)和[验证](../quality/101-oa-prose-verification.md)。
+
 最新增量100：完成GAP-09内AI费用前置适配。接单与执行不再调用费用策略／预留；技术用量经迁移79直接绑定租户与运行；旧费用写入API停用、应用DB角色撤销相应INSERT、Web与Taro保留只读历史。保留身份、权限、隔离和技术限制。23项完整工作包仍开放、5项移出；详见[开发说明](../development/100-secretary-execution-without-cost-quota.md)及[验证](../quality/100-secretary-execution-verification.md)。
 
 最新修订99：用户更正为仅取消AI费用控制；同时移出真机验证、网络性能、数据迁移与容灾。当前23类待完成（14 P0／9 P1），原GAP-14／17／21／22／27移出，其他项收窄适用验收。保留四端、秘书／Skill／TG、隔离／权限、公司财务、双端存储及持久PG。修订99当时的接单必配额度差异已在增量100实现适配。见[当前范围](04-current-scope-and-acceptance.md)及[当前清单](03-goal-gap-assessment.md)；本次无功能源码、构建或媒体采集变化。

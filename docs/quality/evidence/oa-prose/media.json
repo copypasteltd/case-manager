@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T12:00:31.866752+00:00",
+  "encoder_script_sha256": "f58c7602323f37ec9134c66449d1ff278710eabd8068613a3db35843b6e026e8",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "66c32bb302f99f1555cb628348ca2d4ca39fe2b392fd0c0780b17915b63da6e6",
+      "build_source_sha256": "61241689eb6ae75b2da12bc655eaefd9164795e24b0bc6d47e8a8e1d6f413f80",
+      "capture_manifest": "docs/quality/evidence/oa-prose/web-capture-manifest.json",
+      "capture_manifest_sha256": "5d890e7e601148ffe5b172ba3b50544044b5dca54d5df3380e7066911a68491f",
+      "capture_frame_count": 24,
+      "capture_duration_ms": 6569,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "67",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "6.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-oa-prose-web.mp4",
+          "sha256": "daa0a4be26e5cf8fa6638e097b23bd7f3e7a69efa4cba741e3edcc80969c0c85",
+          "bytes": 254334
+        },
+        {
+          "file": "docs/media/gifs/secretary-oa-prose-web.gif",
+          "sha256": "4831d4e9f4a57765c25bc57a4f3a8a650b2755852a9d0fa1c10cec6a71d38d75",
+          "bytes": 491697
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "6ab3f8aaa8fc7abdc758193473dad25b7e79f45ce2febc327d70abb2dfa156be",
+      "build_source_sha256": "61241689eb6ae75b2da12bc655eaefd9164795e24b0bc6d47e8a8e1d6f413f80",
+      "capture_manifest": "docs/quality/evidence/oa-prose/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "da2960bce617c77c9d7df79463558177ad84e3361827fa66b406ced574e17046",
+      "capture_frame_count": 25,
+      "capture_duration_ms": 6607,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "68",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "6.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-oa-prose-mobile.mp4",
+          "sha256": "074601f605d8505891da67308ec3d94f2f24849f3902bbf18680ac9e7b164e1e",
+          "bytes": 234093
+        },
+        {
+          "file": "docs/media/gifs/secretary-oa-prose-mobile.gif",
+          "sha256": "e1246fcfec2f83a7f865f5c3f64a842a8cab86bf86c71b72ce1269602681fd46",
+          "bytes": 686554
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

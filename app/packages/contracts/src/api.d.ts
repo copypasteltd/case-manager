@@ -3418,6 +3418,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/runs/{id}/oa-text-adoption": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** adoptOAText */
+        post: operations["adoptOAText"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/runs/{id}/cancel": {
         parameters: {
             query?: never;
@@ -8042,6 +8059,24 @@ export interface components {
             preview_hash: string;
             reason: string;
         };
+        AgentOATextArguments: {
+            /** @enum {string} */
+            kind: "contract" | "purchase" | "claim";
+            /** Format: uuid */
+            business_id: string;
+            expected_business_version: number;
+            /** Format: uuid */
+            business_revision_id: string;
+            business_content_hash: string;
+            reason: string;
+            fields: ("renewal_terms" | "termination_terms" | "purpose" | "notes")[];
+        };
+        AgentOATextAdopt: {
+            draft_sha256: string;
+            /** @constant */
+            reviewed: true;
+            reason: string;
+        };
         AgentOARequestInput: {
             /** @constant */
             tool: "draft_request";
@@ -8050,6 +8085,10 @@ export interface components {
             /** @constant */
             tool: "submit_request";
             arguments: components["schemas"]["AgentOASubmitArguments"];
+        } | {
+            /** @constant */
+            tool: "draft_business_text";
+            arguments: components["schemas"]["AgentOATextArguments"];
         };
         AgentOABusinessView: {
             /** Format: uuid */
@@ -8076,23 +8115,33 @@ export interface components {
             request: components["schemas"]["Request"] | null;
             preview: components["schemas"]["SubmissionPreview"] | null;
         };
+        AgentOATextDraftView: {
+            source_refs: components["schemas"]["AgentSourceSnapshot"][];
+            fields: {
+                [key: string]: string;
+            };
+            draft_sha256: string;
+            operation_id: string | null;
+            result: components["schemas"]["AgentOABusinessView"] | null;
+        };
         AgentOARequestView: {
             /** Format: uuid */
             run_id: string;
             /** @enum {string} */
-            tool: "draft_request" | "submit_request";
+            tool: "draft_request" | "submit_request" | "draft_business_text";
             /** @enum {string} */
             kind: "contract" | "purchase" | "claim";
             /** Format: uuid */
             business_id: string;
             request_id: string | null;
-            arguments: components["schemas"]["AgentOADraftArguments"] | components["schemas"]["AgentOASubmitArguments"];
+            arguments: components["schemas"]["AgentOADraftArguments"] | components["schemas"]["AgentOASubmitArguments"] | components["schemas"]["AgentOATextArguments"];
             before: components["schemas"]["AgentOARequestBasis"];
             intent_sha256: string;
             /** @enum {string} */
-            status: "authorized" | "committed";
+            status: "authorized" | "committed" | "drafted" | "adopted";
             operation_id: string | null;
             result: components["schemas"]["Request"] | null;
+            text_draft?: components["schemas"]["AgentOATextDraftView"];
         };
         AgentPostDraftInput: {
             /** @constant */
@@ -11824,6 +11873,10 @@ export interface components {
         };
         RunResponse: {
             data: components["schemas"]["Run"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentOARequestViewResponse: {
+            data: components["schemas"]["AgentOARequestView"];
             meta: components["schemas"]["Meta"];
         };
         RunEventPageResponse: {
@@ -21643,6 +21696,49 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RunResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    adoptOAText: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentOATextAdopt"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentOARequestViewResponse"];
                 };
             };
             400: components["responses"]["Failure"];

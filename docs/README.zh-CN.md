@@ -1,6 +1,12 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
-最新实现100：秘书无需配置AI费用额度即可接单和执行，技术用量按实际运行追加记录。旧费用策略／核对接口停写，原账本只读。并发、上下文／输出、工具次数、超时、权限与隔离约束保留。真实Codex、TG及云服务尚待配置和验收；当前仍23项待完成、5项移出。
+最新增量101：秘书可起草合同续约／终止条款和备注、采购／报销用途与备注。员工选择准确业务修订与字段，核对原文和建议后采用为正常业务新修订，再另行准备申请和送审。来源、业务版本、会话范围或当前权限不符时拒绝采用；失败与取消任务不可采用。八项Skill仍为draft，真实Codex／云／TG及23个完整工作包仍待完成，5项移出。
+
+[方案、字段矩阵与操作](development/101-oa-prose-drafting.md) · [本轮验证与准确边界](quality/101-oa-prose-verification.md) · [Web录屏](media/videos/secretary-oa-prose-web.mp4) · [共享Taro录屏](media/videos/secretary-oa-prose-mobile.mp4) · [GIF](media/gifs/secretary-oa-prose-web.gif)
+
+本轮客户端检查为Web142／移动255／运行时52项；四端构建、后端及浏览器的最终结果、Android JVM缓存范围与全部来源摘要以本轮验证记录为准。下文旧增量的数字保留原执行时点。
+
+此前实现100：秘书无需配置AI费用额度即可接单和执行，技术用量按实际运行追加记录。旧费用策略／核对接口停写，原账本只读。并发、上下文／输出、工具次数、超时、权限与隔离约束保留。真实Codex、TG及云服务尚待配置和验收；当前仍23项待完成、5项移出。
 
 [实现与使用](development/100-secretary-execution-without-cost-quota.md) · [验证范围与证据](quality/100-secretary-execution-verification.md) · [Web录屏](media/videos/secretary-cost-free-web.mp4) · [Taro H5录屏](media/videos/secretary-cost-free-mobile.mp4)
 

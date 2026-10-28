@@ -47,3 +47,21 @@ func TestSubscriptionReviewMCPBoundary(t *testing.T) {
 		t.Fatal("finance review reached the shareholder group without a channel grant")
 	}
 }
+
+func TestOAProseMCPBoundary(t *testing.T) {
+	names := []string{}
+	for _, raw := range scopedToolDefinitions("oa-assist", "web") {
+		tool := raw.(map[string]any)
+		name := tool["name"].(string)
+		names = append(names, name)
+		if name == "draft_business_text" && tool["annotations"].(map[string]any)["readOnlyHint"].(bool) {
+			t.Fatal("proposal tool falsely declared read only")
+		}
+	}
+	if !slices.Equal(names, []string{"read_resource", "inspect_operation", "draft_business_text", "draft_request", "submit_request"}) {
+		t.Fatal(names)
+	}
+	if len(scopedToolDefinitions("oa-assist", "telegram")) != 0 {
+		t.Fatal("OA body write exposed to Telegram without channel authorization")
+	}
+}

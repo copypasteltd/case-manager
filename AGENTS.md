@@ -17,3 +17,5 @@
 - 用户已授权推送到上述仓库。后续完成更新时须同步中英文 README、相关文档、`docs/CHANGELOG.md` 及受影响的截图／录屏／GIF，完成适当验证后连同代码提交并推送；禁止强推或覆盖无关远端工作。
 - Keep the full four-client platform scope. Describe source-bound local checks, reused evidence and real-device/cloud/model/production acceptance separately. A development APK, synthetic recording or passing unit test does not establish production readiness.
 - 保留完整四端目标，区分本地检查、原证据复用与真实设备／云／模型／生产验收，不以开发包、合成演示或单元测试替代正式验收。
+
+- Increment101 adds selected OA prose proposals and explicit human adoption; keep full contract-body attachments, wider OA tools and real model/Skill acceptance open under GAP-04/12/13. See `docs/development/101-oa-prose-drafting.md`.

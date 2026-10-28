@@ -267,3 +267,16 @@ test('explicit subscription detail input accepts actual dates and UUID but rejec
  skill.validateInput(input);
  for(const changed of [{...input,subscription_id:'a title'},{...input,from:'2025-02-30'},{...input,sql:'select *'},{...input,from:null}])assert.throws(()=>skill.validateInput(changed),/SKILL_INPUT_INVALID/);
 });
+
+test('OA prose remains a draft until a separate human adoption',()=>{
+ const skill=catalog.get('oa-assist')!,run={id:randomUUID(),authority_stamp:'oa-prose-authority'};
+ const source={type:'agent_oa_request',id:run.id};
+ const input={tool:'draft_business_text',arguments:{kind:'contract',business_id:randomUUID(),expected_business_version:1,business_revision_id:randomUUID(),business_content_hash:'a'.repeat(64),fields:['renewal_terms','notes'],reason:'Draft selected prose'}};
+ skill.validateInput(input);
+ const value:ProposedResult={...baseResult(),status:'draft',resource_refs:[],source_refs:[source],operation_ids:[],next_action:'Human review and adoption'};
+ const receipt:ExecutionReceipt={run_id:run.id,authority_stamp:run.authority_stamp,tool:'draft_business_text',status:'succeeded',committed:false,operation_id:null,resource_refs:[],source_refs:[source]};
+ assert.equal(verifyResult(skill,run,value,[receipt]).status,'draft');
+ assert.throws(()=>verifyResult(skill,run,{...value,status:'completed'},[receipt]),/RESULT_COMPLETION_UNVERIFIED/);
+ assert.throws(()=>verifyResult(skill,run,value,[{...receipt,run_id:randomUUID()}]),/RESULT_REFERENCE_UNVERIFIED/);
+ assert.throws(()=>skill.validateInput({...input,arguments:{...input.arguments,fields:['amount']}}),/SKILL_INPUT_INVALID/);
+});

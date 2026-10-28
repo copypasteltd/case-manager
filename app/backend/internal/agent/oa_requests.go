@@ -44,6 +44,7 @@ type OARequestView struct {
 	Status       string            `json:"status"`
 	OperationID  *string           `json:"operation_id"`
 	Result       *workflow.Request `json:"result"`
+	TextDraft    *OATextDraftView  `json:"text_draft,omitempty"`
 }
 type oaRequestRecord struct {
 	OARequestView
@@ -52,7 +53,9 @@ type oaRequestRecord struct {
 
 var oaDigestPattern = regexp.MustCompile(`^[0-9a-f]{64}$`)
 
-func oaRequestTool(tool string) bool { return tool == "draft_request" || tool == "submit_request" }
+func oaRequestTool(tool string) bool {
+	return tool == "draft_request" || tool == "submit_request" || tool == "draft_business_text"
+}
 
 func executionOARequestText(ctx context.Context, tx pgx.Tx, st executionState, id string, version *string, offset, maxChars int) (any, []SourceSnapshot, error) {
 	if id != st.Run.ID || version != nil || offset < 0 || offset > 524288 || maxChars < 1 || maxChars > 10000 {
@@ -96,7 +99,10 @@ func parseOARequest(in OARequestInput) (json.RawMessage, error) {
 		}
 	}
 	valid := false
-	if in.Tool == "draft_request" {
+	if in.Tool == "draft_business_text" {
+		var args OATextArguments
+		valid = strictArguments(canonical, &args) == nil && validOATextArguments(args)
+	} else if in.Tool == "draft_request" {
 		var args OADraftArguments
 		if strictArguments(canonical, &args) == nil {
 			valid = slices.Contains([]string{"contract", "purchase", "claim"}, args.Kind) && exactOAID(args.BusinessID) && exactOAID(args.BusinessRevisionID) && oaDigestPattern.MatchString(args.BusinessContentHash) && core.RequireVersion(args.ExpectedBusinessVersion) == nil && core.Name(args.Reason) == nil
@@ -136,6 +142,11 @@ func readOARequestRecord(ctx context.Context, tx pgx.Tx, org, runID string) (*oa
 			return nil, err
 		}
 	}
+	if r.Tool == "draft_business_text" {
+		if err = readOATextDraft(ctx, tx, &r); err != nil {
+			return nil, err
+		}
+	}
 	return &r, nil
 }
 
@@ -168,6 +179,9 @@ func oaBasis(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, tool,
 			}
 			out.Request = &r
 		}
+	}
+	if writable && tool == "draft_business_text" && (out.Business.Lifecycle != "draft" || !slices.Contains([]string{"not_submitted", "returned", "withdrawn"}, out.Business.ApprovalState)) {
+		return out, core.Fail(409, "OA_TEXT_READ_ONLY", "此业务阶段不能采用正文草稿")
 	}
 	if writable && tool == "draft_request" {
 		if err = workflow.AgentDraftPermission(ctx, tx, a, out.Business, out.Request); err != nil {
@@ -204,7 +218,12 @@ func prepareOARequest(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 	var submit OASubmitArguments
 	ai := a
 	ai.RunID = runID
-	if in.Tool == "draft_request" {
+	if in.Tool == "draft_business_text" {
+		var args OATextArguments
+		_ = json.Unmarshal(canonical, &args)
+		r.Kind, r.BusinessID = args.Kind, args.BusinessID
+		draft.Kind, draft.BusinessID, draft.ExpectedBusinessVersion, draft.BusinessRevisionID, draft.BusinessContentHash = args.Kind, args.BusinessID, args.ExpectedBusinessVersion, args.BusinessRevisionID, args.BusinessContentHash
+	} else if in.Tool == "draft_request" {
 		_ = json.Unmarshal(canonical, &draft)
 		r.Kind, r.BusinessID, r.RequestID = draft.Kind, draft.BusinessID, draft.RequestID
 	} else {
@@ -219,7 +238,7 @@ func prepareOARequest(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 	if err != nil {
 		return nil, err
 	}
-	if in.Tool == "draft_request" {
+	if in.Tool == "draft_request" || in.Tool == "draft_business_text" {
 		b := r.Before.Business
 		if b.Version != draft.ExpectedBusinessVersion || b.CurrentRevisionID != draft.BusinessRevisionID || b.ContentHash != draft.BusinessContentHash || (draft.RequestID != nil && (r.Before.Request == nil || r.Before.Request.Version != *draft.ExpectedVersion)) {
 			return nil, core.Conflict()
@@ -270,11 +289,31 @@ func oaRequestSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 	for _, user := range members {
 		reader := ai
 		reader.UserID = user
+		if r.TextDraft != nil {
+			dependencies := []SourceSnapshot{}
+			for _, src := range r.TextDraft.SourceRefs {
+				if src.Type != "agent_oa_request" || src.ID != r.RunID {
+					dependencies = append(dependencies, src)
+				}
+			}
+			visible, e := snapshotsReadable(ctx, tx, reader, c, dependencies)
+			if e != nil {
+				return SourceSnapshot{}, e
+			}
+			if !visible {
+				return SourceSnapshot{}, core.Missing()
+			}
+		}
 		if err = workflow.AgentSnapshotReferences(ctx, tx, reader, r.Before.Business.Payload); err != nil {
 			return SourceSnapshot{}, err
 		}
 		if r.Before.Request != nil {
 			if err = workflow.AgentSnapshotReferences(ctx, tx, reader, r.Before.Request.Payload); err != nil {
+				return SourceSnapshot{}, err
+			}
+		}
+		if r.TextDraft != nil && r.TextDraft.Result != nil {
+			if err = workflow.AgentSnapshotReferences(ctx, tx, reader, r.TextDraft.Result.Payload); err != nil {
 				return SourceSnapshot{}, err
 			}
 		}
@@ -305,7 +344,7 @@ func executionOARequestState(ctx context.Context, tx pgx.Tx, st executionState) 
 	if _, err = oaRequestSource(ctx, tx, ai, st.Conversation, r.RunID, st.Run.audience); err != nil {
 		return nil, err
 	}
-	if r.OperationID == nil {
+	if r.OperationID == nil && r.TextDraft == nil {
 		basis, e := oaBasis(ctx, tx, ai, st.Conversation, r.Tool, r.Kind, r.BusinessID, r.RequestID, st.Run.audience, true, nil)
 		if e != nil {
 			return nil, e
@@ -318,13 +357,16 @@ func executionOARequestState(ctx context.Context, tx pgx.Tx, st executionState) 
 	return r, nil
 }
 
-func (s *Service) executionOARequest(ctx context.Context, tx pgx.Tx, st executionState, tool string, args json.RawMessage) (map[string]any, []SourceSnapshot, error) {
+func (s *Service) executionOARequest(ctx context.Context, tx pgx.Tx, st executionState, tool string, args json.RawMessage, observed []SourceSnapshot) (map[string]any, []SourceSnapshot, error) {
 	r, err := executionOARequestState(ctx, tx, st)
 	if err != nil {
 		return nil, nil, err
 	}
 	if r == nil {
 		return nil, nil, runtimeFailure("OA_REQUEST_INTENT_REQUIRED")
+	}
+	if tool == "draft_business_text" {
+		return executionOATextDraft(ctx, tx, st, r, args, observed)
 	}
 	canonical, err := parseOARequest(OARequestInput{Tool: tool, Arguments: args})
 	if err != nil {

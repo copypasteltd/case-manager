@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "reason": "One valid synthetic fixture remained after the first Go package panic; the three invalid DROP fixtures had already been removed. Original inspection bytes retained before cleanup and recheck.",
+  "records": [
+    {
+      "file": "development-runtime.json",
+      "sha256": "4e3ded7b4156937d3edd1fe0f7eccf3cbd4b52cb27cef78d1a3d95b82c2b59c2"
+    },
+    {
+      "file": "development-project-resources.json",
+      "sha256": "e2e5c67b93da56be5a975bec3298e6213be1b61399f63cfb44600df7e480b511"
+    }
+  ]
+}

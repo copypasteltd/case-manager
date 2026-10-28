@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-28T12:13:33.868722+00:00",
+  "method": "Assistant inspected the four original viewport captures through a contact sheet and the two after captures separately. This records visual inspection, not an automated assertion or a new browser run.",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-web-before.png",
+      "sha256": "cc1f382532b32f4379848e14bb06ddedeb0e05ee7546b25d3e58ba2dc4666c35",
+      "dimensions": [
+        1440,
+        1100
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-web-after.png",
+      "sha256": "5bbd7d002f1560ab90f3224b6c39a1fe93ce2aca602958b0163b6eaa0d6302a2",
+      "dimensions": [
+        1440,
+        1100
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-mobile-before.png",
+      "sha256": "c9cf6a39338ef55a6fc58f0675b6e11f7c20084db686b80617b852ec94526fce",
+      "dimensions": [
+        390,
+        1000
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-mobile-after.png",
+      "sha256": "bc36c88663642800193f9f33026acd33e305833be6d566fdedfd1b58839b6c19",
+      "dimensions": [
+        390,
+        1000
+      ]
+    }
+  ],
+  "synthetic_data": true,
+  "credentials_recorded": false,
+  "observations": [
+    "Web keeps original/proposed prose in columns; mobile keeps a readable vertical layout.",
+    "The contract suggestion shows human review controls before adoption. The purchase result shows adopted status; Web also shows the business revision and real operation receipt.",
+    "Captures are scrolled viewports and do not claim that every page control fits in a single image."
+  ],
+  "real_device": false,
+  "real_model": false
+}
