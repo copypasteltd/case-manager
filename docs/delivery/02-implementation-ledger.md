@@ -1,5 +1,9 @@
 # 代码实施与验证台账
 
+增量105：新增仓库内的 Linux 原生 Codex 执行控制器，覆盖单任务 systemd 隔离、实际内核状态取证签名、私有模型／公司工具网关、取消与 cgroup 清理，以及独立运行时发布目录。模型密钥与证明私钥留在 root 控制器中。真实服务器隔离、Codex／模型互通和八项 Skill 正式评测仍待完成；23个工作包（14 P0／9 P1）保持开放，5项移出不变。
+
+[实现与部署](../development/105-native-agent-runtime.md) · [验证](../quality/105-native-agent-runtime-verification.md)
+
 最新增量104：GAP-05新增已知未完成分片清理子流程，支持四端目录盘点、固定候选、观察期、MFA人工批准、撤销、重试与独立Worker逐次回执。正式历史版本、已完成草稿及未知孤儿清理继续开放；真实云配置仍属GAP-20。当前23项（14 P0／9 P1）待完成、5项移出。见[开发](../development/104-multipart-cleanup.md)及[验证](../quality/104-multipart-cleanup-verification.md)。
 
 最新增量101：完成GAP-12中的合同条款／备注、采购／报销用途／备注起草子流程。员工固定字段和业务修订，秘书保存不可变建议及已读来源，员工对照核对后原子采用；已接入Web和共享Taro组件、MCP及迁移80。正式合同正文附件、更多OA申请、跨任务能力及真实模型／Skill评测仍在GAP-04／12／13。23个完整工作包保持开放，5项移出。见[实现](../development/101-oa-prose-drafting.md)和[验证](../quality/101-oa-prose-verification.md)。

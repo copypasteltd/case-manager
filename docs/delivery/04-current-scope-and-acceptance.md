@@ -1,5 +1,9 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量105：新增仓库内的 Linux 原生 Codex 执行控制器，覆盖单任务 systemd 隔离、实际内核状态取证签名、私有模型／公司工具网关、取消与 cgroup 清理，以及独立运行时发布目录。模型密钥与证明私钥留在 root 控制器中。真实服务器隔离、Codex／模型互通和八项 Skill 正式评测仍待完成；23个工作包（14 P0／9 P1）保持开放，5项移出不变。
+
+[实现与部署](../development/105-native-agent-runtime.md) · [验证](../quality/105-native-agent-runtime-verification.md)
+
 增量104进度说明：已知未完成分片清理子流程已实现，GAP-05继续保留正式历史版本、已完成草稿及未知孤儿清理；真实云验收仍在GAP-20。范围计数仍为23 active（14 P0／9 P1）、5 excluded。见[开发](../development/104-multipart-cleanup.md)及[验证](../quality/104-multipart-cleanup-verification.md)。
 
 日期：2026-10-28（Asia/Taipei）。本修订记录用户明确的四项范围调整，以及随后将“AI控制”更正为“AI费用控制”的回复。本文与[机器清单](04-current-scope.json)是当前范围依据；与历史PRD、AC／TC、质量门及规划冲突时，以本修订为准。历史实现、失败记录和验证证据保持原状态。

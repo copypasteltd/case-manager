@@ -23,6 +23,7 @@ type NativeSettings struct {
 	ProfileID        string `json:"profile_id"`
 	MCPEndpoint      string `json:"mcp_endpoint"`
 	APIKey           string `json:"api_key,omitempty"`
+	APIBaseURL       string `json:"api_base_url,omitempty"`
 	ExecutablePath   string `json:"executable_path,omitempty"`
 }
 type ProcessExecutor struct {

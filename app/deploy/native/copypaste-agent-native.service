@@ -1,0 +1,34 @@
+[Unit]
+Description=CopyPaste privileged native Codex boundary broker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+StateDirectory=copypaste/agent-native
+StateDirectoryMode=0750
+ExecStartPre=/opt/copypaste/bin/agent-native check --config /etc/copypaste/agent-native.json
+ExecStart=/opt/copypaste/bin/agent-native serve --config /etc/copypaste/agent-native.json
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=25
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+PrivateTmp=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/copypaste/agent-native
+MemoryMax=512M
+TasksMax=128
+CPUQuota=100%
+LimitCORE=0
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

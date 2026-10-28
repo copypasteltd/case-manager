@@ -1,6 +1,12 @@
 # CopyPaste Case Manager · Solution and usage guide
 
-Local logic tests for this increment: Web 159, shared mobile 261 and Agent runtime 52. Build, browser and production scope are reported separately in the verification record.
+Increment 105 adds a Linux native Codex broker with systemd confinement for each run, signed kernel observations, private model/company relays, cancellation with cgroup teardown and a dedicated runtime release. Provider/signing keys stay in the root broker. Actual Linux execution, genuine CLI/model interoperability and eight Skill release evaluations remain open; 23 work packages remain active, 5 excluded.
+
+Fresh checks: 219 backend top-level tests/1338 result records, 55 runtime tests, 4 packaging checks, 2 packaged entry points and 2 Linux amd64 cross-builds. The 159 Web and 261 mobile checks, four-client builds and 199 media files retain their increment 104 provenance, verified against current inputs and original bytes. No new UI capture, device/cloud/model or production acceptance is claimed.
+
+[Installation and execution design](development/105-native-agent-runtime.md) · [Current verification](quality/105-native-agent-runtime-verification.md) · [Remaining work](delivery/03-goal-gap-assessment.md)
+
+Historical increment104 checks: Web159, shared mobile261 and runtime52. Original capture/build scope is preserved; current runtime checks are reported above for105.
 
 Increment104 adds folder-scoped abandoned multipart cleanup: fixed selection, mandatory observation, explicit human MFA approval, a separate worker and immutable per-attempt receipts across all four clients. Cancellation stops remaining work; explicit retry preserves earlier results. Formal-version deletion, completed draft-object cleanup and unknown orphan inventory remain open. All 23 complete work packages remain active; five scope exclusions remain in force.
 

@@ -1,0 +1,45 @@
+{
+  "passed": false,
+  "reason": "Source changed to reject image/file arrays in tool outputs; current batch finished normally and source guard refused mixed evidence. No test result reused for final source.",
+  "prior_source_sha256": "0915bbec27215a8cd2d6c7be5f051c8115a72e28a6523da57e023bce482a8cc9",
+  "logs_private": true,
+  "raw_log_archive": "app/.local/native-agent-attempt01-backend",
+  "logs": [
+    {
+      "batch": 1,
+      "sha256": "2a61bc06017fe0d7de7c231557b97e245e647af990f35855fa36d5cc529e66d8",
+      "bytes": 168456,
+      "records": 133,
+      "status": "passed"
+    },
+    {
+      "batch": 2,
+      "sha256": "f6f594cd271565a39a1f6ef7c3f71db883fd4e5d5bd1a038df32a95a3134f1f9",
+      "bytes": 239768,
+      "records": 205,
+      "status": "passed"
+    },
+    {
+      "batch": 3,
+      "sha256": "cbb4caa697f0686cee0336b43ffc6dace4891aaa29a8ddbdcb636c7facc01a78",
+      "bytes": 173189,
+      "records": 132,
+      "status": "passed"
+    },
+    {
+      "batch": 4,
+      "sha256": "8119e1a4317b84652104f7aa694efd71aa4ccc7f8892e64603704cac5b82ddf0",
+      "bytes": 67960,
+      "records": 51,
+      "status": "passed"
+    },
+    {
+      "batch": 5,
+      "sha256": "75387184f01b0c3ad51f5c293a23701453ca2083ed41402f6655998a1a2feafe",
+      "bytes": 129537,
+      "records": 105,
+      "status": "failed"
+    }
+  ],
+  "full_goal_complete": false
+}

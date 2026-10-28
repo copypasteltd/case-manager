@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T20:19:43.652247+00:00",
+  "source_sha256": "0915bbec27215a8cd2d6c7be5f051c8115a72e28a6523da57e023bce482a8cc9",
+  "source_after_sha256": "0915bbec27215a8cd2d6c7be5f051c8115a72e28a6523da57e023bce482a8cc9",
+  "commands": [
+    {
+      "name": "agent-native",
+      "package": "./cmd/agent-native",
+      "exit_code": 0,
+      "elapsed_seconds": 7.709,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform",
+      "package": "./cmd/platform",
+      "exit_code": 0,
+      "elapsed_seconds": 5.264,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "agent-native",
+      "file": ".local/native-agent/agent-native-linux-amd64",
+      "sha256": "9ab4fde14d9965317608a6d0294582091ffd6fba4e62cee0201f0706ea698842",
+      "bytes": 12693106,
+      "format": "ELF64-x86-64"
+    },
+    {
+      "name": "platform",
+      "file": ".local/native-agent/platform-linux-amd64",
+      "sha256": "2320f6b172e19886ba89d8ce5f338be5382aee331b6e8b4d0db5f14f519e971a",
+      "bytes": 35754881,
+      "format": "ELF64-x86-64"
+    }
+  ],
+  "verification_script_sha256": "b6b6ea916bf8ee479f77ef63981884a933540177a0932833685ab218200d94ec",
+  "artifact_executed": false,
+  "kernel_boundary_executed": false,
+  "deployed": false
+}

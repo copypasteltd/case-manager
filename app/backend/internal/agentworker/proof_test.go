@@ -31,6 +31,19 @@ func TestSignedNativeProofBinding(t *testing.T) {
 	if err != nil || len(proof.SHA256) != 64 {
 		t.Fatal("valid signature refused", err)
 	}
+	t.Run("private kernel evidence digests are signed canonical and optional for existing issuers", func(t *testing.T) {
+		p := payload
+		p.EvidenceSHA256 = strings.Repeat("c", 64)
+		if _, err := verifyProof(sign(p), key, challenge, now.Add(time.Minute), now); err != nil {
+			t.Fatal("canonical observation digest refused")
+		}
+		for _, digest := range []string{"TRUE", strings.Repeat("C", 64), strings.Repeat("c", 63), "../host-file"} {
+			p.EvidenceSHA256 = digest
+			if _, err := verifyProof(sign(p), key, challenge, now.Add(time.Minute), now); err == nil {
+				t.Fatal("noncanonical evidence accepted")
+			}
+		}
+	})
 	t.Run("different run authority configuration or tool scope cannot replay a proof", func(t *testing.T) {
 		variants := []proofChallenge{challenge, challenge, challenge, challenge}
 		variants[0].Nonce = "another-nonce"

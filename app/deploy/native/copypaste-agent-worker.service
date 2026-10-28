@@ -1,0 +1,26 @@
+[Unit]
+Description=CopyPaste company-authorized Codex execution worker
+After=network-online.target copypaste-agent-native.service
+Requires=copypaste-agent-native.service
+
+[Service]
+Type=simple
+User=copypaste-agent
+Group=copypaste-agent
+WorkingDirectory=/opt/copypaste/runtime-release/app
+EnvironmentFile=/etc/copypaste/agent-worker.env
+ExecStart=/opt/copypaste/bin/platform worker-agent
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+MemoryMax=512M
+TasksMax=128
+LimitCORE=0
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

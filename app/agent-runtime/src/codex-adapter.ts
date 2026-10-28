@@ -12,7 +12,7 @@ export interface RunBinding {
 }
 export interface NativeSettings {
   enabled: boolean; model: string; working_directory: string; profile_id: string;
-  mcp_endpoint: string; api_key?: string; executable_path?: string;
+  mcp_endpoint: string; api_key?: string; executable_path?: string; api_base_url?: string;
 }
 export interface NativeProfileRequest {
   sdk_version: string; profile_id: string; model: string; working_directory: string;
@@ -92,11 +92,18 @@ export function executionTools(skill: SkillPackage, channel?: RunBinding['channe
   return skill.manifest.allowed_tools.filter(tool => ['read_resource', 'search_resources', 'inspect_operation', 'read_service_summary'].includes(tool));
 }
 export function nativeConfiguration(skill: SkillPackage, settings: Readonly<NativeSettings>, channel?: RunBinding['channel']) {
+  if (settings.api_base_url !== undefined) {
+    let gateway: URL;
+    try { gateway = new URL(settings.api_base_url); } catch { throw new RuntimeError('RUNTIME_CONFIGURATION_INVALID'); }
+    if (gateway.protocol !== 'http:' || gateway.hostname !== '127.0.0.1' || !gateway.port || Number(gateway.port) < 1024 || gateway.pathname !== '/v1'
+      || gateway.username || gateway.password || gateway.search || gateway.hash || settings.api_key !== 'native-broker-managed') throw new RuntimeError('RUNTIME_CONFIGURATION_INVALID');
+  }
   const tools = executionTools(skill, channel);
   const config = {
     developer_instructions: skill.instructions,
     hide_agent_reasoning: true, history: { persistence: 'none' },
-    features: { shell_tool: false, apps: false, code_mode: { enabled: false } },
+    features: { shell_tool: false, apps: false, code_mode: { enabled: false },
+      ...(settings.api_base_url ? { enable_request_compression: false, responses_websockets: false, responses_websockets_v2: false } : {}) },
     mcp_servers: { company: { url: endpoint(settings.mcp_endpoint), bearer_token_env_var: 'CP_AGENT_TASK_CREDENTIAL',
       enabled_tools: [...tools], startup_timeout_sec: 10, tool_timeout_sec: 30 } },
   };
@@ -104,7 +111,7 @@ export function nativeConfiguration(skill: SkillPackage, settings: Readonly<Nati
     skipGitRepoCheck: true, sandboxMode: 'read-only', approvalPolicy: 'never', networkAccessEnabled: false,
     webSearchMode: 'disabled', additionalDirectories: [] };
   const profile: NativeProfileRequest = { sdk_version: CODEX_SDK_VERSION, profile_id: settings.profile_id, model: settings.model,
-    working_directory: settings.working_directory, configuration_sha256: createHash('sha256').update(JSON.stringify({ config, threadOptions })).digest('hex'),
+    working_directory: settings.working_directory, configuration_sha256: createHash('sha256').update(JSON.stringify({ config, threadOptions, ...(settings.api_base_url ? { baseUrl: settings.api_base_url } : {}) })).digest('hex'),
     expected_tools: tools.map(name => 'company/' + name) };
   return { config, threadOptions, profile };
 }
@@ -140,7 +147,7 @@ export class CodexAdapter {
       await current(); await emit({ type: 'run.started' });
       if (controller.signal.aborted) throw abortError(controller.signal);
       const client = this.factory({ config, env: safeEnvironment(run.task_credential), apiKey: this.settings.api_key,
-        codexPathOverride: this.settings.executable_path });
+        codexPathOverride: this.settings.executable_path, baseUrl: this.settings.api_base_url });
       // Never resume native state: authorized context is rebuilt for each company run.
       const thread = client.startThread(threadOptions);
       started = true;

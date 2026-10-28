@@ -26,13 +26,20 @@ type proofChallenge struct {
 	Profile        NativeProfile `json:"profile"`
 }
 type proofPayload struct {
-	Challenge proofChallenge `json:"challenge"`
-	ExpiresAt time.Time      `json:"expires_at"`
+	Challenge      proofChallenge `json:"challenge"`
+	ExpiresAt      time.Time      `json:"expires_at"`
+	EvidenceSHA256 string         `json:"evidence_sha256,omitempty"`
 }
 type proofReply struct {
 	Payload   json.RawMessage `json:"payload"`
 	Signature string          `json:"signature"`
 }
+
+// Native issuers use the same canonical binding and signed payload as the
+// verifier. The optional evidence digest names a private kernel observation.
+type ProofChallenge = proofChallenge
+type ProofPayload = proofPayload
+type ProofReply = proofReply
 type boundedOutput struct{ bytes.Buffer }
 
 func (b *boundedOutput) Write(p []byte) (int, error) {
@@ -86,6 +93,12 @@ func verifyProof(raw []byte, key ed25519.PublicKey, challenge proofChallenge, de
 	var payload proofPayload
 	if decodeRaw(reply.Payload, &payload) != nil {
 		return fail()
+	}
+	if payload.EvidenceSHA256 != "" {
+		decoded, err := hex.DecodeString(payload.EvidenceSHA256)
+		if err != nil || len(decoded) != 32 || payload.EvidenceSHA256 != hex.EncodeToString(decoded) {
+			return fail()
+		}
 	}
 	actual, _ := json.Marshal(payload.Challenge)
 	expected, _ := json.Marshal(challenge)

@@ -109,6 +109,37 @@ test('deployment inspection uses the exact SDK configuration digest and never pu
   assert.equal(draft.skill_state, 'draft'); assert.equal(draft.ready_for_controlled_installation, false); assert.equal(draft.actual_model_invoked, false); assert.equal(draft.database_modified, false);
 });
 
+test('native model relay binds the exact SDK baseUrl and supplies only the broker placeholder', async () => {
+  const value = setup(); value.settings.profile_id = randomUUID();
+  const direct = nativeConfiguration(value.skill, value.settings).profile.configuration_sha256;
+  value.settings.api_base_url = 'http://127.0.0.1:18082/v1'; value.settings.api_key = 'native-broker-managed';
+  const description = await describeProfile({ skill_id: value.skill.manifest.skill_id, profile_id: value.settings.profile_id, model: value.settings.model,
+    working_directory: value.settings.working_directory, mcp_endpoint: value.settings.mcp_endpoint, api_base_url: value.settings.api_base_url }, temporary);
+  value.boundary.assertNativeConfinement = async profile => { assert.equal(profile.configuration_sha256, description.profile.configuration_sha256); };
+  assert.equal((await value.adapter().startRun(value.skill,value.run)).state,'completed');
+  assert.equal(value.options!.apiKey,'native-broker-managed'); assert.equal(value.options!.baseUrl,value.settings.api_base_url);
+  const features=value.options!.config!.features as Record<string,unknown>;
+  for(const key of ['enable_request_compression','responses_websockets','responses_websockets_v2']) assert.equal(features[key],false);
+  assert.notEqual(description.profile.configuration_sha256,direct);
+  assert.equal(description.profile.configuration_sha256,createHash('sha256').update(JSON.stringify({config:value.options!.config,threadOptions:value.threadOptions,baseUrl:value.settings.api_base_url})).digest('hex'));
+  assert.ok(!value.prompt.includes('native-broker-managed')); assert.equal(description.actual_model_invoked,false);
+});
+
+test('native relay refuses remote routes aliases credentials and unbound host model keys', () => {
+  const value=setup();
+  for (const url of ['https://api.openai.com/v1','http://localhost:18082/v1','http://0.0.0.0:18082/v1','http://127.0.0.1/v1','http://127.0.0.1:0/v1','http://127.0.0.1:18082/files','http://user@127.0.0.1:18082/v1','http://127.0.0.1:18082/v1?origin=x','http://127.0.0.1:18082/v1#x']) {
+    assert.throws(()=>nativeConfiguration(value.skill,{...value.settings,api_base_url:url,api_key:'native-broker-managed'}),/RUNTIME_CONFIGURATION_INVALID/);
+  }
+  assert.throws(()=>nativeConfiguration(value.skill,{...value.settings,api_base_url:'http://127.0.0.1:18082/v1',api_key:'synthetic-host-only-key'}),/RUNTIME_CONFIGURATION_INVALID/);
+});
+
+test('inspection and execution share company tool coverage while draft Skills stay unavailable', async () => {
+  for (const skill of (await loadSkills(repository)).values()) {
+    const description=await describeProfile({skill_id:skill.manifest.skill_id,profile_id:randomUUID(),model:'operator-selected-model',working_directory:temporary,mcp_endpoint:'http://127.0.0.1:18081/internal/v1/agent-mcp'},repository);
+    assert.deepEqual(description.missing_tools,[]); assert.equal(description.skill_state,'draft');assert.equal(description.ready_for_controlled_installation,false);
+  }
+});
+
 test('SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output', async () => {
   const value = setup(); value.setStream(async function* () {
     yield { type: 'thread.started', thread_id: 'private-native-thread' };

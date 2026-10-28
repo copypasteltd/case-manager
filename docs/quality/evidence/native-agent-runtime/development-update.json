@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T20:59:21.709644+00:00",
+  "backend_source_sha256": "bac91b28d66a1d109bb2b604663525a3ad19bbe4fd2c2e349fd91b2f03a92381",
+  "previous_migration_count": 82,
+  "migration_count": 82,
+  "history_before": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "history_after": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "legacy_and_usage_rows_preserved": true,
+  "services": [
+    {
+      "command": "api",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-notification",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-report-export",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stale_unrelated_pid_preserved": false
+    }
+  ],
+  "updater_sha256": "b9b39ee68ef60db106a590743ed95399931323c9ac53212a5b6143b233fb63f2",
+  "postgres_restarted": false,
+  "external_integration_started": false,
+  "production_deployment": false,
+  "wrapper_sha256": "62a2ff93ec4364cd2bfc8532aa8958f757af9eb90dd767bdcc01f00e80de41ee",
+  "delegated_implementation_sha256": "b9b39ee68ef60db106a590743ed95399931323c9ac53212a5b6143b233fb63f2",
+  "native_controller_started": false,
+  "real_model_invoked": false
+}

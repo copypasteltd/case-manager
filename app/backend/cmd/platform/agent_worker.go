@@ -8,6 +8,7 @@ import (
 	"log/slog"
 	"net"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"time"
@@ -31,6 +32,33 @@ func agentFile(key string, directory bool) (string, error) {
 		return "", &startupError{key + " is unavailable"}
 	}
 	return value, nil
+}
+func configureAgentModel(settings *agentworker.NativeSettings) error {
+	settings.Model = os.Getenv("CP_AGENT_MODEL")
+	switch os.Getenv("CP_AGENT_MODEL_GATEWAY") {
+	case "native":
+		if os.Getenv("CP_AGENT_OPENAI_API_KEY") != "" {
+			return &startupError{"native model keys belong only to the privileged broker"}
+		}
+		settings.APIKey = "native-broker-managed"
+		settings.APIBaseURL = os.Getenv("CP_AGENT_MODEL_BASE_URL")
+		u, e := url.Parse(settings.APIBaseURL)
+		if e != nil || u.Scheme != "http" || u.Hostname() != "127.0.0.1" || u.Port() == "" || u.Path != "/v1" || u.User != nil || u.RawQuery != "" || u.Fragment != "" {
+			return &startupError{"native model relay requires a fixed private loopback v1 endpoint"}
+		}
+		var err error
+		if settings.ExecutablePath, err = agentFile("CP_AGENT_CODEX_EXECUTABLE", false); err != nil {
+			return err
+		}
+	case "":
+		settings.APIKey = os.Getenv("CP_AGENT_OPENAI_API_KEY")
+	default:
+		return &startupError{"CP_AGENT_MODEL_GATEWAY must be native or empty"}
+	}
+	if settings.Model == "" || settings.APIKey == "" {
+		return &startupError{"native agent requires an explicit model and dedicated API credential"}
+	}
+	return nil
 }
 func runAgentWorker(ctx context.Context, logger *slog.Logger, reconcileOnly bool) error {
 	config, err := platform.LoadWorkerConfig()
@@ -63,10 +91,8 @@ func runAgentWorker(ctx context.Context, logger *slog.Logger, reconcileOnly bool
 		if err != nil || len(verifier.PublicKey) != ed25519.PublicKeySize {
 			return &startupError{"CP_AGENT_PROOF_PUBLIC_KEY requires an Ed25519 verification key"}
 		}
-		executor.Settings.Model = os.Getenv("CP_AGENT_MODEL")
-		executor.Settings.APIKey = os.Getenv("CP_AGENT_OPENAI_API_KEY")
-		if executor.Settings.Model == "" || executor.Settings.APIKey == "" {
-			return &startupError{"native agent requires an explicit model and dedicated API credential"}
+		if err = configureAgentModel(&executor.Settings); err != nil {
+			return err
 		}
 		address = os.Getenv("CP_AGENT_BRIDGE_ADDRESS")
 		if address == "" {

@@ -1,5 +1,7 @@
 # 原生部署、配置、发布与日常运维手册
 
+增量105原生执行控制器：Linux root控制器与公司任务Worker分离，专用发布目录、私有模型密钥、实际内核取证和cgroup回收的安装顺序见[详细手册](../development/105-native-agent-runtime.md)。本机仅完成可移植检查和交叉编译，未启用目标服务；范围继续遵循[修订99](../delivery/04-current-scope-and-acceptance.md)。
+
 修订99适用边界：[当前范围](../delivery/04-current-scope-and-acceptance.md)优先。保留API／Runtime／Worker／HTTPS、生产持久PG、秘密隔离、正常数据库结构升级、应用发布／回退与故障告警；不要求真机、网络性能、历史数据导入、PITR／容灾或AI费用策略。旧部署／恢复章节中对应专项不再作为当前发布门槛。
 
 版本：v1.0-draft；日期：2026-10-23；服务器信息待 Q-01。本文提供待执行手册，不表示已经部署、开放端口或创建云资源。

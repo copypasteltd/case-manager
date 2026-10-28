@@ -1,5 +1,9 @@
 # CopyPaste 内部管理平台文档中心
 
+增量105：新增仓库内的 Linux 原生 Codex 执行控制器，覆盖单任务 systemd 隔离、实际内核状态取证签名、私有模型／公司工具网关、取消与 cgroup 清理，以及独立运行时发布目录。模型密钥与证明私钥留在 root 控制器中。真实服务器隔离、Codex／模型互通和八项 Skill 正式评测仍待完成；23个工作包（14 P0／9 P1）保持开放，5项移出不变。
+
+[开发与部署](development/105-native-agent-runtime.md) · [当前验证](quality/105-native-agent-runtime-verification.md)
+
 增量104 / Increment104：已知未完成上传分片的目录盘点、固定清单、观察期、明确MFA批准、独立Worker执行和不可变逐次回执，支持四端、撤销及明确重试。[开发与使用](development/104-multipart-cleanup.md) · [当前验证](quality/104-multipart-cleanup-verification.md) · [截图／MP4／GIF](media/README.md)。正式历史版本、完成草稿及未知孤儿清理继续开放；当前23项（14 P0／9 P1）待完成、5项移出。
 
 Adds controlled abandoned multipart cleanup across four clients, with fixed human-reviewed scope and immutable receipts. Live cloud and complete lifecycle acceptance remain open.

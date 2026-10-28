@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## 增量105 · 原生Codex执行控制器 / Native Codex execution broker · 2026-10-29
+
+- 新增root所有策略／二进制与发布目录摘要、独立systemd身份／目录／网络／cgroup资源边界、Unix对端身份核验、真实内核状态签名、取消与不确定停止拒绝、重启仅回收已登记单元。
+- 模型及证明密钥留在控制器；私有网关固定模型与文本Responses路由，拒绝远程提供商工具、文件／图片输入、重定向及错误正文泄露。补齐控制器自身连接／请求／取证上限。
+- 增加独立依赖闭包打包、部署模板和完整运行手册；运行时55项测试通过，所有八项Skill仍为draft。完整后端219／1338及两项Linux交叉编译通过。
+- Increment 105 adds a Linux native Codex broker with systemd confinement for each run, signed kernel observations, private model/company relays, cancellation with cgroup teardown and a dedicated runtime release. Provider/signing keys stay in the root broker. Actual Linux execution, genuine CLI/model interoperability and eight Skill release evaluations remain open; 23 work packages remain active, 5 excluded.
+- [方案与部署](development/105-native-agent-runtime.md) · [验证与保留证据](quality/105-native-agent-runtime-verification.md)。原199份媒体不改采集范围；首次回归在工具输出边界补强后按源码守卫停止，原5批记录保留，最终回归重新执行。
+
 ## 增量104 · 受控分片清理 / Controlled multipart cleanup · 2026-10-29
 
 - 新增迁移82、已知未完成上传候选盘点、固定清单及观察期、明确MFA批准／撤销／失败项重试、独立清理Worker及不可变逐次回执。

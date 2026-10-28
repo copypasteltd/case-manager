@@ -25,3 +25,5 @@
 - Increment103 repairs Taro/Metro build consumers with explicit local compatibility packages. Keep the full remaining dependency register open, bind local package sources into Android evidence and distinguish retained102 media/Go and cached JVM results. See `docs/development/103-dependency-consumer-remediation.md`.
 
 - Increment104 adds controlled known multipart cleanup across four clients, migration82 and a separate worker. Keep formal history, completed draft objects and unknown orphan cleanup open under GAP-05; live cloud acceptance remains GAP-20. See `docs/development/104-multipart-cleanup.md`.
+
+- Increment105 adds a native Linux systemd/cgroup-v2 Codex broker and a dedicated JS/Skill bundle. Provider/proof keys stay in the root broker; Windows checks and cross-builds do not establish Linux/model acceptance. Keep GAP-09/10/13 open, all eight Skills draft and AI fee controls excluded. See `docs/development/105-native-agent-runtime.md`.

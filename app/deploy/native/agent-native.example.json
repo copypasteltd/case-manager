@@ -1,0 +1,28 @@
+{
+  "socket": "/var/lib/copypaste/agent-native/control.sock",
+  "worker_uid": 1001,
+  "worker_gid": 1001,
+  "state_directory": "/var/lib/copypaste/agent-native",
+  "release": "/opt/copypaste/runtime-release",
+  "release_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "node": {"path": "/usr/bin/node", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "codex": {"path": "/opt/copypaste/bin/codex", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "broker": {"path": "/opt/copypaste/bin/agent-native", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "entry": "/opt/copypaste/runtime-release/app/agent-runtime/dist/worker.js",
+  "work_directory": "/var/lib/copypaste/agent-work",
+  "bridge_address": "127.0.0.1:18081",
+  "model_address": "127.0.0.1:18082",
+  "model_origin": "https://api.openai.com/v1",
+  "model_key_file": "/etc/copypaste/private/model.key",
+  "signing_key_file": "/etc/copypaste/private/proof.key",
+  "library_mounts": ["/usr/lib", "/lib", "/lib64", "/etc/ld.so.cache", "/etc/ssl/certs"],
+  "max_concurrency": 3,
+  "limits": {"memory_bytes": 1073741824, "cpu_percent": 100, "tasks": 64, "runtime_seconds": 600, "work_bytes": 67108864, "temp_bytes": 16777216},
+  "profiles": [{
+    "id": "00000000-0000-4000-8000-000000000000",
+    "model": "operator-selected-model",
+    "skill_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "configuration_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "tools": ["company/read_resource", "company/search_resources", "company/inspect_operation"]
+  }]
+}
