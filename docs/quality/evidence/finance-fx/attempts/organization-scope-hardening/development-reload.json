@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-28T15:28:41.931958+00:00",
+  "stage": "Restart after verified owned API process-tree termination",
+  "reason": "The immediate socket-release check still connected to the just-terminated API. The helper stopped without killing any other process or starting a duplicate. The port was released on inspection; a bounded release wait was added before retry.",
+  "private_log_sha256": "1da60e6d3140e9b04ec1881e7ad3dd7b348d40dc7d0ef002e4ad3bede06d3b4d",
+  "credentials_published": false,
+  "current_proof": false
+}

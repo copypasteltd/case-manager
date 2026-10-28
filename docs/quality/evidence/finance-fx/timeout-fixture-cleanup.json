@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T16:27:20.146573+00:00",
+  "database": "cp_test_cf057a05af29475e8c9d092fb228a322",
+  "test": "TestMiniappBrowserFixture",
+  "test_started_at": "2026-10-28T23:59:21.4125562+08:00",
+  "test_failed_at": "2026-10-29T00:01:38.4265139+08:00",
+  "database_directory_created_at": "2026-10-28T15:59:21.454493+00:00",
+  "creation_within_failed_case": true,
+  "original_batch_log_sha256": "f24103a14ddf12a2558b5a0cb6daa26d59bf77d5ad684d4d4a2a688be05a9ccb",
+  "before": {
+    "oid": "91871926",
+    "owner": "postgres",
+    "template": false,
+    "connection_limit": -2,
+    "connections": 0
+  },
+  "invalid_database_marker_verified": true,
+  "exact_original_drop_statement": "2026-10-29 00:01:39.760 CST [33144] STATEMENT:  DROP DATABASE \"cp_test_cf057a05af29475e8c9d092fb228a322\" WITH (FORCE)",
+  "drop_statement_time_matches_failure": true,
+  "contents_accessible": false,
+  "ledger_read_claimed": false,
+  "published_fixture_source_matched": true,
+  "suite_source_sha256": "9eab482ded7506ebff3701a60273369555cc447c0a486310dc9b56715933756f",
+  "removed": true,
+  "remaining_test_databases": 0,
+  "forced_disconnect": false,
+  "postgres_restarted": false,
+  "production_database_touched": false,
+  "script_sha256": "efacc7740d5eeddc5cf5f7747e9ebb5ff554e6edfbf86cfbf443beb6b7cb0e97"
+}

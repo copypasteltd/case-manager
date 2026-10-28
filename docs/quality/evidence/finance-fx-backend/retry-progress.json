@@ -1,0 +1,27 @@
+{
+  "source_sha256": "9eab482ded7506ebff3701a60273369555cc447c0a486310dc9b56715933756f",
+  "serial_execution": true,
+  "retries": [
+    {
+      "test": "TestMiniappBrowserFixture",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "previously_missing": false,
+      "exit_code": 0,
+      "started_at": "2026-10-28T16:19:24.070530+00:00",
+      "finished_at": "2026-10-28T16:19:51.301946+00:00",
+      "source_sha256": "9eab482ded7506ebff3701a60273369555cc447c0a486310dc9b56715933756f",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/finance-fx-backend-retry-1.log",
+      "raw_output_sha256": "4fe15a3bf2ed26c1dbc79203285bb0ad7807bf1fc948b8147c7c54f228a8eccd",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestMiniappBrowserFixture",
+          "Elapsed": 14.76
+        }
+      ]
+    }
+  ]
+}

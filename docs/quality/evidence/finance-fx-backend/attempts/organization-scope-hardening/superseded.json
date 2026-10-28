@@ -1,0 +1,53 @@
+{
+  "current_proof": false,
+  "recorded_at": "2026-10-28T15:29:19.151948+00:00",
+  "reason": "The organization-scoped publishing fix and denial assertions changed backend inputs during batch8. The running fixture completed cleanup; later batches refused changed inputs. No batch from this digest is reused as current proof.",
+  "source_sha256": "e658e04e9c5f0a8cd4fe46f54eb7460094cc2d55919977d5220e3861d62da0ce",
+  "completed_batches": 7,
+  "source_changed_batches": [
+    8
+  ],
+  "actual_failed_test_records": 0,
+  "raw_logs": [
+    {
+      "batch": 1,
+      "private_log": "finance-fx-superseded-batch-1.log",
+      "sha256": "f61e635c3e3937fd8989e79f4a2b7b11b8eaf5cdfd24493015a75208266c793c"
+    },
+    {
+      "batch": 2,
+      "private_log": "finance-fx-superseded-batch-2.log",
+      "sha256": "91d9410e5b7d6cda34f250af3b4dcebb6794e46e2f0dfb16e33bca301e0a1423"
+    },
+    {
+      "batch": 3,
+      "private_log": "finance-fx-superseded-batch-3.log",
+      "sha256": "7ec125e6dc029672e66e340e6967ac165a407a8b4a87f3850b8a985c1b7b752b"
+    },
+    {
+      "batch": 4,
+      "private_log": "finance-fx-superseded-batch-4.log",
+      "sha256": "7f2ef6ff9c1ce89b6db1823c7cc4e0ab7f44bbeee5d0cb34b17e79560c3c5d10"
+    },
+    {
+      "batch": 5,
+      "private_log": "finance-fx-superseded-batch-5.log",
+      "sha256": "6e5f716cfe4b5bd4c54bd55196aa8f61011ea12dca67edce4c214e355c5d4247"
+    },
+    {
+      "batch": 6,
+      "private_log": "finance-fx-superseded-batch-6.log",
+      "sha256": "72bcdd9456c6210deb4204ceb388577206cfa39e8c467735c2bfe55f54385444"
+    },
+    {
+      "batch": 7,
+      "private_log": "finance-fx-superseded-batch-7.log",
+      "sha256": "a4615ace228b1718990dbed8ccd28457134c42eca8b858fe4e45567e31bad8e9"
+    },
+    {
+      "batch": 8,
+      "private_log": "finance-fx-superseded-batch-8.log",
+      "sha256": "f38a00d859bfc42a6bfe03bcbe72e81a3f499ae624ea3d18c10b74becaea3848"
+    }
+  ]
+}

@@ -25,36 +25,39 @@ type ReportQuery struct {
 	CompanyOnly bool    `json:"company_only"`
 	SupplierID  *string `json:"supplier_id"`
 	OwnerID     *string `json:"owner_id"`
+	FXBookID    *string `json:"fx_book_id,omitempty"`
 }
 
 type ReportSource struct {
-	SourceType         string    `json:"source_type"`
-	ID                 string    `json:"id"`
-	ResourceID         string    `json:"resource_id"`
-	RevisionID         string    `json:"revision_id"`
-	Version            int64     `json:"version"`
-	Title              string    `json:"title"`
-	From               string    `json:"from"`
-	To                 *string   `json:"to"`
-	State              string    `json:"state"`
-	EntryKind          string    `json:"entry_kind"`
-	Currency           *string   `json:"currency"`
-	OriginalAmount     *string   `json:"original_amount"`
-	ContributionAmount *string   `json:"contribution_amount"`
-	Category           string    `json:"category"`
-	SupplierID         *string   `json:"supplier_id"`
-	OwnerID            string    `json:"owner_id"`
-	ProjectID          *string   `json:"project_id"`
-	CreatedAt          time.Time `json:"created_at"`
-	Timezone           string    `json:"timezone"`
+	SourceType         string           `json:"source_type"`
+	ID                 string           `json:"id"`
+	ResourceID         string           `json:"resource_id"`
+	RevisionID         string           `json:"revision_id"`
+	Version            int64            `json:"version"`
+	Title              string           `json:"title"`
+	From               string           `json:"from"`
+	To                 *string          `json:"to"`
+	State              string           `json:"state"`
+	EntryKind          string           `json:"entry_kind"`
+	Currency           *string          `json:"currency"`
+	OriginalAmount     *string          `json:"original_amount"`
+	ContributionAmount *string          `json:"contribution_amount"`
+	Category           string           `json:"category"`
+	SupplierID         *string          `json:"supplier_id"`
+	OwnerID            string           `json:"owner_id"`
+	ProjectID          *string          `json:"project_id"`
+	CreatedAt          time.Time        `json:"created_at"`
+	Timezone           string           `json:"timezone"`
+	Valuation          *SourceValuation `json:"valuation,omitempty"`
 }
 
 type ReportPage struct {
-	Filters    ReportQuery     `json:"filters"`
-	Scope      string          `json:"scope"`
-	Summary    json.RawMessage `json:"summary"`
-	Items      []ReportSource  `json:"items"`
-	NextCursor *string         `json:"next_cursor"`
+	Filters    ReportQuery      `json:"filters"`
+	Scope      string           `json:"scope"`
+	Summary    json.RawMessage  `json:"summary"`
+	Items      []ReportSource   `json:"items"`
+	NextCursor *string          `json:"next_cursor"`
+	Valuation  *ReportValuation `json:"valuation,omitempty"`
 }
 
 func (f ReportQuery) Validate() error {
@@ -66,7 +69,7 @@ func (f ReportQuery) Validate() error {
 	if (f.Currency != "" && !currencyPatternForFilter(f.Currency)) || len([]rune(f.Category)) > 50 || len([]rune(f.Query)) > 200 || strings.ContainsAny(f.Query+f.Category, "\x00") || f.CompanyOnly && f.ProjectID != nil {
 		return core.Invalid("filter", "币种、类别、关键词或公司／项目范围无效")
 	}
-	for _, id := range []*string{f.ProjectID, f.SupplierID, f.OwnerID} {
+	for _, id := range []*string{f.ProjectID, f.SupplierID, f.OwnerID, f.FXBookID} {
 		if id != nil && !core.ValidID(*id) {
 			return core.Invalid("filter", "项目、供应方或经办／负责人标识无效")
 		}

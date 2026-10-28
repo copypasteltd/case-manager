@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量102的实际合成财务操作：选择缺汇率版本 → 查看不完整合计与USD缺口 → 选择完整版本 → 员工发布新版本 → 排队导出固定版本CSV。录制从登录后的财务页开始；共4张新截图、2段无声MP4、2个GIF。Web与共享Taro H5均连接真实原生API；不声明真机、云端或正式公司报价验收。
+
+| 客户端 | 缺口截图 | 新版本截图 | 录屏 | GIF |
+|---|---|---|---|---|
+| Web | [缺少报价](screenshots/finance-fx-web-before.png) | [基础币种205](screenshots/finance-fx-web-after.png) | [MP4](videos/finance-fx-web.mp4) | [GIF](gifs/finance-fx-web.gif) |
+| Taro H5 | [缺少报价](screenshots/finance-fx-mobile-before.png) | [基础币种205](screenshots/finance-fx-mobile-after.png) | [MP4](videos/finance-fx-mobile.mp4) | [GIF](gifs/finance-fx-mobile.gif) |
+
+Both recordings show actual authenticated synthetic business operations with real native API and export responses. [Verification and provenance](../quality/102-finance-fx-verification.md). All181 previously published canonical media remain byte-identical.
+
 增量101新增实际Web与Taro H5正文核对／采用演示，各2张PNG、1段原速MP4和1段GIF。每端在原生PostgreSQL与真实API上采用合同和采购正文，并发送一条报销起草请求；仅模型推理和执行隔离证明使用受控合成夹具。原99 PNG／37 MP4／37 GIF保持原字节。没有真机、真实模型或生产验收声明。
 
 | 页面 / Client | 核对原文 / Review | 采用结果 / Adopted | 原速录屏 / Recording | GIF |

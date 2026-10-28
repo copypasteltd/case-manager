@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "classification": "native_test_fixture_cleanup_timeout",
+  "case": "TestMiniappBrowserFixture",
+  "source_sha256": "9eab482ded7506ebff3701a60273369555cc447c0a486310dc9b56715933756f",
+  "failure_at": "2026-10-29T00:01:38.4265139+08:00",
+  "elapsed_seconds": 137.01,
+  "diagnostic": "server_integration_test.go:86: timeout: context deadline exceeded",
+  "cleanup_window_seconds": 120,
+  "raw_log_sha256": "f24103a14ddf12a2558b5a0cb6daa26d59bf77d5ad684d4d4a2a688be05a9ccb",
+  "raw_log": "ignored app/.local/finance-fx-backend-batch-5.log",
+  "review": "Failure is reported by t.Cleanup at the exact DROP DATABASE call. This failed result remains preserved and cannot count as a pass. Retry the complete parent after all batches stop, on unchanged sources.",
+  "production_database_touched": false
+}

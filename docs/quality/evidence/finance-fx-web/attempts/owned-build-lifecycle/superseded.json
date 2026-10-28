@@ -1,0 +1,4 @@
+{
+  "current_proof": false,
+  "reason": "The capture runner now owns the direct Node Taro build and browser child processes, bounds their cleanup, and gives the native fixture its normal cleanup interval. The prior successful UI result remains retained; the unchanged product is recaptured with the corrected runner."
+}

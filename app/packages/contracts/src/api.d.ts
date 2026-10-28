@@ -5046,6 +5046,58 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/finance/fx-policy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFinanceFXPolicy */
+        get: operations["readFinanceFXPolicy"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/fx-books": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listFinanceFXBooks */
+        get: operations["listFinanceFXBooks"];
+        put?: never;
+        /** publishFinanceFXBook */
+        post: operations["publishFinanceFXBook"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/finance/fx-books/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFinanceFXBook */
+        get: operations["readFinanceFXBook"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/finance/reports": {
         parameters: {
             query?: never;
@@ -12230,6 +12282,107 @@ export interface components {
             data: components["schemas"]["ChangeRevision"];
             meta: components["schemas"]["Meta"];
         };
+        FinanceFXRate: {
+            currency: string;
+            /** Format: date */
+            valid_from: string;
+            /** Format: date */
+            valid_to: string;
+            /** Format: date */
+            rate_date: string;
+            rate: string;
+            source: string;
+        };
+        FinanceFXContent: {
+            title: string;
+            base_currency: string;
+            /** @enum {string} */
+            method: "manual_interval";
+            /** @enum {string} */
+            rounding: "scope_line_half_up";
+            rates: components["schemas"]["FinanceFXRate"][];
+        };
+        FinanceFXBook: {
+            /** Format: uuid */
+            id: string;
+            revision: number;
+            title: string;
+            base_currency: string;
+            rate_count: number;
+            content_sha256: string;
+            /** Format: uuid */
+            creator_id: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            content?: components["schemas"]["FinanceFXContent"];
+        };
+        FinanceFXPolicy: {
+            version: number;
+            current: components["schemas"]["FinanceFXBook"] | null;
+        };
+        FinanceFXBookCreate: {
+            expected_version: number;
+            content: components["schemas"]["FinanceFXContent"];
+            /** @enum {boolean} */
+            acknowledged: true;
+            reason: string;
+        };
+        FinancialSourceValuation: {
+            /** @enum {string} */
+            status: "identity" | "converted" | "missing_rate" | "unconfirmed" | "unpriced";
+            /** Format: date */
+            fx_date: string;
+            base_amount: string | null;
+            rate: string | null;
+            rate_index: number | null;
+            rate_date: string | null;
+            rate_source: string | null;
+            valid_from: string | null;
+            valid_to: string | null;
+        };
+        FinancialValuationCurrency: {
+            currency: string | null;
+            covered_count: number;
+            missing_rate_count: number;
+            unpriced_count: number;
+            unconfirmed_count: number;
+            covered_amount: string;
+            missing_native_amount: string;
+        };
+        FinancialReportValuation: {
+            source_coverage_complete: boolean;
+            book: components["schemas"]["FinanceFXBook"];
+            exponent: number;
+            /** @enum {string} */
+            method: "manual_interval";
+            /** @enum {string} */
+            rounding: "scope_line_half_up";
+            /** @enum {string} */
+            coverage: "complete" | "partial" | "none";
+            covered_amount: string;
+            total_amount: string | null;
+            covered_count: number;
+            missing_rate_count: number;
+            unpriced_count: number;
+            unconfirmed_count: number;
+            currencies: components["schemas"]["FinancialValuationCurrency"][];
+        };
+        FinanceFXPolicyResponse: {
+            data: components["schemas"]["FinanceFXPolicy"];
+            meta: components["schemas"]["Meta"];
+        };
+        FinanceFXBookListResponse: {
+            data: {
+                items: components["schemas"]["FinanceFXBook"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        FinanceFXBookResponse: {
+            data: components["schemas"]["FinanceFXBook"];
+            meta: components["schemas"]["Meta"];
+        };
         FinancialReportQuery: {
             /** @enum {string} */
             kind: "incurred" | "cash" | "forecast";
@@ -12244,6 +12397,7 @@ export interface components {
             company_only: boolean;
             supplier_id?: string | null;
             owner_id?: string | null;
+            fx_book_id?: string | null;
         };
         FinancialReportSource: {
             /** @enum {string} */
@@ -12273,6 +12427,7 @@ export interface components {
             /** Format: date-time */
             created_at: string;
             timezone: string;
+            valuation?: components["schemas"]["FinancialSourceValuation"];
         };
         FinancialReport: {
             filters: components["schemas"]["FinancialReportQuery"];
@@ -12281,6 +12436,7 @@ export interface components {
             summary: components["schemas"]["CostReport"] | components["schemas"]["CashReport"] | components["schemas"]["ForecastReport"];
             items: components["schemas"]["FinancialReportSource"][];
             next_cursor: string | null;
+            valuation?: components["schemas"]["FinancialReportValuation"];
         };
         FinancialReportExport: {
             /** Format: uuid */
@@ -26578,6 +26734,153 @@ export interface operations {
             503: components["responses"]["Failure"];
         };
     };
+    readFinanceFXPolicy: {
+        parameters: {
+            query?: {
+                project_id?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinanceFXPolicyResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listFinanceFXBooks: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                project_id?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinanceFXBookListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    publishFinanceFXBook: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FinanceFXBookCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinanceFXBookResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFinanceFXBook: {
+        parameters: {
+            query?: {
+                project_id?: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FinanceFXBookResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
     readFinancialReport: {
         parameters: {
             query: {
@@ -26591,6 +26894,7 @@ export interface operations {
                 company_only?: boolean;
                 supplier_id?: string;
                 owner_id?: string;
+                fx_book_id?: string;
                 cursor?: string;
                 limit?: number;
             };
@@ -26865,6 +27169,7 @@ export interface operations {
                 company_only?: boolean;
                 supplier_id?: string;
                 owner_id?: string;
+                fx_book_id?: string;
                 field: "category" | "supplier" | "owner";
                 option_search?: string;
             };

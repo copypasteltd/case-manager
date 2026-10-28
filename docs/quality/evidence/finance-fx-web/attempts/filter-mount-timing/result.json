@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "started_at": "2026-10-28T14:49:01.647Z",
+  "finished_at": "2026-10-28T14:49:42.998Z",
+  "checks": [],
+  "source_count": 728,
+  "source_sha256": "9b8c2c993477ea55c37e5d87c1ea6747baee4329e34e62de63d14d608ccb2c4a",
+  "source_after_sha256": "9b8c2c993477ea55c37e5d87c1ea6747baee4329e34e62de63d14d608ccb2c4a",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('起始日（含）', { exact: true })\u001b[22m\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "98066921a8cc6c7d085240b1cb20d40041440f5dc76b682a0c7de1e95090f81f",
+  "build_source_after_sha256": "98066921a8cc6c7d085240b1cb20d40041440f5dc76b682a0c7de1e95090f81f",
+  "build_source_unchanged": true
+}

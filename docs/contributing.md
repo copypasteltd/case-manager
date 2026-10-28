@@ -1,5 +1,7 @@
 # 开发、文档与仓库同步 / Development and repository synchronization
 
+增量102的当前功能证明由 `app/scripts/verify_finance_fx_sources.py` 汇总；本地后端、客户端、Android、Web／Taro H5和媒体分别保留真实来源及执行记录。发布继续按 `docs/quality/current-functional-baseline.json` 选择当前证据，最后运行范围与仓库发布检查。详见[验证记录](quality/102-finance-fx-verification.md)，不使用旧源／缓存／移出范围替代当前验收。
+
 [中文指南](README.zh-CN.md) · [English guide](README.en.md) · [更新记录 / Changelog](CHANGELOG.md)
 
 本规则落实用户要求：后续完成更新时，同步相应代码、文档、演示与更新说明并推送到本仓库。推送目标为 `git@github.com:copypasteltd/case-manager.git`，不需要为同一已授权范围重复询问。遇到新的不可逆外部动作或真实环境配置，按其实际授权范围处理。

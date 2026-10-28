@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-28T15:51:38.310260+00:00",
+  "method": "Visual inspection of all four final PNG files using view_image after the last successful native API/browser captures.",
+  "synthetic_data": true,
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/finance-fx-web-before.png",
+      "sha256": "275b8749084536c5940ca722433684059270c4ec5e3bdb98ea0af0251bd00247",
+      "client": "web",
+      "state": "before"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-web-after.png",
+      "sha256": "48e035c177166ce2c6ef846b2f9dee89dbd68bbf0adc34d5ffb3c7321706917f",
+      "client": "web",
+      "state": "after"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-mobile-before.png",
+      "sha256": "3402d2b3d6393a48cf16c99f015f8569e8b66bd08ee9e5b8794d86536b83b11b",
+      "client": "mobile",
+      "state": "before"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-mobile-after.png",
+      "sha256": "0a48d65f676156d07ab53645f343a607410ccdb9d0c5b98d7df33dea995ccac8",
+      "client": "mobile",
+      "state": "after"
+    }
+  ],
+  "findings": [
+    "Web keeps original HKD126 and USD10 facts separate. The missing-USD book shows a null full total, covered HKD126 and one USD10 gap.",
+    "The newly published version4 shows HKD205 and preserved original amounts. History, selection and source rows are legible in the final Web view.",
+    "The narrow shared Taro H5 view stacks original amounts and coverage cards; key numbers, selected versions and actions remain legible in the scrolled viewport.",
+    "No passwords, MFA secrets, real quotations or actual company financial records appear."
+  ]
+}

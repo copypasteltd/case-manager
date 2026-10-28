@@ -1,7 +1,8 @@
 import type { components } from './api';
+import { checkedFXValuation } from './finance-fx';
 
 type S = components['schemas'];
-export type ReportQuery = Required<S['FinancialReportQuery']>;
+export type ReportQuery = Required<Omit<S['FinancialReportQuery'], 'fx_book_id'>> & Pick<S['FinancialReportQuery'], 'fx_book_id'>;
 export type FinancialReport = S['FinancialReport'];
 export type ReportSource = S['FinancialReportSource'];
 export type ReportExport = S['FinancialReportExport'];
@@ -33,16 +34,16 @@ export function validateReportQuery(query: ReportQuery): ReportQuery {
   const from = Date.parse(query.from + 'T00:00:00Z'), to = Date.parse(query.to + 'T00:00:00Z');
   if (!Number.isFinite(from) || !Number.isFinite(to) || new Date(from).toISOString().slice(0, 10) !== query.from || new Date(to).toISOString().slice(0, 10) !== query.to || to <= from || to - from > 366 * 86400000) throw invalid('期间需为1至366个自然日，结束日不含在内。');
   if (!/^([A-Z]{3})?$/.test(query.currency) || [...query.category].length > 50 || [...query.q].length > 200 || /\0/.test(query.category + query.q) || query.project_id && query.company_only || typeof query.company_only !== 'boolean') throw invalid('请核对币种、类别、关键词与分摊范围。');
-  for (const value of [query.project_id, query.supplier_id, query.owner_id]) if (value !== null && !id(value)) throw invalid('请重新选择项目、供应方或经办／负责人。');
+  for (const value of [query.project_id, query.supplier_id, query.owner_id, query.fx_book_id ?? null]) if (value !== null && !id(value)) throw invalid('请重新选择项目、供应方或经办／负责人。');
   return { ...query };
 }
 export function reportQueryKey(query: ReportQuery): string {
-  return JSON.stringify([query.kind, query.from, query.to, query.currency, query.category, query.q, query.project_id, query.company_only, query.supplier_id, query.owner_id]);
+  return JSON.stringify([query.kind, query.from, query.to, query.currency, query.category, query.q, query.project_id, query.company_only, query.supplier_id, query.owner_id, query.fx_book_id ?? null]);
 }
 export function financialReportPath(query: ReportQuery, cursor = '', limit = 20): string {
   validateReportQuery(query);
   const params = new URLSearchParams({ kind: query.kind, from: query.from, to: query.to, limit: String(limit) });
-  for (const name of ['currency', 'category', 'q', 'project_id', 'supplier_id', 'owner_id'] as const) if (query[name]) params.set(name, query[name]!);
+  for (const name of ['currency', 'category', 'q', 'project_id', 'supplier_id', 'owner_id', 'fx_book_id'] as const) if (query[name]) params.set(name, query[name]!);
   if (query.company_only) params.set('company_only', 'true');
   if (cursor) params.set('cursor', cursor);
   return '/finance/reports?' + params;
@@ -56,9 +57,13 @@ export function checkedFinancialReport(value: FinancialReport, query: ReportQuer
     if (!/^[A-Z]{3}$/.test(total.currency) || query.currency && total.currency !== query.currency) throw invalid();
     for (const [key, amount] of Object.entries(total)) if (key.endsWith('_amount') && !money(amount)) throw invalid('报表金额不是精确十进制字符串。');
   }
+  if (query.fx_book_id) checkedFXValuation(value.valuation!, query.fx_book_id);
+  else if (value.valuation) throw invalid('报表返回了未选择的汇率版本。');
   const expected = query.kind === 'incurred' ? 'cost' : query.kind === 'cash' ? 'payment' : 'subscription_period';
   for (const item of value.items) {
     if (!id(item.id) || !id(item.owner_id) || item.supplier_id !== null && !id(item.supplier_id) || !id(item.resource_id) || !id(item.revision_id) || !Number.isSafeInteger(item.version) || item.version < 1 || item.source_type !== expected || expected !== 'subscription_period' && item.resource_id !== item.id || item.from < query.from || item.from >= query.to || item.currency !== null && (!/^[A-Z]{3}$/.test(item.currency) || query.currency && item.currency !== query.currency)) throw invalid();
+    if (query.fx_book_id) { const fx = item.valuation; if (!fx || !/^\d{4}-\d\d-\d\d$/.test(fx.fx_date) || !['identity','converted','missing_rate','unconfirmed','unpriced'].includes(fx.status) || ['identity','converted'].includes(fx.status) !== (fx.base_amount !== null) || fx.base_amount !== null && !money(fx.base_amount) || item.state === 'draft' && fx.status !== 'unconfirmed' || fx.status === 'converted' && (fx.rate_index === null || fx.rate_source === null || fx.rate_date === null || fx.valid_from === null || fx.valid_to === null || fx.fx_date < fx.valid_from || fx.fx_date >= fx.valid_to) || fx.status === 'identity' && (item.currency !== value.valuation!.book.base_currency || fx.rate !== '1') || ['identity','converted'].includes(fx.status) && (!fx.rate || !/^(0|[1-9][0-9]*)(\.[0-9]{1,10})?$/.test(fx.rate))) throw invalid('折算明细缺少原始依据。'); }
+    else if (item.valuation) throw invalid('明细返回了未选择的折算。');
     if (item.original_amount !== null && (!money(item.original_amount) || item.original_amount.startsWith('-')) || item.contribution_amount !== null && !money(item.contribution_amount) || item.state === 'draft' && item.contribution_amount !== null) throw invalid('未确认费用不能计入实际发生额。');
   }
   return value;

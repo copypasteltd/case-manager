@@ -107,6 +107,7 @@ func Bootstrap(ctx context.Context, db platform.DBTX, input BootstrapInput) (Boo
 		{"cost_reader", "费用查阅人", false, []string{"cost.read"}},
 		{"finance_reporter", "财务报表查阅人", false, []string{"cost.read", "report.read"}},
 		{"finance_exporter", "财务报表导出人", false, []string{"report.read", "report.export"}},
+		{"finance_fx_manager", "财务汇率管理人", true, []string{"report.read", "finance.fx.manage"}},
 		{"payment_recorder", "资金登记人", false, []string{"payment.read", "payment.record"}},
 		{"payment_reverser", "资金冲销人", true, []string{"payment.read", "payment.reverse"}},
 		{"payment_reader", "资金查阅人", false, []string{"payment.read"}},

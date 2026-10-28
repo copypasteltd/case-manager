@@ -50,7 +50,7 @@ func (c Commands) Do(ctx context.Context, command core.Command, authorize func(p
 	var orgVersion, userVersion int64
 	var status string
 	organizationLock := " FOR SHARE"
-	if command.AuthorizationMutation {
+	if command.AuthorizationMutation || command.ExclusiveOrganizationLock {
 		organizationLock = " FOR UPDATE"
 	}
 	err = tx.QueryRow(ctx, "SELECT authorization_version FROM organizations WHERE id=$1"+organizationLock, command.Actor.OrgID).Scan(&orgVersion)

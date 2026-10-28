@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-28T14:58:01.436014+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/finance-fx-web-before.png",
+      "sha256": "0179483d8ec3dce340c8a00b9319f9f96f5686ddc7df56f8e804d4f52bf67ae9",
+      "client": "web",
+      "state": "before"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-web-after.png",
+      "sha256": "8c16c0f4253626023525acc38f4249cad465a7cae3f5bef1b1e1b397da00941d",
+      "client": "web",
+      "state": "after"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-mobile-before.png",
+      "sha256": "3f9e90f47f0700ec6620d50dc3f15f4752a3f1e2b01fa838d7d11db2ee86dcc8",
+      "client": "mobile",
+      "state": "before"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-mobile-after.png",
+      "sha256": "8db50b1f938953e5faefcc8733f64c8ee12527d9e5cd706e8d6b0c2241bda932",
+      "client": "mobile",
+      "state": "after"
+    }
+  ],
+  "synthetic_data": true,
+  "credentials_excluded": true,
+  "review_method": "Viewed all four actual images. Web keeps original HKD126/USD10 separate from the selected base view; the missing-rate screenshot displays an incomplete total and USD10 gap, the published revision4 view shows HKD205. Shared Taro H5 presents the same figures with readable stacked cards and source rows. No password, MFA secret or business credential appears.",
+  "real_device": false
+}

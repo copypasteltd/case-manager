@@ -1,0 +1,210 @@
+{
+  "attempts": [
+    {
+      "log": "ignored app/.local/fx-probe-native.jsonl",
+      "raw_log_sha256": "8143300ddd465325b62351e6a66103cdf0e7b1f9f8562656fccc2b3db780719d",
+      "results": [
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/original_currency_project_shares_reversals_and_drafts_match_fixed_manual_totals"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/all_filters_are_applied_and_source_pagination_is_signed"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/strict_queries_reject_unknown_duplicate_malformed_and_incompatible_scopes"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/cash_and_forecast_views_keep_independent_facts_and_honest_coverage"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/source_derived_filter_choices_are_paged_and_do_not_reveal_hidden_records"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/queued_export_is_idempotent_and_not_a_synchronous_download"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/native_fenced_job_freezes_complete_sources_and_exact_safe_csv"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/later_facts_do_not_rewrite_ready_export"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/cancelled_export_cannot_be_claimed_or_downloaded"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/cash_and_forecast_exports_use_their_own_complete_sources"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/export_history_is_owner_only_signed_and_actually_paged"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/database_guards_preserve_fixed_requests_and_live_snapshots"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_no_default_policy_and_publishing_requires_specific_authority"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_publish_is_attributed_idempotent_and_updates_explicit_company_base"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_totals_fold_every_authorized_fact_and_keep_three_bases_independent"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_quote_gaps_do_not_turn_into_one_or_zero"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_reversal_inherits_original_quote_date_outside_its_own_month"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_overlaps_zero_quotes_and_unacknowledged_updates_are_rejected"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_concurrent_publish_serializes_before_shared_org_locks"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_books_are_immutable_and_pagination_binds_project_context"
+        },
+        {
+          "action": "fail",
+          "test": "TestFinancialReportsAndExports/fx_export_freezes_book_quotes_and_preserves_legacy_csv"
+        },
+        {
+          "action": "fail",
+          "test": "TestFinancialReportsAndExports"
+        }
+      ],
+      "source_sha256": null,
+      "scope": "Pre-freeze diagnostic without an input digest; excluded from current-source passing evidence."
+    },
+    {
+      "log": "ignored app/.local/fx-probe02-native.jsonl",
+      "raw_log_sha256": "69605d316c1472941833f3f05a12d85a5af1435c333dd7cfd3d6d2060987aedc",
+      "results": [
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/original_currency_project_shares_reversals_and_drafts_match_fixed_manual_totals"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/all_filters_are_applied_and_source_pagination_is_signed"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/strict_queries_reject_unknown_duplicate_malformed_and_incompatible_scopes"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/cash_and_forecast_views_keep_independent_facts_and_honest_coverage"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/source_derived_filter_choices_are_paged_and_do_not_reveal_hidden_records"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/queued_export_is_idempotent_and_not_a_synchronous_download"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/native_fenced_job_freezes_complete_sources_and_exact_safe_csv"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/later_facts_do_not_rewrite_ready_export"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/cancelled_export_cannot_be_claimed_or_downloaded"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/cash_and_forecast_exports_use_their_own_complete_sources"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/export_history_is_owner_only_signed_and_actually_paged"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/database_guards_preserve_fixed_requests_and_live_snapshots"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_no_default_policy_and_publishing_requires_specific_authority"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_publish_is_attributed_idempotent_and_updates_explicit_company_base"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_totals_fold_every_authorized_fact_and_keep_three_bases_independent"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_quote_gaps_do_not_turn_into_one_or_zero"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_reversal_inherits_original_quote_date_outside_its_own_month"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_read_context_does_not_expand_project_only_finance_access"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_overlaps_zero_quotes_and_unacknowledged_updates_are_rejected"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_concurrent_publish_serializes_before_shared_org_locks"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_books_are_immutable_and_pagination_binds_project_context"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/fx_export_freezes_book_quotes_and_preserves_legacy_csv"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/expiry_hides_derived_metadata_and_purges_only_payload"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports/changed_authority_revokes_generation_and_old_downloads"
+        },
+        {
+          "action": "pass",
+          "test": "TestFinancialReportsAndExports"
+        }
+      ],
+      "source_sha256": null,
+      "scope": "Pre-freeze diagnostic without an input digest; excluded from current-source passing evidence."
+    }
+  ],
+  "first_failure": "The test used the queued export object instead of rereading its completed immutable receipt; fixed before the final complete source-bound run.",
+  "current_verification": false
+}

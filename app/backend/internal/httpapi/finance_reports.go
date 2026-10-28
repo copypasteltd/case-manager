@@ -21,7 +21,7 @@ func financeReportQuery(r *http.Request, list bool) (finance.ReportQuery, string
 	if list {
 		allowed["state"] = true
 	} else {
-		for _, key := range []string{"from", "to", "currency", "category", "q", "project_id", "company_only", "supplier_id", "owner_id"} {
+		for _, key := range []string{"from", "to", "currency", "category", "q", "project_id", "company_only", "supplier_id", "owner_id", "fx_book_id"} {
 			allowed[key] = true
 		}
 	}
@@ -39,7 +39,7 @@ func financeReportQuery(r *http.Request, list bool) (finance.ReportQuery, string
 		return finance.ReportQuery{}, "", 0, err
 	}
 	f := finance.ReportQuery{Kind: values.Get("kind"), From: values.Get("from"), To: values.Get("to"), Currency: values.Get("currency"), Category: values.Get("category"), Query: values.Get("q"), CompanyOnly: company}
-	for key, target := range map[string]**string{"project_id": &f.ProjectID, "supplier_id": &f.SupplierID, "owner_id": &f.OwnerID} {
+	for key, target := range map[string]**string{"project_id": &f.ProjectID, "supplier_id": &f.SupplierID, "owner_id": &f.OwnerID, "fx_book_id": &f.FXBookID} {
 		if value := values.Get(key); value != "" {
 			*target = &value
 		}
@@ -49,6 +49,7 @@ func financeReportQuery(r *http.Request, list bool) (finance.ReportQuery, string
 
 func (s *Server) financeReportRoutes(mux *http.ServeMux) {
 	service := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	s.financeFXRoutes(mux, service)
 	mux.HandleFunc("GET /v1/finance/reports", read(s, "FinancialReportResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, cursor, limit, err := financeReportQuery(r, false)
 		if err != nil {

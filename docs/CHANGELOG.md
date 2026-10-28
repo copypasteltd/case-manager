@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## 增量102 · 基础币种、人工汇率版本与报表折算 / Explicit FX valuation · 2026-10-29
+
+- 新增迁移81及人工汇率版本发布／历史／详情，明确基础币种、报价来源／日期／区间；发布要求当前员工的组织配置权限、MFA、预期版本与幂等键，内容和历史不可改写。
+- 发生、现金和预测报表按所选版本做精确十进制折算、逐条范围金额舍入及覆盖说明；冲销继承原记录报价日期，缺汇率／未定价／预测源缺口不显示完整合计。
+- Web与共享Taro报表页加入版本选择、依据查阅、人工发布、原始明细折算及固定版本CSV。旧原币事实、无汇率版本的旧CSV和181份已发布媒体保持原字节。
+- 中英文README、[开发方案](development/102-finance-fx-valuation.md)、[验证记录](quality/102-finance-fx-verification.md)和实际截图／录屏／GIF同步更新；跨币种核销与摊销仍开放，23个完整工作包待完成、5项移出。
+- Adds immutable manually reviewed FX books, explicit report selection, exact incurred/cash/forecast valuation and pinned CSV evidence across four clients. Missing coverage prevents a full total. Native tests, browser journeys and build/cache scope are recorded separately from production acceptance.
+
 ## 增量101 · OA正文起草、核对与采用 / OA prose drafting and adoption · 2026-10-28
 
 - 为合同、采购、报销添加白名单正文字段起草。模型保存不可变建议和实际读取来源，员工逐字段核对后通过常规权限采用为业务新修订。

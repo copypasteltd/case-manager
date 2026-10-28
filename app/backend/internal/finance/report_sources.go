@@ -102,6 +102,9 @@ func (s *Service) FinancialReport(ctx context.Context, a core.Actor, f ReportQue
 		value := s.Pager.Encode(platform.Cursor{UpdatedAt: last.CreatedAt, ID: last.ID, Binding: bound})
 		out.NextCursor = &value
 	}
+	if err = applyReportValuation(ctx, tx, a, &out); err != nil {
+		return out, err
+	}
 	return out, tx.Commit(ctx)
 }
 

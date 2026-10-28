@@ -1,10 +1,16 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Latest increment102 adds explicit base-currency valuation with immutable manually reviewed quote books. In Financial Reports, an FX manager authorized for the organization with an MFA session publishes a title, base currency, six-column tab-separated quotes and a reason. Staff select a specific version, inspect separate incurred/cash/forecast totals and source evidence, then enqueue a pinned CSV. Missing quotes, prices or incomplete forecast source coverage leave the full total null.
+
+Migration81, version history, exact decimal rounding, original-date reversals and CSV evidence are implemented across Web and the shared WeChat/Douyin/Android report page. Web151/mobile255/runtime52 tests pass; see the [verification record](quality/102-finance-fx-verification.md) for backend/build/browser results, JVM cache scope and media provenance. Cross-currency settlement, fees/exchange differences, amortization and complete finance acceptance remain open. All23 complete work packages remain open; five items remain excluded.
+
+[Design and usage](development/102-finance-fx-valuation.md) · [Web demo](media/videos/finance-fx-web.mp4) · [Shared Taro demo](media/videos/finance-fx-mobile.mp4) · [GIF](media/gifs/finance-fx-web.gif) · [Remaining work](delivery/03-goal-gap-assessment.md)
+
 Increment101 adds selected contract clauses/notes and purchase/reimbursement purpose/notes. Choose the exact saved business revision and fields, let the secretary save an immutable suggestion, compare the original/proposed text and adopt it through normal human permissions. Adoption creates a real business revision and audit/operation receipts. Prepare and submit approval separately. Changed sources, stale versions, lost permissions and cancelled/failed runs block adoption. All eight Skills remain draft;23 full work packages remain open and5 are excluded.
 
 [Design, field matrix and usage](development/101-oa-prose-drafting.md) · [Verification and precise scope](quality/101-oa-prose-verification.md) · [Web recording](media/videos/secretary-oa-prose-web.mp4) · [Shared Taro recording](media/videos/secretary-oa-prose-mobile.mp4) · [GIF](media/gifs/secretary-oa-prose-web.gif)
 
-Current client checks cover Web142/mobile255/runtime52 cases. This increment's verification record identifies final backend, four-client build and browser results, Android JVM cache scope and exact source hashes. Counts in older sections retain their original execution scope.
+Increment101's client checks covered Web142/mobile255/runtime52 cases. Its verification record identifies that increment's backend, four-client build and browser results, Android JVM cache scope and exact source hashes. Counts in older sections retain their original execution scope.
 
 Previous increment100: secretary admission, execution and technical usage persistence no longer require an AI fee policy or reservation. Legacy fee writes are retired and the archive is read-only. Identity, authorization, confinement, cancellation, timeouts, concurrency and technical context/output/tool limits remain. Real Codex, TG, cloud and production acceptance are still open:23 active packages and5 exclusions.
 

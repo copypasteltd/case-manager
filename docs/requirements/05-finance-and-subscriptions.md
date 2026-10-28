@@ -1,5 +1,7 @@
 # 费用、订阅、付款与月报需求
 
+增量102已实现可由有权限员工明确发布的基础币种和人工区间汇率版本，以及发生／现金／预测的独立报表折算。实际公司的基础币种与报价内容仍需在使用时明确选择，示例不充当公司配置。Q07中的跨币种核销、手续费／汇差和摊销规则仍待完成，不因新增报表能力而默认启用。见[增量102](../development/102-finance-fx-valuation.md)。
+
 实现追踪（增量88）：[完整财务筛选、规范来源与限时异步导出](../development/88-financial-report-filters-and-exports.md)已在Web／Taro接通三种口径、期间／项目或公司／原币／类别／供应方／经办或负责人／关键词、签名明细与本人任务分页、独立导出授权、实际worker快照及24小时重新鉴权下载。增量87的当前预算对比继续保留。只代表授权记录；跨OA旅程、更多财务写入、汇率制度、实体设备及生产验收仍按GAP-03／18推进。 Implementation trace: complete authorized filters, canonical sources and owner-only asynchronous expiring CSV exports are implemented; currency policy, broader workflows and production acceptance remain open.
 
 版本：v1.0-draft；日期：2026-10-23；关联 U-16、ADR-06、Q-07。系统提供经营台账，不实现会计总账或资金执行。

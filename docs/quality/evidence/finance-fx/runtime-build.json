@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-28T14:49:58.408861+00:00",
+  "source_sha256": "aa554534e9709007cb7e98d727201bf82be6ba9b2ac6da84c86d538821e605bb",
+  "source_files": 54,
+  "tests": {
+    "pass": 52,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T14:36:57.738808+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/finance-fx-client-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T14:37:44.509494+00:00",
+      "test_count": 52,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "7b8b36b5e9c743a32264652e370834af4971f6a80bcee47225b0cab29bc24780",
+      "raw_log": "ignored app/.local/finance-fx-client-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T14:38:00.222641+00:00",
+      "test_count": null,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/finance-fx-client-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "fbd0711c24ee19a6300326ae41667746ed1bf54f887a7deaf5b71c67eee54444"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "9b4ec05a34c8dc03d7509a817f2643155d2425f096a5d7c170a3b88ab42a392a",
+    "summary_adapter_sha256": "5762670faf627d4423b2d4030c96bec0e01a8bc86beda442304bdb2317d10cfb",
+    "adapter_reran_tests": false
+  }
+}

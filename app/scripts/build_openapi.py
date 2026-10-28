@@ -1829,20 +1829,51 @@ PATHS["/projects/{id}/changes"]["get"]["parameters"].extend([
     {"name": "state", "in": "query", "schema": enum("draft", "in_review", "approved", "rejected", "withdrawn", "implemented")}])
 
 # Financial reports and immutable, expiring asynchronous exports.
+# Immutable manual FX valuation policy; reporting remains distinct from settlement.
+fx_rate = {"currency":CURRENCY,"valid_from":DATE,"valid_to":DATE,"rate_date":DATE,
+    "rate":{"type":"string","pattern":r"^(0|[1-9][0-9]{0,9})(\.[0-9]{1,10})?$"},"source":NAME}
+add("FinanceFXRate",fx_rate,tuple(fx_rate))
+fx_content = {"title":NAME,"base_currency":CURRENCY,"method":enum("manual_interval"),"rounding":enum("scope_line_half_up"),"rates":array(ref("FinanceFXRate"),maxItems=2000)}
+add("FinanceFXContent",fx_content,tuple(fx_content))
+fx_book = {"id":ID,"revision":VERSION,"title":NAME,"base_currency":CURRENCY,"rate_count":{"type":"integer","minimum":0,"maximum":2000},
+    "content_sha256":HASH,"creator_id":ID,"reason":NAME,"created_at":TIME}
+add("FinanceFXBook",{**fx_book,"content":ref("FinanceFXContent")},tuple(fx_book))
+add("FinanceFXPolicy",{"version":{"type":"integer","minimum":0,"maximum":9007199254740991},"current":nullable(ref("FinanceFXBook"))},("version","current"))
+add("FinanceFXBookCreate",{"expected_version":{"type":"integer","minimum":0,"maximum":9007199254740991},"content":ref("FinanceFXContent"),"acknowledged":{"type":"boolean","enum":[True]},"reason":NAME},("expected_version","content","acknowledged","reason"))
+fx_decimal = {"type":"string","pattern":r"^-?(0|[1-9][0-9]*)(\.[0-9]{1,6})?$"}
+fx_count = {"type":"integer","minimum":0,"maximum":9007199254740991}
+fx_source = {"status":enum("identity","converted","missing_rate","unconfirmed","unpriced"),"fx_date":DATE,
+    "base_amount":nullable(fx_decimal),"rate":nullable(fx_rate["rate"]),"rate_index":nullable({"type":"integer","minimum":0,"maximum":1999}),
+    "rate_date":nullable(DATE),"rate_source":nullable(NAME),"valid_from":nullable(DATE),"valid_to":nullable(DATE)}
+add("FinancialSourceValuation",fx_source,tuple(fx_source))
+fx_group = {"currency":nullable(CURRENCY),"covered_count":fx_count,"missing_rate_count":fx_count,"unpriced_count":fx_count,"unconfirmed_count":fx_count,
+    "covered_amount":fx_decimal,"missing_native_amount":fx_decimal}
+add("FinancialValuationCurrency",fx_group,tuple(fx_group))
+fx_valuation = {"source_coverage_complete":{"type":"boolean"},"book":ref("FinanceFXBook"),"exponent":{"type":"integer","minimum":0,"maximum":6},"method":enum("manual_interval"),"rounding":enum("scope_line_half_up"),
+    "coverage":enum("complete","partial","none"),"covered_amount":fx_decimal,"total_amount":nullable(fx_decimal),
+    "covered_count":fx_count,"missing_rate_count":fx_count,"unpriced_count":fx_count,"unconfirmed_count":fx_count,"currencies":array(ref("FinancialValuationCurrency"))}
+add("FinancialReportValuation",fx_valuation,tuple(fx_valuation))
+operation("/finance/fx-policy","get","readFinanceFXPolicy","FinanceFXPolicy")
+operation("/finance/fx-books","get","listFinanceFXBooks","FinanceFXBook",listing=True)
+operation("/finance/fx-books/{id}","get","readFinanceFXBook","FinanceFXBook")
+operation("/finance/fx-books","post","publishFinanceFXBook","FinanceFXBook","FinanceFXBookCreate",201)
+for fx_path in ("/finance/fx-policy","/finance/fx-books","/finance/fx-books/{id}"):
+    PATHS[fx_path]["get"]["parameters"] += [{"name":"project_id","in":"query","schema":ID}]
+
 report_query_fields = {"kind": enum("incurred", "cash", "forecast"), "from": DATE, "to": DATE,
     "currency": {"type":"string","pattern":"^([A-Z]{3})?$"}, "category":{"type":"string","maxLength":50},
     "q":{"type":"string","maxLength":200}, "project_id":nullable(ID), "company_only":{"type":"boolean"},
-    "supplier_id":nullable(ID), "owner_id":nullable(ID)}
+    "supplier_id":nullable(ID), "owner_id":nullable(ID), "fx_book_id":nullable(ID)}
 add("FinancialReportQuery", report_query_fields, ("kind","from","to","company_only"))
 report_source_fields = {"source_type":enum("cost","payment","subscription_period"), "id":ID,"resource_id":ID,"revision_id":ID,
     "version":VERSION,"title":{"type":"string","maxLength":20000},"from":DATE,"to":nullable(DATE),"state":NAME,"entry_kind":enum("expense","reversal","payment","forecast"),
     "currency":nullable(CURRENCY),"original_amount":nullable(MONEY),"contribution_amount":nullable({"type":"string","pattern":r"^-?(0|[1-9][0-9]*)(\.[0-9]{1,6})?$"}),
     "category":{"type":"string","maxLength":50},"supplier_id":nullable(ID),"owner_id":ID,"project_id":nullable(ID),"created_at":TIME}
 report_source_fields["timezone"] = {"type":"string","minLength":1,"maxLength":100}
-add("FinancialReportSource", report_source_fields, tuple(report_source_fields))
+add("FinancialReportSource", {**report_source_fields,"valuation":ref("FinancialSourceValuation")}, tuple(report_source_fields))
 add("FinancialReport", {"filters":ref("FinancialReportQuery"),"scope":enum("authorized_records_only"),
     "summary":{"anyOf":[ref("CostReport"),ref("CashReport"),ref("ForecastReport")]},
-    "items":array(ref("FinancialReportSource")),"next_cursor":nullable(CURSOR)}, ("filters","scope","summary","items","next_cursor"))
+    "items":array(ref("FinancialReportSource")),"next_cursor":nullable(CURSOR),"valuation":ref("FinancialReportValuation")}, ("filters","scope","summary","items","next_cursor"))
 export_fields = {"id":ID,"job_id":ID,"filters":ref("FinancialReportQuery"),"state":enum("queued","running","retry_wait","succeeded","dead","cancelled","expired"),
     "attempt":{"type":"integer","minimum":0,"maximum":4},"error_code":nullable(TEXT),"created_at":TIME,"expires_at":TIME,"as_of":nullable(TIME),
     "row_count":nullable({"type":"integer","minimum":0,"maximum":50000}),"csv_bytes":nullable({"type":"integer","minimum":1,"maximum":16777216}),
@@ -1854,7 +1885,7 @@ add("FinancialReportExportCancel",{"reason":report_reason},("reason",))
 chunk_fields={"export_id":ID,"filename":NAME,"sha256":HASH,"total_size_bytes":BYTES,"offset":BYTES,"length":BYTES,"chunk_sha256":HASH,"data_base64":{"type":"string","maxLength":699052}}
 add("FinancialReportExportChunk",chunk_fields,tuple(chunk_fields))
 operation("/finance/reports","get","readFinancialReport","FinancialReport")
-PATHS["/finance/reports"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id") else ID} for key,schema in report_query_fields.items()]
+PATHS["/finance/reports"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id","fx_book_id") else ID} for key,schema in report_query_fields.items()]
 PATHS["/finance/reports"]["get"]["parameters"] += [{"name":"cursor","in":"query","schema":CURSOR},{"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":100,"default":20}}]
 operation("/finance/report-exports","post","createFinancialReportExport","FinancialReportExport","FinancialReportExportCreate",202)
 operation("/finance/report-exports","get","listFinancialReportExports","FinancialReportExport",listing=True)
@@ -1868,7 +1899,7 @@ PATHS["/finance/report-exports/{id}/download"]["get"]["responses"]["200"]={"desc
 
 add("FinancialReportOption",{"id":ID,"value":{"type":"string","maxLength":50},"label":{"type":"string","minLength":1,"maxLength":500}},("id","value","label"))
 operation("/finance/report-options","get","readFinancialReportOptions","FinancialReportOption",listing=True)
-PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id") else ID} for key,schema in report_query_fields.items()]
+PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id","fx_book_id") else ID} for key,schema in report_query_fields.items()]
 PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":"field","in":"query","required":True,"schema":enum("category","supplier","owner")},{"name":"option_search","in":"query","schema":{"type":"string","maxLength":200}}]
 
 document = {

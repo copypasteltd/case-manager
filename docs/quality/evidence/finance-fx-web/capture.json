@@ -1,0 +1,46 @@
+{
+  "recordings": [
+    {
+      "name": "finance-fx-web",
+      "frame_count": 20,
+      "duration_ms": 4169,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/finance-fx-web/frames.json",
+      "manifest_sha256": "3e83fb576219bd444a933315c693edb5e9aadfc30b24ba8731b7022e6773999c"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "height": 1000,
+      "valuation_visible": true
+    },
+    {
+      "width": 768,
+      "height": 1000,
+      "valuation_visible": true
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "valuation_visible": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/finance-fx-web-before.png",
+      "sha256": "275b8749084536c5940ca722433684059270c4ec5e3bdb98ea0af0251bd00247"
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-web-after.png",
+      "sha256": "48e035c177166ce2c6ef846b2f9dee89dbd68bbf0adc34d5ffb3c7321706917f"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

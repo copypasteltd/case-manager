@@ -19,3 +19,5 @@
 - 保留完整四端目标，区分本地检查、原证据复用与真实设备／云／模型／生产验收，不以开发包、合成演示或单元测试替代正式验收。
 
 - Increment101 adds selected OA prose proposals and explicit human adoption; keep full contract-body attachments, wider OA tools and real model/Skill acceptance open under GAP-04/12/13. See `docs/development/101-oa-prose-drafting.md`.
+
+- Increment102 adds explicit manual FX book publication and pinned report valuation across four clients. Cross-currency settlement, exchange fees/differences, amortization and full GAP-03 acceptance remain open. See `docs/development/102-finance-fx-valuation.md`.

@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T14:58:46.378770+00:00",
+  "encoder_script_sha256": "c3db98b0c9f1ea193774049113b1bbdedd7509f29b1a3bec0cfa3cdeeca202c8",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "c49417c1062290c803217f9570c4fa4e661c864f51974c8e1ce2662090d3f5d8",
+      "build_source_sha256": "33a99f2228091e8c2dc5215bff751e3199deba84b4749da65b18a6b0bbc1e9a8",
+      "capture_manifest": "docs/quality/evidence/finance-fx/web-capture-manifest.json",
+      "capture_manifest_sha256": "e640fb0052f1f2572c4212ae95fed5899c8026a92777cf3192e89af83483f887",
+      "capture_frame_count": 15,
+      "capture_duration_ms": 17184,
+      "gif_speed_multiplier": 1.1456,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "171",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "17.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/finance-fx-web.mp4",
+          "sha256": "431a696be2c7777b9b2b24b30daa4e71da694e5c3a2d10c5b1914ca6febc9335",
+          "bytes": 436771
+        },
+        {
+          "file": "docs/media/gifs/finance-fx-web.gif",
+          "sha256": "66e88bda3290f00e5a618f53cb26d3bc69971b53a9871a22d3f0a84ddca7c620",
+          "bytes": 193062
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "ea5564d36ae9f250b0fe52d9d57312c0f0df3143b190ddb43653b6ab0df5d731",
+      "build_source_sha256": "33a99f2228091e8c2dc5215bff751e3199deba84b4749da65b18a6b0bbc1e9a8",
+      "capture_manifest": "docs/quality/evidence/finance-fx/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "7444f79eb9cacce0e162dbbab26980ede500a6e0dfd4bb7cd64bdf20986dc6dc",
+      "capture_frame_count": 18,
+      "capture_duration_ms": 4555,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "48",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/finance-fx-mobile.mp4",
+          "sha256": "1480787984a0060d63d6e42765bac060997d261d9d31e82b25ea40a0e97fb445",
+          "bytes": 222124
+        },
+        {
+          "file": "docs/media/gifs/finance-fx-mobile.gif",
+          "sha256": "4b1745f821543e8ec847ae65a83a186497506db78f37825df0d35da400fb59b3",
+          "bytes": 872302
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

@@ -91,11 +91,14 @@ func CursorBinding(a Actor, scope ...string) string {
 
 type Command struct {
 	AuthorizationMutation bool
-	Actor                 Actor
-	RequestID             string
-	Route                 string
-	Key                   string
-	Body                  []byte
+	// Configuration writes that update the organization must acquire this lock
+	// before any shared authorization lock, avoiding lock-upgrade deadlocks.
+	ExclusiveOrganizationLock bool
+	Actor                     Actor
+	RequestID                 string
+	Route                     string
+	Key                       string
+	Body                      []byte
 }
 type Event struct {
 	BeforeDigest string

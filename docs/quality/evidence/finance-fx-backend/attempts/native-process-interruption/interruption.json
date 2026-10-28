@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "classification": "interrupted",
+  "observed_at": "2026-10-28T14:46:25.201330+00:00",
+  "native_parent_handle_missing": true,
+  "owned_backend_processes_live": false,
+  "postgres_was_unreachable": true,
+  "reason": "The batch process ended without a final result and the configured native PostgreSQL was stopped; cause is not asserted. This attempt contributes no final passing evidence.",
+  "raw_log": "ignored app/.local/finance-fx-backend-batch-1.log",
+  "raw_log_sha256": "78bc007e72564054c0308606f799629469dbf7421091edef29e7afe303f8fc5a"
+}

@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-28T15:42:42.398413+00:00",
+  "stage": "Native H5 build before browser launch",
+  "build_completed": false,
+  "reason": "The npm wrapper did not exit before the 480-second build timeout. A webpack completion message alone does not establish a completed build. The fixture was released and the runner stopped its owned native process tree. No page acceptance is claimed.",
+  "native_fixture_exit_code": null,
+  "owned_browser_launched": false,
+  "raw_logs": [
+    {
+      "private_log": "finance-fx-mobile-timeout-run02.log",
+      "sha256": "dd12e61570147579b88c680eb6b13aa9e7a490596f4751284573736ff4d2347d"
+    },
+    {
+      "private_log": "finance-fx-mobile-timeout-build.log",
+      "sha256": "7874c6ea21bd83ccdb3fe3ad77f1354a8a8a3c9803c5d2d8860960daf157ffe0"
+    },
+    {
+      "private_log": "finance-fx-mobile-timeout-native.log",
+      "sha256": "917751e2885412e37b4e713aed3333b59f8672c24a749293f330b454740e09ba"
+    }
+  ],
+  "retry": "Direct Node Taro CLI, tracked child process handles, bounded full-tree termination and normal 150-second fixture cleanup."
+}

@@ -55,7 +55,14 @@ func (s *Service) CreateReportExport(ctx context.Context, c core.Command, in Rep
 		return core.Result{}, core.Invalid("reason", "由员工明确填写1至2000字的导出用途")
 	}
 	return s.Commands.Do(ctx, c, func(tx pgx.Tx) error {
-		return reportAuthority(ctx, tx, c.Actor, in.Filters, true)
+		if err := reportAuthority(ctx, tx, c.Actor, in.Filters, true); err != nil {
+			return err
+		}
+		if in.Filters.FXBookID != nil {
+			_, err := readFXBook(ctx, tx, c.Actor.OrgID, *in.Filters.FXBookID, false)
+			return err
+		}
+		return nil
 	}, func(tx pgx.Tx) (core.Result, error) {
 		id := core.NewID()
 		payload, _ := json.Marshal(map[string]string{"export_id": id})
@@ -185,6 +192,9 @@ func (s *Service) ProcessReportExport(ctx context.Context, j jobqueue.Job) error
 	}
 	if len(snapshot.Report.Items) > ReportExportMaxRows {
 		return core.Fail(422, "EXPORT_SCOPE_TOO_LARGE", "导出超过50000条，请缩小期间或筛选；不会生成截断文件")
+	}
+	if err = applyReportValuation(ctx, tx, actor, &snapshot.Report); err != nil {
+		return err
 	}
 	for _, row := range snapshot.Report.Items {
 		snapshot.References = append(snapshot.References, reportReference{Kind: row.SourceType, ID: row.ResourceID, RevisionID: row.RevisionID})

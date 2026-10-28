@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T15:34:44.560054+00:00",
+  "database": "cp_test_eacc81fb0e6e4328a063bc6e14494e02",
+  "test": "TestAgentFinanceSummary",
+  "test_started_at": "2026-10-28T22:34:48.8938392+08:00",
+  "interruption_observed_at": "2026-10-28T14:46:25.201330+00:00",
+  "database_directory_created_at": "2026-10-28T14:34:48.938292+00:00",
+  "creation_within_interrupted_case": true,
+  "original_batch_log_sha256": "78bc007e72564054c0308606f799629469dbf7421091edef29e7afe303f8fc5a",
+  "before": {
+    "oid": "89465660",
+    "owner": "postgres",
+    "template": false,
+    "connections": 0
+  },
+  "published_fixture_source_matched": true,
+  "standard_synthetic_seed_verified": true,
+  "restoration_fixture_shape_verified": true,
+  "commercial_records_empty": true,
+  "source_migration_ledger_matched": true,
+  "migration_count": 81,
+  "removed": true,
+  "forced_disconnect": false,
+  "postgres_restarted": false,
+  "production_database_touched": false,
+  "script_sha256": "68a932b998b8a6a5f6c4b86680b12dec87afcdf5703178950d21a39820918d00"
+}

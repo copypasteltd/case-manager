@@ -411,6 +411,7 @@ func TestFinancialReportsAndExports(t *testing.T) {
 			}
 		}
 	})
+	fxBook := exerciseFXValuation(t, f, pid, first)
 	// The browser reuses these actual fixed arithmetic fixtures and the same
 	// processor, with no cloud credentials or fabricated API responses.
 	if os.Getenv("CP_BROWSER_FINANCIAL_REPORTS_FIXTURE") == "1" && !t.Failed() {
@@ -434,7 +435,7 @@ func TestFinancialReportsAndExports(t *testing.T) {
 		}()
 		func() {
 			defer func() { stop(); <-done }()
-			holdBrowserBusinessFixture(t, f, map[string]any{"project_id": pid, "supplier_id": supplier.ID, "owner_id": f.alice, "financial_reports_fixture": true, "first_export_id": first.ID})
+			holdBrowserBusinessFixture(t, f, map[string]any{"project_id": pid, "supplier_id": supplier.ID, "owner_id": f.alice, "financial_reports_fixture": true, "first_export_id": first.ID, "finance_fx_fixture": true, "fx_book_id": fxBook.ID})
 		}()
 	}
 	run("expiry_hides_derived_metadata_and_purges_only_payload", func(t *testing.T) {

@@ -30,6 +30,9 @@ func reportCSV(snapshot reportSnapshot) ([]byte, error) {
 	w := csv.NewWriter(&output)
 	w.UseCRLF = true
 	header := []string{"section", "report_kind", "source_type", "source_id", "resource_id", "revision_id", "version", "period_start", "period_end", "title", "state", "entry_kind", "currency", "original_amount", "contribution_amount", "category", "supplier_id", "owner_id", "project_id", "created_at", "metadata_key", "metadata_value", "timezone"}
+	if snapshot.Report.Valuation != nil {
+		header = append(header, "base_currency", "fx_status", "fx_date", "base_amount", "fx_rate", "fx_rate_index", "fx_rate_date", "fx_rate_source", "fx_valid_from", "fx_valid_to")
+	}
 	if err := w.Write(header); err != nil {
 		return nil, err
 	}
@@ -49,8 +52,32 @@ func reportCSV(snapshot reportSnapshot) ([]byte, error) {
 			return nil, err
 		}
 	}
+	if snapshot.Report.Valuation != nil {
+		b, e := json.Marshal(snapshot.Report.Valuation)
+		if e != nil {
+			return nil, e
+		}
+		b, e = core.CanonicalJSON(b)
+		if e != nil {
+			return nil, e
+		}
+		if e = metadata("valuation", string(b)); e != nil {
+			return nil, e
+		}
+	}
 	for _, v := range snapshot.Report.Items {
 		row := []string{"source", snapshot.Report.Filters.Kind, v.SourceType, v.ID, v.ResourceID, v.RevisionID, strconv.FormatInt(v.Version, 10), v.From, value(v.To), csvText(v.Title), v.State, v.EntryKind, value(v.Currency), value(v.OriginalAmount), value(v.ContributionAmount), csvText(v.Category), value(v.SupplierID), v.OwnerID, value(v.ProjectID), v.CreatedAt.UTC().Format("2006-01-02T15:04:05.999999999Z07:00"), "", "", v.Timezone}
+		if snapshot.Report.Valuation != nil {
+			fx := v.Valuation
+			if fx == nil {
+				return nil, core.Fail(500, "FX_SOURCE_MISSING", "报表折算来源缺失")
+			}
+			index := ""
+			if fx.RateIndex != nil {
+				index = strconv.Itoa(*fx.RateIndex)
+			}
+			row = append(row, snapshot.Report.Valuation.Book.BaseCurrency, fx.Status, fx.FXDate, value(fx.BaseAmount), value(fx.Rate), index, value(fx.RateDate), csvText(value(fx.RateSource)), value(fx.ValidFrom), value(fx.ValidTo))
+		}
 		if err = w.Write(row); err != nil {
 			return nil, err
 		}
