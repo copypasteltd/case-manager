@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T19:23:48.551629+00:00",
+  "source_sha256": "aa35916fb064259b4f9baff0b541e9ebddf240c467ca700ea2a3e1952a14ffb7",
+  "freezer_sha256": "3de5160c0189e91a5bc2806c43629795c53782f73394471ff207cafd75adece5",
+  "logs": [
+    {
+      "batch": 1,
+      "raw_log": ".local/multipart-cleanup-backend/batch-1.log",
+      "sha256": "543c309c7da7ebd76c1c8f7513d8e1daa01147baebd9c7d43e5ba282ab969077",
+      "bytes": 166851,
+      "records": 133,
+      "started_at": "2026-10-28T18:35:22.559322+00:00",
+      "completed_at": "2026-10-28T18:39:02.848464+00:00"
+    },
+    {
+      "batch": 2,
+      "raw_log": ".local/multipart-cleanup-backend/batch-2.log",
+      "sha256": "95ebf3c7397f416c4933130818f7fa76035d40d6cb04169d462591b2fb888326",
+      "bytes": 238232,
+      "records": 205,
+      "started_at": "2026-10-28T18:39:02.949299+00:00",
+      "completed_at": "2026-10-28T18:46:15.444871+00:00"
+    },
+    {
+      "batch": 3,
+      "raw_log": ".local/multipart-cleanup-backend/batch-3.log",
+      "sha256": "1863950fb2d84dc85d2f49478b96f079b919c73a7852a81c8426ffff62327b16",
+      "bytes": 160653,
+      "records": 122,
+      "started_at": "2026-10-28T18:46:15.539825+00:00",
+      "completed_at": "2026-10-28T18:53:56.121153+00:00"
+    },
+    {
+      "batch": 4,
+      "raw_log": ".local/multipart-cleanup-backend/batch-4.log",
+      "sha256": "712fce791c3cb25fad48d9bc4430fa66a2af882010abf7cc3b3764dd71915950",
+      "bytes": 74961,
+      "records": 60,
+      "started_at": "2026-10-28T18:53:56.235686+00:00",
+      "completed_at": "2026-10-28T18:57:12.971712+00:00"
+    },
+    {
+      "batch": 5,
+      "raw_log": ".local/multipart-cleanup-backend/batch-5.log",
+      "sha256": "ceb0c3cfbad1d36589fc48f219e8247e7adfae5d47033b450afdde4e6753a005",
+      "bytes": 119483,
+      "records": 96,
+      "started_at": "2026-10-28T18:57:13.069863+00:00",
+      "completed_at": "2026-10-28T19:03:56.898265+00:00"
+    },
+    {
+      "batch": 6,
+      "raw_log": ".local/multipart-cleanup-backend/batch-6.log",
+      "sha256": "7bf75ee8bf9c512a0f001bfa1471b8a8e06c9a4fa79d494b5911012c701b1312",
+      "bytes": 72864,
+      "records": 52,
+      "started_at": "2026-10-28T19:03:57.010775+00:00",
+      "completed_at": "2026-10-28T19:07:38.103237+00:00"
+    },
+    {
+      "batch": 7,
+      "raw_log": ".local/multipart-cleanup-backend/batch-7.log",
+      "sha256": "70f4804e9de1ddbc8ea043ff6c033aaafa4fb47918b42a0c39687c95a2fc825e",
+      "bytes": 279460,
+      "records": 225,
+      "started_at": "2026-10-28T19:07:38.192072+00:00",
+      "completed_at": "2026-10-28T19:11:35.590112+00:00"
+    },
+    {
+      "batch": 8,
+      "raw_log": ".local/multipart-cleanup-backend/batch-8.log",
+      "sha256": "78cd9a880fba84587c7cca5e614af8ca1b14ee50e2d4e8d1e9cb0fdf94943027",
+      "bytes": 138613,
+      "records": 107,
+      "started_at": "2026-10-28T19:11:35.719114+00:00",
+      "completed_at": "2026-10-28T19:14:51.856223+00:00"
+    },
+    {
+      "batch": 9,
+      "raw_log": ".local/multipart-cleanup-backend/batch-9.log",
+      "sha256": "6793a0440e9512330f7f2f9dae409d1aac2d4d0682f045bcef55930d12fce0b3",
+      "bytes": 148458,
+      "records": 128,
+      "started_at": "2026-10-28T19:14:51.955234+00:00",
+      "completed_at": "2026-10-28T19:17:46.853094+00:00"
+    },
+    {
+      "batch": 10,
+      "raw_log": ".local/multipart-cleanup-backend/batch-10.log",
+      "sha256": "e83b39ced0a9b74722da0aefc73e58e5bf23e726394bafa5e0211bf9be62f6e7",
+      "bytes": 135917,
+      "records": 108,
+      "started_at": "2026-10-28T19:17:46.973280+00:00",
+      "completed_at": "2026-10-28T19:23:03.593146+00:00"
+    }
+  ],
+  "records": 1236,
+  "raw_logs_private": true,
+  "prior_increments_raw_logs_reverified": false,
+  "scope": "Only this completed current-source run is archived; no prior private log retention claim."
+}

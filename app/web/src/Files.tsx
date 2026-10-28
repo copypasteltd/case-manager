@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Folder, FileText, FolderPlus, Sear
 import { api, ApiError, type Me, type Page, type Schemas } from './api';
 import { Busy, classificationNames, date, Dialog, Empty, ErrorNotice, Field } from './components';
 import { DownloadDialog } from './DownloadDialog';
+import { MultipartCleanup } from './MultipartCleanup';
 import { UploadButton } from './UploadQueue';
 import { HistoryRestores, RestoreVersionButton } from './HistoryRestores';
 import { useRetention, RetentionPanel, RetentionVersionActions } from './Retention';
@@ -48,6 +49,7 @@ export function FilesPage({ me }: { me: Me }) {
     <div className="page-heading"><div><span className="eyebrow">EVERY FILE HAS ITS PLACE</span><h1>{folder.data?.name ?? '文件与资料'}<span className="accent">.</span></h1><p>{folder.data ? classificationNames[folder.data.classification] + ' · 按权限管理的资料目录' : '整理公司与项目资料，追踪版本和备份进度。'}</p></div>
       <div className="post-actions"><UploadButton folder={folder.data} />{((folder.data?.can_create) || (!folderID && !projectID && me.actions.includes('folder.create'))) && <button className="button primary" onClick={() => setCreating(true)}><FolderPlus size={17} />新建目录</button>}</div></div>
     {folder.data?.project_id && <p className="filter-caption"><Link className="text-button" to={'/projects/' + folder.data.project_id}>查看关联项目<ArrowUpRight size={15} /></Link></p>}
+    {folder.data && me.actions.includes('file.retention.manage') && <MultipartCleanup key={folderID} folder={folder.data} me={me} />}
     <div className="toolbar"><form className="search-field" onSubmit={event => { event.preventDefault(); setSearch(String(new FormData(event.currentTarget).get('q') ?? '').trim()); }}><Search size={18} /><input name="q" maxLength={200} aria-label="搜索文件与目录" placeholder="搜索当前范围的名称" /><button type="submit" aria-label="搜索"><ArrowRight size={17} /></button></form><select aria-label="文件状态" value={state} onChange={event => setState(event.target.value)}><option value="active">当前文件</option><option value="trashed">回收站</option></select></div>
     <ErrorNotice error={folder.error ?? directories.error ?? files.error} />
     {state === 'active' && <section className="section-block"><div className="section-heading"><h2>资料目录</h2><small className="muted">仅显示获授权的目录</small></div>{directories.isPending ? <Busy label="正在读取目录" /> : folders.length ? <div className="directory-grid">{folders.map(item => <div className="panel directory-card" key={item.id}><Link to={folderURL(item.id)}><Folder size={24} /><div><strong>{item.name}</strong><small>{classificationNames[item.classification]}</small></div><ArrowUpRight size={17} /></Link>{item.can_update && <button className="icon-button" aria-label={'修改目录 ' + item.name} onClick={() => setMoving(item)}><Pencil size={16} /></button>}</div>)}</div> : !directories.error && <div className="panel"><Empty title="当前没有可见的子目录" detail={folderID ? '可在此整理项目资料。' : '项目创建时会生成资料根目录，也可以新建公司资料目录。'} /></div>}<LoadMore count={folders.length} more={!!directories.hasNextPage} busy={directories.isFetchingNextPage} load={() => void directories.fetchNextPage()} /></section>}

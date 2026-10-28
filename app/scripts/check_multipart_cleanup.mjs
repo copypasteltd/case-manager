@@ -1,0 +1,66 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import { notificationBrowser, waitOTP } from './multipart_cleanup_browser_common.mjs';
+import { mobileScreen } from './mobile_picker_browser.mjs';
+import { assertNoCredentials, recordViewport } from './multipart_cleanup_recording.mjs';
+
+const mobile = process.argv.includes('--mobile'), app = fileURLToPath(new URL('../', import.meta.url));
+await notificationBrowser(mobile, async ({ page, fixture, checks, evidence }) => {
+  page.setDefaultNavigationTimeout(90000);
+  const root = () => mobile ? mobileScreen(page) : page;
+  const button = name => root().getByRole('button', { name, exact: true });
+  const input = name => mobile ? root().locator('input[aria-label="' + name + '"]') : page.getByLabel(name, { exact: true });
+  await page.goto(fixture.origin);
+  await input('内部账号').fill(fixture.alice.login); await input('密码').fill(fixture.alice.password);
+  await button(mobile ? '登录工作空间 ↗' : '登录工作空间').click();
+  await input('六位验证码').fill(await waitOTP(fixture)); await button(mobile ? '验证并继续 ↗' : '验证并继续').click();
+  if (mobile) await root().locator('.cp-title').filter({ hasText: '工作从这里开始' }).waitFor();
+  else await page.getByRole('heading', { name: /工作从这里开始/ }).waitFor();
+  await page.goto(fixture.origin + (mobile ? '/#/pages/files/index?folder_id=' : '/files/folders/') + fixture.folder_id);
+  await button('盘点与清理').click();
+  const selection = root().getByText('选择清理 Synthetic abandoned upload.bin', { exact: true });
+  if (mobile) await selection.waitFor(); else await page.getByRole('checkbox', { name: '选择清理 Synthetic abandoned upload.bin' }).waitFor();
+  checks.push('Current folder grants expose the actual paginated candidate and retained completed plan through native API.');
+  const directory = path.join(app, '../docs/media/screenshots'); await mkdir(directory, { recursive: true });
+  const prefix = 'multipart-cleanup-' + (mobile ? 'mobile' : 'web');
+  const screenshots = [];
+  async function shot(suffix) {
+    await assertNoCredentials(page);
+    const filename = prefix + '-' + suffix + '.png', target = path.join(directory, filename);
+    await page.screenshot({ path: target });
+    screenshots.push({ file: 'docs/media/screenshots/' + filename, sha256: createHash('sha256').update(await readFile(target)).digest('hex') });
+  }
+  let created;
+  const recording = await recordViewport(page, app, prefix, async () => {
+    await (mobile ? selection : page.getByRole('checkbox', { name: '选择清理 Synthetic abandoned upload.bin' })).scrollIntoViewIfNeeded();
+    await shot('inventory');
+    if (mobile) await selection.click(); else await page.getByRole('checkbox', { name: '选择清理 Synthetic abandoned upload.bin' }).check();
+    const reason = mobile ? root().locator('textarea[aria-label="清理原因"]') : page.getByLabel('清理原因', { exact: true });
+    await reason.fill('Synthetic explicit selection; wait for observation before approval.');
+    const pending = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/upload-cleanup-plans'));
+    await button('建立固定清单并进入观察期').click();
+    const response = await pending; assert.equal(response.status(), 201); created = (await response.json()).data;
+    assert.equal(created.state, 'observing'); assert.deepEqual(created.snapshot.items.map(v => v.upload_id), [fixture.eligible_upload_id]);
+    assert.ok(Date.parse(created.ready_after) - Date.parse(created.created_at) >= 86400000);
+    await root().getByText(created.snapshot_sha256, { exact: true }).waitFor();
+    await root().getByText(created.snapshot_sha256, { exact: true }).scrollIntoViewIfNeeded();
+    await shot('observation');
+    checks.push('Explicit selection creates one immutable observing plan; the page shows its exact digest and observation window.');
+    if (mobile) await root().getByText('已批准 · 1 项', { exact: true }).click();
+    else await button('查阅固定清单').nth(1).click();
+    await button('查阅逐次回执').click();
+    await root().getByText('逐次执行回执', { exact: true }).waitFor();
+    const confirmed = root().getByText(/已确认分片不存在/).last(); await confirmed.waitFor(); await confirmed.scrollIntoViewIfNeeded();
+    await shot('receipts');
+    checks.push('An earlier synthetic worker result is read from immutable native-PG receipt rows, with started and confirmed-absence outcomes.');
+    await button('刷新此清单').click();
+    await button('查阅逐次回执').click(); await root().getByText('逐次执行回执', { exact: true }).waitFor();
+    checks.push('Explicit refresh rereads the selected plan and receipts without resubmitting the cleanup command.');
+  });
+  await writeFile(path.join(evidence, 'screenshots.json'), JSON.stringify({ screenshots, credentials_excluded: true, synthetic_data: true }, null, 2) + '\n');
+  await writeFile(path.join(evidence, 'recording.json'), JSON.stringify(recording, null, 2) + '\n');
+  await writeFile(path.join(evidence, 'business-proof.json'), JSON.stringify({ created_plan_id: created.id, snapshot_sha256: created.snapshot_sha256, candidate_count: 1, completed_plan_id: fixture.completed_plan_id, real_cloud: false, observation_clock_advanced_only_in_prior_fixture: true, scope: fixture.fixture_scope }, null, 2) + '\n');
+}, 'multipart-cleanup');

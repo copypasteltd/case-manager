@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+最新增量104：GAP-05新增已知未完成分片清理子流程，支持四端目录盘点、固定候选、观察期、MFA人工批准、撤销、重试与独立Worker逐次回执。正式历史版本、已完成草稿及未知孤儿清理继续开放；真实云配置仍属GAP-20。当前23项（14 P0／9 P1）待完成、5项移出。见[开发](../development/104-multipart-cleanup.md)及[验证](../quality/104-multipart-cleanup-verification.md)。
+
 最新增量101：完成GAP-12中的合同条款／备注、采购／报销用途／备注起草子流程。员工固定字段和业务修订，秘书保存不可变建议及已读来源，员工对照核对后原子采用；已接入Web和共享Taro组件、MCP及迁移80。正式合同正文附件、更多OA申请、跨任务能力及真实模型／Skill评测仍在GAP-04／12／13。23个完整工作包保持开放，5项移出。见[实现](../development/101-oa-prose-drafting.md)和[验证](../quality/101-oa-prose-verification.md)。
 
 最新增量100：完成GAP-09内AI费用前置适配。接单与执行不再调用费用策略／预留；技术用量经迁移79直接绑定租户与运行；旧费用写入API停用、应用DB角色撤销相应INSERT、Web与Taro保留只读历史。保留身份、权限、隔离和技术限制。23项完整工作包仍开放、5项移出；详见[开发说明](../development/100-secretary-execution-without-cost-quota.md)及[验证](../quality/100-secretary-execution-verification.md)。

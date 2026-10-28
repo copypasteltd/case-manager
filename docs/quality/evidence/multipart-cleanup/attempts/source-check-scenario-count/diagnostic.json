@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "category": "verification-script-count-assumption",
+  "expected_minimum_records": 22,
+  "actual_matching_records": 21,
+  "all_matching_tests_passed": true,
+  "application_sources_changed": false,
+  "private_verifier": "app/.local/multipart-cleanup-source-check-attempt-01.py",
+  "verifier_sha256": "928860c915ccf95a603f4e8c32bba02e323bff0c5789f9dbeb405a365c8decfe",
+  "correction": "Require the fourteen named safety scenarios instead of an invented minimum result count."
+}

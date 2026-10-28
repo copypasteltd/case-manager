@@ -1,0 +1,66 @@
+{
+  "attempts": [
+    {
+      "raw_log": "ignored app/.local/multipart-cleanup-focused-attempt-01.log",
+      "raw_log_sha256": "3d18de3b5dd4cae6a2e245dfa9a46d2d1281bbddf6d413bff39b6fe97ae1b32e",
+      "raw_log_retained": true,
+      "result_records": {
+        "pass": 18,
+        "fail": 14
+      },
+      "all_test_records_passed": false,
+      "note": "Initial integration: wrong bool binding, attempt key and Web cookie fixture.",
+      "source_digest_recorded": false,
+      "counts_as_final_current_source_proof": false
+    },
+    {
+      "raw_log": "ignored app/.local/multipart-cleanup-diagnostic-02.log",
+      "raw_log_sha256": "a5fb34a156c41c178e5cdb2118cb081fd51439f9e4bea684697af487509d07db",
+      "raw_log_retained": true,
+      "result_records": {
+        "fail": 4
+      },
+      "all_test_records_passed": false,
+      "note": "Focused diagnosis: SQL boolean binding and invalid response.",
+      "source_digest_recorded": false,
+      "counts_as_final_current_source_proof": false
+    },
+    {
+      "raw_log": "ignored app/.local/multipart-cleanup-diagnostic-03.log",
+      "raw_log_sha256": "220716f0f352fc4b3d1eaf56a676da68d29fa1f298cab2624b64a70bb8b92901",
+      "raw_log_retained": true,
+      "result_records": {
+        "fail": 4
+      },
+      "all_test_records_passed": false,
+      "note": "Focused diagnosis: session ID did not identify the real upload attempt key.",
+      "source_digest_recorded": false,
+      "counts_as_final_current_source_proof": false
+    },
+    {
+      "raw_log": "ignored app/.local/multipart-cleanup-focused-attempt-04.log",
+      "raw_log_sha256": "ff3b9b53e7e545c4495df41593a37d5a752f0a2345c6c364085ebe80ceb2bf2b",
+      "raw_log_retained": true,
+      "result_records": {
+        "pass": 32
+      },
+      "all_test_records_passed": true,
+      "note": "Corrected focused SDK, config and four human client flows.",
+      "source_digest_recorded": false,
+      "counts_as_final_current_source_proof": false
+    },
+    {
+      "raw_log": "ignored app/.local/multipart-cleanup-atomicity-attempt-05.log",
+      "raw_log_sha256": "adac62d6d55b4a3a16956b49a889425a7ec8c91c5c717e073555a8a2395a3254",
+      "raw_log_retained": true,
+      "result_records": {
+        "pass": 4
+      },
+      "all_test_records_passed": true,
+      "note": "Additional atomic approval, changed binding and crashed final-attempt proof.",
+      "source_digest_recorded": false,
+      "counts_as_final_current_source_proof": false
+    }
+  ],
+  "scope": "Diagnostic history only. Final full current-source batch records supersede these; earlier passes are not spliced into final results."
+}

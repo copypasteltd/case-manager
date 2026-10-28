@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-28T18:50:56.167345+00:00",
+  "source_sha256": "1996605173c9b482b5b11a74d99e5c7ba9af2bda2d2a93cb319804f76f72a7c9",
+  "source_files": 54,
+  "tests": {
+    "pass": 52,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T18:40:38.993125+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/multipart-cleanup-client-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T18:41:33.731265+00:00",
+      "test_count": 52,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "873e74cd7b73d627dbf6a041da980bb7cebc5e8807edf75f20d0d367d95aa35a",
+      "raw_log": "ignored app/.local/multipart-cleanup-client-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T18:42:32.210813+00:00",
+      "test_count": null,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/multipart-cleanup-client-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "fbd0711c24ee19a6300326ae41667746ed1bf54f887a7deaf5b71c67eee54444"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "73920c7a6725c7b2e4471828319184388d21eb70b617f0526ce958963bc1a69a",
+    "summary_adapter_sha256": "cbdf92a59c2e338db75bc68b90ed1a03a2ebb26a5da6197db502f40051231842",
+    "adapter_reran_tests": false
+  }
+}

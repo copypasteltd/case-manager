@@ -10,6 +10,7 @@ import { UploadEntry } from '../../platform/upload-entry';
 import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, State, bytes, date } from '../../ui';
 import { SelectField, TextField } from '../business/controls';
 import { FileEditor } from './forms';
+import { MultipartCleanup } from './cleanup';
 
 type Workspace = { folder?: Folder; file?: StoredFile; project?: Schemas['Project'] };
 type Editor = { mode: 'create' | 'move' | 'trash' | 'restore'; kind: 'folder' | 'file'; item?: FileResource };
@@ -35,6 +36,7 @@ export default function FilesPage() {
       {current.folder && <Section title='当前目录'><Fact label='目录与资料范围'><Text>{current.folder.name} · 修订 {current.folder.version}</Text><Text>{label(current.folder)} · {current.folder.project_id ? '项目资料' : '公司资料'}</Text><Text className='cp-code' selectable>{current.folder.id}</Text></Fact>
         {current.folder.project_id && <Row title='查看所属项目' onClick={() => go('project', current.folder!.project_id!)} />}
       </Section>}
+      {!current.file && current.folder && me.actions.includes('file.retention.manage') && <MultipartCleanup key={current.folder.id} folder={current.folder} me={me} />}
       {editor ? <FileEditor key={editor.mode + ':' + (editor.item?.id ?? current.folder?.id ?? 'root') + ':' + (editor.item?.version ?? 1) + ':' + me.authorization_version} {...editor} parent={editor.mode === 'create' ? current.folder : undefined} me={me} onCommitted={committed} onClose={() => setEditor(undefined)} />
         : current.file ? <FileDetails file={current.file} onEdit={setEditor} />
         : <DirectoryContents current={current} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}

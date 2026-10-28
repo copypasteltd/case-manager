@@ -35,6 +35,7 @@ type Server struct {
 	Contract         *contract.Validator
 	Logger           *slog.Logger
 	Storage          *files.UploadBackend
+	MultipartCleanup map[string]*files.CleanupBackend
 	Downloads        map[string]*files.DownloadBackend
 	AgentFileReaders map[string]*files.AgentTextBackend
 	AgentDraftWriter *files.AgentDraftBackend

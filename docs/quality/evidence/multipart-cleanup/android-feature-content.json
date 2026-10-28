@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T19:15:36.731499+00:00",
+  "checks": [
+    {
+      "name": "Portable bundle bytes match the new APK asset and build hashes",
+      "passed": true
+    },
+    {
+      "name": "Candidate, plan, decision and receipt protocols are bundled",
+      "passed": true
+    },
+    {
+      "name": "Human observation, approval, cancellation and retry controls are included",
+      "passed": true
+    },
+    {
+      "name": "Started, confirmed absence and retry receipts have distinct presentations",
+      "passed": true
+    }
+  ],
+  "source_sha256": "0cfff6c0e973079fe1d4be3d3051f95719dc19036ecaedd757273a1e44cbe652",
+  "bundle_sha256": "1e3d24345cdaa0640bfbab8ac78671ae09bb5c2036e991e4a4fd263795782110",
+  "apk_sha256": "28966b0f8e0b2d51c1398a4398c6d4c955e74d6bcf574f00f9a9cd9c86ea86bd",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "2068762c19b3957c696013b828075dfc5579d5def99b0588165ed66cbe7993b0"
+}

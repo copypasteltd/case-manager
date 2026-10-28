@@ -97,6 +97,27 @@ snapshot = {"file_id": ID, "file_version": VERSION, "version_id": ID, "seq": VER
 add("RetentionSnapshot", snapshot, tuple(snapshot))
 add("RetentionAssessment", {"id": ID, "snapshot": ref("RetentionSnapshot"), "snapshot_sha256": HASH, "reason": NAME, "created_at": TIME},
     ("id", "snapshot", "snapshot_sha256", "reason", "created_at"))
+cleanup_candidate = {"upload_id": ID, "version": VERSION, "name": TEXT, "size_bytes": BYTES, "state": NAME,
+    "created_at": TIME, "expires_at": TIME, "retain_until": nullable(TIME), "policy": nullable(ref("RetentionRule")),
+    "source_sha256": HASH, "backend_sha256": {"type":"string","pattern":"^([a-f0-9]{64})?$"},
+    "eligible": {"type":"boolean"}, "blocking_reasons": array(NAME)}
+add("CleanupCandidate", cleanup_candidate, tuple(cleanup_candidate))
+cleanup_selection = obj({"upload_id":ID,"expected_version":VERSION},("upload_id","expected_version"))
+add("CleanupCreate", {"items":array(cleanup_selection,minItems=1,maxItems=50),"reason":NAME},("items","reason"))
+add("CleanupDecision", {**EXPECTED,"snapshot_sha256":HASH,"reason":NAME},("expected_version","snapshot_sha256","reason"))
+add("CleanupSnapshot", {"folder_id":ID,"folder_version":VERSION,"items":array(ref("CleanupCandidate"),minItems=1,maxItems=50)},("folder_id","folder_version","items"))
+cleanup_item = {"id":ID,"upload_id":ID,"version":VERSION,"generation":VERSION,
+    "state":enum("observing","queued","running","retry_wait","succeeded","failed","blocked"),
+    "attempts":{"type":"integer","minimum":0},"last_error":nullable(NAME),"confirmed_at":nullable(TIME),"updated_at":TIME}
+add("CleanupItem",cleanup_item,tuple(cleanup_item))
+cleanup_plan = {"id":ID,"version":VERSION,"state":enum("observing","approved","cancelled"),"snapshot":ref("CleanupSnapshot"),
+    "snapshot_sha256":HASH,"reason":NAME,"created_at":TIME,"ready_after":TIME,"expires_at":TIME,
+    "approved_at":nullable(TIME),"approval_reason":nullable(NAME),"cancelled_at":nullable(TIME),"cancellation_reason":nullable(NAME),
+    "items":array(ref("CleanupItem"),minItems=1,maxItems=50)}
+add("CleanupPlan",cleanup_plan,tuple(cleanup_plan))
+cleanup_receipt = {"id":ID,"generation":VERSION,"attempt":VERSION,"outcome":enum("started","confirmed_absent","retry_scheduled","failed","blocked"),
+    "error_code":nullable(NAME),"created_at":TIME}
+add("CleanupReceipt",cleanup_receipt,tuple(cleanup_receipt))
 add("ResourceRef", {"type": NAME, "id": ID, "version_id": nullable(ID)}, ("type", "id"))
 add("CommandResult", {"operation_id": ID, "resource": ref("ResourceRef"),
     "committed": {"type": "boolean"}, "state": NAME, "job_id": nullable(ID)},
@@ -1478,6 +1499,14 @@ operation("/files/{id}/retention-holds", "post", "createRetentionHold", "Retenti
 operation("/retention-holds/{id}/release", "post", "releaseRetentionHold", "RetentionHold", "RetentionHoldRelease")
 operation("/file-versions/{id}/retention-assessments", "post", "assessFileRetention", "RetentionAssessment", "RetentionAssessmentInput", 201)
 operation("/retention-assessments/{id}", "get", "getRetentionAssessment", "RetentionAssessment")
+operation("/folders/{id}/upload-cleanup-candidates","get","listMultipartCleanupCandidates","CleanupCandidate",listing=True)
+operation("/folders/{id}/upload-cleanup-plans","get","listMultipartCleanupPlans","CleanupPlan",listing=True)
+operation("/folders/{id}/upload-cleanup-plans","post","createMultipartCleanupPlan","CleanupPlan","CleanupCreate",201)
+operation("/upload-cleanup-plans/{id}","get","readMultipartCleanupPlan","CleanupPlan")
+operation("/upload-cleanup-plans/{id}/approve","post","approveMultipartCleanupPlan","CleanupPlan","CleanupDecision",202)
+operation("/upload-cleanup-plans/{id}/cancel","post","cancelMultipartCleanupPlan","CleanupPlan","CleanupDecision")
+operation("/upload-cleanup-items/{id}/retry","post","retryMultipartCleanupItem","CleanupPlan","UploadFinalize",202)
+operation("/upload-cleanup-items/{id}/receipts","get","listMultipartCleanupReceipts","CleanupReceipt",listing=True)
 operation("/files/{id}/history-restores", "get", "listHistoryRestores", "HistoryRestore", listing=True)
 operation("/history-restores/{id}", "get", "getHistoryRestore", "HistoryRestore")
 operation("/history-restores/{id}/commit", "post", "commitHistoryRestore", "FileCommitResult", "HistoryRestoreCommit", code=201)

@@ -1,5 +1,12 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量104 / Increment104：新增真实Web与Taro H5操作的合成分片盘点、固定清单观察期及历史Worker回执展示。录制从认证后的目录页开始，无密码、MFA输入、真实业务或云凭据。旧189份媒体按原采集来源保留。后台与云回执采用隔离原生PG和受控云夹具，不声明真实云删除或真机验收。
+
+| 客户端 | 盘点 | 观察期 | 回执 | 录屏 | GIF |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/multipart-cleanup-web-inventory.png) | [PNG](screenshots/multipart-cleanup-web-observation.png) | [PNG](screenshots/multipart-cleanup-web-receipts.png) | [MP4](videos/multipart-cleanup-web.mp4) | [GIF](gifs/multipart-cleanup-web.gif) |
+| Taro H5 | [PNG](screenshots/multipart-cleanup-mobile-inventory.png) | [PNG](screenshots/multipart-cleanup-mobile-observation.png) | [PNG](screenshots/multipart-cleanup-mobile-receipts.png) | [MP4](videos/multipart-cleanup-mobile.mp4) | [GIF](gifs/multipart-cleanup-mobile.gif) |
+
 增量103 / Increment103：本轮为构建依赖调用链修复，界面源码未改，未新增截图／录屏／GIF。107 PNG、41 MP4、41 GIF逐项保持原发布字节与原采集来源，见[复用清单](../quality/evidence/dependency-remediation/reused-evidence.json)；原102演示继续见下文。 / No new capture; all189 published media are retained byte-for-byte with their original provenance.
 
 增量102的实际合成财务操作：选择缺汇率版本 → 查看不完整合计与USD缺口 → 选择完整版本 → 员工发布新版本 → 排队导出固定版本CSV。录制从登录后的财务页开始；共4张新截图、2段无声MP4、2个GIF。Web与共享Taro H5均连接真实原生API；不声明真机、云端或正式公司报价验收。

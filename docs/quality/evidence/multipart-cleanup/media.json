@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T18:51:40.121838+00:00",
+  "encoder_script_sha256": "4f4bc1affed00a4d32e4e562e5e9465f004e65b4e932e894bf76ea7c05f5529b",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "8d09376763173f43c6a5a512673b7e5e072e187466ace5ee8aee5dd6322c2ac3",
+      "build_source_sha256": "41450d6ef00aa7dd4fd59c06e329f78be71bc7e50a1fbd3a8a9f63bf35854152",
+      "capture_manifest": "docs/quality/evidence/multipart-cleanup/web-capture-manifest.json",
+      "capture_manifest_sha256": "b50a1236fdf8ce884732696201d78c3bebe2d5e9c4dba453393e9f8f3b1ca50b",
+      "capture_frame_count": 13,
+      "capture_duration_ms": 2666,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "28",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/multipart-cleanup-web.mp4",
+          "sha256": "50e63911e9292064fa87c4ccba1996c1f502559d8b7ebeb00ad2d8e3015c0e53",
+          "bytes": 171760
+        },
+        {
+          "file": "docs/media/gifs/multipart-cleanup-web.gif",
+          "sha256": "70e1327726b8247abdfc9a7454a5354fe53cbf13266bc7a62b224f527bf72f9b",
+          "bytes": 336483
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "deb423ebbd8474b89c45b1485149c1d9eed800209b0f5c541d43b13cb5bc761a",
+      "build_source_sha256": "41450d6ef00aa7dd4fd59c06e329f78be71bc7e50a1fbd3a8a9f63bf35854152",
+      "capture_manifest": "docs/quality/evidence/multipart-cleanup/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "78e9c498e7dd8d9afe075366bcb4b58b518d78e4655822adbef80b84003da009",
+      "capture_frame_count": 12,
+      "capture_duration_ms": 3461,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "37",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/multipart-cleanup-mobile.mp4",
+          "sha256": "2918a2cdb9f5835e7b7d344c513b7c0d0c797b751ee5f8de7a3d5b195ee5345f",
+          "bytes": 139985
+        },
+        {
+          "file": "docs/media/gifs/multipart-cleanup-mobile.gif",
+          "sha256": "bf12457ed66df716e337f37c9e94655c77e7b03d0a577a973c4f8aeb2c0a95c3",
+          "bytes": 418708
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

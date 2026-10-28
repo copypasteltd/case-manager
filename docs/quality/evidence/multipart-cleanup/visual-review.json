@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-28T18:52:23.507540+00:00",
+  "reviewer": "Codex visual inspection",
+  "synthetic_data": true,
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-web-inventory.png",
+      "sha256": "69756dc5088c4b2bc3e3549e6010c3beeecfa150f7f320496f2a617cb111bda7"
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-web-observation.png",
+      "sha256": "f293ba14567de16f0697eb6ee8f3f4359d6f2b09c83e21293ec85fb67ef74656"
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-web-receipts.png",
+      "sha256": "5ac9f8f72ef5dc59ae59f01ec445d86008681e1ae64cb8f164fe4d8640cbab41"
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-mobile-inventory.png",
+      "sha256": "c44a498cd131ea51c2ff0eeafa7905e6425c53cc91a5ec90c32559c25cfcd230"
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-mobile-observation.png",
+      "sha256": "c9f654da2d3c90dad4bcb5f6404787b593cba0147ebfe31af601e9cb212de4d5"
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-mobile-receipts.png",
+      "sha256": "e569c0134a30cafd73fc74749ca02073ba4abefde3fb5b14e8cd520fb379fa19"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/multipart-cleanup-web.gif",
+      "sha256": "70e1327726b8247abdfc9a7454a5354fe53cbf13266bc7a62b224f527bf72f9b"
+    },
+    {
+      "file": "docs/media/gifs/multipart-cleanup-mobile.gif",
+      "sha256": "bf12457ed66df716e337f37c9e94655c77e7b03d0a577a973c4f8aeb2c0a95c3"
+    }
+  ],
+  "notes": [
+    "Inspected six actual screenshots: selectable abandoned candidate, reserved prior candidate, fixed observation digest, 0/1 pending and 1/1 confirmed receipt presentations.",
+    "Observed Web 1440px and Taro H5 390px layouts; no password, MFA code or cloud credential is visible.",
+    "Animation frames represent actual browser pixels; synthetic prior worker outcomes and fixture clock changes remain explicitly described."
+  ],
+  "device_executed": false,
+  "real_cloud": false
+}

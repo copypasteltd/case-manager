@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量104 · 受控分片清理 / Controlled multipart cleanup · 2026-10-29
+
+- 新增迁移82、已知未完成上传候选盘点、固定清单及观察期、明确MFA批准／撤销／失败项重试、独立清理Worker及不可变逐次回执。
+- 批准、上传封存、持久任务、审计和Outbox原子提交；执行重查批准会话、权限、保留锁、制度和存储绑定。准确UploadId仅在提供商明确返回NoSuchUpload后记为确认不存在。
+- Web、微信／抖音／Android共享页面接入，新增真实原生API／PG专项及四端构建检查；同步[开发说明](development/104-multipart-cleanup.md)、[验证记录](quality/104-multipart-cleanup-verification.md)、中英文指南和实际截图／录屏／GIF。
+- Adds fixed multipart selection, observation, human approval, cancellation, retry and immutable worker receipts. Live cloud identities remain unaccepted. Formal history, completed draft objects and unknown orphan cleanup remain open under GAP-05;23 work packages remain active,5 excluded.
+
 ## 增量103 · 构建依赖调用链修复 / Build consumer remediation · 2026-10-29
 
 - 实现：本地CommonJS适配保留Taro模板下载／版本查询与Metro图像接口；实际使用image-size2.0.4、latest-version9.0.0、原生fetch／Git及维护版归档提取；移除旧got／git-clone／download链。Android摘要新增本地适配源码。
