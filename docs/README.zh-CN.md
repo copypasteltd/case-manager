@@ -1,5 +1,9 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+最新实现100：秘书无需配置AI费用额度即可接单和执行，技术用量按实际运行追加记录。旧费用策略／核对接口停写，原账本只读。并发、上下文／输出、工具次数、超时、权限与隔离约束保留。真实Codex、TG及云服务尚待配置和验收；当前仍23项待完成、5项移出。
+
+[实现与使用](development/100-secretary-execution-without-cost-quota.md) · [验证范围与证据](quality/100-secretary-execution-verification.md) · [Web录屏](media/videos/secretary-cost-free-web.mp4) · [Taro H5录屏](media/videos/secretary-cost-free-mobile.mp4)
+
 [English](README.en.md) · [仓库首页](../README.md) · [文档索引](README.md) · [截图、录屏与 GIF](media/README.md) · [更新记录](CHANGELOG.md)
 
 这是 CopyPaste 的内部管理平台，把项目、OA、文件、知识、费用订阅、公司秘书和服务状态连接到同一套业务权限与审计体系。本仓库包含可运行实现、详细协议和来源绑定的验证证据；当前为开发预览，四端生产交付仍按 [23项待完成／5项移出](delivery/03-goal-gap-assessment.md)推进。
@@ -8,7 +12,7 @@
 
 用户已确认移出真机验证、网络性能、历史数据迁移与容灾、AI费用控制。**当前23项待完成（14 P0／9 P1），5项移出；新增完成0项。** 保留Web、微信、抖音、Android，秘书、8项Skill、TG、执行隔离／权限／审计，公司财务、项目预算、持久PG及OSS＋R2双端存储。
 
-120 GB设计上限与分片／续传／校验能力保留，以功能样本与协议边界核对；实网120GB和2 TB历史导入不再是当前验收前置。数据库建表／正常结构升级、普通文件回收站／版本恢复仍保留。现有秘书接单仍要求月度Token策略，取消这一费用前置条件是GAP-09尚待实现的范围适配；本次没有修改运行时。
+120 GB设计上限与分片／续传／校验能力保留，以功能样本与协议边界核对；实网120GB和2 TB历史导入不再是当前验收前置。数据库建表／正常结构升级、普通文件回收站／版本恢复仍保留。增量100已解除接单与执行对月度Token策略／费用预留的依赖，旧费用账本只读；GAP-09继续处理真实Codex接入与验收。
 
 [当前范围与边界](delivery/04-current-scope-and-acceptance.md) · [23项具体剩余工作](delivery/03-goal-gap-assessment.md) · [范围修订验证](quality/99-scope-revision-verification.md)。历史段落中被取消的门槛以本修订为准。
 
@@ -369,18 +373,18 @@ python scripts/verify_mobile.py my-change
 
 ## 8. 当前证据与放行条件
 
-功能来源仍为增量98，范围以[修订99](delivery/04-current-scope-and-acceptance.md)为准；本次没有重跑旧功能检查。
+当前功能基线为增量100，范围沿用[修订99](delivery/04-current-scope-and-acceptance.md)。下表区分新执行、缓存和原证据复用，详见[准确验证](quality/100-secretary-execution-verification.md)。
 
-| 层面 | 已有结果 | 当前适用边界 |
+| 层面 | 当前结果 | 适用边界 |
 | --- | --- | --- |
-| 依赖 | 原98完整扫描80项：0 critical／13 high／60 moderate／7 low；14依赖／2原生JS检查 | 安全处置仍待完成，旧扫描不改称新扫描 |
-| Go／PG |189顶层／1183结果、10批；78项结构迁移 | 原来源复用；持久PG及正常结构升级继续，历史数据迁移／容灾移出 |
-| Web／运行时／Taro |135／51／248项；类型／构建；微信／抖音各20页 | 保留功能与源码／产物验证，不要求真机或网络性能测试 |
-| Android | Metro重建，Gradle assemble复用同字节APK；18包检查；JVM26缓存 | 保留原范围与正式签名／发布准备；不要求设备或模拟器 |
-| 媒体 |97 PNG／35 MP4／35 GIF原字节与采集来源 | 本次无新采集，H5保持共享客户端证据标签 |
-| 实际接入 | 云／模型／TG／生产环境尚未完整验收，8项Skill仍draft | 当前23项继续推进；AI费用控制、真机、网络性能、2TB迁移与容灾不再阻塞 |
+| 依赖 | 原98完整扫描80项：0 critical／13 high／60 moderate／7 low | 原锁摘要相同，复用原审计；安全处置仍待完成 |
+| Go／PG |189顶层／1181结果，完整首轮10批及2个失败清理用例串行复跑；79份结构迁移 | 当前源码通过；失败原记录保留，临时库清理后为0 |
+| Web／运行时／Taro |135／51／248项；类型／构建；微信／抖音各20页 | 当前输入新执行，不包含平台／真机或网络性能验收 |
+| Android | 新Metro产物／新开发APK，18包检查＋3项载荷核验；JVM26缓存 | 26项不是本次新执行；正式签名／发布准备仍待完成 |
+| 媒体 | 新增2 PNG／2 MP4／2 GIF；原97 PNG／35 MP4／35 GIF保持原字节 | 当前共99 PNG／37 MP4／37 GIF；移动为共享Taro H5 |
+| 实际接入 | 云／模型／TG／生产环境尚未完整验收，8项Skill仍draft |23项完整工作包仍开放，5项移出不算完成 |
 
-新范围下接单无需费用策略的适配仍待实现；执行隔离、身份／权限、审计与技术资源约束继续要求。具体工作见[当前清单](delivery/03-goal-gap-assessment.md)。
+秘书已无需AI费用策略／预留即可接单和执行。执行隔离、身份／权限、审计和技术资源约束仍保留；具体剩余项见[当前清单](delivery/03-goal-gap-assessment.md)。
 
 ## 9. 文档与同步维护
 

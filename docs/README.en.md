@@ -1,5 +1,9 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Increment100: secretary admission, execution and technical usage persistence no longer require an AI fee policy or reservation. Legacy fee writes are retired and the archive is read-only. Identity, authorization, confinement, cancellation, timeouts, concurrency and technical context/output/tool limits remain. Real Codex, TG, cloud and production acceptance are still open:23 active packages and5 exclusions.
+
+[Implementation and use](development/100-secretary-execution-without-cost-quota.md) · [Verification scope and evidence](quality/100-secretary-execution-verification.md) · [Web recording](media/videos/secretary-cost-free-web.mp4) · [Shared Taro H5 recording](media/videos/secretary-cost-free-mobile.mp4)
+
 [中文](README.zh-CN.md) · [Repository home](../README.md) · [Documentation index](README.md) · [Screenshots, recordings and GIFs](media/README.md) · [Changelog](CHANGELOG.md)
 
 CopyPaste Case Manager connects projects, office workflows, files, knowledge, recurring costs, a company secretary and service status through shared authorization and audit history. This repository includes working implementations, detailed protocols and source-bound evidence. It is a development preview; full production delivery continues against the [23 active /5 excluded packages](delivery/03-goal-gap-assessment.md).
@@ -8,7 +12,7 @@ CopyPaste Case Manager connects projects, office workflows, files, knowledge, re
 
 The user excludes real-device verification, network performance tests, historical migration/disaster recovery and **AI cost control only**. There are23 active packages (14 P0/9 P1),5 excluded IDs and0 newly completed packages. Web, WeChat, Douyin, Android, the secretary/eight Skills/TG, isolation, authorization and audit remain, alongside company finance/project budgets, persistent PostgreSQL and OSS/R2 storage.
 
-The120 GB design limit and multipart/resume/integrity behavior remain, with functional samples and boundary checks. Live120 GB network acceptance and the2 TB historical import are excluded. Normal database schema upgrades and ordinary file/version recovery remain. The current runtime still requires a monthly-token policy; removing that mandatory cost prerequisite is a pending GAP-09 adaptation, not a change made by this documentation revision.
+The120 GB design limit and multipart/resume/integrity behavior remain, with functional samples and boundary checks. Live120 GB network acceptance and the2 TB historical import are excluded. Normal database schema upgrades and ordinary file/version recovery remain. Increment100 removes mandatory monthly-token policies and fee reservations from admission and execution. The archive is read-only; real Codex integration remains GAP-09.
 
 [Scope and boundaries](delivery/04-current-scope-and-acceptance.md) · [23 remaining packages](delivery/03-goal-gap-assessment.md) · [Revision verification](quality/99-scope-revision-verification.md). This scope overrides conflicting gates in historical sections below.
 
@@ -26,13 +30,13 @@ First sign in to the company WeChat or Douyin mini-program with an existing inte
 
 All four clients can list their own active and revoked bindings. Unbinding immediately invalidates every binding-derived access/refresh session and pending MFA challenge; independent password sessions remain separate. Rebinding creates a new historical record. Web reconciles a lost committed response using the original idempotency key; Taro blocks duplicate submission until an explicit list refresh confirms the stored result. There is no automatic registration, anonymous employee account, or nickname/phone/UnionID merge.
 
-Operators configure the API privately with `CP_WECHAT_APP_ID`/`CP_WECHAT_APP_SECRET`, `CP_DOUYIN_APP_ID`/`CP_DOUYIN_APP_SECRET`, and `CP_MINIAPP_IDENTITY_KEY` (32 random bytes, Base64). Both providers are disabled by default; partial configuration fails startup. Keep the identity digest key stable across AppSecret rotation and include it in controlled disaster recovery. Never ship secrets to mini-programs, APKs, logs or Git. [Protocol, configuration and recovery](development/97-mini-program-identity.md) · [Actual validation and media provenance](quality/97-mini-program-identity-verification.md). Native synthetic HTTP tests and Taro H5 recordings do not establish real WeChat/Douyin, Hong Kong device or production acceptance.
+Operators configure the API privately with `CP_WECHAT_APP_ID`/`CP_WECHAT_APP_SECRET`, `CP_DOUYIN_APP_ID`/`CP_DOUYIN_APP_SECRET`, and `CP_MINIAPP_IDENTITY_KEY` (32 random bytes, Base64). Both providers are disabled by default; partial configuration fails startup. Keep the identity digest key stable across AppSecret rotation and keep it in the controlled production configuration. Never ship secrets to mini-programs, APKs, logs or Git. [Protocol, configuration and recovery](development/97-mini-program-identity.md) · [Actual validation and media provenance](quality/97-mini-program-identity-verification.md). Native synthetic HTTP tests and Taro H5 recordings do not establish real WeChat/Douyin, Hong Kong device or production acceptance.
 
 [Current screenshots, MP4s and GIFs](media/README.md) show self-service bindings and lost-response reconciliation with isolated synthetic data.
 
 Fresh client checks pass 135 Web, 248 mobile and 51 runtime tests, plus both 20-page mini-program builds. Seven new actual page screenshots, two MP4 recordings and two GIFs use isolated synthetic records; they do not establish platform or device acceptance.
 
-Final native checks pass 189 backend top-level tests / 1,183 result records in 10 batches, plus 135 Web, 248 mobile and 51 runtime tests and both 20-page mini-program builds. Migration 78 preserves all 77 earlier files; OpenAPI has 298 paths / 369 operations / 647 schemas. The Android development APK passes 18 package checks and 26 freshly executed JVM tests.
+Increment97 originally passed 189 backend top-level tests / 1,183 result records in 10 batches, plus 135 Web, 248 mobile and 51 runtime tests and both 20-page mini-program builds. Migration 78 preserves all 77 earlier files; OpenAPI has 298 paths / 369 operations / 647 schemas. The Android development APK passes 18 package checks and 26 freshly executed JVM tests.
 
 ## 1. Goal and scope
 
@@ -369,18 +373,18 @@ These are each employee's in-app notifications. No additional Telegram, email or
 
 ## 8. Evidence and release gates
 
-Functional evidence remains at increment98; [revision99](delivery/04-current-scope-and-acceptance.md) defines current acceptance. Old checks are not represented as fresh executions.
+Current functional evidence is increment100; [scope revision99](delivery/04-current-scope-and-acceptance.md) still defines acceptance. Fresh execution, cached results and retained evidence are separated in the [verification record](quality/100-secretary-execution-verification.md).
 
-| Layer | Retained result | Current boundary |
+| Layer | Current result | Boundary |
 | --- | --- | --- |
-| Dependencies |80 findings:0 critical/13 high/60 moderate/7 low;14 dependency and2 native JS checks | Security remediation remains; the old scan keeps its timestamp |
-| Go/PG |189 top-level/1,183 results in10 batches;78 schema migrations | Retained source proof; persistent PG and normal schema upgrades remain, historical import/DR excluded |
-| Web/runtime/Taro |135/51/248 tests, types/builds;20 pages each for WeChat/Douyin | Functional and source/artifact checks remain; device/network-performance tests excluded |
-| Android | Metro rerun; Gradle assemble retained the identical APK;18 package checks;26 cached JVM tests | Original scope retained; signing/release preparation remains, no device or emulator requirement |
-| Media |97 PNGs/35 MP4s/35 GIFs with original bytes/provenance | No new capture; H5 retains its shared-client evidence label |
-| Integration | Cloud/model/TG/production acceptance incomplete;8 Skills draft |23 active packages remain; AI-cost, device, performance,2 TB migration and DR gates excluded |
+| Dependencies | Increment98 complete audit:80 findings,0 critical/13 high/60 moderate/7 low | Same lock digest; retained audit, security gate open |
+| Go/PG |189 top-level/1,181 results;10 original batches and2 failed cleanup cases retried serially;79 migrations | Current-source cases pass, original failures retained,0 temporary databases |
+| Web/runtime/Taro |135/51/248 tests, types/builds;20 pages each for WeChat/Douyin | Fresh current-input commands, no platform/device/performance acceptance |
+| Android | Fresh Metro payload and development APK;18 structural and3 feature-content checks;26 cached JVM results | JVM tests were not newly executed; production signing/release remains |
+| Media |2 new PNGs/2 MP4s/2 GIFs; all original97 PNGs/35 MP4s/35 GIFs retained |99 PNGs/37 MP4s/37 GIFs total; mobile is shared Taro H5 |
+| Integration | Cloud/model/TG/production acceptance incomplete;8 Skills draft |23 whole packages open;5 exclusions are not completions |
 
-Admission without a mandatory AI-cost policy is still a pending code adaptation. Isolation, identity/authorization, audit and technical resource limits remain. See the [current checklist](delivery/03-goal-gap-assessment.md).
+Increment100 implements admission and execution without mandatory AI fee policies or reservations. Isolation, identity/authorization, audit and technical resource limits remain. See the [current checklist](delivery/03-goal-gap-assessment.md).
 
 ## 9. Documentation and synchronization
 

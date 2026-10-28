@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T09:21:18.480199+00:00",
+  "encoder_script_sha256": "1fe3337a2ac579b32482616b4f9e697106534e4472c8bf0c40ee49bb01c57144",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "075788ffeb66fd691e3219a25a745fc712bbfdbcd01fb9c20699e69421dcddac",
+      "build_source_sha256": "2dedb8e856b0e4e335761698efbeeff508e2805c2c5756afd681862ba4524779",
+      "capture_manifest": "docs/quality/evidence/cost-free-execution/web-capture-manifest.json",
+      "capture_manifest_sha256": "12a330855d070e2e250a598c535b6fab81d1ef4a910758e67abd7a20e8fa6957",
+      "capture_frame_count": 19,
+      "capture_duration_ms": 3952,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "41",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.100000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-cost-free-web.mp4",
+          "sha256": "38c567ca8ac1d981894422e27c699a3b04b51bec862b6c11600eaf7a025d8998",
+          "bytes": 153465
+        },
+        {
+          "file": "docs/media/gifs/secretary-cost-free-web.gif",
+          "sha256": "63458d2e3696f9111a8023f1b1a5011ffde922e6b06eefdfc63aca84d505d61a",
+          "bytes": 239030
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "0e373a463f4159148c7fb487cd86a28ff08aa0c313a7f79b338786612d8cfcbb",
+      "build_source_sha256": "2dedb8e856b0e4e335761698efbeeff508e2805c2c5756afd681862ba4524779",
+      "capture_manifest": "docs/quality/evidence/cost-free-execution/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "efcc52a63a6369173d94b9257207c8335b8522b97496c2b11a094754879a9c19",
+      "capture_frame_count": 64,
+      "capture_duration_ms": 13610,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "138",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "13.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/secretary-cost-free-mobile.mp4",
+          "sha256": "b717b1a3ce4483dfd0a937069d204e522deb4cf98ad3de39e294583987d18880",
+          "bytes": 247085
+        },
+        {
+          "file": "docs/media/gifs/secretary-cost-free-mobile.gif",
+          "sha256": "51e94e15b5ca6989569d2f34fa839f8b9a79318ce22c162f47e710cce5db8dc0",
+          "bytes": 1029521
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

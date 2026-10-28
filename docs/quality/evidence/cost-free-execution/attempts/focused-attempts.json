@@ -1,0 +1,32 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "private_log": "ignored app/.local/cost-free-focused-attempt01.log",
+      "raw_log_sha256": "d34fb83fec8d280cac3e71b4b6f69e7ff9bef6f123a0a51ea5ccc50bbdc32bdf",
+      "reason": "Native cluster was not running; no functional case executed.",
+      "source_digest_captured_before_command": false
+    },
+    {
+      "attempt": 2,
+      "passed": false,
+      "private_log": "ignored app/.local/cost-free-focused-attempt02.log",
+      "raw_log_sha256": "b2d4f79cdafb060871de00682fc7b61716b838cf88afc1ec790f6e4793b67d4d",
+      "reason": "New test used incorrect read_resource field names; corrected to its actual strict schema.",
+      "source_digest_captured_before_command": false
+    },
+    {
+      "attempt": 3,
+      "passed": false,
+      "private_log": "ignored app/.local/cost-free-focused-attempt03.log",
+      "raw_log_sha256": "3e49f5dd7ee27d330bb0549b02db00fc5b04b0a96eb69a85cd7a6660cc935dd3",
+      "reason": "Test expected a second company in a singleton deployment and403 instead of the existing404 resource-hiding behavior.",
+      "source_digest_captured_before_command": false
+    }
+  ],
+  "successful_retry_private_log": "ignored app/.local/cost-free-focused-attempt04.log",
+  "successful_retry_log_sha256": "911714f0157e0c7a3eece0bac1df1c6f35ef388fa462f771057f4e8a03f63b4b",
+  "authoritative_functional_proof": "../cost-free-execution-backend/result.json",
+  "full_suite_required": true
+}

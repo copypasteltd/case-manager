@@ -1,0 +1,46 @@
+{
+  "source_sha256": "0a22e9dae6b0b40a0a320780ff7ca42ebd0279980f7663c814e7b7a39ccce057",
+  "serial_execution": true,
+  "retries": [
+    {
+      "test": "TestCommentAttachmentPreservation",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T09:54:19.872256+00:00",
+      "finished_at": "2026-10-28T09:54:34.968715+00:00",
+      "source_sha256": "0a22e9dae6b0b40a0a320780ff7ca42ebd0279980f7663c814e7b7a39ccce057",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/cost-free-execution-backend-retry-1.log",
+      "raw_output_sha256": "bcd4f73f9b841f84bf258781c3c8b9dcf0c2fb03ea5e7e3ccf50fd62ffeffe9f",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestCommentAttachmentPreservation",
+          "Elapsed": 6.25
+        }
+      ]
+    },
+    {
+      "test": "TestDownloadPermitExpiryAndClassificationChanges",
+      "package": "copypaste.hk/platform/internal/httpapi",
+      "passed": true,
+      "exit_code": 0,
+      "started_at": "2026-10-28T09:54:35.183115+00:00",
+      "finished_at": "2026-10-28T09:54:52.983206+00:00",
+      "source_sha256": "0a22e9dae6b0b40a0a320780ff7ca42ebd0279980f7663c814e7b7a39ccce057",
+      "source_unchanged": true,
+      "raw_output": "ignored app/.local/cost-free-execution-backend-retry-2.log",
+      "raw_output_sha256": "a311c3740998bcf10cb81b15d58b07b845238401bf7557e600f0998b7a14677d",
+      "checks": [
+        {
+          "Action": "pass",
+          "Package": "copypaste.hk/platform/internal/httpapi",
+          "Test": "TestDownloadPermitExpiryAndClassificationChanges",
+          "Elapsed": 7.45
+        }
+      ]
+    }
+  ]
+}

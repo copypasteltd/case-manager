@@ -1650,6 +1650,13 @@ operation("/agent-budget", "get", "getAgentBudget", "BudgetSummary")
 operation("/agent-budget/entries", "get", "listAgentBudgetEntries", "BudgetEntry", listing=True)
 operation("/agent-budget/policies", "post", "publishAgentBudgetPolicy", "BudgetPolicy", "BudgetPolicyInput", 201)
 operation("/agent-budget/entries/{id}/reconcile", "post", "reconcileAgentBudget", "BudgetEntry", "BudgetReconcileInput")
+for path in ("/agent-budget/policies", "/agent-budget/entries/{id}/reconcile"):
+    retired = PATHS[path]["post"]
+    retired["deprecated"] = True
+    retired["description"] = "Retired AI cost-control write. An authorized interactive manager receives410 AI_COST_CONTROL_RETIRED. Historical records remain read-only; no fee policy or reservation gates secretary execution."
+    retired["responses"].pop("200", None)
+    retired["responses"].pop("201", None)
+    retired["responses"]["410"] = {"description": "AI cost control retired", "content": {"application/json": {"schema": ref("Error")}}}
 for path in ("/agent-budget", "/agent-budget/entries"):
     PATHS[path]["get"].setdefault("parameters", []).extend([
         {"name":"month","in":"query","schema":{"type":"string","pattern":r"^\d{4}-\d{2}$"}},

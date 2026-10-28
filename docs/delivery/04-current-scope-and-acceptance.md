@@ -30,11 +30,9 @@ GAP-17和GAP-21移出的是原真机／实网大文件专项；大文件功能�
 
 ## 3. 必须处理的代码差异
 
-当前 `app/backend/internal/agent/admission.go` 仍调用 `reserveRunBudget`；`budget.go` 在缺少月度Token策略时返回 `AGENT_BUDGET_UNCONFIGURED`。本次范围整理没有修改这段运行时代码。
+增量100已解除接单与执行对月度Token额度策略／费用预留的必配依赖。技术用量直接绑定租户与运行记录；旧费用写入接口对有权管理员返回410，历史账本只读。技术资源、并发、身份／权限、取消、超时与隔离要求继续生效。GAP-09仍保留真实Codex接入验收，见[实现说明](../development/100-secretary-execution-without-cost-quota.md)。
 
-因此GAP-09明确新增范围适配：秘书应能在不配置AI费用控制策略时接单。后续实现需要保持身份、授权、并发、撤销、执行隔离、超时及技术资源上限，处理接单／结算调用的兼容关系。不得只从规划表删掉费用控制，就宣称当前运行时已经解除该前置条件。
-
-The current runtime still requires a monthly token policy. Removing that mandatory admission prerequisite remains an explicit GAP-09 implementation task. This documentation revision does not disable existing runtime controls or claim successful model execution.
+Increment100 implements cost-independent admission, execution and technical usage persistence. Legacy cost writes are retired and their archive is read-only. Real model integration remains open; technical and authorization safeguards remain required.
 
 ## 4. 当前验收规则
 
@@ -51,6 +49,6 @@ The current runtime still requires a monthly token policy. Removing that mandato
 
 ## 5. 证据与后续维护
 
-功能源码和实际检查基线仍为增量98：Web135、移动248、运行时51；Go189顶层／1183结果；双小程序各20页；Android及JVM缓存／执行范围保留原记录。修订99只更新规划、门禁和文档约束，不把这些结果称为本次重跑。
+修订99当时的功能源码和实际检查基线为增量98：Web135、移动248、运行时51；Go189顶层／1183结果；双小程序各20页；Android及JVM缓存／执行范围保留原记录。修订99只更新规划、门禁和文档约束，不把这些结果称为本次重跑。
 
-原97 PNG／35 MP4／35 GIF继续保留原字节和采集来源，无新浏览器采集。见[修订验证](../quality/99-scope-revision-verification.md)。后续提交继续同步中英文README、台账、差异表、受影响文档及更新说明，并正常推送授权仓库。
+修订99当时原97 PNG／35 MP4／35 GIF保持原字节、无新采集。增量100另行记录当前源码回归及新增演示，不改写原证据。见[修订验证](../quality/99-scope-revision-verification.md)。后续提交继续同步中英文README、台账、差异表、受影响文档及更新说明，并正常推送授权仓库。

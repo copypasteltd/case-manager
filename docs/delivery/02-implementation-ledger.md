@@ -1,6 +1,8 @@
 # 代码实施与验证台账
 
-最新修订99：用户更正为仅取消AI费用控制；同时移出真机验证、网络性能、数据迁移与容灾。当前23类待完成（14 P0／9 P1），原GAP-14／17／21／22／27移出，其他项收窄适用验收。保留四端、秘书／Skill／TG、隔离／权限、公司财务、双端存储及持久PG。接单必配Token额度仍需在GAP-09适配。见[当前范围](04-current-scope-and-acceptance.md)及[当前清单](03-goal-gap-assessment.md)；本次无功能源码、构建或媒体采集变化。
+最新增量100：完成GAP-09内AI费用前置适配。接单与执行不再调用费用策略／预留；技术用量经迁移79直接绑定租户与运行；旧费用写入API停用、应用DB角色撤销相应INSERT、Web与Taro保留只读历史。保留身份、权限、隔离和技术限制。23项完整工作包仍开放、5项移出；详见[开发说明](../development/100-secretary-execution-without-cost-quota.md)及[验证](../quality/100-secretary-execution-verification.md)。
+
+最新修订99：用户更正为仅取消AI费用控制；同时移出真机验证、网络性能、数据迁移与容灾。当前23类待完成（14 P0／9 P1），原GAP-14／17／21／22／27移出，其他项收窄适用验收。保留四端、秘书／Skill／TG、隔离／权限、公司财务、双端存储及持久PG。修订99当时的接单必配额度差异已在增量100实现适配。见[当前范围](04-current-scope-and-acceptance.md)及[当前清单](03-goal-gap-assessment.md)；本次无功能源码、构建或媒体采集变化。
 
 此前增量98：移除未使用的Taro RN runner、修复Doctor glob和旧原生代码生成器实际匹配器；当前完整扫描91→80项／high20→13。新执行14项依赖与2项原生JS、Web135／移动248／运行时51及受影响构建；原生Android和JVM缓存范围单列。Go与界面源码未变，后端189／1183、Linux及97PNG／35MP4／35GIF明确复用，不改称新执行。见[方案](../development/98-dependency-maintenance.md)与[准确验证](../quality/98-dependency-maintenance-verification.md)。GAP-26和完整四端Goal仍开放。
 

@@ -3334,7 +3334,11 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** publishAgentBudgetPolicy */
+        /**
+         * publishAgentBudgetPolicy
+         * @deprecated
+         * @description Retired AI cost-control write. An authorized interactive manager receives410 AI_COST_CONTROL_RETIRED. Historical records remain read-only; no fee policy or reservation gates secretary execution.
+         */
         post: operations["publishAgentBudgetPolicy"];
         delete?: never;
         options?: never;
@@ -3351,7 +3355,11 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** reconcileAgentBudget */
+        /**
+         * reconcileAgentBudget
+         * @deprecated
+         * @description Retired AI cost-control write. An authorized interactive manager receives410 AI_COST_CONTROL_RETIRED. Historical records remain read-only; no fee policy or reservation gates secretary execution.
+         */
         post: operations["reconcileAgentBudget"];
         delete?: never;
         options?: never;
@@ -21476,21 +21484,20 @@ export interface operations {
             };
         };
         responses: {
-            /** @description Success */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BudgetPolicyResponse"];
-                };
-            };
             400: components["responses"]["Failure"];
             401: components["responses"]["Failure"];
             403: components["responses"]["Failure"];
             404: components["responses"]["Failure"];
             409: components["responses"]["Failure"];
-            410: components["responses"]["Failure"];
+            /** @description AI cost control retired */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
             412: components["responses"]["Failure"];
             413: components["responses"]["Failure"];
             422: components["responses"]["Failure"];
@@ -21519,21 +21526,20 @@ export interface operations {
             };
         };
         responses: {
-            /** @description Success */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BudgetEntryResponse"];
-                };
-            };
             400: components["responses"]["Failure"];
             401: components["responses"]["Failure"];
             403: components["responses"]["Failure"];
             404: components["responses"]["Failure"];
             409: components["responses"]["Failure"];
-            410: components["responses"]["Failure"];
+            /** @description AI cost control retired */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
             412: components["responses"]["Failure"];
             413: components["responses"]["Failure"];
             422: components["responses"]["Failure"];

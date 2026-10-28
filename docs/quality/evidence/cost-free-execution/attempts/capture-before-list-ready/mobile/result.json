@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-28T09:17:49.504Z",
+  "finished_at": "2026-10-28T09:18:26.615Z",
+  "checks": [
+    "Authenticated real UI loads a read-only archive with the original zero legacy policy, pending history and new unreserved runs; fee write actions are absent.",
+    "Own, project and organization archive filters use real authorized requests without changing historical policies or entries.",
+    "Read-only archive remains usable at390/768/1440 widths.",
+    "The archive return action navigates to the actual secretary page."
+  ],
+  "source_count": 748,
+  "source_sha256": "0e373a463f4159148c7fb487cd86a28ff08aa0c313a7f79b338786612d8cfcbb",
+  "source_after_sha256": "0e373a463f4159148c7fb487cd86a28ff08aa0c313a7f79b338786612d8cfcbb",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "2dedb8e856b0e4e335761698efbeeff508e2805c2c5756afd681862ba4524779",
+  "build_source_after_sha256": "2dedb8e856b0e4e335761698efbeeff508e2805c2c5756afd681862ba4524779",
+  "build_source_unchanged": true
+}

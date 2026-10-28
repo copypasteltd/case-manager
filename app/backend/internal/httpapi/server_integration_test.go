@@ -44,8 +44,7 @@ type response struct {
 	Meta  meta            `json:"meta"`
 }
 
-func setup(t *testing.T) *fixture { return setupWithBudget(t, true) }
-func setupWithBudget(t *testing.T, budget bool) *fixture {
+func setup(t *testing.T) *fixture {
 	t.Helper()
 	connection := os.Getenv("CP_TEST_ADMIN_URL")
 	if connection == "" {
@@ -134,12 +133,7 @@ func setupWithBudget(t *testing.T, budget bool) *fixture {
 		t.Fatal(err)
 	}
 	f.org, f.admin = boot.OrganizationID, boot.UserID
-	// Explicit synthetic allowance; production migrations never grant an allowance.
-	if budget {
-		if _, err = owner.Exec(ctx, `INSERT INTO agent_budget_policies(id,org_id,version,organization_tokens,user_tokens,project_tokens,skill_tokens,published_by,reason) VALUES($1,$2,1,1000000000000,1000000000000,1000000000000,1000000000000,$3,'Synthetic native integration allowance')`, core.NewID(), f.org, f.admin); err != nil {
-			t.Fatal(err)
-		}
-	}
+	// Fresh installations have no AI fee policy. All fixtures exercise that path.
 	hash, err := identity.HashPassword("member-test-password-long")
 	if err != nil {
 		t.Fatal(err)

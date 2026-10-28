@@ -211,30 +211,6 @@ type BudgetReconcileInput struct {
 	Reason            string `json:"reason"`
 }
 
-func (s *Service) ReconcileBudget(ctx context.Context, c core.Command, id string, in BudgetReconcileInput) (core.Result, error) {
-	if !core.ValidID(id) || core.RequireVersion(in.ExpectedVersion) != nil || in.InputTokens < 0 || in.InputTokens > maxBudgetTokens || in.OutputTokens < 0 || in.OutputTokens > maxBudgetTokens || core.Name(in.EvidenceReference) != nil || core.Name(in.Reason) != nil {
-		return core.Result{}, core.Invalid("reconciliation", "请填写准确运行版本、Token数量、外部核对凭据编号与原因")
-	}
-	return s.Commands.Do(ctx, c, func(tx pgx.Tx) error { return budgetAuthority(ctx, tx, c.Actor, true) }, func(tx pgx.Tx) (core.Result, error) {
-		r, err := runRecord(ctx, tx, c.Actor.OrgID, id, true)
-		if err != nil {
-			return core.Result{}, err
-		}
-		if r.Version != in.ExpectedVersion {
-			return core.Result{}, core.Conflict()
-		}
-		entry, err := scanBudgetEntry(tx.QueryRow(ctx, "SELECT "+budgetEntryColumns+" FROM agent_budget_entries WHERE org_id=$1 AND run_id=$2", c.Actor.OrgID, id))
-		if err != nil {
-			return core.Result{}, err
-		}
-		if entry.Status != "pending" {
-			return core.Result{}, core.Fail(409, "BUDGET_NOT_PENDING", "仅可核对已终止但用量未知的运行")
-		}
-		_, err = tx.Exec(ctx, `INSERT INTO agent_budget_reconciliations(run_id,org_id,run_version,input_tokens,output_tokens,evidence_reference,reason,reconciled_by) VALUES($1,$2,$3,$4,$5,$6,$7,$8)`, id, c.Actor.OrgID, in.ExpectedVersion, in.InputTokens, in.OutputTokens, in.EvidenceReference, in.Reason, c.Actor.UserID)
-		if err != nil {
-			return core.Result{}, err
-		}
-		entry, err = scanBudgetEntry(tx.QueryRow(ctx, "SELECT "+budgetEntryColumns+" FROM agent_budget_entries WHERE org_id=$1 AND run_id=$2", c.Actor.OrgID, id))
-		return core.Result{Status: 200, Data: entry, Event: core.Event{Type: "agent.budget.reconciled", ResourceType: "agent_run", ResourceID: id, Version: r.Version, Payload: map[string]any{"run_id": id, "input_tokens": in.InputTokens, "output_tokens": in.OutputTokens, "evidence_reference": in.EvidenceReference, "reason": in.Reason}}}, err
-	})
+func (s *Service) ReconcileBudget(ctx context.Context, c core.Command, _ string, _ BudgetReconcileInput) (core.Result, error) {
+	return s.retiredBudgetCommand(ctx, c.Actor)
 }

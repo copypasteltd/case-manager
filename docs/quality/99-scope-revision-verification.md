@@ -1,5 +1,7 @@
 # 修订99：范围与清单验证 / Scope revision verification
 
+> 本文记录修订99当时的规划与代码差异。费用前置问题已在增量100实现，后续功能验收见[增量100](100-secretary-execution-verification.md)；原99检查记录保留。
+
 [当前范围](../delivery/04-current-scope-and-acceptance.md) · [机器清单](../delivery/04-current-scope.json) · [23项剩余工作](../delivery/03-goal-gap-assessment.md)
 
 本轮依据用户指令调整交付范围，第四项以用户更正后的“AI费用控制”为准。保留四端、秘书、Skill、TG、隔离与权限；取消真机、网络性能、数据迁移／容灾及AI费用专项。

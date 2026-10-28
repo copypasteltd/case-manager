@@ -1,5 +1,12 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量100新增实际Web与Taro H5只读历史页，各1张截图、1段原速MP4及1段GIF。合成数据、真实浏览器像素；无供应商／云／真机验收声明。原97 PNG／35 MP4／35 GIF保留原字节。
+
+| 页面 | 截图 | 录屏 | GIF |
+| --- | --- | --- | --- |
+| Web只读账本 | [PNG](screenshots/secretary-cost-free-web.png) | [MP4](videos/secretary-cost-free-web.mp4) | [GIF](gifs/secretary-cost-free-web.gif) |
+| Taro H5只读账本 | [PNG](screenshots/secretary-cost-free-mobile.png) | [MP4](videos/secretary-cost-free-mobile.mp4) | [GIF](gifs/secretary-cost-free-mobile.gif) |
+
 ## 修订99 · 范围调整 / Scope revision
 
 本轮只调整规划与验收门槛，无界面或新浏览器采集；97PNG／35MP4／35GIF仍保持原字节与来源。真机、性能、迁移／容灾和AI费用专项已移出当前范围，历史媒体不改称新验收。参见[当前范围](../delivery/04-current-scope-and-acceptance.md)和[验证记录](../quality/99-scope-revision-verification.md)。

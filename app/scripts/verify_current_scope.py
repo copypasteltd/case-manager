@@ -69,9 +69,10 @@ def main():
         and ids(excluded_text) == [row['id'] for row in excluded]
         and all(row['remaining'] in gap and row['acceptance'] in active_text for row in active))
     budget_source = APP / 'backend/internal/agent/budget.go'
-    gate_present = 'AGENT_BUDGET_UNCONFIGURED' in budget_source.read_text(encoding='utf-8')
-    check('Existing mandatory cost admission is honestly recorded as pending GAP-09 adaptation',
-        not gate_present or 'AGENT_BUDGET_UNCONFIGURED' in next(row['remaining'] for row in active if row['id'] == 'GAP-09'))
+    gate_present = any(marker in (APP / name).read_text(encoding='utf-8') for name, marker in [('backend/internal/agent/budget.go', 'AGENT_BUDGET_UNCONFIGURED'), ('backend/internal/agent/admission.go', 'reserveRunBudget'), ('backend/internal/agent/execution.go', 'RUNTIME_BUDGET_UNRESERVED')])
+    check('Current fee admission behavior and remaining real Codex acceptance are explicit',
+        ('AGENT_BUDGET_UNCONFIGURED' in next(row['remaining'] for row in active if row['id'] == 'GAP-09')) if gate_present
+        else 'COST-FREE-ADMISSION-100' in next(row for row in active if row['id'] == 'GAP-09').get('completed_adaptations', []))
     before = read(E / 'publication-before.json')
     check('All17 prior publication snapshots retain exact original Git bytes',
         len(before['files']) == 17 and before['published_commit'] == scope['functional_baseline_commit']
@@ -83,7 +84,7 @@ def main():
     spec = importlib.util.spec_from_file_location('current_functional_scope', APP / 'scripts' / baseline['interaction_sources'])
     source = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(source)
-    check('Current functional evidence still matches exact application inputs without a new execution claim',
+    check('Current functional proof matches exact application inputs; this scope checker does not execute functional tests',
         proof['passed'] and source.digest() == proof['interaction_source_sha256']
         and not proof['full_goal_complete'] and baseline['increment'] >= scope['functional_baseline_increment'])
     check('Current functional and planning baselines are explicitly separated',
@@ -112,9 +113,11 @@ def main():
         'functional_evidence_group': baseline['evidence_group'], 'functional_baseline_increment': baseline['increment'],
         'mandatory_budget_gate_still_present': gate_present, 'new_functional_test_execution': False,
         'new_browser_capture': False, 'real_device_verification': False, 'virtualization_used': False,
-        'runtime_behavior_changed': False, 'full_goal_complete': False, 'production_ready': False}
-    E.mkdir(parents=True, exist_ok=True)
-    (E / 'scope-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        'runtime_behavior_changed_since_scope_revision': not gate_present,
+        'scope_checker_executes_functional_tests': False, 'full_goal_complete': False, 'production_ready': False}
+    target = ROOT / baseline['planning_scope_verification_record']
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': report['passed'], 'checks': len(checks), 'counts': report['counts'],
         'failed': [row['name'] for row in checks if not row['passed']]}))
     return 0 if report['passed'] else 1

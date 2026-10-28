@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T10:15:37.930881+00:00",
+  "source_sha256": "8f7dafe1d49d3100c24a7aeaed9434d7fd801f047524fad8efd4f3dac706d871",
+  "new_metro_execution": true,
+  "new_apk_payload": true,
+  "apk": {
+    "path": ".local/android/artifacts/cost-free-execution/7b1703a3e3b6197092f7cf78b08490ba117f9b9cb34510cc19b8d43e3785267e/app-debug.apk",
+    "bytes": 42945032,
+    "sha256": "7b1703a3e3b6197092f7cf78b08490ba117f9b9cb34510cc19b8d43e3785267e",
+    "gradle_path": "mobile/android/app/build/outputs/apk/debug/app-debug.apk"
+  },
+  "bundle": {
+    "path": "mobile/android/app/src/main/assets/index.android.bundle",
+    "bytes": 2694249,
+    "sha256": "3d9222fbfb33ee94c12139e05f188657731fc95eb871caf14f820fc83d44efd6"
+  },
+  "apk_inspections": 18,
+  "feature_payload_checks": 3,
+  "native_jvm_tests": 26,
+  "jvm_new_execution": false,
+  "jvm_gradle_cached": true,
+  "scope_record": "android-test-scope.json",
+  "device_executed": false,
+  "production_signed_release": false,
+  "previous_published_artifact_record": "docs/quality/evidence/dependency-maintenance/build.json",
+  "finalizer_sha256": "377f16eda9cab9e98c3aa3b689e22d04ddc55f8fbeaa2192d76adf3c86254a17"
+}

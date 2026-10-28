@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T09:59:48.826409+00:00",
+  "targets": [
+    {
+      "database": "cp_test_b4ac2146e0fc47bd97d5baae5f5c98bb",
+      "invalid_before": true,
+      "connections_before": 0,
+      "exact_failed_drop_logged": true,
+      "removed": true
+    },
+    {
+      "database": "cp_test_934ebab8e7134e8d9224e51cde123492",
+      "invalid_before": true,
+      "connections_before": 0,
+      "exact_failed_drop_logged": true,
+      "removed": true
+    }
+  ],
+  "inspection_sha256": "9326c9cd4d4c3f4438f17edd8a875a70bc61f1140cc03f7ca1d8b1c70d908c60",
+  "script_sha256": "1a09e9ebc2fef3d40a364245097ffb5c675d4ff9120a302ab08f803d35f57c02",
+  "production_database_touched": false,
+  "postgres_restarted": false,
+  "unrelated_database_touched": false
+}

@@ -1,0 +1,39 @@
+{
+  "mobile": false,
+  "recordings": [
+    {
+      "name": "cost-free-execution-web",
+      "frame_count": 19,
+      "duration_ms": 3952,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/cost-free-execution-web/frames.json",
+      "manifest_sha256": "12a330855d070e2e250a598c535b6fab81d1ef4a910758e67abd7a20e8fa6957"
+    }
+  ],
+  "layouts": [
+    {
+      "viewport_width": 390,
+      "width": 390,
+      "pageWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "viewport_width": 768,
+      "width": 768,
+      "pageWidth": 768,
+      "scrollWidth": 768
+    },
+    {
+      "viewport_width": 1440,
+      "width": 1200,
+      "pageWidth": 1440,
+      "scrollWidth": 1440
+    }
+  ],
+  "synthetic_data": true,
+  "scope": "Authenticated Web/Taro H5 read-only archive, synthetic native execution fixture. No provider, cloud, physical device or production acceptance."
+}

@@ -1,0 +1,7 @@
+{
+  "accepted_as_current_client_proof": false,
+  "reason": "The initial client web-build log path collided with the owned Web review server build log. The original application source digest still matches, but that one raw log no longer matches its recorded hash. Separate client log namespace and rerun all eight commands without rewriting the original record.",
+  "original_web_raw_log_recoverable": false,
+  "application_source_changed": false,
+  "other_original_logs_retained": "ignored app/.local/cost-free-execution-*.log"
+}

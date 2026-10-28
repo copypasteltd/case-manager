@@ -21121,16 +21121,6 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BudgetPolicyResponse"
-                }
-              }
-            }
-          },
           "400": {
             "$ref": "#/components/responses/Failure"
           },
@@ -21147,7 +21137,14 @@
             "$ref": "#/components/responses/Failure"
           },
           "410": {
-            "$ref": "#/components/responses/Failure"
+            "description": "AI cost control retired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "412": {
             "$ref": "#/components/responses/Failure"
@@ -21177,7 +21174,9 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true,
+        "description": "Retired AI cost-control write. An authorized interactive manager receives410 AI_COST_CONTROL_RETIRED. Historical records remain read-only; no fee policy or reservation gates secretary execution."
       }
     },
     "/agent-budget/entries/{id}/reconcile": {
@@ -21213,16 +21212,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BudgetEntryResponse"
-                }
-              }
-            }
-          },
           "400": {
             "$ref": "#/components/responses/Failure"
           },
@@ -21239,7 +21228,14 @@
             "$ref": "#/components/responses/Failure"
           },
           "410": {
-            "$ref": "#/components/responses/Failure"
+            "description": "AI cost control retired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "412": {
             "$ref": "#/components/responses/Failure"
@@ -21269,7 +21265,9 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true,
+        "description": "Retired AI cost-control write. An authorized interactive manager receives410 AI_COST_CONTROL_RETIRED. Historical records remain read-only; no fee policy or reservation gates secretary execution."
       }
     },
     "/conversations/{id}/runtime-options": {

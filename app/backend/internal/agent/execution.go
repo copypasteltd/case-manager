@@ -115,13 +115,6 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		return fail(runtimeFailure("RUNTIME_TERMINAL"))
 	}
 	if authority {
-		var budgeted bool
-		if err = tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM agent_budget_reservations WHERE org_id=$1 AND run_id=$2)", lease.OrgID, lease.RunID).Scan(&budgeted); err != nil {
-			return fail(err)
-		}
-		if !budgeted {
-			return fail(runtimeFailure("RUNTIME_BUDGET_UNRESERVED"))
-		}
 		if status != "active" || userVersion != actorVersion || orgVersion != runOrgVersion || st.Conversation.CurrentRevisionID != revision || st.Conversation.ContextSecurityVersion != security || st.Conversation.State != "active" {
 			return fail(runtimeFailure("RUNTIME_AUTHORITY_CHANGED"))
 		}

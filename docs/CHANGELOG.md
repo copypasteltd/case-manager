@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量100 · 秘书执行解除费用前置 / Cost-independent secretary execution · 2026-10-28
+
+- 接单与执行不再要求月度Token策略或费用预留；技术用量经迁移79直接绑定租户／运行，保留原记录及不可改写约束。
+- 旧费用策略发布和费用核对API对有权管理员返回410；应用DB角色撤销旧费用表INSERT。Web／共享Taro保留授权的只读历史与筛选，移除费用配置／核对操作。
+- Removes mandatory fee policies/reservations while preserving technical limits, identity, authorization, cancellation, deadlines, queue capacity and execution isolation. Company finance and project budgets remain active.
+- 新增无配置／旧零额度／旧超额、真实工具回执／结果、幂等、取消与历史保护回归；同步源码检查、四端构建、截图／录屏／GIF及中英指南。具体新执行和缓存范围见[验证](quality/100-secretary-execution-verification.md)。GAP-09真实Codex接入及23个完整工作包仍待完成；5项移出不算完成。
+
 ## 修订99 · 交付范围调整 / Scope revision · 2026-10-28
 
 - 按用户要求移出真机验证、网络性能、数据迁移与容灾；第四项以用户更正后的AI费用控制为准。

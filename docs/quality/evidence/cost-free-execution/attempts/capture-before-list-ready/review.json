@@ -1,0 +1,59 @@
+{
+  "accepted_for_current_publication": false,
+  "reason": "Visual review found screenshots captured while record lists were refreshing. The functional browser assertions passed but images do not establish a loaded archive. Re-record after the exact legacy run record is visible.",
+  "relocations": [
+    {
+      "from": "docs/quality/evidence/cost-free-execution-web",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/web"
+    },
+    {
+      "from": "app/.local/repository-showcase/cost-free-execution-web",
+      "to": "app/.local/repository-showcase/cost-free-execution-web-attempt01"
+    },
+    {
+      "from": "docs/media/screenshots/secretary-cost-free-web.png",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media/screenshots/secretary-cost-free-web.png"
+    },
+    {
+      "from": "docs/media/videos/secretary-cost-free-web.mp4",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media/videos/secretary-cost-free-web.mp4"
+    },
+    {
+      "from": "docs/media/gifs/secretary-cost-free-web.gif",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media/gifs/secretary-cost-free-web.gif"
+    },
+    {
+      "from": "docs/quality/evidence/cost-free-execution/web-capture-manifest.json",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/web-capture-manifest.json"
+    },
+    {
+      "from": "docs/quality/evidence/cost-free-execution-mobile",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/mobile"
+    },
+    {
+      "from": "app/.local/repository-showcase/cost-free-execution-mobile",
+      "to": "app/.local/repository-showcase/cost-free-execution-mobile-attempt01"
+    },
+    {
+      "from": "docs/media/screenshots/secretary-cost-free-mobile.png",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media/screenshots/secretary-cost-free-mobile.png"
+    },
+    {
+      "from": "docs/media/videos/secretary-cost-free-mobile.mp4",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media/videos/secretary-cost-free-mobile.mp4"
+    },
+    {
+      "from": "docs/media/gifs/secretary-cost-free-mobile.gif",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media/gifs/secretary-cost-free-mobile.gif"
+    },
+    {
+      "from": "docs/quality/evidence/cost-free-execution/mobile-capture-manifest.json",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/mobile-capture-manifest.json"
+    },
+    {
+      "from": "docs/quality/evidence/cost-free-execution/media.json",
+      "to": "docs/quality/evidence/cost-free-execution/attempts/capture-before-list-ready/media.json"
+    }
+  ],
+  "new_scope": "Browser waiting/capture only; application/client/backend sources unchanged."
+}

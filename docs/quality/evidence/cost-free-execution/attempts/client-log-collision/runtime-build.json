@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-28T09:01:11.099892+00:00",
+  "source_sha256": "ae037328cad3a01f0816c75475ff1998100c12f33c1649e45c6b23eaa28a1412",
+  "source_files": 54,
+  "tests": {
+    "pass": 51,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T08:55:39.232695+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/cost-free-execution-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T08:56:47.847197+00:00",
+      "test_count": 51,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "33d908c99b3a2e533a2055669c885e5b9720fa88143ff794945a679f3c801415",
+      "raw_log": "ignored app/.local/cost-free-execution-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T08:57:06.448224+00:00",
+      "test_count": null,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/cost-free-execution-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "83b1fb735907d7e16c30657b24b2ce5b6fca70a195472573834fec2edd49f273"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "131091556f62a6ccb8c12a13f3c1ab39d8bb35346a894c22753bc2dbebc90e03",
+    "summary_adapter_sha256": "75d57531aa39703798cd11d20cceedb7eaeb665651f04e6e58494e3abd99a0df",
+    "adapter_reran_tests": false
+  }
+}

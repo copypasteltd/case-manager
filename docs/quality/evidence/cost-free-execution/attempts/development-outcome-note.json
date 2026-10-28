@@ -1,0 +1,22 @@
+{
+  "original_json_preserved": false,
+  "scope": "Outcome note from the initial read-only check output, not a reconstructed original artifact.",
+  "initial_observed_exit_code": 1,
+  "initial_observed_stdout": [
+    {
+      "passed": true,
+      "migration_count": 79,
+      "probe_count": 10,
+      "active_runtime_profiles": 0
+    },
+    {
+      "passed": false,
+      "migration_count": 79,
+      "disposable_databases": 2,
+      "integrations_disabled": true
+    }
+  ],
+  "resolution": "Two exact invalid, inactive fixture databases matched failed DROP statements in the owned cluster log and were removed; current recheck reports0.",
+  "cleanup_record": "docs/quality/evidence/cost-free-execution/fixture-cleanup.json",
+  "current_inspection_record": "docs/quality/evidence/cost-free-execution/development-project-resources.json"
+}

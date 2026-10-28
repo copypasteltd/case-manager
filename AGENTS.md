@@ -4,7 +4,7 @@
 
 - Follow `docs/delivery/04-current-scope-and-acceptance.md` and `04-current-scope.json`. Keep Web, WeChat, Douyin, Android, Codex secretary, eight Skills and TG. AI execution isolation, authorization, audit and technical resource limits remain required.
 - 用户明确移出真机验证、网络性能／实网120GB专项、历史数据迁移与容灾、AI费用控制。不得把移出项重新作为当前发布门槛；不因此启用模拟器。
-- Preserve production PG persistence, normal schema upgrades, OSS＋R2 storage/replication, ordinary file/version recovery and company OA/finance. Only AI cost/token quota/billing controls are excluded; the existing mandatory budget admission prerequisite is an unresolved GAP-09 adaptation, not already disabled.
+- Preserve production PG persistence, normal schema upgrades, OSS＋R2 storage/replication, ordinary file/version recovery and company OA/finance. Only AI cost/token quota/billing controls are excluded; increment100 removes mandatory AI fee policies/reservations from admission and execution. Historical cost records are read-only; real Codex integration remains GAP-09.
 - 当前23项待完成（14 P0／9 P1），5项移出。旧28项ID和原始证据保留，不把取消范围记成测试通过。范围修改需运行 `python app/scripts/verify_current_scope.py`，并继续执行相应仓库发布检查。
 
 - Implement application code under `app/`. Keep specifications, guides, evidence, release notes and media under `docs/`; the root README is the bilingual repository entry point.

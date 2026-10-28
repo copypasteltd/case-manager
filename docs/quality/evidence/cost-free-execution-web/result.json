@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-10-28T09:27:11.694Z",
+  "finished_at": "2026-10-28T09:27:31.125Z",
+  "checks": [
+    "Authenticated real UI loads a read-only archive with the original zero legacy policy, pending history and new unreserved runs; fee write actions are absent.",
+    "Own, project and organization archive filters use real authorized requests without changing historical policies or entries.",
+    "Read-only archive remains usable at390/768/1440 widths.",
+    "The archive return action navigates to the actual secretary page."
+  ],
+  "source_count": 714,
+  "source_sha256": "f1cd935f419f618d152557a08be505e8340b72176fa225b39de35f1e3ce60d9f",
+  "source_after_sha256": "f1cd935f419f618d152557a08be505e8340b72176fa225b39de35f1e3ce60d9f",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "88c03b4d7e7f51e60adad754e5ade73616ce16bd109aadaf4034549265da7ec7",
+  "build_source_after_sha256": "88c03b4d7e7f51e60adad754e5ade73616ce16bd109aadaf4034549265da7ec7",
+  "build_source_unchanged": true
+}

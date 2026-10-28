@@ -1,5 +1,7 @@
 # CopyPaste 内部管理平台文档中心
 
+最新实现100：[秘书执行无需AI费用额度](development/100-secretary-execution-without-cost-quota.md) · [验证与交付范围](quality/100-secretary-execution-verification.md)。当前仍23项未完成、5项移出；真实模型接入未以本地合成检查替代。
+
 最新修订99：[当前范围与验收](delivery/04-current-scope-and-acceptance.md) · [23项剩余工作](delivery/03-goal-gap-assessment.md) · [验证记录](quality/99-scope-revision-verification.md)。23 active（14 P0／9 P1），5 excluded；只取消AI费用控制，保留秘书、隔离及授权。No device/network-performance/migration/DR/AI-cost gates.
 
 此前增量98：[依赖维护与四端兼容](development/98-dependency-maintenance.md) · [新执行、复用与开放风险](quality/98-dependency-maintenance-verification.md)。Full current audit91→80, high20→13; security acceptance remains open.
