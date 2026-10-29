@@ -309,14 +309,15 @@
       "status": "active",
       "priority": "P0",
       "kind": "安全分析＋修复＋回归",
-      "remaining": "核对剩余63项审计记录（0 high／56 moderate／7 low）的可达性，逐项修复、替换或形成有证据的处置；继续完成剩余依赖的实际调用回归与产物检查。",
+      "remaining": "增量108完整npm审计已由63项降至0项；继续完成目标正式发布版本的依赖冻结与产物安全核对，覆盖目标Linux部署及正式Android等产物，不以本地开发构建替代生产安全验收。",
       "acceptance": "安全问题按实际风险和既定规则关闭／签核，不压低框架版本或隐藏公告。",
       "scope_change": "一般安全、权限和数据完整性要求继续保留。",
       "completed_adaptations": [
         "BUILD-CONSUMERS-103",
-        "DEVELOPMENT-TOOLCHAIN-107"
+        "DEVELOPMENT-TOOLCHAIN-107",
+        "DEPENDENCY-INTEGRITY-108"
       ],
-      "completed_detail": "增量103完整审计80→70，high13→6；增量107替换同步模板压缩器与本地开发服务器、升级PostCSS和可选Vite peer，补齐开发模式peer及真实socket转接，完整审计70→63，high6→0。剩余63项均开放，整个工作包保持active。"
+      "completed_detail": "增量103完整审计80→70，high13→6；增量107替换同步模板压缩器与本地开发服务器、升级PostCSS和可选Vite peer，补齐开发模式peer及真实socket转接，完整审计70→63，high6→0。剩余63项均开放，整个工作包保持active。 增量108为合并库提供公开源码与许可证的自身属性写入补丁，为URI解析提供维护版同步适配，升级Babel、esbuild、XML、send与UUID；完整npm审计63→0。实际调用、安装树和四端开发产物检查见增量108记录；正式发布安全门继续开放。"
     },
     {
       "id": "GAP-27",

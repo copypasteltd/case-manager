@@ -23,7 +23,7 @@
     "tokens": "python scripts/sync_design.py",
     "contract": "openapi-typescript ../docs/development/openapi.json -o packages/contracts/src/api.d.ts",
     "test": "npm run test --workspaces --if-present",
-    "test:dependency-security": "node --test --test-concurrency=1 scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs scripts/dependency_toolchain.test.mjs"
+    "test:dependency-security": "node --test --test-concurrency=1 scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs scripts/dependency_toolchain.test.mjs scripts/dependency_integrity.test.mjs"
   },
   "devDependencies": {
     "@tarojs/components-rn": "4.3.1",
@@ -45,7 +45,9 @@
     "vite": "8.3.5",
     "@vitejs/plugin-react": "6.1.2",
     "@tarojs/plugin-framework-react": "4.3.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.6.3"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.6.3",
+    "deepmerge": "file:packages/deepmerge-safe",
+    "decode-uri-component": "file:packages/uri-decoder-compat"
   },
   "overrides": {
     "decompress": "$decompress",
@@ -74,6 +76,13 @@
     "@tarojs/plugin-framework-react": {
       "vite": "$vite",
       "@vitejs/plugin-react": "$@vitejs/plugin-react"
-    }
+    },
+    "deepmerge": "$deepmerge",
+    "decode-uri-component": "$decode-uri-component",
+    "@babel/core": "7.29.7",
+    "esbuild": "0.28.2",
+    "fast-xml-parser": "5.7.0",
+    "send@0": "0.19.2",
+    "uuid": "11.1.1"
   }
 }

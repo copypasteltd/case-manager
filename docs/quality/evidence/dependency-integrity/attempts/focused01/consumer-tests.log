@@ -1,0 +1,157 @@
+TAP version 13
+# Subtest: All seven advisory consumers resolve declared implementations and patched upstream versions
+not ok 1 - All seven advisory consumers resolve declared implementations and patched upstream versions
+  ---
+  duration_ms: 50.4939
+  type: 'test'
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\scripts\\dependency_integrity.test.mjs:37:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'deepmerge'
+    - '@copypaste/deepmerge-safe'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '@copypaste/deepmerge-safe'
+  actual: 'deepmerge'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/dependency_integrity.test.mjs:40:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: Prototype-poisoning targets cannot change the returned object prototype at any merged depth
+ok 2 - Prototype-poisoning targets cannot change the returned object prototype at any merged depth
+  ---
+  duration_ms: 0.7229
+  type: 'test'
+  ...
+# Subtest: Source, null-prototype and constructor payloads remain data without poisoning global prototypes
+ok 3 - Source, null-prototype and constructor payloads remain data without poisoning global prototypes
+  ---
+  duration_ms: 0.5229
+  type: 'test'
+  ...
+# Subtest: Deep merge preserves arrays, clone options, symbols, special values and custom callbacks
+ok 4 - Deep merge preserves arrays, clone options, symbols, special values and custom callbacks
+  ---
+  duration_ms: 3.7708
+  type: 'test'
+  ...
+# Subtest: Actual React Native CLI config merging retains its array replacement contract
+ok 5 - Actual React Native CLI config merging retains its array replacement contract
+  ---
+  duration_ms: 60.4354
+  type: 'test'
+  ...
+# Subtest: Actual webpack-chain merging preserves entries, aliases, extensions and optimization options
+ok 6 - Actual webpack-chain merging preserves entries, aliases, extensions and optimization options
+  ---
+  duration_ms: 655.5787
+  type: 'test'
+  ...
+# Subtest: The actual SVGR optimization consumer retains SVG viewBox and visible content
+ok 7 - The actual SVGR optimization consumer retains SVG viewBox and visible content
+  ---
+  duration_ms: 13571.1381
+  type: 'test'
+  ...
+# Subtest: URI bridge supports both CJS and ESM defaults and normal Unicode without changing plus handling
+ok 8 - URI bridge supports both CJS and ESM defaults and normal Unicode without changing plus handling
+  ---
+  duration_ms: 332.4652
+  type: 'test'
+  ...
+# Subtest: The source-map-resolve CJS consumer decodes an encoded map filename and loads its actual contents
+not ok 9 - The source-map-resolve CJS consumer decodes an encoded map filename and loads its actual contents
+  ---
+  duration_ms: 107.9306
+  type: 'test'
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\scripts\\dependency_integrity.test.mjs:143:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '\\dev\\copypasted\\内部管理\\app\\.local\\dependency-integrity-mXSFgi\\map 雪.json'
+    - 'D:\\dev\\copypasted\\内部管理\\app\\.local\\dependency-integrity-mXSFgi\\map 雪.json'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'D:\\dev\\copypasted\\内部管理\\app\\.local\\dependency-integrity-mXSFgi\\map 雪.json'
+  actual: '\\dev\\copypasted\\内部管理\\app\\.local\\dependency-integrity-mXSFgi\\map 雪.json'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/dependency_integrity.test.mjs:152:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Malformed URI input completes in a bounded child and retains valid decoded runs
+ok 10 - Malformed URI input completes in a bounded child and retains valid decoded runs
+  ---
+  duration_ms: 203.7249
+  type: 'test'
+  ...
+# Subtest: Actual Android and iOS CLI XML readers retain manifest and scheme selection
+ok 11 - Actual Android and iOS CLI XML readers retain manifest and scheme selection
+  ---
+  duration_ms: 317.7991
+  type: 'test'
+  ...
+# Subtest: Patched XML builder cannot inject elements through comment and CDATA delimiters
+ok 12 - Patched XML builder cannot inject elements through comment and CDATA delimiters
+  ---
+  duration_ms: 4.0658
+  type: 'test'
+  ...
+# Subtest: UUID consumers retain valid generation and the patched namespace-buffer bounds
+ok 13 - UUID consumers retain valid generation and the patched namespace-buffer bounds
+  ---
+  duration_ms: 4387.6204
+  type: 'test'
+  ...
+# Subtest: Babel reads legitimate source maps but refuses an input comment outside the package root
+ok 14 - Babel reads legitimate source maps but refuses an input comment outside the package root
+  ---
+  duration_ms: 8840.2426
+  type: 'test'
+  ...
+# Subtest: Actual Taro esbuild loader retains TypeScript, alias and define configuration
+ok 15 - Actual Taro esbuild loader retains TypeScript, alias and define configuration
+  ---
+  duration_ms: 6363.227
+  type: 'test'
+  ...
+# Subtest: Actual Expo static middleware serves files, escapes directory redirects and prevents outside reads
+not ok 16 - Actual Expo static middleware serves files, escapes directory redirects and prevents outside reads
+  ---
+  duration_ms: 2.7774
+  type: 'test'
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\scripts\\dependency_integrity.test.mjs:273:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, mkdir 'D:\\dev\\copypasted\\内部管理\\app\\.local\\dependency-integrity-mXSFgi\\expo\\public\\<synthetic>'"
+  code: 'ENOENT'
+  stack: |-
+    async mkdir (node:internal/fs/promises:858:10)
+    async TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/dependency_integrity.test.mjs:275:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 13
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 35420.954

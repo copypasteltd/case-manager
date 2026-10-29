@@ -1,0 +1,48 @@
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: react-native-gesture-handler@2.14.0
+npm error Found: react@18.2.0
+npm error node_modules/react
+npm error   dev react@"18.2.0" from the root project
+npm error   peer react@">=16.0.0" from @ant-design/icons-react-native@2.3.2
+npm error   node_modules/@ant-design/icons-react-native
+npm error     peer @ant-design/icons-react-native@">= 2.3.1" from @ant-design/react-native@5.1.3
+npm error     node_modules/@ant-design/react-native
+npm error       @ant-design/react-native@"5.1.3" from @tarojs/components-rn@4.3.1
+npm error       node_modules/@tarojs/components-rn
+npm error         dev @tarojs/components-rn@"4.3.1" from the root project
+npm error         2 more (@tarojs/runtime-rn, @copypaste/mobile)
+npm error     peer @ant-design/icons-react-native@">=2.3.1" from @tarojs/components-rn@4.3.1
+npm error     node_modules/@tarojs/components-rn
+npm error       dev @tarojs/components-rn@"4.3.1" from the root project
+npm error       2 more (@tarojs/runtime-rn, @copypaste/mobile)
+npm error   46 more (@ant-design/react-native, ...)
+npm error
+npm error Could not resolve dependency:
+npm error peer react@"*" from react-native-gesture-handler@2.14.0
+npm error mobile/node_modules/react-native-gesture-handler
+npm error   react-native-gesture-handler@"2.14.0" from @copypaste/mobile@0.1.0
+npm error   mobile
+npm error     @copypaste/mobile@0.1.0
+npm error     node_modules/@copypaste/mobile
+npm error       workspace mobile from the root project
+npm error
+npm error Conflicting peer dependency: react@19.3.1
+npm error node_modules/react
+npm error   peer react@"*" from react-native-gesture-handler@2.14.0
+npm error   mobile/node_modules/react-native-gesture-handler
+npm error     react-native-gesture-handler@"2.14.0" from @copypaste/mobile@0.1.0
+npm error     mobile
+npm error       @copypaste/mobile@0.1.0
+npm error       node_modules/@copypaste/mobile
+npm error         workspace mobile from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error <user>\AppData\Local\npm-cache\_logs\2026-10-29T04_11_07_514Z-eresolve-report.txt
+npm error A complete log of this run can be found in: <user>\AppData\Local\npm-cache\_logs\2026-10-29T04_11_07_514Z-debug-0.log

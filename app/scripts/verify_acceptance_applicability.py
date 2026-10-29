@@ -129,7 +129,8 @@ def main():
               'authority_scope_sha256': sha(SCOPE), 'verification_script_sha256': sha(Path(__file__)),
               'counts': data['counts'], 'business_cases_executed': 0, 'business_cases_passed': 0,
               'scope': 'Source-bound applicability consistency only; no business or production acceptance.'}
-    target = ROOT / 'docs/quality/evidence/dependency-toolchain/acceptance-applicability-check.json'
+    baseline = json.loads((ROOT / 'docs/quality/current-functional-baseline.json').read_text(encoding='utf-8'))
+    target = ROOT / 'docs/quality/evidence' / baseline['evidence_group'] / 'acceptance-applicability-check.json'
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': record['passed'], 'checks': len(checks), 'counts': data['counts'],

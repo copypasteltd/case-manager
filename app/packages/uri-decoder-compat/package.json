@@ -1,0 +1,13 @@
+{
+  "name": "@copypaste/uri-decoder-compat",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.cjs",
+  "types": "index.d.cts",
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "dependencies": {
+    "@copypaste/uri-decoder-upstream": "npm:decode-uri-component@0.5.1"
+  }
+}

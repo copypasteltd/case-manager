@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T05:17:31.592466+00:00",
+  "bundle_sha256": "e4750a244aea1ba314bd166305c99a3a7cd2136c8475ee14cd05212be28f6fee",
+  "source_map_sha256": "0ba8840d16980010a698f3cd47223ce455a22769caa5589d9f64126f2824eb10",
+  "source_count": 1083,
+  "sources": [
+    {
+      "source": "packages/uri-decoder-compat/index.cjs",
+      "present_in_actual_source_map": true
+    },
+    {
+      "source": "node_modules/@copypaste/uri-decoder-upstream/index.js",
+      "present_in_actual_source_map": true
+    }
+  ],
+  "package_lock_sha256": "93d267dd8b510ae346c7cb6bb5d368475c8a05c58471e27150447a790038a807",
+  "bridge_source_sha256": "04e2fa2e1d0f4a00877aeb6d318f0e838c59bb8897c2692b8ca0c81cd09ac921",
+  "device_executed": false,
+  "scope": "Real fresh Metro bundle source inclusion. The final build/APK record separately binds these bundle bytes to the packaged APK."
+}

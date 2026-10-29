@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量108：npm完整审计63→0，7个直接公告包已修补或替换，正式生产依赖冻结与产物安全验收继续保留在GAP-26。当前范围仍为23 active（14 P0／9 P1）／5 excluded；AI仅移出费用控制，授权、审计、执行隔离及技术限制继续保留。见[开发](../development/108-dependency-integrity.md)与[验证](../quality/108-dependency-integrity-verification.md)。
+
 增量105：新增仓库内的 Linux 原生 Codex 执行控制器，覆盖单任务 systemd 隔离、实际内核状态取证签名、私有模型／公司工具网关、取消与 cgroup 清理，以及独立运行时发布目录。模型密钥与证明私钥留在 root 控制器中。真实服务器隔离、Codex／模型互通和八项 Skill 正式评测仍待完成；23个工作包（14 P0／9 P1）保持开放，5项移出不变。
 
 [实现与部署](../development/105-native-agent-runtime.md) · [验证](../quality/105-native-agent-runtime-verification.md)

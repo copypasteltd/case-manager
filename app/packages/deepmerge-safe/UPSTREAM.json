@@ -1,0 +1,10 @@
+{
+  "name": "deepmerge",
+  "version": "4.3.1",
+  "license": "MIT",
+  "bundled_entry": "dist/cjs.js",
+  "original_entry_sha256": "2e5160f84a1141bd927264afe4d15766f1e6cf07daef182b37ff53fea121de7d",
+  "advisory": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+  "source": "https://github.com/TehShrike/deepmerge",
+  "change": "All3 destination-key writes use own enumerable writable configurable data properties; preserve the upstream mergeability, array, clone, symbol and callback contracts. This private fork is maintained by this repository, not an upstream patched release."
+}

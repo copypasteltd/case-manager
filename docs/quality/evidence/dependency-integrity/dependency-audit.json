@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T04:27:18.717547+00:00",
+  "command": [
+    "npm",
+    "audit",
+    "--package-lock-only",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "exit_code": 0,
+  "package_lock_sha256": "93d267dd8b510ae346c7cb6bb5d368475c8a05c58471e27150447a790038a807",
+  "source_unchanged": true,
+  "node_version": "v22.23.4",
+  "npm_version": "10.9.9",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "before_vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 56,
+    "high": 0,
+    "critical": 0,
+    "total": 63
+  },
+  "raw_report_sha256": "7b85cc420cce9d22f6c5dfc5932893c2a62b1d30d9c2f13b1df58a7e42f3a023",
+  "before_source_record_sha256": "f288f6507231517b4f9bc6b2eca336309e472ad60a74a176c01bd233c9e9a1fd",
+  "all_dependency_scopes_included": true,
+  "advisories_suppressed": false,
+  "npm_audit_gate_passed": true,
+  "production_security_gate_passed": false,
+  "scope": "Full current-lock audit includes development, build, optional and peer packages. A zero advisory scan is checked with the disclosed local patches and real consumer/build evidence; it does not establish production readiness."
+}

@@ -8,7 +8,14 @@ module.exports = (async () => {
   const entry = require.resolve('@tarojs/rn-supporter/entry-file.js');
   return mergeConfig(getDefaultConfig(__dirname), taro, {
   maxWorkers: 2,
-  watchFolders: [path.resolve(__dirname, '../node_modules'), path.resolve(__dirname, '../packages/contracts'), path.resolve(__dirname, '../packages/design')],
+  // Taro RN's query-string loads this local file alias at runtime. Metro must
+  // see its real source path as well as the node_modules link.
+  watchFolders: [
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../packages/contracts'),
+    path.resolve(__dirname, '../packages/design'),
+    path.resolve(__dirname, '../packages/uri-decoder-compat'),
+  ],
   resolver: {
     unstable_enablePackageExports: true,
     // The Taro entry is hoisted outside this workspace. Resolve its generated

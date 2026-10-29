@@ -2,11 +2,11 @@
 
 [逐项验收范围](quality/04-current-acceptance-applicability.md)已覆盖原30项AC／72项TC；当前保留、部分保留及移出边界逐项可查，不把分类计为业务验收通过。
 
-增量107修复Taro构建工具链：为同步模板压缩和本地开发服务器提供明确身份的适配包，升级PostCSS及可选Vite／React插件，Node要求>=22.15.0 <23。本轮完整审计70→63，high6→0；剩余63个告警全部开放。23个完整工作包（14 P0／9 P1）、5项移出不变。AI仅移出费用控制，秘书、八项Skill、TG、授权、审计、隔离和技术限制继续保留。
+增量108已实现合并库安全补丁、维护版URI同步适配及Babel／esbuild／XML／send／UUID升级，完整npm审计从63项降至0项。自维护补丁公开源码、MIT许可证、原版SHA256和实际复现；不以改名代替修复。正式发布依赖与产物安全验收仍开放，当前23个工作包（14 P0／9 P1）及5项移出不变。AI仅移出费用控制，秘书、八项Skill、TG、权限、审计、执行隔离和技术限制保留。
 
-[方案与命令](development/107-dependency-toolchain.md) · [本轮验证](quality/107-dependency-toolchain-verification.md) · [全部待办](delivery/03-goal-gap-assessment.md)
+[实现与命令](development/108-dependency-integrity.md) · [执行与来源](quality/108-dependency-integrity-verification.md) · [全部待办](delivery/03-goal-gap-assessment.md)
 
-本轮新执行：标准npm ci、40项依赖调用与2项原生JS检查、8项客户端命令（Web172／共享移动273／运行时55，微信／抖音各20页）、Android开发包与18项APK检查，以及H5服务5项／原生Edge3项检查；26条JVM结果为Gradle缓存。30项AC／72项TC已完成适用性分类并通过12项一致性检查，分类未执行业务验收。211份旧媒体、未改后端224／1355及2个Linux交叉构建保留原始证据范围。
+本轮新执行通过：标准npm ci、56项依赖检查＋2项原生JS检查、8项客户端命令（Web172／移动273／运行时55，微信／抖音各20页）、Android开发包及18项APK检查、H5服务5项及原生Edge3项。原生bundle已确认包含URI适配与维护版解析器；26条JVM结果来自Gradle缓存。31组源码核对通过。211份旧媒体、未改后端224／1355及2个Linux交叉构建保留原执行范围。
 
 增量106：已接通四端人工费用摊销。明确选择月份均分或按日分配、服务期间和依据，预览逐月项目／公司份额，经最近MFA及口径确认后发布不可变版本；支持停用、完整历史、独立报表、固定导出和冲销沿用原月份汇率。修订或停用重列当前计划视图，原费用／现金事实和已完成导出保留。实际公司制度、跨币种核销、手续费／汇差和完整旅程仍开放；23个工作包（14 P0／9 P1）、5项排除不变。
 

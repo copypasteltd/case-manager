@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量108：补齐合并库原型写入修补、维护版URI同步适配及Babel／esbuild／XML／send／UUID升级；完整npm审计63→0。正式发布依赖冻结与产物安全核对仍在GAP-26，当前23个工作包继续开放。见[实现](../development/108-dependency-integrity.md)和[验证](../quality/108-dependency-integrity-verification.md)。
+
 增量107已为30项AC／72项TC建立[逐项适用性表](../quality/04-current-acceptance-applicability.md)及12项源文件一致性核对；不计为业务测试通过，GAP-28继续开放。
 
 增量107：新增同步模板压缩与loopback开发服务器适配，升级样式和可选peer；完整审计70→63、high6→0，GAP-26继续开放。本轮检查见[开发](../development/107-dependency-toolchain.md)和[验证](../quality/107-dependency-toolchain-verification.md)。

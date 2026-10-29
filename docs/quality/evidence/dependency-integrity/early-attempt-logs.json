@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "attempt": "install01",
+      "original_record": "install01.json",
+      "original_record_sha256": "3907f30e0d8ec03df5ed2829b159abfc6454429a5c31b36fbaad67edbee0764e",
+      "raw_log_sha256": "948c9714d498bd91fc744125eda1dc564b5ccabd466d585c83a0520f1a567fd6",
+      "public_log": "install01.log",
+      "public_log_sha256": "3537b3cbf7f1540345613e18304961457c36676330f00d36ed4b0fe9006a00f3",
+      "record_not_rewritten": true
+    },
+    {
+      "attempt": "dedupe02",
+      "original_record": "dedupe02.json",
+      "original_record_sha256": "0090572a9ca259cba08953995f9cca32160a3dc38e111b6aa243a3eea57e633c",
+      "raw_log_sha256": "be39b67da2de7c37324d17357bd9e42197f9fb5d1fccd8c7727d94acc45f579a",
+      "public_log": "dedupe02.log",
+      "public_log_sha256": "fb494ca8368875caabbccfdb808eb3661c8cbe8b37799414548437a4ddbe6acf",
+      "record_not_rewritten": true
+    }
+  ],
+  "failed_actual_tree_source_archive": "attempts/focused01/source-inputs.zip",
+  "scope": "The first install exited0 but its graph was invalid. Dedupe failed; neither outcome is a successful clean-install acceptance."
+}

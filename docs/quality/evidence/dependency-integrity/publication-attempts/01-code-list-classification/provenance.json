@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "original_result_sha256": "bf084dc9117343938856c1913de8200412574b1f5d7c18a5df84ebe8420ef7ea",
+  "baseline_before_sha256": "5b9ecb43965c69731531b76896eb43a1b12246432b787c311ec77e88d36bbf90",
+  "reason": "The required code/guide list accidentally included immutable raw logs and binary ZIP archives. Only the style-input declaration is corrected; ordinary file, sensitive-value, link, artifact and source checks still cover those evidence files.",
+  "raw_evidence_modified": false
+}

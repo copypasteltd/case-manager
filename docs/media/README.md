@@ -1,5 +1,7 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量108 / Increment108：本轮依赖执行修复不改变业务页面。原121 PNG／45 MP4／45 GIF共211份保留原始字节与采集范围，见[来源清单](../quality/evidence/dependency-integrity/reused-evidence.json)。本地H5服务与原生Edge检查另行记录，不作为新业务录屏；当前AI范围仅移出费用控制。
+
 增量105 / Increment105：执行控制器没有界面变更；原113 PNG／43 MP4／43 GIF共199份按104及更早采集来源保留，已核对发布Git对象和SHA256。未重新录制，也未以旧API夹具证明当前Linux／模型执行。见[保留清单](../quality/evidence/native-agent-runtime/reused-evidence.json)和[本轮验证](../quality/105-native-agent-runtime-verification.md)。
 
 增量104 / Increment104：新增真实Web与Taro H5操作的合成分片盘点、固定清单观察期及历史Worker回执展示。录制从认证后的目录页开始，无密码、MFA输入、真实业务或云凭据。旧189份媒体按原采集来源保留。后台与云回执采用隔离原生PG和受控云夹具，不声明真实云删除或真机验收。

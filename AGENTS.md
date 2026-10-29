@@ -33,3 +33,5 @@
 - Increment 107 replaces the remaining high-severity Taro template/dev-server consumers with disclosed maintained adapters. Use Node >=22.15.0 <23. All63 remaining audit entries stay open; retained106 UI/backend/media evidence must be distinguished from fresh client/native/server checks. See `docs/development/107-dependency-toolchain.md`.
 
 - Current applicability for all 30 original AC and 72 TC IDs is recorded in `docs/quality/04-current-acceptance-applicability.md` and its JSON manifest. Run `python app/scripts/verify_acceptance_applicability.py` after acceptance-scope changes. Classification does not execute or pass business cases; GAP-28 stays active.
+
+- Increment108 fixes the remaining seven directly advised npm consumers with a disclosed MIT merge patch, a maintained URI parser bridge and patched Babel/esbuild/XML/send/UUID versions. Full npm audit63→0 does not sign off formal production artifacts; keep GAP-26 active for that remaining acceptance. See `docs/development/108-dependency-integrity.md`.

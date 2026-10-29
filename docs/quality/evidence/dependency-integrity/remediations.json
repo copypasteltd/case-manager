@@ -1,0 +1,249 @@
+{
+  "package_lock_sha256": "93d267dd8b510ae346c7cb6bb5d368475c8a05c58471e27150447a790038a807",
+  "direct_packages": 7,
+  "items": [
+    {
+      "id": "DEP-108-01",
+      "name": "deepmerge",
+      "selected_implementation": "@copypaste/deepmerge-safe0.1.0",
+      "implementation_detail": "Disclosed MIT-derived4.3.1 patch defines own data properties at all3 destination writes; upstream identity, checksum and original reproduction are retained.",
+      "original_advisories": [
+        {
+          "source": 1243505,
+          "name": "deepmerge",
+          "dependency": "deepmerge",
+          "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "severity": "low",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.2.0 <=4.3.1"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/@react-native-community/cli-config/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli-doctor/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli/node_modules/deepmerge",
+        "node_modules/@svgr/plugin-svgo/node_modules/deepmerge"
+      ],
+      "current_nodes": {
+        "node_modules/deepmerge": "packages/deepmerge-safe"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    },
+    {
+      "id": "DEP-108-02",
+      "name": "decode-uri-component",
+      "selected_implementation": "@copypaste/uri-decoder-compat -> decode-uri-component0.5.1",
+      "implementation_detail": "The CJS/ESM bridge delegates to the maintained parser; Unicode, malformed input and actual navigation/source-map consumers are exercised.",
+      "original_advisories": [
+        {
+          "source": 1147955,
+          "name": "decode-uri-component",
+          "dependency": "decode-uri-component",
+          "title": "decode-uri-component: Denial of service via exponential decoding of malformed percent-encoded input",
+          "url": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-405",
+            "CWE-407",
+            "CWE-1176"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=0.4.2"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/decode-uri-component"
+      ],
+      "current_nodes": {
+        "node_modules/decode-uri-component": "packages/uri-decoder-compat"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    },
+    {
+      "id": "DEP-108-03",
+      "name": "@babel/core",
+      "selected_implementation": "7.29.7",
+      "implementation_detail": "Actual Babel transforms verify allowed package-local and denied package-external source map reads.",
+      "original_advisories": [
+        {
+          "source": 1123528,
+          "name": "@babel/core",
+          "dependency": "@babel/core",
+          "title": "@babel/core: Arbitrary File Read via sourceMappingURL Comment",
+          "url": "https://github.com/advisories/GHSA-4x5r-pxfx-6jf8",
+          "severity": "low",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 3.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N"
+          },
+          "range": "<=7.29.0"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/@babel/core"
+      ],
+      "current_nodes": {
+        "node_modules/@babel/core": "7.29.7"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    },
+    {
+      "id": "DEP-108-04",
+      "name": "esbuild",
+      "selected_implementation": "0.28.2",
+      "implementation_detail": "Actual Taro requireWithEsbuild loads TypeScript with alias, define and SWC CommonJS settings.",
+      "original_advisories": [
+        {
+          "source": 1102341,
+          "name": "esbuild",
+          "dependency": "esbuild",
+          "title": "esbuild enables any website to send any requests to the development server and read the response",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-346"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=0.24.2"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/@tarojs/helper/node_modules/esbuild",
+        "node_modules/@tarojs/webpack5-runner/node_modules/esbuild"
+      ],
+      "current_nodes": {
+        "node_modules/esbuild": "0.28.2"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    },
+    {
+      "id": "DEP-108-05",
+      "name": "fast-xml-parser",
+      "selected_implementation": "5.7.0",
+      "implementation_detail": "Actual React Native manifest/scheme readers, ordinary XML and comment/CDATA injection boundaries are exercised.",
+      "original_advisories": [
+        {
+          "source": 1117911,
+          "name": "fast-xml-parser",
+          "dependency": "fast-xml-parser",
+          "title": "fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimiters",
+          "url": "https://github.com/advisories/GHSA-gh4j-gqv2-49f6",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-91"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<5.7.0"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/fast-xml-parser"
+      ],
+      "current_nodes": {
+        "node_modules/fast-xml-parser": "5.7.0"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    },
+    {
+      "id": "DEP-108-06",
+      "name": "send",
+      "selected_implementation": "0.x ->0.19.2; existing1.2.1 remains",
+      "implementation_detail": "Actual Expo HTTP file serving, directory redirects, traversal and real redirect formatting are exercised.",
+      "original_advisories": [
+        {
+          "source": 1109556,
+          "name": "send",
+          "dependency": "send",
+          "title": "send vulnerable to template injection that can lead to XSS",
+          "url": "https://github.com/advisories/GHSA-m6fv-jmcg-4jfg",
+          "severity": "low",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+          },
+          "range": "<0.19.0"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/@expo/cli/node_modules/send"
+      ],
+      "current_nodes": {
+        "node_modules/express/node_modules/send": "1.2.1",
+        "node_modules/send": "0.19.2"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    },
+    {
+      "id": "DEP-108-07",
+      "name": "uuid",
+      "selected_implementation": "11.1.1",
+      "implementation_detail": "Actual xcode UUID generation and Expo-resolved APIs plus v3/v5/v6 buffer boundaries are exercised.",
+      "original_advisories": [
+        {
+          "source": 1119441,
+          "name": "uuid",
+          "dependency": "uuid",
+          "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-787",
+            "CWE-1285"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<11.1.1"
+        }
+      ],
+      "original_nodes": [
+        "node_modules/uuid",
+        "node_modules/xcode/node_modules/uuid"
+      ],
+      "current_nodes": {
+        "node_modules/uuid": "11.1.1"
+      },
+      "status": "implemented",
+      "consumer_evidence": "security-checks.json",
+      "production_signoff": false
+    }
+  ],
+  "scope": "Implementation dispositions. Consumer/build pass status is determined by separate source-bound execution records; this is not production signoff."
+}

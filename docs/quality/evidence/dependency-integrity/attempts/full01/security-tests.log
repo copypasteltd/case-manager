@@ -1,0 +1,370 @@
+
+> copypaste-internal-platform@0.1.0 test:dependency-security
+> node --test --test-concurrency=1 scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs scripts/dependency_toolchain.test.mjs scripts/dependency_integrity.test.mjs
+
+TAP version 13
+# Subtest: All seven advisory consumers resolve declared implementations and patched upstream versions
+ok 1 - All seven advisory consumers resolve declared implementations and patched upstream versions
+  ---
+  duration_ms: 14.3505
+  type: 'test'
+  ...
+# Subtest: Prototype-poisoning targets cannot change the returned object prototype at any merged depth
+ok 2 - Prototype-poisoning targets cannot change the returned object prototype at any merged depth
+  ---
+  duration_ms: 0.4694
+  type: 'test'
+  ...
+# Subtest: Source, null-prototype and constructor payloads remain data without poisoning global prototypes
+ok 3 - Source, null-prototype and constructor payloads remain data without poisoning global prototypes
+  ---
+  duration_ms: 0.2506
+  type: 'test'
+  ...
+# Subtest: Deep merge preserves arrays, clone options, symbols, special values and custom callbacks
+ok 4 - Deep merge preserves arrays, clone options, symbols, special values and custom callbacks
+  ---
+  duration_ms: 1.1828
+  type: 'test'
+  ...
+# Subtest: Actual React Native CLI config merging retains its array replacement contract
+ok 5 - Actual React Native CLI config merging retains its array replacement contract
+  ---
+  duration_ms: 1.3426
+  type: 'test'
+  ...
+# Subtest: Actual webpack-chain merging preserves entries, aliases, extensions and optimization options
+ok 6 - Actual webpack-chain merging preserves entries, aliases, extensions and optimization options
+  ---
+  duration_ms: 9.2077
+  type: 'test'
+  ...
+# Subtest: The actual SVGR optimization consumer retains SVG viewBox and visible content
+ok 7 - The actual SVGR optimization consumer retains SVG viewBox and visible content
+  ---
+  duration_ms: 259.7041
+  type: 'test'
+  ...
+# Subtest: URI bridge supports both CJS and ESM defaults and normal Unicode without changing plus handling
+ok 8 - URI bridge supports both CJS and ESM defaults and normal Unicode without changing plus handling
+  ---
+  duration_ms: 13.9131
+  type: 'test'
+  ...
+# Subtest: The source-map-resolve CJS consumer decodes an encoded map filename and loads its actual contents
+ok 9 - The source-map-resolve CJS consumer decodes an encoded map filename and loads its actual contents
+  ---
+  duration_ms: 2.4711
+  type: 'test'
+  ...
+# Subtest: Malformed URI input completes in a bounded child and retains valid decoded runs
+ok 10 - Malformed URI input completes in a bounded child and retains valid decoded runs
+  ---
+  duration_ms: 118.7131
+  type: 'test'
+  ...
+# Subtest: Actual Android and iOS CLI XML readers retain manifest and scheme selection
+ok 11 - Actual Android and iOS CLI XML readers retain manifest and scheme selection
+  ---
+  duration_ms: 29.823
+  type: 'test'
+  ...
+# Subtest: Patched XML builder cannot inject elements through comment and CDATA delimiters
+ok 12 - Patched XML builder cannot inject elements through comment and CDATA delimiters
+  ---
+  duration_ms: 2.382
+  type: 'test'
+  ...
+# Subtest: UUID consumers retain valid generation and the patched namespace-buffer bounds
+ok 13 - UUID consumers retain valid generation and the patched namespace-buffer bounds
+  ---
+  duration_ms: 54.9696
+  type: 'test'
+  ...
+# Subtest: Babel reads legitimate source maps but refuses an input comment outside the package root
+ok 14 - Babel reads legitimate source maps but refuses an input comment outside the package root
+  ---
+  duration_ms: 237.202
+  type: 'test'
+  ...
+# Subtest: Actual Taro esbuild loader retains TypeScript, alias and define configuration
+ok 15 - Actual Taro esbuild loader retains TypeScript, alias and define configuration
+  ---
+  duration_ms: 239.2539
+  type: 'test'
+  ...
+# Subtest: Actual Expo static middleware serves files and send escapes directory redirects without outside reads
+ok 16 - Actual Expo static middleware serves files and send escapes directory redirects without outside reads
+  ---
+  duration_ms: 88.0683
+  type: 'test'
+  ...
+# Subtest: Taro Doctor glob CLI passes filename metacharacters as literal child arguments
+ok 17 - Taro Doctor glob CLI passes filename metacharacters as literal child arguments
+  ---
+  duration_ms: 3226.861
+  type: 'test'
+  ...
+# Subtest: Legacy native codegen codemod honors actual ignore patterns with the maintained matcher
+ok 18 - Legacy native codegen codemod honors actual ignore patterns with the maintained matcher
+  ---
+  duration_ms: 16958.0677
+  type: 'test'
+  ...
+# Subtest: Actual Metro resolution keeps the callable parser and exact PNG/SVG dimensions
+ok 19 - Actual Metro resolution keeps the callable parser and exact PNG/SVG dimensions
+  ---
+  duration_ms: 1.627
+  type: 'test'
+  ...
+# Subtest: Filesystem and callback image reads remain usable; disableFS still prevents file reads
+ok 20 - Filesystem and callback image reads remain usable; disableFS still prevents file reads
+  ---
+  duration_ms: 11.3904
+  type: 'test'
+  ...
+# Subtest: Real Metro asset discovery reads dimensions, scales and hashes through the new parser
+ok 21 - Real Metro asset discovery reads dimensions, scales and hashes through the new parser
+  ---
+  duration_ms: 150.8211
+  type: 'test'
+  ...
+# Subtest: Patched parser rejects zero-length icns structures in a bounded child
+ok 22 - Patched parser rejects zero-length icns structures in a bounded child
+  ---
+  duration_ms: 120.0665
+  type: 'test'
+  ...
+# Subtest: Patched parser rejects zero-length heif structures in a bounded child
+ok 23 - Patched parser rejects zero-length heif structures in a bounded child
+  ---
+  duration_ms: 134.8075
+  type: 'test'
+  ...
+# Subtest: Patched parser rejects zero-length jxl structures in a bounded child
+ok 24 - Patched parser rejects zero-length jxl structures in a bounded child
+  ---
+  duration_ms: 135.6276
+  type: 'test'
+  ...
+# - 正在从 direct:http://127.0.0.1:6146/fixture.zip 拉取远程模板...
+# √ 拉取远程模板仓库成功！
+# Subtest: Actual upstream Taro fetchTemplate callback caller publishes the extracted package
+ok 25 - Actual upstream Taro fetchTemplate callback caller publishes the extracted package
+  ---
+  duration_ms: 12804.276
+  type: 'test'
+  ...
+# Subtest: Existing template destinations retain every original byte and do not receive a request
+ok 26 - Existing template destinations retain every original byte and do not receive a request
+  ---
+  duration_ms: 53.0464
+  type: 'test'
+  ...
+# Subtest: HTTP failures and malformed archives leave no destination or temporary extraction
+ok 27 - HTTP failures and malformed archives leave no destination or temporary extraction
+  ---
+  duration_ms: 37.0392
+  type: 'test'
+  ...
+# Subtest: Template redirects cannot switch to a UNIX socket or file scheme
+ok 28 - Template redirects cannot switch to a UNIX socket or file scheme
+  ---
+  duration_ms: 15.0788
+  type: 'test'
+  ...
+# Subtest: Cross-origin redirects strip synthetic authorization and cookie headers
+ok 29 - Cross-origin redirects strip synthetic authorization and cookie headers
+  ---
+  duration_ms: 58.8448
+  type: 'test'
+  ...
+# Subtest: Redirect cycles and download timeouts stop without leaving staging directories
+ok 30 - Redirect cycles and download timeouts stop without leaving staging directories
+  ---
+  duration_ms: 106.6949
+  type: 'test'
+  ...
+# Subtest: A real local Git template preserves branch bytes and removes only its own .git directory
+ok 31 - A real local Git template preserves branch bytes and removes only its own .git directory
+  ---
+  duration_ms: 3054.4344
+  type: 'test'
+  ...
+# Subtest: Git option revisions and external-command transports are rejected before any clone
+ok 32 - Git option revisions and external-command transports are rejected before any clone
+  ---
+  duration_ms: 2.7494
+  type: 'test'
+  ...
+# Subtest: Unsupported options are explicit and callback failures are delivered exactly once
+ok 33 - Unsupported options are explicit and callback failures are delivered exactly once
+  ---
+  duration_ms: 0.7118
+  type: 'test'
+  ...
+# Subtest: Taro CommonJS latest-version caller uses current metadata and supports explicit tags
+ok 34 - Taro CommonJS latest-version caller uses current metadata and supports explicit tags
+  ---
+  duration_ms: 4764.3484
+  type: 'test'
+  ...
+# Subtest: Maintained metadata caller rejects a missing registry package
+ok 35 - Maintained metadata caller rejects a missing registry package
+  ---
+  duration_ms: 6.8133
+  type: 'test'
+  ...
+# Subtest: CommonJS adapter remains callable and the default tar/targz readers preserve actual bytes and strip semantics
+ok 36 - CommonJS adapter remains callable and the default tar/targz readers preserve actual bytes and strip semantics
+  ---
+  duration_ms: 221.1025
+  type: 'test'
+  ...
+# Subtest: Taro CommonJS template-download boundary extracts a real loopback ZIP through the maintained adapter
+ok 37 - Taro CommonJS template-download boundary extracts a real loopback ZIP through the maintained adapter
+  ---
+  duration_ms: 119.6957
+  type: 'test'
+  ...
+# Subtest: A sibling whose name starts with the output path cannot receive a traversing archive entry
+ok 38 - A sibling whose name starts with the output path cannot receive a traversing archive entry
+  ---
+  duration_ms: 25.4388
+  type: 'test'
+  ...
+# Subtest: An archive hardlink cannot expose the contents of an outside owned sentinel
+ok 39 - An archive hardlink cannot expose the contents of an outside owned sentinel
+  ---
+  duration_ms: 49.8755
+  type: 'test'
+  ...
+# Subtest: Symlink chains in the archive cannot redirect a later write outside extraction
+ok 40 - Symlink chains in the archive cannot redirect a later write outside extraction
+  ---
+  duration_ms: 45.4115
+  type: 'test'
+  ...
+# Subtest: A pre-existing filesystem junction to an output-prefix sibling cannot redirect extraction
+ok 41 - A pre-existing filesystem junction to an output-prefix sibling cannot redirect extraction
+  ---
+  duration_ms: 785.7606
+  type: 'test'
+  ...
+# Subtest: Caller mapping cannot introduce an unchecked escape after otherwise valid archive parsing
+ok 42 - Caller mapping cannot introduce an unchecked escape after otherwise valid archive parsing
+  ---
+  duration_ms: 3.752
+  type: 'test'
+  ...
+# Subtest: Swiper rejects the published prototype-pollution input even if Array.indexOf is modified
+ok 43 - Swiper rejects the published prototype-pollution input even if Array.indexOf is modified
+  ---
+  duration_ms: 282.5745
+  type: 'test'
+  ...
+# Subtest: Updated JavaScript serialization preserves data while escaping executable HTML text
+ok 44 - Updated JavaScript serialization preserves data while escaping executable HTML text
+  ---
+  duration_ms: 73.8248
+  type: 'test'
+  ...
+# Subtest: Updated XML parser and serializer preserve normal manifest data
+ok 45 - Updated XML parser and serializer preserve normal manifest data
+  ---
+  duration_ms: 577.1826
+  type: 'test'
+  ...
+# Subtest: Updated node-tar extracts normal bounded TAR/GZIP bytes with strip semantics
+ok 46 - Updated node-tar extracts normal bounded TAR/GZIP bytes with strip semantics
+  ---
+  duration_ms: 639.0371
+  type: 'test'
+  ...
+# Subtest: Updated node-tar skips archive parent traversal and external hardlinks
+ok 47 - Updated node-tar skips archive parent traversal and external hardlinks
+  ---
+  duration_ms: 68.8762
+  type: 'test'
+  ...
+# addClassPrefix: postcss.plugin was deprecated. Migration guide:
+# https://evilmartians.com/chronicles/postcss-8-plugin-migration
+# addClassPrefix: postcss.plugin was deprecated. Migration guide:
+# https://evilmartians.com/chronicles/postcss-8-plugin-migration
+# Subtest: Installed Taro consumers resolve the named adapters and maintained upstream implementations
+ok 48 - Installed Taro consumers resolve the named adapters and maintained upstream implementations
+  ---
+  duration_ms: 892.1489
+  type: 'test'
+  ...
+# Subtest: Actual synchronous MiniPlugin generation preserves Chinese text, directives, bindings and closing slashes
+ok 49 - Actual synchronous MiniPlugin generation preserves Chinese text, directives, bindings and closing slashes
+  ---
+  duration_ms: 19731.075
+  type: 'test'
+  ...
+# Subtest: Both WeChat and Douyin templates retain conditionals, loops and literal preformatted whitespace
+ok 50 - Both WeChat and Douyin templates retain conditionals, loops and literal preformatted whitespace
+  ---
+  duration_ms: 464.8421
+  type: 'test'
+  ...
+# Subtest: Template adapter rejects unrepresentable options and excessive inputs before starting a child
+ok 51 - Template adapter rejects unrepresentable options and excessive inputs before starting a child
+  ---
+  duration_ms: 3.7334
+  type: 'test'
+  ...
+# Subtest: Malformed and former custom-ignore patterns complete within the bounded worker
+ok 52 - Malformed and former custom-ignore patterns complete within the bounded worker
+  ---
+  duration_ms: 249.9323
+  type: 'test'
+  ...
+# Subtest: Actual miniprogram-simulate WXSS compile works with PostCSS 8 and unchanged namespace/rpx behavior
+ok 53 - Actual miniprogram-simulate WXSS compile works with PostCSS 8 and unchanged namespace/rpx behavior
+  ---
+  duration_ms: 17777.9613
+  type: 'test'
+  ...
+# Subtest: Legacy server TLS/proxy options translate without mutating inputs or silently losing callbacks
+ok 54 - Legacy server TLS/proxy options translate without mutating inputs or silently losing callbacks
+  ---
+  duration_ms: 2.0341
+  type: 'test'
+  ...
+# Subtest: Local server rejects unrestricted hosts and legacy behaviors that require an explicit migration
+ok 55 - Local server rejects unrestricted hosts and legacy behaviors that require an explicit migration
+  ---
+  duration_ms: 0.2987
+  type: 'test'
+  ...
+# Subtest: Modern server compiles and serves webpack assets, rejects hostile Host/traversal and closes its resources
+not ok 56 - Modern server compiles and serves webpack assets, rejects hostile Host/traversal and closes its resources
+  ---
+  duration_ms: 53211.4885
+  type: 'test'
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\scripts\\dependency_toolchain.test.mjs:130:1'
+  failureType: 'testCodeFailure'
+  error: 'Synthetic HTTP request timed out.'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    ClientRequest.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/dependency_toolchain.test.mjs:125:45)
+    Object.onceWrapper (node:events:633:28)
+    ClientRequest.emit (node:events:519:28)
+    Socket.emitRequestTimeout (node:_http_client:931:9)
+    Object.onceWrapper (node:events:633:28)
+    Socket.emit (node:events:531:35)
+    Socket._onTimeout (node:net:605:8)
+    listOnTimeout (node:internal/timers:585:17)
+    process.processTimers (node:internal/timers:521:7)
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 55
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 142193.4348

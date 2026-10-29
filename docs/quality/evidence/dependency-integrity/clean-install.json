@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T04:38:32.684415+00:00",
+  "command": [
+    "npm",
+    "ci",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "technical_deadline_seconds": 3600,
+  "elapsed_seconds": 1080.84,
+  "package_lock_sha256": "93d267dd8b510ae346c7cb6bb5d368475c8a05c58471e27150447a790038a807",
+  "package_manifest_sha256": "29dae5f505928c733eca870b4727980bea27f98b700789b977f8b01ec6e0d0c4",
+  "lock_unchanged": true,
+  "manifest_unchanged": true,
+  "install_scripts_enabled": true,
+  "force_or_legacy_peer_flags": false,
+  "node_version": "v22.23.4",
+  "npm_version": "10.9.9",
+  "raw_log_sha256": "1a0bfa372b742d7fdd95cb5ee5e4153599baf3feab46c8c18e93bf65912b902c",
+  "scope": "Native clean install; actual dependency-tree and consumer checks run separately.",
+  "public_log_sha256": "17f630420b9e2064073523186959c393a002e1db2e13d22e0fb64bdd38da5169"
+}
