@@ -64,9 +64,15 @@ func runNotificationWorker(ctx context.Context, logger *slog.Logger) error {
 	owner := "notification." + core.NewID()
 	consumer := notification.Consumer()
 	var nextSchedule time.Time
+	var nextPolicyOrg string
 	logger.Info("notification worker started", "owner", owner, "contract_reminders_enabled", len(rule.DaysBefore) > 0)
 	for ctx.Err() == nil {
 		if time.Now().After(nextSchedule) {
+			if next, _, e := service.ScheduleContractPolicies(ctx, nextPolicyOrg); e != nil && ctx.Err() == nil {
+				logger.Warn("published contract reminder scheduling failed", "code", core.PublicError(e).Code)
+			} else if e == nil {
+				nextPolicyOrg = next
+			}
 			if _, e := service.ScheduleContracts(ctx, rule); e != nil && ctx.Err() == nil {
 				logger.Warn("contract reminder scheduling failed", "code", core.PublicError(e).Code)
 			}

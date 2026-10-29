@@ -1,0 +1,78 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-29T10:42:31.570628+00:00",
+  "reason": "Test helper attempted MFA enrollment again for an already enrolled member; CHALLENGE_INVALID. Policy/scheduler assertions before that point passed.",
+  "source_sha256": "f3729e7ecf55beb9bd1585413c4808b4adaaccc59fa541e7e58d84c9019e5b93",
+  "source_archive": "app/.local/contract-reminders-attempt01-source.zip",
+  "source_archive_sha256": "db663c619e2c968efe3582c37b71acf83aa637eb86af7157852fda7bb5a15a54",
+  "raw_log": "app/.local/contract-reminders-focused-01.log",
+  "raw_log_sha256": "de5f605542825e4244e239482d95744e1dd535de607ee5a69b8e30bf6a5ca6d6",
+  "checks": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/new_roles_are_independent_and_never_auto_bound",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/strict_input_recent_MFA_and_valid_business_rules",
+      "Elapsed": 0.91
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/publish_canonical_revision_with_stable_idempotency_and_atomic_evidence",
+      "Elapsed": 3.98
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/organization_policy_does_not_grant_contract_content",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/real_scheduler_uses_published_policy_and_excludes_prepublication_thresholds",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/leased_delivery_rechecks_actual_owner_and_remains_idempotent",
+      "Elapsed": 0.05
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/disable_overrides_legacy_and_keeps_queued_or_delivered_facts",
+      "Elapsed": 0.37
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/two_writers_cannot_publish_from_the_same_expected_version",
+      "Elapsed": 0.23
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/history_is_immutable_paged_and_cursor_bound",
+      "Elapsed": 0.11
+    },
+    {
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/four_human_channels_allowed_but_runtime_TG_sessions_rejected",
+      "Elapsed": 0.1
+    },
+    {
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies",
+      "Elapsed": 15.33
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-29T11:32:55.748346+00:00",
+  "reviewer": "Codex visual inspection of the seven final screenshots and the decoded first/middle/last GIF frames",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-review.png",
+      "sha256": "ef3e0c2f17d3f6ce43f89c5e9f335349ca998536c540647f2b6c626e1f4d7661"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-published.png",
+      "sha256": "a8be641f78d0af4368dea3fc848dd1bea59ce2c421a66369e7c1ba2d2a562a20"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-history.png",
+      "sha256": "a8be641f78d0af4368dea3fc848dd1bea59ce2c421a66369e7c1ba2d2a562a20"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-dark.png",
+      "sha256": "b4087eb63a7a6395ed4f36ea69c2d6d3338131f4b42727ac2fe87ee6ce19fd50"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-review.png",
+      "sha256": "ea937933a52b23ac3817d77021c357088f5cea999849095c36c8fa41d7db5551"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-published.png",
+      "sha256": "148962dd9e5c879c7ccba17a8a8d1912eb71ad855c7c3e93605c656ec410cbc6"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-history.png",
+      "sha256": "400d3e62c9bf935edfc7330fff49d7a506d9891e32b1e8981e291a4160e244a1"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/contract-reminders-web.gif",
+      "sha256": "97df7ea870cdf0d0f86c8f2e39d6471232131096d5f3fa1969f5623e3bb1ed48",
+      "bytes": 552730
+    },
+    {
+      "file": "docs/media/gifs/contract-reminders-mobile.gif",
+      "sha256": "a15e9377114202e198b22e6376bbec784971ef32c1c0effb7213a31600de40f6",
+      "bytes": 631083
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": [
+      0,
+      12,
+      24
+    ],
+    "mobile": [
+      0,
+      13,
+      26
+    ]
+  },
+  "findings": [
+    "Both clients show actionable duplicate-threshold feedback with retained form input; final captures show an explicitly published disabled version and the original policy history.",
+    "The shared mobile history capture includes all four revisions, wrapping actor identifiers within its viewport; Web light and dark policy panels remain legible.",
+    "The Web published and history captures retain the same viewport because current and complete history already fit together; their exact capture bytes are preserved.",
+    "Only authenticated synthetic notification content is visible; no password, OTP field, MFA secret or real business record is recorded."
+  ],
+  "scope": "Affected policy controls, actual publication state and recorded history; not real-device, production or complete accessibility acceptance."
+}

@@ -1,0 +1,49 @@
+{
+  "recordings": [
+    {
+      "name": "contract-reminders-web",
+      "frame_count": 20,
+      "duration_ms": 4124,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/contract-reminders-web/frames.json",
+      "manifest_sha256": "b78cf1355a9f237e9aa47ee225ac78e01ea406e11e43b4e4e87811f2d7782f74"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-review.png",
+      "sha256": "ef3e0c2f17d3f6ce43f89c5e9f335349ca998536c540647f2b6c626e1f4d7661"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-published.png",
+      "sha256": "a8be641f78d0af4368dea3fc848dd1bea59ce2c421a66369e7c1ba2d2a562a20"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-history.png",
+      "sha256": "a8be641f78d0af4368dea3fc848dd1bea59ce2c421a66369e7c1ba2d2a562a20"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-dark.png",
+      "sha256": "b4087eb63a7a6395ed4f36ea69c2d6d3338131f4b42727ac2fe87ee6ce19fd50"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

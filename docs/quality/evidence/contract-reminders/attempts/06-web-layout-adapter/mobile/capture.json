@@ -1,0 +1,40 @@
+{
+  "recordings": [
+    {
+      "name": "contract-reminders-mobile",
+      "frame_count": 33,
+      "duration_ms": 6825,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/contract-reminders-mobile/frames.json",
+      "manifest_sha256": "94c6961ad91d28d5410120cc109fadd83a70f2809df1895f7e720b67297171df"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-review.png",
+      "sha256": "a9cffb2c72dc1dcd2ddd42995654543eb7a95c3696fb7a691e69804f723cb22d"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-published.png",
+      "sha256": "a2bb89f991c3a14af3a8e602c0852790615f12bc5b3f32e12289035b93db96a4"
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-history.png",
+      "sha256": "a2bb89f991c3a14af3a8e602c0852790615f12bc5b3f32e12289035b93db96a4"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

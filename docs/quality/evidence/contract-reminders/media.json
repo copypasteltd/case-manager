@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T11:31:29.071897+00:00",
+  "encoder_script_sha256": "5de90ef19c430b8a2f2469f5832d2b32937679b98f55625c132c3e6ccf22988d",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "6c2b128a992aa13e951527d997c944ff1b9fdc9de1898c9182ed23b311ffbe90",
+      "build_source_sha256": "556e2367d3063ffdc20a328d806d1fc9ab806c563ae9fd035848aea3f99cd2b0",
+      "capture_manifest": "docs/quality/evidence/contract-reminders/web-capture-manifest.json",
+      "capture_manifest_sha256": "b78cf1355a9f237e9aa47ee225ac78e01ea406e11e43b4e4e87811f2d7782f74",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4124,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "42",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/contract-reminders-web.mp4",
+          "sha256": "c9159ff02fd638d21475bbb802783d553f9c38455a0c0e206c628d9c26aac8ed",
+          "bytes": 343921
+        },
+        {
+          "file": "docs/media/gifs/contract-reminders-web.gif",
+          "sha256": "97df7ea870cdf0d0f86c8f2e39d6471232131096d5f3fa1969f5623e3bb1ed48",
+          "bytes": 552730
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "f0dfda1b6a8af1496c7ded2ed38bc01a2c3e0983200d088913957da8a7cd5554",
+      "build_source_sha256": "556e2367d3063ffdc20a328d806d1fc9ab806c563ae9fd035848aea3f99cd2b0",
+      "capture_manifest": "docs/quality/evidence/contract-reminders/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "ab0d87932fe2ef5ea60aa14547083a755e38deb760a6ac68ac6bcb2f5c2553b5",
+      "capture_frame_count": 21,
+      "capture_duration_ms": 4266,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "45",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.500000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/contract-reminders-mobile.mp4",
+          "sha256": "20ea946122ab24afa06d741140a2beb32a389c6cf6a46f7893e5ca78f3812cbb",
+          "bytes": 207267
+        },
+        {
+          "file": "docs/media/gifs/contract-reminders-mobile.gif",
+          "sha256": "a15e9377114202e198b22e6376bbec784971ef32c1c0effb7213a31600de40f6",
+          "bytes": 631083
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

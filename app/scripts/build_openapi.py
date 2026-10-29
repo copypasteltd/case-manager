@@ -643,6 +643,15 @@ notification_job = {"job_id": ID, "kind":enum("notification.deliver.v1","event.r
     "retry_id":nullable(ID),"retry_job_id":nullable(ID),"parent_job_id":nullable(ID),"result":nullable(ref("NotificationDeliveryOutcome"))}
 add("NotificationDeliveryJob", notification_job, tuple(notification_job))
 
+notification_policy = {"id":ID,"version":VERSION,"enabled":{"type":"boolean"},"timezone":NAME,
+    "days_before":{"type":"array","items":{"type":"integer","minimum":0,"maximum":365},"maxItems":12,"uniqueItems":True},
+    "effective_on":DATE,"created_by":ID,"reason":NAME,"created_at":TIME}
+add("NotificationContractPolicy",notification_policy,tuple(notification_policy))
+add("NotificationContractPolicyState",{"current":nullable(ref("NotificationContractPolicy")),"can_publish":{"type":"boolean"}},("current","can_publish"))
+notification_policy_input={"expected_version":{"type":"integer","minimum":0,"maximum":9007199254740990},
+    "enabled":{"type":"boolean"},"timezone":NAME,"days_before":notification_policy["days_before"],"reason":NAME}
+add("NotificationContractPolicyInput",notification_policy_input,tuple(notification_policy_input))
+
 budget_tokens = {"type": "integer", "minimum": 0, "maximum": 1000000000000}
 budget_policy_input = {"expected_version": {"type": "integer", "minimum": 0},
     "organization_tokens": budget_tokens, "user_tokens": budget_tokens, "project_tokens": budget_tokens, "skill_tokens": budget_tokens, "reason": NAME}
@@ -1697,6 +1706,11 @@ operation("/notification-delivery-failures", "get", "listNotificationDeliveryFai
 operation("/notification-delivery-jobs/{id}", "get", "getNotificationDeliveryJob", "NotificationDeliveryJob")
 operation("/notification-delivery-jobs/{id}/retry", "post", "retryNotificationDelivery", "NotificationRetryReceipt", "NotificationRetryInput", 201)
 operation("/notification-delivery-retries", "get", "listNotificationDeliveryRetries", "NotificationRetryReceipt", listing=True)
+operation("/notification-contract-policy","get","getNotificationContractPolicy","NotificationContractPolicyState")
+operation("/notification-contract-policy","post","publishNotificationContractPolicy","NotificationContractPolicy","NotificationContractPolicyInput",201)
+operation("/notification-contract-policy-history","get","listNotificationContractPolicyHistory","NotificationContractPolicy",listing=True)
+for parameter in PATHS["/notification-contract-policy-history"]["get"]["parameters"]:
+    if parameter["name"]=="limit":parameter["schema"]={"type":"integer","minimum":1,"maximum":50,"default":20}
 for parameter in PATHS["/notification-delivery-retries"]["get"]["parameters"]:
     if parameter["name"] == "limit": parameter["schema"] = {"type": "integer", "minimum": 1, "maximum": 50, "default": 20}
 for parameter in PATHS["/notification-delivery-failures"]["get"]["parameters"]:

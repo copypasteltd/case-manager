@@ -3462,6 +3462,41 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/notification-contract-policy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getNotificationContractPolicy */
+        get: operations["getNotificationContractPolicy"];
+        put?: never;
+        /** publishNotificationContractPolicy */
+        post: operations["publishNotificationContractPolicy"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-contract-policy-history": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listNotificationContractPolicyHistory */
+        get: operations["listNotificationContractPolicyHistory"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/agent-budget": {
         parameters: {
             query?: never;
@@ -8344,6 +8379,32 @@ export interface components {
             parent_job_id: string | null;
             result: components["schemas"]["NotificationDeliveryOutcome"] | null;
         };
+        NotificationContractPolicy: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            enabled: boolean;
+            timezone: string;
+            days_before: number[];
+            /** Format: date */
+            effective_on: string;
+            /** Format: uuid */
+            created_by: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        NotificationContractPolicyState: {
+            current: components["schemas"]["NotificationContractPolicy"] | null;
+            can_publish: boolean;
+        };
+        NotificationContractPolicyInput: {
+            expected_version: number;
+            enabled: boolean;
+            timezone: string;
+            days_before: number[];
+            reason: string;
+        };
         BudgetPolicyInput: {
             expected_version: number;
             organization_tokens: number;
@@ -12433,6 +12494,21 @@ export interface components {
         NotificationRetryReceiptListResponse: {
             data: {
                 items: components["schemas"]["NotificationRetryReceipt"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationContractPolicyStateResponse: {
+            data: components["schemas"]["NotificationContractPolicyState"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationContractPolicyResponse: {
+            data: components["schemas"]["NotificationContractPolicy"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationContractPolicyListResponse: {
+            data: {
+                items: components["schemas"]["NotificationContractPolicy"][];
                 next_cursor: string | null;
             };
             meta: components["schemas"]["Meta"];
@@ -22806,6 +22882,114 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["NotificationRetryReceiptListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getNotificationContractPolicy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationContractPolicyStateResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    publishNotificationContractPolicy: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NotificationContractPolicyInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationContractPolicyResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listNotificationContractPolicyHistory: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationContractPolicyListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

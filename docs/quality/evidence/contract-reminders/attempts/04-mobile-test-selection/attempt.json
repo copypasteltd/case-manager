@@ -1,0 +1,45 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-29T10:57:59.354685+00:00",
+  "reason": "Eight original client commands passed, but their explicit mobile test list did not select the new10 policy cases. Preserve that execution; wire the cases and execute a fresh complete client run.",
+  "original_commands_passed": true,
+  "new_mobile_policy_cases_executed": false,
+  "original_record_sha256": "9c113ac62f0a2ca04f639049a6b7edd91b07c10c06b15f4f29fda4fb6446200b",
+  "source_archive": ".local/contract-reminders-before-mobile-test-selection/client-source.zip",
+  "source_archive_sha256": "d87e6721c76b8d57374fa55593f2625eccae6d948f164d112172e0aa4d151222",
+  "raw_logs": [
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-web-tests.log",
+      "sha256": "bba125156e33a3e0b37a958601e7c29f17577a36809ce477693b94c766a2cdf8"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-mobile-tests.log",
+      "sha256": "553850dc981addc02759d41bdb77abd3f4fb9921a2a1a099a5bd2a2f617b04a9"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-runtime-tests.log",
+      "sha256": "8d241d692374bdbef3e92602dfb0e0a13e24526ce94dd144b6b76225c28ad68d"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-web-build.log",
+      "sha256": "995bd7477fc06a6b5ee08f1c3ef3677668a1f714e3d6917be59bb4bd5464e9d1"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-runtime-build.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-wechat-build.log",
+      "sha256": "6102876b2530fae134d89cf614a9c942164e8b8a6345559bb8531bf07cd1b521"
+    },
+    {
+      "file": ".local/contract-reminders-before-mobile-test-selection/contract-reminders-client-douyin-build.log",
+      "sha256": "a8c98c3aaf17bf81c47b830d4bc839d9b76c9ba7efc56ee217f23b5d801a4033"
+    }
+  ],
+  "script_sha256": "ed02caae0291ff77cf563f7b88e2b41900d9f5f2ae0875fd06a21c7c62103471"
+}

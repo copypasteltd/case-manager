@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-29T11:04:14.235432+00:00",
+  "source_sha256": "439751f655814738f9eec84ac96a305164d1d4233ae1c2096678ccc2b9f214dd",
+  "source_files": 54,
+  "tests": {
+    "pass": 55,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T10:58:00.976064+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/contract-reminders-client-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T11:00:13.568831+00:00",
+      "test_count": 55,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "81a4c0f09d80afd1038543b1e0ef3497ff9b55d242d48d27523180b373644f9d",
+      "raw_log": "ignored app/.local/contract-reminders-client-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T11:00:59.171628+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/contract-reminders-client-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "fbd0711c24ee19a6300326ae41667746ed1bf54f887a7deaf5b71c67eee54444"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "c8ecc1805e465417f3b65186b6f3c5be799edc1f6d6fcb4c03d3bc5667f00744",
+    "summary_adapter_sha256": "d88fdcb1517b3fc6c50719aa3ea778e896b26454f9c41c512d46d46b86db518b",
+    "adapter_reran_tests": false
+  }
+}

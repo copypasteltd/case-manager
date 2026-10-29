@@ -1,0 +1,91 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-29T10:43:56.239727+00:00",
+  "reason": "Fixture tried to insert a second binding instead of restoring its deliberately expired existing binding; all prior policy and scheduler groups passed.",
+  "source_sha256": "bc5bdaf38ce30bff0c4f394a4f63c0b6d6984a907a16bc43a02b44aee0dac8f9",
+  "source_archive": ".local/contract-reminders-02-expired-binding-restoration-source.zip",
+  "source_archive_sha256": "7627a37cf48cd4e8e08455383056fe54bac7e90fee1f56633b2768f88b213900",
+  "raw_log": ".local/contract-reminders-focused-02.log",
+  "raw_log_sha256": "f434e3db040ed822220453e422e420850fe5ee79071e71ad4289208dca65b65d",
+  "checks": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/new_roles_are_independent_and_never_auto_bound",
+      "Elapsed": 0.06
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/strict_input_recent_MFA_and_valid_business_rules",
+      "Elapsed": 0.23
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/publish_canonical_revision_with_stable_idempotency_and_atomic_evidence",
+      "Elapsed": 0.33
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/organization_policy_does_not_grant_contract_content",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/real_scheduler_uses_published_policy_and_excludes_prepublication_thresholds",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/leased_delivery_rechecks_actual_owner_and_remains_idempotent",
+      "Elapsed": 0.07
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/disable_overrides_legacy_and_keeps_queued_or_delivered_facts",
+      "Elapsed": 0.47
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/two_writers_cannot_publish_from_the_same_expected_version",
+      "Elapsed": 0.32
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/history_is_immutable_paged_and_cursor_bound",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/four_human_channels_allowed_but_runtime_TG_sessions_rejected",
+      "Elapsed": 0.5
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/policy_requires_atomic_evidence_and_valid_database_rules",
+      "Elapsed": 0.28
+    },
+    {
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies/audit_failure_rolls_back_policy_and_replay_rechecks_current_authority",
+      "Elapsed": 0.28
+    },
+    {
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractReminderPolicies",
+      "Elapsed": 9.36
+    }
+  ],
+  "archiver_sha256": "e075a0a3c59d85049141ab8857a6ed479eac49e6d983f0d41f1f7dba451dc491"
+}

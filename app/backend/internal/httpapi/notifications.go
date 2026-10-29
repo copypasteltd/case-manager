@@ -35,6 +35,25 @@ func notificationLimit(r *http.Request, allowed ...string) (int, error) {
 }
 func (s *Server) notificationRoutes(mux *http.ServeMux) {
 	service := &notification.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	mux.HandleFunc("GET /v1/notification-contract-policy", read(s, "NotificationContractPolicyStateResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "当前策略不接受查询字段")
+		}
+		return service.ContractPolicy(ctx, a)
+	}))
+	mux.HandleFunc("POST /v1/notification-contract-policy", command(s, "NotificationContractPolicyInput", "NotificationContractPolicyResponse", func(ctx context.Context, c core.Command, r *http.Request, in notification.ContractPolicyInput) (core.Result, error) {
+		if r.URL.RawQuery != "" {
+			return core.Result{}, core.Invalid("query", "发布策略不接受查询字段")
+		}
+		return service.PublishContractPolicy(ctx, c, in)
+	}))
+	mux.HandleFunc("GET /v1/notification-contract-policy-history", read(s, "NotificationContractPolicyListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		limit, err := notificationLimit(r)
+		if err != nil {
+			return nil, err
+		}
+		return service.ContractPolicyHistory(ctx, a, r.URL.Query().Get("cursor"), limit)
+	}))
 	mux.HandleFunc("GET /v1/notification-delivery-jobs/{id}", read(s, "NotificationDeliveryJobResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		if r.URL.RawQuery != "" {
 			return nil, core.Invalid("query", "任务详情不接受查询参数")

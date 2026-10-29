@@ -1,0 +1,61 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-29T11:14:37.981133+00:00",
+  "reason": "Actual mobile validation rejected duplicate lead days, but the generic unknown-error renderer hid the actionable local validation message. Preserve the failed UI journey and the successful pre-repair client run; fix the form boundary and rerun current-source client and browser checks.",
+  "original_client_commands_passed": true,
+  "original_mobile_tests": 299,
+  "browser_passed": false,
+  "owned_browser_closed": true,
+  "isolated_database_cleanup_passed": true,
+  "browser_record_sha256": "6ff8f94027861ac1f4be2af7a2cfac230a725d3bba97de2a7fa29fffde9bbe2e",
+  "client_record_sha256": "c8ecc1805e465417f3b65186b6f3c5be799edc1f6d6fcb4c03d3bc5667f00744",
+  "source_archive": ".local/contract-reminders-before-feedback/exact-inputs.zip",
+  "source_archive_sha256": "345c33d7d3a9c058dd1d7a4a0729fce69712680149507cc2a7002d6873bd3f06",
+  "raw_logs": [
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-web-tests.log",
+      "sha256": "e325f63f5bc94b1a165f3d63b018c39e98004f2f4bd5fe9fb54bbb8b182a1c28"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-mobile-tests.log",
+      "sha256": "f77c006020e6a5592971dbb6cecc6dc10c84cc9c583dd847f64d9e55b83f0f41"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-runtime-tests.log",
+      "sha256": "81a4c0f09d80afd1038543b1e0ef3497ff9b55d242d48d27523180b373644f9d"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-web-build.log",
+      "sha256": "3b2f92933fd7773a8e788bd46527b323013c5cc1ed1a75799c3ade50f4eae04a"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-runtime-build.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-wechat-build.log",
+      "sha256": "d8427d42cd774992978e536465927cfbd4ad388515dd10221b4f49636f0a31eb"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-client-douyin-build.log",
+      "sha256": "54da0769007cf5d0a0005604904b5ba9e997a98967a7b6115fae10b6a3df7fc1"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-mobile-native.log",
+      "sha256": "b6627ade0c5932f8eca0c06ecc6018452dd44bb17eb97536692c3b069251f92b"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-mobile-browser.log",
+      "sha256": "a3755e48da21194c3e11fb70dde99f3f865bd9c86b568be2580f329918f9a93a"
+    },
+    {
+      "file": ".local/contract-reminders-before-feedback/contract-reminders-mobile-build.log",
+      "sha256": "ceab876951d9f2367da67b8bd9f8cf250d9a8f89523256f04b957b7f0a5ce7c8"
+    }
+  ],
+  "archiver_sha256": "1872cb62643cd928e7931239ae72f096470b658a08d69ee54b7e0a50381d5e6e"
+}

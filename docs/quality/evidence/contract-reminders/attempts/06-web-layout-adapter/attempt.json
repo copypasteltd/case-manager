@@ -1,0 +1,77 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-29T11:22:34.613258+00:00",
+  "reason": "Web policy publication, persisted history and stale-version rejection passed, but the width adapter called Page.evaluate with a DOM-node callback. Repair only the layout locator; preserve the passing mobile capture too because the shared checker digest changes. Both actual journeys will be recaptured at the final helper source.",
+  "application_source_changed": false,
+  "web_business_groups_passed": 4,
+  "mobile_groups_passed": 5,
+  "web_record_sha256": "34ec2601953b2d2b15565cec4e08cd41275eaf82cf8e0a1e15a19fd0f793a7ba",
+  "mobile_record_sha256": "ce55dcab2e4be0d6d5eefabc6c4394f5280826e69b04b39cd3538ad1700ae4c8",
+  "source_archive": ".local/contract-reminders-before-layout-adapter/exact-inputs.zip",
+  "source_archive_sha256": "86a729b5db84e9dcb370b2b15f6a9d45ceadda5f8ff37bcc99e80c9beacba347",
+  "private_logs_and_manifests": [
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/contract-reminders-web-native.log",
+      "sha256": "bb3536ae2522011d59b9d1e77fcb8c20bc3360dd47616768ce75d3bace7cd417"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/contract-reminders-web-browser.log",
+      "sha256": "5d39f1e47b966910f31df16a3a6d0a531f2cad0681882a76402025adfdb25f62"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/contract-reminders-web-build.log",
+      "sha256": "e1a2b54021041eb07cb17bd1c692c6c427058c73b603cff4629f7c03f4f35345"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/frames-web/frames.json",
+      "sha256": "6f2d843037373fef879258f8754b42be36e0b2bc77c56939a42af6fc6abc5bbe"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/contract-reminders-mobile-native.log",
+      "sha256": "08fc81e30d0a845a174654786938bc6c17d46b3998be794f2699362ad806a62b"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/contract-reminders-mobile-browser.log",
+      "sha256": "2d3447cf5d7a31e310316775a9ca29d8d46eebfb4a510fcd666be811dfac7a23"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/contract-reminders-mobile-build.log",
+      "sha256": "7076a8c95d3cf23272a97a726865616ab9fd1f9f44d7e4d3d26be1606ee6abdf"
+    },
+    {
+      "file": ".local/contract-reminders-before-layout-adapter/frames-mobile/frames.json",
+      "sha256": "94c6961ad91d28d5410120cc109fadd83a70f2809df1895f7e720b67297171df"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-web-dark.png",
+      "sha256": "86440677f4721c213396be91dd53d5f7e1f498f232b766ae2a54aa153215882e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-web-history.png",
+      "sha256": "0c7779b8f471f2cdcf3f246963c9c59f9e78262232203a8223149ad02b18cee3"
+    },
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-web-published.png",
+      "sha256": "0c7779b8f471f2cdcf3f246963c9c59f9e78262232203a8223149ad02b18cee3"
+    },
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-web-review.png",
+      "sha256": "fde3bb1a66e19ce5405c5e6f1f30bc2322cd4172efaf324f21cae65cc9a7abe4"
+    },
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-mobile-history.png",
+      "sha256": "a2bb89f991c3a14af3a8e602c0852790615f12bc5b3f32e12289035b93db96a4"
+    },
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-mobile-published.png",
+      "sha256": "a2bb89f991c3a14af3a8e602c0852790615f12bc5b3f32e12289035b93db96a4"
+    },
+    {
+      "file": "docs/quality/evidence/contract-reminders/attempts/06-web-layout-adapter/screenshots/contract-reminders-mobile-review.png",
+      "sha256": "a9cffb2c72dc1dcd2ddd42995654543eb7a95c3696fb7a691e69804f723cb22d"
+    }
+  ],
+  "archiver_sha256": "28bff30a44a7809b0679a38328f51b4f4d016a23b5a736efa30a27a95e6f4971"
+}

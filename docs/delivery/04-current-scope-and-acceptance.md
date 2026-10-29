@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量111：GAP-08的版本化合同提醒策略已接通四端、实际API、PG不可变发布、调度边界和Worker。更多聚合、实际复制故障、跨渠道送达与公司规则选用继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计](../development/111-contract-reminder-policies.md)及[验证](../quality/111-contract-reminder-policies-verification.md)。
+
 增量110：GAP-08的站内通知失败人工重试已接通四端页面、真实API、PG不可变依据和租约Worker；更多工作台聚合、提醒策略、实际复制故障及跨渠道送达继续开放。仍为23 active（14 P0／9 P1）／5 excluded，子功能完成不等于整个工作包验收。见[设计与使用](../development/110-notification-retry.md)及[验证](../quality/110-notification-retry-verification.md)。
 
 增量109：GAP-07的审计查询与固定导出已接通四端页面、真实API和原生PG约束；模型／Skill、TG运行和存储配置管理仍未完成。工作包按完整范围计数，保持23 active（14 P0／9 P1）／5 excluded，不把子功能或移出项记为整个工作包通过。见[设计](../development/109-audit-console.md)与[验证](../quality/109-audit-console-verification.md)。

@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量111媒体来自真实认证后的合成Web／Taro H5页面；新增7张PNG、2段静音MP4和2个GIF，原233份媒体准确保留。
+
+| 端 | GIF | 录屏 | 截图 |
+|---|---|---|---|
+| Web | [策略发布](gifs/contract-reminders-web.gif) | [静音MP4](videos/contract-reminders-web.mp4) | [核对](screenshots/contract-reminders-web-review.png)、[已发布](screenshots/contract-reminders-web-published.png)、[历史](screenshots/contract-reminders-web-history.png)、[深色](screenshots/contract-reminders-web-dark.png) |
+| 共享移动 | [策略发布](gifs/contract-reminders-mobile.gif) | [静音MP4](videos/contract-reminders-mobile.mp4) | [核对](screenshots/contract-reminders-mobile-review.png)、[已发布](screenshots/contract-reminders-mobile-published.png)、[历史](screenshots/contract-reminders-mobile-history.png) |
+
+真实像素、逐帧来源与实际GIF倍率见[媒体记录](../quality/evidence/contract-reminders/media.json)。不录制登录、密码、MFA秘密或真实业务资料；无真机、模拟器或生产接入声明。
+
 增量110 / Increment110：7 PNG、2静音MP4、2 GIF来自认证后的隔离合成业务和实际浏览器操作；不录制密码或MFA输入。原222份媒体保留原始字节与来源。
 
 | 客户端 / Client | 原失败 / Failure | 实际结果 / Result | 历史 / History | 录屏 / Recording | GIF |

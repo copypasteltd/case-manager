@@ -89,3 +89,41 @@ export function notificationRetryInput(job: DeliveryJob, reason: string): Schema
   if (!job.can_retry || [...text].length < 1 || [...text].length > 200) throw new Error('请核对可重试任务并填写1至200字的原因。');
   return { expected_revision:job.revision, reason:text };
 }
+
+export type ContractReminderPolicy = Schemas['NotificationContractPolicy'];
+export type ContractReminderState = Schemas['NotificationContractPolicyState'];
+export type ContractReminderInput = Schemas['NotificationContractPolicyInput'];
+export function reminderDays(text: string, enabled: boolean): number[] {
+  const parts=text.trim() ? text.trim().split(/[,，\s]+/) : [];
+  if (parts.length>12 || enabled&&!parts.length || parts.some(p=>!/^\d{1,3}$/.test(p))) throw new Error('请填写1至12个互不重复的0至365天提前量，以逗号分隔；停用时可留空。');
+  const days=parts.map(Number);
+  if (days.some(d=>d>365)||new Set(days).size!==days.length) throw new Error('提前量须为互不重复的0至365天。');
+  return days.sort((a,b)=>a-b);
+}
+function reminderTimezone(value: unknown) {
+  if(typeof value!=='string'||value==='Local'||value.length>200||!value||value.trim()!==value||!/^[A-Za-z][A-Za-z0-9_+./-]*$/.test(value)) throw new Error('请填写明确的业务时区，例如 Asia/Hong_Kong。');
+}
+export function checkedContractReminderPolicy(p: ContractReminderPolicy): ContractReminderPolicy {
+  metadata(p,['id','version','enabled','timezone','days_before','effective_on','created_by','reason','created_at']);
+  id(p.id);id(p.created_by);timestamp(p.created_at);reminderTimezone(p.timezone);
+  if(!Number.isSafeInteger(p.version)||p.version<1||typeof p.enabled!=='boolean'||!Array.isArray(p.days_before)||p.days_before.length>12||p.enabled&&!p.days_before.length||p.days_before.some((d,i)=>!smallInteger(d,365)||(i>0&&d<=p.days_before[i-1]))||typeof p.reason!=='string'||p.reason!==p.reason.trim()||![...p.reason].length||[...p.reason].length>200) throw new Error('合同提醒策略内容无效，请刷新核对。');
+  if(typeof p.effective_on!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(p.effective_on)||!Number.isFinite(Date.parse(p.effective_on+'T00:00:00Z'))||new Date(p.effective_on+'T00:00:00Z').toISOString().slice(0,10)!==p.effective_on) throw new Error('策略生效日期无效。');
+  return p;
+}
+export function checkedContractReminderState(value: ContractReminderState): ContractReminderState {
+  metadata(value,['current','can_publish']);
+  if(typeof value.can_publish!=='boolean') throw new Error('策略授权状态无效。');
+  if(value.current!==null)checkedContractReminderPolicy(value.current);
+  return value;
+}
+export function contractReminderInput(state: ContractReminderState, enabled: boolean, timezone: string, days: string, reason: string): ContractReminderInput {
+  checkedContractReminderState(state);reminderTimezone(timezone);
+  const text=reason.trim();
+  if(!state.can_publish||typeof enabled!=='boolean'||![...text].length||[...text].length>200||state.current?.version===Number.MAX_SAFE_INTEGER) throw new Error('请核对策略管理权限和变更原因。');
+  return {expected_version:state.current?.version??0,enabled,timezone,days_before:reminderDays(days,enabled),reason:text};
+}
+export function checkedContractReminderReceipt(value: ContractReminderPolicy, input: ContractReminderInput, actor: string) {
+  checkedContractReminderPolicy(value);
+  if(value.created_by!==actor||value.version!==input.expected_version+1||value.enabled!==input.enabled||value.timezone!==input.timezone||JSON.stringify(value.days_before)!==JSON.stringify(input.days_before)||value.reason!==input.reason) throw new Error('发布回执与本次策略或当前人员不一致，请刷新后核对历史。');
+  return value;
+}

@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T11:20:23.826Z",
+  "finished_at": "2026-10-29T11:20:53.686Z",
+  "checks": [
+    "An explicitly authorized human opens current organization policy without publishing anything; no rule is automatically selected.",
+    "Actual form validation rejects duplicate thresholds while retaining input and the current published version; MFA and explicit confirmation are required.",
+    "A real UI submission appends one disabled immutable policy and the page reloads the persisted native PostgreSQL result.",
+    "The stale expected version is rejected, while published history retains the exact original and one new revision."
+  ],
+  "source_count": 803,
+  "source_sha256": "a5c9b0cf0e6ea6307ddab1aa0470dc53f802b3953eecdc2fbed16a7c51d6138a",
+  "source_after_sha256": "a5c9b0cf0e6ea6307ddab1aa0470dc53f802b3953eecdc2fbed16a7c51d6138a",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'clientWidth')\n    at eval (eval at evaluate (:311:30), <anonymous>:1:20)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "74888ee2604fe3b865d60d976e2ec58985582a536c49be6ae7343d63d2de00a8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "74888ee2604fe3b865d60d976e2ec58985582a536c49be6ae7343d63d2de00a8",
+  "build_source_unchanged": true
+}

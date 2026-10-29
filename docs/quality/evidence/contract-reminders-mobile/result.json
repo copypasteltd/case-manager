@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T11:30:06.280Z",
+  "finished_at": "2026-10-29T11:31:05.857Z",
+  "checks": [
+    "An explicitly authorized human opens current organization policy without publishing anything; no rule is automatically selected.",
+    "Actual form validation rejects duplicate thresholds while retaining input and the current published version; MFA and explicit confirmation are required.",
+    "A real UI submission appends one disabled immutable policy and the page reloads the persisted native PostgreSQL result.",
+    "The stale expected version is rejected, while published history retains the exact original and one new revision.",
+    "The existing Web and shared mobile layout contains the policy form and publication history without horizontal overflow; no device or external delivery acceptance is claimed."
+  ],
+  "source_count": 836,
+  "source_sha256": "f0dfda1b6a8af1496c7ded2ed38bc01a2c3e0983200d088913957da8a7cd5554",
+  "source_after_sha256": "f0dfda1b6a8af1496c7ded2ed38bc01a2c3e0983200d088913957da8a7cd5554",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "556e2367d3063ffdc20a328d806d1fc9ab806c563ae9fd035848aea3f99cd2b0",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "556e2367d3063ffdc20a328d806d1fc9ab806c563ae9fd035848aea3f99cd2b0",
+  "build_source_unchanged": true
+}

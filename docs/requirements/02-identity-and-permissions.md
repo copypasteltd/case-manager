@@ -1,5 +1,7 @@
 # 身份、权限、分类与审计需求
 
+实现补充（增量111）：合同提醒策略采用独立组织级`notification.policy.read`／`notification.policy.manage`，写操作要求近期MFA和准确版本；新角色不自动分配，Agent／TG执行会话不得使用人工发布入口。见[策略权限与调度边界](../development/111-contract-reminder-policies.md)。
+
 实现补充（增量97）：小程序平台身份必须由既有员工本人确认绑定，不以匿名身份、昵称或UnionID自动建号；具体配置、MFA、会话失效及外部验收边界见[小程序身份方案](../development/97-mini-program-identity.md)。
 
 版本：v1.0-draft；日期：2026-10-23；关联 U-04/07/10、R-01/02。
