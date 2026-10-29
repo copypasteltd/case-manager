@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T07:04:11.532263+00:00",
+  "checks": [
+    {
+      "name": "Current portable bundle is byte-identical inside the newly built APK",
+      "passed": true
+    },
+    {
+      "name": "Organization audit metadata and separate query/export permissions are included",
+      "passed": true
+    },
+    {
+      "name": "Explicit filters, human purpose, sealed history and current authorization are included",
+      "passed": true
+    },
+    {
+      "name": "The settings entry and verified native CSV save path are included",
+      "passed": true
+    }
+  ],
+  "source_sha256": "04e6422c446f4f77a5b5ba3385557722002c4a3fe73e304f07adfd070e994080",
+  "bundle_sha256": "313b49c0e92c809c732a6d5f8abfad32a966df7cc65d3399d45610dcb4d72652",
+  "apk_sha256": "b5f0a33443025388a36cf13e6ef6f8f20920e728c9a519364c5de477383ca33c",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "eb9253ae4a42261a069955722965c6df18f61ffe71684ba7fd1c1c7b46cc85cb"
+}

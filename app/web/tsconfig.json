@@ -25,6 +25,8 @@
   },
   "include": [
     "src",
+    "../packages/contracts/src/audit.ts",
+    "../packages/contracts/test/audit-fixture.ts",
     "vite.config.ts",
     "../packages/contracts/src/multipart-cleanup.ts",
     "../packages/contracts/test/multipart-cleanup-fixture.ts",

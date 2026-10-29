@@ -110,9 +110,13 @@
       "status": "active",
       "priority": "P1",
       "kind": "补实现＋接入",
-      "remaining": "补Skill／模型正式管理、TG运行／披露／投递管理、存储配置、审计查询导出及必要运行状态管理。",
+      "remaining": "补Skill／模型正式管理、TG运行／披露／投递管理、存储配置及必要运行状态管理；继续完成统一后台的真实配置与业务验收。",
       "acceptance": "配置可核对真实状态、历史与权限，明确显示未配置项。",
-      "scope_change": "移除AI费用／Token配额管理的新增与验收要求，以及容灾备份管理。"
+      "scope_change": "移除AI费用／Token配额管理的新增与验收要求，以及容灾备份管理。",
+      "completed_adaptations": [
+        "AUDIT-CONSOLE-109"
+      ],
+      "completed_detail": "增量109已实现组织级审计元数据查询、准确筛选、签名分页、固定事件引用CSV、本人导出历史、近期MFA、权限失效和分段／完整摘要核对；四端共享使用约束，抖音文件下载暂由Web承接。整个GAP-07继续active。"
     },
     {
       "id": "GAP-08",

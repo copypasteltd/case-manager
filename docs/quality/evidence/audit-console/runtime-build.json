@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-29T06:38:12.134562+00:00",
+  "source_sha256": "439751f655814738f9eec84ac96a305164d1d4233ae1c2096678ccc2b9f214dd",
+  "source_files": 54,
+  "tests": {
+    "pass": 55,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:31:41.014264+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/audit-console-web-refresh-typecheck.log",
+      "web_layout_refresh_executed": true
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:20:57.770559+00:00",
+      "test_count": 55,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "576502a7e179adf2165752d657e30ed877f2332f98c63bac5c09bb9279357979",
+      "raw_log": "ignored app/.local/audit-console-client-runtime-tests.log",
+      "same_increment_execution_retained": true
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:21:40.089593+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/audit-console-client-runtime-build.log",
+      "same_increment_execution_retained": true
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "fbd0711c24ee19a6300326ae41667746ed1bf54f887a7deaf5b71c67eee54444"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "5202925a99cb6110702983331a2ca55eb9de53ce0959efcf2ae1299cc4536004",
+    "summary_adapter_sha256": "1ba8412d66897ca278ed15bce9b7eb4079913e9b607324a86255f6971d049591",
+    "adapter_reran_tests": false
+  }
+}

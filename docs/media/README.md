@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量109 / Increment109：实际Web／Taro H5审计筛选、详情、固定导出历史和文件摘要核对，新增7 PNG、2段静音MP4、2个GIF。仅隔离合成数据；录制从认证后开始，不含密码或MFA输入。原211份媒体按原来源保留，不声明真机或生产验收。
+
+| 客户端 / Client | 详情 / Details | 固定导出 / Export | 录屏 / Recording | GIF |
+|---|---|---|---|---|
+| Web | [PNG](screenshots/audit-console-web-detail.png) | [PNG](screenshots/audit-console-web-export.png) | [MP4](videos/audit-console-web.mp4) | [GIF](gifs/audit-console-web.gif) |
+| Taro H5 | [PNG](screenshots/audit-console-mobile-detail.png) | [PNG](screenshots/audit-console-mobile-export.png) | [MP4](videos/audit-console-mobile.mp4) | [GIF](gifs/audit-console-mobile.gif) |
+
+[验证与来源 / Provenance](../quality/109-audit-console-verification.md)。
+
 增量108 / Increment108：本轮依赖执行修复不改变业务页面。原121 PNG／45 MP4／45 GIF共211份保留原始字节与采集范围，见[来源清单](../quality/evidence/dependency-integrity/reused-evidence.json)。本地H5服务与原生Edge检查另行记录，不作为新业务录屏；当前AI范围仅移出费用控制。
 
 增量105 / Increment105：执行控制器没有界面变更；原113 PNG／43 MP4／43 GIF共199份按104及更早采集来源保留，已核对发布Git对象和SHA256。未重新录制，也未以旧API夹具证明当前Linux／模型执行。见[保留清单](../quality/evidence/native-agent-runtime/reused-evidence.json)和[本轮验证](../quality/105-native-agent-runtime-verification.md)。

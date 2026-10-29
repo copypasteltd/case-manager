@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "terminal_exit_code": 1,
+  "reason": "Browser-check API preparation omitted the required Origin header on a cookie-authenticated POST; the server correctly rejected it with 403. UI/security policy was not relaxed.",
+  "private_source_archive_sha256": "3a1b3b700ce623e8ecea1fe955b46af46bed591959a7b5079ccaefdc0dbd0719",
+  "not_current_pass_evidence": true
+}

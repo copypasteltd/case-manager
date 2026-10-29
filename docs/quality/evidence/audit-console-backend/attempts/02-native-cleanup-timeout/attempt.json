@@ -1,0 +1,76 @@
+{
+  "passed": false,
+  "terminal_exit_code": 1,
+  "complete": true,
+  "source_sha256": "f4a92bd50da312ead6cad02a03d1b3fd59d09c013d9655696c960cb74fc0981f",
+  "raw_logs": [
+    {
+      "batch": 1,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-1.log",
+      "sha256": "447320010016a719092830982eec3a965f1481e7bcccb5eccd1b67ae78cc28f9"
+    },
+    {
+      "batch": 2,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-2.log",
+      "sha256": "d287fcbcf0272069f599f3ecbbd788fc6adfcabb5bf1cc3ab76b35565b93581c"
+    },
+    {
+      "batch": 3,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-3.log",
+      "sha256": "165e7801db81a3a61a632badeeef33c54858496febcedbe7a4e9f73bdc50c4ed"
+    },
+    {
+      "batch": 4,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-4.log",
+      "sha256": "16fd474f3bc80765736e305cc088800acb5708aa9cce1d43faf7304ab973f696"
+    },
+    {
+      "batch": 5,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-5.log",
+      "sha256": "4ac833227e73b5bb637cc5b75a336e97a0e8ea7918ce2ac74ffa99f122a6d2a4"
+    },
+    {
+      "batch": 6,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-6.log",
+      "sha256": "a0fa301239c4c722530a277092e87d27f482b281a6d94270840a4648bc94191f"
+    },
+    {
+      "batch": 7,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-7.log",
+      "sha256": "7366c416b644ae872e4461429fc2066e7cc02abf738210f750a8fbf3b64f323e"
+    },
+    {
+      "batch": 8,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-8.log",
+      "sha256": "0717ae2f96ed603cbbca619507ca413f003da1f910603540116ab544ee35028e"
+    },
+    {
+      "batch": 9,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-9.log",
+      "sha256": "934de847bed2ce4dc800e2a5b4cab3c13a7dba9ea557c2ab2b7403539831acd5"
+    },
+    {
+      "batch": 10,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-10.log",
+      "sha256": "f5faa7b0353396b56664ffc9c74df38a566539d07719fb67fa942e448a2b6ca1"
+    },
+    {
+      "batch": 11,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-11.log",
+      "sha256": "419fd9a199e7c8907f71001a851aaa6126c8ecdf364018c0615130e3926dd2b9"
+    },
+    {
+      "batch": 12,
+      "file": ".local/audit-console-attempts/backend02-complete/audit-console-backend-batch-12.log",
+      "sha256": "9712c121e011bb72ceec87c5bdb53143e26cd9467fa831c6dad6e25b40b6fdd2"
+    }
+  ],
+  "source_archive_sha256": "50d02e57b966e2b7744798284196b6701985e36d06f5f98d4743a5e5ba11352b",
+  "failed_batches": [
+    8,
+    9,
+    10
+  ],
+  "reason": "Native fixture DROP exceeded its independent two-minute cleanup context; no business assertion or source change is ignored.",
+  "not_current_pass_evidence": true
+}

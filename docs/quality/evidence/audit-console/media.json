@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T06:45:07.881284+00:00",
+  "encoder_script_sha256": "bd97469183f88ab0526fa4037b05e34b439dccae0b824cc41330048503fcdc27",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "0a739ad32166a5e27ead1042396d70e9602f77c31f2eae31765dea294ef9998d",
+      "build_source_sha256": "376be23c93ee0a70a736de59865cde6f40c74b649ab9afb055d974210fddebaa",
+      "capture_manifest": "docs/quality/evidence/audit-console/web-capture-manifest.json",
+      "capture_manifest_sha256": "b000c4d5099cfe47b6586ed3c79798c91f0e4c069be777ca3160803c6139ca5f",
+      "capture_frame_count": 27,
+      "capture_duration_ms": 6209,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "62",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "6.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/audit-console-web.mp4",
+          "sha256": "a90099871e1e061b8846e6c7e39f54af20dd7c9ff42136c54cd82ed19bc3ef62",
+          "bytes": 574526
+        },
+        {
+          "file": "docs/media/gifs/audit-console-web.gif",
+          "sha256": "5090de0166d3cde628198e3f896b185c7e4f2fb787acd711a4e303af0a04ed2d",
+          "bytes": 1176211
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "c7dac171836cf9fc0cf9f86330528e313750984f8e0639384bbaf6584c9ed20c",
+      "build_source_sha256": "376be23c93ee0a70a736de59865cde6f40c74b649ab9afb055d974210fddebaa",
+      "capture_manifest": "docs/quality/evidence/audit-console/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "5cac4706fb023731a68978cc0caa3d8d73609c8bb639aaa6e2af84971ae17f65",
+      "capture_frame_count": 27,
+      "capture_duration_ms": 6485,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "65",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "6.500000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/audit-console-mobile.mp4",
+          "sha256": "558eec349a12313a62d5723d649a29db4ad2ad7d9e9a3ea0476ab7a02661fcbf",
+          "bytes": 186504
+        },
+        {
+          "file": "docs/media/gifs/audit-console-mobile.gif",
+          "sha256": "f236066c8b2769494e5dd7313ce3ee3f16444650524f04f3006b5191549b918b",
+          "bytes": 628626
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

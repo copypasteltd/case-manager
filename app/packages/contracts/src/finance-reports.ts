@@ -86,7 +86,7 @@ export function checkedReportExport(value: ReportExport, query?: ReportQuery, ex
 }
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-function decodeBase64(value: string): Uint8Array {
+export function decodeBase64(value: string): Uint8Array {
   if (value.length > 699052 || value.length % 4 || !/^[A-Za-z0-9+/]*={0,2}$/.test(value)) throw invalid('导出分段编码无效。');
   const size = value.length / 4 * 3 - (value.endsWith('==') ? 2 : value.endsWith('=') ? 1 : 0), out = new Uint8Array(size);
   let offset = 0;

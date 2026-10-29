@@ -63,3 +63,9 @@ IAM-07：正式业务写入必须与审计/outbox 在同一 DB 事务持久化�
 审计追加、不可由普通业务接口修改；应用账号无删除历史权限。包含敏感字段的 old/new 只保存必要字段或摘要，禁止密码、访问令牌、全文合同和模型私有推理。导出清单校验与独立保管降低篡改风险，但不声称普通 DB 日志天然不可篡改。
 
 验收：两个交叉项目账号尝试列表、搜索、引用、下载、审批、成本统计、撤权后继续会话，越权成功数必须为 0；系统管理员没有内容授权时也适用。
+
+## 组织级审计元数据 / Organization audit metadata · Increment109
+
+明确授予的`audit.read`可查询全组织技术事件，不因此获得项目或业务正文权限；`audit.export`另行授予且需同时拥有查询权。只向需要这些操作线索的人员授权。通用响应及CSV仅含固定元数据列，不含自由原因、会话ID、payload或正文。导出仅人类交互会话可用，固定事件引用、原始筛选、创建者和授权版本；24小时或权限变化后失效。创建和下载要求近期MFA。见[实现与使用](../development/109-audit-console.md)。
+
+Explicit organization audit authority is independent of business content. Export access is separately granted, owner-bound, time-limited and checked against current sessions and authorization. Reasons and content remain outside the generic disclosure.

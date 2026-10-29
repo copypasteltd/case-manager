@@ -1931,6 +1931,35 @@ operation("/finance/report-options","get","readFinancialReportOptions","Financia
 PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":key,"in":"query","required":key in ("kind","from","to"),"schema":schema if key not in ("project_id","supplier_id","owner_id","fx_book_id") else ID} for key,schema in report_query_fields.items()]
 PATHS["/finance/report-options"]["get"]["parameters"] += [{"name":"field","in":"query","required":True,"schema":enum("category","supplier","owner")},{"name":"option_search","in":"query","schema":{"type":"string","maxLength":200}}]
 
+audit_filter_fields = {"from": TIME, "to": TIME, **{key: {"type": "string", "maxLength": 128} for key in (
+    "actor_id", "executor_id", "channel", "action", "result", "resource_type", "resource_id", "request_id", "run_id", "job_id")}}
+add("AuditFilter", audit_filter_fields, tuple(audit_filter_fields))
+audit_event_fields = {"id": ID, "occurred_at": TIME, "actor_id": nullable(ID), "executor_id": nullable(ID),
+    "channel": {"type": "string"}, "action": {"type": "string"}, "result": {"type": "string"}, "resource_type": {"type": "string"},
+    "resource_id": nullable(ID), "resource_version": nullable({"type": "string", "pattern": r"^-?[0-9]+$"}), "request_id": {"type": "string"},
+    "run_id": nullable(ID), "job_id": nullable(ID), "before_digest": nullable({"type": "string"}), "after_digest": nullable({"type": "string"})}
+add("AuditEvent", audit_event_fields, tuple(audit_event_fields))
+add("AuditEventPage", {"items": array(ref("AuditEvent"), maxItems=100), "next_cursor": nullable(CURSOR), "filters": ref("AuditFilter"), "disclosure": enum("organization_metadata_v1")}, ("items", "next_cursor", "filters", "disclosure"))
+audit_export_fields = {"id": ID, "filters": ref("AuditFilter"), "disclosure": enum("organization_metadata_v1"), "created_at": TIME, "expires_at": TIME,
+    "row_count": {"type": "integer", "minimum": 0, "maximum": 10000}, "csv_bytes": {"type": "integer", "minimum": 1, "maximum": 8388608}, "csv_sha256": HASH,
+    "state": enum("ready", "expired", "authorization_changed"), "can_download": {"type": "boolean"}}
+add("AuditExport", audit_export_fields, tuple(audit_export_fields))
+add("AuditExportCreate", {"filters": ref("AuditFilter"), "reason": NAME}, ("filters", "reason"))
+audit_chunk_fields = {"export_id": ID, "filename": NAME, "total_size_bytes": BYTES, "sha256": HASH, "offset": BYTES, "length": BYTES,
+    "chunk_sha256": HASH, "data_base64": {"type": "string", "maxLength": 699052}}
+add("AuditExportChunk", audit_chunk_fields, tuple(audit_chunk_fields))
+operation("/audit/events", "get", "listAuditEvents", "AuditEventPage")
+PATHS["/audit/events"]["get"]["parameters"] += [{"name": key, "in": "query", "required": key in ("from", "to"), "schema": schema} for key, schema in audit_filter_fields.items()]
+PATHS["/audit/events"]["get"]["parameters"] += [{"name": "cursor", "in": "query", "schema": CURSOR}, {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 100, "default": 20}}]
+operation("/audit/events/{id}", "get", "readAuditEvent", "AuditEvent")
+operation("/audit/exports", "get", "listAuditExports", "AuditExport", listing=True)
+operation("/audit/exports", "post", "createAuditExport", "AuditExport", "AuditExportCreate", 201)
+operation("/audit/exports/{id}", "get", "readAuditExport", "AuditExport")
+operation("/audit/exports/{id}/chunks", "get", "readAuditExportChunk", "AuditExportChunk")
+PATHS["/audit/exports/{id}/chunks"]["get"]["parameters"] += [{"name": "offset", "in": "query", "required": True, "schema": BYTES}, {"name": "length", "in": "query", "required": True, "schema": BYTES}]
+operation("/audit/exports/{id}/download", "get", "downloadAuditCSV", "AuditExport")
+PATHS["/audit/exports/{id}/download"]["get"]["responses"]["200"] = {"description": "Reauthorized immutable metadata CSV; contains no free-form reasons, sessions or business payloads.", "headers": {"X-Content-SHA256": {"schema": HASH}}, "content": {"text/csv": {"schema": {"type": "string", "format": "binary"}}}}
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",
@@ -1969,5 +1998,10 @@ if __name__ == "__main__":
     embedded = root / "app/backend/internal/contract/openapi.json"
     embedded.parent.mkdir(parents=True, exist_ok=True)
     embedded.write_text(content, encoding="utf-8")
-    print(json.dumps({"artifact": str(target), "paths": len(PATHS),
-        "operations": sum(len(value) for value in PATHS.values()), "schemas": len(SCHEMAS)}))
+    # Keep independently maintained business extensions in the canonical build.
+    # Rebuilding the base alone used to erase the published amortization API.
+    from update_amortization_contract import main as add_amortization
+    add_amortization()
+    complete = json.loads(target.read_text(encoding="utf-8"))
+    print(json.dumps({"artifact": str(target), "paths": len(complete["paths"]),
+        "operations": sum(len(value) for value in complete["paths"].values()), "schemas": len(complete["components"]["schemas"])}))

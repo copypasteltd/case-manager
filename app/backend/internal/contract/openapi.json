@@ -34734,6 +34734,698 @@
         }
       }
     },
+    "/audit/events": {
+      "get": {
+        "operationId": "listAuditEvents",
+        "tags": [
+          "audit"
+        ],
+        "summary": "listAuditEvents",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "actor_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "executor_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "result",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "resource_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "resource_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "request_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "run_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "job_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditEventPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/audit/events/{id}": {
+      "get": {
+        "operationId": "readAuditEvent",
+        "tags": [
+          "audit"
+        ],
+        "summary": "readAuditEvent",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/audit/exports": {
+      "get": {
+        "operationId": "listAuditExports",
+        "tags": [
+          "audit"
+        ],
+        "summary": "listAuditExports",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditExportListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createAuditExport",
+        "tags": [
+          "audit"
+        ],
+        "summary": "createAuditExport",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditExportResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditExportCreate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/audit/exports/{id}": {
+      "get": {
+        "operationId": "readAuditExport",
+        "tags": [
+          "audit"
+        ],
+        "summary": "readAuditExport",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditExportResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/audit/exports/{id}/chunks": {
+      "get": {
+        "operationId": "readAuditExportChunk",
+        "tags": [
+          "audit"
+        ],
+        "summary": "readAuditExportChunk",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          },
+          {
+            "name": "length",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditExportChunkResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/audit/exports/{id}/download": {
+      "get": {
+        "operationId": "downloadAuditCSV",
+        "tags": [
+          "audit"
+        ],
+        "summary": "downloadAuditCSV",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reauthorized immutable metadata CSV; contains no free-form reasons, sessions or business payloads.",
+            "headers": {
+              "X-Content-SHA256": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              }
+            },
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/costs/{id}/amortization": {
       "get": {
         "operationId": "getCostAmortization",
@@ -73110,6 +73802,482 @@
               "items",
               "next_cursor"
             ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AuditFilter": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actor_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "executor_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "channel": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "action": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "result": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "resource_type": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "resource_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "request_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "run_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "job_id": {
+            "type": "string",
+            "maxLength": 128
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "to",
+          "actor_id",
+          "executor_id",
+          "channel",
+          "action",
+          "result",
+          "resource_type",
+          "resource_id",
+          "request_id",
+          "run_id",
+          "job_id"
+        ]
+      },
+      "AuditEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "executor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "channel": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          },
+          "resource_type": {
+            "type": "string"
+          },
+          "resource_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "resource_version": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "request_id": {
+            "type": "string"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "job_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "before_digest": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "after_digest": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "occurred_at",
+          "actor_id",
+          "executor_id",
+          "channel",
+          "action",
+          "result",
+          "resource_type",
+          "resource_id",
+          "resource_version",
+          "request_id",
+          "run_id",
+          "job_id",
+          "before_digest",
+          "after_digest"
+        ]
+      },
+      "AuditEventPage": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditEvent"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "filters": {
+            "$ref": "#/components/schemas/AuditFilter"
+          },
+          "disclosure": {
+            "type": "string",
+            "enum": [
+              "organization_metadata_v1"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "next_cursor",
+          "filters",
+          "disclosure"
+        ]
+      },
+      "AuditExport": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/AuditFilter"
+          },
+          "disclosure": {
+            "type": "string",
+            "enum": [
+              "organization_metadata_v1"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "row_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "csv_bytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8388608
+          },
+          "csv_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "expired",
+              "authorization_changed"
+            ]
+          },
+          "can_download": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "filters",
+          "disclosure",
+          "created_at",
+          "expires_at",
+          "row_count",
+          "csv_bytes",
+          "csv_sha256",
+          "state",
+          "can_download"
+        ]
+      },
+      "AuditExportCreate": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/AuditFilter"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "filters",
+          "reason"
+        ]
+      },
+      "AuditExportChunk": {
+        "type": "object",
+        "properties": {
+          "export_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "filename": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "total_size_bytes": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "offset": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$"
+          },
+          "length": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$"
+          },
+          "chunk_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "data_base64": {
+            "type": "string",
+            "maxLength": 699052
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "export_id",
+          "filename",
+          "total_size_bytes",
+          "sha256",
+          "offset",
+          "length",
+          "chunk_sha256",
+          "data_base64"
+        ]
+      },
+      "AuditEventPageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AuditEventPage"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AuditEventResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AuditEvent"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AuditExportListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AuditExport"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AuditExportResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AuditExport"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AuditExportChunkResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AuditExportChunk"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

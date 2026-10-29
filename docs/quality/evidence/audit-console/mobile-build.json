@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T06:38:12.134562+00:00",
+  "source_sha256": "935f20ab5fe678f55e08429653db82a34be23bc8c59d6e28879c6ddfa946887d",
+  "source_files": 207,
+  "tests": {
+    "pass": 281,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:31:41.014264+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/audit-console-web-refresh-typecheck.log",
+      "web_layout_refresh_executed": true
+    },
+    {
+      "name": "mobile-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:20:45.846314+00:00",
+      "test_count": 281,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/mobile",
+      "raw_log_sha256": "7020d16c73bf13f332c1e2626eaed63525d48be77d7db59f9ae65c4750436178",
+      "raw_log": "ignored app/.local/audit-console-client-mobile-tests.log",
+      "same_increment_execution_retained": true
+    },
+    {
+      "name": "wechat-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:21:43.522159+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:weapp",
+      "raw_log_sha256": "864444a86ca2a963ac7a3b974b5674c191797a8fe693520e9b14c9cbbcc2c47e",
+      "raw_log": "ignored app/.local/audit-console-client-wechat-build.log",
+      "same_increment_execution_retained": true
+    },
+    {
+      "name": "douyin-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T06:29:53.435020+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:tt",
+      "raw_log_sha256": "c964ca4b38172f4fd92cb5cbbf31568fab9653f6fb598ccf85fb643de948b599",
+      "raw_log": "ignored app/.local/audit-console-client-douyin-build.log",
+      "same_increment_execution_retained": true
+    }
+  ],
+  "targets": {
+    "weapp": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    },
+    "tt": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    }
+  },
+  "source_unchanged_during_commands": true,
+  "api_origin": "http://127.0.0.1:18080",
+  "profile": "local",
+  "real_device": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "5202925a99cb6110702983331a2ca55eb9de53ce0959efcf2ae1299cc4536004",
+    "summary_adapter_sha256": "1ba8412d66897ca278ed15bce9b7eb4079913e9b607324a86255f6971d049591",
+    "adapter_reran_tests": false
+  }
+}

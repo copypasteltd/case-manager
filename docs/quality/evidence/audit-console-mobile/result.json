@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T06:41:22.194Z",
+  "finished_at": "2026-10-29T06:42:05.561Z",
+  "checks": [
+    "An explicitly authorized system administrator queries organization audit metadata without gaining business project access or free-text/session disclosure.",
+    "Event pagination and details use actual immutable event records and server-bound cursors.",
+    "Unapplied draft filters are visible; explicit application resets the page and supports both empty results and exact-action matches.",
+    "Human export creation, owner history pagination and client download verify exactly the sealed row count, byte count, original filters and SHA-256 despite later audit writes.",
+    "Audit layouts fit the reviewed viewports; any wide record table scrolls within its container."
+  ],
+  "source_count": 821,
+  "source_sha256": "c7dac171836cf9fc0cf9f86330528e313750984f8e0639384bbaf6584c9ed20c",
+  "source_after_sha256": "c7dac171836cf9fc0cf9f86330528e313750984f8e0639384bbaf6584c9ed20c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "376be23c93ee0a70a736de59865cde6f40c74b649ab9afb055d974210fddebaa",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "376be23c93ee0a70a736de59865cde6f40c74b649ab9afb055d974210fddebaa",
+  "build_source_unchanged": true
+}

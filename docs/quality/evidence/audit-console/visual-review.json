@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-29T06:46:05.489174+00:00",
+  "method": "Direct visual inspection of two final screenshots; other screenshots have automated route/credential/layout checks, not a claimed manual review.",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/audit-console-web-export.png",
+      "sha256": "5336d75d7f12a63021ae8343253b4edeb2f68614f7d106a8645e605a173e09d8",
+      "review": "Inspected actual pixels: metadata wraps, download control fits, original export criteria and SHA are visible; no password or MFA fields in captured viewport."
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-export.png",
+      "sha256": "71240369362ab93c964002f53d7eb6a27d81c03cffe96a6b3dbb21818f4f53e2",
+      "review": "Inspected actual pixels: metadata wraps, download control fits, original export criteria and SHA are visible; no password or MFA fields in captured viewport."
+    }
+  ],
+  "synthetic_data": true,
+  "real_device": false
+}

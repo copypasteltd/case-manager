@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "terminal": true,
+  "complete_suite": false,
+  "reason": "Unified contract generation initially omitted the separately maintained amortization extension. Source change was detected; queued batches were refused. Existing fixtures completed and cleaned up before retry.",
+  "source_sha256": "411d7203ab2f4780b93a3a2b185e9653515f0e84174d11768d7ca2d5730bf7bb",
+  "source_archive_private": "app/.local/audit-console-attempts/backend01/source-inputs.zip",
+  "source_archive_sha256": "8a66ad7db05944408fda3fc41f4177985249d2a3995dee6bc851a44ae9373d4b",
+  "raw_logs_private": [
+    {
+      "path": "app/.local/audit-console-attempts/backend01/batch-1.jsonl",
+      "sha256": "3564346b7aefea90812f0f07f893cbf51f69b4ed0982dc09d146e81b9cb926eb"
+    },
+    {
+      "path": "app/.local/audit-console-attempts/backend01/batch-2.jsonl",
+      "sha256": "82210f4f105764899b0e4769a327721c7a6e2843781f26b6f3632cce64466979"
+    }
+  ],
+  "count_as_current_pass": false
+}

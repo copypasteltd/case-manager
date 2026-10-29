@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T06:53:03.866126+00:00",
+  "backend_source_sha256": "f4a92bd50da312ead6cad02a03d1b3fd59d09c013d9655696c960cb74fc0981f",
+  "previous_migration_count": 83,
+  "migration_count": 84,
+  "history_before": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "history_after": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "legacy_and_usage_rows_preserved": true,
+  "services": [
+    {
+      "command": "api",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-notification",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-report-export",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stale_unrelated_pid_preserved": false
+    }
+  ],
+  "updater_sha256": "d6d0c19a1a7f9cf5bd66b0c53c25668c468c72f2d18d3184a6796f125214e991",
+  "postgres_restarted": false,
+  "external_integration_started": false,
+  "production_deployment": false
+}

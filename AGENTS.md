@@ -35,3 +35,5 @@
 - Current applicability for all 30 original AC and 72 TC IDs is recorded in `docs/quality/04-current-acceptance-applicability.md` and its JSON manifest. Run `python app/scripts/verify_acceptance_applicability.py` after acceptance-scope changes. Classification does not execute or pass business cases; GAP-28 stays active.
 
 - Increment108 fixes the remaining seven directly advised npm consumers with a disclosed MIT merge patch, a maintained URI parser bridge and patched Babel/esbuild/XML/send/UUID versions. Full npm audit63→0 does not sign off formal production artifacts; keep GAP-26 active for that remaining acceptance. See `docs/development/108-dependency-integrity.md`.
+
+- Increment109 adds organization audit metadata query and sealed owner-bound CSV exports across Web and shared mobile settings. Keep dedicated audit.read/audit.export, human sessions, recent MFA, metadata allowlist, immutable references and current-authority/hash checks. Model/Skill, TG operations and storage administration remain open under GAP-07. See `docs/development/109-audit-console.md`.

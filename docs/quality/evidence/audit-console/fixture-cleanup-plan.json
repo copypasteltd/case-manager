@@ -1,0 +1,54 @@
+{
+  "candidates": [
+    {
+      "oid": "101805703",
+      "name": "cp_test_de00478af8864c199105d045d16a9321",
+      "owner": "postgres",
+      "invalid_drop_marker": true,
+      "template": false,
+      "active_connections": 0,
+      "created": "2026-10-29T14:31:22+08:00",
+      "matched_failed_tests": [
+        "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+        "TestPlatformIntegration"
+      ],
+      "contents_inspected": false,
+      "attribution": "Exact discovered fixture names, local owned test cluster, creation within archived failing cleanup windows, postgres owner, invalid DROP marker and zero active connections. Invalid databases cannot be connected to inspect organization/schema contents."
+    },
+    {
+      "oid": "101905279",
+      "name": "cp_test_88358ad8533d4fe9b4728e6e33e83c74",
+      "owner": "postgres",
+      "invalid_drop_marker": true,
+      "template": false,
+      "active_connections": 0,
+      "created": "2026-10-29T14:37:38+08:00",
+      "matched_failed_tests": [
+        "TestScanWaiverBoundaries/decision_audit_failure_rolls_back_waiver_upload_and_event_while_cancellation_stays_explicit",
+        "TestScanWaiverBoundaries",
+        "TestStatusBridgeNativeFlow"
+      ],
+      "contents_inspected": false,
+      "attribution": "Exact discovered fixture names, local owned test cluster, creation within archived failing cleanup windows, postgres owner, invalid DROP marker and zero active connections. Invalid databases cannot be connected to inspect organization/schema contents."
+    },
+    {
+      "oid": "101905280",
+      "name": "cp_test_108c9b5ef7df487690cc8793c14185bb",
+      "owner": "postgres",
+      "invalid_drop_marker": true,
+      "template": false,
+      "active_connections": 0,
+      "created": "2026-10-29T14:37:38+08:00",
+      "matched_failed_tests": [
+        "TestScanWaiverBoundaries/decision_audit_failure_rolls_back_waiver_upload_and_event_while_cancellation_stays_explicit",
+        "TestScanWaiverBoundaries",
+        "TestStatusBridgeNativeFlow"
+      ],
+      "contents_inspected": false,
+      "attribution": "Exact discovered fixture names, local owned test cluster, creation within archived failing cleanup windows, postgres owner, invalid DROP marker and zero active connections. Invalid databases cannot be connected to inspect organization/schema contents."
+    }
+  ],
+  "initial_attempt_sha256": "797b4640b77892a20db5aa2d5a87aad73617035b01f1bc3e840a241758e6421b",
+  "force": false,
+  "production_database_selected": false
+}

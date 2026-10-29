@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T07:04:10.839726+00:00",
+  "source_sha256": "f4a92bd50da312ead6cad02a03d1b3fd59d09c013d9655696c960cb74fc0981f",
+  "freezer_sha256": "4acc131ad3c3d612927864f7c4ae4f4403a59ab74dbd7dbefa00f4900920ccc3",
+  "logs": [
+    {
+      "batch": 1,
+      "raw_log": ".local/audit-console-backend/batch-1.log",
+      "sha256": "447320010016a719092830982eec3a965f1481e7bcccb5eccd1b67ae78cc28f9",
+      "bytes": 169226,
+      "records": 133,
+      "started_at": "2026-10-29T06:11:26.910181+00:00",
+      "completed_at": "2026-10-29T06:15:50.661239+00:00"
+    },
+    {
+      "batch": 2,
+      "raw_log": ".local/audit-console-backend/batch-2.log",
+      "sha256": "d287fcbcf0272069f599f3ecbbd788fc6adfcabb5bf1cc3ab76b35565b93581c",
+      "bytes": 240576,
+      "records": 205,
+      "started_at": "2026-10-29T06:11:26.908827+00:00",
+      "completed_at": "2026-10-29T06:16:11.488775+00:00"
+    },
+    {
+      "batch": 3,
+      "raw_log": ".local/audit-console-backend/batch-3.log",
+      "sha256": "165e7801db81a3a61a632badeeef33c54858496febcedbe7a4e9f73bdc50c4ed",
+      "bytes": 98097,
+      "records": 73,
+      "started_at": "2026-10-29T06:15:50.784687+00:00",
+      "completed_at": "2026-10-29T06:17:09.448861+00:00"
+    },
+    {
+      "batch": 4,
+      "raw_log": ".local/audit-console-backend/batch-4.log",
+      "sha256": "16fd474f3bc80765736e305cc088800acb5708aa9cce1d43faf7304ab973f696",
+      "bytes": 135454,
+      "records": 97,
+      "started_at": "2026-10-29T06:16:11.595059+00:00",
+      "completed_at": "2026-10-29T06:19:31.332840+00:00"
+    },
+    {
+      "batch": 5,
+      "raw_log": ".local/audit-console-backend/batch-5.log",
+      "sha256": "4ac833227e73b5bb637cc5b75a336e97a0e8ea7918ce2ac74ffa99f122a6d2a4",
+      "bytes": 138618,
+      "records": 116,
+      "started_at": "2026-10-29T06:17:09.577432+00:00",
+      "completed_at": "2026-10-29T06:22:25.173621+00:00"
+    },
+    {
+      "batch": 6,
+      "raw_log": ".local/audit-console-backend/batch-6.log",
+      "sha256": "a0fa301239c4c722530a277092e87d27f482b281a6d94270840a4648bc94191f",
+      "bytes": 83421,
+      "records": 61,
+      "started_at": "2026-10-29T06:19:31.458400+00:00",
+      "completed_at": "2026-10-29T06:27:41.691447+00:00"
+    },
+    {
+      "batch": 7,
+      "raw_log": ".local/audit-console-backend/batch-7.log",
+      "sha256": "7366c416b644ae872e4461429fc2066e7cc02abf738210f750a8fbf3b64f323e",
+      "bytes": 62849,
+      "records": 39,
+      "started_at": "2026-10-29T06:22:25.310272+00:00",
+      "completed_at": "2026-10-29T06:25:39.975811+00:00"
+    },
+    {
+      "batch": 8,
+      "raw_log": ".local/audit-console-backend/batch-8.log",
+      "sha256": "f0177a3769513dab718e0eb02b47a921407117bc6b76df17428e0079170f0f8b",
+      "bytes": 244216,
+      "records": 199,
+      "started_at": "2026-10-29T06:51:49.170179+00:00",
+      "completed_at": "2026-10-29T06:56:34.713605+00:00"
+    },
+    {
+      "batch": 9,
+      "raw_log": ".local/audit-console-backend/batch-9.log",
+      "sha256": "4a07ecbb1b00d4b1ccae12a97f494341cb3cc85ab6af7d0f0b563d031ecb95c5",
+      "bytes": 174311,
+      "records": 137,
+      "started_at": "2026-10-29T06:56:34.721284+00:00",
+      "completed_at": "2026-10-29T06:59:57.859475+00:00"
+    },
+    {
+      "batch": 10,
+      "raw_log": ".local/audit-console-backend/batch-10.log",
+      "sha256": "f7c671a8a9db5d99d6ebfe8627ca37c3f6063c7dadd9420fc66f44c9da6a65f5",
+      "bytes": 189467,
+      "records": 156,
+      "started_at": "2026-10-29T06:59:57.867965+00:00",
+      "completed_at": "2026-10-29T07:03:01.694670+00:00"
+    },
+    {
+      "batch": 11,
+      "raw_log": ".local/audit-console-backend/batch-11.log",
+      "sha256": "419fd9a199e7c8907f71001a851aaa6126c8ecdf364018c0615130e3926dd2b9",
+      "bytes": 129062,
+      "records": 104,
+      "started_at": "2026-10-29T06:42:17.464702+00:00",
+      "completed_at": "2026-10-29T06:49:16.335246+00:00"
+    },
+    {
+      "batch": 12,
+      "raw_log": ".local/audit-console-backend/batch-12.log",
+      "sha256": "9712c121e011bb72ceec87c5bdb53143e26cd9467fa831c6dad6e25b40b6fdd2",
+      "bytes": 75811,
+      "records": 48,
+      "started_at": "2026-10-29T06:44:47.072941+00:00",
+      "completed_at": "2026-10-29T06:50:49.386349+00:00"
+    }
+  ],
+  "records": 1368,
+  "raw_logs_private": true,
+  "prior_increments_raw_logs_reverified": false,
+  "scope": "Only this completed current-source run is archived; no prior private log retention claim."
+}

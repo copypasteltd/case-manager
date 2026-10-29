@@ -1,0 +1,40 @@
+{
+  "recordings": [
+    {
+      "name": "audit-console-mobile",
+      "frame_count": 27,
+      "duration_ms": 6485,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/audit-console-mobile/frames.json",
+      "manifest_sha256": "5cac4706fb023731a68978cc0caa3d8d73609c8bb639aaa6e2af84971ae17f65"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "client": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-detail.png",
+      "sha256": "055c0132541af3d81d2b21f6b42a430b02ffc4efa52e9cd36ef495f4933b5e7d"
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-empty.png",
+      "sha256": "f011c520843e1960a29c0d87cbadb383e0c2be10a7f24c33bd4c6fb165fc3789"
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-export.png",
+      "sha256": "71240369362ab93c964002f53d7eb6a27d81c03cffe96a6b3dbb21818f4f53e2"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T06:24:33.299Z",
+  "finished_at": "2026-10-29T06:25:03.476Z",
+  "checks": [
+    "An explicitly authorized system administrator queries organization audit metadata without gaining business project access or free-text/session disclosure."
+  ],
+  "source_count": 788,
+  "source_sha256": "4199ef2ee62de0dbc1955213d4de8caf3f956152ab5f43f6e89116de807cfc3f",
+  "source_after_sha256": "4199ef2ee62de0dbc1955213d4de8caf3f956152ab5f43f6e89116de807cfc3f",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Expected values to be strictly equal:\n\n403 !== 201\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "7ec00f2391e92b8ec611ae18a9f3cc2c10bf47502b05e3d9556f4cd221b64242",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "7ec00f2391e92b8ec611ae18a9f3cc2c10bf47502b05e3d9556f4cd221b64242",
+  "build_source_unchanged": true
+}

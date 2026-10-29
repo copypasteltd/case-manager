@@ -5338,6 +5338,109 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/audit/events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listAuditEvents */
+        get: operations["listAuditEvents"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/audit/events/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readAuditEvent */
+        get: operations["readAuditEvent"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/audit/exports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listAuditExports */
+        get: operations["listAuditExports"];
+        put?: never;
+        /** createAuditExport */
+        post: operations["createAuditExport"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/audit/exports/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readAuditExport */
+        get: operations["readAuditExport"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/audit/exports/{id}/chunks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readAuditExportChunk */
+        get: operations["readAuditExportChunk"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/audit/exports/{id}/download": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** downloadAuditCSV */
+        get: operations["downloadAuditCSV"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -12823,6 +12926,103 @@ export interface components {
                 items: components["schemas"]["FinancialReportOption"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        AuditFilter: {
+            /** Format: date-time */
+            from: string;
+            /** Format: date-time */
+            to: string;
+            actor_id: string;
+            executor_id: string;
+            channel: string;
+            action: string;
+            result: string;
+            resource_type: string;
+            resource_id: string;
+            request_id: string;
+            run_id: string;
+            job_id: string;
+        };
+        AuditEvent: {
+            /** Format: uuid */
+            id: string;
+            /** Format: date-time */
+            occurred_at: string;
+            actor_id: string | null;
+            executor_id: string | null;
+            channel: string;
+            action: string;
+            result: string;
+            resource_type: string;
+            resource_id: string | null;
+            resource_version: string | null;
+            request_id: string;
+            run_id: string | null;
+            job_id: string | null;
+            before_digest: string | null;
+            after_digest: string | null;
+        };
+        AuditEventPage: {
+            items: components["schemas"]["AuditEvent"][];
+            next_cursor: string | null;
+            filters: components["schemas"]["AuditFilter"];
+            /** @enum {string} */
+            disclosure: "organization_metadata_v1";
+        };
+        AuditExport: {
+            /** Format: uuid */
+            id: string;
+            filters: components["schemas"]["AuditFilter"];
+            /** @enum {string} */
+            disclosure: "organization_metadata_v1";
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            expires_at: string;
+            row_count: number;
+            csv_bytes: number;
+            csv_sha256: string;
+            /** @enum {string} */
+            state: "ready" | "expired" | "authorization_changed";
+            can_download: boolean;
+        };
+        AuditExportCreate: {
+            filters: components["schemas"]["AuditFilter"];
+            reason: string;
+        };
+        AuditExportChunk: {
+            /** Format: uuid */
+            export_id: string;
+            filename: string;
+            total_size_bytes: string;
+            sha256: string;
+            offset: string;
+            length: string;
+            chunk_sha256: string;
+            data_base64: string;
+        };
+        AuditEventPageResponse: {
+            data: components["schemas"]["AuditEventPage"];
+            meta: components["schemas"]["Meta"];
+        };
+        AuditEventResponse: {
+            data: components["schemas"]["AuditEvent"];
+            meta: components["schemas"]["Meta"];
+        };
+        AuditExportListResponse: {
+            data: {
+                items: components["schemas"]["AuditExport"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        AuditExportResponse: {
+            data: components["schemas"]["AuditExport"];
+            meta: components["schemas"]["Meta"];
+        };
+        AuditExportChunkResponse: {
+            data: components["schemas"]["AuditExportChunk"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -27976,6 +28176,269 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FinancialReportOptionListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listAuditEvents: {
+        parameters: {
+            query: {
+                from: string;
+                to: string;
+                actor_id?: string;
+                executor_id?: string;
+                channel?: string;
+                action?: string;
+                result?: string;
+                resource_type?: string;
+                resource_id?: string;
+                request_id?: string;
+                run_id?: string;
+                job_id?: string;
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditEventPageResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readAuditEvent: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditEventResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listAuditExports: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditExportListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createAuditExport: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AuditExportCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditExportResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readAuditExport: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditExportResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readAuditExportChunk: {
+        parameters: {
+            query: {
+                offset: string;
+                length: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuditExportChunkResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    downloadAuditCSV: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Reauthorized immutable metadata CSV; contains no free-form reasons, sessions or business payloads. */
+            200: {
+                headers: {
+                    "X-Content-SHA256"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/csv": string;
                 };
             };
             400: components["responses"]["Failure"];
