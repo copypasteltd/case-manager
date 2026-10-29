@@ -383,7 +383,7 @@ func (s *Service) RecordPayment(ctx context.Context, cmd core.Command, id string
 				if err != nil {
 					return core.Result{}, err
 				}
-				if _, err = s.inverseAllocation(ctx, tx, cmd.Actor, p, source, plan.Amount, "refund", in.Reason); err != nil {
+				if _, err = s.inverseAllocation(ctx, tx, cmd.Actor, p, source, plan.Amount, "refund", in.Reason, plan.CostAmount); err != nil {
 					return core.Result{}, err
 				}
 			}

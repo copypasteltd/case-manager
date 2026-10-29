@@ -32,8 +32,9 @@ type PaymentPatch struct {
 	Base
 }
 type RefundAllocation struct {
-	SourceAllocationID string `json:"source_allocation_id"`
-	Amount             string `json:"amount"`
+	SourceAllocationID string  `json:"source_allocation_id"`
+	Amount             string  `json:"amount"`
+	CostAmount         *string `json:"cost_amount,omitempty"`
 }
 type PaymentRecordInput struct {
 	Base
@@ -46,41 +47,51 @@ type PaymentReverseInput struct {
 }
 type PaymentAllocate struct {
 	Base
-	CostID          string  `json:"cost_id"`
-	CostVersion     int64   `json:"cost_version"`
-	CostRevisionID  string  `json:"cost_revision_id"`
-	CostContentHash string  `json:"cost_content_hash"`
-	Amount          string  `json:"amount"`
-	ClaimID         *string `json:"claim_id"`
-	ClaimRevisionID *string `json:"claim_revision_id"`
-	ClaimLineID     *string `json:"claim_line_id"`
+	CostID          string          `json:"cost_id"`
+	CostVersion     int64           `json:"cost_version"`
+	CostRevisionID  string          `json:"cost_revision_id"`
+	CostContentHash string          `json:"cost_content_hash"`
+	Amount          string          `json:"amount"`
+	ClaimID         *string         `json:"claim_id"`
+	ClaimRevisionID *string         `json:"claim_revision_id"`
+	ClaimLineID     *string         `json:"claim_line_id"`
+	FX              *PaymentFXInput `json:"fx,omitempty"`
 }
 type PaymentRelease struct {
 	Base
-	Amount string `json:"amount"`
+	Amount     string  `json:"amount"`
+	CostAmount *string `json:"cost_amount,omitempty"`
 }
 type PaymentRefundAllocate struct {
 	Base
 	RefundAllocation
 }
 type PaymentAllocation struct {
-	ID                 string       `json:"id"`
-	PaymentID          string       `json:"payment_id"`
-	CostID             string       `json:"cost_id"`
-	CostRevisionID     string       `json:"cost_revision_id"`
-	Kind               string       `json:"kind"`
-	Effect             int          `json:"effect"`
-	Amount             string       `json:"amount"`
-	RootID             string       `json:"root_id"`
-	SourceAllocationID *string      `json:"source_allocation_id"`
-	ClaimID            *string      `json:"claim_id"`
-	ClaimRevisionID    *string      `json:"claim_revision_id"`
-	ClaimLineID        *string      `json:"claim_line_id"`
-	Shares             []Allocation `json:"shares"`
-	RemainingAmount    string       `json:"remaining_amount"`
-	ActorID            string       `json:"actor_id"`
-	Reason             string       `json:"reason"`
-	CreatedAt          time.Time    `json:"created_at"`
+	ID                  string          `json:"id"`
+	PaymentID           string          `json:"payment_id"`
+	CostID              string          `json:"cost_id"`
+	CostRevisionID      string          `json:"cost_revision_id"`
+	Kind                string          `json:"kind"`
+	Effect              int             `json:"effect"`
+	Amount              string          `json:"amount"`
+	RootID              string          `json:"root_id"`
+	SourceAllocationID  *string         `json:"source_allocation_id"`
+	ClaimID             *string         `json:"claim_id"`
+	ClaimRevisionID     *string         `json:"claim_revision_id"`
+	ClaimLineID         *string         `json:"claim_line_id"`
+	Shares              []Allocation    `json:"shares"`
+	RemainingAmount     string          `json:"remaining_amount"`
+	CostAmount          string          `json:"cost_amount"`
+	CostCurrency        string          `json:"cost_currency"`
+	PaymentCurrency     string          `json:"payment_currency"`
+	CostExponent        int             `json:"cost_exponent"`
+	PaymentExponent     int             `json:"payment_exponent"`
+	CostShares          []Allocation    `json:"cost_shares"`
+	RemainingCostAmount string          `json:"remaining_cost_amount"`
+	FX                  *PaymentFXQuote `json:"fx"`
+	ActorID             string          `json:"actor_id"`
+	Reason              string          `json:"reason"`
+	CreatedAt           time.Time       `json:"created_at"`
 }
 type Payment struct {
 	PaymentContent

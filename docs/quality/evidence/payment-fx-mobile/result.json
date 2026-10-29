@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T23:15:53.478Z",
+  "finished_at": "2026-10-29T23:18:17.002Z",
+  "checks": [
+    {
+      "name": "Existing owned fixture receives explicit synthetic finance grants and real independent USD cost/HKD cash facts",
+      "passed": true
+    },
+    {
+      "name": "Actual shared mobile H5 form rejects a mismatched manual quote without writing a settlement",
+      "passed": true
+    },
+    {
+      "name": "Explicit manual quote and MFA commit exact dual principal, provenance and aligned project shares",
+      "passed": true
+    },
+    {
+      "name": "Human partial release displays and returns HKD390/USD50 then commits both remaining balances",
+      "passed": true
+    },
+    {
+      "name": "Actual ledger UI preserves original cash facts and separates cash HKD390 from incurred USD50",
+      "passed": true
+    },
+    {
+      "name": "A separately authenticated reader without finance authority cannot access the actual cash or allocation controls",
+      "passed": true
+    }
+  ],
+  "source_count": 876,
+  "source_sha256": "971f7de92861933ee2db1bd2139193d01e4508a740644e31a53fff507b10d1ce",
+  "source_after_sha256": "971f7de92861933ee2db1bd2139193d01e4508a740644e31a53fff507b10d1ce",
+  "source_unchanged": true,
+  "browser_contexts_closed": 3,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "d88f8bfede9f906cff3bf942e780d3f078355d0377327acee80a2b1c8039f5cd",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "d88f8bfede9f906cff3bf942e780d3f078355d0377327acee80a2b1c8039f5cd",
+  "build_source_unchanged": true
+}

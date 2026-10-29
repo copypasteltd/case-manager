@@ -5,7 +5,7 @@ export type FinancialRecord = Schemas['Cost'] | Schemas['Payment'];
 export type FinancialAction = 'create' | 'edit' | 'confirm' | 'reverse' | 'link' | 'record' | 'allocate' | 'release' | 'refundAllocate';
 export const financialNames = { cost: '实际费用', payment: '资金记录' };
 export const financialRoutes = { cost: '/costs', payment: '/payments' };
-const limits = { title: 200, project: 36, classification: 20, source: 199, date: 19, currency: 3, amount: 30, category: 50, notes: 20000, reason: 200, direction: 20, method: 100, external: 200, effective: 19 } as const;
+const limits = { title: 200, project: 36, classification: 20, source: 199, date: 19, currency: 3, amount: 30, category: 50, notes: 20000, reason: 200, direction: 20, method: 100, external: 200, effective: 19, fx_cost_amount: 30, fx_rate: 25, fx_source: 200 } as const;
 export type FinancialInput = { [K in keyof typeof limits]: string } & { allocations: { project: string; amount: string }[] };
 export type FinancialEvidence = { party: NonNullable<Schemas['Cost']['counterparty']> | null; files: string[]; employee: string | null; refund: string | null };
 const idPattern = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
@@ -22,8 +22,9 @@ export function copyFinancialInput(value: unknown): FinancialInput | undefined {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return;
   const input = value as Record<string, unknown>, result: Record<string, unknown> = {};
   for (const [key, max] of Object.entries(limits)) {
-    if (typeof input[key] !== 'string' || (input[key] as string).length > max) return;
-    result[key] = input[key];
+    const current = input[key] === undefined && key.startsWith('fx_') ? '' : input[key];
+    if (typeof current !== 'string' || current.length > max) return;
+    result[key] = current;
   }
   if (!Array.isArray(input.allocations) || input.allocations.length > 100) return;
   const allocations: FinancialInput['allocations'] = [];
@@ -39,7 +40,7 @@ export function financialInput(kind: FinancialKind, value?: FinancialRecord, sou
     date: value && 'occurred_on' in value ? value.occurred_on ?? '' : value && 'paid_at' in value ? hongKongInput(value.paid_at) : '',
     currency: value?.currency ?? '', amount: value?.amount ?? '', category: value?.category ?? '', notes: value?.notes ?? '', reason: '',
     direction: kind === 'payment' && value && 'direction' in value ? value.direction ?? '' : '', method: value && 'method_label' in value ? value.method_label : '',
-    external: value && 'external_ref' in value ? value.external_ref : '', effective: '',
+    external: value && 'external_ref' in value ? value.external_ref : '', effective: '', fx_cost_amount: '', fx_rate: '', fx_source: '',
     allocations: value && 'allocations' in value ? value.allocations.map(line => ({ project: line.project_id ?? '', amount: line.amount })) : [] };
 }
 export function financialEvidence(value?: FinancialRecord): FinancialEvidence {
@@ -143,14 +144,16 @@ export function financialReversalReceipt(value: unknown, kind: FinancialKind, be
 export function sourceEligible(value: Schemas['Spend'] | Schemas['Contract'], cost: Schemas['Cost'], project: string) {
   return value.project_id === (project || null) && value.currency === cost.currency && value.approval_state === 'approved' && (!('direction' in value) || value.lifecycle === 'effective' && 'direction' in value && value.direction === 'payable');
 }
-export function settlementEligible(cost: Schemas['Cost'], payment: Schemas['Payment'], claim?: Schemas['Spend'], line?: string) {
+export function settlementEligible(cost: Schemas['Cost'], payment: Schemas['Payment'], claim?: Schemas['Spend'], line?: string, allowFX = false) {
   const supplier = claim?.lines.find(v => v.id === line)?.supplier?.party_id ?? null;
-  return cost.state === 'confirmed' && cost.entry_kind === 'expense' && cost.currency === payment.currency && cost.counterparty?.party_id === (payment.employee_id ? supplier : payment.counterparty?.party_id) && (!claim || claim.approval_state === 'approved' && claim.creator_id === payment.employee_id && claim.currency === payment.currency && cost.links.some(v => v.source_type === 'claim' && v.source_id === claim.id && v.source_revision_id === claim.approved_revision_id));
+  return cost.state === 'confirmed' && cost.entry_kind === 'expense' && (allowFX || cost.currency === payment.currency) && cost.counterparty?.party_id === (payment.employee_id ? supplier : payment.counterparty?.party_id) && (!claim || claim.approval_state === 'approved' && claim.creator_id === payment.employee_id && claim.currency === cost.currency && cost.links.some(v => v.source_type === 'claim' && v.source_id === claim.id && v.source_revision_id === claim.approved_revision_id));
 }
-export function financialAllocation(payment: Schemas['Payment'], cost: Schemas['Cost'], reason: string, amount: string, claim?: Schemas['Spend'], line?: string): Schemas['PaymentAllocate'] {
+export function financialAllocation(payment: Schemas['Payment'], cost: Schemas['Cost'], reason: string, amount: string, claim?: Schemas['Spend'], line?: string, fx?: Schemas['PaymentFXInput']): Schemas['PaymentAllocate'] {
   if (payment.state !== 'recorded' || payment.direction !== 'outgoing' || payment.record_kind !== 'payment') return invalid('只有已登记原支出资金可分配费用结算。');
   financialBase(cost, reason);
-  if (!settlementEligible(cost, payment, claim, line) || payment.employee_id && (!claim || !line || !claim.lines.some(v => v.id === line && v.funding === 'employee_advance'))) return invalid('请选择同币、同供应方的已确认费用；员工结算须固定批准报销及员工垫付明细。');
+  if (!settlementEligible(cost, payment, claim, line, !!fx) || payment.employee_id && (!claim || !line || !claim.lines.some(v => v.id === line && v.funding === 'employee_advance'))) return invalid('请选择同供应方的已确认费用；跨币须固定人工汇率，员工结算须固定同费用币种的批准垫付明细。');
   positiveFinancialAmount(amount);
-  return { ...financialBase(payment, reason), cost_id: cost.id, cost_version: cost.version, cost_revision_id: cost.current_revision_id, cost_content_hash: cost.content_hash, amount, claim_id: claim?.id ?? null, claim_revision_id: claim?.approved_revision_id ?? null, claim_line_id: line || null };
+  if (fx && (cost.currency === payment.currency || !fx.acknowledged || !fx.source.trim() || [...fx.source.trim()].length > 200 || !/^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$/.test(fx.rate) || !/[1-9]/.test(fx.rate))) return invalid('请核对实际跨币汇率、凭证来源和确认声明。');
+  if (fx) positiveFinancialAmount(fx.cost_amount);
+  return { ...financialBase(payment, reason), cost_id: cost.id, cost_version: cost.version, cost_revision_id: cost.current_revision_id, cost_content_hash: cost.content_hash, amount, claim_id: claim?.id ?? null, claim_revision_id: claim?.approved_revision_id ?? null, claim_line_id: line || null, ...(fx ? { fx } : {}) };
 }

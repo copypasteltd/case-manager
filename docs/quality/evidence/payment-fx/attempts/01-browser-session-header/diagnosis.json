@@ -1,0 +1,6 @@
+{
+  "cause": "The first actual self-grant increments the subject auth_version and correctly invalidates its old session; the next setup grant returns401. The legacy directory label is retained for the original attempt.",
+  "basis": "app/backend/internal/identity/roles.go CreateBinding and identity/service.go Authenticate",
+  "resolution": "Use the separate synthetic fixture administrator for explicit finance grants, then authenticate the employee again with a fresh MFA code. No authentication rule was weakened.",
+  "counts_as_final_business_acceptance": false
+}

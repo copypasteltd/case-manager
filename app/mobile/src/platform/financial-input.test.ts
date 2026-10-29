@@ -151,3 +151,20 @@ test('cash reversal receipts check the actual UTC reverse time rather than merel
   assert.equal(financialReversalReceipt({ ...reverse, employee_id: id(99) }, 'payment', payment, '2025-02-10T10:00:00'), false);
   assert.equal(financialReversalReceipt({ ...reverse, record_kind: 'payment' }, 'payment', payment, '2025-02-10T10:00:00'), false);
 });
+
+
+test('foreign currency settlement requires an explicit quote while preserving the exact incurred source', () => {
+  const foreign = { ...cost, currency: 'USD' };
+  assert.throws(() => financialAllocation(payment, foreign, '跨币结算', '7.8'));
+  const fx = { cost_amount: '1', rate: '7.8', source: '已核对合成银行凭证', acknowledged: true as const };
+  const body = financialAllocation(payment, foreign, '跨币结算', '7.8', undefined, undefined, fx);
+  assert.equal(body.fx?.cost_amount, '1'); assert.equal(body.amount, '7.8'); assert.equal(body.cost_revision_id, foreign.current_revision_id);
+  assert.throws(() => financialAllocation(payment, cost, '同币不能添加汇率', '7.8', undefined, undefined, fx));
+});
+
+test('pre116 private financial drafts restore without inventing quote fields or acknowledgements', () => {
+  const old = { ...financialInput('payment', payment) } as Record<string, unknown>;
+  delete old.fx_cost_amount; delete old.fx_rate; delete old.fx_source;
+  const restored = copyFinancialInput(old);
+  assert.equal(restored?.fx_cost_amount, ''); assert.equal(restored?.fx_rate, ''); assert.equal(restored?.fx_source, '');
+});

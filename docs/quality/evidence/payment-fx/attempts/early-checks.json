@@ -1,0 +1,60 @@
+{
+  "recorded_at": "2026-10-29T21:45:59.679220+00:00",
+  "records": [
+    {
+      "file": "app/.local/payment-fx-target-attempt1.log",
+      "sha256": "0fb5105df298f7f8838ac33eb519b4a9c802062ca1f77591c64bb7a874e7e0ab",
+      "bytes": 413,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    },
+    {
+      "file": "app/.local/payment-fx-target-attempt2.log",
+      "sha256": "a5e1cf88375cf79b062ce9a1254b1215b188cfb5b486af8086282e81b607cf06",
+      "bytes": 324,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    },
+    {
+      "file": "app/.local/payment-fx-target.log",
+      "sha256": "4c227e97412573e8cc547f03e7832a50187f4d2d1c3ced9ab8f971aeb83c870a",
+      "bytes": 53,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    },
+    {
+      "file": "app/.local/payment-fx-expanded.log",
+      "sha256": "4c742b614aa8661ec27341902c11c957c2755488340e1c4cbe8394fa453c13d8",
+      "bytes": 53,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    },
+    {
+      "file": "app/.local/payment-fx-typecheck.log",
+      "sha256": "bf2a7ab866ef4311d704ac995afa3ca9ae09732e9c5f4bf41517e97f4c629027",
+      "bytes": 1569,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    },
+    {
+      "file": "app/.local/payment_fx-client-typecheck.log.interrupted-5cffb36e4143",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "bytes": 283,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    },
+    {
+      "file": "app/.local/payment_fx-client-web-tests.log.interrupted-e3b0c44298fc",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts_as_final_full_regression": false,
+      "scope": "Preliminary failed, targeted or interrupted checks only; final unchanged-source full runs are recorded separately."
+    }
+  ],
+  "source_bound_final_pass_claimed": false,
+  "notes": [
+    "Initial Go test compilation corrected; isolated employee-claim fixture needed claim.read.",
+    "First Web typecheck missed explicit shared files in the composite project.",
+    "One client run was interrupted before receipt currency binding was finalized; completed final commands are separate."
+  ]
+}

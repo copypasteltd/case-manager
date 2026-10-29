@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "counts_as_final_full_regression": false,
+  "cause": "The Go journey and native migration passed, but the collector parsed a t.Log JSON value before joining Go output chunks; a split string caused JSONDecodeError.",
+  "records": [
+    {
+      "file": "app/.local/payment-fx-upgrade-attempt1-payment-fx-upgrade-115.zip",
+      "sha256": "60e47938a6a984c339609c2d68a6d7fd4263751e8365ebaa884845c27b2b8af4"
+    },
+    {
+      "file": "app/.local/payment-fx-upgrade-attempt1-payment-fx-migrator.exe",
+      "sha256": "fc1aad260d83e696b946cef07b41ff5fa859035e40bd3ef2e3050efdd066c5c5"
+    },
+    {
+      "file": "app/.local/payment-fx-upgrade-attempt1-payment-fx-upgrade-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/payment-fx-upgrade-attempt1-payment-fx-upgrade.log",
+      "sha256": "cca136ac37535418f88897993087699b1559676a1e7d641eab7a4eba216b2743"
+    },
+    {
+      "file": "app/.local/payment-fx-upgrade-attempt1-payment-fx-upgrade-run.log",
+      "sha256": "4ae15315ebd43c0b469fc1b4274b7fca1b207ffba08156a6e181dc378db2de84"
+    },
+    {
+      "file": "app/.local/payment-fx-upgrade-attempt1.py",
+      "sha256": "65cfcc8fa26ea54ec0bcfd4749744983a8019be078c279c81d0e469e11e384a1"
+    }
+  ],
+  "prior_adapted_checkout": "app/.local/payment-fx-upgrade-attempt1-payment-fx-upgrade-115",
+  "resolution": "Join output chunks before parsing the completed upgrade marker and rerun only this separate upgrade check."
+}

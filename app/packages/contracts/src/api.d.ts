@@ -7733,6 +7733,19 @@ export interface components {
             can_allocate: boolean;
             can_reverse: boolean;
         };
+        PaymentFXInput: {
+            cost_amount: string;
+            rate: string;
+            source: string;
+            /** @constant */
+            acknowledged: true;
+        };
+        PaymentFXQuote: {
+            rate: string;
+            source: string;
+            /** Format: date */
+            quoted_on: string;
+        };
         PaymentRecord: {
             expected_version: number;
             /** Format: uuid */
@@ -7744,6 +7757,7 @@ export interface components {
                 /** Format: uuid */
                 source_allocation_id: string;
                 amount: string;
+                cost_amount?: string;
             }[];
         };
         PaymentReverse: {
@@ -7771,6 +7785,7 @@ export interface components {
             claim_id: string | null;
             claim_revision_id: string | null;
             claim_line_id: string | null;
+            fx?: components["schemas"]["PaymentFXInput"];
         };
         PaymentRelease: {
             expected_version: number;
@@ -7779,6 +7794,7 @@ export interface components {
             content_hash: string;
             reason: string;
             amount: string;
+            cost_amount?: string;
         };
         PaymentRefundAllocate: {
             expected_version: number;
@@ -7789,6 +7805,7 @@ export interface components {
             /** Format: uuid */
             source_allocation_id: string;
             amount: string;
+            cost_amount?: string;
         };
         PaymentAllocation: {
             /** Format: uuid */
@@ -7820,6 +7837,17 @@ export interface components {
             reason: string;
             /** Format: date-time */
             created_at: string;
+            cost_amount?: string;
+            cost_currency?: string;
+            payment_currency?: string;
+            cost_exponent?: number;
+            payment_exponent?: number;
+            cost_shares?: {
+                project_id: string | null;
+                amount: string;
+            }[];
+            remaining_cost_amount?: string;
+            fx?: components["schemas"]["PaymentFXQuote"] | null;
         };
         PaymentRevision: {
             title: string;

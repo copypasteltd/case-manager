@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T23:23:53.911442+00:00",
+  "counts_as_new_test_execution": false,
+  "original_archive_preserved": true,
+  "original_archive_sha256": "36eddda4980ebb450e1aafa87b1b462200e0357e40d1baedc2a86b7c64ed1965",
+  "source_archive": "app/.local/payment-fx-eof-source-supplement.zip",
+  "source_archive_sha256": "d2b0f1daf4d69bd45e43ac648c626ab586489a1863aa9cccdabc827cda873ec6",
+  "byte_source_archive": "app/.local/payment_fx-attempts/07-before-navigation-check.zip",
+  "byte_source_archive_sha256": "7a3f5576d4fbbddf7f12b7ac1dffdfff9cd809c1a78aaef88abd950e04c03ebe",
+  "files": [
+    {
+      "file": "scripts/build_openapi.py",
+      "sha256": "08fcede894c6479f604b12d5e151ec2451675d63cf9d0978734857141fcf3b2c"
+    },
+    {
+      "file": "scripts/project_concern_picker.mjs",
+      "sha256": "883bb4e72b22e890c478dbc11843fffc01ead1d3d7b1f259b4d3a4d021035308"
+    }
+  ],
+  "original_client_source_sha256": "2de4e39386f944785c0f8763df51701954576bcb0c54326e4b55f5f4d4abadbc",
+  "original_web_source_sha256": "7a5b6639228c320f2a55d3dd48e602ad9c942ceab6baef4bff102bb8f82ae16c",
+  "original_mobile_source_sha256": "9864e80ab1c1fa1659ec6d419a06c09b5841bf99f76e10798c3ffc07379f44b5",
+  "previous_verifier": {
+    "file": "app/.local/payment-fx-before-eof-supplement-verifier.py",
+    "sha256": "a9bb0e0824028f8c7b8cfe9810fd7b9793f364ba0919a61b0542327c974677ca"
+  },
+  "diagnosis": "The first final-source collector stopped before writing a report: the EOF archive covered global/client inputs but omitted these two additional browser-manifest inputs (KeyError scripts/build_openapi.py). Reconstruct from the independently byte-bound pre-navigation archive; require the entire original client and both browser digests to match. No application, artifact, original evidence or business execution is changed."
+}

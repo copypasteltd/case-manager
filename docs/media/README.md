@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量116 / Increment116：真实认证后的隔离合成双币核销页面。6 PNG、2静音MP4、2截图导览GIF。录屏展示已核对汇率和金额的实际表单，不录制密码／MFA；实际写入和释放由页面检查及流水截图覆盖。GIF为每张2秒的截图导览。
+
+| 端 | 实际汇率 | 窄屏 | 双币流水 | 录屏 | GIF导览 |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/payment-fx-web-quote.png) | [PNG](screenshots/payment-fx-web-narrow.png) | [PNG](screenshots/payment-fx-web-ledger.png) | [MP4](videos/payment-fx-web.mp4) | [GIF](gifs/payment-fx-web.gif) |
+| 共享移动 | [PNG](screenshots/payment-fx-mobile-quote.png) | [PNG](screenshots/payment-fx-mobile-narrow.png) | [PNG](screenshots/payment-fx-mobile-ledger.png) | [MP4](videos/payment-fx-mobile.mp4) | [GIF](gifs/payment-fx-mobile.gif) |
+
+[媒体来源](../quality/evidence/payment-fx/media.json) · [验证](../quality/116-cross-currency-settlement-verification.md)。旧媒体保留执行日期及原范围。
+
 增量115 / Increment 115：受控人工跨范围文件整理。真实认证后的隔离合成页面，6 PNG、2静音MP4、2截图导览GIF。视频录制固定计划的实际阅读与刷新；确认／MFA输入阶段不录制，实际执行由页面检查和执行后截图覆盖。GIF按每张2秒展示计划、窄屏与最终回执，属于截图导览。
 
 | 端 | 固定计划 | 窄屏 | 执行回执 | 录屏 | GIF导览 |

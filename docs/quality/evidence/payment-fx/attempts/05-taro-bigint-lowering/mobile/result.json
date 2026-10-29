@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T22:22:46.954Z",
+  "finished_at": "2026-10-29T22:24:02.817Z",
+  "checks": [
+    {
+      "name": "Existing owned fixture receives explicit synthetic finance grants and real independent USD cost/HKD cash facts",
+      "passed": true
+    }
+  ],
+  "source_count": 876,
+  "source_sha256": "1d071ad5c0631131271cc3cb2650fc85549b3e41530aab343dd62ebd6dd3df62",
+  "source_after_sha256": "1d071ad5c0631131271cc3cb2650fc85549b3e41530aab343dd62ebd6dd3df62",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "The input did not match the regular expression /费用原币金额乘实际汇率须按付款币精度舍入后等于本次付款本金。/. Input:\n\n'暂时无法读取，请稍后重试。'\n",
+  "failure_stack": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /费用原币金额乘实际汇率须按付款币精度舍入后等于本次付款本金。/. Input:\n\n'暂时无法读取，请稍后重试。'\n\n    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_payment_fx.mjs:96:12\n    at async payment_fxBrowser (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/payment_fx_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_payment_fx.mjs:12:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/finance/index?kind=payment&id=4fcac9a7-3177-4c6d-9385-bce1b20f9cf9&action=allocate",
+    "body_children": 3,
+    "active_mobile_pages": 1,
+    "payment_fx_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "94eeab16cea3523da24ddbf33c8bf3afe12cb91b82478cc4be773b40496eb821",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "94eeab16cea3523da24ddbf33c8bf3afe12cb91b82478cc4be773b40496eb821",
+  "build_source_unchanged": true
+}

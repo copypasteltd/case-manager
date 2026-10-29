@@ -36,7 +36,7 @@ func costSettlement(ctx context.Context, db platform.DBTX, a core.Actor, c *Cost
 	}
 	var visible bool
 	var net string
-	if err := db.QueryRow(ctx, `SELECT NOT EXISTS(SELECT 1 FROM payment_allocations x WHERE x.org_id=$1 AND x.cost_id=$2 AND NOT can_read_payment(x.org_id,$3,x.payment_id,$4,$5)),COALESCE(sum(effect*amount),0)::text FROM payment_allocations WHERE org_id=$1 AND cost_id=$2`, a.OrgID, c.ID, a.UserID, a.Channel, a.RunID != "").Scan(&visible, &net); err != nil {
+	if err := db.QueryRow(ctx, `SELECT NOT EXISTS(SELECT 1 FROM payment_allocations x WHERE x.org_id=$1 AND x.cost_id=$2 AND NOT can_read_payment(x.org_id,$3,x.payment_id,$4,$5)),COALESCE(sum(effect*cost_amount),0)::text FROM payment_allocations WHERE org_id=$1 AND cost_id=$2`, a.OrgID, c.ID, a.UserID, a.Channel, a.RunID != "").Scan(&visible, &net); err != nil {
 		return err
 	}
 	if !visible {
@@ -112,7 +112,7 @@ func (s *Service) ClaimSettlement(ctx context.Context, a core.Actor, id string) 
 	}
 	var visible bool
 	var net string
-	if err = tx.QueryRow(ctx, `SELECT NOT EXISTS(SELECT 1 FROM payment_allocations x WHERE x.org_id=$1 AND x.claim_id=$2 AND x.claim_revision_id=$3 AND NOT can_read_payment(x.org_id,$4,x.payment_id,$5,$6)),COALESCE(sum(effect*amount),0)::text FROM payment_allocations WHERE org_id=$1 AND claim_id=$2 AND claim_revision_id=$3`, a.OrgID, id, revision, a.UserID, a.Channel, a.RunID != "").Scan(&visible, &net); err != nil {
+	if err = tx.QueryRow(ctx, `SELECT NOT EXISTS(SELECT 1 FROM payment_allocations x WHERE x.org_id=$1 AND x.claim_id=$2 AND x.claim_revision_id=$3 AND NOT can_read_payment(x.org_id,$4,x.payment_id,$5,$6)),COALESCE(sum(effect*cost_amount),0)::text FROM payment_allocations WHERE org_id=$1 AND claim_id=$2 AND claim_revision_id=$3`, a.OrgID, id, revision, a.UserID, a.Channel, a.RunID != "").Scan(&visible, &net); err != nil {
 		return out, err
 	}
 	if visible {

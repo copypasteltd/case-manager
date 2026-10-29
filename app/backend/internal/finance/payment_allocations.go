@@ -12,12 +12,28 @@ import (
 )
 
 func insertPaymentAllocation(ctx context.Context, tx pgx.Tx, a core.Actor, p Payment, v PaymentAllocation) error {
-	_, err := tx.Exec(ctx, `INSERT INTO payment_allocations(id,org_id,payment_id,cost_id,cost_revision_id,kind,effect,amount,root_id,source_allocation_id,claim_id,claim_revision_id,claim_line_id,actor_id,reason) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`, v.ID, a.OrgID, p.ID, v.CostID, v.CostRevisionID, v.Kind, v.Effect, v.Amount, v.RootID, v.SourceAllocationID, v.ClaimID, v.ClaimRevisionID, v.ClaimLineID, a.UserID, v.Reason)
+	if v.CostAmount == "" {
+		v.CostAmount = v.Amount
+	}
+	if v.CostShares == nil {
+		v.CostShares = v.Shares
+	}
+	if len(v.Shares) != len(v.CostShares) {
+		return core.Invalid("shares", "双币项目份额未对齐")
+	}
+	var rate, source, day *string
+	if v.FX != nil {
+		rate, source, day = &v.FX.Rate, &v.FX.Source, &v.FX.QuotedOn
+	}
+	_, err := tx.Exec(ctx, `INSERT INTO payment_allocations(id,org_id,payment_id,cost_id,cost_revision_id,kind,effect,amount,root_id,source_allocation_id,claim_id,claim_revision_id,claim_line_id,actor_id,reason,cost_amount,fx_rate,fx_source,fx_quoted_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)`, v.ID, a.OrgID, p.ID, v.CostID, v.CostRevisionID, v.Kind, v.Effect, v.Amount, v.RootID, v.SourceAllocationID, v.ClaimID, v.ClaimRevisionID, v.ClaimLineID, a.UserID, v.Reason, v.CostAmount, rate, source, day)
 	if err != nil {
 		return err
 	}
 	for i, share := range v.Shares {
-		if _, err = tx.Exec(ctx, "INSERT INTO payment_allocation_shares(org_id,allocation_id,position,project_id,amount) VALUES($1,$2,$3,$4,$5)", a.OrgID, v.ID, i+1, share.ProjectID, share.Amount); err != nil {
+		if value(share.ProjectID) != value(v.CostShares[i].ProjectID) {
+			return core.Invalid("shares", "双币项目份额的范围未对齐")
+		}
+		if _, err = tx.Exec(ctx, "INSERT INTO payment_allocation_shares(org_id,allocation_id,position,project_id,amount,cost_amount) VALUES($1,$2,$3,$4,$5,$6)", a.OrgID, v.ID, i+1, share.ProjectID, share.Amount, v.CostShares[i].Amount); err != nil {
 			return err
 		}
 	}
@@ -54,8 +70,8 @@ func (s *Service) AllocatePayment(ctx context.Context, cmd core.Command, id stri
 		if c.Version != in.CostVersion || c.CurrentRevisionID != strings.ToLower(in.CostRevisionID) || c.ContentHash != in.CostContentHash {
 			return core.Result{}, core.Conflict()
 		}
-		if c.State != "confirmed" || c.EntryKind != "expense" || value(c.Currency) != value(p.Currency) {
-			return core.Result{}, core.Fail(409, "COST_NOT_SETTLEABLE", "须选择同币种、已确认且未冲销的原费用")
+		if c.State != "confirmed" || c.EntryKind != "expense" || (value(c.Currency) != value(p.Currency) && in.FX == nil) {
+			return core.Result{}, core.Fail(409, "COST_NOT_SETTLEABLE", "须选择已确认且未冲销的原费用；跨币种须明确核对实际汇率及费用原币金额")
 		}
 		var adequate bool
 		if err = tx.QueryRow(ctx, "SELECT classification_rank($1)>=classification_rank($2)", p.Classification, c.Classification).Scan(&adequate); err != nil {
@@ -75,19 +91,35 @@ func (s *Service) AllocatePayment(ctx context.Context, cmd core.Command, id stri
 		if amount.Cmp(balance) > 0 {
 			return core.Result{}, core.Fail(409, "PAYMENT_BALANCE_EXCEEDED", "分配金额超过付款当前未分配余额")
 		}
+		costAmount, quote, err := reviewedSettlementQuote(ctx, tx, p, c, in)
+		if err != nil {
+			return core.Result{}, err
+		}
 		if p.EmployeeID == nil {
 			if in.ClaimID != nil || p.Counterparty == nil || c.Counterparty == nil || p.Counterparty.PartyID != c.Counterparty.PartyID {
 				return core.Result{}, core.Invalid("counterparty", "直接付款须匹配费用供应方，员工报销须使用员工收款付款")
 			}
-		} else if err = verifyClaimSettlement(ctx, tx, cmd.Actor, p, c, in, amount); err != nil {
+		} else if err = verifyClaimSettlement(ctx, tx, cmd.Actor, p, c, in, costAmount); err != nil {
 			return core.Result{}, err
 		}
-		shares, err := settlementShares(ctx, tx, cmd.Actor.OrgID, value(p.Currency), amount.String(), c.ID, false)
+		costShares, err := settlementShares(ctx, tx, cmd.Actor.OrgID, value(c.Currency), costAmount.String(), c.ID, false)
 		if err != nil {
 			return core.Result{}, err
 		}
+		shares := costShares
+		if quote != nil {
+			var exponent int
+			if err = tx.QueryRow(ctx, "SELECT exponent FROM currency_definitions WHERE code=$1", p.Currency).Scan(&exponent); err != nil {
+				return core.Result{}, err
+			}
+			shares, err = splitSettlementShares(amount.String(), costShares, exponent, false)
+			if err != nil {
+				return core.Result{}, err
+			}
+			shares, costShares = pairedSettlementShares(costShares, shares, costShares)
+		}
 		allocation := core.NewID()
-		v := PaymentAllocation{ID: allocation, CostID: c.ID, CostRevisionID: c.CurrentRevisionID, Kind: "allocation", Effect: 1, Amount: amount.String(), RootID: allocation, ClaimID: in.ClaimID, ClaimRevisionID: in.ClaimRevisionID, ClaimLineID: in.ClaimLineID, Shares: shares, Reason: in.Reason}
+		v := PaymentAllocation{ID: allocation, CostID: c.ID, CostRevisionID: c.CurrentRevisionID, Kind: "allocation", Effect: 1, Amount: amount.String(), CostAmount: costAmount.String(), FX: quote, RootID: allocation, ClaimID: in.ClaimID, ClaimRevisionID: in.ClaimRevisionID, ClaimLineID: in.ClaimLineID, Shares: shares, CostShares: costShares, Reason: in.Reason}
 		if err = insertPaymentAllocation(ctx, tx, cmd.Actor, p, v); err != nil {
 			return core.Result{}, err
 		}
@@ -136,11 +168,11 @@ func verifyClaimSettlement(ctx context.Context, tx pgx.Tx, a core.Actor, p Payme
 		if line.ID != *in.ClaimLineID {
 			continue
 		}
-		if line.Funding != "employee_advance" || line.Amount == nil || line.Supplier == nil || c.Counterparty == nil || line.Supplier.PartyID != c.Counterparty.PartyID || value(content.Currency) != value(p.Currency) {
-			return core.Fail(409, "CLAIM_LINE_NOT_SETTLEABLE", "须选择相同币种与供应方的员工垫付明细")
+		if line.Funding != "employee_advance" || line.Amount == nil || line.Supplier == nil || c.Counterparty == nil || line.Supplier.PartyID != c.Counterparty.PartyID || value(content.Currency) != value(c.Currency) {
+			return core.Fail(409, "CLAIM_LINE_NOT_SETTLEABLE", "须选择与费用相同币种及供应方的员工垫付明细")
 		}
 		var paid string
-		if err = tx.QueryRow(ctx, "SELECT COALESCE(sum(effect*amount),0)::text FROM payment_allocations WHERE org_id=$1 AND claim_id=$2 AND claim_revision_id=$3 AND claim_line_id=$4", a.OrgID, in.ClaimID, in.ClaimRevisionID, in.ClaimLineID).Scan(&paid); err != nil {
+		if err = tx.QueryRow(ctx, "SELECT COALESCE(sum(effect*cost_amount),0)::text FROM payment_allocations WHERE org_id=$1 AND claim_id=$2 AND claim_revision_id=$3 AND claim_line_id=$4", a.OrgID, in.ClaimID, in.ClaimRevisionID, in.ClaimLineID).Scan(&paid); err != nil {
 			return err
 		}
 		used, _ := core.ParseDecimal(paid)
@@ -153,7 +185,14 @@ func verifyClaimSettlement(ctx context.Context, tx pgx.Tx, a core.Actor, p Payme
 	return core.Invalid("claim_line_id", "报销修订不包含所选明细")
 }
 
-func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor, p Payment, source PaymentAllocation, amount, kind, reason string) (string, error) {
+func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor, p Payment, source PaymentAllocation, amount, kind, reason string, expectedCost *string) (string, error) {
+	// The caller has now acquired cost/payment locks; an earlier source read
+	// can be stale after a separate refund changed the root balance.
+	var err error
+	source, err = allocationMetadata(ctx, tx, a.OrgID, source.ID)
+	if err != nil {
+		return "", err
+	}
 	if source.Kind != "allocation" || (kind == "release" && source.PaymentID != p.ID) || (kind == "refund" && source.PaymentID != value(p.RefundOfID)) {
 		return "", core.Fail(409, "ALLOCATION_SOURCE_INVALID", "须引用相应原付款的正向费用分配")
 	}
@@ -161,17 +200,43 @@ func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor
 	if err != nil {
 		return "", err
 	}
+	costAmount, err := requireInverseCostAmount(source, d.String(), expectedCost)
+	if err != nil {
+		return "", err
+	}
 	shares, err := settlementShares(ctx, tx, a.OrgID, value(p.Currency), d.String(), source.RootID, true)
 	if err != nil {
 		return "", err
+	}
+	costShares := shares
+	if source.FX != nil {
+		remaining, e := rootCostShares(ctx, tx, a.OrgID, source.RootID)
+		if e != nil {
+			return "", e
+		}
+		costShares = []Allocation{}
+		cost, _ := core.ParseDecimal(costAmount)
+		if cost.Positive() {
+			costShares, e = splitPaymentShares(costAmount, remaining, source.CostExponent)
+			if e != nil {
+				return "", e
+			}
+		}
+		scopes, e := remainingShares(ctx, tx, a.OrgID, source.RootID, true)
+		if e != nil {
+			return "", e
+		}
+		shares, costShares = pairedSettlementShares(scopes, shares, costShares)
 	}
 	v := source
 	v.ID = core.NewID()
 	v.Kind = kind
 	v.Effect = -1
 	v.Amount = d.String()
+	v.CostAmount = costAmount
 	v.SourceAllocationID = &source.ID
 	v.Shares = shares
+	v.CostShares = costShares
 	v.Reason = reason
 	return v.ID, insertPaymentAllocation(ctx, tx, a, p, v)
 }
@@ -188,7 +253,7 @@ func (s *Service) ReleasePaymentAllocation(ctx context.Context, cmd core.Command
 		if p.State != "recorded" || p.RecordKind != "payment" || value(p.Direction) != "outgoing" {
 			return core.Result{}, core.Fail(409, "PAYMENT_NOT_ALLOCATABLE", "仅未冲销原付款可以释放费用分配")
 		}
-		key, err := s.inverseAllocation(ctx, tx, cmd.Actor, p, source, in.Amount, "release", in.Reason)
+		key, err := s.inverseAllocation(ctx, tx, cmd.Actor, p, source, in.Amount, "release", in.Reason, in.CostAmount)
 		if err != nil {
 			return core.Result{}, err
 		}
@@ -219,7 +284,7 @@ func (s *Service) AllocateRefund(ctx context.Context, cmd core.Command, id strin
 		if d.Cmp(balance) > 0 {
 			return core.Result{}, core.Fail(409, "REFUND_BALANCE_EXCEEDED", "超过该退款当前尚未分配金额")
 		}
-		key, err := s.inverseAllocation(ctx, tx, cmd.Actor, p, source, d.String(), "refund", in.Reason)
+		key, err := s.inverseAllocation(ctx, tx, cmd.Actor, p, source, d.String(), "refund", in.Reason, in.CostAmount)
 		if err != nil {
 			return core.Result{}, err
 		}
@@ -310,7 +375,7 @@ func (s *Service) ReversePayment(ctx context.Context, cmd core.Command, id strin
 		// payment may have consumed that headroom; never silently overpay it.
 		for _, v := range legs {
 			var valid bool
-			if err = tx.QueryRow(ctx, `SELECT COALESCE(sum(a.effect*a.amount),0) BETWEEN 0 AND r.amount FROM actual_cost_entries c JOIN cost_revisions r ON r.org_id=c.org_id AND r.id=c.current_revision_id LEFT JOIN payment_allocations a ON a.org_id=c.org_id AND a.cost_id=c.id WHERE c.org_id=$1 AND c.id=$2 GROUP BY r.amount`, cmd.Actor.OrgID, v.CostID).Scan(&valid); err != nil {
+			if err = tx.QueryRow(ctx, `SELECT COALESCE(sum(a.effect*a.cost_amount),0) BETWEEN 0 AND r.amount FROM actual_cost_entries c JOIN cost_revisions r ON r.org_id=c.org_id AND r.id=c.current_revision_id LEFT JOIN payment_allocations a ON a.org_id=c.org_id AND a.cost_id=c.id WHERE c.org_id=$1 AND c.id=$2 GROUP BY r.amount`, cmd.Actor.OrgID, v.CostID).Scan(&valid); err != nil {
 				return core.Result{}, err
 			}
 			if !valid {

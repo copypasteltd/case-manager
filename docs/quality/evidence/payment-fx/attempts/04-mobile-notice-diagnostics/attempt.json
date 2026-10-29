@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "source_sha256": "2132fb8656f8f04e0259ba483cabaf189148d98ad3cae25094effbd372852b85",
+  "source_binding_verified": true,
+  "private_source_archive": "app/.local/payment_fx-attempts/04-mobile-notice-diagnostics.zip",
+  "archive_sha256": "036622719b3227d1ababd4a5cd635f8310e3f82fa8fe3c37b44ab376ccc4625a",
+  "private_logs": [
+    {
+      "path": "app/.local/payment_fx-attempts/04-mobile-notice-diagnostics-native.log",
+      "sha256": "1bf871509fbe3fcc8ee488c8a6df2c278b3a4048a390d690faa776949b479e3a"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/04-mobile-notice-diagnostics-browser.log",
+      "sha256": "a3755e48da21194c3e11fb70dde99f3f865bd9c86b568be2580f329918f9a93a"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/04-mobile-notice-diagnostics-build.log",
+      "sha256": "fb625e307ebbc06fd699bc4ee0c59608a89b31939b2f59b5063be99de0a58ca6"
+    }
+  ],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('费用原币金额乘实际汇率须按付款币精度舍入后等于本次付款本金。') to be visible\u001b[22m\n"
+}

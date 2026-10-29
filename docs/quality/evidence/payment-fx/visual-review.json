@@ -1,0 +1,104 @@
+{
+  "reviewed": true,
+  "prepared_at": "2026-10-29T23:21:02.784451+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/payment-fx-web-quote.png",
+      "sha256": "da187e406d50ca40790c07c7e6d2af68b079ab0b3e91b9f52746218e233de4c2"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-web-narrow.png",
+      "sha256": "7fed0e0df33ef93321a09af3eb676ea159a596fb733b2129ed065490b4d37f91"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-web-ledger.png",
+      "sha256": "95366592908e98440cfd5c6c3f1cb16122f1b3ecdae2bb77bfca4025b8872c8e"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-mobile-quote.png",
+      "sha256": "c66bfb5b86b8e153d94e3b8035891f7da14214dc26a9c67f9cd3fa641fe3a54b"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-mobile-narrow.png",
+      "sha256": "e27956da6c9a72b3a65be00eae4aea04a62b3997e7d29d5e5e58f78d020a302a"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-mobile-ledger.png",
+      "sha256": "885871145d4172f069be8111cc768d9f886a587005ef40c4f45ed96572d7bf28"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/payment-fx-web.gif",
+      "sha256": "ec26f4bf7173e4e6bb48c3eff07e3a9a5759bce226a170e49716f5f2727045af"
+    },
+    {
+      "file": "docs/media/gifs/payment-fx-mobile.gif",
+      "sha256": "c376c67092f42ca3dbc74d87d06731c90408b8f83977033e73d0a6ab189cffde"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/payment-fx-visual-review",
+      "reviewed_states": [
+        "reviewed manual quotation",
+        "immutable dual-unit allocation and release ledger"
+      ]
+    },
+    "mobile": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/payment-fx-visual-review",
+      "reviewed_states": [
+        "reviewed manual quotation",
+        "immutable dual-unit allocation and release ledger"
+      ]
+    }
+  },
+  "recording_frames_reviewed": {
+    "web": {
+      "file": "docs/media/videos/payment-fx-web.mp4",
+      "sha256": "e5814c82ff8adaead0265f46cc54f11c6ca843449d495cc08685f4713eaaca14",
+      "sampled_seconds": [
+        0,
+        3.8
+      ],
+      "credential_fields_visible": false,
+      "reviewed_states": [
+        "authenticated reviewed manual quotation",
+        "same reviewed form; no approval or MFA entry recorded"
+      ]
+    },
+    "mobile": {
+      "file": "docs/media/videos/payment-fx-mobile.mp4",
+      "sha256": "41b3a143e51834aa4f3801c7ef9f9686df66d05392f3fc6318d8ca97f02971eb",
+      "sampled_seconds": [
+        0,
+        4.4
+      ],
+      "credential_fields_visible": false,
+      "reviewed_states": [
+        "authenticated reviewed manual quotation",
+        "same reviewed form; no approval or MFA entry recorded"
+      ]
+    }
+  },
+  "findings": [
+    "All six actual screenshots were reviewed: USD100, HKD780, rate7.8, evidence source, acknowledgement and dual-unit allocation/release ledgers are legible at their original sizes.",
+    "The 360px mobile and 760px Web captures show wrapped fields with no horizontal overflow. The narrow Web capture shows the reviewed form area; it does not include the whole modal in one frame.",
+    "Both GIFs were decoded at their first and final frames. They are three-screenshot tours of the quote, narrow layout and final dual-unit ledger, not continuous approval recordings.",
+    "Both MP4s were decoded at first/final timestamps. The sampled views are effectively static because the requested fields fit the viewport. They show the actual reviewed form; writes, releases and MFA entry are not recorded. Actual UI/API checks and ledger screenshots establish the committed operations.",
+    "Only isolated synthetic data appears. No password, MFA secret or one-time-code input is visible in the inspected published captures."
+  ],
+  "scope": "Actual visual inspection of six synthetic screenshots and decoded MP4/GIF samples. No device, cloud, model, TG or production acceptance claim.",
+  "reviewed_at": "2026-10-29T23:21:26.720556+00:00",
+  "review_preparation_script_sha256": "7397372fb8843569a761c5f87b4e2bc71260e4735e21cf8a32b191f347856d26"
+}

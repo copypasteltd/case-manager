@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T22:18:03.885Z",
+  "finished_at": "2026-10-29T22:19:27.916Z",
+  "checks": [
+    {
+      "name": "Existing owned fixture receives explicit synthetic finance grants and real independent USD cost/HKD cash facts",
+      "passed": true
+    }
+  ],
+  "source_count": 876,
+  "source_sha256": "2132fb8656f8f04e0259ba483cabaf189148d98ad3cae25094effbd372852b85",
+  "source_after_sha256": "2132fb8656f8f04e0259ba483cabaf189148d98ad3cae25094effbd372852b85",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('费用原币金额乘实际汇率须按付款币精度舍入后等于本次付款本金。') to be visible\u001b[22m\n",
+  "failure_stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('费用原币金额乘实际汇率须按付款币精度舍入后等于本次付款本金。') to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_payment_fx.mjs:93:78\n    at async payment_fxBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\payment_fx_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_payment_fx.mjs:12:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/finance/index?kind=payment&id=6456f62f-6fa6-4665-9b15-5993e35b22a7&action=allocate",
+    "body_children": 3,
+    "active_mobile_pages": 1,
+    "payment_fx_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "476b8f17b88eef8537018ba9b81ea6ea81bf81501196ac90e2a155507bd5c333",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "476b8f17b88eef8537018ba9b81ea6ea81bf81501196ac90e2a155507bd5c333",
+  "build_source_unchanged": true
+}

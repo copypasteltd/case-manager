@@ -1,0 +1,57 @@
+{
+  "preserved_at": "2026-10-29T22:15:38.438161+00:00",
+  "passed_original_checks": true,
+  "counts_as_final_current_source": false,
+  "reason": "The real mobile rejection hid its precise local validation message. Preserve passed prior client, Android and Web executions before fixing the user-facing local validation boundary. Backend source and full1477 results remain unchanged.",
+  "interaction_source_sha256": "adb48f8aeaefe6d578a1c63888e037330d2618c24a82391500adbd2f22414c7f",
+  "web_source_sha256": "b1060651e692270d5878a468c574e5381aa24a51bada087a18c03d957f7c7877",
+  "private_source_archive": "app/.local/payment-fx-before-mobile-validation.zip",
+  "private_source_archive_sha256": "6df53ee8729afd573205fb1dd5637c6566d5e98a2182693903debaea0cf27bd8",
+  "private_files": [
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-douyin-build.log",
+      "sha256": "99524292022b0830a2dcbbbb55c508a47d75fbeb1d7bf6b0326c19866891efa0"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-mobile-tests.log",
+      "sha256": "12b14589fcd8663fddf9e2b813e9f4e7dd7eb7cec6ab72a312816a2ffd8fd171"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-runtime-build.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-runtime-tests.log",
+      "sha256": "c414af2756ba4c01b6ae9f444a22463e0c79ec4e90ca11a4b5bc320a18548b56"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-web-build.log",
+      "sha256": "969219f5392faa27eb77f5b9b13ade11ee257fc2b37e552dfce33a1c9f445d20"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-web-tests.log",
+      "sha256": "74d02f3ce63c4fbb1132ea4b39a1c5cbe62a318bf1a84b0770230035549bba53"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment_fx-client-wechat-build.log",
+      "sha256": "e8ddf284cb4f269b92ba175dc84a02ad53222fac7d13004939dd4c604c41143f"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment-fx-web-quote.png",
+      "sha256": "da187e406d50ca40790c07c7e6d2af68b079ab0b3e91b9f52746218e233de4c2"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment-fx-web-narrow.png",
+      "sha256": "7fed0e0df33ef93321a09af3eb676ea159a596fb733b2129ed065490b4d37f91"
+    },
+    {
+      "file": "app/.local/before-mobile-validation-payment-fx-web-ledger.png",
+      "sha256": "95366592908e98440cfd5c6c3f1cb16122f1b3ecdae2bb77bfca4025b8872c8e"
+    }
+  ],
+  "private_capture_directory": "app/.local/repository-showcase/payment-fx-web-before-mobile-validation"
+}

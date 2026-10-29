@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "source_sha256": "9864e80ab1c1fa1659ec6d419a06c09b5841bf99f76e10798c3ffc07379f44b5",
+  "source_binding_verified": true,
+  "private_source_archive": "app/.local/payment_fx-attempts/07-mobile-navigation-race.zip",
+  "archive_sha256": "27bfe6ffb6626b07a1a8ed2b43e348efc41bb32cde87d786d721c0aaed6bf6d0",
+  "private_logs": [
+    {
+      "path": "app/.local/payment_fx-attempts/07-mobile-navigation-race-native.log",
+      "sha256": "77691d2cf374722194391b11b9f6d069b9807e0398dfcaf252811867ca934027"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/07-mobile-navigation-race-browser.log",
+      "sha256": "5d39f1e47b966910f31df16a3a6d0a531f2cad0681882a76402025adfdb25f62"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/07-mobile-navigation-race-build.log",
+      "sha256": "4f8679f3f83baad27e924388d06c81500ccbe72e9aee7911cd18677de7ed5f02"
+    }
+  ],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/费用原币/).first() to be visible\u001b[22m\n"
+}

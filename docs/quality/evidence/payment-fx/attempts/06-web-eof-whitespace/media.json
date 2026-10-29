@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T22:32:12.448071+00:00",
+  "encoder_script_sha256": "02586c65544513928f11cc16e9d92669663cb5f083d202b086eeaf057beecd94",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "7a5b6639228c320f2a55d3dd48e602ad9c942ceab6baef4bff102bb8f82ae16c",
+      "build_source_sha256": "732162ca4a2ed32085c1390f35135bdc4bec7fd82ae9218271972c8a57eb83f9",
+      "capture_manifest": "docs/quality/evidence/payment-fx/web-capture-manifest.json",
+      "capture_manifest_sha256": "81a5586505b914df31f372dac0cc68a7630ad9b7aff8cb46d1d812ea82d85453",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4099,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/payment-fx-web-quote.png",
+          "sha256": "da187e406d50ca40790c07c7e6d2af68b079ab0b3e91b9f52746218e233de4c2"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fx-web-narrow.png",
+          "sha256": "7fed0e0df33ef93321a09af3eb676ea159a596fb733b2129ed065490b4d37f91"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fx-web-ledger.png",
+          "sha256": "95366592908e98440cfd5c6c3f1cb16122f1b3ecdae2bb77bfca4025b8872c8e"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 760,
+            "height": 1000,
+            "nb_frames": "42",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/payment-fx-web.mp4",
+          "sha256": "e5814c82ff8adaead0265f46cc54f11c6ca843449d495cc08685f4713eaaca14",
+          "bytes": 52878
+        },
+        {
+          "file": "docs/media/gifs/payment-fx-web.gif",
+          "sha256": "ec26f4bf7173e4e6bb48c3eff07e3a9a5759bce226a170e49716f5f2727045af",
+          "bytes": 290446
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "9864e80ab1c1fa1659ec6d419a06c09b5841bf99f76e10798c3ffc07379f44b5",
+      "build_source_sha256": "732162ca4a2ed32085c1390f35135bdc4bec7fd82ae9218271972c8a57eb83f9",
+      "capture_manifest": "docs/quality/evidence/payment-fx/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "d4a4f572a6e71b31835a952b55596e546c5423da7166e35a29e5b260eda9d347",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4091,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/payment-fx-mobile-quote.png",
+          "sha256": "c66bfb5b86b8e153d94e3b8035891f7da14214dc26a9c67f9cd3fa641fe3a54b"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fx-mobile-narrow.png",
+          "sha256": "2470294113a14e79c22369d09946ee80b6b8a8f92f0b5f88a8dc59a5479ad1b6"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fx-mobile-ledger.png",
+          "sha256": "8bc85da2048a74cefd8c3730766a6d078a2b7ade905181e3204bfa01d1fde3fc"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 360,
+            "height": 1000,
+            "nb_frames": "42",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/payment-fx-mobile.mp4",
+          "sha256": "d9afc8789de54579d3e6ea16ab76091c22b480075e2b7196c0072fe2a291a717",
+          "bytes": 46779
+        },
+        {
+          "file": "docs/media/gifs/payment-fx-mobile.gif",
+          "sha256": "3081cb67cb7f7f06c0a1e7d464ad2f71b205fd5facbe121bd0199924d9c42fa7",
+          "bytes": 129812
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (fixed plan, narrow viewport, final receipt), two seconds each. No real model or device claim."
+}

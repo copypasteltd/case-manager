@@ -1,0 +1,527 @@
+{
+  "passed_original_checks": true,
+  "counts_as_final_current_source": false,
+  "archived_at": "2026-10-29T23:04:19.698719+00:00",
+  "reason": "A final publication gate found one extra Web EOF blank line. Remove it, then rerun clients and both actual UI flows; preserve original passed evidence and the failed publication record.",
+  "source_archive": "app/.local/payment-fx-before-eof/sources.zip",
+  "source_archive_sha256": "36eddda4980ebb450e1aafa87b1b462200e0357e40d1baedc2a86b7c64ed1965",
+  "old_interaction_source_sha256": "732162ca4a2ed32085c1390f35135bdc4bec7fd82ae9218271972c8a57eb83f9",
+  "new_interaction_source_sha256": "9616e2af6bf2960f10e5ae47a98260c240f57b827c95d0b39e6f6076eaeccc65",
+  "corrected_file": "web/src/Payments.tsx",
+  "old_file_sha256": "b30b8c8fe913fd81c2721a345219e1d95dc38c27fb64540f4d4cbedbfd68f85d",
+  "new_file_sha256": "14e509319b3892e02eb2da0974b574636bf05bb8a97e8608d375d388998ba338",
+  "removed_bytes": 2,
+  "code_tokens_changed": false,
+  "android_inputs_unchanged": true,
+  "backend_inputs_unchanged": true,
+  "public_records": [
+    {
+      "original_file": "docs/quality/evidence/payment-fx/client-checks.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/client-checks.json",
+      "sha256": "b5f0a9f43f26412e2ae27d95e2e471f2d212ecde686a7aa0f7386e92a9332671"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/web-build.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/web-build.json",
+      "sha256": "1f943fa5b2d05a885e6593d1580c2d35401947e2c125a05d3d4bec24802f7e24"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/mobile-build.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile-build.json",
+      "sha256": "052e56850843426c41c95edafdc7864ebc2cd5f17b71df9a144d10d9a643852c"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/runtime-build.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/runtime-build.json",
+      "sha256": "4ac84fc6028c9021490f4a41d0038d551e4b09b116e6fd50c6cddb4c03285de5"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/mobile-tests.log",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile-tests.log",
+      "sha256": "24cb908243506f155c3ac305375a1aab1f76280e4542f28dca06c1a177783515"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/media.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/media.json",
+      "sha256": "d77e435498029437423aa74297a3d014317482e4876b2aec50234264e17208ee"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/web-capture-manifest.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/web-capture-manifest.json",
+      "sha256": "81a5586505b914df31f372dac0cc68a7630ad9b7aff8cb46d1d812ea82d85453"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/mobile-capture-manifest.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile-capture-manifest.json",
+      "sha256": "d4a4f572a6e71b31835a952b55596e546c5423da7166e35a29e5b260eda9d347"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/visual-review.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/visual-review.json",
+      "sha256": "2f9faacda041dc962ee9b38e48b466e0462effc41b064c370025565d1d5e52e2"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/final-source-check.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/final-source-check.json",
+      "sha256": "6e100f0b9c981dac54081e1650fce17a9af02d465033fffb8c39a466e3cc910c"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/scope-check.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/scope-check.json",
+      "sha256": "d412b744b70d888c9c3df55994b7c29dfd3acb8bd6d075e9d1b6ac5c53b88319"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/acceptance-applicability-check.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/acceptance-applicability-check.json",
+      "sha256": "723f60950dbb6734d47b810d99a2ea5ac6a20011b57794ec6171176771e4cae1"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/repository-check.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/repository-check.json",
+      "sha256": "d4575d332b3149b39d9f631098fbf611f5fd8e5aceab41e11f2b196fe8c63dcb"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx/native-cluster-closed.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/native-cluster-closed.json",
+      "sha256": "25034e386bffc3184c270dca44ac6778b1090a7b1a0a8166a1f5ea4738a2fcc5"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-web/inbox.png",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/web/inbox.png",
+      "sha256": "b0946d3a2adaf5b5eb382ce64959e06a014ffaef65f587f36e3a2097e6338bf3"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-web/media.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/web/media.json",
+      "sha256": "2d1bd2d1e4a93494c055df1166a45fcb13caf6212937d6824c142b8e9cf7cb27"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-web/result.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/web/result.json",
+      "sha256": "4cdad2b932b53b1fb28b9b7f9d237cc64d2857412e198d3149bd64b5ccd3b08b"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-web/source-manifest.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/web/source-manifest.json",
+      "sha256": "d4d95a47de67365133b49962ff0077ac64223699a566c083cbcb4a66ab25001f"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-mobile/inbox.png",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile/inbox.png",
+      "sha256": "8bc85da2048a74cefd8c3730766a6d078a2b7ade905181e3204bfa01d1fde3fc"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-mobile/media.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile/media.json",
+      "sha256": "5ccf5fa7ac5f159a7e2d8a86e1f54c7203e37078fea3cf7788f348e0d9f5a7a7"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-mobile/result.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile/result.json",
+      "sha256": "64fd28221e7632ccacd0a5aa7ca1d3443323597004428741aea0e93dbef61aa7"
+    },
+    {
+      "original_file": "docs/quality/evidence/payment-fx-mobile/source-manifest.json",
+      "file": "docs/quality/evidence/payment-fx/attempts/06-web-eof-whitespace/mobile/source-manifest.json",
+      "sha256": "527c509a864a65b1e45108796c1b74192d801652e13e31f1688a5ad7e4c58241"
+    }
+  ],
+  "private_records": [
+    {
+      "original_file": "app/.local/payment-fx-web-browser.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-web-browser.log",
+      "sha256": "1afbe55882e2bfcfc78dc92155877e7b375472db982b2500db460b3a873da382"
+    },
+    {
+      "original_file": "app/.local/payment-fx-web-build.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-web-build.log",
+      "sha256": "6886369bf80470fcc963b39453cd17efcd7d1dc0ef4c0ba1346768bec1ddcd55"
+    },
+    {
+      "original_file": "app/.local/payment-fx-web-native.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-web-native.log",
+      "sha256": "48911ec788b26ff4666cd204bc07f0c5bccf740aa04de5c4c916c3307827e1b1"
+    },
+    {
+      "original_file": "app/.local/payment-fx-web-run.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-web-run.log",
+      "sha256": "74c14df1d1d0f14c967b13005539becb6f64b0feaf80e80bf97bec7b0f95d6ff"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000000.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000000.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000001.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000001.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000002.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000002.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000003.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000003.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000004.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000004.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000005.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000005.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000006.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000006.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000007.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000007.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000008.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000008.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000009.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000009.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000010.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000010.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000011.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000011.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000012.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000012.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000013.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000013.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000014.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000014.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000015.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000015.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000016.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000016.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000017.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000017.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000018.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000018.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frame-000019.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frame-000019.jpg",
+      "sha256": "417b4b1caf9405e003ba3c353a88019370e45442b39207849d1425bfd6881ee3"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/frames.json",
+      "file": "app/.local/payment-fx-before-eof/capture-web/frames.json",
+      "sha256": "81a5586505b914df31f372dac0cc68a7630ad9b7aff8cb46d1d812ea82d85453"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/gif-tour-0.png",
+      "file": "app/.local/payment-fx-before-eof/capture-web/gif-tour-0.png",
+      "sha256": "af8002d4cb63b813a4f8105ee3b9c0d6dc02f58d81d522e7f314ac0fc0d5a10e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/gif-tour-1.png",
+      "file": "app/.local/payment-fx-before-eof/capture-web/gif-tour-1.png",
+      "sha256": "2045ff205ed6328630c65ce07453ff74600ad60f8543291c561e67081288a380"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/gif-tour-2.png",
+      "file": "app/.local/payment-fx-before-eof/capture-web/gif-tour-2.png",
+      "sha256": "e6e8ed24645f0a9c485c533176c645ac5418f56d9aa04db4e494569f85c440e6"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/gif-tour.ffconcat",
+      "file": "app/.local/payment-fx-before-eof/capture-web/gif-tour.ffconcat",
+      "sha256": "e6e3c0b27bed91a38c2f83eccc26a3c3e64bc0ddaeda4554723a67a286ae84e6"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-web/timed.ffconcat",
+      "file": "app/.local/payment-fx-before-eof/capture-web/timed.ffconcat",
+      "sha256": "dbaaec3f898e458aecb057221efd5b10033cae20ee1911301a8ceb1a8f84f187"
+    },
+    {
+      "original_file": "docs/media/screenshots/payment-fx-web-quote.png",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-web-quote.png",
+      "sha256": "da187e406d50ca40790c07c7e6d2af68b079ab0b3e91b9f52746218e233de4c2"
+    },
+    {
+      "original_file": "docs/media/screenshots/payment-fx-web-narrow.png",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-web-narrow.png",
+      "sha256": "7fed0e0df33ef93321a09af3eb676ea159a596fb733b2129ed065490b4d37f91"
+    },
+    {
+      "original_file": "docs/media/screenshots/payment-fx-web-ledger.png",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-web-ledger.png",
+      "sha256": "95366592908e98440cfd5c6c3f1cb16122f1b3ecdae2bb77bfca4025b8872c8e"
+    },
+    {
+      "original_file": "docs/media/videos/payment-fx-web.mp4",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-web.mp4",
+      "sha256": "e5814c82ff8adaead0265f46cc54f11c6ca843449d495cc08685f4713eaaca14"
+    },
+    {
+      "original_file": "docs/media/gifs/payment-fx-web.gif",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-web.gif",
+      "sha256": "ec26f4bf7173e4e6bb48c3eff07e3a9a5759bce226a170e49716f5f2727045af"
+    },
+    {
+      "original_file": "app/.local/payment-fx-mobile-browser.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-mobile-browser.log",
+      "sha256": "1afbe55882e2bfcfc78dc92155877e7b375472db982b2500db460b3a873da382"
+    },
+    {
+      "original_file": "app/.local/payment-fx-mobile-build.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-mobile-build.log",
+      "sha256": "26253da0de71fb043f79b3497ab84b279fc37541b240acccd3849b23e37c4a83"
+    },
+    {
+      "original_file": "app/.local/payment-fx-mobile-native.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-mobile-native.log",
+      "sha256": "ce12660ee1bc7dea8d2015c47ef6f3515d27c0db3893bd07a9b8502c98c3b3d5"
+    },
+    {
+      "original_file": "app/.local/payment-fx-mobile-run.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment-fx-mobile-run.log",
+      "sha256": "74c14df1d1d0f14c967b13005539becb6f64b0feaf80e80bf97bec7b0f95d6ff"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000000.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000000.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000001.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000001.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000002.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000002.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000003.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000003.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000004.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000004.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000005.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000005.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000006.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000006.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000007.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000007.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000008.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000008.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000009.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000009.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000010.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000010.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000011.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000011.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000012.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000012.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000013.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000013.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000014.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000014.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000015.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000015.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000016.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000016.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000017.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000017.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000018.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000018.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frame-000019.jpg",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frame-000019.jpg",
+      "sha256": "71a2325d4c8b32e7d4c544fd812ce41bb15d2567a3ff4ac8b509353b8fe4d01e"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/frames.json",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/frames.json",
+      "sha256": "d4a4f572a6e71b31835a952b55596e546c5423da7166e35a29e5b260eda9d347"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/gif-tour-0.png",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/gif-tour-0.png",
+      "sha256": "d792d5785b2c677ba018120f483faa31938538540adb8c56f660f020ab996407"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/gif-tour-1.png",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/gif-tour-1.png",
+      "sha256": "d95ab143f5564ef3b45bd5f13d31ad49e738097fb05e78a76675ca0e12465800"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/gif-tour-2.png",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/gif-tour-2.png",
+      "sha256": "8ebd63459e6a8ea3c02ecc23009000f532152f440cc00e254e82c76a80d4d321"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/gif-tour.ffconcat",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/gif-tour.ffconcat",
+      "sha256": "e6e3c0b27bed91a38c2f83eccc26a3c3e64bc0ddaeda4554723a67a286ae84e6"
+    },
+    {
+      "original_file": "app/.local/repository-showcase/payment-fx-mobile/timed.ffconcat",
+      "file": "app/.local/payment-fx-before-eof/capture-mobile/timed.ffconcat",
+      "sha256": "7a07cf1dcc793e1f825abaa30c9c9f6c08fdcdf998b92abdd206850cc34686ce"
+    },
+    {
+      "original_file": "docs/media/screenshots/payment-fx-mobile-quote.png",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-mobile-quote.png",
+      "sha256": "c66bfb5b86b8e153d94e3b8035891f7da14214dc26a9c67f9cd3fa641fe3a54b"
+    },
+    {
+      "original_file": "docs/media/screenshots/payment-fx-mobile-narrow.png",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-mobile-narrow.png",
+      "sha256": "2470294113a14e79c22369d09946ee80b6b8a8f92f0b5f88a8dc59a5479ad1b6"
+    },
+    {
+      "original_file": "docs/media/screenshots/payment-fx-mobile-ledger.png",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-mobile-ledger.png",
+      "sha256": "8bc85da2048a74cefd8c3730766a6d078a2b7ade905181e3204bfa01d1fde3fc"
+    },
+    {
+      "original_file": "docs/media/videos/payment-fx-mobile.mp4",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-mobile.mp4",
+      "sha256": "d9afc8789de54579d3e6ea16ab76091c22b480075e2b7196c0072fe2a291a717"
+    },
+    {
+      "original_file": "docs/media/gifs/payment-fx-mobile.gif",
+      "file": "app/.local/payment-fx-before-eof/media/payment-fx-mobile.gif",
+      "sha256": "3081cb67cb7f7f06c0a1e7d464ad2f71b205fd5facbe121bd0199924d9c42fa7"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-typecheck.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-web-tests.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-web-tests.log",
+      "sha256": "10a86dbd43615d3e2c1a19b99c0b6f569adf73019672e8669626abf2cc402c50"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-mobile-tests.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-mobile-tests.log",
+      "sha256": "24cb908243506f155c3ac305375a1aab1f76280e4542f28dca06c1a177783515"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-runtime-tests.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-runtime-tests.log",
+      "sha256": "b1fea26fe91d3776f312e9f3b9a43f077e6139b231d28c8113fe47072c9f6675"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-web-build.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-web-build.log",
+      "sha256": "31d5314351413ac01e1585b870e3d9111f1037a618b4f3fe70039fb8ea89493e"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-runtime-build.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-runtime-build.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-wechat-build.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-wechat-build.log",
+      "sha256": "22dd60b18bb511d764e218960683ecfd528ec0a977c4c599ba1b5a53d96b47cf"
+    },
+    {
+      "original_file": "app/.local/payment_fx-client-douyin-build.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-client-douyin-build.log",
+      "sha256": "8af5111097a66dcb7b6621643867bb70017541c0f32d0ba72a06f609c06ec3c1"
+    },
+    {
+      "original_file": "app/.local/payment_fx-skill-check.log",
+      "file": "app/.local/payment-fx-before-eof/logs/payment_fx-skill-check.log",
+      "sha256": "17b0830ed081f1dc43b49a2607a3f3fc3e87e7aa374ef0c8204b13bb4554080c"
+    }
+  ],
+  "archive_script_sha256": "5844369d386ae16e8a4614a4ab23d3e5d6903b2a92dbe2e9eba18c313e3527b8"
+}

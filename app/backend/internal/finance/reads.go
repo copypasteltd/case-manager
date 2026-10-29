@@ -75,7 +75,7 @@ func present(ctx context.Context, db platform.DBTX, a core.Actor, c Cost) (Cost,
 	c.CanConfirm = write && c.State == "draft" && authz.Require(ctx, db, a, "cost.confirm", resource(c)) == nil
 	c.CanReverse = write && c.State == "confirmed" && c.EntryKind == "expense" && authz.Require(ctx, db, a, "cost.reverse", resource(c)) == nil
 	var unpaid bool
-	if err = db.QueryRow(ctx, "SELECT COALESCE(sum(effect*amount),0)=0 FROM payment_allocations WHERE org_id=$1 AND cost_id=$2", a.OrgID, c.ID).Scan(&unpaid); err != nil {
+	if err = db.QueryRow(ctx, "SELECT NOT cost_has_effective_settlement($1,$2)", a.OrgID, c.ID).Scan(&unpaid); err != nil {
 		return Cost{}, err
 	}
 	c.CanReverse = c.CanReverse && unpaid

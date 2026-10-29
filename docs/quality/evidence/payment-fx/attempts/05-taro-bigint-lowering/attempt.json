@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "source_sha256": "1d071ad5c0631131271cc3cb2650fc85549b3e41530aab343dd62ebd6dd3df62",
+  "source_binding_verified": true,
+  "private_source_archive": "app/.local/payment_fx-attempts/05-taro-bigint-lowering.zip",
+  "archive_sha256": "e2337cb75ffcf7defd9a69f79c19b73282f8279ad5f81a84de214e545eaae4a1",
+  "private_logs": [
+    {
+      "path": "app/.local/payment_fx-attempts/05-taro-bigint-lowering-native.log",
+      "sha256": "f77362e905c3e062125550a27dc787e8de73cca6dd48d82f9378b1fb134198b1"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/05-taro-bigint-lowering-browser.log",
+      "sha256": "a3755e48da21194c3e11fb70dde99f3f865bd9c86b568be2580f329918f9a93a"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/05-taro-bigint-lowering-build.log",
+      "sha256": "fb75bed403f702173b7a1ea35464e2912e84b450e0ed8137f27f009a03906631"
+    }
+  ],
+  "failure": "The input did not match the regular expression /费用原币金额乘实际汇率须按付款币精度舍入后等于本次付款本金。/. Input:\n\n'暂时无法读取，请稍后重试。'\n"
+}

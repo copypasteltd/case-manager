@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T23:07:57.978Z",
+  "finished_at": "2026-10-29T23:08:39.928Z",
+  "checks": [
+    {
+      "name": "Existing owned fixture receives explicit synthetic finance grants and real independent USD cost/HKD cash facts",
+      "passed": true
+    },
+    {
+      "name": "Actual Web form rejects a mismatched manual quote without writing a settlement",
+      "passed": true
+    },
+    {
+      "name": "Explicit manual quote and MFA commit exact dual principal, provenance and aligned project shares",
+      "passed": true
+    },
+    {
+      "name": "Human partial release displays and returns HKD390/USD50 then commits both remaining balances",
+      "passed": true
+    },
+    {
+      "name": "Actual ledger UI preserves original cash facts and separates cash HKD390 from incurred USD50",
+      "passed": true
+    },
+    {
+      "name": "A separately authenticated reader without finance authority cannot access the actual cash or allocation controls",
+      "passed": true
+    }
+  ],
+  "source_count": 843,
+  "source_sha256": "1a0bce32dedad41727d0f1d58db79bed842b95596d5c6c51bc390ca63134f1e9",
+  "source_after_sha256": "1a0bce32dedad41727d0f1d58db79bed842b95596d5c6c51bc390ca63134f1e9",
+  "source_unchanged": true,
+  "browser_contexts_closed": 3,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "9616e2af6bf2960f10e5ae47a98260c240f57b827c95d0b39e6f6076eaeccc65",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "9616e2af6bf2960f10e5ae47a98260c240f57b827c95d0b39e6f6076eaeccc65",
+  "build_source_unchanged": true
+}

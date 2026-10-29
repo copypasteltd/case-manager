@@ -1,0 +1,168 @@
+{
+  "passed": true,
+  "reason": "The first archive bound interaction and Web inputs but omitted other client compatibility packages and verification/build wrappers. Reconstruct the missing unchanged bytes, then require the complete original client and Android source digests to match. No original archive, record or result is rewritten.",
+  "published_commit": "d1a31a03d1487776920b61aa946e5cd8c49e9f45",
+  "source_archive": "app/.local/payment-fx-before-mobile-validation-source-supplement.zip",
+  "source_archive_sha256": "7287d90797a1be93e2b36aaa1f1a89e420d32920e419ee5baa773d1e9448bb7a",
+  "files": [
+    {
+      "file": "packages/archive-extraction/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "a5d1dc32dea3309f847d42811c7a8a30bb13cc8ca3862d6d231e10166c4ba320",
+      "bytes": 421
+    },
+    {
+      "file": "packages/archive-extraction/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "a4740cf80473c3ea6a5f6d4e11ba0ea8b0f8109329d2e792d98e2b9fa519a52a",
+      "bytes": 322
+    },
+    {
+      "file": "packages/deepmerge-safe/LICENSE",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "6cfc4687cb2f2d86f4a77e6b526290d3878e5e512f3fec2f4cb36a9cb36f798b",
+      "bytes": 1116
+    },
+    {
+      "file": "packages/deepmerge-safe/UPSTREAM.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "7fda36a4ea09b30be644726b04f52e460cb307cebcea2d4f16835382d28bb8a6",
+      "bytes": 595
+    },
+    {
+      "file": "packages/deepmerge-safe/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "8e4a3a24d76a07b54e84ce3822d79ef278959dcdbb7e1de177841149fe719c49",
+      "bytes": 4450
+    },
+    {
+      "file": "packages/deepmerge-safe/index.d.ts",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "146ba4b99c5feb82663e17a671bf9f53bb39c704cd76345d6c5a801c26372f44",
+      "bytes": 823
+    },
+    {
+      "file": "packages/deepmerge-safe/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "fd86d251ff5aeb7aec030693fcffbb8b17054e1c1f4fbf92f6318c20d8dea6b8",
+      "bytes": 206
+    },
+    {
+      "file": "packages/dev-server-compat/client/socket.js",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "10c761fb92dd71fcee26319cfa4935838702c8aa126a92f6d89be4db5fe7e72d",
+      "bytes": 164
+    },
+    {
+      "file": "packages/dev-server-compat/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "de3777645ec9a3a5656b9607e0b3a90d09ee42268e3f2d8485fab795c75d9c9a",
+      "bytes": 3348
+    },
+    {
+      "file": "packages/dev-server-compat/index.d.cts",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "9b30160109f50af428db64be1efe7f0fe053b7f3297bcbf6063a41a3b14aabb8",
+      "bytes": 139
+    },
+    {
+      "file": "packages/dev-server-compat/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "4b19cfb86409789b27ebdbc00f241a3e24028c673d1369f4078e07520ea0e6c9",
+      "bytes": 267
+    },
+    {
+      "file": "packages/image-size-compat/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "05d6148777754edf309b316290b4641c7c03708254624ab3821a56025954a81b",
+      "bytes": 2027
+    },
+    {
+      "file": "packages/image-size-compat/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "ab9ba91790c8ceb9c620bdef9c33f54308bd4c19dc45a0836f44a3ce8dd4ec04",
+      "bytes": 326
+    },
+    {
+      "file": "packages/latest-version-compat/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "1c34cd4e74e31e32d8f4530750dbfe4316158643fbb469a3e2e012519d6f67bf",
+      "bytes": 286
+    },
+    {
+      "file": "packages/latest-version-compat/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "1c11e298a49df2d8bc67f39119ddfdde1a960e8f060368e5bab5aeb4ad105b85",
+      "bytes": 328
+    },
+    {
+      "file": "packages/template-download/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "244563fcbbbf1edca29c13f51d2753f686a6014bdc7972570227bbd5a0ce4d8f",
+      "bytes": 7892
+    },
+    {
+      "file": "packages/template-download/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "0bf870583fceb5f0297366354a9604b50560e92c1a6921b2016cb230fdbad8bc",
+      "bytes": 340
+    },
+    {
+      "file": "packages/template-minifier/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "a2e456463fefb4203370374e326915c82eb083f9107f8998002841db78ef9db7",
+      "bytes": 2004
+    },
+    {
+      "file": "packages/template-minifier/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "937b5fd7de3c8d5cabb7eccb1f887d3f3cfbe802d54aac7449f76b8a5dade81d",
+      "bytes": 246
+    },
+    {
+      "file": "packages/template-minifier/worker.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "07962deee6e8ab78e2d31fe5ceda5293a742dea7d29b38dd3ff9f81f8dab1120",
+      "bytes": 487
+    },
+    {
+      "file": "packages/uri-decoder-compat/index.cjs",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "04e2fa2e1d0f4a00877aeb6d318f0e838c59bb8897c2692b8ca0c81cd09ac921",
+      "bytes": 210
+    },
+    {
+      "file": "packages/uri-decoder-compat/index.d.cts",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "51638fd2d51b5dead1515545c8d65244ffd73cfc4bb72623d8e30a1e5da754dc",
+      "bytes": 91
+    },
+    {
+      "file": "packages/uri-decoder-compat/package.json",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "c73f80e3e91b9d657ee3a223360bf8a60fc8865a329fdf5753990b4324d6ece8",
+      "bytes": 290
+    },
+    {
+      "file": "scripts/build_android.py",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "2684d6a82b3ca4240c4a75c3cd5597d43500bd5cee3edfae663a912768311fa4",
+      "bytes": 9026
+    },
+    {
+      "file": "scripts/setup_android_native.py",
+      "origin": "unchanged-published115-git-blob",
+      "sha256": "9f07467d8a5c73a4c1a500c43e09c6a5979f3e40c7e382edfa7a7314572dbba1",
+      "bytes": 5014
+    },
+    {
+      "file": "scripts/verify_payment_fx_clients.py",
+      "origin": "current-bytes-confirmed-by-full-original-source-digest",
+      "sha256": "58e12bac34b63dd1a60ab903f7b8aa390ee528daaf9f5cd1c390ae7981645c5c",
+      "bytes": 4870
+    }
+  ],
+  "original_client_source_sha256": "71454155f1967f4b2aa9e10bcbaeffcf69a653e12ae9f9747c78236983553ee9",
+  "original_android_source_sha256": "bcf15a71f98b13bf72af2e0776b2ef5a45ba61adbaed2e77135c068374daf959",
+  "counts_as_new_test_execution": false
+}

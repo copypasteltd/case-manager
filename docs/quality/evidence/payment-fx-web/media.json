@@ -1,0 +1,32 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/payment-fx-web-quote.png",
+      "sha256": "da187e406d50ca40790c07c7e6d2af68b079ab0b3e91b9f52746218e233de4c2"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-web-narrow.png",
+      "sha256": "7fed0e0df33ef93321a09af3eb676ea159a596fb733b2129ed065490b4d37f91"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fx-web-ledger.png",
+      "sha256": "95366592908e98440cfd5c6c3f1cb16122f1b3ecdae2bb77bfca4025b8872c8e"
+    }
+  ],
+  "recording": {
+    "name": "payment-fx-web",
+    "frame_count": 20,
+    "duration_ms": 4085,
+    "viewport": {
+      "width": 760,
+      "height": 1000
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/payment-fx-web/frames.json",
+    "manifest_sha256": "439d6cdef7858b44f70c7f0ab0b7f2cbfadb148f1c456ba23d9f1712ecd53739"
+  },
+  "synthetic_data": true,
+  "real_device": false,
+  "api_responses_mocked": false,
+  "fixture_reused_from": "existing human-file-scope-transfer native fixture; finance grants and data created through actual APIs"
+}

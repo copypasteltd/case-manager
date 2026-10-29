@@ -47341,6 +47341,59 @@
           "can_reverse"
         ]
       },
+      "PaymentFXInput": {
+        "type": "object",
+        "properties": {
+          "cost_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "rate": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,10})?$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "acknowledged": {
+            "type": "boolean",
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cost_amount",
+          "rate",
+          "source",
+          "acknowledged"
+        ]
+      },
+      "PaymentFXQuote": {
+        "type": "object",
+        "properties": {
+          "rate": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,10})?$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "quoted_on": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "rate",
+          "source",
+          "quoted_on"
+        ]
+      },
       "PaymentRecord": {
         "type": "object",
         "properties": {
@@ -47384,6 +47437,10 @@
                   "format": "uuid"
                 },
                 "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+                },
+                "cost_amount": {
                   "type": "string",
                   "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
                 }
@@ -47516,6 +47573,9 @@
                 "type": "null"
               }
             ]
+          },
+          "fx": {
+            "$ref": "#/components/schemas/PaymentFXInput"
           }
         },
         "additionalProperties": false,
@@ -47558,6 +47618,10 @@
           "amount": {
             "type": "string",
             "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "cost_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
           }
         },
         "additionalProperties": false,
@@ -47595,6 +47659,10 @@
             "format": "uuid"
           },
           "amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "cost_amount": {
             "type": "string",
             "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
           }
@@ -47741,6 +47809,71 @@
           "created_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "cost_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "cost_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "payment_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "cost_exponent": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6
+          },
+          "payment_exponent": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6
+          },
+          "cost_shares": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "project_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "project_id",
+                "amount"
+              ]
+            },
+            "maxItems": 100
+          },
+          "remaining_cost_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "fx": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PaymentFXQuote"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "additionalProperties": false,

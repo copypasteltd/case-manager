@@ -194,26 +194,38 @@ func (s *Service) Payments(ctx context.Context, a core.Actor, f PaymentFilter) (
 	return out, nil
 }
 
-const allocationColumns = `a.id,a.payment_id,a.cost_id,a.cost_revision_id,a.kind,a.effect,a.amount::text,a.root_id,a.source_allocation_id,a.claim_id,a.claim_revision_id,a.claim_line_id,a.actor_id,a.reason,a.created_at,(SELECT COALESCE(sum(x.effect*x.amount),0)::text FROM payment_allocations x WHERE x.org_id=a.org_id AND x.root_id=a.root_id)`
+const allocationColumns = `a.id,a.payment_id,a.cost_id,a.cost_revision_id,a.kind,a.effect,a.amount::text,a.root_id,a.source_allocation_id,a.claim_id,a.claim_revision_id,a.claim_line_id,a.actor_id,a.reason,a.created_at,(SELECT COALESCE(sum(x.effect*x.amount),0)::text FROM payment_allocations x WHERE x.org_id=a.org_id AND x.root_id=a.root_id),
+ a.cost_amount::text,(SELECT currency FROM cost_revisions WHERE org_id=a.org_id AND id=a.cost_revision_id),
+ (SELECT r.currency FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id WHERE p.org_id=a.org_id AND p.id=a.payment_id),
+ (SELECT d.exponent FROM cost_revisions r JOIN currency_definitions d ON d.code=r.currency WHERE r.org_id=a.org_id AND r.id=a.cost_revision_id),
+ (SELECT d.exponent FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id JOIN currency_definitions d ON d.code=r.currency WHERE p.org_id=a.org_id AND p.id=a.payment_id),
+ (SELECT COALESCE(sum(x.effect*x.cost_amount),0)::text FROM payment_allocations x WHERE x.org_id=a.org_id AND x.root_id=a.root_id),a.fx_rate::text,a.fx_source,a.fx_quoted_on::text`
 
 func scanAllocation(row pgx.Row) (PaymentAllocation, error) {
-	v := PaymentAllocation{Shares: []Allocation{}}
-	err := row.Scan(&v.ID, &v.PaymentID, &v.CostID, &v.CostRevisionID, &v.Kind, &v.Effect, &v.Amount, &v.RootID, &v.SourceAllocationID, &v.ClaimID, &v.ClaimRevisionID, &v.ClaimLineID, &v.ActorID, &v.Reason, &v.CreatedAt, &v.RemainingAmount)
+	v := PaymentAllocation{Shares: []Allocation{}, CostShares: []Allocation{}}
+	var rate, source, day *string
+	err := row.Scan(&v.ID, &v.PaymentID, &v.CostID, &v.CostRevisionID, &v.Kind, &v.Effect, &v.Amount, &v.RootID, &v.SourceAllocationID, &v.ClaimID, &v.ClaimRevisionID, &v.ClaimLineID, &v.ActorID, &v.Reason, &v.CreatedAt, &v.RemainingAmount, &v.CostAmount, &v.CostCurrency, &v.PaymentCurrency, &v.CostExponent, &v.PaymentExponent, &v.RemainingCostAmount, &rate, &source, &day)
+	if err == nil && rate != nil && source != nil && day != nil {
+		v.FX = &PaymentFXQuote{Rate: *rate, Source: *source, QuotedOn: *day}
+	}
 	return v, platform.DatabaseError(err)
 }
 func allocationShares(ctx context.Context, db platform.DBTX, org string, a *PaymentAllocation) error {
-	rows, err := db.Query(ctx, "SELECT project_id,amount::text FROM payment_allocation_shares WHERE org_id=$1 AND allocation_id=$2 ORDER BY position", org, a.ID)
+	rows, err := db.Query(ctx, "SELECT project_id,amount::text,cost_amount::text FROM payment_allocation_shares WHERE org_id=$1 AND allocation_id=$2 ORDER BY position", org, a.ID)
 	if err != nil {
 		return err
 	}
 	defer rows.Close()
 	a.Shares = []Allocation{}
+	a.CostShares = []Allocation{}
 	for rows.Next() {
 		var v Allocation
-		if err = rows.Scan(&v.ProjectID, &v.Amount); err != nil {
+		var cost string
+		if err = rows.Scan(&v.ProjectID, &v.Amount, &cost); err != nil {
 			return err
 		}
 		a.Shares = append(a.Shares, v)
+		a.CostShares = append(a.CostShares, Allocation{ProjectID: v.ProjectID, Amount: cost})
 	}
 	return rows.Err()
 }

@@ -13,16 +13,20 @@ import (
 // Split only the remaining balances, using integer minor units and largest
 // remainders. Repeated one-cent payments cannot overfill a project allocation.
 func splitPaymentShares(amount string, remaining []Allocation, exponent int) ([]Allocation, error) {
-	units := func(text string) (*big.Int, error) {
-		d, err := core.CheckCurrencyAmount("XXX", text, map[string]int{"XXX": exponent})
+	return splitSettlementShares(amount, remaining, exponent, true)
+}
+
+func splitSettlementShares(amount string, remaining []Allocation, exponent int, enforceBalance bool) ([]Allocation, error) {
+	units := func(text string, precision int) (*big.Int, error) {
+		d, err := core.CheckCurrencyAmount("XXX", text, map[string]int{"XXX": precision})
 		if err != nil {
 			return nil, err
 		}
 		v, _ := new(big.Int).SetString(strings.ReplaceAll(d.String(), ".", ""), 10)
-		factor := new(big.Int).Exp(big.NewInt(10), big.NewInt(int64(6-exponent)), nil)
+		factor := new(big.Int).Exp(big.NewInt(10), big.NewInt(int64(6-precision)), nil)
 		return v.Quo(v, factor), nil
 	}
-	wanted, err := units(amount)
+	wanted, err := units(amount, exponent)
 	if err != nil {
 		return nil, err
 	}
@@ -36,8 +40,14 @@ func splitPaymentShares(amount string, remaining []Allocation, exponent int) ([]
 	}
 	total := new(big.Int)
 	parts := []share{}
+	weightPrecision := exponent
+	if !enforceBalance {
+		// Weights may use a different currency; their common six-place scale
+		// cancels in the ratio and is never treated as a cash-unit balance.
+		weightPrecision = 6
+	}
 	for i, r := range remaining {
-		v, e := units(r.Amount)
+		v, e := units(r.Amount, weightPrecision)
 		if e != nil {
 			return nil, e
 		}
@@ -46,7 +56,7 @@ func splitPaymentShares(amount string, remaining []Allocation, exponent int) ([]
 			parts = append(parts, share{value: v, index: i})
 		}
 	}
-	if wanted.Cmp(total) > 0 {
+	if total.Sign() <= 0 || (enforceBalance && wanted.Cmp(total) > 0) {
 		return nil, core.Fail(409, "SETTLEMENT_BALANCE_EXCEEDED", "金额超过当前可分配余额")
 	}
 	used := new(big.Int)
@@ -81,7 +91,7 @@ func splitPaymentShares(amount string, remaining []Allocation, exponent int) ([]
 }
 
 func remainingShares(ctx context.Context, db platform.DBTX, org, id string, root bool) ([]Allocation, error) {
-	query := `SELECT c.project_id,(c.amount-COALESCE((SELECT sum(a.effect*s.amount) FROM payment_allocations a JOIN payment_allocation_shares s ON s.org_id=a.org_id AND s.allocation_id=a.id WHERE a.org_id=c.org_id AND a.cost_id=$2 AND s.project_id IS NOT DISTINCT FROM c.project_id),0))::text
+	query := `SELECT c.project_id,(c.amount-COALESCE((SELECT sum(a.effect*s.cost_amount) FROM payment_allocations a JOIN payment_allocation_shares s ON s.org_id=a.org_id AND s.allocation_id=a.id WHERE a.org_id=c.org_id AND a.cost_id=$2 AND s.project_id IS NOT DISTINCT FROM c.project_id),0))::text
         FROM cost_allocations c JOIN actual_cost_entries h ON h.org_id=c.org_id AND h.current_revision_id=c.revision_id WHERE c.org_id=$1 AND h.id=$2 ORDER BY c.position`
 	if root {
 		query = `SELECT s.project_id,COALESCE((SELECT sum(a.effect*x.amount) FROM payment_allocations a JOIN payment_allocation_shares x ON x.org_id=a.org_id AND x.allocation_id=a.id WHERE a.org_id=s.org_id AND a.root_id=$2 AND x.project_id IS NOT DISTINCT FROM s.project_id),0)::text FROM payment_allocation_shares s WHERE s.org_id=$1 AND s.allocation_id=$2 ORDER BY s.position`

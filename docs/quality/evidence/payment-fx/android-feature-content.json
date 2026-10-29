@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T22:56:04.892048+00:00",
+  "checks": [
+    {
+      "name": "Exact dual units and quotation guards are packaged without the observed broken BigInt power lowering",
+      "passed": true
+    },
+    {
+      "name": "Manual settlement quotation and precise currency direction UI are packaged",
+      "passed": true
+    },
+    {
+      "name": "Release and refund review MFA and exact APK bundle remain packaged",
+      "passed": true
+    }
+  ],
+  "source_sha256": "b734c6701fac2457a024b0a07c407c8f752f7a2f90d62689f3434ef71e32cb45",
+  "bundle_sha256": "299171754b4b965d436adf8dfdb67603b2ce452bd52553d0ef2dc9c5e85c0380",
+  "apk_sha256": "ea57fe976c349235b036875279bc464a2c71850a35395b4d7b30ef06c04799ff",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "81780468b62f0ea59657d1e53cb3d62bc41e9ac4a57bd5a888ba06e02959b9c3"
+}

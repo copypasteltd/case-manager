@@ -206,7 +206,7 @@ func (s *Service) Reverse(ctx context.Context, cmd core.Command, id string, in R
 			return core.Result{}, core.Fail(409, "COST_NOT_REVERSIBLE", "仅未冲销的已确认原费用可全额冲销")
 		}
 		var unpaid bool
-		if err := tx.QueryRow(ctx, "SELECT COALESCE(sum(effect*amount),0)=0 FROM payment_allocations WHERE org_id=$1 AND cost_id=$2", cmd.Actor.OrgID, c.ID).Scan(&unpaid); err != nil {
+		if err := tx.QueryRow(ctx, "SELECT NOT cost_has_effective_settlement($1,$2)", cmd.Actor.OrgID, c.ID).Scan(&unpaid); err != nil {
 			return core.Result{}, err
 		}
 		if !unpaid {

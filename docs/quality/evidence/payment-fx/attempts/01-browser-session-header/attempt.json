@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "source_sha256": "22f21ef1196cde875c81b8f412789557dd7ebc66c1a681f3c81d73c09562f480",
+  "source_binding_verified": true,
+  "private_source_archive": "app/.local/payment_fx-attempts/01-browser-session-header.zip",
+  "archive_sha256": "bbc551ad81d0b4d66076585f9bd4c95f29596478841eeee6008d1299487b8e84",
+  "private_logs": [
+    {
+      "path": "app/.local/payment_fx-attempts/01-browser-session-header-native.log",
+      "sha256": "b6cb6e3dd7a70ec53f71224866316153bceab0693fef93c3386eb0943496f2b8"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/01-browser-session-header-browser.log",
+      "sha256": "51d6ebe2c538ae1cb816b5c30aa417c982835bf2a2b5c235de4254bdc99fdc90"
+    },
+    {
+      "path": "app/.local/payment_fx-attempts/01-browser-session-header-build.log",
+      "sha256": "623f82c675c5f9c48c377e2042fcf99133f0b80c009372b7b3342a34d1a7045e"
+    }
+  ],
+  "failure": "/role-bindings: UNAUTHENTICATED\n\n401 !== 201\n"
+}

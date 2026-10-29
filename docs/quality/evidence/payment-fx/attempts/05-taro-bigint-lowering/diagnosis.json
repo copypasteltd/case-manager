@@ -1,0 +1,19 @@
+{
+  "cause": "Taro Babel lowered the shared BigInt exponent expression into Math.pow(10n, BigInt(...)), which throws TypeError in the actual H5 consumer before the intended quote validation.",
+  "resolution": "Use bounded BigInt integer products for minor-unit steps. Keep unexpected runtime errors generic, show explicit local financial validation safely, and verify real compiled UI plus a static guard for the observed broken lowering in the new APK.",
+  "counts_as_final_acceptance": false,
+  "private_records": [
+    {
+      "file": "app/.local/payment-fx-before-bigint-guard-verify_payment_fx_android_content.py",
+      "sha256": "2e1c276f73dbb35d727dc39e460f1727c60635de388494b652f5c3c237bef5f2"
+    },
+    {
+      "file": "app/.local/payment-fx-before-bigint-guard-902.js",
+      "sha256": "264e4b13335942ccfeb66df35f506dcc6f2bcf3e097fcc6f174581a36d3f64c0"
+    },
+    {
+      "file": "app/.local/payment-fx-before-bigint-guard-931.js",
+      "sha256": "2a7017bcf9f6fd5bbd0e63c8ae008f00681914b208109375848b5e088fa765eb"
+    }
+  ]
+}

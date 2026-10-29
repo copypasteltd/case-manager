@@ -1,0 +1,78 @@
+{
+  "after_schema": 89,
+  "before_schema": 88,
+  "facts": {
+    "actual_cost_entries": {
+      "rows": 14,
+      "hash": "120b0bca749c5f24c62b5f7c5c772fdf"
+    },
+    "agent_budget_policies": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "cost_allocations": {
+      "rows": 16,
+      "hash": "b3e5299d58b0b22e1adb1b1ae7a40ebc"
+    },
+    "cost_links": {
+      "rows": 1,
+      "hash": "db19c60c1044d78cb51f74bd3a5288e5"
+    },
+    "cost_revisions": {
+      "rows": 14,
+      "hash": "2c5cd3cef40e0b31ba87e85114487a73"
+    },
+    "payment_allocation_shares": {
+      "rows": 30,
+      "hash": "df75e288325ab539ccf2b0d51ed5ee6f"
+    },
+    "payment_allocations": {
+      "rows": 28,
+      "hash": "fdf46d048457839a1b6d1a44c818326d"
+    },
+    "payment_events": {
+      "rows": 104,
+      "hash": "e666597e6196d99a7b29d53c548bbd3f"
+    },
+    "payment_records": {
+      "rows": 47,
+      "hash": "08a774dc8bf43e8c918b36faa3448dba"
+    },
+    "payment_revision_files": {
+      "rows": 46,
+      "hash": "d680c7709d59d1736c288398d6deb0ab"
+    },
+    "payment_revisions": {
+      "rows": 48,
+      "hash": "bdf84b6b0eda0358c79182dc35ad1af8"
+    }
+  },
+  "legacy_dual_units_exact": true,
+  "original_facts_unchanged": true,
+  "passed": true,
+  "checked_at": "2026-10-29T22:13:17.299235+00:00",
+  "source_sha256": "7996c7ddbc1e86867bc8fc53f1a885f7807a1e8c2ade15f6a9c58575cdb03923",
+  "published_fixture_commit": "d1a31a03d1487776920b61aa946e5cd8c49e9f45",
+  "prior_checkout_archive_sha256": "60e47938a6a984c339609c2d68a6d7fd4263751e8365ebaa884845c27b2b8af4",
+  "original_test_sha256": "07e54e58579cdd553b6a84516821c75e6383f84a8029846c399a8c2d0babe9c6",
+  "adapted_test_sha256": "f3c9016f5c80e98851e9227e75c4ecbe4a0e4edba10f880d1188e7b1b774f440",
+  "adaptation": "Only add one end-of-journey normal-upgrade assertion; existing prior cash cases are unchanged.",
+  "actual_current_migrator_sha256": "fc1aad260d83e696b946cef07b41ff5fa859035e40bd3ef2e3050efdd066c5c5",
+  "raw_log_sha256": "f41c45da29a6c8ab9957c2190431e30c87a552fda968b122607895dfaef0243d",
+  "prior_fixture_case_records": 25,
+  "counts_as_current_backend_tests": false,
+  "verification_script_sha256": "605572c3ace36ff8c5b77caf8a9637e1c471204f44833dde853243ec78aef23b",
+  "raw_log": "ignored app/.local/payment-fx-upgrade.log"
+}

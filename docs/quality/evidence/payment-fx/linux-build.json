@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T21:44:43.724317+00:00",
+  "source_sha256": "7996c7ddbc1e86867bc8fc53f1a885f7807a1e8c2ade15f6a9c58575cdb03923",
+  "source_after_sha256": "7996c7ddbc1e86867bc8fc53f1a885f7807a1e8c2ade15f6a9c58575cdb03923",
+  "commands": [
+    {
+      "name": "agent-native",
+      "package": "./cmd/agent-native",
+      "exit_code": 0,
+      "elapsed_seconds": 18.273,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform",
+      "package": "./cmd/platform",
+      "exit_code": 0,
+      "elapsed_seconds": 3.888,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "agent-native",
+      "file": ".local/payment_fx-linux/agent-native-linux-amd64",
+      "sha256": "bf4d005295de9b29865c674d99d43922e311c8708c9d2e486c101070514ab696",
+      "bytes": 12698639,
+      "format": "ELF64-x86-64"
+    },
+    {
+      "name": "platform",
+      "file": ".local/payment_fx-linux/platform-linux-amd64",
+      "sha256": "8b64632673a9e28501e36b4f38d92803882dd21f18b87f756675d3cda486c4d7",
+      "bytes": 36684234,
+      "format": "ELF64-x86-64"
+    }
+  ],
+  "verification_script_sha256": "e683b3848ae0fddbe41486194b6ea3d44964dde0c7f6a36447804b020a995a93",
+  "artifact_executed": false,
+  "kernel_boundary_executed": false,
+  "deployed": false
+}
