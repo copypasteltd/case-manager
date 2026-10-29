@@ -159,6 +159,10 @@ func toolDefinitions(skill string) []any {
 		definitions[1].description = "搜索共同可读资料；resource_types=['agent_plan']单独查询本人当前公司私密会话计划，可用空query列举，plan_states筛选状态。返回准确ID供核对，不批准或执行计划。"
 	}
 	if skill == "file-update" {
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
+		}{"recover_file_draft", "只重建本次明确选定的旧草稿准确字节；不接收正文、编辑、目标、旧上传或旧计划。按本次authorized_file_update／authorized_file_create.recovery重新上传、校验和扫描。", schema(map[string]any{"run_id": uuid, "recovery_sha256": str(map[string]any{"pattern": "^[0-9a-f]{64}$"})}, []string{"run_id", "recovery_sha256"})})
 		edit := schema(map[string]any{"start_char": map[string]any{"type": "integer", "minimum": 0, "maximum": 1048576}, "end_char": map[string]any{"type": "integer", "minimum": 0, "maximum": 1048576}, "text": str(map[string]any{"maxLength": 60000})}, []string{"start_char", "end_char", "text"})
 		scope := func() map[string]any {
 			return map[string]any{"file_id": uuid, "base_version_id": uuid, "draft_id": uuid}
@@ -270,7 +274,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T14:26:05.303438+00:00",
+  "checks": [
+    {
+      "name": "Every discovered final-source native backend test executes without skips",
+      "passed": true
+    },
+    {
+      "name": "Each complete successful batch retains its exact raw log",
+      "passed": true
+    },
+    {
+      "name": "All13 actual recovery transaction, scan, dependency and revocation groups pass",
+      "passed": true
+    },
+    {
+      "name": "Failed fixture and invalidated regression attempts remain distinct and exact",
+      "passed": true
+    },
+    {
+      "name": "The invalidated first regression binds its actual prior backend source archive",
+      "passed": true
+    },
+    {
+      "name": "Process interruption retains four exact complete batches and reruns the incomplete batch",
+      "passed": true
+    },
+    {
+      "name": "Owned PG and development services restore without reinitializing or replaying the schema upgrade",
+      "passed": true
+    },
+    {
+      "name": "Owned durable temporary native PG is closed with zero disposable databases",
+      "passed": true
+    },
+    {
+      "name": "All325 paths and existing schemas preserve semantics except three explicit recovery extensions",
+      "passed": true
+    },
+    {
+      "name": "Eight client commands execute on unchanged final input",
+      "passed": true
+    },
+    {
+      "name": "Fresh Web219 mobile313 runtime55 match their current source",
+      "passed": true
+    },
+    {
+      "name": "Both miniapps retain all20 built routes",
+      "passed": true
+    },
+    {
+      "name": "Actual new development APK binds current source and exact bundle without execution",
+      "passed": true
+    },
+    {
+      "name": "JVM26 retains actual Gradle cache scope and four original XMLs",
+      "passed": true
+    },
+    {
+      "name": "Two current Linux ELF artifacts cross-compile without Linux execution",
+      "passed": true
+    },
+    {
+      "name": "Actual web recovery selection passes five groups and closes owned resources",
+      "passed": true
+    },
+    {
+      "name": "Actual mobile recovery selection passes five groups and closes owned resources",
+      "passed": true
+    },
+    {
+      "name": "Both silent MP4 GIF pairs retain exact authenticated synthetic frame provenance",
+      "passed": true
+    },
+    {
+      "name": "Visual review binds seven screenshots and both decoded GIF samples",
+      "passed": true
+    },
+    {
+      "name": "All244 prior media and dependency records retain published bytes and original dates",
+      "passed": true
+    },
+    {
+      "name": "Ordinary native schema86-to87 upgrade preserves historical fee rows and owned services",
+      "passed": true
+    },
+    {
+      "name": "All23 packages five exclusions and eight draft Skills retain corrected AI scope",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture and both temporary HTTP ports are released",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "exact_file_draft_recovery",
+  "interaction_source_sha256": "036a174ea1b7d90c5291ad48eb09f04be2fade2a5be21b1f10cd9dfc3794a1de",
+  "mobile_source_sha256": "80097fd8a941b4714f72b1ca5bf7488795f4df4d1fa7040f4811fea6df1c0b24",
+  "backend_source_sha256": "1ed642769ba1f3cd6c9b9acc6cfce4842fd2992670532c72f48995365e7611f4",
+  "verification_script_sha256": "6e1a8240984e3425c9a8148105058a185a2f0343cc2b547fb636cfebb41854da",
+  "historical_evidence_commit": "fe3f797853244d8ef5b0b64a0ef9a1b126afe4c1",
+  "new_browser_capture": true,
+  "new_backend_test_execution": true,
+  "full_goal_complete": false,
+  "production_ready": false
+}

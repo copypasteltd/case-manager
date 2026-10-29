@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "observed_at": "2026-10-29T14:42:12.165946+00:00",
+  "command": "python app/scripts/verify_repository_publication.py",
+  "exit_code": 1,
+  "error_type": "FileNotFoundError",
+  "error": "publication_files contained the not-yet-generated docs/quality/evidence/file-recovery/repository-check.json output",
+  "verification_script_sha256": "067e8e8754551f0e33bfd4440ce19115db0b32e33a50938e0a8313815718d9be",
+  "resolution": "Exclude the generated report from its own prerequisite inputs; rerun complete candidate and actual-index checks.",
+  "application_source_changed": false,
+  "business_checks_invalidated": false,
+  "counts_as_passed": false
+}

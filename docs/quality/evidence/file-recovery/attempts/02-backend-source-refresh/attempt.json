@@ -1,0 +1,34 @@
+{
+  "passed": false,
+  "archived_at": "2026-10-29T13:11:07.065870+00:00",
+  "reason": "The optional browser MFA fixture was corrected while the first full regression was running. The source guard invalidated batch4 and refused later batches. Three earlier batches passed for the earlier source only; all batches will execute again for the final source. The original backend source is retained in attempt01 source ZIP; this archive captures the corrected current source.",
+  "source_sha256": "036a174ea1b7d90c5291ad48eb09f04be2fade2a5be21b1f10cd9dfc3794a1de",
+  "source_archive": ".local/02-backend-source-refresh-source.zip",
+  "source_archive_sha256": "39f25aed1abc17f61bfde815839f1c5a5b66b401060c55a61357a19019e345a0",
+  "records": [
+    {
+      "file": "batch-progress.json",
+      "sha256": "707799bc4e8a109ecc8f975b12687e45e5e6d2d9787899abd0a10ae246475088"
+    }
+  ],
+  "private_logs": [
+    {
+      "file": ".local/02-backend-source-refresh-file-recovery-backend-batch-1.log",
+      "sha256": "9d2f744565484ef202b24797eaee967ab422e239d66b917624a2bbcd5fc277fd"
+    },
+    {
+      "file": ".local/02-backend-source-refresh-file-recovery-backend-batch-2.log",
+      "sha256": "fc3c9df8c1c7face0132c8bd0238b0ae0fd4f0de76203db8e87cae526940c6ef"
+    },
+    {
+      "file": ".local/02-backend-source-refresh-file-recovery-backend-batch-3.log",
+      "sha256": "1c713fb7bb9b1b25860a7e4d90fcc011b3dd5762fa09650d7d52d12557325703"
+    },
+    {
+      "file": ".local/02-backend-source-refresh-file-recovery-backend-batch-4.log",
+      "sha256": "36a5a1e9890818be966bb855560e385760bcb12dba391431184ed2cf9556a737"
+    }
+  ],
+  "archiver_sha256": "e62e415335e96e3ddd950456c45370ddd38aca010330455d240a3982788aa414",
+  "reclassified_as_final_pass": false
+}

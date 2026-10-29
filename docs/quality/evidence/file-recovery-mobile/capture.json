@@ -1,0 +1,40 @@
+{
+  "recordings": [
+    {
+      "name": "file-recovery-mobile",
+      "frame_count": 12,
+      "duration_ms": 3007,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/file-recovery-mobile/frames.json",
+      "manifest_sha256": "9955b3cc42e0509b2e9c2eed1753392592bafe6f21884313fb33b143169c093e"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-review.png",
+      "sha256": "3e6b8f9189415eab226ba64937c323034fcfd20197f221eb2cead5acc7115573"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-selected.png",
+      "sha256": "6aa9931384696c8999cd00122cf5e5c26e001357e7686205a67987143b95e154"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-accepted.png",
+      "sha256": "1a8f8941dc05f59b1ee5bb380d5c07ac013c60cf6182bc43dd0dfbc4265fede6"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

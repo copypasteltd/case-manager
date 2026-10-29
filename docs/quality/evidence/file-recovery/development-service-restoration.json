@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T13:50:01.203227+00:00",
+  "services": [
+    {
+      "command": "api",
+      "started_after_confirmed_exit": true,
+      "current_source_attested": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-notification",
+      "started_after_confirmed_exit": true,
+      "current_source_attested": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-report-export",
+      "started_after_confirmed_exit": true,
+      "current_source_attested": true,
+      "stale_unrelated_pid_preserved": false
+    }
+  ],
+  "backend_source_sha256": "1ed642769ba1f3cd6c9b9acc6cfce4842fd2992670532c72f48995365e7611f4",
+  "original_upgrade_record_sha256": "86b28aa4d412d8013867a54922e19cb580643a31ad735a746fb1c4afeff2e229",
+  "schema_upgrade_rerun": false,
+  "live_process_terminated": false,
+  "external_integrations_started": false,
+  "production_deployment": false,
+  "restoration_script_sha256": "21baffdf3cc80dc8cded92c1aa7c3b5451841df1740ca1195fd328eab8a0b37a"
+}

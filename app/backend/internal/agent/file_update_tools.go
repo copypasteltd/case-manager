@@ -44,7 +44,7 @@ type fileProposalArguments struct {
 }
 
 func fileUpdateTool(tool string) bool {
-	return tool == "create_file_draft" || tool == "propose_file_update" || tool == "commit_file_update" || tool == "stage_file_create" || tool == "propose_file_create" || tool == "commit_file_create"
+	return tool == "recover_file_draft" || tool == "create_file_draft" || tool == "propose_file_update" || tool == "commit_file_update" || tool == "stage_file_create" || tool == "propose_file_create" || tool == "commit_file_create"
 }
 func fileUpdateSource(i *fileIntentRecord) SourceSnapshot {
 	return SourceSnapshot{SourceReference: SourceReference{Type: fileIntentSourceType(i), ID: i.RunID}, ResourceVersion: 1, SHA256: i.IntentSHA256}
@@ -68,8 +68,10 @@ func fileToolResult(i *fileIntentRecord, view FileUpdateView, draftID string, st
 
 func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executionState, lease ExecutionLease, key, tool string, args json.RawMessage, inputHash string, work *executionIO) (map[string]any, []SourceSnapshot, json.RawMessage, bool, error) {
 	var in fileDraftArguments
-	if err := strictArguments(args, &in); err != nil {
-		return nil, nil, nil, false, err
+	if tool != "recover_file_draft" {
+		if err := strictArguments(args, &in); err != nil {
+			return nil, nil, nil, false, err
+		}
 	}
 	i, err := s.executionFileIntent(ctx, tx, st)
 	if err != nil {
@@ -79,7 +81,15 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 		return nil, nil, nil, false, core.Fail(409, "FILE_UPDATE_SCOPE_REQUIRED", "草稿必须匹配本次发送的准确文件更新范围")
 	}
 	creating := i.Mode == "create"
-	if creating && (tool != "stage_file_create" || in.FolderID != i.Target.FolderID || in.Name != i.Target.Name || in.Content == nil || len(in.Edits) != 0 || in.FileID != "" || in.BaseVersionID != "") || !creating && (tool != "create_file_draft" || in.FileID != i.FileID || in.BaseVersionID != i.BaseVersionID || in.Content != nil || in.FolderID != "" || in.Name != "") {
+	if tool == "recover_file_draft" {
+		in, err = recoveredFileArguments(ctx, tx, i, args)
+		if err != nil {
+			return nil, nil, nil, false, err
+		}
+	} else if i.Recovery != nil {
+		return nil, nil, nil, false, core.Fail(409, "FILE_RECOVERY_EXACT_BYTES_REQUIRED", "恢复请求只允许重新准备已选草稿的准确内容，不能改写正文")
+	}
+	if creating && (tool != "stage_file_create" && tool != "recover_file_draft" || in.FolderID != i.Target.FolderID || in.Name != i.Target.Name || in.Content == nil || len(in.Edits) != 0 || in.FileID != "" || in.BaseVersionID != "") || !creating && (tool != "create_file_draft" && tool != "recover_file_draft" || in.FileID != i.FileID || in.BaseVersionID != i.BaseVersionID || in.Content != nil || in.FolderID != "" || in.Name != "") {
 		return nil, nil, nil, false, core.Fail(409, "FILE_UPDATE_SCOPE_REQUIRED", "草稿类型、位置和名称必须匹配本次发送范围")
 	}
 	ai := st.Actor
@@ -117,6 +127,9 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 		}
 		if e != nil {
 			return nil, nil, nil, false, e
+		}
+		if i.Recovery != nil && core.Digest([]byte(after)) != i.Recovery.ContentSHA256 {
+			return nil, nil, nil, false, core.Fail(409, "FILE_RECOVERY_BYTES_CHANGED", "按原始编辑重建的正文与选定草稿不一致，已停止恢复")
 		}
 		p := &fileDraftPrepared{Base: prepared, Edits: in.Edits, Text: after, Diff: diff, Phase: 1}
 		raw, e := s.executionTool(ctx, lease, key, tool, args, &executionIO{Draft: p})

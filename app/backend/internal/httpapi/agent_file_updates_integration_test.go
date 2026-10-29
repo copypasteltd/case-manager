@@ -137,7 +137,7 @@ func TestAgentFileUpdates(t *testing.T) {
 			t.Fatal(e)
 		}
 		lease.Job = *j
-		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}}
+		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}}
 		proof := rpc(credential, agentworker.ControlPath+"confinement", native)
 		if len(proof["error"]) > 0 {
 			t.Fatal("file tool set confinement rejected")
@@ -153,7 +153,7 @@ func TestAgentFileUpdates(t *testing.T) {
 		Tools []any `json:"tools"`
 	}
 	_ = json.Unmarshal(list["result"], &listed)
-	if len(listed.Tools) != 8 {
+	if len(listed.Tools) != 9 {
 		t.Fatal("file update profile widened its tools")
 	}
 	args := map[string]any{"file_id": base.File.ID, "base_version_id": base.Version.ID, "edits": []storage.AgentTextEdit{{Start: 6, End: 9, Text: "新计划🙂"}}}

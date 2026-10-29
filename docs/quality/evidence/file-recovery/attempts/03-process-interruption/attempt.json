@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-29T13:40:45.174393+00:00",
+  "reason": "Both old shell handles are missing; Windows process inspection found no backend runner, test binary, Android/Metro lineage or PostgreSQL process. No terminal test/build result was produced. Completed source-identical batches1-4 remain actual complete executions; interrupted batch5 and Android bundle do not count as passed.",
+  "completed_backend_batches": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "interrupted_backend_batch": 5,
+  "private_logs": [
+    {
+      "file": ".local/file-recovery-process-interruption/file-recovery-backend-batch-5.log",
+      "sha256": "2cb41d7ff57da264bf830e31176130fa7cda817b35788e05b2deceb44e5794bc"
+    },
+    {
+      "file": ".local/file-recovery-process-interruption/bundle.log",
+      "sha256": "95e77d838813ba59572339d196acc8143301dfb8abffb072f485bafda34dd7eb"
+    }
+  ],
+  "original_runner_sha256": "1f783eaef6407abac5dffe9dba3d75884ae1e4879168d0eb4a36488d14bf4422",
+  "original_state_sha256": "ecb98a549b8e220bdba68cfeeb7cf25b2a9fc38213967010c0abdf68a3bcc1be",
+  "reclassified_as_final_pass": false
+}

@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量112：GAP-04／12的准确草稿跨运行恢复已接通四端、实际API、不可变PG来源和专用MCP工具；旧草稿重建后须重新上传、校验、扫描和授权提交。更多格式、全文差异、完整OA附件与真实模型验收继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/112-secretary-file-recovery.md)及[验证](../quality/112-secretary-file-recovery-verification.md)。
+
 增量111：GAP-08的版本化合同提醒策略已接通四端、实际API、PG不可变发布、调度边界和Worker。更多聚合、实际复制故障、跨渠道送达与公司规则选用继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计](../development/111-contract-reminder-policies.md)及[验证](../quality/111-contract-reminder-policies-verification.md)。
 
 增量110：GAP-08的站内通知失败人工重试已接通四端页面、真实API、PG不可变依据和租约Worker；更多工作台聚合、提醒策略、实际复制故障及跨渠道送达继续开放。仍为23 active（14 P0／9 P1）／5 excluded，子功能完成不等于整个工作包验收。见[设计与使用](../development/110-notification-retry.md)及[验证](../quality/110-notification-retry-verification.md)。

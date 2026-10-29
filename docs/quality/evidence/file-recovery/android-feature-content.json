@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T14:23:48.145775+00:00",
+  "checks": [
+    {
+      "name": "Current portable bundle matches the new development APK exactly",
+      "passed": true
+    },
+    {
+      "name": "Actual original request, exact draft selection and human review controls are packaged",
+      "passed": true
+    },
+    {
+      "name": "New request and immutable provenance identity checks are packaged",
+      "passed": true
+    },
+    {
+      "name": "Fresh execution disclosure and exact recovery receipt guards are packaged",
+      "passed": true
+    }
+  ],
+  "source_sha256": "8dc7e352596e9e07891c7f347380193c21a84e51cf772c1851a19ca83c76c76b",
+  "bundle_sha256": "6775f36d985c94ac5f7f29a9d14b81ff2e9da02c9372412ecb85560599e87657",
+  "apk_sha256": "51d811c16196d0458c3e1b86a89878f3c9fee73b6c7e10d54f8d64acaed71ee1",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "e977c2b60f9c901c2be1c5e03c5d700bd80c3744e1cafd06744831df7e0173b2"
+}

@@ -1,0 +1,63 @@
+{
+  "recorded_at": "2026-10-29T13:23:16.747190+00:00",
+  "private_logs": [
+    {
+      "file": ".local/file-recovery-targeted-attempt-01.log",
+      "sha256": "06070fa03d0fd69279bd369f274737a4934cb20337f57306997ef41c42aa4da7",
+      "contains_failure": true,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-targeted-attempt-02.log",
+      "sha256": "c1fecfa97891cb419703bc3b8e2847d62bc3a58fc9b8b53a45aa19af46103679",
+      "contains_failure": true,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-targeted-attempt-03.log",
+      "sha256": "02f4e629ad84ebbae77034a9cfcfa8f642056c202808372e054ec330dd801017",
+      "contains_failure": true,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-targeted-attempt-04.log",
+      "sha256": "9cff6cab3907d3c8db91bbb01d3487c29752c324ee32cf4809945f9c32f1849e",
+      "contains_failure": true,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-targeted-attempt-05.log",
+      "sha256": "7c00ae429d0480e55d016a48dde4338baed7fb9985ddd8c05d3b8bb587602c5c",
+      "contains_failure": false,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-targeted-attempt-06.log",
+      "sha256": "781d991c6b86c357d7f85bd78393c453134d4a9bba4f6c2d3b6490242da31627",
+      "contains_failure": true,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-targeted-attempt-07.log",
+      "sha256": "4b1d560ec626c40990eb5abc28f26a574b3378bb0b2452492ce06d9cff9939b0",
+      "contains_failure": false,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    },
+    {
+      "file": ".local/file-recovery-typecheck-attempt-02.log",
+      "sha256": "07bcbd37ea8f4e51c4c455ed69b1ed6f711d0c270880d73f2569cbd5168c7f49",
+      "contains_failure": true,
+      "source_at_time_not_frozen": true,
+      "used_for_final_pass": false
+    }
+  ],
+  "final_evidence": false,
+  "scope": "Early local development attempts preserve their actual private output bytes. Their exact historical implementation inputs were not frozen, so these records do not establish source-bound final verification. Final full backend and client runs are separate."
+}

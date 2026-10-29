@@ -156,7 +156,7 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		if tool == "list_directory" {
 			content, writeOutput = writeOutput, nil
 		}
-	case "create_file_draft", "stage_file_create":
+	case "create_file_draft", "stage_file_create", "recover_file_draft":
 		var raw json.RawMessage
 		var handled bool
 		writeOutput, snapshots, raw, handled, err = s.createFileDraftStep(ctx, tx, st, lease, key, tool, args, inputHash, work)

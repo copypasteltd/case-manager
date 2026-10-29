@@ -693,6 +693,10 @@ mutation_view = {"run_id": ID, "tool": enum("update_task_dependency", "create_ta
     "before": {"type": "object", "additionalProperties": True}, "status": enum("authorized", "committed"),
     "operation_id": nullable(ID), "result_version": nullable(VERSION), "result": nullable({"type": "object", "additionalProperties": True})}
 add("AgentMutationView", mutation_view, tuple(mutation_view))
+file_recovery_input = {"source_run_id": ID, "draft_id": ID, "content_sha256": HASH, "reviewed": {"type":"boolean", "const":True}}
+add("AgentFileRecoveryInput", file_recovery_input, tuple(file_recovery_input))
+file_recovery_view = {"source_run_id": ID, "draft_id": ID, "content_sha256": HASH, "recovery_sha256": HASH, "depth": {"type":"integer", "minimum":1, "maximum":8}}
+add("AgentFileRecoveryView", file_recovery_view, tuple(file_recovery_view))
 add("AgentFileUpdateInput", {"file_id": ID, "base_version_id": ID, "expected_file_version": VERSION}, ("file_id", "base_version_id", "expected_file_version"))
 file_target = {"name": NAME, "folder_id": ID, "classification": CLASS, "media_type": enum("text/plain", "text/markdown")}
 add("AgentFileUpdateTarget", {**file_target, "folder_version": VERSION}, tuple(file_target))
@@ -706,9 +710,9 @@ file_draft = {"id": ID, "content_sha256": HASH, "size_bytes": BYTES, "diff": ref
 add("AgentFileDraft", file_draft, tuple(file_draft))
 file_update = {"run_id": ID, "file_id": ID, "base_version_id": ID, "file_version": VERSION, "intent_sha256": HASH, "target": ref("AgentFileUpdateTarget"),
     "status": enum("authorized", "committed"), "drafts": array(ref("AgentFileDraft"), maxItems=3), "operation_id": nullable(ID), "result": nullable(ref("FileCommitResult"))}
-add("AgentFileUpdateView", file_update, tuple(file_update))
+add("AgentFileUpdateView", {**file_update, "recovery":ref("AgentFileRecoveryView")}, tuple(file_update))
 file_create_view = {k:v for k,v in file_update.items() if k not in ("file_id", "base_version_id", "file_version")}
-add("AgentFileCreateView", file_create_view, tuple(file_create_view))
+add("AgentFileCreateView", {**file_create_view, "recovery":ref("AgentFileRecoveryView")}, tuple(file_create_view))
 oa_draft = {"kind": enum("contract", "purchase", "claim"), "business_id": ID, "expected_business_version": VERSION,
     "business_revision_id": ID, "business_content_hash": HASH, "reason": {"type":"string","minLength":1,"maxLength":200}, "request_id": ID, "expected_version": VERSION}
 add("AgentOADraftArguments", oa_draft, tuple(k for k in oa_draft if k not in ("request_id","expected_version")))
@@ -739,7 +743,7 @@ post_write={"run_id":ID,"input":ref("AgentPostWriteInput"),"before":ref("AgentPo
 add("AgentPostWriteView",post_write,tuple(post_write))
 add("RunCreate", {**EXPECTED, "context_security_version": VERSION, "profile_id": ID,
     "client_message_id": ID, "message": {"type": "string", "minLength": 1, "maxLength": 20000},
-    "skill_id": NAME, "context_refs": array(ref("ResourceRef"), maxItems=20), "mutation": ref("AgentMutationInput"), "file_update": ref("AgentFileUpdateInput"), "file_create": ref("AgentFileCreateInput"), "oa_request": ref("AgentOARequestInput"), "post_write":ref("AgentPostWriteInput")},
+    "skill_id": NAME, "context_refs": array(ref("ResourceRef"), maxItems=20), "mutation": ref("AgentMutationInput"), "file_update": ref("AgentFileUpdateInput"), "file_create": ref("AgentFileCreateInput"), "file_recovery": ref("AgentFileRecoveryInput"), "oa_request": ref("AgentOARequestInput"), "post_write":ref("AgentPostWriteInput")},
     ("expected_version", "context_security_version", "profile_id", "client_message_id", "message"))
 add("Run", {**RECORD, "conversation_id": ID,
     "state": enum("queued", "running", "awaiting_approval", "committing", "succeeded", "failed", "cancelled", "interrupted"),

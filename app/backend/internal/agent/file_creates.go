@@ -18,17 +18,18 @@ type FileCreateInput struct {
 }
 
 type FileCreateView struct {
-	RunID        string           `json:"run_id"`
-	IntentSHA256 string           `json:"intent_sha256"`
-	Target       fileUpdateTarget `json:"target"`
-	Status       string           `json:"status"`
-	Drafts       []FileDraftView  `json:"drafts"`
-	OperationID  *string          `json:"operation_id"`
-	Result       json.RawMessage  `json:"result"`
+	RunID        string            `json:"run_id"`
+	IntentSHA256 string            `json:"intent_sha256"`
+	Target       fileUpdateTarget  `json:"target"`
+	Status       string            `json:"status"`
+	Drafts       []FileDraftView   `json:"drafts"`
+	OperationID  *string           `json:"operation_id"`
+	Result       json.RawMessage   `json:"result"`
+	Recovery     *FileRecoveryView `json:"recovery,omitempty"`
 }
 
 func fileCreateView(view FileUpdateView) FileCreateView {
-	return FileCreateView{view.RunID, view.IntentSHA256, view.Target, view.Status, view.Drafts, view.OperationID, view.Result}
+	return FileCreateView{RunID: view.RunID, IntentSHA256: view.IntentSHA256, Target: view.Target, Status: view.Status, Drafts: view.Drafts, OperationID: view.OperationID, Result: view.Result, Recovery: view.Recovery}
 }
 
 func assignFileIntent(run *Run, i *fileIntentRecord, view FileUpdateView) {

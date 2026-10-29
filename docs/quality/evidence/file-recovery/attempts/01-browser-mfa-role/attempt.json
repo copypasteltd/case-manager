@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "archived_at": "2026-10-29T13:08:37.115136+00:00",
+  "reason": "The opt-in browser fixture requested MFA enrollment without first granting an actionless MFA-required role. The 13 business subtests passed; no browser was opened and this attempt remains failed.",
+  "source_sha256": "92a0bf2da9aaa19bffa38005b37f95dd3a38a485b80b7cee6213dd38e244c1c6",
+  "source_archive": ".local/01-browser-mfa-role-source.zip",
+  "source_archive_sha256": "a454335f62145d8edda63bed3933b3f09098062910b9325338fa5e9a7479e740",
+  "records": [
+    {
+      "file": "result.json",
+      "sha256": "16a7775cbe88a33f38ddf55afc8f07ca235314307e03700e7d7e44966b37ca51"
+    }
+  ],
+  "private_logs": [
+    {
+      "file": ".local/01-browser-mfa-role-file-recovery-web-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": ".local/01-browser-mfa-role-file-recovery-web-native.log",
+      "sha256": "eacd29c42ccecc98984d0f58667e894f814c52518881e2a31ec327c8d1647201"
+    }
+  ],
+  "archiver_sha256": "e62e415335e96e3ddd950456c45370ddd38aca010330455d240a3982788aa414",
+  "reclassified_as_final_pass": false
+}

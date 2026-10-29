@@ -51930,6 +51930,68 @@
           "result"
         ]
       },
+      "AgentFileRecoveryInput": {
+        "type": "object",
+        "properties": {
+          "source_run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "draft_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "type": "boolean",
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "source_run_id",
+          "draft_id",
+          "content_sha256",
+          "reviewed"
+        ]
+      },
+      "AgentFileRecoveryView": {
+        "type": "object",
+        "properties": {
+          "source_run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "draft_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "recovery_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "depth": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "source_run_id",
+          "draft_id",
+          "content_sha256",
+          "recovery_sha256",
+          "depth"
+        ]
+      },
       "AgentFileUpdateInput": {
         "type": "object",
         "properties": {
@@ -52216,6 +52278,9 @@
                 "type": "null"
               }
             ]
+          },
+          "recovery": {
+            "$ref": "#/components/schemas/AgentFileRecoveryView"
           }
         },
         "additionalProperties": false,
@@ -52280,6 +52345,9 @@
                 "type": "null"
               }
             ]
+          },
+          "recovery": {
+            "$ref": "#/components/schemas/AgentFileRecoveryView"
           }
         },
         "additionalProperties": false,
@@ -53139,6 +53207,9 @@
           },
           "file_create": {
             "$ref": "#/components/schemas/AgentFileCreateInput"
+          },
+          "file_recovery": {
+            "$ref": "#/components/schemas/AgentFileRecoveryInput"
           },
           "oa_request": {
             "$ref": "#/components/schemas/AgentOARequestInput"

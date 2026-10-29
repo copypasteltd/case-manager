@@ -41,18 +41,19 @@ type SourceSnapshot struct {
 	SHA256          string `json:"sha256"`
 }
 type RunCreate struct {
-	ExpectedVersion        int64             `json:"expected_version"`
-	ContextSecurityVersion int64             `json:"context_security_version"`
-	ProfileID              string            `json:"profile_id"`
-	ClientMessageID        string            `json:"client_message_id"`
-	Message                string            `json:"message"`
-	SkillID                string            `json:"skill_id,omitempty"`
-	ContextRefs            []SourceReference `json:"context_refs,omitempty"`
-	Mutation               *MutationInput    `json:"mutation,omitempty"`
-	OARequest              *OARequestInput   `json:"oa_request,omitempty"`
-	PostWrite              *PostWriteInput   `json:"post_write,omitempty"`
-	FileUpdate             *FileUpdateInput  `json:"file_update,omitempty"`
-	FileCreate             *FileCreateInput  `json:"file_create,omitempty"`
+	ExpectedVersion        int64              `json:"expected_version"`
+	ContextSecurityVersion int64              `json:"context_security_version"`
+	ProfileID              string             `json:"profile_id"`
+	ClientMessageID        string             `json:"client_message_id"`
+	Message                string             `json:"message"`
+	SkillID                string             `json:"skill_id,omitempty"`
+	ContextRefs            []SourceReference  `json:"context_refs,omitempty"`
+	Mutation               *MutationInput     `json:"mutation,omitempty"`
+	OARequest              *OARequestInput    `json:"oa_request,omitempty"`
+	PostWrite              *PostWriteInput    `json:"post_write,omitempty"`
+	FileUpdate             *FileUpdateInput   `json:"file_update,omitempty"`
+	FileCreate             *FileCreateInput   `json:"file_create,omitempty"`
+	FileRecovery           *FileRecoveryInput `json:"file_recovery,omitempty"`
 }
 type Run struct {
 	ID                string          `json:"id"`
@@ -349,11 +350,14 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		if in.SkillID != "" && in.SkillID != profile.SkillID {
 			return core.Result{}, core.Invalid("skill_id", "技能与所选执行配置不一致")
 		}
-		if (in.FileUpdate != nil || in.FileCreate != nil) && profile.SkillID != "file-update" {
+		if (in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil) && profile.SkillID != "file-update" {
 			return core.Result{}, core.Invalid("file_update", "准确文件更新需选择文件更新任务")
 		}
 		if in.FileCreate != nil && (in.FileUpdate != nil || in.Mutation != nil) {
 			return core.Result{}, core.Invalid("file_create", "每次发送只能选择一项准确文件新建或更新")
+		}
+		if in.FileRecovery != nil && (in.FileUpdate != nil || in.FileCreate != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
+			return core.Result{}, core.Invalid("file_recovery", "恢复草稿需作为本次唯一的准确写入授权")
 		}
 		if in.PostWrite != nil {
 			if profile.SkillID != "project-briefing" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.OARequest != nil {
@@ -417,6 +421,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		}
 		if in.FileCreate != nil {
 			inputParts = append(inputParts, in.FileCreate)
+		}
+		if in.FileRecovery != nil {
+			inputParts = append(inputParts, in.FileRecovery)
 		}
 		if in.OARequest != nil {
 			inputParts = append(inputParts, in.OARequest)
@@ -497,11 +504,13 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			snapshots = append(snapshots, oaRequestSnapshot(oaRequest))
 		}
 		var fileIntent *fileIntentRecord
-		if in.FileUpdate != nil || in.FileCreate != nil {
+		if in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil {
 			if len(snapshots) >= 20 {
 				return core.Result{}, core.Invalid("context_refs", "准确文件更新需要保留一项资料位置")
 			}
-			if in.FileCreate != nil {
+			if in.FileRecovery != nil {
+				fileIntent, err = s.prepareFileRecoveryIntent(ctx, tx, command.Actor, c, runID, *in.FileRecovery, members, in.Message)
+			} else if in.FileCreate != nil {
 				fileIntent, err = prepareFileCreateIntent(ctx, tx, command.Actor, c, runID, *in.FileCreate, members, in.Message)
 			} else {
 				fileIntent, err = prepareFileIntent(ctx, tx, command.Actor, c, runID, *in.FileUpdate, members, in.Message)

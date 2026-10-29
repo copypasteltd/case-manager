@@ -90,7 +90,7 @@ test('new text files require exact current-run formal creation evidence; staging
   const value:ProposedResult={...baseResult(),resource_refs:[file],source_refs:[intent],operation_ids:[operation]};
   const receipt:ExecutionReceipt={run_id:run.id,authority_stamp:run.authority_stamp,tool:'commit_file_create',status:'succeeded',committed:true,operation_id:operation,resource_refs:[file],source_refs:[intent]};
   skill.validateOutput(value);assert.equal(verifyResult(skill,run,value,[receipt]).status,'completed');
-  for(const tool of ['stage_file_create','propose_file_create','inspect_operation'])assert.throws(()=>verifyResult(skill,run,value,[{...receipt,tool,committed:false,operation_id:null}]),/RESULT_(OPERATION|COMPLETION)_UNVERIFIED/);
+  for(const tool of ['recover_file_draft','stage_file_create','propose_file_create','inspect_operation'])assert.throws(()=>verifyResult(skill,run,value,[{...receipt,tool,committed:false,operation_id:null}]),/RESULT_(OPERATION|COMPLETION)_UNVERIFIED/);
   assert.throws(()=>verifyResult(skill,run,value,[{...receipt,run_id:randomUUID()}]),/RESULT_REFERENCE_UNVERIFIED/);
 });
 

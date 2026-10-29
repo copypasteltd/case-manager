@@ -1,0 +1,65 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-29T13:20:24.399281+00:00",
+  "reviewer": "Codex inspection of all seven final screenshots and decoded first/middle/last frames of both actual GIFs",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/file-recovery-web-review.png",
+      "sha256": "f2d8214e691262ab1c003547fde1df276449f969e6da94616a6b18910515a707"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-selected.png",
+      "sha256": "95aece269ee0c7da450c80b7ef614c3654aca09663878425ce3f7f0fac0cd34d"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-accepted.png",
+      "sha256": "68a4cdc2fac6e77517d450c5bd666ff462b7d991282eade9404d4c20e95edb0e"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-dark.png",
+      "sha256": "919d79e2971a53db8e416ac5f8b64724fea4eff4dc12b1d79c6b57b66fee0293"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-review.png",
+      "sha256": "3e6b8f9189415eab226ba64937c323034fcfd20197f221eb2cead5acc7115573"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-selected.png",
+      "sha256": "6aa9931384696c8999cd00122cf5e5c26e001357e7686205a67987143b95e154"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-accepted.png",
+      "sha256": "1a8f8941dc05f59b1ee5bb380d5c07ac013c60cf6182bc43dd0dfbc4265fede6"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/file-recovery-web.gif",
+      "sha256": "39494f2f32c6c31f92f85cef5f693e65fa13c1cc7301cc576d2f7feca22ebc82"
+    },
+    {
+      "file": "docs/media/gifs/file-recovery-mobile.gif",
+      "sha256": "dae1ba51020fddba79a158452ded00941b530c155c674a61399342afbab5829b"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": [
+      0,
+      15,
+      30
+    ],
+    "mobile": [
+      0,
+      9,
+      18
+    ]
+  },
+  "findings": [
+    "The original draft diff, exact selection, explicit confirmation and new-run lineage are readable within the inspected viewports.",
+    "Web light and dark receipts show pending processing without claiming a file commit.",
+    "Mobile wrapping preserves the selected content digest and recovery lineage without horizontal overflow.",
+    "Recordings contain authenticated synthetic application pixels; no passwords, MFA inputs or real business data are visible."
+  ],
+  "real_model_executed": false,
+  "real_device": false
+}

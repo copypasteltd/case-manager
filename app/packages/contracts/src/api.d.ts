@@ -8566,6 +8566,24 @@ export interface components {
                 [key: string]: unknown;
             } | null;
         };
+        AgentFileRecoveryInput: {
+            /** Format: uuid */
+            source_run_id: string;
+            /** Format: uuid */
+            draft_id: string;
+            content_sha256: string;
+            /** @constant */
+            reviewed: true;
+        };
+        AgentFileRecoveryView: {
+            /** Format: uuid */
+            source_run_id: string;
+            /** Format: uuid */
+            draft_id: string;
+            content_sha256: string;
+            recovery_sha256: string;
+            depth: number;
+        };
         AgentFileUpdateInput: {
             /** Format: uuid */
             file_id: string;
@@ -8631,6 +8649,7 @@ export interface components {
             drafts: components["schemas"]["AgentFileDraft"][];
             operation_id: string | null;
             result: components["schemas"]["FileCommitResult"] | null;
+            recovery?: components["schemas"]["AgentFileRecoveryView"];
         };
         AgentFileCreateView: {
             /** Format: uuid */
@@ -8642,6 +8661,7 @@ export interface components {
             drafts: components["schemas"]["AgentFileDraft"][];
             operation_id: string | null;
             result: components["schemas"]["FileCommitResult"] | null;
+            recovery?: components["schemas"]["AgentFileRecoveryView"];
         };
         AgentOADraftArguments: {
             /** @enum {string} */
@@ -8817,6 +8837,7 @@ export interface components {
             mutation?: components["schemas"]["AgentMutationInput"];
             file_update?: components["schemas"]["AgentFileUpdateInput"];
             file_create?: components["schemas"]["AgentFileCreateInput"];
+            file_recovery?: components["schemas"]["AgentFileRecoveryInput"];
             oa_request?: components["schemas"]["AgentOARequestInput"];
             post_write?: components["schemas"]["AgentPostWriteInput"];
         };

@@ -143,7 +143,7 @@ func (b *Bridge) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				expected = []string{"company/read_resource", "company/inspect_operation", "company/update_task_dependency", "company/create_task", "company/create_risk", "company/update_risk", "company/create_issue", "company/update_issue", "company/create_deliverable", "company/update_deliverable", "company/create_milestone", "company/update_project", "company/update_task", "company/transition_task", "company/transition_project", "company/update_milestone", "company/transition_milestone"}
 			}
 			if profile.SkillID == "file-update" {
-				expected = []string{"company/read_resource", "company/inspect_operation", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}
+				expected = []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}
 			}
 			if profile.SkillID == "information-organize" {
 				expected = []string{"company/read_resource", "company/inspect_operation", "company/list_directory", "company/propose_organization", "company/commit_organization"}

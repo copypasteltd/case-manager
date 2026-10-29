@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T13:09:35.020Z",
+  "finished_at": "2026-10-29T13:09:54.619Z",
+  "checks": [
+    "The real original stopped run and exact saved diff load through the application; selecting a draft alone does not authorize or send recovery.",
+    "Explicit human review enables selection while the old run and its committed state stay fixed.",
+    "An actual UI submission persists a new queued run with immutable exact recovery provenance, original target/base and no claimed upload, model output or formal commit.",
+    "A changed content digest cannot continue the original run or create a formal file commit.",
+    "The actual Web and shared mobile recovery view stays within the viewport; the owned synthetic API fixture is separate from real model, cloud and production acceptance."
+  ],
+  "source_count": 810,
+  "source_sha256": "82d6d5712bbe2437ab104d7bd555b94da4a5092e7d20ab590c262794dc905e59",
+  "source_after_sha256": "82d6d5712bbe2437ab104d7bd555b94da4a5092e7d20ab590c262794dc905e59",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "036a174ea1b7d90c5291ad48eb09f04be2fade2a5be21b1f10cd9dfc3794a1de",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "036a174ea1b7d90c5291ad48eb09f04be2fade2a5be21b1f10cd9dfc3794a1de",
+  "build_source_unchanged": true
+}

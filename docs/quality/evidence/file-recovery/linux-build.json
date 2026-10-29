@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T13:18:41.868569+00:00",
+  "source_sha256": "1ed642769ba1f3cd6c9b9acc6cfce4842fd2992670532c72f48995365e7611f4",
+  "source_after_sha256": "1ed642769ba1f3cd6c9b9acc6cfce4842fd2992670532c72f48995365e7611f4",
+  "commands": [
+    {
+      "name": "agent-native",
+      "package": "./cmd/agent-native",
+      "exit_code": 0,
+      "elapsed_seconds": 50.64,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform",
+      "package": "./cmd/platform",
+      "exit_code": 0,
+      "elapsed_seconds": 8.495,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "agent-native",
+      "file": ".local/file-recovery-linux/agent-native-linux-amd64",
+      "sha256": "735e27f151149d2c5838d2e8a0c3ab9bf3e778946ec344a6ef4e53ffcd66995f",
+      "bytes": 12697786,
+      "format": "ELF64-x86-64"
+    },
+    {
+      "name": "platform",
+      "file": ".local/file-recovery-linux/platform-linux-amd64",
+      "sha256": "5c3cd69dad21fd07b64e6198e41bf516aecd7b763198343bf10caf81ad325a65",
+      "bytes": 36343277,
+      "format": "ELF64-x86-64"
+    }
+  ],
+  "verification_script_sha256": "29428cff4c84a8b4048cba33b64cf73de78cd2b0e332acd94c321683e07878a0",
+  "artifact_executed": false,
+  "kernel_boundary_executed": false,
+  "deployed": false
+}

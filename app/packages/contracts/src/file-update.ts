@@ -17,7 +17,7 @@ export function makeFileUpdate(file: Schemas['File'], version: Schemas['FileVers
 export function fileUpdateReceipt(run: Schemas['Run'], input?: FileUpdate): boolean {
   const value = run.file_update;
   if (!input) return !value;
-  if (!value || value.run_id !== run.id || value.file_id !== input.file_id || value.base_version_id !== input.base_version_id || value.file_version !== input.expected_file_version || !hash.test(value.intent_sha256) || !value.target?.name || !Array.isArray(value.drafts) || value.drafts.length > 3) return false;
+  if (!value || value.recovery || value.run_id !== run.id || value.file_id !== input.file_id || value.base_version_id !== input.base_version_id || value.file_version !== input.expected_file_version || !hash.test(value.intent_sha256) || !value.target?.name || !Array.isArray(value.drafts) || value.drafts.length > 3) return false;
   if (value.status === 'authorized') return value.operation_id === null && value.result === null;
   const result = value.result, version = result?.file_version;
   return value.status === 'committed' && !!value.operation_id && uuid.test(value.operation_id) && result?.committed === true && result.file.id === input.file_id && result.file.version === input.expected_file_version + 1 && result.file.current_version_id === version?.id && version.file_id === input.file_id && version.base_version_id === input.base_version_id && version.source === 'agent' && version.scan_state === 'clean' && value.drafts.some(draft => draft.result_version_id === version.id && draft.content_sha256 === version.sha256 && !!draft.plan_hash && hash.test(draft.plan_hash));
@@ -32,7 +32,7 @@ export function makeFileCreate(folder: Schemas['Folder'], name: string, media: '
 export function fileCreateReceipt(run: Schemas['Run'], input?: FileCreate): boolean {
   const value = run.file_create;
   if (!input) return !value;
-  if (!value || run.file_update || value.run_id !== run.id || !hash.test(value.intent_sha256) || value.target.folder_id !== input.folder_id || value.target.folder_version !== input.expected_folder_version || value.target.name !== input.name || value.target.media_type !== input.media_type || !Array.isArray(value.drafts) || value.drafts.length > 3) return false;
+  if (!value || value.recovery || run.file_update || value.run_id !== run.id || !hash.test(value.intent_sha256) || value.target.folder_id !== input.folder_id || value.target.folder_version !== input.expected_folder_version || value.target.name !== input.name || value.target.media_type !== input.media_type || !Array.isArray(value.drafts) || value.drafts.length > 3) return false;
   if (value.status === 'authorized') return value.operation_id === null && value.result === null;
   const result = value.result, version = result?.file_version, file = result?.file;
   return value.status === 'committed' && !!value.operation_id && uuid.test(value.operation_id) && result?.committed === true && !!file && uuid.test(file.id) && file.folder_id === input.folder_id && file.name === input.name && file.classification === value.target.classification && file.current_version_id === version?.id && version.file_id === file.id && version.seq === 1 && version.base_version_id === null && version.media_type === input.media_type && version.source === 'agent' && version.scan_state === 'clean' && value.drafts.some(draft => draft.result_version_id === version.id && draft.content_sha256 === version.sha256 && draft.size_bytes === version.size_bytes && !!draft.plan_hash && hash.test(draft.plan_hash));

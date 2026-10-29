@@ -71,6 +71,39 @@
       ]
     },
     {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_run_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "draft_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reviewed": {
+          "const": true
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "source_run_id",
+        "draft_id",
+        "content_sha256",
+        "reviewed",
+        "instructions"
+      ]
+    },
+    {
       "$ref": "https://copypaste.hk/schemas/company-skills/common.v1.json#/$defs/conversation_input"
     }
   ]

@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "recorded_at": "2026-10-29T13:47:42.197850+00:00",
+  "reason": "The initial restart omitted explicit PostgreSQL port options. The new owned development cluster started on default loopback5432 instead of configured14660; its required-port assertion refused it. A follow-up read of data_directory correctly failed for the application role. The exact postmaster PID, native process command line, directory record and actual port were then attested before stopping only that new owned cluster. No unrelated process was terminated and no schema upgrade reran.",
+  "owned_wrong_port_cluster_stopped": true,
+  "application_settings_privileges_preserved": true,
+  "historical_helper_source_not_frozen": true
+}

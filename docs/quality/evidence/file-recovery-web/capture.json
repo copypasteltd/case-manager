@@ -1,0 +1,49 @@
+{
+  "recordings": [
+    {
+      "name": "file-recovery-web",
+      "frame_count": 22,
+      "duration_ms": 5079,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/file-recovery-web/frames.json",
+      "manifest_sha256": "67917b4e63e427834b00c428f043990221d0281c95f441cd93cb1bbf95e2536a"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/file-recovery-web-review.png",
+      "sha256": "f2d8214e691262ab1c003547fde1df276449f969e6da94616a6b18910515a707"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-selected.png",
+      "sha256": "95aece269ee0c7da450c80b7ef614c3654aca09663878425ce3f7f0fac0cd34d"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-accepted.png",
+      "sha256": "68a4cdc2fac6e77517d450c5bd666ff462b7d991282eade9404d4c20e95edb0e"
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-dark.png",
+      "sha256": "919d79e2971a53db8e416ac5f8b64724fea4eff4dc12b1d79c6b57b66fee0293"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

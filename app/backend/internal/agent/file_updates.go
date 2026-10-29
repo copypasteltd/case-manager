@@ -17,16 +17,17 @@ type FileUpdateInput struct {
 	ExpectedFileVersion int64  `json:"expected_file_version"`
 }
 type FileUpdateView struct {
-	RunID         string           `json:"run_id"`
-	FileID        string           `json:"file_id"`
-	BaseVersionID string           `json:"base_version_id"`
-	FileVersion   int64            `json:"file_version"`
-	IntentSHA256  string           `json:"intent_sha256"`
-	Target        fileUpdateTarget `json:"target"`
-	Status        string           `json:"status"`
-	Drafts        []FileDraftView  `json:"drafts"`
-	OperationID   *string          `json:"operation_id"`
-	Result        json.RawMessage  `json:"result"`
+	RunID         string            `json:"run_id"`
+	FileID        string            `json:"file_id"`
+	BaseVersionID string            `json:"base_version_id"`
+	FileVersion   int64             `json:"file_version"`
+	IntentSHA256  string            `json:"intent_sha256"`
+	Target        fileUpdateTarget  `json:"target"`
+	Status        string            `json:"status"`
+	Drafts        []FileDraftView   `json:"drafts"`
+	OperationID   *string           `json:"operation_id"`
+	Result        json.RawMessage   `json:"result"`
+	Recovery      *FileRecoveryView `json:"recovery,omitempty"`
 }
 type fileUpdateTarget struct {
 	Name           string `json:"name"`
@@ -39,6 +40,7 @@ type fileIntentRecord struct {
 	FileUpdateView
 	Mode                                               string
 	OrgID, ActorID, ConversationID, BaseSHA256, Intent string
+	RecoveryRecord                                     *fileRecoveryRecord
 }
 type FileDraftView struct {
 	ID              string              `json:"id"`
@@ -90,7 +92,10 @@ func insertFileIntent(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) error
 	}
 	_, err := tx.Exec(ctx, `INSERT INTO agent_file_intents(run_id,org_id,actor_id,conversation_id,file_id,base_version_id,file_version,target_data,base_sha256,intent,intent_sha256,mode)
  VALUES($1,$2,$3,$4,NULLIF($5,'')::uuid,NULLIF($6,'')::uuid,$7,$8,$9,$10,$11,$12)`, i.RunID, i.OrgID, i.ActorID, i.ConversationID, i.FileID, i.BaseVersionID, i.FileVersion, target, i.BaseSHA256, i.Intent, i.IntentSHA256, mode)
-	return err
+	if err != nil {
+		return err
+	}
+	return insertFileRecovery(ctx, tx, i)
 }
 func fileIntentRecordRead(ctx context.Context, tx pgx.Tx, org, id string) (*fileIntentRecord, error) {
 	var out fileIntentRecord
@@ -105,6 +110,9 @@ func fileIntentRecordRead(ctx context.Context, tx pgx.Tx, org, id string) (*file
 		return nil, err
 	}
 	if err = json.Unmarshal(target, &out.Target); err != nil {
+		return nil, err
+	}
+	if err = readFileRecovery(ctx, tx, &out); err != nil {
 		return nil, err
 	}
 	out.Status = "authorized"
@@ -127,9 +135,6 @@ func fileIntentSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 	if err = tx.QueryRow(ctx, "SELECT audience_ids FROM agent_runs WHERE org_id=$1 AND id=$2", a.OrgID, id).Scan(&audience); err != nil {
 		return out, err
 	}
-	if i.Mode == "create" {
-		return fileCreateSource(ctx, tx, a, c, i, members, audience)
-	}
 	if !slices.Contains(audience, a.UserID) {
 		return out, core.Missing()
 	}
@@ -137,6 +142,19 @@ func fileIntentSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 		if !slices.Contains(audience, user) {
 			return out, core.Missing()
 		}
+	}
+	if err = fileRecoverySources(ctx, tx, a, c, i.RecoveryRecord, a.RunID != ""); err != nil {
+		return out, err
+	}
+	dependencies, e := fileDraftSources(ctx, tx, i)
+	if e != nil {
+		return out, e
+	}
+	if e = fileSourcesCurrent(ctx, tx, a, c, dependencies, members, a.RunID != ""); e != nil {
+		return out, e
+	}
+	if i.Mode == "create" {
+		return fileCreateSource(ctx, tx, a, c, i, members, audience)
 	}
 	if _, err = contextFile(ctx, tx, a, c, ContextSource{Type: "file", ID: i.FileID, VersionID: &i.BaseVersionID}, members); err != nil {
 		return out, err

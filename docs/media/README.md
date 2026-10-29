@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量112 / Increment112：实际认证后的合成Web／Taro H5准确草稿恢复，新增7 PNG、2静音MP4及2 GIF；244份旧媒体保持原字节。录制从认证后开始，无密码、MFA输入或真实业务记录。新任务接单演示不代表真实模型执行完成。
+
+| 客户端 | 核对差异 | 已选内容 | 接单来源 | 录屏 | GIF |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/file-recovery-web-review.png) | [PNG](screenshots/file-recovery-web-selected.png) | [PNG](screenshots/file-recovery-web-accepted.png)、[深色](screenshots/file-recovery-web-dark.png) | [静音MP4](videos/file-recovery-web.mp4) | [GIF](gifs/file-recovery-web.gif) |
+| 共享移动 | [PNG](screenshots/file-recovery-mobile-review.png) | [PNG](screenshots/file-recovery-mobile-selected.png) | [PNG](screenshots/file-recovery-mobile-accepted.png) | [静音MP4](videos/file-recovery-mobile.mp4) | [GIF](gifs/file-recovery-mobile.gif) |
+
+[准确帧与编码来源](../quality/evidence/file-recovery/media.json) · [本轮核验](../quality/112-secretary-file-recovery-verification.md)。
+
 增量111媒体来自真实认证后的合成Web／Taro H5页面；新增7张PNG、2段静音MP4和2个GIF，原233份媒体准确保留。
 
 | 端 | GIF | 录屏 | 截图 |
