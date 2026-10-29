@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T18:15:31.586896+00:00",
+  "encoder_script_sha256": "9af072d915fd66af485a178777372a268ce67b0a69b4496dcba44275efb00a6e",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "eefd30686af8a460856f93f96b84a684757823dc66b8ec49a1b38f0a1a585196",
+      "build_source_sha256": "4c77e833690b6facdeae702743db267f0efd4f7fc514535e58e64cd2f91ed4d4",
+      "capture_manifest": "docs/quality/evidence/workbench/web-capture-manifest.json",
+      "capture_manifest_sha256": "43cba6a7d272d3a56e4c4cceed7a0fd212fed3aae4cab228f05a7527ef00faeb",
+      "capture_frame_count": 6,
+      "capture_duration_ms": 1825,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "19",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "1.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/workbench-web.mp4",
+          "sha256": "fbbee6c30ca233cc18433c4ebba1c3b429ec5f956ce5c1a169c231ef792830e7",
+          "bytes": 105355
+        },
+        {
+          "file": "docs/media/gifs/workbench-web.gif",
+          "sha256": "ff7fcefc76bdbd99c0064d542802f8e3fd16fb8c250c2a0d26d0d023eb6d6cfe",
+          "bytes": 163853
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "0960673dfd61557b7cad02a1bb4b259b523084fb8b943fac4a30c347f91635e8",
+      "build_source_sha256": "4c77e833690b6facdeae702743db267f0efd4f7fc514535e58e64cd2f91ed4d4",
+      "capture_manifest": "docs/quality/evidence/workbench/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "73c97deca694ba991511c5c873fc6bdce50044a5ea88f16f2032753f8c396032",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 1849,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "20",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/workbench-mobile.mp4",
+          "sha256": "5a0ecced85b64e4027a7b1d4bca0444b6dd440c0fcc620a51a7d520e4ea790df",
+          "bytes": 45426
+        },
+        {
+          "file": "docs/media/gifs/workbench-mobile.gif",
+          "sha256": "c82e902a9816024c4aca4578b50d9f229d59032a7b54e70eaf338837efd696e4",
+          "bytes": 98390
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

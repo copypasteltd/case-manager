@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T19:19:27.772837+00:00",
+  "encoder_script_sha256": "738c808354a8728d42e5a424dd289f833d4846eb664f28fbf95f934b3529fd2d",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "1f0f178757d02dc49ccd3e4995172dbf866db5f96866572d6f1e9838a0330bdd",
+      "build_source_sha256": "98c8dcf88ed30f4acb8f7019ab0b762e393e7337ad3eeae42fccbe8009a7ecc8",
+      "capture_manifest": "docs/quality/evidence/workbench/web-capture-manifest.json",
+      "capture_manifest_sha256": "4c0b3750e012c95f2fcf8b32a5d159c14bee6ff0af71f332be44887266accb81",
+      "capture_frame_count": 30,
+      "capture_duration_ms": 6141,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/workbench-web-summary.png",
+          "sha256": "e101dfe3d49846a4ede290dd96afa938be612135cc263ed3d3fa5666308f7add"
+        },
+        {
+          "file": "docs/media/screenshots/workbench-web-narrow.png",
+          "sha256": "e9d7f3e949509fe512a88f007550d986e742f48a9cc8b6a96d82a42b326b15ad"
+        },
+        {
+          "file": "docs/media/screenshots/workbench-web-other-member.png",
+          "sha256": "0be043c8e5b195d08c962ac42d8e34e33bad257a91fa6ab800a66d5e8181a353"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 760,
+            "height": 1000,
+            "nb_frames": "63",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "6.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/workbench-web.mp4",
+          "sha256": "fa33ac6bc48db855e11272b073aa250225039e9eca9f00cd360314e3ed904e13",
+          "bytes": 96108
+        },
+        {
+          "file": "docs/media/gifs/workbench-web.gif",
+          "sha256": "14a64eb1d802cea7d78877672065f13483f1b95ab9c4a1751412c8e44f04e68a",
+          "bytes": 303147
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "0d997551ed5d8bf3aacde709678d2616927bfb7b1b84937487ab2f36ad10c1e3",
+      "build_source_sha256": "98c8dcf88ed30f4acb8f7019ab0b762e393e7337ad3eeae42fccbe8009a7ecc8",
+      "capture_manifest": "docs/quality/evidence/workbench/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "26b30065d8d0555bd12d8c3d65c2691e028643d57a78c96f0fb6eccf07ec501c",
+      "capture_frame_count": 27,
+      "capture_duration_ms": 7022,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/workbench-mobile-summary.png",
+          "sha256": "98b85be2c3a467aa8d72524f497fe82b5f35a8b00a00a9120226a847db94d581"
+        },
+        {
+          "file": "docs/media/screenshots/workbench-mobile-narrow.png",
+          "sha256": "3ea6fa3f922e74a175a9a9b0aa54db14c15915c431388324b2918fdc787f88ec"
+        },
+        {
+          "file": "docs/media/screenshots/workbench-mobile-other-member.png",
+          "sha256": "f2c69ad3c94663d6203c3ed2ab3994184bca54f29dfb435bd3b5fa5eff62daec"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "71",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.100000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/workbench-mobile.mp4",
+          "sha256": "222ca04382b7223ca51cf5e5ba14466b7e271975d6621ea5c8f9a0398db7d99e",
+          "bytes": 144235
+        },
+        {
+          "file": "docs/media/gifs/workbench-mobile.gif",
+          "sha256": "010d93fef085880f4f7ab5b9987ebdadc1fcb598f1d49fb495f462a3af21a858",
+          "bytes": 140312
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (overview, narrow viewport, other member), two seconds each. No real model or device claim."
+}

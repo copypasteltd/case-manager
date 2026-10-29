@@ -1,0 +1,54 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T18:02:51.721194+00:00",
+  "reason": "Mobile capture used the row-arrow suffix on the plain refresh Action. A concurrently pending response wait rejected before the click timeout and no browser result was written. The owned runner and native fixture were stopped; no owned Edge process remained under the private browser-temp directory at inspection. No application behavior is changed by the correction.",
+  "interaction_source_sha256": "fa05b21d5ed8035cfce0ab031de039aa349e1007170798f18ff43623e28c0b8f",
+  "private_source_archive": "app/.local/workbench-before-refresh-selector.zip",
+  "archive_sha256": "3ee8ed6149ccc0c03fefe998fcc85835d4c917549e139849bd43c7b08b05db37",
+  "private_files": [
+    {
+      "path": "app/.local/workbench-web-refresh-selector-attempt-browser.log",
+      "sha256": "1afbe55882e2bfcfc78dc92155877e7b375472db982b2500db460b3a873da382"
+    },
+    {
+      "path": "app/.local/workbench-web-refresh-selector-attempt-native.log",
+      "sha256": "f4b47cc000b00ceae2e25ef83f595489d7ce4f8d191527a8088f214d976b996f"
+    },
+    {
+      "path": "app/.local/workbench-web-refresh-selector-attempt-build.log",
+      "sha256": "a39493625e89322f10c0feb65f58b62e66a2b713da7705335014041d333caf73"
+    },
+    {
+      "path": "app/.local/workbench-mobile-refresh-selector-attempt-browser.log",
+      "sha256": "fba64aa30e46aa00a139bbf0f99440d2e3ce8ea92181e27f4eb1ded07bdf0a85"
+    },
+    {
+      "path": "app/.local/workbench-mobile-refresh-selector-attempt-native.log",
+      "sha256": "b101928831415c48a46e991e7ffb9ee3025e432b337d69b59ce8a529127eb6a9"
+    },
+    {
+      "path": "app/.local/workbench-mobile-refresh-selector-attempt-build.log",
+      "sha256": "eee56be98c4d9de13b86f806deb2234a59619382600f70e41f1eb2fe18eff8ec"
+    },
+    {
+      "path": "app/.local/refresh-selector-attempt-workbench-mobile-summary.png",
+      "sha256": "6becbbf1a1b70bf9eb4ead00a743f451ea048ef8f9b874a7699cd3c1e7d8f3d6"
+    },
+    {
+      "path": "app/.local/refresh-selector-attempt-workbench-web-narrow.png",
+      "sha256": "e9d7f3e949509fe512a88f007550d986e742f48a9cc8b6a96d82a42b326b15ad"
+    },
+    {
+      "path": "app/.local/refresh-selector-attempt-workbench-web-other-member.png",
+      "sha256": "dd97a34304e845f412249ea451f764b482540c0a4706fc851146ffa18169d045"
+    },
+    {
+      "path": "app/.local/refresh-selector-attempt-workbench-web-summary.png",
+      "sha256": "01f3b23a34f75cdde94f3e67a031d9b424d10e396ec67ca51469f886e8676c6b"
+    }
+  ],
+  "previous_web_result_passed_for_previous_sources": true,
+  "current_source_pass_credit": false,
+  "owned_edge_processes_observed_after_runner_cleanup": 0
+}

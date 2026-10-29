@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T18:06:12.670543+00:00",
+  "reason": "Before any Go test in batch9, the native PostgreSQL ownership/durability query timed out at its unchanged30-second limit. Current-source batches1–8 remain complete and their raw hashes will be verified on explicit resume. No test deadline, durability setting or application source is changed.",
+  "private_log": "app/.local/workbench-backend-batch-9-initial-attestation-timeout.log",
+  "raw_log_sha256": "99e925bdee7e6fd8d7b8d2fed497a21ecc3f9cc05e666f28f828452fd7fe615b"
+}

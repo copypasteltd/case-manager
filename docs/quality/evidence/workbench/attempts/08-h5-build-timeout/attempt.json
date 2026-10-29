@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T18:50:28.594716+00:00",
+  "reason": "The H5 prebuild exceeded its unchanged720-second setup limit before any native fixture or browser was started. The owned build and proxy were closed. No fixture file was created; null fixture exit and false fixture-cleanup field mean not started, not a leaked fixture. No business case is counted. Retry the same source after independent work.",
+  "private_log": "app/.local/workbench-h5-build-timeout.log",
+  "raw_log_sha256": "03f1b91c3e209a34553bf64a429668631647a02d6d3a1d6feaf023d977d4be98",
+  "fixture_started": false,
+  "browser_started": false,
+  "private_fixture_present": false
+}

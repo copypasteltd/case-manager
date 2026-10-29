@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T18:30:02.776Z",
+  "finished_at": "2026-10-29T18:30:55.337Z",
+  "checks": [
+    {
+      "name": "Genuine login and MFA expose exact current-owner counts with bounded samples and literal titles",
+      "passed": true
+    },
+    {
+      "name": "Authenticated synthetic recording contains real workbench pixels without credentials",
+      "passed": true
+    },
+    {
+      "name": "All three actual UI links open ordinary currently authorized exact business resources",
+      "passed": true
+    }
+  ],
+  "source_count": 858,
+  "source_sha256": "40fcc3d725caa30ff75bddee1b75b132361de6cebeef50e658e5b4d9d52f12b8",
+  "source_after_sha256": "40fcc3d725caa30ff75bddee1b75b132361de6cebeef50e658e5b4d9d52f12b8",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('待我审批 · 6', { exact: true }) to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "395553b09ee86ce9b18f89b2a428907a78cd669d09e77e0d3995020080e378bd",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "395553b09ee86ce9b18f89b2a428907a78cd669d09e77e0d3995020080e378bd",
+  "build_source_unchanged": true
+}

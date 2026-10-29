@@ -1440,6 +1440,18 @@ PATHS["/auth/mfa/step-up"]["post"]["parameters"] = [parameter for parameter in P
     if parameter.get("$ref") != "#/components/parameters/IdempotencyKey"]
 operation("/capabilities", "get", "getCapabilities", "Capability")
 operation("/dashboard", "get", "getDashboard", "Dashboard")
+workbench_item = {"id": ID, "version": VERSION, "revision_id": ID, "related_id": nullable(ID), "title": NAME,
+    "state": enum("active", "overdue", "due_soon", "awaiting_confirmation"), "due_on": nullable(DATE), "updated_at": TIME}
+add("WorkbenchItem", workbench_item, tuple(workbench_item))
+workbench_group = {"kind": enum("approvals", "contracts", "subscription_periods"), "count": COUNT,
+    "items": array(ref("WorkbenchItem"), maxItems=5), "has_more": {"type": "boolean"}}
+add("WorkbenchGroup", workbench_group, tuple(workbench_group))
+workbench_summary = {"as_of": TIME, "scope": enum("my_readable_work"), "business_date": DATE,
+    "contract_timezone": enum("Asia/Hong_Kong"), "contract_through": DATE,
+    "groups": array(ref("WorkbenchGroup"), minItems=3, maxItems=3)}
+add("WorkbenchSummary", workbench_summary, tuple(workbench_summary))
+operation("/dashboard/business", "get", "getWorkbenchSummary", "WorkbenchSummary")
+
 overview_kinds = enum("tasks", "milestones", "deliverables", "risks", "issues", "changes", "budgets", "files", "posts", "contracts", "purchases", "claims", "costs", "payments", "subscriptions", "services")
 overview_count = {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
 overview_item = {"id": ID, "version": VERSION, "revision_id": nullable(ID), "title": TEXT, "state": NAME, "updated_at": TIME}

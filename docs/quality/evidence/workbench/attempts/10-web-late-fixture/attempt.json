@@ -1,0 +1,149 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T19:08:12.263595+00:00",
+  "reason": "The initial150-second fixture preparation wait expired. The fixture then became ready during the existing cleanup wait before the wrapper was stopped, leaving its owned JSON and one disconnected synthetic database. Preserve the private fixture, exact native/build logs and pg_dump before controlled cleanup. No browser was launched and no business case is counted.",
+  "isolated_database": "cp_test_d955fe9cd06c47a7b8df80f2deb29965",
+  "fixture_started_late": true,
+  "browser_started": false,
+  "private_files": [
+    {
+      "path": "app/.local/workbench-late-web-fixture/fixture.json",
+      "sha256": "12779f5850887e749df744805775b1dab5ec6f7786b6d4dc1e3f55e4cbc9dd5f"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/synthetic-fixture.dump",
+      "sha256": "96a722da0b8ee444bbccff1c2d1e1ff1a9909a807b3408540eaa1488c2851099"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/workbench-web-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/workbench-web-native.log",
+      "sha256": "7649e34c517752a91fa4cdc76e6dbc59fee919930078539b6d199242f6e3c599"
+    },
+    {
+      "path": "app/.local/workbench-before-late-fixture-cleanup.zip",
+      "sha256": "ba1f5ea3959e0b65841882bdb7234932710619045cab6f9b892737129c683f12"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000000.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000001.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000002.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000003.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000004.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000005.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000006.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000007.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000008.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000009.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000010.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000011.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000012.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000013.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000014.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000015.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000016.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000017.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000018.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000019.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000020.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000021.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000022.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000023.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000024.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000025.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000026.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frame-000027.jpg",
+      "sha256": "ce2a2962b65aa6a36a0e9b4ad22caf73989b7b06f870bbbf307975f155f80d35"
+    },
+    {
+      "path": "app/.local/workbench-late-web-fixture/previous-mobile-frames/frames.json",
+      "sha256": "fc18eb980c95462491616db5698c91ef81d0d6ebed5b9c4322a8f231f3fd2a22"
+    }
+  ],
+  "previous_mobile_passed_for_prior_harness": true,
+  "previous_mobile_raw_frames_preserved": true
+}

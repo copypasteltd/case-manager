@@ -65,6 +65,7 @@ func (s *Server) Handler() http.Handler {
 	s.administrationRoutes(mux)
 	s.auditRoutes(mux)
 	s.projectRoutes(mux)
+	s.workbenchRoutes(mux)
 	s.knowledgeRoutes(mux)
 	s.filesRoutes(mux)
 	s.searchRoutes(mux)

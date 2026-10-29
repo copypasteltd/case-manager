@@ -1,0 +1,31 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/workbench-mobile-summary.png",
+      "sha256": "fa59499269f62445bf4ca3f0b49307f09718a8fd9c6d5367d3bbea528954d9f8"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-narrow.png",
+      "sha256": "a2cbd8e63fa8a7a9d8a43a454f8854b015ac9b51a2237f3d42386a85e829929f"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-other-member.png",
+      "sha256": "3861a41e8ffb7c7ccc5dfd5edd9ca776bc5a0101ca7730466edc1ec396a94b63"
+    }
+  ],
+  "recording": {
+    "name": "workbench-mobile",
+    "frame_count": 28,
+    "duration_ms": 5703,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/workbench-mobile/frames.json",
+    "manifest_sha256": "fc18eb980c95462491616db5698c91ef81d0d6ebed5b9c4322a8f231f3fd2a22"
+  },
+  "synthetic_data": true,
+  "real_device": false,
+  "api_responses_mocked": false
+}

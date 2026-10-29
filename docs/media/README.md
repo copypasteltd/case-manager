@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量114 / Increment 114：业务工作台来自认证后的隔离合成Web／Taro H5页面；新增6 PNG、2静音MP4和2截图轮播GIF，266份旧媒体保留原字节。MP4保留认证后首页概览与实际刷新录制；GIF按每张2秒轮播真实的汇总、窄屏与其他员工截图。GIF是截图导览，实际业务交互由页面检查覆盖；全部素材不含登录、密码或MFA输入。
+
+| 端 | 汇总 | 窄屏 | 其他员工 | 录屏 | GIF截图导览 |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/workbench-web-summary.png) | [PNG](screenshots/workbench-web-narrow.png) | [PNG](screenshots/workbench-web-other-member.png) | [静音MP4](videos/workbench-web.mp4) | [GIF](gifs/workbench-web.gif) |
+| 共享移动 | [PNG](screenshots/workbench-mobile-summary.png) | [PNG](screenshots/workbench-mobile-narrow.png) | [PNG](screenshots/workbench-mobile-other-member.png) | [静音MP4](videos/workbench-mobile.mp4) | [GIF](gifs/workbench-mobile.gif) |
+
+[实际帧、时长和编码来源](../quality/evidence/workbench/media.json) · [验证](../quality/114-business-workbench-verification.md)。媒体展示本地受控业务，不声明真机、真实云／模型／TG或生产验收。
+
 增量113 / Increment113：实际认证后的合成Web／Taro H5文件版本正文比较；新增7 PNG、2静音MP4及2 GIF，255份旧媒体保持原字节。录制在登录与MFA完成后开始；全文分页实际还原准确正文，脚本文字按普通文本显示。
 
 | 客户端 | 截图 | 录屏 | GIF |

@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量114：GAP-08／18已加入四端本人有效审批、生效合同到期与订阅账期待核对工作台、完整授权计数和准确业务详情入口。更多聚合、实际故障／跨渠道回执及完整业务旅程继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/114-business-workbench.md)及[验证](../quality/114-business-workbench-verification.md)。
+
 增量113：GAP-04／18已加入四端准确正式版本的完整提取正文比较、固定摘要分页与过期依据拒绝。更多格式、原件排版、PDF／OCR、复杂DOCX和完整业务旅程继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/113-file-version-comparison.md)及[验证](../quality/113-file-version-comparison-verification.md)。
 
 增量112：GAP-04／12的准确草稿跨运行恢复已接通四端、实际API、不可变PG来源和专用MCP工具；旧草稿重建后须重新上传、校验、扫描和授权提交。更多格式、全文差异、完整OA附件与真实模型验收继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/112-secretary-file-recovery.md)及[验证](../quality/112-secretary-file-recovery-verification.md)。

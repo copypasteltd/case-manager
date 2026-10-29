@@ -1,0 +1,85 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-29T19:20:09.393219+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/workbench-web-summary.png",
+      "sha256": "e101dfe3d49846a4ede290dd96afa938be612135cc263ed3d3fa5666308f7add"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-web-narrow.png",
+      "sha256": "e9d7f3e949509fe512a88f007550d986e742f48a9cc8b6a96d82a42b326b15ad"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-web-other-member.png",
+      "sha256": "0be043c8e5b195d08c962ac42d8e34e33bad257a91fa6ab800a66d5e8181a353"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-summary.png",
+      "sha256": "98b85be2c3a467aa8d72524f497fe82b5f35a8b00a00a9120226a847db94d581"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-narrow.png",
+      "sha256": "3ea6fa3f922e74a175a9a9b0aa54db14c15915c431388324b2918fdc787f88ec"
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-other-member.png",
+      "sha256": "f2c69ad3c94663d6203c3ed2ab3994184bca54f29dfb435bd3b5fa5eff62daec"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/workbench-mobile.gif",
+      "sha256": "010d93fef085880f4f7ab5b9987ebdadc1fcb598f1d49fb495f462a3af21a858"
+    },
+    {
+      "file": "docs/media/gifs/workbench-web.gif",
+      "sha256": "14a64eb1d802cea7d78877672065f13483f1b95ab9c4a1751412c8e44f04e68a"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": [
+      {
+        "frame_index": 0,
+        "file": "app/.local/workbench-visual/web-tour-0.png",
+        "sha256": "777d953e56f0acaf60d1130af16a244b7470c6f348ed96546a020f729447ffa0"
+      },
+      {
+        "frame_index": 8,
+        "file": "app/.local/workbench-visual/web-tour-8.png",
+        "sha256": "c9b37154df66970acd8f08d2ffe4c746b0033b7088c63481aad00d3f771afe97"
+      },
+      {
+        "frame_index": 16,
+        "file": "app/.local/workbench-visual/web-tour-16.png",
+        "sha256": "0710f8b0492dcacac58178eff60ef25c0e945cbc2953c6a70c9dcae9e703bae1"
+      }
+    ],
+    "mobile": [
+      {
+        "frame_index": 0,
+        "file": "app/.local/workbench-visual/mobile-tour-0.png",
+        "sha256": "c6a74e4d117017b8e757cc65c4cc7c4b6eb0ec5eb7abcfaa6ec8f45f652605c8"
+      },
+      {
+        "frame_index": 8,
+        "file": "app/.local/workbench-visual/mobile-tour-8.png",
+        "sha256": "d6dfb8c225602f91544de43b45c5011521036bde8de3874130b0d450952e5cc7"
+      },
+      {
+        "frame_index": 16,
+        "file": "app/.local/workbench-visual/mobile-tour-16.png",
+        "sha256": "c98c43a1003aff9f0f26679f4ab78438251b5d2e14884536f607472b04323ae5"
+      }
+    ]
+  },
+  "scope": "Visually reviewed all six current PNGs and decoded GIF frames0,8,16 from each final24-frame screenshot tour. These show the overview, narrow viewport and separate member. Both GIFs are screenshot tours, not live screen recordings. MP4s retain actual viewport recordings and are checked by their exact raw-frame manifests and ffprobe; no full visual playback review of every MP4 frame is claimed.",
+  "observations": [
+    "Counts and sample limits are readable; literal angle-bracket titles remain text.",
+    "Narrow PNGs fit their viewport; ordinary member screenshots expose zero matching responsible work.",
+    "GIF tour frames show different layouts and callers; letterboxing preserves original screenshot aspect ratios.",
+    "No visible password, MFA or private capability fields appear in the six PNGs or reviewed GIF samples."
+  ],
+  "full_goal_complete": false,
+  "production_acceptance": false
+}

@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "prior_backend_source_sha256": "d59e9ce9c3d577e6265861a827ce1917b48b8028aa45c54e5c9e002de4023637",
+  "private_source_archive": "app\\.local\\workbench-before-browser-mfa-backend.zip",
+  "archive_sha256": "04540974af603a17c9ef06a52b939c18f08c51e4f10b9dffa8a06ca8667a9186",
+  "reason": "The UI holder requires a genuine MFA credential for synthetic Alice. Ordinary API cases passed, but this role set did not require initial MFA. Add a temporary enrollment role, finish real enrollment and revoke that temporary role before the browser starts. Backend source changed; no earlier batch is eligible for the final run."
+}

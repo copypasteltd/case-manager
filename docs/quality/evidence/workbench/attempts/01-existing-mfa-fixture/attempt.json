@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T17:24:37.026987+00:00",
+  "backend_source_sha256": "0c49ede9d120f52d20b76682824cdfc70846144b5ac354a8225ef9b28938a50d",
+  "test_source_sha256": "6503ee3f1b039ca00c783efd27fbb7fa2972302c0c31dcee1c5c4115b990772f",
+  "private_log": "app\\.local\\workbench-targeted-backend-attempt01.log",
+  "raw_log_sha256": "d7c4a90d1d825c4a097b13229304dc89c6b9efe40ff0f2ccf8145f5713a53fb6",
+  "reason": "The enrollment helper received no enrollment challenge under the current Alice role set and returned422. The ordinary API uses its valid existing human session. The controlled browser fixture separately grants an enrollment role, completes real MFA enrollment, then revokes that temporary role."
+}

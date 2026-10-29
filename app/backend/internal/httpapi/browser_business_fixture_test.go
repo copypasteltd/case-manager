@@ -77,6 +77,21 @@ func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any)
 		})
 	}
 
+	if values["workbench_fixture"] == true {
+		mux.HandleFunc("POST /__fixture/workbench/revoke-approval", func(w http.ResponseWriter, r *http.Request) {
+			if r.Header.Get("Authorization") != "Bearer "+nonce {
+				w.WriteHeader(http.StatusForbidden)
+				return
+			}
+			result, err := f.owner.Exec(r.Context(), "UPDATE role_bindings SET revoked_at=clock_timestamp() WHERE org_id=$1 AND id=$2 AND user_id=$3 AND revoked_at IS NULL", f.org, values["workbench_review_binding"], f.alice)
+			if err != nil || result.RowsAffected() != 1 {
+				t.Error("owned workbench revocation failed")
+				w.WriteHeader(500)
+				return
+			}
+			w.WriteHeader(http.StatusNoContent)
+		})
+	}
 	mux.HandleFunc("POST /__fixture/stop", func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Authorization") != "Bearer "+nonce {
 			w.WriteHeader(http.StatusForbidden)
@@ -121,6 +136,9 @@ func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any)
 		if os.Getenv("CP_BROWSER_MOBILE_FIXTURE") == "1" {
 			values["fixture_kind"] = "mobile-business"
 		}
+	}
+	if values["workbench_fixture"] == true {
+		values["fixture_kind"] = "human-business-workbench"
 	}
 	folder, err := filepath.Abs(filepath.Join("..", "..", "..", ".local"))
 	if err != nil {

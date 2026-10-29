@@ -239,6 +239,18 @@ func (s *Service) RequestHistory(ctx context.Context, a core.Actor, id, cursor s
 	}
 	return out, nil
 }
+
+// PendingApprovalsSQL is shared by the ordinary queue and the human workbench.
+// Arguments: organization, assignee, channel, runtime flag. Do not add a cursor.
+const PendingApprovalsSQL = `SELECT s.id,s.request_id,s.updated_at FROM approval_steps s JOIN requests r ON r.org_id=s.org_id AND r.id=s.request_id
+        ` + businessHeads + `
+        WHERE s.org_id=$1 AND s.assigned_user_id=$2 AND s.state='active' AND r.state='in_review' AND r.current_revision_id=s.revision_id AND r.active_instance_id=s.instance_id
+        AND can_access(r.org_id,$2,'request.read','request',r.id,r.project_id,r.applicant_id,r.classification,$3,$4)
+        AND can_access(r.org_id,$2,'approval.decide','request',r.id,r.project_id,r.applicant_id,r.classification,$3,$4)
+        AND can_access(b.org_id,$2,b.kind||'.read',b.kind,b.id,b.project_id,b.creator_id,b.classification,$3,$4)
+        AND (b.kind<>'change' OR EXISTS(SELECT 1 FROM projects cp WHERE cp.org_id=b.org_id AND cp.id=b.project_id AND can_access(cp.org_id,$2,'budget.read','project',cp.id,cp.id,cp.creator_id,cp.classification,$3,$4)))
+        AND (b.kind<>'purchase_variance' OR EXISTS(SELECT 1 FROM spend_documents p WHERE p.org_id=b.org_id AND p.id=b.purchase_id AND can_access(p.org_id,$2,'purchase.read','purchase',p.id,p.project_id,p.creator_id,p.classification,$3,$4)))`
+
 func (s *Service) ApprovalTasks(ctx context.Context, a core.Actor, cursor string, limit int) (core.Page[ApprovalStep], error) {
 	out := core.Page[ApprovalStep]{Items: []ApprovalStep{}}
 	if limit < 1 || limit > 100 {
@@ -255,14 +267,7 @@ func (s *Service) ApprovalTasks(ctx context.Context, a core.Actor, cursor string
 		at = &c.UpdatedAt
 		id = &c.ID
 	}
-	rows, err := s.DB.Query(ctx, `SELECT s.id,s.request_id,s.updated_at FROM approval_steps s JOIN requests r ON r.org_id=s.org_id AND r.id=s.request_id
-        `+businessHeads+`
-        WHERE s.org_id=$1 AND s.assigned_user_id=$2 AND s.state='active' AND r.state='in_review' AND r.current_revision_id=s.revision_id AND r.active_instance_id=s.instance_id
-        AND can_access(r.org_id,$2,'request.read','request',r.id,r.project_id,r.applicant_id,r.classification,$3,$4)
-        AND can_access(r.org_id,$2,'approval.decide','request',r.id,r.project_id,r.applicant_id,r.classification,$3,$4)
-        AND can_access(b.org_id,$2,b.kind||'.read',b.kind,b.id,b.project_id,b.creator_id,b.classification,$3,$4)
-        AND (b.kind<>'change' OR EXISTS(SELECT 1 FROM projects cp WHERE cp.org_id=b.org_id AND cp.id=b.project_id AND can_access(cp.org_id,$2,'budget.read','project',cp.id,cp.id,cp.creator_id,cp.classification,$3,$4)))
-        AND (b.kind<>'purchase_variance' OR EXISTS(SELECT 1 FROM spend_documents p WHERE p.org_id=b.org_id AND p.id=b.purchase_id AND can_access(p.org_id,$2,'purchase.read','purchase',p.id,p.project_id,p.creator_id,p.classification,$3,$4)))
+	rows, err := s.DB.Query(ctx, PendingApprovalsSQL+`
         AND ($5::timestamptz IS NULL OR (s.updated_at,s.id)<($5,$6::uuid)) ORDER BY s.updated_at DESC,s.id DESC LIMIT $7`, a.OrgID, a.UserID, a.Channel, a.RunID != "", at, id, limit+1)
 	if err != nil {
 		return out, err

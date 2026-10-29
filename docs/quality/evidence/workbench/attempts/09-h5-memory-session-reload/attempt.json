@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T18:57:04.841683+00:00",
+  "reason": "The newly introduced test-only full page reload discarded the H5 client in-memory session and correctly returned to login. Revert the reset strategy in favor of actual browser Back navigation; no product authentication behavior is changed. Preserve the prior Web pass as its original script source, not current-source credit.",
+  "interaction_source_sha256": "2067cc94d1c734339da52eb91198021d0fd24a736e48fe12ea298bf2dbc129e9",
+  "private_files": [
+    {
+      "path": "app/.local/workbench-web-memory-session-attempt-browser.log",
+      "sha256": "1afbe55882e2bfcfc78dc92155877e7b375472db982b2500db460b3a873da382"
+    },
+    {
+      "path": "app/.local/workbench-web-memory-session-attempt-native.log",
+      "sha256": "e3e760295e7af6873693601970439625457b5b23000c0d520882fb9b0ae7ed3b"
+    },
+    {
+      "path": "app/.local/workbench-web-memory-session-attempt-build.log",
+      "sha256": "0c1c22d0d2a5ea3470fd9d2afa39e6880e4f1c31d9c25489f764b0212da900b7"
+    },
+    {
+      "path": "app/.local/workbench-mobile-memory-session-attempt-browser.log",
+      "sha256": "f536c2e03877af193ff63c902eb4869bf54ee5c3216f2aaaeefa28324fcc336a"
+    },
+    {
+      "path": "app/.local/workbench-mobile-memory-session-attempt-native.log",
+      "sha256": "558f6544d84fd64ff5ce65f87f82e2b0d2973688ce02aae38f59567781074f27"
+    },
+    {
+      "path": "app/.local/workbench-mobile-memory-session-attempt-build.log",
+      "sha256": "71680a46881122a1936b0035dafafb6cf059e9b5767742bfac234d29c48388a5"
+    },
+    {
+      "path": "app/.local/workbench-memory-session-prior-helpers.zip",
+      "sha256": "6d0945b04f5d559b973d33a65dd386718a7f58ec8eced540aaec13bde8e2fd2b"
+    }
+  ],
+  "previous_web_passed": true,
+  "h5_in_memory_session_expected": true
+}

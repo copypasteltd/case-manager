@@ -1,0 +1,153 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "at": "2026-10-29T18:32:18.355665+00:00",
+  "interaction_source_sha256": "395553b09ee86ce9b18f89b2a428907a78cd669d09e77e0d3995020080e378bd",
+  "reason": "After successful genuine login, authenticated recording and all three ordinary detail links, waiting for the home approval heading timed out. The retained failure PNG is blank; no pageerror or HTTP500 was observed. Exact navigation timing was not captured, so the original cause is unconfirmed. Change only the test reset to explicitly reload the requested home URL; retain failure stack and bounded non-private page structure on any next failure. This reset is not counted as user business navigation.",
+  "private_files": [
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000000.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000001.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000002.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000003.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000004.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000005.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000006.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000007.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000008.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000009.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000010.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000011.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000012.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000013.jpg",
+      "sha256": "1eec1f7200fcd55d5da1bf0bda208353ee34db0aa7f11d429b4e19b9e310b666"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000014.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000015.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000016.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000017.jpg",
+      "sha256": "04c7d6a53c291f0c60475c8cb07c3e47ccca8dad9d2d36353defc589af8dcd65"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000018.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000019.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000020.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000021.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000022.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000023.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000024.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000025.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000026.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frame-000027.jpg",
+      "sha256": "ecbc97bca7c973f500ad59a15337cca04b0e92f13e31d95cfd9cafdd7783d1f7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/frames.json",
+      "sha256": "aeba97d1484fcd629579ea0a770afb026f7ffa1dd68068ecfa248de0fa2526d7"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/helper-source.zip",
+      "sha256": "b8dbb9603e73b2182de378cdddfa983d2fc2e35c5bcf64142438e302af638dba"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/timed.ffconcat",
+      "sha256": "4dafb383678acca287b02978eca14ebb4e0f280db08c4119d005423dbb4f8b48"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/workbench-mobile-browser.log",
+      "sha256": "97c0ec1a88c57be91287e8190f19a0e4ac79ad1195b454cb23ed11d33c9e955c"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/workbench-mobile-build.log",
+      "sha256": "fcab530944062615b5ab18e666d866eb61161fcf4b5bf81c511086adebecad28"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/workbench-mobile-native.log",
+      "sha256": "f7887db7ad346269e33618800e549b71e73d4d64f14b725c6fcf99cee9b1d53e"
+    },
+    {
+      "path": "app/.local/workbench-home-navigation-attempt/reconstructed-prior-helpers.zip",
+      "sha256": "5ee735cc399ac8a1f0839f9419bd7980bf7daa55bc6487ab1dbe688c89353026"
+    }
+  ],
+  "original_metadata_digest_observed_during_helper_edit": "2067cc94d1c734339da52eb91198021d0fd24a736e48fe12ea298bf2dbc129e9",
+  "source_binding_verified_from_reconstructed_helpers": true,
+  "source_binding_note": "The first helper ZIP and metadata digest were captured after the correction began. They remain retained as captured, rather than being described as prior source. A separate prior-helper ZIP reverses the disclosed home-reset patch and restores the common helper from the previous exact archive. Rehashing these reconstructed helper bytes with unchanged remaining implementation inputs exactly reproduces the failed browser receipt.",
+  "reconstructed_prior_helpers": "app/.local/workbench-home-navigation-attempt/reconstructed-prior-helpers.zip"
+}

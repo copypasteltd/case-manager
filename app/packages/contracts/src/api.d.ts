@@ -688,6 +688,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/dashboard/business": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getWorkbenchSummary */
+        get: operations["getWorkbenchSummary"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/projects/{id}/overview": {
         parameters: {
             query?: never;
@@ -11953,6 +11970,44 @@ export interface components {
             data: components["schemas"]["Dashboard"];
             meta: components["schemas"]["Meta"];
         };
+        WorkbenchItem: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            revision_id: string;
+            related_id: string | null;
+            title: string;
+            /** @enum {string} */
+            state: "active" | "overdue" | "due_soon" | "awaiting_confirmation";
+            due_on: string | null;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        WorkbenchGroup: {
+            /** @enum {string} */
+            kind: "approvals" | "contracts" | "subscription_periods";
+            count: number;
+            items: components["schemas"]["WorkbenchItem"][];
+            has_more: boolean;
+        };
+        WorkbenchSummary: {
+            /** Format: date-time */
+            as_of: string;
+            /** @enum {string} */
+            scope: "my_readable_work";
+            /** Format: date */
+            business_date: string;
+            /** @enum {string} */
+            contract_timezone: "Asia/Hong_Kong";
+            /** Format: date */
+            contract_through: string;
+            groups: components["schemas"]["WorkbenchGroup"][];
+        };
+        WorkbenchSummaryResponse: {
+            data: components["schemas"]["WorkbenchSummary"];
+            meta: components["schemas"]["Meta"];
+        };
         ProjectOverviewItem: {
             /** Format: uuid */
             id: string;
@@ -15183,6 +15238,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DashboardResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getWorkbenchSummary: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkbenchSummaryResponse"];
                 };
             };
             400: components["responses"]["Failure"];
