@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "scope": "Focused original notification retry scenarios before the leaf-only failure-list change; final full-suite evidence is authoritative for current sources.",
+  "source_sha256": "8491523791fd64b6cfcced52cfc1b2ec3911bfbd6081f8b4ba438e5c9f3ce46c",
+  "tests": [
+    "TestNotificationManualRetries/separate_authority_and_content_boundary",
+    "TestNotificationManualRetries/current_MFA,_exact_revision_and_strict_input",
+    "TestNotificationManualRetries/atomic_child,_stable_replay_and_unchanged_terminal_source",
+    "TestNotificationManualRetries/real_worker_results_and_event_delivery_deduplication",
+    "TestNotificationManualRetries/read-only_history_and_bound_pagination",
+    "TestNotificationManualRetries/four_human_read_channels_and_executor_rejection",
+    "TestNotificationManualRetries/database_requires_a_fresh_child_and_atomic_evidence",
+    "TestNotificationManualRetries/retry_rechecks_current_recipient_authority",
+    "TestNotificationManualRetries/stale_business_events_are_not_reinterpreted",
+    "TestNotificationManualRetries/automatic_backoff_cannot_be_bypassed",
+    "TestNotificationManualRetries/invalid_fixed_input_and_rejected_event_stay_blocked",
+    "TestNotificationManualRetries/audit_failure_rolls_back_the_retry_child",
+    "TestNotificationManualRetries/concurrent_requests_cannot_fork_a_failure",
+    "TestNotificationManualRetries/immutable_retry_evidence_and_authorization_before_replay",
+    "TestNotificationManualRetries"
+  ],
+  "archive_sha256": "76f5e4fa0dfc1dccea840932a1f8335a87baac2fcc863e3c80f04c6bae997a9f",
+  "raw_log_sha256": "6a79bb9df3333b6ee33c07c7789520b10f826ee430102e43bb90dd5b963b8900",
+  "archive": "ignored app/.local/notification-retry-attempts/focused03/source.zip"
+}

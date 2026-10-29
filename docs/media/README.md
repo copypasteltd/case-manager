@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量110 / Increment110：7 PNG、2静音MP4、2 GIF来自认证后的隔离合成业务和实际浏览器操作；不录制密码或MFA输入。原222份媒体保留原始字节与来源。
+
+| 客户端 / Client | 原失败 / Failure | 实际结果 / Result | 历史 / History | 录屏 / Recording | GIF |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/notification-retry-web-failure.png) | [PNG](screenshots/notification-retry-web-result.png) | [PNG](screenshots/notification-retry-web-history.png) | [MP4](videos/notification-retry-web.mp4) | [GIF](gifs/notification-retry-web.gif) |
+| Taro H5 | [PNG](screenshots/notification-retry-mobile-failure.png) | [PNG](screenshots/notification-retry-mobile-result.png) | [PNG](screenshots/notification-retry-mobile-history.png) | [MP4](videos/notification-retry-mobile.mp4) | [GIF](gifs/notification-retry-mobile.gif) |
+
+[验证与来源 / Verification](../quality/110-notification-retry-verification.md)。
+
 增量109 / Increment109：实际Web／Taro H5审计筛选、详情、固定导出历史和文件摘要核对，新增7 PNG、2段静音MP4、2个GIF。仅隔离合成数据；录制从认证后开始，不含密码或MFA输入。原211份媒体按原来源保留，不声明真机或生产验收。
 
 | 客户端 / Client | 详情 / Details | 固定导出 / Export | 录屏 / Recording | GIF |

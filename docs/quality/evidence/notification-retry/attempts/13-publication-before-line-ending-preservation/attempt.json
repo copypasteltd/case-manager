@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "status": "superseded_document_line_endings",
+  "archived_at": "2026-10-29T10:21:54.787398+00:00",
+  "scope": "The initial26 publication and12 scope checks passed. Preserve their original bytes before restoring existing Markdown CRLF endings. Application code, media and business semantics do not change. Repeat the current scope and publication checks afterward.",
+  "source_archive": "app/.local/notification-retry-attempts/publication-before-line-endings/source.zip",
+  "source_archive_sha256": "14fc4d728424759ab9b9167d1c100bf697b9f3e0c2bf15b9540b6a2249f8e9bd",
+  "records": [
+    {
+      "file": "repository-check.json",
+      "sha256": "e8020df8e544da6d1da1354b34628446938ca9479c67d1f375a90e9ca99dd624"
+    },
+    {
+      "file": "scope-check.json",
+      "sha256": "9087a0648d3f187a480d2896f65dd68a5000df85bc71715d8d5a339f75244481"
+    }
+  ],
+  "application_changed": false,
+  "new_production_acceptance": false
+}

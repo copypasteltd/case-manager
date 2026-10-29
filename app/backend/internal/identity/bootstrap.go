@@ -123,6 +123,7 @@ func Bootstrap(ctx context.Context, db platform.DBTX, input BootstrapInput) (Boo
 		{"agent_plan_operator", "秘书项目计划操作人", true, []string{"agent.plan.read", "agent.plan.propose", "agent.plan.approve", "agent.plan.commit", "agent.plan.revoke"}},
 		{"status_reader", "服务状态查阅人", false, []string{"service.read"}},
 		{"notification_operator", "通知投递运维", true, []string{"notification.delivery.read"}},
+		{"notification_retry_operator", "通知重试经办", true, []string{"notification.delivery.read", "notification.delivery.retry"}},
 		{"status_operator", "服务状态维护人", true, []string{"service.read", "service.manage", "incident.update"}},
 		{"file_importer", "文件迁移操作人", true, []string{"file.import", "folder.read", "file.read", "file.upload", "file.update"}},
 		{"member", "项目成员", false, []string{"project.read", "task.read", "task.create", "task.update", "task.transition", "milestone.read", "risk.read", "issue.read", "deliverable.read", "post.read", "post.write", "comment.write", "file.read", "file.upload", "folder.read"}},

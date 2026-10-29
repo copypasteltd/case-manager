@@ -1,0 +1,65 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-29T09:46:40.530243+00:00",
+  "reviewer": "Codex visual inspection of final screenshot and decoded GIF contact sheets",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/notification-retry-web-failure.png",
+      "sha256": "af06c87a6419c00fa1a6356c5093a2459c44f1ace082d90fad9ab8737b1d7967"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-result.png",
+      "sha256": "2913a18095d3efbd9642b73a220414e9721d68468e2672b8c8fba78a8d1354f7"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-history.png",
+      "sha256": "d29780ba2f562bdd1bca2f6f5c22ffe7b667273ed63a197071bea1674cb7410d"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-dark.png",
+      "sha256": "8fdf2599d5661094c5753ef98a5e7cf17eeb33b01f5e816033fcc62bcbe253ee"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-failure.png",
+      "sha256": "7d91bb287fe32c76c6ea564b41affcb6909dc4f94e9803b6ff395c497881a433"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-result.png",
+      "sha256": "ad8d490f4f7fc2918f9b522a0f69fc078cd698da2a6a141a4c76db51ecfc1d71"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-history.png",
+      "sha256": "fc396287fc5678e6283f0f0833b816e1a11a56f0c170d78ee3e64f5e7e552764"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/notification-retry-web.gif",
+      "sha256": "b18a9c8ff7a819d965b18609b0e04b54c51b4dc517295613a1f075fc94a96581",
+      "bytes": 375523
+    },
+    {
+      "file": "docs/media/gifs/notification-retry-mobile.gif",
+      "sha256": "a675f0d278c07074018c4de8c04eebf58367f22c4b079583d1f1423eca1cdf6a",
+      "bytes": 254976
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": [
+      0,
+      8,
+      15
+    ],
+    "mobile": [
+      0,
+      16,
+      32
+    ]
+  },
+  "findings": [
+    "Failure confirmation, actual result and immutable parent/child history are visible in the affected Web and shared-mobile captures.",
+    "Captured viewport controls fit their content; the mobile details wrap their technical identifiers and result text.",
+    "Only authenticated synthetic notification content is recorded; no password, OTP input or private business record is visible."
+  ],
+  "scope": "Affected notification recovery controls and recorded state transitions; not real-device or complete accessibility acceptance."
+}

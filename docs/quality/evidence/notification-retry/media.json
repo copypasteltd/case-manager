@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T09:44:28.967639+00:00",
+  "encoder_script_sha256": "0a460c8b7b3d843974e518953ff67375f5b54a093acce3153c630d5c6044403b",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "771844f4d6c3b4b97990d86e44cc861a4753e02e47fa90d56309108a7b44abf7",
+      "build_source_sha256": "b02c24db522ba7d6d6477b25a07a5b9aa0b3748b510bf2c3396b8b6ee20b75d9",
+      "capture_manifest": "docs/quality/evidence/notification-retry/web-capture-manifest.json",
+      "capture_manifest_sha256": "dd14970f8644d922bf5a85c557cc26983ca44a785e37c84ae47d1b8ad7600930",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 2625,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "27",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/notification-retry-web.mp4",
+          "sha256": "73d3d7aaf71f82f1a5d926cf9dab0379a5b1617f8e186028c10e4c338b703530",
+          "bytes": 202286
+        },
+        {
+          "file": "docs/media/gifs/notification-retry-web.gif",
+          "sha256": "b18a9c8ff7a819d965b18609b0e04b54c51b4dc517295613a1f075fc94a96581",
+          "bytes": 375523
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "383129fbe2096b18d9c5c254c5b0868550c5be81e0a63a51e8b9a1c4ff4e348a",
+      "build_source_sha256": "b02c24db522ba7d6d6477b25a07a5b9aa0b3748b510bf2c3396b8b6ee20b75d9",
+      "capture_manifest": "docs/quality/evidence/notification-retry/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "66451f13d2cc52c7ae38857ded469ac164305ad31899fd6cb88a25aeff23b17d",
+      "capture_frame_count": 26,
+      "capture_duration_ms": 5299,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "54",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "5.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/notification-retry-mobile.mp4",
+          "sha256": "7e95c88f7a9ef51f4cedb11b0613a8a4adae68f417f8bd796ecad377f349125f",
+          "bytes": 86654
+        },
+        {
+          "file": "docs/media/gifs/notification-retry-mobile.gif",
+          "sha256": "a675f0d278c07074018c4de8c04eebf58367f22c4b079583d1f1423eca1cdf6a",
+          "bytes": 254976
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

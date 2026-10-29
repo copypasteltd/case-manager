@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量110：GAP-08的站内通知失败人工重试已接通四端页面、真实API、PG不可变依据和租约Worker；更多工作台聚合、提醒策略、实际复制故障及跨渠道送达继续开放。仍为23 active（14 P0／9 P1）／5 excluded，子功能完成不等于整个工作包验收。见[设计与使用](../development/110-notification-retry.md)及[验证](../quality/110-notification-retry-verification.md)。
+
 增量109：GAP-07的审计查询与固定导出已接通四端页面、真实API和原生PG约束；模型／Skill、TG运行和存储配置管理仍未完成。工作包按完整范围计数，保持23 active（14 P0／9 P1）／5 excluded，不把子功能或移出项记为整个工作包通过。见[设计](../development/109-audit-console.md)与[验证](../quality/109-audit-console-verification.md)。
 
 增量108：补齐合并库原型写入修补、维护版URI同步适配及Babel／esbuild／XML／send／UUID升级；完整npm审计63→0。正式发布依赖冻结与产物安全核对仍在GAP-26，当前23个工作包继续开放。见[实现](../development/108-dependency-integrity.md)和[验证](../quality/108-dependency-integrity-verification.md)。

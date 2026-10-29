@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "archived_at": "2026-10-29T09:37:51.572176+00:00",
+  "scope": "Shared-mobile H5 locator timed out before opening a failure row; both native fixture cleanups passed. Retain the pre-helper-change Web pass as historical, then rerun both clients at the corrected helper source.",
+  "browser_contexts_closed": true,
+  "native_fixture_cleanups_passed": true,
+  "application_source_changed": false,
+  "source_archive": "app/.local/notification-retry-attempts/browser03/source.zip",
+  "archive_sha256": "ac4e5cdb2da357368739804607557bf476e2931a725ef56f6f27759f594df1ea",
+  "raw_logs": [
+    {
+      "file": "app/.local/notification-retry-attempts/browser03/notification-retry-web-native.log",
+      "sha256": "1f95fc2757ea0fa7c3f22a657858bf021d50c5796dd443b9ce0656f98d3f8b16"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser03/notification-retry-web-build.log",
+      "sha256": "00bdac2fb1da374404ca371de8272441a457818ab4b333c78d4cbc5bb4e70b3a"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser03/notification-retry-web-browser.log",
+      "sha256": "2d3447cf5d7a31e310316775a9ca29d8d46eebfb4a510fcd666be811dfac7a23"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser03/notification-retry-mobile-native.log",
+      "sha256": "585024f4029f3f835116f7025deac0eebd1ce9a501f8cef33cfaa38a5e529515"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser03/notification-retry-mobile-build.log",
+      "sha256": "f14106566ac140d057643528738b933837004e1ffff20e1e9317492c1777b110"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser03/notification-retry-mobile-browser.log",
+      "sha256": "51d6ebe2c538ae1cb816b5c30aa417c982835bf2a2b5c235de4254bdc99fdc90"
+    }
+  ],
+  "web_source_sha256": "19e294204771dae7145735327fc0aa1d42b3b72cd366fdff4c55aae457f1f4e2",
+  "mobile_source_sha256": "6822da2895e30a3b4d90592539d852e9566fd1dd582eb02747ee61b868148589",
+  "verification_script_sha256": "90f6b08f2fed7667c41e192a12536a67da19f490800799bbc0522235c3cd7afc"
+}

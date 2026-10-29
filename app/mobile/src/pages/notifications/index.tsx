@@ -5,10 +5,10 @@ import { mergeNotifications, notificationCategories, notificationCount, notifica
 import { client } from '../../platform/taro';
 import { usePage } from '../../platform/page';
 import { useCommand } from '../../platform/command';
-import { useCollection } from '../../platform/collection';
 import { MobileError, type Page as ResultPage, type Schemas } from '../../platform/session';
 import { Action, Busy, Empty, Fact, Notice, Page, Section, State, date } from '../../ui';
 import { SelectField } from '../business/controls';
+import { NotificationDelivery } from './delivery';
 
 export default function NotificationsPage() {
   const filters = useRef({ state: 'all', category: '' });
@@ -50,7 +50,7 @@ export default function NotificationsPage() {
       <Section title='通知概览'><Fact label='未读'><Text>{notificationCount(value.summary.unread_count, value.summary.count_complete)}</Text></Fact><Fact label='仍需处理'><Text>{notificationCount(value.summary.attention_count, value.summary.count_complete)}</Text></Fact><View className='cp-pad'><Text className='cp-muted cp-small'>截至 {date(value.summary.as_of)}{!value.summary.count_complete && ' · + 表示至少这些条，计数待进一步核对。'}</Text></View></Section>
       <Section title='通知列表'>{items.length ? items.map(item => <NotificationCard key={item.id + ':' + item.delivery_seq + ':' + item.read_seq} item={item} me={page.result!.me} disabled={opening} onOpen={() => void open(item)} onRead={() => void page.reload()} />) : !error && <Empty>当前没有符合条件的通知。</Empty>}</Section>
       {next && !error && <Action secondary loading={moreBusy} onClick={() => void more()}>加载更早通知</Action>}
-      {page.result!.me.actions.includes('notification.delivery.read') && <DeliveryFailures />}
+      {page.result!.me.actions.includes('notification.delivery.read') && <NotificationDelivery me={page.result!.me} />}
     </>}
     <Action secondary loading={page.loading} disabled={opening} onClick={() => void page.reload()}>刷新通知</Action>
   </Page>;
@@ -58,8 +58,4 @@ export default function NotificationsPage() {
 function NotificationCard({ item, me, disabled, onOpen, onRead }: { item: Notification; me: Schemas['Me']; disabled: boolean; onOpen(): void; onRead(): void }) {
   const command = useCommand<Notification>(onRead, [me.user.id, me.authorization_version, 'notification-read', item.id, item.delivery_seq].join(':'), value => value.id === item.id && value.read_seq >= item.delivery_seq && value.read_seq <= value.delivery_seq);
   return <View className='cp-pad cp-paragraph'><Text className='cp-section-title'>{item.title}</Text><Text className='cp-muted cp-small'>{item.read ? '已读' : '未读'} · {item.attention_required ? '仍需处理' : '查看进展'}</Text><Text className='cp-paragraph'>{item.resource_label}</Text><State value={item.current_state} /><Text className='cp-muted cp-small'>{date(item.updated_at)}</Text><Notice error={command.error} /><Action disabled={disabled || command.busy} onClick={onOpen}>打开相关资料</Action>{!item.read && <Action secondary disabled={disabled || command.blocked} loading={command.busy} onClick={() => void command.submit('/notifications/' + item.id + '/read', notificationReadInput(item))}>标记已读</Action>}</View>;
-}
-function DeliveryFailures() {
-  const query = useCollection<Schemas['NotificationFailure']>('/notification-delivery-failures?limit=20');
-  return <Section title='通知投递异常'><View className='cp-pad'><Text className='cp-muted cp-paragraph'>业务操作已独立保存，此处供运行管理人员核对投递结果。</Text><Notice error={query.error} />{query.loading ? <Busy /> : !query.error && (query.items.length ? query.items.map(item => <Fact key={item.job_id} label={item.safe_code ?? '等待核对'}><State value={item.state} /><Text>尝试 {item.attempt} / {item.max_attempts}</Text><Text className='cp-muted cp-small'>{date(item.updated_at)}</Text><Text className='cp-code' selectable>{item.job_id}</Text></Fact>) : <Empty>当前没有投递异常记录。</Empty>)}{query.next && <Action secondary loading={query.moreBusy} onClick={() => void query.more()}>加载更早异常</Action>}</View></Section>;
 }

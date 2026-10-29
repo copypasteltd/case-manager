@@ -1,0 +1,28 @@
+{
+  "candidates": [
+    {
+      "oid": "104754915",
+      "name": "cp_test_478bc1c004db49a5aa92d7d4a1b5491b",
+      "owner": "postgres",
+      "invalid_drop_marker": true,
+      "template": false,
+      "active_connections": 0,
+      "created": "2026-10-29T17:01:25+08:00",
+      "matched_failed_tests": [
+        "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+        "TestPlatformIntegration"
+      ],
+      "contents_inspected": false
+    }
+  ],
+  "raw_logs": [
+    {
+      "file": "app/.local/notification-retry-fixture-cleanup-second/notification-retry-backend-retry-8.log",
+      "sha256": "428dd2e7eacba7338e32360497774765a7092bd4c070075bbc462478e82d4156"
+    }
+  ],
+  "backend_record_sha256": "2df26fbaca298ffc2a0d6df86e333dea547d1ede1d3645b77c451b7a894eeda9",
+  "browser_attempt_sha256": "749aa988b7cff0c792a54cd2a6da00b5e49647ad5c097a04cf0f4f93937bd954",
+  "force": false,
+  "production_database_selected": false
+}

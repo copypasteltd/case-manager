@@ -69,3 +69,9 @@ IAM-07：正式业务写入必须与审计/outbox 在同一 DB 事务持久化�
 明确授予的`audit.read`可查询全组织技术事件，不因此获得项目或业务正文权限；`audit.export`另行授予且需同时拥有查询权。只向需要这些操作线索的人员授权。通用响应及CSV仅含固定元数据列，不含自由原因、会话ID、payload或正文。导出仅人类交互会话可用，固定事件引用、原始筛选、创建者和授权版本；24小时或权限变化后失效。创建和下载要求近期MFA。见[实现与使用](../development/109-audit-console.md)。
 
 Explicit organization audit authority is independent of business content. Export access is separately granted, owner-bound, time-limited and checked against current sessions and authorization. Reasons and content remain outside the generic disclosure.
+
+## 通知失败人工重试 / Human notification recovery · Increment110
+
+组织级`notification.delivery.read`只读技术元数据，`notification.delivery.retry`需独立明确授予；现有只读角色不自动升级。人工重试只接受有效人类交互会话及最近10分钟MFA，固定原始业务事件和准确任务revision，追加不可变子任务、理由、审计和Outbox。运维权不授予业务正文权限；实际Worker独立重查当前接收人。Agent运行和TG执行会话不得使用人工运维入口。见[使用与状态约束](../development/110-notification-retry.md)。
+
+Read authority does not imply retry or business-content authority. Retries require explicit human confirmation and recent MFA. Fixed source input, immutable evidence and current recipient access remain mandatory; creating a child does not establish delivery or employee read status.

@@ -1,5 +1,9 @@
 # 开发、文档与仓库同步 / Development and repository synchronization
 
+增量110的通知重试实现、浏览器来源和受控清理记录见[设计](development/110-notification-retry.md)及[验证](quality/110-notification-retry-verification.md)。当前检查仍按`current-functional-baseline.json`选择；不得用早期成功记录覆盖随后的失败。通知重试使用真实API、原生PG与Worker，临时浏览器和PG结束后按归属关闭。
+
+For increment110, follow the notification-retry design and provenance records. Preserve failed attempts separately and bind final results to exact inputs. Actual native API/database/worker checks do not establish live cloud, model, TG or production acceptance.
+
 增量103使用 `app/scripts/verify_dependency_remediation_sources.py` 汇总当前检查。依赖和客户端／Android检查为本轮执行，未改Go和界面媒体保留102来源；Gradle缓存单独标记。见[开发约束](development/103-dependency-consumer-remediation.md)及[验证记录](quality/103-dependency-remediation-verification.md)。
 
 此前增量102的功能证明由 `app/scripts/verify_finance_fx_sources.py` 汇总；本地后端、客户端、Android、Web／Taro H5和媒体分别保留真实来源及执行记录。发布继续按 `docs/quality/current-functional-baseline.json` 选择当前证据，最后运行范围与仓库发布检查。详见[验证记录](quality/102-finance-fx-verification.md)，不使用旧源／缓存／移出范围替代当前验收。
@@ -36,7 +40,7 @@ Do not launch local Docker, WSL, VMs or emulators, or delegate to subagents. Clo
 | Go、SQL、权限或契约 / Backend, SQL, authorization, contract | 相关真实数据库场景、完整后端批次按风险要求；OpenAPI生成契约；各端类型检查 / Relevant native database scenarios, full batches where needed, contract generation and client types |
 | Web业务 / Web workflow | 相关单测、构建、实际 API 浏览器流程、受影响页面布局和媒体 / Tests, build, actual API flow, affected layout/media |
 | Taro公共业务 / Shared mobile | 单测、类型、双小程序编译、实际 H5 流程；受影响的 Android 开发包 / Tests, types, both builds, actual H5 flow and affected APK |
-| Android原生 / Android native | 原生单测与包检查、开发包；需设备行为则保留真机验收 / Native tests/inspection/build; device acceptance for device behavior |
+| Android原生 / Android native | 原生单测、开发构建与包检查；真机验证已移出当前范围，不启用模拟器 / Native tests, development build and package inspection; real-device verification is excluded and no emulator is used |
 | SDK、Skill、工具 / Runtime, Skill, tool | 运行时测试、包校验、原业务真实回执与越权／冲突／撤回 / Runtime/package checks and actual business/authorization cases |
 | 文档／媒体／仓库 / Docs, media, repository | 链接、双语覆盖、媒体摘要、敏感信息、忽略规则和体积 / Links, bilingual coverage, media digests, secrets, ignores and sizes |
 

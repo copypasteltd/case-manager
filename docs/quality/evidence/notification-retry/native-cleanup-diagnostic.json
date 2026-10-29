@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "retained_at": "2026-10-29T09:29:47.766114+00:00",
+  "scope": "Diagnostic of the original failed local fixture cleanup, not a network or capacity benchmark.",
+  "checkpoint_start": "2026-10-29T17:01:32.796+08:00",
+  "checkpoint_end": "2026-10-29T17:03:44.814+08:00",
+  "checkpoint_total_seconds": 132.018,
+  "checkpoint_sync_seconds": 128.318,
+  "sync_files": 1314,
+  "unchanged_drop_context_seconds": 120,
+  "interpretation": "The native server checkpoint overlaps the failed DROP and exceeds its existing cleanup deadline. The same unchanged test family subsequently passes on a separate fully durable native cluster.",
+  "private_excerpt": "app/.local/notification-retry-attempts/backend02-cleanup/checkpoint-excerpt.log",
+  "private_excerpt_sha256": "acfd4cdeaec07f0f6ce92ff78710a7c24aaa7bb919e086aab013ce2905fad84d",
+  "verification_script_sha256": "b32747f3f823d9401b3789e6874048ea752b972e8873dd7306a2785a1307e0cf",
+  "full_server_log_published": false,
+  "database_durability_changed": false,
+  "test_deadline_changed": false,
+  "network_performance_test": false
+}

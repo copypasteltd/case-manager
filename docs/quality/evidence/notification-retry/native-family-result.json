@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T09:19:30.778117+00:00",
+  "completed_at": "2026-10-29T09:20:03.113066+00:00",
+  "exit_code": 0,
+  "source_sha256": "18ace9b3ce19d053636e8fe0a1fdfcc33b2d15c87b8dd942dfd2ea18fb836076",
+  "source_unchanged_during_tests": true,
+  "checks": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/application_identity_has_no_superuser_or_audit_mutation_privileges",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/resource_ACL_filters_lists_and_rejects_foreign_projects_before_pagination",
+      "Elapsed": 0.06
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/idempotency_commits_once,_detects_changed_content_and_reauthorizes_replays",
+      "Elapsed": 0.02
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/optimistic_conflict_and_failed_mutation_leave_no_outbox_or_idempotency_record",
+      "Elapsed": 0.01
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/dependency_blocking,_review_and_parent_cycles_enforce_a_real_task_lifecycle",
+      "Elapsed": 0.07
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/concurrent_opposing_edges_cannot_form_a_dependency_cycle",
+      "Elapsed": 0.07
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+      "Elapsed": 6.2
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/web_cookies_require_CSRF_and_refresh_replay_revokes_the_family",
+      "Elapsed": 0.12
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/administrator_MFA_does_not_grant_content_and_credentials_reject_old_challenges",
+      "Elapsed": 0.29
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration/schema_prevents_actor_injection,_invalid_dates_and_missing_required_fields",
+      "Elapsed": 0
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPlatformIntegration",
+      "Elapsed": 12.46
+    }
+  ],
+  "raw_log": ".local/notification-retry-backend-native-8.log",
+  "raw_log_sha256": "e4e62f58b525bb902d00f51ac51afc47f069e98adec84415b5681dba299a5945",
+  "native_cluster_record_sha256": "7998115d71aeadb592ddb9223dcc2bba2f7142a52f17746a3b0671854d6cf943",
+  "verification_script_sha256": "d4dc7dcdd3356e727f1659d9cec0a3d7de217d848f53bef6ed54c0cfdcf2fb9d"
+}

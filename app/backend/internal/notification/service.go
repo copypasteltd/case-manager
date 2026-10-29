@@ -273,6 +273,7 @@ func (s *Service) Failures(ctx context.Context, a core.Actor, cursor string, lim
 	}
 	rows, err := tx.Query(ctx, `SELECT id,state,last_error,attempt,max_attempts,first_failed_at,updated_at FROM jobs
   WHERE org_id=$1 AND ((kind='notification.deliver.v1' AND lane='notification') OR (kind='event.rejected.v1' AND dedup_key LIKE 'notification-consumer.v1/%'))
+  AND NOT EXISTS(SELECT 1 FROM notification_retries nr WHERE nr.org_id=jobs.org_id AND nr.source_job_id=jobs.id)
   AND state IN ('dead','retry_wait') AND ($2::timestamptz IS NULL OR (updated_at,id)<($2,$3::uuid)) ORDER BY updated_at DESC,id DESC LIMIT $4`, a.OrgID, at, id, limit+1)
 	if err != nil {
 		return out, err

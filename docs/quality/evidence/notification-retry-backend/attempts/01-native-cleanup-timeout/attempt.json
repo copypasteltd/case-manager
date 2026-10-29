@@ -1,0 +1,74 @@
+{
+  "passed": false,
+  "terminal_exit_code": 1,
+  "complete": true,
+  "source_sha256": "18ace9b3ce19d053636e8fe0a1fdfcc33b2d15c87b8dd942dfd2ea18fb836076",
+  "raw_logs": [
+    {
+      "batch": 1,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-1.log",
+      "sha256": "fccf6579b32bab1c34efa89034fca889658e7410863adc2b19d1fafd70dd4b5a"
+    },
+    {
+      "batch": 2,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-2.log",
+      "sha256": "973ee979dfa86ab478bf484a44e1294b68e71f380bf834b4ea83e04511d390ae"
+    },
+    {
+      "batch": 3,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-3.log",
+      "sha256": "eaf77275865e8141fae3e57f87c333c86878c38cd79c90100fb3ba51d2601960"
+    },
+    {
+      "batch": 4,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-4.log",
+      "sha256": "b9896c0c69b9c24d4dd7202227b66fe8f7c9ac3d0f2a8bf9c149faab470fb8d3"
+    },
+    {
+      "batch": 5,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-5.log",
+      "sha256": "9c7978b62ea81f80cfe0c52cfa27a8d1fa5eb01f8212f8de9fe7488bac1a3e45"
+    },
+    {
+      "batch": 6,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-6.log",
+      "sha256": "de7b4c43f969ef96dcd93b9046e408b6e84151c649356ad63293091332fd914d"
+    },
+    {
+      "batch": 7,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-7.log",
+      "sha256": "4b0be5c4aa803050ad326c515175b2bf7caa325920c41449dc233da3b060ca62"
+    },
+    {
+      "batch": 8,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-8.log",
+      "sha256": "011712674aca3a53e4d21d58f74140a359c4933eecf93a7d3a88668ad2aeb7fa"
+    },
+    {
+      "batch": 9,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-9.log",
+      "sha256": "569eae34043baf829ac44759fe93d0310c17bf58cb28c8b4e65c97296820529e"
+    },
+    {
+      "batch": 10,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-10.log",
+      "sha256": "4901c5dd14a7e63758ec041f8c518e267f2933597b3d05033e4c93c9b62d5524"
+    },
+    {
+      "batch": 11,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-11.log",
+      "sha256": "f1b14c848a108f25b282a319f950c131a6d6640781df5107ddac8d138dc280ee"
+    },
+    {
+      "batch": 12,
+      "file": ".local/notification-retry-attempts/backend01-complete/notification-retry-backend-batch-12.log",
+      "sha256": "a7181e0bdeec0f28eab06c80f535c375f8c8e838ec428f7e46c3a4f39b104a56"
+    }
+  ],
+  "source_archive_sha256": "cdc709ba5ea3c639fdf869c855872dd11d62770b1ea165a6370c2ec40f14fcad",
+  "failed_batches": [
+    8
+  ],
+  "reason": "Native fixture DROP exceeded its independent two-minute cleanup context; no business assertion or source change is ignored.",
+  "not_current_pass_evidence": true
+}

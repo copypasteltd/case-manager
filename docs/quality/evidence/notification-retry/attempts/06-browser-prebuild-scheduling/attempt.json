@@ -1,0 +1,37 @@
+{
+  "passed": false,
+  "scope": "The H5 build occupied the fixed native fixture lifetime. All fourteen domain subscenarios passed, but fixture timeout and pre-browser ENOENT make the whole attempt fail. The original Web pass is retained before the runner change; both browsers will rerun with unchanged product source.",
+  "product_source_sha256": "57033050eb8a90ecf59b2f04d2461f498f23cb64200e4d44a756e080fa03a908",
+  "source_archive": "app/.local/notification-retry-attempts/browser01/source.zip",
+  "archive_sha256": "f375b1511fa0b54e6b5fdaddef7e66fd49668cd8e5550fe95ce5a80d97a8505b",
+  "native_fixture_exit_code": 1,
+  "browser_context_created": false,
+  "owned_review_server_stopped": true,
+  "private_fixture_removed": true,
+  "raw_logs": [
+    {
+      "file": "app/.local/notification-retry-attempts/browser01/notification-retry-web-native.log",
+      "sha256": "52a8cf0adebeddc7fe60402d6cc4965371d6295c32e2ddca444bb6790124f013"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser01/notification-retry-web-build.log",
+      "sha256": "754e312a592a7ec075c8d3ea9afaea83674126306d55d8f2762cbc47d6ebb976"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser01/notification-retry-web-browser.log",
+      "sha256": "2d3447cf5d7a31e310316775a9ca29d8d46eebfb4a510fcd666be811dfac7a23"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser01/notification-retry-mobile-native.log",
+      "sha256": "2c84e8974b7f8983fa7b64bf5f71d401fe22aeb886a48672f696178ca34bea21"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser01/notification-retry-mobile-build.log",
+      "sha256": "86b40f1dc38dcf5e83a3725036e163b6bb8bdbaa238db7ec40071f970b711413"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser01/notification-retry-mobile-browser.log",
+      "sha256": "1c55f913b83cda8743b33773f02f6fb43ff7c8e08a3714eef3fbe3ca0faeb759"
+    }
+  ]
+}

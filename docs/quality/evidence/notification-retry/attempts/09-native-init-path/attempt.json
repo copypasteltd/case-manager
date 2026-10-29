@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "scope": "Native initdb failed before a service started: non-ASCII executable/share path caused an invalid UTF8 bootstrap byte sequence. Reuse the existing native ASCII path adapter; do not change database durability or test assertions.",
+  "native_service_started": false,
+  "source_files": [
+    {
+      "file": "app/.local/notification-retry-attempts/native-init01/notification_retry_native_cluster.py",
+      "sha256": "c9f1d420e207ca191c5f8a0df3e3b2105454dd82780cfbbff58c543fb57e7e01"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/native-init01/test_notification_retry_native.py",
+      "sha256": "0d5c2b151662774a0ee0db0b97201a2d8126b52f67b954a4da09b0d392954c96"
+    }
+  ],
+  "private_log": "app/.local/notification-retry-attempts/native-init01/init-error.log",
+  "private_log_sha256": "06b0f0c3d539145df1137d7fd5997f7daf4040f3acb31dabb99229a3a020b7dd"
+}

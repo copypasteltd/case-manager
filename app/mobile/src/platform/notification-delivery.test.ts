@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { checkedDeliveryJob, checkedRetryReceipt, notificationRetryInput } from '../../../packages/contracts/src/notifications';
+import { notificationRetryFixture } from '../../../packages/contracts/test/notification-retry-fixture';
+test('mobile retry requires the source revision and explicit trimmed reason',()=>{const f=notificationRetryFixture();assert.deepEqual(notificationRetryInput(f.job,' 人工核对 '),{expected_revision:f.job.revision,reason:'人工核对'});});
+test('mobile retry receipt binds the source, actor and business event',()=>{const f=notificationRetryFixture();assert.equal(checkedRetryReceipt(f.receipt,f.source,f.actor,f.event),f.receipt);assert.throws(()=>checkedRetryReceipt(f.receipt,f.source,f.actor,f.child));});
+test('mobile cannot submit an automatic retry-wait task',()=>{const f=notificationRetryFixture();assert.throws(()=>notificationRetryInput({...f.job,state:'retry_wait',can_retry:false,retry_block:'not_failed'},'review'));});
+test('mobile excludes arbitrary payloads from job metadata',()=>{const f=notificationRetryFixture();assert.throws(()=>checkedDeliveryJob({...f.job,session_id:f.actor} as never,f.source));});
+test('mobile cannot turn a read-only state into write authority',()=>{const f=notificationRetryFixture();assert.throws(()=>notificationRetryInput({...f.job,can_retry:false,retry_block:'not_authorized'},'review'));});
+test('mobile validates lineage and rejects a duplicate source child',()=>{const f=notificationRetryFixture();assert.throws(()=>checkedRetryReceipt({...f.receipt,retry_job_id:f.source}));assert.throws(()=>checkedDeliveryJob({...f.job,parent_job_id:f.source},f.source));});
+test('mobile cannot present a suppression receipt as delivered',()=>{const f=notificationRetryFixture();assert.throws(()=>checkedDeliveryJob({...f.job,state:'succeeded',can_retry:false,retry_block:'not_failed',result:{delivered:0,suppressed:1,outcome:'delivered',safe_code:'DELIVERED',completed_at:f.receipt.created_at}},f.source));});
+test('mobile retains unknown results instead of manufacturing success',()=>{const f=notificationRetryFixture();const job=checkedDeliveryJob({...f.job,state:'queued',attempt:0,can_retry:false,retry_block:'not_failed',result:null},f.source);assert.equal(job.result,null);assert.throws(()=>notificationRetryInput(f.job,'文'.repeat(201)));});

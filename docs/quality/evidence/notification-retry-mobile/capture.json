@@ -1,0 +1,40 @@
+{
+  "recordings": [
+    {
+      "name": "notification-retry-mobile",
+      "frame_count": 26,
+      "duration_ms": 5299,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/notification-retry-mobile/frames.json",
+      "manifest_sha256": "66451f13d2cc52c7ae38857ded469ac164305ad31899fd6cb88a25aeff23b17d"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "client": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-failure.png",
+      "sha256": "7d91bb287fe32c76c6ea564b41affcb6909dc4f94e9803b6ff395c497881a433"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-result.png",
+      "sha256": "ad8d490f4f7fc2918f9b522a0f69fc078cd698da2a6a141a4c76db51ecfc1d71"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-history.png",
+      "sha256": "fc396287fc5678e6283f0f0833b816e1a11a56f0c170d78ee3e64f5e7e552764"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

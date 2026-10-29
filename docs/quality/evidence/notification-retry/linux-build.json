@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T08:12:01.980133+00:00",
+  "source_sha256": "18ace9b3ce19d053636e8fe0a1fdfcc33b2d15c87b8dd942dfd2ea18fb836076",
+  "source_after_sha256": "18ace9b3ce19d053636e8fe0a1fdfcc33b2d15c87b8dd942dfd2ea18fb836076",
+  "commands": [
+    {
+      "name": "agent-native",
+      "package": "./cmd/agent-native",
+      "exit_code": 0,
+      "elapsed_seconds": 72.074,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform",
+      "package": "./cmd/platform",
+      "exit_code": 0,
+      "elapsed_seconds": 14.67,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "agent-native",
+      "file": ".local/notification-retry-linux/agent-native-linux-amd64",
+      "sha256": "db12b61e5ac58db8099bc72634e974b1dfea63834e02fb99173b1258bcfca2b4",
+      "bytes": 12697586,
+      "format": "ELF64-x86-64"
+    },
+    {
+      "name": "platform",
+      "file": ".local/notification-retry-linux/platform-linux-amd64",
+      "sha256": "c86afe7b536dd037981556f09634da8a432f097c1ae55b34913b7ee0c3534b7d",
+      "bytes": 36223940,
+      "format": "ELF64-x86-64"
+    }
+  ],
+  "verification_script_sha256": "42212a79ac6e3e2da9ff29db8053f014ff4e5ca6756ce50d50c22d1d98378f84",
+  "artifact_executed": false,
+  "kernel_boundary_executed": false,
+  "deployed": false
+}

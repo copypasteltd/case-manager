@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "complete": true,
+  "scope": "Only the failed native cleanup family reran serially on the original durable cluster; DROP still exceeded the unchanged two-minute deadline. All business assertions passed. Native PG checkpoint diagnostics identify a132-second sync; no assertion or durability setting is relaxed.",
+  "source_sha256": "18ace9b3ce19d053636e8fe0a1fdfcc33b2d15c87b8dd942dfd2ea18fb836076",
+  "raw_logs": [
+    {
+      "file": ".local/notification-retry-attempts/backend02-cleanup/notification-retry-backend-retry-8.log",
+      "sha256": "428dd2e7eacba7338e32360497774765a7092bd4c070075bbc462478e82d4156"
+    }
+  ],
+  "first_retry_script_sha256": "b869f32ce6f21843372fbb7862ac1eff4105a0583b38afe7a13a469e05d0a9cc"
+}

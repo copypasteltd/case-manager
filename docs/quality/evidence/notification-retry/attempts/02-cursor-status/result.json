@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "attempt": "focused02",
+  "source_sha256": "ca48ed6b0456b0239b24d31ae667ba0d3170c2d39fd3e60b9903841091fd80ce",
+  "private_source_archive": "ignored app/.local/notification-retry-attempts/focused02/source.zip",
+  "archive_sha256": "bede5e1798f1fc6c795c1ca65277f936cb8dd6ca4332628fd859753938bf925d",
+  "raw_log": "ignored app/.local/notification-retry-attempts/focused02/notification-retry-focused-02.log",
+  "raw_log_sha256": "55b0bebeb7780bd8c687be0d571808968372cb48f38656b8e7421b625266196c",
+  "finding": "A different user cursor correctly returned400 INVALID_CURSOR; the new test incorrectly expected422. Align the assertion with the existing pager error contract; rejection remains required."
+}

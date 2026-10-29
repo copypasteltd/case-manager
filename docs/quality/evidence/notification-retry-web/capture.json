@@ -1,0 +1,54 @@
+{
+  "recordings": [
+    {
+      "name": "notification-retry-web",
+      "frame_count": 9,
+      "duration_ms": 2625,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/notification-retry-web/frames.json",
+      "manifest_sha256": "dd14970f8644d922bf5a85c557cc26983ca44a785e37c84ae47d1b8ad7600930"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "client": 1440,
+      "scroll": 1440
+    },
+    {
+      "width": 900,
+      "client": 900,
+      "scroll": 900
+    },
+    {
+      "width": 390,
+      "client": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/notification-retry-web-failure.png",
+      "sha256": "af06c87a6419c00fa1a6356c5093a2459c44f1ace082d90fad9ab8737b1d7967"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-result.png",
+      "sha256": "2913a18095d3efbd9642b73a220414e9721d68468e2672b8c8fba78a8d1354f7"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-history.png",
+      "sha256": "d29780ba2f562bdd1bca2f6f5c22ffe7b667273ed63a197071bea1674cb7410d"
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-dark.png",
+      "sha256": "8fdf2599d5661094c5753ef98a5e7cf17eeb33b01f5e816033fcc62bcbe253ee"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T09:00:11.219460+00:00",
+  "removed": [
+    {
+      "oid": "104066239",
+      "name": "cp_test_ff929bf581e4405db43ab073f396aaf4",
+      "owner": "postgres",
+      "invalid_drop_marker": true,
+      "template": false,
+      "active_connections": 0,
+      "created": "2026-10-29T16:33:02+08:00",
+      "matched_failed_tests": [
+        "TestPlatformIntegration/archived_projects_remain_read_only_and_cannot_close_with_open_tasks",
+        "TestPlatformIntegration",
+        "TestNotificationManualRetries/browser-cleanup"
+      ],
+      "contents_inspected": false
+    }
+  ],
+  "remaining_disposable_databases": 0,
+  "force_used": false,
+  "development_database_preserved": true,
+  "database_cluster_restarted": false,
+  "plan_sha256": "3155a2fc17256c0d4311b7b30d7431344e49ef007d00800bb48910432bd1135e",
+  "verification_script_sha256": "d8d9e2ecba493d9d5a1fe3d9870b60bf96155ddf53d95c08b476ed1e129429f1"
+}

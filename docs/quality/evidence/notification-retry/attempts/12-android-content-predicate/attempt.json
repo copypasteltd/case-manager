@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "archived_at": "2026-10-29T10:11:16.356550+00:00",
+  "scope": "The first package predicate required an unused client-side notification.delivery.retry literal. The application receives authoritative can_retry from the server and gates the form on that value. Preserve the exact failed predicate, then check the actual packaged read entry, detail/history routes and server-derived eligibility branch without changing the application or APK.",
+  "application_source_changed": false,
+  "apk_rebuilt_for_predicate_change": false,
+  "apk_sha256": "d337e12c3b323f98169f554f8d0c0ee6737345ac4f7a4cdc2e87e7de6ba6d26d",
+  "bundle_sha256": "2c73eb3fdd0e65525b4981e2fb17d9fb3a8d9a586412bc35adb65bdce02809a3",
+  "source_file": "app/.local/notification-retry-attempts/android-content01/verify_notification_retry_android_content.py",
+  "source_sha256": "aee4ca180550a1579a879ee1adda68f1a71a0b12d49f79740ac595c55cc9a5f8",
+  "failed_record_sha256": "acc1a87e3ed1225034f6a759da0fc10151e410a74b161b36041496b55bfee98c"
+}

@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "scope": "All five actual browser groups and fourteen domain subscenarios passed; the final native database cleanup exceeded its unchanged two-minute deadline while the full suite was active. The complete attempt remains failed. Retry only after native backend work has finished.",
+  "source_archive": "app/.local/notification-retry-attempts/browser02/source.zip",
+  "archive_sha256": "dcd2269f2b0b34ef0fde333164482ab2bff43284eb5439b61be00793d0b23d29",
+  "raw_logs": [
+    {
+      "file": "app/.local/notification-retry-attempts/browser02/notification-retry-web-native.log",
+      "sha256": "e4eadf1374ab68170e974b9cd08d59ee8318fc41e26f0e04f4825b1ce744cb78"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser02/notification-retry-web-build.log",
+      "sha256": "f585fff24a018db6365801961022e366379eea009dc9ac25604555f7bde59d25"
+    },
+    {
+      "file": "app/.local/notification-retry-attempts/browser02/notification-retry-web-browser.log",
+      "sha256": "2d3447cf5d7a31e310316775a9ca29d8d46eebfb4a510fcd666be811dfac7a23"
+    }
+  ],
+  "native_fixture_exit_code": 1,
+  "fixture_window": {
+    "from": "2026-10-29T08:30:29.457628+00:00",
+    "to": "2026-10-29T08:35:31.557628+00:00",
+    "derived_from": "Raw native log final write time and actual TestNotificationManualRetries elapsed seconds, with30s bounds; used only together with exact inactive invalid synthetic database identities."
+  }
+}

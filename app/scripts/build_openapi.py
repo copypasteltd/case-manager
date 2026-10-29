@@ -628,6 +628,20 @@ notification_failure = {"job_id": ID, "state": enum("retry_wait", "dead"), "safe
     "attempt": {"type": "integer", "minimum": 0, "maximum": 16}, "max_attempts": {"type": "integer", "minimum": 1, "maximum": 16},
     "first_failed_at": nullable(TIME), "updated_at": TIME}
 add("NotificationFailure", notification_failure, tuple(notification_failure))
+notification_retry = {"id": ID, "source_job_id": ID, "retry_job_id": ID, "business_event_id": ID, "created_by": ID, "created_at": TIME}
+add("NotificationRetryReceipt", notification_retry, tuple(notification_retry))
+add("NotificationRetryInput", {"expected_revision": {"type":"string","pattern":"^[0-9a-f]{64}$"}, "reason": NAME}, ("expected_revision","reason"))
+notification_outcome = {"delivered": {"type":"integer","minimum":0,"maximum":100}, "suppressed": {"type":"integer","minimum":0,"maximum":100},
+    "outcome": enum("delivered","suppressed"), "safe_code": NAME, "completed_at": TIME}
+add("NotificationDeliveryOutcome", notification_outcome, tuple(notification_outcome))
+notification_job = {"job_id": ID, "kind":enum("notification.deliver.v1","event.rejected.v1"),
+    "state":enum("queued","running","succeeded","retry_wait","dead","cancelled"), "safe_code":nullable(NAME),
+    "attempt": {"type":"integer","minimum":0,"maximum":16}, "max_attempts":{"type":"integer","minimum":1,"maximum":16},
+    "first_failed_at":nullable(TIME), "updated_at":TIME,"available_at":TIME,"revision":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "business_event_id":nullable(ID),"event_type":nullable(NAME), "can_retry":{"type":"boolean"},
+    "retry_block":enum("ready","not_authorized","not_failed","already_retried","invalid_input","rejected_event","missing_event","unsupported_event"),
+    "retry_id":nullable(ID),"retry_job_id":nullable(ID),"parent_job_id":nullable(ID),"result":nullable(ref("NotificationDeliveryOutcome"))}
+add("NotificationDeliveryJob", notification_job, tuple(notification_job))
 
 budget_tokens = {"type": "integer", "minimum": 0, "maximum": 1000000000000}
 budget_policy_input = {"expected_version": {"type": "integer", "minimum": 0},
@@ -1680,6 +1694,11 @@ operation("/notifications/summary", "get", "getNotificationSummary", "Notificati
 operation("/notifications/{id}", "get", "getNotification", "Notification")
 operation("/notifications/{id}/read", "post", "markNotificationRead", "Notification", "NotificationRead")
 operation("/notification-delivery-failures", "get", "listNotificationDeliveryFailures", "NotificationFailure", listing=True)
+operation("/notification-delivery-jobs/{id}", "get", "getNotificationDeliveryJob", "NotificationDeliveryJob")
+operation("/notification-delivery-jobs/{id}/retry", "post", "retryNotificationDelivery", "NotificationRetryReceipt", "NotificationRetryInput", 201)
+operation("/notification-delivery-retries", "get", "listNotificationDeliveryRetries", "NotificationRetryReceipt", listing=True)
+for parameter in PATHS["/notification-delivery-retries"]["get"]["parameters"]:
+    if parameter["name"] == "limit": parameter["schema"] = {"type": "integer", "minimum": 1, "maximum": 50, "default": 20}
 for parameter in PATHS["/notification-delivery-failures"]["get"]["parameters"]:
     if parameter["name"] == "limit": parameter["schema"] = {"type": "integer", "minimum": 1, "maximum": 50, "default": 20}
 operation("/agent-budget", "get", "getAgentBudget", "BudgetSummary")

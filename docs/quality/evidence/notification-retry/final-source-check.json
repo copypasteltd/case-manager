@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T10:12:41.131189+00:00",
+  "checks": [
+    {
+      "name": "Every discovered current Go/SQL/contract test passes without skips",
+      "passed": true
+    },
+    {
+      "name": "Final batch records retain exact run-specific private logs",
+      "passed": true
+    },
+    {
+      "name": "Only archived cleanup-timeout families rerun at the same source; successful original batches retain provenance",
+      "passed": true
+    },
+    {
+      "name": "Both failed native attempts remain failed and the actual unchanged integration family passes on a fully durable owned native PG cluster",
+      "passed": true
+    },
+    {
+      "name": "Temporary native PG keeps all durability flags and deadlines, then closes with zero disposable databases",
+      "passed": true
+    },
+    {
+      "name": "Cleanup diagnostic preserves only the exact two-line checkpoint excerpt and does not claim a benchmark or altered deadline",
+      "passed": true
+    },
+    {
+      "name": "Fourteen real authority, fixed-input, worker, deduplication, current recipient, concurrency, database and rollback scenarios execute",
+      "passed": true
+    },
+    {
+      "name": "Earlier focused failures and pre-final success retain their distinct results, exact source archives and raw logs",
+      "passed": true
+    },
+    {
+      "name": "Composite-project failure and pre-polling client pass remain exact earlier attempts; final clients rerun all eight commands",
+      "passed": true
+    },
+    {
+      "name": "H5 fixture timeout remains failed and prior Web evidence retains exact pre-runner sources and logs",
+      "passed": true
+    },
+    {
+      "name": "The browser pass with a failed native cleanup remains a failed complete attempt with exact source and raw logs",
+      "passed": true
+    },
+    {
+      "name": "Interrupted concurrent native packaging retains its exact inputs and log without a pass claim",
+      "passed": true
+    },
+    {
+      "name": "Initial Unicode-path initdb failure retains exact helpers and private diagnostics without a started-service claim",
+      "passed": true
+    },
+    {
+      "name": "H5 locator failure and pre-helper Web pass retain exact closed-native attempts; both final clients rerun",
+      "passed": true
+    },
+    {
+      "name": "Incorrect unused-client-literal APK predicate retains its exact failure and helper without an application-change or rebuild claim",
+      "passed": true
+    },
+    {
+      "name": "All prior320 API paths and698 models remain exact; three recovery paths and seven models are added",
+      "passed": true
+    },
+    {
+      "name": "Final client command summaries bind current inputs and exact original logs",
+      "passed": true
+    },
+    {
+      "name": "Web195, mobile289 and runtime55 results match their current implementation scopes",
+      "passed": true
+    },
+    {
+      "name": "Both actual mini-program builds retain20 configured pages",
+      "passed": true
+    },
+    {
+      "name": "Fresh native APK binds exact current source and bundle bytes with18 plus4 static checks",
+      "passed": true
+    },
+    {
+      "name": "JVM26 results disclose actual Gradle cache status and retain original XML bytes",
+      "passed": true
+    },
+    {
+      "name": "Both current Linux artifacts cross-compile without claiming Linux execution",
+      "passed": true
+    },
+    {
+      "name": "Actual web browser/API journey passes and all owned resources close",
+      "passed": true
+    },
+    {
+      "name": "Actual mobile browser/API journey passes and all owned resources close",
+      "passed": true
+    },
+    {
+      "name": "Both silent MP4/GIF pairs encode exact authenticated synthetic frame manifests",
+      "passed": true
+    },
+    {
+      "name": "Visual review binds all seven final screenshots and both decoded GIF samples",
+      "passed": true
+    },
+    {
+      "name": "222 previous media and unchanged dependency audit retain exact published bytes and original date",
+      "passed": true
+    },
+    {
+      "name": "One exact inactive invalid synthetic remnant is attributed and removed without FORCE; original failed input remains exact",
+      "passed": true
+    },
+    {
+      "name": "The second separately attributed invalid remnant is removed without FORCE or development restart",
+      "passed": true
+    },
+    {
+      "name": "Native schema85 upgrade preserves historical rows and current owned services, with no fixture databases or integrations enabled",
+      "passed": true
+    },
+    {
+      "name": "23 active packages,5 exclusions and8 draft Skills retain AI authorization and isolation without fee controls",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture file, review port and API forwarding port are released",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "organization_notification_retry",
+  "interaction_source_sha256": "b02c24db522ba7d6d6477b25a07a5b9aa0b3748b510bf2c3396b8b6ee20b75d9",
+  "mobile_source_sha256": "61e6a25cad5607ef48647ff0c70ad149509e1b5ebca8e1e2b8212e2d0f85ee5d",
+  "backend_source_sha256": "18ace9b3ce19d053636e8fe0a1fdfcc33b2d15c87b8dd942dfd2ea18fb836076",
+  "verification_script_sha256": "92575af2f0fc412b0d552006cd85d1fc1dd0dd2b9922ebeeb473c42101ebb51c",
+  "supporting_scripts": {
+    "verify_notification_retry_backend.py": "79af92ae7ef7c40c1c43944fe056aa1c1c79300379d0841909196a6a0bc31c34",
+    "freeze_notification_retry_backend.py": "e03f7208a7e3dea4202be13dbe878b33b631616196a62174a20fd7f130830aa4",
+    "verify_notification_retry_clients.py": "8feee7cebc4900a89376bf2218086f35e38d28bb77ab09cb266f31b6ae020467",
+    "freeze_notification_retry_clients.py": "6346ab19bc2f0326d64627a1f0ded939426c52323b08f3630bbdc60024c84c8e",
+    "build_notification_retry_linux.py": "42212a79ac6e3e2da9ff29db8053f014ff4e5ca6756ce50d50c22d1d98378f84",
+    "freeze_notification_retry_android.py": "cf5e30a00875d94ec98b7e225af37c40724b8c321491e273743758ffc5abfced",
+    "retain_notification_retry_evidence.py": "1655dd638726d8ef08c27dd30284d8cc61bc2511698cd47185378cbbddf47ec8"
+  },
+  "historical_evidence_commit": "b860e36a104ae215f3fd79eac5ac09cb977f37a4",
+  "new_browser_capture": true,
+  "new_backend_test_execution": true,
+  "full_goal_complete": false,
+  "production_ready": false
+}

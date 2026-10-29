@@ -3411,6 +3411,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/notification-delivery-jobs/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getNotificationDeliveryJob */
+        get: operations["getNotificationDeliveryJob"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-delivery-jobs/{id}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** retryNotificationDelivery */
+        post: operations["retryNotificationDelivery"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-delivery-retries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listNotificationDeliveryRetries */
+        get: operations["listNotificationDeliveryRetries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/agent-budget": {
         parameters: {
             query?: never;
@@ -8240,6 +8291,59 @@ export interface components {
             /** Format: date-time */
             updated_at: string;
         };
+        NotificationRetryReceipt: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            source_job_id: string;
+            /** Format: uuid */
+            retry_job_id: string;
+            /** Format: uuid */
+            business_event_id: string;
+            /** Format: uuid */
+            created_by: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        NotificationRetryInput: {
+            expected_revision: string;
+            reason: string;
+        };
+        NotificationDeliveryOutcome: {
+            delivered: number;
+            suppressed: number;
+            /** @enum {string} */
+            outcome: "delivered" | "suppressed";
+            safe_code: string;
+            /** Format: date-time */
+            completed_at: string;
+        };
+        NotificationDeliveryJob: {
+            /** Format: uuid */
+            job_id: string;
+            /** @enum {string} */
+            kind: "notification.deliver.v1" | "event.rejected.v1";
+            /** @enum {string} */
+            state: "queued" | "running" | "succeeded" | "retry_wait" | "dead" | "cancelled";
+            safe_code: string | null;
+            attempt: number;
+            max_attempts: number;
+            first_failed_at: string | null;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: date-time */
+            available_at: string;
+            revision: string;
+            business_event_id: string | null;
+            event_type: string | null;
+            can_retry: boolean;
+            /** @enum {string} */
+            retry_block: "ready" | "not_authorized" | "not_failed" | "already_retried" | "invalid_input" | "rejected_event" | "missing_event" | "unsupported_event";
+            retry_id: string | null;
+            retry_job_id: string | null;
+            parent_job_id: string | null;
+            result: components["schemas"]["NotificationDeliveryOutcome"] | null;
+        };
         BudgetPolicyInput: {
             expected_version: number;
             organization_tokens: number;
@@ -12314,6 +12418,21 @@ export interface components {
         NotificationFailureListResponse: {
             data: {
                 items: components["schemas"]["NotificationFailure"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationDeliveryJobResponse: {
+            data: components["schemas"]["NotificationDeliveryJob"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationRetryReceiptResponse: {
+            data: components["schemas"]["NotificationRetryReceipt"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationRetryReceiptListResponse: {
+            data: {
+                items: components["schemas"]["NotificationRetryReceipt"][];
                 next_cursor: string | null;
             };
             meta: components["schemas"]["Meta"];
@@ -22575,6 +22694,118 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["NotificationFailureListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getNotificationDeliveryJob: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationDeliveryJobResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    retryNotificationDelivery: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NotificationRetryInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationRetryReceiptResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listNotificationDeliveryRetries: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationRetryReceiptListResponse"];
                 };
             };
             400: components["responses"]["Failure"];
