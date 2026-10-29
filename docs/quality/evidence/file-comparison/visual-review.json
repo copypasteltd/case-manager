@@ -1,0 +1,81 @@
+{
+  "reviewed": true,
+  "checked_at": "2026-10-29T15:56:39.601888+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/file-comparison-web-context.png",
+      "sha256": "8b15033d52a75ec29da57ca57323d63644d696041dd2e6645d7651e4ac18eab8"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-full.png",
+      "sha256": "bc14ee5ebd09f5245de259b2ca8a48cbbd3693fa5c19f451c464d90c48039775"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-dark.png",
+      "sha256": "2c908384f300e52b4f3597ad706a8c83bea57d7b663db21d4ac929cc11dc7905"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-stale.png",
+      "sha256": "730fd7069dbda01df1c1ba864c4e7031a9b1b8308969ec42e3d4d23b31744b4e"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-context.png",
+      "sha256": "d77c4d217c3f052ed3db58eeaf6aeed8bb9d858c5469a274f3954fcd5e76f4e2"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-full.png",
+      "sha256": "9f289fca7382f4740a8639533e034a2e61038f6e420e830ce7ee8edd076c273a"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-stale.png",
+      "sha256": "fa5f1f9ba37c5e01d86b8fcf66aca1be5dc91a37b3a8cddcb232782f5bdf85da"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/file-comparison-web.gif",
+      "sha256": "bafb000bf5c58b678eb59c71033e27d10cd23adb19f182b14252bad86476ceb0"
+    },
+    {
+      "file": "docs/media/gifs/file-comparison-mobile.gif",
+      "sha256": "0db8422aa2f8d7a60b1cf3adf99bbbb51e58751b16296c290c48a33b441bee9d"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": [
+      {
+        "at_seconds": 0.5,
+        "private_sample_sha256": "7c14cc7e3db406fad73cd7a3c1b8392b50dad7d306be3648652f8b5b28162a35"
+      },
+      {
+        "at_seconds": 2.5,
+        "private_sample_sha256": "cdba4a37817beaf0f26057b9d331b79b438cc5155402d6a3669c13357615d1e3"
+      },
+      {
+        "at_seconds": 4.7,
+        "private_sample_sha256": "8aafff4949b1ce0e21bb8b9ccfd473879cf03dae24efa7c1c7dcea8e1a4f77ce"
+      }
+    ],
+    "mobile": [
+      {
+        "at_seconds": 0.5,
+        "private_sample_sha256": "f56e9470097f85ea37dfb20d622ebd4e1ce0c1bd31c36c7901fe32c3f56aeec4"
+      },
+      {
+        "at_seconds": 4.0,
+        "private_sample_sha256": "b9822b8cdb0e94ae610c2f50f14904ed4db37644f145b8b379785b69d698e2f0"
+      },
+      {
+        "at_seconds": 7.8,
+        "private_sample_sha256": "b227ec13b805837a792a225a123dc283f1c617069e28d94800547dbba0d9d3f9"
+      }
+    ]
+  },
+  "scope": "All seven exact PNGs and three within-duration decoded GIF samples per client were visually inspected. Short automated clips retain actual viewport changes, loading and repaint frames; individual PNGs provide readable context, full changed rows and stale-result rejection. This is sample-based visual review, not every-frame OCR or production acceptance.",
+  "notes": [
+    "Exact line coordinates, deletion/insertion markers and final-newline labels are legible in full-diff PNGs.",
+    "Both stale-result PNGs show the current-basis conflict without retaining comparison rows.",
+    "No credential forms or real business records appear in the inspected screenshots and samples.",
+    "One Web GIF sample captures a transient blank repaint; the recording retains the actual browser pixels without substituted frames."
+  ]
+}

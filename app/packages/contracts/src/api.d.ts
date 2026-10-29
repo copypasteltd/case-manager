@@ -2566,6 +2566,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/files/{id}/text-comparison": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** compareFileText */
+        get: operations["compareFileText"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/parties": {
         parameters: {
             query?: never;
@@ -7049,6 +7066,58 @@ export interface components {
             offset: number;
             text: string;
             next_offset: number | null;
+        };
+        FileTextComparisonVersion: {
+            /** Format: uuid */
+            version_id: string;
+            seq: number;
+            media_type: string;
+            size_bytes: string;
+            source_sha256: string;
+            text_sha256: string;
+            text_characters: number;
+            /** Format: date-time */
+            indexed_at: string;
+        };
+        FileTextComparisonRow: {
+            /** @enum {string} */
+            kind: "equal" | "delete" | "insert" | "skip";
+            base_line: number | null;
+            target_line: number | null;
+            text: string;
+            newline: boolean;
+            count: number;
+        };
+        FileTextComparison: {
+            /** Format: uuid */
+            file_id: string;
+            file_version: number;
+            /** @constant */
+            extractor: "text-v1";
+            base: components["schemas"]["FileTextComparisonVersion"];
+            target: components["schemas"]["FileTextComparisonVersion"];
+            source_equal: boolean;
+            text_equal: boolean;
+            /** @enum {string} */
+            algorithm: "myers-v1" | "bounded-replacement-v1";
+            /** @constant */
+            complete: true;
+            /** @enum {string} */
+            view: "changes" | "all";
+            base_lines: number;
+            target_lines: number;
+            added_lines: number;
+            removed_lines: number;
+            unchanged_lines: number;
+            comparison_sha256: string;
+            offset: number;
+            base_offset: number;
+            target_offset: number;
+            total_rows: number;
+            rows: components["schemas"]["FileTextComparisonRow"][];
+            next_offset: number | null;
+            /** Format: date-time */
+            as_of: string;
         };
         SearchHit: {
             resource: components["schemas"]["ResourceRef"];
@@ -12307,6 +12376,10 @@ export interface components {
         };
         FileTextResponse: {
             data: components["schemas"]["FileText"];
+            meta: components["schemas"]["Meta"];
+        };
+        FileTextComparisonResponse: {
+            data: components["schemas"]["FileTextComparison"];
             meta: components["schemas"]["Meta"];
         };
         PartyListResponse: {
@@ -20415,6 +20488,47 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FileTextResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    compareFileText: {
+        parameters: {
+            query: {
+                base_version_id: string;
+                target_version_id: string;
+                view?: "changes" | "all";
+                offset?: number;
+                limit?: number;
+                comparison_sha256?: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileTextComparisonResponse"];
                 };
             };
             400: components["responses"]["Failure"];

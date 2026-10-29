@@ -9,6 +9,7 @@ import { MultipartCleanup } from './MultipartCleanup';
 import { UploadButton } from './UploadQueue';
 import { HistoryRestores, RestoreVersionButton } from './HistoryRestores';
 import { useRetention, RetentionPanel, RetentionVersionActions } from './Retention';
+import FileComparisonPanel from './FileComparison';
 
 type Directory = Schemas['Folder'];
 type StoredFile = Schemas['File'];
@@ -106,6 +107,7 @@ export function FileDetail() {
   return <><Link className="back-link" to={folderURL(value.folder_id)}><ArrowLeft size={16} />返回所在目录</Link><ErrorNotice error={file.error} /><div className="page-heading detail-heading"><div><span className="eyebrow">A TRACEABLE RECORD</span><h1>{value.name}</h1><div className="project-subtitle"><span className="badge neutral">{value.state === 'trashed' ? '回收站' : '当前文件'}</span><span>{classificationNames[value.classification]}</span><span>资料版本 {value.version} · {date(value.updated_at)}</span></div></div><div className="post-actions"><UploadButton file={value} />{value.can_move && <button className="button secondary" onClick={() => setMoving(true)}><Pencil size={16} />修改位置与名称</button>}{value.can_trash && <button className="button danger-outline" onClick={() => setAction('trash')}><Trash2 size={16} />移入回收站</button>}{value.can_restore && <button className="button primary" onClick={() => setAction('restore')}><RotateCcw size={16} />恢复至原目录</button>}</div></div>
     {value.legal_hold && <div className="notice neutral"><ShieldCheck size={18} /><span>此文件处于保留约束中。</span></div>}
     <section className="section-block"><div className="section-heading"><h2>内容版本与存储记录</h2><small className="muted">原文件与来源信息按版本保留</small></div><ErrorNotice error={history.error} />{history.isPending ? <Busy label="正在读取文件版本" /> : versions.length ? <div className="file-versions">{versions.map(version => <VersionCard key={version.id} version={version} current={version.id === value.current_version_id} canRetry={value.can_update} active={value.state === 'active'} file={value} canManageRetention={!!retention.data?.can_manage && !retention.error} />)}</div> : !history.error && <div className="panel"><Empty title="尚无正式内容版本" detail="完成上传和服务端校验的版本才会出现在这里。" /></div>}<LoadMore count={versions.length} more={!!history.hasNextPage} busy={history.isFetchingNextPage} load={() => void history.fetchNextPage()} /></section>
+    <FileComparisonPanel key={value.id + ':' + value.version} file={value} versions={versions} more={!!history.hasNextPage} loading={history.isFetchingNextPage} loadMore={() => void history.fetchNextPage()} unavailable={!!file.error || !!history.error} />
     <HistoryRestores file={value} />
     <RetentionPanel file={value} overview={retention.data} loading={retention.isPending} error={retention.error} />
     {moving && <MoveResource kind="file" resource={value} onClose={() => setMoving(false)} />}{action && <FileStateAction file={value} action={action} onClose={() => setAction(null)} />}

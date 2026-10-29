@@ -15891,6 +15891,139 @@
         }
       }
     },
+    "/files/{id}/text-comparison": {
+      "get": {
+        "operationId": "compareFileText",
+        "tags": [
+          "files"
+        ],
+        "summary": "compareFileText",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "base_version_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "target_version_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "view",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "changes",
+                "all"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 80000,
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 60
+            }
+          },
+          {
+            "name": "comparison_sha256",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileTextComparisonResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/parties": {
       "get": {
         "operationId": "listParties",
@@ -43515,6 +43648,260 @@
           "next_offset"
         ]
       },
+      "FileTextComparisonVersion": {
+        "type": "object",
+        "properties": {
+          "version_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "media_type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "size_bytes": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "text_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "text_characters": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2097152
+          },
+          "indexed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "version_id",
+          "seq",
+          "media_type",
+          "size_bytes",
+          "source_sha256",
+          "text_sha256",
+          "text_characters",
+          "indexed_at"
+        ]
+      },
+      "FileTextComparisonRow": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "equal",
+              "delete",
+              "insert",
+              "skip"
+            ]
+          },
+          "base_line": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 40000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "target_line": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 40000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 2097152
+          },
+          "newline": {
+            "type": "boolean"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 40000
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "base_line",
+          "target_line",
+          "text",
+          "newline",
+          "count"
+        ]
+      },
+      "FileTextComparison": {
+        "type": "object",
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "extractor": {
+            "const": "text-v1"
+          },
+          "base": {
+            "$ref": "#/components/schemas/FileTextComparisonVersion"
+          },
+          "target": {
+            "$ref": "#/components/schemas/FileTextComparisonVersion"
+          },
+          "source_equal": {
+            "type": "boolean"
+          },
+          "text_equal": {
+            "type": "boolean"
+          },
+          "algorithm": {
+            "type": "string",
+            "enum": [
+              "myers-v1",
+              "bounded-replacement-v1"
+            ]
+          },
+          "complete": {
+            "const": true
+          },
+          "view": {
+            "type": "string",
+            "enum": [
+              "changes",
+              "all"
+            ]
+          },
+          "base_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "target_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "added_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "removed_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "unchanged_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "comparison_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "base_offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "target_offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "total_rows": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 80000
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileTextComparisonRow"
+            },
+            "maxItems": 100
+          },
+          "next_offset": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 80000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "file_id",
+          "file_version",
+          "extractor",
+          "base",
+          "target",
+          "source_equal",
+          "text_equal",
+          "algorithm",
+          "complete",
+          "view",
+          "base_lines",
+          "target_lines",
+          "added_lines",
+          "removed_lines",
+          "unchanged_lines",
+          "comparison_sha256",
+          "offset",
+          "base_offset",
+          "target_offset",
+          "total_rows",
+          "rows",
+          "next_offset",
+          "as_of"
+        ]
+      },
       "SearchHit": {
         "type": "object",
         "properties": {
@@ -70695,6 +71082,22 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/FileText"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "FileTextComparisonResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/FileTextComparison"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

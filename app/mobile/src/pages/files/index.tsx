@@ -11,6 +11,7 @@ import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, State, bytes, da
 import { SelectField, TextField } from '../business/controls';
 import { FileEditor } from './forms';
 import { MultipartCleanup } from './cleanup';
+import { FileComparisonPanel } from './comparison';
 
 type Workspace = { folder?: Folder; file?: StoredFile; project?: Schemas['Project'] };
 type Editor = { mode: 'create' | 'move' | 'trash' | 'restore'; kind: 'folder' | 'file'; item?: FileResource };
@@ -90,5 +91,6 @@ function FileDetails({ file, onEdit }: { file: StoredFile; onEdit(value: Editor)
     </Fact>) : <Empty>此文件尚无正式内容版本。</Empty>}
       {versions.next && <Action secondary loading={versions.moreBusy} onClick={() => void versions.more()}>加载更多历史版本</Action>}
     </Section>
+    <FileComparisonPanel key={file.id + ':' + file.version} file={file} versions={versions.items} more={!!versions.next} loading={versions.moreBusy} loadMore={() => void versions.more()} unavailable={!!versions.error} />
   </>;
 }

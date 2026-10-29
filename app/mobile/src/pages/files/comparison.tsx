@@ -1,0 +1,60 @@
+import { Text, View } from '@tarojs/components';
+import { useEffect, useState } from 'react';
+import { checkedComparison, comparisonEligible, comparisonMeaning, comparisonPath, type ComparisonSelection, type ComparisonView, type FileComparison } from '@copypaste/contracts/file-comparison';
+import { Scope, type Schemas } from '../../platform/session';
+import { client } from '../../platform/taro';
+import { Action, Busy, Notice, Section } from '../../ui';
+import { SelectField } from '../business/controls';
+
+type Request = { selection: ComparisonSelection; offset: number; previous?: FileComparison };
+export function FileComparisonPanel({ file, versions, more, loading, loadMore, unavailable }: {
+  file: Schemas['File']; versions: Schemas['FileVersion'][]; more: boolean; loading: boolean; loadMore(): void; unavailable: boolean;
+}) {
+  const [baseID, setBaseID] = useState(''), [targetID, setTargetID] = useState(''), [view, setView] = useState<ComparisonView>('changes');
+  const [request, setRequest] = useState<Request>(), [revision, setRevision] = useState(0), [inputError, setInputError] = useState<unknown>();
+  const path = request && !unavailable && file.state === 'active' ? comparisonPath(request.selection, request.offset, request.previous) : null;
+  // An explicit refresh owns a new read lifetime without changing server input.
+  const raw = useComparisonRecord(path, revision);
+  let value: FileComparison | undefined, resultError: unknown;
+  if (raw.value && request && !unavailable && !raw.error) { try { value = checkedComparison(raw.value, request.selection, request.offset, request.previous); } catch (cause) { resultError = cause; } }
+  const reset = () => { setRequest(undefined); setInputError(undefined); };
+  const options: [string, string][] = [['', '请选择准确内容版本'], ...versions.filter(comparisonEligible).map((v): [string, string] => [v.id, '内容版本 ' + v.seq + ' · ' + v.id.slice(0, 8)])];
+  function compare() {
+    try { const selection = { file, base: versions.find(v => v.id === baseID)!, target: versions.find(v => v.id === targetID)!, view }; comparisonPath(selection); setRequest({ selection, offset: 0 }); setRevision(n => n + 1); setInputError(undefined); }
+    catch (cause) { setRequest(undefined); setInputError(cause); }
+  }
+  return <Section title='比较两个内容版本'><View className='cp-pad'>
+    <Text className='cp-paragraph'>选择准确正式版本，比较完整提取正文。支持文本、Markdown、CSV、JSON及DOCX正文；原件排版、图片和批注需另行查阅。</Text>
+    <SelectField label='比较基础版本' value={baseID} options={options} disabled={unavailable || file.state !== 'active'} onChange={id => { setBaseID(id); reset(); }} />
+    <SelectField label='比较目标版本' value={targetID} options={options} disabled={unavailable || file.state !== 'active'} onChange={id => { setTargetID(id); reset(); }} />
+    <SelectField label='差异显示范围' value={view} options={[[ 'changes', '差异与前后文' ], [ 'all', '全部正文' ]]} disabled={unavailable} onChange={v => { setView(v as ComparisonView); reset(); }} />
+    <Action disabled={!baseID || !targetID || unavailable || file.state !== 'active' || raw.loading} onClick={compare}>比较所选版本</Action>
+    <Action secondary disabled={!baseID || !targetID || raw.loading} onClick={() => { setBaseID(targetID); setTargetID(baseID); reset(); }}>交换比较方向</Action>
+    {more && <Action secondary loading={loading} onClick={loadMore}>加载更多可选历史版本</Action>}
+    {options.length < 3 && <Text className='cp-small cp-paragraph'>当前加载的可选文本版本不足两个，可继续加载历史版本，或查阅原件及提取状态。</Text>}
+    <Notice error={inputError ?? raw.error ?? resultError} />{request && raw.loading && <Busy />}
+    {value && request && <View><Text className='cp-row-title'>内容版本 {value.base.seq} → {value.target.seq}</Text><Text className='cp-paragraph'>{comparisonMeaning(value)}</Text>
+      <Text className='cp-paragraph'>新增 {value.added_lines} 行 · 删除 {value.removed_lines} 行 · 相同 {value.unchanged_lines} 行</Text>
+      <Text className='cp-small cp-paragraph'>{value.view === 'all' ? '全部正文按页展示。' : '展示全部差异及前后各3行；省略相同行另行标明。'}末尾换行单独核对。{value.algorithm === 'bounded-replacement-v1' && '变化较多，完整中段按替换呈现；行数可能包含中段内相同的行。'}</Text>
+      <Text className='cp-small'>基础原件／正文摘要</Text><Text className='cp-code' selectable>{value.base.source_sha256 + '\n' + value.base.text_sha256}</Text>
+      <Text className='cp-small'>目标原件／正文摘要</Text><Text className='cp-code' selectable>{value.target.source_sha256 + '\n' + value.target.text_sha256}</Text>
+      {value.rows.map((row, index) => <View className={'cp-diff-row cp-diff-' + row.kind} key={value!.offset + index}>
+        {row.kind === 'skip' ? <Text className='cp-small'>省略 {row.count} 行相同正文 · 基础 {row.base_line}／目标 {row.target_line} 起</Text> : <><Text className='cp-small'>{row.kind === 'insert' ? '+' : row.kind === 'delete' ? '−' : '='} 基础 {row.base_line ?? '—'} · 目标 {row.target_line ?? '—'}</Text><Text className='cp-diff-text' selectable>{row.text || '\u00a0'}</Text>{!row.newline && <Text className='cp-muted cp-small'>此行后无末尾换行</Text>}</>}
+      </View>)}
+      {value.total_rows === 0 && <Text className='cp-paragraph'>两个版本的提取正文均为空。</Text>}
+      <Text className='cp-small cp-paragraph'>第 {value.total_rows ? value.offset + 1 : 0}～{value.offset + value.rows.length} 项，共 {value.total_rows} 项</Text>
+      <Action secondary disabled={value.offset === 0 || raw.loading} onClick={() => setRequest({ selection: request.selection, offset: Math.max(0, value!.offset - 60), previous: value })}>上一页正文差异</Action>
+      <Action secondary disabled={value.next_offset === null || raw.loading} onClick={() => setRequest({ selection: request.selection, offset: value!.next_offset!, previous: value })}>下一页正文差异</Action>
+    </View>}
+  </View></Section>;
+}
+
+function useComparisonRecord(path: string | null, revision: number) {
+  const [value, setValue] = useState<FileComparison>(), [error, setError] = useState<unknown>(), [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const scope = new Scope(); setValue(undefined); setError(undefined); setLoading(Boolean(path));
+    if (path) void client.request<FileComparison>(path, { scope }).then(result => { if (!scope.closed) setValue(result); }).catch(cause => { if (!scope.closed) setError(cause); }).finally(() => { if (!scope.closed) setLoading(false); });
+    return () => { scope.close(); };
+  }, [path, revision]);
+  return { value, error, loading };
+}

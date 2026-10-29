@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "reclassified_as_final_pass": false,
+  "recorded_at": "2026-10-29T15:47:50.757291+00:00",
+  "failure": "Owned API taskkill returned nonzero; the updater stopped before starting any replacement. Subsequent independent process and socket inspection found the original API absent, its loopback port released and both original workers still owned and running.",
+  "private_helper": "app/.local/file-comparison-development-attempt01.py",
+  "helper_sha256": "1d19aafadd5a5e36ea3e4920dbffadf46ea3e21cad5fd4465f9979ffc7ecdf26",
+  "schema_upgrade_executed": false,
+  "source_or_business_tests_invalidated": false,
+  "recovery": "Confirm current process identity and released listener before resuming. A stop command status is not a service-readiness result."
+}

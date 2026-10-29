@@ -399,6 +399,24 @@ file_text={"file_id":ID,"version_id":ID,"extractor":{"const":"text-v1"},"state":
     "total_characters":nullable({"type":"integer","minimum":0}),"offset":{"type":"integer","minimum":0},
     "text":{"type":"string","maxLength":8000},"next_offset":nullable({"type":"integer","minimum":1})}
 add("FileText",file_text,tuple(file_text))
+comparison_version = {"version_id": ID, "seq": VERSION, "media_type": NAME, "size_bytes": BYTES,
+    "source_sha256": HASH, "text_sha256": HASH, "text_characters": {"type":"integer","minimum":0,"maximum":2097152}, "indexed_at": TIME}
+add("FileTextComparisonVersion", comparison_version, tuple(comparison_version))
+comparison_line = {"type":"integer","minimum":1,"maximum":40000}
+comparison_row = {"kind":enum("equal","delete","insert","skip"), "base_line":nullable(comparison_line),
+    "target_line":nullable(comparison_line), "text":{"type":"string","maxLength":2097152},
+    "newline":{"type":"boolean"},"count":comparison_line}
+add("FileTextComparisonRow", comparison_row, tuple(comparison_row))
+comparison_count = {"type":"integer","minimum":0,"maximum":80000}
+comparison = {"file_id":ID,"file_version":VERSION,"extractor":{"const":"text-v1"},
+    "base":ref("FileTextComparisonVersion"),"target":ref("FileTextComparisonVersion"),
+    "source_equal":{"type":"boolean"},"text_equal":{"type":"boolean"},
+    "algorithm":enum("myers-v1","bounded-replacement-v1"),"complete":{"const":True},"view":enum("changes","all"),
+    "base_lines":comparison_count,"target_lines":comparison_count,"added_lines":comparison_count,
+    "removed_lines":comparison_count,"unchanged_lines":comparison_count,"comparison_sha256":HASH,
+    "offset":comparison_count,"base_offset":comparison_count,"target_offset":comparison_count,"total_rows":comparison_count,"rows":array(ref("FileTextComparisonRow"),maxItems=100),
+    "next_offset":nullable(comparison_count),"as_of":TIME}
+add("FileTextComparison",comparison,tuple(comparison))
 search_hit={"resource": ref("ResourceRef"), "title": NAME, "snippet": {"type":"string","maxLength":240}, "updated_at": TIME,
     "project_id":nullable(ID),"match_types":array(enum("name","body","tags"),minItems=1,maxItems=3,uniqueItems=True),
     "text_state":nullable(text_states),"indexed_at":nullable(TIME)}
@@ -1612,6 +1630,14 @@ operation("/files/{id}/versions/{version}/text","get","getFileText","FileText")
 PATHS["/files/{id}/versions/{version}/text"]["get"]["parameters"].extend([
     {"name":"offset","in":"query","schema":{"type":"integer","minimum":0,"default":0}},
     {"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":8000,"default":4000}}])
+operation("/files/{id}/text-comparison","get","compareFileText","FileTextComparison")
+PATHS["/files/{id}/text-comparison"]["get"]["parameters"].extend([
+    {"name":"base_version_id","in":"query","required":True,"schema":ID},
+    {"name":"target_version_id","in":"query","required":True,"schema":ID},
+    {"name":"view","in":"query","schema":enum("changes","all")},
+    {"name":"offset","in":"query","schema":{"type":"integer","minimum":0,"maximum":80000,"default":0}},
+    {"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":100,"default":60}},
+    {"name":"comparison_sha256","in":"query","schema":HASH}])
 operation("/parties", "get", "listParties", "Party", listing=True)
 PATHS["/parties"]["get"]["parameters"].extend([
     {"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 200}},

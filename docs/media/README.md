@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量113 / Increment113：实际认证后的合成Web／Taro H5文件版本正文比较；新增7 PNG、2静音MP4及2 GIF，255份旧媒体保持原字节。录制在登录与MFA完成后开始；全文分页实际还原准确正文，脚本文字按普通文本显示。
+
+| 客户端 | 截图 | 录屏 | GIF |
+|---|---|---|---|
+| Web | [前后文](screenshots/file-comparison-web-context.png)、[全文](screenshots/file-comparison-web-full.png)、[依据变化](screenshots/file-comparison-web-stale.png)、[深色](screenshots/file-comparison-web-dark.png) | [静音MP4](videos/file-comparison-web.mp4) | [GIF](gifs/file-comparison-web.gif) |
+| 共享移动 | [前后文](screenshots/file-comparison-mobile-context.png)、[全文](screenshots/file-comparison-mobile-full.png)、[依据变化](screenshots/file-comparison-mobile-stale.png) | [静音MP4](videos/file-comparison-mobile.mp4) | [GIF](gifs/file-comparison-mobile.gif) |
+
+[真实帧与编码来源](../quality/evidence/file-comparison/media.json) · [本轮核验](../quality/113-file-version-comparison-verification.md)。不录制凭据或真实业务数据；不声明真机、真实云、模型或生产验收。
+
 增量112 / Increment112：实际认证后的合成Web／Taro H5准确草稿恢复，新增7 PNG、2静音MP4及2 GIF；244份旧媒体保持原字节。录制从认证后开始，无密码、MFA输入或真实业务记录。新任务接单演示不代表真实模型执行完成。
 
 | 客户端 | 核对差异 | 已选内容 | 接单来源 | 录屏 | GIF |

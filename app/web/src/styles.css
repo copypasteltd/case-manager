@@ -721,3 +721,13 @@ input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--cp-action-
 .oa-prose-text { white-space: pre-wrap; overflow-wrap: anywhere; }
 .oa-prose-review fieldset label { display: block; }
 @media (max-width: 640px) { .oa-prose-comparison { grid-template-columns: minmax(0, 1fr); } }
+
+.file-comparison { padding:24px; margin-block:24px; }
+.comparison-digest { overflow-wrap:anywhere; font-family:monospace; }
+.comparison-rows { margin-block:16px; max-width:100%; }
+.comparison-row { border:1px solid var(--cp-border-subtle); border-inline-start-width:4px; padding:12px; margin-block:8px; min-width:0; }
+.comparison-delete { border-inline-start-color:var(--cp-danger-fill); }
+.comparison-insert { border-inline-start-color:var(--cp-accent-fg); }
+.comparison-coordinates,.comparison-skip { color:var(--cp-fg-muted); font-size:12px; }
+.comparison-row pre { white-space:pre-wrap; overflow-wrap:anywhere; font-family:monospace; line-height:1.7; margin-block:8px; }
+.comparison-skip { margin:0; }

@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T15:43:20.321Z",
+  "finished_at": "2026-10-29T15:43:54.501Z",
+  "checks": [
+    "Selecting exact historical versions does not fetch comparison content; the current formal head is a different version.",
+    "An actual comparison shows every changed line, counted context omissions, exact original/text digests and literal script-looking text without executing it.",
+    "Real UI paging pins one comparison, reconstructs both complete historical bodies to their recorded SHA-256 and preserves final-newline differences.",
+    "The actual UI distinguishes normalized text equality from byte equality for BOM and line-ending changes.",
+    "Forged comparison pins and a real metadata revision reject old pages with no body; the actual UI hides the stale result.",
+    "Actual Web and shared H5 comparison controls remain inside the viewport; owned fixture, tabs and servers are released after checking."
+  ],
+  "source_count": 851,
+  "source_sha256": "3dbcca4f9f20ceb05bb9742d3fbf5ec70b7a20d08f5ebca0aeec9c1e65df4565",
+  "source_after_sha256": "3dbcca4f9f20ceb05bb9742d3fbf5ec70b7a20d08f5ebca0aeec9c1e65df4565",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "3e9806f9b48d4ba66632cd05646c6d6fcec6e9699f4fb94a51db1111a84b63c8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "3e9806f9b48d4ba66632cd05646c6d6fcec6e9699f4fb94a51db1111a84b63c8",
+  "build_source_unchanged": true
+}

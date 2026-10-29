@@ -86,3 +86,8 @@ page { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'P
 
 .cp-search-hit { padding:16px 0; border-bottom:1px solid var(--cp-border-subtle); display:flex; flex-direction:column; gap:12px; }
 .cp-search-snippet { white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.8; }
+/* Exact version comparison remains selectable text on every platform. */
+.cp-diff-row { border:1px solid var(--cp-border-subtle); border-left-width:4px; margin:12px 0; padding:12px; }
+.cp-diff-delete { border-left-color:var(--cp-danger-fill); }
+.cp-diff-insert { border-left-color:var(--cp-accent-fg); }
+.cp-diff-text { display:block; white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.7; margin:8px 0; }

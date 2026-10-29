@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量113：GAP-04／18已加入四端准确正式版本的完整提取正文比较、固定摘要分页与过期依据拒绝。更多格式、原件排版、PDF／OCR、复杂DOCX和完整业务旅程继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/113-file-version-comparison.md)及[验证](../quality/113-file-version-comparison-verification.md)。
+
 增量112：GAP-04／12的准确草稿跨运行恢复已接通四端、实际API、不可变PG来源和专用MCP工具；旧草稿重建后须重新上传、校验、扫描和授权提交。更多格式、全文差异、完整OA附件与真实模型验收继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/112-secretary-file-recovery.md)及[验证](../quality/112-secretary-file-recovery-verification.md)。
 
 增量111：GAP-08的版本化合同提醒策略已接通四端、实际API、PG不可变发布、调度边界和Worker。更多聚合、实际复制故障、跨渠道送达与公司规则选用继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计](../development/111-contract-reminder-policies.md)及[验证](../quality/111-contract-reminder-policies-verification.md)。

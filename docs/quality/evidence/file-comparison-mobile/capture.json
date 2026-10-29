@@ -1,0 +1,48 @@
+{
+  "recordings": [
+    {
+      "name": "file-comparison-mobile",
+      "frame_count": 41,
+      "duration_ms": 8460,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/file-comparison-mobile/frames.json",
+      "manifest_sha256": "2bd990e0c35255073bcbfb495b872a1bb51a46d7fbb751d566a63d2491781499"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-context.png",
+      "sha256": "d77c4d217c3f052ed3db58eeaf6aeed8bb9d858c5469a274f3954fcd5e76f4e2"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-full.png",
+      "sha256": "9f289fca7382f4740a8639533e034a2e61038f6e420e830ce7ee8edd076c273a"
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-stale.png",
+      "sha256": "fa5f1f9ba37c5e01d86b8fcf66aca1be5dc91a37b3a8cddcb232782f5bdf85da"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false,
+  "comparison": {
+    "base_version_id": "0033c95d-a7dc-4d78-a6ce-70eff7ee5a42",
+    "target_version_id": "82cdb589-730c-43d0-ab31-2db796a26418",
+    "base_text_sha256": "4f86d7886de9debeae9969767727e9403395ea0ce40b5900848315c9e5c3d525",
+    "target_text_sha256": "38ebab577c21d63d2bb414f1a1fc666caf7f06f3e7898caa8a08bd0c1c5cde57",
+    "all_rows": 90,
+    "complete_body_reconstruction": true
+  }
+}

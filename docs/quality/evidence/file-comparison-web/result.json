@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T15:35:01.729Z",
+  "finished_at": "2026-10-29T15:36:41.471Z",
+  "checks": [
+    "Selecting exact historical versions does not fetch comparison content; the current formal head is a different version.",
+    "An actual comparison shows every changed line, counted context omissions, exact original/text digests and literal script-looking text without executing it.",
+    "Real UI paging pins one comparison, reconstructs both complete historical bodies to their recorded SHA-256 and preserves final-newline differences.",
+    "The actual UI distinguishes normalized text equality from byte equality for BOM and line-ending changes.",
+    "Forged comparison pins and a real metadata revision reject old pages with no body; the actual UI hides the stale result.",
+    "Actual Web and shared H5 comparison controls remain inside the viewport; owned fixture, tabs and servers are released after checking."
+  ],
+  "source_count": 818,
+  "source_sha256": "7955e2f12ca3b9428fbedbbce3110b80706be288e710c918c24c1bb8976575fc",
+  "source_after_sha256": "7955e2f12ca3b9428fbedbbce3110b80706be288e710c918c24c1bb8976575fc",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "3e9806f9b48d4ba66632cd05646c6d6fcec6e9699f4fb94a51db1111a84b63c8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "3e9806f9b48d4ba66632cd05646c6d6fcec6e9699f4fb94a51db1111a84b63c8",
+  "build_source_unchanged": true
+}
