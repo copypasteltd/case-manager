@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-29T00:11:20.637608+00:00",
+  "published_commit": "7a475e9db6f26e9e14e4672971c75df4cf00782d",
+  "package_lock_sha256": "c695c7070aebcdb54dcf125534668a645baecb1223d3c87992a26d8004b6709d",
+  "raw_report_sha256": "f5054278aad05e546b4774d9e46ba1b9969cf281c3715835ab4780e5db37e732",
+  "command": [
+    "npm",
+    "audit",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "exit_code": 1,
+  "vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 57,
+    "high": 6,
+    "critical": 0,
+    "total": 70
+  },
+  "all_dependency_scopes_included": true
+}

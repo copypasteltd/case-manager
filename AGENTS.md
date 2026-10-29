@@ -29,3 +29,7 @@
 - Increment105 adds a native Linux systemd/cgroup-v2 Codex broker and a dedicated JS/Skill bundle. Provider/proof keys stay in the root broker; Windows checks and cross-builds do not establish Linux/model acceptance. Keep GAP-09/10/13 open, all eight Skills draft and AI fee controls excluded. See `docs/development/105-native-agent-runtime.md`.
 
 - Increment106 adds explicit human cost-amortization plans, immutable history and an independent restatable report across four clients. Source expense/cash facts and completed exports stay fixed. Keep company policy adoption, cross-currency settlement, fees/differences and full GAP-03/18 acceptance open. See `docs/development/106-cost-amortization.md`.
+
+- Increment 107 replaces the remaining high-severity Taro template/dev-server consumers with disclosed maintained adapters. Use Node >=22.15.0 <23. All63 remaining audit entries stay open; retained106 UI/backend/media evidence must be distinguished from fresh client/native/server checks. See `docs/development/107-dependency-toolchain.md`.
+
+- Current applicability for all 30 original AC and 72 TC IDs is recorded in `docs/quality/04-current-acceptance-applicability.md` and its JSON manifest. Run `python app/scripts/verify_acceptance_applicability.py` after acceptance-scope changes. Classification does not execute or pass business cases; GAP-28 stays active.

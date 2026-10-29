@@ -1,0 +1,53 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "checked_at": "2026-10-29T03:04:37.713420+00:00",
+  "source_sha256": "3e4724b06d2dc9ad33bb0eb284c13c2295d76d624cae4c84206adfaf58114fb6",
+  "sources": [
+    "mobile/config/index.ts",
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/dev-server-compat/client/socket.js",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/dependency_toolchain.test.mjs",
+    "scripts/verify_dependency_toolchain_security.py"
+  ],
+  "archive_sha256": "0128557695d16b1283cde910a7872adac9b7ab733f606bfa7ffee56efef212e7",
+  "original_record_sha256": "940754a281b6da7a214d34b6f669fb66422e4d69b4204236f564c50296bf410e",
+  "raw_logs": [
+    {
+      "file": "dependency-toolchain-security-tests.log",
+      "sha256": "0279be270ed9c40d28cad573e3f94e9f5901a6d2e1fb38565cdfa00fb7031fc0"
+    },
+    {
+      "file": "dependency-toolchain-native-js-tests.log",
+      "sha256": "f2e7714cf7f322442f2bfd88c25070d220a3c222f44fbb32bc8546bd5e6c93a2"
+    },
+    {
+      "file": "dependency-toolchain-tree.json",
+      "sha256": "c21ad24893b52e7b5b9c11d0ee3e7b485e049acf3885da98d51dfc23390e9d08"
+    },
+    {
+      "file": "dependency-toolchain-tree-errors.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "reason": "First full security run after the final clean CI:38 pass/2 fail, glob child and synthetic HTTP requests reached their10-second execution deadlines.2 native JS checks and the installed tree passed. All source bytes remain unchanged; repeat the same commands without relaxing assertions or implementation limits."
+}

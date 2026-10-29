@@ -1,0 +1,75 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-29T01:42:17.812505+00:00",
+  "source_sha256": "9d1a6b2466ba0eda1572df3681f6de68bc991252b2d64903d14a95353c908b99",
+  "sources": [
+    "mobile/config/index.ts",
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/dependency_toolchain.test.mjs",
+    "scripts/verify_dependency_toolchain_security.py"
+  ],
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "security-tests",
+      "passed": true,
+      "exit_code": 0,
+      "tests": {
+        "tests": 40,
+        "pass": 40,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "raw_log_sha256": "dec1d27b98adf47e91731c8f51f402fc5826cd70cad8c06d10a2c089bec296da",
+      "public_log_sha256": "3dca5c7da83f6445042c67ff9a43a0d30bc3fedd201748ec53c2b117721f58cc"
+    },
+    {
+      "name": "native-js-tests",
+      "passed": true,
+      "exit_code": 0,
+      "tests": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "raw_log_sha256": "c576c7786ad48fbb2e828f4301c7a4d1896f17b341db9962b9afc03fd7c7bf29",
+      "public_log_sha256": "f4556ab8666cb5822723d86849d35b30cb841475c7244737aa8cec8818097821"
+    }
+  ],
+  "node_version": "v22.23.4",
+  "npm_version": "10.9.9",
+  "selected_dependency_tree_valid": false,
+  "selected_dependency_tree_exit_code": 1,
+  "selected_dependency_tree_timed_out": false,
+  "selected_dependency_tree_deadline_seconds": 300,
+  "selected_dependency_tree_raw_sha256": "4682e3f9489baceb04f7afdc4e97c812276b0591a49ca6a4b867863e5d744684",
+  "selected_dependency_tree_stderr_sha256": "df13d6c22dfb5bb0189f0689046cb70482b9a99171951d159c64c20e6903da63",
+  "selected_dependency_tree_sha256": "8bcdff4cd0992b2d7af0ae6eb2b26623f6058b01a87458db26d0724f4a98916e",
+  "scope": "Native synthetic consumer/security checks, actual Taro and Metro entry points. No device, emulator, network performance or production acceptance."
+}

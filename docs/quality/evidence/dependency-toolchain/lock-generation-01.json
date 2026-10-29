@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-29T00:13:38.575564+00:00",
+  "command": [
+    "npm",
+    "install",
+    "--package-lock-only",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "exit_code": 0,
+  "passed": true,
+  "before": {
+    "package.json": "ad2838acf19ad64cf6b2ed4ed3da7ef53014c09e40d3d873c6987bec042ae49f",
+    "package-lock.json": "c695c7070aebcdb54dcf125534668a645baecb1223d3c87992a26d8004b6709d"
+  },
+  "after": {
+    "package.json": "ad2838acf19ad64cf6b2ed4ed3da7ef53014c09e40d3d873c6987bec042ae49f",
+    "package-lock.json": "9a9d6cfebfbb7124901ac3f6452287c3013cf1c3882173225a76397390e4e85f"
+  },
+  "raw_log_sha256": "4390051efad049907f0bb267e01b74898b7c7d4b034467237fe21c0e734a0d78",
+  "node_version": "v22.23.4",
+  "force_or_legacy_peer_flags": false
+}

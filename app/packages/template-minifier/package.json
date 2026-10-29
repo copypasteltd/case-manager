@@ -1,0 +1,10 @@
+{
+  "name": "@copypaste/template-minifier",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.cjs",
+  "engines": { "node": ">=22.15.0" },
+  "dependencies": {
+    "@copypaste/html-minifier-upstream": "npm:html-minifier-terser@7.2.0"
+  }
+}

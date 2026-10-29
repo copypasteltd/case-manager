@@ -6,7 +6,7 @@
 
 ## 1. 工具与路径
 
-本地已验证Node22.14.0/npm10.9.2、Go1.27.3、PG18.6；JDK21与Android SDK可读，未连接Android真机。Go/PG在app/.tools/，数据/随机开发凭证在app/.local/，均已忽略。
+Node要求>=22.15.0 <23；增量107使用项目专用Node22.23.4/npm10.9.9，见[工具链记录](107-dependency-toolchain.md)。本地另已验证Go1.27.3、PG18.6；JDK21与Android SDK可读，未连接Android真机。Go/PG在app/.tools/，数据/随机开发凭证在app/.local/，均已忽略。
 
 禁止调度Docker、WSL、虚拟机或设备模拟器。中文工作区下PG使用Windows DOS路径别名，实际目录仍为app/.local/postgres；这不是虚拟化。脚本只建立未占用的盘符，记录归属，停止本集群后仅移除完全匹配的自建别名；不改动用户已有别名/其他PG服务。
 

@@ -1,0 +1,866 @@
+👽 Taro v4.3.1
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+
+
+● Webpack █████████████████████████ setup (3%)  
+ watch run
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/3 entries 2/3 dependencie
+s 0/2 modules 1 active 
+ ...|<app>\node_modules\webpack-dev-middleware\client
+\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/3 entries 3/5 dependencie
+s 0/3 modules 3 active 
+ babel-loader › src\app.config.ts
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ ...ort loader ..\node_modules\@pmmmwh\react-refresh-webpack-plugin\loader\ind
+ex.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%)  
+ import loader ..\node_modules\@tarojs\taro-loader\lib\h5.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/3 entries 6/19 dependenci
+es 0/6 modules 4 active 
+ ...:\dev\copypasted\内部管理\app\node_modules\webpack-dev-middleware\client\o
+verlay.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (10%) 0/3 entries 17/24 dependenc
+ies 0/16 modules 16 active 
+ ...ted\内部管理\app\node_modules\webpack-dev-middleware\client\clients\create
+Socket.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 32/33 dependenc
+ies 20/24 modules 4 active 
+ ...ic|<app>\node_modules\core-js-pure\features\globa
+l-this.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 44/68 dependenc
+ies 22/35 modules 7 active 
+ ...ted\内部管理\app\node_modules\@pmmmwh\react-refresh-webpack-plugin\overlay
+\index.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 68/85 dependenc
+ies 23/52 modules 29 active 
+ babel-loader › src\pages\login\index.tsx
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 298/498 depende
+ncies 24/118 modules 31 active 
+ ...js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 465/498 depende
+ncies 24/146 modules 75 active 
+ babel-loader › src\pages\secretary\live.ts
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 465/498 depende
+ncies 24/146 modules 95 active 
+ style-loader › css-loader › ..\node_modules\@tarojs\components\global.css
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 465/498 depende
+ncies 24/146 modules 96 active 
+ babel-loader › src\platform\content-sink.ts
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 492/600 depende
+ncies 24/163 modules 109 active 
+ babel-loader › src\pages\login\password-recovery.tsx
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1094/1300 depen
+dencies 29/178 modules 104 active 
+ babel-loader › src\pages\login\password-recovery.tsx
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1381/1450 depen
+dencies 30/262 modules 125 active 
+ babel-loader › ..\packages\contracts\src\finance-reports.ts
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1437/1507 depen
+dencies 37/314 modules 128 active 
+ ..\node_modules\style-loader\dist\runtime\setAttributesWithoutAttributes.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1492/1600 depen
+dencies 38/338 modules 201 active 
+ ...@tarojs\components\dist\components\taro-horizontal-drag-gesture-handler-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1585/1700 depen
+dencies 56/339 modules 188 active 
+ ...-loader › ..\node_modules\@tarojs\components\dist\components\taro-input-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1859/1931 depen
+dencies 68/342 modules 177 active 
+ ...node_modules\@tarojs\components\dist\components\taro-keyboard-accessory-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1902/1954 depen
+dencies 68/348 modules 181 active 
+ ... › ..\node_modules\@tarojs\components\dist\components\taro-list-builder-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1945/1999 depen
+dencies 69/353 modules 204 active 
+ ...der › ..\node_modules\@tarojs\components\dist\components\taro-page-meta-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 1972/2100 depen
+dencies 69/358 modules 216 active 
+ ...r › ..\node_modules\@tarojs\components\dist\components\taro-scroll-view-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 2242/2331 depen
+dencies 79/365 modules 207 active 
+ ...loader › ..\node_modules\@tarojs\components\dist\components\taro-script-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 2363/2462 depen
+dencies 83/371 modules 224 active 
+ ...l-loader › ..\node_modules\@tarojs\components\dist\components\taro-view-co
+re.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 2491/2500 depen
+dencies 83/379 modules 295 active 
+ ..\node_modules\style-loader\dist\runtime\insertBySelector.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 2624/2662 depen
+dencies 151/389 modules 230 active 
+ ...asted\内部管理\app\node_modules\@babel\runtime\helpers\esm\assertThisIniti
+alized.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 2831/2905 depen
+dencies 173/542 modules 230 active 
+ ..\node_modules\scheduler\cjs\scheduler.development.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3000/3095 depen
+dencies 224/604 modules 271 active 
+ ...s
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3118/3154 depen
+dencies 245/609 modules 251 active 
+ ....js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3134/3200 depen
+dencies 252/617 modules 319 active 
+ ...s
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3238/3307 depen
+dencies 323/628 modules 249 active 
+ ...avascript\esm|<app>\node_modules\swiper\modules\t
+humbs.mjs
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3412/3477 depen
+dencies 490/648 modules 151 active 
+ ...s
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3527/3567 depen
+dencies 536/711 modules 148 active 
+ javascript\esm|<app>\node_modules\lodash-es\_Symbol.
+js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3645/3651 depen
+dencies 614/756 modules 134 active 
+ ...js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3664/3669 depen
+dencies 652/762 modules 110 active 
+ ...pypasted\内部管理\app\node_modules\core-js-pure\internals\environment-v8-v
+ersion.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (28%) 1/3 entries 3679/3685 depen
+dencies 666/765 modules 98 active 
+ ...javascript\esm|<app>\node_modules\lodash-es\_core
+JsData.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 2/3 entries 3714/3719 depen
+dencies 716/786 modules 70 active 
+ ..\node_modules\ics\dist\utils\set-location.js
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ building (46%) 2/3 entries 3735/3735 depen
+dencies 792/796 modules 4 active 
+ style-loader › css-loader › postcss-loader › src\app.css
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (70%)  
+ finish module graph
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (73%)  
+ after chunk graph
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (87%)  
+ code generation
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (88%)  
+ runtime requirements
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (89%)  
+ after hashing
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ sealing (92%)  
+ asset processing
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+● Webpack █████████████████████████ emitting (98%)  
+ after emit
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G
+✖ Webpack
+  Compiled with some errors in 17.76s
+
+- 即将开始启动编译，请稍等~
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://127.0.0.1:5189/
+<i> [webpack-dev-server] Content not from webpack is served from '<app>\mobile\dist\h5' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+⚠️ Warnings: 
+
+UnsupportedFeatureWarning: You don't need `webpackExports` if the usage of dynamic import is statically analyse-able. You can safely remove the `webpackExports` magic comment.
+
+✖ Errors: 
+
+resolve 'webpack-dev-server/client/socket' in '<app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets'
+  Parsed request is a module
+  using description file: <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets\package.json (relative path: .)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+      <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets\node_modules doesn't exist or is not a directory
+      looking for modules in <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\node_modules
+        <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\node_modules\webpack-dev-server doesn't exist
+      <app>\node_modules\@pmmmwh\node_modules doesn't exist or is not a directory
+      <app>\node_modules\node_modules doesn't exist or is not a directory
+      looking for modules in <app>\node_modules
+        existing directory <app>\node_modules\webpack-dev-server
+          using description file: <app>\node_modules\webpack-dev-server\package.json (relative path: .)
+            using description file: <app>\node_modules\webpack-dev-server\package.json (relative path: ./client/socket)
+              no extension
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket doesn't exist
+              .js
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.js doesn't exist
+              .jsx
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.jsx doesn't exist
+              .ts
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.ts doesn't exist
+              .tsx
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.tsx doesn't exist
+              .mjs
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.mjs doesn't exist
+              .vue
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.vue doesn't exist
+              as directory
+                <app>\node_modules\webpack-dev-server\client\socket doesn't exist
+      D:\dev\copypasted\内部管理\node_modules doesn't exist or is not a directory
+      D:\dev\copypasted\node_modules doesn't exist or is not a directory
+      D:\dev\node_modules doesn't exist or is not a directory
+      D:\node_modules doesn't exist or is not a directory
+
+→ Watching... [2026/10/29 10:25:29]
+
+🙅   编译失败. 2026/10/29 10:25:30
+
+resolve 'webpack-dev-server/client/socket' in '<app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets'
+  Parsed request is a module
+  using description file: <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets\package.json (relative path: .)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+      <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets\node_modules doesn't exist or is not a directory
+      looking for modules in <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\node_modules
+        <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\node_modules\webpack-dev-server doesn't exist
+      <app>\node_modules\@pmmmwh\node_modules doesn't exist or is not a directory
+      <app>\node_modules\node_modules doesn't exist or is not a directory
+      looking for modules in <app>\node_modules
+        existing directory <app>\node_modules\webpack-dev-server
+          using description file: <app>\node_modules\webpack-dev-server\package.json (relative path: .)
+            using description file: <app>\node_modules\webpack-dev-server\package.json (relative path: ./client/socket)
+              no extension
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket doesn't exist
+              .js
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.js doesn't exist
+              .jsx
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.jsx doesn't exist
+              .ts
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.ts doesn't exist
+              .tsx
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.tsx doesn't exist
+              .mjs
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.mjs doesn't exist
+              .vue
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.vue doesn't exist
+              as directory
+                <app>\node_modules\webpack-dev-server\client\socket doesn't exist
+      D:\dev\copypasted\内部管理\node_modules doesn't exist or is not a directory
+      D:\dev\copypasted\node_modules doesn't exist or is not a directory
+      D:\dev\node_modules doesn't exist or is not a directory
+      D:\node_modules doesn't exist or is not a directory
+
+
+ℹ️  Listening at http://127.0.0.1:5189/
+
+监听文件修改中...
+
+assets by path chunk/*.js 71.2 MiB
+  asset chunk/src_pages_status_index_tsx.js 4.28 MiB [emitted]
+  asset chunk/src_pages_secretary_index_tsx.js 4.17 MiB [emitted]
+  asset chunk/src_pages_detail_index_tsx.js 4.05 MiB [emitted]
+  asset chunk/src_pages_project_index_tsx.js 3.9 MiB [emitted]
+  asset chunk/src_pages_finance_index_tsx.js 3.88 MiB [emitted]
+  + 17 assets
+assets by path *.js 6.82 MiB
+  asset app.js 5.31 MiB [emitted] (name: app)
+  asset taro.js 1.46 MiB [emitted] (name: taro) (id hint: taro)
+  asset runtime.js 49.9 KiB [emitted] (name: runtime)
+assets by path static/images/assets/*.png 55.5 KiB
+  asset static/images/assets/logo-light.png 28.2 KiB [emitted] [from: src/assets/logo-light.png]
+  asset static/images/assets/logo-dark.png 27.3 KiB [emitted] [from: src/assets/logo-dark.png]
+asset index.html 447 bytes [emitted]
+Entrypoint app 6.82 MiB = runtime.js 49.9 KiB taro.js 1.46 MiB app.js 5.31 MiB
+orphan modules 555 KiB [orphan] 269 modules
+runtime modules 33 KiB 18 modules
+javascript modules 6.93 MiB
+  modules by path ../node_modules/ 5.11 MiB 392 modules
+  modules by path ./src/ 1.69 MiB 117 modules
+  modules by path ../packages/contracts/src/*.ts 139 KiB
+    ../packages/contracts/src/notifications.ts 5.18 KiB [built] [code generated]
+    ../packages/contracts/src/budget.ts 2.68 KiB [built] [code generated]
+    ../packages/contracts/src/mutation.ts 19.7 KiB [built] [code generated]
+    + 16 modules
+asset modules 55.5 KiB (asset) 6.18 KiB (javascript)
+  ./src/assets/logo-light.png 28.2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+  ./src/assets/logo-dark.png 27.3 KiB (asset) 42 bytes (javascript) [built] [code generated]
+  data:application/octet-stream;base64,AAEAAAALAIAAAwAw.. 6.1 KiB [built] [code generated]
+../packages/design/src/tokens.json 3.88 KiB [built] [code generated]
+
+WARNING in ../node_modules/@tarojs/components/dist/components/taro-video-core.js 81:8-82:17
+You don't need `webpackExports` if the usage of dynamic import is statically analyse-able. You can safely remove the `webpackExports` magic comment.
+ @ ../node_modules/@tarojs/components/dist/components/index.js 97:0-122 97:0-122 97:0-122 97:0-122
+ @ ./src/app.config.ts 13:0-94 166:0-40
+
+ERROR in ../node_modules/@pmmmwh/react-refresh-webpack-plugin/sockets/WDSSocket.js 7:21-64
+Module not found: Error: Can't resolve 'webpack-dev-server/client/socket' in '<app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets'
+resolve 'webpack-dev-server/client/socket' in '<app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets'
+  Parsed request is a module
+  using description file: <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets\package.json (relative path: .)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+      <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\sockets\node_modules doesn't exist or is not a directory
+      looking for modules in <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\node_modules
+        <app>\node_modules\@pmmmwh\react-refresh-webpack-plugin\node_modules\webpack-dev-server doesn't exist
+      <app>\node_modules\@pmmmwh\node_modules doesn't exist or is not a directory
+      <app>\node_modules\node_modules doesn't exist or is not a directory
+      looking for modules in <app>\node_modules
+        existing directory <app>\node_modules\webpack-dev-server
+          using description file: <app>\node_modules\webpack-dev-server\package.json (relative path: .)
+            using description file: <app>\node_modules\webpack-dev-server\package.json (relative path: ./client/socket)
+              no extension
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket doesn't exist
+              .js
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.js doesn't exist
+              .jsx
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.jsx doesn't exist
+              .ts
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.ts doesn't exist
+              .tsx
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.tsx doesn't exist
+              .mjs
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.mjs doesn't exist
+              .vue
+                Field 'browser' doesn't contain a valid alias configuration
+                <app>\node_modules\webpack-dev-server\client\socket.vue doesn't exist
+              as directory
+                <app>\node_modules\webpack-dev-server\client\socket doesn't exist
+      D:\dev\copypasted\内部管理\node_modules doesn't exist or is not a directory
+      D:\dev\copypasted\node_modules doesn't exist or is not a directory
+      D:\dev\node_modules doesn't exist or is not a directory
+      D:\node_modules doesn't exist or is not a directory
+ @ ../node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js 79:4-28 85:8-32
+
+webpack 5.104.1 compiled with 1 error and 1 warning in 17772 ms
+<e> [webpack-dev-middleware] Stream error: Error: Premature close
+<e>     at onclose (node:internal/streams/end-of-stream:171:30)
+<e>     at processTicksAndRejections (node:internal/process/task_queues:84:11) {
+<e>   code: 'ERR_STREAM_PREMATURE_CLOSE'
+<e> }
+<e> [webpack-dev-middleware] Stream error: Error: Premature close
+<e>     at onclose (node:internal/streams/end-of-stream:171:30)
+<e>     at processTicksAndRejections (node:internal/process/task_queues:84:11) {
+<e>   code: 'ERR_STREAM_PREMATURE_CLOSE'
+<e> }
+<e> [webpack-dev-middleware] Stream error: Error: Premature close
+<e>     at onclose (node:internal/streams/end-of-stream:171:30)
+<e>     at processTicksAndRejections (node:internal/process/task_queues:84:11) {
+<e>   code: 'ERR_STREAM_PREMATURE_CLOSE'
+<e> }
+<e> [webpack-dev-middleware] Stream error: Error: Premature close
+<e>     at onclose (node:internal/streams/end-of-stream:171:30)
+<e>     at processTicksAndRejections (node:internal/process/task_queues:84:11) {
+<e>   code: 'ERR_STREAM_PREMATURE_CLOSE'
+<e> }

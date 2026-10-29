@@ -309,13 +309,14 @@
       "status": "active",
       "priority": "P0",
       "kind": "安全分析＋修复＋回归",
-      "remaining": "核对剩余70项审计记录（6 high／57 moderate／7 low）的可达性，逐项修复、替换或形成有证据的处置；重做受影响回归与产物检查。",
+      "remaining": "核对剩余63项审计记录（0 high／56 moderate／7 low）的可达性，逐项修复、替换或形成有证据的处置；继续完成剩余依赖的实际调用回归与产物检查。",
       "acceptance": "安全问题按实际风险和既定规则关闭／签核，不压低框架版本或隐藏公告。",
       "scope_change": "一般安全、权限和数据完整性要求继续保留。",
       "completed_adaptations": [
-        "BUILD-CONSUMERS-103"
+        "BUILD-CONSUMERS-103",
+        "DEVELOPMENT-TOOLCHAIN-107"
       ],
-      "completed_detail": "增量103完成三类实际构建调用链修复及当前锁复现／回归；完整审计80→70，high13→6。剩余记录均开放，整个工作包保持active。"
+      "completed_detail": "增量103完整审计80→70，high13→6；增量107替换同步模板压缩器与本地开发服务器、升级PostCSS和可选Vite peer，补齐开发模式peer及真实socket转接，完整审计70→63，high6→0。剩余63项均开放，整个工作包保持active。"
     },
     {
       "id": "GAP-27",
@@ -333,9 +334,12 @@
       "status": "active",
       "priority": "P0",
       "kind": "用例整理＋功能验收＋发布清单",
-      "remaining": "按修订范围重排既有30项AC和TC，明确适用／部分适用／不适用，补功能旅程与证据并完成四端发布清单。",
+      "remaining": "按已逐项分类的30项AC／72项TC继续补全四端业务旅程、可追溯证据、操作手册、平台／正式产物及当前范围发布验收；适用性分类不代表业务测试通过。",
       "acceptance": "当前适用需求全部闭环；移出项记为范围取消，不记为测试通过或功能完成。",
-      "scope_change": "移出项不再阻塞当前范围；仍需业务、安全、真实云／模型／TG与服务器部署证据。"
+      "scope_change": "移出项不再阻塞当前范围；仍需业务、安全、真实云／模型／TG与服务器部署证据。",
+      "completed_adaptations": [
+        "ACCEPTANCE-APPLICABILITY-107"
+      ]
     }
   ]
 }

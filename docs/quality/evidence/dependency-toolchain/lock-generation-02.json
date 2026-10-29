@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-29T00:31:27.626203+00:00",
+  "passed": true,
+  "exit_code": 0,
+  "command": [
+    "npm",
+    "install",
+    "--package-lock-only",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "before_lock_sha256": "03dd9e39523cdc9ef072eb3b4488799751bd37c466bee01c7f4b2b5b9efd059b",
+  "package_lock_sha256": "18a18296aecc721b097a994a35537820cfe3a30c01f44b831443fe18cdcbf8c7",
+  "raw_log_sha256": "c5a4bf3fbc1274b647062c5e0b78ed9d8aec5456fc41785a0104c7e66f121a32",
+  "force_or_legacy_peer_flags": false
+}

@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T02:33:00.258273+00:00",
+  "source_sha256": "b785f0850445a4f1f6ab87af0d76def4750ac56e450ae681e35a23c3806c8774",
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "Actual Taro H5 watch starts on the explicit loopback port",
+      "passed": true
+    },
+    {
+      "name": "The current watch compilation completes without errors",
+      "passed": true
+    },
+    {
+      "name": "Actual Taro server rejects an untrusted Host",
+      "passed": true
+    },
+    {
+      "name": "Untrusted browser origins are denied or receive no permissive CORS header",
+      "passed": true
+    },
+    {
+      "name": "Current login UI renders/reloads and browser/context close",
+      "passed": true
+    }
+  ],
+  "owned_process_terminal": true,
+  "compilation_summary": "webpack 5.104.1 compiled with 1 warning in 18148 ms",
+  "owned_port_released": true,
+  "failure": null,
+  "raw_server_log_sha256": "37502e62f16fdab613e29eac7c74825cfe41b342d2ca75be43dee0225b170eeb",
+  "raw_browser_log_sha256": "7c31562e8cc5666cb5c4434fe2dd2f28140220eb6f5f25075a28cb9bff5dd913",
+  "client_record_sha256": "6343be3f60ed9f16e1144507da4d73480f14964111b9276cb27da2ee6d4fa5ee",
+  "scope": "Native loopback Taro development-server/login smoke check; no credentials, media capture, business acceptance or performance benchmark."
+}

@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "source_sha256": "9d1a6b2466ba0eda1572df3681f6de68bc991252b2d64903d14a95353c908b99",
+  "sources": [
+    "mobile/config/index.ts",
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/dependency_toolchain.test.mjs",
+    "scripts/verify_dependency_toolchain_security.py"
+  ],
+  "archive_sha256": "803b001599c894702337e890d3031a5a39c0b38a3f94fe61216c7bbbb2871cc1",
+  "reason": "40 security checks and2 native JS checks passed, but npm ls exited1 with invalid optional Vite/React peer ranges under the workspace consumer. The installed-tree gate remains failed."
+}

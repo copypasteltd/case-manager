@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "step": "freeze_dependency_toolchain_android.py",
+  "build_passed": true,
+  "apk_inspection_checks_passed": 18,
+  "error": "UnicodeDecodeError: UTF-8 decoder encountered byte0xca at position9166 in the original Windows Gradle log.",
+  "helper_sha256": "9c5a3f9d315af35a9e4ec2341e7f829ac24dce3010444baa001370622d3c717b",
+  "native_log_sha256": "103f9880f4769fdbddef7ba92b135edae8b8f4df3d6bbe4a7ad839953f28d21c",
+  "build_record_sha256": "790bdccf0950f61ac71391a5a5bf58e17c8f576b40332b82385ce3b8c33be9c7",
+  "repair": "Parse only exact ASCII Gradle task markers from bytes; preserve the full native log byte-for-byte."
+}

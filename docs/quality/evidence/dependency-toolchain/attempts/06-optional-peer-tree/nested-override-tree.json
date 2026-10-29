@@ -1,0 +1,99 @@
+{
+  "version": "0.1.0",
+  "name": "copypaste-internal-platform",
+  "problems": [
+    "invalid: @vitejs/plugin-react@6.1.2 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\@vitejs\\plugin-react",
+    "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+  ],
+  "dependencies": {
+    "@copypaste/mobile": {
+      "version": "0.1.0",
+      "resolved": "file:../../mobile",
+      "overridden": false,
+      "dependencies": {
+        "@tarojs/plugin-framework-react": {
+          "version": "4.3.1",
+          "resolved": "https://registry.npmjs.org/@tarojs/plugin-framework-react/-/plugin-framework-react-4.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@vitejs/plugin-react": {
+              "version": "6.1.2",
+              "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+              "problems": [
+                "invalid: @vitejs/plugin-react@6.1.2 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\@vitejs\\plugin-react"
+              ]
+            },
+            "vite": {
+              "version": "8.3.5",
+              "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+              "problems": [
+                "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "@copypaste/web": {
+      "version": "0.1.0",
+      "resolved": "file:../../web",
+      "overridden": false,
+      "dependencies": {
+        "@vitejs/plugin-react": {
+          "version": "6.1.2"
+        },
+        "vite": {
+          "version": "8.3.5"
+        },
+        "vitest": {
+          "version": "5.0.5",
+          "resolved": "https://registry.npmjs.org/vitest/-/vitest-5.0.5.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@vitest/mocker": {
+              "version": "5.0.5",
+              "resolved": "https://registry.npmjs.org/@vitest/mocker/-/mocker-5.0.5.tgz",
+              "overridden": false,
+              "dependencies": {
+                "vite": {
+                  "version": "8.3.5",
+                  "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+                  "problems": [
+                    "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+                  ]
+                }
+              }
+            },
+            "vite": {
+              "version": "8.3.5",
+              "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+              "problems": [
+                "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "@vitejs/plugin-react": {
+      "version": "6.1.2",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-6.1.2.tgz",
+      "overridden": true,
+      "dependencies": {
+        "vite": {
+          "version": "8.3.5"
+        }
+      }
+    },
+    "vite": {
+      "version": "8.3.5",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-8.3.5.tgz",
+      "overridden": true
+    }
+  },
+  "error": {
+    "code": "ELSPROBLEMS",
+    "summary": "invalid: @vitejs/plugin-react@6.1.2 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\@vitejs\\plugin-react\ninvalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite",
+    "detail": ""
+  }
+}

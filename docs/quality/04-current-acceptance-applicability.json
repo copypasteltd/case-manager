@@ -1,0 +1,1657 @@
+{
+  "increment": 107,
+  "scope_revision": 99,
+  "scope_flags_sha256": "fffec702fec4c05ebd7815559127aaf0ebadf15bc4b7881253ca8491bca1a8ab",
+  "business_cases_passed_by_this_document": 0,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "original_sources": [
+    {
+      "kind": "AC",
+      "path": "docs/06-decisions-risks-and-acceptance.md",
+      "sha256": "ae07bb4252a3f01026874de1275347409365aea5eef209633a9c694f3b8fd17c",
+      "row_count": 30
+    },
+    {
+      "kind": "TC",
+      "path": "docs/quality/01-test-strategy-and-cases.md",
+      "sha256": "a76d7f0eaebc0872f5b6317e37b1c5d240ec58ce774ffa1b775898964b619da4",
+      "row_count": 72
+    }
+  ],
+  "counts": {
+    "AC": {
+      "required": 18,
+      "partial": 8,
+      "excluded": 4,
+      "total": 30
+    },
+    "TC": {
+      "required": 56,
+      "partial": 14,
+      "excluded": 2,
+      "total": 72
+    }
+  },
+  "items": [
+    {
+      "id": "AC-01",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-01",
+        "U-04",
+        "3 个账号角色与项目范围不同",
+        "列表、搜索、引用、预览和下载均不出现越权资源"
+      ],
+      "original_row_sha256": "e13f1704fee36b101dd161cc4fb497d74f2a4d1481274c3644272253a30ccf0d",
+      "current_requirement": "列表、搜索、引用、预览和下载均不出现越权资源",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-02",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-02",
+        "U-04/U-07",
+        "员工停用、成员移除后继续请求",
+        "新工具被拒绝、授权缓存失效、旧 AI 上下文不再使用"
+      ],
+      "original_row_sha256": "59753b5efc66f101b608b391bf723ba6eb61df73672bf8aacd44d5f13983c00e",
+      "current_requirement": "新工具被拒绝、授权缓存失效、旧 AI 上下文不再使用",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-03",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-03",
+        "U-17",
+        "项目从立项到归档",
+        "任务/依赖、里程碑、交付验收、风险变更、文件合同与成本能闭环追踪"
+      ],
+      "original_row_sha256": "e131d7cd6b4943286f5a2ed3b25f1e90280a644918b4df712e310f0f8d9235a2",
+      "current_requirement": "任务/依赖、里程碑、交付验收、风险变更、文件合同与成本能闭环追踪",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-04",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-04",
+        "U-16",
+        "合同建立、变更、签署、履约、到期提醒",
+        "不同版本与补充协议关系、审批、签署件和节点记录完整"
+      ],
+      "original_row_sha256": "f15c3e4cfd972a751030c3763d7816d2b3939b13b3f6f516b5f557aff224c043",
+      "current_requirement": "不同版本与补充协议关系、审批、签署件和节点记录完整",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-05",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-05",
+        "U-16",
+        "报销提交、退回、通过、处理",
+        "原件、币种、金额、申请/审批/处理人和实际状态可查"
+      ],
+      "original_row_sha256": "85f22a10a1386deb3fd76cb04d6fa5da44b20d0572946bf2f10849a608431940",
+      "current_requirement": "原件、币种、金额、申请/审批/处理人和实际状态可查",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-06",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-06",
+        "U-16",
+        "采购申请至验收/支付记录",
+        "各阶段状态一致，部分验收/支付关系清楚"
+      ],
+      "original_row_sha256": "1b348413be7d0b7de90c0d041a8a402e402816dc023fe6e9990c3a02a01463ac",
+      "current_requirement": "各阶段状态一致，部分验收/支付关系清楚",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-07",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-07",
+        "U-16",
+        "订阅月付/年付、变价、取消",
+        "账期、预计/实际、提醒、历史快照与月报正确"
+      ],
+      "original_row_sha256": "a7947de78ac7e1c75f1fec4bee233465b60379759fb4a44fba142ace72367cd8",
+      "current_requirement": "账期、预计/实际、提醒、历史快照与月报正确",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-08",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-08",
+        "U-16",
+        "同笔订阅扣款关联采购与报销",
+        "实际费用只计一次；原币与折算口径可追溯"
+      ],
+      "original_row_sha256": "fb3dd4195eade0cb669fdcd1762cbb5fedd5512348555ab931296dc12021cdc0",
+      "current_requirement": "实际费用只计一次；原币与折算口径可追溯",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-09",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-09",
+        "U-05",
+        "项目日志/会议记录/SOP",
+        "能按项目关联、搜索、查看正文版本与附件权限"
+      ],
+      "original_row_sha256": "df985f8abdbfde413059b44e597191dde1da262e75cc68a17c3d5c1d1dbb14d2",
+      "current_requirement": "能按项目关联、搜索、查看正文版本与附件权限",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-10",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-10",
+        "U-15/U-19",
+        "Web 上传真实 120 GB 文件",
+        "摘要/大小一致；断网、刷新重选文件、凭证过期后只补传缺失分片"
+      ],
+      "original_row_sha256": "370cb54574aea3354c34f7168543889b428104e3d71fc8b8a888b3f63347a7ff",
+      "current_requirement": "保留Web分片、固定源、摘要／大小、重选文件和凭证过期后的缺片恢复功能；用有界本地样本及对应接口核对。",
+      "removed_requirement": "移出真实120GB上传和实网断网／吞吐性能专项。",
+      "removed_categories": [
+        "live_120gb",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "AC-11",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-11",
+        "U-15/U-19",
+        "Android 上传真实 120 GB 文件",
+        "真机内存/磁盘无整文件复制；重启、网络变化后可恢复"
+      ],
+      "original_row_sha256": "2fde364a47b0c8e485b07611b57212474ce42d3903599f06ad642cfd196c294b",
+      "current_requirement": "保留Android上传协调、持久状态、重启恢复、源权限失效和有界读取设计；以源码、原生JVM及APK检查核对。",
+      "removed_requirement": "移出真机与真实120GB／实网性能专项，不启用模拟器。",
+      "removed_categories": [
+        "real_device",
+        "live_120gb",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "AC-12",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-12",
+        "U-11/U-15",
+        "120 GB 跨云复制时中断 Worker",
+        "已确认分片可恢复；固定源版本；目标内容校验通过"
+      ],
+      "original_row_sha256": "68741689992f6171ec5469f28a0e4fcd0af40ce97b5b9abfef7455fa171b6b1e",
+      "current_requirement": "保留固定源版本、分片恢复、Worker租约／fence、重复执行和目标校验，继续要求OSS＋R2正常复制接入。",
+      "removed_requirement": "移出真实120GB及跨云网络性能专项。",
+      "removed_categories": [
+        "live_120gb",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "AC-13",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-13",
+        "U-11",
+        "小文件与大文件同时复制",
+        "大文件不阻塞普通合同/票据；显示逐版本副本状态"
+      ],
+      "original_row_sha256": "dabb0eae4c31565e1fa392f8179dfa684c5bbb8618f919fe32763ea085f1dea5",
+      "current_requirement": "保留普通文件与大文件的功能性队列调度、防饥饿和逐版本副本状态。",
+      "removed_requirement": "移出真实大文件争用及网络延迟／吞吐基准。",
+      "removed_categories": [
+        "network_performance"
+      ]
+    },
+    {
+      "id": "AC-14",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-14",
+        "U-08/U-09",
+        "秘书更新文件并与人工并发修改",
+        "基础版本冲突被拦截；同一幂等任务不创建重复正式版本"
+      ],
+      "original_row_sha256": "c491e04c8a3f20638eac199dd0bcac9b1720ea46fa677793fba48009be606f94",
+      "current_requirement": "基础版本冲突被拦截；同一幂等任务不创建重复正式版本",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-15",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-15",
+        "U-08/U-09",
+        "秘书移动目录和恢复旧版",
+        "大文件重命名不重新上传；恢复保留完整历史且权限不扩大"
+      ],
+      "original_row_sha256": "6d52230c22bf4522b64fdf619d72e04e159b17505bc1a5a61e2f3af2b9802c43",
+      "current_requirement": "大文件重命名不重新上传；恢复保留完整历史且权限不扩大",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-16",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-16",
+        "U-09",
+        "建项目、整理资料、OA/订阅辅助",
+        "所有已承诺 Skill 有版本、授权边界、失败结果和业务证据"
+      ],
+      "original_row_sha256": "1e6fa07c245d09f26b82260a136458a4720a32af51667ac0e0e27789afe4c820",
+      "current_requirement": "所有已承诺 Skill 有版本、授权边界、失败结果和业务证据",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-17",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-17",
+        "U-07/U-08",
+        "恶意文档要求外发或读取密钥",
+        "工具/OS 边界阻断，模型文本不能绕过授权"
+      ],
+      "original_row_sha256": "7c334452c74d6f4acbf9e1343f0f4d83cf45c66c92b4a92329bd6583bff5c207",
+      "current_requirement": "工具/OS 边界阻断，模型文本不能绕过授权",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-18",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-18",
+        "U-07",
+        "AI 进程中止、模型限流或预算触顶",
+        "已提交业务不丢；任务可查/重试；基础业务继续可用"
+      ],
+      "original_row_sha256": "5e5d833a740b7b07a52c572d12f41ef4c25f146858f5b5fbaefbc3fd1fe0dc36",
+      "current_requirement": "保留进程中止、模型限流／超时、取消、已提交事实与任务状态；手工业务继续可用。",
+      "removed_requirement": "移出AI费用／月度Token或金额预算触顶、价格计费及接单费用预留门槛；技术资源限制保留。",
+      "removed_categories": [
+        "ai_cost"
+      ]
+    },
+    {
+      "id": "AC-19",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-19",
+        "U-10",
+        "TG 绑定用户与群查询",
+        "未绑定/匿名身份不可写；个人专属资料不发群；请求/投递去重"
+      ],
+      "original_row_sha256": "ddfb6bf6354a1f3654f3966a06e8a33f3ac38cdfb4a51fcc86168a4c7d5e3c04",
+      "current_requirement": "未绑定/匿名身份不可写；个人专属资料不发群；请求/投递去重",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-20",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-20",
+        "U-18",
+        "微信小程序正式测试环境",
+        "员工登录、项目/文件查阅、OA 审批、普通附件与秘书通过真机验收"
+      ],
+      "original_row_sha256": "3973a8643e881cac9fb90474690e654194fa2d2848316aa036494d8284b88bba",
+      "current_requirement": "保留微信独立AppID、身份／域名／平台发布配置及登录、资料、审批、普通附件和秘书业务功能。",
+      "removed_requirement": "移出实体设备验收；不以另一平台结果覆盖微信自己的功能与产物。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "AC-21",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-21",
+        "U-18",
+        "抖音小程序正式测试环境",
+        "独立真机/域名/权限与上述业务通过，不以微信结果代替"
+      ],
+      "original_row_sha256": "6b002c069917aba3e20e9fa83666406241f461e56d1524975a62f7bea807fad2",
+      "current_requirement": "保留抖音独立AppID、身份／域名／权限／平台发布配置及其业务旅程与产物。",
+      "removed_requirement": "移出实体设备验收；不以微信结果替代抖音。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "AC-22",
+      "kind": "AC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-22",
+        "U-18",
+        "Android 签名安装包",
+        "可安装、登录、业务访问、续传与升级验证；签名密钥安全保管"
+      ],
+      "original_row_sha256": "de6d3297197e7f549685e4ddacd61edbbcd078d731cdb176dda5b697f8e08daf",
+      "current_requirement": "保留正式签名密钥、APK身份／发布配置、升级兼容与状态恢复逻辑，检查源码、原生JVM和签名产物。",
+      "removed_requirement": "移出实体设备安装／升级验收及实网性能专项。",
+      "removed_categories": [
+        "real_device",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "AC-23",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-23",
+        "U-05",
+        "服务连续失败与采集停更",
+        "告警去重，过期显示 unknown，应用主机宕机仍有外部告警"
+      ],
+      "original_row_sha256": "1d2e5cccfc96b1a3073e995c096e9f2537b869e2f94582103649c25c22cdac90",
+      "current_requirement": "告警去重，过期显示 unknown，应用主机宕机仍有外部告警",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-24",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-24",
+        "U-11",
+        "删除主端文件、恢复旧版本",
+        "副本不会同步硬删；回收站/保留规则和恢复记录有效"
+      ],
+      "original_row_sha256": "9e49b2c6d1c0ffdbc63a042eb48111c09dd529d3dbce186c175cf02d38c2a225",
+      "current_requirement": "副本不会同步硬删；回收站/保留规则和恢复记录有效",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-25",
+      "kind": "AC",
+      "applicability": "excluded",
+      "acceptance_state": "scope_excluded",
+      "original_columns": [
+        "AC-25",
+        "U-11/U-12",
+        "丢失应用节点并恢复",
+        "从外部 PG/存储/密钥重建，业务与引用可查，本机缓存非唯一副本"
+      ],
+      "original_row_sha256": "5ab3ff95a0015ba6f4d7374551fcad6c292d923582ac007a7ebc8f2e6e396f50",
+      "current_requirement": "本轮不安排此项验收，不计为通过。",
+      "removed_requirement": "移出丢失应用节点后重建的容灾验收；普通服务重启与持久PG另由保留项覆盖。",
+      "removed_categories": [
+        "disaster_recovery"
+      ]
+    },
+    {
+      "id": "AC-26",
+      "kind": "AC",
+      "applicability": "excluded",
+      "acceptance_state": "scope_excluded",
+      "original_columns": [
+        "AC-26",
+        "U-11",
+        "在独立环境恢复 DB 与对象清单",
+        "权限、合同/费用、正文、会话和文件版本对应；缺失对象明确报告"
+      ],
+      "original_row_sha256": "ae4423c5f04876aa4a3638f90b1b631bd15d4cf9cf72d18475697902d9cfa916",
+      "current_requirement": "本轮不安排此项验收，不计为通过。",
+      "removed_requirement": "移出独立环境DB／对象／密钥一致恢复及RPO／RTO容灾验收。",
+      "removed_categories": [
+        "disaster_recovery"
+      ]
+    },
+    {
+      "id": "AC-27",
+      "kind": "AC",
+      "applicability": "excluded",
+      "acceptance_state": "scope_excluded",
+      "original_columns": [
+        "AC-27",
+        "U-15",
+        "2 TB 存量迁移",
+        "字节/对象数量、摘要、归属、权限与双份清单匹配，失败项关闭"
+      ],
+      "original_row_sha256": "69436ee391b86c3ff078a6fc008642b12f1b2a1ac1e17784c6fcd59d9bf988f6",
+      "current_requirement": "本轮不安排此项验收，不计为通过。",
+      "removed_requirement": "移出2TB历史文件全量／增量迁移及迁移对账。",
+      "removed_categories": [
+        "historical_migration"
+      ]
+    },
+    {
+      "id": "AC-28",
+      "kind": "AC",
+      "applicability": "excluded",
+      "acceptance_state": "scope_excluded",
+      "original_columns": [
+        "AC-28",
+        "U-14",
+        "3 人基线和 10 人余量访问",
+        "普通 API 指标、香港访问体验、大文件与查询争用有记录"
+      ],
+      "original_row_sha256": "2efcf9ae4f85e55639fb512ecef45a29e2946d06399e7c03ddd6f91260dcc569",
+      "current_requirement": "本轮不安排此项验收，不计为通过。",
+      "removed_requirement": "移出3人基线／10人余量、香港体验及真实文件争用的网络性能基准。",
+      "removed_categories": [
+        "network_performance"
+      ]
+    },
+    {
+      "id": "AC-29",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-29",
+        "U-18",
+        "共同首发检查",
+        "所有指定端、发布通道、业务用例与操作手册齐备"
+      ],
+      "original_row_sha256": "c5e2c34541e37838bd6e3d33f3716267f1555927cfbd824ed7e9576a47c9f4d8",
+      "current_requirement": "所有指定端、发布通道、业务用例与操作手册齐备",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "AC-30",
+      "kind": "AC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "AC-30",
+        "U-13",
+        "开发与验证环境",
+        "无本地 Docker/WSL/虚拟机/模拟器调度；浏览器不用标签页已清理"
+      ],
+      "original_row_sha256": "1c4699e80c24f4aeb3f7701c6c52f301702f50107ede281461238441bfd088e2",
+      "current_requirement": "无本地 Docker/WSL/虚拟机/模拟器调度；浏览器不用标签页已清理",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-01",
+        "邀请激活、过期/重放、无公开注册",
+        "单次消费，账号状态与审计正确"
+      ],
+      "original_row_sha256": "2a87247c0a6c63ed7c6671a8cfc48773c5343939d5519483423472ccded33fc9",
+      "current_requirement": "单次消费，账号状态与审计正确",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-02",
+        "A/B跨项目列表/计数/搜索/引用/预览/下载",
+        "越权0成功；无标题/计数旁路；请求与安全响应"
+      ],
+      "original_row_sha256": "cc2c6523f88e38d1227dd8240869cd480f85cf1ca0328ed6ac55780489e5d3d6",
+      "current_requirement": "越权0成功；无标题/计数旁路；请求与安全响应",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-03",
+        "管理员无内容权限访问合同/费用",
+        "仍拒绝，管理角色不变超级阅读"
+      ],
+      "original_row_sha256": "8ed04ecbb8ac9690c1fc69570b115ca42e58a885956c314de85677f4efdfecac",
+      "current_requirement": "仍拒绝，管理角色不变超级阅读",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-04",
+        "停用、移成员后继续JWT/刷新/AI工具/旧会话",
+        "新请求拒绝、缓存/上下文失效；已签URL风险按策略处理"
+      ],
+      "original_row_sha256": "f4d782b3f7960a30910b8debd5001cf54de8b72a3b62218e4a7e87876313140f",
+      "current_requirement": "新请求拒绝、缓存/上下文失效；已签URL风险按策略处理",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-05",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-05",
+        "刷新令牌重放、CSRF、登录爆破、MFA恢复",
+        "重放撤族/请求阻断/限速，恢复可追踪"
+      ],
+      "original_row_sha256": "bdf759f84e4fd5046fe498b8d83d34ed7f92877f55e3dd2b2bb45f6bfb80970c",
+      "current_requirement": "重放撤族/请求阻断/限速，恢复可追踪",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-06",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-06",
+        "篡改org/actor/roles/object_id、mass assignment",
+        "身份不可替换，未知字段拒绝，无跨组织FK"
+      ],
+      "original_row_sha256": "9533c953239b62a6a8e36ef52a236813824dd77eb2dd972b16aae1a619cdefb4",
+      "current_requirement": "身份不可替换，未知字段拒绝，无跨组织FK",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-IAM-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-IAM-07",
+        "审计/日志/导出扫描",
+        "无秘密/完整签名URL/私有推理，业务写与audit一致"
+      ],
+      "original_row_sha256": "04670ae10cabb27a35a8b32196fcd9f47392bd849dd2d33d6bb13f74ab5cbe7d",
+      "current_requirement": "无秘密/完整签名URL/私有推理，业务写与audit一致",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-01",
+        "从立项/模板至任务/里程碑/合同/预算/风险/验收/归档",
+        "完整闭环可追溯，初始化部分失败可重试"
+      ],
+      "original_row_sha256": "6b6e790f18815320826039ee99af9f27ea713b9634aa433755a3d47a4f7a9d62",
+      "current_requirement": "完整闭环可追溯，初始化部分失败可重试",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-02",
+        "并发添加反向依赖、父子成环、前置未完成",
+        "环/非法转移被拦，不靠前端"
+      ],
+      "original_row_sha256": "2dd57b318bb82dcfb8d73e98e4827ccb9b8efe153efc4861e16025f903e0342f",
+      "current_requirement": "环/非法转移被拦，不靠前端",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-03",
+        "同时改任务、变更基于过期项目版本",
+        "409且草稿保留，不丢他人修改"
+      ],
+      "original_row_sha256": "714b64328c33faa4acb713fae0fc4725fb44c914487928d31b3f9bfb5e6585fe",
+      "current_requirement": "409且草稿保留，不丢他人修改",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-04",
+        "交付退回、新文件替换、未闭环尝试归档",
+        "固定修订/验收证据，阻塞清单准确"
+      ],
+      "original_row_sha256": "d692e7f9f6baf878b0fe72e49095ecadd1b27aeec01edcc513af529dda287222",
+      "current_requirement": "固定修订/验收证据，阻塞清单准确",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-05",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-05",
+        "知识正文并发发布、失权附件、恢复旧版",
+        "正文修订完整，内部发布，引用不扩大权限"
+      ],
+      "original_row_sha256": "eee9122588a4403b11be4bab9e0b2b82f6c9e53bece47d0a0d909dd9b1e88df1",
+      "current_requirement": "正文修订完整，内部发布，引用不扩大权限",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-06",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-06",
+        "固定项目／预算基线、相抵金额、独立审批、明确实施及旧版本冲突",
+        "批准不自动实施；原币预算及历史准确，真实MFA、并发唯一、回滚与当前权限独立核对"
+      ],
+      "original_row_sha256": "6963d332a3e54eb26778b0fc0483f66362bd52cd842995d42b2406536a55f5b6",
+      "current_requirement": "批准不自动实施；原币预算及历史准确，真实MFA、并发唯一、回滚与当前权限独立核对",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-PM-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-PM-07",
+        "十三类完整结项核查、人工复盘、准确依据归档、受控重开与历史授权",
+        "未结事项不豁免；真实会话／近期 MFA、共享费用与退款、供应方取消、固定文件及数据库独立约束；过期依据保留输入并重新核实"
+      ],
+      "original_row_sha256": "fbec7c2dd0b834e37d9c55f938557b40a7a8110a736047a2ed1f7ca17c5a3f8b",
+      "current_requirement": "未结事项不豁免；真实会话／近期 MFA、共享费用与退款、供应方取消、固定文件及数据库独立约束；过期依据保留输入并重新核实",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-01",
+        "每类申请完整顺序审批",
+        "快照/步骤/决定正确，通过不等于付款"
+      ],
+      "original_row_sha256": "c0468344c992556f94fc7e88e041a09e4ed113c3c9c0f651ee923997cf5bdbfe",
+      "current_requirement": "快照/步骤/决定正确，通过不等于付款",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-02",
+        "退回重提/拒绝/撤回边界、模板中途升级",
+        "新修订新实例，旧批准不复用，模板不追改"
+      ],
+      "original_row_sha256": "68074915aca37317f25e25b47df813a73024eedb4ec6a58fd84663cd6de8a726",
+      "current_requirement": "新修订新实例，旧批准不复用，模板不追改",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-03",
+        "两设备同一步骤批准/退回、重复key/异参数",
+        "只有一个终态，同key同果/异参冲突"
+      ],
+      "original_row_sha256": "b8764364df579a65f7158bbfabea547fa81a9ec50efd4ad720a16386fd3b6858",
+      "current_requirement": "只有一个终态，同key同果/异参冲突",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-04",
+        "本人审批/停用审批人/未配置规则",
+        "按制度拒绝或阻塞，不自动跳过"
+      ],
+      "original_row_sha256": "e5029b129497f7c457cb4da2cb93140593b40b95bcbad02faa04f0d87ffbf3af",
+      "current_requirement": "按制度拒绝或阻塞，不自动跳过",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-05",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-05",
+        "合同草稿→批准→签署→生效→补充→终止",
+        "版本与签署件固定、未结节点可见"
+      ],
+      "original_row_sha256": "34414b93f1459556cf74ee90485ab92b1cd899ecc9368f82eb1f9e09a12910f2",
+      "current_requirement": "版本与签署件固定、未结节点可见",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-06",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-06",
+        "采购分批收货/退货、超收、超批准订单额",
+        "净数量/金额校验，需重审情形不旁路"
+      ],
+      "original_row_sha256": "4cbb73643ec14e394dd530d4124df026387913821dbffc271892309011efabc1",
+      "current_requirement": "净数量/金额校验，需重审情形不旁路",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-07",
+        "报销OCR/缺票/相同票据/公司已付再报销",
+        "原件保留，候选需核实，双付异常可见"
+      ],
+      "original_row_sha256": "948599b1bb2a0586c85e3baffb41af63b91a88e1a466aea709d1125619e3e5b6",
+      "current_requirement": "原件保留，候选需核实，双付异常可见",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OA-08",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OA-08",
+        "送审后试改金额/附件、无权审批人伪造身份",
+        "禁直接覆盖，不受模型文字指挥"
+      ],
+      "original_row_sha256": "a53be3231e47d6347171e126748977ce3ecc2667cc7a8bdd4fbc021daa2e953d",
+      "current_requirement": "禁直接覆盖，不受模型文字指挥",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-01",
+        "同费关联订阅+采购+报销，多项目分摊",
+        "一个cost计一次、分摊和正确"
+      ],
+      "original_row_sha256": "91b222035b5cf86e1c695455df8fca69d3ad5c804a7f5a5ac39eec5508650477",
+      "current_requirement": "一个cost计一次、分摊和正确",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-02",
+        "月底锚点/闰年/月中变价/重启补跑",
+        "账期唯一不漂移，价格快照不追改"
+      ],
+      "original_row_sha256": "519026ef1837412f6d49ce984d99f39b5702c98879cbbdb78ea83ea7ab6570ad",
+      "current_requirement": "账期唯一不漂移，价格快照不追改",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-03",
+        "年费全额与摊销、现金与发生分别统计",
+        "不叠加口径，钻取来源一致"
+      ],
+      "original_row_sha256": "da4cbc6ad92b67f223def01371fad770bc993009beb1fa84e306a3325683c6e5",
+      "current_requirement": "不叠加口径，钻取来源一致",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-04",
+        "缺汇率/多币种/舍入/历史汇率修改",
+        "原币保留，缺折算单列，不浮点误差/追改"
+      ],
+      "original_row_sha256": "7d57dd961b63d64e13db9fdf02ead7b521bf442aa62764258387ffff92569ee3",
+      "current_requirement": "原币保留，缺折算单列，不浮点误差/追改",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-05",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-05",
+        "两设备超额分配/部分支付/退款/冲销",
+        "不超配，不删旧事实；永久source_key去重"
+      ],
+      "original_row_sha256": "242377562a61515043add4eee030209e1de69506dcb849e3237e0652893cc767",
+      "current_requirement": "不超配，不删旧事实；永久source_key去重",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-06",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-06",
+        "暂停/取消后仍扣费、无真实扣款生成预测",
+        "异常待办；预测不能自动变实际"
+      ],
+      "original_row_sha256": "b1bd7bbff6cca766a43fb98055a96a28f4f70075921160b54e77031fec1a212e",
+      "current_requirement": "异常待办；预测不能自动变实际",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FIN-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FIN-07",
+        "无报表权限/明细权限导出",
+        "不通过总额/CSV泄露，下载重鉴权"
+      ],
+      "original_row_sha256": "7ca9dba4a5f6d86004cf45050239c9566b927f11448cf8615c940e7c5908d51a",
+      "current_requirement": "不通过总额/CSV泄露，下载重鉴权",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FILE-01",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-01",
+        "Web真实120GB、断网/刷新重选/凭证过期",
+        "只补缺片、源一致、SHA/size正确、内存有界"
+      ],
+      "original_row_sha256": "7bd3bc4ce4a39bdd295426a27ba6b4225ac8f003c45db144d7f11e62de99b579",
+      "current_requirement": "保留固定源、云端分片核对、缺片恢复、SHA／size和有界读取；用有界样本核对功能。",
+      "removed_requirement": "移出真实120GB及实网性能／断网专项。",
+      "removed_categories": [
+        "live_120gb",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "TC-FILE-02",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-02",
+        "Android真实120GB、杀进程/重启/网络切换/源权限撤销",
+        "真机可恢复，不整文件复制，权限修复提示"
+      ],
+      "original_row_sha256": "e2f5961cda0d5ad534864cc507e7a9a020044a4255eadadee0f8f009b6df9c70",
+      "current_requirement": "保留Android任务持久化、重启／取消、状态重建、源权限撤销及避免整文件复制的实现。",
+      "removed_requirement": "移出真机、真实120GB与真实网络切换／性能专项。",
+      "removed_categories": [
+        "real_device",
+        "live_120gb",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "TC-FILE-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-03",
+        "伪造ack/缺片/错大小/源不同/延迟旧签名",
+        "以云片为准，固定源检验，不能正式覆盖"
+      ],
+      "original_row_sha256": "c11df8c3c5c7b126c902e2d1c1b4eb6e3a965c3536a3303a05a5ba5123319f5a",
+      "current_requirement": "以云片为准，固定源检验，不能正式覆盖",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FILE-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-04",
+        "formal对象已准备DB冲突/响应丢失/重复commit",
+        "旧base拒绝、幂等同版本、孤儿可回收"
+      ],
+      "original_row_sha256": "a893d098c66360c43a327f2bfd2e9e4ee363d7a41713111fbcb65512fb1e0880",
+      "current_requirement": "旧base拒绝、幂等同版本、孤儿可回收",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FILE-05",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-05",
+        "120GB跨云复制杀Worker/重复租约/目标摘要错",
+        "恢复片/拒旧fence、错误不verified"
+      ],
+      "original_row_sha256": "1c6abb68e118e05055a09c99b756b18400e0a490d6ccca1907a5a64a295b4456",
+      "current_requirement": "保留正常复制的缺片恢复、Worker中断／重复租约／旧fence和目标摘要错误处理。",
+      "removed_requirement": "移出真实120GB及跨云网络性能专项。",
+      "removed_categories": [
+        "live_120gb",
+        "network_performance"
+      ]
+    },
+    {
+      "id": "TC-FILE-06",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-06",
+        "大文件复制同时传普通合同/票据",
+        "小文件不饥饿，逐版本延迟与失败可见"
+      ],
+      "original_row_sha256": "3240e6ecad88fc80eec6d154e8035b482ef62af288be90e190def9866b12f48e",
+      "current_requirement": "保留功能性队列公平、普通文件不饥饿及逐版本失败／待处理状态。",
+      "removed_requirement": "移出真实大文件与普通文件争用的网络性能基准。",
+      "removed_categories": [
+        "network_performance"
+      ]
+    },
+    {
+      "id": "TC-FILE-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-07",
+        "目录环/规范化同名/跨项目移动/历史恢复",
+        "不扩大权限，移动不重传，恢复新版本"
+      ],
+      "original_row_sha256": "ee43448878cf5e2e202a2303b8da03317535eb5cc4431a2e53e4d77010b33cd2",
+      "current_requirement": "不扩大权限，移动不重传，恢复新版本",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FILE-08",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-08",
+        "恶意路径/符号链接/压缩炸弹/宏/HTML预览",
+        "配额/扫描/隔离生效，unscannable不假clean"
+      ],
+      "original_row_sha256": "a09b331c68b9015a21956dd5b4b61c9cc3a8dd47e42ba5ceb3467acb01e4d25c",
+      "current_requirement": "配额/扫描/隔离生效，unscannable不假clean",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FILE-09",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-FILE-09",
+        "回收站/签署引用/hold/备份引用期间清理",
+        "不硬删必要版本；dry-run与审计"
+      ],
+      "original_row_sha256": "44c8284f557b076450eb22cf4fbc40e5b460e160c254136a1cfd9fc6695e5355",
+      "current_requirement": "不硬删必要版本；dry-run与审计",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-FILE-10",
+      "kind": "TC",
+      "applicability": "excluded",
+      "acceptance_state": "scope_excluded",
+      "original_columns": [
+        "TC-FILE-10",
+        "2TB全量/增量迁移+重跑",
+        "字节/对象/摘要/ACL双份匹配，源保留"
+      ],
+      "original_row_sha256": "2acc26cfeb468673d6478f8ca2cd8cdc8f992a0379565d8eba9a75a930c44c47",
+      "current_requirement": "本轮不安排此项验收，不计为通过。",
+      "removed_requirement": "移出2TB历史全量／增量迁移与迁移清单对账。",
+      "removed_categories": [
+        "historical_migration"
+      ]
+    },
+    {
+      "id": "TC-AI-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-01",
+        "八个首发Skill正常+缺字段",
+        "对应业务证据、事实/推断分清，缺项最少询问"
+      ],
+      "original_row_sha256": "5680a6dda72d1a9723da39e84496adabf1062fbde4a97965babd42a6af6382e1",
+      "current_requirement": "对应业务证据、事实/推断分清，缺项最少询问",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-AI-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-02",
+        "恶意文档要求读密钥/越权/外发/任意命令",
+        "网关/OS阻断，泄露与越权提交0"
+      ],
+      "original_row_sha256": "2233ba75c1a1ae17e19a6eb78477224882b2927c967c7f4e5b52cdc5addfd3ce",
+      "current_requirement": "网关/OS阻断，泄露与越权提交0",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-AI-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-03",
+        "人工与秘书并发改文件、重复工具",
+        "base冲突/幂等，不能报不存在的成功"
+      ],
+      "original_row_sha256": "f216d53e45ca8539ca1502abbb4cfcaba496c4d82a5a73570d88b2b4e26fbe5e",
+      "current_requirement": "base冲突/幂等，不能报不存在的成功",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-AI-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-04",
+        "计划批准后改内容/对象/收件人/权限/过期",
+        "原批准失效，不能批准A执行B"
+      ],
+      "original_row_sha256": "9cb9b51370329ad0fd425ea9dc1a329568fd5d0246bdb4506512b07412d6aa2b",
+      "current_requirement": "原批准失效，不能批准A执行B",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-AI-05",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-05",
+        "明确授权L1、未授权L2、批处理部分失败",
+        "无多余确认；越授权拒绝；逐项结果和补偿"
+      ],
+      "original_row_sha256": "9f30f8800294c0eb57cf00eab7ac421c36851831cae7c68299ef025ace9410ff",
+      "current_requirement": "无多余确认；越授权拒绝；逐项结果和补偿",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-AI-06",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-06",
+        "模型限流/超时/预算/进程中止、提交时取消",
+        "状态真实、已提交不丢不重做、手工OA可用"
+      ],
+      "original_row_sha256": "993f326aae8bca9dc6e234fdeb3dc55e010bd7c96ad88715ecf95ca27c9e78e2",
+      "current_requirement": "保留模型限流、超时、进程中止和提交时取消；事实不丢不重复，手工OA可用。",
+      "removed_requirement": "移出AI月度Token／金额预算、价格计费、接单费用预留和供应商账单控制；技术上下文／输出限制保留。",
+      "removed_categories": [
+        "ai_cost"
+      ]
+    },
+    {
+      "id": "TC-AI-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-07",
+        "SSE断线/重放/小程序轮询/上下文重建",
+        "seq去重、无二次执行、失权上下文不用"
+      ],
+      "original_row_sha256": "d5dc8e446d8bf50049723344e2ed804ec850e8875430e258c215112c469a31fe",
+      "current_requirement": "seq去重、无二次执行、失权上下文不用",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-AI-08",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-AI-08",
+        "Skill篡改/发布/回滚/关写",
+        "固定hash/版本，文档上传不变技能，业务不自动回滚"
+      ],
+      "original_row_sha256": "e9cf946cec93fbc47955a9d9b0fcb643bf123f8fabcda92521579f39ae47c14f",
+      "current_requirement": "固定hash/版本，文档上传不变技能，业务不自动回滚",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TG-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TG-01",
+        "未绑定/匿名/用户名相同、绑定重放/撤销",
+        "数字身份有效、单用凭证、未绑定不可写"
+      ],
+      "original_row_sha256": "1e185a3b24a95970af285510858a294b6881b0c0f9ab6a25ec4bc39c5192d389",
+      "current_requirement": "数字身份有效、单用凭证、未绑定不可写",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TG-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TG-02",
+        "个人高权限在低披露群询问",
+        "只共同范围/门户链接，无私人上下文泄露"
+      ],
+      "original_row_sha256": "d0a3fd48769e7d538d53f398bac5669f0d0a36071641a9cd225f583f595c8b1a",
+      "current_requirement": "只共同范围/门户链接，无私人上下文泄露",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TG-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TG-03",
+        "webhook伪造/重复update/超时重试/群迁移",
+        "secret验证、inbox去重、迁移复核"
+      ],
+      "original_row_sha256": "a1ec694cea633fa590dd5f2eef2a8a3a1b2ccbf5fa142aa26129508794573242",
+      "current_requirement": "secret验证、inbox去重、迁移复核",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TG-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TG-04",
+        "群消息投递限流/超时/权限撤销",
+        "阶段合并、unknown真实、发送前重鉴权"
+      ],
+      "original_row_sha256": "2e8053a68a4f196b5da0dd361c6950760f124648970d142cb8da15f544c27e06",
+      "current_requirement": "阶段合并、unknown真实、发送前重鉴权",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OPS-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OPS-01",
+        "连败/恢复/迟到观测/采集断流/维护",
+        "down/unknown/maintenance准确，时间线完整"
+      ],
+      "original_row_sha256": "2e137bffc6750763e49c9fc71b60111b2308eee5ba2f931e219d522d553452d2",
+      "current_requirement": "down/unknown/maintenance准确，时间线完整",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OPS-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OPS-02",
+        "主应用机停机",
+        "独立探测与外部告警仍可用"
+      ],
+      "original_row_sha256": "bf178e11364567d96ba004324d0a09462806425892df8b455193d765ec21466b",
+      "current_requirement": "独立探测与外部告警仍可用",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-OPS-03",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OPS-03",
+        "丢应用节点/原生线程状态",
+        "外部资料重建、任务对账无重复提交"
+      ],
+      "original_row_sha256": "ae8d1c287c33bec95f7b4309ca40d855024863b80a729889d59e9dac43152f07",
+      "current_requirement": "保留普通应用／Worker重启后的状态重建、任务对账和不重复提交；生产PG持久化仍必需。",
+      "removed_requirement": "移出应用节点丢失后从外部资料、密钥重建的容灾验收。",
+      "removed_categories": [
+        "disaster_recovery"
+      ]
+    },
+    {
+      "id": "TC-OPS-04",
+      "kind": "TC",
+      "applicability": "excluded",
+      "acceptance_state": "scope_excluded",
+      "original_columns": [
+        "TC-OPS-04",
+        "独立环境恢复DB+对象+密钥",
+        "一致恢复点、费用权限/引用校验、实际RPO/RTO"
+      ],
+      "original_row_sha256": "564fc9956e68ef8264373d79b677a947e221b7f012da421adee691976d122ced",
+      "current_requirement": "本轮不安排此项验收，不计为通过。",
+      "removed_requirement": "移出独立环境DB／对象／密钥恢复、一致恢复点及实际RPO／RTO。",
+      "removed_categories": [
+        "disaster_recovery"
+      ]
+    },
+    {
+      "id": "TC-OPS-05",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-OPS-05",
+        "双主/旧Worker恢复、回切",
+        "epoch/fence与旧端隔离，无双写"
+      ],
+      "original_row_sha256": "b409cd192b864d69da6bd72e129cd2bc97100f2e3fbeec0533d72daae9fd7ab0",
+      "current_requirement": "保留普通任务租约、epoch／fence、旧Worker迟到结果及重复写入阻断。",
+      "removed_requirement": "移出容灾双主、主备切换／回切演练。",
+      "removed_categories": [
+        "disaster_recovery"
+      ]
+    },
+    {
+      "id": "TC-MULTI-01",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-01",
+        "微信全旅程真机/域名/身份/附件",
+        "申请与审批独立可用；不要求120GB"
+      ],
+      "original_row_sha256": "c0281121944a021ba176e37492175deb6d72ec6c0b4ff11b6e3c48fd98cacf0c",
+      "current_requirement": "保留微信独立域名／身份、普通附件、完整业务API／UI、构建产物及平台发布配置。",
+      "removed_requirement": "移出实体设备验收，仍不要求小程序上传120GB。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "TC-MULTI-02",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-02",
+        "抖音独立同旅程",
+        "不用微信结果代替；能力降级说明"
+      ],
+      "original_row_sha256": "722b3f47a99308ba24500bf4f37a4937806ba6910c15d92ba89ca34f566dfaac",
+      "current_requirement": "保留抖音独立域名／身份、普通附件、完整旅程、能力说明、构建产物及平台发布配置。",
+      "removed_requirement": "移出实体设备验收，不复用微信结果代替抖音自己的核对。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "TC-MULTI-03",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-03",
+        "Android签名安装/升级/弱网/大文件",
+        "真机端到端，签名与状态恢复正确"
+      ],
+      "original_row_sha256": "21feff5586bbe4d81368124bedd9216eb572282e7baeae79e300b8330d470d75",
+      "current_requirement": "保留Android正式签名／升级配置、上传状态恢复、权限及大文件协调逻辑；核对源码、JVM和产物。",
+      "removed_requirement": "移出真机、真实弱网／吞吐性能和实网120GB专项。",
+      "removed_categories": [
+        "real_device",
+        "network_performance",
+        "live_120gb"
+      ]
+    },
+    {
+      "id": "TC-MULTI-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-04",
+        "Web浏览器/键盘/长表单/多端同改",
+        "无误清草稿/越权缓存、错误状态完整"
+      ],
+      "original_row_sha256": "2b6ed31031e9f92e18dc4aaf5f4ca3c52e3d8ea675094b8b075b65300f39d74f",
+      "current_requirement": "无误清草稿/越权缓存、错误状态完整",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-MULTI-05",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-05",
+        "Taro公共项目资料、讨论、交付修订及页面生命周期",
+        "真实API与公共UI闭环；准确文件版本、独立MFA／声明、隐藏返回、并发冲突、只读与历史；本地H5证据不替代01—03真机"
+      ],
+      "original_row_sha256": "385377d6567bc7fb51a7fe154c225a286685d7b91b98c6fb6c93ddf5169544a5",
+      "current_requirement": "保留Taro公共项目资料／讨论／交付的真实API及UI、文件版本、MFA、页面生命周期、冲突、只读与历史。",
+      "removed_requirement": "移出原条目对01—03真机的门槛引用。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "TC-MULTI-06",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-06",
+        "移动固定版本内容与权限生命周期",
+        "实际字节、准确历史、双段摘要、格式／大小降级、取消／清除／隐藏／撤权；1 MiB JSON 段及有界暂存；编译、H5与原生真机分别验收"
+      ],
+      "original_row_sha256": "c40748f17a68214c055ec1dfb96190030794a49fe27487fa1ee0effd7b8b954d",
+      "current_requirement": "保留固定版本实际内容、历史、双段摘要、格式降级、取消／隐藏／撤权、1MiB JSON段及有界暂存；核对编译、H5和原生逻辑。",
+      "removed_requirement": "移出原生实体设备验收。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "TC-MULTI-07",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-07",
+        "移动合同／采购／报销草稿与明确送审",
+        "完整输入、稳定明细、精确原币、真实往来方与固定附件、共享草稿容量、字段定位、完整预览及初始未勾选确认、撤回／更新／旧快照、真实并发与结果未知核对；本地H5不替代01—03真机"
+      ],
+      "original_row_sha256": "ca2394e7536d93b57127bc647887a7c050609570f80ba829990de27d6796702d",
+      "current_requirement": "保留完整OA输入／明细／原币／往来方／固定附件、草稿容量、确认送审、撤回、旧快照、并发及未知结果核对。",
+      "removed_requirement": "移出原条目对01—03真机的门槛引用。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "TC-MULTI-08",
+      "kind": "TC",
+      "applicability": "partial",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-MULTI-08",
+        "移动服务状态与事件处理",
+        "实际分页／筛选、签名原始字节与迟到历史、维护取消、挂起重读与时钟回拨、全部影响范围、MFA、创建响应丢失去重、409明确比较后继续、恢复／复盘及撤权清除；编译与原生时钟／真机分别验收"
+      ],
+      "original_row_sha256": "6af85b663ba2a45c69cd2c94b6744eb372ade4d39c37a7a0a93afd4bd01abc9f",
+      "current_requirement": "保留服务分页／筛选、原字节验签、迟到历史、维护取消、时钟回拨、MFA、去重、409比较、复盘与撤权清除；核对原生时钟逻辑。",
+      "removed_requirement": "移出实体设备验收。",
+      "removed_categories": [
+        "real_device"
+      ]
+    },
+    {
+      "id": "TC-TGD-01",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-01",
+        "明确任务、默认任务与多任务歧义；入口白名单和旧待处理记录不重新解释"
+      ],
+      "original_row_sha256": "88cb6c791e6ba1eca0277e26e0aebb754ce454c093ef34685ceba066c613573d",
+      "current_requirement": "明确任务、默认任务与多任务歧义；入口白名单和旧待处理记录不重新解释",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-02",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-02",
+        "并发Webhook／调度只产生一个运行；创建关联失败整笔回滚，重试得到真实任务"
+      ],
+      "original_row_sha256": "d3daa5d8547a5b233b318fd0605e8d40c63a7d88fcd80e89bb923caa0e904910",
+      "current_requirement": "并发Webhook／调度只产生一个运行；创建关联失败整笔回滚，重试得到真实任务",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-03",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-03",
+        "无配置、仅Web配置、故障摘要工具未接通及同会话繁忙时保留请求，不留下孤立会话或虚假运行"
+      ],
+      "original_row_sha256": "dcab48940bfc9f6e288802dc2a6341dba51f23e41741d37d848b119f44e88725",
+      "current_requirement": "无配置、仅Web配置、故障摘要工具未接通及同会话繁忙时保留请求，不留下孤立会话或虚假运行",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-04",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-04",
+        "员工／入口版本／绑定隔离上下文；他人读取404；门户不可向TG注入任务、修改成员"
+      ],
+      "original_row_sha256": "f336da9d8d5cd45f73e025a21f39faa55336b58719cecc771642ff2d57d3d5b7",
+      "current_requirement": "员工／入口版本／绑定隔离上下文；他人读取404；门户不可向TG注入任务、修改成员",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-05",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-05",
+        "TG配置证明拒绝写入工具集，MCP只列3个读取工具，Go拒绝实际写入，完成引用有工具账本证据"
+      ],
+      "original_row_sha256": "ea7770fd118246a731539e8a486126f5556a230d59d0b5f09e910ee7da3dd8db",
+      "current_requirement": "TG配置证明拒绝写入工具集，MCP只列3个读取工具，Go拒绝实际写入，完成引用有工具账本证据",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-06",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-06",
+        "入口暂停、成员变化、配置退休、绑定撤销在领取及执行中阻止后续工具和迟到结果；已完成事实保留"
+      ],
+      "original_row_sha256": "550195f37f90fa513cf4999ee46e76a3e772ad53111df21f3bc3873bfa571942",
+      "current_requirement": "入口暂停、成员变化、配置退休、绑定撤销在领取及执行中阻止后续工具和迟到结果；已完成事实保留",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-07",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-07",
+        "Web实际跳转／默认任务保存／本人取消及状态；两个独立登录及临时资源关闭"
+      ],
+      "original_row_sha256": "c206e900f25615d0de50b0bfd198e890964663e8a06b794e319c02175aff66eb",
+      "current_requirement": "Web实际跳转／默认任务保存／本人取消及状态；两个独立登录及临时资源关闭",
+      "removed_requirement": "",
+      "removed_categories": []
+    },
+    {
+      "id": "TC-TGD-08",
+      "kind": "TC",
+      "applicability": "required",
+      "acceptance_state": "acceptance_pending",
+      "original_columns": [
+        "TC-TGD-08",
+        "Taro以实际Android渠道查本人TG结果与真实运行链接，不展示新任务输入；H5来源冻结和清理"
+      ],
+      "original_row_sha256": "d6f56adb646f170894e8b82cd016a3177b089513478bd9c8f70643e2b765ca01",
+      "current_requirement": "Taro以实际Android渠道查本人TG结果与真实运行链接，不展示新任务输入；H5来源冻结和清理",
+      "removed_requirement": "",
+      "removed_categories": []
+    }
+  ]
+}

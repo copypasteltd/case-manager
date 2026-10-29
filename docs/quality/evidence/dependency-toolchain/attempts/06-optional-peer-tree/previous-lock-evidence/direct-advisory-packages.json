@@ -1,0 +1,138 @@
+{
+  "package_findings": 63,
+  "direct_advisory_packages": 7,
+  "propagation_only_packages": 56,
+  "not_unique_cve_count": true,
+  "items": [
+    {
+      "package": "@babel/core",
+      "severity": "low",
+      "advisories": [
+        {
+          "title": "@babel/core: Arbitrary File Read via sourceMappingURL Comment",
+          "url": "https://github.com/advisories/GHSA-4x5r-pxfx-6jf8",
+          "range": "<=7.29.0"
+        }
+      ],
+      "effects": [],
+      "nodes": [
+        "node_modules/@babel/core"
+      ]
+    },
+    {
+      "package": "decode-uri-component",
+      "severity": "moderate",
+      "advisories": [
+        {
+          "title": "decode-uri-component: Denial of service via exponential decoding of malformed percent-encoded input",
+          "url": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr",
+          "range": "<=0.4.2"
+        }
+      ],
+      "effects": [
+        "query-string",
+        "source-map-resolve"
+      ],
+      "nodes": [
+        "node_modules/decode-uri-component"
+      ]
+    },
+    {
+      "package": "deepmerge",
+      "severity": "low",
+      "advisories": [
+        {
+          "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "range": ">=4.2.0 <=4.3.1"
+        }
+      ],
+      "effects": [
+        "@react-native-community/cli",
+        "@react-native-community/cli-config",
+        "@react-native-community/cli-doctor",
+        "@svgr/plugin-svgo"
+      ],
+      "nodes": [
+        "node_modules/@react-native-community/cli-config/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli-doctor/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli/node_modules/deepmerge",
+        "node_modules/@svgr/plugin-svgo/node_modules/deepmerge"
+      ]
+    },
+    {
+      "package": "esbuild",
+      "severity": "moderate",
+      "advisories": [
+        {
+          "title": "esbuild enables any website to send any requests to the development server and read the response",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "range": "<=0.24.2"
+        }
+      ],
+      "effects": [
+        "@tarojs/helper",
+        "@tarojs/webpack5-runner"
+      ],
+      "nodes": [
+        "node_modules/@tarojs/helper/node_modules/esbuild",
+        "node_modules/@tarojs/webpack5-runner/node_modules/esbuild"
+      ]
+    },
+    {
+      "package": "fast-xml-parser",
+      "severity": "moderate",
+      "advisories": [
+        {
+          "title": "fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimiters",
+          "url": "https://github.com/advisories/GHSA-gh4j-gqv2-49f6",
+          "range": "<5.7.0"
+        }
+      ],
+      "effects": [
+        "@react-native-community/cli-platform-android",
+        "@react-native-community/cli-platform-ios"
+      ],
+      "nodes": [
+        "node_modules/fast-xml-parser"
+      ]
+    },
+    {
+      "package": "send",
+      "severity": "low",
+      "advisories": [
+        {
+          "title": "send vulnerable to template injection that can lead to XSS",
+          "url": "https://github.com/advisories/GHSA-m6fv-jmcg-4jfg",
+          "range": "<0.19.0"
+        }
+      ],
+      "effects": [
+        "@expo/cli"
+      ],
+      "nodes": [
+        "node_modules/@expo/cli/node_modules/send"
+      ]
+    },
+    {
+      "package": "uuid",
+      "severity": "moderate",
+      "advisories": [
+        {
+          "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "range": "<11.1.1"
+        }
+      ],
+      "effects": [
+        "@expo/bunyan",
+        "@expo/rudder-sdk-node",
+        "xcode"
+      ],
+      "nodes": [
+        "node_modules/uuid",
+        "node_modules/xcode/node_modules/uuid"
+      ]
+    }
+  ]
+}

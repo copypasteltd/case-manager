@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "command": [
+    "npm",
+    "ci",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "terminal_reason": "Python subprocess execution deadline exceeded; subprocess.run terminated its direct npm process. This is not an observation timeout.",
+  "deadline_seconds": 900,
+  "owned_npm_pid": 27976,
+  "checked_at": "2026-10-29T00:48:22.370186+00:00",
+  "package_lock_sha256": "18a18296aecc721b097a994a35537820cfe3a30c01f44b831443fe18cdcbf8c7",
+  "raw_log_sha256": "d544236f2c4d56c64f4e53b659cf65c72e1786e9a35157352d3d6e7068a74451",
+  "normal_ci_not_completed": true
+}

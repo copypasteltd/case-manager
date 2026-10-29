@@ -1,0 +1,26 @@
+
+> @copypaste/mobile@0.1.0 test:native-js
+> node --test native/babel-primitives.test.cjs
+
+TAP version 13
+# Subtest: native platform conversion preserves dynamic classes and changes the actual primitives before the generic RN style plugin
+ok 1 - native platform conversion preserves dynamic classes and changes the actual primitives before the generic RN style plugin
+  ---
+  duration_ms: 608.2977
+  type: 'test'
+  ...
+# Subtest: custom controls retain their classes and external packages keep their own primitives
+ok 2 - custom controls retain their classes and external packages keep their own primitives
+  ---
+  duration_ms: 29.3336
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 901.8927

@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "reason": "Verifier raised TimeoutExpired after 180 seconds before the 40-test suite completed. Two observed assertions failed; remaining toolchain process was terminated. No skip or pass is claimed.",
+  "command": [
+    "npm",
+    "run",
+    "test:dependency-security"
+  ],
+  "source_sha256": "bd13d1a5668509d1cea798ef01c8b23ec9bbd4b74f53bc648aac1cbd6e775d69",
+  "sources": [
+    "mobile/config/index.ts",
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/dependency_toolchain.test.mjs",
+    "scripts/verify_dependency_toolchain_security.py"
+  ],
+  "raw_log_sha256": "0970ca87c133ddcb620952405a9eb2460335fafbaf96773ec6812b010e79983e",
+  "archive_sha256": "3eada7002b720cfb4528651c72d2bb1eb80eb66b6b3e550fc909b20310bbf449",
+  "owned_remaining_pids_terminated": [
+    24684,
+    32404
+  ],
+  "checked_at": "2026-10-29T01:28:07.065744+00:00"
+}

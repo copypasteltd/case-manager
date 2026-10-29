@@ -1,5 +1,13 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+[Current acceptance applicability](quality/04-current-acceptance-applicability.md) classifies all original 30 AC and 72 TC IDs. Every retained, partial or excluded boundary is explicit. This consistency check passes no business case.
+
+Increment 107 updates the Taro toolchain with disclosed synchronous-template and local-server adapters, maintained PostCSS and optional Vite/React peers, and Node >=22.15.0 <23. The full audit changes 70→63 findings and 6→0 high findings; all 63 remaining entries stay open. The 23 active packages (14 P0/9 P1) and 5 exclusions are unchanged. Only AI cost control is excluded; the secretary, eight Skills, TG, authorization, audit, isolation and technical limits remain required.
+
+[Design and commands](development/107-dependency-toolchain.md) · [Verification](quality/107-dependency-toolchain-verification.md) · [Remaining work](delivery/03-goal-gap-assessment.md)
+
+Fresh checks passed: standard `npm ci`, 40 checks of dependency calls, 2 native JS checks and 8 client commands (172 Web, 273 mobile and 55 runtime tests; 20 pages for each miniapp), an Android development build with 18 APK checks, and 5 H5 server plus 3 native Edge checks. The 26 JVM results came from Gradle's cache. All 30 AC and 72 TC IDs now have explicit applicability, validated by 12 consistency checks; this classification executes no business acceptance cases. The 211 historical media files, unchanged backend evidence (224 top-level tests / 1355 results) and 2 Linux cross-builds retain their original scope.
+
 Increment 106 adds human-managed amortization across Web, WeChat, Douyin and Android. Choose monthly-equal or daily-weighted service periods, preview project/company shares, complete recent MFA and acknowledge the report basis before publishing an immutable version. Stopping, history, independent reports, frozen exports and original-month FX reversal are supported. Replacing or stopping restates the current schedule view; original expense/cash facts and completed exports remain fixed. Company policy adoption, cross-currency settlement, exchange fees/differences and full workflows remain open; 23 packages remain active, 5 excluded.
 
 Checks: backend 224 top-level tests / 1355 results, Web 172, mobile 273, runtime 55; WeChat and Douyin builds with 20 pages each, a development APK with 18 + 4 static checks, and 2 Linux cross-builds. The 26 JVM results retain their actual cached status. All 8 client commands were rerun after fixing BigInt operator lowering; a regression also executes the compiled legacy-target validator. New media: 8 screenshots, 2 silent MP4s and 2 GIFs; 199 earlier media retain exact bytes. No device, live cloud/model or production acceptance is claimed.
@@ -38,7 +46,7 @@ Increment101 adds selected contract clauses/notes and purchase/reimbursement pur
 
 Increment101's client checks covered Web142/mobile255/runtime52 cases. Its verification record identifies that increment's backend, four-client build and browser results, Android JVM cache scope and exact source hashes. Counts in older sections retain their original execution scope.
 
-Previous increment100: secretary admission, execution and technical usage persistence no longer require an AI fee policy or reservation. Legacy fee writes are retired and the archive is read-only. Identity, authorization, confinement, cancellation, timeouts, concurrency and technical context/output/tool limits remain. Real Codex, TG, cloud and production acceptance are still open:23 active packages and5 exclusions.
+Previous increment100: secretary admission, execution and technical usage persistence no longer require an AI fee policy or reservation. Legacy fee writes are retired and the archive is read-only. Identity, authorization, confinement, cancellation, timeouts, concurrency and technical context/output/tool limits remain. Real Codex, TG, cloud and production acceptance are still open:23 active packages and 5 exclusions.
 
 [Implementation and use](development/100-secretary-execution-without-cost-quota.md) · [Verification scope and evidence](quality/100-secretary-execution-verification.md) · [Web recording](media/videos/secretary-cost-free-web.mp4) · [Shared Taro H5 recording](media/videos/secretary-cost-free-mobile.mp4)
 
@@ -250,7 +258,7 @@ The supplied helpers target the current native Windows development environment. 
 | Tool | Repository requirement / verified baseline |
 | --- | --- |
 | Git + SSH | Repository access with your own authorized identity |
-| Node.js / npm | `>=22.14.0 <23`; verified 22.14.0 / 10.9.2; use the lockfile |
+| Node.js / npm | `>=22.15.0 <23`; verified 22.23.4 / 10.9.9; use the lockfile |
 | Python | Python 3.11+ and UTF-8; media tooling additionally uses Pillow and FFmpeg |
 | Go | go.mod 1.27.0, toolchain 1.27.3; bootstrap verifies a pinned archive digest |
 | PostgreSQL | Verified native 18.6; extract a complete distribution into `app/.tools/pgsql/`, including `bin/initdb.exe`, `pg_ctl.exe` and `psql.exe` |

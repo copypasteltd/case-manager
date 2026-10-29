@@ -1,5 +1,9 @@
 # 代码实施与验证台账
 
+增量107已为30项AC／72项TC建立[逐项适用性表](../quality/04-current-acceptance-applicability.md)及12项源文件一致性核对；不计为业务测试通过，GAP-28继续开放。
+
+增量107：新增同步模板压缩与loopback开发服务器适配，升级样式和可选peer；完整审计70→63、high6→0，GAP-26继续开放。本轮检查见[开发](../development/107-dependency-toolchain.md)和[验证](../quality/107-dependency-toolchain-verification.md)。
+
 增量106：迁移83、人工费用摊销计划、逐原份额累计舍入、预览／MFA发布／停用、不可变历史、独立报表、固定导出和冲销原月份折算已实现。完整GAP-03及其余22项继续开放。见[开发与使用](../development/106-cost-amortization.md)和[验证](../quality/106-cost-amortization-verification.md)。
 
 增量105：新增仓库内的 Linux 原生 Codex 执行控制器，覆盖单任务 systemd 隔离、实际内核状态取证签名、私有模型／公司工具网关、取消与 cgroup 清理，以及独立运行时发布目录。模型密钥与证明私钥留在 root 控制器中。真实服务器隔离、Codex／模型互通和八项 Skill 正式评测仍待完成；23个工作包（14 P0／9 P1）保持开放，5项移出不变。

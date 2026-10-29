@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "command": [
+    "npm",
+    "run",
+    "test:dependency-security"
+  ],
+  "reason": "180-second suite deadline. Two bounded minifier workers timed out while four heavy consumer files ran concurrently. 40-test suite did not complete.",
+  "source_sha256": "67360c7c3a35109ed99f6eaecf156fc0812285acc4997f16a0c39b50d99e9ca1",
+  "sources": [
+    "mobile/config/index.ts",
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/dependency_toolchain.test.mjs",
+    "scripts/verify_dependency_toolchain_security.py"
+  ],
+  "raw_log_sha256": "bc3040c2d373f245432c4b3f8b971f7d0701f37e9e5fe5c15a61139a30631706",
+  "archive_sha256": "c847ab0a1c40e6f33d008f88354d7cb05d1aa8d50122b84da88f742b74a1c107",
+  "owned_remaining_pids_terminated": [
+    37692,
+    24876
+  ],
+  "checked_at": "2026-10-29T01:34:07.883167+00:00"
+}

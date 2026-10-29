@@ -1,0 +1,77 @@
+{
+  "name": "copypaste-internal-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CopyPaste internal operations platform; documentation lives in ../docs/",
+  "engines": {
+    "node": ">=22.15.0 <23"
+  },
+  "workspaces": [
+    "web",
+    "mobile",
+    "agent-runtime",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @copypaste/web",
+    "build:web": "npm run build --workspace @copypaste/web",
+    "build:runtime": "npm run build --workspace @copypaste/agent-runtime",
+    "build:weapp": "npm run build:weapp --workspace @copypaste/mobile",
+    "build:tt": "npm run build:tt --workspace @copypaste/mobile",
+    "build:rn": "npm run build:rn --workspace @copypaste/mobile",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "tokens": "python scripts/sync_design.py",
+    "contract": "openapi-typescript ../docs/development/openapi.json -o packages/contracts/src/api.d.ts",
+    "test": "npm run test --workspaces --if-present",
+    "test:dependency-security": "node --test --test-concurrency=1 scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs scripts/dependency_toolchain.test.mjs"
+  },
+  "devDependencies": {
+    "@tarojs/components-rn": "4.3.1",
+    "@tarojs/rn-supporter": "4.3.1",
+    "@tarojs/taro-rn": "4.3.1",
+    "openapi-typescript": "7.13.0",
+    "playwright": "1.62.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.73.11",
+    "stylelint": "16.10.0",
+    "typescript": "5.9.3",
+    "decompress": "file:packages/archive-extraction",
+    "download-git-repo": "file:packages/template-download",
+    "latest-version": "file:packages/latest-version-compat",
+    "image-size": "file:packages/image-size-compat",
+    "html-minifier": "file:packages/template-minifier",
+    "webpack-dev-server": "file:packages/dev-server-compat",
+    "vite": "8.3.5",
+    "@vitejs/plugin-react": "6.1.2"
+  },
+  "overrides": {
+    "decompress": "$decompress",
+    "download-git-repo": "$download-git-repo",
+    "latest-version": "$latest-version",
+    "image-size": "$image-size",
+    "swiper": "12.1.2",
+    "tar": "7.5.22",
+    "@xmldom/xmldom@0.7": "0.8.15",
+    "postcss@8": "8.5.32",
+    "lodash-es": "4.18.1",
+    "http-cache-semantics@4": "4.3.0",
+    "semver@7": "7.8.5",
+    "node-forge@1": "1.4.1",
+    "adm-zip": "0.6.1",
+    "serialize-javascript": "7.1.4",
+    "webpack": "5.104.1",
+    "glob@10": "10.5.0",
+    "micromatch": "4.0.8",
+    "html-minifier": "$html-minifier",
+    "webpack-dev-server": "$webpack-dev-server",
+    "vite": "$vite",
+    "@vitejs/plugin-react": "$@vitejs/plugin-react",
+    "postcss@7": "8.5.32",
+    "html-minifier-terser": "7.2.0",
+    "@tarojs/plugin-framework-react": {
+      "vite": "$vite",
+      "@vitejs/plugin-react": "$@vitejs/plugin-react"
+    }
+  }
+}

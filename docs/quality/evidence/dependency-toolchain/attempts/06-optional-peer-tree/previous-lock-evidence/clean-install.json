@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-29T01:23:06.223119+00:00",
+  "passed": true,
+  "command": [
+    "npm",
+    "ci",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "exit_code": 0,
+  "node_version": "v22.23.4",
+  "npm_version": "10.9.9",
+  "package_lock_sha256": "18a18296aecc721b097a994a35537820cfe3a30c01f44b831443fe18cdcbf8c7",
+  "lock_unchanged": true,
+  "raw_log_sha256": "df00897e62f2588e09de57b336ebddc91666b1ee990317f059c3e4e0ef72b4fa",
+  "force_or_legacy_peer_flags": false,
+  "install_scripts_enabled": true,
+  "prefer_offline_integrity_checked_cache": true,
+  "technical_deadline_seconds": 3600,
+  "ci_environment": true
+}

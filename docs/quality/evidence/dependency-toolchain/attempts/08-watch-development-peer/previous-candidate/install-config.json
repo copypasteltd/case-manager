@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-29T01:42:48.621293+00:00",
+  "passed": true,
+  "command": [
+    "npm",
+    "config",
+    "get",
+    "ignore-scripts",
+    "force",
+    "legacy-peer-deps",
+    "omit",
+    "include"
+  ],
+  "exit_code": 0,
+  "effective_values": {
+    "ignore-scripts": "false",
+    "force": "false",
+    "legacy-peer-deps": "false",
+    "omit": "",
+    "include": ""
+  },
+  "same_ci_environment": true,
+  "check_timing": "Read-only effective config after successful CI; no config files modified.",
+  "raw_log_sha256": "c57b2f3b80695983d56247b097cb41089f4682633e1f2f7f8c4ed743711a05ff"
+}

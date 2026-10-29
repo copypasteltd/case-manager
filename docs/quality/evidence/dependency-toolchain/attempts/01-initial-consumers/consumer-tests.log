@@ -1,0 +1,93 @@
+TAP version 13
+# Subtest: Installed Taro consumers resolve the named adapters and maintained upstream implementations
+not ok 1 - Installed Taro consumers resolve the named adapters and maintained upstream implementations
+  ---
+  duration_ms: 8.863
+  type: 'test'
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\scripts\\dependency_toolchain.test.mjs:26:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    '7.0.39' !== '8.5.32'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '8.5.32'
+  actual: '7.0.39'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/dependency_toolchain.test.mjs:37:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: Actual synchronous MiniPlugin generation preserves Chinese text, directives, bindings and closing slashes
+ok 2 - Actual synchronous MiniPlugin generation preserves Chinese text, directives, bindings and closing slashes
+  ---
+  duration_ms: 4382.6078
+  type: 'test'
+  ...
+# Subtest: Both WeChat and Douyin templates retain conditionals, loops and literal preformatted whitespace
+ok 3 - Both WeChat and Douyin templates retain conditionals, loops and literal preformatted whitespace
+  ---
+  duration_ms: 610.7095
+  type: 'test'
+  ...
+# Subtest: Template adapter rejects unrepresentable options and excessive inputs before starting a child
+ok 4 - Template adapter rejects unrepresentable options and excessive inputs before starting a child
+  ---
+  duration_ms: 4.5748
+  type: 'test'
+  ...
+# Subtest: Malformed and former custom-ignore patterns complete within the bounded worker
+ok 5 - Malformed and former custom-ignore patterns complete within the bounded worker
+  ---
+  duration_ms: 634.7736
+  type: 'test'
+  ...
+# Subtest: Actual miniprogram-simulate WXSS compile works with PostCSS 8 and unchanged namespace/rpx behavior
+ok 6 - Actual miniprogram-simulate WXSS compile works with PostCSS 8 and unchanged namespace/rpx behavior
+  ---
+  duration_ms: 1479.2315
+  type: 'test'
+  ...
+# Subtest: Legacy server TLS/proxy options translate without mutating inputs or silently losing callbacks
+ok 7 - Legacy server TLS/proxy options translate without mutating inputs or silently losing callbacks
+  ---
+  duration_ms: 1.2006
+  type: 'test'
+  ...
+# Subtest: Local server rejects unrestricted hosts and legacy behaviors that require an explicit migration
+ok 8 - Local server rejects unrestricted hosts and legacy behaviors that require an explicit migration
+  ---
+  duration_ms: 0.3059
+  type: 'test'
+  ...
+# <e> [webpack-dev-middleware] Malicious path "/assets../private.txt".
+# Subtest: Modern server compiles and serves webpack assets, rejects hostile Host/traversal and closes its resources
+not ok 9 - Modern server compiles and serves webpack assets, rejects hostile Host/traversal and closes its resources
+  ---
+  duration_ms: 7047.6838
+  type: 'test'
+  location: 'D:\\dev\\copypasted\\内部管理\\app\\scripts\\dependency_toolchain.test.mjs:124:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'listening')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/dependency_toolchain.test.mjs:158:28)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 7
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14813.9412

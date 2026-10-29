@@ -4,7 +4,7 @@
   "private": true,
   "description": "CopyPaste internal operations platform; documentation lives in ../docs/",
   "engines": {
-    "node": ">=22.14.0 <23"
+    "node": ">=22.15.0 <23"
   },
   "workspaces": [
     "web",
@@ -23,7 +23,7 @@
     "tokens": "python scripts/sync_design.py",
     "contract": "openapi-typescript ../docs/development/openapi.json -o packages/contracts/src/api.d.ts",
     "test": "npm run test --workspaces --if-present",
-    "test:dependency-security": "node --test scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs"
+    "test:dependency-security": "node --test --test-concurrency=1 scripts/dependency_security.test.mjs scripts/dependency_maintenance.test.mjs scripts/dependency_remediation.test.mjs scripts/dependency_toolchain.test.mjs"
   },
   "devDependencies": {
     "@tarojs/components-rn": "4.3.1",
@@ -39,7 +39,13 @@
     "decompress": "file:packages/archive-extraction",
     "download-git-repo": "file:packages/template-download",
     "latest-version": "file:packages/latest-version-compat",
-    "image-size": "file:packages/image-size-compat"
+    "image-size": "file:packages/image-size-compat",
+    "html-minifier": "file:packages/template-minifier",
+    "webpack-dev-server": "file:packages/dev-server-compat",
+    "vite": "8.3.5",
+    "@vitejs/plugin-react": "6.1.2",
+    "@tarojs/plugin-framework-react": "4.3.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.6.3"
   },
   "overrides": {
     "decompress": "$decompress",
@@ -58,6 +64,16 @@
     "serialize-javascript": "7.1.4",
     "webpack": "5.104.1",
     "glob@10": "10.5.0",
-    "micromatch": "4.0.8"
+    "micromatch": "4.0.8",
+    "html-minifier": "$html-minifier",
+    "webpack-dev-server": "$webpack-dev-server",
+    "vite": "$vite",
+    "@vitejs/plugin-react": "$@vitejs/plugin-react",
+    "postcss@7": "8.5.32",
+    "html-minifier-terser": "7.2.0",
+    "@tarojs/plugin-framework-react": {
+      "vite": "$vite",
+      "@vitejs/plugin-react": "$@vitejs/plugin-react"
+    }
   }
 }

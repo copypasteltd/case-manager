@@ -1,0 +1,27 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-29T02:25:36.523184+00:00",
+  "source_sha256": "866270b98814d53d4bf4051d6948c72d41196e7d19875e066652b25cd91299d1",
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "Actual Taro H5 watch starts on the explicit loopback port",
+      "passed": true
+    },
+    {
+      "name": "Actual Taro server rejects an untrusted Host",
+      "passed": true
+    },
+    {
+      "name": "Untrusted browser origins are denied or receive no permissive CORS header",
+      "passed": true
+    }
+  ],
+  "owned_process_terminal": true,
+  "owned_port_released": true,
+  "failure": "AssertionError: locator.waitFor: Error: strict mode violation: getByPlaceholder('你的公司账号', { exact: true }) resolved to 2 elements:\n    1) <taro-input-core value=\"\" maxlength=\"200\" disabled=\"false\" class=\"cp-input\" aria-label=\"内部账号\" placeholder=\"你的公司账号\" placeholder-class=\"cp-placeholder\">…</taro-input-core> aka getByLabel('内部账号').first()\n    2) <input type=\"text\" maxlength=\"200\" aria-label=\"内部账号\" class=\"weui-input\" placeholder=\"你的公司账号\"/> aka getByRole('textbox', { name: '内部账号' })\n\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('你的公司账号', { exact: true }) to be visible\u001b[22m\n",
+  "raw_server_log_sha256": "f496d66fccd8c2cb9d6ea1b85977449adf1a78b0d207e84e3ef58de6524a7516",
+  "raw_browser_log_sha256": "0c13790a22ec74b48a8a768059d1b4dae151992e561eefc94f2b0db17726f22a",
+  "client_record_sha256": "0b90e758d65da10899896322af21bff98776924d4bae07ac15438addc18213fe",
+  "scope": "Native loopback Taro development-server/login smoke check; no credentials, media capture, business acceptance or performance benchmark."
+}

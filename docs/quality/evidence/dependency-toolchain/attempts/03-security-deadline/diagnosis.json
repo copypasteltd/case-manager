@@ -1,0 +1,9 @@
+{
+  "observations": [
+    "The two previously failing original tests pass when executed independently without changing their assertions: metadata 404 error and glob literal child arguments.",
+    "A targeted installed-adapter check exposes ERR_PACKAGE_PATH_NOT_EXPORTED for @vitejs/plugin-react/package.json. The check now reads the real installed manifest relative to its exported entry.",
+    "The 180-second interrupted suite is not counted as passing; the complete suite must run again."
+  ],
+  "product_checks_weakened": false,
+  "stale_owned_temporary_directory_removed": "dependency-toolchain-3x4ndm"
+}

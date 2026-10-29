@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 增量107 · 开发工具链 / Development toolchain · 2026-10-29
+
+- 补齐React Refresh开发peer及维护版socket转接；真实H5检查要求当前编译无错误、精确定位实际输入框、Host／CORS有效，并关闭原生浏览器／上下文／服务／端口。失败尝试及原始来源全部保留。 / Add the real development peer/socket bridge and verify current compilation, login reload, Host/CORS and owned resource cleanup.
+
+- 对原30项AC／72项TC逐项分类，保留原文与摘要，明确费用控制、真机、网络性能、迁移和容灾移出边界；12项一致性检查只核对文档，不增加业务通过数。 / Classify all 30 AC and 72 TC IDs without inventing passed business cases. See [applicability](quality/04-current-acceptance-applicability.md).
+
+- 增量107修复Taro构建工具链：为同步模板压缩和本地开发服务器提供明确身份的适配包，升级PostCSS及可选Vite／React插件，Node要求>=22.15.0 <23。本轮完整审计70→63，high6→0；剩余63个告警全部开放。23个完整工作包（14 P0／9 P1）、5项移出不变。AI仅移出费用控制，秘书、八项Skill、TG、授权、审计、隔离和技术限制继续保留。
+- Increment 107 updates the Taro toolchain with disclosed synchronous-template and local-server adapters, maintained PostCSS and optional Vite/React peers, and Node >=22.15.0 <23. The full audit changes 70→63 findings and 6→0 high findings; all 63 remaining entries stay open. The 23 active packages (14 P0/9 P1) and 5 exclusions are unchanged. Only AI cost control is excluded; the secretary, eight Skills, TG, authorization, audit, isolation and technical limits remain required.
+- 本轮新执行：标准npm ci、40项依赖调用与2项原生JS检查、8项客户端命令（Web172／共享移动273／运行时55，微信／抖音各20页）、Android开发包与18项APK检查，以及H5服务5项／原生Edge3项检查；26条JVM结果为Gradle缓存。30项AC／72项TC已完成适用性分类并通过12项一致性检查，分类未执行业务验收。211份旧媒体、未改后端224／1355及2个Linux交叉构建保留原始证据范围。
+- Fresh checks passed: standard `npm ci`, 40 checks of dependency calls, 2 native JS checks and 8 client commands (172 Web, 273 mobile and 55 runtime tests; 20 pages for each miniapp), an Android development build with 18 APK checks, and 5 H5 server plus 3 native Edge checks. The 26 JVM results came from Gradle's cache. All 30 AC and 72 TC IDs now have explicit applicability, validated by 12 consistency checks; this classification executes no business acceptance cases. The 211 historical media files, unchanged backend evidence (224 top-level tests / 1355 results) and 2 Linux cross-builds retain their original scope.
+- [实现与使用](development/107-dependency-toolchain.md) · [验证与失败尝试](quality/107-dependency-toolchain-verification.md)。
+
 ## 增量106 · 费用摊销 / Versioned cost amortization · 2026-10-29
 
 - 增量106：已接通四端人工费用摊销。明确选择月份均分或按日分配、服务期间和依据，预览逐月项目／公司份额，经最近MFA及口径确认后发布不可变版本；支持停用、完整历史、独立报表、固定导出和冲销沿用原月份汇率。修订或停用重列当前计划视图，原费用／现金事实和已完成导出保留。实际公司制度、跨币种核销、手续费／汇差和完整旅程仍开放；23个工作包（14 P0／9 P1）、5项排除不变。

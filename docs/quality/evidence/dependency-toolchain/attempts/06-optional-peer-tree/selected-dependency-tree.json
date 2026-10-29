@@ -1,0 +1,849 @@
+{
+  "version": "0.1.0",
+  "name": "copypaste-internal-platform",
+  "problems": [
+    "invalid: @vitejs/plugin-react@6.1.2 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\@vitejs\\plugin-react",
+    "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+  ],
+  "dependencies": {
+    "@copypaste/dev-server-compat": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/dev-server-compat",
+      "overridden": false,
+      "dependencies": {
+        "@copypaste/dev-server-upstream": {
+          "version": "6.1.0",
+          "resolved": "https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-6.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "webpack-dev-middleware": {
+              "version": "8.5.0",
+              "resolved": "https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-8.5.0.tgz",
+              "overridden": false
+            }
+          }
+        }
+      }
+    },
+    "@copypaste/image-size-compat": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/image-size-compat",
+      "overridden": false,
+      "dependencies": {
+        "@copypaste/image-size-parser": {
+          "version": "2.0.4",
+          "resolved": "https://registry.npmjs.org/image-size/-/image-size-2.0.4.tgz",
+          "overridden": false
+        }
+      }
+    },
+    "@copypaste/latest-version-compat": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/latest-version-compat",
+      "overridden": false,
+      "dependencies": {
+        "@copypaste/latest-version-upstream": {
+          "version": "9.0.0",
+          "resolved": "https://registry.npmjs.org/latest-version/-/latest-version-9.0.0.tgz",
+          "overridden": false
+        }
+      }
+    },
+    "@copypaste/mobile": {
+      "version": "0.1.0",
+      "resolved": "file:../../mobile",
+      "overridden": false,
+      "dependencies": {
+        "@tarojs/cli": {
+          "version": "4.3.1",
+          "resolved": "https://registry.npmjs.org/@tarojs/cli/-/cli-4.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "download-git-repo": {
+              "version": "0.1.0"
+            },
+            "latest-version": {
+              "version": "0.1.0"
+            }
+          }
+        },
+        "@tarojs/plugin-framework-react": {
+          "version": "4.3.1",
+          "resolved": "https://registry.npmjs.org/@tarojs/plugin-framework-react/-/plugin-framework-react-4.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@vitejs/plugin-react": {
+              "version": "6.1.2",
+              "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+              "problems": [
+                "invalid: @vitejs/plugin-react@6.1.2 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\@vitejs\\plugin-react"
+              ]
+            },
+            "vite": {
+              "version": "8.3.5",
+              "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+              "problems": [
+                "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+              ]
+            }
+          }
+        },
+        "@tarojs/taro": {
+          "version": "4.3.1",
+          "resolved": "https://registry.npmjs.org/@tarojs/taro/-/taro-4.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@types/postcss-url": {
+              "version": "10.0.4",
+              "resolved": "https://registry.npmjs.org/@types/postcss-url/-/postcss-url-10.0.4.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "html-webpack-plugin": {
+              "version": "5.6.8",
+              "resolved": "https://registry.npmjs.org/html-webpack-plugin/-/html-webpack-plugin-5.6.8.tgz",
+              "overridden": false,
+              "dependencies": {
+                "html-minifier-terser": {
+                  "version": "7.2.0",
+                  "resolved": "https://registry.npmjs.org/html-minifier-terser/-/html-minifier-terser-7.2.0.tgz",
+                  "overridden": true
+                }
+              }
+            },
+            "postcss": {
+              "version": "8.5.32"
+            },
+            "webpack-dev-server": {
+              "version": "0.1.0"
+            }
+          }
+        },
+        "@tarojs/webpack5-runner": {
+          "version": "4.3.1",
+          "resolved": "https://registry.npmjs.org/@tarojs/webpack5-runner/-/webpack5-runner-4.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "autoprefixer": {
+              "version": "10.6.1",
+              "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.6.1.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "css-loader": {
+              "version": "7.1.5",
+              "resolved": "https://registry.npmjs.org/css-loader/-/css-loader-7.1.5.tgz",
+              "overridden": false,
+              "dependencies": {
+                "icss-utils": {
+                  "version": "5.1.0",
+                  "resolved": "https://registry.npmjs.org/icss-utils/-/icss-utils-5.1.0.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "postcss": {
+                      "version": "8.5.32"
+                    }
+                  }
+                },
+                "postcss-modules-extract-imports": {
+                  "version": "3.1.0",
+                  "resolved": "https://registry.npmjs.org/postcss-modules-extract-imports/-/postcss-modules-extract-imports-3.1.0.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "postcss": {
+                      "version": "8.5.32"
+                    }
+                  }
+                },
+                "postcss-modules-local-by-default": {
+                  "version": "4.2.0",
+                  "resolved": "https://registry.npmjs.org/postcss-modules-local-by-default/-/postcss-modules-local-by-default-4.2.0.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "postcss": {
+                      "version": "8.5.32"
+                    }
+                  }
+                },
+                "postcss-modules-scope": {
+                  "version": "3.2.1",
+                  "resolved": "https://registry.npmjs.org/postcss-modules-scope/-/postcss-modules-scope-3.2.1.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "postcss": {
+                      "version": "8.5.32"
+                    }
+                  }
+                },
+                "postcss-modules-values": {
+                  "version": "4.0.0",
+                  "resolved": "https://registry.npmjs.org/postcss-modules-values/-/postcss-modules-values-4.0.0.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "postcss": {
+                      "version": "8.5.32"
+                    }
+                  }
+                },
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "css-minimizer-webpack-plugin": {
+              "version": "6.0.0",
+              "resolved": "https://registry.npmjs.org/css-minimizer-webpack-plugin/-/css-minimizer-webpack-plugin-6.0.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "cssnano": {
+                  "version": "6.1.2",
+                  "resolved": "https://registry.npmjs.org/cssnano/-/cssnano-6.1.2.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "cssnano-preset-default": {
+                      "version": "6.1.2",
+                      "resolved": "https://registry.npmjs.org/cssnano-preset-default/-/cssnano-preset-default-6.1.2.tgz",
+                      "overridden": false,
+                      "dependencies": {
+                        "css-declaration-sorter": {
+                          "version": "7.4.0",
+                          "resolved": "https://registry.npmjs.org/css-declaration-sorter/-/css-declaration-sorter-7.4.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "cssnano-utils": {
+                          "version": "4.0.2",
+                          "resolved": "https://registry.npmjs.org/cssnano-utils/-/cssnano-utils-4.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-calc": {
+                          "version": "9.0.1",
+                          "resolved": "https://registry.npmjs.org/postcss-calc/-/postcss-calc-9.0.1.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-colormin": {
+                          "version": "6.1.0",
+                          "resolved": "https://registry.npmjs.org/postcss-colormin/-/postcss-colormin-6.1.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-convert-values": {
+                          "version": "6.1.0",
+                          "resolved": "https://registry.npmjs.org/postcss-convert-values/-/postcss-convert-values-6.1.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-discard-comments": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-discard-comments/-/postcss-discard-comments-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-discard-duplicates": {
+                          "version": "6.0.3",
+                          "resolved": "https://registry.npmjs.org/postcss-discard-duplicates/-/postcss-discard-duplicates-6.0.3.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-discard-empty": {
+                          "version": "6.0.3",
+                          "resolved": "https://registry.npmjs.org/postcss-discard-empty/-/postcss-discard-empty-6.0.3.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-discard-overridden": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-discard-overridden/-/postcss-discard-overridden-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-merge-longhand": {
+                          "version": "6.0.5",
+                          "resolved": "https://registry.npmjs.org/postcss-merge-longhand/-/postcss-merge-longhand-6.0.5.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            },
+                            "stylehacks": {
+                              "version": "6.1.1",
+                              "resolved": "https://registry.npmjs.org/stylehacks/-/stylehacks-6.1.1.tgz",
+                              "overridden": false,
+                              "dependencies": {
+                                "postcss": {
+                                  "version": "8.5.32"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "postcss-merge-rules": {
+                          "version": "6.1.1",
+                          "resolved": "https://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-6.1.1.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-minify-font-values": {
+                          "version": "6.1.0",
+                          "resolved": "https://registry.npmjs.org/postcss-minify-font-values/-/postcss-minify-font-values-6.1.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-minify-gradients": {
+                          "version": "6.0.3",
+                          "resolved": "https://registry.npmjs.org/postcss-minify-gradients/-/postcss-minify-gradients-6.0.3.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-minify-params": {
+                          "version": "6.1.0",
+                          "resolved": "https://registry.npmjs.org/postcss-minify-params/-/postcss-minify-params-6.1.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-minify-selectors": {
+                          "version": "6.0.4",
+                          "resolved": "https://registry.npmjs.org/postcss-minify-selectors/-/postcss-minify-selectors-6.0.4.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-charset": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-charset/-/postcss-normalize-charset-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-display-values": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-display-values/-/postcss-normalize-display-values-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-positions": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-positions/-/postcss-normalize-positions-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-repeat-style": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-repeat-style/-/postcss-normalize-repeat-style-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-string": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-string/-/postcss-normalize-string-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-timing-functions": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-timing-functions/-/postcss-normalize-timing-functions-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-unicode": {
+                          "version": "6.1.0",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-unicode/-/postcss-normalize-unicode-6.1.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-url": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-url/-/postcss-normalize-url-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-normalize-whitespace": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-normalize-whitespace/-/postcss-normalize-whitespace-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-ordered-values": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-ordered-values/-/postcss-ordered-values-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-reduce-initial": {
+                          "version": "6.1.0",
+                          "resolved": "https://registry.npmjs.org/postcss-reduce-initial/-/postcss-reduce-initial-6.1.0.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-reduce-transforms": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/postcss-reduce-transforms/-/postcss-reduce-transforms-6.0.2.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-svgo": {
+                          "version": "6.0.3",
+                          "resolved": "https://registry.npmjs.org/postcss-svgo/-/postcss-svgo-6.0.3.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss-unique-selectors": {
+                          "version": "6.0.4",
+                          "resolved": "https://registry.npmjs.org/postcss-unique-selectors/-/postcss-unique-selectors-6.0.4.tgz",
+                          "overridden": false,
+                          "dependencies": {
+                            "postcss": {
+                              "version": "8.5.32"
+                            }
+                          }
+                        },
+                        "postcss": {
+                          "version": "8.5.32"
+                        }
+                      }
+                    },
+                    "postcss": {
+                      "version": "8.5.32"
+                    }
+                  }
+                },
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "html-minifier": {
+              "version": "0.1.0"
+            },
+            "miniprogram-simulate": {
+              "version": "1.6.2",
+              "resolved": "https://registry.npmjs.org/miniprogram-simulate/-/miniprogram-simulate-1.6.2.tgz",
+              "overridden": false,
+              "dependencies": {
+                "less": {
+                  "version": "3.13.1",
+                  "resolved": "https://registry.npmjs.org/less/-/less-3.13.1.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "image-size": {
+                      "version": "0.1.0"
+                    }
+                  }
+                },
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-html-transform": {
+              "version": "4.3.1",
+              "resolved": "https://registry.npmjs.org/postcss-html-transform/-/postcss-html-transform-4.3.1.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-import": {
+              "version": "16.2.0",
+              "resolved": "https://registry.npmjs.org/postcss-import/-/postcss-import-16.2.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-loader": {
+              "version": "8.2.1",
+              "resolved": "https://registry.npmjs.org/postcss-loader/-/postcss-loader-8.2.1.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-plugin-constparse": {
+              "version": "4.3.1",
+              "resolved": "https://registry.npmjs.org/postcss-plugin-constparse/-/postcss-plugin-constparse-4.3.1.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-pxtransform": {
+              "version": "4.3.1",
+              "resolved": "https://registry.npmjs.org/postcss-pxtransform/-/postcss-pxtransform-4.3.1.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-url": {
+              "version": "10.1.4",
+              "resolved": "https://registry.npmjs.org/postcss-url/-/postcss-url-10.1.4.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss": {
+              "version": "8.5.32"
+            },
+            "resolve-url-loader": {
+              "version": "5.0.0",
+              "resolved": "https://registry.npmjs.org/resolve-url-loader/-/resolve-url-loader-5.0.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "webpack-dev-server": {
+              "version": "0.1.0"
+            }
+          }
+        },
+        "expo": {
+          "version": "50.0.21",
+          "resolved": "https://registry.npmjs.org/expo/-/expo-50.0.21.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@expo/metro-config": {
+              "version": "0.17.8",
+              "resolved": "https://registry.npmjs.org/@expo/metro-config/-/metro-config-0.17.8.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "@copypaste/template-minifier": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/template-minifier",
+      "overridden": false,
+      "dependencies": {
+        "@copypaste/html-minifier-upstream": {
+          "version": "7.2.0",
+          "resolved": "https://registry.npmjs.org/html-minifier-terser/-/html-minifier-terser-7.2.0.tgz",
+          "overridden": false
+        }
+      }
+    },
+    "@copypaste/web": {
+      "version": "0.1.0",
+      "resolved": "file:../../web",
+      "overridden": false,
+      "dependencies": {
+        "@vitejs/plugin-react": {
+          "version": "6.1.2"
+        },
+        "vite": {
+          "version": "8.3.5"
+        },
+        "vitest": {
+          "version": "5.0.5",
+          "resolved": "https://registry.npmjs.org/vitest/-/vitest-5.0.5.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@vitest/mocker": {
+              "version": "5.0.5",
+              "resolved": "https://registry.npmjs.org/@vitest/mocker/-/mocker-5.0.5.tgz",
+              "overridden": false,
+              "dependencies": {
+                "vite": {
+                  "version": "8.3.5",
+                  "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+                  "problems": [
+                    "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+                  ]
+                }
+              }
+            },
+            "vite": {
+              "version": "8.3.5",
+              "invalid": "\"^4\" from mobile/node_modules/@tarojs/plugin-framework-react",
+              "problems": [
+                "invalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "@tarojs/rn-supporter": {
+      "version": "4.3.1",
+      "resolved": "https://registry.npmjs.org/@tarojs/rn-supporter/-/rn-supporter-4.3.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@tarojs/rn-style-transformer": {
+          "version": "4.3.1",
+          "resolved": "https://registry.npmjs.org/@tarojs/rn-style-transformer/-/rn-style-transformer-4.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "postcss-css-variables": {
+              "version": "0.19.0",
+              "resolved": "https://registry.npmjs.org/postcss-css-variables/-/postcss-css-variables-0.19.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss-reporter": {
+              "version": "7.1.0",
+              "resolved": "https://registry.npmjs.org/postcss-reporter/-/postcss-reporter-7.1.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "postcss": {
+                  "version": "8.5.32"
+                }
+              }
+            },
+            "postcss": {
+              "version": "8.5.32"
+            }
+          }
+        },
+        "metro": {
+          "version": "0.80.12",
+          "resolved": "https://registry.npmjs.org/metro/-/metro-0.80.12.tgz",
+          "overridden": false,
+          "dependencies": {
+            "image-size": {
+              "version": "0.1.0"
+            }
+          }
+        }
+      }
+    },
+    "@vitejs/plugin-react": {
+      "version": "6.1.2",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-6.1.2.tgz",
+      "overridden": true,
+      "dependencies": {
+        "vite": {
+          "version": "8.3.5"
+        }
+      }
+    },
+    "decompress": {
+      "version": "0.1.0",
+      "resolved": "file:../packages/archive-extraction",
+      "overridden": true
+    },
+    "download-git-repo": {
+      "version": "0.1.0",
+      "resolved": "file:../packages/template-download",
+      "overridden": true
+    },
+    "html-minifier": {
+      "version": "0.1.0",
+      "resolved": "file:../packages/template-minifier",
+      "overridden": true,
+      "dependencies": {
+        "@copypaste/html-minifier-upstream": {
+          "version": "7.2.0"
+        }
+      }
+    },
+    "image-size": {
+      "version": "0.1.0",
+      "resolved": "file:../packages/image-size-compat",
+      "overridden": true,
+      "dependencies": {
+        "@copypaste/image-size-parser": {
+          "version": "2.0.4"
+        }
+      }
+    },
+    "latest-version": {
+      "version": "0.1.0",
+      "resolved": "file:../packages/latest-version-compat",
+      "overridden": true,
+      "dependencies": {
+        "@copypaste/latest-version-upstream": {
+          "version": "9.0.0"
+        }
+      }
+    },
+    "stylelint": {
+      "version": "16.10.0",
+      "resolved": "https://registry.npmjs.org/stylelint/-/stylelint-16.10.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "postcss-safe-parser": {
+          "version": "7.1.0",
+          "resolved": "https://registry.npmjs.org/postcss-safe-parser/-/postcss-safe-parser-7.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "postcss": {
+              "version": "8.5.32"
+            }
+          }
+        },
+        "postcss": {
+          "version": "8.5.32",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.32.tgz",
+          "overridden": true
+        }
+      }
+    },
+    "vite": {
+      "version": "8.3.5",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-8.3.5.tgz",
+      "overridden": true,
+      "dependencies": {
+        "postcss": {
+          "version": "8.5.32"
+        }
+      }
+    },
+    "webpack-dev-server": {
+      "version": "0.1.0",
+      "resolved": "file:../packages/dev-server-compat",
+      "overridden": true,
+      "dependencies": {
+        "@copypaste/dev-server-upstream": {
+          "version": "6.1.0"
+        }
+      }
+    }
+  },
+  "error": {
+    "code": "ELSPROBLEMS",
+    "summary": "invalid: @vitejs/plugin-react@6.1.2 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\@vitejs\\plugin-react\ninvalid: vite@8.3.5 D:\\dev\\copypasted\\内部管理\\app\\node_modules\\vite",
+    "detail": ""
+  }
+}

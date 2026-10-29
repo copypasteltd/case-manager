@@ -1,0 +1,19 @@
+{
+  "before_lock_sha256": "9a9d6cfebfbb7124901ac3f6452287c3013cf1c3882173225a76397390e4e85f",
+  "candidate_lock_sha256": "03dd9e39523cdc9ef072eb3b4488799751bd37c466bee01c7f4b2b5b9efd059b",
+  "removed_stale_locations": [
+    {
+      "path": "mobile/node_modules/@vitejs/plugin-react",
+      "version": "4.7.0"
+    },
+    {
+      "path": "mobile/node_modules/vite",
+      "version": "4.5.14"
+    },
+    {
+      "path": "node_modules/miniprogram-simulate/node_modules/postcss",
+      "version": "7.0.39"
+    }
+  ],
+  "reason": "Initial actual consumer test resolved nested PostCSS7. The candidate removes stale lock locations so standard npm regenerates the override graph; final normal ci and actual-tree tests are still required. No installed code or advisory is hidden."
+}

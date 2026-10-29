@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T00:33:26.825153+00:00",
+  "command": [
+    "npm",
+    "audit",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "exit_code": 1,
+  "package_lock_sha256": "18a18296aecc721b097a994a35537820cfe3a30c01f44b831443fe18cdcbf8c7",
+  "source_unchanged": true,
+  "node_version": "v22.23.4",
+  "npm_version": "10.9.9",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 56,
+    "high": 0,
+    "critical": 0,
+    "total": 63
+  },
+  "before_vulnerabilities": {
+    "info": 0,
+    "low": 7,
+    "moderate": 57,
+    "high": 6,
+    "critical": 0,
+    "total": 70
+  },
+  "raw_report_sha256": "b384bf87c806b281d363de03dd0ec1244fbbb79d6cb35cc62da431a466c1d1bc",
+  "before_source_record_sha256": "df42da3e8b93620e3364155f8eb7de31259deeff3f766dbb34148db1a9547f73",
+  "all_dependency_scopes_included": true,
+  "advisories_suppressed": false,
+  "production_security_gate_passed": false,
+  "scope": "Full current-lock audit includes development, build, optional and peer packages. Completed scanning does not close GAP-26."
+}

@@ -5,6 +5,8 @@ const input = process.env.CP_MOBILE_API_ORIGIN;
 if (process.env.TARO_ENV === 'h5' && process.env.CP_MOBILE_BUILD_PROFILE !== 'local') throw new Error('The H5 target is a local review harness only.');
 if (!input) throw new Error('CP_MOBILE_API_ORIGIN is required; no production endpoint is inferred.');
 const origin = new URL(input);
+const developmentPort = Number(process.env.CP_MOBILE_DEV_PORT || '10086');
+if (!Number.isInteger(developmentPort) || developmentPort < 1024 || developmentPort > 65535) throw new Error('CP_MOBILE_DEV_PORT must be an integer from 1024 to 65535.');
 const local = process.env.CP_MOBILE_BUILD_PROFILE === 'local' && ['127.0.0.1', 'localhost'].includes(origin.hostname);
 if ((origin.protocol !== 'https:' && !(local && origin.protocol === 'http:')) || origin.username || origin.password || origin.search || origin.hash || origin.pathname !== '/') {
   throw new Error('The mobile API requires an explicit HTTPS origin; local builds may use loopback HTTP.');
@@ -22,7 +24,8 @@ const config: UserConfigExport = {
   // The shared mutation contract contains runtime TypeScript as well as types.
   // Taro otherwise transpiles only sourceRoot and its own framework packages.
   mini: { compile: { include: [path.resolve(__dirname, '../../packages/contracts/src')] }, postcss: { pxtransform: { enable: true }, cssModules: { enable: false } } },
-  h5: { compile: { include: [path.resolve(__dirname, '../../packages/contracts/src')] }, publicPath: '/', router: { mode: 'hash' }, postcss: { pxtransform: { enable: true } } },
+  h5: { compile: { include: [path.resolve(__dirname, '../../packages/contracts/src')] }, publicPath: '/', router: { mode: 'hash' }, postcss: { pxtransform: { enable: true } },
+    devServer: { host: '127.0.0.1', allowedHosts: ['localhost', '127.0.0.1'], open: false, port: developmentPort } },
   rn: {
     appName: 'CopyPasteWorkspace',
     output: {

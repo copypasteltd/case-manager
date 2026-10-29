@@ -1,0 +1,11 @@
+{
+  "name": "@copypaste/dev-server-compat",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.cjs",
+  "types": "index.d.cts",
+  "engines": { "node": ">=22.15.0" },
+  "dependencies": {
+    "@copypaste/dev-server-upstream": "npm:webpack-dev-server@6.1.0"
+  }
+}

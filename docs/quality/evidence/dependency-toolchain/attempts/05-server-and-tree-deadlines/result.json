@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "reason": "40 security checks completed as39 pass/1 cancelled at the 60-second server integration deadline. Native JS2 passed. The selected npm ls command then exceeded its60-second deadline; no successful final tree or verification is claimed.",
+  "source_sha256": "3e1d97cdda47bfc2659fe665ca725e3b979ea16da1c56b14c63806a6b4dd7214",
+  "sources": [
+    "mobile/config/index.ts",
+    "mobile/native/babel-primitives.test.cjs",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "scripts/dependency_maintenance.test.mjs",
+    "scripts/dependency_remediation.test.mjs",
+    "scripts/dependency_security.test.mjs",
+    "scripts/dependency_toolchain.test.mjs",
+    "scripts/verify_dependency_toolchain_security.py"
+  ],
+  "raw_log_sha256": {
+    "security-tests": "e0df05586979a852495bf750bb22a7a55f9910ed457946f4d35068d6a8fc8eda",
+    "native-js-tests": "fdf7bdc48ee863a5f6f107be4cd672405ca39c0eae343a9a8a708f22b8483c1d"
+  },
+  "archive_sha256": "ac71d75ca078723f4a1a07a0c02a526f091f22b7df2fab40856e5d5be605b1c2",
+  "security_tests": {
+    "tests": 40,
+    "pass": 39,
+    "cancelled": 1
+  },
+  "native_js_tests": {
+    "tests": 2,
+    "pass": 2
+  },
+  "checked_at": "2026-10-29T01:41:39.589024+00:00"
+}

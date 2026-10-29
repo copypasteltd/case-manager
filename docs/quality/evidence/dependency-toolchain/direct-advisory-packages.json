@@ -1,0 +1,228 @@
+{
+  "audit_record_sha256": "4ecd63b5482ff30b99ee10e93c1c1e8f5d7bd81c0099df972dd24d664ce8b9e4",
+  "package_findings": 63,
+  "direct_advisory_packages": 7,
+  "propagation_only_packages": 56,
+  "not_unique_cve_count": true,
+  "items": [
+    {
+      "name": "@babel/core",
+      "severity": "low",
+      "status": "open",
+      "nodes": [
+        "node_modules/@babel/core"
+      ],
+      "direct_consumers": [],
+      "advisories": [
+        {
+          "source": 1123528,
+          "name": "@babel/core",
+          "dependency": "@babel/core",
+          "title": "@babel/core: Arbitrary File Read via sourceMappingURL Comment",
+          "url": "https://github.com/advisories/GHSA-4x5r-pxfx-6jf8",
+          "severity": "low",
+          "cwe": [
+            "CWE-22",
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 3.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N"
+          },
+          "range": "<=7.29.0"
+        }
+      ]
+    },
+    {
+      "name": "decode-uri-component",
+      "severity": "moderate",
+      "status": "open",
+      "nodes": [
+        "node_modules/decode-uri-component"
+      ],
+      "direct_consumers": [
+        "query-string",
+        "source-map-resolve"
+      ],
+      "advisories": [
+        {
+          "source": 1147955,
+          "name": "decode-uri-component",
+          "dependency": "decode-uri-component",
+          "title": "decode-uri-component: Denial of service via exponential decoding of malformed percent-encoded input",
+          "url": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-405",
+            "CWE-407",
+            "CWE-1176"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=0.4.2"
+        }
+      ]
+    },
+    {
+      "name": "deepmerge",
+      "severity": "low",
+      "status": "open",
+      "nodes": [
+        "node_modules/@react-native-community/cli-config/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli-doctor/node_modules/deepmerge",
+        "node_modules/@react-native-community/cli/node_modules/deepmerge",
+        "node_modules/@svgr/plugin-svgo/node_modules/deepmerge"
+      ],
+      "direct_consumers": [
+        "@react-native-community/cli",
+        "@react-native-community/cli-config",
+        "@react-native-community/cli-doctor",
+        "@svgr/plugin-svgo"
+      ],
+      "advisories": [
+        {
+          "source": 1243505,
+          "name": "deepmerge",
+          "dependency": "deepmerge",
+          "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "severity": "low",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.2.0 <=4.3.1"
+        }
+      ]
+    },
+    {
+      "name": "esbuild",
+      "severity": "moderate",
+      "status": "open",
+      "nodes": [
+        "node_modules/@tarojs/helper/node_modules/esbuild",
+        "node_modules/@tarojs/webpack5-runner/node_modules/esbuild"
+      ],
+      "direct_consumers": [
+        "@tarojs/helper",
+        "@tarojs/webpack5-runner"
+      ],
+      "advisories": [
+        {
+          "source": 1102341,
+          "name": "esbuild",
+          "dependency": "esbuild",
+          "title": "esbuild enables any website to send any requests to the development server and read the response",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-346"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<=0.24.2"
+        }
+      ]
+    },
+    {
+      "name": "fast-xml-parser",
+      "severity": "moderate",
+      "status": "open",
+      "nodes": [
+        "node_modules/fast-xml-parser"
+      ],
+      "direct_consumers": [
+        "@react-native-community/cli-platform-android",
+        "@react-native-community/cli-platform-ios"
+      ],
+      "advisories": [
+        {
+          "source": 1117911,
+          "name": "fast-xml-parser",
+          "dependency": "fast-xml-parser",
+          "title": "fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimiters",
+          "url": "https://github.com/advisories/GHSA-gh4j-gqv2-49f6",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-91"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<5.7.0"
+        }
+      ]
+    },
+    {
+      "name": "send",
+      "severity": "low",
+      "status": "open",
+      "nodes": [
+        "node_modules/@expo/cli/node_modules/send"
+      ],
+      "direct_consumers": [
+        "@expo/cli"
+      ],
+      "advisories": [
+        {
+          "source": 1109556,
+          "name": "send",
+          "dependency": "send",
+          "title": "send vulnerable to template injection that can lead to XSS",
+          "url": "https://github.com/advisories/GHSA-m6fv-jmcg-4jfg",
+          "severity": "low",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+          },
+          "range": "<0.19.0"
+        }
+      ]
+    },
+    {
+      "name": "uuid",
+      "severity": "moderate",
+      "status": "open",
+      "nodes": [
+        "node_modules/uuid",
+        "node_modules/xcode/node_modules/uuid"
+      ],
+      "direct_consumers": [
+        "@expo/bunyan",
+        "@expo/rudder-sdk-node",
+        "xcode"
+      ],
+      "advisories": [
+        {
+          "source": 1119441,
+          "name": "uuid",
+          "dependency": "uuid",
+          "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-787",
+            "CWE-1285"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<11.1.1"
+        }
+      ]
+    }
+  ]
+}
