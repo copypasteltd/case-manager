@@ -34733,6 +34733,536 @@
           }
         }
       }
+    },
+    "/costs/{id}/amortization": {
+      "get": {
+        "operationId": "getCostAmortization",
+        "tags": [
+          "finance"
+        ],
+        "summary": "getCostAmortization",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmortizationOverviewResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "publishCostAmortization",
+        "tags": [
+          "finance"
+        ],
+        "summary": "publishCostAmortization",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmortizationVersionResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmortizationPublish"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/costs/{id}/amortization/preview": {
+      "post": {
+        "operationId": "previewCostAmortization",
+        "tags": [
+          "finance"
+        ],
+        "summary": "previewCostAmortization",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmortizationPreviewResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmortizationInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/costs/{id}/amortization/stop": {
+      "post": {
+        "operationId": "stopCostAmortization",
+        "tags": [
+          "finance"
+        ],
+        "summary": "stopCostAmortization",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmortizationVersionResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmortizationStop"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/costs/{id}/amortization/versions": {
+      "get": {
+        "operationId": "listCostAmortizationVersions",
+        "tags": [
+          "finance"
+        ],
+        "summary": "listCostAmortizationVersions",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmortizationVersionListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/costs/{id}/amortization/versions/{version}": {
+      "get": {
+        "operationId": "getCostAmortizationVersion",
+        "tags": [
+          "finance"
+        ],
+        "summary": "getCostAmortizationVersion",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmortizationVersionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -71931,7 +72461,8 @@
             "enum": [
               "incurred",
               "cash",
-              "forecast"
+              "forecast",
+              "amortization"
             ]
           },
           "from": {
@@ -72018,7 +72549,8 @@
             "enum": [
               "cost",
               "payment",
-              "subscription_period"
+              "subscription_period",
+              "cost_amortization"
             ]
           },
           "id": {
@@ -72068,7 +72600,8 @@
               "expense",
               "reversal",
               "payment",
-              "forecast"
+              "forecast",
+              "amortization"
             ]
           },
           "currency": {
@@ -72145,6 +72678,9 @@
           },
           "valuation": {
             "$ref": "#/components/schemas/FinancialSourceValuation"
+          },
+          "amortization": {
+            "$ref": "#/components/schemas/AmortizationEvidence"
           }
         },
         "additionalProperties": false,
@@ -72192,6 +72728,9 @@
               },
               {
                 "$ref": "#/components/schemas/ForecastReport"
+              },
+              {
+                "$ref": "#/components/schemas/AmortizationReport"
               }
             ]
           },
@@ -72580,6 +73119,619 @@
         "required": [
           "data",
           "meta"
+        ]
+      },
+      "AmortizationPeriod": {
+        "type": "object",
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 120
+          },
+          "service_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "service_to": {
+            "type": "string",
+            "format": "date"
+          },
+          "recognized_on": {
+            "type": "string",
+            "format": "date"
+          },
+          "amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "shares": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "project_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "project_id",
+                "amount"
+              ]
+            },
+            "maxItems": 100
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "service_from",
+          "service_to",
+          "recognized_on",
+          "amount",
+          "shares"
+        ]
+      },
+      "AmortizationContent": {
+        "type": "object",
+        "properties": {
+          "cost_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cost_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "cost_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cost_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "exponent": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6
+          },
+          "amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "monthly_equal",
+              "daily_weighted"
+            ]
+          },
+          "rounding": {
+            "const": "allocation_cumulative_half_up"
+          },
+          "service_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "service_to": {
+            "type": "string",
+            "format": "date"
+          },
+          "periods": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 120,
+            "items": {
+              "$ref": "#/components/schemas/AmortizationPeriod"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cost_id",
+          "cost_version",
+          "cost_revision_id",
+          "cost_sha256",
+          "currency",
+          "exponent",
+          "amount",
+          "method",
+          "rounding",
+          "service_from",
+          "service_to",
+          "periods"
+        ]
+      },
+      "AmortizationInput": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "expected_plan_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740990
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "monthly_equal",
+              "daily_weighted"
+            ]
+          },
+          "service_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "service_to": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "revision_id",
+          "content_hash",
+          "reason",
+          "expected_plan_version",
+          "method",
+          "service_from",
+          "service_to"
+        ]
+      },
+      "AmortizationPublish": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "expected_plan_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740990
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "monthly_equal",
+              "daily_weighted"
+            ]
+          },
+          "service_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "service_to": {
+            "type": "string",
+            "format": "date"
+          },
+          "preview_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "acknowledged": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "revision_id",
+          "content_hash",
+          "reason",
+          "expected_plan_version",
+          "method",
+          "service_from",
+          "service_to",
+          "preview_sha256",
+          "acknowledged"
+        ]
+      },
+      "AmortizationStop": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "expected_plan_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740990
+          },
+          "acknowledged": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "revision_id",
+          "content_hash",
+          "reason",
+          "expected_plan_version",
+          "acknowledged"
+        ]
+      },
+      "AmortizationPreview": {
+        "type": "object",
+        "properties": {
+          "plan_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "content": {
+            "$ref": "#/components/schemas/AmortizationContent"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "plan_version",
+          "content_sha256",
+          "content"
+        ]
+      },
+      "AmortizationVersion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cost_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "active",
+              "stopped"
+            ]
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "period_count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 120
+          },
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "content": {
+            "$ref": "#/components/schemas/AmortizationContent"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "cost_id",
+          "version",
+          "state",
+          "content_sha256",
+          "period_count",
+          "actor_id",
+          "reason",
+          "created_at"
+        ]
+      },
+      "AmortizationOverview": {
+        "type": "object",
+        "properties": {
+          "cost_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "can_manage": {
+            "type": "boolean"
+          },
+          "current": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AmortizationVersion"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cost_id",
+          "version",
+          "can_manage",
+          "current"
+        ]
+      },
+      "AmortizationEvidence": {
+        "type": "object",
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "plan_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "plan_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 120
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "monthly_equal",
+              "daily_weighted"
+            ]
+          },
+          "service_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "service_to": {
+            "type": "string",
+            "format": "date"
+          },
+          "original_date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "plan_id",
+          "plan_version",
+          "plan_sha256",
+          "sequence",
+          "method",
+          "service_from",
+          "service_to",
+          "original_date"
+        ]
+      },
+      "AmortizationPreviewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AmortizationPreview"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AmortizationVersionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AmortizationVersion"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AmortizationOverviewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AmortizationOverview"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AmortizationVersionListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AmortizationVersion"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AmortizationReport": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "const": "amortization"
+          },
+          "from": {
+            "type": "string",
+            "format": "date"
+          },
+          "to": {
+            "type": "string",
+            "format": "date"
+          },
+          "timezone": {
+            "const": "Asia/Hong_Kong"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "base_currency": {
+            "type": "null"
+          },
+          "fx_coverage": {
+            "const": "unconfigured"
+          },
+          "totals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CostTotal"
+            }
+          },
+          "unconfirmed_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "basis": {
+            "const": "latest_active_schedules"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "from",
+          "to",
+          "timezone",
+          "as_of",
+          "base_currency",
+          "fx_coverage",
+          "totals",
+          "unconfirmed_count",
+          "basis"
         ]
       }
     }

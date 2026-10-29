@@ -33,6 +33,9 @@ func reportCSV(snapshot reportSnapshot) ([]byte, error) {
 	if snapshot.Report.Valuation != nil {
 		header = append(header, "base_currency", "fx_status", "fx_date", "base_amount", "fx_rate", "fx_rate_index", "fx_rate_date", "fx_rate_source", "fx_valid_from", "fx_valid_to")
 	}
+	if snapshot.Report.Filters.Kind == "amortization" {
+		header = append(header, "amortization_plan_id", "amortization_plan_version", "amortization_plan_sha256", "amortization_sequence", "amortization_method", "service_from", "service_to", "original_recognition_date")
+	}
 	if err := w.Write(header); err != nil {
 		return nil, err
 	}
@@ -77,6 +80,13 @@ func reportCSV(snapshot reportSnapshot) ([]byte, error) {
 				index = strconv.Itoa(*fx.RateIndex)
 			}
 			row = append(row, snapshot.Report.Valuation.Book.BaseCurrency, fx.Status, fx.FXDate, value(fx.BaseAmount), value(fx.Rate), index, value(fx.RateDate), csvText(value(fx.RateSource)), value(fx.ValidFrom), value(fx.ValidTo))
+		}
+		if snapshot.Report.Filters.Kind == "amortization" {
+			plan := v.Amortization
+			if plan == nil {
+				return nil, core.Fail(500, "AMORTIZATION_SOURCE_MISSING", "摊销导出缺少准确计划版本")
+			}
+			row = append(row, plan.PlanID, strconv.FormatInt(plan.PlanVersion, 10), plan.PlanSHA256, strconv.Itoa(plan.Sequence), plan.Method, plan.ServiceFrom, plan.ServiceTo, plan.OriginalDate)
 		}
 		if err = w.Write(row); err != nil {
 			return nil, err

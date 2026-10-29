@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T23:52:30.641156+00:00",
+  "synthetic_data": true,
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-preview.png",
+      "sha256": "b05eda3ca9bcd1ecafa1e903fa6edd0013b164818c41c5b792e5700872070256"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-published.png",
+      "sha256": "d70ca4e5590363b9132ac04416c527b87f50c1405c1f82ffa926acd0b4fb216c"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-history.png",
+      "sha256": "a9d4ff90bc9b8e28d2b0d9009dd75fa2360629f3448df701c4784bdeca8938e9"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-report.png",
+      "sha256": "f7a7ebf7a56851e872d1ac230753ce6e33fc90147daf5b29b1a81436049db100"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-preview.png",
+      "sha256": "29b1185c7ce733acce26c762be3d9a3d384a28af4f262410858a66b8c07b57c8"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-published.png",
+      "sha256": "5d93c52a923ed01eb0985c80552b895d1330be6b27b4c7797edc4a4d73f6389e"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-history.png",
+      "sha256": "a71cc8ff467ca47012007b04f6c5517de098ad654897c7accb0a85503208d917"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-report.png",
+      "sha256": "baf6ed2d3e8a8ad6585d98a59ee7010cc7dbf6018613ea23c4d621c414ebf142"
+    }
+  ],
+  "review": "Inspected all eight final-source Web and Taro H5 screenshots. Web cards, monthly amounts 33.33/33.34/33.33, immutable version evidence and report net 100 are legible. The history table scrolls within its modal. Mobile shows stacked periods, acknowledgement, publication, immutable history and the independent report without body overflow. Capture views use the current viewport; long pages require scrolling. Login and MFA secret inputs are absent.",
+  "real_device": false,
+  "production_acceptance": false
+}

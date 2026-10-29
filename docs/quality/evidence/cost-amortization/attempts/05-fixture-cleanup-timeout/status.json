@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "checked_at": "2026-10-28T22:26:55.539430+00:00",
+  "source_sha256": "db19fe67248e505ab20bf629674c453d0ca2bc372c7f7c3f134a888fe1ab700d",
+  "source_unchanged": true,
+  "top_level_results": 20,
+  "top_level_passed": 19,
+  "failure": {
+    "Action": "fail",
+    "Package": "copypaste.hk/platform/internal/httpapi",
+    "Test": "TestAgentFileText",
+    "Elapsed": 149.53
+  },
+  "diagnosis": "Fixture cleanup DROP DATABASE at server_integration_test.go:86 exceeded its two-minute deadline; this attempt is not an accepted pass.",
+  "raw_log": "app/.local/cost-amortization-backend-attempt-2/batch-1.log",
+  "raw_log_sha256": "d592f1eea0d2cb147e295f5780c9e6e1fdbe54fff1c17b9b25b40a21f29cc725",
+  "raw_log_bytes": 168779,
+  "resume_requires_same_sources": true,
+  "final_acceptance": false
+}

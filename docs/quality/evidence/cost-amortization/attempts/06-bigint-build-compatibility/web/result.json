@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-10-28T22:13:55.526Z",
+  "finished_at": "2026-10-28T22:14:31.239Z",
+  "checks": [
+    "No implicit plan or rule is created by reading the original confirmed expense.",
+    "Explicit monthly preview conserves each project/company share and leaves source version and active plans unchanged.",
+    "Human publication requires acknowledgement and recent MFA, returns an immutable attributed version, and preserves the original cost hash.",
+    "The published plan can be reopened with exact revision, author, reason, original shares and SHA-256 evidence.",
+    "The independent amortization report exposes only authorized current plans and retains the exact original expense/plan/month references.",
+    "Authenticated report layouts stay within the Web/portable viewport; wide schedule tables scroll inside their own container."
+  ],
+  "source_count": 777,
+  "source_sha256": "1b2604244ee00927ff5204255480dc78399afd6b6e75dbcd04db685dd0724c8a",
+  "source_after_sha256": "1b2604244ee00927ff5204255480dc78399afd6b6e75dbcd04db685dd0724c8a",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "ec97f4df574d87fd7f0eb0d1cca32c805431b99f8e107da94d5cf42ba830670b",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "ec97f4df574d87fd7f0eb0d1cca32c805431b99f8e107da94d5cf42ba830670b",
+  "build_source_unchanged": true
+}

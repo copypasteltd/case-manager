@@ -1,4 +1,10 @@
 .report-dot{color:var(--cp-accent-fg)}
+.amortization-schedule{margin:20px 0;font-variant-numeric:tabular-nums}
+.amortization-schedule .table-scroll{overflow:auto;max-height:32rem;border:1px solid var(--cp-border-subtle);border-radius:8px}
+.amortization-schedule caption{text-align:left;padding:12px;color:var(--cp-fg-muted)}
+.amortization-schedule details p{white-space:normal;overflow-wrap:anywhere;max-width:22rem}
+.amortization-editor{border-top:1px solid var(--cp-border-subtle);padding-top:18px;margin-top:20px}
+.amortization-ack{display:flex;gap:10px;align-items:flex-start;margin:20px 0;line-height:1.6}
 .report-tabs{display:flex;gap:8px;border-bottom:1px solid var(--cp-border-subtle);margin-bottom:22px;padding-bottom:12px;flex-wrap:wrap}
 .report-tab{border:1px solid transparent;background:none;padding:11px 22px;border-radius:8px;font:inherit;font-weight:650;color:var(--cp-fg-muted);cursor:pointer}
 .report-tab.selected{background:var(--cp-accent-fg);color:white}

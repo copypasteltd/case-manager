@@ -27,3 +27,5 @@
 - Increment104 adds controlled known multipart cleanup across four clients, migration82 and a separate worker. Keep formal history, completed draft objects and unknown orphan cleanup open under GAP-05; live cloud acceptance remains GAP-20. See `docs/development/104-multipart-cleanup.md`.
 
 - Increment105 adds a native Linux systemd/cgroup-v2 Codex broker and a dedicated JS/Skill bundle. Provider/proof keys stay in the root broker; Windows checks and cross-builds do not establish Linux/model acceptance. Keep GAP-09/10/13 open, all eight Skills draft and AI fee controls excluded. See `docs/development/105-native-agent-runtime.md`.
+
+- Increment106 adds explicit human cost-amortization plans, immutable history and an independent restatable report across four clients. Source expense/cash facts and completed exports stay fixed. Keep company policy adoption, cross-currency settlement, fees/differences and full GAP-03/18 acceptance open. See `docs/development/106-cost-amortization.md`.

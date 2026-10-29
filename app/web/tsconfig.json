@@ -27,6 +27,11 @@
     "src",
     "vite.config.ts",
     "../packages/contracts/src/multipart-cleanup.ts",
-    "../packages/contracts/test/multipart-cleanup-fixture.ts"
+    "../packages/contracts/test/multipart-cleanup-fixture.ts",
+    "../packages/contracts/src/amortization.ts",
+    "../packages/contracts/src/finance-reports.ts",
+    "../packages/contracts/src/finance-fx.ts",
+    "../packages/contracts/test/amortization-fixture.ts",
+    "../packages/contracts/test/amortization-cases.ts"
   ]
 }

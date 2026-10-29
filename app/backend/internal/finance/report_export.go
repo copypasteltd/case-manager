@@ -197,7 +197,11 @@ func (s *Service) ProcessReportExport(ctx context.Context, j jobqueue.Job) error
 		return err
 	}
 	for _, row := range snapshot.Report.Items {
-		snapshot.References = append(snapshot.References, reportReference{Kind: row.SourceType, ID: row.ResourceID, RevisionID: row.RevisionID})
+		kind := row.SourceType
+		if kind == "cost_amortization" {
+			kind = "cost"
+		}
+		snapshot.References = append(snapshot.References, reportReference{Kind: kind, ID: row.ResourceID, RevisionID: row.RevisionID})
 	}
 	if f.Kind == "forecast" {
 		if err = reportCoverageReferences(ctx, tx, actor, f, &snapshot); err != nil {

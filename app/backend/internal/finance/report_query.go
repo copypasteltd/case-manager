@@ -29,26 +29,27 @@ type ReportQuery struct {
 }
 
 type ReportSource struct {
-	SourceType         string           `json:"source_type"`
-	ID                 string           `json:"id"`
-	ResourceID         string           `json:"resource_id"`
-	RevisionID         string           `json:"revision_id"`
-	Version            int64            `json:"version"`
-	Title              string           `json:"title"`
-	From               string           `json:"from"`
-	To                 *string          `json:"to"`
-	State              string           `json:"state"`
-	EntryKind          string           `json:"entry_kind"`
-	Currency           *string          `json:"currency"`
-	OriginalAmount     *string          `json:"original_amount"`
-	ContributionAmount *string          `json:"contribution_amount"`
-	Category           string           `json:"category"`
-	SupplierID         *string          `json:"supplier_id"`
-	OwnerID            string           `json:"owner_id"`
-	ProjectID          *string          `json:"project_id"`
-	CreatedAt          time.Time        `json:"created_at"`
-	Timezone           string           `json:"timezone"`
-	Valuation          *SourceValuation `json:"valuation,omitempty"`
+	SourceType         string                `json:"source_type"`
+	ID                 string                `json:"id"`
+	ResourceID         string                `json:"resource_id"`
+	RevisionID         string                `json:"revision_id"`
+	Version            int64                 `json:"version"`
+	Title              string                `json:"title"`
+	From               string                `json:"from"`
+	To                 *string               `json:"to"`
+	State              string                `json:"state"`
+	EntryKind          string                `json:"entry_kind"`
+	Currency           *string               `json:"currency"`
+	OriginalAmount     *string               `json:"original_amount"`
+	ContributionAmount *string               `json:"contribution_amount"`
+	Category           string                `json:"category"`
+	SupplierID         *string               `json:"supplier_id"`
+	OwnerID            string                `json:"owner_id"`
+	ProjectID          *string               `json:"project_id"`
+	CreatedAt          time.Time             `json:"created_at"`
+	Timezone           string                `json:"timezone"`
+	Valuation          *SourceValuation      `json:"valuation,omitempty"`
+	Amortization       *AmortizationEvidence `json:"amortization,omitempty"`
 }
 
 type ReportPage struct {
@@ -63,8 +64,8 @@ type ReportPage struct {
 func (f ReportQuery) Validate() error {
 	start, err := time.Parse(time.DateOnly, f.From)
 	end, last := time.Parse(time.DateOnly, f.To)
-	if err != nil || last != nil || !end.After(start) || end.Sub(start) > 366*24*time.Hour || !slices.Contains([]string{"incurred", "cash", "forecast"}, f.Kind) {
-		return core.Invalid("report", "明确选择预测／发生／现金及1至366个自然日的期间，结束日不包含在内")
+	if err != nil || last != nil || !end.After(start) || end.Sub(start) > 366*24*time.Hour || !slices.Contains([]string{"incurred", "cash", "forecast", "amortization"}, f.Kind) {
+		return core.Invalid("report", "明确选择预测／发生／现金／摊销及1至366个自然日的期间，结束日不包含在内")
 	}
 	if (f.Currency != "" && !currencyPatternForFilter(f.Currency)) || len([]rune(f.Category)) > 50 || len([]rune(f.Query)) > 200 || strings.ContainsAny(f.Query+f.Category, "\x00") || f.CompanyOnly && f.ProjectID != nil {
 		return core.Invalid("filter", "币种、类别、关键词或公司／项目范围无效")
@@ -97,6 +98,8 @@ func reportSummary(ctx context.Context, tx pgx.Tx, a core.Actor, f ReportQuery) 
 	var v any
 	var err error
 	switch f.Kind {
+	case "amortization":
+		v, err = amortizationReport(ctx, tx, a, f)
 	case "incurred":
 		v, err = incurredFilteredReportInTx(ctx, tx, a, f.Kind, Filter{Query: f.Query, From: f.From, To: f.To, Currency: f.Currency, Category: f.Category, ProjectID: f.ProjectID, CompanyOnly: f.CompanyOnly}, f.SupplierID, f.OwnerID)
 	case "cash":

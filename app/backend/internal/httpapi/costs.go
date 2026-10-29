@@ -27,6 +27,7 @@ func costFilter(r *http.Request) (finance.Filter, error) {
 func (s *Server) costRoutes(mux *http.ServeMux) {
 	s.financeReportRoutes(mux)
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	s.amortizationRoutes(mux, v)
 	mux.HandleFunc("GET /v1/costs", read(s, "CostListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := costFilter(r)
 		if e != nil {

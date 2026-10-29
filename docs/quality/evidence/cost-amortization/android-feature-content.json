@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T23:21:03.507950+00:00",
+  "checks": [
+    {
+      "name": "Current portable bundle is byte-identical inside the newly built APK",
+      "passed": true
+    },
+    {
+      "name": "Explicit service methods, source revision, plan version and preview digest are present",
+      "passed": true
+    },
+    {
+      "name": "Human preview, publication, stopping, fresh MFA and immutable history controls are present",
+      "passed": true
+    },
+    {
+      "name": "Independent report basis, original expense source and original-month quotation evidence are present",
+      "passed": true
+    }
+  ],
+  "source_sha256": "650cf5f6310a953ef8602c87fb1da353338e56f4229a7ea7fc41c8a60d873e2c",
+  "bundle_sha256": "514627352fa459e33d5851c637684312bcbb5ca3380e3e7fa33b2386264bb14b",
+  "apk_sha256": "bcb8873b4875c0fb4cac1926dbddf783f794823b94cdb97c8c484c7b2c319763",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "5d5f9186fc9ba49a19c74f8e27263fafdb9f3999524c517e7bc16130187cfdcb"
+}

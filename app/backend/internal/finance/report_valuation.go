@@ -122,6 +122,7 @@ const valuationDate = `CASE WHEN f.entry_kind='reversal' AND f.source_type='cost
  (SELECT r.occurred_on FROM actual_cost_entries c JOIN actual_cost_entries o ON o.org_id=c.org_id AND o.id=c.reverses_id JOIN cost_revisions r ON r.org_id=o.org_id AND r.id=o.current_revision_id WHERE c.org_id=$1 AND c.id=f.id)
  WHEN f.entry_kind='reversal' AND f.source_type='payment' THEN
  (SELECT r.paid_on FROM payment_records p JOIN payment_records o ON o.org_id=p.org_id AND o.id=p.reverses_id JOIN payment_revisions r ON r.org_id=o.org_id AND r.id=o.current_revision_id WHERE p.org_id=$1 AND p.id=f.id)
+ WHEN f.source_type='cost_amortization' THEN (SELECT e.recognized_on FROM cost_amortization_entries e WHERE e.org_id=$1 AND (e.id=f.id OR e.reversal_id=f.id))
  ELSE f.period_start::date END`
 
 func applyReportValuation(ctx context.Context, tx pgx.Tx, a core.Actor, out *ReportPage) error {
@@ -219,7 +220,7 @@ func applyReportValuation(ctx context.Context, tx pgx.Tx, a core.Actor, out *Rep
 	// A single bounded lookup supplies original dates for reversals on this page.
 	reversed := []string{}
 	for _, v := range out.Items {
-		if v.EntryKind == "reversal" {
+		if v.EntryKind == "reversal" && v.Amortization == nil {
 			reversed = append(reversed, v.ID)
 		}
 	}
@@ -248,7 +249,9 @@ func applyReportValuation(ctx context.Context, tx pgx.Tx, a core.Actor, out *Rep
 	for i := range out.Items {
 		v := &out.Items[i]
 		day := v.From
-		if v.EntryKind == "reversal" {
+		if v.Amortization != nil {
+			day = v.Amortization.OriginalDate
+		} else if v.EntryKind == "reversal" {
 			day = dates[v.ID]
 			if day == "" {
 				return core.Fail(500, "FX_REVERSAL_DATE_MISSING", "冲销原始日期不可用")

@@ -1,0 +1,54 @@
+{
+  "recordings": [
+    {
+      "name": "cost-amortization-web",
+      "frame_count": 36,
+      "duration_ms": 8214,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/cost-amortization-web/frames.json",
+      "manifest_sha256": "88d4909346835de345e4b8eba7ec20b8636d418004a75eb80cebc00ae6a07005"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "client": 1440,
+      "scroll": 1440
+    },
+    {
+      "width": 900,
+      "client": 900,
+      "scroll": 900
+    },
+    {
+      "width": 390,
+      "client": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-preview.png",
+      "sha256": "76f271d6d05f8801c444b9ef416133ec7685768624309d33457de0ecbdcff3e2"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-published.png",
+      "sha256": "d40a685d9ecba3ad858e2170aff843f3f6ec8f6abc6cc0acbedc5f2b2e43a12f"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-history.png",
+      "sha256": "39b735b686b912aeb5c11e75a46cbbd3455f8419393b86e16b1e270b2317f9ff"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-report.png",
+      "sha256": "18457398a8d53515bd1a60b2dbe346eebbcc3dd021bb340a1c8bff77ade39349"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

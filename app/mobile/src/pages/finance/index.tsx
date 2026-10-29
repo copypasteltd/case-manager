@@ -1,3 +1,4 @@
+import { CostAmortization } from './amortization';
 import { FinancialHistory } from './history';
 import { FinancialCommands, FinanceOperationPage } from './operations';
 import { Text, View } from '@tarojs/components';
@@ -32,7 +33,7 @@ function FinancialRecordPage() {
   return <Page title={title} home><Notice error={page.error} />{page.loading ? <Busy /> : record && <>
     <Section title='当前资料'><Fact label='业务状态'><Text>{overviewState(record.value.state)} · 版本 {record.value.version}</Text></Fact><Fact label='更新时刻'><Text>{overviewClock(record.value.updated_at)}</Text></Fact><Fact label='当前修订'><Text className='cp-code' selectable>{record.value.current_revision_id}</Text></Fact><View className='cp-pad'><Text className='cp-muted cp-small'>发生支出、资金记录、预算、审批额度与订阅预测分别判断。</Text></View></Section>
     {(record.kind === 'cost' || record.kind === 'payment') && page.result && <FinancialCommands kind={record.kind} value={record.value} me={page.result.me} />}
-    {record.kind === 'cost' && <CostDetails value={record.value} />}
+    {record.kind === 'cost' && <><CostDetails value={record.value} />{page.scope && <CostAmortization key={record.value.id + ':' + record.value.version} cost={record.value} scope={page.scope} />}</>}
     {record.kind === 'payment' && <PaymentDetails value={record.value} />}
     {record.kind === 'subscription' && <SubscriptionDetails value={record.value} />}
     {record.kind === 'change' && <ChangeDetails value={record.value} />}

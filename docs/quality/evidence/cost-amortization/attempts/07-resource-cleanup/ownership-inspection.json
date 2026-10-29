@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-28T23:53:55.601818+00:00",
+  "read_only_inspection": true,
+  "databases": [
+    {
+      "name": "cp_test_282bfbe930384033b15bd396f4d9c9bd",
+      "oid": "98089533",
+      "owner": "postgres",
+      "connections": 0,
+      "data_directory_created_at": "2026-10-28T22:19:07.077487+00:00"
+    }
+  ],
+  "original_failed_test_events": [
+    {
+      "Time": "2026-10-29T06:19:07.0226015+08:00",
+      "Action": "run",
+      "Test": "TestAgentFileText"
+    },
+    {
+      "Time": "2026-10-29T06:21:36.5788034+08:00",
+      "Action": "fail",
+      "Test": "TestAgentFileText"
+    }
+  ],
+  "original_raw_sha256": "d592f1eea0d2cb147e295f5780c9e6e1fdbe54fff1c17b9b25b40a21f29cc725"
+}

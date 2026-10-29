@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-28T23:41:24.183799+00:00",
+  "source_sha256": "db19fe67248e505ab20bf629674c453d0ca2bc372c7f7c3f134a888fe1ab700d",
+  "freezer_sha256": "9a50ec85a01fa35ee289fb5d381d145e7a178e67db36d0c9d9c4a2a8a446cff3",
+  "logs": [
+    {
+      "batch": 1,
+      "raw_log": ".local/cost-amortization-backend/batch-1.log",
+      "sha256": "f81788c31fc2f88ccc7db018cc198de14ce7290c1e4d06a97704fe80ed3b873e",
+      "bytes": 168473,
+      "records": 133,
+      "started_at": "2026-10-28T22:35:11.571987+00:00",
+      "completed_at": "2026-10-28T22:44:04.613001+00:00"
+    },
+    {
+      "batch": 2,
+      "raw_log": ".local/cost-amortization-backend/batch-2.log",
+      "sha256": "f8cd40de7168cfc682d491f7bc9c53fea4538f9e36461fa681c0e263e5e0e75a",
+      "bytes": 239848,
+      "records": 205,
+      "started_at": "2026-10-28T22:44:04.742671+00:00",
+      "completed_at": "2026-10-28T22:52:36.174956+00:00"
+    },
+    {
+      "batch": 3,
+      "raw_log": ".local/cost-amortization-backend/batch-3.log",
+      "sha256": "6cbfc167d45ea7ec2f756f47e289ba916a93f716ddd7897c5f92a4561e013ba9",
+      "bytes": 121182,
+      "records": 91,
+      "started_at": "2026-10-28T22:52:36.477855+00:00",
+      "completed_at": "2026-10-28T22:55:51.840370+00:00"
+    },
+    {
+      "batch": 4,
+      "raw_log": ".local/cost-amortization-backend/batch-4.log",
+      "sha256": "af7851c5ff8581b97e5abf19c54261c008bff958eb7e83036535eb4dfe1c07be",
+      "bytes": 103900,
+      "records": 72,
+      "started_at": "2026-10-28T22:55:52.114694+00:00",
+      "completed_at": "2026-10-28T23:01:21.290391+00:00"
+    },
+    {
+      "batch": 5,
+      "raw_log": ".local/cost-amortization-backend/batch-5.log",
+      "sha256": "626e227a25716ebb83301603da85d06d132c8b7aabacf7c2f314e8f5cde0e07e",
+      "bytes": 143200,
+      "records": 121,
+      "started_at": "2026-10-28T23:01:21.467276+00:00",
+      "completed_at": "2026-10-28T23:13:19.682806+00:00"
+    },
+    {
+      "batch": 6,
+      "raw_log": ".local/cost-amortization-backend/batch-6.log",
+      "sha256": "8b92b96b6ded17e71844096b8a1f488407a322e14d69637140de31954d35885e",
+      "bytes": 83944,
+      "records": 62,
+      "started_at": "2026-10-28T23:13:19.998328+00:00",
+      "completed_at": "2026-10-28T23:20:13.760212+00:00"
+    },
+    {
+      "batch": 7,
+      "raw_log": ".local/cost-amortization-backend/batch-7.log",
+      "sha256": "79e498fa2ca76ced74f85622a014792c5e9b98e1414a9eab030fc4677cabaedd",
+      "bytes": 82856,
+      "records": 58,
+      "started_at": "2026-10-28T23:20:13.999177+00:00",
+      "completed_at": "2026-10-28T23:20:55.883788+00:00"
+    },
+    {
+      "batch": 8,
+      "raw_log": ".local/cost-amortization-backend/batch-8.log",
+      "sha256": "a11dd211f9fc3791647f35c3dc8c44622373d3b92a05f4b061b11a53f4ed3c23",
+      "bytes": 247643,
+      "records": 200,
+      "started_at": "2026-10-28T23:20:56.155442+00:00",
+      "completed_at": "2026-10-28T23:24:36.117585+00:00"
+    },
+    {
+      "batch": 9,
+      "raw_log": ".local/cost-amortization-backend/batch-9.log",
+      "sha256": "94fadd992a30617f42ed9eaeb6dd9af4c66b0e5b6f7cd2f05e5473f9ab463ad4",
+      "bytes": 179203,
+      "records": 141,
+      "started_at": "2026-10-28T23:24:36.250970+00:00",
+      "completed_at": "2026-10-28T23:27:46.454058+00:00"
+    },
+    {
+      "batch": 10,
+      "raw_log": ".local/cost-amortization-backend/batch-10.log",
+      "sha256": "62177764285323143fe2843c4d51022087260de4743f05eb57d8b34f2a7c5fe7",
+      "bytes": 164896,
+      "records": 135,
+      "started_at": "2026-10-28T23:27:46.647699+00:00",
+      "completed_at": "2026-10-28T23:31:59.837534+00:00"
+    },
+    {
+      "batch": 11,
+      "raw_log": ".local/cost-amortization-backend/batch-11.log",
+      "sha256": "8e00049bd6d2a4cd51efa9bbb1863bb8e2bd684b5735bb2962df4b4b0238760c",
+      "bytes": 139185,
+      "records": 114,
+      "started_at": "2026-10-28T23:31:59.985838+00:00",
+      "completed_at": "2026-10-28T23:38:58.776199+00:00"
+    },
+    {
+      "batch": 12,
+      "raw_log": ".local/cost-amortization-backend/batch-12.log",
+      "sha256": "87719b11cd1819c05eeca7016e5f9576f0baf7a95b7c9ac814b5156f19b033e1",
+      "bytes": 48117,
+      "records": 23,
+      "started_at": "2026-10-28T23:38:58.935956+00:00",
+      "completed_at": "2026-10-28T23:40:27.019140+00:00"
+    }
+  ],
+  "records": 1355,
+  "raw_logs_private": true,
+  "prior_increments_raw_logs_reverified": false,
+  "scope": "Only this completed current-source run is archived; no prior private log retention claim."
+}

@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-28T22:19:05.827075+00:00",
+  "source_sha256": "2d7df74c511761a6cf18aabd62300c4631cdfd7f059e559e61453115cfa721cc",
+  "source_files": 54,
+  "tests": {
+    "pass": 55,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T22:11:44.355839+00:00",
+      "test_count": null,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/cost-amortization-web-refresh-typecheck.log",
+      "web_style_refresh_executed": true
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T21:55:14.847619+00:00",
+      "test_count": 55,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "15b8476dec2783a22a5f37a77f0dedc4544f4acd70aecd6b30f0df15205d32cd",
+      "raw_log": "ignored app/.local/cost-amortization-client-runtime-tests.log",
+      "web_style_refresh_executed": false,
+      "same_increment_execution_retained": true
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-28T21:56:19.511428+00:00",
+      "test_count": null,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/cost-amortization-client-runtime-build.log",
+      "web_style_refresh_executed": false,
+      "same_increment_execution_retained": true
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "fbd0711c24ee19a6300326ae41667746ed1bf54f887a7deaf5b71c67eee54444"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "5161ea9e73819f9e2bec590fb7fb5c89c826a864421614f18b9e5c5061c92b48",
+    "summary_adapter_sha256": "a78411b99713171e7005e002119ac0de63e402408261b8e88792b1577f14207b",
+    "adapter_reran_tests": false
+  }
+}

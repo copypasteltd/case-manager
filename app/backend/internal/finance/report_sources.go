@@ -20,6 +20,9 @@ func reportArguments(a core.Actor, f ReportQuery) []any {
 func reportSourceStatement(f ReportQuery) (string, string, error) {
 	var query, alias string
 	switch f.Kind {
+	case "amortization":
+		alias = "f"
+		query = amortizationSource
 	case "incurred":
 		alias = "c"
 		query = `SELECT 'cost',c.id,c.id,r.id,c.version,r.title,r.occurred_on::text,NULL::text,c.state,c.entry_kind,r.currency,r.amount::text,
@@ -51,16 +54,24 @@ func reportSources(ctx context.Context, tx pgx.Tx, a core.Actor, f ReportQuery, 
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 	out := []ReportSource{}
 	for rows.Next() {
 		var v ReportSource
 		if err = rows.Scan(&v.SourceType, &v.ID, &v.ResourceID, &v.RevisionID, &v.Version, &v.Title, &v.From, &v.To, &v.State, &v.EntryKind, &v.Currency, &v.OriginalAmount, &v.ContributionAmount, &v.Category, &v.SupplierID, &v.OwnerID, &v.ProjectID, &v.CreatedAt, &v.Timezone); err != nil {
+			rows.Close()
 			return nil, err
 		}
 		out = append(out, v)
 	}
-	return out, rows.Err()
+	err = rows.Err()
+	rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	if err = reportAmortizationEvidence(ctx, tx, a.OrgID, out); err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (s *Service) FinancialReport(ctx context.Context, a core.Actor, f ReportQuery, cursor string, limit int) (ReportPage, error) {

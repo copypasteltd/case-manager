@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-28T23:51:51.462138+00:00",
+  "encoder_script_sha256": "f914fdd6668783d470d0938fa5ec39f4e09b9bf28882ef144ec09f87f8a5fa18",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "a7f0ef704da317788345e45de17f9fc1fd430ce13182baf47b00cccfea0e56bb",
+      "build_source_sha256": "0238eba1a67071f6adf6858acf483559aed688a1cfa99631dc4c86155abfa223",
+      "capture_manifest": "docs/quality/evidence/cost-amortization/web-capture-manifest.json",
+      "capture_manifest_sha256": "0e765c5cda516e0ea800074e90ee2eab4f03695d5e99ed0625299d4d840ec22a",
+      "capture_frame_count": 17,
+      "capture_duration_ms": 5662,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "58",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "5.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/cost-amortization-web.mp4",
+          "sha256": "3cafed7af41c17d86315c35bc35686007749accf35a8f44bce3b3d8e10f57780",
+          "bytes": 364193
+        },
+        {
+          "file": "docs/media/gifs/cost-amortization-web.gif",
+          "sha256": "7c53361c195d33501cf18db3af6fff46d2658962dbd06f6aec2704a8f9204067",
+          "bytes": 676808
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "0032babbd5333413b7ed1318c0e539ea68f70d499836aff736311cea691baed2",
+      "build_source_sha256": "0238eba1a67071f6adf6858acf483559aed688a1cfa99631dc4c86155abfa223",
+      "capture_manifest": "docs/quality/evidence/cost-amortization/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "46a029d93f97c826dedeb90b684821d1d1bd6979d62434f0e90be5ef52eeb021",
+      "capture_frame_count": 13,
+      "capture_duration_ms": 2745,
+      "gif_speed_multiplier": 1.0,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "30",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/cost-amortization-mobile.mp4",
+          "sha256": "bf51fe69dfa62a0cfbe12c4d46dd606b886e4abd5b124375fa0d1430bd127020",
+          "bytes": 145185
+        },
+        {
+          "file": "docs/media/gifs/cost-amortization-mobile.gif",
+          "sha256": "acaa088a6946905e5f7824432347e24baf2dcefc60b6840139d12be2f1e50e57",
+          "bytes": 396977
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web/Taro H5 viewport frames; silent clips; no real model or device claim."
+}

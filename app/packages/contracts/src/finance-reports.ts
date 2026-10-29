@@ -8,7 +8,7 @@ export type ReportSource = S['FinancialReportSource'];
 export type ReportExport = S['FinancialReportExport'];
 export type ReportExportChunk = S['FinancialReportExportChunk'];
 export type ReportOption = { id: string; value: string; label: string };
-export const reportKinds = [{ value: 'incurred', label: '发生支出' }, { value: 'cash', label: '现金支出' }, { value: 'forecast', label: '订阅预测' }] as const;
+export const reportKinds = [{ value: 'incurred', label: '发生支出' }, { value: 'cash', label: '现金支出' }, { value: 'forecast', label: '订阅预测' }, { value: 'amortization', label: '费用摊销' }] as const;
 export const exportStates: Record<ReportExport['state'], string> = { queued: '等待生成', running: '正在生成', retry_wait: '等待重试', succeeded: '已生成', dead: '生成失败', cancelled: '已取消', expired: '已过期' };
 export const REPORT_EXPORT_BYTES = 16 << 20;
 export const REPORT_CHUNK_BYTES = 512 << 10;
@@ -49,19 +49,28 @@ export function financialReportPath(query: ReportQuery, cursor = '', limit = 20)
   return '/finance/reports?' + params;
 }
 export function reportSourcePath(source: ReportSource): string {
-  return source.source_type === 'cost' ? '/costs/' + source.id : source.source_type === 'payment' ? '/payments/' + source.id : '/subscription-periods/' + source.id;
+  return source.source_type === 'cost_amortization' ? '/costs/' + source.resource_id : source.source_type === 'cost' ? '/costs/' + source.id : source.source_type === 'payment' ? '/payments/' + source.id : '/subscription-periods/' + source.id;
 }
 export function checkedFinancialReport(value: FinancialReport, query: ReportQuery): FinancialReport {
   if (!value || !value.filters || reportQueryKey(value.filters as ReportQuery) !== reportQueryKey(query) || value.scope !== 'authorized_records_only' || !value.summary || value.summary.kind !== query.kind || value.summary.from !== query.from || value.summary.to !== query.to || !Number.isFinite(Date.parse(value.summary.as_of)) || value.summary.base_currency !== null || value.summary.fx_coverage !== 'unconfigured' || !Array.isArray(value.summary.totals) || !Array.isArray(value.items) || value.items.length > 100 || value.next_cursor !== null && (typeof value.next_cursor !== 'string' || !value.next_cursor)) throw invalid();
+  if (query.kind === 'amortization' && (!('basis' in value.summary) || value.summary.basis !== 'latest_active_schedules')) throw invalid('摊销报表必须明确采用当前有效计划口径。');
   for (const total of value.summary.totals) {
     if (!/^[A-Z]{3}$/.test(total.currency) || query.currency && total.currency !== query.currency) throw invalid();
     for (const [key, amount] of Object.entries(total)) if (key.endsWith('_amount') && !money(amount)) throw invalid('报表金额不是精确十进制字符串。');
   }
   if (query.fx_book_id) checkedFXValuation(value.valuation!, query.fx_book_id);
   else if (value.valuation) throw invalid('报表返回了未选择的汇率版本。');
-  const expected = query.kind === 'incurred' ? 'cost' : query.kind === 'cash' ? 'payment' : 'subscription_period';
+  const expected = query.kind === 'incurred' ? 'cost' : query.kind === 'cash' ? 'payment' : query.kind === 'amortization' ? 'cost_amortization' : 'subscription_period';
   for (const item of value.items) {
-    if (!id(item.id) || !id(item.owner_id) || item.supplier_id !== null && !id(item.supplier_id) || !id(item.resource_id) || !id(item.revision_id) || !Number.isSafeInteger(item.version) || item.version < 1 || item.source_type !== expected || expected !== 'subscription_period' && item.resource_id !== item.id || item.from < query.from || item.from >= query.to || item.currency !== null && (!/^[A-Z]{3}$/.test(item.currency) || query.currency && item.currency !== query.currency)) throw invalid();
+    if (!id(item.id) || !id(item.owner_id) || item.supplier_id !== null && !id(item.supplier_id) || !id(item.resource_id) || !id(item.revision_id) || !Number.isSafeInteger(item.version) || item.version < 1 || item.source_type !== expected || expected !== 'subscription_period' && expected !== 'cost_amortization' && item.resource_id !== item.id || item.from < query.from || item.from >= query.to || item.currency !== null && (!/^[A-Z]{3}$/.test(item.currency) || query.currency && item.currency !== query.currency)) throw invalid();
+    if (expected === 'cost_amortization') {
+      const p = item.amortization;
+      if (!p || !id(p.plan_id) || !hash(p.plan_sha256) || p.plan_version !== item.version || !Number.isInteger(p.sequence) || p.sequence < 1 || p.sequence > 120 ||
+        !['monthly_equal', 'daily_weighted'].includes(p.method) || !/^\d{4}-\d\d-\d\d$/.test(p.service_from) || !/^\d{4}-\d\d-\d\d$/.test(p.service_to) ||
+        !/^\d{4}-\d\d-\d\d$/.test(p.original_date) || p.service_from >= p.service_to || p.original_date < p.service_from || p.original_date >= p.service_to ||
+        !['amortization', 'reversal'].includes(item.entry_kind) || item.contribution_amount === null || !money(item.contribution_amount) ||
+        item.entry_kind === 'amortization' && item.contribution_amount.startsWith('-') || item.entry_kind === 'amortization' && item.from !== p.original_date) throw invalid('摊销明细缺少准确版本、月份与原费用来源。');
+    } else if (item.amortization) throw invalid('其他报表不能混入摊销资料。');
     if (query.fx_book_id) { const fx = item.valuation; if (!fx || !/^\d{4}-\d\d-\d\d$/.test(fx.fx_date) || !['identity','converted','missing_rate','unconfirmed','unpriced'].includes(fx.status) || ['identity','converted'].includes(fx.status) !== (fx.base_amount !== null) || fx.base_amount !== null && !money(fx.base_amount) || item.state === 'draft' && fx.status !== 'unconfirmed' || fx.status === 'converted' && (fx.rate_index === null || fx.rate_source === null || fx.rate_date === null || fx.valid_from === null || fx.valid_to === null || fx.fx_date < fx.valid_from || fx.fx_date >= fx.valid_to) || fx.status === 'identity' && (item.currency !== value.valuation!.book.base_currency || fx.rate !== '1') || ['identity','converted'].includes(fx.status) && (!fx.rate || !/^(0|[1-9][0-9]*)(\.[0-9]{1,10})?$/.test(fx.rate))) throw invalid('折算明细缺少原始依据。'); }
     else if (item.valuation) throw invalid('明细返回了未选择的折算。');
     if (item.original_amount !== null && (!money(item.original_amount) || item.original_amount.startsWith('-')) || item.contribution_amount !== null && !money(item.contribution_amount) || item.state === 'draft' && item.contribution_amount !== null) throw invalid('未确认费用不能计入实际发生额。');

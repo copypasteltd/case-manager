@@ -1,0 +1,44 @@
+{
+  "recordings": [
+    {
+      "name": "cost-amortization-mobile",
+      "frame_count": 13,
+      "duration_ms": 2745,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/cost-amortization-mobile/frames.json",
+      "manifest_sha256": "46a029d93f97c826dedeb90b684821d1d1bd6979d62434f0e90be5ef52eeb021"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "client": 390,
+      "scroll": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-preview.png",
+      "sha256": "29b1185c7ce733acce26c762be3d9a3d384a28af4f262410858a66b8c07b57c8"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-published.png",
+      "sha256": "5d93c52a923ed01eb0985c80552b895d1330be6b27b4c7797edc4a4d73f6389e"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-history.png",
+      "sha256": "a71cc8ff467ca47012007b04f6c5517de098ad654897c7accb0a85503208d917"
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-report.png",
+      "sha256": "baf6ed2d3e8a8ad6585d98a59ee7010cc7dbf6018613ea23c4d621c414ebf142"
+    }
+  ],
+  "synthetic_data": true,
+  "real_browser_pixels": true,
+  "audio": false
+}

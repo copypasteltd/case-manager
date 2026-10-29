@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 增量106 · 费用摊销 / Versioned cost amortization · 2026-10-29
+
+- 增量106：已接通四端人工费用摊销。明确选择月份均分或按日分配、服务期间和依据，预览逐月项目／公司份额，经最近MFA及口径确认后发布不可变版本；支持停用、完整历史、独立报表、固定导出和冲销沿用原月份汇率。修订或停用重列当前计划视图，原费用／现金事实和已完成导出保留。实际公司制度、跨币种核销、手续费／汇差和完整旅程仍开放；23个工作包（14 P0／9 P1）、5项排除不变。
+- Increment 106 adds human-managed amortization across Web, WeChat, Douyin and Android. Choose monthly-equal or daily-weighted service periods, preview project/company shares, complete recent MFA and acknowledge the report basis before publishing an immutable version. Stopping, history, independent reports, frozen exports and original-month FX reversal are supported. Replacing or stopping restates the current schedule view; original expense/cash facts and completed exports remain fixed. Company policy adoption, cross-currency settlement, exchange fees/differences and full workflows remain open; 23 packages remain active, 5 excluded.
+- 当前源码：后端224个顶层／1355条结果，Web172、共享移动273、运行时55；微信／抖音各20页、Android开发APK及18+4项静态检查、两个Linux交叉编译。26条JVM按实际缓存结果记录。修复移动编译目标对BigInt运算的转换问题后，8项客户端命令重新执行，并新增旧目标编译回归。新增8 PNG／2静音MP4／2 GIF；原199份媒体字节保留。
+- [完整操作与方案](development/106-cost-amortization.md) · [验证](quality/106-cost-amortization-verification.md)。
+
 ## 增量105 · 原生Codex执行控制器 / Native Codex execution broker · 2026-10-29
 
 - 新增root所有策略／二进制与发布目录摘要、独立systemd身份／目录／网络／cgroup资源边界、Unix对端身份核验、真实内核状态签名、取消与不确定停止拒绝、重启仅回收已登记单元。

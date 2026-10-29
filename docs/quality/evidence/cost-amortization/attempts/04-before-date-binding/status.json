@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "not_final_acceptance": true,
+  "reason": "Source changed after explicit database null-date binding hardening; complete old batches cannot be reused against final Go/SQL.",
+  "completed_initial_batches": 1,
+  "stopped_batch": 2,
+  "original_source_sha256": "fc526227e1ce27f3a3c3dd47e3b4a8a88bef749a159262403158fd6e72b8613d",
+  "private_logs_archived": true
+}

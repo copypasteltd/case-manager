@@ -5338,6 +5338,92 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/costs/{id}/amortization": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getCostAmortization */
+        get: operations["getCostAmortization"];
+        put?: never;
+        /** publishCostAmortization */
+        post: operations["publishCostAmortization"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/costs/{id}/amortization/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** previewCostAmortization */
+        post: operations["previewCostAmortization"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/costs/{id}/amortization/stop": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** stopCostAmortization */
+        post: operations["stopCostAmortization"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/costs/{id}/amortization/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listCostAmortizationVersions */
+        get: operations["listCostAmortizationVersions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/costs/{id}/amortization/versions/{version}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getCostAmortizationVersion */
+        get: operations["getCostAmortizationVersion"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -12614,7 +12700,7 @@ export interface components {
         };
         FinancialReportQuery: {
             /** @enum {string} */
-            kind: "incurred" | "cash" | "forecast";
+            kind: "incurred" | "cash" | "forecast" | "amortization";
             /** Format: date */
             from: string;
             /** Format: date */
@@ -12630,7 +12716,7 @@ export interface components {
         };
         FinancialReportSource: {
             /** @enum {string} */
-            source_type: "cost" | "payment" | "subscription_period";
+            source_type: "cost" | "payment" | "subscription_period" | "cost_amortization";
             /** Format: uuid */
             id: string;
             /** Format: uuid */
@@ -12644,7 +12730,7 @@ export interface components {
             to: string | null;
             state: string;
             /** @enum {string} */
-            entry_kind: "expense" | "reversal" | "payment" | "forecast";
+            entry_kind: "expense" | "reversal" | "payment" | "forecast" | "amortization";
             currency: string | null;
             original_amount: string | null;
             contribution_amount: string | null;
@@ -12657,12 +12743,13 @@ export interface components {
             created_at: string;
             timezone: string;
             valuation?: components["schemas"]["FinancialSourceValuation"];
+            amortization?: components["schemas"]["AmortizationEvidence"];
         };
         FinancialReport: {
             filters: components["schemas"]["FinancialReportQuery"];
             /** @enum {string} */
             scope: "authorized_records_only";
-            summary: components["schemas"]["CostReport"] | components["schemas"]["CashReport"] | components["schemas"]["ForecastReport"];
+            summary: components["schemas"]["CostReport"] | components["schemas"]["CashReport"] | components["schemas"]["ForecastReport"] | components["schemas"]["AmortizationReport"];
             items: components["schemas"]["FinancialReportSource"][];
             next_cursor: string | null;
             valuation?: components["schemas"]["FinancialReportValuation"];
@@ -12737,6 +12824,163 @@ export interface components {
                 next_cursor: string | null;
             };
             meta: components["schemas"]["Meta"];
+        };
+        AmortizationPeriod: {
+            sequence: number;
+            /** Format: date */
+            service_from: string;
+            /** Format: date */
+            service_to: string;
+            /** Format: date */
+            recognized_on: string;
+            amount: string;
+            shares: {
+                project_id: string | null;
+                amount: string;
+            }[];
+        };
+        AmortizationContent: {
+            /** Format: uuid */
+            cost_id: string;
+            cost_version: number;
+            /** Format: uuid */
+            cost_revision_id: string;
+            cost_sha256: string;
+            currency: string;
+            exponent: number;
+            amount: string;
+            /** @enum {string} */
+            method: "monthly_equal" | "daily_weighted";
+            /** @constant */
+            rounding: "allocation_cumulative_half_up";
+            /** Format: date */
+            service_from: string;
+            /** Format: date */
+            service_to: string;
+            periods: components["schemas"]["AmortizationPeriod"][];
+        };
+        AmortizationInput: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_plan_version: number;
+            /** @enum {string} */
+            method: "monthly_equal" | "daily_weighted";
+            /** Format: date */
+            service_from: string;
+            /** Format: date */
+            service_to: string;
+        };
+        AmortizationPublish: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_plan_version: number;
+            /** @enum {string} */
+            method: "monthly_equal" | "daily_weighted";
+            /** Format: date */
+            service_from: string;
+            /** Format: date */
+            service_to: string;
+            preview_sha256: string;
+            /** @constant */
+            acknowledged: true;
+        };
+        AmortizationStop: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_plan_version: number;
+            /** @constant */
+            acknowledged: true;
+        };
+        AmortizationPreview: {
+            plan_version: number;
+            content_sha256: string;
+            content: components["schemas"]["AmortizationContent"];
+        };
+        AmortizationVersion: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            cost_id: string;
+            version: number;
+            /** @enum {string} */
+            state: "active" | "stopped";
+            content_sha256: string;
+            period_count: number;
+            /** Format: uuid */
+            actor_id: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            content?: components["schemas"]["AmortizationContent"];
+        };
+        AmortizationOverview: {
+            /** Format: uuid */
+            cost_id: string;
+            version: number;
+            can_manage: boolean;
+            current: components["schemas"]["AmortizationVersion"] | null;
+        };
+        AmortizationEvidence: {
+            /** Format: uuid */
+            plan_id: string;
+            plan_version: number;
+            plan_sha256: string;
+            sequence: number;
+            /** @enum {string} */
+            method: "monthly_equal" | "daily_weighted";
+            /** Format: date */
+            service_from: string;
+            /** Format: date */
+            service_to: string;
+            /** Format: date */
+            original_date: string;
+        };
+        AmortizationPreviewResponse: {
+            data: components["schemas"]["AmortizationPreview"];
+            meta: components["schemas"]["Meta"];
+        };
+        AmortizationVersionResponse: {
+            data: components["schemas"]["AmortizationVersion"];
+            meta: components["schemas"]["Meta"];
+        };
+        AmortizationOverviewResponse: {
+            data: components["schemas"]["AmortizationOverview"];
+            meta: components["schemas"]["Meta"];
+        };
+        AmortizationVersionListResponse: {
+            data: {
+                items: components["schemas"]["AmortizationVersion"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        AmortizationReport: {
+            /** @constant */
+            kind: "amortization";
+            /** Format: date */
+            from: string;
+            /** Format: date */
+            to: string;
+            /** @constant */
+            timezone: "Asia/Hong_Kong";
+            /** Format: date-time */
+            as_of: string;
+            base_currency: null;
+            /** @constant */
+            fx_coverage: "unconfigured";
+            totals: components["schemas"]["CostTotal"][];
+            unconfirmed_count: number;
+            /** @constant */
+            basis: "latest_active_schedules";
         };
     };
     responses: {
@@ -27732,6 +27976,241 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FinancialReportOptionListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getCostAmortization: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AmortizationOverviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    publishCostAmortization: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AmortizationPublish"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AmortizationVersionResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    previewCostAmortization: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AmortizationInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AmortizationPreviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    stopCostAmortization: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AmortizationStop"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AmortizationVersionResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listCostAmortizationVersions: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AmortizationVersionListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getCostAmortizationVersion: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                version: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AmortizationVersionResponse"];
                 };
             };
             400: components["responses"]["Failure"];

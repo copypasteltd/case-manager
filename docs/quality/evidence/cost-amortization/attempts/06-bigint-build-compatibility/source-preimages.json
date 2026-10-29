@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "record": "client-checks.json",
+  "source_sha256": "fc05d5674334084307ca07f2e81d89733977a7a898ea0ded375c119e9d866b24",
+  "scope": "Exact pre-fix source preimages reconstruct the recorded complete client input digest; this is not a new test execution.",
+  "preimages": [
+    {
+      "original": "packages/contracts/src/amortization.ts",
+      "archived": "amortization-before.ts",
+      "sha256": "4637aeefa475eaa3730fb9bb9f115cea9c95896f8fc42f2e19c953726ad5b7d5"
+    },
+    {
+      "original": "web/src/amortization.test.ts",
+      "archived": "web-amortization-test-before.ts",
+      "sha256": "2c987218f0e3a35cd3e386e9ca174a865853ac40c86fe90a1ee4fd8bfeb0a9b3"
+    },
+    {
+      "original": "scripts/verify_amortization_clients.py",
+      "archived": "verify-amortization-clients-before.py",
+      "sha256": "e9e1a8bc267decd8cab76e23427b3ac4fc252934d3e6fd98ce2b90c56a11303f"
+    }
+  ]
+}
