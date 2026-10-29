@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T20:07:47.200Z",
+  "finished_at": "2026-10-29T20:09:26.350Z",
+  "checks": [
+    {
+      "name": "Genuine MFA owner and a separate ordinary source reader receive their actual permitted UI",
+      "passed": true
+    }
+  ],
+  "source_count": 835,
+  "source_sha256": "b3a9d9bcbdeb1c21d488242f49bd784b6224fb2d6ea08595d64ced085c4be310",
+  "source_after_sha256": "b3a9d9bcbdeb1c21d488242f49bd784b6224fb2d6ea08595d64ced085c4be310",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '跨范围目标目录' }).locator('.report-context').filter({ hasText: '跨范围目标项目 / 目标项目资料' }).getByRole('button', { name: '选择此目标', exact: true })\u001b[22m\n",
+  "failure_stack": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '跨范围目标目录' }).locator('.report-context').filter({ hasText: '跨范围目标项目 / 目标项目资料' }).getByRole('button', { name: '选择此目标', exact: true })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_scope_transfer.mjs:51:71\n    at async scope_transferBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\scope_transfer_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_scope_transfer.mjs:13:1",
+  "failure_context": {
+    "pathname": "/files/4431db17-e35e-436a-baf8-3590101aa02c",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "scope_transfer_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "2ed94eb95e07890cde1e622f999517f445ac0eacca819409c56707574d01029b",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "2ed94eb95e07890cde1e622f999517f445ac0eacca819409c56707574d01029b",
+  "build_source_unchanged": true
+}

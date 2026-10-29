@@ -1,0 +1,71 @@
+{
+  "recorded_at": "2026-10-29T20:16:28.768609+00:00",
+  "raw_logs_private": true,
+  "earlier_source_archives_reverified": false,
+  "records": [
+    {
+      "file": "app/.local/scope_transfer-targeted-01.log",
+      "sha256": "ca6a873011b7fb3ef494ada13fa75808091ac6b81f353f7cb17e176e4a35fd0b",
+      "passed": false,
+      "scope": "earlier fixture",
+      "reason": "A queued initiation for an aborted fixture upload was incorrectly consumed by a later content helper.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-targeted-02.log",
+      "sha256": "d90408dedb769feda79da63b67dc4a0324d43f1515355235d36de7207a3bd4b2",
+      "passed": false,
+      "scope": "earlier fixture",
+      "reason": "The fixture expected a provider abort job although no provider upload existed; only initiation was queued.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-targeted-03.log",
+      "sha256": "b6d42d9971997b6f275a82dfd516a6723c05e1a12615d19d807a899c85f64bc3",
+      "passed": true,
+      "scope": "earlier test source",
+      "reason": "Passed before the explicit permission-expiry case was added; not current full-suite evidence.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-targeted-04.log",
+      "sha256": "49748f0a9bde4513bbb06b635eabd1db9c1727b2196326df932c9c1a8f273aad",
+      "passed": true,
+      "scope": "final backend targeted run",
+      "reason": "All13 new API/PG subgroups passed; final full discovery remains separate.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-web-typecheck-01.log",
+      "sha256": "5f2527cd6143980199b0a875c41bbc76cec51c50f5a3b79567d9c81beb17d6af",
+      "passed": false,
+      "scope": "earlier client source",
+      "reason": "Runtime validator type narrowing omitted the record index signature.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-web-typecheck-02.log",
+      "sha256": "6e2d12c995006d8498a7bbb9ae00ff2ac775f0fd7795729ae36ee2f387cbaed0",
+      "passed": false,
+      "scope": "earlier test source",
+      "reason": "A deliberately invalid channel in a boundary test required an explicit compile-time cast.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-typecheck-03.log",
+      "sha256": "066a67d1ea1920fc15a8eef7c5be0862b8125dab65cb7a1dd205271367fb7b0b",
+      "passed": false,
+      "scope": "earlier client source",
+      "reason": "Object.hasOwn was unsupported by the mobile target library; replaced with hasOwnProperty.call.",
+      "counts_as_final_full_regression": false
+    },
+    {
+      "file": "app/.local/scope_transfer-web-targeted-04.log",
+      "sha256": "28a0f13dd77791b6cb15c9ad5b4b496235567b08565b1539924973fab85b0c20",
+      "passed": true,
+      "scope": "final shared validator tests",
+      "reason": "24 shared cases ran on Web; the final full client run also executes them on mobile.",
+      "counts_as_final_full_regression": false
+    }
+  ]
+}

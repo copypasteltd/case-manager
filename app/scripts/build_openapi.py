@@ -2035,6 +2035,36 @@ PATHS["/audit/exports/{id}/chunks"]["get"]["parameters"] += [{"name": "offset", 
 operation("/audit/exports/{id}/download", "get", "downloadAuditCSV", "AuditExport")
 PATHS["/audit/exports/{id}/download"]["get"]["responses"]["200"] = {"description": "Reauthorized immutable metadata CSV; contains no free-form reasons, sessions or business payloads.", "headers": {"X-Content-SHA256": {"schema": HASH}}, "content": {"text/csv": {"schema": {"type": "string", "format": "binary"}}}}
 
+scope_transfer_create = {"kind": enum("file", "folder"), "resource_id": ID, "expected_version": VERSION,
+    "target_folder_id": ID, "expected_target_version": VERSION, "new_name": nullable(NAME), "reason": NAME}
+add("ScopeTransferCreate", scope_transfer_create, tuple(scope_transfer_create))
+add("ScopeTransferDecision", {"expected_version": VERSION, "plan_hash": HASH, "reason": NAME}, ("expected_version", "plan_hash", "reason"))
+scope_visibility = {"user_id": ID, "display_name": NAME, "channel": POLICY_CHANNEL,
+    "ai": {"type": "boolean"}, "before": {"type": "boolean"}, "after": {"type": "boolean"}}
+add("ScopeVisibilityChange", scope_visibility, tuple(scope_visibility))
+scope_item = {"kind": enum("file", "folder"), "id": ID, "version": VERSION, "name": NAME,
+    "state": enum("active", "trashed"), "parent_id": nullable(ID), "project_id": nullable(ID), "creator_id": nullable(ID),
+    "classification": CLASS, "new_classification": CLASS, "current_version_id": nullable(ID), "content_versions": COUNT,
+    "content_sha256": {"type": "string", "maxLength": 64}, "human_before": COUNT, "human_after": COUNT,
+    "ai_before": COUNT, "ai_after": COUNT, "audience_sha256": HASH,
+    "visibility_changes": array(ref("ScopeVisibilityChange"), maxItems=1000), "blocking_reasons": array(NAME, maxItems=10)}
+add("ScopeTransferItem", scope_item, tuple(scope_item))
+scope_snapshot = {"source": ref("AgentOrganizationEntry"), "source_path": array(ref("AgentOrganizationEntry"), maxItems=32),
+    "target": ref("AgentOrganizationEntry"), "target_path": array(ref("AgentOrganizationEntry"), maxItems=32),
+    "new_name": NAME, "items": array(ref("ScopeTransferItem"), minItems=1, maxItems=100)}
+add("ScopeTransferSnapshot", scope_snapshot, tuple(scope_snapshot))
+scope_transfer = {"id": ID, "version": VERSION, "state": enum("pending", "executed", "cancelled"), "creator_id": ID,
+    "input": ref("ScopeTransferCreate"), "snapshot": ref("ScopeTransferSnapshot"), "plan_hash": HASH,
+    "created_at": TIME, "expires_at": TIME, "completed_at": nullable(TIME), "decision_reason": nullable(NAME),
+    "current_basis_matches": {"type": "boolean"}, "can_execute": {"type": "boolean"}}
+add("ScopeTransfer", scope_transfer, tuple(scope_transfer))
+operation("/file-scope-transfers", "post", "createFileScopeTransfer", "ScopeTransfer", "ScopeTransferCreate", 201)
+operation("/file-scope-transfers/{id}", "get", "readFileScopeTransfer", "ScopeTransfer")
+operation("/file-scope-transfers/{id}/execute", "post", "executeFileScopeTransfer", "ScopeTransfer", "ScopeTransferDecision")
+operation("/file-scope-transfers/{id}/cancel", "post", "cancelFileScopeTransfer", "ScopeTransfer", "ScopeTransferDecision")
+operation("/files/{id}/scope-transfers", "get", "listFileScopeTransfers", "ScopeTransfer", listing=True)
+operation("/folders/{id}/scope-transfers", "get", "listFolderScopeTransfers", "ScopeTransfer", listing=True)
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

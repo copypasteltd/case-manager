@@ -5561,6 +5561,108 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/file-scope-transfers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** createFileScopeTransfer */
+        post: operations["createFileScopeTransfer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/file-scope-transfers/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFileScopeTransfer */
+        get: operations["readFileScopeTransfer"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/file-scope-transfers/{id}/execute": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** executeFileScopeTransfer */
+        post: operations["executeFileScopeTransfer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/file-scope-transfers/{id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** cancelFileScopeTransfer */
+        post: operations["cancelFileScopeTransfer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/files/{id}/scope-transfers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listFileScopeTransfers */
+        get: operations["listFileScopeTransfers"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/folders/{id}/scope-transfers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listFolderScopeTransfers */
+        get: operations["listFolderScopeTransfers"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -13367,6 +13469,99 @@ export interface components {
         };
         AuditExportChunkResponse: {
             data: components["schemas"]["AuditExportChunk"];
+            meta: components["schemas"]["Meta"];
+        };
+        ScopeTransferCreate: {
+            /** @enum {string} */
+            kind: "file" | "folder";
+            /** Format: uuid */
+            resource_id: string;
+            expected_version: number;
+            /** Format: uuid */
+            target_folder_id: string;
+            expected_target_version: number;
+            new_name: string | null;
+            reason: string;
+        };
+        ScopeTransferDecision: {
+            expected_version: number;
+            plan_hash: string;
+            reason: string;
+        };
+        ScopeVisibilityChange: {
+            /** Format: uuid */
+            user_id: string;
+            display_name: string;
+            /** @enum {string} */
+            channel: "web" | "wechat" | "douyin" | "android" | "telegram";
+            ai: boolean;
+            before: boolean;
+            after: boolean;
+        };
+        ScopeTransferItem: {
+            /** @enum {string} */
+            kind: "file" | "folder";
+            /** Format: uuid */
+            id: string;
+            version: number;
+            name: string;
+            /** @enum {string} */
+            state: "active" | "trashed";
+            parent_id: string | null;
+            project_id: string | null;
+            creator_id: string | null;
+            /** @enum {string} */
+            classification: "internal" | "project_restricted" | "confidential";
+            /** @enum {string} */
+            new_classification: "internal" | "project_restricted" | "confidential";
+            current_version_id: string | null;
+            content_versions: number;
+            content_sha256: string;
+            human_before: number;
+            human_after: number;
+            ai_before: number;
+            ai_after: number;
+            audience_sha256: string;
+            visibility_changes: components["schemas"]["ScopeVisibilityChange"][];
+            blocking_reasons: string[];
+        };
+        ScopeTransferSnapshot: {
+            source: components["schemas"]["AgentOrganizationEntry"];
+            source_path: components["schemas"]["AgentOrganizationEntry"][];
+            target: components["schemas"]["AgentOrganizationEntry"];
+            target_path: components["schemas"]["AgentOrganizationEntry"][];
+            new_name: string;
+            items: components["schemas"]["ScopeTransferItem"][];
+        };
+        ScopeTransfer: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** @enum {string} */
+            state: "pending" | "executed" | "cancelled";
+            /** Format: uuid */
+            creator_id: string;
+            input: components["schemas"]["ScopeTransferCreate"];
+            snapshot: components["schemas"]["ScopeTransferSnapshot"];
+            plan_hash: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            expires_at: string;
+            completed_at: string | null;
+            decision_reason: string | null;
+            current_basis_matches: boolean;
+            can_execute: boolean;
+        };
+        ScopeTransferResponse: {
+            data: components["schemas"]["ScopeTransfer"];
+            meta: components["schemas"]["Meta"];
+        };
+        ScopeTransferListResponse: {
+            data: {
+                items: components["schemas"]["ScopeTransfer"][];
+                next_cursor: string | null;
+            };
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -29076,6 +29271,241 @@ export interface operations {
                 };
                 content: {
                     "text/csv": string;
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createFileScopeTransfer: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScopeTransferCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScopeTransferResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFileScopeTransfer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScopeTransferResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    executeFileScopeTransfer: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScopeTransferDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScopeTransferResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    cancelFileScopeTransfer: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScopeTransferDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScopeTransferResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listFileScopeTransfers: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScopeTransferListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listFolderScopeTransfers: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScopeTransferListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

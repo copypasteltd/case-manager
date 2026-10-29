@@ -140,6 +140,9 @@ func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any)
 	if values["workbench_fixture"] == true {
 		values["fixture_kind"] = "human-business-workbench"
 	}
+	if values["scope_transfer_fixture"] == true {
+		values["fixture_kind"] = "human-file-scope-transfer"
+	}
 	folder, err := filepath.Abs(filepath.Join("..", "..", "..", ".local"))
 	if err != nil {
 		t.Fatal(err)

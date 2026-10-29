@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T20:23:05.810332+00:00",
+  "source_sha256": "6bdc6d069895efc062da288a859c13377d234031a27fccf6a3e6860674ba560a",
+  "source_files": 223,
+  "tests": {
+    "pass": 375,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T20:05:14.009419+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/scope_transfer-client-typecheck.log"
+    },
+    {
+      "name": "mobile-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T20:05:57.961595+00:00",
+      "test_count": 375,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/mobile",
+      "raw_log_sha256": "07d06b0d6ca7b4ce9f1c0adef4de163ec6125222c4464616005819c1cb71cc60",
+      "raw_log": "ignored app/.local/scope_transfer-client-mobile-tests.log"
+    },
+    {
+      "name": "wechat-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T20:07:27.796708+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:weapp",
+      "raw_log_sha256": "b63e211c95a7ea3ca80e8126eeddc161dc00f961554957c461061f55645a2049",
+      "raw_log": "ignored app/.local/scope_transfer-client-wechat-build.log"
+    },
+    {
+      "name": "douyin-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-29T20:14:59.618937+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:tt",
+      "raw_log_sha256": "6d35b206d684d08bf48e6bac5d76aa6da9f88403363e201ff64afd83d6c6eb64",
+      "raw_log": "ignored app/.local/scope_transfer-client-douyin-build.log"
+    }
+  ],
+  "targets": {
+    "weapp": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    },
+    "tt": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    }
+  },
+  "source_unchanged_during_commands": true,
+  "api_origin": "http://127.0.0.1:18080",
+  "profile": "local",
+  "real_device": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "56466f60529071f60fc1bfbb8aac2fc76fe154072ceef4ff698c3e696d72cf84",
+    "summary_adapter_sha256": "7e7726cc1ed9b1cc9cc8067071902ecd094e81e6b20b1d90856e935ed85cba6b",
+    "adapter_reran_tests": false
+  }
+}

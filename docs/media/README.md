@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量115 / Increment 115：受控人工跨范围文件整理。真实认证后的隔离合成页面，6 PNG、2静音MP4、2截图导览GIF。视频录制固定计划的实际阅读与刷新；确认／MFA输入阶段不录制，实际执行由页面检查和执行后截图覆盖。GIF按每张2秒展示计划、窄屏与最终回执，属于截图导览。
+
+| 端 | 固定计划 | 窄屏 | 执行回执 | 录屏 | GIF导览 |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/scope-transfer-web-plan.png) | [PNG](screenshots/scope-transfer-web-narrow.png) | [PNG](screenshots/scope-transfer-web-receipt.png) | [静音MP4](videos/scope-transfer-web.mp4) | [GIF](gifs/scope-transfer-web.gif) |
+| 共享移动 | [PNG](screenshots/scope-transfer-mobile-plan.png) | [PNG](screenshots/scope-transfer-mobile-narrow.png) | [PNG](screenshots/scope-transfer-mobile-receipt.png) | [静音MP4](videos/scope-transfer-mobile.mp4) | [GIF](gifs/scope-transfer-mobile.gif) |
+
+[帧、时长与来源](../quality/evidence/scope-transfer/media.json) · [验证](../quality/115-file-scope-transfers-verification.md)。旧媒体保留原字节和执行范围；不声明真实云／模型／TG或生产验收。
+
 增量114 / Increment 114：业务工作台来自认证后的隔离合成Web／Taro H5页面；新增6 PNG、2静音MP4和2截图轮播GIF，266份旧媒体保留原字节。MP4保留认证后首页概览与实际刷新录制；GIF按每张2秒轮播真实的汇总、窄屏与其他员工截图。GIF是截图导览，实际业务交互由页面检查覆盖；全部素材不含登录、密码或MFA输入。
 
 | 端 | 汇总 | 窄屏 | 其他员工 | 录屏 | GIF截图导览 |

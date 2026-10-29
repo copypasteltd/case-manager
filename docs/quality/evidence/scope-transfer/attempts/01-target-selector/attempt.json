@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "reason": "The target-button selector used visible text instead of the explicit accessible label. It timed out before any proposal or execution. The owned resources closed. The next check binds the actual folder label and server-returned IDs; the second attempt confirms the button-name mismatch.",
+  "source_sha256": "b3a9d9bcbdeb1c21d488242f49bd784b6224fb2d6ea08595d64ced085c4be310",
+  "source_binding_verified": true,
+  "archive_reconstructed_from_exact_prior_selector": true,
+  "private_source_archive": "app/.local/scope_transfer-attempts/01-target-selector.zip",
+  "archive_sha256": "77e3cd2728b7c2082862021e6d26d1a79ac267bef51f4d3ed2eaad3986966504",
+  "private_logs": [
+    {
+      "path": "app/.local/scope_transfer-attempts/01-scope-transfer-web-native.log",
+      "sha256": "f29555ef604eeeaba02cd089dc7d41e33fe16252c0c13c710f0863a12c3005db"
+    },
+    {
+      "path": "app/.local/scope_transfer-attempts/01-scope-transfer-web-browser.log",
+      "sha256": "a3755e48da21194c3e11fb70dde99f3f865bd9c86b568be2580f329918f9a93a"
+    },
+    {
+      "path": "app/.local/scope_transfer-attempts/01-scope-transfer-web-build.log",
+      "sha256": "fed020fbc19088f46e720490bf6a97844601751625f66623025710815f481380"
+    }
+  ]
+}

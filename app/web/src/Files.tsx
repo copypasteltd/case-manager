@@ -10,6 +10,7 @@ import { UploadButton } from './UploadQueue';
 import { HistoryRestores, RestoreVersionButton } from './HistoryRestores';
 import { useRetention, RetentionPanel, RetentionVersionActions } from './Retention';
 import FileComparisonPanel from './FileComparison';
+import { ScopeTransfers } from './ScopeTransfers';
 
 type Directory = Schemas['Folder'];
 type StoredFile = Schemas['File'];
@@ -51,6 +52,7 @@ export function FilesPage({ me }: { me: Me }) {
       <div className="post-actions"><UploadButton folder={folder.data} />{((folder.data?.can_create) || (!folderID && !projectID && me.actions.includes('folder.create'))) && <button className="button primary" onClick={() => setCreating(true)}><FolderPlus size={17} />新建目录</button>}</div></div>
     {folder.data?.project_id && <p className="filter-caption"><Link className="text-button" to={'/projects/' + folder.data.project_id}>查看关联项目<ArrowUpRight size={15} /></Link></p>}
     {folder.data && me.actions.includes('file.retention.manage') && <MultipartCleanup key={folderID} folder={folder.data} me={me} />}
+    {folder.data && !folder.error && <ScopeTransfers kind="folder" resource={folder.data} me={me} />}
     <div className="toolbar"><form className="search-field" onSubmit={event => { event.preventDefault(); setSearch(String(new FormData(event.currentTarget).get('q') ?? '').trim()); }}><Search size={18} /><input name="q" maxLength={200} aria-label="搜索文件与目录" placeholder="搜索当前范围的名称" /><button type="submit" aria-label="搜索"><ArrowRight size={17} /></button></form><select aria-label="文件状态" value={state} onChange={event => setState(event.target.value)}><option value="active">当前文件</option><option value="trashed">回收站</option></select></div>
     <ErrorNotice error={folder.error ?? directories.error ?? files.error} />
     {state === 'active' && <section className="section-block"><div className="section-heading"><h2>资料目录</h2><small className="muted">仅显示获授权的目录</small></div>{directories.isPending ? <Busy label="正在读取目录" /> : folders.length ? <div className="directory-grid">{folders.map(item => <div className="panel directory-card" key={item.id}><Link to={folderURL(item.id)}><Folder size={24} /><div><strong>{item.name}</strong><small>{classificationNames[item.classification]}</small></div><ArrowUpRight size={17} /></Link>{item.can_update && <button className="icon-button" aria-label={'修改目录 ' + item.name} onClick={() => setMoving(item)}><Pencil size={16} /></button>}</div>)}</div> : !directories.error && <div className="panel"><Empty title="当前没有可见的子目录" detail={folderID ? '可在此整理项目资料。' : '项目创建时会生成资料根目录，也可以新建公司资料目录。'} /></div>}<LoadMore count={folders.length} more={!!directories.hasNextPage} busy={directories.isFetchingNextPage} load={() => void directories.fetchNextPage()} /></section>}
@@ -98,6 +100,7 @@ function MoveResource({ kind, resource, onClose }: { kind: 'file' | 'folder'; re
 export function FileDetail() {
   const { id = '' } = useParams(); const [moving, setMoving] = useState(false), [action, setAction] = useState<'trash' | 'restore' | null>(null);
   const file = useQuery({ queryKey: ['file', id], queryFn: ({ signal }) => api<StoredFile>('/files/' + id, { signal }) });
+  const me = useQuery({ queryKey: ['me'], queryFn: ({ signal }) => api<Me>('/me', { signal }) });
   const retention = useRetention(id, !!file.data);
   const history = useInfiniteQuery({ queryKey: ['file-versions', id], initialPageParam: '', enabled: !!file.data, queryFn: ({ pageParam, signal }) => api<Page<FileVersion>>('/files/' + id + '/versions?' + new URLSearchParams({ limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined,
     refetchInterval: query => query.state.data?.pages.some(page => page.items.some(version => version.replicas.some(replica => ['queued', 'copying', 'verifying', 'retry_wait'].includes(replica.state)))) ? 5000 : false });
@@ -106,6 +109,7 @@ export function FileDetail() {
   const value = file.data, versions = history.data?.pages.flatMap(page => page.items) ?? [];
   return <><Link className="back-link" to={folderURL(value.folder_id)}><ArrowLeft size={16} />返回所在目录</Link><ErrorNotice error={file.error} /><div className="page-heading detail-heading"><div><span className="eyebrow">A TRACEABLE RECORD</span><h1>{value.name}</h1><div className="project-subtitle"><span className="badge neutral">{value.state === 'trashed' ? '回收站' : '当前文件'}</span><span>{classificationNames[value.classification]}</span><span>资料版本 {value.version} · {date(value.updated_at)}</span></div></div><div className="post-actions"><UploadButton file={value} />{value.can_move && <button className="button secondary" onClick={() => setMoving(true)}><Pencil size={16} />修改位置与名称</button>}{value.can_trash && <button className="button danger-outline" onClick={() => setAction('trash')}><Trash2 size={16} />移入回收站</button>}{value.can_restore && <button className="button primary" onClick={() => setAction('restore')}><RotateCcw size={16} />恢复至原目录</button>}</div></div>
     {value.legal_hold && <div className="notice neutral"><ShieldCheck size={18} /><span>此文件处于保留约束中。</span></div>}
+    {me.data && !me.error && !file.error && <ScopeTransfers kind="file" resource={value} me={me.data} />}
     <section className="section-block"><div className="section-heading"><h2>内容版本与存储记录</h2><small className="muted">原文件与来源信息按版本保留</small></div><ErrorNotice error={history.error} />{history.isPending ? <Busy label="正在读取文件版本" /> : versions.length ? <div className="file-versions">{versions.map(version => <VersionCard key={version.id} version={version} current={version.id === value.current_version_id} canRetry={value.can_update} active={value.state === 'active'} file={value} canManageRetention={!!retention.data?.can_manage && !retention.error} />)}</div> : !history.error && <div className="panel"><Empty title="尚无正式内容版本" detail="完成上传和服务端校验的版本才会出现在这里。" /></div>}<LoadMore count={versions.length} more={!!history.hasNextPage} busy={history.isFetchingNextPage} load={() => void history.fetchNextPage()} /></section>
     <FileComparisonPanel key={value.id + ':' + value.version} file={value} versions={versions} more={!!history.hasNextPage} loading={history.isFetchingNextPage} loadMore={() => void history.fetchNextPage()} unavailable={!!file.error || !!history.error} />
     <HistoryRestores file={value} />

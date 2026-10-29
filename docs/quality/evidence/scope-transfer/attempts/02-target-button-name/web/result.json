@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "started_at": "2026-10-29T20:16:46.058Z",
+  "finished_at": "2026-10-29T20:17:27.929Z",
+  "checks": [
+    {
+      "name": "Genuine MFA owner and a separate ordinary source reader receive their actual permitted UI",
+      "passed": true
+    }
+  ],
+  "source_count": 835,
+  "source_sha256": "8d158b96619e8e76aeeaae3597a96e54d0cccd9def7e4d352070792b8898eb8c",
+  "source_after_sha256": "8d158b96619e8e76aeeaae3597a96e54d0cccd9def7e4d352070792b8898eb8c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.report-context').filter({ hasText: '目标项目资料' }).getByRole('button', { name: '选择此目标', exact: true })\u001b[22m\n",
+  "failure_stack": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.report-context').filter({ hasText: '目标项目资料' }).getByRole('button', { name: '选择此目标', exact: true })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_scope_transfer.mjs:50:71\n    at async scope_transferBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\scope_transfer_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_scope_transfer.mjs:13:1",
+  "failure_context": {
+    "pathname": "/files/e59f3c10-5417-4761-a7e5-a8c4b1eae46c",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "scope_transfer_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "02165de32053c33d7837d6632e0c7e2671306bf29dfc4b3958083a5a86b01f81",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "02165de32053c33d7837d6632e0c7e2671306bf29dfc4b3958083a5a86b01f81",
+  "build_source_unchanged": true
+}

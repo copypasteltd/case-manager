@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量115：GAP-18新增四端人工跨项目／分类文件与目录树固定计划、完整权限影响核对、近期MFA明确执行和不可变回执。正式业务引用联动、大树／批量策略及完整旅程继续开放；AI跨范围工具与预授权仍GAP-11。仍23 active（14 P0／9 P1）、5 excluded。见[设计与使用](../development/115-file-scope-transfers.md)及[验证](../quality/115-file-scope-transfers-verification.md)。
+
 增量114：GAP-08／18已加入四端本人有效审批、生效合同到期与订阅账期待核对工作台、完整授权计数和准确业务详情入口。更多聚合、实际故障／跨渠道回执及完整业务旅程继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/114-business-workbench.md)及[验证](../quality/114-business-workbench-verification.md)。
 
 增量113：GAP-04／18已加入四端准确正式版本的完整提取正文比较、固定摘要分页与过期依据拒绝。更多格式、原件排版、PDF／OCR、复杂DOCX和完整业务旅程继续开放；23 active（14 P0／9 P1）／5 excluded不变。见[设计与使用](../development/113-file-version-comparison.md)及[验证](../quality/113-file-version-comparison-verification.md)。

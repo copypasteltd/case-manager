@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T20:10:53.703934+00:00",
+  "backend_source_sha256": "cf58123a8afb780e5a981f7adfce4684688d80feeeddecf1f212ac7e702e8a18",
+  "previous_migration_count": 87,
+  "migration_count": 88,
+  "history_before": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "history_after": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "legacy_and_usage_rows_preserved": true,
+  "services": [
+    {
+      "command": "api",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-notification",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-report-export",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    }
+  ],
+  "updater_sha256": "8d09325807b3c53928a768307288593e34e51728516ad70d31537c6654f097ad",
+  "schema_upgrade_executed": true,
+  "postgres_restarted": false,
+  "external_integration_started": false,
+  "production_deployment": false
+}

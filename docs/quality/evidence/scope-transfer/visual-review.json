@@ -1,0 +1,103 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-10-29T20:31:27.303747+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/scope-transfer-web-plan.png",
+      "sha256": "2310989ec69407f5bbdee1a915ab8a9e50fb69b251205ed794fac6fe4bd1fe80"
+    },
+    {
+      "file": "docs/media/screenshots/scope-transfer-web-narrow.png",
+      "sha256": "63e166a5d87030a88255496ea960c96b24b8266aed4ed5010e9e40bd1d127d23"
+    },
+    {
+      "file": "docs/media/screenshots/scope-transfer-web-receipt.png",
+      "sha256": "34d2d039cade29903a1df7bca33fbb51152c35a5bc18dfcd0545eb7bacd1f1d5"
+    },
+    {
+      "file": "docs/media/screenshots/scope-transfer-mobile-plan.png",
+      "sha256": "ea086ce16e12c58901bf5d7a6af17d2b2a4f044de04cb36b155949b795e20cc3"
+    },
+    {
+      "file": "docs/media/screenshots/scope-transfer-mobile-narrow.png",
+      "sha256": "a96f461f2109c5113859fda16161c693d9e114f63f18413b36ea43fa87edea4e"
+    },
+    {
+      "file": "docs/media/screenshots/scope-transfer-mobile-receipt.png",
+      "sha256": "25850a89d7a7be9ad243daba81d09339e64cb68521af46d21c8e5714746006c8"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/scope-transfer-web.gif",
+      "sha256": "24042ed41bf93485f7d5aac07647c2208e461badd9a286dde676aa77a01e9504"
+    },
+    {
+      "file": "docs/media/gifs/scope-transfer-mobile.gif",
+      "sha256": "20fde3b61af4cca05238489c5261841a502a2cd787fcef044f3a0c8be79c8df9"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "reviewed_states": [
+        "fixed plan overview",
+        "final execution receipt"
+      ],
+      "private_decoded_directory": "app/.local/repository-showcase/scope-transfer-visual-review"
+    },
+    "mobile": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "reviewed_states": [
+        "fixed plan overview",
+        "final execution receipt"
+      ],
+      "private_decoded_directory": "app/.local/repository-showcase/scope-transfer-visual-review"
+    }
+  },
+  "findings": [
+    "Six screenshots reviewed: visible headings, fixed plan hashes, policy-change rows and executed receipt are legible at captured sizes.",
+    "The narrow viewport captures show ordinary and AI policy labels without horizontal overflow.",
+    "Both GIFs were decoded and their first/final frames reviewed; these are screenshot tours, not continuous approval recordings.",
+    "Web plan overview does not show all inventory detail in one frame; complete inventory is covered by actual API/UI assertions.",
+    "Synthetic records only; no password, MFA secret or one-time-code input appears in published media.",
+    "Both MP4 recordings were decoded at first/final timestamps and visually reviewed. They show the pending-plan review, scrolling and existing version metadata; confirmation and MFA entry are excluded."
+  ],
+  "scope": "Visual review of local synthetic UI captures. No real device, cloud, model, TG or production claim.",
+  "recording_frames_reviewed": {
+    "web": {
+      "file": "docs/media/videos/scope-transfer-web.mp4",
+      "sha256": "2bd405167f68c2223818533c77063d8f3dd32761b1d5900298aeec33204c82dc",
+      "sampled_seconds": [
+        0,
+        4.2
+      ],
+      "reviewed_states": [
+        "fixed pending plan review",
+        "read-policy changes and existing content-version metadata"
+      ],
+      "credential_fields_visible": false
+    },
+    "mobile": {
+      "file": "docs/media/videos/scope-transfer-mobile.mp4",
+      "sha256": "5d2b91ea40177069fd9a421dae09ad2ea4b449bdbd498562b56f72a9b28062d8",
+      "sampled_seconds": [
+        0,
+        3.6
+      ],
+      "reviewed_states": [
+        "fixed pending plan review",
+        "read-policy changes and existing content-version metadata"
+      ],
+      "credential_fields_visible": false
+    }
+  }
+}

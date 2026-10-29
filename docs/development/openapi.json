@@ -36112,6 +36112,539 @@
         }
       }
     },
+    "/file-scope-transfers": {
+      "post": {
+        "operationId": "createFileScopeTransfer",
+        "tags": [
+          "file-scope-transfers"
+        ],
+        "summary": "createFileScopeTransfer",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeTransferResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScopeTransferCreate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/file-scope-transfers/{id}": {
+      "get": {
+        "operationId": "readFileScopeTransfer",
+        "tags": [
+          "file-scope-transfers"
+        ],
+        "summary": "readFileScopeTransfer",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeTransferResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/file-scope-transfers/{id}/execute": {
+      "post": {
+        "operationId": "executeFileScopeTransfer",
+        "tags": [
+          "file-scope-transfers"
+        ],
+        "summary": "executeFileScopeTransfer",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeTransferResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScopeTransferDecision"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/file-scope-transfers/{id}/cancel": {
+      "post": {
+        "operationId": "cancelFileScopeTransfer",
+        "tags": [
+          "file-scope-transfers"
+        ],
+        "summary": "cancelFileScopeTransfer",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeTransferResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScopeTransferDecision"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/files/{id}/scope-transfers": {
+      "get": {
+        "operationId": "listFileScopeTransfers",
+        "tags": [
+          "files"
+        ],
+        "summary": "listFileScopeTransfers",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeTransferListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/folders/{id}/scope-transfers": {
+      "get": {
+        "operationId": "listFolderScopeTransfers",
+        "tags": [
+          "folders"
+        ],
+        "summary": "listFolderScopeTransfers",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopeTransferListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/costs/{id}/amortization": {
       "get": {
         "operationId": "getCostAmortization",
@@ -76012,6 +76545,483 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/AuditExportChunk"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "ScopeTransferCreate": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "file",
+              "folder"
+            ]
+          },
+          "resource_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "target_folder_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_target_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "new_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "resource_id",
+          "expected_version",
+          "target_folder_id",
+          "expected_target_version",
+          "new_name",
+          "reason"
+        ]
+      },
+      "ScopeTransferDecision": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "plan_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "plan_hash",
+          "reason"
+        ]
+      },
+      "ScopeVisibilityChange": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "web",
+              "wechat",
+              "douyin",
+              "android",
+              "telegram"
+            ]
+          },
+          "ai": {
+            "type": "boolean"
+          },
+          "before": {
+            "type": "boolean"
+          },
+          "after": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "user_id",
+          "display_name",
+          "channel",
+          "ai",
+          "before",
+          "after"
+        ]
+      },
+      "ScopeTransferItem": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "file",
+              "folder"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "active",
+              "trashed"
+            ]
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "creator_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "classification": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "project_restricted",
+              "confidential"
+            ]
+          },
+          "new_classification": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "project_restricted",
+              "confidential"
+            ]
+          },
+          "current_version_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "content_versions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "content_sha256": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "human_before": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "human_after": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ai_before": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ai_after": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "audience_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "visibility_changes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeVisibilityChange"
+            },
+            "maxItems": 1000
+          },
+          "blocking_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 10
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "id",
+          "version",
+          "name",
+          "state",
+          "parent_id",
+          "project_id",
+          "creator_id",
+          "classification",
+          "new_classification",
+          "current_version_id",
+          "content_versions",
+          "content_sha256",
+          "human_before",
+          "human_after",
+          "ai_before",
+          "ai_after",
+          "audience_sha256",
+          "visibility_changes",
+          "blocking_reasons"
+        ]
+      },
+      "ScopeTransferSnapshot": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/AgentOrganizationEntry"
+          },
+          "source_path": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentOrganizationEntry"
+            },
+            "maxItems": 32
+          },
+          "target": {
+            "$ref": "#/components/schemas/AgentOrganizationEntry"
+          },
+          "target_path": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentOrganizationEntry"
+            },
+            "maxItems": 32
+          },
+          "new_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeTransferItem"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "source_path",
+          "target",
+          "target_path",
+          "new_name",
+          "items"
+        ]
+      },
+      "ScopeTransfer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "executed",
+              "cancelled"
+            ]
+          },
+          "creator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "input": {
+            "$ref": "#/components/schemas/ScopeTransferCreate"
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/ScopeTransferSnapshot"
+          },
+          "plan_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "decision_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "current_basis_matches": {
+            "type": "boolean"
+          },
+          "can_execute": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "state",
+          "creator_id",
+          "input",
+          "snapshot",
+          "plan_hash",
+          "created_at",
+          "expires_at",
+          "completed_at",
+          "decision_reason",
+          "current_basis_matches",
+          "can_execute"
+        ]
+      },
+      "ScopeTransferResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ScopeTransfer"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "ScopeTransferListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ScopeTransfer"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

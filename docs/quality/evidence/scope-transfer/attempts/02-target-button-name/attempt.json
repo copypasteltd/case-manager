@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "counts_as_passed": false,
+  "source_sha256": "8d158b96619e8e76aeeaae3597a96e54d0cccd9def7e4d352070792b8898eb8c",
+  "source_binding_verified": true,
+  "private_source_archive": "app/.local/scope_transfer-attempts/02-target-button-name.zip",
+  "archive_sha256": "3eb9b9b0b6913ed7e0c570e28f80cb0ccaeab43aa062843e8adde7f6ebd2976b",
+  "private_logs": [
+    {
+      "path": "app/.local/scope_transfer-attempts/02-target-button-name-native.log",
+      "sha256": "26a6e133dd431d487f89287bb3c73cd63cea50086c77de183138a02b8e006b5d"
+    },
+    {
+      "path": "app/.local/scope_transfer-attempts/02-target-button-name-browser.log",
+      "sha256": "a3755e48da21194c3e11fb70dde99f3f865bd9c86b568be2580f329918f9a93a"
+    },
+    {
+      "path": "app/.local/scope_transfer-attempts/02-target-button-name-build.log",
+      "sha256": "da20bff5f43b3502ccf726f06a9e22ab16a5b53832f1e5d6bcc0ee8cc3951d75"
+    }
+  ],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.report-context').filter({ hasText: '目标项目资料' }).getByRole('button', { name: '选择此目标', exact: true })\u001b[22m\n"
+}

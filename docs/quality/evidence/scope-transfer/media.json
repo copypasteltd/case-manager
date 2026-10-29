@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-29T20:30:33.319546+00:00",
+  "encoder_script_sha256": "9e8e5f9e77db3e7bf966afd1d1b93aa00ce5a347b888dd4a6a66295c405ea7d9",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "cd9bd7ad65ed1fb10899180e0c146058f1f6758950c00d1d5723bad85a072727",
+      "build_source_sha256": "34bb2b7c736882dc4d29526e63b3a486b84ae4b9bf3426918f3983cd24f8dffd",
+      "capture_manifest": "docs/quality/evidence/scope-transfer/web-capture-manifest.json",
+      "capture_manifest_sha256": "d06c8a339425c060fd61fd3d9c60937bfc82db0f381afe17113aef77af04891a",
+      "capture_frame_count": 19,
+      "capture_duration_ms": 4363,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/scope-transfer-web-plan.png",
+          "sha256": "2310989ec69407f5bbdee1a915ab8a9e50fb69b251205ed794fac6fe4bd1fe80"
+        },
+        {
+          "file": "docs/media/screenshots/scope-transfer-web-narrow.png",
+          "sha256": "63e166a5d87030a88255496ea960c96b24b8266aed4ed5010e9e40bd1d127d23"
+        },
+        {
+          "file": "docs/media/screenshots/scope-transfer-web-receipt.png",
+          "sha256": "34d2d039cade29903a1df7bca33fbb51152c35a5bc18dfcd0545eb7bacd1f1d5"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 760,
+            "height": 1000,
+            "nb_frames": "44",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/scope-transfer-web.mp4",
+          "sha256": "2bd405167f68c2223818533c77063d8f3dd32761b1d5900298aeec33204c82dc",
+          "bytes": 276219
+        },
+        {
+          "file": "docs/media/gifs/scope-transfer-web.gif",
+          "sha256": "24042ed41bf93485f7d5aac07647c2208e461badd9a286dde676aa77a01e9504",
+          "bytes": 308473
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "1f4036706756f4e094108535ec4ff097ce69993e69fd155034a948b2388382ea",
+      "build_source_sha256": "34bb2b7c736882dc4d29526e63b3a486b84ae4b9bf3426918f3983cd24f8dffd",
+      "capture_manifest": "docs/quality/evidence/scope-transfer/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "72e679549172c02ef3acea2bba328c3084ca144b5e6397c019fb93ee3496a14e",
+      "capture_frame_count": 18,
+      "capture_duration_ms": 3818,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/scope-transfer-mobile-plan.png",
+          "sha256": "ea086ce16e12c58901bf5d7a6af17d2b2a4f044de04cb36b155949b795e20cc3"
+        },
+        {
+          "file": "docs/media/screenshots/scope-transfer-mobile-narrow.png",
+          "sha256": "a96f461f2109c5113859fda16161c693d9e114f63f18413b36ea43fa87edea4e"
+        },
+        {
+          "file": "docs/media/screenshots/scope-transfer-mobile-receipt.png",
+          "sha256": "25850a89d7a7be9ad243daba81d09339e64cb68521af46d21c8e5714746006c8"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 360,
+            "height": 1000,
+            "nb_frames": "38",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/scope-transfer-mobile.mp4",
+          "sha256": "5d2b91ea40177069fd9a421dae09ad2ea4b449bdbd498562b56f72a9b28062d8",
+          "bytes": 146260
+        },
+        {
+          "file": "docs/media/gifs/scope-transfer-mobile.gif",
+          "sha256": "20fde3b61af4cca05238489c5261841a502a2cd787fcef044f3a0c8be79c8df9",
+          "bytes": 161296
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (fixed plan, narrow viewport, final receipt), two seconds each. No real model or device claim."
+}

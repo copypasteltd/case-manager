@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "started_at": "2026-10-29T20:25:35.010Z",
+  "finished_at": "2026-10-29T20:26:08.813Z",
+  "checks": [
+    {
+      "name": "Genuine MFA owner and a separate ordinary source reader receive their actual permitted UI",
+      "passed": true
+    },
+    {
+      "name": "Actual target picker creates one exact non-mutating plan and exposes complete changed policy combinations",
+      "passed": true
+    },
+    {
+      "name": "Responsive exact-plan review is recorded from real authenticated pixels without password or MFA fields",
+      "passed": true
+    },
+    {
+      "name": "Explicit acknowledgement and current human MFA execute the exact immutable plan while preserving all content versions",
+      "passed": true
+    },
+    {
+      "name": "The ordinary actual destination navigation resolves the new file scope after execution",
+      "passed": true
+    },
+    {
+      "name": "A separate former project reader loses the moved resource on an actual authorized refresh",
+      "passed": true
+    }
+  ],
+  "source_count": 868,
+  "source_sha256": "1f4036706756f4e094108535ec4ff097ce69993e69fd155034a948b2388382ea",
+  "source_after_sha256": "1f4036706756f4e094108535ec4ff097ce69993e69fd155034a948b2388382ea",
+  "source_unchanged": true,
+  "browser_contexts_closed": 2,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "34bb2b7c736882dc4d29526e63b3a486b84ae4b9bf3426918f3983cd24f8dffd",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "34bb2b7c736882dc4d29526e63b3a486b84ae4b9bf3426918f3983cd24f8dffd",
+  "build_source_unchanged": true
+}

@@ -1,0 +1,1699 @@
+{
+  "passed": true,
+  "published_commit": "33e3d52f9a2bddd6be6fc5fba97a20f99eca20fd",
+  "media": [
+    {
+      "file": "docs/media/gifs/agent-indexed-search-mobile.gif",
+      "git_blob": "b98550a9bd094ad732ee7d6af13af24efa7faeaa",
+      "sha256": "833800ce707521600299d174686f36afdc95528c71e4e990b7a3cca7421f2a98",
+      "bytes": 771158
+    },
+    {
+      "file": "docs/media/gifs/agent-indexed-search-web.gif",
+      "git_blob": "137a8130c356639e0d7b102722cb23e65594de9e",
+      "sha256": "44fc494c799f7b9bcd97798aaec9874cca446ff736dbca15378b41eff72357ee",
+      "bytes": 683132
+    },
+    {
+      "file": "docs/media/gifs/audit-console-mobile.gif",
+      "git_blob": "f069f576e8970e20a22ed8955014689ebf80014d",
+      "sha256": "f236066c8b2769494e5dd7313ce3ee3f16444650524f04f3006b5191549b918b",
+      "bytes": 628626
+    },
+    {
+      "file": "docs/media/gifs/audit-console-web.gif",
+      "git_blob": "e454bcec05ae1eb9357f15be091e03f136a3be75",
+      "sha256": "5090de0166d3cde628198e3f896b185c7e4f2fb787acd711a4e303af0a04ed2d",
+      "bytes": 1176211
+    },
+    {
+      "file": "docs/media/gifs/contract-reminders-mobile.gif",
+      "git_blob": "b72cf7afa9c8eb97121af7257db021c74f690fe6",
+      "sha256": "a15e9377114202e198b22e6376bbec784971ef32c1c0effb7213a31600de40f6",
+      "bytes": 631083
+    },
+    {
+      "file": "docs/media/gifs/contract-reminders-web.gif",
+      "git_blob": "6385d34e0723f1e13e006c92d60007bbfb80c0bb",
+      "sha256": "97df7ea870cdf0d0f86c8f2e39d6471232131096d5f3fa1969f5623e3bb1ed48",
+      "bytes": 552730
+    },
+    {
+      "file": "docs/media/gifs/cost-amortization-mobile.gif",
+      "git_blob": "a38bb036e52a0df5d8fd3284aed666fcc2613124",
+      "sha256": "acaa088a6946905e5f7824432347e24baf2dcefc60b6840139d12be2f1e50e57",
+      "bytes": 396977
+    },
+    {
+      "file": "docs/media/gifs/cost-amortization-web.gif",
+      "git_blob": "ad732b5f0840441cadf5e8f46dd10c97eccfcdcf",
+      "sha256": "7c53361c195d33501cf18db3af6fff46d2658962dbd06f6aec2704a8f9204067",
+      "bytes": 676808
+    },
+    {
+      "file": "docs/media/gifs/dependency-hardening-cost-draft.gif",
+      "git_blob": "21f9457aad2de8a207b096f5f878c3935ad7c088",
+      "sha256": "e0426587e7487283264810ae19c9d84210ddf92c02a5b186dacc4f69da348416",
+      "bytes": 716110
+    },
+    {
+      "file": "docs/media/gifs/dependency-hardening-payment-draft.gif",
+      "git_blob": "78b7445ca3e06988c4bc309efa4f3594d98563c7",
+      "sha256": "3744b8f2a8ae2abaa492150bd16c9fb5cff71a66bb9bdb24e5e2cca67455887e",
+      "bytes": 1024555
+    },
+    {
+      "file": "docs/media/gifs/file-comparison-mobile.gif",
+      "git_blob": "b06b25c5f6abbb9569f159bc0d736aeccf5b2670",
+      "sha256": "0db8422aa2f8d7a60b1cf3adf99bbbb51e58751b16296c290c48a33b441bee9d",
+      "bytes": 1448634
+    },
+    {
+      "file": "docs/media/gifs/file-comparison-web.gif",
+      "git_blob": "3105070798b79e8c5d312ceece317db86863d50b",
+      "sha256": "bafb000bf5c58b678eb59c71033e27d10cd23adb19f182b14252bad86476ceb0",
+      "bytes": 853251
+    },
+    {
+      "file": "docs/media/gifs/file-recovery-mobile.gif",
+      "git_blob": "2d5900ff770d836215bace8532e221897e3812fa",
+      "sha256": "dae1ba51020fddba79a158452ded00941b530c155c674a61399342afbab5829b",
+      "bytes": 353086
+    },
+    {
+      "file": "docs/media/gifs/file-recovery-web.gif",
+      "git_blob": "9387eebf7b0f7d201c44a403fbee7353b89ac844",
+      "sha256": "39494f2f32c6c31f92f85cef5f693e65fa13c1cc7301cc576d2f7feca22ebc82",
+      "bytes": 706130
+    },
+    {
+      "file": "docs/media/gifs/file-search-mobile.gif",
+      "git_blob": "0727a5f5b98508201cab1b2eaecf80b491e2028a",
+      "sha256": "5cd616ac00f0f022e78b94fb469dbda6ab54b7ef0ac0479bc6a8b514957d5a49",
+      "bytes": 559986
+    },
+    {
+      "file": "docs/media/gifs/file-search-web.gif",
+      "git_blob": "630efc190561bb3b452e435c50b9bb666bb8c8cd",
+      "sha256": "b7eb5a2b32a77bfde188bfc46b33ff5c12d2f6ffd91c6ed6e82c0a44e045e282",
+      "bytes": 410214
+    },
+    {
+      "file": "docs/media/gifs/finance-fx-mobile.gif",
+      "git_blob": "5958864939a8a8ea1c291865c65aa84032c89e0d",
+      "sha256": "6e80d547483c1e01bb8da13257b3d676520178efb41db9b8045a550f90b68a3a",
+      "bytes": 968920
+    },
+    {
+      "file": "docs/media/gifs/finance-fx-web.gif",
+      "git_blob": "94683d08d7173c40dda2887f74e1a622eff461d2",
+      "sha256": "9dad08cab5c59401a53028497dfb243224f04fa0118d7f8e84e61e4cd7185579",
+      "bytes": 173701
+    },
+    {
+      "file": "docs/media/gifs/financial-reports-mobile.gif",
+      "git_blob": "1a0586c54927fb0c1072f9750b37f5976bfa8430",
+      "sha256": "8342253df73393c22a24d6ab93ca1c46f995e07858cdf048365b93e52bf90fe8",
+      "bytes": 777922
+    },
+    {
+      "file": "docs/media/gifs/financial-reports-web.gif",
+      "git_blob": "0aa273d7598335e3a27b832819bcd6569eff5d13",
+      "sha256": "18757a9c3a7147da0ccf39a01b3bd984ce90534faf5b7b330d9cc74dc5e8a088",
+      "bytes": 868253
+    },
+    {
+      "file": "docs/media/gifs/miniapp-identity-mobile-collaboration.gif",
+      "git_blob": "ad1a6561f64aa87bca4182bd694bfba3fee5af21",
+      "sha256": "4aec8908b2d24a399a9b7f447b9c406c91698e71d78ba464b0c43d945380de5b",
+      "bytes": 169323
+    },
+    {
+      "file": "docs/media/gifs/miniapp-identity-web-collaboration.gif",
+      "git_blob": "c0bcdef5e36bfa2cffd5ae83bb9cc8933ce7652a",
+      "sha256": "c6137801cf13030dc4b2319adb7c76fe60dc06e989761a1283b62901b61236d8",
+      "bytes": 334311
+    },
+    {
+      "file": "docs/media/gifs/mobile-files-directory.gif",
+      "git_blob": "f481d0055faa2aad4230c69e4914998b2fce2547",
+      "sha256": "ac920b4890ab37bb06d8132465092953866994d1a28714e7e5a5ff090b1eec93",
+      "bytes": 613067
+    },
+    {
+      "file": "docs/media/gifs/mobile-files-lifecycle.gif",
+      "git_blob": "b8f78a81dd3106a2acf37ae31db768a0b6f9d5b8",
+      "sha256": "24dc566e5d87be744148f57fd1a11add4f76ba50226fa485074bfa0f30383ff2",
+      "bytes": 556781
+    },
+    {
+      "file": "docs/media/gifs/mobile-finance-cost-draft.gif",
+      "git_blob": "9b5e259fedc951bf78111ab6b10fce1bc39ccced",
+      "sha256": "dcf29cfff5badefaf0f433a964b26ee674ab27579b4978603fbccb26efc3d5db",
+      "bytes": 723932
+    },
+    {
+      "file": "docs/media/gifs/mobile-finance-payment-draft.gif",
+      "git_blob": "f2a2af675b641a28fec94c00c8e8d60373a3f49d",
+      "sha256": "7a33d9aebd78a40dbad08926201fecf737d36324cd458fd9fa8fc1951cd1c190",
+      "bytes": 1018436
+    },
+    {
+      "file": "docs/media/gifs/mobile-knowledge-access.gif",
+      "git_blob": "375c19241530f53847d3c8e562e52377b59f8224",
+      "sha256": "23f7b02593d5243f6658bde8ac318963377ef2724126f51d5ddb6204101f0322",
+      "bytes": 355954
+    },
+    {
+      "file": "docs/media/gifs/mobile-project-change-workflow.gif",
+      "git_blob": "7ee09dbf0cd50956274003a7311b460c769e6ae3",
+      "sha256": "15d6642a4c1b937ae85ea0971b6d528a47fdaf9afdaae1de8d46bddff3089fb5",
+      "bytes": 802047
+    },
+    {
+      "file": "docs/media/gifs/mobile-project-closeout-workflow.gif",
+      "git_blob": "4e5407ea15f9953e97f4ca901712f8d5e9b1082c",
+      "sha256": "60deb0fb50720e346ccaca4e15158b6d481a5cb22d492946fb0bc681e942bd77",
+      "bytes": 617779
+    },
+    {
+      "file": "docs/media/gifs/mobile-risk-issue.gif",
+      "git_blob": "b7df1fac1e0742f7af1f2552197c72b3bb217da5",
+      "sha256": "410614269f826613f0e7c0140714bbe950f227080742707b80e764122b330770",
+      "bytes": 881807
+    },
+    {
+      "file": "docs/media/gifs/mobile-task-workflow.gif",
+      "git_blob": "cd19c4ea4446c7efb5375fb33d5ce3fad40af0c5",
+      "sha256": "f79cef98ab80cd01479881ecbe99bcc79cb76510359e7c3a3dc8ae56f6abbeb1",
+      "bytes": 1046751
+    },
+    {
+      "file": "docs/media/gifs/mobile-telegram-access.gif",
+      "git_blob": "15979321d70bc4dfd67053375ccdd9960cc920f0",
+      "sha256": "c44babe31881666497d98446ea17b335fc4091ce0f896eedc2228b21fe401406",
+      "bytes": 363812
+    },
+    {
+      "file": "docs/media/gifs/multipart-cleanup-mobile.gif",
+      "git_blob": "faa238ce2735013070d68364d961fb17eeb1b927",
+      "sha256": "bf12457ed66df716e337f37c9e94655c77e7b03d0a577a973c4f8aeb2c0a95c3",
+      "bytes": 418708
+    },
+    {
+      "file": "docs/media/gifs/multipart-cleanup-web.gif",
+      "git_blob": "6e647f4daea70da0a7c16b72c68f326599a5ed59",
+      "sha256": "70e1327726b8247abdfc9a7454a5354fe53cbf13266bc7a62b224f527bf72f9b",
+      "bytes": 336483
+    },
+    {
+      "file": "docs/media/gifs/native-service-health-workflow.gif",
+      "git_blob": "340dd80164dadee96d7b0264164ab387a5773a8e",
+      "sha256": "d7d4148ceb681fa0b1b50275699f952e7dd3cd437f0cd24ad84cb8dcd7333c59",
+      "bytes": 196432
+    },
+    {
+      "file": "docs/media/gifs/notification-retry-mobile.gif",
+      "git_blob": "c87ced26287f8bca107eb0379382e88b0b2fd83f",
+      "sha256": "a675f0d278c07074018c4de8c04eebf58367f22c4b079583d1f1423eca1cdf6a",
+      "bytes": 254976
+    },
+    {
+      "file": "docs/media/gifs/notification-retry-web.gif",
+      "git_blob": "4e45b76034a7500e2536fd0966ba33f050c58658",
+      "sha256": "b18a9c8ff7a819d965b18609b0e04b54c51b4dc517295613a1f075fc94a96581",
+      "bytes": 375523
+    },
+    {
+      "file": "docs/media/gifs/project-budget-comparison-mobile.gif",
+      "git_blob": "affbeaf7148eaed3d65e61d23e685dc9d2a152ff",
+      "sha256": "8039dc758860126634de7865d7ad49275986b256b376a8183940d99cfe8f24d2",
+      "bytes": 670041
+    },
+    {
+      "file": "docs/media/gifs/project-budget-comparison-web.gif",
+      "git_blob": "f0f5b39f17e84ffed43079d49bfff6923db5b559",
+      "sha256": "c4cb9ba650c97d99463a03a37f19315721f22d58264c460163a95e262122a5bf",
+      "bytes": 305638
+    },
+    {
+      "file": "docs/media/gifs/secretary-concerns-mobile.gif",
+      "git_blob": "5400e3f3d0494f95e9f1a8ed28da195a67d0eb54",
+      "sha256": "d00727d2784cf67a078d2ba5edf7a8c05b4f82bfdb9d16e33d66331a5c6ce209",
+      "bytes": 187069
+    },
+    {
+      "file": "docs/media/gifs/secretary-concerns-web.gif",
+      "git_blob": "5fcbd3caae4499506fd3e80e14b8c6300b2d2b0d",
+      "sha256": "59efa5aa3fe40ddb5bcf060556ccc751a9b39fb194b4a5fb85bea9360f8f08cd",
+      "bytes": 231224
+    },
+    {
+      "file": "docs/media/gifs/secretary-cost-free-mobile.gif",
+      "git_blob": "1df7b888517f27d7eb3a8b0218dda6ad70290106",
+      "sha256": "b1e2a04d20e0b066c335035c383464e732d1c984455b1e3b01c6cb7fd7aec5b4",
+      "bytes": 1017147
+    },
+    {
+      "file": "docs/media/gifs/secretary-cost-free-web.gif",
+      "git_blob": "a58c360cb1bbf7e5dd3f2e39e98d1a289371c9b1",
+      "sha256": "0f54db8025a2bf8649c2fca139c12c03bc3813ebf94aacb23e4b34e55e794a7c",
+      "bytes": 285836
+    },
+    {
+      "file": "docs/media/gifs/secretary-oa-prose-mobile.gif",
+      "git_blob": "a023ae6dea0eb15456482260a7fcca6f05f023a7",
+      "sha256": "e1246fcfec2f83a7f865f5c3f64a842a8cab86bf86c71b72ce1269602681fd46",
+      "bytes": 686554
+    },
+    {
+      "file": "docs/media/gifs/secretary-oa-prose-web.gif",
+      "git_blob": "dba8a5b77c82fe2e722aae50722aee4d6e0f5b89",
+      "sha256": "4831d4e9f4a57765c25bc57a4f3a8a650b2755852a9d0fa1c10cec6a71d38d75",
+      "bytes": 491697
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-creation-mobile.gif",
+      "git_blob": "e1b7d77af425b80e6d4e026bab8e761ae5768103",
+      "sha256": "0f2d5f6f80bf8b034828502cb34ea8c8c3871615ed6f9f1caee51e1e1159430d",
+      "bytes": 279112
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-creation-web.gif",
+      "git_blob": "9ea707212d24ec2ef61df11e7d069f8db2278665",
+      "sha256": "8862492b5f9a726f33e6c0262c7c019dda30609fd1d30630e4ee49820486eef3",
+      "bytes": 342591
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-dependencies-mobile.gif",
+      "git_blob": "63da02208f8658e544c5f94f0f98ab15224b7847",
+      "sha256": "8fdcb03a102543a5a19563756f1ccfd4875d0c7c160fac251fe1129c31c4cb7c",
+      "bytes": 759713
+    },
+    {
+      "file": "docs/media/gifs/secretary-task-dependencies-web.gif",
+      "git_blob": "8230d74e71776b067da0a00b157fb138add1010c",
+      "sha256": "234b5bdd661d1e10b72288255d6d4d5f03c40515000a7e5d296d4243190b6419",
+      "bytes": 883110
+    },
+    {
+      "file": "docs/media/gifs/secretary-token-budgets-mobile.gif",
+      "git_blob": "16c186c1b7a1d8934480eec550159f0f79b20636",
+      "sha256": "e5e71c8de36747869557a8a43cab9a856ac01790c241d85374b8f2066d58daa6",
+      "bytes": 587222
+    },
+    {
+      "file": "docs/media/gifs/secretary-token-budgets-web.gif",
+      "git_blob": "f1715dfa0e0968ece3bb4b4601b5d981a431e582",
+      "sha256": "7e025f3f67204320633f45e16f9ddbff5bb36556af3dce4e32124fda3acabc1b",
+      "bytes": 262831
+    },
+    {
+      "file": "docs/media/gifs/task-mentions-mobile-collaboration.gif",
+      "git_blob": "e29c98e70daa14ba7894279384f40934a231248b",
+      "sha256": "152b0b7b0348e8cfe34881702d6cd0b2d76b017686d9f9bcb17f1933dec0d54d",
+      "bytes": 231014
+    },
+    {
+      "file": "docs/media/gifs/task-mentions-web-collaboration.gif",
+      "git_blob": "d5347ab7138f0b0300ed7b0af269e5e9ff08d108",
+      "sha256": "b2e135ecb684d68b7a97f134be2da60835ecbd466fef21f9795de9ed56a7bf9a",
+      "bytes": 503148
+    },
+    {
+      "file": "docs/media/gifs/web-operations-tour.gif",
+      "git_blob": "13c5b8cbbc4e17c95ff642952136540c9519d7b9",
+      "sha256": "b112dff097e352ff3da82b7f3909f81623a33c8e073b4d03365acaf39ad7c5fa",
+      "bytes": 592401
+    },
+    {
+      "file": "docs/media/gifs/web-project-flow.gif",
+      "git_blob": "085727caf3c47a8a5abc61a3f581e7916f43adcf",
+      "sha256": "ec762c58a32127e6facc18b27c13aa91903360afda8e345acfe8dc9464d35c57",
+      "bytes": 487876
+    },
+    {
+      "file": "docs/media/gifs/workbench-mobile.gif",
+      "git_blob": "3513d7e1db6c9b31e483b5179f0bdbdceca551a4",
+      "sha256": "010d93fef085880f4f7ab5b9987ebdadc1fcb598f1d49fb495f462a3af21a858",
+      "bytes": 140312
+    },
+    {
+      "file": "docs/media/gifs/workbench-web.gif",
+      "git_blob": "5286f9924342fb5810fe6364123cd2f924efc108",
+      "sha256": "14a64eb1d802cea7d78877672065f13483f1b95ab9c4a1751412c8e44f04e68a",
+      "bytes": 303147
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-mobile-preview.png",
+      "git_blob": "84dcfeba1669103fad875ffa56aacb2563a288ea",
+      "sha256": "daf22ee4b806254acd68a079b47f50023ede4f899253be3850a21e1ba5eebd3b",
+      "bytes": 45352
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-mobile-sources.png",
+      "git_blob": "b8742541baf20343eaf97c17c8e14a0f07353f79",
+      "sha256": "f5abf293915fad5b4678a909c0998806be9102009a26179cd3b1654df343f1f6",
+      "bytes": 57254
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-web-preview.png",
+      "git_blob": "673c72b124dfd735f73cdb20bf3c75b48ff3153f",
+      "sha256": "b5b2bfd063230bcbe3ac2a0fecc55e7172b1f780e25010d1570c86ea0789a2ab",
+      "bytes": 777886
+    },
+    {
+      "file": "docs/media/screenshots/agent-indexed-search-web-sources.png",
+      "git_blob": "343c0af31dc80068d9c30bb3e97535abfa7170f1",
+      "sha256": "f2da3a29fbf795653600746b06155a777b155cf1f2d4620268cfaa298933a2c6",
+      "bytes": 296232
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-detail.png",
+      "git_blob": "78eccf1732987d535fba2e0fb575b2906dec03f4",
+      "sha256": "055c0132541af3d81d2b21f6b42a430b02ffc4efa52e9cd36ef495f4933b5e7d",
+      "bytes": 53098
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-empty.png",
+      "git_blob": "9de67f696f8931035878fda9b7046df8bddcbda2",
+      "sha256": "f011c520843e1960a29c0d87cbadb383e0c2be10a7f24c33bd4c6fb165fc3789",
+      "bytes": 57806
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-mobile-export.png",
+      "git_blob": "c9c2960d6c3291124db2dd76efdb87a3807a52f6",
+      "sha256": "71240369362ab93c964002f53d7eb6a27d81c03cffe96a6b3dbb21818f4f53e2",
+      "bytes": 60967
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-web-dark.png",
+      "git_blob": "11a4bae0c295ed930b51034cad51c3ee9c924c3a",
+      "sha256": "3c4cebcc929b4753dcc3eec7a71512f25316f87b7e9cb9ff58d7e04a08c31ce7",
+      "bytes": 138785
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-web-detail.png",
+      "git_blob": "fb6551c6ec0b1fa863e2d907c63653b78f68e809",
+      "sha256": "d1e50c5c28db55f09d7781c2272125681adb1e82fdd812848327360315f10bdf",
+      "bytes": 127312
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-web-empty.png",
+      "git_blob": "bad6d1793ce5f0205054dec3927243583806d8f6",
+      "sha256": "5eb9905354f29850c8f870730e270ab60b21e03bc43cc3c1888fbda51bc517d7",
+      "bytes": 118579
+    },
+    {
+      "file": "docs/media/screenshots/audit-console-web-export.png",
+      "git_blob": "6687ce68142674f2fd4071703e702932e698a1ff",
+      "sha256": "5336d75d7f12a63021ae8343253b4edeb2f68614f7d106a8645e605a173e09d8",
+      "bytes": 137103
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-history.png",
+      "git_blob": "94e3451cf2a3bfcbcebec87ad9570bf3838623ae",
+      "sha256": "400d3e62c9bf935edfc7330fff49d7a506d9891e32b1e8981e291a4160e244a1",
+      "bytes": 57963
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-published.png",
+      "git_blob": "fbbb678cceb2771584deb6a7b180c12c5e819518",
+      "sha256": "148962dd9e5c879c7ccba17a8a8d1912eb71ad855c7c3e93605c656ec410cbc6",
+      "bytes": 59253
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-mobile-review.png",
+      "git_blob": "9eb04c040a5d9a732facc801c7b7b3e9d541822d",
+      "sha256": "ea937933a52b23ac3817d77021c357088f5cea999849095c36c8fa41d7db5551",
+      "bytes": 60085
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-dark.png",
+      "git_blob": "0a23362107fb3c705374ff6dd2c92de8b907f746",
+      "sha256": "b4087eb63a7a6395ed4f36ea69c2d6d3338131f4b42727ac2fe87ee6ce19fd50",
+      "bytes": 139121
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-history.png",
+      "git_blob": "c34090dad47e729bfd8258a10c583a0bf71cd5eb",
+      "sha256": "a8be641f78d0af4368dea3fc848dd1bea59ce2c421a66369e7c1ba2d2a562a20",
+      "bytes": 137416
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-published.png",
+      "git_blob": "c34090dad47e729bfd8258a10c583a0bf71cd5eb",
+      "sha256": "a8be641f78d0af4368dea3fc848dd1bea59ce2c421a66369e7c1ba2d2a562a20",
+      "bytes": 137416
+    },
+    {
+      "file": "docs/media/screenshots/contract-reminders-web-review.png",
+      "git_blob": "149563f28f8de2e35d30c2bac347495754828c66",
+      "sha256": "ef3e0c2f17d3f6ce43f89c5e9f335349ca998536c540647f2b6c626e1f4d7661",
+      "bytes": 144243
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-history.png",
+      "git_blob": "7406c91115e39b8a20a5352dce1df15ab1187a34",
+      "sha256": "a71cc8ff467ca47012007b04f6c5517de098ad654897c7accb0a85503208d917",
+      "bytes": 60667
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-preview.png",
+      "git_blob": "13b5caa666adeef40fb491e380b4eec5f5c73493",
+      "sha256": "29b1185c7ce733acce26c762be3d9a3d384a28af4f262410858a66b8c07b57c8",
+      "bytes": 61400
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-published.png",
+      "git_blob": "5bc4f27122667da461648fecb84cb9d4fa76e5e2",
+      "sha256": "5d93c52a923ed01eb0985c80552b895d1330be6b27b4c7797edc4a4d73f6389e",
+      "bytes": 59290
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-mobile-report.png",
+      "git_blob": "7cb4cb328b0fd0017a8785eeb790f2739a4fb2ec",
+      "sha256": "baf6ed2d3e8a8ad6585d98a59ee7010cc7dbf6018613ea23c4d621c414ebf142",
+      "bytes": 80975
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-history.png",
+      "git_blob": "ec0ffe017a8038f078c26126c2cd95e16c9d1e68",
+      "sha256": "a9d4ff90bc9b8e28d2b0d9009dd75fa2360629f3448df701c4784bdeca8938e9",
+      "bytes": 159715
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-preview.png",
+      "git_blob": "c7ee97463cc655aa73cdc6d74f96eb5464d2d15e",
+      "sha256": "b05eda3ca9bcd1ecafa1e903fa6edd0013b164818c41c5b792e5700872070256",
+      "bytes": 140298
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-published.png",
+      "git_blob": "098d6fa54de748ab4b8ef5d570818f33fce7eea5",
+      "sha256": "d70ca4e5590363b9132ac04416c527b87f50c1405c1f82ffa926acd0b4fb216c",
+      "bytes": 147674
+    },
+    {
+      "file": "docs/media/screenshots/cost-amortization-web-report.png",
+      "git_blob": "c7426ea7bddfc1e2200a5cf1945a595d2ccfa161",
+      "sha256": "f7a7ebf7a56851e872d1ac230753ce6e33fc90147daf5b29b1a81436049db100",
+      "bytes": 150573
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-cost-confirmed.png",
+      "git_blob": "82d6ef9df96cc8d6f8ec5e064e707ca162422e03",
+      "sha256": "e8339ae3df600f37ad9a5dd7384e4ee9443a3e75c7b59173cf1d4f0f8b6aa46b",
+      "bytes": 50792
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-employee-settlement.png",
+      "git_blob": "23a997902881d8eb76beda91f99e8a66b23a782d",
+      "sha256": "84d331f1f9804a1d300ee6fac5403891e2630ee3229c9e9079c484cf606d7249",
+      "bytes": 51702
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-payment-allocations.png",
+      "git_blob": "c72b64c67f81a555bd5f82b96e449ab9457c4036",
+      "sha256": "4e565af6d5c3a542ea7950cda80655b9e247a89c6157774ca02c3f9a71efad82",
+      "bytes": 51107
+    },
+    {
+      "file": "docs/media/screenshots/dependency-hardening-refund.png",
+      "git_blob": "90503645dfe2fccca212f06539d2790c81428081",
+      "sha256": "fb4e4b229fd075de865b7015a7bca24ff9a0f23c90d800c47251e3d650ab6d07",
+      "bytes": 50024
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-context.png",
+      "git_blob": "e62914c480c681d903b8fe0a55e30e041df8bd7f",
+      "sha256": "d77c4d217c3f052ed3db58eeaf6aeed8bb9d858c5469a274f3954fcd5e76f4e2",
+      "bytes": 65712
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-full.png",
+      "git_blob": "134d984114f935f147aae657a25fde8183f727de",
+      "sha256": "9f289fca7382f4740a8639533e034a2e61038f6e420e830ce7ee8edd076c273a",
+      "bytes": 36634
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-mobile-stale.png",
+      "git_blob": "222904e60c041350f814a0d96c7c32007c2cdac1",
+      "sha256": "fa5f1f9ba37c5e01d86b8fcf66aca1be5dc91a37b3a8cddcb232782f5bdf85da",
+      "bytes": 59091
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-context.png",
+      "git_blob": "ea88c60a13fb05dd153a28c2d2447ddb5024814e",
+      "sha256": "8b15033d52a75ec29da57ca57323d63644d696041dd2e6645d7651e4ac18eab8",
+      "bytes": 124885
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-dark.png",
+      "git_blob": "a889f0668881131a693172c71dcacd4f3a568225",
+      "sha256": "2c908384f300e52b4f3597ad706a8c83bea57d7b663db21d4ac929cc11dc7905",
+      "bytes": 111644
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-full.png",
+      "git_blob": "ad6b2665e1ac5d2f6eb16a13eb7eeb3003c35210",
+      "sha256": "bc14ee5ebd09f5245de259b2ca8a48cbbd3693fa5c19f451c464d90c48039775",
+      "bytes": 110798
+    },
+    {
+      "file": "docs/media/screenshots/file-comparison-web-stale.png",
+      "git_blob": "c341db44a4ebfdcbb9cb45862bae53597edd6a86",
+      "sha256": "730fd7069dbda01df1c1ba864c4e7031a9b1b8308969ec42e3d4d23b31744b4e",
+      "bytes": 138169
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-accepted.png",
+      "git_blob": "d18f994283a44bbd4448c5933dbf1d1bc22aeb95",
+      "sha256": "1a8f8941dc05f59b1ee5bb380d5c07ac013c60cf6182bc43dd0dfbc4265fede6",
+      "bytes": 52863
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-review.png",
+      "git_blob": "3273e99ed48c379074c48f4108a639789e424b3d",
+      "sha256": "3e6b8f9189415eab226ba64937c323034fcfd20197f221eb2cead5acc7115573",
+      "bytes": 68447
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-mobile-selected.png",
+      "git_blob": "dbda92b1f233bccb4576e8046342ad0d2dd63466",
+      "sha256": "6aa9931384696c8999cd00122cf5e5c26e001357e7686205a67987143b95e154",
+      "bytes": 72500
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-accepted.png",
+      "git_blob": "d3ac81cc3a8905ce62447d4b0305be68bc5558df",
+      "sha256": "68a4cdc2fac6e77517d450c5bd666ff462b7d991282eade9404d4c20e95edb0e",
+      "bytes": 129787
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-dark.png",
+      "git_blob": "25c150b7938ffa541c3b167682994d49403f4ad2",
+      "sha256": "919d79e2971a53db8e416ac5f8b64724fea4eff4dc12b1d79c6b57b66fee0293",
+      "bytes": 131659
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-review.png",
+      "git_blob": "519daeefce7e8f1a66e22398530437a1eb9e1abd",
+      "sha256": "f2d8214e691262ab1c003547fde1df276449f969e6da94616a6b18910515a707",
+      "bytes": 144733
+    },
+    {
+      "file": "docs/media/screenshots/file-recovery-web-selected.png",
+      "git_blob": "08efc4c41f707650ed96cd2a1612cd649b615ca7",
+      "sha256": "95aece269ee0c7da450c80b7ef614c3654aca09663878425ce3f7f0fac0cd34d",
+      "bytes": 135261
+    },
+    {
+      "file": "docs/media/screenshots/file-search-mobile-preview.png",
+      "git_blob": "49c05864255577d98adb2d4749101ef8765d90ea",
+      "sha256": "c8c60fcb12db88fe894da1ea3638d2462a788da627bcc5ddce8a120d11586d27",
+      "bytes": 20472
+    },
+    {
+      "file": "docs/media/screenshots/file-search-mobile-results.png",
+      "git_blob": "1854ba8e0d9faaf95bfa148cc76ab40cb17ebad6",
+      "sha256": "13ad92854dc98b76388c16134d209ef9bccdafa171966405c64ebec993a9faaa",
+      "bytes": 58371
+    },
+    {
+      "file": "docs/media/screenshots/file-search-web-preview.png",
+      "git_blob": "26b33a02ca44d3ebf0097712486c2675e5cf4b10",
+      "sha256": "002cb2333439561469516aa5701f83b390ed2446c7d2f00466eafd0ef2b53491",
+      "bytes": 172937
+    },
+    {
+      "file": "docs/media/screenshots/file-search-web-results.png",
+      "git_blob": "28db0a9cbd4c876a14ecd3c53cbc61a6cffdc6b2",
+      "sha256": "1c366b7e77a9e567393fefb02200cadef9294c30c8b712c8ec3fc33a1846143b",
+      "bytes": 116058
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-mobile-after.png",
+      "git_blob": "2698c11729542b4ffb2a24190e70ac4b0ae800a4",
+      "sha256": "0a48d65f676156d07ab53645f343a607410ccdb9d0c5b98d7df33dea995ccac8",
+      "bytes": 74091
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-mobile-before.png",
+      "git_blob": "7e3f466a05f8fa607a9124f3aefbb701e7eac794",
+      "sha256": "3402d2b3d6393a48cf16c99f015f8569e8b66bd08ee9e5b8794d86536b83b11b",
+      "bytes": 64715
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-web-after.png",
+      "git_blob": "a1e66e28e51ce341295a8eb01b72c77d831df83d",
+      "sha256": "48e035c177166ce2c6ef846b2f9dee89dbd68bbf0adc34d5ffb3c7321706917f",
+      "bytes": 160992
+    },
+    {
+      "file": "docs/media/screenshots/finance-fx-web-before.png",
+      "git_blob": "e8ae3cd58f5316a76bdd2f3b4345d404b6555fc8",
+      "sha256": "275b8749084536c5940ca722433684059270c4ec5e3bdb98ea0af0251bd00247",
+      "bytes": 166648
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-mobile-exports.png",
+      "git_blob": "416bff3b186d37c70e2f2715f5656d09afe4652b",
+      "sha256": "b14ba0cc4484ba38957b1e515b3a672595b812237b576f01b4150ff94bc94dcd",
+      "bytes": 66421
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-mobile-sources.png",
+      "git_blob": "fcd03c4577da098aff77b959ef12ae527427248e",
+      "sha256": "5a8b9e5ebcbe2d828791d866b493762bb9a5373b861dd67351f0e2b4656bff8f",
+      "bytes": 60735
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-mobile-summary.png",
+      "git_blob": "98aa7dae29a2fd7d3a1046e4642aa35458af8fb3",
+      "sha256": "5901ddc1928ac0d9ff273dc0c8d65177d6aa696a5d48d82950b5fb13017842be",
+      "bytes": 57516
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-web-exports.png",
+      "git_blob": "24485c24a43857edffcff2c2380cc4f500d25feb",
+      "sha256": "971e4f6ac71e10df7ee58ee54092c977551e7c05265d1648eb04d75ec1e1a353",
+      "bytes": 150526
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-web-sources.png",
+      "git_blob": "34d3efbe4ef54e81d00094068b2a4a137e533a9c",
+      "sha256": "a703ffe9136991484616fa0b7c76dacd9c26b8c23ef97dc67c4791b036c0c0de",
+      "bytes": 141593
+    },
+    {
+      "file": "docs/media/screenshots/financial-reports-web-summary.png",
+      "git_blob": "150776f6655885b516c0687ab1b6bfa7f632033b",
+      "sha256": "7a20444e0f8afa263a721e76e55ecbcaf9b925c4d779946b308c2593d6df0334",
+      "bytes": 145666
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-mobile-bindings-dark.png",
+      "git_blob": "972b41598bb642353129e9916eaad5f9c9450293",
+      "sha256": "62a6526d1a93b8e71ae4786ca1c49c6ccbeeb0399d1eecd9537cfbc79e48b6b6",
+      "bytes": 40803
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-mobile-bindings-light.png",
+      "git_blob": "c5db75765f60d08fb560044853969fe76ab7c4c4",
+      "sha256": "ca44b09277533ec1b627a9c01f01db679cf74cb5c27a80aba99af82cc38351aa",
+      "bytes": 40126
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-mobile-bindings-revoked.png",
+      "git_blob": "23ada089a97797115a8bc555ccc6dbbdb527dc8f",
+      "sha256": "56a7cbfc82c4309f66c30cc133da7d37a751617a296d934eb4a0f93cf68e5003",
+      "bytes": 45588
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-dark.png",
+      "git_blob": "895deededda365fd2dec47e2c680f41d201980af",
+      "sha256": "51587827efc6b9153557e7a27c5e7a3103906880ae9b959cd6f93ff936f49f7e",
+      "bytes": 133004
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-light.png",
+      "git_blob": "b9ebf133183d1e9ae0c22f9746cee72c874f84f2",
+      "sha256": "3139004f50472737129b54b149c17095f7db3e69297257667662dc56cd8439fc",
+      "bytes": 130861
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-narrow.png",
+      "git_blob": "f1b7589d053aefdb6d02ab87e719fd2a47fd95f9",
+      "sha256": "4400edec7c34788d6ef43a37b5ef7f5529bf00c41ef119704fef82db1bbf6a13",
+      "bytes": 66946
+    },
+    {
+      "file": "docs/media/screenshots/miniapp-identity-web-bindings-revoked.png",
+      "git_blob": "7515f96aa10f312ee2fad34549f4ded0968ab43e",
+      "sha256": "ad4d06ddad3856ec2dddddb6bf92bc02a973bcdaa010d164df63994ea7d7560f",
+      "bytes": 129900
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-approved.png",
+      "git_blob": "a02bfc5e0e65715774ffe0051aedc68cc3dd23e1",
+      "sha256": "9ace697a0ded1e4e1c32ab18e48083ebb547a2b2760c97189530168b8511fe1b",
+      "bytes": 52553
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-budget-history.png",
+      "git_blob": "d89b66dcfc8957f907ead00ec083c677e80d34b7",
+      "sha256": "151bf80fb7859f00167b4ac1c16ac2e3869579cfdd0f9af68fa5043248ff3c2d",
+      "bytes": 51309
+    },
+    {
+      "file": "docs/media/screenshots/mobile-change-editor.png",
+      "git_blob": "9c3272bb56daf5494658516a9b065aa1cd9766e5",
+      "sha256": "579c6f26d51c55a204c9dc7baf03fb29ee0f88480ed6c81924382a945a34f1f4",
+      "bytes": 52508
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-create.png",
+      "git_blob": "2ab0e9dc14e86b440ebc05d18b3410713bb922ce",
+      "sha256": "80a53805355b634db0073d671ef5c5568bb5a920853702d6e392331ec8b44c59",
+      "bytes": 54037
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-directory.png",
+      "git_blob": "371d232de8b86fb953b188264d99bd1816d6133a",
+      "sha256": "1b4b4aab8425c34211f657133b3c4eb5b588e87011fae88a55f474a2d9df5a51",
+      "bytes": 48611
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-move.png",
+      "git_blob": "4e96db1eeabbe61b3b3c98a2acd4e6a8bf8c95fc",
+      "sha256": "c92baa9e86126c715bcf281635eccc78ea3bf65bdd8a043a1df4ae9824a5b6c5",
+      "bytes": 66262
+    },
+    {
+      "file": "docs/media/screenshots/mobile-files-restored.png",
+      "git_blob": "0b6af1ab6ba0a95a725f45e0ccdc09c7d96cefe7",
+      "sha256": "f9f88fc363999010e8f3a892d73843fc088b97cdfdef146b02b248690d593209",
+      "bytes": 57146
+    },
+    {
+      "file": "docs/media/screenshots/mobile-finance-cost-confirmed.png",
+      "git_blob": "9984391f6c72c76118a78565e73bc2fb790f801c",
+      "sha256": "0c15f9d00662450651e27b156080689dc2089afdce0ca3d67e923feae5d435f4",
+      "bytes": 50488
+    },
+    {
+      "file": "docs/media/screenshots/mobile-finance-employee-settlement.png",
+      "git_blob": "0c20e1d1d331d2a50ce58b446355fd3fc342e697",
+      "sha256": "e946182a2f8d0dcc4df38d96cdaebf40b8f692b228d072e27e81c0f90aa5a819",
+      "bytes": 51763
+    },
+    {
+      "file": "docs/media/screenshots/mobile-finance-payment-allocations.png",
+      "git_blob": "5362b93a6a6523593c75793807786d5a978e7482",
+      "sha256": "135429f20e894163928df8d18162cce76155fbdfc073759cb8873a680beeb686",
+      "bytes": 51509
+    },
+    {
+      "file": "docs/media/screenshots/mobile-finance-refund.png",
+      "git_blob": "7b92676e207201217e01379ddf91f4909fdbbf56",
+      "sha256": "07e62c72a9da48b10cd34f2d09b62e325ea1a98cbecdba29fcfa99a352efcb7a",
+      "bytes": 50067
+    },
+    {
+      "file": "docs/media/screenshots/mobile-issue.png",
+      "git_blob": "59adfe0beb46854a88eb1c27667f42f2e2bd0bb9",
+      "sha256": "bc16301bb34b698eaf295a64818a6f8cfa7448ae163e79f9ba55d5a0ad400abb",
+      "bytes": 40516
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-comments.png",
+      "git_blob": "5536799ac1e0b1f497045b9da964ed9c6e95594d",
+      "sha256": "0fb873dbe3f25918ad7fb68f5fdc4fbbd463efecb99e37013afa2cc0289c3935",
+      "bytes": 52759
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-editor.png",
+      "git_blob": "4e25d9b91d728a7d002fead776dc4fd01ccd6f6f",
+      "sha256": "c2b3194ece78f4c7c21c7f8c5864e18a45a8c23e539dcf80cb7ec34d030bb010",
+      "bytes": 55062
+    },
+    {
+      "file": "docs/media/screenshots/mobile-knowledge-published.png",
+      "git_blob": "b05273f4934ec21d8f8a6a2be3e1f02779baaf3b",
+      "sha256": "9beb62575291dcab2899949bdfe465cb0901e513a5551b85adf29d282a105e52",
+      "bytes": 71295
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-form.png",
+      "git_blob": "786064fd88d4880d6fcb6a9f28de31d75abbefd3",
+      "sha256": "9638014f168c4609802267c386e49fb0e338bd63bda10e763036225f9f2c4fd5",
+      "bytes": 58633
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-archive-history.png",
+      "git_blob": "03edcda435bb7e94272f227f94734adb0d99f053",
+      "sha256": "464d1919e4d06c92d04c3d1b8cb224ee10410fea8582328db2e32d21cf1223ca",
+      "bytes": 81664
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project-closeout.png",
+      "git_blob": "02f416f0fbaec41323558736f44c6bc4ea9e750f",
+      "sha256": "c6e7b221ceb6a7e65762577484bb1d5217824a12eccab71afa5ad944aef9095a",
+      "bytes": 76401
+    },
+    {
+      "file": "docs/media/screenshots/mobile-project.png",
+      "git_blob": "41139f75b1787f7563e013b2458cc97cb196c34e",
+      "sha256": "f191d7ea82e30271b1f0125fde419c4692ffdfd77ff936ccbb9e14acfd20fa21",
+      "bytes": 43749
+    },
+    {
+      "file": "docs/media/screenshots/mobile-risk.png",
+      "git_blob": "c739612bd17037c8ba80f6a059f4fec5fc81736d",
+      "sha256": "c52db80f0028167a86b611ddc321428a689027e79a9bf985eb9f21419db4f2e9",
+      "bytes": 44309
+    },
+    {
+      "file": "docs/media/screenshots/mobile-task-dependencies.png",
+      "git_blob": "2f84c82cc7718e715ca1b4a8e067eae14575bdb4",
+      "sha256": "5df4aa1cb61b8143ea643ece2c60e9d28b8c4da345c21cee7a23cf65d8bcb61f",
+      "bytes": 51368
+    },
+    {
+      "file": "docs/media/screenshots/mobile-task-form.png",
+      "git_blob": "65e2cec81958171673f925d6c29ed6fbaf8aedfd",
+      "sha256": "a28d8bf28155871a0b99bc10c7966f7b6102f8864a17ee37e94b8d6fc0587d1f",
+      "bytes": 41324
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-channel-config.png",
+      "git_blob": "31f6a0dbcd01ea7b1cb50b9682a2aefd9933ad29",
+      "sha256": "ae30c314e543eaa5b738dad3f343037235487f080c9ff76204156de18de290d0",
+      "bytes": 52426
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-channel-history.png",
+      "git_blob": "e66868a1d53c972fc41045144d63040cf7da1c9a",
+      "sha256": "4c66ba7e28159d5f95db1f5d7c1c075259e71b92ed6fc83488afe3a74262970c",
+      "bytes": 50877
+    },
+    {
+      "file": "docs/media/screenshots/mobile-telegram-own-binding.png",
+      "git_blob": "424d4be5609ce4d77999ebf28a00459883aa5296",
+      "sha256": "c7f8f36da535474a9a4512f429e6175e734f889f4e22e412fb2a0a3f391b7412",
+      "bytes": 65808
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-mobile-inventory.png",
+      "git_blob": "0b9408ca6770bb8b033dbb54b1cff1e41d995d83",
+      "sha256": "c44a498cd131ea51c2ff0eeafa7905e6425c53cc91a5ec90c32559c25cfcd230",
+      "bytes": 59821
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-mobile-observation.png",
+      "git_blob": "519ea3ebca885636e8357eb9189fb7685b1c9a7e",
+      "sha256": "c9f654da2d3c90dad4bcb5f6404787b593cba0147ebfe31af601e9cb212de4d5",
+      "bytes": 49559
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-mobile-receipts.png",
+      "git_blob": "df554f9b3e1ae51504673d572380583e7d721ae1",
+      "sha256": "e569c0134a30cafd73fc74749ca02073ba4abefde3fb5b14e8cd520fb379fa19",
+      "bytes": 53680
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-web-inventory.png",
+      "git_blob": "25d31cd629322a4222e080e71aded3e83247b2e7",
+      "sha256": "69756dc5088c4b2bc3e3549e6010c3beeecfa150f7f320496f2a617cb111bda7",
+      "bytes": 145726
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-web-observation.png",
+      "git_blob": "c2a81b20e25f645f1275540ae0f34c942114bbc7",
+      "sha256": "f293ba14567de16f0697eb6ee8f3f4359d6f2b09c83e21293ec85fb67ef74656",
+      "bytes": 119517
+    },
+    {
+      "file": "docs/media/screenshots/multipart-cleanup-web-receipts.png",
+      "git_blob": "31faa774074bba178fb1e414d4e06d327931c868",
+      "sha256": "5ac9f8f72ef5dc59ae59f01ec445d86008681e1ae64cb8f164fe4d8640cbab41",
+      "bytes": 129850
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-down.png",
+      "git_blob": "c986841f4046981c0baa3e1590e91021fcd7bc8b",
+      "sha256": "00e6df4d1155b78eafe1f491c3c1292896300557dd80988ae4cc23993470c46d",
+      "bytes": 97750
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-mobile.png",
+      "git_blob": "4e0d48f7e3861e9c6ffed3f2bc482e515a0110b8",
+      "sha256": "269c70cd064397934c818373c1eb2c106a42c829598fbe5ac3029bbecc0a957b",
+      "bytes": 47752
+    },
+    {
+      "file": "docs/media/screenshots/native-status-bridge-operational.png",
+      "git_blob": "048607b28f4593472fa49228493f19eec91addc6",
+      "sha256": "fbc9fffef223948f2a9571e9e3033e68ade9b6a4fc59b4c782e4f87aaeab743c",
+      "bytes": 97120
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-failure.png",
+      "git_blob": "6ef002efd41c84aa02c350b8800d89d6f94614c8",
+      "sha256": "7d91bb287fe32c76c6ea564b41affcb6909dc4f94e9803b6ff395c497881a433",
+      "bytes": 51368
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-history.png",
+      "git_blob": "602150aba44930945de2017e3addf2127a677381",
+      "sha256": "fc396287fc5678e6283f0f0833b816e1a11a56f0c170d78ee3e64f5e7e552764",
+      "bytes": 47476
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-mobile-result.png",
+      "git_blob": "7ab66a1eda8ee9ac0d00f533e57cf18a922190b9",
+      "sha256": "ad8d490f4f7fc2918f9b522a0f69fc078cd698da2a6a141a4c76db51ecfc1d71",
+      "bytes": 51224
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-dark.png",
+      "git_blob": "bb82ecaae009f15f7691d3942b22e7efe335a01a",
+      "sha256": "8fdf2599d5661094c5753ef98a5e7cf17eeb33b01f5e816033fcc62bcbe253ee",
+      "bytes": 136501
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-failure.png",
+      "git_blob": "77700ef3afaf867fb6b9cab78a7746fa52fcdc01",
+      "sha256": "af06c87a6419c00fa1a6356c5093a2459c44f1ace082d90fad9ab8737b1d7967",
+      "bytes": 129807
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-history.png",
+      "git_blob": "d5cb621987fea65b531b6772660da9a461f59da1",
+      "sha256": "d29780ba2f562bdd1bca2f6f5c22ffe7b667273ed63a197071bea1674cb7410d",
+      "bytes": 135875
+    },
+    {
+      "file": "docs/media/screenshots/notification-retry-web-result.png",
+      "git_blob": "b3da41c63fd02185809db74e73e6c2df331808de",
+      "sha256": "2913a18095d3efbd9642b73a220414e9721d68468e2672b8c8fba78a8d1354f7",
+      "bytes": 136515
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-mobile-sources.png",
+      "git_blob": "2d4c777f46a1de1a57366741a946287d4ae7d77e",
+      "sha256": "10912b8a6d28ecd95c6d5eee09a9a488103e082e5a306049fe63947469fd184a",
+      "bytes": 45383
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-mobile-summary.png",
+      "git_blob": "ebae835d7a036fd2359ec7e088971ebec091a019",
+      "sha256": "331f971bda028444c6e83905e2fe5d8c05ea67ebcd929c29d15eaf9eebff8f14",
+      "bytes": 62587
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-web-sources.png",
+      "git_blob": "8d207e899e48445bd95cff83e0616858d8074be3",
+      "sha256": "e286aca5e85e20cee6176a760423a00274f4121484d1dcf872dd4ae8dc58f787",
+      "bytes": 161903
+    },
+    {
+      "file": "docs/media/screenshots/project-budget-comparison-web-summary.png",
+      "git_blob": "b0f58c0f701081e4459b37d4d91992482eb06247",
+      "sha256": "035dbd1b31921468bc4a0b5d05ad3af74f67342b1f920cc9345f8bcc4b34adeb",
+      "bytes": 160407
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-mobile-preview.png",
+      "git_blob": "a8382cd89186e5e2fa36470b0cd13565e6196b33",
+      "sha256": "882c00acdb2ae9a9d3e147a29f98ebbd58ce9042ddc6ad513adcd03580a8e8e1",
+      "bytes": 65149
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-mobile-receipt.png",
+      "git_blob": "ed9dab313d369d556f0ed2fd6df6a649ea1111bd",
+      "sha256": "565f6fc5731b66bb8d6bad4d7a5f70b92ac1809edb1c54360c30634aed028230",
+      "bytes": 46884
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-web-preview.png",
+      "git_blob": "b3b42e9a6e9062b807a1be3cf7f6e4c0a6a3c051",
+      "sha256": "35c264e71b07bff30a9999e3879053a260e5a81f21cc9fdfca032c304f0b907d",
+      "bytes": 161854
+    },
+    {
+      "file": "docs/media/screenshots/secretary-concerns-web-receipt.png",
+      "git_blob": "38b4798fa1e7ef905d5a886a9842530d78d60268",
+      "sha256": "1ba2ab29c50236b26d1dd4ba3155bb1398727b9b521e8f92e5f182514a519394",
+      "bytes": 132317
+    },
+    {
+      "file": "docs/media/screenshots/secretary-cost-free-mobile.png",
+      "git_blob": "7c3a74fc0a6c438dda6bd643d058ee7d63a7846b",
+      "sha256": "3be22d168b976e78b9c1a13acd1857a584c47161ffa4cc0c2155260ae7040917",
+      "bytes": 46685
+    },
+    {
+      "file": "docs/media/screenshots/secretary-cost-free-web.png",
+      "git_blob": "1f934c4e80acf78524ec43de6a078f2931249b38",
+      "sha256": "34149a4a8197287f5c50c361366f3a5271d117f654d37f918c660af6475f4708",
+      "bytes": 132046
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-mobile-after.png",
+      "git_blob": "4fd303459f6c270178c81ff89fbce8c773483be0",
+      "sha256": "bc36c88663642800193f9f33026acd33e305833be6d566fdedfd1b58839b6c19",
+      "bytes": 67687
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-mobile-before.png",
+      "git_blob": "459ebba269857f394d0bd4bb48e99ba5a2981694",
+      "sha256": "c9cf6a39338ef55a6fc58f0675b6e11f7c20084db686b80617b852ec94526fce",
+      "bytes": 64733
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-web-after.png",
+      "git_blob": "7968135899fb8bca9ba844ea35227f73f66f8ca2",
+      "sha256": "5bbd7d002f1560ab90f3224b6c39a1fe93ce2aca602958b0163b6eaa0d6302a2",
+      "bytes": 136577
+    },
+    {
+      "file": "docs/media/screenshots/secretary-oa-prose-web-before.png",
+      "git_blob": "8d0f5ac00425a9543fb5ece3b2e3e89474b52147",
+      "sha256": "cc1f382532b32f4379848e14bb06ddedeb0e05ee7546b25d3e58ba2dc4666c35",
+      "bytes": 137503
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-mobile-preview.png",
+      "git_blob": "ea5ef0d09d3bab5d1022a025ce20471665c19252",
+      "sha256": "c5df2c93d8486b04639bdc841679e65d9d4e1b44a2f229af8874d079858ad4a4",
+      "bytes": 63249
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-mobile-receipt.png",
+      "git_blob": "fe335444d5b12f7a72b91399d6829ee1e4f293ee",
+      "sha256": "f6a35575b50d70a6be3212d850f59b4b76d28fffa939f1707ef27cd50d085a78",
+      "bytes": 50255
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-web-preview.png",
+      "git_blob": "059f616d69f56d53e7a8c1f7469eba4507200add",
+      "sha256": "075d1ce985bbdb114f78872612799e72230312706ac3caf6ec5bbf5e3d4a81d9",
+      "bytes": 173874
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-creation-web-receipt.png",
+      "git_blob": "2091a6b73b353520d661d420dfb3f94f007d3755",
+      "sha256": "1031dc7aa930b9739bfa4cdf9f37e00b488762e1cf68dadfb4e927fc031c6940",
+      "bytes": 146133
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-form.png",
+      "git_blob": "8ea882a9f8d35b61ccf7c88bf5a4223a85c4328c",
+      "sha256": "9426fc2f4d9965a4a50503eec420c6a3dd0ed765fa59afb03a3508d846c55d6a",
+      "bytes": 57437
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-preview.png",
+      "git_blob": "3047d095fd44bfbcc6cf5dcd697ee3645b8957c5",
+      "sha256": "f0089a52d7529b00a8cf61952d19f1203c77f070eb0a8119bfad755c5f0e29f0",
+      "bytes": 57706
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-receipt.png",
+      "git_blob": "ff81b3dc8cbf2f317d9a7f86a4999134e354815d",
+      "sha256": "4307ae7445bb43e7b05b919ea2623d329b94c32f10e08b839e90842475d1393b",
+      "bytes": 53506
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-mobile-removed.png",
+      "git_blob": "712be8bfee2734ebf67e04a3596e72ba7695ef61",
+      "sha256": "0eca4669ec535eb4ff66a6cdcf537a0bf37bf5d39b73408c95cf8c526bd84ed1",
+      "bytes": 53691
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-form.png",
+      "git_blob": "4934a46addc15050fce8a138483c581e1810c894",
+      "sha256": "d949f05f1a47916d8a85d1ff93e1dbc5b34646e1df492eac53c6d0894fb14afa",
+      "bytes": 143102
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-preview.png",
+      "git_blob": "02a342d7c74924a20d78e5403fe152c8e8203426",
+      "sha256": "859d044fbcde0be423e0fb74b7c70a0ebca381c260ae2c8fea53618c219161c1",
+      "bytes": 152803
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-receipt.png",
+      "git_blob": "7581ce4ddf2c2aea87891ca6c9979ab688e56384",
+      "sha256": "0fc0b033e37586a4d4e6ea652c0e5704a5c4f49d8c7c061e65d5e48074fdf360",
+      "bytes": 141590
+    },
+    {
+      "file": "docs/media/screenshots/secretary-task-dependencies-web-removed.png",
+      "git_blob": "320385335277b88fcd883c1509b2c6e724a70785",
+      "sha256": "4c32e96120eec8b928007c5c75c4d3f86d967b01358e2f4fabe0befa81a9bb60",
+      "bytes": 141826
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-mobile-ledger.png",
+      "git_blob": "df7d60df65e0d279e1c96523b0f1b46f7fa4a977",
+      "sha256": "15c3d179e4179ee60066aa3a3bbf05b842895ca5597416639b0ef608481d55ce",
+      "bytes": 44726
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-mobile-reconciled.png",
+      "git_blob": "ccc4dc54be0e1003d347b5dda12e78f33f0627a6",
+      "sha256": "edcf44e03b9da55745251f23e49826f6cd4466f3b5e22f2a570fec32a2a5b540",
+      "bytes": 44406
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-web-ledger.png",
+      "git_blob": "188e69214771676e1a3009408f1822c23332f13f",
+      "sha256": "0a05df8c68bef54cddd3a4e3c1c335a0929d377d90f6d37940d498762a0a4513",
+      "bytes": 163143
+    },
+    {
+      "file": "docs/media/screenshots/secretary-token-budgets-web-reconciled.png",
+      "git_blob": "850f170f2e6430dce186f6bacda52ba98a7bd8a8",
+      "sha256": "f592c2148bd7c8cb18d1eac06004a74a1fe041f39368fe469873825724c97bc0",
+      "bytes": 154420
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-discussion.png",
+      "git_blob": "7102f04f55eb10cfaf493e711342f525fee26380",
+      "sha256": "4e8a483957f10dd9c0406d1a03fcf76673858f88c6c7f61be47a14ac2a5b6392",
+      "bytes": 55753
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-exact-discussion.png",
+      "git_blob": "d37b7bdae7e4b39491104250fda70ae9426be2f3",
+      "sha256": "2ceec61405105e7d21cf685bbbbdd65695a3146247b8f565f12ca9afe14c990b",
+      "bytes": 50727
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-notification.png",
+      "git_blob": "64a18bdeacb3baa366dbfc82dcc1f312c77b709a",
+      "sha256": "72999c33831772f7a80c09b4064671e06664d62e8f236229d34083de3ecc8189",
+      "bytes": 43708
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-mobile-preview.png",
+      "git_blob": "919068dac89dea5d8f659550b6259dc3c1839896",
+      "sha256": "b3d11b8fac9c397cdd5aa6ca41ad01ca942cbd1bcc8cde080f855b6815ef9201",
+      "bytes": 53193
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-discussion.png",
+      "git_blob": "1ef100b66095a3408168474604cfdbb1a7547c97",
+      "sha256": "d20ee008b87b4483a2b5f512c1f8f4b8f6c1e5e3e489a2ed5dfa995f96ac5694",
+      "bytes": 150987
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-exact-discussion.png",
+      "git_blob": "27242c00a202d3a6c0c0f30ec002639a3eb76626",
+      "sha256": "8886f54ddf377a0404fe21c29f1ac5dc7b2b402ffa9682e9dbf47ff18b57e3dd",
+      "bytes": 128371
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-notification.png",
+      "git_blob": "a0b5cba7afdbbe92f1044ce5081acb18dc3e4034",
+      "sha256": "44a6b63b8cac818c73f21f2e3362457d74a386dce815a9e814e8b42ca1e86fb4",
+      "bytes": 93390
+    },
+    {
+      "file": "docs/media/screenshots/task-mentions-web-preview.png",
+      "git_blob": "13b8add1a53eab31d121faa40125c4397a207291",
+      "sha256": "2d3349f7be32d4890e239ee176e4ed97b9647333e69ee8cc7d62f27178c37627",
+      "bytes": 128675
+    },
+    {
+      "file": "docs/media/screenshots/web-contract.png",
+      "git_blob": "83e0484c1613065b253933a8abaecb3fea407990",
+      "sha256": "5078b0794b4ca4164d24d1900a7151dbf6b593346981e6b935efc6a23053895b",
+      "bytes": 96581
+    },
+    {
+      "file": "docs/media/screenshots/web-dashboard.png",
+      "git_blob": "1a6338e43a91793dc322aa5925403d81b549214c",
+      "sha256": "576234b6f98930b817c163dd6fdecacfd20de18d453ee2bd8f0f1e38aeeb53fc",
+      "bytes": 104644
+    },
+    {
+      "file": "docs/media/screenshots/web-files.png",
+      "git_blob": "3cb2ebfb4302859600a447e6873f28fbaa9e901c",
+      "sha256": "cb4d6ae6b9fc0b7c1f938925bf890505b08395ce5b7df8442cf1ed1027f1da46",
+      "bytes": 93667
+    },
+    {
+      "file": "docs/media/screenshots/web-finance.png",
+      "git_blob": "34e11a9fc3198e1cf3f52d70bc286335f39901a0",
+      "sha256": "1174741f5428302544896f735005b8ecf108baeaa1439a80f7b71b7c25baefe9",
+      "bytes": 113322
+    },
+    {
+      "file": "docs/media/screenshots/web-knowledge.png",
+      "git_blob": "efa2deda13684ef87b4400a30e4a3eaff5d7ee59",
+      "sha256": "cf76f1b07831478443910a69a3c212f840c4a99501f5ee0d3e0be1bbd5ad323b",
+      "bytes": 85956
+    },
+    {
+      "file": "docs/media/screenshots/web-overview.png",
+      "git_blob": "03695aed5d001059807b6aeb77682e857c0e81ac",
+      "sha256": "b3c28ca45971acd322d20c352d42a6569f3b06870009cf1514eb21c8b2bd1323",
+      "bytes": 123020
+    },
+    {
+      "file": "docs/media/screenshots/web-project-board.png",
+      "git_blob": "c3d9f6f0c8912766f8ae211fcb803f3d6d526860",
+      "sha256": "2a19d9f2dc5501174b5a4e6bba6383ff43947a2fc50fdfa253f77b43b2e7663b",
+      "bytes": 105028
+    },
+    {
+      "file": "docs/media/screenshots/web-project.png",
+      "git_blob": "3a6c36d3149e39fdabeb094a0d2374bffd8c16a7",
+      "sha256": "9a4f445797aa00f667a446904cac01ee1cb160f201f55dc0a18eed8e9f51a6de",
+      "bytes": 105278
+    },
+    {
+      "file": "docs/media/screenshots/web-secretary-plan.png",
+      "git_blob": "5ff2542a8cd3e2670173fd08ec7a2bbbfa3e7627",
+      "sha256": "f0733f9ca69cf64655810c543b7e35d38d2fdc07f8e6dd55efbdc7d26b91063e",
+      "bytes": 89772
+    },
+    {
+      "file": "docs/media/screenshots/web-secretary.png",
+      "git_blob": "1462197c77d40bdb008069355a8ba81fb978ad0d",
+      "sha256": "97a9819dac08ca2143557dd3909ed24e5c17d0699bd7c48c92ee153236a8f638",
+      "bytes": 60776
+    },
+    {
+      "file": "docs/media/screenshots/web-status.png",
+      "git_blob": "b9cee2ceec6221c3c1d6576907da7075c26c35dc",
+      "sha256": "0627523b18988fb00012340313677faba1a410e9d02c006d24c197e63e53292a",
+      "bytes": 100583
+    },
+    {
+      "file": "docs/media/screenshots/web-task.png",
+      "git_blob": "a9c9a734282368cf567a3fce105177e1f1b9d9d6",
+      "sha256": "9092945138542de3a3fc828aace652bf57b39d2c170718953b1fab55cf6ef2ea",
+      "bytes": 137772
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-narrow.png",
+      "git_blob": "5494ccf2b0918336da547c9231ae7a0f50dd7881",
+      "sha256": "3ea6fa3f922e74a175a9a9b0aa54db14c15915c431388324b2918fdc787f88ec",
+      "bytes": 84227
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-other-member.png",
+      "git_blob": "87519d0ebda52a9a557457158e787799c62b6889",
+      "sha256": "f2c69ad3c94663d6203c3ed2ab3994184bca54f29dfb435bd3b5fa5eff62daec",
+      "bytes": 77329
+    },
+    {
+      "file": "docs/media/screenshots/workbench-mobile-summary.png",
+      "git_blob": "35583119065eda9a2dcff1f11bccb9cc936eea76",
+      "sha256": "98b85be2c3a467aa8d72524f497fe82b5f35a8b00a00a9120226a847db94d581",
+      "bytes": 78731
+    },
+    {
+      "file": "docs/media/screenshots/workbench-web-narrow.png",
+      "git_blob": "b4c204806074b030ffdbef9fafa025644c450a86",
+      "sha256": "e9d7f3e949509fe512a88f007550d986e742f48a9cc8b6a96d82a42b326b15ad",
+      "bytes": 122564
+    },
+    {
+      "file": "docs/media/screenshots/workbench-web-other-member.png",
+      "git_blob": "15d366fca6fd7864dc07ff26611f1a6899c5f0d7",
+      "sha256": "0be043c8e5b195d08c962ac42d8e34e33bad257a91fa6ab800a66d5e8181a353",
+      "bytes": 148992
+    },
+    {
+      "file": "docs/media/screenshots/workbench-web-summary.png",
+      "git_blob": "2f57c40cd08926338b991d87fee406a35b693760",
+      "sha256": "e101dfe3d49846a4ede290dd96afa938be612135cc263ed3d3fa5666308f7add",
+      "bytes": 176382
+    },
+    {
+      "file": "docs/media/videos/agent-indexed-search-mobile.mp4",
+      "git_blob": "0179bca54fb70f2200f8dc392b8c965ca9322fad",
+      "sha256": "bedc0b7c2b4fe605bdb831ec1844bd0185f4ed202e27ef10a8738bef7bb56c14",
+      "bytes": 267151
+    },
+    {
+      "file": "docs/media/videos/agent-indexed-search-web.mp4",
+      "git_blob": "c60c3de16623e11a4d5ee302ad2f605af9e4ddaf",
+      "sha256": "ce8ba1bb2d4af1a0266b65cbc5ed2e06afb568d9830f5b8813e64a99297e7e6c",
+      "bytes": 223897
+    },
+    {
+      "file": "docs/media/videos/audit-console-mobile.mp4",
+      "git_blob": "405004b4368ef2f3f214009c63f71a943e9a8dd4",
+      "sha256": "558eec349a12313a62d5723d649a29db4ad2ad7d9e9a3ea0476ab7a02661fcbf",
+      "bytes": 186504
+    },
+    {
+      "file": "docs/media/videos/audit-console-web.mp4",
+      "git_blob": "a4867acf03b76f8490689e1af2287479e4dc72e6",
+      "sha256": "a90099871e1e061b8846e6c7e39f54af20dd7c9ff42136c54cd82ed19bc3ef62",
+      "bytes": 574526
+    },
+    {
+      "file": "docs/media/videos/contract-reminders-mobile.mp4",
+      "git_blob": "cf688af4a2bc599b7cc3d2a7bd3b9c1f09cc44d2",
+      "sha256": "20ea946122ab24afa06d741140a2beb32a389c6cf6a46f7893e5ca78f3812cbb",
+      "bytes": 207267
+    },
+    {
+      "file": "docs/media/videos/contract-reminders-web.mp4",
+      "git_blob": "8d117a4af015fc54b115a975f3aae0789cd1a1ee",
+      "sha256": "c9159ff02fd638d21475bbb802783d553f9c38455a0c0e206c628d9c26aac8ed",
+      "bytes": 343921
+    },
+    {
+      "file": "docs/media/videos/cost-amortization-mobile.mp4",
+      "git_blob": "17aab92de493923f79a7579c9d06003120f4c215",
+      "sha256": "bf51fe69dfa62a0cfbe12c4d46dd606b886e4abd5b124375fa0d1430bd127020",
+      "bytes": 145185
+    },
+    {
+      "file": "docs/media/videos/cost-amortization-web.mp4",
+      "git_blob": "75c19e6d5b1c8dfb0cf99c9eb42b51560eb073dd",
+      "sha256": "3cafed7af41c17d86315c35bc35686007749accf35a8f44bce3b3d8e10f57780",
+      "bytes": 364193
+    },
+    {
+      "file": "docs/media/videos/dependency-hardening-cost-draft.mp4",
+      "git_blob": "16b85badfc6aefc10eecf004ed577aa8bf892748",
+      "sha256": "6874cf83da59e9010e4a980d37621c70f9dd0f182ca5ce93d64f6e1b2243b883",
+      "bytes": 183809
+    },
+    {
+      "file": "docs/media/videos/dependency-hardening-payment-draft.mp4",
+      "git_blob": "d39541d69d811a0892732ba5308a1d11d747507e",
+      "sha256": "30723723f7410ad86460ef9365f0db0fd3af545cf0760a0968e7564db155e1a0",
+      "bytes": 251774
+    },
+    {
+      "file": "docs/media/videos/file-comparison-mobile.mp4",
+      "git_blob": "c2bda746e76639948fb34ea4b390611f43153487",
+      "sha256": "52a1b700a2c9e7a303de239f826a22ef602224035ce195ff5923c1e8e93654ab",
+      "bytes": 366967
+    },
+    {
+      "file": "docs/media/videos/file-comparison-web.mp4",
+      "git_blob": "316f01250df33f74131b7e3b1bdb3eae65f92c0f",
+      "sha256": "61ca9556dc5bc609b9811c452cb733a2286ff720ea3c3ccbd4b399f9d878b257",
+      "bytes": 432499
+    },
+    {
+      "file": "docs/media/videos/file-recovery-mobile.mp4",
+      "git_blob": "86fc73faf4a6fb0a1bab05c9290f339a0b467e28",
+      "sha256": "33d231b227c425fa10683909f3f52c985bebcb651fae364287b98dc2ed7b9bf4",
+      "bytes": 126789
+    },
+    {
+      "file": "docs/media/videos/file-recovery-web.mp4",
+      "git_blob": "cc2943bec765724e0d7caca321c0f73d5e4d6546",
+      "sha256": "26fc2a68821679215b22cf4fbc9dda0c59b3a6ef1b2a1eab289505ece6e1f573",
+      "bytes": 383741
+    },
+    {
+      "file": "docs/media/videos/file-search-mobile.mp4",
+      "git_blob": "ae587c1ef7f0f4f9e38a9c9741316297de052bb2",
+      "sha256": "87126ffaa035be8126712bc1ae83b03c513c7e5c6bc2c50b6f3ba6181f5cfe6b",
+      "bytes": 169007
+    },
+    {
+      "file": "docs/media/videos/file-search-web.mp4",
+      "git_blob": "a66f02867881d033369ef820ed74053ee1526961",
+      "sha256": "a5b4f5c108e670510f51f63780cfc2f1a3ab48a264abce6c278568d32d00477c",
+      "bytes": 212803
+    },
+    {
+      "file": "docs/media/videos/finance-fx-mobile.mp4",
+      "git_blob": "398f0fdfda5309bd3503aa0ec21f1bfe65c41450",
+      "sha256": "6eaecf60a43237f8486b184022a1283b8c9496d63ecdce64fbe86af4dda8dcf9",
+      "bytes": 291281
+    },
+    {
+      "file": "docs/media/videos/finance-fx-web.mp4",
+      "git_blob": "181c09c053a44fa173ab876e3bf8a8d9e62de4b0",
+      "sha256": "b1446219092cd9ab9afff1eabc528938e880013ead986302425aad1f65e77ea4",
+      "bytes": 351075
+    },
+    {
+      "file": "docs/media/videos/financial-reports-mobile.mp4",
+      "git_blob": "068c2b2a3e7bcd4c4eeb18d8193333ba3393fe80",
+      "sha256": "9751ebfc74d93c077b100ae2de4b704234caa3e265eb6d3f9bec061d6af78246",
+      "bytes": 228968
+    },
+    {
+      "file": "docs/media/videos/financial-reports-web.mp4",
+      "git_blob": "f3f8e598b72f2b1d683c55108692776af88a4266",
+      "sha256": "155252a99ffe16e5c75cb153dbcf77f1b9308e77f67e0a88cc0744f70d3ccb2e",
+      "bytes": 503772
+    },
+    {
+      "file": "docs/media/videos/miniapp-identity-mobile-collaboration.mp4",
+      "git_blob": "055a02975786bc5a857c56c896b4b3d3f75d8240",
+      "sha256": "d8cd9627b76f3ae575e7409aecac2077a4b42380da4261cd2bda5359319664ef",
+      "bytes": 54693
+    },
+    {
+      "file": "docs/media/videos/miniapp-identity-web-collaboration.mp4",
+      "git_blob": "67302e8911dfd538982d99172de34776097b74d5",
+      "sha256": "024aee46ad96fdb81ea25e52e3fb973091661834da66ceeb432d22d80ab79510",
+      "bytes": 162104
+    },
+    {
+      "file": "docs/media/videos/mobile-files-directory.mp4",
+      "git_blob": "1ef9bb58ddba529b21f1c820ed8d0df21d894fc5",
+      "sha256": "8d16a386f44f727b2028be966a6d5e4b6b6688d609605d3790ab70dbfb443a4d",
+      "bytes": 190961
+    },
+    {
+      "file": "docs/media/videos/mobile-files-lifecycle.mp4",
+      "git_blob": "b05ff39bd03aa0d5a8a469385b88269b43141801",
+      "sha256": "580c753718a4b284be0d21bcda6b0b44d66dfdae97bf2053ffd1918f97421d50",
+      "bytes": 245244
+    },
+    {
+      "file": "docs/media/videos/mobile-finance-cost-draft.mp4",
+      "git_blob": "3078b43a27e11683d8d3228c2d2395e05385e4e8",
+      "sha256": "a586a5e6466eefbad6fd94df103bda9b8c1c78df02b14fd86d5f9aeacf34d938",
+      "bytes": 193262
+    },
+    {
+      "file": "docs/media/videos/mobile-finance-payment-draft.mp4",
+      "git_blob": "48d50aeb926a5bdf90f186aac07efc6526a7ad75",
+      "sha256": "43d44f02f0079eea127e66b4875ecb98a2d440f8425ad902f7c598aabdd112f0",
+      "bytes": 262386
+    },
+    {
+      "file": "docs/media/videos/mobile-knowledge-access.mp4",
+      "git_blob": "866bdd8e498ed9075d5774e71248fdaf0f8009f4",
+      "sha256": "0401ff841c6d7468786ee711d3c25d16c1089af909d9fbef48b5f300f4d7e40c",
+      "bytes": 92165
+    },
+    {
+      "file": "docs/media/videos/mobile-project-change-workflow.mp4",
+      "git_blob": "9483065acb4e721e7780b1267b6960fd1e53affa",
+      "sha256": "e8e7dd7f551c23a45fbb20ecd5383bb82db7d93e1d92f27ea3bb392ef4ca4d9b",
+      "bytes": 240725
+    },
+    {
+      "file": "docs/media/videos/mobile-project-closeout-workflow.mp4",
+      "git_blob": "1afd5c81a12ebc9f07112a76d6377f5bf3370e5a",
+      "sha256": "9c79a16a0e11e6fcc3114981e2ece462f4eeb7d7dc69111ee05cdd3460857ba4",
+      "bytes": 155699
+    },
+    {
+      "file": "docs/media/videos/mobile-risk-issue.mp4",
+      "git_blob": "4f08cae3cf820377a4d68dc25c1e3e21c5767337",
+      "sha256": "6f41e942b6d43ed635ea8063a0fba73855a000fa367e7a37e7152e26fadbe95e",
+      "bytes": 191142
+    },
+    {
+      "file": "docs/media/videos/mobile-task-workflow.mp4",
+      "git_blob": "ad9011f9f6763d1a2414bad3063dac7a63301b0b",
+      "sha256": "e1e9ca16f02e6980dc810546a8e6594da510656a679c0c1f7470a3ca119fba21",
+      "bytes": 248185
+    },
+    {
+      "file": "docs/media/videos/mobile-telegram-access.mp4",
+      "git_blob": "76bf78aa401674e9b6be49cb42dad558bee1234e",
+      "sha256": "c08d28822d6a581ad2de1e41c313215099693a4de250fbea1f38c58e68ac27d8",
+      "bytes": 144311
+    },
+    {
+      "file": "docs/media/videos/multipart-cleanup-mobile.mp4",
+      "git_blob": "87e9fd3464ff4032bd3aba08ec17391ac84804c3",
+      "sha256": "2918a2cdb9f5835e7b7d344c513b7c0d0c797b751ee5f8de7a3d5b195ee5345f",
+      "bytes": 139985
+    },
+    {
+      "file": "docs/media/videos/multipart-cleanup-web.mp4",
+      "git_blob": "8606ac32324400deba7b424a03acad957046701c",
+      "sha256": "50e63911e9292064fa87c4ccba1996c1f502559d8b7ebeb00ad2d8e3015c0e53",
+      "bytes": 171760
+    },
+    {
+      "file": "docs/media/videos/native-service-health-workflow.mp4",
+      "git_blob": "9bd8db7bdf74b5a228d4dbfe949b14b455481319",
+      "sha256": "a980af105a56b4b18546a19055a3d297b5bb56d8b020c008645d9c4fe5f77800",
+      "bytes": 221939
+    },
+    {
+      "file": "docs/media/videos/notification-retry-mobile.mp4",
+      "git_blob": "8fe71671658a7de74d7777e884d6ec2f3451803c",
+      "sha256": "7e95c88f7a9ef51f4cedb11b0613a8a4adae68f417f8bd796ecad377f349125f",
+      "bytes": 86654
+    },
+    {
+      "file": "docs/media/videos/notification-retry-web.mp4",
+      "git_blob": "a150c0834c1998a711b13a9af7890bbec4cb30bb",
+      "sha256": "73d3d7aaf71f82f1a5d926cf9dab0379a5b1617f8e186028c10e4c338b703530",
+      "bytes": 202286
+    },
+    {
+      "file": "docs/media/videos/project-budget-comparison-mobile.mp4",
+      "git_blob": "c387783f1396f28753fdb0dfdc5d06133c6911c5",
+      "sha256": "665db77aec7624d2d6e169135858034acce4751b0ad542868ba9b075b234cd06",
+      "bytes": 188143
+    },
+    {
+      "file": "docs/media/videos/project-budget-comparison-web.mp4",
+      "git_blob": "d3922c29a029d7c46356b7eb54463c8455ba6273",
+      "sha256": "f01d08147522110181b94d2580cb75df83b34048f1a9f9e474f598965abf2578",
+      "bytes": 163968
+    },
+    {
+      "file": "docs/media/videos/secretary-concerns-mobile.mp4",
+      "git_blob": "c8e90bb2fe592aacb0751541ee299341e23c3ce9",
+      "sha256": "df0dd36c09af92fab37087e599013a7be21250cd576c84eabad9cb69e270366b",
+      "bytes": 72550
+    },
+    {
+      "file": "docs/media/videos/secretary-concerns-web.mp4",
+      "git_blob": "62ed94cc2c2ccfeddaa863465c8567256b2f55c0",
+      "sha256": "be2e1d3beb4727157b990740d9384503e18c5214dfdc621de919d512d4214359",
+      "bytes": 137932
+    },
+    {
+      "file": "docs/media/videos/secretary-cost-free-mobile.mp4",
+      "git_blob": "becc654444975ea8c290aa7216e7bbb7a507abb6",
+      "sha256": "40a28cae8040ab2780af52a7d0de950dcc490ccb9e19c6a7c49038a4402dc1f9",
+      "bytes": 288817
+    },
+    {
+      "file": "docs/media/videos/secretary-cost-free-web.mp4",
+      "git_blob": "feb54d0ad8f5fd636f65c4f1e9d3334b846b5e1d",
+      "sha256": "eafad5df897b4c52f8e483b9e8f18ce2e6fca8b0f74d7833d6dc667a0d4192ce",
+      "bytes": 112247
+    },
+    {
+      "file": "docs/media/videos/secretary-oa-prose-mobile.mp4",
+      "git_blob": "0fa5634261d646eda09f4aabae7c24413a02bf0b",
+      "sha256": "074601f605d8505891da67308ec3d94f2f24849f3902bbf18680ac9e7b164e1e",
+      "bytes": 234093
+    },
+    {
+      "file": "docs/media/videos/secretary-oa-prose-web.mp4",
+      "git_blob": "7fefe8ce2f83f77d95c46e101429f6ec9592ac8f",
+      "sha256": "daa0a4be26e5cf8fa6638e097b23bd7f3e7a69efa4cba741e3edcc80969c0c85",
+      "bytes": 254334
+    },
+    {
+      "file": "docs/media/videos/secretary-task-creation-mobile.mp4",
+      "git_blob": "6f99b327d6c9fb257696580baebba8d695445dd5",
+      "sha256": "6416a75b9e390d6700a4b1cd5038743720d1c044aa9a90761a961312771c847b",
+      "bytes": 95610
+    },
+    {
+      "file": "docs/media/videos/secretary-task-creation-web.mp4",
+      "git_blob": "fff4391440f71dec07ca44c50fa7ce290a117cb9",
+      "sha256": "acfd08d69cdd3e80e22486460855ead60fa5de6189d4627182ea5bf5b4700696",
+      "bytes": 197360
+    },
+    {
+      "file": "docs/media/videos/secretary-task-dependencies-mobile.mp4",
+      "git_blob": "5aca801837556b0ce891ce6649a83f3066567a4f",
+      "sha256": "1d68535ea1fea90a8ac415119c6b508c22fc3e59d2a47787cec8513c4b44dc3a",
+      "bytes": 332931
+    },
+    {
+      "file": "docs/media/videos/secretary-task-dependencies-web.mp4",
+      "git_blob": "57e3349cf5e5ba1dfb65dfa323deb6959a1304c5",
+      "sha256": "f31ed4364c16a1413f0e4c2e97ffaad6373c0606e4b0cef8fec28440ecd74072",
+      "bytes": 589355
+    },
+    {
+      "file": "docs/media/videos/secretary-token-budgets-mobile.mp4",
+      "git_blob": "016fc647b423bde8303e258e1fc17a04182893be",
+      "sha256": "df169b0f1388aec0fb0afe44660a87a77cec51173973c0ee0eb9d81094146dc5",
+      "bytes": 142483
+    },
+    {
+      "file": "docs/media/videos/secretary-token-budgets-web.mp4",
+      "git_blob": "d19befae6dca7a6fd7b8fe3535f314b4b36647fb",
+      "sha256": "8c4e8ad7f701b60308e6f9959e7ade561a1aca499b904c17cc91ffaaed90019f",
+      "bytes": 196794
+    },
+    {
+      "file": "docs/media/videos/task-mentions-mobile-collaboration.mp4",
+      "git_blob": "8b976ad06b4b110708c49151a4c27811341945dd",
+      "sha256": "a4b920ce9732292e3b68fd0597f1925e40ce57457e5c7157f15b370be64fbcfd",
+      "bytes": 129239
+    },
+    {
+      "file": "docs/media/videos/task-mentions-web-collaboration.mp4",
+      "git_blob": "15f80f03542126a0843a3968cd6724871d5adcc1",
+      "sha256": "2dfd65ab1d2bf35b719e4d839527bc293753fc4c632839dd681e13bf9fedfc12",
+      "bytes": 251325
+    },
+    {
+      "file": "docs/media/videos/web-operations-tour.mp4",
+      "git_blob": "e3e69ce4e8e4a1ce7ec2ea8d1d5eb90a6e246b77",
+      "sha256": "7d377c8fd811e33dde139aa8650965fce8ec11b16021f123b0201254d9a94fb3",
+      "bytes": 361792
+    },
+    {
+      "file": "docs/media/videos/web-project-flow.mp4",
+      "git_blob": "e09ccf56c59aa8c95a03ebf0c582bbad59c7a40e",
+      "sha256": "dd8012869f8bbebb36aa013b43c919d4d40a900c63da4b6b9dd1b048ee594f4e",
+      "bytes": 288481
+    },
+    {
+      "file": "docs/media/videos/workbench-mobile.mp4",
+      "git_blob": "becd37b8fe2c41165f9787951ed4059abb470e4a",
+      "sha256": "222ca04382b7223ca51cf5e5ba14466b7e271975d6621ea5c8f9a0398db7d99e",
+      "bytes": 144235
+    },
+    {
+      "file": "docs/media/videos/workbench-web.mp4",
+      "git_blob": "d660c00b8f8f37d5c89e3bb6960fc755dfd21988",
+      "sha256": "fa33ac6bc48db855e11272b073aa250225039e9eca9f00cd360314e3ed904e13",
+      "bytes": 96108
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/dependency-integrity/dependency-audit.json",
+      "sha256": "a453185d74746f7fb4fc97d772c9725c916b39d61820b2dbf90356e264a40b30"
+    },
+    {
+      "file": "docs/quality/evidence/dependency-integrity/audit-after.json",
+      "sha256": "7b85cc420cce9d22f6c5dfc5932893c2a62b1d30d9c2f13b1df58a7e42f3a023"
+    },
+    {
+      "file": "docs/quality/evidence/dependency-integrity/security-checks.json",
+      "sha256": "a3de333f4c8f0154511f8bd83d478718d50938c213c20a7ae9df714ca4b99873"
+    },
+    {
+      "file": "docs/quality/evidence/workbench/client-checks.json",
+      "sha256": "bab4ebbb4a4325f39e26874d63602c52c7bcd06d75e6465458e85ce362f54401"
+    },
+    {
+      "file": "docs/quality/evidence/workbench/final-source-check.json",
+      "sha256": "c4843da68c2f23bd3c9592d1d6b6ea73b6bd490be900ffe25fb958e8de9e797e"
+    },
+    {
+      "file": "docs/quality/evidence/workbench/media.json",
+      "sha256": "98c37617f3944cef64f3bf8b83d54670ad0f49cf210dbe43d2275f609d7c8ff8"
+    },
+    {
+      "file": "docs/quality/evidence/workbench-backend/result.json",
+      "sha256": "8abdef770d65ae04f246ef53fcf6c4d6b6f1cfc42ef50e2c1181dbbaf7bce3a3"
+    }
+  ],
+  "package_lock_sha256": "93d267dd8b510ae346c7cb6bb5d368475c8a05c58471e27150447a790038a807",
+  "new_dependency_audit": false,
+  "new_dependency_security_test_execution": false,
+  "mobile_test_selection_updated": true,
+  "contracts_source_export_added": true,
+  "workspace_dependency_fields_unchanged": true,
+  "scope": "276 historical media retain original published bytes and capture scope. Increment108 dependency results retain their actual execution dates. Root manifest, lock and all dependency fields are unchanged; only a contracts source export and mobile test selection are extended. Increment114 results remain historical, separate from current-source execution."
+}

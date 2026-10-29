@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T20:54:55.464162+00:00",
+  "scope": "Tracked and non-ignored candidate working files",
+  "file_count": 6546,
+  "total_bytes": 437369366,
+  "binary_files": 1242,
+  "markdown_files": 268,
+  "checks": [
+    {
+      "name": "Publication contains code, documentation and bilingual entry points",
+      "passed": true
+    },
+    {
+      "name": "No local tools, credentials, caches, databases or release binaries selected",
+      "passed": true
+    },
+    {
+      "name": "All selected Git blobs are smaller than 100 MiB",
+      "passed": true
+    },
+    {
+      "name": "High-confidence private key/token patterns absent from selected text",
+      "passed": true
+    },
+    {
+      "name": "Known private generated development values absent from all selected bytes",
+      "passed": true
+    },
+    {
+      "name": "Publication code and guides have no trailing whitespace or extra EOF blank lines",
+      "passed": true
+    },
+    {
+      "name": "All parsed local Markdown links resolve to selected repository files/directories",
+      "passed": true
+    },
+    {
+      "name": "Both full language guides cover architecture, workflows, setup, clients, gates and updates",
+      "passed": true
+    },
+    {
+      "name": "Initial capture matches historical Git sources and its explicitly recorded ignored-cache supplement",
+      "passed": true
+    },
+    {
+      "name": "Capture fixture, owned servers and isolated native database cleaned up",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser port5189 released",
+      "passed": true
+    },
+    {
+      "name": "web actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "mobile actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "All fifteen screenshots and historical source match recorded hashes",
+      "passed": true
+    },
+    {
+      "name": "Three MP4/GIF pairs match verified encoder/capture and output digests",
+      "passed": true
+    },
+    {
+      "name": "Media manual review binds the exact inspected screenshots and GIFs",
+      "passed": true
+    },
+    {
+      "name": "Full backend proof matches complete current Go/SQL/contract source and the declared test scope",
+      "passed": true
+    },
+    {
+      "name": "Runtime proof matches complete current source and declared test scope",
+      "passed": true
+    },
+    {
+      "name": "Web proof matches current listed sources and declared test scope",
+      "passed": true
+    },
+    {
+      "name": "Current mobile proof matches complete source and recorded passing test count",
+      "passed": true
+    },
+    {
+      "name": "Current Android build binds complete native and portable sources",
+      "passed": true
+    },
+    {
+      "name": "Current read-only development inspection passed, with no test databases/external activation",
+      "passed": true
+    },
+    {
+      "name": "Latest functional evidence binds current sources, browser flows, media and verification script",
+      "passed": true
+    },
+    {
+      "name": "Current user-approved scope and exclusions match source-bound planning evidence",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and source-bound dependency security gate remains open",
+      "passed": true
+    },
+    {
+      "name": "Gap register retains all twenty-eight stable IDs",
+      "passed": true
+    }
+  ],
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "known_private_value_count": 8,
+  "known_private_value_matches": [],
+  "publication_whitespace_findings": [],
+  "oversize_files": [],
+  "index_worktree_differences": [],
+  "broken_local_links": [],
+  "secret_scan_scope": "High-confidence text patterns, not exhaustive secret detection or pixel OCR.",
+  "functional_evidence": "Current source-bound backend/Web/runtime/mobile/browser/native artifacts and declared retained foundation proofs; see the baseline and final proof.",
+  "current_functional_increment": 115,
+  "current_scope_revision": 99,
+  "verification_script_sha256": "067e8e8754551f0e33bfd4440ce19115db0b32e33a50938e0a8313815718d9be",
+  "production_ready": false
+}

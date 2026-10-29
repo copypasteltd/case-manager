@@ -12,6 +12,7 @@ import { SelectField, TextField } from '../business/controls';
 import { FileEditor } from './forms';
 import { MultipartCleanup } from './cleanup';
 import { FileComparisonPanel } from './comparison';
+import { ScopeTransfers } from './scope-transfers';
 
 type Workspace = { folder?: Folder; file?: StoredFile; project?: Schemas['Project'] };
 type Editor = { mode: 'create' | 'move' | 'trash' | 'restore'; kind: 'folder' | 'file'; item?: FileResource };
@@ -38,6 +39,7 @@ export default function FilesPage() {
         {current.folder.project_id && <Row title='查看所属项目' onClick={() => go('project', current.folder!.project_id!)} />}
       </Section>}
       {!current.file && current.folder && me.actions.includes('file.retention.manage') && <MultipartCleanup key={current.folder.id} folder={current.folder} me={me} />}
+      {!editor && (current.file || current.folder) && <ScopeTransfers kind={current.file ? 'file' : 'folder'} resource={(current.file ?? current.folder)!} me={me} />}
       {editor ? <FileEditor key={editor.mode + ':' + (editor.item?.id ?? current.folder?.id ?? 'root') + ':' + (editor.item?.version ?? 1) + ':' + me.authorization_version} {...editor} parent={editor.mode === 'create' ? current.folder : undefined} me={me} onCommitted={committed} onClose={() => setEditor(undefined)} />
         : current.file ? <FileDetails file={current.file} onEdit={setEditor} />
         : <DirectoryContents current={current} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}
