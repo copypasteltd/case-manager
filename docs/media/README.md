@@ -1,5 +1,18 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量122 / Increment122：从业务待办进入事件与文件详情处理，重试后仍待校验，完成后刷新消除。演示仅使用隔离合成数据；MP4为登录后的实际视口录像，GIF明确为实际截图导览。
+
+| 阶段 / Stage | Web | Taro H5 |
+|---|---|---|
+| 待处理 / Initial | [PNG](screenshots/operations-workbench-web-summary.png) | [PNG](screenshots/operations-workbench-mobile-summary.png) |
+| 已排队，待验证 / Pending verification | [PNG](screenshots/operations-workbench-web-pending.png) | [PNG](screenshots/operations-workbench-mobile-pending.png) |
+| 已完成 / Completed | [PNG](screenshots/operations-workbench-web-complete.png) | [PNG](screenshots/operations-workbench-mobile-complete.png) |
+| 演示 / Demo | [MP4](videos/operations-workbench-web.mp4) · [GIF](gifs/operations-workbench-web.gif) | [MP4](videos/operations-workbench-mobile.mp4) · [GIF](gifs/operations-workbench-mobile.gif) |
+
+历史327份媒体原字节保留。当前录制不代表真机、真实云、真实Codex或正式平台验收。[验证 / Checks](../quality/122-operations-workbench-verification.md)。
+
+## 历史演示 / Historical media
+
 增量121实际合成页面：异币实收草稿、确认后的原本金依据、保留凭证的全额冲销。录制在登录后开始，排除密码／MFA和真实业务记录；GIF为实际截图导览，MP4为实际视口录像。
 
 | 页面 | Web | Taro H5 |

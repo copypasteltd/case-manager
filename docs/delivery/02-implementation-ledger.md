@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量122：GAP-08／18补齐本人服务事件、本人创建文件的当前存储待办，以及共享移动端副本重试。解决事件后退出待办，重试排队后继续等待完整验证；真实云故障来源、跨渠道送达及完整业务验收继续开放。23 active（14 P0／9 P1）／5 excluded不变。见[设计](../development/122-operations-workbench.md)与[验证](../quality/122-operations-workbench-verification.md)。
+
 增量121：GAP-03／18增加未分配本金的异币退款实收登记、原付款本金限额、实际现金汇总及全额冲销；费用／合同异币归属、公司汇差制度与完整业务验收继续开放。仍23 active（14 P0／9 P1）、5 excluded。见[设计](../development/121-actual-foreign-refunds.md)、[验证](../quality/121-refund-verification.md)；当前范围按[修订99](04-current-scope-and-acceptance.md)。
 
 增量120：GAP-04／18增加XLSX／PPTX准确版本提取、当前正文检索、全文比较和秘书资料读取，保留原件与旧提取证据。PDF／OCR、复杂DOCX、Office编辑／版式及完整业务验收继续开放。仍23 active（14 P0／9 P1）、5 excluded。见[设计](../development/120-office-text-extraction.md)及[验证](../quality/120-office-text-verification.md)。

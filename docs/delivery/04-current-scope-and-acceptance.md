@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量122：GAP-08／18增加负责人服务事件、创建者当前文件存储待办与四端详情处置；共享移动端新增人工副本重试，完整字节校验完成后才消除待办。更多聚合、真实云故障／送达、公司规则和完整业务验收仍开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/122-operations-workbench.md)与[核验](../quality/122-operations-workbench-verification.md)。
+
 增量121：GAP-03／18增加未分配本金的异币退款实收登记、原付款本金限额、实际现金汇总及全额冲销；费用／合同异币归属、公司汇差制度与完整业务验收继续开放。仍23 active（14 P0／9 P1）、5 excluded。见[设计](../development/121-actual-foreign-refunds.md)、[验证](../quality/121-refund-verification.md)；当前范围按[修订99](04-current-scope-and-acceptance.md)。
 
 增量120：GAP-04／18增加XLSX／PPTX准确版本提取、当前正文检索、全文比较和秘书资料读取，保留原件与旧提取证据。PDF／OCR、复杂DOCX、Office编辑／版式及完整业务验收继续开放。仍23 active（14 P0／9 P1）、5 excluded。见[设计](../development/120-office-text-extraction.md)及[验证](../quality/120-office-text-verification.md)。

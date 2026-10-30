@@ -1,6 +1,7 @@
 """Own a native disposable fixture and either Web or Taro H5, then close all owned resources."""
 import argparse
 import functools
+import hashlib
 from http.client import HTTPConnection
 from http.server import BaseHTTPRequestHandler, SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
@@ -12,7 +13,7 @@ import sys
 import threading
 import time
 from urllib.request import Request, urlopen
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit, urlunsplit
 from workbench_sources import APP, digest
 
 
@@ -67,8 +68,11 @@ class FixtureProxy(BaseHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mobile', action='store_true')
+    parser.add_argument('--feature', choices=('workbench', 'operations'), default='workbench')
     args = parser.parse_args()
-    group = 'workbench-' + ('mobile' if args.mobile else 'web')
+    operations = args.feature == 'operations'
+    expected_kind = 'human-operations-workbench' if operations else 'human-business-workbench'
+    group = ('operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
     local = APP / '.local'
     fixture_file = local / 'business-browser-fixture.json'
     report = APP.parent / 'docs/quality/evidence' / group / 'result.json'
@@ -83,6 +87,7 @@ def main():
     build_source = digest()
     success = False
     failure_code = None
+    compile_receipt = None
 
     def release():
         nonlocal configuration
@@ -94,7 +99,7 @@ def main():
                 if not isinstance(candidate, dict):
                     return
                 origin = urlsplit(candidate.get('api_origin', ''))
-                if candidate.get('fixture_kind') == 'human-business-workbench' and candidate.get('workbench_fixture') is True and candidate.get('isolated_database') is True and origin.scheme == 'http' and origin.hostname == '127.0.0.1' and origin.port and not origin.username and not origin.password and not origin.query and not origin.fragment and origin.path in ('', '/') and isinstance(candidate.get('stop_token'), str) and candidate['stop_token']:
+                if candidate.get('fixture_kind') == expected_kind and candidate.get('operations_workbench_fixture' if operations else 'workbench_fixture') is True and candidate.get('isolated_database') is True and origin.scheme == 'http' and origin.hostname == '127.0.0.1' and origin.port and not origin.username and not origin.password and not origin.query and not origin.fragment and origin.path in ('', '/') and isinstance(candidate.get('stop_token'), str) and candidate['stop_token']:
                     configuration = candidate
             except (OSError, ValueError, TypeError):
                 pass
@@ -117,6 +122,20 @@ def main():
 
     try:
         with (local / (group + '-native.log')).open('w', encoding='utf-8') as native_log, (local / (group + '-build.log')).open('w', encoding='utf-8') as build_log:
+            if operations:
+                # Native Go linking is preparation, not part of the domain
+                # fixture's unchanged 12-minute lifetime or readiness wait.
+                # Warm the exact test binary before starting any DB fixture.
+                binary = local / 'operations-workbench-httpapi.test.exe'
+                build = subprocess.Popen([str(APP / '.tools/go/bin/go.exe'), 'test', '-c', './internal/httpapi', '-o', str(binary)],
+                    cwd=APP / 'backend', env={**os.environ, 'GOPROXY':'https://goproxy.cn,https://proxy.golang.org,direct','GODEBUG':'http2client=0'},
+                    stdout=build_log, stderr=subprocess.STDOUT, creationflags=flags)
+                if build.wait(timeout=1200):
+                    raise RuntimeError('Native fixture compilation failed before database startup.')
+                compile_receipt = {'command':['go','test','-c','./internal/httpapi'], 'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
+                    'source_sha256':build_source, 'completed_before_database_fixture':True}
+                if digest() != build_source:
+                    raise RuntimeError('Implementation changed during native fixture compilation.')
             if args.mobile:
                 # Compile before starting the fixed-lifetime domain fixture.
                 # Only its eventual loopback API target varies between runs.
@@ -128,9 +147,27 @@ def main():
                     raise RuntimeError('Native Taro H5 review build failed.')
                 if digest() != build_source:
                     raise RuntimeError('Implementation changed during the H5 prebuild.')
-            process = subprocess.Popen([sys.executable, str(APP / 'scripts/test_workbench_native.py'), '--package', './internal/httpapi',
-                '-run', '^TestBusinessWorkbench$', '-timeout=25m', '-v'], cwd=APP,
-                env={**os.environ, 'CP_BROWSER_AGENT_FIXTURE':'1','CP_BROWSER_BUSINESS_FIXTURE':'1','CP_BROWSER_FILE_COMPARISON_FIXTURE':'1'},
+            fixture_env = {**os.environ, 'CP_BROWSER_AGENT_FIXTURE':'1','CP_BROWSER_BUSINESS_FIXTURE':'1','CP_BROWSER_FILE_COMPARISON_FIXTURE':'1'}
+            fixture_command = [sys.executable, str(APP / 'scripts/test_workbench_native.py'), '--package', './internal/httpapi', '-run', '^TestBusinessWorkbench$', '-timeout=25m', '-v']
+            if operations:
+                # Reuse the exact precompiled bytes. Match test_backend.py's
+                # private native environment; no second cold link in readiness.
+                values = json.loads((APP / '.local/environment.json').read_text(encoding='utf-8'))
+                source = urlsplit(values['CP_DATABASE_URL'])
+                admin = urlunsplit((source.scheme,'postgres:'+quote(values['_superuser_password'])+'@127.0.0.1:'+str(values['_postgres_port']),'/postgres',source.query,''))
+                fixture_env.update({k:v for k,v in values.items() if k.startswith('CP_')})
+                # This fixture enrolls its actual human actor only. Unrelated
+                # browser modes must not demand extra synthetic credentials.
+                fixture_env = {k:v for k,v in fixture_env.items() if not k.startswith('CP_BROWSER_')}
+                fixture_env.update({'CP_TEST_ADMIN_URL':admin,'CP_ENV':'test',
+                    'CP_BROWSER_BUSINESS_FIXTURE':'1','CP_BROWSER_OPERATIONS_WORKBENCH':'1'})
+                assert hashlib.sha256(binary.read_bytes()).hexdigest() == compile_receipt['binary_sha256']
+                fixture_command = [str(binary),'-test.run=^TestOperationsWorkbenchBrowserFixture$','-test.timeout=25m','-test.v']
+                compile_receipt['executed_exact_binary'] = True
+            # go test normally runs a package binary in its package directory.
+            # Direct execution must preserve that convention for owned paths.
+            process = subprocess.Popen(fixture_command, cwd=APP / 'backend/internal/httpapi' if operations else APP,
+                env=fixture_env,
                 stdout=native_log, stderr=subprocess.STDOUT, creationflags=flags)
             # Preparation is separate from the unchanged 12-minute fixture
             # lifetime, 150-second cleanup wait and actual business deadlines.
@@ -145,7 +182,7 @@ def main():
                     break
                 except json.JSONDecodeError:
                     time.sleep(0.05)
-            if not configuration or configuration.get('fixture_kind') != 'human-business-workbench':
+            if not configuration or configuration.get('fixture_kind') != expected_kind:
                 raise RuntimeError('Fixture identity did not match this check.')
             if args.mobile:
                 server = ThreadingHTTPServer(('127.0.0.1', 5189), functools.partial(QuietHandler, directory=str(APP / 'mobile/dist/h5')))
@@ -171,7 +208,7 @@ def main():
                 raise RuntimeError('Implementation changed during review startup/build.')
             print('Owned native fixture and review server ready; checking scoped business counts, ordinary detail navigation and authority changes.', flush=True)
             with (local / (group + '-browser.log')).open('w', encoding='utf-8') as browser_log:
-                browser = subprocess.Popen([node, str(APP / 'scripts/check_workbench.mjs'), *(['--mobile'] if args.mobile else [])],
+                browser = subprocess.Popen([node, str(APP / ('scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
                     cwd=APP, env={**os.environ, 'CP_BROWSER_EVIDENCE_GROUP': group}, stdout=browser_log, stderr=subprocess.STDOUT,
                     creationflags=flags)
                 browser_status = browser.wait(timeout=650)
@@ -198,6 +235,8 @@ def main():
                 fixture_status = process.returncode
             except subprocess.TimeoutExpired:
                 stop_owned(process)
+        if process and process.poll() is not None:
+            fixture_status = process.returncode
         stop_owned(vite)
         if server:
             if thread and thread.is_alive():
@@ -219,6 +258,7 @@ def main():
             'failure': 'No browser result was produced; inspect the retained private runner logs.'}
         after = digest()
         value.update({'native_fixture_exit_code': fixture_status, 'isolated_database_cleanup_passed': fixture_status == 0 and cleaned,
+            'native_fixture_compilation': compile_receipt,
             'owned_review_server_stopped': stopped, 'build_source_sha256': build_source,
             'owned_build_process_stopped': build_stopped, 'owned_browser_runner_stopped': browser_stopped,
             'owned_api_proxy_stopped': proxy_stopped, 'h5_prebuilt_before_fixture': bool(args.mobile),

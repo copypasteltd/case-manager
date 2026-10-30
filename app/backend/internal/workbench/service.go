@@ -73,6 +73,39 @@ func queries() []query {
 		 OR (p.state='forecast' AND (p.start_date<=(transaction_timestamp() AT TIME ZONE r.timezone)::date
 		 OR EXISTS(SELECT 1 FROM cost_links l WHERE l.org_id=p.org_id AND l.source_type='subscription_period' AND l.source_id=p.id)))
 		 OR (p.state='confirmed' AND p.review_fingerprint IS DISTINCT FROM subscription_actual_fingerprint(p.org_id,p.id)))`},
+		// Match the current human owner and every affected service. The actual
+		// immutable timeline entry is the displayed revision; no guessed UUID.
+		{"incidents", `SELECT i.id,i.version,t.id revision_id,NULL::uuid related_id,i.title,
+		 i.state,NULL::text due_on,i.updated_at FROM incidents i
+		 JOIN incident_timeline t ON t.org_id=i.org_id AND t.incident_id=i.id AND t.seq=i.version
+		 WHERE i.org_id=$1 AND i.owner_id=$2 AND i.state IN ('open','investigating','monitoring')
+		 AND cardinality(i.service_ids) BETWEEN 1 AND 20
+		 AND NOT EXISTS(SELECT 1 FROM unnest(i.service_ids) affected(id)
+		 LEFT JOIN services s ON s.org_id=i.org_id AND s.id=affected.id
+		 WHERE s.id IS NULL OR NOT can_access(s.org_id,$2,'service.read','service',s.id,s.project_id,s.creator_id,s.classification,$3,$4))`},
+		// Files have a creator, not a reassigned incident-style owner. Match the
+		// ordinary file list's ACL and complete active ancestor chain. Only the
+		// current head contributes; old failures and provider coordinates stay out.
+		{"file_attention", `SELECT f.id,f.version,v.id revision_id,NULL::uuid related_id,f.name title,
+		 CASE WHEN v.availability<>'available' OR v.scan_state='quarantined' THEN 'file_unavailable'
+		 WHEN r.attention OR r.providers=1 THEN 'replica_attention' ELSE 'replica_pending' END state,
+		 NULL::text due_on,GREATEST(f.updated_at,r.updated_at) updated_at
+		 FROM files f JOIN folders d ON d.org_id=f.org_id AND d.id=f.folder_id
+		 JOIN file_versions v ON v.org_id=f.org_id AND v.file_id=f.id AND v.id=f.current_version_id
+		 LEFT JOIN LATERAL (SELECT max(p.updated_at) updated_at,
+		 bool_or(p.state IN ('failed','missing','retry_wait')
+		 OR (p.state='verified' AND (p.expected_sha256<>v.sha256 OR p.actual_sha256 IS DISTINCT FROM v.sha256 OR p.verified_at IS NULL))
+		 OR EXISTS(SELECT 1 FROM jobs j WHERE j.org_id=p.org_id AND j.id=p.active_job_id AND j.state IN ('dead','cancelled'))) attention,
+		 bool_or(p.state<>'verified') pending,count(DISTINCT p.provider) providers
+		 FROM file_replicas p WHERE p.org_id=f.org_id AND p.version_id=v.id) r ON true
+		 WHERE f.org_id=$1 AND f.creator_id=$2 AND f.state='active'
+		 AND can_access(f.org_id,$2,'file.read','file',f.id,d.project_id,f.creator_id,f.classification,$3,$4)
+		 AND (WITH RECURSIVE chain AS (
+		 SELECT id,parent_id,state,ARRAY[id] path FROM folders WHERE org_id=f.org_id AND id=f.folder_id
+		 UNION ALL SELECT p.id,p.parent_id,p.state,c.path||p.id FROM folders p JOIN chain c ON p.id=c.parent_id
+		 WHERE p.org_id=f.org_id AND NOT p.id=ANY(c.path)
+		 ) SELECT coalesce(bool_and(state='active') AND bool_or(parent_id IS NULL),false) FROM chain)
+		 AND (v.availability<>'available' OR v.scan_state='quarantined' OR r.attention OR r.pending OR r.providers=1)`},
 	}
 }
 

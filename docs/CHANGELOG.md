@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## Increment122 · 工作台事件与存储处理闭环 / Operations workbench
+
+- 新增本人未结服务事件、本人创建文件的当前存储待办，保留完整授权计数及五条样本；当前时间线／正式版本准确固定。
+- 补齐共享移动端副本重试，Web与移动端共用输入／回执校验；排队后继续待验证，完整校验后消除。
+- Added assigned incidents and creator-owned current-file storage work, full authorized counts and exact revision references. Shared mobile now supports controlled retries; a queued receipt does not complete storage work.
+- Use explicit source-bound focused checks and actual Web/H5 journeys. Preserve121 full regression, native APK and all prior proof/media bytes at their original sources; no schema change or new production-acceptance claim.
+
+[设计与使用 / Design](development/122-operations-workbench.md) · [验证 / Verification](quality/122-operations-workbench-verification.md)
+
 ## Increment121 · 异币退款实收
 
 - 新增人工固定的原付款本金／实收汇率／凭证，四端起草、登记、回执、历史及全额冲销。

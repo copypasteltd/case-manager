@@ -1,0 +1,31 @@
+{
+  "passed": false,
+  "checks": [],
+  "owned_browser_closed": true,
+  "failure": "No browser result was produced; inspect the retained private runner logs.",
+  "native_fixture_exit_code": null,
+  "isolated_database_cleanup_passed": false,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "61160f7141a04dd8a73f3e90a4f03df5ee49a5f88d3c4dc13551b5f18146544f",
+    "source_sha256": "59ab4e5379832d0b77275a433df855421653aaf00032067a2335c85353a05c69",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "59ab4e5379832d0b77275a433df855421653aaf00032067a2335c85353a05c69",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "59ab4e5379832d0b77275a433df855421653aaf00032067a2335c85353a05c69",
+  "build_source_unchanged": true,
+  "runner_failure_code": "RuntimeError",
+  "runner_failure_detail": "Native business fixture did not become ready; private logs remain ignored."
+}

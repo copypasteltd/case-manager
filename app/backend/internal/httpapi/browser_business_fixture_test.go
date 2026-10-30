@@ -16,7 +16,7 @@ import (
 
 // Explicit opt-in only. The enclosing meaningful integration test owns the
 // disposable native database and disposes it after the browser releases it.
-func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any) {
+func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any, extensions ...func(*http.ServeMux, string)) {
 	t.Helper()
 	if (os.Getenv("CP_BROWSER_BUSINESS_FIXTURE") != "1" && os.Getenv("CP_BROWSER_AGENT_FIXTURE") != "1" && os.Getenv("CP_BROWSER_MOBILE_FIXTURE") != "1") || t.Failed() {
 		return
@@ -62,6 +62,9 @@ func holdBrowserBusinessFixture(t *testing.T, f *fixture, values map[string]any)
 	nonce := identity.Token()
 	mux := http.NewServeMux()
 	mux.Handle("/", f.handler)
+	for _, extend := range extensions {
+		extend(mux, nonce)
+	}
 	if values["task_mentions_fixture"] == true {
 		mux.HandleFunc("POST /__fixture/task-mentions/drain", func(w http.ResponseWriter, r *http.Request) {
 			if r.Header.Get("Authorization") != "Bearer "+nonce {

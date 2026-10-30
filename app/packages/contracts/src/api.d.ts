@@ -12323,14 +12323,14 @@ export interface components {
             related_id: string | null;
             title: string;
             /** @enum {string} */
-            state: "active" | "overdue" | "due_soon" | "awaiting_confirmation";
+            state: "active" | "overdue" | "due_soon" | "awaiting_confirmation" | "open" | "investigating" | "monitoring" | "file_unavailable" | "replica_attention" | "replica_pending";
             due_on: string | null;
             /** Format: date-time */
             updated_at: string;
         };
         WorkbenchGroup: {
             /** @enum {string} */
-            kind: "approvals" | "contracts" | "subscription_periods";
+            kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention";
             count: number;
             items: components["schemas"]["WorkbenchItem"][];
             has_more: boolean;

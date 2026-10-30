@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-30T09:45:25.037109+00:00",
+  "method": "All six actual PNGs viewed directly. Both GIFs decoded at the three 2-second stages; both MP4s decoded at opening, midpoint and ending and visually inspected as contact sheets. Hashes bind the ten reviewed outputs.",
+  "findings": "Readable synthetic content, literal markup title, correct 1/1 → 0/1 → 0/0 business states; no password, MFA input or private capability visible. Mobile captures are actual scrolled viewports; the initial file group is below the initial incident viewport. MP4 shows the verification refresh, not the whole edit journey; GIF is a screenshot tour.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/operations-workbench-web-summary.png",
+      "sha256": "162cbbe4573b73ea4eae32e0da83dd1ca22ff886f94d9f0fdfaa74c6775403de",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-web-pending.png",
+      "sha256": "f9a35c719fe17128ebd36274cc6830a522fbb378a87e1d04767cdf733d2edcef",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-web-complete.png",
+      "sha256": "b067fdd761874e73aa19b499ecebccd78781cd3d5321a3bbfd1cd8f1e3ee6441",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/operations-workbench-web.mp4",
+      "sha256": "1192a96db1b8ae0a01d1065116b675f320747198b32466fd6b357ba53d4234e7",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/operations-workbench-web.gif",
+      "sha256": "cb349e4ae1ab236c831719932f01984df15de5dcab68b77d98acd273b176a3cb",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-summary.png",
+      "sha256": "cd81ae340277ae1d21b1e1d14d0e7632fb9e25673b72f14d8f83de579f744399",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-pending.png",
+      "sha256": "08c524c7f6274900ac00bdd6d4b2f9cb686aca7cae0ad3cb14c95b91bb5d2824",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-complete.png",
+      "sha256": "0dc429fa88957e6e5d2b6c6c78ae5ba46ed85ceefd15fb92a83bb36b0d9972d1",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/operations-workbench-mobile.mp4",
+      "sha256": "774678e8e8bca06356005c3d14bafd3c9e43fc53f039e074672b4860329537f3",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/operations-workbench-mobile.gif",
+      "sha256": "4c0553c7466e218062302f63d2cee96d1af1176352bf465aeaa9fb6d050a16f7",
+      "reviewed": true
+    }
+  ]
+}

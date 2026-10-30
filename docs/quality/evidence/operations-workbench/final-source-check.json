@@ -1,0 +1,192 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T09:50:27.368690+00:00",
+  "verification_mode": "scoped_increment",
+  "increment": 122,
+  "checks": [
+    {
+      "name": "Source-bound executed check backend",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup operations-workbench-web",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup operations-workbench-mobile",
+      "passed": true
+    },
+    {
+      "name": "Actual screenshot and recording outputs retain declared hashes",
+      "passed": true
+    },
+    {
+      "name": "All affected visual outputs actually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Owned development services match current backend and preserve existing business records",
+      "passed": true
+    },
+    {
+      "name": "Both owned review ports are released",
+      "passed": true
+    },
+    {
+      "name": "All prior published proof/media bytes remain unchanged with honest retained scope",
+      "passed": true
+    },
+    {
+      "name": "No schema change or historical migration bytes changed",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture released",
+      "passed": true
+    },
+    {
+      "name": "Scope and platform acceptance are not replaced by focused checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "operations-workbench",
+  "interaction_source_sha256": "1a60f058bc5a2fd5f7a39162fd5ca27667cbea23c34beba360e7631a4be85131",
+  "verification_script_sha256": "502ec78f9ca649c46f5f83dbb14c4978e3e0f95d95376358d7c667d20f0abfe2",
+  "configuration_sha256": "a5b61a18ca70063afa98ece0559c9e03058e2c7e4978fae823720697a971a26f",
+  "records": [
+    {
+      "file": "docs/quality/evidence/operations-workbench/backend.json",
+      "sha256": "3572d81889809ce924ee9803209311c9730afdca62d20826307bfe0b3ec16dc1"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/web-tests.json",
+      "sha256": "3054319ec48ce016eddfa397e805c2fbbbbc87bc39256c1dc0b1a604518f4aa1"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/mobile-tests.json",
+      "sha256": "4b347b73c2f60714be1ffd3f814c5ed669e703f50cae6ebdfec4be4ee170e48f"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/typecheck.json",
+      "sha256": "fbb9d1ccbe8849ac149aec9f1c2c2b176bc7aae2bb7417ad81f81a66bd28ad2d"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/web-build.json",
+      "sha256": "8462a720144308fdc23935c296b7eefcd10be29681d451c1083fa666f48068f7"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/weapp-build.json",
+      "sha256": "0bcde2395218c10cadcd57621ae65d76417bc4c0cb917ff0b53ba7848d127ff0"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/douyin-build.json",
+      "sha256": "85073b9004379612f0e0fd27e57a3f20f44ac429dddc81ff1c24bfc1665bb2e3"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/native-js-tests.json",
+      "sha256": "e48d979428de0f32ec19d7d7924d4c3b20a313626389c512e32ab27dbdd257c5"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench-web/result.json",
+      "sha256": "9940318616670ec2380c4acb7173840179559b2b1379f6b3c767a68376ebf248"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench-web/source-manifest.json",
+      "sha256": "56ab95a242ecae4607723bc3385b87cdab7c1d1623655b3596700b57625aec4e"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench-web/media.json",
+      "sha256": "924abcdd3749e7e739a7913591716681371ae6ac184cd10c44f37a7316cd25ac"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench-mobile/result.json",
+      "sha256": "d4b7209b083ac9954e9f3ca68d3068b3fa0fff2dbeb8379d5b24ef3744cc7b11"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench-mobile/source-manifest.json",
+      "sha256": "b3b2ead22a0ba42126cecc60ef74e2fad096b8f33cab1d7edd69e0caf597cc02"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench-mobile/media.json",
+      "sha256": "7ea5805046b09f75614e1e0a1b551fa9e4eb2fd4e1c27710365a98cd393e8605"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/media.json",
+      "sha256": "fdb64f89a1f98d762a764c7edac79101318656b0cecc5b8ba9fad97f74b89b62"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/visual-review.json",
+      "sha256": "0952d77858dc9e60a9336a031523c967ecd393689270e0d48c4affe45db00ed0"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/development-update.json",
+      "sha256": "a5110f8d9864d320c205e004de4180fd36f2d66a188ac912e780d8a7a855c609"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/development-project-resources.json",
+      "sha256": "73928235d6fb0ac7e49790d4335bbe36594ab1c5340d68631cbe63ed42353867"
+    },
+    {
+      "file": "docs/quality/evidence/operations-workbench/development-runtime.json",
+      "sha256": "019672ddc4a6ebe347fba77be59c6fca8c3669b5bbc38672a0ad7ab08f87007a"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "6e5607f908df0480df027b14976e9076bc812e2a",
+    "original_files": 4913,
+    "original_media": 1238,
+    "original_git_object_manifest_sha256": "276d42e24982babb685b4d62c12be76b5c76befae367f3546f243d84f2bc38b0",
+    "baseline_sha256": "c7aad90262fa35fc7fac9ddfd48a3f76d26eb21076065794cf9d639cd3ec2b27",
+    "baseline_increment": 121,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "fixture_only_adjustment": {
+    "execution_source_sha256": "d4826614460775a38c4ead6829674427493868748762d8f0bf2ee1e384cbcb1e",
+    "adjustment": "One MFA enrollment/verification call in the opt-in browser fixture only; production inputs, executed test bodies and commands unchanged.",
+    "snapshots": [
+      {
+        "file": "docs/quality/evidence/operations-workbench/fixture-correction/before-mfa.go.txt",
+        "sha256": "62abdaf35ccbd4e9ccd073338df32367f9d5877cbe0dbea6d6972592cfb31996"
+      },
+      {
+        "file": "docs/quality/evidence/operations-workbench/fixture-correction/before-plan.json",
+        "sha256": "51653da064732ee335beea192f1a2ef0c7e9bb7a3aee8fb7ed608bea338533fe"
+      }
+    ]
+  },
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

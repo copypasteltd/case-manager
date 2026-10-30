@@ -49,7 +49,7 @@ func TestBusinessWorkbench(t *testing.T) {
 	}
 	t.Run("strict read has no caller-controlled actor filters and empty authorized work", func(t *testing.T) {
 		v := read(t, f.memberToken)
-		if len(v.Groups) != 3 || v.Scope != "my_readable_work" || v.ContractTimezone != "Asia/Hong_Kong" {
+		if len(v.Groups) != 5 || v.Scope != "my_readable_work" || v.ContractTimezone != "Asia/Hong_Kong" {
 			t.Fatal(v)
 		}
 		for _, g := range v.Groups {

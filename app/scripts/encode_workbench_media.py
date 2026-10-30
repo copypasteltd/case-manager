@@ -12,12 +12,19 @@ EVIDENCE = ROOT / 'docs/quality/evidence/workbench'
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--feature', choices=('workbench', 'operations'), default='workbench')
+    args = parser.parse_args()
+    prefix = 'operations-workbench' if args.feature == 'operations' else 'workbench'
+    evidence = EVIDENCE.parent / prefix
+    evidence.mkdir(parents=True, exist_ok=True)
     ffmpeg, ffprobe = shutil.which('ffmpeg'), shutil.which('ffprobe')
     if not ffmpeg or not ffprobe:
         raise SystemExit('Native ffmpeg and ffprobe are required.')
     reports = []
     for client in ('web', 'mobile'):
-        browser = EVIDENCE.parent / ('workbench-' + client)
+        browser = EVIDENCE.parent / (prefix + '-' + client)
         result = json.loads((browser / 'result.json').read_text(encoding='utf-8'))
         capture = json.loads((browser / 'media.json').read_text(encoding='utf-8'))
         assert result['passed'] and result['source_unchanged'] and result['build_source_unchanged']
@@ -31,7 +38,7 @@ def main():
         assert manifest['credentials_excluded'] and manifest['synthetic_data'] and manifest['real_browser_pixels'] and not manifest['audio']
         frames = manifest['frames']
         assert len(frames) == clip['frame_count'] and len(frames) > 1
-        frozen = EVIDENCE / (client + '-capture-manifest.json')
+        frozen = evidence / (client + '-capture-manifest.json')
         if frozen.exists() and frozen.read_bytes() != source.read_bytes():
             raise SystemExit('An existing capture manifest differs; archive that completed attempt first.')
         frozen.write_bytes(source.read_bytes())
@@ -45,7 +52,7 @@ def main():
         concat.append(f"file '{frames[-1]['file']}'")
         timed = source.parent / 'timed.ffconcat'
         timed.write_text('\n'.join(concat) + '\n', encoding='utf-8')
-        name = 'workbench-' + client
+        name = prefix + '-' + client
         mp4, gif = ROOT / ('docs/media/videos/' + name + '.mp4'), ROOT / ('docs/media/gifs/' + name + '.gif')
         common = [ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', str(timed)]
         run(common + ['-an', '-vf', 'fps=10,scale=trunc(iw/2)*2:trunc(ih/2)*2', '-c:v', 'libx264', '-preset', 'fast', '-crf', '23', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(mp4)])
@@ -86,7 +93,10 @@ def main():
     value = {'passed': True, 'encoded_at': datetime.now(timezone.utc).isoformat(), 'encoder_script_sha256': sha(Path(__file__)),
         'ffmpeg_sha256': sha(Path(ffmpeg)), 'ffprobe_sha256': sha(Path(ffprobe)), 'recordings': reports,
         'scope': 'Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (overview, narrow viewport, other member), two seconds each. No real model or device claim.'}
-    (EVIDENCE / 'media.json').write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    if args.feature == 'operations':
+        value['scope'] = 'Silent MP4 records the actual authenticated home refresh after the owned copy worker verifies real synthetic bytes. GIF is an explicit tour of three actual screenshots: initial work, queued retry and completed work. No physical device, real cloud or production acceptance.'
+        value['artifacts'] = [item for report in reports for item in report['gif_screenshots'] + report['artifacts']]
+    (evidence / 'media.json').write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': True, 'recordings': len(reports), 'artifacts': sum(len(item['artifacts']) for item in reports)}))
 
 

@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "scope": "Preliminary checks before final source freeze; not current acceptance evidence.",
+  "backend_failed_cases": [
+    "TestOperationsWorkbenchIncidents",
+    "TestOperationsWorkbenchFiles/unavailable_current_content_takes_priority_and_exact_active_ancestors_remain_required",
+    "TestOperationsWorkbenchFiles/a_new_head_excludes_old_failed_replicas_and_loss_of_file_authority_removes_counts",
+    "TestOperationsWorkbenchFiles"
+  ],
+  "fixes": [
+    "Use an initially valid shared incident owner before revoking hidden-project membership.",
+    "Use the actual folders schema and existing project_manager read role in the test.",
+    "Declare the new shared replica module in the Web composite project."
+  ],
+  "logs_retained_private": true
+}

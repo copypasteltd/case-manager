@@ -1,5 +1,23 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Increment122 connects assigned incidents and creator-owned file storage work to the business desk. Resolve an incident in its existing editor; retry an existing failed copy in file details. Queued copies remain pending until complete verification succeeds. The shared WeChat, Douyin and Android file page now includes the missing retry form and exact receipt checks.
+
+Usage: home → assigned incidents or files you created → re-read the current details → explicitly resolve or request copying → return home and refresh. Every affected service must be readable. File permissions, the complete active directory chain and the exact current content version are rechecked; another reader does not inherit creator work.
+
+Verification is explicitly scoped:330 Web tests,427 portable mobile tests, selected backend integration suites, four-client shared type checks, mini-program builds and actual Web/Taro H5 journeys. Increment121 full regression,56 runtime tests and the development Android APK retain their original source binding. The old APK is not relabelled122. Schema93 is unchanged. Real cloud/model/platform/production acceptance remains separate.
+
+All23 packages (14 P0/9 P1), five exclusions and eight draft Skills remain. Follow the [current scope](delivery/04-current-scope-and-acceptance.md): only AI fee controls are excluded; secretary/TG authorization, isolation, audit and technical resource limits remain required.
+
+[Design and usage](development/122-operations-workbench.md) · [Executed checks](quality/122-operations-workbench-verification.md) · [All remaining work](delivery/03-goal-gap-assessment.md)
+
+![Business desk](media/screenshots/operations-workbench-web-summary.png)
+
+![Actual screenshot tour](media/gifs/operations-workbench-web.gif)
+
+[Actual Web viewport recording](media/videos/operations-workbench-web.mp4) · [Mobile recording](media/videos/operations-workbench-mobile.mp4)
+
+## 已发布历史 / Published history
+
 增量121已接通异币退款的草稿、人工登记、原付款本金扣减、实际币种现金汇总和全额冲销。原付780 HKD、实收100 USD时，现金记录100 USD，原款扣减780 HKD；金额、人工汇率、凭证版本与操作历史分别固定。四端入口使用相同协议。
 
 Increment121 adds actual foreign-currency refund drafts, explicit human confirmation, original-principal limits, received-currency cash reporting and full reversal across all four clients. For 780 HKD originally paid and 100 USD actually refunded, cash records 100 USD while the source principal decreases by 780 HKD. Exact amounts, reviewed rate, evidence versions and history remain pinned.

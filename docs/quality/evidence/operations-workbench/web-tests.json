@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T09:00:19.514000+00:00",
+  "finished_at": "2026-10-30T09:01:01.411781+00:00",
+  "elapsed_seconds": 41.897,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/operations-workbench/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "d4826614460775a38c4ead6829674427493868748762d8f0bf2ee1e384cbcb1e",
+  "source_after_sha256": "d4826614460775a38c4ead6829674427493868748762d8f0bf2ee1e384cbcb1e",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 330,
+    "numPassedTests": 330,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "bd40a32aed13104514f6245b7e4ead4cfd16f313c2f811b89719eb4c68189864",
+  "parser_error": null,
+  "runner_script_sha256": "3861d4cfd974dfc9df2f9186de668c8cd4f48a34cdaf9e013b74e4e68f136a2a",
+  "scope": "Complete existing Web unit suite and shared workbench/replica cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

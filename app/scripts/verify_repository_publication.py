@@ -289,45 +289,59 @@ def main():
     check('Media manual review binds the exact inspected screenshots and GIFs', visual['reviewed']
           and len(visual['screenshots']) == 15 and all(sha(ROOT / entry['file']) == entry['sha256']
               for entry in visual['screenshots'] + visual['gifs']))
-    previous = EVIDENCE.parent / 'deliverable-creation'
-    backend_group = baseline.get('backend_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
-    backend = read(EVIDENCE.parent / backend_group / 'result.json')
-    check('Full backend proof matches complete current Go/SQL/contract source and the declared test scope', backend['passed']
-          and backend['source_sha256'] == module('verify_backend_batches.py').digest()
-          and backend['source_unchanged_during_tests'] and backend['all_discovered_tests_executed']
-          and backend['discovered_top_level_tests'] == (baseline.get('backend_top_level_tests', 146) if baseline else 146)
-          and len(backend['checks']) == (baseline.get('backend_result_records', 919) if baseline else 919)
-          and all(item['Action'] == 'pass' for item in backend['checks']))
-    runtime_group = baseline.get('runtime_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
-    runtime = read(EVIDENCE.parent / runtime_group / 'runtime-build.json')
-    check('Runtime proof matches complete current source and declared test scope', runtime['status'] == 'passed'
-          and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0] and runtime['tests']['pass'] == (baseline.get('runtime_tests', 39) if baseline else 39))
-    web_group = baseline.get('web_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
-    web = read(EVIDENCE.parent / web_group / 'web-build.json')
-    check('Web proof matches current listed sources and declared test scope', web['passed']
-          and web['source_sha256'] == digest(web['sources']) and web['tests']['numPassedTests'] == (baseline.get('web_tests', 81) if baseline else 81))
     functional = EVIDENCE.parent / (baseline['evidence_group'] if baseline else 'mobile-project-resources')
-    mobile = read(functional / 'mobile-build.json')
-    check('Current mobile proof matches complete source and recorded passing test count', mobile['passed']
-          and mobile['source_sha256'] == module('verify_mobile.py').digest()[0]
-          and mobile['tests']['pass'] == (baseline['mobile_tests'] if baseline else 114)
-          and mobile['tests']['fail'] == mobile['tests']['skipped'] == mobile['tests']['cancelled'] == 0)
-    android = read(functional / 'build.json')
-    check('Current Android build binds complete native and portable sources' if baseline
-          else 'Retained Android build binds unchanged native and portable sources; no new execution claimed',
-          android['passed'] and android['source_sha256'] == digest(android['sources']))
-    development = functional if baseline else EVIDENCE
-    check('Current read-only development inspection passed, with no test databases/external activation',
-          (bool(baseline) or read(development / 'development-check.json')['passed']) and read(development / 'development-runtime.json')['passed']
-          and read(development / 'development-project-resources.json')['passed']
-          and read(development / 'development-project-resources.json')['database']['disposable_test_databases'] == 0)
-    if baseline:
+    if baseline and baseline.get('verification_mode') == 'scoped_increment':
+        verifier = module(baseline['verification_script'])
+        current = verifier.verify()
         proof = read(functional / 'final-source-check.json')
-        check('Latest functional evidence binds current sources, browser flows, media and verification script',
-              proof['passed'] and proof['mobile_source_sha256'] == module('verify_mobile.py').digest()[0]
-              and (proof['interaction_source_sha256'] == module(baseline['interaction_sources']).digest() and proof['interaction_kind'] == baseline['interaction_kind'] if baseline.get('interaction_kind') else proof['browser_source_sha256'] == module(baseline['browser_sources']).digest())
+        check('Focused current functional checks and honest retained full-regression/artifact evidence',
+              current['passed'] and proof['passed'] and current['checks'] == proof['checks']
+              and current['records'] == proof['records'] and current['retained'] == proof['retained']
+              and current.get('fixture_only_adjustment') == proof.get('fixture_only_adjustment')
+              and current['interaction_source_sha256'] == proof['interaction_source_sha256'] == verifier.digest()
               and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
-              and all(item['passed'] for item in proof['checks']) and not proof['full_goal_complete'])
+              and not proof['full_backend_suite_executed'] and not proof['formal_android_acceptance']
+              and not proof['full_goal_complete'] and not proof['production_ready'])
+    else:
+        previous = EVIDENCE.parent / 'deliverable-creation'
+        backend_group = baseline.get('backend_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
+        backend = read(EVIDENCE.parent / backend_group / 'result.json')
+        check('Full backend proof matches complete current Go/SQL/contract source and the declared test scope', backend['passed']
+              and backend['source_sha256'] == module('verify_backend_batches.py').digest()
+              and backend['source_unchanged_during_tests'] and backend['all_discovered_tests_executed']
+              and backend['discovered_top_level_tests'] == (baseline.get('backend_top_level_tests', 146) if baseline else 146)
+              and len(backend['checks']) == (baseline.get('backend_result_records', 919) if baseline else 919)
+              and all(item['Action'] == 'pass' for item in backend['checks']))
+        runtime_group = baseline.get('runtime_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
+        runtime = read(EVIDENCE.parent / runtime_group / 'runtime-build.json')
+        check('Runtime proof matches complete current source and declared test scope', runtime['status'] == 'passed'
+              and runtime['source_sha256'] == module('verify_agent_runtime.py').digest()[0] and runtime['tests']['pass'] == (baseline.get('runtime_tests', 39) if baseline else 39))
+        web_group = baseline.get('web_evidence_group', 'deliverable-creation') if baseline else 'deliverable-creation'
+        web = read(EVIDENCE.parent / web_group / 'web-build.json')
+        check('Web proof matches current listed sources and declared test scope', web['passed']
+              and web['source_sha256'] == digest(web['sources']) and web['tests']['numPassedTests'] == (baseline.get('web_tests', 81) if baseline else 81))
+        functional = EVIDENCE.parent / (baseline['evidence_group'] if baseline else 'mobile-project-resources')
+        mobile = read(functional / 'mobile-build.json')
+        check('Current mobile proof matches complete source and recorded passing test count', mobile['passed']
+              and mobile['source_sha256'] == module('verify_mobile.py').digest()[0]
+              and mobile['tests']['pass'] == (baseline['mobile_tests'] if baseline else 114)
+              and mobile['tests']['fail'] == mobile['tests']['skipped'] == mobile['tests']['cancelled'] == 0)
+        android = read(functional / 'build.json')
+        check('Current Android build binds complete native and portable sources' if baseline
+              else 'Retained Android build binds unchanged native and portable sources; no new execution claimed',
+              android['passed'] and android['source_sha256'] == digest(android['sources']))
+        development = functional if baseline else EVIDENCE
+        check('Current read-only development inspection passed, with no test databases/external activation',
+              (bool(baseline) or read(development / 'development-check.json')['passed']) and read(development / 'development-runtime.json')['passed']
+              and read(development / 'development-project-resources.json')['passed']
+              and read(development / 'development-project-resources.json')['database']['disposable_test_databases'] == 0)
+        if baseline:
+            proof = read(functional / 'final-source-check.json')
+            check('Latest functional evidence binds current sources, browser flows, media and verification script',
+                  proof['passed'] and proof['mobile_source_sha256'] == module('verify_mobile.py').digest()[0]
+                  and (proof['interaction_source_sha256'] == module(baseline['interaction_sources']).digest() and proof['interaction_kind'] == baseline['interaction_kind'] if baseline.get('interaction_kind') else proof['browser_source_sha256'] == module(baseline['browser_sources']).digest())
+                  and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
+                  and all(item['passed'] for item in proof['checks']) and not proof['full_goal_complete'])
     skills = [read(p) for p in sorted((APP / 'skills').glob('*/manifest.json'))]
     if baseline and baseline.get('planning_scope_verification_record'):
         scope = read(ROOT / baseline['planning_scope_manifest'])
@@ -354,7 +368,7 @@ def main():
               'publication_whitespace_findings': whitespace, 'publication_whitespace_exceptions': whitespace_exceptions,
               'oversize_files': large, 'index_worktree_differences': changed_index, 'broken_local_links': broken,
               'secret_scan_scope': 'High-confidence text patterns, not exhaustive secret detection or pixel OCR.',
-              'functional_evidence': 'Current source-bound backend/Web/runtime/mobile/browser/native artifacts and declared retained foundation proofs; see the baseline and final proof.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',
+              'functional_evidence': ('Current focused backend/client checks and actual UI/API flows; full regression and Android APK retained at their published sources, not newly executed.' if baseline.get('verification_mode') == 'scoped_increment' else 'Current source-bound backend/Web/runtime/mobile/browser/native artifacts and declared retained foundation proofs; see the baseline and final proof.') if baseline else 'Existing evidence reused by matching sources; not newly executed.',
               'current_functional_increment': baseline['increment'] if baseline else 76,
               'current_scope_revision': baseline.get('planning_scope_revision') if baseline else None,
               'verification_script_sha256': sha(Path(__file__)), 'production_ready': False}

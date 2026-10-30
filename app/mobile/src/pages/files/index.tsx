@@ -13,6 +13,7 @@ import { FileEditor } from './forms';
 import { MultipartCleanup } from './cleanup';
 import { FileComparisonPanel } from './comparison';
 import { ScopeTransfers } from './scope-transfers';
+import { ReplicaRetry } from './replica-retry';
 
 type Workspace = { folder?: Folder; file?: StoredFile; project?: Schemas['Project'] };
 type Editor = { mode: 'create' | 'move' | 'trash' | 'restore'; kind: 'folder' | 'file'; item?: FileResource };
@@ -41,7 +42,7 @@ export default function FilesPage() {
       {!current.file && current.folder && me.actions.includes('file.retention.manage') && <MultipartCleanup key={current.folder.id} folder={current.folder} me={me} />}
       {!editor && (current.file || current.folder) && <ScopeTransfers kind={current.file ? 'file' : 'folder'} resource={(current.file ?? current.folder)!} me={me} />}
       {editor ? <FileEditor key={editor.mode + ':' + (editor.item?.id ?? current.folder?.id ?? 'root') + ':' + (editor.item?.version ?? 1) + ':' + me.authorization_version} {...editor} parent={editor.mode === 'create' ? current.folder : undefined} me={me} onCommitted={committed} onClose={() => setEditor(undefined)} />
-        : current.file ? <FileDetails file={current.file} onEdit={setEditor} />
+        : current.file ? <FileDetails key={current.file.id + ':' + me.authorization_version} file={current.file} authorization={me.authorization_version} onEdit={setEditor} />
         : <DirectoryContents current={current} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}
     </>}
     <Action secondary onClick={() => { setEditor(undefined); void page.reload(); }} loading={page.loading}>刷新当前资料</Action>
@@ -73,9 +74,13 @@ function DirectoryContents({ current, canCreate, onEdit }: { current: Workspace;
   </>;
 }
 
-function FileDetails({ file, onEdit }: { file: StoredFile; onEdit(value: Editor): void }) {
+function FileDetails({ file, authorization, onEdit }: { file: StoredFile; authorization: string | number; onEdit(value: Editor): void }) {
   const versions = useCollection<Schemas['FileVersion']>('/files/' + file.id + '/versions?limit=20');
+  const [retry, setRetry] = useState<Schemas['FileReplica']>(), [receipt, setReceipt] = useState<Schemas['FileReplica']>();
+  Taro.useDidHide(() => { setRetry(undefined); setReceipt(undefined); });
   return <>
+    {receipt && <Section title='已核对副本重试结果'><Text>副本修订 {receipt.version} · 已安排复制，完成校验后才会消除存储待办。</Text></Section>}
+    {retry && <ReplicaRetry key={retry.id + ':' + retry.version + ':' + authorization} replica={retry} fileID={file.id} authorization={authorization} close={() => setRetry(undefined)} committed={value => { setRetry(undefined); setReceipt(value); void versions.reload(); }} />}
     <Section title='文件记录'><Fact label='准确文件与状态'><Text>{file.name} · 修订 {file.version}</Text><State value={file.state} /><Text>{label(file)}</Text><Text className='cp-code' selectable>{file.id}</Text></Fact>
       <Fact label='保留状态'><Text>{file.legal_hold ? '存在保留锁' : '无保留锁标记；其他保留规则仍由服务器检查'}</Text></Fact>
       <View className='cp-pad'>{file.can_move && file.state === 'active' && <Action secondary onClick={() => onEdit({ mode: 'move', kind: 'file', item: file })}>改名或移动文件</Action>}
@@ -88,7 +93,7 @@ function FileDetails({ file, onEdit }: { file: StoredFile; onEdit(value: Editor)
       <Text>{version.original_name ?? '历史原文件名未提供'}</Text><Text>{bytes(version.size_bytes)} · {date(version.created_at)}</Text>
       <View className='cp-choice'><State value={version.scan_state} /><State value={version.availability} /></View>
       <Text className='cp-muted cp-small'>SHA-256</Text><Text className='cp-code' selectable>{version.sha256}</Text>
-      {version.replicas.map(replica => <Text key={replica.id}>{replica.provider === 'oss' ? 'OSS原件' : 'R2副本'} · {replica.state}</Text>)}
+      {version.replicas.map(replica => <View key={replica.id}><Text>{replica.provider === 'oss' ? 'OSS原件' : 'R2副本'} · </Text><State value={replica.state} />{file.can_update && file.state === 'active' && !retry && ['failed', 'missing'].includes(replica.state) && <Action secondary onClick={() => { setReceipt(undefined); setRetry(replica); }}>重新安排副本复制</Action>}</View>)}
       <Action secondary disabled={file.state !== 'active' || version.availability !== 'available' || !['clean', 'waived'].includes(version.scan_state)} onClick={() => readVersion(file.id, version.id)}>查阅准确内容版本 {version.seq}</Action>
     </Fact>) : <Empty>此文件尚无正式内容版本。</Empty>}
       {versions.next && <Action secondary loading={versions.moreBusy} onClick={() => void versions.more()}>加载更多历史版本</Action>}

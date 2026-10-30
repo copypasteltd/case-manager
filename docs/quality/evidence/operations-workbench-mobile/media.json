@@ -1,0 +1,33 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-summary.png",
+      "sha256": "cd81ae340277ae1d21b1e1d14d0e7632fb9e25673b72f14d8f83de579f744399"
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-pending.png",
+      "sha256": "08c524c7f6274900ac00bdd6d4b2f9cb686aca7cae0ad3cb14c95b91bb5d2824"
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-complete.png",
+      "sha256": "0dc429fa88957e6e5d2b6c6c78ae5ba46ed85ceefd15fb92a83bb36b0d9972d1"
+    }
+  ],
+  "recording": {
+    "name": "operations-workbench-mobile",
+    "frame_count": 20,
+    "duration_ms": 4067,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/operations-workbench-mobile/frames.json",
+    "manifest_sha256": "a6ca2c0ed08393c14a0784fd3861d23e9538bcb8edee46fcfa960a04ccd34024"
+  },
+  "synthetic_data": true,
+  "credentials_excluded": true,
+  "gif_mode": "actual_screenshot_tour",
+  "no_real_cloud": true,
+  "no_real_device": true
+}

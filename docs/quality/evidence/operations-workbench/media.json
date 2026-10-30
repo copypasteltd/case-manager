@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T09:43:25.289107+00:00",
+  "encoder_script_sha256": "35c9e24d28ee2ffbe2274d23cfe9be6aa49386487038d12a686a44aeaf0e8de4",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "76e319668c5549e72f42b8756ce0f8e8f2d7b1ad1e5fc747152b0fa33b7051b0",
+      "build_source_sha256": "db894cf9d3bde371feec76bf0664727e8dc2f458140063361a5105d21a67c501",
+      "capture_manifest": "docs/quality/evidence/operations-workbench/web-capture-manifest.json",
+      "capture_manifest_sha256": "a8603418496fb6f9a0418c498dd9bc18c79f0108a1c694e3a448e03a933a7a30",
+      "capture_frame_count": 22,
+      "capture_duration_ms": 4472,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/operations-workbench-web-summary.png",
+          "sha256": "162cbbe4573b73ea4eae32e0da83dd1ca22ff886f94d9f0fdfaa74c6775403de"
+        },
+        {
+          "file": "docs/media/screenshots/operations-workbench-web-pending.png",
+          "sha256": "f9a35c719fe17128ebd36274cc6830a522fbb378a87e1d04767cdf733d2edcef"
+        },
+        {
+          "file": "docs/media/screenshots/operations-workbench-web-complete.png",
+          "sha256": "b067fdd761874e73aa19b499ecebccd78781cd3d5321a3bbfd1cd8f1e3ee6441"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "45",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.500000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/operations-workbench-web.mp4",
+          "sha256": "1192a96db1b8ae0a01d1065116b675f320747198b32466fd6b357ba53d4234e7",
+          "bytes": 122061
+        },
+        {
+          "file": "docs/media/gifs/operations-workbench-web.gif",
+          "sha256": "cb349e4ae1ab236c831719932f01984df15de5dcab68b77d98acd273b176a3cb",
+          "bytes": 115074
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "e1073aa9f0b7fcfdfb9df6fc7c8418e65135432eb92b3f07e1d644618caac5b6",
+      "build_source_sha256": "db894cf9d3bde371feec76bf0664727e8dc2f458140063361a5105d21a67c501",
+      "capture_manifest": "docs/quality/evidence/operations-workbench/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "a6ca2c0ed08393c14a0784fd3861d23e9538bcb8edee46fcfa960a04ccd34024",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4067,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/operations-workbench-mobile-summary.png",
+          "sha256": "cd81ae340277ae1d21b1e1d14d0e7632fb9e25673b72f14d8f83de579f744399"
+        },
+        {
+          "file": "docs/media/screenshots/operations-workbench-mobile-pending.png",
+          "sha256": "08c524c7f6274900ac00bdd6d4b2f9cb686aca7cae0ad3cb14c95b91bb5d2824"
+        },
+        {
+          "file": "docs/media/screenshots/operations-workbench-mobile-complete.png",
+          "sha256": "0dc429fa88957e6e5d2b6c6c78ae5ba46ed85ceefd15fb92a83bb36b0d9972d1"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "43",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/operations-workbench-mobile.mp4",
+          "sha256": "774678e8e8bca06356005c3d14bafd3c9e43fc53f039e074672b4860329537f3",
+          "bytes": 99437
+        },
+        {
+          "file": "docs/media/gifs/operations-workbench-mobile.gif",
+          "sha256": "4c0553c7466e218062302f63d2cee96d1af1176352bf465aeaa9fb6d050a16f7",
+          "bytes": 134328
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 records the actual authenticated home refresh after the owned copy worker verifies real synthetic bytes. GIF is an explicit tour of three actual screenshots: initial work, queued retry and completed work. No physical device, real cloud or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/operations-workbench-web-summary.png",
+      "sha256": "162cbbe4573b73ea4eae32e0da83dd1ca22ff886f94d9f0fdfaa74c6775403de"
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-web-pending.png",
+      "sha256": "f9a35c719fe17128ebd36274cc6830a522fbb378a87e1d04767cdf733d2edcef"
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-web-complete.png",
+      "sha256": "b067fdd761874e73aa19b499ecebccd78781cd3d5321a3bbfd1cd8f1e3ee6441"
+    },
+    {
+      "file": "docs/media/videos/operations-workbench-web.mp4",
+      "sha256": "1192a96db1b8ae0a01d1065116b675f320747198b32466fd6b357ba53d4234e7",
+      "bytes": 122061
+    },
+    {
+      "file": "docs/media/gifs/operations-workbench-web.gif",
+      "sha256": "cb349e4ae1ab236c831719932f01984df15de5dcab68b77d98acd273b176a3cb",
+      "bytes": 115074
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-summary.png",
+      "sha256": "cd81ae340277ae1d21b1e1d14d0e7632fb9e25673b72f14d8f83de579f744399"
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-pending.png",
+      "sha256": "08c524c7f6274900ac00bdd6d4b2f9cb686aca7cae0ad3cb14c95b91bb5d2824"
+    },
+    {
+      "file": "docs/media/screenshots/operations-workbench-mobile-complete.png",
+      "sha256": "0dc429fa88957e6e5d2b6c6c78ae5ba46ed85ceefd15fb92a83bb36b0d9972d1"
+    },
+    {
+      "file": "docs/media/videos/operations-workbench-mobile.mp4",
+      "sha256": "774678e8e8bca06356005c3d14bafd3c9e43fc53f039e074672b4860329537f3",
+      "bytes": 99437
+    },
+    {
+      "file": "docs/media/gifs/operations-workbench-mobile.gif",
+      "sha256": "4c0553c7466e218062302f63d2cee96d1af1176352bf465aeaa9fb6d050a16f7",
+      "bytes": 134328
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T09:52:57.548818+00:00",
+  "scope": "Tracked and non-ignored candidate working files",
+  "file_count": 7292,
+  "total_bytes": 468273855,
+  "binary_files": 1335,
+  "markdown_files": 288,
+  "checks": [
+    {
+      "name": "Publication contains code, documentation and bilingual entry points",
+      "passed": true
+    },
+    {
+      "name": "No local tools, credentials, caches, databases or release binaries selected",
+      "passed": true
+    },
+    {
+      "name": "All selected Git blobs are smaller than 100 MiB",
+      "passed": true
+    },
+    {
+      "name": "High-confidence private key/token patterns absent from selected text",
+      "passed": true
+    },
+    {
+      "name": "Known private generated development values absent from all selected bytes",
+      "passed": true
+    },
+    {
+      "name": "Publication code and guides have no trailing whitespace or extra EOF blank lines",
+      "passed": true
+    },
+    {
+      "name": "All parsed local Markdown links resolve to selected repository files/directories",
+      "passed": true
+    },
+    {
+      "name": "Both full language guides cover architecture, workflows, setup, clients, gates and updates",
+      "passed": true
+    },
+    {
+      "name": "Initial capture matches historical Git sources and its explicitly recorded ignored-cache supplement",
+      "passed": true
+    },
+    {
+      "name": "Capture fixture, owned servers and isolated native database cleaned up",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser port5189 released",
+      "passed": true
+    },
+    {
+      "name": "web actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "mobile actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "All fifteen screenshots and historical source match recorded hashes",
+      "passed": true
+    },
+    {
+      "name": "Three MP4/GIF pairs match verified encoder/capture and output digests",
+      "passed": true
+    },
+    {
+      "name": "Media manual review binds the exact inspected screenshots and GIFs",
+      "passed": true
+    },
+    {
+      "name": "Focused current functional checks and honest retained full-regression/artifact evidence",
+      "passed": true
+    },
+    {
+      "name": "Current user-approved scope and exclusions match source-bound planning evidence",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and source-bound dependency security gate remains open",
+      "passed": true
+    },
+    {
+      "name": "Gap register retains all twenty-eight stable IDs",
+      "passed": true
+    }
+  ],
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "known_private_value_count": 8,
+  "known_private_value_matches": [],
+  "publication_whitespace_findings": [],
+  "publication_whitespace_exceptions": [
+    {
+      "file": "app/backend/migrations/0093_actual_foreign_refunds.sql",
+      "sha256": "29008d3fce7a9803c19cf9f0ad1d374ed692d9f7ca1b05ff240d4fbd8e9207b0",
+      "reason": "Preserve the already applied and source-verified schema93 checksum; EOF blank line only.",
+      "evidence": "docs/quality/evidence/refund-fx/schema-upgrade.json"
+    }
+  ],
+  "oversize_files": [],
+  "index_worktree_differences": [],
+  "broken_local_links": [],
+  "secret_scan_scope": "High-confidence text patterns, not exhaustive secret detection or pixel OCR.",
+  "functional_evidence": "Current focused backend/client checks and actual UI/API flows; full regression and Android APK retained at their published sources, not newly executed.",
+  "current_functional_increment": 122,
+  "current_scope_revision": 99,
+  "verification_script_sha256": "c69f2296ca86d2cb243d59254dc8851e1df70432ff0a2d1324ca0b5a283fcc77",
+  "production_ready": false
+}

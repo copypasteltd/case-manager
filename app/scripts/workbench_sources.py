@@ -11,7 +11,7 @@ def sources():
         'package.json', 'package-lock.json', 'scripts/workbench_sources.py',
         'scripts/run_workbench_browser.py', 'scripts/check_workbench.mjs',
         'scripts/workbench_recording.mjs', 'scripts/mobile_picker_browser.mjs',
-        'scripts/workbench_browser_common.mjs', 'scripts/test_backend.py',
+        'scripts/workbench_browser_common.mjs', 'scripts/check_operations_workbench.mjs', 'scripts/test_backend.py',
         'scripts/test_workbench_native.py', 'scripts/workbench_native_cluster.py', 'scripts/windows_native_path.py']
     names = subprocess.check_output(['git', 'ls-files', '-z', '--cached', '--others', '--exclude-standard', '--', *scopes], cwd=APP).decode('utf-8').split('\0')
     return sorted(set(name for name in names if name and (APP / name).is_file()))

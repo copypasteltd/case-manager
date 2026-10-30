@@ -1483,14 +1483,14 @@ PATHS["/auth/mfa/step-up"]["post"]["parameters"] = [parameter for parameter in P
 operation("/capabilities", "get", "getCapabilities", "Capability")
 operation("/dashboard", "get", "getDashboard", "Dashboard")
 workbench_item = {"id": ID, "version": VERSION, "revision_id": ID, "related_id": nullable(ID), "title": NAME,
-    "state": enum("active", "overdue", "due_soon", "awaiting_confirmation"), "due_on": nullable(DATE), "updated_at": TIME}
+    "state": enum("active", "overdue", "due_soon", "awaiting_confirmation", "open", "investigating", "monitoring", "file_unavailable", "replica_attention", "replica_pending"), "due_on": nullable(DATE), "updated_at": TIME}
 add("WorkbenchItem", workbench_item, tuple(workbench_item))
-workbench_group = {"kind": enum("approvals", "contracts", "subscription_periods"), "count": COUNT,
+workbench_group = {"kind": enum("approvals", "contracts", "subscription_periods", "incidents", "file_attention"), "count": COUNT,
     "items": array(ref("WorkbenchItem"), maxItems=5), "has_more": {"type": "boolean"}}
 add("WorkbenchGroup", workbench_group, tuple(workbench_group))
 workbench_summary = {"as_of": TIME, "scope": enum("my_readable_work"), "business_date": DATE,
     "contract_timezone": enum("Asia/Hong_Kong"), "contract_through": DATE,
-    "groups": array(ref("WorkbenchGroup"), minItems=3, maxItems=3)}
+    "groups": array(ref("WorkbenchGroup"), minItems=5, maxItems=5)}
 add("WorkbenchSummary", workbench_summary, tuple(workbench_summary))
 operation("/dashboard/business", "get", "getWorkbenchSummary", "WorkbenchSummary")
 

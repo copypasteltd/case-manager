@@ -11,6 +11,7 @@ import { HistoryRestores, RestoreVersionButton } from './HistoryRestores';
 import { useRetention, RetentionPanel, RetentionVersionActions } from './Retention';
 import FileComparisonPanel from './FileComparison';
 import { ScopeTransfers } from './ScopeTransfers';
+import { checkedReplicaRetry, replicaRetryInput } from '@copypaste/contracts/file-replica';
 
 type Directory = Schemas['Folder'];
 type StoredFile = Schemas['File'];
@@ -133,7 +134,7 @@ function ReplicaRetryDialog({ replica, fileID, onClose }: { replica: Schemas['Fi
   const [reason, setReason] = useState(''); const [base] = useState(replica);
   const cache = useQueryClient(), key = useCommandKey();
   const mutation = useMutation({
-    mutationFn: () => { const body = { expected_version: base.version, reason }; return api('/file-replicas/' + base.id + '/retry', { method: 'POST', body, key: key(body) }); },
+    mutationFn: async () => { const body = replicaRetryInput(base, reason); return checkedReplicaRetry(await api<Schemas['FileReplica']>('/file-replicas/' + base.id + '/retry', { method: 'POST', body, key: key(body) }), base); },
     onSuccess: async () => { await cache.invalidateQueries({ queryKey: ['file-versions', fileID] }); onClose(); },
   });
   const conflict = mutation.error instanceof ApiError && mutation.error.code === 'VERSION_CONFLICT';

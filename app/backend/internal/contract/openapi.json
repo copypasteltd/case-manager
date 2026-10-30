@@ -70811,7 +70811,13 @@
               "active",
               "overdue",
               "due_soon",
-              "awaiting_confirmation"
+              "awaiting_confirmation",
+              "open",
+              "investigating",
+              "monitoring",
+              "file_unavailable",
+              "replica_attention",
+              "replica_pending"
             ]
           },
           "due_on": {
@@ -70850,7 +70856,9 @@
             "enum": [
               "approvals",
               "contracts",
-              "subscription_periods"
+              "subscription_periods",
+              "incidents",
+              "file_attention"
             ]
           },
           "count": {
@@ -70908,8 +70916,8 @@
             "items": {
               "$ref": "#/components/schemas/WorkbenchGroup"
             },
-            "minItems": 3,
-            "maxItems": 3
+            "minItems": 5,
+            "maxItems": 5
           }
         },
         "additionalProperties": false,
