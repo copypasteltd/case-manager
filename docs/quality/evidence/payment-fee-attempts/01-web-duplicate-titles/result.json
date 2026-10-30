@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T01:28:58.581Z",
+  "finished_at": "2026-10-30T01:29:17.698Z",
+  "checks": [
+    "Actual employee login and MFA complete before recording.",
+    "The real fixture has confirmed incurred cost and recorded cash with an existing dual-currency allocation.",
+    "An empty real fee ledger does not claim that fees are absent.",
+    "A blank form cannot submit a fee association."
+  ],
+  "source_count": 857,
+  "source_sha256": "aa5ccdd485f5a0414d3026149b34145900b3684d736f4bf7596dfdfbd75cebf4",
+  "source_after_sha256": "aa5ccdd485f5a0414d3026149b34145900b3684d736f4bf7596dfdfbd75cebf4",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Synthetic actual bank charge · HKD 78.000000', exact: true }) resolved to 8 elements:\n    1) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).first()\n    2) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(1)\n    3) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(2)\n    4) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(3)\n    5) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(4)\n    6) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(5)\n    7) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka locator('button:nth-child(10)')\n    8) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka locator('button:nth-child(11)')\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Synthetic actual bank charge · HKD 78.000000', exact: true })\u001b[22m\n",
+  "failure_stack": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Synthetic actual bank charge · HKD 78.000000', exact: true }) resolved to 8 elements:\n    1) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).first()\n    2) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(1)\n    3) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(2)\n    4) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(3)\n    5) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(4)\n    6) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka getByRole('button', { name: 'Synthetic actual bank charge' }).nth(5)\n    7) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka locator('button:nth-child(10)')\n    8) <button class=\"reference-option\">Synthetic actual bank charge · HKD 78.000000</button> aka locator('button:nth-child(11)')\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Synthetic actual bank charge · HKD 78.000000', exact: true })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_payment_fee.mjs:52:117\n    at async payment_feeBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\payment_fee_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_payment_fee.mjs:13:1",
+  "failure_context": {
+    "pathname": "/payments/ad447ae1-11e2-4b3d-a4c3-afa14405fd26",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "payment_fee_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "89faf0eb2aabb526f7d046e25c0a534544179bca5a3ed9245e7eb217570ebd95",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "89faf0eb2aabb526f7d046e25c0a534544179bca5a3ed9245e7eb217570ebd95",
+  "build_source_unchanged": true
+}

@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量118 / Increment118：实际认证后的隔离合成手续费页面；6 PNG、2静音MP4、2截图导览GIF。MP4记录已关联依据的真实页面滚动；GIF按三张实际截图展示核对、关联及撤销，每张2秒。密码、MFA输入及私有能力不入素材。旧素材保留原日期与原检查范围。
+
+| 端 | 完整依据核对 | 已关联 | 已撤销 | 实际录屏 | 截图导览 |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/payment-fee-web-review.png) | [PNG](screenshots/payment-fee-web-linked.png) | [PNG](screenshots/payment-fee-web-revoked.png) | [MP4](videos/payment-fee-web.mp4) | [GIF](gifs/payment-fee-web.gif) |
+| 共享移动 | [PNG](screenshots/payment-fee-mobile-review.png) | [PNG](screenshots/payment-fee-mobile-linked.png) | [PNG](screenshots/payment-fee-mobile-revoked.png) | [MP4](videos/payment-fee-mobile.mp4) | [GIF](gifs/payment-fee-mobile.gif) |
+
+[来源与编码](../quality/evidence/payment-fee/media.json) · [实际核验](../quality/118-payment-fee-verification.md)。
+
 增量117 / Increment117：真实认证后的隔离合成合同正文页面。6 PNG、2静音MP4、2截图导览GIF。录屏包含完整正文阅读、显式勾选与真实采用回执；认证信息不入素材。GIF每张2秒，属于截图导览。
 
 | 端 | 原资料绑定 | 全文核对 | 已采用 | 录屏 | GIF导览 |

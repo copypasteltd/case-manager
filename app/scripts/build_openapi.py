@@ -531,6 +531,28 @@ payment_allocation.update({"cost_amount": MONEY, "cost_currency": CURRENCY, "pay
     "cost_exponent": {"type": "integer", "minimum": 0, "maximum": 6}, "payment_exponent": {"type": "integer", "minimum": 0, "maximum": 6},
     "cost_shares": array(allocation, maxItems=100), "remaining_cost_amount": MONEY, "fx": nullable(ref("PaymentFXQuote"))})
 add("PaymentAllocation", payment_allocation, payment_allocation_required)
+fee_fact = {"id": ID, "version": VERSION, "revision_id": ID, "content_hash": HASH, "title": NAME,
+    "project_id": nullable(ID), "classification": CLASS, "currency": CURRENCY, "amount": MONEY}
+add("PaymentFeeFact", fee_fact, tuple(fee_fact))
+fee_basis = {"payment": ref("PaymentFeeFact"), "fee_payment": ref("PaymentFeeFact"), "cost": ref("PaymentFeeFact"), "allocation": ref("PaymentAllocation")}
+add("PaymentFeeBasis", fee_basis, tuple(fee_basis))
+fee_version = {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
+fee_preview = {"payment_id": ID, "fee_version": fee_version, "basis": {"type": "string", "minLength": 1, "maxLength": 131072}, "basis_sha256": HASH}
+add("PaymentFeePreview", fee_preview, tuple(fee_preview))
+fee_revocation = {"id": ID, "version": VERSION, "actor_id": ID, "reason": NAME, "created_at": TIME}
+add("PaymentFeeRevocation", fee_revocation, tuple(fee_revocation))
+fee_link = {"id": ID, "payment_id": ID, "version": VERSION, "basis": fee_preview["basis"], "basis_sha256": HASH,
+    "actor_id": ID, "reason": NAME, "created_at": TIME, "revocation": nullable(ref("PaymentFeeRevocation"))}
+add("PaymentFeeLink", fee_link, tuple(fee_link))
+fee_item = {"link": ref("PaymentFeeLink"), "current": ref("PaymentAllocation"), "state": enum("active", "exhausted", "revoked")}
+add("PaymentFeeItem", fee_item, tuple(fee_item))
+fee_ledger = {"payment_id": ID, "fee_version": fee_version, "can_manage": {"type": "boolean"},
+    "items": array(ref("PaymentFeeItem"), maxItems=100), "next_cursor": nullable({"type": "string"})}
+add("PaymentFeeLedger", fee_ledger, tuple(fee_ledger))
+fee_create = {**cost_base, "expected_fee_version": fee_version, "fee_payment_id": ID, "allocation_id": ID, "basis_sha256": HASH, "reviewed": {"const": True, "type": "boolean"}}
+add("PaymentFeeCreate", fee_create, tuple(fee_create))
+fee_revoke = {**cost_base, "expected_fee_version": fee_version, "basis_sha256": HASH, "reviewed": {"const": True, "type": "boolean"}}
+add("PaymentFeeRevoke", fee_revoke, tuple(fee_revoke))
 payment_revision = {**payment_fields, "id": ID, "seq": VERSION, "base_revision_id": nullable(ID), "content_hash": HASH, "author_id": ID, "reason": NAME, "created_at": TIME,
     "counterparty_evidence": nullable(cost_party_evidence), "attachments": array(ref("BusinessFileReference"))}
 add("PaymentRevision", payment_revision, tuple(payment_revision))
@@ -1724,6 +1746,15 @@ operation("/payments/{id}/refund-allocations", "post", "allocateRefund", "Paymen
 operation("/payments/{id}/revisions", "get", "listPaymentRevisions", "PaymentRevision", listing=True)
 operation("/payments/{id}/revisions/{revision}", "get", "getPaymentRevision", "PaymentRevision")
 operation("/payments/{id}/events", "get", "listPaymentEvents", "PaymentEvent", listing=True)
+operation("/payments/{id}/fees", "get", "listPaymentFees", "PaymentFeeLedger")
+PATHS["/payments/{id}/fees"]["get"]["parameters"].extend([
+    {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 100, "default": 20}},
+    {"name": "cursor", "in": "query", "schema": {"type": "string"}}])
+operation("/payments/{id}/fees", "post", "linkPaymentFee", "PaymentFeeLink", "PaymentFeeCreate", code=201)
+operation("/payments/{id}/fees/basis", "get", "readPaymentFeeBasis", "PaymentFeePreview")
+PATHS["/payments/{id}/fees/basis"]["get"]["parameters"].extend([
+    {"name": name, "in": "query", "required": True, "schema": ID} for name in ("fee_payment_id", "allocation_id")])
+operation("/payments/{id}/fees/{fee}/revoke", "post", "revokePaymentFee", "PaymentFeeLink", "PaymentFeeRevoke")
 operation("/claims/{id}/settlement", "get", "readClaimSettlement", "ClaimSettlement")
 operation("/reports/cash", "get", "readCashReport", "CashReport")
 payment_filters = [v for v in cost_filters if v["name"] != "state"] + [{"name": "state", "in": "query", "schema": enum("draft", "recorded", "reversed", "cash")}, {"name": "direction", "in": "query", "schema": enum("outgoing", "incoming", "refund", "transfer")}]

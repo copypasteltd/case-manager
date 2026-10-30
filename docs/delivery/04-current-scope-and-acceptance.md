@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量118范围补充：手续费真实费用／资金／原分配依据已接通四端人工关联与纠错；公司财务制度、汇兑差额、异币实收退款和完整旅程继续开放。仍23项工作包（14 P0／9 P1），5项移出；仅排除AI费用控制，保留秘书、八项Skills、TG、权限、审计、隔离和技术限制。见[设计](../development/118-payment-fee-evidence.md)。
+
 增量117：GAP-04／12／18接通四端准确合同原资料绑定、完整文本正文文件、全文核对和独立人工采用。只替换正常合同修订的正文附件，保留原商业条件。更广格式、完整OA附件体系和真实模型验收继续开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/117-contract-body-drafting.md)与[核验](../quality/117-contract-body-verification.md)。
 
 增量116：GAP-03／18接通四端受控实际付款双币核销、费用及批准员工垫付原币余额、部分回转与双币项目份额。公司财务口径、手续费／汇差、异币实收退款及完整工作包继续开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/116-cross-currency-settlement.md)与[核验](../quality/116-cross-currency-settlement-verification.md)。

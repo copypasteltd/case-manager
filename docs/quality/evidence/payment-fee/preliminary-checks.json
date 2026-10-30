@@ -1,0 +1,66 @@
+{
+  "counts_as_final_regression": false,
+  "records": [
+    {
+      "file": "app/.local/payment-fee-preliminary-typecheck.log",
+      "sha256": "c127f3c5e091325d000313ef6bf5b46b98c11e8d9383c37327820ecada96ed64"
+    },
+    {
+      "file": "app/.local/payment-fee-preliminary-web-tests.log",
+      "sha256": "b4295bee638c146126e2f967cf4199185aaba0efb8661800bff75704a202f050"
+    },
+    {
+      "file": "app/.local/payment-fee-targeted-v1.log",
+      "sha256": "42055623b42e3fe5a86671c54fbdfc0275af821af2c1f04c0710d59ff358bc08"
+    },
+    {
+      "file": "app/.local/payment-fee-targeted-v2.log",
+      "sha256": "815c0e8c49d76e426b3989ff87a10e631dfb185131f007e9e9c7e710969ca11f"
+    },
+    {
+      "file": "app/.local/payment-fee-targeted-v3.log",
+      "sha256": "0eeebd62aa8c5b3c36dd7a51c1720c6aa40be5257e12d1192ca137f626cf57d5"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/01-web-duplicate-titles/failure.png",
+      "sha256": "cb5dbf2209094d0e0024821f271ea7ed98a32414acbbce88286d68e77cf94748"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/01-web-duplicate-titles/payment-fee-web-browser.log",
+      "sha256": "5d39f1e47b966910f31df16a3a6d0a531f2cad0681882a76402025adfdb25f62"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/01-web-duplicate-titles/payment-fee-web-build.log",
+      "sha256": "33e3147ec7e863f595891f2e07f5117a9af193d2116f691bd2ac409d30006de3"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/01-web-duplicate-titles/payment-fee-web-native.log",
+      "sha256": "f5b1eefb35d33f0ec15ff9f24edfc1228398c6ed55130ead61fb3498bc4cd4d5"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/01-web-duplicate-titles/source.zip",
+      "sha256": "62eacbaee1ec8d4881db9f9d7668ab1dfc9e3ae7f6c00ed52ab6c23480d4d803"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/compile-v1/record.json",
+      "sha256": "3f83c6bec75c755cb636eaf7e5139dc47baaf8c4995645d6ce3e196d8435456e"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/compile-v1/source.zip",
+      "sha256": "0292633d9716b860ec4752018196d6ad45edde3e5469ebfc0d41dfb98fc86494"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/development-schema-v1/development-project-resources.json",
+      "sha256": "c42b7677494fff76a3e6e9c15220b3b329a55c8f80ef692ab6710a301487313e"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/development-schema-v1/development-runtime.json",
+      "sha256": "bb8b17fb0721212d1de26a0c2ccb267be89457a2d765c5618a8faed7dd0951d1"
+    },
+    {
+      "file": "app/.local/payment-fee-attempts/development-schema-v1/verify_payment_fee_development.py",
+      "sha256": "df94ce8901c671f9553e448328ba60bae6644e3da15df35ef434765d69a7222b"
+    }
+  ],
+  "scope": "One initial compile failure, successful targeted backend/Web/type checks, and the first read-only development check with its stale schema expectation. Only the separate complete unchanged-source final commands count as regression evidence."
+}

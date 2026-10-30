@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T01:39:12.894047+00:00",
+  "encoder_script_sha256": "11a1d1c9ee3432e22e07e4bffac90229d5ae8a7f186a5ff990181423d8f8efa8",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "b845b369e60c65e57a2c84f79beaa1bd1dc8322eb2d9005a6b940d769f2b1507",
+      "build_source_sha256": "b01eaed78bfb2226b214ab22a639cae46f38ba64aface704ef5718d7a51ce076",
+      "capture_manifest": "docs/quality/evidence/payment-fee/web-capture-manifest.json",
+      "capture_manifest_sha256": "bd932514d2be3b342533631e8e5c89695f7b23fab8ad710705d43f3cbbcf2d70",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4238,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/payment-fee-web-review.png",
+          "sha256": "c59eaa85deb9ea298f68b1abaa0a1732916cf1300a63c0d7262936bf405b42e7"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fee-web-linked.png",
+          "sha256": "a9d7dedbaae15bfa8ed5934f118d095d1012ef194ceb0cf91aa8eee357e5d9ca"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fee-web-revoked.png",
+          "sha256": "091dacb2160568b9d995fd4d3208c7b1bf88fd8ec853d5139c2d0c3a8c931baf"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "44",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/payment-fee-web.mp4",
+          "sha256": "a298648bdc74f10753cf8ab79e6864e6d2a107f543b4f8bad1e8a65ee70f7dc4",
+          "bytes": 222618
+        },
+        {
+          "file": "docs/media/gifs/payment-fee-web.gif",
+          "sha256": "eca557cbe3a61a6cec8eb8d5a4f3d67713326a4df65fdac04bb1d2886233385e",
+          "bytes": 277885
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "8df75ecac2bbe091ca764010243b8e129bd63f4a68599da5b9a0e9077c9bfa1f",
+      "build_source_sha256": "b01eaed78bfb2226b214ab22a639cae46f38ba64aface704ef5718d7a51ce076",
+      "capture_manifest": "docs/quality/evidence/payment-fee/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "73f68f675fcd2a3c015b5806537063a2e026dda3373e5c87a8ed3edb6fa63161",
+      "capture_frame_count": 21,
+      "capture_duration_ms": 4285,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/payment-fee-mobile-review.png",
+          "sha256": "00f026b728c3efb453b1662aa553013dc867185af5bc255014c1cf64d01bd692"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fee-mobile-linked.png",
+          "sha256": "451db9cb4c7a02e686c97d0138c66e16130e8936819333f74d6529235bab3744"
+        },
+        {
+          "file": "docs/media/screenshots/payment-fee-mobile-revoked.png",
+          "sha256": "60047354ca45163dc68382dd910c85b566eac783258f9052007f81f253bc7d81"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "44",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/payment-fee-mobile.mp4",
+          "sha256": "e23eed8e0006e8f17e1dc02b39ad04321df7daf086fd8404a5275ab0bb5a63bb",
+          "bytes": 142271
+        },
+        {
+          "file": "docs/media/gifs/payment-fee-mobile.gif",
+          "sha256": "9c401d64464dcc49677d8946443172726d69d383263a8aab2f3a8c506d8e8527",
+          "bytes": 111751
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (selected actual fee evidence, linked history, revoked history), two seconds each. No real model or device claim."
+}

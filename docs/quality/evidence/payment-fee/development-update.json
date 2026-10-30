@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T01:34:42.316100+00:00",
+  "backend_source_sha256": "7c9eb1a9b4d430b62472d5fd437fc4d0be80e07334a974716797913f79f2378b",
+  "previous_migration_count": 90,
+  "migration_count": 91,
+  "history_before": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_records": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "actual_cost_entries": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_allocations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "contracts": {
+      "rows": 10,
+      "content_md5": "870135f1dbd8e1aad0d2456b0b7bfba9"
+    },
+    "contract_revisions": {
+      "rows": 23,
+      "content_md5": "d9c06966a0d974c8a5bd06ffe6bfee2c"
+    },
+    "contract_lifecycle_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "file_version_references": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "history_after": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_records": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "actual_cost_entries": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_allocations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "contracts": {
+      "rows": 10,
+      "content_md5": "870135f1dbd8e1aad0d2456b0b7bfba9"
+    },
+    "contract_revisions": {
+      "rows": 23,
+      "content_md5": "d9c06966a0d974c8a5bd06ffe6bfee2c"
+    },
+    "contract_lifecycle_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "file_version_references": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "legacy_and_usage_rows_preserved": true,
+  "services": [
+    {
+      "command": "api",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-notification",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-report-export",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    }
+  ],
+  "updater_sha256": "af24521375911491529e1e817d12bf3adc11c27f6e3e8c2bfd3a7b5dbbdc857c",
+  "schema_upgrade_executed": true,
+  "postgres_restarted": false,
+  "external_integration_started": false,
+  "production_deployment": false
+}

@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量118：GAP-03／18接通四端真实手续费原费用／资金／分配的准确关联、当前双币余额、明确人工撤销、不可变审计历史及版本分页。整理依据不改费用／现金事实，不自动推导汇兑差额。整个23项工作包（14 P0／9 P1）和5项移出不变。见[设计](../development/118-payment-fee-evidence.md)与[核验](../quality/118-payment-fee-verification.md)。
+
 增量117：GAP-04／12／18接通四端准确合同原资料绑定、完整文本正文文件、全文核对和独立人工采用。只替换正常合同修订的正文附件，保留原商业条件。更广格式、完整OA附件体系和真实模型验收继续开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/117-contract-body-drafting.md)与[核验](../quality/117-contract-body-verification.md)。
 
 增量116：GAP-03／18接通四端受控实际付款双币核销、费用及批准员工垫付原币余额、部分回转与双币项目份额。公司财务口径、手续费／汇差、异币实收退款及完整工作包继续开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/116-cross-currency-settlement.md)与[核验](../quality/116-cross-currency-settlement-verification.md)。

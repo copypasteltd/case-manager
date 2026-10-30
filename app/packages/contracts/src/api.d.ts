@@ -3222,6 +3222,58 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/payments/{id}/fees": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listPaymentFees */
+        get: operations["listPaymentFees"];
+        put?: never;
+        /** linkPaymentFee */
+        post: operations["linkPaymentFee"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/payments/{id}/fees/basis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readPaymentFeeBasis */
+        get: operations["readPaymentFeeBasis"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/payments/{id}/fees/{fee}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** revokePaymentFee */
+        post: operations["revokePaymentFee"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/claims/{id}/settlement": {
         parameters: {
             query?: never;
@@ -7865,6 +7917,98 @@ export interface components {
             }[];
             remaining_cost_amount?: string;
             fx?: components["schemas"]["PaymentFXQuote"] | null;
+        };
+        PaymentFeeFact: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            title: string;
+            project_id: string | null;
+            /** @enum {string} */
+            classification: "internal" | "project_restricted" | "confidential";
+            currency: string;
+            amount: string;
+        };
+        PaymentFeeBasis: {
+            payment: components["schemas"]["PaymentFeeFact"];
+            fee_payment: components["schemas"]["PaymentFeeFact"];
+            cost: components["schemas"]["PaymentFeeFact"];
+            allocation: components["schemas"]["PaymentAllocation"];
+        };
+        PaymentFeePreview: {
+            /** Format: uuid */
+            payment_id: string;
+            fee_version: number;
+            basis: string;
+            basis_sha256: string;
+        };
+        PaymentFeeRevocation: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            actor_id: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        PaymentFeeLink: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            payment_id: string;
+            version: number;
+            basis: string;
+            basis_sha256: string;
+            /** Format: uuid */
+            actor_id: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            revocation: components["schemas"]["PaymentFeeRevocation"] | null;
+        };
+        PaymentFeeItem: {
+            link: components["schemas"]["PaymentFeeLink"];
+            current: components["schemas"]["PaymentAllocation"];
+            /** @enum {string} */
+            state: "active" | "exhausted" | "revoked";
+        };
+        PaymentFeeLedger: {
+            /** Format: uuid */
+            payment_id: string;
+            fee_version: number;
+            can_manage: boolean;
+            items: components["schemas"]["PaymentFeeItem"][];
+            next_cursor: string | null;
+        };
+        PaymentFeeCreate: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_fee_version: number;
+            /** Format: uuid */
+            fee_payment_id: string;
+            /** Format: uuid */
+            allocation_id: string;
+            basis_sha256: string;
+            /** @constant */
+            reviewed: true;
+        };
+        PaymentFeeRevoke: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_fee_version: number;
+            basis_sha256: string;
+            /** @constant */
+            reviewed: true;
         };
         PaymentRevision: {
             title: string;
@@ -12756,6 +12900,18 @@ export interface components {
                 items: components["schemas"]["PaymentEvent"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        PaymentFeeLedgerResponse: {
+            data: components["schemas"]["PaymentFeeLedger"];
+            meta: components["schemas"]["Meta"];
+        };
+        PaymentFeeLinkResponse: {
+            data: components["schemas"]["PaymentFeeLink"];
+            meta: components["schemas"]["Meta"];
+        };
+        PaymentFeePreviewResponse: {
+            data: components["schemas"]["PaymentFeePreview"];
             meta: components["schemas"]["Meta"];
         };
         ClaimSettlementResponse: {
@@ -22709,6 +22865,167 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["PaymentEventListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listPaymentFees: {
+        parameters: {
+            query?: {
+                limit?: number;
+                cursor?: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaymentFeeLedgerResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    linkPaymentFee: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PaymentFeeCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaymentFeeLinkResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readPaymentFeeBasis: {
+        parameters: {
+            query: {
+                fee_payment_id: string;
+                allocation_id: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaymentFeePreviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    revokePaymentFee: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+                fee: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PaymentFeeRevoke"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaymentFeeLinkResponse"];
                 };
             };
             400: components["responses"]["Failure"];

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T01:47:09.384594+00:00",
+  "checks": [
+    {
+      "name": "Actual cost and cash evidence selection and complete immutable basis validation are packaged",
+      "passed": true
+    },
+    {
+      "name": "Dual-unit current balances and independent append-only corrections are packaged",
+      "passed": true
+    },
+    {
+      "name": "Explicit human review and actual fee APIs are in the exact APK bundle",
+      "passed": true
+    }
+  ],
+  "source_sha256": "dd172f35eb9ae0083e1a7d1d20af00f009947ae2bddab78ee482533eae235401",
+  "bundle_sha256": "b06d723a93bc80f159c72830d7dcd9ebe36a3bca534a59ee0c452552fcefdbc4",
+  "apk_sha256": "82538febf268c090a07721cc9b771df177082d5c975ac9a909bed750d54ffea7",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "70e84537c4ba3e025427838d644e4e79d9ac8baf5d21800b5c0dad22c4884c76"
+}

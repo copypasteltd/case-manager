@@ -1,0 +1,33 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/payment-fee-web-review.png",
+      "sha256": "c59eaa85deb9ea298f68b1abaa0a1732916cf1300a63c0d7262936bf405b42e7"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-web-linked.png",
+      "sha256": "a9d7dedbaae15bfa8ed5934f118d095d1012ef194ceb0cf91aa8eee357e5d9ca"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-web-revoked.png",
+      "sha256": "091dacb2160568b9d995fd4d3208c7b1bf88fd8ec853d5139c2d0c3a8c931baf"
+    }
+  ],
+  "recording": {
+    "name": "payment-fee-web",
+    "frame_count": 20,
+    "duration_ms": 4238,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/payment-fee-web-1793323894289-5132/frames.json",
+    "manifest_sha256": "bd932514d2be3b342533631e8e5c89695f7b23fab8ad710705d43f3cbbcf2d70"
+  },
+  "synthetic_data": true,
+  "real_device": false,
+  "real_model": false,
+  "api_responses_mocked": false,
+  "fixture_reused_from": "dedicated TestPaymentFeeEvidence with actual native PG finance records"
+}

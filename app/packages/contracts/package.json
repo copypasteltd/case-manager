@@ -28,7 +28,8 @@
     "./workbench": "./src/workbench.ts",
     "./scope-transfer": "./src/scope-transfer.ts",
     "./payment-fx": "./src/payment-fx.ts",
-    "./contract-body": "./src/contract-body.ts"
+    "./contract-body": "./src/contract-body.ts",
+    "./payment-fees": "./src/payment-fees.ts"
   },
   "dependencies": {
     "@noble/hashes": "2.4.0"

@@ -14,6 +14,22 @@ func paymentFilter(r *http.Request) (finance.PaymentFilter, error) {
 }
 func (s *Server) paymentRoutes(mux *http.ServeMux) {
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	mux.HandleFunc("GET /v1/payments/{id}/fees", read(s, "PaymentFeeLedgerResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return v.PaymentFees(ctx, a, r.PathValue("id"), f.Cursor, f.Limit)
+	}))
+	mux.HandleFunc("GET /v1/payments/{id}/fees/basis", read(s, "PaymentFeePreviewResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		return v.PaymentFeeBasis(ctx, a, r.PathValue("id"), r.URL.Query().Get("fee_payment_id"), r.URL.Query().Get("allocation_id"))
+	}))
+	mux.HandleFunc("POST /v1/payments/{id}/fees", command(s, "PaymentFeeCreate", "PaymentFeeLinkResponse", func(ctx context.Context, c core.Command, r *http.Request, in finance.PaymentFeeCreate) (core.Result, error) {
+		return v.CreatePaymentFee(ctx, c, r.PathValue("id"), in)
+	}))
+	mux.HandleFunc("POST /v1/payments/{id}/fees/{fee}/revoke", command(s, "PaymentFeeRevoke", "PaymentFeeLinkResponse", func(ctx context.Context, c core.Command, r *http.Request, in finance.PaymentFeeRevoke) (core.Result, error) {
+		return v.RevokePaymentFee(ctx, c, r.PathValue("id"), r.PathValue("fee"), in)
+	}))
 	mux.HandleFunc("GET /v1/payments", read(s, "PaymentListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := paymentFilter(r)
 		if e != nil {

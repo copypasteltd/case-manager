@@ -1,0 +1,33 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/payment-fee-mobile-review.png",
+      "sha256": "00f026b728c3efb453b1662aa553013dc867185af5bc255014c1cf64d01bd692"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-mobile-linked.png",
+      "sha256": "451db9cb4c7a02e686c97d0138c66e16130e8936819333f74d6529235bab3744"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-mobile-revoked.png",
+      "sha256": "60047354ca45163dc68382dd910c85b566eac783258f9052007f81f253bc7d81"
+    }
+  ],
+  "recording": {
+    "name": "payment-fee-mobile",
+    "frame_count": 21,
+    "duration_ms": 4285,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/payment-fee-mobile-1793324252694-23020/frames.json",
+    "manifest_sha256": "73f68f675fcd2a3c015b5806537063a2e026dda3373e5c87a8ed3edb6fa63161"
+  },
+  "synthetic_data": true,
+  "real_device": false,
+  "real_model": false,
+  "api_responses_mocked": false,
+  "fixture_reused_from": "dedicated TestPaymentFeeEvidence with actual native PG finance records"
+}

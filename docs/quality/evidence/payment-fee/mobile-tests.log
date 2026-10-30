@@ -1,0 +1,2487 @@
+
+> @copypaste/mobile@0.1.0 test
+> tsc --project tsconfig.test.json && node --test ../.local/mobile-tests/platform/file-input.test.js ../.local/mobile-tests/platform/session.test.js ../.local/mobile-tests/platform/miniapp-context.test.js ../.local/mobile-tests/platform/native-wire.test.js ../.local/mobile-tests/platform/upload-transfer.test.js ../.local/mobile-tests/platform/drafts.test.js ../.local/mobile-tests/platform/command-keys.test.js ../.local/mobile-tests/platform/content.test.js ../.local/mobile-tests/platform/business-input.test.js ../.local/mobile-tests/platform/financial-input.test.js ../.local/mobile-tests/platform/status.test.js ../.local/mobile-tests/platform/secretary.test.js ../.local/mobile-tests/platform/project-overview.test.js ../.local/mobile-tests/platform/project-input.test.js ../.local/mobile-tests/platform/project-resource-input.test.js ../.local/mobile-tests/platform/task-input.test.js ../.local/mobile-tests/platform/project-closeout.test.js ../.local/mobile-tests/platform/change-input.test.js ../.local/mobile-tests/platform/telegram-input.test.js ../.local/mobile-tests/platform/post-input.test.js ../.local/mobile-tests/platform/post-markdown.test.js && tsc --project tsconfig.concern-test.json && node --test ../.local/mobile-concern-tests/mobile/src/platform/oa-text.test.js ../.local/mobile-concern-tests/mobile/src/platform/task-comment.test.js ../.local/mobile-concern-tests/mobile/src/platform/concern-mutation.test.js ../.local/mobile-concern-tests/mobile/src/platform/task-creation.test.js ../.local/mobile-concern-tests/mobile/src/platform/task-dependency.test.js ../.local/mobile-concern-tests/mobile/src/platform/search.test.js ../.local/mobile-concern-tests/mobile/src/platform/indexed-context.test.js ../.local/mobile-concern-tests/mobile/src/platform/multipart-cleanup.test.js ../.local/mobile-concern-tests/mobile/src/platform/amortization.test.js ../.local/mobile-concern-tests/mobile/src/platform/audit.test.js ../.local/mobile-concern-tests/mobile/src/platform/notification-delivery.test.js ../.local/mobile-concern-tests/mobile/src/platform/contract-reminders.test.js ../.local/mobile-concern-tests/mobile/src/platform/file-recovery.test.js ../.local/mobile-concern-tests/mobile/src/platform/file-comparison.test.js ../.local/mobile-concern-tests/mobile/src/platform/workbench.test.js ../.local/mobile-concern-tests/mobile/src/platform/scope-transfer.test.js ../.local/mobile-concern-tests/mobile/src/platform/payment-fx.test.js ../.local/mobile-concern-tests/mobile/src/platform/contract-body.test.js ../.local/mobile-concern-tests/mobile/src/platform/payment-fees.test.js
+
+TAP version 13
+# Subtest: contract money and unknowns survive without floating point, with fixed party/body and exact plan identities
+ok 1 - contract money and unknowns survive without floating point, with fixed party/body and exact plan identities
+  ---
+  duration_ms: 3.8213
+  type: 'test'
+  ...
+# Subtest: claim row identity keeps fixed receipts, supplier and employee/company funding across reorder and deletion
+ok 2 - claim row identity keeps fixed receipts, supplier and employee/company funding across reorder and deletion
+  ---
+  duration_ms: 0.7726
+  type: 'test'
+  ...
+# Subtest: 100 real line inputs and a long valid request fit bounded intent reconciliation; no unresolved key is evicted
+ok 3 - 100 real line inputs and a long valid request fit bounded intent reconciliation; no unresolved key is evicted
+  ---
+  duration_ms: 2.2828
+  type: 'test'
+  ...
+# Subtest: memory-only business input strips every unlisted scalar and nested evidence/secret, and defensively copies arrays
+ok 4 - memory-only business input strips every unlisted scalar and nested evidence/secret, and defensively copies arrays
+  ---
+  duration_ms: 1.354
+  type: 'test'
+  ...
+# Subtest: business inputs share the existing global text budget, exact-version authority, TTL and logout isolation
+ok 5 - business inputs share the existing global text budget, exact-version authority, TTL and logout isolation
+  ---
+  duration_ms: 3.4213
+  type: 'test'
+  ...
+# Subtest: financial drafts preserve invalid editable input but clearly identify scientific notation, zero quantity and invalid calendar dates
+ok 6 - financial drafts preserve invalid editable input but clearly identify scientific notation, zero quantity and invalid calendar dates
+  ---
+  duration_ms: 0.7226
+  type: 'test'
+  ...
+# Subtest: missing current evidence stops editing and factual display retains the authoritative original reference IDs
+ok 7 - missing current evidence stops editing and factual display retains the authoritative original reference IDs
+  ---
+  duration_ms: 0.7142
+  type: 'test'
+  ...
+# Subtest: server field errors map to real fields or an explicit summary location; decimal input is never reinterpreted
+ok 8 - server field errors map to real fields or an explicit summary location; decimal input is never reinterpreted
+  ---
+  duration_ms: 0.6965
+  type: 'test'
+  ...
+# Subtest: new line/plan IDs derive from public independent intent values and remain stable within a single intent
+ok 9 - new line/plan IDs derive from public independent intent values and remain stable within a single intent
+  ---
+  duration_ms: 2.7769
+  type: 'test'
+  ...
+# Subtest: UTF-8 limits count actual wire bytes and work without browser encoding globals
+ok 10 - UTF-8 limits count actual wire bytes and work without browser encoding globals
+  ---
+  duration_ms: 21.6847
+  type: 'test'
+  ...
+# Subtest: business and request receipts must match actual identity, new version and fixed request basis before input can be cleared
+ok 11 - business and request receipts must match actual identity, new version and fixed request basis before input can be cleared
+  ---
+  duration_ms: 1.0894
+  type: 'test'
+  ...
+# Subtest: accepted basis binds full project version, scope, dates, classification, currency and all budget lines
+ok 12 - accepted basis binds full project version, scope, dates, classification, currency and all budget lines
+  ---
+  duration_ms: 5.4755
+  type: 'test'
+  ...
+# Subtest: basis fingerprints are stable across object property order and change for budget identity or details
+ok 13 - basis fingerprints are stable across object property order and change for budget identity or details
+  ---
+  duration_ms: 3.2742
+  type: 'test'
+  ...
+# Subtest: dates enforce real Gregorian days, inclusive ordered periods and explicit null dates
+ok 14 - dates enforce real Gregorian days, inclusive ordered periods and explicit null dates
+  ---
+  duration_ms: 1.4714
+  type: 'test'
+  ...
+# Subtest: keep null, full replacement and explicit empty replacement remain distinct without floating point arithmetic
+ok 15 - keep null, full replacement and explicit empty replacement remain distinct without floating point arithmetic
+  ---
+  duration_ms: 1.5963
+  type: 'test'
+  ...
+# Subtest: overlap, invalid decimal formats, excess precision and row limits fail before a command is sent
+ok 16 - overlap, invalid decimal formats, excess precision and row limits fail before a command is sent
+  ---
+  duration_ms: 1.3019
+  type: 'test'
+  ...
+# Subtest: saved inputs whitelist independent editable text and stable row identities, excluding evidence and authority
+ok 17 - saved inputs whitelist independent editable text and stable row identities, excluding evidence and authority
+  ---
+  duration_ms: 0.4166
+  type: 'test'
+  ...
+# Subtest: writer affordances honor actual member role, operation authority and read-only project phases
+ok 18 - writer affordances honor actual member role, operation authority and read-only project phases
+  ---
+  duration_ms: 0.402
+  type: 'test'
+  ...
+# Subtest: new proposals require fresh explicit basis acceptance, complete text and ordered unique actual file versions
+ok 19 - new proposals require fresh explicit basis acceptance, complete text and ordered unique actual file versions
+  ---
+  duration_ms: 0.5216
+  type: 'test'
+  ...
+# Subtest: editing appends an exact revision and freezes currency, prior head version and source revision
+ok 20 - editing appends an exact revision and freezes currency, prior head version and source revision
+  ---
+  duration_ms: 1.2021
+  type: 'test'
+  ...
+# Subtest: complete current revisions preserve source attachments and reject mismatched, duplicate, malformed or incomplete proof
+ok 21 - complete current revisions preserve source attachments and reject mismatched, duplicate, malformed or incomplete proof
+  ---
+  duration_ms: 4.0662
+  type: 'test'
+  ...
+# Subtest: a three-field save receipt never suffices without exact actual head, content, files, actor and frozen basis
+ok 22 - a three-field save receipt never suffices without exact actual head, content, files, actor and frozen basis
+  ---
+  duration_ms: 2.0647
+  type: 'test'
+  ...
+# Subtest: request draft and revised request proof bind all original business payload fields and server amounts
+ok 23 - request draft and revised request proof bind all original business payload fields and server amounts
+  ---
+  duration_ms: 2.3962
+  type: 'test'
+  ...
+# Subtest: implementation requires exact independent approval, current full basis, both human attestations and fresh MFA
+ok 24 - implementation requires exact independent approval, current full basis, both human attestations and fresh MFA
+  ---
+  duration_ms: 2.6642
+  type: 'test'
+  ...
+# Subtest: implementation proof reconciles immutable head, actual project, budget, source approval and actor without trusting receipt alone
+ok 25 - implementation proof reconciles immutable head, actual project, budget, source approval and actor without trusting receipt alone
+  ---
+  duration_ms: 4.8445
+  type: 'test'
+  ...
+# Subtest: replacing a previous budget requires actual superseded predecessor evidence; other currencies cannot satisfy proof
+ok 26 - replacing a previous budget requires actual superseded predecessor evidence; other currencies cannot satisfy proof
+  ---
+  duration_ms: 2.0833
+  type: 'test'
+  ...
+# Subtest: server approval increase and signed net delta are retained independently in fixed snapshots
+ok 27 - server approval increase and signed net delta are retained independently in fixed snapshots
+  ---
+  duration_ms: 0.4573
+  type: 'test'
+  ...
+# Subtest: a page recreated while a write is in flight reuses the same exact intent key
+ok 28 - a page recreated while a write is in flight reuses the same exact intent key
+  ---
+  duration_ms: 2.2179
+  type: 'test'
+  ...
+# Subtest: uncertain outcomes retain the original key and forbid silently substituting another request
+ok 29 - uncertain outcomes retain the original key and forbid silently substituting another request
+  ---
+  duration_ms: 0.4683
+  type: 'test'
+  ...
+# Subtest: bounded command records refuse new work without evicting unresolved keys; logout clears the old lifetime
+ok 30 - bounded command records refuse new work without evicting unresolved keys; logout clears the old lifetime
+  ---
+  duration_ms: 0.6053
+  type: 'test'
+  ...
+# Subtest: fixed content transfers sequential bounded ranges and validates the full SHA with an independent oracle
+ok 31 - fixed content transfers sequential bounded ranges and validates the full SHA with an independent oracle
+  ---
+  duration_ms: 80.2849
+  type: 'test'
+  ...
+# Subtest: an empty text version still authenticates one empty range and validates the empty SHA
+ok 32 - an empty text version still authenticates one empty range and validates the empty SHA
+  ---
+  duration_ms: 1.4505
+  type: 'test'
+  ...
+# Subtest: a permit cannot change the fixed version, hash, size, source mode or required headers
+ok 33 - a permit cannot change the fixed version, hash, size, source mode or required headers
+  ---
+  duration_ms: 2.6409
+  type: 'test'
+  ...
+# Subtest: range identity, canonical base64 and each chunk digest are verified before any sink write
+ok 34 - range identity, canonical base64 and each chunk digest are verified before any sink write
+  ---
+  duration_ms: 2.8492
+  type: 'test'
+  ...
+# Subtest: self-consistent chunk digests do not bypass a mismatching full-version digest
+ok 35 - self-consistent chunk digests do not bypass a mismatching full-version digest
+  ---
+  duration_ms: 0.7114
+  type: 'test'
+  ...
+# Subtest: closing the scope while a response is pending discards late bytes and aborts the sink
+ok 36 - closing the scope while a response is pending discards late bytes and aborts the sink
+  ---
+  duration_ms: 8.6897
+  type: 'test'
+  ...
+# Subtest: expiry is checked before each range and never replaces a file version or automatically grants again
+ok 37 - expiry is checked before each range and never replaces a file version or automatically grants again
+  ---
+  duration_ms: 63.9355
+  type: 'test'
+  ...
+# Subtest: a failed sink never produces a completed artifact
+ok 38 - a failed sink never produces a completed artifact
+  ---
+  duration_ms: 1.0614
+  type: 'test'
+  ...
+# Subtest: format signatures reject an active-document disguise before writing or exposing content
+ok 39 - format signatures reject an active-document disguise before writing or exposing content
+  ---
+  duration_ms: 7.3682
+  type: 'test'
+  ...
+# Subtest: unavailable, waived, unsupported and excessive versions do not create a download permit
+ok 40 - unavailable, waived, unsupported and excessive versions do not create a download permit
+  ---
+  duration_ms: 1.2299
+  type: 'test'
+  ...
+# Subtest: base64 decoder rejects noncanonical padding, whitespace and length mismatches
+ok 41 - base64 decoder rejects noncanonical padding, whitespace and length mismatches
+  ---
+  duration_ms: 0.8811
+  type: 'test'
+  ...
+# Subtest: portable UTF-8 decoding preserves Chinese, emoji and literal markup and rejects malformed sequences
+ok 42 - portable UTF-8 decoding preserves Chinese, emoji and literal markup and rejects malformed sequences
+  ---
+  duration_ms: 0.638
+  type: 'test'
+  ...
+# Subtest: archive notes are bound to both the project revision and exact closeout fingerprint; only bounded text survives
+ok 43 - archive notes are bound to both the project revision and exact closeout fingerprint; only bounded text survives
+  ---
+  duration_ms: 4.2151
+  type: 'test'
+  ...
+# Subtest: task editors share bounded memory, copy only text and isolate creation, editing, dependencies and revisions
+ok 44 - task editors share bounded memory, copy only text and isolate creation, editing, dependencies and revisions
+  ---
+  duration_ms: 1.4074
+  type: 'test'
+  ...
+# Subtest: resource inputs share authority and item versions, with defensive copies and no retained command evidence
+ok 45 - resource inputs share authority and item versions, with defensive copies and no retained command evidence
+  ---
+  duration_ms: 0.7441
+  type: 'test'
+  ...
+# Subtest: resource text competes for the same total memory budget and expires without reviving stale decisions
+ok 46 - resource text competes for the same total memory budget and expires without reviving stale decisions
+  ---
+  duration_ms: 0.4848
+  type: 'test'
+  ...
+# Subtest: project text restores only for its exact authority and version and never retains template evidence
+ok 47 - project text restores only for its exact authority and version and never retains template evidence
+  ---
+  duration_ms: 0.6933
+  type: 'test'
+  ...
+# Subtest: project text participates in the shared memory budget and logout immediately invalidates retained input
+ok 48 - project text participates in the shared memory budget and logout immediately invalidates retained input
+  ---
+  duration_ms: 0.4416
+  type: 'test'
+  ...
+# Subtest: form input survives page recreation within the same authority and resource version, without shared mutable objects
+ok 49 - form input survives page recreation within the same authority and resource version, without shared mutable objects
+  ---
+  duration_ms: 0.4147
+  type: 'test'
+  ...
+# Subtest: logout, a new login and explicit clearing invalidate old handles before they can restore or resurrect input
+ok 50 - logout, a new login and explicit clearing invalidate old handles before they can restore or resurrect input
+  ---
+  duration_ms: 0.2655
+  type: 'test'
+  ...
+# Subtest: a newer server authorization version clears drafts and an older page cannot roll the authority backward
+ok 51 - a newer server authorization version clears drafts and an older page cannot roll the authority backward
+  ---
+  duration_ms: 0.6215
+  type: 'test'
+  ...
+# Subtest: task versions and every fixed approval revision or step remain separate and do not inherit an old decision
+ok 52 - task versions and every fixed approval revision or step remain separate and do not inherit an old decision
+  ---
+  duration_ms: 5.2479
+  type: 'test'
+  ...
+# Subtest: reading a draft does not prolong its 15-minute input lifetime
+ok 53 - reading a draft does not prolong its 15-minute input lifetime
+  ---
+  duration_ms: 1.292
+  type: 'test'
+  ...
+# Subtest: bounded drafts evict oldest input, cap total text and refuse oversized fields without truncating a human reason
+ok 54 - bounded drafts evict oldest input, cap total text and refuse oversized fields without truncating a human reason
+  ---
+  duration_ms: 1.3448
+  type: 'test'
+  ...
+# Subtest: deliverable input stays bound to the exact form, head and fixed acceptance revision
+ok 55 - deliverable input stays bound to the exact form, head and fixed acceptance revision
+  ---
+  duration_ms: 0.5483
+  type: 'test'
+  ...
+# Subtest: only whitelisted textual input is retained; file selections, credentials and human verification never restore
+ok 56 - only whitelisted textual input is retained; file selections, credentials and human verification never restore
+  ---
+  duration_ms: 0.265
+  type: 'test'
+  ...
+# Subtest: new text fields share the memory budget and reject overlong content without replacing valid input
+ok 57 - new text fields share the memory budget and reject overlong content without replacing valid input
+  ---
+  duration_ms: 0.256
+  type: 'test'
+  ...
+# Subtest: change inputs and operation reasons are bound to exact basis, head and content; attestations and credentials never restore
+ok 58 - change inputs and operation reasons are bound to exact basis, head and content; attestations and credentials never restore
+  ---
+  duration_ms: 1.1398
+  type: 'test'
+  ...
+# Subtest: storage names preserve Unicode spelling and reject path, control, reserved and normalized unsafe forms
+ok 59 - storage names preserve Unicode spelling and reject path, control, reserved and normalized unsafe forms
+  ---
+  duration_ms: 3.7011
+  type: 'test'
+  ...
+# Subtest: new folders bind actual parent and inherited classification without injecting a project or writable flags
+ok 60 - new folders bind actual parent and inherited classification without injecting a project or writable flags
+  ---
+  duration_ms: 1.7669
+  type: 'test'
+  ...
+# Subtest: move freezes source version, exact name, selected destination ID and reason without broadening intent
+ok 61 - move freezes source version, exact name, selected destination ID and reason without broadening intent
+  ---
+  duration_ms: 0.5514
+  type: 'test'
+  ...
+# Subtest: destination selection rejects wrong project/classification, hidden write permission, self and malformed identities
+ok 62 - destination selection rejects wrong project/classification, hidden write permission, self and malformed identities
+  ---
+  duration_ms: 0.62
+  type: 'test'
+  ...
+# Subtest: project roots may be renamed but never moved; unchanged requests and missing current write permission are refused
+ok 63 - project roots may be renamed but never moved; unchanged requests and missing current write permission are refused
+  ---
+  duration_ms: 0.5875
+  type: 'test'
+  ...
+# Subtest: folder creation receipts must match the exact parent, scope, name, creator and initial version
+ok 64 - folder creation receipts must match the exact parent, scope, name, creator and initial version
+  ---
+  duration_ms: 0.5428
+  type: 'test'
+  ...
+# Subtest: file move receipts cannot claim success while changing formal content, lifecycle, owner or namespace
+ok 65 - file move receipts cannot claim success while changing formal content, lifecycle, owner or namespace
+  ---
+  duration_ms: 0.5637
+  type: 'test'
+  ...
+# Subtest: folder move receipts preserve the actual folder identity and require the selected parent
+ok 66 - folder move receipts preserve the actual folder identity and require the selected parent
+  ---
+  duration_ms: 0.277
+  type: 'test'
+  ...
+# Subtest: trash and restore use exact original commands, current capability and state without inventing history restoration
+ok 67 - trash and restore use exact original commands, current capability and state without inventing history restoration
+  ---
+  duration_ms: 0.8701
+  type: 'test'
+  ...
+# Subtest: trash/restore receipts must preserve original name, location and exact formal version
+ok 68 - trash/restore receipts must preserve original name, location and exact formal version
+  ---
+  duration_ms: 0.784
+  type: 'test'
+  ...
+# Subtest: organizing drafts retain whitelisted text only and never restore destination evidence or confirmation
+ok 69 - organizing drafts retain whitelisted text only and never restore destination evidence or confirmation
+  ---
+  duration_ms: 3.6768
+  type: 'test'
+  ...
+# Subtest: money retains exact fractions and amounts beyond JavaScript safe integer units
+ok 70 - money retains exact fractions and amounts beyond JavaScript safe integer units
+  ---
+  duration_ms: 2.9886
+  type: 'test'
+  ...
+# Subtest: Hong Kong input preserves the business day across UTC midnight and rejects invalid calendar times
+ok 71 - Hong Kong input preserves the business day across UTC midnight and rejects invalid calendar times
+  ---
+  duration_ms: 2.2435
+  type: 'test'
+  ...
+# Subtest: partial drafts preserve null facts and permanent source keys without inventing currency or payment
+ok 72 - partial drafts preserve null facts and permanent source keys without inventing currency or payment
+  ---
+  duration_ms: 2.1242
+  type: 'test'
+  ...
+# Subtest: unreadable original fixed references remain in edits and arrays are independently copied
+ok 73 - unreadable original fixed references remain in edits and arrays are independently copied
+  ---
+  duration_ms: 0.9662
+  type: 'test'
+  ...
+# Subtest: split scopes cannot duplicate company/project or accept invalid amounts and dates
+ok 74 - split scopes cannot duplicate company/project or accept invalid amounts and dates
+  ---
+  duration_ms: 0.8376
+  type: 'test'
+  ...
+# Subtest: transfers, employee payees and refund references remain distinct
+ok 75 - transfers, employee payees and refund references remain distinct
+  ---
+  duration_ms: 14.2739
+  type: 'test'
+  ...
+# Subtest: financial memory drafts retain editable strings, exclude evidence/acknowledgments and bind the exact revision
+ok 76 - financial memory drafts retain editable strings, exclude evidence/acknowledgments and bind the exact revision
+  ---
+  duration_ms: 3.0499
+  type: 'test'
+  ...
+# Subtest: draft copy caps array/scalar sizes and cannot serialize an arbitrary server response
+ok 77 - draft copy caps array/scalar sizes and cannot serialize an arbitrary server response
+  ---
+  duration_ms: 1.489
+  type: 'test'
+  ...
+# Subtest: draft success rejects wrong record, source, scope, currency, revision version or amount
+ok 78 - draft success rejects wrong record, source, scope, currency, revision version or amount
+  ---
+  duration_ms: 2.0629
+  type: 'test'
+  ...
+# Subtest: payment success checks the exact payee, original refund and Hong Kong time
+ok 79 - payment success checks the exact payee, original refund and Hong Kong time
+  ---
+  duration_ms: 1.2228
+  type: 'test'
+  ...
+# Subtest: permission gates use actual payment.record rather than an invented create permission
+ok 80 - permission gates use actual payment.record rather than an invented create permission
+  ---
+  duration_ms: 0.4685
+  type: 'test'
+  ...
+# Subtest: transition receipts reject stale versions, another hash/currency and missing reversal identity
+ok 81 - transition receipts reject stale versions, another hash/currency and missing reversal identity
+  ---
+  duration_ms: 0.4243
+  type: 'test'
+  ...
+# Subtest: business links only accept the correct scope and original currency with current approved payable contracts
+ok 82 - business links only accept the correct scope and original currency with current approved payable contracts
+  ---
+  duration_ms: 0.2249
+  type: 'test'
+  ...
+# Subtest: direct settlement fixes exact cost basis and cannot allocate incoming, draft, reversal or cross-currency facts
+ok 83 - direct settlement fixes exact cost basis and cannot allocate incoming, draft, reversal or cross-currency facts
+  ---
+  duration_ms: 0.4643
+  type: 'test'
+  ...
+# Subtest: employee settlement requires its own approved claim, advance line, exact supplier and linked approved revision
+ok 84 - employee settlement requires its own approved claim, advance line, exact supplier and linked approved revision
+  ---
+  duration_ms: 0.4408
+  type: 'test'
+  ...
+# Subtest: expense reversal receipts retain the exact dated reverse, scope, source files and split shares
+ok 85 - expense reversal receipts retain the exact dated reverse, scope, source files and split shares
+  ---
+  duration_ms: 0.3102
+  type: 'test'
+  ...
+# Subtest: cash reversal receipts check the actual UTC reverse time rather than merely a successful reversed state
+ok 86 - cash reversal receipts check the actual UTC reverse time rather than merely a successful reversed state
+  ---
+  duration_ms: 0.3401
+  type: 'test'
+  ...
+# Subtest: foreign currency settlement requires an explicit quote while preserving the exact incurred source
+ok 87 - foreign currency settlement requires an explicit quote while preserving the exact incurred source
+  ---
+  duration_ms: 1.3898
+  type: 'test'
+  ...
+# Subtest: pre116 private financial drafts restore without inventing quote fields or acknowledgements
+ok 88 - pre116 private financial drafts restore without inventing quote fields or acknowledgements
+  ---
+  duration_ms: 0.4452
+  type: 'test'
+  ...
+# Subtest: WeChat reads its actual miniProgram AppID without invoking a Douyin API
+ok 89 - WeChat reads its actual miniProgram AppID without invoking a Douyin API
+  ---
+  duration_ms: 1.6546
+  type: 'test'
+  ...
+# Subtest: Douyin reads microapp AppID from getEnvInfoSync without a WeChat account API
+ok 90 - Douyin reads microapp AppID from getEnvInfoSync without a WeChat account API
+  ---
+  duration_ms: 0.3056
+  type: 'test'
+  ...
+# Subtest: Unavailable or malformed runtime identity fails before any login or configured-ID fallback
+ok 91 - Unavailable or malformed runtime identity fails before any login or configured-ID fallback
+  ---
+  duration_ms: 1.2909
+  type: 'test'
+  ...
+# Subtest: An unconfigured or cross-platform AppID never requests a platform code
+ok 92 - An unconfigured or cross-platform AppID never requests a platform code
+  ---
+  duration_ms: 1.6704
+  type: 'test'
+  ...
+# Subtest: A matching configured runtime returns only the platform, actual AppID and newly obtained code
+ok 93 - A matching configured runtime returns only the platform, actual AppID and newly obtained code
+  ---
+  duration_ms: 1.0827
+  type: 'test'
+  ...
+# Subtest: Missing, malformed and anonymous-only login results cannot become employee proofs
+ok 94 - Missing, malformed and anonymous-only login results cannot become employee proofs
+  ---
+  duration_ms: 0.6361
+  type: 'test'
+  ...
+# Subtest: Separate user actions obtain fresh codes instead of reusing a runtime result
+ok 95 - Separate user actions obtain fresh codes instead of reusing a runtime result
+  ---
+  duration_ms: 0.3824
+  type: 'test'
+  ...
+# Subtest: Android authentication and command intent keep their actual device and idempotency identity through the native bridge
+ok 96 - Android authentication and command intent keep their actual device and idempotency identity through the native bridge
+  ---
+  duration_ms: 3.8647
+  type: 'test'
+  ...
+# Subtest: fixed-version read passes the exact range condition and only a relative API path
+ok 97 - fixed-version read passes the exact range condition and only a relative API path
+  ---
+  duration_ms: 0.7207
+  type: 'test'
+  ...
+# Subtest: closing a native page cancels its exact call and never automatically repeats a write
+ok 98 - closing a native page cancels its exact call and never automatically repeats a write
+  ---
+  duration_ms: 3.3619
+  type: 'test'
+  ...
+# Subtest: malformed native JSON cannot become a successful business result or disclose native diagnostics
+ok 99 - malformed native JSON cannot become a successful business result or disclose native diagnostics
+  ---
+  duration_ms: 0.4842
+  type: 'test'
+  ...
+# Subtest: complete content detects filtered sources, preserves reference order and distinguishes follow from fixed
+ok 100 - complete content detects filtered sources, preserves reference order and distinguishes follow from fixed
+  ---
+  duration_ms: 7.1945
+  type: 'test'
+  ...
+# Subtest: all four knowledge types accept company/project drafts, Unicode and the full 100-reference limit
+ok 101 - all four knowledge types accept company/project drafts, Unicode and the full 100-reference limit
+  ---
+  duration_ms: 5.0001
+  type: 'test'
+  ...
+# Subtest: edits bind exact version/base revision, reject incomplete source sets and cannot change scope/type/class
+ok 102 - edits bind exact version/base revision, reject incomplete source sets and cannot change scope/type/class
+  ---
+  duration_ms: 3.4383
+  type: 'test'
+  ...
+# Subtest: create and edit receipts reject wrong identity, bodies, publication pointers and missing fields
+ok 103 - create and edit receipts reject wrong identity, bodies, publication pointers and missing fields
+  ---
+  duration_ms: 4.2475
+  type: 'test'
+  ...
+# Subtest: publication requires content/intent/reason and draft/archive keep the published pointer
+ok 104 - publication requires content/intent/reason and draft/archive keep the published pointer
+  ---
+  duration_ms: 1.0734
+  type: 'test'
+  ...
+# Subtest: restoration receipts must establish a new revision and corroborate the immutable history base
+ok 105 - restoration receipts must establish a new revision and corroborate the immutable history base
+  ---
+  duration_ms: 0.6056
+  type: 'test'
+  ...
+# Subtest: text-only comment edits omit attachment replacement; an explicit empty list remains an explicit clear
+ok 106 - text-only comment edits omit attachment replacement; an explicit empty list remains an explicit clear
+  ---
+  duration_ms: 0.8145
+  type: 'test'
+  ...
+# Subtest: comment receipts require a new ID, exact context, preserved pins and immutable predecessor
+ok 107 - comment receipts require a new ID, exact context, preserved pins and immutable predecessor
+  ---
+  duration_ms: 0.6975
+  type: 'test'
+  ...
+# Subtest: Markdown emits headings, paragraphs, quotes, lists and verbatim fenced code as text nodes
+ok 108 - Markdown emits headings, paragraphs, quotes, lists and verbatim fenced code as text nodes
+  ---
+  duration_ms: 2.9401
+  type: 'test'
+  ...
+# Subtest: raw HTML, remote images, script/data/file links and embedded credentials never become active resources
+ok 109 - raw HTML, remote images, script/data/file links and embedded credentials never become active resources
+  ---
+  duration_ms: 0.7743
+  type: 'test'
+  ...
+# Subtest: formatting and explicit http(s) links preserve readable Unicode content without fetching
+ok 110 - formatting and explicit http(s) links preserve readable Unicode content without fetching
+  ---
+  duration_ms: 0.4497
+  type: 'test'
+  ...
+# Subtest: thirteen complete categories and exact counts are required, including resource identity and actual budget revisions
+ok 111 - thirteen complete categories and exact counts are required, including resource identity and actual budget revisions
+  ---
+  duration_ms: 37.0489
+  type: 'test'
+  ...
+# Subtest: restricted categories retain null counts, no items and no complete fingerprint or write affordance
+ok 112 - restricted categories retain null counts, no items and no complete fingerprint or write affordance
+  ---
+  duration_ms: 1.4141
+  type: 'test'
+  ...
+# Subtest: project lifecycle preserves original permissions, state targets and the independent archive boundary
+ok 113 - project lifecycle preserves original permissions, state targets and the independent archive boundary
+  ---
+  duration_ms: 1.8905
+  type: 'test'
+  ...
+# Subtest: viewer and missing business actions cannot transition or archive even when a stale capability says yes
+ok 114 - viewer and missing business actions cannot transition or archive even when a stale capability says yes
+  ---
+  duration_ms: 2.2873
+  type: 'test'
+  ...
+# Subtest: a project transition receipt must preserve the exact header and advance only the intended state and version
+ok 115 - a project transition receipt must preserve the exact header and advance only the intended state and version
+  ---
+  duration_ms: 0.8071
+  type: 'test'
+  ...
+# Subtest: archive inputs bind exact version and fingerprint, require three notes, two explicit attestations and fresh MFA
+ok 116 - archive inputs bind exact version and fingerprint, require three notes, two explicit attestations and fresh MFA
+  ---
+  duration_ms: 2.2015
+  type: 'test'
+  ...
+# Subtest: optional archive attachments use distinct actual fixed versions with a maximum of twenty
+ok 117 - optional archive attachments use distinct actual fixed versions with a maximum of twenty
+  ---
+  duration_ms: 2.5456
+  type: 'test'
+  ...
+# Subtest: full archive receipts reconcile original project, notes, actor, fingerprint, groups and new archive revision
+ok 118 - full archive receipts reconcile original project, notes, actor, fingerprint, groups and new archive revision
+  ---
+  duration_ms: 1.8071
+  type: 'test'
+  ...
+# Subtest: fixed attachment receipts preserve ordered IDs, large byte text, original file identity and complete metadata
+ok 119 - fixed attachment receipts preserve ordered IDs, large byte text, original file identity and complete metadata
+  ---
+  duration_ms: 2.1215
+  type: 'test'
+  ...
+# Subtest: historical reads reject mixed projects, missing records and restricted payload leakage instead of showing an empty success
+ok 120 - historical reads reject mixed projects, missing records and restricted payload leakage instead of showing an empty success
+  ---
+  duration_ms: 2.8357
+  type: 'test'
+  ...
+# Subtest: a committed archive needs actual current project and history proof; hidden history or a concurrent reopen blocks success
+ok 121 - a committed archive needs actual current project and history proof; hidden history or a concurrent reopen blocks success
+  ---
+  duration_ms: 1.3105
+  type: 'test'
+  ...
+# Subtest: an unfinished source cannot be represented as ready by an invented capability or incomplete category
+ok 122 - an unfinished source cannot be represented as ready by an invented capability or incomplete category
+  ---
+  duration_ms: 0.4717
+  type: 'test'
+  ...
+# Subtest: project creation fixes the logged-in owner, exact template revision identity and unshifted calendar dates
+ok 123 - project creation fixes the logged-in owner, exact template revision identity and unshifted calendar dates
+  ---
+  duration_ms: 5.374
+  type: 'test'
+  ...
+# Subtest: invalid or inverted calendar dates never become normalized approved business dates
+ok 124 - invalid or inverted calendar dates never become normalized approved business dates
+  ---
+  duration_ms: 0.6487
+  type: 'test'
+  ...
+# Subtest: draft edits explicitly clear dates, while active scope and dates require their original change workflow
+ok 125 - draft edits explicitly clear dates, while active scope and dates require their original change workflow
+  ---
+  duration_ms: 0.4347
+  type: 'test'
+  ...
+# Subtest: creation receipts must prove the exact new project and template revision without fabricating initialization
+ok 126 - creation receipts must prove the exact new project and template revision without fabricating initialization
+  ---
+  duration_ms: 41.2254
+  type: 'test'
+  ...
+# Subtest: Unicode whitespace normalization and existing resource versions remain bound to the actual project receipt
+ok 127 - Unicode whitespace normalization and existing resource versions remain bound to the actual project receipt
+  ---
+  duration_ms: 0.4995
+  type: 'test'
+  ...
+# Subtest: membership changes preserve the parent version, explicit role and reason and reject self or owner changes
+ok 128 - membership changes preserve the parent version, explicit role and reason and reject self or owner changes
+  ---
+  duration_ms: 0.8018
+  type: 'test'
+  ...
+# Subtest: owner handover uses its distinct command and a receipt for the exact new owner and next project version
+ok 129 - owner handover uses its distinct command and a receipt for the exact new owner and next project version
+  ---
+  duration_ms: 0.7038
+  type: 'test'
+  ...
+# Subtest: retained project input strips template evidence, arbitrary owner and confirmation flags and bounds text
+ok 130 - retained project input strips template evidence, arbitrary owner and confirmation flags and bounds text
+  ---
+  duration_ms: 1.1279
+  type: 'test'
+  ...
+# Subtest: financial decimal text preserves huge, negative, zero and six-place source facts without rounding
+ok 131 - financial decimal text preserves huge, negative, zero and six-place source facts without rounding
+  ---
+  duration_ms: 1.8514
+  type: 'test'
+  ...
+# Subtest: missing, scientific, non-finite and non-contract money never display an invented zero
+ok 132 - missing, scientific, non-finite and non-contract money never display an invented zero
+  ---
+  duration_ms: 1.3686
+  type: 'test'
+  ...
+# Subtest: snapshot clocks retain Hong Kong midnight and seconds independently of device timezone
+ok 133 - snapshot clocks retain Hong Kong midnight and seconds independently of device timezone
+  ---
+  duration_ms: 2.1159
+  type: 'test'
+  ...
+# Subtest: all sixteen associated kinds have actual native routes and keep their stable identity
+ok 134 - all sixteen associated kinds have actual native routes and keep their stable identity
+  ---
+  duration_ms: 1.417
+  type: 'test'
+  ...
+# Subtest: collection links preserve actual project scope and never advertise global services as project-filtered
+ok 135 - collection links preserve actual project scope and never advertise global services as project-filtered
+  ---
+  duration_ms: 0.2592
+  type: 'test'
+  ...
+# Subtest: financial reads use a fixed allowlist and canonical UUIDs instead of arbitrary route/tool input
+ok 136 - financial reads use a fixed allowlist and canonical UUIDs instead of arbitrary route/tool input
+  ---
+  duration_ms: 0.5961
+  type: 'test'
+  ...
+# Subtest: an accurate authorized overview preserves unknown categories as unknown rather than readable zero
+ok 137 - an accurate authorized overview preserves unknown categories as unknown rather than readable zero
+  ---
+  duration_ms: 0.7955
+  type: 'test'
+  ...
+# Subtest: foreign, stale project versions, incomplete categories and invalid snapshot clocks fail closed
+ok 138 - foreign, stale project versions, incomplete categories and invalid snapshot clocks fail closed
+  ---
+  duration_ms: 0.6535
+  type: 'test'
+  ...
+# Subtest: unavailable counts, titles or state statistics cannot enter the factual view
+ok 139 - unavailable counts, titles or state statistics cannot enter the factual view
+  ---
+  duration_ms: 0.7365
+  type: 'test'
+  ...
+# Subtest: full readable count is independent of five recent previews; inconsistent states or pagination fail closed
+ok 140 - full readable count is independent of five recent previews; inconsistent states or pagination fail closed
+  ---
+  duration_ms: 1.0521
+  type: 'test'
+  ...
+# Subtest: Hong Kong wall time is explicit, offset-equivalent and lossless at PostgreSQL microsecond precision
+ok 141 - Hong Kong wall time is explicit, offset-equivalent and lossless at PostgreSQL microsecond precision
+  ---
+  duration_ms: 5.5014
+  type: 'test'
+  ...
+# Subtest: invalid calendar dates, fractional rounding and invalid time zones cannot silently normalize a decision
+ok 142 - invalid calendar dates, fractional rounding and invalid time zones cannot silently normalize a decision
+  ---
+  duration_ms: 1.5818
+  type: 'test'
+  ...
+# Subtest: all three creates use original paths and complete fields without invented parent expected-version or state
+ok 143 - all three creates use original paths and complete fields without invented parent expected-version or state
+  ---
+  duration_ms: 2.5235
+  type: 'test'
+  ...
+# Subtest: only actual active project members and writable project records can be selected or edited
+ok 144 - only actual active project members and writable project records can be selected or edited
+  ---
+  duration_ms: 1.3384
+  type: 'test'
+  ...
+# Subtest: edits bind the item version and do not send unselected state changes or another entity-specific field
+ok 145 - edits bind the item version and do not send unselected state changes or another entity-specific field
+  ---
+  duration_ms: 0.5398
+  type: 'test'
+  ...
+# Subtest: optional dates and risk probability remain absent or exact, never falsely reported as cleared
+ok 146 - optional dates and risk probability remain absent or exact, never falsely reported as cleared
+  ---
+  duration_ms: 0.625
+  type: 'test'
+  ...
+# Subtest: successful creation and edit receipts prove actual identity, fields, project, state and exact version
+ok 147 - successful creation and edit receipts prove actual identity, fields, project, state and exact version
+  ---
+  duration_ms: 0.8233
+  type: 'test'
+  ...
+# Subtest: receipt checks reject sub-millisecond differences and unexpected concern field or issue association changes
+ok 148 - receipt checks reject sub-millisecond differences and unexpected concern field or issue association changes
+  ---
+  duration_ms: 0.3827
+  type: 'test'
+  ...
+# Subtest: state choices respect the original graph and the server-derived overdue fact
+ok 149 - state choices respect the original graph and the server-derived overdue fact
+  ---
+  duration_ms: 10.0646
+  type: 'test'
+  ...
+# Subtest: each transition fixes the exact version and reason; issue closure needs resolution and realization needs issue.create
+ok 150 - each transition fixes the exact version and reason; issue closure needs resolution and realization needs issue.create
+  ---
+  duration_ms: 4.7333
+  type: 'test'
+  ...
+# Subtest: transition receipts retain all unchanged facts and require a real new issue ID on risk realization
+ok 151 - transition receipts retain all unchanged facts and require a real new issue ID on risk realization
+  ---
+  duration_ms: 1.5895
+  type: 'test'
+  ...
+# Subtest: legacy template milestones without an owner or date can still cancel or reopen with exact receipts
+ok 152 - legacy template milestones without an owner or date can still cancel or reopen with exact receipts
+  ---
+  duration_ms: 0.4668
+  type: 'test'
+  ...
+# Subtest: only bounded textual resource input is copied; API evidence and confirmation flags never become drafts
+ok 153 - only bounded textual resource input is copied; API evidence and confirmation flags never become drafts
+  ---
+  duration_ms: 0.5244
+  type: 'test'
+  ...
+# Subtest: a run receipt must belong to the exact actor conversation profile and client message
+ok 154 - a run receipt must belong to the exact actor conversation profile and client message
+  ---
+  duration_ms: 2.0055
+  type: 'test'
+  ...
+# Subtest: a reconciled terminal receipt remains valid without inventing a new queued task
+ok 155 - a reconciled terminal receipt remains valid without inventing a new queued task
+  ---
+  duration_ms: 0.3069
+  type: 'test'
+  ...
+# Subtest: a successful secretary turn distinguishes a response from completion of its business request
+ok 156 - a successful secretary turn distinguishes a response from completion of its business request
+  ---
+  duration_ms: 0.297
+  type: 'test'
+  ...
+# Subtest: unavailable source messages never render a supplied stale body
+ok 157 - unavailable source messages never render a supplied stale body
+  ---
+  duration_ms: 0.1802
+  type: 'test'
+  ...
+# Subtest: secretary drafts keep input text and request identity while excluding source contents and permissions
+ok 158 - secretary drafts keep input text and request identity while excluding source contents and permissions
+  ---
+  duration_ms: 1.5919
+  type: 'test'
+  ...
+# Subtest: password recovery is unauthenticated and sends no stored credential
+ok 159 - password recovery is unauthenticated and sends no stored credential
+  ---
+  duration_ms: 4.3947
+  type: 'test'
+  ...
+# Subtest: confirmed password change clears memory credentials while a rejected password leaves the current login intact
+ok 160 - confirmed password change clears memory credentials while a rejected password leaves the current login intact
+  ---
+  duration_ms: 2.0388
+  type: 'test'
+  ...
+# Subtest: a late password change result cannot clear a newer login
+ok 161 - a late password change result cannot clear a newer login
+  ---
+  duration_ms: 0.4869
+  type: 'test'
+  ...
+# Subtest: device revocation keeps other device login and clears only a confirmed current device
+ok 162 - device revocation keeps other device login and clears only a confirmed current device
+  ---
+  duration_ms: 1.5634
+  type: 'test'
+  ...
+# Subtest: server validation exposes only bounded public field messages, without carrying response extras or arbitrary details
+ok 163 - server validation exposes only bounded public field messages, without carrying response extras or arbitrary details
+  ---
+  duration_ms: 0.708
+  type: 'test'
+  ...
+# Subtest: content chunks use a fixed relative endpoint and validated If-Range while retaining normal session lifetime checks
+ok 164 - content chunks use a fixed relative endpoint and validated If-Range while retaining normal session lifetime checks
+  ---
+  duration_ms: 0.9064
+  type: 'test'
+  ...
+# Subtest: mobile login declares its channel, keeps operation IDs independent of secrets, rejects malformed login results
+ok 165 - mobile login declares its channel, keeps operation IDs independent of secrets, rejects malformed login results
+  ---
+  duration_ms: 0.5796
+  type: 'test'
+  ...
+# Subtest: concurrent reads share one refresh rotation and use the new bearer only
+ok 166 - concurrent reads share one refresh rotation and use the new bearer only
+  ---
+  duration_ms: 15.0218
+  type: 'test'
+  ...
+# Subtest: an old refresh failing after a new login cannot clear or overwrite the new session
+ok 167 - an old refresh failing after a new login cannot clear or overwrite the new session
+  ---
+  duration_ms: 2.1229
+  type: 'test'
+  ...
+# Subtest: late reads after logout are discarded and closing a page aborts its wire request
+ok 168 - late reads after logout are discarded and closing a page aborts its wire request
+  ---
+  duration_ms: 3.827
+  type: 'test'
+  ...
+# Subtest: commands require an explicit intent key, never automatically replay on 401 or network ambiguity
+ok 169 - commands require an explicit intent key, never automatically replay on 401 or network ambiguity
+  ---
+  duration_ms: 1.6184
+  type: 'test'
+  ...
+# Subtest: GET 401 renews once and a second 401 stops without a retry loop
+ok 170 - GET 401 renews once and a second 401 stops without a retry loop
+  ---
+  duration_ms: 3.9847
+  type: 'test'
+  ...
+# Subtest: MFA uses the same challenge/code contract; hostile route inputs never receive a bearer
+ok 171 - MFA uses the same challenge/code contract; hostile route inputs never receive a bearer
+  ---
+  duration_ms: 1.0485
+  type: 'test'
+  ...
+# Subtest: MFA enrollment returns a setting secret without a repeated challenge or an authenticated session
+ok 172 - MFA enrollment returns a setting secret without a repeated challenge or an authenticated session
+  ---
+  duration_ms: 0.4751
+  type: 'test'
+  ...
+# Subtest: platform login uses its compiled channel without an existing bearer and retains MFA challenge state
+ok 173 - platform login uses its compiled channel without an existing bearer and retains MFA challenge state
+  ---
+  duration_ms: 0.4887
+  type: 'test'
+  ...
+# Subtest: late platform login cannot replace a more recent password login
+ok 174 - late platform login cannot replace a more recent password login
+  ---
+  duration_ms: 0.3034
+  type: 'test'
+  ...
+# Subtest: Android cannot submit a mini-program login and malformed public profiles are rejected
+ok 175 - Android cannot submit a mini-program login and malformed public profiles are rejected
+  ---
+  duration_ms: 0.448
+  type: 'test'
+  ...
+# Subtest: a status lease consumes the whole network flight and expires exactly at its monotonic boundary
+ok 176 - a status lease consumes the whole network flight and expires exactly at its monotonic boundary
+  ---
+  duration_ms: 2.1159
+  type: 'test'
+  ...
+# Subtest: invalid timestamps, clocks, negative leases and clock rollback cannot keep a status live
+ok 177 - invalid timestamps, clocks, negative leases and clock rollback cannot keep a status live
+  ---
+  duration_ms: 1.9055
+  type: 'test'
+  ...
+# Subtest: portable verification accepts the actual raw bytes signed independently by Node/OpenSSL
+ok 178 - portable verification accepts the actual raw bytes signed independently by Node/OpenSSL
+  ---
+  duration_ms: 141.7884
+  type: 'test'
+  ...
+# Subtest: signature, source domain, digest, historical key and selected row are all independently bound
+ok 179 - signature, source domain, digest, historical key and selected row are all independently bound
+  ---
+  duration_ms: 17.8732
+  type: 'test'
+  ...
+# Subtest: proof decoding bounds bytes and rejects unsafe sequences, noncanonical encodings and weak signatures
+ok 180 - proof decoding bounds bytes and rejects unsafe sequences, noncanonical encodings and weak signatures
+  ---
+  duration_ms: 20.4501
+  type: 'test'
+  ...
+# Subtest: incident input requires actual affected services and resolution, and never reopens resolved records
+ok 181 - incident input requires actual affected services and resolution, and never reopens resolved records
+  ---
+  duration_ms: 1.6642
+  type: 'test'
+  ...
+# Subtest: incident commands preserve exact versions and fixed service sets; receipts cannot claim another intent
+ok 182 - incident commands preserve exact versions and fixed service sets; receipts cannot claim another intent
+  ---
+  duration_ms: 0.6967
+  type: 'test'
+  ...
+# Subtest: incident drafts whitelist only input strings, isolate copies and use the existing shared authority and budget
+ok 183 - incident drafts whitelist only input strings, isolate copies and use the existing shared authority and budget
+  ---
+  duration_ms: 4.9432
+  type: 'test'
+  ...
+# Subtest: creation retains full content, nullable fields and exact Hong Kong instants without a fake parent version
+ok 184 - creation retains full content, nullable fields and exact Hong Kong instants without a fake parent version
+  ---
+  duration_ms: 5.8597
+  type: 'test'
+  ...
+# Subtest: strict date validation rejects impossible dates and reversed times at microsecond precision
+ok 185 - strict date validation rejects impossible dates and reversed times at microsecond precision
+  ---
+  duration_ms: 1.3657
+  type: 'test'
+  ...
+# Subtest: assignment follows original create and update permissions, including explicit clearing
+ok 186 - assignment follows original create and update permissions, including explicit clearing
+  ---
+  duration_ms: 1.4704
+  type: 'test'
+  ...
+# Subtest: parents and milestones require actual same-project readable candidates while unchanged references remain exact
+ok 187 - parents and milestones require actual same-project readable candidates while unchanged references remain exact
+  ---
+  duration_ms: 0.7705
+  type: 'test'
+  ...
+# Subtest: viewer roles, stopped projects, completed tasks and wrong-project deep links remain read only
+ok 188 - viewer roles, stopped projects, completed tasks and wrong-project deep links remain read only
+  ---
+  duration_ms: 0.6336
+  type: 'test'
+  ...
+# Subtest: successful task receipt must match every intended field, identity, version and microsecond
+ok 189 - successful task receipt must match every intended field, identity, version and microsecond
+  ---
+  duration_ms: 0.9626
+  type: 'test'
+  ...
+# Subtest: dependency commands retain exact successor version, same project and lifecycle constraints
+ok 190 - dependency commands retain exact successor version, same project and lifecycle constraints
+  ---
+  duration_ms: 1.4535
+  type: 'test'
+  ...
+# Subtest: dependency success requires a complete task receipt and actual edge proof at the same task revision
+ok 191 - dependency success requires a complete task receipt and actual edge proof at the same task revision
+  ---
+  duration_ms: 0.7971
+  type: 'test'
+  ...
+# Subtest: task drafts copy only bounded text fields and reject oversized or mistyped inputs
+ok 192 - task drafts copy only bounded text fields and reject oversized or mistyped inputs
+  ---
+  duration_ms: 0.6075
+  type: 'test'
+  ...
+# Subtest: TG identifiers keep all sixteen decimal digits and explicit zero topic without number coercion
+ok 193 - TG identifiers keep all sixteen decimal digits and explicit zero topic without number coercion
+  ---
+  duration_ms: 3.3421
+  type: 'test'
+  ...
+# Subtest: TG topic rejects empty, rounded, exponent, signed and noncanonical integers
+ok 194 - TG topic rejects empty, rounded, exponent, signed and noncanonical integers
+  ---
+  duration_ms: 1.0062
+  type: 'test'
+  ...
+# Subtest: TG bot and group identity reject unsafe or display-name aliases
+ok 195 - TG bot and group identity reject unsafe or display-name aliases
+  ---
+  duration_ms: 0.509
+  type: 'test'
+  ...
+# Subtest: TG channel requires explicit current MFA and complete scope acknowledgement
+ok 196 - TG channel requires explicit current MFA and complete scope acknowledgement
+  ---
+  duration_ms: 0.363
+  type: 'test'
+  ...
+# Subtest: TG defaults must remain in a unique nonempty allowed skill set
+ok 197 - TG defaults must remain in a unique nonempty allowed skill set
+  ---
+  duration_ms: 0.3172
+  type: 'test'
+  ...
+# Subtest: TG new channel is paused and cannot silently enable ingress
+ok 198 - TG new channel is paused and cannot silently enable ingress
+  ---
+  duration_ms: 0.5891
+  type: 'test'
+  ...
+# Subtest: TG patch binds old revision and refuses replacing an existing exact location
+ok 199 - TG patch binds old revision and refuses replacing an existing exact location
+  ---
+  duration_ms: 0.4286
+  type: 'test'
+  ...
+# Subtest: TG receipt detects substituted identity, scope, permissions, revision and delivery policy
+ok 200 - TG receipt detects substituted identity, scope, permissions, revision and delivery policy
+  ---
+  duration_ms: 0.4906
+  type: 'test'
+  ...
+# Subtest: TG actual patch receipt must advance exactly one revision on the same channel
+ok 201 - TG actual patch receipt must advance exactly one revision on the same channel
+  ---
+  duration_ms: 0.5871
+  type: 'test'
+  ...
+# Subtest: TG private capability accepts only the exact selected Bot URL and returned token
+ok 202 - TG private capability accepts only the exact selected Bot URL and returned token
+  ---
+  duration_ms: 0.9386
+  type: 'test'
+  ...
+# Subtest: TG binding receipt corroborates the proved numeric identity rather than a display name
+ok 203 - TG binding receipt corroborates the proved numeric identity rather than a display name
+  ---
+  duration_ms: 0.4301
+  type: 'test'
+  ...
+# Subtest: TG cancellation and revocation receipt bind the exact object, identity and next revision
+ok 204 - TG cancellation and revocation receipt bind the exact object, identity and next revision
+  ---
+  duration_ms: 0.2427
+  type: 'test'
+  ...
+# Subtest: TG copies keep a separate selected skill list and normalize only explicit human text
+ok 205 - TG copies keep a separate selected skill list and normalize only explicit human text
+  ---
+  duration_ms: 1.0449
+  type: 'test'
+  ...
+# Subtest: 120 GB layout and last part retain exact byte counts without reading file content
+ok 206 - 120 GB layout and last part retain exact byte counts without reading file content
+  ---
+  duration_ms: 3.7378
+  type: 'test'
+  ...
+# Subtest: recovery reconciles cloud parts, sends only missing data and finalizes without committing
+ok 207 - recovery reconciles cloud parts, sends only missing data and finalizes without committing
+  ---
+  duration_ms: 8.3633
+  type: 'test'
+  ...
+# Subtest: unknown acknowledgement stops immediately; explicit continuation reconciles an unacknowledged cloud part
+ok 208 - unknown acknowledgement stops immediately; explicit continuation reconciles an unacknowledged cloud part
+  ---
+  duration_ms: 3.7489
+  type: 'test'
+  ...
+# Subtest: an unknown create is never automatically replayed; manual reconciliation uses the same durable intent
+ok 209 - an unknown create is never automatically replayed; manual reconciliation uses the same durable intent
+  ---
+  duration_ms: 3.3024
+  type: 'test'
+  ...
+# Subtest: expired preparation and a changed creation target cannot silently establish a replacement intent
+ok 210 - expired preparation and a changed creation target cannot silently establish a replacement intent
+  ---
+  duration_ms: 1.6261
+  type: 'test'
+  ...
+# Subtest: a changed source layout, storage epoch or target prevents any native transfer
+ok 211 - a changed source layout, storage epoch or target prevents any native transfer
+  ---
+  duration_ms: 2.998
+  type: 'test'
+  ...
+# Subtest: wrong or incomplete permits stop before native network I/O
+ok 212 - wrong or incomplete permits stop before native network I/O
+  ---
+  duration_ms: 2.2003
+  type: 'test'
+  ...
+# Subtest: cancellation during native I/O rejects late receipt and sends no acknowledgement
+ok 213 - cancellation during native I/O rejects late receipt and sends no acknowledgement
+  ---
+  duration_ms: 9.6119
+  type: 'test'
+  ...
+# Subtest: system notification pause affects only the active native run
+ok 214 - system notification pause affects only the active native run
+  ---
+  duration_ms: 2.4657
+  type: 'test'
+  ...
+# Subtest: logout clears visible upload details and prevents late native acknowledgement
+ok 215 - logout clears visible upload details and prevents late native acknowledgement
+  ---
+  duration_ms: 2.2138
+  type: 'test'
+  ...
+# Subtest: finalize requires authoritative cloud reconciliation of the complete layout
+ok 216 - finalize requires authoritative cloud reconciliation of the complete layout
+  ---
+  duration_ms: 1.6566
+  type: 'test'
+  ...
+# Subtest: memory-only credential rotation continues through the existing client and never reaches the provider
+ok 217 - memory-only credential rotation continues through the existing client and never reaches the provider
+  ---
+  duration_ms: 1.4021
+  type: 'test'
+  ...
+# Subtest: already prepared server results and mismatched identity cannot trigger data transmission
+ok 218 - already prepared server results and mismatched identity cannot trigger data transmission
+  ---
+  duration_ms: 0.5589
+  type: 'test'
+  ...
+1..218
+# tests 218
+# suites 0
+# pass 218
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2962.2748
+TAP version 13
+# Subtest: does not invent a plan or company rule
+ok 1 - does not invent a plan or company rule
+  ---
+  duration_ms: 2.7063
+  type: 'test'
+  ...
+# Subtest: binds inputs to cost revision and plan version
+ok 2 - binds inputs to cost revision and plan version
+  ---
+  duration_ms: 5.7124
+  type: 'test'
+  ...
+# Subtest: rejects invalid dates, missing reason and implicit rule names
+ok 3 - rejects invalid dates, missing reason and implicit rule names
+  ---
+  duration_ms: 24.1251
+  type: 'test'
+  ...
+# Subtest: rejects a schedule for another cost or source revision
+ok 4 - rejects a schedule for another cost or source revision
+  ---
+  duration_ms: 3.9046
+  type: 'test'
+  ...
+# Subtest: conserves each project and company share independently
+ok 5 - conserves each project and company share independently
+  ---
+  duration_ms: 1.4289
+  type: 'test'
+  ...
+# Subtest: refuses gaps, duplicated periods and impossible recognition dates
+ok 6 - refuses gaps, duplicated periods and impossible recognition dates
+  ---
+  duration_ms: 0.5978
+  type: 'test'
+  ...
+# Subtest: rejects sub-minor-unit or numeric amounts
+ok 7 - rejects sub-minor-unit or numeric amounts
+  ---
+  duration_ms: 0.5701
+  type: 'test'
+  ...
+# Subtest: preserves maximum minor units beyond floating point precision
+ok 8 - preserves maximum minor units beyond floating point precision
+  ---
+  duration_ms: 0.7898
+  type: 'test'
+  ...
+# Subtest: requires a preview for exactly the chosen rule, dates and next version
+ok 9 - requires a preview for exactly the chosen rule, dates and next version
+  ---
+  duration_ms: 1.3417
+  type: 'test'
+  ...
+# Subtest: validates attributed immutable versions and missing current plans
+ok 10 - validates attributed immutable versions and missing current plans
+  ---
+  duration_ms: 2.3376
+  type: 'test'
+  ...
+# Subtest: keeps historical source content readable after cost state version increases
+ok 11 - keeps historical source content readable after cost state version increases
+  ---
+  duration_ms: 0.4357
+  type: 'test'
+  ...
+# Subtest: routes amortization reports and sources back to the original expense
+ok 12 - routes amortization reports and sources back to the original expense
+  ---
+  duration_ms: 47.893
+  type: 'test'
+  ...
+# Subtest: audit query encodes identifiers without dropping the active period
+ok 13 - audit query encodes identifiers without dropping the active period
+  ---
+  duration_ms: 5.0989
+  type: 'test'
+  ...
+# Subtest: audit dates reject invalid leap days and accept an actual leap year
+ok 14 - audit dates reject invalid leap days and accept an actual leap year
+  ---
+  duration_ms: 0.5068
+  type: 'test'
+  ...
+# Subtest: audit page keeps large revision strings intact
+ok 15 - audit page keeps large revision strings intact
+  ---
+  duration_ms: 0.8871
+  type: 'test'
+  ...
+# Subtest: audit page fails closed on substituted filters or arbitrary content
+ok 16 - audit page fails closed on substituted filters or arbitrary content
+  ---
+  duration_ms: 0.5549
+  type: 'test'
+  ...
+# Subtest: audit export cannot become downloadable through inconsistent status flags
+ok 17 - audit export cannot become downloadable through inconsistent status flags
+  ---
+  duration_ms: 0.4877
+  type: 'test'
+  ...
+# Subtest: mobile audit download validates real SHA-256 with the native-compatible library
+ok 18 - mobile audit download validates real SHA-256 with the native-compatible library
+  ---
+  duration_ms: 2.9986
+  type: 'test'
+  ...
+# Subtest: mobile audit download rejects a finance artifact substituted for an audit artifact
+ok 19 - mobile audit download rejects a finance artifact substituted for an audit artifact
+  ---
+  duration_ms: 0.6429
+  type: 'test'
+  ...
+# Subtest: mobile audit download stops before fetching after navigation cancellation
+ok 20 - mobile audit download stops before fetching after navigation cancellation
+  ---
+  duration_ms: 0.3853
+  type: 'test'
+  ...
+# Subtest: Taro concern payload serialization preserves explicit clears, all metadata and an omitted state
+ok 21 - Taro concern payload serialization preserves explicit clears, all metadata and an omitted state
+  ---
+  duration_ms: 15.3848
+  type: 'test'
+  ...
+# Subtest: Taro requires every field, valid Unicode and explicit writable state before preparing a concern
+ok 22 - Taro requires every field, valid Unicode and explicit writable state before preparing a concern
+  ---
+  duration_ms: 13.6428
+  type: 'test'
+  ...
+# Subtest: Taro confirms the exact new child, parent version and sender rather than a parent update
+ok 23 - Taro confirms the exact new child, parent version and sender rather than a parent update
+  ---
+  duration_ms: 22.6291
+  type: 'test'
+  ...
+# Subtest: Taro risk realization cannot use a missing, reused or malformed linked issue
+ok 24 - Taro risk realization cannot use a missing, reused or malformed linked issue
+  ---
+  duration_ms: 1.1451
+  type: 'test'
+  ...
+# Subtest: Taro issue completion requires resolution and follows the original state transitions
+ok 25 - Taro issue completion requires resolution and follows the original state transitions
+  ---
+  duration_ms: 0.5688
+  type: 'test'
+  ...
+# Subtest: complete exact contract bodies and explicit human adoption
+    # Subtest: requires an editable draft, exact scope and identical classification
+    ok 1 - requires an editable draft, exact scope and identical classification
+      ---
+      duration_ms: 5.9434
+      type: 'test'
+      ...
+    # Subtest: binds a queued body to this run, exact contract input and new file intent
+    ok 2 - binds a queued body to this run, exact contract input and new file intent
+      ---
+      duration_ms: 1.0283
+      type: 'test'
+      ...
+    # Subtest: requires the complete original facts before declaring a body proven
+    ok 3 - requires the complete original facts before declaring a body proven
+      ---
+      duration_ms: 1.2288
+      type: 'test'
+      ...
+    # Subtest: verifies full UTF-8 bytes beyond the old difference preview
+    ok 4 - verifies full UTF-8 bytes beyond the old difference preview
+      ---
+      duration_ms: 39.9009
+      type: 'test'
+      ...
+    # Subtest: rejects altered, truncated, oversized, unscanned or mismatched file content
+    ok 5 - rejects altered, truncated, oversized, unscanned or mismatched file content
+      ---
+      duration_ms: 9.8037
+      type: 'test'
+      ...
+    # Subtest: never accepts a different draft, file name or unrelated write scope
+    ok 6 - never accepts a different draft, file name or unrelated write scope
+      ---
+      duration_ms: 1.3953
+      type: 'test'
+      ...
+    # Subtest: requires human review, exact file digest and a bounded adoption reason
+    ok 7 - requires human review, exact file digest and a bounded adoption reason
+      ---
+      duration_ms: 2.0327
+      type: 'test'
+      ...
+    # Subtest: accepts only a new contract revision with all other commercial facts preserved
+    ok 8 - accepts only a new contract revision with all other commercial facts preserved
+      ---
+      duration_ms: 2.6459
+      type: 'test'
+      ...
+    # Subtest: does not accept an adoption receipt for a changed original basis or file
+    ok 9 - does not accept an adoption receipt for a changed original basis or file
+      ---
+      duration_ms: 1.3618
+      type: 'test'
+      ...
+    1..9
+ok 26 - complete exact contract bodies and explicit human adoption
+  ---
+  duration_ms: 69.1561
+  type: 'suite'
+  ...
+# Subtest: requires explicit company choices and builds sorted immutable input
+ok 27 - requires explicit company choices and builds sorted immutable input
+  ---
+  duration_ms: 7.341
+  type: 'test'
+  ...
+# Subtest: rejects fractional exponential negative duplicate or out of range thresholds
+ok 28 - rejects fractional exponential negative duplicate or out of range thresholds
+  ---
+  duration_ms: 8.0326
+  type: 'test'
+  ...
+# Subtest: empty thresholds are valid only with an explicit disable
+ok 29 - empty thresholds are valid only with an explicit disable
+  ---
+  duration_ms: 32.2294
+  type: 'test'
+  ...
+# Subtest: readers cannot manufacture publication and missing state stays invalid
+ok 30 - readers cannot manufacture publication and missing state stays invalid
+  ---
+  duration_ms: 1.2934
+  type: 'test'
+  ...
+# Subtest: never accepts a local ambiguous whitespace or URL time zone
+ok 31 - never accepts a local ambiguous whitespace or URL time zone
+  ---
+  duration_ms: 0.4101
+  type: 'test'
+  ...
+# Subtest: rejects an unrelated publication actor revision or changed rule
+ok 32 - rejects an unrelated publication actor revision or changed rule
+  ---
+  duration_ms: 1.5617
+  type: 'test'
+  ...
+# Subtest: checks canonical finite threshold lists and published state
+ok 33 - checks canonical finite threshold lists and published state
+  ---
+  duration_ms: 1.3318
+  type: 'test'
+  ...
+# Subtest: retains version zero for first publication but rejects unsafe revisions
+ok 34 - retains version zero for first publication but rejects unsafe revisions
+  ---
+  duration_ms: 0.7507
+  type: 'test'
+  ...
+# Subtest: validates actual dates and complete fixed policy metadata
+ok 35 - validates actual dates and complete fixed policy metadata
+  ---
+  duration_ms: 0.6809
+  type: 'test'
+  ...
+# Subtest: bounds Unicode reasons by code point and preserves the chosen scope version
+ok 36 - bounds Unicode reasons by code point and preserves the chosen scope version
+  ---
+  duration_ms: 1.6998
+  type: 'test'
+  ...
+# Subtest: full Unicode and final-newline evidence keeps exact selection
+ok 37 - full Unicode and final-newline evidence keeps exact selection
+  ---
+  duration_ms: 7.5744
+  type: 'test'
+  ...
+# Subtest: read-only paging requires the exact first comparison hash
+ok 38 - read-only paging requires the exact first comparison hash
+  ---
+  duration_ms: 0.8103
+  type: 'test'
+  ...
+# Subtest: two pages account for all base and target coordinates
+ok 39 - two pages account for all base and target coordinates
+  ---
+  duration_ms: 0.3964
+  type: 'test'
+  ...
+# Subtest: normalized text equality does not claim original-byte equality
+ok 40 - normalized text equality does not claim original-byte equality
+  ---
+  duration_ms: 0.3406
+  type: 'test'
+  ...
+# Subtest: context skips are explicit and consume both complete line ranges
+ok 41 - context skips are explicit and consume both complete line ranges
+  ---
+  duration_ms: 0.6061
+  type: 'test'
+  ...
+# Subtest: rejects another file even with similar version labels
+ok 42 - rejects another file even with similar version labels
+  ---
+  duration_ms: 0.2448
+  type: 'test'
+  ...
+# Subtest: rejects a changed file revision
+ok 43 - rejects a changed file revision
+  ---
+  duration_ms: 0.2829
+  type: 'test'
+  ...
+# Subtest: rejects another exact base version
+ok 44 - rejects another exact base version
+  ---
+  duration_ms: 0.2081
+  type: 'test'
+  ...
+# Subtest: rejects a changed original digest
+ok 45 - rejects a changed original digest
+  ---
+  duration_ms: 0.524
+  type: 'test'
+  ...
+# Subtest: rejects incomplete comparison claims
+ok 46 - rejects incomplete comparison claims
+  ---
+  duration_ms: 0.732
+  type: 'test'
+  ...
+# Subtest: rejects hidden rows in the full-text view
+ok 47 - rejects hidden rows in the full-text view
+  ---
+  duration_ms: 0.3669
+  type: 'test'
+  ...
+# Subtest: rejects a missing final page line
+ok 48 - rejects a missing final page line
+  ---
+  duration_ms: 0.216
+  type: 'test'
+  ...
+# Subtest: rejects reversed or duplicate coordinates
+ok 49 - rejects reversed or duplicate coordinates
+  ---
+  duration_ms: 0.2419
+  type: 'test'
+  ...
+# Subtest: rejects a next-page pointer that skips result rows
+ok 50 - rejects a next-page pointer that skips result rows
+  ---
+  duration_ms: 0.1508
+  type: 'test'
+  ...
+# Subtest: rejects inconsistent line totals
+ok 51 - rejects inconsistent line totals
+  ---
+  duration_ms: 0.1231
+  type: 'test'
+  ...
+# Subtest: rejects byte-equality claims with unequal original hashes
+ok 52 - rejects byte-equality claims with unequal original hashes
+  ---
+  duration_ms: 0.1304
+  type: 'test'
+  ...
+# Subtest: rejects changed bodies presented as equal text
+ok 53 - rejects changed bodies presented as equal text
+  ---
+  duration_ms: 0.1097
+  type: 'test'
+  ...
+# Subtest: rejects unscanned or waived selections
+ok 54 - rejects unscanned or waived selections
+  ---
+  duration_ms: 1.1473
+  type: 'test'
+  ...
+# Subtest: a later page cannot change comparison identity or boundaries
+ok 55 - a later page cannot change comparison identity or boundaries
+  ---
+  duration_ms: 0.3159
+  type: 'test'
+  ...
+# Subtest: an explicit cancelled draft selection pins exact saved bytes
+ok 56 - an explicit cancelled draft selection pins exact saved bytes
+  ---
+  duration_ms: 4.9942
+  type: 'test'
+  ...
+# Subtest: successful replies with uncommitted drafts may be selected
+ok 57 - successful replies with uncommitted drafts may be selected
+  ---
+  duration_ms: 0.4621
+  type: 'test'
+  ...
+# Subtest: active and ambiguous runs cannot authorize recovery
+ok 58 - active and ambiguous runs cannot authorize recovery
+  ---
+  duration_ms: 1.3697
+  type: 'test'
+  ...
+# Subtest: review, original sender and private current conversation are mandatory
+ok 59 - review, original sender and private current conversation are mandatory
+  ---
+  duration_ms: 1.1912
+  type: 'test'
+  ...
+# Subtest: scanning blocks and exemptions cannot be laundered through recovery
+ok 60 - scanning blocks and exemptions cannot be laundered through recovery
+  ---
+  duration_ms: 1.6009
+  type: 'test'
+  ...
+# Subtest: expired, failed and aborted temporary uploads retain a recoverable saved edit
+ok 61 - expired, failed and aborted temporary uploads retain a recoverable saved edit
+  ---
+  duration_ms: 0.2845
+  type: 'test'
+  ...
+# Subtest: a committed run or version can never become a recovery source
+ok 62 - a committed run or version can never become a recovery source
+  ---
+  duration_ms: 1.4006
+  type: 'test'
+  ...
+# Subtest: missing draft, malformed evidence and oversized content are rejected
+ok 63 - missing draft, malformed evidence and oversized content are rejected
+  ---
+  duration_ms: 1.172
+  type: 'test'
+  ...
+# Subtest: new-file recovery retains the smaller create limit and exact create mode
+ok 64 - new-file recovery retains the smaller create limit and exact create mode
+  ---
+  duration_ms: 0.64
+  type: 'test'
+  ...
+# Subtest: bounded provenance cannot reset or extend itself without limit
+ok 65 - bounded provenance cannot reset or extend itself without limit
+  ---
+  duration_ms: 2.8418
+  type: 'test'
+  ...
+# Subtest: accepted new runs bind the original selected draft and new intent
+ok 66 - accepted new runs bind the original selected draft and new intent
+  ---
+  duration_ms: 0.9521
+  type: 'test'
+  ...
+# Subtest: unexpected recovery metadata and altered provenance fail reconciliation
+ok 67 - unexpected recovery metadata and altered provenance fail reconciliation
+  ---
+  duration_ms: 10.5719
+  type: 'test'
+  ...
+# Subtest: new drafts require distinct identities and the same full content hash
+ok 68 - new drafts require distinct identities and the same full content hash
+  ---
+  duration_ms: 0.5705
+  type: 'test'
+  ...
+# Subtest: only readable original file requests appear as recovery candidates
+ok 69 - only readable original file requests appear as recovery candidates
+  ---
+  duration_ms: 0.2339
+  type: 'test'
+  ...
+# Subtest: keeps raw-text compatibility and accepts exact-version derived Unicode chunks
+ok 70 - keeps raw-text compatibility and accepts exact-version derived Unicode chunks
+  ---
+  duration_ms: 2.0849
+  type: 'test'
+  ...
+# Subtest: rejects evidence for another formal version, file or original hash
+ok 71 - rejects evidence for another formal version, file or original hash
+  ---
+  duration_ms: 0.7047
+  type: 'test'
+  ...
+# Subtest: requires a ready derivation with its own digest, time and total
+ok 72 - requires a ready derivation with its own digest, time and total
+  ---
+  duration_ms: 0.631
+  type: 'test'
+  ...
+# Subtest: rejects malformed Unicode continuation and accepts the exact final chunk
+ok 73 - rejects malformed Unicode continuation and accepts the exact final chunk
+  ---
+  duration_ms: 0.3539
+  type: 'test'
+  ...
+# Subtest: four client multipart administration
+    # Subtest: blocks stale selections and never silently substitutes refreshed revisions
+    ok 1 - blocks stale selections and never silently substitutes refreshed revisions
+      ---
+      duration_ms: 2.3746
+      type: 'test'
+      ...
+    # Subtest: checks exact folder, plan, upload and policy membership in command receipts
+    ok 2 - checks exact folder, plan, upload and policy membership in command receipts
+      ---
+      duration_ms: 1.8646
+      type: 'test'
+      ...
+    # Subtest: does not permit a gesture to bypass explicit confirmation or observation
+    ok 3 - does not permit a gesture to bypass explicit confirmation or observation
+      ---
+      duration_ms: 0.7456
+      type: 'test'
+      ...
+    # Subtest: preserves cancelled history and distinguishes queued work from completion
+    ok 4 - preserves cancelled history and distinguishes queued work from completion
+      ---
+      duration_ms: 1.5904
+      type: 'test'
+      ...
+    # Subtest: requires a bounded reason and keeps exact large byte metadata
+    ok 5 - requires a bounded reason and keeps exact large byte metadata
+      ---
+      duration_ms: 0.527
+      type: 'test'
+      ...
+    # Subtest: rejects duplicate receipts and a nonpositive execution generation
+    ok 6 - rejects duplicate receipts and a nonpositive execution generation
+      ---
+      duration_ms: 0.8036
+      type: 'test'
+      ...
+    1..6
+ok 74 - four client multipart administration
+  ---
+  duration_ms: 13.2305
+  type: 'suite'
+  ...
+# Subtest: mobile retry requires the source revision and explicit trimmed reason
+ok 75 - mobile retry requires the source revision and explicit trimmed reason
+  ---
+  duration_ms: 3.5308
+  type: 'test'
+  ...
+# Subtest: mobile retry receipt binds the source, actor and business event
+ok 76 - mobile retry receipt binds the source, actor and business event
+  ---
+  duration_ms: 0.6009
+  type: 'test'
+  ...
+# Subtest: mobile cannot submit an automatic retry-wait task
+ok 77 - mobile cannot submit an automatic retry-wait task
+  ---
+  duration_ms: 1.9018
+  type: 'test'
+  ...
+# Subtest: mobile excludes arbitrary payloads from job metadata
+ok 78 - mobile excludes arbitrary payloads from job metadata
+  ---
+  duration_ms: 0.2892
+  type: 'test'
+  ...
+# Subtest: mobile cannot turn a read-only state into write authority
+ok 79 - mobile cannot turn a read-only state into write authority
+  ---
+  duration_ms: 0.4062
+  type: 'test'
+  ...
+# Subtest: mobile validates lineage and rejects a duplicate source child
+ok 80 - mobile validates lineage and rejects a duplicate source child
+  ---
+  duration_ms: 0.2526
+  type: 'test'
+  ...
+# Subtest: mobile cannot present a suppression receipt as delivered
+ok 81 - mobile cannot present a suppression receipt as delivered
+  ---
+  duration_ms: 0.3622
+  type: 'test'
+  ...
+# Subtest: mobile retains unknown results instead of manufacturing success
+ok 82 - mobile retains unknown results instead of manufacturing success
+  ---
+  duration_ms: 0.3008
+  type: 'test'
+  ...
+# Subtest: selected OA prose, immutable suggestions and human adoption
+    # Subtest: requires the current editable business and selected prose fields
+    ok 1 - requires the current editable business and selected prose fields
+      ---
+      duration_ms: 5.213
+      type: 'test'
+      ...
+    # Subtest: accepts the exact authorized target including array values
+    ok 2 - accepts the exact authorized target including array values
+      ---
+      duration_ms: 0.9684
+      type: 'test'
+      ...
+    # Subtest: keeps proposed prose separate from any business write
+    ok 3 - keeps proposed prose separate from any business write
+      ---
+      duration_ms: 0.7491
+      type: 'test'
+      ...
+    # Subtest: rejects missing, blank, oversized and wrong-kind fields
+    ok 4 - rejects missing, blank, oversized and wrong-kind fields
+      ---
+      duration_ms: 0.7415
+      type: 'test'
+      ...
+    # Subtest: requires explicit review and a bounded adoption reason
+    ok 5 - requires explicit review and a bounded adoption reason
+      ---
+      duration_ms: 1.4956
+      type: 'test'
+      ...
+    # Subtest: verifies a new business revision with every other commercial fact preserved
+    ok 6 - verifies a new business revision with every other commercial fact preserved
+      ---
+      duration_ms: 2.0268
+      type: 'test'
+      ...
+    # Subtest: cannot adopt the same suggestion twice or claim a receipt without an operation
+    ok 7 - cannot adopt the same suggestion twice or claim a receipt without an operation
+      ---
+      duration_ms: 0.2758
+      type: 'test'
+      ...
+    1..7
+ok 83 - selected OA prose, immutable suggestions and human adoption
+  ---
+  duration_ms: 13.6506
+  type: 'suite'
+  ...
+# Subtest: complete dual-currency facts produce one exact human command
+ok 84 - complete dual-currency facts produce one exact human command
+  ---
+  duration_ms: 51.4131
+  type: 'test'
+  ...
+# Subtest: UTF8 content checksum detects changed or oversized complete evidence
+ok 85 - UTF8 content checksum detects changed or oversized complete evidence
+  ---
+  duration_ms: 19.5896
+  type: 'test'
+  ...
+# Subtest: prepared preview rejects stale parent while immutable history remains readable
+ok 86 - prepared preview rejects stale parent while immutable history remains readable
+  ---
+  duration_ms: 2.3484
+  type: 'test'
+  ...
+# Subtest: fee source must preserve project classification exact cost revision and both units
+ok 87 - fee source must preserve project classification exact cost revision and both units
+  ---
+  duration_ms: 2.8426
+  type: 'test'
+  ...
+# Subtest: current balances change status without rewriting the original snapshot
+ok 88 - current balances change status without rewriting the original snapshot
+  ---
+  duration_ms: 2.0159
+  type: 'test'
+  ...
+# Subtest: different root or mutated currency quote cannot masquerade as current balances
+ok 89 - different root or mutated currency quote cannot masquerade as current balances
+  ---
+  duration_ms: 1.9402
+  type: 'test'
+  ...
+# Subtest: human revocation has independent sequence and preserves the original link
+ok 90 - human revocation has independent sequence and preserves the original link
+  ---
+  duration_ms: 1.8361
+  type: 'test'
+  ...
+# Subtest: list and mutation receipts reject cross-scope duplicate future or wrong-actor evidence
+ok 91 - list and mutation receipts reject cross-scope duplicate future or wrong-actor evidence
+  ---
+  duration_ms: 3.4288
+  type: 'test'
+  ...
+# Subtest: quote fixes actual cost and cash units with manual provenance
+ok 92 - quote fixes actual cost and cash units with manual provenance
+  ---
+  duration_ms: 7.9721
+  type: 'test'
+  ...
+# Subtest: an acknowledgement cannot replace a positive rate matching the actual principal
+ok 93 - an acknowledgement cannot replace a positive rate matching the actual principal
+  ---
+  duration_ms: 1.3292
+  type: 'test'
+  ...
+# Subtest: same currency keeps the old request and refuses unnecessary quotes
+ok 94 - same currency keeps the old request and refuses unnecessary quotes
+  ---
+  duration_ms: 0.5683
+  type: 'test'
+  ...
+# Subtest: partial inverses use remaining balances and do not apply the quote twice
+ok 95 - partial inverses use remaining balances and do not apply the quote twice
+  ---
+  duration_ms: 6.0279
+  type: 'test'
+  ...
+# Subtest: integer cost currency permits zero partial cost and consumes final remainder
+ok 96 - integer cost currency permits zero partial cost and consumes final remainder
+  ---
+  duration_ms: 0.5684
+  type: 'test'
+  ...
+# Subtest: sequential rounding cannot leave a final minor-unit residue
+ok 97 - sequential rounding cannot leave a final minor-unit residue
+  ---
+  duration_ms: 0.4485
+  type: 'test'
+  ...
+# Subtest: current root rejects negative zero excessive or over-precision inverse inputs
+ok 98 - current root rejects negative zero excessive or over-precision inverse inputs
+  ---
+  duration_ms: 1.184
+  type: 'test'
+  ...
+# Subtest: legacy archived receipt cannot silently invent the second unit
+ok 99 - legacy archived receipt cannot silently invent the second unit
+  ---
+  duration_ms: 0.5497
+  type: 'test'
+  ...
+# Subtest: project arrays cannot swap duplicate or omit original scopes
+ok 100 - project arrays cannot swap duplicate or omit original scopes
+  ---
+  duration_ms: 0.9565
+  type: 'test'
+  ...
+# Subtest: one currency zero project share is retained alongside its other currency share
+ok 101 - one currency zero project share is retained alongside its other currency share
+  ---
+  duration_ms: 0.9732
+  type: 'test'
+  ...
+# Subtest: receipt rejects altered cost units or provenance despite matching cash
+ok 102 - receipt rejects altered cost units or provenance despite matching cash
+  ---
+  duration_ms: 2.34
+  type: 'test'
+  ...
+# Subtest: inverse receipt must inherit both currencies and fixed quote day
+ok 103 - inverse receipt must inherit both currencies and fixed quote day
+  ---
+  duration_ms: 0.5673
+  type: 'test'
+  ...
+# Subtest: fixed point arithmetic remains exact beyond Number safe integer
+ok 104 - fixed point arithmetic remains exact beyond Number safe integer
+  ---
+  duration_ms: 0.315
+  type: 'test'
+  ...
+# Subtest: fixed exact file inventory preserves literal names and policy changes
+ok 105 - fixed exact file inventory preserves literal names and policy changes
+  ---
+  duration_ms: 6.7239
+  type: 'test'
+  ...
+# Subtest: blocked pending plan may be read but cannot execute
+ok 106 - blocked pending plan may be read but cannot execute
+  ---
+  duration_ms: 2.812
+  type: 'test'
+  ...
+# Subtest: final immutable receipt includes the exact hash and human reason
+ok 107 - final immutable receipt includes the exact hash and human reason
+  ---
+  duration_ms: 0.3751
+  type: 'test'
+  ...
+# Subtest: proposal preserves both actual versions and explicit new name
+ok 108 - proposal preserves both actual versions and explicit new name
+  ---
+  duration_ms: 9.0062
+  type: 'test'
+  ...
+# Subtest: proposal rejects path tricks reserved names and unicode normalization bypasses
+ok 109 - proposal rejects path tricks reserved names and unicode normalization bypasses
+  ---
+  duration_ms: 1.4262
+  type: 'test'
+  ...
+# Subtest: same scope uses ordinary moves and fixed root folders cannot transfer
+ok 110 - same scope uses ordinary moves and fixed root folders cannot transfer
+  ---
+  duration_ms: 0.488
+  type: 'test'
+  ...
+# Subtest: missing actual mutation permissions cannot be replaced by form data
+ok 111 - missing actual mutation permissions cannot be replaced by form data
+  ---
+  duration_ms: 0.3626
+  type: 'test'
+  ...
+# Subtest: explicit acknowledgement and a bounded reason are mandatory
+ok 112 - explicit acknowledgement and a bounded reason are mandatory
+  ---
+  duration_ms: 1.0155
+  type: 'test'
+  ...
+# Subtest: rejects foreign resource and parent version
+ok 113 - rejects foreign resource and parent version
+  ---
+  duration_ms: 0.8129
+  type: 'test'
+  ...
+# Subtest: rejects incomplete fixed inventory
+ok 114 - rejects incomplete fixed inventory
+  ---
+  duration_ms: 0.6566
+  type: 'test'
+  ...
+# Subtest: rejects unbounded directory inventory
+ok 115 - rejects unbounded directory inventory
+  ---
+  duration_ms: 0.3895
+  type: 'test'
+  ...
+# Subtest: rejects duplicate inventory identities
+ok 116 - rejects duplicate inventory identities
+  ---
+  duration_ms: 0.3531
+  type: 'test'
+  ...
+# Subtest: rejects target folder version mismatch
+ok 117 - rejects target folder version mismatch
+  ---
+  duration_ms: 0.1689
+  type: 'test'
+  ...
+# Subtest: rejects different planned name
+ok 118 - rejects different planned name
+  ---
+  duration_ms: 0.1392
+  type: 'test'
+  ...
+# Subtest: rejects mixed source project inventory
+ok 119 - rejects mixed source project inventory
+  ---
+  duration_ms: 0.1821
+  type: 'test'
+  ...
+# Subtest: rejects invented content history digest
+ok 120 - rejects invented content history digest
+  ---
+  duration_ms: 0.1669
+  type: 'test'
+  ...
+# Subtest: rejects unknown hidden blocker
+ok 121 - rejects unknown hidden blocker
+  ---
+  duration_ms: 0.1645
+  type: 'test'
+  ...
+# Subtest: rejects a blocked executable claim
+ok 122 - rejects a blocked executable claim
+  ---
+  duration_ms: 0.161
+  type: 'test'
+  ...
+# Subtest: rejects stale executable claim
+ok 123 - rejects stale executable claim
+  ---
+  duration_ms: 0.153
+  type: 'test'
+  ...
+# Subtest: rejects changed policy counts without matching changes
+ok 124 - rejects changed policy counts without matching changes
+  ---
+  duration_ms: 0.1752
+  type: 'test'
+  ...
+# Subtest: rejects duplicate audience change combinations
+ok 125 - rejects duplicate audience change combinations
+  ---
+  duration_ms: 0.1854
+  type: 'test'
+  ...
+# Subtest: rejects unchanged row disguised as a visibility change
+ok 126 - rejects unchanged row disguised as a visibility change
+  ---
+  duration_ms: 0.1639
+  type: 'test'
+  ...
+# Subtest: rejects arbitrary channel authorization claims
+ok 127 - rejects arbitrary channel authorization claims
+  ---
+  duration_ms: 0.1425
+  type: 'test'
+  ...
+# Subtest: rejects final status without a human completion receipt
+ok 128 - rejects final status without a human completion receipt
+  ---
+  duration_ms: 0.1298
+  type: 'test'
+  ...
+# Subtest: encodes literal search text and only named resource types
+ok 129 - encodes literal search text and only named resource types
+  ---
+  duration_ms: 2.8501
+  type: 'test'
+  ...
+# Subtest: requires fixed formal version evidence for ready file hits
+ok 130 - requires fixed formal version evidence for ready file hits
+  ---
+  duration_ms: 1.1026
+  type: 'test'
+  ...
+# Subtest: rejects duplicate results and oversized or invalid snippets
+ok 131 - rejects duplicate results and oversized or invalid snippets
+  ---
+  duration_ms: 0.4524
+  type: 'test'
+  ...
+# Subtest: pins preview to an exact version and Unicode character offset
+ok 132 - pins preview to an exact version and Unicode character offset
+  ---
+  duration_ms: 0.6202
+  type: 'test'
+  ...
+# Subtest: rejects mismatched chunk boundaries, hashes and forged failure plaintext
+ok 133 - rejects mismatched chunk boundaries, hashes and forged failure plaintext
+  ---
+  duration_ms: 0.8075
+  type: 'test'
+  ...
+# Subtest: accepts explicit pending and unsupported states without derived body
+ok 134 - accepts explicit pending and unsupported states without derived body
+  ---
+  duration_ms: 0.3914
+  type: 'test'
+  ...
+# Subtest: task comments preserve hidden original associations on text-only edits
+ok 135 - task comments preserve hidden original associations on text-only edits
+  ---
+  duration_ms: 2.6879
+  type: 'test'
+  ...
+# Subtest: task comment Unicode and unique-identity bounds match the server
+ok 136 - task comment Unicode and unique-identity bounds match the server
+  ---
+  duration_ms: 3.6994
+  type: 'test'
+  ...
+# Subtest: task comment receipts require exact current revision and explicit mention fields
+ok 137 - task comment receipts require exact current revision and explicit mention fields
+  ---
+  duration_ms: 0.711
+  type: 'test'
+  ...
+# Subtest: task comment edits pin the immutable predecessor and fixed associations
+ok 138 - task comment edits pin the immutable predecessor and fixed associations
+  ---
+  duration_ms: 0.299
+  type: 'test'
+  ...
+# Subtest: task mention notifications allow only exact canonical comment routes
+ok 139 - task mention notifications allow only exact canonical comment routes
+  ---
+  duration_ms: 0.8354
+  type: 'test'
+  ...
+# Subtest: mobile sends the exact complete nullable task and explicit false review choice
+ok 140 - mobile sends the exact complete nullable task and explicit false review choice
+  ---
+  duration_ms: 3.3839
+  type: 'test'
+  ...
+# Subtest: mobile rejects missing review choices, guessed references and hidden dependencies
+ok 141 - mobile rejects missing review choices, guessed references and hidden dependencies
+  ---
+  duration_ms: 0.5443
+  type: 'test'
+  ...
+# Subtest: mobile compares zoned microsecond instants before creating a subtask
+ok 142 - mobile compares zoned microsecond instants before creating a subtask
+  ---
+  duration_ms: 2.3686
+  type: 'test'
+  ...
+# Subtest: mobile acknowledges only an actual committed task with matching review and assignment
+ok 143 - mobile acknowledges only an actual committed task with matching review and assignment
+  ---
+  duration_ms: 26.7809
+  type: 'test'
+  ...
+# Subtest: fixes both versions, one edge and the exact action without generic patch authority
+ok 144 - fixes both versions, one edge and the exact action without generic patch authority
+  ---
+  duration_ms: 3.3662
+  type: 'test'
+  ...
+# Subtest: requires different same-project tasks with real IDs and positive exact versions
+ok 145 - requires different same-project tasks with real IDs and positive exact versions
+  ---
+  duration_ms: 0.3789
+  type: 'test'
+  ...
+# Subtest: rejects inferred actions, blank reasons, duplicate additions and absent removals
+ok 146 - rejects inferred actions, blank reasons, duplicate additions and absent removals
+  ---
+  duration_ms: 0.5311
+  type: 'test'
+  ...
+# Subtest: retains task state blockers while allowing an already completed prerequisite
+ok 147 - retains task state blockers while allowing an already completed prerequisite
+  ---
+  duration_ms: 0.5409
+  type: 'test'
+  ...
+# Subtest: acknowledges both actual add and actual remove receipts
+ok 148 - acknowledges both actual add and actual remove receipts
+  ---
+  duration_ms: 44.7743
+  type: 'test'
+  ...
+# Subtest: preserves task dates at full microsecond precision across native timestamp formats
+ok 149 - preserves task dates at full microsecond precision across native timestamp formats
+  ---
+  duration_ms: 9.1039
+  type: 'test'
+  ...
+# Subtest: rejects forged edges, predecessor versions, actions, projects and unauthorized metadata
+ok 150 - rejects forged edges, predecessor versions, actions, projects and unauthorized metadata
+  ---
+  duration_ms: 2.6126
+  type: 'test'
+  ...
+# Subtest: keeps authorization distinct from commit and requires its original predecessor basis
+ok 151 - keeps authorization distinct from commit and requires its original predecessor basis
+  ---
+  duration_ms: 0.6109
+  type: 'test'
+  ...
+# Subtest: Hong Kong date and exact scoped counts preserve literal titles
+ok 152 - Hong Kong date and exact scoped counts preserve literal titles
+  ---
+  duration_ms: 6.3312
+  type: 'test'
+  ...
+# Subtest: empty current readable work is valid
+ok 153 - empty current readable work is valid
+  ---
+  duration_ms: 0.3251
+  type: 'test'
+  ...
+# Subtest: more than five rows requires complete count and bounded ordered samples
+ok 154 - more than five rows requires complete count and bounded ordered samples
+  ---
+  duration_ms: 0.6716
+  type: 'test'
+  ...
+# Subtest: rejects missing domain even when every surviving row is valid
+ok 155 - rejects missing domain even when every surviving row is valid
+  ---
+  duration_ms: 0.4872
+  type: 'test'
+  ...
+# Subtest: rejects duplicate domain
+ok 156 - rejects duplicate domain
+  ---
+  duration_ms: 0.219
+  type: 'test'
+  ...
+# Subtest: rejects organization-wide or other scope label
+ok 157 - rejects organization-wide or other scope label
+  ---
+  duration_ms: 0.2103
+  type: 'test'
+  ...
+# Subtest: rejects wrong business date around UTC midnight
+ok 158 - rejects wrong business date around UTC midnight
+  ---
+  duration_ms: 0.2244
+  type: 'test'
+  ...
+# Subtest: rejects normalized invalid calendar date
+ok 159 - rejects normalized invalid calendar date
+  ---
+  duration_ms: 0.2044
+  type: 'test'
+  ...
+# Subtest: rejects changed fixed contract horizon
+ok 160 - rejects changed fixed contract horizon
+  ---
+  duration_ms: 0.557
+  type: 'test'
+  ...
+# Subtest: rejects guessed zero when a row exists
+ok 161 - rejects guessed zero when a row exists
+  ---
+  duration_ms: 0.6201
+  type: 'test'
+  ...
+# Subtest: rejects missing sampled rows beneath a positive count
+ok 162 - rejects missing sampled rows beneath a positive count
+  ---
+  duration_ms: 0.353
+  type: 'test'
+  ...
+# Subtest: rejects a false complete-list claim
+ok 163 - rejects a false complete-list claim
+  ---
+  duration_ms: 0.2164
+  type: 'test'
+  ...
+# Subtest: rejects foreign route text posing as an identifier
+ok 164 - rejects foreign route text posing as an identifier
+  ---
+  duration_ms: 6.9075
+  type: 'test'
+  ...
+# Subtest: rejects approval without exact active-step context
+ok 165 - rejects approval without exact active-step context
+  ---
+  duration_ms: 0.2903
+  type: 'test'
+  ...
+# Subtest: rejects contract copied from an unbounded later expiry
+ok 166 - rejects contract copied from an unbounded later expiry
+  ---
+  duration_ms: 0.3219
+  type: 'test'
+  ...
+# Subtest: rejects a paid or overdue claim in a billing review group
+ok 167 - rejects a paid or overdue claim in a billing review group
+  ---
+  duration_ms: 0.2165
+  type: 'test'
+  ...
+# Subtest: rejects unstable duplicate sample identity
+ok 168 - rejects unstable duplicate sample identity
+  ---
+  duration_ms: 0.1518
+  type: 'test'
+  ...
+# Subtest: rejects reversed due-date ordering
+ok 169 - rejects reversed due-date ordering
+  ---
+  duration_ms: 1.4188
+  type: 'test'
+  ...
+# Subtest: route builders reject untrusted domain and resource inputs
+ok 170 - route builders reject untrusted domain and resource inputs
+  ---
+  duration_ms: 0.2362
+  type: 'test'
+  ...
+1..170
+# tests 189
+# suites 3
+# pass 189
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 981.883

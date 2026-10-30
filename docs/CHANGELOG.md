@@ -1,5 +1,19 @@
 # 更新记录 / Changelog
 
+## 增量118 / Increment118 · 付款手续费依据 / Actual payment fees
+
+增量118已接通四端付款手续费依据：从实际资金列表选择已登记手续费付款和整条费用原分配，核对完整双币依据、准确版本与摘要，明确确认及MFA后保存。误关联通过独立撤销记录纠正；关联、撤销均不新增费用或现金，不改变原报表金额。
+
+Increment 118 connects actual payment fee evidence across four clients. Select recorded fee cash and its original incurred-cost allocation, review both currency axes and exact source versions/hashes, then confirm explicitly with MFA. A separate immutable revocation corrects a mistaken association. Neither action creates expenses/cash or changes original report amounts.
+
+本轮当前源码：后端240顶层／1492条结果，Web311、共享移动407、运行器56；八项客户端命令、两小程序各20页，Web／H5各14组实际页面与API检查。新增6 PNG、2静音MP4和2截图导览GIF，保留306份旧媒体。Android开发包18＋3项静态检查，26条JVM来自Gradle缓存；正常90→91升级保留18类原记录，开发服务已按准确源码重载，独立测试PG关闭。两个Linux目标仅交叉构建；没有设备、模拟器、真实云／模型／平台发布或生产验收声明。
+
+Current source: 240 backend top-level tests/1492 result records, Web 311, shared mobile 407, runtime 56; eight client commands, 20 routes per miniapp, and 14 actual UI/API groups per Web/H5. New media: six PNGs, two silent MP4s and two screenshot-tour GIFs; 306 older media remain exact. The development APK passes 18+3 static checks; 26 JVM results are from actual Gradle cache. Normal90→91 upgrade preserves18 original fact groups; attested development services reload and the owned test PG closes. Two Linux artifacts only cross-build. No device, emulator, live cloud/model, platform publication or production acceptance is claimed.
+
+Schema91新增两张仅追加表及四个不可变／来源约束触发器。保留旧334路径与736模型全部语义，现337路径／414操作／748模型。六组后端业务用例核对真实事实、双币余额、显式MFA、并发、分页、撤权和审计回滚；八个共享边界场景在Web与移动各执行一次。依赖未变，复用已发布117的准确锁文件零公告证据，未重新查询公告；正式产物安全仍GAP-26。初次编译、合成重名定位及只读脚本旧版本预期失败保留原记录，不计最终通过。
+
+[设计](development/118-payment-fee-evidence.md) · [核验](quality/118-payment-fee-verification.md)
+
 ## 增量117 / Increment117 · 完整合同正文与人工采用 / Complete contract bodies
 
 增量117已接通完整合同正文起草与人工采用：员工选择准确合同原修订及新文件位置，秘书通过现有扫描和提交流程生成完整文本／Markdown文件。任务页面显示全文、准确版本与SHA-256，员工核对后明确采用，系统保存一条正常合同新修订，只替换正文附件，保留原商业条件。

@@ -1,0 +1,79 @@
+{
+  "reviewed": true,
+  "prepared_at": "2026-10-30T01:39:14.441135+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/payment-fee-web-review.png",
+      "sha256": "c59eaa85deb9ea298f68b1abaa0a1732916cf1300a63c0d7262936bf405b42e7"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-web-linked.png",
+      "sha256": "a9d7dedbaae15bfa8ed5934f118d095d1012ef194ceb0cf91aa8eee357e5d9ca"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-web-revoked.png",
+      "sha256": "091dacb2160568b9d995fd4d3208c7b1bf88fd8ec853d5139c2d0c3a8c931baf"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-mobile-review.png",
+      "sha256": "00f026b728c3efb453b1662aa553013dc867185af5bc255014c1cf64d01bd692"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-mobile-linked.png",
+      "sha256": "451db9cb4c7a02e686c97d0138c66e16130e8936819333f74d6529235bab3744"
+    },
+    {
+      "file": "docs/media/screenshots/payment-fee-mobile-revoked.png",
+      "sha256": "60047354ca45163dc68382dd910c85b566eac783258f9052007f81f253bc7d81"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/payment-fee-web.gif",
+      "sha256": "eca557cbe3a61a6cec8eb8d5a4f3d67713326a4df65fdac04bb1d2886233385e"
+    },
+    {
+      "file": "docs/media/gifs/payment-fee-mobile.gif",
+      "sha256": "9c401d64464dcc49677d8946443172726d69d383263a8aab2f3a8c506d8e8527"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/payment-fee-visual-review"
+    },
+    "mobile": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/payment-fee-visual-review"
+    }
+  },
+  "recording_frames_reviewed": {
+    "web": {
+      "file": "docs/media/videos/payment-fee-web.mp4",
+      "sha256": "a298648bdc74f10753cf8ab79e6864e6d2a107f543b4f8bad1e8a65ee70f7dc4",
+      "sampled_seconds": [
+        0,
+        4.0
+      ]
+    },
+    "mobile": {
+      "file": "docs/media/videos/payment-fee-mobile.mp4",
+      "sha256": "e23eed8e0006e8f17e1dc02b39ad04321df7daf086fd8404a5275ab0bb5a63bb",
+      "sampled_seconds": [
+        0,
+        4.0
+      ]
+    }
+  },
+  "findings": [],
+  "scope": "Visually inspected six actual screenshots and decoded first/last MP4 and GIF samples. Complete fee review, active and revoked history remain legible in their actual desktop/narrow viewports; no password, MFA field or private capability appears. MP4 shows active-history scrolling; GIF is a three-screenshot tour, not a recording.",
+  "reviewed_at": "2026-10-30T01:40:04.542159+00:00"
+}
