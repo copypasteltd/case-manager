@@ -2143,6 +2143,37 @@ operation("/file-scope-transfers/{id}/cancel", "post", "cancelFileScopeTransfer"
 operation("/files/{id}/scope-transfers", "get", "listFileScopeTransfers", "ScopeTransfer", listing=True)
 operation("/folders/{id}/scope-transfers", "get", "listFolderScopeTransfers", "ScopeTransfer", listing=True)
 
+batch_selection = {"id": ID, "expected_version": VERSION, "current_version_id": nullable(ID)}
+add("FileBatchSelection", batch_selection, tuple(batch_selection))
+add("FileBatchTarget", {"id": ID, "expected_version": VERSION}, ("id", "expected_version"))
+batch_create = {"action": enum("move", "trash", "restore"),
+    "files": array(ref("FileBatchSelection"), minItems=1, maxItems=50),
+    "target": nullable(ref("FileBatchTarget")), "reason": NAME}
+add("FileBatchCreate", batch_create, tuple(batch_create))
+batch_decision = {"expected_version": VERSION, "plan_hash": HASH, "reason": NAME, "acknowledged": {"type": "boolean", "const": True}}
+add("FileBatchDecision", batch_decision, tuple(batch_decision))
+batch_file = {"id": ID, "version": VERSION, "name": NAME, "folder_id": ID,
+    "project_id": nullable(ID), "creator_id": nullable(ID), "classification": CLASS,
+    "current_version_id": nullable(ID), "state": enum("active", "trashed")}
+add("FileBatchFile", batch_file, tuple(batch_file))
+batch_item = {"file": ref("FileBatchFile"), "path": array(ref("AgentOrganizationEntry"), minItems=1, maxItems=32),
+    "retention_held": {"type": "boolean"}, "blocking_reasons": array(enum("file_state_changed", "project_read_only", "retention_hold", "already_in_target", "name_conflict"), maxItems=6)}
+add("FileBatchItem", batch_item, tuple(batch_item))
+batch_destination = {"folder": ref("AgentOrganizationEntry"), "path": array(ref("AgentOrganizationEntry"), maxItems=32)}
+add("FileBatchDestination", batch_destination, tuple(batch_destination))
+batch_snapshot = {"items": array(ref("FileBatchItem"), minItems=1, maxItems=50), "target": nullable(ref("FileBatchDestination"))}
+add("FileBatchSnapshot", batch_snapshot, tuple(batch_snapshot))
+batch_plan = {"id": ID, "version": VERSION, "state": enum("pending", "executed", "cancelled"), "creator_id": ID,
+    "input": ref("FileBatchCreate"), "snapshot": ref("FileBatchSnapshot"), "plan_hash": HASH,
+    "created_at": TIME, "expires_at": TIME, "completed_at": nullable(TIME), "decision_reason": nullable(NAME),
+    "results": array(ref("FileBatchFile"), maxItems=50), "current_basis_matches": {"type": "boolean"}, "can_execute": {"type": "boolean"}}
+add("FileBatchPlan", batch_plan, tuple(batch_plan))
+operation("/file-batch-plans", "post", "createFileBatchPlan", "FileBatchPlan", "FileBatchCreate", 201)
+operation("/file-batch-plans/{id}", "get", "readFileBatchPlan", "FileBatchPlan")
+operation("/file-batch-plans/{id}/execute", "post", "executeFileBatchPlan", "FileBatchPlan", "FileBatchDecision")
+operation("/file-batch-plans/{id}/cancel", "post", "cancelFileBatchPlan", "FileBatchPlan", "FileBatchDecision")
+operation("/files/{id}/batch-plans", "get", "listFileBatchPlans", "FileBatchPlan", listing=True)
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

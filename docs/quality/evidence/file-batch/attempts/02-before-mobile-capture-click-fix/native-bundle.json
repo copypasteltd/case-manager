@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "id": "native-bundle",
+  "started_at": "2026-10-30T16:13:22.668544+00:00",
+  "finished_at": "2026-10-30T16:18:42.866182+00:00",
+  "elapsed_seconds": 320.192,
+  "command": [
+    "python",
+    "scripts/build_native_js_review.py"
+  ],
+  "cwd": "",
+  "exit_code": 15,
+  "parser": "exit",
+  "source_sha256": "fd2bb2eff8127f89f1af49779e53667421470154da8fae9908ec3dba878d3f10",
+  "source_after_sha256": "fd2bb2eff8127f89f1af49779e53667421470154da8fae9908ec3dba878d3f10",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "12515b95d2f25f39f42198a78fbd0c5deb4e69ad7d9eca6015a56cbc1c893663",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Current Android JS compilation with the published four-worker Metro native Windows filesystem adapter, generated-output exclusions and no-Expo map guard. Bundle only: no APK/signing/Gradle/device acceptance. TEMP/TMP are explicitly owned below the checkout, outside all watched source folders, so the disclosed native filesystem bridge also covers Metro cache reads/writes. No cache content or source resolution is substituted.",
+  "real_device": false,
+  "virtualization_used": false
+}

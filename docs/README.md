@@ -1,5 +1,8 @@
 # CopyPaste 内部管理平台文档中心
 
+当前功能增量127 / Current functional increment127：[固定清单文件批量整理](development/127-file-batch-plans.md) · [实际检查](quality/127-file-batch-verification.md) · [本轮与全部23项余项](delivery/05-functional-closure-127.md)。
+
+
 增量126：[费用付款核销设计与操作](development/126-cost-payment-settlement.md) · [源绑定验证](quality/126-cost-payment-verification.md)。支持供应方部分付款、人工异币及准确批准员工垫付；Web和共享移动四端源码同步，schema94不变。23 active／5 excluded。
 
 增量125接通“批准合同／采购／报销 → 核对实际发生 → 费用确认与准确来源关联 → 实际报表”。员工在业务详情填写实际金额、日期、固定供应方、凭证和项目／公司分摊，明确核对并验证本人后，一次提交；失败完整回滚。批准金额不会自动生成费用，付款另行登记。

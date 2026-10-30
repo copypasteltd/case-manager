@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T16:12:58.177Z",
+  "finished_at": "2026-10-30T16:13:31.558Z",
+  "checks": [],
+  "source_count": 933,
+  "source_sha256": "93e3069bc5b32684a6c9da4f639d7cec958adf0d7a71a3c0154418d49fe71556",
+  "source_after_sha256": "93e3069bc5b32684a6c9da4f639d7cec958adf0d7a71a3c0154418d49fe71556",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: '批量移动', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <taro-button-core type=\"\" disabled role=\"button\" tabindex=\"-1\" tab-index=\"-1\" loading=\"false\" aria-disabled=\"true\" class=\"cp-button cp-secondary cp-disabled\">…</taro-button-core>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    49 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "failure_stack": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByRole('button', { name: '批量移动', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <taro-button-core type=\"\" disabled role=\"button\" tabindex=\"-1\" tab-index=\"-1\" loading=\"false\" aria-disabled=\"true\" class=\"cp-button cp-secondary cp-disabled\">…</taro-button-core>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    49 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_file_batch.mjs:38:34\n    at async workbenchBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\workbench_browser_common.mjs:51:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_file_batch.mjs:12:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/files/index?folder_id=313a07b4-c728-4c65-bd2f-b91ec60384a0",
+    "body_children": 3,
+    "active_mobile_pages": 1,
+    "workbench_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "500ddfe8d4e82b9eff50184f621efef8397bcaef43347ee4f747df4bca51e008",
+    "source_sha256": "cd5743ad03a86614827c521f82df6e7cab401f095c8e01055aae1c34a96fe85c",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "cd5743ad03a86614827c521f82df6e7cab401f095c8e01055aae1c34a96fe85c",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "cd5743ad03a86614827c521f82df6e7cab401f095c8e01055aae1c34a96fe85c",
+  "build_source_unchanged": true
+}

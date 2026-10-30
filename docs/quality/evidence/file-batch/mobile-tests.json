@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T16:46:17.100058+00:00",
+  "finished_at": "2026-10-30T16:46:27.748806+00:00",
+  "elapsed_seconds": 10.649,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "87ae59ffb1cc4269210533459bfff17183663f66bbebb5a833aa342c6eac974d",
+  "source_after_sha256": "87ae59ffb1cc4269210533459bfff17183663f66bbebb5a833aa342c6eac974d",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 465,
+    "pass": 465,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "c4b19c3842576c1a5af478e3ff8eefc60f9c7d4a4e4cb5b6152877efe1ff0007",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Complete current shared mobile unit suite, including fixed batch selection and exact receipt cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

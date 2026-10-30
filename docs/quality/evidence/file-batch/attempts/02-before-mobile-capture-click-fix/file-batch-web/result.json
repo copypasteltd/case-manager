@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T16:02:26.867Z",
+  "finished_at": "2026-10-30T16:02:40.028Z",
+  "checks": [
+    "Actual Web move selection, fixed metadata analysis, human acknowledgement, current MFA, atomic file results and durable owner-bound history.",
+    "Actual Web trash selection, fixed metadata analysis, human acknowledgement, current MFA, atomic file results and durable owner-bound history.",
+    "Actual Web restore selection, fixed metadata analysis, human acknowledgement, current MFA, atomic file results and durable owner-bound history.",
+    "All original formal history identifiers/hashes remain fixed; an executed plan reopens through the actual related-file interface after navigation."
+  ],
+  "source_count": 902,
+  "source_sha256": "e21fb75c09aab820092cdcd2829a5598b92cb1086a23b96ed561685f54e97a3c",
+  "source_after_sha256": "e21fb75c09aab820092cdcd2829a5598b92cb1086a23b96ed561685f54e97a3c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "500ddfe8d4e82b9eff50184f621efef8397bcaef43347ee4f747df4bca51e008",
+    "source_sha256": "cd5743ad03a86614827c521f82df6e7cab401f095c8e01055aae1c34a96fe85c",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "cd5743ad03a86614827c521f82df6e7cab401f095c8e01055aae1c34a96fe85c",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "cd5743ad03a86614827c521f82df6e7cab401f095c8e01055aae1c34a96fe85c",
+  "build_source_unchanged": true
+}

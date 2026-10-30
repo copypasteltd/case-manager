@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T16:31:02.007Z",
+  "finished_at": "2026-10-30T16:32:57.089Z",
+  "checks": [
+    "Actual Taro H5 move selection, fixed metadata analysis, human acknowledgement, current MFA, atomic file results and durable owner-bound history.",
+    "Actual Taro H5 trash selection, fixed metadata analysis, human acknowledgement, current MFA, atomic file results and durable owner-bound history."
+  ],
+  "source_count": 933,
+  "source_sha256": "90c7cf1e4d2c17b8b3e1c9855dbe1bb3f6d8ef16d8205d4b260eaae6d2bfdf31",
+  "source_after_sha256": "90c7cf1e4d2c17b8b3e1c9855dbe1bb3f6d8ef16d8205d4b260eaae6d2bfdf31",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('taro-picker-core[aria-label=\"文件状态\"]')\u001b[22m\n",
+  "failure_stack": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('taro-picker-core[aria-label=\"文件状态\"]')\u001b[22m\n\n    at selectMobile (D:\\dev\\copypasted\\内部管理\\app\\scripts\\mobile_picker_browser.mjs:7:16)\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_file_batch.mjs:33:51\n    at async workbenchBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\workbench_browser_common.mjs:51:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_file_batch.mjs:12:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/files/index?folder_id=9c66e2c6-0bdf-489d-b9dd-028cc8eea996",
+    "body_children": 3,
+    "active_mobile_pages": 1,
+    "workbench_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "500ddfe8d4e82b9eff50184f621efef8397bcaef43347ee4f747df4bca51e008",
+    "source_sha256": "4a2846a9fb8185dd0ad2d9f4b15a0ec7a93c5f6ad2d59897baf28bd30fb9be82",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "4a2846a9fb8185dd0ad2d9f4b15a0ec7a93c5f6ad2d59897baf28bd30fb9be82",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "4a2846a9fb8185dd0ad2d9f4b15a0ec7a93c5f6ad2d59897baf28bd30fb9be82",
+  "build_source_unchanged": true
+}

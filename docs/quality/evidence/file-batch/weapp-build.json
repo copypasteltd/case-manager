@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "id": "weapp-build",
+  "started_at": "2026-10-30T16:51:37.052115+00:00",
+  "finished_at": "2026-10-30T16:55:27.401508+00:00",
+  "elapsed_seconds": 230.345,
+  "command": [
+    "npm",
+    "run",
+    "build:weapp"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "exit",
+  "source_sha256": "87ae59ffb1cc4269210533459bfff17183663f66bbebb5a833aa342c6eac974d",
+  "source_after_sha256": "87ae59ffb1cc4269210533459bfff17183663f66bbebb5a833aa342c6eac974d",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "6f94025906c2722c8d496a3b31ab4fa598ddee8c012a4e3a695206512b921d8c",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

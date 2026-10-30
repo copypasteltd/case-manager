@@ -23,7 +23,7 @@ def module(name):
 def main():
     global E
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch'), default='project-business')
     args = parser.parse_args()
     E = APP.parent / 'docs/quality/evidence' / args.feature
     values = json.loads((APP / '.local/environment.json').read_text())
@@ -102,6 +102,9 @@ def main():
       'no_binding_delete',NOT has_table_privilege(current_user,'miniapp_bindings','DELETE'),
       'no_claim_delete',NOT has_table_privilege(current_user,'miniapp_code_claims','DELETE'),
       'disposable_test_databases',(SELECT count(*) FROM pg_database WHERE datname~'^cp_(test|suite|batch|fixture)_'))"""
+    if args.feature == 'file-batch':
+        query = query.replace("'schema94',(SELECT count(*)=94", "'schema95',(SELECT count(*)=95")
+        query = query.replace("'refund_principal_column'", "'file_batch_table',to_regclass('file_batch_plans') IS NOT NULL,'file_batch_guard',EXISTS(SELECT 1 FROM pg_trigger WHERE tgname='file_batch_plan_guard' AND tgenabled='O' AND NOT tgisinternal),'file_batch_privileges',has_table_privilege(current_user,'file_batch_plans','SELECT') AND has_table_privilege(current_user,'file_batch_plans','INSERT') AND has_table_privilege(current_user,'file_batch_plans','UPDATE') AND NOT has_table_privilege(current_user,'file_batch_plans','DELETE'),'refund_principal_column'")
     result = subprocess.run([str(APP / '.tools/pgsql/bin/psql.exe'), '-X', '-A', '-t', '-q', '-v', 'ON_ERROR_STOP=1', '-c', query],
         env=environment, capture_output=True, text=True, encoding='utf-8', timeout=20, creationflags=subprocess.CREATE_NO_WINDOW)
     if result.returncode:
@@ -119,11 +122,11 @@ def main():
     disabled = values.get('CP_STORAGE_DRIVER') == 'disabled' and effective.get('CP_AGENT_RUNTIME_ENABLED', 'false') in ('false', 'disabled') and not effective.get('CP_TELEGRAM_BOTS') and not effective.get('CP_TELEGRAM_DISPATCH_BOTS') and not any(effective.get(k) for k in ('CP_MULTIPART_CLEANUP_PROVIDERS', 'CP_WECHAT_APP_ID','CP_WECHAT_APP_SECRET','CP_DOUYIN_APP_ID','CP_DOUYIN_APP_SECRET','CP_MINIAPP_IDENTITY_KEY'))
     passed = base_status == 0 and common['passed'] and all(actual.values()) and all(ownership.values()) and worker_sources and disabled and common['database']['disposable_test_databases'] == 0
     report = {'passed': bool(passed), 'checked_at': datetime.now(timezone.utc).isoformat(), 'database': common['database'], 'miniapp_metadata': actual,
-        'migration_count': 94, 'ownership': ownership, 'worker_sources_match': worker_sources, 'backend_source_sha256': backend,
+        'migration_count': (95 if args.feature == 'file-batch' else 94), 'ownership': ownership, 'worker_sources_match': worker_sources, 'backend_source_sha256': backend,
         'integrations_disabled': disabled, 'read_only_inspection': True, 'production_deployment': False,
         'verification_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     (E / 'development-project-resources.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({'passed': report['passed'], 'migration_count': 94, 'disposable_databases': common['database']['disposable_test_databases'], 'integrations_disabled': disabled}))
+    print(json.dumps({'passed': report['passed'], 'migration_count': (95 if args.feature == 'file-batch' else 94), 'disposable_databases': common['database']['disposable_test_databases'], 'integrations_disabled': disabled}))
     return 0 if report['passed'] else 1
 
 

@@ -8,8 +8,8 @@ export async function assertNoCredentials(page) {
   const url = new URL(page.url());
   if (url.hash) {
     const route = new URL(url.hash.slice(1), 'http://review.invalid');
-    assert.ok(['/pages/project/index', '/pages/list/index', '/pages/business/index', '/pages/finance/index', '/pages/subscription-period/index'].includes(route.pathname));
-  } else { assert.match(url.pathname, /^\/(projects|contracts|purchases|claims|costs|payments|subscriptions)(\/[0-9a-f-]{36})?$/); }
+    assert.ok(['/pages/project/index', '/pages/list/index', '/pages/business/index', '/pages/finance/index', '/pages/subscription-period/index', '/pages/files/index'].includes(route.pathname));
+  } else { assert.match(url.pathname, /^\/(files(?:\/folders)?|projects|contracts|purchases|claims|costs|payments|subscriptions)(\/[0-9a-f-]{36})?$/); }
   assert.equal(await page.locator('input[type="password"]:visible,input[maxlength="6"]:visible,.cp-secret:visible,[data-private-capability]:visible').count(), 0,
     'Record only an authenticated project business view without password, MFA or private capability fields.');
 }

@@ -1,5 +1,10 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量127 / Increment127：实际Web／共享Taro H5分别完成两文件的批量移动、回收、恢复，且从原文件详情重新打开持久回执。MP4只录本人验证完成后的首个整批执行及回执；GIF明确为三张实际场景截图的导览，每张2秒。合成元数据资料，无凭据画面，不代表真机／云／模型验收。见[使用](../development/127-file-batch-plans.md)、[验证](../quality/127-file-batch-verification.md)、[素材摘要](../quality/evidence/file-batch/media.json)。
+
+[Web MP4](videos/file-batch-web.mp4) · [共享移动 MP4](videos/file-batch-mobile.mp4) · [Web截图导览](gifs/file-batch-web.gif) · [移动截图导览](gifs/file-batch-mobile.gif)
+
+
 增量126：费用到实际付款核销。六张实际合成业务截图：供应方部分核销、异币、员工垫付各Web／H5一张；两段静音MP4仅录首个MFA完成后的实际视口操作；两份GIF为明确标注的三张真实截图导览，每张2秒。见[设计](../development/126-cost-payment-settlement.md)、[验证](../quality/126-cost-payment-verification.md)及[媒体清单](../quality/evidence/cost-payment/media.json)。不含凭据；不是实体设备／真实云／模型／生产验收。
 
 增量125 / Increment125：三类批准业务的实际费用登记。两个客户端各实际操作合同、采购、报销；MP4仅录制首个来源在本人验证后的确认与历史查阅，不录密码或MFA。GIF是三张真实截图各2秒的导览，不是实时录屏。

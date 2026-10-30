@@ -41,7 +41,7 @@ function TransferWorkspace({ kind, resource, me, planID, refresh }: Props & { pl
   </View>;
 }
 
-function TargetPicker({ sourceID, selected, choose, disabled }: { sourceID?: string; selected?: Schemas['Folder']; choose(v: Schemas['Folder']): void; disabled: boolean }) {
+export function TargetPicker({ sourceID, selected, choose, disabled }: { sourceID?: string; selected?: Schemas['Folder']; choose(v: Schemas['Folder']): void; disabled: boolean }) {
   const [path, setPath] = useState<Schemas['Folder'][]>([]), current = path.at(-1);
   return <View><Text className='cp-muted cp-paragraph'>{['所有可访问根目录', ...path.map(v => v.name)].join(' / ')}</Text>{path.length > 0 && <Action secondary disabled={disabled} onClick={() => setPath(v => v.slice(0, -1))}>返回目标上一级</Action>}{current?.can_create && <Action secondary disabled={disabled || current.id === sourceID} onClick={() => choose(current)}>选择当前目标目录</Action>}<TargetRows key={current?.id ?? 'root'} parent={current?.id} sourceID={sourceID} enter={folder => setPath(v => [...v, folder])} choose={choose} disabled={disabled} canEnter={path.length < 31} />{selected && <Text className='cp-notice'>已选目标：{selected.name} · {label(selected.classification)} · 修订 {selected.version}</Text>}</View>;
 }

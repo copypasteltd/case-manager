@@ -1,0 +1,82 @@
+// Real four-client shared flow against an owned native HTTP/PostgreSQL fixture.
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { workbenchBrowser, waitOTP } from './workbench_browser_common.mjs';
+import { mobileScreen, selectMobile } from './mobile_picker_browser.mjs';
+import { assertNoCredentials, recordViewport } from './project_business_recording.mjs';
+
+const app = fileURLToPath(new URL('../', import.meta.url)), mobile = process.argv.includes('--mobile');
+await workbenchBrowser(mobile, async ({ page, context, fixture, checks, evidence }) => {
+  const root = () => mobile ? mobileScreen(page) : page;
+  const field = label => mobile ? root().locator('input[aria-label="' + label + '"],textarea[aria-label="' + label + '"]') : page.getByLabel(label, { exact: true });
+  const button = name => root().getByRole('button', { name, exact: true });
+  let bearer;
+  page.on('request', request => { if (request.headers().authorization?.startsWith('Bearer ')) bearer = request.headers().authorization; });
+  await page.goto(fixture.origin); await field('内部账号').fill(fixture.alice.login); await field('密码').fill(fixture.alice.password);
+  await button(mobile ? '登录工作空间 ↗' : '登录工作空间').click(); await field('六位验证码').fill(await waitOTP(fixture)); await button(mobile ? '验证并继续 ↗' : '验证并继续').click();
+  if (mobile) await root().locator('.cp-title').filter({ hasText: '工作从这里开始' }).waitFor(); else await page.getByRole('heading', { name: /工作从这里开始/ }).waitFor();
+  const get = async route => { const r = await context.request.get((mobile ? fixture.api_origin : fixture.origin) + '/v1' + route, { headers: mobile ? { Authorization: bearer } : {} }); assert.equal(r.status(), 200, route); return (await r.json()).data; };
+  const navigate = route => page.goto(fixture.origin + (mobile ? '/#' : '') + route);
+  const sources = await Promise.all(fixture.batch_file_ids.map(id => get('/files/' + id))), originFolder = await get('/folders/' + fixture.folder_id);
+  const histories = await Promise.all(sources.map(f => get('/files/' + f.id + '/versions?limit=20')));
+  const screenshots = [], created = [], prefix = 'file-batch-' + (mobile ? 'mobile' : 'web');
+  await mkdir(path.join(app, '../docs/media/screenshots'), { recursive: true });
+  async function shot(name) { await assertNoCredentials(page); const file = 'docs/media/screenshots/' + prefix + '-' + name + '.png'; await page.screenshot({ path: path.join(app, '..', file) }); screenshots.push({ file, sha256: createHash('sha256').update(await readFile(path.join(app, '..', file))).digest('hex') }); }
+  const titles = { move: '批量移动', trash: '批量移入回收站', restore: '批量恢复' };
+  let recording;
+  for (const action of ['move', 'trash', 'restore']) {
+    const folder = action === 'move' ? fixture.folder_id : fixture.target_folder_id;
+    await navigate(mobile ? '/pages/files/index?folder_id=' + folder : '/files/folders/' + folder);
+    if (action === 'restore') { if (mobile) await selectMobile(root(), '文件状态', '回收站文件'); else await page.getByLabel('文件状态', { exact: true }).selectOption('trashed'); }
+    for (const f of sources) {
+      if (mobile) await root().locator('.cp-check').filter({ hasText: '选择文件 ' + f.name }).click();
+      else await page.getByRole('checkbox', { name: '选择文件 ' + f.name, exact: true }).check();
+    }
+    await button(titles[action]).click();
+    if (action === 'move') {
+      const rows = mobile ? root().locator('.cp-fact') : page.locator('.report-context');
+      const sourceRow = rows.filter({ hasText: originFolder.name }).filter({ has: root().getByRole('button', { name: '进入目标目录', exact: true }) });
+      await sourceRow.getByRole('button', { name: '进入目标目录', exact: true }).click();
+      if (mobile) await root().locator('.cp-fact').filter({ hasText: fixture.target_folder_name }).getByRole('button', { name: '选择此目标', exact: true }).click();
+      else await page.getByRole('button', { name: '选择目标 ' + fixture.target_folder_name, exact: true }).click();
+    }
+    await field('批量整理原因').fill('人工核对的两个项目文件 · ' + titles[action]);
+    const proposed = page.waitForResponse(r => new URL(r.url()).pathname === '/v1/file-batch-plans' && r.request().method() === 'POST');
+    await button('分析批量清单').click(); const proposal = await proposed; assert.equal(proposal.status(), 201); const p = (await proposal.json()).data;
+    assert.equal(p.snapshot.items.length, 2); assert.equal(p.can_execute, true); assert.equal(p.state, 'pending');
+    const before = await Promise.all(sources.map(f => get('/files/' + f.id)));
+    for (let i = 0; i < before.length; i++) { assert.equal(before[i].version, p.snapshot.items.find(v => v.file.id === before[i].id).file.version); assert.equal(before[i].current_version_id, sources[i].current_version_id); }
+    await button('核对并执行整批操作').click(); await field('批量计划确认原因').fill('已核对全部清单与实际目录，并确认本次整批操作');
+    if (mobile) await root().locator('.cp-check').filter({ hasText: '我已核对全部文件、目标及本次操作影响' }).click(); else await page.getByRole('checkbox', { name: '我已核对全部文件、目标及本次操作影响', exact: true }).check();
+    if (mobile) { await field('验证器六位验证码').fill(await waitOTP(fixture)); await button('确认本人操作').click(); await root().getByText('已通过本次两步验证，请继续核对并确认操作。', { exact: true }).waitFor(); }
+    await button('确认并执行整批操作').waitFor(); await assertNoCredentials(page);
+    let done;
+    const execute = async () => {
+      const result = page.waitForResponse(r => new URL(r.url()).pathname === '/v1/file-batch-plans/' + p.id + '/execute' && r.request().method() === 'POST');
+      await button('确认并执行整批操作').click(); const response = await result; assert.equal(response.status(), 200); done = (await response.json()).data;
+      assert.equal(done.state, 'executed'); assert.equal(done.results.length, 2); assert.equal(done.plan_hash, p.plan_hash);
+      await root().getByText('整批已完成 · ' + titles[action], { exact: true }).waitFor();
+      for (const f of sources) {
+        const current = await get('/files/' + f.id), prior = before.find(v => v.id === f.id), receipt = done.results.find(v => v.id === f.id);
+        assert.equal(current.version, prior.version + 1); assert.equal(current.version, receipt.version); assert.equal(current.current_version_id, f.current_version_id); assert.equal(current.folder_id, fixture.target_folder_id); assert.equal(current.state, action === 'trash' ? 'trashed' : 'active');
+      }
+      await root().getByText('本次回执：修订 ' + done.results[0].version + ' · ' + (action === 'trash' ? '已移入回收站' : '当前有效'), { exact: mobile }).first().scrollIntoViewIfNeeded();
+      await shot(action);
+    };
+    if (action === 'move') recording = await recordViewport(page, app, prefix, execute); else await execute();
+    const reread = await get('/file-batch-plans/' + p.id); assert.deepEqual(reread.results, done.results);
+    for (const f of sources) { const history = await get('/files/' + f.id + '/batch-plans?limit=10'); assert.ok(history.items.some(v => v.id === p.id && v.state === 'executed')); }
+    created.push({ action, id: p.id, plan_hash: p.plan_hash, selected: p.input.files, results: done.results });
+    checks.push('Actual ' + (mobile ? 'Taro H5' : 'Web') + ' ' + action + ' selection, fixed metadata analysis, human acknowledgement, current MFA, atomic file results and durable owner-bound history.');
+  }
+  for (let i = 0; i < sources.length; i++) { const after = await get('/files/' + sources[i].id + '/versions?limit=20'); assert.deepEqual(after.items.map(v => [v.id, v.seq, v.sha256, v.object_key]), histories[i].items.map(v => [v.id, v.seq, v.sha256, v.object_key])); }
+  // Reopen the persisted record through the actual source file UI after navigation.
+  await navigate(mobile ? '/pages/files/index?file_id=' + sources[0].id : '/files/' + sources[0].id);
+  await button('查阅批量记录').click(); await button('查阅这份批量清单').first().click(); await root().getByText('整批已完成 · 批量恢复', { exact: true }).waitFor();
+  checks.push('All original formal history identifiers/hashes remain fixed; an executed plan reopens through the actual related-file interface after navigation.');
+  assert.ok(recording && screenshots.length === 3 && created.length === 3);
+  await writeFile(path.join(evidence, 'media.json'), JSON.stringify({ screenshots, recording, created, synthetic_data: true, real_model: false, real_cloud: false, mfa_recorded: false }, null, 2) + '\n');
+}, 'file-batch');

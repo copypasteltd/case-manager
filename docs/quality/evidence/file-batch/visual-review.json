@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-30T16:45:51.226025+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/file-batch-web-move.png",
+      "sha256": "2da17b2fc038bccf6e70d09a1b298ce8c9ef592007d595e2b7474c190738806e",
+      "reviewed": true,
+      "review_mode": "Complete final screenshot visually inspected at original resolution",
+      "notes": "Centered receipt remains visible after the listing changes, with both files, completed action and revision/state results inside the 1440px viewport."
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-web-trash.png",
+      "sha256": "75eba62edb7b5dbc795b79efee54c490f1a22bf095942afaaa21e7db12df8e79",
+      "reviewed": true,
+      "review_mode": "Complete final screenshot visually inspected at original resolution",
+      "notes": "Centered receipt remains visible after the listing changes, with both files, completed action and revision/state results inside the 1440px viewport."
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-web-restore.png",
+      "sha256": "0e70012d043caa8a2b177030efcf70225b2b65837204ed18404096a5c43ea307",
+      "reviewed": true,
+      "review_mode": "Complete final screenshot visually inspected at original resolution",
+      "notes": "Centered receipt remains visible after the listing changes, with both files, completed action and revision/state results inside the 1440px viewport."
+    },
+    {
+      "file": "docs/media/videos/file-batch-web.mp4",
+      "sha256": "4af28cd3dc8919e04962d3f3e43cfa2da25bce9ce53875a89e07d2efeec38cb7",
+      "reviewed": true,
+      "review_mode": "Decoded final MP4 sampled at 5%, 50% and 95% of duration",
+      "notes": "Actual checked acknowledgement and execution transition into the completed move receipt; credentials and MFA input values are absent from reviewed frames. Silent short execution clip, not a recording of all three actions."
+    },
+    {
+      "file": "docs/media/gifs/file-batch-web.gif",
+      "sha256": "d87c0f76483ba3254bdd7ad45d245cbf70032cbe47e744756bae862998c509b8",
+      "reviewed": true,
+      "review_mode": "Final GIF decoded at frames 0, 8 and 16 covering all three action screenshots",
+      "notes": "Distinct move, trash and restore receipts appear in order. Six-second screenshot tour with original responsive framing; explicitly not a continuous screen recording."
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-mobile-move.png",
+      "sha256": "567173bc23391dfd17cd840262dde01bfb2d9c7fa3437a3c2e60e77c924fb2a0",
+      "reviewed": true,
+      "review_mode": "Complete final screenshot visually inspected at original resolution",
+      "notes": "Exact completed action heading, two source entries and resulting revisions/states are visible. Content wraps in the 390px viewport; the mobile receipt is dense but has no horizontal clipping."
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-mobile-trash.png",
+      "sha256": "f9e0f0c429f4ddbce159e5856660dd3db6e792fe93a54f9f7a744cfdf1c61b89",
+      "reviewed": true,
+      "review_mode": "Complete final screenshot visually inspected at original resolution",
+      "notes": "Exact completed action heading, two source entries and resulting revisions/states are visible. Content wraps in the 390px viewport; the mobile receipt is dense but has no horizontal clipping."
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-mobile-restore.png",
+      "sha256": "3fe960e93fb0d1c0bce08c1d0abb2f704c356bf38523f6977c9bfac1df2081b5",
+      "reviewed": true,
+      "review_mode": "Complete final screenshot visually inspected at original resolution",
+      "notes": "Exact completed action heading, two source entries and resulting revisions/states are visible. Content wraps in the 390px viewport; the mobile receipt is dense but has no horizontal clipping."
+    },
+    {
+      "file": "docs/media/videos/file-batch-mobile.mp4",
+      "sha256": "170d6218f23ee2f95b1cdb5702a26c15807aed8b8e9bbcb9c953db559736d7bf",
+      "reviewed": true,
+      "review_mode": "Decoded final MP4 sampled at 5%, 50% and 95% of duration",
+      "notes": "Actual checked acknowledgement and execution transition into the completed move receipt; credentials and MFA input values are absent from reviewed frames. Silent short execution clip, not a recording of all three actions."
+    },
+    {
+      "file": "docs/media/gifs/file-batch-mobile.gif",
+      "sha256": "969490c6c7688f8e34bc6d6f3be85677f1458e5285f43d38b22efa5c288e0ad7",
+      "reviewed": true,
+      "review_mode": "Final GIF decoded at frames 0, 8 and 16 covering all three action screenshots",
+      "notes": "Distinct move, trash and restore receipts appear in order. Six-second screenshot tour with original responsive framing; explicitly not a continuous screen recording."
+    }
+  ],
+  "screenshots_inspected": 6,
+  "decoded_mp4s_sampled": 2,
+  "decoded_gifs_inspected": 2,
+  "decoded_sample_frames": 12,
+  "synthetic_data_only": true,
+  "real_device_used": false,
+  "scope": "Visual review of final capture pixels and sampled decoded outputs. Does not establish device, live storage/model or production acceptance."
+}

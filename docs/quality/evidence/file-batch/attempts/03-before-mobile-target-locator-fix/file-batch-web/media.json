@@ -1,0 +1,157 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/file-batch-web-move.png",
+      "sha256": "66d7f179575657409039a08503b0ae583b4a276959f585f4ad15e9e169e1033e"
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-web-trash.png",
+      "sha256": "0f5d9d6842a3cbcec01833df6a906c7672527f275897bcdf845db7198fc95ace"
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-web-restore.png",
+      "sha256": "8d1b68a1deb9e8cc629bb389b85dc4eaa5ed720d2865a9eea102b0b77d7b2112"
+    }
+  ],
+  "recording": {
+    "name": "file-batch-web",
+    "frame_count": 14,
+    "duration_ms": 6114,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/file-batch-web/frames.json",
+    "manifest_sha256": "c85551e643c285387a27c1858f5575e5b59afcae524699f1484635aa181659f3"
+  },
+  "created": [
+    {
+      "action": "move",
+      "id": "3fa069c4-19c8-4ace-aac1-630636219b61",
+      "plan_hash": "ab71fd33716e75e1d723906d75dfbc95333398b01086977d3f5d09673e61de66",
+      "selected": [
+        {
+          "id": "4ed0a9ff-e38b-4a0d-a373-7419ec8eb477",
+          "expected_version": 1,
+          "current_version_id": "ca9f1af5-669f-4566-a7c6-126a250fd6c4"
+        },
+        {
+          "id": "a27904ed-db72-437e-8d1b-02415f6cdf00",
+          "expected_version": 1,
+          "current_version_id": "77a4068a-06a2-4fb3-b8e5-28dc5b1af71f"
+        }
+      ],
+      "results": [
+        {
+          "id": "4ed0a9ff-e38b-4a0d-a373-7419ec8eb477",
+          "version": 2,
+          "name": "项目合同摘要.txt",
+          "folder_id": "d41f9d7b-09b7-4eae-bd5b-1dcaad3ba857",
+          "project_id": "999d1458-5dfd-4cc4-8884-6e6b045603a0",
+          "creator_id": "8c24c9a2-a453-4884-b82c-38ace3f71939",
+          "classification": "project_restricted",
+          "current_version_id": "ca9f1af5-669f-4566-a7c6-126a250fd6c4",
+          "state": "active"
+        },
+        {
+          "id": "a27904ed-db72-437e-8d1b-02415f6cdf00",
+          "version": 2,
+          "name": "采购交付清单.txt",
+          "folder_id": "d41f9d7b-09b7-4eae-bd5b-1dcaad3ba857",
+          "project_id": "999d1458-5dfd-4cc4-8884-6e6b045603a0",
+          "creator_id": "8c24c9a2-a453-4884-b82c-38ace3f71939",
+          "classification": "project_restricted",
+          "current_version_id": "77a4068a-06a2-4fb3-b8e5-28dc5b1af71f",
+          "state": "active"
+        }
+      ]
+    },
+    {
+      "action": "trash",
+      "id": "0a8e2083-97dd-4a46-a846-c32b1444f2ea",
+      "plan_hash": "8cae96d824bbfd8c9fabd4de933b89d47ac4df0f3af2f4d34758ad51fa38c92f",
+      "selected": [
+        {
+          "id": "4ed0a9ff-e38b-4a0d-a373-7419ec8eb477",
+          "expected_version": 2,
+          "current_version_id": "ca9f1af5-669f-4566-a7c6-126a250fd6c4"
+        },
+        {
+          "id": "a27904ed-db72-437e-8d1b-02415f6cdf00",
+          "expected_version": 2,
+          "current_version_id": "77a4068a-06a2-4fb3-b8e5-28dc5b1af71f"
+        }
+      ],
+      "results": [
+        {
+          "id": "4ed0a9ff-e38b-4a0d-a373-7419ec8eb477",
+          "version": 3,
+          "name": "项目合同摘要.txt",
+          "folder_id": "d41f9d7b-09b7-4eae-bd5b-1dcaad3ba857",
+          "project_id": "999d1458-5dfd-4cc4-8884-6e6b045603a0",
+          "creator_id": "8c24c9a2-a453-4884-b82c-38ace3f71939",
+          "classification": "project_restricted",
+          "current_version_id": "ca9f1af5-669f-4566-a7c6-126a250fd6c4",
+          "state": "trashed"
+        },
+        {
+          "id": "a27904ed-db72-437e-8d1b-02415f6cdf00",
+          "version": 3,
+          "name": "采购交付清单.txt",
+          "folder_id": "d41f9d7b-09b7-4eae-bd5b-1dcaad3ba857",
+          "project_id": "999d1458-5dfd-4cc4-8884-6e6b045603a0",
+          "creator_id": "8c24c9a2-a453-4884-b82c-38ace3f71939",
+          "classification": "project_restricted",
+          "current_version_id": "77a4068a-06a2-4fb3-b8e5-28dc5b1af71f",
+          "state": "trashed"
+        }
+      ]
+    },
+    {
+      "action": "restore",
+      "id": "8f034115-8271-4982-90e4-02c252b9315e",
+      "plan_hash": "62be2ed20a078a87bc475fa1987520465cc93a8ad767df36f7d418248be7fd48",
+      "selected": [
+        {
+          "id": "4ed0a9ff-e38b-4a0d-a373-7419ec8eb477",
+          "expected_version": 3,
+          "current_version_id": "ca9f1af5-669f-4566-a7c6-126a250fd6c4"
+        },
+        {
+          "id": "a27904ed-db72-437e-8d1b-02415f6cdf00",
+          "expected_version": 3,
+          "current_version_id": "77a4068a-06a2-4fb3-b8e5-28dc5b1af71f"
+        }
+      ],
+      "results": [
+        {
+          "id": "4ed0a9ff-e38b-4a0d-a373-7419ec8eb477",
+          "version": 4,
+          "name": "项目合同摘要.txt",
+          "folder_id": "d41f9d7b-09b7-4eae-bd5b-1dcaad3ba857",
+          "project_id": "999d1458-5dfd-4cc4-8884-6e6b045603a0",
+          "creator_id": "8c24c9a2-a453-4884-b82c-38ace3f71939",
+          "classification": "project_restricted",
+          "current_version_id": "ca9f1af5-669f-4566-a7c6-126a250fd6c4",
+          "state": "active"
+        },
+        {
+          "id": "a27904ed-db72-437e-8d1b-02415f6cdf00",
+          "version": 4,
+          "name": "采购交付清单.txt",
+          "folder_id": "d41f9d7b-09b7-4eae-bd5b-1dcaad3ba857",
+          "project_id": "999d1458-5dfd-4cc4-8884-6e6b045603a0",
+          "creator_id": "8c24c9a2-a453-4884-b82c-38ace3f71939",
+          "classification": "project_restricted",
+          "current_version_id": "77a4068a-06a2-4fb3-b8e5-28dc5b1af71f",
+          "state": "active"
+        }
+      ]
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "mfa_recorded": false
+}

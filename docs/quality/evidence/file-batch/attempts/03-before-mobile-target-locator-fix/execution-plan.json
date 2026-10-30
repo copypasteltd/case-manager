@@ -1,0 +1,174 @@
+{
+  "name": "file-batch",
+  "increment": 127,
+  "configuration_file": "docs/quality/evidence/file-batch/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/file-batch",
+  "retained_base_commit": "350451905f8f08d7723e30110fea9c4d45246e3b",
+  "retained_base_increment": 126,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_native_js_review.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py",
+    "scripts/run_workbench_browser.py",
+    "scripts/workbench_sources.py",
+    "scripts/workbench_browser_common.mjs",
+    "scripts/check_file_batch.mjs",
+    "scripts/project_business_recording.mjs",
+    "scripts/encode_workbench_media.py"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestFileBatchPlans|TestStorageNamespaceAndMetadata|TestPinnedFileVersionMetadata|TestFileScopeTransfers|TestRetentionManagement)$",
+        "-p=1",
+        "-timeout=20m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestFileBatchPlans",
+        "TestStorageNamespaceAndMetadata",
+        "TestPinnedFileVersionMetadata",
+        "TestFileScopeTransfers",
+        "TestRetentionManagement"
+      ],
+      "scope": "Five selected native HTTP/PostgreSQL suites: fixed human batch plans, ordinary namespace operations, pinned formal history, controlled scope transfers and retention. Not a full backend regression."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/file-batch/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/file-batch/web-vitest.json",
+      "minimum_tests": 379,
+      "scope": "Complete current Web unit suite, including shared fixed batch selection and exact receipt cases."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 465,
+      "scope": "Complete current shared mobile unit suite, including fixed batch selection and exact receipt cases."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Native Babel primitive checks; retained121 APK is not a current127 artifact."
+    },
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_native_js_review.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080",
+        "TMP": "D:\\dev\\copypasted\\内部管理\\app\\.local\\android\\file-batch-metro-temp",
+        "TEMP": "D:\\dev\\copypasted\\内部管理\\app\\.local\\android\\file-batch-metro-temp"
+      },
+      "parser": "exit",
+      "scope": "Current Android JS compilation with the published four-worker Metro native Windows filesystem adapter, generated-output exclusions and no-Expo map guard. Bundle only: no APK/signing/Gradle/device acceptance. TEMP/TMP are explicitly owned below the checkout, outside all watched source folders, so the disclosed native filesystem bridge also covers Metro cache reads/writes. No cache content or source resolution is substituted."
+    }
+  ],
+  "browser_groups": [
+    "file-batch-web",
+    "file-batch-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "schema_upgrade": {
+    "from_count": 94,
+    "to_count": 95,
+    "new_migrations": [
+      {
+        "file": "app/backend/migrations/0095_file_batch_plans.sql",
+        "sha256": "c96274d8f2f32895d67559dcd0920bac5051a17571267381140a16ee35f7284d"
+      }
+    ]
+  }
+}

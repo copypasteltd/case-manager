@@ -1,0 +1,299 @@
+{
+  "passed": true,
+  "id": "backend",
+  "started_at": "2026-10-30T16:20:28.515700+00:00",
+  "finished_at": "2026-10-30T16:24:39.213915+00:00",
+  "elapsed_seconds": 250.694,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestFileBatchPlans|TestStorageNamespaceAndMetadata|TestPinnedFileVersionMetadata|TestFileScopeTransfers|TestRetentionManagement)$",
+    "-p=1",
+    "-timeout=20m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "589d1960567ba11d91496317445659ce80e72c5368ae1ca0d938e9007a6bf059",
+  "source_after_sha256": "589d1960567ba11d91496317445659ce80e72c5368ae1ca0d938e9007a6bf059",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestFileBatchPlans",
+      "TestFileScopeTransfers",
+      "TestPinnedFileVersionMetadata",
+      "TestStorageNamespaceAndMetadata",
+      "TestRetentionManagement"
+    ],
+    "pass": 51,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/three_ordinary_atomic_journeys_retain_both_formal_heads_and_reopen_from_every_file"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/cancel_is_durable_and_final_while_exact_decision_replay_stays_idempotent"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/name_collisions_cover_folders_and_held_files_yield_visible_blocked_proposals"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/source_head_target_revision_and_ancestor_changes_invalidate_the_fixed_basis/version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/source_head_target_revision_and_ancestor_changes_invalidate_the_fixed_basis/head"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/source_head_target_revision_and_ancestor_changes_invalidate_the_fixed_basis/target"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/source_head_target_revision_and_ancestor_changes_invalidate_the_fixed_basis/path"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/source_head_target_revision_and_ancestor_changes_invalidate_the_fixed_basis/hold"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/source_head_target_revision_and_ancestor_changes_invalidate_the_fixed_basis"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/a_real_second-child_failure_rolls_back_every_child_and_its_successful_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/concurrent_plans_on_the_same_files_have_exactly_one_winner"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/read_is_owner-bound_and_rejects_agent_or_forged_session_identities"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/exact_query_and_input_shapes_reject_accidental_broad_or_forged_requests"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans/MFA_expiry_and_changed_authority_are_rechecked_before_execute_and_replay"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileBatchPlans"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/fixed_full-history_proposal_shows_actual_lost_and_gained_policy_readers_without_moving"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/human_read_rejects_agent_execution_and_forged_session_channel_pairs"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/strict_inputs_owner-only_reads_and_ordinary_move_guard_remain_enforced"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/recent_MFA_hash_and_current_basis_are_checked_before_business_writes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/same_owner_plan_pagination_binds_actor_filter_and_complete_fixed_inventory"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/changed_target_invalidates_pending_basis_and_cancel_preserves_immutable_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/legal_hold_reference_and_in-flight_upload_appear_as_explicit_blockers"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/authority_and_original_login_changes_invalidate_execution_without_hiding_current_review"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/database_refuses_an_invented_execution_receipt_without_its_completed_inventory"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/planned_permission_time_boundaries_cap_expiry_and_forbid_late_execution"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/no_classification_downgrade_and_cross-type_normalized_name_collisions"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/exact_human_execution_preserves_both_immutable_content_versions_and_replays_one_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers/recursive_transfer_updates_every_descendant_and_rejects_descendant_destinations"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileScopeTransfers"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPinnedFileVersionMetadata/exact_history_beyond_the_first_page_remains_pinned_after_a_rename"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPinnedFileVersionMetadata/attachment_version_IDs_resolve_exactly_with_no_current-version_substitution"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPinnedFileVersionMetadata/wrong-file_unknown_and_malformed_versions_cannot_resolve"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPinnedFileVersionMetadata/current_replica_evidence_is_projected_without_private_object_coordinates"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPinnedFileVersionMetadata/current_membership_is_required_on_every_pinned_read"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPinnedFileVersionMetadata"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/shared_Unicode_namespace_rejects_cross_type_collisions_and_serializes_concurrent_creates"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/moves_enforce_ancestry_scope_versions_and_immutable_project_root"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/file_metadata_preserves_version_provenance_and_reports_replica_evidence_separately"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/trash_holds_restore_name_conflicts_and_archived_projects_preserve_immutable_bytes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/audit_failure_rolls_back_namespace_business_state_and_idempotency_together"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/AI_policy_applies_before_file_listing_and_cursors_bind_the_channel"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata/own_scope_filters_by_immutable_file_creator_before_listing_and_history"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStorageNamespaceAndMetadata"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/fixed_history_hold_blocks_trash_and_release_is_immutable_idempotent_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/knowledge_fixed_revisions_and_comment_attachments_register_in_their_business_transaction"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/policy_publication_requires_recent_MFA_and_creates_immutable_independent_versions"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/trash_adds_its_own_retention_policy_without_replacing_the_formal_history_protection"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/hold_creation_and_assessment_audit_failures_roll_back_all_business_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/concurrent_release_has_one_final_immutable_outcome_and_preserves_global_legal_hold"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement/revoked_managers_cannot_replay_a_saved_assessment_and_hold_paging_binds_identity"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestRetentionManagement"
+    }
+  ],
+  "private_log_sha256": "7c60101665b3d4548b9c5465b080249f2def96d97bec83ebed098f6788477b32",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Five selected native HTTP/PostgreSQL suites: fixed human batch plans, ordinary namespace operations, pinned formal history, controlled scope transfers and retention. Not a full backend regression.",
+  "real_device": false,
+  "virtualization_used": false
+}

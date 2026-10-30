@@ -1,12 +1,26 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Increment127 completes shared four-client batch file operations: select 1–50 exact files → persisted inventory → human acknowledgement and recent MFA → atomic move/trash/untrash → durable item receipts. A late child failure rolls back every file and successful child fact. Original formal heads and content history stay fixed.
+
+Usage: select loaded files in the file center, choose an operation and provide a reason; a move additionally selects a writable actual directory in the same project and classification. Review the fixed source/target/path/retention inventory and expiry, explicitly confirm, then reopen the result from any related file, including a trashed one. Selection and verification are not restored from drafts. After an uncertain result, inspect persisted history before trying again.
+
+Normal schema94→95 upgrade adds guarded immutable plans/receipts while preserving original schema and business data. Ordinary file authority and commands remain in force. Real Web and shared Taro H5 use the native HTTP/PostgreSQL fixture; WeChat, Douyin and Android keep their full target scope. Platform, real cloud/model and production acceptance remain open: 23 packages (14 P0/9 P1) and five exclusions.
+
+Current source-bound checks passed: five selected native HTTP/PostgreSQL suites (51 pass records), 379 Web tests, 465 shared-mobile tests, workspace types and Web/WeChat/Douyin/Android JS builds. Actual Web/shared H5 each complete all three actions and reopen durable receipts. Six PNGs, two post-MFA execution MP4s and two explicit three-screenshot-tour GIFs are updated. The old121 full/runtime/development APK and126 evidence retain their original sources; they are not current127 artifacts. All 23 work packages and formal platform/cloud/model/production acceptance remain open.
+
+[Design and usage](development/127-file-batch-plans.md) · [Executed checks](quality/127-file-batch-verification.md) · [This increment and all 23 remaining packages](delivery/05-functional-closure-127.md)
+
+[Actual Web recording](media/videos/file-batch-web.mp4) · [Shared mobile recording](media/videos/file-batch-mobile.mp4) · [Three-scenario screenshot-tour GIF](media/gifs/file-batch-mobile.gif)
+
+## Increment126 · Previously published / 原发布记录
+
 Increment126 connects a confirmed expense to explicitly reviewed actual cash and settlement in one transaction. It supports partial supplier payments, reviewed foreign-currency settlement and an exact linked approved employee advance. Total cash and this expense's allocated cash are separate; extra cash stays unassigned and the original incurred expense is preserved. Existing create/record/allocate commands, limits, history, audit, Outbox and idempotency rules remain active; a late failure rolls back every business write.
 
 Usage: expense details → record actual payment and settle → enter actual Hong Kong time, currency, total cash and allocation → choose the same supplier revision or exact approved employee-advance line → select formal fixed evidence → acknowledge both actual cash and settlement with recent MFA → confirm → inspect ordinary payment history and cost balances. Foreign settlement additionally requires the cost-currency amount, actual conversion rate and source. This records completed facts; it does not transfer bank funds or complete the business automatically.
 
 Web and shared WeChat/Douyin/Android pin the exact cost version/revision/hash and validate the full compound receipt. Mobile drafts restore bounded text only, isolated by current actor authority and exact expense basis; payee/claim/evidence selection, MFA and acknowledgements require fresh review. Schema94 stays unchanged. Company policy, complete business journeys and formal platform/cloud/model/production acceptance remain open.
 
-[Design and usage](development/126-cost-payment-settlement.md) · [Executed checks](quality/126-cost-payment-verification.md) · [Current work and all23 remaining packages](delivery/05-functional-closure-126.md)
+[Design and usage](development/126-cost-payment-settlement.md) · [Executed checks](quality/126-cost-payment-verification.md) · [Current work and all 23 remaining packages](delivery/05-functional-closure-126.md)
 
 Current source-bound checks passed: nine selected native HTTP/PostgreSQL suites (140 pass records), 352 Web tests, 438 shared-mobile tests, workspace types and Web/WeChat/Douyin/Android JS builds. Real Web/H5 each exercise supplier HKD60/40 allocation, USD13/6.50 cash allocation against HKD50, and employee HKD30/25 allocation; original expenses stay HKD300. MP4 records only the first post-MFA flow; GIF explicitly tours three actual screenshots. The old121 full/runtime/development APK and125 evidence keep their original binding, rather than becoming current artifacts. All23 packages and five exclusions remain explicit under the [current scope](delivery/04-current-scope-and-acceptance.md).
 

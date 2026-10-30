@@ -23,21 +23,22 @@ async function collect(directory) {
 }
 export async function workbenchBrowser(mobile, action, variant = 'workbench') {
   const fixture = JSON.parse(await readFile(path.join(app, '.local/business-browser-fixture.json'), 'utf8'));
-  assert.ok(['workbench', 'operations-workbench', 'docx-text', 'project-business', 'business-cost', 'cost-payment'].includes(variant));
+  assert.ok(['workbench', 'operations-workbench', 'docx-text', 'project-business', 'business-cost', 'cost-payment', 'file-batch'].includes(variant));
+  const batch = variant === 'file-batch';
   const payment = variant === 'cost-payment';
   const cost = variant === 'business-cost';
   const business = variant === 'project-business';
   const operations = variant === 'operations-workbench';
   const docx = variant === 'docx-text';
-  assert.equal(fixture.fixture_kind, payment ? 'human-cost-payment' : cost ? 'human-business-cost' : business ? 'human-project-business' : docx ? 'agent-context-and-classification' : operations ? 'human-operations-workbench' : 'human-business-workbench'); assert.equal(fixture[payment ? 'cost_payment_fixture' : cost ? 'business_cost_fixture' : business ? 'project_business_fixture' : docx ? 'docx_text_fixture' : operations ? 'operations_workbench_fixture' : 'workbench_fixture'],true);
+  assert.equal(fixture.fixture_kind, batch ? 'human-file-batch' : payment ? 'human-cost-payment' : cost ? 'human-business-cost' : business ? 'human-project-business' : docx ? 'agent-context-and-classification' : operations ? 'human-operations-workbench' : 'human-business-workbench'); assert.equal(fixture[batch ? 'file_batch_fixture' : payment ? 'cost_payment_fixture' : cost ? 'business_cost_fixture' : business ? 'project_business_fixture' : docx ? 'docx_text_fixture' : operations ? 'operations_workbench_fixture' : 'workbench_fixture'],true);
   const group = process.env.CP_BROWSER_EVIDENCE_GROUP ?? variant + (mobile ? '-mobile' : '-web');
   assert.match(group, /^[a-zA-Z0-9-]+$/);
   const evidence = path.join(root, 'docs/quality/evidence', group), temporary = path.join(app, '.local/browser-temp');
   await mkdir(evidence, { recursive: true }); await mkdir(temporary, { recursive: true }); process.env.TMP = temporary; process.env.TEMP = temporary;
   const backend = (await collect('backend')).filter(file => /\.(go|sql)$|\/(go\.mod|go\.sum)$|\/internal\/contract\/openapi\.json$/.test(file));
-  const checker = payment ? 'scripts/check_cost_payment.mjs' : cost ? 'scripts/check_business_cost.mjs' : business ? 'scripts/check_project_business.mjs' : docx ? 'scripts/check_docx_text.mjs' : operations ? 'scripts/check_operations_workbench.mjs' : 'scripts/check_workbench.mjs';
+  const checker = batch ? 'scripts/check_file_batch.mjs' : payment ? 'scripts/check_cost_payment.mjs' : cost ? 'scripts/check_business_cost.mjs' : business ? 'scripts/check_project_business.mjs' : docx ? 'scripts/check_docx_text.mjs' : operations ? 'scripts/check_operations_workbench.mjs' : 'scripts/check_workbench.mjs';
   const sources = [...new Set([...backend, ...await collect(mobile ? 'mobile' : 'web'), ...await collect('packages/contracts'), ...await collect('packages/design'), 'package.json', 'package-lock.json', 'scripts/workbench_browser_common.mjs', checker, 'scripts/workbench_sources.py', 'scripts/run_workbench_browser.py', 'scripts/workbench_recording.mjs', 'scripts/mobile_picker_browser.mjs', 'scripts/project_concern_picker.mjs', 'scripts/test_backend.py', 'scripts/test_workbench_native.py', 'scripts/workbench_native_cluster.py', 'scripts/windows_native_path.py', 'scripts/build_openapi.py'])].sort();
-  if (docx || business || cost || payment) { sources.push(cost || business || payment ? 'scripts/project_business_recording.mjs' : 'scripts/office_text_recording.mjs'); sources.sort(); }
+  if (docx || business || cost || payment || batch) { sources.push(cost || business || payment || batch ? 'scripts/project_business_recording.mjs' : 'scripts/office_text_recording.mjs'); sources.sort(); }
   async function digest() { const hash = createHash('sha256'); for (const file of sources) { hash.update(file + '\0'); hash.update(await readFile(path.join(app, file))); hash.update('\0'); } return hash.digest('hex'); }
   const before = await digest(), started = new Date().toISOString(), checks = [], errors = [], serverErrors = [], contexts = [];
   let browser, page, passed = false, closed = true, failure, failureStack, failureContext;

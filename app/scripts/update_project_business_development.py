@@ -1,4 +1,4 @@
-"""Reload only attested native development services at unchanged schema94.
+"""Reload attested native services; only file-batch permits normal schema94-to95 upgrade.
 
 The existing cluster is preserved. No provider, TG, cloud, emulator or container
 is enabled. A stale PID belonging to another process is never terminated.
@@ -41,9 +41,10 @@ def inspect(record, command):
 def main():
     global E
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch'), default='project-business')
     args = parser.parse_args()
     E = APP.parent / 'docs/quality/evidence' / args.feature
+    expected_count = 95 if args.feature == 'file-batch' else 94
     assert not (E / 'development-update.json').exists(), 'Preserve an existing completed service update.'
     values = json.loads((APP / '.local/environment.json').read_text())
     db = urlsplit(values['CP_DATABASE_URL'])
@@ -70,14 +71,19 @@ def main():
 
     history_query = "SELECT json_build_object(" + ','.join(
         "'" + table + "',(SELECT json_build_object('rows',count(*),'content_md5',md5(coalesce(string_agg((to_jsonb(t)-'refund_original_amount'-'docx_text_acknowledged')::text,'' ORDER BY (to_jsonb(t)-'refund_original_amount'-'docx_text_acknowledged')::text),''))) FROM " + table + " t)"
-        for table in ('agent_budget_policies', 'agent_budget_reservations', 'agent_budget_usage', 'agent_budget_reconciliations', 'payment_records', 'payment_revisions', 'payment_events', 'actual_cost_entries', 'cost_revisions', 'cost_allocations', 'contracts', 'contract_revisions', 'contract_lifecycle_events', 'file_version_references', 'file_text_derivations')) + ')'
+        for table in ('agent_budget_policies', 'agent_budget_reservations', 'agent_budget_usage', 'agent_budget_reconciliations', 'payment_records', 'payment_revisions', 'payment_events', 'actual_cost_entries', 'cost_revisions', 'cost_allocations', 'contracts', 'contract_revisions', 'contract_lifecycle_events', 'file_version_references', 'file_text_derivations', 'files', 'file_versions', 'folders', 'storage_entries')) + ')'
     before = sql(history_query)
     previous_count = sql('SELECT count(*) FROM application_schema_manifest()')
     E.mkdir(parents=True, exist_ok=True)
-    assert previous_count == 94, 'Only the attested current schema94 reload is allowed.'
+    assert previous_count in ((94, 95) if args.feature == 'file-batch' else (94,)), 'Only the declared schema transition is allowed.'
+    upgraded = previous_count != expected_count
+    if upgraded:
+        with (APP / '.local/file-batch-schema-upgrade.log').open('w', encoding='utf-8') as log:
+            result = subprocess.run([sys.executable, str(APP / 'scripts/run_backend.py'), 'migrate'], cwd=APP.parent, stdout=log, stderr=subprocess.STDOUT, timeout=150, creationflags=FLAGS)
+        assert result.returncode == 0, 'Normal schema upgrade failed; ignored local diagnostics retained.'
     after = sql(history_query)
     assert before == after, 'Schema upgrade must preserve all original cash, incurred and legacy/usage bytes.'
-    assert sql('SELECT count(*) FROM application_schema_manifest()') == 94
+    assert sql('SELECT count(*) FROM application_schema_manifest()') == expected_count
     services = [('project-templates-api-owner.json', 'api', 'http server started'),
         ('project-templates-worker-owner.json', 'worker-notification', 'notification worker started'),
         ('finance-reports-worker-owner.json', 'worker-report-export', 'report export worker started')]
@@ -146,12 +152,12 @@ def main():
             'stop_command_exit_code': stop_code, 'owned_process_exit_confirmed': replaced,
             'stale_unrelated_pid_preserved': bool(actual['exists'] and not actual['valid'])})
     result = {'passed': before == after and source == backend.digest(), 'checked_at': datetime.now(timezone.utc).isoformat(),
-        'backend_source_sha256': source, 'previous_migration_count': previous_count, 'migration_count': 94,
+        'backend_source_sha256': source, 'previous_migration_count': previous_count, 'migration_count': expected_count,
         'history_before': before, 'history_after': after, 'legacy_and_usage_rows_preserved': before == after,
         'services': records, 'updater_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        'schema_upgrade_executed': False, 'postgres_restarted': False, 'external_integration_started': False, 'production_deployment': False}
+        'schema_upgrade_executed': upgraded, 'postgres_restarted': False, 'external_integration_started': False, 'production_deployment': False}
     (E / 'development-update.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({'passed': result['passed'], 'migration_count': 94, 'services_owned': True, 'history_preserved': before == after}))
+    print(json.dumps({'passed': result['passed'], 'migration_count': expected_count, 'services_owned': True, 'history_preserved': before == after}))
     return 0 if result['passed'] else 1
 
 

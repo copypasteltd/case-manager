@@ -1,0 +1,198 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T16:07:36.297057+00:00",
+  "backend_source_sha256": "4cf070d3e381dbe23da527c00d085bc3d4a5d699a66936a29b6019c8e4a6fae3",
+  "previous_migration_count": 94,
+  "migration_count": 95,
+  "history_before": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_records": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "actual_cost_entries": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_allocations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "contracts": {
+      "rows": 10,
+      "content_md5": "870135f1dbd8e1aad0d2456b0b7bfba9"
+    },
+    "contract_revisions": {
+      "rows": 23,
+      "content_md5": "d9c06966a0d974c8a5bd06ffe6bfee2c"
+    },
+    "contract_lifecycle_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "file_version_references": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "file_text_derivations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "files": {
+      "rows": 8,
+      "content_md5": "28a3d10da716ebd65188ca61b42a6f63"
+    },
+    "file_versions": {
+      "rows": 16,
+      "content_md5": "7cfecba6483fd1d0908993c9c24614f9"
+    },
+    "folders": {
+      "rows": 138,
+      "content_md5": "f5c08be776f3464f50a576c2594c0250"
+    },
+    "storage_entries": {
+      "rows": 146,
+      "content_md5": "b460e2ea0e218d9b2e79dea16aa09788"
+    }
+  },
+  "history_after": {
+    "agent_budget_policies": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_records": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "actual_cost_entries": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_revisions": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "cost_allocations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "contracts": {
+      "rows": 10,
+      "content_md5": "870135f1dbd8e1aad0d2456b0b7bfba9"
+    },
+    "contract_revisions": {
+      "rows": 23,
+      "content_md5": "d9c06966a0d974c8a5bd06ffe6bfee2c"
+    },
+    "contract_lifecycle_events": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "file_version_references": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "file_text_derivations": {
+      "rows": 0,
+      "content_md5": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "files": {
+      "rows": 8,
+      "content_md5": "28a3d10da716ebd65188ca61b42a6f63"
+    },
+    "file_versions": {
+      "rows": 16,
+      "content_md5": "7cfecba6483fd1d0908993c9c24614f9"
+    },
+    "folders": {
+      "rows": 138,
+      "content_md5": "f5c08be776f3464f50a576c2594c0250"
+    },
+    "storage_entries": {
+      "rows": 146,
+      "content_md5": "b460e2ea0e218d9b2e79dea16aa09788"
+    }
+  },
+  "legacy_and_usage_rows_preserved": true,
+  "services": [
+    {
+      "command": "api",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-notification",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    },
+    {
+      "command": "worker-report-export",
+      "owned": true,
+      "started": true,
+      "replaced_attested_owner": true,
+      "stop_command_exit_code": 0,
+      "owned_process_exit_confirmed": true,
+      "stale_unrelated_pid_preserved": false
+    }
+  ],
+  "updater_sha256": "3a76e800f2f1ec3d73ce4faf81346fbd322cd8624039bdfeba017d5b3454d482",
+  "schema_upgrade_executed": true,
+  "postgres_restarted": false,
+  "external_integration_started": false,
+  "production_deployment": false
+}

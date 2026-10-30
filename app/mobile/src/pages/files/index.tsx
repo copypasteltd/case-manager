@@ -14,6 +14,7 @@ import { MultipartCleanup } from './cleanup';
 import { FileComparisonPanel } from './comparison';
 import { ScopeTransfers } from './scope-transfers';
 import { ReplicaRetry } from './replica-retry';
+import { BatchFileList, FileBatchHistory } from './batches';
 
 type Workspace = { folder?: Folder; file?: StoredFile; project?: Schemas['Project'] };
 type Editor = { mode: 'create' | 'move' | 'trash' | 'restore'; kind: 'folder' | 'file'; item?: FileResource };
@@ -43,13 +44,14 @@ export default function FilesPage() {
       {!editor && (current.file || current.folder) && <ScopeTransfers kind={current.file ? 'file' : 'folder'} resource={(current.file ?? current.folder)!} me={me} />}
       {editor ? <FileEditor key={editor.mode + ':' + (editor.item?.id ?? current.folder?.id ?? 'root') + ':' + (editor.item?.version ?? 1) + ':' + me.authorization_version} {...editor} parent={editor.mode === 'create' ? current.folder : undefined} me={me} onCommitted={committed} onClose={() => setEditor(undefined)} />
         : current.file ? <FileDetails key={current.file.id + ':' + me.authorization_version} file={current.file} authorization={me.authorization_version} onEdit={setEditor} />
-        : <DirectoryContents current={current} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}
+        : <DirectoryContents current={current} me={me} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}
     </>}
+    {!page.loading && !page.error && current?.file && me && !editor && <FileBatchHistory key={current.file.id + ':' + me.authorization_version} fileID={current.file.id} me={me} />}
     <Action secondary onClick={() => { setEditor(undefined); void page.reload(); }} loading={page.loading}>刷新当前资料</Action>
   </Page>;
 }
 
-function DirectoryContents({ current, canCreate, onEdit }: { current: Workspace; canCreate: boolean; onEdit(value: Editor): void }) {
+function DirectoryContents({ current, me, canCreate, onEdit }: { current: Workspace; me: Schemas['Me']; canCreate: boolean; onEdit(value: Editor): void }) {
   const [search, setSearch] = useState(''), [query, setQuery] = useState(''), [state, setState] = useState('active');
   const projectID = current.project?.id ?? current.folder?.project_id;
   const project = projectID ? '&project_id=' + projectID : '';
@@ -68,7 +70,7 @@ function DirectoryContents({ current, canCreate, onEdit }: { current: Workspace;
     <Section title='子目录'><Notice error={folders.error} />{folders.loading ? <Busy /> : folders.items.length ? folders.items.map(folder => <Row key={folder.id} title={folder.name} subtitle={label(folder) + (folder.project_id ? ' · 项目资料' : ' · 公司资料')} onClick={() => fileWorkspace({ folder_id: folder.id, project_id: current.project?.id }, true)} />) : <Empty>没有当前可见的子目录。</Empty>}
       {folders.next && <Action secondary loading={folders.moreBusy} onClick={() => void folders.more()}>加载更多子目录</Action>}
     </Section>
-    <Section title={state === 'trashed' ? '回收站文件' : '当前文件'}><Notice error={files.error} />{files.loading ? <Busy /> : files.items.length ? files.items.map(file => <Row key={file.id} title={file.name} subtitle={label(file) + ' · 修订 ' + file.version} state={file.state} onClick={() => fileWorkspace({ file_id: file.id, project_id: current.project?.id }, true)} />) : <Empty>没有符合条件的文件。</Empty>}
+    <Section title={state === 'trashed' ? '回收站文件' : '当前文件'}><Notice error={files.error} />{files.loading ? <Busy /> : files.items.length ? <BatchFileList key={[current.folder?.id, current.project?.id, query, state, me.user.id, me.authorization_version].join(':')} items={files.items} me={me} refresh={files.reload} /> : <Empty>没有符合条件的文件。</Empty>}
       {files.next && <Action secondary loading={files.moreBusy} onClick={() => void files.more()}>加载更多文件</Action>}
     </Section>
   </>;

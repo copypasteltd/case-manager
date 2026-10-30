@@ -1,5 +1,35 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+增量127完成四端文件批量整理：多选1至50个文件 → 固定清单 → 本人核对与近期MFA → 一次移动／回收／恢复 → 持久逐项回执。任一子操作失败，整批文件和成功证据回滚。原正式内容头与历史版本保留。
+
+使用：文件中心选择文件或“选择已加载文件”，选择批量操作并填写原因。移动另选同项目、同分类的实际目录；分析后核对完整来源／目标／路径／阻塞／有效期，再明确确认。任一相关文件（含回收站）可打开本人的批量记录。名单不从草稿恢复，切换范围后重新选择；结果不明时先核对记录。
+
+正常结构升级94→95新增不可改写的固定计划与完成证据。沿用单文件授权和事务命令，不新增管理员权限。真实Web／共享Taro H5走实际HTTP／PG；微信、抖音与Android保持完整目标，正式平台、云、模型和生产验收继续开放。当前23项（14 P0／9 P1），5项移出。
+
+当前源码检查：五个选定HTTP／PostgreSQL套件51条通过记录、Web379项及共享移动465项测试通过；全项目类型、Web／微信／抖音／Android JS构建通过。实际Web／共享H5各完成三项操作及历史回执查询。6张PNG、2条本人验证后的执行MP4及2个明确标注的三截图导览GIF已更新。旧121完整回归／runtime／开发APK与旧126证据保留原来源，不标为当前127产物；完整23项工作包及正式平台／云／模型／生产验收仍开放。
+
+[设计与使用](docs/development/127-file-batch-plans.md) · [实际验证](docs/quality/127-file-batch-verification.md) · [本轮及全部23项余项](docs/delivery/05-functional-closure-127.md)
+
+![批量文件整理实际回执](docs/media/screenshots/file-batch-web-move.png)
+
+[Web实际录屏](docs/media/videos/file-batch-web.mp4) · [共享移动实际录屏](docs/media/videos/file-batch-mobile.mp4) · [移动三场景截图导览GIF](docs/media/gifs/file-batch-mobile.gif)
+
+Increment127 completes shared four-client batch file operations: select 1–50 exact files → persisted inventory → human acknowledgement and recent MFA → atomic move/trash/untrash → durable item receipts. A late child failure rolls back every file and successful child fact. Original formal heads and content history stay fixed.
+
+Usage: select loaded files in the file center, choose an operation and provide a reason; a move additionally selects a writable actual directory in the same project and classification. Review the fixed source/target/path/retention inventory and expiry, explicitly confirm, then reopen the result from any related file, including a trashed one. Selection and verification are not restored from drafts. After an uncertain result, inspect persisted history before trying again.
+
+Normal schema94→95 upgrade adds guarded immutable plans/receipts while preserving original schema and business data. Ordinary file authority and commands remain in force. Real Web and shared Taro H5 use the native HTTP/PostgreSQL fixture; WeChat, Douyin and Android keep their full target scope. Platform, real cloud/model and production acceptance remain open: 23 packages (14 P0/9 P1) and five exclusions.
+
+Current source-bound checks passed: five selected native HTTP/PostgreSQL suites (51 pass records), 379 Web tests, 465 shared-mobile tests, workspace types and Web/WeChat/Douyin/Android JS builds. Actual Web/shared H5 each complete all three actions and reopen durable receipts. Six PNGs, two post-MFA execution MP4s and two explicit three-screenshot-tour GIFs are updated. The old121 full/runtime/development APK and126 evidence retain their original sources; they are not current127 artifacts. All 23 work packages and formal platform/cloud/model/production acceptance remain open.
+
+[Design and usage](docs/development/127-file-batch-plans.md) · [Executed checks](docs/quality/127-file-batch-verification.md) · [This increment and all 23 remaining packages](docs/delivery/05-functional-closure-127.md)
+
+[Actual Web recording](docs/media/videos/file-batch-web.mp4) · [Shared mobile recording](docs/media/videos/file-batch-mobile.mp4) · [Three-scenario screenshot-tour GIF](docs/media/gifs/file-batch-mobile.gif)
+
+## 已发布历史 / Published history
+
+### Increment126 · 原已发布费用付款核销
+
 增量126接通“已确认费用 → 核对实际付款 → 一次登记与核销 → 资金详情／费用余额”。支持供应方部分核销、人工异币和准确批准员工垫付报销。付款总额与本次核销额独立填写，多余款保留未分配；原费用金额保持。一个PG事务组合普通资金创建、登记和分配，最后失败完整撤销业务写入。
 
 使用：费用详情 → “登记付款并核销费用” → 填实际时间／总额／币种／核销额 → 选择同一供应方或已关联批准垫付明细 → 固定付款凭证 → 明确核对并验证本人 → 确认 → 核对资金分配历史与费用待结余额。异币另填费用原币额、实际汇率与来源。页面不预填实际金额、不发起银行转账、不自动完成业务。
@@ -20,13 +50,14 @@ Usage: expense details → record actual payment and settle → enter actual Hon
 
 Web and shared WeChat/Douyin/Android pin the exact cost version/revision/hash and validate the full compound receipt. Mobile drafts restore bounded text only, isolated by current actor authority and exact expense basis; payee/claim/evidence selection, MFA and acknowledgements require fresh review. Schema94 stays unchanged. Company policy, complete business journeys and formal platform/cloud/model/production acceptance remain open.
 
-[Design and usage](docs/development/126-cost-payment-settlement.md) · [Executed checks](docs/quality/126-cost-payment-verification.md) · [Current work and all23 remaining packages](docs/delivery/05-functional-closure-126.md)
+[Design and usage](docs/development/126-cost-payment-settlement.md) · [Executed checks](docs/quality/126-cost-payment-verification.md) · [Current work and all 23 remaining packages](docs/delivery/05-functional-closure-126.md)
 
 Current source-bound checks passed: nine selected native HTTP/PostgreSQL suites (140 pass records), 352 Web tests, 438 shared-mobile tests, workspace types and Web/WeChat/Douyin/Android JS builds. Real Web/H5 each exercise supplier HKD60/40 allocation, USD13/6.50 cash allocation against HKD50, and employee HKD30/25 allocation; original expenses stay HKD300. MP4 records only the first post-MFA flow; GIF explicitly tours three actual screenshots. The old121 full/runtime/development APK and125 evidence keep their original binding, rather than becoming current artifacts. All23 packages and five exclusions remain explicit under the [current scope](docs/delivery/04-current-scope-and-acceptance.md).
 
 [Actual Web recording](docs/media/videos/cost-payment-web.mp4) · [Shared mobile recording](docs/media/videos/cost-payment-mobile.mp4) · [Screenshot-tour GIF](docs/media/gifs/cost-payment-mobile.gif)
 
-## 已发布历史 / Published history
+
+
 
 增量125接通“批准合同／采购／报销 → 核对实际发生 → 费用确认与准确来源关联 → 实际报表”。员工在业务详情填写实际金额、日期、固定供应方、凭证和项目／公司分摊，明确核对并验证本人后，一次提交；失败完整回滚。批准金额不会自动生成费用，付款另行登记。
 

@@ -5817,6 +5817,91 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/file-batch-plans": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** createFileBatchPlan */
+        post: operations["createFileBatchPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/file-batch-plans/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFileBatchPlan */
+        get: operations["readFileBatchPlan"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/file-batch-plans/{id}/execute": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** executeFileBatchPlan */
+        post: operations["executeFileBatchPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/file-batch-plans/{id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** cancelFileBatchPlan */
+        post: operations["cancelFileBatchPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/files/{id}/batch-plans": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listFileBatchPlans */
+        get: operations["listFileBatchPlans"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -14028,6 +14113,92 @@ export interface components {
         ScopeTransferListResponse: {
             data: {
                 items: components["schemas"]["ScopeTransfer"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        FileBatchSelection: {
+            /** Format: uuid */
+            id: string;
+            expected_version: number;
+            current_version_id: string | null;
+        };
+        FileBatchTarget: {
+            /** Format: uuid */
+            id: string;
+            expected_version: number;
+        };
+        FileBatchCreate: {
+            /** @enum {string} */
+            action: "move" | "trash" | "restore";
+            files: components["schemas"]["FileBatchSelection"][];
+            target: components["schemas"]["FileBatchTarget"] | null;
+            reason: string;
+        };
+        FileBatchDecision: {
+            expected_version: number;
+            plan_hash: string;
+            reason: string;
+            /** @constant */
+            acknowledged: true;
+        };
+        FileBatchFile: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            name: string;
+            /** Format: uuid */
+            folder_id: string;
+            project_id: string | null;
+            creator_id: string | null;
+            /** @enum {string} */
+            classification: "internal" | "project_restricted" | "confidential";
+            current_version_id: string | null;
+            /** @enum {string} */
+            state: "active" | "trashed";
+        };
+        FileBatchItem: {
+            file: components["schemas"]["FileBatchFile"];
+            path: components["schemas"]["AgentOrganizationEntry"][];
+            retention_held: boolean;
+            blocking_reasons: ("file_state_changed" | "project_read_only" | "retention_hold" | "already_in_target" | "name_conflict")[];
+        };
+        FileBatchDestination: {
+            folder: components["schemas"]["AgentOrganizationEntry"];
+            path: components["schemas"]["AgentOrganizationEntry"][];
+        };
+        FileBatchSnapshot: {
+            items: components["schemas"]["FileBatchItem"][];
+            target: components["schemas"]["FileBatchDestination"] | null;
+        };
+        FileBatchPlan: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** @enum {string} */
+            state: "pending" | "executed" | "cancelled";
+            /** Format: uuid */
+            creator_id: string;
+            input: components["schemas"]["FileBatchCreate"];
+            snapshot: components["schemas"]["FileBatchSnapshot"];
+            plan_hash: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            expires_at: string;
+            completed_at: string | null;
+            decision_reason: string | null;
+            results: components["schemas"]["FileBatchFile"][];
+            current_basis_matches: boolean;
+            can_execute: boolean;
+        };
+        FileBatchPlanResponse: {
+            data: components["schemas"]["FileBatchPlan"];
+            meta: components["schemas"]["Meta"];
+        };
+        FileBatchPlanListResponse: {
+            data: {
+                items: components["schemas"]["FileBatchPlan"][];
                 next_cursor: string | null;
             };
             meta: components["schemas"]["Meta"];
@@ -30370,6 +30541,204 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ScopeTransferListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createFileBatchPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FileBatchCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileBatchPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFileBatchPlan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileBatchPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    executeFileBatchPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FileBatchDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileBatchPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    cancelFileBatchPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FileBatchDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileBatchPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listFileBatchPlans: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileBatchPlanListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

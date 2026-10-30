@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## Increment127 · 固定清单文件批量整理 / Human batch file plans
+
+- Web／共享微信／抖音／Android：1至50个文件明确多选、同范围移动、回收、恢复，实际目录选择与逐项固定清单。
+- 本人当前会话／近期MFA／明确确认；原文件授权、路径、修订、正式头、保留锁、名称空间及授权版本再次核对。
+- 一个PG事务组合普通文件命令；迟发子失败完整回滚，准确幂等重放、持久回执、来源文件重新发现和明确撤销。
+- Normal migration94→95 adds guarded immutable inventory and decision evidence; prior migrations, file history, OA/finance facts and shared namespaces are preserved.
+- Current Web/mobile regression, builds, owned Web/H5 journeys, screenshots, post-verification MP4 and labelled three-screenshot GIF tours. Android JS/source review is separate from retained121 APK and formal production acceptance.
+- [设计与使用](development/127-file-batch-plans.md) · [验证](quality/127-file-batch-verification.md) · [所有23项余项](delivery/05-functional-closure-127.md)。
+
+
 ## Increment126 · 费用付款核销 / Cost payment settlement
 
 - 四端费用详情新增人工付款核销入口，固定费用版本／修订／摘要及范围；独立实际付款总额、部分核销、未分配资金、准确供应方及正式凭证。

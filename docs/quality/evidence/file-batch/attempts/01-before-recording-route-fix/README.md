@@ -1,0 +1,1 @@
+Initial owned Web capture stopped before browser launch because the new file-route recorder regex did not parse. Native fixture exited normally, its database was dropped, temporary servers stopped and private fixture removed. This is a failed preparation attempt, not UI acceptance. The final capture uses the corrected explicit file route.

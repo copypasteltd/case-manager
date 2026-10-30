@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T16:41:41.735844+00:00",
+  "encoder_script_sha256": "4edad268e70478230556711c862fbcaeda9d2284f94ee92df1fccf1fa1f312eb",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "406c398629439b5f320841432385301612aca348d26a61c777a70385c4c1800e",
+      "build_source_sha256": "a35897534e0aad2667868db8204f7575983de0547094cb5048149edd3071e778",
+      "capture_manifest": "docs/quality/evidence/file-batch/web-capture-manifest.json",
+      "capture_manifest_sha256": "2f0b6e491f0cbef87558531028e9ea6bc246a0858904d70301c981990bad3262",
+      "capture_frame_count": 11,
+      "capture_duration_ms": 2553,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/file-batch-web-move.png",
+          "sha256": "2da17b2fc038bccf6e70d09a1b298ce8c9ef592007d595e2b7474c190738806e"
+        },
+        {
+          "file": "docs/media/screenshots/file-batch-web-trash.png",
+          "sha256": "75eba62edb7b5dbc795b79efee54c490f1a22bf095942afaaa21e7db12df8e79"
+        },
+        {
+          "file": "docs/media/screenshots/file-batch-web-restore.png",
+          "sha256": "0e70012d043caa8a2b177030efcf70225b2b65837204ed18404096a5c43ea307"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "27",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/file-batch-web.mp4",
+          "sha256": "4af28cd3dc8919e04962d3f3e43cfa2da25bce9ce53875a89e07d2efeec38cb7",
+          "bytes": 144685
+        },
+        {
+          "file": "docs/media/gifs/file-batch-web.gif",
+          "sha256": "d87c0f76483ba3254bdd7ad45d245cbf70032cbe47e744756bae862998c509b8",
+          "bytes": 202313
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "57fe20225c193c3fd56fd84f02f46c58a87f01736ace8b411c620c5221d0e556",
+      "build_source_sha256": "a35897534e0aad2667868db8204f7575983de0547094cb5048149edd3071e778",
+      "capture_manifest": "docs/quality/evidence/file-batch/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "4f358cb8587554ccefdbd952670b80eda42492d0b78e2b8f2e571b78096d4869",
+      "capture_frame_count": 10,
+      "capture_duration_ms": 2044,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/file-batch-mobile-move.png",
+          "sha256": "567173bc23391dfd17cd840262dde01bfb2d9c7fa3437a3c2e60e77c924fb2a0"
+        },
+        {
+          "file": "docs/media/screenshots/file-batch-mobile-trash.png",
+          "sha256": "f9e0f0c429f4ddbce159e5856660dd3db6e792fe93a54f9f7a744cfdf1c61b89"
+        },
+        {
+          "file": "docs/media/screenshots/file-batch-mobile-restore.png",
+          "sha256": "3fe960e93fb0d1c0bce08c1d0abb2f704c356bf38523f6977c9bfac1df2081b5"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "22",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/file-batch-mobile.mp4",
+          "sha256": "170d6218f23ee2f95b1cdb5702a26c15807aed8b8e9bbcb9c953db559736d7bf",
+          "bytes": 70904
+        },
+        {
+          "file": "docs/media/gifs/file-batch-mobile.gif",
+          "sha256": "969490c6c7688f8e34bc6d6f3be85677f1458e5285f43d38b22efa5c288e0ad7",
+          "bytes": 66542
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic fixed-inventory file move, trash and restore on Web/H5. MP4 records the first batch move execution and receipt using real viewport pixels after MFA; GIF explicitly tours three actual action receipt screenshots. Formal content heads and history remain unchanged. No credentials, physical device, real cloud, model or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/file-batch-web-move.png",
+      "sha256": "2da17b2fc038bccf6e70d09a1b298ce8c9ef592007d595e2b7474c190738806e"
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-web-trash.png",
+      "sha256": "75eba62edb7b5dbc795b79efee54c490f1a22bf095942afaaa21e7db12df8e79"
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-web-restore.png",
+      "sha256": "0e70012d043caa8a2b177030efcf70225b2b65837204ed18404096a5c43ea307"
+    },
+    {
+      "file": "docs/media/videos/file-batch-web.mp4",
+      "sha256": "4af28cd3dc8919e04962d3f3e43cfa2da25bce9ce53875a89e07d2efeec38cb7",
+      "bytes": 144685
+    },
+    {
+      "file": "docs/media/gifs/file-batch-web.gif",
+      "sha256": "d87c0f76483ba3254bdd7ad45d245cbf70032cbe47e744756bae862998c509b8",
+      "bytes": 202313
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-mobile-move.png",
+      "sha256": "567173bc23391dfd17cd840262dde01bfb2d9c7fa3437a3c2e60e77c924fb2a0"
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-mobile-trash.png",
+      "sha256": "f9e0f0c429f4ddbce159e5856660dd3db6e792fe93a54f9f7a744cfdf1c61b89"
+    },
+    {
+      "file": "docs/media/screenshots/file-batch-mobile-restore.png",
+      "sha256": "3fe960e93fb0d1c0bce08c1d0abb2f704c356bf38523f6977c9bfac1df2081b5"
+    },
+    {
+      "file": "docs/media/videos/file-batch-mobile.mp4",
+      "sha256": "170d6218f23ee2f95b1cdb5702a26c15807aed8b8e9bbcb9c953db559736d7bf",
+      "bytes": 70904
+    },
+    {
+      "file": "docs/media/gifs/file-batch-mobile.gif",
+      "sha256": "969490c6c7688f8e34bc6d6f3be85677f1458e5285f43d38b22efa5c288e0ad7",
+      "bytes": 66542
+    }
+  ]
+}
