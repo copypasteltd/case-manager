@@ -1,0 +1,83 @@
+{
+  "after_schema": 93,
+  "before_schema": 92,
+  "facts": {
+    "actual_cost_entries": {
+      "rows": 12,
+      "hash": "1e8b37f5bb4c19e2b783b89763d01529"
+    },
+    "agent_budget_policies": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "contract_revisions": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "contracts": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "cost_revisions": {
+      "rows": 12,
+      "hash": "3fbfb947d32b53656360a4f0b281ba3c"
+    },
+    "file_replicas": {
+      "rows": 4,
+      "hash": "63faaaea937f5d863747005124608496"
+    },
+    "file_versions": {
+      "rows": 2,
+      "hash": "24355c96134bf7fb874d7193e4f09492"
+    },
+    "payment_allocation_shares": {
+      "rows": 34,
+      "hash": "90b97daccf3726228886571c59af5ade"
+    },
+    "payment_allocations": {
+      "rows": 26,
+      "hash": "e628ddbfc514d04ac2086a3bfaa50fc0"
+    },
+    "payment_events": {
+      "rows": 59,
+      "hash": "f98170d5d6d8a0058a701b8ead7a6696"
+    },
+    "payment_records": {
+      "rows": 19,
+      "hash": "aa68ce1195863b45e2b8eca0eba40608"
+    },
+    "payment_revisions": {
+      "rows": 19,
+      "hash": "1c679f48acd9ad431a1cd30bdc742331"
+    }
+  },
+  "new_confirmation_defaults_false": true,
+  "new_principal_matches_legacy_cash": true,
+  "original_facts_unchanged": true,
+  "passed": true,
+  "checked_at": "2026-10-30T05:29:46.634118+00:00",
+  "source_sha256": "84f6891c166493aeb2b8a480cc161bdee57e53be98200ecda06dfe63760f42b4",
+  "published_fixture_commit": "794406d51cad29ba66ff8d8cc7385b6441edb2e5",
+  "prior_checkout_archive_sha256": "155208ece32802185f1103d73a6fc5f9764d116eec98139bd7ae84851917a90a",
+  "original_test_sha256": "2abce5ae58f730689ec44546f3b570e04fe40aeaeb5219698226c5525a180c15",
+  "adapted_test_sha256": "90637f2de82314791884d503c03fb14bb9b29abda0f6e7a2cbca588cb70e25cd",
+  "adaptation": "Append only an end-of-journey schema92 to93 assertion; prior finance cases remain unchanged.",
+  "actual_current_migrator_sha256": "40a560d1fe85aacc80c7c5e4edd8a89af78199ddff77e27e601d029f9bdc367e",
+  "raw_log_sha256": "0b774b23254861231ae9c2bb841f3ed073ce85cbe17411d88054c92995401f72",
+  "prior_fixture_case_records": 16,
+  "counts_as_current_backend_tests": false,
+  "verification_script_sha256": "608a2dac627d5e483a4cc58c5a89877edb8b6188ef25a858b55bef22e41392bb",
+  "raw_log": "ignored app/.local/refund-fx-upgrade.log"
+}

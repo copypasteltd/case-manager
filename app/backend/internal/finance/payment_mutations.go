@@ -134,8 +134,8 @@ func lockPaymentRelated(ctx context.Context, tx pgx.Tx, a core.Actor, p Payment,
 	return nil
 }
 func paymentEvent(ctx context.Context, tx pgx.Tx, a core.Actor, p Payment, kind, reason string, allocation *string) error {
-	tag, err := tx.Exec(ctx, `INSERT INTO payment_events(id,org_id,payment_id,payment_version,revision_id,kind,state,allocation_id,actor_id,session_id,mfa_verified_at,reason)
-        SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,s.id,s.mfa_verified_at,$10 FROM sessions s WHERE s.org_id=$2 AND s.id=$11 AND s.user_id=$9`, core.NewID(), a.OrgID, p.ID, p.Version, p.CurrentRevisionID, kind, p.State, allocation, a.UserID, reason, a.SessionID)
+	tag, err := tx.Exec(ctx, `INSERT INTO payment_events(id,org_id,payment_id,payment_version,revision_id,kind,state,allocation_id,actor_id,session_id,mfa_verified_at,reason,refund_fx_acknowledged)
+        SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,s.id,s.mfa_verified_at,$10,$12 FROM sessions s WHERE s.org_id=$2 AND s.id=$11 AND s.user_id=$9`, core.NewID(), a.OrgID, p.ID, p.Version, p.CurrentRevisionID, kind, p.State, allocation, a.UserID, reason, a.SessionID, kind == "recorded" && p.RefundFX != nil)
 	if err == nil && tag.RowsAffected() != 1 {
 		return core.Forbidden()
 	}
@@ -370,7 +370,17 @@ func (s *Service) RecordPayment(ctx context.Context, cmd core.Command, id string
 				return core.Result{}, err
 			}
 			if original.State != "recorded" || original.RecordKind != "payment" || value(original.Direction) != "outgoing" || !samePaymentIdentity(p, original) || in.ExpectedSourceVersion == nil || *in.ExpectedSourceVersion != original.Version {
-				return core.Result{}, core.Fail(409, "REFUND_SOURCE_CHANGED", "请重新核对未冲销原付款、收款人、币种、范围和版本")
+				return core.Result{}, core.Fail(409, "REFUND_SOURCE_CHANGED", "请重新核对未冲销原付款、收款人、范围和版本")
+			}
+			cross := value(p.Currency) != value(original.Currency)
+			if cross && (p.RefundFX == nil || p.RefundFX.OriginalCurrency != value(original.Currency) || !in.RefundFXAcknowledged) {
+				return core.Result{}, core.Invalid("refund_fx", "异币退款须固定原付款本金及实际汇率依据，并在登记时重新人工确认")
+			}
+			if !cross && (p.RefundFX != nil || in.RefundFXAcknowledged) {
+				return core.Result{}, core.Invalid("refund_fx", "同币退款不接受异币依据或确认")
+			}
+			if cross && len(in.RefundAllocations) != 0 {
+				return core.Result{}, core.Fail(409, "REFUND_FX_ALLOCATION_UNSUPPORTED", "异币退款当前仅使用原付款未分配本金，不接受费用回转分配")
 			}
 			paid, _ := time.Parse(time.RFC3339Nano, value(p.PaidAt))
 			previous, _ := time.Parse(time.RFC3339Nano, value(original.PaidAt))
@@ -390,7 +400,7 @@ func (s *Service) RecordPayment(ctx context.Context, cmd core.Command, id string
 			if err = checkPaymentFunding(ctx, tx, cmd.Actor.OrgID, original, p); err != nil {
 				return core.Result{}, err
 			}
-		} else if len(in.RefundAllocations) != 0 || in.ExpectedSourceVersion != nil {
+		} else if len(in.RefundAllocations) != 0 || in.ExpectedSourceVersion != nil || in.RefundFXAcknowledged {
 			return core.Result{}, core.Invalid("refund_allocations", "仅退款登记可以指定原付款及退款分配")
 		}
 		p.State = "recorded"
@@ -409,7 +419,7 @@ func checkPaymentFunding(ctx context.Context, db platform.DBTX, org string, orig
 	reserved, _ := core.ParseDecimal(original.ContractReturnReservedAmount)
 	extra := core.Decimal{}
 	if pending.ID != "" {
-		extra, _ = core.ParseDecimal(value(pending.Amount))
+		extra, _ = core.ParseDecimal(refundPrincipal(pending))
 	}
 	if refunds.Add(extra).Cmp(amount) > 0 || allocated.Add(reserved).Cmp(amount.Sub(refunds).Sub(extra)) > 0 {
 		return core.Fail(409, "PAYMENT_BALANCE_EXCEEDED", "退款或分配超过原付款当前可用余额，请同时释放相应费用分配")

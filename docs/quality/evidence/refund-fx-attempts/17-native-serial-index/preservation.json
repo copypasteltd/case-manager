@@ -1,0 +1,27 @@
+{
+  "counts_as_current_pass": false,
+  "android_build_completed": false,
+  "reason": "Single-worker file-map hashing was progressing through 61,978 real files (11,155 observed completed), without outstanding async filesystem requests. Stop to use four actual index/transform workers after the checkout filesystem bridge; no app inputs, resolution or hash checks are omitted. Only owned native build processes were stopped.",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-attempts/17-native-serial-index/bundle.log",
+      "sha256": "dc9e7bc83f6fd3d202aff093e00b623b5301df68b72d21ff5bf9ed6518b1756b"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/17-native-serial-index/refund_fx-android-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/17-native-serial-index/refund-fx-fs-diagnostic.cjs",
+      "sha256": "d42b602414bcacd1d60ac45dce52f48f92f7141045fee0c65e90822a90db1038"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/17-native-serial-index/refund-fx-metro.config.cjs",
+      "sha256": "59cb479c33986ec7351181b00202ba21d646bd687c502d7f8fe76ffe6ef7e6f3"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/17-native-serial-index/build_refund_fx_android.py",
+      "sha256": "2a1d34d7e6e1c31b7ce8142bf1f3c65044000463f93ab41ec48026b3a0103d64"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T05:26:51.196Z",
+  "finished_at": "2026-10-30T05:27:18.242Z",
+  "checks": [
+    "Human login and MFA completed before any capture.",
+    "Actual draft UI rejects a rate that does not reproduce actual received cash.",
+    "Actual editor persists distinct HKD original principal and USD refund cash with pinned statement provenance."
+  ],
+  "source_count": 867,
+  "source_sha256": "8d656dc71f85570edd3966c0c96a1246f940e0e825ecacd4f6b052627c0896dd",
+  "source_after_sha256": "8d656dc71f85570edd3966c0c96a1246f940e0e825ecacd4f6b052627c0896dd",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.isDisabled: Error: strict mode violation: getByRole('button', { name: '登记实际资金', exact: true }) resolved to 2 elements:\n    1) <button class=\"button primary\">登记实际资金</button> aka getByRole('button', { name: '登记实际资金' }).first()\n    2) <button disabled class=\"button primary\">登记实际资金</button> aka getByLabel('登记实际资金').getByRole('button', { name: '登记实际资金' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '登记实际资金', exact: true })\u001b[22m\n",
+  "failure_stack": "locator.isDisabled: Error: strict mode violation: getByRole('button', { name: '登记实际资金', exact: true }) resolved to 2 elements:\n    1) <button class=\"button primary\">登记实际资金</button> aka getByRole('button', { name: '登记实际资金' }).first()\n    2) <button disabled class=\"button primary\">登记实际资金</button> aka getByLabel('登记实际资金').getByRole('button', { name: '登记实际资金' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '登记实际资金', exact: true })\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_refund_fx.mjs:52:39\n    at async refund_fxBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\refund_fx_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_refund_fx.mjs:13:1",
+  "failure_context": {
+    "pathname": "/payments/a8e23a29-32ff-4633-8a24-1e407542e764",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "refund_fx_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "fc4d8014c6e7fcd87de9eb0b077cbda24225260637d2e73e251faa66a986e2fc",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "fc4d8014c6e7fcd87de9eb0b077cbda24225260637d2e73e251faa66a986e2fc",
+  "build_source_unchanged": true
+}

@@ -74,7 +74,7 @@ func paymentBalances(ctx context.Context, db platform.DBTX, org string, p *Payme
 		if d, err := core.ParseDecimal(reserved); err == nil {
 			p.ContractReturnReservedAmount = d.String()
 		}
-		if err := db.QueryRow(ctx, `SELECT COALESCE(sum(v.amount),0)::text FROM payment_records q JOIN payment_revisions v ON v.org_id=q.org_id AND v.id=q.current_revision_id WHERE q.org_id=$1 AND v.refund_of_id=$2 AND q.state='recorded' AND q.record_kind='payment'`, org, p.ID).Scan(&p.RefundedAmount); err != nil {
+		if err := db.QueryRow(ctx, `SELECT COALESCE(sum(v.refund_original_amount),0)::text FROM payment_records q JOIN payment_revisions v ON v.org_id=q.org_id AND v.id=q.current_revision_id WHERE q.org_id=$1 AND v.refund_of_id=$2 AND q.state='recorded' AND q.record_kind='payment'`, org, p.ID).Scan(&p.RefundedAmount); err != nil {
 			return err
 		}
 	}
@@ -109,7 +109,7 @@ func presentPayment(ctx context.Context, db platform.DBTX, a core.Actor, p Payme
 	write := a.RunID == "" && paymentProjectLocks(ctx, db, a, p, nil, false) == nil
 	p.CanEdit = write && p.State == "draft" && authz.Require(ctx, db, a, "payment.record", paymentResource(p)) == nil
 	p.CanRecord = p.CanEdit
-	p.CanAllocate = write && p.State == "recorded" && p.RecordKind == "payment" && slices.Contains([]string{"outgoing", "refund"}, value(p.Direction)) && authz.Require(ctx, db, a, "payment.record", paymentResource(p)) == nil
+	p.CanAllocate = p.RefundFX == nil && write && p.State == "recorded" && p.RecordKind == "payment" && slices.Contains([]string{"outgoing", "refund"}, value(p.Direction)) && authz.Require(ctx, db, a, "payment.record", paymentResource(p)) == nil
 	p.CanReverse = write && p.State == "recorded" && p.RecordKind == "payment" && p.RefundedAmount == "0.000000" && authz.Require(ctx, db, a, "payment.reverse", paymentResource(p)) == nil
 	if p.CanReverse {
 		blocked, err := paymentHasContractReturns(ctx, db, a.OrgID, p.ID)

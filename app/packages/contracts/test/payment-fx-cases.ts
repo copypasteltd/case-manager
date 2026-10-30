@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { allocationFXReceipt, checkedDualAllocation, inversePaymentFX, reviewedPaymentFX, type DualAllocation } from '../src/payment-fx';
+import { allocationFXReceipt, checkedDualAllocation, inversePaymentFX, reviewedPaymentFX, reviewedRefundFX, refundFXEqual, type DualAllocation } from '../src/payment-fx';
 import type { components } from '../src/api';
 type Schemas = components['schemas'];
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
@@ -8,6 +8,11 @@ const payment = { currency: 'HKD' } as Schemas['Payment'], cost = { currency: 'U
 const fx = (): Schemas['PaymentFXInput'] => ({ cost_amount: '100', rate: '7.8', source: '人工核对的银行结算', acknowledged: true });
 type Case = readonly [string, () => void];
 export const paymentFXCases: readonly Case[] = [
+ ['foreign refund quote links actual cash to principal without a reporting book', () => { const q = reviewedRefundFX('HKD', 'USD', '780', '100', '0.1282051282', ' bank refund '); assert.deepEqual(q, { original_currency: 'HKD', original_amount: '780', rate: '0.1282051282', source: 'bank refund' }); assert.equal(refundFXEqual({...q, original_amount:'780.000000'},q),true); }],
+ ['foreign refund rounds once at actual cash precision including JPY', () => { assert.equal(reviewedRefundFX('HKD','JPY','1','1','0.5','bank').original_amount,'1'); assert.equal(reviewedRefundFX('HKD','USD','0.01','0.01','0.5','bank').rate,'0.5'); }],
+ ['foreign refund rejects reversed rate invalid precision and invented provenance', () => { for(const values of [['HKD','USD','780','100','7.8','bank'],['HKD','HKD','780','780','1','bank'],['JPY','USD','0.1','1','10','bank'],['HKD','USD','780','100','0.1282051282','bank\u200b'],['HKD','USD','780','100','0.1282051282','']]) assert.throws(()=>reviewedRefundFX(...values as [string,string,string,string,string,string])); }],
+ ['foreign refund receipt preserves exact principal currency rate and source', () => { const q=reviewedRefundFX('HKD','USD','780','100','0.1282051282','bank'); for(const bad of [{...q,original_currency:'CNY'},{...q,original_amount:'779'},{...q,source:'other'},{...q,rate:'0.13'},undefined]) assert.equal(refundFXEqual(bad,q),false); assert.equal(refundFXEqual(undefined,undefined),true); }],
+
  ['quote fixes actual cost and cash units with manual provenance', () => { assert.equal(reviewedPaymentFX(payment, cost, '780', fx())?.cost_amount, '100'); assert.equal(checkedDualAllocation(fixture()).cost_currency, 'USD'); }],
  ['an acknowledgement cannot replace a positive rate matching the actual principal', () => { for (const v of [{...fx(), acknowledged: false}, {...fx(), rate: '7.7'}, {...fx(), rate:'0'}, {...fx(), source:''}, {...fx(), cost_amount:'100.001'}]) assert.throws(() => reviewedPaymentFX(payment,cost,'780',v as Schemas['PaymentFXInput'])); assert.throws(() => reviewedPaymentFX(payment,cost,'780')); }],
  ['same currency keeps the old request and refuses unnecessary quotes', () => { assert.equal(reviewedPaymentFX(payment,{...cost,currency:'HKD'},'1'), undefined); assert.throws(() => reviewedPaymentFX(payment,{...cost,currency:'HKD'},'780',fx())); }],

@@ -1,0 +1,67 @@
+{
+  "passed": false,
+  "counts_as_final_regression": false,
+  "reason": "Legacy CommonJS test compiler could not consume the new shared money validator. Owned Metro and H5 prebuilds stopped before remediation. Prior Web passed its exact earlier source only.",
+  "source_archive": "app/.local/refund-fx-preliminary/source.zip",
+  "source_archive_sha256": "8fcb52fe169dc1537e4ce86e34c0bf026c8d0ea96e06693a31dc69e99360062f",
+  "interaction_source_sha256": "b42145ad859f35e4d8317cd2ba1d0d119050d9166d18e4ec67b0506c90611b2f",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-preliminary/refund-fx-web/inbox.png",
+      "sha256": "d2096e707790f90de61fcb2385a662c519b171a8cf7f948203c167a5070d7fb2"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/refund-fx-web/media.json",
+      "sha256": "5220a9f7e5cc44b8e152d9f7e734af299de08a5f00b3b5257a36684e316ac467"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/refund-fx-web/result.json",
+      "sha256": "820a1ddaec0a8decc9317c3445cede2716a26ed7b5cd26ac60018462c66b7a03"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/refund-fx-web/source-manifest.json",
+      "sha256": "976e4ba03659c507e30491150c31ec39b7d839d36e9b194cc8a45a047606309a"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/refund-fx-mobile/result.json",
+      "sha256": "190bc2f0dc2931da3c93fb05a0b09075a30a4bfcd57cd711bcc58761f692bad3"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/client-checks.json",
+      "sha256": "56271926643d8601fe683c98602b89fa9e76d8ecc874e6861e616779f6c99c50"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund_fx-client-mobile-tests.log",
+      "sha256": "6da00e26ad111498ee3bc72c2d5f4129e18fbcc9dc331103ba1c0b0914454cad"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund_fx-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund_fx-client-web-tests.log",
+      "sha256": "8e87f1e3f2114822bd4ecac262b4980fe678ff842c5757b4f5e981b019b385de"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund-fx-web-draft.png",
+      "sha256": "cf8cb0ee08888b8bdaae8f7e9f60cbd787b7dcfd1723d07123932cf6f7a84338"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund-fx-web-recorded.png",
+      "sha256": "b4035434b421bb9fae124c244a7e007e372a0eb07c6c0eea192496ec45ec080c"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund-fx-web-reversed.png",
+      "sha256": "9d1589ae43e7e3a6e6164b28d843d077fa2b41ba52740cf2c3a5b83b574fc839"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/bundle.log",
+      "sha256": "0a93abc8869c189bea633717fb86ade5cb3015c9005ec39c8d9ab2eceafbefc2"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/refund_fx-android-run.log",
+      "sha256": "ec503dbff8135503b72fad8819d3dc60a938a6ed17eb25fab6377d7f60fa464e"
+    }
+  ],
+  "archive_script_sha256": "754e4f52fffb014f430c6e7ee575d779604806bb8cbcd9072ffc64db49cd7b5e"
+}

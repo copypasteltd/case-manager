@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T06:01:19.351Z",
+  "finished_at": "2026-10-30T06:01:49.522Z",
+  "checks": [
+    "Human login and MFA completed before any capture.",
+    "Actual draft UI rejects a rate that does not reproduce actual received cash.",
+    "Actual editor persists distinct HKD original principal and USD refund cash with pinned statement provenance.",
+    "Fresh human confirmation is required independently of the saved quote.",
+    "Actual UI confirmation and exact HTTP replay conserve USD cash and HKD principal without creating an expense allocation.",
+    "Actual human reversal preserves the original quote and restores exactly 780 HKD principal."
+  ],
+  "source_count": 867,
+  "source_sha256": "715faa4ef8770f2e8d442c4dc90b8c16fd32912fd4f842d85afef6538bfbebfa",
+  "source_after_sha256": "715faa4ef8770f2e8d442c4dc90b8c16fd32912fd4f842d85afef6538bfbebfa",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "11a4b9a8f340dad92b63894d7942d2ef5441aba8d778da995528231946f34e59",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "11a4b9a8f340dad92b63894d7942d2ef5441aba8d778da995528231946f34e59",
+  "build_source_unchanged": true
+}

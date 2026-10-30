@@ -47073,6 +47073,35 @@
           "relation"
         ]
       },
+      "PaymentRefundFX": {
+        "type": "object",
+        "properties": {
+          "original_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "original_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "rate": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,10})?$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "original_currency",
+          "original_amount",
+          "rate",
+          "source"
+        ]
+      },
       "PaymentContent": {
         "type": "object",
         "properties": {
@@ -47185,6 +47214,9 @@
           "notes": {
             "type": "string",
             "maxLength": 20000
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
           }
         },
         "additionalProperties": false,
@@ -47316,6 +47348,9 @@
           "notes": {
             "type": "string",
             "maxLength": 20000
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
           },
           "source_key": {
             "type": "string",
@@ -47479,6 +47514,9 @@
           "notes": {
             "type": "string",
             "maxLength": 20000
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
           },
           "expected_version": {
             "type": "integer",
@@ -47649,6 +47687,9 @@
           "notes": {
             "type": "string",
             "maxLength": 20000
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
           },
           "source_key": {
             "type": "string",
@@ -47939,6 +47980,9 @@
               ]
             },
             "maxItems": 100
+          },
+          "refund_fx_acknowledged": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -48882,6 +48926,9 @@
           "notes": {
             "type": "string",
             "maxLength": 20000
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
           },
           "id": {
             "type": "string",

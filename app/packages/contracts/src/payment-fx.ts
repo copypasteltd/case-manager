@@ -20,6 +20,16 @@ function text(value: unknown): value is string { return typeof value === 'string
 // The same six supported currencies are offered by the existing financial forms.
 // Existing allocations use their recorded exponents instead of this form list.
 export function settlementExponent(currency: string | null | undefined) { if (currency === 'JPY') return 0; if (currency && ['HKD', 'CNY', 'USD', 'EUR', 'GBP'].includes(currency)) return 2; throw new Error('当前表单不支持此币种精度，请核对实际币种。'); }
+export function reviewedRefundFX(original: string, cashCurrency: string, principal: string, cash: string, rate: string, source: string): Schemas['PaymentRefundFX'] {
+  const oe = settlementExponent(original), ce = settlementExponent(cashCurrency);
+  if (original === cashCurrency || !exact(principal, oe) || units(principal) <= 0n || !exact(cash, ce) || units(cash) <= 0n || !text(source)) throw new Error('请核对异币退款原本金、实收金额、币种精度与凭证来源。');
+  if (roundedRatio(units(principal) * rateUnits(rate), 10000000000n * unitStep(ce)) * unitStep(ce) !== units(cash)) throw new Error('原付款本金乘实际汇率须按实收币种精度舍入后等于实收金额。');
+  return { original_currency: original, original_amount: principal, rate, source: source.trim() };
+}
+export function refundFXEqual(left: Schemas['PaymentRefundFX'] | undefined, right: Schemas['PaymentRefundFX'] | undefined) {
+  if (!left || !right) return left === right;
+  try { return left.original_currency === right.original_currency && units(left.original_amount) === units(right.original_amount) && rateUnits(left.rate) === rateUnits(right.rate) && left.source === right.source.trim(); } catch { return false; }
+}
 export function reviewedPaymentFX(payment: Schemas['Payment'], cost: Schemas['Cost'], cash: string, input?: Schemas['PaymentFXInput']): Schemas['PaymentFXInput'] | undefined {
   const pe = settlementExponent(payment.currency), ce = settlementExponent(cost.currency);
   if (!exact(cash, pe) || units(cash) <= 0n) throw new Error('请填写准确付款币本金与精度。');

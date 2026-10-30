@@ -1,0 +1,33 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/refund-fx-web-draft.png",
+      "sha256": "186aeaf95ea1becc5de9c24e13491535c7c8207b9c7da16e2f0ba5b1a584a8ee"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-web-recorded.png",
+      "sha256": "fcdefbe36412ac62449ec36d8bf982011119808e5c5db96dc14690953a24e675"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-web-reversed.png",
+      "sha256": "c05f15a902a3ecab336079bdaed265a6a4842146831b60f028d5e70caee23287"
+    }
+  ],
+  "recording": {
+    "name": "refund-fx-web",
+    "frame_count": 20,
+    "duration_ms": 4222,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/refund-fx-web-1793340091040-12808/frames.json",
+    "manifest_sha256": "a763cdd387d2596a97a0b7c2bf7fc749d54bdf47c142858c5e12022dacc642c2"
+  },
+  "synthetic_data": true,
+  "real_device": false,
+  "real_model": false,
+  "api_responses_mocked": false,
+  "fixture_reused_from": "dedicated TestActualForeignRefunds with native PG"
+}

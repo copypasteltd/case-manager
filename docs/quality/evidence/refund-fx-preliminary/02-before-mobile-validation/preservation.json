@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-10-30T05:51:43.709523+00:00",
+  "counts_as_current_pass": false,
+  "earlier_client_commands_passed": 8,
+  "earlier_mobile_tests": 413,
+  "android_attempt": "Owned Metro deliberately stopped before application inputs changed; no completed native build claim.",
+  "development_inspection": "Earlier inspection correctly failed two stale verifier assertions; no database change is needed.",
+  "source_sha256": "75b30e6fc1fe14175ab3d938aa715434cbbf40bff064a7616f948a906d585512",
+  "private_source_archive": "app/.local/refund-fx-preliminary/02-before-mobile-validation/source.zip",
+  "private_source_archive_sha256": "6208ce841bd63280a61dac0b374b8f777600f95936e918bc6c87b30d493f1941",
+  "records": [
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/02-before-mobile-validation/client-checks.json",
+      "sha256": "43c1f7a87418d1f8272a83934dac97850291640aec8e9470c048c46fc89bf9a0"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/02-before-mobile-validation/web-build.json",
+      "sha256": "e6164da3f38aeb1ec6741e983cdc4ab444eb564bd94111762c76005d5c37dea7"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/02-before-mobile-validation/mobile-build.json",
+      "sha256": "372212b739e6868dcd51befe7d4dd58f517b05d047b42caa86a50212e0b37702"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/02-before-mobile-validation/runtime-build.json",
+      "sha256": "6e7e5715d966b3511227524841ff052161f357b19694594e56bf2bc793a515dd"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/02-before-mobile-validation/development-project-resources.json",
+      "sha256": "e07fbc71f04515127f810457b2ba12a9388ac10fec0099345d45f57d4915c5ea"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-preliminary/02-before-mobile-validation/development-runtime.json",
+      "sha256": "0d7f94160f79d8b91421d788c116ae16e16f41a3f2b9db7ad122279ffb4e42ca"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-douyin-build.log",
+      "sha256": "204d9d059be16a851b5da86a90d16e96353285a12b5cb9ad898be60f752f155b"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-mobile-tests.log",
+      "sha256": "a216d5507c616bce4466812a0c527c8e116d5144a667418a7325f247dab503e9"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-runtime-build.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-runtime-tests.log",
+      "sha256": "3b3ceb0b0039db73414bc6ab1c40b2d3988f27736a14b118754c72d5beb91c62"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-web-build.log",
+      "sha256": "e45cbe5158c8e5591c8b1bf30fcb245bf5bb56a2e5047dbd13b61e48a2f7268a"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-web-tests.log",
+      "sha256": "c6a9dbf4d84e5fe3056030eff61b416bfd83001d7882c4051cee837c3a6b0edd"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-client-wechat-build.log",
+      "sha256": "88337b412957014062a9942810034aff6dd51e52d451676e16b3b41832770bde"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-skill-check.log",
+      "sha256": "aac5b0d87b345b347fb5abb1bcefa2327b67f64f6faf2bd83ed1408da3aaf975"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/refund_fx-android-final.log",
+      "sha256": "ec503dbff8135503b72fad8819d3dc60a938a6ed17eb25fab6377d7f60fa464e"
+    },
+    {
+      "file": "app/.local/refund-fx-preliminary/02-before-mobile-validation/bundle.log",
+      "sha256": "47eab0f12dfa3d547009bf205266cccb5741bc0f76980fcb0bca8900efb6039c"
+    }
+  ],
+  "archive_script_sha256": "931e489d8255e2b5e78f9b5c4bdbea3bdf17dbbfed5003bcc2fbaafb86441f43"
+}

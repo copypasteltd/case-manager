@@ -1,0 +1,23 @@
+{
+  "counts_as_current_pass": false,
+  "android_build_completed": false,
+  "reason": "Native asynchronous Windows junction readlink requests stalled; independent readlink on the same actual target completed in32ms. Keep full diagnostic before scoped synchronous filesystem bridge.",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-attempts/13-native-link-bridge/bundle.log",
+      "sha256": "596f7a5be7005eab6c594c75a68f133138942446478fcb4a4a9c54441f296a1b"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/13-native-link-bridge/refund-fx-fs-diagnostic.cjs",
+      "sha256": "0b9f023ddc030a13d83a4274e4e9d81ee5496a7c495e7902fda1289d5366f6ad"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/13-native-link-bridge/refund_fx-android-final.log",
+      "sha256": "ec503dbff8135503b72fad8819d3dc60a938a6ed17eb25fab6377d7f60fa464e"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/13-native-link-bridge/build_refund_fx_android.py",
+      "sha256": "4223dbcafb3dfab7eae28a2c53ee38ba8d513e4da98fd1a1c8f4a8b87c2be3c9"
+    }
+  ]
+}

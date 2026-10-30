@@ -24,13 +24,16 @@ def sources():
     for directory in ('mobile/src', 'mobile/config', 'mobile/native', 'mobile/android', 'packages/contracts/src', 'packages/design/src',
                       'packages/archive-extraction', 'packages/image-size-compat', 'packages/latest-version-compat', 'packages/template-download',
                       'packages/template-minifier', 'packages/dev-server-compat', 'packages/deepmerge-safe', 'packages/uri-decoder-compat'):
-        for path in (APP / directory).rglob('*'):
-            relative = path.relative_to(APP)
-            if not path.is_file() or any(part in ('build', '.gradle', 'node_modules', 'assets') for part in relative.parts):
-                continue
-            if path.name == 'local.properties' or path.suffix in ('.jks', '.keystore', '.log') or any(part.startswith('drawable-') for part in relative.parts):
-                continue
-            names.add(relative.as_posix())
+        # Prune the existing exclusions before walking them. Generated Gradle
+        # trees and dependency folders can contain many files; none of those
+        # bytes belonged to this manifest under the previous implementation.
+        for current, directories, files in os.walk(APP / directory, followlinks=False):
+            directories[:] = [name for name in directories if name not in ('build', '.gradle', 'node_modules', 'assets') and not name.startswith('drawable-')]
+            for name in files:
+                path = Path(current) / name
+                if not path.is_file() or name == 'local.properties' or path.suffix in ('.jks', '.keystore', '.log'):
+                    continue
+                names.add(path.relative_to(APP).as_posix())
     value = hashlib.sha256()
     for name in sorted(names):
         value.update(name.encode() + b'\0' + (APP / name).read_bytes() + b'\0')

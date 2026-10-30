@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-30T05:48:46.270719+00:00",
+  "source_sha256": "ea03966484c7a9134d95531f571c56c668892e6f13ca52fbcbbde871c9a0d204",
+  "source_files": 54,
+  "tests": {
+    "pass": 56,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:42:26.102020+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/refund_fx-client-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:43:08.042082+00:00",
+      "test_count": 56,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "3b3ceb0b0039db73414bc6ab1c40b2d3988f27736a14b118754c72d5beb91c62",
+      "raw_log": "ignored app/.local/refund_fx-client-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:44:23.180621+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/refund_fx-client-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "aac5b0d87b345b347fb5abb1bcefa2327b67f64f6faf2bd83ed1408da3aaf975"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "43c1f7a87418d1f8272a83934dac97850291640aec8e9470c048c46fc89bf9a0",
+    "summary_adapter_sha256": "4f053d4cb070e8adb2df144ea576517f542d9b6843f6a852289a112eabe05e9a",
+    "adapter_reran_tests": false
+  }
+}

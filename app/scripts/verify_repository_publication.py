@@ -14,6 +14,16 @@ from urllib.parse import unquote, urlsplit
 APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
 EVIDENCE = ROOT / 'docs/quality/evidence/repository-showcase'
+# An applied migration's bytes are part of its installed checksum. Permit only
+# this exact existing EOF blank line; trailing spaces and all other files keep
+# the ordinary rule. Record the exception in both candidate and staged reports.
+MIGRATION_EOF_EXCEPTIONS = {
+    'app/backend/migrations/0093_actual_foreign_refunds.sql': {
+        'sha256': '29008d3fce7a9803c19cf9f0ad1d374ed692d9f7ca1b05ff240d4fbd8e9207b0',
+        'reason': 'Preserve the already applied and source-verified schema93 checksum; EOF blank line only.',
+        'evidence': 'docs/quality/evidence/refund-fx/schema-upgrade.json',
+    },
+}
 
 
 def read(path):
@@ -199,10 +209,17 @@ def main():
     publication_files += baseline.get('publication_files', []) if baseline else []
     publication_files = list(dict.fromkeys(publication_files))
     whitespace = []
+    whitespace_exceptions = []
     for name in publication_files:
         data = staged_data[name] if args.staged else (ROOT / name).read_bytes()
         lines = data.splitlines()
-        if any(line.endswith((b' ', b'\t')) for line in lines) or data.endswith((b'\n\n', b'\r\n\r\n')):
+        trailing = any(line.endswith((b' ', b'\t')) for line in lines)
+        extra_eof = data.endswith((b'\n\n', b'\r\n\r\n'))
+        frozen = MIGRATION_EOF_EXCEPTIONS.get(name)
+        if extra_eof and frozen and hashlib.sha256(data).hexdigest() == frozen['sha256']:
+            whitespace_exceptions.append({'file': name, **frozen})
+            extra_eof = False
+        if trailing or extra_eof:
             whitespace.append(name)
     check('Publication code and guides have no trailing whitespace or extra EOF blank lines', not whitespace)
     selected = set(names)
@@ -334,7 +351,7 @@ def main():
               'file_count': len(names), 'total_bytes': total, 'binary_files': binary_count, 'markdown_files': len(markdown),
               'checks': checks, 'sensitive_findings': findings, 'forbidden_paths': sorted(set(forbidden)),
               'known_private_value_count': len(known_private), 'known_private_value_matches': private_matches,
-              'publication_whitespace_findings': whitespace,
+              'publication_whitespace_findings': whitespace, 'publication_whitespace_exceptions': whitespace_exceptions,
               'oversize_files': large, 'index_worktree_differences': changed_index, 'broken_local_links': broken,
               'secret_scan_scope': 'High-confidence text patterns, not exhaustive secret detection or pixel OCR.',
               'functional_evidence': 'Current source-bound backend/Web/runtime/mobile/browser/native artifacts and declared retained foundation proofs; see the baseline and final proof.' if baseline else 'Existing evidence reused by matching sources; not newly executed.',

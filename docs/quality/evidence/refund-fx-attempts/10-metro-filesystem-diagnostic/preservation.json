@@ -1,0 +1,24 @@
+{
+  "counts_as_current_pass": false,
+  "android_build_completed": false,
+  "reason": "Owned file crawl stalled with pending filesystem requests; inspected only this owned loopback debugger and stopped its process. No device or application behavior claim.",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-attempts/10-metro-filesystem-diagnostic/bundle.log",
+      "sha256": "e6c5f8f015a8e2af1ade355911b8b0c3903135b768b24fe1f54f5ce3a4e77573"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/10-metro-filesystem-diagnostic/refund-fx-metro.config.cjs",
+      "sha256": "59cb479c33986ec7351181b00202ba21d646bd687c502d7f8fe76ffe6ef7e6f3"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/10-metro-filesystem-diagnostic/refund_fx-android-final.log",
+      "sha256": "ec503dbff8135503b72fad8819d3dc60a938a6ed17eb25fab6377d7f60fa464e"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/10-metro-filesystem-diagnostic/build_refund_fx_android.py",
+      "sha256": "840bab98d0443c35d151d2e915eec909ec06235ebd7dbdf6ed5fd1f3a92e55cf"
+    }
+  ],
+  "checked_at": "2026-10-30T06:36:04.759533+00:00"
+}

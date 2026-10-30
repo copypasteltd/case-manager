@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { MemoryDrafts } from './drafts';
-import type { Schemas } from './session';
+import { MobileError, type Schemas } from './session';
 import { copyFinancialInput, costContent, financialAllocation, financialAmountEqual, financialBase, financialCan, financialDraftBody, financialDraftReceipt, financialEvidence, financialInput, financialReversalReceipt, financialTransitionReceipt, financialUnits, fromHongKongInput, hongKongInput, paymentContent, settlementEligible, sourceEligible } from './financial-input';
 
 const id = (n: number) => '10000000-0000-4000-8000-' + String(n).padStart(12, '0');
@@ -167,4 +167,13 @@ test('pre116 private financial drafts restore without inventing quote fields or 
   delete old.fx_cost_amount; delete old.fx_rate; delete old.fx_source;
   const restored = copyFinancialInput(old);
   assert.equal(restored?.fx_cost_amount, ''); assert.equal(restored?.fx_rate, ''); assert.equal(restored?.fx_source, '');
+});
+
+test('foreign refund validation reaches the mobile notice as a safe actionable input error', () => {
+  const refund: Schemas['Payment'] = { ...payment, state: 'draft', direction: 'refund', currency: 'USD', refund_of_id: id(90), refund_fx: { original_currency: 'HKD', original_amount: '780', rate: '0.1282051282', source: '合成银行凭证' } };
+  const input = { ...financialInput('payment', refund), reason: '人工核对实收' }, evidence = financialEvidence(refund);
+  for (const patch of [{ fx_rate: '0.12' }, { fx_source: '' }, { fx_cost_amount: '780.001' }]) {
+    assert.throws(() => paymentContent({ ...input, ...patch }, evidence), cause => cause instanceof MobileError && cause.code === 'INVALID_INPUT' && cause.message.includes('实际汇率方向与凭证来源'));
+  }
+  assert.equal(paymentContent(input, evidence).refund_fx?.original_amount, '780');
 });

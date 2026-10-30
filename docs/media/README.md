@@ -1,5 +1,16 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量121实际合成页面：异币实收草稿、确认后的原本金依据、保留凭证的全额冲销。录制在登录后开始，排除密码／MFA和真实业务记录；GIF为实际截图导览，MP4为实际视口录像。
+
+| 页面 | Web | Taro H5 |
+| --- | --- | --- |
+| 草稿 | [截图](screenshots/refund-fx-web-draft.png) | [截图](screenshots/refund-fx-mobile-draft.png) |
+| 已登记 | [截图](screenshots/refund-fx-web-recorded.png) | [截图](screenshots/refund-fx-mobile-recorded.png) |
+| 已冲销 | [截图](screenshots/refund-fx-web-reversed.png) | [截图](screenshots/refund-fx-mobile-reversed.png) |
+| 演示 | [MP4](videos/refund-fx-web.mp4) · [GIF](gifs/refund-fx-web.gif) | [MP4](videos/refund-fx-mobile.mp4) · [GIF](gifs/refund-fx-mobile.gif) |
+
+327份旧媒体字节保留；当前演示与预检／中断素材分别记录。[验证](../quality/121-refund-verification.md)。
+
 增量120实际Web／Taro H5合成演示：XLSX隐藏工作表与公式缓存、PPTX讲者备注、准确版本比较。录制在登录后开始，不包含密码／MFA或真实业务记录。
 
 | 页面 | Web | Taro H5 |

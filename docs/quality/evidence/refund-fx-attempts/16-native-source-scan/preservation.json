@@ -1,0 +1,23 @@
+{
+  "counts_as_current_pass": false,
+  "android_build_completed": false,
+  "reason": "Stop before optimizing source enumeration to prune the same already excluded generated directories before traversal. No source exclusions are added.",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-attempts/16-native-source-scan/bundle.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/16-native-source-scan/refund-fx-fs-diagnostic.cjs",
+      "sha256": "d42b602414bcacd1d60ac45dce52f48f92f7141045fee0c65e90822a90db1038"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/16-native-source-scan/build_android.py",
+      "sha256": "2684d6a82b3ca4240c4a75c3cd5597d43500bd5cee3edfae663a912768311fa4"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/16-native-source-scan/build_refund_fx_android.py",
+      "sha256": "2a1d34d7e6e1c31b7ce8142bf1f3c65044000463f93ab41ec48026b3a0103d64"
+    }
+  ]
+}

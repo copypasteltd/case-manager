@@ -6,19 +6,20 @@ import (
 )
 
 type PaymentContent struct {
-	Title              string    `json:"title"`
-	Direction          *string   `json:"direction"`
-	PaidAt             *string   `json:"paid_at"`
-	Currency           *string   `json:"currency"`
-	Amount             *string   `json:"amount"`
-	Category           string    `json:"category"`
-	Counterparty       *PartyRef `json:"counterparty"`
-	EmployeeID         *string   `json:"employee_id"`
-	RefundOfID         *string   `json:"refund_of_id"`
-	MethodLabel        string    `json:"method_label"`
-	ExternalRef        string    `json:"external_ref"`
-	EvidenceVersionIDs []string  `json:"evidence_version_ids"`
-	Notes              string    `json:"notes"`
+	Title              string           `json:"title"`
+	Direction          *string          `json:"direction"`
+	PaidAt             *string          `json:"paid_at"`
+	Currency           *string          `json:"currency"`
+	Amount             *string          `json:"amount"`
+	Category           string           `json:"category"`
+	Counterparty       *PartyRef        `json:"counterparty"`
+	EmployeeID         *string          `json:"employee_id"`
+	RefundOfID         *string          `json:"refund_of_id"`
+	RefundFX           *PaymentRefundFX `json:"refund_fx,omitempty"`
+	MethodLabel        string           `json:"method_label"`
+	ExternalRef        string           `json:"external_ref"`
+	EvidenceVersionIDs []string         `json:"evidence_version_ids"`
+	Notes              string           `json:"notes"`
 }
 type PaymentCreate struct {
 	PaymentContent
@@ -40,6 +41,7 @@ type PaymentRecordInput struct {
 	Base
 	ExpectedSourceVersion *int64             `json:"expected_source_version"`
 	RefundAllocations     []RefundAllocation `json:"refund_allocations"`
+	RefundFXAcknowledged  bool               `json:"refund_fx_acknowledged,omitempty"`
 }
 type PaymentReverseInput struct {
 	Base

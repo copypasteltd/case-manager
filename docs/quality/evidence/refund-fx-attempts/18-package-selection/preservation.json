@@ -1,0 +1,32 @@
+{
+  "counts_as_current_pass": false,
+  "backend_attempt_completed": false,
+  "source_sha256": "dcf0728d1eb2df3400ef8654d6267636fbaa33ebf93dcb28b860bc8f4b78e1d2",
+  "reason": "Controlled stop after all four business cases and their cleanup completed in batch26, before unrelated no-match package processes finished. Batch26 is rerun in full; no interrupted-batch pass is reused. The remaining runner selects every package containing each selected name from the unchanged discovery manifest, keeping every case, -count=1, -p=1 and the20-minute package deadline. The stop tool returned nonzero while the original owned coordinator was independently confirmed terminated.",
+  "stopped_at": "2026-10-30T07:40:28.944718+00:00",
+  "interrupted_batch": 26,
+  "completed_case_names": [
+    "TestMultipartCleanupSeparatesAPIMetadataAndWorkerIdentity",
+    "TestMultipartReconcileUsesCloudSizesAndRejectsGaps",
+    "TestNativeBrokerDoesNotSignInvalidOrUnrecordedObservation",
+    "TestNativeBrokerPreparationRefusalDoesNotStartOrSign"
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/18-package-selection/batch-progress.json",
+      "sha256": "c812fc71293aeaa3bd30c6d418deed49ca4fa1df479db66c405476d8b89ce00e"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/18-package-selection/backend-batch-26.log",
+      "sha256": "9c8b6b2eb6633d6bb939d27cad9f9fefb48db5fb3bf9ecd48dde7a3fd4d5cbc0"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/18-package-selection/verify_refund_fx_backend.py",
+      "sha256": "81681ae7517f7323b05d6328e189b3a5a646317f4e59d6a9868dfccba84a5904"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/18-package-selection/runner.log",
+      "sha256": "502e54c260c4f2a04e2f93888a2b86a375d033d62c1c34446eed1d7f76bc5368"
+    }
+  ]
+}

@@ -70,6 +70,11 @@ func normalizePayment(ctx context.Context, db platform.DBTX, c PaymentContent, c
 			return c, core.Invalid("recipient", "请核对资金方向、实际收款人和退款原付款")
 		}
 	}
+	q, err := normalizeRefundFX(ctx, db, c)
+	if err != nil {
+		return c, err
+	}
+	c.RefundFX = q
 	return c, nil
 }
 
@@ -97,7 +102,7 @@ func insertPaymentRevision(ctx context.Context, tx pgx.Tx, a core.Actor, p Payme
 }
 
 func samePaymentIdentity(p, original Payment) bool {
-	return value(p.ProjectID) == value(original.ProjectID) && p.Classification == original.Classification && value(p.Currency) == value(original.Currency) && value(p.EmployeeID) == value(original.EmployeeID) &&
+	return value(p.ProjectID) == value(original.ProjectID) && p.Classification == original.Classification && value(p.EmployeeID) == value(original.EmployeeID) &&
 		((p.Counterparty == nil && original.Counterparty == nil) || (p.Counterparty != nil && original.Counterparty != nil && *p.Counterparty == *original.Counterparty))
 }
 

@@ -498,24 +498,26 @@ cost_report = {"kind": {"const": "incurred"}, "from": DATE, "to": DATE, "timezon
 add("CostReport", cost_report, tuple(cost_report))
 add("Reverse", {**EXPECTED, "reason": NAME, "effective_on": DATE}, ("expected_version", "reason", "effective_on"))
 add("CostLink", {**cost_base, "source_id": ID, "source_revision_id": ID, "source_type": enum("purchase", "claim", "contract"), "relation": enum("incurred_for", "reimbursed_via", "contractual_basis")}, (*cost_base, "source_type", "source_id", "source_revision_id", "relation"))
+add("PaymentRefundFX", {"original_currency": CURRENCY, "original_amount": MONEY, "rate": {"type": "string", "pattern": r"^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$"}, "source": NAME}, ("original_currency", "original_amount", "rate", "source"))
 payment_fields = {"title": NAME, "direction": nullable(enum("outgoing", "incoming", "refund", "transfer")), "paid_at": nullable(TIME),
     "currency": nullable(CURRENCY), "amount": nullable(MONEY), "category": {"type": "string", "maxLength": 50},
     "counterparty": nullable(ref("SpendSupplier")), "employee_id": nullable(ID), "refund_of_id": nullable(ID),
     "method_label": {"type": "string", "maxLength": 100}, "external_ref": {"type": "string", "maxLength": 200},
     "evidence_version_ids": array(ID, maxItems=20), "notes": TEXT}
-add("PaymentContent", payment_fields, tuple(payment_fields))
-add("PaymentCreate", {**payment_fields, "source_key": SCHEMAS["CostCreate"]["properties"]["source_key"], "project_id": nullable(ID), "classification": CLASS, "reason": NAME}, (*payment_fields, "source_key", "project_id", "classification", "reason"))
-add("PaymentPatch", {**payment_fields, **cost_base}, (*payment_fields, *cost_base))
+payment_fields["refund_fx"] = ref("PaymentRefundFX")
+add("PaymentContent", payment_fields, tuple(k for k in payment_fields if k != "refund_fx"))
+add("PaymentCreate", {**payment_fields, "source_key": SCHEMAS["CostCreate"]["properties"]["source_key"], "project_id": nullable(ID), "classification": CLASS, "reason": NAME}, (*(k for k in payment_fields if k != "refund_fx"), "source_key", "project_id", "classification", "reason"))
+add("PaymentPatch", {**payment_fields, **cost_base}, (*(k for k in payment_fields if k != "refund_fx"), *cost_base))
 payment_record = {**RECORD, **payment_fields, "source_key": NAME, "project_id": nullable(ID), "creator_id": ID, "classification": CLASS,
     "record_kind": enum("payment", "reversal"), "state": enum("draft", "recorded", "reversed"), "reverses_id": nullable(ID), "reversal_id": nullable(ID),
     "current_revision_id": ID, "content_hash": HASH, "paid_on": nullable(DATE), "counterparty_evidence": nullable(cost_party_evidence),
     "attachments": array(ref("BusinessFileReference")), "effective_allocated_amount": report_decimal, "refunded_amount": MONEY, "contract_return_reserved_amount": MONEY, "unallocated_amount": nullable(MONEY),
     **{key: {"type": "boolean"} for key in ("can_edit", "can_record", "can_allocate", "can_reverse")}}
-add("Payment", payment_record, tuple(payment_record))
+add("Payment", payment_record, tuple(k for k in payment_record if k != "refund_fx"))
 add("PaymentFXInput", {"cost_amount": MONEY, "rate": {"type": "string", "pattern": r"^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$"}, "source": NAME, "acknowledged": {"type": "boolean", "const": True}}, ("cost_amount", "rate", "source", "acknowledged"))
 add("PaymentFXQuote", {"rate": {"type": "string", "pattern": r"^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$"}, "source": NAME, "quoted_on": DATE}, ("rate", "source", "quoted_on"))
 refund_allocation = obj({"source_allocation_id": ID, "amount": MONEY, "cost_amount": MONEY}, ("source_allocation_id", "amount"))
-add("PaymentRecord", {**cost_base, "expected_source_version": nullable(VERSION), "refund_allocations": array(refund_allocation, maxItems=100)}, (*cost_base, "expected_source_version", "refund_allocations"))
+add("PaymentRecord", {**cost_base, "expected_source_version": nullable(VERSION), "refund_allocations": array(refund_allocation, maxItems=100), "refund_fx_acknowledged": {"type": "boolean"}}, (*cost_base, "expected_source_version", "refund_allocations"))
 add("PaymentReverse", {**cost_base, "effective_at": TIME}, (*cost_base, "effective_at"))
 add("PaymentAllocate", {**cost_base, "cost_id": ID, "cost_version": VERSION, "cost_revision_id": ID, "cost_content_hash": HASH, "amount": MONEY,
     "claim_id": nullable(ID), "claim_revision_id": nullable(ID), "claim_line_id": nullable(ID), "fx": ref("PaymentFXInput")}, (*cost_base, "cost_id", "cost_version", "cost_revision_id", "cost_content_hash", "amount", "claim_id", "claim_revision_id", "claim_line_id"))
@@ -555,7 +557,7 @@ fee_revoke = {**cost_base, "expected_fee_version": fee_version, "basis_sha256": 
 add("PaymentFeeRevoke", fee_revoke, tuple(fee_revoke))
 payment_revision = {**payment_fields, "id": ID, "seq": VERSION, "base_revision_id": nullable(ID), "content_hash": HASH, "author_id": ID, "reason": NAME, "created_at": TIME,
     "counterparty_evidence": nullable(cost_party_evidence), "attachments": array(ref("BusinessFileReference"))}
-add("PaymentRevision", payment_revision, tuple(payment_revision))
+add("PaymentRevision", payment_revision, tuple(k for k in payment_revision if k != "refund_fx"))
 payment_event = {**cost_event, "kind": enum("draft_created", "draft_revised", "recorded", "allocation_added", "allocation_released", "refund_allocated", "reversed", "reversal_created"), "state": enum("draft", "recorded", "reversed"), "allocation_id": nullable(ID)}
 add("PaymentEvent", payment_event, tuple(payment_event))
 claim_settlement = {"claim_id": ID, "revision_id": nullable(ID), "currency": nullable(CURRENCY), "eligible_amount": nullable(MONEY), "paid_amount": nullable(MONEY), "outstanding_amount": nullable(MONEY),

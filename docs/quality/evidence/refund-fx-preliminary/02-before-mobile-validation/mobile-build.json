@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T05:48:46.270719+00:00",
+  "source_sha256": "af5c6fe3398f4dce1fd1630ad932c24fe2de2bce48bc391745d554be765d0a7a",
+  "source_files": 231,
+  "tests": {
+    "pass": 413,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:42:26.102020+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/refund_fx-client-typecheck.log"
+    },
+    {
+      "name": "mobile-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:42:51.840089+00:00",
+      "test_count": 413,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/mobile",
+      "raw_log_sha256": "a216d5507c616bce4466812a0c527c8e116d5144a667418a7325f247dab503e9",
+      "raw_log": "ignored app/.local/refund_fx-client-mobile-tests.log"
+    },
+    {
+      "name": "wechat-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:44:31.661165+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:weapp",
+      "raw_log_sha256": "88337b412957014062a9942810034aff6dd51e52d451676e16b3b41832770bde",
+      "raw_log": "ignored app/.local/refund_fx-client-wechat-build.log"
+    },
+    {
+      "name": "douyin-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T05:45:39.835081+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:tt",
+      "raw_log_sha256": "204d9d059be16a851b5da86a90d16e96353285a12b5cb9ad898be60f752f155b",
+      "raw_log": "ignored app/.local/refund_fx-client-douyin-build.log"
+    }
+  ],
+  "targets": {
+    "weapp": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    },
+    "tt": {
+      "page_count": 20,
+      "pages": [
+        "pages/login/index",
+        "pages/home/index",
+        "pages/list/index",
+        "pages/detail/index",
+        "pages/settings/index",
+        "pages/budget/index",
+        "pages/project/index",
+        "pages/deliverable/index",
+        "pages/content/index",
+        "pages/business/index",
+        "pages/status/index",
+        "pages/secretary/index",
+        "pages/notifications/index",
+        "pages/subscription-period/index",
+        "pages/telegram/index",
+        "pages/uploads/index",
+        "pages/finance/index",
+        "pages/reports/index",
+        "pages/search/index",
+        "pages/files/index"
+      ],
+      "app_json_sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    }
+  },
+  "source_unchanged_during_commands": true,
+  "api_origin": "http://127.0.0.1:18080",
+  "profile": "local",
+  "real_device": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "43c1f7a87418d1f8272a83934dac97850291640aec8e9470c048c46fc89bf9a0",
+    "summary_adapter_sha256": "4f053d4cb070e8adb2df144ea576517f542d9b6843f6a852289a112eabe05e9a",
+    "adapter_reran_tests": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "counts_as_current_pass": false,
+  "backend_attempt_completed": false,
+  "source_sha256": "dcf0728d1eb2df3400ef8654d6267636fbaa33ebf93dcb28b860bc8f4b78e1d2",
+  "reason": "The cumulative20-minute Go package deadline expired. Preserve its failure; reuse only19 completed current-source cases with passing children, and rerun the incomplete case plus all remaining names in groups of4. Test, lease, session and business deadlines unchanged.",
+  "completed_case_names": [
+    "TestAgentFileRecovery",
+    "TestAgentFileText",
+    "TestAgentFileUpdates",
+    "TestAgentFinanceSummary",
+    "TestAgentIndexedSearch",
+    "TestAgentMilestoneCreation",
+    "TestAgentOARequests",
+    "TestAgentOrganizationBrowserFixture",
+    "TestAgentOrganizationGuards",
+    "TestAgentOrganizationPlans",
+    "TestAgentOrganizationTools",
+    "TestAgentPlans",
+    "TestAgentPostWrites",
+    "TestAgentProjectConcerns",
+    "TestAgentProjectStages",
+    "TestAgentProjectTools",
+    "TestAgentRunLedger",
+    "TestAgentRunMutations",
+    "TestAgentServiceSummary"
+  ],
+  "selected_pass_records": 168,
+  "remaining_top_level_names": 205,
+  "records": [
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/14-backend-package-deadline/batch-progress.json",
+      "sha256": "68f307a62b8dec8cf02a991b2507800c7ac37bd95fa3c746928d26cacadc0c8b"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/14-backend-package-deadline/backend-batch-2.log",
+      "sha256": "f9a1d03b39abc741ee0e0c22dcf706dfb1369019b6aacb8e02a2512a831a2dca"
+    }
+  ],
+  "verification_script_sha256": "d776cb2cf5a14d06074793edaf0981aacc8a10a67c770ac98b3941ebd2bbf12f"
+}

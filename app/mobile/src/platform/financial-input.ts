@@ -1,3 +1,4 @@
+import { reviewedRefundFX, refundFXEqual } from '../../../packages/contracts/src/payment-fx';
 import { MobileError, type Schemas } from './session';
 
 export type FinancialKind = 'cost' | 'payment';
@@ -5,7 +6,7 @@ export type FinancialRecord = Schemas['Cost'] | Schemas['Payment'];
 export type FinancialAction = 'create' | 'edit' | 'confirm' | 'reverse' | 'link' | 'record' | 'allocate' | 'release' | 'refundAllocate';
 export const financialNames = { cost: '实际费用', payment: '资金记录' };
 export const financialRoutes = { cost: '/costs', payment: '/payments' };
-const limits = { title: 200, project: 36, classification: 20, source: 199, date: 19, currency: 3, amount: 30, category: 50, notes: 20000, reason: 200, direction: 20, method: 100, external: 200, effective: 19, fx_cost_amount: 30, fx_rate: 25, fx_source: 200 } as const;
+const limits = { title: 200, project: 36, classification: 20, source: 199, date: 19, currency: 3, amount: 30, category: 50, notes: 20000, reason: 200, direction: 20, method: 100, external: 200, effective: 19, fx_cost_amount: 30, fx_rate: 25, fx_source: 200, fx_original_currency: 3 } as const;
 export type FinancialInput = { [K in keyof typeof limits]: string } & { allocations: { project: string; amount: string }[] };
 export type FinancialEvidence = { party: NonNullable<Schemas['Cost']['counterparty']> | null; files: string[]; employee: string | null; refund: string | null };
 const idPattern = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
@@ -40,7 +41,7 @@ export function financialInput(kind: FinancialKind, value?: FinancialRecord, sou
     date: value && 'occurred_on' in value ? value.occurred_on ?? '' : value && 'paid_at' in value ? hongKongInput(value.paid_at) : '',
     currency: value?.currency ?? '', amount: value?.amount ?? '', category: value?.category ?? '', notes: value?.notes ?? '', reason: '',
     direction: kind === 'payment' && value && 'direction' in value ? value.direction ?? '' : '', method: value && 'method_label' in value ? value.method_label : '',
-    external: value && 'external_ref' in value ? value.external_ref : '', effective: '', fx_cost_amount: '', fx_rate: '', fx_source: '',
+    external: value && 'external_ref' in value ? value.external_ref : '', effective: '', fx_cost_amount: value && 'refund_fx' in value ? value.refund_fx?.original_amount ?? '' : '', fx_rate: value && 'refund_fx' in value ? value.refund_fx?.rate ?? '' : '', fx_source: value && 'refund_fx' in value ? value.refund_fx?.source ?? '' : '', fx_original_currency: value && 'refund_fx' in value ? value.refund_fx?.original_currency ?? '' : '',
     allocations: value && 'allocations' in value ? value.allocations.map(line => ({ project: line.project_id ?? '', amount: line.amount })) : [] };
 }
 export function financialEvidence(value?: FinancialRecord): FinancialEvidence {
@@ -89,6 +90,10 @@ export function costContent(input: FinancialInput, evidence: FinancialEvidence):
   });
   return { title: input.title.trim(), occurred_on: input.date || null, currency: input.currency || null, amount: input.amount || null, category: input.category.trim(), counterparty: evidence.party, allocations, evidence_version_ids: [...evidence.files], notes: input.notes };
 }
+function mobileRefundFX(input: FinancialInput): Schemas['PaymentRefundFX'] {
+  try { return reviewedRefundFX(input.fx_original_currency, input.currency, input.fx_cost_amount, input.amount, input.fx_rate, input.fx_source); }
+  catch { return invalid('请核对异币退款原本金、实收金额、币种精度、实际汇率方向与凭证来源。'); }
+}
 export function paymentContent(input: FinancialInput, evidence: FinancialEvidence): Schemas['PaymentContent'] {
   verifyInput(input, evidence);
   if (input.direction && !['outgoing', 'incoming', 'refund', 'transfer'].includes(input.direction) || evidence.employee && !financialID(evidence.employee) || evidence.refund && !financialID(evidence.refund)) return invalid('请核对方向、员工与退款原记录。');
@@ -96,7 +101,7 @@ export function paymentContent(input: FinancialInput, evidence: FinancialEvidenc
   return { title: input.title.trim(), direction: input.direction ? input.direction as Schemas['PaymentContent']['direction'] : null,
     paid_at: input.date ? fromHongKongInput(input.date) : null, currency: input.currency || null, amount: input.amount || null,
     category: input.category.trim(), counterparty: evidence.party, employee_id: evidence.employee, refund_of_id: evidence.refund,
-    method_label: input.method.trim(), external_ref: input.external.trim(), evidence_version_ids: [...evidence.files], notes: input.notes };
+    method_label: input.method.trim(), external_ref: input.external.trim(), evidence_version_ids: [...evidence.files], notes: input.notes, ...(evidence.refund && input.fx_original_currency && input.fx_original_currency !== input.currency ? { refund_fx: mobileRefundFX(input) } : {}) };
 }
 export function financialDraftBody(kind: FinancialKind, input: FinancialInput, evidence: FinancialEvidence, value?: FinancialRecord) {
   const content = kind === 'cost' ? costContent(input, evidence) : paymentContent(input, evidence);
@@ -120,7 +125,7 @@ export function financialDraftReceipt(value: FinancialRecord, kind: FinancialKin
   const content = kind === 'cost' ? costContent(input, evidence) : paymentContent(input, evidence);
   if (value.title !== content.title || value.currency !== content.currency || !financialAmountEqual(value.amount, content.amount) || value.category !== content.category || value.notes !== content.notes || !sameParty(value.counterparty, content.counterparty) || !sameFiles(value.evidence_version_ids, content.evidence_version_ids)) return false;
   if ('occurred_on' in content && 'occurred_on' in value) return value.occurred_on === content.occurred_on && value.allocations.length === content.allocations.length && value.allocations.every((line, i) => line.project_id === content.allocations[i].project_id && financialAmountEqual(line.amount, content.allocations[i].amount));
-  if ('paid_at' in content && 'paid_at' in value) return value.direction === content.direction && value.employee_id === content.employee_id && value.refund_of_id === content.refund_of_id && value.method_label === content.method_label && value.external_ref === content.external_ref && (value.paid_at === null || content.paid_at === null ? value.paid_at === content.paid_at : Date.parse(value.paid_at) === Date.parse(content.paid_at));
+  if ('paid_at' in content && 'paid_at' in value) return refundFXEqual(value.refund_fx, content.refund_fx) && value.direction === content.direction && value.employee_id === content.employee_id && value.refund_of_id === content.refund_of_id && value.method_label === content.method_label && value.external_ref === content.external_ref && (value.paid_at === null || content.paid_at === null ? value.paid_at === content.paid_at : Date.parse(value.paid_at) === Date.parse(content.paid_at));
   return false;
 }
 export function financialRecordReceipt(value: unknown, kind: FinancialKind): value is FinancialRecord {
@@ -138,7 +143,7 @@ export function financialTransitionReceipt(value: FinancialRecord, kind: Financi
 export function financialReversalReceipt(value: unknown, kind: FinancialKind, before: FinancialRecord, effective: string) {
   if (!financialRecordReceipt(value, kind) || value.id === before.id || value.version !== 1 || value.reverses_id !== before.id || value.project_id !== before.project_id || value.classification !== before.classification || value.currency !== before.currency || !financialAmountEqual(value.amount, before.amount) || !sameParty(value.counterparty, before.counterparty) || !sameFiles(value.evidence_version_ids, before.evidence_version_ids)) return false;
   if (kind === 'cost' && 'occurred_on' in value && 'occurred_on' in before) return value.entry_kind === 'reversal' && value.state === 'confirmed' && value.occurred_on === effective && value.allocations.length === before.allocations.length && value.allocations.every((line, i) => line.project_id === before.allocations[i].project_id && financialAmountEqual(line.amount, before.allocations[i].amount));
-  if (kind === 'payment' && 'paid_at' in value && 'paid_at' in before) return value.record_kind === 'reversal' && value.state === 'recorded' && value.direction === before.direction && value.employee_id === before.employee_id && value.refund_of_id === before.refund_of_id && value.paid_at !== null && Date.parse(value.paid_at) === Date.parse(fromHongKongInput(effective));
+  if (kind === 'payment' && 'paid_at' in value && 'paid_at' in before) return refundFXEqual(value.refund_fx, before.refund_fx) && value.record_kind === 'reversal' && value.state === 'recorded' && value.direction === before.direction && value.employee_id === before.employee_id && value.refund_of_id === before.refund_of_id && value.paid_at !== null && Date.parse(value.paid_at) === Date.parse(fromHongKongInput(effective));
   return false;
 }
 export function sourceEligible(value: Schemas['Spend'] | Schemas['Contract'], cost: Schemas['Cost'], project: string) {

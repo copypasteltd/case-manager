@@ -1,0 +1,41 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T05:29:17.120Z",
+  "finished_at": "2026-10-30T05:29:49.935Z",
+  "checks": [
+    "Human login and MFA completed before any capture.",
+    "Actual draft UI rejects a rate that does not reproduce actual received cash.",
+    "Actual editor persists distinct HKD original principal and USD refund cash with pinned statement provenance.",
+    "Fresh human confirmation is required independently of the saved quote.",
+    "Actual UI confirmation and exact HTTP replay conserve USD cash and HKD principal without creating an expense allocation."
+  ],
+  "source_count": 867,
+  "source_sha256": "76f607fb8900466c488906af92cff3fb18104381a1406e5d81c4e7e9d5d674b3",
+  "source_after_sha256": "76f607fb8900466c488906af92cff3fb18104381a1406e5d81c4e7e9d5d674b3",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.fill: Error: Malformed value\nCall log:\n\u001b[2m  - waiting for getByLabel('冲销生效时间（香港）', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input step=\"1\" value=\"\" id=\":r3:\" required=\"\" type=\"datetime-local\"/>\u001b[22m\n\u001b[2m    - fill(\"2025-02-03T12:00:00\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n",
+  "failure_stack": "locator.fill: Error: Malformed value\nCall log:\n\u001b[2m  - waiting for getByLabel('冲销生效时间（香港）', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input step=\"1\" value=\"\" id=\":r3:\" required=\"\" type=\"datetime-local\"/>\u001b[22m\n\u001b[2m    - fill(\"2025-02-03T12:00:00\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_refund_fx.mjs:67:93\n    at async refund_fxBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\refund_fx_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_refund_fx.mjs:13:1",
+  "failure_context": {
+    "pathname": "/payments/00ea80a0-653b-4418-a963-ea7b596fffb0",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "refund_fx_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "b07fc2c1accfc2c855e0dd35cb917c4666ccb805b5c20359cd0a95c5bad54230",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "b07fc2c1accfc2c855e0dd35cb917c4666ccb805b5c20359cd0a95c5bad54230",
+  "build_source_unchanged": true
+}

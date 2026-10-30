@@ -1,0 +1,19 @@
+{
+  "counts_as_current_pass": false,
+  "android_build_completed": false,
+  "reason": "The scoped native junction bridge completed the21 previously pending readlinks; one native stat callback remained stalled. Preserve the attempt before extending the same checkout-only actual-filesystem bridge to metadata and read operations.",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-attempts/15-native-metadata-bridge/bundle.log",
+      "sha256": "978628e4db2e45ec0faeac6390e367130c92f7a0a940e667a8f6c7537165c8b3"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/15-native-metadata-bridge/refund-fx-fs-diagnostic.cjs",
+      "sha256": "3904643645500feae4e011ad1be3598b23b8f7d984e82a25127c21d566bff598"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/15-native-metadata-bridge/build_refund_fx_android.py",
+      "sha256": "8d4543f795a82159989da8e263d9fb31aa121dc83105e06801fabe2cb0f9c5ca"
+    }
+  ]
+}

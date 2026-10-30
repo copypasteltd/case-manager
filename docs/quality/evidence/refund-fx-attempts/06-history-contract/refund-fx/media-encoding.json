@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T06:02:16.856505+00:00",
+  "encoder_script_sha256": "ac8cfb6285a3603ae30bbc226c156182783ea01537324518a4909b86ab0ffcc7",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "715faa4ef8770f2e8d442c4dc90b8c16fd32912fd4f842d85afef6538bfbebfa",
+      "build_source_sha256": "11a4b9a8f340dad92b63894d7942d2ef5441aba8d778da995528231946f34e59",
+      "capture_manifest": "docs/quality/evidence/refund-fx/web-capture-manifest.json",
+      "capture_manifest_sha256": "a763cdd387d2596a97a0b7c2bf7fc749d54bdf47c142858c5e12022dacc642c2",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4222,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/refund-fx-web-draft.png",
+          "sha256": "186aeaf95ea1becc5de9c24e13491535c7c8207b9c7da16e2f0ba5b1a584a8ee"
+        },
+        {
+          "file": "docs/media/screenshots/refund-fx-web-recorded.png",
+          "sha256": "fcdefbe36412ac62449ec36d8bf982011119808e5c5db96dc14690953a24e675"
+        },
+        {
+          "file": "docs/media/screenshots/refund-fx-web-reversed.png",
+          "sha256": "c05f15a902a3ecab336079bdaed265a6a4842146831b60f028d5e70caee23287"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "44",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/refund-fx-web.mp4",
+          "sha256": "8a0c9060376fe313548c35879b0539c3444a739b9b120872f2a0699946ebcc11",
+          "bytes": 196450
+        },
+        {
+          "file": "docs/media/gifs/refund-fx-web.gif",
+          "sha256": "38fba27ddcbe455f246c867dbb07c3ea47258b65e943441ef983c6ac8f794503",
+          "bytes": 161301
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "47645eeac62f20fb50bbebb79a119d8ece9fcfa3f5be353b2d8276a185577e6c",
+      "build_source_sha256": "11a4b9a8f340dad92b63894d7942d2ef5441aba8d778da995528231946f34e59",
+      "capture_manifest": "docs/quality/evidence/refund-fx/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "795ec9b14fe6c4bf666023ecd1f6182b52aceea4a1917424ef40efecdfcf20d0",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4068,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/refund-fx-mobile-draft.png",
+          "sha256": "7624701a76dcd5ca9c3e4bb671c48826a6ab3095f294adf986d1e1798e6a97a2"
+        },
+        {
+          "file": "docs/media/screenshots/refund-fx-mobile-recorded.png",
+          "sha256": "dce90b6a61fbb4835cfef6344036a6be1daa2997ed2133fad73fcb6d70ddcd89"
+        },
+        {
+          "file": "docs/media/screenshots/refund-fx-mobile-reversed.png",
+          "sha256": "36ffa9c866eb2533c3ccd17e5d3c67f28dbf293d417318fd82fb6e0164dd3dee"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "43",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/refund-fx-mobile.mp4",
+          "sha256": "b1c304164d613b1af2735ab197410d6f53555994da4d7898ab7edacab278dffa",
+          "bytes": 113622
+        },
+        {
+          "file": "docs/media/gifs/refund-fx-mobile.gif",
+          "sha256": "153a37f3da6c9f379c0ea76667ca35c552b4bf0c23a1747831377f61b46dfedc",
+          "bytes": 52284
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (saved foreign refund quote, recorded actual cash, human reversal), two seconds each. No real model or device claim."
+}

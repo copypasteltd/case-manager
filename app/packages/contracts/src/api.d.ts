@@ -7701,6 +7701,12 @@ export interface components {
             /** @enum {string} */
             relation: "incurred_for" | "reimbursed_via" | "contractual_basis";
         };
+        PaymentRefundFX: {
+            original_currency: string;
+            original_amount: string;
+            rate: string;
+            source: string;
+        };
         PaymentContent: {
             title: string;
             direction: ("outgoing" | "incoming" | "refund" | "transfer") | null;
@@ -7715,6 +7721,7 @@ export interface components {
             external_ref: string;
             evidence_version_ids: string[];
             notes: string;
+            refund_fx?: components["schemas"]["PaymentRefundFX"];
         };
         PaymentCreate: {
             title: string;
@@ -7730,6 +7737,7 @@ export interface components {
             external_ref: string;
             evidence_version_ids: string[];
             notes: string;
+            refund_fx?: components["schemas"]["PaymentRefundFX"];
             source_key: string;
             project_id: string | null;
             /** @enum {string} */
@@ -7750,6 +7758,7 @@ export interface components {
             external_ref: string;
             evidence_version_ids: string[];
             notes: string;
+            refund_fx?: components["schemas"]["PaymentRefundFX"];
             expected_version: number;
             /** Format: uuid */
             revision_id: string;
@@ -7777,6 +7786,7 @@ export interface components {
             external_ref: string;
             evidence_version_ids: string[];
             notes: string;
+            refund_fx?: components["schemas"]["PaymentRefundFX"];
             source_key: string;
             project_id: string | null;
             /** Format: uuid */
@@ -7830,6 +7840,7 @@ export interface components {
                 amount: string;
                 cost_amount?: string;
             }[];
+            refund_fx_acknowledged?: boolean;
         };
         PaymentReverse: {
             expected_version: number;
@@ -8026,6 +8037,7 @@ export interface components {
             external_ref: string;
             evidence_version_ids: string[];
             notes: string;
+            refund_fx?: components["schemas"]["PaymentRefundFX"];
             /** Format: uuid */
             id: string;
             seq: number;

@@ -378,7 +378,7 @@ func AgentSubscriptionReview(ctx context.Context, tx pgx.Tx, a core.Actor, scope
 			}
 		}
 		refs = append(refs, AgentSummaryEvidence{Type: "payment", ID: p.ID, RevisionID: p.CurrentRevisionID, SubscriptionID: sub.ID, PeriodID: periodID})
-		payments = append(payments, map[string]any{"id": p.ID, "version": p.Version, "current_revision_id": p.CurrentRevisionID, "title": p.Title, "state": p.State, "record_kind": p.RecordKind, "direction": p.Direction, "currency": p.Currency, "original_amount": p.Amount, "paid_at": p.PaidAt, "paid_on": p.PaidOn, "refund_of_id": p.RefundOfID, "reverses_id": p.ReversesID, "refunded_amount": p.RefundedAmount, "unallocated_amount": p.UnallocatedAmount, "evidence": p.Attachments})
+		payments = append(payments, map[string]any{"id": p.ID, "version": p.Version, "current_revision_id": p.CurrentRevisionID, "title": p.Title, "state": p.State, "record_kind": p.RecordKind, "direction": p.Direction, "currency": p.Currency, "original_amount": p.Amount, "paid_at": p.PaidAt, "paid_on": p.PaidOn, "refund_of_id": p.RefundOfID, "refund_fx": p.RefundFX, "reverses_id": p.ReversesID, "refunded_amount": p.RefundedAmount, "unallocated_amount": p.UnallocatedAmount, "evidence": p.Attachments})
 	}
 	if err = reviewBounded(len(refs), 500); err != nil {
 		return nil, nil, err

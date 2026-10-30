@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T08:08:33.827065+00:00",
+  "owned_temporary_cluster_attested": true,
+  "backend_source_sha256": "dcf0728d1eb2df3400ef8654d6267636fbaa33ebf93dcb28b860bc8f4b78e1d2",
+  "retained_fixture_count": 1,
+  "archives": [
+    {
+      "database": "cp_test_feadb1359e234633bd9e9e7941995617",
+      "file": ".local/refund-fx-failed-fixtures/cp_test_feadb1359e234633bd9e9e7941995617.dump",
+      "bytes": 1797487,
+      "sha256": "fb5b395138895fa2dd44375965373a148be001dd87e5f6da758d8ad2c1bbe7c2",
+      "catalog_file": ".local/refund-fx-failed-fixtures/cp_test_feadb1359e234633bd9e9e7941995617.catalog.txt",
+      "catalog_sha256": "6f7e23214e8d1db18045740f74668077d12986803d1c090124fe36a89bfc59c2",
+      "complete_archive_readable": true,
+      "database_released": true
+    }
+  ],
+  "remaining_disposable_databases": 0,
+  "development_or_production_database_modified": false,
+  "restoration_executed": false,
+  "historical_migration_or_dr_acceptance": false,
+  "archives_private": true,
+  "verification_script_sha256": "6cfb9776c5017f266dd69f16b783a8dd90221cc3beefbda1aa1087875b7b1e61"
+}

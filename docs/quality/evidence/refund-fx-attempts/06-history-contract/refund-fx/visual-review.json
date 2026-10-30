@@ -1,0 +1,80 @@
+{
+  "reviewed": true,
+  "prepared_at": "2026-10-30T06:02:19.980242+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/refund-fx-web-draft.png",
+      "sha256": "186aeaf95ea1becc5de9c24e13491535c7c8207b9c7da16e2f0ba5b1a584a8ee"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-web-recorded.png",
+      "sha256": "fcdefbe36412ac62449ec36d8bf982011119808e5c5db96dc14690953a24e675"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-web-reversed.png",
+      "sha256": "c05f15a902a3ecab336079bdaed265a6a4842146831b60f028d5e70caee23287"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-mobile-draft.png",
+      "sha256": "7624701a76dcd5ca9c3e4bb671c48826a6ab3095f294adf986d1e1798e6a97a2"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-mobile-recorded.png",
+      "sha256": "dce90b6a61fbb4835cfef6344036a6be1daa2997ed2133fad73fcb6d70ddcd89"
+    },
+    {
+      "file": "docs/media/screenshots/refund-fx-mobile-reversed.png",
+      "sha256": "36ffa9c866eb2533c3ccd17e5d3c67f28dbf293d417318fd82fb6e0164dd3dee"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/refund-fx-web.gif",
+      "sha256": "38fba27ddcbe455f246c867dbb07c3ea47258b65e943441ef983c6ac8f794503"
+    },
+    {
+      "file": "docs/media/gifs/refund-fx-mobile.gif",
+      "sha256": "153a37f3da6c9f379c0ea76667ca35c552b4bf0c23a1747831377f61b46dfedc"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/refund-fx-visual-review"
+    },
+    "mobile": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/refund-fx-visual-review"
+    }
+  },
+  "recording_frames_reviewed": {
+    "web": {
+      "file": "docs/media/videos/refund-fx-web.mp4",
+      "sha256": "8a0c9060376fe313548c35879b0539c3444a739b9b120872f2a0699946ebcc11",
+      "sampled_seconds": [
+        0,
+        4.0
+      ]
+    },
+    "mobile": {
+      "file": "docs/media/videos/refund-fx-mobile.mp4",
+      "sha256": "b1c304164d613b1af2735ab197410d6f53555994da4d7898ab7edacab278dffa",
+      "sampled_seconds": [
+        0,
+        3.9
+      ]
+    }
+  },
+  "findings": [],
+  "scope": "Prepared real screenshot and decoded video/GIF pixels; requires actual visual inspection before publication.",
+  "reviewed_at": "2026-10-30T06:03:52.881917+00:00",
+  "review_notes": "Inspected all six actual screenshots, the full Web recorded view, and decoded first/last MP4 and GIF samples for both clients. Amounts, original principal evidence and immutable reversal remain visible. Mobile captures intentionally scroll to financial facts. No credentials, real business data or blocking layout defects observed."
+}

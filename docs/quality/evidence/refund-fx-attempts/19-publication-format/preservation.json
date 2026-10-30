@@ -1,0 +1,16 @@
+{
+  "counts_as_current_pass": false,
+  "publication_attempt_completed": false,
+  "reason": "First publication scan found the checksum-protected, already applied schema93 file has an extra EOF blank line, and its own output record did not exist when candidate links were collected. Keep schema93 bytes unchanged; disclose one exact-hash EOF-only exception and rerun publication checks. No business result is changed.",
+  "records": [
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/19-publication-format/repository-check.json",
+      "sha256": "501c64c9b7ea64b7b12963b39b936a85831fc0e3892c5327e1ce58b0ee48db1a"
+    }
+  ],
+  "git_initial_staged_format_check": {
+    "exit_code": 2,
+    "finding": "app/backend/migrations/0093_actual_foreign_refunds.sql:200: new blank line at EOF.",
+    "resolution": "One per-path EOF rule in .gitattributes; publication also requires the exact applied93 SHA256. No migration bytes changed."
+  }
+}

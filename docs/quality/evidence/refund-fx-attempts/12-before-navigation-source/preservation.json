@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "counts_as_current_pass": false,
+  "reason": "Capture helper now waits for the committed Taro redirect instead of racing document navigation. Earlier archive remains exact.",
+  "source_archive": "app/.local/refund-fx-attempts/12-before-navigation-source/source.zip",
+  "source_archive_sha256": "305fed56613723c1992a5729d2edcee60f702363b7da5f39658410841b20baaa",
+  "public_records": [
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/12-before-navigation-source/source-archive.json",
+      "sha256": "2c44231a2f67a8cc29c3d4880582179cb993b5a929c084d72d3244f8edd45e8d"
+    }
+  ],
+  "private_records": [],
+  "archived_at": "2026-10-30T06:40:24.712576+00:00"
+}

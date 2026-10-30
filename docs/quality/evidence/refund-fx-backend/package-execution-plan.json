@@ -1,0 +1,857 @@
+{
+  "passed": true,
+  "source_sha256": "dcf0728d1eb2df3400ef8654d6267636fbaa33ebf93dcb28b860bc8f4b78e1d2",
+  "source_after_sha256": "dcf0728d1eb2df3400ef8654d6267636fbaa33ebf93dcb28b860bc8f4b78e1d2",
+  "all_discovered_test_names_preserved": true,
+  "retained_completed_batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "invocations": [
+    {
+      "batch": 26,
+      "names": [
+        "TestMultipartCleanupSeparatesAPIMetadataAndWorkerIdentity",
+        "TestMultipartReconcileUsesCloudSizesAndRejectsGaps",
+        "TestNativeBrokerDoesNotSignInvalidOrUnrecordedObservation",
+        "TestNativeBrokerPreparationRefusalDoesNotStartOrSign"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/nativeruntime",
+        "copypaste.hk/platform/internal/objectstore",
+        "copypaste.hk/platform/internal/storageconfig"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "copypaste.hk/platform/internal/objectstore",
+        "copypaste.hk/platform/internal/storageconfig",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestMultipartCleanupSeparatesAPIMetadataAndWorkerIdentity|TestMultipartReconcileUsesCloudSizesAndRejectsGaps|TestNativeBrokerDoesNotSignInvalidOrUnrecordedObservation|TestNativeBrokerPreparationRefusalDoesNotStartOrSign)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 27,
+      "names": [
+        "TestNativeBrokerProofStorageIsBoundedPerRun",
+        "TestNativeBrokerSignsFreshEvidenceAndStopsOnDisconnect",
+        "TestNativeBrokerUnknownTeardownBlocksNewWorkAndKeepsMarker",
+        "TestNativeConnectionLimitReleasesExactlyOnceAndRefusesOverflow"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/nativeruntime"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestNativeBrokerProofStorageIsBoundedPerRun|TestNativeBrokerSignsFreshEvidenceAndStopsOnDisconnect|TestNativeBrokerUnknownTeardownBlocksNewWorkAndKeepsMarker|TestNativeConnectionLimitReleasesExactlyOnceAndRefusesOverflow)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 28,
+      "names": [
+        "TestNativeControllerNeverSubstitutesAWindowsBoundary",
+        "TestNativeGatewayBoundsConcurrentHostWork",
+        "TestNativeGatewayCompanyRoutesUseOnlyCurrentTaskCredential",
+        "TestNativeGatewayKeepsProviderCredentialOutsideChildAndPinsTechnicalBounds"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/nativeruntime"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestNativeControllerNeverSubstitutesAWindowsBoundary|TestNativeGatewayBoundsConcurrentHostWork|TestNativeGatewayCompanyRoutesUseOnlyCurrentTaskCredential|TestNativeGatewayKeepsProviderCredentialOutsideChildAndPinsTechnicalBounds)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 29,
+      "names": [
+        "TestNativeGatewayNeverFollowsRedirectOrReturnsProviderErrorSecrets",
+        "TestNativeGatewayRejectsPeerPathAuthorityAndRemoteProviderTools",
+        "TestNativeGatewayRunCancellationClosesOwnedProviderStream",
+        "TestNativeGatewayStopsAnOversizedStream"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/nativeruntime"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestNativeGatewayNeverFollowsRedirectOrReturnsProviderErrorSecrets|TestNativeGatewayRejectsPeerPathAuthorityAndRemoteProviderTools|TestNativeGatewayRunCancellationClosesOwnedProviderStream|TestNativeGatewayStopsAnOversizedStream)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 30,
+      "names": [
+        "TestNativeImportOutput",
+        "TestNativeImportPlan",
+        "TestNativeImportTransport",
+        "TestNativeMountInfoPreservesKernelReadOnlyAndTmpfsFacts"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/fileimport",
+        "copypaste.hk/platform/internal/nativeruntime"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/fileimport",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestNativeImportOutput|TestNativeImportPlan|TestNativeImportTransport|TestNativeMountInfoPreservesKernelReadOnlyAndTmpfsFacts)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 31,
+      "names": [
+        "TestNativeObservationRequiresActualIndependentBoundaryFacts",
+        "TestNativeProcessEnvironmentAndCancellation",
+        "TestNativeRuntimeFramesRejectAmbiguityAndOversizedInput",
+        "TestNativeRuntimePlanUsesAnOwnedUnitAndBoundedTmpfs"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/nativeruntime"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestNativeObservationRequiresActualIndependentBoundaryFacts|TestNativeProcessEnvironmentAndCancellation|TestNativeRuntimeFramesRejectAmbiguityAndOversizedInput|TestNativeRuntimePlanUsesAnOwnedUnitAndBoundedTmpfs)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 32,
+      "names": [
+        "TestNativeRuntimePolicyRefusesUnsafeBoundaries",
+        "TestNativeRuntimeRunBindsExactReleaseAndCredentials",
+        "TestNotificationManualRetries",
+        "TestOAProseMCPBoundary"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/nativeruntime"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/nativeruntime",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestNativeRuntimePolicyRefusesUnsafeBoundaries|TestNativeRuntimeRunBindsExactReleaseAndCredentials|TestNotificationManualRetries|TestOAProseMCPBoundary)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 33,
+      "names": [
+        "TestObjectKeysNeverIncludeDisplayNames",
+        "TestOfficeTextDocuments",
+        "TestOfficeTextExtraction",
+        "TestOfficialMiniappExchange"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/files",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/miniapp",
+        "copypaste.hk/platform/internal/objectstore"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/files",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/miniapp",
+        "copypaste.hk/platform/internal/objectstore",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestObjectKeysNeverIncludeDisplayNames|TestOfficeTextDocuments|TestOfficeTextExtraction|TestOfficialMiniappExchange)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 34,
+      "names": [
+        "TestOutboxConsumerAtomicity",
+        "TestPaymentFeeEvidence",
+        "TestPaymentShareRounding",
+        "TestPaymentsAndSettlement"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestOutboxConsumerAtomicity|TestPaymentFeeEvidence|TestPaymentShareRounding|TestPaymentsAndSettlement)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 35,
+      "names": [
+        "TestPinnedFileVersionMetadata",
+        "TestPlatformIntegration",
+        "TestProjectBudgetComparison",
+        "TestProjectChangesAndBudgets"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestPinnedFileVersionMetadata|TestPlatformIntegration|TestProjectBudgetComparison|TestProjectChangesAndBudgets)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 36,
+      "names": [
+        "TestProjectCloseoutAndArchive",
+        "TestProjectCollaborationIntegration",
+        "TestProjectDeliverables",
+        "TestProjectOverview"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestProjectCloseoutAndArchive|TestProjectCollaborationIntegration|TestProjectDeliverables|TestProjectOverview)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 37,
+      "names": [
+        "TestProjectTemplateManagement",
+        "TestProviderCompleteOrdersExactManifestAndAbortIsIdempotent",
+        "TestProviderErrorsDoNotDiscloseSignedRequests",
+        "TestProviderPartsStayPagedAndUploadStreamsHaveKnownLength"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/objectstore"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/objectstore",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestProjectTemplateManagement|TestProviderCompleteOrdersExactManifestAndAbortIsIdempotent|TestProviderErrorsDoNotDiscloseSignedRequests|TestProviderPartsStayPagedAndUploadStreamsHaveKnownLength)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 38,
+      "names": [
+        "TestProviderReadPinsETagRangeAndRejectsDifferentBytes",
+        "TestProviderSigningKeepsClientInsideDraftMultipart",
+        "TestPurchaseCompletion",
+        "TestPurchaseFulfillment"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/objectstore"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/objectstore",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestProviderReadPinsETagRangeAndRejectsDifferentBytes|TestProviderSigningKeepsClientInsideDraftMultipart|TestPurchaseCompletion|TestPurchaseFulfillment)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 39,
+      "names": [
+        "TestPurchaseVariance",
+        "TestQuantityPriceRefusesAmbiguousOrUnrepresentableAmounts",
+        "TestQuantityPriceUsesExactProductAndExplicitRounding",
+        "TestRefreshPermissionMutationLockOrder"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/core",
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/core",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestPurchaseVariance|TestQuantityPriceRefusesAmbiguousOrUnrepresentableAmounts|TestQuantityPriceUsesExactProductAndExplicitRounding|TestRefreshPermissionMutationLockOrder)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 40,
+      "names": [
+        "TestReplicaWorkerRequiresSourceAndOtherCloudTargetRoles",
+        "TestReportCSVTextSafetyAndExactDecimals",
+        "TestResourceScopesUseCreatorAndExactTask",
+        "TestRestoreWorkerRequiresIndependentReadAndWriteRoles"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/storageconfig"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/storageconfig",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestReplicaWorkerRequiresSourceAndOtherCloudTargetRoles|TestReportCSVTextSafetyAndExactDecimals|TestResourceScopesUseCreatorAndExactTask|TestRestoreWorkerRequiresIndependentReadAndWriteRoles)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 41,
+      "names": [
+        "TestRetentionManagement",
+        "TestScanWaiverBoundaries",
+        "TestSearchBodyUnicode",
+        "TestSequentialApprovals"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/agent",
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/agent",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestRetentionManagement|TestScanWaiverBoundaries|TestSearchBodyUnicode|TestSequentialApprovals)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 42,
+      "names": [
+        "TestServiceEvidenceVersionsDoNotCollide",
+        "TestServiceStatus",
+        "TestSessionMFAStepUp",
+        "TestSignedNativeProofBinding"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/agent",
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/agent",
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestServiceEvidenceVersionsDoNotCollide|TestServiceStatus|TestSessionMFAStepUp|TestSignedNativeProofBinding)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 43,
+      "names": [
+        "TestSpendDocumentsAndApprovals",
+        "TestStatusBridgeConfigurationBoundaries",
+        "TestStatusBridgeDeliveryRecovery",
+        "TestStatusBridgeJournalCorruptionAndRebinding"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/statusbridge"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/statusbridge",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestSpendDocumentsAndApprovals|TestStatusBridgeConfigurationBoundaries|TestStatusBridgeDeliveryRecovery|TestStatusBridgeJournalCorruptionAndRebinding)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 44,
+      "names": [
+        "TestStatusBridgeJournalRecovery",
+        "TestStatusBridgeNativeFlow",
+        "TestStatusBridgeReceiptBoundaries",
+        "TestStatusBridgeSampleBoundaries"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/statusbridge"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/statusbridge",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestStatusBridgeJournalRecovery|TestStatusBridgeNativeFlow|TestStatusBridgeReceiptBoundaries|TestStatusBridgeSampleBoundaries)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 45,
+      "names": [
+        "TestStatusBridgeTargetControls",
+        "TestStorageLocationBindingExcludesCredentialsButBindsAccountAndBucket",
+        "TestStorageNameEqualityAndUnsafePaths",
+        "TestStorageNamespaceAndMetadata"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/core",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/objectstore",
+        "copypaste.hk/platform/internal/statusbridge"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/core",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/objectstore",
+        "copypaste.hk/platform/internal/statusbridge",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestStatusBridgeTargetControls|TestStorageLocationBindingExcludesCredentialsButBindsAccountAndBucket|TestStorageNameEqualityAndUnsafePaths|TestStorageNamespaceAndMetadata)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 46,
+      "names": [
+        "TestStrictVersionedSchemas",
+        "TestSubscriptionBilling",
+        "TestSubscriptionCalendar",
+        "TestSubscriptionJobLeases"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/contract",
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/contract",
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestStrictVersionedSchemas|TestSubscriptionBilling|TestSubscriptionCalendar|TestSubscriptionJobLeases)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 47,
+      "names": [
+        "TestSubscriptionPriceTimeline",
+        "TestSubscriptionReviewMCPBoundary",
+        "TestTOTPRFC6238VectorsAndBinding",
+        "TestTaskCommentMentionAuthority"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/identity"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/agentworker",
+        "copypaste.hk/platform/internal/finance",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/identity",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestSubscriptionPriceTimeline|TestSubscriptionReviewMCPBoundary|TestTOTPRFC6238VectorsAndBinding|TestTaskCommentMentionAuthority)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 48,
+      "names": [
+        "TestTaskCommentMentions",
+        "TestTaskMentionCandidateBoundaries",
+        "TestTaskMentionsBrowserFixture",
+        "TestTelegramBotAPIOutcomes"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/telegram"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/telegram",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestTaskCommentMentions|TestTaskMentionCandidateBoundaries|TestTaskMentionsBrowserFixture|TestTelegramBotAPIOutcomes)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 49,
+      "names": [
+        "TestTelegramDelivery",
+        "TestTelegramDeliveryConfiguration",
+        "TestTelegramDispatch",
+        "TestTelegramDispatchConfiguration"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/telegram"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/telegram",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestTelegramDelivery|TestTelegramDeliveryConfiguration|TestTelegramDispatch|TestTelegramDispatchConfiguration)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 50,
+      "names": [
+        "TestTelegramIngress",
+        "TestTelegramIngressConfiguration",
+        "TestTelegramTaskSelection",
+        "TestTelegramUpdateProtocol"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/telegram"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "copypaste.hk/platform/internal/telegram",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestTelegramIngress|TestTelegramIngressConfiguration|TestTelegramTaskSelection|TestTelegramUpdateProtocol)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 51,
+      "names": [
+        "TestTextComparisonCompleteBudgetFallbackAndContext",
+        "TestTextComparisonExactBodiesAndShortestSmallDiff",
+        "TestTextIndexRequiresIndependentReader",
+        "TestTransferRequiresSourceConsumptionBeforeRecordingPart"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/files",
+        "copypaste.hk/platform/internal/objectstore",
+        "copypaste.hk/platform/internal/storageconfig"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/files",
+        "copypaste.hk/platform/internal/objectstore",
+        "copypaste.hk/platform/internal/storageconfig",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestTextComparisonCompleteBudgetFallbackAndContext|TestTextComparisonExactBodiesAndShortestSmallDiff|TestTextIndexRequiresIndependentReader|TestTransferRequiresSourceConsumptionBeforeRecordingPart)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 52,
+      "names": [
+        "TestUploadControl",
+        "TestUploadCurrentAuthority",
+        "TestUploadIntegrity",
+        "TestUploadPromotionAndCommit"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestUploadControl|TestUploadCurrentAuthority|TestUploadIntegrity|TestUploadPromotionAndCommit)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 53,
+      "names": [
+        "TestUploadQueue",
+        "TestUploadWorkerHost",
+        "TestVersionedCostAmortization",
+        "TestWaiverFixedReport"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestUploadQueue|TestUploadWorkerHost|TestVersionedCostAmortization|TestWaiverFixedReport)$",
+        "-timeout=20m"
+      ]
+    },
+    {
+      "batch": 54,
+      "names": [
+        "TestWorkflowDefinitions"
+      ],
+      "packages": [
+        "copypaste.hk/platform/internal/httpapi"
+      ],
+      "arguments": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\go\\bin\\go.exe",
+        "-C",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\backend",
+        "test",
+        "copypaste.hk/platform/internal/httpapi",
+        "-count=1",
+        "-json",
+        "-p",
+        "1",
+        "-run",
+        "^(TestWorkflowDefinitions)$",
+        "-timeout=20m"
+      ]
+    }
+  ],
+  "count_flag": 1,
+  "package_parallelism": 1,
+  "package_deadline": "20m",
+  "selection": "All packages containing each selected name, from the exact unchanged discovery manifest; no test names removed.",
+  "runner_sha256": "2ad3aefc8789595140f37a86d7e6c83c9a18276d3fb2a0e27316acaa33987157"
+}

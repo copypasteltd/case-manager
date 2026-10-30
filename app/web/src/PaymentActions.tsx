@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { allocationFXReceipt, inversePaymentFX, inversePaymentFXLabel, reviewedPaymentFX } from '@copypaste/contracts/payment-fx';
+import { allocationFXReceipt, inversePaymentFX, inversePaymentFXLabel, reviewedPaymentFX, reviewedRefundFX, refundFXEqual } from '@copypaste/contracts/payment-fx';
 import { api, ApiError, type Page, type Schemas } from './api';
 import { Busy, Dialog, Empty, ErrorNotice, Field } from './components';
 import { useCommandKey } from './BusinessSelectors';
@@ -17,24 +17,25 @@ export function PaymentAction({ payment, action, allocation, onClose }: { paymen
   const [cost, setCost] = useState<Cost | null>(null), [claim, setClaim] = useState<Schemas['Spend'] | null>(null), [line, setLine] = useState(''), [picker, setPicker] = useState<'cost' | 'claim' | null>(null);
   const [plans, setPlans] = useState<Record<string, string>>({}), [refundSource, setRefundSource] = useState('');
   const [costAmount, setCostAmount] = useState(''), [rate, setRate] = useState(''), [quoteSource, setQuoteSource] = useState(''), [reviewed, setReviewed] = useState(false);
-  const cache = useQueryClient(), key = useCommandKey(), isRefund = fixed.direction === 'refund', cross = !!cost && cost.currency !== fixed.currency;
+  const cache = useQueryClient(), key = useCommandKey(), isRefund = fixed.direction === 'refund', crossRefund = action === 'record' && !!fixed.refund_fx, cross = !!cost && cost.currency !== fixed.currency;
   const titles: Record<PaymentActionKind, string> = { record: '登记实际资金', reverse: '全额冲销资金', allocate: '分配费用结算', release: '释放费用分配', refundAllocate: '关联退款分配' };
   const original = useQuery({ queryKey: ['payment', fixed.refund_of_id], enabled: !!fixed.refund_of_id && (action === 'record' || action === 'refundAllocate'), queryFn: ({ signal }) => api<Payment>('/payments/' + fixed.refund_of_id, { signal }) });
-  const sources = useInfiniteQuery({ queryKey: ['payment-allocations', fixed.refund_of_id, 'refund-picker'], enabled: !!fixed.refund_of_id && (action === 'record' || action === 'refundAllocate'), initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Allocation>>('/payments/' + fixed.refund_of_id + '/allocations?' + new URLSearchParams({ limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
+  const sources = useInfiniteQuery({ queryKey: ['payment-allocations', fixed.refund_of_id, 'refund-picker'], enabled: !fixed.refund_fx && !!fixed.refund_of_id && (action === 'record' || action === 'refundAllocate'), initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Allocation>>('/payments/' + fixed.refund_of_id + '/allocations?' + new URLSearchParams({ limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
   const sourceItems = sources.error ? [] : sources.data?.pages.flatMap(page => page.items).filter(item => item.kind === 'allocation' && !/^0(\.0+)?$/.test(item.remaining_amount)) ?? [];
   const inverse = action === 'release' ? allocation : sourceItems.find(v => v.id === refundSource);
   const crossInverse = action === 'record' ? sourceItems.some(v => plans[v.id] && v.fx) : !!inverse?.fx;
   function resetReview() { setReviewed(false); }
   const mutation = useMutation({ mutationFn: async () => {
     const base = paymentBase(fixed, reason);
-    if ((action === 'allocate' && cross || crossInverse) && !reviewed) throw new Error('请明确核对本次双币金额和汇率依据。');
+    if ((action === 'allocate' && cross || crossInverse || crossRefund) && !reviewed) throw new Error('请明确核对本次双币金额和汇率依据。');
+    if (crossRefund) { if (!original.data || !reviewed || !fixed.refund_fx) throw new Error('请重新核对实收、原付款本金和汇率凭证并明确确认。'); const q = fixed.refund_fx; reviewedRefundFX(original.data.currency!, fixed.currency!, q.original_amount, fixed.amount!, q.rate, q.source); }
     const fx = action === 'allocate' && cost ? reviewedPaymentFX(fixed, cost, amount, cross ? { cost_amount: costAmount, rate, source: quoteSource, acknowledged: true } : undefined) : undefined;
     const refundPlans = Object.entries(plans).filter(([, value]) => value !== '').map(([source_allocation_id, value]) => {
       const source = sourceItems.find(v => v.id === source_allocation_id); if (!source) throw new Error('请重新读取所选原分配。');
       return { source_allocation_id, amount: value, ...inversePaymentFX(source, value) };
     });
     const inverseAmount = inverse && ['release', 'refundAllocate'].includes(action) ? inversePaymentFX(inverse, amount) : {};
-    const body = action === 'record' ? { ...base, expected_source_version: isRefund ? original.data?.version ?? null : null, refund_allocations: refundPlans }
+    const body = action === 'record' ? { ...base, expected_source_version: isRefund ? original.data?.version ?? null : null, refund_allocations: refundPlans, ...(crossRefund ? { refund_fx_acknowledged: true } : {}) }
       : action === 'reverse' ? { ...base, effective_at: fromHongKongInput(effective) }
       : action === 'allocate' && cost ? { ...base, amount, cost_id: cost.id, cost_version: cost.version, cost_revision_id: cost.current_revision_id, cost_content_hash: cost.content_hash, claim_id: claim?.id ?? null, claim_revision_id: claim?.approved_revision_id ?? null, claim_line_id: line || null, ...(fx ? { fx } : {}) }
       : action === 'refundAllocate' ? { ...base, source_allocation_id: refundSource, amount, ...inverseAmount } : { ...base, amount, ...inverseAmount };
@@ -47,22 +48,24 @@ export function PaymentAction({ payment, action, allocation, onClose }: { paymen
       if (inverse && !rows.some(row => matches(row) && row.source_allocation_id === inverse.id && row.kind === (action === 'release' ? 'release' : 'refund') && allocationFXReceipt(row, { cash: amount, cost: inverseAmount.cost_amount ?? amount, source: inverse }))) throw new Error('回转回执与已核对双币依据不一致，请重新查阅流水。');
       if (action === 'record' && !refundPlans.every(plan => rows.some(row => matches(row) && row.kind === 'refund' && row.source_allocation_id === plan.source_allocation_id && allocationFXReceipt(row, { cash: plan.amount, cost: plan.cost_amount ?? plan.amount, source: sourceItems.find(v => v.id === plan.source_allocation_id) })))) throw new Error('退款分配回执需要重新核对。');
     }
+    if (crossRefund && (!refundFXEqual(result.refund_fx, fixed.refund_fx) || result.currency !== fixed.currency || result.amount !== fixed.amount || result.content_hash !== fixed.content_hash || result.version !== fixed.version + 1 || result.state !== 'recorded')) throw new Error('异币实收退款回执需要重新核对。');
     return result;
   }, onSuccess: async () => { await refreshPayments(cache); onClose(); } });
   const blocked = mutation.error instanceof ApiError && [409, 412].includes(mutation.error.status);
-  const disabled = !fresh || (action === 'allocate' && (!cost || (!!fixed.employee_id && (!claim || !line)))) || (action === 'record' && isRefund && (!original.data || !!original.error)) || (action === 'refundAllocate' && !refundSource) || ((action === 'allocate' && cross || crossInverse) && !reviewed);
+  const disabled = !fresh || (action === 'allocate' && (!cost || (!!fixed.employee_id && (!claim || !line)))) || (action === 'record' && isRefund && (!original.data || !!original.error)) || (action === 'refundAllocate' && !refundSource) || ((action === 'allocate' && cross || crossInverse || crossRefund) && !reviewed);
   return <Dialog title={titles[action]} onClose={onClose}>
-    <p className="notice neutral">{action === 'record' ? '登记已经发生的真实资金，不发起银行转账。退款币种保持与原付款一致。' : action === 'reverse' ? '新增全额反向资金与双币分配记录，保留原始日期和依据。实际收到退款请单独登记。' : action === 'release' ? '保留实际付款，追加反向分配。按原分配当前双币余额回转，最后一笔处理完原币尾差。' : '付款币核对资金余额，费用原币核对费用及报销余额；跨币种须人工固定实际结算汇率与凭证来源。'}</p>
+    <p className="notice neutral">{action === 'record' ? '登记已经发生的真实资金，不发起银行转账。异币实收退款使用原付款未分配本金，并固定人工汇率凭证。' : action === 'reverse' ? '新增全额反向资金与双币分配记录，保留原始日期和依据。实际收到退款请单独登记。' : action === 'release' ? '保留实际付款，追加反向分配。按原分配当前双币余额回转，最后一笔处理完原币尾差。' : '付款币核对资金余额，费用原币核对费用及报销余额；跨币种须人工固定实际结算汇率与凭证来源。'}</p>
     <ErrorNotice error={mutation.error ?? original.error ?? sources.error} />{blocked && <p className="notice warning">输入已保留。请关闭并核对最新资金、费用与双币结算余额。</p>}
     <form onSubmit={e => { e.preventDefault(); mutation.mutate(); }}><fieldset className="form-fieldset" disabled={mutation.isPending || blocked}>
       {action === 'record' && <PaymentFacts value={fixed} />}
+      {crossRefund && <section className="form-section"><h3>原付款本金核对</h3><p>{original.data?.title} · 原币 {original.data?.currency} · 当前未分配 {original.data?.unallocated_amount}</p><p>本次扣减原本金 {fixed.refund_fx?.original_amount} {fixed.refund_fx?.original_currency}；实际收到 {fixed.amount} {fixed.currency}。</p><p>此登记不回转费用或合同归属。</p></section>}
       {action === 'reverse' && <Field label="冲销生效时间（香港）"><input required type="datetime-local" step="1" value={effective} onChange={e => setEffective(e.target.value)} /></Field>}
       {action === 'allocate' && <section className="form-section"><h3>准确费用依据</h3>
         {fixed.employee_id && <><p>{claim?.title ?? '先选择该收款员工的已批准报销'}</p><button type="button" className="button secondary" onClick={() => setPicker('claim')}>选择员工垫付依据</button>{claim && <Field label="批准垫付明细"><select required value={line} onChange={e => { setLine(e.target.value); setCost(null); resetReview(); }}><option value="">选择具体垫付明细</option>{claim.lines.filter(l => l.funding === 'employee_advance').map(l => <option key={l.id} value={l.id}>{l.description} · {l.declared_amount} {claim.currency}</option>)}</select></Field>}</>}
         {cost ? <><h3>{cost.title}</h3><CostFacts value={cost} /></> : <p className="muted">尚未选择费用。</p>}
         <button type="button" className="button secondary" disabled={!!fixed.employee_id && (!claim || !line)} onClick={() => setPicker('cost')}>选择结算费用</button>
       </section>}
-      {(action === 'record' && isRefund || action === 'refundAllocate') && <section className="form-section"><h3>原付款与费用分配</h3>
+      {!fixed.refund_fx && (action === 'record' && isRefund || action === 'refundAllocate') && <section className="form-section"><h3>原付款与费用分配</h3>
         {original.isPending ? <Busy /> : original.data && <p>{original.data.title} · 原币 {money(original.data.amount, original.data.currency)} · 已退款 {money(original.data.refunded_amount, original.data.currency)}</p>}
         <p className="form-note">已分配部分须引用原正向分配，同时核对付款币与费用原币回转金额。</p>
         {sources.isPending ? <Busy /> : !sources.error && !sourceItems.length ? <p>当前页没有剩余可退分配，可继续加载历史分配。</p> : sourceItems.map((source, index) => <div key={source.id} className="payment-plan-item"><strong>原分配 · {money(source.amount, fixed.currency)}</strong><p>当前可退 {money(source.remaining_amount, fixed.currency)} · 费用原币 {source.remaining_cost_amount ?? '需重新读取'} {source.cost_currency ?? ''}</p>
@@ -79,7 +82,7 @@ export function PaymentAction({ payment, action, allocation, onClose }: { paymen
         <p className="form-note">固定实际付款日 {fixed.paid_on} 的结算依据，请对照已固定资金凭证。</p>
       </section>}
       {inverse && amount && <p className="notice neutral">{inversePaymentFXLabel(inverse, amount)}</p>}
-      {(action === 'allocate' && cross || crossInverse) && <label className="check-field"><input type="checkbox" checked={reviewed} onChange={e => setReviewed(e.target.checked)} />我已核对两种币金额、汇率方向、凭证来源与本次回转金额</label>}
+      {(action === 'allocate' && cross || crossInverse || crossRefund) && <label className="check-field"><input type="checkbox" checked={reviewed} onChange={e => setReviewed(e.target.checked)} />我已核对两种币金额、汇率方向、凭证来源与本次回转金额</label>}
       <Field label="操作依据"><textarea required rows={3} maxLength={200} value={reason} onChange={e => setReason(e.target.value)} /></Field>
       <MFAConfirmation onFresh={setFresh} /><div className="dialog-actions"><button className="button primary" disabled={disabled}>{mutation.isPending ? '正在登记' : titles[action]}</button></div>
     </fieldset></form>

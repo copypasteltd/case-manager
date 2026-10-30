@@ -1,0 +1,19 @@
+{
+  "counts_as_current_pass": false,
+  "android_build_completed": false,
+  "reason": "Filesystem queue diagnostics retained before increasing only scoped native-build I/O worker concurrency.",
+  "records": [
+    {
+      "file": "app/.local/refund-fx-attempts/11-metro-io-concurrency/bundle.log",
+      "sha256": "c9ae10762e2c7cffb0756c767b98f4e809537682afa66ffb3a4c3b963dc0c459"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/11-metro-io-concurrency/refund-fx-fs-diagnostic.cjs",
+      "sha256": "285a0b16ec2e128b0905d480d5a3abf92b47f986c1c0f7b1ceba2ba225e707b3"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/11-metro-io-concurrency/build_refund_fx_android.py",
+      "sha256": "b1ebb1dfec1f6d99c042ba9e591b465d388d13b8880af8152635e1086d7dd5ec"
+    }
+  ]
+}

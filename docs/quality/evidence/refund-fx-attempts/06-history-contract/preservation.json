@@ -1,0 +1,268 @@
+{
+  "passed": false,
+  "counts_as_current_pass": false,
+  "archived_at": "2026-10-30T06:16:30.496925+00:00",
+  "reason": "PaymentRevision accidentally required the new optional refund_fx field; legacy history returned RESPONSE_CONTRACT_ERROR. Eight complete backend batches passed, batch9 failed one existing settlement case. No remaining batches or native APK claimed.",
+  "source_archive": "app/.local/refund-fx-attempts/06-history-contract/source.zip",
+  "source_archive_sha256": "2e9b48525ef5df0fd23a41d6ce69e05b325123fc147c342067ee11d53d2ee7cb",
+  "interaction_source_sha256": "11a4b9a8f340dad92b63894d7942d2ef5441aba8d778da995528231946f34e59",
+  "public_records": [
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/client-checks.json",
+      "sha256": "71b04a9c87a96803deda30b2903f8fd822637fa6817d535c3b1275168c6c9eb6"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/dependency-audit.json",
+      "sha256": "61f282f2daeaba41bb7034b792921536a9be7ba52c2b4462b319eb1011707df0"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/development-project-resources.json",
+      "sha256": "65a147eb964cddba605c768ed50e08f2d27df338ab5a013e2b3d4d8a1995af92"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/development-runtime.json",
+      "sha256": "713e46ebcab2a3e32d37f8914b9f596b80199bf60b1b593b146dddd8fe8ec3bf"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/development-update.json",
+      "sha256": "fb4de45070db42671ad01c7efb91de49e7cbdb16e02fce2590504c9bf9d777f4"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/linux-build.json",
+      "sha256": "d22318ca331be15f056dc975391933ca1068c508b43292f5616f48c02161ca4b"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/media-encoding.json",
+      "sha256": "c9795dc503ec2d444765cad27052985be797e624de9f6ec45823e395957f10c3"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/mobile-build.json",
+      "sha256": "324fff94b548a0eca922e2d1b016c0e758e31fbd6f27cecdec9108ad02ec5ce3"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/mobile-capture-manifest.json",
+      "sha256": "795ec9b14fe6c4bf666023ecd1f6182b52aceea4a1917424ef40efecdfcf20d0"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/native-cluster.json",
+      "sha256": "121ffa9381cd6f005a799814c060ecf7287b1edbc2a324c63128f7ac2ad57147"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/reused-evidence.json",
+      "sha256": "27d9b35be1d246393939f44736f8d3043173131604aa841c16f792881b48e27e"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/runtime-build.json",
+      "sha256": "27a98260c952fc3730244bb8cecf6cbf60a48ae6f8b579eca46ff087034c8497"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/schema-upgrade.json",
+      "sha256": "3e06270767033c153ae51dff4ff6128c5a28910dd49ee85baea718885ac4c908"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/source-archive.json",
+      "sha256": "425388d0abd3f87bc338a9482b157709e4ddd50fdf93a831edfd6c5a76ca0375"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/visual-review.json",
+      "sha256": "f09428c2c96d3d835717b6869d5fcf85b2aa76efac144677c26c5d8610ad7ef5"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/web-build.json",
+      "sha256": "c6b38932b363ab31cdcb62b03754aaf274070b6dcd7b61b1e82d6a488c8d0135"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx/web-capture-manifest.json",
+      "sha256": "a763cdd387d2596a97a0b7c2bf7fc749d54bdf47c142858c5e12022dacc642c2"
+    },
+    {
+      "file": "docs/quality/evidence/refund-fx-attempts/06-history-contract/refund-fx-backend/batch-progress.json",
+      "sha256": "503cfc21e6062524f3f2dd3f9f3b738e98cab46e8ea2843004a3f9385b67ef6a"
+    }
+  ],
+  "private_records": [
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-1.log",
+      "sha256": "0ab2504f909f4e88e1b64aa8988908e9eef0bc38901ebf4359ca6cccaa4f86ea"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-10.log",
+      "sha256": "98d3c55fdd63762556176e91634e1adc93a13b5de37bfe21770637a80180c2c6"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-11-interrupted.log",
+      "sha256": "c8926c590f9c4c9c779c59d320db53cc9b142d45ced0e949999b084af9a4c5e9"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-11.log",
+      "sha256": "74a6966f3a5d63d7794baedb2630ebf4df11fb9478da0c4ea1f00d418e290f36"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-12.log",
+      "sha256": "bb873569a2c5a2a349e883b7755e0d5dbff800483cd72f63bbde2f552949a35f"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-13.log",
+      "sha256": "d620046ef83569c44b4077d0809e0684d097eda12ac01c3ea79051e940d87156"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-14.log",
+      "sha256": "33616334a135811011f7b20b17724af8dbdea47f47d7bd126872054681cce4d7"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-15.log",
+      "sha256": "f532bf32d689700b65eec2ef80a2ed6500ea30d8c7efb6590551a1246d5e3b36"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-16.log",
+      "sha256": "975c5efbd50d50a01a75050803b9579424939e8107dee131c38ff8114a7d05e2"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-17.log",
+      "sha256": "e6e4fccc42ff8f65b219852a23a094af54cd1c0b445016e140237b1854470dfa"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-2.log",
+      "sha256": "8f875607b2c198478a72bc1867df5952f9a017379d86c5e0522c7acc92dededd"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-3-fixture-timeout.log",
+      "sha256": "9f9ccbdd7e150bdad36b9244ab95923029b04e7e4ef56407e4b5e4a6b0179890"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-3.log",
+      "sha256": "d627159bfe326ebc35bfa2126e3a67dea0c838727b1734b27ea0ba014042dd75"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-4.log",
+      "sha256": "eb496f94cc7ee10c4577290329ee56c11b1486f3d05d49b5021f81c62bd5baa5"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-5-budget-comparison-cleanup-01.log",
+      "sha256": "202a4409813ca6d062a6633d2aa43253b28bea9d8594f20b24b6afa210e3be87"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-5.log",
+      "sha256": "13827144c76f002aaf0bc4f74ffae9237bfebaab0b64e118ed6a3aff355dc084"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-6-memory-failure.log",
+      "sha256": "a5fdef5df72f1250746c4f3aad8e64ad44cee8c79feff0b88bf29af995b2019d"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-6.log",
+      "sha256": "72ad1263f146fff78a1631cbe4b4c4a86d59b023fa2872a30756a93d782413b5"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-7.log",
+      "sha256": "0d93769071704bf5c7cf4af0780e86a7d7b462defac612e5fe532a7df7daa246"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-8.log",
+      "sha256": "b460f1da8c954d652567a52085daf5da16f833860132606d5a6103b8281e6113"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/backend-batch-9.log",
+      "sha256": "b336a4a0c675d4e7a9ac610e505e47b548331914403bd1382904885e66989d69"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-douyin-build.log",
+      "sha256": "02822fde870168561291d8c4bffb5293beebbc1f55022ab2eef665156dc7cd9b"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-mobile-tests.log",
+      "sha256": "e1448441cde84d1d54a81a56f81760f3c376ee1e535f43d6995d2c3fdfe979c9"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-runtime-build.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-runtime-tests.log",
+      "sha256": "902508aad5ba9d2b77f4e6090a50f6a7592764982e6cc602ced7d330284d02fe"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-typecheck.log",
+      "sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-web-build.log",
+      "sha256": "b3cce6abf2d62600f98a16d6b5b3119d4785e4e96c6147444ff66df333e78e8a"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-web-tests.log",
+      "sha256": "abb6dbf714968b69952489d9df1ec5e4f03d8cd0814b9b5a917341add468b271"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-client-wechat-build.log",
+      "sha256": "921c579a4ababe7bb3230bdcedfcf87141aca926c62f803089e2a288afb88992"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-skill-check.log",
+      "sha256": "aac5b0d87b345b347fb5abb1bcefa2327b67f64f6faf2bd83ed1408da3aaf975"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/refund_fx-android-final.log",
+      "sha256": "ec503dbff8135503b72fad8819d3dc60a938a6ed17eb25fab6377d7f60fa464e"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/bundle.log",
+      "sha256": "47eab0f12dfa3d547009bf205266cccb5741bc0f76980fcb0bca8900efb6039c"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/earlier-final-sources.zip",
+      "sha256": "980d6f742fe6f81251c1cc1532eddb360934f7ab1074dd0f735f513704755c65"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/gifs/refund-fx-mobile.gif",
+      "sha256": "153a37f3da6c9f379c0ea76667ca35c552b4bf0c23a1747831377f61b46dfedc",
+      "original_file": "docs/media/gifs/refund-fx-mobile.gif"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/gifs/refund-fx-web.gif",
+      "sha256": "38fba27ddcbe455f246c867dbb07c3ea47258b65e943441ef983c6ac8f794503",
+      "original_file": "docs/media/gifs/refund-fx-web.gif"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/screenshots/refund-fx-mobile-draft.png",
+      "sha256": "7624701a76dcd5ca9c3e4bb671c48826a6ab3095f294adf986d1e1798e6a97a2",
+      "original_file": "docs/media/screenshots/refund-fx-mobile-draft.png"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/screenshots/refund-fx-mobile-recorded.png",
+      "sha256": "dce90b6a61fbb4835cfef6344036a6be1daa2997ed2133fad73fcb6d70ddcd89",
+      "original_file": "docs/media/screenshots/refund-fx-mobile-recorded.png"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/screenshots/refund-fx-mobile-reversed.png",
+      "sha256": "36ffa9c866eb2533c3ccd17e5d3c67f28dbf293d417318fd82fb6e0164dd3dee",
+      "original_file": "docs/media/screenshots/refund-fx-mobile-reversed.png"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/screenshots/refund-fx-web-draft.png",
+      "sha256": "186aeaf95ea1becc5de9c24e13491535c7c8207b9c7da16e2f0ba5b1a584a8ee",
+      "original_file": "docs/media/screenshots/refund-fx-web-draft.png"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/screenshots/refund-fx-web-recorded.png",
+      "sha256": "fcdefbe36412ac62449ec36d8bf982011119808e5c5db96dc14690953a24e675",
+      "original_file": "docs/media/screenshots/refund-fx-web-recorded.png"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/screenshots/refund-fx-web-reversed.png",
+      "sha256": "c05f15a902a3ecab336079bdaed265a6a4842146831b60f028d5e70caee23287",
+      "original_file": "docs/media/screenshots/refund-fx-web-reversed.png"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/videos/refund-fx-mobile.mp4",
+      "sha256": "b1c304164d613b1af2735ab197410d6f53555994da4d7898ab7edacab278dffa",
+      "original_file": "docs/media/videos/refund-fx-mobile.mp4"
+    },
+    {
+      "file": "app/.local/refund-fx-attempts/06-history-contract/media/videos/refund-fx-web.mp4",
+      "sha256": "8a0c9060376fe313548c35879b0539c3444a739b9b120872f2a0699946ebcc11",
+      "original_file": "docs/media/videos/refund-fx-web.mp4"
+    }
+  ],
+  "archive_script_sha256": "68c779255f046b7b48dc54435f7d757c26ecb4cf72222d38c6b643a092d1eee2"
+}

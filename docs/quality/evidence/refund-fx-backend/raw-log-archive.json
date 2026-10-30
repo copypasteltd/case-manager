@@ -1,0 +1,443 @@
+{
+  "passed": true,
+  "source_sha256": "dcf0728d1eb2df3400ef8654d6267636fbaa33ebf93dcb28b860bc8f4b78e1d2",
+  "records": 1535,
+  "logs": [
+    {
+      "batch": 1,
+      "file": ".local/refund-fx-backend/backend-batch-1.log",
+      "sha256": "8e8665a68158987ed9fd5122788f1a489ccf960c42415f86e72d8dc43177bc2a",
+      "records": 135,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 2,
+      "file": ".local/refund-fx-backend/backend-batch-2.log",
+      "sha256": "f9a1d03b39abc741ee0e0c22dcf706dfb1369019b6aacb8e02a2512a831a2dca",
+      "records": 168,
+      "execution": "Nineteen completed current-source top-level cases and their passed children, selected from an interrupted package. Original failed package and subcase remain archived; no package pass claimed.",
+      "selected_completed_cases_from_failed_package": true
+    },
+    {
+      "batch": 3,
+      "file": ".local/refund-fx-backend/backend-batch-3.log",
+      "sha256": "8a02600afa0eacf5b67f7f827c2b6b542b7274f49bf4459dd18e508c721c59ba",
+      "records": 52,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 4,
+      "file": ".local/refund-fx-backend/backend-batch-4.log",
+      "sha256": "08ecf2173366b0d5cca4a082e1ec2f9fc6ab1560bdcbb5f73b96f6857bf2731c",
+      "records": 31,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 5,
+      "file": ".local/refund-fx-backend/backend-batch-5.log",
+      "sha256": "7c09b74a281bc96f76ca4af38431e4e60bfa0b6d8788f6db29de8c6682a3b966",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 6,
+      "file": ".local/refund-fx-backend/backend-batch-6.log",
+      "sha256": "6f3c1e2f1c6f76dc3b3a532969bf6f4cf80c998c078667577537865c337a83f5",
+      "records": 20,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 7,
+      "file": ".local/refund-fx-backend/backend-batch-7.log",
+      "sha256": "26c30d9b8ab49287476ca7782867ea24956e811ee5f4aac33816b3b617fa3d3c",
+      "records": 26,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 8,
+      "file": ".local/refund-fx-backend/backend-batch-8.log",
+      "sha256": "df2a55c7e19457ea6fcfab733d98af541a1aee3633298a87f77d83a84ddb3c32",
+      "records": 15,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 9,
+      "file": ".local/refund-fx-backend/backend-batch-9.log",
+      "sha256": "2c2b6be9f40fe880b4ae245a8f3206ba239418cb2118a63f97e3d09059fe5141",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 10,
+      "file": ".local/refund-fx-backend/backend-batch-10.log",
+      "sha256": "686cfbdc9eb0d2e1cf9a042721eff4b3375e7c9639196c183a177cca2067bbad",
+      "records": 50,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 11,
+      "file": ".local/refund-fx-backend/backend-batch-11.log",
+      "sha256": "2ab5dba2d021dfc954ab35ef0a1d137a3d542c714e0ef771e21af2fcea76a632",
+      "records": 57,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 12,
+      "file": ".local/refund-fx-backend/backend-batch-12.log",
+      "sha256": "707b9c6e57b07710c4365a1cb37a79acd2193fa386ab1553e1f2bb902a8d881c",
+      "records": 15,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 13,
+      "file": ".local/refund-fx-backend/backend-batch-13.log",
+      "sha256": "0a0f4536c36a76eccc8f0f702514b4d01d299b69097a037076fda391f1d73185",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 14,
+      "file": ".local/refund-fx-backend/backend-batch-14.log",
+      "sha256": "c7324ee548b9034e4ddf3fd4e9b08f3fd9dcd4a9f42487e2b1834c11efbf315f",
+      "records": 6,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 15,
+      "file": ".local/refund-fx-backend/backend-batch-15.log",
+      "sha256": "296a70d0667325acfe15ce2edd448bfd1787b3141d44edd554b7671fb823ff39",
+      "records": 7,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 16,
+      "file": ".local/refund-fx-backend/backend-batch-16.log",
+      "sha256": "152ddbf6939554bd504cd127028a7529a50c7bf9ef68f0426de2f07342deab56",
+      "records": 10,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 17,
+      "file": ".local/refund-fx-backend/backend-batch-17.log",
+      "sha256": "27f5251a14a22f3ae2edf20cf19cd94a44f2119fbf7a68323fc42bb50abadfc1",
+      "records": 57,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 18,
+      "file": ".local/refund-fx-backend/backend-batch-18.log",
+      "sha256": "c43e053e0bbce9846e060ddd104cea04c92f75a819390256830890a327737074",
+      "records": 36,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 19,
+      "file": ".local/refund-fx-backend/backend-batch-19.log",
+      "sha256": "b0e973d6ddffe879259abebee7b0ffa231b9268dc3d579fee531c5701a59d620",
+      "records": 19,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 20,
+      "file": ".local/refund-fx-backend/backend-batch-20.log",
+      "sha256": "0cc8e122a86b8dcfa6e3f51909a748201b72ecf89327f542fd4be4f50ce4e82b",
+      "records": 23,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 21,
+      "file": ".local/refund-fx-backend/backend-batch-21.log",
+      "sha256": "a9cce40640d5539e4b7c33cab808d652f131e67b4d81675ba9d27741ceab47b1",
+      "records": 6,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 22,
+      "file": ".local/refund-fx-backend/backend-batch-22.log",
+      "sha256": "89ce52738c86536942eaff0407db943d1678c03cf46d365ea4315774ce588742",
+      "records": 12,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 23,
+      "file": ".local/refund-fx-backend/backend-batch-23.log",
+      "sha256": "bb70b1e23792b2410958965863c424a86dd3a2e2daa9ee695120fbbc537ffd94",
+      "records": 8,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 24,
+      "file": ".local/refund-fx-backend/backend-batch-24.log",
+      "sha256": "c92beab660aa5006f86d1d4d703651a60028ae47bf23f5e176699aaae2c54190",
+      "records": 16,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 25,
+      "file": ".local/refund-fx-backend/backend-batch-25.log",
+      "sha256": "f490446c4a4f2a0034efd0e3464a78ce88b5a6f43dc63609adbe90777e6bd5ee",
+      "records": 18,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 26,
+      "file": ".local/refund-fx-backend/backend-batch-26.log",
+      "sha256": "93b3abe80afa3bccdf45e15d33a6152dc23b83b59200a2051674b648c310d132",
+      "records": 8,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 27,
+      "file": ".local/refund-fx-backend/backend-batch-27.log",
+      "sha256": "0a2b619b61b121784c212257dcd8bec1c8d7ab7b595d652d1385a45ed1e74767",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 28,
+      "file": ".local/refund-fx-backend/backend-batch-28.log",
+      "sha256": "8ad5839bb290bb44d4a6bceeb41de412e57f80a3d6a787f50cbae83f29ff5a91",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 29,
+      "file": ".local/refund-fx-backend/backend-batch-29.log",
+      "sha256": "8907a11a777945abc04d784f7a9e1fe1454369778c91ef227a46cc89ac0ff964",
+      "records": 15,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 30,
+      "file": ".local/refund-fx-backend/backend-batch-30.log",
+      "sha256": "f483237e025bbfa5d753a2c83f58fac5ceb00c949e23bf097b376f1b18632e9c",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 31,
+      "file": ".local/refund-fx-backend/backend-batch-31.log",
+      "sha256": "a3e1f40b87b6e4c654146ff71fcd833ad0297f564a3fbb1b9e0156d8252cc78b",
+      "records": 31,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 32,
+      "file": ".local/refund-fx-backend/backend-batch-32.log",
+      "sha256": "56014d51a2c6130935fef84790e2a6b442c11d0d8248436b2cf5709973181047",
+      "records": 48,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 33,
+      "file": ".local/refund-fx-backend/backend-batch-33.log",
+      "sha256": "2253d0920c91fa98c00b20dbdc4d2adeb9d81faa4c51ef8a10865d4a1bda1149",
+      "records": 38,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 34,
+      "file": ".local/refund-fx-backend/backend-batch-34.log",
+      "sha256": "f9484ef7f603b8cabcf53686708858b39ac0daf03e01e8bf7e262be122afec38",
+      "records": 39,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 35,
+      "file": ".local/refund-fx-backend/backend-batch-35.log",
+      "sha256": "d115fd941fe0b08e65f126c4b12344d456de4a8a9d239b15eda3a92431280af7",
+      "records": 53,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 36,
+      "file": ".local/refund-fx-backend/backend-batch-36.log",
+      "sha256": "74aeb535756fb935f7642ceaadd8761e3a9b5ea9a6791c821e4ccf198b17b548",
+      "records": 56,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 37,
+      "file": ".local/refund-fx-backend/backend-batch-37.log",
+      "sha256": "306eda6537a335468fe50896349a15278e7f6ddc6dc1075edef440cde73003c3",
+      "records": 24,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 38,
+      "file": ".local/refund-fx-backend/backend-batch-38.log",
+      "sha256": "b5f5d07cd9165e82993f48877c8b838c87a01d404c1a2529931c1b13b2e041af",
+      "records": 57,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 39,
+      "file": ".local/refund-fx-backend/backend-batch-39.log",
+      "sha256": "5d0401d98b015834e8676822c63d853d4027de7bb995620065aa6cce08c1f153",
+      "records": 23,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 40,
+      "file": ".local/refund-fx-backend/backend-batch-40.log",
+      "sha256": "d5f2ab99a69b4eb76e8eaef37c215f97668e5f56f32a48c60946373dc4b929cd",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 41,
+      "file": ".local/refund-fx-backend/backend-batch-41.log",
+      "sha256": "afb6c54c95ca4d07b2e7f52059a180eded55233d8b9c22838cdee1f7ad373e80",
+      "records": 36,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 42,
+      "file": ".local/refund-fx-backend/backend-batch-42.log",
+      "sha256": "bd20d7c1a37f778fb7aa721dbb10cba777c2e4c2cb3b13cb5beccd1e09030200",
+      "records": 22,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 43,
+      "file": ".local/refund-fx-backend/backend-batch-43.log",
+      "sha256": "9570877f1a1aca672879e6703114ad307f7fa489d4201fc6a753e6f7da4c14ae",
+      "records": 23,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 44,
+      "file": ".local/refund-fx-backend/backend-batch-44.log",
+      "sha256": "8cd32643da4c7fe6c3b5c841168d316120d09217976b943ed13e0945d4a818d5",
+      "records": 40,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 45,
+      "file": ".local/refund-fx-backend/backend-batch-45.log",
+      "sha256": "6f3483e96b3031307aefc833fc23d823e3aafc3aba6aa54baa80a120ce1c3af5",
+      "records": 28,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 46,
+      "file": ".local/refund-fx-backend/backend-batch-46.log",
+      "sha256": "111a184452f11117e28e50de328c60818f04ba513c1a01493c6e6fed92213150",
+      "records": 33,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 47,
+      "file": ".local/refund-fx-backend/backend-batch-47.log",
+      "sha256": "544ccea35b8d11ba6c2432c49feab600a8af564607c373410950f6d82c8815b2",
+      "records": 8,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 48,
+      "file": ".local/refund-fx-backend/backend-batch-48.log",
+      "sha256": "0d110059d772036ef23ec623acbb2ade42078538dcd465a8cf19fab5046067ea",
+      "records": 19,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 49,
+      "file": ".local/refund-fx-backend/backend-batch-49.log",
+      "sha256": "81094db92669511c04b9486bac6c8091472b6fa32fd06b553b242d52bc2e68ec",
+      "records": 31,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 50,
+      "file": ".local/refund-fx-backend/backend-batch-50.log",
+      "sha256": "83ec11b529c69c7a6a43c0cd8fc063da11ca5a863aa4f1240cca73ff0ab2cdde",
+      "records": 26,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 51,
+      "file": ".local/refund-fx-backend/backend-batch-51.log",
+      "sha256": "9aad65c6cd426ef9db4153d88487621b86db3ec59868f05d8b939b32fe12ded3",
+      "records": 4,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 52,
+      "file": ".local/refund-fx-backend/backend-batch-52.log",
+      "sha256": "0f023b7f11083b1707227381cdc1f36e7303021492b66e0e0f27643b04e84b3e",
+      "records": 31,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 53,
+      "file": ".local/refund-fx-backend/backend-batch-53.log",
+      "sha256": "8d1a46e5bddf965345f00041a7c25006a0c544c4e9448c84d004f537c8eb2545",
+      "records": 18,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    },
+    {
+      "batch": 54,
+      "file": ".local/refund-fx-backend/backend-batch-54.log",
+      "sha256": "f817db759181af8649dcaf71ea72b668650b529da4a74690108e7569c94db32a",
+      "records": 9,
+      "execution": "Complete discovered batch; one Go package at a time; application inputs, deadlines and leases unchanged",
+      "selected_completed_cases_from_failed_package": false
+    }
+  ],
+  "targeted_development_runs_counted_as_final_pass": false,
+  "raw_logs_private": true,
+  "earlier_failures_counted_as_final_pass": false,
+  "freezer_sha256": "15eb2d55ff6d80d461e69bc4cab73bd2a4f931ce2eac5f752f887333ca53e1e8"
+}

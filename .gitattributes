@@ -13,3 +13,6 @@ docs/quality/evidence/**/attempts/** -whitespace
 *.ico binary
 *.jar binary
 *.pdf binary
+
+# Preserve the already applied schema93 EOF bytes; publication additionally pins its exact SHA-256.
+app/backend/migrations/0093_actual_foreign_refunds.sql whitespace=cr-at-eol,-blank-at-eof

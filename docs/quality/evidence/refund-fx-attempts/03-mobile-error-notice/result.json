@@ -1,0 +1,37 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T05:47:27.294Z",
+  "finished_at": "2026-10-30T05:48:32.302Z",
+  "checks": [
+    "Human login and MFA completed before any capture."
+  ],
+  "source_count": 900,
+  "source_sha256": "d9e63774aeb95fe877beba5b30725eb724bc396dc1c8881199445ef4e4dfa6cb",
+  "source_after_sha256": "d9e63774aeb95fe877beba5b30725eb724bc396dc1c8881199445ef4e4dfa6cb",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/原付款本金乘实际汇率.*实收/).first() to be visible\u001b[22m\n",
+  "failure_stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText(/原付款本金乘实际汇率.*实收/).first() to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_refund_fx.mjs:39:52\n    at async refund_fxBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\refund_fx_browser_common.mjs:44:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_refund_fx.mjs:13:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/finance/index?kind=payment&id=0b463381-2586-4383-9dee-f70f00146dca&action=edit",
+    "body_children": 3,
+    "active_mobile_pages": 1,
+    "refund_fx_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "75b30e6fc1fe14175ab3d938aa715434cbbf40bff064a7616f948a906d585512",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "75b30e6fc1fe14175ab3d938aa715434cbbf40bff064a7616f948a906d585512",
+  "build_source_unchanged": true
+}

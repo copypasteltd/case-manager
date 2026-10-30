@@ -270,6 +270,9 @@ func (s *Service) AllocateRefund(ctx context.Context, cmd core.Command, id strin
 		claims = append(claims, *source.ClaimID)
 	}
 	return s.mutatePayment(ctx, cmd, id, "payment.record", in.Base, true, []string{source.CostID}, claims, func(tx pgx.Tx, p Payment) (core.Result, error) {
+		if p.RefundFX != nil {
+			return core.Result{}, core.Fail(409, "REFUND_FX_ALLOCATION_UNSUPPORTED", "异币退款当前不接受费用回转分配")
+		}
 		if p.State != "recorded" || p.RecordKind != "payment" || value(p.Direction) != "refund" {
 			return core.Result{}, core.Fail(409, "REFUND_NOT_ALLOCATABLE", "仅未冲销的实际退款可以关联原分配")
 		}
