@@ -1,0 +1,29 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/office-authoring-web-word.png",
+      "sha256": "62877c6a0c431dc701c7387015c82de701738b3cdd19fe4ebfa3a206464d891b"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-web-excel.png",
+      "sha256": "563b893fe5c954e6a00879c35554148e7483da82856187acc6e0af7718b2cb53"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-web-slides.png",
+      "sha256": "b7999666afeb50e2c47299bd81aa855adcbd783bc9a3b83c911b5aa2ccdb515b"
+    }
+  ],
+  "recording": {
+    "name": "office-authoring-web",
+    "frame_count": 9,
+    "duration_ms": 2319,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/office-authoring-web/frames.json",
+    "manifest_sha256": "ac90c5c489fd28bc1f38fd0383759405241ef69d889ebaaf059ba64fb32131ce"
+  },
+  "scope": "Actual synthetic Web edit/render and shared H5 readonly pixels; HTTP tests separately exercise full scan/hash/promotion/commit. No device/cloud/Office layout claim."
+}

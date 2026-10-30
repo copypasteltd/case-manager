@@ -12,12 +12,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /** Only system-picked, persistably granted, seekable documents are accepted. */
-final class SAFUploadSource implements UploadSource {
+class SAFUploadSource implements UploadSource {
     final ContentResolver resolver;
     final Uri uri;
     final String name, media;
     final long size, modified;
     final CancellationSignal cancellation;
+    // Only the package-private, app-owned generated source uses this metadata
+    // constructor. System-picked documents keep every grant/seek check below.
+    SAFUploadSource(Uri uri, String name, String media, long size, long modified, CancellationSignal cancellation) {
+        resolver = null; this.uri=uri; this.name=name; this.media=media; this.size=size; this.modified=modified; this.cancellation=cancellation;
+    }
     SAFUploadSource(ContentResolver resolver, Uri uri) throws IOException {
         this(resolver, uri, new CancellationSignal());
     }

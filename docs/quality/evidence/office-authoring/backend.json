@@ -1,0 +1,275 @@
+{
+  "passed": true,
+  "id": "backend",
+  "started_at": "2026-10-30T19:48:31.113935+00:00",
+  "finished_at": "2026-10-30T19:56:04.074403+00:00",
+  "elapsed_seconds": 452.949,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestOfficeAuthoring|TestUploadControl|TestUploadIntegrity|TestUploadPromotionAndCommit|TestOfficeTextDocuments|TestUploadCurrentAuthority)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "e635199fdd5cfe3bbf724b910bf084d07be37922e53b9a634af8fd2187185e19",
+  "source_after_sha256": "e635199fdd5cfe3bbf724b910bf084d07be37922e53b9a634af8fd2187185e19",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestOfficeAuthoring",
+      "TestOfficeTextDocuments",
+      "TestUploadCurrentAuthority",
+      "TestUploadIntegrity",
+      "TestUploadPromotionAndCommit",
+      "TestUploadControl"
+    ],
+    "pass": 46,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/docx_actual_create_edit_commit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/xlsx_actual_create_edit_commit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/pptx_actual_create_edit_commit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/generated_body_mismatch_cannot_reach_scan_promotion_or_formal_commit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/mini_programs_read_but_cannot_render"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/anonymous_and_wrong_version_blocked"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/source_corruption_blocked"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring/revocation_during_IO_rejects_result_without_holding_authorization_locks"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeAuthoring"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/new_identity_queues_once_and_keeps_legacy_terminal_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/search_uses_current_version_Office_body_without_duplicate_legacy_rows"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/comparison_binds_office_or_mixed_per-version_provenance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/secretary_preview_consumes_exact_derived_Office_text_without_object_credentials"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/current_classification_and_scan_rechecks_hide_stored_bodies"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadCurrentAuthority/logout_during_signing_returns_no_fresh_permit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadCurrentAuthority/logout_during_reconciliation_prevents_receipt_replacement"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadCurrentAuthority/queue_and_direct_metadata_hide_a_changed_target_classification"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadCurrentAuthority/committed_upload_history_rechecks_the_formal_file_permission_before_paging"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadCurrentAuthority"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/disabled_scanning_blocks_while_rescan_preserves_authoritative_hash_and_append_only_reports"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/retry_reads_only_ranges_after_the_durable_checkpoint"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/clean_label_without_provenance_cannot_produce_a_scan_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/complete_looking_receipt_cannot_replace_reading_the_source"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/superseded_lease_cannot_advance_a_hash_checkpoint"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/revocation_during_stream_prevents_authoritative_progress"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity/scan_report_audit_and_job_completion_roll_back_together"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadIntegrity"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/ready_requires_target_readback_and_commit_is_atomic_idempotent_and_queues_a_separate_replica"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/partial_copy_resumes_the_same_multipart_and_skips_confirmed_source_ranges"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/unknown_candidate_completion_is_reconciled_by_unique_key_before_another_completion"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/matching_length_and_ETag_cannot_hide_corrupted_target_bytes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/name_collision_preserves_ready_candidate_and_audit_rejection_rolls_back_commit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/two_ready_replacements_cannot_both_advance_one_base_version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit/abort_during_candidate_upload_cannot_create_ready_or_formal_state"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadPromotionAndCommit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/admission_requires_explicit_storage_and_capacity_and_limits_platforms"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/quota_reservations_serialize_concurrent_uploads"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/part_hints_do_not_prove_cloud_progress_and_signed_secrets_are_never_persisted"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/incomplete_finalization_returns_to_uploading_and_can_finalize_a_new_lifecycle"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/uncertain_completion_reconciles_the_immutable_source_before_any_repeat_RPC"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/old_prepare_worker_cannot_publish_after_lease_takeover"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/abort_during_external_creation_records_a_superseded_receipt_without_reactivating"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/storage_epoch_changes_stop_fresh_signatures_and_commands"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl/audit_failure_rolls_back_admission_and_outbox_atomically"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestUploadControl"
+    }
+  ],
+  "private_log_sha256": "e59e3d74e5dd27df4366a930383eb235d25a9eba262a8c0229b1095ad563ac11",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Six selected actual HTTP/PostgreSQL suites: new Word/Excel/PPT create-edit-full-hash-scan-promotion-formal-commit, wrong body rejection, stale heads, source corruption, revocation, mini-program read-only; existing upload authority/control/integrity/promotion and Office text regressions. Synthetic object transport/scanner; no real cloud or full backend claim.",
+  "real_device": false,
+  "virtualization_used": false
+}

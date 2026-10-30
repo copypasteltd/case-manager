@@ -322,6 +322,9 @@ func (s *UploadService) Create(ctx context.Context, c core.Command, in UploadCre
 	if !validOpaque(in.SourceFingerprint) {
 		return core.Result{}, core.Invalid("source_fingerprint", "源文件指纹无效")
 	}
+	if strings.HasPrefix(in.SourceFingerprint, "office-artifact-v1:") && (size > OfficeAuthorMaxOutput || !shaPattern.MatchString(strings.TrimPrefix(in.SourceFingerprint, "office-artifact-v1:"))) {
+		return core.Result{}, core.Invalid("source_fingerprint", "Office候选要求12MiB以内且具有完整SHA-256")
+	}
 	if (in.FileID == nil) != (in.BaseVersionID == nil) {
 		return core.Result{}, core.Invalid("file_id", "更新文件必须同时指定目标文件和基础版本")
 	}

@@ -50,6 +50,15 @@ function harness(initial: UploadSession, options: { omitLast?: boolean; ackError
 afterEach(() => vi.unstubAllGlobals());
 
 describe('bounded resumable upload client', () => {
+  it('verifies bounded generated Office bytes with a complete hash and retains ordinary sample fingerprints', async () => {
+    const source = new File(['abc'], 'office.docx', { lastModified: 0 });
+    const expected = 'office-artifact-v1:ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad';
+    expect(await sourceFingerprint(source, undefined, expected)).toBe(expected);
+    expect(await sourceFingerprint(source)).toMatch(/^web-sample-v1:/);
+    await expect(sourceFingerprint({ name: source.name, size: 12 * MiB + 1, lastModified: 0, slice: source.slice.bind(source) }, undefined, expected)).rejects.toThrow('Office');
+    const different = new File(['abd'], 'office.docx', { lastModified: 0 });
+    await expect(harness(upload(source, expected)).run(different)).rejects.toThrow('原上传源');
+  });
   it('samples at most 128 KiB for a 120 GB source and computes the last part without allocating it', async () => {
     const slice = vi.fn((start: number, end: number) => new Blob([new Uint8Array(end - start)]));
     const source = { name: 'large.bin', size: 120_000_000_000, lastModified: 123456, slice };

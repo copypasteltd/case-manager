@@ -1,0 +1,25 @@
+{
+  "generator_versions": {
+    "python-docx": "1.2.0",
+    "openpyxl": "3.1.5",
+    "python-pptx": "1.0.2"
+  },
+  "templates": [
+    {
+      "file": "app/backend/internal/files/office_templates/empty.docx",
+      "sha256": "b5feb28d01af57dca6b3231ffa01ce9eeb270698a6caa31ab28fddccd97b8a28",
+      "bytes": 34934
+    },
+    {
+      "file": "app/backend/internal/files/office_templates/empty.xlsx",
+      "sha256": "d1cdd1609c4239180910e91fdcd1a188f178b3eaab3692ef634ecd23a63ce53d",
+      "bytes": 4962
+    },
+    {
+      "file": "app/backend/internal/files/office_templates/empty.pptx",
+      "sha256": "62418bdea918081c657092997a1a1f9d79bccb4a566fed796ddebbd13ae40aeb",
+      "bytes": 25695
+    }
+  ],
+  "scope": "Empty synthetic templates and inherited OOXML style/layout parts only; all generators are MIT licensed. No fonts, Office binaries or business documents are distributed."
+}

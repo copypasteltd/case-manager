@@ -1,0 +1,189 @@
+package httpapi
+
+import (
+	"context"
+	"encoding/base64"
+	"io"
+	"log/slog"
+	"os"
+	"strings"
+	"testing"
+
+	"copypaste.hk/platform/internal/core"
+	storage "copypaste.hk/platform/internal/files"
+	"copypaste.hk/platform/internal/objectstore"
+	"copypaste.hk/platform/internal/uploadworker"
+)
+
+// Actual HTTP + PG + scan/hash/promotion/commit. Only object transport and the
+// scanner are synthetic; it does not claim provider or Office visual acceptance.
+func officeCommitArtifact(t *testing.T, u *uploadFixture, a storage.OfficeArtifact) (storage.CommitResult, *contentFixtureCloud) {
+	t.Helper()
+	f := u.f
+	body, e := base64.StdEncoding.DecodeString(a.ContentBase64)
+	if e != nil || core.Digest(body) != a.SHA256 {
+		t.Fatal("invalid artifact")
+	}
+	r, v := f.request("POST", "/v1/uploads", f.aliceToken, core.NewID(), a.Upload, nil)
+	expect(t, r, 201, v)
+	upload := u.freezeUpload(data[storage.Upload](t, v))
+	from := &contentFixtureCloud{promotionCloud: &promotionCloud{integrityCloud: &integrityCloud{uploadCloudFixture: u.cloud}}, input: body, stored: map[string]map[int][]byte{}}
+	to := &contentFixtureCloud{promotionCloud: newPromotionCloud(u), stored: map[string]map[int][]byte{}}
+	logger := slog.New(slog.NewJSONHandler(io.Discard, nil))
+	verify := &uploadworker.Runner{Service: u.service, Store: from, Owner: "office-author-verify", Mode: "verify-small", Scanner: cleanIntegrityScanner(), Logger: logger}
+	if worked, e := verify.RunOne(context.Background()); e != nil || !worked {
+		t.Fatal("hash/scan", worked, e)
+	}
+	promote := &uploadworker.Runner{Service: u.service, Store: from, TargetStore: to, Owner: "office-author-promote", Mode: "promote-small", Logger: logger}
+	if worked, e := promote.RunOne(context.Background()); e != nil || !worked {
+		t.Fatal("promotion", worked, e)
+	}
+	upload = u.get(upload.ID)
+	if upload.SHA256 == nil || *upload.SHA256 != a.SHA256 {
+		t.Fatal("generated hash not preserved")
+	}
+	r, v = f.request("POST", "/v1/uploads/"+upload.ID+"/commit", f.aliceToken, core.NewID(), commitInput(upload), nil)
+	expect(t, r, 201, v)
+	return data[storage.CommitResult](t, v), to
+}
+func TestOfficeAuthoring(t *testing.T) {
+	u := newUploadFixture(t)
+	configureStorageTargets(u)
+	f := u.f
+	cloud := wireDownloads(u)
+	bodies := map[string]*contentFixtureCloud{}
+	var hook func()
+	cloud.readFn = func(ctx context.Context, s objectstore.Source, offset, length int64) (objectstore.ReadResult, error) {
+		if hook != nil {
+			h := hook
+			hook = nil
+			h()
+		}
+		if reader := bodies[s.Key]; reader != nil {
+			return reader.Read(ctx, s, offset, length)
+		}
+		return objectstore.ReadResult{}, core.Missing()
+	}
+	r, v := f.request("GET", "/v1/folders/"+u.root, f.aliceToken, "", nil, nil)
+	expect(t, r, 200, v)
+	folder := data[storage.Folder](t, v)
+	docs := []storage.OfficeDocument{{Kind: "docx", Title: "项目说明", Paragraphs: []string{"正文 香港🙂"}}, {Kind: "xlsx", Title: "月开支", Sheets: []storage.OfficeSheet{{Name: "开支", Rows: [][]storage.OfficeCell{{{Kind: "text", Value: "订阅"}, {Kind: "number", Value: "100"}}}}}}, {Kind: "pptx", Title: "季度报告", Slides: []storage.OfficeSlide{{Title: "交付概况", Lines: []string{"核对说明"}}}}}
+	var final storage.CommitResult
+	var browserFiles []string
+	for _, doc := range docs {
+		t.Run(doc.Kind+" actual create edit commit", func(t *testing.T) {
+			f := f.with(t)
+			input := storage.OfficeCreate{ExpectedVersion: folder.Version, Name: "完整办公闭环-" + doc.Kind, Document: doc}
+			r, v := f.request("POST", "/v1/folders/"+u.root+"/office-render", f.aliceToken, "", input, nil)
+			expect(t, r, 200, v)
+			artifact := data[storage.OfficeArtifact](t, v)
+			created, objects := officeCommitArtifact(t, u, artifact)
+			for key := range objects.stored {
+				bodies[key] = objects
+			}
+			readRoute := "/v1/files/" + created.File.ID + "/versions/" + created.Version.ID + "/office"
+			r, v = f.request("GET", readRoute, f.aliceToken, "", nil, nil)
+			expect(t, r, 200, v)
+			read := data[storage.OfficeRead](t, v)
+			if read.SourceSHA256 != artifact.SHA256 {
+				t.Fatal("source replaced")
+			}
+			edit := storage.OfficeEdit{ExpectedVersion: read.File.Version, BaseVersionID: read.VersionID, SourceSHA256: read.SourceSHA256, WorkspaceSHA256: read.Workspace.SHA256, Changes: []storage.OfficeChange{{ID: read.Workspace.Units[0].ID, Kind: "text", Value: "正式修订 香港🙂"}}}
+			r, v = f.request("POST", "/v1/files/"+created.File.ID+"/office-render", f.aliceToken, "", edit, nil)
+			expect(t, r, 200, v)
+			candidate := data[storage.OfficeArtifact](t, v)
+			r, v = f.request("GET", "/v1/files/"+created.File.ID, f.aliceToken, "", nil, nil)
+			expect(t, r, 200, v)
+			if data[storage.File](t, v).Version != read.File.Version {
+				t.Fatal("render published a formal fact")
+			}
+			final, objects = officeCommitArtifact(t, u, candidate)
+			for key := range objects.stored {
+				bodies[key] = objects
+			}
+			if final.File.ID != created.File.ID || final.Version.Seq != 2 || final.Version.SHA256 != candidate.SHA256 {
+				t.Fatal("not a new exact formal version")
+			}
+			browserFiles = append(browserFiles, final.File.ID)
+			r, v = f.request("POST", "/v1/files/"+created.File.ID+"/office-render", f.aliceToken, "", edit, nil)
+			expect(t, r, 409, v)
+			r, v = f.request("GET", readRoute, f.aliceToken, "", nil, nil)
+			expect(t, r, 200, v)
+			if data[storage.OfficeRead](t, v).SourceSHA256 != artifact.SHA256 {
+				t.Fatal("history overwritten")
+			}
+		})
+	}
+	t.Run("generated body mismatch cannot reach scan promotion or formal commit", func(t *testing.T) {
+		r, v := f.request("POST", "/v1/folders/"+u.root+"/office-render", f.aliceToken, "", storage.OfficeCreate{ExpectedVersion: folder.Version, Name: "哈希拦截", Document: docs[0]}, nil)
+		expect(t, r, 200, v)
+		lastArtifact := data[storage.OfficeArtifact](t, v)
+		r, v = f.request("POST", "/v1/uploads", f.aliceToken, core.NewID(), lastArtifact.Upload, nil)
+		expect(t, r, 201, v)
+		upload := u.freezeUpload(data[storage.Upload](t, v))
+		body, _ := base64.StdEncoding.DecodeString(lastArtifact.ContentBase64)
+		body[len(body)/2] ^= 1
+		from := &contentFixtureCloud{promotionCloud: &promotionCloud{integrityCloud: &integrityCloud{uploadCloudFixture: u.cloud}}, input: body, stored: map[string]map[int][]byte{}}
+		host := &uploadworker.Runner{Service: u.service, Store: from, Owner: "office-author-mismatch", Mode: "verify-small", Scanner: cleanIntegrityScanner(), Logger: slog.New(slog.NewJSONHandler(io.Discard, nil))}
+		if worked, e := host.RunOne(context.Background()); e != nil || !worked {
+			t.Fatal(worked, e)
+		}
+		current := u.get(upload.ID)
+		if current.State == "ready" || current.ScanState == "clean" {
+			t.Fatal("tampered artifact accepted", current)
+		}
+		r, v = f.request("POST", "/v1/uploads/"+upload.ID+"/commit", f.aliceToken, core.NewID(), commitInput(current), nil)
+		if r.Code < 400 {
+			t.Fatal("tampered artifact published", v)
+		}
+	})
+	t.Run("mini programs read but cannot render", func(t *testing.T) {
+		for _, channel := range []string{"wechat", "douyin"} {
+			token := f.login("alice", channel).AccessToken
+			r, v := f.request("GET", "/v1/files/"+final.File.ID+"/versions/"+final.Version.ID+"/office", token, "", nil, nil)
+			expect(t, r, 200, v)
+			r, v = f.request("POST", "/v1/folders/"+u.root+"/office-render", token, "", storage.OfficeCreate{ExpectedVersion: folder.Version, Name: "禁止小程序上传", Document: docs[0]}, nil)
+			expect(t, r, 403, v)
+		}
+	})
+	t.Run("anonymous and wrong version blocked", func(t *testing.T) {
+		r, v := f.request("GET", "/v1/files/"+final.File.ID+"/versions/"+final.Version.ID+"/office", "", "", nil, nil)
+		expect(t, r, 401, v)
+		r, v = f.request("GET", "/v1/files/"+core.NewID()+"/versions/"+final.Version.ID+"/office", f.aliceToken, "", nil, nil)
+		expect(t, r, 404, v)
+	})
+	t.Run("source corruption blocked", func(t *testing.T) {
+		old := cloud.readFn
+		cloud.readFn = func(ctx context.Context, s objectstore.Source, o, l int64) (objectstore.ReadResult, error) {
+			out, e := old(ctx, s, o, l)
+			if e == nil {
+				out.Body = io.NopCloser(strings.NewReader(strings.Repeat("x", int(l))))
+			}
+			return out, e
+		}
+		r, v := f.request("GET", "/v1/files/"+final.File.ID+"/versions/"+final.Version.ID+"/office", f.aliceToken, "", nil, nil)
+		expect(t, r, 422, v)
+		cloud.readFn = old
+	})
+	if os.Getenv("CP_BROWSER_OFFICE_AUTHOR") == "1" && !t.Failed() {
+		if _, err := f.owner.Exec(context.Background(), "WITH r AS (INSERT INTO roles(id,org_id,key,name,requires_mfa) VALUES(gen_random_uuid(),$1,'office_author_browser_mfa','Actionless browser MFA',true) RETURNING id) INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type) SELECT gen_random_uuid(),$1,$2,id,'org' FROM r", f.org, f.alice); err != nil {
+			t.Fatal(err)
+		}
+		f.aliceToken = memberMFAToken(f, "alice", "android")
+		holdBrowserBusinessFixture(t, f, map[string]any{"fixture_kind": "human-office-authoring", "office_author_fixture": true, "folder_id": u.root, "office_file_ids": browserFiles})
+		return
+	}
+	t.Run("revocation during IO rejects result without holding authorization locks", func(t *testing.T) {
+		hook = func() {
+			ctx, cancel := context.WithTimeout(context.Background(), 1000000000)
+			defer cancel()
+			if _, e := f.owner.Exec(ctx, "UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", f.org); e != nil {
+				t.Fatal(e)
+			}
+		}
+		r, v := f.request("GET", "/v1/files/"+final.File.ID+"/versions/"+final.Version.ID+"/office", f.aliceToken, "", nil, nil)
+		if r.Code == 200 {
+			t.Fatal("revoked result escaped", v)
+		}
+	})
+}

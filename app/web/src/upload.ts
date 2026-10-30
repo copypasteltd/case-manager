@@ -29,10 +29,15 @@ export function confirmedBytes(upload: UploadSession): number {
 
 // A bounded re-selection aid, not a full-file checksum or authenticity proof.
 // Only the server's frozen-source SHA-256 is authoritative.
-export async function sourceFingerprint(source: UploadSource, signal?: AbortSignal): Promise<string> {
+export async function sourceFingerprint(source: UploadSource, signal?: AbortSignal, expected?: string): Promise<string> {
   signal?.throwIfAborted();
   if (!Number.isSafeInteger(source.size) || source.size < 1 || source.size > MAX_BYTES ||
       !Number.isSafeInteger(source.lastModified) || source.lastModified < 0) invalid('文件需为 1 字节至 120 GB，请重新选择。');
+  if (expected?.startsWith('office-artifact-v1:')) {
+    if (source.size > 12 * 1024 * 1024 || !/^office-artifact-v1:[a-f0-9]{64}$/.test(expected)) invalid('Office生成文件超过大小限制。');
+    const hash = await crypto.subtle.digest('SHA-256', await source.slice(0, source.size).arrayBuffer()); signal?.throwIfAborted();
+    return 'office-artifact-v1:' + [...new Uint8Array(hash)].map(value => value.toString(16).padStart(2, '0')).join('');
+  }
   const head = new Uint8Array(await source.slice(0, Math.min(SAMPLE, source.size)).arrayBuffer());
   signal?.throwIfAborted();
   const tail = new Uint8Array(await source.slice(Math.max(head.byteLength, source.size - SAMPLE), source.size).arrayBuffer());
@@ -107,7 +112,7 @@ export async function transferUpload(options: UploadTransferOptions): Promise<Up
   let upload = options.upload;
   signal.throwIfAborted();
   if (upload.state !== 'uploading' || String(source.size) !== upload.size_bytes ||
-      await sourceFingerprint(source, signal) !== upload.source_fingerprint) invalid('所选文件与原上传源不一致，请重新选择原文件。');
+      await sourceFingerprint(source, signal, upload.source_fingerprint) !== upload.source_fingerprint) invalid('所选文件与原上传源不一致，请重新选择原文件。');
   partBounds(upload, 1);
   await ensureSession();
   upload = await command<UploadSession>('resume', { expected_version: upload.version, source_fingerprint: upload.source_fingerprint });

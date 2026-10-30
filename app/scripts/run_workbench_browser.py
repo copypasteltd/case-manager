@@ -68,8 +68,9 @@ class FixtureProxy(BaseHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mobile', action='store_true')
-    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text'), default='workbench')
+    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring'), default='workbench')
     args = parser.parse_args()
+    office = args.feature == 'office-authoring'
     document = args.feature == 'document-text'
     batch = args.feature == 'file-batch'
     payment = args.feature == 'cost-payment'
@@ -77,10 +78,10 @@ def main():
     business = args.feature == 'project-business'
     operations = args.feature == 'operations'
     docx = args.feature == 'docx'
-    precompiled = document or operations or docx or business or cost or payment or batch
-    expected_kind = 'agent-context-and-classification' if document else 'human-file-batch' if batch else 'human-cost-payment' if payment else 'human-business-cost' if cost else 'human-project-business' if business else 'agent-context-and-classification' if docx else 'human-operations-workbench' if operations else 'human-business-workbench'
-    fixture_flag = 'document_text_fixture' if document else 'file_batch_fixture' if batch else 'cost_payment_fixture' if payment else 'business_cost_fixture' if cost else 'project_business_fixture' if business else 'docx_text_fixture' if docx else 'operations_workbench_fixture' if operations else 'workbench_fixture'
-    group = ('document-text-' if document else 'file-batch-' if batch else 'cost-payment-' if payment else 'business-cost-' if cost else 'project-business-' if business else 'docx-text-' if docx else 'operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
+    precompiled = office or document or operations or docx or business or cost or payment or batch
+    expected_kind = 'human-office-authoring' if office else 'agent-context-and-classification' if document else 'human-file-batch' if batch else 'human-cost-payment' if payment else 'human-business-cost' if cost else 'human-project-business' if business else 'agent-context-and-classification' if docx else 'human-operations-workbench' if operations else 'human-business-workbench'
+    fixture_flag = 'office_author_fixture' if office else 'document_text_fixture' if document else 'file_batch_fixture' if batch else 'cost_payment_fixture' if payment else 'business_cost_fixture' if cost else 'project_business_fixture' if business else 'docx_text_fixture' if docx else 'operations_workbench_fixture' if operations else 'workbench_fixture'
+    group = ('office-authoring-' if office else 'document-text-' if document else 'file-batch-' if batch else 'cost-payment-' if payment else 'business-cost-' if cost else 'project-business-' if business else 'docx-text-' if docx else 'operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
     local = APP / '.local'
     fixture_file = local / 'business-browser-fixture.json'
     report = APP.parent / 'docs/quality/evidence' / group / 'result.json'
@@ -134,7 +135,7 @@ def main():
                 # Native Go linking is preparation, not part of the domain
                 # fixture's unchanged 12-minute lifetime or readiness wait.
                 # Warm the exact test binary before starting any DB fixture.
-                binary = local / ('document-text-httpapi.test.exe' if document else 'file-batch-httpapi.test.exe' if batch else 'cost-payment-httpapi.test.exe' if payment else 'business-cost-httpapi.test.exe' if cost else 'project-business-httpapi.test.exe' if business else 'docx-text-httpapi.test.exe' if docx else 'operations-workbench-httpapi.test.exe')
+                binary = local / ('office-authoring-httpapi.test.exe' if office else 'document-text-httpapi.test.exe' if document else 'file-batch-httpapi.test.exe' if batch else 'cost-payment-httpapi.test.exe' if payment else 'business-cost-httpapi.test.exe' if cost else 'project-business-httpapi.test.exe' if business else 'docx-text-httpapi.test.exe' if docx else 'operations-workbench-httpapi.test.exe')
                 build = subprocess.Popen([str(APP / '.tools/go/bin/go.exe'), 'test', '-c', './internal/httpapi', '-o', str(binary)],
                     cwd=APP / 'backend', env={**os.environ, 'GOPROXY':'https://goproxy.cn,https://proxy.golang.org,direct','GODEBUG':'http2client=0'},
                     stdout=build_log, stderr=subprocess.STDOUT, creationflags=flags)
@@ -169,6 +170,9 @@ def main():
                 fixture_env = {k:v for k,v in fixture_env.items() if not k.startswith('CP_BROWSER_')}
                 fixture_env.update({'CP_TEST_ADMIN_URL':admin,'CP_ENV':'test',
                     'CP_BROWSER_BUSINESS_FIXTURE':'1','CP_BROWSER_OPERATIONS_WORKBENCH':'1'})
+                if office:
+                    fixture_env.pop('CP_BROWSER_OPERATIONS_WORKBENCH')
+                    fixture_env['CP_BROWSER_OFFICE_AUTHOR'] = '1'
                 if batch:
                     fixture_env.pop('CP_BROWSER_OPERATIONS_WORKBENCH')
                     fixture_env['CP_BROWSER_FILE_BATCH'] = '1'
@@ -188,7 +192,7 @@ def main():
                     fixture_env.pop('CP_BROWSER_OPERATIONS_WORKBENCH')
                     fixture_env.update({'CP_BROWSER_AGENT_FIXTURE':'1','CP_BROWSER_DOCX_TEXT_FIXTURE':'1'})
                 assert hashlib.sha256(binary.read_bytes()).hexdigest() == compile_receipt['binary_sha256']
-                fixture_command = [str(binary),'-test.run=^TestNativeDocumentText$' if document else '-test.run=^TestFileBatchBrowserFixture$' if batch else '-test.run=^TestCostPaymentBrowserFixture$' if payment else '-test.run=^TestBusinessCostBrowserFixture$' if cost else '-test.run=^TestProjectBusinessJourneys$' if business else '-test.run=^TestDOCXTextDocuments$' if docx else '-test.run=^TestOperationsWorkbenchBrowserFixture$','-test.timeout=25m','-test.v']
+                fixture_command = [str(binary),'-test.run=^TestOfficeAuthoring$' if office else '-test.run=^TestNativeDocumentText$' if document else '-test.run=^TestFileBatchBrowserFixture$' if batch else '-test.run=^TestCostPaymentBrowserFixture$' if payment else '-test.run=^TestBusinessCostBrowserFixture$' if cost else '-test.run=^TestProjectBusinessJourneys$' if business else '-test.run=^TestDOCXTextDocuments$' if docx else '-test.run=^TestOperationsWorkbenchBrowserFixture$','-test.timeout=25m','-test.v']
                 compile_receipt['executed_exact_binary'] = True
             # go test normally runs a package binary in its package directory.
             # Direct execution must preserve that convention for owned paths.
@@ -234,7 +238,7 @@ def main():
                 raise RuntimeError('Implementation changed during review startup/build.')
             print('Owned native fixture and review server ready; checking scoped business counts, ordinary detail navigation and authority changes.', flush=True)
             with (local / (group + '-browser.log')).open('w', encoding='utf-8') as browser_log:
-                browser = subprocess.Popen([node, str(APP / ('scripts/check_document_text.mjs' if document else 'scripts/check_file_batch.mjs' if batch else 'scripts/check_cost_payment.mjs' if payment else 'scripts/check_business_cost.mjs' if cost else 'scripts/check_project_business.mjs' if business else 'scripts/check_docx_text.mjs' if docx else 'scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
+                browser = subprocess.Popen([node, str(APP / ('scripts/check_office_authoring.mjs' if office else 'scripts/check_document_text.mjs' if document else 'scripts/check_file_batch.mjs' if batch else 'scripts/check_cost_payment.mjs' if payment else 'scripts/check_business_cost.mjs' if cost else 'scripts/check_project_business.mjs' if business else 'scripts/check_docx_text.mjs' if docx else 'scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
                     cwd=APP, env={**os.environ, 'CP_BROWSER_EVIDENCE_GROUP': group}, stdout=browser_log, stderr=subprocess.STDOUT,
                     creationflags=flags)
                 browser_status = browser.wait(timeout=650)

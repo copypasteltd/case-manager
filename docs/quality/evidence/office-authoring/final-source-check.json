@@ -1,0 +1,262 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T20:42:16.813668+00:00",
+  "verification_mode": "scoped_increment",
+  "increment": 129,
+  "checks": [
+    {
+      "name": "Source-bound executed check backend",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-bundle",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-parser",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup office-authoring-web",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup office-authoring-mobile",
+      "passed": true
+    },
+    {
+      "name": "Actual screenshot and recording outputs retain declared hashes",
+      "passed": true
+    },
+    {
+      "name": "All affected visual outputs actually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Owned development services match current backend and preserve existing business records",
+      "passed": true
+    },
+    {
+      "name": "Both owned review ports are released",
+      "passed": true
+    },
+    {
+      "name": "Current complete development APK binds all native/business inputs and actual artifact bytes",
+      "passed": true
+    },
+    {
+      "name": "Actual APK signature/DEX/JS and both native suites retain precise current source evidence",
+      "passed": true
+    },
+    {
+      "name": "Native test XML and actual fresh/cached execution boundaries are retained",
+      "passed": true
+    },
+    {
+      "name": "All prior published proof/media bytes remain unchanged with honest retained scope",
+      "passed": true
+    },
+    {
+      "name": "Historical schema bytes unchanged and only declared new upgrades added",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture released",
+      "passed": true
+    },
+    {
+      "name": "Scope and platform acceptance are not replaced by focused checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "office-authoring",
+  "interaction_source_sha256": "76960d97973eef62c48fda2daa764cd6f663461c37cdb53603143131cf6312eb",
+  "verification_script_sha256": "f15ed22684223d87debbee0a447a5af7df2b05ea9d65dee711afaaf8defd29a3",
+  "configuration_sha256": "b241bc17baa8e17febba8cbb8186606528060d03965519298b32a000814f4344",
+  "records": [
+    {
+      "file": "docs/quality/evidence/office-authoring/backend.json",
+      "sha256": "e23b4d9c3e41ff06c260210c0f0c5764b8c5ef8204d95b1df46df7a9324f115f"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/web-tests.json",
+      "sha256": "4fd226a7c66f6a91b7bd87ac464625b586ddd7ea1d108ca39ff11bef44b3cce7"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/mobile-tests.json",
+      "sha256": "9d58f4f95cde0ee6bac30c5287c74a15d11009238bc88a50a69be22a6277ea86"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/typecheck.json",
+      "sha256": "30ce52561605d8e1ef264a448947441860b13bde46d4ce36df55de9bd9207d03"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/web-build.json",
+      "sha256": "f5a05b799ff3b64334b39dba243d1501b46953c07c9adadd859c8b1a8829e44e"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/weapp-build.json",
+      "sha256": "19f7cea30ea8830b0e40813f551f5c54da1a1415ccbceb561af52e8aa1fac1d8"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/douyin-build.json",
+      "sha256": "978642fe3a9c1693b5a8cc400802044b6e640aed10f5c4518bb6aa9c4d99825c"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/native-js-tests.json",
+      "sha256": "c03f14dfefd4a5262853225bd0bf812dd5db8c5aad65094b75ac1a52dd1e6942"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/native-bundle.json",
+      "sha256": "12c06f4396d9d963c46ede426c29048c6fcf032c84de0e825dc744b0c69bb8a8"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/native-parser.json",
+      "sha256": "3cc760ca0230715ba212ea74b4640ee6e4f385e6065ad2f6fed94e2c2b54f89e"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring-web/result.json",
+      "sha256": "57d5b914e99b4703f57d2f4b0f17c57fab441772de37f733998f87b6969bfeb7"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring-web/source-manifest.json",
+      "sha256": "14d30034b4b8a818f5a96926e2fba49f9f5819695b0f2856ed56e0748cf03db7"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring-web/media.json",
+      "sha256": "013b1fdb9543cd42db4809c323c01f4b5d410bcd6456378ef24e68b7fb5bb5d5"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring-mobile/result.json",
+      "sha256": "db2b3a5bea041fd4fcc43e23407da36072683b6e18949ee6fac827fa192e301d"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring-mobile/source-manifest.json",
+      "sha256": "cf9da6c8dae93c82a6f2113dcf57a18e6d5c3720445c63488a80668d4889fb31"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring-mobile/media.json",
+      "sha256": "b98725cb10c78bdcebd5b2fce43e485abc6c6cb30eda9ad7c344d902e0a0ba1c"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/build.json",
+      "sha256": "a6b402b7686535060434b96c33eed65743ac6b034222ed6c4527f9e429af4875"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/apk-inspection.json",
+      "sha256": "33bfb5a5378a9da6ecba27de00792abc45b8ddd706770b4c92e5079a9fe13381"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/native-suites.json",
+      "sha256": "7b5e88bc75a7eccdfe49f88c7464cf695c99bbf137fcd1c09e2ad6f814c53f5b"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/native-test-scope.json",
+      "sha256": "eaeb2cf8f176d2ea6bb95a2c4f97f70cb8639d457fa1d8c1febc4f83f4463efa"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/android-js-content.json",
+      "sha256": "161cf727ba2d24a2ad373c2a5f84691680a2a92acca4cc8cf9f6c208cbbf0234"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/office-consumers.json",
+      "sha256": "126fb15f1daa4ac880ab252eb5ee27ac0f9e5b71e5db8d22310cb96f56353fdb"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/browser-fixture-adjustment.json",
+      "sha256": "9b6fad63c8ab24a69001af03c62aa71a9c96f8446bdd90b609cb3d14d61b41e2"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/media.json",
+      "sha256": "6de81751004e1119106f7f896675152152c3114d1667073483f10ee16e29f1dc"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/visual-review.json",
+      "sha256": "3bd1eacb82e76376d4c42691e6246cecb33e6127b93cf31bb5b69e127d7a6853"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/development-update.json",
+      "sha256": "4ad2f65a7923cb13ea8566ba828d78101039e310a2a46d65bf2df29bf954259c"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/development-project-resources.json",
+      "sha256": "3c42ecb69c209461d4fdd6823647715696c509dbc9bd6458b0678e2bcc5ab3b2"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/development-runtime.json",
+      "sha256": "ac23f980b97391859b031878a0c720ee54ae56e8031978923391260f4efe9a47"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "b4a25eab07fa7c8d893442b4dce4af79aab6e617",
+    "original_files": 5476,
+    "original_media": 1374,
+    "original_git_object_manifest_sha256": "eb9eb4245e94d4e067b3c2c5cf390c44cef4a5ba304255396acf59fead28a1be",
+    "baseline_sha256": "e0d4858b8294e6dc4b94ccc5ee79f8d91d1937304edc9dd2d91e3db06704b802",
+    "baseline_increment": 128,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "fixture_only_adjustment": {
+    "execution_source_sha256": "e635199fdd5cfe3bbf724b910bf084d07be37922e53b9a634af8fd2187185e19",
+    "adjustment": "Exact opt-in browser MFA setup only; Office adds one actionless MFA role/binding for the enrolled fixture actor. Production inputs, executed test bodies and commands unchanged.",
+    "snapshots": [
+      {
+        "file": "docs/quality/evidence/office-authoring/attempts/04-browser-mfa-fixture/office-author-before.go.snapshot",
+        "sha256": "a497674593b40f1cd89803c6f440b2b06b8d1d213319444997457faadf4035c7"
+      },
+      {
+        "file": "docs/quality/evidence/office-authoring/attempts/04-browser-mfa-fixture/verification-plan-before.json.snapshot",
+        "sha256": "d1023ef33232b5bd93a0b54a2cf950e7bd81da085291405966e89ec8597770f7"
+      },
+      {
+        "file": "docs/quality/evidence/office-authoring/attempts/06-mobile-content-framing/checker-before.mjs.snapshot",
+        "sha256": "20bff8ac2453146185e6f46dcdf8a51b7e2014c1b1211d1ac3d02701023ae206"
+      },
+      {
+        "file": "docs/quality/evidence/office-authoring/attempts/06-mobile-content-framing/encoder-before.py.snapshot",
+        "sha256": "b7ab059c4b2feecb9eda9f48a642b555691b32fd06dae7fd4eb9c2b1cecb1a86"
+      },
+      {
+        "file": "docs/quality/evidence/office-authoring/attempts/06-mobile-content-framing/verification-plan-before.json.snapshot",
+        "sha256": "b12368112286044a0af5ec73062385bf06aa8d2a2538fe0ef19fed2756925631"
+      }
+    ],
+    "capture_execution_source_sha256": "0ae121d4d90b012feabdf11e5224a522421f58a34aaacdf1647957a3fd1d11a6",
+    "capture_adjustment": "Exactly scroll the already asserted Office text into view before screenshots and after the recorded reload; add accurate Office media wording only. Encoding mechanics, production, test and command bytes unchanged. Browser/media are executed again."
+  },
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

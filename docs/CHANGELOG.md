@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 2026-10-31 · Increment129 · Office创建与原件编辑 / Office authoring
+
+- 新建真实DOCX／XLSX／PPTX，固定三种空白模板与MIT来源；部署无需Python或外部编辑器服务。
+- 准确正式版本／源SHA／工作区SHA绑定，修改有界可写片段，保留未改ZIP部件；当前撤权、过期头、活动内容和不支持公式拒绝。
+- Web／Android生成独立候选、人工核对后接入原上传队列，完整摘要／扫描／提升后再人工提交；微信／抖音只读查阅。生成本身不改业务事实。
+- Android加入owner私有临时来源、准确路由响应上限及全字节重选校验；普通120GB上传路径保持，未用真机／模拟器。
+- 六组选定HTTP／PG46条通过记录、396 Web／481移动、实际OOXML独立消费、四端构建与当前开发APK；实际Web／H5、6PNG／2MP4／2导览GIF和双语使用说明同步更新。
+- Schema96 and all prior proof/media bytes remain intact. Full Office layout/compatibility, real samples and formal cloud/model/platform/production acceptance remain open; all23 packages, five exclusions and eight draft Skills stay explicit. [使用](development/129-office-authoring.md) · [检查](quality/129-office-authoring-verification.md) · [全部余项](delivery/05-functional-closure-129.md)。
+
+
 ## 2026-10-31 · Increment128 · PDF／图片正文与OCR / Native document text
 
 - 接通PDF逐页内嵌文字＋OCR、PNG／JPEG、完整页数和固定原生引擎证据，复用四端预览／搜索／比较／秘书资料入口。

@@ -10,6 +10,12 @@ import java.util.Arrays;
 interface UploadSource {
     InputStream open(long offset, long length) throws IOException;
     void check() throws IOException;
+    static String officeFingerprint(UploadSource source,long size) throws Exception {
+        if(size<1||size>12L*1024*1024)throw new IOException();source.check();
+        MessageDigest hash=MessageDigest.getInstance("SHA-256");byte[] buffer=new byte[65536];
+        try(InputStream in=source.open(0,size)){long count=0;int read;while((read=in.read(buffer))!=-1){count+=read;if(count>size)throw new IOException();hash.update(buffer,0,read);}if(count!=size)throw new IOException();}
+        finally{Arrays.fill(buffer,(byte)0);}source.check();StringBuilder out=new StringBuilder("office-artifact-v1:");for(byte value:hash.digest())out.append(String.format(java.util.Locale.ROOT,"%02x",value&255));return out.toString();
+    }
 
     /** A bounded re-selection check; the server's full SHA-256 is authoritative. */
     static String fingerprint(UploadSource source, String name, long size, long modified) throws Exception {

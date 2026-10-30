@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T19:46:40.609228+00:00",
+  "finished_at": "2026-10-30T19:46:44.678285+00:00",
+  "elapsed_seconds": 4.069,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/office-authoring/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "edc29bf84166fad0baf32e0d9d4f51da4f4568fb797bfdd59d4709dbb17b6e13",
+  "source_after_sha256": "edc29bf84166fad0baf32e0d9d4f51da4f4568fb797bfdd59d4709dbb17b6e13",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 396,
+    "numPassedTests": 396,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "a0af1218bcc3544722b6a1d7e6080de65479f34b67d306563fb76c38e74ebc24",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Complete current Web unit suite, including Office authoring typed input/artifact validation and full bounded generated-file hash checks.",
+  "real_device": false,
+  "virtualization_used": false
+}

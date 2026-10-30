@@ -41,10 +41,10 @@ def inspect(record, command):
 def main():
     global E
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring'), default='project-business')
     args = parser.parse_args()
     E = APP.parent / 'docs/quality/evidence' / args.feature
-    expected_count = 96 if args.feature == 'document-text' else 95 if args.feature == 'file-batch' else 94
+    expected_count = 96 if args.feature in ('document-text', 'office-authoring') else 95 if args.feature == 'file-batch' else 94
     assert not (E / 'development-update.json').exists(), 'Preserve an existing completed service update.'
     values = json.loads((APP / '.local/environment.json').read_text())
     db = urlsplit(values['CP_DATABASE_URL'])
@@ -75,7 +75,7 @@ def main():
     before = sql(history_query)
     previous_count = sql('SELECT count(*) FROM application_schema_manifest()')
     E.mkdir(parents=True, exist_ok=True)
-    assert previous_count in ((95, 96) if args.feature == 'document-text' else (94, 95) if args.feature == 'file-batch' else (94,)), 'Only the declared schema transition is allowed.'
+    assert previous_count in ((96,) if args.feature == 'office-authoring' else (95, 96) if args.feature == 'document-text' else (94, 95) if args.feature == 'file-batch' else (94,)), 'Only the declared schema transition is allowed.'
     upgraded = previous_count != expected_count
     if upgraded:
         with (APP / ('.local/' + args.feature + '-schema-upgrade.log')).open('w', encoding='utf-8') as log:

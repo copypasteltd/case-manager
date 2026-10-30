@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T20:05:34.797Z",
+  "finished_at": "2026-10-30T20:05:53.810Z",
+  "checks": [
+    "Web exact-source edit/render Word: real API and retained two-version history, no formal publication from rendering.",
+    "Web exact-source edit/render Excel: real API and retained two-version history, no formal publication from rendering.",
+    "Web exact-source edit/render PPT: real API and retained two-version history, no formal publication from rendering.",
+    "Web folder creation form generates a real DOCX candidate through the current API; final publication remains the separate upload workflow."
+  ],
+  "source_count": 928,
+  "source_sha256": "e3f74533cd9247fca7c439a4efcc1bc69057bbff2ad2331ac0d0c2934d5cd803",
+  "source_after_sha256": "e3f74533cd9247fca7c439a4efcc1bc69057bbff2ad2331ac0d0c2934d5cd803",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "84f37aebc0a286ee68b72bb0e2e1fe63cd9c6a31f42c145d611d05ae08ace5a6",
+    "source_sha256": "e24109bb0959f19e77615030462a6b1e10c34aa77999fbbd4dfe825f737bacb3",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "e24109bb0959f19e77615030462a6b1e10c34aa77999fbbd4dfe825f737bacb3",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "e24109bb0959f19e77615030462a6b1e10c34aa77999fbbd4dfe825f737bacb3",
+  "build_source_unchanged": true
+}

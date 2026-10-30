@@ -25,6 +25,9 @@ import okhttp3.ResponseBody;
 /** Exact-origin JSON transport. It never accepts an arbitrary remote URL. */
 final class ApiHTTP {
     static final int MAX_RESPONSE_BYTES = 2 * 1024 * 1024;
+    static int responseLimit(String method,String path) {
+        return method.equals("POST")&&path.matches("/v1/(files|folders)/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/office-render") ? 18*1024*1024 : MAX_RESPONSE_BYTES;
+    }
     static final int MAX_REQUEST_BYTES = 1024 * 1024;
     interface Result { void complete(int status, String body); void failed(); }
     private final URI origin;
@@ -63,6 +66,7 @@ final class ApiHTTP {
         try {
             if (closed.get() || id == null || !id.matches("[1-9][0-9]{0,15}") || !(method.equals("GET") || method.equals("POST") || method.equals("PATCH")) || (method.equals("GET") && body != null)) throw new IllegalArgumentException();
             Request.Builder builder = new Request.Builder().url(target(path).toString()).header("Accept", "application/json");
+            final int responseLimit=responseLimit(method,path);
             if (headers.size() > 3) throw new IllegalArgumentException();
             for (Map.Entry<String, String> header : headers.entrySet()) {
                 String key = header.getKey().toLowerCase(Locale.ROOT), value = header.getValue();
@@ -85,11 +89,11 @@ final class ApiHTTP {
                 @Override public void onResponse(Call completed, Response response) {
                     try (Response owned = response) {
                         ResponseBody source = owned.body();
-                        if (owned.isRedirect() || source == null || source.contentLength() > MAX_RESPONSE_BYTES || source.contentType() == null || !source.contentType().type().equals("application") || !source.contentType().subtype().equals("json")) throw new IOException();
+                        if (owned.isRedirect() || source == null || source.contentLength() > responseLimit || source.contentType() == null || !source.contentType().type().equals("application") || !source.contentType().subtype().equals("json")) throw new IOException();
                         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
                         byte[] chunk = new byte[8192]; int count;
                         while ((count = source.byteStream().read(chunk)) != -1) {
-                            if (buffer.size() + count > MAX_RESPONSE_BYTES) throw new IOException();
+                            if (buffer.size() + count > responseLimit) throw new IOException();
                             buffer.write(chunk, 0, count);
                         }
                         Arrays.fill(chunk, (byte) 0);

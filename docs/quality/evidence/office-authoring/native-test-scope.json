@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "source_sha256": "5751049b7069f1c31161be62efc1c66514b98b6304e23236f2366300ce9b82e6",
+  "complete_build_record_sha256": "a6b402b7686535060434b96c33eed65743ac6b034222ed6c4527f9e429af4875",
+  "suites_record_sha256": "7b5e88bc75a7eccdfe49f88c7464cf695c99bbf137fcd1c09e2ad6f814c53f5b",
+  "android_test_execution": "Executed in the current native Java preflight; the later complete APK Gradle invocation reused those unchanged UP-TO-DATE results.",
+  "jvm_test_execution": "All standalone JVM compilation and test tasks executed in the successful complete-build wrapper.",
+  "private_logs": [
+    {
+      "name": "native.log",
+      "sha256": "cfc46358223cfb5d052bbec5d93c165e27cea79a996d59a99883fefe1bb835c4"
+    },
+    {
+      "name": "office-authoring-jvm.log",
+      "sha256": "7faed7bd3d77f0d0b89b89d93499c568850a2bd1b8bf88eb3de6f365c3ceb110"
+    },
+    {
+      "name": "office-authoring-javac-preflight.log",
+      "sha256": "7a3b3118e3147f81c0963491a9e90dec5972324b4efebfcb4687fe15c828181a"
+    }
+  ],
+  "xml_results": [
+    {
+      "suite": "android",
+      "file": "docs/quality/evidence/office-authoring/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "ccdf7e876e0e7db15531dcb26d178e9ec0b51028e08e0453b174c42f3e460616",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "android",
+      "file": "docs/quality/evidence/office-authoring/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "3decd2690911788d9c1692f26a102626b3f6025ec2706289b0662542300fde33",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "android",
+      "file": "docs/quality/evidence/office-authoring/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "35ccbc97f6abb9a788875a896fae5f6c2137ac5a974e4f4ba97977bd8c711cc6",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "android",
+      "file": "docs/quality/evidence/office-authoring/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "bb894f5c97c6b7c86a079157c6db901a3948875c236c4fcb49d0f12f8aaf7c8c",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "jvm",
+      "file": "docs/quality/evidence/office-authoring/jvm-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "67136160c04423c6acc370067c61d0a0ac2eddfc8e97e5ab0beec09c778854a8",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "jvm",
+      "file": "docs/quality/evidence/office-authoring/jvm-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "dd667def2ca133d4dbd5ff2f474e7d3d8432395997ceda1a856dbd9778dd4ff5",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "jvm",
+      "file": "docs/quality/evidence/office-authoring/jvm-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f8da941a96ccc6c7bc922394d8c47e3ddc6c8bf19851c1964799f61a69fbdcde",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "jvm",
+      "file": "docs/quality/evidence/office-authoring/jvm-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "4a5eb20cf0363469d57253f9da4c31cb7b57d20bbaa368d42bf9b325234d873a",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "formal_android_acceptance": false,
+  "device_used": false,
+  "virtualization_used": false
+}

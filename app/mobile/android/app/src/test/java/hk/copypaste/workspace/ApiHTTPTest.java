@@ -15,6 +15,16 @@ import okio.Buffer;
 import org.junit.Test;
 
 public class ApiHTTPTest {
+    @Test public void officeArtifactsHaveAnExplicitBoundedExceptionOnlyAtTheExactRenderRoute() throws Exception {
+        String route="/v1/files/11111111-1111-1111-1111-111111111111/office-render";
+        assertEquals(18*1024*1024,ApiHTTP.responseLimit("POST",route));
+        for(String path:new String[]{route+"?x=1",route+"/other","/v1/me","/v1/files/not-uuid/office-render"})assertEquals(ApiHTTP.MAX_RESPONSE_BYTES,ApiHTTP.responseLimit("POST",path));
+        assertEquals(ApiHTTP.MAX_RESPONSE_BYTES,ApiHTTP.responseLimit("GET",route));
+        try(MockWebServer server=new MockWebServer()) {
+            start(server);server.enqueue(json("{\"data\":\""+String.join("",Collections.nCopies(3*1024*1024,"x"))+"\"}"));
+            ApiHTTP api=new ApiHTTP(origin(server),true);try{Result result=new Result();api.request("1","POST",route,Collections.emptyMap(),"{}",result);result.await();assertEquals(200,result.status);assertEquals(0,result.failures);}finally{api.close();}
+        }
+    }
     static class Result implements ApiHTTP.Result {
         final CountDownLatch done = new CountDownLatch(1); int status; String body; int failures;
         public void complete(int value, String data) { status = value; body = data; done.countDown(); }

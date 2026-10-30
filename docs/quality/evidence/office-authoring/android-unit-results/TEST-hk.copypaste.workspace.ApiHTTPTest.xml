@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hk.copypaste.workspace.ApiHTTPTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-30T20:21:54" hostname="WIKIGSPC" time="4.453">
+  <properties/>
+  <testcase name="cancellationStopsItsCallAndDisconnectedWritesAreNotRetried" classname="hk.copypaste.workspace.ApiHTTPTest" time="4.215"/>
+  <testcase name="oversizedAndInvalidUTF8BodiesNeverReachJSAsSuccess" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.072"/>
+  <testcase name="actualJSONAndFixedVersionHeadersReachOnlyTheOriginalPath" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.005"/>
+  <testcase name="redirectCannotForwardCredentialsOrBody" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.005"/>
+  <testcase name="invalidHeadersAndOversizedCommandsFailBeforeNetwork" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.004"/>
+  <testcase name="officeArtifactsHaveAnExplicitBoundedExceptionOnlyAtTheExactRenderRoute" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.147"/>
+  <testcase name="originAndRelativePathNeverEscapeTheConfiguredAPI" classname="hk.copypaste.workspace.ApiHTTPTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[10月 31, 2026 4:21:58 上午 okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+警告: MockWebServer[13151] connection from /127.0.0.1 didn't make a request
+]]></system-err>
+</testsuite>

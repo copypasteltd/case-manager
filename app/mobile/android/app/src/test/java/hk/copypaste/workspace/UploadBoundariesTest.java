@@ -42,6 +42,16 @@ public class UploadBoundariesTest {
         assertTrue(fingerprint.matches("android-saf-v1:[a-f0-9]{64}")); assertEquals(131_072, total[0]);
         assertArrayEquals(new long[] {0, 65536}, reads.get(0)); assertArrayEquals(new long[] {119_999_934_464L, 65536}, reads.get(1));
     }
+    @Test public void officeFingerprintChecksAllBytesAndRejectsShortOrOversizedSources() throws Exception {
+        byte[] bytes=new byte[196608]; Arrays.fill(bytes,(byte)42);
+        UploadSource source=new UploadSource(){public void check(){} public InputStream open(long offset,long length){assertEquals(0,offset);assertEquals(bytes.length,length);return new ByteArrayInputStream(bytes);}};
+        String first=UploadSource.officeFingerprint(source,bytes.length);
+        assertTrue(first.matches("office-artifact-v1:[a-f0-9]{64}"));
+        bytes[100000]^=1; assertNotEquals(first,UploadSource.officeFingerprint(source,bytes.length));
+        UploadSource shortSource=new UploadSource(){public void check(){} public InputStream open(long o,long l){return new ByteArrayInputStream(new byte[1]);}};
+        assertThrows(IOException.class,()->UploadSource.officeFingerprint(shortSource,10));
+        assertThrows(IOException.class,()->UploadSource.officeFingerprint(source,12L*1024*1024+1));
+    }
     @Test public void shortOrChangedSourcesCannotProduceAValidFingerprint() {
         UploadSource shortSource = new UploadSource() { public void check() { } public InputStream open(long offset, long length) { return new ByteArrayInputStream(new byte[0]); } };
         assertThrows(IOException.class, () -> UploadSource.fingerprint(shortSource, "a.bin", 10, 0));

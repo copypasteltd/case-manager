@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T19:48:53.135126+00:00",
+  "finished_at": "2026-10-30T19:49:04.865938+00:00",
+  "elapsed_seconds": 11.731,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "e635199fdd5cfe3bbf724b910bf084d07be37922e53b9a634af8fd2187185e19",
+  "source_after_sha256": "e635199fdd5cfe3bbf724b910bf084d07be37922e53b9a634af8fd2187185e19",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 481,
+    "pass": 481,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "91b1e05eb5924ac1c566ade9f379bbe6753a612d8eb8468582801cb2f77e61ed",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Complete current shared mobile unit suite, including Office authoring typed input/artifact validation.",
+  "real_device": false,
+  "virtualization_used": false
+}

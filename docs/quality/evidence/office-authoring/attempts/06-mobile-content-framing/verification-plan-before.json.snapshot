@@ -1,0 +1,183 @@
+{
+  "name": "office-authoring",
+  "increment": 129,
+  "configuration_file": "docs/quality/evidence/office-authoring/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/office-authoring",
+  "retained_base_commit": "b4a25eab07fa7c8d893442b4dce4af79aab6e617",
+  "retained_base_increment": 128,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py",
+    "scripts/run_workbench_browser.py",
+    "scripts/workbench_sources.py",
+    "scripts/workbench_browser_common.mjs",
+    "scripts/project_business_recording.mjs",
+    "scripts/encode_workbench_media.py",
+    "scripts/office_text_recording.mjs",
+    "scripts/build_office_authoring_android.py",
+    "scripts/build_office_templates.py",
+    "scripts/verify_office_artifacts.py",
+    "scripts/check_office_authoring.mjs",
+    "scripts/verify_backend_batches.py"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestOfficeAuthoring|TestUploadControl|TestUploadIntegrity|TestUploadPromotionAndCommit|TestOfficeTextDocuments|TestUploadCurrentAuthority)$",
+        "-p=1",
+        "-timeout=12m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestOfficeAuthoring",
+        "TestUploadControl",
+        "TestUploadIntegrity",
+        "TestUploadPromotionAndCommit",
+        "TestOfficeTextDocuments",
+        "TestUploadCurrentAuthority"
+      ],
+      "scope": "Six selected actual HTTP/PostgreSQL suites: new Word/Excel/PPT create-edit-full-hash-scan-promotion-formal-commit, wrong body rejection, stale heads, source corruption, revocation, mini-program read-only; existing upload authority/control/integrity/promotion and Office text regressions. Synthetic object transport/scanner; no real cloud or full backend claim."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/office-authoring/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/office-authoring/web-vitest.json",
+      "minimum_tests": 396,
+      "scope": "Complete current Web unit suite, including Office authoring typed input/artifact validation and full bounded generated-file hash checks."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 481,
+      "scope": "Complete current shared mobile unit suite, including Office authoring typed input/artifact validation."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Current native Babel primitive checks; separate current development APK/JVM evidence is required."
+    },
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_office_authoring_android.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Android development debug APK, embedded current JS source map and actual Android/JVM unit suites; disclosed four-worker Metro native Windows filesystem adapter and explicit loopback local profile. No device/emulator or formal signing/distribution acceptance."
+    },
+    {
+      "id": "native-parser",
+      "command": [
+        "python",
+        "scripts/verify_office_artifacts.py"
+      ],
+      "parser": "exit",
+      "env": {
+        "CP_OFFICE_PYTHON": "C:\\Users\\carzy\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+      },
+      "scope": "Actual bounded OOXML Go create/edit/part-preservation and unsafe original/formula tests, plus six real output files independently opened by python-docx 1.2.0/openpyxl 3.1.5/python-pptx 1.0.2. No Office visual rendering acceptance."
+    }
+  ],
+  "browser_groups": [
+    "office-authoring-web",
+    "office-authoring-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "fixture_only_adjustment": {
+    "before_file": "docs/quality/evidence/office-authoring/attempts/04-browser-mfa-fixture/office-author-before.go.snapshot",
+    "before_plan": "docs/quality/evidence/office-authoring/attempts/04-browser-mfa-fixture/verification-plan-before.json.snapshot"
+  }
+}

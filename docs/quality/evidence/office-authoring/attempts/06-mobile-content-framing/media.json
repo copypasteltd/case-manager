@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T20:11:23.535524+00:00",
+  "encoder_script_sha256": "b7ab059c4b2feecb9eda9f48a642b555691b32fd06dae7fd4eb9c2b1cecb1a86",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "e3f74533cd9247fca7c439a4efcc1bc69057bbff2ad2331ac0d0c2934d5cd803",
+      "build_source_sha256": "e24109bb0959f19e77615030462a6b1e10c34aa77999fbbd4dfe825f737bacb3",
+      "capture_manifest": "docs/quality/evidence/office-authoring/web-capture-manifest.json",
+      "capture_manifest_sha256": "ac90c5c489fd28bc1f38fd0383759405241ef69d889ebaaf059ba64fb32131ce",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 2319,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/office-authoring-web-word.png",
+          "sha256": "62877c6a0c431dc701c7387015c82de701738b3cdd19fe4ebfa3a206464d891b"
+        },
+        {
+          "file": "docs/media/screenshots/office-authoring-web-excel.png",
+          "sha256": "563b893fe5c954e6a00879c35554148e7483da82856187acc6e0af7718b2cb53"
+        },
+        {
+          "file": "docs/media/screenshots/office-authoring-web-slides.png",
+          "sha256": "b7999666afeb50e2c47299bd81aa855adcbd783bc9a3b83c911b5aa2ccdb515b"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "24",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/office-authoring-web.mp4",
+          "sha256": "341609d8a103e61bfa9dfb301804453025831d230fc0bd843cf1d577fec01f15",
+          "bytes": 114609
+        },
+        {
+          "file": "docs/media/gifs/office-authoring-web.gif",
+          "sha256": "5b6d8a34725f996bc399853251463f8801a6cb76582a1f3e6ca0a28617b99bce",
+          "bytes": 184155
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "798e75f1afac1b85481efbaf849893f049d47595ab5607e21c3d6e268e1555b2",
+      "build_source_sha256": "e24109bb0959f19e77615030462a6b1e10c34aa77999fbbd4dfe825f737bacb3",
+      "capture_manifest": "docs/quality/evidence/office-authoring/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "d6b6a5e21727680f410ab7f39f2b0681c98fadc731d8400b76f703f1183c6c6e",
+      "capture_frame_count": 8,
+      "capture_duration_ms": 1737,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/office-authoring-mobile-word.png",
+          "sha256": "f847703d95113da12d8d1501522dfe5de165623bbea116d70900d84ae6cd631c"
+        },
+        {
+          "file": "docs/media/screenshots/office-authoring-mobile-excel.png",
+          "sha256": "469fa806f5d3219b9e20d2f0e1704aaccc607063ca39c62707602d3b5416891b"
+        },
+        {
+          "file": "docs/media/screenshots/office-authoring-mobile-slides.png",
+          "sha256": "831302ef039e0a178a5bfb2a4a74abb8527f20177af7072a69c22e45070124f6"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "18",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "1.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/office-authoring-mobile.mp4",
+          "sha256": "727c9a1113dd541824c8cc6262d7b41400be096c4b539fc881cf2cb1047a3f30",
+          "bytes": 46613
+        },
+        {
+          "file": "docs/media/gifs/office-authoring-mobile.gif",
+          "sha256": "f2894c8a6240fed04cea9760852ede70ae6088b0b80da75b32b1080b636ce728",
+          "bytes": 54771
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 records the actual authenticated home refresh after the owned copy worker verifies real synthetic bytes. GIF is an explicit tour of three actual screenshots: initial work, queued retry and completed work. No physical device, real cloud or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/office-authoring-web-word.png",
+      "sha256": "62877c6a0c431dc701c7387015c82de701738b3cdd19fe4ebfa3a206464d891b"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-web-excel.png",
+      "sha256": "563b893fe5c954e6a00879c35554148e7483da82856187acc6e0af7718b2cb53"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-web-slides.png",
+      "sha256": "b7999666afeb50e2c47299bd81aa855adcbd783bc9a3b83c911b5aa2ccdb515b"
+    },
+    {
+      "file": "docs/media/videos/office-authoring-web.mp4",
+      "sha256": "341609d8a103e61bfa9dfb301804453025831d230fc0bd843cf1d577fec01f15",
+      "bytes": 114609
+    },
+    {
+      "file": "docs/media/gifs/office-authoring-web.gif",
+      "sha256": "5b6d8a34725f996bc399853251463f8801a6cb76582a1f3e6ca0a28617b99bce",
+      "bytes": 184155
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-mobile-word.png",
+      "sha256": "f847703d95113da12d8d1501522dfe5de165623bbea116d70900d84ae6cd631c"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-mobile-excel.png",
+      "sha256": "469fa806f5d3219b9e20d2f0e1704aaccc607063ca39c62707602d3b5416891b"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-mobile-slides.png",
+      "sha256": "831302ef039e0a178a5bfb2a4a74abb8527f20177af7072a69c22e45070124f6"
+    },
+    {
+      "file": "docs/media/videos/office-authoring-mobile.mp4",
+      "sha256": "727c9a1113dd541824c8cc6262d7b41400be096c4b539fc881cf2cb1047a3f30",
+      "bytes": 46613
+    },
+    {
+      "file": "docs/media/gifs/office-authoring-mobile.gif",
+      "sha256": "f2894c8a6240fed04cea9760852ede70ae6088b0b80da75b32b1080b636ce728",
+      "bytes": 54771
+    }
+  ]
+}

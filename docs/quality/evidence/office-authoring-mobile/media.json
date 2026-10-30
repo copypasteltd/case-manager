@@ -1,0 +1,29 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/office-authoring-mobile-word.png",
+      "sha256": "a29bb2d23d62b9bb66d5c4b2404b3b486fb6d37d759ef1140fb0423660e75795"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-mobile-excel.png",
+      "sha256": "71c106f885368992078c7caf38515216618849741a99a81162cb20f7f61fa2be"
+    },
+    {
+      "file": "docs/media/screenshots/office-authoring-mobile-slides.png",
+      "sha256": "317f5ae7b34b8212a9594ee0fc3df68f02baf45d204fa8653c3e2d6319248ae8"
+    }
+  ],
+  "recording": {
+    "name": "office-authoring-mobile",
+    "frame_count": 9,
+    "duration_ms": 1839,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/office-authoring-mobile/frames.json",
+    "manifest_sha256": "bb652b2d0481ba82083f5d3cc0eec42d89a075f27482cc5dc18030353b3d78d9"
+  },
+  "scope": "Actual synthetic Web edit/render and shared H5 readonly pixels; HTTP tests separately exercise full scan/hash/promotion/commit. No device/cloud/Office layout claim."
+}

@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "independent_consumers": {
+    "python-docx": "1.2.0",
+    "openpyxl": "3.1.5",
+    "python-pptx": "1.0.2"
+  },
+  "artifacts": [
+    {
+      "name": "created.docx",
+      "sha256": "033fc9c1f1bf147634eb39e2f23f1aa41fab1b3773026d95889c1a00efb01d86",
+      "bytes": 35318
+    },
+    {
+      "name": "created.pptx",
+      "sha256": "6d9f7317f536b52a680533c78035e840aeaed86d8365c2e5bee0e5e045304456",
+      "bytes": 27852
+    },
+    {
+      "name": "created.xlsx",
+      "sha256": "4548814629d50318511c395a82784e86905900402fcc4d6452532de07fb911b7",
+      "bytes": 5321
+    },
+    {
+      "name": "edited.docx",
+      "sha256": "e979f454cfac6d04b5820390f5dce4c1b3c66da61462a96fa2dd85b094906e75",
+      "bytes": 35317
+    },
+    {
+      "name": "edited.pptx",
+      "sha256": "11b053dabb4f7c5278b8cb4d0bcbdad3448ea158c827bb26c62dc246611b32b6",
+      "bytes": 27881
+    },
+    {
+      "name": "edited.xlsx",
+      "sha256": "61c156cb01e5594e10ac7987ae27a93879c55d47349f577179b64fb6c17c56dc",
+      "bytes": 5350
+    }
+  ],
+  "rendering_validated": false
+}

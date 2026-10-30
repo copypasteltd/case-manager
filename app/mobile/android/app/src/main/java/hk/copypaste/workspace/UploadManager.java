@@ -57,14 +57,18 @@ final class UploadManager {
     }
     void release(String uri) {
         if (uri == null || uri.isEmpty() || store.hasURI(uri)) return;
+        if(uri.startsWith("cp-generated:")){try{GeneratedUploadSource.resolve(context,uri).delete();}catch(Exception ignored){}return;}
         try { context.getContentResolver().releasePersistableUriPermission(Uri.parse(uri), Intent.FLAG_GRANT_READ_URI_PERMISSION); } catch (Exception ignored) { }
     }
     SAFUploadSource source(UploadStore.Record record) throws Exception {
         return source(record, new android.os.CancellationSignal());
     }
+    String fingerprint(SAFUploadSource source, String expected) throws Exception {
+        return expected.startsWith("office-artifact-v1:") ? UploadSource.officeFingerprint(source,source.size) : UploadSource.fingerprint(source,source.name,source.size,source.modified);
+    }
     SAFUploadSource source(UploadStore.Record record, android.os.CancellationSignal cancellation) throws Exception {
         if (record.uri.isEmpty()) throw new IllegalStateException();
-        SAFUploadSource source = new SAFUploadSource(context.getContentResolver(), Uri.parse(record.uri), cancellation);
+        SAFUploadSource source = record.uri.startsWith("cp-generated:") ? GeneratedUploadSource.open(context,record,cancellation) : new SAFUploadSource(context.getContentResolver(), Uri.parse(record.uri), cancellation);
         if (!source.name.equals(record.name) || source.size != record.size || source.modified != record.modified || !source.media.equals(record.media)) throw new IllegalStateException();
         return source;
     }
@@ -73,7 +77,7 @@ final class UploadManager {
         synchronized (this) { if (active != null) throw new IllegalStateException(); current = owner(expected); }
         UploadStore.Record record = store.get(current, handle);
         SAFUploadSource source = source(record);
-        if (!UploadSource.fingerprint(source, source.name, source.size, source.modified).equals(record.fingerprint)) throw new IllegalStateException();
+        if (!fingerprint(source,record.fingerprint).equals(record.fingerprint)) throw new IllegalStateException();
         synchronized (this) {
             owner(expected); if (active != null) throw new IllegalStateException();
             Run run = new Run(current, record); active = run;

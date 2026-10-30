@@ -6,6 +6,7 @@ import { UploadTransferController, type NativeUploadSource, type NativeUploadEve
 interface Bridge {
   scope(owner: string): Promise<void>; clearScope(): void; list(): Promise<string>;
   select(replacement: string | null): Promise<string>; prepare(handle: string, input: string): Promise<string>;
+  generated(name: string, media: string, content: string, sha: string): Promise<string>;
   bind(handle: string, input: string): Promise<string>; begin(handle: string): Promise<string>;
   touch(handle: string, run: string, confirmed: string, transferred: string): Promise<void>;
   transfer(handle: string, run: string, number: number, input: string): Promise<string>;
@@ -19,7 +20,7 @@ function source(input: unknown): NativeUploadSource {
   const value = input as NativeUploadSource, size = Number(value.size_bytes);
   if (!UUID.test(value.handle) || typeof value.name !== 'string' || value.name.length > 255 || typeof value.media_type !== 'string' ||
       !Number.isSafeInteger(size) || size < 1 || size > 120_000_000_000 || String(size) !== value.size_bytes ||
-      !/^android-saf-v1:[a-f0-9]{64}$/.test(value.fingerprint) || typeof value.has_source !== 'boolean' ||
+      !/^(android-saf-v1|office-artifact-v1):[a-f0-9]{64}$/.test(value.fingerprint) || value.fingerprint.startsWith('office-artifact-v1:') && size > 12 * 1024 * 1024 || typeof value.has_source !== 'boolean' ||
       typeof value.state !== 'string' || typeof value.upload_id !== 'string' || value.upload_id !== '' && !UUID.test(value.upload_id) ||
       !Number.isSafeInteger(value.prepared_at_ms) || value.prepared_at_ms < 0 || typeof value.create_key !== 'string' || typeof value.create_body !== 'string' || value.create_body.length > 4096) throw new MobileError('INVALID_RESPONSE', '本机上传记录无法核对。');
   return value;
@@ -35,12 +36,14 @@ async function safe<T>(action: () => Promise<T>): Promise<T> {
 }
 export const nativeUploads: NativeUploadPort & {
   select(replacement?: string): Promise<NativeUploadSource>;
+  generated(artifact: Schemas['OfficeArtifact']): Promise<NativeUploadSource>;
   prepare(handle: string, target: Pick<Schemas['UploadCreate'], 'folder_id' | 'name' | 'file_id' | 'base_version_id'>): Promise<NativeUploadSource>;
   forget(handle: string): Promise<void>;
 } = {
   scope: owner => safe(() => bridge.scope(owner)),
   list: () => safe(async () => { const value = JSON.parse(await bridge.list()) as unknown; if (!Array.isArray(value) || value.length > 16) throw new Error(); return value.map(source); }),
   select: replacement => safe(async () => source(JSON.parse(await bridge.select(replacement ?? null)))),
+  generated: artifact => safe(async () => source(JSON.parse(await bridge.generated(artifact.name, artifact.media_type, artifact.content_base64, artifact.sha256)))),
   prepare: (handle, target) => safe(async () => source(JSON.parse(await bridge.prepare(handle, JSON.stringify(target))))),
   bind: (handle, upload: Upload) => safe(async () => source(JSON.parse(await bridge.bind(handle, JSON.stringify(upload))))),
   begin: handle => safe(() => bridge.begin(handle)),

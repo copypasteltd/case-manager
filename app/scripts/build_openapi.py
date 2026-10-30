@@ -2181,6 +2181,29 @@ operation("/file-batch-plans/{id}/execute", "post", "executeFileBatchPlan", "Fil
 operation("/file-batch-plans/{id}/cancel", "post", "cancelFileBatchPlan", "FileBatchPlan", "FileBatchDecision")
 operation("/files/{id}/batch-plans", "get", "listFileBatchPlans", "FileBatchPlan", listing=True)
 
+office_text = {"type": "string", "maxLength": 8192}
+add("OfficeCell", {"kind":enum("text","number","boolean","formula"),"value":office_text}, ("kind","value"))
+add("OfficeSheet", {"name":NAME,"rows":array(array(ref("OfficeCell"),minItems=1,maxItems=64),minItems=1,maxItems=500)}, ("name","rows"))
+add("OfficeSlide", {"title":office_text,"lines":array(office_text,maxItems=128)}, ("title","lines"))
+add("OfficeDocument", {"kind":enum("docx","xlsx","pptx"),"title":office_text,
+    "paragraphs":nullable(array(office_text,maxItems=500)),"table":nullable(array(array(office_text,maxItems=32),maxItems=200)),
+    "sheets":nullable(array(ref("OfficeSheet"),maxItems=16)),"slides":nullable(array(ref("OfficeSlide"),maxItems=64))}, ("kind","title"))
+office_unit = {"id":HASH,"group":NAME,"label":NAME,"kind":enum("text","number","boolean","formula"),"value":office_text,"read_only":{"type":"boolean"}}
+add("OfficeUnit",office_unit,tuple(office_unit))
+office_workspace = {"adapter":enum("office-author-v1"),"kind":enum("docx","xlsx","pptx"),"units":array(ref("OfficeUnit"),minItems=1,maxItems=2000),"warnings":array(NAME,maxItems=10),"sha256":HASH}
+add("OfficeWorkspace",office_workspace,tuple(office_workspace))
+add("OfficeChange",{"id":HASH,"kind":enum("text","number","boolean","formula"),"value":office_text},("id","kind","value"))
+add("OfficeCreate",{"expected_version":VERSION,"name":NAME,"document":ref("OfficeDocument")},("expected_version","name","document"))
+office_edit={"expected_version":VERSION,"base_version_id":ID,"source_sha256":HASH,"workspace_sha256":HASH,"changes":array(ref("OfficeChange"),minItems=1,maxItems=2000)}
+add("OfficeEdit",office_edit,tuple(office_edit))
+office_read={"file":ref("File"),"version_id":ID,"source_sha256":HASH,"workspace":ref("OfficeWorkspace")}
+add("OfficeRead",office_read,tuple(office_read))
+office_artifact={"name":NAME,"media_type":NAME,"size_bytes":BYTES,"sha256":HASH,"content_base64":{"type":"string","minLength":4,"maxLength":16777216,"pattern":r"^[A-Za-z0-9+/]*={0,2}$"},"upload":ref("UploadCreate"),"workspace":ref("OfficeWorkspace")}
+add("OfficeArtifact",office_artifact,tuple(office_artifact))
+operation("/files/{id}/versions/{version}/office","get","readOfficeWorkspace","OfficeRead")
+operation("/folders/{id}/office-render","post","renderOfficeCreate","OfficeArtifact","OfficeCreate")
+operation("/files/{id}/office-render","post","renderOfficeEdit","OfficeArtifact","OfficeEdit")
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

@@ -1,5 +1,10 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量129 / Increment129：实际Web读取准确原版本并编辑／生成Word、Excel、PPT候选，共享Taro H5只读查阅三种格式。6张PNG、本人登录后视口MP4及明确三截图各2秒导览GIF；HTTP／PG另验完整扫描／提升／正式提交。合成对象／业务资料、无凭据画面、无真实云／模型／TG／实体设备，不声明Office版式验收。见[使用](../development/129-office-authoring.md)、[检查](../quality/129-office-authoring-verification.md)及[素材摘要](../quality/evidence/office-authoring/media.json)。
+
+[Web录制 / Web recording](videos/office-authoring-web.mp4) · [共享移动 / Shared mobile](videos/office-authoring-mobile.mp4) · [Web导览GIF](gifs/office-authoring-web.gif) · [移动导览GIF](gifs/office-authoring-mobile.gif)。
+
+
 增量128：PDF／扫描件／图片正文真实Web与共享H5各三张PNG、实际视口MP4及明确三截图导览GIF。只录本人MFA验证后合成业务，不包含凭据或真实业务资料。OCR原生执行真实，OSS／R2对象为隔离合成来源；没有调用真实模型／TG或实体设备。GIF为三张实际页面各2秒导览，不冒充连续录屏。
 
 [Web PDF](screenshots/document-text-web-pdf.png) · [Web图片](screenshots/document-text-web-image.png) · [Web比较](screenshots/document-text-web-comparison.png) · [共享移动PDF](screenshots/document-text-mobile-pdf.png) · [共享移动图片](screenshots/document-text-mobile-image.png) · [共享移动比较](screenshots/document-text-mobile-comparison.png) · [Web MP4](videos/document-text-web.mp4) · [移动MP4](videos/document-text-mobile.mp4) · [Web GIF](gifs/document-text-web.gif) · [移动GIF](gifs/document-text-mobile.gif)

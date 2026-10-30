@@ -1,0 +1,35 @@
+{
+  "execution_source_sha256": "e635199fdd5cfe3bbf724b910bf084d07be37922e53b9a634af8fd2187185e19",
+  "adjustment": "Exact opt-in browser MFA setup only; Office adds one actionless MFA role/binding for the enrolled fixture actor. Production inputs, executed test bodies and commands unchanged.",
+  "snapshots": [
+    {
+      "file": "docs/quality/evidence/office-authoring/attempts/04-browser-mfa-fixture/office-author-before.go.snapshot",
+      "sha256": "a497674593b40f1cd89803c6f440b2b06b8d1d213319444997457faadf4035c7"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/attempts/04-browser-mfa-fixture/verification-plan-before.json.snapshot",
+      "sha256": "d1023ef33232b5bd93a0b54a2cf950e7bd81da085291405966e89ec8597770f7"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/attempts/06-mobile-content-framing/checker-before.mjs.snapshot",
+      "sha256": "20bff8ac2453146185e6f46dcdf8a51b7e2014c1b1211d1ac3d02701023ae206"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/attempts/06-mobile-content-framing/encoder-before.py.snapshot",
+      "sha256": "b7ab059c4b2feecb9eda9f48a642b555691b32fd06dae7fd4eb9c2b1cecb1a86"
+    },
+    {
+      "file": "docs/quality/evidence/office-authoring/attempts/06-mobile-content-framing/verification-plan-before.json.snapshot",
+      "sha256": "b12368112286044a0af5ec73062385bf06aa8d2a2538fe0ef19fed2756925631"
+    }
+  ],
+  "capture_execution_source_sha256": "0ae121d4d90b012feabdf11e5224a522421f58a34aaacdf1647957a3fd1d11a6",
+  "capture_adjustment": "Exactly scroll the already asserted Office text into view before screenshots and after the recorded reload; add accurate Office media wording only. Encoding mechanics, production, test and command bytes unchanged. Browser/media are executed again.",
+  "passed": true,
+  "current_source_sha256": "76960d97973eef62c48fda2daa764cd6f663461c37cdb53603143131cf6312eb",
+  "method": "Exact fixed inverse MFA insertion and capture-only framing/description substitutions reconstruct both actual earlier complete input digests. The first MFA snapshot was reconstructed because preparation overlapped the edit; capture-helper snapshots were completed before capture edits. Production/test/command bytes unchanged. Browser/media are executed again after framing changes.",
+  "production_changed": false,
+  "commands_changed": false,
+  "selected_tests_changed": false,
+  "encoding_mechanics_changed": false
+}

@@ -7,6 +7,7 @@ import { Busy, classificationNames, date, Dialog, Empty, ErrorNotice, Field } fr
 import { DownloadDialog } from './DownloadDialog';
 import { MultipartCleanup } from './MultipartCleanup';
 import { UploadButton } from './UploadQueue';
+import { OfficeAuthorButton } from './OfficeAuthor';
 import { HistoryRestores, RestoreVersionButton } from './HistoryRestores';
 import { useRetention, RetentionPanel, RetentionVersionActions } from './Retention';
 import FileComparisonPanel from './FileComparison';
@@ -51,7 +52,7 @@ export function FilesPage({ me }: { me: Me }) {
   const folders = directories.data?.pages.flatMap(page => page.items) ?? [], items = files.data?.pages.flatMap(page => page.items) ?? [];
   return <><Link className="back-link" to={folderURL(folder.data?.parent_id)}><ArrowLeft size={16} />{folderID ? folder.data?.parent_id ? '返回上级目录' : '返回文件中心' : '文件中心'}</Link>
     <div className="page-heading"><div><span className="eyebrow">EVERY FILE HAS ITS PLACE</span><h1>{folder.data?.name ?? '文件与资料'}<span className="accent">.</span></h1><p>{folder.data ? classificationNames[folder.data.classification] + ' · 按权限管理的资料目录' : '整理公司与项目资料，追踪版本和备份进度。'}</p></div>
-      <div className="post-actions"><UploadButton folder={folder.data} />{((folder.data?.can_create) || (!folderID && !projectID && me.actions.includes('folder.create'))) && <button className="button primary" onClick={() => setCreating(true)}><FolderPlus size={17} />新建目录</button>}</div></div>
+      <div className="post-actions"><UploadButton folder={folder.data} /><OfficeAuthorButton folder={folder.data} />{((folder.data?.can_create) || (!folderID && !projectID && me.actions.includes('folder.create'))) && <button className="button primary" onClick={() => setCreating(true)}><FolderPlus size={17} />新建目录</button>}</div></div>
     {folder.data?.project_id && <p className="filter-caption"><Link className="text-button" to={'/projects/' + folder.data.project_id}>查看关联项目<ArrowUpRight size={15} /></Link></p>}
     {folder.data && me.actions.includes('file.retention.manage') && <MultipartCleanup key={folderID} folder={folder.data} me={me} />}
     {folder.data && !folder.error && <ScopeTransfers kind="folder" resource={folder.data} me={me} />}
@@ -109,7 +110,7 @@ export function FileDetail() {
   if (file.isPending) return <Busy label="正在读取文件资料" />;
   if (!file.data) return <><Link className="back-link" to="/files"><ArrowLeft size={16} />返回文件中心</Link><ErrorNotice error={file.error} /></>;
   const value = file.data, versions = history.data?.pages.flatMap(page => page.items) ?? [];
-  return <><Link className="back-link" to={folderURL(value.folder_id)}><ArrowLeft size={16} />返回所在目录</Link><ErrorNotice error={file.error} /><div className="page-heading detail-heading"><div><span className="eyebrow">A TRACEABLE RECORD</span><h1>{value.name}</h1><div className="project-subtitle"><span className="badge neutral">{value.state === 'trashed' ? '回收站' : '当前文件'}</span><span>{classificationNames[value.classification]}</span><span>资料版本 {value.version} · {date(value.updated_at)}</span></div></div><div className="post-actions"><UploadButton file={value} />{value.can_move && <button className="button secondary" onClick={() => setMoving(true)}><Pencil size={16} />修改位置与名称</button>}{value.can_trash && <button className="button danger-outline" onClick={() => setAction('trash')}><Trash2 size={16} />移入回收站</button>}{value.can_restore && <button className="button primary" onClick={() => setAction('restore')}><RotateCcw size={16} />恢复至原目录</button>}</div></div>
+  return <><Link className="back-link" to={folderURL(value.folder_id)}><ArrowLeft size={16} />返回所在目录</Link><ErrorNotice error={file.error} /><div className="page-heading detail-heading"><div><span className="eyebrow">A TRACEABLE RECORD</span><h1>{value.name}</h1><div className="project-subtitle"><span className="badge neutral">{value.state === 'trashed' ? '回收站' : '当前文件'}</span><span>{classificationNames[value.classification]}</span><span>资料版本 {value.version} · {date(value.updated_at)}</span></div></div><div className="post-actions"><UploadButton file={value} /><OfficeAuthorButton file={value} />{value.can_move && <button className="button secondary" onClick={() => setMoving(true)}><Pencil size={16} />修改位置与名称</button>}{value.can_trash && <button className="button danger-outline" onClick={() => setAction('trash')}><Trash2 size={16} />移入回收站</button>}{value.can_restore && <button className="button primary" onClick={() => setAction('restore')}><RotateCcw size={16} />恢复至原目录</button>}</div></div>
     {value.legal_hold && <div className="notice neutral"><ShieldCheck size={18} /><span>此文件处于保留约束中。</span></div>}
     {me.data && !me.error && !file.error && <ScopeTransfers kind="file" resource={value} me={me.data} />}
     {me.data && !me.error && !file.error && <FileBatchHistory key={value.id + me.data.authorization_version} fileID={value.id} me={me.data} />}

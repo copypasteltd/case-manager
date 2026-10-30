@@ -60,11 +60,12 @@ def digest(names=None, config=None, substitutions=None):
 
 
 def fixture_adjustment(config):
-    """Allow only the disclosed MFA setup call in an opt-in browser fixture.
+    """Allow only disclosed exact MFA fixture and Office capture-only changes.
 
     Reconstruct the actual earlier execution inputs, rather than relabelling an
     old combined digest as current. Every production byte and selected test
     body must remain identical; command/acceptance changes are not permitted.
+    Office framing/description changes reconstruct both actual prior digests.
     """
     adjustment = config.get('fixture_only_adjustment')
     if not adjustment:
@@ -77,13 +78,47 @@ def fixture_adjustment(config):
     marker = b'func TestOperationsWorkbenchBrowserFixture(t *testing.T) {'
     needle = b'\toperationsRole(t, f, f.alice, "status_operator")\n\tservice := operationsService(t, f, committed.File.ProjectID)'
     replacement = b'\toperationsRole(t, f, f.alice, "status_operator")\n\tf.aliceToken = memberMFAToken(f, "alice", "android")\n\tservice := operationsService(t, f, committed.File.ProjectID)'
+    if config['name'] == 'office-authoring':
+        name = 'backend/internal/httpapi/office_author_integration_test.go'
+        marker = b'func TestOfficeAuthoring(t *testing.T) {'
+        needle = b'\tif os.Getenv("CP_BROWSER_OFFICE_AUTHOR") == "1" && !t.Failed() {\n\t\tf.aliceToken = memberMFAToken(f, "alice", "android")'
+        replacement = b'\tif os.Getenv("CP_BROWSER_OFFICE_AUTHOR") == "1" && !t.Failed() {\n\t\tif _, err := f.owner.Exec(context.Background(), "WITH r AS (INSERT INTO roles(id,org_id,key,name,requires_mfa) VALUES(gen_random_uuid(),$1,\'office_author_browser_mfa\',\'Actionless browser MFA\',true) RETURNING id) INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type) SELECT gen_random_uuid(),$1,$2,id,\'org\' FROM r", f.org, f.alice); err != nil {\n\t\t\tt.Fatal(err)\n\t\t}\n\t\tf.aliceToken = memberMFAToken(f, "alice", "android")'
     assert before.count(marker) == before.count(needle) == 1 and before.index(needle) > before.index(marker)
     assert (APP / name).read_bytes() == before.replace(needle, replacement, 1)
     assert read(before_plan) == {key:value for key,value in config.items() if key != 'fixture_only_adjustment'}
     substitutions = {name:before, '../'+config['configuration_file']:before_plan.read_bytes()}
-    return {'execution_source_sha256':digest(config=config, substitutions=substitutions),
-        'adjustment':'One MFA enrollment/verification call in the opt-in browser fixture only; production inputs, executed test bodies and commands unchanged.',
-        'snapshots':[{'file':file.relative_to(ROOT).as_posix(),'sha256':sha(file)} for file in (before_file,before_plan)]}
+    snapshots = [before_file,before_plan]
+    capture_digest = None
+    capture_keys = {'before_capture','before_encoder','before_capture_plan'}
+    if capture_keys & adjustment.keys():
+        assert config['name'] == 'office-authoring' and capture_keys.issubset(adjustment)
+        capture_files = [ROOT / adjustment[key] for key in ('before_capture','before_encoder','before_capture_plan')]
+        assert all(file.resolve().is_relative_to(directory(config)) for file in capture_files)
+        before_checker,before_encoder,before_capture_plan = capture_files
+        checker_name,encoder_name = 'scripts/check_office_authoring.mjs','scripts/encode_workbench_media.py'
+        checker = before_checker.read_bytes()
+        needle = "   assert.equal(await button('生成并核对候选文件').count(),0);\n".encode()
+        line = "   await root().getByText('正式修订 香港🙂',{exact:true}).scrollIntoViewIfNeeded();\n".encode()
+        callback = "await root().getByText('正式修订 香港🙂',{exact:true}).waitFor();});".encode()
+        assert checker.count(needle) == checker.count(callback) == 1
+        expected = checker.replace(needle,needle+line,1).replace(callback,callback.replace(b';});',b';'+line.strip()+b'});'),1)
+        assert (APP/checker_name).read_bytes() == expected
+        encoder = before_encoder.read_bytes()
+        needle = b"    if args.feature == 'document-text':\n"
+        patch = b"    if args.feature == 'office-authoring':\n        value['scope'] = 'Actual authenticated synthetic Word/Excel/PPT content authoring on Web and exact-version readonly content on shared H5. MP4 records actual viewport pixels after MFA; GIF explicitly tours three actual screenshots, two seconds each. HTTP tests separately cover full upload/hash/scan/promotion/formal commit. No device, real cloud, Office layout or production acceptance.'\n"
+        assert encoder.count(needle) == 1 and (APP/encoder_name).read_bytes() == encoder.replace(needle,patch+needle,1)
+        prior_config = {**config,'fixture_only_adjustment':{key:value for key,value in adjustment.items() if key not in capture_keys}}
+        assert read(before_capture_plan) == prior_config
+        capture_inputs = {checker_name:checker,encoder_name:encoder,'../'+config['configuration_file']:before_capture_plan.read_bytes()}
+        capture_digest = digest(config=config,substitutions=capture_inputs)
+        substitutions.update({checker_name:checker,encoder_name:encoder})
+        snapshots += capture_files
+    result = {'execution_source_sha256':digest(config=config, substitutions=substitutions),
+        'adjustment':'Exact opt-in browser MFA setup only; Office adds one actionless MFA role/binding for the enrolled fixture actor. Production inputs, executed test bodies and commands unchanged.',
+        'snapshots':[{'file':file.relative_to(ROOT).as_posix(),'sha256':sha(file)} for file in snapshots]}
+    if capture_digest:
+        result.update({'capture_execution_source_sha256':capture_digest,'capture_adjustment':'Exactly scroll the already asserted Office text into view before screenshots and after the recorded reload; add accurate Office media wording only. Encoding mechanics, production, test and command bytes unchanged. Browser/media are executed again.'})
+    return result
 
 
 def directory(config):
@@ -193,6 +228,8 @@ def verify(config=None, save=False):
     current = digest(config=config)
     adjusted = fixture_adjustment(config)
     accepted = {current} | ({adjusted['execution_source_sha256']} if adjusted else set())
+    if adjusted and adjusted.get('capture_execution_source_sha256'):
+        accepted.add(adjusted['capture_execution_source_sha256'])
     def check(name, passed):
         checks.append({'name': name, 'passed': bool(passed)})
     records = []
@@ -240,6 +277,38 @@ def verify(config=None, save=False):
             probe.settimeout(.3)
             released.append(probe.connect_ex(('127.0.0.1',port)) != 0)
     check('Both owned review ports are released', all(released))
+    if config['name'] == 'office-authoring':
+        spec = importlib.util.spec_from_file_location('office_native_sources', APP/'scripts/build_android.py')
+        native = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(native)
+        build,inspection,suites,js = [read(evidence/name) for name in ('build.json','apk-inspection.json','native-suites.json','android-js-content.json')]
+        apk,bundle = (APP/build['artifacts'][label]['path'] for label in ('apk','bundle'))
+        check('Current complete development APK binds all native/business inputs and actual artifact bytes',
+            build['passed'] and build['source_unchanged_during_build'] and build['source_sha256'] == native.sources()[0]
+            and len(build['phases']) == 2 and all(item['passed'] and item['exit_code'] == 0 for item in build['phases'])
+            and sha(apk) == build['artifacts']['apk']['sha256'] and sha(bundle) == build['artifacts']['bundle']['sha256']
+            and not build['production_release'] and not build['device_executed'] and not build['virtualization_used'])
+        check('Actual APK signature/DEX/JS and both native suites retain precise current source evidence',
+            inspection['passed'] and len(inspection['checks']) == 19 and all(item['passed'] for item in inspection['checks'])
+            and inspection['apk_sha256'] == sha(apk) and inspection['build_record_sha256'] == sha(evidence/'build.json')
+            and inspection['inspection_script_sha256'] == sha(APP/'scripts/inspect_android_apk.py')
+            and suites['passed'] and set(suites['suites']) == {'jvm','android'}
+            and all(item['tests'] == 28 and item['failures'] == item['errors'] == item['skipped'] == 0 for item in suites['suites'].values())
+            and len(suites['native_invocations']) == 1 and suites['native_invocations'][0]['exit_code'] == 0
+            and js['passed'] and js['source_sha256'] in accepted and len(js['modules']) == 4
+            and js['build_record_sha256'] == sha(evidence/'native-bundle.json') and js['bundle_sha256'] == sha(bundle)
+            and js['verification_script_sha256'] == sha(APP/'scripts/verify_project_business_native_js.py')
+            and all(item['source_content_matches_modulo_line_endings'] and item['file_sha256'] == sha(APP/item['file']) for item in js['modules']))
+        native_scope = read(evidence/'native-test-scope.json')
+        check('Native test XML and actual fresh/cached execution boundaries are retained',
+            native_scope['passed'] and native_scope['source_sha256'] == build['source_sha256']
+            and native_scope['complete_build_record_sha256'] == sha(evidence/'build.json')
+            and native_scope['suites_record_sha256'] == sha(evidence/'native-suites.json')
+            and len(native_scope['xml_results']) == 8
+            and all(item['sha256'] == sha(ROOT/item['file']) and item['failures'] == item['errors'] == item['skipped'] == 0 for item in native_scope['xml_results'])
+            and all(sum(item['tests'] for item in native_scope['xml_results'] if item['suite'] == label) == 28 for label in ('android','jvm')))
+        records += [{'file':(evidence/name).relative_to(ROOT).as_posix(),'sha256':sha(evidence/name)}
+            for name in ('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','office-consumers.json','browser-fixture-adjustment.json')]
     records += [{'file':(evidence/name).relative_to(ROOT).as_posix(),'sha256':sha(evidence/name)}
         for name in ('media.json','visual-review.json','development-update.json','development-project-resources.json','development-runtime.json')]
     previous = retained(config)

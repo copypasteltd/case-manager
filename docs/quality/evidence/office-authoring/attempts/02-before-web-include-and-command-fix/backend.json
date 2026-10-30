@@ -1,0 +1,37 @@
+{
+  "passed": false,
+  "id": "backend",
+  "started_at": "2026-10-30T19:46:40.609238+00:00",
+  "finished_at": "2026-10-30T19:47:54.602896+00:00",
+  "elapsed_seconds": 73.992,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestNativeDocumentText|TestDOCXTextDocuments|TestOfficeTextDocuments|TestFileTextSearch|TestAgentFileText|TestAgentIndexedSearch)$",
+    "^(TestOfficeAuthoring|TestUploadControl|TestUploadIntegrity|TestUploadPromotionAndCommit|TestOfficeTextDocuments|TestUploadCurrentAuthority)$",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "edc29bf84166fad0baf32e0d9d4f51da4f4568fb797bfdd59d4709dbb17b6e13",
+  "source_after_sha256": "843599a643a66b274e09d47511d49b5eb9cc74032c10cedb4280e778f3e041fd",
+  "source_unchanged": false,
+  "tests": {
+    "top_level_tests": [],
+    "pass": 0,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [],
+  "private_log_sha256": "fd9d22812f2317e8a771d223dc64904328312c974e245ce375d2f04d245beec1",
+  "parser_error": "AssertionError",
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Six selected actual HTTP/PostgreSQL suites: new Word/Excel/PPT create-edit-full-hash-scan-promotion-formal-commit, wrong body rejection, stale heads, source corruption, revocation, mini-program read-only; existing upload authority/control/integrity/promotion and Office text regressions. Synthetic object transport/scanner; no real cloud or full backend claim.",
+  "real_device": false,
+  "virtualization_used": false
+}

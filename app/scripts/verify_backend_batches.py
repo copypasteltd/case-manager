@@ -22,7 +22,7 @@ def digest():
     value = hashlib.sha256()
     backend = APP / 'backend'
     for path in sorted(backend.rglob('*')):
-        if path.is_file() and (path.suffix in ('.go', '.sql') or path.name in ('go.mod', 'go.sum') or path.relative_to(backend).as_posix() == 'internal/contract/openapi.json'):
+        if path.is_file() and (path.suffix in ('.go', '.sql') or path.name in ('go.mod', 'go.sum') or path.relative_to(backend).as_posix() == 'internal/contract/openapi.json' or path.relative_to(backend).as_posix().startswith('internal/files/office_templates/')):
             value.update(path.relative_to(backend).as_posix().encode('utf-8') + b'\0')
             value.update(path.read_bytes() + b'\0')
     return value.hexdigest()

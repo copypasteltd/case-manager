@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "id": "native-parser",
+  "started_at": "2026-10-30T20:04:42.169352+00:00",
+  "finished_at": "2026-10-30T20:05:04.149935+00:00",
+  "elapsed_seconds": 21.98,
+  "command": [
+    "python",
+    "scripts/verify_office_artifacts.py"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "exit",
+  "source_sha256": "0ae121d4d90b012feabdf11e5224a522421f58a34aaacdf1647957a3fd1d11a6",
+  "source_after_sha256": "0ae121d4d90b012feabdf11e5224a522421f58a34aaacdf1647957a3fd1d11a6",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "198fd1dc13a198bbc626f6f21cf3a587e2bede80589afd8f8fcd6e70a0d3b4da",
+  "parser_error": null,
+  "runner_script_sha256": "bfd01e6eb3bd23d6e48051a8dc50756a4fa934f14f89d77ad5ec9c99c5ad3a7d",
+  "scope": "Actual bounded OOXML Go create/edit/part-preservation and unsafe original/formula tests, plus six real output files independently opened by python-docx 1.2.0/openpyxl 3.1.5/python-pptx 1.0.2. No Office visual rendering acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

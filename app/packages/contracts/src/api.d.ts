@@ -5902,6 +5902,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/files/{id}/versions/{version}/office": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readOfficeWorkspace */
+        get: operations["readOfficeWorkspace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/folders/{id}/office-render": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** renderOfficeCreate */
+        post: operations["renderOfficeCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/files/{id}/office-render": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** renderOfficeEdit */
+        post: operations["renderOfficeEdit"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -14211,6 +14262,89 @@ export interface components {
                 items: components["schemas"]["FileBatchPlan"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        OfficeCell: {
+            /** @enum {string} */
+            kind: "text" | "number" | "boolean" | "formula";
+            value: string;
+        };
+        OfficeSheet: {
+            name: string;
+            rows: components["schemas"]["OfficeCell"][][];
+        };
+        OfficeSlide: {
+            title: string;
+            lines: string[];
+        };
+        OfficeDocument: {
+            /** @enum {string} */
+            kind: "docx" | "xlsx" | "pptx";
+            title: string;
+            paragraphs?: string[] | null;
+            table?: string[][] | null;
+            sheets?: components["schemas"]["OfficeSheet"][] | null;
+            slides?: components["schemas"]["OfficeSlide"][] | null;
+        };
+        OfficeUnit: {
+            id: string;
+            group: string;
+            label: string;
+            /** @enum {string} */
+            kind: "text" | "number" | "boolean" | "formula";
+            value: string;
+            read_only: boolean;
+        };
+        OfficeWorkspace: {
+            /** @enum {string} */
+            adapter: "office-author-v1";
+            /** @enum {string} */
+            kind: "docx" | "xlsx" | "pptx";
+            units: components["schemas"]["OfficeUnit"][];
+            warnings: string[];
+            sha256: string;
+        };
+        OfficeChange: {
+            id: string;
+            /** @enum {string} */
+            kind: "text" | "number" | "boolean" | "formula";
+            value: string;
+        };
+        OfficeCreate: {
+            expected_version: number;
+            name: string;
+            document: components["schemas"]["OfficeDocument"];
+        };
+        OfficeEdit: {
+            expected_version: number;
+            /** Format: uuid */
+            base_version_id: string;
+            source_sha256: string;
+            workspace_sha256: string;
+            changes: components["schemas"]["OfficeChange"][];
+        };
+        OfficeRead: {
+            file: components["schemas"]["File"];
+            /** Format: uuid */
+            version_id: string;
+            source_sha256: string;
+            workspace: components["schemas"]["OfficeWorkspace"];
+        };
+        OfficeArtifact: {
+            name: string;
+            media_type: string;
+            size_bytes: string;
+            sha256: string;
+            content_base64: string;
+            upload: components["schemas"]["UploadCreate"];
+            workspace: components["schemas"]["OfficeWorkspace"];
+        };
+        OfficeReadResponse: {
+            data: components["schemas"]["OfficeRead"];
+            meta: components["schemas"]["Meta"];
+        };
+        OfficeArtifactResponse: {
+            data: components["schemas"]["OfficeArtifact"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -30749,6 +30883,127 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FileBatchPlanListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readOfficeWorkspace: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                version: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OfficeReadResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    renderOfficeCreate: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OfficeCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OfficeArtifactResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    renderOfficeEdit: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OfficeEdit"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OfficeArtifactResponse"];
                 };
             };
             400: components["responses"]["Failure"];

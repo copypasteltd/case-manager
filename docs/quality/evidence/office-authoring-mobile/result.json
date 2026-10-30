@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T20:38:17.672Z",
+  "finished_at": "2026-10-30T20:38:36.421Z",
+  "checks": [
+    "Shared Taro H5 readonly Word: real API and retained two-version history, no formal publication from rendering.",
+    "Shared Taro H5 readonly Excel: real API and retained two-version history, no formal publication from rendering.",
+    "Shared Taro H5 readonly PPT: real API and retained two-version history, no formal publication from rendering."
+  ],
+  "source_count": 959,
+  "source_sha256": "23f977cfc158aec6c51e2581606c0e0c85ccb7812ac45126ec3b3ae8d2ce1a59",
+  "source_after_sha256": "23f977cfc158aec6c51e2581606c0e0c85ccb7812ac45126ec3b3ae8d2ce1a59",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "84f37aebc0a286ee68b72bb0e2e1fe63cd9c6a31f42c145d611d05ae08ace5a6",
+    "source_sha256": "91f014d2935a1845ba965890ca65190934cd74f554bd25dd76386d8d058517f1",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "91f014d2935a1845ba965890ca65190934cd74f554bd25dd76386d8d058517f1",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "91f014d2935a1845ba965890ca65190934cd74f554bd25dd76386d8d058517f1",
+  "build_source_unchanged": true
+}

@@ -7,6 +7,7 @@ import { fileWorkspace, go, identifier, readVersion, usePage } from '../../platf
 import { MobileError, type Schemas } from '../../platform/session';
 import { client } from '../../platform/taro';
 import { UploadEntry } from '../../platform/upload-entry';
+import { OfficePanel } from './office';
 import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, State, bytes, date } from '../../ui';
 import { SelectField, TextField } from '../business/controls';
 import { FileEditor } from './forms';
@@ -62,6 +63,7 @@ function DirectoryContents({ current, me, canCreate, onEdit }: { current: Worksp
       {canCreate && <Action onClick={() => onEdit({ mode: 'create', kind: 'folder' })}>新建目录</Action>}
       {current.folder?.can_update && <Action secondary onClick={() => onEdit({ mode: 'move', kind: 'folder', item: current.folder })}>改名或移动当前目录</Action>}
       {current.folder && <UploadEntry folder={current.folder} />}
+      {current.folder && <OfficePanel key={current.folder.id + ':' + current.folder.version} folder={current.folder} />}
       <TextField name='files-query' label='查找当前范围的名称' value={search} onChange={setSearch} disabled={false} />
       <Action secondary onClick={() => setQuery(search.trim())}>查找目录与文件</Action>
       <SelectField label='文件状态' value={state} options={[[ 'active', '当前文件' ], [ 'trashed', '回收站文件' ]]} onChange={setState} disabled={false} />
@@ -89,6 +91,7 @@ function FileDetails({ file, authorization, onEdit }: { file: StoredFile; author
         {file.can_trash && file.state === 'active' && <Action secondary onClick={() => onEdit({ mode: 'trash', kind: 'file', item: file })}>移入回收站</Action>}
         {file.can_restore && file.state === 'trashed' && <Action onClick={() => onEdit({ mode: 'restore', kind: 'file', item: file })}>恢复至原目录</Action>}
         {file.state === 'active' && <UploadEntry file={file} />}
+        {file.state === 'active' && <OfficePanel key={file.id + ':' + file.version} file={file} />}
       </View>
     </Section>
     <Section title='全部正式内容版本'><Notice error={versions.error} />{versions.loading ? <Busy /> : versions.items.length ? versions.items.map(version => <Fact key={version.id} label={'内容版本 ' + version.seq + (version.id === file.current_version_id ? ' · 当前' : ' · 历史')}>

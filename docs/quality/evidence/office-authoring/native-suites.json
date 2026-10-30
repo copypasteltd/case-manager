@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "suites": {
+    "jvm": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "android": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "native_invocations": [
+    {
+      "command": [
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.tools\\node-v22.23.4-win-x64\\node.exe",
+        "--require",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.local\\android\\refund-fx-fs-diagnostic.cjs",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\node_modules\\react-native\\cli.js",
+        "bundle",
+        "--platform",
+        "android",
+        "--dev",
+        "false",
+        "--entry-file",
+        "index.js",
+        "--max-workers",
+        "4",
+        "--reset-cache",
+        "--config",
+        "D:\\dev\\copypasted\\\u5185\u90e8\u7ba1\u7406\\app\\.local\\android\\refund-fx-metro.config.cjs",
+        "--bundle-output",
+        "android/app/src/main/assets/index.android.bundle",
+        "--assets-dest",
+        "android/app/src/main/res",
+        "--sourcemap-output",
+        "../.local/android/index.android.map"
+      ],
+      "max_workers": 4,
+      "exit_code": 0,
+      "generated_output_exclusions": [
+        "mobile\\android\\.gradle",
+        "mobile\\android\\app\\build",
+        "mobile\\android\\build",
+        "mobile\\dist",
+        "mobile\\.taro",
+        "mobile\\.swc"
+      ],
+      "derived_config_sha256": "59cb479c33986ec7351181b00202ba21d646bd687c502d7f8fe76ffe6ef7e6f3",
+      "filesystem_threads": 128,
+      "windows_checkout_link_bridge_sha256": "243fad66b775d46d23470a00eb4aa71f8be9b685dfa15fbe245bb2b24e3c9265",
+      "windows_checkout_link_bridge": "Native synchronous link, metadata and read results for checkout paths only; callbacks remain asynchronous, with no source or resolution substitution"
+    }
+  ],
+  "apk_created": true,
+  "development_only": true,
+  "formal_android_acceptance": false,
+  "real_device_used": false,
+  "virtualization_used": false
+}

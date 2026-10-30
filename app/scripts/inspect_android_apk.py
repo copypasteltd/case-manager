@@ -57,7 +57,8 @@ def main():
     for file in sorted((APP / 'mobile/android/app/build/test-results/testDebugUnitTest').glob('TEST-*.xml')):
         root = ET.parse(file).getroot()
         suites.append({key: root.attrib.get(key) for key in ('name', 'tests', 'failures', 'errors', 'skipped')})
-    check('All twenty-six Android transport, cache, CSV and upload tests pass', sum(int(s['tests']) for s in suites) == 26 and all(all(int(s[k]) == 0 for k in ('failures', 'errors', 'skipped')) for s in suites) and any(s['name'].endswith('.UploadTransferTest') for s in suites))
+    expected_tests = 28 if args.evidence_group == 'office-authoring' else 26
+    check('All expected Android transport, cache, CSV and upload tests pass', sum(int(s['tests']) for s in suites) == expected_tests and all(all(int(s[k]) == 0 for k in ('failures', 'errors', 'skipped')) for s in suites) and any(s['name'].endswith('.UploadTransferTest') for s in suites))
     with zipfile.ZipFile(apk) as archive:
         bundle = archive.read('assets/index.android.bundle')
         expected = APP / 'mobile/android/app/src/main/assets/index.android.bundle'
@@ -66,6 +67,8 @@ def main():
         check('Native engine and application code are included', 'lib/arm64-v8a/libhermes.so' in names and 'classes.dex' in names)
         dex = b''.join(archive.read(name) for name in names if re.fullmatch(r'classes\d*\.dex', name))
         check('The actual native upload bridge, streaming transport and service are packaged', all(('Lhk/copypaste/workspace/' + name + ';').encode() in dex for name in ('CPUploadModule', 'UploadTransfer', 'UploadServiceHost', 'SAFUploadSource', 'UploadStore')))
+        if args.evidence_group == 'office-authoring':
+            check('The bounded private Office source and full-hash protocol are in actual DEX', all(value in dex for value in (b'Lhk/copypaste/workspace/GeneratedUploadSource;', b'office-artifact-v1:', b'office-upload-sources', b'cp-generated:', b'officeFingerprint')))
     source_map = json.loads((APP / '.local/android/index.android.map').read_text(encoding='utf-8'))
     sources = [name.replace('\\', '/') for name in source_map['sources']]
     check('Project budget comparison and shared exact-source guards are in the actual business graph', any(name.endswith('/mobile/src/pages/project/budget-comparison.tsx') for name in sources) and any(name.endswith('/packages/contracts/src/budget-comparison.ts') for name in sources))
@@ -79,7 +82,9 @@ def main():
     report = {'passed': all(c['passed'] for c in checks), 'checked_at': datetime.now(timezone.utc).isoformat(), 'checks': checks,
               'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'apk_bytes': apk.stat().st_size,
               'application_id': package[1] if package else None, 'permissions': permissions, 'architectures': architecture,
-              'tests': suites, 'device_executed': False, 'emulator_started': False, 'production_release': False}
+              'tests': suites, 'inspection_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'build_record_sha256': hashlib.sha256((evidence / 'build.json').read_bytes()).hexdigest(),
+              'device_executed': False, 'emulator_started': False, 'production_release': False}
     evidence.mkdir(parents=True, exist_ok=True)
     (evidence / 'apk-inspection.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': report['passed'], 'checks': len(checks), 'failed': [c['name'] for c in checks if not c['passed']]}))

@@ -20,7 +20,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/** React Native bridge carries only control metadata and receipts, never bytes. */
+/** Large-file transfers carry metadata only; bounded Office generation is explicit. */
 final class CPUploadModule extends ReactContextBaseJavaModule implements ActivityEventListener, LifecycleEventListener {
     private static final int PICK = 48_701;
     private final UploadManager manager;
@@ -91,6 +91,13 @@ final class CPUploadModule extends ReactContextBaseJavaModule implements Activit
             } catch (Exception ignored) { selecting = null; replacing = null; promise.reject("UPLOAD_PICK_UNAVAILABLE", "请在前台选择一个可持久授权、支持随机读取的文件。"); }
         });
     }
+    @ReactMethod public void generated(String name,String media,String content,String sha,Promise promise) {
+        work(promise,(generation,owner)->{
+            GeneratedUploadSource source=GeneratedUploadSource.create(getReactApplicationContext(),owner,name,media,content,sha);
+            boolean stored=false;try{manager.owner(generation);UploadStore.Record record=manager.store.add(owner,source.uri.toString(),source,source.fingerprint());stored=true;return record.publicValue().toString();}
+            finally{if(!stored)manager.release(source.uri.toString());}
+        });
+    }
     @Override public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         if (requestCode != PICK || selecting == null) return;
         Promise promise = selecting; String replacement = replacing; long generation = selectGeneration; selecting = null; replacing = null;
@@ -108,6 +115,7 @@ final class CPUploadModule extends ReactContextBaseJavaModule implements Activit
                 UploadStore.Record record;
                 if (replacement != null && !replacement.isEmpty()) {
                     record = manager.store.get(owner, replacement);
+                    if(record.fingerprint.startsWith("office-artifact-v1:")){fingerprint=UploadSource.officeFingerprint(source,source.size);if(!source.name.equals(record.name))throw new IllegalArgumentException();}
                     if (!fingerprint.equals(record.fingerprint) || source.size != record.size || !source.media.equals(record.media)) throw new IllegalArgumentException();
                     ContentValues values = new ContentValues(); values.put("uri", uri.toString()); values.put("state", "paused");
                     manager.store.update(owner, record.id, values); String previous = record.uri; record = manager.store.get(owner, record.id); manager.release(previous);
@@ -170,7 +178,7 @@ final class CPUploadModule extends ReactContextBaseJavaModule implements Activit
     }
     @ReactMethod public void verifySource(String handle, Promise promise) {
         work(promise, (generation, owner) -> { UploadStore.Record record = manager.store.get(owner, handle); SAFUploadSource source = manager.source(record);
-            if (!UploadSource.fingerprint(source, source.name, source.size, source.modified).equals(record.fingerprint)) throw new IllegalStateException(); return null; });
+            if (!manager.fingerprint(source,record.fingerprint).equals(record.fingerprint)) throw new IllegalStateException(); return null; });
     }
     @ReactMethod public void finish(String handle, String run, String state, Promise promise) {
         try {

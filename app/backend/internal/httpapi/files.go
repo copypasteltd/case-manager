@@ -16,6 +16,7 @@ func (s *Server) filesRoutes(mux *http.ServeMux) {
 	s.retentionRoutes(mux, service)
 	s.fileScopeTransferRoutes(mux, service)
 	s.fileBatchRoutes(mux, service)
+	s.officeAuthorRoutes(mux, service)
 	mux.HandleFunc("POST /v1/file-replicas/{id}/retry", command(s, "ReplicaRetry", "FileReplicaResponse", func(ctx context.Context, c core.Command, r *http.Request, input files.ReplicaRetry) (core.Result, error) {
 		return service.RetryReplica(ctx, c, r.PathValue("id"), input)
 	}))
