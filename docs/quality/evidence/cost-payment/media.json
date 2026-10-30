@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T14:37:34.086935+00:00",
+  "encoder_script_sha256": "a02fd7d8b1159960164fb0049413ab81d94027338604668cfbfb16e9949a224c",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "dd7c9b3ea12618a58bb7d9c4f7441fba695145c0f32fb13413f2807c723d7644",
+      "build_source_sha256": "1f6f9cc42b2dadd219afe7491c9faebcd07aaa6ea2384218cb88ca36fbd9f0d0",
+      "capture_manifest": "docs/quality/evidence/cost-payment/web-capture-manifest.json",
+      "capture_manifest_sha256": "0289dea6e43780714647fd60aa0f7ccf9344a25c415fddc2587547cb573f6d19",
+      "capture_frame_count": 38,
+      "capture_duration_ms": 7744,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/cost-payment-web-supplier.png",
+          "sha256": "5c371a6bc22ccf427058118116a9cbab99c097f62f8246e39b86c78cc921bd19"
+        },
+        {
+          "file": "docs/media/screenshots/cost-payment-web-foreign.png",
+          "sha256": "b8574f05785897cae9f3510f24bdcd167415266ff1e13b9f9737c67fbe69b8dd"
+        },
+        {
+          "file": "docs/media/screenshots/cost-payment-web-employee.png",
+          "sha256": "4048a88c3528fb5e18a22b49f1ea1c22f2ffe3ebb32f8dabad907eadb6fa5169"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "80",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "8.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/cost-payment-web.mp4",
+          "sha256": "9581e72a9eab3db919b3dfbdb1749fe83ba3ab9f570e8829790fdc5b9f2a9269",
+          "bytes": 332747
+        },
+        {
+          "file": "docs/media/gifs/cost-payment-web.gif",
+          "sha256": "438a5fb359f80365a048b6b49a971e4f15dccf5f27803d23c1206c93834ea539",
+          "bytes": 146443
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "8d55157ca73994bef5cbabbeffb230c98342180e748d8eb9d8c382051df1d0e1",
+      "build_source_sha256": "f54cb6be597997f4a1a074b297b3b70165906ef8cb2f65de3910b527d83104e4",
+      "capture_manifest": "docs/quality/evidence/cost-payment/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "cbbfdf59c91373c04a3a65e06a6814991c7a345280c68fad73c4dcfd519f2a7a",
+      "capture_frame_count": 17,
+      "capture_duration_ms": 3767,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/cost-payment-mobile-supplier.png",
+          "sha256": "c03115c163064e8ac9296e11c7c46fb89e03e6c814a7e7aa0936f8c8a316afab"
+        },
+        {
+          "file": "docs/media/screenshots/cost-payment-mobile-foreign.png",
+          "sha256": "bbaaa215c5220147b013afa87ecbb992c8f32d1b45c73e1cee2808fbfdba62af"
+        },
+        {
+          "file": "docs/media/screenshots/cost-payment-mobile-employee.png",
+          "sha256": "7e5cd4a64085372b0b8b3040b9830b7102e9663819f2c5ef8c718b1209071d2b"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "39",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/cost-payment-mobile.mp4",
+          "sha256": "6173d27df637e9d9626d745b603b1010fa80618b66ddc73bdeb758b0654eb3da",
+          "bytes": 157092
+        },
+        {
+          "file": "docs/media/gifs/cost-payment-mobile.gif",
+          "sha256": "994877cf7c224005c832521660c49186488bd012da4a1b6341b97e6c9d1e9b0a",
+          "bytes": 74556
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic cost-to-payment and settlement on Web/H5: partial supplier cash, reviewed foreign cash and exact approved employee advance. MP4 uses real viewport pixels after MFA; GIF explicitly tours three actual screenshots. No bank transfer, credentials, physical device, cloud, model or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/cost-payment-web-supplier.png",
+      "sha256": "5c371a6bc22ccf427058118116a9cbab99c097f62f8246e39b86c78cc921bd19"
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-web-foreign.png",
+      "sha256": "b8574f05785897cae9f3510f24bdcd167415266ff1e13b9f9737c67fbe69b8dd"
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-web-employee.png",
+      "sha256": "4048a88c3528fb5e18a22b49f1ea1c22f2ffe3ebb32f8dabad907eadb6fa5169"
+    },
+    {
+      "file": "docs/media/videos/cost-payment-web.mp4",
+      "sha256": "9581e72a9eab3db919b3dfbdb1749fe83ba3ab9f570e8829790fdc5b9f2a9269",
+      "bytes": 332747
+    },
+    {
+      "file": "docs/media/gifs/cost-payment-web.gif",
+      "sha256": "438a5fb359f80365a048b6b49a971e4f15dccf5f27803d23c1206c93834ea539",
+      "bytes": 146443
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-supplier.png",
+      "sha256": "c03115c163064e8ac9296e11c7c46fb89e03e6c814a7e7aa0936f8c8a316afab"
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-foreign.png",
+      "sha256": "bbaaa215c5220147b013afa87ecbb992c8f32d1b45c73e1cee2808fbfdba62af"
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-employee.png",
+      "sha256": "7e5cd4a64085372b0b8b3040b9830b7102e9663819f2c5ef8c718b1209071d2b"
+    },
+    {
+      "file": "docs/media/videos/cost-payment-mobile.mp4",
+      "sha256": "6173d27df637e9d9626d745b603b1010fa80618b66ddc73bdeb758b0654eb3da",
+      "bytes": 157092
+    },
+    {
+      "file": "docs/media/gifs/cost-payment-mobile.gif",
+      "sha256": "994877cf7c224005c832521660c49186488bd012da4a1b6341b97e6c9d1e9b0a",
+      "bytes": 74556
+    }
+  ]
+}

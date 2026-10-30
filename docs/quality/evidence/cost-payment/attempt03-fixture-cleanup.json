@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T14:42:54.847457+00:00",
+  "database": "cp_test_43b365f448a84dfb9716c56aacbdbf47",
+  "oid": 106194587,
+  "created_at": "2026-10-30T14:23:17.306876+00:00",
+  "created_within_failed_execution": true,
+  "active_sessions_before": 0,
+  "failed_execution_file": "docs/quality/evidence/cost-payment/attempts/03-local-check-timeouts/backend.json",
+  "failed_execution_sha256": "01697b4f621605ff6fb274472f75b0d96cbb59909c0531993c3bfbbfafd8faf9",
+  "remaining_disposable_databases": 0,
+  "production_data_touched": false,
+  "postgres_restarted": false,
+  "scope": "Explicit owned synthetic fixture left by the retained DROP-cleanup timeout. Exact local data-directory creation time, OID, name and zero sessions were checked before native SQL cleanup."
+}

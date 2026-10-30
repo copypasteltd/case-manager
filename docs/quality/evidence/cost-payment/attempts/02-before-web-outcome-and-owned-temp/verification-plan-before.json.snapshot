@@ -1,0 +1,160 @@
+{
+  "name": "cost-payment",
+  "increment": 126,
+  "configuration_file": "docs/quality/evidence/cost-payment/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/cost-payment",
+  "retained_base_commit": "076e4c48d337a076edc4bc84978131eee723227e",
+  "retained_base_increment": 125,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_native_js_review.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py"
+  ],
+  "commands": [
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_native_js_review.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Android JS compilation with the published four-worker Metro native Windows filesystem adapter, generated-output exclusions and no-Expo map guard. Bundle only: no APK/signing/Gradle/device acceptance."
+    },
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestCostPaymentRecording|TestBusinessCostRecording|TestActualCosts|TestPaymentsAndSettlement|TestContractFinancialReconciliation|TestSpendDocumentsAndApprovals|TestProjectBusinessJourneys|TestPurchaseFulfillment|TestCrossCurrencySettlement)$",
+        "-p=1",
+        "-timeout=20m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestCostPaymentRecording",
+        "TestBusinessCostRecording",
+        "TestActualCosts",
+        "TestPaymentsAndSettlement",
+        "TestContractFinancialReconciliation",
+        "TestSpendDocumentsAndApprovals",
+        "TestProjectBusinessJourneys",
+        "TestPurchaseFulfillment",
+        "TestCrossCurrencySettlement"
+      ],
+      "scope": "Nine selected native HTTP/PostgreSQL suites: atomic cost-to-cash settlement, approved-source costs, ordinary cash/costs, dual-currency settlement, contractual attribution, OA approval, project business and purchase fulfillment. Not a full backend regression."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/cost-payment/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/cost-payment/web-vitest.json",
+      "minimum_tests": 351,
+      "scope": "Complete existing Web unit suite and shared workbench/replica cases."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 438,
+      "scope": "Complete existing portable Taro unit suite and shared workbench/replica cases."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Native Babel primitive checks; retained121 APK is not a current126 artifact."
+    }
+  ],
+  "browser_groups": [
+    "cost-payment-web",
+    "cost-payment-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false
+}

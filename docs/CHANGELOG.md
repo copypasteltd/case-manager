@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## Increment126 · 费用付款核销 / Cost payment settlement
+
+- 四端费用详情新增人工付款核销入口，固定费用版本／修订／摘要及范围；独立实际付款总额、部分核销、未分配资金、准确供应方及正式凭证。
+- 组合普通创建／资金登记／费用分配，一次原生PG事务；保留三条资金历史、不可变引用、成功审计／Outbox与幂等，晚期失败全部业务回滚，拒绝审计独立保留。
+- 接通人工异币核销、双币份额及准确已关联批准员工垫付明细；共用费用／付款／报销余额限额、排序锁、近期真实MFA和重放前撤权检查。
+- Web/shared WeChat/Douyin/Android validate exact compound receipts; mobile drafts preserve bounded text only. Current selected native HTTP/PG, configured client units/types/builds and real Web/H5 supplier/foreign/employee journeys are recorded separately from retained121 full/runtime/APK evidence.
+- 九项计划检查通过：九个选定HTTP／PG套件140条记录、Web352、共享移动438、类型及四端构建；Android JS四Worker、原900秒期限、真实源码映射核对。源码核对改为8文件有界并行读取，保持原摘要和全部验证规则。早期失败／清理和本机文件缓存边界如实保留。
+- 六真实截图、两静音MP4及两三图导览GIF；原费用HKD300保持，实际现金HKD90／USD13和核销分别保留。schema94无升级，23 active／5 excluded及全部旧发布证据／媒体原字节保持。
+
+[设计 / Design](development/126-cost-payment-settlement.md) · [核验 / Verification](quality/126-cost-payment-verification.md)
+
+
 ## Increment125 · 批准业务登记实际费用 / Actual business expenses
 
 - 合同／采购／报销详情增加人工费用入口，固定来源版本、批准修订／摘要、范围、分类与币种；实际日期、金额、供应方、固定凭证与分摊须独立填写并核对。

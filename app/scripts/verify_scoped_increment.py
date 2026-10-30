@@ -45,9 +45,17 @@ def sources(config):
 def digest(names=None, config=None, substitutions=None):
     config = config or plan()
     value = hashlib.sha256()
-    for name in names or sources(config):
-        data = substitutions[name] if substitutions and name in substitutions else (APP / name).read_bytes()
-        value.update(name.encode() + b'\0' + data + b'\0')
+    names = list(names or sources(config))
+    def content(name):
+        return substitutions[name] if substitutions and name in substitutions else (APP / name).read_bytes()
+    # Read independent files in bounded batches, then hash in the exact original
+    # order. This keeps byte identity and all before/after checks unchanged while
+    # avoiding serial native Windows file-open latency on every build command.
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        for offset in range(0, len(names), 8):
+            batch = names[offset:offset + 8]
+            for name, data in zip(batch, executor.map(content, batch)):
+                value.update(name.encode() + b'\0' + data + b'\0')
     return value.hexdigest()
 
 

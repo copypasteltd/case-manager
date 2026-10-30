@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T14:43:25.246364+00:00",
+  "finished_at": "2026-10-30T14:43:46.356688+00:00",
+  "elapsed_seconds": 21.11,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "6ab949d9ddabed21e8793dc4c12859fc57a6af87dadf36297787d6383527dd73",
+  "source_after_sha256": "6ab949d9ddabed21e8793dc4c12859fc57a6af87dadf36297787d6383527dd73",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 438,
+    "pass": 438,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "0d7a3e66d8c259e1ae969641b983e5da62ef7ab949e9775b9f5f92b388f5f4ba",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Complete existing portable Taro unit suite and shared workbench/replica cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

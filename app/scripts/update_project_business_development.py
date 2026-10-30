@@ -41,7 +41,7 @@ def inspect(record, command):
 def main():
     global E
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment'), default='project-business')
     args = parser.parse_args()
     E = APP.parent / 'docs/quality/evidence' / args.feature
     assert not (E / 'development-update.json').exists(), 'Preserve an existing completed service update.'

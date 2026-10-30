@@ -1,5 +1,7 @@
 # 当前Goal差异与剩余工作 · 修订99
 
+费用付款核销126：GAP-02／03／18已增加四端准确费用入口、实际现金与核销额独立输入、供应方部分核销、人工异币及批准员工垫付。普通资金创建／登记／分配一次PG事务，未分配资金与原费用保留，失败业务完整回滚。完整公司制度及业务验收仍开放；23 active（14 P0／9 P1）、5 excluded。见[实现与使用](../development/126-cost-payment-settlement.md)与[核验](../quality/126-cost-payment-verification.md)。
+
 BUSINESS-COST-125：从批准合同／采购／报销直接登记实际费用，人工核对、近期MFA、准确来源、原子确认关联、并发额度和完整失败回滚已进入实际应用与四端共享页面；实际费用及银行付款继续分开。见[实现与使用](../development/125-business-cost-recording.md)与[核验](../quality/125-business-cost-verification.md)。当前23 active（14 P0／9 P1）、5 excluded；完整公司制度和业务旅程继续开放。
 
 PROJECT-BUSINESS-124：本轮集中推进GAP-01／02／03／18的六类项目业务与共享移动订阅操作。六类项目新建、过滤查询、返回及移动账期免付已有实际HTTP／PG、Web／H5依据；其余订阅命令补齐源码及编译，完整业务旅程继续验收。全部23项保持开放（14 P0／9 P1），5项移出。见[实现](../development/124-project-business-journeys.md)与[实际检查](../quality/124-project-business-verification.md)。

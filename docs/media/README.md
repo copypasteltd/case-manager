@@ -1,5 +1,7 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量126：费用到实际付款核销。六张实际合成业务截图：供应方部分核销、异币、员工垫付各Web／H5一张；两段静音MP4仅录首个MFA完成后的实际视口操作；两份GIF为明确标注的三张真实截图导览，每张2秒。见[设计](../development/126-cost-payment-settlement.md)、[验证](../quality/126-cost-payment-verification.md)及[媒体清单](../quality/evidence/cost-payment/media.json)。不含凭据；不是实体设备／真实云／模型／生产验收。
+
 增量125 / Increment125：三类批准业务的实际费用登记。两个客户端各实际操作合同、采购、报销；MP4仅录制首个来源在本人验证后的确认与历史查阅，不录密码或MFA。GIF是三张真实截图各2秒的导览，不是实时录屏。
 
 | 客户端 / Client | 人工核对 / Review | 已确认费用 / Recorded | 固定历史 / History | 实际录屏 / Recording | 截图导览 / Tour |

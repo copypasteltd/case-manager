@@ -3051,6 +3051,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/costs/{id}/payment-basis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readCostPaymentBasis */
+        get: operations["readCostPaymentBasis"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/payments/from-cost": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** recordCostPayment */
+        post: operations["recordCostPayment"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/confirm": {
         parameters: {
             query?: never;
@@ -8024,6 +8058,59 @@ export interface components {
             remaining_cost_amount?: string;
             fx?: components["schemas"]["PaymentFXQuote"] | null;
         };
+        CostPaymentSource: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+        };
+        CostPaymentClaim: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            /** Format: uuid */
+            line_id: string;
+        };
+        CostPaymentBasis: {
+            cost: components["schemas"]["Cost"];
+            /** Format: date-time */
+            as_of: string;
+        };
+        CostPaymentRecord: {
+            title: string;
+            direction: ("outgoing" | "incoming" | "refund" | "transfer") | null;
+            paid_at: string | null;
+            currency: string | null;
+            amount: string | null;
+            category: string;
+            counterparty: components["schemas"]["SpendSupplier"] | null;
+            employee_id: string | null;
+            refund_of_id: string | null;
+            method_label: string;
+            external_ref: string;
+            evidence_version_ids: string[];
+            notes: string;
+            refund_fx?: components["schemas"]["PaymentRefundFX"];
+            cost: components["schemas"]["CostPaymentSource"];
+            claim: components["schemas"]["CostPaymentClaim"] | null;
+            allocation_amount: string;
+            fx?: components["schemas"]["PaymentFXInput"];
+            source_key: string;
+            reason: string;
+            /** @constant */
+            actual_paid: true;
+            /** @constant */
+            settlement_reviewed: true;
+        };
+        CostPaymentReceipt: {
+            payment: components["schemas"]["Payment"];
+            allocation: components["schemas"]["PaymentAllocation"];
+        };
         PaymentFeeFact: {
             /** Format: uuid */
             id: string;
@@ -12982,6 +13069,14 @@ export interface components {
         };
         BusinessCostBasisResponse: {
             data: components["schemas"]["BusinessCostBasis"];
+            meta: components["schemas"]["Meta"];
+        };
+        CostPaymentBasisResponse: {
+            data: components["schemas"]["CostPaymentBasis"];
+            meta: components["schemas"]["Meta"];
+        };
+        CostPaymentReceiptResponse: {
+            data: components["schemas"]["CostPaymentReceipt"];
             meta: components["schemas"]["Meta"];
         };
         CostRevisionListResponse: {
@@ -22554,6 +22649,81 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CostResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readCostPaymentBasis: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CostPaymentBasisResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    recordCostPayment: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CostPaymentRecord"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CostPaymentReceiptResponse"];
                 };
             };
             400: components["responses"]["Failure"];

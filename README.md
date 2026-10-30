@@ -1,5 +1,33 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+增量126接通“已确认费用 → 核对实际付款 → 一次登记与核销 → 资金详情／费用余额”。支持供应方部分核销、人工异币和准确批准员工垫付报销。付款总额与本次核销额独立填写，多余款保留未分配；原费用金额保持。一个PG事务组合普通资金创建、登记和分配，最后失败完整撤销业务写入。
+
+使用：费用详情 → “登记付款并核销费用” → 填实际时间／总额／币种／核销额 → 选择同一供应方或已关联批准垫付明细 → 固定付款凭证 → 明确核对并验证本人 → 确认 → 核对资金分配历史与费用待结余额。异币另填费用原币额、实际汇率与来源。页面不预填实际金额、不发起银行转账、不自动完成业务。
+
+Web及共享微信／抖音／Android页面已接入准确费用头、完整组合回执与现有幂等流程。移动只恢复按本人权限和准确费用隔离的白名单文字，付款凭证、收款引用、报销选择、MFA与人工确认重新核对。schema94保持；完整公司制度、正式平台／云／模型／生产验收继续开放。
+
+[设计和使用](docs/development/126-cost-payment-settlement.md) · [实际检查](docs/quality/126-cost-payment-verification.md) · [本轮与全部23项余项](docs/delivery/05-functional-closure-126.md)
+
+![实际付款核销](docs/media/screenshots/cost-payment-web-supplier.png)
+
+[Web实际录屏](docs/media/videos/cost-payment-web.mp4) · [移动实际录屏](docs/media/videos/cost-payment-mobile.mp4) · [移动截图导览GIF](docs/media/gifs/cost-payment-mobile.gif)
+
+当前检查：九个选定HTTP／PG套件140条通过记录，Web352项、共享移动438项、类型检查和Web／双小程序／Android JS构建通过。实际Web／H5各完成三类付款：供应方HKD60核销40、异币USD13核销6.50对应HKD50、员工HKD30核销25，原费用合计仍HKD300。MP4录首个本人验证后场景；GIF明确为三张真实截图导览。旧121完整回归／runtime／开发APK及125原证据保留，不标为当前产物。当前23 active（14 P0／9 P1）、5 excluded，见[范围](docs/delivery/04-current-scope-and-acceptance.md)。
+
+Increment126 connects a confirmed expense to explicitly reviewed actual cash and settlement in one transaction. It supports partial supplier payments, reviewed foreign-currency settlement and an exact linked approved employee advance. Total cash and this expense's allocated cash are separate; extra cash stays unassigned and the original incurred expense is preserved. Existing create/record/allocate commands, limits, history, audit, Outbox and idempotency rules remain active; a late failure rolls back every business write.
+
+Usage: expense details → record actual payment and settle → enter actual Hong Kong time, currency, total cash and allocation → choose the same supplier revision or exact approved employee-advance line → select formal fixed evidence → acknowledge both actual cash and settlement with recent MFA → confirm → inspect ordinary payment history and cost balances. Foreign settlement additionally requires the cost-currency amount, actual conversion rate and source. This records completed facts; it does not transfer bank funds or complete the business automatically.
+
+Web and shared WeChat/Douyin/Android pin the exact cost version/revision/hash and validate the full compound receipt. Mobile drafts restore bounded text only, isolated by current actor authority and exact expense basis; payee/claim/evidence selection, MFA and acknowledgements require fresh review. Schema94 stays unchanged. Company policy, complete business journeys and formal platform/cloud/model/production acceptance remain open.
+
+[Design and usage](docs/development/126-cost-payment-settlement.md) · [Executed checks](docs/quality/126-cost-payment-verification.md) · [Current work and all23 remaining packages](docs/delivery/05-functional-closure-126.md)
+
+Current source-bound checks passed: nine selected native HTTP/PostgreSQL suites (140 pass records), 352 Web tests, 438 shared-mobile tests, workspace types and Web/WeChat/Douyin/Android JS builds. Real Web/H5 each exercise supplier HKD60/40 allocation, USD13/6.50 cash allocation against HKD50, and employee HKD30/25 allocation; original expenses stay HKD300. MP4 records only the first post-MFA flow; GIF explicitly tours three actual screenshots. The old121 full/runtime/development APK and125 evidence keep their original binding, rather than becoming current artifacts. All23 packages and five exclusions remain explicit under the [current scope](docs/delivery/04-current-scope-and-acceptance.md).
+
+[Actual Web recording](docs/media/videos/cost-payment-web.mp4) · [Shared mobile recording](docs/media/videos/cost-payment-mobile.mp4) · [Screenshot-tour GIF](docs/media/gifs/cost-payment-mobile.gif)
+
+## 已发布历史 / Published history
+
 增量125接通“批准合同／采购／报销 → 核对实际发生 → 费用确认与准确来源关联 → 实际报表”。员工在业务详情填写实际金额、日期、固定供应方、凭证和项目／公司分摊，明确核对并验证本人后，一次提交；失败完整回滚。批准金额不会自动生成费用，付款另行登记。
 
 Web、微信、抖音与Android共享业务页面已接入。来源版本、批准修订和摘要固定，费用范围、分类、币种由服务核对；重复提交复用原结果，旧依据、额度争用、撤权和近期MFA不足被拒绝。移动文字草稿按本人授权与准确来源隔离，凭证、本人验证及核对选项不从草稿恢复。

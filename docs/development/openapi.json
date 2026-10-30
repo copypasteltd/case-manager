@@ -19353,6 +19353,165 @@
         }
       }
     },
+    "/costs/{id}/payment-basis": {
+      "get": {
+        "operationId": "readCostPaymentBasis",
+        "tags": [
+          "costs"
+        ],
+        "summary": "readCostPaymentBasis",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostPaymentBasisResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/payments/from-cost": {
+      "post": {
+        "operationId": "recordCostPayment",
+        "tags": [
+          "payments"
+        ],
+        "summary": "recordCostPayment",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostPaymentReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CostPaymentRecord"
+              }
+            }
+          }
+        }
+      }
+    },
     "/costs/{id}/confirm": {
       "post": {
         "operationId": "confirmCost",
@@ -48950,6 +49109,278 @@
           "created_at"
         ]
       },
+      "CostPaymentSource": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "revision_id",
+          "content_hash"
+        ]
+      },
+      "CostPaymentClaim": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "line_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "revision_id",
+          "content_hash",
+          "line_id"
+        ]
+      },
+      "CostPaymentBasis": {
+        "type": "object",
+        "properties": {
+          "cost": {
+            "$ref": "#/components/schemas/Cost"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cost",
+          "as_of"
+        ]
+      },
+      "CostPaymentRecord": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "direction": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "outgoing",
+                  "incoming",
+                  "refund",
+                  "transfer"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "paid_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "amount": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "counterparty": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SpendSupplier"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "employee_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "refund_of_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "method_label": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "external_ref": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "evidence_version_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
+          },
+          "cost": {
+            "$ref": "#/components/schemas/CostPaymentSource"
+          },
+          "claim": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CostPaymentClaim"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "allocation_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "fx": {
+            "$ref": "#/components/schemas/PaymentFXInput"
+          },
+          "source_key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.-]{1,31}:[A-Za-z0-9._:/-]{1,166}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "actual_paid": {
+            "const": true
+          },
+          "settlement_reviewed": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "direction",
+          "paid_at",
+          "currency",
+          "amount",
+          "category",
+          "counterparty",
+          "employee_id",
+          "refund_of_id",
+          "method_label",
+          "external_ref",
+          "evidence_version_ids",
+          "notes",
+          "cost",
+          "claim",
+          "allocation_amount",
+          "source_key",
+          "reason",
+          "actual_paid",
+          "settlement_reviewed"
+        ]
+      },
+      "CostPaymentReceipt": {
+        "type": "object",
+        "properties": {
+          "payment": {
+            "$ref": "#/components/schemas/Payment"
+          },
+          "allocation": {
+            "$ref": "#/components/schemas/PaymentAllocation"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "payment",
+          "allocation"
+        ]
+      },
       "PaymentFeeFact": {
         "type": "object",
         "properties": {
@@ -74175,6 +74606,38 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/BusinessCostBasis"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "CostPaymentBasisResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CostPaymentBasis"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "CostPaymentReceiptResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CostPaymentReceipt"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

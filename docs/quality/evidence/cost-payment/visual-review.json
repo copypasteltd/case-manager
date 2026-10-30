@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T14:39:23.262843+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/cost-payment-web-supplier.png",
+      "sha256": "5c371a6bc22ccf427058118116a9cbab99c097f62f8246e39b86c78cc921bd19",
+      "reviewed": true,
+      "observation": "Reviewed actual screenshot: readable allocation, unassigned cash and evidence; no form credentials."
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-web-foreign.png",
+      "sha256": "b8574f05785897cae9f3510f24bdcd167415266ff1e13b9f9737c67fbe69b8dd",
+      "reviewed": true,
+      "observation": "Reviewed actual screenshot: readable allocation, unassigned cash and evidence; no form credentials."
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-web-employee.png",
+      "sha256": "4048a88c3528fb5e18a22b49f1ea1c22f2ffe3ebb32f8dabad907eadb6fa5169",
+      "reviewed": true,
+      "observation": "Reviewed actual screenshot: readable allocation, unassigned cash and evidence; no form credentials."
+    },
+    {
+      "file": "docs/media/videos/cost-payment-web.mp4",
+      "sha256": "9581e72a9eab3db919b3dfbdb1749fe83ba3ab9f570e8829790fdc5b9f2a9269",
+      "bytes": 332747,
+      "reviewed": true,
+      "observation": "Decoded and viewed beginning, middle and final viewport frames; actual post-MFA confirmation and return to cost balance. Mobile middle includes the actual loading state."
+    },
+    {
+      "file": "docs/media/gifs/cost-payment-web.gif",
+      "sha256": "438a5fb359f80365a048b6b49a971e4f15dccf5f27803d23c1206c93834ea539",
+      "bytes": 146443,
+      "reviewed": true,
+      "observation": "Decoded and viewed all three screenshot stages at 0, 2.1 and 4.1 seconds; labelled screenshot tour, not a realtime recording."
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-supplier.png",
+      "sha256": "c03115c163064e8ac9296e11c7c46fb89e03e6c814a7e7aa0936f8c8a316afab",
+      "reviewed": true,
+      "observation": "Reviewed actual screenshot: readable allocation, unassigned cash and evidence; no form credentials."
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-foreign.png",
+      "sha256": "bbaaa215c5220147b013afa87ecbb992c8f32d1b45c73e1cee2808fbfdba62af",
+      "reviewed": true,
+      "observation": "Reviewed actual screenshot: readable allocation, unassigned cash and evidence; no form credentials."
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-employee.png",
+      "sha256": "7e5cd4a64085372b0b8b3040b9830b7102e9663819f2c5ef8c718b1209071d2b",
+      "reviewed": true,
+      "observation": "Reviewed actual screenshot: readable allocation, unassigned cash and evidence; no form credentials."
+    },
+    {
+      "file": "docs/media/videos/cost-payment-mobile.mp4",
+      "sha256": "6173d27df637e9d9626d745b603b1010fa80618b66ddc73bdeb758b0654eb3da",
+      "bytes": 157092,
+      "reviewed": true,
+      "observation": "Decoded and viewed beginning, middle and final viewport frames; actual post-MFA confirmation and return to cost balance. Mobile middle includes the actual loading state."
+    },
+    {
+      "file": "docs/media/gifs/cost-payment-mobile.gif",
+      "sha256": "994877cf7c224005c832521660c49186488bd012da4a1b6341b97e6c9d1e9b0a",
+      "bytes": 74556,
+      "reviewed": true,
+      "observation": "Decoded and viewed all three screenshot stages at 0, 2.1 and 4.1 seconds; labelled screenshot tour, not a realtime recording."
+    }
+  ],
+  "scope": "Six original screenshots, two encoded MP4 recordings sampled at beginning/middle/end and all three stages of each two-second screenshot-tour GIF were visually inspected. Synthetic business records only. No frame-by-frame, real-device, real-cloud or production acceptance claim."
+}

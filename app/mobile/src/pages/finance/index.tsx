@@ -1,3 +1,4 @@
+import { CostPaymentPage } from './cost-payment';
 import { SubscriptionCommands, SubscriptionHistory, SubscriptionOperationPage } from './subscriptions';
 import { CostAmortization } from './amortization';
 import { FinancialHistory } from './history';
@@ -18,7 +19,7 @@ import { overviewClock } from '../../platform/project-overview';
 type Record = { kind: 'cost'; value: Schemas['Cost'] } | { kind: 'payment'; value: Schemas['Payment'] } | { kind: 'subscription'; value: Schemas['Subscription'] } | { kind: 'change'; value: Schemas['Change'] };
 export default function FinanceDetailPage() {
   const params = useRouter().params;
-  return params.kind === 'subscription' && params.action ? <SubscriptionOperationPage /> : params.kind === 'change' ? <ProjectChangePage changeID={params.id} /> : params.action ? <FinanceOperationPage /> : <FinancialRecordPage />;
+  return params.action === 'recordPayment' ? <CostPaymentPage /> : params.kind === 'subscription' && params.action ? <SubscriptionOperationPage /> : params.kind === 'change' ? <ProjectChangePage changeID={params.id} /> : params.action ? <FinanceOperationPage /> : <FinancialRecordPage />;
 }
 function FinancialRecordPage() {
   const params = useRouter().params;

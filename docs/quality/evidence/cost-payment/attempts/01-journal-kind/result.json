@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T14:03:06.473Z",
+  "finished_at": "2026-10-30T14:03:38.751Z",
+  "checks": [],
+  "source_count": 890,
+  "source_sha256": "7aee1f4a782304a49969492375b7841132950777c7a2ba2aeb78f4cabf6703f2",
+  "source_after_sha256": "7aee1f4a782304a49969492375b7841132950777c7a2ba2aeb78f4cabf6703f2",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    'draft_created',\n    'recorded',\n+   'allocation_added'\n-   'allocated'\n  ]\n",
+  "failure_stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    'draft_created',\n    'recorded',\n+   'allocation_added'\n-   'allocated'\n  ]\n\n    at submit (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_cost_payment.mjs:64:82)\n    at async recordViewport (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/project_business_recording.mjs:43:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_cost_payment.mjs:72:51\n    at async workbenchBrowser (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/workbench_browser_common.mjs:50:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_cost_payment.mjs:12:1",
+  "failure_context": {
+    "pathname": "/payments/bdb50c39-e543-4390-b3c4-acca7293dc9c",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "workbench_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "d4fdac49f0e1e90709290f156fd60bec0b5c8b9d250daef90988d97ac97c196d",
+    "source_sha256": "8e90ca4d7339887e4259dab4469462dbcc7debbc3db5e6c95af5c4395df5a9e2",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "8e90ca4d7339887e4259dab4469462dbcc7debbc3db5e6c95af5c4395df5a9e2",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "8e90ca4d7339887e4259dab4469462dbcc7debbc3db5e6c95af5c4395df5a9e2",
+  "build_source_unchanged": true
+}

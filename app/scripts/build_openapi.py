@@ -539,6 +539,15 @@ payment_allocation.update({"cost_amount": MONEY, "cost_currency": CURRENCY, "pay
     "cost_exponent": {"type": "integer", "minimum": 0, "maximum": 6}, "payment_exponent": {"type": "integer", "minimum": 0, "maximum": 6},
     "cost_shares": array(allocation, maxItems=100), "remaining_cost_amount": MONEY, "fx": nullable(ref("PaymentFXQuote"))})
 add("PaymentAllocation", payment_allocation, payment_allocation_required)
+cost_payment_source = {"id": ID, "version": VERSION, "revision_id": ID, "content_hash": HASH}
+add("CostPaymentSource", cost_payment_source, tuple(cost_payment_source))
+add("CostPaymentClaim", {**cost_payment_source, "line_id": ID}, (*cost_payment_source, "line_id"))
+add("CostPaymentBasis", {"cost": ref("Cost"), "as_of": TIME}, ("cost", "as_of"))
+cost_payment_record = {**payment_fields, "cost": ref("CostPaymentSource"), "claim": nullable(ref("CostPaymentClaim")), "allocation_amount": MONEY,
+    "fx": ref("PaymentFXInput"), "source_key": SCHEMAS["CostCreate"]["properties"]["source_key"], "reason": NAME,
+    "actual_paid": {"const": True}, "settlement_reviewed": {"const": True}}
+add("CostPaymentRecord", cost_payment_record, (*(k for k in payment_fields if k != "refund_fx"), "cost", "claim", "allocation_amount", "source_key", "reason", "actual_paid", "settlement_reviewed"))
+add("CostPaymentReceipt", {"payment": ref("Payment"), "allocation": ref("PaymentAllocation")}, ("payment", "allocation"))
 fee_fact = {"id": ID, "version": VERSION, "revision_id": ID, "content_hash": HASH, "title": NAME,
     "project_id": nullable(ID), "classification": CLASS, "currency": CURRENCY, "amount": MONEY}
 add("PaymentFeeFact", fee_fact, tuple(fee_fact))
@@ -1741,6 +1750,8 @@ operation("/costs/{id}", "patch", "reviseCostDraft", "Cost", "CostPatch")
 operation("/cost-business-sources/{kind}/{id}", "get", "readBusinessCostBasis", "BusinessCostBasis")
 PATHS["/cost-business-sources/{kind}/{id}"]["get"]["parameters"].append({"name": "kind", "in": "path", "required": True, "schema": enum("contract", "purchase", "claim")})
 operation("/costs/from-business", "post", "recordBusinessCost", "Cost", "BusinessCostRecord", 201)
+operation("/costs/{id}/payment-basis", "get", "readCostPaymentBasis", "CostPaymentBasis")
+operation("/payments/from-cost", "post", "recordCostPayment", "CostPaymentReceipt", "CostPaymentRecord", 201)
 operation("/costs/{id}/confirm", "post", "confirmCost", "Cost", "CostConfirm")
 operation("/costs/{id}/links", "post", "linkCost", "Cost", "CostLink")
 operation("/costs/{id}/revisions", "get", "listCostRevisions", "CostRevision", listing=True)

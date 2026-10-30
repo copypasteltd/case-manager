@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T14:05:47.688Z",
+  "finished_at": "2026-10-30T14:06:17.199Z",
+  "checks": [
+    "Actual Web supplier path records actual cash and a separately reviewed exact expense settlement, preserves unassigned cash and ordinary immutable journals.",
+    "Actual Web foreign path records actual cash and a separately reviewed exact expense settlement, preserves unassigned cash and ordinary immutable journals.",
+    "Actual Web employee path records actual cash and a separately reviewed exact expense settlement, preserves unassigned cash and ordinary immutable journals.",
+    "Three original incurred expenses stay HKD300. Actual cash and dual settlement are independently retained; no extra incurred expense is fabricated."
+  ],
+  "source_count": 890,
+  "source_sha256": "79ff50e0e122177c0c5e6ecc8458de20258f53b5d0a46e1e8dc332b8119d82ca",
+  "source_after_sha256": "79ff50e0e122177c0c5e6ecc8458de20258f53b5d0a46e1e8dc332b8119d82ca",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "d4fdac49f0e1e90709290f156fd60bec0b5c8b9d250daef90988d97ac97c196d",
+    "source_sha256": "f54cb6be597997f4a1a074b297b3b70165906ef8cb2f65de3910b527d83104e4",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "f54cb6be597997f4a1a074b297b3b70165906ef8cb2f65de3910b527d83104e4",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "f54cb6be597997f4a1a074b297b3b70165906ef8cb2f65de3910b527d83104e4",
+  "build_source_unchanged": true
+}

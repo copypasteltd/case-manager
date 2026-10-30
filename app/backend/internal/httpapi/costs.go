@@ -35,6 +35,18 @@ func (s *Server) costRoutes(mux *http.ServeMux) {
 	s.financeReportRoutes(mux)
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
 	s.amortizationRoutes(mux, v)
+	mux.HandleFunc("GET /v1/costs/{id}/payment-basis", read(s, "CostPaymentBasisResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "费用付款依据不接受查询覆盖")
+		}
+		return v.CostPaymentBasis(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("POST /v1/payments/from-cost", command(s, "CostPaymentRecord", "CostPaymentReceiptResponse", func(ctx context.Context, c core.Command, r *http.Request, in finance.CostPaymentRecord) (core.Result, error) {
+		if r.URL.RawQuery != "" {
+			return core.Result{}, core.Invalid("query", "费用付款不接受查询覆盖")
+		}
+		return v.RecordCostPayment(ctx, c, in)
+	}))
 	mux.HandleFunc("GET /v1/cost-business-sources/{kind}/{id}", read(s, "BusinessCostBasisResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		if r.URL.RawQuery != "" {
 			return nil, core.Invalid("query", "业务费用依据不接受查询范围或版本覆盖")

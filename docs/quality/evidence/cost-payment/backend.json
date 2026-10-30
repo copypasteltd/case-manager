@@ -1,0 +1,748 @@
+{
+  "passed": true,
+  "id": "backend",
+  "started_at": "2026-10-30T14:37:00.195209+00:00",
+  "finished_at": "2026-10-30T14:42:04.589330+00:00",
+  "elapsed_seconds": 304.389,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestCostPaymentRecording|TestBusinessCostRecording|TestActualCosts|TestPaymentsAndSettlement|TestContractFinancialReconciliation|TestSpendDocumentsAndApprovals|TestProjectBusinessJourneys|TestPurchaseFulfillment|TestCrossCurrencySettlement)$",
+    "-p=1",
+    "-timeout=20m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "6ab949d9ddabed21e8793dc4c12859fc57a6af87dadf36297787d6383527dd73",
+  "source_after_sha256": "6ab949d9ddabed21e8793dc4c12859fc57a6af87dadf36297787d6383527dd73",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestBusinessCostRecording",
+      "TestContractFinancialReconciliation",
+      "TestCostPaymentRecording",
+      "TestActualCosts",
+      "TestCrossCurrencySettlement",
+      "TestPaymentsAndSettlement",
+      "TestProjectBusinessJourneys",
+      "TestPurchaseFulfillment",
+      "TestSpendDocumentsAndApprovals"
+    ],
+    "pass": 140,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/preview_pins_all_three_approved_sources_without_creating_costs_or_reservation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/each_source_records_actual_expense_and_immutable_reference_in_one_transaction"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/late_source_ceiling_failure_rolls_back_draft_confirmation_evidence_audit_and_keys"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/current_execution_version_changes_invalidate_the_selected_basis"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/concurrent_independent_expenses_share_the_ordinary_source_ceiling"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/invalid_source_scope_facts_and_acknowledgements_cannot_create_records"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/authority_and_query_isolation_apply_before_discovery_and_cached_replay"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/reconciliation_role_starts_unbound_and_contract_readers_see_unknown_financial_axes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/cost_and_cash_remain_separate_facts_with_immutable_exact_source_revisions"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/unlinked_costs_wrong_cash_directions_and_fractional_minor_units_are_rejected"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/duplicate_assignment_is_capped_across_nodes_while_excess_against_plan_is_explicit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/concurrent_devices_advance_a_single_financial_head"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/unattributed_actual_refunds_remain_visible_until_classified"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/releasing_sources_preserves_history_and_cannot_undercut_active_refunds"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/review_stores_fixed_evidence_and_explicit_differences_without_closing_legal_obligations"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/external_cash_reversal_invalidates_review_without_changing_the_financial_head"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/stale_source_fingerprint_rejects_review_even_with_a_current_contract_head"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/receivables_allocate_income_and_return_cash_without_creating_expenses"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/cost_settlement_and_contract_cash_classification_never_duplicate_the_economic_cash"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/different_contracts_serialize_on_the_same_cash_source_cap"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/audit_failure_rolls_back_financial_journal_fixed_proof_head_and_idempotency_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/complete_forged_journals_still_fail_database_source_caps"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/event_cursors_bind_the_contract_and_historical_ACL_survives_release"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/external_cost_reversal_preserves_the_historical_review_and_removes_current_incurred_attribution"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/append_only_database_heads_fixed_review_evidence_and_missing_actual_MFA_reject_forgery"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation/cached_identifier_receipts_reauthorize_after_explicit_reconciliation_scope_expiry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestContractFinancialReconciliation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/preview_fixes_confirmed_expense_and_never_creates_or_reserves_money"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/partial_supplier_cash_preserves_unassigned_money_ordinary_journals_and_cost_facts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/foreign_cash_retains_independent_currencies_and_reviewed_conversion"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/employee_advance_requires_exact_approved_linked_claim_line_and_common_cap"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/late_over_allocation_atomically_rolls_back_cash_files_events_outbox_and_command_keys"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/concurrent_actual_payments_serialize_on_shared_expense_balance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/fixed_cost_source_and_explicit_facts_reject_stale_heads_scope_injection_and_inferred_cash"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording/cached_replay_preserves_original_receipt_and_still_requires_real_current_MFA_and_authority"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCostPaymentRecording"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/new_financial_roles_are_unbound_and_source_identity_survives_replay_cache_expiry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/draft_revisions_preserve_exact_history_and_stale_bases_cannot_overwrite"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/confirmation_requires_actual_balanced_facts_currency_precision_and_fixed_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/confirmation_rejects_future_dates_and_a_file_whose_available_bytes_lost_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/all_allocation_projects_fence_detail_lists_history_and_report_totals"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/full_reversal_preserves_original_month_and_inherits_company_and_project_shares"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/currencies_remain_separate_and_unconfirmed_costs_do_not_enter_incurred_totals"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/simultaneous_confirmation_and_reversal_have_at_most_one_successor"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/current_database_MFA_and_manual_identity_are_checked_before_cached_confirmation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/fixed_cost_evidence_protects_retention_and_response_reference_counts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/audit_failure_rolls_back_revision_head_event_and_the_replay_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/database_rejects_immutable_rewrites_detached_head_and_unbalanced_confirmation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/database_rejects_forged_MFA_and_another_humans_session_before_deferred_journal_checks"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/project_read_only_phase_fences_actual_cost_mutations"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/revoked_recorder_cannot_replay_a_previously_successful_draft_creation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/purchase_reimbursement_and_effective_contract_share_one_cost_without_report_multiplication"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/unapproved_wrong_currency_and_stale_source_revision_cannot_link"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts/source_locking_prevents_concurrent_over-linking_and_reversal_releases_its_active_balance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestActualCosts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/review_quote_is_explicit_and_same_currency_protocol_stays_compatible"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/allocation_conserves_independent_cash_cost_and_project_units"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/inverse_review_is_required_stale_or_forged_cost_units_roll_back"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/atomic_refund_reverses_the_original_quote_and_both_project_axes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/full_cash_reversal_copies_exact_dual_ledger_and_preserves_incurred_fact"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/integer_cost_currency_keeps_zero_partial_and_consumes_final_rounding_remainder"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/zero_cost_balance_with_residual_cash_still_blocks_expense_reversal"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/different_payment_currency_minor_units_retain_zero_cash_project_shares"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/cost_balance_is_shared_across_payments_in_different_currencies"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/concurrent_allocations_cannot_overdraw_expense_units"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/direct_SQL_cannot_forge_quotation_or_inverse_cost_units"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/later_refund_allocation_rechecks_the_original_remaining_dual_units"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/reports_and_project_closeout_preserve_their_own_monetary_units"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/cross_currency_replay_retains_original_fact_and_requires_current_human_MFA"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement/approved_employee_claim_settles_in_its_own_currency"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestCrossCurrencySettlement"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/cash_roles_start_unbound_and_system_administration_does_not_grant_business_access"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/draft_revisions_fixed_history_source_deduplication_and_stale_bases"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/actual_recording_rejects_future_amounts_missing_evidence_and_invalid_direction_recipients"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/partial_cash_allocation_and_release_preserve_incurred_totals_and_prevent_premature_cost_reversal"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/successive_smallest_payments_and_partial_releases_conserve_fixed_project_shares"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/two_payments_cannot_concurrently_overpay_one_cost"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/one_cash_head_cannot_concurrently_allocate_beyond_its_remaining_balance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/refund_records_atomically_release_original_allocations_and_full_reversal_restores_them"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/unallocated_refund_can_later_pin_an_original_allocation_without_over-releasing_it"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/current_MFA_and_agent_exclusion_are_evaluated_before_recorded_replay"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/cash_facts_and_fixed_file_references_are_immutable_and_require_actual_DB_session"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/audit_rejection_rolls_back_allocation_balances_journal_and_replay_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/cash_reports_keep_currencies_separate_and_exclude_incoming_and_internal_transfers"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/employee_settlement_requires_the_exact_approved_advance_line_and_derives_partial_and_settled"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/historical_allocation_projects_fence_all_payment_reads_even_after_release"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/concurrent_refunds_serialize_against_their_original_funding_balance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/SQL_funding_guard_rejects_a_complete_journal_for_an_excessive_refund"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/SQL_allocation_guard_rejects_excess_and_fractional_minor_units_with_a_complete_journal"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/reversing_a_refund_cannot_overpay_a_cost_settled_by_a_later_payment"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/cash_reports_require_explicit_nonempty_bounded_dates"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/cash_aggregates_can_exceed_the_maximum_amount_of_one_entry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/replay_retains_its_original_monetary_snapshot_after_later_allocation_and_reversal"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/a_cost_reader_without_funding_authority_gets_unknown_settlement_rather_than_zero"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement/project_read_only_phase_and_revoked_recording_authority_also_fence_replays"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPaymentsAndSettlement"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys/human_current_project_capabilities_agree_with_six_ordinary_create_commands"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys/project_list_navigation_preserves_drafts_and_excludes_company_and_other_projects"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys/record_navigation_never_creates_project_money_facts_or_changes_report_scope"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys/project_record_cursors_cannot_be_replayed_into_share-only_lists"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys/closed_project_previews_are_read-only_and_old_previews_cannot_authorize_writes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys/readers_see_no_invented_create_rights_and_foreign_projects_remain_hidden"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestProjectBusinessJourneys"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/only_approved_exact_scope_can_register_orders"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/order_registration_pins_exact_facts_evidence_and_approval_without_cash"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/multiple_orders_share_one_bounded_approval_and_duplicate_supplier_references_are_refused"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/partial_acceptance_rejection_replacement_and_source_specific_returns_append"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/a_delivery_batch_cannot_overreceive_through_rejection_or_return_mixing"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/returns_cannot_reverse_another_order_or_rejected_or_returned_source"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/cancelling_remainder_releases_only_unaccepted_commitment_and_preserves_order_fact"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/rounding_reserves_conservatively_and_never_manufactures_actual_cost_or_refunds"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/purchase_cancellation_refuses_open_orders_and_keeps_later_returns_in_cancelled_lifecycle"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/returns_after_a_fully_accepted_purchase_was_cancelled_release_its_closed_commitment"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/concurrent_order_and_receipt_commands_have_one_winning_version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/history_pagination_and_parent_authorization_are_bound_to_the_current_reader"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/reader_cannot_execute_and_recent_database_MFA_is_checked_before_cached_replay"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/invalid_dates_and_unavailable_evidence_leave_no_execution_facts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/audit_failure_rolls_back_order_file_pin_head_event_and_replay_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/database_guards_reject_detached_execution_heads_and_immutable_fact_rewrites"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/database_independently_rejects_overcommitted_orders_and_reused_event_subjects"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/project_read_only_phase_fences_execution"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment/revoking_execution_permission_fences_an_already_successful_idempotency_key"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestPurchaseFulfillment"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/incomplete_drafts_remain_nullable_and_idempotent_without_synthetic_expenses"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/exact_purchase_arithmetic_and_employee_advance_totals_pin_commercial_revisions"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/invalid_commercial_inputs_cannot_persist_partial_drafts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/concurrent_editors_have_one_winner_and_keep_the_prior_commercial_content"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/both_adapters_submit_exact_evidence_and_approval_never_marks_execution_or_cash_paid"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/return_revise_withdrawal_and_resubmission_retain_earlier_approval_instances"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/receipt_reuse_requires_an_explicit_reason_and_does_not_disclose_hidden_records"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/revoked_business_access_removes_tasks_and_refuses_the_real_reviewer_decision"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/database_pins_immutable_lines_suppliers_and_file_references"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/audit_failure_rolls_back_a_commercial_revision_and_the_same_operation_can_retry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/archive_preserves_history_and_is_unavailable_after_a_request_is_linked"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/rejection_stays_terminal_while_a_fresh_application_preserves_its_business_history"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/cursors_bind_business_kind_and_historical_content_needs_current_editing_authority"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/duplicate_warnings_disappear_when_only_the_current_claim_remains_visible"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals/database_independently_refuses_forged_normalized_commercial_amounts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestSpendDocumentsAndApprovals"
+    }
+  ],
+  "private_log_sha256": "ada9d4a42e45edb35d9ec8a1a636fe96b9d8bc24e497c0a89d4451db2ebafaba",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Nine selected native HTTP/PostgreSQL suites: atomic cost-to-cash settlement, approved-source costs, ordinary cash/costs, dual-currency settlement, contractual attribution, OA approval, project business and purchase fulfillment. Not a full backend regression.",
+  "real_device": false,
+  "virtualization_used": false
+}

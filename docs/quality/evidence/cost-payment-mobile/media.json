@@ -1,0 +1,90 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-supplier.png",
+      "sha256": "c03115c163064e8ac9296e11c7c46fb89e03e6c814a7e7aa0936f8c8a316afab"
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-foreign.png",
+      "sha256": "bbaaa215c5220147b013afa87ecbb992c8f32d1b45c73e1cee2808fbfdba62af"
+    },
+    {
+      "file": "docs/media/screenshots/cost-payment-mobile-employee.png",
+      "sha256": "7e5cd4a64085372b0b8b3040b9830b7102e9663819f2c5ef8c718b1209071d2b"
+    }
+  ],
+  "recording": {
+    "name": "cost-payment-mobile",
+    "frame_count": 17,
+    "duration_ms": 3767,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/cost-payment-mobile/frames.json",
+    "manifest_sha256": "cbbfdf59c91373c04a3a65e06a6814991c7a345280c68fad73c4dcfd519f2a7a"
+  },
+  "created": [
+    {
+      "scenario": "supplier",
+      "payment_id": "1a356bb7-88dd-465b-9b15-d96d95425ac4",
+      "allocation_id": "72e55b2f-b8db-4cd1-854d-4c55ba4f34d8",
+      "cost_id": "c8e570d4-1b4f-4045-b7f9-afc7303de18f",
+      "currency": "HKD",
+      "actual_cash": "60.000000",
+      "allocation_cash": "40.000000",
+      "allocation_cost": "40.000000",
+      "unassigned_cash": "20.000000",
+      "cost_outstanding": "60.000000"
+    },
+    {
+      "scenario": "foreign",
+      "payment_id": "da40268e-3141-46bc-b27b-bd1a9f527555",
+      "allocation_id": "2b8ce480-9acd-47d9-9470-ea0645bc695d",
+      "cost_id": "80349b8b-e1fb-474e-b413-6f36693b0f95",
+      "currency": "USD",
+      "actual_cash": "13.000000",
+      "allocation_cash": "6.500000",
+      "allocation_cost": "50.000000",
+      "unassigned_cash": "6.500000",
+      "cost_outstanding": "50.000000"
+    },
+    {
+      "scenario": "employee",
+      "payment_id": "9c5a9655-3f17-415c-bce7-b59a235eb494",
+      "allocation_id": "cd6b3350-725e-4961-9b1c-641b43ea791c",
+      "cost_id": "816583c0-e37f-4404-981a-3e1a3f337ccd",
+      "currency": "HKD",
+      "actual_cash": "30.000000",
+      "allocation_cash": "25.000000",
+      "allocation_cost": "25.000000",
+      "unassigned_cash": "5.000000",
+      "cost_outstanding": "75.000000"
+    }
+  ],
+  "cash_totals": [
+    {
+      "currency": "HKD",
+      "outgoing_amount": "90.000000",
+      "refund_amount": "0.000000",
+      "correction_amount": "0.000000",
+      "net_amount": "90.000000",
+      "unallocated_amount": "25.000000",
+      "entry_count": 2
+    },
+    {
+      "currency": "USD",
+      "outgoing_amount": "13.000000",
+      "refund_amount": "0.000000",
+      "correction_amount": "0.000000",
+      "net_amount": "13.000000",
+      "unallocated_amount": "6.500000",
+      "entry_count": 1
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "mfa_recorded": false
+}
