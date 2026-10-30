@@ -1,5 +1,16 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量123 / Increment123：真实合成 DOCX 的修订／表格、引用部件和准确版本比较。MP4 为登录后实际视口录屏；GIF 为三张实际截图的明确导览，每张2秒，非实时录屏。仅隔离合成数据，无真实云／模型／设备验收声明。
+
+| 客户端 / Client | 修订 / Revisions | 引用部件 / Stories | 比较 / Comparison | 录屏 / Recording | 截图导览 / Tour |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/docx-text-web-revisions.png) | [PNG](screenshots/docx-text-web-stories.png) | [PNG](screenshots/docx-text-web-comparison.png) | [MP4](videos/docx-text-web.mp4) | [GIF](gifs/docx-text-web.gif) |
+| Taro H5 | [PNG](screenshots/docx-text-mobile-revisions.png) | [PNG](screenshots/docx-text-mobile-stories.png) | [PNG](screenshots/docx-text-mobile-comparison.png) | [MP4](videos/docx-text-mobile.mp4) | [GIF](gifs/docx-text-mobile.gif) |
+
+[实际检查 / Checks](../quality/123-docx-text-verification.md)
+
+## 已发布历史 / Published history
+
 增量122 / Increment122：从业务待办进入事件与文件详情处理，重试后仍待校验，完成后刷新消除。演示仅使用隔离合成数据；MP4为登录后的实际视口录像，GIF明确为实际截图导览。
 
 | 阶段 / Stage | Web | Taro H5 |

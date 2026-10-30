@@ -1,5 +1,19 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Increment123 connects complex Word text to exact-version previews, current-head search, full text comparison and selected secretary sources. Referenced headers/footers, footnotes/endnotes/comments, table cells, textboxes, inserted/deleted/moved prose and inert field caches are included. The new `docx-v2` identity preserves existing `text-v1` evidence and queued execution semantics.
+
+Usage: upload DOCX on Web/Android → scan and verify an exact replica → run the independent text worker → search a clause or comment → open that formal version's text. Explicitly choose two versions for comparison, or select the exact file version in a secretary conversation. WeChat/Douyin share the read/compare pages. Extraction is bounded to8 MiB source and2 MiB output; it does not change upload limits. Revisions remain unaccepted, fields are not executed, caches can be stale; original layout, inherited styles and pagination require the original.
+
+Current source changes include normal schema upgrade0094.333 Web,429 portable mobile,70 parser and47 selected actual HTTP/PG results passed. See the executed-check record for precise build/browser scope. Increment121 full regression, runtime tests and development APK remain bound to their original sources; that APK is not a123 artifact. All23 packages (14 P0/9 P1) and five exclusions remain. PDF/OCR, Office creation/editing and real business-sample acceptance stay open.
+
+[Design and usage](development/123-docx-text-extraction.md) · [Executed checks](quality/123-docx-text-verification.md) · [All remaining work](delivery/03-goal-gap-assessment.md)
+
+![Word revision preview](media/screenshots/docx-text-web-revisions.png)
+
+[Actual Web recording](media/videos/docx-text-web.mp4) · [Shared mobile recording](media/videos/docx-text-mobile.mp4)
+
+## 已发布历史 / Published history
+
 Increment122 connects assigned incidents and creator-owned file storage work to the business desk. Resolve an incident in its existing editor; retry an existing failed copy in file details. Queued copies remain pending until complete verification succeeds. The shared WeChat, Douyin and Android file page now includes the missing retry form and exact receipt checks.
 
 Usage: home → assigned incidents or files you created → re-read the current details → explicitly resolve or request copying → return home and refresh. Every affected service must be readable. File permissions, the complete active directory chain and the exact current content version are rechecked; another reader does not inherit creator work.

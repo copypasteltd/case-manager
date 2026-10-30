@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## Increment123 · Word 引用内容与修订读取 / DOCX stories and revisions
+
+- 新增有界 `docx-v2`：按包关系读取主文档及显式引用的页眉页脚、脚注尾注、批注，保留表格／文本框／内容控件／文字修订及字段缓存标记；不执行宏、字段或外部链接。
+- 四端共享固定版本预览、搜索和比较证据，秘书复用同一派生正文；原件、已终结旧结果及旧队列算法保留。正常升级0094，不做历史数据迁移或容灾演练。
+- Added actual application code and provenance-preserving derived text, with explicit revision/cache/layout limits. Selected native integration/parser checks, client suites and actual Web/H5 flows are source-bound; retained121 regression/runtime/APK keep their original scope.
+- Keep23 active packages, five exclusions and eight draft Skills. PDF/OCR, wider editing and real cloud/model/platform/production acceptance remain open.
+- 正常升级清单核对覆盖既有SQL及加载器源文件，旧发布字节使用有上限的并行校验；保留早期记录及核验脚本，缩短后续发布核对等待。Bounded parallel retained-blob checks preserve every exact Git identity and ordered result.
+
+[设计 / Design](development/123-docx-text-extraction.md) · [验证 / Verification](quality/123-docx-text-verification.md)
+
 ## Increment122 · 工作台事件与存储处理闭环 / Operations workbench
 
 - 新增本人未结服务事件、本人创建文件的当前存储待办，保留完整授权计数及五条样本；当前时间线／正式版本准确固定。

@@ -14,9 +14,9 @@ EVIDENCE = ROOT / 'docs/quality/evidence/workbench'
 def main():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('workbench', 'operations'), default='workbench')
+    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx'), default='workbench')
     args = parser.parse_args()
-    prefix = 'operations-workbench' if args.feature == 'operations' else 'workbench'
+    prefix = 'docx-text' if args.feature == 'docx' else 'operations-workbench' if args.feature == 'operations' else 'workbench'
     evidence = EVIDENCE.parent / prefix
     evidence.mkdir(parents=True, exist_ok=True)
     ffmpeg, ffprobe = shutil.which('ffmpeg'), shutil.which('ffprobe')
@@ -93,9 +93,11 @@ def main():
     value = {'passed': True, 'encoded_at': datetime.now(timezone.utc).isoformat(), 'encoder_script_sha256': sha(Path(__file__)),
         'ffmpeg_sha256': sha(Path(ffmpeg)), 'ffprobe_sha256': sha(Path(ffprobe)), 'recordings': reports,
         'scope': 'Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (overview, narrow viewport, other member), two seconds each. No real model or device claim.'}
-    if args.feature == 'operations':
+    if args.feature in ('operations', 'docx'):
         value['scope'] = 'Silent MP4 records the actual authenticated home refresh after the owned copy worker verifies real synthetic bytes. GIF is an explicit tour of three actual screenshots: initial work, queued retry and completed work. No physical device, real cloud or production acceptance.'
         value['artifacts'] = [item for report in reports for item in report['gif_screenshots'] + report['artifacts']]
+    if args.feature == 'docx':
+        value['scope'] = 'Silent MP4 records actual authenticated synthetic DOCX search, story previews and exact-version comparison. GIF is a disclosed tour of three real screenshots: revisions/table, referenced stories and comparison. No physical device, real cloud or model acceptance.'
     (evidence / 'media.json').write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': True, 'recordings': len(reports), 'artifacts': sum(len(item['artifacts']) for item in reports)}))
 

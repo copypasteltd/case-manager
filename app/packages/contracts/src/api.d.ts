@@ -7243,7 +7243,7 @@ export interface components {
             /** Format: uuid */
             version_id: string;
             /** @enum {string} */
-            extractor: "text-v1" | "office-v1";
+            extractor: "text-v1" | "office-v1" | "docx-v2";
             /** @enum {string} */
             state: "pending" | "ready" | "unsupported" | "blocked" | "failed";
             source_sha256: string;
@@ -7259,7 +7259,7 @@ export interface components {
             /** Format: uuid */
             version_id: string;
             /** @enum {string} */
-            extractor: "text-v1" | "office-v1";
+            extractor: "text-v1" | "office-v1" | "docx-v2";
             seq: number;
             media_type: string;
             size_bytes: string;
@@ -7283,7 +7283,7 @@ export interface components {
             file_id: string;
             file_version: number;
             /** @enum {string} */
-            extractor: "text-v1" | "office-v1" | "mixed";
+            extractor: "text-v1" | "office-v1" | "docx-v2" | "mixed";
             base: components["schemas"]["FileTextComparisonVersion"];
             target: components["schemas"]["FileTextComparisonVersion"];
             source_equal: boolean;

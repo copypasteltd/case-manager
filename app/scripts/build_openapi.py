@@ -394,12 +394,12 @@ add("DownloadResult", {"id": ID, "mode": enum("signed_url", "authenticated_proxy
     ("id", "mode", "url", "method", "required_headers", "expires_at", "permit_expires_at", "file_version_id", "filename",
     "size_bytes", "sha256", "scan_state", "disposition", "max_range_bytes", "warnings"))
 text_states=enum("pending","ready","unsupported","blocked","failed")
-file_text={"file_id":ID,"version_id":ID,"extractor":enum("text-v1","office-v1"),"state":text_states,
+file_text={"file_id":ID,"version_id":ID,"extractor":enum("text-v1","office-v1","docx-v2"),"state":text_states,
     "source_sha256":HASH,"text_sha256":nullable(HASH),"indexed_at":nullable(TIME),"error_code":nullable(NAME),
     "total_characters":nullable({"type":"integer","minimum":0}),"offset":{"type":"integer","minimum":0},
     "text":{"type":"string","maxLength":8000},"next_offset":nullable({"type":"integer","minimum":1})}
 add("FileText",file_text,tuple(file_text))
-comparison_version = {"version_id": ID, "extractor":enum("text-v1","office-v1"), "seq": VERSION, "media_type": NAME, "size_bytes": BYTES,
+comparison_version = {"version_id": ID, "extractor":enum("text-v1","office-v1","docx-v2"), "seq": VERSION, "media_type": NAME, "size_bytes": BYTES,
     "source_sha256": HASH, "text_sha256": HASH, "text_characters": {"type":"integer","minimum":0,"maximum":2097152}, "indexed_at": TIME}
 add("FileTextComparisonVersion", comparison_version, tuple(comparison_version))
 comparison_line = {"type":"integer","minimum":1,"maximum":40000}
@@ -408,7 +408,7 @@ comparison_row = {"kind":enum("equal","delete","insert","skip"), "base_line":nul
     "newline":{"type":"boolean"},"count":comparison_line}
 add("FileTextComparisonRow", comparison_row, tuple(comparison_row))
 comparison_count = {"type":"integer","minimum":0,"maximum":80000}
-comparison = {"file_id":ID,"file_version":VERSION,"extractor":enum("text-v1","office-v1","mixed"),
+comparison = {"file_id":ID,"file_version":VERSION,"extractor":enum("text-v1","office-v1","docx-v2","mixed"),
     "base":ref("FileTextComparisonVersion"),"target":ref("FileTextComparisonVersion"),
     "source_equal":{"type":"boolean"},"text_equal":{"type":"boolean"},
     "algorithm":enum("myers-v1","bounded-replacement-v1"),"complete":{"const":True},"view":enum("changes","all"),

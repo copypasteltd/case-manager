@@ -44,7 +44,7 @@ func TestFileTextSearch(t *testing.T) {
 	current := add("设计说明.md", "text/markdown", []byte("当前交付约定：香港正文🙂。预算比例100%_固定\\。\n"+strings.Repeat("继续核对资料🙂\n", 900)), &old)
 	var docxBytes bytes.Buffer
 	z := zip.NewWriter(&docxBytes)
-	for name, content := range map[string]string{"[Content_Types].xml": "<Types/>", "word/document.xml": `<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>文档提取验证词🙂</w:t></w:r></w:p></w:body></w:document>`} {
+	for name, content := range map[string]string{"[Content_Types].xml": `<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>`, "_rels/.rels": `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="main" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`, "word/document.xml": `<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>文档提取验证词🙂</w:t></w:r></w:p></w:body></w:document>`} {
 		w, e := z.Create(name)
 		if e != nil {
 			t.Fatal(e)

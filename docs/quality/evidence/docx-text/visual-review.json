@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-30T10:29:59.142612+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/docx-text-web-revisions.png",
+      "sha256": "dd19fa4f2a4f80cfcb0f5d35b8fbf05561c08e16a1ad03d58feb3790f742cfa6",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-web-stories.png",
+      "sha256": "dd19fa4f2a4f80cfcb0f5d35b8fbf05561c08e16a1ad03d58feb3790f742cfa6",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-web-comparison.png",
+      "sha256": "7d3138771b5fbfd4323b4401a99943f2660485a39230381ffbececde85fc4e83",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/videos/docx-text-web.mp4",
+      "sha256": "0deb73385bcc9da33e9180a599c7dcdb3cb7a6f956c5c6346904bfaa8fbc5338",
+      "bytes": 356599,
+      "reviewed": true,
+      "method": "Decoded and viewed opening/middle/end MP4 samples; reviewed stream/duration evidence, not every frame.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/gifs/docx-text-web.gif",
+      "sha256": "7a39b3fb9021f55566dee249db00e7ef5a210d2e3ce700e54dd63eae6401bdac",
+      "bytes": 174171,
+      "reviewed": true,
+      "method": "Decoded and viewed each of the three actual screenshot-tour stages; explicit tour, not a realtime recording.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-mobile-revisions.png",
+      "sha256": "81c00f615e16f5f2c21856b2afc3af3473e79560cd09da427030146f65223104",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-mobile-stories.png",
+      "sha256": "9978e7029eb8d9b52ef396fcf4d4b79267d5058ae243892b53c4ae06332be0a1",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-mobile-comparison.png",
+      "sha256": "0f537f914f8d9ac5e8801b240095e60e82e27db6d28fbe05a53422d9d537b50c",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/videos/docx-text-mobile.mp4",
+      "sha256": "0f942b8deff883aab121a46e03c342bead318e5e1079ca277b1775d5fd9f7a42",
+      "bytes": 414573,
+      "reviewed": true,
+      "method": "Decoded and viewed opening/middle/end MP4 samples; reviewed stream/duration evidence, not every frame.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/gifs/docx-text-mobile.gif",
+      "sha256": "f2b72f995c795023d13ffd170db490419bbe9200718161c73dc1d695ca945b25",
+      "bytes": 127555,
+      "reviewed": true,
+      "method": "Decoded and viewed each of the three actual screenshot-tour stages; explicit tour, not a realtime recording.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    }
+  ],
+  "diagnostics": [
+    {
+      "file": "docs/quality/evidence/docx-text-web/inbox.png",
+      "sha256": "1420294bc6409ed405c300083c7d9422351a93253a8f370613d3c2c0c758033f",
+      "reviewed": true,
+      "method": "Viewed actual final diagnostic screenshot; synthetic details only."
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-mobile/inbox.png",
+      "sha256": "0f537f914f8d9ac5e8801b240095e60e82e27db6d28fbe05a53422d9d537b50c",
+      "reviewed": true,
+      "method": "Viewed actual final diagnostic screenshot; synthetic details only."
+    }
+  ],
+  "notes": [
+    "Word revisions, table cells, referenced stories and updated limits are visible in real pixels.",
+    "Web body and stories screenshots share a viewport when the complete short fixture fits; no invented difference between frames.",
+    "MP4 includes genuine loading/navigation states. GIFs disclose three static screenshot stages, two seconds each.",
+    "Six screenshots viewed individually. Four MP4/GIF contact sheets decoded and viewed. No real-device/cloud/model or full-video-frame review claim."
+  ]
+}

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { checkedSearch, checkedFileText, searchPath, fileTextPath, type SearchHit, type FileText } from '@copypaste/contracts/search';
+import { checkedSearch, checkedFileText, searchPath, fileTextPath, extractionNotice, type SearchHit, type FileText } from '@copypaste/contracts/search';
 const file='10000000-0000-4000-8000-000000000001', version='10000000-0000-4000-8000-000000000002', time='2026-10-28T00:00:00Z';
 const hit=():SearchHit=>({ resource:{type:'file',id:file,version_id:version},title:'交付说明.md',snippet:'香港正文🙂',updated_at:time,project_id:null,match_types:['body'],text_state:'ready',indexed_at:time });
 const text=():FileText=>({ file_id:file,version_id:version,extractor:'text-v1',state:'ready',source_sha256:'a'.repeat(64),text_sha256:'b'.repeat(64),indexed_at:time,error_code:null,total_characters:7,offset:0,text:'香港正文🙂',next_offset:5 });
@@ -19,6 +19,11 @@ it('pins preview to an exact version and Unicode character offset',()=>{
   expect(fileTextPath(file,version,4000)).toBe('/files/'+file+'/versions/'+version+'/text?limit=4000&offset=4000');
   expect(checkedFileText(text(),file,version,0).next_offset).toBe(5);
   expect(()=>checkedFileText(text(),file,file,0)).toThrow(); expect(()=>fileTextPath(file,version,-1)).toThrow();
+});
+it('keeps Word extraction provenance and revision limits visible',()=>{
+  expect(checkedFileText({...text(),extractor:'docx-v2'},file,version,0).extractor).toBe('docx-v2');
+  expect(extractionNotice('docx-v2')).toContain('未接受修订'); expect(extractionNotice('docx-v2')).toContain('批注');
+  expect(extractionNotice('mixed')).toContain('Word');expect(extractionNotice('mixed')).toContain('Excel');
 });
 it('rejects mismatched chunk boundaries, hashes and forged failure plaintext',()=>{
   for(const v of [{...text(),next_offset:6},{...text(),next_offset:0},{...text(),total_characters:4},{...text(),source_sha256:'bad'},{...text(),state:'failed'},{...text(),offset:1},{...text(),extractor:'other'},{...text(),text:'x'.repeat(4001)}]) expect(()=>checkedFileText(v,file,version,0)).toThrow();

@@ -4,6 +4,7 @@ This does not turn unexecuted cases, a retained APK or platform acceptance into
 current passes. The verification plan is versioned with the implementation.
 """
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import hashlib
 import importlib.util
@@ -157,14 +158,17 @@ def retained(config):
     # must not couple the input path list and output hashes into a blocked
     # subprocess; no shell argument limit or line-ending conversion is used.
     assert all(len(blob)==40 for _,blob in rows), 'Expected this repository SHA-1 object format.'
-    objects = []
-    for name,_ in rows:
+    def blob_identity(name):
         file = ROOT / name
         value = hashlib.sha1(b'blob '+str(file.stat().st_size).encode()+b'\0', usedforsecurity=False)
         with file.open('rb') as stream:
             for block in iter(lambda:stream.read(1024*1024),b''):
                 value.update(block)
-        objects.append(value.hexdigest())
+        return value.hexdigest()
+    # Independent bounded reads preserve input order and every exact Git check.
+    # At most eight handles and eight 1-MiB buffers are live at a time.
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        objects = list(executor.map(blob_identity, (name for name,_ in rows)))
     unchanged = len(rows) == len(objects) and all(blob == actual for (_, blob), actual in zip(rows, objects))
     baseline = subprocess.check_output(['git', 'show', commit + ':docs/quality/current-functional-baseline.json'], cwd=ROOT)
     return {'passed': unchanged, 'source_commit': commit, 'original_files': len(rows),
@@ -209,10 +213,15 @@ def verify(config=None, save=False):
     spec = importlib.util.spec_from_file_location('scoped_backend_sources', APP / 'scripts/verify_backend_batches.py')
     backend = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(backend)
+    upgrade = config.get('schema_upgrade')
+    schema_valid = (not update['schema_upgrade_executed']) if not upgrade else (
+        update['previous_migration_count'] in (upgrade['from_count'], upgrade['to_count'])
+        and update['migration_count'] == upgrade['to_count']
+        and update['schema_upgrade_executed'] == (update['previous_migration_count'] == upgrade['from_count']))
     check('Owned development services match current backend and preserve existing business records',
         update['passed'] and development['passed'] and update['backend_source_sha256'] == development['backend_source_sha256'] == backend.digest()
         and update['history_before'] == update['history_after'] and update['legacy_and_usage_rows_preserved']
-        and update['migration_count'] == development['migration_count'] and not update['schema_upgrade_executed']
+        and update['migration_count'] == development['migration_count'] and schema_valid
         and not update['postgres_restarted'] and not update['external_integration_started'] and not update['production_deployment']
         and development['worker_sources_match'] and all(development['ownership'].values())
         and development['database']['disposable_test_databases'] == 0 and development['integrations_disabled']
@@ -227,8 +236,18 @@ def verify(config=None, save=False):
         for name in ('media.json','visual-review.json','development-update.json','development-project-resources.json','development-runtime.json')]
     previous = retained(config)
     check('All prior published proof/media bytes remain unchanged with honest retained scope', previous['passed'] and previous['baseline_increment'] == config['retained_base_increment'])
-    migrations = subprocess.check_output(['git', 'diff', '--name-only', config['retained_base_commit'], '--', 'app/backend/migrations'], cwd=ROOT).decode().strip()
-    check('No schema change or historical migration bytes changed', not migrations)
+    old_migrations = subprocess.check_output(['git', 'ls-tree', '-r', config['retained_base_commit'], '--', 'app/backend/migrations'], cwd=ROOT).decode().splitlines()
+    historic = {}
+    for line in old_migrations:
+        meta, name = line.split('\t', 1)
+        raw = (ROOT / name).read_bytes()
+        historic[name] = hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw, usedforsecurity=False).hexdigest() == meta.split()[2]
+    actual_migrations = {file.relative_to(ROOT).as_posix() for file in (APP / 'backend/migrations').rglob('*') if file.is_file()}
+    expected_new = {item['file'] for item in upgrade['new_migrations']} if upgrade else set()
+    check('Historical schema bytes unchanged and only declared new upgrades added', all(historic.values())
+        and actual_migrations == set(historic) | expected_new
+        and (not upgrade or len(expected_new) == upgrade['to_count'] - upgrade['from_count']
+             and all(sha(ROOT/item['file']) == item['sha256'] for item in upgrade['new_migrations'])))
     check('Owned browser fixture released', not (APP / '.local/business-browser-fixture.json').exists())
     check('Scope and platform acceptance are not replaced by focused checks', config['production_ready'] is False and config['full_goal_complete'] is False
         and config['formal_android_acceptance'] is False and config['full_backend_suite_executed'] is False)

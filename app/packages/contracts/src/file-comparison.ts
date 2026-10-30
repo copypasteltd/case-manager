@@ -8,7 +8,11 @@ const uuid = (v: unknown): v is string => typeof v === 'string' && /^[0-9a-f]{8}
 const hash = (v: unknown): v is string => typeof v === 'string' && /^[a-f0-9]{64}$/.test(v);
 const count = (v: unknown, max = 80000): v is number => Number.isSafeInteger(v) && Number(v) >= 0 && Number(v) <= max;
 const positive = (v: unknown): v is number => Number.isSafeInteger(v) && Number(v) > 0;
-export const extractorFor = (media: string): 'text-v1' | 'office-v1' => /^application\/vnd\.openxmlformats-officedocument\.(spreadsheetml\.sheet|presentationml\.presentation)$/i.test(media.split(';', 1)[0].trim()) ? 'office-v1' : 'text-v1';
+export const extractorFor = (media: string): 'text-v1' | 'office-v1' | 'docx-v2' => {
+  const type = media.split(';', 1)[0].trim().toLowerCase();
+  if (type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') return 'docx-v2';
+  return /^application\/vnd\.openxmlformats-officedocument\.(spreadsheetml\.sheet|presentationml\.presentation)$/.test(type) ? 'office-v1' : 'text-v1';
+};
 const invalid = () => new Error('版本比较依据、分页或完整内容回执不一致，请刷新文件后从第一页重新核对。');
 
 export function comparisonEligible(version: S['FileVersion']): boolean {
@@ -56,5 +60,5 @@ export function comparisonMeaning(v: FileComparison): string {
   if (v.source_equal && !v.text_equal) return '原件字节摘要相同，但提取格式或方式不同，正文存在差异；请分别核对原件和提取依据。';
   if (v.source_equal) return '两个原件字节摘要相同，提取正文也相同。';
   if (v.text_equal) return '提取正文相同，但原件字节不同；BOM、换行、排版或其他原件信息可能不同。';
-  return '提取正文存在差异；下方比较不包含原件排版、图片、批注等非正文信息。';
+  return '提取正文存在差异；下方比较仅包含已支持的提取文字，原件版式与图片须另行核对。';
 }

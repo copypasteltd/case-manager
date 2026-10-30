@@ -68,11 +68,14 @@ class FixtureProxy(BaseHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mobile', action='store_true')
-    parser.add_argument('--feature', choices=('workbench', 'operations'), default='workbench')
+    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx'), default='workbench')
     args = parser.parse_args()
     operations = args.feature == 'operations'
-    expected_kind = 'human-operations-workbench' if operations else 'human-business-workbench'
-    group = ('operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
+    docx = args.feature == 'docx'
+    precompiled = operations or docx
+    expected_kind = 'agent-context-and-classification' if docx else 'human-operations-workbench' if operations else 'human-business-workbench'
+    fixture_flag = 'docx_text_fixture' if docx else 'operations_workbench_fixture' if operations else 'workbench_fixture'
+    group = ('docx-text-' if docx else 'operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
     local = APP / '.local'
     fixture_file = local / 'business-browser-fixture.json'
     report = APP.parent / 'docs/quality/evidence' / group / 'result.json'
@@ -99,7 +102,7 @@ def main():
                 if not isinstance(candidate, dict):
                     return
                 origin = urlsplit(candidate.get('api_origin', ''))
-                if candidate.get('fixture_kind') == expected_kind and candidate.get('operations_workbench_fixture' if operations else 'workbench_fixture') is True and candidate.get('isolated_database') is True and origin.scheme == 'http' and origin.hostname == '127.0.0.1' and origin.port and not origin.username and not origin.password and not origin.query and not origin.fragment and origin.path in ('', '/') and isinstance(candidate.get('stop_token'), str) and candidate['stop_token']:
+                if candidate.get('fixture_kind') == expected_kind and candidate.get(fixture_flag) is True and candidate.get('isolated_database') is True and origin.scheme == 'http' and origin.hostname == '127.0.0.1' and origin.port and not origin.username and not origin.password and not origin.query and not origin.fragment and origin.path in ('', '/') and isinstance(candidate.get('stop_token'), str) and candidate['stop_token']:
                     configuration = candidate
             except (OSError, ValueError, TypeError):
                 pass
@@ -122,11 +125,11 @@ def main():
 
     try:
         with (local / (group + '-native.log')).open('w', encoding='utf-8') as native_log, (local / (group + '-build.log')).open('w', encoding='utf-8') as build_log:
-            if operations:
+            if precompiled:
                 # Native Go linking is preparation, not part of the domain
                 # fixture's unchanged 12-minute lifetime or readiness wait.
                 # Warm the exact test binary before starting any DB fixture.
-                binary = local / 'operations-workbench-httpapi.test.exe'
+                binary = local / ('docx-text-httpapi.test.exe' if docx else 'operations-workbench-httpapi.test.exe')
                 build = subprocess.Popen([str(APP / '.tools/go/bin/go.exe'), 'test', '-c', './internal/httpapi', '-o', str(binary)],
                     cwd=APP / 'backend', env={**os.environ, 'GOPROXY':'https://goproxy.cn,https://proxy.golang.org,direct','GODEBUG':'http2client=0'},
                     stdout=build_log, stderr=subprocess.STDOUT, creationflags=flags)
@@ -149,7 +152,7 @@ def main():
                     raise RuntimeError('Implementation changed during the H5 prebuild.')
             fixture_env = {**os.environ, 'CP_BROWSER_AGENT_FIXTURE':'1','CP_BROWSER_BUSINESS_FIXTURE':'1','CP_BROWSER_FILE_COMPARISON_FIXTURE':'1'}
             fixture_command = [sys.executable, str(APP / 'scripts/test_workbench_native.py'), '--package', './internal/httpapi', '-run', '^TestBusinessWorkbench$', '-timeout=25m', '-v']
-            if operations:
+            if precompiled:
                 # Reuse the exact precompiled bytes. Match test_backend.py's
                 # private native environment; no second cold link in readiness.
                 values = json.loads((APP / '.local/environment.json').read_text(encoding='utf-8'))
@@ -161,12 +164,15 @@ def main():
                 fixture_env = {k:v for k,v in fixture_env.items() if not k.startswith('CP_BROWSER_')}
                 fixture_env.update({'CP_TEST_ADMIN_URL':admin,'CP_ENV':'test',
                     'CP_BROWSER_BUSINESS_FIXTURE':'1','CP_BROWSER_OPERATIONS_WORKBENCH':'1'})
+                if docx:
+                    fixture_env.pop('CP_BROWSER_OPERATIONS_WORKBENCH')
+                    fixture_env.update({'CP_BROWSER_AGENT_FIXTURE':'1','CP_BROWSER_DOCX_TEXT_FIXTURE':'1'})
                 assert hashlib.sha256(binary.read_bytes()).hexdigest() == compile_receipt['binary_sha256']
-                fixture_command = [str(binary),'-test.run=^TestOperationsWorkbenchBrowserFixture$','-test.timeout=25m','-test.v']
+                fixture_command = [str(binary),'-test.run=^TestDOCXTextDocuments$' if docx else '-test.run=^TestOperationsWorkbenchBrowserFixture$','-test.timeout=25m','-test.v']
                 compile_receipt['executed_exact_binary'] = True
             # go test normally runs a package binary in its package directory.
             # Direct execution must preserve that convention for owned paths.
-            process = subprocess.Popen(fixture_command, cwd=APP / 'backend/internal/httpapi' if operations else APP,
+            process = subprocess.Popen(fixture_command, cwd=APP / 'backend/internal/httpapi' if precompiled else APP,
                 env=fixture_env,
                 stdout=native_log, stderr=subprocess.STDOUT, creationflags=flags)
             # Preparation is separate from the unchanged 12-minute fixture
@@ -208,7 +214,7 @@ def main():
                 raise RuntimeError('Implementation changed during review startup/build.')
             print('Owned native fixture and review server ready; checking scoped business counts, ordinary detail navigation and authority changes.', flush=True)
             with (local / (group + '-browser.log')).open('w', encoding='utf-8') as browser_log:
-                browser = subprocess.Popen([node, str(APP / ('scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
+                browser = subprocess.Popen([node, str(APP / ('scripts/check_docx_text.mjs' if docx else 'scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
                     cwd=APP, env={**os.environ, 'CP_BROWSER_EVIDENCE_GROUP': group}, stdout=browser_log, stderr=subprocess.STDOUT,
                     creationflags=flags)
                 browser_status = browser.wait(timeout=650)

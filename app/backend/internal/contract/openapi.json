@@ -44623,7 +44623,8 @@
             "type": "string",
             "enum": [
               "text-v1",
-              "office-v1"
+              "office-v1",
+              "docx-v2"
             ]
           },
           "state": {
@@ -44732,7 +44733,8 @@
             "type": "string",
             "enum": [
               "text-v1",
-              "office-v1"
+              "office-v1",
+              "docx-v2"
             ]
           },
           "seq": {
@@ -44856,6 +44858,7 @@
             "enum": [
               "text-v1",
               "office-v1",
+              "docx-v2",
               "mixed"
             ]
           },

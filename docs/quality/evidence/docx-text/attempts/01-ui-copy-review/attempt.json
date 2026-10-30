@@ -1,0 +1,162 @@
+{
+  "archived_at": "2026-10-30T10:20:05.714267+00:00",
+  "reason": "Actual parser/integration/client/UI checks passed. Visual review found obsolete comparison prose excluding comments and raw XML range labels; preserve original results, apply the correction, then reexecute against final sources. Development read-only check observed one concurrently owned disposable browser DB and correctly failed; rerun only after browser cleanup. The earlier schema93-to94 application and original business preservation remain factual.",
+  "files": [
+    {
+      "original_file": "docs/quality/evidence/docx-text/backend.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/backend.json",
+      "sha256": "d20f3eb32b34180a0e05b1ed7441cf97ae11ad913ec8527f203fd606a2c18130"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/development-project-resources.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/development-project-resources.json",
+      "sha256": "89b5021bf16d6c171f5c3e00d902277ddd7c1d7560953fbb9982dba987bf6f8b"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/development-runtime.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/development-runtime.json",
+      "sha256": "9abbb948c6a5e52edf5c3e0a7f91e3c9218d6ffb3cbc7b8e9e2453a83e6ed0c3"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/development-update.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/development-update.json",
+      "sha256": "25e5152929349027629e211638822335e9b4466de4681e6f296eb97595ba4b0a"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/douyin-build.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/douyin-build.json",
+      "sha256": "ddb3ad4669f82646414b780cbc09ed69b9f6a9de383b6c3c8e2f6e1e205b47c3"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/extractors.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/extractors.json",
+      "sha256": "1c080b7753825f0189c3d243afe2bbe68e2a24be7267f6347f15f3b238c97723"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/mobile-tests.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/mobile-tests.json",
+      "sha256": "b42104a6e9b5c30e2bfbcdb1d4e7128b4f3857fa0ff61547d356e384dbb33501"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/native-js-tests.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/native-js-tests.json",
+      "sha256": "cca4e98e65bb6ad88ca11cc5aae881e05c4350c310c38c42f6afaef170993ebc"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/typecheck.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/typecheck.json",
+      "sha256": "4d987c7c7802f41af1343fbcb7eac16dd6c1522e0e1d3a4cc3af2415589e29dc"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/weapp-build.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/weapp-build.json",
+      "sha256": "cf3e6ad5d21afb94163b1f4a69363cbcac254bd191467cefd59daa0c086feef8"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/web-build.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/web-build.json",
+      "sha256": "62aaaa3d7d4ae112ba1dda4872e2b643aaf9e35830b46754170579a13f26789e"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text/web-tests.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/executed-checks/web-tests.json",
+      "sha256": "d844b32ad4d5b1f881b8091f95c747a37f8b6154e4bd212d8a0456b076250c10"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-web/inbox.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-web/inbox.png",
+      "sha256": "c7bda5e86ae9edb418702adeb0cff646aba839d0e3709a020c64598fc862ba79"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-web/media.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-web/media.json",
+      "sha256": "82a70438b630176d6d8ad7145460b25c7d10a5a99535a2e0fc129a5adc570bc9"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-web/result.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-web/result.json",
+      "sha256": "11ea10a09efe428942dfec743c2ee09d25f991ff461233d4902a5acb948d8038"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-web/source-manifest.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-web/source-manifest.json",
+      "sha256": "ba1fed6f72232c4737d5ddf070e05bf7e4744032fd36369ffd0d90be1e0251e2"
+    },
+    {
+      "original_file": "docs/media/screenshots/docx-text-web-comparison.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/screenshots/docx-text-web-comparison.png",
+      "sha256": "46b6c818a451e4a09c1bccce65978eb27937d72704a3bf2ae6b7d8dbcf95c379"
+    },
+    {
+      "original_file": "docs/media/screenshots/docx-text-web-revisions.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/screenshots/docx-text-web-revisions.png",
+      "sha256": "b70b1c7684cfc7aec539f54aec52875a651e4c0d4c0f638cc4051e48e27f9ab4"
+    },
+    {
+      "original_file": "docs/media/screenshots/docx-text-web-stories.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/screenshots/docx-text-web-stories.png",
+      "sha256": "b70b1c7684cfc7aec539f54aec52875a651e4c0d4c0f638cc4051e48e27f9ab4"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-mobile/inbox.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-mobile/inbox.png",
+      "sha256": "206a733db5bc4f1b71fe8e5ca81d3a06599ee3c8701e372a605f956b07c5170c"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-mobile/media.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-mobile/media.json",
+      "sha256": "4a4f55bc292f7a19c00da5c467c44eb401612ccc3865ed561b4c4cb03b78bc2a"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-mobile/result.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-mobile/result.json",
+      "sha256": "c54b1012cdc2965e0e084e59e5cdd55aa6e6183c3afabcaa307ff2b2df18e807"
+    },
+    {
+      "original_file": "docs/quality/evidence/docx-text-mobile/source-manifest.json",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/browser-mobile/source-manifest.json",
+      "sha256": "9bf640754e8681fcc3a20203673da36819ccd21deb62492e131029517d7c0d6d"
+    },
+    {
+      "original_file": "docs/media/screenshots/docx-text-mobile-comparison.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/screenshots/docx-text-mobile-comparison.png",
+      "sha256": "206a733db5bc4f1b71fe8e5ca81d3a06599ee3c8701e372a605f956b07c5170c"
+    },
+    {
+      "original_file": "docs/media/screenshots/docx-text-mobile-revisions.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/screenshots/docx-text-mobile-revisions.png",
+      "sha256": "4552f3e5b7957d66550f26ff05450cc5d3e70485dd7ac36e633cb1c27d652710"
+    },
+    {
+      "original_file": "docs/media/screenshots/docx-text-mobile-stories.png",
+      "archived_file": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/screenshots/docx-text-mobile-stories.png",
+      "sha256": "ea1114f3ab96827709245d29bb15be7fac049eb13198f77893384448466009f0"
+    },
+    {
+      "original_source": "app/backend/internal/files/docx_text.go",
+      "snapshot": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/source-snapshots/docx_text.go.txt",
+      "sha256": "f6d96cb798967b838f9785057206d8a9a2a811af59bfc0965297adb656ac8802"
+    },
+    {
+      "original_source": "app/backend/internal/files/docx_text_test.go",
+      "snapshot": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/source-snapshots/docx_text_test.go.txt",
+      "sha256": "f264a15b875d9c186f0601e5ba3453dbb7b8bb827dc3663772ca257b15d53f6b"
+    },
+    {
+      "original_source": "app/packages/contracts/src/file-comparison.ts",
+      "snapshot": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/source-snapshots/file-comparison.ts.txt",
+      "sha256": "a9315a2f9fad2967c3dd92473fc1796431c0aa8df6e207570929d168595b83b7"
+    },
+    {
+      "original_source": "app/web/src/FileComparison.tsx",
+      "snapshot": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/source-snapshots/FileComparison.tsx.txt",
+      "sha256": "07c9f4cb9d8b925f9392547e87293cbe6aed015d0acfe3b0f80150968ace6fe4"
+    },
+    {
+      "original_source": "app/mobile/src/pages/files/comparison.tsx",
+      "snapshot": "docs/quality/evidence/docx-text/attempts/01-ui-copy-review/source-snapshots/comparison.tsx.txt",
+      "sha256": "26c15ba8a36a9b78305e25b6ec43557588cfd5d032d3cf44a70c6d406ae4dec0"
+    }
+  ],
+  "earlier_results_are_current_acceptance": false
+}

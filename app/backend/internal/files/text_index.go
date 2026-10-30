@@ -236,7 +236,7 @@ func (s *TextIndexService) finishText(ctx context.Context, tx pgx.Tx, j jobqueue
 // version and lease locks and rechecks the exact source before publication.
 func (s *TextIndexService) Process(ctx context.Context, j jobqueue.Job) error {
 	var in textJobInput
-	if j.Kind != TextJobKind || j.Lane != TextJobLane || j.PayloadVersion != 1 || json.Unmarshal(j.Payload, &in) != nil || !core.ValidID(in.FileID) || !core.ValidID(in.VersionID) || (in.Extractor != TextExtractor && in.Extractor != OfficeTextExtractor) || j.DedupKey != textDedup(in.VersionID, in.Extractor) {
+	if j.Kind != TextJobKind || j.Lane != TextJobLane || j.PayloadVersion != 1 || json.Unmarshal(j.Payload, &in) != nil || !core.ValidID(in.FileID) || !core.ValidID(in.VersionID) || (in.Extractor != TextExtractor && in.Extractor != OfficeTextExtractor && in.Extractor != DOCXTextExtractor) || j.DedupKey != textDedup(in.VersionID, in.Extractor) {
 		return core.Invalid("job", "正文任务固定输入无效")
 	}
 	tx, v, err := s.textTx(ctx, j, in)
@@ -264,7 +264,7 @@ func (s *TextIndexService) Process(ctx context.Context, j jobqueue.Job) error {
 	body, readErr := readTextBytes(ctx, source)
 	text := ""
 	if readErr == nil {
-		text, readErr = ExtractText(ctx, v.MediaType, body)
+		text, readErr = extractTextWith(ctx, v.MediaType, body, in.Extractor)
 	}
 	if readErr != nil && core.PublicError(readErr).Status != 422 {
 		return readErr
@@ -322,7 +322,7 @@ func (s *TextIndexService) Fail(ctx context.Context, j jobqueue.Job, cause error
 
 func (s *TextIndexService) SealDead(ctx context.Context) error {
 	_, err := s.DB.Exec(ctx, `UPDATE file_text_derivations d SET state='failed',error_code='FILE_TEXT_ATTEMPTS_EXHAUSTED',indexed_at=clock_timestamp()
-        WHERE state='queued' AND extractor IN ('text-v1','office-v1') AND EXISTS(SELECT 1 FROM jobs j WHERE j.org_id=d.org_id AND j.kind=$1 AND j.lane=$2
+        WHERE state='queued' AND extractor IN ('text-v1','office-v1','docx-v2') AND EXISTS(SELECT 1 FROM jobs j WHERE j.org_id=d.org_id AND j.kind=$1 AND j.lane=$2
         AND j.dedup_key=$1||'/'||d.version_id::text||'/'||d.extractor AND j.state='dead')`, TextJobKind, TextJobLane)
 	return err
 }

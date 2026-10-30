@@ -36,7 +36,7 @@ func TestFileTextExtraction(t *testing.T) {
 	mime := "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 	document := `<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>香港🙂 &amp; CopyPaste</w:t><w:tab/><w:t>正文</w:t><w:br/><w:t>第二行</w:t></w:r></w:p><w:tbl><w:tr><w:tc><w:p><w:r><w:t>表格内容</w:t></w:r></w:p></w:tc></w:tr></w:tbl></w:body></w:document>`
 	t.Run("docx paragraphs tables and Unicode", func(t *testing.T) {
-		got, err := ExtractText(ctx, mime, docxFixture(t, document, nil))
+		got, err := extractTextWith(ctx, mime, docxFixture(t, document, nil), TextExtractor)
 		if err != nil || got != "香港🙂 & CopyPaste\t正文\n第二行\n表格内容" {
 			t.Fatalf("extraction %q %v", got, err)
 		}

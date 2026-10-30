@@ -1,0 +1,117 @@
+package files
+
+import (
+	"context"
+	"strings"
+	"testing"
+)
+
+func complexWordParts() map[string]string {
+	const rel = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+	p := map[string]string{
+		"[Content_Types].xml":         `<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Override PartName="/custom/main.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>`,
+		"_rels/.rels":                 `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="main" Type="` + rel + `/officeDocument" Target="custom/main.xml"/></Relationships>`,
+		"custom/main.xml":             `<w:document xmlns:w="` + wordNS + `" xmlns:r="` + rel + `"><w:body><w:p><w:r><w:t>香港🙂 合同</w:t></w:r><w:ins><w:r><w:t>新增条款</w:t></w:r></w:ins><w:del><w:r><w:delText>删除条款</w:delText></w:r></w:del><w:moveFrom><w:r><w:t>移动原文</w:t></w:r></w:moveFrom><w:moveTo><w:r><w:t>移动新文</w:t></w:r></w:moveTo><w:hyperlink r:id="web"><w:r><w:t>链接显示文字</w:t></w:r></w:hyperlink></w:p><w:sdt><w:sdtPr><w:alias w:val="DO_NOT_INDEX_ALIAS"/></w:sdtPr><w:sdtContent><w:tbl><w:tr><w:tc><w:p><w:r><w:t>金额</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>HKD 1200</w:t></w:r></w:p></w:tc></w:tr></w:tbl></w:sdtContent></w:sdt><w:p><w:r><w:rPr><w:vanish/></w:rPr><w:t>隐藏条款</w:t></w:r><w:r><w:footnoteReference w:id="2"/><w:footnoteReference w:id="2"/><w:endnoteReference w:id="3"/></w:r><w:commentRangeStart w:id="5"/><w:r><w:t>待核对</w:t><w:commentReference w:id="5"/></w:r><w:commentRangeEnd w:id="5"/></w:p><w:p><w:r><w:pict><w:txbxContent><w:p><w:r><w:t>文本框交付说明</w:t></w:r></w:p></w:txbxContent></w:pict></w:r></w:p><w:p><w:fldSimple w:instr="DATE"><w:r><w:t>旧日期缓存</w:t></w:r></w:fldSimple><w:r><w:fldChar w:fldCharType="begin"/><w:instrText>INCLUDETEXT https://example.invalid/private</w:instrText><w:fldChar w:fldCharType="separate"/><w:t>外部字段旧缓存</w:t><w:fldChar w:fldCharType="end"/></w:r></w:p><w:sectPr><w:headerReference w:type="default" r:id="header"/><w:footerReference w:type="first" r:id="footer"/></w:sectPr></w:body></w:document>`,
+		"custom/_rels/main.xml.rels":  `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="header" Type="` + rel + `/header" Target="stories/top.xml"/><Relationship Id="footer" Type="` + rel + `/footer" Target="stories/bottom.xml"/><Relationship Id="foot" Type="` + rel + `/footnotes" Target="stories/foot.xml"/><Relationship Id="end" Type="` + rel + `/endnotes" Target="stories/end.xml"/><Relationship Id="comments" Type="` + rel + `/comments" Target="stories/comments.xml"/><Relationship Id="web" Type="` + rel + `/hyperlink" TargetMode="External" Target="https://example.invalid/private"/></Relationships>`,
+		"custom/stories/top.xml":      `<w:hdr xmlns:w="` + wordNS + `"><w:p><w:r><w:t>公司页眉</w:t></w:r></w:p></w:hdr>`,
+		"custom/stories/bottom.xml":   `<w:ftr xmlns:w="` + wordNS + `"><w:p><w:r><w:t>合同页脚</w:t></w:r></w:p></w:ftr>`,
+		"custom/stories/foot.xml":     `<w:footnotes xmlns:w="` + wordNS + `"><w:footnote w:id="-1" w:type="separator"><w:p><w:r><w:t>DO_NOT_INDEX_SEPARATOR</w:t></w:r></w:p></w:footnote><w:footnote w:id="2"><w:p><w:r><w:t>脚注付款依据</w:t></w:r></w:p></w:footnote><w:footnote w:id="99"><w:p><w:r><w:t>DO_NOT_INDEX_ORPHAN_NOTE</w:t></w:r></w:p></w:footnote></w:footnotes>`,
+		"custom/stories/end.xml":      `<w:endnotes xmlns:w="` + wordNS + `"><w:endnote w:id="3"><w:p><w:r><w:t>尾注有效期</w:t></w:r></w:p></w:endnote></w:endnotes>`,
+		"custom/stories/comments.xml": `<w:comments xmlns:w="` + wordNS + `"><w:comment w:id="5" w:author="DO_NOT_INDEX_AUTHOR"><w:p><w:r><w:t>批注需财务确认</w:t></w:r></w:p></w:comment></w:comments>`,
+		"word/document.xml":           `<invalid>DO_NOT_INDEX_FILENAME_GUESS`,
+		"word/header99.xml":           `DO_NOT_INDEX_ORPHAN_HEADER`,
+	}
+	return p
+}
+
+func TestDOCXTextExtraction(t *testing.T) {
+	ctx := context.Background()
+	t.Run("referenced stories revisions tables controls fields and textboxes", func(t *testing.T) {
+		body := officeZip(t, complexWordParts(), 0)
+		got, err := ExtractText(ctx, docxMediaType, body)
+		if err != nil {
+			t.Fatal(err)
+		}
+		for _, want := range []string{"香港🙂 合同", "[插入]新增条款[/插入]", "[删除]删除条款[/删除]", "[移出]移动原文[/移出]", "[移入]移动新文[/移入]", "链接显示文字", "[表格]", "[单元格]HKD 1200", "[直接隐藏文字]隐藏条款", "[文本框]", "文本框交付说明", "字段指令，不执行：DATE", "缓存结果，可能过期：旧日期缓存", "INCLUDETEXT https://example.invalid/private", "外部字段旧缓存", "第 1 节页眉 default", "公司页眉", "第 1 节页脚 first", "合同页脚", "[脚注 2]", "脚注付款依据", "[尾注 3]", "尾注有效期", "[批注 5]", "批注需财务确认"} {
+			if !strings.Contains(got, want) {
+				t.Errorf("missing %q in %s", want, got)
+			}
+		}
+		if strings.Contains(got, "DO_NOT_INDEX") || strings.Count(got, "脚注付款依据") != 1 || strings.Count(got, "批注需财务确认") != 1 {
+			t.Fatal("unreferenced, duplicate or metadata content indexed", got)
+		}
+		if TextExtractorFor(strings.ToUpper(docxMediaType)+"; charset=UTF-8") != DOCXTextExtractor {
+			t.Fatal("wrong selector")
+		}
+	})
+	t.Run("strict namespace", func(t *testing.T) {
+		p := complexWordParts()
+		for name, value := range p {
+			p[name] = strings.ReplaceAll(strings.ReplaceAll(value, wordNS, "http://purl.oclc.org/ooxml/wordprocessingml/main"), relNS, "http://purl.oclc.org/ooxml/officeDocument/relationships")
+		}
+		if got, err := ExtractText(ctx, docxMediaType, officeZip(t, p, 0)); err != nil || !strings.Contains(got, "脚注付款依据") {
+			t.Fatal(got, err)
+		}
+	})
+	t.Run("legacy queued algorithm remains original", func(t *testing.T) {
+		body := docxFixture(t, `<w:document xmlns:w="`+wordNS+`"><w:body><w:p><w:r><w:t>旧正文</w:t></w:r><w:del><w:r><w:delText>删除旧文</w:delText></w:r></w:del></w:p></w:body></w:document>`, nil)
+		if got, err := extractTextWith(ctx, docxMediaType, body, TextExtractor); err != nil || got != "旧正文" {
+			t.Fatal(got, err)
+		}
+		if _, err := ExtractText(ctx, docxMediaType, body); err == nil {
+			t.Fatal("new extraction accepted missing package relationship")
+		}
+	})
+	for _, tc := range []struct {
+		name   string
+		change func(map[string]string)
+	}{
+		{"missing note", func(p map[string]string) { delete(p, "custom/stories/foot.xml") }},
+		{"unresolved note ID", func(p map[string]string) {
+			p["custom/main.xml"] = strings.ReplaceAll(p["custom/main.xml"], `w:id="2"`, `w:id="8"`)
+		}},
+		{"duplicate note ID", func(p map[string]string) {
+			p["custom/stories/foot.xml"] = strings.ReplaceAll(p["custom/stories/foot.xml"], `w:id="99"`, `w:id="2"`)
+		}},
+		{"separator reference", func(p map[string]string) {
+			p["custom/stories/foot.xml"] = strings.Replace(p["custom/stories/foot.xml"], `w:id="2"`, `w:id="2" w:type="separator"`, 1)
+		}},
+		{"external header", func(p map[string]string) {
+			p["custom/_rels/main.xml.rels"] = strings.Replace(p["custom/_rels/main.xml.rels"], `Target="stories/top.xml"`, `Target="https://example.invalid/private" TargetMode="External"`, 1)
+		}},
+		{"wrong header kind", func(p map[string]string) { p["custom/stories/top.xml"] = p["custom/stories/bottom.xml"] }},
+		{"missing relationship", func(p map[string]string) {
+			p["custom/main.xml"] = strings.Replace(p["custom/main.xml"], `r:id="header"`, `r:id="absent"`, 1)
+		}},
+		{"ambiguous note relationship", func(p map[string]string) {
+			p["custom/_rels/main.xml.rels"] = strings.Replace(p["custom/_rels/main.xml.rels"], `/comments"`, `/footnotes"`, 1)
+		}},
+		{"malformed note", func(p map[string]string) { p["custom/stories/comments.xml"] = "<broken>" }},
+		{"DTD", func(p map[string]string) { p["custom/stories/top.xml"] = "<!DOCTYPE x>" + p["custom/stories/top.xml"] }},
+		{"unclosed field", func(p map[string]string) {
+			p["custom/main.xml"] = strings.Replace(p["custom/main.xml"], `<w:fldChar w:fldCharType="end"/>`, "", 1)
+		}},
+		{"field double separator", func(p map[string]string) {
+			p["custom/main.xml"] = strings.Replace(p["custom/main.xml"], `<w:fldChar w:fldCharType="end"/>`, `<w:fldChar w:fldCharType="separate"/>`, 1)
+		}},
+		{"conditional alternate content", func(p map[string]string) {
+			p["custom/stories/top.xml"] = `<mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"/>`
+		}},
+		{"external subdocument", func(p map[string]string) {
+			p["custom/main.xml"] = strings.Replace(p["custom/main.xml"], "<w:body>", "<w:body><w:altChunk/>", 1)
+		}},
+		{"macro", func(p map[string]string) { p["word/vbaProject.bin"] = "macro" }},
+		{"path escape", func(p map[string]string) { p["../escape"] = "x" }},
+		{"text output bound", func(p map[string]string) {
+			p["custom/stories/top.xml"] = strings.Replace(p["custom/stories/top.xml"], "公司页眉", strings.Repeat("x", TextOutputMaxBytes+1), 1)
+		}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			p := complexWordParts()
+			tc.change(p)
+			if got, err := ExtractText(ctx, docxMediaType, officeZip(t, p, 0)); err == nil || got != "" {
+				t.Fatal("partial/unsafe extraction", got, err)
+			}
+		})
+	}
+}

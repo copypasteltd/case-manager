@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T10:15:08.895Z",
+  "finished_at": "2026-10-30T10:15:35.611Z",
+  "checks": [
+    "Actual current-head search finds referenced DOCX comments, pins formal versions and does not duplicate legacy derivations.",
+    "Actual preview renders labeled revisions, table cells, referenced headers/footers/notes/comments, textboxes and inert field/cache evidence; the complete derived hash matches the API.",
+    "Actual selected-version comparison binds docx-v2 independently on both formal versions and keeps revision/layout limitations visible.",
+    "The authenticated secretary-source API consumes the same immutable DOCX derivation after source-object credentials are removed; this is not real-model acceptance."
+  ],
+  "source_count": 874,
+  "source_sha256": "73438348535fa877d9027e8a5a25adac3933587fa04ab536e430b1082c300ac1",
+  "source_after_sha256": "73438348535fa877d9027e8a5a25adac3933587fa04ab536e430b1082c300ac1",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "6768132f7a9c4c64bc12cbe12eeca0df320df360f9ba78cd7a27646597ec8361",
+    "source_sha256": "1ccc104c2a93692aaefe490d2274fa35c06110a23df8825a573727ef1291c8a8",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "1ccc104c2a93692aaefe490d2274fa35c06110a23df8825a573727ef1291c8a8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "1ccc104c2a93692aaefe490d2274fa35c06110a23df8825a573727ef1291c8a8",
+  "build_source_unchanged": true
+}

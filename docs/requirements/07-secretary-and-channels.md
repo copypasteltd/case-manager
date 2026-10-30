@@ -1,5 +1,7 @@
 # 公司秘书、Skill 与渠道需求
 
+增量123补充：复杂 DOCX 已进入固定版本的正文预览、当前版本检索、完整文字比较及秘书资料读取；`docx-v2` 单独保存，不覆盖旧提取证据。修订保留、字段不计算，引用关系／限额／原件边界见[实现与使用](../development/123-docx-text-extraction.md)。PDF／OCR、Office创建编辑及真实样本核对仍开放；23项和5项移出保持不变。
+
 增量117当前约束：file-update 1.4.0（draft）可按准确合同依据新建完整UTF-8文本／Markdown正文，48KiB上限；采用由独立人类命令执行，秘书不得采用、送审、签署或生效。更广正文附件、Office／PDF／OCR与真实模型评测仍开放。见[详细实现](../development/117-contract-body-drafting.md)。
 
 实现协议补充（增量93）：原秘书检索支持共同可读项目／任务／知识正文与当前正式文件索引；准确DOCX阅读固定原件版本及不可变派生证据。检索片段、资料文本均属不可信数据，不产生写授权；全部成员权限、分类、文件生命周期、租约／取消／预算和持久回执在披露时重检。八项Skill源码已升级仍draft；需按[实现与格式约束](../development/93-secretary-indexed-search.md)、[工具执行边界](../skills/execution-boundaries.md)及[准确验证](../quality/evidence/agent-indexed-search/verification.md)验收，不以本地受控MCP或H5演示代替真实模型／TG／四端放行。

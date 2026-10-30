@@ -1,0 +1,162 @@
+{
+  "name": "docx-text",
+  "increment": 123,
+  "configuration_file": "docs/quality/evidence/docx-text/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/docx-text",
+  "retained_base_commit": "fd71d5bd381b47266baee325e0fb3c09f9b978a3",
+  "retained_base_increment": 122,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/test_docx_extractors.py"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestDOCXTextDocuments|TestOfficeTextDocuments|TestFileTextSearch|TestFileTextComparison|TestAgentIndexedSearch)$",
+        "-p=1",
+        "-timeout=20m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestDOCXTextDocuments",
+        "TestOfficeTextDocuments",
+        "TestFileTextSearch",
+        "TestFileTextComparison",
+        "TestAgentIndexedSearch"
+      ],
+      "scope": "Five selected actual native HTTP/PG suites for DOCX, Office, search, comparison and secretary indexed sources; not a full backend regression."
+    },
+    {
+      "id": "extractors",
+      "command": [
+        "python",
+        "scripts/test_docx_extractors.py",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestDOCXTextExtraction",
+        "TestOfficeTextExtraction",
+        "TestFileTextExtraction"
+      ],
+      "scope": "Selected in-memory native Go format/parser/limit regressions."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/docx-text/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/docx-text/web-vitest.json",
+      "minimum_tests": 333,
+      "scope": "Complete existing Web unit suite and shared workbench/replica cases."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 429,
+      "scope": "Complete existing portable Taro unit suite and shared workbench/replica cases."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Native Babel primitive checks; retained121 APK is not a current123 artifact."
+    }
+  ],
+  "browser_groups": [
+    "docx-text-web",
+    "docx-text-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "schema_upgrade": {
+    "from_count": 93,
+    "to_count": 94,
+    "new_migrations": [
+      {
+        "file": "app/backend/migrations/0094_docx_stories.sql",
+        "sha256": "0534fe906c8d1ceead881eb7f5e97f94987c6c9694d9f2c72de12bf4d916ea47"
+      }
+    ]
+  }
+}

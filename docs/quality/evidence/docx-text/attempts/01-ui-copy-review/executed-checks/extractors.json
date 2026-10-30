@@ -1,0 +1,386 @@
+{
+  "passed": true,
+  "id": "extractors",
+  "started_at": "2026-10-30T10:13:48.234286+00:00",
+  "finished_at": "2026-10-30T10:13:52.670952+00:00",
+  "elapsed_seconds": 4.436,
+  "command": [
+    "python",
+    "scripts/test_docx_extractors.py",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "f7bae4ed4a64cfae3729f7fd69333893a581b4e489867fc60fba573297585aaf",
+  "source_after_sha256": "f7bae4ed4a64cfae3729f7fd69333893a581b4e489867fc60fba573297585aaf",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestDOCXTextExtraction",
+      "TestOfficeTextExtraction",
+      "TestFileTextExtraction"
+    ],
+    "pass": 70,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/referenced_stories_revisions_tables_controls_fields_and_textboxes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/strict_namespace"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/legacy_queued_algorithm_remains_original"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/missing_note"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/unresolved_note_ID"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/duplicate_note_ID"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/separator_reference"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/external_header"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/wrong_header_kind"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/missing_relationship"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/ambiguous_note_relationship"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/malformed_note"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/DTD"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/unclosed_field"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/field_double_separator"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/conditional_alternate_content"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/external_subdocument"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/macro"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/path_escape"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction/text_output_bound"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestDOCXTextExtraction"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/xlsx_transitional"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/pptx_transitional"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/xlsx_strict"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/pptx_strict"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/missing_target"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/external_sheet"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/missing_shared_string"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/bad_cell_index"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/duplicate_row"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/NUL_escape"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/unpaired_surrogate"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/bad_cell_type"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/macro_entry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/macro_content_type"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/escape"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/encoded_escape"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/duplicate_relationship"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/malformed_notes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/DTD"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/duplicate_root"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/conditional_content"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/ZIP_path"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/depth"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/output_limit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/special_ZIP_mode"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/cancelled"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction/extractor_separation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestOfficeTextExtraction"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/docx_paragraphs_tables_and_Unicode"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/JSON"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/UTF8"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/unsupported_PDF"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/invalid_UTF8"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/NUL"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/wrong_charset"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/invalid_JSON"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/text_bound"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/source_bound"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/malformed_ZIP"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/malformed_XML"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/DTD"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/multiple_roots"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/wrong_root"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/path_traversal"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/macro"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/expansion"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/depth"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction/cancellation"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/files",
+      "Test": "TestFileTextExtraction"
+    }
+  ],
+  "private_log_sha256": "a3f85a0392704d9bcbbf02653d67c6e8eb5a940c52d25449e931c46246783b73",
+  "parser_error": null,
+  "runner_script_sha256": "5de8a0d766d7dd1955cb279f224dce7ba0429cad1dc016a19b37382234eecbbf",
+  "scope": "Selected in-memory native Go format/parser/limit regressions.",
+  "real_device": false,
+  "virtualization_used": false
+}

@@ -1,0 +1,40 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/docx-text-mobile-revisions.png",
+      "sha256": "81c00f615e16f5f2c21856b2afc3af3473e79560cd09da427030146f65223104"
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-mobile-stories.png",
+      "sha256": "9978e7029eb8d9b52ef396fcf4d4b79267d5058ae243892b53c4ae06332be0a1"
+    },
+    {
+      "file": "docs/media/screenshots/docx-text-mobile-comparison.png",
+      "sha256": "0f537f914f8d9ac5e8801b240095e60e82e27db6d28fbe05a53422d9d537b50c"
+    }
+  ],
+  "recording": {
+    "name": "docx-text-mobile",
+    "frame_count": 33,
+    "duration_ms": 6896,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/docx-text-mobile/frames.json",
+    "manifest_sha256": "b00015706f96e640e2f98bf35fc065c8cf5c1f4c608c94a26b3d578731a20228"
+  },
+  "documents": [
+    {
+      "file_id": "d0057b53-5018-492c-b577-9b5a4406148e",
+      "version_id": "150d384b-9485-4c69-ac7c-b22b2b4f5546",
+      "extractor": "docx-v2",
+      "source_sha256": "8180f52611a4b2740122bec76938748abf42e8584f2ae081f3aea2fac09ba587",
+      "text_sha256": "c5072b4ebcc3c0e6ac0d63eb68f1027a9d1e854cc265872b237924b7d260202f"
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false
+}

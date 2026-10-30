@@ -26,6 +26,9 @@ func TextExtractorFor(mediaType string) string {
 	if base == xlsxMediaType || base == pptxMediaType {
 		return OfficeTextExtractor
 	}
+	if base == docxMediaType {
+		return DOCXTextExtractor
+	}
 	return TextExtractor
 }
 
@@ -65,6 +68,10 @@ func textFormat(mediaType string, size int64) (string, error) {
 // ExtractText accepts already hash-verified bounded bytes. It does no filesystem,
 // shell, network, macro, relationship or embedded-object execution.
 func ExtractText(ctx context.Context, mediaType string, body []byte) (string, error) {
+	return extractTextWith(ctx, mediaType, body, TextExtractorFor(mediaType))
+}
+
+func extractTextWith(ctx context.Context, mediaType string, body []byte, extractor string) (string, error) {
 	format, err := textFormat(mediaType, int64(len(body)))
 	if err != nil {
 		return "", err
@@ -73,6 +80,9 @@ func ExtractText(ctx context.Context, mediaType string, body []byte) (string, er
 		return "", err
 	}
 	if format == "docx" {
+		if extractor == DOCXTextExtractor {
+			return extractComplexDOCX(ctx, body)
+		}
 		return extractDOCX(ctx, body)
 	}
 	if format == "xlsx" {

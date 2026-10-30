@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T10:23:55.047Z",
+  "finished_at": "2026-10-30T10:24:09.308Z",
+  "checks": [
+    "Actual current-head search finds referenced DOCX comments, pins formal versions and does not duplicate legacy derivations.",
+    "Actual preview renders labeled revisions, table cells, referenced headers/footers/notes/comments, textboxes and inert field/cache evidence; the complete derived hash matches the API.",
+    "Actual selected-version comparison binds docx-v2 independently on both formal versions and keeps revision/layout limitations visible.",
+    "The authenticated secretary-source API consumes the same immutable DOCX derivation after source-object credentials are removed; this is not real-model acceptance."
+  ],
+  "source_count": 908,
+  "source_sha256": "4d5d7ac4efccd79fea70878dc54eb533062f0f810d02afbabc9c3248c51271b5",
+  "source_after_sha256": "4d5d7ac4efccd79fea70878dc54eb533062f0f810d02afbabc9c3248c51271b5",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "da5a5a2e4f2fd1f827e4324e5f073c6e255d01fbe4f6f5454097a5fb4b394741",
+    "source_sha256": "530737c678f56016d535cec80c5de78b3c13f7760bf5fea747c35a0ad91b281a",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "530737c678f56016d535cec80c5de78b3c13f7760bf5fea747c35a0ad91b281a",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "530737c678f56016d535cec80c5de78b3c13f7760bf5fea747c35a0ad91b281a",
+  "build_source_unchanged": true
+}

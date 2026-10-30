@@ -1,0 +1,23 @@
+{
+  "archived_at": "2026-10-30T10:36:31.721662+00:00",
+  "reason": "All executed application/client/browser checks and retained-byte checks passed. The new schema inventory assertion compared historical SQL plus two Go migration loader files with only current SQL files, correctly leaving the final overall check false. Correct the inventory to include every current migration-directory source file and rerun. Bound independent retained-blob hashing to eight threads with identical ordered Git identity checks; application/test inputs and run() are unchanged.",
+  "files": [
+    {
+      "file": "docs/quality/evidence/docx-text/attempts/02-schema-inventory/final-source-check.json",
+      "sha256": "c15957f2fd002c180c003d351815f8f08543a620d85a1d7de18d2b11dae29577"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/attempts/02-schema-inventory/source-manifest.json",
+      "sha256": "88d103d9a2677e3a0a868ae0f6fdb316df96b10eed07e3b0957a8c31988aa39b"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/attempts/02-schema-inventory/reused-evidence.json",
+      "sha256": "6aa31377dc0d1ca6bebcfaa947ba0cf23023f863f2e049f3fa5ab337ddf6b173"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/attempts/02-schema-inventory/verifier-before.py.txt",
+      "sha256": "5de8a0d766d7dd1955cb279f224dce7ba0429cad1dc016a19b37382234eecbbf"
+    }
+  ],
+  "accepted_as_current_pass": false
+}

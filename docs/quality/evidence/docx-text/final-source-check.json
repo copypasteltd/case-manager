@@ -1,0 +1,187 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T10:36:39.811143+00:00",
+  "verification_mode": "scoped_increment",
+  "increment": 123,
+  "checks": [
+    {
+      "name": "Source-bound executed check backend",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check extractors",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup docx-text-web",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup docx-text-mobile",
+      "passed": true
+    },
+    {
+      "name": "Actual screenshot and recording outputs retain declared hashes",
+      "passed": true
+    },
+    {
+      "name": "All affected visual outputs actually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Owned development services match current backend and preserve existing business records",
+      "passed": true
+    },
+    {
+      "name": "Both owned review ports are released",
+      "passed": true
+    },
+    {
+      "name": "All prior published proof/media bytes remain unchanged with honest retained scope",
+      "passed": true
+    },
+    {
+      "name": "Historical schema bytes unchanged and only declared new upgrades added",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture released",
+      "passed": true
+    },
+    {
+      "name": "Scope and platform acceptance are not replaced by focused checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "docx-text",
+  "interaction_source_sha256": "ed72f4574bdb81a726a7fa143738bd9e297478723337038cc36245fe2092422c",
+  "verification_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "configuration_sha256": "fbd8eec7d5d7baea0d55d1f4e224b44948dcfd8fb536ca7ed02a8c9ef7a142fb",
+  "records": [
+    {
+      "file": "docs/quality/evidence/docx-text/backend.json",
+      "sha256": "bfc0b51a92dc6de4e32b7bc19f4b9d389b9f9dae259dbc9a5f8130c92f3cd1a1"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/extractors.json",
+      "sha256": "0546dd0b82955e8dc9cf0dbcc9efc277e566269f27c1c9020a7d127891a63a02"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/web-tests.json",
+      "sha256": "1e283a7c5bf54d689e5fc331777600fa0b6152604de8d56892f7b08fa93c423c"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/mobile-tests.json",
+      "sha256": "5abec8ec7534c646f31119d43f523df186b44a80bb225c8ca4973c21d9862824"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/typecheck.json",
+      "sha256": "18298e526ac94f1aa3e44c4b6f50ff545ba07da27f4d18f54d542c452cc7cae7"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/web-build.json",
+      "sha256": "d1492eb49643ac891369883fb6c294c50acb5555074737ca74da7bc7d049142e"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/weapp-build.json",
+      "sha256": "0317d9f993d26868d3bc8ba7fa4127bb232669e0d0151e4920653e033e55ada4"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/douyin-build.json",
+      "sha256": "59ac6362a40ba9e17347b1b2e2ad24dc78ddcc4cd89e0273ab9f99577d49eee4"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/native-js-tests.json",
+      "sha256": "b49f42118aaa12d09cbbcd1103f744d0515b5eae9aca11973bfdffe2cc545ef1"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-web/result.json",
+      "sha256": "1c1c4fbd52a06889893f82c1854aef1034b0288e325cbf1c7d6adec39abd2782"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-web/source-manifest.json",
+      "sha256": "9ea1ab2424e6cb6c16d3d685558e41ffb1690176d9e27694422e1df2e3c6df17"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-web/media.json",
+      "sha256": "53ad501e2ea3f8996fab6327d69cdd2032c77151c05ad113d95cf9ecae85a940"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-mobile/result.json",
+      "sha256": "36d5f21ee8ec47b97f77b7774064fb248b148c70e7e13611113cb4b164076816"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-mobile/source-manifest.json",
+      "sha256": "8c026349f46515899be21c83e244f734a19c1bd15d995fb1152249ae080fb273"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text-mobile/media.json",
+      "sha256": "90c7f862e9e63b2303dc14e0068ad962d9c8a92413329cd75da2a21a94119a7c"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/media.json",
+      "sha256": "1457cf888b47a8c3a7fc82d2cfbc040115ed64c930b19821838faa0f2853f1a0"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/visual-review.json",
+      "sha256": "e77e2b9042a37edf73c71b26de51f139d97215f163b1326f4b5c127220e17b1d"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/development-update.json",
+      "sha256": "7adbed4639c650ef86c31ebd183c01063af5cfa39c92bbe3a84c8ae465aa33f6"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/development-project-resources.json",
+      "sha256": "a6c460425df336f28e44443e8fb0b10fc3eb7cb99839dd5b044369aa4ba8ebf3"
+    },
+    {
+      "file": "docs/quality/evidence/docx-text/development-runtime.json",
+      "sha256": "f7ff1e817cce9842b10f3a6c6007bf2d473bb074086aeb9cad1f9d1893fa2dee"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "fd71d5bd381b47266baee325e0fb3c09f9b978a3",
+    "original_files": 4960,
+    "original_media": 1250,
+    "original_git_object_manifest_sha256": "3aebb706c11c800481bd56319e6497de82a80194f9a2414eb300ffb448741b35",
+    "baseline_sha256": "4467599d069fe219ffae84455598bbf79274cdfaf0a0799c96102380befcb5d0",
+    "baseline_increment": 122,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "fixture_only_adjustment": null,
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}
