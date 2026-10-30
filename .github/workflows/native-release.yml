@@ -1,0 +1,54 @@
+name: Native release build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-release-build
+  cancel-in-progress: false
+
+jobs:
+  package:
+    if: github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, linux, x64, copypaste-release]
+    timeout-minutes: 180
+    steps:
+      - name: Close an attested prior test cluster before checkout cleanup
+        run: |
+          set -eu
+          if [ -f app/.local/ci-native/private/cluster.json ]; then
+            test -f app/scripts/native_ci_release.py
+            python3 app/scripts/native_ci_release.py --cleanup
+          fi
+      - name: Check out the selected immutable revision
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+          clean: true
+      - name: Native checks and sealed server package
+        env:
+          CP_CI_PG_BIN: ${{ vars.NATIVE_PG_BIN }}
+        run: |
+          set -eu
+          if [ -n "${CP_CI_PG_BIN:-}" ]; then
+            python3 app/scripts/native_ci_release.py --pg-bin "$CP_CI_PG_BIN"
+          else
+            python3 app/scripts/native_ci_release.py
+          fi
+      - name: Close the owned native test cluster
+        if: always() && hashFiles('app/scripts/native_ci_release.py') != ''
+        run: python3 app/scripts/native_ci_release.py --cleanup
+      - name: Upload only frozen artifacts and non-secret receipts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: copypaste-linux-amd64-${{ github.sha }}
+          path: |
+            app/.local/ci-native/artifacts/copypaste-linux-amd64.tar.gz
+            app/.local/ci-native/artifacts/manifest.sha256
+            app/.local/ci-native/artifacts/build.json
+            app/.local/ci-native/artifacts/ci.json
+          if-no-files-found: error
+          retention-days: 14

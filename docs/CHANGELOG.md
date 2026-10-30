@@ -1,5 +1,17 @@
 # 更新记录 / Changelog
 
+## 增量119 / Increment119 · 原生服务器发布工程 / Native server releases
+
+增量119新增原生服务器发布工程：准确清单与完整性校验、三个Linux程序／Web／独立运行器完整打包、版本化私有配置、维护入口、受管服务停止／结构升级／切换／就绪检查、同结构应用回退及中断处置，并提供手动原生CI工作流。
+
+Increment119 adds native server release engineering: exact inventories and integrity checks, three Linux executables plus Web/runtime packaging, versioned private configuration, maintenance gating, managed service stop/upgrade/switch/readiness, schema-compatible application rollback and interrupted-operation recovery, with a manual native CI workflow.
+
+业务源码保持已发布118，复用其完整回归和316份媒体的原证据；本轮不重录页面。新增发布工具测试与实际包检查另行记录。Windows使用明确的指针／进程测试替身，没有执行Linux链接、systemd、HTTPS或生产PG；真实Runner、正式发布产物及服务器验收仍GAP-24／25／26。23项待完成（14 P0／9 P1）、5项移出和八项draft Skill不变；仅AI费用控制移出。
+
+发布过程拒绝更换数据库、混入迁移身份、重复归档成员、错误摘要和过期当前版本；升级后失败保持维护入口，不能跨不匹配结构启动旧程序。40项准确源码测试与784文件／91项结构的实际包验证见独立记录；早期Windows权限、依赖元数据及路径排序问题保留原来源，不计最终通过。
+
+[设计](development/119-native-production-release.md) · [操作](operations/03-native-release-runbook.md) · [核验](quality/119-native-release-verification.md)
+
 ## 增量118 / Increment118 · 付款手续费依据 / Actual payment fees
 
 增量118已接通四端付款手续费依据：从实际资金列表选择已登记手续费付款和整条费用原分配，核对完整双币依据、准确版本与摘要，明确确认及MFA后保存。误关联通过独立撤销记录纠正；关联、撤销均不新增费用或现金，不改变原报表金额。

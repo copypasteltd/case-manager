@@ -1,0 +1,19 @@
+{
+  "counts_as_final_pass": false,
+  "tests": 4,
+  "failure_records_including_subtests": 11,
+  "errors": 0,
+  "source_and_log": [
+    {
+      "file": "app/.local/native-release119/permission-dsn-failure/source.zip",
+      "sha256": "017e611b6501f11202b90f0a6f0701416338567a19db2b465af0166144d39ce6"
+    },
+    {
+      "file": "app/.local/native-release119/permission-dsn-failure/tests.log",
+      "sha256": "5ef87c2f4f4e32ffce84a901a24185a3e852affb9707ab06b0c9cce41bd2a286"
+    }
+  ],
+  "native_posix_permissions_executed": false,
+  "windows_mode_result_is_not_linux_permission_acceptance": true,
+  "production_deployed": false
+}

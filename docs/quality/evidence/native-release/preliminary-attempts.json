@@ -1,0 +1,156 @@
+{
+  "counts_as_final_pass": false,
+  "initial_windows_failure": "WinError1314: native Windows symlink privilege unavailable; targeted failing replay and full four-file source snapshot preserved.",
+  "v1_tests": "27 passing unit checks at their original source; superseded by additional coverage and final code.",
+  "v1_build": "Three ELF builds and two JS builds completed; package validation rejected three public dependency metadata files. No sealed artifact or deployment claimed.",
+  "public_metadata_review": [
+    "app/node_modules/ajv/.runkit_example.js",
+    "app/node_modules/json-schema-traverse/.eslintrc.yml",
+    "app/node_modules/json-schema-traverse/spec/.eslintrc.yml"
+  ],
+  "records": [
+    {
+      "file": "app/.local/native-release-attempts/01-windows-symlink/source.zip",
+      "sha256": "e75bd160f0f4ae63d46226ab7aebdb6c797745b999718613d602be2490baac46"
+    },
+    {
+      "file": "app/.local/native-release-attempts/01-windows-symlink/targeted.log",
+      "sha256": "611a60505d8401ca3a63c47d6458ddb70db13a5059363313be94b627783315c1"
+    },
+    {
+      "file": "app/.local/native-release-attempts/01-windows-symlink/preservation.json",
+      "sha256": "d778747043445945a7f995b1a6ea32b9af9655d8f304253094411ebeb9ab59cb"
+    },
+    {
+      "file": "app/.local/production-release119/v1/source-before.json",
+      "sha256": "11a5e47a2cf6afdf90ed0926938103b123a03f1fa287c852addea4806d950bf7"
+    },
+    {
+      "file": "app/.local/production-release119/v1/source-before.zip",
+      "sha256": "31208307d386564f4fa7b001ae583a22a6c7c10e9841652e0f6ef4f195066687"
+    },
+    {
+      "file": "app/.local/native-release119/v1/source.zip",
+      "sha256": "9e1fb4f2ccb398ac40b4bf070471746bb8b504ff135ac2e1a2d8911f981c9ec8"
+    },
+    {
+      "file": "app/.local/native-release119/v1/tests.log",
+      "sha256": "29d57ea88ce1f97df15342a2714cd80f37a70cab5cf02e1a2895364caf0eea73"
+    },
+    {
+      "file": "app/.local/production-release119/v1/private-logs/agent-native.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/production-release119/v1/private-logs/platform.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/production-release119/v1/private-logs/runtime.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": "app/.local/production-release119/v1/private-logs/status-bridge.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/production-release119/v1/private-logs/web.log",
+      "sha256": "59d16a566b049ec9dd9f9b86c90fc7aae7b5a11f3c038d1e1760ab6131a4aff8"
+    },
+    {
+      "file": "app/.local/production-release119/v2/source-before.json",
+      "sha256": "92cb79a1ba6e40db9a7733b475a0aecc90cbd98c8e9245aad7fe3c89b5ed411e"
+    },
+    {
+      "file": "app/.local/production-release119/v2/source-before.zip",
+      "sha256": "6852da251019707c905343269a1eb2d2ad1be879cb3d85e5fd4b08db81f85e2e"
+    },
+    {
+      "file": "app/.local/production-release119/v2/package/release.json",
+      "sha256": "a0bbe6ab9848e00298015306249870ab859960fb6acdef355db6197a8216e37c"
+    },
+    {
+      "file": "app/.local/native-release119/v2/source.zip",
+      "sha256": "7048db14c38eb3a205b3b305b4fa0598bf23d62b07dcf6f5536a6fcdfc773e22"
+    },
+    {
+      "file": "app/.local/native-release119/v2/tests.log",
+      "sha256": "cda8f8a3081f837d72ed10a8e881728a325250463f8fbf58f46a4b2a8554bfa3"
+    },
+    {
+      "file": "app/.local/production-release119/v2/private-logs/agent-native.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/production-release119/v2/private-logs/platform.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/production-release119/v2/private-logs/runtime.log",
+      "sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    },
+    {
+      "file": "app/.local/production-release119/v2/private-logs/status-bridge.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/production-release119/v2/private-logs/web.log",
+      "sha256": "8f53671a8dc47af1bbaa8ae478d7aad678462fe6b3463f93e6b434b4dc4389ca"
+    },
+    {
+      "file": "app/.local/native-release119/v3/source.zip",
+      "sha256": "9e549632d9d0b13b0127f25151d1fc7d7a74369fd0b24dc39b36f7964c31f3f3"
+    },
+    {
+      "file": "app/.local/native-release119/v3/tests.log",
+      "sha256": "4e8fb8dbf106013ec9286a73c65171b1c51434ad63d2222caa42a5b53101cf11"
+    },
+    {
+      "file": "app/.local/production-release119/v3/build.json",
+      "sha256": "a33ade788ba99ceb6fec2bc011295e111779cfd2f89ff5e3d3319e7264326d1e"
+    },
+    {
+      "file": "app/.local/native-release119/v4/final-proof.json",
+      "sha256": "1621aa41a40f727ef0f592da95f820eec64ca0c3f4de611e0c159ece9daa5d95"
+    },
+    {
+      "file": "docs/quality/evidence/native-release/journal-interruption-attempt.json",
+      "sha256": "4581b16fb8f562936a381a8f04ffaca1ec88dc075545349174a87ea7af728d59"
+    },
+    {
+      "file": "app/.local/native-release119/journal-failure/source.zip",
+      "sha256": "d6079decb6f39db971612f7358c13cdaf4ceeff89e065a608d8b911731d2e2a2"
+    },
+    {
+      "file": "app/.local/native-release119/journal-failure/tests.log",
+      "sha256": "fbcd584b1370ad5c39615d08ec76b60f370cb00389b3e3e98a8cc4df8ccdcdff"
+    },
+    {
+      "file": "docs/quality/evidence/native-release/permission-dsn-attempt.json",
+      "sha256": "10452d392141cb45d18b18e9f99181966c5027c2d42919a85996af4657c06649"
+    },
+    {
+      "file": "app/.local/native-release119/permission-dsn-failure/source.zip",
+      "sha256": "017e611b6501f11202b90f0a6f0701416338567a19db2b465af0166144d39ce6"
+    },
+    {
+      "file": "app/.local/native-release119/permission-dsn-failure/tests.log",
+      "sha256": "5ef87c2f4f4e32ffce84a901a24185a3e852affb9707ab06b0c9cce41bd2a286"
+    },
+    {
+      "file": "app/.local/native-release119/v5/verification.json",
+      "sha256": "615ef09fbe2cc5f6af20ed6422fcfc5e36c36a38432a42872e234ccd301cea02"
+    },
+    {
+      "file": "app/.local/native-release119/v5/repository-check.json",
+      "sha256": "cb669b154f22f455d8235b46e5ae9a0aa5d85cb00bc91db67881d81b5846d972"
+    }
+  ],
+  "v2_tests": "31 passing unit tests at their exact source; superseded by canonical cross-platform path order regression.",
+  "v2_build": "31 unit checks passed and five native builds completed; Windows Path ordering differed from canonical POSIX member ordering. No sealed artifact or deployment claimed.",
+  "v3_final_proof_attempt": "The first final proof inspected the archive but failed while encoding a relative build-record path. Final proof was not written; the exact verifier is retained in the v3 test source ZIP. Production build inputs and archive are unchanged by the path-normalization repair.",
+  "v4_prior_pass": "32 exact-source checks and19 archive/proof checks passed before the new event/pending interruption tests. These remain true for their prior source and archive, but are superseded by the final journal repair.",
+  "journal_failure": "Four new interruption/integrity cases failed on the preceding controller before repair. Exact source and actual raw output are retained; these failures are not counted as final passes.",
+  "v5_prior_pass": "36 exact-source checks,19 archive checks and26 candidate publication checks passed before the final directory-mode and libpq-identity repairs; all retained at their original exact source, not current pass credit.",
+  "permission_and_connection_review": "Source inspection found restrictive CLI umask affecting new public ancestor directories. Windows cannot establish POSIX permission enforcement. New URI tests actually reproduce encoded-role and query-override identity failures; preserved raw output includes failing subtests."
+}
