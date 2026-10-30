@@ -113,7 +113,7 @@ func (s *Service) List(ctx context.Context, a core.Actor, kind string, f Filter)
 	if kind == "purchase" {
 		stages = append(stages, "ordering", "receiving", "cancelled", "completed")
 	}
-	if !ValidKind(kind) || len([]rune(f.Query)) > 200 || !slices.Contains(stages, f.Lifecycle) || !slices.Contains([]string{"", "not_submitted", "in_review", "approved", "returned", "rejected", "withdrawn"}, f.ApprovalState) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) {
+	if !ValidKind(kind) || len([]rune(f.Query)) > 200 || !slices.Contains(stages, f.Lifecycle) || !slices.Contains([]string{"", "not_submitted", "in_review", "approved", "returned", "rejected", "withdrawn"}, f.ApprovalState) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) || (f.CompanyOnly && f.ProjectID != nil) {
 		return out, core.Invalid("filter", "申请筛选无效")
 	}
 	if f.Limit < 1 || f.Limit > 100 {
@@ -124,6 +124,9 @@ func (s *Service) List(ctx context.Context, a core.Actor, kind string, f Filter)
 		project = *f.ProjectID
 	}
 	bound := binding(a, fmt.Sprint(kind, "/", f.Query, "/", f.Lifecycle, "/", f.ApprovalState, "/", project))
+	if f.CompanyOnly {
+		bound += "/company-only"
+	}
 	var at *time.Time
 	var id *string
 	if f.Cursor != "" {
@@ -136,8 +139,8 @@ func (s *Service) List(ctx context.Context, a core.Actor, kind string, f Filter)
 	}
 	rows, err := s.DB.Query(ctx, "SELECT "+columns+currentJoin+`WHERE d.org_id=$1 AND d.kind=$2 AND d.deleted_at IS NULL AND ($3='' OR d.lifecycle=$3)
         AND ($4='' OR d.approval_state=$4) AND ($5='' OR position(lower($5) IN lower(r.title))>0 OR position(lower($5) IN lower(d.document_no))>0)
-        AND ($6::uuid IS NULL OR d.project_id=$6) AND can_access(d.org_id,$7,d.kind||'.read',d.kind,d.id,d.project_id,d.creator_id,d.classification,$8,$9)
-        AND ($10::timestamptz IS NULL OR (d.updated_at,d.id)<($10,$11::uuid)) ORDER BY d.updated_at DESC,d.id DESC LIMIT $12`, a.OrgID, kind, f.Lifecycle, f.ApprovalState, f.Query, f.ProjectID, a.UserID, a.Channel, a.RunID != "", at, id, f.Limit+1)
+        AND ($6::uuid IS NULL OR d.project_id=$6) AND (NOT $13 OR d.project_id IS NULL) AND can_access(d.org_id,$7,d.kind||'.read',d.kind,d.id,d.project_id,d.creator_id,d.classification,$8,$9)
+        AND ($10::timestamptz IS NULL OR (d.updated_at,d.id)<($10,$11::uuid)) ORDER BY d.updated_at DESC,d.id DESC LIMIT $12`, a.OrgID, kind, f.Lifecycle, f.ApprovalState, f.Query, f.ProjectID, a.UserID, a.Channel, a.RunID != "", at, id, f.Limit+1, f.CompanyOnly)
 	if err != nil {
 		return out, err
 	}

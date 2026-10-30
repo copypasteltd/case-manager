@@ -24,7 +24,11 @@ func (s *Server) contractRoutes(mux *http.ServeMux) {
 		if err != nil {
 			return nil, err
 		}
-		return service.List(ctx, a, contracts.Filter{Query: r.URL.Query().Get("q"), Lifecycle: r.URL.Query().Get("lifecycle"), Trashed: trashed, ProjectID: project, Cursor: f.Cursor, Limit: f.Limit})
+		company, err := queryBoolean(r, "company_only")
+		if err != nil {
+			return nil, err
+		}
+		return service.List(ctx, a, contracts.Filter{CompanyOnly: company, Query: r.URL.Query().Get("q"), Lifecycle: r.URL.Query().Get("lifecycle"), Trashed: trashed, ProjectID: project, Cursor: f.Cursor, Limit: f.Limit})
 	}))
 	mux.HandleFunc("GET /v1/contracts/{id}", read(s, "ContractResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.Get(ctx, a, r.PathValue("id"))

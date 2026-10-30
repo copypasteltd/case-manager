@@ -21,7 +21,11 @@ func (s *Server) spendRoutes(mux *http.ServeMux) {
 			if v := r.URL.Query().Get("project_id"); v != "" {
 				project = &v
 			}
-			return service.List(ctx, a, kind, spend.Filter{Query: r.URL.Query().Get("q"), Lifecycle: r.URL.Query().Get("lifecycle"), ApprovalState: r.URL.Query().Get("approval_state"), ProjectID: project, Cursor: f.Cursor, Limit: f.Limit})
+			company, err := queryBoolean(r, "company_only")
+			if err != nil {
+				return nil, err
+			}
+			return service.List(ctx, a, kind, spend.Filter{CompanyOnly: company, Query: r.URL.Query().Get("q"), Lifecycle: r.URL.Query().Get("lifecycle"), ApprovalState: r.URL.Query().Get("approval_state"), ProjectID: project, Cursor: f.Cursor, Limit: f.Limit})
 		}))
 		mux.HandleFunc("GET "+path+"/{id}", read(s, "SpendResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 			return service.Get(ctx, a, kind, r.PathValue("id"))

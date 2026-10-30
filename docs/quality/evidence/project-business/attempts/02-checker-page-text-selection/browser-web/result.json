@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T11:21:03.067Z",
+  "finished_at": "2026-10-30T11:21:19.722Z",
+  "checks": [],
+  "source_count": 880,
+  "source_sha256": "762ee7eada2b45510e545c1538bbeac411da75878e46c6339805f1e35d77325e",
+  "source_after_sha256": "762ee7eada2b45510e545c1538bbeac411da75878e46c6339805f1e35d77325e",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "page.innerText: selector: expected string, got undefined",
+  "failure_stack": "page.innerText: selector: expected string, got undefined\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_project_business.mjs:50:91\n    at async recordViewport (D:\\dev\\copypasted\\内部管理\\app\\scripts\\project_business_recording.mjs:43:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_business.mjs:27:21\n    at async workbenchBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\workbench_browser_common.mjs:48:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_business.mjs:11:1",
+  "failure_context": {
+    "pathname": "/contracts",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "workbench_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "8d5d88af97a7ca3da043b8ea051aec71e91e544ebbf5b280d8334b07f4599da5",
+    "source_sha256": "6b9d570bd2cb6b7985a15fd6a2b1b5942da7138239775e81829bb7bc5dfbf4f2",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "6b9d570bd2cb6b7985a15fd6a2b1b5942da7138239775e81829bb7bc5dfbf4f2",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "6b9d570bd2cb6b7985a15fd6a2b1b5942da7138239775e81829bb7bc5dfbf4f2",
+  "build_source_unchanged": true
+}

@@ -127,6 +127,7 @@ type Revision struct {
 	CreatedAt                   time.Time          `json:"created_at"`
 }
 type Filter struct {
+	CompanyOnly                             bool
 	Query, ApprovalState, Lifecycle, Cursor string
 	ProjectID                               *string
 	Limit                                   int

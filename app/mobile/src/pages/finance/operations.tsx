@@ -1,3 +1,4 @@
+import { businessProjectID, checkedBusinessContext, type ProjectBusinessContext } from '@copypaste/contracts/project-business';
 import { Text, View } from '@tarojs/components';
 import Taro, { useRouter } from '@tarojs/taro';
 import { useState } from 'react';
@@ -29,12 +30,19 @@ export function FinanceOperationPage() {
     if (action !== 'create') { value = await client.request<FinancialRecord>(financialRoutes[kind] + '/' + identifier(params.id), { scope }); if (!financialRecordReceipt(value, kind) || value.id !== params.id) throw new Error('财务记录与所选依据不一致。'); }
     if (params.refund) { if (kind !== 'payment' || action !== 'create') throw new Error('退款入口无效。'); refund = await client.request<Schemas['Payment']>('/payments/' + identifier(params.refund), { scope }); if (refund.id !== params.refund || refund.state !== 'recorded' || refund.direction !== 'outgoing' || refund.record_kind !== 'payment') throw new Error('请选择已登记的原支出资金。'); }
     if (!refund && kind === 'payment' && value && 'refund_of_id' in value && value.refund_of_id) refund = await client.request<Schemas['Payment']>('/payments/' + identifier(value.refund_of_id), { scope });
-    return { kind, action, value, refund };
+    let initialProject;
+    if (action === 'create' && params.project_id !== undefined) {
+      if (refund) throw new Error('退款不得替换原资金项目。');
+      const id = businessProjectID(params.project_id), context = checkedBusinessContext(await client.request<ProjectBusinessContext>('/projects/' + id + '/business-context', { scope }), id);
+      if (!context.capabilities.find(item => item.kind === (kind === 'cost' ? 'costs' : 'payments'))?.can_create) throw new Error('当前项目不允许新建此财务业务。');
+      initialProject = context.project;
+    }
+    return { kind, action, value, refund, initialProject };
   });
   const state = page.result?.value, me = page.result?.me;
   function committed(value: FinancialRecord) { if (state) void Taro.redirectTo({ url: '/pages/finance/index?kind=' + state.kind + '&id=' + identifier(value.id) }); }
   function cancel() { if (state?.value) committed(state.value); else void Taro.navigateBack().catch(() => Taro.reLaunch({ url: '/pages/home/index' })); }
-  return <Page title={state ? names[state.action] : '财务操作'} home><Notice error={page.error} />{page.loading ? <Busy /> : state && me && (financialCan(state.kind, state.action, state.value, me.actions) ? state.action === 'create' || state.action === 'edit' ? <FinancialEditor key={state.value?.id + ':' + state.value?.version + ':' + state.refund?.id} kind={state.kind} value={state.value} refund={state.refund} me={me} onCommitted={committed} onCancel={cancel} /> : state.value && <FinancialTransition key={state.value.id + ':' + state.value.version + ':' + state.action} kind={state.kind} value={state.value} action={state.action} me={me} onCommitted={committed} onCancel={cancel} /> : <Empty>当前权限或业务状态不允许此操作，请返回并核对最新资料。</Empty>)}</Page>;
+  return <Page title={state ? names[state.action] : '财务操作'} home><Notice error={page.error} />{page.loading ? <Busy /> : state && me && (financialCan(state.kind, state.action, state.value, me.actions) ? state.action === 'create' || state.action === 'edit' ? <FinancialEditor key={state.value?.id + ':' + state.value?.version + ':' + state.refund?.id} kind={state.kind} value={state.value} refund={state.refund} initialProject={state.initialProject} me={me} onCommitted={committed} onCancel={cancel} /> : state.value && <FinancialTransition key={state.value.id + ':' + state.value.version + ':' + state.action} kind={state.kind} value={state.value} action={state.action} me={me} onCommitted={committed} onCancel={cancel} /> : <Empty>当前权限或业务状态不允许此操作，请返回并核对最新资料。</Empty>)}</Page>;
 }
 
 type Picking = 'business' | 'claim' | 'cost' | 'allocation' | 'refund';

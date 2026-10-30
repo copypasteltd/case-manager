@@ -1,0 +1,69 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/project-business-web-hub.png",
+      "sha256": "9588e16dfde1c94e45511529f53fdd7b94389778cf3f5999c2509d5dcfb4a4c3"
+    },
+    {
+      "file": "docs/media/screenshots/project-business-web-draft.png",
+      "sha256": "6ef2a07404d6e18bb04534e10707a94912afbdfb1d56496287d1107cc92ae58a"
+    },
+    {
+      "file": "docs/media/screenshots/project-business-web-subscription.png",
+      "sha256": "47c6d0ee6db2ff52c44a18c8b3bbbb9ee470410bd9f8aa08ea7c62765a8ca13b"
+    }
+  ],
+  "recording": {
+    "name": "project-business-web",
+    "frame_count": 65,
+    "duration_ms": 19157,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/project-business-web/frames.json",
+    "manifest_sha256": "a0795e2a9334c9471751e3314498ef1a0b74cc381ef723275497a1bef1d0afe9"
+  },
+  "created": [
+    {
+      "kind": "contracts",
+      "id": "dbb9edad-f59d-4485-9552-49c9a42eb49e",
+      "project_id": "00f733c5-2f52-4fc7-b838-1c0ecc342057",
+      "current_revision_id": "8f9b7ee5-6bbd-4cc4-a175-09e1805020d6"
+    },
+    {
+      "kind": "purchases",
+      "id": "7ff1db8e-0b38-4603-a5a6-e9a2af981796",
+      "project_id": "00f733c5-2f52-4fc7-b838-1c0ecc342057",
+      "current_revision_id": "d80f53a2-faab-477f-8412-3a3d3b72874d"
+    },
+    {
+      "kind": "claims",
+      "id": "0780f0ee-2104-4d0b-b083-bdaba53e86c4",
+      "project_id": "00f733c5-2f52-4fc7-b838-1c0ecc342057",
+      "current_revision_id": "0f85a779-fa0c-430b-9ec9-2977868517ae"
+    },
+    {
+      "kind": "costs",
+      "id": "9397f774-07ec-4c26-8cfb-af255bc62f69",
+      "project_id": "00f733c5-2f52-4fc7-b838-1c0ecc342057",
+      "current_revision_id": "ce9f149c-e055-459b-8114-2581623c69b2"
+    },
+    {
+      "kind": "payments",
+      "id": "ba95185c-d75d-4b4a-82db-17e58ca1c945",
+      "project_id": "00f733c5-2f52-4fc7-b838-1c0ecc342057",
+      "current_revision_id": "ec743983-c896-46b6-bc93-17c853933181"
+    },
+    {
+      "kind": "subscriptions",
+      "id": "3a7316d4-5dd7-479b-8b4a-ed98749fa0fb",
+      "project_id": "00f733c5-2f52-4fc7-b838-1c0ecc342057",
+      "current_revision_id": "8aeb3b35-2d37-4c92-9211-40e55892c852"
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false
+}

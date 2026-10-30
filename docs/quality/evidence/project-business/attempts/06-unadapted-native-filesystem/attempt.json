@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "reason": "Unadapted native filesystem operations timed out even with a clean environment. Earlier parent-npx hypothesis was disproved: the parent is not npx and has no NODE_OPTIONS/NODE_PATH. Config loading itself passed. Reuse the published121 bundle adapter including its exact native checkout filesystem bridge and generated-output exclusions; do not change application source or old evidence.",
+  "parent_npx_hypothesis_verified": false,
+  "application_source_changed": false,
+  "accepted_as_current": false,
+  "direct_bundle_probe_accepted": false
+}

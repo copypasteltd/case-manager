@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "reason": "Concurrent native compilation/backend work coincided with five 5000ms Web test timeouts, not assertion failures. Preserve results and rerun the unchanged Web suite after native compilation. A separate earlier read-only development observation saw one still-running synthetic test database; recheck after all fixtures close. No test timeout or application source is relaxed.",
+  "accepted_as_current": false,
+  "web_timeouts": 5,
+  "application_source_changed": false
+}

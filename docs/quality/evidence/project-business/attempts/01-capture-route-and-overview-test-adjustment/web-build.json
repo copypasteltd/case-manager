@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "id": "web-build",
+  "started_at": "2026-10-30T11:18:11.637486+00:00",
+  "finished_at": "2026-10-30T11:18:48.918747+00:00",
+  "elapsed_seconds": 37.28,
+  "command": [
+    "npm",
+    "run",
+    "build:web"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "exit",
+  "source_sha256": "617a1902e026f6b522cfd81c62f5ec6adb8abbd4f687435b7bd280ce84758752",
+  "source_after_sha256": "617a1902e026f6b522cfd81c62f5ec6adb8abbd4f687435b7bd280ce84758752",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "263c24d15877c95a15ee71d15d0e010762f7260f098de1714f5eb58674030686",
+  "parser_error": null,
+  "runner_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "scope": "Current React/Vite Web compilation.",
+  "real_device": false,
+  "virtualization_used": false
+}

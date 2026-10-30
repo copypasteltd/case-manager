@@ -128,6 +128,7 @@ type Event struct {
 	CreatedAt  time.Time `json:"created_at"`
 }
 type Filter struct {
+	ProjectRecords                                     bool
 	Query, State, Currency, Category, From, To, Cursor string
 	ProjectID                                          *string
 	CompanyOnly                                        bool

@@ -12,8 +12,10 @@ import { semantic } from '../../platform/components';
 import { ChoiceList, FileChoice, PartyChoice, SelectField, TextField } from './controls';
 
 type Picking = 'project' | 'owner' | 'parent' | 'counterparty' | 'body' | 'candidate' | 'quote' | { supplier: string } | { receipt: string };
-export function BusinessEditor({ kind, value, me, onCommitted, onCancel }: { kind: BusinessKind; value?: Business; me: Schemas['Me']; onCommitted(value: Business): void; onCancel(): void }) {
-  const draft = useFormDraft(me, { kind: ('business-' + kind) as 'business-contract' | 'business-purchase' | 'business-claim', id: value?.id ?? 'new-' + kind, version: value?.version ?? 1 }, 'save', { business: businessInput(kind, value, me.user.id) });
+export function BusinessEditor({ kind, value, initialProject, me, onCommitted, onCancel }: { kind: BusinessKind; value?: Business; initialProject?: Schemas['Project']; me: Schemas['Me']; onCommitted(value: Business): void; onCancel(): void }) {
+  const initial = businessInput(kind, value, me.user.id);
+  if (!value && initialProject) Object.assign(initial, { project: initialProject.id, classification: initialProject.classification });
+  const draft = useFormDraft(me, { kind: ('business-' + kind) as 'business-contract' | 'business-purchase' | 'business-claim', id: value?.id ?? 'new-' + kind + ':' + (initialProject?.id ?? 'all'), version: value?.version ?? 1 }, 'save', { business: initial });
   const input = draft.fields.business!, [evidence, setEvidence] = useState(() => businessEvidence(value));
   const project = useRecord<Schemas['Project']>(input.project && me.actions.includes('project.read') ? '/projects/' + input.project : null);
   const parent = useRecord<Schemas['Contract']>(input.parent ? '/contracts/' + input.parent : null);
@@ -40,7 +42,7 @@ export function BusinessEditor({ kind, value, me, onCommitted, onCancel }: { kin
     focusTimer.current = setTimeout(() => { void Taro.pageScrollTo({ selector: '#oa-' + issue.path, duration: 150 }).catch(() => {}); }, 30);
   }
   function save() {
-    if (disabled) return;
+    if (disabled || initialProject && input.project !== initialProject.id) return;
     const errors = businessIssues(input); setIssues(errors); setValidation(true);
     if (errors.length) { locate(errors[0]); return; }
     if (evidence.unresolved) return;
@@ -89,9 +91,9 @@ export function BusinessEditor({ kind, value, me, onCommitted, onCancel }: { kin
     <Section title='基本资料'><View className='cp-pad'>
       {text('title', businessNames[kind] + '标题')}{text('category', '业务类别', 50)}
       {!value ? <><View id='oa-project'><Fact label='关联项目'><Text>{input.project ? project.value?.name ?? '已选择项目，当前名称尚未取得' : '公司事项'}</Text><Text className='cp-muted cp-small'>变更项目或分类会清除已选往来方与文件依据。</Text></Fact></View><Notice error={project.error} />
-        {me.actions.includes('project.read') && <Action secondary disabled={disabled || !!input.parent} onClick={() => setPicking('project')}>选择关联项目</Action>}
-        {input.project && <Action secondary disabled={disabled || !!input.parent} onClick={() => scope({ project: '', parent: '', classification: level === 'project_restricted' ? 'internal' : level })}>改为公司事项</Action>}
-        <SelectField label='资料分类' value={input.classification} options={input.project ? [['internal', '公司内部'], ['project_restricted', '项目受限'], ['confidential', '机密']] : [['internal', '公司内部'], ['confidential', '机密']]} disabled={disabled || !!input.parent} onChange={classification => scope({ classification })} />
+        {!initialProject && me.actions.includes('project.read') && <Action secondary disabled={disabled || !!input.parent} onClick={() => setPicking('project')}>选择关联项目</Action>}
+        {!initialProject && input.project && <Action secondary disabled={disabled || !!input.parent} onClick={() => scope({ project: '', parent: '', classification: level === 'project_restricted' ? 'internal' : level })}>改为公司事项</Action>}
+        <SelectField label='资料分类' value={input.classification} options={input.project ? [['internal', '公司内部'], ['project_restricted', '项目受限'], ['confidential', '机密']] : [['internal', '公司内部'], ['confidential', '机密']]} disabled={disabled || !!input.parent || !!initialProject} onChange={classification => scope({ classification })} />
         {kind === 'contract' && <><Fact label='补充协议归属'><Text>{input.parent ? (parent.value?.title ?? '已选主合同，当前名称尚未取得') + '；继承其项目与分类' : '独立合同'}</Text></Fact><Notice error={parent.error} /><Action secondary disabled={disabled} onClick={() => setPicking('parent')}>选择主合同，起草补充协议</Action>{input.parent && <Action secondary disabled={disabled} onClick={() => scope({ parent: '' })}>取消主合同关联</Action>}</>}
       </> : <Text className='cp-muted cp-small cp-paragraph'>此业务的项目归属与资料分类保持创建时的记录。</Text>}
       <View id='oa-owner'><Fact label='业务负责人'><Text>{input.owner === me.user.id ? me.user.display_name + '（本人）' : input.owner ? '已指定负责人' : '尚未指定'}</Text></Fact></View>

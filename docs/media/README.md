@@ -1,5 +1,16 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量124 / Increment124：实际项目六类业务新建、固定项目列表和移动账期免付结果。MP4为登录后实际视口录制，包含真实加载／导航状态；移动免付在录像结束后完成，避免录入MFA，结果显示在第三张截图和GIF中。Web入口截图捕获了权限加载瞬间，后续入口可用及新建操作由实际录像与检查记录证明。GIF为三张实际截图的导览，每张2秒，不是实时录屏。
+
+| 客户端 / Client | 项目入口 / Hub | 费用草稿 / Draft | 订阅／账期结果 / Result | 录屏 / Recording | 截图导览 / Tour |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/project-business-web-hub.png) | [PNG](screenshots/project-business-web-draft.png) | [PNG](screenshots/project-business-web-subscription.png) | [MP4](videos/project-business-web.mp4) | [GIF](gifs/project-business-web.gif) |
+| Taro H5 | [PNG](screenshots/project-business-mobile-hub.png) | [PNG](screenshots/project-business-mobile-draft.png) | [PNG](screenshots/project-business-mobile-subscription.png) | [MP4](videos/project-business-mobile.mp4) | [GIF](gifs/project-business-mobile.gif) |
+
+[实际检查 / Checks](../quality/124-project-business-verification.md)
+
+## 已发布历史 / Published history
+
 增量123 / Increment123：真实合成 DOCX 的修订／表格、引用部件和准确版本比较。MP4 为登录后实际视口录屏；GIF 为三张实际截图的明确导览，每张2秒，非实时录屏。仅隔离合成数据，无真实云／模型／设备验收声明。
 
 | 客户端 / Client | 修订 / Revisions | 引用部件 / Stories | 比较 / Comparison | 录屏 / Recording | 截图导览 / Tour |

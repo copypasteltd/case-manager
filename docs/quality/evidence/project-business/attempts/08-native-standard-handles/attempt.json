@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "The JS-only wrapper did not forward explicit standard handles with CREATE_NO_WINDOW, unlike the published native builder. Its native child emitted no compiler log and was stopped with its owned descendants after ten minutes. Forward real stdout/stderr explicitly and rerun; no application code, compiler resolver or test assertions changed. Backend94 passed with the prior helper and is preserved as superseded source.",
+  "accepted_as_current": false,
+  "application_source_changed": false
+}

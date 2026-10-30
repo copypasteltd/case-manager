@@ -22,7 +22,14 @@ func costFilter(r *http.Request) (finance.Filter, error) {
 		project = &id
 	}
 	q := r.URL.Query()
-	return finance.Filter{Query: q.Get("q"), State: q.Get("state"), Currency: q.Get("currency"), Category: q.Get("category"), From: q.Get("from"), To: q.Get("to"), Cursor: f.Cursor, Limit: f.Limit, ProjectID: project, CompanyOnly: company}, nil
+	projectRecords, e := queryBoolean(r, "project_records")
+	if e != nil {
+		return finance.Filter{}, e
+	}
+	if q.Has("project_records") && (project == nil || company || (r.URL.Path != "/v1/costs" && r.URL.Path != "/v1/payments")) {
+		return finance.Filter{}, core.Invalid("project_records", "项目记录查询仅适用于指定项目的费用或资金列表，不适用于金额报表")
+	}
+	return finance.Filter{Query: q.Get("q"), State: q.Get("state"), Currency: q.Get("currency"), Category: q.Get("category"), From: q.Get("from"), To: q.Get("to"), Cursor: f.Cursor, Limit: f.Limit, ProjectID: project, CompanyOnly: company, ProjectRecords: projectRecords}, nil
 }
 func (s *Server) costRoutes(mux *http.ServeMux) {
 	s.financeReportRoutes(mux)

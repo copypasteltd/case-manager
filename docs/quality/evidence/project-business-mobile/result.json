@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T11:26:13.101Z",
+  "finished_at": "2026-10-30T11:27:02.577Z",
+  "checks": [
+    "Actual Taro H5 project contracts creation retains scope/classification, creates an immutable draft and returns to the filtered list.",
+    "Actual Taro H5 project purchases creation retains scope/classification, creates an immutable draft and returns to the filtered list.",
+    "Actual Taro H5 project claims creation retains scope/classification, creates an immutable draft and returns to the filtered list.",
+    "Actual Taro H5 project costs creation retains scope/classification, creates an immutable draft and returns to the filtered list.",
+    "Actual Taro H5 project payments creation retains scope/classification, creates an immutable draft and returns to the filtered list.",
+    "Actual Taro H5 project subscriptions creation retains scope/classification, creates an immutable draft and returns to the filtered list.",
+    "Six new business drafts and the period operation do not invent incurred money or cash.",
+    "Actual mobile MFA-backed period waiver preserves the original forecast, immutable event and empty actual-cost facts."
+  ],
+  "source_count": 914,
+  "source_sha256": "c10e1453f0372f8c752482a2a8b0f7ace570a70aaf79e057e108bbb0bc0f9c2b",
+  "source_after_sha256": "c10e1453f0372f8c752482a2a8b0f7ace570a70aaf79e057e108bbb0bc0f9c2b",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "8d5d88af97a7ca3da043b8ea051aec71e91e544ebbf5b280d8334b07f4599da5",
+    "source_sha256": "561e197580c4a416da4030e2b4f08484aab253ce7470b72b2e9b96b5c69391f8",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "561e197580c4a416da4030e2b4f08484aab253ce7470b72b2e9b96b5c69391f8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "561e197580c4a416da4030e2b4f08484aab253ce7470b72b2e9b96b5c69391f8",
+  "build_source_unchanged": true
+}

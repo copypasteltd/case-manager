@@ -1,5 +1,31 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+增量124推进六类业务连续操作：项目 → 合同／采购／报销／实际费用／实际资金／订阅 → 固定项目新建 → 保存草稿 → 返回项目查询。费用与资金的项目草稿现在可被找到；金额报表继续按实际分摊计算，保存草稿不会产生支出或付款。
+
+共享移动页面补齐订阅新建修订、启用／暂停／恢复／取消、供应方核实、调价、生成账期、异常账期、归档／历史恢复，以及账期关联费用、人工核对、免付／作废／重开和固定历史。敏感操作重新验证本人，内部订阅状态与供应方实际停扣分别记录。
+
+使用：打开项目业务概览 → 选择对应业务的新建或查询入口；从订阅详情进入管理操作，从账期详情关联准确费用与凭证。查看全部记录时明确“退出项目范围”。本轮更新实际应用代码，无新增数据库结构，继续schema94。
+
+[设计及操作细节](docs/development/124-project-business-journeys.md) · [实际检查与构建边界](docs/quality/124-project-business-verification.md) · [全部23项待完成](docs/delivery/03-goal-gap-assessment.md)
+
+![项目内费用草稿](docs/media/screenshots/project-business-web-draft.png)
+
+[Web实际录屏](docs/media/videos/project-business-web.mp4) · [移动页面实际录屏](docs/media/videos/project-business-mobile.mp4) · [移动截图导览GIF](docs/media/gifs/project-business-mobile.gif)
+
+Web339项、共享移动434项、选定原生HTTP／PG94条结果及当前四端类型／编译检查见验证记录。MP4录制六类新建；移动账期免付在录屏结束后操作，结果见截图／GIF。仍23项工作包开放（14 P0／9 P1），5项移出；完整公司规则与真实云／模型／平台／生产验收继续登记。
+
+Increment124 connects six project business journeys: open the project, create a contract/purchase/claim/cost/payment/subscription draft, save, then return to the same filtered collection. Project-owned unallocated finance drafts are discoverable; reports still value actual allocations. A saved draft does not create incurred expense or bank cash.
+
+Shared mobile pages now support subscription creation/editing, lifecycle and vendor checks, prices, period generation, unexpected periods, archive/history restoration, cost linking, human period review, waiver/void/reopen and immutable history. Sensitive commands require fresh MFA; internal forecasts, vendor state, costs and bank payments remain separate.
+
+Usage: project overview → business actions → create or view a collection. Open subscription details for management and period details for exact cost/evidence review. Explicitly leave the project scope to see all readable records. This changes application code, using unchanged schema94.
+
+[Design and usage](docs/development/124-project-business-journeys.md) · [Executed checks and build scope](docs/quality/124-project-business-verification.md) · [All23 remaining packages](docs/delivery/03-goal-gap-assessment.md)
+
+Current checks cover339 Web,434 portable mobile and94 selected native HTTP/PG result records, workspace types and current Web/mini-program/Android JavaScript compilation. The Android bundle uses the published four-worker Metro Windows filesystem adapter with the native no-Expo guard; it is not an APK. MP4s record six-module creation; the MFA-backed mobile period waiver happens after recording and appears in the result screenshot/GIF. Prior121 full regression/runtime/APK keep their original source binding. All23 packages and five exclusions remain open/explicit; local partial checks do not establish production readiness.
+
+## 已发布历史 / Published history
+
 增量123已接通复杂 Word 的正文链路：表格、引用页眉页脚、脚注尾注、批注、文本框、文字修订和字段缓存进入固定版本的预览、检索、比较与秘书资料读取。插入／删除／移动保留标记，字段不执行、不自动接受修订；新 `docx-v2` 与旧 `text-v1` 结果分别保存。
 
 使用：Web／Android 上传 DOCX → 原件扫描及副本验证 → 独立正文 Worker 提取 → 搜索正文中的条款／批注 → 查阅该版本正文；在文件详情人工选择两个正式版本进行比较，也可在秘书会话中明确选择此版本作为资料。微信与抖音共用查询／比较页面。提取源文件上限8 MiB，提取文本上限2 MiB；上传容量上限和原件能力不因此改变。

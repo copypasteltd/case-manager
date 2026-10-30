@@ -10,7 +10,7 @@ import (
 
 func paymentFilter(r *http.Request) (finance.PaymentFilter, error) {
 	f, err := costFilter(r)
-	return finance.PaymentFilter{Query: f.Query, State: f.State, Direction: r.URL.Query().Get("direction"), Currency: f.Currency, Category: f.Category, From: f.From, To: f.To, Cursor: f.Cursor, ProjectID: f.ProjectID, CompanyOnly: f.CompanyOnly, Limit: f.Limit}, err
+	return finance.PaymentFilter{Query: f.Query, State: f.State, Direction: r.URL.Query().Get("direction"), Currency: f.Currency, Category: f.Category, From: f.From, To: f.To, Cursor: f.Cursor, ProjectID: f.ProjectID, CompanyOnly: f.CompanyOnly, ProjectRecords: f.ProjectRecords, Limit: f.Limit}, err
 }
 func (s *Server) paymentRoutes(mux *http.ServeMux) {
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}

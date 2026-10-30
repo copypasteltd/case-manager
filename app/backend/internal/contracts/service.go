@@ -124,7 +124,7 @@ func binding(a core.Actor, scope string) string {
 }
 func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[Contract], error) {
 	out := core.Page[Contract]{Items: []Contract{}}
-	if len([]rune(f.Query)) > 200 || !slices.Contains([]string{"", "draft", "pending_signature", "effective", "completed", "terminated"}, f.Lifecycle) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) {
+	if len([]rune(f.Query)) > 200 || !slices.Contains([]string{"", "draft", "pending_signature", "effective", "completed", "terminated"}, f.Lifecycle) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) || (f.CompanyOnly && f.ProjectID != nil) {
 		return out, core.Invalid("filter", "合同筛选无效")
 	}
 	if f.Limit < 1 || f.Limit > 100 {
@@ -135,6 +135,9 @@ func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[C
 		scope = *f.ProjectID
 	}
 	bound := binding(a, fmt.Sprint(f.Query, "/", f.Lifecycle, "/", scope, "/", f.Trashed))
+	if f.CompanyOnly {
+		bound += "/company-only"
+	}
 	var at *time.Time
 	var before *string
 	if f.Cursor != "" {
@@ -147,8 +150,8 @@ func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[C
 	}
 	rows, err := s.DB.Query(ctx, "SELECT "+columns+currentJoin+`WHERE d.org_id=$1 AND (d.deleted_at IS NOT NULL)=$2 AND ($3='' OR d.lifecycle=$3)
         AND ($4='' OR position(lower($4) in lower(r.title))>0 OR position(lower($4) in lower(d.contract_no))>0)
-        AND ($5::uuid IS NULL OR d.project_id=$5) AND can_access(d.org_id,$6,'contract.read','contract',d.id,d.project_id,d.creator_id,d.classification,$7,$8)
-        AND ($9::timestamptz IS NULL OR (d.updated_at,d.id)<($9,$10::uuid)) ORDER BY d.updated_at DESC,d.id DESC LIMIT $11`, a.OrgID, f.Trashed, f.Lifecycle, f.Query, f.ProjectID, a.UserID, a.Channel, a.RunID != "", at, before, f.Limit+1)
+        AND ($5::uuid IS NULL OR d.project_id=$5) AND (NOT $12 OR d.project_id IS NULL) AND can_access(d.org_id,$6,'contract.read','contract',d.id,d.project_id,d.creator_id,d.classification,$7,$8)
+        AND ($9::timestamptz IS NULL OR (d.updated_at,d.id)<($9,$10::uuid)) ORDER BY d.updated_at DESC,d.id DESC LIMIT $11`, a.OrgID, f.Trashed, f.Lifecycle, f.Query, f.ProjectID, a.UserID, a.Channel, a.RunID != "", at, before, f.Limit+1, f.CompanyOnly)
 	if err != nil {
 		return out, err
 	}

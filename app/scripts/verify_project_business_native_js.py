@@ -1,0 +1,48 @@
+"""Inspect the actual current JS bundle/map without claiming APK acceptance."""
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+
+APP = Path(__file__).resolve().parents[1]
+E = APP.parent / 'docs/quality/evidence/project-business'
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main():
+    spec = importlib.util.spec_from_file_location('current_js_review', APP / 'scripts/verify_scoped_increment.py')
+    current = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(current)
+    config = current.plan('docs/quality/evidence/project-business/verification-plan.json')
+    build = json.loads((E / 'native-bundle.json').read_text(encoding='utf-8'))
+    assert build['passed'] and build['source_unchanged'] and build['source_sha256'] == current.digest(config=config)
+    bundle = APP / 'mobile/android/app/src/main/assets/index.android.bundle'
+    mapping = APP / '.local/android/index.android.map'
+    assert bundle.is_file() and 0 < mapping.stat().st_size <= 80 * 1024 * 1024
+    data = json.loads(mapping.read_text(encoding='utf-8'))
+    assert len(data['sources']) == len(data['sourcesContent'])
+    paths = [name.replace('\\', '/') for name in data['sources']]
+    records = []
+    for name in ('mobile/src/pages/finance/subscriptions.tsx', 'mobile/src/pages/subscription-period/index.tsx', 'packages/contracts/src/project-business.ts'):
+        suffix = name if name.startswith('packages/') else name.removeprefix('mobile/')
+        indices = [i for i, source in enumerate(paths) if source == suffix or source.endswith('/' + suffix)]
+        assert len(indices) == 1, 'Expected one exact current native module: ' + name
+        value = data['sourcesContent'][indices[0]]
+        assert isinstance(value, str) and value.replace('\r\n', '\n') == (APP / name).read_text(encoding='utf-8').replace('\r\n', '\n'), 'Current module source differs: ' + name
+        records.append({'file': name, 'file_sha256': sha(APP / name), 'map_source': paths[indices[0]],
+            'source_content_sha256': hashlib.sha256(value.encode()).hexdigest(), 'source_content_matches_modulo_line_endings': True})
+    record = {'passed': True, 'checked_at': datetime.now(timezone.utc).isoformat(), 'source_sha256': current.digest(config=config),
+        'build_record_sha256': sha(E / 'native-bundle.json'), 'bundle_sha256': sha(bundle), 'source_map_sha256': sha(mapping),
+        'modules': records, 'verification_script_sha256': sha(Path(__file__)), 'read_only_artifact_inspection': True,
+        'apk_built': False, 'formal_android_acceptance': False, 'real_device_used': False, 'virtualization_used': False}
+    (E / 'android-js-content.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'passed': True, 'current_modules_verified': len(records), 'apk_built': False}))
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

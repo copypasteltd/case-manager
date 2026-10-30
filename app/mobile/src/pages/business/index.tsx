@@ -1,3 +1,4 @@
+import { checkedBusinessContext, businessProjectID, projectBusinessHome, type ProjectBusinessContext } from '@copypaste/contracts/project-business';
 import { Text, View } from '@tarojs/components';
 import Taro, { useRouter } from '@tarojs/taro';
 import { useState } from 'react';
@@ -17,7 +18,14 @@ export default function BusinessPage() {
     const kind = params.kind as BusinessKind;
     const value = params.id ? await client.request<Business>(businessRoutes[kind] + '/' + identifier(params.id), { scope }) : undefined;
     if (value && (kind === 'contract' ? !('contract_no' in value) : !('kind' in value) || value.kind !== kind)) throw new MobileError('INVALID_RESPONSE', '业务类型与资料地址不一致，请重新查阅。');
-    return { kind, value };
+    let initialProject;
+    if (!value && params.project_id !== undefined) {
+      const id = businessProjectID(params.project_id), context = checkedBusinessContext(await client.request<ProjectBusinessContext>('/projects/' + id + '/business-context', { scope }), id);
+      const plural = ({ contract: 'contracts', purchase: 'purchases', claim: 'claims' } as const)[kind];
+      if (!context.capabilities.find(item => item.kind === plural)?.can_create) throw new MobileError('FORBIDDEN', '当前项目不允许新建此业务，请重新核对项目。');
+      initialProject = context.project;
+    }
+    return { kind, value, initialProject };
   });
   const result = page.result, kind = result?.value.kind, value = result?.value.value;
   const editing = mode === 'edit' || !value, name = kind ? businessNames[kind] : '业务';
@@ -28,7 +36,7 @@ export default function BusinessPage() {
   }
   return <Page title={editing ? (value ? '编辑' : '起草') + name : value.title} eyebrow='BUSINESS / EVERY DETAIL COUNTS' home>
     <Notice error={page.error} />{page.loading ? <Busy /> : result && kind && <>
-      {editing ? (value ? value.can_edit : result.me.actions.includes(kind + '.create')) ? <BusinessEditor key={(value?.id ?? kind) + ':' + (value?.version ?? 'new') + ':' + result.me.authorization_version} kind={kind} value={value} me={result.me} onCommitted={committed} onCancel={() => { if (value) setMode('view'); else void Taro.navigateBack().catch(() => go(kind === 'contract' ? 'contracts' : kind === 'purchase' ? 'purchases' : 'claims')); }} /> : <Empty>当前权限或业务阶段不允许起草或编辑。</Empty>
+      {editing ? (value ? value.can_edit : result.me.actions.includes(kind + '.create')) ? <BusinessEditor key={(value?.id ?? kind) + ':' + (value?.version ?? 'new') + ':' + result.me.authorization_version} kind={kind} value={value} initialProject={result.value.initialProject} me={result.me} onCommitted={committed} onCancel={() => { if (value) setMode('view'); else void Taro.navigateBack().catch(() => go(kind === 'contract' ? 'contracts' : kind === 'purchase' ? 'purchases' : 'claims')); }} /> : <Empty>当前权限或业务阶段不允许起草或编辑。</Empty>
         : value && <>
           <View className='cp-choice'><State value={value.approval_state} /><Text className='cp-muted cp-small'>业务修订 {value.version} · {date(value.updated_at)}</Text></View>
           <View className='cp-notice'><Text>以下为当前业务修订。业务资料、固定申请、审批、履行及实际付款分别记录。</Text></View>
@@ -41,7 +49,7 @@ export default function BusinessPage() {
           </View></Section>}
           <Section title='记录标识'><Fact label='当前内容摘要'><Text className='cp-code'>{value.content_hash}</Text></Fact><Fact label='当前业务阶段'><Text>{'contract_no' in value ? ({ draft: '草稿', pending_signature: '待签署', effective: '已生效', completed: '已完成', terminated: '已终止' }[value.lifecycle]) : ({ draft: '草稿', requested: '已进入申请', ordering: '下单中', receiving: '收货中', cancelled: '已取消', completed: '已完成' }[value.lifecycle])}</Text></Fact></Section>
         </>}
-      <Action secondary onClick={() => go(kind === 'contract' ? 'contracts' : kind === 'purchase' ? 'purchases' : 'claims')}>返回{name}列表</Action>
+      {(value?.project_id ?? result.value.initialProject?.id) && <Action secondary onClick={() => void Taro.navigateTo({ url: projectBusinessHome((value?.project_id ?? result.value.initialProject?.id)!, 'mobile') })}>返回项目业务概览</Action>}<Action secondary onClick={() => go(kind === 'contract' ? 'contracts' : kind === 'purchase' ? 'purchases' : 'claims')}>返回{name}列表</Action>
     </>}
     <Action secondary loading={page.loading} onClick={() => { setMode('view'); void page.reload(); }}>重新读取业务资料</Action>
   </Page>;

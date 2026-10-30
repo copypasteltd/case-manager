@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T11:28:27.260259+00:00",
+  "encoder_script_sha256": "bd8ed9c2d009768278a780caff3d96e888fb6f537d210f4d5fa33005fb2af314",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "8ea2e4e3cb5860a276439bc324c59de42d795c27a14662075afe20ba1ec3910a",
+      "build_source_sha256": "561e197580c4a416da4030e2b4f08484aab253ce7470b72b2e9b96b5c69391f8",
+      "capture_manifest": "docs/quality/evidence/project-business/web-capture-manifest.json",
+      "capture_manifest_sha256": "a0795e2a9334c9471751e3314498ef1a0b74cc381ef723275497a1bef1d0afe9",
+      "capture_frame_count": 65,
+      "capture_duration_ms": 19157,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/project-business-web-hub.png",
+          "sha256": "9588e16dfde1c94e45511529f53fdd7b94389778cf3f5999c2509d5dcfb4a4c3"
+        },
+        {
+          "file": "docs/media/screenshots/project-business-web-draft.png",
+          "sha256": "6ef2a07404d6e18bb04534e10707a94912afbdfb1d56496287d1107cc92ae58a"
+        },
+        {
+          "file": "docs/media/screenshots/project-business-web-subscription.png",
+          "sha256": "47c6d0ee6db2ff52c44a18c8b3bbbb9ee470410bd9f8aa08ea7c62765a8ca13b"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "192",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "19.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/project-business-web.mp4",
+          "sha256": "c5651c3f99a9af4cffdf357e7a7bc317da91a13ebd85d324b327bd0ec826377c",
+          "bytes": 1135151
+        },
+        {
+          "file": "docs/media/gifs/project-business-web.gif",
+          "sha256": "fb22fb44566506598f73d3b8c37c2dfb60b69418f2c0fc3693290393a66ac527",
+          "bytes": 193592
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "c10e1453f0372f8c752482a2a8b0f7ace570a70aaf79e057e108bbb0bc0f9c2b",
+      "build_source_sha256": "561e197580c4a416da4030e2b4f08484aab253ce7470b72b2e9b96b5c69391f8",
+      "capture_manifest": "docs/quality/evidence/project-business/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "aa2198a8eaaf8434fa0b2e6035c6ed3d8b02e6adba92c4f06e25d42b5429c0ab",
+      "capture_frame_count": 87,
+      "capture_duration_ms": 17923,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/project-business-mobile-hub.png",
+          "sha256": "1ab07d19194474b0129ac0a8eea5f84358d0c811d8f743f6e69696bf83a6fb16"
+        },
+        {
+          "file": "docs/media/screenshots/project-business-mobile-draft.png",
+          "sha256": "6901c468e6de08433f10b8dceb930ed2582dee5f2c50d8a1fc20cdf99400b2a1"
+        },
+        {
+          "file": "docs/media/screenshots/project-business-mobile-subscription.png",
+          "sha256": "3223c245f56602654d2c8458cb1f03f313f0e34dacd1af9df55f9ed2562420a5"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "181",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "18.100000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/project-business-mobile.mp4",
+          "sha256": "ab619af9984c7bcc305fea06734d542bfe1947b73d5bb59ad3e491f971214889",
+          "bytes": 600258
+        },
+        {
+          "file": "docs/media/gifs/project-business-mobile.gif",
+          "sha256": "e7e3f64dcac9ab526ddcecd9986d1f04330cb0e7c9b63dd50201e953e38ba9ba",
+          "bytes": 78518
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic project-scoped six-module draft creation and mobile subscription period review. MP4 uses real viewport frames; GIF is a labelled three-screenshot tour, not a realtime recording. No device/cloud/model acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/project-business-web-hub.png",
+      "sha256": "9588e16dfde1c94e45511529f53fdd7b94389778cf3f5999c2509d5dcfb4a4c3"
+    },
+    {
+      "file": "docs/media/screenshots/project-business-web-draft.png",
+      "sha256": "6ef2a07404d6e18bb04534e10707a94912afbdfb1d56496287d1107cc92ae58a"
+    },
+    {
+      "file": "docs/media/screenshots/project-business-web-subscription.png",
+      "sha256": "47c6d0ee6db2ff52c44a18c8b3bbbb9ee470410bd9f8aa08ea7c62765a8ca13b"
+    },
+    {
+      "file": "docs/media/videos/project-business-web.mp4",
+      "sha256": "c5651c3f99a9af4cffdf357e7a7bc317da91a13ebd85d324b327bd0ec826377c",
+      "bytes": 1135151
+    },
+    {
+      "file": "docs/media/gifs/project-business-web.gif",
+      "sha256": "fb22fb44566506598f73d3b8c37c2dfb60b69418f2c0fc3693290393a66ac527",
+      "bytes": 193592
+    },
+    {
+      "file": "docs/media/screenshots/project-business-mobile-hub.png",
+      "sha256": "1ab07d19194474b0129ac0a8eea5f84358d0c811d8f743f6e69696bf83a6fb16"
+    },
+    {
+      "file": "docs/media/screenshots/project-business-mobile-draft.png",
+      "sha256": "6901c468e6de08433f10b8dceb930ed2582dee5f2c50d8a1fc20cdf99400b2a1"
+    },
+    {
+      "file": "docs/media/screenshots/project-business-mobile-subscription.png",
+      "sha256": "3223c245f56602654d2c8458cb1f03f313f0e34dacd1af9df55f9ed2562420a5"
+    },
+    {
+      "file": "docs/media/videos/project-business-mobile.mp4",
+      "sha256": "ab619af9984c7bcc305fea06734d542bfe1947b73d5bb59ad3e491f971214889",
+      "bytes": 600258
+    },
+    {
+      "file": "docs/media/gifs/project-business-mobile.gif",
+      "sha256": "e7e3f64dcac9ab526ddcecd9986d1f04330cb0e7c9b63dd50201e953e38ba9ba",
+      "bytes": 78518
+    }
+  ]
+}

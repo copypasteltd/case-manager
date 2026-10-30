@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## Increment124 · 项目六类业务与移动订阅闭环 / Project journeys and mobile subscriptions
+
+- 接通项目内合同、采购、报销、实际费用、实际资金、订阅的权限入口、固定项目表单、过滤列表和返回；添加人类会话业务能力查询。
+- 修复合同／采购／报销公司范围过滤；新增列表专用项目资料查询，使未分配费用／资金草稿可见，保留原金额汇总口径和分页隔离。
+- 共享移动页面补齐订阅资料、生命周期、供应方状态、价格和账期生成，以及费用关联、人工核对、免付／作废／重开及历史。文本草稿白名单、近期MFA、固定版本、幂等与不确定提交约束继续生效。
+- Current source-bound native HTTP/PG, Web/mobile tests and Web/mini-program/Android JS builds; real isolated Web/H5 six-module creation and a mobile period waiver. The published four-worker Metro Windows filesystem adapter preserves the native no-Expo map guard. No new APK or schema upgrade is claimed; schema94 and prior121 full/runtime/APK evidence retain their scope.
+- 6张实际截图、2段MP4和2份截图导览GIF；Web入口截图保留加载瞬间，移动免付结果在静态截图／GIF中，MFA不录入。仍23项开放，5项移出，八项Skill仍draft。
+
+[设计 / Design](development/124-project-business-journeys.md) · [验证 / Verification](quality/124-project-business-verification.md)
+
 ## Increment123 · Word 引用内容与修订读取 / DOCX stories and revisions
 
 - 新增有界 `docx-v2`：按包关系读取主文档及显式引用的页眉页脚、脚注尾注、批注，保留表格／文本框／内容控件／文字修订及字段缓存标记；不执行宏、字段或外部链接。

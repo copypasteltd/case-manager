@@ -1,3 +1,4 @@
+import { checkedBusinessContext, projectBusinessLabels, projectBusinessURL, type ProjectBusinessContext } from '@copypaste/contracts/project-business';
 import { Text, View } from '@tarojs/components';
 import Taro, { useDidHide, useDidShow } from '@tarojs/taro';
 import { useEffect, useRef } from 'react';
@@ -12,7 +13,8 @@ export default function ProjectOverviewPage({ projectID }: { projectID: unknown 
     const id = identifier(projectID);
     const project = await client.request<Schemas['Project']>('/projects/' + id, { scope });
     const overview = currentOverview(await client.request<Schemas['ProjectOverview']>('/projects/' + id + '/overview', { scope }), id, project.version);
-    return { project, overview };
+    const context = checkedBusinessContext(await client.request<ProjectBusinessContext>('/projects/' + id + '/business-context', { scope }), id);
+    return { project, overview, context };
   });
   const timer = useRef<ReturnType<typeof setInterval>>();
   const stop = () => { if (timer.current) clearInterval(timer.current); timer.current = undefined; };
@@ -22,7 +24,7 @@ export default function ProjectOverviewPage({ projectID }: { projectID: unknown 
   const value = page.result?.value;
   return <Page title='项目业务概览' home><Notice error={page.error} />{page.loading ? <Busy /> : value && <>
     <Section title={value.project.name}><Fact label='当前项目'><Text>{value.project.project_no} · {overviewState(value.project.state)} · 版本 {value.overview.project_version}</Text></Fact><Fact label='读取快照'><Text>{overviewClock(value.overview.as_of)}</Text><Text className='cp-muted cp-small'>仅统计当前可读记录。结项核查与归档单独执行。</Text></Fact><View className='cp-pad'><Action secondary onClick={() => go('project', value.project.id)}>返回项目资料</Action></View></Section>
-    <Section title='本项目发生支出'><View className='cp-pad'><Text className='cp-muted cp-small'>全期间、本项目实际分摊；费用与冲销按原币分列。草稿、付款、审批与订阅预测分别核对。</Text></View>
+    <Section title='项目业务办理'><View className='cp-pad'><Text className='cp-paragraph'>列表与草稿保留当前项目。保存、送审、批准和实际付款分别办理。</Text>{value.context.capabilities.map(cap => <View key={cap.kind} className='cp-editor-row'><Action secondary onClick={() => void Taro.navigateTo({ url: projectBusinessURL(cap.kind, value.project.id, 'mobile') })}>{'查看项目' + projectBusinessLabels[cap.kind]}</Action>{cap.can_create ? <Action onClick={() => void Taro.navigateTo({ url: projectBusinessURL(cap.kind, value.project.id, 'mobile', true) })}>{'起草项目' + projectBusinessLabels[cap.kind]}</Action> : <Text className='cp-muted cp-small'>当前项目阶段、分类或授权不允许从此入口新建。</Text>}</View>)}</View></Section><Section title='本项目发生支出'><View className='cp-pad'><Text className='cp-muted cp-small'>全期间、本项目实际分摊；费用与冲销按原币分列。草稿、付款、审批与订阅预测分别核对。</Text></View>
       {!value.overview.incurred.available ? <Empty>发生支出未核实 · 当前报表读取范围不足</Empty> : <>
         {value.overview.incurred.totals.length ? value.overview.incurred.totals.map(total => <Fact key={total.currency} label={total.currency + ' · ' + total.entry_count + ' 条记账记录'}><Text>费用原额 {exactAmount(total.expense_amount)}</Text><Text>冲销原额 {exactAmount(total.reversal_amount)}</Text><Text className='cp-row-title'>净发生额 {exactAmount(total.net_amount)}</Text></Fact>) : <Empty>暂无当前可读的已确认发生支出。</Empty>}
         <View className='cp-pad'><Text className='cp-muted cp-small'>未确认费用 {value.overview.incurred.unconfirmed_count} 项，未计入金额。冲销保留原费用与冲销记录，净额抵销。</Text></View>

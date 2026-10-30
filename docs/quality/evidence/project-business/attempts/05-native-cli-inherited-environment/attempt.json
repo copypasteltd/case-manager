@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "Direct native CLI inherited the parent npm environment, unlike the existing native builder. It timed out before Metro output. Corrected to the native builder environment allowlist, retaining exact profile/API, one worker and source-map checks. The optional npx online version lookup is not a build requirement. Repeat checks against corrected helper bytes.",
+  "accepted_as_current": false,
+  "application_source_changed": false
+}

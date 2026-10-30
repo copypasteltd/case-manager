@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "id": "native-bundle",
+  "started_at": "2026-10-30T11:33:24.044276+00:00",
+  "finished_at": "2026-10-30T11:37:24.600405+00:00",
+  "elapsed_seconds": 240.549,
+  "command": [
+    "python",
+    "scripts/build_native_js_review.py"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "exit",
+  "source_sha256": "a80f90d54744487ccc99d0073166ccdda8f538a474f7ab965ff93972351e8753",
+  "source_after_sha256": "a80f90d54744487ccc99d0073166ccdda8f538a474f7ab965ff93972351e8753",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "10a28b988411c173bb698f6c672be7b71495a24ca5d915848856fb8333a4a3e1",
+  "parser_error": null,
+  "runner_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "scope": "Current Android JavaScript compilation with explicit single-worker native Metro and the unchanged no-Expo map guard. No APK/signing/store/device acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

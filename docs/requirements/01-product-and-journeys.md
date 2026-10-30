@@ -1,5 +1,7 @@
 # 产品需求总纲与用户旅程
 
+增量124已接通项目内六类业务的固定范围新建、查询和返回，并补齐共享移动订阅管理／账期核对。项目归属草稿查询与实际金额汇总分开；保存草稿不表示送审、费用确认、付款或供应方启用。见[设计与操作](../development/124-project-business-journeys.md)及[检查记录](../quality/124-project-business-verification.md)。完整业务旅程及公司规则继续开放，当前仍23 active／5 excluded。
+
 当前范围修订99（用户已确认）：不做真机验证，不考虑网络性能测试、历史数据迁移与容灾、AI费用控制。四端、秘书／Skill／TG、执行隔离／授权、公司财务及双云存储继续。本文及历史需求中的冲突门槛以[当前范围](../delivery/04-current-scope-and-acceptance.md)为准；移出项不记为通过。
 
 版本：v1.1-scope99；日期：2026-10-28；来源：U-01—U-20。本套需求描述首发目标，待决策项按 [Q 登记](../governance/02-decisions-and-open-questions.md)执行。

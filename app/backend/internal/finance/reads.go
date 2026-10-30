@@ -90,7 +90,7 @@ func (s *Service) Get(ctx context.Context, a core.Actor, id string) (Cost, error
 	return present(ctx, s.DB, a, c)
 }
 func validateFilter(f Filter) error {
-	if len([]rune(f.Query)) > 200 || len([]rune(f.Category)) > 50 || !slices.Contains([]string{"", "draft", "confirmed", "reversed", "incurred"}, f.State) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) || (f.CompanyOnly && f.ProjectID != nil) || core.DateRange(f.From, f.To) != nil {
+	if len([]rune(f.Query)) > 200 || len([]rune(f.Category)) > 50 || !slices.Contains([]string{"", "draft", "confirmed", "reversed", "incurred"}, f.State) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) || (f.CompanyOnly && f.ProjectID != nil) || (f.ProjectRecords && f.ProjectID == nil) || core.DateRange(f.From, f.To) != nil {
 		return core.Invalid("filter", "费用筛选无效")
 	}
 	return nil
@@ -104,6 +104,9 @@ func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[C
 		f.Limit = 20
 	}
 	bound := core.CursorBinding(a, "costs", f.Query, f.State, f.Currency, f.Category, f.From, f.To, fmt.Sprint(f.ProjectID != nil), value(f.ProjectID), fmt.Sprint(f.CompanyOnly))
+	if f.ProjectRecords {
+		bound += "/project-records"
+	}
 	var at *time.Time
 	var before *string
 	if f.Cursor != "" {
@@ -117,8 +120,8 @@ func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[C
 	rows, err := s.DB.Query(ctx, "SELECT "+columns+currentJoin+`WHERE c.org_id=$1 AND can_read_cost(c.org_id,$2,c.id,r.id,$3,$4)
         AND ($5='' OR position(lower($5) in lower(r.title))>0 OR c.source_key=$5) AND ($6='' OR c.state=$6 OR ($6='incurred' AND c.state<>'draft')) AND ($7='' OR r.currency=$7)
         AND ($8='' OR r.category=$8) AND ($9::date IS NULL OR r.occurred_on>=$9) AND ($10::date IS NULL OR r.occurred_on<$10)
-        AND (($11::uuid IS NULL AND NOT $12) OR EXISTS(SELECT 1 FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id IS NOT DISTINCT FROM $11::uuid))
-        AND ($13::timestamptz IS NULL OR (c.updated_at,c.id)<($13,$14::uuid)) ORDER BY c.updated_at DESC,c.id DESC LIMIT $15`, a.OrgID, a.UserID, a.Channel, a.RunID != "", f.Query, f.State, f.Currency, f.Category, optional(f.From), optional(f.To), f.ProjectID, f.CompanyOnly, at, before, f.Limit+1)
+        AND (($11::uuid IS NULL AND NOT $12) OR ($16 AND c.project_id=$11::uuid) OR EXISTS(SELECT 1 FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id IS NOT DISTINCT FROM $11::uuid))
+        AND ($13::timestamptz IS NULL OR (c.updated_at,c.id)<($13,$14::uuid)) ORDER BY c.updated_at DESC,c.id DESC LIMIT $15`, a.OrgID, a.UserID, a.Channel, a.RunID != "", f.Query, f.State, f.Currency, f.Category, optional(f.From), optional(f.To), f.ProjectID, f.CompanyOnly, at, before, f.Limit+1, f.ProjectRecords)
 	if err != nil {
 		return out, err
 	}

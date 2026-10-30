@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "id": "native-bundle",
+  "started_at": "2026-10-30T11:26:21.690341+00:00",
+  "finished_at": "2026-10-30T11:33:00.342481+00:00",
+  "elapsed_seconds": 398.641,
+  "command": [
+    "npm",
+    "run",
+    "build:rn"
+  ],
+  "cwd": "",
+  "exit_code": 15,
+  "parser": "exit",
+  "source_sha256": "fdfe452ac26ba0143a845a5f294c231854a79de960d80022f9a422dc2b126600",
+  "source_after_sha256": "fdfe452ac26ba0143a845a5f294c231854a79de960d80022f9a422dc2b126600",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "64faea6445f2025c70760a31add9d2747cc35bfb2be6eaa302a358d0927a7ef5",
+  "parser_error": null,
+  "runner_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "scope": "Current shared React Native Android JavaScript bundle compilation only; no APK/signing/store/device acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

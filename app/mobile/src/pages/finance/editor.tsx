@@ -10,14 +10,15 @@ import { Action, Empty, Fact, Notice, Section } from '../../ui';
 import { ChoiceList, FileChoice, PartyChoice, SelectField, TextField, referenceEligible } from '../business/controls';
 
 type Picking = 'project' | 'party' | 'file' | 'employee' | { allocation: number };
-export function FinancialEditor({ kind, value, refund, me, onCommitted, onCancel }: {
-  kind: FinancialKind; value?: FinancialRecord; refund?: Schemas['Payment']; me: Schemas['Me']; onCommitted(value: FinancialRecord): void; onCancel(): void;
+export function FinancialEditor({ kind, value, refund, initialProject, me, onCommitted, onCancel }: {
+  kind: FinancialKind; value?: FinancialRecord; refund?: Schemas['Payment']; initialProject?: Schemas['Project']; me: Schemas['Me']; onCommitted(value: FinancialRecord): void; onCancel(): void;
 }) {
   const [source] = useState(() => 'manual:' + client.operationKey());
   const initial = financialInput(kind, value, source);
+  if (!value && !refund && initialProject) Object.assign(initial, { project: initialProject.id, classification: initialProject.classification });
   if (!value && refund) Object.assign(initial, { title: refund.title + ' · 退款', project: refund.project_id ?? '', classification: refund.classification, currency: refund.currency ?? '', category: refund.category, direction: 'refund' });
   if (kind === 'payment' && refund) Object.assign(initial, { fx_original_currency: refund.currency ?? '' });
-  const draft = useFormDraft(me, value ? { kind: 'financial-edit', id: value.id, version: value.version, revision: value.current_revision_id, hash: value.content_hash } : { kind: 'financial-create', id: refund ? 'refund-' + refund.id : 'new-' + kind, version: 1 }, 'save', { financial: initial });
+  const draft = useFormDraft(me, value ? { kind: 'financial-edit', id: value.id, version: value.version, revision: value.current_revision_id, hash: value.content_hash } : { kind: 'financial-create', id: refund ? 'refund-' + refund.id : 'new-' + kind + ':' + (initialProject?.id ?? 'all'), version: 1 }, 'save', { financial: initial });
   const input = draft.fields.financial!, [evidence, setEvidence] = useState(() => value ? financialEvidence(value) : refund ? { ...financialEvidence(refund), refund: refund.id, files: [] } : financialEvidence());
   const [files, setFiles] = useState(value?.attachments ?? []), [partyName, setPartyName] = useState(value?.counterparty_evidence?.name ?? refund?.counterparty_evidence?.name ?? '');
   const [picking, setPicking] = useState<Picking>(), [error, setError] = useState<unknown>();
@@ -28,7 +29,7 @@ export function FinancialEditor({ kind, value, refund, me, onCommitted, onCancel
     change({ ...patch, allocations: [] }); setEvidence({ party: null, files: [], employee: null, refund: null }); setFiles([]); setPartyName('');
   }
   function save() {
-    try { const body = financialDraftBody(kind, input, evidence, value); void command.submit((kind === 'cost' ? '/costs' : '/payments') + (value ? '/' + value.id : ''), body, value ? 'PATCH' : 'POST'); }
+    try { if (initialProject && input.project !== initialProject.id) throw new Error('草稿项目与当前项目不一致，请重新打开。'); const body = financialDraftBody(kind, input, evidence, value); void command.submit((kind === 'cost' ? '/costs' : '/payments') + (value ? '/' + value.id : ''), body, value ? 'PATCH' : 'POST'); }
     catch (cause) { setError(cause); }
   }
   const level = input.classification as Schemas['Cost']['classification'];
@@ -38,7 +39,7 @@ export function FinancialEditor({ kind, value, refund, me, onCommitted, onCancel
       <Text className='cp-paragraph'>草稿可暂缺日期、金额或凭证；正式确认／登记须补齐真实事实。保存草稿不会确认费用或发起银行付款。</Text>
       <DraftNotice restored={draft.restored} /><Notice error={error ?? command.error} /><CommandNotice blocked={command.blocked} />
       {field('title', '财务记录标题')}
-      {!value && !refund && <><Fact label='所属范围'><Text>{input.project ? '项目 ' + input.project : '公司资料'}</Text></Fact><Action secondary disabled={disabled} onClick={() => setPicking('project')}>选择所属项目</Action>{input.project && <Action secondary disabled={disabled} onClick={() => scope({ project: '' })}>改为公司资料</Action>}<SelectField label='资料分类' value={input.classification} onChange={v => scope({ classification: v })} options={[[ 'internal', '内部' ], [ 'project_restricted', '项目受限' ], [ 'confidential', '机密' ]]} disabled={disabled} />{field('source', '永久财务来源标识', 199, '同一经济事项或同笔资金保持同一来源标识；已保存后不可更改。')}</>}
+      {!value && !refund && <><Fact label='所属范围'><Text>{input.project ? '项目 ' + input.project : '公司资料'}</Text></Fact>{!initialProject && <Action secondary disabled={disabled} onClick={() => setPicking('project')}>选择所属项目</Action>}{!initialProject && input.project && <Action secondary disabled={disabled} onClick={() => scope({ project: '' })}>改为公司资料</Action>}<SelectField label='资料分类' value={input.classification} onChange={v => scope({ classification: v })} options={[[ 'internal', '内部' ], [ 'project_restricted', '项目受限' ], [ 'confidential', '机密' ]]} disabled={disabled || !!initialProject} />{field('source', '永久财务来源标识', 199, '同一经济事项或同笔资金保持同一来源标识；已保存后不可更改。')}</>}
       {value && <Fact label='固定编辑依据'><Text>版本 {value.version} · {value.current_revision_id}</Text><Text className='cp-code'>{value.content_hash}</Text></Fact>}
       {refund && <Fact label='固定退款原记录'><Text>{refund.title} · {refund.currency} {refund.amount}</Text><Text>只登记确实收到的退款并保留原收付款对象；异币实收须另填原本金和汇率凭证。</Text></Fact>}
       {kind === 'payment' && <SelectField label='资金方向' value={input.direction} onChange={v => { change({ direction: v }); if (v === 'transfer') { setEvidence(e => ({ ...e, party: null, employee: null })); setPartyName(''); } }} options={refund || value && 'refund_of_id' in value && value.refund_of_id ? [[ 'refund', '退款' ]] : [[ '', '尚未确定' ], [ 'outgoing', '支出' ], [ 'incoming', '收入' ], [ 'transfer', '内部转账' ]]} disabled={disabled || Boolean(refund || value && 'refund_of_id' in value && value.refund_of_id)} />}
@@ -55,6 +56,6 @@ export function FinancialEditor({ kind, value, refund, me, onCommitted, onCancel
     {picking === 'party' && <PartyChoice project={input.project} classification={level} onClose={() => setPicking(undefined)} onSelect={party => { setEvidence(e => ({ ...e, party: { party_id: party.id, revision_id: party.current_revision_id }, employee: null })); setPartyName(party.name); setPicking(undefined); }} />}
     {picking === 'file' && <FileChoice project={input.project} classification={level} onClose={() => setPicking(undefined)} onSelect={file => { if (!evidence.files.includes(file.version_id)) { setEvidence(e => ({ ...e, files: [...e.files, file.version_id] })); setFiles(f => [...f, file]); } setPicking(undefined); }} />}
     {(picking === 'project' || typeof picking === 'object') && <ChoiceList<Schemas['Project']> title='选择当前可写项目' path='/projects?limit=20' label={v => v.name} eligible={v => !['closing', 'archived', 'cancelled'].includes(v.state) && Boolean(v.classification && referenceEligible({ classification: v.classification, project_id: null }, '', level))} onClose={() => setPicking(undefined)} onSelect={v => { if (picking === 'project') scope({ project: v.id }); else if (typeof picking === 'object') change({ allocations: input.allocations.map((line, i) => i === picking.allocation ? { ...line, project: v.id } : line) }); setPicking(undefined); }} />}
-    {picking === 'employee' && <ChoiceList<Schemas['Spend']> title='选择已批准员工报销' path={'/claims?limit=20&approval_state=approved' + (input.currency ? '&currency=' + input.currency : '')} label={v => v.title} eligible={v => v.approval_state === 'approved' && v.currency === (input.currency || null) && v.lines.some(line => line.funding === 'employee_advance')} onClose={() => setPicking(undefined)} onSelect={claim => { setEvidence(e => ({ ...e, party: null, employee: claim.creator_id })); setPartyName(''); setPicking(undefined); }} />}
+    {picking === 'employee' && <ChoiceList<Schemas['Spend']> title='选择已批准员工报销' path={'/claims?limit=20&approval_state=approved' + (initialProject ? '&project_id=' + initialProject.id : '') + (input.currency ? '&currency=' + input.currency : '')} label={v => v.title} eligible={v => v.approval_state === 'approved' && v.currency === (input.currency || null) && v.lines.some(line => line.funding === 'employee_advance')} onClose={() => setPicking(undefined)} onSelect={claim => { setEvidence(e => ({ ...e, party: null, employee: claim.creator_id })); setPartyName(''); setPicking(undefined); }} />}
   </>;
 }

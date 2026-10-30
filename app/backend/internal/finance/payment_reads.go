@@ -134,7 +134,7 @@ func (s *Service) Payment(ctx context.Context, a core.Actor, id string) (Payment
 	return presentPayment(ctx, s.DB, a, p)
 }
 func validatePaymentFilter(f PaymentFilter) error {
-	if len([]rune(f.Query)) > 200 || len([]rune(f.Category)) > 50 || !slices.Contains([]string{"", "draft", "recorded", "reversed", "cash"}, f.State) || !slices.Contains([]string{"", "outgoing", "incoming", "refund", "transfer"}, f.Direction) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) || (f.CompanyOnly && f.ProjectID != nil) || core.DateRange(f.From, f.To) != nil {
+	if len([]rune(f.Query)) > 200 || len([]rune(f.Category)) > 50 || !slices.Contains([]string{"", "draft", "recorded", "reversed", "cash"}, f.State) || !slices.Contains([]string{"", "outgoing", "incoming", "refund", "transfer"}, f.Direction) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) || (f.CompanyOnly && f.ProjectID != nil) || (f.ProjectRecords && f.ProjectID == nil) || core.DateRange(f.From, f.To) != nil {
 		return core.Invalid("filter", "资金筛选无效")
 	}
 	return nil
@@ -148,6 +148,9 @@ func (s *Service) Payments(ctx context.Context, a core.Actor, f PaymentFilter) (
 		f.Limit = 20
 	}
 	bound := core.CursorBinding(a, "payments", f.Query, f.State, f.Direction, f.Currency, f.Category, f.From, f.To, value(f.ProjectID), fmt.Sprint(f.CompanyOnly))
+	if f.ProjectRecords {
+		bound += "/project-records"
+	}
 	var at *time.Time
 	var before *string
 	if f.Cursor != "" {
@@ -161,8 +164,8 @@ func (s *Service) Payments(ctx context.Context, a core.Actor, f PaymentFilter) (
 	rows, err := s.DB.Query(ctx, "SELECT "+paymentColumns+paymentJoin+`WHERE p.org_id=$1 AND can_read_payment(p.org_id,$2,p.id,$3,$4)
         AND ($5='' OR position(lower($5) in lower(r.title))>0 OR p.source_key=$5) AND ($6='' OR p.state=$6 OR ($6='cash' AND p.state<>'draft' AND r.direction IN ('outgoing','refund'))) AND ($7='' OR r.direction=$7) AND ($8='' OR r.currency=$8) AND ($9='' OR r.category=$9)
         AND ($10::date IS NULL OR r.paid_on>=$10) AND ($11::date IS NULL OR r.paid_on<$11)
-        AND (($12::uuid IS NULL AND NOT $13) OR EXISTS(SELECT 1 FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id IS NOT DISTINCT FROM $12::uuid) OR contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),$12::uuid)>0)
-        AND ($14::timestamptz IS NULL OR (p.updated_at,p.id)<($14,$15::uuid)) ORDER BY p.updated_at DESC,p.id DESC LIMIT $16`, a.OrgID, a.UserID, a.Channel, a.RunID != "", f.Query, f.State, f.Direction, f.Currency, f.Category, optional(f.From), optional(f.To), f.ProjectID, f.CompanyOnly, at, before, f.Limit+1)
+        AND (($12::uuid IS NULL AND NOT $13) OR ($17 AND p.project_id=$12::uuid) OR EXISTS(SELECT 1 FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id IS NOT DISTINCT FROM $12::uuid) OR contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),$12::uuid)>0)
+        AND ($14::timestamptz IS NULL OR (p.updated_at,p.id)<($14,$15::uuid)) ORDER BY p.updated_at DESC,p.id DESC LIMIT $16`, a.OrgID, a.UserID, a.Channel, a.RunID != "", f.Query, f.State, f.Direction, f.Currency, f.Category, optional(f.From), optional(f.To), f.ProjectID, f.CompanyOnly, at, before, f.Limit+1, f.ProjectRecords)
 	if err != nil {
 		return out, err
 	}

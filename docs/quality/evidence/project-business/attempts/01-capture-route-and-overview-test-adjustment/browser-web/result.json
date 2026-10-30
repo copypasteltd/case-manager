@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T11:17:49.540Z",
+  "finished_at": "2026-10-30T11:18:21.219Z",
+  "checks": [],
+  "source_count": 880,
+  "source_sha256": "761037f9e2b1bd3f0676879a698d5b68f84d10b3877d46ab3d97dae1db609958",
+  "source_after_sha256": "761037f9e2b1bd3f0676879a698d5b68f84d10b3877d46ab3d97dae1db609958",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "The input did not match the regular expression /^\\/(files\\/[0-9a-f-]{36}|search)$/. Input:\n\n'/projects/720bcadf-1634-458a-8253-6d16a3fef620'\n",
+  "failure_stack": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^\\/(files\\/[0-9a-f-]{36}|search)$/. Input:\n\n'/projects/720bcadf-1634-458a-8253-6d16a3fef620'\n\n    at assertNoCredentials (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/office_text_recording.mjs:12:19)\n    at shot (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_business.mjs:23:37)\n    at file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_business.mjs:26:9\n    at async workbenchBrowser (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/workbench_browser_common.mjs:48:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_project_business.mjs:11:1",
+  "failure_context": {
+    "pathname": "/projects/720bcadf-1634-458a-8253-6d16a3fef620",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "workbench_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "a3eb1f38e352116144aa9d4cd2540f6508b22bf34f1e53369cb47ba2b4fcbb7f",
+    "source_sha256": "49ec3284dbfaa1608e250485a311cc54c2ae2f30e59390a397915a05c63ecb08",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "49ec3284dbfaa1608e250485a311cc54c2ae2f30e59390a397915a05c63ecb08",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "49ec3284dbfaa1608e250485a311cc54c2ae2f30e59390a397915a05c63ecb08",
+  "build_source_unchanged": true
+}

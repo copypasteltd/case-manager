@@ -13,6 +13,12 @@ func (s *Server) projectRoutes(mux *http.ServeMux) {
 	s.projectChangeRoutes(mux)
 	s.projectCloseoutRoutes(mux)
 	s.collaborationRoutes(mux)
+	mux.HandleFunc("GET /v1/projects/{id}/business-context", read(s, "ProjectBusinessContextResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "项目业务范围不接受额外筛选参数")
+		}
+		return s.Projects.BusinessContext(ctx, a, r.PathValue("id"))
+	}))
 	mux.HandleFunc("GET /v1/projects/{id}/overview", read(s, "ProjectOverviewResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return s.Projects.Overview(ctx, a, r.PathValue("id"))
 	}))

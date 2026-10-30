@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T12:00:05.795169+00:00",
+  "source_sha256": "f8e2330230ab31d1a73ecc8d9924d8d529bd7497996b2e97c7dbae263270cae5",
+  "build_record_sha256": "1a008462cb7681792203edc0a28a8fb033945ed667788c08e2310dfefc093404",
+  "bundle_sha256": "9ebb9422bdcad0bb3fb74274b0e1f94a4b718c106afd0b5e18e97ea2d3125abb",
+  "source_map_sha256": "0f8c48514a8cf20139165399f20f3e5a2c98dd865dbc63422e03426378309390",
+  "modules": [
+    {
+      "file": "mobile/src/pages/finance/subscriptions.tsx",
+      "file_sha256": "0752568f6d6963183b330105131dc2ee54cca9e46eeaebe271775b9f4251b012",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/finance/subscriptions.tsx",
+      "source_content_sha256": "0752568f6d6963183b330105131dc2ee54cca9e46eeaebe271775b9f4251b012",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "mobile/src/pages/subscription-period/index.tsx",
+      "file_sha256": "dd3be5776f6db296fafa1ab87507574fd8cdf91adb77f5ace748cdd57c58edf3",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/subscription-period/index.tsx",
+      "source_content_sha256": "dd3be5776f6db296fafa1ab87507574fd8cdf91adb77f5ace748cdd57c58edf3",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "packages/contracts/src/project-business.ts",
+      "file_sha256": "7204baad447f600f1dd448b657ff8672e809aa74aeab016dcb595f9346481248",
+      "map_source": "D:/dev/copypasted/内部管理/app/packages/contracts/src/project-business.ts",
+      "source_content_sha256": "7204baad447f600f1dd448b657ff8672e809aa74aeab016dcb595f9346481248",
+      "source_content_matches_modulo_line_endings": true
+    }
+  ],
+  "verification_script_sha256": "e08bf65a61d1182a4b359b0974d013d8e3f9db214c56a258f3490f82074d756e",
+  "read_only_artifact_inspection": true,
+  "apk_built": false,
+  "formal_android_acceptance": false,
+  "real_device_used": false,
+  "virtualization_used": false
+}

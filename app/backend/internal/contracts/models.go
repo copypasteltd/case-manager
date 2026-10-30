@@ -162,6 +162,7 @@ type PartyReference struct {
 	Kind       string `json:"kind"`
 }
 type Filter struct {
+	CompanyOnly              bool
 	Query, Lifecycle, Cursor string
 	ProjectID                *string
 	Limit                    int

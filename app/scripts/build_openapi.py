@@ -1508,6 +1508,10 @@ add("ProjectOverviewBudget", overview_budget, tuple(overview_budget))
 overview = {"project_id": ID, "project_version": VERSION, "as_of": TIME, "scope": {"const": "readable_records"}, "groups": array(ref("ProjectOverviewGroup"), minItems=16, maxItems=16), "incurred": ref("ProjectIncurred"), "budgets": array(ref("ProjectOverviewBudget"))}
 add("ProjectOverview", overview, tuple(overview))
 operation("/projects/{id}/overview", "get", "getProjectOverview", "ProjectOverview")
+business_kinds = enum("contracts", "purchases", "claims", "costs", "payments", "subscriptions")
+add("ProjectBusinessCapability", {"kind": business_kinds, "can_create": {"type": "boolean"}, "blocked_reason": nullable(enum("project_read_only", "classification_requires_grant", "not_authorized"))}, ("kind", "can_create", "blocked_reason"))
+add("ProjectBusinessContext", {"scope": {"const": "project_business"}, "as_of": TIME, "project": ref("Project"), "capabilities": array(ref("ProjectBusinessCapability"), minItems=6, maxItems=6)}, ("scope", "as_of", "project", "capabilities"))
+operation("/projects/{id}/business-context", "get", "getProjectBusinessContext", "ProjectBusinessContext")
 operation("/projects/{id}/members", "get", "getProjectMembers", "ProjectMembers")
 operation("/projects/{id}/members", "post", "changeProjectMember", "Project", "ProjectMemberChange")
 operation("/projects/{id}/member-candidates", "get", "listProjectMemberCandidates", "ProjectMembers")
@@ -1737,7 +1741,7 @@ operation("/reports/expenses", "get", "readIncurredCosts", "CostReport")
 cost_filters = [{"name": key, "in": "query", "schema": value} for key,value in {
     "q": {"type": "string", "maxLength": 200}, "state": enum("draft", "confirmed", "reversed", "incurred"), "currency": CURRENCY,
     "category": {"type": "string", "maxLength": 50}, "from": DATE, "to": DATE, "project_id": ID, "company_only": {"type": "boolean"}}.items()]
-PATHS["/costs"]["get"]["parameters"] += cost_filters
+PATHS["/costs"]["get"]["parameters"] += cost_filters + [{"name":"project_records","in":"query","description":"Project-owned records or actual project shares; list navigation only, requires project_id. Does not change report valuation.","schema":{"type":"boolean"}}]
 PATHS["/reports/expenses"]["get"]["parameters"] += [v for v in cost_filters if v["name"] not in ("q", "state")] + [{"name": "kind", "in": "query", "schema": enum("incurred")}]
 operation("/payments/{id}/record", "post", "recordPayment", "Payment", "PaymentRecord")
 operation("/payments/{id}/allocations", "post", "allocatePayment", "Payment", "PaymentAllocate")
@@ -1760,7 +1764,7 @@ operation("/payments/{id}/fees/{fee}/revoke", "post", "revokePaymentFee", "Payme
 operation("/claims/{id}/settlement", "get", "readClaimSettlement", "ClaimSettlement")
 operation("/reports/cash", "get", "readCashReport", "CashReport")
 payment_filters = [v for v in cost_filters if v["name"] != "state"] + [{"name": "state", "in": "query", "schema": enum("draft", "recorded", "reversed", "cash")}, {"name": "direction", "in": "query", "schema": enum("outgoing", "incoming", "refund", "transfer")}]
-PATHS["/payments"]["get"]["parameters"] += payment_filters
+PATHS["/payments"]["get"]["parameters"] += payment_filters + [{"name":"project_records","in":"query","description":"Project-owned records or actual project shares; list navigation only, requires project_id.","schema":{"type":"boolean"}}]
 PATHS["/reports/cash"]["get"]["parameters"] += [v for v in payment_filters if v["name"] not in ("q", "state", "direction")]
 
 operation("/conversations", "get", "listConversations", "Conversation", listing=True)
@@ -1899,6 +1903,8 @@ for route, entity in (("purchases", "Purchase"), ("claims", "Claim")):
         {"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 200}}, {"name": "project_id", "in": "query", "schema": ID},
         {"name": "lifecycle", "in": "query", "schema": spend_record["lifecycle"] if route == "purchases" else enum("draft", "requested")},
         {"name": "approval_state", "in": "query", "schema": spend_record["approval_state"]}])
+for business_route in ("contracts", "purchases", "claims"):
+    PATHS["/"+business_route]["get"]["parameters"].append({"name":"company_only","in":"query","schema":{"type":"boolean"}})
 PATHS["/contracts"]["get"]["parameters"].extend([
     {"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 200}},
     {"name": "project_id", "in": "query", "schema": ID}, {"name": "trashed", "in": "query", "schema": {"type": "boolean"}},

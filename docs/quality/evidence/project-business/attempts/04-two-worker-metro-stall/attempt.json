@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "Owned two-worker Metro did not advance for over six minutes. Stopped only that process tree; no build pass claimed. Application code stayed unchanged. The new explicit single-worker local JS compilation adapter preserves the native no-Expo map guard; repeat all selected checks against the changed verification plan.",
+  "application_source_changed": false,
+  "checks_reexecuted_for_new_plan": true
+}

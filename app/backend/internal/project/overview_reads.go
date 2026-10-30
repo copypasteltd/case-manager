@@ -58,10 +58,10 @@ func overviewQueries() []overviewQuery {
 	return append(queries,
 		overviewQuery{"costs", "cost.read", "cost", `SELECT c.id,c.version,r.id revision_id,r.title,c.state,c.updated_at FROM actual_cost_entries c JOIN cost_revisions r ON r.org_id=c.org_id AND r.cost_id=c.id AND r.id=c.current_revision_id
 			WHERE c.org_id=$1 AND can_read_cost(c.org_id,$3,c.id,r.id,$4,$5)
-			AND EXISTS(SELECT 1 FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id=$2)`},
+			AND (c.project_id=$2 OR EXISTS(SELECT 1 FROM cost_allocations a WHERE a.org_id=c.org_id AND a.revision_id=r.id AND a.project_id=$2))`},
 		overviewQuery{"payments", "payment.read", "payment", `SELECT p.id,p.version,r.id revision_id,r.title,p.state,p.updated_at FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.payment_id=p.id AND r.id=p.current_revision_id
 			WHERE p.org_id=$1 AND can_read_payment(p.org_id,$3,p.id,$4,$5)
-			AND (EXISTS(SELECT 1 FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id=$2)
+			AND (p.project_id=$2 OR EXISTS(SELECT 1 FROM payment_allocations a JOIN payment_allocation_shares sh ON sh.org_id=a.org_id AND sh.allocation_id=a.id WHERE a.org_id=p.org_id AND a.payment_id=p.id AND sh.project_id=$2)
 			OR contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),$2)>0)`},
 		overviewQuery{"subscriptions", "subscription.read", "subscription", `SELECT s.id,s.version,r.id revision_id,r.product title,s.state,s.updated_at FROM subscriptions s
 			JOIN subscription_revisions r ON r.org_id=s.org_id AND r.subscription_id=s.id AND r.id=s.current_revision_id WHERE s.org_id=$1 AND s.project_id=$2 AND can_read_subscription(s.org_id,$3,s.id,$4,$5)`},

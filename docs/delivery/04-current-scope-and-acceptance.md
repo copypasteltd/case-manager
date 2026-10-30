@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量124已接通项目内六类业务的固定范围新建、查询和返回，并补齐共享移动订阅管理／账期核对。项目归属草稿查询与实际金额汇总分开；保存草稿不表示送审、费用确认、付款或供应方启用。见[设计与操作](../development/124-project-business-journeys.md)及[检查记录](../quality/124-project-business-verification.md)。完整业务旅程及公司规则继续开放，当前仍23 active／5 excluded。
+
 增量123补充：复杂 DOCX 已进入固定版本的正文预览、当前版本检索、完整文字比较及秘书资料读取；`docx-v2` 单独保存，不覆盖旧提取证据。修订保留、字段不计算，引用关系／限额／原件边界见[实现与使用](../development/123-docx-text-extraction.md)。PDF／OCR、Office创建编辑及真实样本核对仍开放；23项和5项移出保持不变。
 
 增量122：GAP-08／18增加负责人服务事件、创建者当前文件存储待办与四端详情处置；共享移动端新增人工副本重试，完整字节校验完成后才消除待办。更多聚合、真实云故障／送达、公司规则和完整业务验收仍开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/122-operations-workbench.md)与[核验](../quality/122-operations-workbench-verification.md)。

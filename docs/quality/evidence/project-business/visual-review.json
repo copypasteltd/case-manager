@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-30T11:36:28.895358+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/project-business-web-hub.png",
+      "sha256": "9588e16dfde1c94e45511529f53fdd7b94389778cf3f5999c2509d5dcfb4a4c3",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/project-business-web-draft.png",
+      "sha256": "6ef2a07404d6e18bb04534e10707a94912afbdfb1d56496287d1107cc92ae58a",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/project-business-web-subscription.png",
+      "sha256": "47c6d0ee6db2ff52c44a18c8b3bbbb9ee470410bd9f8aa08ea7c62765a8ca13b",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/videos/project-business-web.mp4",
+      "sha256": "c5651c3f99a9af4cffdf357e7a7bc317da91a13ebd85d324b327bd0ec826377c",
+      "bytes": 1135151,
+      "reviewed": true,
+      "method": "Decoded and viewed actual opening/middle/end MP4 samples and opening Web capture frames; genuine loading states retained, not every frame reviewed.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/gifs/project-business-web.gif",
+      "sha256": "fb22fb44566506598f73d3b8c37c2dfb60b69418f2c0fc3693290393a66ac527",
+      "bytes": 193592,
+      "reviewed": true,
+      "method": "Decoded and viewed all three actual screenshot-tour stages; two seconds each, not a realtime recording.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/project-business-mobile-hub.png",
+      "sha256": "1ab07d19194474b0129ac0a8eea5f84358d0c811d8f743f6e69696bf83a6fb16",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/project-business-mobile-draft.png",
+      "sha256": "6901c468e6de08433f10b8dceb930ed2582dee5f2c50d8a1fc20cdf99400b2a1",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/project-business-mobile-subscription.png",
+      "sha256": "3223c245f56602654d2c8458cb1f03f313f0e34dacd1af9df55f9ed2562420a5",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/videos/project-business-mobile.mp4",
+      "sha256": "ab619af9984c7bcc305fea06734d542bfe1947b73d5bb59ad3e491f971214889",
+      "bytes": 600258,
+      "reviewed": true,
+      "method": "Decoded and viewed actual opening/middle/end MP4 samples and opening Web capture frames; genuine loading states retained, not every frame reviewed.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/gifs/project-business-mobile.gif",
+      "sha256": "e7e3f64dcac9ab526ddcecd9986d1f04330cb0e7c9b63dd50201e953e38ba9ba",
+      "bytes": 78518,
+      "reviewed": true,
+      "method": "Decoded and viewed all three actual screenshot-tour stages; two seconds each, not a realtime recording.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    }
+  ],
+  "notes": [
+    "Six PNG screenshots viewed individually; four MP4/GIF contact sheets decoded and viewed.",
+    "Web hub screenshot captures capability loading. Actual frame1 at616ms shows all six ready actions; each action was then exercised. No invented still image or removed loading state.",
+    "Actual mobile period waiver occurred after MP4 recording stopped. Result appears in the third PNG and GIF stage; no MFA pixels were recorded.",
+    "MP4 captures genuine six-module creation with loading and navigation states. GIFs explicitly tour three screenshots, not live screen recordings.",
+    "Synthetic data only; no physical-device, real cloud/model or every-frame review claim."
+  ]
+}

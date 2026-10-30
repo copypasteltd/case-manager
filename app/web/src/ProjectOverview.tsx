@@ -4,6 +4,7 @@ import { ArrowUpRight, RefreshCw } from 'lucide-react';
 import { api, type Schemas } from './api';
 import { Busy, date, ErrorNotice } from './components';
 import './project-overview.css';
+import { ProjectBusinessHub } from './ProjectBusinessHub';
 
 type Overview = Schemas['ProjectOverview'];
 type Group = Schemas['ProjectOverviewGroup'];
@@ -60,7 +61,7 @@ function OverviewCard({ group, projectID }: { group: Group; projectID: string })
       {group.has_more && <p className="form-note">仅预览最近 {group.items.length} 项，共 {group.count} 项可读记录。</p>}
       {url && <Link className="text-button" to={url}>查看{labels[group.kind]}<ArrowUpRight size={14} /></Link>}
       {group.kind === 'services' && <p className="form-note">这里展示服务配置；打开服务后核对当前健康状态。</p>}
-      {group.kind === 'payments' && <p className="form-note">按费用分配与合同现金归属关联；登记金额不计入发生支出。</p>}
+      {group.kind === 'payments' && <p className="form-note">包含本项目资料、费用分配与合同现金归属；登记金额不计入发生支出。</p>}
     </>}
   </article>;
 }
@@ -90,5 +91,5 @@ export function ProjectOverviewContent({ projectID, data, pending, error, refres
 
 export default function ProjectOverview({ projectID }: { projectID: string }) {
   const query = useQuery({ queryKey: ['project-overview', projectID], queryFn: ({ signal }) => api<Overview>('/projects/' + projectID + '/overview', { signal }), refetchInterval: 60000 });
-  return <ProjectOverviewContent projectID={projectID} data={query.data} pending={query.isPending} error={query.error} refreshing={query.isFetching} onRefresh={() => void query.refetch()} />;
+  return <><ProjectBusinessHub projectID={projectID} /><ProjectOverviewContent projectID={projectID} data={query.data} pending={query.isPending} error={query.error} refreshing={query.isFetching} onRefresh={() => void query.refetch()} /></>;
 }

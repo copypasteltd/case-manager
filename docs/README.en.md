@@ -1,5 +1,21 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Increment124 connects six project business journeys: open the project, create a contract/purchase/claim/cost/payment/subscription draft, save, then return to the same filtered collection. Project-owned unallocated finance drafts are discoverable; reports still value actual allocations. A saved draft does not create incurred expense or bank cash.
+
+Shared mobile pages now support subscription creation/editing, lifecycle and vendor checks, prices, period generation, unexpected periods, archive/history restoration, cost linking, human period review, waiver/void/reopen and immutable history. Sensitive commands require fresh MFA; internal forecasts, vendor state, costs and bank payments remain separate.
+
+Usage: project overview → business actions → create or view a collection. Open subscription details for management and period details for exact cost/evidence review. Explicitly leave the project scope to see all readable records. This changes application code, using unchanged schema94.
+
+[Design and usage](development/124-project-business-journeys.md) · [Executed checks and build scope](quality/124-project-business-verification.md) · [All23 remaining packages](delivery/03-goal-gap-assessment.md)
+
+Current checks cover339 Web,434 portable mobile and94 selected native HTTP/PG result records, workspace types and current Web/mini-program/Android JavaScript compilation. The Android bundle uses the published four-worker Metro Windows filesystem adapter with the native no-Expo guard; it is not an APK. MP4s record six-module creation; the MFA-backed mobile period waiver happens after recording and appears in the result screenshot/GIF. Prior121 full regression/runtime/APK keep their original source binding. All23 packages and five exclusions remain open/explicit; local partial checks do not establish production readiness.
+
+![Project cost drafts](media/screenshots/project-business-web-draft.png)
+
+[Actual Web recording](media/videos/project-business-web.mp4) · [Actual mobile recording](media/videos/project-business-mobile.mp4) · [Mobile screenshot tour](media/gifs/project-business-mobile.gif)
+
+## 已发布历史 / Published history
+
 Increment123 connects complex Word text to exact-version previews, current-head search, full text comparison and selected secretary sources. Referenced headers/footers, footnotes/endnotes/comments, table cells, textboxes, inserted/deleted/moved prose and inert field caches are included. The new `docx-v2` identity preserves existing `text-v1` evidence and queued execution semantics.
 
 Usage: upload DOCX on Web/Android → scan and verify an exact replica → run the independent text worker → search a clause or comment → open that formal version's text. Explicitly choose two versions for comparison, or select the exact file version in a secretary conversation. WeChat/Douyin share the read/compare pages. Extraction is bounded to8 MiB source and2 MiB output; it does not change upload limits. Revisions remain unaccepted, fields are not executed, caches can be stale; original layout, inherited styles and pagination require the original.

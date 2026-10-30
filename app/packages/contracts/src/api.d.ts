@@ -722,6 +722,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/projects/{id}/business-context": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getProjectBusinessContext */
+        get: operations["getProjectBusinessContext"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/projects/{id}/members": {
         parameters: {
             query?: never;
@@ -12403,6 +12420,24 @@ export interface components {
             data: components["schemas"]["ProjectOverview"];
             meta: components["schemas"]["Meta"];
         };
+        ProjectBusinessCapability: {
+            /** @enum {string} */
+            kind: "contracts" | "purchases" | "claims" | "costs" | "payments" | "subscriptions";
+            can_create: boolean;
+            blocked_reason: ("project_read_only" | "classification_requires_grant" | "not_authorized") | null;
+        };
+        ProjectBusinessContext: {
+            /** @constant */
+            scope: "project_business";
+            /** Format: date-time */
+            as_of: string;
+            project: components["schemas"]["Project"];
+            capabilities: components["schemas"]["ProjectBusinessCapability"][];
+        };
+        ProjectBusinessContextResponse: {
+            data: components["schemas"]["ProjectBusinessContext"];
+            meta: components["schemas"]["Meta"];
+        };
         ProjectMembersResponse: {
             data: components["schemas"]["ProjectMembers"];
             meta: components["schemas"]["Meta"];
@@ -15757,6 +15792,40 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProjectOverviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getProjectBusinessContext: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBusinessContextResponse"];
                 };
             };
             400: components["responses"]["Failure"];
@@ -21945,6 +22014,8 @@ export interface operations {
                 to?: string;
                 project_id?: string;
                 company_only?: boolean;
+                /** @description Project-owned records or actual project shares; list navigation only, requires project_id. Does not change report valuation. */
+                project_records?: boolean;
             };
             header?: never;
             path?: never;
@@ -22150,6 +22221,8 @@ export interface operations {
                 company_only?: boolean;
                 state?: "draft" | "recorded" | "reversed" | "cash";
                 direction?: "outgoing" | "incoming" | "refund" | "transfer";
+                /** @description Project-owned records or actual project shares; list navigation only, requires project_id. */
+                project_records?: boolean;
             };
             header?: never;
             path?: never;
@@ -25585,6 +25658,7 @@ export interface operations {
             query?: {
                 cursor?: string;
                 limit?: number;
+                company_only?: boolean;
                 q?: string;
                 project_id?: string;
                 trashed?: boolean;
@@ -25746,6 +25820,7 @@ export interface operations {
                 project_id?: string;
                 lifecycle?: "draft" | "requested" | "ordering" | "receiving" | "cancelled" | "completed";
                 approval_state?: "not_submitted" | "in_review" | "approved" | "returned" | "rejected" | "withdrawn";
+                company_only?: boolean;
             };
             header?: never;
             path?: never;
@@ -26018,6 +26093,7 @@ export interface operations {
                 project_id?: string;
                 lifecycle?: "draft" | "requested";
                 approval_state?: "not_submitted" | "in_review" | "approved" | "returned" | "rejected" | "withdrawn";
+                company_only?: boolean;
             };
             header?: never;
             path?: never;

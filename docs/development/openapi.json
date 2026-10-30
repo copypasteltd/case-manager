@@ -3798,6 +3798,82 @@
         }
       }
     },
+    "/projects/{id}/business-context": {
+      "get": {
+        "operationId": "getProjectBusinessContext",
+        "tags": [
+          "projects"
+        ],
+        "summary": "getProjectBusinessContext",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBusinessContextResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/projects/{id}/members": {
       "get": {
         "operationId": "getProjectMembers",
@@ -18183,6 +18259,14 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "project_records",
+            "in": "query",
+            "description": "Project-owned records or actual project shares; list navigation only, requires project_id. Does not change report valuation.",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -18688,6 +18772,14 @@
                 "refund",
                 "transfer"
               ]
+            }
+          },
+          {
+            "name": "project_records",
+            "in": "query",
+            "description": "Project-owned records or actual project shares; list navigation only, requires project_id.",
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -26662,6 +26754,13 @@
             }
           },
           {
+            "name": "company_only",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "q",
             "in": "query",
             "schema": {
@@ -27075,6 +27174,13 @@
                 "rejected",
                 "withdrawn"
               ]
+            }
+          },
+          {
+            "name": "company_only",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -27722,6 +27828,13 @@
                 "rejected",
                 "withdrawn"
               ]
+            }
+          },
+          {
+            "name": "company_only",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -71196,6 +71309,92 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProjectOverview"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "ProjectBusinessCapability": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "contracts",
+              "purchases",
+              "claims",
+              "costs",
+              "payments",
+              "subscriptions"
+            ]
+          },
+          "can_create": {
+            "type": "boolean"
+          },
+          "blocked_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "project_read_only",
+                  "classification_requires_grant",
+                  "not_authorized"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "can_create",
+          "blocked_reason"
+        ]
+      },
+      "ProjectBusinessContext": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "const": "project_business"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectBusinessCapability"
+            },
+            "minItems": 6,
+            "maxItems": 6
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "scope",
+          "as_of",
+          "project",
+          "capabilities"
+        ]
+      },
+      "ProjectBusinessContextResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProjectBusinessContext"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

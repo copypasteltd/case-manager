@@ -150,6 +150,7 @@ type ClaimSettlement struct {
 	Visibility        string  `json:"visibility"`
 }
 type PaymentFilter struct {
+	ProjectRecords                                                bool
 	Query, State, Direction, Currency, Category, From, To, Cursor string
 	ProjectID                                                     *string
 	CompanyOnly                                                   bool

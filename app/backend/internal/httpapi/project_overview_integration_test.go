@@ -235,8 +235,8 @@ func TestProjectOverview(t *testing.T) {
 				return finance.Base{ExpectedVersion: p.Version, RevisionID: p.CurrentRevisionID, ContentHash: p.ContentHash, Reason: "exact synthetic cash snapshot"}
 			}
 			before := overviewGroup(t, read(t, f.aliceToken, pid), "payments")
-			if *before.Count != 0 {
-				t.Fatal("unallocated payment draft invented an allocation")
+			if *before.Count != 1 || len(before.Items) != 1 || before.Items[0].ID != payment.ID || before.Items[0].State != "draft" {
+				t.Fatal("project-owned draft must remain findable without inventing a money share")
 			}
 			r, v := f.with(t).request("POST", "/v1/payments/"+payment.ID+"/record", f.aliceToken, core.NewID(), finance.PaymentRecordInput{Base: paymentBase(payment), RefundAllocations: []finance.RefundAllocation{}}, nil)
 			expect(t, r, 200, v)
