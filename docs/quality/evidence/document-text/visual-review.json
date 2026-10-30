@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-30T18:34:03.378100+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/document-text-web-pdf.png",
+      "sha256": "3115bc90d58d2f57dc9bd73bef0140e3498347dc341343179b5073c280881073",
+      "reviewed": true,
+      "review_method": "Original screenshot viewed directly"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-web-image.png",
+      "sha256": "7df170225ae5c403d8ef391554f1d34355ab02ec41e381e6f00d0ca47449c28e",
+      "reviewed": true,
+      "review_method": "Original screenshot viewed directly"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-web-comparison.png",
+      "sha256": "ce6f69499ff78288a484536170cc95162c86b6197f7d4659c8f8acc2fe5cabe6",
+      "reviewed": true,
+      "review_method": "Original screenshot viewed directly"
+    },
+    {
+      "file": "docs/media/videos/document-text-web.mp4",
+      "sha256": "2bdb21868ce6059b00009d2ace25065e61f45283cbbba04a482cea729e0d556a",
+      "bytes": 432761,
+      "reviewed": true,
+      "review_method": "Decoded actual first/middle/last MP4 frames or all three GIF scenes viewed in contact sheets; encoder separately verifies codec/duration/hash"
+    },
+    {
+      "file": "docs/media/gifs/document-text-web.gif",
+      "sha256": "02643e8b2ed3d0bb8eb44365dc1d6e97335809e3eaf3b3b32990db619e0e1248",
+      "bytes": 219483,
+      "reviewed": true,
+      "review_method": "Decoded actual first/middle/last MP4 frames or all three GIF scenes viewed in contact sheets; encoder separately verifies codec/duration/hash"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-pdf.png",
+      "sha256": "bf8d6cc73b00bb6453f8efa7cb0cd3ee5c57180c9fb5e7ae347c14c7ad1f7df0",
+      "reviewed": true,
+      "review_method": "Original screenshot viewed directly"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-image.png",
+      "sha256": "a785ae543916ca438aea09fd8a55724486a0d6cba7092632d62135baabff4a68",
+      "reviewed": true,
+      "review_method": "Original screenshot viewed directly"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-comparison.png",
+      "sha256": "46d4c80f8ddc7bd12c8c332032190e25aa862f85617966c2ba3621008f0403b8",
+      "reviewed": true,
+      "review_method": "Original screenshot viewed directly"
+    },
+    {
+      "file": "docs/media/videos/document-text-mobile.mp4",
+      "sha256": "26932014d3385e8569dd815e9ce055bb8fa696816b484a656f935df63d4743b9",
+      "bytes": 405728,
+      "reviewed": true,
+      "review_method": "Decoded actual first/middle/last MP4 frames or all three GIF scenes viewed in contact sheets; encoder separately verifies codec/duration/hash"
+    },
+    {
+      "file": "docs/media/gifs/document-text-mobile.gif",
+      "sha256": "de6d46996ef4987e8b43e879c9e89aaa07b35aeb362ff887c3ec1cf7bfe30d02",
+      "bytes": 117264,
+      "reviewed": true,
+      "review_method": "Decoded actual first/middle/last MP4 frames or all three GIF scenes viewed in contact sheets; encoder separately verifies codec/duration/hash"
+    }
+  ],
+  "actual_media_reviewed": true,
+  "checks": [
+    "Both clients show native original/text evidence and complete page counts with OCR limitations.",
+    "PDF/image body previews and desktop line differences are visible; mobile selection, native page proof and scrollable version basis remain legible.",
+    "No passwords, OTP/MFA enrollment secret or real business records are present.",
+    "MP4 frames show actual post-MFA navigation; GIFs show three real screenshot scenes and are labelled screenshot tours."
+  ],
+  "observations": [
+    "Generic comparison-format examples retain the prior text/Office wording; actual PDF/image options and separate OCR/page notices are present. Further wording and full mobile difference presentation remain part of GAP-18 interface acceptance.",
+    "Derived PDF OCR can omit Chinese text seen in the direct image OCR; every page is processed, not every character guaranteed. Real sample/OCR quality acceptance remains GAP-04."
+  ],
+  "production_acceptance": false,
+  "arbitrary_ocr_accuracy_accepted": false
+}

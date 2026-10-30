@@ -57,7 +57,7 @@ func TestFileTextSearch(t *testing.T) {
 		t.Fatal(e)
 	}
 	docx := add("设计说明.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", docxBytes.Bytes(), nil)
-	unsupported := add("图纸.pdf", "application/pdf", []byte("%PDF fixture"), nil)
+	unsupported := add("图纸.gif", "image/gif", []byte("GIF89a fixture"), nil)
 	invalid := add("无效编码.txt", "text/plain", []byte{0xff, 0xfe}, nil)
 	cloud.readFn = func(ctx context.Context, source objectstore.Source, offset, length int64) (objectstore.ReadResult, error) {
 		if hook != nil {

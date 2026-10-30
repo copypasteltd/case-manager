@@ -53,7 +53,7 @@ func TestAgentFileText(t *testing.T) {
 	current := add("秘书有界正文.md", "text/markdown", currentBody, &old)
 	invalid := add("不支持的编码.txt", "text/plain", []byte{0xff, 0xfe, 0x61}, nil)
 	zero := add("包含空字节.txt", "text/plain", []byte{'a', 0, 'b'}, nil)
-	binary := add("未适配的文档.pdf", "application/pdf", []byte("%PDF-1.4\ncontrolled"), nil)
+	binary := add("未适配的图片.gif", "image/gif", []byte("GIF89a controlled"), nil)
 	large := add("超出秘书正文预算.txt", "text/plain", bytes.Repeat([]byte{'a'}, int(storage.AgentTextMaxBytes)+1), nil)
 	limit := add("准确正文预算.txt", "text/plain", bytes.Repeat([]byte{'a'}, int(storage.AgentTextMaxBytes)), nil)
 	legacy := add("未记录历史文件名.txt", "text/plain", []byte("Legacy metadata must be explicitly resolved."), nil)

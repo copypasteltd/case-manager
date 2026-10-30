@@ -16,7 +16,7 @@ def sha(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text'), default='project-business')
     args = parser.parse_args()
     evidence = APP.parent / 'docs/quality/evidence' / args.feature
     spec = importlib.util.spec_from_file_location('current_js_review', APP / 'scripts/verify_scoped_increment.py')
@@ -38,6 +38,8 @@ def main():
         modules = ('mobile/src/pages/finance/cost-payment.tsx', 'mobile/src/pages/finance/index.tsx', 'mobile/src/pages/finance/operations.tsx', 'packages/contracts/src/cost-payment.ts')
     if args.feature == 'file-batch':
         modules = ('mobile/src/pages/files/batches.tsx', 'mobile/src/pages/files/index.tsx', 'mobile/src/pages/files/scope-transfers.tsx', 'packages/contracts/src/file-batch.ts')
+    if args.feature == 'document-text':
+        modules = ('mobile/src/pages/search/index.tsx', 'mobile/src/pages/files/comparison.tsx', 'packages/contracts/src/search.ts', 'packages/contracts/src/file-comparison.ts')
     for name in modules:
         suffix = name if name.startswith('packages/') else name.removeprefix('mobile/')
         indices = [i for i, source in enumerate(paths) if source == suffix or source.endswith('/' + suffix)]

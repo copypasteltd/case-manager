@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T18:30:14.299641+00:00",
+  "encoder_script_sha256": "89f6195546756e5d84687ecdac2545e5a2c71e9bb076c3bf63d45598cb23ef5d",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "9644b3f5161647550d3a44e649cda2cf15c894082f8cdcacf666811709295d49",
+      "build_source_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+      "capture_manifest": "docs/quality/evidence/document-text/web-capture-manifest.json",
+      "capture_manifest_sha256": "8a3660fa8a36fee2dad9c71f332ab9a8b91271165e5c891c62d67b6082d8127f",
+      "capture_frame_count": 22,
+      "capture_duration_ms": 4653,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/document-text-web-pdf.png",
+          "sha256": "3115bc90d58d2f57dc9bd73bef0140e3498347dc341343179b5073c280881073"
+        },
+        {
+          "file": "docs/media/screenshots/document-text-web-image.png",
+          "sha256": "7df170225ae5c403d8ef391554f1d34355ab02ec41e381e6f00d0ca47449c28e"
+        },
+        {
+          "file": "docs/media/screenshots/document-text-web-comparison.png",
+          "sha256": "ce6f69499ff78288a484536170cc95162c86b6197f7d4659c8f8acc2fe5cabe6"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "48",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/document-text-web.mp4",
+          "sha256": "2bdb21868ce6059b00009d2ace25065e61f45283cbbba04a482cea729e0d556a",
+          "bytes": 432761
+        },
+        {
+          "file": "docs/media/gifs/document-text-web.gif",
+          "sha256": "02643e8b2ed3d0bb8eb44365dc1d6e97335809e3eaf3b3b32990db619e0e1248",
+          "bytes": 219483
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "0f9e4090631f2909d5e13f2a4cc44854b8990e826e54cbce97db95718d0a7a1a",
+      "build_source_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+      "capture_manifest": "docs/quality/evidence/document-text/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "31ef4a6ffe1d57e8bb25efefcee2013d2fd21774f19bc4a843a05f691080f881",
+      "capture_frame_count": 37,
+      "capture_duration_ms": 7745,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/document-text-mobile-pdf.png",
+          "sha256": "bf8d6cc73b00bb6453f8efa7cb0cd3ee5c57180c9fb5e7ae347c14c7ad1f7df0"
+        },
+        {
+          "file": "docs/media/screenshots/document-text-mobile-image.png",
+          "sha256": "a785ae543916ca438aea09fd8a55724486a0d6cba7092632d62135baabff4a68"
+        },
+        {
+          "file": "docs/media/screenshots/document-text-mobile-comparison.png",
+          "sha256": "46d4c80f8ddc7bd12c8c332032190e25aa862f85617966c2ba3621008f0403b8"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "79",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/document-text-mobile.mp4",
+          "sha256": "26932014d3385e8569dd815e9ce055bb8fa696816b484a656f935df63d4743b9",
+          "bytes": 405728
+        },
+        {
+          "file": "docs/media/gifs/document-text-mobile.gif",
+          "sha256": "de6d46996ef4987e8b43e879c9e89aaa07b35aeb362ff887c3ec1cf7bfe30d02",
+          "bytes": 117264
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic PDF/image OCR preview, exact-version comparison and secretary-source reads on Web/H5. MP4 uses actual viewport frames after MFA. GIF explicitly tours three actual screenshots, two seconds each; not a continuous recording. Native extraction is real; object storage is synthetic. No device, cloud, model, production or arbitrary OCR accuracy acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/document-text-web-pdf.png",
+      "sha256": "3115bc90d58d2f57dc9bd73bef0140e3498347dc341343179b5073c280881073"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-web-image.png",
+      "sha256": "7df170225ae5c403d8ef391554f1d34355ab02ec41e381e6f00d0ca47449c28e"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-web-comparison.png",
+      "sha256": "ce6f69499ff78288a484536170cc95162c86b6197f7d4659c8f8acc2fe5cabe6"
+    },
+    {
+      "file": "docs/media/videos/document-text-web.mp4",
+      "sha256": "2bdb21868ce6059b00009d2ace25065e61f45283cbbba04a482cea729e0d556a",
+      "bytes": 432761
+    },
+    {
+      "file": "docs/media/gifs/document-text-web.gif",
+      "sha256": "02643e8b2ed3d0bb8eb44365dc1d6e97335809e3eaf3b3b32990db619e0e1248",
+      "bytes": 219483
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-pdf.png",
+      "sha256": "bf8d6cc73b00bb6453f8efa7cb0cd3ee5c57180c9fb5e7ae347c14c7ad1f7df0"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-image.png",
+      "sha256": "a785ae543916ca438aea09fd8a55724486a0d6cba7092632d62135baabff4a68"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-comparison.png",
+      "sha256": "46d4c80f8ddc7bd12c8c332032190e25aa862f85617966c2ba3621008f0403b8"
+    },
+    {
+      "file": "docs/media/videos/document-text-mobile.mp4",
+      "sha256": "26932014d3385e8569dd815e9ce055bb8fa696816b484a656f935df63d4743b9",
+      "bytes": 405728
+    },
+    {
+      "file": "docs/media/gifs/document-text-mobile.gif",
+      "sha256": "de6d46996ef4987e8b43e879c9e89aaa07b35aeb362ff887c3ec1cf7bfe30d02",
+      "bytes": 117264
+    }
+  ]
+}

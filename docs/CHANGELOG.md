@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## 2026-10-31 · Increment128 · PDF／图片正文与OCR / Native document text
+
+- 接通PDF逐页内嵌文字＋OCR、PNG／JPEG、完整页数和固定原生引擎证据，复用四端预览／搜索／比较／秘书资料入口。
+- 原件8 MiB、PDF20页、输出2 MiB及时间／图像上限；加密、损坏、超限、中途失败不发布部分正文。迟发撤回、源摘要／权限／扫描变化继续阻止读取与发布。
+- 正常结构升级95→96；旧算法及终态保留。原生工具／三语言模型按SHA固定，子进程不继承数据库、云、模型或TG凭据。
+- 实际原生解析、六组选定HTTP／PG、390 Web／476共享移动、四端构建及真实Web／H5流程；更新双语使用说明和6PNG／2MP4／2导览GIF。旧121完整回归／开发APK及127原证据保留原来源。
+- 发布候选和暂存核对采用最多8路独立文件读取，执行完整字节、凭据、链接、历史证据、素材与暂存一致性检查。 Publication checks overlap up to eight file reads while checking every original byte and rule.
+- Keep all23 packages, five exclusions and eight draft Skills. Real-sample OCR/Office authoring/layout and formal platform/cloud/model/production acceptance remain open. See [design](development/128-document-text-ocr.md), [executed checks](quality/128-document-text-verification.md) and [all remaining work](delivery/05-functional-closure-128.md).
+
 ## Increment127 · 固定清单文件批量整理 / Human batch file plans
 
 - Web／共享微信／抖音／Android：1至50个文件明确多选、同范围移动、回收、恢复，实际目录选择与逐项固定清单。

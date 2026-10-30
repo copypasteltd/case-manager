@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量128：GAP-04／12／18增加PDF逐页内嵌文字＋OCR、PNG／JPEG、固定完整页数和引擎依据，以及四端搜索／预览／比较／秘书资料复用。原件不改、旧提取结果保留；更多真实样本、Office编辑／版式及真实云／模型／平台／生产验收继续开放，23 active（14 P0／9 P1）和5 excluded不变。见[实现与使用](../development/128-document-text-ocr.md)与[实际检查](../quality/128-document-text-verification.md)。
+
 费用付款核销126：GAP-02／03／18已增加四端准确费用入口、实际现金与核销额独立输入、供应方部分核销、人工异币及批准员工垫付。普通资金创建／登记／分配一次PG事务，未分配资金与原费用保留，失败业务完整回滚。完整公司制度及业务验收仍开放；23 active（14 P0／9 P1）、5 excluded。见[实现与使用](../development/126-cost-payment-settlement.md)与[核验](../quality/126-cost-payment-verification.md)。
 
 BUSINESS-COST-125：从批准合同／采购／报销直接登记实际费用，人工核对、近期MFA、准确来源、原子确认关联、并发额度和完整失败回滚已进入实际应用与四端共享页面；实际费用及银行付款继续分开。见[实现与使用](../development/125-business-cost-recording.md)与[核验](../quality/125-business-cost-verification.md)。当前23 active（14 P0／9 P1）、5 excluded；完整公司制度和业务旅程继续开放。

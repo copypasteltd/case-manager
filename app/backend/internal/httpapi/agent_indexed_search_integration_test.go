@@ -122,7 +122,7 @@ func TestAgentIndexedSearch(t *testing.T) {
 	t.Run("pending_is_explicit_without_object_read", func(t *testing.T) {
 		before := cloud.reads.Load()
 		preview(pending, 0, 5, 409)
-		preview(pdf, 0, 5, 422)
+		preview(pdf, 0, 5, 409)
 		if cloud.reads.Load() != before {
 			t.Fatal("pending preview fetched an original")
 		}
@@ -334,10 +334,10 @@ func TestAgentIndexedSearch(t *testing.T) {
 			t.Fatal("company source escaped project namespace")
 		}
 	})
-	t.Run("unsupported_files_have_explicit_metadata_only_hits", func(t *testing.T) {
+	t.Run("disabled_native_worker_keeps_explicit_pending_metadata_only_hits", func(t *testing.T) {
 		items, _, code := search("unsupported-query", "尚未提取", []string{"file"}, 20, "")
-		if code != "" || len(items) != 1 || items[0].ID != pdf.File.ID || items[0].Index == nil || items[0].Index.State != "unsupported" || items[0].Snippet != "" {
-			t.Fatal("unsupported format misrepresented", code)
+		if code != "" || len(items) != 1 || items[0].ID != pdf.File.ID || items[0].Index == nil || items[0].Index.State != "pending" || items[0].Index.Extractor != storage.DocumentTextExtractor || items[0].Snippet != "" {
+			t.Fatal("native pending format misrepresented", code)
 		}
 	})
 	t.Run("fixed_historical_DOCX_read_and_replay_need_no_cloud", func(t *testing.T) {

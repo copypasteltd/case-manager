@@ -1,5 +1,7 @@
 # 文件、目录、版本、检索与复制需求
 
+增量128实际代码补充：PDF、扫描PDF、PNG及JPEG按准确正式版本生成有界派生正文；PDF每页内嵌文字与OCR分别标注，所有页成功后发布，完整页数和引擎摘要固定。四端搜索、预览、比较和秘书资料复用同一证据。8 MiB／20页／2 MiB为当前提取边界，120GB原件上传目标独立。OCR误读、简繁体、版式及真实样本验收按[实现约束](../development/128-document-text-ocr.md)；Office创建编辑与更多真实格式验收继续开放。
+
 增量123补充：复杂 DOCX 已进入固定版本的正文预览、当前版本检索、完整文字比较及秘书资料读取；`docx-v2` 单独保存，不覆盖旧提取证据。修订保留、字段不计算，引用关系／限额／原件边界见[实现与使用](../development/123-docx-text-extraction.md)。PDF／OCR、Office创建编辑及真实样本核对仍开放；23项和5项移出保持不变。
 
 增量120当前补充：XLSX／PPTX已接通有界准确版本正文预览／检索／比较与秘书资料读取；Excel公式与缓存、隐藏内容、PPT备注及明确原件边界见[Office正文设计](../development/120-office-text-extraction.md)。PDF/OCR、Office编辑和复杂DOCX仍开放；范围按[修订99](../delivery/04-current-scope-and-acceptance.md)。

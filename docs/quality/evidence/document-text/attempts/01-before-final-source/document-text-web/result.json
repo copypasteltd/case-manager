@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T18:01:00.992Z",
+  "finished_at": "2026-10-30T18:01:15.025Z",
+  "checks": [
+    "Actual search finds OCR inside current PDF/PNG/JPEG originals with explicit extraction identity and no duplicate legacy rows.",
+    "Actual PDF and image previews bind complete native page evidence, unchanged original hashes and explicit OCR/financial verification limits.",
+    "Actual selected-version comparison binds full page/engine evidence for both PDF versions and preserves original-byte/text equality separation.",
+    "Authenticated secretary-source reads use the same immutable native derivation with object readers removed; no real model was invoked."
+  ],
+  "source_count": 920,
+  "source_sha256": "ff31736fa09d9c2d9bc77f3a4480d51e6a790823d401e99f54129da52c9aba38",
+  "source_after_sha256": "ff31736fa09d9c2d9bc77f3a4480d51e6a790823d401e99f54129da52c9aba38",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "38b13b20eabe2101f7df078214f611e43014cf438f8c556a94251f1bd0627f4e",
+    "source_sha256": "caff246a6b8ef2a3a37d2ff50bd3c7f34b1bbc29f7ebe45e41ea5a4d6c873da8",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "caff246a6b8ef2a3a37d2ff50bd3c7f34b1bbc29f7ebe45e41ea5a4d6c873da8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "caff246a6b8ef2a3a37d2ff50bd3c7f34b1bbc29f7ebe45e41ea5a4d6c873da8",
+  "build_source_unchanged": true
+}

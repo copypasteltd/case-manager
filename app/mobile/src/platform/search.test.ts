@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { test as it } from 'node:test';
+import { documentTextCases } from '../../../packages/contracts/test/document-text-cases';
+for (const [name, check] of documentTextCases) it(name, check);
 function expect(value: unknown) { return { toBe: (other: unknown) => assert.equal(value, other), toThrow: () => assert.throws(value as () => unknown) }; }
 import { checkedSearch, checkedFileText, searchPath, fileTextPath, type SearchHit, type FileText } from '../../../packages/contracts/src/search';
 const file='10000000-0000-4000-8000-000000000001', version='10000000-0000-4000-8000-000000000002', time='2026-10-28T00:00:00Z';

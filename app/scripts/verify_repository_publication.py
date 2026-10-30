@@ -1,5 +1,6 @@
 """Preflight tracked/candidate publication bytes, local links, real media and retained source proofs."""
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import hashlib
 import importlib.util
@@ -50,6 +51,21 @@ def module(filename):
 
 def git(*args):
     return subprocess.check_output(['git', '-C', str(ROOT), *args])
+
+
+def working_bytes(names):
+    """Read every requested file in order, with at most eight reads in flight.
+
+    Windows file-open latency dominates large evidence trees. Keep the existing
+    full-byte checks and bounded memory while overlapping independent reads.
+    """
+    def load(name):
+        return (ROOT / name).read_bytes()
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        for offset in range(0, len(names), 8):
+            batch = names[offset:offset + 8]
+            for name, data in zip(batch, executor.map(load, batch)):
+                yield name, data
 
 
 def object_bytes(names, prefix=':'):
@@ -156,15 +172,15 @@ def main():
     ]
     total, large, forbidden, binary_count, changed_index = 0, [], [], 0, []
     markdown = {}
-    for name in names:
+    for name, working_data in working_bytes(names):
         path = ROOT / name
         parts = PurePosixPath(name).parts
         if any(p in forbidden_parts for p in parts) or any(p in ('dist', 'build') for p in parts if parts[0] == 'app'):
             forbidden.append(name)
         if path.name.startswith('.env') and path.name != '.env.example' or path.suffix.lower() in ('.apk', '.aab', '.jks', '.keystore', '.exe', '.pyc'):
             forbidden.append(name)
-        data = staged_data[name] if args.staged else path.read_bytes()
-        if args.staged and path.read_bytes() != data:
+        data = staged_data[name] if args.staged else working_data
+        if args.staged and working_data != data:
             changed_index.append(name)
         total += len(data)
         if any(value in data for value in known_private):
@@ -210,8 +226,8 @@ def main():
     publication_files = list(dict.fromkeys(publication_files))
     whitespace = []
     whitespace_exceptions = []
-    for name in publication_files:
-        data = staged_data[name] if args.staged else (ROOT / name).read_bytes()
+    publication_bytes = ((name, staged_data[name]) for name in publication_files) if args.staged else working_bytes(publication_files)
+    for name, data in publication_bytes:
         lines = data.splitlines()
         trailing = any(line.endswith((b' ', b'\t')) for line in lines)
         extra_eof = data.endswith((b'\n\n', b'\r\n\r\n'))

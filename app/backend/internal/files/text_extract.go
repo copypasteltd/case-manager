@@ -16,6 +16,7 @@ import (
 )
 
 const TextExtractor = "text-v1"
+const DocumentTextExtractor = "document-ocr-v1"
 const TextSourceMaxBytes int64 = 8 << 20
 const TextOutputMaxBytes = 2 << 20
 
@@ -29,6 +30,9 @@ func TextExtractorFor(mediaType string) string {
 	if base == docxMediaType {
 		return DOCXTextExtractor
 	}
+	if base == "application/pdf" || base == "image/png" || base == "image/jpeg" {
+		return DocumentTextExtractor
+	}
 	return TextExtractor
 }
 
@@ -40,6 +44,10 @@ func textFormat(mediaType string, size int64) (string, error) {
 	base, params, err := mime.ParseMediaType(mediaType)
 	if err != nil || size < 1 {
 		return "", textError("FORMAT_UNSUPPORTED")
+	}
+	if base == "application/pdf" || base == "image/png" || base == "image/jpeg" {
+		if size > TextSourceMaxBytes { return "",textError("SIZE_UNSUPPORTED") }
+		return "native-document",nil
 	}
 	if base == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || base == xlsxMediaType || base == pptxMediaType {
 		if size > TextSourceMaxBytes {
@@ -79,6 +87,7 @@ func extractTextWith(ctx context.Context, mediaType string, body []byte, extract
 	if err = ctx.Err(); err != nil {
 		return "", err
 	}
+	if format == "native-document" { return "",textError("NATIVE_REQUIRED") }
 	if format == "docx" {
 		if extractor == DOCXTextExtractor {
 			return extractComplexDOCX(ctx, body)

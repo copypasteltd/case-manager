@@ -1,0 +1,58 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/document-text-mobile-pdf.png",
+      "sha256": "57be84f82b57f041a55e0dd1e6940efc1dc539c5eeeb278ec09aba3394cdf9f6"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-image.png",
+      "sha256": "e26004df816513872351bcb6cacd599746e88a90003ba2760e9b92063f36ae57"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-mobile-comparison.png",
+      "sha256": "5165d0d62e454ad3b217b6da6976335d35fbbff71cce22176f81433fa01027d5"
+    }
+  ],
+  "recording": {
+    "name": "document-text-mobile",
+    "frame_count": 30,
+    "duration_ms": 7734,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/document-text-mobile/frames.json",
+    "manifest_sha256": "7ae8eefcfc2aacab0865f2803000fc29172d1263f772e133873da43e37302ab7"
+  },
+  "documents": [
+    {
+      "file_id": "526a4e2a-3694-4d54-b2fb-2db943134f1e",
+      "version_id": "5c98a383-f050-457d-8bf1-530decc2b80f",
+      "extractor": "document-ocr-v1",
+      "source_sha256": "1fb1bba56b24e798fd24db78257aa9d7bb8fcfaf1bcb62231d5ed68edf8a1c1c",
+      "text_sha256": "1732f4301d09f0f03fe76922a8d2232bdbc0c2b43f5388db52d53433690d9a9a",
+      "native_evidence": {
+        "engine_sha256": "e81e7517d4399a21457344061252faf3e6cf636a142c2b1d166393c41b8d0fc3",
+        "page_count": 2,
+        "ocr_page_count": 2
+      }
+    },
+    {
+      "file_id": "b5fd89b2-aaf5-4ba6-91d2-c5468f349f38",
+      "version_id": "95ea00cd-a6c0-4dac-9fc3-91f839a13d06",
+      "extractor": "document-ocr-v1",
+      "source_sha256": "396ca3f7c3712419247ee215eae3470368d15db209d8d7a923b6db1a2bbb56af",
+      "text_sha256": "79e5087b999dcab2be08153fcb348b9b55cd4d2ca6ec79dbabe8d9ad62df5f13",
+      "native_evidence": {
+        "engine_sha256": "e81e7517d4399a21457344061252faf3e6cf636a142c2b1d166393c41b8d0fc3",
+        "page_count": 1,
+        "ocr_page_count": 1
+      }
+    }
+  ],
+  "synthetic_data": true,
+  "real_native_extraction": true,
+  "real_model": false,
+  "real_cloud": false
+}

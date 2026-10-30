@@ -33,14 +33,15 @@ type Resource struct {
 	VersionID *string `json:"version_id,omitempty"`
 }
 type Hit struct {
-	Resource   Resource   `json:"resource"`
-	Title      string     `json:"title"`
-	Snippet    string     `json:"snippet"`
-	UpdatedAt  time.Time  `json:"updated_at"`
-	ProjectID  *string    `json:"project_id"`
-	MatchTypes []string   `json:"match_types"`
-	TextState  *string    `json:"text_state"`
-	IndexedAt  *time.Time `json:"indexed_at"`
+	Resource      Resource   `json:"resource"`
+	Title         string     `json:"title"`
+	Snippet       string     `json:"snippet"`
+	UpdatedAt     time.Time  `json:"updated_at"`
+	ProjectID     *string    `json:"project_id"`
+	MatchTypes    []string   `json:"match_types"`
+	TextState     *string    `json:"text_state"`
+	IndexedAt     *time.Time `json:"indexed_at"`
+	TextExtractor *string    `json:"text_extractor,omitempty"`
 }
 type cursor struct {
 	Kind, ID, Binding string
@@ -113,7 +114,8 @@ const query = `WITH RECURSIVE active_folders AS (
 SELECT kind,id,version_id,title,
  CASE WHEN body ILIKE $4 ESCAPE '\' THEN substring(body FROM greatest(1,strpos(lower(body),lower($5))-60)::int FOR 240) ELSE '' END,
  project_id,updated_at,text_state,indexed_at,
- title ILIKE $4 ESCAPE '\',body ILIKE $4 ESCAPE '\',tags ILIKE $4 ESCAPE '\'
+ title ILIKE $4 ESCAPE '\',body ILIKE $4 ESCAPE '\',tags ILIKE $4 ESCAPE '\',
+ CASE WHEN kind='file' THEN (SELECT file_text_extractor(fv.media_type) FROM file_versions fv WHERE fv.org_id=$1 AND fv.id=hits.version_id) ELSE NULL END
  FROM hits WHERE ($6='' OR kind=$6) AND ($7='' OR project_id=NULLIF($7,'')::uuid) AND (NOT $8 OR project_id IS NULL)
  AND (title ILIKE $4 ESCAPE '\' OR body ILIKE $4 ESCAPE '\' OR tags ILIKE $4 ESCAPE '\')
  AND ($9::timestamptz IS NULL OR (updated_at,id,kind)<($9,$10::uuid,$11))
@@ -160,7 +162,7 @@ func (s *Service) Search(ctx context.Context, a core.Actor, f Filter) (core.Page
 	for rows.Next() {
 		var h Hit
 		var name, body, tags bool
-		if err = rows.Scan(&h.Resource.Type, &h.Resource.ID, &h.Resource.VersionID, &h.Title, &h.Snippet, &h.ProjectID, &h.UpdatedAt, &h.TextState, &h.IndexedAt, &name, &body, &tags); err != nil {
+		if err = rows.Scan(&h.Resource.Type, &h.Resource.ID, &h.Resource.VersionID, &h.Title, &h.Snippet, &h.ProjectID, &h.UpdatedAt, &h.TextState, &h.IndexedAt, &name, &body, &tags, &h.TextExtractor); err != nil {
 			rows.Close()
 			return out, err
 		}

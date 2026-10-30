@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T18:24:38.712Z",
+  "finished_at": "2026-10-30T18:25:07.770Z",
+  "checks": [
+    "Actual search finds OCR inside current PDF/PNG/JPEG originals with explicit extraction identity and no duplicate legacy rows.",
+    "Actual PDF and image previews bind complete native page evidence, unchanged original hashes and explicit OCR/financial verification limits.",
+    "Actual selected-version comparison binds full page/engine evidence for both PDF versions and preserves original-byte/text equality separation.",
+    "Authenticated secretary-source reads use the same immutable native derivation with object readers removed; no real model was invoked."
+  ],
+  "source_count": 920,
+  "source_sha256": "9644b3f5161647550d3a44e649cda2cf15c894082f8cdcacf666811709295d49",
+  "source_after_sha256": "9644b3f5161647550d3a44e649cda2cf15c894082f8cdcacf666811709295d49",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "9139e50b181b53fd3e1fa173773bfaa93fc17c33fd2a7e36276aa12b28c92a8f",
+    "source_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+  "build_source_unchanged": true
+}

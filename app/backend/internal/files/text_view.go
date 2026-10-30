@@ -9,18 +9,19 @@ import (
 )
 
 type TextView struct {
-	FileID          string     `json:"file_id"`
-	VersionID       string     `json:"version_id"`
-	Extractor       string     `json:"extractor"`
-	State           string     `json:"state"`
-	SourceSHA256    string     `json:"source_sha256"`
-	TextSHA256      *string    `json:"text_sha256"`
-	IndexedAt       *time.Time `json:"indexed_at"`
-	ErrorCode       *string    `json:"error_code"`
-	TotalCharacters *int       `json:"total_characters"`
-	Offset          int        `json:"offset"`
-	Text            string     `json:"text"`
-	NextOffset      *int       `json:"next_offset"`
+	FileID          string              `json:"file_id"`
+	VersionID       string              `json:"version_id"`
+	Extractor       string              `json:"extractor"`
+	State           string              `json:"state"`
+	SourceSHA256    string              `json:"source_sha256"`
+	TextSHA256      *string             `json:"text_sha256"`
+	IndexedAt       *time.Time          `json:"indexed_at"`
+	ErrorCode       *string             `json:"error_code"`
+	TotalCharacters *int                `json:"total_characters"`
+	Offset          int                 `json:"offset"`
+	Text            string              `json:"text"`
+	NextOffset      *int                `json:"next_offset"`
+	NativeEvidence  *NativeTextEvidence `json:"native_evidence,omitempty"`
 }
 
 func (s *Service) Text(ctx context.Context, a core.Actor, fileID, versionID string, offset, limit int) (TextView, error) {
@@ -65,16 +66,21 @@ func (s *Service) Text(ctx context.Context, a core.Actor, fileID, versionID stri
 		return out, tx.Commit(ctx)
 	}
 	var body string
+	var engine *string
+	var pages, ocr *int
 	err = tx.QueryRow(ctx, `SELECT state,text_sha256,indexed_at,error_code,character_count,
-        coalesce(substring(body FROM $5::int FOR $6::int),'') FROM file_text_derivations
+        coalesce(substring(body FROM $5::int FOR $6::int),''),engine_sha256,page_count,ocr_page_count FROM file_text_derivations
         WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND source_sha256=$7`,
 		a.OrgID, fileID, versionID, out.Extractor, offset+1, limit, v.SHA256).
-		Scan(&out.State, &out.TextSHA256, &out.IndexedAt, &out.ErrorCode, &out.TotalCharacters, &body)
+		Scan(&out.State, &out.TextSHA256, &out.IndexedAt, &out.ErrorCode, &out.TotalCharacters, &body, &engine, &pages, &ocr)
 	if err != nil && err != pgx.ErrNoRows {
 		return out, err
 	}
 	if out.State == "queued" {
 		out.State = "pending"
+	}
+	if out.NativeEvidence, err = nativeTextEvidence(out.Extractor, out.State, engine, pages, ocr); err != nil {
+		return out, err
 	}
 	if out.State == "ready" && out.TotalCharacters != nil {
 		if offset > *out.TotalCharacters {

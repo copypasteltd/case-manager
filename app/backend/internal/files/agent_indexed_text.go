@@ -13,13 +13,14 @@ import (
 // IndexedTextEvidence identifies immutable derived text, independently of the
 // formal original. It contains neither plaintext nor cloud locations.
 type IndexedTextEvidence struct {
-	Extractor       string     `json:"extractor"`
-	State           string     `json:"state"`
-	SourceSHA256    string     `json:"source_sha256"`
-	TextSHA256      *string    `json:"text_sha256"`
-	IndexedAt       *time.Time `json:"indexed_at"`
-	TotalCharacters *int       `json:"total_characters"`
-	ErrorCode       *string    `json:"error_code"`
+	Extractor       string              `json:"extractor"`
+	State           string              `json:"state"`
+	SourceSHA256    string              `json:"source_sha256"`
+	TextSHA256      *string             `json:"text_sha256"`
+	IndexedAt       *time.Time          `json:"indexed_at"`
+	TotalCharacters *int                `json:"total_characters"`
+	ErrorCode       *string             `json:"error_code"`
+	NativeEvidence  *NativeTextEvidence `json:"native_evidence,omitempty"`
 }
 
 // AgentTextIndex requires an internal AI actor. The conversation layer also
@@ -41,10 +42,12 @@ func AgentTextIndex(ctx context.Context, db platform.DBTX, a core.Actor, fileID,
 	}
 	out.SourceSHA256 = v.SHA256
 	out.Extractor = TextExtractorFor(v.MediaType)
-	err = db.QueryRow(ctx, `SELECT state,text_sha256,indexed_at,character_count,error_code
+	var engine *string
+	var pages, ocr *int
+	err = db.QueryRow(ctx, `SELECT state,text_sha256,indexed_at,character_count,error_code,engine_sha256,page_count,ocr_page_count
  FROM file_text_derivations WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND source_sha256=$5`,
 		a.OrgID, fileID, versionID, out.Extractor, v.SHA256).
-		Scan(&out.State, &out.TextSHA256, &out.IndexedAt, &out.TotalCharacters, &out.ErrorCode)
+		Scan(&out.State, &out.TextSHA256, &out.IndexedAt, &out.TotalCharacters, &out.ErrorCode, &engine, &pages, &ocr)
 	if err != nil && err != pgx.ErrNoRows {
 		return out, err
 	}
@@ -57,6 +60,9 @@ func AgentTextIndex(ctx context.Context, db platform.DBTX, a core.Actor, fileID,
 	}
 	if out.State == "queued" {
 		out.State = "pending"
+	}
+	if out.NativeEvidence, err = nativeTextEvidence(out.Extractor, out.State, engine, pages, ocr); err != nil {
+		return out, err
 	}
 	return out, nil
 }

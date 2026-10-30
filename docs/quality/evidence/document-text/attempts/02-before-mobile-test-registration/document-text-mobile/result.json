@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T18:08:49.358Z",
+  "finished_at": "2026-10-30T18:09:19.454Z",
+  "checks": [
+    "Actual search finds OCR inside current PDF/PNG/JPEG originals with explicit extraction identity and no duplicate legacy rows.",
+    "Actual PDF and image previews bind complete native page evidence, unchanged original hashes and explicit OCR/financial verification limits.",
+    "Actual selected-version comparison binds full page/engine evidence for both PDF versions and preserves original-byte/text equality separation.",
+    "Authenticated secretary-source reads use the same immutable native derivation with object readers removed; no real model was invoked."
+  ],
+  "source_count": 951,
+  "source_sha256": "a81b836e61e3618ed5a1b8b7c149ceb2b97fb2da23c5c68b68341e1ffd5e2b5c",
+  "source_after_sha256": "a81b836e61e3618ed5a1b8b7c149ceb2b97fb2da23c5c68b68341e1ffd5e2b5c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "9139e50b181b53fd3e1fa173773bfaa93fc17c33fd2a7e36276aa12b28c92a8f",
+    "source_sha256": "7229238c6598b4c197ea55c8d04c91a8860b8f6aa4831b72ec76f0924e8a1b6a",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "7229238c6598b4c197ea55c8d04c91a8860b8f6aa4831b72ec76f0924e8a1b6a",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "7229238c6598b4c197ea55c8d04c91a8860b8f6aa4831b72ec76f0924e8a1b6a",
+  "build_source_unchanged": true
+}

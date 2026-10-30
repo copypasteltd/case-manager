@@ -7407,13 +7407,18 @@ export interface components {
             max_range_bytes: string;
             warnings: ("SCAN_WAIVED_NOT_CLEAN" | "SIGNED_URL_REVOCATION_DELAY")[];
         };
+        NativeTextEvidence: {
+            engine_sha256: string;
+            page_count: number;
+            ocr_page_count: number;
+        };
         FileText: {
             /** Format: uuid */
             file_id: string;
             /** Format: uuid */
             version_id: string;
             /** @enum {string} */
-            extractor: "text-v1" | "office-v1" | "docx-v2";
+            extractor: "text-v1" | "office-v1" | "docx-v2" | "document-ocr-v1";
             /** @enum {string} */
             state: "pending" | "ready" | "unsupported" | "blocked" | "failed";
             source_sha256: string;
@@ -7424,12 +7429,13 @@ export interface components {
             offset: number;
             text: string;
             next_offset: number | null;
+            native_evidence?: components["schemas"]["NativeTextEvidence"];
         };
         FileTextComparisonVersion: {
             /** Format: uuid */
             version_id: string;
             /** @enum {string} */
-            extractor: "text-v1" | "office-v1" | "docx-v2";
+            extractor: "text-v1" | "office-v1" | "docx-v2" | "document-ocr-v1";
             seq: number;
             media_type: string;
             size_bytes: string;
@@ -7438,6 +7444,7 @@ export interface components {
             text_characters: number;
             /** Format: date-time */
             indexed_at: string;
+            native_evidence?: components["schemas"]["NativeTextEvidence"];
         };
         FileTextComparisonRow: {
             /** @enum {string} */
@@ -7453,7 +7460,7 @@ export interface components {
             file_id: string;
             file_version: number;
             /** @enum {string} */
-            extractor: "text-v1" | "office-v1" | "docx-v2" | "mixed";
+            extractor: "text-v1" | "office-v1" | "docx-v2" | "document-ocr-v1" | "mixed";
             base: components["schemas"]["FileTextComparisonVersion"];
             target: components["schemas"]["FileTextComparisonVersion"];
             source_equal: boolean;
@@ -7489,6 +7496,8 @@ export interface components {
             match_types: ("name" | "body" | "tags")[];
             text_state: ("pending" | "ready" | "unsupported" | "blocked" | "failed") | null;
             indexed_at: string | null;
+            /** @enum {string} */
+            text_extractor?: "text-v1" | "office-v1" | "docx-v2" | "document-ocr-v1";
         };
         DownloadChunk: {
             /** Format: uuid */
@@ -8926,6 +8935,7 @@ export interface components {
             indexed_at: string | null;
             total_characters: number | null;
             error_code: string | null;
+            native_evidence?: components["schemas"]["NativeTextEvidence"];
         };
         NotificationTarget: {
             /** @enum {string} */

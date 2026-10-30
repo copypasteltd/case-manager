@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T18:13:23.272707+00:00",
+  "finished_at": "2026-10-30T18:14:18.117189+00:00",
+  "elapsed_seconds": 54.843,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/document-text/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "06aec57c451e9e9b86de0b76c359a53c69d83d3c96609b8188ac9e6274b25a3e",
+  "source_after_sha256": "06aec57c451e9e9b86de0b76c359a53c69d83d3c96609b8188ac9e6274b25a3e",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 390,
+    "numPassedTests": 390,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "5ba27d2ebca7f673f770b496b27586bb628c6642ec10c28e50ce72c636a52909",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Complete current Web unit suite including native extraction/page proof and exact comparison validation.",
+  "real_device": false,
+  "virtualization_used": false
+}

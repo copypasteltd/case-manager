@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "id": "native-parser",
+  "started_at": "2026-10-30T18:22:42.734203+00:00",
+  "finished_at": "2026-10-30T18:23:02.535338+00:00",
+  "elapsed_seconds": 19.801,
+  "command": [
+    "python",
+    "scripts/test_document_text_native.py"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "06aec57c451e9e9b86de0b76c359a53c69d83d3c96609b8188ac9e6274b25a3e",
+  "source_after_sha256": "06aec57c451e9e9b86de0b76c359a53c69d83d3c96609b8188ac9e6274b25a3e",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestNativeDocuments",
+      "TestProfileIntegrity",
+      "TestBoundedOutputAndText"
+    ],
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/scan.png"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/scan.jpg"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/scan.pdf"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/mixed.pdf"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/too-many-pages.pdf"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/encrypted.pdf"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/malformed.pdf"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments/cancelled"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestNativeDocuments"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/valid"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/escape"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/absolute"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/hash"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/missing-model"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/duplicate"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/missing-tool"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/tool-mutated"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity/unknown-field"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestProfileIntegrity"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/documenttext",
+      "Test": "TestBoundedOutputAndText"
+    }
+  ],
+  "private_log_sha256": "78b82801512ad96f0e2bcd1e4371f2f65972a215a1ae21de70366cabbdc153ad",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Actual Poppler/Tesseract extraction for synthetic PDF/PNG/JPEG, complete mixed-page coverage, encrypted/malformed/page limit/cancellation/temp cleanup and pinned artifact integrity. Opt-in variables explicitly set, zero skipped tests required.",
+  "real_device": false,
+  "virtualization_used": false
+}

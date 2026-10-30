@@ -1,0 +1,58 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/document-text-web-pdf.png",
+      "sha256": "5ab3985180b0e4283bd940723151e56066aa49239f5b8204fdb532b20356b605"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-web-image.png",
+      "sha256": "dae4bc54415967f12f6e782b598833f1b9f35b169bbb13dddeff5df9b847158b"
+    },
+    {
+      "file": "docs/media/screenshots/document-text-web-comparison.png",
+      "sha256": "ddc8dc90ff9233541fdc8fd8b125abdcdaa75a3436dacaba6a5f964a86b43588"
+    }
+  ],
+  "recording": {
+    "name": "document-text-web",
+    "frame_count": 25,
+    "duration_ms": 5201,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/document-text-web/frames.json",
+    "manifest_sha256": "57450c80ba6996e3439b752eafeb3081cf991bae069cae15aeaab923bfd7acfe"
+  },
+  "documents": [
+    {
+      "file_id": "cb07b3f3-1de7-4a96-886b-77f8619e43dd",
+      "version_id": "bbcb36f3-e18b-452d-b719-a05574c84f4e",
+      "extractor": "document-ocr-v1",
+      "source_sha256": "1fb1bba56b24e798fd24db78257aa9d7bb8fcfaf1bcb62231d5ed68edf8a1c1c",
+      "text_sha256": "1732f4301d09f0f03fe76922a8d2232bdbc0c2b43f5388db52d53433690d9a9a",
+      "native_evidence": {
+        "engine_sha256": "e81e7517d4399a21457344061252faf3e6cf636a142c2b1d166393c41b8d0fc3",
+        "page_count": 2,
+        "ocr_page_count": 2
+      }
+    },
+    {
+      "file_id": "75721665-4038-4222-9a86-f8fbea95b4d4",
+      "version_id": "40b140da-bb72-40f2-a322-e1eb8526608b",
+      "extractor": "document-ocr-v1",
+      "source_sha256": "396ca3f7c3712419247ee215eae3470368d15db209d8d7a923b6db1a2bbb56af",
+      "text_sha256": "79e5087b999dcab2be08153fcb348b9b55cd4d2ca6ec79dbabe8d9ad62df5f13",
+      "native_evidence": {
+        "engine_sha256": "e81e7517d4399a21457344061252faf3e6cf636a142c2b1d166393c41b8d0fc3",
+        "page_count": 1,
+        "ocr_page_count": 1
+      }
+    }
+  ],
+  "synthetic_data": true,
+  "real_native_extraction": true,
+  "real_model": false,
+  "real_cloud": false
+}

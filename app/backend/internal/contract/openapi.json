@@ -45499,6 +45499,31 @@
           "warnings"
         ]
       },
+      "NativeTextEvidence": {
+        "type": "object",
+        "properties": {
+          "engine_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "page_count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "ocr_page_count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "engine_sha256",
+          "page_count",
+          "ocr_page_count"
+        ]
+      },
       "FileText": {
         "type": "object",
         "properties": {
@@ -45515,7 +45540,8 @@
             "enum": [
               "text-v1",
               "office-v1",
-              "docx-v2"
+              "docx-v2",
+              "document-ocr-v1"
             ]
           },
           "state": {
@@ -45595,6 +45621,9 @@
                 "type": "null"
               }
             ]
+          },
+          "native_evidence": {
+            "$ref": "#/components/schemas/NativeTextEvidence"
           }
         },
         "additionalProperties": false,
@@ -45625,7 +45654,8 @@
             "enum": [
               "text-v1",
               "office-v1",
-              "docx-v2"
+              "docx-v2",
+              "document-ocr-v1"
             ]
           },
           "seq": {
@@ -45658,6 +45688,9 @@
           "indexed_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "native_evidence": {
+            "$ref": "#/components/schemas/NativeTextEvidence"
           }
         },
         "additionalProperties": false,
@@ -45750,6 +45783,7 @@
               "text-v1",
               "office-v1",
               "docx-v2",
+              "document-ocr-v1",
               "mixed"
             ]
           },
@@ -45952,6 +45986,15 @@
               {
                 "type": "null"
               }
+            ]
+          },
+          "text_extractor": {
+            "type": "string",
+            "enum": [
+              "text-v1",
+              "office-v1",
+              "docx-v2",
+              "document-ocr-v1"
             ]
           }
         },
@@ -53764,6 +53807,9 @@
                 "type": "null"
               }
             ]
+          },
+          "native_evidence": {
+            "$ref": "#/components/schemas/NativeTextEvidence"
           }
         },
         "additionalProperties": false,

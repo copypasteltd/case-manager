@@ -14,15 +14,16 @@ import (
 )
 
 type TextComparisonVersion struct {
-	VersionID      string    `json:"version_id"`
-	Extractor      string    `json:"extractor"`
-	Seq            int64     `json:"seq"`
-	MediaType      string    `json:"media_type"`
-	SizeBytes      string    `json:"size_bytes"`
-	SourceSHA256   string    `json:"source_sha256"`
-	TextSHA256     string    `json:"text_sha256"`
-	TextCharacters int       `json:"text_characters"`
-	IndexedAt      time.Time `json:"indexed_at"`
+	NativeEvidence *NativeTextEvidence `json:"native_evidence,omitempty"`
+	VersionID      string              `json:"version_id"`
+	Extractor      string              `json:"extractor"`
+	Seq            int64               `json:"seq"`
+	MediaType      string              `json:"media_type"`
+	SizeBytes      string              `json:"size_bytes"`
+	SourceSHA256   string              `json:"source_sha256"`
+	TextSHA256     string              `json:"text_sha256"`
+	TextCharacters int                 `json:"text_characters"`
+	IndexedAt      time.Time           `json:"indexed_at"`
 }
 
 type TextComparison struct {
@@ -73,9 +74,11 @@ func comparisonBody(ctx context.Context, tx pgx.Tx, a core.Actor, fileID, versio
 	var hash *string
 	var count *int
 	var indexed *time.Time
-	err = tx.QueryRow(ctx, `SELECT state,coalesce(body,''),text_sha256,character_count,indexed_at
+	var engine *string
+	var pages, ocr *int
+	err = tx.QueryRow(ctx, `SELECT state,coalesce(body,''),text_sha256,character_count,indexed_at,engine_sha256,page_count,ocr_page_count
  FROM file_text_derivations WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND source_sha256=$5`,
-		a.OrgID, fileID, versionID, out.Extractor, v.SHA256).Scan(&state, &body, &hash, &count, &indexed)
+		a.OrgID, fileID, versionID, out.Extractor, v.SHA256).Scan(&state, &body, &hash, &count, &indexed, &engine, &pages, &ocr)
 	if err == pgx.ErrNoRows || err == nil && state == "queued" {
 		return out, "", core.Fail(409, "FILE_COMPARISON_TEXT_PENDING", "所选版本正文尚未完成提取，请稍后重新核对")
 	}
@@ -84,6 +87,9 @@ func comparisonBody(ctx context.Context, tx pgx.Tx, a core.Actor, fileID, versio
 	}
 	if state != "ready" || hash == nil || count == nil || indexed == nil {
 		return out, "", core.Fail(422, "FILE_COMPARISON_TEXT_UNAVAILABLE", "所选版本没有完整可用的提取正文，请查阅格式与提取状态")
+	}
+	if out.NativeEvidence, err = nativeTextEvidence(out.Extractor, state, engine, pages, ocr); err != nil {
+		return out, "", err
 	}
 	if len(body) > TextOutputMaxBytes || !utf8.ValidString(body) || strings.IndexByte(body, 0) >= 0 || core.Digest([]byte(body)) != *hash || utf8.RuneCountInString(body) != *count {
 		return out, "", core.Fail(502, "FILE_COMPARISON_TEXT_INVALID", "完整正文摘要或字符总数核对失败，没有返回部分差异")

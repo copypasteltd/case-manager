@@ -394,21 +394,26 @@ add("DownloadResult", {"id": ID, "mode": enum("signed_url", "authenticated_proxy
     ("id", "mode", "url", "method", "required_headers", "expires_at", "permit_expires_at", "file_version_id", "filename",
     "size_bytes", "sha256", "scan_state", "disposition", "max_range_bytes", "warnings"))
 text_states=enum("pending","ready","unsupported","blocked","failed")
-file_text={"file_id":ID,"version_id":ID,"extractor":enum("text-v1","office-v1","docx-v2"),"state":text_states,
+text_extractors=enum("text-v1","office-v1","docx-v2","document-ocr-v1")
+native_evidence={"engine_sha256":HASH,"page_count":{"type":"integer","minimum":1,"maximum":20},"ocr_page_count":{"type":"integer","minimum":1,"maximum":20}}
+add("NativeTextEvidence",native_evidence,tuple(native_evidence))
+file_text={"file_id":ID,"version_id":ID,"extractor":text_extractors,"state":text_states,
     "source_sha256":HASH,"text_sha256":nullable(HASH),"indexed_at":nullable(TIME),"error_code":nullable(NAME),
     "total_characters":nullable({"type":"integer","minimum":0}),"offset":{"type":"integer","minimum":0},
     "text":{"type":"string","maxLength":8000},"next_offset":nullable({"type":"integer","minimum":1})}
-add("FileText",file_text,tuple(file_text))
-comparison_version = {"version_id": ID, "extractor":enum("text-v1","office-v1","docx-v2"), "seq": VERSION, "media_type": NAME, "size_bytes": BYTES,
+file_text["native_evidence"]=ref("NativeTextEvidence")
+add("FileText",file_text,tuple(k for k in file_text if k!="native_evidence"))
+comparison_version = {"version_id": ID, "extractor":text_extractors, "seq": VERSION, "media_type": NAME, "size_bytes": BYTES,
     "source_sha256": HASH, "text_sha256": HASH, "text_characters": {"type":"integer","minimum":0,"maximum":2097152}, "indexed_at": TIME}
-add("FileTextComparisonVersion", comparison_version, tuple(comparison_version))
+comparison_version["native_evidence"]=ref("NativeTextEvidence")
+add("FileTextComparisonVersion", comparison_version, tuple(k for k in comparison_version if k!="native_evidence"))
 comparison_line = {"type":"integer","minimum":1,"maximum":40000}
 comparison_row = {"kind":enum("equal","delete","insert","skip"), "base_line":nullable(comparison_line),
     "target_line":nullable(comparison_line), "text":{"type":"string","maxLength":2097152},
     "newline":{"type":"boolean"},"count":comparison_line}
 add("FileTextComparisonRow", comparison_row, tuple(comparison_row))
 comparison_count = {"type":"integer","minimum":0,"maximum":80000}
-comparison = {"file_id":ID,"file_version":VERSION,"extractor":enum("text-v1","office-v1","docx-v2","mixed"),
+comparison = {"file_id":ID,"file_version":VERSION,"extractor":enum("text-v1","office-v1","docx-v2","document-ocr-v1","mixed"),
     "base":ref("FileTextComparisonVersion"),"target":ref("FileTextComparisonVersion"),
     "source_equal":{"type":"boolean"},"text_equal":{"type":"boolean"},
     "algorithm":enum("myers-v1","bounded-replacement-v1"),"complete":{"const":True},"view":enum("changes","all"),
@@ -420,7 +425,8 @@ add("FileTextComparison",comparison,tuple(comparison))
 search_hit={"resource": ref("ResourceRef"), "title": NAME, "snippet": {"type":"string","maxLength":240}, "updated_at": TIME,
     "project_id":nullable(ID),"match_types":array(enum("name","body","tags"),minItems=1,maxItems=3,uniqueItems=True),
     "text_state":nullable(text_states),"indexed_at":nullable(TIME)}
-add("SearchHit",search_hit,tuple(search_hit))
+search_hit["text_extractor"]=text_extractors
+add("SearchHit",search_hit,tuple(k for k in search_hit if k!="text_extractor"))
 download_chunk = {"download_id": ID, "file_version_id": ID, "offset": BYTES, "length": BYTES,
     "total_size_bytes": BYTES, "sha256": HASH, "chunk_sha256": HASH,
     "data_base64": {"type": "string", "maxLength": 1398104, "pattern": "^[A-Za-z0-9+/]*={0,2}$"}}
@@ -670,7 +676,8 @@ add("ConversationContextView", context_view, tuple(context_view))
 index_evidence = {"extractor": NAME, "state": enum("pending", "ready", "unsupported", "blocked", "failed"),
     "source_sha256": HASH, "text_sha256": nullable(HASH), "indexed_at": nullable(TIME),
     "total_characters": nullable({"type": "integer", "minimum": 0, "maximum": 2097152}), "error_code": nullable(NAME)}
-add("FileTextIndexEvidence", index_evidence, tuple(index_evidence))
+index_evidence["native_evidence"]=ref("NativeTextEvidence")
+add("FileTextIndexEvidence", index_evidence, tuple(k for k in index_evidence if k!="native_evidence"))
 context_view["text_index"] = ref("FileTextIndexEvidence")
 profile = {"id": ID, "skill_id": NAME, "skill_version": NAME, "skill_sha256": HASH,
     "runtime_version": NAME, "configuration_sha256": HASH, "max_input_tokens": VERSION,

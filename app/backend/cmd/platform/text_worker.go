@@ -3,12 +3,15 @@ package main
 import (
 	"context"
 	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/documenttext"
 	"copypaste.hk/platform/internal/files"
 	"copypaste.hk/platform/internal/jobqueue"
 	"copypaste.hk/platform/internal/platform"
 	"copypaste.hk/platform/internal/storageconfig"
 	"copypaste.hk/platform/migrations"
 	"log/slog"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -32,7 +35,14 @@ func runTextWorker(ctx context.Context, logger *slog.Logger) error {
 	if err = migrations.CheckCompiled(ctx, db); err != nil {
 		return &startupError{"file text worker requires matching database migrations"}
 	}
-	service := &files.TextIndexService{DB: db, Backends: backends}
+	var native *documenttext.Engine
+	if name := strings.TrimSpace(os.Getenv("CP_DOCUMENT_TEXT_PROFILE")); name != "" {
+		native, err = documenttext.Load(ctx, name)
+		if err != nil {
+			return &startupError{"native document text profile or pinned artifacts are invalid"}
+		}
+	}
+	service := &files.TextIndexService{DB: db, Backends: backends, Native: native}
 	queue := jobqueue.Queue{DB: db}
 	owner := "file-text." + core.NewID()
 	logger.Info("file text worker started", "owner", owner)

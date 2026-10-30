@@ -1,0 +1,201 @@
+{
+  "name": "document-text",
+  "increment": 128,
+  "configuration_file": "docs/quality/evidence/document-text/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/document-text",
+  "retained_base_commit": "695a470503caa0f825cd3d7f229ca0610dbb3790",
+  "retained_base_increment": 127,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_native_js_review.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py",
+    "scripts/run_workbench_browser.py",
+    "scripts/workbench_sources.py",
+    "scripts/workbench_browser_common.mjs",
+    "scripts/project_business_recording.mjs",
+    "scripts/encode_workbench_media.py",
+    "scripts/check_document_text.mjs",
+    "scripts/office_text_recording.mjs",
+    "scripts/build_document_text_profile.py",
+    "scripts/test_document_text_native.py",
+    "../docs/quality/fixtures/document-text"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestNativeDocumentText|TestDOCXTextDocuments|TestOfficeTextDocuments|TestFileTextSearch|TestAgentFileText|TestAgentIndexedSearch)$",
+        "-p=1",
+        "-timeout=12m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestNativeDocumentText",
+        "TestDOCXTextDocuments",
+        "TestOfficeTextDocuments",
+        "TestFileTextSearch",
+        "TestAgentFileText",
+        "TestAgentIndexedSearch"
+      ],
+      "scope": "Six selected actual native HTTP/PostgreSQL suites: real pinned PDF/image OCR, DOCX/Office, general search, secretary file reads and indexed search. Isolated synthetic object bytes; not cloud/model or a full backend regression.",
+      "env": {
+        "CP_DOCUMENT_TEXT_TEST_PROFILE": "D:\\dev\\copypasted\\内部管理\\app\\.local\\document-tools\\profile.json",
+        "CP_DOCUMENT_TEXT_TEST_FIXTURES": "D:\\dev\\copypasted\\内部管理\\docs\\quality\\fixtures\\document-text"
+      }
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/document-text/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/document-text/web-vitest.json",
+      "minimum_tests": 390,
+      "scope": "Complete current Web unit suite including native extraction/page proof and exact comparison validation."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 476,
+      "scope": "Complete shared mobile unit suite including native extraction/page proof and exact comparison validation."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Native Babel primitive checks; retained121 APK is not a current128 artifact."
+    },
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_native_js_review.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080",
+        "TMP": "D:\\dev\\copypasted\\内部管理\\app\\.local\\android\\document-text-metro-temp",
+        "TEMP": "D:\\dev\\copypasted\\内部管理\\app\\.local\\android\\document-text-metro-temp"
+      },
+      "parser": "exit",
+      "scope": "Current Android JS compilation with the published four-worker Metro native Windows filesystem adapter, generated-output exclusions and no-Expo map guard. Bundle only: no APK/signing/Gradle/device acceptance. TEMP/TMP are explicitly owned below the checkout, outside all watched source folders, so the disclosed native filesystem bridge also covers Metro cache reads/writes. No cache content or source resolution is substituted."
+    },
+    {
+      "id": "native-parser",
+      "command": [
+        "python",
+        "scripts/test_document_text_native.py"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestNativeDocuments",
+        "TestProfileIntegrity",
+        "TestBoundedOutputAndText"
+      ],
+      "env": {
+        "CP_DOCUMENT_TEXT_TEST_PROFILE": "D:\\dev\\copypasted\\内部管理\\app\\.local\\document-tools\\profile.json",
+        "CP_DOCUMENT_TEXT_TEST_FIXTURES": "D:\\dev\\copypasted\\内部管理\\docs\\quality\\fixtures\\document-text"
+      },
+      "scope": "Actual Poppler/Tesseract extraction for synthetic PDF/PNG/JPEG, complete mixed-page coverage, encrypted/malformed/page limit/cancellation/temp cleanup and pinned artifact integrity. Opt-in variables explicitly set, zero skipped tests required."
+    }
+  ],
+  "browser_groups": [
+    "document-text-web",
+    "document-text-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "schema_upgrade": {
+    "from_count": 95,
+    "to_count": 96,
+    "new_migrations": [
+      {
+        "file": "app/backend/migrations/0096_document_ocr.sql",
+        "sha256": "0482648e85eb0228fb878db154899257acf5c5d85475a837471fdb22c136a57b"
+      }
+    ]
+  }
+}

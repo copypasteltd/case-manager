@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量128：PDF／扫描件／图片正文真实Web与共享H5各三张PNG、实际视口MP4及明确三截图导览GIF。只录本人MFA验证后合成业务，不包含凭据或真实业务资料。OCR原生执行真实，OSS／R2对象为隔离合成来源；没有调用真实模型／TG或实体设备。GIF为三张实际页面各2秒导览，不冒充连续录屏。
+
+[Web PDF](screenshots/document-text-web-pdf.png) · [Web图片](screenshots/document-text-web-image.png) · [Web比较](screenshots/document-text-web-comparison.png) · [共享移动PDF](screenshots/document-text-mobile-pdf.png) · [共享移动图片](screenshots/document-text-mobile-image.png) · [共享移动比较](screenshots/document-text-mobile-comparison.png) · [Web MP4](videos/document-text-web.mp4) · [移动MP4](videos/document-text-mobile.mp4) · [Web GIF](gifs/document-text-web.gif) · [移动GIF](gifs/document-text-mobile.gif)
+
+Increment128 uses actual authenticated synthetic UI pixels. Native PDF/OCR is real; storage inputs are isolated synthetic bytes. GIFs are explicit three-screenshot tours. Production, arbitrary OCR accuracy, real model/cloud and platform acceptance remain separate.
+
 增量127 / Increment127：实际Web／共享Taro H5分别完成两文件的批量移动、回收、恢复，且从原文件详情重新打开持久回执。MP4只录本人验证完成后的首个整批执行及回执；GIF明确为三张实际场景截图的导览，每张2秒。合成元数据资料，无凭据画面，不代表真机／云／模型验收。见[使用](../development/127-file-batch-plans.md)、[验证](../quality/127-file-batch-verification.md)、[素材摘要](../quality/evidence/file-batch/media.json)。
 
 [Web MP4](videos/file-batch-web.mp4) · [共享移动 MP4](videos/file-batch-mobile.mp4) · [Web截图导览](gifs/file-batch-web.gif) · [移动截图导览](gifs/file-batch-mobile.gif)

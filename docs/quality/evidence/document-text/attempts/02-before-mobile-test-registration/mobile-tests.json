@@ -1,0 +1,34 @@
+{
+  "passed": false,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T18:09:53.436846+00:00",
+  "finished_at": "2026-10-30T18:10:04.955509+00:00",
+  "elapsed_seconds": 11.518,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "cbeb56b4da7eb12584adfd9e8143926c84cd2eb8f3454bde4b5ca5e39c3525e6",
+  "source_after_sha256": "cbeb56b4da7eb12584adfd9e8143926c84cd2eb8f3454bde4b5ca5e39c3525e6",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 467,
+    "pass": 467,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "2a4ac92dca49b332bfa963a59dbc30e9a2b9b00c4c66f0ba0e9888beec55fb2b",
+  "parser_error": "AssertionError",
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Complete shared mobile unit suite including native extraction/page proof and exact comparison validation.",
+  "real_device": false,
+  "virtualization_used": false
+}

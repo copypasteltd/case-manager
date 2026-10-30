@@ -1,0 +1,2252 @@
+{
+  "tools": {
+    "pdfinfo": {
+      "path": "Library/bin/pdfinfo.exe",
+      "sha256": "11f2a509cafe4e620eab968191c767d60a4cf4187177b5edbd173731f3889c28"
+    },
+    "pdftotext": {
+      "path": "Library/bin/pdftotext.exe",
+      "sha256": "63eda77ace76388d2a845cbb71d2985c5762169450941fc1a90305b649624e6a"
+    },
+    "pdftoppm": {
+      "path": "Library/bin/pdftoppm.exe",
+      "sha256": "fd67f8bd09175d99848f08655ed87607dfefa32054c26f2a6998df298434773c"
+    },
+    "tesseract": {
+      "path": "Library/bin/tesseract.exe",
+      "sha256": "dbb075afe525e32639d9a62133100c512e0a3b88e2c45e06bfad8683cd3f5c34"
+    }
+  },
+  "pinned_asset_count": 435,
+  "models_provenance": {
+    "repository": "https://github.com/tesseract-ocr/tessdata_fast",
+    "branch": "main",
+    "tree_sha": "87416418657359cb625c412a48b6e1d6d41c29bd",
+    "files": [
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+        "size": 11358,
+        "url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/d645695673349e3947e8e5ae42332d0ac3164cd7",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "download_url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/d645695673349e3947e8e5ae42332d0ac3164cd7"
+      },
+      {
+        "path": "chi_sim.traineddata",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "388bac276d033d06e5ed5ba7a7ad14ae58f97dab",
+        "size": 2469156,
+        "url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/388bac276d033d06e5ed5ba7a7ad14ae58f97dab",
+        "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+        "download_url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/388bac276d033d06e5ed5ba7a7ad14ae58f97dab"
+      },
+      {
+        "path": "chi_tra.traineddata",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1955cd8b8d076b898616e9c2c1ace65b43105356",
+        "size": 2366642,
+        "url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/1955cd8b8d076b898616e9c2c1ace65b43105356",
+        "sha256": "529c5b5797d64b126065cd55f2bb4c7fd7b15790798091b1ff259941a829330b",
+        "download_url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/1955cd8b8d076b898616e9c2c1ace65b43105356"
+      },
+      {
+        "path": "eng.traineddata",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bbef4675053b5b468cdb477053e28b1c698ba08e",
+        "size": 4113088,
+        "url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/bbef4675053b5b468cdb477053e28b1c698ba08e",
+        "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+        "download_url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/git/blobs/bbef4675053b5b468cdb477053e28b1c698ba08e"
+      }
+    ]
+  },
+  "native_packages": [
+    {
+      "name": "bzip2",
+      "version": "1.0.8",
+      "build": "h0ad9c76_10",
+      "license": "bzip2-1.0.6",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/bzip2-1.0.8-h0ad9c76_10.conda",
+      "sha256": "04767466ee9227c9c57ab2c6503e0149177d34111c7418d2f420297acb1eb229"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "2026.10.23",
+      "build": "h4c7d964_0",
+      "license": "ISC",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-h4c7d964_0.conda",
+      "sha256": "f1d280d2618de987204102090e83733089c092dc2dd45686fd3dcbe809034f6a"
+    },
+    {
+      "name": "cairo",
+      "version": "1.18.6",
+      "build": "h477c42c_0",
+      "license": "LGPL-2.1-only or MPL-1.1",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/cairo-1.18.6-h477c42c_0.conda",
+      "sha256": "af62a4e441719050878d050d242619f8256a891983515950f8fb877137868a45"
+    },
+    {
+      "name": "font-ttf-dejavu-sans-mono",
+      "version": "2.37",
+      "build": "hab24e00_0",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-dejavu-sans-mono-2.37-hab24e00_0.tar.bz2",
+      "sha256": "58d7f40d2940dd0a8aa28651239adbf5613254df0f75789919c4e6762054403b"
+    },
+    {
+      "name": "font-ttf-inconsolata",
+      "version": "3.000",
+      "build": "h77eed37_0",
+      "license": "OFL-1.1",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-inconsolata-3.000-h77eed37_0.tar.bz2",
+      "sha256": "c52a29fdac682c20d252facc50f01e7c2e7ceac52aa9817aaf0bb83f7559ec5c"
+    },
+    {
+      "name": "font-ttf-source-code-pro",
+      "version": "2.038",
+      "build": "h77eed37_0",
+      "license": "OFL-1.1",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-source-code-pro-2.038-h77eed37_0.tar.bz2",
+      "sha256": "00925c8c055a2275614b4d983e1df637245e19058d79fc7dd1a93b8d9fb4b139"
+    },
+    {
+      "name": "font-ttf-ubuntu",
+      "version": "0.83",
+      "build": "h77eed37_3",
+      "license": "LicenseRef-Ubuntu-Font-Licence-Version-1.0",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-ubuntu-0.83-h77eed37_3.conda",
+      "sha256": "2821ec1dc454bd8b9a31d0ed22a7ce22422c0aef163c59f49dfdf915d0f0ca14"
+    },
+    {
+      "name": "fontconfig",
+      "version": "2.18.3",
+      "build": "hd47e2ca_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/fontconfig-2.18.3-hd47e2ca_1.conda",
+      "sha256": "f26139e3c774a6434c8a73381c08e3d2a4c2f9d9ef9587c66aab8836211ee2ec"
+    },
+    {
+      "name": "fonts-conda-ecosystem",
+      "version": "1",
+      "build": "0",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2",
+      "sha256": "a997f2f1921bb9c9d76e6fa2f6b408b7fa549edd349a77639c9fe7a23ea93e61"
+    },
+    {
+      "name": "fonts-conda-forge",
+      "version": "1",
+      "build": "hc364b38_1",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-forge-1-hc364b38_1.conda",
+      "sha256": "54eea8469786bc2291cc40bca5f46438d3e062a399e8f53f013b6a9f50e98333"
+    },
+    {
+      "name": "giflib",
+      "version": "5.2.2",
+      "build": "hb0bd012_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/giflib-5.2.2-hb0bd012_1.conda",
+      "sha256": "573af9bb6294d125a0be6dc4963e589188da92426c3887feb60dd22a07530e4f"
+    },
+    {
+      "name": "graphite2",
+      "version": "1.3.15",
+      "build": "h5112557_1",
+      "license": "LGPL-2.0-or-later",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/graphite2-1.3.15-h5112557_1.conda",
+      "sha256": "93a59bdf944fb6f947bd7ad2f293d5d80db3a90f8ff8dfabc591e3752141e46f"
+    },
+    {
+      "name": "icu",
+      "version": "78.3",
+      "build": "h5112557_2",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/icu-78.3-h5112557_2.conda",
+      "sha256": "75c549b55b673e15de8785a8e5dd85bca7eb612eee0ff4dc8d7bdaa15eacbdbb"
+    },
+    {
+      "name": "krb5",
+      "version": "1.22.2",
+      "build": "h719d79b_2",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/krb5-1.22.2-h719d79b_2.conda",
+      "sha256": "63ff03324e903eb01a715ccf357df56d66224e61952fd6615d86490ebefb3285"
+    },
+    {
+      "name": "lcms2",
+      "version": "2.19.1",
+      "build": "hf2c6c5f_3",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/lcms2-2.19.1-hf2c6c5f_3.conda",
+      "sha256": "7c5f96b473b721a4279708b448591dc3d89ed274280ff480dea1b4f9b13e1fcd"
+    },
+    {
+      "name": "leptonica",
+      "version": "1.87.0",
+      "build": "hb83fb89_1",
+      "license": "BSD-2-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/leptonica-1.87.0-hb83fb89_1.conda",
+      "sha256": "6a0e2e099c4b530300fdcc092ddd0ffcc5383dbd04cdf03b232996857b3017d8"
+    },
+    {
+      "name": "lerc",
+      "version": "4.2.0",
+      "build": "hd936e49_0",
+      "license": "Apache-2.0",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/lerc-4.2.0-hd936e49_0.conda",
+      "sha256": "93d666f63f284ef77b87b0b1f77b70f7d36d315a132f9afa64bc0012d937ba39"
+    },
+    {
+      "name": "libarchive",
+      "version": "3.8.9",
+      "build": "gpl_h8fdc8af_101",
+      "license": "BSD-2-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libarchive-3.8.9-gpl_h8fdc8af_101.conda",
+      "sha256": "71cb6e49282d2aee1eb0249a290dc2333b0063ac2ecec69116ad569d822a0aaf"
+    },
+    {
+      "name": "libbrotlicommon",
+      "version": "1.2.1",
+      "build": "hf02afa3_0",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libbrotlicommon-1.2.1-hf02afa3_0.conda",
+      "sha256": "dc2d23fff23a10ee424e946314344c35c9a222eddca93eb53fc6b897d37f6d03"
+    },
+    {
+      "name": "libbrotlidec",
+      "version": "1.2.1",
+      "build": "h84f9c24_0",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libbrotlidec-1.2.1-h84f9c24_0.conda",
+      "sha256": "9b0c2c98dd0d054c1b3f4583645d1b867b575daeb28d807f36da3d9c6867bf4f"
+    },
+    {
+      "name": "libcurl",
+      "version": "8.23.0",
+      "build": "hdb0ef4a_0",
+      "license": "curl",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libcurl-8.23.0-hdb0ef4a_0.conda",
+      "sha256": "d3088e1fd049fe0c1905ba6174e77279ddb4817739a204aaf4bd31d59d38ea6a"
+    },
+    {
+      "name": "libdeflate",
+      "version": "1.25",
+      "build": "h1a1d4e4_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libdeflate-1.25-h1a1d4e4_1.conda",
+      "sha256": "af1cda21d4653f594fbef20aa4e1ff158a546902b3307ef8af9a9b44b43862d2"
+    },
+    {
+      "name": "libexpat",
+      "version": "2.9.0",
+      "build": "hac47afa_0",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libexpat-2.9.0-hac47afa_0.conda",
+      "sha256": "d4a8e5aac8999a90cd71aa6f9f5c40d8594ed2b89cd7f898f997767ecc6cd52d"
+    },
+    {
+      "name": "libffi",
+      "version": "3.7.0",
+      "build": "h3d046cb_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libffi-3.7.0-h3d046cb_1.conda",
+      "sha256": "613e8077c5cca5df7fe84ade7d5050301bee3c6c4c450ffe61d34a349ab4f11c"
+    },
+    {
+      "name": "libfreetype",
+      "version": "2.14.3",
+      "build": "h57928b3_2",
+      "license": "GPL-2.0-only OR FTL",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libfreetype-2.14.3-h57928b3_2.conda",
+      "sha256": "d794d7fddb6eea50e18a62fa27ab3819f40d51bad00b90cf4ca591fb0d4006c2"
+    },
+    {
+      "name": "libfreetype6",
+      "version": "2.14.3",
+      "build": "hdbac1cb_2",
+      "license": "GPL-2.0-only OR FTL",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libfreetype6-2.14.3-hdbac1cb_2.conda",
+      "sha256": "cbc650854003e434d4ff6c7b1a2667e38a4242ad8a391a1c5ff89721624065ce"
+    },
+    {
+      "name": "libglib",
+      "version": "2.90.1",
+      "build": "ha564072_0",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libglib-2.90.1-ha564072_0.conda",
+      "sha256": "7b44e3985afe6c5962a9e6489b5ad20b769c92513f071694bb74b07ecf3c9a97"
+    },
+    {
+      "name": "libharfbuzz",
+      "version": "15.0.0",
+      "build": "h03b5201_0",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libharfbuzz-15.0.0-h03b5201_0.conda",
+      "sha256": "28c321e6e5dcea4ed9e8e3f4fccc1627fdc631ee26bde4623c10317c1b3e7eca"
+    },
+    {
+      "name": "libiconv",
+      "version": "1.18",
+      "build": "hc1393d2_3",
+      "license": "LGPL-2.1-only",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libiconv-1.18-hc1393d2_3.conda",
+      "sha256": "35e04e3ddac7720fc7c550a1c9f998604299d6a7bd1f3ec9b2825d825061daa2"
+    },
+    {
+      "name": "libintl",
+      "version": "0.22.5",
+      "build": "h5728263_4",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libintl-0.22.5-h5728263_4.conda",
+      "sha256": "85b50be2209f3b8a873830ec9894477d260f4c7ba9540e65959f5812bf7219f8"
+    },
+    {
+      "name": "libjpeg-turbo",
+      "version": "3.2.1",
+      "build": "hfd05255_0",
+      "license": "IJG AND BSD-3-Clause AND Zlib",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libjpeg-turbo-3.2.1-hfd05255_0.conda",
+      "sha256": "195be7b2ff1eeff02b31cf366437a38d84560c2f6c4facd56b2969024f50957f"
+    },
+    {
+      "name": "liblzma",
+      "version": "5.8.3",
+      "build": "hfd05255_1",
+      "license": "0BSD",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/liblzma-5.8.3-hfd05255_1.conda",
+      "sha256": "d36c4a1e1f80fd08e18a407e03622ff2f34dfdd022da6488ad19603dea19e6d5"
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.59",
+      "build": "hdc8cecf_0",
+      "license": "zlib-acknowledgement",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libpng-1.6.59-hdc8cecf_0.conda",
+      "sha256": "36050852deae6edc98d7b71489b8d07254e2753c69bd524bf5784927cd1f0b2c"
+    },
+    {
+      "name": "libpsl",
+      "version": "0.23.1",
+      "build": "h9b16d47_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libpsl-0.23.1-h9b16d47_1.conda",
+      "sha256": "e53fe3b09f82b59b644264133d6d148ac31bb5451b7583cff55690bf038f2f62"
+    },
+    {
+      "name": "libssh2",
+      "version": "1.11.1",
+      "build": "h734d217_1",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libssh2-1.11.1-h734d217_1.conda",
+      "sha256": "1097b08429b4f53f5751a32c6d99a083d227ca7f7812c0b239eea124cec073a0"
+    },
+    {
+      "name": "libtiff",
+      "version": "4.7.2",
+      "build": "h8f73337_1",
+      "license": "HPND",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libtiff-4.7.2-h8f73337_1.conda",
+      "sha256": "3575a092e3e52625a1767804a4ebd321becaadf61b63dcd6735ebb88c0b3c359"
+    },
+    {
+      "name": "libwebp-base",
+      "version": "1.6.0",
+      "build": "h4d5522a_1",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libwebp-base-1.6.0-h4d5522a_1.conda",
+      "sha256": "4470d98d3178b0d45492eed4808afe421d2e7808352b8d06c2dc29166b75d94d"
+    },
+    {
+      "name": "libxml2-16",
+      "version": "2.15.4",
+      "build": "h3cfd58e_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libxml2-16-2.15.4-h3cfd58e_1.conda",
+      "sha256": "819c4edd7b7bcfa9461aeccb56c0a7e9fa7c251163333e64222c142499822958"
+    },
+    {
+      "name": "libxml2",
+      "version": "2.15.4",
+      "build": "he095d88_1",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libxml2-2.15.4-he095d88_1.conda",
+      "sha256": "81e8cace5c3cb62c4125882b4a6df33ab48c16349231d8ea5008bbe0ee93c10f"
+    },
+    {
+      "name": "libzlib",
+      "version": "1.3.2",
+      "build": "hfd05255_3",
+      "license": "Zlib",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/libzlib-1.3.2-hfd05255_3.conda",
+      "sha256": "0629c2cc0404d3bb29d6baa7b4ba62da80797015e86de050db81ea5a07050527"
+    },
+    {
+      "name": "lz4-c",
+      "version": "1.10.0",
+      "build": "h6a83c73_2",
+      "license": "BSD-2-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/lz4-c-1.10.0-h6a83c73_2.conda",
+      "sha256": "6824e36be0f95ae516dc36dddd18f69cbad0e4e07906fcb10a5f26a8dc471903"
+    },
+    {
+      "name": "lzo",
+      "version": "2.10",
+      "build": "h6a83c73_1003",
+      "license": "GPL-2.0-or-later",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/lzo-2.10-h6a83c73_1003.conda",
+      "sha256": "e26c855c4b5d797ba5a9e96a6392d58676981660849b99fdb939aee3164e8323"
+    },
+    {
+      "name": "openjpeg",
+      "version": "2.5.4",
+      "build": "h90fa87c_2",
+      "license": "BSD-2-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/openjpeg-2.5.4-h90fa87c_2.conda",
+      "sha256": "d1c630ccd9ae0898b48d84e986f4c330f66a25e535f99efe8cbf03f042b33da5"
+    },
+    {
+      "name": "openssl",
+      "version": "3.6.5",
+      "build": "hf411b9b_0",
+      "license": "Apache-2.0",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/openssl-3.6.5-hf411b9b_0.conda",
+      "sha256": "bc44625e0c6d83f3e02b5f6adc01e0e3ca7001d3d94e24959591a57f5a011b9a"
+    },
+    {
+      "name": "pcre2",
+      "version": "10.47",
+      "build": "h8466c1e_1",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/pcre2-10.47-h8466c1e_1.conda",
+      "sha256": "d8e9ea26b52a09d880d1e5371830c8dd5b4c099a6db64dbdf8236440744b7499"
+    },
+    {
+      "name": "pixman",
+      "version": "0.46.4",
+      "build": "h5112557_3",
+      "license": "MIT",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/pixman-0.46.4-h5112557_3.conda",
+      "sha256": "cad8b94c2b00264a15d469eed6dc53aac1c59c6d46f27ad1d91bfaf227cf136a"
+    },
+    {
+      "name": "poppler",
+      "version": "26.10.0",
+      "build": "h466caf0_0",
+      "license": "GPL-2.0-or-later",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/poppler-26.10.0-h466caf0_0.conda",
+      "sha256": "b1561d1a7a616bd68a330acb01798dcdcab5889ab6e8760af636aaa385435549"
+    },
+    {
+      "name": "poppler-data",
+      "version": "0.4.12",
+      "build": "hd8ed1ab_0",
+      "license": "BSD-3-Clause AND (GPL-2.0-only OR GPL-3.0-only)",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/poppler-data-0.4.12-hd8ed1ab_0.conda",
+      "sha256": "2f227e17b3c0346112815faa605502b66c1c4511a856127f2899abf15a98a2cf"
+    },
+    {
+      "name": "tesseract",
+      "version": "5.5.3",
+      "build": "he87eeb8_0",
+      "license": "Apache-2.0",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/tesseract-5.5.3-he87eeb8_0.conda",
+      "sha256": "edbe2455a8ee83c47c04bc93d6b75957b9f76b194f0ac2fe69f31ab46de7e024"
+    },
+    {
+      "name": "ucrt",
+      "version": "10.0.26100.0",
+      "build": "h57928b3_0",
+      "license": "LicenseRef-MicrosoftWindowsSDK10",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/ucrt-10.0.26100.0-h57928b3_0.conda",
+      "sha256": "3005729dce6f3d3f5ec91dfc49fc75a0095f9cd23bab49efb899657297ac91a5"
+    },
+    {
+      "name": "vc",
+      "version": "14.5",
+      "build": "ha367084_42",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/vc-14.5-ha367084_42.conda",
+      "sha256": "0598ca1ce913618cff9bd90391bcf75cd9edb22057c85dd6784dd762b7a888e2"
+    },
+    {
+      "name": "vc14_runtime",
+      "version": "14.51.36247",
+      "build": "habf1de7_42",
+      "license": "LicenseRef-MicrosoftVisualCpp2015-2022Runtime",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/vc14_runtime-14.51.36247-habf1de7_42.conda",
+      "sha256": "8dfbfd68ebf53249d11e528cbb80ad5a2460b0c5b4636eed82ee0d3950827a3d"
+    },
+    {
+      "name": "vcomp14",
+      "version": "14.51.36247",
+      "build": "habf1de7_42",
+      "license": "LicenseRef-MicrosoftVisualCpp2015-2022Runtime",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/vcomp14-14.51.36247-habf1de7_42.conda",
+      "sha256": "b3558ed059d6272ef919ea959311af73c35b5fe43c789cd43f71b398671fec49"
+    },
+    {
+      "name": "zstd",
+      "version": "1.5.7",
+      "build": "h534d264_7",
+      "license": "BSD-3-Clause",
+      "url": "https://conda.anaconda.org/conda-forge/win-64/zstd-1.5.7-h534d264_7.conda",
+      "sha256": "ca7daae4f218a11fab82cc2857f0ea518ec3f46acec60490485347a4c22c6b3e"
+    }
+  ],
+  "virtualization_used": false,
+  "dependencies_committed": false,
+  "profile_contains_machine_paths": true,
+  "source_bytes_pinned": true,
+  "hard_process_isolation_accepted": false,
+  "host_fallback_fonts_fully_pinned": false,
+  "production_acceptance": false,
+  "assets": [
+    {
+      "path": "Library/bin/Lerc.dll",
+      "sha256": "451cd3d0eaede32c199886717ec7484b8ca7effda47ee89febea957540058975"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-console-l1-1-0.dll",
+      "sha256": "015bd08815c7b934a8952c3a7578e9ce59f21136e8a880d42bbd414bec2c6058"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-console-l1-2-0.dll",
+      "sha256": "dcb4b82b6177fae57fdf0f3e05ab62ff75e05560b54547c16d6a1d83b33e07d4"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-datetime-l1-1-0.dll",
+      "sha256": "5534812cdbdae94ba45cb216e5eb9af686b853948df54365103555abbbaf9d9a"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-debug-l1-1-0.dll",
+      "sha256": "837d2b1b2cd03e03fc6ccb050698b6b5763af17c201304872342a5eae9e0a2d2"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-errorhandling-l1-1-0.dll",
+      "sha256": "de43b165f568c276c00e95acd454e3092f352a18e95874595f4f4658c06d2ec7"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-fibers-l1-1-0.dll",
+      "sha256": "3cebc45bf479ad74cfabf2c6bfd4994d7ad639ed1221025981d19cedf9ce0416"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-fibers-l1-1-1.dll",
+      "sha256": "5ef70308bcca628ce6b0e2856b15b1c7ae340c3f9bbbc4c1071d8c191a34a5c3"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-file-l1-1-0.dll",
+      "sha256": "250ac829f2617bcac1c6e5b8c4f630462e20765863ba573526a3e11bbfb94a9a"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-file-l1-2-0.dll",
+      "sha256": "ae14079a114733f60ce87b92cba42acd8083c2cd67594e53bc37dc0b97a4b465"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-file-l2-1-0.dll",
+      "sha256": "914bf26a298713119477ea0a8e7bd43171b91344ebe24fb47ad77c49686e3d87"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-handle-l1-1-0.dll",
+      "sha256": "ab5489955e371b15f77906c08ec3c7affe2c7a46a08c514ca628768b4478974b"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-heap-l1-1-0.dll",
+      "sha256": "c70f9644d8377fa39c5b71f2e9734c1400d7598904fdeb772e8502099982dcb7"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-interlocked-l1-1-0.dll",
+      "sha256": "f8129710188e407bb0e6f46d30aeba277d67b947ece5fe09e883fde2323f3ae6"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-kernel32-legacy-l1-1-1.dll",
+      "sha256": "5200b16cb2ddc61cfc07373a9a84aa85a3ab50806ca96c879c883275832944c1"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-libraryloader-l1-1-0.dll",
+      "sha256": "48786fb88b001dcd1f63acea903d3ca9cc0b3060d5a325e3f2f3cbc3bfd53166"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-localization-l1-2-0.dll",
+      "sha256": "9ec3898f7eba91faa28b51616c211a2689e3a13aeef8de6e13cb674e49d689eb"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-memory-l1-1-0.dll",
+      "sha256": "3a6cbc524c99e1cd80d5368f5601402a37ad602528b1ab628093573ef638eb3b"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-namedpipe-l1-1-0.dll",
+      "sha256": "97145ef89c44949fcf0f04ac834a8bc7d687ef49ee73ae9fc32f3c11136b7201"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-processenvironment-l1-1-0.dll",
+      "sha256": "8bc7c10b1851aea644e9c9f381cdb935e091fee6b0be3d3aedc6fffaac96adb7"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-processthreads-l1-1-0.dll",
+      "sha256": "d8030b777617c71f0f94564607699dbf7561487d779db9756aed378c5675213f"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-processthreads-l1-1-1.dll",
+      "sha256": "f5e676713340f73a03a3d41a6ec9883b431da7d16c7f07bd0a920fb80e6c0753"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-profile-l1-1-0.dll",
+      "sha256": "f023d47e44d3eea6b0743580f57e8c6ba81e79d5ebfa7da26250076c647b980e"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-rtlsupport-l1-1-0.dll",
+      "sha256": "9746d8930704153578a628c010638a5f818ffe5a927e25591b108e256dc6afca"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-string-l1-1-0.dll",
+      "sha256": "7c53ae24c982d16ffd1bf7f918d115b11b7f30e57bc7feaa18cb9781e4abb926"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-synch-l1-1-0.dll",
+      "sha256": "56d9d62ca5dba79a6581b8d574a7d8b2a64a5ecb71e47dcf06ed0285708b1859"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-synch-l1-2-0.dll",
+      "sha256": "f6482bbec5612c39ecb4822787a333f2b7570f7a5f922a4059be41ba957bb372"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-sysinfo-l1-1-0.dll",
+      "sha256": "272d02765fdd3582618236c2d309abba069642f9bc1062ede069d0c144e17007"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-sysinfo-l1-2-0.dll",
+      "sha256": "8a0900788859d0eb51c2f48f50cc6ed376a120b518100fa20e11d7702ccde260"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-timezone-l1-1-0.dll",
+      "sha256": "ff35de6c03812b332e140f17dade25c5dd4775156da9eeb1eaae3fddd27236ec"
+    },
+    {
+      "path": "Library/bin/api-ms-win-core-util-l1-1-0.dll",
+      "sha256": "191ef3e98641a57296f19d572d8eb62489470ff1ef6030d136af170c2f835173"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-conio-l1-1-0.dll",
+      "sha256": "54ee5ec719a051496ff60aa00dbeaa94b9a7d2cdac27fe9b7317f1a666b6a2aa"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-convert-l1-1-0.dll",
+      "sha256": "8b94662429171019fcd63c70bbf2095a075170599704a5e7dcdbe3da13f3a429"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-environment-l1-1-0.dll",
+      "sha256": "39e5929593709e8af3bc9e0a75ec1155778d6f4a247f4cdfc58928ad6db88434"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-filesystem-l1-1-0.dll",
+      "sha256": "5a8ecebac32edf4e1f3c5c6c1c8ea1a1add6cda4f9c9cb26f752fb295bea6865"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-heap-l1-1-0.dll",
+      "sha256": "c71080cbcb43bf1f8f3e391deb12a582eb0abefc80946f340675a2c616e4feb4"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-locale-l1-1-0.dll",
+      "sha256": "6c68648e524187e03c4ad9aaa4a99113c6ee9f29fb39cc0ed93f951975138e63"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-math-l1-1-0.dll",
+      "sha256": "d4fbcccbe29371cbce431e43b2eb4f7ba9a6f04a3d740a071f02457a505e9dc8"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-multibyte-l1-1-0.dll",
+      "sha256": "41b98a59bea1c86ab3b2357acb77de4eae7ff1132f130b1d9669ab9c2b456a2a"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-private-l1-1-0.dll",
+      "sha256": "29bf3d90617d3781d19b332d6ceb9f20ba5ce082ec74bf6c34d5d4aee56e48a1"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-process-l1-1-0.dll",
+      "sha256": "47c1935942e3ac0812e4dcf18c0e265e565f0194a3349111c299712f5565f7ac"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-runtime-l1-1-0.dll",
+      "sha256": "72adc1b3677e0814d9c4ebf0964000e84bb2acf67336c8963061665e44f78029"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-stdio-l1-1-0.dll",
+      "sha256": "900afc3989673c9bb1a687ed38c192f46db9e6ba6d11a668898a539e7fc23798"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-string-l1-1-0.dll",
+      "sha256": "fcf12466cc12fd3b73611fc0763a5a1f9d44e90349513c34a0c83b0f36421793"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-time-l1-1-0.dll",
+      "sha256": "886e57c4a6adb299b38f02945369f590a67da4e79a798359fc60aaa067212d7c"
+    },
+    {
+      "path": "Library/bin/api-ms-win-crt-utility-l1-1-0.dll",
+      "sha256": "5f8f26b216ade615b67a41f6fbbb910972fc6153315a65bb8f09912be50215b1"
+    },
+    {
+      "path": "Library/bin/archive.dll",
+      "sha256": "055b9f4c3e0c6284cbe5de21c6afda891d7a77a8ae4f8aecb88c8b11c3268f27"
+    },
+    {
+      "path": "Library/bin/brotlicommon.dll",
+      "sha256": "fceb6655fc49c5196eb35196223dc776ebadcf739d31f11599e276050da301f3"
+    },
+    {
+      "path": "Library/bin/brotlidec.dll",
+      "sha256": "c55bc6e9bc80e1e226c16469e06c0b7edd20f881d3960faa5c0d02a92a5f3d6d"
+    },
+    {
+      "path": "Library/bin/cairo-gobject.dll",
+      "sha256": "798ea221b1c913e928ff930d3a065e7e3b746dbd7362573605b77900d59ff49f"
+    },
+    {
+      "path": "Library/bin/cairo-script-interpreter.dll",
+      "sha256": "cac9dbfd3553f00ad1642cda536531970ca50369fdec161c7d9e279bdaa061b6"
+    },
+    {
+      "path": "Library/bin/cairo.dll",
+      "sha256": "4998f9ee2e525e1a3824e65d1dbc76621a81204f3dc3d324e16121c3e7e3cc44"
+    },
+    {
+      "path": "Library/bin/charset.dll",
+      "sha256": "4983c202d0424ad6e271741fb9453b7a833bb1697854bc37046db39618234f14"
+    },
+    {
+      "path": "Library/bin/comerr64.dll",
+      "sha256": "244d7f39f1333cfbeb37cbc6a4623c13bca9a3a29980bfd4658ec57bf2c44221"
+    },
+    {
+      "path": "Library/bin/concrt140.dll",
+      "sha256": "54716f0738af891f283d213b5c8d11b25896bb8ee3097d301eae718560cf974e"
+    },
+    {
+      "path": "Library/bin/deflate.dll",
+      "sha256": "6dd36dd208f18c6b44b3a78ae2c9462f28430e39b7e5bdb00faaec22b495021b"
+    },
+    {
+      "path": "Library/bin/ffi-8.dll",
+      "sha256": "922fe231d83f412d351e2560714e248d097aae0b44c8410fb1826411e2528e69"
+    },
+    {
+      "path": "Library/bin/fontconfig-1.dll",
+      "sha256": "4f2111b152301942e2ee2cd9b3b11b7f927769b86c8bcd47b102772385bd4c6f"
+    },
+    {
+      "path": "Library/bin/freetype.dll",
+      "sha256": "7a7fb5cf51bfab4f6b640c1850fc6371e9650c111f20af08a20479186d9058b5"
+    },
+    {
+      "path": "Library/bin/gif-7.dll",
+      "sha256": "3d84b3da03a4cdc1d6f30fc8ff362afc17f4e149ce60f4fa5fd77c4e9dfeb292"
+    },
+    {
+      "path": "Library/bin/gio-2.0-0.dll",
+      "sha256": "157a0fa48b6e5313f49723bdcf92fd21ec1240140fa676e9557470dd7adab1c3"
+    },
+    {
+      "path": "Library/bin/girepository-2.0-0.dll",
+      "sha256": "36d3c4df35c5a2f2c422f4af626e3a5eaf67c13dfd2436882713c995e186593c"
+    },
+    {
+      "path": "Library/bin/glib-2.0-0.dll",
+      "sha256": "e97e732b9aa07da7360f09445042014d8b803519bb448a56dca96e6232d786de"
+    },
+    {
+      "path": "Library/bin/gmodule-2.0-0.dll",
+      "sha256": "1a29e326a67710e2b59c3db7cfd1ee02f8dfecf29bc85cd8da711ed34afeda8a"
+    },
+    {
+      "path": "Library/bin/gobject-2.0-0.dll",
+      "sha256": "af85af338e50d83153feb631a26c10a83f70fda4e871f9fa88008f7fe83aaddd"
+    },
+    {
+      "path": "Library/bin/graphite2.dll",
+      "sha256": "e477faad350b1641f08d4d20acd92dc5568a9b8edb34400d5fe436d3bf26b044"
+    },
+    {
+      "path": "Library/bin/gssapi64.dll",
+      "sha256": "4f7ad046630d7869c40a35a3114cf297659012d44fa56a8c64e006c9200ec784"
+    },
+    {
+      "path": "Library/bin/gthread-2.0-0.dll",
+      "sha256": "45db0160deb963e4d97d2db7a72155a42d44735781d90b03d1919c648972f6cb"
+    },
+    {
+      "path": "Library/bin/harfbuzz-cairo.dll",
+      "sha256": "03c0e0334987135675b09a606e9eff8cfe0ebde7fac2f7a225be97647ee677ea"
+    },
+    {
+      "path": "Library/bin/harfbuzz-gobject.dll",
+      "sha256": "e60240ae342666fe1c49703f87eab3132ac96885732d9648bd180c728a04926a"
+    },
+    {
+      "path": "Library/bin/harfbuzz-gpu.dll",
+      "sha256": "dbc285faa9629e597e09dbf293313ce933537554f0a36810170e5f90b6939977"
+    },
+    {
+      "path": "Library/bin/harfbuzz-icu.dll",
+      "sha256": "c1a62e26b370cc54916380bdb8818b62838dabf5e46c2f30bf5cafe221be6c64"
+    },
+    {
+      "path": "Library/bin/harfbuzz-raster.dll",
+      "sha256": "fb781fa67653d45b25918b88e11a3701fdca2443aab4b813d02310e87b84d24f"
+    },
+    {
+      "path": "Library/bin/harfbuzz-subset.dll",
+      "sha256": "bc52295086d76f29ef58d7a821ed97c0019e0e5151771377513ac0654cfa2384"
+    },
+    {
+      "path": "Library/bin/harfbuzz-vector.dll",
+      "sha256": "c36ef4044a8faf65f07b8c1a32cc9845c8d31eb485ce29e496f8245506c0b020"
+    },
+    {
+      "path": "Library/bin/harfbuzz.dll",
+      "sha256": "3ae3a9f9f61f2652cfc2171952d5f6c9cf62ac8cdc2a066a81a51cb83338f638"
+    },
+    {
+      "path": "Library/bin/iconv.dll",
+      "sha256": "4fe67a10b7455892ac546d79bc0b2ab2e3483135495255ea2c31d2c794c28e38"
+    },
+    {
+      "path": "Library/bin/icudt.dll",
+      "sha256": "5410cc846d4f6bbfe6cc9bdb8ccab48ef92b2f7244a54d50c562beeb2786e60b"
+    },
+    {
+      "path": "Library/bin/icudt78.dll",
+      "sha256": "18dd8e1881c5d378de868f8f2c2309d95d3f6757ef40868b76657e7a1f061a51"
+    },
+    {
+      "path": "Library/bin/icuin.dll",
+      "sha256": "365ea33b3b204bc06a57c1c3c611f4c7f14e08153ee27ffcd9aacbd4dafeb60a"
+    },
+    {
+      "path": "Library/bin/icuin78.dll",
+      "sha256": "365ea33b3b204bc06a57c1c3c611f4c7f14e08153ee27ffcd9aacbd4dafeb60a"
+    },
+    {
+      "path": "Library/bin/icuio.dll",
+      "sha256": "7a057b2a7c7dc3029087b0c0882a09c059bca26b29e934d0aefac8ffbf552927"
+    },
+    {
+      "path": "Library/bin/icuio78.dll",
+      "sha256": "7a057b2a7c7dc3029087b0c0882a09c059bca26b29e934d0aefac8ffbf552927"
+    },
+    {
+      "path": "Library/bin/icutest.dll",
+      "sha256": "2c24b0f11d4710ebafd9334fa22534aabb14b449327c5dde9903db2b2b48808b"
+    },
+    {
+      "path": "Library/bin/icutest78.dll",
+      "sha256": "2c24b0f11d4710ebafd9334fa22534aabb14b449327c5dde9903db2b2b48808b"
+    },
+    {
+      "path": "Library/bin/icutu.dll",
+      "sha256": "5b04f0dbe6d16226c16cc2ff425fb990e6800abc63e1bcd82673b0b2496d499b"
+    },
+    {
+      "path": "Library/bin/icutu78.dll",
+      "sha256": "5b04f0dbe6d16226c16cc2ff425fb990e6800abc63e1bcd82673b0b2496d499b"
+    },
+    {
+      "path": "Library/bin/icuuc.dll",
+      "sha256": "af525f3cb120014ded7c1b5c346ea00a5a488dee5d17b18e0172b6421e730737"
+    },
+    {
+      "path": "Library/bin/icuuc78.dll",
+      "sha256": "af525f3cb120014ded7c1b5c346ea00a5a488dee5d17b18e0172b6421e730737"
+    },
+    {
+      "path": "Library/bin/intl-8.dll",
+      "sha256": "19b198c14e5d54f3dd7b966f09458cc31566d9f2406c64ffc13b4386ce92ee6e"
+    },
+    {
+      "path": "Library/bin/jpeg8.dll",
+      "sha256": "0a5c1178b599856420b9afe3d9eb53e43ba83031123f3b72700d925023a752d5"
+    },
+    {
+      "path": "Library/bin/k5sprt64.dll",
+      "sha256": "c125a20add80639b9d92cf06ba47dff004f85b432cd1981af3c842819cd53feb"
+    },
+    {
+      "path": "Library/bin/kfwlogon.dll",
+      "sha256": "f56dbc097129f1c2a82782895794457ccc302d9d62284238186cae2a59e5b838"
+    },
+    {
+      "path": "Library/bin/krb5_64.dll",
+      "sha256": "5943f70ec700335ca1edda41fae1efbbf7bf7cb6048628265a6aa44c2f788e86"
+    },
+    {
+      "path": "Library/bin/krbcc64.dll",
+      "sha256": "af7d4feeb0fd776caf7fb3d08e12e6c9b08d0d91882c49dca681da1967f700b1"
+    },
+    {
+      "path": "Library/bin/lcms2.dll",
+      "sha256": "d183dc2474a957dbfb455192a64049d6b273577539955ddc8f7ab8ed3e138d95"
+    },
+    {
+      "path": "Library/bin/leashw64.dll",
+      "sha256": "723d03066fa5d60730ba133d3f931e239f0eb09b894307fb475436e5b22fd37d"
+    },
+    {
+      "path": "Library/bin/leptonica-1.87.0.dll",
+      "sha256": "d6811b6831f4628383431c88b3862b527de1e7d1a3f77fa322642e2b6b61378f"
+    },
+    {
+      "path": "Library/bin/libbz2.dll",
+      "sha256": "7f3ddbb88b670d79ada028480067ccdf240601319128e40eec8dce1daf4a9238"
+    },
+    {
+      "path": "Library/bin/libcrypto-3-x64.dll",
+      "sha256": "7ff26fb03c914b87e22f55c6abed6eda0bfbfc628f9c1f1fde67993ddf1f8d47"
+    },
+    {
+      "path": "Library/bin/libcurl.dll",
+      "sha256": "de5bbb95bfb356bb2f8e94582f09f2ff348f2234e48954ff1485e0eda6b145cb"
+    },
+    {
+      "path": "Library/bin/libexpat.dll",
+      "sha256": "05997b58cea2c628e97590120338957d2178a34dac3086f49211f70640ba1c44"
+    },
+    {
+      "path": "Library/bin/liblzma.dll",
+      "sha256": "8439ed3564a8dbbf6355e29c92e88fdf1f6dee096504149fc051104155c868a9"
+    },
+    {
+      "path": "Library/bin/libpng16.dll",
+      "sha256": "d4547a7b9f58e4525be0e8b16cb688e16f314ad8e199456c7217dc8835ad4152"
+    },
+    {
+      "path": "Library/bin/libsharpyuv.dll",
+      "sha256": "09e089c9ad5da983f04e98ccc8f41de1750b0a351370a4d42b9080c3e68eac50"
+    },
+    {
+      "path": "Library/bin/libssh2.dll",
+      "sha256": "69c35872dae1ed72e67388a4c64d51004dd15fc1be0901b2025da721d1496bb4"
+    },
+    {
+      "path": "Library/bin/libssl-3-x64.dll",
+      "sha256": "a1b3fd1f6eb95812e4fc3c68106f8ebec6b3f9dad9ff873ce4eebe20582b6f4f"
+    },
+    {
+      "path": "Library/bin/libtiff.dll",
+      "sha256": "e5555ff9f826a47885c87d9a648f9823d8bf6967b7c848e4d4824abcf518e356"
+    },
+    {
+      "path": "Library/bin/libwebp.dll",
+      "sha256": "9e13857e99f7fa275aa7870393322d3d54dc55d0a9293098f60f199ae070d235"
+    },
+    {
+      "path": "Library/bin/libwebpdecoder.dll",
+      "sha256": "9b6c268b8f76fc9225e78ecb6c44f18c297093ff565b88b677add75997db5df9"
+    },
+    {
+      "path": "Library/bin/libwebpdemux.dll",
+      "sha256": "8ef90ba6327c40049fbb99d26742c0d50a3eb95214dae9bdb3549282cf87c73b"
+    },
+    {
+      "path": "Library/bin/libwebpmux.dll",
+      "sha256": "dfa99a3245a78c0ea006907a52705aa07413200c38a190a6ad6e3839455705f3"
+    },
+    {
+      "path": "Library/bin/libxml2.dll",
+      "sha256": "5955b2406eb7c3510a74dd794550a740b0d61e89f7159c102b59d3d58fa10ed5"
+    },
+    {
+      "path": "Library/bin/libzstd.dll",
+      "sha256": "fcc1dc71b7df5489e37a78abab9c31d763570d55e93c67f388058c41c0d7b8df"
+    },
+    {
+      "path": "Library/bin/lz4.dll",
+      "sha256": "4d747c9c0d4ad4d5d3b205da03920dc304719f0a4f12e1ea83c2b5cbde27a89f"
+    },
+    {
+      "path": "Library/bin/lzo2.dll",
+      "sha256": "1894becf58e966183b63b0d88520e0ba5a7c27cb87add1cbc39d56fa9b620832"
+    },
+    {
+      "path": "Library/bin/msvcp140.dll",
+      "sha256": "7c26614e1d733892c2deac7e245ce115504b1d80592dd0a01b08e3e5a55f89ca"
+    },
+    {
+      "path": "Library/bin/msvcp140_1.dll",
+      "sha256": "206c931bf90fdad8816de3b5e2ef80b2bcaa9406c89ecc05fe6fddffe251e982"
+    },
+    {
+      "path": "Library/bin/msvcp140_2.dll",
+      "sha256": "d50d7883f20d1dc6191768d3746f52dd9cac89c346ffaed5be1f110c2f34a838"
+    },
+    {
+      "path": "Library/bin/msvcp140_atomic_wait.dll",
+      "sha256": "3d0cbfaa1bf3eecf5a3f4491d2960ee803cb994f30292c6adc4a07c498f60e2b"
+    },
+    {
+      "path": "Library/bin/msvcp140_codecvt_ids.dll",
+      "sha256": "8a65c7596ef2e6938731f5a1058e7e40145b6d97967cc649231a076b9a608d78"
+    },
+    {
+      "path": "Library/bin/openjp2.dll",
+      "sha256": "5d11a0abfa2b679c22f0d91df66bd2abc83acb6988b050ad9e75ea0b0025e2b0"
+    },
+    {
+      "path": "Library/bin/pcre2-16.dll",
+      "sha256": "aece7fc5bc5ea30f10ea269a5371c51b5a8c7e9ba7d7c7a72f74595023ac1fe9"
+    },
+    {
+      "path": "Library/bin/pcre2-32.dll",
+      "sha256": "fa32bdbd5472f1cb7e9dae79b6a5912c568d52d83311ae9925f8d113f709d4ea"
+    },
+    {
+      "path": "Library/bin/pcre2-8.dll",
+      "sha256": "324af6d564a81800d8e8103f2e9c1f57d3041422dcaf91bd86d805963862bde2"
+    },
+    {
+      "path": "Library/bin/pcre2-posix.dll",
+      "sha256": "9c06c6c7abf1c254c61bd5cd62555bae9cef8d4709ee62ca934bccbec620225d"
+    },
+    {
+      "path": "Library/bin/pixman-1-0.dll",
+      "sha256": "8bd9175343f28fd439bac2fd4fb6859d9b98ac0f1571717aad0fd01b4c125fa3"
+    },
+    {
+      "path": "Library/bin/poppler-cpp.dll",
+      "sha256": "3757de7ae20f92f2ac8528f9dacff1ac2098ebe27482094f6d0c8225cb1a1edd"
+    },
+    {
+      "path": "Library/bin/poppler-glib.dll",
+      "sha256": "11bd51705e37d421bdc38074abae42181767dbd971304f41cdef3acf4707017d"
+    },
+    {
+      "path": "Library/bin/poppler.dll",
+      "sha256": "025c8ef0fc3a30d862e0dee6af2a4cfbcf976825b5e4309268c4985372a083b0"
+    },
+    {
+      "path": "Library/bin/psl-5.dll",
+      "sha256": "24a1963f1684f342fbd2740c498cddd8f4dbf12846414d2b95637a1a24f86ba1"
+    },
+    {
+      "path": "Library/bin/tesseract55.dll",
+      "sha256": "cde298f5b430c523255e8837065ed0f9cd694ca91e080403f0c8ce7493efe5dc"
+    },
+    {
+      "path": "Library/bin/tiff.dll",
+      "sha256": "e5555ff9f826a47885c87d9a648f9823d8bf6967b7c848e4d4824abcf518e356"
+    },
+    {
+      "path": "Library/bin/turbojpeg.dll",
+      "sha256": "05e192eba3d8dd9be0db5b262718dd166454adad64d1de2f282c13671b2f600f"
+    },
+    {
+      "path": "Library/bin/ucrtbase.dll",
+      "sha256": "3239227d27667ba20d10a880751924e5719de0078f9fce232d149d383f7681f6"
+    },
+    {
+      "path": "Library/bin/vcamp140.dll",
+      "sha256": "dc283ffb87e9b82e687ed4e899ae062a209aa338207abfc9a89d61407d678bd4"
+    },
+    {
+      "path": "Library/bin/vccorlib140.dll",
+      "sha256": "09f93d5ff96ae09767f3e1af3cdd43a5a58f2598654fc63089429bb6f9f4737f"
+    },
+    {
+      "path": "Library/bin/vcomp140.dll",
+      "sha256": "95d4ce4a6802d1e18b5e0e1722cc30ea72ca7e033f83828f05c0b7b993fe7cbf"
+    },
+    {
+      "path": "Library/bin/vcruntime140.dll",
+      "sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7"
+    },
+    {
+      "path": "Library/bin/vcruntime140_1.dll",
+      "sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e"
+    },
+    {
+      "path": "Library/bin/vcruntime140_threads.dll",
+      "sha256": "40f39e8cee5f5a531b4010e18b807e8fe265b908dc58f959ecb7ebc6ea6cb11a"
+    },
+    {
+      "path": "Library/bin/xpprof64.dll",
+      "sha256": "4d11aa50a246f13750079bbcddf8d86efc636e1fbfbc9d354ad939f8f9ff8037"
+    },
+    {
+      "path": "Library/bin/zlib.dll",
+      "sha256": "f4f26ea6300c8449daad4650915e01ac80aafc6ca8b73a50be450f1fb66cdd63"
+    },
+    {
+      "path": "Library/bin/zstd.dll",
+      "sha256": "fcc1dc71b7df5489e37a78abab9c31d763570d55e93c67f388058c41c0d7b8df"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/10-hinting-slight.conf",
+      "sha256": "d138eca2bac3f78d45ff7cfb649ad792caa4a6e61f73cea7cf0ea54b091f1ef4"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/10-scale-bitmap-fonts.conf",
+      "sha256": "df8e99abb6f82384c61978906a45a95794940545da95790d87f01d9391e0894b"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/10-sub-pixel-none.conf",
+      "sha256": "0f00b5cf0ce07062ec65b9b340aa888f6c5fbc215aafebd26781be2d5a13ff6a"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/10-yes-antialias.conf",
+      "sha256": "e6d82a642d1b37f7d24dc37f938b999f00ff7aa4303b2602d04164d53f221005"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/11-lcdfilter-default.conf",
+      "sha256": "76aec9d8dac48faabe1bbde9e887cfb09fa45f30be5f8826e945a394a0097e48"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/20-unhint-small-vera.conf",
+      "sha256": "278732c68c16177f2aa3c7e4ea318b9f720aee13a433c32eb15ba626806c609d"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/30-metric-aliases.conf",
+      "sha256": "3baf25c82e1a14c606d45c212296852be06ae9795d60e84aab573226151450a2"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/40-nonlatin.conf",
+      "sha256": "f5f15e22979e2c98b8446706a24b44a904ef46e369052f9d3e738cd6e864a4d7"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/45-generic.conf",
+      "sha256": "63fc016a6ef6ad5a6df2caab714822c0cee9a5317c38237e9fbf6cd42f52f514"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/45-latin.conf",
+      "sha256": "b46e539c25dfd5531c8fcf4f22c3d156b09272ffbc6f8a83a8eeb7431c09aee5"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/48-guessfamily.conf",
+      "sha256": "f6048ea7d8ed97cc4efef847b98c71ea9d20f16835feb43860b221d40770508e"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/48-spacing.conf",
+      "sha256": "4395913fda6088c968f3145f5d41374cfe7b020e99445f56d81de91a1b361135"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/49-sansserif.conf",
+      "sha256": "35b1d7dac8bb9f61a19f5a9f5e16fc6ddff1d0844ac04503a85a54b232a35c67"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/50-user.conf",
+      "sha256": "bc6e31684e4f5e0176200e558a250ff63e9ab0773300f47071223edc320c4c5e"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/51-local.conf",
+      "sha256": "dca9d917e1f66f73bfa495943b4d1eaab2d93810a51bc8e600cf4d4e9df03e67"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/60-generic.conf",
+      "sha256": "540302fe1576a6de20a3194b64e8090a816ba70cfdb66d61ddbe770aff6e4c23"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/60-latin.conf",
+      "sha256": "a4b23d19e5348750ec0c2883b0cbb3f31367b22debe63c4113af389a719484a5"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/65-fonts-persian.conf",
+      "sha256": "c675fab143a3638346874798be45f51f6878ebec591b4362d83cfffb828ec4ca"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/65-nonlatin.conf",
+      "sha256": "2a0232e5423f38023efb29b67a95bae982da3c474ec5ec7bbf5b418f42357a50"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/69-unifont.conf",
+      "sha256": "fa97c0cf5f79d70e2dc3dc48155d4c9220cd7c6a8bc95b89c4ebcc517f97479e"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/70-no-bitmaps-except-emoji.conf",
+      "sha256": "bb5df65896bf3011b2f2935b63ab12db1ecf078674ff73a533123445f122a92b"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/80-delicious.conf",
+      "sha256": "34f27b7fe9cd83b2b6d46f16ef9c477412f2d7ef63634f86b9b38b79bc4f81ad"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/90-synthetic.conf",
+      "sha256": "cdd0aac7840c664a7127b64db66bdfe8dc22be3774d10bc22f4a41c98de5d85e"
+    },
+    {
+      "path": "Library/etc/fonts/conf.d/README",
+      "sha256": "91d6980aa2eba3ee0c2b0c13945541a9b723de5ee25bafa4627bbdd032906fea"
+    },
+    {
+      "path": "Library/etc/fonts/fonts.conf",
+      "sha256": "f141c1b89b172d22f213531646c21e288f0ebf3ec46484698896e1b33c626756"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-0",
+      "sha256": "56d35ab2f323b75b7e30dbcfcd9184f4dab5fc156241b5495ac4e503e1ed72fb"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-1",
+      "sha256": "2512a3e2b81537a4b7b2a8f900294aafe77fed61b5c4b21e0fa5d13b786c293f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-2",
+      "sha256": "a06ea178e6ce30d3e7b2fe8a379ddcf18eccbc0ec1a77502cb31a743e377f769"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-3",
+      "sha256": "fb482584a7f58f5b93012dd7067c83cfffdae2b65053eac5bd0cfa71ef1525bc"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-4",
+      "sha256": "e3893b8c006f6c7800f94aafcad26ae98d2a57e566789e7c8d6cc7141fd3276c"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-5",
+      "sha256": "4917e58066ea121406a0fb18f7defc57032c554a283b9f2e4c6740a8d25fc9b3"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-6",
+      "sha256": "48ad3013cf2ec9690ba4e6127e992d2f94704ee43376b28fbf4d138f6064cff3"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-7",
+      "sha256": "a95c2506de496acc0b004a36b6f93ff290e39a2581db9d6c6fe0f47e82829bb0"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-B5pc",
+      "sha256": "945cb62a8cca3b8f5a51c16167b9736bafd7e14f8bcc0fa358f364063d5441fa"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-ETen-B5",
+      "sha256": "37522e04405b94256489cb5f9054bbedf2177c843a03b83cce6e906e1eb47143"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-H-CID",
+      "sha256": "d334a96b462701fa98c70164d63841a45212cce943d4d252d74877c7b484ffc9"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-H-Host",
+      "sha256": "f54edd3e0098771c322747db03ef1ee5a5d4913bc8a88945559da4a5a97b1934"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-H-Mac",
+      "sha256": "e563fe7f214934059c47cd80790830722a5646219a8ae6d76bcca3984ff5cf4d"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/Adobe-CNS1-UCS2",
+      "sha256": "8375afd535e153a7e3bcf448be93e5012b26229547a20d52520e46e3c386351f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/B5-H",
+      "sha256": "02abbc88dbcde53821e9bdde921348f7e36aa49bcee8a85524cc4286c39e9da0"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/B5-V",
+      "sha256": "449ff860b710a27095feccbc46e12c042ca2370f85ff34a1e4e49ede825c6765"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/B5pc-H",
+      "sha256": "7a2af623d66158fd9b2eae590d3b0373b2e73125f008befda26c40a6c5d396fb"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/B5pc-UCS2",
+      "sha256": "eb8fe097b09622b4ae7a5d0b3817e5269e4bcb12bbaa1e6603e9e7b532e34c99"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/B5pc-UCS2C",
+      "sha256": "c9d390d9df334e83817caf2b2ead6182b80b692ca153895e7b911f3c29b6a1bf"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/B5pc-V",
+      "sha256": "f1b09f3752437a802f0992297a18361fd3bceed8e208cfbb97f2e6c035a29d2e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/CNS-EUC-H",
+      "sha256": "61a5163ddf2dcbeed5efc4c8e9a612c7b3c5a0c062df75b2b3d73e3e46e7a299"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/CNS-EUC-V",
+      "sha256": "91faeda86c64df62c57b434a5b1322e1a6236c8520db3d4ee58b6ae5fee4c01e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/CNS1-H",
+      "sha256": "47d18805d2cc13717d13a68244cf52c82f0a27e2581c9f390da1a8d250010312"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/CNS1-V",
+      "sha256": "47b710e5e4f8e6115e49dc94bdebff328d10e25b1214ea1a7deab61f4780f94a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/CNS2-H",
+      "sha256": "eed3779e35db477b1f2dba0f6c338cc4a1dd504b47089bbebca7612faa0cb395"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/CNS2-V",
+      "sha256": "b9550e27b3290e40e8db266fc9a65213d8b58c5dc253ff6654d305f305950c78"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETHK-B5-H",
+      "sha256": "8de4c7aa047ec7ea035585dc42d0465cba4ced088b12f3dfa21014133493d376"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETHK-B5-V",
+      "sha256": "552daa355f17027489d57e4a9b0ce517760f16eb3039d966e48fba7bdd2a6829"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETen-B5-H",
+      "sha256": "b6e5e42d94f6642842f6a42445c1df29d3874c6d1a91a38a05c9d7e4b57f0ce6"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETen-B5-UCS2",
+      "sha256": "b99956d31b813c55df64bada4ac35de2fd214d7ad03a7ae01ff14d0ae08a89b3"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETen-B5-V",
+      "sha256": "0e6f041edd60516e92c9470254c4d45522b4cf079f1809b82862d43a3f1e1663"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETenms-B5-H",
+      "sha256": "051a38392481d6069608f41962ef9393e142797a8977d7f7fbd534b051a6e231"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/ETenms-B5-V",
+      "sha256": "477e42501dd0c27301b992ab004d6044bf5406277ee7a353d3b04cc08092a9e0"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKdla-B5-H",
+      "sha256": "1918350beee3ed4a46136c8b9c07bf3748c84d7175b6718636486758fed10bc4"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKdla-B5-V",
+      "sha256": "0ef767fb0c28ab6068183f2253e47f1b1fff1779260e73d15ac01b138da57367"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKdlb-B5-H",
+      "sha256": "47cd11c336ee7c6f4ce15d1e0217c0d34c71397b0e30b8417b6427ddef335aa7"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKdlb-B5-V",
+      "sha256": "aef49aa9c31386b7a57aba5822bf4269975eb05ea4fe51bda9ca0fb5bf31edba"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKgccs-B5-H",
+      "sha256": "5a9648732d1245acfd3156e21f879b77cb091c14fa304056b402fe2e64c995e8"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKgccs-B5-V",
+      "sha256": "d164ee025e214dd64a3921d826e9ef9dcc3cd3e6381c527302f6802b9a4c7043"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKm314-B5-H",
+      "sha256": "700102c297ad373396a6dc20c8282e6c16882ae51d52251b46da6863c3b76ced"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKm314-B5-V",
+      "sha256": "28258c0aeea002495a13190786f3d4025ae426248a6a872b21958d8d4a22f957"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKm471-B5-H",
+      "sha256": "c602791848693d92e496b8f449b16e39a93306c37e272fede3b88fb9031eaa13"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKm471-B5-V",
+      "sha256": "7f97034b0baaeaa2a3cc01f691534e61a5425b3ff9a89025082a9c14bff02a4b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKscs-B5-H",
+      "sha256": "46b4d44a0d38cf188a88f42688f10a03aed8d67be80c141a1404abacc01ee191"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/HKscs-B5-V",
+      "sha256": "1f6f7f06216987d973c18e23d1a8c79044d9f1b301e01c738867ca1fdf50e237"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UCS2-B5pc",
+      "sha256": "e6cf8fa5ef648e3ed57dcf32f4825582a12314e9cfbe83bc878c37ef1b28262b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UCS2-ETen-B5",
+      "sha256": "f86e56811a2d7f3dcb6c2eb32a4efa7cbeb56436adc5ece4f7ff8886ede56591"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UCS2-H",
+      "sha256": "fe9c7f1557d58875bc4a16edf377ee0d8c579eaee778135adefbbed1f868c017"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UCS2-V",
+      "sha256": "745fd7a922bedd2d124006a4b5e6a909aaaa9f11eebefbb0477c22a01439a3a8"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UTF16-H",
+      "sha256": "074d175c8c6827184d064f2c48cbe0ba4957bd525fd864184717518acf4db970"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UTF16-V",
+      "sha256": "d21175d1f8a083b606a9a1e17fa98d1cb901a0e833e19d47a6c08fb452c91c11"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UTF32-H",
+      "sha256": "be10503afb2d8c081c8ceb62d39b107f23022646e3204d99c0a9e9b4c441b9b8"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UTF32-V",
+      "sha256": "85e38fda8328d3a7917486cb18094a7a18c4fb52dfe76c36e4eeaca0444aa101"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UTF8-H",
+      "sha256": "51032588b2d4748e933744c531e9e7d9cd826f3427d23fff1a9bc19db24f84de"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-CNS1/UniCNS-UTF8-V",
+      "sha256": "b609e60fb74b493ce46d2f3b2393d0bc81244ac9a10711a96d61fa476e684a94"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-0",
+      "sha256": "72509e2ace6c096d5ef0946e894edf8e77923d8004d519a06ff28a5e56d67c85"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-1",
+      "sha256": "b667f1b2e8773a3f05ef66177ad0bd2fc6a0adc470fa9de50f3a343bf041f97a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-2",
+      "sha256": "3bc73a22b6e919733e7b5945d79c6c1393a930217f559c7b981cd06bd106661f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-3",
+      "sha256": "fc5490ec245dda01c8b46797ff1429d70734355968db4d2eaffd9a4aae17086e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-4",
+      "sha256": "270433b0479dd5ebed7f2ecff0ea481f1e3734f397893fb7e1b2d871486e206b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-5",
+      "sha256": "ab3ce0efbaeefe12bc41711a276386989026c88bc4c3f81da3f33344f7df3421"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-GBK-EUC",
+      "sha256": "f095a0a55783ac2ed81ddbfe11b8fd6dc3816e9b0f04acab5bc4a3a2eb4e7f7f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-GBpc-EUC",
+      "sha256": "b4d9fdc2e43b1289ba5f4063446de5d89633e84871381065f2f5e7e4b27f5f60"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-H-CID",
+      "sha256": "05840c56d9566e8e3d69e5e94ceaea2ef2d98cddc23f9e3a6afdf9e260341fed"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-H-Host",
+      "sha256": "94ccbe34dbfec57c7f4f28f10591a2fdc7b13da2f3763442547be1034ad7eaa9"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-H-Mac",
+      "sha256": "26d4cff1065573ef0516ca49413bc7ed1c48d5857b2e63948a6122932c692858"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/Adobe-GB1-UCS2",
+      "sha256": "368b40ec05568faf323cfbbddf23c60d566bbc88e366981eb6541b026381a3b8"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GB-EUC-H",
+      "sha256": "9c2b268c5fbcc9a23aa76d2f199c97fa9fbfcc0ef43f9f320bb367a6b0a47b20"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GB-EUC-V",
+      "sha256": "5acf07ba8e65be8aad1c7a4535574e41cb326abd295e9e5c1eb3e96037260397"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GB-H",
+      "sha256": "80e3b6caac7f23cb56e2b841464daefd9c32f14d902d67cfd8deba346ad2a35d"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GB-V",
+      "sha256": "8183888d47318ee30bf2b4f2a07aa953137ab43ac72df265c83f79f2b6180a62"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBK-EUC-H",
+      "sha256": "6c88b308f122966de14696d819800bc89be2538fa14fa41f474e36b20cea11c6"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBK-EUC-UCS2",
+      "sha256": "25b3158ed0bad3fe9529873c0108e2cac9ade4e4824860568dc1deea1ddb9916"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBK-EUC-V",
+      "sha256": "73381a5bc2d0aacbf6b2ec211f34e042e7c74895342fcee073b0f9be2dbc8703"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBK2K-H",
+      "sha256": "c7693cc2b7b235dad5ecd428ecc0d56cf9e5245c05eb992816a6cdcb446c97b1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBK2K-V",
+      "sha256": "80a5a087821c9f6829fadafc971d5bdae9bbc4b54714733fe22c64802b4301ae"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBKp-EUC-H",
+      "sha256": "d6ef0e6c393bd065f5b646b7dc87fe8df88f3608a9264fb5727b552418352d5a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBKp-EUC-V",
+      "sha256": "43c8fa12dcef0b1b584fdd077996fff388fc0e9a9d332e08556640ceefa9fa0e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBT-EUC-H",
+      "sha256": "21dca4424cff890670aee8ad6b045844d3b05ed879e87a79aab34bd7f722530b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBT-EUC-V",
+      "sha256": "100af66255a2f363059da703be769e6227c74e353df71329d1a18d83f5b808f2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBT-H",
+      "sha256": "ff770615091901ebfc9c2bfc39b8e7da4481ac38816e0849db149dac34f9ff86"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBT-V",
+      "sha256": "04f4f5ddfd909d8a9f127957b3dcd549d121dba9b3459da396ae80abea94a0b1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBTpc-EUC-H",
+      "sha256": "274e76732cb5f12fe0081ac872a034b4adb8705a24221b5add479f4dd86efed2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBTpc-EUC-V",
+      "sha256": "f26971e59f62956eb6d8d27782c5c993cff89097ccab8e93ec682bf4b9302122"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBpc-EUC-H",
+      "sha256": "ec6132762b28650eb0c8483ea9387af39acb9d8aca432cb1e4f79a1058e1cd40"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBpc-EUC-UCS2",
+      "sha256": "2c95f737e6631e8120a88c1f5165a201292681642a6c01a13623509c4ce58809"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBpc-EUC-UCS2C",
+      "sha256": "43ef886a6293f4d1c99eefab304af9388b65a10f53c543231c3f6e6ff9770c75"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/GBpc-EUC-V",
+      "sha256": "5fec79fd4f5f95d7638a150eec9b551268b8c29103446f0eee26866769ff384f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UCS2-GBK-EUC",
+      "sha256": "56d84b19a9fd0822981072073aa88c1f7110d7c4b6f44a3eb89eaccec6f4fcc2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UCS2-GBpc-EUC",
+      "sha256": "778bedf71cbfdb2c3aff1725ee96d0eeaebe5909fb52d1f381037952acecb940"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UCS2-H",
+      "sha256": "d2b100a68c016190347c6e0ecee3e7d6d1accd7395d7e803bf88b7ffef156725"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UCS2-V",
+      "sha256": "d94d2e56a9a5cb89e0a68c31eba1ff40aa604b3a504be844c67de64af64eec96"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UTF16-H",
+      "sha256": "4edbe1789ffb0564c14e1b245bbd01eb56bc41326f75d8b041de6847d2ee1d20"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UTF16-V",
+      "sha256": "7d40dc464b46ad8da9bf4d063dae76b0dc190e29805cbd2826e1599e4b432001"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UTF32-H",
+      "sha256": "ac2fe0ff7876345122fdd9eb38629644b5660054c002027fa0e1b0694d430188"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UTF32-V",
+      "sha256": "5d949af5f7525b5c97afd644d7fe6a5477b2ed227c20fb1dbfbbbb40fdec55de"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UTF8-H",
+      "sha256": "226464afd3a4b5a8323539f2f58b118f30d85b3b6aded33839486e4114efe5bd"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-GB1/UniGB-UTF8-V",
+      "sha256": "0368772441ebec46e8f0eeb78f72b0d618a62072d2e3ada31e9ff6aca5a6ddbd"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78-EUC-H",
+      "sha256": "41fe69bd5adba9896742967fcb39252770ab28a15b24c86b3d23c94c91f45d0e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78-EUC-V",
+      "sha256": "2afa8f3de6e615d7ee712c6943b2a6f68f19509b49c5beb2dde17e34d5c70b91"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78-H",
+      "sha256": "bf1b3dcae13713e5c1ba7422c7803561d46762448ef433d06405b766f5142e73"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78-RKSJ-H",
+      "sha256": "06656b02f09cdc41db22938423ebb4b04dbd5f243ee01001ed69910d4f34aaf2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78-RKSJ-V",
+      "sha256": "892fc562b81f6ac8ac6fbbc70b3f81de6aa20b1851285c78bc574df80021bce1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78-V",
+      "sha256": "8ccfde871c49abec58f124b7bef505f4c96e1d9ec05a45d02cd93bec4ad0d238"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78ms-RKSJ-H",
+      "sha256": "44d36d66e4b19bd86b97f36037f6b0e7946be6d2e8be2c7cac9b40e38038d74d"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/78ms-RKSJ-V",
+      "sha256": "916ca2a7b58e54df7859bb2d8e6ca65366f52a0d72343614f4975fb7954b9553"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/83pv-RKSJ-H",
+      "sha256": "77f7a0f11fe2ee160baa6446b47b8a66cda41aac4ab777fb92c192198a521377"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90ms-RKSJ-H",
+      "sha256": "e0b104bcc8dfb3c2d3e025e12c59182d7e0ee1b5df6f55bc8550d4b3fc83ecd3"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90ms-RKSJ-UCS2",
+      "sha256": "84ef5ef34cced7dbc6443d115f921799fd65c46d4d7d92d525c55af86371c175"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90ms-RKSJ-V",
+      "sha256": "a588f7d20d0c8dbf09693480e62bf3ab80b7453858e4425d4b47650d48e7757b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90msp-RKSJ-H",
+      "sha256": "10b15c3b208d35f9b2764b0dd00e52de59170aa3f102387e7c388dfaa2290fc0"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90msp-RKSJ-V",
+      "sha256": "05b5adf56096c0f1baeb267ec63f4018c85e3c3cff01f3457ffa10672a225c09"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90pv-RKSJ-H",
+      "sha256": "bda3f87262c61ef5a34097737f7306fb160d769f357b72ad251d11384a3848d2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90pv-RKSJ-UCS2",
+      "sha256": "f2fbb5ed652f3d64f90153fd23ae7034f09385138184379822b1ee0077f1b841"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90pv-RKSJ-UCS2C",
+      "sha256": "4a8c34374f1738bdccbfade7bfbf9b4ee0baa8c66b988266bc58431e1f234d75"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/90pv-RKSJ-V",
+      "sha256": "36ab76110635e300971cfeaaa9bc049e28ba3214d2a880dd3b97cf1a041cbca2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Add-H",
+      "sha256": "6b3c605f5d390ea59e837f244052b6adc3712dcbc872000edca089f9642e9c92"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Add-RKSJ-H",
+      "sha256": "630d4689f3d17000208452c855d9360dc1f769f102b7d29c17ea11973b28aaa7"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Add-RKSJ-V",
+      "sha256": "5664073e91e61009d72d5f007207f29bb8561c05939f3b185909ab92424bf039"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Add-V",
+      "sha256": "3a481b10d8a8094675cd4549cb9a0515445698b4e971b9605684ccda00d43839"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-0",
+      "sha256": "cd25cfa492cda6db43620d29cea4df50708a591f4729d50275d4c026d82565a8"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-1",
+      "sha256": "1dc50c51406581ae5557bf1eee49b80d096f01d203a52887ee7cfd9e8f979065"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-2",
+      "sha256": "6bf4b9b04107f55cf0c2952b82870c7efbed165d305325ea80854e329ee2bf4e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-3",
+      "sha256": "985f507dd29652fa887a5bfc67de0ecaf5a777b9f91f41eae58d23011409e5d0"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-4",
+      "sha256": "27d4a3c748bf5c1d76afa8d9346ccd47d6f09002b1676c2bfbc52884ea69e4b1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-5",
+      "sha256": "c6d32cea2fe9b42bd5efc33e323b44ead86375af0787d1543f6a6203666cb882"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-6",
+      "sha256": "d5081ac9777ef9c4ac56a1f7d361c879948ab16229aad869c0e22ff82efd38ab"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-7",
+      "sha256": "7290cf1ef3c5f4c1d2efd7c6ef32c18fafc33ded7154b99b37386aa8b3b7ccdd"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-90ms-RKSJ",
+      "sha256": "e9acbc8720418ee9a543384d76055b41580ed448791c549f74067db202cc7f64"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-90pv-RKSJ",
+      "sha256": "9d92e638ab8c2a149c8c209339e0ff08a33f58ce9090ebcfefe7706451793132"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-H-CID",
+      "sha256": "deec273456ab8c7cd3c7403b9f5c00d06ebf6bcfd900ef9ed4bcdec93e1a2eba"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-H-Host",
+      "sha256": "e0993b3301962b9d2929b4a5ba23f5743d6734a0af48b22db11db04c3fd91bdf"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-H-Mac",
+      "sha256": "433f7549ae70d6e965f7ab8ec6914b91c1635ab7fd5b8c61dc4833ad1202ebff"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-PS-H",
+      "sha256": "b49d2346ac84859e65d5669264252a40f770fa600896adec350433bfdcebc426"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-PS-V",
+      "sha256": "939ad87eb2619294699240e03e6f90aa8df8d787fdc6eafc5e0f5b7593c165cb"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Adobe-Japan1-UCS2",
+      "sha256": "6a9693361647a37996312cc57071bb79f8c06411207be7c730a83fda1254cd82"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/EUC-H",
+      "sha256": "5cceeaf017e9f813079bbc17d8e750072e50042a01e521c9f9c18efabd596cba"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/EUC-V",
+      "sha256": "d35c5ce976385980244040037152d92d321b738bca885ad0976c10658cd0acab"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Ext-H",
+      "sha256": "fc053d2a17e4ccb7daa94d3a5bac13da692b27e93fd188e6485d6482c183ff78"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Ext-RKSJ-H",
+      "sha256": "00cd02206daf64e633d1c13b979fb20652a554d87fd9f2f0ca94065156ea8b71"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Ext-RKSJ-V",
+      "sha256": "8a84926990144b043f2e5ebda194bf3560cc5f29096cafab8a6079a9d86e2d6b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Ext-V",
+      "sha256": "72a86d3fe3889fba7f86388f29b773e771d8b63f46beb0c16d5291a69d105d90"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/H",
+      "sha256": "f90323c3fd16e107b02c888167739f210af7144beba1bda83949069535db3346"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Hankaku",
+      "sha256": "a582e384265b625921729f6fa344f38f100502cd969a3310f8d17b236b67a2c8"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Hiragana",
+      "sha256": "f41d2a00f8411311cf8643830fd02eb255bd79afde8c07eb2c147de8e1f4b992"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Hojo-EUC-H",
+      "sha256": "7521eb2d9f4b343322e30568a0067e784be8381b4595e74d83334609375e6f5a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Hojo-EUC-V",
+      "sha256": "477e837dd1cd806b2e928009a1aefb1737969601d88b2242e619f1cdbd77b93f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Hojo-H",
+      "sha256": "c53fc89b4939d0bfba02ecf74acbd974bb4173fefa4b72dee754e86c091ce728"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Hojo-V",
+      "sha256": "ae9513f7da1dfdce7342254f7a1d322c7669f67be32f573997c0bb4f5d7dfdcc"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Katakana",
+      "sha256": "d2f827654583b9d243593a9bdbf9407fc1a1c4ba6ffab1f7789155bd3b4f52ba"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/NWP-H",
+      "sha256": "c1b7b550dbb8e03c727fcf67460ca2182904decbcc747f035c08a50d6dec9001"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/NWP-V",
+      "sha256": "cb8f27411228a9f26f0d6371a6db2a3ac48b1df888b058ca38cf1c5dd1e35a75"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/RKSJ-H",
+      "sha256": "9272806c3b27b367a1aa253dfb0a2e508e2d87875c755680f7bd77f459b18d08"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/RKSJ-V",
+      "sha256": "56eac0dd5cbb334f037b3353d66089c7cc2f0326121006c4f6467981955245bf"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/Roman",
+      "sha256": "561c18239a2c308fac2fb53bb3a4af385577b7399fae9bcbfcb5cce5e7f44a55"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UCS2-90ms-RKSJ",
+      "sha256": "1f9207c7abaea5078cf13735e6e2ed3992782d1a2a9f6fdf97d55d05c7b40377"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UCS2-90pv-RKSJ",
+      "sha256": "3caa573e5d5a64a6dcb320d725bcba5491b112fb638b1f88ea0cab30fc420d57"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UCS2-H",
+      "sha256": "5f41b1da5150325b132c7d9ca8055c06381c51407c3d1a0d1e6bfb4e3ba4dea2"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UCS2-V",
+      "sha256": "5042a83903735c08c373a553b0906d1a3726ca6bf9a15ce7f11b2536bfac14a5"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UTF16-H",
+      "sha256": "25507d1e9ace0ffdd08a5268b76d30f421e924e1c4d595997095b411f744ca75"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UTF16-V",
+      "sha256": "0a92bbf2dec4bf7bbf39439d0ffab3a8edc09e716be086aacc99dcb046089aa7"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UTF32-H",
+      "sha256": "3596f5e997cf3d746339d06e023e0d3a67dffb3906f688ab90cedf9d93d25172"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UTF32-V",
+      "sha256": "68ff399f2bccdfb4663b55d9d86720af6f3ed0e0f9ba7381304b8a40e57ffecd"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UTF8-H",
+      "sha256": "58c47e65b947dfdf9aca91a16179dd7649797d2c283d0c5ffee7e776299bb75f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniHojo-UTF8-V",
+      "sha256": "5691edb1eb6581036b938077807d585b42104ef48f5c052d4646a356fdb364a7"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UCS2-H",
+      "sha256": "05d064e6b373edf83890e26d7d2a2339482fad265eaf0a2b92ab528af33b5a54"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UCS2-HW-H",
+      "sha256": "782f9d14dffa2a538302c8aa02b7d4650ff41d3bbe49215546c66a786be92bed"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UCS2-HW-V",
+      "sha256": "eb1fe9bd104770efb0fda13b211fee88cc5487a653e5cdf6d89bb782336e7673"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UCS2-V",
+      "sha256": "b487b2602348ef9c69222fd1a82cd45eea4f756d98e974b94183390c9bd8b6c3"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UTF16-H",
+      "sha256": "5cf77ed38c25262dba845676738a887afe45e44425c3dd2489334c4d8c510fcb"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UTF16-V",
+      "sha256": "03bfb4e91452da537f347b8676e52adfa5dd10f8b920fa2cc34d343580354056"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UTF32-H",
+      "sha256": "1c6a4b07e994dfb29e32522a928e86cfa3d18dfd3ae287044de97a923fa578fd"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UTF32-V",
+      "sha256": "e15ff77629f5bd1989ed602a01d48d80f91856055ed357c4fcd5214d46422a76"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UTF8-H",
+      "sha256": "60d25aa628b23f7e00f8c5fef78eb1145836adabd159e380835aedfd650064f3"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS-UTF8-V",
+      "sha256": "a80206433cf6b59b6a51c74b13f158aa58d495b4a9b062e9c8bb893fd0903711"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS2004-UTF16-H",
+      "sha256": "e8fd0aad9f372ccc42157a71ce567aa481bc008b0a5534a4759e4c207887922d"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS2004-UTF16-V",
+      "sha256": "5428bc3a7cebac290e636ca90af7f9308b0a947b2eb38692cd84eb6b540320d9"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS2004-UTF32-H",
+      "sha256": "25bab401c87758b7c69e4d4d1b1b3396b5786eb99b1c12ba8239bf19747f9633"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS2004-UTF32-V",
+      "sha256": "46f6df69d9d9679916fa739afd0048b52631e99bbe5bd9102ded7f6ae10b34af"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS2004-UTF8-H",
+      "sha256": "086e1d4ce648b0eff727c57831e1d5e264245aa1c296bec291e647b85f9fba94"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJIS2004-UTF8-V",
+      "sha256": "4fc68ac57e3f00c82f128de570788d7f64930c5cf6f812ea9beac4f637360926"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISPro-UCS2-HW-V",
+      "sha256": "f1f62deb037d76f63246fc690cdd324a160a6ea04ca89df5fae97c2776ee3464"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISPro-UCS2-V",
+      "sha256": "21ad45929c300cfbb97e3d133ec8ea8f1e1bbed64ea32133e9dcae2c8dcfba64"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISPro-UTF8-V",
+      "sha256": "f8b358dcba9beee97135be71af105147fe017d2470aaeb28d22695c3f521365a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISX0213-UTF32-H",
+      "sha256": "01c4ebb0a44e34766140d304d7a5aed3e51d92c0853a77b6cbef5dd6a075910e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISX0213-UTF32-V",
+      "sha256": "7054fdf47fae19305cfec715d681353c85dad4a0515a54c7a7f7592610c6fe62"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISX02132004-UTF32-H",
+      "sha256": "d884040ff6b96e3e9820072713d1b4d77c6b89b48c862f2bf8367e96d50a0c93"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/UniJISX02132004-UTF32-V",
+      "sha256": "983f4d18c5e31078b714b28156e16a5017ec98580741fa0f7dd9e6c4c50fd322"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/V",
+      "sha256": "1ccdbf3451794ddb929a9e2e43f562b20a8d9de5ec44174317c8a149ab498aa1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan1/WP-Symbol",
+      "sha256": "6174dd5cd3acaf8439764be7596f5aea1d0515ba81aa9ad01270d92e171fea87"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Japan2/Adobe-Japan2-0",
+      "sha256": "ae0766c1f1654dd3dbdb8ef530b77de39521aa52ec9ccef80c8996e16fc2f07e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-0",
+      "sha256": "ca58ef1abc2de732d5ff285ded96bb70700e293c19c416a89bae92a163037618"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-1",
+      "sha256": "3b470c60b3d6196322be671571325b5025097fa97bedc51964948a7c6f927f7d"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-2",
+      "sha256": "12d13fd0610ef3006add8169c59f4faaddc19c2629939417caaf70e9dfcec290"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-3",
+      "sha256": "b922373bf0b75b6b8ab57bb5c7200e9ba10c9067a63561577739218692459603"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-4",
+      "sha256": "6d7ebdae3b448592e18871ebd42eb62e4bd4e6c2a2846e7bbae6fdfcc7cede78"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-5",
+      "sha256": "579d94396eafb215c694430bcd08e6fd612eadcdb53ca34a6f9f8e2ada378a74"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-6",
+      "sha256": "6b8c3481b89d3aed99a19120ba365f649b2d82aacb1e15ec71c29697db97e9df"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-7",
+      "sha256": "a6a76ebf76ace408bde2e69f04a17f47c3439e60100391297b10dbf7ec8b4574"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-8",
+      "sha256": "ce6c2a24761aa8376e37a97c3c8740de1e84e9c7fea63a33265d91de97809a7e"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-9",
+      "sha256": "ee0486530d138fbd4f3ae6c58f96cf5766dcd83eff72e39677d1ab5ec3906e10"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/Adobe-KR-UCS2",
+      "sha256": "6861a3208f331ecd73369c5d51eacf3b72c820fe3c87524f79c9ac1bb16830ec"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/UniAKR-UTF16-H",
+      "sha256": "f6f25740407e835538a8ec2bee34b82ee92969ba28771cf138fb2cc966998ef7"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/UniAKR-UTF32-H",
+      "sha256": "43a55f98fa1b83b03741c97f9a1bac1f1369c6c2ae825799fd3e6460ce9f2059"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-KR/UniAKR-UTF8-H",
+      "sha256": "0a4c6316bc6c6aa98dc359a724cccc32b18956321a52e985296858c4c4fe1acf"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-0",
+      "sha256": "da2c6c123f6d1d21abadb8a070e5c6379a1ca97b753532aeb21aedf99759f51b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-1",
+      "sha256": "bd20feed570d8bb2e9162829eb6a144542b9c75a41a83931f154915e244afdee"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-2",
+      "sha256": "6921eab77426a8b608e942b6552b521354a2d97c51c5bf35520c24bf19096f31"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-H-CID",
+      "sha256": "eb36f4842548ffa4875de20057e21a1b3b77786eeb043b3a13abe10374fc4e35"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-H-Host",
+      "sha256": "c743f13d53963ce91a3f72249402aff124494c5b23426ca209819a399e78b471"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-H-Mac",
+      "sha256": "f7e7dcca184e043487979b7caddbd9b6e6f6790b58c9d046bab89ec7dbb080c1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-KSCms-UHC",
+      "sha256": "fd78abd6c0faf47936f5790b58bdc11fe4d3ad6f0e3b5c3d75b0b86ad0547387"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-KSCpc-EUC",
+      "sha256": "07a88a9c2a9b709282dc27c723bd0a2adf975af80dcd05c08f918bffc49c421a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/Adobe-Korea1-UCS2",
+      "sha256": "45bcf869acdcec2507f75836919e589e7137b9f9dbaa8e4975747035024248ef"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSC-EUC-H",
+      "sha256": "90e9250027a7a84fc7a2542f91fe61e3a71299214aaa75c617e12a55dfaa0943"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSC-EUC-V",
+      "sha256": "a51f69ff435ff83b3c200b2043572492be05ac08e98f4662f3938b3f6a1b9a6c"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSC-H",
+      "sha256": "b07bdc0889f15e22caec8101bb34952eb02b5cdf1ec4c929125800167adaf60f"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSC-Johab-H",
+      "sha256": "79e2b557f21e761978671c395aa71b6877ebac2e04ddcec7a3df206efaa5e718"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSC-Johab-V",
+      "sha256": "3894ebe91d454fca07dd0a3fa68473188580d63f0d7ccdf2b24e248507a86d27"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSC-V",
+      "sha256": "c06c74a7f1e76a6797432e2b2b29bb30d65acbfcc80dc3c6dae60e0e045ee9e1"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCms-UHC-H",
+      "sha256": "f3e3719b2db01f1c27e5f8b85cfec0d6f018239fb999cd03bbe10084a9f4645a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCms-UHC-HW-H",
+      "sha256": "129c4892d7d21a5f188af469d06673994c9395bd61c33987a0652261d27a7f7b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCms-UHC-HW-V",
+      "sha256": "b6052023250b12413fe7ac8552d64362720374df3c0d1beb2406922856a504fa"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCms-UHC-UCS2",
+      "sha256": "6d145e9e58084a7dce133721a7063909c5ebb890c8e26b60979ecf1fd94c6d84"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCms-UHC-V",
+      "sha256": "1ca4c9a90aa3079ffdc8ceb7e288f034d0afbc7142a7fae705416368fc581186"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCpc-EUC-H",
+      "sha256": "6d2ec35d3aad68c4cba6d93849d8b7b9b8c34572c50b7361ccb6bf338c36f330"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCpc-EUC-UCS2",
+      "sha256": "f53b5d1db587a20a2bf9786cf6fd41f6814a884009ae5362c7aa6897efb1b7ab"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCpc-EUC-UCS2C",
+      "sha256": "63cc58a299e3b5ece4f7d92ed4240a9d4feaf0f51f9c63ef677cc49d5cb1e35b"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/KSCpc-EUC-V",
+      "sha256": "2fc9b120724cea591b2ffd2bb4206a31329a085815e45d73e2b93ab5c1ac9f5a"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UCS2-KSCms-UHC",
+      "sha256": "6b6a7b9ec4eaf3c4ca935bcd948154b5878c76c38df8354fb793c2564fd0c302"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UCS2-KSCpc-EUC",
+      "sha256": "bea1c7768eea9fe5bdab4b31669bcafd41f053a929ee3a3365ca2be300306fb0"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UCS2-H",
+      "sha256": "bb28e3e84154f49c311128a5700cc0187ce4957b10f18dee88089002db7e5501"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UCS2-V",
+      "sha256": "76c08c4aace48d92a252e686f9d748ebde009337b59361ec286c4bdc037e5933"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UTF16-H",
+      "sha256": "0a1dc38d8dd4e1f55b5a3ab978a2b091109f88f4d08587bbb7864370cda8cfd5"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UTF16-V",
+      "sha256": "681aecd86956265504f7875af43eae3985ab263175aa782baa884b0f514f2aa6"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UTF32-H",
+      "sha256": "576367b865cd64eee2b9a70824176597e0f0639b4a4073b13078a2d9fd6ebd0c"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UTF32-V",
+      "sha256": "03567fb73e9635aa655a463b47da3b62f9f0e7a7bcdcd3caf9c1fae9b0880873"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UTF8-H",
+      "sha256": "944b45d9fd3e7266ac9b03b8ce5a7b308ad47967b60c685896fa9aecaa699290"
+    },
+    {
+      "path": "share/poppler/cMap/Adobe-Korea1/UniKS-UTF8-V",
+      "sha256": "ee17a18a7dc48249938263110745162835fc77e6648616c03464c1de1ecce499"
+    },
+    {
+      "path": "share/poppler/cidToUnicode/Adobe-CNS1",
+      "sha256": "3e72e52c617851408a410008bd6dc87b925f627e8285acfc5753274d4131c8f5"
+    },
+    {
+      "path": "share/poppler/cidToUnicode/Adobe-GB1",
+      "sha256": "3fd9899c969014a638572b2806eacc2a96bcd3bb8b6f096f3623db137382fa01"
+    },
+    {
+      "path": "share/poppler/cidToUnicode/Adobe-Japan1",
+      "sha256": "3b54706d4d6c20672f1c85b945a182dacbc647a406014083be611da67990e051"
+    },
+    {
+      "path": "share/poppler/cidToUnicode/Adobe-Korea1",
+      "sha256": "e98ad4e7e04f6572f517aa68ccd45708ae51e99d22d2cb9136f1370a77be1f68"
+    },
+    {
+      "path": "share/poppler/nameToUnicode/Bulgarian",
+      "sha256": "00efe0a6ddd763df4fd239465d353dcd326738e396da805ab7994ae7b5315b3b"
+    },
+    {
+      "path": "share/poppler/nameToUnicode/Greek",
+      "sha256": "eb4bd7a5aeb9c4f99308674d7df009612ea21cd7b76b5023043656327e9db529"
+    },
+    {
+      "path": "share/poppler/nameToUnicode/Thai",
+      "sha256": "3f7acc1a23fc18e81d6cee5046deb591936228fac624c2a6012cd0902502fb2d"
+    },
+    {
+      "path": "share/poppler/unicodeMap/Big5",
+      "sha256": "31c276592bc6aa44bf0338757d73dede5dc4dd09eb79472ee7c0215282d47c46"
+    },
+    {
+      "path": "share/poppler/unicodeMap/Big5ascii",
+      "sha256": "2a92ebe937550cefba3abaf33d20056234de3bc81c0e3a336349eb9499d12983"
+    },
+    {
+      "path": "share/poppler/unicodeMap/EUC-CN",
+      "sha256": "4f90e3fd8ba4ca94bfe1eea1cacdf15ed5d02d77d09a55aa2bb9ef03816c4b1d"
+    },
+    {
+      "path": "share/poppler/unicodeMap/EUC-JP",
+      "sha256": "f4bacc9e75a81fc86414f686bf05b89e0396728994ff1bc5bb8ea503340b0ba0"
+    },
+    {
+      "path": "share/poppler/unicodeMap/GBK",
+      "sha256": "2693e8933084f2bebe5da193b7616cd25bd62fab38641bd8fec3f4af34c50e03"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-2022-CN",
+      "sha256": "8696d96951fef68e182891c707f1ee66d25a1785b2a0d09c60d422db3df51dd7"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-2022-JP",
+      "sha256": "2f4641fac5148e6bb712a9bc9be8655c760c7596974ba3d05ad671d28dcebcf7"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-2022-KR",
+      "sha256": "c19749f40658338a772262a23a64f7962c156ab0f12f385f9c8c61208e6d26ff"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-8859-6",
+      "sha256": "a620e0c7ef3d6c8ae8f56f590ac21bbd5e42314f71077e7bcbf53d808c76c58e"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-8859-7",
+      "sha256": "5246aef75d0ed7ea4796f48a4f3e0ec1c3be7bef5138b5f041dcfb7aff022f20"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-8859-8",
+      "sha256": "82be4e7e2d0f084319542e4868631f440bacdd67f7b3f15179993108e04ec805"
+    },
+    {
+      "path": "share/poppler/unicodeMap/ISO-8859-9",
+      "sha256": "049882b3cc7adfabe0f21ec640d3975a932c19746762e9380a426d49d462a998"
+    },
+    {
+      "path": "share/poppler/unicodeMap/KOI8-R",
+      "sha256": "e46b7a351dd44b17670a671dfe21c54b328c15a183d8333817dc820d4a6cf226"
+    },
+    {
+      "path": "share/poppler/unicodeMap/Latin2",
+      "sha256": "02542912156229b76e3254e5f12c130fe8b33bc4242791f7f794325336fda3ed"
+    },
+    {
+      "path": "share/poppler/unicodeMap/Shift-JIS",
+      "sha256": "938c672143600d578e589965647580d4ea303e823adfdebf46239b923fec3842"
+    },
+    {
+      "path": "share/poppler/unicodeMap/TIS-620",
+      "sha256": "4c1d7fd7e1792dbc115b61c34b61954efa7bfe00dc5bc2b0f3f5c3624df7db36"
+    },
+    {
+      "path": "share/poppler/unicodeMap/Windows-1255",
+      "sha256": "41d788d5b7c7e8cee377f633dffec6514afcb82e84a377a48154a908d6afaf49"
+    },
+    {
+      "path": "share/tessdata-copypaste-v1/chi_sim.traineddata",
+      "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730"
+    },
+    {
+      "path": "share/tessdata-copypaste-v1/chi_tra.traineddata",
+      "sha256": "529c5b5797d64b126065cd55f2bb4c7fd7b15790798091b1ff259941a829330b"
+    },
+    {
+      "path": "share/tessdata-copypaste-v1/eng.traineddata",
+      "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+    }
+  ],
+  "profile_raw_sha256": "0af6c85e8d5c9ddbc8c45a5ee22aa38e387b59bfa6e5b444a54fd962e1498642"
+}

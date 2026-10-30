@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T18:19:13.856Z",
+  "finished_at": "2026-10-30T18:19:51.986Z",
+  "checks": [],
+  "source_count": 950,
+  "source_sha256": "0f9e4090631f2909d5e13f2a4cc44854b8990e826e54cbce97db95718d0a7a1a",
+  "source_after_sha256": "0f9e4090631f2909d5e13f2a4cc44854b8990e826e54cbce97db95718d0a7a1a",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('input[aria-label=\"内部账号\"],textarea[aria-label=\"内部账号\"]')\u001b[22m\n",
+  "failure_stack": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().locator('input[aria-label=\"内部账号\"],textarea[aria-label=\"内部账号\"]')\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_document_text.mjs:19:56\n    at async workbenchBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\workbench_browser_common.mjs:53:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_document_text.mjs:12:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "workbench_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "9139e50b181b53fd3e1fa173773bfaa93fc17c33fd2a7e36276aa12b28c92a8f",
+    "source_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "786984cdc5e2e4551f087aa3fb0f4585b71975a42bf67626b924b4e592cd5e18",
+  "build_source_unchanged": true
+}

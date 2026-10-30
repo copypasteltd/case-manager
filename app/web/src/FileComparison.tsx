@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { extractionNotice } from '@copypaste/contracts/search';
+import { extractionNotice, nativePageNotice } from '@copypaste/contracts/search';
 import { checkedComparison, comparisonEligible, comparisonMeaning, comparisonPath, type ComparisonSelection, type ComparisonView, type FileComparison } from '@copypaste/contracts/file-comparison';
 import { api, type Schemas } from './api';
 import { Busy, ErrorNotice, Field } from './components';
@@ -34,7 +34,7 @@ export default function FileComparisonPanel({ file, versions, more, loading, loa
       {more && <button className="button secondary" disabled={loading} onClick={loadMore}>加载更多可选历史版本</button>}</div>
     {eligible.length < 2 && <p className="form-note">当前加载的可选文本版本不足两个；可继续加载历史版本，或查阅原件及正文提取状态。</p>}
     <ErrorNotice error={inputError ?? result.error} />{request && result.isPending && <Busy label="正在核对两个准确版本" />}
-    {value && request && <div aria-label="版本正文差异"><h3>内容版本 {value.base.seq} → {value.target.seq}</h3><p>{comparisonMeaning(value)}</p>{value.extractor !== 'text-v1' && <p className="form-note">{extractionNotice(value.extractor)}</p>}
+    {value && request && <div aria-label="版本正文差异"><h3>内容版本 {value.base.seq} → {value.target.seq}</h3><p>{comparisonMeaning(value)}</p>{value.extractor !== 'text-v1' && <p className="form-note">{extractionNotice(value.extractor)} {nativePageNotice(value.base.native_evidence)} {nativePageNotice(value.target.native_evidence)}</p>}
       <p>新增 {value.added_lines} 行 · 删除 {value.removed_lines} 行 · 相同 {value.unchanged_lines} 行</p>
       <p className="form-note">{value.view === 'all' ? '全部正文按页展示。' : '展示全部差异及前后各3行，省略的相同行另行标明。'}末尾换行单独核对。{value.algorithm === 'bounded-replacement-v1' && '变化较多，使用完整中段替换呈现；新增／删除行数可能包含中段内相同的行。'}</p>
       <details><summary>核对准确版本与内容摘要</summary><p className="comparison-digest">基础原件 {value.base.source_sha256}<br />基础正文 {value.base.text_sha256}<br />目标原件 {value.target.source_sha256}<br />目标正文 {value.target.text_sha256}<br />本次比较 {value.comparison_sha256}</p></details>

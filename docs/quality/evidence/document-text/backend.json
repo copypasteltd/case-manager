@@ -1,0 +1,260 @@
+{
+  "passed": true,
+  "id": "backend",
+  "started_at": "2026-10-30T18:13:23.272712+00:00",
+  "finished_at": "2026-10-30T18:16:30.030492+00:00",
+  "elapsed_seconds": 186.755,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestNativeDocumentText|TestDOCXTextDocuments|TestOfficeTextDocuments|TestFileTextSearch|TestAgentFileText|TestAgentIndexedSearch)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "06aec57c451e9e9b86de0b76c359a53c69d83d3c96609b8188ac9e6274b25a3e",
+  "source_after_sha256": "06aec57c451e9e9b86de0b76c359a53c69d83d3c96609b8188ac9e6274b25a3e",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestAgentFileText",
+      "TestAgentIndexedSearch",
+      "TestNativeDocumentText",
+      "TestDOCXTextDocuments",
+      "TestFileTextSearch",
+      "TestOfficeTextDocuments"
+    ],
+    "pass": 43,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentFileText"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/pending_is_explicit_without_object_read"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/DOCX_preview_binds_Unicode_and_two_content_digests"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/MCP_definition_advertises_files_and_bounded_read"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/actual_file_body_search_has_current_version_and_text_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/task_and_knowledge_body_search_stays_in_conversation_namespace"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/disabled_native_worker_keeps_explicit_pending_metadata_only_hits"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/fixed_historical_DOCX_read_and_replay_need_no_cloud"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/cursor_binds_run_and_filters"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/indexed_MCP_output_can_complete_with_persisted_read_receipts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/trash_and_quarantine_block_cached_discovery_and_read"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/every_shared_member_must_admit_file_and_knowledge_body"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch/cancelled_run_cannot_disclose_indexed_text"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestAgentIndexedSearch"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText/explicit_engine_enablement_preserves_legacy_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText/engine_provenance_cannot_be_silently_substituted"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText/all_pages_or_explicit_terminal_failure_with_current_source_checks"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText/exact_text_pagination_search_and_comparison_retain_OCR_basis"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText/secretary_reads_fixed_derived_text_without_object_or_model_credentials"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText/current_classification_and_scan_still_govern_derived_visibility"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNativeDocumentText"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestDOCXTextDocuments/new_identity_queues_once_and_keeps_legacy_terminal_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestDOCXTextDocuments/search_uses_current_version_Word_body_without_duplicate_legacy_rows"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestDOCXTextDocuments/comparison_binds_office_or_mixed_per-version_provenance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestDOCXTextDocuments/secretary_preview_consumes_exact_derived_Word_text_without_object_credentials"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestDOCXTextDocuments/current_classification_and_scan_rechecks_hide_stored_bodies"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestDOCXTextDocuments"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/pending_then_automatic_fixed_version_extraction"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/body_matching_literal_escaping_and_current_head_only"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/names_and_ACL_filter_before_page_limit"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/live_lifecycle_blocks_cached_plaintext"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/selected_knowledge_revision_and_cursor_binding"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/corrupt_bytes_never_produce_a_ready_index"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/source_changed_during_I_O_fails_closed"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/retry_and_stale_fencing"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch/terminal_derivation_is_immutable"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestFileTextSearch"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/new_identity_queues_once_and_keeps_legacy_terminal_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/search_uses_current_version_Office_body_without_duplicate_legacy_rows"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/comparison_binds_office_or_mixed_per-version_provenance"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/secretary_preview_consumes_exact_derived_Office_text_without_object_credentials"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments/current_classification_and_scan_rechecks_hide_stored_bodies"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOfficeTextDocuments"
+    }
+  ],
+  "private_log_sha256": "b213d8a74899c4fbbd094e2f5680f69b5f2fa9e7eb3b1a7bbbc158a60bc6df4d",
+  "parser_error": null,
+  "runner_script_sha256": "7a132aff310137e1d97d0daa2fe7c4f2ea60df71cfc94c49ae25b8aaf87ef1a6",
+  "scope": "Six selected actual native HTTP/PostgreSQL suites: real pinned PDF/image OCR, DOCX/Office, general search, secretary file reads and indexed search. Isolated synthetic object bytes; not cloud/model or a full backend regression.",
+  "real_device": false,
+  "virtualization_used": false
+}
