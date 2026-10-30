@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "id": "typecheck",
+  "started_at": "2026-10-30T21:16:08.181077+00:00",
+  "finished_at": "2026-10-30T21:16:30.494399+00:00",
+  "elapsed_seconds": 22.313,
+  "command": [
+    "npm",
+    "run",
+    "typecheck"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "exit",
+  "source_sha256": "9b8ac1ce8861caf78161cc13df2d2e7edbf188122c2726917ec871d1e2a4b2a1",
+  "source_after_sha256": "9b8ac1ce8861caf78161cc13df2d2e7edbf188122c2726917ec871d1e2a4b2a1",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "31779e599d10dca5fc26923dea86911fc1e72157a6e4952882b915a7d31befa2",
+  "parser_error": null,
+  "runner_script_sha256": "fe7d0eecbd6cc92a9da7b09208ab97c50e64c6ca590b1cc7cdf23b2a6717f915",
+  "scope": "All configured workspace TypeScript checks, including shared mobile/native source.",
+  "real_device": false,
+  "virtualization_used": false
+}

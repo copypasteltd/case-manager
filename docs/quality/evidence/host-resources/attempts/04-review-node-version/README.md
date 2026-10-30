@@ -1,0 +1,1 @@
+H5 preparation used the shell default Node22.14.0 and correctly failed the existing >=22.15.0 toolchain requirement before opening a browser or creating a database fixture. The same frozen check is rerun with the repository native Node22.23.4 on PATH. No source or acceptance requirement changed; no business check passed in this attempt.

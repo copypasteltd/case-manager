@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T21:26:09.317Z",
+  "finished_at": "2026-10-30T21:26:54.426Z",
+  "checks": [
+    "Current authenticated resource card shows complete real API evidence for CPU, memory and both configured filesystems, separate from unknown endpoint availability.",
+    "Actual native collector, signed receiver, database and polling UI transition normal → readonly critical → recovered; MP4 contains actual post-MFA viewport pixels.",
+    "Explicit MFA configuration publication pins service/source bases; disabling clears current metrics while retaining both immutable revisions and original signed observations.",
+    "The visible historical proof action reaches the current-authority API and confirms the original payload hash and Ed25519 signature; no current healthy state is inferred from history."
+  ],
+  "source_count": 941,
+  "source_sha256": "adb19d84b803fc4884e7405f2306955d1e0eaa7bde82a74106170be2a26e13b9",
+  "source_after_sha256": "adb19d84b803fc4884e7405f2306955d1e0eaa7bde82a74106170be2a26e13b9",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "a382fd0ad239efa5fa62fcac10b55f0851fbb899c6a1fb404e512b1b39cf8af4",
+    "source_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+  "build_source_unchanged": true
+}

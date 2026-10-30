@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T21:15:16.229949+00:00",
+  "finished_at": "2026-10-30T21:15:55.560886+00:00",
+  "elapsed_seconds": 39.33,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/host-resources/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "9b8ac1ce8861caf78161cc13df2d2e7edbf188122c2726917ec871d1e2a4b2a1",
+  "source_after_sha256": "9b8ac1ce8861caf78161cc13df2d2e7edbf188122c2726917ec871d1e2a4b2a1",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 408,
+    "numPassedTests": 408,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "67dc2dded085aaa6feaa4a5db046d9d0fcb6ea451b160d94fb83e894f4e54ed5",
+  "parser_error": null,
+  "runner_script_sha256": "fe7d0eecbd6cc92a9da7b09208ab97c50e64c6ca590b1cc7cdf23b2a6717f915",
+  "scope": "Complete current Web unit suite including 12 shared resource capacity, inventory, configuration and monotonic freshness cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

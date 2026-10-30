@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T21:32:23.624357+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/host-resources-web-normal.png",
+      "sha256": "a3f80db013976e31919d451a599813342e053c6d8582e9718c91023991d18eab",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-web-critical.png",
+      "sha256": "44cacbea055298468d1681fc18ef2255267fcb5ffd2c1837a679107ade732369",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-web-disabled.png",
+      "sha256": "92876743e2ba7b898d34f7d6debc78c01bdc046c4e70018e6a1054edc2c6395b",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/host-resources-web.mp4",
+      "sha256": "9ffd08863ad5b7834ca2542a01c2815d99f4f1cd199fa1111289d0e43dbe623a",
+      "bytes": 177175,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/host-resources-web.gif",
+      "sha256": "576bf504184bd0ed07a2f032f2362f3f0eaaa7837b53be2b7e4916d7dc5df3b7",
+      "bytes": 137634,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-mobile-normal.png",
+      "sha256": "cefaa906fb501b842900e3807c8be371477426f47ed2ddc81f04e02cd88b6bf4",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-mobile-critical.png",
+      "sha256": "1a1e04842264e7007621ce1139e62e4fb199e4e5ee62d53b91be235d07064c76",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-mobile-disabled.png",
+      "sha256": "8455f265b46d6370c9b908a93ca0b0f0abfc36eb58ad5709937a5a9af4e68cb8",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/host-resources-mobile.mp4",
+      "sha256": "fae8bda45a9630629a9879b3f60b53b00e304419786c71741a2ad5c562b9cabe",
+      "bytes": 34916,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/host-resources-mobile.gif",
+      "sha256": "47a8b862725dae8cf9fddf2dc7e3fe14a1bed75191158cee77f3faf469419880",
+      "bytes": 58401,
+      "reviewed": true
+    }
+  ],
+  "scope": "Manually inspected all six exact PNGs; sampled both actual MP4s at initial, critical and recovered states, and all three scenes of both GIF screenshot tours. GIFs are not screen recordings. Mobile uses the actual390x900 viewport; lower filesystem rows require scrolling and are covered by the real HTTP and current API assertions, not claimed visible in the initial viewport.",
+  "credentials_visible": false,
+  "synthetic_data_only": true,
+  "real_device_used": false,
+  "production_acceptance": false
+}

@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T21:39:54.805349+00:00",
+  "source_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+  "build_record_sha256": "49e2f017f5d0279746110647652ac6ac274c941fd0dbe59c2f3fc391bec2f494",
+  "bundle_sha256": "ec4749cca03e484b09c1f4662be9f064b16d43e50153dbb7a6041a892d59f1a7",
+  "source_map_sha256": "caed6c78a6aadb24f84d98a44e2c7fcf48cb934ec1ce1d5ed96d9a382d2acaae",
+  "modules": [
+    {
+      "file": "mobile/src/pages/status/resources.tsx",
+      "file_sha256": "41e5a7e993e6f852042cec14340a46c4d2621498b9436c7f516d86e89f6326eb",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/status/resources.tsx",
+      "source_content_sha256": "41e5a7e993e6f852042cec14340a46c4d2621498b9436c7f516d86e89f6326eb",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "mobile/src/pages/status/index.tsx",
+      "file_sha256": "0369cc35a5f6581431a90943db7d1d96ec606d71f4f92056a870d6c94b7cc326",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/status/index.tsx",
+      "source_content_sha256": "0369cc35a5f6581431a90943db7d1d96ec606d71f4f92056a870d6c94b7cc326",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "mobile/src/platform/status.ts",
+      "file_sha256": "2658ff8b83d8992ac750422b2392de810cfc614c2580a946d14b40d09a024e2f",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/platform/status.ts",
+      "source_content_sha256": "2658ff8b83d8992ac750422b2392de810cfc614c2580a946d14b40d09a024e2f",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "packages/contracts/src/host-resources.ts",
+      "file_sha256": "7ebda2e11ef3575df9d805d4294651b3bc93134d5fa78761c8a1d3e3433496d5",
+      "map_source": "D:/dev/copypasted/内部管理/app/packages/contracts/src/host-resources.ts",
+      "source_content_sha256": "7ebda2e11ef3575df9d805d4294651b3bc93134d5fa78761c8a1d3e3433496d5",
+      "source_content_matches_modulo_line_endings": true
+    }
+  ],
+  "verification_script_sha256": "84f3ecdfddda771c7453ff9afa6edb124994a0e383fba27daa9768243d22fee0",
+  "read_only_artifact_inspection": true,
+  "apk_built": true,
+  "formal_android_acceptance": false,
+  "real_device_used": false,
+  "virtualization_used": false
+}

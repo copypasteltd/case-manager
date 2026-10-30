@@ -1,5 +1,29 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+增量130补齐主机资源功能：CPU、内存、全部已配置磁盘与只读状态，经原生Prometheus桥接→独立签名接收→持久记录→四端实时展示。服务详情可人工发布完整监控配置、核对阈值、停用及查阅配置／观测历史；旧观测过期、采集断流、停用或归档均显示待确认，并隐藏当前数值。
+
+使用：进入“服务与事件”→服务详情→“主机资源监控”。有管理权限者选择“配置资源监控”，核对公钥、全部挂载点、警告／严重阈值和过期时间，完成最近MFA后明确发布。配置变化建立新修订，等待该修订的新观测；原签名及历史保留。原生部署在私有目录配置node_exporter、Prometheus和既有status-bridge，参考配置只含占位值。桥接器不接受任意PromQL或目标URL。
+
+本轮正常结构升级96→97。当前资源健康与服务可用性分别评估；页面告警不是已送达的外部通知。真实目标服务器、Prometheus／node_exporter安装及独立告警送达仍属GAP-23。完整源码、运行逻辑、检查边界及全部23项余项见下方链接。当前仍23个工作包（14 P0／9 P1）、5项移出、八项draft Skill。
+
+Increment130 completes the host-resource feature path: CPU, memory, every configured filesystem and readonly state travel through the native Prometheus bridge, independently signed ingestion, persistent observations and four-client resource cards. Service details expose explicit configuration publication, thresholds, disablement, immutable history and original signature verification. Expired, disconnected, disabled or archived sources show unknown and hide current values.
+
+Usage: open Services → service details → Host resources. An authorized manager reviews the public key, complete mount inventory, warning/critical thresholds and freshness limit, then explicitly publishes with recent MFA. A new revision waits for new matching observations; original signatures and history remain. Configure native node_exporter, Prometheus and the existing status-bridge using private deployment files; the checked-in example contains placeholders only. Arbitrary PromQL and target URLs are not accepted.
+
+The normal schema upgrade is 96→97. Host-resource health and endpoint availability remain separate. A visible resource warning does not prove delivery of an external alert. Actual target installation and independent alert delivery remain under GAP-23. All 23 work packages (14 P0/9 P1), five exclusions and eight draft Skills remain explicit.
+
+本轮验证：三组选定HTTP／PostgreSQL套件31条通过记录、Web408项、共享移动493项、四端构建和当前Android开发APK19项内容检查通过。Web／共享H5均实际走通配置停用、状态变化、历史与签名核对；原生测试的真实执行／缓存边界逐项记录，旧全量回归不冒充重新执行。
+
+Current checks pass three selected HTTP/PostgreSQL suites (31 pass records),408 Web tests,493 shared-mobile tests, four-client builds and19 current development-APK inspections. Actual Web/H5 flows cover state transitions, explicit disablement, history and signatures. Native execution/cache outcomes remain explicit; retained full regressions are not relabelled as fresh runs.
+
+[实现与使用 / Implementation](docs/development/130-host-resources.md) · [实际验证 / Checks](docs/quality/130-host-resources-verification.md) · [本轮与全部23项 / All remaining work](docs/delivery/05-functional-closure-130.md)
+
+![主机资源监控 / Host resources](docs/media/screenshots/host-resources-web-normal.png)
+
+[Web录制 / Web recording](docs/media/videos/host-resources-web.mp4) · [共享移动录制 / Shared H5 recording](docs/media/videos/host-resources-mobile.mp4) · [截图导览 / Screenshot tour](docs/media/gifs/host-resources-mobile.gif)
+
+## Increment129 · Previously published / 原发布记录
+
 增量129直接补齐文件办公流程：Web／Android新建真实Word、Excel、PPT，并修改当前正式版本的受支持文字／单元格；微信／抖音查阅准确版本。生成独立候选 → 本人核对名称、内容、警告与SHA → 加入原上传队列 → 完整摘要／扫描／提升 → 人工提交新正式版本，旧原件和历史保留。生成本身不发布，也不改变OA或财务事实。
 
 使用：目录内选择“新建 Office 文件”，或文件详情选择“编辑 Office 内容”。Word填写段落和可选表格；Excel从表格粘贴，默认文字，明确选择数字／布尔／安全公式；PPT用单独一行 `---` 分页。核对候选后确认加入队列，再在上传页面处理扫描和正式提交。Android候选保存到本人私有临时来源，继续使用原生上传队列；普通大文件保持SAF分片路径。

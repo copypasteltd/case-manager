@@ -36,12 +36,14 @@ type Endpoint struct {
 }
 
 type Target struct {
-	SourceID   string            `json:"source_id"`
-	RevisionID string            `json:"source_revision_id"`
-	KeyFile    string            `json:"key_file"`
-	Job        string            `json:"job"`
-	Instance   string            `json:"instance"`
-	Labels     map[string]string `json:"labels,omitempty"`
+	Kind        string             `json:"kind,omitempty"`
+	Filesystems []FilesystemTarget `json:"filesystems,omitempty"`
+	SourceID    string             `json:"source_id"`
+	RevisionID  string             `json:"source_revision_id"`
+	KeyFile     string             `json:"key_file"`
+	Job         string             `json:"job"`
+	Instance    string             `json:"instance"`
+	Labels      map[string]string  `json:"labels,omitempty"`
 }
 
 type Config struct {
@@ -92,6 +94,9 @@ func (c Config) Validate() error {
 			return fault("CONFIG_INVALID")
 		}
 		seen[t.SourceID] = true
+		if err := validateResourceTarget(t); err != nil {
+			return err
+		}
 		if len(t.Labels) > 16 {
 			return fault("CONFIG_INVALID")
 		}
@@ -145,6 +150,15 @@ func binding(c Config, t Target, key ed25519.PrivateKey) string {
 	}{c.Platform, c.Prometheus, t.SourceID, t.RevisionID, t.Job, t.Instance,
 		base64.StdEncoding.EncodeToString(key.Public().(ed25519.PublicKey)), t.Labels, c.PollSeconds, c.MaxSampleAge, c.TimeoutSeconds})
 	d := sha256.Sum256(body)
+	if t.Kind == "host" {
+		// Preserve every legacy Blackbox journal binding byte-for-byte. Host
+		// journals additionally pin their kind and complete filesystem inventory.
+		extra, _ := json.Marshal(struct {
+			Kind        string
+			Filesystems []FilesystemTarget
+		}{t.Kind, t.Filesystems})
+		d = sha256.Sum256(append(append(body, '\n'), extra...))
+	}
 	return hex.EncodeToString(d[:])
 }
 

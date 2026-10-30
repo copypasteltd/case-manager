@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hk.copypaste.workspace.UploadBoundariesTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-30T20:22:00" hostname="WIKIGSPC" time="0.028">
+  <properties/>
+  <testcase name="expiredWrongPartAndConflictingHeadersAreRejected" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.005"/>
+  <testcase name="fullCapacityUsesLongOffsetsAndExactLastPart" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.0"/>
+  <testcase name="malformedLayoutsAndDuplicatedProgressAreRejected" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.002"/>
+  <testcase name="fingerprintSamplesOnlyHeadAndTailAtFullCapacity" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.008"/>
+  <testcase name="shortOrChangedSourcesCannotProduceAValidFingerprint" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.002"/>
+  <testcase name="onlyHttpsProviderCapabilitiesAndSafeHeadersAreAccepted" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.003"/>
+  <testcase name="officeFingerprintChecksAllBytesAndRejectsShortOrOversizedSources" classname="hk.copypaste.workspace.UploadBoundariesTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

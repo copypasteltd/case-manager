@@ -1,0 +1,197 @@
+{
+  "passed": true,
+  "id": "backend",
+  "started_at": "2026-10-30T21:15:16.230003+00:00",
+  "finished_at": "2026-10-30T21:17:11.733882+00:00",
+  "elapsed_seconds": 115.502,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestHostResources|TestServiceStatus|TestStatusBridgeNativeFlow)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "9b8ac1ce8861caf78161cc13df2d2e7edbf188122c2726917ec871d1e2a4b2a1",
+  "source_after_sha256": "9b8ac1ce8861caf78161cc13df2d2e7edbf188122c2726917ec871d1e2a4b2a1",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestHostResources",
+      "TestServiceStatus",
+      "TestStatusBridgeNativeFlow"
+    ],
+    "pass": 31,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/configuration_is_explicit_versioned_and_MFA_authorized"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/native_node_exporter_queries_sign_complete_metrics_and_receipts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/thresholds_and_readonly_filesystem_cause_warnings_and_recover"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/loss_and_unbound_labels_never_fabricate_fresh_zero_metrics"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/signed_history_exact_replay_proof_pagination_and_immutable_records"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/domain_signatures_inventory_and_late_observations_cannot_override"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/restart_validates_journal_and_preserves_exact_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/actual_sample_expiry_hides_previous_current_metrics"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/new_revisions_reset_metrics_revoke_old_signer_and_keep_history"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/current_role_withdrawal_denies_all_resource_read_paths"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/unbound_roles_and_administrator_do_not_grant_service_content_access"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/creation_is_idempotent_and_no_source_means_unknown"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/published_source_is_immutable_and_requires_exact_service_version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/signature_scope_wire_fields_and_replay_are_checked_before_persistence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/three_failures_and_two_recoveries_project_durable_state_without_changing_configuration_version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/late_data_and_sequence_gaps_retain_facts_without_reviving_a_previous_green_state"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/maintenance_overlays_raw_down_state_and_cancellation_is_append_only"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/incident_impacts_are_checked_as_a_whole_and_business_deduplication_is_durable"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/incident_timeline_is_versioned_and_a_resolved_incident_cannot_silently_reopen"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/source_rotation_rejects_old_signed_replays_and_disabled_sources_remain_unknown"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/freshness_expires_on_reads_without_an_incoming_sample_or_process_cache"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/current_MFA_revocation_and_concurrent_configuration_writes_remain_authoritative"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/real_signed_samples_warm_up_and_recover;_duplicates_do_not_advance_streak"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/three_real_failed_probes_cause_down;_a_failed_scrape_makes_no_false_sample"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/two_actual_successes_recover;_measured_high_latency_degrades"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/actual_commit_with_incomplete_receipt_survives_process_reopen_as_exact_replay"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/actual_expiry_becomes_unknown_without_synthetic_failure"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow/published_source_rotation_rejects_old_revision_and_new_revision_starts_unknown"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestStatusBridgeNativeFlow"
+    }
+  ],
+  "private_log_sha256": "8bc2b7fab6f700f36021ef65f46557193b3fe9ea2fc423c7d782714e076e7b53",
+  "parser_error": null,
+  "runner_script_sha256": "fe7d0eecbd6cc92a9da7b09208ab97c50e64c6ca590b1cc7cdf23b2a6717f915",
+  "scope": "Three actual HTTP/PostgreSQL suites: full native signed host resource journey plus existing endpoint status and Blackbox bridge regressions. Controlled Prometheus responses; no target-host or production acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

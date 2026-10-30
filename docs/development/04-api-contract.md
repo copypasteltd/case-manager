@@ -1,5 +1,7 @@
 # API 规范、目录与错误契约
 
+增量130已实现主机CPU／内存／完整配置磁盘的原生采集桥接、签名接收、不可变记录、四端显示与配置／历史管理。真实目标安装、资源断流主动通知和独立告警送达继续归GAP-23；不以页面告警替代送达回执。[设计与使用](../development/130-host-resources.md) · [实际检查](../quality/130-host-resources-verification.md) · [全部23项](../delivery/05-functional-closure-130.md)。23 active（14 P0／9 P1）、5 excluded保持。
+
 版本：v1.0-draft；日期：2026-10-23。机器契约见 [OpenAPI](openapi.json)，人类语义以需求/状态机为补充。所有路径在 `/v1` 下；已实现的本地接口见[实施台账](../delivery/02-implementation-ledger.md)，尚未生产部署。
 
 ## 1. 统一规则

@@ -314,6 +314,7 @@ def main():
               current['passed'] and proof['passed'] and current['checks'] == proof['checks']
               and current['records'] == proof['records'] and current['retained'] == proof['retained']
               and current.get('fixture_only_adjustment') == proof.get('fixture_only_adjustment')
+              and current.get('inspection_only_adjustment') == proof.get('inspection_only_adjustment')
               and current['interaction_source_sha256'] == proof['interaction_source_sha256'] == verifier.digest()
               and proof['verification_script_sha256'] == sha(APP / 'scripts' / baseline['verification_script'])
               and not proof['full_backend_suite_executed'] and not proof['formal_android_acceptance']

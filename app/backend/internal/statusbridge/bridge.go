@@ -153,26 +153,24 @@ func (b *Bridge) Cycle(ctx context.Context) ([]Result, error) {
 func (b *Bridge) cycleTarget(ctx context.Context, j *journal) (Result, error) {
 	r := Result{SourceID: j.target.SourceID}
 	if j.current.Generation == 0 || j.current.Ack != nil {
-		s, err := fetchSample(ctx, b.prom, b.promURL, b.bearer, j.target, time.Now(), b.config.MaxSampleAge)
-		if err != nil {
-			r.Code = SafeCode(err)
-			return r, nil
-		}
-		if j.current.Generation != 0 && !s.ObservedAt.After(j.current.ObservedAt) {
-			r.Code = "NO_NEW_SAMPLE"
-			if s.ObservedAt.Equal(j.current.ObservedAt) && s.digest() != j.current.SampleSHA {
-				r.Code = "SAMPLE_REWRITTEN"
-			}
-			return r, nil
-		}
 		if j.current.Sequence == 9007199254740991 {
 			return r, fault("SEQUENCE_EXHAUSTED")
 		}
 		seq := j.current.Sequence + 1
-		latency := s.LatencyMS
-		body, _ := json.Marshal(servicestatus.SignedObservation{RevisionID: j.target.RevisionID, Sequence: strconv.FormatInt(seq, 10), ObservedAt: s.ObservedAt, Healthy: s.Healthy, LatencyMS: &latency})
-		sig := base64.StdEncoding.EncodeToString(ed25519.Sign(j.key, servicestatus.SigningMessage(j.target.SourceID, body)))
-		next := checkpoint{Binding: j.binding, Sequence: seq, ObservedAt: s.ObservedAt, SampleSHA: s.digest(), Body: body, Signature: sig}
+		observed, digest, body, signing, err := b.targetSample(ctx, j, seq)
+		if err != nil {
+			r.Code = SafeCode(err)
+			return r, nil
+		}
+		if j.current.Generation != 0 && !observed.After(j.current.ObservedAt) {
+			r.Code = "NO_NEW_SAMPLE"
+			if observed.Equal(j.current.ObservedAt) && digest != j.current.SampleSHA {
+				r.Code = "SAMPLE_REWRITTEN"
+			}
+			return r, nil
+		}
+		sig := base64.StdEncoding.EncodeToString(ed25519.Sign(j.key, signing))
+		next := checkpoint{Binding: j.binding, Sequence: seq, ObservedAt: observed, SampleSHA: digest, Body: body, Signature: sig}
 		if err = j.save(next); err != nil {
 			return r, err
 		}
@@ -202,6 +200,9 @@ func (b *Bridge) deliver(ctx context.Context, j *journal) (servicestatus.Observa
 	var empty servicestatus.ObservationAck
 	u := *b.platformURL
 	u.Path += "/v1/status-sources/" + j.target.SourceID + "/observations"
+	if j.target.Kind == "host" {
+		u.Path = b.platformURL.Path + "/v1/resource-sources/" + j.target.SourceID + "/observations"
+	}
 	r, err := http.NewRequestWithContext(ctx, "POST", u.String(), bytes.NewReader(j.current.Body))
 	if err != nil {
 		return empty, true, fault("INGEST_REQUEST_INVALID")

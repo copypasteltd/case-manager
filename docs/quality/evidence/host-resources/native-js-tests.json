@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "native-js-tests",
+  "started_at": "2026-10-30T21:28:04.851360+00:00",
+  "finished_at": "2026-10-30T21:28:26.558838+00:00",
+  "elapsed_seconds": 21.707,
+  "command": [
+    "npm",
+    "run",
+    "test:native-js",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+  "source_after_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 2,
+    "pass": 2,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "54f0c7b1792d9b6d4b189279e85e785497edcd145acb5dd07a247bd286f6dc29",
+  "parser_error": null,
+  "runner_script_sha256": "fe7d0eecbd6cc92a9da7b09208ab97c50e64c6ca590b1cc7cdf23b2a6717f915",
+  "scope": "Current native Babel primitive checks; separate current development APK/JVM evidence is required.",
+  "real_device": false,
+  "virtualization_used": false
+}

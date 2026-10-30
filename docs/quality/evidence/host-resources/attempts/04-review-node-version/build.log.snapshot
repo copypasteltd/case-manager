@@ -1,0 +1,23 @@
+👽 Taro v4.3.1
+
+Tips:
+1. 建议开启持久化缓存功能，能有效提升二次编译速度，详情请参考: https://docs.taro.zone/docs/config-detail#cache。
+
+
+D:\dev\copypasted\内部管理\app\packages\dev-server-compat\index.cjs:4
+if (major < 22 || (major === 22 && minor < 15)) throw new Error('The project development server requires Node.js >=22.15.0.');
+                                                      ^
+
+Error: The project development server requires Node.js >=22.15.0.
+    at Object.<anonymous> (D:\dev\copypasted\内部管理\app\packages\dev-server-compat\index.cjs:4:55)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at node:internal/modules/cjs/loader:1706:10
+    at Object.newLoader [as .js] (D:\dev\copypasted\内部管理\app\node_modules\pirates\lib\index.js:134:7)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+
+Node.js v22.14.0

@@ -1,0 +1,188 @@
+{
+  "name": "host-resources",
+  "increment": 130,
+  "configuration_file": "docs/quality/evidence/host-resources/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/host-resources",
+  "retained_base_commit": "6ea1cf0ba5f10662a6e78b9594b53c90086001ce",
+  "retained_base_increment": 129,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py",
+    "scripts/run_workbench_browser.py",
+    "scripts/workbench_sources.py",
+    "scripts/workbench_browser_common.mjs",
+    "scripts/project_business_recording.mjs",
+    "scripts/encode_workbench_media.py",
+    "scripts/verify_backend_batches.py",
+    "scripts/check_host_resources.mjs",
+    "scripts/build_host_resources_android.py",
+    "scripts/verify_host_resources_core.py",
+    "scripts/retain_host_resources_native.py",
+    "scripts/inspect_android_apk.py",
+    "deploy/native/status-bridge-host.example.json"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestHostResources|TestServiceStatus|TestStatusBridgeNativeFlow)$",
+        "-p=1",
+        "-timeout=12m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestHostResources",
+        "TestServiceStatus",
+        "TestStatusBridgeNativeFlow"
+      ],
+      "scope": "Three actual HTTP/PostgreSQL suites: full native signed host resource journey plus existing endpoint status and Blackbox bridge regressions. Controlled Prometheus responses; no target-host or production acceptance."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/host-resources/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/host-resources/web-vitest.json",
+      "minimum_tests": 408,
+      "scope": "Complete current Web unit suite including 12 shared resource capacity, inventory, configuration and monotonic freshness cases."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 493,
+      "scope": "Complete current mobile unit suite including the same 12 resource evidence business cases."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Current native Babel primitive checks; separate current development APK/JVM evidence is required."
+    },
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_host_resources_android.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current complete development APK with ordinary Metro caches, four native Windows workers, checkout filesystem adapter and exact current source map/embedded bundle checks. Native/JVM incremental test outcomes disclosed; no device or formal release acceptance."
+    },
+    {
+      "id": "resource-core",
+      "command": [
+        "python",
+        "scripts/verify_host_resources_core.py"
+      ],
+      "parser": "exit",
+      "scope": "Complete servicestatus/statusbridge Go unit suites and current native Windows/Linux status-bridge builds; controlled signed ingestion tested separately through HTTP/PostgreSQL."
+    }
+  ],
+  "browser_groups": [
+    "host-resources-web",
+    "host-resources-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "schema_upgrade": {
+    "from_count": 96,
+    "to_count": 97,
+    "new_migrations": [
+      {
+        "file": "app/backend/migrations/0097_host_resources.sql",
+        "sha256": "65b413c6182c107103f2514aac36f360de7d3c2cd58debfd1d187f64eb8524c9"
+      }
+    ]
+  },
+  "inspection_only_adjustment": {
+    "before_inspector": "docs/quality/evidence/host-resources/attempts/05-apk-inspection-registration/inspect_android_apk.py.snapshot",
+    "before_plan": "docs/quality/evidence/host-resources/attempts/05-apk-inspection-registration/verification-plan.json"
+  }
+}

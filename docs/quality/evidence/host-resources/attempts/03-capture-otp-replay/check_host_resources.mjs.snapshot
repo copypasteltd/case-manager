@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { workbenchBrowser, waitOTP } from './workbench_browser_common.mjs';
+import { mobileScreen, selectMobile } from './mobile_picker_browser.mjs';
+import { assertNoCredentials, recordViewport } from './project_business_recording.mjs';
+
+const app = fileURLToPath(new URL('../', import.meta.url)), mobile = process.argv.includes('--mobile');
+await workbenchBrowser(mobile, async ({ page, context, fixture, checks, evidence }) => {
+  const root = () => mobile ? mobileScreen(page) : page;
+  const field = label => mobile ? root().locator('input[aria-label="' + label + '"],textarea[aria-label="' + label + '"]') : page.getByLabel(label, { exact: true });
+  const button = label => root().getByRole('button', { name: label, exact: true });
+  let bearer;
+  page.on('request', r => { if (r.headers().authorization?.startsWith('Bearer ')) bearer = r.headers().authorization; });
+  await page.goto(fixture.origin); await field('内部账号').fill(fixture.alice.login); await field('密码').fill(fixture.alice.password); await button(mobile ? '登录工作空间 ↗' : '登录工作空间').click(); await field('六位验证码').fill(await waitOTP(fixture)); await button(mobile ? '验证并继续 ↗' : '验证并继续').click();
+  if (mobile) await root().locator('.cp-title').filter({ hasText: '工作从这里开始' }).waitFor(); else await page.getByRole('heading', { name: /工作从这里开始/ }).waitFor();
+  const get = async suffix => { const r = await context.request.get((mobile ? fixture.api_origin : fixture.origin) + '/v1/services/' + fixture.service_id + '/resource-monitor' + suffix, { headers: mobile ? { Authorization: bearer } : {} }); assert.equal(r.status(), 200); return (await r.json()).data; };
+  const control = async state => { const r = await context.request.post(fixture.api_origin + '/__fixture/resources', { headers: { Authorization: 'Bearer ' + fixture.stop_token }, data: { state } }); assert.equal(r.status(), 200); assert.equal((await r.json()).code, 'ACKNOWLEDGED'); };
+  const focus = async () => { await root().getByText('主机资源监控', { exact: true }).scrollIntoViewIfNeeded(); };
+  const screenshots = [], prefix = 'host-resources-' + (mobile ? 'mobile' : 'web'); await mkdir(path.join(app, '../docs/media/screenshots'), { recursive: true });
+  async function shot(label) { await assertNoCredentials(page); const file = 'docs/media/screenshots/' + prefix + '-' + label + '.png'; await page.screenshot({ path: path.join(app, '..', file) }); screenshots.push({ file, sha256: createHash('sha256').update(await readFile(path.join(app, '..', file))).digest('hex') }); }
+  await control('normal');
+  await page.goto(fixture.origin + (mobile ? '/#/pages/status/index?kind=service&id=' : '/services/') + fixture.service_id);
+  await root().getByText('资源正常', { exact: true }).waitFor(); await focus();
+  const initial = await get(''); assert.equal(initial.state, 'operational'); assert.equal(initial.observation.cpu_usage_bp, 3525); assert.equal(initial.observation.filesystems.length, 2);
+  await shot('normal'); checks.push('Current authenticated resource card shows complete real API evidence for CPU, memory and both configured filesystems, separate from unknown endpoint availability.');
+  const recording = await recordViewport(page, app, prefix, async () => {
+    await control('critical'); await root().getByText('资源严重告警', { exact: true }).waitFor(); await focus(); await shot('critical');
+    const current = await get(''); assert.equal(current.state, 'critical'); assert.ok(current.observation.filesystems.every(f => f.read_only));
+    await control('normal'); await root().getByText('资源正常', { exact: true }).waitFor(); await focus();
+  });
+  checks.push('Actual native collector, signed receiver, database and polling UI transition normal → readonly critical → recovered; MP4 contains actual post-MFA viewport pixels.');
+  await button('配置资源监控').click();
+  if (mobile) await selectMobile(page, '采集状态', '停用'); else await field('采集状态').selectOption('off');
+  await field('发布原因').fill('浏览器明确停用，保留全部历史证据');
+  if (mobile) {
+    await field('验证器六位验证码').fill(await waitOTP(fixture)); await button('确认本人操作').click();
+    await root().getByText('已通过本次两步验证，请继续核对并确认操作。', { exact: true }).waitFor();
+  } else {
+    if (await field('验证器动态码').count()) { await field('验证器动态码').fill(await waitOTP(fixture)); await button('验证当前身份').click(); }
+    await root().getByText('最近已完成两步验证。请继续核对内容，再确认本次操作。', { exact: true }).waitFor();
+  }
+  const pending = page.waitForResponse(r => new URL(r.url()).pathname === '/v1/services/' + fixture.service_id + '/resource-monitor/revisions' && r.request().method() === 'POST');
+  await button('确认发布资源配置').click(); assert.equal((await pending).status(), 200);
+  await root().getByText('资源来源已停用', { exact: true }).waitFor(); await focus(); await shot('disabled');
+  const disabled = await get(''); assert.equal(disabled.state, 'unknown'); assert.equal(disabled.observation, null); assert.equal(disabled.source.version, initial.source.version + 1);
+  assert.equal(await root().getByText('CPU 使用率', { exact: true }).count(), 0);
+  const history = await get('/observations?limit=20'); assert.ok(history.items.length >= 3); const revisions = await get('/revisions?limit=20'); assert.equal(revisions.items.length, 2);
+  const proof = await get('/observations/' + history.items[0].id + '/evidence'); assert.equal(createHash('sha256').update(Buffer.from(proof.signed_payload, 'base64')).digest('hex'), proof.payload_sha256);
+  checks.push('Explicit MFA configuration publication pins service/source bases; disabling clears current metrics while retaining both immutable revisions and original signed observations.');
+  await button(mobile ? '资源观测历史' : '查看资源观测历史').click(); await button('核对原始签名').first().waitFor(); await button('核对原始签名').first().click();
+  await root().getByText(/原始载荷摘要及 Ed25519 签名已校验|已校验原始载荷摘要及 Ed25519 签名/).waitFor();
+  checks.push('The visible historical proof action reaches the current-authority API and confirms the original payload hash and Ed25519 signature; no current healthy state is inferred from history.');
+  await writeFile(path.join(evidence, 'media.json'), JSON.stringify({ screenshots, recording, screenshot_scenarios: ['complete normal host resource evidence', 'readonly filesystem critical alert', 'explicit MFA disable and unknown current metrics'], synthetic_data: true, credentials_recorded: false }, null, 2) + '\n');
+}, 'host-resources');

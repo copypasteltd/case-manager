@@ -6,6 +6,8 @@ import { verifyStatusProof } from './status-proof';
 import { copyIncidentInput, incidentCreate, incidentIssues, incidentPatch, incidentReceipt, type IncidentInput } from './incident-input';
 import { MemoryDrafts } from './drafts';
 import type { Schemas } from './session';
+import { hostResourceCases } from '../../../packages/contracts/test/host-resource-cases';
+for (const [name, run] of hostResourceCases) test(name, run);
 
 const id = (n: number) => '10000000-0000-4000-8000-' + String(n).padStart(12, '0');
 const service = { id: id(1), evaluated_at: '2026-10-24T12:00:00Z', recheck_at: '2026-10-24T12:00:10Z' } as Service;

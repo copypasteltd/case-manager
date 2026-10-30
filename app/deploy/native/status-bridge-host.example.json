@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "platform": { "url": "https://oa.example.invalid", "allowed_ips": ["203.0.113.10"], "allow_private": false, "allow_http": false },
+  "prometheus": { "url": "https://prometheus.example.invalid", "allowed_ips": ["192.0.2.10"], "allow_private": false, "allow_http": false },
+  "prometheus_bearer_file": "/etc/copypaste-status/prometheus.token",
+  "state_directory": "/var/lib/copypaste-status",
+  "poll_seconds": 15,
+  "max_sample_age_seconds": 45,
+  "timeout_seconds": 10,
+  "concurrency": 2,
+  "targets": [
+    {
+      "kind": "host",
+      "source_id": "10000000-0000-4000-8000-000000000001",
+      "source_revision_id": "10000000-0000-4000-8000-000000000002",
+      "key_file": "/etc/copypaste-status/host.seed",
+      "job": "node",
+      "instance": "host.example.invalid:9100",
+      "labels": {},
+      "filesystems": [
+        { "mountpoint": "/", "device": "/dev/vda1", "fstype": "ext4" },
+        { "mountpoint": "/data", "device": "/dev/vdb1", "fstype": "ext4" }
+      ]
+    }
+  ]
+}

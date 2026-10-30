@@ -1,5 +1,9 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量130 / Increment130：真实Web与共享Taro H5主机资源页面分别展示正常、只读磁盘严重告警、人工MFA停用后的未知状态，各三张PNG。静音MP4记录正常→告警→恢复的真实视口像素；GIF明确为三张实际截图各2秒导览。采集桥接与签名／PG链路实际执行，Prometheus响应为隔离合成来源，无目标服务器、真机或真实外部告警送达验收。录制不含密码、MFA或私有能力。
+
+[Web MP4](videos/host-resources-web.mp4) · [移动 MP4](videos/host-resources-mobile.mp4) · [Web GIF](gifs/host-resources-web.gif) · [移动 GIF](gifs/host-resources-mobile.gif) · [素材与摘要](../quality/evidence/host-resources/media.json)
+
 增量129 / Increment129：实际Web读取准确原版本并编辑／生成Word、Excel、PPT候选，共享Taro H5只读查阅三种格式。6张PNG、本人登录后视口MP4及明确三截图各2秒导览GIF；HTTP／PG另验完整扫描／提升／正式提交。合成对象／业务资料、无凭据画面、无真实云／模型／TG／实体设备，不声明Office版式验收。见[使用](../development/129-office-authoring.md)、[检查](../quality/129-office-authoring-verification.md)及[素材摘要](../quality/evidence/office-authoring/media.json)。
 
 [Web录制 / Web recording](videos/office-authoring-web.mp4) · [共享移动 / Shared mobile](videos/office-authoring-mobile.mp4) · [Web导览GIF](gifs/office-authoring-web.gif) · [移动导览GIF](gifs/office-authoring-mobile.gif)。

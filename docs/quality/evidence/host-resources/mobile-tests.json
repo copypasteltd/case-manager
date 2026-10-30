@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T21:25:30.812856+00:00",
+  "finished_at": "2026-10-30T21:25:50.203058+00:00",
+  "elapsed_seconds": 19.39,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+  "source_after_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 493,
+    "pass": 493,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "405ea67792215b01ac6fa930e480cd288d98dfd78a9ffaba467ccd39e94564f5",
+  "parser_error": null,
+  "runner_script_sha256": "fe7d0eecbd6cc92a9da7b09208ab97c50e64c6ca590b1cc7cdf23b2a6717f915",
+  "scope": "Complete current mobile unit suite including the same 12 resource evidence business cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

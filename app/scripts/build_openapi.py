@@ -2204,6 +2204,38 @@ operation("/files/{id}/versions/{version}/office","get","readOfficeWorkspace","O
 operation("/folders/{id}/office-render","post","renderOfficeCreate","OfficeArtifact","OfficeCreate")
 operation("/files/{id}/office-render","post","renderOfficeEdit","OfficeArtifact","OfficeEdit")
 
+resource_threshold = {"warning_bp":{"type":"integer","minimum":1,"maximum":9999}, "critical_bp":{"type":"integer","minimum":2,"maximum":10000}}
+add("ResourceThreshold",resource_threshold,tuple(resource_threshold))
+resource_config = {"name":NAME,"public_key":{"type":"string","pattern":r"^[A-Za-z0-9+/]{43}=$"},"enabled":{"type":"boolean"},
+    "stale_after_seconds":{"type":"integer","minimum":45,"maximum":180},"cpu":ref("ResourceThreshold"),"memory":ref("ResourceThreshold"),"disk":ref("ResourceThreshold"),
+    "mountpoints":array({"type":"string","minLength":1,"maxLength":200},minItems=1,maxItems=16,uniqueItems=True)}
+add("ResourceConfigInput",{**resource_config,"expected_version":VERSION,"expected_source_version":{"type":"integer","minimum":0,"maximum":9007199254740991},"base_revision_id":nullable(ID),"reason":NAME},(*resource_config,"expected_version","expected_source_version","base_revision_id","reason"))
+resource_source={**resource_config,"id":ID,"revision_id":ID,"version":VERSION,"published_by":ID,"reason":NAME,"created_at":TIME}
+add("ResourceSource",resource_source,tuple(resource_source))
+add("ResourceRevision",{**resource_source,"base_revision_id":nullable(ID),"is_current":{"type":"boolean"}},(*resource_source,"base_revision_id","is_current"))
+resource_bytes={"type":"string","pattern":r"^(0|[1-9][0-9]{0,18})$"}
+resource_memory={"total_bytes":resource_bytes,"available_bytes":resource_bytes}
+add("ResourceMemory",resource_memory,tuple(resource_memory))
+add("ResourceDisk",{**resource_memory,"mountpoint":{"type":"string","minLength":1,"maxLength":200},"read_only":{"type":"boolean"}},(*resource_memory,"mountpoint","read_only"))
+resource_metrics={"cpu_usage_bp":{"type":"integer","minimum":0,"maximum":10000},"memory":ref("ResourceMemory"),"filesystems":array(ref("ResourceDisk"),minItems=1,maxItems=16)}
+resource_signed={**resource_metrics,"source_revision_id":ID,"sequence":{"type":"string","pattern":r"^[1-9][0-9]{0,15}$"},"observed_at":TIME}
+add("SignedResourceObservation",resource_signed,tuple(resource_signed))
+resource_observation={**resource_signed,"id":ID,"source_id":ID,"received_at":TIME,"payload_sha256":HASH,"applied":{"type":"boolean"},"ignored_reason":enum("","LATE_SEQUENCE","LATE_OBSERVATION","STALE_SAMPLE")}
+add("ResourceObservation",resource_observation,tuple(resource_observation))
+add("ResourceProof",{**resource_observation,"signed_payload":{"type":"string","maxLength":21848},"signature":{"type":"string","maxLength":88},"public_key":{"type":"string","maxLength":44}},(*resource_observation,"signed_payload","signature","public_key"))
+resource_view={"service_id":ID,"service_version":VERSION,"source":nullable(ref("ResourceSource")),"state":enum("unknown","operational","degraded","critical"),"state_reason":enum("","NOT_CONFIGURED","SOURCE_DISABLED","SERVICE_ARCHIVED","NO_OBSERVATION","CLOCK_SKEW","OBSERVATION_STALE"),
+    "evaluated_at":TIME,"recheck_at":TIME,"observation":nullable(ref("ResourceObservation")),"can_manage":{"type":"boolean"}}
+add("ResourceView",resource_view,tuple(resource_view))
+operation("/services/{id}/resource-monitor","get","getResourceMonitor","ResourceView")
+operation("/services/{id}/resource-monitor/revisions","post","publishResourceConfig","Service","ResourceConfigInput")
+operation("/services/{id}/resource-monitor/revisions","get","listResourceRevisions","ResourceRevision",listing=True)
+operation("/services/{id}/resource-monitor/observations","get","listResourceObservations","ResourceObservation",listing=True)
+operation("/services/{id}/resource-monitor/observations/{observation}/evidence","get","getResourceProof","ResourceProof")
+operation("/resource-sources/{source}/observations","post","ingestResourceObservation","ObservationAck","SignedResourceObservation")
+resource_ingest=PATHS["/resource-sources/{source}/observations"]["post"]
+resource_ingest["security"]=[]
+resource_ingest["parameters"]=[{"name":"source","in":"path","required":True,"schema":ID},{"name":"X-CP-Status-Signature","in":"header","required":True,"schema":{"type":"string","minLength":88,"maxLength":88},"description":"Ed25519 signature over CP-HOST-V1 newline lower-case source UUID newline exact JSON bytes. Cookies, Origin and Authorization headers are rejected."}]
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

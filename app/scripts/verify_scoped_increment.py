@@ -187,6 +187,38 @@ def run(config, name):
     return 0 if record['passed'] else 1
 
 
+def inspection_adjustment(config):
+    """Retain actual execution inputs after the two-line APK group correction.
+
+    Only the inspector's existing Office test/DEX group is extended to host
+    resources. No application, unit test, build command or browser input may
+    differ. Reconstruct the exact executed combination; never relabel it.
+    """
+    adjustment = config.get('inspection_only_adjustment')
+    if not adjustment:
+        return None
+    assert config['name'] == 'host-resources' and set(adjustment) == {'before_inspector', 'before_plan'}
+    assert not config.get('fixture_only_adjustment')
+    before_file, before_plan = (ROOT / adjustment[key] for key in ('before_inspector', 'before_plan'))
+    assert all(file.resolve().is_relative_to((directory(config) / 'attempts').resolve()) for file in (before_file, before_plan))
+    before = before_file.read_bytes()
+    original = subprocess.check_output(['git', 'show', config['retained_base_commit'] + ':app/scripts/inspect_android_apk.py'], cwd=ROOT)
+    assert before == original
+    needle = b"args.evidence_group == 'office-authoring'"
+    replacement = b"args.evidence_group in ('office-authoring', 'host-resources')"
+    assert before.count(needle) == 2
+    assert (APP / 'scripts/inspect_android_apk.py').read_bytes() == before.replace(needle, replacement)
+    assert read(before_plan) == {key: value for key, value in config.items() if key != 'inspection_only_adjustment'}
+    substitutions = {'scripts/inspect_android_apk.py': before, '../' + config['configuration_file']: before_plan.read_bytes()}
+    out = {'kind': 'two_line_apk_inspection_group_registration',
+        'execution_source_sha256': digest(config=config, substitutions=substitutions),
+        'current_source_sha256': digest(config=config),
+        'inputs': [{'file': file.relative_to(ROOT).as_posix(), 'sha256': sha(file)} for file in (before_file, before_plan)],
+        'application_build_and_test_inputs_unchanged': True,
+        'scope': 'Exact earlier execution combination reconstructed. Current inspector adds host-resources to the existing28-test and bounded Office DEX group; no application/build/test/fixture/media changes or new APK execution claim.'}
+    return out
+
+
 def retained(config):
     commit = config['retained_base_commit']
     assert re.fullmatch(r'[a-f0-9]{40}', commit)
@@ -227,7 +259,10 @@ def verify(config=None, save=False):
     evidence, checks = directory(config), []
     current = digest(config=config)
     adjusted = fixture_adjustment(config)
+    inspection_inputs = inspection_adjustment(config)
     accepted = {current} | ({adjusted['execution_source_sha256']} if adjusted else set())
+    if inspection_inputs:
+        accepted.add(inspection_inputs['execution_source_sha256'])
     if adjusted and adjusted.get('capture_execution_source_sha256'):
         accepted.add(adjusted['capture_execution_source_sha256'])
     def check(name, passed):
@@ -277,7 +312,7 @@ def verify(config=None, save=False):
             probe.settimeout(.3)
             released.append(probe.connect_ex(('127.0.0.1',port)) != 0)
     check('Both owned review ports are released', all(released))
-    if config['name'] == 'office-authoring':
+    if config['name'] in ('office-authoring', 'host-resources'):
         spec = importlib.util.spec_from_file_location('office_native_sources', APP/'scripts/build_android.py')
         native = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(native)
@@ -308,7 +343,7 @@ def verify(config=None, save=False):
             and all(item['sha256'] == sha(ROOT/item['file']) and item['failures'] == item['errors'] == item['skipped'] == 0 for item in native_scope['xml_results'])
             and all(sum(item['tests'] for item in native_scope['xml_results'] if item['suite'] == label) == 28 for label in ('android','jvm')))
         records += [{'file':(evidence/name).relative_to(ROOT).as_posix(),'sha256':sha(evidence/name)}
-            for name in ('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','office-consumers.json','browser-fixture-adjustment.json')]
+            for name in (('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','office-consumers.json','browser-fixture-adjustment.json') if config['name']=='office-authoring' else ('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','host-core.json'))]
     records += [{'file':(evidence/name).relative_to(ROOT).as_posix(),'sha256':sha(evidence/name)}
         for name in ('media.json','visual-review.json','development-update.json','development-project-resources.json','development-runtime.json')]
     previous = retained(config)
@@ -333,9 +368,12 @@ def verify(config=None, save=False):
         'interaction_kind': config['name'], 'interaction_source_sha256': current,
         'verification_script_sha256': sha(Path(__file__)), 'configuration_sha256': sha(ROOT / config['configuration_file']),
         'records': records, 'retained': previous, 'fixture_only_adjustment':adjusted,
+        'inspection_only_adjustment': inspection_inputs,
         'full_backend_suite_executed': False, 'formal_android_acceptance': False,
         'full_goal_complete': False, 'production_ready': False}
     if save:
+        if inspection_inputs:
+            (evidence / 'inspection-adjustment.json').write_text(json.dumps(inspection_inputs, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
         names = sources(config)
         (evidence / 'source-manifest.json').write_text(json.dumps({'sha256': current, 'files': [{'file': name, 'sha256': sha(APP/name)} for name in names]}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
         (evidence / 'reused-evidence.json').write_text(json.dumps(previous, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')

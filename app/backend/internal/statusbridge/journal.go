@@ -113,6 +113,9 @@ func (j *journal) Close() error {
 }
 
 func (j *journal) valid(next checkpoint) bool {
+	if j.target.Kind == "host" {
+		return j.validResourceCheckpoint(next)
+	}
 	if next.Generation == 0 || next.Binding != j.binding || next.Sequence < 1 || next.Sequence > 9007199254740991 || len(next.Body) > 4096 || uniqueJSON(next.Body) != nil {
 		return false
 	}
@@ -172,7 +175,7 @@ func (j *journal) restore() error {
 			break
 		}
 		n := int(binary.BigEndian.Uint32(b[at:]))
-		if n < 1 || n > 16<<10 {
+		if n < 1 || n > 64<<10 {
 			return fault("STATE_CORRUPT")
 		}
 		if len(b)-at < 4+n+32 {

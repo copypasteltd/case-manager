@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T21:21:28.046Z",
+  "finished_at": "2026-10-30T21:22:11.689Z",
+  "checks": [
+    "Current authenticated resource card shows complete real API evidence for CPU, memory and both configured filesystems, separate from unknown endpoint availability.",
+    "Actual native collector, signed receiver, database and polling UI transition normal → readonly critical → recovered; MP4 contains actual post-MFA viewport pixels."
+  ],
+  "source_count": 971,
+  "source_sha256": "6e4fd92eb5449676706bd7b7fd344f1d4e92e0225e527838656e352524c2e2f5",
+  "source_after_sha256": "6e4fd92eb5449676706bd7b7fd344f1d4e92e0225e527838656e352524c2e2f5",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('已通过本次两步验证，请继续核对并确认操作。', { exact: true }) to be visible\u001b[22m\n",
+  "failure_stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.taro_page_show.taro_page_stationed:not(.taro_page_shade) .cp-page').last().getByText('已通过本次两步验证，请继续核对并确认操作。', { exact: true }) to be visible\u001b[22m\n\n    at D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_host_resources.mjs:40:70\n    at async workbenchBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\workbench_browser_common.mjs:55:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_host_resources.mjs:11:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/status/index?kind=service&id=7827e324-3041-4bc9-96b0-c8c8a500d77f",
+    "body_children": 3,
+    "active_mobile_pages": 1,
+    "workbench_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "a382fd0ad239efa5fa62fcac10b55f0851fbb899c6a1fb404e512b1b39cf8af4",
+    "source_sha256": "81c497fa862f63c9441a9210c31892c09a1a017fb919412a7b511e5da81478c5",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "81c497fa862f63c9441a9210c31892c09a1a017fb919412a7b511e5da81478c5",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "81c497fa862f63c9441a9210c31892c09a1a017fb919412a7b511e5da81478c5",
+  "build_source_unchanged": true
+}

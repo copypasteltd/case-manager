@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T21:30:14.433755+00:00",
+  "encoder_script_sha256": "aa373777af7e5fb731ac9d7d2abc13b6b52ab08e2a1d0bea8b689ce9a64e5ed4",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "adb19d84b803fc4884e7405f2306955d1e0eaa7bde82a74106170be2a26e13b9",
+      "build_source_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+      "capture_manifest": "docs/quality/evidence/host-resources/web-capture-manifest.json",
+      "capture_manifest_sha256": "7363b2f5cc50cd5b26116f973c9954a97370f97e9a1581f47d1a5aeff8bc06a2",
+      "capture_frame_count": 55,
+      "capture_duration_ms": 11399,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/host-resources-web-normal.png",
+          "sha256": "a3f80db013976e31919d451a599813342e053c6d8582e9718c91023991d18eab"
+        },
+        {
+          "file": "docs/media/screenshots/host-resources-web-critical.png",
+          "sha256": "44cacbea055298468d1681fc18ef2255267fcb5ffd2c1837a679107ade732369"
+        },
+        {
+          "file": "docs/media/screenshots/host-resources-web-disabled.png",
+          "sha256": "92876743e2ba7b898d34f7d6debc78c01bdc046c4e70018e6a1054edc2c6395b"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "115",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "11.500000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/host-resources-web.mp4",
+          "sha256": "9ffd08863ad5b7834ca2542a01c2815d99f4f1cd199fa1111289d0e43dbe623a",
+          "bytes": 177175
+        },
+        {
+          "file": "docs/media/gifs/host-resources-web.gif",
+          "sha256": "576bf504184bd0ed07a2f032f2362f3f0eaaa7837b53be2b7e4916d7dc5df3b7",
+          "bytes": 137634
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "180c9e76dbbdcf5a2a29e8165d93d2f4f549e5591aab5329163e86231933c2db",
+      "build_source_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+      "capture_manifest": "docs/quality/evidence/host-resources/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "dcab8764c1bd68fcded1f881c3fcbe3105534b33ab0368851c45226527cf69ab",
+      "capture_frame_count": 56,
+      "capture_duration_ms": 11454,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/host-resources-mobile-normal.png",
+          "sha256": "cefaa906fb501b842900e3807c8be371477426f47ed2ddc81f04e02cd88b6bf4"
+        },
+        {
+          "file": "docs/media/screenshots/host-resources-mobile-critical.png",
+          "sha256": "1a1e04842264e7007621ce1139e62e4fb199e4e5ee62d53b91be235d07064c76"
+        },
+        {
+          "file": "docs/media/screenshots/host-resources-mobile-disabled.png",
+          "sha256": "8455f265b46d6370c9b908a93ca0b0f0abfc36eb58ad5709937a5a9af4e68cb8"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "116",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "11.600000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/host-resources-mobile.mp4",
+          "sha256": "fae8bda45a9630629a9879b3f60b53b00e304419786c71741a2ad5c562b9cabe",
+          "bytes": 34916
+        },
+        {
+          "file": "docs/media/gifs/host-resources-mobile.gif",
+          "sha256": "47a8b862725dae8cf9fddf2dc7e3fe14a1bed75191158cee77f3faf469419880",
+          "bytes": 58401
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 records the actual authenticated home refresh after the owned copy worker verifies real synthetic bytes. GIF is an explicit tour of three actual screenshots: initial work, queued retry and completed work. No physical device, real cloud or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/host-resources-web-normal.png",
+      "sha256": "a3f80db013976e31919d451a599813342e053c6d8582e9718c91023991d18eab"
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-web-critical.png",
+      "sha256": "44cacbea055298468d1681fc18ef2255267fcb5ffd2c1837a679107ade732369"
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-web-disabled.png",
+      "sha256": "92876743e2ba7b898d34f7d6debc78c01bdc046c4e70018e6a1054edc2c6395b"
+    },
+    {
+      "file": "docs/media/videos/host-resources-web.mp4",
+      "sha256": "9ffd08863ad5b7834ca2542a01c2815d99f4f1cd199fa1111289d0e43dbe623a",
+      "bytes": 177175
+    },
+    {
+      "file": "docs/media/gifs/host-resources-web.gif",
+      "sha256": "576bf504184bd0ed07a2f032f2362f3f0eaaa7837b53be2b7e4916d7dc5df3b7",
+      "bytes": 137634
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-mobile-normal.png",
+      "sha256": "cefaa906fb501b842900e3807c8be371477426f47ed2ddc81f04e02cd88b6bf4"
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-mobile-critical.png",
+      "sha256": "1a1e04842264e7007621ce1139e62e4fb199e4e5ee62d53b91be235d07064c76"
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-mobile-disabled.png",
+      "sha256": "8455f265b46d6370c9b908a93ca0b0f0abfc36eb58ad5709937a5a9af4e68cb8"
+    },
+    {
+      "file": "docs/media/videos/host-resources-mobile.mp4",
+      "sha256": "fae8bda45a9630629a9879b3f60b53b00e304419786c71741a2ad5c562b9cabe",
+      "bytes": 34916
+    },
+    {
+      "file": "docs/media/gifs/host-resources-mobile.gif",
+      "sha256": "47a8b862725dae8cf9fddf2dc7e3fe14a1bed75191158cee77f3faf469419880",
+      "bytes": 58401
+    }
+  ]
+}

@@ -335,9 +335,12 @@
       "status": "active",
       "priority": "P0",
       "kind": "补实现＋部署＋功能验收",
-      "remaining": "部署实际Prometheus／Blackbox及获准目标；接入CPU／内存／磁盘，核对故障、恢复、采集unknown和外部告警送达。",
+      "remaining": "部署实际Prometheus／Blackbox／node_exporter及获准目标，核对真实故障、恢复、采集断流unknown、资源断流主动通知和独立外部告警送达。增量130已实现CPU／内存／全部配置磁盘的固定查询、签名接收、持久证据、四端配置／显示／历史和过期隐藏；不再将这些代码子项列为待实现。",
       "acceptance": "观测真实、状态准确、责任人和回执可追踪；独立告警链按服务监控需求落地。",
-      "scope_change": "服务状态与故障通知保留；不新增异地容灾或网络性能基准。"
+      "scope_change": "服务状态与故障通知保留；不新增异地容灾或网络性能基准。",
+      "completed_adaptations": [
+        "HOST-RESOURCES-130"
+      ]
     },
     {
       "id": "GAP-24",

@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "checks": [],
+  "owned_browser_closed": true,
+  "failure": "No browser result was produced; inspect the retained private runner logs.",
+  "native_fixture_exit_code": null,
+  "isolated_database_cleanup_passed": false,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "a382fd0ad239efa5fa62fcac10b55f0851fbb899c6a1fb404e512b1b39cf8af4",
+    "source_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+    "completed_before_database_fixture": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "97bf2a57ed70e99a00d4348f6d9aa28e783f4ee22b823e93d33d0827acc0c49c",
+  "build_source_unchanged": true,
+  "runner_failure_code": "RuntimeError",
+  "runner_failure_detail": "Native Taro H5 review build failed."
+}

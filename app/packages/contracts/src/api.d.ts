@@ -5953,6 +5953,92 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/services/{id}/resource-monitor": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getResourceMonitor */
+        get: operations["getResourceMonitor"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/services/{id}/resource-monitor/revisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listResourceRevisions */
+        get: operations["listResourceRevisions"];
+        put?: never;
+        /** publishResourceConfig */
+        post: operations["publishResourceConfig"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/services/{id}/resource-monitor/observations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listResourceObservations */
+        get: operations["listResourceObservations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/services/{id}/resource-monitor/observations/{observation}/evidence": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getResourceProof */
+        get: operations["getResourceProof"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/resource-sources/{source}/observations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** ingestResourceObservation */
+        post: operations["ingestResourceObservation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -14345,6 +14431,167 @@ export interface components {
         };
         OfficeArtifactResponse: {
             data: components["schemas"]["OfficeArtifact"];
+            meta: components["schemas"]["Meta"];
+        };
+        ResourceThreshold: {
+            warning_bp: number;
+            critical_bp: number;
+        };
+        ResourceConfigInput: {
+            name: string;
+            public_key: string;
+            enabled: boolean;
+            stale_after_seconds: number;
+            cpu: components["schemas"]["ResourceThreshold"];
+            memory: components["schemas"]["ResourceThreshold"];
+            disk: components["schemas"]["ResourceThreshold"];
+            mountpoints: string[];
+            expected_version: number;
+            expected_source_version: number;
+            base_revision_id: string | null;
+            reason: string;
+        };
+        ResourceSource: {
+            name: string;
+            public_key: string;
+            enabled: boolean;
+            stale_after_seconds: number;
+            cpu: components["schemas"]["ResourceThreshold"];
+            memory: components["schemas"]["ResourceThreshold"];
+            disk: components["schemas"]["ResourceThreshold"];
+            mountpoints: string[];
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            revision_id: string;
+            version: number;
+            /** Format: uuid */
+            published_by: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        ResourceRevision: {
+            name: string;
+            public_key: string;
+            enabled: boolean;
+            stale_after_seconds: number;
+            cpu: components["schemas"]["ResourceThreshold"];
+            memory: components["schemas"]["ResourceThreshold"];
+            disk: components["schemas"]["ResourceThreshold"];
+            mountpoints: string[];
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            revision_id: string;
+            version: number;
+            /** Format: uuid */
+            published_by: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            base_revision_id: string | null;
+            is_current: boolean;
+        };
+        ResourceMemory: {
+            total_bytes: string;
+            available_bytes: string;
+        };
+        ResourceDisk: {
+            total_bytes: string;
+            available_bytes: string;
+            mountpoint: string;
+            read_only: boolean;
+        };
+        SignedResourceObservation: {
+            cpu_usage_bp: number;
+            memory: components["schemas"]["ResourceMemory"];
+            filesystems: components["schemas"]["ResourceDisk"][];
+            /** Format: uuid */
+            source_revision_id: string;
+            sequence: string;
+            /** Format: date-time */
+            observed_at: string;
+        };
+        ResourceObservation: {
+            cpu_usage_bp: number;
+            memory: components["schemas"]["ResourceMemory"];
+            filesystems: components["schemas"]["ResourceDisk"][];
+            /** Format: uuid */
+            source_revision_id: string;
+            sequence: string;
+            /** Format: date-time */
+            observed_at: string;
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            source_id: string;
+            /** Format: date-time */
+            received_at: string;
+            payload_sha256: string;
+            applied: boolean;
+            /** @enum {string} */
+            ignored_reason: "" | "LATE_SEQUENCE" | "LATE_OBSERVATION" | "STALE_SAMPLE";
+        };
+        ResourceProof: {
+            cpu_usage_bp: number;
+            memory: components["schemas"]["ResourceMemory"];
+            filesystems: components["schemas"]["ResourceDisk"][];
+            /** Format: uuid */
+            source_revision_id: string;
+            sequence: string;
+            /** Format: date-time */
+            observed_at: string;
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            source_id: string;
+            /** Format: date-time */
+            received_at: string;
+            payload_sha256: string;
+            applied: boolean;
+            /** @enum {string} */
+            ignored_reason: "" | "LATE_SEQUENCE" | "LATE_OBSERVATION" | "STALE_SAMPLE";
+            signed_payload: string;
+            signature: string;
+            public_key: string;
+        };
+        ResourceView: {
+            /** Format: uuid */
+            service_id: string;
+            service_version: number;
+            source: components["schemas"]["ResourceSource"] | null;
+            /** @enum {string} */
+            state: "unknown" | "operational" | "degraded" | "critical";
+            /** @enum {string} */
+            state_reason: "" | "NOT_CONFIGURED" | "SOURCE_DISABLED" | "SERVICE_ARCHIVED" | "NO_OBSERVATION" | "CLOCK_SKEW" | "OBSERVATION_STALE";
+            /** Format: date-time */
+            evaluated_at: string;
+            /** Format: date-time */
+            recheck_at: string;
+            observation: components["schemas"]["ResourceObservation"] | null;
+            can_manage: boolean;
+        };
+        ResourceViewResponse: {
+            data: components["schemas"]["ResourceView"];
+            meta: components["schemas"]["Meta"];
+        };
+        ResourceRevisionListResponse: {
+            data: {
+                items: components["schemas"]["ResourceRevision"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        ResourceObservationListResponse: {
+            data: {
+                items: components["schemas"]["ResourceObservation"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        ResourceProofResponse: {
+            data: components["schemas"]["ResourceProof"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -31004,6 +31251,233 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["OfficeArtifactResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getResourceMonitor: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResourceViewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listResourceRevisions: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResourceRevisionListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    publishResourceConfig: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResourceConfigInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listResourceObservations: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResourceObservationListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getResourceProof: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                observation: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResourceProofResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    ingestResourceObservation: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Ed25519 signature over CP-HOST-V1 newline lower-case source UUID newline exact JSON bytes. Cookies, Origin and Authorization headers are rejected. */
+                "X-CP-Status-Signature": string;
+            };
+            path: {
+                source: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SignedResourceObservation"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ObservationAckResponse"];
                 };
             };
             400: components["responses"]["Failure"];

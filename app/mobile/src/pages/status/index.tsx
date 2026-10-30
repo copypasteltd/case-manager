@@ -11,6 +11,7 @@ import { ChoiceList, SelectField, TextField } from '../business/controls';
 import { IncidentEditor, type IncidentSeed } from './incident-editor';
 import { Maintenance, Observations, Revisions } from './history';
 import { useLiveStatus } from './live';
+import { HostResources } from './resources';
 
 export default function StatusPage() {
   const params = useRouter().params, [editing, setEditing] = useState(false), [rebased, setRebased] = useState<{ value: Schemas['Incident']; seed: IncidentSeed }>();
@@ -97,6 +98,7 @@ function ServiceDetail({ id, me }: { id: string; me: Schemas['Me'] }) {
         </View>)}
       </View></Section>}
     </>}
+    <HostResources key={id + ':' + me.user.id + ':' + me.authorization_version} service={id} me={me} />
     <Action secondary onClick={feed.reload}>刷新状态与依据</Action>
   </>;
 }

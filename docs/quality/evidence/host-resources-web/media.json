@@ -1,0 +1,35 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/host-resources-web-normal.png",
+      "sha256": "a3f80db013976e31919d451a599813342e053c6d8582e9718c91023991d18eab"
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-web-critical.png",
+      "sha256": "44cacbea055298468d1681fc18ef2255267fcb5ffd2c1837a679107ade732369"
+    },
+    {
+      "file": "docs/media/screenshots/host-resources-web-disabled.png",
+      "sha256": "92876743e2ba7b898d34f7d6debc78c01bdc046c4e70018e6a1054edc2c6395b"
+    }
+  ],
+  "recording": {
+    "name": "host-resources-web",
+    "frame_count": 55,
+    "duration_ms": 11399,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/host-resources-web/frames.json",
+    "manifest_sha256": "7363b2f5cc50cd5b26116f973c9954a97370f97e9a1581f47d1a5aeff8bc06a2"
+  },
+  "screenshot_scenarios": [
+    "complete normal host resource evidence",
+    "readonly filesystem critical alert",
+    "explicit MFA disable and unknown current metrics"
+  ],
+  "synthetic_data": true,
+  "credentials_recorded": false
+}

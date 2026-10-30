@@ -23,7 +23,8 @@ async function collect(directory) {
 }
 export async function workbenchBrowser(mobile, action, variant = 'workbench') {
   const fixture = JSON.parse(await readFile(path.join(app, '.local/business-browser-fixture.json'), 'utf8'));
-  assert.ok(['workbench', 'operations-workbench', 'docx-text', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring'].includes(variant));
+  assert.ok(['workbench', 'operations-workbench', 'docx-text', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources'].includes(variant));
+  const host = variant === 'host-resources';
   const office = variant === 'office-authoring';
   const document = variant === 'document-text';
   const batch = variant === 'file-batch';
@@ -32,15 +33,15 @@ export async function workbenchBrowser(mobile, action, variant = 'workbench') {
   const business = variant === 'project-business';
   const operations = variant === 'operations-workbench';
   const docx = variant === 'docx-text';
-  assert.equal(fixture.fixture_kind, office ? 'human-office-authoring' : document ? 'agent-context-and-classification' : batch ? 'human-file-batch' : payment ? 'human-cost-payment' : cost ? 'human-business-cost' : business ? 'human-project-business' : docx ? 'agent-context-and-classification' : operations ? 'human-operations-workbench' : 'human-business-workbench'); assert.equal(fixture[office ? 'office_author_fixture' : document ? 'document_text_fixture' : batch ? 'file_batch_fixture' : payment ? 'cost_payment_fixture' : cost ? 'business_cost_fixture' : business ? 'project_business_fixture' : docx ? 'docx_text_fixture' : operations ? 'operations_workbench_fixture' : 'workbench_fixture'],true);
+  assert.equal(fixture.fixture_kind, host ? 'human-host-resources' : office ? 'human-office-authoring' : document ? 'agent-context-and-classification' : batch ? 'human-file-batch' : payment ? 'human-cost-payment' : cost ? 'human-business-cost' : business ? 'human-project-business' : docx ? 'agent-context-and-classification' : operations ? 'human-operations-workbench' : 'human-business-workbench'); assert.equal(fixture[host ? 'host_resource_fixture' : office ? 'office_author_fixture' : document ? 'document_text_fixture' : batch ? 'file_batch_fixture' : payment ? 'cost_payment_fixture' : cost ? 'business_cost_fixture' : business ? 'project_business_fixture' : docx ? 'docx_text_fixture' : operations ? 'operations_workbench_fixture' : 'workbench_fixture'],true);
   const group = process.env.CP_BROWSER_EVIDENCE_GROUP ?? variant + (mobile ? '-mobile' : '-web');
   assert.match(group, /^[a-zA-Z0-9-]+$/);
   const evidence = path.join(root, 'docs/quality/evidence', group), temporary = path.join(app, '.local/browser-temp');
   await mkdir(evidence, { recursive: true }); await mkdir(temporary, { recursive: true }); process.env.TMP = temporary; process.env.TEMP = temporary;
   const backend = (await collect('backend')).filter(file => /\.(go|sql)$|\/(go\.mod|go\.sum)$|\/internal\/contract\/openapi\.json$|\/office_templates\//.test(file));
-  const checker = office ? 'scripts/check_office_authoring.mjs' : document ? 'scripts/check_document_text.mjs' : batch ? 'scripts/check_file_batch.mjs' : payment ? 'scripts/check_cost_payment.mjs' : cost ? 'scripts/check_business_cost.mjs' : business ? 'scripts/check_project_business.mjs' : docx ? 'scripts/check_docx_text.mjs' : operations ? 'scripts/check_operations_workbench.mjs' : 'scripts/check_workbench.mjs';
+  const checker = host ? 'scripts/check_host_resources.mjs' : office ? 'scripts/check_office_authoring.mjs' : document ? 'scripts/check_document_text.mjs' : batch ? 'scripts/check_file_batch.mjs' : payment ? 'scripts/check_cost_payment.mjs' : cost ? 'scripts/check_business_cost.mjs' : business ? 'scripts/check_project_business.mjs' : docx ? 'scripts/check_docx_text.mjs' : operations ? 'scripts/check_operations_workbench.mjs' : 'scripts/check_workbench.mjs';
   const sources = [...new Set([...backend, ...await collect(mobile ? 'mobile' : 'web'), ...await collect('packages/contracts'), ...await collect('packages/design'), 'package.json', 'package-lock.json', 'scripts/workbench_browser_common.mjs', checker, 'scripts/workbench_sources.py', 'scripts/run_workbench_browser.py', 'scripts/workbench_recording.mjs', 'scripts/mobile_picker_browser.mjs', 'scripts/project_concern_picker.mjs', 'scripts/test_backend.py', 'scripts/test_workbench_native.py', 'scripts/workbench_native_cluster.py', 'scripts/windows_native_path.py', 'scripts/build_openapi.py'])].sort();
-  if (office || document || docx || business || cost || payment || batch) { sources.push(office || cost || business || payment || batch ? 'scripts/project_business_recording.mjs' : 'scripts/office_text_recording.mjs'); sources.sort(); }
+  if (host || office || document || docx || business || cost || payment || batch) { sources.push(host || office || cost || business || payment || batch ? 'scripts/project_business_recording.mjs' : 'scripts/office_text_recording.mjs'); sources.sort(); }
   async function digest() { const hash = createHash('sha256'); for (const file of sources) { hash.update(file + '\0'); hash.update(await readFile(path.join(app, file))); hash.update('\0'); } return hash.digest('hex'); }
   if (document) { sources.push(...await collect('../docs/quality/fixtures/document-text')); sources.sort(); }
   const before = await digest(), started = new Date().toISOString(), checks = [], errors = [], serverErrors = [], contexts = [];

@@ -1,0 +1,248 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T21:45:19.320287+00:00",
+  "verification_mode": "scoped_increment",
+  "increment": 130,
+  "checks": [
+    {
+      "name": "Source-bound executed check backend",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-bundle",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check resource-core",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup host-resources-web",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup host-resources-mobile",
+      "passed": true
+    },
+    {
+      "name": "Actual screenshot and recording outputs retain declared hashes",
+      "passed": true
+    },
+    {
+      "name": "All affected visual outputs actually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Owned development services match current backend and preserve existing business records",
+      "passed": true
+    },
+    {
+      "name": "Both owned review ports are released",
+      "passed": true
+    },
+    {
+      "name": "Current complete development APK binds all native/business inputs and actual artifact bytes",
+      "passed": true
+    },
+    {
+      "name": "Actual APK signature/DEX/JS and both native suites retain precise current source evidence",
+      "passed": true
+    },
+    {
+      "name": "Native test XML and actual fresh/cached execution boundaries are retained",
+      "passed": true
+    },
+    {
+      "name": "All prior published proof/media bytes remain unchanged with honest retained scope",
+      "passed": true
+    },
+    {
+      "name": "Historical schema bytes unchanged and only declared new upgrades added",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture released",
+      "passed": true
+    },
+    {
+      "name": "Scope and platform acceptance are not replaced by focused checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "host-resources",
+  "interaction_source_sha256": "76c1e5f2e1cccc04e20b76e76f199dc9fb655380bc7f3a1de2b94e48706c0057",
+  "verification_script_sha256": "72173670e373e18be713e85a8050580f95bc4af8700877c150e1f15e977ee6ac",
+  "configuration_sha256": "2cf9cfff0bfe6f273022e6b01978652bc25693d360936bb610afda734e9f49c2",
+  "records": [
+    {
+      "file": "docs/quality/evidence/host-resources/backend.json",
+      "sha256": "730632364795649375081930ecfe309765cf040649b0ccd5518ae88746c81a12"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/web-tests.json",
+      "sha256": "5164d864a319ab3db6d0d63a192c39cfbea8f91873912a3668b294c16eb18bca"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/mobile-tests.json",
+      "sha256": "2ccb46bd50f7501c3eb87c9db0952ba5c7641c654adcd854c1c8bd62831a165b"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/typecheck.json",
+      "sha256": "d2a431a48d405c14ab6201fc1a1eea0adcaa068ec15dfab3e9120beef6c1bdd8"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/web-build.json",
+      "sha256": "90de3a94c20bcaf6a10302c04523b670d6d630bacaa575a2201a86e6fb64b4e6"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/weapp-build.json",
+      "sha256": "efe6e04f58d004c01f3b91d162ba5e1f30d4810586930640e7564967fe7431bc"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/douyin-build.json",
+      "sha256": "ed0b9ec834c544dae6b9f2b5fe0f38aea0547ef0ad956624671ae798875b8264"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/native-js-tests.json",
+      "sha256": "b5c34ea618b0f0e772de09b7ba4362c5032041295cb5ead0d166b01cfe498081"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/native-bundle.json",
+      "sha256": "49e2f017f5d0279746110647652ac6ac274c941fd0dbe59c2f3fc391bec2f494"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/resource-core.json",
+      "sha256": "7f2c8b45f234464130fa3cc00e12e3d58ad950b184353b022f85d4fb31be765d"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources-web/result.json",
+      "sha256": "4c0cc2da86b7d2962b2d1ac463cd4d10134c54159978870e2ac4d9f2432b4289"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources-web/source-manifest.json",
+      "sha256": "da608a4a008d3b76d7e48791b28ca4e8f640811db95e50de68c88b029f30477b"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources-web/media.json",
+      "sha256": "f937f10d77b4c829fb2604ab7d9d9f54fc9585b0a81c17564bf158bb5d4872a9"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources-mobile/result.json",
+      "sha256": "a80e7673087462016288531bffd378f1b38327c4ef09e6febec7a278748025d2"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources-mobile/source-manifest.json",
+      "sha256": "0c4317b1af457917469b4221779dde3278f9c1ef3f892d40e0aafd4c11eda8ee"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources-mobile/media.json",
+      "sha256": "d608e432c2f3e2255563cde6927b36fae913d3df18d03a1ee8f8cac055b33ce5"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/build.json",
+      "sha256": "d285b9b324eceaca1954d123c1529201ffc3fc3e039ce41b4b6adbf1c2649e52"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/apk-inspection.json",
+      "sha256": "16818fcb3c144b3125bb40783d061c7b65f3bd987bd8e66e68247ebe422fe935"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/native-suites.json",
+      "sha256": "bdd10e9cb6bc439d4615ae23285e04cc131d284fb0aa81e64261537b29afdecb"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/native-test-scope.json",
+      "sha256": "883109dca30b9e921e274d530299cfb63f268bb74687ac76d5f3142da31bc9bc"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/android-js-content.json",
+      "sha256": "ba1e687d961ded11df81dd0762401c0ce9e3b8e5b5d49aa70c81ddb58ce1ea60"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/host-core.json",
+      "sha256": "def01638ec7305a384d5d5449ae1b4a14f556bda98af636f5f48b2a10e9dd974"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/media.json",
+      "sha256": "254c299156b5065740db1e5b3d249d2fc12d15a66ea35a6f5376ab355d641723"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/visual-review.json",
+      "sha256": "4f8f7a71e7fe35b187ff304b82949c72fcffe0c5e30827391df4dec2d6842ad5"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/development-update.json",
+      "sha256": "dbf7f56b71356476b68307738d647fdf13053020db7e8feec0a83a3c6ee83e1a"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/development-project-resources.json",
+      "sha256": "ab46613de7f2de19c0b3157b1c69edd57379e95e7ab06ab4e7c3e28bac7d8aef"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/development-runtime.json",
+      "sha256": "3d79f6adc1b0814f81619de95ea717f48d4e28ed9b3b7cbd44e5b6db3751ce14"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "6ea1cf0ba5f10662a6e78b9594b53c90086001ce",
+    "original_files": 5577,
+    "original_media": 1398,
+    "original_git_object_manifest_sha256": "9d2d17db54d1f901119b4fbd1f2ac54f893ad436d62f575b3d712f1822db56dd",
+    "baseline_sha256": "ec5ef9dad93be6850324ce95237e2ba87f57bede2a45defbf7c9f0d66dcf10bc",
+    "baseline_increment": 129,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": {
+    "kind": "two_line_apk_inspection_group_registration",
+    "execution_source_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+    "current_source_sha256": "76c1e5f2e1cccc04e20b76e76f199dc9fb655380bc7f3a1de2b94e48706c0057",
+    "inputs": [
+      {
+        "file": "docs/quality/evidence/host-resources/attempts/05-apk-inspection-registration/inspect_android_apk.py.snapshot",
+        "sha256": "a3eb8c2ce4c09d32c034ea63075e66e1c7986f066ebef442a6075733979b9921"
+      },
+      {
+        "file": "docs/quality/evidence/host-resources/attempts/05-apk-inspection-registration/verification-plan.json",
+        "sha256": "7b98cfa78bbfe127b786fa72e7ccb6324b912fcd839277bb0563d6813792781e"
+      }
+    ],
+    "application_build_and_test_inputs_unchanged": true,
+    "scope": "Exact earlier execution combination reconstructed. Current inspector adds host-resources to the existing28-test and bounded Office DEX group; no application/build/test/fixture/media changes or new APK execution claim."
+  },
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

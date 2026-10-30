@@ -1,0 +1,17 @@
+{
+  "kind": "two_line_apk_inspection_group_registration",
+  "execution_source_sha256": "ca4fa4723e0912bae746c2c4cac73c15ed34e0a0f7370c976ba17bcf1cae0921",
+  "current_source_sha256": "76c1e5f2e1cccc04e20b76e76f199dc9fb655380bc7f3a1de2b94e48706c0057",
+  "inputs": [
+    {
+      "file": "docs/quality/evidence/host-resources/attempts/05-apk-inspection-registration/inspect_android_apk.py.snapshot",
+      "sha256": "a3eb8c2ce4c09d32c034ea63075e66e1c7986f066ebef442a6075733979b9921"
+    },
+    {
+      "file": "docs/quality/evidence/host-resources/attempts/05-apk-inspection-registration/verification-plan.json",
+      "sha256": "7b98cfa78bbfe127b786fa72e7ccb6324b912fcd839277bb0563d6813792781e"
+    }
+  ],
+  "application_build_and_test_inputs_unchanged": true,
+  "scope": "Exact earlier execution combination reconstructed. Current inspector adds host-resources to the existing28-test and bounded Office DEX group; no application/build/test/fixture/media changes or new APK execution claim."
+}

@@ -1,5 +1,7 @@
 # 原生部署、配置、发布与日常运维手册
 
+增量130已实现主机CPU／内存／完整配置磁盘的原生采集桥接、签名接收、不可变记录、四端显示与配置／历史管理。真实目标安装、资源断流主动通知和独立告警送达继续归GAP-23；不以页面告警替代送达回执。[设计与使用](../development/130-host-resources.md) · [实际检查](../quality/130-host-resources-verification.md) · [全部23项](../delivery/05-functional-closure-130.md)。23 active（14 P0／9 P1）、5 excluded保持。
+
 增量119增加可执行的完整原生打包、固定服务目录、版本化配置、发布协调器及手动CI。安装、切换和故障处置以[完整运行手册](03-native-release-runbook.md)及[设计](../development/119-native-production-release.md)为准；真实服务器、系统服务、HTTPS、CI和持久PG尚未验收。下方历史章节的迁移／容灾及AI费用门槛继续按[当前范围](../delivery/04-current-scope-and-acceptance.md)移出，不恢复这些旧门槛。
 
 增量105原生执行控制器：Linux root控制器与公司任务Worker分离，专用发布目录、私有模型密钥、实际内核取证和cgroup回收的安装顺序见[详细手册](../development/105-native-agent-runtime.md)。本机仅完成可移植检查和交叉编译，未启用目标服务；范围继续遵循[修订99](../delivery/04-current-scope-and-acceptance.md)。

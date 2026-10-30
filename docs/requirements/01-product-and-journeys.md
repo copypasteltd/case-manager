@@ -1,5 +1,7 @@
 # 产品需求总纲与用户旅程
 
+增量130已实现主机CPU／内存／完整配置磁盘的原生采集桥接、签名接收、不可变记录、四端显示与配置／历史管理。真实目标安装、资源断流主动通知和独立告警送达继续归GAP-23；不以页面告警替代送达回执。[设计与使用](../development/130-host-resources.md) · [实际检查](../quality/130-host-resources-verification.md) · [全部23项](../delivery/05-functional-closure-130.md)。23 active（14 P0／9 P1）、5 excluded保持。
+
 增量124已接通项目内六类业务的固定范围新建、查询和返回，并补齐共享移动订阅管理／账期核对。项目归属草稿查询与实际金额汇总分开；保存草稿不表示送审、费用确认、付款或供应方启用。见[设计与操作](../development/124-project-business-journeys.md)及[检查记录](../quality/124-project-business-verification.md)。完整业务旅程及公司规则继续开放，当前仍23 active／5 excluded。
 
 当前范围修订99（用户已确认）：不做真机验证，不考虑网络性能测试、历史数据迁移与容灾、AI费用控制。四端、秘书／Skill／TG、执行隔离／授权、公司财务及双云存储继续。本文及历史需求中的冲突门槛以[当前范围](../delivery/04-current-scope-and-acceptance.md)为准；移出项不记为通过。

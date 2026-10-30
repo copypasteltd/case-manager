@@ -12,6 +12,7 @@ import (
 
 func (s *Server) serviceStatusRoutes(mux *http.ServeMux) {
 	service := &servicestatus.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	s.hostResourceRoutes(mux, service)
 	mux.HandleFunc("GET /v1/services", read(s, "ServiceListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := filter(r)
 		if e != nil {

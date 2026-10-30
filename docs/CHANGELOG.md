@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 2026-10-31 · Increment130 · 主机资源闭环 / Host resources
+
+- 增加CPU五分钟平均、准确内存容量、全部配置文件系统及只读严重告警；保持服务可用性独立。
+- 原生status-bridge新增固定node_exporter查询、原始抓取时戳核对、完整清单与独立Ed25519签名域，继承持久序号／待确认回执／重启保护。
+- 增加四端配置发布、最近MFA、并发冲突、历史分页及原始签名核对；当前权限、分类和项目阶段持续生效。
+- 正常结构升级96→97，配置／观测不可变；断流过期、停用、归档、缺失指标不会假报正常。
+- 同步中英README、开发／使用说明、真实合成页面截图、静音MP4与明确截图导览GIF。开发APK使用有效Metro缓存加速，并逐项披露Gradle测试缓存／执行边界。
+- 实际验证31条HTTP／PG、82条资源核心、Web408／共享移动493；当前APK19项内容检查。原生Android28／JVM28均UP-TO-DATE，准确匹配129原XML；检查器分组修正单独保留真实来源。
+- Real target installation and independent alert delivery remain GAP-23; production/model/cloud/TG/platform acceptance and all23 packages stay open. [使用](development/130-host-resources.md) · [检查](quality/130-host-resources-verification.md) · [全部余项](delivery/05-functional-closure-130.md)。
+
 ## 2026-10-31 · Increment129 · Office创建与原件编辑 / Office authoring
 
 - 新建真实DOCX／XLSX／PPTX，固定三种空白模板与MIT来源；部署无需Python或外部编辑器服务。

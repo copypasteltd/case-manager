@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量130已实现主机CPU／内存／完整配置磁盘的原生采集桥接、签名接收、不可变记录、四端显示与配置／历史管理。真实目标安装、资源断流主动通知和独立告警送达继续归GAP-23；不以页面告警替代送达回执。[设计与使用](../development/130-host-resources.md) · [实际检查](../quality/130-host-resources-verification.md) · [全部23项](05-functional-closure-130.md)。23 active（14 P0／9 P1）、5 excluded保持。
+
 增量126：实际应用已增加费用付款核销，覆盖供应方部分付款、人工异币及批准员工垫付；普通资金三步命令原子组合、准确回执、四端入口、白名单移动草稿及实际Web／H5演示。见[设计](../development/126-cost-payment-settlement.md)与[核验](../quality/126-cost-payment-verification.md)。整个23项工作包继续开放，不将子功能完成改作整体通过。
 
 BUSINESS-COST-125：从批准合同／采购／报销直接登记实际费用，人工核对、近期MFA、准确来源、原子确认关联、并发额度和完整失败回滚已进入实际应用与四端共享页面；实际费用及银行付款继续分开。见[实现与使用](../development/125-business-cost-recording.md)与[核验](../quality/125-business-cost-verification.md)。当前23 active（14 P0／9 P1）、5 excluded；完整公司制度和业务旅程继续开放。
