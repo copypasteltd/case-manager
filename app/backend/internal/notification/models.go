@@ -71,6 +71,7 @@ var categories = map[string]string{
 	"mention": "有人在任务讨论中提到你", "task": "任务待推进", "approval": "有申请待你审批", "request_result": "业务申请有新进展",
 	"contract_due": "合同到期提醒", "subscription_due": "订阅账期待核对", "replica_failure": "文件副本异常",
 	"incident": "服务事件有新进展", "secretary": "秘书任务有新结果",
+	"service_resource": "主机资源状态有新进展",
 }
 
 const threadColumns = `n.id,n.org_id,n.recipient_id,n.category,n.resource_type,n.resource_id,n.context_id,n.dedup_key,

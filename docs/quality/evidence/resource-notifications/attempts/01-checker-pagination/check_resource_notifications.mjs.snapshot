@@ -1,0 +1,58 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { workbenchBrowser, waitOTP } from './workbench_browser_common.mjs';
+import { mobileScreen, selectMobile } from './mobile_picker_browser.mjs';
+import { assertNoCredentials, recordViewport } from './project_business_recording.mjs';
+
+const app = fileURLToPath(new URL('../', import.meta.url)), mobile = process.argv.includes('--mobile');
+await workbenchBrowser(mobile, async ({ page, context, fixture, checks, evidence }) => {
+  const root = () => mobile ? mobileScreen(page) : page;
+  const field = label => mobile ? root().locator('input[aria-label="' + label + '"],textarea[aria-label="' + label + '"]') : page.getByLabel(label, { exact: true });
+  const button = label => root().getByRole('button', { name: label, exact: true });
+  const freshOTP = async () => { const code = await waitOTP(fixture); fixture.alice.last_step = Math.floor(Date.now() / 30000); return code; };
+  let bearer;
+  page.on('request', request => { if (request.headers().authorization?.startsWith('Bearer ')) bearer = request.headers().authorization; });
+  await page.goto(fixture.origin); await field('内部账号').fill(fixture.alice.login); await field('密码').fill(fixture.alice.password); await button(mobile ? '登录工作空间 ↗' : '登录工作空间').click(); await field('六位验证码').fill(await freshOTP()); await button(mobile ? '验证并继续 ↗' : '验证并继续').click();
+  await root().getByText('业务待办', { exact: true }).waitFor();
+  const get = async route => { const response = await context.request.get((mobile ? fixture.api_origin : fixture.origin) + '/v1' + route, { headers: mobile ? { Authorization: bearer } : {} }); assert.equal(response.status(), 200, route); return (await response.json()).data; };
+  const control = async state => { const response = await context.request.post(fixture.api_origin + '/__fixture/resources', { headers: { Authorization: 'Bearer ' + fixture.stop_token }, data: { state } }); assert.equal(response.status(), 200); assert.equal((await response.json()).code, 'ACKNOWLEDGED'); };
+  const service = await get('/services/' + fixture.service_id), resourcePath = '/services/' + service.id + '/resource-monitor';
+  const home = async () => { await page.goto(fixture.origin + (mobile ? '/#/pages/home/index' : '/')); await root().getByText('业务待办', { exact: true }).waitFor(); };
+  const inbox = async () => { await page.goto(fixture.origin + (mobile ? '/#/pages/notifications/index' : '/notifications')); if (mobile) await selectMobile(page, '通知类型', '主机资源'); else await field('通知类型').selectOption('service_resource'); await root().getByText(service.name, { exact: true }).waitFor(); };
+  const pending = async expected => { const value = await get('/dashboard/business'), group = value.groups.find(g => g.kind === 'resource_attention'); assert.ok(group); assert.equal(group.count, expected); return group; };
+  const notice = async () => { const value = await get('/notifications?category=service_resource&limit=100'), item = value.items.find(n => n.target.id === service.id); assert.ok(item); return item; };
+  const card = item => mobile ? root().locator('.cp-pad.cp-paragraph').filter({ hasText: service.name }) : page.locator('[data-notification-id="' + item.id + '"]');
+  const screenshots = [], prefix = 'resource-notifications-' + (mobile ? 'mobile' : 'web');
+  await mkdir(path.join(app, '../docs/media/screenshots'), { recursive: true });
+  async function shot(label) { await assertNoCredentials(page); const file = 'docs/media/screenshots/' + prefix + '-' + label + '.png'; await page.screenshot({ path: path.join(app, '..', file) }); screenshots.push({ file, sha256: createHash('sha256').update(await readFile(path.join(app, '..', file))).digest('hex') }); }
+  await control('normal'); await control('critical');
+  await home(); const group = await pending(1); assert.equal(group.items[0].id, service.id); assert.equal(group.items[0].state, 'resource_critical');
+  const work = mobile ? root().locator('.cp-section').filter({ hasText: '我负责的主机资源待办 · 1' }) : page.getByRole('region', { name: '我负责的主机资源待办', exact: true });
+  await work.getByText(service.name, { exact: true }).waitFor(); await work.scrollIntoViewIfNeeded(); await shot('workbench');
+  checks.push('A readonly critical observation produces one current owned workbench item from original signed evidence; the ordinary service detail route remains its destination.');
+  await inbox(); let current = await notice(); assert.equal(current.attention_required, true); assert.equal(current.target.type, 'service'); const sequence = current.delivery_seq;
+  const recording = await recordViewport(page, app, prefix, async () => {
+    const readResponse = page.waitForResponse(r => new URL(r.url()).pathname === '/v1/notifications/' + current.id + '/read' && r.request().method() === 'POST');
+    await card(current).getByRole('button', { name: '标记已读', exact: true }).click(); assert.equal((await readResponse).status(), 200);
+    await card(current).getByText(mobile ? '已读 · 仍需处理' : '已读', { exact: true }).waitFor();
+    current = await notice(); assert.equal(current.read, true); assert.equal(current.attention_required, true); await pending(1); await card(current).scrollIntoViewIfNeeded(); await shot('read-still-pending');
+    await card(current).getByRole('button', { name: '打开相关资料', exact: true }).click(); await root().getByText('主机资源监控', { exact: true }).waitFor(); await root().getByText('资源严重告警', { exact: true }).waitFor();
+    await control('normal'); await root().getByText('资源正常', { exact: true }).waitFor(); await pending(0);
+    await button(mobile ? '资源状态记录' : '查看资源状态记录').click();
+    await root().getByText('资源状态记录', { exact: true }).last().waitFor();
+    const history = await get(resourcePath + '/health-events?limit=100'); assert.ok(history.items.length >= 4); assert.equal(history.items[0].state, 'operational'); assert.equal(history.items[0].notification_event_created, true);
+    const proof = await get(resourcePath + '/observations/' + history.items[0].observation_id + '/evidence'); assert.equal(createHash('sha256').update(Buffer.from(proof.signed_payload, 'base64')).digest('hex'), proof.payload_sha256);
+    await button('核对该记录的原始签名').first().click(); await root().getByText(/原始载荷摘要及 Ed25519 签名已校验/).waitFor();
+    if (mobile) await root().getByText('以下为当时的评估与责任记录，不代表当前主机状态。通知事件已创建也不表示已经投递。', { exact: true }).scrollIntoViewIfNeeded();
+    await shot('recovered-history');
+  });
+  checks.push('Actual UI read acknowledgement keeps resource work open; the related-target action reauthorizes and opens the actual service. Real recovery clears current work before the user reads its new notification.');
+  current = await notice(); assert.equal(current.read, false); assert.equal(current.delivery_seq, sequence + 1); assert.equal(current.attention_required, false); assert.equal(current.current_state, 'resource_record');
+  checks.push('Recovery creates a new unread delivery in the original revision thread. Visible immutable state history identifies its original recipient/configuration/observation and verifies exact SHA-256/Ed25519 evidence. Event creation is distinguished from delivery.');
+  await home(); await pending(0); if (mobile) await root().getByText('我负责的主机资源待办 · 0', { exact: true }).waitFor(); else assert.equal(await page.getByLabel('我负责的主机资源待办数量', { exact: true }).textContent(), '0');
+  checks.push('Returning home displays zero current resource work after the independently verified recovery; all browser contexts, fixture database and owned review servers are released by the runner.');
+  await writeFile(path.join(evidence, 'media.json'), JSON.stringify({ screenshots, recording, screenshot_scenarios: ['original signed critical evidence in personal workbench', 'read notification retains actual resource duty', 'recovery and immutable signed basis history'], synthetic_data: true, credentials_recorded: false }, null, 2) + '\n');
+}, 'resource-notifications');

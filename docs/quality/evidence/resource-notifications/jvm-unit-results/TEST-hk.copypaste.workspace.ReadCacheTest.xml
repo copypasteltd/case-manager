@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hk.copypaste.workspace.ReadCacheTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-30T20:35:11" hostname="WIKIGSPC" time="0.598">
+  <properties/>
+  <testcase name="verifiedCsvUsesPrivateScratchAndExactMime" classname="hk.copypaste.workspace.ReadCacheTest" time="0.017"/>
+  <testcase name="corruptOrIncompleteScratchCannotBecomeAnOpenableArtifact" classname="hk.copypaste.workspace.ReadCacheTest" time="0.008"/>
+  <testcase name="invalidPathsAndFormatsCannotCreateOrRemoveAnything" classname="hk.copypaste.workspace.ReadCacheTest" time="0.003"/>
+  <testcase name="processRestartCannotAdoptAnOldHandleAndCleanupPreservesUnownedFiles" classname="hk.copypaste.workspace.ReadCacheTest" time="0.005"/>
+  <testcase name="scratchCapacityAndCanonicalBase64AreEnforced" classname="hk.copypaste.workspace.ReadCacheTest" time="0.555"/>
+  <testcase name="completedContentUsesOnlyItsOwnedFileAndFixedFormat" classname="hk.copypaste.workspace.ReadCacheTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -12,6 +12,13 @@ import (
 )
 
 func (s *Server) hostResourceRoutes(mux *http.ServeMux, service *servicestatus.Service) {
+	mux.HandleFunc("GET /v1/services/{id}/resource-monitor/health-events", read(s, "ResourceHealthEventListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return service.ResourceHealthHistory(ctx, a, r.PathValue("id"), f.Cursor, f.Limit)
+	}))
 	mux.HandleFunc("GET /v1/services/{id}/resource-monitor", read(s, "ResourceViewResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.ResourceMonitor(ctx, a, r.PathValue("id"))
 	}))

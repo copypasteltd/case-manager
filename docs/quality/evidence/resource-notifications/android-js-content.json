@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T22:36:16.474327+00:00",
+  "source_sha256": "7bf6cc275a31dbd40912e2ba8962d7d8094fb828f862f7219f1713caeed2cb30",
+  "build_record_sha256": "3db5bf89e0b8fb22e1b4a542bc892570f7a4f02d8043a862491d57fbb007ad93",
+  "bundle_sha256": "064ef6f539752631acaee98284ac0f7c399110245f84493fc7b2e9666ee7cceb",
+  "source_map_sha256": "3411b94f2e8a81b6349694d52948d3812363f68d9fa6bd2e65482bb2f015b67a",
+  "modules": [
+    {
+      "file": "mobile/src/pages/status/resource-health-history.tsx",
+      "file_sha256": "549ea8ed0999d3b7fcb3c6b29a26de5bdd18422b0257a876381d18f287807dee",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/status/resource-health-history.tsx",
+      "source_content_sha256": "549ea8ed0999d3b7fcb3c6b29a26de5bdd18422b0257a876381d18f287807dee",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "mobile/src/pages/notifications/index.tsx",
+      "file_sha256": "bf44a7a18986482c41477d2dead5accda243609f037f07a963bacec0a1b45352",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/notifications/index.tsx",
+      "source_content_sha256": "bf44a7a18986482c41477d2dead5accda243609f037f07a963bacec0a1b45352",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "packages/contracts/src/workbench.ts",
+      "file_sha256": "96406f5febfb490a605702aa522bed2a6850166350a2cf32bf09a565781cc575",
+      "map_source": "D:/dev/copypasted/内部管理/app/packages/contracts/src/workbench.ts",
+      "source_content_sha256": "96406f5febfb490a605702aa522bed2a6850166350a2cf32bf09a565781cc575",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "packages/contracts/src/notifications.ts",
+      "file_sha256": "8ebcedc6f0f616df354bc9fbb581b56f5acdaa54384f7f61525b8e7679f15499",
+      "map_source": "D:/dev/copypasted/内部管理/app/packages/contracts/src/notifications.ts",
+      "source_content_sha256": "8ebcedc6f0f616df354bc9fbb581b56f5acdaa54384f7f61525b8e7679f15499",
+      "source_content_matches_modulo_line_endings": true
+    }
+  ],
+  "verification_script_sha256": "8d609719be631549e78a8faa8160a739e99673781c2f04d94fe41854b400b9f6",
+  "read_only_artifact_inspection": true,
+  "apk_built": true,
+  "formal_android_acceptance": false,
+  "real_device_used": false,
+  "virtualization_used": false
+}

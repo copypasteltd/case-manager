@@ -377,6 +377,10 @@ func TestHostResources(t *testing.T) {
 					w.WriteHeader(500)
 					return
 				}
+				if e = drainResourceJobs(r.Context(), f.api.DB); e != nil {
+					w.WriteHeader(500)
+					return
+				}
 				w.Header().Set("Content-Type", "application/json")
 				_ = json.NewEncoder(w).Encode(map[string]any{"code": out[0].Code})
 			})

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\dev\copypasted\内部管理\app\scripts\verify_resource_notifications_core.py", line 44, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "D:\dev\copypasted\内部管理\app\scripts\verify_resource_notifications_core.py", line 27, in main
+    assert passed and not [row for row in records if row.get('Action') in ('fail', 'skip')]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

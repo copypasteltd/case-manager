@@ -18,7 +18,7 @@ func operationsGroup(t *testing.T, f *fixture, token, kind string) workbench.Gro
 	r, v := f.with(t).request("GET", "/v1/dashboard/business", token, "", nil, nil)
 	expect(t, r, 200, v)
 	s := data[workbench.Summary](t, v)
-	if len(s.Groups) != 5 {
+	if len(s.Groups) != 6 {
 		t.Fatal("incomplete workbench", s)
 	}
 	// A summary must not leak provider coordinates, error strings or bodies.

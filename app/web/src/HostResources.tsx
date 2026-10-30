@@ -6,10 +6,11 @@ import { Busy, Dialog, Empty, ErrorNotice, Field } from './components';
 import { MFAConfirmation } from './MFAConfirmation';
 import { isStatusConflict, StatusConflict, useStatusClock, useStatusKey } from './StatusShared';
 import { statusTime } from './statusFreshness';
+import { ResourceHealthHistory } from './ResourceHealthHistory';
 
 type View = Schemas['ResourceView'];
 export function HostResources({ service, me }: { service: string; me: Me }) {
-  const [editing, setEditing] = useState(false), [history, setHistory] = useState<'observations' | 'revisions'>(), now = useStatusClock();
+  const [editing, setEditing] = useState(false), [history, setHistory] = useState<'observations' | 'revisions' | 'health-events'>(), now = useStatusClock();
   const query = useQuery({ queryKey: ['host-resources', service, me.user.id, me.authorization_version], refetchInterval: 5000, queryFn: async ({ signal }) => { const start = performance.now(); return stampResource(await api<View>('/services/' + service + '/resource-monitor', { signal }), start, service); } });
   const snapshot = query.error ? undefined : query.data, value = snapshot?.value, current = resourceCurrent(snapshot, now), observed = current ? value?.observation : undefined;
   return <section className="section-block status-section" data-testid="host-resources"><div className="section-heading"><div><span className="eyebrow">HOST / RESOURCE HEALTH</span><h2>主机资源监控</h2></div><div className="heading-actions"><button className="button secondary" onClick={() => void query.refetch()}>刷新主机指标</button>{value?.can_manage && <button className="button secondary" onClick={() => setEditing(true)}>配置资源监控</button>}</div></div>
@@ -18,10 +19,11 @@ export function HostResources({ service, me }: { service: string; me: Me }) {
       {observed && <ResourceFacts value={observed} />}
       <p className="form-note">CPU 为近五分钟平均使用率；内存按可用量计算；磁盘包含可用空间与只读状态。资源健康与上方服务可用性分别评估。仅覆盖已配置的挂载点。</p>
       <dl className="file-facts"><div><dt>受监控挂载点</dt><dd>{value.source?.mountpoints.join('、') ?? '尚未配置'}</dd></div><div><dt>配置版本</dt><dd>{value.source ? '第 ' + value.source.version + ' 版' : '尚未配置'}</dd></div><div><dt>最后评估（香港）</dt><dd>{statusTime(value.evaluated_at)}</dd></div><div><dt>最迟重读（香港）</dt><dd>{statusTime(value.recheck_at)}</dd></div></dl>
-      <div className="heading-actions"><button className="text-button" onClick={() => setHistory('observations')}>查看资源观测历史</button><button className="text-button" onClick={() => setHistory('revisions')}>查看资源配置历史</button></div>
+      <p className="form-note">启用后，超阈值、磁盘只读和采集断流会提醒当时的负责人。标记通知已读不会消除资源待办；恢复、停用、归档或转交后重新计算。</p>
+      <div className="heading-actions"><button className="text-button" onClick={() => setHistory('observations')}>查看资源观测历史</button><button className="text-button" onClick={() => setHistory('revisions')}>查看资源配置历史</button><button className="text-button" onClick={() => setHistory('health-events')}>查看资源状态记录</button></div>
     </div>}
     {editing && value && <ResourceEditor key={service + ':' + me.authorization_version} base={value} onClose={() => setEditing(false)} />}
-    {history && <ResourceHistory key={service + ':' + history + ':' + me.authorization_version} service={service} kind={history} onClose={() => setHistory(undefined)} />}
+    {history === 'health-events' ? <ResourceHealthHistory key={service + ':' + me.user.id + ':' + me.authorization_version} service={service} authority={me.user.id + ':' + me.authorization_version} onClose={() => setHistory(undefined)} /> : history && <ResourceHistory key={service + ':' + history + ':' + me.authorization_version} service={service} kind={history} onClose={() => setHistory(undefined)} />}
   </section>;
 }
 function ResourceFacts({ value }: { value: Schemas['ResourceObservation'] }) {

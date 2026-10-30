@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量131已接通资源超阈值／只读／断流→固定负责人站内通知→本人待办→真实恢复，并记录配置、负责人、前驱及原始观测。已读不消除故障；停用／归档／转交重新计算责任。真实目标安装和独立外部告警继续GAP-23，不再把资源站内提醒代码列为待开发。[设计与使用](../development/131-resource-notifications.md) · [实际检查](../quality/131-resource-notifications-verification.md) · [本轮与全部23项](05-functional-closure-131.md)。仍23 active（14 P0／9 P1）、5 excluded、八项draft Skill。
+
 增量130已实现主机CPU／内存／完整配置磁盘的原生采集桥接、签名接收、不可变记录、四端显示与配置／历史管理。真实目标安装、资源断流主动通知和独立告警送达继续归GAP-23；不以页面告警替代送达回执。[设计与使用](../development/130-host-resources.md) · [实际检查](../quality/130-host-resources-verification.md) · [全部23项](05-functional-closure-130.md)。23 active（14 P0／9 P1）、5 excluded保持。
 
 增量129：OFFICE-AUTHORING-129增加Word／Excel／PPT实际创建、有界准确原件编辑、完整摘要／扫描后人工提交与微信／抖音查阅。GAP-04保留复杂版式、完整编辑和真实样本；23 active（14 P0／9 P1）、5 excluded不变。见[使用](../development/129-office-authoring.md)、[检查](../quality/129-office-authoring-verification.md)及[全部余项](05-functional-closure-129.md)。

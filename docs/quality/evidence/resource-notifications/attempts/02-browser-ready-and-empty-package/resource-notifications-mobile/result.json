@@ -1,0 +1,49 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T22:24:43.924Z",
+  "finished_at": "2026-10-30T22:25:28.850Z",
+  "checks": [
+    "A readonly critical observation produces one current owned workbench item from original signed evidence; the ordinary service detail route remains its destination."
+  ],
+  "source_count": 976,
+  "source_sha256": "ca2ec698f5d8c7c586a45076d37fbce48e5121a125fb1288a985834a9ecb88c1",
+  "source_after_sha256": "ca2ec698f5d8c7c586a45076d37fbce48e5121a125fb1288a985834a9ecb88c1",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.weui-picker:visible') to be visible\u001b[22m\n",
+  "failure_stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.weui-picker:visible') to be visible\u001b[22m\n\n    at selectMobile (D:\\dev\\copypasted\\内部管理\\app\\scripts\\mobile_picker_browser.mjs:7:93)\n    at async inbox (D:\\dev\\copypasted\\内部管理\\app\\scripts\\check_resource_notifications.mjs:24:139)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_resource_notifications.mjs:36:3\n    at async workbenchBrowser (D:\\dev\\copypasted\\内部管理\\app\\scripts\\workbench_browser_common.mjs:55:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_resource_notifications.mjs:11:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/notifications/index",
+    "body_children": 4,
+    "active_mobile_pages": 1,
+    "workbench_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "41cae53cf91cdccf6073fbeed2394e0b97c22646f8839279780fde4c64eeef04",
+    "source_sha256": "e5ac00e594400c4a3d708ef54a19f045724420ce81aee53e8f25c42221f35ed0",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "e5ac00e594400c4a3d708ef54a19f045724420ce81aee53e8f25c42221f35ed0",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "e5ac00e594400c4a3d708ef54a19f045724420ce81aee53e8f25c42221f35ed0",
+  "build_source_unchanged": true
+}

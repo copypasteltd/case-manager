@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量131 / Increment131：实际Web与共享Taro H5执行资源告警→本人待办→通知已读仍待处理→打开服务→真实恢复→原始签名历史。6张PNG、2条实际视口MP4和2个明确三截图各2秒导览GIF。仅记录已完成MFA后的隔离合成业务；没有密码、验证码、真实业务资料或外部通道送达声明。
+
+[Web待办](screenshots/resource-notifications-web-workbench.png) · [Web通知](screenshots/resource-notifications-web-read-still-pending.png) · [Web恢复历史](screenshots/resource-notifications-web-recovered-history.png) · [移动待办](screenshots/resource-notifications-mobile-workbench.png) · [移动通知](screenshots/resource-notifications-mobile-read-still-pending.png) · [移动历史](screenshots/resource-notifications-mobile-recovered-history.png)
+
+[Web MP4](videos/resource-notifications-web.mp4) · [移动 MP4](videos/resource-notifications-mobile.mp4) · [Web GIF](gifs/resource-notifications-web.gif) · [移动 GIF](gifs/resource-notifications-mobile.gif) · [素材摘要](../quality/evidence/resource-notifications/media.json) · [实际检查](../quality/131-resource-notifications-verification.md)
+
 增量130 / Increment130：真实Web与共享Taro H5主机资源页面分别展示正常、只读磁盘严重告警、人工MFA停用后的未知状态，各三张PNG。静音MP4记录正常→告警→恢复的真实视口像素；GIF明确为三张实际截图各2秒导览。采集桥接与签名／PG链路实际执行，Prometheus响应为隔离合成来源，无目标服务器、真机或真实外部告警送达验收。录制不含密码、MFA或私有能力。
 
 [Web MP4](videos/host-resources-web.mp4) · [移动 MP4](videos/host-resources-mobile.mp4) · [Web GIF](gifs/host-resources-web.gif) · [移动 GIF](gifs/host-resources-mobile.gif) · [素材与摘要](../quality/evidence/host-resources/media.json)

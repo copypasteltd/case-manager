@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T22:32:43.824Z",
+  "finished_at": "2026-10-30T22:33:19.413Z",
+  "checks": [
+    "A readonly critical observation produces one current owned workbench item from original signed evidence; the ordinary service detail route remains its destination.",
+    "Actual UI read acknowledgement keeps resource work open; the related-target action reauthorizes and opens the actual service. Real recovery clears current work before the user reads its new notification.",
+    "Recovery creates a new unread delivery in the original revision thread. Visible immutable state history identifies its original recipient/configuration/observation and verifies exact SHA-256/Ed25519 evidence. Event creation is distinguished from delivery.",
+    "Returning home displays zero current resource work after the independently verified recovery; all browser contexts, fixture database and owned review servers are released by the runner."
+  ],
+  "source_count": 976,
+  "source_sha256": "71aa3ca934b79fb57f4cb17f3462181249fd1398ef58028c56aff962f2839043",
+  "source_after_sha256": "71aa3ca934b79fb57f4cb17f3462181249fd1398ef58028c56aff962f2839043",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "41cae53cf91cdccf6073fbeed2394e0b97c22646f8839279780fde4c64eeef04",
+    "source_sha256": "9a41d93340911269e411341e7b12b1e3ab4b4588694d74de6be1fb8e1c449087",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "9a41d93340911269e411341e7b12b1e3ab4b4588694d74de6be1fb8e1c449087",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "9a41d93340911269e411341e7b12b1e3ab4b4588694d74de6be1fb8e1c449087",
+  "build_source_unchanged": true
+}

@@ -3,15 +3,16 @@ type S = components['schemas'];
 export type WorkbenchSummary = S['WorkbenchSummary'];
 export type WorkbenchGroup = S['WorkbenchGroup'];
 export type WorkbenchItem = S['WorkbenchItem'];
-export const workbenchKinds = ['approvals', 'contracts', 'subscription_periods', 'incidents', 'file_attention'] as const;
+export const workbenchKinds = ['approvals', 'contracts', 'subscription_periods', 'incidents', 'file_attention', 'resource_attention'] as const;
 export type WorkbenchKind = typeof workbenchKinds[number];
-export const workbenchLabels: Record<WorkbenchKind, string> = { approvals: '待我审批', contracts: '我负责的合同到期', subscription_periods: '我负责的订阅待核对', incidents: '我负责的未结事件', file_attention: '我创建的文件存储待办' };
+export const workbenchLabels: Record<WorkbenchKind, string> = { approvals: '待我审批', contracts: '我负责的合同到期', subscription_periods: '我负责的订阅待核对', incidents: '我负责的未结事件', file_attention: '我创建的文件存储待办', resource_attention: '我负责的主机资源待办' };
 export const workbenchHints: Record<WorkbenchKind, string> = {
   approvals: '当前修订、当前审批轮次中，分配给你的有效步骤。',
   contracts: '生效合同的正式生效修订；包含已到期及未来30天到期的合同。',
   subscription_periods: '已生成且需要你核对的账期，不表示欠款或已扣费。',
   incidents: '分配给你且尚未解决的服务事件，仅显示全部影响服务均可查阅的事项。',
   file_attention: '当前版本不可用、副本异常或尚待验证；完成验证后消除。仅显示你创建且当前可读的文件。',
+  resource_attention: '当前资源超阈值、磁盘只读或采集断流。依据原始观测更新，通知已读不会消除待办。',
 };
 const uuid = (v: unknown): v is string => typeof v === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);
 const integer = (v: unknown, min = 0): v is number => typeof v === 'number' && Number.isSafeInteger(v) && v >= min;
@@ -31,6 +32,7 @@ export function checkedWorkbench(v: WorkbenchSummary): WorkbenchSummary {
       if (group.kind === 'contracts' && (!day(item.due_on) || item.due_on > v.contract_through || item.related_id !== null || item.state !== (item.due_on < v.business_date ? 'overdue' : 'due_soon'))) throw invalid();
       if (group.kind === 'incidents' && (!['open', 'investigating', 'monitoring'].includes(item.state) || item.due_on !== null || item.related_id !== null)) throw invalid();
       if (group.kind === 'file_attention' && (!['file_unavailable', 'replica_attention', 'replica_pending'].includes(item.state) || item.due_on !== null || item.related_id !== null)) throw invalid();
+      if (group.kind === 'resource_attention' && (!['resource_critical', 'resource_warning', 'resource_unconfirmed'].includes(item.state) || item.due_on !== null)) throw invalid();
       if (group.kind === 'subscription_periods' && (item.state !== 'awaiting_confirmation' || !day(item.due_on) || !uuid(item.related_id))) throw invalid();
     }
     for (let i = 1; i < group.items.length; i++) {
@@ -43,10 +45,10 @@ export function checkedWorkbench(v: WorkbenchSummary): WorkbenchSummary {
 
 export function workbenchURL(kind: WorkbenchKind, item: WorkbenchItem, client: 'web' | 'mobile'): string {
   if (!workbenchKinds.includes(kind) || !uuid(item.id) || !['web', 'mobile'].includes(client)) throw invalid();
-  if (client === 'web') return ({ approvals: '/requests/', contracts: '/contracts/', subscription_periods: '/subscription-periods/', incidents: '/incidents/', file_attention: '/files/' }[kind]) + item.id;
-  return ({ approvals: '/pages/detail/index?kind=request&id=', contracts: '/pages/business/index?kind=contract&id=', subscription_periods: '/pages/subscription-period/index?id=', incidents: '/pages/status/index?kind=incident&id=', file_attention: '/pages/files/index?file_id=' }[kind]) + item.id;
+  if (client === 'web') return ({ approvals: '/requests/', contracts: '/contracts/', subscription_periods: '/subscription-periods/', incidents: '/incidents/', file_attention: '/files/', resource_attention: '/services/' }[kind]) + item.id;
+  return ({ approvals: '/pages/detail/index?kind=request&id=', contracts: '/pages/business/index?kind=contract&id=', subscription_periods: '/pages/subscription-period/index?id=', incidents: '/pages/status/index?kind=incident&id=', file_attention: '/pages/files/index?file_id=', resource_attention: '/pages/status/index?kind=service&id=' }[kind]) + item.id;
 }
 
 export function workbenchState(item: WorkbenchItem): string {
-  return ({ active: '待审批', overdue: '合同已到期', due_soon: '合同即将到期', awaiting_confirmation: '账期待核对', open: '事件待处理', investigating: '事件调查中', monitoring: '事件观察中', file_unavailable: '文件当前版本不可用', replica_attention: '文件副本需要关注', replica_pending: '文件副本待验证' } as Record<string, string>)[item.state] ?? '请核对';
+  return ({ active: '待审批', overdue: '合同已到期', due_soon: '合同即将到期', awaiting_confirmation: '账期待核对', open: '事件待处理', investigating: '事件调查中', monitoring: '事件观察中', file_unavailable: '文件当前版本不可用', replica_attention: '文件副本需要关注', replica_pending: '文件副本待验证', resource_critical: '资源严重告警', resource_warning: '资源达到警告阈值', resource_unconfirmed: '资源采集需要核对' } as Record<string, string>)[item.state] ?? '请核对';
 }

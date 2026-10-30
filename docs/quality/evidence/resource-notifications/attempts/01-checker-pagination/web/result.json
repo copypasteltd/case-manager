@@ -1,0 +1,49 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T22:17:51.258Z",
+  "finished_at": "2026-10-30T22:18:15.213Z",
+  "checks": [
+    "A readonly critical observation produces one current owned workbench item from original signed evidence; the ordinary service detail route remains its destination."
+  ],
+  "source_count": 946,
+  "source_sha256": "883fd5cc948dfbd5d286d0efa721ade32034f35b697dae05f595a48676a69626",
+  "source_after_sha256": "883fd5cc948dfbd5d286d0efa721ade32034f35b697dae05f595a48676a69626",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "/notifications?category=service_resource&limit=100\n\n422 !== 200\n",
+  "failure_stack": "AssertionError [ERR_ASSERTION]: /notifications?category=service_resource&limit=100\n\n422 !== 200\n\n    at get (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_resource_notifications.mjs:20:201)\n    at async notice (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_resource_notifications.mjs:26:46)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_resource_notifications.mjs:36:32\n    at async workbenchBrowser (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/workbench_browser_common.mjs:55:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_resource_notifications.mjs:11:1",
+  "failure_context": {
+    "pathname": "/notifications",
+    "hash": "",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "workbench_headings": 0
+  },
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "41cae53cf91cdccf6073fbeed2394e0b97c22646f8839279780fde4c64eeef04",
+    "source_sha256": "09fbeaf866a5d37312dac660c10d2cddfcf2b89c326be881517ea475b75b70de",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "09fbeaf866a5d37312dac660c10d2cddfcf2b89c326be881517ea475b75b70de",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "09fbeaf866a5d37312dac660c10d2cddfcf2b89c326be881517ea475b75b70de",
+  "build_source_unchanged": true
+}

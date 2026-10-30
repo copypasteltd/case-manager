@@ -6,6 +6,7 @@ import (
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/jobqueue"
 	"copypaste.hk/platform/internal/platform"
+	"copypaste.hk/platform/internal/servicestatus"
 	"encoding/json"
 	"errors"
 	"github.com/jackc/pgx/v5"
@@ -19,7 +20,7 @@ const JobKind = "notification.deliver.v1"
 
 var EventTypes = []string{"comment.created", "comment.revised", "task.created", "task.updated", "task.transitioned", "task.dependencies.changed",
 	"request.submitted", "approval.step.decided", "subscription.reminder.due", "contract.reminder.due",
-	"replica.failed", "incident.opened", "incident.updated", "run.completed", "run.failed", "run.cancelled", "run.interrupted"}
+	"replica.failed", "incident.opened", "incident.updated", "run.completed", "run.failed", "run.cancelled", "run.interrupted", "service.resource_health.changed"}
 
 type jobInput struct {
 	EventID string `json:"event_id"`
@@ -55,7 +56,7 @@ func decodeJob(j jobqueue.Job) (jobInput, error) {
 }
 func newCandidate(e event, recipient, category, resourceType, resourceID string, context *string) thread {
 	key := category + ":" + resourceID
-	if context != nil && slices.Contains([]string{"mention", "approval", "contract_due", "subscription_due", "replica_failure"}, category) {
+	if context != nil && slices.Contains([]string{"mention", "approval", "contract_due", "subscription_due", "replica_failure", "service_resource"}, category) {
 		key += ":" + *context
 	}
 	return thread{OrgID: e.OrgID, RecipientID: recipient, Category: category, ResourceType: resourceType, ResourceID: resourceID,
@@ -92,6 +93,16 @@ func recipients(ctx context.Context, tx pgx.Tx, e event) ([]thread, error) {
 	}
 	args := []any{e.OrgID, e.AggregateID, e.AggregateVersion}
 	switch {
+	case e.Type == "service.resource_health.changed":
+		if e.AggregateType != "service_resource_source" {
+			return out, core.Invalid("event", "资源状态事件目标类型不一致")
+		}
+		err := addRows(`SELECT n.recipient_id,s.id,n.revision_id FROM service_resource_health_events n
+   JOIN service_resource_health p ON p.org_id=n.org_id AND p.source_id=n.source_id AND p.event_id=n.id
+   JOIN service_resource_sources h ON h.org_id=n.org_id AND h.id=n.source_id AND h.current_revision_id=n.revision_id
+   JOIN services s ON s.org_id=h.org_id AND s.id=h.service_id
+   WHERE n.org_id=$1 AND n.source_id=$2 AND n.seq=$3 AND n.id=$4 AND n.notify AND s.lifecycle='active' AND s.owner_id=n.recipient_id`, append(args, e.ID), "service_resource", "service", true)
+		return out, err
 	case e.Type == "comment.created" || e.Type == "comment.revised":
 		if e.AggregateType != "comment" {
 			return out, core.Invalid("event", "提及事件目标类型不一致")
@@ -177,6 +188,17 @@ func eligible(ctx context.Context, tx pgx.Tx, orgVersion int64, n thread) (bool,
 	}
 	for _, channel := range []string{"web", "android", "wechat", "douyin"} {
 		a := core.Actor{OrgID: n.OrgID, UserID: n.RecipientID, AuthVersion: auth, OrgAuthVersion: orgVersion, Channel: channel}
+		if n.Category == "service_resource" {
+			if n.ContextID == nil {
+				return false, core.Missing()
+			}
+			if _, e := servicestatus.NotificationResource(ctx, tx, a, n.ResourceID, *n.ContextID, n.EventID, true); e != nil {
+				if errors.Is(e, pgx.ErrNoRows) || core.PublicError(platform.DatabaseError(e)).Status == 403 || core.PublicError(platform.DatabaseError(e)).Status == 404 {
+					continue
+				}
+				return false, e
+			}
+		}
 		v, e := view(ctx, tx, a, n)
 		if e != nil {
 			return false, e

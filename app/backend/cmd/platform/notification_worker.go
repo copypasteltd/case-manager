@@ -65,8 +65,18 @@ func runNotificationWorker(ctx context.Context, logger *slog.Logger) error {
 	consumer := notification.Consumer()
 	var nextSchedule time.Time
 	var nextPolicyOrg string
+	var nextResourceSchedule time.Time
+	var nextResourceSource string
 	logger.Info("notification worker started", "owner", owner, "contract_reminders_enabled", len(rule.DaysBefore) > 0)
 	for ctx.Err() == nil {
+		if time.Now().After(nextResourceSchedule) {
+			if next, _, e := service.ScheduleResources(ctx, nextResourceSource); e != nil && ctx.Err() == nil {
+				logger.Warn("resource reminder scheduling failed", "code", core.PublicError(e).Code)
+			} else if e == nil {
+				nextResourceSource = next
+			}
+			nextResourceSchedule = time.Now().Add(10 * time.Second)
+		}
 		if time.Now().After(nextSchedule) {
 			if next, _, e := service.ScheduleContractPolicies(ctx, nextPolicyOrg); e != nil && ctx.Err() == nil {
 				logger.Warn("published contract reminder scheduling failed", "code", core.PublicError(e).Code)

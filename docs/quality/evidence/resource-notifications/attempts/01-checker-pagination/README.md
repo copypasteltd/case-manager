@@ -1,0 +1,3 @@
+# Checker pagination preparation attempt
+
+The actual notification API correctly rejected the checker request `limit=100` with422; the supported maximum is50. The production API and business code were unchanged. Original browser failure, source manifests, screenshot and completed source-bound preparation checks remain here with their actual inputs. The owned browser, API, review server and disposable database closed normally. Client preparation was stopped before the APK phase; it is not a completed four-client check. Correct the checker request to50 and execute the current checks again. These records are not current passing acceptance.

@@ -11,6 +11,7 @@ function fixture(): WorkbenchSummary {
     { kind: 'subscription_periods', count: 0, has_more: false, items: [] },
     { kind: 'incidents', count: 0, has_more: false, items: [] },
     { kind: 'file_attention', count: 0, has_more: false, items: [] },
+    { kind: 'resource_attention', count: 0, has_more: false, items: [] },
   ] };
 }
 type Case = readonly [string, () => void];
@@ -50,4 +51,7 @@ export const workbenchCases: readonly Case[] = [
   ['a retry receipt cannot claim completion or retain old hashes errors or verification time', () => { for (const changed of [{ state: 'verified' }, { actual_sha256: '0'.repeat(64) }, { verified_at: '2026-10-30T00:00:00Z' }, { error_code: 'REPLICA_FAILED' }]) assert.throws(() => checkedReplicaRetry({ ...retryReceipt(), ...changed } as ReturnType<typeof replica>, replica())); }],
   ['retry receipt rejects malformed update time', () => { assert.throws(() => checkedReplicaRetry({ ...retryReceipt(), updated_at: 'invalid' }, replica())); }],
   ['route builders reject untrusted domain and resource inputs', () => { const item = fixture().groups[0].items[0]; assert.throws(() => workbenchURL('other' as 'approvals', item, 'web')); assert.throws(() => workbenchURL('approvals', { ...item, id: '../wrong' }, 'mobile')); }],
+  ['resource work keeps its exact configuration and optional observation with both service routes', () => { for (const state of ['resource_critical','resource_warning','resource_unconfirmed'] as const) { const v=fixture(),g=v.groups[5];g.count=1;g.items=[{...v.groups[0].items[0],state,related_id:state==='resource_unconfirmed'?null:id(3)}];checkedWorkbench(v);assert.equal(workbenchURL('resource_attention',g.items[0],'web'),'/services/'+id(1));assert.equal(workbenchURL('resource_attention',g.items[0],'mobile'),'/pages/status/index?kind=service&id='+id(1)); } }],
+  rejects('healthy resources cannot remain in attention work',v=>{const g=v.groups[5];g.count=1;g.items=[{...v.groups[0].items[0],state:'operational' as 'active'}];}),
+  rejects('resource work never invents a business due date',v=>{const g=v.groups[5];g.count=1;g.items=[{...v.groups[0].items[0],state:'resource_warning',due_on:'2026-10-30'}];}),
 ];

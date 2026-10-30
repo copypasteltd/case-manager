@@ -6022,6 +6022,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/services/{id}/resource-monitor/health-events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listResourceHealthEvents */
+        get: operations["listResourceHealthEvents"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/resource-sources/{source}/observations": {
         parameters: {
             query?: never;
@@ -9076,7 +9093,7 @@ export interface components {
         };
         NotificationTarget: {
             /** @enum {string} */
-            type: "task" | "request" | "contract" | "subscription_period" | "file" | "incident" | "agent_run";
+            type: "task" | "request" | "contract" | "subscription_period" | "file" | "incident" | "agent_run" | "service";
             /** Format: uuid */
             id: string;
             container_id: string | null;
@@ -9088,7 +9105,7 @@ export interface components {
             /** Format: uuid */
             id: string;
             /** @enum {string} */
-            category: "mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary";
+            category: "mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary" | "service_resource";
             title: string;
             resource_label: string;
             current_state: string;
@@ -12735,14 +12752,14 @@ export interface components {
             related_id: string | null;
             title: string;
             /** @enum {string} */
-            state: "active" | "overdue" | "due_soon" | "awaiting_confirmation" | "open" | "investigating" | "monitoring" | "file_unavailable" | "replica_attention" | "replica_pending";
+            state: "active" | "overdue" | "due_soon" | "awaiting_confirmation" | "open" | "investigating" | "monitoring" | "file_unavailable" | "replica_attention" | "replica_pending" | "resource_critical" | "resource_warning" | "resource_unconfirmed";
             due_on: string | null;
             /** Format: date-time */
             updated_at: string;
         };
         WorkbenchGroup: {
             /** @enum {string} */
-            kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention";
+            kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention";
             count: number;
             items: components["schemas"]["WorkbenchItem"][];
             has_more: boolean;
@@ -14592,6 +14609,38 @@ export interface components {
         };
         ResourceProofResponse: {
             data: components["schemas"]["ResourceProof"];
+            meta: components["schemas"]["Meta"];
+        };
+        ResourceHealthEvent: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            source_id: string;
+            /** Format: uuid */
+            source_revision_id: string;
+            /** Format: uuid */
+            recipient_id: string;
+            sequence: number;
+            base_event_id: string | null;
+            /** @enum {string} */
+            previous_state: "unconfigured" | "unknown" | "operational" | "degraded" | "critical";
+            /** @enum {string} */
+            state: "unknown" | "operational" | "degraded" | "critical";
+            /** @enum {string} */
+            state_reason: "" | "SERVICE_ARCHIVED" | "SOURCE_DISABLED" | "NO_OBSERVATION" | "CLOCK_SKEW" | "OBSERVATION_STALE";
+            attention_required: boolean;
+            notification_event_created: boolean;
+            /** @enum {string} */
+            change_kind: "initial" | "configuration" | "responsibility" | "state";
+            observation_id: string | null;
+            /** Format: date-time */
+            evaluated_at: string;
+        };
+        ResourceHealthEventListResponse: {
+            data: {
+                items: components["schemas"]["ResourceHealthEvent"][];
+                next_cursor: string | null;
+            };
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -24408,7 +24457,7 @@ export interface operations {
                 cursor?: string;
                 limit?: number;
                 state?: "all" | "unread" | "attention";
-                category?: "mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary";
+                category?: "mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary" | "service_resource";
             };
             header?: never;
             path?: never;
@@ -31437,6 +31486,43 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ResourceProofResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listResourceHealthEvents: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResourceHealthEventListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

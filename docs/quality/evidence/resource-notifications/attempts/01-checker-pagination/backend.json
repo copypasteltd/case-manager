@@ -1,0 +1,427 @@
+{
+  "passed": true,
+  "id": "backend",
+  "started_at": "2026-10-30T22:16:59.128366+00:00",
+  "finished_at": "2026-10-30T22:20:36.443699+00:00",
+  "elapsed_seconds": 217.311,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestResourceNotifications|TestHostResources|TestInAppNotifications|TestNotificationManualRetries|TestBusinessWorkbench|TestOperationsWorkbenchIncidents|TestOperationsWorkbenchFiles|TestServiceStatus)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "go_json",
+  "source_sha256": "17715afde5d6ffba9b39f4f8f8532ef4c20ab6ecf4b76b7ec973f78ea6aab5ca",
+  "source_after_sha256": "17715afde5d6ffba9b39f4f8f8532ef4c20ab6ecf4b76b7ec973f78ea6aab5ca",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [
+      "TestHostResources",
+      "TestNotificationManualRetries",
+      "TestInAppNotifications",
+      "TestOperationsWorkbenchIncidents",
+      "TestOperationsWorkbenchFiles",
+      "TestResourceNotifications",
+      "TestServiceStatus",
+      "TestBusinessWorkbench"
+    ],
+    "pass": 76,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/configuration_is_explicit_versioned_and_MFA_authorized"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/native_node_exporter_queries_sign_complete_metrics_and_receipts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/thresholds_and_readonly_filesystem_cause_warnings_and_recover"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/loss_and_unbound_labels_never_fabricate_fresh_zero_metrics"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/signed_history_exact_replay_proof_pagination_and_immutable_records"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/domain_signatures_inventory_and_late_observations_cannot_override"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/restart_validates_journal_and_preserves_exact_receipt"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/actual_sample_expiry_hides_previous_current_metrics"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/new_revisions_reset_metrics_revoke_old_signer_and_keep_history"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources/current_role_withdrawal_denies_all_resource_read_paths"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHostResources"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/separate_authority_and_content_boundary"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/current_MFA,_exact_revision_and_strict_input"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/atomic_child,_stable_replay_and_unchanged_terminal_source"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/real_worker_results_and_event_delivery_deduplication"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/read-only_history_and_bound_pagination"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/four_human_read_channels_and_executor_rejection"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/database_requires_a_fresh_child_and_atomic_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/retry_rechecks_current_recipient_authority"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/stale_business_events_are_not_reinterpreted"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/automatic_backoff_cannot_be_bypassed"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/invalid_fixed_input_and_rejected_event_stay_blocked"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/audit_failure_rolls_back_the_retry_child"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/concurrent_requests_cannot_fork_a_failure"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries/immutable_retry_evidence_and_authorization_before_replay"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestNotificationManualRetries"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestInAppNotifications"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchIncidents/complete_assigned_count_precedes_five_samples_and_preserves_actual_current_timeline"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchIncidents/all_affected_services_must_be_readable_even_for_the_assigned_owner"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchIncidents/ordinary_investigation_monitoring_and_resolution_update_then_remove_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchIncidents/live_role_and_affected_project_revocations_remove_counts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchIncidents"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchFiles/a_known_queued_copy_stays_pending_and_another_reader_is_not_its_creator"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchFiles/actual_corrupt_fixture_bytes_require_human_retry_and_full_verification_before_removal"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchFiles/unavailable_current_content_takes_priority_and_exact_active_ancestors_remain_required"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchFiles/a_new_head_excludes_old_failed_replicas_and_loss_of_file_authority_removes_counts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestOperationsWorkbenchFiles"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/initial_no-sample_grace_is_unknown_without_a_notification_or_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/healthy_baseline_agrees_with_exact_SQL_capacity_and_sends_no_alarm"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/threshold_and_readonly_transition_creates_one_immutable_addressed_delivery"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/same-state_samples_and_concurrent_schedulers_do_not_spam_recipients"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/reading_records_only_readership_and_does_not_resolve_resource_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/real_recovery_removes_work_and_creates_a_fresh_unread_delivery_in_the_same_revision"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/queued_old_alert_is_suppressed_after_newer_recovery"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/current_owner_transfer_never_reinterprets_the_old_queued_recipient"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/archive_and_explicit_disable_clear_duty_without_manufacturing_a_recovery"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/new_configuration_has_its_own_exact_context_and_never_inherits_old_samples"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/history_paginates_exact_immutable_bases_and_original_signed_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/memory_and_disk_thresholds_use_exact_integer_parity_and_never_conflate_availability"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/actual_sample_expiry_and_first-sample_deadline_become_work_before_queue_delivery"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications/revoked_target_authority_suppresses_queued_delivery_and_hides_existing_inbox_and_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestResourceNotifications"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/unbound_roles_and_administrator_do_not_grant_service_content_access"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/creation_is_idempotent_and_no_source_means_unknown"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/published_source_is_immutable_and_requires_exact_service_version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/signature_scope_wire_fields_and_replay_are_checked_before_persistence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/three_failures_and_two_recoveries_project_durable_state_without_changing_configuration_version"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/late_data_and_sequence_gaps_retain_facts_without_reviving_a_previous_green_state"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/maintenance_overlays_raw_down_state_and_cancellation_is_append_only"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/incident_impacts_are_checked_as_a_whole_and_business_deduplication_is_durable"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/incident_timeline_is_versioned_and_a_resolved_incident_cannot_silently_reopen"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/source_rotation_rejects_old_signed_replays_and_disabled_sources_remain_unknown"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/freshness_expires_on_reads_without_an_incoming_sample_or_process_cache"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus/current_MFA_revocation_and_concurrent_configuration_writes_remain_authoritative"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestServiceStatus"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/strict_read_has_no_caller-controlled_actor_filters_and_empty_authorized_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/only_currently_assigned_active_approvals_are_counted_before_bounded_samples"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/active_contract_revision_owner_and_inclusive_Hong_Kong_horizon_define_expiry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/only_generated_due_owned_billing_periods_need_review_without_fabricating_cash"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/summary_reads_mutate_no_domain_audit_notification_or_financial_evidence"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/completed_steps_disappear_without_changing_their_historical_facts"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/revoked_domain_authority_removes_counts_and_unrelated_readers_see_no_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/runtime_TG_stale_authority_and_revoked_sessions_cannot_read_human_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/an_actual_revoked_session_and_canceled_read_return_no_successful_snapshot"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench/four_interactive_client_channels_share_current_readable_work"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessWorkbench"
+    }
+  ],
+  "private_log_sha256": "30a0428528c846e4ca45c0104bda7c32be1247db95feba1d61095067ec68df82",
+  "parser_error": null,
+  "runner_script_sha256": "0654bac185c9cac27da6c0c873f8d7358be8f3984006258080f85e79b7640763",
+  "scope": "Actual HTTP/PostgreSQL resource alert, recovery, recipient, expiry, revocation and immutable history journey, plus prior resource, in-app notification, retry, business/operations workbench and endpoint status suites. No real targets or external channel acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T22:21:26.971079+00:00",
+  "finished_at": "2026-10-30T22:21:31.179408+00:00",
+  "elapsed_seconds": 4.208,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/resource-notifications/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "aace8c83586c7c69b547fb059b0feeaa6f0c5c0dadb00d1f2440f4a5e7edb1ef",
+  "source_after_sha256": "aace8c83586c7c69b547fb059b0feeaa6f0c5c0dadb00d1f2440f4a5e7edb1ef",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 411,
+    "numPassedTests": 411,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "f09be4767defc5f06bc68b9266cb464c7e7f5944482bdbdccaea742512cc59a8",
+  "parser_error": null,
+  "runner_script_sha256": "0654bac185c9cac27da6c0c873f8d7358be8f3984006258080f85e79b7640763",
+  "scope": "Complete current Web unit suite, including six workbench groups and fixed resource-notification destinations.",
+  "real_device": false,
+  "virtualization_used": false
+}

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T22:16:59.128366+00:00",
+  "finished_at": "2026-10-30T22:17:23.015139+00:00",
+  "elapsed_seconds": 23.886,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/resource-notifications/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "17715afde5d6ffba9b39f4f8f8532ef4c20ab6ecf4b76b7ec973f78ea6aab5ca",
+  "source_after_sha256": "17715afde5d6ffba9b39f4f8f8532ef4c20ab6ecf4b76b7ec973f78ea6aab5ca",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 411,
+    "numPassedTests": 411,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "f09be4767defc5f06bc68b9266cb464c7e7f5944482bdbdccaea742512cc59a8",
+  "parser_error": null,
+  "runner_script_sha256": "0654bac185c9cac27da6c0c873f8d7358be8f3984006258080f85e79b7640763",
+  "scope": "Complete current Web unit suite, including six workbench groups and fixed resource-notification destinations.",
+  "real_device": false,
+  "virtualization_used": false
+}

@@ -6,7 +6,7 @@ const notice = (delivery: number, read: number): Notification => ({ id, category
 describe('business notification boundaries', () => {
   it('uses fixed routes for every supported business target', () => {
     expect(notificationDestination(task)).toEqual({ web: task.web_path, mobile: '/pages/detail/index?kind=task&id=' + id });
-    for (const [type, prefix, kind] of [['request', '/requests/', 'detail'], ['contract', '/contracts/', 'business'], ['file', '/files/', 'detail'], ['incident', '/incidents/', 'status']] as const) expect(notificationDestination({ type, id, container_id: null, web_path: prefix + id }).mobile).toContain('/pages/' + kind + '/');
+    for (const [type, prefix, kind] of [['request', '/requests/', 'detail'], ['contract', '/contracts/', 'business'], ['file', '/files/', 'detail'], ['incident', '/incidents/', 'status'], ['service', '/services/', 'status']] as const) expect(notificationDestination({ type, id, container_id: null, web_path: prefix + id }).mobile).toContain('/pages/' + kind + '/');
     expect(notificationDestination({ type: 'subscription_period', id, container_id: parent, web_path: '/subscription-periods/' + id }).mobile).toBe('/pages/subscription-period/index?id=' + id);
     expect(notificationDestination({ type: 'agent_run', id, container_id: parent, web_path: '/conversations/' + parent + '?run=' + id }).mobile).toContain('&run=' + id);
   });

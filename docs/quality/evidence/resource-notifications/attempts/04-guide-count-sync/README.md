@@ -1,0 +1,3 @@
+# Current guide count synchronization
+
+Publication checks passed19 of20 checks, with no sensitive, forbidden-path or broken-link findings, but correctly rejected the full language guides because their new131 introduction omitted the current496 mobile-test count. Both original failed results are retained. The first guide edit reached the root README and stopped at the Chinese heading in the document index; the remaining guides are then preflighted and updated together. Actual current counts and the explicit native cache boundary now appear in all four guides. Application, functional proof and media bytes are unchanged. Re-run planning and candidate/staged publication checks.

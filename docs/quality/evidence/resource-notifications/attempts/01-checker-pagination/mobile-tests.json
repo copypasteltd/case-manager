@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T22:17:23.305434+00:00",
+  "finished_at": "2026-10-30T22:17:36.551892+00:00",
+  "elapsed_seconds": 13.246,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "17715afde5d6ffba9b39f4f8f8532ef4c20ab6ecf4b76b7ec973f78ea6aab5ca",
+  "source_after_sha256": "17715afde5d6ffba9b39f4f8f8532ef4c20ab6ecf4b76b7ec973f78ea6aab5ca",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 496,
+    "pass": 496,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "fae3228dd764752e5fd349e9e9f1caa9183adbe0930dacf1b691d010029434ba",
+  "parser_error": null,
+  "runner_script_sha256": "0654bac185c9cac27da6c0c873f8d7358be8f3984006258080f85e79b7640763",
+  "scope": "Complete current shared mobile unit suite, including six current-authority workbench groups.",
+  "real_device": false,
+  "virtualization_used": false
+}

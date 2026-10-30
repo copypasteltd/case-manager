@@ -58,7 +58,13 @@ func (s *Service) PublishResourceConfig(ctx context.Context, c core.Command, ser
 		if _, e = tx.Exec(ctx, `UPDATE services SET version=version+1,updated_at=clock_timestamp() WHERE org_id=$1 AND id=$2`, c.Actor.OrgID, service); e != nil {
 			return core.Result{}, e
 		}
+		if _, e = ProjectResourceHealth(ctx, tx, c.Actor.OrgID, id); e != nil {
+			return core.Result{}, e
+		}
 		out, e := s.changed(ctx, tx, c.Actor, service, "service.resource_config_published", in.Reason)
+		if e != nil {
+			return core.Result{}, e
+		}
 		out.Event.Payload["source_id"] = id
 		out.Event.Payload["source_revision_id"] = revision
 		return out, e
@@ -377,6 +383,9 @@ func (s *Service) IngestResources(ctx context.Context, source, signature, reques
 	_, e = tx.Exec(ctx, `INSERT INTO outbox_events(id,org_id,event_type,aggregate_type,aggregate_id,aggregate_version,payload,request_id)
   VALUES($1,$2,'service.resource_observation_received','service_resource_revision',$3,$4,$5,$6)`, core.NewID(), org, revision, seq, payload, request)
 	if e != nil {
+		return ObservationAck{}, e
+	}
+	if _, e = ProjectResourceHealth(ctx, tx, org, source); e != nil {
 		return ObservationAck{}, e
 	}
 	return out, tx.Commit(ctx)

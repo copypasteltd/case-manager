@@ -41,10 +41,10 @@ def inspect(record, command):
 def main():
     global E
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications'), default='project-business')
     args = parser.parse_args()
     E = APP.parent / 'docs/quality/evidence' / args.feature
-    expected_count = 97 if args.feature == 'host-resources' else 96 if args.feature in ('document-text', 'office-authoring', 'host-resources') else 95 if args.feature == 'file-batch' else 94
+    expected_count = 98 if args.feature == 'resource-notifications' else 97 if args.feature == 'host-resources' else 96 if args.feature in ('document-text', 'office-authoring', 'host-resources') else 95 if args.feature == 'file-batch' else 94
     assert not (E / 'development-update.json').exists(), 'Preserve an existing completed service update.'
     values = json.loads((APP / '.local/environment.json').read_text())
     db = urlsplit(values['CP_DATABASE_URL'])
@@ -71,11 +71,11 @@ def main():
 
     history_query = "SELECT json_build_object(" + ','.join(
         "'" + table + "',(SELECT json_build_object('rows',count(*),'content_md5',md5(coalesce(string_agg((to_jsonb(t)-'refund_original_amount'-'docx_text_acknowledged'-'engine_sha256'-'page_count'-'ocr_page_count')::text,'' ORDER BY (to_jsonb(t)-'refund_original_amount'-'docx_text_acknowledged'-'engine_sha256'-'page_count'-'ocr_page_count')::text),''))) FROM " + table + " t)"
-        for table in ('agent_budget_policies', 'agent_budget_reservations', 'agent_budget_usage', 'agent_budget_reconciliations', 'payment_records', 'payment_revisions', 'payment_events', 'actual_cost_entries', 'cost_revisions', 'cost_allocations', 'contracts', 'contract_revisions', 'contract_lifecycle_events', 'file_version_references', 'file_text_derivations', 'files', 'file_versions', 'folders', 'storage_entries','services','service_sources','service_source_revisions','service_observations')) + ')'
+        for table in ('agent_budget_policies', 'agent_budget_reservations', 'agent_budget_usage', 'agent_budget_reconciliations', 'payment_records', 'payment_revisions', 'payment_events', 'actual_cost_entries', 'cost_revisions', 'cost_allocations', 'contracts', 'contract_revisions', 'contract_lifecycle_events', 'file_version_references', 'file_text_derivations', 'files', 'file_versions', 'folders', 'storage_entries','services','service_sources','service_source_revisions','service_observations','service_resource_sources','service_resource_revisions','service_resource_observations')) + ')'
     before = sql(history_query)
     previous_count = sql('SELECT count(*) FROM application_schema_manifest()')
     E.mkdir(parents=True, exist_ok=True)
-    assert previous_count in ((96, 97) if args.feature == 'host-resources' else (96,) if args.feature == 'office-authoring' else (95, 96) if args.feature == 'document-text' else (94, 95) if args.feature == 'file-batch' else (94,)), 'Only the declared schema transition is allowed.'
+    assert previous_count in ((97, 98) if args.feature == 'resource-notifications' else (96, 97) if args.feature == 'host-resources' else (96,) if args.feature == 'office-authoring' else (95, 96) if args.feature == 'document-text' else (94, 95) if args.feature == 'file-batch' else (94,)), 'Only the declared schema transition is allowed.'
     upgraded = previous_count != expected_count
     if upgraded:
         with (APP / ('.local/' + args.feature + '-schema-upgrade.log')).open('w', encoding='utf-8') as log:

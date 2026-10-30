@@ -3,7 +3,7 @@ type Schemas = components['schemas'];
 export type Notification = Schemas['Notification'];
 export const notificationCategories: Record<Notification['category'], string> = {
   mention: '讨论提及', task: '任务', approval: '待审批', request_result: '申请进展', contract_due: '合同到期',
-  subscription_due: '订阅账期', replica_failure: '文件副本', incident: '服务事件', secretary: '秘书结果',
+  subscription_due: '订阅账期', replica_failure: '文件副本', incident: '服务事件', secretary: '秘书结果', service_resource: '主机资源',
 };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 function id(value: unknown): string {
@@ -23,6 +23,7 @@ export function notificationDestination(target: Schemas['NotificationTarget']) {
     case 'subscription_period': id(target.container_id); web = '/subscription-periods/' + resource; mobile = '/pages/subscription-period/index?id=' + resource; break;
     case 'file': web = '/files/' + resource; mobile = '/pages/detail/index?kind=file&id=' + resource; break;
     case 'incident': web = '/incidents/' + resource; mobile = '/pages/status/index?kind=incident&id=' + resource; break;
+    case 'service': web = '/services/' + resource; mobile = '/pages/status/index?kind=service&id=' + resource; break;
     case 'agent_run': { const conversation = id(target.container_id); web = '/conversations/' + conversation + '?run=' + resource; mobile = '/pages/secretary/index?kind=conversation&id=' + conversation + '&run=' + resource; break; }
     default: throw new Error('暂不支持这个通知地址，请从工作台查看相关资料。');
   }

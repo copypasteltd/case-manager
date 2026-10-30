@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T22:36:19.133674+00:00",
+  "encoder_script_sha256": "e85b4e59bf6670c939a9dbd6448b3c0f25ffdbf10813821d7569597a6c0c903d",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "636dbbc5e1fe35d713b5ff208982d3bfe7d561c4401a755b1a34c878ac6da364",
+      "build_source_sha256": "9a41d93340911269e411341e7b12b1e3ab4b4588694d74de6be1fb8e1c449087",
+      "capture_manifest": "docs/quality/evidence/resource-notifications/web-capture-manifest.json",
+      "capture_manifest_sha256": "e85f7b7c061a6615ba7ecb5c55372a5bec8b73b0d9239406a9cca727fc507d6b",
+      "capture_frame_count": 31,
+      "capture_duration_ms": 8523,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/resource-notifications-web-workbench.png",
+          "sha256": "598d388a78979c48e4876d9b95d22addea1960093666f448d0a63044681c030f"
+        },
+        {
+          "file": "docs/media/screenshots/resource-notifications-web-read-still-pending.png",
+          "sha256": "cea08a856dcd6e5ec54770f9313cc2b69816a8aa20275b7fa25c44e42b9789b5"
+        },
+        {
+          "file": "docs/media/screenshots/resource-notifications-web-recovered-history.png",
+          "sha256": "7e61ace4761e6a1e8ad40291fb423537f5392135122a2e76ea2872c41bf3f79e"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "87",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "8.700000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/resource-notifications-web.mp4",
+          "sha256": "24aeaf3d6476c8bc3510e9c7594a1388b46b1fbc1f282ad636e3566d2e8d5d96",
+          "bytes": 267315
+        },
+        {
+          "file": "docs/media/gifs/resource-notifications-web.gif",
+          "sha256": "e35f097c8fcc4f64b225140a13d502c9f45d9780374fb17383860eaa6ae06652",
+          "bytes": 247311
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "71aa3ca934b79fb57f4cb17f3462181249fd1398ef58028c56aff962f2839043",
+      "build_source_sha256": "9a41d93340911269e411341e7b12b1e3ab4b4588694d74de6be1fb8e1c449087",
+      "capture_manifest": "docs/quality/evidence/resource-notifications/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "6657f9a611d79bc0a673e9643b103bca69ae3f2a031ee562906296ea95f133c0",
+      "capture_frame_count": 36,
+      "capture_duration_ms": 7614,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/resource-notifications-mobile-workbench.png",
+          "sha256": "595ece117f4fa9e9a2634ddcbe03be0b7c90875a986c2f1ab5826109d9cc1da1"
+        },
+        {
+          "file": "docs/media/screenshots/resource-notifications-mobile-read-still-pending.png",
+          "sha256": "18de0a37388852c6713a80be6bf4f1fc41bb123109c6e801ec7d3a9f27054333"
+        },
+        {
+          "file": "docs/media/screenshots/resource-notifications-mobile-recovered-history.png",
+          "sha256": "3e22dbe3c61e81a70048c4299f37eb13c1a00aaee381a243a289ec28264a746c"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "78",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "7.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/resource-notifications-mobile.mp4",
+          "sha256": "b3307b8c78551c3d0c962b7b4986b40986dc569d32cc303d7cce11b8d814795e",
+          "bytes": 112642
+        },
+        {
+          "file": "docs/media/gifs/resource-notifications-mobile.gif",
+          "sha256": "6382f1caf0cd1ab1425b0481134e5b7f3114cd660e7f41743bec38a2af9fab9f",
+          "bytes": 111865
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic resource alert to owned workbench, in-app notification, read acknowledgement, live recovery and immutable history on Web/H5. MP4 records actual post-MFA viewport pixels; GIF explicitly tours three actual screenshots, two seconds each. No device, external alert delivery, real target, cloud or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-workbench.png",
+      "sha256": "598d388a78979c48e4876d9b95d22addea1960093666f448d0a63044681c030f"
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-read-still-pending.png",
+      "sha256": "cea08a856dcd6e5ec54770f9313cc2b69816a8aa20275b7fa25c44e42b9789b5"
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-recovered-history.png",
+      "sha256": "7e61ace4761e6a1e8ad40291fb423537f5392135122a2e76ea2872c41bf3f79e"
+    },
+    {
+      "file": "docs/media/videos/resource-notifications-web.mp4",
+      "sha256": "24aeaf3d6476c8bc3510e9c7594a1388b46b1fbc1f282ad636e3566d2e8d5d96",
+      "bytes": 267315
+    },
+    {
+      "file": "docs/media/gifs/resource-notifications-web.gif",
+      "sha256": "e35f097c8fcc4f64b225140a13d502c9f45d9780374fb17383860eaa6ae06652",
+      "bytes": 247311
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-mobile-workbench.png",
+      "sha256": "595ece117f4fa9e9a2634ddcbe03be0b7c90875a986c2f1ab5826109d9cc1da1"
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-mobile-read-still-pending.png",
+      "sha256": "18de0a37388852c6713a80be6bf4f1fc41bb123109c6e801ec7d3a9f27054333"
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-mobile-recovered-history.png",
+      "sha256": "3e22dbe3c61e81a70048c4299f37eb13c1a00aaee381a243a289ec28264a746c"
+    },
+    {
+      "file": "docs/media/videos/resource-notifications-mobile.mp4",
+      "sha256": "b3307b8c78551c3d0c962b7b4986b40986dc569d32cc303d7cce11b8d814795e",
+      "bytes": 112642
+    },
+    {
+      "file": "docs/media/gifs/resource-notifications-mobile.gif",
+      "sha256": "6382f1caf0cd1ab1425b0481134e5b7f3114cd660e7f41743bec38a2af9fab9f",
+      "bytes": 111865
+    }
+  ]
+}

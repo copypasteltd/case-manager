@@ -68,9 +68,10 @@ class FixtureProxy(BaseHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mobile', action='store_true')
-    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources'), default='workbench')
+    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications'), default='workbench')
     args = parser.parse_args()
-    host = args.feature == 'host-resources'
+    resource = args.feature == 'resource-notifications'
+    host = args.feature in ('host-resources', 'resource-notifications')
     office = args.feature == 'office-authoring'
     document = args.feature == 'document-text'
     batch = args.feature == 'file-batch'
@@ -82,7 +83,7 @@ def main():
     precompiled = host or office or document or operations or docx or business or cost or payment or batch
     expected_kind = 'human-host-resources' if host else 'human-office-authoring' if office else 'agent-context-and-classification' if document else 'human-file-batch' if batch else 'human-cost-payment' if payment else 'human-business-cost' if cost else 'human-project-business' if business else 'agent-context-and-classification' if docx else 'human-operations-workbench' if operations else 'human-business-workbench'
     fixture_flag = 'host_resource_fixture' if host else 'office_author_fixture' if office else 'document_text_fixture' if document else 'file_batch_fixture' if batch else 'cost_payment_fixture' if payment else 'business_cost_fixture' if cost else 'project_business_fixture' if business else 'docx_text_fixture' if docx else 'operations_workbench_fixture' if operations else 'workbench_fixture'
-    group = ('host-resources-' if host else 'office-authoring-' if office else 'document-text-' if document else 'file-batch-' if batch else 'cost-payment-' if payment else 'business-cost-' if cost else 'project-business-' if business else 'docx-text-' if docx else 'operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
+    group = ('resource-notifications-' if resource else 'host-resources-' if host else 'office-authoring-' if office else 'document-text-' if document else 'file-batch-' if batch else 'cost-payment-' if payment else 'business-cost-' if cost else 'project-business-' if business else 'docx-text-' if docx else 'operations-workbench-' if operations else 'workbench-') + ('mobile' if args.mobile else 'web')
     local = APP / '.local'
     fixture_file = local / 'business-browser-fixture.json'
     report = APP.parent / 'docs/quality/evidence' / group / 'result.json'
@@ -242,7 +243,7 @@ def main():
                 raise RuntimeError('Implementation changed during review startup/build.')
             print('Owned native fixture and review server ready; checking scoped business counts, ordinary detail navigation and authority changes.', flush=True)
             with (local / (group + '-browser.log')).open('w', encoding='utf-8') as browser_log:
-                browser = subprocess.Popen([node, str(APP / ('scripts/check_host_resources.mjs' if host else 'scripts/check_office_authoring.mjs' if office else 'scripts/check_document_text.mjs' if document else 'scripts/check_file_batch.mjs' if batch else 'scripts/check_cost_payment.mjs' if payment else 'scripts/check_business_cost.mjs' if cost else 'scripts/check_project_business.mjs' if business else 'scripts/check_docx_text.mjs' if docx else 'scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
+                browser = subprocess.Popen([node, str(APP / ('scripts/check_resource_notifications.mjs' if resource else 'scripts/check_host_resources.mjs' if host else 'scripts/check_office_authoring.mjs' if office else 'scripts/check_document_text.mjs' if document else 'scripts/check_file_batch.mjs' if batch else 'scripts/check_cost_payment.mjs' if payment else 'scripts/check_business_cost.mjs' if cost else 'scripts/check_project_business.mjs' if business else 'scripts/check_docx_text.mjs' if docx else 'scripts/check_operations_workbench.mjs' if operations else 'scripts/check_workbench.mjs')), *(['--mobile'] if args.mobile else [])],
                     cwd=APP, env={**os.environ, 'CP_BROWSER_EVIDENCE_GROUP': group}, stdout=browser_log, stderr=subprocess.STDOUT,
                     creationflags=flags)
                 browser_status = browser.wait(timeout=650)

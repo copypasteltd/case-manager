@@ -14,9 +14,9 @@ EVIDENCE = ROOT / 'docs/quality/evidence/workbench'
 def main():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources'), default='workbench')
+    parser.add_argument('--feature', choices=('workbench', 'operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications'), default='workbench')
     args = parser.parse_args()
-    prefix = 'host-resources' if args.feature == 'host-resources' else 'office-authoring' if args.feature == 'office-authoring' else 'document-text' if args.feature == 'document-text' else 'file-batch' if args.feature == 'file-batch' else 'cost-payment' if args.feature == 'cost-payment' else 'business-cost' if args.feature == 'business-cost' else 'project-business' if args.feature == 'project-business' else 'docx-text' if args.feature == 'docx' else 'operations-workbench' if args.feature == 'operations' else 'workbench'
+    prefix = 'resource-notifications' if args.feature == 'resource-notifications' else 'host-resources' if args.feature == 'host-resources' else 'office-authoring' if args.feature == 'office-authoring' else 'document-text' if args.feature == 'document-text' else 'file-batch' if args.feature == 'file-batch' else 'cost-payment' if args.feature == 'cost-payment' else 'business-cost' if args.feature == 'business-cost' else 'project-business' if args.feature == 'project-business' else 'docx-text' if args.feature == 'docx' else 'operations-workbench' if args.feature == 'operations' else 'workbench'
     evidence = EVIDENCE.parent / prefix
     evidence.mkdir(parents=True, exist_ok=True)
     ffmpeg, ffprobe = shutil.which('ffmpeg'), shutil.which('ffprobe')
@@ -93,7 +93,7 @@ def main():
     value = {'passed': True, 'encoded_at': datetime.now(timezone.utc).isoformat(), 'encoder_script_sha256': sha(Path(__file__)),
         'ffmpeg_sha256': sha(Path(ffmpeg)), 'ffprobe_sha256': sha(Path(ffprobe)), 'recordings': reports,
         'scope': 'Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (scenario labels retained in each feature capture), two seconds each. No real model or device claim.'}
-    if args.feature in ('operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources'):
+    if args.feature in ('operations', 'docx', 'project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications'):
         value['scope'] = 'Silent MP4 records the actual authenticated home refresh after the owned copy worker verifies real synthetic bytes. GIF is an explicit tour of three actual screenshots: initial work, queued retry and completed work. No physical device, real cloud or production acceptance.'
         value['artifacts'] = [item for report in reports for item in report['gif_screenshots'] + report['artifacts']]
     if args.feature == 'office-authoring':
@@ -111,6 +111,8 @@ def main():
         value['scope'] = 'Actual authenticated synthetic project-scoped six-module draft creation and mobile subscription period review. MP4 uses real viewport frames; GIF is a labelled three-screenshot tour, not a realtime recording. No device/cloud/model acceptance.'
     if args.feature == 'docx':
         value['scope'] = 'Silent MP4 records actual authenticated synthetic DOCX search, story previews and exact-version comparison. GIF is a disclosed tour of three real screenshots: revisions/table, referenced stories and comparison. No physical device, real cloud or model acceptance.'
+    if args.feature == 'resource-notifications':
+        value['scope'] = 'Actual authenticated synthetic resource alert to owned workbench, in-app notification, read acknowledgement, live recovery and immutable history on Web/H5. MP4 records actual post-MFA viewport pixels; GIF explicitly tours three actual screenshots, two seconds each. No device, external alert delivery, real target, cloud or production acceptance.'
     (evidence / 'media.json').write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': True, 'recordings': len(reports), 'artifacts': sum(len(item['artifacts']) for item in reports)}))
 

@@ -1,0 +1,190 @@
+{
+  "name": "resource-notifications",
+  "increment": 131,
+  "configuration_file": "docs/quality/evidence/resource-notifications/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/resource-notifications",
+  "retained_base_commit": "1d53ee978e3bdcc39731a155c365121696615d6a",
+  "retained_base_increment": 130,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py",
+    "scripts/run_workbench_browser.py",
+    "scripts/workbench_sources.py",
+    "scripts/workbench_browser_common.mjs",
+    "scripts/project_business_recording.mjs",
+    "scripts/encode_workbench_media.py",
+    "scripts/verify_backend_batches.py",
+    "scripts/check_resource_notifications.mjs",
+    "scripts/build_resource_notifications_android.py",
+    "scripts/verify_resource_notifications_core.py",
+    "scripts/retain_resource_notifications_native.py",
+    "scripts/inspect_android_apk.py",
+    "deploy/native/status-bridge-host.example.json",
+    "scripts/verify_scoped_increment.py"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestResourceNotifications|TestHostResources|TestInAppNotifications|TestNotificationManualRetries|TestBusinessWorkbench|TestOperationsWorkbenchIncidents|TestOperationsWorkbenchFiles|TestServiceStatus)$",
+        "-p=1",
+        "-timeout=12m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestResourceNotifications",
+        "TestHostResources",
+        "TestInAppNotifications",
+        "TestNotificationManualRetries",
+        "TestBusinessWorkbench",
+        "TestOperationsWorkbenchIncidents",
+        "TestOperationsWorkbenchFiles",
+        "TestServiceStatus"
+      ],
+      "scope": "Actual HTTP/PostgreSQL resource alert, recovery, recipient, expiry, revocation and immutable history journey, plus prior resource, in-app notification, retry, business/operations workbench and endpoint status suites. No real targets or external channel acceptance."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/resource-notifications/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/resource-notifications/web-vitest.json",
+      "minimum_tests": 411,
+      "scope": "Complete current Web unit suite, including six workbench groups and fixed resource-notification destinations."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 496,
+      "scope": "Complete current shared mobile unit suite, including six current-authority workbench groups."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Current native Babel primitive checks; separate current development APK/JVM evidence is required."
+    },
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_resource_notifications_android.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current complete development APK with ordinary Metro caches, four native Windows workers, checkout filesystem adapter and exact current source map/embedded bundle checks. Native/JVM incremental test outcomes disclosed; no device or formal release acceptance."
+    },
+    {
+      "id": "resource-core",
+      "command": [
+        "python",
+        "scripts/verify_resource_notifications_core.py"
+      ],
+      "parser": "exit",
+      "scope": "Actual native status, collector, notification, workbench and worker unit suites plus current Windows/Linux collector builds."
+    }
+  ],
+  "browser_groups": [
+    "resource-notifications-web",
+    "resource-notifications-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "schema_upgrade": {
+    "from_count": 97,
+    "to_count": 98,
+    "new_migrations": [
+      {
+        "file": "app/backend/migrations/0098_resource_notifications.sql",
+        "sha256": "cb18595945722a4bd9588a0f60b16a7e556ff88fdbdd348fca438afd5a6ee76a"
+      }
+    ]
+  }
+}

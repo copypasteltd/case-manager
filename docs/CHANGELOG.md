@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## Increment131 · Resource alerts, notifications and personal work
+
+- 资源超阈值、只读、时钟及断流接入固定负责人的站内通知；首次采样有明确期限，同状态不重复提醒。
+- 四端工作台增加原始证据驱动的资源待办；已读不消除故障，真实恢复产生新未读投递，停用／归档／转交重新计算责任。
+- 新增不可变状态历史、准确配置／负责人／观测依据和签名核对，旧事件及撤权接收人不投递。
+- Normal97→98 schema upgrade; preserve original business and signed-resource records. Reuse the native notification worker with bounded expiry scans.
+- Current selected HTTP/PG, client builds, actual Web/H5 flows, debug APK and native cache outcomes are recorded separately in [verification](quality/131-resource-notifications-verification.md). Prior130 evidence/media remain unchanged; preparation failures and exact execution inputs are retained.
+- All23 active work packages remain explicit, including real target installation and independent external alert delivery. No device/virtualization/network-performance/migration/DR or AI-fee scope is added.
+
+[实现与使用](development/131-resource-notifications.md) · [本轮及全部余项](delivery/05-functional-closure-131.md)
+
 ## 2026-10-31 · Increment130 · 主机资源闭环 / Host resources
 
 - 增加CPU五分钟平均、准确内存容量、全部配置文件系统及只读严重告警；保持服务可用性独立。

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "id": "douyin-build",
+  "started_at": "2026-10-30T22:23:34.408672+00:00",
+  "finished_at": "2026-10-30T22:24:01.526560+00:00",
+  "elapsed_seconds": 27.117,
+  "command": [
+    "npm",
+    "run",
+    "build:tt"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "exit",
+  "source_sha256": "aace8c83586c7c69b547fb059b0feeaa6f0c5c0dadb00d1f2440f4a5e7edb1ef",
+  "source_after_sha256": "aace8c83586c7c69b547fb059b0feeaa6f0c5c0dadb00d1f2440f4a5e7edb1ef",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "77b44ab01c9ae1033a035c19d0458e57a8bf1b495cbae69834b6d6cec1c31eee",
+  "parser_error": null,
+  "runner_script_sha256": "0654bac185c9cac27da6c0c873f8d7358be8f3984006258080f85e79b7640763",
+  "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

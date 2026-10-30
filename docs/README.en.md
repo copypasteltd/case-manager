@@ -1,5 +1,23 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Increment131 connects resource alerts to the actual owner’s inbox and personal workbench, then clears work on real recovery. Threshold breaches, readonly filesystems and expired/missing collection evidence require attention. Repeated same-state samples do not spam recipients. Read acknowledgement changes readership only; recovery creates a new unread delivery. Disablement, archive, reassignment and revocation recalculate current responsibility without redirecting old queued events.
+
+Usage: explicitly publish resource monitoring in service details; open the personal resource-work card or the “主机资源” notification category; use “资源状态记录” to inspect the original owner, configuration, state and signed observation. Historical normal status is not proof of current health, and event creation is distinct from completed delivery.
+
+The existing native API, PostgreSQL and notification worker remain. Normal schema upgrade97→98 preserves original business records. Commands project immediately; the worker scans bounded100-source pages every10 seconds for natural expiry and first-sample deadlines. Workbench reads evaluate original evidence independently of delivery progress.
+
+All23 active packages (14 P0/9 P1), five exclusions and eight draft Skills remain explicit. The resource in-app alert code is implemented; real target installation and independent external alert delivery remain GAP-23. Real cloud/model/TG/platform, formal Android and production acceptance keep their numbered work items.
+
+[实现与使用 / Implementation](development/131-resource-notifications.md) · [实际检查 / Checks](quality/131-resource-notifications-verification.md) · [本轮和全部23项 / All remaining work](delivery/05-functional-closure-131.md)
+
+![资源告警处理 / Resource attention](media/screenshots/resource-notifications-web-read-still-pending.png)
+
+[Web实际录屏 / Web recording](media/videos/resource-notifications-web.mp4) · [共享移动录屏 / Shared H5 recording](media/videos/resource-notifications-mobile.mp4) · [三截图导览 / Screenshot tour](media/gifs/resource-notifications-mobile.gif)
+
+Current validation passes eight selected HTTP/PostgreSQL suites (76 records),94 core test records,411 Web tests,496 shared-mobile tests, all four client builds and19 current development-APK checks. Android28 and JVM28 retain their exact UP-TO-DATE results; complete business and production acceptance remain numbered work items.
+
+## Increment130 · Previously published
+
 Increment130 completes the host-resource feature path: CPU, memory, every configured filesystem and readonly state travel through the native Prometheus bridge, independently signed ingestion, persistent observations and four-client resource cards. Service details expose explicit configuration publication, thresholds, disablement, immutable history and original signature verification. Expired, disconnected, disabled or archived sources show unknown and hide current values.
 
 Usage: open Services → service details → Host resources. An authorized manager reviews the public key, complete mount inventory, warning/critical thresholds and freshness limit, then explicitly publishes with recent MFA. A new revision waits for new matching observations; original signatures and history remain. Configure native node_exporter, Prometheus and the existing status-bridge using private deployment files; the checked-in example contains placeholders only. Arbitrary PromQL and target URLs are not accepted.

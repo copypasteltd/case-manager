@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T22:37:34.935473+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-workbench.png",
+      "sha256": "598d388a78979c48e4876d9b95d22addea1960093666f448d0a63044681c030f",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-read-still-pending.png",
+      "sha256": "cea08a856dcd6e5ec54770f9313cc2b69816a8aa20275b7fa25c44e42b9789b5",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-recovered-history.png",
+      "sha256": "7e61ace4761e6a1e8ad40291fb423537f5392135122a2e76ea2872c41bf3f79e",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/resource-notifications-web.mp4",
+      "sha256": "24aeaf3d6476c8bc3510e9c7594a1388b46b1fbc1f282ad636e3566d2e8d5d96",
+      "bytes": 267315,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/resource-notifications-web.gif",
+      "sha256": "e35f097c8fcc4f64b225140a13d502c9f45d9780374fb17383860eaa6ae06652",
+      "bytes": 247311,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-mobile-workbench.png",
+      "sha256": "595ece117f4fa9e9a2634ddcbe03be0b7c90875a986c2f1ab5826109d9cc1da1",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-mobile-read-still-pending.png",
+      "sha256": "18de0a37388852c6713a80be6bf4f1fc41bb123109c6e801ec7d3a9f27054333",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-mobile-recovered-history.png",
+      "sha256": "3e22dbe3c61e81a70048c4299f37eb13c1a00aaee381a243a289ec28264a746c",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/resource-notifications-mobile.mp4",
+      "sha256": "b3307b8c78551c3d0c962b7b4986b40986dc569d32cc303d7cce11b8d814795e",
+      "bytes": 112642,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/resource-notifications-mobile.gif",
+      "sha256": "6382f1caf0cd1ab1425b0481134e5b7f3114cd660e7f41743bec38a2af9fab9f",
+      "bytes": 111865,
+      "reviewed": true
+    }
+  ],
+  "scope": "Manually inspected all six exact PNGs. Sampled each actual MP4 at its initial, midpoint and later history frames, plus all three scenes of both GIF screenshot tours. GIFs are not continuous recordings. Long mobile history and proof results require scrolling; no claim that every asserted record/signature message is simultaneously visible. Review confirms no overlapping controls or visible credentials.",
+  "credentials_visible": false,
+  "synthetic_data_only": true,
+  "real_device_used": false,
+  "production_acceptance": false
+}

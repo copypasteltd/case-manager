@@ -308,6 +308,9 @@ func (s *Service) Update(ctx context.Context, c core.Command, id string, in Patc
 		if e != nil {
 			return core.Result{}, e
 		}
+		if e = projectServiceResource(ctx, tx, c.Actor.OrgID, id); e != nil {
+			return core.Result{}, e
+		}
 		return s.changed(ctx, tx, c.Actor, id, "service.updated", in.Reason)
 	})
 }

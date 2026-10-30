@@ -57,7 +57,7 @@ def main():
     for file in sorted((APP / 'mobile/android/app/build/test-results/testDebugUnitTest').glob('TEST-*.xml')):
         root = ET.parse(file).getroot()
         suites.append({key: root.attrib.get(key) for key in ('name', 'tests', 'failures', 'errors', 'skipped')})
-    expected_tests = 28 if args.evidence_group in ('office-authoring', 'host-resources') else 26
+    expected_tests = 28 if args.evidence_group in ('office-authoring', 'host-resources', 'resource-notifications') else 26
     check('All expected Android transport, cache, CSV and upload tests pass', sum(int(s['tests']) for s in suites) == expected_tests and all(all(int(s[k]) == 0 for k in ('failures', 'errors', 'skipped')) for s in suites) and any(s['name'].endswith('.UploadTransferTest') for s in suites))
     with zipfile.ZipFile(apk) as archive:
         bundle = archive.read('assets/index.android.bundle')
@@ -67,7 +67,7 @@ def main():
         check('Native engine and application code are included', 'lib/arm64-v8a/libhermes.so' in names and 'classes.dex' in names)
         dex = b''.join(archive.read(name) for name in names if re.fullmatch(r'classes\d*\.dex', name))
         check('The actual native upload bridge, streaming transport and service are packaged', all(('Lhk/copypaste/workspace/' + name + ';').encode() in dex for name in ('CPUploadModule', 'UploadTransfer', 'UploadServiceHost', 'SAFUploadSource', 'UploadStore')))
-        if args.evidence_group in ('office-authoring', 'host-resources'):
+        if args.evidence_group in ('office-authoring', 'host-resources', 'resource-notifications'):
             check('The bounded private Office source and full-hash protocol are in actual DEX', all(value in dex for value in (b'Lhk/copypaste/workspace/GeneratedUploadSource;', b'office-artifact-v1:', b'office-upload-sources', b'cp-generated:', b'officeFingerprint')))
     source_map = json.loads((APP / '.local/android/index.android.map').read_text(encoding='utf-8'))
     sources = [name.replace('\\', '/') for name in source_map['sources']]

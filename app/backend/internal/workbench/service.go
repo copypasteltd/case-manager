@@ -47,6 +47,19 @@ type query struct{ kind, sql string }
 
 func queries() []query {
 	return []query{
+		// Compute from the original current configuration and signed observation.
+		// Inbox read markers, delivery queues and projection heads cannot resolve work.
+		{"resource_attention", `SELECT s.id,s.version,r.id revision_id,c.observation_id related_id,s.name title,
+		 CASE c.state WHEN 'critical' THEN 'resource_critical' WHEN 'degraded' THEN 'resource_warning' ELSE 'resource_unconfirmed' END state,
+		 NULL::text due_on,GREATEST(s.updated_at,r.created_at,c.received_at,
+		 CASE WHEN c.state_reason='NO_OBSERVATION' THEN c.ready_after
+		 WHEN c.state_reason='OBSERVATION_STALE' THEN LEAST(c.observed_at,c.received_at)+make_interval(secs=>(r.config->>'stale_after_seconds')::int) END) updated_at
+		 FROM services s JOIN service_resource_sources h ON h.org_id=s.org_id AND h.service_id=s.id
+		 JOIN service_resource_revisions r ON r.org_id=h.org_id AND r.source_id=h.id AND r.id=h.current_revision_id
+		 CROSS JOIN LATERAL service_resource_current(h.org_id,h.id,transaction_timestamp()) c
+		 WHERE s.org_id=$1 AND s.owner_id=$2 AND s.lifecycle='active' AND r.enabled
+		 AND resource_needs_attention(c.state,c.state_reason,c.ready_after,transaction_timestamp())
+		 AND can_access(s.org_id,$2,'service.read','service',s.id,s.project_id,s.creator_id,s.classification,$3,$4)`},
 		{"approvals", `SELECT r.id,r.version,r.current_revision_id revision_id,q.id related_id,r.title,'active'::text state,NULL::text due_on,q.updated_at
 		 FROM (` + workflow.PendingApprovalsSQL + `) q JOIN requests r ON r.org_id=$1 AND r.id=q.request_id`},
 		// An effective contract's active revision can differ from its draft head.

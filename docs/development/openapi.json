@@ -22243,7 +22243,8 @@
                 "subscription_due",
                 "replica_failure",
                 "incident",
-                "secretary"
+                "secretary",
+                "service_resource"
               ]
             }
           }
@@ -38716,6 +38717,101 @@
         }
       }
     },
+    "/services/{id}/resource-monitor/health-events": {
+      "get": {
+        "operationId": "listResourceHealthEvents",
+        "tags": [
+          "services"
+        ],
+        "summary": "listResourceHealthEvents",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceHealthEventListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/resource-sources/{source}/observations": {
       "post": {
         "operationId": "ingestResourceObservation",
@@ -54635,7 +54731,8 @@
               "subscription_period",
               "file",
               "incident",
-              "agent_run"
+              "agent_run",
+              "service"
             ]
           },
           "id": {
@@ -54689,7 +54786,8 @@
               "subscription_due",
               "replica_failure",
               "incident",
-              "secretary"
+              "secretary",
+              "service_resource"
             ]
           },
           "title": {
@@ -73054,7 +73152,10 @@
               "monitoring",
               "file_unavailable",
               "replica_attention",
-              "replica_pending"
+              "replica_pending",
+              "resource_critical",
+              "resource_warning",
+              "resource_unconfirmed"
             ]
           },
           "due_on": {
@@ -73095,7 +73196,8 @@
               "contracts",
               "subscription_periods",
               "incidents",
-              "file_attention"
+              "file_attention",
+              "resource_attention"
             ]
           },
           "count": {
@@ -73153,8 +73255,8 @@
             "items": {
               "$ref": "#/components/schemas/WorkbenchGroup"
             },
-            "minItems": 5,
-            "maxItems": 5
+            "minItems": 6,
+            "maxItems": 6
           }
         },
         "additionalProperties": false,
@@ -82316,6 +82418,161 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ResourceProof"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "ResourceHealthEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "recipient_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "base_event_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "previous_state": {
+            "type": "string",
+            "enum": [
+              "unconfigured",
+              "unknown",
+              "operational",
+              "degraded",
+              "critical"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "operational",
+              "degraded",
+              "critical"
+            ]
+          },
+          "state_reason": {
+            "type": "string",
+            "enum": [
+              "",
+              "SERVICE_ARCHIVED",
+              "SOURCE_DISABLED",
+              "NO_OBSERVATION",
+              "CLOCK_SKEW",
+              "OBSERVATION_STALE"
+            ]
+          },
+          "attention_required": {
+            "type": "boolean"
+          },
+          "notification_event_created": {
+            "type": "boolean"
+          },
+          "change_kind": {
+            "type": "string",
+            "enum": [
+              "initial",
+              "configuration",
+              "responsibility",
+              "state"
+            ]
+          },
+          "observation_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evaluated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "source_id",
+          "source_revision_id",
+          "recipient_id",
+          "sequence",
+          "base_event_id",
+          "previous_state",
+          "state",
+          "state_reason",
+          "attention_required",
+          "notification_event_created",
+          "change_kind",
+          "observation_id",
+          "evaluated_at"
+        ]
+      },
+      "ResourceHealthEventListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceHealthEvent"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

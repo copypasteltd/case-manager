@@ -682,8 +682,8 @@ context_view["text_index"] = ref("FileTextIndexEvidence")
 profile = {"id": ID, "skill_id": NAME, "skill_version": NAME, "skill_sha256": HASH,
     "runtime_version": NAME, "configuration_sha256": HASH, "max_input_tokens": VERSION,
     "max_output_tokens": VERSION, "max_tool_calls": VERSION, "timeout_seconds": VERSION}
-notification_categories = enum("mention", "task", "approval", "request_result", "contract_due", "subscription_due", "replica_failure", "incident", "secretary")
-notification_target = {"type": enum("task", "request", "contract", "subscription_period", "file", "incident", "agent_run"),
+notification_categories = enum("mention", "task", "approval", "request_result", "contract_due", "subscription_due", "replica_failure", "incident", "secretary", "service_resource")
+notification_target = {"type": enum("task", "request", "contract", "subscription_period", "file", "incident", "agent_run", "service"),
     "id": ID, "container_id": nullable(ID), "web_path": {"type": "string", "minLength": 1, "maxLength": 300}}
 add("NotificationTarget", {**notification_target, "comment_id": ID}, tuple(notification_target))
 notification_fields = {"id": ID, "category": notification_categories, "title": NAME, "resource_label": NAME,
@@ -1505,14 +1505,14 @@ PATHS["/auth/mfa/step-up"]["post"]["parameters"] = [parameter for parameter in P
 operation("/capabilities", "get", "getCapabilities", "Capability")
 operation("/dashboard", "get", "getDashboard", "Dashboard")
 workbench_item = {"id": ID, "version": VERSION, "revision_id": ID, "related_id": nullable(ID), "title": NAME,
-    "state": enum("active", "overdue", "due_soon", "awaiting_confirmation", "open", "investigating", "monitoring", "file_unavailable", "replica_attention", "replica_pending"), "due_on": nullable(DATE), "updated_at": TIME}
+    "state": enum("active", "overdue", "due_soon", "awaiting_confirmation", "open", "investigating", "monitoring", "file_unavailable", "replica_attention", "replica_pending", "resource_critical", "resource_warning", "resource_unconfirmed"), "due_on": nullable(DATE), "updated_at": TIME}
 add("WorkbenchItem", workbench_item, tuple(workbench_item))
-workbench_group = {"kind": enum("approvals", "contracts", "subscription_periods", "incidents", "file_attention"), "count": COUNT,
+workbench_group = {"kind": enum("approvals", "contracts", "subscription_periods", "incidents", "file_attention", "resource_attention"), "count": COUNT,
     "items": array(ref("WorkbenchItem"), maxItems=5), "has_more": {"type": "boolean"}}
 add("WorkbenchGroup", workbench_group, tuple(workbench_group))
 workbench_summary = {"as_of": TIME, "scope": enum("my_readable_work"), "business_date": DATE,
     "contract_timezone": enum("Asia/Hong_Kong"), "contract_through": DATE,
-    "groups": array(ref("WorkbenchGroup"), minItems=5, maxItems=5)}
+    "groups": array(ref("WorkbenchGroup"), minItems=6, maxItems=6)}
 add("WorkbenchSummary", workbench_summary, tuple(workbench_summary))
 operation("/dashboard/business", "get", "getWorkbenchSummary", "WorkbenchSummary")
 
@@ -2231,6 +2231,13 @@ operation("/services/{id}/resource-monitor/revisions","post","publishResourceCon
 operation("/services/{id}/resource-monitor/revisions","get","listResourceRevisions","ResourceRevision",listing=True)
 operation("/services/{id}/resource-monitor/observations","get","listResourceObservations","ResourceObservation",listing=True)
 operation("/services/{id}/resource-monitor/observations/{observation}/evidence","get","getResourceProof","ResourceProof")
+resource_health_event={"id":ID,"source_id":ID,"source_revision_id":ID,"recipient_id":ID,"sequence":VERSION,
+    "base_event_id":nullable(ID),"previous_state":enum("unconfigured","unknown","operational","degraded","critical"),
+    "state":enum("unknown","operational","degraded","critical"),"state_reason":enum("","SERVICE_ARCHIVED","SOURCE_DISABLED","NO_OBSERVATION","CLOCK_SKEW","OBSERVATION_STALE"),
+    "attention_required":{"type":"boolean"},"notification_event_created":{"type":"boolean"},"change_kind":enum("initial","configuration","responsibility","state"),
+    "observation_id":nullable(ID),"evaluated_at":TIME}
+add("ResourceHealthEvent",resource_health_event,tuple(resource_health_event))
+operation("/services/{id}/resource-monitor/health-events","get","listResourceHealthEvents","ResourceHealthEvent",listing=True)
 operation("/resource-sources/{source}/observations","post","ingestResourceObservation","ObservationAck","SignedResourceObservation")
 resource_ingest=PATHS["/resource-sources/{source}/observations"]["post"]
 resource_ingest["security"]=[]

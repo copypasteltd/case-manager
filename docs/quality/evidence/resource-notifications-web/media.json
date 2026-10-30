@@ -1,0 +1,35 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-workbench.png",
+      "sha256": "598d388a78979c48e4876d9b95d22addea1960093666f448d0a63044681c030f"
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-read-still-pending.png",
+      "sha256": "cea08a856dcd6e5ec54770f9313cc2b69816a8aa20275b7fa25c44e42b9789b5"
+    },
+    {
+      "file": "docs/media/screenshots/resource-notifications-web-recovered-history.png",
+      "sha256": "7e61ace4761e6a1e8ad40291fb423537f5392135122a2e76ea2872c41bf3f79e"
+    }
+  ],
+  "recording": {
+    "name": "resource-notifications-web",
+    "frame_count": 31,
+    "duration_ms": 8523,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/resource-notifications-web/frames.json",
+    "manifest_sha256": "e85f7b7c061a6615ba7ecb5c55372a5bec8b73b0d9239406a9cca727fc507d6b"
+  },
+  "screenshot_scenarios": [
+    "original signed critical evidence in personal workbench",
+    "read notification retains actual resource duty",
+    "recovery and immutable signed basis history"
+  ],
+  "synthetic_data": true,
+  "credentials_recorded": false
+}

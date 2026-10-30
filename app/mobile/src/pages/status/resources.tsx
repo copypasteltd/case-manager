@@ -8,12 +8,13 @@ import { monotonicReader, statusTime } from '../../platform/status';
 import { client } from '../../platform/taro';
 import { Action, Busy, Empty, Fact, Notice, Section } from '../../ui';
 import { SelectField, TextField } from '../business/controls';
+import { ResourceHealthHistory } from './resource-health-history';
 
 type ResourceView = Schemas['ResourceView'];
 export function HostResources({ service, me }: { service: string; me: Schemas['Me'] }) {
   const read = useMemo(() => monotonicReader(() => typeof performance !== 'undefined' && typeof performance.now === 'function' ? performance.now() : NaN), []);
   const [snapshot, setSnapshot] = useState<ResourceSnapshot>(), [error, setError] = useState<unknown>(), [now, setNow] = useState(read), [revision, setRevision] = useState(0), [loading, setLoading] = useState(true);
-  const [editor, setEditor] = useState<ResourceView>(), [history, setHistory] = useState<'observations' | 'revisions'>();
+  const [editor, setEditor] = useState<ResourceView>(), [history, setHistory] = useState<'observations' | 'revisions' | 'health-events'>();
   useEffect(() => {
     const scope = new Scope(); let flight = false, stopped = false; setSnapshot(undefined); setError(undefined); setLoading(true);
     async function poll() { if (scope.closed || flight || stopped) return; flight = true; const start = read(); try {
@@ -33,9 +34,10 @@ export function HostResources({ service, me }: { service: string; me: Schemas['M
     <Fact label='受监控挂载点'><Text>{value.source?.mountpoints.join('、') ?? '尚未配置'}</Text></Fact><Fact label='配置版本'><Text>{value.source?.version ?? '尚未配置'}</Text></Fact><Fact label='最后评估'><Text>{statusTime(value.evaluated_at)}</Text></Fact>
     {value.can_manage && !editor && <Action secondary onClick={() => setEditor(value)}>配置资源监控</Action>}
   </>}
-    <Action secondary onClick={reload}>刷新主机指标</Action><View className='cp-choice'><Action secondary onClick={() => setHistory('observations')}>资源观测历史</Action><Action secondary onClick={() => setHistory('revisions')}>资源配置历史</Action></View>
+    <Text className='cp-muted cp-small cp-paragraph'>启用后，超阈值、磁盘只读和采集断流提醒当时的负责人。通知已读不消除待办；恢复、停用、归档或转交后重新计算。</Text>
+    <Action secondary onClick={reload}>刷新主机指标</Action><View className='cp-choice'><Action secondary onClick={() => setHistory('observations')}>资源观测历史</Action><Action secondary onClick={() => setHistory('revisions')}>资源配置历史</Action><Action secondary onClick={() => setHistory('health-events')}>资源状态记录</Action></View>
     {editor && <ResourceEditor key={service + ':' + me.authorization_version} base={editor} me={me} onClose={() => { setEditor(undefined); reload(); }} />}
-    {history && <ResourceHistory key={service + ':' + history + ':' + me.authorization_version} service={service} kind={history} onClose={() => setHistory(undefined)} />}
+    {history === 'health-events' ? <ResourceHealthHistory key={service + ':' + me.authorization_version} service={service} onClose={() => setHistory(undefined)} /> : history && <ResourceHistory key={service + ':' + history + ':' + me.authorization_version} service={service} kind={history} onClose={() => setHistory(undefined)} />}
   </View></Section>;
 }
 function ResourceFacts({ value }: { value: Schemas['ResourceObservation'] }) {

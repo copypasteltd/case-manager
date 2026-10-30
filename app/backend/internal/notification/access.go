@@ -153,6 +153,21 @@ func view(ctx context.Context, tx pgx.Tx, a core.Actor, n thread) (*Notification
 			v.AttentionRequired = err == nil && state == "failed"
 			v.CurrentState = state
 		}
+	case "service":
+		if n.Category != "service_resource" || n.ContextID == nil {
+			return nil, core.Missing()
+		}
+		var notice servicestatus.ResourceNotice
+		notice, err = servicestatus.NotificationResource(ctx, tx, a, n.ResourceID, *n.ContextID, n.EventID, false)
+		if err == nil {
+			v.ResourceLabel = notice.Service.Name
+			v.CurrentState = "resource_record"
+			v.AttentionRequired = notice.Attention
+			if notice.Attention {
+				v.CurrentState = "resource_attention"
+			}
+			v.Target.WebPath = "/services/" + notice.Service.ID
+		}
 	case "incident":
 		var incident servicestatus.Incident
 		incident, err = servicestatus.NotificationIncident(ctx, tx, a, n.ResourceID)

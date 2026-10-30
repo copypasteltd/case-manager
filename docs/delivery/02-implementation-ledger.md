@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量131已接通资源超阈值／只读／断流→固定负责人站内通知→本人待办→真实恢复，并记录配置、负责人、前驱及原始观测。已读不消除故障；停用／归档／转交重新计算责任。真实目标安装和独立外部告警继续GAP-23，不再把资源站内提醒代码列为待开发。[设计与使用](../development/131-resource-notifications.md) · [实际检查](../quality/131-resource-notifications-verification.md) · [本轮与全部23项](05-functional-closure-131.md)。仍23 active（14 P0／9 P1）、5 excluded、八项draft Skill。
+
 增量130已实现主机CPU／内存／完整配置磁盘的原生采集桥接、签名接收、不可变记录、四端显示与配置／历史管理。真实目标安装、资源断流主动通知和独立告警送达继续归GAP-23；不以页面告警替代送达回执。[设计与使用](../development/130-host-resources.md) · [实际检查](../quality/130-host-resources-verification.md) · [全部23项](05-functional-closure-130.md)。23 active（14 P0／9 P1）、5 excluded保持。
 
 增量126：实际应用已增加费用付款核销，覆盖供应方部分付款、人工异币及批准员工垫付；普通资金三步命令原子组合、准确回执、四端入口、白名单移动草稿及实际Web／H5演示。见[设计](../development/126-cost-payment-settlement.md)与[核验](../quality/126-cost-payment-verification.md)。整个23项工作包继续开放，不将子功能完成改作整体通过。

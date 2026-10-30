@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "id": "resource-core",
+  "started_at": "2026-10-30T22:30:15.687937+00:00",
+  "finished_at": "2026-10-30T22:30:22.360242+00:00",
+  "elapsed_seconds": 6.672,
+  "command": [
+    "python",
+    "scripts/verify_resource_notifications_core.py"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "exit",
+  "source_sha256": "aace8c83586c7c69b547fb059b0feeaa6f0c5c0dadb00d1f2440f4a5e7edb1ef",
+  "source_after_sha256": "aace8c83586c7c69b547fb059b0feeaa6f0c5c0dadb00d1f2440f4a5e7edb1ef",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "b22e2412939787ec52960f562943e583fc2c583af4fbbd4688a8e76a26c5c42a",
+  "parser_error": null,
+  "runner_script_sha256": "0654bac185c9cac27da6c0c873f8d7358be8f3984006258080f85e79b7640763",
+  "scope": "Actual native status, collector, notification, workbench and worker unit suites plus current Windows/Linux collector builds.",
+  "real_device": false,
+  "virtualization_used": false
+}
