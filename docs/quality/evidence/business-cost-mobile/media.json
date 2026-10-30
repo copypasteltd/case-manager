@@ -1,0 +1,76 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-review.png",
+      "sha256": "58afb07a5c965899dd62640eab4806aea82345edb875f9f474d5d75883349bcb"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-recorded.png",
+      "sha256": "1669828456ad0f3ba26712de7f3662f6abbc320c2703d3c072de3d73208508e1"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-history.png",
+      "sha256": "2d80eaeeaa417172826a4eb2a4fbcfc3f3030695f8b608f43b2fdcc2b8a7834a"
+    }
+  ],
+  "recording": {
+    "name": "business-cost-mobile",
+    "frame_count": 14,
+    "duration_ms": 2835,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/business-cost-mobile/frames.json",
+    "manifest_sha256": "4aa02d84328eeeeb46e3840fded96ba29c732d1f1ff341c9ca907b69a0370700"
+  },
+  "created": [
+    {
+      "source": {
+        "type": "contract",
+        "id": "ffaf0b6b-55c1-4bee-8187-ec20ae1c57cc",
+        "version": 6,
+        "revision_id": "8b70aed0-8334-432f-9d3b-789d394cd34b",
+        "content_hash": "e4ec305232c4a2f21b15d0e56bfaff452565d1d0586860dfdf0d4f78a2261a24"
+      },
+      "id": "863e91bf-db06-40cb-bd91-f480b0aa5bbf",
+      "current_revision_id": "fb2dcd81-d060-4bbc-aaa6-9a2c252b4425",
+      "amount": "25.010000",
+      "project_amount": "20.000000",
+      "company_amount": "5.010000"
+    },
+    {
+      "source": {
+        "type": "purchase",
+        "id": "41ea9d0e-9f6e-46d6-a779-72a83ee87012",
+        "version": 4,
+        "revision_id": "6768eb82-4359-4968-a414-9e27a9d70344",
+        "content_hash": "eee5e99f64a2d1c02c837c7e2740a30561e01d29c140ef95b0d720a8ded65640"
+      },
+      "id": "6ca3839d-9784-4cd4-a518-9e1a1b4e1814",
+      "current_revision_id": "874774b5-944b-4ef8-8c7a-711a90e40a72",
+      "amount": "25.010000",
+      "project_amount": "20.000000",
+      "company_amount": "5.010000"
+    },
+    {
+      "source": {
+        "type": "claim",
+        "id": "fa04f86c-d357-4e06-ab57-3f8ac0174511",
+        "version": 4,
+        "revision_id": "baf0ec9c-e7dc-4f3a-922d-8557123f2082",
+        "content_hash": "2aba7b11da987492747e9a8d59109741a458fb6581385928ca1b36e252691c91"
+      },
+      "id": "25bd145b-4623-4f28-bf67-6e09e0ececd1",
+      "current_revision_id": "37201be4-96d5-4bea-9417-13ff5da0ac3d",
+      "amount": "25.010000",
+      "project_amount": "20.000000",
+      "company_amount": "5.010000"
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "mfa_recorded": false
+}

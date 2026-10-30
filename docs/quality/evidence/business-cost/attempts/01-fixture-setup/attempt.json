@@ -1,0 +1,77 @@
+{
+  "passed": false,
+  "used_as_current_acceptance": false,
+  "stage": "development fixture preflight",
+  "observations": [
+    "Early compilation corrected spend.Document to the existing spend.Record type.",
+    "Read-only independent reviewer does not require MFA enrollment; ordinary session retained.",
+    "Reuse one enrolled administrator session to publish all three ordinary workflow policies.",
+    "Final observed failure: missing purchase_operator role correctly rejected ordinary order creation. Added role only to the isolated human fixture; application authority was not relaxed."
+  ],
+  "retained_latest_observed_results": [
+    {
+      "Time": "2026-10-30T20:44:56.8253994+08:00",
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/preview_pins_all_three_approved_sources_without_creating_costs_or_reservation",
+      "Elapsed": 0.03
+    },
+    {
+      "Time": "2026-10-30T20:44:57.1149303+08:00",
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/each_source_records_actual_expense_and_immutable_reference_in_one_transaction",
+      "Elapsed": 0.29
+    },
+    {
+      "Time": "2026-10-30T20:44:57.1508746+08:00",
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/late_source_ceiling_failure_rolls_back_draft_confirmation_evidence_audit_and_keys",
+      "Elapsed": 0.04
+    },
+    {
+      "Time": "2026-10-30T20:44:57.3064607+08:00",
+      "Action": "output",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/current_execution_version_changes_invalidate_the_selected_basis",
+      "Output": "    business_cost_integration_test.go:184: HTTP 404, want 201 (RESOURCE_NOT_FOUND), []\n",
+      "OutputType": "error"
+    },
+    {
+      "Time": "2026-10-30T20:44:57.3064607+08:00",
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/current_execution_version_changes_invalidate_the_selected_basis",
+      "Elapsed": 0.16
+    },
+    {
+      "Time": "2026-10-30T20:44:57.6412762+08:00",
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/concurrent_independent_expenses_share_the_ordinary_source_ceiling",
+      "Elapsed": 0.33
+    },
+    {
+      "Time": "2026-10-30T20:44:57.8416595+08:00",
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/invalid_source_scope_facts_and_acknowledgements_cannot_create_records",
+      "Elapsed": 0.2
+    },
+    {
+      "Time": "2026-10-30T20:44:57.9348941+08:00",
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording/authority_and_query_isolation_apply_before_discovery_and_cached_replay",
+      "Elapsed": 0.09
+    },
+    {
+      "Time": "2026-10-30T20:44:59.0392985+08:00",
+      "Action": "fail",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestBusinessCostRecording",
+      "Elapsed": 13.62
+    }
+  ]
+}

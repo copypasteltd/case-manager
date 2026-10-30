@@ -1,0 +1,76 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/business-cost-web-review.png",
+      "sha256": "9a00c6882812eda34368d56616e087ca99129243e88b96b4752912eaab795456"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-web-recorded.png",
+      "sha256": "15dd5d73a0626997fcab9ac9357be90966ade791abf7527e5a872950bfacfdcf"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-web-history.png",
+      "sha256": "320173ef289f6b595f13485c240c52738a87bb396deb5c098df2916be2b07491"
+    }
+  ],
+  "recording": {
+    "name": "business-cost-web",
+    "frame_count": 20,
+    "duration_ms": 4127,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/business-cost-web/frames.json",
+    "manifest_sha256": "9bb25b6639999adcc592ea21c7ba4a219b2445cf6ed409797ade24cccb5e73b1"
+  },
+  "created": [
+    {
+      "source": {
+        "type": "contract",
+        "id": "32552488-f14d-42b4-bc7b-4721a4a1df0e",
+        "version": 6,
+        "revision_id": "7240a632-2e32-4e4d-b8a2-727cefc2fa1c",
+        "content_hash": "871abb777d43fdd190cf946390acd87d16e20fb10c69aa17bf69de5e78ea9c58"
+      },
+      "id": "61af33f4-2126-4248-8ced-5f3fa4b61366",
+      "current_revision_id": "a187a9ff-add8-4de0-bc5c-a2a298f3844c",
+      "amount": "25.010000",
+      "project_amount": "20.000000",
+      "company_amount": "5.010000"
+    },
+    {
+      "source": {
+        "type": "purchase",
+        "id": "fe026d97-4c76-465f-beaa-65bb8123a902",
+        "version": 4,
+        "revision_id": "84ac41f2-9195-4d85-92d6-6b51a88bb24b",
+        "content_hash": "7b1b9b1b12a293c60182588a28bbb0324efd40b6d7973d2dd4fbb249cb2f5081"
+      },
+      "id": "1a3f8e1f-f68e-4550-b25c-52ff1ec8bcee",
+      "current_revision_id": "272671c6-d67f-4f67-91c3-77e1a53cd445",
+      "amount": "25.010000",
+      "project_amount": "20.000000",
+      "company_amount": "5.010000"
+    },
+    {
+      "source": {
+        "type": "claim",
+        "id": "0faa3eb7-bbe0-4d93-9193-bad4d909f53a",
+        "version": 4,
+        "revision_id": "bc41e2aa-21c7-452e-8378-fc5aaf133834",
+        "content_hash": "10373f17656e836da6092c8527590c5e2115b9ea276663babf928573561ee2bd"
+      },
+      "id": "e4fad7b9-1dca-4b0c-b126-2b807f2404ee",
+      "current_revision_id": "e85d196d-99ec-4757-b8ee-24408cc9f8a6",
+      "amount": "25.010000",
+      "project_amount": "20.000000",
+      "company_amount": "5.010000"
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "mfa_recorded": false
+}

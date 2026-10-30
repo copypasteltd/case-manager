@@ -1,0 +1,158 @@
+{
+  "name": "business-cost",
+  "increment": 125,
+  "configuration_file": "docs/quality/evidence/business-cost/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/business-cost",
+  "retained_base_commit": "3e8c1be6b001797968665c07f0383728e4832862",
+  "retained_base_increment": 124,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_native_js_review.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py"
+  ],
+  "commands": [
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_native_js_review.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Android JS compilation with the published four-worker Metro native Windows filesystem adapter, generated-output exclusions and no-Expo map guard. Bundle only: no APK/signing/Gradle/device acceptance."
+    },
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_backend.py",
+        "--package",
+        "./internal/httpapi",
+        "-run",
+        "^(TestBusinessCostRecording|TestActualCosts|TestPaymentsAndSettlement|TestContractFinancialReconciliation|TestSpendDocumentsAndApprovals|TestProjectBusinessJourneys|TestPurchaseFulfillment)$",
+        "-p=1",
+        "-timeout=20m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestBusinessCostRecording",
+        "TestActualCosts",
+        "TestPaymentsAndSettlement",
+        "TestContractFinancialReconciliation",
+        "TestSpendDocumentsAndApprovals",
+        "TestProjectBusinessJourneys",
+        "TestPurchaseFulfillment"
+      ],
+      "scope": "Seven selected native HTTP/PostgreSQL suites for atomic approved-business actual costs, ordinary costs/payments, contractual attribution, spend approvals, project drafts and purchase fulfillment. Not a complete backend regression."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/business-cost/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/business-cost/web-vitest.json",
+      "minimum_tests": 345,
+      "scope": "Complete existing Web unit suite and shared workbench/replica cases."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 436,
+      "scope": "Complete existing portable Taro unit suite and shared workbench/replica cases."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Native Babel primitive checks; retained121 APK is not a current125 artifact."
+    }
+  ],
+  "browser_groups": [
+    "business-cost-web",
+    "business-cost-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false
+}

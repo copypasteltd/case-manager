@@ -469,6 +469,12 @@ add("CostContent", cost_fields, tuple(cost_fields))
 cost_base = {**EXPECTED, "revision_id": ID, "content_hash": HASH, "reason": NAME}
 add("CostCreate", {**cost_fields, "source_key": {"type": "string", "pattern": r"^[a-z][a-z0-9_.-]{1,31}:[A-Za-z0-9._:/-]{1,166}$"},
     "project_id": nullable(ID), "classification": CLASS, "reason": NAME}, (*cost_fields, "source_key", "project_id", "classification", "reason"))
+business_cost_source = {"type": enum("contract", "purchase", "claim"), "id": ID, "version": VERSION, "revision_id": ID, "content_hash": HASH}
+add("BusinessCostSource", business_cost_source, tuple(business_cost_source))
+business_cost_basis = {"source": ref("BusinessCostSource"), "title": NAME, "project_id": nullable(ID), "classification": CLASS, "currency": CURRENCY, "approved_amount": MONEY, "as_of": TIME}
+add("BusinessCostBasis", business_cost_basis, tuple(business_cost_basis))
+business_cost_record = {**cost_fields, "source": ref("BusinessCostSource"), "source_key": SCHEMAS["CostCreate"]["properties"]["source_key"], "reason": NAME, "actual_incurred": {"const": True}, "source_reviewed": {"const": True}}
+add("BusinessCostRecord", business_cost_record, tuple(business_cost_record))
 add("CostPatch", {**cost_fields, **cost_base}, (*cost_fields, *cost_base))
 cost_party_evidence = add("CostPartyEvidence", {"party_id": ID, "revision_id": ID, "name": NAME}, ("party_id", "revision_id", "name"))
 cost_link_fields = {"id": ID, "source_type": enum("purchase", "claim", "contract", "subscription_period"), "source_id": ID, "source_revision_id": ID,
@@ -1732,6 +1738,9 @@ for route, entity in (("costs", "Cost"), ("payments", "Payment")):
     operation("/" + route + "/{id}", "get", "get" + entity, entity)
     operation("/" + route + "/{id}/reverse", "post", "reverse" + entity, entity, "CostReverse" if route == "costs" else "PaymentReverse")
 operation("/costs/{id}", "patch", "reviseCostDraft", "Cost", "CostPatch")
+operation("/cost-business-sources/{kind}/{id}", "get", "readBusinessCostBasis", "BusinessCostBasis")
+PATHS["/cost-business-sources/{kind}/{id}"]["get"]["parameters"].append({"name": "kind", "in": "path", "required": True, "schema": enum("contract", "purchase", "claim")})
+operation("/costs/from-business", "post", "recordBusinessCost", "Cost", "BusinessCostRecord", 201)
 operation("/costs/{id}/confirm", "post", "confirmCost", "Cost", "CostConfirm")
 operation("/costs/{id}/links", "post", "linkCost", "Cost", "CostLink")
 operation("/costs/{id}/revisions", "get", "listCostRevisions", "CostRevision", listing=True)

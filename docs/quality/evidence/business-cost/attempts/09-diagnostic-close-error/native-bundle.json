@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "id": "native-bundle",
+  "started_at": "2026-10-30T13:19:24.638843+00:00",
+  "finished_at": "2026-10-30T13:22:46.376495+00:00",
+  "elapsed_seconds": 201.734,
+  "command": [
+    "python",
+    "scripts/build_native_js_review.py"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "exit",
+  "source_sha256": "e68b87059ae6a223acbd063dc6dc4d166bae085a94168ac455df10b63fd889cf",
+  "source_after_sha256": "e68b87059ae6a223acbd063dc6dc4d166bae085a94168ac455df10b63fd889cf",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "13a107cc471ba055c35643f52cf287fad34765f6877fab2f9e8c5f92a8fb23b6",
+  "parser_error": null,
+  "runner_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "scope": "Current Android JS compilation with the published four-worker Metro native Windows filesystem adapter, generated-output exclusions and no-Expo map guard. Bundle only: no APK/signing/Gradle/device acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

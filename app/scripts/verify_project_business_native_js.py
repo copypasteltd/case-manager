@@ -1,5 +1,6 @@
 """Inspect the actual current JS bundle/map without claiming APK acceptance."""
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import importlib.util
 import json
@@ -14,11 +15,15 @@ def sha(path):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--feature', choices=('project-business', 'business-cost'), default='project-business')
+    args = parser.parse_args()
+    evidence = APP.parent / 'docs/quality/evidence' / args.feature
     spec = importlib.util.spec_from_file_location('current_js_review', APP / 'scripts/verify_scoped_increment.py')
     current = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(current)
-    config = current.plan('docs/quality/evidence/project-business/verification-plan.json')
-    build = json.loads((E / 'native-bundle.json').read_text(encoding='utf-8'))
+    config = current.plan('docs/quality/evidence/' + args.feature + '/verification-plan.json')
+    build = json.loads((evidence / 'native-bundle.json').read_text(encoding='utf-8'))
     assert build['passed'] and build['source_unchanged'] and build['source_sha256'] == current.digest(config=config)
     bundle = APP / 'mobile/android/app/src/main/assets/index.android.bundle'
     mapping = APP / '.local/android/index.android.map'
@@ -27,7 +32,9 @@ def main():
     assert len(data['sources']) == len(data['sourcesContent'])
     paths = [name.replace('\\', '/') for name in data['sources']]
     records = []
-    for name in ('mobile/src/pages/finance/subscriptions.tsx', 'mobile/src/pages/subscription-period/index.tsx', 'packages/contracts/src/project-business.ts'):
+    modules = ('mobile/src/pages/finance/subscriptions.tsx', 'mobile/src/pages/subscription-period/index.tsx', 'packages/contracts/src/project-business.ts') if args.feature == 'project-business' else (
+        'mobile/src/pages/finance/editor.tsx', 'mobile/src/pages/finance/operations.tsx', 'mobile/src/pages/business/index.tsx', 'packages/contracts/src/cost-business.ts')
+    for name in modules:
         suffix = name if name.startswith('packages/') else name.removeprefix('mobile/')
         indices = [i for i, source in enumerate(paths) if source == suffix or source.endswith('/' + suffix)]
         assert len(indices) == 1, 'Expected one exact current native module: ' + name
@@ -36,10 +43,10 @@ def main():
         records.append({'file': name, 'file_sha256': sha(APP / name), 'map_source': paths[indices[0]],
             'source_content_sha256': hashlib.sha256(value.encode()).hexdigest(), 'source_content_matches_modulo_line_endings': True})
     record = {'passed': True, 'checked_at': datetime.now(timezone.utc).isoformat(), 'source_sha256': current.digest(config=config),
-        'build_record_sha256': sha(E / 'native-bundle.json'), 'bundle_sha256': sha(bundle), 'source_map_sha256': sha(mapping),
+        'build_record_sha256': sha(evidence / 'native-bundle.json'), 'bundle_sha256': sha(bundle), 'source_map_sha256': sha(mapping),
         'modules': records, 'verification_script_sha256': sha(Path(__file__)), 'read_only_artifact_inspection': True,
         'apk_built': False, 'formal_android_acceptance': False, 'real_device_used': False, 'virtualization_used': False}
-    (E / 'android-js-content.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (evidence / 'android-js-content.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'passed': True, 'current_modules_verified': len(records), 'apk_built': False}))
     return 0
 

@@ -1,0 +1,187 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T13:28:13.731599+00:00",
+  "verification_mode": "scoped_increment",
+  "increment": 125,
+  "checks": [
+    {
+      "name": "Source-bound executed check native-bundle",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check backend",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup business-cost-web",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup business-cost-mobile",
+      "passed": true
+    },
+    {
+      "name": "Actual screenshot and recording outputs retain declared hashes",
+      "passed": true
+    },
+    {
+      "name": "All affected visual outputs actually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Owned development services match current backend and preserve existing business records",
+      "passed": true
+    },
+    {
+      "name": "Both owned review ports are released",
+      "passed": true
+    },
+    {
+      "name": "All prior published proof/media bytes remain unchanged with honest retained scope",
+      "passed": true
+    },
+    {
+      "name": "Historical schema bytes unchanged and only declared new upgrades added",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture released",
+      "passed": true
+    },
+    {
+      "name": "Scope and platform acceptance are not replaced by focused checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "business-cost",
+  "interaction_source_sha256": "e68b87059ae6a223acbd063dc6dc4d166bae085a94168ac455df10b63fd889cf",
+  "verification_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "configuration_sha256": "6a428a7b852743c151e6b640851fb04eaf98b8412730d1fe6beb32e8c2a7c259",
+  "records": [
+    {
+      "file": "docs/quality/evidence/business-cost/native-bundle.json",
+      "sha256": "5a63559cf9d14cb70b355fb2eba6241ab0e8f87f584205eafb70e067dfa678df"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/backend.json",
+      "sha256": "1b0f2f8723491ef7c7609d8d6a40034ff654a5c29bbd485062984eac10f07f57"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/web-tests.json",
+      "sha256": "48e37713798887b35c9087695eb060d0774b36cc04b070ef6220c2c98154552f"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/mobile-tests.json",
+      "sha256": "00e6865b97bf28cb449f86b101eb4c9945c358a949efc2f5a7bb2f3966dadae8"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/typecheck.json",
+      "sha256": "bed0a922a9113c810b956b3c858ca02dfdb98f28e3ea2ca14cbbf15921e7b168"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/web-build.json",
+      "sha256": "bea5a0aabbfb49def24a68fc42f5be057a827687282d10067b1855ae6f608232"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/weapp-build.json",
+      "sha256": "a3da18f9895e1fc481b36ae7f0bd952c8f7d51ed6c2ac80f6259012984021bd4"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/douyin-build.json",
+      "sha256": "2671cc8a93bbd254964e073531daad17c1c778f9e5a0193df89e12d15f68ce99"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/native-js-tests.json",
+      "sha256": "5a647985e12c5c07a1c04af15e044f5645da1222e0c081899cec43fe5ae45a1a"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost-web/result.json",
+      "sha256": "244a1bd175e80842bd9006ddc460030888c13dd03910df490d9bdd26b98c1773"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost-web/source-manifest.json",
+      "sha256": "31338f088a6ff3eae651dfff6242f2fa6edde9d15787f1b7c11dd9e4c83935e6"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost-web/media.json",
+      "sha256": "41867e875ea183821e13b2801b1a14dc6fa3874fe723a786ac3804bebe8b0131"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost-mobile/result.json",
+      "sha256": "0f2278d8a47b5ab7d8ca8b9d837fbace7415939f6538f3f329c78bc334e4a669"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost-mobile/source-manifest.json",
+      "sha256": "443cb377140ca584741f74d57703733eb2b4fe2c3ba6995a07496a29c0d9ca71"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost-mobile/media.json",
+      "sha256": "466869e4219943c45568e095b41432065073c03b27719941909e2b64570532ef"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/media.json",
+      "sha256": "5750f993fa5472f90e4e2540c122aa258755255f1af50023458988def410c739"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/visual-review.json",
+      "sha256": "9159c353ad49c7b99d8e6a155678d704cfdeab06ab6cb5266f8a2180a0fc9361"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/development-update.json",
+      "sha256": "df602420e357efcb617af25f97fab8487bb307416c5b3104f1d4e74a92620d21"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/development-project-resources.json",
+      "sha256": "e28907a0fd3a39ef72ebb650ef790193ac85eca0b02dfc95209b6083f9dda30e"
+    },
+    {
+      "file": "docs/quality/evidence/business-cost/development-runtime.json",
+      "sha256": "11459d87e046bdb114090926826424430d35a7572971adf8c93cc9c0fe609abf"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "3e8c1be6b001797968665c07f0383728e4832862",
+    "original_files": 5121,
+    "original_media": 1285,
+    "original_git_object_manifest_sha256": "4fd34ee7e523b664d278bf36af64b4a0cd51da5574f5c42caafb7671ab114387",
+    "baseline_sha256": "6547ddfe99891d65c62683bd91d6af13a8d95a4894cc7007f0ab896baec5eccc",
+    "baseline_increment": 124,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "fixture_only_adjustment": null,
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

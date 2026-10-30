@@ -1,5 +1,6 @@
 """Read-only current checks of schema94 and exact owned native development services."""
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import importlib.util
 import json
@@ -20,6 +21,11 @@ def module(name):
 
 
 def main():
+    global E
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--feature', choices=('project-business', 'business-cost'), default='project-business')
+    args = parser.parse_args()
+    E = APP.parent / 'docs/quality/evidence' / args.feature
     values = json.loads((APP / '.local/environment.json').read_text())
     db = urlsplit(values['CP_DATABASE_URL'])
     assert db.hostname == '127.0.0.1' and db.port == 14660 and values.get('CP_HTTP_ADDR') == '127.0.0.1:18080'

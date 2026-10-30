@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T13:12:18.946Z",
+  "finished_at": "2026-10-30T13:14:03.679Z",
+  "checks": [
+    "Actual Taro H5 contract journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares.",
+    "Actual Taro H5 purchase journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares.",
+    "Actual Taro H5 claim journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares.",
+    "Three actual expenses total75.03; project60.00/company15.03 are exact independent shares, not duplicated approved amounts."
+  ],
+  "source_count": 918,
+  "source_sha256": "50538304b7c6cb06549f97e7c5d56ed3849470700f8d94b10e81ff319eac69f8",
+  "source_after_sha256": "50538304b7c6cb06549f97e7c5d56ed3849470700f8d94b10e81ff319eac69f8",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "7acf0236d14cd8c8700d7b07ebf1a35cc193fa2b2c2074b81bcbae169fa04248",
+    "source_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+  "build_source_unchanged": true
+}

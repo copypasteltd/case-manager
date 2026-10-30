@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "checks": [],
+  "owned_browser_closed": false,
+  "failure": "No browser result was produced; inspect the retained private runner logs.",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "7acf0236d14cd8c8700d7b07ebf1a35cc193fa2b2c2074b81bcbae169fa04248",
+    "source_sha256": "94bdbbc4af8ae61ac77222bcc329a2c66262ba0c361626bba6f5f3a5db0644af",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "94bdbbc4af8ae61ac77222bcc329a2c66262ba0c361626bba6f5f3a5db0644af",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "94bdbbc4af8ae61ac77222bcc329a2c66262ba0c361626bba6f5f3a5db0644af",
+  "build_source_unchanged": true
+}

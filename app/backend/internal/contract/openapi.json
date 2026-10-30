@@ -19172,6 +19172,187 @@
         }
       }
     },
+    "/cost-business-sources/{kind}/{id}": {
+      "get": {
+        "operationId": "readBusinessCostBasis",
+        "tags": [
+          "cost-business-sources"
+        ],
+        "summary": "readBusinessCostBasis",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "contract",
+                "purchase",
+                "claim"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessCostBasisResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/costs/from-business": {
+      "post": {
+        "operationId": "recordBusinessCost",
+        "tags": [
+          "costs"
+        ],
+        "summary": "recordBusinessCost",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BusinessCostRecord"
+              }
+            }
+          }
+        }
+      }
+    },
     "/costs/{id}/confirm": {
       "post": {
         "operationId": "confirmCost",
@@ -46165,6 +46346,231 @@
           "project_id",
           "classification",
           "reason"
+        ]
+      },
+      "BusinessCostSource": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "contract",
+              "purchase",
+              "claim"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "id",
+          "version",
+          "revision_id",
+          "content_hash"
+        ]
+      },
+      "BusinessCostBasis": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/BusinessCostSource"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "classification": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "project_restricted",
+              "confidential"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "approved_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "title",
+          "project_id",
+          "classification",
+          "currency",
+          "approved_amount",
+          "as_of"
+        ]
+      },
+      "BusinessCostRecord": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "occurred_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "amount": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "counterparty": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SpendSupplier"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "allocations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "project_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "project_id",
+                "amount"
+              ]
+            },
+            "maxItems": 100
+          },
+          "evidence_version_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "source": {
+            "$ref": "#/components/schemas/BusinessCostSource"
+          },
+          "source_key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.-]{1,31}:[A-Za-z0-9._:/-]{1,166}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "actual_incurred": {
+            "const": true
+          },
+          "source_reviewed": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "occurred_on",
+          "currency",
+          "amount",
+          "category",
+          "counterparty",
+          "allocations",
+          "evidence_version_ids",
+          "notes",
+          "source",
+          "source_key",
+          "reason",
+          "actual_incurred",
+          "source_reviewed"
         ]
       },
       "CostPatch": {
@@ -73753,6 +74159,22 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/Payment"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "BusinessCostBasisResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BusinessCostBasis"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

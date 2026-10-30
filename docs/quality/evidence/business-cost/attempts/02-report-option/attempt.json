@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "used_as_current_acceptance": false,
+  "reason": "The verification-plan reporter argument accidentally lost its --outputFile= prefix. Vitest treated the path as a test filter and created a default untracked report. Browser source-change detection correctly rejected concurrent fixture startup before any browser/database fixture existed. Corrected the argument; preserved the raw report outside Git. All scoped checks will bind to the corrected plan and source list.",
+  "owned_browser_started": false,
+  "native_database_fixture_started": false
+}

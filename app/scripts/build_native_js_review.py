@@ -32,6 +32,13 @@ def main():
     environment = {**{key: value for key, value in os.environ.items() if key.upper() in allowed},
         'CP_MOBILE_API_ORIGIN': os.environ['CP_MOBILE_API_ORIGIN'], 'CP_MOBILE_BUILD_PROFILE': os.environ['CP_MOBILE_BUILD_PROFILE'],
         'TARO_ENV': 'rn', 'NODE_ENV': 'production', 'PYTHONUTF8': '1'}
+    # Metro's file-map explicitly forks workers with execArgv=[], so the
+    # published parent's --require bridge does not reach readlink workers.
+    # Pass only our fixed checkout bridge through the owned child's environment;
+    # never inherit arbitrary parent NODE_OPTIONS. The adapter writes this exact
+    # bridge before starting Node. Child processes keep real native FS results.
+    worker_bridge = APP / '.local/android/refund-fx-fs-diagnostic.cjs'
+    environment['NODE_OPTIONS'] = '--require="' + worker_bridge.as_posix() + '"'
     # Reuse only the published bundle adapter, never its main()/APK runner or
     # historical evidence writer. It preserves current resolver/entry sources,
     # excludes generated directories and applies the disclosed native Windows
@@ -46,6 +53,7 @@ def main():
         raise SystemExit('The current bundle/map is missing or requires an unsupported Expo native extension.')
     assert len(native_adapter.invocations) == 1 and native_adapter.invocations[0]['exit_code'] == 0
     print(json.dumps({'passed': True, 'max_workers': 4, 'no_expo_map_guard': True, 'native_invocation': native_adapter.invocations[0],
+        'owned_worker_filesystem_bridge': environment['NODE_OPTIONS'], 'parent_node_options_inherited': False,
         'bundle_sha256': hashlib.sha256(bundle.read_bytes()).hexdigest(), 'source_map_sha256': hashlib.sha256(mapping.read_bytes()).hexdigest(),
         'source_count': len(source_map['sources']), 'apk_created': False, 'formal_android_acceptance': False}))
     return 0

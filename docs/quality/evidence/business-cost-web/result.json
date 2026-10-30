@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T13:10:03.336Z",
+  "finished_at": "2026-10-30T13:10:35.167Z",
+  "checks": [
+    "Actual Web contract journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares.",
+    "Actual Web purchase journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares.",
+    "Actual Web claim journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares.",
+    "Three actual expenses total75.03; project60.00/company15.03 are exact independent shares, not duplicated approved amounts."
+  ],
+  "source_count": 885,
+  "source_sha256": "30c8dc0ed872281eee0fe2633f07b249aeb784310af2bc25708983315650558f",
+  "source_after_sha256": "30c8dc0ed872281eee0fe2633f07b249aeb784310af2bc25708983315650558f",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "7acf0236d14cd8c8700d7b07ebf1a35cc193fa2b2c2074b81bcbae169fa04248",
+    "source_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+  "build_source_unchanged": true
+}

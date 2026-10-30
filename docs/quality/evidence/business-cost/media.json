@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T13:14:59.185321+00:00",
+  "encoder_script_sha256": "62625b79ef27ab9eabf80bb8b6b9c2f7eb2b7af9e0aad93280ed85e5b9d48fa8",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "30c8dc0ed872281eee0fe2633f07b249aeb784310af2bc25708983315650558f",
+      "build_source_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+      "capture_manifest": "docs/quality/evidence/business-cost/web-capture-manifest.json",
+      "capture_manifest_sha256": "9bb25b6639999adcc592ea21c7ba4a219b2445cf6ed409797ade24cccb5e73b1",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4127,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/business-cost-web-review.png",
+          "sha256": "9a00c6882812eda34368d56616e087ca99129243e88b96b4752912eaab795456"
+        },
+        {
+          "file": "docs/media/screenshots/business-cost-web-recorded.png",
+          "sha256": "15dd5d73a0626997fcab9ac9357be90966ade791abf7527e5a872950bfacfdcf"
+        },
+        {
+          "file": "docs/media/screenshots/business-cost-web-history.png",
+          "sha256": "320173ef289f6b595f13485c240c52738a87bb396deb5c098df2916be2b07491"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "43",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/business-cost-web.mp4",
+          "sha256": "950a2c5a700409e810f831d9d228734645153d6169d2d8d50e35f6aa10dd0f8e",
+          "bytes": 257813
+        },
+        {
+          "file": "docs/media/gifs/business-cost-web.gif",
+          "sha256": "4493812060689098aa9dba75415c27d32e7e07e4b4b54456d82e84d1b1bcaaa3",
+          "bytes": 302709
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "50538304b7c6cb06549f97e7c5d56ed3849470700f8d94b10e81ff319eac69f8",
+      "build_source_sha256": "5b933e285f403fc172aa7b5f9952b744ee1579c4b07d257c8f89c9931403ea60",
+      "capture_manifest": "docs/quality/evidence/business-cost/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "4aa02d84328eeeeb46e3840fded96ba29c732d1f1ff341c9ca907b69a0370700",
+      "capture_frame_count": 14,
+      "capture_duration_ms": 2835,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/business-cost-mobile-review.png",
+          "sha256": "58afb07a5c965899dd62640eab4806aea82345edb875f9f474d5d75883349bcb"
+        },
+        {
+          "file": "docs/media/screenshots/business-cost-mobile-recorded.png",
+          "sha256": "1669828456ad0f3ba26712de7f3662f6abbc320c2703d3c072de3d73208508e1"
+        },
+        {
+          "file": "docs/media/screenshots/business-cost-mobile-history.png",
+          "sha256": "2d80eaeeaa417172826a4eb2a4fbcfc3f3030695f8b608f43b2fdcc2b8a7834a"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "30",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/business-cost-mobile.mp4",
+          "sha256": "e3e5520446bab9d14abe2bae1971a8e504134f8267dc4d4eae223a7d366ade68",
+          "bytes": 110352
+        },
+        {
+          "file": "docs/media/gifs/business-cost-mobile.gif",
+          "sha256": "1aac3ebffbfa955a082c819a402c18e5d8ffdf7f9622dda637b7e82b1ae51c33",
+          "bytes": 101541
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic approved-business expense recording and ordinary source association. MP4 records the first source after MFA with real viewport pixels; GIF is a disclosed tour of three actual screenshots. Three source kinds run through the actual Web/H5 UI. No credentials, device/cloud/model/production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/business-cost-web-review.png",
+      "sha256": "9a00c6882812eda34368d56616e087ca99129243e88b96b4752912eaab795456"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-web-recorded.png",
+      "sha256": "15dd5d73a0626997fcab9ac9357be90966ade791abf7527e5a872950bfacfdcf"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-web-history.png",
+      "sha256": "320173ef289f6b595f13485c240c52738a87bb396deb5c098df2916be2b07491"
+    },
+    {
+      "file": "docs/media/videos/business-cost-web.mp4",
+      "sha256": "950a2c5a700409e810f831d9d228734645153d6169d2d8d50e35f6aa10dd0f8e",
+      "bytes": 257813
+    },
+    {
+      "file": "docs/media/gifs/business-cost-web.gif",
+      "sha256": "4493812060689098aa9dba75415c27d32e7e07e4b4b54456d82e84d1b1bcaaa3",
+      "bytes": 302709
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-review.png",
+      "sha256": "58afb07a5c965899dd62640eab4806aea82345edb875f9f474d5d75883349bcb"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-recorded.png",
+      "sha256": "1669828456ad0f3ba26712de7f3662f6abbc320c2703d3c072de3d73208508e1"
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-history.png",
+      "sha256": "2d80eaeeaa417172826a4eb2a4fbcfc3f3030695f8b608f43b2fdcc2b8a7834a"
+    },
+    {
+      "file": "docs/media/videos/business-cost-mobile.mp4",
+      "sha256": "e3e5520446bab9d14abe2bae1971a8e504134f8267dc4d4eae223a7d366ade68",
+      "bytes": 110352
+    },
+    {
+      "file": "docs/media/gifs/business-cost-mobile.gif",
+      "sha256": "1aac3ebffbfa955a082c819a402c18e5d8ffdf7f9622dda637b7e82b1ae51c33",
+      "bytes": 101541
+    }
+  ]
+}

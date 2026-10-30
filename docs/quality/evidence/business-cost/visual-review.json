@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-30T13:16:01.822583+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/business-cost-web-review.png",
+      "sha256": "9a00c6882812eda34368d56616e087ca99129243e88b96b4752912eaab795456",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot individually.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-web-recorded.png",
+      "sha256": "15dd5d73a0626997fcab9ac9357be90966ade791abf7527e5a872950bfacfdcf",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot individually.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-web-history.png",
+      "sha256": "320173ef289f6b595f13485c240c52738a87bb396deb5c098df2916be2b07491",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot individually.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/videos/business-cost-web.mp4",
+      "sha256": "950a2c5a700409e810f831d9d228734645153d6169d2d8d50e35f6aa10dd0f8e",
+      "bytes": 257813,
+      "reviewed": true,
+      "method": "Decoded and viewed actual opening, middle and end samples in the video contact sheet; genuine loading states retained, not every frame reviewed.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/gifs/business-cost-web.gif",
+      "sha256": "4493812060689098aa9dba75415c27d32e7e07e4b4b54456d82e84d1b1bcaaa3",
+      "bytes": 302709,
+      "reviewed": true,
+      "method": "Decoded and viewed all three actual screenshot-tour stages at1,3,5 seconds; two seconds each, not a realtime screen recording.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-review.png",
+      "sha256": "58afb07a5c965899dd62640eab4806aea82345edb875f9f474d5d75883349bcb",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot individually.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-recorded.png",
+      "sha256": "1669828456ad0f3ba26712de7f3662f6abbc320c2703d3c072de3d73208508e1",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot individually.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/screenshots/business-cost-mobile-history.png",
+      "sha256": "2d80eaeeaa417172826a4eb2a4fbcfc3f3030695f8b608f43b2fdcc2b8a7834a",
+      "reviewed": true,
+      "method": "Viewed the complete actual screenshot individually.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/videos/business-cost-mobile.mp4",
+      "sha256": "e3e5520446bab9d14abe2bae1971a8e504134f8267dc4d4eae223a7d366ade68",
+      "bytes": 110352,
+      "reviewed": true,
+      "method": "Decoded and viewed actual opening, middle and end samples in the video contact sheet; genuine loading states retained, not every frame reviewed.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    },
+    {
+      "file": "docs/media/gifs/business-cost-mobile.gif",
+      "sha256": "1aac3ebffbfa955a082c819a402c18e5d8ffdf7f9622dda637b7e82b1ae51c33",
+      "bytes": 101541,
+      "reviewed": true,
+      "method": "Decoded and viewed all three actual screenshot-tour stages at1,3,5 seconds; two seconds each, not a realtime screen recording.",
+      "synthetic_data_only": true,
+      "password_or_mfa_visible": false
+    }
+  ],
+  "notes": [
+    "Six final PNGs viewed individually; decoded MP4 opening/middle/end samples and all GIF stages viewed in two contact sheets.",
+    "MP4s capture only first-source post-MFA confirmation, actual expense result and ordinary history. Input entry and other source kinds are outside these clips.",
+    "Web review PNG is scrolled to the actual amount, supplier, allocations, fixed file, explicit acknowledgements and submit action. Its top fields are outside that viewport.",
+    "Mobile review PNG shows the lower form and both acknowledgements after MFA, recorded PNG shows the upper actual expense facts, and history PNG shows the ordinary revision/events. They do not each display the whole long form.",
+    "Web MP4 middle sample contains the genuine history loading state. No loading state was removed or replaced with an invented frame.",
+    "The GIFs are labelled three-screenshot tours; no realtime-motion claim.",
+    "Synthetic data only. No password or MFA secret visible in inspected outputs. No physical-device, real-cloud/model, complete-video or full-goal acceptance claim."
+  ],
+  "physical_device_acceptance": false,
+  "production_ready": false
+}

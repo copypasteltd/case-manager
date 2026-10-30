@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量125 / Increment125：三类批准业务的实际费用登记。两个客户端各实际操作合同、采购、报销；MP4仅录制首个来源在本人验证后的确认与历史查阅，不录密码或MFA。GIF是三张真实截图各2秒的导览，不是实时录屏。
+
+| 客户端 / Client | 人工核对 / Review | 已确认费用 / Recorded | 固定历史 / History | 实际录屏 / Recording | 截图导览 / Tour |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/business-cost-web-review.png) | [PNG](screenshots/business-cost-web-recorded.png) | [PNG](screenshots/business-cost-web-history.png) | [MP4](videos/business-cost-web.mp4) | [GIF](gifs/business-cost-web.gif) |
+| Taro H5 | [PNG](screenshots/business-cost-mobile-review.png) | [PNG](screenshots/business-cost-mobile-recorded.png) | [PNG](screenshots/business-cost-mobile-history.png) | [MP4](videos/business-cost-mobile.mp4) | [GIF](gifs/business-cost-mobile.gif) |
+
+[本轮实际核验 / Verification](../quality/125-business-cost-verification.md)
+
 增量124 / Increment124：实际项目六类业务新建、固定项目列表和移动账期免付结果。MP4为登录后实际视口录制，包含真实加载／导航状态；移动免付在录像结束后完成，避免录入MFA，结果显示在第三张截图和GIF中。Web入口截图捕获了权限加载瞬间，后续入口可用及新建操作由实际录像与检查记录证明。GIF为三张实际截图的导览，每张2秒，不是实时录屏。
 
 | 客户端 / Client | 项目入口 / Hub | 费用草稿 / Draft | 订阅／账期结果 / Result | 录屏 / Recording | 截图导览 / Tour |

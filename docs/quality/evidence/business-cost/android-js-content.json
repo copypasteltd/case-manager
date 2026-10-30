@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T13:26:31.517063+00:00",
+  "source_sha256": "e68b87059ae6a223acbd063dc6dc4d166bae085a94168ac455df10b63fd889cf",
+  "build_record_sha256": "5a63559cf9d14cb70b355fb2eba6241ab0e8f87f584205eafb70e067dfa678df",
+  "bundle_sha256": "7d2ec228663e91a12c9034ff46f3a21783bdcf810e5578453462f81bc966e932",
+  "source_map_sha256": "5bdb8986c04bbb392e5840e98555fe4903f88847eae042b0613065214eb6be11",
+  "modules": [
+    {
+      "file": "mobile/src/pages/finance/editor.tsx",
+      "file_sha256": "4179583232edbe2727c32167e3fe9a4756e130ec627e48329b3e223461662c2f",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/finance/editor.tsx",
+      "source_content_sha256": "4179583232edbe2727c32167e3fe9a4756e130ec627e48329b3e223461662c2f",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "mobile/src/pages/finance/operations.tsx",
+      "file_sha256": "5e127e93c9c2afbae26209f47676dc676cd6bde98c243db190132b75e385f5db",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/finance/operations.tsx",
+      "source_content_sha256": "5e127e93c9c2afbae26209f47676dc676cd6bde98c243db190132b75e385f5db",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "mobile/src/pages/business/index.tsx",
+      "file_sha256": "20fd9b3eed40cccd85120a1298bbab2decc86a510b28bdd33a116f3c216f5251",
+      "map_source": "D:/dev/copypasted/内部管理/app/mobile/src/pages/business/index.tsx",
+      "source_content_sha256": "20fd9b3eed40cccd85120a1298bbab2decc86a510b28bdd33a116f3c216f5251",
+      "source_content_matches_modulo_line_endings": true
+    },
+    {
+      "file": "packages/contracts/src/cost-business.ts",
+      "file_sha256": "855e8ff7706133fdef6a1768d9147e3f2241b1004d0492ba3e93bc9f038c65e2",
+      "map_source": "D:/dev/copypasted/内部管理/app/packages/contracts/src/cost-business.ts",
+      "source_content_sha256": "855e8ff7706133fdef6a1768d9147e3f2241b1004d0492ba3e93bc9f038c65e2",
+      "source_content_matches_modulo_line_endings": true
+    }
+  ],
+  "verification_script_sha256": "082703a3f7ebac9a0975c0cff177c97846e2fa7222bf823306ba744abd709846",
+  "read_only_artifact_inspection": true,
+  "apk_built": false,
+  "formal_android_acceptance": false,
+  "real_device_used": false,
+  "virtualization_used": false
+}

@@ -1,0 +1,49 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T12:55:26.982Z",
+  "finished_at": "2026-10-30T12:56:32.327Z",
+  "checks": [
+    "Actual Taro H5 contract journey records explicitly reviewed actual expense, exact source, fixed evidence and independent company/project shares."
+  ],
+  "source_count": 918,
+  "source_sha256": "80de66b358c37532d724e0a78ba921cf22bae84373ab9d121355fe95011af8b9",
+  "source_after_sha256": "80de66b358c37532d724e0a78ba921cf22bae84373ab9d121355fe95011af8b9",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '71f17d97-043f-4725-9b7a-00baa82080ec'\n- 'ee5f09d5-892c-4e4c-8365-b1465a1fbfd7'\n",
+  "failure_stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '71f17d97-043f-4725-9b7a-00baa82080ec'\n- 'ee5f09d5-892c-4e4c-8365-b1465a1fbfd7'\n\n    at submit (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_business_cost.mjs:83:50)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_business_cost.mjs:97:10\n    at async workbenchBrowser (file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/workbench_browser_common.mjs:49:5)\n    at async file:///D:/dev/copypasted/%E5%86%85%E9%83%A8%E7%AE%A1%E7%90%86/app/scripts/check_business_cost.mjs:12:1",
+  "failure_context": {
+    "pathname": "/",
+    "hash": "#/pages/finance/index?kind=cost&id=e2b8e2ef-527d-48d2-831e-c6c9ebf9e626",
+    "body_children": 2,
+    "active_mobile_pages": 0,
+    "workbench_headings": 0
+  },
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "native_fixture_compilation": {
+    "command": [
+      "go",
+      "test",
+      "-c",
+      "./internal/httpapi"
+    ],
+    "binary_sha256": "7acf0236d14cd8c8700d7b07ebf1a35cc193fa2b2c2074b81bcbae169fa04248",
+    "source_sha256": "74ecfbea6f2f8ebf2b2797261e03d939d9a8cabdf2dd59aea9e773cf71be7ad8",
+    "completed_before_database_fixture": true,
+    "executed_exact_binary": true
+  },
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "74ecfbea6f2f8ebf2b2797261e03d939d9a8cabdf2dd59aea9e773cf71be7ad8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "74ecfbea6f2f8ebf2b2797261e03d939d9a8cabdf2dd59aea9e773cf71be7ad8",
+  "build_source_unchanged": true
+}

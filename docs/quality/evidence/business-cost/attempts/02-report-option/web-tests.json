@@ -1,0 +1,31 @@
+{
+  "passed": false,
+  "id": "web-tests",
+  "started_at": "2026-10-30T12:46:13.879075+00:00",
+  "finished_at": "2026-10-30T12:46:16.960146+00:00",
+  "elapsed_seconds": 3.081,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "../.local/scoped-increments/business-cost/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "vitest_json",
+  "source_sha256": "388a25c447808019b6a4bcafd67efb900c76af3e51d152d424925dd7afb975b5",
+  "source_after_sha256": "0ea94552e7faac0af6a398808a5fb73ca7ba0001c04dc2d578af8ac98485d101",
+  "source_unchanged": false,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "9a39597f6c674bf74ac7f56d7bcf8c14895db02ef5bc450b77cd78e8ac2e73d4",
+  "parser_error": "FileNotFoundError",
+  "runner_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "scope": "Complete existing Web unit suite and shared workbench/replica cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

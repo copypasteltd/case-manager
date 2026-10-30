@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "native-js-tests",
+  "started_at": "2026-10-30T12:55:26.346991+00:00",
+  "finished_at": "2026-10-30T12:55:47.773048+00:00",
+  "elapsed_seconds": 21.426,
+  "command": [
+    "npm",
+    "run",
+    "test:native-js",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "1556933797089710628bc051a888d35debde77c1d6f4a38f16bb966d8a8f6e19",
+  "source_after_sha256": "1556933797089710628bc051a888d35debde77c1d6f4a38f16bb966d8a8f6e19",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 2,
+    "pass": 2,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "c332363f04481fc3d07a94558cc5f3540e3322e1eecacf747a8e40100b271036",
+  "parser_error": null,
+  "runner_script_sha256": "99da295394480365f17716e8c0ed1f4c0ac70c902f5470e130e70966d7ae17b5",
+  "scope": "Native Babel primitive checks; retained121 APK is not a current125 artifact.",
+  "real_device": false,
+  "virtualization_used": false
+}

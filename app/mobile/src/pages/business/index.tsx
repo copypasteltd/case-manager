@@ -1,3 +1,4 @@
+import { businessCostMobileEntry } from '@copypaste/contracts/cost-business';
 import { checkedBusinessContext, businessProjectID, projectBusinessHome, type ProjectBusinessContext } from '@copypaste/contracts/project-business';
 import { Text, View } from '@tarojs/components';
 import Taro, { useRouter } from '@tarojs/taro';
@@ -44,6 +45,7 @@ export default function BusinessPage() {
           {mode === 'prepare' ? <PrepareRequest key={value.id + ':' + value.version} kind={kind} business={value} me={result.me} onCancel={() => setMode('view')} /> : <Section title='后续操作'><View className='cp-pad'>
             {value.can_edit && <Action secondary onClick={() => setMode('edit')}>编辑{name}草稿</Action>}
             {value.can_prepare_request && <Action onClick={() => setMode('prepare')}>{value.request_id ? '核对并准备申请草稿' : '建立申请草稿'}</Action>}
+            {!value.deleted_at && value.approval_state === 'approved' && (!('direction' in value) || value.direction === 'payable' && ['effective', 'completed', 'terminated'].includes(value.lifecycle)) && ['cost.read', 'cost.record', 'cost.confirm'].every(action => result.me.actions.includes(action)) && <Action secondary onClick={() => void Taro.navigateTo({ url: businessCostMobileEntry(kind, value.id) })}>登记实际费用并关联</Action>}
             {value.request_id && <Action secondary onClick={() => go('request', value.request_id!)}>查看关联申请与进展</Action>}
             {!value.can_edit && !value.can_prepare_request && <Text className='cp-muted cp-small'>当前业务阶段或权限不提供编辑与准备申请操作。</Text>}
           </View></Section>}

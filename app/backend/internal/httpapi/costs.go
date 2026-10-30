@@ -35,6 +35,18 @@ func (s *Server) costRoutes(mux *http.ServeMux) {
 	s.financeReportRoutes(mux)
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
 	s.amortizationRoutes(mux, v)
+	mux.HandleFunc("GET /v1/cost-business-sources/{kind}/{id}", read(s, "BusinessCostBasisResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "业务费用依据不接受查询范围或版本覆盖")
+		}
+		return v.BusinessCostBasis(ctx, a, r.PathValue("kind"), r.PathValue("id"))
+	}))
+	mux.HandleFunc("POST /v1/costs/from-business", command(s, "BusinessCostRecord", "CostResponse", func(ctx context.Context, c core.Command, r *http.Request, in finance.BusinessCostRecord) (core.Result, error) {
+		if r.URL.RawQuery != "" {
+			return core.Result{}, core.Invalid("query", "业务费用登记不接受查询范围或版本覆盖")
+		}
+		return v.RecordBusinessCost(ctx, c, in)
+	}))
 	mux.HandleFunc("GET /v1/costs", read(s, "CostListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := costFilter(r)
 		if e != nil {

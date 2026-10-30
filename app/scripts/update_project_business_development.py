@@ -4,6 +4,7 @@ The existing cluster is preserved. No provider, TG, cloud, emulator or container
 is enabled. A stale PID belonging to another process is never terminated.
 """
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import importlib.util
 import json
@@ -38,6 +39,11 @@ def inspect(record, command):
 
 
 def main():
+    global E
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--feature', choices=('project-business', 'business-cost'), default='project-business')
+    args = parser.parse_args()
+    E = APP.parent / 'docs/quality/evidence' / args.feature
     assert not (E / 'development-update.json').exists(), 'Preserve an existing completed service update.'
     values = json.loads((APP / '.local/environment.json').read_text())
     db = urlsplit(values['CP_DATABASE_URL'])

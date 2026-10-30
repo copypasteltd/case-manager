@@ -17,7 +17,7 @@ export type DraftTarget = { kind: 'task' | 'task-create' | 'task-edit' | 'task-d
 } | {
   kind: 'project-archive'; id: string; version: number; hash: string;
 } | {
-  kind: 'subscription-edit' | 'subscription-action' | 'subscription-period-action' | 'financial-edit' | 'financial-action' | 'deliverable-decision' | 'change-prepare' | 'change-implement'; id: string; version: number; revision: string; hash: string;
+  kind: 'financial-business-record' | 'subscription-edit' | 'subscription-action' | 'subscription-period-action' | 'financial-edit' | 'financial-action' | 'deliverable-decision' | 'change-prepare' | 'change-implement'; id: string; version: number; revision: string; hash: string;
 } | {
   kind: 'folder-create' | 'folder-organize' | 'file-organize' | 'file-state' | 'financial-create' | 'subscription-create' | 'project-closeout-transition' | 'resource-create' | 'resource-edit' | 'resource-transition' | 'project-create' | 'project-edit' | 'project-member' | 'project-owner' | 'business-contract' | 'business-purchase' | 'business-claim' | 'request-prepare' | 'request-submit' | 'request-revise' | 'request-withdraw' | 'incident-create' | 'incident-update' | 'conversation-create' | 'conversation-edit' | 'conversation-member' | 'run-create' | 'run-cancel' | 'agent-project-plan' | 'agent-plan-action' | 'agent-organization-action'; id: string; version: number;
 };

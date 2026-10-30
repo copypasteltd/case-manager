@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## Increment125 · 批准业务登记实际费用 / Actual business expenses
+
+- 合同／采购／报销详情增加人工费用入口，固定来源版本、批准修订／摘要、范围、分类与币种；实际日期、金额、供应方、固定凭证与分摊须独立填写并核对。
+- 一个原生PG事务组合普通费用创建、确认和来源关联，保留三条费用历史、正式文件引用、审计／Outbox及原金额上限；并发争用、晚期失败、重复提交和过期／撤权／MFA不足分别处理。
+- Web及共享微信／抖音／Android页面接入，移动文字草稿按准确来源与本人权限隔离，凭证、MFA和人工核对不恢复。
+- Current source-bound focused native HTTP/PG checks,345 Web/436 portable mobile tests and current client builds. Actual Web/H5 UI journeys cover all three sources and exact75.03/60.00/15.03 report totals. MP4 records the first source after MFA; GIFs are disclosed screenshot tours.
+- 继续schema94，无新APK／正式云／模型／平台或生产验收声明；23 active／5 excluded保持。旧发布证据与媒体按原字节保留。
+
+[设计 / Design](development/125-business-cost-recording.md) · [核验 / Verification](quality/125-business-cost-verification.md)
+
 ## Increment124 · 项目六类业务与移动订阅闭环 / Project journeys and mobile subscriptions
 
 - 接通项目内合同、采购、报销、实际费用、实际资金、订阅的权限入口、固定项目表单、过滤列表和返回；添加人类会话业务能力查询。

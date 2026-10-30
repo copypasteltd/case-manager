@@ -102,3 +102,5 @@ FIN-01—07／11—12的人工费用、付款、退款、员工结算与冲销�
 | FIN-AM-10 | 本能力不是会计总账、跨币种核销或资金执行，不替公司选用制度；GAP-03继续开放。 |
 
 Design, examples, API and human workflow: [增量106 / Cost amortization](../development/106-cost-amortization.md).
+
+增量125要求三类批准业务来源固定头版本、批准修订和摘要；人工独立填写发生事实、供应方、正式凭证及精确分摊。创建、确认和准确关联一事务提交或回滚，沿用普通财务额度、幂等、权限及审计。参见[实现约束](../development/125-business-cost-recording.md)，完整工作包保持开放。
