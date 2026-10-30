@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-30T04:03:29.126563+00:00",
+  "source_sha256": "ea03966484c7a9134d95531f571c56c668892e6f13ca52fbcbbde871c9a0d204",
+  "source_files": 54,
+  "tests": {
+    "pass": 56,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T03:59:14.484841+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run typecheck",
+      "raw_log_sha256": "5cffb36e4143231d9dbc7f3015b72a04382d48fe9f7a422fb8f921a1291fbe6a",
+      "raw_log": "ignored app/.local/office_text-client-typecheck.log"
+    },
+    {
+      "name": "runtime-tests",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T04:00:24.132934+00:00",
+      "test_count": 56,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run test --workspace @copypaste/agent-runtime",
+      "raw_log_sha256": "a51d8cc27ca7063a780f41167f198fe30c70fbb036e2f0551c8bd519cd5e8bda",
+      "raw_log": "ignored app/.local/office_text-client-runtime-tests.log"
+    },
+    {
+      "name": "runtime-build",
+      "passed": true,
+      "exit_code": 0,
+      "executed_at": "2026-10-30T04:01:07.768634+00:00",
+      "test_count": null,
+      "timed_out": false,
+      "technical_deadline_seconds": 900,
+      "command": "npm run build:runtime",
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710",
+      "raw_log": "ignored app/.local/office_text-client-runtime-build.log"
+    }
+  ],
+  "skills_check": {
+    "passed": true,
+    "executed_now": true,
+    "raw_log_sha256": "aac5b0d87b345b347fb5abb1bcefa2327b67f64f6faf2bd83ed1408da3aaf975"
+  },
+  "real_model": false,
+  "derived_from": {
+    "record": "client-checks.json",
+    "sha256": "84602f745f5abaee6ddfcd8d4970f327fb17b96a3f081a22865b326ef71b5d67",
+    "summary_adapter_sha256": "7bb7e45491e0be34e4150996436635b0d44519e58b684a8fe2ab6fe5c9720d58",
+    "adapter_reran_tests": false
+  }
+}

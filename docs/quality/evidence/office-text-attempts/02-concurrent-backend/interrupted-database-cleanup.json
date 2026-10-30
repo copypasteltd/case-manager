@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T04:02:46.529668+00:00",
+  "reason": "Preserve and remove inactive synthetic fixtures left by the explicitly interrupted owned regression process. Live fixtures and development cluster are untouched.",
+  "archives": [
+    {
+      "database": "cp_test_acea66fe6c18462cbb208df85a97a98b",
+      "synthetic_private_archive_sha256": "8cecfd6e6fe04a61c8aaa98a2270e4af86190269906d32dcdcee4c223f02bd94",
+      "bytes": 708746,
+      "inactive_before_cleanup": true
+    }
+  ],
+  "actual_development_database_touched": false,
+  "private_archives_retained": true
+}

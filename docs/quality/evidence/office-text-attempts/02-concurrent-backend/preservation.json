@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "reason": "An existing subscription-review case returned JOB_LEASE_LOST during concurrent native builds. Owned batch runner interrupted; application deadlines and leases unchanged. Full affected batch will rerun after other builds complete.",
+  "interrupted_at": "2026-10-30T04:00:44.155768+00:00",
+  "raw_log_private": "app/.local/office-text-backend-batch-2-concurrent.log",
+  "raw_log_sha256": "ee56852d7385ed744291c2c30060e98494dbc214ebc5295fcfbaaef73c3f3ec2",
+  "application_source_changed": false,
+  "counted_as_final_pass": false
+}

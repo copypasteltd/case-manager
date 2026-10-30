@@ -1,6 +1,6 @@
 import { Text, View } from '@tarojs/components';
 import { useEffect, useRef, useState } from 'react';
-import { checkedSearch, checkedFileText, searchPath, fileTextPath, resourceNames, textStates, type SearchHit, type SearchType } from '@copypaste/contracts/search';
+import { checkedSearch, checkedFileText, searchPath, fileTextPath, resourceNames, textStates, officeTextNotice, type SearchHit, type SearchType } from '@copypaste/contracts/search';
 import { client } from '../../platform/taro';
 import { Scope, MobileError } from '../../platform/session';
 import { usePage, go } from '../../platform/page';
@@ -32,5 +32,5 @@ function Workspace({ scope }: { scope: Scope }) {
 function Preview({ hit, scope, close }: { hit: SearchHit; scope: Scope; close(): void }) {
   const file = hit.resource.id, version = hit.resource.version_id!, [offsets, setOffsets] = useState([0]), offset = offsets[offsets.length - 1];
   const text = useResource(fileTextPath(file, version, offset), scope, v => checkedFileText(v, file, version, offset));
-  return <Section title={hit.title + ' · 正文'}><Text className="cp-muted cp-small">固定版本 {version}</Text><Notice error={text.error} />{text.loading ? <Busy /> : text.value && <>{text.value.state === 'ready' ? <><Text className="cp-muted cp-small">提取 {date(text.value.indexed_at)} · 字符 {offset + 1}–{offset + [...text.value.text].length}／{text.value.total_characters}</Text><Text className="cp-search-snippet">{text.value.text || '此版本没有可显示的正文。'}</Text></> : <Text>{textStates[text.value.state]}。可打开文件详情查阅原件。</Text>}{offsets.length > 1 && <Action secondary onClick={() => setOffsets(old => old.slice(0, -1))}>上一段正文</Action>}{text.value.next_offset !== null && <Action secondary onClick={() => setOffsets(old => [...old, text.value!.next_offset!])}>下一段正文</Action>}</>}<Action secondary onClick={close}>关闭正文</Action></Section>;
+  return <Section title={hit.title + ' · 正文'}><Text className="cp-muted cp-small">固定版本 {version}</Text><Notice error={text.error} />{text.loading ? <Busy /> : text.value && <>{text.value.state === 'ready' ? <><Text className="cp-muted cp-small">提取 {date(text.value.indexed_at)} · 字符 {offset + 1}–{offset + [...text.value.text].length}／{text.value.total_characters}</Text>{text.value.extractor === 'office-v1' && <Text className="cp-notice cp-paragraph">{officeTextNotice}</Text>}<Text className="cp-search-snippet">{text.value.text || '此版本没有可显示的正文。'}</Text></> : <Text>{textStates[text.value.state]}。可打开文件详情查阅原件。</Text>}{offsets.length > 1 && <Action secondary onClick={() => setOffsets(old => old.slice(0, -1))}>上一段正文</Action>}{text.value.next_offset !== null && <Action secondary onClick={() => setOffsets(old => [...old, text.value!.next_offset!])}>下一段正文</Action>}</>}<Action secondary onClick={close}>关闭正文</Action></Section>;
 }

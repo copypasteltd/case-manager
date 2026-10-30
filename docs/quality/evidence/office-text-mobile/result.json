@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T04:15:42.448Z",
+  "finished_at": "2026-10-30T04:16:39.958Z",
+  "checks": [
+    "Actual search includes current Office bodies once and pins the current XLSX version, excluding its older body and legacy unsupported derivation.",
+    "The real XLSX preview labels hidden sheet and unevaluated formula cache; the PPTX preview contains actual slide prose and speaker notes, with exact complete text hashes.",
+    "Actual exact-version comparison presents XLSX changes and binds office-v1 independently on both formal versions, with extraction limitations visible.",
+    "The authenticated secretary-source API returns the exact same immutable PPTX derivation after object credentials were removed; this is source retrieval, not real-model acceptance.",
+    "Owned browser pages render at the declared viewport sizes without horizontal overflow; all contexts and temporary servers are closed by the runner."
+  ],
+  "source_count": 896,
+  "source_sha256": "5a1a79c71f5dc7f3c702f1c45ac79ea601cef89a4192380871937314cef3da8b",
+  "source_after_sha256": "5a1a79c71f5dc7f3c702f1c45ac79ea601cef89a4192380871937314cef3da8b",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "a6ec18d83bc41085c77dab411f84ce78a533076139e54c114e0aeb0dd633064d",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": true,
+  "real_api_forwarded_without_response_substitution": true,
+  "build_source_after_sha256": "a6ec18d83bc41085c77dab411f84ce78a533076139e54c114e0aeb0dd633064d",
+  "build_source_unchanged": true
+}

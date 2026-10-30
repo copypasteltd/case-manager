@@ -1,5 +1,6 @@
 import { Text, View } from '@tarojs/components';
 import { useEffect, useState } from 'react';
+import { officeTextNotice } from '@copypaste/contracts/search';
 import { checkedComparison, comparisonEligible, comparisonMeaning, comparisonPath, type ComparisonSelection, type ComparisonView, type FileComparison } from '@copypaste/contracts/file-comparison';
 import { Scope, type Schemas } from '../../platform/session';
 import { client } from '../../platform/taro';
@@ -24,7 +25,7 @@ export function FileComparisonPanel({ file, versions, more, loading, loadMore, u
     catch (cause) { setRequest(undefined); setInputError(cause); }
   }
   return <Section title='比较两个内容版本'><View className='cp-pad'>
-    <Text className='cp-paragraph'>选择准确正式版本，比较完整提取正文。支持文本、Markdown、CSV、JSON及DOCX正文；原件排版、图片和批注需另行查阅。</Text>
+    <Text className='cp-paragraph'>选择准确正式版本，比较完整提取正文。支持文本、Markdown、CSV、JSON及DOCX、XLSX、PPTX正文；原件排版、图片和批注需另行查阅。</Text>
     <SelectField label='比较基础版本' value={baseID} options={options} disabled={unavailable || file.state !== 'active'} onChange={id => { setBaseID(id); reset(); }} />
     <SelectField label='比较目标版本' value={targetID} options={options} disabled={unavailable || file.state !== 'active'} onChange={id => { setTargetID(id); reset(); }} />
     <SelectField label='差异显示范围' value={view} options={[[ 'changes', '差异与前后文' ], [ 'all', '全部正文' ]]} disabled={unavailable} onChange={v => { setView(v as ComparisonView); reset(); }} />
@@ -33,7 +34,7 @@ export function FileComparisonPanel({ file, versions, more, loading, loadMore, u
     {more && <Action secondary loading={loading} onClick={loadMore}>加载更多可选历史版本</Action>}
     {options.length < 3 && <Text className='cp-small cp-paragraph'>当前加载的可选文本版本不足两个，可继续加载历史版本，或查阅原件及提取状态。</Text>}
     <Notice error={inputError ?? raw.error ?? resultError} />{request && raw.loading && <Busy />}
-    {value && request && <View><Text className='cp-row-title'>内容版本 {value.base.seq} → {value.target.seq}</Text><Text className='cp-paragraph'>{comparisonMeaning(value)}</Text>
+    {value && request && <View><Text className='cp-row-title'>内容版本 {value.base.seq} → {value.target.seq}</Text><Text className='cp-paragraph'>{comparisonMeaning(value)}</Text>{value.extractor !== 'text-v1' && <Text className='cp-notice cp-paragraph'>{officeTextNotice}</Text>}
       <Text className='cp-paragraph'>新增 {value.added_lines} 行 · 删除 {value.removed_lines} 行 · 相同 {value.unchanged_lines} 行</Text>
       <Text className='cp-small cp-paragraph'>{value.view === 'all' ? '全部正文按页展示。' : '展示全部差异及前后各3行；省略相同行另行标明。'}末尾换行单独核对。{value.algorithm === 'bounded-replacement-v1' && '变化较多，完整中段按替换呈现；行数可能包含中段内相同的行。'}</Text>
       <Text className='cp-small'>基础原件／正文摘要</Text><Text className='cp-code' selectable>{value.base.source_sha256 + '\n' + value.base.text_sha256}</Text>

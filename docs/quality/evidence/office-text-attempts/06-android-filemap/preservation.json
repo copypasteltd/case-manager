@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "status": "interrupted_pending_file_map",
+  "checked_at": "2026-10-30T04:37:52.590055+00:00",
+  "raw_log": "app/.local/office-text-attempt-06/bundle.log",
+  "raw_log_sha256": "c8d48257c3f3eb8094b0e93c396d30b9e72e4b2b555b2e5b720e95e47fb2fcb9",
+  "observed": {
+    "dependency_graph_ready": false,
+    "worker_locks": [
+      true,
+      true
+    ],
+    "both_worker_states": "ok",
+    "sampled_worker_stack": "node:internal/child_process channel.onread",
+    "sampled_worker_active_resources": [
+      "PipeWrap",
+      "PipeWrap"
+    ],
+    "worker_entry": "metro-file-map/src/worker.js",
+    "isolated_direct_and_two_worker_rpc_returned": true
+  },
+  "root_cause_proven": false,
+  "application_sources_changed": false,
+  "inspector_attached_to_owned_compile_processes_only": true,
+  "diagnostic_inspectors_closed": true,
+  "next_attempt": "Same Metro command and validations with max-workers 1; no application deadline or assertion changes.",
+  "counted_as_current_build": false,
+  "device_executed": false,
+  "virtualization_used": false
+}

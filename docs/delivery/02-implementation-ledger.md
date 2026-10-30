@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量120：GAP-04／18增加XLSX／PPTX准确版本提取、当前正文检索、全文比较和秘书资料读取，保留原件与旧提取证据。PDF／OCR、复杂DOCX、Office编辑／版式及完整业务验收继续开放。仍23 active（14 P0／9 P1）、5 excluded。见[设计](../development/120-office-text-extraction.md)及[验证](../quality/120-office-text-verification.md)。
+
 增量119：GAP-24已增加完整原生发布工具与手动CI代码；目标Runner、Linux服务／HTTPS、独立身份与生产PG的实际发布验收继续开放。功能源码及原回归保持118，原316份媒体字节不变，本轮不重录。仍23项待完成（14 P0／9 P1）、5项移出。见[设计](../development/119-native-production-release.md)、[手册](../operations/03-native-release-runbook.md)及[核验](../quality/119-native-release-verification.md)。
 
 增量118：GAP-03／18接通四端真实手续费原费用／资金／分配的准确关联、当前双币余额、明确人工撤销、不可变审计历史及版本分页。整理依据不改费用／现金事实，不自动推导汇兑差额。整个23项工作包（14 P0／9 P1）和5项移出不变。见[设计](../development/118-payment-fee-evidence.md)与[核验](../quality/118-payment-fee-verification.md)。

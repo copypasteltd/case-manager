@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "counted_as_final_pass": false,
+  "reason": "Mobile locator incorrectly nested the active-page selector inside a relative has selector; the response-wait promise rejected before the locator failed. No application response was replaced. Fix locator scope and attach immediate rejection handling; re-run both capture harnesses. Prior client/Go application sources are unchanged.",
+  "private_logs_and_frames": "app/.local/office-text-attempt-03",
+  "application_sources_changed": false
+}

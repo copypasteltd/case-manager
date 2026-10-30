@@ -1,0 +1,72 @@
+{
+  "after_schema": 92,
+  "before_schema": 91,
+  "facts": {
+    "actual_cost_entries": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_policies": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "contract_revisions": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "contracts": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "file_replicas": {
+      "rows": 18,
+      "hash": "c2f37217ef7fee1c904bc7e315ee8ec6"
+    },
+    "file_text_derivations": {
+      "rows": 9,
+      "hash": "9d813cbb751bc33517b0fb1cff62a364"
+    },
+    "file_versions": {
+      "rows": 9,
+      "hash": "ccf68993c89318f0f1b39e8363389833"
+    },
+    "files": {
+      "rows": 8,
+      "hash": "7b62b9220d5d39e1cbd36b92f79fd5a5"
+    },
+    "payment_records": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    }
+  },
+  "no_body_backfill": true,
+  "old_text_evidence_unchanged": true,
+  "original_facts_unchanged": true,
+  "passed": true,
+  "selector_and_guard_ready": true,
+  "checked_at": "2026-10-30T03:52:39.971709+00:00",
+  "source_sha256": "c2b11c911ecac0c4a9037d7fe3ca9c0a44287de4b1b7788635602fe82107e996",
+  "published_fixture_commit": "ec2d2510b4ceb1b07459f66efca8477cb229ec1f",
+  "prior_checkout_archive_sha256": "91a2d217b4aa07cadb52b58aee4dbbf6830e840a6811ca354cb225c5ca8fa268",
+  "original_test_sha256": "1d0f17ee9f7a6b475e12ea02888a3e9ce9b42d91bf14820704fafe4b696c53f1",
+  "adapted_test_sha256": "0f5a289df641ba8f24954312b1d3c3acfb1ae871f6553981864d83ba3e20efab",
+  "adaptation": "Add one prior-source unsupported XLSX and end-of-journey schema92 assertion; existing prior file/search cases are unchanged.",
+  "actual_current_migrator_sha256": "c22c05800d0a9f5faffed65f7b5b103389dea28aa98599febc1ccce2f037f880",
+  "raw_log_sha256": "2e8319a6b448d1f46195ca029cb1382543fb9227cb124357d640c69f39923c56",
+  "prior_fixture_case_records": 10,
+  "counts_as_current_backend_tests": false,
+  "verification_script_sha256": "7159dd7faf2b3117c0ca086b6e97d1630d857bdcff04b37f2b97b5c8ef492341",
+  "raw_log": "ignored app/.local/office-text-upgrade-v1.log"
+}

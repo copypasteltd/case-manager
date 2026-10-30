@@ -1,5 +1,7 @@
 # 增量92：统一搜索与固定版本正文 / Unified search and fixed-version text
 
+增量120当前补充：XLSX／PPTX已接通有界准确版本正文预览／检索／比较与秘书资料读取；Excel公式与缓存、隐藏内容、PPT备注及明确原件边界见[Office正文设计](../development/120-office-text-extraction.md)。PDF/OCR、Office编辑和复杂DOCX仍开放；范围按[修订99](../delivery/04-current-scope-and-acceptance.md)。
+
 本轮将原先只在 OpenAPI 声明的 `/search` 接通为实际业务接口，并新增固定版本正文提取、索引、查询与预览。应用位于 `app/`，全部说明、验证与媒体位于 `docs/`。开发预览继续保留 Web、微信、抖音和 Android 四端；本轮没有增加 PDF、OCR、Excel 或任意格式解析承诺。
 
 This increment connects the previously declared search endpoint to actual business records and adds bounded extraction, persisted text, live authorization, snippets and exact-version previews. The four-client scope remains unchanged. PDF, OCR and spreadsheet extraction are not implemented by this increment.

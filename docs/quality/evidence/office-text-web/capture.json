@@ -1,0 +1,65 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/office-text-web-xlsx.png",
+      "sha256": "71f78998b67353c524fdd6531e9b620bfc670e7be5b1ac4662d407b1c7fcaad5"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-pptx.png",
+      "sha256": "9a7c218b393249441217787a098e1c9f5478fea54201e3be7187fdbae3b1c990"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-comparison.png",
+      "sha256": "853fb4e86e4a1780a46603ee8d89752e5fde4651f9e903c33c4613353ba46157"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-dark.png",
+      "sha256": "072cd5678347e22f0b029e7f0183a60eef72e70b9c233c362cd72094b4508c31"
+    }
+  ],
+  "recordings": [
+    {
+      "name": "office-text-web",
+      "frame_count": 16,
+      "duration_ms": 3432,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/office-text-web/frames.json",
+      "manifest_sha256": "d67a531cc9fb23da76f04cb45352fafe19f935e924d828bfa973c95a968703f8"
+    }
+  ],
+  "documents": [
+    {
+      "file_id": "5c420f9a-e65d-4f33-bdf2-89f6be21a177",
+      "version_id": "0a7c6523-f65f-4cca-93a2-4d2ba47352c4",
+      "extractor": "office-v1",
+      "source_sha256": "a31264d20e511621255ec1293db5a32db1c8dcc8268e776a2e268eaa54ebdf68",
+      "text_sha256": "20b085d1f7eca241d435bdebd9462d98a4c0900120f22ce5a3b7d03f8cad4682"
+    },
+    {
+      "file_id": "b0c03635-f1a7-485f-ae83-55329c6bb59f",
+      "version_id": "23a04d08-b3e2-41ae-8907-c789798e2c93",
+      "extractor": "office-v1",
+      "source_sha256": "291e9489d664ca2e200def2cd6a3f900879614ded5b5d5679a47b07ca871051c",
+      "text_sha256": "2dfb298fb3e20060b87ecc3da3c0bc8852705ff8f6b5d220fa52bdda193045b3"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false
+}

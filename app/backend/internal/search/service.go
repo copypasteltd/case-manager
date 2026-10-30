@@ -13,7 +13,6 @@ import (
 	"unicode/utf8"
 
 	"copypaste.hk/platform/internal/core"
-	"copypaste.hk/platform/internal/files"
 	"copypaste.hk/platform/internal/identity"
 	"copypaste.hk/platform/internal/platform"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -108,7 +107,7 @@ const query = `WITH RECURSIVE active_folders AS (
  WHEN d.state IS NULL OR d.state='queued' THEN 'pending' ELSE d.state END,d.indexed_at
  FROM files f JOIN active_folders a ON a.org_id=f.org_id AND a.id=f.folder_id
  LEFT JOIN file_versions v ON v.org_id=f.org_id AND v.file_id=f.id AND v.id=f.current_version_id
- LEFT JOIN file_text_derivations d ON d.org_id=v.org_id AND d.file_id=v.file_id AND d.version_id=v.id AND d.source_sha256=v.sha256 AND d.extractor=$13
+ LEFT JOIN file_text_derivations d ON d.org_id=v.org_id AND d.file_id=v.file_id AND d.version_id=v.id AND d.source_sha256=v.sha256 AND d.extractor=file_text_extractor(v.media_type)
  WHERE f.org_id=$1 AND f.state='active' AND can_access(f.org_id,$2,'file.read','file',f.id,a.project_id,f.creator_id,f.classification,$3,false)
 )
 SELECT kind,id,version_id,title,
@@ -154,7 +153,7 @@ func (s *Service) Search(ctx context.Context, a core.Actor, f Filter) (core.Page
 		return out, err
 	}
 	defer tx.Rollback(ctx)
-	rows, err := tx.Query(ctx, query, a.OrgID, a.UserID, a.Channel, pattern, f.Query, f.Type, f.ProjectID, f.CompanyOnly, before, beforeID, beforeKind, f.Limit+1, files.TextExtractor)
+	rows, err := tx.Query(ctx, query, a.OrgID, a.UserID, a.Channel, pattern, f.Query, f.Type, f.ProjectID, f.CompanyOnly, before, beforeID, beforeKind, f.Limit+1)
 	if err != nil {
 		return out, err
 	}

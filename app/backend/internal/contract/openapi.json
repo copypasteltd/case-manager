@@ -44620,7 +44620,11 @@
             "format": "uuid"
           },
           "extractor": {
-            "const": "text-v1"
+            "type": "string",
+            "enum": [
+              "text-v1",
+              "office-v1"
+            ]
           },
           "state": {
             "type": "string",
@@ -44724,6 +44728,13 @@
             "type": "string",
             "format": "uuid"
           },
+          "extractor": {
+            "type": "string",
+            "enum": [
+              "text-v1",
+              "office-v1"
+            ]
+          },
           "seq": {
             "type": "integer",
             "minimum": 1,
@@ -44759,6 +44770,7 @@
         "additionalProperties": false,
         "required": [
           "version_id",
+          "extractor",
           "seq",
           "media_type",
           "size_bytes",
@@ -44840,7 +44852,12 @@
             "maximum": 9007199254740991
           },
           "extractor": {
-            "const": "text-v1"
+            "type": "string",
+            "enum": [
+              "text-v1",
+              "office-v1",
+              "mixed"
+            ]
           },
           "base": {
             "$ref": "#/components/schemas/FileTextComparisonVersion"

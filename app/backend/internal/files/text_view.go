@@ -57,6 +57,7 @@ func (s *Service) Text(ctx context.Context, a core.Actor, fileID, versionID stri
 		return out, core.Missing()
 	}
 	out.SourceSHA256 = v.SHA256
+	out.Extractor = TextExtractorFor(v.MediaType)
 	if v.ScanState != "clean" {
 		out.State = "blocked"
 		code := "FILE_TEXT_SCAN_REQUIRED"
@@ -67,7 +68,7 @@ func (s *Service) Text(ctx context.Context, a core.Actor, fileID, versionID stri
 	err = tx.QueryRow(ctx, `SELECT state,text_sha256,indexed_at,error_code,character_count,
         coalesce(substring(body FROM $5::int FOR $6::int),'') FROM file_text_derivations
         WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND source_sha256=$7`,
-		a.OrgID, fileID, versionID, TextExtractor, offset+1, limit, v.SHA256).
+		a.OrgID, fileID, versionID, out.Extractor, offset+1, limit, v.SHA256).
 		Scan(&out.State, &out.TextSHA256, &out.IndexedAt, &out.ErrorCode, &out.TotalCharacters, &body)
 	if err != nil && err != pgx.ErrNoRows {
 		return out, err

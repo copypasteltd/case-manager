@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "source_sha256": "c2b11c911ecac0c4a9037d7fe3ca9c0a44287de4b1b7788635602fe82107e996",
+  "records": 1526,
+  "logs": [
+    {
+      "batch": 1,
+      "file": ".local/office-text-backend/backend-batch-1.log",
+      "sha256": "b040f9fd718ec3c6da9400ba0fafa5c1e4d5152b8de9aa75d9f59a4bdb12e129",
+      "records": 141,
+      "execution": "Initial complete passing batch; application inputs unchanged"
+    },
+    {
+      "batch": 2,
+      "file": ".local/office-text-backend/backend-batch-2.log",
+      "sha256": "920f9d55e00bdb5bae80a19ac2b059f0f0b5a1707d9efc4e870ba902f71b72bb",
+      "records": 204,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 3,
+      "file": ".local/office-text-backend/backend-batch-3.log",
+      "sha256": "c15588371730455818b121b9506777004bc2bbb1161d4d43dbd283b350661aac",
+      "records": 94,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 4,
+      "file": ".local/office-text-backend/backend-batch-4.log",
+      "sha256": "3807ea87b486c321aaae5f6e2ca0cfd416e5d441bde957beadc0df0040dcdecf",
+      "records": 132,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 5,
+      "file": ".local/office-text-backend/backend-batch-5.log",
+      "sha256": "6389433a543a36bc363bafccf2b6c172b961aacc52636ba4938285da5d2b8861",
+      "records": 116,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 6,
+      "file": ".local/office-text-backend/backend-batch-6.log",
+      "sha256": "ca2c9ca96fc2e30aabc608497b6cb0adf37c33c5e2c80279502462de35ef996f",
+      "records": 68,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 7,
+      "file": ".local/office-text-backend/backend-batch-7.log",
+      "sha256": "1bba0171da3d7697271f417651fdbfbd6d94480defca02ba6c6c1ed0a988ff4b",
+      "records": 50,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 8,
+      "file": ".local/office-text-backend/backend-batch-8.log",
+      "sha256": "912071c254b8af60376fe437de82762aab8e6dff7f8062c1899c3bd589de0f6e",
+      "records": 134,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 9,
+      "file": ".local/office-text-backend/backend-batch-9.log",
+      "sha256": "fad26e64153fd9d222ab35409e15b465e6d477dff87dbf9641ad9c42d2ce6c01",
+      "records": 212,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 10,
+      "file": ".local/office-text-backend/backend-batch-10.log",
+      "sha256": "98d3c55fdd63762556176e91634e1adc93a13b5de37bfe21770637a80180c2c6",
+      "records": 123,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 11,
+      "file": ".local/office-text-backend/backend-batch-11.log",
+      "sha256": "74a6966f3a5d63d7794baedb2630ebf4df11fb9478da0c4ea1f00d418e290f36",
+      "records": 117,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 12,
+      "file": ".local/office-text-backend/backend-batch-12.log",
+      "sha256": "bb873569a2c5a2a349e883b7755e0d5dbff800483cd72f63bbde2f552949a35f",
+      "records": 125,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    },
+    {
+      "batch": 13,
+      "file": ".local/office-text-backend/backend-batch-13.log",
+      "sha256": "d620046ef83569c44b4077d0809e0684d097eda12ac01c3ea79051e940d87156",
+      "records": 10,
+      "execution": "Resumed unchanged cases with one Go package at a time; deadlines/leases unchanged"
+    }
+  ],
+  "failed_interrupted_attempt": "docs/quality/evidence/office-text-attempts/02-concurrent-backend/preservation.json",
+  "raw_logs_private": true,
+  "earlier_failures_counted_as_final_pass": false,
+  "freezer_sha256": "cb085d3803879fa447b225ace0d241369be6c78ce87b2634a3a918968db3c87c"
+}

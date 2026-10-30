@@ -5,6 +5,7 @@ export type FileText = S['FileText'];
 export type SearchPage = { items: SearchHit[]; next_cursor: string | null };
 export const resourceNames = { project: '项目', task: '任务', post: '知识记录', file: '文件', folder: '目录' } as const;
 export type SearchType = '' | keyof typeof resourceNames;
+export const officeTextNotice = 'Office 正文为文字提取：Excel 数值保留原值、公式不计算且缓存可能过期；PowerPoint 保留形状顺序与讲者备注。包含隐藏内容，版式及图像请查原件。';
 export const textStates: Record<FileText['state'], string> = { pending: '正文待提取', ready: '正文已收录', unsupported: '此格式或大小暂未支持', blocked: '来源已阻止读取', failed: '正文提取失败' };
 const id = (x: unknown): x is string => typeof x === 'string' && /^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/i.test(x);
 const hash = (x: unknown): x is string => typeof x === 'string' && /^[a-f0-9]{64}$/.test(x);
@@ -32,7 +33,7 @@ export function fileTextPath(file: string, version: string, offset = 0) {
 }
 export function checkedFileText(value: unknown, file: string, version: string, offset: number): FileText {
   const v = value as FileText;
-  if (!v || v.file_id !== file || v.version_id !== version || v.extractor !== 'text-v1' || !own(textStates, v.state) || !hash(v.source_sha256) || v.offset !== offset || typeof v.text !== 'string' || [...v.text].length > 4000 || v.indexed_at !== null && !date(v.indexed_at) || v.error_code !== null && (typeof v.error_code !== 'string' || !/^FILE_TEXT_[A-Z_]{1,64}$/.test(v.error_code))) throw invalid();
+  if (!v || v.file_id !== file || v.version_id !== version || !['text-v1', 'office-v1'].includes(v.extractor) || !own(textStates, v.state) || !hash(v.source_sha256) || v.offset !== offset || typeof v.text !== 'string' || [...v.text].length > 4000 || v.indexed_at !== null && !date(v.indexed_at) || v.error_code !== null && (typeof v.error_code !== 'string' || !/^FILE_TEXT_[A-Z_]{1,64}$/.test(v.error_code))) throw invalid();
   if (v.state === 'ready') {
     if (!hash(v.text_sha256) || !date(v.indexed_at) || v.error_code !== null || !Number.isSafeInteger(v.total_characters) || v.total_characters! < offset || v.total_characters! > (2 << 20)) throw invalid();
     const end = offset + [...v.text].length;

@@ -1,10 +1,10 @@
 # 文件正文索引运维 / File text indexing operations
 
-[功能与协议](../development/92-file-text-search.md) · [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md)
+[Office 扩展与格式边界](../development/120-office-text-extraction.md) · [功能与协议](../development/92-file-text-search.md) · [中文使用指南](../README.zh-CN.md) · [English guide](../README.en.md)
 
 ## 1. 原生配置 / Native configuration
 
-执行迁移75后，以应用数据库角色运行 `platform worker-file-text`。不得使用迁移／数据库超级用户身份运行常驻worker。Linux模板：`app/deploy/native/copypaste-file-text-worker.service`。本地仅允许原生工具，`python app/scripts/run_backend.py worker-file-text`会将CP配置缩减至数据库、明确provider和独立文本读取角色。
+执行当前全部迁移（增量120为92）后，以应用数据库角色运行 `platform worker-file-text`。不得使用迁移／数据库超级用户身份运行常驻worker。Linux模板：`app/deploy/native/copypaste-file-text-worker.service`。本地仅允许原生工具，`python app/scripts/run_backend.py worker-file-text`会将CP配置缩减至数据库、明确provider和独立文本读取角色。
 
 ```dotenv
 CP_ENV=production
@@ -38,12 +38,14 @@ Keep real credentials outside Git and restrict the environment file. Grant read 
 | 失败 / Failed | 核对安全错误码、完整字节／摘要、格式损坏和尝试上限；勿打印正文、对象密钥或云凭据 / Inspect safe codes and evidence without logging private content |
 | 已收录 / Ready | 对比固定版本ID、来源SHA、文本SHA、提取器、时间；改名不重写原件，正式新版本独立提取 / Compare exact version/hash/extractor/timestamp evidence |
 
-原件和派生文本分别备份：对象存储保存正式字节，PostgreSQL保存授权、版本、索引与提取证据；仅备份OSS/R2不包含这些数据库事实。恢复后先验证数据库／对象的对应关系和正式版本可读性，再开放检索。终态不能直接UPDATE／DELETE；故障修复须保留证据，新格式适配通过版本化迁移与提取器升级处理。
+正式原件字节继续由 OSS＋R2 保存；PG保存授权、版本与提取证据。普通文件版本恢复继续使用既有业务流程。派生正文终态不能直接UPDATE／DELETE；格式升级采用新的提取标识，不重置旧结果。迁移92将XLSX／PPTX选为office-v1，旧text-v1 unsupported结果保留；升级本身不回填正文。
 
-Back up PostgreSQL as well as object storage: derivation evidence and authorization live in the database. After recovery, verify source/version correspondence before exposing search. Do not reset or mutate terminal evidence in place. Future adapters require a versioned extractor migration.
+Original bytes remain in OSS/R2 while PG stores authorization, formal-version and derivation evidence. Ordinary file/version recovery remains available. Terminal derivatives cannot be reset. Schema92 selects office-v1 for XLSX/PPTX and preserves all prior text-v1 results, without object reads or body backfill during upgrade.
 
-## 3. 验证与生产限制 / Acceptance
+## 3. 当前验证边界 / Current verification boundary
 
-本轮验证覆盖受控对象来源、真实本地HTTP／数据库、Web与Taro H5、新19页双小程序编译和Android开发包。生产前仍需实际对象读取策略、香港链路、2TB索引负载／数据库容量、提取资源限制、监控、备份恢复及真实设备验证。PDF/OCR/Excel等格式保留未接通状态，不将名称命中标为正文已收录。
+增量120核对受控准确对象来源、真实本地PG／队列／HTTP、Web与Taro H5以及双小程序／Android本地产物。XLSX／PPTX仅支持已说明的文字子集，原件8MiB、正文2MiB；公式不计算、缓存可能过期、隐藏内容按完整文件权限读取。PDF/OCR、复杂DOCX与原件版式仍开放。
 
-Current proof uses controlled object bytes with native PostgreSQL/HTTP and real browser UI, plus compiled client artifacts. Production acceptance still requires actual cloud credentials/network, representative data scale, resource measurements, backup recovery and devices. Unsupported formats retain explicit state and name-only search.
+实际云端独立身份、对象可读性及生产运行验收仍属于GAP-20／24／25；不以本地合成来源代替。用户移出的真机、网络性能／实网120GB专项、历史迁移／容灾和AI费用控制不作为当前验收门槛。AI权限、隔离、审计和技术资源限制保留。
+
+Local proof covers exact controlled objects and the native pipeline, real Web/Taro H5 pages and compiled client artifacts. It does not establish live cloud or production acceptance. The user-excluded device, network-performance/live120GB, historical migration/DR and AI-cost gates are not reintroduced. Authorization, isolation, audit and resource bounds remain required.

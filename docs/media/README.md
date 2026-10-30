@@ -1,5 +1,16 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量120实际Web／Taro H5合成演示：XLSX隐藏工作表与公式缓存、PPTX讲者备注、准确版本比较。录制在登录后开始，不包含密码／MFA或真实业务记录。
+
+| 页面 | Web | Taro H5 |
+| --- | --- | --- |
+| Excel正文 | [截图](screenshots/office-text-web-xlsx.png) | [截图](screenshots/office-text-mobile-xlsx.png) |
+| PowerPoint正文 | [截图](screenshots/office-text-web-pptx.png) | [截图](screenshots/office-text-mobile-pptx.png) |
+| 版本比较 | [截图](screenshots/office-text-web-comparison.png)、[深色](screenshots/office-text-web-dark.png) | [截图](screenshots/office-text-mobile-comparison.png) |
+| 录屏 | [MP4](videos/office-text-web.mp4) · [GIF](gifs/office-text-web.gif) | [MP4](videos/office-text-mobile.mp4) · [GIF](gifs/office-text-mobile.gif) |
+
+新素材对应最终源码；初轮素材单独归档，旧316份已发布媒体字节保留。[验证](../quality/120-office-text-verification.md)。
+
 增量119 / Increment119只更新服务器发布工程，业务页面源码保持118。本轮没有打开浏览器或重新捕获截图／录屏／GIF；原316份媒体保持发布字节、日期和原验证范围，不作为Linux部署或CI运行证据。见[本轮验证](../quality/119-native-release-verification.md)。
 
 增量118 / Increment118：实际认证后的隔离合成手续费页面；6 PNG、2静音MP4、2截图导览GIF。MP4记录已关联依据的真实页面滚动；GIF按三张实际截图展示核对、关联及撤销，每张2秒。密码、MFA输入及私有能力不入素材。旧素材保留原日期与原检查范围。

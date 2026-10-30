@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "final_source": false,
+  "reason": "Additional mixed-extractor byte/text equality correction changed shared source during initial client/H5 checks. Initial Web passed five groups; H5 stopped before fixture startup; initial client commands passed but input digest changed. Final-source checks run separately.",
+  "screenshots": [
+    {
+      "original_file": "docs/media/screenshots/office-text-web-xlsx.png",
+      "archive_file": "docs/quality/evidence/office-text-attempts/01-before-mixed-provenance/media/office-text-web-xlsx.png",
+      "sha256": "ad7c8c46ab3a32dd55e42fd1e887711caf6117e72eb6409d1dc73637b36bf1a3"
+    },
+    {
+      "original_file": "docs/media/screenshots/office-text-web-pptx.png",
+      "archive_file": "docs/quality/evidence/office-text-attempts/01-before-mixed-provenance/media/office-text-web-pptx.png",
+      "sha256": "9c84d9032c3d6c8742423e79b3c39840e2c8dcbc39f1f75b1d30d4a5e127ce8e"
+    },
+    {
+      "original_file": "docs/media/screenshots/office-text-web-comparison.png",
+      "archive_file": "docs/quality/evidence/office-text-attempts/01-before-mixed-provenance/media/office-text-web-comparison.png",
+      "sha256": "364dd40e8663cb87afd03fee2c877a824f7a3f96d3396f95506608b77002ab1e"
+    },
+    {
+      "original_file": "docs/media/screenshots/office-text-web-dark.png",
+      "archive_file": "docs/quality/evidence/office-text-attempts/01-before-mixed-provenance/media/office-text-web-dark.png",
+      "sha256": "1c963a6488104c3a336ae7aaa805e63ae6475ae8a7fc72ed996f040106add928"
+    }
+  ],
+  "private_logs_and_frames": "app/.local/office-text-attempt-01",
+  "preliminary_source_record": "docs/quality/evidence/office-text/preliminary-source.json"
+}

@@ -40,9 +40,10 @@ func AgentTextIndex(ctx context.Context, db platform.DBTX, a core.Actor, fileID,
 		return out, core.Fail(422, "AGENT_TEXT_SCAN_REQUIRED", "秘书正文处理要求此准确版本的扫描结果为通过")
 	}
 	out.SourceSHA256 = v.SHA256
+	out.Extractor = TextExtractorFor(v.MediaType)
 	err = db.QueryRow(ctx, `SELECT state,text_sha256,indexed_at,character_count,error_code
  FROM file_text_derivations WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND source_sha256=$5`,
-		a.OrgID, fileID, versionID, TextExtractor, v.SHA256).
+		a.OrgID, fileID, versionID, out.Extractor, v.SHA256).
 		Scan(&out.State, &out.TextSHA256, &out.IndexedAt, &out.TotalCharacters, &out.ErrorCode)
 	if err != nil && err != pgx.ErrNoRows {
 		return out, err

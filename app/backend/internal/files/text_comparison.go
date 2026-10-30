@@ -15,6 +15,7 @@ import (
 
 type TextComparisonVersion struct {
 	VersionID      string    `json:"version_id"`
+	Extractor      string    `json:"extractor"`
 	Seq            int64     `json:"seq"`
 	MediaType      string    `json:"media_type"`
 	SizeBytes      string    `json:"size_bytes"`
@@ -67,13 +68,14 @@ func comparisonBody(ctx context.Context, tx pgx.Tx, a core.Actor, fileID, versio
 	if v.ScanState != "clean" {
 		return out, "", core.Fail(422, "FILE_COMPARISON_SCAN_REQUIRED", "比较要求两个准确版本均扫描通过；人工放行不能代替正文检查")
 	}
+	out.Extractor = TextExtractorFor(v.MediaType)
 	var state, body string
 	var hash *string
 	var count *int
 	var indexed *time.Time
 	err = tx.QueryRow(ctx, `SELECT state,coalesce(body,''),text_sha256,character_count,indexed_at
  FROM file_text_derivations WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND source_sha256=$5`,
-		a.OrgID, fileID, versionID, TextExtractor, v.SHA256).Scan(&state, &body, &hash, &count, &indexed)
+		a.OrgID, fileID, versionID, out.Extractor, v.SHA256).Scan(&state, &body, &hash, &count, &indexed)
 	if err == pgx.ErrNoRows || err == nil && state == "queued" {
 		return out, "", core.Fail(409, "FILE_COMPARISON_TEXT_PENDING", "所选版本正文尚未完成提取，请稍后重新核对")
 	}
@@ -144,11 +146,15 @@ func (s *Service) CompareText(ctx context.Context, a core.Actor, fileID string, 
 		return out, err
 	}
 	out.FileVersion, out.Base, out.Target = f.Version, base, target
+	out.Extractor = base.Extractor
+	if target.Extractor != base.Extractor {
+		out.Extractor = "mixed"
+	}
 	out.SourceEqual, out.TextEqual = base.SourceSHA256 == target.SourceSHA256, before == after
 	out.Algorithm, out.Complete = diff.Algorithm, true
 	out.BaseLines, out.TargetLines, out.AddedLines, out.RemovedLines, out.UnchangedLines = diff.BaseLines, diff.TargetLines, diff.Added, diff.Removed, diff.Unchanged
 	out.TotalRows = len(diff.Rows)
-	identity, _ := json.Marshal([]any{"file-text-comparison-v1", TextExtractor, a.OrgID, a.UserID, a.SessionID, a.AuthVersion, a.OrgAuthVersion, f.ID, f.Version, base, target, in.View, diff.Algorithm})
+	identity, _ := json.Marshal([]any{"file-text-comparison-v1", out.Extractor, a.OrgID, a.UserID, a.SessionID, a.AuthVersion, a.OrgAuthVersion, f.ID, f.Version, base, target, in.View, diff.Algorithm})
 	out.ComparisonSHA256 = core.Digest(identity)
 	if in.ComparisonSHA256 != "" && in.ComparisonSHA256 != out.ComparisonSHA256 {
 		return TextComparison{}, core.Fail(409, "FILE_COMPARISON_CHANGED", "比较依据或当前授权已变化，请从第一页重新核对")

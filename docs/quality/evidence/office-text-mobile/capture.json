@@ -1,0 +1,56 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/office-text-mobile-xlsx.png",
+      "sha256": "cff086dd787462639ecfe11aea2030874dbe64bd3d4b59b1e3b8ea081428d5f5"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-mobile-pptx.png",
+      "sha256": "108b4882b3ad32ce9111232baad43e390f4ef7309d3f5fc372f2ac0cdd34308a"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-mobile-comparison.png",
+      "sha256": "29dfa71a792f6a4d2f62a2beb7602ff31571798a7ec1352cbff5a0b26d872fe9"
+    }
+  ],
+  "recordings": [
+    {
+      "name": "office-text-mobile",
+      "frame_count": 13,
+      "duration_ms": 6531,
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "credentials_excluded": true,
+      "manifest": ".local/repository-showcase/office-text-mobile/frames.json",
+      "manifest_sha256": "106136cb83fcb98fa14c51932398803755ca52ca762b483af1bef145f4c0f12f"
+    }
+  ],
+  "documents": [
+    {
+      "file_id": "d0131ed6-71e7-4907-99a6-316d551adeb9",
+      "version_id": "216032b5-82f6-4358-8601-ca7bc6e96607",
+      "extractor": "office-v1",
+      "source_sha256": "a31264d20e511621255ec1293db5a32db1c8dcc8268e776a2e268eaa54ebdf68",
+      "text_sha256": "20b085d1f7eca241d435bdebd9462d98a4c0900120f22ce5a3b7d03f8cad4682"
+    },
+    {
+      "file_id": "bc28e5e4-ab48-4706-aa75-06b4fbf37392",
+      "version_id": "7c5d887b-3f00-4bbb-a5f3-266792e00875",
+      "extractor": "office-v1",
+      "source_sha256": "291e9489d664ca2e200def2cd6a3f900879614ded5b5d5679a47b07ca871051c",
+      "text_sha256": "2dfb298fb3e20060b87ecc3da3c0bc8852705ff8f6b5d220fa52bdda193045b3"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "scroll": 390,
+      "passed": true
+    }
+  ],
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false
+}

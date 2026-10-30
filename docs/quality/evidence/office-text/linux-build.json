@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T03:59:14.439401+00:00",
+  "source_sha256": "c2b11c911ecac0c4a9037d7fe3ca9c0a44287de4b1b7788635602fe82107e996",
+  "source_after_sha256": "c2b11c911ecac0c4a9037d7fe3ca9c0a44287de4b1b7788635602fe82107e996",
+  "commands": [
+    {
+      "name": "agent-native",
+      "package": "./cmd/agent-native",
+      "exit_code": 0,
+      "elapsed_seconds": 40.259,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform",
+      "package": "./cmd/platform",
+      "exit_code": 0,
+      "elapsed_seconds": 20.403,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "agent-native",
+      "file": ".local/office_text-linux/agent-native-linux-amd64",
+      "sha256": "b596e3bcb1d49e4986adbc56b9a93f2ff326f9f0359612f1c41daca10304d163",
+      "bytes": 12698305,
+      "format": "ELF64-x86-64"
+    },
+    {
+      "name": "platform",
+      "file": ".local/office_text-linux/platform-linux-amd64",
+      "sha256": "7240d8ad74c92072387f5be7749e74599382ea633bf86a3ebe748316b130d8bf",
+      "bytes": 37048007,
+      "format": "ELF64-x86-64"
+    }
+  ],
+  "verification_script_sha256": "69dc89761ddea857293fb58289b47538072d757b49b9c5a2f6323755dd347290",
+  "artifact_executed": false,
+  "kernel_boundary_executed": false,
+  "deployed": false
+}

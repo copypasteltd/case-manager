@@ -1,0 +1,64 @@
+{
+  "reviewed": true,
+  "checked_at": "2026-10-30T04:27:24.698349+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/office-text-mobile-comparison.png",
+      "sha256": "29dfa71a792f6a4d2f62a2beb7602ff31571798a7ec1352cbff5a0b26d872fe9"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-mobile-pptx.png",
+      "sha256": "108b4882b3ad32ce9111232baad43e390f4ef7309d3f5fc372f2ac0cdd34308a"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-mobile-xlsx.png",
+      "sha256": "cff086dd787462639ecfe11aea2030874dbe64bd3d4b59b1e3b8ea081428d5f5"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-comparison.png",
+      "sha256": "853fb4e86e4a1780a46603ee8d89752e5fde4651f9e903c33c4613353ba46157"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-dark.png",
+      "sha256": "072cd5678347e22f0b029e7f0183a60eef72e70b9c233c362cd72094b4508c31"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-pptx.png",
+      "sha256": "9a7c218b393249441217787a098e1c9f5478fea54201e3be7187fdbae3b1c990"
+    },
+    {
+      "file": "docs/media/screenshots/office-text-web-xlsx.png",
+      "sha256": "71f78998b67353c524fdd6531e9b620bfc670e7be5b1ac4662d407b1c7fcaad5"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/office-text-mobile.gif",
+      "sha256": "23d7206773e256920bbc346e91e33dbcbd08b51116e892b0ad3d3a668386bc68"
+    },
+    {
+      "file": "docs/media/gifs/office-text-web.gif",
+      "sha256": "ccce062bd92f2b239eb6fd8263fb603f90327e1d27c6c788cea48b5fb300a00e"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": [
+      0,
+      10,
+      20
+    ],
+    "mobile": [
+      0,
+      20,
+      39
+    ]
+  },
+  "observations": [
+    "Final XLSX formula/cache/hidden labels and PPTX speaker notes are visible; notices distinguish original layout from derived text.",
+    "Web light/dark exact-version comparison and mobile stacked controls fit their captured viewports; deeper mobile diff rows require scrolling.",
+    "Decoded GIF samples show the authenticated synthetic XLSX/PPTX previews and comparison.",
+    "Existing dark sidebar wordmark has low contrast; no change to that shared brand asset in this feature."
+  ],
+  "production_acceptance": false,
+  "device_executed": false
+}

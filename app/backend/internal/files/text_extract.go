@@ -19,6 +19,16 @@ const TextExtractor = "text-v1"
 const TextSourceMaxBytes int64 = 8 << 20
 const TextOutputMaxBytes = 2 << 20
 
+// Keep text-v1 derivations immutable. New OOXML formats use a separate identity
+// so previously unsupported terminal rows remain historical evidence.
+func TextExtractorFor(mediaType string) string {
+	base := strings.ToLower(strings.TrimSpace(strings.SplitN(mediaType, ";", 2)[0]))
+	if base == xlsxMediaType || base == pptxMediaType {
+		return OfficeTextExtractor
+	}
+	return TextExtractor
+}
+
 func textError(code string) error {
 	return core.Fail(422, "FILE_TEXT_"+code, "此版本未能生成可检索正文；原件及其版本不变")
 }
@@ -28,9 +38,15 @@ func textFormat(mediaType string, size int64) (string, error) {
 	if err != nil || size < 1 {
 		return "", textError("FORMAT_UNSUPPORTED")
 	}
-	if base == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" {
+	if base == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || base == xlsxMediaType || base == pptxMediaType {
 		if size > TextSourceMaxBytes {
 			return "", textError("SIZE_UNSUPPORTED")
+		}
+		if base == xlsxMediaType {
+			return "xlsx", nil
+		}
+		if base == pptxMediaType {
+			return "pptx", nil
 		}
 		return "docx", nil
 	}
@@ -58,6 +74,12 @@ func ExtractText(ctx context.Context, mediaType string, body []byte) (string, er
 	}
 	if format == "docx" {
 		return extractDOCX(ctx, body)
+	}
+	if format == "xlsx" {
+		return extractXLSX(ctx, body)
+	}
+	if format == "pptx" {
+		return extractPPTX(ctx, body)
 	}
 	if !utf8.Valid(body) || bytes.IndexByte(body, 0) >= 0 {
 		return "", textError("ENCODING_UNSUPPORTED")

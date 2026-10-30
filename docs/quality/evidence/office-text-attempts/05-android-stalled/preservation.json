@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "status": "interrupted_pending_native_bundle_after_twenty_minutes",
+  "checked_at": "2026-10-30T04:26:37.048682+00:00",
+  "logs": [
+    {
+      "file": ".local/office-text-attempt-05/bundle.log",
+      "sha256": "95e77d838813ba59572339d196acc8143301dfb8abffb072f485bafda34dd7eb",
+      "bytes": 195
+    },
+    {
+      "file": ".local/office-text-attempt-05/office-text-android-run.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "application_sources_changed": false,
+  "old_apk_counted_as_current": false,
+  "reason": "No current bundle or APK produced; preserve the attempt and retry separately. Root process attested by exact build_android.py command before termination.",
+  "virtualization_used": false,
+  "device_executed": false
+}

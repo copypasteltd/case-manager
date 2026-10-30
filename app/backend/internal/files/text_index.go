@@ -29,7 +29,9 @@ type textJobInput struct {
 	Extractor string `json:"extractor"`
 }
 
-func textDedup(version string) string { return TextJobKind + "/" + version + "/" + TextExtractor }
+func textDedup(version, extractor string) string {
+	return TextJobKind + "/" + version + "/" + extractor
+}
 
 // Schedule atomically records a version-specific derivation and its job. It is
 // infrastructure scheduling, not a user mutation or an arbitrary object read.
@@ -39,19 +41,19 @@ func (s *TextIndexService) Schedule(ctx context.Context) (int, error) {
 		return 0, err
 	}
 	defer tx.Rollback(ctx)
-	rows, err := tx.Query(ctx, `SELECT v.org_id,v.file_id,v.id,v.sha256 FROM file_versions v
+	rows, err := tx.Query(ctx, `SELECT v.org_id,v.file_id,v.id,v.sha256,file_text_extractor(v.media_type) FROM file_versions v
         JOIN files f ON f.org_id=v.org_id AND f.id=v.file_id
         WHERE v.availability='available' AND v.scan_state='clean' AND f.state='active'
-        AND NOT EXISTS(SELECT 1 FROM file_text_derivations d WHERE d.org_id=v.org_id AND d.version_id=v.id AND d.extractor=$1)
-        ORDER BY v.created_at,v.id LIMIT 50`, TextExtractor)
+        AND NOT EXISTS(SELECT 1 FROM file_text_derivations d WHERE d.org_id=v.org_id AND d.version_id=v.id AND d.extractor=file_text_extractor(v.media_type))
+        ORDER BY v.created_at,v.id LIMIT 50`)
 	if err != nil {
 		return 0, err
 	}
-	type candidate struct{ org, file, version, sha string }
+	type candidate struct{ org, file, version, sha, extractor string }
 	items := []candidate{}
 	for rows.Next() {
 		var c candidate
-		if err = rows.Scan(&c.org, &c.file, &c.version, &c.sha); err != nil {
+		if err = rows.Scan(&c.org, &c.file, &c.version, &c.sha, &c.extractor); err != nil {
 			rows.Close()
 			return 0, err
 		}
@@ -66,15 +68,15 @@ func (s *TextIndexService) Schedule(ctx context.Context) (int, error) {
 	count := 0
 	for _, c := range items {
 		tag, e := tx.Exec(ctx, `INSERT INTO file_text_derivations(org_id,file_id,version_id,extractor,source_sha256)
-            VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING`, c.org, c.file, c.version, TextExtractor, c.sha)
+            VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING`, c.org, c.file, c.version, c.extractor, c.sha)
 		if e != nil {
 			return 0, e
 		}
 		if tag.RowsAffected() == 0 {
 			continue
 		}
-		payload, _ := json.Marshal(textJobInput{c.file, c.version, TextExtractor})
-		if _, _, e = q.Enqueue(ctx, tx, jobqueue.Input{OrgID: c.org, Kind: TextJobKind, Lane: TextJobLane, DedupKey: textDedup(c.version), PayloadVersion: 1, Payload: payload, MaxAttempts: 8}); e != nil {
+		payload, _ := json.Marshal(textJobInput{c.file, c.version, c.extractor})
+		if _, _, e = q.Enqueue(ctx, tx, jobqueue.Input{OrgID: c.org, Kind: TextJobKind, Lane: TextJobLane, DedupKey: textDedup(c.version, c.extractor), PayloadVersion: 1, Payload: payload, MaxAttempts: 8}); e != nil {
 			return 0, e
 		}
 		count++
@@ -111,9 +113,12 @@ func (s *TextIndexService) textTx(ctx context.Context, j jobqueue.Job, in textJo
 		Scan(&v.ID, &v.Filename, &v.SHA256, &v.MediaType, &v.ScanState, &v.Availability, &v.Size); err != nil {
 		return fail(err)
 	}
+	if in.Extractor != TextExtractor && in.Extractor != TextExtractorFor(v.MediaType) {
+		return fail(core.Invalid("extractor", "正文提取版本与准确来源不一致"))
+	}
 	var state string
 	if err = tx.QueryRow(ctx, `SELECT state FROM file_text_derivations WHERE org_id=$1 AND file_id=$2 AND version_id=$3
-        AND extractor=$4 AND source_sha256=$5 FOR UPDATE`, j.OrgID, in.FileID, in.VersionID, TextExtractor, v.SHA256).Scan(&state); err != nil {
+        AND extractor=$4 AND source_sha256=$5 FOR UPDATE`, j.OrgID, in.FileID, in.VersionID, in.Extractor, v.SHA256).Scan(&state); err != nil {
 		return fail(err)
 	}
 	if state != "queued" {
@@ -217,7 +222,7 @@ func (s *TextIndexService) finishText(ctx context.Context, tx pgx.Tx, j jobqueue
 	}
 	_, err := tx.Exec(ctx, `UPDATE file_text_derivations SET state=$5,body=$6,text_sha256=$7,character_count=$8,
         error_code=NULLIF($9,''),indexed_at=clock_timestamp() WHERE org_id=$1 AND file_id=$2 AND version_id=$3 AND extractor=$4 AND state='queued'`,
-		j.OrgID, in.FileID, in.VersionID, TextExtractor, state, content, hash, count, code)
+		j.OrgID, in.FileID, in.VersionID, in.Extractor, state, content, hash, count, code)
 	if err == nil {
 		err = (jobqueue.Queue{DB: s.DB}).CompleteInTx(ctx, tx, j)
 	}
@@ -231,7 +236,7 @@ func (s *TextIndexService) finishText(ctx context.Context, tx pgx.Tx, j jobqueue
 // version and lease locks and rechecks the exact source before publication.
 func (s *TextIndexService) Process(ctx context.Context, j jobqueue.Job) error {
 	var in textJobInput
-	if j.Kind != TextJobKind || j.Lane != TextJobLane || j.PayloadVersion != 1 || json.Unmarshal(j.Payload, &in) != nil || !core.ValidID(in.FileID) || !core.ValidID(in.VersionID) || in.Extractor != TextExtractor || j.DedupKey != textDedup(in.VersionID) {
+	if j.Kind != TextJobKind || j.Lane != TextJobLane || j.PayloadVersion != 1 || json.Unmarshal(j.Payload, &in) != nil || !core.ValidID(in.FileID) || !core.ValidID(in.VersionID) || (in.Extractor != TextExtractor && in.Extractor != OfficeTextExtractor) || j.DedupKey != textDedup(in.VersionID, in.Extractor) {
 		return core.Invalid("job", "正文任务固定输入无效")
 	}
 	tx, v, err := s.textTx(ctx, j, in)
@@ -241,6 +246,10 @@ func (s *TextIndexService) Process(ctx context.Context, j jobqueue.Job) error {
 	defer tx.Rollback(ctx)
 	if !textAvailable(ctx, tx, j.OrgID, v) {
 		return s.finishText(ctx, tx, j, in, "blocked", "", "FILE_TEXT_SOURCE_BLOCKED")
+	}
+	// Legacy queued text-v1 Office jobs retain their original unsupported result.
+	if in.Extractor == TextExtractor && TextExtractorFor(v.MediaType) == OfficeTextExtractor {
+		return s.finishText(ctx, tx, j, in, "unsupported", "", "FILE_TEXT_FORMAT_UNSUPPORTED")
 	}
 	if _, err = textFormat(v.MediaType, v.Size); err != nil {
 		return s.finishText(ctx, tx, j, in, "unsupported", "", core.PublicError(err).Code)
@@ -301,7 +310,7 @@ func (s *TextIndexService) Fail(ctx context.Context, j jobqueue.Job, cause error
 	}
 	if permanent || j.Attempt >= j.MaxAttempts {
 		if _, err = tx.Exec(ctx, `UPDATE file_text_derivations SET state='failed',error_code=$4,indexed_at=clock_timestamp()
-            WHERE org_id=$1 AND version_id=$2 AND extractor=$3 AND state='queued'`, j.OrgID, in.VersionID, TextExtractor, code); err != nil {
+            WHERE org_id=$1 AND version_id=$2 AND extractor=$3 AND state='queued'`, j.OrgID, in.VersionID, in.Extractor, code); err != nil {
 			return err
 		}
 	}
@@ -313,7 +322,7 @@ func (s *TextIndexService) Fail(ctx context.Context, j jobqueue.Job, cause error
 
 func (s *TextIndexService) SealDead(ctx context.Context) error {
 	_, err := s.DB.Exec(ctx, `UPDATE file_text_derivations d SET state='failed',error_code='FILE_TEXT_ATTEMPTS_EXHAUSTED',indexed_at=clock_timestamp()
-        WHERE state='queued' AND extractor=$1 AND EXISTS(SELECT 1 FROM jobs j WHERE j.org_id=d.org_id AND j.kind=$2 AND j.lane=$3
-        AND j.dedup_key=$2||'/'||d.version_id::text||'/'||$1 AND j.state='dead')`, TextExtractor, TextJobKind, TextJobLane)
+        WHERE state='queued' AND extractor IN ('text-v1','office-v1') AND EXISTS(SELECT 1 FROM jobs j WHERE j.org_id=d.org_id AND j.kind=$1 AND j.lane=$2
+        AND j.dedup_key=$1||'/'||d.version_id::text||'/'||d.extractor AND j.state='dead')`, TextJobKind, TextJobLane)
 	return err
 }

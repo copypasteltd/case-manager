@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "reason": "All four business groups passed; immediate viewport-resize geometry check failed. Preserve this result and wait for layout/font/transition settling before rechecking, without changing application CSS or widening the bound.",
+  "counted_as_final_pass": false,
+  "screenshots": [
+    {
+      "file": "docs/quality/evidence/office-text-attempts/04-web-layout-settling/media/office-text-web-comparison.png",
+      "sha256": "2bfa1252ae3d7a173ace11658cabc56bebae669ade8f6ec00f471c1cf15f5a6a"
+    },
+    {
+      "file": "docs/quality/evidence/office-text-attempts/04-web-layout-settling/media/office-text-web-dark.png",
+      "sha256": "103daca3e78d4e1fca17b7cc9098a1fe1347fb06ce89bae9a9968e78892506d6"
+    },
+    {
+      "file": "docs/quality/evidence/office-text-attempts/04-web-layout-settling/media/office-text-web-pptx.png",
+      "sha256": "cb4436410701e7b9763cb50e49a116250e1123dc94ad4a33e143413273b91c81"
+    },
+    {
+      "file": "docs/quality/evidence/office-text-attempts/04-web-layout-settling/media/office-text-web-xlsx.png",
+      "sha256": "a8ec4b56e3029e8bbe35794cb6366254d28164d0d3814ded605bc113259c2f77"
+    }
+  ],
+  "private_logs_and_frames": "app/.local/office-text-attempt-04"
+}
