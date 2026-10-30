@@ -702,7 +702,7 @@ add("BudgetReconcileInput", budget_reconcile, tuple(budget_reconcile))
 add("RuntimeProfile", profile, tuple(profile))
 add("RuntimeOptions", {"available": {"type": "boolean"}, "reason": nullable(NAME),
     "profiles": array(ref("RuntimeProfile"), maxItems=8)}, ("available", "reason", "profiles"))
-source_snapshot = {"type": enum("project", "task", "post", "milestone", "deliverable", "risk", "issue", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_oa_request", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
+source_snapshot = {"type": enum("project", "task", "post", "milestone", "deliverable", "risk", "issue", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_oa_request", "agent_contract_body", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
     "resource_version": VERSION, "sha256": HASH}
 add("AgentSourceSnapshot", source_snapshot, ("type", "id", "resource_version", "sha256"))
 mutation_arguments = {"id": ID, **EXPECTED, "reason": NAME, "name": NAME, "scope": TEXT, "type": NAME,
@@ -767,16 +767,26 @@ SCHEMAS["AgentPostWriteInput"]={"oneOf":[ref("AgentPostDraftInput"),ref("AgentPo
 add("AgentPostWriteBasis",{"scope":obj({"project_id":nullable(ID),"version":{"type":"integer","minimum":0},"state":NAME,"classification":CLASS},("project_id","version","state","classification")),"post":nullable(ref("Post")),"attachments":array(ref("BusinessFileReference"),maxItems=40)},("scope","post","attachments"))
 post_write={"run_id":ID,"input":ref("AgentPostWriteInput"),"before":ref("AgentPostWriteBasis"),"intent_sha256":HASH,"status":enum("authorized","committed"),"operation_id":nullable(ID),"result":nullable(ref("Post"))}
 add("AgentPostWriteView",post_write,tuple(post_write))
+contract_body_input={"contract_id":ID,"expected_version":VERSION,"base_revision_id":ID,"content_hash":HASH,"reason":NAME}
+add("AgentContractBodyInput",contract_body_input,tuple(contract_body_input))
+contract_body_file={"draft_id":ID,"evidence":ref("BusinessFileReference"),"content":{"type":"string","minLength":1,"maxLength":49152}}
+add("AgentContractBodyFile",contract_body_file,tuple(contract_body_file))
+contract_body_view={"run_id":ID,"input":ref("AgentContractBodyInput"),"before":ref("AgentOABusinessView"),"intent_sha256":HASH,"file_intent_sha256":HASH,"status":enum("authorized","file_committed","adopted"),"file":nullable(ref("AgentContractBodyFile")),"operation_id":nullable(ID),"result":nullable(ref("AgentOABusinessView"))}
+add("AgentContractBodyView",contract_body_view,tuple(contract_body_view))
+contract_body_adopt={"intent_sha256":HASH,"version_id":ID,"content_sha256":HASH,"reviewed":{"const":True},"reason":NAME}
+add("AgentContractBodyAdopt",contract_body_adopt,tuple(contract_body_adopt))
 add("RunCreate", {**EXPECTED, "context_security_version": VERSION, "profile_id": ID,
     "client_message_id": ID, "message": {"type": "string", "minLength": 1, "maxLength": 20000},
     "skill_id": NAME, "context_refs": array(ref("ResourceRef"), maxItems=20), "mutation": ref("AgentMutationInput"), "file_update": ref("AgentFileUpdateInput"), "file_create": ref("AgentFileCreateInput"), "file_recovery": ref("AgentFileRecoveryInput"), "oa_request": ref("AgentOARequestInput"), "post_write":ref("AgentPostWriteInput")},
     ("expected_version", "context_security_version", "profile_id", "client_message_id", "message"))
+SCHEMAS["RunCreate"]["properties"]["contract_body"]=ref("AgentContractBodyInput")
 add("Run", {**RECORD, "conversation_id": ID,
     "state": enum("queued", "running", "awaiting_approval", "committing", "succeeded", "failed", "cancelled", "interrupted"),
     "last_event_seq": {"type": "integer", "minimum": 0}, "result_refs": array(ref("ResourceRef")),
     "safe_error_code": nullable(NAME), "actor_id": ID, "profile_id": ID, "client_message_id": ID, "can_cancel": {"type": "boolean"},
     "cancel_requested_at": nullable(TIME), "expires_at": TIME, "mutation": ref("AgentMutationView"), "file_update": ref("AgentFileUpdateView"), "file_create": ref("AgentFileCreateView"), "oa_request": ref("AgentOARequestView"), "post_write":ref("AgentPostWriteView"), "outcome": nullable(enum("draft", "pending", "awaiting_input", "completed", "conflict", "denied", "failed"))},
     ("id", "version", "conversation_id", "state", "last_event_seq", "actor_id", "profile_id", "client_message_id", "can_cancel", "cancel_requested_at", "expires_at"))
+SCHEMAS["Run"]["properties"]["contract_body"]=ref("AgentContractBodyView")
 add("Message", {"id": ID, "run_id": ID, "seq": VERSION, "role": enum("user", "assistant", "system"), "body": TEXT,
     "source_refs": array(ref("AgentSourceSnapshot"), maxItems=20), "visibility": enum("available", "unavailable"),
     "created_at": TIME}, ("id", "run_id", "seq", "role", "body", "source_refs", "visibility", "created_at"))
@@ -1785,6 +1795,7 @@ operation("/conversations/{id}/runtime-options", "get", "getRuntimeOptions", "Ru
 operation("/conversations/{id}/runs", "post", "createRun", "Run", "RunCreate", 202)
 operation("/runs/{id}", "get", "getRun", "Run")
 operation("/runs/{id}/oa-text-adoption", "post", "adoptOAText", "AgentOARequestView", "AgentOATextAdopt")
+operation("/runs/{id}/contract-body-adoption", "post", "adoptContractBody", "AgentContractBodyView", "AgentContractBodyAdopt")
 operation("/runs/{id}/cancel", "post", "cancelRun", "Run", "Transition")
 operation("/runs/{id}/event-log", "get", "getRunEventLog", "RunEventPage")
 PATHS["/runs/{id}/event-log"]["get"]["parameters"] += [

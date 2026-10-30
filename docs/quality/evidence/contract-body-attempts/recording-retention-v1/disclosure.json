@@ -1,0 +1,40 @@
+{
+  "status": "historical_recording_retention_failed",
+  "disclosed_at": "2026-10-30T00:53:14.572447+00:00",
+  "historical_raw_recordings_retained": false,
+  "original_bytes_recovered": false,
+  "counts_as_current_pass": false,
+  "missing_records": [
+    {
+      "preservation_file": "docs/quality/evidence/contract-body-attempts/03-before-mobile-field-fix-web/preservation.json",
+      "preservation_sha256": "3135f73a44078adbd520d84c4a27975f6c226a85889f6e154751c611a4b11790",
+      "file": "app/.local/repository-showcase/contract-body-web/frames.json",
+      "expected_sha256": "344546e98a38866d0ed71d8da85c40f8656deace5233e26f779c0407589cd661",
+      "observed_reused_path_sha256": "a6922dccd667e67839d947dd7d228d0a974bcd2a57132d50815354d41511e20d",
+      "original_bytes_recovered": false
+    },
+    {
+      "preservation_file": "docs/quality/evidence/contract-body-attempts/04-before-mobile-field-repair-web/preservation.json",
+      "preservation_sha256": "b4328220be1ff399dd48b0fcb82094056618277894d10b75984ed9bd715347e2",
+      "file": "app/.local/repository-showcase/contract-body-web/frames.json",
+      "expected_sha256": "711a46920b86c26900e4078238f013d08ff338136afa3cb57eb756ba3e88cd4e",
+      "observed_reused_path_sha256": "a6922dccd667e67839d947dd7d228d0a974bcd2a57132d50815354d41511e20d",
+      "original_bytes_recovered": false
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/recording-retention-v1/original-failed-source-check.json",
+      "sha256": "3df5755537d9551a5ea76ce981ce0ea0e7f244415f571238d5c7ffa7118a7576"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/recording-retention-v1/verify_contract_body_sources.py",
+      "sha256": "d0b904e0f88707765fd4f82182db4ff5415370b32620de6e5874556f779141ed"
+    }
+  ],
+  "reason": "Two earlier successful Web attempts retained screenshots, source archives, logs and result metadata, but their recorder manifest only referenced a reused temporary directory. Later captures overwrote those original frames and manifests. They are unavailable and cannot be reverified or counted as preserved recordings. Original metadata remains byte-exact and is not rewritten.",
+  "current_recordings": "The final Web/mobile capture manifests and encoded media are independently verified by final-source-check.json; no missing earlier recording is substituted or counted.",
+  "correction": "The passed-browser archiver now copies the original manifest and every hash-verified frame into the immutable attempt directory before later captures.",
+  "corrected_archiver_sha256": "25169f43f00e7d007eb299dac4d488ca6340e2ea541b53518bd7389c576023e7",
+  "disclosure_script_sha256": "d5f99267439135986d86125b55dee443811bd57cd7db3562c102163f84afca9f"
+}

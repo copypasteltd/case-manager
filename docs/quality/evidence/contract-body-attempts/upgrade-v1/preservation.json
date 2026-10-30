@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "counts_as_current_pass": false,
+  "reason": "Upgrade snapshot collector named two absent contract tables; original published business cases passed, but the upgrade assertion did not execute.",
+  "records": [
+    {
+      "file": "app/.local/contract-body-attempts/upgrade-v1/0-verify_contract_body_upgrade.py",
+      "sha256": "3a7874cf81381d80a1d93c96c6fe57cd8c3ae26f76b73b59563466fb28d44f10"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/upgrade-v1/1-contract-body-upgrade.log",
+      "sha256": "ce4240d60e8c78406d357879fc79f6db6db9b5efc7918f69edd3f7f09e1ec939"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/upgrade-v1/2-contract-body-upgrade-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/upgrade-v1/3-contracts_integration_test.go",
+      "sha256": "73874fbf1d4f00cc2365b1341e88b098b410ec6a54e8ac6047d9f9043c10c9d9"
+    }
+  ]
+}

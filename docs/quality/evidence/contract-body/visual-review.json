@@ -1,0 +1,86 @@
+{
+  "reviewed": true,
+  "prepared_at": "2026-10-30T00:40:23.409518+00:00",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/contract-body-web-scope.png",
+      "sha256": "6aca8bc1b6b6de65f7209d36fc41947cea55bdcda791e19cad701feff122c806"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-web-review.png",
+      "sha256": "7cddc63fc9945f861864b53e73f79b839580f6cbb1a6f17a0f6e653cfd2703c3"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-web-adopted.png",
+      "sha256": "602477963e9b712ceb8aa09ad09f17f21719cf97706c345884e5fb3032115dc8"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-mobile-scope.png",
+      "sha256": "82b8a0c1cfd460c06e9d1d69cec7e5363af2cc88a6f2d8388b89eb58e04fb248"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-mobile-review.png",
+      "sha256": "3a19261cc68586a5d03ac6f33eeb2f8012ef6681cc35ac62e2ec57f5a714cd1f"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-mobile-adopted.png",
+      "sha256": "4720629a94af339259d23a1521e7cfb343985ff8308c427aa980deefc2c8a015"
+    }
+  ],
+  "gifs": [
+    {
+      "file": "docs/media/gifs/contract-body-web.gif",
+      "sha256": "10362192b5acd655998eda64b0851a65148d933918908ccc9ad3f572eae91169"
+    },
+    {
+      "file": "docs/media/gifs/contract-body-mobile.gif",
+      "sha256": "5519a24cbc9cf4f0902a776f2db0940227c16598c6ab6d26633b199dc3021517"
+    }
+  ],
+  "gif_frames_reviewed": {
+    "web": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/contract-body-visual-review"
+    },
+    "mobile": {
+      "decoded_frames": [
+        0,
+        23
+      ],
+      "frame_count": 24,
+      "private_decoded_directory": "app/.local/repository-showcase/contract-body-visual-review"
+    }
+  },
+  "recording_frames_reviewed": {
+    "web": {
+      "file": "docs/media/videos/contract-body-web.mp4",
+      "sha256": "bd46be1586e823541ba43f9c7af0781e6abfa6f703640fb2cfa391c977d52076",
+      "sampled_seconds": [
+        0,
+        4.5
+      ],
+      "credential_fields_visible": false
+    },
+    "mobile": {
+      "file": "docs/media/videos/contract-body-mobile.mp4",
+      "sha256": "7a8472f0899d2d4073199f864764dd00b3623277f2ad44d531bcc01f82e6ecda",
+      "sampled_seconds": [
+        0,
+        4.0
+      ],
+      "credential_fields_visible": false
+    }
+  },
+  "findings": [
+    "Web and mobile keep the existing company palette and readable task controls.",
+    "The full-body viewport samples include the final body marker; final samples show a normal adopted contract revision.",
+    "Review screenshots show the selected contract/file facts; mobile full-text reading is additionally visible in the actual MP4.",
+    "Screenshots and decoded samples contain no password, MFA input or private capability."
+  ],
+  "scope": "Actual six screenshots and first/final decoded MP4/GIF samples were visually inspected. Synthetic contract facts, complete text, human checkbox and adopted receipt are visible in their stated samples; no credentials or real-device claim.",
+  "reviewed_at": "2026-10-30T00:41:17.133045+00:00"
+}

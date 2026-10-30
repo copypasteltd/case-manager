@@ -23019,6 +23019,98 @@
         }
       }
     },
+    "/runs/{id}/contract-body-adoption": {
+      "post": {
+        "operationId": "adoptContractBody",
+        "tags": [
+          "runs"
+        ],
+        "summary": "adoptContractBody",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentContractBodyViewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentContractBodyAdopt"
+              }
+            }
+          }
+        }
+      }
+    },
     "/runs/{id}/cancel": {
       "post": {
         "operationId": "cancelRun",
@@ -52641,6 +52733,7 @@
               "agent_organization_plan",
               "agent_directory",
               "agent_oa_request",
+              "agent_contract_body",
               "agent_post_write",
               "agent_finance_report"
             ]
@@ -54280,6 +54373,171 @@
           "result"
         ]
       },
+      "AgentContractBodyInput": {
+        "type": "object",
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "base_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "contract_id",
+          "expected_version",
+          "base_revision_id",
+          "content_hash",
+          "reason"
+        ]
+      },
+      "AgentContractBodyFile": {
+        "type": "object",
+        "properties": {
+          "draft_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/BusinessFileReference"
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 49152
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "draft_id",
+          "evidence",
+          "content"
+        ]
+      },
+      "AgentContractBodyView": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "input": {
+            "$ref": "#/components/schemas/AgentContractBodyInput"
+          },
+          "before": {
+            "$ref": "#/components/schemas/AgentOABusinessView"
+          },
+          "intent_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "file_intent_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "authorized",
+              "file_committed",
+              "adopted"
+            ]
+          },
+          "file": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentContractBodyFile"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "operation_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentOABusinessView"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "run_id",
+          "input",
+          "before",
+          "intent_sha256",
+          "file_intent_sha256",
+          "status",
+          "file",
+          "operation_id",
+          "result"
+        ]
+      },
+      "AgentContractBodyAdopt": {
+        "type": "object",
+        "properties": {
+          "intent_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "version_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "const": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "intent_sha256",
+          "version_id",
+          "content_sha256",
+          "reviewed",
+          "reason"
+        ]
+      },
       "RunCreate": {
         "type": "object",
         "properties": {
@@ -54335,6 +54593,9 @@
           },
           "post_write": {
             "$ref": "#/components/schemas/AgentPostWriteInput"
+          },
+          "contract_body": {
+            "$ref": "#/components/schemas/AgentContractBodyInput"
           }
         },
         "additionalProperties": false,
@@ -54468,6 +54729,9 @@
                 "type": "null"
               }
             ]
+          },
+          "contract_body": {
+            "$ref": "#/components/schemas/AgentContractBodyView"
           }
         },
         "additionalProperties": false,
@@ -73279,6 +73543,22 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/AgentOARequestView"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AgentContractBodyViewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentContractBodyView"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

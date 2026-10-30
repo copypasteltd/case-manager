@@ -1,0 +1,94 @@
+{
+  "after_schema": 90,
+  "before_schema": 89,
+  "facts": {
+    "actual_cost_entries": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_policies": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reconciliations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_reservations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "agent_budget_usage": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "contract_lifecycle_events": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "contract_revisions": {
+      "rows": 6,
+      "hash": "43afa1beee360dad9a1621bd5f11604d"
+    },
+    "contracts": {
+      "rows": 4,
+      "hash": "0c227c072237706f6f370027d724be78"
+    },
+    "cost_allocations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "cost_links": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "cost_revisions": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "file_version_references": {
+      "rows": 2,
+      "hash": "a5cc3098d329f69ea5996c0be4b0ef7d"
+    },
+    "payment_allocation_shares": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "payment_allocations": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "payment_events": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "payment_records": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "payment_revision_files": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    },
+    "payment_revisions": {
+      "rows": 0,
+      "hash": "d751713988987e9331980363e24189ce"
+    }
+  },
+  "new_tables_empty_and_guards_ready": true,
+  "original_facts_unchanged": true,
+  "passed": true,
+  "checked_at": "2026-10-30T00:20:18.467075+00:00",
+  "source_sha256": "31c0f94218fa2ee5fd3e651c28c817225d498d22c858c81819319fb9d79ffdd5",
+  "published_fixture_commit": "30c364a7794c3fe7049c6ab04c4ba5b41d306ec3",
+  "prior_checkout_archive_sha256": "644f8ff5c0839d148c938e845cb9c1d07441cb5877b0abb905c69f2007edbc61",
+  "original_test_sha256": "fd076e217f9a744da1e54158bd0632e4fde4534d9687d8d1c4230af9eae4d65d",
+  "adapted_test_sha256": "27ecdbbfb3307cc9e2d3f431ec68b5d964109f0b633256b61ef4cbd399d5f5b5",
+  "adaptation": "Only add one end-of-journey normal-upgrade assertion; existing prior contract cases are unchanged.",
+  "actual_current_migrator_sha256": "6b0a33e96201ccd43e6cbd246170b4ddc460383ebed55dd03baa05ee0045c6ae",
+  "raw_log_sha256": "c4f8220d9a21a9901030287900636c95d8520975eefba10483dee3dd41997796",
+  "prior_fixture_case_records": 10,
+  "counts_as_current_backend_tests": false,
+  "verification_script_sha256": "8297fe4d6c5035c2ee6f82c02769a7ec3d133e1d738ce2648b687bc08a885826",
+  "raw_log": "ignored app/.local/contract-body-upgrade-v3.log"
+}

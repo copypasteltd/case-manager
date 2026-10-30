@@ -54,28 +54,30 @@ type RunCreate struct {
 	FileUpdate             *FileUpdateInput   `json:"file_update,omitempty"`
 	FileCreate             *FileCreateInput   `json:"file_create,omitempty"`
 	FileRecovery           *FileRecoveryInput `json:"file_recovery,omitempty"`
+	ContractBody           *ContractBodyInput `json:"contract_body,omitempty"`
 }
 type Run struct {
-	ID                string          `json:"id"`
-	Version           int64           `json:"version"`
-	ConversationID    string          `json:"conversation_id"`
-	ActorID           string          `json:"actor_id"`
-	ProfileID         string          `json:"profile_id"`
-	ClientMessageID   string          `json:"client_message_id"`
-	State             string          `json:"state"`
-	LastEventSeq      int64           `json:"last_event_seq"`
-	CancelRequestedAt *time.Time      `json:"cancel_requested_at"`
-	SafeErrorCode     *string         `json:"safe_error_code"`
-	ExpiresAt         time.Time       `json:"expires_at"`
-	CreatedAt         time.Time       `json:"created_at"`
-	UpdatedAt         time.Time       `json:"updated_at"`
-	CanCancel         bool            `json:"can_cancel"`
-	Outcome           *string         `json:"outcome"`
-	Mutation          *MutationView   `json:"mutation,omitempty"`
-	OARequest         *OARequestView  `json:"oa_request,omitempty"`
-	PostWrite         *PostWriteView  `json:"post_write,omitempty"`
-	FileUpdate        *FileUpdateView `json:"file_update,omitempty"`
-	FileCreate        *FileCreateView `json:"file_create,omitempty"`
+	ID                string            `json:"id"`
+	Version           int64             `json:"version"`
+	ConversationID    string            `json:"conversation_id"`
+	ActorID           string            `json:"actor_id"`
+	ProfileID         string            `json:"profile_id"`
+	ClientMessageID   string            `json:"client_message_id"`
+	State             string            `json:"state"`
+	LastEventSeq      int64             `json:"last_event_seq"`
+	CancelRequestedAt *time.Time        `json:"cancel_requested_at"`
+	SafeErrorCode     *string           `json:"safe_error_code"`
+	ExpiresAt         time.Time         `json:"expires_at"`
+	CreatedAt         time.Time         `json:"created_at"`
+	UpdatedAt         time.Time         `json:"updated_at"`
+	CanCancel         bool              `json:"can_cancel"`
+	Outcome           *string           `json:"outcome"`
+	Mutation          *MutationView     `json:"mutation,omitempty"`
+	OARequest         *OARequestView    `json:"oa_request,omitempty"`
+	PostWrite         *PostWriteView    `json:"post_write,omitempty"`
+	FileUpdate        *FileUpdateView   `json:"file_update,omitempty"`
+	FileCreate        *FileCreateView   `json:"file_create,omitempty"`
+	ContractBody      *ContractBodyView `json:"contract_body,omitempty"`
 	audience          []string
 }
 
@@ -191,6 +193,18 @@ func sourceSnapshots(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 		a.RunID = core.NewID()
 	}
 	for _, ref := range refs {
+		if ref.Type == "agent_contract_body" {
+			if !exactOAID(ref.ID) || ref.VersionID != nil || seen[ref.Type+":"+ref.ID] {
+				return nil, core.Missing()
+			}
+			seen[ref.Type+":"+ref.ID] = true
+			item, err := contractBodySource(ctx, tx, a, c, ref.ID, members)
+			if err != nil {
+				return nil, err
+			}
+			out = append(out, item)
+			continue
+		}
 		if ref.Type == "agent_post_write" {
 			if !core.ValidID(ref.ID) || ref.VersionID != nil || seen[ref.Type+":"+ref.ID] {
 				return nil, core.Missing()
@@ -356,6 +370,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		if in.FileCreate != nil && (in.FileUpdate != nil || in.Mutation != nil) {
 			return core.Result{}, core.Invalid("file_create", "每次发送只能选择一项准确文件新建或更新")
 		}
+		if in.ContractBody != nil && (profile.SkillID != "file-update" || in.FileCreate == nil || in.FileUpdate != nil || in.FileRecovery != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
+			return core.Result{}, core.Invalid("contract_body", "合同完整正文需明确绑定一项新建文件授权")
+		}
 		if in.FileRecovery != nil && (in.FileUpdate != nil || in.FileCreate != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
 			return core.Result{}, core.Invalid("file_recovery", "恢复草稿需作为本次唯一的准确写入授权")
 		}
@@ -394,7 +411,7 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			if (ref.Type == "agent_organization_plan" || ref.Type == "agent_directory") && profile.SkillID != "information-organize" {
 				return core.Result{}, core.Invalid("context_refs", "整理计划与目录观察只能交给资料整理任务核对")
 			}
-			if ref.Type == "agent_mutation" || ref.Type == "agent_file_update" || ref.Type == "agent_file_create" || ref.Type == "agent_oa_request" || ref.Type == "agent_post_write" {
+			if ref.Type == "agent_contract_body" || ref.Type == "agent_mutation" || ref.Type == "agent_file_update" || ref.Type == "agent_file_create" || ref.Type == "agent_oa_request" || ref.Type == "agent_post_write" {
 				return core.Result{}, core.Invalid("context_refs", "更新授权由本次发送建立，历史引用不能代替授权")
 			}
 			if in.Mutation != nil && ref.Type == mutationKind && ref.ID == mutationBase.ID {
@@ -425,6 +442,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		if in.FileRecovery != nil {
 			inputParts = append(inputParts, in.FileRecovery)
 		}
+		if in.ContractBody != nil {
+			inputParts = append(inputParts, in.ContractBody)
+		}
 		if in.OARequest != nil {
 			inputParts = append(inputParts, in.OARequest)
 		}
@@ -443,6 +463,18 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				return core.Result{}, core.Fail(409, "MESSAGE_ID_CONFLICT", "同一消息标识不能用于不同内容或资料")
 			}
 			old.CanCancel = old.CancelRequestedAt == nil && (old.State == "queued" || old.State == "running" || old.State == "awaiting_approval")
+			if b, e := readContractBody(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+				return core.Result{}, e
+			} else if b != nil {
+				if _, e = contractBodySource(ctx, tx, command.Actor, c, old.ID, members); e != nil {
+					return core.Result{}, e
+				}
+				view, e := contractBodyViewRead(ctx, tx, command.Actor, b)
+				if e != nil {
+					return core.Result{}, e
+				}
+				old.ContractBody = &view
+			}
 			if p, e := readPostWrite(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
 				return core.Result{}, e
 			} else if p != nil {
@@ -521,6 +553,17 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			snapshots = append(snapshots, fileUpdateSource(fileIntent))
 		}
 		var mutation *mutationRecord
+		var contractBody *contractBodyRecord
+		if in.ContractBody != nil {
+			if len(snapshots) >= 20 {
+				return core.Result{}, core.Invalid("context_refs", "完整合同正文需要保留一项依据位置")
+			}
+			contractBody, err = prepareContractBody(ctx, tx, command.Actor, c, runID, *in.ContractBody, fileIntent, in.Message)
+			if err != nil {
+				return core.Result{}, err
+			}
+			snapshots = append(snapshots, contractBodySnapshot(contractBody))
+		}
 		if in.Mutation != nil {
 			if len(snapshots) >= 20 {
 				return core.Result{}, core.Invalid("context_refs", "固定更新需要保留一项资料位置")
@@ -557,6 +600,11 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				return core.Result{}, err
 			}
 		}
+		if contractBody != nil {
+			if err = insertContractBody(ctx, tx, contractBody); err != nil {
+				return core.Result{}, err
+			}
+		}
 		_, err = tx.Exec(ctx, `INSERT INTO conversation_messages(id,org_id,conversation_id,run_id,seq,role,body,author_id,audience_ids,source_snapshots)
    SELECT $1,$2,$3,$4,coalesce(max(seq),0)+1,'user',$5,$6,$7,$8 FROM conversation_messages WHERE org_id=$2 AND conversation_id=$3`, core.NewID(), command.Actor.OrgID, id, runID, in.Message, command.Actor.UserID, members, snapJSON)
 		if err != nil {
@@ -570,6 +618,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			return core.Result{}, err
 		}
 		r.CanCancel = true
+		if contractBody != nil {
+			r.ContractBody = &contractBody.ContractBodyView
+		}
 		if oaRequest != nil {
 			r.OARequest = &oaRequest.OARequestView
 		}

@@ -1,0 +1,33 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/contract-body-web-scope.png",
+      "sha256": "f988cca25dee919410df9a4ffb0e503539cc7038cbce72360ca99b0edcc8ac5c"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-web-review.png",
+      "sha256": "72bf3e648937f72621d44b14968b92496f04ff994b363d703204e83c59aab613"
+    },
+    {
+      "file": "docs/media/screenshots/contract-body-web-adopted.png",
+      "sha256": "0cf8afbdfd5fb04133a469f027711729d00575161d0fa570cae16cbb15918fcf"
+    }
+  ],
+  "recording": {
+    "name": "contract-body-web",
+    "frame_count": 23,
+    "duration_ms": 4690,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/contract-body-web/frames.json",
+    "manifest_sha256": "711a46920b86c26900e4078238f013d08ff338136afa3cb57eb756ba3e88cd4e"
+  },
+  "synthetic_data": true,
+  "real_device": false,
+  "real_model": false,
+  "api_responses_mocked": false,
+  "fixture_reused_from": "dedicated TestAgentContractBodies with actual file pipeline and controlled provider"
+}

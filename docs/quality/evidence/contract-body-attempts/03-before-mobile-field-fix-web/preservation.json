@@ -1,0 +1,53 @@
+{
+  "passed_original_web": true,
+  "counts_as_current_pass": false,
+  "reason": "Only the shared checker is repaired to locate numeric mobile inputs; passed Web source/media remain original and both final journeys will execute again.",
+  "source_archive": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/source.zip",
+  "source_archive_sha256": "4ee2903fc70b45214bf4bd8d8c6cb12cff898d34f0e0002dd460c87a0e37f824",
+  "records": [
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/inbox.png",
+      "sha256": "a4b042ae692ef265a0e637e93e95dde37a5019a9a94220ceb6b7b2149e6461de"
+    },
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/03-before-mobile-field-fix-web/media.json",
+      "sha256": "32140cc79efa9f50d933599ad02cb70f246bed411309620f0f64f4289c6d92a7"
+    },
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/03-before-mobile-field-fix-web/result.json",
+      "sha256": "1eaa25fdf6d3f9104acf6f0ae4fec4699c8281f3344623d12db5e9bfa7c56d96"
+    },
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/03-before-mobile-field-fix-web/source-manifest.json",
+      "sha256": "408f51b489f5c2066e1fa35e9e3e6813cbe17f30effaddbf468657e8491c89da"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/contract-body-web-scope.png",
+      "sha256": "def541fab077fd10e55da9c609b20b6b834a5ca63287a9cf2d8d00222a9287d4"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/contract-body-web-review.png",
+      "sha256": "1e74e2592f267655aca42db0a7333dd399bab3124a30f48fad2b83ab3421f05f"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/contract-body-web-adopted.png",
+      "sha256": "3a6fd8fb38e395ba96daddedfd5a924f8dbe24a017799acdd53cd9e8265e1e4c"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/contract-body-web-browser.log",
+      "sha256": "e65ee4090f6b27a0e8008c01002e003cdb0907422cc44cf3a7508fe001ba31f6"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/contract-body-web-build.log",
+      "sha256": "45b254a87266177896feb4d592c8c04524cf5c9545240150d992e00f2fe628dd"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/03-before-mobile-field-fix-web/contract-body-web-native.log",
+      "sha256": "133cbc20666ce9e72f6ed38b3d6a095f1b43e06d911181feb3f5b3cdd77bc6fa"
+    },
+    {
+      "file": "app/.local/repository-showcase/contract-body-web/frames.json",
+      "sha256": "344546e98a38866d0ed71d8da85c40f8656deace5233e26f779c0407589cd661"
+    }
+  ]
+}

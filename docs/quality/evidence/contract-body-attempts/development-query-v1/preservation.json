@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "counts_as_current_pass": false,
+  "reason": "Read-only metadata collector exceeded the PostgreSQL function argument bound after adding four checks; no application data was changed.",
+  "exit_code": 1,
+  "records": [
+    {
+      "file": "app/.local/contract-body-attempts/development-query-v1/development-runtime.json",
+      "sha256": "8ad423e057e64c97f9dddae1e7a577fe4d008d7b27a4e68b2874d2a87c692394"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/development-query-v1/query-error.log",
+      "sha256": "842a56dd33b68cf3add498cf6b3db0316d97564b873d6885f0daf51520aba81c"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/development-query-v1/verify_contract_body_development.py",
+      "sha256": "a24310f6cc7f542cab6962213ce388ca7da8d7e2c88ff6ce6fd29a15562bc261"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/development-query-v1/collector-before-comma-fix.py",
+      "sha256": "8e294293362d69114d485f103729151eda09426acbe93bf76e88cffe274828ed"
+    }
+  ],
+  "second_collector_attempt": "An extra comma remained at the split; corrected before the final read-only run."
+}

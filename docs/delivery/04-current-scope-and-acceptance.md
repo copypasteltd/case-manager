@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量117：GAP-04／12／18接通四端准确合同原资料绑定、完整文本正文文件、全文核对和独立人工采用。只替换正常合同修订的正文附件，保留原商业条件。更广格式、完整OA附件体系和真实模型验收继续开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/117-contract-body-drafting.md)与[核验](../quality/117-contract-body-verification.md)。
+
 增量116：GAP-03／18接通四端受控实际付款双币核销、费用及批准员工垫付原币余额、部分回转与双币项目份额。公司财务口径、手续费／汇差、异币实收退款及完整工作包继续开放；23 active（14 P0／9 P1）、5 excluded不变。见[设计](../development/116-cross-currency-settlement.md)与[核验](../quality/116-cross-currency-settlement-verification.md)。
 
 增量115：GAP-18新增四端人工跨项目／分类文件与目录树固定计划、完整权限影响核对、近期MFA明确执行和不可变回执。正式业务引用联动、大树／批量策略及完整旅程继续开放；AI跨范围工具与预授权仍GAP-11。仍23 active（14 P0／9 P1）、5 excluded。见[设计与使用](../development/115-file-scope-transfers.md)及[验证](../quality/115-file-scope-transfers-verification.md)。

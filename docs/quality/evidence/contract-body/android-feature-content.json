@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T00:45:50.427622+00:00",
+  "checks": [
+    {
+      "name": "Explicit same-project contract basis and exact original revision are packaged",
+      "passed": true
+    },
+    {
+      "name": "Complete file text, independent byte/hash verification and clean first-version guards are packaged",
+      "passed": true
+    },
+    {
+      "name": "Separate explicit reviewed human adoption and immutable receipt are in the exact APK bundle",
+      "passed": true
+    }
+  ],
+  "source_sha256": "b8bbaf238232ed3a85783c08df35fcf6fcee92f80291ebd79d0967124b25d41e",
+  "bundle_sha256": "87c09168b3997092c3d4741af98e470d79867eac7440dd3a5dff83f132c8c51b",
+  "apk_sha256": "62456243336d55d60b16e1b1d06c69bf3eb906b42502244b295f1034df7dd531",
+  "artifact_executed": false,
+  "real_device": false,
+  "verification_script_sha256": "0cb12499511ff448ce7b7e4f6fd87d745223beafc6a50606d26b7d0b00130391"
+}

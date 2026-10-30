@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T00:09:17.083608+00:00",
+  "command": [
+    "npm",
+    "audit",
+    "--package-lock-only",
+    "--json",
+    "--include=dev",
+    "--include=optional",
+    "--include=peer"
+  ],
+  "exit_code": 0,
+  "package_lock_sha256": "4ad26084af43cfc792970934d708e5cd699cf0c62a76346bf280880c42cb09b9",
+  "source_unchanged": true,
+  "node_version": "v22.23.4",
+  "npm_version": "10.9.9",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "raw_report_sha256": "7b85cc420cce9d22f6c5dfc5932893c2a62b1d30d9c2f13b1df58a7e42f3a023",
+  "all_dependency_scopes_included": true,
+  "advisories_suppressed": false,
+  "npm_audit_gate_passed": true,
+  "production_security_gate_passed": false,
+  "scope": "Fresh current-lock advisory scan. The contracts workspace now explicitly declares the already-resolved @noble/hashes 2.4.0. No previous dependency evidence is relabelled as a new execution; formal artifact security remains GAP-26."
+}

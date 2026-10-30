@@ -114,6 +114,15 @@ func NotificationRun(ctx context.Context, tx pgx.Tx, a core.Actor, id string) (R
 	if !allowed {
 		return Run{}, core.Missing()
 	}
+	if b, e := readContractBody(ctx, tx, a.OrgID, id); e != nil {
+		return Run{}, e
+	} else if b != nil {
+		view, e := contractBodyViewRead(ctx, tx, a, b)
+		if e != nil {
+			return Run{}, e
+		}
+		r.ContractBody = &view
+	}
 	if i, e := fileIntentRecordRead(ctx, tx, a.OrgID, id); e != nil {
 		return Run{}, e
 	} else if i != nil {
@@ -271,6 +280,15 @@ func (s *Service) RunEvents(ctx context.Context, a core.Actor, id string, after 
 		out.AfterSeq = out.Items[len(out.Items)-1].Seq
 	}
 	out.Run = r
+	if b, e := readContractBody(ctx, tx, a.OrgID, id); e != nil {
+		return out, e
+	} else if b != nil {
+		view, e := contractBodyViewRead(ctx, tx, a, b)
+		if e != nil {
+			return out, e
+		}
+		out.Run.ContractBody = &view
+	}
 	if i, e := fileIntentRecordRead(ctx, tx, a.OrgID, id); e != nil {
 		return out, e
 	} else if i != nil {

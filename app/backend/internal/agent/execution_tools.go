@@ -405,6 +405,9 @@ func executionRead(ctx context.Context, tx pgx.Tx, st executionState, args json.
 		}
 		return executionOARequestText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
 	}
+	if in.Type == "agent_contract_body" {
+		return executionContractBodyText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
+	}
 	if in.Type == "agent_plan" {
 		return executionPlanText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
 	}

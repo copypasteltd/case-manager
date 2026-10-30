@@ -60,6 +60,40 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 20000
+        },
+        "contract_body": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "contract_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "expected_version": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "base_revision_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "content_hash": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "contract_id",
+            "expected_version",
+            "base_revision_id",
+            "content_hash",
+            "reason"
+          ]
         }
       },
       "required": [

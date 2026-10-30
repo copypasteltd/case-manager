@@ -174,6 +174,9 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		if _, err = executionOARequestState(ctx, tx, st); err != nil {
 			return fail(err)
 		}
+		if _, err = executionContractBodyState(ctx, tx, st); err != nil {
+			return fail(err)
+		}
 		if _, err = executionPostWriteState(ctx, tx, st); err != nil {
 			return fail(err)
 		}
@@ -232,6 +235,11 @@ func (s *Service) IssueExecution(ctx context.Context, j jobqueue.Job) (Execution
 	}
 	// Only explicitly selected sources are prepared here; old native or conversation context is never resumed.
 	preparedValue := map[string]any{"run_id": st.Run.ID, "conversation_id": st.Conversation.ID, "project_id": st.Conversation.ProjectID, "source_refs": st.Sources, "untrusted_data": true}
+	if b, e := executionContractBodyState(ctx, tx, st); e != nil {
+		return Execution{}, e
+	} else if b != nil {
+		preparedValue["authorized_contract_body"] = b.ContractBodyView
+	}
 	if p, e := executionPostWriteState(ctx, tx, st); e != nil {
 		return Execution{}, e
 	} else if p != nil {

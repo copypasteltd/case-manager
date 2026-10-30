@@ -1,0 +1,37 @@
+{
+  "collected_at": "2026-10-30T00:26:47.105521+00:00",
+  "counts_as_final_regression": false,
+  "scope": "Earlier compilation, targeted checks and lock metadata attempts retain exact private logs. Full final-current-source regression is recorded separately; no success is inferred from retaining these files.",
+  "records": [
+    {
+      "file": "app/.local/contract-body-initial.log",
+      "sha256": "b316695c9fc895f564c24be26444f2d4068899329c62d3103ed0fd722b854ab0",
+      "bytes": 287
+    },
+    {
+      "file": "app/.local/contract-body-second.log",
+      "sha256": "4871efc31d700a1bf843985191d0d4f31e5e096ad7c75b8cb7fcca83f95b186b",
+      "bytes": 1140
+    },
+    {
+      "file": "app/.local/contract-body-third.log",
+      "sha256": "90d498e91e6d4a73ca252c1111ccfeeee36fa797dacd3a0833a85de41086811d",
+      "bytes": 1562
+    },
+    {
+      "file": "app/.local/contract-body-event-log-targeted.log",
+      "sha256": "bdd84e19eb9860063663c1f275eded5e7b491d57bdd1a11838cb0bd401890afa",
+      "bytes": 1562
+    },
+    {
+      "file": "app/.local/contract-body-package-lock.log",
+      "sha256": "403dcb4b47fe39db0284d6e58fc65d0641150abc2ded1963b5407b5990fdbe74",
+      "bytes": 497
+    },
+    {
+      "file": "app/.local/contract-body-package-lock-2.log",
+      "sha256": "aa914bd24a52c044220260904ea8e7dd30d4665802a5c1bd8c4b3daf107c6d86",
+      "bytes": 20
+    }
+  ]
+}

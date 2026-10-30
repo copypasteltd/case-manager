@@ -1,5 +1,14 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+增量117 / Increment117：真实认证后的隔离合成合同正文页面。6 PNG、2静音MP4、2截图导览GIF。录屏包含完整正文阅读、显式勾选与真实采用回执；认证信息不入素材。GIF每张2秒，属于截图导览。
+
+| 端 | 原资料绑定 | 全文核对 | 已采用 | 录屏 | GIF导览 |
+|---|---|---|---|---|---|
+| Web | [PNG](screenshots/contract-body-web-scope.png) | [PNG](screenshots/contract-body-web-review.png) | [PNG](screenshots/contract-body-web-adopted.png) | [MP4](videos/contract-body-web.mp4) | [GIF](gifs/contract-body-web.gif) |
+| 共享移动 | [PNG](screenshots/contract-body-mobile-scope.png) | [PNG](screenshots/contract-body-mobile-review.png) | [PNG](screenshots/contract-body-mobile-adopted.png) | [MP4](videos/contract-body-mobile.mp4) | [GIF](gifs/contract-body-mobile.gif) |
+
+[媒体来源](../quality/evidence/contract-body/media.json) · [核验](../quality/117-contract-body-verification.md)。旧媒体保留实际捕获日期与原范围。
+
 增量116 / Increment116：真实认证后的隔离合成双币核销页面。6 PNG、2静音MP4、2截图导览GIF。录屏展示已核对汇率和金额的实际表单，不录制密码／MFA；实际写入和释放由页面检查及流水截图覆盖。GIF为每张2秒的截图导览。
 
 | 端 | 实际汇率 | 窄屏 | 双币流水 | 录屏 | GIF导览 |

@@ -11,6 +11,19 @@ const root = fileURLToPath(new URL('../../../', import.meta.url));
 const catalog = await loadSkills(root), id = randomUUID(), version = randomUUID();
 const baseResult = (): ProposedResult => ({ status: 'completed', summary: '来源与业务执行结果已核对。', resource_refs: [], source_refs: [], operation_ids: [], missing_fields: [], next_action: '' });
 
+test('contract-body creation accepts exact draft context but never grants human adoption tools', () => {
+  const skill = catalog.get('file-update')!;
+  const input = { folder_id: randomUUID(), expected_folder_version: 2, name: 'contract-body.md', media_type: 'text/markdown', instructions: 'Draft the complete body from exact facts; human adoption remains separate', contract_body: { contract_id: randomUUID(), expected_version: 3, base_revision_id: randomUUID(), content_hash: 'a'.repeat(64), reason: 'Use this exact draft' } };
+  skill.validateInput(input);
+  assert.equal(skill.manifest.version, '1.4.0');
+  assert.equal(skill.manifest.state, 'draft');
+  for (const field of ['contract_id', 'expected_version', 'base_revision_id', 'content_hash', 'reason']) {
+    const changed = structuredClone(input); delete (changed.contract_body as Record<string, unknown>)[field];
+    assert.throws(() => skill.validateInput(changed), /SKILL_INPUT_INVALID/);
+  }
+  for (const tool of ['adopt_contract_body', 'sign_contract', 'activate_contract', 'approve_request']) assert.throws(() => skill.authorizeTool(tool), /SKILL_TOOL_DENIED/);
+});
+
 test('deliverable draft creation requires all parent fields and a real current-run creation receipt',()=>{
  const skill=catalog.get('project-update')!,run={id:randomUUID(),authority_stamp:'deliverable-create'};
  const input={instructions:'Create exactly this reviewed draft',mutation:{tool:'create_deliverable',arguments:{id:randomUUID(),expected_version:7,name:'New delivery',acceptance_criteria:'Check fixed evidence',owner_id:randomUUID(),milestone_id:null,reason:'Reviewed draft creation'}}};

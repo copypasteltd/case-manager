@@ -1,0 +1,63 @@
+{
+  "archived_at": "2026-10-30T00:16:16.257544+00:00",
+  "counts_as_current_pass": false,
+  "backend_run_complete": false,
+  "reason": "Actual UI found missing contract-body view on event-log; stopped serial regression before source correction. Completed batches, current partial log, passed prior-source upgrade and Linux cross-build remain historical.",
+  "native_cluster_stopped": true,
+  "remaining_disposable_databases_retained_private": 1,
+  "records": [
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/before-event-log-fix/batch-progress.json",
+      "sha256": "c619f275bd6eb6e5ada8c6406909e42fa54d2f5dcb51c9db1208d0c1785addaf"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-1.log",
+      "sha256": "c0f021a0ffe5abeb13df74779c0b6c59b8777710ab68555ebcfd6e8ac7b18e57"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-2.log",
+      "sha256": "bf13f88ae7240f111446ddfb197501e863406e0af05a015628e596b731135ec4"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-3.log",
+      "sha256": "3deed8d9dfcacfdc4a102bdb6b8894ea1cfe3ef69fb9392ddfebfc70cb65b508"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-4.log",
+      "sha256": "30919ed0d34e0972fc63309b5881783d054004debdf3dc9c2df5e3d079739ac3"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-5.log",
+      "sha256": "c18cea70ef0938857bf420016b21337a24717c3daa0e957fdeeddd7cdf9107dd"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-6.log",
+      "sha256": "c783dae685400f0ad2605a16fff0b092c1290b3fea009f66bb7b7c234bc318b0"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/contract_body-backend-batch-7.log",
+      "sha256": "659cb273c2d8fe1160ae187444af81eac22355235a643aa122bb13301bbb4e68"
+    },
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/before-event-log-fix/schema-upgrade.json",
+      "sha256": "7746f5f854bb1a5d2d3a24caefbe0eb6ff0fcceb77ca13717325d1d4895678cd"
+    },
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/before-event-log-fix/linux-build.json",
+      "sha256": "f7a17b57b668680e3c735c49bed72c94b7cddb7fe648aa7339fe29623f1b086a"
+    },
+    {
+      "file": "docs/quality/evidence/contract-body-attempts/before-event-log-fix/native-cluster.json",
+      "sha256": "ddd8ac6b8eb41b5a53e188cb67ff0019c23d3968f34f35651c93863c7985b7c0"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/agent-native-linux-amd64",
+      "sha256": "7bea39addcc874393ce2f4f9696ec56398b6331fcfe02bc44e60bba261ec5127"
+    },
+    {
+      "file": "app/.local/contract-body-attempts/before-event-log-fix/platform-linux-amd64",
+      "sha256": "5893770db5d90db6429fc16d8de6185c86475265e3ef06b1a49b85bcd70e6564"
+    }
+  ],
+  "source_archive_record": "../02-event-log-contract-body/preservation.json"
+}

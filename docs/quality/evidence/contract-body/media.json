@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-30T00:40:20.810475+00:00",
+  "encoder_script_sha256": "9c8ffbae2641ebd787577180b64c6ad1a9b54d250d6dabccc041daacf120230a",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "ad1aef1b1727b0edb82563181344bc5edbfbbd94267bdc220b1fb05224f78f2c",
+      "build_source_sha256": "889db703abb1a305d2cb8203e646085a8d81cf8c4517f6eb573b25bccdb1d4da",
+      "capture_manifest": "docs/quality/evidence/contract-body/web-capture-manifest.json",
+      "capture_manifest_sha256": "a6922dccd667e67839d947dd7d228d0a974bcd2a57132d50815354d41511e20d",
+      "capture_frame_count": 22,
+      "capture_duration_ms": 4757,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/contract-body-web-scope.png",
+          "sha256": "6aca8bc1b6b6de65f7209d36fc41947cea55bdcda791e19cad701feff122c806"
+        },
+        {
+          "file": "docs/media/screenshots/contract-body-web-review.png",
+          "sha256": "7cddc63fc9945f861864b53e73f79b839580f6cbb1a6f17a0f6e653cfd2703c3"
+        },
+        {
+          "file": "docs/media/screenshots/contract-body-web-adopted.png",
+          "sha256": "602477963e9b712ceb8aa09ad09f17f21719cf97706c345884e5fb3032115dc8"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "49",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/contract-body-web.mp4",
+          "sha256": "bd46be1586e823541ba43f9c7af0781e6abfa6f703640fb2cfa391c977d52076",
+          "bytes": 382700
+        },
+        {
+          "file": "docs/media/gifs/contract-body-web.gif",
+          "sha256": "10362192b5acd655998eda64b0851a65148d933918908ccc9ad3f572eae91169",
+          "bytes": 227995
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "a5ed0034b627885d22aac06696bf2e61793880c7bf72872b55f344654c16454c",
+      "build_source_sha256": "889db703abb1a305d2cb8203e646085a8d81cf8c4517f6eb573b25bccdb1d4da",
+      "capture_manifest": "docs/quality/evidence/contract-body/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "170e2fe003b8073dd230349f55ccde62f98666ec0dc4c3f0993873b94af3cd1a",
+      "capture_frame_count": 21,
+      "capture_duration_ms": 4279,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/contract-body-mobile-scope.png",
+          "sha256": "82b8a0c1cfd460c06e9d1d69cec7e5363af2cc88a6f2d8388b89eb58e04fb248"
+        },
+        {
+          "file": "docs/media/screenshots/contract-body-mobile-review.png",
+          "sha256": "3a19261cc68586a5d03ac6f33eeb2f8012ef6681cc35ac62e2ec57f5a714cd1f"
+        },
+        {
+          "file": "docs/media/screenshots/contract-body-mobile-adopted.png",
+          "sha256": "4720629a94af339259d23a1521e7cfb343985ff8308c427aa980deefc2c8a015"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "44",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/contract-body-mobile.mp4",
+          "sha256": "7a8472f0899d2d4073199f864764dd00b3623277f2ad44d531bcc01f82e6ecda",
+          "bytes": 221304
+        },
+        {
+          "file": "docs/media/gifs/contract-body-mobile.gif",
+          "sha256": "5519a24cbc9cf4f0902a776f2db0940227c16598c6ab6d26633b199dc3021517",
+          "bytes": 115714
+        }
+      ]
+    }
+  ],
+  "scope": "Silent MP4 recordings use actual authenticated synthetic viewport frames. GIFs are labelled tours of three actual screenshots (selected contract basis, complete text review, adopted receipt), two seconds each. No real model or device claim."
+}

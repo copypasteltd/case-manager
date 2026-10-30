@@ -3675,6 +3675,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/runs/{id}/contract-body-adoption": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** adoptContractBody */
+        post: operations["adoptContractBody"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/runs/{id}/cancel": {
         parameters: {
             query?: never;
@@ -8710,7 +8727,7 @@ export interface components {
         };
         AgentSourceSnapshot: {
             /** @enum {string} */
-            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_oa_request" | "agent_post_write" | "agent_finance_report";
+            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report";
             /** Format: uuid */
             id: string;
             version_id?: string | null;
@@ -9040,6 +9057,43 @@ export interface components {
             operation_id: string | null;
             result: components["schemas"]["Post"] | null;
         };
+        AgentContractBodyInput: {
+            /** Format: uuid */
+            contract_id: string;
+            expected_version: number;
+            /** Format: uuid */
+            base_revision_id: string;
+            content_hash: string;
+            reason: string;
+        };
+        AgentContractBodyFile: {
+            /** Format: uuid */
+            draft_id: string;
+            evidence: components["schemas"]["BusinessFileReference"];
+            content: string;
+        };
+        AgentContractBodyView: {
+            /** Format: uuid */
+            run_id: string;
+            input: components["schemas"]["AgentContractBodyInput"];
+            before: components["schemas"]["AgentOABusinessView"];
+            intent_sha256: string;
+            file_intent_sha256: string;
+            /** @enum {string} */
+            status: "authorized" | "file_committed" | "adopted";
+            file: components["schemas"]["AgentContractBodyFile"] | null;
+            operation_id: string | null;
+            result: components["schemas"]["AgentOABusinessView"] | null;
+        };
+        AgentContractBodyAdopt: {
+            intent_sha256: string;
+            /** Format: uuid */
+            version_id: string;
+            content_sha256: string;
+            /** @constant */
+            reviewed: true;
+            reason: string;
+        };
         RunCreate: {
             expected_version: number;
             context_security_version: number;
@@ -9056,6 +9110,7 @@ export interface components {
             file_recovery?: components["schemas"]["AgentFileRecoveryInput"];
             oa_request?: components["schemas"]["AgentOARequestInput"];
             post_write?: components["schemas"]["AgentPostWriteInput"];
+            contract_body?: components["schemas"]["AgentContractBodyInput"];
         };
         Run: {
             /** Format: uuid */
@@ -9088,6 +9143,7 @@ export interface components {
             oa_request?: components["schemas"]["AgentOARequestView"];
             post_write?: components["schemas"]["AgentPostWriteView"];
             outcome?: ("draft" | "pending" | "awaiting_input" | "completed" | "conflict" | "denied" | "failed") | null;
+            contract_body?: components["schemas"]["AgentContractBodyView"];
         };
         Message: {
             /** Format: uuid */
@@ -12821,6 +12877,10 @@ export interface components {
         };
         AgentOARequestViewResponse: {
             data: components["schemas"]["AgentOARequestView"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentContractBodyViewResponse: {
+            data: components["schemas"]["AgentContractBodyView"];
             meta: components["schemas"]["Meta"];
         };
         RunEventPageResponse: {
@@ -23745,6 +23805,49 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AgentOARequestViewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    adoptContractBody: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentContractBodyAdopt"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentContractBodyViewResponse"];
                 };
             };
             400: components["responses"]["Failure"];

@@ -41,6 +41,9 @@ func toolDefinitions(skill string) []any {
 	if skill == "oa-assist" {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_oa_request"}})
 	}
+	if skill == "file-update" {
+		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_contract_body"}})
+	}
 	if skill == "project-briefing" {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_post_write"}})
 	}

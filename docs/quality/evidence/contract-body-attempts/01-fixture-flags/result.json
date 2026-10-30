@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "checks": [],
+  "owned_browser_closed": true,
+  "failure": "No browser result was produced; inspect the retained private runner logs.",
+  "native_fixture_exit_code": null,
+  "isolated_database_cleanup_passed": false,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "57caa5517e48e226156d08ee814c80549a39e2846ac5c9386d9bdb896c66076f",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "owned_api_proxy_stopped": true,
+  "h5_prebuilt_before_fixture": false,
+  "real_api_forwarded_without_response_substitution": false,
+  "build_source_after_sha256": "57caa5517e48e226156d08ee814c80549a39e2846ac5c9386d9bdb896c66076f",
+  "build_source_unchanged": true,
+  "runner_failure_code": "RuntimeError",
+  "runner_failure_detail": "Native business fixture did not become ready; private logs remain ignored."
+}
