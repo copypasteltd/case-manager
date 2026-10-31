@@ -7,6 +7,7 @@ import { Busy, date, Empty, ErrorNotice, Field, State } from './components';
 import { useNotificationSummary } from './NotificationIndicator';
 import NotificationDelivery from './NotificationDelivery';
 import ContractReminders from './ContractReminders';
+import NotificationTelegram from './NotificationTelegram';
 
 export default function NotificationsPage({ me }: { me: Me }) {
   const [state, setState] = useState('all'), [category, setCategory] = useState(''), [opening, setOpening] = useState<string>(), [openError, setOpenError] = useState<unknown>();
@@ -33,6 +34,7 @@ export default function NotificationsPage({ me }: { me: Me }) {
     {counts && <section className="panel conversation-summary" aria-label="通知概览"><p>未读 <strong>{notificationCount(counts.unread_count, counts.count_complete)}</strong> · 仍需处理 <strong>{notificationCount(counts.attention_count, counts.count_complete)}</strong></p><p className="form-note">截至 {date(counts.as_of)}。已读仅表示你已查看通知，业务是否完成以相关资料为准。{!counts.count_complete && '计数已达核对上限，带 + 的数字表示至少这些条。'}</p></section>}
     <div className="party-filters"><Field label="处理范围"><select value={state} onChange={e => setState(e.target.value)}><option value="all">全部通知</option><option value="unread">仅未读</option><option value="attention">仍需处理</option></select></Field><Field label="通知类型"><select value={category} onChange={e => setCategory(e.target.value)}><option value="">全部类型</option>{Object.entries(notificationCategories).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></Field></div>
     <ErrorNotice error={query.error ?? summary.error ?? read.error ?? openError} />{query.isPending ? <Busy label="正在读取通知" /> : !query.error && <section className="panel conversation-summary" aria-label="通知列表">{items.length ? items.map(item => <article className="conversation-source-preview" key={item.id} data-notification-id={item.id}><div className="section-heading"><h2>{item.title}</h2><span className={'badge ' + (item.read ? 'neutral' : 'info')}>{item.read ? '已读' : '未读'}</span></div><p>{item.resource_label}</p><p><State state={item.current_state} /> {item.attention_required ? '仍需处理' : '查看进展'} · {date(item.updated_at)}</p><div className="form-actions"><button className="button" disabled={!!opening} onClick={() => void open(item)}>{opening === item.id ? '正在核对…' : '打开相关资料'}</button>{!item.read && <button className="button secondary" disabled={read.isPending} onClick={() => read.mutate(item)}>标记已读</button>}</div></article>) : <Empty title="当前没有符合条件的通知" detail="新通知会随业务进展进入这里。" />}{query.hasNextPage && <button className="button secondary" disabled={query.isFetchingNextPage} onClick={() => void query.fetchNextPage()}>加载更早通知</button>}</section>}
+    <NotificationTelegram me={me} />
     {me.actions.includes('notification.delivery.read') && <NotificationDelivery me={me} />}
     {me.actions.includes('notification.policy.read') && <ContractReminders me={me} />}
   </>;

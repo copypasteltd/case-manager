@@ -83,6 +83,9 @@ func run(logger *slog.Logger) error {
 	if command == "worker-telegram-delivery" {
 		return runTelegramDeliveryWorker(ctx, logger)
 	}
+	if command == "worker-notification-telegram" {
+		return runNotificationTelegramWorker(ctx, logger)
+	}
 	if command == "worker-agent" || command == "worker-agent-reconcile" {
 		return runAgentWorker(ctx, logger, command == "worker-agent-reconcile")
 	}

@@ -758,6 +758,26 @@ notification_policy_input={"expected_version":{"type":"integer","minimum":0,"max
     "enabled":{"type":"boolean"},"timezone":NAME,"days_before":notification_policy["days_before"],"reason":NAME}
 add("NotificationContractPolicyInput",notification_policy_input,tuple(notification_policy_input))
 
+# Optional, owner-bound personal Telegram business notices (not group content).
+NOTIFY_BOT = {"type":"string","pattern":"^[1-9][0-9]{0,15}$"}
+notify_categories = array(enum("mention","task","approval","request_result","contract_due","subscription_due","replica_failure","incident","secretary","service_resource"), maxItems=10, uniqueItems=True)
+notify_tg_policy={"id":ID,"bot_id":NOTIFY_BOT,"version":VERSION,"enabled":{"type":"boolean"},"categories":notify_categories,"binding_id":nullable(ID),"binding_version":nullable(VERSION),"reason":NAME,"created_at":TIME}
+add("NotificationTelegramPolicy",notify_tg_policy,tuple(notify_tg_policy))
+notify_tg_setting={"bot_id":NOTIFY_BOT,"binding_active":{"type":"boolean"},"effective":{"type":"boolean"},"current":nullable(ref("NotificationTelegramPolicy"))}
+add("NotificationTelegramSetting",notify_tg_setting,tuple(notify_tg_setting))
+add("NotificationTelegramSettings",{"items":array(ref("NotificationTelegramSetting"),maxItems=100)},("items",))
+notify_tg_input={"expected_version":{"type":"integer","minimum":0,"maximum":9007199254740990},"enabled":{"type":"boolean"},"categories":notify_categories,"reason":NAME}
+add("NotificationTelegramPolicyInput",notify_tg_input,tuple(notify_tg_input))
+notify_tg_state=enum("pending","sending","retry_wait","sent","delivery_unknown","confirmed_sent","failed","suppressed","abandoned")
+notify_tg_common={"state":notify_tg_state,"version":VERSION,"attempts":{"type":"integer","minimum":0,"maximum":5},"reason_code":{"type":"string","pattern":"^[a-z0-9_]{1,80}$"},"payload_sha256":nullable({"type":"string","pattern":"^[a-f0-9]{64}$"}),"message_id":nullable(VERSION)}
+notify_tg_receipt={"id":ID,"bot_id":NOTIFY_BOT,"source_delivery_id":ID,"thread_id":ID,"policy_id":ID,**notify_tg_common,"next_attempt_at":TIME,"created_at":TIME,"updated_at":TIME}
+add("NotificationTelegramReceipt",notify_tg_receipt,tuple(notify_tg_receipt))
+notify_tg_event={"id":ID,**notify_tg_common,"actor_id":nullable(ID),"reason":nullable(NAME),"created_at":TIME}
+add("NotificationTelegramReceiptEvent",notify_tg_event,tuple(notify_tg_event))
+add("NotificationTelegramReceiptDetails",{"receipt":ref("NotificationTelegramReceipt"),"events":array(ref("NotificationTelegramReceiptEvent"))},("receipt","events"))
+notify_tg_reconcile={"expected_version":VERSION,"action":enum("confirm_sent","retry","abandon"),"message_id":nullable(VERSION),"reason":NAME}
+add("NotificationTelegramReconcileInput",notify_tg_reconcile,tuple(notify_tg_reconcile))
+
 budget_tokens = {"type": "integer", "minimum": 0, "maximum": 1000000000000}
 budget_policy_input = {"expected_version": {"type": "integer", "minimum": 0},
     "organization_tokens": budget_tokens, "user_tokens": budget_tokens, "project_tokens": budget_tokens, "skill_tokens": budget_tokens, "reason": NAME}
@@ -1916,6 +1936,17 @@ operation("/notification-delivery-failures", "get", "listNotificationDeliveryFai
 operation("/notification-delivery-jobs/{id}", "get", "getNotificationDeliveryJob", "NotificationDeliveryJob")
 operation("/notification-delivery-jobs/{id}/retry", "post", "retryNotificationDelivery", "NotificationRetryReceipt", "NotificationRetryInput", 201)
 operation("/notification-delivery-retries", "get", "listNotificationDeliveryRetries", "NotificationRetryReceipt", listing=True)
+operation("/notification-telegram-settings","get","listNotificationTelegramSettings","NotificationTelegramSettings")
+operation("/notification-telegram-policies/{bot}","get","listNotificationTelegramPolicies","NotificationTelegramPolicy",listing=True)
+operation("/notification-telegram-policies/{bot}","post","publishNotificationTelegramPolicy","NotificationTelegramPolicy","NotificationTelegramPolicyInput",201)
+operation("/notification-telegram-deliveries","get","listNotificationTelegramReceipts","NotificationTelegramReceipt",listing=True)
+operation("/notification-telegram-deliveries/{id}","get","getNotificationTelegramReceipt","NotificationTelegramReceiptDetails")
+operation("/notification-telegram-deliveries/{id}/reconcile","post","reconcileNotificationTelegramReceipt","NotificationTelegramReceipt","NotificationTelegramReconcileInput")
+for notify_path in ("/notification-telegram-policies/{bot}","/notification-telegram-deliveries"):
+    for notify_method,notify_op in PATHS[notify_path].items():
+        for param in notify_op.get("parameters",[]):
+            if param.get("name")=="bot": param["schema"]=NOTIFY_BOT
+            if param.get("name")=="limit": param["schema"]={"type":"integer","minimum":1,"maximum":50,"default":20}
 operation("/notification-contract-policy","get","getNotificationContractPolicy","NotificationContractPolicyState")
 operation("/notification-contract-policy","post","publishNotificationContractPolicy","NotificationContractPolicy","NotificationContractPolicyInput",201)
 operation("/notification-contract-policy-history","get","listNotificationContractPolicyHistory","NotificationContractPolicy",listing=True)

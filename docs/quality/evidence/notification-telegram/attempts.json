@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "failed_attempts_count": 4,
+  "records": {
+    "docs/quality/evidence/notification-telegram/native-focused.json": "c0a4d135dbd78bb2bc68cc75c9162d617705736f0521b57063db73618ceb5b28",
+    "docs/quality/evidence/notification-telegram/native-focused2.json": "d96c428b2511aab7007106a7ab1d1c234cd6107dd336c8633f126ab09784b77e",
+    "docs/quality/evidence/notification-telegram-web-attempt1/result.json": "8cdb1633b80947e217f332a35e0bc6b406edfdd0ce35a4498e2ec562991c851e",
+    "docs/quality/evidence/notification-telegram-web-attempt2/result.json": "c317417f65f7a9dc0f492fc87190d0023897a101e98609e6f4165c8a5c056db9"
+  },
+  "notes": "Native MFA fixture role, deferred consent suppression, then two aborted browser recordings with the old route guard. Subsequent passing evidence is separate. The initial mobile target compatibility error and nonmatching compile-only selection are disclosed in the guide and not counted as passing tests."
+}

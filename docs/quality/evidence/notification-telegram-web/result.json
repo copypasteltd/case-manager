@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T14:04:44.049Z",
+  "finished_at": "2026-10-31T14:05:05.527Z",
+  "checks": [
+    "Real owner-bound Web settings review requires explicit types and recent MFA; no implicit opt-in.",
+    "Actual Web/native HTTP/PG manual confirmation preserves immutable delivery history without marking business read.",
+    "Actual employee disable publishes a new immutable preference and retains the in-app notice. No real Telegram API call or device is claimed."
+  ],
+  "source_count": 1035,
+  "source_sha256": "292ad6914612da1c4c39e98d78736224a692ddb33a507a5cb018792da9058ee1",
+  "source_after_sha256": "292ad6914612da1c4c39e98d78736224a692ddb33a507a5cb018792da9058ee1",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API, personal Telegram notices and actual owner-bound reconciliation; controlled provider, no real Telegram delivery",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "88515480ee4ade42c37d520f4b92fba95c74a1993b8efe64e2dfb6c80bd87692",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "88515480ee4ade42c37d520f4b92fba95c74a1993b8efe64e2dfb6c80bd87692",
+  "build_source_unchanged": true
+}

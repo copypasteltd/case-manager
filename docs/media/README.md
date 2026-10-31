@@ -1,5 +1,12 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+153新增本人TG业务提醒的三张实际Web截图、实际像素无声MP4与六秒截图导览GIF。记录本人设置核对、实际人工对账提交与明确停用；接口送达来自受控合成适配器，不代表真实TG发送。原有媒体保留。
+
+[设置截图](screenshots/notification-telegram-web-settings.png) · [人工核对](screenshots/notification-telegram-web-review.png) · [停用与回执](screenshots/notification-telegram-web-closed.png) · [实际录屏](videos/notification-telegram-web.mp4) · [六秒截图导览GIF](gifs/notification-telegram-web.gif)
+
+English: actual Web/native HTTP/PostgreSQL review and mutations on isolated synthetic data. The video records real viewport pixels; the GIF is a disclosed screenshot tour. No real Telegram, model, cloud or device acceptance is represented.
+
+
 151新增三张实际Web截图、无声操作MP4与六秒截图导览GIF，位于deliverable-submission-web系列路径。示例只展示选取固定附件、准确授权入队后取消；实际后端提交另由HTTP／PG证明，未调用真实模型。
 
 

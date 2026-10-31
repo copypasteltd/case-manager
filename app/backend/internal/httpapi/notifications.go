@@ -35,6 +35,7 @@ func notificationLimit(r *http.Request, allowed ...string) (int, error) {
 }
 func (s *Server) notificationRoutes(mux *http.ServeMux) {
 	service := &notification.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	s.notificationTelegramRoutes(mux, service)
 	mux.HandleFunc("GET /v1/notification-contract-policy", read(s, "NotificationContractPolicyStateResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		if r.URL.RawQuery != "" {
 			return nil, core.Invalid("query", "当前策略不接受查询字段")

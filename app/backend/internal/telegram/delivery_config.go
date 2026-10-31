@@ -22,6 +22,10 @@ type DeliveryBot struct {
 
 var deliveryTokenPattern = regexp.MustCompile(`^[1-9][0-9]{0,15}:[A-Za-z0-9_-]{30,128}$`)
 
+// Valid lets the independent business-notice worker enforce the same fixed
+// Bot identity and HTTPS portal boundary without persisting provider secrets.
+func (b DeliveryBot) Valid() bool { return b.valid() }
+
 func (b DeliveryBot) valid() bool {
 	u, err := url.Parse(b.PortalOrigin)
 	return numericID(b.BotID, false) && core.ValidID(b.OrgID) && b.OrgID == strings.ToLower(b.OrgID) &&

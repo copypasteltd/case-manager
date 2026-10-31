@@ -1,5 +1,20 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+**增量153 · 本人 TG 业务提醒 / Personal Telegram notices**
+
+已接通员工主动订阅、十类站内业务通知的私聊提示、不可变回执、未知结果人工核对／重试及明确停用。四端源码同步，站外只显示登录提示；实际服务器和云／模型／TG／平台资料按用户答复后续提供。本轮按加速要求只运行集中检查，记录失败并补齐受影响的实际页面媒体。
+
+Employees explicitly enable personal TG prompts in Notifications after two-way binding and recent MFA. New in-app notices use current recipient/business authorization, fixed external text, bounded attempts and immutable receipts. Unknown outcomes require human review. Turning this supplement off preserves in-app notifications and history. Real server/provider material will be supplied later.
+
+当前main源码结构113，新增内容见[方案与双语使用](development/153-personal-telegram-notifications.md)、[集中核验及延期](quality/153-personal-telegram-notifications.md)、[全部23项剩余工作](delivery/05-functional-closure-153.md)。[冻结rc.7下载](releases/v0.1.0-rc.7/README.md)仍固定业务151／结构112／APK152；该冻结包不包含153，使用153须从当前源码构建并正常升级至113。七个冻结引用及既有素材保持原字节。
+
+Current source/schema113 includes this post-freeze feature. Frozen rc.7 still binds151/schema112 and development APK152; build the current source for153. No new APK, full regression, actual TG delivery or production readiness is claimed. [Current demo GIF](media/gifs/notification-telegram-web.gif) · [Actual viewport video](media/videos/notification-telegram-web.mp4).
+
+[提醒设置截图 / Settings](media/screenshots/notification-telegram-web-settings.png) · [人工核对截图 / Review](media/screenshots/notification-telegram-web-review.png) · [停用与回执 / Disabled and reconciled](media/screenshots/notification-telegram-web-closed.png)
+
+以下保留152及更早的冻结交付记录 / Retained frozen delivery history follows.
+
+
 **增量152 · 冻结交付 / Frozen delivery · v0.1.0-rc.7**
 
 本轮停止业务扩展，将完整业务151／结构112封为同版服务器、Web、秘书运行器、微信、抖音和Android开发包，另交付完整应用源码／文档、媒体与SHA256。包含准确授权的固定交付修订提交，保留独立人工验收和既有全部业务。六个旧冻结版本保持不动。

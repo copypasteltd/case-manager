@@ -27,6 +27,21 @@ type DeliveryOutcome struct {
 	MessageID     *int64
 	RetryAfter    time.Duration
 }
+
+// A personal notice has no source message to reply to. Telegram rejects a
+// reply_parameters object with message_id=0, so omit that object entirely.
+func (m OutboundMessage) MarshalJSON() ([]byte, error) {
+	type alias OutboundMessage
+	var reply any
+	if m.Reply.MessageID != 0 {
+		reply = m.Reply
+	}
+	return json.Marshal(struct {
+		*alias
+		Reply any `json:"reply_parameters,omitempty"`
+	}{(*alias)(&m), reply})
+}
+
 type DeliveryTransport interface {
 	Send(context.Context, DeliveryBot, OutboundMessage) DeliveryOutcome
 }

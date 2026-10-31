@@ -1,5 +1,8 @@
 # 更新记录 / Changelog
 
+153 · 接通四端本人TG业务提醒：明确订阅／停用、站内事件转私聊固定提示、当前授权复核、五次尝试与未知结果人工对账、不可变回执；结构113。只做集中检查与当前Web媒体；rc.7／APK152保持151／112，真实资料后续提供。 / Owner-opted personal TG business notices and immutable delivery reconciliation; frozen artifacts unchanged.
+
+
 152 · 冻结业务151／结构112为v0.1.0-rc.7；重新构建匹配四端、服务器／运行器、完整源码和媒体五包；旧六冻与历史证据保持原字节，保留151检查但不扩大回归。 / Freeze matching151 application artifacts, complete source and media.
 
 

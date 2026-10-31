@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T14:06:00.471596+00:00",
+  "encoder_script_sha256": "8f0dea6d65c96fb969de80c42627ac7b41b0a12cb7268444b56205ef31431a60",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "292ad6914612da1c4c39e98d78736224a692ddb33a507a5cb018792da9058ee1",
+      "build_source_sha256": "88515480ee4ade42c37d520f4b92fba95c74a1993b8efe64e2dfb6c80bd87692",
+      "capture_manifest": "docs/quality/evidence/notification-telegram/web-capture-manifest.json",
+      "capture_manifest_sha256": "87e56859b7ac959b8ad6a72905dffd354ce9fe6428ad2e1187c37dbf9796301e",
+      "capture_frame_count": 14,
+      "capture_duration_ms": 2880,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/notification-telegram-web-settings.png",
+          "sha256": "cb3862ee043576f013bc0d760083a123a1017e0ff442a42ea508bc1c7a7433a2"
+        },
+        {
+          "file": "docs/media/screenshots/notification-telegram-web-review.png",
+          "sha256": "d53b349ba79b548e5c04f31cbc355428983710fd191c2be7bc093572d8916d45"
+        },
+        {
+          "file": "docs/media/screenshots/notification-telegram-web-closed.png",
+          "sha256": "0c1c5bf68e4abceafc6b9e948c7c93f1ce9deb09e0741ce3b6ce9a4dd52cedd3"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "30",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/notification-telegram-web.mp4",
+          "sha256": "dea62ba23224b836e614b2a2b8ae1851ed4ee250cd025b2f86e039bf6b6a7e72",
+          "bytes": 274433
+        },
+        {
+          "file": "docs/media/gifs/notification-telegram-web.gif",
+          "sha256": "d680f6e77eee033392de2066024bda25cd744b973c4c383e0e4c4afc1083fb8b",
+          "bytes": 192681
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web fixed-file selection, explicit submission authority and pending intent. MP4 records real input; GIF tours three actual screenshots. Backend commits are separately tested; no real model, cloud, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/notification-telegram-web-settings.png",
+      "sha256": "cb3862ee043576f013bc0d760083a123a1017e0ff442a42ea508bc1c7a7433a2"
+    },
+    {
+      "file": "docs/media/screenshots/notification-telegram-web-review.png",
+      "sha256": "d53b349ba79b548e5c04f31cbc355428983710fd191c2be7bc093572d8916d45"
+    },
+    {
+      "file": "docs/media/screenshots/notification-telegram-web-closed.png",
+      "sha256": "0c1c5bf68e4abceafc6b9e948c7c93f1ce9deb09e0741ce3b6ce9a4dd52cedd3"
+    },
+    {
+      "file": "docs/media/videos/notification-telegram-web.mp4",
+      "sha256": "dea62ba23224b836e614b2a2b8ae1851ed4ee250cd025b2f86e039bf6b6a7e72",
+      "bytes": 274433
+    },
+    {
+      "file": "docs/media/gifs/notification-telegram-web.gif",
+      "sha256": "d680f6e77eee033392de2066024bda25cd744b973c4c383e0e4c4afc1083fb8b",
+      "bytes": 192681
+    }
+  ]
+}

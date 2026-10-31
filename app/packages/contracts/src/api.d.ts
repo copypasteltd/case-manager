@@ -3941,6 +3941,92 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/notification-telegram-settings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listNotificationTelegramSettings */
+        get: operations["listNotificationTelegramSettings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-telegram-policies/{bot}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listNotificationTelegramPolicies */
+        get: operations["listNotificationTelegramPolicies"];
+        put?: never;
+        /** publishNotificationTelegramPolicy */
+        post: operations["publishNotificationTelegramPolicy"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-telegram-deliveries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listNotificationTelegramReceipts */
+        get: operations["listNotificationTelegramReceipts"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-telegram-deliveries/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getNotificationTelegramReceipt */
+        get: operations["getNotificationTelegramReceipt"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notification-telegram-deliveries/{id}/reconcile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** reconcileNotificationTelegramReceipt */
+        post: operations["reconcileNotificationTelegramReceipt"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/notification-contract-policy": {
         parameters: {
             query?: never;
@@ -9964,6 +10050,84 @@ export interface components {
             days_before: number[];
             reason: string;
         };
+        NotificationTelegramPolicy: {
+            /** Format: uuid */
+            id: string;
+            bot_id: string;
+            version: number;
+            enabled: boolean;
+            categories: ("mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary" | "service_resource")[];
+            binding_id: string | null;
+            binding_version: number | null;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        NotificationTelegramSetting: {
+            bot_id: string;
+            binding_active: boolean;
+            effective: boolean;
+            current: components["schemas"]["NotificationTelegramPolicy"] | null;
+        };
+        NotificationTelegramSettings: {
+            items: components["schemas"]["NotificationTelegramSetting"][];
+        };
+        NotificationTelegramPolicyInput: {
+            expected_version: number;
+            enabled: boolean;
+            categories: ("mention" | "task" | "approval" | "request_result" | "contract_due" | "subscription_due" | "replica_failure" | "incident" | "secretary" | "service_resource")[];
+            reason: string;
+        };
+        NotificationTelegramReceipt: {
+            /** Format: uuid */
+            id: string;
+            bot_id: string;
+            /** Format: uuid */
+            source_delivery_id: string;
+            /** Format: uuid */
+            thread_id: string;
+            /** Format: uuid */
+            policy_id: string;
+            /** @enum {string} */
+            state: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "suppressed" | "abandoned";
+            version: number;
+            attempts: number;
+            reason_code: string;
+            payload_sha256: string | null;
+            message_id: number | null;
+            /** Format: date-time */
+            next_attempt_at: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        NotificationTelegramReceiptEvent: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            state: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "suppressed" | "abandoned";
+            version: number;
+            attempts: number;
+            reason_code: string;
+            payload_sha256: string | null;
+            message_id: number | null;
+            actor_id: string | null;
+            reason: string | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        NotificationTelegramReceiptDetails: {
+            receipt: components["schemas"]["NotificationTelegramReceipt"];
+            events: components["schemas"]["NotificationTelegramReceiptEvent"][];
+        };
+        NotificationTelegramReconcileInput: {
+            expected_version: number;
+            /** @enum {string} */
+            action: "confirm_sent" | "retry" | "abandon";
+            message_id: number | null;
+            reason: string;
+        };
         BudgetPolicyInput: {
             expected_version: number;
             organization_tokens: number;
@@ -14375,6 +14539,36 @@ export interface components {
                 items: components["schemas"]["NotificationRetryReceipt"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationTelegramSettingsResponse: {
+            data: components["schemas"]["NotificationTelegramSettings"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationTelegramPolicyListResponse: {
+            data: {
+                items: components["schemas"]["NotificationTelegramPolicy"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationTelegramPolicyResponse: {
+            data: components["schemas"]["NotificationTelegramPolicy"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationTelegramReceiptListResponse: {
+            data: {
+                items: components["schemas"]["NotificationTelegramReceipt"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationTelegramReceiptDetailsResponse: {
+            data: components["schemas"]["NotificationTelegramReceiptDetails"];
+            meta: components["schemas"]["Meta"];
+        };
+        NotificationTelegramReceiptResponse: {
+            data: components["schemas"]["NotificationTelegramReceipt"];
             meta: components["schemas"]["Meta"];
         };
         NotificationContractPolicyStateResponse: {
@@ -26622,6 +26816,230 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["NotificationRetryReceiptListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listNotificationTelegramSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationTelegramSettingsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listNotificationTelegramPolicies: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                bot: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationTelegramPolicyListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    publishNotificationTelegramPolicy: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                bot: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NotificationTelegramPolicyInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationTelegramPolicyResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listNotificationTelegramReceipts: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationTelegramReceiptListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getNotificationTelegramReceipt: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationTelegramReceiptDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    reconcileNotificationTelegramReceipt: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NotificationTelegramReconcileInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationTelegramReceiptResponse"];
                 };
             };
             400: components["responses"]["Failure"];

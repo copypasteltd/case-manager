@@ -24728,6 +24728,511 @@
         }
       }
     },
+    "/notification-telegram-settings": {
+      "get": {
+        "operationId": "listNotificationTelegramSettings",
+        "tags": [
+          "notification-telegram-settings"
+        ],
+        "summary": "listNotificationTelegramSettings",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationTelegramSettingsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/notification-telegram-policies/{bot}": {
+      "get": {
+        "operationId": "listNotificationTelegramPolicies",
+        "tags": [
+          "notification-telegram-policies"
+        ],
+        "summary": "listNotificationTelegramPolicies",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bot",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]{0,15}$"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationTelegramPolicyListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      },
+      "post": {
+        "operationId": "publishNotificationTelegramPolicy",
+        "tags": [
+          "notification-telegram-policies"
+        ],
+        "summary": "publishNotificationTelegramPolicy",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bot",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]{0,15}$"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationTelegramPolicyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationTelegramPolicyInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notification-telegram-deliveries": {
+      "get": {
+        "operationId": "listNotificationTelegramReceipts",
+        "tags": [
+          "notification-telegram-deliveries"
+        ],
+        "summary": "listNotificationTelegramReceipts",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationTelegramReceiptListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/notification-telegram-deliveries/{id}": {
+      "get": {
+        "operationId": "getNotificationTelegramReceipt",
+        "tags": [
+          "notification-telegram-deliveries"
+        ],
+        "summary": "getNotificationTelegramReceipt",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationTelegramReceiptDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/notification-telegram-deliveries/{id}/reconcile": {
+      "post": {
+        "operationId": "reconcileNotificationTelegramReceipt",
+        "tags": [
+          "notification-telegram-deliveries"
+        ],
+        "summary": "reconcileNotificationTelegramReceipt",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationTelegramReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationTelegramReconcileInput"
+              }
+            }
+          }
+        }
+      }
+    },
     "/notification-contract-policy": {
       "get": {
         "operationId": "getNotificationContractPolicy",
@@ -59466,6 +59971,450 @@
           "reason"
         ]
       },
+      "NotificationTelegramPolicy": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bot_id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,15}$"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "mention",
+                "task",
+                "approval",
+                "request_result",
+                "contract_due",
+                "subscription_due",
+                "replica_failure",
+                "incident",
+                "secretary",
+                "service_resource"
+              ]
+            },
+            "maxItems": 10,
+            "uniqueItems": true
+          },
+          "binding_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "binding_version": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "bot_id",
+          "version",
+          "enabled",
+          "categories",
+          "binding_id",
+          "binding_version",
+          "reason",
+          "created_at"
+        ]
+      },
+      "NotificationTelegramSetting": {
+        "type": "object",
+        "properties": {
+          "bot_id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,15}$"
+          },
+          "binding_active": {
+            "type": "boolean"
+          },
+          "effective": {
+            "type": "boolean"
+          },
+          "current": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NotificationTelegramPolicy"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "bot_id",
+          "binding_active",
+          "effective",
+          "current"
+        ]
+      },
+      "NotificationTelegramSettings": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotificationTelegramSetting"
+            },
+            "maxItems": 100
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "items"
+        ]
+      },
+      "NotificationTelegramPolicyInput": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740990
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "mention",
+                "task",
+                "approval",
+                "request_result",
+                "contract_due",
+                "subscription_due",
+                "replica_failure",
+                "incident",
+                "secretary",
+                "service_resource"
+              ]
+            },
+            "maxItems": 10,
+            "uniqueItems": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "enabled",
+          "categories",
+          "reason"
+        ]
+      },
+      "NotificationTelegramReceipt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bot_id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,15}$"
+          },
+          "source_delivery_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "thread_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "policy_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "sending",
+              "retry_wait",
+              "sent",
+              "delivery_unknown",
+              "confirmed_sent",
+              "failed",
+              "suppressed",
+              "abandoned"
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "reason_code": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]{1,80}$"
+          },
+          "payload_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "next_attempt_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "bot_id",
+          "source_delivery_id",
+          "thread_id",
+          "policy_id",
+          "state",
+          "version",
+          "attempts",
+          "reason_code",
+          "payload_sha256",
+          "message_id",
+          "next_attempt_at",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "NotificationTelegramReceiptEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "sending",
+              "retry_wait",
+              "sent",
+              "delivery_unknown",
+              "confirmed_sent",
+              "failed",
+              "suppressed",
+              "abandoned"
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "reason_code": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]{1,80}$"
+          },
+          "payload_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "state",
+          "version",
+          "attempts",
+          "reason_code",
+          "payload_sha256",
+          "message_id",
+          "actor_id",
+          "reason",
+          "created_at"
+        ]
+      },
+      "NotificationTelegramReceiptDetails": {
+        "type": "object",
+        "properties": {
+          "receipt": {
+            "$ref": "#/components/schemas/NotificationTelegramReceipt"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotificationTelegramReceiptEvent"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "receipt",
+          "events"
+        ]
+      },
+      "NotificationTelegramReconcileInput": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "confirm_sent",
+              "retry",
+              "abandon"
+            ]
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "action",
+          "message_id",
+          "reason"
+        ]
+      },
       "BudgetPolicyInput": {
         "type": "object",
         "properties": {
@@ -81699,6 +82648,152 @@
               "items",
               "next_cursor"
             ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "NotificationTelegramSettingsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/NotificationTelegramSettings"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "NotificationTelegramPolicyListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NotificationTelegramPolicy"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "NotificationTelegramPolicyResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/NotificationTelegramPolicy"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "NotificationTelegramReceiptListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NotificationTelegramReceipt"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "NotificationTelegramReceiptDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/NotificationTelegramReceiptDetails"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "NotificationTelegramReceiptResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/NotificationTelegramReceipt"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

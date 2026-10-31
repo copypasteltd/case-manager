@@ -10,6 +10,7 @@ import { Action, Busy, Empty, Fact, Notice, Page, Section, State, date } from '.
 import { SelectField } from '../business/controls';
 import { NotificationDelivery } from './delivery';
 import { ContractReminders } from './reminders';
+import { NotificationTelegram } from './telegram';
 
 export default function NotificationsPage() {
   const filters = useRef({ state: 'all', category: '' });
@@ -52,6 +53,7 @@ export default function NotificationsPage() {
       <Section title='通知列表'>{items.length ? items.map(item => <NotificationCard key={item.id + ':' + item.delivery_seq + ':' + item.read_seq} item={item} me={page.result!.me} disabled={opening} onOpen={() => void open(item)} onRead={() => void page.reload()} />) : !error && <Empty>当前没有符合条件的通知。</Empty>}</Section>
       {next && !error && <Action secondary loading={moreBusy} onClick={() => void more()}>加载更早通知</Action>}
       {page.result!.me.actions.includes('notification.delivery.read') && <NotificationDelivery me={page.result!.me} />}
+      <NotificationTelegram me={page.result!.me} />
       {page.result!.me.actions.includes('notification.policy.read') && <ContractReminders me={page.result!.me} />}
     </>}
     <Action secondary loading={page.loading} disabled={opening} onClick={() => void page.reload()}>刷新通知</Action>
