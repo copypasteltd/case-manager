@@ -1,5 +1,8 @@
 # Repository working agreement / 仓库工作约定
 
+- Increment150 freezes exact business149/schema111 as v0.1.0-rc.6 with fresh four-client artifacts, full app source/media and fixed SSH delivery. Preserve all five earlier freezes;149 evidence is retained without replay, native cached outcomes remain explicit. Keep23 work packages, eight draft Skills and actual integration/formal acceptance open. See `docs/development/150-frozen-release-delivery.md`.
+
+
 Increment149 adds in-app actual replica failure/retry/verified-recovery deliveries and exact version/replica entry across Web/shared mobile. Keep current ordinary file authority, candidate event/version rechecks, immutable deliveries and explicit human retry; read/queue acceptance never resolves work. No migration: schema111. All five frozen releases and APK148/business147 remain immutable;149 source is main-only. Preserve failed fixture-MFA attempt/source and the disclosed post-capture read-only verifier addition. Full regression/additional mobile UI/newAPK and real integrations remain deferred/open. DevelopmentPG100/API,23 work packages and eight draft Skills stay unchanged. See docs/development/149-replica-failure-recovery.md.
 
 

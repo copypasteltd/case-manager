@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## 增量150 · `v0.1.0-rc.6` 当前功能冻结 / Frozen functional delivery
+
+- 停止增加业务，固定149提交`c49177e6f9f26731ce1a2f2183e2c9020b2c4d3d`／结构111；Linux/Web/runtime、微信／抖音和当前Android开发包全部包含恢复通知及准确版本／副本入口。
+- 五包完整交付：服务器、两小程序、开发APK、完整应用源码／文档、全部媒体；固定Git下载、SHA256和可信内层清单，旧五冻不动。
+- 新构建／产物检查与149精选业务／逻辑／Web／媒体精确复用分开；原生任务`> Task :app:testDebugUnitTest UP-TO-DATE`，缓存=true，无新完整回归、浏览器／模型／目标Linux执行。
+- 授权SSH发布标签及固定包，Releases网页因既有账号403保持未创建；真实配置、正式签名和完整公司验收仍按23项跟踪。开发PG100／API保留，未部署。
+- [固定下载／使用](releases/v0.1.0-rc.6/README.md) · [交付方案](development/150-frozen-release-delivery.md) · [准确检查](quality/150-frozen-release-verification.md) · [全部23项](delivery/05-functional-closure-150.md)
+
+Freeze all business149 changes into matching four-client artifacts and complete source/media. Distinguish fresh packaging from retained validation, cached native tests and pending production acceptance.
+
+
 ## 增量149 · 复制失败／重试／恢复通知闭环
 
 - 复用实际复制工作器与不可变通知历史，消费准确`replica.verified`：仅原已投递失败线程可形成恢复未读，初次正常复制不通知恢复；排队、复制和校验中仍保留需处理。

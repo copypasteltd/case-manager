@@ -1,5 +1,20 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+**增量150 · 功能冻结交付 / Frozen functional delivery**
+
+最新冻结[`v0.1.0-rc.6`](releases/v0.1.0-rc.6/README.md)固定业务149／结构111，包含复制失败→人工重试→实际校验恢复通知与准确版本入口。Linux/Web/秘书运行器、微信、抖音、Android开发包已重新构建；完整源码、媒体和校验摘要共五包固定下载。150不再新增业务；原五冻保留。
+
+The latest freeze includes all business149 changes in matching server, Web, miniapps and development APK artifacts. Complete source/docs, media and SHA256 checks are delivered together. Packaging150 retains exact149 business/browser/media proof without replay; formal production integration and signing remain open. No GitHub Releases webpage or production deployment is claimed.
+
+登录后按角色使用项目／OA／财务／文件／秘书／服务状态。复制通知打开准确版本，已读及排队不代表恢复。按[交付／部署](releases/v0.1.0-rc.6/README.md)核对包和内层清单，准备原生Linux／PG／HTTPS；小程序和APK当前是本地API，正式连接前配置真实身份／域名并重建。开发PG100保留，新版结构111须正常升级。
+
+[全部23项待办](delivery/05-functional-closure-150.md) · [准确核验与延期](quality/150-frozen-release-verification.md) · [复制通知使用](development/149-replica-failure-recovery.md)
+
+![保留149实际恢复通知截图 / Retained actual recovery notice](media/screenshots/replica-notifications-web-recovery.png)
+
+[149实际无声操作MP4 · Actual silent recording](media/videos/replica-notifications-web.mp4) · [149截图导览GIF · Screenshot tour](media/gifs/replica-notifications-web.gif)（150原字节复用，未重新录制）。
+
+
 ## 增量149 · 文件复制失败／恢复闭环 / Replica failure and recovery
 
 当前源码补齐实际工作器失败→人工重试→字节校验恢复的站内通知。已读和重试排队继续保留处理义务，实际校验成功后才在原线程形成新的未读恢复通知；初次正常复制不产生恢复噪音，延迟事件与撤权继续抑制。Web／微信／抖音／Android共享源码入口可定位准确版本与副本，并按原权限安排人工重试。

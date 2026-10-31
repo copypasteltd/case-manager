@@ -1,5 +1,10 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量150 · 冻结素材包
+
+`v0.1.0-rc.6`媒体ZIP完整固定Git149的全部媒体；三张复制通知截图、2.8秒实际无声MP4及6秒三截图导览GIF按原字节复用，没有150新录制。相关界面与冻结149源码一致。[固定包及摘要](../releases/v0.1.0-rc.6/README.md)／[149媒体证据](../quality/evidence/replica-notifications/media.json)。The media ZIP retains exact149 pixels and artifact bytes; the GIF is a screenshot tour, not a continuous recording.
+
+
 ## 增量149：复制恢复通知 / Replica recovery notice
 
 实际Web／原生HTTP／耐久PG及合成对象存储工作器：失败、已读、人工重试和字节校验已在捕获前发生；录屏记录实际打开对应版本及已读恢复，不把录屏描述为现场云端故障恢复。三PNG分别为恢复未读、准确版本、恢复已读；MP4为2.8秒实际无声操作（包含短暂加载），GIF为6秒三截图导览，不是连续操作录像。仅已登录合成资料，不记录凭据。
