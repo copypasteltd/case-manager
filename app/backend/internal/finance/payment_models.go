@@ -67,33 +67,48 @@ type PaymentRelease struct {
 type PaymentRefundAllocate struct {
 	Base
 	RefundAllocation
+	RefundFXAcknowledged bool `json:"refund_fx_acknowledged,omitempty"`
+}
+
+// Amount/Shares in an allocation always conserve its original payment units.
+// A foreign refund additionally conserves actual received cash in these fields.
+type PaymentAllocationRefundCash struct {
+	Amount           string       `json:"amount"`
+	Currency         string       `json:"currency"`
+	WholeAmount      string       `json:"whole_amount"`
+	OriginalAmount   string       `json:"original_amount"`
+	OriginalCurrency string       `json:"original_currency"`
+	Rate             string       `json:"rate"`
+	Source           string       `json:"source"`
+	Shares           []Allocation `json:"shares"`
 }
 type PaymentAllocation struct {
-	ID                  string          `json:"id"`
-	PaymentID           string          `json:"payment_id"`
-	CostID              string          `json:"cost_id"`
-	CostRevisionID      string          `json:"cost_revision_id"`
-	Kind                string          `json:"kind"`
-	Effect              int             `json:"effect"`
-	Amount              string          `json:"amount"`
-	RootID              string          `json:"root_id"`
-	SourceAllocationID  *string         `json:"source_allocation_id"`
-	ClaimID             *string         `json:"claim_id"`
-	ClaimRevisionID     *string         `json:"claim_revision_id"`
-	ClaimLineID         *string         `json:"claim_line_id"`
-	Shares              []Allocation    `json:"shares"`
-	RemainingAmount     string          `json:"remaining_amount"`
-	CostAmount          string          `json:"cost_amount"`
-	CostCurrency        string          `json:"cost_currency"`
-	PaymentCurrency     string          `json:"payment_currency"`
-	CostExponent        int             `json:"cost_exponent"`
-	PaymentExponent     int             `json:"payment_exponent"`
-	CostShares          []Allocation    `json:"cost_shares"`
-	RemainingCostAmount string          `json:"remaining_cost_amount"`
-	FX                  *PaymentFXQuote `json:"fx"`
-	ActorID             string          `json:"actor_id"`
-	Reason              string          `json:"reason"`
-	CreatedAt           time.Time       `json:"created_at"`
+	ID                  string                       `json:"id"`
+	PaymentID           string                       `json:"payment_id"`
+	CostID              string                       `json:"cost_id"`
+	CostRevisionID      string                       `json:"cost_revision_id"`
+	Kind                string                       `json:"kind"`
+	Effect              int                          `json:"effect"`
+	Amount              string                       `json:"amount"`
+	RootID              string                       `json:"root_id"`
+	SourceAllocationID  *string                      `json:"source_allocation_id"`
+	ClaimID             *string                      `json:"claim_id"`
+	ClaimRevisionID     *string                      `json:"claim_revision_id"`
+	ClaimLineID         *string                      `json:"claim_line_id"`
+	Shares              []Allocation                 `json:"shares"`
+	RemainingAmount     string                       `json:"remaining_amount"`
+	CostAmount          string                       `json:"cost_amount"`
+	CostCurrency        string                       `json:"cost_currency"`
+	PaymentCurrency     string                       `json:"payment_currency"`
+	CostExponent        int                          `json:"cost_exponent"`
+	PaymentExponent     int                          `json:"payment_exponent"`
+	CostShares          []Allocation                 `json:"cost_shares"`
+	RemainingCostAmount string                       `json:"remaining_cost_amount"`
+	FX                  *PaymentFXQuote              `json:"fx"`
+	RefundCash          *PaymentAllocationRefundCash `json:"refund_cash,omitempty"`
+	ActorID             string                       `json:"actor_id"`
+	Reason              string                       `json:"reason"`
+	CreatedAt           time.Time                    `json:"created_at"`
 }
 type Payment struct {
 	PaymentContent
@@ -114,6 +129,7 @@ type Payment struct {
 	Attachments                  []fileref.Evidence `json:"attachments"`
 	EffectiveAllocatedAmount     string             `json:"effective_allocated_amount"`
 	RefundedAmount               string             `json:"refunded_amount"`
+	RefundAllocatedPrincipal     string             `json:"refund_allocated_principal"`
 	ContractReturnReservedAmount string             `json:"contract_return_reserved_amount"`
 	UnallocatedAmount            *string            `json:"unallocated_amount"`
 	CanEdit                      bool               `json:"can_edit"`

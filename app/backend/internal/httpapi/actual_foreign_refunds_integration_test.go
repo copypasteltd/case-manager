@@ -77,7 +77,7 @@ func TestActualForeignRefunds(t *testing.T) {
 	t.Run("actual cash and original principal remain independent immutable facts", func(t *testing.T) {
 		refund = record(refund, &p, true)
 		current := get(p.ID)
-		if refund.CanAllocate || refund.RefundFX == nil || refund.RefundFX.OriginalAmount != "780.000000" || *refund.Amount != "100.000000" || *refund.Currency != "USD" || current.RefundedAmount != "780.000000" || *current.UnallocatedAmount != "0.000000" || current.ContentHash != p.ContentHash {
+		if !refund.CanAllocate || refund.RefundFX == nil || refund.RefundFX.OriginalAmount != "780.000000" || *refund.Amount != "100.000000" || *refund.Currency != "USD" || current.RefundedAmount != "780.000000" || *current.UnallocatedAmount != "0.000000" || current.ContentHash != p.ContentHash {
 			t.Fatal(refund, current)
 		}
 		legacyHistory := data[finance.PaymentRevision](t, call("GET", "/v1/payments/"+p.ID+"/revisions/"+p.CurrentRevisionID, nil, 200))
@@ -119,7 +119,7 @@ func TestActualForeignRefunds(t *testing.T) {
 		reverse(foreign)
 		reverse(same)
 	})
-	t.Run("allocated principal cannot be refunded and cross-unit attribution is blocked", func(t *testing.T) {
+	t.Run("unmatched principal and unacknowledged expense inverses remain blocked", func(t *testing.T) {
 		cash := record(draft("HKD", "100", nil, nil), nil, false)
 		c := data[finance.Cost](t, call("POST", "/v1/costs", finance.Create{Content: finance.Content{Title: "Synthetic refundable service", OccurredOn: ptr("2025-01-15"), Currency: ptr("HKD"), Amount: ptr("100"), Category: "refund121", Counterparty: &finance.PartyRef{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, Allocations: []finance.Allocation{{ProjectID: file.File.ProjectID, Amount: "100"}}, EvidenceVersionIDs: []string{file.Version.ID}}, SourceKey: "refund121cost:" + core.NewID(), ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "synthetic incurred cost"}, 201))
 		c = data[finance.Cost](t, call("POST", "/v1/costs/"+c.ID+"/confirm", finance.Base{ExpectedVersion: c.Version, RevisionID: c.CurrentRevisionID, ContentHash: c.ContentHash, Reason: "confirmed actual expense"}, 200))
@@ -129,10 +129,10 @@ func TestActualForeignRefunds(t *testing.T) {
 		in := recordInput(q, &cash, true)
 		call("POST", "/v1/payments/"+q.ID+"/record", in, 409)
 		in.RefundAllocations = []finance.RefundAllocation{{SourceAllocationID: rows[0].ID, Amount: "80"}}
-		call("POST", "/v1/payments/"+q.ID+"/record", in, 409)
+		call("POST", "/v1/payments/"+q.ID+"/record", in, 422)
 		cash = data[finance.Payment](t, call("POST", "/v1/payments/"+cash.ID+"/allocations/"+rows[0].ID+"/release", finance.PaymentRelease{Base: base(cash), Amount: "100"}, 200))
 		q = record(q, &cash, true)
-		call("POST", "/v1/payments/"+q.ID+"/refund-allocations", finance.PaymentRefundAllocate{Base: base(q), RefundAllocation: finance.RefundAllocation{SourceAllocationID: rows[0].ID, Amount: "10"}}, 409)
+		call("POST", "/v1/payments/"+q.ID+"/refund-allocations", finance.PaymentRefundAllocate{Base: base(q), RefundAllocation: finance.RefundAllocation{SourceAllocationID: rows[0].ID, Amount: "10"}}, 422)
 		current := data[finance.Cost](t, call("GET", "/v1/costs/"+c.ID, nil, 200))
 		if current.ContentHash != c.ContentHash || valueForTest(current.PaidAmount) != "0.000000" {
 			t.Fatal(current)

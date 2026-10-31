@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T01:53:39.118699+00:00",
+  "encoder_script_sha256": "09c023bad7f50c25543df0ac76f24dd9586fb31ed20fda099a79c370bb3effc0",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "dcb6521078706f66a56f2a74d69e98515c455f8ed5becebec869f504b00f7aea",
+      "build_source_sha256": "9ef8711c4a4933fa6ed2bce72390a9520eae34630b41191ec4211a76d801fa94",
+      "capture_manifest": "docs/quality/evidence/foreign-expense-refunds/web-capture-manifest.json",
+      "capture_manifest_sha256": "fe0c5194756100cead97aeaadc43fe416905861c91a58eadc9bf9ac4d22abca1",
+      "capture_frame_count": 14,
+      "capture_duration_ms": 2844,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/foreign-expense-refunds-web-partial.png",
+          "sha256": "797c5c43d477009bbc5a679c5594ab2d37f2fff36ece24395cf85b7defd86f12"
+        },
+        {
+          "file": "docs/media/screenshots/foreign-expense-refunds-web-review.png",
+          "sha256": "9842a3ba574aafa5f89a5259bc9ae4d8bce5fa094ab6083e44c3980e274302dc"
+        },
+        {
+          "file": "docs/media/screenshots/foreign-expense-refunds-web-complete.png",
+          "sha256": "e17fa1a4bec49b80957e3c7ac5918a262a7014c8ca6ad7f6e7e76f23708dff12"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "30",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/foreign-expense-refunds-web.mp4",
+          "sha256": "612cda047c66283b0cfd79e15cb8790e7c93c446e1735cf7d86d3af2d4ac3324",
+          "bytes": 148971
+        },
+        {
+          "file": "docs/media/gifs/foreign-expense-refunds-web.gif",
+          "sha256": "b630f5c74c13edb40fd7b9104d588b67e13000f1f52360faae1e4b9e3a611fb8",
+          "bytes": 282896
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web expense-refund partial attribution, reviewed three-currency final inverse and durable full attribution. MP4 records actual post-MFA pixels; GIF is an explicit six-second three-screenshot tour. No real cash transfer, device, cloud or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/foreign-expense-refunds-web-partial.png",
+      "sha256": "797c5c43d477009bbc5a679c5594ab2d37f2fff36ece24395cf85b7defd86f12"
+    },
+    {
+      "file": "docs/media/screenshots/foreign-expense-refunds-web-review.png",
+      "sha256": "9842a3ba574aafa5f89a5259bc9ae4d8bce5fa094ab6083e44c3980e274302dc"
+    },
+    {
+      "file": "docs/media/screenshots/foreign-expense-refunds-web-complete.png",
+      "sha256": "e17fa1a4bec49b80957e3c7ac5918a262a7014c8ca6ad7f6e7e76f23708dff12"
+    },
+    {
+      "file": "docs/media/videos/foreign-expense-refunds-web.mp4",
+      "sha256": "612cda047c66283b0cfd79e15cb8790e7c93c446e1735cf7d86d3af2d4ac3324",
+      "bytes": 148971
+    },
+    {
+      "file": "docs/media/gifs/foreign-expense-refunds-web.gif",
+      "sha256": "b630f5c74c13edb40fd7b9104d588b67e13000f1f52360faae1e4b9e3a611fb8",
+      "bytes": 282896
+    }
+  ]
+}

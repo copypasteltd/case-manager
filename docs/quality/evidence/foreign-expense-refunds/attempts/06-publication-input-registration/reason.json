@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "reason": "The inherited publication_files register mistakenly treated every repository path, including1494 media/archive entries and retained historical snapshots, as current code/guide whitespace inputs. Preserve the failed result and original register. Register all new/edited UTF-8 text for this increment instead; the checker mandatory code/guide list remains unchanged, while secret/forbidden-path/link checks still cover the entire repository and historical evidence/media stay immutable. No application/checker code or execution result changed.",
+  "application_source_changed": false,
+  "publication_checker_changed": false,
+  "whole_repository_secret_and_link_scan_retained": true
+}

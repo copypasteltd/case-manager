@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量134：GAP-03／18补齐异币退款费用回转：登记时原子组合、后续分次追加，原付款本金、费用原币与实收现金独立，尾差、项目份额、全额冲销及旧回执兼容。首个冻结候选仍为133的`v0.1.0-rc.1`，本轮是main后续源码；23 active（14 P0／9 P1）、5 excluded及八项draft Skill不变。见[实现与使用](../development/134-foreign-expense-refunds.md)、[关键检查与延期](../quality/134-foreign-expense-refunds-verification.md)和[本轮及全部23项](05-functional-closure-134.md)。
+
 ## 功能增量132
 
 已知历史正式原件和已提交人工上传草稿的受控清理代码完成；98→99，四端清单、MFA批准、屏障、独立Worker、准确不存在回执与全确认后容量释放。余项仍23包，见05-functional-closure-132.md。

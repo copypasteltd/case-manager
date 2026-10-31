@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "reason": "Two owned native checks attempted initialization together, but the reused initializer has one fixed private password-file path. The second stopped at its pre-start assertion; its owned empty directory was verified and removed, and its private ownership record archived. No browser or PG process was launched for that second attempt. Retry serially after the first check terminates.",
+  "business_cases_executed": 0,
+  "browser_started": false,
+  "database_started": false,
+  "owned_unstarted_directory_cleaned": true,
+  "development_processes_modified": false
+}

@@ -8371,6 +8371,7 @@ export interface components {
             can_record: boolean;
             can_allocate: boolean;
             can_reverse: boolean;
+            refund_allocated_principal?: string;
         };
         PaymentFXInput: {
             cost_amount: string;
@@ -8446,6 +8447,20 @@ export interface components {
             source_allocation_id: string;
             amount: string;
             cost_amount?: string;
+            refund_fx_acknowledged?: boolean;
+        };
+        PaymentAllocationRefundCash: {
+            amount: string;
+            currency: string;
+            whole_amount: string;
+            original_amount: string;
+            original_currency: string;
+            rate: string;
+            source: string;
+            shares: {
+                project_id: string | null;
+                amount: string;
+            }[];
         };
         PaymentAllocation: {
             /** Format: uuid */
@@ -8488,6 +8503,7 @@ export interface components {
             }[];
             remaining_cost_amount?: string;
             fx?: components["schemas"]["PaymentFXQuote"] | null;
+            refund_cash?: components["schemas"]["PaymentAllocationRefundCash"];
         };
         CostPaymentSource: {
             /** Format: uuid */

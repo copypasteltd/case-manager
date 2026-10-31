@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T01:59:25.465183+00:00",
+  "increment": 134,
+  "verification_mode": "scoped_increment",
+  "checks": [
+    {
+      "name": "Five executed native HTTP/PG suites pass all64 selected records without skips",
+      "passed": true
+    },
+    {
+      "name": "Backend execution retains exact complete listed Go/SQL/API and native harness inputs",
+      "passed": true
+    },
+    {
+      "name": "Generated reporter cache exclusion retains original execution hashes and unchanged application inputs",
+      "passed": true
+    },
+    {
+      "name": "Executed current client check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Executed current client check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Executed current client check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Executed current client check web-build",
+      "passed": true
+    },
+    {
+      "name": "Executed current client check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Executed current client check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Actual436 Web and521 shared mobile cases include eight new foreign-refund cases each",
+      "passed": true
+    },
+    {
+      "name": "The owned native fully durable test PostgreSQL was closed",
+      "passed": true
+    },
+    {
+      "name": "Actual human Web flow re-reads committed three-currency inverse and releases all owned resources",
+      "passed": true
+    },
+    {
+      "name": "Three inspected actual screenshots, one MP4 and one labelled screenshot-tour GIF retain their bytes",
+      "passed": true
+    },
+    {
+      "name": "Published historical proof/media and migrations1–100 remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "First freeze remains at its exact published source; this is post-freeze development",
+      "passed": true
+    },
+    {
+      "name": "Eight Skills remain draft; AI fees stay excluded and external acceptance stays open",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/backend.json",
+      "sha256": "75bd3519202024ee2db460b965187b8e063ace11887ad0353378c31d17f9ed19"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/client-source-bindings.json",
+      "sha256": "87611688355f6ae3657ebeb2443607af172b68db775a59d75a66b5be279d25d8"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/typecheck.json",
+      "sha256": "6630ee6a7922b519bb60c90ab2b66f71c5134441d903f96bc7630a923fec0026"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/web-tests.json",
+      "sha256": "b0625f6062a5ae20ff3635bf52a26fa2107b6fe4598662942782e7f0907188c7"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/mobile-tests.json",
+      "sha256": "4370478b1f82ace6bf7c149ad335704ebfa81f3319fb69d79c64f32a0248ca80"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/web-build.json",
+      "sha256": "7443755ee3434e3837c49addb28aa9c7a70e15d042becd6f8bdf66ccb8b4b3e6"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/weapp-build.json",
+      "sha256": "742888a5aefd90e555191e13ff373f7884e4863e70e5ac49b8bc95db38f8ab91"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/douyin-build.json",
+      "sha256": "eab65c2f93f922f1d600071596c49460fa3c7908419e069c247c55270404c46f"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/native-cluster-closed.json",
+      "sha256": "f5d3bc1302fa2aff488d4492c102986c02d1b72d9b295119e0725b5b4c79f982"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds-web/result.json",
+      "sha256": "b5952799bfbe9902909ba1fe5bb4cbf229fac8623c37a0afe784ce57219a07b0"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds-web/source-manifest.json",
+      "sha256": "3ac8c8df88953d42570ee4c28c218fd562415db827a6f9ffd148af10095a833f"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/media.json",
+      "sha256": "1468113be09faebe76b9feeff5030d07d7926b46bd5a09dc28c41c62577104dc"
+    },
+    {
+      "file": "docs/quality/evidence/foreign-expense-refunds/visual-review.json",
+      "sha256": "96ce87c238c498d4072b4f12056dc950344cc45dc9dbc018f1fd731793d2a34b"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "base_commit": "1dd066a5419c73c82f81403d0d7f840b87040433",
+    "full_backend_increment": 121,
+    "runtime_increment": 121,
+    "android_artifact_increment": 133,
+    "freeze_tag": "v0.1.0-rc.1",
+    "current_android_apk_built": false,
+    "previous_proof_and_media_reexecuted": false
+  },
+  "interaction_kind": "foreign-expense-refunds",
+  "interaction_source_sha256": "ae66482a4eebf95ecf7ca9322abfecb9fcdd65ece2fbbb2e989048b5e815f28d",
+  "verification_script_sha256": "786fc3cf96487b5dd804e4268adf29dd69ab7ff42b1877373f8498ce9f750f1f",
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": {
+    "kind": "generated_report_exclusion_only",
+    "binding_record_sha256": "87611688355f6ae3657ebeb2443607af172b68db775a59d75a66b5be279d25d8",
+    "application_sources_changed": false,
+    "commands_reexecuted": false,
+    "scope": "Original client and browser startup execution hashes remain original. Only generated Vitest output is excluded from the current client input projection. Browser action manifest still matches current backend/Web/contracts/capture sources exactly; verification-only checker changes are outside that executed action manifest."
+  },
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "current_android_apk_built": false,
+  "current_development_database_schema": 100,
+  "skipped_checks": [
+    "Full backend/runtime regression",
+    "Additional mobile browser journey",
+    "New Android JS/APK/JVM build",
+    "Persistent development database100-to101 upgrade",
+    "Real platform/cloud/model/TG/Linux/production acceptance"
+  ],
+  "skip_authority": "User explicitly requested a first frozen release with selected validation deferred on2026-10-31; retain that fast focused workflow for this post-freeze increment.",
+  "full_goal_complete": false,
+  "production_ready": false
+}

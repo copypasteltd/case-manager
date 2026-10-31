@@ -46,13 +46,14 @@ func paymentReadable(ctx context.Context, db platform.DBTX, a core.Actor, p Paym
 func paymentBalances(ctx context.Context, db platform.DBTX, org string, p *Payment) error {
 	p.EffectiveAllocatedAmount = "0.000000"
 	p.RefundedAmount = "0.000000"
+	p.RefundAllocatedPrincipal = "0.000000"
 	p.ContractReturnReservedAmount = "0.000000"
 	p.UnallocatedAmount = nil
 	if p.State == "draft" || p.Amount == nil {
 		return nil
 	}
 	var net string
-	if err := db.QueryRow(ctx, `SELECT COALESCE(sum(a.effect*a.amount),0)::text FROM payment_allocations a JOIN payment_records q ON q.org_id=a.org_id AND q.id=a.payment_id JOIN payment_revisions v ON v.org_id=q.org_id AND v.id=q.current_revision_id
+	if err := db.QueryRow(ctx, `SELECT COALESCE(sum(a.effect*(CASE WHEN $3='refund' THEN COALESCE(a.refund_cash_amount,a.amount) ELSE a.amount END)),0)::text FROM payment_allocations a JOIN payment_records q ON q.org_id=a.org_id AND q.id=a.payment_id JOIN payment_revisions v ON v.org_id=q.org_id AND v.id=q.current_revision_id
         WHERE a.org_id=$1 AND (q.id=$2 OR q.reverses_id=$2 OR ($3='outgoing' AND v.refund_of_id=$2))`, org, p.ID, value(p.Direction)).Scan(&net); err != nil {
 		return err
 	}
@@ -63,6 +64,13 @@ func paymentBalances(ctx context.Context, db platform.DBTX, org string, p *Payme
 		net = d.String()
 	}
 	p.EffectiveAllocatedAmount = net
+	if p.RefundFX != nil && p.RecordKind == "payment" {
+		if err := db.QueryRow(ctx, `SELECT COALESCE(-sum(a.effect*a.amount),0)::text FROM payment_allocations a JOIN payment_records q ON q.org_id=a.org_id AND q.id=a.payment_id
+ WHERE a.org_id=$1 AND (q.id=$2 OR q.reverses_id=$2)`, org, p.ID).Scan(&p.RefundAllocatedPrincipal); err != nil {
+			return err
+		}
+	}
+
 	if p.RecordKind != "payment" || !slices.Contains([]string{"outgoing", "refund"}, value(p.Direction)) {
 		return nil
 	}
@@ -109,7 +117,7 @@ func presentPayment(ctx context.Context, db platform.DBTX, a core.Actor, p Payme
 	write := a.RunID == "" && paymentProjectLocks(ctx, db, a, p, nil, false) == nil
 	p.CanEdit = write && p.State == "draft" && authz.Require(ctx, db, a, "payment.record", paymentResource(p)) == nil
 	p.CanRecord = p.CanEdit
-	p.CanAllocate = p.RefundFX == nil && write && p.State == "recorded" && p.RecordKind == "payment" && slices.Contains([]string{"outgoing", "refund"}, value(p.Direction)) && authz.Require(ctx, db, a, "payment.record", paymentResource(p)) == nil
+	p.CanAllocate = write && p.State == "recorded" && p.RecordKind == "payment" && slices.Contains([]string{"outgoing", "refund"}, value(p.Direction)) && authz.Require(ctx, db, a, "payment.record", paymentResource(p)) == nil
 	p.CanReverse = write && p.State == "recorded" && p.RecordKind == "payment" && p.RefundedAmount == "0.000000" && authz.Require(ctx, db, a, "payment.reverse", paymentResource(p)) == nil
 	if p.CanReverse {
 		blocked, err := paymentHasContractReturns(ctx, db, a.OrgID, p.ID)
@@ -199,22 +207,34 @@ func (s *Service) Payments(ctx context.Context, a core.Actor, f PaymentFilter) (
 
 const allocationColumns = `a.id,a.payment_id,a.cost_id,a.cost_revision_id,a.kind,a.effect,a.amount::text,a.root_id,a.source_allocation_id,a.claim_id,a.claim_revision_id,a.claim_line_id,a.actor_id,a.reason,a.created_at,(SELECT COALESCE(sum(x.effect*x.amount),0)::text FROM payment_allocations x WHERE x.org_id=a.org_id AND x.root_id=a.root_id),
  a.cost_amount::text,(SELECT currency FROM cost_revisions WHERE org_id=a.org_id AND id=a.cost_revision_id),
- (SELECT r.currency FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id WHERE p.org_id=a.org_id AND p.id=a.payment_id),
+ (SELECT r.currency FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id WHERE p.org_id=a.org_id AND p.id=(SELECT payment_id FROM payment_allocations WHERE org_id=a.org_id AND id=a.root_id)),
  (SELECT d.exponent FROM cost_revisions r JOIN currency_definitions d ON d.code=r.currency WHERE r.org_id=a.org_id AND r.id=a.cost_revision_id),
- (SELECT d.exponent FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id JOIN currency_definitions d ON d.code=r.currency WHERE p.org_id=a.org_id AND p.id=a.payment_id),
- (SELECT COALESCE(sum(x.effect*x.cost_amount),0)::text FROM payment_allocations x WHERE x.org_id=a.org_id AND x.root_id=a.root_id),a.fx_rate::text,a.fx_source,a.fx_quoted_on::text`
+ (SELECT d.exponent FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id JOIN currency_definitions d ON d.code=r.currency WHERE p.org_id=a.org_id AND p.id=(SELECT payment_id FROM payment_allocations WHERE org_id=a.org_id AND id=a.root_id)),
+ (SELECT COALESCE(sum(x.effect*x.cost_amount),0)::text FROM payment_allocations x WHERE x.org_id=a.org_id AND x.root_id=a.root_id),a.fx_rate::text,a.fx_source,a.fx_quoted_on::text,a.refund_cash_amount::text,(SELECT r.payload FROM payment_records p JOIN payment_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id WHERE p.org_id=a.org_id AND p.id=a.payment_id)`
 
 func scanAllocation(row pgx.Row) (PaymentAllocation, error) {
 	v := PaymentAllocation{Shares: []Allocation{}, CostShares: []Allocation{}}
-	var rate, source, day *string
-	err := row.Scan(&v.ID, &v.PaymentID, &v.CostID, &v.CostRevisionID, &v.Kind, &v.Effect, &v.Amount, &v.RootID, &v.SourceAllocationID, &v.ClaimID, &v.ClaimRevisionID, &v.ClaimLineID, &v.ActorID, &v.Reason, &v.CreatedAt, &v.RemainingAmount, &v.CostAmount, &v.CostCurrency, &v.PaymentCurrency, &v.CostExponent, &v.PaymentExponent, &v.RemainingCostAmount, &rate, &source, &day)
+	var rate, source, day, cash *string
+	var paymentPayload []byte
+	err := row.Scan(&v.ID, &v.PaymentID, &v.CostID, &v.CostRevisionID, &v.Kind, &v.Effect, &v.Amount, &v.RootID, &v.SourceAllocationID, &v.ClaimID, &v.ClaimRevisionID, &v.ClaimLineID, &v.ActorID, &v.Reason, &v.CreatedAt, &v.RemainingAmount, &v.CostAmount, &v.CostCurrency, &v.PaymentCurrency, &v.CostExponent, &v.PaymentExponent, &v.RemainingCostAmount, &rate, &source, &day, &cash, &paymentPayload)
 	if err == nil && rate != nil && source != nil && day != nil {
 		v.FX = &PaymentFXQuote{Rate: *rate, Source: *source, QuotedOn: *day}
+	}
+	if err == nil && cash != nil {
+		var p PaymentContent
+		if e := json.Unmarshal(paymentPayload, &p); e != nil {
+			return v, e
+		}
+		if p.RefundFX == nil {
+			return v, core.Fail(409, "REFUND_BASIS_INVALID", "实收分配缺少固定退款凭证")
+		}
+		q := p.RefundFX
+		v.RefundCash = &PaymentAllocationRefundCash{Amount: *cash, Currency: value(p.Currency), WholeAmount: value(p.Amount), OriginalAmount: q.OriginalAmount, OriginalCurrency: q.OriginalCurrency, Rate: q.Rate, Source: q.Source, Shares: []Allocation{}}
 	}
 	return v, platform.DatabaseError(err)
 }
 func allocationShares(ctx context.Context, db platform.DBTX, org string, a *PaymentAllocation) error {
-	rows, err := db.Query(ctx, "SELECT project_id,amount::text,cost_amount::text FROM payment_allocation_shares WHERE org_id=$1 AND allocation_id=$2 ORDER BY position", org, a.ID)
+	rows, err := db.Query(ctx, "SELECT project_id,amount::text,cost_amount::text,refund_cash_amount::text FROM payment_allocation_shares WHERE org_id=$1 AND allocation_id=$2 ORDER BY position", org, a.ID)
 	if err != nil {
 		return err
 	}
@@ -224,11 +244,15 @@ func allocationShares(ctx context.Context, db platform.DBTX, org string, a *Paym
 	for rows.Next() {
 		var v Allocation
 		var cost string
-		if err = rows.Scan(&v.ProjectID, &v.Amount, &cost); err != nil {
+		var cash *string
+		if err = rows.Scan(&v.ProjectID, &v.Amount, &cost, &cash); err != nil {
 			return err
 		}
 		a.Shares = append(a.Shares, v)
 		a.CostShares = append(a.CostShares, Allocation{ProjectID: v.ProjectID, Amount: cost})
+		if a.RefundCash != nil && cash != nil {
+			a.RefundCash.Shares = append(a.RefundCash.Shares, Allocation{ProjectID: v.ProjectID, Amount: *cash})
+		}
 	}
 	return rows.Err()
 }

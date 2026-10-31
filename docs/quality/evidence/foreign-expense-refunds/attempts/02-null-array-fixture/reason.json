@@ -1,0 +1,4 @@
+{
+  "reason": "The fixture sent null instead of an empty refund_allocations array. Contract validation correctly returned422 before the intended business409. Business code and all four backward suites did not fail; preserve55 passing records and this failed fixture. Also correct reversal-only principal readout before rerun.",
+  "passed": false
+}

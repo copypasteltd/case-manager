@@ -1,5 +1,13 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量134：实际Web异币费用退款 / Actual Web foreign expense refund
+
+三张合成业务截图：首次部分回转、三币种人工核对及最后一笔完成；MP4为认证后的真实浏览器像素录制，GIF明确为三张截图导览。本人登录／MFA秘密未录入素材，自建上下文、页面、临时API／Web及测试PG检查后关闭。仅Web新增录制，未声称本轮移动端录制或真实银行转账。
+
+[部分回转](screenshots/foreign-expense-refunds-web-partial.png) · [人工核对](screenshots/foreign-expense-refunds-web-review.png) · [完整回转](screenshots/foreign-expense-refunds-web-complete.png) · [实际MP4](videos/foreign-expense-refunds-web.mp4) · [三截图GIF导览](gifs/foreign-expense-refunds-web.gif)
+
+[原始检查与说明](../quality/134-foreign-expense-refunds-verification.md)。旧133及更早素材原字节保留，首个冻结包不因main更新而替换。
+
 ## 合同财务演示 · 133
 
 Web三张真实页面PNG、一段本人登录／MFA后实际视口MP4、一份明确三截图各两秒GIF：合同净收付、195 HKD归属与整笔100 USD实收、解除后的查询。移动本轮仅提供实际概览PNG；失败定位器、修正与延期重跑如实保留，无移动视频／GIF通过声明。

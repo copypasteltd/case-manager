@@ -67,7 +67,7 @@ func cashFilteredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, f Paym
 	args := []any{a.OrgID, a.UserID, a.Channel, a.RunID != "", f.From, f.To, f.Currency, f.Category, f.ProjectID, f.CompanyOnly, supplier, owner, f.Query}
 	rows, err := tx.Query(ctx, `WITH facts AS (SELECT r.currency,r.direction,p.record_kind,
         `+reportCashContribution+` contribution,
-        COALESCE((SELECT sum(a.effect*a.amount) FROM payment_allocations a WHERE a.org_id=p.org_id AND a.payment_id=p.id),0)+contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),p.project_id)*(CASE p.record_kind WHEN 'reversal' THEN -1 ELSE 1 END) assigned `+paymentJoin+predicate+` AND p.state IN ('recorded','reversed'))
+        COALESCE((SELECT sum(a.effect*COALESCE(a.refund_cash_amount,a.amount)) FROM payment_allocations a WHERE a.org_id=p.org_id AND a.payment_id=p.id),0)+contract_cash_return_share(p.org_id,COALESCE(p.reverses_id,p.id),p.project_id)*(CASE p.record_kind WHEN 'reversal' THEN -1 ELSE 1 END) assigned `+paymentJoin+predicate+` AND p.state IN ('recorded','reversed'))
         SELECT currency,round(COALESCE(sum(contribution) FILTER(WHERE direction='outgoing' AND record_kind='payment'),0),6)::text,
         round(-COALESCE(sum(contribution) FILTER(WHERE direction='refund' AND record_kind='payment'),0),6)::text,
         round(COALESCE(sum(contribution) FILTER(WHERE record_kind='reversal'),0),6)::text,round(sum(contribution),6)::text,

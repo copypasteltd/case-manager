@@ -1,0 +1,236 @@
+package httpapi
+
+import (
+	"context"
+	"os"
+	"strings"
+	"sync"
+	"testing"
+
+	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/finance"
+	"copypaste.hk/platform/internal/party"
+)
+
+func TestForeignRefundExpenseAttribution(t *testing.T) {
+	u, file, _, _, _ := restorationFixture(t, 15)
+	f, ctx := u.f, context.Background()
+	ptr := func(s string) *string { return &s }
+	for _, role := range []string{"payment_recorder", "payment_reverser", "cash_reporter", "party_manager", "cost_recorder", "cost_confirmer"} {
+		if _, err := f.owner.Exec(ctx, `INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type,classification_ceiling) SELECT gen_random_uuid(),$1,$2,id,'org','project_restricted' FROM roles WHERE org_id=$1 AND key=$3 ON CONFLICT DO NOTHING`, f.org, f.alice, role); err != nil {
+			t.Fatal(err)
+		}
+	}
+	f.aliceToken = memberMFAToken(f, "alice", "android")
+	call := func(method, path string, body any, status int) response {
+		t.Helper()
+		r, v := f.with(t).request(method, path, f.aliceToken, core.NewID(), body, nil)
+		expect(t, r, status, v)
+		return v
+	}
+	supplier := data[party.Party](t, call("POST", "/v1/parties", party.Create{Content: party.Content{Name: "Synthetic three-currency supplier", Kind: "organization", Relationships: []string{"supplier"}}, ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "refund134 fixture"}, 201))
+	base := func(p finance.Payment) finance.Base {
+		return finance.Base{ExpectedVersion: p.Version, RevisionID: p.CurrentRevisionID, ContentHash: p.ContentHash, Reason: "review actual three-currency refund"}
+	}
+	get := func(id string) finance.Payment {
+		return data[finance.Payment](t, call("GET", "/v1/payments/"+id, nil, 200))
+	}
+	rows := func(p finance.Payment) []finance.PaymentAllocation {
+		return data[core.Page[finance.PaymentAllocation]](t, call("GET", "/v1/payments/"+p.ID+"/allocations?limit=100", nil, 200)).Items
+	}
+	draft := func(currency, amount string, original *finance.Payment, quote *finance.PaymentRefundFX) finance.Payment {
+		in := finance.PaymentCreate{PaymentContent: finance.PaymentContent{Title: "Synthetic foreign expense refund", Direction: ptr("outgoing"), PaidAt: ptr("2025-02-02T12:00:00+08:00"), Currency: ptr(currency), Amount: ptr(amount), Category: "expense-refund134", Counterparty: &finance.PartyRef{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, MethodLabel: "synthetic statement", EvidenceVersionIDs: []string{file.Version.ID}, RefundFX: quote}, SourceKey: "refund134:" + core.NewID(), ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "actual cash fixture"}
+		if original != nil {
+			in.Direction = ptr("refund")
+			in.RefundOfID = &original.ID
+		}
+		return data[finance.Payment](t, call("POST", "/v1/payments", in, 201))
+	}
+	record := func(p finance.Payment) finance.Payment {
+		return data[finance.Payment](t, call("POST", "/v1/payments/"+p.ID+"/record", finance.PaymentRecordInput{Base: base(p), RefundAllocations: []finance.RefundAllocation{}}, 200))
+	}
+	cost := data[finance.Cost](t, call("POST", "/v1/costs", finance.Create{Content: finance.Content{Title: "Synthetic EUR expense", OccurredOn: ptr("2025-01-15"), Currency: ptr("EUR"), Amount: ptr("200"), Category: "expense-refund134", Counterparty: &finance.PartyRef{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, Allocations: []finance.Allocation{{ProjectID: file.File.ProjectID, Amount: "150"}, {ProjectID: nil, Amount: "50"}}, EvidenceVersionIDs: []string{file.Version.ID}}, SourceKey: "refund134cost:" + core.NewID(), ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "incurred cost fixture"}, 201))
+	cost = data[finance.Cost](t, call("POST", "/v1/costs/"+cost.ID+"/confirm", finance.Base{ExpectedVersion: cost.Version, RevisionID: cost.CurrentRevisionID, ContentHash: cost.ContentHash, Reason: "confirm actual expense"}, 200))
+	p := record(draft("HKD", "1000", nil, nil))
+	p = data[finance.Payment](t, call("POST", "/v1/payments/"+p.ID+"/allocations", finance.PaymentAllocate{Base: base(p), CostID: cost.ID, CostVersion: cost.Version, CostRevisionID: cost.CurrentRevisionID, CostContentHash: cost.ContentHash, Amount: "780", FX: &finance.PaymentFXInput{CostAmount: "200", Rate: "3.9", Source: "synthetic original EUR settlement", Acknowledged: true}}, 200))
+	root := rows(p)[0]
+	quote := &finance.PaymentRefundFX{OriginalCurrency: "HKD", OriginalAmount: "780", Rate: "0.1282051282", Source: "synthetic actual USD refund"}
+	q := draft("USD", "100", &p, quote)
+	initial := finance.PaymentRecordInput{Base: base(q), ExpectedSourceVersion: &p.Version, RefundFXAcknowledged: true, RefundAllocations: []finance.RefundAllocation{{SourceAllocationID: root.ID, Amount: "560", CostAmount: ptr("143.59")}}}
+	t.Run("recorded cash and selected expense inverse commit atomically in three currencies", func(t *testing.T) {
+		missing := initial
+		missing.RefundFXAcknowledged = false
+		call("POST", "/v1/payments/"+q.ID+"/record", missing, 422)
+		without := initial
+		without.RefundAllocations = nil
+		call("POST", "/v1/payments/"+q.ID+"/record", without, 409)
+		q = data[finance.Payment](t, call("POST", "/v1/payments/"+q.ID+"/record", initial, 200))
+		if !q.CanAllocate || q.RefundAllocatedPrincipal != "560.000000" || q.EffectiveAllocatedAmount != "71.790000" || valueForTest(q.UnallocatedAmount) != "28.210000" {
+			t.Fatal(q)
+		}
+		leg := rows(q)[0]
+		if leg.Amount != "560.000000" || leg.CostAmount != "143.590000" || leg.PaymentCurrency != "HKD" || leg.CostCurrency != "EUR" || leg.RefundCash == nil || leg.RefundCash.Amount != "71.790000" || leg.RefundCash.Currency != "USD" || len(leg.RefundCash.Shares) != 2 {
+			t.Fatal(leg)
+		}
+		if leg.RefundCash.Shares[0].Amount != "53.840000" || leg.RefundCash.Shares[1].Amount != "17.950000" {
+			t.Fatal(leg.RefundCash)
+		}
+		c := data[finance.Cost](t, call("GET", "/v1/costs/"+cost.ID, nil, 200))
+		if c.ContentHash != cost.ContentHash || valueForTest(c.PaidAmount) != "56.410000" {
+			t.Fatal(c)
+		}
+		if get(p.ID).EffectiveAllocatedAmount != "220.000000" || valueForTest(get(p.ID).UnallocatedAmount) != "0.000000" {
+			t.Fatal(get(p.ID))
+		}
+	})
+	if os.Getenv("CP_BROWSER_BUSINESS_FIXTURE") != "" {
+		var name string
+		if err := f.owner.QueryRow(ctx, "SELECT name FROM projects WHERE org_id=$1 AND id=$2", f.org, file.File.ProjectID).Scan(&name); err != nil {
+			t.Fatal(err)
+		}
+		holdBrowserBusinessFixture(t, f, map[string]any{"fixture_kind": "foreign-expense-refund", "project_id": file.File.ProjectID, "project_name": name, "payment": p, "refund": q, "cost": cost, "source_allocation": root})
+	}
+	t.Run("SQL bypass cannot omit acknowledgement or change attributed cash", func(t *testing.T) {
+		leg := rows(q)[0]
+		for _, bad := range []struct {
+			cash    string
+			ack     bool
+			message string
+		}{{"0.13", false, "acknowledgement"}, {"999", true, "remaining principal ratio"}} {
+			tx, e := f.owner.Begin(ctx)
+			if e != nil {
+				t.Fatal(e)
+			}
+			_, e = tx.Exec(ctx, `INSERT INTO payment_allocations(id,org_id,payment_id,cost_id,cost_revision_id,kind,effect,amount,root_id,source_allocation_id,claim_id,claim_revision_id,claim_line_id,actor_id,reason,cost_amount,fx_rate,fx_source,fx_quoted_on,refund_cash_amount,refund_fx_acknowledged)
+ SELECT gen_random_uuid(),org_id,payment_id,cost_id,cost_revision_id,kind,effect,1,root_id,source_allocation_id,claim_id,claim_revision_id,claim_line_id,actor_id,'forged cash',0.26,fx_rate,fx_source,fx_quoted_on,$3::numeric,$4 FROM payment_allocations WHERE org_id=$1 AND id=$2`, f.org, leg.ID, bad.cash, bad.ack)
+			tx.Rollback(ctx)
+			if e == nil || !strings.Contains(e.Error(), bad.message) {
+				t.Fatal("foreign cash SQL bypass", e)
+			}
+		}
+	})
+	allocateInput := func(amount, expense string) finance.PaymentRefundAllocate {
+		return finance.PaymentRefundAllocate{Base: base(q), RefundAllocation: finance.RefundAllocation{SourceAllocationID: root.ID, Amount: amount, CostAmount: ptr(expense)}, RefundFXAcknowledged: true}
+	}
+	t.Run("missing declaration stale expense and principal overflow leave no journal", func(t *testing.T) {
+		missing := allocateInput("220", "56.41")
+		missing.RefundFXAcknowledged = false
+		call("POST", "/v1/payments/"+q.ID+"/refund-allocations", missing, 422)
+		call("POST", "/v1/payments/"+q.ID+"/refund-allocations", allocateInput("220", "56.40"), 409)
+		call("POST", "/v1/payments/"+q.ID+"/refund-allocations", allocateInput("221", "56.67"), 409)
+		if get(q.ID).Version != q.Version || len(rows(q)) != 1 {
+			t.Fatal("rejection left a journal")
+		}
+	})
+	t.Run("late audit failure rolls back cash principal cost shares and payment version", func(t *testing.T) {
+		_, e := f.owner.Exec(ctx, `CREATE FUNCTION reject_foreign_cost_audit() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action='payment.refund.allocated' THEN RAISE EXCEPTION 'synthetic late audit rejection';END IF;RETURN NEW;END;$$;CREATE TRIGGER reject_foreign_cost_audit BEFORE INSERT ON audit_events FOR EACH ROW EXECUTE FUNCTION reject_foreign_cost_audit()`)
+		if e != nil {
+			t.Fatal(e)
+		}
+		call("POST", "/v1/payments/"+q.ID+"/refund-allocations", allocateInput("220", "56.41"), 500)
+		if _, e = f.owner.Exec(ctx, "DROP TRIGGER reject_foreign_cost_audit ON audit_events;DROP FUNCTION reject_foreign_cost_audit()"); e != nil {
+			t.Fatal(e)
+		}
+		if get(q.ID).Version != q.Version || len(rows(q)) != 1 {
+			t.Fatal("late rollback left attribution")
+		}
+	})
+	t.Run("last inverse consumes exact remaining principal cash and expense", func(t *testing.T) {
+		in := allocateInput("220", "56.41")
+		key := core.NewID()
+		response, _ := f.request("POST", "/v1/payments/"+q.ID+"/refund-allocations", f.aliceToken, key, in, nil)
+		if response.Code != 200 {
+			t.Fatal(response.Code, response.Body.String())
+		}
+		q = get(q.ID)
+		if q.RefundAllocatedPrincipal != "780.000000" || q.EffectiveAllocatedAmount != "100.000000" || valueForTest(q.UnallocatedAmount) != "0.000000" {
+			t.Fatal(q)
+		}
+		replay, _ := f.request("POST", "/v1/payments/"+q.ID+"/refund-allocations", f.aliceToken, key, in, nil)
+		if replay.Code != 200 || len(rows(q)) != 2 {
+			t.Fatal("idempotency changed foreign attribution", replay.Code)
+		}
+		leg := rows(q)[0]
+		if leg.Amount != "220.000000" || leg.CostAmount != "56.410000" || leg.RefundCash.Amount != "28.210000" {
+			t.Fatal(leg)
+		}
+		c := data[finance.Cost](t, call("GET", "/v1/costs/"+cost.ID, nil, 200))
+		if c.ContentHash != cost.ContentHash || valueForTest(c.PaidAmount) != "0.000000" || valueForTest(c.OutstandingAmount) != "200.000000" {
+			t.Fatal(c)
+		}
+	})
+	t.Run("cash reports use actual USD rather than HKD principal for each project", func(t *testing.T) {
+		for _, scope := range []struct {
+			query string
+			usd   string
+		}{{"", "100.000000"}, {"&project_id=" + *file.File.ProjectID, "75.000000"}, {"&company_only=true", "25.000000"}} {
+			report := data[finance.CashReport](t, call("GET", "/v1/reports/cash?from=2025-02-01&to=2025-03-01&category=expense-refund134"+scope.query, nil, 200))
+			found := false
+			for _, total := range report.Totals {
+				if total.Currency == "USD" {
+					found = true
+					if total.RefundAmount != scope.usd {
+						t.Fatal(scope, total)
+					}
+				}
+			}
+			if !found {
+				t.Fatal(report)
+			}
+		}
+	})
+	t.Run("full reversal copies three-unit evidence and restores original settlement", func(t *testing.T) {
+		old := rows(q)
+		q = data[finance.Payment](t, call("POST", "/v1/payments/"+q.ID+"/reverse", finance.PaymentReverseInput{Base: base(q), EffectiveAt: "2025-02-03T12:00:00+08:00"}, 200))
+		if q.EffectiveAllocatedAmount != "0.000000" || q.RefundAllocatedPrincipal != "0.000000" {
+			t.Fatal(q)
+		}
+		inverse := rows(get(*q.ReversalID))
+		if len(inverse) != 2 {
+			t.Fatal(inverse)
+		}
+		for _, leg := range inverse {
+			found := false
+			for _, before := range old {
+				if valueForTest(leg.SourceAllocationID) == before.ID {
+					found = true
+					if leg.RefundCash.Amount != before.RefundCash.Amount || leg.Amount != before.Amount || leg.CostAmount != before.CostAmount || leg.Effect != -before.Effect {
+						t.Fatal(leg, before)
+					}
+				}
+			}
+			if !found {
+				t.Fatal(leg)
+			}
+		}
+		c := data[finance.Cost](t, call("GET", "/v1/costs/"+cost.ID, nil, 200))
+		if valueForTest(c.PaidAmount) != "200.000000" || c.ContentHash != cost.ContentHash || get(p.ID).RefundedAmount != "0.000000" {
+			t.Fatal(c, get(p.ID))
+		}
+	})
+	t.Run("concurrent commands cannot overconsume foreign principal", func(t *testing.T) {
+		original := get(p.ID)
+		q = draft("USD", "12.50", &original, &finance.PaymentRefundFX{OriginalCurrency: "HKD", OriginalAmount: "100", Rate: "0.125", Source: "synthetic second statement"})
+		q = data[finance.Payment](t, call("POST", "/v1/payments/"+q.ID+"/record", finance.PaymentRecordInput{Base: base(q), ExpectedSourceVersion: &original.Version, RefundFXAcknowledged: true, RefundAllocations: []finance.RefundAllocation{}}, 200))
+		in := allocateInput("80", "20.51")
+		var wg sync.WaitGroup
+		codes := make(chan int, 2)
+		for range 2 {
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+				r, _ := f.with(t).request("POST", "/v1/payments/"+q.ID+"/refund-allocations", f.aliceToken, core.NewID(), in, nil)
+				codes <- r.Code
+			}()
+		}
+		wg.Wait()
+		close(codes)
+		counts := map[int]int{}
+		for code := range codes {
+			counts[code]++
+		}
+		if counts[200] != 1 || counts[409] != 1 || len(rows(q)) != 1 {
+			t.Fatal(counts)
+		}
+	})
+}

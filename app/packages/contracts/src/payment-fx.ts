@@ -57,6 +57,20 @@ export function checkedDualAllocation(raw: Allocation): DualAllocation {
     const rate = rateUnits(v.fx.rate);
     if (v.kind === 'allocation' && roundedRatio(units(v.cost_amount) * rate, 10000000000n * unitStep(v.payment_exponent)) * unitStep(v.payment_exponent) !== units(v.amount)) return fail();
   }
+  if (v.refund_cash) {
+    const cash = v.refund_cash, ce = settlementExponent(cash.currency);
+    if (!['refund', 'reversal'].includes(v.kind) || cash.original_currency !== v.payment_currency || !Array.isArray(cash.shares) || cash.shares.length !== v.shares.length || !exact(cash.amount, ce) || units(cash.amount) > units(cash.whole_amount)) return fail();
+    reviewedRefundFX(cash.original_currency, cash.currency, cash.original_amount, cash.whole_amount, cash.rate, cash.source);
+    let total = 0n;
+    cash.shares.forEach((s, i) => { if (s.project_id !== v.shares[i].project_id || !exact(s.amount, ce) || units(v.shares[i].amount) === 0n && units(s.amount) !== 0n) return fail(); total += units(s.amount); });
+    if (total !== units(cash.amount) || units(v.amount) > units(cash.original_amount)) return fail();
+    const minor = units(cash.amount) / unitStep(ce), denominator = units(v.amount);
+    const parts = v.shares.map((s, index) => ({ index, value: minor * units(s.amount) / denominator, rest: minor * units(s.amount) % denominator }));
+    const extra = minor - parts.reduce((sum, part) => sum + part.value, 0n);
+    const ordered = parts.filter((part) => units(v.shares[part.index].amount) > 0n).sort((a, b) => a.rest === b.rest ? a.index - b.index : a.rest > b.rest ? -1 : 1);
+    ordered.forEach((part, index) => { if (BigInt(index) < extra) part.value += 1n; });
+    if (parts.some(part => units(cash.shares[part.index].amount) !== part.value * unitStep(ce))) return fail();
+  }
   return v;
 }
 export function inversePaymentFX(source: Allocation, cash: string): { cost_amount?: string } {
@@ -71,12 +85,52 @@ export function inversePaymentFXLabel(source: Allocation, cash: string) {
   try { const v = checkedDualAllocation(source), result = inversePaymentFX(v, cash); return `本次回转：${cash} ${v.payment_currency} → ${result.cost_amount ?? cash} ${v.cost_currency}；原依据 ${v.fx ? v.fx.rate + ' · ' + v.fx.source : '同币种'}。`; }
   catch { return '请填写有效付款币金额，重新核对原分配当前双币余额。'; }
 }
-export function allocationFXReceipt(row: Allocation, expected: { cash: string; cost?: string; fx?: Schemas['PaymentFXInput']; source?: Allocation; paymentCurrency?: string | null; costCurrency?: string | null; quotedOn?: string | null }) {
+export function allocationFXReceipt(row: Allocation, expected: { cash: string; cost?: string; fx?: Schemas['PaymentFXInput']; source?: Allocation; paymentCurrency?: string | null; costCurrency?: string | null; quotedOn?: string | null; refund?: Schemas['Payment']; actualCash?: string }) {
   try { const v = checkedDualAllocation(row); if (units(v.amount) !== units(expected.cash) || expected.cost !== undefined && units(v.cost_amount) !== units(expected.cost)) return false;
     if (expected.paymentCurrency !== undefined && v.payment_currency !== expected.paymentCurrency || expected.costCurrency !== undefined && v.cost_currency !== expected.costCurrency || expected.quotedOn && v.fx && v.fx.quoted_on !== expected.quotedOn) return false;
     const quote = expected.fx ?? expected.source?.fx;
     if (quote ? !v.fx || rateUnits(v.fx.rate) !== rateUnits(quote.rate) || v.fx.source !== quote.source.trim() : v.fx !== null) return false;
-    if (expected.source && (v.cost_currency !== expected.source.cost_currency || v.payment_currency !== expected.source.payment_currency || v.fx?.quoted_on !== expected.source.fx?.quoted_on)) return false;
+    if (expected.source && (v.source_allocation_id !== expected.source.id || v.root_id !== expected.source.root_id || v.cost_id !== expected.source.cost_id || v.cost_revision_id !== expected.source.cost_revision_id || v.cost_currency !== expected.source.cost_currency || v.payment_currency !== expected.source.payment_currency || v.fx?.quoted_on !== expected.source.fx?.quoted_on)) return false;
+    if (expected.refund?.refund_fx) {
+      const cash = v.refund_cash, p = expected.refund;
+      if (!cash || v.payment_id !== p.id || v.kind !== 'refund' || cash.currency !== p.currency || units(cash.whole_amount) !== units(p.amount) || !refundFXEqual({ original_currency: cash.original_currency, original_amount: cash.original_amount, rate: cash.rate, source: cash.source }, p.refund_fx) || expected.actualCash === undefined || units(cash.amount) !== units(expected.actualCash)) return false;
+    } else if (v.refund_cash) return false;
     return true;
   } catch { return false; }
+}
+
+// A foreign refund's entered amount is ORIGINAL payment principal. These
+// helpers keep original settlement, expense and actual received cash separate.
+export function refundPaymentPlan(payment: Schemas['Payment'], source: Allocation, principal: string) {
+  const v = checkedDualAllocation(source), inverse = inversePaymentFX(v, principal);
+  if (payment.refund_of_id !== v.payment_id || payment.direction !== 'refund' || payment.record_kind !== 'payment') return fail();
+  if (payment.refund_fx) {
+    if (payment.refund_fx.original_currency !== v.payment_currency) return fail();
+    reviewedRefundFX(v.payment_currency, payment.currency!, payment.refund_fx.original_amount, payment.amount!, payment.refund_fx.rate, payment.refund_fx.source);
+    return { source_allocation_id: v.id, amount: principal, cost_amount: inverse.cost_amount ?? principal };
+  }
+  if (payment.currency !== v.payment_currency) return fail();
+  return { source_allocation_id: v.id, amount: principal, ...inverse };
+}
+
+export function refundCashPreview(payment: Schemas['Payment'], principal: string, previous: { principal: string; cash: string }[] = []) {
+  if (!payment.refund_fx) return principal;
+  const q = payment.refund_fx, pe = settlementExponent(q.original_currency), ce = settlementExponent(payment.currency);
+  reviewedRefundFX(q.original_currency, payment.currency!, q.original_amount, payment.amount!, q.rate, q.source);
+  let remaining = units(q.original_amount) - units(payment.state === 'draft' ? '0' : payment.refund_allocated_principal);
+  let cash = units(payment.state === 'draft' ? payment.amount : payment.unallocated_amount);
+  for (const row of previous) { remaining -= units(row.principal); cash -= units(row.cash); }
+  const amount = units(principal);
+  if (!exact(principal, pe) || amount <= 0n || amount > remaining || cash < 0n || !exact(money(cash), ce)) return fail();
+  const step = unitStep(ce);
+  return money(roundedRatio(amount * cash, remaining * step) * step);
+}
+
+export function refundPrincipalLabel(payment: Schemas['Payment'], source: Allocation, principal: string, priorPrincipal: string[] = []) {
+  try {
+    const plan = refundPaymentPlan(payment, source, principal);
+    const previous: { principal: string; cash: string }[] = [];
+    for (const amount of priorPrincipal) previous.push({ principal: amount, cash: refundCashPreview(payment, amount, previous) });
+    return payment.refund_fx ? `原付款本金 ${principal} ${source.payment_currency}；费用回转 ${plan.cost_amount} ${source.cost_currency}；实收现金份额 ${refundCashPreview(payment, principal, previous)} ${payment.currency}。` : inversePaymentFXLabel(source, principal);
+  } catch { return '请重新核对原分配、本次原本金、费用原币和该退款的剩余实收余额。'; }
 }

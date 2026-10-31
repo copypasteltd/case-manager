@@ -22,10 +22,14 @@ func insertPaymentAllocation(ctx context.Context, tx pgx.Tx, a core.Actor, p Pay
 		return core.Invalid("shares", "双币项目份额未对齐")
 	}
 	var rate, source, day *string
+	var refundCash *string
+	if v.RefundCash != nil {
+		refundCash = &v.RefundCash.Amount
+	}
 	if v.FX != nil {
 		rate, source, day = &v.FX.Rate, &v.FX.Source, &v.FX.QuotedOn
 	}
-	_, err := tx.Exec(ctx, `INSERT INTO payment_allocations(id,org_id,payment_id,cost_id,cost_revision_id,kind,effect,amount,root_id,source_allocation_id,claim_id,claim_revision_id,claim_line_id,actor_id,reason,cost_amount,fx_rate,fx_source,fx_quoted_on) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)`, v.ID, a.OrgID, p.ID, v.CostID, v.CostRevisionID, v.Kind, v.Effect, v.Amount, v.RootID, v.SourceAllocationID, v.ClaimID, v.ClaimRevisionID, v.ClaimLineID, a.UserID, v.Reason, v.CostAmount, rate, source, day)
+	_, err := tx.Exec(ctx, `INSERT INTO payment_allocations(id,org_id,payment_id,cost_id,cost_revision_id,kind,effect,amount,root_id,source_allocation_id,claim_id,claim_revision_id,claim_line_id,actor_id,reason,cost_amount,fx_rate,fx_source,fx_quoted_on,refund_cash_amount,refund_fx_acknowledged) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)`, v.ID, a.OrgID, p.ID, v.CostID, v.CostRevisionID, v.Kind, v.Effect, v.Amount, v.RootID, v.SourceAllocationID, v.ClaimID, v.ClaimRevisionID, v.ClaimLineID, a.UserID, v.Reason, v.CostAmount, rate, source, day, refundCash, v.RefundCash != nil)
 	if err != nil {
 		return err
 	}
@@ -33,7 +37,14 @@ func insertPaymentAllocation(ctx context.Context, tx pgx.Tx, a core.Actor, p Pay
 		if value(share.ProjectID) != value(v.CostShares[i].ProjectID) {
 			return core.Invalid("shares", "双币项目份额的范围未对齐")
 		}
-		if _, err = tx.Exec(ctx, "INSERT INTO payment_allocation_shares(org_id,allocation_id,position,project_id,amount,cost_amount) VALUES($1,$2,$3,$4,$5,$6)", a.OrgID, v.ID, i+1, share.ProjectID, share.Amount, v.CostShares[i].Amount); err != nil {
+		var cash *string
+		if v.RefundCash != nil {
+			if len(v.RefundCash.Shares) != len(v.Shares) || value(v.RefundCash.Shares[i].ProjectID) != value(share.ProjectID) {
+				return core.Invalid("shares", "实收现金份额与原本金范围未对齐")
+			}
+			cash = &v.RefundCash.Shares[i].Amount
+		}
+		if _, err = tx.Exec(ctx, "INSERT INTO payment_allocation_shares(org_id,allocation_id,position,project_id,amount,cost_amount,refund_cash_amount) VALUES($1,$2,$3,$4,$5,$6,$7)", a.OrgID, v.ID, i+1, share.ProjectID, share.Amount, v.CostShares[i].Amount, cash); err != nil {
 			return err
 		}
 	}
@@ -189,6 +200,7 @@ func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor
 	// The caller has now acquired cost/payment locks; an earlier source read
 	// can be stale after a separate refund changed the root balance.
 	var err error
+	refundCash := source.RefundCash
 	source, err = allocationMetadata(ctx, tx, a.OrgID, source.ID)
 	if err != nil {
 		return "", err
@@ -196,7 +208,7 @@ func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor
 	if source.Kind != "allocation" || (kind == "release" && source.PaymentID != p.ID) || (kind == "refund" && source.PaymentID != value(p.RefundOfID)) {
 		return "", core.Fail(409, "ALLOCATION_SOURCE_INVALID", "须引用相应原付款的正向费用分配")
 	}
-	d, err := paymentAmount(ctx, tx, value(p.Currency), amount)
+	d, err := paymentAmount(ctx, tx, source.PaymentCurrency, amount)
 	if err != nil {
 		return "", err
 	}
@@ -204,7 +216,7 @@ func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor
 	if err != nil {
 		return "", err
 	}
-	shares, err := settlementShares(ctx, tx, a.OrgID, value(p.Currency), d.String(), source.RootID, true)
+	shares, err := settlementShares(ctx, tx, a.OrgID, source.PaymentCurrency, d.String(), source.RootID, true)
 	if err != nil {
 		return "", err
 	}
@@ -238,6 +250,32 @@ func (s *Service) inverseAllocation(ctx context.Context, tx pgx.Tx, a core.Actor
 	v.Shares = shares
 	v.CostShares = costShares
 	v.Reason = reason
+	v.RefundCash = refundCash
+	if refundCash != nil {
+		var exponent int
+		if err = tx.QueryRow(ctx, "SELECT exponent FROM currency_definitions WHERE code=$1", p.Currency).Scan(&exponent); err != nil {
+			return "", err
+		}
+		cash, _ := core.ParseDecimal(refundCash.Amount)
+		cashShares := []Allocation{}
+		if cash.Positive() {
+			cashShares, err = splitSettlementShares(cash.String(), v.Shares, exponent, false)
+			if err != nil {
+				return "", err
+			}
+		}
+		// Retain positions where the cash currency contributes zero minor units.
+		v.RefundCash.Shares = make([]Allocation, len(v.Shares))
+		for i, share := range v.Shares {
+			v.RefundCash.Shares[i] = Allocation{ProjectID: share.ProjectID, Amount: "0.000000"}
+			for _, part := range cashShares {
+				if value(part.ProjectID) == value(share.ProjectID) {
+					v.RefundCash.Shares[i].Amount = part.Amount
+					break
+				}
+			}
+		}
+	}
 	return v.ID, insertPaymentAllocation(ctx, tx, a, p, v)
 }
 func (s *Service) ReleasePaymentAllocation(ctx context.Context, cmd core.Command, id, allocation string, in PaymentRelease) (core.Result, error) {
@@ -270,11 +308,18 @@ func (s *Service) AllocateRefund(ctx context.Context, cmd core.Command, id strin
 		claims = append(claims, *source.ClaimID)
 	}
 	return s.mutatePayment(ctx, cmd, id, "payment.record", in.Base, true, []string{source.CostID}, claims, func(tx pgx.Tx, p Payment) (core.Result, error) {
-		if p.RefundFX != nil {
-			return core.Result{}, core.Fail(409, "REFUND_FX_ALLOCATION_UNSUPPORTED", "异币退款当前不接受费用回转分配")
-		}
 		if p.State != "recorded" || p.RecordKind != "payment" || value(p.Direction) != "refund" {
 			return core.Result{}, core.Fail(409, "REFUND_NOT_ALLOCATABLE", "仅未冲销的实际退款可以关联原分配")
+		}
+		if p.RefundFX != nil {
+			key, err := s.inverseRefundAllocation(ctx, tx, cmd.Actor, p, source, in.RefundAllocation, in.RefundFXAcknowledged, in.Reason)
+			if err != nil {
+				return core.Result{}, err
+			}
+			return s.finishPayment(ctx, tx, cmd.Actor, p, "refund_allocated", in.Reason, &key)
+		}
+		if in.RefundFXAcknowledged {
+			return core.Result{}, core.Invalid("refund_fx_acknowledged", "同币退款不接受异币回转声明")
 		}
 		if err := paymentBalances(ctx, tx, cmd.Actor.OrgID, &p); err != nil {
 			return core.Result{}, err

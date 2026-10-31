@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T01:59:24.276030+00:00",
+  "method": "Direct visual inspection of all three full screenshots plus decoded MP4 frames at0.2s and2.3s and GIF tour frames0/8/16. Actual synthetic amounts and three-unit preview are readable; no password, MFA secret or private capability is visible. MP4 is a2.6-second post-MFA page reload; GIF is a6-second screenshot tour, not a recording of the submission.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/foreign-expense-refunds-web-partial.png",
+      "sha256": "baabf45d81540b3963c7e4fcd3c2744dbaaaea97e60838b75dc57f868f04791d",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/foreign-expense-refunds-web-review.png",
+      "sha256": "971271a5ed1de0f434950b660e8e7da060be129cb2f0ec2cfe49866c739a8355",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/foreign-expense-refunds-web-complete.png",
+      "sha256": "dc1bb43d470c12ed027a419f8ed082daf7b63c34bc21518de80715b48a2a8b45",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/foreign-expense-refunds-web.mp4",
+      "sha256": "d0baf59f5a8f3796050b789df30e9f3db8e989e5ce0786a902cec329722738f1",
+      "bytes": 142716,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/foreign-expense-refunds-web.gif",
+      "sha256": "41d91220f9858223fb7e2c05494cc822411635e09b99ab31f94602a6f3cd90f2",
+      "bytes": 282913,
+      "reviewed": true
+    }
+  ],
+  "synthetic_data_only": true,
+  "production_acceptance": false
+}

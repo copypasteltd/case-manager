@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T01:50:30.584Z",
+  "finished_at": "2026-10-31T01:50:42.635Z",
+  "checks": [
+    "A real native HTTP/PG refund shows560 HKD principal,143.59 EUR expense and71.79 USD attributed cash separately.",
+    "Actual recent-MFA human UI appends220 HKD /56.41 EUR /28.21 USD and re-reads two immutable allocations with zero cash remainder.",
+    "Post-authentication viewport recording and reload retain the committed journal; screenshots contain synthetic data only."
+  ],
+  "source_count": 964,
+  "source_sha256": "dcb6521078706f66a56f2a74d69e98515c455f8ed5becebec869f504b00f7aea",
+  "source_after_sha256": "dcb6521078706f66a56f2a74d69e98515c455f8ed5becebec869f504b00f7aea",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "9ef8711c4a4933fa6ed2bce72390a9520eae34630b41191ec4211a76d801fa94",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "9ef8711c4a4933fa6ed2bce72390a9520eae34630b41191ec4211a76d801fa94",
+  "build_source_unchanged": true
+}

@@ -534,7 +534,7 @@ payment_record = {**RECORD, **payment_fields, "source_key": NAME, "project_id": 
     "current_revision_id": ID, "content_hash": HASH, "paid_on": nullable(DATE), "counterparty_evidence": nullable(cost_party_evidence),
     "attachments": array(ref("BusinessFileReference")), "effective_allocated_amount": report_decimal, "refunded_amount": MONEY, "contract_return_reserved_amount": MONEY, "unallocated_amount": nullable(MONEY),
     **{key: {"type": "boolean"} for key in ("can_edit", "can_record", "can_allocate", "can_reverse")}}
-add("Payment", payment_record, tuple(k for k in payment_record if k != "refund_fx"))
+add("Payment", {**payment_record, "refund_allocated_principal": MONEY}, tuple(k for k in payment_record if k != "refund_fx"))
 add("PaymentFXInput", {"cost_amount": MONEY, "rate": {"type": "string", "pattern": r"^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$"}, "source": NAME, "acknowledged": {"type": "boolean", "const": True}}, ("cost_amount", "rate", "source", "acknowledged"))
 add("PaymentFXQuote", {"rate": {"type": "string", "pattern": r"^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$"}, "source": NAME, "quoted_on": DATE}, ("rate", "source", "quoted_on"))
 refund_allocation = obj({"source_allocation_id": ID, "amount": MONEY, "cost_amount": MONEY}, ("source_allocation_id", "amount"))
@@ -543,7 +543,7 @@ add("PaymentReverse", {**cost_base, "effective_at": TIME}, (*cost_base, "effecti
 add("PaymentAllocate", {**cost_base, "cost_id": ID, "cost_version": VERSION, "cost_revision_id": ID, "cost_content_hash": HASH, "amount": MONEY,
     "claim_id": nullable(ID), "claim_revision_id": nullable(ID), "claim_line_id": nullable(ID), "fx": ref("PaymentFXInput")}, (*cost_base, "cost_id", "cost_version", "cost_revision_id", "cost_content_hash", "amount", "claim_id", "claim_revision_id", "claim_line_id"))
 add("PaymentRelease", {**cost_base, "amount": MONEY, "cost_amount": MONEY}, (*cost_base, "amount"))
-add("PaymentRefundAllocate", {**cost_base, "source_allocation_id": ID, "amount": MONEY, "cost_amount": MONEY}, (*cost_base, "source_allocation_id", "amount"))
+add("PaymentRefundAllocate", {**cost_base, "source_allocation_id": ID, "amount": MONEY, "cost_amount": MONEY, "refund_fx_acknowledged": {"type": "boolean"}}, (*cost_base, "source_allocation_id", "amount"))
 payment_allocation = {"id": ID, "payment_id": ID, "cost_id": ID, "cost_revision_id": ID, "kind": enum("allocation", "release", "refund", "reversal"),
     "effect": {"type": "integer", "enum": [-1, 1]}, "amount": MONEY, "root_id": ID, "source_allocation_id": nullable(ID), "claim_id": nullable(ID), "claim_revision_id": nullable(ID), "claim_line_id": nullable(ID),
     "shares": array(allocation, maxItems=100), "remaining_amount": MONEY, "actor_id": ID, "reason": NAME, "created_at": TIME}
@@ -553,7 +553,10 @@ payment_allocation_required = tuple(payment_allocation)
 payment_allocation.update({"cost_amount": MONEY, "cost_currency": CURRENCY, "payment_currency": CURRENCY,
     "cost_exponent": {"type": "integer", "minimum": 0, "maximum": 6}, "payment_exponent": {"type": "integer", "minimum": 0, "maximum": 6},
     "cost_shares": array(allocation, maxItems=100), "remaining_cost_amount": MONEY, "fx": nullable(ref("PaymentFXQuote"))})
-add("PaymentAllocation", payment_allocation, payment_allocation_required)
+allocation_refund_cash = {"amount": MONEY, "currency": CURRENCY, "whole_amount": MONEY, "original_amount": MONEY,
+    "original_currency": CURRENCY, "rate": {"type": "string", "pattern": r"^(0|[1-9][0-9]{0,13})(\.[0-9]{1,10})?$"}, "source": NAME, "shares": array(allocation, maxItems=100)}
+add("PaymentAllocationRefundCash", allocation_refund_cash, tuple(allocation_refund_cash))
+add("PaymentAllocation", {**payment_allocation, "refund_cash": ref("PaymentAllocationRefundCash")}, payment_allocation_required)
 cost_payment_source = {"id": ID, "version": VERSION, "revision_id": ID, "content_hash": HASH}
 add("CostPaymentSource", cost_payment_source, tuple(cost_payment_source))
 add("CostPaymentClaim", {**cost_payment_source, "line_id": ID}, (*cost_payment_source, "line_id"))

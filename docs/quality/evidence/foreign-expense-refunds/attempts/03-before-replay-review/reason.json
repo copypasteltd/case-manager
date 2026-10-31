@@ -1,0 +1,4 @@
+{
+  "passed": true,
+  "reason": "All64 focused records passed. Review additionally identified that a historical idempotency receipt must pin the new principal balance alongside its existing cash snapshot. Add that correction plus a replay-after-reversal assertion and let the separate browser fixture stop after its UI-owned mutation. This is retained evidence, not the final current-source pass."
+}

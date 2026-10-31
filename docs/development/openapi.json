@@ -50950,6 +50950,10 @@
           },
           "can_reverse": {
             "type": "boolean"
+          },
+          "refund_allocated_principal": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
           }
         },
         "additionalProperties": false,
@@ -51321,6 +51325,9 @@
           "cost_amount": {
             "type": "string",
             "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "refund_fx_acknowledged": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -51331,6 +51338,80 @@
           "reason",
           "source_allocation_id",
           "amount"
+        ]
+      },
+      "PaymentAllocationRefundCash": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "whole_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "original_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "original_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "rate": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,10})?$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "shares": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "project_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "project_id",
+                "amount"
+              ]
+            },
+            "maxItems": 100
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "amount",
+          "currency",
+          "whole_amount",
+          "original_amount",
+          "original_currency",
+          "rate",
+          "source",
+          "shares"
         ]
       },
       "PaymentAllocation": {
@@ -51530,6 +51611,9 @@
                 "type": "null"
               }
             ]
+          },
+          "refund_cash": {
+            "$ref": "#/components/schemas/PaymentAllocationRefundCash"
           }
         },
         "additionalProperties": false,

@@ -163,13 +163,16 @@ func (s *Service) paymentReplay(ctx context.Context, a core.Actor, out core.Resu
 	// The receipt keeps its original monetary snapshot. Mixing a cached head
 	// with live allocations can falsely show a reversed payment as available.
 	allocated, refunded, unallocated := old.EffectiveAllocatedAmount, old.RefundedAmount, old.UnallocatedAmount
-	reserved := old.ContractReturnReservedAmount
+	reserved, refundPrincipal := old.ContractReturnReservedAmount, old.RefundAllocatedPrincipal
+	if refundPrincipal == "" {
+		refundPrincipal = "0.000000" // Receipts recorded before this additive field had no foreign expense inverse.
+	}
 	old, e = presentPayment(ctx, s.DB, a, old)
 	if e != nil {
 		return core.Result{}, e
 	}
 	old.EffectiveAllocatedAmount, old.RefundedAmount, old.UnallocatedAmount = allocated, refunded, unallocated
-	old.ContractReturnReservedAmount = reserved
+	old.ContractReturnReservedAmount, old.RefundAllocatedPrincipal = reserved, refundPrincipal
 	if old.Version != current.Version {
 		old.CanEdit = false
 		old.CanRecord = false
@@ -379,9 +382,6 @@ func (s *Service) RecordPayment(ctx context.Context, cmd core.Command, id string
 			if !cross && (p.RefundFX != nil || in.RefundFXAcknowledged) {
 				return core.Result{}, core.Invalid("refund_fx", "同币退款不接受异币依据或确认")
 			}
-			if cross && len(in.RefundAllocations) != 0 {
-				return core.Result{}, core.Fail(409, "REFUND_FX_ALLOCATION_UNSUPPORTED", "异币退款当前仅使用原付款未分配本金，不接受费用回转分配")
-			}
 			paid, _ := time.Parse(time.RFC3339Nano, value(p.PaidAt))
 			previous, _ := time.Parse(time.RFC3339Nano, value(original.PaidAt))
 			if paid.Before(previous) {
@@ -393,7 +393,7 @@ func (s *Service) RecordPayment(ctx context.Context, cmd core.Command, id string
 				if err != nil {
 					return core.Result{}, err
 				}
-				if _, err = s.inverseAllocation(ctx, tx, cmd.Actor, p, source, plan.Amount, "refund", in.Reason, plan.CostAmount); err != nil {
+				if _, err = s.inverseRefundAllocation(ctx, tx, cmd.Actor, p, source, plan, in.RefundFXAcknowledged, in.Reason); err != nil {
 					return core.Result{}, err
 				}
 			}

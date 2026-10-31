@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## 增量134 · 异币退款费用回转 / Foreign expense refund attribution
+
+- 登记与后续分次回转、三种原币余额、实收项目份额、准确尾差、不可变冲销、近期MFA与审计回滚进入四端功能源码；迁移101保持1–100与原账不变。
+- Add exact principal/expense/actual-cash previews and durable receipt checks to Web and shared mobile. Preserve original facts and legacy idempotency receipts.
+- 执行5组64条选定HTTP／PG、Web436项、共享移动521项、类型检查及Web／两小程序构建；更新三截图、静音MP4与明确截图GIF导览。完整后端／Runtime、移动浏览器、新Android包、持久开发库升级和真实集成延期。
+- The first freeze remains `v0.1.0-rc.1`;134 is subsequent main source. Existing Android artifacts keep their original133 input hashes. Still23 active packages, five exclusions and eight draft Skills.
+- [实现与使用](development/134-foreign-expense-refunds.md) · [验证与延期](quality/134-foreign-expense-refunds-verification.md) · [全部余项](delivery/05-functional-closure-134.md)
+
 ## v0.1.0-rc.1 · First frozen candidate
 
 - 封存31,104,580字节服务器包、978,338字节两小程序ZIP和43,908,022字节当前Android开发APK；公开SHA256SUMS、来源清单和构建回执。服务器包790文件／100结构，1,936个展开归档成员完成私有信息检查。
