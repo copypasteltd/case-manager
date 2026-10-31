@@ -100,7 +100,7 @@ func TestAgentProjectTools(t *testing.T) {
 		credentials[lease.RunID] = x.Credential
 		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/search_resources", "company/inspect_operation"}}
 		post(lease, agentworker.ControlPath+"confinement", native, 409)
-		native.ExpectedTools = append(native.ExpectedTools, "company/propose_project", "company/create_project")
+		native.ExpectedTools = append(native.ExpectedTools, "company/propose_project", "company/create_project", "company/list_project_catalog")
 		post(lease, agentworker.ControlPath+"confinement", native, 200)
 		if e = service.StartExecution(ctx, lease); e != nil {
 			t.Fatal(e)

@@ -5,6 +5,9 @@ import { api, type Me, type Schemas } from './api';
 import { Busy, Empty, ErrorNotice, Field } from './components';
 import { MFAConfirmation } from './MFAConfirmation';
 
+import { emptyProjectSelection, projectPlanProject, projectPlanMatches } from '@copypaste/contracts/project-catalog';
+import { ProjectCatalogSelection } from './ConversationProjectCatalog';
+
 const states = { proposed: '待本人批准', approved: '已批准，等待创建', committed: '项目已创建', revoked: '已撤销' };
 const reasons: Record<string,string> = { PLAN_EXPIRED: '计划已过期，请重新拟定。', PLAN_CONTEXT_CHANGED: '会话已变化，请重新拟定。', PLAN_AUTHORIZATION_CHANGED: '权限已变化，请重新拟定。', PLAN_TEMPLATE_CHANGED: '模板已变化，请重新拟定。', PLAN_MEMBER_UNAVAILABLE: '计划中的人员已停用，请重新拟定。' };
 export function ConversationPlans({ conversation: c, me, onReference, referenceDisabled }: { conversation: Schemas['Conversation']; me: Me; onReference?(plan:Schemas['AgentPlan']):void; referenceDisabled?:boolean }) {
@@ -21,16 +24,17 @@ export function ConversationPlans({ conversation: c, me, onReference, referenceD
 }
 function CreateProjectPlan({conversation:c,me,onDone}:{conversation:Schemas['Conversation'];me:Me;onDone():void}) {
   const [name,setName]=useState(''),[scope,setScope]=useState(''),[classification,setClassification]=useState<'internal'|'project_restricted'>('internal'),[reason,setReason]=useState(''),[blocked,setBlocked]=useState(false);
+  const [choice,setChoice]=useState(emptyProjectSelection);
   const intent=useRef<{body:Schemas['AgentProjectPlanCreate'];key:string}>();
   const create=useMutation({mutationFn:()=>{
-    intent.current??={key:crypto.randomUUID(),body:{expected_version:c.version,context_security_version:c.context_security_version,reason,project:{name,scope,owner_id:me.user.id,classification}}};
-    return api<Schemas['AgentPlan']>('/conversations/'+c.id+'/plans',{method:'POST',...intent.current});
+    intent.current??={key:crypto.randomUUID(),body:{expected_version:c.version,context_security_version:c.context_security_version,reason,project:projectPlanProject(me.user.id,name,scope,classification,choice)}};
+    return api<Schemas['AgentPlan']>('/conversations/'+c.id+'/plans',{method:'POST',...intent.current}).then(plan=>{if(!projectPlanMatches(plan,intent.current!.body)||plan.conversation_id!==c.id||plan.actor_id!==me.user.id||plan.state!=='proposed')throw new Error('项目计划回执与所选内容不一致，请重新核对。');return plan;});
   },onSuccess:onDone,onError:()=>setBlocked(true),retry:false});
   return <form onSubmit={e=>{e.preventDefault();create.mutate();}}><ErrorNotice error={create.error}/>
     <Field label="项目名称"><input required maxLength={200} value={name} disabled={!!intent.current||create.isPending} onChange={e=>setName(e.target.value)}/></Field>
     <Field label="项目范围"><textarea maxLength={20000} value={scope} disabled={!!intent.current||create.isPending} onChange={e=>setScope(e.target.value)}/></Field>
     <Field label="资料范围"><select value={classification} disabled={!!intent.current||create.isPending} onChange={e=>setClassification(e.target.value as typeof classification)}><option value="internal">公司内部</option><option value="project_restricted">项目受限</option></select></Field>
-    <p>项目负责人：{me.user.display_name}（本人）</p><Field label="拟定原因"><input required maxLength={200} value={reason} disabled={!!intent.current||create.isPending} onChange={e=>setReason(e.target.value)}/></Field>
+    <ProjectCatalogSelection conversation={c} me={me} value={choice} onChange={setChoice} disabled={!!intent.current||create.isPending}/><Field label="拟定原因"><input required maxLength={200} value={reason} disabled={!!intent.current||create.isPending} onChange={e=>setReason(e.target.value)}/></Field>
     {blocked&&<p className="notice neutral">请求内容已保留。先重新核对计划状态，再使用原请求核对回执。</p>}
     <button className="button primary" disabled={create.isPending||!name.trim()||!reason.trim()}>{create.isPending?'正在拟定':blocked?'以原请求核对计划回执':'保存待批准计划'}</button>
   </form>;

@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T06:42:55.984706+00:00",
+  "encoder_script_sha256": "f253221bc3e9897a1cebd5a1a02d7e8133b56fb834b53aadde056552472fa953",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "fb5e3d253040dbd60f57bbf0e4b0cf5ef2cf9252a9e3ba147404d7b9106dbe11",
+      "build_source_sha256": "e607142eaab7deb9642e055dd8737bc9d3e9ecaafbc883aeaca781968d106032",
+      "capture_manifest": "docs/quality/evidence/project-catalog/web-capture-manifest.json",
+      "capture_manifest_sha256": "ee7aa28190d16d95b5dd15c6b520021ce5ff0acbd39e13c1551b0c8955f03ffd",
+      "capture_frame_count": 9,
+      "capture_duration_ms": 1847,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/project-catalog-web-selection.png",
+          "sha256": "697f96d8d6f48c0c397b04fac59fb5ac2c8335ba36b9f524dc0121eb2e6762dd"
+        },
+        {
+          "file": "docs/media/screenshots/project-catalog-web-plan.png",
+          "sha256": "1de0f85e3a7d07456de3e93fa7773b01931a119619b52f1d6e1a6f5a67b67e9c"
+        },
+        {
+          "file": "docs/media/screenshots/project-catalog-web-receipt.png",
+          "sha256": "01a30f2c7618999575ac71dce4aab419987475aa4155ac1e71d767a19fef977b"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "20",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/project-catalog-web.mp4",
+          "sha256": "151d0ed36d249fdfe69606950908873217eca4df454ca5a6f335a150fc859adb",
+          "bytes": 150340
+        },
+        {
+          "file": "docs/media/gifs/project-catalog-web.gif",
+          "sha256": "65f2db524faadae9ee187f857ecb64584ccbe0806d5150d3b9720f2d94093582",
+          "bytes": 190842
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web people/template selection and reviewed project creation. MP4 records human approval and actual template initialization; GIF is a six-second three-screenshot tour. No Bot API, model, real group, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/project-catalog-web-selection.png",
+      "sha256": "697f96d8d6f48c0c397b04fac59fb5ac2c8335ba36b9f524dc0121eb2e6762dd"
+    },
+    {
+      "file": "docs/media/screenshots/project-catalog-web-plan.png",
+      "sha256": "1de0f85e3a7d07456de3e93fa7773b01931a119619b52f1d6e1a6f5a67b67e9c"
+    },
+    {
+      "file": "docs/media/screenshots/project-catalog-web-receipt.png",
+      "sha256": "01a30f2c7618999575ac71dce4aab419987475aa4155ac1e71d767a19fef977b"
+    },
+    {
+      "file": "docs/media/videos/project-catalog-web.mp4",
+      "sha256": "151d0ed36d249fdfe69606950908873217eca4df454ca5a6f335a150fc859adb",
+      "bytes": 150340
+    },
+    {
+      "file": "docs/media/gifs/project-catalog-web.gif",
+      "sha256": "65f2db524faadae9ee187f857ecb64584ccbe0806d5150d3b9720f2d94093582",
+      "bytes": 190842
+    }
+  ]
+}

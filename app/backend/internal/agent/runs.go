@@ -193,6 +193,18 @@ func sourceSnapshots(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 		a.RunID = core.NewID()
 	}
 	for _, ref := range refs {
+		if catalogSourceType(ref.Type) {
+			if !exactOAID(ref.ID) || ref.VersionID != nil || len(members) != 1 || members[0] != a.UserID || seen[ref.Type+":"+ref.ID] {
+				return nil, core.Missing()
+			}
+			seen[ref.Type+":"+ref.ID] = true
+			item, err := catalogSnapshot(ctx, tx, a, c, ref.Type, ref.ID)
+			if err != nil {
+				return nil, err
+			}
+			out = append(out, item)
+			continue
+		}
 		if ref.Type == "agent_contract_body" {
 			if !exactOAID(ref.ID) || ref.VersionID != nil || seen[ref.Type+":"+ref.ID] {
 				return nil, core.Missing()
@@ -408,6 +420,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			in.Mutation.Arguments = canonical
 		}
 		for _, ref := range in.ContextRefs {
+			if catalogSourceType(ref.Type) && profile.SkillID != "project-create" {
+				return core.Result{}, core.Invalid("context_refs", "项目人员和模板目录只用于本人公司私密会话的新建项目任务")
+			}
 			if (ref.Type == "agent_organization_plan" || ref.Type == "agent_directory") && profile.SkillID != "information-organize" {
 				return core.Result{}, core.Invalid("context_refs", "整理计划与目录观察只能交给资料整理任务核对")
 			}

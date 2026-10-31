@@ -137,7 +137,7 @@ func (b *Bridge) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				expected = append(expected, "company/read_service_summary")
 			}
 			if profile.SkillID == "project-create" {
-				expected = append(expected, "company/propose_project", "company/create_project")
+				expected = append(expected, "company/propose_project", "company/create_project", "company/list_project_catalog")
 			}
 			if profile.SkillID == "project-update" {
 				expected = []string{"company/read_resource", "company/inspect_operation", "company/update_task_dependency", "company/create_task", "company/create_risk", "company/update_risk", "company/create_issue", "company/update_issue", "company/create_deliverable", "company/update_deliverable", "company/create_milestone", "company/update_project", "company/update_task", "company/transition_task", "company/transition_project", "company/update_milestone", "company/transition_milestone"}

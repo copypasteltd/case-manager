@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量142 · 项目规划目录 / Project planning catalog
+
+[人员／模板选择](screenshots/project-catalog-web-selection.png) · [待批准准确计划](screenshots/project-catalog-web-plan.png) · [实际建项回执](screenshots/project-catalog-web-receipt.png) · [实际视口MP4](videos/project-catalog-web.mp4) · [三截图导览GIF](gifs/project-catalog-web.gif)。
+
+真实认证Web、隔离合成业务及原生耐久PG。MP4是本人批准和实际创建的9帧约2秒记录；GIF是三张实际截图各两秒，明确作为截图导览。只记录登录后业务画面，不含密码、MFA秘密或真实资料。No real model, device, cloud or production acceptance; all owned browser contexts and temporary services closed. [验证与延期](../quality/142-project-catalog-verification.md)。
+
 ## 增量141 · 秘书运行配置 / Secretary runtime configuration
 
 [台账](screenshots/agent-runtime-operations-web-inventory.png) · [当前任务影响](screenshots/agent-runtime-operations-web-detail.png) · [停用回执](screenshots/agent-runtime-operations-web-receipt.png) · [实际视口MP4](videos/agent-runtime-operations-web.mp4) · [三截图导览GIF](gifs/agent-runtime-operations-web.gif)。

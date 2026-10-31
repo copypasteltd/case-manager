@@ -4188,6 +4188,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversations/{id}/project-catalog": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listAgentProjectCatalog */
+        get: operations["listAgentProjectCatalog"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversations/{id}/project-catalog/{kind}/{sourceID}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readAgentProjectCatalogSource */
+        get: operations["readAgentProjectCatalogSource"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversations/{id}/plans": {
         parameters: {
             query?: never;
@@ -9930,7 +9964,7 @@ export interface components {
         };
         AgentSourceSnapshot: {
             /** @enum {string} */
-            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report";
+            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report";
             /** Format: uuid */
             id: string;
             version_id?: string | null;
@@ -10409,6 +10443,37 @@ export interface components {
             expected_version: number;
             plan_hash: string;
             reason: string;
+        };
+        AgentProjectCatalogItem: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            type: "agent_project_person" | "agent_project_template" | "agent_project_catalog";
+            name: string;
+            version: number;
+            revision: number | null;
+            description: string;
+            source_sha256: string;
+            folder_count: number;
+            task_count: number;
+            milestone_count: number;
+        };
+        AgentProjectCatalogPage: {
+            items: components["schemas"]["AgentProjectCatalogItem"][];
+            next_cursor: string | null;
+            /** Format: date-time */
+            observed_at: string;
+            /** @constant */
+            untrusted_data: true;
+        };
+        AgentProjectCatalogDocument: {
+            item: components["schemas"]["AgentProjectCatalogItem"];
+            text: string;
+            offset: number;
+            total_chars: number;
+            next_offset: number | null;
+            /** @constant */
+            untrusted_data: true;
         };
         AgentPlan: {
             /** Format: uuid */
@@ -14222,6 +14287,14 @@ export interface components {
         };
         RunEventPageResponse: {
             data: components["schemas"]["RunEventPage"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentProjectCatalogPageResponse: {
+            data: components["schemas"]["AgentProjectCatalogPage"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentProjectCatalogDocumentResponse: {
+            data: components["schemas"]["AgentProjectCatalogDocument"];
             meta: components["schemas"]["Meta"];
         };
         AgentPlanListResponse: {
@@ -26858,6 +26931,84 @@ export interface operations {
                 };
                 content: {
                     "text/event-stream": string;
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listAgentProjectCatalog: {
+        parameters: {
+            query: {
+                kind: "people" | "templates";
+                query?: string;
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentProjectCatalogPageResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readAgentProjectCatalogSource: {
+        parameters: {
+            query?: {
+                offset?: number;
+                max_chars?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+                kind: "agent_project_person" | "agent_project_template" | "agent_project_catalog";
+                sourceID: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentProjectCatalogDocumentResponse"];
                 };
             };
             400: components["responses"]["Failure"];

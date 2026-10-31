@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T06:42:24.664Z",
+  "finished_at": "2026-10-31T06:42:36.321Z",
+  "checks": [
+    "Actual Web selects an active non-self owner, an additional member and a published template; bounded template body, type and dates remain in the proposed intent.",
+    "An explicit human approval and separate creation action produce an actual committed project and stable operation receipt; template initialization is independently checked in native PG.",
+    "Page reload and independent HTTP readback preserve the exact committed owner/template/operation; the fixture separately verifies dates and durable project initialization."
+  ],
+  "source_count": 997,
+  "source_sha256": "fb5e3d253040dbd60f57bbf0e4b0cf5ef2cf9252a9e3ba147404d7b9106dbe11",
+  "source_after_sha256": "fb5e3d253040dbd60f57bbf0e4b0cf5ef2cf9252a9e3ba147404d7b9106dbe11",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "e607142eaab7deb9642e055dd8737bc9d3e9ecaafbc883aeaca781968d106032",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "e607142eaab7deb9642e055dd8737bc9d3e9ecaafbc883aeaca781968d106032",
+  "build_source_unchanged": true
+}

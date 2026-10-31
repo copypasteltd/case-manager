@@ -782,7 +782,7 @@ add("BudgetReconcileInput", budget_reconcile, tuple(budget_reconcile))
 add("RuntimeProfile", profile, tuple(profile))
 add("RuntimeOptions", {"available": {"type": "boolean"}, "reason": nullable(NAME),
     "profiles": array(ref("RuntimeProfile"), maxItems=8)}, ("available", "reason", "profiles"))
-source_snapshot = {"type": enum("project", "task", "post", "milestone", "deliverable", "risk", "issue", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_oa_request", "agent_contract_body", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
+source_snapshot = {"type": enum("project", "task", "post", "milestone", "deliverable", "risk", "issue", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_project_person", "agent_project_template", "agent_project_catalog", "agent_oa_request", "agent_contract_body", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
     "resource_version": VERSION, "sha256": HASH}
 add("AgentSourceSnapshot", source_snapshot, ("type", "id", "resource_version", "sha256"))
 mutation_arguments = {"id": ID, **EXPECTED, "reason": NAME, "name": NAME, "scope": TEXT, "type": NAME,
@@ -880,6 +880,13 @@ plan_project = {**project_fields, "classification": enum("internal", "project_re
 add("AgentPlanProject", plan_project, ("name", "scope", "owner_id", "classification"))
 add("AgentProjectPlanCreate", {**EXPECTED, "context_security_version": VERSION, "project": ref("AgentPlanProject"), "reason": NAME}, ("expected_version", "context_security_version", "project", "reason"))
 add("AgentPlanAction", {**EXPECTED, "plan_hash": HASH, "reason": NAME}, ("expected_version", "plan_hash", "reason"))
+catalog_item = {"id": ID, "type": enum("agent_project_person", "agent_project_template", "agent_project_catalog"), "name": NAME, "version": VERSION,
+    "revision": nullable(VERSION), "description": {"type":"string","maxLength":2000}, "source_sha256": HASH,
+    **{k:{"type":"integer","minimum":0} for k in ("folder_count","task_count","milestone_count")}}
+add("AgentProjectCatalogItem", catalog_item, tuple(catalog_item))
+add("AgentProjectCatalogPage", {"items":array(ref("AgentProjectCatalogItem"),maxItems=20),"next_cursor":nullable(CURSOR),"observed_at":TIME,"untrusted_data":{"const":True}}, ("items","next_cursor","observed_at","untrusted_data"))
+add("AgentProjectCatalogDocument", {"item":ref("AgentProjectCatalogItem"),"text":{"type":"string","maxLength":10000},"offset":{"type":"integer","minimum":0},"total_chars":{"type":"integer","minimum":0,"maximum":300000},"next_offset":nullable({"type":"integer","minimum":1}),"untrusted_data":{"const":True}}, ("item","text","offset","total_chars","next_offset","untrusted_data"))
+
 template_snapshot = {"type": "object", "properties": {"id": ID, "published_revision": VERSION, "schema_sha256": HASH}, "additionalProperties": False}
 plan_fields = {"id": ID, "version": VERSION, "conversation_id": ID, "conversation_revision_id": ID, "context_security_version": VERSION,
     "actor_id": ID, "actor_auth_version": VERSION, "organization_auth_version": VERSION, "origin_run_id": nullable(ID), "kind": {"const": "project.create"},
@@ -1934,6 +1941,19 @@ stream["parameters"] += [{"name": "Last-Event-ID", "in": "header", "schema": {"t
     {"name": "after_seq", "in": "query", "schema": {"type": "integer", "minimum": 0}}]
 stream["responses"]["200"] = {"description": "Ordered safe company events; private model reasoning excluded.",
     "content": {"text/event-stream": {"schema": {"type": "string"}}}}
+operation("/conversations/{id}/project-catalog", "get", "listAgentProjectCatalog", "AgentProjectCatalogPage")
+PATHS["/conversations/{id}/project-catalog"]["get"]["parameters"] += [
+    {"name":"kind","in":"query","required":True,"schema":enum("people","templates")},
+    {"name":"query","in":"query","schema":{"type":"string","maxLength":200}},
+    {"name":"cursor","in":"query","schema":CURSOR},
+    {"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":20}}]
+operation("/conversations/{id}/project-catalog/{kind}/{sourceID}","get","readAgentProjectCatalogSource","AgentProjectCatalogDocument")
+for parameter in PATHS["/conversations/{id}/project-catalog/{kind}/{sourceID}"]["get"]["parameters"]:
+    if parameter["name"] == "kind":
+        parameter["schema"] = enum("agent_project_person", "agent_project_template", "agent_project_catalog")
+PATHS["/conversations/{id}/project-catalog/{kind}/{sourceID}"]["get"]["parameters"] += [
+    {"name":"offset","in":"query","schema":{"type":"integer","minimum":0,"maximum":300000}},
+    {"name":"max_chars","in":"query","schema":{"type":"integer","minimum":1,"maximum":10000}}]
 operation("/conversations/{id}/plans", "get", "listAgentPlans", "AgentPlanList")
 operation("/conversations/{id}/plans", "post", "proposeAgentProjectPlan", "AgentPlan", "AgentProjectPlanCreate", 201)
 operation("/plans/{id}", "get", "getPlan", "AgentPlan")

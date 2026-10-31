@@ -26054,6 +26054,236 @@
         }
       }
     },
+    "/conversations/{id}/project-catalog": {
+      "get": {
+        "operationId": "listAgentProjectCatalog",
+        "tags": [
+          "conversations"
+        ],
+        "summary": "listAgentProjectCatalog",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "people",
+                "templates"
+              ]
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentProjectCatalogPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/conversations/{id}/project-catalog/{kind}/{sourceID}": {
+      "get": {
+        "operationId": "readAgentProjectCatalogSource",
+        "tags": [
+          "conversations"
+        ],
+        "summary": "readAgentProjectCatalogSource",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "agent_project_person",
+                "agent_project_template",
+                "agent_project_catalog"
+              ]
+            }
+          },
+          {
+            "name": "sourceID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 300000
+            }
+          },
+          {
+            "name": "max_chars",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentProjectCatalogDocumentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/conversations/{id}/plans": {
       "get": {
         "operationId": "listAgentPlans",
@@ -59282,6 +59512,9 @@
               "agent_file_create",
               "agent_organization_plan",
               "agent_directory",
+              "agent_project_person",
+              "agent_project_template",
+              "agent_project_catalog",
               "agent_oa_request",
               "agent_contract_body",
               "agent_post_write",
@@ -61569,6 +61802,160 @@
           "expected_version",
           "plan_hash",
           "reason"
+        ]
+      },
+      "AgentProjectCatalogItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "agent_project_person",
+              "agent_project_template",
+              "agent_project_catalog"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "folder_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "task_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "milestone_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "name",
+          "version",
+          "revision",
+          "description",
+          "source_sha256",
+          "folder_count",
+          "task_count",
+          "milestone_count"
+        ]
+      },
+      "AgentProjectCatalogPage": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentProjectCatalogItem"
+            },
+            "maxItems": 20
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "untrusted_data": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "next_cursor",
+          "observed_at",
+          "untrusted_data"
+        ]
+      },
+      "AgentProjectCatalogDocument": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/AgentProjectCatalogItem"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "total_chars": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 300000
+          },
+          "next_offset": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "untrusted_data": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "item",
+          "text",
+          "offset",
+          "total_chars",
+          "next_offset",
+          "untrusted_data"
         ]
       },
       "AgentPlan": {
@@ -80769,6 +81156,38 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RunEventPage"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AgentProjectCatalogPageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentProjectCatalogPage"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AgentProjectCatalogDocumentResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentProjectCatalogDocument"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "reviewed": true,
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/project-catalog-web-selection.png",
+      "sha256": "697f96d8d6f48c0c397b04fac59fb5ac2c8335ba36b9f524dc0121eb2e6762dd"
+    },
+    {
+      "file": "docs/media/screenshots/project-catalog-web-plan.png",
+      "sha256": "1de0f85e3a7d07456de3e93fa7773b01931a119619b52f1d6e1a6f5a67b67e9c"
+    },
+    {
+      "file": "docs/media/screenshots/project-catalog-web-receipt.png",
+      "sha256": "01a30f2c7618999575ac71dce4aab419987475aa4155ac1e71d767a19fef977b"
+    },
+    {
+      "file": "docs/media/videos/project-catalog-web.mp4",
+      "sha256": "151d0ed36d249fdfe69606950908873217eca4df454ca5a6f335a150fc859adb",
+      "bytes": 150340
+    },
+    {
+      "file": "docs/media/gifs/project-catalog-web.gif",
+      "sha256": "65f2db524faadae9ee187f857ecb64584ccbe0806d5150d3b9720f2d94093582",
+      "bytes": 190842
+    }
+  ],
+  "screenshots_reviewed": 3,
+  "screenshots_full_resolution_reviewed": 3,
+  "video_samples": [
+    "first",
+    "middle",
+    "last"
+  ],
+  "gif_samples": [
+    "selection",
+    "plan",
+    "receipt"
+  ],
+  "full_video_watched": false,
+  "credentials_or_real_business_records_observed": false,
+  "notes": "All three current PNGs and decoded MP4 first/middle/last plus GIF 0/2/4-second samples inspected. Selection, explicit approval and durable project receipt are legible; no password/MFA/private-capability fields observed. MP4 is a short actual capture, GIF a disclosed screenshot tour. Full playback and mobile interaction remain unclaimed."
+}

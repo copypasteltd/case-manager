@@ -43,6 +43,9 @@ func allowedReadTool(skill, tool string) bool {
 	if skill == "project-create" && (tool == "propose_project" || tool == "create_project") {
 		return true
 	}
+	if skill == "project-create" && tool == "list_project_catalog" {
+		return true
+	}
 	if skill == "project-update" && mutationTool(tool) {
 		return true
 	}
@@ -141,6 +144,8 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 	var snapshots []SourceSnapshot
 	var writeOutput map[string]any
 	switch tool {
+	case "list_project_catalog":
+		content, snapshots, err = s.executionProjectCatalog(ctx, tx, st, lease, args)
 	case "read_finance_summary":
 		content, snapshots, err = executionFinanceSummary(ctx, tx, st, args)
 	case "list_subscriptions", "read_subscription_review", "read_finance_record":
@@ -392,6 +397,15 @@ func executionRead(ctx context.Context, tx pgx.Tx, st executionState, args json.
 	}
 	if in.MaxChars == 0 {
 		in.MaxChars = 4000
+	}
+	if catalogSourceType(in.Type) {
+		if st.Profile.SkillID != "project-create" || in.VersionID != nil {
+			return nil, nil, runtimeFailure("SKILL_TOOL_DENIED")
+		}
+		a := st.Actor
+		a.RunID = st.Run.ID
+		view, source, e := catalogText(ctx, tx, a, st.Conversation, in.Type, in.ID, in.Offset, in.MaxChars)
+		return view, []SourceSnapshot{source}, e
 	}
 	if in.Type == "agent_post_write" {
 		if st.Profile.SkillID != "project-briefing" {

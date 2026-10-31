@@ -8,6 +8,9 @@ import { client } from '../../platform/taro';
 import { Action, Busy, Empty, Fact, Notice, Section, date } from '../../ui';
 import { SelectField, TextField } from '../business/controls';
 
+import { emptyProjectSelection, projectPlanProject, projectPlanMatches } from '@copypaste/contracts/project-catalog';
+import { ProjectCatalogSelection } from './project-catalog';
+
 const states = { proposed: '待本人批准', approved: '已批准，等待创建', committed: '项目已创建', revoked: '已撤销' };
 export function ConversationPlans({conversation:c,me,onReference,referenceDisabled}:{conversation:Schemas['Conversation'];me:Schemas['Me'];onReference?(plan:Schemas['AgentPlan']):void;referenceDisabled?:boolean}) {
   const [value,setValue]=useState<Schemas['AgentPlanList']>(),[error,setError]=useState<unknown>(),[loading,setLoading]=useState(true),[revision,setRevision]=useState(0),[creating,setCreating]=useState(false),[verifiedAt,setVerifiedAt]=useState<string|null>(null);
@@ -31,16 +34,17 @@ export function ConversationPlans({conversation:c,me,onReference,referenceDisabl
 }
 function CreatePlan({conversation:c,me,onDone}:{conversation:Schemas['Conversation'];me:Schemas['Me'];onDone():void}){
   const draft=useFormDraft(me,{kind:'agent-project-plan',id:c.id,version:c.version},'propose',{name:'',body:'',action:'internal'});
+  const [choice,setChoice]=useState(emptyProjectSelection),[inputError,setInputError]=useState<unknown>();
   const intent=useRef<Schemas['AgentProjectPlanCreate']>();
-  const command=useCommand<Schemas['AgentPlan']>(()=>{draft.forget();onDone();},draft.binding,v=>v.conversation_id===c.id&&v.state==='proposed'&&v.actor_id===me.user.id&&v.project.name===intent.current?.project.name&&v.plan_hash.length===64);
+  const command=useCommand<Schemas['AgentPlan']>(()=>{draft.forget();onDone();},draft.binding,v=>v.conversation_id===c.id&&v.state==='proposed'&&v.actor_id===me.user.id&&!!intent.current&&projectPlanMatches(v,intent.current)&&v.plan_hash.length===64);
   const disabled=command.busy||command.blocked;
-  return <View><Notice error={command.error}/><CommandNotice blocked={command.blocked}/><TextField name='plan-name' label='项目名称' value={draft.fields.name??''} onChange={name=>draft.update({name})} disabled={disabled}/>
+  return <View><Notice error={inputError}/><Notice error={command.error}/><CommandNotice blocked={command.blocked}/><TextField name='plan-name' label='项目名称' value={draft.fields.name??''} onChange={name=>draft.update({name})} disabled={disabled}/>
     <TextField name='plan-scope' label='项目范围' value={draft.fields.body??''} onChange={body=>draft.update({body})} multiline max={20000} disabled={disabled}/>
     <SelectField label='资料范围' value={draft.fields.action??'internal'} options={[[ 'internal','公司内部' ],[ 'project_restricted','项目受限' ]]} onChange={action=>draft.update({action})} disabled={disabled}/>
-    <Fact label='项目负责人'>{me.user.display_name}（本人）</Fact><TextField name='plan-reason' label='拟定原因' value={draft.fields.reason} onChange={reason=>draft.update({reason})} disabled={disabled}/>
+    <ProjectCatalogSelection conversation={c} me={me} value={choice} onChange={setChoice} disabled={disabled}/><TextField name='plan-reason' label='拟定原因' value={draft.fields.reason} onChange={reason=>draft.update({reason})} disabled={disabled}/>
     <Action loading={command.busy} disabled={disabled||!draft.fields.name?.trim()||!draft.fields.reason.trim()} onClick={()=>{
-      const body:Schemas['AgentProjectPlanCreate']={expected_version:c.version,context_security_version:c.context_security_version,reason:draft.fields.reason,project:{name:draft.fields.name!,scope:draft.fields.body??'',owner_id:me.user.id,classification:draft.fields.action==='project_restricted'?'project_restricted':'internal'}};
-      intent.current=body;void command.submit('/conversations/'+c.id+'/plans',body);
+      try{setInputError(undefined);const body:Schemas['AgentProjectPlanCreate']={expected_version:c.version,context_security_version:c.context_security_version,reason:draft.fields.reason,project:projectPlanProject(me.user.id,draft.fields.name!,draft.fields.body??'',draft.fields.action==='project_restricted'?'project_restricted':'internal',choice)};
+      intent.current=body;void command.submit('/conversations/'+c.id+'/plans',body);}catch(e){setInputError(e);}
     }}>保存待批准计划</Action>
   </View>;
 }

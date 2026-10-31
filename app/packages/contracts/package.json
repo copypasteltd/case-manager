@@ -41,7 +41,8 @@
     "./host-resources": "./src/host-resources.ts",
     "./telegram-operations": "./src/telegram-operations.ts",
     "./telegram-inbox": "./src/telegram-inbox.ts",
-    "./agent-runtime": "./src/agent-runtime.ts"
+    "./agent-runtime": "./src/agent-runtime.ts",
+    "./project-catalog": "./src/project-catalog.ts"
   },
   "dependencies": {
     "@noble/hashes": "2.4.0"

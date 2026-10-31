@@ -1,12 +1,13 @@
 {
   "skill_id": "project-create",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "state": "draft",
   "owner_role": "business_admin",
   "runtime_compatibility": "codex-sdk@0.164.0",
   "authorization_level": "L1",
   "allowed_tools": [
     "search_resources",
+    "list_project_catalog",
     "read_resource",
     "propose_project",
     "create_project",

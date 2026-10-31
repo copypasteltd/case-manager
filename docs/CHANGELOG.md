@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## Increment142 · Project planning people and template catalogs
+
+- Added authorized active-person and published-template discovery, complete bounded source reads and query/execution-bound cursors in private company conversations. Accounts, contacts, credentials and draft templates remain private.
+- Added project-create-only list_project_catalog through MCP, runtime HTTP boundary, execution receipts and policy checks. Schema108 stores one immutable observation per page, with exact current dependency verification and atomic audit rollback.
+- Completed owner/member/template/type/date selection across Web and shared WeChat/Douyin/Android source. Fixed human plans retain complete-intent receipt checks, recent MFA approval and separate actual project/template initialization.
+- project-create1.2.0 remains draft; shared source-reference changes alter all eight package digests. Existing installations must be reverified by the dedicated deployment workflow; no Skill/model release is claimed.
+- Selected native HTTP/PG,56 runtime tests, client types/builds and actual authenticated Web creation/readback passed. Preserve initial JSON-comparison and missing runtime-tool failures. Added PNG/MP4 and a disclosed screenshot-tour GIF; full regression, mobile UI journeys and new APK deferred.
+- 两冻结标签与APK137原出处保持；主线142／结构108，开发PG100，23工作包、五项移出与真实集成／生产验收继续开放。
+- [Usage/API](development/142-project-planning-catalog.md) · [Checks/deferrals](quality/142-project-catalog-verification.md) · [All remaining work](delivery/05-functional-closure-142.md).
+
 ## Increment141 · Secretary runtime profile operations
 
 - Added organization profile inventory, strict authorized pagination, immutable configuration history and current active-task impact across Web and shared WeChat/Douyin/Android source.

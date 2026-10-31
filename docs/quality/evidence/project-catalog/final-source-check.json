@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "selected native HTTP and execution suites actually ran at current backend sources",
+      "passed": true
+    },
+    {
+      "name": "runtime-tests current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "typecheck current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "web-build current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "weapp-build current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "douyin-build current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "actual Web catalog selection approval and project creation readback with all owned resources closed",
+      "passed": true
+    },
+    {
+      "name": "current screenshot video GIF hashes",
+      "passed": true
+    },
+    {
+      "name": "visual review matches current media",
+      "passed": true
+    },
+    {
+      "name": "acceptance applicability remains explicit",
+      "passed": true
+    },
+    {
+      "name": "older evidence media and applied migrations remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "no private fixture or native cluster remains owned",
+      "passed": true
+    },
+    {
+      "name": "frozen candidates retain exact business commits",
+      "passed": true
+    },
+    {
+      "name": "eight Skill manifests remain draft",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/project-catalog/native-reviewed.json": "23ffe7516d8d5ec180a0a7989dedfff796b0cb9300846d8b3da33a34144a9839",
+    "docs/quality/evidence/project-catalog/media.json": "dde0f0843f3dc081ecae7381fee0a6ae2baa3dc4282961d63e3aa93d469bda69",
+    "docs/quality/evidence/project-catalog/visual-review.json": "9b77020e86cb233a391a31cd65f8f63a7c285e5bbe638dedfc488697fd59c8af",
+    "docs/quality/evidence/project-catalog/native-cluster-closed.json": "c7c5dd7ea2ec9c2e865d25f1762de75e610f1657b0faa97da4c00c41329723ac",
+    "docs/quality/evidence/project-catalog/acceptance-applicability-check.json": "872bdbc156ce32972ef01ce2e035757e444adc41b05807fef8921b35a07f92d5",
+    "docs/quality/evidence/project-catalog/runtime-tests-3.json": "112cc4a791864685bc1a7974c84534b27097a4694858650f5892905438cb2f79",
+    "docs/quality/evidence/project-catalog/typecheck-2.json": "50e70ef42189548be3444d686d126feeb33772cc01e78f88568a20154768bc0b",
+    "docs/quality/evidence/project-catalog/web-build-1.json": "6f1df7b00a851aca5bf5457107e881b61a1222087abde2bd0e3f2b2741433395",
+    "docs/quality/evidence/project-catalog/weapp-build-1.json": "b309713b62592282dffdf84f687dbbc392dc9ca65240d6d9a5bca38f6bddc0cf",
+    "docs/quality/evidence/project-catalog/douyin-build-1.json": "d9ede83253c18aa4d2d39a21c2967e0fd992e9ec91d6e6e2726f2cc26867de61",
+    "docs/quality/evidence/project-catalog-web/result.json": "7930262385e170540c0247e9e735b99d628d40a347ebd2b4ffde8f6ad7dd4075",
+    "docs/quality/evidence/project-catalog-web/source-manifest.json": "0bb779d23bfebb5c7226a8f198b929c81e183ef1a7121165ddb0c9d9cdbcd40f",
+    "docs/quality/evidence/project-catalog-web/business-proof.json": "a9e0d6fb365bb30725db557fee5dd3b0846bc249b49ee1fc800bcf2cb8da3166",
+    "docs/quality/evidence/agent-runtime-operations/final-source-check.json": "de9b1f6f33a6ff98d44ab499639e879c92ea3b32d312447ff367db84972073d8"
+  },
+  "retained": {
+    "base_commit": "030df95c7a3e9717a94e9627fe9b6a66f198145a",
+    "full_backend_increment": 121,
+    "runtime_increment": 142,
+    "business_full_client_increment": 136,
+    "android_artifact_increment": 137,
+    "android_business_source_increment": 136,
+    "android_schema": 103,
+    "previous_proof_and_media_reexecuted": false,
+    "current_android_apk_built": false
+  },
+  "interaction_source_sha256": "e607142eaab7deb9642e055dd8737bc9d3e9ecaafbc883aeaca781968d106032",
+  "verification_script_sha256": "05db8d7e6b5ef6d983a743c1af37767b67c0ab086bd0a60a12c6a95a15a87489",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "new_android_apk": false,
+  "full_regression": false,
+  "virtualization_used": false
+}

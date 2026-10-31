@@ -1,5 +1,15 @@
 # CopyPaste 内部管理平台文档中心
 
+## 增量142 · 项目规划目录 / Project planning catalog
+
+公司私人会话→拟定项目计划→选择有效负责人／成员与已发布模板→填写类型及日期→核对固定计划→本人近期MFA批准→单独创建项目。模板目录、任务和里程碑随实际项目事务生成，成功后可打开项目并刷新核对持久业务回执。
+
+In an owned company private conversation, select the active owner, additional members and published template, then fill the type and dates. Save and review the fixed proposal, explicitly approve it with recent MFA, and separately create the actual project. The ordinary project transaction initializes the template; a durable receipt links to the created project. Catalog access follows current organization planning authority and AI disclosure policy, without exposing account/security metadata.
+
+主线142／结构108；开发PG仍100。四端源码、选定HTTP／原生PG、运行时56项、类型、Web及两小程序本地构建与实际Web建项单独留证。完整回归、新移动UI旅程和新APK延期。Both frozen candidates remain fixed; rc.2/APK137 retain business136/schema103 and exclude138–142. All eight Skill packages remain draft; the shared reference schema changes every package digest and requires dedicated installation reverification.23 open work packages, five exclusions and external production acceptance remain explicit.
+
+[使用与接口 / Usage/API](development/142-project-planning-catalog.md) · [关键验证与延期 / Checks](quality/142-project-catalog-verification.md) · [本轮及全部23项 / All remaining work](delivery/05-functional-closure-142.md) · [页面 / Screenshot](media/screenshots/project-catalog-web-receipt.png) · [MP4](media/videos/project-catalog-web.mp4) · [截图导览GIF](media/gifs/project-catalog-web.gif)
+
 ## 增量141 · 秘书运行配置 / Secretary runtime operations
 
 进入“秘书运行配置”→按任务／状态筛选→核对准确配置、技术限制及当前活动任务→近期MFA并明确确认停用影响→查看永久回执与历史。活动任务改变时必须重新核对；停用仅阻止后续使用，不声称进程已退出或已经回滚业务。原配置不能重新启用，新的配置仍由专用部署身份核验后安装。

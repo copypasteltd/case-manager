@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量142：GAP-12／18已补有效人员及已发布项目模板目录、绑定分页、准确完整内容、每页不可变来源观察；四端可选择负责人／成员／模板／类型／日期，固定提案后仍由本人批准并单独创建实际项目。目录不越权或免除AI资料政策，变化来源和审计失败继续拒绝／回滚。结构108，开发PG仍100；project-create1.2.0及全部八项包仍draft，共同schema改变全部来源摘要。关键HTTP／原生PG、运行时56项、客户端类型／构建及实际Web建项留证；完整回归、新移动UI与APK延期。两冻结标签、23 active（14 P0／9 P1）、5 excluded及真实集成／生产边界保持。见[使用](../development/142-project-planning-catalog.md)、[验证](../quality/142-project-catalog-verification.md)和[全部23项](05-functional-closure-142.md)。
+
 增量141：GAP-07／18补组织秘书运行配置台账、自动永久历史、当前任务影响核对及准确人工停用。独立权限、近期MFA、活动任务摘要、安装隔离与原子审计保持；结构107，开发PG仍100。关键HTTP／PG、客户端构建和实际Web演示单独留证，完整回归、新移动旅程／APK延期。两冻结标签不动，23 active（14 P0／9 P1）、5 excluded、八项draft Skill及真实集成／生产验收继续开放。见[使用](../development/141-secretary-runtime-operations.md)、[验证](../quality/141-secretary-runtime-verification.md)和[全部23项](05-functional-closure-141.md)。
 
 增量140：GAP-07／18补齐组织TG入站台账、状态／任务／群入口筛选、准确分页历史和明确人工撤回未启动请求；独立权限、近期MFA、版本／幂等、调度竞争锁及原子历史／回执／审计保持。结构106；关键原生HTTP／PG、客户端类型／构建与实际Web提交读回留证；空任务旧请求兼容和所有原始尝试保留。APK137及两冻结标签仍原出处，未接真实Bot／模型／生产。23 active（14 P0／9 P1）、5 excluded、八项draft Skill保持。见[使用](../development/140-telegram-inbox-operations.md)、[验证与延期](../quality/140-telegram-inbox-verification.md)和[本轮及全部23项](05-functional-closure-140.md)。
