@@ -19,3 +19,9 @@ export function ReplicaRetry({ replica, fileID, authorization, close, committed 
   }
   return <Section title='重新安排副本复制'><Text className='cp-paragraph'>{base.provider === 'oss' ? 'OSS 原件' : 'R2 副本'} · 副本修订 {base.version}</Text><Text className='cp-muted cp-paragraph'>排队成功后仍需等待复制及完整校验。服务器会重新核对权限、版本和来源副本。</Text><Notice error={error ?? command.error} /><CommandNotice blocked={command.blocked} /><TextField name='replica-retry-reason' label='重试原因' multiline value={reason} onChange={setReason} disabled={locked} /><Check checked={ack} disabled={locked} onChange={setAck}>我已核对这个副本及重试原因</Check><Action loading={command.busy} disabled={locked || !ack || !reason.trim()} onClick={submit}>安排复制</Action><Action secondary disabled={command.busy} onClick={close}>返回存储记录</Action></Section>;
 }
+
+export function ReplicaNoticeRetry({ file, version, replica, authorization, committed }: { file: Schemas['File']; version: Schemas['FileVersion']; replica: Schemas['FileReplica']; authorization: string | number; committed(): void }) {
+  const [open, setOpen] = useState(false);
+  if (file.state !== 'active' || !file.can_update || version.file_id !== file.id || version.availability !== 'available' || !['failed', 'missing'].includes(replica.state)) return null;
+  return open ? <ReplicaRetry replica={replica} fileID={file.id} authorization={authorization} close={() => setOpen(false)} committed={() => { setOpen(false); committed(); }} /> : <Action secondary onClick={() => setOpen(true)}>重新安排副本复制</Action>;
+}

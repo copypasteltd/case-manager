@@ -9835,6 +9835,10 @@ export interface components {
             web_path: string;
             /** Format: uuid */
             comment_id?: string;
+            /** Format: uuid */
+            version_id?: string;
+            /** Format: uuid */
+            replica_id?: string;
         };
         Notification: {
             /** Format: uuid */

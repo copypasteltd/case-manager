@@ -1,5 +1,8 @@
 # Repository working agreement / 仓库工作约定
 
+Increment149 adds in-app actual replica failure/retry/verified-recovery deliveries and exact version/replica entry across Web/shared mobile. Keep current ordinary file authority, candidate event/version rechecks, immutable deliveries and explicit human retry; read/queue acceptance never resolves work. No migration: schema111. All five frozen releases and APK148/business147 remain immutable;149 source is main-only. Preserve failed fixture-MFA attempt/source and the disclosed post-capture read-only verifier addition. Full regression/additional mobile UI/newAPK and real integrations remain deferred/open. DevelopmentPG100/API,23 work packages and eight draft Skills stay unchanged. See docs/development/149-replica-failure-recovery.md.
+
+
 Increment148 freezes exact business147/schema111 as v0.1.0-rc.5 with rebuilt Linux/Web/runtime, both miniapps and developmentAPK; the APK now includes147 storage operations. Packaging/source/artifact checks are fresh;147 business/media and28 cached JVM XML are retained, not replayed. Main148 contains delivery tools/guides; source tag/ZIP fix147. Keep all four prior freezes, old proofs/media and migrations1–111 immutable, developmentPG100/API unchanged,23 work packages and eight draft Skills open. No GitHub Releases webpage was created; retained API403 was not retried. See `docs/development/148-frozen-release-delivery.md`.
 
 

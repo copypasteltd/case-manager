@@ -1,0 +1,9 @@
+{
+  "failed_native_record": "docs/quality/evidence/replica-notifications/native-focused.json",
+  "failed_native_source_snapshot": "docs/quality/evidence/replica-notifications/attempts/01-fixture-mfa-policy/replica_notifications_integration_test.go.txt",
+  "failed_native_source_sha256": "56fa8b18631adecc5b8a5e51048801096a18fbecb511b2b4ea222528c46f57df",
+  "failure": "Initial four-channel test attempted MFA enrollment before its ordinary project-manager fixture required MFA. It stopped at fixture setup after the actual replica-failure subcase passed.",
+  "correction": "Only isolated test roles explicitly require MFA before actual enrollment and actual current sessions. Both main and independent browser fixtures use this stronger test policy. No domain authorization or production policy changed.",
+  "final_native_record": "docs/quality/evidence/replica-notifications/native-mfa-policy.json",
+  "production_authorization_weakened": false
+}

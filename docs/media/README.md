@@ -1,5 +1,16 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量149：复制恢复通知 / Replica recovery notice
+
+实际Web／原生HTTP／耐久PG及合成对象存储工作器：失败、已读、人工重试和字节校验已在捕获前发生；录屏记录实际打开对应版本及已读恢复，不把录屏描述为现场云端故障恢复。三PNG分别为恢复未读、准确版本、恢复已读；MP4为2.8秒实际无声操作（包含短暂加载），GIF为6秒三截图导览，不是连续操作录像。仅已登录合成资料，不记录凭据。
+
+![恢复未读](screenshots/replica-notifications-web-recovery.png)
+
+[准确版本截图](screenshots/replica-notifications-web-version.png) · [已读截图](screenshots/replica-notifications-web-read.png) · [实际MP4](videos/replica-notifications-web.mp4) · [截图导览GIF](gifs/replica-notifications-web.gif)
+
+Current authenticated synthetic Web captures; no real cloud, model, device or production claim. All older media retains its exact bytes. [准确核验](../quality/149-replica-notifications-verification.md)
+
+
 ## 增量148：原始媒体随rc.5交付 / Retained original media
 
 rc.5媒体ZIP包含准确Git147的全部docs/media；本轮没有新增截图、浏览器录制或GIF。147复制运维的三PNG、2.2秒实际无声操作MP4和6秒截图导览GIF保持原字节；截图导览不冒充连续操作录像。业务界面未改，采用原证明和原素材，未启动浏览器或临时服务。更早媒体继续按各原记录说明来源。

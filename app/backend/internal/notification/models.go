@@ -18,6 +18,8 @@ type Target struct {
 	ID          string  `json:"id"`
 	ContainerID *string `json:"container_id"`
 	CommentID   *string `json:"comment_id,omitempty"`
+	VersionID   *string `json:"version_id,omitempty"`
+	ReplicaID   *string `json:"replica_id,omitempty"`
 	WebPath     string  `json:"web_path"`
 }
 type Notification struct {
@@ -60,6 +62,10 @@ type Failure struct {
 	UpdatedAt     time.Time  `json:"updated_at"`
 }
 type thread struct {
+	// Only delivery candidates carry an event basis; ordinary inbox reads
+	// present current state, while a delayed event cannot deliver newer facts.
+	CandidateEventType                                                            string
+	CandidateEventVersion                                                         int64
 	ID, OrgID, RecipientID, Category, ResourceType, ResourceID, DedupKey, EventID string
 	ContextID                                                                     *string
 	DeliveredSeq, ReadSeq, Version                                                int64

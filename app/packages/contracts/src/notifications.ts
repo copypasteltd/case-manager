@@ -15,20 +15,34 @@ function id(value: unknown): string {
 export function notificationDestination(target: Schemas['NotificationTarget']) {
   const resource = id(target.id);
   if (target.comment_id !== undefined && target.type !== 'task') throw new Error('讨论地址与资料类型不一致。');
-  let web: string, mobile: string;
+  const pinned = target.version_id !== undefined || target.replica_id !== undefined;
+  if (pinned && target.type !== 'file') throw new Error('副本地址与资料类型不一致。');
+  let web: string, mobile: string, suffix = '';
   switch (target.type) {
     case 'task': web = '/projects/' + id(target.container_id) + '?task=' + resource; mobile = '/pages/detail/index?kind=task&id=' + resource; if (target.comment_id !== undefined) { const comment = id(target.comment_id); web += '&comment=' + comment; mobile += '&comment_id=' + comment; } break;
     case 'request': web = '/requests/' + resource; mobile = '/pages/detail/index?kind=request&id=' + resource; break;
     case 'contract': web = '/contracts/' + resource; mobile = '/pages/business/index?kind=contract&id=' + resource; break;
     case 'subscription_period': id(target.container_id); web = '/subscription-periods/' + resource; mobile = '/pages/subscription-period/index?id=' + resource; break;
-    case 'file': web = '/files/' + resource; mobile = '/pages/detail/index?kind=file&id=' + resource; break;
+    case 'file':
+      web = '/files/' + resource; mobile = '/pages/detail/index?kind=file&id=' + resource;
+      if (pinned) { const version = id(target.version_id), replica = id(target.replica_id); suffix = '?version=' + version + '&replica=' + replica; mobile += '&version=' + version + '&replica=' + replica; }
+      break;
     case 'incident': web = '/incidents/' + resource; mobile = '/pages/status/index?kind=incident&id=' + resource; break;
     case 'service': web = '/services/' + resource; mobile = '/pages/status/index?kind=service&id=' + resource; break;
     case 'agent_run': { const conversation = id(target.container_id); web = '/conversations/' + conversation + '?run=' + resource; mobile = '/pages/secretary/index?kind=conversation&id=' + conversation + '&run=' + resource; break; }
     default: throw new Error('暂不支持这个通知地址，请从工作台查看相关资料。');
   }
   if (target.web_path !== web) throw new Error('通知地址与资料不一致，请刷新后重新打开。');
-  return { web, mobile };
+  return { web: web + suffix, mobile };
+}
+// General file links may select a version; a replica always needs its version.
+export function replicaVersionSelection(version: unknown, replica: unknown) {
+  if (version == null && replica == null) return null;
+  return { versionID: id(version), replicaID: replica == null ? null : id(replica) };
+}
+export function checkedReplicaVersion(value: Schemas['FileVersion'], file: string, selection: NonNullable<ReturnType<typeof replicaVersionSelection>>) {
+  if (!value || value.id !== selection.versionID || value.file_id !== id(file) || !Array.isArray(value.replicas) || (selection.replicaID !== null && value.replicas.filter(r => r.id === selection.replicaID).length !== 1)) throw new Error('文件版本或副本与本次通知不一致，请刷新后核对。');
+  return value;
 }
 export function notificationReadInput(value: Notification): Schemas['NotificationRead'] {
   if (!Number.isSafeInteger(value.delivery_seq) || value.delivery_seq < 1 || !Number.isSafeInteger(value.read_seq) || value.read_seq < 0 || value.read_seq > value.delivery_seq || value.read !== (value.read_seq === value.delivery_seq)) throw new Error('通知序号无效，请刷新后核对。');

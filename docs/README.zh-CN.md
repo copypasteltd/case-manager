@@ -1,5 +1,20 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+## 增量149 · 文件复制失败／恢复闭环 / Replica failure and recovery
+
+当前源码补齐实际工作器失败→人工重试→字节校验恢复的站内通知。已读和重试排队继续保留处理义务，实际校验成功后才在原线程形成新的未读恢复通知；初次正常复制不产生恢复噪音，延迟事件与撤权继续抑制。Web／微信／抖音／Android共享源码入口可定位准确版本与副本，并按原权限安排人工重试。
+
+Current149 source adds verified recovery deliveries to the existing failure thread and exact-version/replica navigation across Web and shared mobile. Acknowledgement or queue acceptance never proves recovery. Fresh selected checks cover actual HTTP/durablePG/worker execution,5 Web and5 mobile logic cases, current Web/WeChat/Douyin builds and3 actual Web checks with updated screenshots/video/GIF. Full regression, additional mobile UI and a fresh APK are deferred.
+
+最新冻结rc.5／APK148仍固定业务147／结构111，不包含149新通知入口；五冻和原证明保持原字节。原开发PG100／API未动，当前源码结构仍111。真实服务接入、正式签名／平台发布、公司完整验收和八draft Skill保持开放；范围遵循[当前口径](delivery/04-current-scope-and-acceptance.md)，全部23工作包继续编号跟踪。
+
+[使用／开发 · Usage](development/149-replica-failure-recovery.md) · [准确核验 · Evidence](quality/149-replica-notifications-verification.md) · [全部23项 · Remaining](delivery/05-functional-closure-149.md) · [当前冻结下载 · Frozen downloads](releases/v0.1.0-rc.5/README.md)
+
+![复制恢复通知 / Verified recovery notice](media/screenshots/replica-notifications-web-recovery.png)
+
+[实际无声操作MP4 · Actual silent recording](media/videos/replica-notifications-web.mp4) · [三截图导览GIF · Screenshot tour](media/gifs/replica-notifications-web.gif)
+
+
 ## 增量148 · 最新冻结 v0.1.0-rc.5 / Latest frozen delivery
 
 当前功能冻结固定业务147 `4155ce9c19304b8c65f5636e09707a5eba1e21cd`／数据库结构111。四端包已重新构建并包含复制运维台账、详情与人工重试；提供Linux／Web／秘书运行器、两小程序、Android开发安装包、完整应用源码／文档和全部原始截图／MP4／GIF五包及SHA-256。旧四次冻结保持不变，下方旧版本段落为历史记录。

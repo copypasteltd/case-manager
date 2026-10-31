@@ -5,7 +5,6 @@ import (
 	"copypaste.hk/platform/internal/agent"
 	"copypaste.hk/platform/internal/contracts"
 	"copypaste.hk/platform/internal/core"
-	"copypaste.hk/platform/internal/files"
 	"copypaste.hk/platform/internal/finance"
 	"copypaste.hk/platform/internal/knowledge"
 	"copypaste.hk/platform/internal/platform"
@@ -138,21 +137,7 @@ func view(ctx context.Context, tx pgx.Tx, a core.Actor, n thread) (*Notification
 			}
 		}
 	case "file":
-		var f files.File
-		f, err = files.NotificationFile(ctx, tx, a, n.ResourceID)
-		if err == nil {
-			v.ResourceLabel = f.Name
-			v.CurrentState = f.State
-			v.Target.WebPath = "/files/" + f.ID
-			if n.ContextID == nil {
-				return nil, core.Missing()
-			}
-			var state string
-			err = tx.QueryRow(ctx, `SELECT r.state FROM file_replicas r JOIN file_versions fv ON fv.org_id=r.org_id AND fv.id=r.version_id
-    WHERE r.org_id=$1 AND r.id=$2 AND fv.file_id=$3`, a.OrgID, *n.ContextID, f.ID).Scan(&state)
-			v.AttentionRequired = err == nil && state == "failed"
-			v.CurrentState = state
-		}
+		err = replicaView(ctx, tx, a, n, &v)
 	case "service":
 		if n.Category != "service_resource" || n.ContextID == nil {
 			return nil, core.Missing()

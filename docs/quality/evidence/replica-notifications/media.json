@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T11:37:51.012554+00:00",
+  "encoder_script_sha256": "61fba4dbeeaf297a9b0f445f312b462fb17bb2f9e62ecbeccb18d99f2d1a17c4",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "46496216843db3bf0df68bf46c935178bc0ae18869f662bcbaa4cca779e72c63",
+      "build_source_sha256": "3b1310466b69c7c9560a9e2d02647e8dd600b4cc0505f0f992c42fe8bf764fb9",
+      "capture_manifest": "docs/quality/evidence/replica-notifications/web-capture-manifest.json",
+      "capture_manifest_sha256": "3a9cb3c3f2a6abc444fe453151dddc929e2236b445ee086602183b7fc65a8a0e",
+      "capture_frame_count": 11,
+      "capture_duration_ms": 2541,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/replica-notifications-web-recovery.png",
+          "sha256": "cd551b968d9a73846cbaf6f5cd9701a6cbd37c2ece3b3bb6714ba1b16899afaf"
+        },
+        {
+          "file": "docs/media/screenshots/replica-notifications-web-version.png",
+          "sha256": "753d50fdd88bcc3e770b992aa82c634bc7c4fc808d7e6c6f49cf6ceb86b39cd9"
+        },
+        {
+          "file": "docs/media/screenshots/replica-notifications-web-read.png",
+          "sha256": "6bcb79a26a1ba12f93c132ceb99238d9514bf1de661e74c0fcc594501508b5ad"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "28",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.800000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/replica-notifications-web.mp4",
+          "sha256": "402fdb61951fe297fc20b09a7071edf6d7f96559b81502c88ab5b541b9c9d314",
+          "bytes": 108444
+        },
+        {
+          "file": "docs/media/gifs/replica-notifications-web.gif",
+          "sha256": "386c1b4deae00007dea3d17cba6e832ca54fe7b12570dccd59424c45372ddedd",
+          "bytes": 152864
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web verified recovery notice, fixed version opening and read acknowledgement. MP4 records actual navigation/read; GIF is a six-second tour of recovery notice, exact version and read notice. No real cloud, model, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/replica-notifications-web-recovery.png",
+      "sha256": "cd551b968d9a73846cbaf6f5cd9701a6cbd37c2ece3b3bb6714ba1b16899afaf"
+    },
+    {
+      "file": "docs/media/screenshots/replica-notifications-web-version.png",
+      "sha256": "753d50fdd88bcc3e770b992aa82c634bc7c4fc808d7e6c6f49cf6ceb86b39cd9"
+    },
+    {
+      "file": "docs/media/screenshots/replica-notifications-web-read.png",
+      "sha256": "6bcb79a26a1ba12f93c132ceb99238d9514bf1de661e74c0fcc594501508b5ad"
+    },
+    {
+      "file": "docs/media/videos/replica-notifications-web.mp4",
+      "sha256": "402fdb61951fe297fc20b09a7071edf6d7f96559b81502c88ab5b541b9c9d314",
+      "bytes": 108444
+    },
+    {
+      "file": "docs/media/gifs/replica-notifications-web.gif",
+      "sha256": "386c1b4deae00007dea3d17cba6e832ca54fe7b12570dccd59424c45372ddedd",
+      "bytes": 152864
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+package httpapi
+
+import (
+	"context"
+	"os"
+	"strings"
+	"testing"
+	"time"
+
+	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/identity"
+	"copypaste.hk/platform/internal/notification"
+)
+
+func TestReplicaFailureNotifications(t *testing.T) {
+	f, committed, primary, secondary, rid := committedReplicaFixture(t, 15)
+	ctx := context.Background()
+	current := t
+	run := func(name string, fn func()) {
+		if !t.Run(name, func(st *testing.T) { current = st; f.f.t = st; defer func() { current = t; f.f.t = t }(); fn() }) {
+			t.FailNow()
+		}
+	}
+	exec := func(q string, args ...any) {
+		current.Helper()
+		if _, err := f.f.owner.Exec(ctx, q, args...); err != nil {
+			current.Fatal(err)
+		}
+	}
+	notice := func(attention bool) *notification.Notification {
+		return requireBusinessNotification(current, f.f, f.f.aliceToken, committed.File.ID, "replica_failure", attention)
+	}
+	count := func(thread string) int {
+		var n int
+		if err := f.f.owner.QueryRow(ctx, "SELECT count(*) FROM notification_deliveries WHERE org_id=$1 AND thread_id=$2", f.f.org, thread).Scan(&n); err != nil {
+			current.Fatal(err)
+		}
+		return n
+	}
+	retry := func(target *uploadFixture, replica string) {
+		_, version, _ := replicaState(current, target, replica)
+		r, v := target.f.request("POST", "/v1/file-replicas/"+replica+"/retry", target.f.aliceToken, core.NewID(), map[string]any{"expected_version": version, "reason": "已修复隔离合成存储故障，人工核对后重试"}, nil)
+		expect(current, r, 200, v)
+	}
+	secondary.corrupt = true
+	host := replicaHost(f, primary, secondary, 15)
+	runReplica(t, host)
+	drainNotifications(t, f.f)
+	var original *notification.Notification
+	run("real_worker_failure_delivers_exact_replica_version_without_provider_coordinates", func() {
+		original = notice(true)
+		if original.Target.VersionID == nil || *original.Target.VersionID != committed.Version.ID || original.Target.ReplicaID == nil || *original.Target.ReplicaID != rid || original.Target.WebPath != "/files/"+committed.File.ID || original.DeliverySeq != 1 || original.Read || original.CurrentState != "failed" {
+			current.Fatal("failed worker notice lost its exact retained target", original)
+		}
+		r, v := f.f.request("GET", "/v1/notifications/"+original.ID, f.f.aliceToken, "", nil, nil)
+		expect(current, r, 200, v)
+		for _, private := range []string{"fixture-r2-bucket", "object_key", "source_id", "last_error", "payload"} {
+			if strings.Contains(r.Body.String(), private) {
+				current.Fatal("notice disclosed private provider data", private)
+			}
+		}
+		if notificationFor(current, f.f, f.f.bobToken, committed.File.ID) != nil || operationsGroup(current, f.f, f.f.aliceToken, "file_attention").Count != 1 {
+			current.Fatal("failure was broadcast or did not remain actual current work")
+		}
+	})
+	// This isolated fixture explicitly requires MFA before testing all four real sessions.
+	exec("UPDATE roles SET requires_mfa=true WHERE org_id=$1 AND key='project_manager'", f.f.org)
+	f.f.aliceToken = memberMFAToken(f.f, "alice", "android")
+	for _, channel := range []string{"web", "wechat", "douyin", "android"} {
+		run(channel+"_current_human_reads_fixed_notification_target", func() {
+			var cipher []byte
+			if err := f.f.owner.QueryRow(ctx, "SELECT secret_cipher FROM mfa_credentials WHERE org_id=$1 AND user_id=$2", f.f.org, f.f.alice).Scan(&cipher); err != nil {
+				current.Fatal(err)
+			}
+			secret, err := identity.Open(f.f.api.Config.MFAKey, cipher, f.f.org+":"+f.f.alice)
+			if err != nil {
+				current.Fatal("owned fixture MFA unavailable")
+			}
+			exec("UPDATE mfa_credentials SET last_step=$3 WHERE org_id=$1 AND user_id=$2", f.f.org, f.f.alice, time.Now().Unix()/30-1)
+			challenge := f.f.login("alice", channel)
+			headers := map[string]string{}
+			if channel == "web" {
+				headers["Origin"] = "http://localhost:5178"
+			}
+			r, v := f.f.request("POST", "/v1/auth/mfa/verify", "", "", map[string]string{"challenge": challenge.Challenge, "code": authenticatorCode(secret, time.Now())}, headers)
+			expect(current, r, 200, v)
+			login := data[identity.LoginResult](current, v)
+			token := login.AccessToken
+			if channel == "web" {
+				token = ""
+				for _, c := range r.Result().Cookies() {
+					if c.Name == "cp_session" {
+						headers["Cookie"] = "cp_session=" + c.Value
+					}
+				}
+			}
+			r, v = f.f.request("GET", "/v1/notifications/"+original.ID, token, "", nil, headers)
+			expect(current, r, 200, v)
+			n := data[notification.Notification](current, v)
+			if n.Target.VersionID == nil || *n.Target.VersionID != committed.Version.ID || n.Target.ReplicaID == nil || *n.Target.ReplicaID != rid || !n.AttentionRequired {
+				current.Fatal("channel lost the same current business fact")
+			}
+		})
+	}
+	run("read_acknowledgement_never_resolves_failed_replication", func() {
+		r, v := f.f.request("POST", "/v1/notifications/"+original.ID+"/read", f.f.aliceToken, core.NewID(), notification.ReadInput{DeliverySeq: original.DeliverySeq}, nil)
+		expect(current, r, 200, v)
+		if n := notice(true); !n.Read || n.CurrentState != "failed" {
+			current.Fatal("read incorrectly resolved replica failure")
+		}
+	})
+	run("ordinary_retry_queue_acceptance_keeps_attention_until_byte_verification", func() {
+		retry(f, rid)
+		n := notice(true)
+		if n.CurrentState != "queued" || !n.Read || count(n.ID) != 1 || n.Title != "文件副本仍待校验完成" || operationsGroup(current, f.f, f.f.aliceToken, "file_attention").Count != 1 {
+			current.Fatal("queue acceptance masqueraded as recovery", n)
+		}
+	})
+	run("actual_verified_recovery_coalesces_into_new_unread_delivery", func() {
+		secondary.corrupt = false
+		runReplica(current, host)
+		drainNotifications(current, f.f)
+		n := notice(false)
+		if n.ID != original.ID || n.CurrentState != "verified" || n.DeliverySeq != 2 || n.ReadSeq != 1 || n.Read || n.Title != "文件副本已恢复并校验" || n.BusinessEventID == original.BusinessEventID || count(n.ID) != 2 || operationsGroup(current, f.f, f.f.aliceToken, "file_attention").Count != 0 {
+			current.Fatal("actual recovery did not produce the exact new unread result", n)
+		}
+		var kind string
+		if err := f.f.owner.QueryRow(ctx, "SELECT event_type FROM outbox_events WHERE org_id=$1 AND id=$2", f.f.org, n.BusinessEventID).Scan(&kind); err != nil || kind != "replica.verified" {
+			current.Fatal("recovery not backed by the actual committed worker event", kind, err)
+		}
+		r, v := f.f.request("POST", "/v1/notifications/"+n.ID+"/read", f.f.aliceToken, core.NewID(), notification.ReadInput{DeliverySeq: 1}, nil)
+		expect(current, r, 200, v)
+		if data[notification.Notification](current, v).Read {
+			current.Fatal("old failure acknowledgement swallowed the new recovery delivery")
+		}
+	})
+	run("replayed_dispatch_keeps_immutable_failure_and_recovery_history", func() {
+		drainNotifications(current, f.f)
+		if count(original.ID) != 2 {
+			current.Fatal("replayed dispatch duplicated recovery")
+		}
+		if _, err := f.f.owner.Exec(ctx, "DELETE FROM notification_deliveries WHERE thread_id=$1", original.ID); err == nil {
+			current.Fatal("immutable failure/recovery history was deleted")
+		}
+	})
+	run("healthy_initial_replication_does_not_create_recovery_noise", func() {
+		other, value, from, to, _ := committedReplicaFixture(current, 15)
+		runReplica(current, replicaHost(other, from, to, 15))
+		drainNotifications(current, other.f)
+		if notificationFor(current, other.f, other.f.aliceToken, value.File.ID) != nil {
+			current.Fatal("normal first backup was announced as recovery")
+		}
+	})
+	run("delayed_failure_after_success_is_suppressed_without_invented_recovery", func() {
+		other, value, from, to, replica := committedReplicaFixture(current, 15)
+		to.corrupt = true
+		h := replicaHost(other, from, to, 15)
+		runReplica(current, h)
+		retry(other, replica)
+		to.corrupt = false
+		runReplica(current, h)
+		drainNotifications(current, other.f)
+		if notificationFor(current, other.f, other.f.aliceToken, value.File.ID) != nil {
+			current.Fatal("obsolete failed event or undelivered recovery produced a notice")
+		}
+	})
+	run("revoked_recipient_loses_reads_and_recovery_delivery", func() {
+		other, value, from, to, replica := committedReplicaFixture(current, 15)
+		to.corrupt = true
+		h := replicaHost(other, from, to, 15)
+		runReplica(current, h)
+		drainNotifications(current, other.f)
+		n := requireBusinessNotification(current, other.f, other.f.aliceToken, value.File.ID, "replica_failure", true)
+		retry(other, replica)
+		to.corrupt = false
+		runReplica(current, h)
+		if _, err := other.f.owner.Exec(ctx, "UPDATE role_bindings SET revoked_at=clock_timestamp() WHERE org_id=$1 AND user_id=$2 AND revoked_at IS NULL", other.f.org, other.f.alice); err != nil {
+			current.Fatal(err)
+		}
+		drainNotifications(current, other.f)
+		r, v := other.f.request("GET", "/v1/notifications/"+n.ID, other.f.aliceToken, "", nil, nil)
+		expect(current, r, 404, v)
+		var seq int64
+		if err := other.f.owner.QueryRow(ctx, "SELECT delivered_seq FROM notification_threads WHERE id=$1", n.ID).Scan(&seq); err != nil || seq != 1 {
+			current.Fatal("recovery delivered after ordinary authority was revoked", seq, err)
+		}
+	})
+	t.Run("browser_replica_notifications", func(t *testing.T) {
+		if os.Getenv("CP_BROWSER_REPLICA_NOTIFICATIONS_FIXTURE") != "1" {
+			return
+		}
+		b, c, from, to, replica := committedReplicaFixture(t, 15)
+		to.corrupt = true
+		h := replicaHost(b, from, to, 15)
+		runReplica(t, h)
+		drainNotifications(t, b.f)
+		n := requireBusinessNotification(t, b.f, b.f.aliceToken, c.File.ID, "replica_failure", true)
+		r, v := b.f.request("POST", "/v1/notifications/"+n.ID+"/read", b.f.aliceToken, core.NewID(), notification.ReadInput{DeliverySeq: n.DeliverySeq}, nil)
+		expect(t, r, 200, v)
+		_, revision, _ := replicaState(t, b, replica)
+		r, v = b.f.request("POST", "/v1/file-replicas/"+replica+"/retry", b.f.aliceToken, core.NewID(), map[string]any{"expected_version": revision, "reason": "已修复隔离合成故障，核对恢复通知"}, nil)
+		expect(t, r, 200, v)
+		to.corrupt = false
+		runReplica(t, h)
+		drainNotifications(t, b.f)
+		if _, err := b.f.owner.Exec(ctx, "UPDATE roles SET requires_mfa=true WHERE org_id=$1 AND key='project_manager'", b.f.org); err != nil {
+			t.Fatal(err)
+		}
+		_ = memberMFAToken(b.f, "alice", "android")
+		holdBrowserBusinessFixture(t, b.f, map[string]any{"fixture_kind": "replica-notifications", "file_id": c.File.ID, "version_id": c.Version.ID, "replica_id": replica, "notification_id": n.ID})
+	})
+}

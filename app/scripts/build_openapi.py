@@ -719,7 +719,7 @@ profile = {"id": ID, "skill_id": NAME, "skill_version": NAME, "skill_sha256": HA
 notification_categories = enum("mention", "task", "approval", "request_result", "contract_due", "subscription_due", "replica_failure", "incident", "secretary", "service_resource")
 notification_target = {"type": enum("task", "request", "contract", "subscription_period", "file", "incident", "agent_run", "service"),
     "id": ID, "container_id": nullable(ID), "web_path": {"type": "string", "minLength": 1, "maxLength": 300}}
-add("NotificationTarget", {**notification_target, "comment_id": ID}, tuple(notification_target))
+add("NotificationTarget", {**notification_target, "comment_id": ID, "version_id": ID, "replica_id": ID}, tuple(notification_target))
 notification_fields = {"id": ID, "category": notification_categories, "title": NAME, "resource_label": NAME,
     "current_state": NAME, "attention_required": {"type": "boolean"}, "read": {"type": "boolean"},
     "delivery_seq": VERSION, "read_seq": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},

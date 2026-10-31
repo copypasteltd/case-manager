@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## 增量149 · 复制失败／重试／恢复通知闭环
+
+- 复用实际复制工作器与不可变通知历史，消费准确`replica.verified`：仅原已投递失败线程可形成恢复未读，初次正常复制不通知恢复；排队、复制和校验中仍保留需处理。
+- 投递候选再次核对事件修订、当前副本及完整摘要／时间证据，保持当前接收人和普通文件权限；延迟事件、重复和撤权抑制，旧已读序号不吞掉新恢复。
+- 通知Target增加可选版本／副本ID，保留安全基础web_path。Web和共享移动核对准确归属后打开固定版本；有权移动人员复用原人工重试表单。
+- 当前精选原生15 pass记录、Web5／移动5、类型及Web／两小程序构建，实际Web3核对；三PNG、2.8秒无声MP4和6秒截图导览GIF及双语文档同步。首轮MFA测试准备失败与准确旧源码保留，生产规则未放松。
+- 未新增结构、冻结包或APK；五次冻结、111项结构、旧媒体／证明及原开发PG100／API保持不变。完整回归和额外移动UI延期，真实配置与正式验收仍开放，八Skill仍draft。
+
+Replica failure/retry/verified-recovery now forms a concrete in-app loop with exact-version navigation. Fresh149 source-bound checks are separate from APK148/business147 and earlier full proofs. [开发](development/149-replica-failure-recovery.md) · [全部23项](delivery/05-functional-closure-149.md)
+
+
 ## 增量148 · v0.1.0-rc.5：最新功能冻结交付 / Current functional freeze
 
 - 固定Git147／结构111，当前Linux／Web／秘书运行器、微信／抖音和Android开发包重新构建；复制运维147已进入实际APK与两小程序，补齐旧rc.4／APK146的版本差异。

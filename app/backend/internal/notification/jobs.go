@@ -20,7 +20,7 @@ const JobKind = "notification.deliver.v1"
 
 var EventTypes = []string{"comment.created", "comment.revised", "task.created", "task.updated", "task.transitioned", "task.dependencies.changed",
 	"request.submitted", "approval.step.decided", "subscription.reminder.due", "contract.reminder.due",
-	"replica.failed", "incident.opened", "incident.updated", "run.completed", "run.failed", "run.cancelled", "run.interrupted", "service.resource_health.changed"}
+	"replica.failed", "replica.verified", "incident.opened", "incident.updated", "run.completed", "run.failed", "run.cancelled", "run.interrupted", "service.resource_health.changed"}
 
 type jobInput struct {
 	EventID string `json:"event_id"`
@@ -59,7 +59,7 @@ func newCandidate(e event, recipient, category, resourceType, resourceID string,
 	if context != nil && slices.Contains([]string{"mention", "approval", "contract_due", "subscription_due", "replica_failure", "service_resource"}, category) {
 		key += ":" + *context
 	}
-	return thread{OrgID: e.OrgID, RecipientID: recipient, Category: category, ResourceType: resourceType, ResourceID: resourceID,
+	return thread{CandidateEventType: e.Type, CandidateEventVersion: e.AggregateVersion, OrgID: e.OrgID, RecipientID: recipient, Category: category, ResourceType: resourceType, ResourceID: resourceID,
 		ContextID: context, DedupKey: key, EventID: e.ID, DeliveredSeq: 1, EventOccurredAt: e.OccurredAt}
 }
 
@@ -146,6 +146,23 @@ func recipients(ctx context.Context, tx pgx.Tx, e event) ([]thread, error) {
    JOIN contract_revisions r ON r.org_id=c.org_id AND r.id=c.active_revision_id
    WHERE c.org_id=$1 AND c.id=$2 AND c.version=$3 AND n.event_id=$4 AND c.lifecycle='effective' AND n.revision_id=r.id AND n.due_on=r.end_date`, append(args, e.ID), "contract_due", "contract", true)
 		return out, err
+	case e.Type == "replica.verified":
+		if e.AggregateType != "file_replica" {
+			return out, core.Invalid("event", "副本恢复事件目标类型不一致")
+		}
+		// A healthy first copy is not a recovery alert. Only a previously
+		// delivered failure thread may receive this current verified event.
+		err := addRows(`SELECT n.recipient_id,fv.file_id,r.id FROM file_replicas r
+   JOIN file_versions fv ON fv.org_id=r.org_id AND fv.id=r.version_id
+   JOIN notification_threads n ON n.org_id=r.org_id AND n.resource_type='file' AND n.resource_id=fv.file_id
+     AND n.category='replica_failure' AND n.channel='in_app' AND n.context_id=r.id
+   WHERE r.org_id=$1 AND r.id=$2 AND r.version=$3 AND r.state='verified'
+     AND r.actual_sha256=fv.sha256 AND r.expected_sha256=fv.sha256 AND r.verified_at IS NOT NULL
+     AND EXISTS(SELECT 1 FROM notification_deliveries d JOIN outbox_events original
+       ON original.org_id=d.org_id AND original.id=d.business_event_id
+       WHERE d.org_id=n.org_id AND d.thread_id=n.id AND original.event_type='replica.failed'
+       AND original.aggregate_type='file_replica' AND original.aggregate_id=r.id)`, args, "replica_failure", "file", true)
+		return out, err
 	case e.Type == "replica.failed":
 		if e.AggregateType != "file_replica" {
 			return out, core.Invalid("event", "副本事件目标类型不一致")
@@ -206,7 +223,7 @@ func eligible(ctx context.Context, tx pgx.Tx, orgVersion int64, n thread) (bool,
 		if v == nil {
 			continue
 		}
-		if slices.Contains([]string{"task", "approval", "contract_due", "subscription_due", "replica_failure"}, n.Category) && !v.AttentionRequired {
+		if slices.Contains([]string{"task", "approval", "contract_due", "subscription_due"}, n.Category) && !v.AttentionRequired {
 			continue
 		}
 		return true, nil

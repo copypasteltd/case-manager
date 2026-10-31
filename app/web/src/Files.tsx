@@ -15,6 +15,7 @@ import FileComparisonPanel from './FileComparison';
 import { ScopeTransfers } from './ScopeTransfers';
 import { BatchFileList, FileBatchHistory } from './FileBatches';
 import { checkedReplicaRetry, replicaRetryInput } from '@copypaste/contracts/file-replica';
+import { checkedReplicaVersion, replicaVersionSelection } from '@copypaste/contracts/notifications';
 
 type Directory = Schemas['Folder'];
 type StoredFile = Schemas['File'];
@@ -115,6 +116,7 @@ export function FileDetail() {
     {value.legal_hold && <div className="notice neutral"><ShieldCheck size={18} /><span>此文件处于保留约束中。</span></div>}
     {me.data && !me.error && !file.error && <ScopeTransfers kind="file" resource={value} me={me.data} />}
     {me.data && !me.error && !file.error && <FileBatchHistory key={value.id + me.data.authorization_version} fileID={value.id} me={me.data} />}
+    <PinnedReplicaNotice file={value} canManageRetention={!!retention.data?.can_manage && !retention.error} />
     <section className="section-block"><div className="section-heading"><h2>内容版本与存储记录</h2><small className="muted">原文件与来源信息按版本保留</small></div><ErrorNotice error={history.error} />{history.isPending ? <Busy label="正在读取文件版本" /> : versions.length ? <div className="file-versions">{versions.map(version => <VersionCard key={version.id} version={version} current={version.id === value.current_version_id} canRetry={value.can_update} active={value.state === 'active'} file={value} canManageRetention={!!retention.data?.can_manage && !retention.error} />)}</div> : !history.error && <div className="panel"><Empty title="尚无正式内容版本" detail="完成上传和服务端校验的版本才会出现在这里。" /></div>}<LoadMore count={versions.length} more={!!history.hasNextPage} busy={history.isFetchingNextPage} load={() => void history.fetchNextPage()} /></section>
     <FileComparisonPanel key={value.id + ':' + value.version} file={value} versions={versions} more={!!history.hasNextPage} loading={history.isFetchingNextPage} loadMore={() => void history.fetchNextPage()} unavailable={!!file.error || !!history.error} />
     <HistoryRestores file={value} />
@@ -124,14 +126,25 @@ export function FileDetail() {
   </>;
 }
 
-function VersionCard({ version, current, canRetry, active, file, canManageRetention }: { version: FileVersion; current: boolean; canRetry: boolean; active: boolean; file: StoredFile; canManageRetention: boolean }) {
+function PinnedReplicaNotice({ file, canManageRetention }: { file: StoredFile; canManageRetention: boolean }) {
+  const [params] = useSearchParams();
+  let selection: ReturnType<typeof replicaVersionSelection> = null, inputError: unknown;
+  try { selection = replicaVersionSelection(params.get('version'), params.get('replica')); } catch (cause) { inputError = cause; }
+  const version = useQuery({ queryKey: ['file-version', file.id, params.get('version'), params.get('replica')], enabled: !!selection,
+    queryFn: async ({ signal }) => checkedReplicaVersion(await api<FileVersion>('/files/' + file.id + '/versions/' + selection!.versionID, { signal }), file.id, selection!),
+    refetchInterval: query => query.state.data?.replicas.some(r => ['queued', 'copying', 'verifying', 'retry_wait'].includes(r.state)) ? 5000 : false });
+  if (!selection && !inputError) return null;
+  return <section className="section-block" aria-label="通知对应版本"><div className="section-heading"><h2>本次引用的内容版本</h2><Link className="text-button" to={'/files/' + file.id}>查看完整文件记录</Link></div><p className="muted">此处固定本次引用的版本；重试排队后，仍需等待实际复制与校验。</p><ErrorNotice error={inputError ?? version.error} />{selection && version.isPending && <Busy label="正在核对引用版本" />}{!inputError && !version.error && version.data && <VersionCard key={version.data.id + ':' + selection?.replicaID} version={version.data} current={version.data.id === file.current_version_id} canRetry={file.can_update} active={file.state === 'active'} file={file} canManageRetention={canManageRetention} selectedReplicaID={selection?.replicaID} />}</section>;
+}
+
+function VersionCard({ version, current, canRetry, active, file, canManageRetention, selectedReplicaID }: { version: FileVersion; current: boolean; canRetry: boolean; active: boolean; file: StoredFile; canManageRetention: boolean; selectedReplicaID?: string | null }) {
   const [retry, setRetry] = useState<Schemas['FileReplica'] | null>(null);
   const [download, setDownload] = useState(false);
   const downloadReason = !active ? '先从回收站恢复，才能下载此版本。' : version.availability !== 'available' || !['clean', 'waived'].includes(version.scan_state) ? '此版本尚未具备可用内容与扫描或放行条件。' : !version.replicas.some(replica => replica.state === 'verified') ? '暂缺具有完整校验证据的下载副本。' : '';
   const canDownload = active && version.availability === 'available' && ['clean', 'waived'].includes(version.scan_state) && version.replicas.some(replica => replica.state === 'verified');
   return <article className="panel version-card"><div className="section-heading"><h3>内容版本 {version.seq}{current && <span className="badge neutral">当前正式版</span>}</h3><small className="muted">{date(version.created_at)}</small></div><div className="version-actions"><RestoreVersionButton file={file} version={version} /><RetentionVersionActions file={file} version={version} canManage={canManageRetention} /><button className="button secondary" onClick={() => setDownload(true)} disabled={!canDownload} title={downloadReason || undefined}><Download size={16} />下载此内容版本</button>{downloadReason && <small className="muted">{downloadReason}</small>}</div><dl className="file-facts"><div><dt>原文件名</dt><dd>{version.original_name ?? '历史记录未提供'}</dd></div><div><dt>大小</dt><dd>{BigInt(version.size_bytes).toLocaleString('zh-HK')} 字节</dd></div><div><dt>媒体类型</dt><dd>{version.media_type}</dd></div><div><dt>扫描与主端</dt><dd>{stateLabels[version.scan_state]} · {stateLabels[version.availability]}</dd></div><div className="wide"><dt>SHA-256</dt><dd><code>{version.sha256}</code></dd></div><div><dt>来源</dt><dd>{({ upload: "上传", restore: "历史恢复" } as Record<string,string>)[version.source] ?? version.source}</dd></div><div><dt>双云状态</dt><dd>{version.replica_state ? stateLabels[version.replica_state] : '尚无副本记录'}</dd></div></dl><div className="replica-grid">{(['oss', 'r2'] as const).map(provider => {
     const replicas = version.replicas.filter(item => item.provider === provider);
-    return <div className="replica-status" key={provider}><strong>{provider === 'oss' ? '阿里云 OSS' : 'Cloudflare R2'}</strong>{replicas.length ? replicas.map(replica => <div key={replica.id}><span className={'badge ' + (replica.state === 'verified' ? 'success' : ['failed', 'missing'].includes(replica.state) ? 'warning' : 'neutral')}>{stateLabels[replica.state]}</span><small>校验时间：{date(replica.verified_at)}</small>{replica.error_code && <small>状态代码：{replica.error_code}</small>}{canRetry && version.availability === 'available' && ['failed', 'missing'].includes(replica.state) && <button className="text-button" onClick={() => setRetry(replica)}>重新安排副本复制<ArrowRight size={15} /></button>}</div>) : <small>尚无副本记录</small>}</div>;
+    return <div className="replica-status" key={provider}><strong>{provider === 'oss' ? '阿里云 OSS' : 'Cloudflare R2'}</strong>{replicas.length ? replicas.map(replica => <div key={replica.id}>{selectedReplicaID === replica.id && <small className="form-note">通知对应副本</small>}<span className={'badge ' + (replica.state === 'verified' ? 'success' : ['failed', 'missing'].includes(replica.state) ? 'warning' : 'neutral')}>{stateLabels[replica.state]}</span><small>校验时间：{date(replica.verified_at)}</small>{replica.error_code && <small>状态代码：{replica.error_code}</small>}{canRetry && version.availability === 'available' && ['failed', 'missing'].includes(replica.state) && <button className="text-button" onClick={() => setRetry(replica)}>重新安排副本复制<ArrowRight size={15} /></button>}</div>) : <small>尚无副本记录</small>}</div>;
   })}</div>{version.scan_state === 'waived' && <p className="notice warning">此版本经扫描例外审核放行，尚未取得完整安全扫描通过的结论。</p>}{download && <DownloadDialog version={version} onClose={() => setDownload(false)} />}{retry && <ReplicaRetryDialog replica={retry} fileID={version.file_id} onClose={() => setRetry(null)} />}</article>;
 }
 
@@ -140,7 +153,7 @@ function ReplicaRetryDialog({ replica, fileID, onClose }: { replica: Schemas['Fi
   const cache = useQueryClient(), key = useCommandKey();
   const mutation = useMutation({
     mutationFn: async () => { const body = replicaRetryInput(base, reason); return checkedReplicaRetry(await api<Schemas['FileReplica']>('/file-replicas/' + base.id + '/retry', { method: 'POST', body, key: key(body) }), base); },
-    onSuccess: async () => { await cache.invalidateQueries({ queryKey: ['file-versions', fileID] }); onClose(); },
+    onSuccess: async () => { await Promise.all([cache.invalidateQueries({ queryKey: ['file-versions', fileID] }), cache.invalidateQueries({ queryKey: ['file-version', fileID] }), cache.invalidateQueries({ queryKey: ['notifications'] }), cache.invalidateQueries({ queryKey: ['notifications-summary'] })]); onClose(); },
   });
   const conflict = mutation.error instanceof ApiError && mutation.error.code === 'VERSION_CONFLICT';
   return <Dialog title="重新安排副本复制" onClose={onClose} busy={mutation.isPending}><form onSubmit={event => { event.preventDefault(); mutation.mutate(); }}><ErrorNotice error={mutation.error} /><p className="muted">重新复制此内容版本，并校验目标完整摘要。排队成功后仍需等待复制完成。</p>{conflict && <p className="notice neutral">副本状态已改变，请关闭此窗口并刷新存储记录后核对。</p>}<Field label="重试原因"><textarea required maxLength={200} rows={3} value={reason} onChange={event => setReason(event.target.value)} autoFocus /></Field><div className="dialog-actions"><button type="button" className="button secondary" onClick={onClose} disabled={mutation.isPending}>取消</button><button className="button primary" disabled={mutation.isPending || conflict}>安排复制</button></div></form></Dialog>;
