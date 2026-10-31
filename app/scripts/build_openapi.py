@@ -125,7 +125,12 @@ add("RetirementCandidate",retirement_candidate,tuple(retirement_candidate))
 add("RetirementCreate",{"expected_file_version":VERSION,"kind":enum("history","committed_draft"),"target_id":ID,"reason":NAME},("expected_file_version","kind","target_id","reason"))
 retirement_item={**{k:v for k,v in cleanup_item.items() if k!="upload_id"},"provider":enum("oss","r2"),"ordinal":{"type":"integer","minimum":0,"maximum":1}}
 add("RetirementItem",retirement_item,tuple(retirement_item))
-retirement_plan={**cleanup_plan,"state":enum("observing","approved","cancelled","completed"),"snapshot":ref("RetirementCandidate"),"items":array(ref("RetirementItem"),minItems=1,maxItems=2)}
+add("RetirementRenewalItem",{"id":ID,**EXPECTED},("id","expected_version"))
+add("RetirementRenewal",{**EXPECTED,"snapshot_sha256":HASH,"reason":NAME,"items":array(ref("RetirementRenewalItem"),minItems=1,maxItems=2)},("expected_version","snapshot_sha256","reason","items"))
+add("RetirementAuthorizationItem",{"item_id":ID,"previous_version":VERSION,"generation":VERSION},("item_id","previous_version","generation"))
+retirement_authorization={"id":ID,"sequence":VERSION,"plan_version":VERSION,"snapshot_sha256":HASH,"items":array(ref("RetirementAuthorizationItem"),minItems=1,maxItems=2),"reason":NAME,"authorized_at":TIME,"authorized_by":ID,"channel":enum("web","android","wechat","douyin")}
+add("RetirementAuthorization",retirement_authorization,tuple(retirement_authorization))
+retirement_plan={**cleanup_plan,"authorization":nullable(ref("RetirementAuthorization")),"state":enum("observing","approved","cancelled","completed"),"snapshot":ref("RetirementCandidate"),"items":array(ref("RetirementItem"),minItems=1,maxItems=2)}
 add("RetirementPlan",retirement_plan,tuple(retirement_plan))
 add("ResourceRef", {"type": NAME, "id": ID, "version_id": nullable(ID)}, ("type", "id"))
 add("CommandResult", {"operation_id": ID, "resource": ref("ResourceRef"),
@@ -1656,6 +1661,8 @@ operation("/files/{id}/object-retirement-plans","get","listObjectRetirementPlans
 operation("/files/{id}/object-retirement-plans","post","createObjectRetirementPlan","RetirementPlan","RetirementCreate",201)
 operation("/object-retirement-plans/{id}","get","readObjectRetirementPlan","RetirementPlan")
 operation("/object-retirement-plans/{id}/approve","post","approveObjectRetirementPlan","RetirementPlan","CleanupDecision",202)
+operation("/object-retirement-plans/{id}/reauthorize","post","reauthorizeObjectRetirementPlan","RetirementPlan","RetirementRenewal",202)
+operation("/object-retirement-plans/{id}/authorizations","get","listObjectRetirementAuthorizations","RetirementAuthorization",listing=True)
 operation("/object-retirement-plans/{id}/cancel","post","cancelObjectRetirementPlan","RetirementPlan","CleanupDecision")
 operation("/object-retirement-items/{id}/retry","post","retryObjectRetirementItem","RetirementPlan","UploadFinalize",202)
 operation("/object-retirement-items/{id}/receipts","get","listObjectRetirementReceipts","CleanupReceipt",listing=True)

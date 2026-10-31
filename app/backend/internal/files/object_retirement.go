@@ -67,26 +67,28 @@ type RetirementItem struct {
 	UpdatedAt   time.Time  `json:"updated_at"`
 }
 type RetirementPlan struct {
-	ID                                           string              `json:"id"`
-	Version                                      int64               `json:"version"`
-	State                                        string              `json:"state"`
-	Snapshot                                     RetirementCandidate `json:"snapshot"`
-	SnapshotSHA256                               string              `json:"snapshot_sha256"`
-	Reason                                       string              `json:"reason"`
-	CreatedAt                                    time.Time           `json:"created_at"`
-	ReadyAfter                                   time.Time           `json:"ready_after"`
-	ExpiresAt                                    time.Time           `json:"expires_at"`
-	ApprovedAt                                   *time.Time          `json:"approved_at"`
-	ApprovalReason                               *string             `json:"approval_reason"`
-	CancelledAt                                  *time.Time          `json:"cancelled_at"`
-	CancellationReason                           *string             `json:"cancellation_reason"`
-	Items                                        []RetirementItem    `json:"items"`
-	Objects                                      []RetirementObject  `json:"-"`
-	ApprovedBy, ApprovedSession, ApprovedChannel *string             `json:"-"`
-	ApprovedAuthVersion, ApprovedOrgVersion      *int64              `json:"-"`
+	ID                                           string                   `json:"id"`
+	Version                                      int64                    `json:"version"`
+	State                                        string                   `json:"state"`
+	Snapshot                                     RetirementCandidate      `json:"snapshot"`
+	SnapshotSHA256                               string                   `json:"snapshot_sha256"`
+	Reason                                       string                   `json:"reason"`
+	CreatedAt                                    time.Time                `json:"created_at"`
+	ReadyAfter                                   time.Time                `json:"ready_after"`
+	ExpiresAt                                    time.Time                `json:"expires_at"`
+	ApprovedAt                                   *time.Time               `json:"approved_at"`
+	ApprovalReason                               *string                  `json:"approval_reason"`
+	CancelledAt                                  *time.Time               `json:"cancelled_at"`
+	CancellationReason                           *string                  `json:"cancellation_reason"`
+	Authorization                                *RetirementAuthorization `json:"authorization"`
+	ExecutionAuthorizationID                     *string                  `json:"-"`
+	Items                                        []RetirementItem         `json:"items"`
+	Objects                                      []RetirementObject       `json:"-"`
+	ApprovedBy, ApprovedSession, ApprovedChannel *string                  `json:"-"`
+	ApprovedAuthVersion, ApprovedOrgVersion      *int64                   `json:"-"`
 }
 
-const retirementColumns = `id,version,state,snapshot,snapshot_sha256,reason,created_at,ready_after,expires_at,approved_at,approval_reason,cancelled_at,cancellation_reason,objects,approved_by,approved_session_id,approved_channel,approved_auth_version,approved_org_version`
+const retirementColumns = `id,version,state,snapshot,snapshot_sha256,reason,created_at,ready_after,expires_at,approved_at,approval_reason,cancelled_at,cancellation_reason,objects,approved_by,approved_session_id,approved_channel,approved_auth_version,approved_org_version,execution_authorization_id`
 const retirementItemColumns = `id,provider,ordinal,version,generation,state,attempts,last_error,confirmed_at,updated_at`
 
 func retirementItem(row pgx.Row) (RetirementItem, error) {
@@ -104,7 +106,7 @@ func retirementPlan(ctx context.Context, db platform.DBTX, org, id string, lock 
 		q += " FOR UPDATE"
 	}
 	var snapshot, objects []byte
-	e := db.QueryRow(ctx, q, org, id).Scan(&out.ID, &out.Version, &out.State, &snapshot, &out.SnapshotSHA256, &out.Reason, &out.CreatedAt, &out.ReadyAfter, &out.ExpiresAt, &out.ApprovedAt, &out.ApprovalReason, &out.CancelledAt, &out.CancellationReason, &objects, &out.ApprovedBy, &out.ApprovedSession, &out.ApprovedChannel, &out.ApprovedAuthVersion, &out.ApprovedOrgVersion)
+	e := db.QueryRow(ctx, q, org, id).Scan(&out.ID, &out.Version, &out.State, &snapshot, &out.SnapshotSHA256, &out.Reason, &out.CreatedAt, &out.ReadyAfter, &out.ExpiresAt, &out.ApprovedAt, &out.ApprovalReason, &out.CancelledAt, &out.CancellationReason, &objects, &out.ApprovedBy, &out.ApprovedSession, &out.ApprovedChannel, &out.ApprovedAuthVersion, &out.ApprovedOrgVersion, &out.ExecutionAuthorizationID)
 	if e != nil {
 		return out, platform.DatabaseError(e)
 	}
@@ -113,6 +115,14 @@ func retirementPlan(ctx context.Context, db platform.DBTX, org, id string, lock 
 	}
 	if e = json.Unmarshal(objects, &out.Objects); e != nil {
 		return out, e
+	}
+
+	if out.ExecutionAuthorizationID != nil {
+		a, e := retirementAuthorization(db.QueryRow(ctx, "SELECT "+retirementAuthorizationColumns+" FROM object_retirement_authorizations WHERE org_id=$1 AND plan_id=$2 AND id=$3", org, id, *out.ExecutionAuthorizationID))
+		if e != nil {
+			return out, e
+		}
+		out.Authorization = &a
 	}
 	rows, e := db.Query(ctx, "SELECT "+retirementItemColumns+" FROM object_retirement_items WHERE org_id=$1 AND plan_id=$2 ORDER BY ordinal", org, id)
 	if e != nil {
@@ -154,5 +164,5 @@ func (s *ObjectRetirementService) Plan(ctx context.Context, a core.Actor, id str
 	return s.readPlan(ctx, s.Files.DB, a, id, false, false)
 }
 func retirementEvent(kind string, p RetirementPlan, reason string) core.Event {
-	return core.Event{Type: kind, ResourceType: "object_retirement_plan", ResourceID: p.ID, Version: p.Version, Payload: map[string]any{"file_id": p.Snapshot.FileID, "target_id": p.Snapshot.TargetID, "kind": p.Snapshot.Kind, "snapshot_sha256": p.SnapshotSHA256, "reason": reason}}
+	return core.Event{Type: kind, ResourceType: "object_retirement_plan", ResourceID: p.ID, Version: p.Version, Payload: map[string]any{"file_id": p.Snapshot.FileID, "target_id": p.Snapshot.TargetID, "kind": p.Snapshot.Kind, "snapshot_sha256": p.SnapshotSHA256, "reason": reason, "authorization_id": p.ExecutionAuthorizationID}}
 }

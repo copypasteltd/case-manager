@@ -2037,6 +2037,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/object-retirement-plans/{id}/reauthorize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** reauthorizeObjectRetirementPlan */
+        post: operations["reauthorizeObjectRetirementPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/object-retirement-plans/{id}/authorizations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listObjectRetirementAuthorizations */
+        get: operations["listObjectRetirementAuthorizations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/object-retirement-plans/{id}/cancel": {
         parameters: {
             query?: never;
@@ -6566,6 +6600,38 @@ export interface components {
             provider: "oss" | "r2";
             ordinal: number;
         };
+        RetirementRenewalItem: {
+            /** Format: uuid */
+            id: string;
+            expected_version: number;
+        };
+        RetirementRenewal: {
+            expected_version: number;
+            snapshot_sha256: string;
+            reason: string;
+            items: components["schemas"]["RetirementRenewalItem"][];
+        };
+        RetirementAuthorizationItem: {
+            /** Format: uuid */
+            item_id: string;
+            previous_version: number;
+            generation: number;
+        };
+        RetirementAuthorization: {
+            /** Format: uuid */
+            id: string;
+            sequence: number;
+            plan_version: number;
+            snapshot_sha256: string;
+            items: components["schemas"]["RetirementAuthorizationItem"][];
+            reason: string;
+            /** Format: date-time */
+            authorized_at: string;
+            /** Format: uuid */
+            authorized_by: string;
+            /** @enum {string} */
+            channel: "web" | "android" | "wechat" | "douyin";
+        };
         RetirementPlan: {
             /** Format: uuid */
             id: string;
@@ -6586,6 +6652,7 @@ export interface components {
             cancelled_at: string | null;
             cancellation_reason: string | null;
             items: components["schemas"]["RetirementItem"][];
+            authorization: components["schemas"]["RetirementAuthorization"] | null;
         };
         ResourceRef: {
             type: string;
@@ -13379,6 +13446,13 @@ export interface components {
         };
         RetirementPlanResponse: {
             data: components["schemas"]["RetirementPlan"];
+            meta: components["schemas"]["Meta"];
+        };
+        RetirementAuthorizationListResponse: {
+            data: {
+                items: components["schemas"]["RetirementAuthorization"][];
+                next_cursor: string | null;
+            };
             meta: components["schemas"]["Meta"];
         };
         HistoryRestoreListResponse: {
@@ -20701,6 +20775,86 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    reauthorizeObjectRetirementPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RetirementRenewal"];
+            };
+        };
+        responses: {
+            /** @description Accepted */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listObjectRetirementAuthorizations: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementAuthorizationListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

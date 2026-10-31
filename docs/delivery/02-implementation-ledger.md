@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量136：GAP-05／18已补原件清理重新授权：当前人近期MFA、全部剩余项固定修订、来源／制度／保护复核、不可变授权链、下一轮排队和既有成功结果保留。原批准失效后可明确续作，后续撤权仍停止；不再将该子流程列为待开发。首个冻结`v0.1.0-rc.1`不动，23 active（14 P0／9 P1）、5 excluded、八项draft Skill保持。见[实现与使用](../development/136-retirement-reauthorization.md)、[关键检查及延期](../quality/136-retirement-reauthorization-verification.md)和[本轮及全部23项](05-functional-closure-136.md)。
+
 增量135：GAP-03／18补齐应收合同异币向外退回的人工本金／实际付出归属、准确现金预留与项目报表、部分解除尾差、固定核对及全额资金冲销。4组原生52条、Web444项及共享移动529项关键检查通过；本轮是main后续源码，不移动首个冻结`v0.1.0-rc.1`。仍23 active（14 P0／9 P1）、5 excluded、八项draft Skill。见[实现与使用](../development/135-receivable-foreign-returns.md)、[关键检查与延期](../quality/135-receivable-foreign-returns-verification.md)和[本轮及全部23项](05-functional-closure-135.md)。
 
 增量134：GAP-03／18补齐异币退款费用回转：登记时原子组合、后续分次追加，原付款本金、费用原币与实收现金独立，尾差、项目份额、全额冲销及旧回执兼容。首个冻结候选仍为133的`v0.1.0-rc.1`，本轮是main后续源码；23 active（14 P0／9 P1）、5 excluded及八项draft Skill不变。见[实现与使用](../development/134-foreign-expense-refunds.md)、[关键检查与延期](../quality/134-foreign-expense-refunds-verification.md)和[本轮及全部23项](05-functional-closure-134.md)。

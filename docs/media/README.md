@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量136 · 原件清理重新授权 / Original cleanup reauthorization
+
+三张实际Web截图：[停止的部分结果](screenshots/retirement-reauthorization-web-stopped.png)、[人工核对](screenshots/retirement-reauthorization-web-review.png)、[持久授权历史](screenshots/retirement-reauthorization-web-history.png)。[静音MP4](videos/retirement-reauthorization-web.mp4)记录认证后的真实重新授权提交与刷新；[六秒GIF](gifs/retirement-reauthorization-web.gif)明确为三张真实截图导览。
+
+Actual authenticated Web against disposable native HTTP/PG and synthetic original-cloud evidence. One confirmed result stays fixed while one stopped remainder is explicitly reauthorized. No live cloud deletion, real company data or credentials are recorded. Owned contexts, pages, temporary services and PG close after the check. No new mobile recording/device claim; earlier media retain their exact bytes. [检查记录](../quality/136-retirement-reauthorization-verification.md) · [媒体摘要](../quality/evidence/retirement-reauthorization/media.json)。
+
 ## 增量135 · 应收异币向外退回 / Receivable foreign outgoing returns
 
 三张实际Web截图：[原归属](screenshots/receivable-foreign-returns-web-partial.png)、[人工报价核实](screenshots/receivable-foreign-returns-web-review.png)、[持久结果](screenshots/receivable-foreign-returns-web-complete.png)。[静音MP4](videos/receivable-foreign-returns-web.mp4)记录认证后真实页面和刷新；[六秒GIF](gifs/receivable-foreign-returns-web.gif)是三张真实截图各两秒的明确导览。

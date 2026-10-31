@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "reason": "First typecheck rejected the new shared test fixture because the Web composite project did not explicitly include it. The fixture source was added to tsconfig.json and the entire scoped client run repeated on final bytes.",
+  "production_code_failure": false,
+  "historical_evidence_overwritten": false
+}

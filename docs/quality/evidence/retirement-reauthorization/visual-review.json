@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T02:45:58.230867+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/retirement-reauthorization-web-stopped.png",
+      "sha256": "82c15e9239e20b1fbe9efc3864a41490cd5d59a081859b98e42dfc28ae70f5e0",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/retirement-reauthorization-web-review.png",
+      "sha256": "616555643fbffa539020693cad35328e11632dd04fa653975b6325a4a69d1cdd",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/retirement-reauthorization-web-history.png",
+      "sha256": "f6fc799410b8e85e4cb9121882804a74de888fd2d5536808297b2d5ea3ba2ada",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/retirement-reauthorization-web.mp4",
+      "sha256": "1f84275ef14385af3e06aaa97b58d681f3d51756bafb6a160e479f9341dc2baa",
+      "bytes": 234625,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/retirement-reauthorization-web.gif",
+      "sha256": "42942acd26acf70b98f00638cea35d3854fd773bd7a38cf534e14d55bb80135b",
+      "bytes": 168081,
+      "reviewed": true
+    }
+  ],
+  "review": "Inspected all three actual screenshot pixels and decoded first/middle/final GIF and MP4 frames. The first screenshot shows the retained partial plan header; the review screenshot shows confirmed OSS and blocked R2; final history shows unchanged initial approval, one renewed authorization and only R2 generation2. The3.4s MP4 includes the actual command and reload. The6s GIF is explicitly a screenshot tour. No password, OTP, private capability or real business record is visible.",
+  "gif_mode": "actual_screenshot_tour",
+  "gif_is_screen_recording": false,
+  "mp4_duration_seconds": 3.4,
+  "new_mobile_capture": false
+}

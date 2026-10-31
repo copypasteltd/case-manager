@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## Increment136 · Original cleanup reauthorization
+
+- 四端补齐原批准会话／权限失效后的明确续作：当前权限、近期MFA、固定全部剩余项、来源与制度复核，成功项和初次批准保持不变。
+- 正常迁移103追加不可变授权链、执行指针与回执关联；下一轮排队、幂等和晚到审计失败原子回滚，后续撤权仍停止。
+- All four client sources expose explicit renewal and read-only authorization history. Seven native HTTP/PG suites pass42 records;452 Web and537 shared-mobile cases, local builds and actual authenticated Web mutation/readback are recorded separately from retained121 regression/runtime and133 Android evidence.
+- Full regression, additional mobile-browser coverage and a new Android artifact remain deferred. Development schema100 is preserved; apply101–103 for the new backend. The immutable first freeze is unchanged;23 packages, five exclusions and eight draft Skills remain.
+- [Design and usage](development/136-retirement-reauthorization.md) · [Executed checks and deferrals](quality/136-retirement-reauthorization-verification.md) · [All remaining work](delivery/05-functional-closure-136.md).
+
 ## Increment135 · Receivable foreign outgoing returns
 
 - 四端源码补齐应收合同的异币向外退回：准确原收入／实际付出来源、本金／现金双币报价、明确人类声明与近期MFA、独立余额和现金占用。

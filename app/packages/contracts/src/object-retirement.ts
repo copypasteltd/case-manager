@@ -4,6 +4,7 @@ type Schemas = components['schemas'];
 export type RetirementCandidate = Schemas['RetirementCandidate'];
 export type RetirementPlan = Schemas['RetirementPlan'];
 export type RetirementItem = Schemas['RetirementItem'];
+export type RetirementAuthorization = Schemas['RetirementAuthorization'];
 export { checkedCleanupReceipts };
 const id = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const hash = /^[0-9a-f]{64}$/;
@@ -34,6 +35,7 @@ export function checkedRetirementPlan(value: RetirementPlan, fileID: string, pla
  check(s.kind !== 'history' || providers.has('oss') && providers.has('r2'), '历史原件必须分别核对OSS与R2。');
  const created = Date.parse(value.created_at), ready = Date.parse(value.ready_after), expiry = Date.parse(value.expires_at);
  check(Number.isFinite(created) && ready - created >= 86400000 && expiry > ready, '原件观察期或批准期限无效。');
+ if (value.authorization) checkedRetirementAuthorization(value.authorization,value);
  check(value.state !== 'completed' || value.items.every(row => row.state === 'succeeded'), '尚有未完成的原件，不能显示清理完成。');
  return value;
 }
@@ -49,4 +51,37 @@ export function retirementDecision(plan: RetirementPlan, reason: string, acknowl
  check(['observing', 'approved'].includes(plan.state), '此清单已经结束，请刷新核对。');
  if (action === 'approve') check(plan.state === 'observing' && now >= Date.parse(plan.ready_after) && now < Date.parse(plan.expires_at), '观察期未结束、批准期限已过或此清单已经批准。');
  return { expected_version: plan.version, snapshot_sha256: plan.snapshot_sha256, reason: text };
+}
+
+export function retirementCanRenew(plan: RetirementPlan): boolean {
+ return plan.state === 'approved' && plan.items.some(row => row.state !== 'succeeded') && plan.items.every(row => ['succeeded','blocked','failed'].includes(row.state));
+}
+export function checkedRetirementAuthorization(value: RetirementAuthorization, plan: RetirementPlan): RetirementAuthorization {
+ check(value && id.test(value.id) && revision(value.sequence) && revision(value.plan_version) && value.plan_version <= plan.version && value.snapshot_sha256 === plan.snapshot_sha256 && id.test(value.authorized_by) && ['web','android','wechat','douyin'].includes(value.channel) && Number.isFinite(Date.parse(value.authorized_at)) && Date.parse(value.authorized_at) >= Date.parse(plan.approved_at ?? '') && value.reason?.trim() && Array.from(value.reason).length <= 200, '重新授权记录与固定清单不一致。');
+ check(Array.isArray(value.items) && value.items.length >= 1 && value.items.length <= plan.items.length, '重新授权范围无效。');
+ const seen = new Set<string>();
+ for (const row of value.items) {
+  const item = plan.items.find(v => v.id === row.item_id);
+  check(item && !seen.has(row.item_id) && revision(row.previous_version) && row.previous_version < item.version && revision(row.generation) && row.generation >= 2 && row.generation <= item.generation, '重新授权记录中的原件或修订无效。');
+  seen.add(row.item_id);
+ }
+ return value;
+}
+export function retirementRenewal(plan: RetirementPlan, reason: string, acknowledged: boolean): Schemas['RetirementRenewal'] {
+ checkedRetirementPlan(plan,plan.snapshot.file_id,plan.id);
+ const text=reason.trim();
+ check(retirementCanRenew(plan), '仅可在全部剩余任务停止后重新授权，请刷新核对。');
+ check(acknowledged && text && Array.from(text).length <= 200, '请核对剩余范围、不可逆影响并填写重新授权依据。');
+ return {expected_version:plan.version,snapshot_sha256:plan.snapshot_sha256,reason:text,items:plan.items.filter(v => v.state !== 'succeeded').map(v => ({id:v.id,expected_version:v.version}))};
+}
+export function checkedRetirementRenewalResult(before: RetirementPlan, after: RetirementPlan): boolean {
+ checkedRetirementPlan(after,before.snapshot.file_id,before.id);
+ if (after.version !== before.version + 1 || after.state !== 'approved' || after.snapshot_sha256 !== before.snapshot_sha256 || !after.authorization || after.authorization.sequence !== (before.authorization?.sequence ?? 0)+1 || after.authorization.plan_version !== after.version || after.approved_at !== before.approved_at || after.approval_reason !== before.approval_reason) return false;
+ const remaining=before.items.filter(v => v.state !== 'succeeded');
+ return after.authorization.items.length === remaining.length && before.items.every(row => {
+  const next=after.items.find(v => v.id === row.id);
+  if (!next) return false;
+  if (row.state === 'succeeded') return next.state === row.state && next.version === row.version && next.generation === row.generation && next.confirmed_at === row.confirmed_at;
+  return next.state === 'queued' && next.version === row.version + 1 && next.generation === row.generation + 1 && after.authorization!.items.some(v => v.item_id === row.id && v.previous_version === row.version && v.generation === next.generation);
+ });
 }

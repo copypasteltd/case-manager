@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "reason": "Initial candidate scanner stopped before creating its first report because that future report was already in the explicit whitespace input list. Remove only the missing future output from that list, generate the real report, then include it for the final staged scan. No business code or functional proof changed.",
+  "business_checks_repeated": false
+}

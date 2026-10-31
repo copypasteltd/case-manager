@@ -2,7 +2,29 @@
 
 **首个冻结候选：[v0.1.0-rc.1](releases/v0.1.0-rc.1/README.md)。** 源码标签、下载摘要、部署步骤与延期验证统一记录。 服务器、两小程序及Android开发包已封存：[下载与SHA-256清单](https://github.com/copypasteltd/case-manager/tree/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1)。
 
-## 当前main：增量135 · 应收合同异币向外退回
+## 当前main：增量136 · 原件清理重新授权
+
+四端已接通原批准会话失效后的明确恢复：所有剩余任务停止后，有权限的员工核对固定摘要、剩余原件、不可逆影响和操作依据，完成近期MFA，重新授权并排队剩余项。初次批准与观察期、已确认结果和永久停用屏障保留；新的授权历史只追加。后续再次退出／撤权仍会安全停止。
+
+使用：文件详情 → 原件保留与清理 → 查阅原件清单 → **重新授权剩余原件** → **确认重新授权并继续**，再查阅重新授权记录／逐次回执并刷新读回。已停止或全部完成的计划不能续作；来源、制度、文件修订或保护变化会拒绝本次操作。
+
+关键验证见下方记录：Web452项、共享移动537项及类型／Web／两小程序构建；原生HTTP／PG7组42条覆盖重新授权及既有原件清理，并有真实Web提交／读回。整套回归、新移动浏览器旅程及Android包本轮延期；开发库仍100，新后端需正常升级101–103。冻结`v0.1.0-rc.1`保持原下载，不包含136。仍23个工作包（14 P0／9 P1）、五项移出、八项draft Skill，实际云／模型／TG／Linux／平台／生产接入继续开放。
+
+## Current main: increment136 · Original cleanup reauthorization
+
+All four client sources now let a currently authorized human explicitly adopt a fixed stopped remainder after an earlier approval loses its session or authority. A bounded reason, irreversible-impact acknowledgement and recent MFA are required. Only remaining items receive new execution generations. The initial observed approval, confirmed results and permanent barriers remain unchanged; renewed authorization history is append-only. Later logout or revocation still stops execution.
+
+Open file details → original retention and cleanup → the fixed plan → **重新授权剩余原件** → **确认重新授权并继续**. Read authorization history and per-original receipts, then refresh. Cancelled/completed plans cannot resume; changed sources, policies, file revisions or protections are rejected.
+
+Focused evidence covers452 Web and537 shared-mobile rules, types, local Web/WeChat/Douyin builds, seven native HTTP/PG suites with42 passing records and actual Web mutation/readback. Full regression, an additional mobile browser journey and a new Android artifact are deferred. Persistent development services remain schema100; apply normal migrations101–103 before running this backend. The immutable first-freeze packages exclude136. All23 packages (14 P0/9 P1), five exclusions and eight draft Skills remain open; real integration and formal production acceptance are still required.
+
+[实现与使用 / Usage](development/136-retirement-reauthorization.md) · [关键检查 / Checks](quality/136-retirement-reauthorization-verification.md) · [本轮及全部23项 / All remaining](delivery/05-functional-closure-136.md)
+
+![保留已完成结果与重新授权历史 / Confirmed result and renewed authorization history](media/screenshots/retirement-reauthorization-web-history.png)
+
+[实际Web录制 / Actual Web recording](media/videos/retirement-reauthorization-web.mp4) · [三截图GIF导览 / Screenshot-tour GIF](media/gifs/retirement-reauthorization-web.gif)
+
+## 增量135 · 原发布记录
 
 四端源码已接通合同本金与实际付出分离的归属、现金预留、部分解除尾差、固定人工核对及全额资金冲销。合同详情选择“归属实际退回款”，固定原收入归属与实际向外付款，输入合同本金、本次付出、汇率及凭证来源，明确核对并完成近期MFA，再查阅持久历史。
 
@@ -10,7 +32,7 @@
 
 本轮精简检查：原生HTTP／PG4组52条，Web444项、共享移动529项，类型及Web／微信／抖音构建、实际Web提交与读回。没有新Android包／移动浏览器完整旅程或完整回归；开发库仍100，运行新后端前正常应用101、102。首个冻结标签和下载仍为`v0.1.0-rc.1`，不包含135。23个工作包（14 P0／9 P1）、五项移出、八项draft Skill继续保留；公司财务制度／汇差、完整旅程和正式集成仍待完成。
 
-## Current main: increment135 · Receivable foreign outgoing returns
+## Increment135 · Previously published
 
 All four client sources now separate contract principal from actual outgoing cash, reserve exact cash, release partial attribution with rounding tails, pin human reconciliation evidence and preserve full-reversal history. Open contract finance → “归属实际退回款”, pin the original incoming-cash attribution and actual outgoing payment, enter principal/cash/rate/source, explicitly acknowledge and complete recent MFA, then read committed history.
 

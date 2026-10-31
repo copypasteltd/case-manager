@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "command": "python app/scripts/verify_repository_publication.py --staged",
+  "checks": 21,
+  "file_count": 8757,
+  "failed": [
+    "Focused current functional checks and honest retained full-regression/artifact evidence"
+  ],
+  "cause": "New scoped verifier retained the inherited migration102 filename after renaming its feature. Candidate diff did not enumerate the untracked migration; staged diff correctly exposed migration103. Correct the verifier to the actual103 filename and require that exact delta for both staged and untracked candidate migrations. Backend/client/browser source manifests remain unchanged; only proof/scope/publication checks repeat.",
+  "business_code_changed": false
+}

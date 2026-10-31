@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T02:41:27.905Z",
+  "finished_at": "2026-10-31T02:41:39.971Z",
+  "checks": [
+    "Authenticated current Web session reads a durable partial plan: one confirmed result, one blocked result, immutable first approval.",
+    "Explicit human acknowledgement and fresh MFA commit one renewed grant and exactly one next-generation queued item through the actual Web command.",
+    "Reload and independent durable readback retain the first approval, confirmed original, fixed source digest and immutable renewed authorization history."
+  ],
+  "source_count": 971,
+  "source_sha256": "3502cf02affec2a3bbd8377eb6545a4c20126b94b2a2b3c3445223839672b803",
+  "source_after_sha256": "3502cf02affec2a3bbd8377eb6545a4c20126b94b2a2b3c3445223839672b803",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "81e75209a72e448404c9fdb41844f4d7f24e11f94c147fbc55786c08d7698da8",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "81e75209a72e448404c9fdb41844f4d7f24e11f94c147fbc55786c08d7698da8",
+  "build_source_unchanged": true
+}

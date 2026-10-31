@@ -1,5 +1,6 @@
 import { describe,it,expect } from 'vitest';
 import { checkedRetirementPlan,retirementCreate,retirementDecision } from '@copypaste/contracts/object-retirement';
+import assert from 'node:assert/strict';
 import { retirementID as id,retirementNow as now,retirementPlan as plan } from '../../packages/contracts/test/object-retirement-fixture';
 describe('known-original retirement boundaries',() => {
  it('pins file, target and immutable plan identity',() => { const p=plan();expect(checkedRetirementPlan(p,id(3),p.id)).toBe(p);expect(() => checkedRetirementPlan(p,id(99))).toThrow();expect(() => checkedRetirementPlan(p,id(3),id(99))).toThrow(); });
@@ -10,4 +11,17 @@ describe('known-original retirement boundaries',() => {
  it('never labels partial work complete',() => {const p=plan();expect(() => checkedRetirementPlan({...p,state:'completed'},id(3))).toThrow();expect(() => checkedRetirementPlan({...p,items:[{...p.items[0],state:'succeeded'},p.items[1]]},id(3))).toThrow();});
  it('permits stopping while preserving already confirmed results',() => {const p=plan();const partial={...p,state:'approved' as const,items:[{...p.items[0],state:'succeeded' as const,confirmed_at:p.ready_after},p.items[1]]};expect(retirementDecision(partial,'stop remaining',true,'cancel',now).expected_version).toBe(1);expect(() => retirementDecision({...p,state:'completed'},'stop',true,'cancel',now)).toThrow();});
  it('does not convert protected sources into a new selection',() => {const c=plan().snapshot;expect(() => retirementCreate({...c,eligible:false},'review')).toThrow();expect(() => retirementCreate({...c,blocking_reasons:['CURRENT_VERSION']},'review')).toThrow();expect(retirementCreate(c,'  review  ')).toEqual({expected_file_version:3,kind:'history',target_id:id(2),reason:'review'});});
+});
+import { retirementRenewal as renewal, retirementCanRenew as canRenew, checkedRetirementAuthorization as checkGrant, checkedRetirementRenewalResult as checkResult } from '../../packages/contracts/src/object-retirement';
+import { stoppedRetirement as stopped, renewedRetirement as renewed } from '../../packages/contracts/test/retirement-renewal-fixture';
+
+describe('explicit remaining-original renewal',()=>{
+ it('pins only the stopped remainder and accepts renewal after the initial approval deadline',()=>{const p=stopped();assert.deepEqual(renewal(p,'  current human adopts  ',true),{expected_version:p.version,snapshot_sha256:p.snapshot_sha256,reason:'current human adopts',items:[{id:p.items[1].id,expected_version:p.items[1].version}]});});
+ it('waits until all remaining work stops and never renews cancelled or completed plans',()=>{const p=stopped();for(const state of ['queued','running','retry_wait'] as const)assert.throws(()=>renewal({...p,items:[p.items[0],{...p.items[1],state}]},'review',true));assert.equal(canRenew({...p,state:'cancelled'}),false);assert.equal(canRenew({...p,state:'completed'}),false);});
+ it('requires explicit human acknowledgement and a bounded reason',()=>{assert.throws(()=>renewal(stopped(),'review',false));assert.throws(()=>renewal(stopped(),' ',true));assert.throws(()=>renewal(stopped(),'a'.repeat(201),true));});
+ it('requires a grant bound to this exact snapshot and existing item generation',()=>{const p=renewed();assert.equal(checkGrant(p.authorization!,p),p.authorization);assert.throws(()=>checkGrant({...p.authorization!,snapshot_sha256:'a'.repeat(64)},p));assert.throws(()=>checkGrant({...p.authorization!,items:[{...p.authorization!.items[0],generation:99}]},p));});
+ it('rejects duplicate and unrelated original membership in authorization history',()=>{const p=renewed();assert.throws(()=>checkGrant({...p.authorization!,items:[p.authorization!.items[0],p.authorization!.items[0]]},p));assert.throws(()=>checkGrant({...p.authorization!,items:[{...p.authorization!.items[0],item_id:id(999)}]},p));});
+ it('validates an atomic renewal response with the next grant and only one new generation',()=>{assert.equal(checkResult(stopped(),renewed()),true);const p=renewed();assert.equal(checkResult(stopped(),{...p,authorization:{...p.authorization!,sequence:2}}),false);});
+ it('preserves the first approval and every already confirmed result',()=>{const p=renewed();assert.equal(checkResult(stopped(),{...p,approval_reason:'replacement decision'}),false);assert.equal(checkResult(stopped(),{...p,items:[{...p.items[0],generation:2},p.items[1]]}),false);});
+ it('never accepts a renewal that omits or swaps the remaining selected originals',()=>{const p=renewed();assert.equal(checkResult(stopped(),{...p,items:[p.items[0],{...p.items[1],state:'blocked'}]}),false);assert.throws(()=>checkResult(stopped(),{...p,authorization:{...p.authorization!,items:[]}}));});
 });

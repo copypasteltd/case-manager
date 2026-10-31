@@ -32,6 +32,16 @@ func (s *Server) objectRetirementRoutes(mux *http.ServeMux, metadata *files.Serv
 	mux.HandleFunc("POST /v1/object-retirement-plans/{id}/approve", command(s, "CleanupDecision", "RetirementPlanResponse", func(ctx context.Context, c core.Command, r *http.Request, in files.CleanupDecision) (core.Result, error) {
 		return service.Approve(ctx, c, r.PathValue("id"), in)
 	}))
+	mux.HandleFunc("POST /v1/object-retirement-plans/{id}/reauthorize", command(s, "RetirementRenewal", "RetirementPlanResponse", func(ctx context.Context, c core.Command, r *http.Request, in files.RetirementRenewal) (core.Result, error) {
+		return service.Reauthorize(ctx, c, r.PathValue("id"), in)
+	}))
+	mux.HandleFunc("GET /v1/object-retirement-plans/{id}/authorizations", read(s, "RetirementAuthorizationListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return service.Authorizations(ctx, a, r.PathValue("id"), files.Filter{Cursor: f.Cursor, Limit: f.Limit})
+	}))
 	mux.HandleFunc("POST /v1/object-retirement-plans/{id}/cancel", command(s, "CleanupDecision", "RetirementPlanResponse", func(ctx context.Context, c core.Command, r *http.Request, in files.CleanupDecision) (core.Result, error) {
 		return service.Cancel(ctx, c, r.PathValue("id"), in)
 	}))

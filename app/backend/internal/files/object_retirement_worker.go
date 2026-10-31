@@ -76,6 +76,14 @@ func (s *ObjectRetirementService) executionAllowed(ctx context.Context, tx pgx.T
 		return e
 	}
 	a := core.Actor{OrgID: org, UserID: *p.ApprovedBy, SessionID: *p.ApprovedSession, Channel: *p.ApprovedChannel, AuthVersion: *p.ApprovedAuthVersion, OrgAuthVersion: *p.ApprovedOrgVersion}
+	if p.Authorization != nil {
+		g := p.Authorization
+		a.UserID = g.AuthorizedBy
+		a.SessionID = g.SessionID
+		a.Channel = g.Channel
+		a.AuthVersion = g.AuthVersion
+		a.OrgAuthVersion = g.OrgVersion
+	}
 	var lock string
 	if e := tx.QueryRow(ctx, "SELECT id FROM users WHERE org_id=$1 AND id=$2 FOR SHARE", org, a.UserID).Scan(&lock); e != nil {
 		return e
@@ -83,7 +91,14 @@ func (s *ObjectRetirementService) executionAllowed(ctx context.Context, tx pgx.T
 	if e := tx.QueryRow(ctx, "SELECT id FROM sessions WHERE org_id=$1 AND id=$2 FOR SHARE", org, a.SessionID).Scan(&lock); e != nil {
 		return e
 	}
-	f, e := s.actor(ctx, tx, a, p.Snapshot.FileID, false)
+	_, e := s.actor(ctx, tx, a, p.Snapshot.FileID, false)
+	if e != nil {
+		return e
+	}
+	return s.retirementSelectionAllowed(ctx, tx, p, org)
+}
+func (s *ObjectRetirementService) retirementSelectionAllowed(ctx context.Context, tx pgx.Tx, p RetirementPlan, org string) error {
+	f, e := file(ctx, tx, org, p.Snapshot.FileID, true)
 	if e != nil {
 		return e
 	}
@@ -105,14 +120,18 @@ func (s *ObjectRetirementService) executionAllowed(ctx context.Context, tx pgx.T
 	return nil
 }
 func (s *ObjectRetirementService) receipt(ctx context.Context, tx pgx.Tx, j jobqueue.Job, p RetirementPlan, item RetirementItem, outcome, code string) error {
-	_, e := tx.Exec(ctx, `INSERT INTO object_retirement_receipts(id,org_id,item_id,job_id,generation,attempt,outcome,error_code)
- VALUES($1,$2,$3,$4,$5,$6,$7,NULLIF($8,'')) ON CONFLICT(org_id,item_id,generation,attempt,outcome) DO NOTHING`, core.NewID(), j.OrgID, item.ID, j.ID, item.Generation, j.Attempt, outcome, code)
+	_, e := tx.Exec(ctx, `INSERT INTO object_retirement_receipts(id,org_id,item_id,job_id,generation,attempt,outcome,error_code,authorization_id)
+ VALUES($1,$2,$3,$4,$5,$6,$7,NULLIF($8,''),$9) ON CONFLICT(org_id,item_id,generation,attempt,outcome) DO NOTHING`, core.NewID(), j.OrgID, item.ID, j.ID, item.Generation, j.Attempt, outcome, code, p.ExecutionAuthorizationID)
 	if e != nil {
 		return e
 	}
-	payload, _ := json.Marshal(map[string]any{"plan_id": p.ID, "file_id": p.Snapshot.FileID, "kind": p.Snapshot.Kind, "target_id": p.Snapshot.TargetID, "item_id": item.ID, "provider": item.Provider, "generation": item.Generation, "attempt": j.Attempt, "outcome": outcome, "error_code": code})
+	payload, _ := json.Marshal(map[string]any{"plan_id": p.ID, "file_id": p.Snapshot.FileID, "kind": p.Snapshot.Kind, "target_id": p.Snapshot.TargetID, "item_id": item.ID, "provider": item.Provider, "generation": item.Generation, "attempt": j.Attempt, "outcome": outcome, "error_code": code, "authorization_id": p.ExecutionAuthorizationID})
+	actorID := p.ApprovedBy
+	if p.Authorization != nil {
+		actorID = &p.Authorization.AuthorizedBy
+	}
 	_, e = tx.Exec(ctx, `INSERT INTO audit_events(id,org_id,actor_id,executor_id,channel,request_id,action,resource_type,resource_id,resource_version,after_digest,result,job_id)
- VALUES($1,$2,$3,NULL,'worker',$4,$5,'object_retirement_item',$6,$7,$8,'succeeded',$9)`, core.NewID(), j.OrgID, p.ApprovedBy, core.NewID(), "file.original.retirement."+outcome, item.ID, item.Version, core.Digest(payload), j.ID)
+ VALUES($1,$2,$3,NULL,'worker',$4,$5,'object_retirement_item',$6,$7,$8,'succeeded',$9)`, core.NewID(), j.OrgID, actorID, core.NewID(), "file.original.retirement."+outcome, item.ID, item.Version, core.Digest(payload), j.ID)
 	if e != nil {
 		return e
 	}
