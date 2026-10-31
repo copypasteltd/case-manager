@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T00:06:27.963635+00:00",
+  "encoder_script_sha256": "8a3b0cbd7cca2293a4f264a39a0784404ce723291fc841de652fdd526d29328e",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "d9ed103d0b95fb4d2ebe69ca6b4d04b34f79f2db7066f22a580f86dec854b966",
+      "build_source_sha256": "a2ec79ff56983321899343afb9f2f76a5171a20d1511d75f3daf1261df931306",
+      "capture_manifest": "docs/quality/evidence/object-retirement/web-capture-manifest.json",
+      "capture_manifest_sha256": "d49de6a30b1f90c6e7256c52a9f8dae61c2950b3552d1b0e99d108e910da8bd0",
+      "capture_frame_count": 11,
+      "capture_duration_ms": 2749,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/object-retirement-web-inventory.png",
+          "sha256": "db3c8540432a0743da47a8eb5e40ed4693829ddf899ffc83c0f016ca133790f9"
+        },
+        {
+          "file": "docs/media/screenshots/object-retirement-web-observation.png",
+          "sha256": "5f95d007a1f743996e15051502dcb1af7cef8ec88cad56e47c79deeb37e9d879"
+        },
+        {
+          "file": "docs/media/screenshots/object-retirement-web-receipts.png",
+          "sha256": "f66babbdfa33b0fb27f49d19436f0b22a961c13f3cb9180c116ffbab7dc8858d"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "29",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/object-retirement-web.mp4",
+          "sha256": "9faa298c3ed20418ba7029a5a9dfbf3a1135592aa04451052b8d8a69c97c2a2b",
+          "bytes": 222585
+        },
+        {
+          "file": "docs/media/gifs/object-retirement-web.gif",
+          "sha256": "05d5062b1d261d0183ef88f87f9b7cdcd814450e7d3d4edfeca32469d605790e",
+          "bytes": 153756
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "source_sha256": "ecdf2a5eafc35f7d8b2cfe46412ba9e531940c7ca78316ce37d3b60603793eb5",
+      "build_source_sha256": "a2ec79ff56983321899343afb9f2f76a5171a20d1511d75f3daf1261df931306",
+      "capture_manifest": "docs/quality/evidence/object-retirement/mobile-capture-manifest.json",
+      "capture_manifest_sha256": "a4a3eb990132e39cfa9ae76bdb8f7f7208bf88c67ec9ce3b45c48105087d5c65",
+      "capture_frame_count": 13,
+      "capture_duration_ms": 3086,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/object-retirement-mobile-inventory.png",
+          "sha256": "7582f4a06f59a98be6438c05e88d6249538de85ae5851edeed4cde2994785805"
+        },
+        {
+          "file": "docs/media/screenshots/object-retirement-mobile-observation.png",
+          "sha256": "6a10b6ae08899acf036d8423b73ddee435ec4bc376668134708fb97a9b6e84bb"
+        },
+        {
+          "file": "docs/media/screenshots/object-retirement-mobile-receipts.png",
+          "sha256": "5ae41370d16a076bd07c918fc36b24a29816c8056e38ed6fb2094b7d31c94a0f"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 390,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 390,
+            "height": 900,
+            "nb_frames": "32",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/object-retirement-mobile.mp4",
+          "sha256": "323d438324fbdbd434d1546a8f7e576eec89d8169ae7c63d80f81424d7b82ad8",
+          "bytes": 112867
+        },
+        {
+          "file": "docs/media/gifs/object-retirement-mobile.gif",
+          "sha256": "605fcce07f2bec8469af3ddaa3e8960ea198eb9dfffde7991a44435354aaf0d9",
+          "bytes": 82341
+        }
+      ]
+    }
+  ],
+  "scope": "Actual post-MFA Web/shared H5 fixed known-original inventory, new committed-draft observation plan and previously confirmed synthetic worker receipts. MP4 records real viewport pixels; GIF is an explicit six-second tour of three actual screenshots. Synthetic provider and fixture-clock evidence; no live deletion, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/object-retirement-web-inventory.png",
+      "sha256": "db3c8540432a0743da47a8eb5e40ed4693829ddf899ffc83c0f016ca133790f9"
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-web-observation.png",
+      "sha256": "5f95d007a1f743996e15051502dcb1af7cef8ec88cad56e47c79deeb37e9d879"
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-web-receipts.png",
+      "sha256": "f66babbdfa33b0fb27f49d19436f0b22a961c13f3cb9180c116ffbab7dc8858d"
+    },
+    {
+      "file": "docs/media/videos/object-retirement-web.mp4",
+      "sha256": "9faa298c3ed20418ba7029a5a9dfbf3a1135592aa04451052b8d8a69c97c2a2b",
+      "bytes": 222585
+    },
+    {
+      "file": "docs/media/gifs/object-retirement-web.gif",
+      "sha256": "05d5062b1d261d0183ef88f87f9b7cdcd814450e7d3d4edfeca32469d605790e",
+      "bytes": 153756
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-mobile-inventory.png",
+      "sha256": "7582f4a06f59a98be6438c05e88d6249538de85ae5851edeed4cde2994785805"
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-mobile-observation.png",
+      "sha256": "6a10b6ae08899acf036d8423b73ddee435ec4bc376668134708fb97a9b6e84bb"
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-mobile-receipts.png",
+      "sha256": "5ae41370d16a076bd07c918fc36b24a29816c8056e38ed6fb2094b7d31c94a0f"
+    },
+    {
+      "file": "docs/media/videos/object-retirement-mobile.mp4",
+      "sha256": "323d438324fbdbd434d1546a8f7e576eec89d8169ae7c63d80f81424d7b82ad8",
+      "bytes": 112867
+    },
+    {
+      "file": "docs/media/gifs/object-retirement-mobile.gif",
+      "sha256": "605fcce07f2bec8469af3ddaa3e8960ea198eb9dfffde7991a44435354aaf0d9",
+      "bytes": 82341
+    }
+  ]
+}

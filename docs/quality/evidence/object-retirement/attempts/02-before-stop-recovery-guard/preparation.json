@@ -1,0 +1,13 @@
+{
+  "web_flow_passed": true,
+  "mobile_flow_executed": false,
+  "mobile_build_intentionally_stopped": true,
+  "native_fixture_exit_code": 0,
+  "private_fixture_removed": true,
+  "owned_build_stopped": true,
+  "private_log_sha256": {
+    "object-retirement-mobile-build.log": "10718272810da23f3bc2eb0196a8064a10d69a74dafafce3c5221445b9e6f15a",
+    "object-retirement-mobile-native.log": "9c46a11967b809e72efe9b380f789392333dd0e8934b782bf0156b088f9ee9fa"
+  },
+  "scope": "Earlier exact-source preparation only. Stop-recovery guard and explicit receipt framing added after review; current checks must execute new sources. Earlier normal98-to99 upgrade retained here."
+}

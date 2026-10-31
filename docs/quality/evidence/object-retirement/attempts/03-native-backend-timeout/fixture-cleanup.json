@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-30T23:47:17.232239+00:00",
+  "rows": [
+    {
+      "oid": "108552775",
+      "name": "cp_test_87e9bee57ef8474fb1606a7b7fa497d6",
+      "owner": "postgres",
+      "invalid": true,
+      "template": false,
+      "connections": 0,
+      "created": "2026-10-31T07:32:41+08:00",
+      "owned_test": "TestHistoryRestoration/immutable_fixed_inputs_and_archived_project_block_publication_while_cancellation_remains_available",
+      "test_started_at": "2026-10-31T07:32:41.5845171+08:00",
+      "contents_inspected": false
+    },
+    {
+      "oid": "108683300",
+      "name": "cp_test_9513741adb1c46828395abecb41cd715",
+      "owner": "postgres",
+      "invalid": false,
+      "template": false,
+      "connections": 0,
+      "created": "2026-10-31T07:43:06+08:00",
+      "owned_test": "TestHistoryRestoration/old_lease_cannot_persist_a_new_receipt_and_exhausted_unstarted_work_gets_a_domain_failure",
+      "test_started_at": "2026-10-31T07:43:05.8408833+08:00",
+      "contents_inspected": true,
+      "migration_prefix_matched": true,
+      "migration_count": 1,
+      "organization_count": 0
+    }
+  ],
+  "failed_log_sha256": "241089c3198bbdb69626aaff980d08a5ffc60708a9f7c08b5ed5a5c044391b7b",
+  "script_sha256": "5dc422382af55e5d8be96ad03e646b3e930e5de0ffdefc345e924e6309767a16",
+  "forced_disconnect": false,
+  "postgres_restarted": false,
+  "development_database_selected": false,
+  "passed": true,
+  "removed": [
+    "cp_test_87e9bee57ef8474fb1606a7b7fa497d6",
+    "cp_test_9513741adb1c46828395abecb41cd715"
+  ],
+  "remaining_exact_targets": 0,
+  "completed_at": "2026-10-30T23:48:45.706033+00:00"
+}

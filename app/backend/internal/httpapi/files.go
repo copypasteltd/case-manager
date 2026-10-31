@@ -14,6 +14,7 @@ func (s *Server) filesRoutes(mux *http.ServeMux) {
 	s.uploadRoutes(mux, service)
 	s.downloadRoutes(mux, service)
 	s.retentionRoutes(mux, service)
+	s.objectRetirementRoutes(mux, service)
 	s.fileScopeTransferRoutes(mux, service)
 	s.fileBatchRoutes(mux, service)
 	s.officeAuthorRoutes(mux, service)

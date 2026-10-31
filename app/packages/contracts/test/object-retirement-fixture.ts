@@ -1,0 +1,6 @@
+import type { RetirementPlan } from '../src/object-retirement';
+export const retirementID = (n: number) => '10000000-0000-4000-8000-' + n.toString(16).padStart(12,'0');
+export const retirementNow = Date.parse('2026-10-31T00:00:00Z');
+export function retirementPlan(): RetirementPlan {
+ return { id:retirementID(1),version:1,state:'observing',snapshot:{kind:'history',target_id:retirementID(2),file_id:retirementID(3),file_version:3,name:'Synthetic history',size_bytes:'120000000000',seq:1,policy:{id:retirementID(4),version:1,kind:'formal_history',enabled:true,retain_seconds:86400,observation_seconds:86400},trash_policy:null,retain_until:'2026-10-27T00:00:00Z',source_sha256:'a'.repeat(64),eligible:true,blocking_reasons:[]},snapshot_sha256:'b'.repeat(64),reason:'explicit fixture review',created_at:'2026-10-28T00:00:00Z',ready_after:'2026-10-29T00:00:00Z',expires_at:'2026-11-05T00:00:00Z',approved_at:null,approval_reason:null,cancelled_at:null,cancellation_reason:null,items:['oss','r2'].map((provider,i) => ({id:retirementID(5+i),provider:provider as 'oss'|'r2',ordinal:i,version:1,generation:1,state:'observing',attempts:0,last_error:null,confirmed_at:null,updated_at:'2026-10-28T00:00:00Z'})) };
+}

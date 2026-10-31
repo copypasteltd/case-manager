@@ -1,0 +1,3 @@
+# Native backend preparation timeout
+
+The original source-bound 12-minute run failed: one disposable fixture DROP exceeded its two-minute cleanup deadline, and the package then reached its 12-minute deadline during another fixture migration. Eleven passing child records do not establish any completed suite. Original result and unchanged source digest are retained; the private raw JSON log is preserved by its declared SHA-256. No business assertion was relaxed. The same exact command is retried after the other client compilations, without changing production, fixture or timeout settings. Remaining inactive fixture databases are individually identified and removed with ownership checks; no development data or database process is restarted.

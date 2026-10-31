@@ -171,6 +171,13 @@ func replicaOwns(r replicaRow, j jobqueue.Job, in replicaJobInput) bool {
 }
 func (s *UploadService) replicaAllowed(ctx context.Context, tx pgx.Tx, j jobqueue.Job, r replicaRow, in replicaJobInput) (objectstore.Source, error) {
 	var source objectstore.Source
+	var availability string
+	if err := tx.QueryRow(ctx, "SELECT availability FROM file_versions WHERE org_id=$1 AND id=$2 FOR SHARE", j.OrgID, r.VersionID).Scan(&availability); err != nil {
+		return source, err
+	}
+	if availability == "retiring" || availability == "purged" {
+		return source, core.Fail(409, "ORIGINAL_RETIRED", "已停用的历史原件不能产生新副本")
+	}
 	if !replicaOwns(r, j, in) || r.State == "verified" || r.State == "failed" || r.State == "missing" {
 		return source, core.Fail(409, "REPLICA_STATE_CONFLICT", "副本任务阶段已改变")
 	}

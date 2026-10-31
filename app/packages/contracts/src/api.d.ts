@@ -1968,6 +1968,126 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/files/{id}/object-retirement-candidates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listObjectRetirementCandidates */
+        get: operations["listObjectRetirementCandidates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/files/{id}/object-retirement-plans": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listObjectRetirementPlans */
+        get: operations["listObjectRetirementPlans"];
+        put?: never;
+        /** createObjectRetirementPlan */
+        post: operations["createObjectRetirementPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/object-retirement-plans/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readObjectRetirementPlan */
+        get: operations["readObjectRetirementPlan"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/object-retirement-plans/{id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** approveObjectRetirementPlan */
+        post: operations["approveObjectRetirementPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/object-retirement-plans/{id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** cancelObjectRetirementPlan */
+        post: operations["cancelObjectRetirementPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/object-retirement-items/{id}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** retryObjectRetirementItem */
+        post: operations["retryObjectRetirementItem"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/object-retirement-items/{id}/receipts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listObjectRetirementReceipts */
+        get: operations["listObjectRetirementReceipts"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/history-restores/{id}": {
         parameters: {
             query?: never;
@@ -6404,6 +6524,69 @@ export interface components {
             /** Format: date-time */
             created_at: string;
         };
+        RetirementCandidate: {
+            /** @enum {string} */
+            kind: "history" | "committed_draft";
+            /** Format: uuid */
+            target_id: string;
+            /** Format: uuid */
+            file_id: string;
+            file_version: number;
+            name: string;
+            size_bytes: string;
+            seq: number;
+            policy: components["schemas"]["RetentionRule"] | null;
+            trash_policy: components["schemas"]["RetentionRule"] | null;
+            retain_until: string | null;
+            source_sha256: string;
+            eligible: boolean;
+            blocking_reasons: string[];
+        };
+        RetirementCreate: {
+            expected_file_version: number;
+            /** @enum {string} */
+            kind: "history" | "committed_draft";
+            /** Format: uuid */
+            target_id: string;
+            reason: string;
+        };
+        RetirementItem: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            generation: number;
+            /** @enum {string} */
+            state: "observing" | "queued" | "running" | "retry_wait" | "succeeded" | "failed" | "blocked";
+            attempts: number;
+            last_error: string | null;
+            confirmed_at: string | null;
+            /** Format: date-time */
+            updated_at: string;
+            /** @enum {string} */
+            provider: "oss" | "r2";
+            ordinal: number;
+        };
+        RetirementPlan: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** @enum {string} */
+            state: "observing" | "approved" | "cancelled" | "completed";
+            snapshot: components["schemas"]["RetirementCandidate"];
+            snapshot_sha256: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            ready_after: string;
+            /** Format: date-time */
+            expires_at: string;
+            approved_at: string | null;
+            approval_reason: string | null;
+            cancelled_at: string | null;
+            cancellation_reason: string | null;
+            items: components["schemas"]["RetirementItem"][];
+        };
         ResourceRef: {
             type: string;
             /** Format: uuid */
@@ -7270,7 +7453,7 @@ export interface components {
             scan_state: "pending" | "clean" | "blocked" | "unscannable" | "waived";
             scan_waiver_ref: string | null;
             /** @enum {string} */
-            availability: "available" | "missing" | "quarantined";
+            availability: "available" | "missing" | "quarantined" | "retiring" | "purged";
             replica_state: ("queued" | "copying" | "verifying" | "verified" | "retry_wait" | "failed" | "missing") | null;
             replicas: components["schemas"]["FileReplica"][];
         };
@@ -13128,6 +13311,24 @@ export interface components {
                 items: components["schemas"]["CleanupReceipt"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        RetirementCandidateListResponse: {
+            data: {
+                items: components["schemas"]["RetirementCandidate"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        RetirementPlanListResponse: {
+            data: {
+                items: components["schemas"]["RetirementPlan"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        RetirementPlanResponse: {
+            data: components["schemas"]["RetirementPlan"];
             meta: components["schemas"]["Meta"];
         };
         HistoryRestoreListResponse: {
@@ -20236,6 +20437,323 @@ export interface operations {
         };
     };
     listMultipartCleanupReceipts: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CleanupReceiptListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listObjectRetirementCandidates: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementCandidateListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listObjectRetirementPlans: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createObjectRetirementPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RetirementCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readObjectRetirementPlan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    approveObjectRetirementPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CleanupDecision"];
+            };
+        };
+        responses: {
+            /** @description Accepted */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    cancelObjectRetirementPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CleanupDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    retryObjectRetirementItem: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UploadFinalize"];
+            };
+        };
+        responses: {
+            /** @description Accepted */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listObjectRetirementReceipts: {
         parameters: {
             query?: {
                 cursor?: string;

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-30T23:31:09.191122+00:00",
+  "finished_at": "2026-10-30T23:31:37.320452+00:00",
+  "elapsed_seconds": 28.129,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/object-retirement/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_after_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 419,
+    "numPassedTests": 419,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "e663045d65d4c7251ffbc4cf6f400973862d8d5b76f014096f59aac8c5b1088d",
+  "parser_error": null,
+  "runner_script_sha256": "32082341483fc4baa2e3505dc66dadba9ed374bb8109094411211d349fa81ed6",
+  "scope": "Complete current Web unit suite, including eight fixed original-retirement scope, state and observation checks.",
+  "real_device": false,
+  "virtualization_used": false
+}

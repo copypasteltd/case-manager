@@ -1,0 +1,254 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T00:15:50.584799+00:00",
+  "verification_mode": "scoped_increment",
+  "increment": 132,
+  "checks": [
+    {
+      "name": "Source-bound executed check backend",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check web-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check native-bundle",
+      "passed": true
+    },
+    {
+      "name": "Source-bound executed check original-core",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup object-retirement-web",
+      "passed": true
+    },
+    {
+      "name": "Actual UI/API flow and owned cleanup object-retirement-mobile",
+      "passed": true
+    },
+    {
+      "name": "Actual screenshot and recording outputs retain declared hashes",
+      "passed": true
+    },
+    {
+      "name": "All affected visual outputs actually reviewed",
+      "passed": true
+    },
+    {
+      "name": "Owned development services match current backend and preserve existing business records",
+      "passed": true
+    },
+    {
+      "name": "Both owned review ports are released",
+      "passed": true
+    },
+    {
+      "name": "Current complete development APK binds all native/business inputs and actual artifact bytes",
+      "passed": true
+    },
+    {
+      "name": "Actual APK signature/DEX/JS and both native suites retain precise current source evidence",
+      "passed": true
+    },
+    {
+      "name": "Native test XML and actual fresh/cached execution boundaries are retained",
+      "passed": true
+    },
+    {
+      "name": "All prior published proof/media bytes remain unchanged with honest retained scope",
+      "passed": true
+    },
+    {
+      "name": "Historical schema bytes unchanged and only declared new upgrades added",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture released",
+      "passed": true
+    },
+    {
+      "name": "Scope and platform acceptance are not replaced by focused checks",
+      "passed": true
+    }
+  ],
+  "interaction_kind": "object-retirement",
+  "interaction_source_sha256": "ec3f24d47bca8d943a4d977458f846a4f1f45c1b9fa91031c7b7a4dc17d22def",
+  "verification_script_sha256": "fa6e3bcdabac0727fd004187bf1c32ee8052c9c09e56cb5760fdd22de1890bc0",
+  "configuration_sha256": "987c71bc4e25d9dfed8074bab708739eb8dc2fe63888561743ce68086034501e",
+  "records": [
+    {
+      "file": "docs/quality/evidence/object-retirement/backend.json",
+      "sha256": "1d39d3e7684467fc99c65733e11adcae5e6c3ab0590af407f356a578a93a3080"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/web-tests.json",
+      "sha256": "1e2b23e4a2c72260e7c71554227586d1b446f6a920cf8bf8d1ba5a4b73896254"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/mobile-tests.json",
+      "sha256": "421b67420f5e91653bd83cf83a83ccd058a6b5e8a388f966d6d6ac8051117035"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/typecheck.json",
+      "sha256": "351ed40691edd77557a04bf103d96e896a9588b0d88a68281737bfd5d71d1a82"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/web-build.json",
+      "sha256": "2354e8c746c946bc6b8b78fa1412d929518112a5d87bc9c83920690792befdde"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/weapp-build.json",
+      "sha256": "785cbc0ffd3730d29a9497eb1cae5073767b55e82cbe494ef58e83c0147ca5b2"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/douyin-build.json",
+      "sha256": "e30d53df64caf4bce593d5c990999e0f0efedc611ec5d1fff28482243cd022b2"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/native-js-tests.json",
+      "sha256": "a9fe7c2981b5fe1e0d6d4fda503fe78b781109c60c469c04038c847436516ed2"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/native-bundle.json",
+      "sha256": "36f4ff2969dbcd390e00d012d41602e24963e7089ae1884a2b89f46ec072bd17"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/original-core.json",
+      "sha256": "3db37c9c8ec76bdc72aade5ecdf072365df7f83e6b15be3a2cf2fb575b6c2353"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement-web/result.json",
+      "sha256": "3faa2ec20ca04cab4baef03fb67a352872687a1f8b6ec222e4353b711121394b"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement-web/source-manifest.json",
+      "sha256": "7a2a67573a6bcbbb3851b8bc886c4e8ba173aa7177aad91c33bc0690314b8a40"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement-web/media.json",
+      "sha256": "d211b6043b73744365e1e2f25a644b7f88f364ac55d7174f0195a518f394500e"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement-mobile/result.json",
+      "sha256": "ab40eb82492dd3aba6edaae47db85476ef438c5a205294df3199c26cb47a2f8e"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement-mobile/source-manifest.json",
+      "sha256": "ecb7152d2378185e5c0069d011ba3f1cf88c637e1673a519d8d492360e4d4971"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement-mobile/media.json",
+      "sha256": "89c7d6d3729fc58ddbba4faf722660ad4bd81c4e5828e8bc45073bb31ee6c599"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/build.json",
+      "sha256": "c6c00cfa2c85b20617cd2425e4d5f3eb5aa8a15134e0da93d592d3036228ef8c"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/apk-inspection.json",
+      "sha256": "14433615c05602abbe8ebb693497d93990540a19f80d066af2022a0c8f7651f2"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/native-suites.json",
+      "sha256": "bdd10e9cb6bc439d4615ae23285e04cc131d284fb0aa81e64261537b29afdecb"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/native-test-scope.json",
+      "sha256": "02af023bb240669a7bab4d21a20a0356c9358f4705a7e91462f182eb0a612c07"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/android-js-content.json",
+      "sha256": "c3ef29024fbfe236a4686d169902a5cde6a9dce2ef779a0b72ab4333f0266bd2"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/object-core.json",
+      "sha256": "57b0862c47c7f2c9f97d313fd09efab5b48eecaf0c632bcc28e97f4eb69abe46"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/media.json",
+      "sha256": "ffc9ff62494ffc48d01ad7bebc80ea11b34864d48d0cc6cd7cc01b3a563efd3c"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/visual-review.json",
+      "sha256": "51a20699feebff4cd49d3fbc5142e87c38ae7b17da441f679ab06e02ccc80ef3"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/development-update.json",
+      "sha256": "da8d497098ba5cacb88f3267c805b31f3236525a1dc7735556ef203c7f16bfe6"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/development-project-resources.json",
+      "sha256": "edc94ad8107048d72709a7d223a81066e71985027c903c3dbe8fde0f02dc3146"
+    },
+    {
+      "file": "docs/quality/evidence/object-retirement/development-runtime.json",
+      "sha256": "e14a6b4e1c0063eabb1e1d68537b78462fd5d8a6dbd98fe7dca8489053eabef4"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "a0ef3bccabd78af7ee7d7d5f0228f3b6354f1478",
+    "original_files": 5781,
+    "original_media": 1437,
+    "original_git_object_manifest_sha256": "fef7932b720ac73ed42be572aee3bf02547c10ff2f6b3053b0e3d660447ed903",
+    "baseline_sha256": "e5c87008cab2c893466c010753d75a9b3d26c834ab02c8d8a6ec894c078b04d3",
+    "baseline_increment": 131,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": null,
+  "capture_environment_adjustment": {
+    "execution_source_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+    "inputs": [
+      {
+        "file": "docs/quality/evidence/object-retirement/attempts/04-mobile-receipt-locator/check_object_retirement.mjs.before",
+        "sha256": "091ea448c99a9c685921dffbbb918a9f7f35a8c2a9567e8ed570fdcc307e763e"
+      },
+      {
+        "file": "docs/quality/evidence/object-retirement/attempts/04-mobile-receipt-locator/verify_scoped_increment.py.before",
+        "sha256": "32082341483fc4baa2e3505dc66dadba9ed374bb8109094411211d349fa81ed6"
+      },
+      {
+        "file": "docs/quality/evidence/object-retirement/attempts/04-mobile-receipt-locator/verification-plan.json.before",
+        "sha256": "3566963c5dd81f3f0acea29e2c26c1903cba17b64c1d25ae8c7c3673bde21591"
+      },
+      {
+        "file": "docs/quality/evidence/object-retirement/attempts/06-native-inspection-inputs/verify_project_business_native_js.py.before",
+        "sha256": "6dd51844315e41030393f024cf0290932109ace66e3704365331664879f2c282"
+      }
+    ],
+    "scope": "Exact original compiler/core/unit inputs reconstructed. Production, business test bodies, selected suites and deadlines are unchanged. Backend is actually rerun on a dedicated native temporary PG with full durability; both UI captures are rerun with one corrected nested selector."
+  },
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

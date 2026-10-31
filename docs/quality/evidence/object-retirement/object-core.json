@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-30T23:32:35.685670+00:00",
+  "backend_source_sha256": "560981d7693625f6b99a8f6260e4047bccd95591f8bb520b643734acc83aac85",
+  "passed_test_records": 182,
+  "skipped": 0,
+  "compiled_packages_without_unit_tests": [
+    "copypaste.hk/platform/internal/jobqueue"
+  ],
+  "test_log_sha256": "3fae1bf4856258a0164ac512173f306bd6525d01debd334e88b5a2cfcbefb1f0",
+  "artifacts": [
+    {
+      "target": "windows/amd64",
+      "file": ".local/object-retirement/copypaste-platform-windows.exe",
+      "bytes": 38981632,
+      "sha256": "a58c1d7cbeca9ea153392d0893499968f5fbb63052799eaae4c0aaea6741df80",
+      "executed_on_target": false
+    },
+    {
+      "target": "linux/amd64",
+      "file": ".local/object-retirement/copypaste-platform-linux",
+      "bytes": 38589621,
+      "sha256": "a99bee1a094133f3dcfbc2d92583e7bba9400a29d773ca1f86a4e9f6dbd0ee9d",
+      "executed_on_target": false
+    }
+  ],
+  "real_cloud_executed": false,
+  "target_host_executed": false,
+  "virtualization_used": false,
+  "scope": "Actual native file, object-store SDK transport, independent storage identity, queue and platform Go suites; current Windows/Linux platform compilation. Controlled provider HTTP responses only; no real cloud, Linux execution or production deployment."
+}

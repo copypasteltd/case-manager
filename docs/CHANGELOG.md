@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## Increment132 · Known-original retention and controlled retirement
+
+- 四端新增已知历史正式原件／已提交人工上传草稿盘点、不可变观察清单、最近MFA批准、永久版本／对象键屏障和逐云回执。
+- 原件两边准确确认不存在后才释放逻辑容量；未知云结果与最终事务回滚重新核对，失败保留原依据并支持显式重试／停止剩余。
+- Dedicated native worker and independent cleanup identities; exact OSS native versions and explicitly attested exclusive R2 storage. Generic404/204 never count as absence.
+- Normal98→99 schema upgrade; preserve original business/history facts. Uncommitted drafts, agent recovery, unknown orphans/derived objects and renewed approval remain GAP-05; actual cloud semantics remain GAP-20.
+- See [implementation](development/132-known-object-retirement.md), [checks](quality/132-known-object-retirement-verification.md) and [all23 remaining packages](delivery/05-functional-closure-132.md). Prior131 evidence and media remain unchanged.
+
 ## Increment131 · Resource alerts, notifications and personal work
 
 - 资源超阈值、只读、时钟及断流接入固定负责人的站内通知；首次采样有明确期限，同状态不重复提醒。

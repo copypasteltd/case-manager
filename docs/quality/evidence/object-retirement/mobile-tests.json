@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-30T23:31:37.782870+00:00",
+  "finished_at": "2026-10-30T23:31:56.693495+00:00",
+  "elapsed_seconds": 18.91,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_after_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 504,
+    "pass": 504,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "3107192903a9c89d83d10caddd0a7489e09dcbf97faf84c19d6fe9e96e6ac6e9",
+  "parser_error": null,
+  "runner_script_sha256": "32082341483fc4baa2e3505dc66dadba9ed374bb8109094411211d349fa81ed6",
+  "scope": "Complete current shared mobile suite, including eight original-retirement integrity and decision checks.",
+  "real_device": false,
+  "virtualization_used": false
+}

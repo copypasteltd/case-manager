@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "id": "original-core",
+  "started_at": "2026-10-30T23:31:44.973094+00:00",
+  "finished_at": "2026-10-30T23:32:36.007407+00:00",
+  "elapsed_seconds": 51.033,
+  "command": [
+    "python",
+    "scripts/verify_object_retirement_core.py"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "exit",
+  "source_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_after_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_unchanged": true,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "533fa2eef56c1c0d844993343efb38213400e478a3743613b5a68007e435efdb",
+  "parser_error": null,
+  "runner_script_sha256": "32082341483fc4baa2e3505dc66dadba9ed374bb8109094411211d349fa81ed6",
+  "scope": "Actual native file, provider SDK, configuration, queue and platform units plus Windows/Linux platform compilation; controlled HTTP providers only.",
+  "real_device": false,
+  "virtualization_used": false
+}

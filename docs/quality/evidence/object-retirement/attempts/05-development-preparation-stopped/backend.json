@@ -1,0 +1,73 @@
+{
+  "passed": false,
+  "id": "backend",
+  "started_at": "2026-10-30T23:46:47.431017+00:00",
+  "finished_at": "2026-10-30T23:54:28.239972+00:00",
+  "elapsed_seconds": 460.8,
+  "command": [
+    "python",
+    "scripts/test_backend.py",
+    "--package",
+    "./internal/httpapi",
+    "-run",
+    "^(TestObjectRetirementFourClients|TestCommittedDraftRetirement|TestObjectRetirementProtections|TestObjectRetirementRetriesAndStop|TestObjectRetirementAtomicityAndCapacity|TestRetentionManagement|TestHistoryRestoration|TestCrossCloudReplicas|TestUploadPromotionAndCommit|TestMultipartCleanupFourHumanClients)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "go_json",
+  "source_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_after_sha256": "c9420fbf0c791966ac75a73510eaf73fc60e36183a01336a4efc3ce6993b7828",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [],
+    "pass": 7,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/waived_history_preserves_its_original_report_and_a_newer_disabled_policy_blocks_another_publication"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/immutable_fixed_inputs_and_archived_project_block_publication_while_cancellation_remains_available"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/storage_epoch_change_during_copy_records_a_domain_failure_without_publishing"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/fixed_bytes_become_a_new_audited_version_only_after_explicit_idempotent_commit_and_queue_backup"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/commit_conflict_preserves_candidate_and_current_bytes"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/audit_failure_rolls_back_publication_and_permits_the_exact_command_to_retry"
+    },
+    {
+      "Action": "pass",
+      "Package": "copypaste.hk/platform/internal/httpapi",
+      "Test": "TestHistoryRestoration/restore_and_upload_share_quota_reservations_and_cancellation_releases_only_its_own_reservation"
+    }
+  ],
+  "private_log_sha256": "2b250658a10c58a285436a7358fafbbecd2ec0e2e46a7d0d32b0c6a54ca74a71",
+  "parser_error": "AssertionError",
+  "runner_script_sha256": "32082341483fc4baa2e3505dc66dadba9ed374bb8109094411211d349fa81ed6",
+  "scope": "Actual native HTTP/PostgreSQL four-client known-original retirement, protection, audit rollback, exact absence reconciliation, capacity and committed-draft journeys plus retained lifecycle regression suites. No live cloud acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

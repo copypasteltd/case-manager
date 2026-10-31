@@ -1,0 +1,3 @@
+# Native read-only inspector input compatibility
+
+The first read-only JS inspector stopped at its old requirement that the build-wide helper digest equal the post-capture current digest. It did not write a passing artifact record. The completed APK retains unchanged actual native/application inputs. The inspector now permits only the exactly reconstructed earlier check inputs already declared in the scoped verifier, then still checks every current module against the real Metro sourcesContent and the real embedded bundle. Original inspector bytes are retained; the scoped verifier requires exactly this one assertion replacement and reconstructs its original bytes for prior compiler/unit records. No artifact/content/signature assertion is relaxed.

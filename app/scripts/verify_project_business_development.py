@@ -23,7 +23,7 @@ def module(name):
 def main():
     global E
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'), default='project-business')
     args = parser.parse_args()
     E = APP.parent / 'docs/quality/evidence' / args.feature
     values = json.loads((APP / '.local/environment.json').read_text())
@@ -102,18 +102,21 @@ def main():
       'no_binding_delete',NOT has_table_privilege(current_user,'miniapp_bindings','DELETE'),
       'no_claim_delete',NOT has_table_privilege(current_user,'miniapp_code_claims','DELETE'),
       'disposable_test_databases',(SELECT count(*) FROM pg_database WHERE datname~'^cp_(test|suite|batch|fixture)_'))"""
-    if args.feature in ('file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications'):
+    if args.feature in ('file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'):
         query = query.replace("'schema94',(SELECT count(*)=94", "'schema95',(SELECT count(*)=95")
         query = query.replace("'refund_principal_column'", "'file_batch_table',to_regclass('file_batch_plans') IS NOT NULL,'file_batch_guard',EXISTS(SELECT 1 FROM pg_trigger WHERE tgname='file_batch_plan_guard' AND tgenabled='O' AND NOT tgisinternal),'file_batch_privileges',has_table_privilege(current_user,'file_batch_plans','SELECT') AND has_table_privilege(current_user,'file_batch_plans','INSERT') AND has_table_privilege(current_user,'file_batch_plans','UPDATE') AND NOT has_table_privilege(current_user,'file_batch_plans','DELETE'),'refund_principal_column'")
-    if args.feature in ('document-text', 'office-authoring', 'host-resources', 'resource-notifications'):
+    if args.feature in ('document-text', 'office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'):
         query = query.replace("'schema95',(SELECT count(*)=95", "'schema96',(SELECT count(*)=96")
         query = query.replace("'refund_principal_column'", "'document_selector',file_text_extractor('application/pdf')='document-ocr-v1' AND file_text_extractor('image/png')='document-ocr-v1' AND file_text_extractor('image/jpeg')='document-ocr-v1','document_guard',EXISTS(SELECT 1 FROM pg_trigger WHERE tgname='document_text_source' AND tgenabled='O' AND NOT tgisinternal),'document_columns',(SELECT count(*)=3 FROM information_schema.columns WHERE table_name='file_text_derivations' AND column_name IN ('engine_sha256','page_count','ocr_page_count')),'refund_principal_column'")
-    if args.feature in ('host-resources', 'resource-notifications'):
+    if args.feature in ('host-resources', 'resource-notifications', 'object-retirement'):
         query = query.replace("'schema96',(SELECT count(*)=96", "'schema97',(SELECT count(*)=97")
         query = query.replace("'refund_principal_column'", "'resource_tables',(SELECT count(*)=3 FROM information_schema.tables WHERE table_schema='public' AND table_name IN ('service_resource_sources','service_resource_revisions','service_resource_observations')),'resource_guards',(SELECT count(*)=6 FROM pg_trigger WHERE tgname IN ('service_resource_revision_immutable','service_resource_scope_immutable','resource_head_consistent','resource_revision_consistent','resource_base_valid','resource_observation_immutable') AND tgenabled='O'),'resource_observation_privileges',has_table_privilege(current_user,'service_resource_observations','SELECT') AND has_table_privilege(current_user,'service_resource_observations','INSERT') AND NOT has_table_privilege(current_user,'service_resource_observations','UPDATE') AND NOT has_table_privilege(current_user,'service_resource_observations','DELETE'),'refund_principal_column'")
-    if args.feature == 'resource-notifications':
+    if args.feature in ('resource-notifications', 'object-retirement'):
         query = query.replace("'schema97',(SELECT count(*)=97", "'schema98',(SELECT count(*)=98")
         query = query.replace("'refund_principal_column'", "'resource_health_tables',(SELECT count(*)=2 FROM information_schema.tables WHERE table_schema='public' AND table_name IN ('service_resource_health','service_resource_health_events')),'resource_health_guards',(SELECT count(*)=5 FROM pg_trigger WHERE tgname IN ('resource_health_event_immutable','resource_health_event_basis','resource_health_identity','resource_health_head_consistent','resource_health_event_consistent') AND tgenabled='O'),'resource_health_privileges',has_table_privilege(current_user,'service_resource_health_events','SELECT') AND has_table_privilege(current_user,'service_resource_health_events','INSERT') AND NOT has_table_privilege(current_user,'service_resource_health_events','UPDATE') AND NOT has_table_privilege(current_user,'service_resource_health_events','DELETE'),'refund_principal_column'")
+    if args.feature == 'object-retirement':
+        query = query.replace("'schema98',(SELECT count(*)=98", "'schema99',(SELECT count(*)=99")
+        query = query.replace("'refund_principal_column'", "'retirement_tables',(SELECT count(*)=4 FROM information_schema.tables WHERE table_schema='public' AND table_name IN ('object_retirement_plans','object_retirement_items','object_retirement_barriers','object_retirement_receipts')),'retirement_guards',(SELECT count(*)=6 FROM pg_trigger WHERE tgname IN ('retirement_plan_input_immutable','retirement_plan_state','retirement_item_state','retirement_barrier_immutable','retirement_receipt_immutable','retired_availability_immutable') AND tgenabled='O'),'retirement_receipt_privileges',has_table_privilege(current_user,'object_retirement_receipts','SELECT') AND has_table_privilege(current_user,'object_retirement_receipts','INSERT') AND NOT has_table_privilege(current_user,'object_retirement_receipts','UPDATE') AND NOT has_table_privilege(current_user,'object_retirement_receipts','DELETE'),'refund_principal_column'")
     result = subprocess.run([str(APP / '.tools/pgsql/bin/psql.exe'), '-X', '-A', '-t', '-q', '-v', 'ON_ERROR_STOP=1', '-c', query],
         env=environment, capture_output=True, text=True, encoding='utf-8', timeout=20, creationflags=subprocess.CREATE_NO_WINDOW)
     if result.returncode:
@@ -128,14 +131,14 @@ def main():
     worker_sources = all(json.loads((APP / '.local' / path).read_text()).get('backend_source_sha256') == backend
         for path in ('project-templates-worker-owner.json', 'finance-reports-worker-owner.json'))
     effective = {**os.environ, **values}
-    disabled = values.get('CP_STORAGE_DRIVER') == 'disabled' and effective.get('CP_AGENT_RUNTIME_ENABLED', 'false') in ('false', 'disabled') and not effective.get('CP_TELEGRAM_BOTS') and not effective.get('CP_TELEGRAM_DISPATCH_BOTS') and not any(effective.get(k) for k in ('CP_MULTIPART_CLEANUP_PROVIDERS', 'CP_WECHAT_APP_ID','CP_WECHAT_APP_SECRET','CP_DOUYIN_APP_ID','CP_DOUYIN_APP_SECRET','CP_MINIAPP_IDENTITY_KEY'))
+    disabled = values.get('CP_STORAGE_DRIVER') == 'disabled' and effective.get('CP_AGENT_RUNTIME_ENABLED', 'false') in ('false', 'disabled') and not effective.get('CP_TELEGRAM_BOTS') and not effective.get('CP_TELEGRAM_DISPATCH_BOTS') and not any(effective.get(k) for k in ('CP_ORIGINAL_CLEANUP_PROVIDERS', 'CP_MULTIPART_CLEANUP_PROVIDERS', 'CP_WECHAT_APP_ID','CP_WECHAT_APP_SECRET','CP_DOUYIN_APP_ID','CP_DOUYIN_APP_SECRET','CP_MINIAPP_IDENTITY_KEY'))
     passed = base_status == 0 and common['passed'] and all(actual.values()) and all(ownership.values()) and worker_sources and disabled and common['database']['disposable_test_databases'] == 0
     report = {'passed': bool(passed), 'checked_at': datetime.now(timezone.utc).isoformat(), 'database': common['database'], 'miniapp_metadata': actual,
-        'migration_count': (98 if args.feature == 'resource-notifications' else 97 if args.feature == 'host-resources' else 96 if args.feature in ('document-text', 'office-authoring', 'host-resources') else 95 if args.feature == 'file-batch' else 94), 'ownership': ownership, 'worker_sources_match': worker_sources, 'backend_source_sha256': backend,
+        'migration_count': (99 if args.feature == 'object-retirement' else 98 if args.feature == 'resource-notifications' else 97 if args.feature == 'host-resources' else 96 if args.feature in ('document-text', 'office-authoring', 'host-resources') else 95 if args.feature == 'file-batch' else 94), 'ownership': ownership, 'worker_sources_match': worker_sources, 'backend_source_sha256': backend,
         'integrations_disabled': disabled, 'read_only_inspection': True, 'production_deployment': False,
         'verification_script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     (E / 'development-project-resources.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({'passed': report['passed'], 'migration_count': (98 if args.feature == 'resource-notifications' else 97 if args.feature == 'host-resources' else 96 if args.feature in ('document-text', 'office-authoring', 'host-resources') else 95 if args.feature == 'file-batch' else 94), 'disposable_databases': common['database']['disposable_test_databases'], 'integrations_disabled': disabled}))
+    print(json.dumps({'passed': report['passed'], 'migration_count': (99 if args.feature == 'object-retirement' else 98 if args.feature == 'resource-notifications' else 97 if args.feature == 'host-resources' else 96 if args.feature in ('document-text', 'office-authoring', 'host-resources') else 95 if args.feature == 'file-batch' else 94), 'disposable_databases': common['database']['disposable_test_databases'], 'integrations_disabled': disabled}))
     return 0 if report['passed'] else 1
 
 

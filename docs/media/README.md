@@ -1,5 +1,9 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 原件清理演示 · 132
+
+六张截图、两段实际MP4与两份三截图GIF导览：已知候选、固定观察清单、此前隔离Worker的准确不存在回执。登录／MFA后真实视口，合成对象及夹具时间；不表示真实云删除。
+
 增量131 / Increment131：实际Web与共享Taro H5执行资源告警→本人待办→通知已读仍待处理→打开服务→真实恢复→原始签名历史。6张PNG、2条实际视口MP4和2个明确三截图各2秒导览GIF。仅记录已完成MFA后的隔离合成业务；没有密码、验证码、真实业务资料或外部通道送达声明。
 
 [Web待办](screenshots/resource-notifications-web-workbench.png) · [Web通知](screenshots/resource-notifications-web-read-still-pending.png) · [Web恢复历史](screenshots/resource-notifications-web-recovered-history.png) · [移动待办](screenshots/resource-notifications-mobile-workbench.png) · [移动通知](screenshots/resource-notifications-mobile-read-still-pending.png) · [移动历史](screenshots/resource-notifications-mobile-recovered-history.png)

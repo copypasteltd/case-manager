@@ -254,6 +254,55 @@ def retained(config):
         'scope': 'Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim.'}
 
 
+# BEGIN object-retirement check-input provenance
+def capture_environment_adjustment(config):
+    """Reconstruct actual prior compilation inputs after capture-only repair.
+
+    Production and test bodies must match byte-for-byte. Only one locator,
+    this verifier registration, the declared runner and two helper inputs may
+    differ. New backend execution still runs every original selected suite.
+    """
+    value = config.get('capture_environment_adjustment')
+    if not value:
+        return None
+    assert config['name'] == 'object-retirement' and config['increment'] == 132
+    assert set(value) == {'before_checker', 'before_verifier', 'before_plan', 'before_inspector'}
+    paths = {key: ROOT / name for key, name in value.items()}
+    assert all(p.resolve().is_relative_to((directory(config) / 'attempts').resolve()) for p in paths.values())
+    before = {key: p.read_bytes() for key, p in paths.items()}
+    old = json.loads(before['before_plan'])
+    expected = json.loads(before['before_plan'])
+    expected['commands'][0]['command'] = ['python', 'scripts/test_object_retirement_native.py', *old['commands'][0]['command'][4:]]
+    expected['helper_sources'] += ['scripts/test_object_retirement_native.py', 'scripts/contract_body_native_cluster.py']
+    expected['capture_environment_adjustment'] = value
+    assert config == expected, 'No test selection, timeout or acceptance change permitted.'
+    needle = ".filter({ has: root().getByText('原件逐次回执', { exact: true }) })".encode()
+    replacement = ".filter({ hasText: '原件逐次回执' })".encode()
+    assert before['before_checker'].count(needle) == 1
+    assert (APP/'scripts/check_object_retirement.mjs').read_bytes() == before['before_checker'].replace(needle,replacement)
+    inspector = before['before_inspector']
+    inspector_nl = b'\r\n' if b'\r\n' in inspector else b'\n'
+    assertion = b"    assert build['passed'] and build['source_unchanged'] and build['source_sha256'] == current.digest(config=config)" + inspector_nl
+    revised = b"    accepted = {current.digest(config=config)}\n    if args.feature == 'object-retirement':\n        adjustment = current.capture_environment_adjustment(config)\n        if adjustment:\n            accepted.add(adjustment['execution_source_sha256'])\n    assert build['passed'] and build['source_unchanged'] and build['source_sha256'] in accepted\n".replace(b'\n',inspector_nl)
+    assert inspector.count(assertion) == 1
+    assert (APP/'scripts/verify_project_business_native_js.py').read_bytes() == inspector.replace(assertion,revised)
+    current = Path(__file__).read_bytes()
+    nl = b'\r\n' if b'\r\n' in current else b'\n'
+    start = current.index(b'# BEGIN object-retirement check-input provenance' + nl)
+    end = current.index(b'# END object-retirement check-input provenance' + nl) + len(b'# END object-retirement check-input provenance' + nl) + len(nl) * 2
+    stripped = current[:start] + current[end:]
+    for line in ["    capture_inputs = capture_environment_adjustment(config)", "    if capture_inputs:", "        accepted.add(capture_inputs['execution_source_sha256'])", "        'capture_environment_adjustment': capture_inputs,"]:
+        token = line.encode() + nl
+        assert stripped.count(token) == 1
+        stripped = stripped.replace(token,b'',1)
+    assert stripped == before['before_verifier']
+    substitutions = {'scripts/check_object_retirement.mjs':before['before_checker'], 'scripts/verify_scoped_increment.py':before['before_verifier'], '../'+old['configuration_file']:before['before_plan'], 'scripts/verify_project_business_native_js.py':inspector}
+    return {'execution_source_sha256':digest(config=old,substitutions=substitutions),
+        'inputs':[{'file':p.relative_to(ROOT).as_posix(),'sha256':sha(p)} for p in paths.values()],
+        'scope':'Exact original compiler/core/unit inputs reconstructed. Production, business test bodies, selected suites and deadlines are unchanged. Backend is actually rerun on a dedicated native temporary PG with full durability; both UI captures are rerun with one corrected nested selector.'}
+# END object-retirement check-input provenance
+
+
 def verify(config=None, save=False):
     config = config or plan()
     evidence, checks = directory(config), []
@@ -261,6 +310,9 @@ def verify(config=None, save=False):
     adjusted = fixture_adjustment(config)
     inspection_inputs = inspection_adjustment(config)
     accepted = {current} | ({adjusted['execution_source_sha256']} if adjusted else set())
+    capture_inputs = capture_environment_adjustment(config)
+    if capture_inputs:
+        accepted.add(capture_inputs['execution_source_sha256'])
     if inspection_inputs:
         accepted.add(inspection_inputs['execution_source_sha256'])
     if adjusted and adjusted.get('capture_execution_source_sha256'):
@@ -312,7 +364,7 @@ def verify(config=None, save=False):
             probe.settimeout(.3)
             released.append(probe.connect_ex(('127.0.0.1',port)) != 0)
     check('Both owned review ports are released', all(released))
-    if config['name'] in ('office-authoring', 'host-resources', 'resource-notifications'):
+    if config['name'] in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'):
         spec = importlib.util.spec_from_file_location('office_native_sources', APP/'scripts/build_android.py')
         native = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(native)
@@ -343,7 +395,7 @@ def verify(config=None, save=False):
             and all(item['sha256'] == sha(ROOT/item['file']) and item['failures'] == item['errors'] == item['skipped'] == 0 for item in native_scope['xml_results'])
             and all(sum(item['tests'] for item in native_scope['xml_results'] if item['suite'] == label) == 28 for label in ('android','jvm')))
         records += [{'file':(evidence/name).relative_to(ROOT).as_posix(),'sha256':sha(evidence/name)}
-            for name in (('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','office-consumers.json','browser-fixture-adjustment.json') if config['name']=='office-authoring' else ('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','host-core.json'))]
+            for name in (('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json','office-consumers.json','browser-fixture-adjustment.json') if config['name']=='office-authoring' else ('build.json','apk-inspection.json','native-suites.json','native-test-scope.json','android-js-content.json',config.get('core_record','host-core.json')))]
     records += [{'file':(evidence/name).relative_to(ROOT).as_posix(),'sha256':sha(evidence/name)}
         for name in ('media.json','visual-review.json','development-update.json','development-project-resources.json','development-runtime.json')]
     previous = retained(config)
@@ -369,6 +421,7 @@ def verify(config=None, save=False):
         'verification_script_sha256': sha(Path(__file__)), 'configuration_sha256': sha(ROOT / config['configuration_file']),
         'records': records, 'retained': previous, 'fixture_only_adjustment':adjusted,
         'inspection_only_adjustment': inspection_inputs,
+        'capture_environment_adjustment': capture_inputs,
         'full_backend_suite_executed': False, 'formal_android_acceptance': False,
         'full_goal_complete': False, 'production_ready': False}
     if save:

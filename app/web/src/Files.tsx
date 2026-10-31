@@ -10,6 +10,7 @@ import { UploadButton } from './UploadQueue';
 import { OfficeAuthorButton } from './OfficeAuthor';
 import { HistoryRestores, RestoreVersionButton } from './HistoryRestores';
 import { useRetention, RetentionPanel, RetentionVersionActions } from './Retention';
+import { ObjectRetirement } from './ObjectRetirement';
 import FileComparisonPanel from './FileComparison';
 import { ScopeTransfers } from './ScopeTransfers';
 import { BatchFileList, FileBatchHistory } from './FileBatches';
@@ -19,7 +20,7 @@ type Directory = Schemas['Folder'];
 type StoredFile = Schemas['File'];
 type FileVersion = Schemas['FileVersion'];
 const folderURL = (id?: string | null) => id ? '/files/folders/' + id : '/files';
-const stateLabels: Record<string, string> = { pending: '待扫描', clean: '扫描通过', blocked: '已阻断', unscannable: '无法扫描', waived: '经授权放行', available: '主端可用', quarantined: '已隔离', missing: '缺失', queued: '等待复制', copying: '复制中', verifying: '校验中', verified: '已校验', retry_wait: '等待重试', failed: '复制失败' };
+const stateLabels: Record<string, string> = { pending: '待扫描', clean: '扫描通过', blocked: '已阻断', unscannable: '无法扫描', waived: '经授权放行', available: '主端可用', quarantined: '已隔离', retiring: '原件清理中', purged: '原件已清理', missing: '缺失', queued: '等待复制', copying: '复制中', verifying: '校验中', verified: '已校验', retry_wait: '等待重试', failed: '复制失败' };
 function useCommandKey() {
   const last = useRef({ body: '', key: '' });
   return (body: unknown) => {
@@ -118,6 +119,7 @@ export function FileDetail() {
     <FileComparisonPanel key={value.id + ':' + value.version} file={value} versions={versions} more={!!history.hasNextPage} loading={history.isFetchingNextPage} loadMore={() => void history.fetchNextPage()} unavailable={!!file.error || !!history.error} />
     <HistoryRestores file={value} />
     <RetentionPanel file={value} overview={retention.data} loading={retention.isPending} error={retention.error} />
+    {retention.data?.can_manage && !retention.error && me.data && <ObjectRetirement key={[value.id,me.data.user.id,me.data.authorization_version].join(':')} file={value} me={me.data} />}
     {moving && <MoveResource kind="file" resource={value} onClose={() => setMoving(false)} />}{action && <FileStateAction file={value} action={action} onClose={() => setAction(null)} />}
   </>;
 }
@@ -129,7 +131,7 @@ function VersionCard({ version, current, canRetry, active, file, canManageRetent
   const canDownload = active && version.availability === 'available' && ['clean', 'waived'].includes(version.scan_state) && version.replicas.some(replica => replica.state === 'verified');
   return <article className="panel version-card"><div className="section-heading"><h3>内容版本 {version.seq}{current && <span className="badge neutral">当前正式版</span>}</h3><small className="muted">{date(version.created_at)}</small></div><div className="version-actions"><RestoreVersionButton file={file} version={version} /><RetentionVersionActions file={file} version={version} canManage={canManageRetention} /><button className="button secondary" onClick={() => setDownload(true)} disabled={!canDownload} title={downloadReason || undefined}><Download size={16} />下载此内容版本</button>{downloadReason && <small className="muted">{downloadReason}</small>}</div><dl className="file-facts"><div><dt>原文件名</dt><dd>{version.original_name ?? '历史记录未提供'}</dd></div><div><dt>大小</dt><dd>{BigInt(version.size_bytes).toLocaleString('zh-HK')} 字节</dd></div><div><dt>媒体类型</dt><dd>{version.media_type}</dd></div><div><dt>扫描与主端</dt><dd>{stateLabels[version.scan_state]} · {stateLabels[version.availability]}</dd></div><div className="wide"><dt>SHA-256</dt><dd><code>{version.sha256}</code></dd></div><div><dt>来源</dt><dd>{({ upload: "上传", restore: "历史恢复" } as Record<string,string>)[version.source] ?? version.source}</dd></div><div><dt>双云状态</dt><dd>{version.replica_state ? stateLabels[version.replica_state] : '尚无副本记录'}</dd></div></dl><div className="replica-grid">{(['oss', 'r2'] as const).map(provider => {
     const replicas = version.replicas.filter(item => item.provider === provider);
-    return <div className="replica-status" key={provider}><strong>{provider === 'oss' ? '阿里云 OSS' : 'Cloudflare R2'}</strong>{replicas.length ? replicas.map(replica => <div key={replica.id}><span className={'badge ' + (replica.state === 'verified' ? 'success' : ['failed', 'missing'].includes(replica.state) ? 'warning' : 'neutral')}>{stateLabels[replica.state]}</span><small>校验时间：{date(replica.verified_at)}</small>{replica.error_code && <small>状态代码：{replica.error_code}</small>}{canRetry && ['failed', 'missing'].includes(replica.state) && <button className="text-button" onClick={() => setRetry(replica)}>重新安排副本复制<ArrowRight size={15} /></button>}</div>) : <small>尚无副本记录</small>}</div>;
+    return <div className="replica-status" key={provider}><strong>{provider === 'oss' ? '阿里云 OSS' : 'Cloudflare R2'}</strong>{replicas.length ? replicas.map(replica => <div key={replica.id}><span className={'badge ' + (replica.state === 'verified' ? 'success' : ['failed', 'missing'].includes(replica.state) ? 'warning' : 'neutral')}>{stateLabels[replica.state]}</span><small>校验时间：{date(replica.verified_at)}</small>{replica.error_code && <small>状态代码：{replica.error_code}</small>}{canRetry && version.availability === 'available' && ['failed', 'missing'].includes(replica.state) && <button className="text-button" onClick={() => setRetry(replica)}>重新安排副本复制<ArrowRight size={15} /></button>}</div>) : <small>尚无副本记录</small>}</div>;
   })}</div>{version.scan_state === 'waived' && <p className="notice warning">此版本经扫描例外审核放行，尚未取得完整安全扫描通过的结论。</p>}{download && <DownloadDialog version={version} onClose={() => setDownload(false)} />}{retry && <ReplicaRetryDialog replica={retry} fileID={version.file_id} onClose={() => setRetry(null)} />}</article>;
 }
 

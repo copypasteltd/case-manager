@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-10-30T23:20:07.250Z",
+  "finished_at": "2026-10-30T23:20:30.324Z",
+  "checks": [
+    "Current file grants expose the actual paginated candidate and retained completed plan through native API."
+  ],
+  "source_count": 956,
+  "source_sha256": "2ed345abc3b696702c2383174fa7dfd9af14ddb292b7760337d68617e6572ffb",
+  "source_after_sha256": "2ed345abc3b696702c2383174fa7dfd9af14ddb292b7760337d68617e6572ffb",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "The input did not match the regular expression /^\\/files\\/folders\\/[0-9a-f-]+$/. Input:\n\n'/files/cabf6651-8b83-4d3c-b97f-6c03c9c32342'\n",
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "7dc9133f0cbb23dbbb67f02b77e7b79f4bdd412b2c1da7e7952ba7997e9e8ff1",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "7dc9133f0cbb23dbbb67f02b77e7b79f4bdd412b2c1da7e7952ba7997e9e8ff1",
+  "build_source_unchanged": true
+}

@@ -1,0 +1,3 @@
+# Native child output forwarding
+
+The first dedicated-cluster wrapper left Go stdout implicit under a hidden native Windows process. The source-bound log contained no case records. Its exact owned Go process was explicitly stopped; the owned cluster reported zero leftover fixtures and was cleanly stopped. No suite or child case is counted as passed. The wrapper now explicitly forwards the binary stdout handle and combines stderr, matching the successful diagnostic. This changes only check-process output handling; production, selected business suites, fixture deadlines and PG durability remain unchanged. Final checks actually execute again. Original failed record, helper bytes and native stop attestation are retained; the empty/private log keeps its original SHA-256.

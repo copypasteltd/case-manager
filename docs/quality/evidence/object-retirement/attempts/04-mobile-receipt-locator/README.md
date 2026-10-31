@@ -1,0 +1,5 @@
+# Capture selector and native check environment
+
+The shared H5 page displayed actual receipt rows, as the retained failure image shows. The checker incorrectly embedded the entire active-page root inside a relative has locator. Only that selector is corrected to the innermost section containing the receipt heading. Production, unit tests and business assertions are unchanged. The passing Web capture before this helper correction is retained separately and both clients are captured again.
+
+Compilation/core/unit records remain bound to their exact original inputs. The verifier reconstructs those bytes from these snapshots and requires all production and business-test inputs to remain identical; it does not relabel their old digests as current. The backend command uses the existing native temporary-cluster helper with full fsync/synchronous-commit/full-page-writes, unchanged ten selected suites and original deadlines. Actual new backend execution and owned-cluster cleanup have separate records. No VM, emulator, development-cluster restart, durability relaxation or network test is introduced.

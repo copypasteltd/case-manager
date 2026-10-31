@@ -1,5 +1,21 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Current local checks: ten HTTP/PG suites (69 passing records),419 Web cases,504 shared-mobile cases and182 core test records pass. Build, cached-native and actual cloud/platform/production acceptance boundaries are recorded separately.
+
+Increment132 closes known historical-original and committed-upload-draft retention: exact inventory → immutable plan → at least24-hour observation → recent-MFA human approval → permanent dependency/key barrier → dedicated provider execution → immutable attempt receipts. Logical capacity is released only after both historical originals are confirmed absent. Unknown outcomes reconcile the exact original on retry; cancellation never restores deleted content.
+
+Usage: open file details → “盘点历史与草稿原件”, review retention/current-version/reference/hold blockers, explicitly select one source and enter a reason. After observation, review the digest, refresh MFA and approve; inspect exact provider receipts, retry eligible failures or stop remaining work. All four clients share this workflow. Cloud cleanup is disabled by default; API holds location metadata only, while a dedicated native worker uses independent credentials. OSS requires an exact non-null native version; R2 requires operator-attested exclusive immutable managed storage, without claiming documented conditional-delete CAS.
+
+Normal schema98→99 preserves original facts. All23 packages (14 P0/9 P1), five exclusions and eight draft Skills remain explicit. Completed-but-uncommitted drafts, secretary recovery sources, unknown orphans/derived objects, renewed authorization and actual cloud acceptance stay open.
+
+[实现与使用 / Implementation](development/132-known-object-retirement.md) · [实际核验 / Checks](quality/132-known-object-retirement-verification.md) · [本轮及全部23项 / Remaining work](delivery/05-functional-closure-132.md)
+
+![原件固定观察清单 / Fixed original observation](media/screenshots/object-retirement-web-observation.png)
+
+[Web实际录制 / Web recording](media/videos/object-retirement-web.mp4) · [共享H5录制 / Shared H5 recording](media/videos/object-retirement-mobile.mp4) · [三截图导览 / Screenshot tour](media/gifs/object-retirement-mobile.gif)
+
+## Increment131 · Previously published / 原发布记录
+
 Increment131 connects resource alerts to the actual owner’s inbox and personal workbench, then clears work on real recovery. Threshold breaches, readonly filesystems and expired/missing collection evidence require attention. Repeated same-state samples do not spam recipients. Read acknowledgement changes readership only; recovery creates a new unread delivery. Disablement, archive, reassignment and revocation recalculate current responsibility without redirecting old queued events.
 
 Usage: explicitly publish resource monitoring in service details; open the personal resource-work card or the “主机资源” notification category; use “资源状态记录” to inspect the original owner, configuration, state and signed observation. Historical normal status is not proof of current health, and event creation is distinct from completed delivery.

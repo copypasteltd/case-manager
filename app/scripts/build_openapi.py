@@ -118,6 +118,15 @@ add("CleanupPlan",cleanup_plan,tuple(cleanup_plan))
 cleanup_receipt = {"id":ID,"generation":VERSION,"attempt":VERSION,"outcome":enum("started","confirmed_absent","retry_scheduled","failed","blocked"),
     "error_code":nullable(NAME),"created_at":TIME}
 add("CleanupReceipt",cleanup_receipt,tuple(cleanup_receipt))
+retirement_candidate={"kind":enum("history","committed_draft"),"target_id":ID,"file_id":ID,"file_version":VERSION,
+    "name":TEXT,"size_bytes":BYTES,"seq":VERSION,"policy":nullable(ref("RetentionRule")),"trash_policy":nullable(ref("RetentionRule")),
+    "retain_until":nullable(TIME),"source_sha256":HASH,"eligible":{"type":"boolean"},"blocking_reasons":array(NAME)}
+add("RetirementCandidate",retirement_candidate,tuple(retirement_candidate))
+add("RetirementCreate",{"expected_file_version":VERSION,"kind":enum("history","committed_draft"),"target_id":ID,"reason":NAME},("expected_file_version","kind","target_id","reason"))
+retirement_item={**{k:v for k,v in cleanup_item.items() if k!="upload_id"},"provider":enum("oss","r2"),"ordinal":{"type":"integer","minimum":0,"maximum":1}}
+add("RetirementItem",retirement_item,tuple(retirement_item))
+retirement_plan={**cleanup_plan,"state":enum("observing","approved","cancelled","completed"),"snapshot":ref("RetirementCandidate"),"items":array(ref("RetirementItem"),minItems=1,maxItems=2)}
+add("RetirementPlan",retirement_plan,tuple(retirement_plan))
 add("ResourceRef", {"type": NAME, "id": ID, "version_id": nullable(ID)}, ("type", "id"))
 add("CommandResult", {"operation_id": ID, "resource": ref("ResourceRef"),
     "committed": {"type": "boolean"}, "state": NAME, "job_id": nullable(ID)},
@@ -309,7 +318,7 @@ add("FileVersion", {"id": ID, "file_id": ID, "seq": VERSION, "base_version_id": 
     "restored_from_version_id": nullable(ID), "original_name": nullable(NAME), "size_bytes": BYTES, "sha256": HASH, "media_type": NAME, "created_at": TIME,
     "source": NAME, "author_id": ID, "executor_id": ID, "scan_state": enum("pending", "clean", "blocked", "unscannable", "waived"),
     "scan_waiver_ref": nullable(ID),
-    "availability": enum("available", "missing", "quarantined"),
+    "availability": enum("available", "missing", "quarantined", "retiring", "purged"),
     "replica_state": nullable(REPLICA_STATE), "replicas": array(ref("FileReplica"))},
     ("id", "file_id", "seq", "base_version_id", "original_name", "size_bytes", "sha256", "media_type", "created_at",
         "source", "author_id", "executor_id", "scan_state", "scan_waiver_ref", "availability", "replica_state", "replicas", "restored_from_version_id"))
@@ -1632,6 +1641,14 @@ operation("/upload-cleanup-plans/{id}/approve","post","approveMultipartCleanupPl
 operation("/upload-cleanup-plans/{id}/cancel","post","cancelMultipartCleanupPlan","CleanupPlan","CleanupDecision")
 operation("/upload-cleanup-items/{id}/retry","post","retryMultipartCleanupItem","CleanupPlan","UploadFinalize",202)
 operation("/upload-cleanup-items/{id}/receipts","get","listMultipartCleanupReceipts","CleanupReceipt",listing=True)
+operation("/files/{id}/object-retirement-candidates","get","listObjectRetirementCandidates","RetirementCandidate",listing=True)
+operation("/files/{id}/object-retirement-plans","get","listObjectRetirementPlans","RetirementPlan",listing=True)
+operation("/files/{id}/object-retirement-plans","post","createObjectRetirementPlan","RetirementPlan","RetirementCreate",201)
+operation("/object-retirement-plans/{id}","get","readObjectRetirementPlan","RetirementPlan")
+operation("/object-retirement-plans/{id}/approve","post","approveObjectRetirementPlan","RetirementPlan","CleanupDecision",202)
+operation("/object-retirement-plans/{id}/cancel","post","cancelObjectRetirementPlan","RetirementPlan","CleanupDecision")
+operation("/object-retirement-items/{id}/retry","post","retryObjectRetirementItem","RetirementPlan","UploadFinalize",202)
+operation("/object-retirement-items/{id}/receipts","get","listObjectRetirementReceipts","CleanupReceipt",listing=True)
 operation("/files/{id}/history-restores", "get", "listHistoryRestores", "HistoryRestore", listing=True)
 operation("/history-restores/{id}", "get", "getHistoryRestore", "HistoryRestore")
 operation("/history-restores/{id}/commit", "post", "commitHistoryRestore", "FileCommitResult", "HistoryRestoreCommit", code=201)

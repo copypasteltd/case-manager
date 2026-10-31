@@ -62,6 +62,9 @@ func run(logger *slog.Logger) error {
 	if command == "worker-multipart-cleanup" {
 		return runMultipartCleanupWorker(ctx, logger)
 	}
+	if command == "worker-original-cleanup" {
+		return runOriginalCleanupWorker(ctx, logger)
+	}
 	if command == "worker-file-text" {
 		return runTextWorker(ctx, logger)
 	}
@@ -226,6 +229,10 @@ func run(logger *slog.Logger) error {
 	if err != nil {
 		return &startupError{err.Error()}
 	}
+	originalCleanupTargets, err := storageconfig.LoadOriginalCleanupTargets()
+	if err != nil {
+		return &startupError{err.Error()}
+	}
 	downloads, err := storageconfig.LoadDownloads()
 	if err != nil {
 		return &startupError{err.Error()}
@@ -259,7 +266,7 @@ func run(logger *slog.Logger) error {
 		return err
 	}
 	projects := &project.Service{DB: db, Commands: platform.Commands{DB: db}, Pager: platform.Pager{Key: c.CursorKey}}
-	api := &httpapi.Server{DB: db, Config: c, Identity: identities, Projects: projects, Contract: validator, Logger: logger, Storage: storage, MultipartCleanup: cleanupTargets, Downloads: downloads, AgentFileReaders: agentReaders, AgentDraftWriter: agentDrafts}
+	api := &httpapi.Server{DB: db, Config: c, Identity: identities, Projects: projects, Contract: validator, Logger: logger, Storage: storage, MultipartCleanup: cleanupTargets, OriginalCleanup: originalCleanupTargets, Downloads: downloads, AgentFileReaders: agentReaders, AgentDraftWriter: agentDrafts}
 	api.Telegram = &telegram.Service{DB: db, Config: c, Bots: telegramBots}
 	server := &http.Server{Addr: c.HTTPAddr, Handler: api.Handler(), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 30 * time.Second, WriteTimeout: 30 * time.Second, IdleTimeout: 90 * time.Second, MaxHeaderBytes: 32 << 10}
 	failures := make(chan error, 1)

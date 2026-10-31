@@ -211,7 +211,7 @@ func reserveFileCapacity(ctx context.Context, tx pgx.Tx, org string, size int64)
 	if err != nil {
 		return err
 	}
-	err = tx.QueryRow(ctx, `SELECT coalesce((SELECT sum(size_bytes) FROM file_versions WHERE org_id=$1),0)::bigint,
+	err = tx.QueryRow(ctx, `SELECT coalesce((SELECT sum(size_bytes) FROM file_versions WHERE org_id=$1 AND availability<>'purged'),0)::bigint,
         (coalesce((SELECT sum(size_bytes) FROM upload_sessions WHERE org_id=$1 AND state IN ('created','uploading','finalizing','verifying','blocked','ready')
             AND expires_at>clock_timestamp()),0)+coalesce((SELECT sum(size_bytes) FROM file_history_restores WHERE org_id=$1
             AND state IN ('queued','copying','verifying','retry_wait','ready') AND expires_at>clock_timestamp()),0))::bigint`, org).Scan(&used, &reserved)

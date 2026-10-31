@@ -36,6 +36,7 @@ type Server struct {
 	Logger           *slog.Logger
 	Storage          *files.UploadBackend
 	MultipartCleanup map[string]*files.CleanupBackend
+	OriginalCleanup  map[string]*files.OriginalCleanupBackend
 	Downloads        map[string]*files.DownloadBackend
 	AgentFileReaders map[string]*files.AgentTextBackend
 	AgentDraftWriter *files.AgentDraftBackend

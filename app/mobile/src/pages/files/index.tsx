@@ -12,6 +12,7 @@ import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, State, bytes, da
 import { SelectField, TextField } from '../business/controls';
 import { FileEditor } from './forms';
 import { MultipartCleanup } from './cleanup';
+import { ObjectRetirement } from './retirement';
 import { FileComparisonPanel } from './comparison';
 import { ScopeTransfers } from './scope-transfers';
 import { ReplicaRetry } from './replica-retry';
@@ -48,6 +49,7 @@ export default function FilesPage() {
         : <DirectoryContents current={current} me={me} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}
     </>}
     {!page.loading && !page.error && current?.file && me && !editor && <FileBatchHistory key={current.file.id + ':' + me.authorization_version} fileID={current.file.id} me={me} />}
+    {!page.loading && !page.error && current?.file && me?.actions.includes('file.retention.manage') && !editor && <ObjectRetirement key={[current.file.id,me.user.id,me.authorization_version].join(':')} file={current.file} me={me} />}
     <Action secondary onClick={() => { setEditor(undefined); void page.reload(); }} loading={page.loading}>刷新当前资料</Action>
   </Page>;
 }
@@ -98,7 +100,7 @@ function FileDetails({ file, authorization, onEdit }: { file: StoredFile; author
       <Text>{version.original_name ?? '历史原文件名未提供'}</Text><Text>{bytes(version.size_bytes)} · {date(version.created_at)}</Text>
       <View className='cp-choice'><State value={version.scan_state} /><State value={version.availability} /></View>
       <Text className='cp-muted cp-small'>SHA-256</Text><Text className='cp-code' selectable>{version.sha256}</Text>
-      {version.replicas.map(replica => <View key={replica.id}><Text>{replica.provider === 'oss' ? 'OSS原件' : 'R2副本'} · </Text><State value={replica.state} />{file.can_update && file.state === 'active' && !retry && ['failed', 'missing'].includes(replica.state) && <Action secondary onClick={() => { setReceipt(undefined); setRetry(replica); }}>重新安排副本复制</Action>}</View>)}
+      {version.replicas.map(replica => <View key={replica.id}><Text>{replica.provider === 'oss' ? 'OSS原件' : 'R2副本'} · </Text><State value={replica.state} />{file.can_update && file.state === 'active' && version.availability === 'available' && !retry && ['failed', 'missing'].includes(replica.state) && <Action secondary onClick={() => { setReceipt(undefined); setRetry(replica); }}>重新安排副本复制</Action>}</View>)}
       <Action secondary disabled={file.state !== 'active' || version.availability !== 'available' || !['clean', 'waived'].includes(version.scan_state)} onClick={() => readVersion(file.id, version.id)}>查阅准确内容版本 {version.seq}</Action>
     </Fact>) : <Empty>此文件尚无正式内容版本。</Empty>}
       {versions.next && <Action secondary loading={versions.moreBusy} onClick={() => void versions.more()}>加载更多历史版本</Action>}

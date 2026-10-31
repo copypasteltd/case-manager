@@ -206,7 +206,7 @@ func assessVersion(ctx context.Context, tx pgx.Tx, org string, f File, id string
 		}
 	}
 	out.EligibleForReview = len(out.BlockingReasons) == 0
-	// No executor is present until backup catalogs and all business reference
-	// writers participate in the deletion barrier. This is not a delete API.
+	// This endpoint remains a read-only assessment. Known originals use the
+	// separate fixed-plan retirement workflow and permanent dependency barrier.
 	return out, nil
 }

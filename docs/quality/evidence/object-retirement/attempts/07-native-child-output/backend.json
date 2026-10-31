@@ -1,0 +1,35 @@
+{
+  "passed": false,
+  "id": "backend",
+  "started_at": "2026-10-31T00:01:51.503593+00:00",
+  "finished_at": "2026-10-31T00:05:00.414919+00:00",
+  "elapsed_seconds": 188.908,
+  "command": [
+    "python",
+    "scripts/test_object_retirement_native.py",
+    "-run",
+    "^(TestObjectRetirementFourClients|TestCommittedDraftRetirement|TestObjectRetirementProtections|TestObjectRetirementRetriesAndStop|TestObjectRetirementAtomicityAndCapacity|TestRetentionManagement|TestHistoryRestoration|TestCrossCloudReplicas|TestUploadPromotionAndCommit|TestMultipartCleanupFourHumanClients)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "go_json",
+  "source_sha256": "082990952198119c7de705f52b11912eec63003952916d9eb81e7a242b9f5b31",
+  "source_after_sha256": "082990952198119c7de705f52b11912eec63003952916d9eb81e7a242b9f5b31",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [],
+    "pass": 0,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [],
+  "private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "parser_error": "AssertionError",
+  "runner_script_sha256": "9610f38ed06be04c8db440473f610c62939febeecf5668b373b86fd9ce4ad2ac",
+  "scope": "Actual native HTTP/PostgreSQL four-client known-original retirement, protection, audit rollback, exact absence reconciliation, capacity and committed-draft journeys plus retained lifecycle regression suites. No live cloud acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

@@ -1,0 +1,3 @@
+# Development-cluster preparation explicitly stopped
+
+The unchanged development-cluster retry completed seven child cases and no complete suite, then was explicitly stopped after its native Go process identity was checked. No business assertion failed. Shared-disk fixture creation still took tens of seconds; the exact previously slow case passed on a separately owned native temporary PostgreSQL in6.33 seconds (9.82 seconds including compilation/setup), with full durability and unchanged cleanup deadline. The ten original suites are run again on that native temporary cluster. This incomplete result is retained as interrupted preparation, never counted as a pass. Only its individually proven inactive synthetic database is removed; development PostgreSQL is preserved.

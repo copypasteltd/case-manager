@@ -51,6 +51,13 @@ func (s *Service) RetryReplica(ctx context.Context, c core.Command, id string, i
 		if r.Version != in.ExpectedVersion {
 			return core.Result{}, core.Conflict()
 		}
+		var availability string
+		if err = tx.QueryRow(ctx, "SELECT availability FROM file_versions WHERE org_id=$1 AND id=$2 FOR SHARE", c.Actor.OrgID, r.VersionID).Scan(&availability); err != nil {
+			return core.Result{}, err
+		}
+		if availability == "retiring" || availability == "purged" {
+			return core.Result{}, core.Fail(409, "ORIGINAL_RETIRED", "此历史原件已进入不可逆清理，不能重新安排复制")
+		}
 		if r.State == "verified" {
 			return core.Result{}, core.Fail(409, "REPLICA_ALREADY_VERIFIED", "副本已有完整验证证据")
 		}

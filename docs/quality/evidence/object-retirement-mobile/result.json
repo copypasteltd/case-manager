@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T00:03:54.443Z",
+  "finished_at": "2026-10-31T00:04:12.149Z",
+  "checks": [
+    "Current file grants expose the actual paginated candidate and retained completed plan through native API.",
+    "Explicit selection creates one immutable observing plan; the page shows its exact digest and observation window.",
+    "An earlier synthetic worker result is read from immutable native-PG receipt rows, with started and confirmed-absence outcomes.",
+    "Explicit refresh rereads the selected plan and receipts without resubmitting the cleanup command."
+  ],
+  "source_count": 986,
+  "source_sha256": "ecdf2a5eafc35f7d8b2cfe46412ba9e531940c7ca78316ce37d3b60603793eb5",
+  "source_after_sha256": "ecdf2a5eafc35f7d8b2cfe46412ba9e531940c7ca78316ce37d3b60603793eb5",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "a2ec79ff56983321899343afb9f2f76a5171a20d1511d75f3daf1261df931306",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "a2ec79ff56983321899343afb9f2f76a5171a20d1511d75f3daf1261df931306",
+  "build_source_unchanged": true
+}

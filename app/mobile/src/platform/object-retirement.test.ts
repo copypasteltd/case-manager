@@ -1,0 +1,14 @@
+import { describe,it } from 'node:test';
+import { strict as assert } from 'node:assert';
+import { checkedRetirementPlan,retirementCreate,retirementDecision } from '../../../packages/contracts/src/object-retirement';
+import { retirementID as id,retirementNow as now,retirementPlan as plan } from '../../../packages/contracts/test/object-retirement-fixture';
+describe('known-original retirement boundaries',() => {
+ it('pins file, target and immutable plan identity',() => { const p=plan();assert.equal(checkedRetirementPlan(p,id(3),p.id),p);assert.throws(() => checkedRetirementPlan(p,id(99)));assert.throws(() => checkedRetirementPlan(p,id(3),id(99))); });
+ it('requires both unique providers for historical originals',() => {const p=plan();assert.throws(() => checkedRetirementPlan({...p,items:p.items.slice(0,1)},id(3)));assert.throws(() => checkedRetirementPlan({...p,items:[p.items[0],{...p.items[1],provider:'oss'}]},id(3)));});
+ it('rejects replaced item membership and invalid ordering',() => {const p=plan();assert.throws(() => checkedRetirementPlan({...p,items:[p.items[1],p.items[0]]},id(3)));assert.throws(() => checkedRetirementPlan({...p,items:[p.items[0],{...p.items[1],id:p.items[0].id}]},id(3)));});
+ it('keeps observation mandatory',() => {const p=plan();assert.throws(() => checkedRetirementPlan({...p,ready_after:p.created_at},id(3)));assert.throws(() => retirementDecision(p,'review',true,'approve',0));assert.throws(() => retirementDecision(p,'review',true,'approve',Date.parse(p.expires_at)));});
+ it('requires explicit human impact acknowledgement and reason',() => {assert.throws(() => retirementDecision(plan(),'review',false,'approve',now));assert.throws(() => retirementDecision(plan(),'',true,'approve',now));assert.equal(retirementDecision(plan(),'review',true,'approve',now).snapshot_sha256,plan().snapshot_sha256);});
+ it('never labels partial work complete',() => {const p=plan();assert.throws(() => checkedRetirementPlan({...p,state:'completed'},id(3)));assert.throws(() => checkedRetirementPlan({...p,items:[{...p.items[0],state:'succeeded'},p.items[1]]},id(3)));});
+ it('permits stopping while preserving already confirmed results',() => {const p=plan();const partial={...p,state:'approved' as const,items:[{...p.items[0],state:'succeeded' as const,confirmed_at:p.ready_after},p.items[1]]};assert.equal(retirementDecision(partial,'stop remaining',true,'cancel',now).expected_version,1);assert.throws(() => retirementDecision({...p,state:'completed'},'stop',true,'cancel',now));});
+ it('does not convert protected sources into a new selection',() => {const c=plan().snapshot;assert.throws(() => retirementCreate({...c,eligible:false},'review'));assert.throws(() => retirementCreate({...c,blocking_reasons:['CURRENT_VERSION']},'review'));assert.deepEqual(retirementCreate(c,'  review  '),{expected_file_version:3,kind:'history',target_id:id(2),reason:'review'});});
+});

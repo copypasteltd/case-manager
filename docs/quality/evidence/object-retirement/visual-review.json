@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T00:07:34.929024+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/object-retirement-web-inventory.png",
+      "sha256": "db3c8540432a0743da47a8eb5e40ed4693829ddf899ffc83c0f016ca133790f9",
+      "reviewed": true,
+      "dimensions": [
+        1440,
+        1100
+      ],
+      "review": "Actual post-MFA viewport: candidates/protection reasons, observing digest/window or completed dual-provider state with real PG receipt row. Shared H5 long-page viewport is explicitly bounded."
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-web-observation.png",
+      "sha256": "5f95d007a1f743996e15051502dcb1af7cef8ec88cad56e47c79deeb37e9d879",
+      "reviewed": true,
+      "dimensions": [
+        1440,
+        1100
+      ],
+      "review": "Actual post-MFA viewport: candidates/protection reasons, observing digest/window or completed dual-provider state with real PG receipt row. Shared H5 long-page viewport is explicitly bounded."
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-web-receipts.png",
+      "sha256": "f66babbdfa33b0fb27f49d19436f0b22a961c13f3cb9180c116ffbab7dc8858d",
+      "reviewed": true,
+      "dimensions": [
+        1440,
+        1100
+      ],
+      "review": "Actual post-MFA viewport: candidates/protection reasons, observing digest/window or completed dual-provider state with real PG receipt row. Shared H5 long-page viewport is explicitly bounded."
+    },
+    {
+      "file": "docs/media/videos/object-retirement-web.mp4",
+      "sha256": "9faa298c3ed20418ba7029a5a9dfbf3a1135592aa04451052b8d8a69c97c2a2b",
+      "bytes": 222585,
+      "reviewed": true,
+      "review": "Actual beginning/middle/end decoded pixels inspected at5%,50%,95% of the native capture duration. Short fast interaction recording, no credential fields, no model/device/live-cloud claim."
+    },
+    {
+      "file": "docs/media/gifs/object-retirement-web.gif",
+      "sha256": "05d5062b1d261d0183ef88f87f9b7cdcd814450e7d3d4edfeca32469d605790e",
+      "bytes": 153756,
+      "reviewed": true,
+      "review": "All three actual screenshot scenes inspected at0.5,2.5,4.5 seconds; disclosed screenshot tour, six seconds total."
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-mobile-inventory.png",
+      "sha256": "7582f4a06f59a98be6438c05e88d6249538de85ae5851edeed4cde2994785805",
+      "reviewed": true,
+      "dimensions": [
+        390,
+        900
+      ],
+      "review": "Actual post-MFA viewport: candidates/protection reasons, observing digest/window or completed dual-provider state with real PG receipt row. Shared H5 long-page viewport is explicitly bounded."
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-mobile-observation.png",
+      "sha256": "6a10b6ae08899acf036d8423b73ddee435ec4bc376668134708fb97a9b6e84bb",
+      "reviewed": true,
+      "dimensions": [
+        390,
+        900
+      ],
+      "review": "Actual post-MFA viewport: candidates/protection reasons, observing digest/window or completed dual-provider state with real PG receipt row. Shared H5 long-page viewport is explicitly bounded."
+    },
+    {
+      "file": "docs/media/screenshots/object-retirement-mobile-receipts.png",
+      "sha256": "5ae41370d16a076bd07c918fc36b24a29816c8056e38ed6fb2094b7d31c94a0f",
+      "reviewed": true,
+      "dimensions": [
+        390,
+        900
+      ],
+      "review": "Actual post-MFA viewport: candidates/protection reasons, observing digest/window or completed dual-provider state with real PG receipt row. Shared H5 long-page viewport is explicitly bounded."
+    },
+    {
+      "file": "docs/media/videos/object-retirement-mobile.mp4",
+      "sha256": "323d438324fbdbd434d1546a8f7e576eec89d8169ae7c63d80f81424d7b82ad8",
+      "bytes": 112867,
+      "reviewed": true,
+      "review": "Actual beginning/middle/end decoded pixels inspected at5%,50%,95% of the native capture duration. Short fast interaction recording, no credential fields, no model/device/live-cloud claim."
+    },
+    {
+      "file": "docs/media/gifs/object-retirement-mobile.gif",
+      "sha256": "605fcce07f2bec8469af3ddaa3e8960ea198eb9dfffde7991a44435354aaf0d9",
+      "bytes": 82341,
+      "reviewed": true,
+      "review": "All three actual screenshot scenes inspected at0.5,2.5,4.5 seconds; disclosed screenshot tour, six seconds total."
+    }
+  ],
+  "contact_sampling": [
+    {
+      "client": "web",
+      "private_contact_sha256": "eb9dcac679e5ece4cdb66e45bc5fc34a9901823d875ee50c842afbbf2038a4d6",
+      "video_sample_fractions": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "gif_seconds": [
+        0.5,
+        2.5,
+        4.5
+      ]
+    },
+    {
+      "client": "mobile",
+      "private_contact_sha256": "689eae4cba914b1cf18eb526f6e7c760d2481fa6f75b6368462acc1418486695",
+      "video_sample_fractions": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "gif_seconds": [
+        0.5,
+        2.5,
+        4.5
+      ]
+    }
+  ],
+  "scope": "Six actual PNG viewports, both MP4 decoded samples and all three scenes from each screenshot-tour GIF visually inspected. Synthetic providers and fixture clock; no actual cloud deletion, device, model or production acceptance."
+}

@@ -122,7 +122,7 @@ function AssessmentDialog({ file, version, onClose }: { file: StoredFile; versio
   const snapshot = mutation.data?.snapshot;
   return <Dialog title={'内容版本 ' + version.seq + ' 的保留评估'} onClose={onClose} busy={mutation.isPending}>
     <p>{base.name}</p><ErrorNotice error={mutation.error} />
-    {snapshot ? <><div className="notice neutral">评估已留存。该记录仅用于复核；当前未开放物理删除。</div>
+    {snapshot ? <><div className="notice neutral">评估已留存，仅用于复核。清理已知原件请另行建立原件观察清单。</div>
       <dl className="file-facts"><div><dt>评估时间</dt><dd>{moment(snapshot.checked_at)}</dd></div><div><dt>评估结论</dt><dd>{snapshot.eligible_for_review ? '可进入后续人工复核' : '存在保护或证据缺口'}</dd></div>
         <div><dt>保留制度</dt><dd>{snapshot.policy ? policies[snapshot.policy.kind] + ' · 修订 ' + snapshot.policy.version : '尚未发布'}</dd></div><div><dt>保留期至</dt><dd>{snapshot.retain_until ? moment(snapshot.retain_until) : '尚无制度依据'}</dd></div>
         {base.state === 'trashed' && <div><dt>回收站附加制度</dt><dd>{snapshot.trash_policy ? '修订 ' + snapshot.trash_policy.version : '尚未发布，仍受保护'}</dd></div>}

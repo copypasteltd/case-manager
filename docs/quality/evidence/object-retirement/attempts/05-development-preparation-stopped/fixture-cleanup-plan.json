@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-30T23:54:59.765848+00:00",
+  "rows": [
+    {
+      "oid": "108760697",
+      "name": "cp_test_78e802a200ef4d2eaa66af723f47ff5a",
+      "owner": "postgres",
+      "invalid": false,
+      "template": false,
+      "connections": 0,
+      "created": "2026-10-31T07:54:15+08:00",
+      "owned_test": "TestHistoryRestoration/restore_and_upload_share_quota_reservations_and_cancellation_releases_only_its_own_reservation",
+      "test_started_at": "2026-10-31T07:53:18.3336413+08:00",
+      "contents_inspected": true,
+      "migration_prefix_matched": true,
+      "migration_count": 18,
+      "organization_count": 0
+    }
+  ],
+  "failed_log_sha256": "2b250658a10c58a285436a7358fafbbecd2ec0e2e46a7d0d32b0c6a54ca74a71",
+  "script_sha256": "98c8aeea1c7530b436e33aa7b569b5c85982cadd4e05258d22b8a60d12fbb08a",
+  "forced_disconnect": false,
+  "postgres_restarted": false,
+  "development_database_selected": false
+}

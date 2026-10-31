@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-30T23:32:06.683Z",
+  "finished_at": "2026-10-30T23:32:36.252Z",
+  "checks": [
+    "Current file grants expose the actual paginated candidate and retained completed plan through native API.",
+    "Explicit selection creates one immutable observing plan; the page shows its exact digest and observation window.",
+    "An earlier synthetic worker result is read from immutable native-PG receipt rows, with started and confirmed-absence outcomes.",
+    "Explicit refresh rereads the selected plan and receipts without resubmitting the cleanup command."
+  ],
+  "source_count": 956,
+  "source_sha256": "24fff9ff847d039d885268e62e6486af77226f4901e5e25d4754960e21e286bc",
+  "source_after_sha256": "24fff9ff847d039d885268e62e6486af77226f4901e5e25d4754960e21e286bc",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "35a12ef249da5c8072d8167d59c615cf7505342eac3a8076ab86e2b17abe2d32",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "35a12ef249da5c8072d8167d59c615cf7505342eac3a8076ab86e2b17abe2d32",
+  "build_source_unchanged": true
+}
