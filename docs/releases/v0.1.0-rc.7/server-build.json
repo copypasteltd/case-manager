@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "release_id": "r-f0959c7af13886511c8e74fe",
+  "manifest_sha256": "f0959c7af13886511c8e74fec2d14d9269588607a6eb310841359dc4b1fabb59",
+  "archive_sha256": "8c108bbc689f61686223073f55711c4fc37466921375af9107e8e99088262db7",
+  "source": {
+    "base_commit": "59102225bc0c82bba0d838fdb8a219d06f958bbf",
+    "inputs_sha256": "a869ed117514cc3d6c6b357e16352f309f25edd2008571724935fdf576299adf",
+    "working_tree_dirty": true
+  },
+  "files": 793,
+  "bytes": 68599406,
+  "migrations": 112,
+  "all_skills_remain_draft": true,
+  "tool_versions": {
+    "go": "go version go1.27.3 windows/amd64",
+    "node": "v22.23.4",
+    "npm": "10.9.9"
+  },
+  "linux_executed": false,
+  "systemd_executed": false,
+  "deployed": false,
+  "production_ready": false,
+  "commands": [
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 8.287,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 2.748,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 1.224,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 3.945,
+      "raw_log_sha256": "15c05073ad4244ac8085665e514df74d66c94fa9a4a78d6c0f972e35f1ef7ea5"
+    },
+    {
+      "exit_code": 0,
+      "elapsed_seconds": 2.709,
+      "raw_log_sha256": "f2ac292f3c8e90972d94e63c27c8c055c81f93ca5ee982b00158fd6bc537f710"
+    }
+  ],
+  "archive_inspection": {
+    "passed": true,
+    "release_id": "r-f0959c7af13886511c8e74fe",
+    "files": 793,
+    "schema_versions": 112,
+    "deployment_executed": false
+  },
+  "seal_script_sha256": "3a0d08d9327549d156d588d2bd32a77cf40ff708a89b54403273fb9f334896c9",
+  "private_material_check": {
+    "passed": true,
+    "archive_members": 5303,
+    "known_private_value_count": 8,
+    "matches": [],
+    "scope": "Expanded bytes, known generated private values and high-confidence text patterns; no pixel OCR."
+  },
+  "complete_source_blob_count": 3365,
+  "private_logs_or_databases_published": false
+}
