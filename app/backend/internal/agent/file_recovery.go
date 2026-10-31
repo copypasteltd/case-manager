@@ -278,6 +278,13 @@ func recoveredFileArguments(ctx context.Context, tx pgx.Tx, i *fileIntentRecord,
 		if len(saved) != 1 || saved[0].Start != 0 || saved[0].End != 0 {
 			return fileDraftArguments{}, runtimeFailure("RUNTIME_SOURCE_CHANGED")
 		}
+		if files.AgentOfficeKind(i.Target.MediaType) != "" {
+			document, err := files.AgentOfficeRecoveryDocument(saved[0].Text, i.Target.MediaType)
+			if err != nil {
+				return fileDraftArguments{}, err
+			}
+			return fileDraftArguments{FolderID: i.Target.FolderID, Name: i.Target.Name, Document: &document}, nil
+		}
 		return fileDraftArguments{FolderID: i.Target.FolderID, Name: i.Target.Name, Content: &saved[0].Text}, nil
 	}
 	return fileDraftArguments{FileID: i.FileID, BaseVersionID: i.BaseVersionID, Edits: saved}, nil

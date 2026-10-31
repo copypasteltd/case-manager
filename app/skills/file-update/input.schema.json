@@ -53,7 +53,10 @@
         "media_type": {
           "enum": [
             "text/plain",
-            "text/markdown"
+            "text/markdown",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation"
           ]
         },
         "instructions": {
@@ -102,6 +105,30 @@
         "name",
         "media_type",
         "instructions"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "contract_body": {}
+            },
+            "required": [
+              "contract_body"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "properties": {
+              "media_type": {
+                "enum": [
+                  "text/plain",
+                  "text/markdown"
+                ]
+              }
+            }
+          }
+        }
       ]
     },
     {

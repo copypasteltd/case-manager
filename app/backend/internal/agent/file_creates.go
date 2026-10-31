@@ -128,7 +128,10 @@ func fileCreateSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 		if json.Unmarshal(i.Result, &result) != nil || !result.Committed || result.Version.BaseVersionID != nil {
 			return out, runtimeFailure("RUNTIME_SOURCE_CHANGED")
 		}
-		if _, err := contextFile(ctx, tx, a, c, ContextSource{Type: "file", ID: result.File.ID, VersionID: &result.Version.ID}, members); err != nil {
+		// A creation-intent citation pins the intent, not a text derivation.
+		// Human receipt reads still require the current audience/file/scan checks,
+		// without calling the AI-only indexed-content reader with a human actor.
+		if _, err := contextFileReference(ctx, tx, a, c, ContextSource{Type: "file", ID: result.File.ID, VersionID: &result.Version.ID}, members); err != nil {
 			return out, err
 		}
 	}

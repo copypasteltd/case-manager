@@ -16,17 +16,18 @@ type AgentTextEdit struct {
 }
 
 type AgentTextDiff struct {
-	Start          int    `json:"start_char"`
-	RemovedChars   int    `json:"removed_chars"`
-	AddedChars     int    `json:"added_chars"`
-	RemovedSHA256  string `json:"removed_sha256"`
-	AddedSHA256    string `json:"added_sha256"`
-	Before         string `json:"before"`
-	After          string `json:"after"`
-	BeforeComplete bool   `json:"before_complete"`
-	AfterComplete  bool   `json:"after_complete"`
-	LineEnding     string `json:"line_ending"`
-	UTF8BOM        bool   `json:"utf8_bom"`
+	Office         *AgentOfficePreview `json:"office,omitempty"`
+	Start          int                 `json:"start_char"`
+	RemovedChars   int                 `json:"removed_chars"`
+	AddedChars     int                 `json:"added_chars"`
+	RemovedSHA256  string              `json:"removed_sha256"`
+	AddedSHA256    string              `json:"added_sha256"`
+	Before         string              `json:"before"`
+	After          string              `json:"after"`
+	BeforeComplete bool                `json:"before_complete"`
+	AfterComplete  bool                `json:"after_complete"`
+	LineEnding     string              `json:"line_ending"`
+	UTF8BOM        bool                `json:"utf8_bom"`
 }
 
 // Text edits deliberately preserve bytes outside the selected ranges. A real

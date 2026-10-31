@@ -10340,7 +10340,7 @@ export interface components {
             /** @enum {string} */
             classification: "internal" | "project_restricted" | "confidential";
             /** @enum {string} */
-            media_type: "text/plain" | "text/markdown";
+            media_type: "text/plain" | "text/markdown" | "application/vnd.openxmlformats-officedocument.wordprocessingml.document" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | "application/vnd.openxmlformats-officedocument.presentationml.presentation";
             folder_version?: number;
         };
         AgentFileCreateInput: {
@@ -10349,7 +10349,17 @@ export interface components {
             expected_folder_version: number;
             name: string;
             /** @enum {string} */
-            media_type: "text/plain" | "text/markdown";
+            media_type: "text/plain" | "text/markdown" | "application/vnd.openxmlformats-officedocument.wordprocessingml.document" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+        };
+        AgentOfficePreview: {
+            /** @enum {string} */
+            adapter: "agent-office-create-v1";
+            /** @enum {string} */
+            kind: "docx" | "xlsx" | "pptx";
+            template_sha256: string;
+            workspace_sha256: string;
+            unit_count: number;
+            warnings: string[];
         };
         AgentFileDiff: {
             start_char: number;
@@ -10364,6 +10374,7 @@ export interface components {
             /** @enum {string} */
             line_ending: "none" | "lf" | "crlf";
             utf8_bom: boolean;
+            office?: components["schemas"]["AgentOfficePreview"];
         };
         AgentFileDraft: {
             /** Format: uuid */

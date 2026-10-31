@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T16:55:02.983601+00:00",
+  "encoder_script_sha256": "780bec52285cd5b9786eb729669f02d859a949ffbfa3761646f182327dfea1df",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "819634bbdf8d9695c2b4f4336a7711234649624bbf9d2f96783a3186df87031e",
+      "build_source_sha256": "4d6cfa5f5dffe05498b6cebe4aa0965fab19a6c09529a09b84cfd56214f71a01",
+      "capture_manifest": "docs/quality/evidence/agent-office-create/web-capture-manifest.json",
+      "capture_manifest_sha256": "77d47ac55769cd59a2a9bd239535e56bbe5b252d7c36d4f88428ce7a83f6ef9b",
+      "capture_frame_count": 30,
+      "capture_duration_ms": 6118,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/agent-office-create-web-scope.png",
+          "sha256": "8103625a44395211f3c605ee0ae30fcab0e0b95cdbb7f97c2d4739f7de18b683"
+        },
+        {
+          "file": "docs/media/screenshots/agent-office-create-web-pending.png",
+          "sha256": "9e0e41813f688cf7f52a9fe82719336dbb1b19b9975b5fef3c5f2629a88a5fa6"
+        },
+        {
+          "file": "docs/media/screenshots/agent-office-create-web-committed.png",
+          "sha256": "37a4bf6f70fba5ac136af3c6669ff8e2148d3bdea0557f8b7d2682f1c4427c68"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "63",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "6.300000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/agent-office-create-web.mp4",
+          "sha256": "0effd1370baeb25f654cf16d5e6051e532ed9f4bf0c108acc9e936986d61630e",
+          "bytes": 340693
+        },
+        {
+          "file": "docs/media/gifs/agent-office-create-web.gif",
+          "sha256": "fe2b3dd37dde10cf0b23adfec8326eb87728ec4bd4ee77d264d977e47db3c423",
+          "bytes": 197820
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web applicant/delivery followups, exact project entry and independent acceptance. MP4 records real viewport input; GIF tours three actual screenshots. No real provider, model, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-scope.png",
+      "sha256": "8103625a44395211f3c605ee0ae30fcab0e0b95cdbb7f97c2d4739f7de18b683"
+    },
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-pending.png",
+      "sha256": "9e0e41813f688cf7f52a9fe82719336dbb1b19b9975b5fef3c5f2629a88a5fa6"
+    },
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-committed.png",
+      "sha256": "37a4bf6f70fba5ac136af3c6669ff8e2148d3bdea0557f8b7d2682f1c4427c68"
+    },
+    {
+      "file": "docs/media/videos/agent-office-create-web.mp4",
+      "sha256": "0effd1370baeb25f654cf16d5e6051e532ed9f4bf0c108acc9e936986d61630e",
+      "bytes": 340693
+    },
+    {
+      "file": "docs/media/gifs/agent-office-create-web.gif",
+      "sha256": "fe2b3dd37dde10cf0b23adfec8326eb87728ec4bd4ee77d264d977e47db3c423",
+      "bytes": 197820
+    }
+  ]
+}

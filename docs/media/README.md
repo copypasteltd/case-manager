@@ -1,5 +1,12 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+**增量156 / Controlled Office creation**
+
+三张实际Web截图分别记录准确目录／名称／Word选择、已授权未正式提交、真实文件提交后的Office摘录及准确版本回执。录制使用受控模型驱动和合成对象传输，实际业务API／PG／工具／扫描／提交执行；不代表真实Codex／云接入。
+
+[范围截图](screenshots/agent-office-create-web-scope.png) · [待提交截图](screenshots/agent-office-create-web-pending.png) · [正式回执](screenshots/agent-office-create-web-committed.png) · [实际像素无声MP4](videos/agent-office-create-web.mp4) · [六秒截图导览GIF](gifs/agent-office-create-web.gif)。GIF由三张截图组成，连续操作请看MP4。No credentials, MFA secrets or real business records are recorded; owned contexts/services are closed after capture.
+
+
 155新增3张实际Web截图、4.2秒无声像素录屏和6秒实际截图导览GIF。首页概览图显示原工作台及新增区标题，办结图显示三组新增卡片；实际操作核对本人退回申请、准确项目交付、独立验收后消除和错误父项目拒绝。GIF是截图导览，并非连续录屏。仅合成业务数据；不代表真实模型／云／TG或设备验收。
 
 Source155 adds actual Web media; frozen rc.8 media and APK154 remain unchanged. [GIF](gifs/business-followups-web.gif) · [MP4](videos/business-followups-web.mp4) · [概览](screenshots/business-followups-web-overview.png) · [验收](screenshots/business-followups-web-review.png) · [办结](screenshots/business-followups-web-closed.png) · [来源与摘要](../quality/evidence/business-followups/media.json)

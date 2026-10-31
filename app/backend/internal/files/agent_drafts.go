@@ -60,16 +60,20 @@ func (b *AgentDraftBackend) ReserveCreate(ctx context.Context, tx pgx.Tx, a core
 	if err != nil {
 		return Upload{}, err
 	}
-	if size > AgentCreateMaxBytes {
-		return Upload{}, core.Invalid("content", "新建正文超过48KiB")
+	limit := int64(AgentCreateMaxBytes)
+	if AgentOfficeKind(media) != "" {
+		limit = AgentTextMaxBytes
+	}
+	if size > limit {
+		return Upload{}, core.Invalid("content", "新建内容超过所选格式的候选上限")
 	}
 	return b.reserve(ctx, tx, a, id, folderID, nil, nil, name, f.Classification, f.ProjectID, size, sha, media, expires)
 }
 
 func (b *AgentDraftBackend) reserve(ctx context.Context, tx pgx.Tx, a core.Actor, id, folderID string, fileID, baseID *string, name, classification string, projectID *string, size int64, sha, media string, expires time.Time) (Upload, error) {
 	var out Upload
-	if b == nil || b.Writer == nil || !core.ValidID(id) || size < 1 || size > AgentTextMaxBytes || !shaPattern.MatchString(sha) || (media != "text/plain" && media != "text/markdown") {
-		return out, core.Fail(503, "AGENT_DRAFT_WRITER_UNAVAILABLE", "秘书文本草稿写入身份尚未配置或格式不受支持")
+	if b == nil || b.Writer == nil || !core.ValidID(id) || size < 1 || size > AgentTextMaxBytes || !shaPattern.MatchString(sha) || (media != "text/plain" && media != "text/markdown" && AgentOfficeKind(media) == "") {
+		return out, core.Fail(503, "AGENT_DRAFT_WRITER_UNAVAILABLE", "秘书草稿写入身份尚未配置或格式不受支持")
 	}
 	if err := namespaceLock(ctx, tx, a, projectID); err != nil {
 		return out, err

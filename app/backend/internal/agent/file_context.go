@@ -15,7 +15,7 @@ import (
 
 // A file citation fixes the formal version and whole-content hash. Indexed
 // reads also bind immutable extraction evidence; sourceSnapshots reads no body.
-func contextFile(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, in ContextSource, members []string) (contextDocument, error) {
+func contextFileReference(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, in ContextSource, members []string) (contextDocument, error) {
 	d := contextDocument{ID: in.ID, Type: "file", VersionID: in.VersionID}
 	if !core.ValidID(in.ID) || in.VersionID == nil || !core.ValidID(*in.VersionID) {
 		return d, core.Invalid("version_id", "秘书读取文件时必须选择准确文件版本")
@@ -46,6 +46,18 @@ func contextFile(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, i
 	if evidence.ScanState != "clean" {
 		return d, core.Fail(422, "AGENT_TEXT_SCAN_REQUIRED", "秘书正文处理要求此准确版本的扫描结果为通过")
 	}
+	d.Title = evidence.Name
+	d.ResourceVersion = evidence.Seq
+	d.Evidence = []fileref.Evidence{evidence}
+	return d, nil
+}
+
+func contextFile(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, in ContextSource, members []string) (contextDocument, error) {
+	d, err := contextFileReference(ctx, tx, a, c, in, members)
+	if err != nil {
+		return d, err
+	}
+	evidence := d.Evidence[0]
 	var size int64
 	if err = tx.QueryRow(ctx, "SELECT size_bytes FROM file_versions WHERE org_id=$1 AND file_id=$2 AND id=$3", a.OrgID, in.ID, *in.VersionID).Scan(&size); err != nil {
 		return d, platform.DatabaseError(err)

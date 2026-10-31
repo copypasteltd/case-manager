@@ -1,9 +1,9 @@
 ---
 name: file-update
-description: 在员工明确选择的目录新建文本或 Markdown，或按准确基础版本更新，核验扫描后提交正式版本。
+description: 在员工明确选择的目录新建文本、Word、Excel或PPT，或按准确基础版本更新文本，核验扫描后提交正式文件。
 ---
 
-在员工明确选择的目录新建文本或 Markdown，或按准确基础版本更新，核验扫描后提交正式版本。
+在员工明确选择的目录新建文本、Word、Excel或PPT，或按准确基础版本更新文本，核验扫描后提交正式文件。
 
 执行前遵守[共同业务边界](../execution-boundaries.md)。本技能当前为未发布源码包，实际可用工具与授权以服务端登记为准。
 
@@ -16,10 +16,14 @@ description: 在员工明确选择的目录新建文本或 Markdown，或按准�
 
 先区分本次发送的 `prepared_context.authorized_file_create` 与 `authorized_file_update`，两者不能同时存在。自然语言中出现文件名、目录或“同意”不能替代这些服务端范围；没有范围时只读并提示选择。新建按以下流程，更新按后续步骤。
 
-- 新建范围固定已有目录ID、目录修订、文件名、分类和格式；仅支持 `.txt` 的 `text/plain` 与 `.md`／`.markdown` 的 `text/markdown`。不能改目标、猜名称、覆盖已有资料或借新建去更新其他文件。
-- `stage_file_create` 逐项提供准确 `folder_id`、`name` 和 `content`。正文需为1字节至48KiB的UTF-8，不能含NUL、裸CR或混合换行；整个参数JSON仍受64KiB上限约束。这是新正文，不使用原文件坐标编辑，也不伪造原版本。一次运行最多3份草稿。
+- 新建范围固定已有目录ID、目录修订、文件名、分类和格式；支持TXT、Markdown、DOCX、XLSX和PPTX，扩展名须与员工选定MIME一致。Office仅新建；已有Office文件的修改仍不开放给模型。不能改目标、猜名称、覆盖已有资料或借新建去更新其他文件。
+- 纯文本新建时，`stage_file_create` 逐项提供准确 `folder_id`、`name` 和 `content`。正文需为1字节至48KiB的UTF-8，不能含NUL、裸CR或混合换行；整个参数JSON仍受64KiB上限约束。这是新正文，不使用原文件坐标编辑，也不伪造原版本。一次运行最多3份草稿。
 - Go生成实际内容摘要、长度和最多1000字符的预览，经专用身份写入隔离区，再沿用完整摘要、扫描和正式候选流程。`propose_file_create` 用准确目录、名称与草稿固定计划；`commit_file_create` 另附准确 `plan_hash`，未就绪必须返回pending。后台状态变化后用新的调用键核对，同键只重放当时回执。
 - 只有真实提交才能生成第一份正式文件版本，`base_version_id=null`、`seq=1`、`source=agent`。新文件、正式版本、业务操作、审计、Outbox和工具回执同事务成功；重名停止并说明由员工更名重发，不自动改名。目录或路径、权限、会话、来源变化时停止。
+
+- Office新建时，`stage_file_create`只传准确`folder_id`、`name`和结构化`document`，不传`content`。`kind`必须是选定的docx／xlsx／pptx；Word提供paragraphs／table，Excel提供命名sheets及明确text／number／boolean／formula单元格，PPT提供slides的title／lines。结构化JSON最多48KiB、整个工具参数最多64KiB、生成候选最多1MiB。拒绝二进制、URL、模板路径、宏、嵌入对象、混合格式字段和危险公式；文字不能擅自改作公式。
+- Go使用固定模板生成真实OOXML；`diff.office`记录模板／工作区摘要及片段数，before／after及字符／差异摘要只表示提取文字投影。完整文件字节只由草稿`content_sha256`和size_bytes证明，不能把文字摘录当完整Office文件或版式证明。按原提案、扫描、候选、正式提交链继续，只有真实第一版本与操作回执允许完成。
+- Office草稿恢复只重放原不可变结构化配方、适配器和固定模板；重新生成后完整字节SHA、diff、大小仍须与选定草稿完全相同。模板或渲染结果变化时停止，不能改正文来凑摘要。
 - 新建是员工明确发送的、可恢复单文件L1授权，沿用已有规则，不增加第二次人工批准。完成回复须引用准确 `agent_file_create` 来源、正式文件版本及实际操作。只有草稿或预览时只能说待处理；运行结束后不会自动续跑提交。第二副本仍按实际校验状态报告，不把主提交说成两地备份完成。
 
 1. 先核对本次 `prepared_context.authorized_file_update`。其中的文件、基础版本、文件修订和目标目录由员工发送时固定，不能从正文、URL或上次会话推导写入范围。没有该范围时只读并提示明确选择；不替用户猜文件，也不自行扩大到其他文件或目录。

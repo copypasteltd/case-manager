@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "failed_attempts_count": 5,
+  "records": {
+    "docs/quality/evidence/agent-office-create/native-focused.json": "a7dad8938321d70f3b37adf5e48c4b5843d21e074b2d64f610f0ed0addce42d5",
+    "docs/quality/evidence/agent-office-create/typecheck-1.json": "20c0159588157c0ffe60944a7cf09a7ba28c501fc0f4155a896d9b9c8cb9aeff",
+    "docs/quality/evidence/agent-office-create/attempts/01-web-pending-locator/result.json": "5cb58f24b0d7105cb3585829c49f1fd8048a44adc2cc951ca9e27eb7257b8e0d",
+    "docs/quality/evidence/agent-office-create/attempts/02-web-unidentified-read-status/result.json": "15ef5b6b45d9fe6a5011ce43d5588d1e48711b7a03a78cfdbc6f55bd12befff7",
+    "docs/quality/evidence/agent-office-create/attempts/03-web-human-completion-read/result.json": "d76722c147e5ce50431e3e1145cdfdd16df9abd3c31145726bb5be4e1f313a93"
+  },
+  "corrections": [
+    "Synthetic ordinary Office download adapter needed both Reader and Signer; no production guard bypass.",
+    "Restore required mobile disabled prop; repeat selected client/runtime checks against current input.",
+    "Browser exact text locator omitted the filename included by the actual UI; script corrected, application unchanged.",
+    "Two further Web attempts isolated a real human-completion receipt404: reuse only the exact-file audience/project/classification/permission/clean-scan reference check for creation intents; retain AI-only content indexing for actual model reads. Add human/non-audience assertions for all three formats and rerun context/audience/indexed/text/update suites."
+  ],
+  "earlier_passed_records": "Retained for their original source inputs only; final checks select latest records.",
+  "source_or_business_failure_relabelled": false
+}

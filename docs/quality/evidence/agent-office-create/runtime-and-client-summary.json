@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "recorded_at": "2026-10-31T16:53:03.483723+00:00",
+  "runtime_tests": 60,
+  "runtime_passed": 60,
+  "runtime_skipped": 0,
+  "runtime_test_names": [
+    "worker entry drives HTTP authority checks actual MCP reads and a receipt verified reply without a provider",
+    "deployment inspection uses the exact SDK configuration digest and never publishes a draft skill",
+    "native model relay binds the exact SDK baseUrl and supplies only the broker placeholder",
+    "native relay refuses remote routes aliases credentials and unbound host model keys",
+    "inspection and execution share company tool coverage while draft Skills stay unavailable",
+    "SDK configuration is explicit, credentials are excluded from prompts and public events contain only verified output",
+    "disabled runtime, draft skill, missing native boundary and pre-cancellation never start a model process",
+    "invented formal completion is rejected even when the model emits valid JSON and an operation UUID",
+    "native shell, file, web and other MCP tools abort the adapter without publishing their arguments",
+    "changed authority suppresses final text and requires reconciliation rather than inventing cancellation rollback",
+    "stable tool IDs count once while new calls and actual provider usage respect the reserved bounds",
+    "cancellation and a stalled native stream expire without claiming that a prior business write was undone",
+    "durable event failure stops processing and provider diagnostics never enter public events",
+    "verified business commits are independent of native MCP success text and incomplete streams cannot publish completion",
+    "Telegram profile exposes only reads and binds a separate SDK configuration digest",
+    "Telegram runtime rejects write observations and unsupported skill scopes",
+    "incident summary exposes four implemented reads in both channels and keeps its release draft",
+    "monthly finance exposes its implemented reads only on the business channel and stays draft",
+    "metering is durable before an oversized turn or invalid answer can be rejected",
+    "an accounting transport failure cannot be presented as a completed business reply",
+    "create_risk binds complete reviewed fields and current committed business evidence",
+    "update_risk binds complete reviewed fields and current committed business evidence",
+    "create_issue binds complete reviewed fields and current committed business evidence",
+    "update_issue binds complete reviewed fields and current committed business evidence",
+    "local boundary sends only a task bearer and never accepts a different run or redirects its credential",
+    "changed sources and revoked task credentials suppress results without exposing service diagnostics",
+    "indexed file summaries require current actual read evidence without a write claim",
+    "another version, authority or fabricated operation cannot complete an indexed summary",
+    "Office creation admits only explicit supported human-selected formats while existing update remains text-only",
+    "Office creation keeps the same scoped tool set and cannot acquire approval or contract-body adoption tools",
+    "contract-body creation accepts exact draft context but never grants human adoption tools",
+    "deliverable draft creation requires all parent fields and a real current-run creation receipt",
+    "deliverable updates require every reviewed metadata field and genuine write evidence",
+    "milestone creation requires all fixed fields and a committed current-run receipt",
+    "monthly finance completion requires a cited successful finance snapshot from this run",
+    "knowledge writes require real current-run commits while ordinary briefings remain read-only",
+    "OA completion requires the exact current-run saved draft or real submission receipt",
+    "new text files require exact current-run formal creation evidence; staging and proposed content stay pending",
+    "organization completion requires its exact current-run commit receipt rather than a proposed plan",
+    "conversation requests accept partial business intent without accepting caller identity paths or grants",
+    "all eight bounded packages load while identity injection and unsupported operations are rejected",
+    "bounded report windows reject impossible dates and reversed ranges; native output schemas contain no external references",
+    "formal completion needs the current run and current authority ledger evidence",
+    "a staged file draft and its fixed intent remain pending without a formal version receipt",
+    "a pending project proposal cites its exact intent without claiming a committed operation",
+    "successful plan discovery proves only observation and cannot claim a created project",
+    "a read briefing requires genuine source evidence and cannot invent a sent notification",
+    "L1 project updates require a genuine current-run business write receipt, never the fixed intent or inspection alone",
+    "exact project stage inputs validate real calendar dates, field masks and permitted transitions",
+    "milestone and project stage completion requires the actual current-run command, not an observation",
+    "release hashes bind linked instructions and unpublished or changed tools cannot enter a live run",
+    "subscription discovery never proves a detailed review; actual detail and record receipts must match this run and cited snapshot",
+    "explicit subscription detail input accepts actual dates and UUID but rejects arbitrary scopes or invalid calendar dates",
+    "OA prose remains a draft until a separate human adoption",
+    "OA line prose schema admits bounded stable description keys and rejects wider fields",
+    "project-update exact submission validates fixed attachments and only completes from its own commit",
+    "task creation needs complete human decisions and stays within the project-update Skill",
+    "task completion requires a current committed receipt for the actual new task",
+    "only project-update accepts a complete exact dependency authority",
+    "dependency completion uses the current trusted operation receipt"
+  ],
+  "web_tests": 7,
+  "mobile_tests": 4,
+  "catalog": {
+    "count": 8,
+    "skills": [
+      {
+        "id": "file-update",
+        "version": "1.5.0",
+        "state": "draft",
+        "sha256": "bd283d8d97beebd326e49818851710d024d56fce7bfa1c201dd577e7450f70c9",
+        "tools": 9
+      },
+      {
+        "id": "incident-summary",
+        "version": "1.2.0",
+        "state": "draft",
+        "sha256": "9917668088c412fa07afd85c53c98c0d944d8a7d2c68e6e3aa04ce3ee73b5588",
+        "tools": 4
+      },
+      {
+        "id": "information-organize",
+        "version": "1.2.0",
+        "state": "draft",
+        "sha256": "cab3d54699a78388f96c3f4d11d4327b78fadac25f528fff237544a8a51c8788",
+        "tools": 5
+      },
+      {
+        "id": "oa-assist",
+        "version": "1.4.0",
+        "state": "draft",
+        "sha256": "1be0bc25b809cc24028073bff7805986da9301df4e32db24594b514c4742092a",
+        "tools": 5
+      },
+      {
+        "id": "project-briefing",
+        "version": "1.2.0",
+        "state": "draft",
+        "sha256": "1c40d49042347c94993ccf88a97bddbe70c9eb93bb43b244e1b6cdc2432fdb5e",
+        "tools": 5
+      },
+      {
+        "id": "project-create",
+        "version": "1.2.0",
+        "state": "draft",
+        "sha256": "313ec7f922a0207c2dcf9084ffe56ad1eb904d68d0934afb26aece577b451397",
+        "tools": 6
+      },
+      {
+        "id": "project-update",
+        "version": "1.9.0",
+        "state": "draft",
+        "sha256": "90e1cdb3618c4f0ef66a805f47def2e9f4a755262559ba4fc7f786bc3982a22c",
+        "tools": 18
+      },
+      {
+        "id": "subscription-review",
+        "version": "1.4.0",
+        "state": "draft",
+        "sha256": "a3e01a3d45caa6749f4e4e9c3f724b2756e280d62fc4fb60b4a5c422779ed5c4",
+        "tools": 7
+      }
+    ],
+    "actual_model_invoked": false
+  },
+  "records": {
+    "docs/quality/evidence/agent-office-create/runtime-tests-2.json": "2f21d3aa3c6c0f8ebc36d1faf2824aa7e0e26cdc0ffc703ca97e47d82b09efe8",
+    "docs/quality/evidence/agent-office-create/web-agent-office-create-tests-2.json": "c537e0ccf533cc06c4aba8b0b2e0bb1ea326fcf7c3534f41022f063b3ce4e8e3",
+    "docs/quality/evidence/agent-office-create/mobile-agent-office-create-tests-2.json": "8650c5b9012d99e2a8918a86873c42df89a21d5dde78c61dd7ac15957c714f7d",
+    "docs/quality/evidence/agent-office-create/skills-catalog-2.json": "f305d7686082beeb6dfc6fd66f61af29bdc0cd65ac32ecc93a771bebeb5851c0"
+  },
+  "scope": "Counts and names extracted from the actual final private native Node logs, bound by original public step hashes; no real model invocation."
+}

@@ -1,5 +1,18 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+**Increment156 · Controlled Word/Excel/PowerPoint creation**
+
+Choose an exact authorized directory/revision, filename and format in a secretary conversation. The existing L1 creation authorization drives real DOCX/XLSX/PPTX generation, ordinary draft checks/scan/formal first-version commit, exact recipe recovery and a link to the formal version. Existing complex Office updates remain open. Web, WeChat, Douyin and Android shared source gain the same controls. File-update1.5.0 and all eight Skills remain drafts requiring actual installation/model acceptance.
+
+Fresh evidence:38 selected native result records, Web7/shared mobile4, runtime60 with no skips, five actual Web checks, workspace types and local Web/miniapp builds. Demonstrations use a controlled model driver and synthetic storage, with three screenshots, silent pixel MP4 and a disclosed six-second screenshot-tour GIF. Real server/cloud/Codex/TG/platform details will be supplied later.
+
+**Source156 is post-freeze. Frozen rc.8/APK154 remain business153/schema113 and do not contain155/156.** No new APK, full regression, frozen release or production acceptance is claimed;23 work packages remain active. Earlier broad backend121/client136 and frozen evidence retain their original bytes.
+
+[设计与使用 / Design and use](development/156-agent-office-creation.md) · [核验 / Checks](quality/156-agent-office-creation.md) · [全部23项 / All remaining](delivery/05-functional-closure-156.md) · [实际无声MP4](media/videos/agent-office-create-web.mp4) · [六秒截图导览GIF](media/gifs/agent-office-create-web.gif)
+
+增量156已补秘书受控新建三类Office及准确恢复；复杂原件更新、真实接入与正式验收继续开放。以下保留历史版本上下文。
+
+
 **增量155 · 首页申请与交付跟进 / Post-freeze functional update**
 
 首页新增“我发起的待推进申请”“我负责的待提交交付”“我可核对的已提交交付”。从入口进入原有申请或准确项目交付，执行修改／提交／独立验收后刷新；首页数量随当前业务状态和权限重算，已读或打开不代表完成。Web与微信、抖音、Android共享源码同步；独立验收列表表示当前有权办理，未声明专属分派。

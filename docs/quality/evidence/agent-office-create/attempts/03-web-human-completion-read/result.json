@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "started_at": "2026-10-31T16:46:50.422Z",
+  "finished_at": "2026-10-31T16:47:08.518Z",
+  "checks": [
+    "Selecting an exact directory/name/Word format creates no run and cannot mix an existing-file update.",
+    "One actual Web request pins the Office media/directory revision/name and returns authorization without a formal artifact.",
+    "The real user message pins the immutable exact creation intent rather than a model-provided filename."
+  ],
+  "source_count": 1102,
+  "source_sha256": "2b8e7c81eb2fb68f380771d4c4e7a4f7cf9a20a8c396941d51315d50b8332f0b",
+  "source_after_sha256": "2b8e7c81eb2fb68f380771d4c4e7a4f7cf9a20a8c396941d51315d50b8332f0b",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "Ordinary GET /runs/8650229b-c1bb-4fbf-9df7-b97f81ecd1d9\n\n404 !== 200\n",
+  "scope": "Web with real native API/PG, exact Office creation scope, real binary receipt and exact-version read; controlled model driver and synthetic storage, no real provider/model/device",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "842691cbcae3d4ba9effcc3c4ea967a0476bb77202cc1b4775519cfaabbc1174",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "842691cbcae3d4ba9effcc3c4ea967a0476bb77202cc1b4775519cfaabbc1174",
+  "build_source_unchanged": true
+}

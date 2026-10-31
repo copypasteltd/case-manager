@@ -33,6 +33,7 @@ type fileDraftArguments struct {
 	FolderID      string                `json:"folder_id,omitempty"`
 	Name          string                `json:"name,omitempty"`
 	Content       *string               `json:"content,omitempty"`
+	Document      *files.OfficeDocument `json:"document,omitempty"`
 }
 type fileProposalArguments struct {
 	FileID        string `json:"file_id"`
@@ -89,8 +90,11 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 	} else if i.Recovery != nil {
 		return nil, nil, nil, false, core.Fail(409, "FILE_RECOVERY_EXACT_BYTES_REQUIRED", "恢复请求只允许重新准备已选草稿的准确内容，不能改写正文")
 	}
-	if creating && (tool != "stage_file_create" && tool != "recover_file_draft" || in.FolderID != i.Target.FolderID || in.Name != i.Target.Name || in.Content == nil || len(in.Edits) != 0 || in.FileID != "" || in.BaseVersionID != "") || !creating && (tool != "create_file_draft" && tool != "recover_file_draft" || in.FileID != i.FileID || in.BaseVersionID != i.BaseVersionID || in.Content != nil || in.FolderID != "" || in.Name != "") {
+	if creating && (tool != "stage_file_create" && tool != "recover_file_draft" || in.FolderID != i.Target.FolderID || in.Name != i.Target.Name || (in.Content == nil && in.Document == nil) || (in.Content != nil && in.Document != nil) || len(in.Edits) != 0 || in.FileID != "" || in.BaseVersionID != "") || !creating && (tool != "create_file_draft" && tool != "recover_file_draft" || in.FileID != i.FileID || in.BaseVersionID != i.BaseVersionID || (in.Content != nil || in.Document != nil) || in.FolderID != "" || in.Name != "") {
 		return nil, nil, nil, false, core.Fail(409, "FILE_UPDATE_SCOPE_REQUIRED", "草稿类型、位置和名称必须匹配本次发送范围")
+	}
+	if creating && ((files.AgentOfficeKind(i.Target.MediaType) != "") != (in.Document != nil)) {
+		return nil, nil, nil, false, core.Invalid("document", "请按员工选定格式提供纯文本content或结构化Office document")
 	}
 	ai := st.Actor
 	ai.RunID = st.Run.ID
@@ -115,9 +119,17 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 		var diff files.AgentTextDiff
 		var e error
 		if creating {
-			after = *in.Content
-			diff, e = files.AgentCreateText(after)
-			in.Edits = []files.AgentTextEdit{{Text: after}}
+			if in.Document != nil {
+				var body []byte
+				var recipe string
+				body, diff, recipe, e = files.AgentCreateOffice(ctx, *in.Document, i.Target.MediaType)
+				after = string(body)
+				in.Edits = []files.AgentTextEdit{{Text: recipe}}
+			} else {
+				after = *in.Content
+				diff, e = files.AgentCreateText(after)
+				in.Edits = []files.AgentTextEdit{{Text: after}}
+			}
 		} else {
 			var text string
 			text, e = s.FileText.Read(ctx, prepared.Source)

@@ -5,6 +5,18 @@ export type FileUpdate = Schemas['AgentFileUpdateInput'];
 export type FileUpdateView = Schemas['AgentFileUpdateView'];
 export type FileCreate = Schemas['AgentFileCreateInput'];
 export type FileCreateView = Schemas['AgentFileCreateView'];
+export const fileCreateFormats = [
+  ['text/markdown', 'Markdown（.md／.markdown）', /\.(md|markdown)$/i],
+  ['text/plain', '文本（.txt）', /\.txt$/i],
+  ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'Word（.docx）', /\.docx$/i],
+  ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'Excel（.xlsx）', /\.xlsx$/i],
+  ['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'PowerPoint（.pptx）', /\.pptx$/i],
+] as const;
+export type FileCreateMedia = FileCreate['media_type'];
+export function officeCreateKind(media: string): 'docx' | 'xlsx' | 'pptx' | null {
+  const at = fileCreateFormats.findIndex(row => row[0] === media);
+  return at < 2 ? null : (['docx', 'xlsx', 'pptx'] as const)[at - 2] ?? null;
+}
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const hash = /^[0-9a-f]{64}$/;
 
@@ -23,9 +35,9 @@ export function fileUpdateReceipt(run: Schemas['Run'], input?: FileUpdate): bool
   return value.status === 'committed' && !!value.operation_id && uuid.test(value.operation_id) && result?.committed === true && result.file.id === input.file_id && result.file.version === input.expected_file_version + 1 && result.file.current_version_id === version?.id && version.file_id === input.file_id && version.base_version_id === input.base_version_id && version.source === 'agent' && version.scan_state === 'clean' && value.drafts.some(draft => draft.result_version_id === version.id && draft.content_sha256 === version.sha256 && !!draft.plan_hash && hash.test(draft.plan_hash));
 }
 
-export function makeFileCreate(folder: Schemas['Folder'], name: string, media: 'text/plain' | 'text/markdown', project: string | null): FileCreate {
+export function makeFileCreate(folder: Schemas['Folder'], name: string, media: FileCreateMedia, project: string | null): FileCreate {
   if (folder.project_id !== project || folder.state !== 'active' || !uuid.test(folder.id) || !Number.isSafeInteger(folder.version) || folder.version < 1) throw new Error('请选择当前会话范围内的有效目标目录。');
-  if (!name.trim() || name !== name.trim() || /[\\/\u0000-\u001f]/.test(name) || !(media === 'text/plain' ? /\.txt$/i : /\.(md|markdown)$/i).test(name)) throw new Error('请填写与格式一致的.txt或.md／.markdown文件名。');
+  if (!name.trim() || name !== name.trim() || /[\\/\u0000-\u001f]/.test(name) || !fileCreateFormats.some(row => row[0] === media && row[2].test(name))) throw new Error('请填写与所选TXT、Markdown、Word、Excel或PowerPoint格式一致的文件名。');
   return { folder_id: folder.id, expected_folder_version: folder.version, name, media_type: media };
 }
 
@@ -33,6 +45,11 @@ export function fileCreateReceipt(run: Schemas['Run'], input?: FileCreate): bool
   const value = run.file_create;
   if (!input) return !value;
   if (!value || value.recovery || run.file_update || value.run_id !== run.id || !hash.test(value.intent_sha256) || value.target.folder_id !== input.folder_id || value.target.folder_version !== input.expected_folder_version || value.target.name !== input.name || value.target.media_type !== input.media_type || !Array.isArray(value.drafts) || value.drafts.length > 3) return false;
+  const officeKind = officeCreateKind(input.media_type);
+  if (officeKind && value.drafts.some(draft => {
+    const office = draft.diff?.office;
+    return !office || office.adapter !== 'agent-office-create-v1' || office.kind !== officeKind || !hash.test(office.template_sha256) || !hash.test(office.workspace_sha256) || !Number.isSafeInteger(office.unit_count) || office.unit_count < 0 || office.unit_count > 2000 || !Array.isArray(office.warnings) || office.warnings.length > 20 || office.warnings.some(w => typeof w !== 'string' || w.length > 2000) || !/^\d+$/.test(draft.size_bytes) || BigInt(draft.size_bytes) < 1n || BigInt(draft.size_bytes) > 1048576n;
+  })) return false;
   if (value.status === 'authorized') return value.operation_id === null && value.result === null;
   const result = value.result, version = result?.file_version, file = result?.file;
   return value.status === 'committed' && !!value.operation_id && uuid.test(value.operation_id) && result?.committed === true && !!file && uuid.test(file.id) && file.folder_id === input.folder_id && file.name === input.name && file.classification === value.target.classification && file.current_version_id === version?.id && version.file_id === file.id && version.seq === 1 && version.base_version_id === null && version.media_type === input.media_type && version.source === 'agent' && version.scan_state === 'clean' && value.drafts.some(draft => draft.result_version_id === version.id && draft.content_sha256 === version.sha256 && draft.size_bytes === version.size_bytes && !!draft.plan_hash && hash.test(draft.plan_hash));

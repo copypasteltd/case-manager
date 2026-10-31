@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "method": "Manual visual inspection of one resized contact sheet made from all three actual final screenshots.",
+  "reviewed_screenshots": [
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-scope.png",
+      "sha256": "8103625a44395211f3c605ee0ae30fcab0e0b95cdbb7f97c2d4739f7de18b683"
+    },
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-pending.png",
+      "sha256": "9e0e41813f688cf7f52a9fe82719336dbb1b19b9975b5fef3c5f2629a88a5fa6"
+    },
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-committed.png",
+      "sha256": "37a4bf6f70fba5ac136af3c6669ff8e2148d3bdea0557f8b7d2682f1c4427c68"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-scope.png",
+      "sha256": "8103625a44395211f3c605ee0ae30fcab0e0b95cdbb7f97c2d4739f7de18b683"
+    },
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-pending.png",
+      "sha256": "9e0e41813f688cf7f52a9fe82719336dbb1b19b9975b5fef3c5f2629a88a5fa6"
+    },
+    {
+      "file": "docs/media/screenshots/agent-office-create-web-committed.png",
+      "sha256": "37a4bf6f70fba5ac136af3c6669ff8e2148d3bdea0557f8b7d2682f1c4427c68"
+    },
+    {
+      "file": "docs/media/videos/agent-office-create-web.mp4",
+      "sha256": "0effd1370baeb25f654cf16d5e6051e532ed9f4bf0c108acc9e936986d61630e",
+      "bytes": 340693
+    },
+    {
+      "file": "docs/media/gifs/agent-office-create-web.gif",
+      "sha256": "fe2b3dd37dde10cf0b23adfec8326eb87728ec4bd4ee77d264d977e47db3c423",
+      "bytes": 197820
+    }
+  ],
+  "observations": [
+    "Exact authorized directory/name/Word selection is readable.",
+    "Pending state identifies the target and does not claim a formal file.",
+    "Committed state shows Office content excerpt, warnings, complete binary evidence and accurate formal-version action.",
+    "Synthetic business content only; no passwords, MFA secrets, provider credentials or fixture capabilities visible."
+  ],
+  "gif_mode": "six-second screenshot tour",
+  "mp4_mode": "silent actual browser viewport pixels;6.3seconds; no login/MFA frames",
+  "real_model_invoked": false,
+  "real_cloud_invoked": false
+}

@@ -201,8 +201,8 @@ func toolDefinitions(skill string) []any {
 			name, description string
 			schema            any
 		}{
-			"stage_file_create", "仅为authorized_file_create固定目录和名称生成新文件正文；UTF-8正文1字节至48KiB，整个参数JSON最多64KiB。不会覆盖现有资料。",
-			schema(map[string]any{"folder_id": uuid, "name": name, "content": str(map[string]any{"minLength": 1, "maxLength": 49152})}, []string{"folder_id", "name", "content"})},
+			"stage_file_create", "仅为authorized_file_create固定目录、名称和格式生成新文件。TXT/Markdown只传content；DOCX/XLSX/PPTX只传document（kind须匹配格式），结构化JSON最多48KiB、候选最多1MiB；Excel单元格明确text/number/boolean/formula，不把文字当公式。整个参数JSON最多64KiB，不覆盖，不传二进制、URL或模板路径。",
+			fileCreationInputSchema(schema(map[string]any{"folder_id": uuid, "name": name, "content": str(map[string]any{"minLength": 1, "maxLength": 49152}), "document": officeCreationDocumentSchema()}, []string{"folder_id", "name"}))},
 			struct {
 				name, description string
 				schema            any

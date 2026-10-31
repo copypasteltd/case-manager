@@ -825,14 +825,16 @@ add("AgentFileRecoveryInput", file_recovery_input, tuple(file_recovery_input))
 file_recovery_view = {"source_run_id": ID, "draft_id": ID, "content_sha256": HASH, "recovery_sha256": HASH, "depth": {"type":"integer", "minimum":1, "maximum":8}}
 add("AgentFileRecoveryView", file_recovery_view, tuple(file_recovery_view))
 add("AgentFileUpdateInput", {"file_id": ID, "base_version_id": ID, "expected_file_version": VERSION}, ("file_id", "base_version_id", "expected_file_version"))
-file_target = {"name": NAME, "folder_id": ID, "classification": CLASS, "media_type": enum("text/plain", "text/markdown")}
+file_target = {"name": NAME, "folder_id": ID, "classification": CLASS, "media_type": enum("text/plain", "text/markdown", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.presentationml.presentation")}
 add("AgentFileUpdateTarget", {**file_target, "folder_version": VERSION}, tuple(file_target))
-file_create_input = {"folder_id": ID, "expected_folder_version": VERSION, "name": NAME, "media_type": enum("text/plain", "text/markdown")}
+file_create_input = {"folder_id": ID, "expected_folder_version": VERSION, "name": NAME, "media_type": enum("text/plain", "text/markdown", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.presentationml.presentation")}
 add("AgentFileCreateInput", file_create_input, tuple(file_create_input))
 file_diff = {"start_char": {"type": "integer", "minimum": 0}, "removed_chars": {"type": "integer", "minimum": 0}, "added_chars": {"type": "integer", "minimum": 0},
     "removed_sha256": HASH, "added_sha256": HASH, "before": {"type": "string", "maxLength": 1000}, "after": {"type": "string", "maxLength": 1000},
     "before_complete": {"type": "boolean"}, "after_complete": {"type": "boolean"}, "line_ending": enum("none", "lf", "crlf"), "utf8_bom": {"type": "boolean"}}
-add("AgentFileDiff", file_diff, tuple(file_diff))
+office_preview = {"adapter": enum("agent-office-create-v1"), "kind": enum("docx", "xlsx", "pptx"), "template_sha256": HASH, "workspace_sha256": HASH, "unit_count": {"type": "integer", "minimum": 0, "maximum": 2000}, "warnings": array({"type": "string", "maxLength": 2000}, maxItems=20)}
+add("AgentOfficePreview", office_preview, tuple(office_preview))
+add("AgentFileDiff", {**file_diff, "office": ref("AgentOfficePreview")}, tuple(file_diff))
 file_draft = {"id": ID, "content_sha256": HASH, "size_bytes": BYTES, "diff": ref("AgentFileDiff"), "state": NAME, "scan_state": NAME, "plan_hash": nullable(HASH), "result_version_id": nullable(ID)}
 add("AgentFileDraft", file_draft, tuple(file_draft))
 file_update = {"run_id": ID, "file_id": ID, "base_version_id": ID, "file_version": VERSION, "intent_sha256": HASH, "target": ref("AgentFileUpdateTarget"),

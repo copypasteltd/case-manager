@@ -23,8 +23,8 @@ func AgentCreateTarget(ctx context.Context, tx pgx.Tx, a core.Actor, folderID st
 		return out, err
 	}
 	ext := strings.ToLower(path.Ext(name))
-	if !((media == "text/plain" && ext == ".txt") || (media == "text/markdown" && (ext == ".md" || ext == ".markdown"))) {
-		return out, core.Invalid("media_type", "秘书新建支持.txt文本或.md／.markdown文档，格式须与文件名一致")
+	if !((media == "text/plain" && ext == ".txt") || (media == "text/markdown" && (ext == ".md" || ext == ".markdown")) || (AgentOfficeKind(media) != "" && ext == "."+AgentOfficeKind(media))) {
+		return out, core.Invalid("media_type", "秘书新建支持TXT、Markdown、DOCX、XLSX或PPTX，格式须与文件名一致")
 	}
 	out, err = uploadTarget(ctx, tx, a, folderID, nil)
 	if err != nil {

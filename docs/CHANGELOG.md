@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## 156 · 2026-11-01 · Controlled Office creation / 秘书受控Office新建
+
+- 增加准确人工目录／修订／名称／格式下的DOCX／XLSX／PPTX真实生成，沿用草稿、清洁扫描、晋升、正式第一版及回执；固定配方／模板／完整二进制准确恢复。
+- Web及三类移动共享源码增加格式、Office内容摘录和准确版本入口；已有复杂Office更新及合同Office正文绑定未扩权。
+- file-update1.5.0 draft、九工具不变；原生38条结果、Web7／移动4／运行器60、五项实际Web及本地构建；失败尝试、三PNG／无声MP4／六秒截图导览GIF留档。
+- 无新迁移／APK／冻结；八个冻结版及113项迁移不变，rc.8/APK154仍业务153／113。23项仍开放，真实配置后续提供。
+- English: Exact-scope Office generation/recovery and formal version navigation, with focused fresh proof. All Skills remain drafts; no real cloud/model or production claim.
+
+[设计](development/156-agent-office-creation.md) · [核验](quality/156-agent-office-creation.md) · [剩余23项](delivery/05-functional-closure-156.md)
+
+
 155 · 新增首页本人申请／交付提交／独立验收三组跟进；当前授权完整计数、前5条及普通业务准确入口，补齐Web项目交付深链和父项目／选中状态隔离。选定原生12条记录、Web4／共享移动4、实际Web4及新截图／录屏／GIF；无结构升级／新APK／新冻结，rc.8／APK154保持153／113，全部23包仍开放。 / Personal OA and delivery followups with current authority, exact ordinary workflows and additive API. Focused source-bound proof is separate from frozen artifacts and deferred broad acceptance.
 
 

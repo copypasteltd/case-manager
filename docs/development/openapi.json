@@ -61550,7 +61550,10 @@
             "type": "string",
             "enum": [
               "text/plain",
-              "text/markdown"
+              "text/markdown",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "application/vnd.openxmlformats-officedocument.presentationml.presentation"
             ]
           },
           "folder_version": {
@@ -61588,7 +61591,10 @@
             "type": "string",
             "enum": [
               "text/plain",
-              "text/markdown"
+              "text/markdown",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "application/vnd.openxmlformats-officedocument.presentationml.presentation"
             ]
           }
         },
@@ -61598,6 +61604,55 @@
           "expected_folder_version",
           "name",
           "media_type"
+        ]
+      },
+      "AgentOfficePreview": {
+        "type": "object",
+        "properties": {
+          "adapter": {
+            "type": "string",
+            "enum": [
+              "agent-office-create-v1"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "docx",
+              "xlsx",
+              "pptx"
+            ]
+          },
+          "template_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "workspace_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "unit_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2000
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "maxItems": 20
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "adapter",
+          "kind",
+          "template_sha256",
+          "workspace_sha256",
+          "unit_count",
+          "warnings"
         ]
       },
       "AgentFileDiff": {
@@ -61647,6 +61702,9 @@
           },
           "utf8_bom": {
             "type": "boolean"
+          },
+          "office": {
+            "$ref": "#/components/schemas/AgentOfficePreview"
           }
         },
         "additionalProperties": false,

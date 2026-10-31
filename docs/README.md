@@ -1,5 +1,18 @@
 # CopyPaste 内部管理平台文档中心
 
+**增量156 · 秘书新建 Word／Excel／PPT / Post-freeze source update**
+
+会话可固定目录、文件名和格式，由秘书生成真实 DOCX／XLSX／PPTX，沿用授权、草稿校验、扫描和正式第一版提交；回执直接进入准确文件版本。支持固定配方恢复，复杂既有Office更新继续待完成。Web／微信／抖音／Android共享源码同步，file-update **1.5.0 draft**；八项Skill仍未正式验收。
+
+本轮原生38条选定结果、Web7／共享移动4、当前运行器60项与五项实际Web操作通过，类型及Web／两小程序本地构建通过。真实模型／云和生产验收仍开放，资料后续提供。**源码156不在rc.8／开发APK154内，冻结版仍固定业务153／结构113；没有新APK或新冻结版。** 23个整体工作包继续开放。
+
+English: Exact-scope Office creation now produces real binaries through the existing authorization, scan and commit path. Exact recipe recovery and formal version links are included. All eight Skills remain drafts. Source156 is separate from frozen rc.8/APK154/business153; real Codex/cloud and full production acceptance remain open.
+
+[设计与使用 / Design and use](development/156-agent-office-creation.md) · [核验 / Checks](quality/156-agent-office-creation.md) · [全部23项 / All remaining](delivery/05-functional-closure-156.md) · [实际无声MP4](media/videos/agent-office-create-web.mp4) · [六秒截图导览GIF](media/gifs/agent-office-create-web.gif)
+
+以下155及更早内容保留各自版本上下文。 / Earlier entries retain their original version context.
+
+
 **增量155 · 首页申请与交付跟进 / Post-freeze functional update**
 
 首页新增“我发起的待推进申请”“我负责的待提交交付”“我可核对的已提交交付”。从入口进入原有申请或准确项目交付，执行修改／提交／独立验收后刷新；首页数量随当前业务状态和权限重算，已读或打开不代表完成。Web与微信、抖音、Android共享源码同步；独立验收列表表示当前有权办理，未声明专属分派。
