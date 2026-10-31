@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## Increment144 · Frozen candidate v0.1.0-rc.3
+
+- Froze existing business source143/schema109, including completed-upload cleanup, organization TG operations, secretary profile retirement, project planning catalogs and complete subscription portfolios. No business module or UI change was introduced.
+- Rebuilt native Linux/server/Web/runtime, WeChat/Douyin and current Android development artifacts; published source/docs and exact existing media separately with SHA-256 and immutable Git identities.
+- Selected eight primary HTTP/PG business suites and artifact/source/private-material checks; deferred full regression and extra browser journeys. Prior143 runtime/business,136 full client tests and historical media retain original provenance; Gradle cache outcomes remain explicit.
+- 原rc.1／rc.2不移动；开发PG100不重启或升级，运行新后端前正常升级109。移动包仍明确本地API／开发签名；23 active（14 P0／9 P1）、5 excluded、八项draft及真实集成／生产验收继续开放。
+
+[交付／使用](development/144-frozen-candidate-delivery.md) · [下载](releases/v0.1.0-rc.3/README.md) · [验证](quality/144-frozen-candidate-verification.md) · [本轮及全部余项](delivery/05-functional-closure-144.md)
+
 ## Increment143 · Complete cross-subscription portfolio review
 
 - Added exact-date complete enumeration across actor-readable conversation subscriptions, all states, detailed existing period/cost/payment evidence, missing schedules and unique/shared financial-record identities. Empty or unknown coverage never implies zero obligations; currencies are not summed.

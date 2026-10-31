@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "version": "v0.1.0-rc.3",
+  "status": "frozen_candidate",
+  "created_at": "2026-10-31T08:10:20.739768+00:00",
+  "source": {
+    "tag": "v0.1.0-rc.3",
+    "commit": "e1c7a671cc4c7f52888a1e6ed72d7ce1a9c042d3",
+    "server_inputs_sha256": "0a25821201058aecd6e57663cd04d6958853a0d5628a6863d760dd206f2a7048",
+    "clean_at_server_build": true
+  },
+  "artifact_branch": "codex/release-v0.1.0-rc.3",
+  "schema_version": 109,
+  "server_release_id": "r-119922952bffdad7fca1c53a",
+  "server_manifest_sha256": "119922952bffdad7fca1c53a58c9123ddd3a61ac14842113f11c2c16baeff2b8",
+  "assets": [
+    {
+      "name": "case-manager-v0.1.0-rc.3-linux-amd64.tar.gz",
+      "bytes": 31337218,
+      "sha256": "e654b576303db74767c0af834e2fa9f4c22243061a62d5bf2c00ba5b229fda23",
+      "git_blob": "253ab77ea4a68693a16036748e53785f6cc0cbb4"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.3-miniapps.zip",
+      "bytes": 1001985,
+      "sha256": "dacdb1f5f63ca34a4cebf78bcd47e46ccc50afa0cc3ab93d64f9fe385bc81ab9",
+      "git_blob": "031ef7a0894dc2d42a1245151c97fdb3d83cdefd"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.3-android-debug.apk",
+      "bytes": 43928350,
+      "sha256": "ccbdcd4d1366a258d8f5356df81c31414da22d49aa1e9a459ed0b420b3b5d9e8",
+      "git_blob": "37a41eacaa2cfdf30dc7420c86da1be06692c622"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.3-source.zip",
+      "bytes": 10312046,
+      "sha256": "e3cd258270cba65725e1701dc46e836de9e557682a692260a5ffa6569c4f1934",
+      "git_blob": "f2c223256da2863c7a5a6b0c5783d35639204574"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.3-media.zip",
+      "bytes": 94169458,
+      "sha256": "e301659555f88d75598d2d55bda1d98ce802c73efe0037d84fd9084a722169d9",
+      "git_blob": "8ab9062f60f72666fde35f8774b366f98686f830"
+    }
+  ],
+  "source_archive": {
+    "total_frozen_git_blobs": 9231,
+    "packaged_git_blob_count": 3216,
+    "complete_application_source": true,
+    "application_source_blobs": 2378,
+    "source_zip_excludes": [
+      "docs/media/",
+      "docs/quality/evidence/"
+    ],
+    "media_zip_contains_all_frozen_media": true,
+    "historical_evidence_remains_in_frozen_git": true,
+    "all_packaged_blob_bytes_match_git_source": true,
+    "compact_source_tree": "bc995fffaec65d3a9d5f5c9bfc8063ccd7903e5f"
+  },
+  "android": {
+    "development_only": true,
+    "formal_signed_release": false,
+    "content_checks": 10,
+    "current_map_modules": 183,
+    "native_test_task": "> Task :app:testDebugUnitTest UP-TO-DATE",
+    "native_test_count": 28,
+    "native_test_cached": true,
+    "new_native_test_execution": false,
+    "standalone_jvm_rerun": false
+  },
+  "client_profile": "local; set actual HTTPS API/platform identities and rebuild before server use",
+  "executed_this_increment": [
+    "Linux amd64 cross-build, Web and secretary runtime packaging",
+    "WeChat/Douyin local builds",
+    "Android development bundle/APK and native artifact inspection",
+    "Server archive inspect, exact source archive reconstruction and expanded private-material scan",
+    "Eight selected primary native HTTP/PG business suites; no full regression"
+  ],
+  "primary_business_smoke": {
+    "record": "docs/quality/evidence/release-candidate-144/native-smoke.json",
+    "record_sha256": "dc115bc4d3c5a117472ea318697d8f789525d5b98e85dd8f72d824a0997d23d2",
+    "top_level_suites": 8,
+    "passing_result_records": 95,
+    "full_backend_regression": false,
+    "real_cloud_or_model": false
+  },
+  "retained_not_reexecuted": {
+    "business_increment": 143,
+    "full_client_increment": 136,
+    "web_tests": 452,
+    "shared_mobile_tests": 537,
+    "selected_native_http_pg_suites": 3,
+    "native_passing_records": 28,
+    "runtime_increment": 143,
+    "runtime_tests": 56,
+    "full_backend_and_runtime_increment": 121,
+    "screenshots_video_gif_latest_increment": 143,
+    "business_tests_reexecuted": false
+  },
+  "deferred": [
+    "Full backend/runtime regression and additional browser journeys",
+    "Persistent development PG100-to109 upgrade",
+    "Real Linux, production PG, OSS/R2, Codex, TG and platform acceptance",
+    "Formal Android signature/publication and complete current-scope acceptance"
+  ],
+  "excluded_by_user": [
+    "Real-device verification",
+    "Network performance/live120GB special",
+    "Historical migration/disaster recovery",
+    "AI fee controls"
+  ],
+  "remaining_work_packages": 23,
+  "eight_skills_status": "draft",
+  "linux_executed": false,
+  "deployed": false,
+  "production_ready": false,
+  "github_release_page_created": false,
+  "github_release_api_status": "Not retried; previous stored account returned HTTP403/suspended. SSH delivery only.",
+  "first_freeze_unchanged": {
+    "tag": "v0.1.0-rc.1",
+    "source_commit": "a95c6afbd0e76684a64dc641c6abe598ad625277",
+    "artifact_commit": "8ddb3f7a98a24910af49ede2a6c8b8c744d50973"
+  },
+  "previous_freeze_unchanged": {
+    "tag": "v0.1.0-rc.2",
+    "source_commit": "40cd118634117204e2e310395fac32b59af5cecc",
+    "artifact_commit": "467b2276c0d890691d1c06238e79bb60d5f0c665"
+  }
+}

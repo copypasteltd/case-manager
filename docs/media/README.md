@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量144 · 冻结媒体 / Frozen media
+
+本轮只封装现有功能，不修改页面，不新增截图、录屏或GIF。v0.1.0-rc.3的独立媒体ZIP准确包含冻结143提交的全部docs/media；138–143等各轮真实演示及原始出处保持原字节。新构建不代表媒体重新执行。[下载与SHA-256](../releases/v0.1.0-rc.3/README.md) · [验证与延期](../quality/144-frozen-candidate-verification.md)。
+
+No new browser context or recording is created. Existing screenshots, MP4s and screenshot-tour GIFs retain their original capture identities and limitations; the new media archive binds exact frozen Git bytes.
+
 ## 增量143 · 跨订阅完整审阅 / Complete portfolio review
 
 [明确日期](screenshots/subscription-portfolio-web-dates.png) · [完整账期覆盖](screenshots/subscription-portfolio-web-coverage.png) · [逐笔准确依据](screenshots/subscription-portfolio-web-evidence.png) · [实际视口MP4](videos/subscription-portfolio-web.mp4) · [三截图导览GIF](gifs/subscription-portfolio-web.gif)。

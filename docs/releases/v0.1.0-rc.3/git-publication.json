@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "prepared_at": "2026-10-31T08:10:59.415306+00:00",
+  "version": "v0.1.0-rc.3",
+  "source_commit": "e1c7a671cc4c7f52888a1e6ed72d7ce1a9c042d3",
+  "source_tag": "refs/tags/v0.1.0-rc.3",
+  "tag_object": "984d18a49c1521819feba2e12fc6eda90530ed54",
+  "artifact_ref": "refs/heads/codex/release-v0.1.0-rc.3",
+  "artifact_commit": "17f0fd77a7639eeedefdbe835ce2e77a55ed97f5",
+  "artifact_tree": "fe46e8506ad2d46004a70426d96764fbfc05bbbc",
+  "manifest_sha256": "4feeb010c947e3a906bcf1d5a0b803e05c49b34354a0e1fd2266e3abaf952e99",
+  "publisher_script_sha256": "d7116e6e7a8a353e5fa26aaf35ca606fb4586b7db5481a6f8174c8b9bff2d9a3",
+  "transport": "Prepared immutable refs; authorized SSH push and remote verification are performed separately.",
+  "force_push_used": false,
+  "user_index_modified": false,
+  "github_release_page_created": false,
+  "artifact_preparation_commit": "cf90b63f491a767a1bd98266194543efee4d62b3",
+  "documentation_followup": {
+    "kind": "README-only ordinary fast-forward before first remote publication",
+    "parent": "cf90b63f491a767a1bd98266194543efee4d62b3",
+    "commit": "17f0fd77a7639eeedefdbe835ce2e77a55ed97f5",
+    "changed_paths": [
+      "docs/releases/v0.1.0-rc.3/README.md"
+    ],
+    "reason": "The artifact branch fixes business143; delivery144 guides live on main. Use explicit main links for those guides.",
+    "readme_sha256": "46aa9841c8bd9e00ed0d8936de47b5212515399f8ccf5f5f876437a90cf233c4",
+    "asset_blobs_unchanged": true,
+    "source_tag_moved": false,
+    "force_push_used": false,
+    "user_index_modified": false
+  }
+}

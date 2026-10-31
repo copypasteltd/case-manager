@@ -1,5 +1,17 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+## 增量144 · 冻结发布 v0.1.0-rc.3 / Frozen delivery
+
+本次冻结当前主线143／结构109，包含138–143的上传草稿清理、TG组织运维、秘书运行配置、项目规划目录和完整订阅审阅。服务器／Web／秘书运行器、两小程序和Android开发APK重新构建；提供完整应用源码、开发文档和独立演示媒体包，全部附SHA-256。原rc.1／rc.2保持不可变。
+
+This candidate fixes business source `e1c7a671cc4c7f52888a1e6ed72d7ce1a9c042d3`. Native server, miniapps and a current development APK are newly packaged. Eight selected primary HTTP/PG suites and artifact integrity checks are current; full regression and additional browser journeys are deferred. Existing business tests/media retain their original provenance. Packaging tools and delivery records belong to main144; the frozen tag and convenience source archive remain the exact143 snapshot.
+
+主流程：项目／任务／交付→合同／采购／报销及审批→实际费用→实际收付款／核销→退款与核对→结项；文件、博客、服务状态和工作台共用权限。移动包为本地API配置，部署前设置真实HTTPS API并重建；Android为开发签名。开发PG仍100，新后端正常升级101–109。实际Linux／云／模型／TG／平台／生产验收和23工作包保持开放，八项Skill仍draft；用户移出项不重新作为门槛。
+
+[下载及使用 / Downloads](docs/releases/v0.1.0-rc.3/README.md) · [方案与部署顺序 / Delivery guide](docs/development/144-frozen-candidate-delivery.md) · [检查及延期 / Verification](docs/quality/144-frozen-candidate-verification.md) · [本轮及全部23项 / Complete remaining table](docs/delivery/05-functional-closure-144.md)
+
+下方各增量说明保留当时的源码、测试和安装包身份。Earlier increment entries below retain their historical source/test/artifact identities.
+
 ## 增量143 · 跨订阅完整审阅 / Complete subscription portfolio review
 
 秘书会话→选择开始日／不含结束日→读取准确范围内全部可读订阅→核对逐个已存／缺失账期、去重费用／付款和完整逐笔依据。人工预览不改变财务事实；秘书实际调用完整审阅工具后才保存不可变来源快照。集合完整与日程覆盖分别说明，不跨币种求和，也不把共享关联判作重复收费。

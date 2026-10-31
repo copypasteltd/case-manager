@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T08:18:54.108615+00:00",
+  "increment": 144,
+  "verification_mode": "frozen_release",
+  "checks": [
+    {
+      "name": "Retained143 selected executed proof binds exact current business sources and original immutable records",
+      "passed": true
+    },
+    {
+      "name": "Eight selected primary HTTP/PG suites actually execute at frozen source without skipped/failing results",
+      "passed": true
+    },
+    {
+      "name": "Fresh clean-source Linux/Web/secretary package is schema109 with declared Node22",
+      "passed": true
+    },
+    {
+      "name": "Both fresh local miniapps bind exact unchanged current client source and sealed output",
+      "passed": true
+    },
+    {
+      "name": "New development APK contains current actual JS/DEX and verifies signature without a device",
+      "passed": true
+    },
+    {
+      "name": "Gradle outcomes and original XML bytes/timestamps stay explicit; no fresh JVM claim",
+      "passed": true
+    },
+    {
+      "name": "Five bounded artifacts include all application source/docs and exact media; historical evidence stays in Git",
+      "passed": true
+    },
+    {
+      "name": "Ref preparation preserves the user index and never overwrites existing refs",
+      "passed": true
+    },
+    {
+      "name": "New immutable tag and artifact Git objects match every advertised download",
+      "passed": true
+    },
+    {
+      "name": "Both previous frozen source/artifact refs remain immutable",
+      "passed": true
+    },
+    {
+      "name": "All original migrations remain identical to frozen business source",
+      "passed": true
+    },
+    {
+      "name": "Every earlier proof and public media remains unchanged; packaging does not replay business tests",
+      "passed": true
+    },
+    {
+      "name": "No new browser/temporary fixture remains; eight Skills stay draft and23 packages open",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/release-candidate-144/retained-functional-proof.json",
+      "sha256": "9b4bbc03191a5254397038d630d07791b563effad4b4f1500bbb270952e94d34"
+    },
+    {
+      "file": "docs/quality/evidence/subscription-portfolio/final-source-check.json",
+      "sha256": "9b4bbc03191a5254397038d630d07791b563effad4b4f1500bbb270952e94d34"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/native-smoke.json",
+      "sha256": "dc115bc4d3c5a117472ea318697d8f789525d5b98e85dd8f72d824a0997d23d2"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.3/release-manifest.json",
+      "sha256": "4feeb010c947e3a906bcf1d5a0b803e05c49b34354a0e1fd2266e3abaf952e99"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.3/server-build.json",
+      "sha256": "5b6fcd5f2b7cb9a4a8d53409ff6d4b1e4b67d349fa51f550e6e042556d7b8890"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/seal.json",
+      "sha256": "c84135e2c3a4b9e67b16af12e4f6c8d4b96c0d87ce639a26a235acc6d318f7b3"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/miniapps-build.json",
+      "sha256": "16fd53823078fc5a2393f8417c2bf1710d0e05f67eedf3beb95716a2b338c804"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/build.json",
+      "sha256": "1965f15a85b93743b3485927f90f01d571888d3fae3c77347643c929452551bf"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/android-build-scope.json",
+      "sha256": "3817d3a556b958b7e76febac2657172a8ab6f6148eb1311774bc2f6da45bdb63"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/apk-inspection.json",
+      "sha256": "c1e85e080d29bef6ff96a1edb262154cc80a0d239b233ec02dfadf0cfdd432db"
+    },
+    {
+      "file": "docs/quality/evidence/release-candidate-144/native-build.log",
+      "sha256": "9fdb6959694fa82897a63e22d8be785c22eb0a32aa5eb913e8665c5ee8e97f4e"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.3/git-publication.json",
+      "sha256": "a7bd6b6ddbf13dd7d29a55a0b0a93678a7c4c7194cfbcd78027b38ac0b9f40ab"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "business_increment": 143,
+    "full_backend_increment": 121,
+    "runtime_increment": 143,
+    "full_client_increment": 136,
+    "media_latest_increment": 143,
+    "previous_tests_and_media_reexecuted": false
+  },
+  "interaction_kind": "release-candidate-144",
+  "interaction_source_sha256": "c7525da03efdfdec5de13f0a4f1e2cf021b53f15bf5341e648c0a948c44c18e8",
+  "verification_script_sha256": "33a74560178f551c278b05965dbc711a095ca0e6afed4adb8c401893d36c8095",
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": null,
+  "current_android_apk_built": true,
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "new_browser_capture": false,
+  "current_development_database_schema": 100,
+  "schema_migration": 109,
+  "skipped_checks": [
+    "Full backend/runtime regression and additional browser journeys",
+    "Persistent development PG100-to109 upgrade",
+    "Real Linux, production PG, OSS/R2, Codex, TG and platform acceptance",
+    "Formal Android signature/publication and complete current-scope acceptance"
+  ],
+  "skip_authority": "User authorized selected validation deferral for accelerated candidate release.",
+  "full_goal_complete": false,
+  "production_ready": false
+}

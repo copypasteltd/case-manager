@@ -1,0 +1,9 @@
+{
+  "kind": "documentation_consistency_only",
+  "failed_check": "Visible active/excluded tables match complete structured remaining work",
+  "cause": "The structured GAP-18 remaining text was updated for the new APK, while its visible table retained historical artifact deferrals.",
+  "correction": "Synchronize only the visible GAP-18 remaining cell to the current structured record. An incorrect column-count assertion in the first edit attempt prevented modification; correcting that assertion made the intended single-cell edit.",
+  "business_tests_reexecuted": false,
+  "original_failure_preserved": true,
+  "application_or_test_selection_or_frozen_assets_changed": false
+}
