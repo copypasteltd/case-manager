@@ -81,6 +81,11 @@ func (s *Service) executionSubscriptionReview(ctx context.Context, tx pgx.Tx, st
 		if err = strictArguments(args, &in); err == nil {
 			content, refs, err = finance.AgentSubscriptionReview(ctx, tx, a, scope, in)
 		}
+	case "read_subscription_portfolio":
+		var in finance.SubscriptionPortfolioInput
+		if err = strictArguments(args, &in); err == nil {
+			content, refs, _, err = finance.AgentSubscriptionPortfolio(ctx, tx, a, scope, in)
+		}
 	case "read_finance_record":
 		var in finance.FinanceRecordInput
 		if err = strictArguments(args, &in); err == nil {
@@ -92,7 +97,7 @@ func (s *Service) executionSubscriptionReview(ctx context.Context, tx pgx.Tx, st
 	if err != nil {
 		return nil, nil, err
 	}
-	labels := map[string]string{"list_subscriptions": "订阅发现页", "read_subscription_review": "订阅逐笔核对", "read_finance_record": "关联财务原记录"}
+	labels := map[string]string{"list_subscriptions": "订阅发现页", "read_subscription_review": "订阅逐笔核对", "read_subscription_portfolio": "跨订阅完整审阅", "read_finance_record": "关联财务原记录"}
 	return saveFinanceSnapshot(ctx, tx, st, labels[tool], content, refs)
 }
 

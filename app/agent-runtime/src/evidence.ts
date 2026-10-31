@@ -25,7 +25,7 @@ export function verifyResult(skill: SkillPackage, run: { id: string; authority_s
   }
   if (value.status === 'completed') {
     if (value.missing_fields.length) throw new RuntimeError('RESULT_COMPLETION_INCOMPLETE');
-    if (skill.manifest.skill_id === 'subscription-review' && !current.some(receipt => ['read_finance_summary', 'read_subscription_review', 'read_finance_record'].includes(receipt.tool) && receipt.status === 'succeeded' && receipt.source_refs.some(ref => ref.type === 'agent_finance_report' && value.source_refs.some(cited => key(cited) === key(ref))))) throw new RuntimeError('RESULT_READ_UNVERIFIED');
+    if (skill.manifest.skill_id === 'subscription-review' && !current.some(receipt => ['read_finance_summary', 'read_subscription_review', 'read_subscription_portfolio', 'read_finance_record'].includes(receipt.tool) && receipt.status === 'succeeded' && receipt.source_refs.some(ref => ref.type === 'agent_finance_report' && value.source_refs.some(cited => key(cited) === key(ref))))) throw new RuntimeError('RESULT_READ_UNVERIFIED');
     let completionTools=skill.manifest.completion_tools;
     if(skill.manifest.skill_id==='project-briefing'){
       let context:unknown;try{context=JSON.parse(run.prepared_context??'{}');}catch{throw new RuntimeError('RUNTIME_PROTOCOL_INVALID');}

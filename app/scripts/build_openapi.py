@@ -880,6 +880,19 @@ plan_project = {**project_fields, "classification": enum("internal", "project_re
 add("AgentPlanProject", plan_project, ("name", "scope", "owner_id", "classification"))
 add("AgentProjectPlanCreate", {**EXPECTED, "context_security_version": VERSION, "project": ref("AgentPlanProject"), "reason": NAME}, ("expected_version", "context_security_version", "project", "reason"))
 add("AgentPlanAction", {**EXPECTED, "plan_hash": HASH, "reason": NAME}, ("expected_version", "plan_hash", "reason"))
+portfolio_count = {"type":"integer","minimum":0,"maximum":100000}
+portfolio_item = {"id":ID,"product":NAME,"state":SCHEMAS["Subscription"]["properties"]["state"],
+    **{k:portfolio_count for k in ("stored_period_count","expected_period_count","missing_period_count")},
+    "coverage_known":{"type":"boolean"},"coverage_complete":{"type":"boolean"}}
+add("SubscriptionPortfolioItem",portfolio_item,tuple(portfolio_item))
+portfolio_summary = {"items":array(ref("SubscriptionPortfolioItem"),maxItems=100),
+    **{k:portfolio_count for k in ("subscription_count","stored_period_count","expected_period_count","missing_period_count","unique_cost_count","unique_payment_count","shared_record_count")},
+    **{k:{"type":"boolean"} for k in ("schedule_coverage_known","schedule_coverage_complete")},"subscription_set_complete":{"const":True}}
+add("SubscriptionPortfolioSummary",portfolio_summary,tuple(portfolio_summary))
+portfolio_preview = {"conversation_id":ID,"conversation_revision_id":ID,"context_security_version":VERSION,"project_id":nullable(ID),
+    "from":DATE,"to_exclusive":DATE,"captured_at":TIME,"summary":ref("SubscriptionPortfolioSummary"),
+    "content_text":{"type":"string","minLength":1,"maxLength":90000},"content_sha256":HASH,"coverage_notice":{"type":"string","minLength":1,"maxLength":4000},"untrusted_data":{"const":True}}
+add("AgentSubscriptionPortfolioPreview",portfolio_preview,tuple(portfolio_preview))
 catalog_item = {"id": ID, "type": enum("agent_project_person", "agent_project_template", "agent_project_catalog"), "name": NAME, "version": VERSION,
     "revision": nullable(VERSION), "description": {"type":"string","maxLength":2000}, "source_sha256": HASH,
     **{k:{"type":"integer","minimum":0} for k in ("folder_count","task_count","milestone_count")}}
@@ -1941,6 +1954,9 @@ stream["parameters"] += [{"name": "Last-Event-ID", "in": "header", "schema": {"t
     {"name": "after_seq", "in": "query", "schema": {"type": "integer", "minimum": 0}}]
 stream["responses"]["200"] = {"description": "Ordered safe company events; private model reasoning excluded.",
     "content": {"text/event-stream": {"schema": {"type": "string"}}}}
+operation("/conversations/{id}/subscription-review","get","previewSubscriptionPortfolio","AgentSubscriptionPortfolioPreview")
+PATHS["/conversations/{id}/subscription-review"]["get"]["parameters"] += [
+    {"name":n,"in":"query","required":True,"schema":DATE} for n in ("from","to")]
 operation("/conversations/{id}/project-catalog", "get", "listAgentProjectCatalog", "AgentProjectCatalogPage")
 PATHS["/conversations/{id}/project-catalog"]["get"]["parameters"] += [
     {"name":"kind","in":"query","required":True,"schema":enum("people","templates")},

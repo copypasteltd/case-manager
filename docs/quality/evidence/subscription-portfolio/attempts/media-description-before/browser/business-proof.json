@@ -1,0 +1,44 @@
+{
+  "conversation_id": "81a29881-b20b-44b0-9283-259ab072a2cc",
+  "from": "2025-01-01",
+  "to_exclusive": "2025-03-01",
+  "summary": {
+    "items": [
+      {
+        "id": "68af7350-dd59-4f49-b333-bd1bfb7fc9bf",
+        "product": "合成订阅 · HKD",
+        "state": "active",
+        "stored_period_count": 1,
+        "expected_period_count": 2,
+        "missing_period_count": 1,
+        "coverage_known": true,
+        "coverage_complete": false
+      },
+      {
+        "id": "9485374f-58c3-4668-8b11-6b4861da4afa",
+        "product": "合成订阅 · USD",
+        "state": "active",
+        "stored_period_count": 1,
+        "expected_period_count": 2,
+        "missing_period_count": 1,
+        "coverage_known": true,
+        "coverage_complete": false
+      }
+    ],
+    "subscription_count": 2,
+    "stored_period_count": 2,
+    "expected_period_count": 4,
+    "missing_period_count": 2,
+    "schedule_coverage_known": true,
+    "schedule_coverage_complete": false,
+    "unique_cost_count": 1,
+    "unique_payment_count": 1,
+    "shared_record_count": 0,
+    "subscription_set_complete": true
+  },
+  "content_sha256": "6cd9fb448c2b75ef3f632e63427f491b7107e10424402cec2719b1cd858a5710",
+  "reread_content_sha256": "9658c64b848b8d2cb216216ebe5e8751fe1e6cb486a0cf675ef5dce80464ff68",
+  "ephemeral_preview": true,
+  "financial_commands_executed": false,
+  "model_contacted": false
+}

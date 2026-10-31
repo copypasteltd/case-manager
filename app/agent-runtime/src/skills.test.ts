@@ -270,7 +270,7 @@ test('subscription discovery never proves a detailed review; actual detail and r
  const ref={type:'agent_finance_report',id:randomUUID()},value={...baseResult(),source_refs:[ref]};
  const receipt:ExecutionReceipt={run_id:run.id,authority_stamp:run.authority_stamp,tool:'list_subscriptions',status:'succeeded',committed:false,operation_id:null,resource_refs:[],source_refs:[ref]};
  assert.throws(()=>verifyResult(skill,run,value,[receipt]),/RESULT_READ_UNVERIFIED/);
- for(const tool of ['read_subscription_review','read_finance_record']){
+ for(const tool of ['read_subscription_review','read_subscription_portfolio','read_finance_record']){
   const detail={...receipt,tool};assert.equal(verifyResult(skill,run,value,[detail]).status,'completed');
   for(const altered of [{...detail,run_id:randomUUID()},{...detail,authority_stamp:'old'},{...detail,status:'pending' as const}])assert.throws(()=>verifyResult(skill,run,value,[altered]),/RESULT_(READ|REFERENCE)_UNVERIFIED/);
  }

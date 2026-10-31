@@ -261,6 +261,12 @@ func toolDefinitions(skill string) []any {
 		definitions = append(definitions, struct {
 			name, description string
 			schema            any
+		}{"read_subscription_portfolio", "完整读取当前会话项目与分类范围内发起人可读的全部订阅（所有状态）及明确日期内逐笔账期、费用和实际分配，保存一个完整快照；共同受众不全可读或超过上限则整体失败，不返回完成前缀。共享关联不是重复扣费证据，不执行付款或取消。", schema(map[string]any{"from": str(map[string]any{"format": "date"}), "to": str(map[string]any{"format": "date"})}, []string{"from", "to"})})
+	}
+	if skill == "subscription-review" {
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
 		}{"read_finance_summary", "按当前会话公司分摊或单一项目范围读取指定月度预测、发生支出或现金，返回不可改写快照；保留原币种，不执行付款或订阅取消。", schema(map[string]any{"month": str(map[string]any{"pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"}), "view": str(map[string]any{"enum": []string{"forecast", "actual", "cash"}}), "currency": str(map[string]any{"pattern": "^[A-Z]{3}$"})}, []string{"month", "view"})})
 		definitions = append(definitions, struct {
 			name, description string

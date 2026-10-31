@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T07:28:40.724411+00:00",
+  "encoder_script_sha256": "dc893e6b50613c8ad198ca59baf483d892f28b567ff330752c50397edda9a225",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "069122d8ed6d5b0ac0a4864667c3320d58b094f748ac3c41b1077835be55d600",
+      "build_source_sha256": "62de919d24e47f6f8ea26f2c80258a4961a054fa41fe2904227cb53f46c24b23",
+      "capture_manifest": "docs/quality/evidence/subscription-portfolio/web-capture-manifest.json",
+      "capture_manifest_sha256": "63926d632be7a00868e0f349a7c70983a21c30fe51f818176e6d89c7a5f7f470",
+      "capture_frame_count": 11,
+      "capture_duration_ms": 2247,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/subscription-portfolio-web-dates.png",
+          "sha256": "7429a6d668e221c5a7794f51cc96967cc97283eabf00afb3ed8378d5029800c7"
+        },
+        {
+          "file": "docs/media/screenshots/subscription-portfolio-web-coverage.png",
+          "sha256": "9fae55dd224ae550dde6c1fff5458911c8717ee76f3efcc8565cc462cb661025"
+        },
+        {
+          "file": "docs/media/screenshots/subscription-portfolio-web-evidence.png",
+          "sha256": "f4dde5ce117b588df07b627c32544b4910c325ecc5405b3849df9b9ccf1f836a"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "24",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.400000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/subscription-portfolio-web.mp4",
+          "sha256": "8f5c9042447795b113796703a8ddc57ed8e89b42e0bfe6a6534557fd53509b9b",
+          "bytes": 309886
+        },
+        {
+          "file": "docs/media/gifs/subscription-portfolio-web.gif",
+          "sha256": "3cf6741f11b0ca5300b3f4ec5d195842efa41e3c5ec7e5cbc7114556a0573e90",
+          "bytes": 255521
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web complete subscription review. MP4 records explicit read and exact evidence pagination; GIF is a six-second three-screenshot tour. No financial commands, Bot API, model, real group, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/subscription-portfolio-web-dates.png",
+      "sha256": "7429a6d668e221c5a7794f51cc96967cc97283eabf00afb3ed8378d5029800c7"
+    },
+    {
+      "file": "docs/media/screenshots/subscription-portfolio-web-coverage.png",
+      "sha256": "9fae55dd224ae550dde6c1fff5458911c8717ee76f3efcc8565cc462cb661025"
+    },
+    {
+      "file": "docs/media/screenshots/subscription-portfolio-web-evidence.png",
+      "sha256": "f4dde5ce117b588df07b627c32544b4910c325ecc5405b3849df9b9ccf1f836a"
+    },
+    {
+      "file": "docs/media/videos/subscription-portfolio-web.mp4",
+      "sha256": "8f5c9042447795b113796703a8ddc57ed8e89b42e0bfe6a6534557fd53509b9b",
+      "bytes": 309886
+    },
+    {
+      "file": "docs/media/gifs/subscription-portfolio-web.gif",
+      "sha256": "3cf6741f11b0ca5300b3f4ec5d195842efa41e3c5ec7e5cbc7114556a0573e90",
+      "bytes": 255521
+    }
+  ]
+}

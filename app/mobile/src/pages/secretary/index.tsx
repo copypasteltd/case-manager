@@ -12,6 +12,7 @@ import { eventNames, messageText, runName, runReceipt, runtimeReason, skillNames
 import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, date } from '../../ui';
 import { ChoiceList, SelectField, TextField } from '../business/controls';
 import { useMessages } from './live';
+import { ConversationSubscriptionPortfolio } from './subscription-portfolio';
 import { CatalogSource } from './project-catalog';
 import { ConversationPlans, ReferencedPlan } from './plans';
 import { ConversationOrganization, ReferencedOrganizationPlan } from './organization';
@@ -110,7 +111,7 @@ function ConversationView({ conversation: c, me, editing, onEdit, onReload }: { 
     {c.members.map(member => <Fact key={member.user_id} label={member.is_creator ? '发起人' : '已明确加入'}><Text>{member.display_name}{!member.available && ' · 当前不可用'}</Text></Fact>)}
     {c.can_edit && <><Action secondary onClick={() => onEdit('title')}>编辑会话标题</Action><Action secondary onClick={() => onEdit('state')}>{c.state === 'active' ? '归档会话' : '恢复会话'}</Action></>}{c.can_manage_members && <Action secondary onClick={() => onEdit('members')}>调整明确成员</Action>}
     {c.project_id && <Action secondary onClick={() => go('project', c.project_id!)}>查看所属项目</Action>}
-  </View></Section><MessageHistory conversation={c} me={me} /></>;
+  </View></Section>{me.actions.includes('report.read') && <ConversationSubscriptionPortfolio key={c.id+':'+c.current_revision_id+':'+me.authorization_version} conversation={c} />}<MessageHistory conversation={c} me={me} /></>;
 }
 function EditConversation({ conversation: c, me, changingState, onCommitted, onCancel }: { conversation: Conversation; me: Schemas['Me']; changingState: boolean; onCommitted(): void; onCancel(): void }) {
   const draft = useFormDraft(me, { kind: 'conversation-edit', id: c.id, version: c.version }, changingState ? (c.state === 'active' ? 'archived' : 'active') : c.state, { name: c.title });

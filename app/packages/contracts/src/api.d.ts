@@ -4188,6 +4188,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversations/{id}/subscription-review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** previewSubscriptionPortfolio */
+        get: operations["previewSubscriptionPortfolio"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversations/{id}/project-catalog": {
         parameters: {
             query?: never;
@@ -10444,6 +10461,52 @@ export interface components {
             plan_hash: string;
             reason: string;
         };
+        SubscriptionPortfolioItem: {
+            /** Format: uuid */
+            id: string;
+            product: string;
+            /** @enum {string} */
+            state: "draft" | "active" | "paused" | "cancelled" | "archived";
+            stored_period_count: number;
+            expected_period_count: number;
+            missing_period_count: number;
+            coverage_known: boolean;
+            coverage_complete: boolean;
+        };
+        SubscriptionPortfolioSummary: {
+            items: components["schemas"]["SubscriptionPortfolioItem"][];
+            subscription_count: number;
+            stored_period_count: number;
+            expected_period_count: number;
+            missing_period_count: number;
+            unique_cost_count: number;
+            unique_payment_count: number;
+            shared_record_count: number;
+            schedule_coverage_known: boolean;
+            schedule_coverage_complete: boolean;
+            /** @constant */
+            subscription_set_complete: true;
+        };
+        AgentSubscriptionPortfolioPreview: {
+            /** Format: uuid */
+            conversation_id: string;
+            /** Format: uuid */
+            conversation_revision_id: string;
+            context_security_version: number;
+            project_id: string | null;
+            /** Format: date */
+            from: string;
+            /** Format: date */
+            to_exclusive: string;
+            /** Format: date-time */
+            captured_at: string;
+            summary: components["schemas"]["SubscriptionPortfolioSummary"];
+            content_text: string;
+            content_sha256: string;
+            coverage_notice: string;
+            /** @constant */
+            untrusted_data: true;
+        };
         AgentProjectCatalogItem: {
             /** Format: uuid */
             id: string;
@@ -14287,6 +14350,10 @@ export interface components {
         };
         RunEventPageResponse: {
             data: components["schemas"]["RunEventPage"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentSubscriptionPortfolioPreviewResponse: {
+            data: components["schemas"]["AgentSubscriptionPortfolioPreview"];
             meta: components["schemas"]["Meta"];
         };
         AgentProjectCatalogPageResponse: {
@@ -26931,6 +26998,43 @@ export interface operations {
                 };
                 content: {
                     "text/event-stream": string;
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    previewSubscriptionPortfolio: {
+        parameters: {
+            query: {
+                from: string;
+                to: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentSubscriptionPortfolioPreviewResponse"];
                 };
             };
             400: components["responses"]["Failure"];

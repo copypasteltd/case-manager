@@ -26054,6 +26054,100 @@
         }
       }
     },
+    "/conversations/{id}/subscription-review": {
+      "get": {
+        "operationId": "previewSubscriptionPortfolio",
+        "tags": [
+          "conversations"
+        ],
+        "summary": "previewSubscriptionPortfolio",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubscriptionPortfolioPreviewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/conversations/{id}/project-catalog": {
       "get": {
         "operationId": "listAgentProjectCatalog",
@@ -61804,6 +61898,208 @@
           "reason"
         ]
       },
+      "SubscriptionPortfolioItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "product": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "active",
+              "paused",
+              "cancelled",
+              "archived"
+            ]
+          },
+          "stored_period_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "expected_period_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "missing_period_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "coverage_known": {
+            "type": "boolean"
+          },
+          "coverage_complete": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "product",
+          "state",
+          "stored_period_count",
+          "expected_period_count",
+          "missing_period_count",
+          "coverage_known",
+          "coverage_complete"
+        ]
+      },
+      "SubscriptionPortfolioSummary": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionPortfolioItem"
+            },
+            "maxItems": 100
+          },
+          "subscription_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "stored_period_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "expected_period_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "missing_period_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "unique_cost_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "unique_payment_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "shared_record_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "schedule_coverage_known": {
+            "type": "boolean"
+          },
+          "schedule_coverage_complete": {
+            "type": "boolean"
+          },
+          "subscription_set_complete": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "subscription_count",
+          "stored_period_count",
+          "expected_period_count",
+          "missing_period_count",
+          "unique_cost_count",
+          "unique_payment_count",
+          "shared_record_count",
+          "schedule_coverage_known",
+          "schedule_coverage_complete",
+          "subscription_set_complete"
+        ]
+      },
+      "AgentSubscriptionPortfolioPreview": {
+        "type": "object",
+        "properties": {
+          "conversation_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "conversation_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "context_security_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "from": {
+            "type": "string",
+            "format": "date"
+          },
+          "to_exclusive": {
+            "type": "string",
+            "format": "date"
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SubscriptionPortfolioSummary"
+          },
+          "content_text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90000
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "coverage_notice": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "untrusted_data": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "conversation_id",
+          "conversation_revision_id",
+          "context_security_version",
+          "project_id",
+          "from",
+          "to_exclusive",
+          "captured_at",
+          "summary",
+          "content_text",
+          "content_sha256",
+          "coverage_notice",
+          "untrusted_data"
+        ]
+      },
       "AgentProjectCatalogItem": {
         "type": "object",
         "properties": {
@@ -81156,6 +81452,22 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RunEventPage"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AgentSubscriptionPortfolioPreviewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentSubscriptionPortfolioPreview"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

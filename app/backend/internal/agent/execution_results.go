@@ -165,7 +165,7 @@ func (s *Service) CompleteExecution(ctx context.Context, lease ExecutionLease, r
 		} else if st.Profile.SkillID == "subscription-review" {
 			verified := false
 			for _, receipt := range receipts {
-				if slices.Contains([]string{"read_finance_summary", "read_subscription_review", "read_finance_record"}, receipt.Tool) && receipt.Status == "succeeded" {
+				if slices.Contains([]string{"read_finance_summary", "read_subscription_review", "read_subscription_portfolio", "read_finance_record"}, receipt.Tool) && receipt.Status == "succeeded" {
 					for _, ref := range receipt.SourceRefs {
 						if ref.Type == "agent_finance_report" {
 							for _, cited := range result.SourceRefs {

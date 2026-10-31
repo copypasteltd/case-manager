@@ -289,7 +289,7 @@ test('incident summary exposes four implemented reads in both channels and keeps
 test('monthly finance exposes its implemented reads only on the business channel and stays draft',async()=>{
  const skill=catalog.get('subscription-review')!,value=setup();
  const config=nativeConfiguration(skill,value.settings,'web');
- assert.deepEqual(config.profile.expected_tools,['company/read_resource','company/read_finance_summary','company/inspect_operation','company/list_subscriptions','company/read_subscription_review','company/read_finance_record']);
+ assert.deepEqual(config.profile.expected_tools,['company/read_resource','company/read_finance_summary','company/inspect_operation','company/list_subscriptions','company/read_subscription_review','company/read_finance_record','company/read_subscription_portfolio']);
  assert.throws(()=>nativeConfiguration(skill,value.settings,'telegram'),/SKILL_TOOLS_UNAVAILABLE/);
  const description=await describeProfile({skill_id:'subscription-review',profile_id:randomUUID(),model:value.settings.model,working_directory:value.settings.working_directory,mcp_endpoint:value.settings.mcp_endpoint},temporary);
  assert.deepEqual(description.missing_tools,[]);assert.equal(description.telegram_native,null);assert.equal(description.skill_state,'draft');assert.equal(description.ready_for_controlled_installation,false);

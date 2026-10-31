@@ -131,7 +131,7 @@ func (b *Bridge) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				expected = append(expected, "company/draft_post", "company/publish_post")
 			}
 			if profile.SkillID == "subscription-review" {
-				expected = []string{"company/read_resource", "company/read_finance_summary", "company/list_subscriptions", "company/read_subscription_review", "company/read_finance_record", "company/inspect_operation"}
+				expected = []string{"company/read_resource", "company/read_finance_summary", "company/list_subscriptions", "company/read_subscription_review", "company/read_subscription_portfolio", "company/read_finance_record", "company/inspect_operation"}
 			}
 			if profile.SkillID == "incident-summary" {
 				expected = append(expected, "company/read_service_summary")

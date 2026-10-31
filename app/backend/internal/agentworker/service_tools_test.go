@@ -40,7 +40,7 @@ func TestSubscriptionReviewMCPBoundary(t *testing.T) {
 			t.Fatal("finance review exposes a write")
 		}
 	}
-	if !slices.Equal(names, []string{"read_resource", "inspect_operation", "read_finance_summary", "list_subscriptions", "read_subscription_review", "read_finance_record"}) {
+	if !slices.Equal(names, []string{"read_resource", "inspect_operation", "read_subscription_portfolio", "read_finance_summary", "list_subscriptions", "read_subscription_review", "read_finance_record"}) {
 		t.Fatal(names)
 	}
 	if len(scopedToolDefinitions("subscription-review", "telegram")) != 0 {

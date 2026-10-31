@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## Increment143 · Complete cross-subscription portfolio review
+
+- Added exact-date complete enumeration across actor-readable conversation subscriptions, all states, detailed existing period/cost/payment evidence, missing schedules and unique/shared financial-record identities. Empty or unknown coverage never implies zero obligations; currencies are not summed.
+- Connected human readonly previews across Web, WeChat, Douyin and Android source; exact conversation/date/content-digest checks and inert full-evidence pagination clear stale results. Preview does not create finance facts or a model report.
+- Added subscription-review-only `read_subscription_portfolio`, one immutable full finance snapshot, exact receipt/audit rollback and runtime completion checks. Any audience/dependency or resource-bound failure rejects the whole review; migration109 preserves earlier records.
+- Draft subscription-review1.4.0 changes only this package's sources. Focused native/runtime/client/Web checks and actual PNG/MP4/GIF carry current provenance, including original failed attempts; full regression, mobile UI and fresh APK remain deferred.
+- 两个冻结标签不动；rc.2／APK137仍业务136／结构103，不包含138–143。开发PG100保留，当前后端需正常升级109。23 active（14 P0／9 P1）、5 excluded、八项draft与真实集成／生产边界保持。
+
+[使用与设计](development/143-subscription-portfolio.md) · [验证与延期](quality/143-subscription-portfolio-verification.md) · [本轮及全部余项](delivery/05-functional-closure-143.md)
+
+
 ## Increment142 · Project planning people and template catalogs
 
 - Added authorized active-person and published-template discovery, complete bounded source reads and query/execution-bound cursors in private company conversations. Accounts, contacts, credentials and draft templates remain private.

@@ -1,5 +1,16 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+## 增量143 · 跨订阅完整审阅 / Complete subscription portfolio review
+
+秘书会话→选择开始日／不含结束日→读取准确范围内全部可读订阅→核对逐个已存／缺失账期、去重费用／付款和完整逐笔依据。人工预览不改变财务事实；秘书实际调用完整审阅工具后才保存不可变来源快照。集合完整与日程覆盖分别说明，不跨币种求和，也不把共享关联判作重复收费。
+
+Open a secretary conversation, select explicit local dates and read every eligible subscription in the exact conversation scope. Review schedule gaps, unique linked costs/payments and complete evidence pages. Human preview is ephemeral; the actual tool stores a receipted immutable snapshot. Every participant must read every dependency, and bounds reject the whole review rather than returning a completed prefix.
+
+主线143／结构109，开发PG仍100。当前定向HTTP／原生PG、运行时56项、类型与Web／两小程序本地构建、实际Web查阅单独留证；全量回归、完整移动UI和新APK延期。Both freezes remain immutable; rc.2/APK137 retain business136/schema103 and exclude138–143. All23 work packages and eight draft Skills remain open; real model/cloud/Linux/platform/production acceptance stays separate.
+
+[使用与接口 / Usage/API](docs/development/143-subscription-portfolio.md) · [检查与延期 / Checks](docs/quality/143-subscription-portfolio-verification.md) · [本轮及全部23项 / Remaining work](docs/delivery/05-functional-closure-143.md) · [页面 / Screenshot](docs/media/screenshots/subscription-portfolio-web-coverage.png) · [MP4](docs/media/videos/subscription-portfolio-web.mp4) · [截图导览GIF](docs/media/gifs/subscription-portfolio-web.gif)
+
+
 ## 增量142 · 项目规划目录 / Project planning catalog
 
 公司私人会话→拟定项目计划→选择有效负责人／成员与已发布模板→填写类型及日期→核对固定计划→本人近期MFA批准→单独创建项目。模板目录、任务和里程碑随实际项目事务生成，成功后可打开项目并刷新核对持久业务回执。

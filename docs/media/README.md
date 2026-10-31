@@ -1,5 +1,12 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量143 · 跨订阅完整审阅 / Complete portfolio review
+
+[明确日期](screenshots/subscription-portfolio-web-dates.png) · [完整账期覆盖](screenshots/subscription-portfolio-web-coverage.png) · [逐笔准确依据](screenshots/subscription-portfolio-web-evidence.png) · [实际视口MP4](videos/subscription-portfolio-web.mp4) · [三截图导览GIF](gifs/subscription-portfolio-web.gif)。
+
+实际认证Web与隔离原生耐久PG，使用合成订阅／财务资料；录屏仅保留登录后读取及依据翻页，不含密码、MFA秘密或真实记录。GIF为三张真实截图各两秒的截图导览。No model, cloud, device or production acceptance. 所有自建浏览器上下文和临时服务在记录完成后关闭；[实际检查与延期](../quality/143-subscription-portfolio-verification.md)。
+
+
 ## 增量142 · 项目规划目录 / Project planning catalog
 
 [人员／模板选择](screenshots/project-catalog-web-selection.png) · [待批准准确计划](screenshots/project-catalog-web-plan.png) · [实际建项回执](screenshots/project-catalog-web-receipt.png) · [实际视口MP4](videos/project-catalog-web.mp4) · [三截图导览GIF](gifs/project-catalog-web.gif)。

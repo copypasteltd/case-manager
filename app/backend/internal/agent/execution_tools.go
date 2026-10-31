@@ -61,7 +61,7 @@ func allowedReadTool(skill, tool string) bool {
 	if skill == "project-briefing" && postWriteTool(tool) {
 		return true
 	}
-	if skill == "subscription-review" && slices.Contains([]string{"read_finance_summary", "list_subscriptions", "read_subscription_review", "read_finance_record"}, tool) {
+	if skill == "subscription-review" && slices.Contains([]string{"read_finance_summary", "list_subscriptions", "read_subscription_review", "read_subscription_portfolio", "read_finance_record"}, tool) {
 		return true
 	}
 	if skill == "incident-summary" && tool == "read_service_summary" {
@@ -148,7 +148,7 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		content, snapshots, err = s.executionProjectCatalog(ctx, tx, st, lease, args)
 	case "read_finance_summary":
 		content, snapshots, err = executionFinanceSummary(ctx, tx, st, args)
-	case "list_subscriptions", "read_subscription_review", "read_finance_record":
+	case "list_subscriptions", "read_subscription_review", "read_subscription_portfolio", "read_finance_record":
 		content, snapshots, err = s.executionSubscriptionReview(ctx, tx, st, tool, args)
 	case "read_service_summary":
 		content, snapshots, err = executionServiceSummary(ctx, tx, st, args)

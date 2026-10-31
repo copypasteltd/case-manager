@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "reviewed": true,
+  "reviewed_at": "2026-10-31T07:31:16.333253+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/subscription-portfolio-web-dates.png",
+      "sha256": "7429a6d668e221c5a7794f51cc96967cc97283eabf00afb3ed8378d5029800c7"
+    },
+    {
+      "file": "docs/media/screenshots/subscription-portfolio-web-coverage.png",
+      "sha256": "9fae55dd224ae550dde6c1fff5458911c8717ee76f3efcc8565cc462cb661025"
+    },
+    {
+      "file": "docs/media/screenshots/subscription-portfolio-web-evidence.png",
+      "sha256": "f4dde5ce117b588df07b627c32544b4910c325ecc5405b3849df9b9ccf1f836a"
+    },
+    {
+      "file": "docs/media/videos/subscription-portfolio-web.mp4",
+      "sha256": "8f5c9042447795b113796703a8ddc57ed8e89b42e0bfe6a6534557fd53509b9b",
+      "bytes": 309886
+    },
+    {
+      "file": "docs/media/gifs/subscription-portfolio-web.gif",
+      "sha256": "3cf6741f11b0ca5300b3f4ec5d195842efa41e3c5ec7e5cbc7114556a0573e90",
+      "bytes": 255521
+    }
+  ],
+  "screenshots_reviewed": 3,
+  "screenshots_full_resolution_reviewed": 3,
+  "video_samples": [
+    "first",
+    "middle",
+    "last"
+  ],
+  "gif_samples_ms": [
+    0,
+    2100,
+    4100
+  ],
+  "full_video_watched": false,
+  "credentials_or_real_business_records_observed": false,
+  "notes": "Inspected all three final PNGs at full resolution, decoded MP4 first/middle/last and GIF 0/2.1/4.1-second samples. Explicit dates, both subscriptions, missing periods and consecutive evidence pages are legible. No password, MFA or private-capability fields observed. MP4 is an actual short capture; GIF is a disclosed three-screenshot tour. Full playback and mobile UI are not claimed."
+}
