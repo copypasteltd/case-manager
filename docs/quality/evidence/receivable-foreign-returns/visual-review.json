@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/receivable-foreign-returns-web-partial.png",
+      "sha256": "bdb65658d162adc40959d593d23da4e5d41dc7b06fcd45379e567c8ac557c174",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/receivable-foreign-returns-web-review.png",
+      "sha256": "c3b51425208adb6350970ac226bf1da79cd671a0b43db2131415affbe0961231",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/receivable-foreign-returns-web-complete.png",
+      "sha256": "cd518cbc8a657021fb910f5cba8e1aa6c6782c2ec9904dc6595fcd67d41f4e3e",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/receivable-foreign-returns-web.mp4",
+      "sha256": "1677d9e6f3aed1ca2953bf2fbe9c354ad599ca235f83ba79316e0bc3b6b3ee50",
+      "bytes": 287610,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/receivable-foreign-returns-web.gif",
+      "sha256": "93f04a358c46f113735031c3e35f335994bbdba7a5e2aa84bce61b7694e34d23",
+      "bytes": 211250,
+      "reviewed": true
+    }
+  ],
+  "review": "Inspected all three actual screenshot pixels and decoded first/middle/final GIF and MP4 frames. Contract principal, attributed outgoing cash, whole cash and source remain readable; actual reload is shown in the three-second post-MFA MP4. GIF is an explicit six-second screenshot tour. No passwords, OTPs, real business records or unexpected blank panels.",
+  "gif_mode": "actual_screenshot_tour",
+  "gif_is_screen_recording": false,
+  "mp4_duration_seconds": 3.0,
+  "new_mobile_capture": false
+}

@@ -1,0 +1,4 @@
+{
+  "reason": "The copied recording credential guard allowed only /payments URLs. This feature correctly opens /contracts; its first screenshot was blocked. Change only this feature-owned guard to the authenticated contract route, retain the failed attempt and rerun the Web journey. Browser/native fixture/server already closed.",
+  "application_sources_changed": false
+}

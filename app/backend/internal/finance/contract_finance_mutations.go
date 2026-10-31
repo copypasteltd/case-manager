@@ -153,10 +153,10 @@ func (s *Service) mutateContractFinance(ctx context.Context, cmd core.Command, i
 		e.Seq = version + 1
 		e.Reason = strings.TrimSpace(b.Reason)
 		tag, err := tx.Exec(ctx, `INSERT INTO contract_finance_events(id,org_id,contract_id,milestone_id,contract_revision_id,seq,kind,cost_id,payment_id,source_version,source_revision_id,source_content_hash,source_event_id,amount,
-            review_snapshot,review_fingerprint,conditions_satisfied,acknowledge_difference,acknowledge_unattributed_refunds,actor_id,session_id,mfa_verified_at,reason,refund_fx_acknowledged)
-            SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,s.id,s.mfa_verified_at,$21,$23 FROM sessions s WHERE s.org_id=$2 AND s.id=$22 AND s.user_id=$20`,
+            review_snapshot,review_fingerprint,conditions_satisfied,acknowledge_difference,acknowledge_unattributed_refunds,actor_id,session_id,mfa_verified_at,reason,refund_fx_acknowledged,return_cash_amount,return_fx_rate,return_fx_source)
+            SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,s.id,s.mfa_verified_at,$21,$23,$24,$25,$26 FROM sessions s WHERE s.org_id=$2 AND s.id=$22 AND s.user_id=$20`,
 			e.ID, cmd.Actor.OrgID, c.ID, e.MilestoneID, e.ContractRevisionID, e.Seq, e.Kind, e.CostID, e.PaymentID, e.SourceVersion, e.SourceRevisionID, e.SourceContentHash, e.SourceEventID, e.Amount,
-			e.ReviewSnapshot, e.ReviewFingerprint, e.ConditionsSatisfied, e.AcknowledgeDifference, e.AcknowledgeUnattributedRefunds, cmd.Actor.UserID, e.Reason, cmd.Actor.SessionID, e.RefundFXAcknowledged)
+			e.ReviewSnapshot, e.ReviewFingerprint, e.ConditionsSatisfied, e.AcknowledgeDifference, e.AcknowledgeUnattributedRefunds, cmd.Actor.UserID, e.Reason, cmd.Actor.SessionID, e.RefundFXAcknowledged, e.ReturnCashAmount, e.ReturnFXRate, e.ReturnFXSource)
 		if err != nil {
 			return core.Result{}, err
 		}
@@ -189,7 +189,7 @@ func (s *Service) LinkContractFinance(ctx context.Context, cmd core.Command, id 
 	if !core.ValidID(in.MilestoneID) || !core.ValidID(in.SourceID) || !core.ValidID(in.SourceRevisionID) || core.RequireVersion(in.SourceVersion) != nil || len(in.SourceContentHash) != 64 || strings.Trim(in.SourceContentHash, "0123456789abcdef") != "" || !slices.Contains([]string{"cost", "cash", "refund"}, in.Kind) || ((in.Kind == "refund") != (in.SourceEventID != nil)) || (in.SourceEventID != nil && !core.ValidID(*in.SourceEventID)) {
 		return core.Result{}, core.Invalid("source", "请固定准确节点、来源版本、修订、摘要和归属类型")
 	}
-	if in.Kind != "refund" && in.RefundFXAcknowledged {
+	if in.Kind != "refund" && (in.RefundFXAcknowledged || in.ReturnFX != nil) {
 		return core.Result{}, core.Invalid("refund_fx_acknowledged", "仅异币退款归属接受本金核实声明")
 	}
 	var costID, paymentID *string
@@ -244,6 +244,22 @@ func (s *Service) LinkContractFinance(ctx context.Context, cmd core.Command, id 
 			if source.State != "recorded" || source.RecordKind != "payment" {
 				return e, nil, core.Fail(409, "CONTRACT_CASH_NOT_ELIGIBLE", "须选择已实际登记且未冲销的原资金")
 			}
+			foreignReturn := in.Kind == "refund" && n.Direction == "receivable" && value(source.Currency) != n.Currency
+			sourceAmount := amount
+			if foreignReturn {
+				if in.RefundFXAcknowledged || source.RefundFX != nil {
+					return e, nil, core.Invalid("return_fx", "应收向外退回须使用本次付出归属依据")
+				}
+				cash, rate, basis, x := reviewedContractReturnFX(ctx, tx, value(source.Currency), amount.String(), in.ReturnFX)
+				if x != nil {
+					return e, nil, x
+				}
+				e.ReturnCashAmount, e.ReturnFXRate, e.ReturnFXSource = &cash, &rate, &basis
+				e.RefundFXAcknowledged = true
+				sourceAmount, _ = core.ParseDecimal(cash)
+			} else if in.ReturnFX != nil {
+				return e, nil, core.Invalid("return_fx", "仅应收合同异币向外退回接受本次付出汇率依据")
+			}
 			if in.Kind == "refund" && source.RefundFX != nil {
 				if n.Direction != "payable" || source.RefundFX.OriginalCurrency != n.Currency || !in.RefundFXAcknowledged {
 					return e, nil, core.Invalid("refund_fx_acknowledged", "异币退款归属须按合同币种核实退回原本金，不能将实收币直接作为合同金额")
@@ -256,7 +272,7 @@ func (s *Service) LinkContractFinance(ctx context.Context, cmd core.Command, id 
 				}
 				total = value(source.Amount)
 			}
-			err = tx.QueryRow(ctx, "SELECT COALESCE(sum(contract_finance_remaining($1,id)),0)::text FROM contract_finance_events WHERE org_id=$1 AND payment_id=$2 AND kind IN ('cash','refund')", cmd.Actor.OrgID, in.SourceID).Scan(&used)
+			err = tx.QueryRow(ctx, "SELECT COALESCE(sum(CASE WHEN return_cash_amount IS NOT NULL THEN contract_return_remaining_cash($1,id) ELSE contract_finance_remaining($1,id) END),0)::text FROM contract_finance_events WHERE org_id=$1 AND payment_id=$2 AND kind IN ('cash','refund')", cmd.Actor.OrgID, in.SourceID).Scan(&used)
 			if err != nil {
 				return e, nil, err
 			}
@@ -282,10 +298,13 @@ func (s *Service) LinkContractFinance(ctx context.Context, cmd core.Command, id 
 						return e, nil, err
 					}
 					available, _ := core.ParseDecimal(value(source.UnallocatedAmount))
-					if amount.Cmp(available) > 0 {
+					if sourceAmount.Cmp(available) > 0 {
 						return e, nil, core.Fail(409, "PAYMENT_BALANCE_EXCEEDED", "退回款占用的金额已用于费用或其他收款退回")
 					}
 				}
+			}
+			if foreignReturn {
+				amount = sourceAmount
 			}
 		}
 		gross, _ := core.ParseDecimal(total)
@@ -335,6 +354,13 @@ func (s *Service) ReleaseContractFinance(ctx context.Context, cmd core.Command, 
 		}
 		text := amount.String()
 		e.Amount = &text
+		if original.ReturnCash != nil {
+			cash, x := contractReturnReleaseCash(ctx, tx, original, text)
+			if x != nil {
+				return e, nil, x
+			}
+			e.ReturnCashAmount = &cash
+		}
 		return e, nil, nil
 	})
 }

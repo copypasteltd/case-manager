@@ -1,4 +1,5 @@
 import type { components } from './api';
+import { reviewedRefundFX } from './payment-fx';
 type S = components['schemas'];
 export type ContractFinanceKind = 'cost' | 'cash' | 'refund';
 const id = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
@@ -15,13 +16,19 @@ export function contractFinanceEligible(c: S['Contract'], n: S['ContractFinanceN
   if (!root || root.contract_id !== c.id || root.milestone_id !== n.id || root.kind !== 'cash' || units(root.remaining_amount) <= 0n || units(root.effective_amount) <= 0n) return false;
   return n.direction === 'payable'
     ? source.direction === 'refund' && source.refund_of_id === root.payment_id && (source.currency === n.currency && !source.refund_fx || source.currency !== n.currency && source.refund_fx?.original_currency === n.currency)
-    : source.currency === n.currency && source.direction === 'outgoing' && source.refund_of_id === null && !source.refund_fx;
+    : source.direction === 'outgoing' && source.refund_of_id === null && !source.refund_fx;
 }
-export function contractFinanceLink(c: S['Contract'], view: S['ContractFinance'], node: S['ContractFinanceNode'], kind: ContractFinanceKind, source: S['Cost'] | S['Payment'], root: S['ContractFinanceEvent'] | null, amount: string, reason: string, acknowledged: boolean): S['ContractFinanceLink'] {
+export function contractFinanceLink(c: S['Contract'], view: S['ContractFinance'], node: S['ContractFinanceNode'], kind: ContractFinanceKind, source: S['Cost'] | S['Payment'], root: S['ContractFinanceEvent'] | null, amount: string, reason: string, acknowledged: boolean, returnFX?: S['ContractReturnFXInput']): S['ContractFinanceLink'] {
   if (!view.can_reconcile || view.history_visibility !== 'complete' || view.contract_id !== c.id || view.contract_version !== c.version || !view.nodes.some(n => n.id === node.id) || !id.test(source.id) || !id.test(source.current_revision_id) || !hash.test(source.content_hash) || !contractFinanceEligible(c, node, kind, source, root) || units(amount) <= 0n || !reason.trim() || [...reason.trim()].length > 200) throw new Error('合同、来源或归属依据已变化，请核对最新资料。');
+  const outgoing = kind === 'refund' && node.direction === 'receivable' && source.currency !== node.currency;
+  if (outgoing) {
+    if (!returnFX || !returnFX.acknowledged || !acknowledged) throw new Error('请核对合同本金、本次实际付出、汇率与凭证来源。');
+    reviewedRefundFX(node.currency, source.currency!, amount, returnFX.cash_amount, returnFX.rate, returnFX.source);
+    if (units(returnFX.cash_amount) > units(source.amount)) throw new Error('本次付出归属超过所选实际资金总额。');
+  } else if (returnFX) throw new Error('仅应收合同异币向外退回接受付出汇率依据。');
   const foreign = kind === 'refund' && 'refund_fx' in source && !!source.refund_fx;
   if (foreign && !acknowledged) throw new Error('请核实整笔实收与本次合同原本金分别使用的币种。');
-  return { expected_version: view.version, contract_version: view.contract_version, reason: reason.trim(), milestone_id: node.id, kind, source_id: source.id, source_version: source.version, source_revision_id: source.current_revision_id, source_content_hash: source.content_hash, source_event_id: kind === 'refund' ? root!.id : null, amount, ...(foreign ? { refund_fx_acknowledged: true } : {}) };
+  return { expected_version: view.version, contract_version: view.contract_version, reason: reason.trim(), milestone_id: node.id, kind, source_id: source.id, source_version: source.version, source_revision_id: source.current_revision_id, source_content_hash: source.content_hash, source_event_id: kind === 'refund' ? root!.id : null, amount, ...(foreign ? { refund_fx_acknowledged: true } : {}), ...(outgoing ? { return_fx: { ...returnFX!, source: returnFX!.source.trim() } } : {}) };
 }
 export function contractFinanceReceipt(v: S['ContractFinanceReceipt'], c: S['Contract'], view: S['ContractFinance'], node: S['ContractFinanceNode']) {
   return !!v && v.contract_id === c.id && v.milestone_id === node.id && Number.isSafeInteger(v.version) && v.version === view.version + 1 && typeof v.event_id === 'string' && id.test(v.event_id);

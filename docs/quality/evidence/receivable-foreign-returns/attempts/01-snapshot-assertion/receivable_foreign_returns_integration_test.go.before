@@ -1,0 +1,351 @@
+package httpapi
+
+import (
+	"context"
+	"copypaste.hk/platform/internal/contracts"
+	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/finance"
+	"copypaste.hk/platform/internal/identity"
+	"copypaste.hk/platform/internal/party"
+	"copypaste.hk/platform/internal/workflow"
+	"encoding/json"
+	"os"
+	"strings"
+	"sync"
+	"testing"
+	"time"
+)
+
+func TestReceivableForeignReturns(t *testing.T) {
+	u, file, _, _, _ := restorationFixture(t, 15)
+	f := u.f
+	ctx := context.Background()
+	ptr := func(v string) *string { return &v }
+	exec := func(q string, args ...any) {
+		t.Helper()
+		if _, e := f.owner.Exec(ctx, q, args...); e != nil {
+			t.Fatal(e)
+		}
+	}
+	bind := func(user, key string) string {
+		id := core.NewID()
+		exec(`INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type,classification_ceiling) SELECT $1,$2,$3,id,'org','project_restricted' FROM roles WHERE org_id=$2 AND key=$4`, id, f.org, user, key)
+		return id
+	}
+	for _, key := range []string{"contract_manager", "contract_operator", "party_manager", "request_manager", "cost_recorder", "cost_confirmer", "cost_reverser", "payment_recorder", "payment_reverser", "cash_reporter"} {
+		bind(f.alice, key)
+	}
+	for _, key := range []string{"contract_reader", "party_manager", "approval_reviewer"} {
+		bind(f.bob, key)
+	}
+	f.aliceToken = memberMFAToken(f, "alice", "android")
+	admin := f.administratorToken()
+	r, v := f.request("POST", "/v1/workflow-definitions", admin, core.NewID(), workflow.DefinitionInput{Key: "contract-refunds135", Name: "Synthetic financial contract review", Kind: "contract", Category: "reconciliation", Currency: "HKD", MinAmount: "0", Enabled: true, SelfApprovalPolicy: "deny", WithdrawalAllowed: true, Steps: []workflow.StepInput{{Title: "Independent review", AssignedUserID: f.bob}}, Reason: "isolated reconciliation policy"}, nil)
+	expect(t, r, 201, v)
+	r, v = f.request("POST", "/v1/parties", f.aliceToken, core.NewID(), party.Create{Content: party.Content{Name: "Synthetic contractual counterparty", Kind: "organization", Relationships: []string{"supplier", "customer"}}, ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "isolated financial source"}, nil)
+	expect(t, r, 201, v)
+	supplier := data[party.Party](t, v)
+	var today string
+	if e := f.owner.QueryRow(ctx, "SELECT (clock_timestamp() AT TIME ZONE 'Asia/Hong_Kong')::date::text").Scan(&today); e != nil {
+		t.Fatal(e)
+	}
+	newContract := func(direction string) contracts.Contract {
+		t.Helper()
+		in := contracts.Create{Content: contracts.Content{Title: "Synthetic " + direction + " contract", Direction: ptr(direction), Type: ptr("service"), Category: "reconciliation", CounterpartyID: &supplier.ID, CounterpartyRevisionID: &supplier.CurrentRevisionID, OwnerID: &f.alice, Currency: ptr("HKD"), Amount: ptr("780"), StartDate: &today, EndDate: ptr("2030-01-01"), DraftFileVersionID: &file.Version.ID, PaymentSchedule: &contracts.PaymentSchedule{Mode: "scheduled", Items: []contracts.PaymentPlanItem{{ID: core.NewID(), Title: "Synthetic final delivery", Amount: ptr("780"), DueDate: &today, Conditions: "Confirm delivery"}}}}, ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "isolated contract with fixed milestones"}
+		r, v := f.request("POST", "/v1/contracts", f.aliceToken, core.NewID(), in, nil)
+		expect(t, r, 201, v)
+		c := data[contracts.Contract](t, v)
+		r, v = f.request("POST", "/v1/requests", f.aliceToken, core.NewID(), workflow.RequestCreate{Kind: "contract", BusinessID: c.ID, ExpectedBusinessVersion: c.Version, BusinessRevisionID: c.CurrentRevisionID, BusinessContentHash: c.ContentHash, Reason: "exact financial contract approval"}, nil)
+		expect(t, r, 201, v)
+		request := data[workflow.Request](t, v)
+		r, v = f.request("GET", "/v1/requests/"+request.ID+"/submission-preview", f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		preview := data[workflow.SubmissionPreview](t, v)
+		r, v = f.request("POST", "/v1/requests/"+request.ID+"/submit", f.aliceToken, core.NewID(), workflow.SubmitInput{ExpectedVersion: request.Version, RevisionID: request.CurrentRevisionID, ContentHash: request.ContentHash, WorkflowDefinitionID: preview.Workflow.ID, PreviewHash: preview.PreviewHash, Reason: "human confirms exact contract"}, nil)
+		expect(t, r, 200, v)
+		request = data[workflow.Request](t, v)
+		r, v = f.request("POST", "/v1/approval-steps/"+request.Steps[0].ID+"/decisions", f.bobToken, core.NewID(), workflow.DecisionInput{ExpectedVersion: request.Steps[0].Version, RequestVersion: request.Version, RevisionID: request.CurrentRevisionID, ContentHash: request.ContentHash, Decision: "approve", Reason: "independent exact approval"}, nil)
+		expect(t, r, 200, v)
+		r, v = f.request("GET", "/v1/contracts/"+c.ID, f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		c = data[contracts.Contract](t, v)
+		r, v = f.request("POST", "/v1/contracts/"+c.ID+"/signature", f.aliceToken, core.NewID(), contracts.SignatureInput{ExpectedVersion: c.Version, RevisionID: c.CurrentRevisionID, ContentHash: c.ContentHash, SignedOn: today, SignedFileVersionID: file.Version.ID, Attestation: "Synthetic evidence verified against the approved contract", Reason: "isolated actual signature"}, nil)
+		expect(t, r, 201, v)
+		c = data[contracts.Contract](t, v)
+		r, v = f.request("POST", "/v1/contracts/"+c.ID+"/transition", f.aliceToken, core.NewID(), contracts.ActivationInput{ExpectedVersion: c.Version, Action: "activate", RevisionID: c.CurrentRevisionID, ContentHash: c.ContentHash, SignatureID: c.Signature.ID, Reason: "explicit effective contract"}, nil)
+		expect(t, r, 200, v)
+		return data[contracts.Contract](t, v)
+	}
+
+	var headers map[string]string
+	call := func(method, path string, body any, status int) response {
+		t.Helper()
+		r, v := f.request(method, path, f.aliceToken, core.NewID(), body, headers)
+		expect(t, r, status, v)
+		return v
+	}
+	summary := func(c contracts.Contract) finance.ContractFinance {
+		return data[finance.ContractFinance](t, call("GET", "/v1/contracts/"+c.ID+"/finance", nil, 200))
+	}
+	c := newContract("receivable")
+	bind(f.alice, "contract_reconciler")
+	view := summary(c)
+	n := view.Nodes[0]
+	base := func() finance.ContractFinanceBase {
+		return finance.ContractFinanceBase{ExpectedVersion: summary(c).Version, ContractVersion: c.Version, Reason: "review synthetic principal attribution"}
+	}
+	draft := func(direction, currency, amount string, original *finance.Payment) finance.Payment {
+		in := finance.PaymentCreate{PaymentContent: finance.PaymentContent{Title: "Synthetic contract foreign refund", Direction: ptr(direction), PaidAt: ptr("2025-02-02T12:00:00+08:00"), Currency: ptr(currency), Amount: ptr(amount), Category: "contract-refunds135", Counterparty: &finance.PartyRef{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, MethodLabel: "synthetic bank fact", EvidenceVersionIDs: []string{file.Version.ID}}, SourceKey: "contract-refund135:" + core.NewID(), ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "isolated contract refund"}
+		if original != nil {
+			in.RefundOfID = &original.ID
+			in.RefundFX = &finance.PaymentRefundFX{OriginalCurrency: "HKD", OriginalAmount: "780", Rate: "0.1282051282", Source: "synthetic immutable refund statement"}
+		}
+		return data[finance.Payment](t, call("POST", "/v1/payments", in, 201))
+	}
+	paymentBase := func(p finance.Payment) finance.Base {
+		return finance.Base{ExpectedVersion: p.Version, RevisionID: p.CurrentRevisionID, ContentHash: p.ContentHash, Reason: "review original cash and principal"}
+	}
+	record := func(p finance.Payment, original *finance.Payment) finance.Payment {
+		in := finance.PaymentRecordInput{Base: paymentBase(p), RefundAllocations: []finance.RefundAllocation{}}
+		if original != nil {
+			in.ExpectedSourceVersion = &original.Version
+			in.RefundFXAcknowledged = true
+		}
+		return data[finance.Payment](t, call("POST", "/v1/payments/"+p.ID+"/record", in, 200))
+	}
+	p := record(draft("incoming", "HKD", "780", nil), nil)
+	linkInput := func(kind, amount string, p finance.Payment, root *string) finance.ContractFinanceLink {
+		return finance.ContractFinanceLink{ContractFinanceBase: base(), MilestoneID: n.ID, Kind: kind, SourceID: p.ID, SourceVersion: p.Version, SourceRevisionID: p.CurrentRevisionID, SourceContentHash: p.ContentHash, SourceEventID: root, Amount: amount}
+	}
+	root := data[finance.ContractFinanceReceipt](t, call("POST", "/v1/contracts/"+c.ID+"/finance/entries", linkInput("cash", "780", p, nil), 200)).EventID
+
+	var same bool
+	if e := f.owner.QueryRow(ctx, "SELECT contract_finance_snapshot($1,$2)=contract_finance_snapshot_0101_base($1,$2)", f.org, n.ID).Scan(&same); e != nil || !same {
+		t.Fatal("ordinary snapshot changed", e)
+	}
+	out := record(draft("outgoing", "USD", "100", nil), nil)
+	input := func(principal, cash, rate string) finance.ContractFinanceLink {
+		in := linkInput("refund", principal, out, &root)
+		in.ReturnFX = &finance.ContractReturnFXInput{CashAmount: cash, Rate: rate, Source: "synthetic receivable return statement", Acknowledged: true}
+		return in
+	}
+	events := func() []finance.ContractFinanceEvent {
+		return data[core.Page[finance.ContractFinanceEvent]](t, call("GET", "/v1/contracts/"+c.ID+"/finance/events?limit=100", nil, 200)).Items
+	}
+	get := func(p finance.Payment) finance.Payment {
+		return data[finance.Payment](t, call("GET", "/v1/payments/"+p.ID, nil, 200))
+	}
+	link := func(in finance.ContractFinanceLink) finance.ContractFinanceReceipt {
+		return data[finance.ContractFinanceReceipt](t, call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 200))
+	}
+	t.Run("exact cash quote and human acknowledgement are mandatory", func(t *testing.T) {
+		before := summary(c).Version
+		in := input("390", "50", "0.1282051282")
+		in.ReturnFX = nil
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 422)
+		in = input("390", "50", "0.1282051282")
+		in.ReturnFX.Acknowledged = false
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 422)
+		in = input("390", "50.01", "0.1282051282")
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 422)
+		in = input("390", "50", "0.1282051282")
+		in.RefundFXAcknowledged = true
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 422)
+		in = input("390", "50", "0.1282051282")
+		in.ReturnFX.Rate = "0"
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 422)
+		in = input("390", "50", "0.1282051282")
+		in.ReturnFX.Source = " "
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", in, 422)
+		if summary(c).Version != before {
+			t.Fatal("rejected quote changed history")
+		}
+	})
+	initial := input("390", "50", "0.1282051282")
+	key := core.NewID()
+	r, v = f.request("POST", "/v1/contracts/"+c.ID+"/finance/entries", f.aliceToken, key, initial, nil)
+	expect(t, r, 200, v)
+	first := data[finance.ContractFinanceReceipt](t, v)
+	r, v = f.request("POST", "/v1/contracts/"+c.ID+"/finance/entries", f.aliceToken, key, initial, nil)
+	expect(t, r, 200, v)
+	if data[finance.ContractFinanceReceipt](t, v) != first {
+		t.Fatal("replay changed dual attribution")
+	}
+	t.Run("contract principal actual cash reservation and scoped reports use independent units", func(t *testing.T) {
+		view := summary(c)
+		cash := get(out)
+		if *view.Nodes[0].CashAmount != "390.000000" || cash.ContractReturnReservedAmount != "50.000000" || *cash.UnallocatedAmount != "50.000000" {
+			t.Fatal(view, cash)
+		}
+		for _, e := range events() {
+			if e.ID == first.EventID && (e.ReturnCash == nil || e.ReturnCash.Amount != "50.000000" || e.ReturnCash.WholeAmount != "100.000000" || e.ReturnCash.OriginalAmount != "390.000000" || !e.RefundFXAcknowledged) {
+				t.Fatal(e)
+			}
+		}
+		report := data[finance.CashReport](t, call("GET", "/v1/reports/cash?from=2025-02-01&to=2025-03-01&category=contract-refunds135&project_id="+*file.File.ProjectID, nil, 200))
+		if len(report.Totals) != 1 || report.Totals[0].Currency != "USD" || report.Totals[0].NetAmount != "50.000000" {
+			t.Fatal(report)
+		}
+		report = data[finance.CashReport](t, call("GET", "/v1/reports/cash?from=2025-02-01&to=2025-03-01&category=contract-refunds135", nil, 200))
+		if len(report.Totals) != 1 || report.Totals[0].NetAmount != "100.000000" || report.Totals[0].UnallocatedAmount != "50.000000" {
+			t.Fatal(report)
+		}
+	})
+	if os.Getenv("CP_BROWSER_BUSINESS_FIXTURE") != "" {
+		holdBrowserBusinessFixture(t, f, map[string]any{"fixture_kind": "receivable-foreign-return", "contract": c, "node": n, "outgoing": out, "root_id": root, "first_event_id": first.EventID, "project_id": file.File.ProjectID})
+		return
+	}
+	review := func() finance.ContractFinanceReceipt {
+		node := summary(c).Nodes[0]
+		return data[finance.ContractFinanceReceipt](t, call("POST", "/v1/contracts/"+c.ID+"/finance/milestones/"+n.ID+"/review", finance.ContractFinanceReview{ContractFinanceBase: base(), ExpectedFingerprint: *node.Fingerprint, ConditionsSatisfied: true, AcknowledgeDifference: true, AcknowledgeUnattributedRefunds: true, EvidenceVersionIDs: []string{file.Version.ID}}, 200))
+	}
+	t.Run("review pins quote and partial releases conserve the final cash tail", func(t *testing.T) {
+		rc := review()
+		var snapshot json.RawMessage
+		for _, e := range events() {
+			if e.ID == rc.EventID {
+				snapshot = e.ReviewSnapshot
+			}
+		}
+		if !strings.Contains(string(snapshot), `"return_cash"`) || !strings.Contains(string(snapshot), `"amount": "50.000000"`) {
+			t.Fatal(string(snapshot))
+		}
+		for _, cash := range []string{"16.670000", "16.670000", "16.660000"} {
+			receipt := data[finance.ContractFinanceReceipt](t, call("POST", "/v1/contracts/"+c.ID+"/finance/entries/"+first.EventID+"/release", finance.ContractFinanceRelease{ContractFinanceBase: base(), Amount: "130"}, 200))
+			found := false
+			for _, e := range events() {
+				if e.ID == receipt.EventID {
+					found = true
+					if e.ReturnCash == nil || e.ReturnCash.Amount != cash || e.ReturnCash.RemainingAmount != nil {
+						t.Fatal(e)
+					}
+				}
+				if e.ID == rc.EventID && string(e.ReviewSnapshot) != string(snapshot) {
+					t.Fatal("immutable review rewritten")
+				}
+			}
+			if !found {
+				t.Fatal("release missing")
+			}
+		}
+		if *summary(c).Nodes[0].CashAmount != "780.000000" || summary(c).Nodes[0].ReviewState != "stale" || *get(out).UnallocatedAmount != "100.000000" {
+			t.Fatal(summary(c), get(out))
+		}
+	})
+	loginChannel := func(channel string) {
+		// This is an isolated arithmetic fixture, not a TOTP replay test.
+		// Reset only its synthetic credential's replay cursor, then perform a
+		// real challenge/verification and obtain the actual channel session.
+		var encrypted []byte
+		if e := f.owner.QueryRow(ctx, "SELECT secret_cipher FROM mfa_credentials WHERE org_id=$1 AND user_id=$2", f.org, f.alice).Scan(&encrypted); e != nil {
+			t.Fatal(e)
+		}
+		secret, e := identity.Open(f.api.Config.MFAKey, encrypted, f.org+":"+f.alice)
+		if e != nil {
+			t.Fatal("synthetic MFA fixture open failed")
+		}
+		exec("UPDATE mfa_credentials SET last_step=-1 WHERE org_id=$1 AND user_id=$2", f.org, f.alice)
+		challenge := f.login("alice", channel)
+		h := map[string]string{"Origin": "http://localhost:5178"}
+		r, v := f.request("POST", "/v1/auth/mfa/verify", "", "", map[string]string{"challenge": challenge.Challenge, "code": authenticatorCode(secret, time.Now())}, h)
+		expect(t, r, 200, v)
+		result := data[identity.LoginResult](t, v)
+		headers = nil
+		f.aliceToken = result.AccessToken
+		if channel == "web" {
+			headers = map[string]string{"Origin": "http://localhost:5178", "X-CSRF-Token": result.CSRFToken}
+			for _, cookie := range r.Result().Cookies() {
+				if cookie.Name == "cp_session" {
+					headers["Cookie"] = "cp_session=" + cookie.Value
+				}
+			}
+		}
+	}
+
+	for _, channel := range []string{"web", "wechat", "douyin", "android"} {
+		t.Run("channel_"+channel, func(t *testing.T) { loginChannel(channel); link(input("78", "10", "0.1282051282")) })
+	}
+	var last string
+	t.Run("concurrent clients cannot consume the same cash or head twice", func(t *testing.T) {
+		in := input("300", "38.46", "0.1282")
+		codes := make(chan int, 2)
+		ids := make(chan string, 2)
+		var wg sync.WaitGroup
+		for range 2 {
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+				r, v := f.request("POST", "/v1/contracts/"+c.ID+"/finance/entries", f.aliceToken, core.NewID(), in, nil)
+				codes <- r.Code
+				if r.Code == 200 {
+					raw, _ := json.Marshal(v.Data)
+					var receipt finance.ContractFinanceReceipt
+					json.Unmarshal(raw, &receipt)
+					ids <- receipt.EventID
+				}
+			}()
+		}
+		wg.Wait()
+		close(codes)
+		close(ids)
+		count := map[int]int{}
+		for n := range codes {
+			count[n]++
+		}
+		for id := range ids {
+			last = id
+		}
+		if count[200] != 1 || count[409] != 1 || *get(out).UnallocatedAmount != "21.540000" || *summary(c).Nodes[0].CashAmount != "168.000000" {
+			t.Fatal(count, get(out), summary(c))
+		}
+	})
+	t.Run("reserved foreign cash cannot fund expense or exceed original receipt principal", func(t *testing.T) {
+		expense := data[finance.Cost](t, call("POST", "/v1/costs", finance.Create{Content: finance.Content{Title: "Synthetic unrelated USD expense", OccurredOn: ptr("2025-01-15"), Currency: ptr("USD"), Amount: ptr("25"), Category: "return135", Counterparty: &finance.PartyRef{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, Allocations: []finance.Allocation{{ProjectID: file.File.ProjectID, Amount: "25"}}, EvidenceVersionIDs: []string{file.Version.ID}}, SourceKey: "return135cost:" + core.NewID(), ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "isolated cash reservation check"}, 201))
+		expense = data[finance.Cost](t, call("POST", "/v1/costs/"+expense.ID+"/confirm", finance.Base{ExpectedVersion: expense.Version, RevisionID: expense.CurrentRevisionID, ContentHash: expense.ContentHash, Reason: "confirm actual cost"}, 200))
+		call("POST", "/v1/payments/"+out.ID+"/allocations", finance.PaymentAllocate{Base: paymentBase(get(out)), CostID: expense.ID, CostVersion: expense.Version, CostRevisionID: expense.CurrentRevisionID, CostContentHash: expense.ContentHash, Amount: "25"}, 409)
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", input("200", "20", "0.1"), 409)
+		call("POST", "/v1/payments/"+p.ID+"/reverse", finance.PaymentReverseInput{Base: paymentBase(get(p)), EffectiveAt: "2025-02-03T12:00:00+08:00"}, 409)
+	})
+	t.Run("direct SQL and a late audit failure cannot forge or partially commit a quote", func(t *testing.T) {
+		before := summary(c).Version
+		tx, e := f.api.DB.Begin(ctx)
+		if e != nil {
+			t.Fatal(e)
+		}
+		_, e = tx.Exec(ctx, `INSERT INTO contract_finance_events(id,org_id,contract_id,milestone_id,contract_revision_id,seq,kind,payment_id,source_version,source_revision_id,source_content_hash,source_event_id,amount,actor_id,session_id,mfa_verified_at,reason,refund_fx_acknowledged,return_cash_amount,return_fx_rate,return_fx_source)
+		 SELECT gen_random_uuid(),org_id,contract_id,milestone_id,contract_revision_id,$3,kind,payment_id,source_version,source_revision_id,source_content_hash,source_event_id,1,actor_id,session_id,mfa_verified_at,'forged inconsistent quote',true,1,0.1,return_fx_source FROM contract_finance_events WHERE org_id=$1 AND id=$2`, f.org, last, before+1)
+		tx.Rollback(ctx)
+		if e == nil || !strings.Contains(e.Error(), "reviewed dual units") {
+			t.Fatal("SQL quote accepted", e)
+		}
+		exec(`CREATE FUNCTION reject_return135_audit() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action='contract.finance.refund' THEN RAISE EXCEPTION 'isolated audit rejection';END IF;RETURN NEW;END;$$;CREATE TRIGGER reject_return135_audit BEFORE INSERT ON audit_events FOR EACH ROW EXECUTE FUNCTION reject_return135_audit()`)
+		call("POST", "/v1/contracts/"+c.ID+"/finance/entries", input("100", "12.82", "0.1282"), 500)
+		exec("DROP TRIGGER reject_return135_audit ON audit_events;DROP FUNCTION reject_return135_audit()")
+		if summary(c).Version != before || get(out).ContractReturnReservedAmount != "78.460000" {
+			t.Fatal("late failure changed balances")
+		}
+	})
+	t.Run("full cash reversal restores contract view and scoped cash without rewriting attribution", func(t *testing.T) {
+		review()
+		before := get(out)
+		history := events()
+		reversed := data[finance.Payment](t, call("POST", "/v1/payments/"+out.ID+"/reverse", finance.PaymentReverseInput{Base: paymentBase(before), EffectiveAt: "2025-02-03T12:00:00+08:00"}, 200))
+		if reversed.ContentHash != before.ContentHash || *summary(c).Nodes[0].CashAmount != "780.000000" || summary(c).Nodes[0].ReviewState != "stale" {
+			t.Fatal(reversed, summary(c))
+		}
+		for _, e := range events() {
+			if e.Kind == "refund" && e.EffectiveAmount != "0.000000" && e.EffectiveAmount != "0" {
+				t.Fatal(e)
+			}
+			for _, old := range history {
+				if e.ID == old.ID && e.ReturnCash != nil && e.ReturnCash.Amount != old.ReturnCash.Amount {
+					t.Fatal("attribution rewritten")
+				}
+			}
+		}
+		report := data[finance.CashReport](t, call("GET", "/v1/reports/cash?from=2025-02-01&to=2025-03-01&category=contract-refunds135&project_id="+*file.File.ProjectID, nil, 200))
+		if len(report.Totals) != 1 || report.Totals[0].NetAmount != "0.000000" {
+			t.Fatal(report)
+		}
+	})
+}

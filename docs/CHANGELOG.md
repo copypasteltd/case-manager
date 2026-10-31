@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## Increment135 · Receivable foreign outgoing returns
+
+- 四端源码补齐应收合同的异币向外退回：准确原收入／实际付出来源、本金／现金双币报价、明确人类声明与近期MFA、独立余额和现金占用。
+- 部分解除按剩余比例与准确尾差；项目现金份额、不可变人工核对、来源变化和全额冲销沿用普通账务事实。
+- Four native HTTP/PG suites pass52 records;444 Web and529 shared-mobile cases, type checks, local Web/miniapp builds and an actual Web mutation/readback. Retain the exact failed fixture/source-binding/browser-guard attempts.
+- Normal migration102 preserves1–101 and all earlier proof/media. Development services remain100; apply101+102 before new backend use. No fresh Android/native artifact or complete regression; first-freeze tag and downloads remain immutable.
+- [实现与使用](development/135-receivable-foreign-returns.md) · [精简验证与延期](quality/135-receivable-foreign-returns-verification.md) · [全部23项余项](delivery/05-functional-closure-135.md)
+
 ## 增量134 · 异币退款费用回转 / Foreign expense refund attribution
 
 - 登记与后续分次回转、三种原币余额、实收项目份额、准确尾差、不可变冲销、近期MFA与审计回滚进入四端功能源码；迁移101保持1–100与原账不变。

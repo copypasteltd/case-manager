@@ -19,11 +19,13 @@ export function ContractFinanceActionDialog({ contract, view, node, action, even
   contract: Schemas['Contract']; view: Schemas['ContractFinance']; node: Schemas['ContractFinanceNode']; action: ContractFinanceAction; event?: Schemas['ContractFinanceEvent']; onClose: () => void;
 }) {
   const [fixed] = useState({ contract, view, node, event }), [reason, setReason] = useState(''), [amount, setAmount] = useState('');
+  const [returnCash, setReturnCash] = useState(''), [returnRate, setReturnRate] = useState(''), [returnSource, setReturnSource] = useState('');
   const [fxAcknowledged, setFXAcknowledged] = useState(false);
   const [fresh, setFresh] = useState(false), [difference, setDifference] = useState(false), [refunds, setRefunds] = useState(false), [conditions, setConditions] = useState(false);
   const [source, setSource] = useState<FinanceSource | null>(null), [root, setRoot] = useState<Schemas['ContractFinanceEvent'] | null>(null);
   const [files, setFiles] = useState<Schemas['BusinessFileReference'][]>([]), [picker, setPicker] = useState<'source' | 'root' | 'file' | null>(null);
   const cache = useQueryClient(), key = useCommandKey();
+  const outgoingReturn = action === 'refund' && fixed.node.direction === 'receivable' && source?.type === 'cash' && source.value.currency !== fixed.node.currency;
   const mutation = useMutation({ mutationFn: () => {
     const base = { expected_version: fixed.view.version, contract_version: fixed.view.contract_version, reason };
     let path = '/contracts/' + fixed.contract.id + '/finance', body: object;
@@ -37,14 +39,14 @@ export function ContractFinanceActionDialog({ contract, view, node, action, even
     } else {
       if (!source || action === 'refund' && !root) throw new Error('请先选择准确来源。');
       const value = source.value; path += '/entries';
-      body = contractFinanceLink(fixed.contract, fixed.view, fixed.node, action, value, root, amount, reason, fxAcknowledged);
+      body = contractFinanceLink(fixed.contract, fixed.view, fixed.node, action, value, root, amount, reason, fxAcknowledged, outgoingReturn ? { cash_amount: returnCash, rate: returnRate, source: returnSource, acknowledged: true } : undefined);
     }
     return api<Schemas['ContractFinanceReceipt']>(path, { method: 'POST', body, key: key(body) });
   }, onSuccess: async () => { await refreshContractFinance(cache); onClose(); } });
   const conflict = mutation.error instanceof ApiError && [409, 412].includes(mutation.error.status);
   const differs = !isZeroAmount(fixed.node.outstanding_amount) || !isZeroAmount(fixed.node.excess_amount);
   const foreignRefund = action === 'refund' && source?.type === 'cash' && !!source.value.refund_fx;
-  const disabled = mutation.isPending || conflict || !fresh || foreignRefund && !fxAcknowledged || action === 'review' && (!files.length || differs && !difference || fixed.node.has_unattributed_refunds && !refunds) || ['cost', 'cash', 'refund'].includes(action) && !source;
+  const disabled = mutation.isPending || conflict || !fresh || (foreignRefund || outgoingReturn) && !fxAcknowledged || action === 'review' && (!files.length || differs && !difference || fixed.node.has_unattributed_refunds && !refunds) || ['cost', 'cash', 'refund'].includes(action) && !source;
   return <Dialog title={contractFinanceActionNames[action]} onClose={onClose} busy={mutation.isPending}>
     <p><strong>{fixed.node.title}</strong> · 计划 {money(fixed.node.amount, fixed.node.currency)}</p>
     <p className="form-note">{action === 'review' ? '本次固定当前费用、收付款、退款和凭证。来源后续变化须重新核对。' : action === 'release' ? '保留实际费用和资金，追加解除记录并保留原归属。' : '从既有真实记录中分配金额，保留来源；不新增费用或银行付款。'}</p>
@@ -54,6 +56,12 @@ export function ContractFinanceActionDialog({ contract, view, node, action, even
       {['cost', 'cash', 'refund'].includes(action) && <section className="form-section"><h3>本次准确来源</h3>{source ? <><strong>{source.value.title}</strong>{source.type === 'cost' ? <CostFacts value={source.value} /> : <PaymentFacts value={source.value} />}</> : <p className="muted">尚未选择来源。</p>}<button type="button" className="button secondary" disabled={action === 'refund' && !root} onClick={() => setPicker('source')}>选择准确合同财务来源</button></section>}
       {action === 'release' && <p>原归属记录 {fixed.event?.seq} · 尚未解除 {money(fixed.event?.remaining_amount, fixed.node.currency)}</p>}
       {action !== 'review' && <Field label="本次原币归属金额" hint={'使用 ' + fixed.node.currency + ' 最小货币单位。'}><input required inputMode="decimal" maxLength={30} value={amount} onChange={e => { setAmount(e.target.value); setFXAcknowledged(false); }} /></Field>}
+      {outgoingReturn && <section className="form-section"><h3>本次异币付出归属</h3><p>合同本金 {fixed.node.currency} 与实际付出 {source?.value.currency} 分开核对；使用所选资金凭证，不新增付款或自动记汇差。</p>
+        <Field label={'本次实际付出归属金额（' + source?.value.currency + '）'}><input required inputMode="decimal" maxLength={30} value={returnCash} onChange={e => { setReturnCash(e.target.value); setFXAcknowledged(false); }} /></Field>
+        <Field label={'每1 ' + fixed.node.currency + ' 实际兑换的 ' + source?.value.currency}><input required inputMode="decimal" maxLength={30} value={returnRate} onChange={e => { setReturnRate(e.target.value); setFXAcknowledged(false); }} /></Field>
+        <Field label="实际退回汇率凭证来源"><input required maxLength={200} value={returnSource} onChange={e => { setReturnSource(e.target.value); setFXAcknowledged(false); }} /></Field>
+        <label className="check-field"><input type="checkbox" checked={fxAcknowledged} onChange={e => setFXAcknowledged(e.target.checked)} />已核对合同退回本金、本次实际付出与汇率凭证。</label></section>}
+      {action === 'release' && fixed.event?.return_cash && <p className="notice">尚占用实际付出 {money(fixed.event.return_cash.remaining_amount, fixed.event.return_cash.currency)}；解除按剩余本金比例舍入，最后一笔释放准确尾差，原付款事实保留。</p>}
       {foreignRefund && <label className="check-field"><input type="checkbox" checked={fxAcknowledged} onChange={e => setFXAcknowledged(e.target.checked)} />已核对整笔实收与原付款本金；本次只按合同币种归属本金，不自动换算费用或记汇差。</label>}
       {action === 'review' && <><dl className="file-facts"><div><dt>已归属净收付</dt><dd>{money(fixed.node.cash_amount, fixed.node.currency)}</dd></div><div><dt>与计划尚差</dt><dd>{money(fixed.node.outstanding_amount, fixed.node.currency)}</dd></div><div><dt>超过计划</dt><dd>{money(fixed.node.excess_amount, fixed.node.currency)}</dd></div></dl>
         <label className="check-field"><input type="checkbox" checked={conditions} onChange={e => setConditions(e.target.checked)} />已核实本节点约定条件均已满足。</label>
@@ -64,8 +72,8 @@ export function ContractFinanceActionDialog({ contract, view, node, action, even
       <Field label="操作依据"><textarea required maxLength={200} rows={3} value={reason} onChange={e => setReason(e.target.value)} /></Field><MFAConfirmation onFresh={setFresh} />
       <div className="dialog-actions"><button className="button secondary" type="button" onClick={onClose}>取消</button><button className="button primary" disabled={Boolean(disabled)}>{mutation.isPending ? '正在登记' : contractFinanceActionNames[action]}</button></div>
     </fieldset></form>
-    {picker === 'root' && <ContractCashRootPicker contractID={fixed.contract.id} node={fixed.node} onClose={() => setPicker(null)} onSelect={value => { setRoot(value); setSource(null); setFXAcknowledged(false); setPicker(null); }} />}
-    {picker === 'source' && (action === 'cost' || action === 'cash' || action === 'refund') && <ContractFinanceSourcePicker contract={fixed.contract} node={fixed.node} kind={action} original={root} onClose={() => setPicker(null)} onSelect={value => { setSource(value); setFXAcknowledged(false); setPicker(null); }} />}
+    {picker === 'root' && <ContractCashRootPicker contractID={fixed.contract.id} node={fixed.node} onClose={() => setPicker(null)} onSelect={value => { setRoot(value); setSource(null); setFXAcknowledged(false); setReturnCash(''); setReturnRate(''); setReturnSource(''); setPicker(null); }} />}
+    {picker === 'source' && (action === 'cost' || action === 'cash' || action === 'refund') && <ContractFinanceSourcePicker contract={fixed.contract} node={fixed.node} kind={action} original={root} onClose={() => setPicker(null)} onSelect={value => { setSource(value); setFXAcknowledged(false); setReturnCash(''); setReturnRate(''); setReturnSource(''); setPicker(null); }} />}
     {picker === 'file' && <FileVersionPicker project={fixed.contract.project_id} classification={fixed.contract.classification} title="选择准确节点核对凭证" onClose={() => setPicker(null)} onSelect={file => { setFiles(values => values.some(f => f.version_id === file.version_id) ? values : [...values, file]); setPicker(null); }} />}
   </Dialog>;
 }

@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T02:23:55.951732+00:00",
+  "encoder_script_sha256": "1cacec58ebb7f9b4afdf1ff88867453612d1bb5c91a4ce55b210357df21874cb",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "bae63fc56f5163ffb9c34bb0b04a0859ea8e2d5621551a681954f879cfa01220",
+      "build_source_sha256": "595dfec4c0b94dbed84aa3eb1cdb5aac443b898f2b795d2eef26ab5964950fbd",
+      "capture_manifest": "docs/quality/evidence/receivable-foreign-returns/web-capture-manifest.json",
+      "capture_manifest_sha256": "19e6559d4d0682029e808836b6298ce81e034654fa648f936ceb3a9aee27a1cd",
+      "capture_frame_count": 14,
+      "capture_duration_ms": 2836,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/receivable-foreign-returns-web-partial.png",
+          "sha256": "bdb65658d162adc40959d593d23da4e5d41dc7b06fcd45379e567c8ac557c174"
+        },
+        {
+          "file": "docs/media/screenshots/receivable-foreign-returns-web-review.png",
+          "sha256": "c3b51425208adb6350970ac226bf1da79cd671a0b43db2131415affbe0961231"
+        },
+        {
+          "file": "docs/media/screenshots/receivable-foreign-returns-web-complete.png",
+          "sha256": "cd518cbc8a657021fb910f5cba8e1aa6c6782c2ec9904dc6595fcd67d41f4e3e"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "30",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/receivable-foreign-returns-web.mp4",
+          "sha256": "1677d9e6f3aed1ca2953bf2fbe9c354ad599ca235f83ba79316e0bc3b6b3ee50",
+          "bytes": 287610
+        },
+        {
+          "file": "docs/media/gifs/receivable-foreign-returns-web.gif",
+          "sha256": "93f04a358c46f113735031c3e35f335994bbdba7a5e2aa84bce61b7694e34d23",
+          "bytes": 211250
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web receivable foreign return, reviewed contract-principal/outgoing-cash quotation and durable attributed-cash reservation. MP4 records actual post-MFA pixels; GIF is an explicit six-second three-screenshot tour. No real cash transfer, device, cloud or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/receivable-foreign-returns-web-partial.png",
+      "sha256": "bdb65658d162adc40959d593d23da4e5d41dc7b06fcd45379e567c8ac557c174"
+    },
+    {
+      "file": "docs/media/screenshots/receivable-foreign-returns-web-review.png",
+      "sha256": "c3b51425208adb6350970ac226bf1da79cd671a0b43db2131415affbe0961231"
+    },
+    {
+      "file": "docs/media/screenshots/receivable-foreign-returns-web-complete.png",
+      "sha256": "cd518cbc8a657021fb910f5cba8e1aa6c6782c2ec9904dc6595fcd67d41f4e3e"
+    },
+    {
+      "file": "docs/media/videos/receivable-foreign-returns-web.mp4",
+      "sha256": "1677d9e6f3aed1ca2953bf2fbe9c354ad599ca235f83ba79316e0bc3b6b3ee50",
+      "bytes": 287610
+    },
+    {
+      "file": "docs/media/gifs/receivable-foreign-returns-web.gif",
+      "sha256": "93f04a358c46f113735031c3e35f335994bbdba7a5e2aa84bce61b7694e34d23",
+      "bytes": 211250
+    }
+  ]
+}

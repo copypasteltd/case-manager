@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T02:21:23.121Z",
+  "finished_at": "2026-10-31T02:21:41.006Z",
+  "checks": [
+    "Actual effective receivable contract shows390 HKD principal separately from50 USD attributed outgoing cash and100 USD whole payment.",
+    "Recent-MFA Web command commits195 HKD /25 USD and re-reads the immutable event,195 HKD contract net,75 USD reservation and25 USD free cash.",
+    "Post-MFA viewport recording and actual reload retain both cash and principal evidence; owned browser contexts close."
+  ],
+  "source_count": 967,
+  "source_sha256": "bae63fc56f5163ffb9c34bb0b04a0859ea8e2d5621551a681954f879cfa01220",
+  "source_after_sha256": "bae63fc56f5163ffb9c34bb0b04a0859ea8e2d5621551a681954f879cfa01220",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "595dfec4c0b94dbed84aa3eb1cdb5aac443b898f2b795d2eef26ab5964950fbd",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "595dfec4c0b94dbed84aa3eb1cdb5aac443b898f2b795d2eef26ab5964950fbd",
+  "build_source_unchanged": true
+}

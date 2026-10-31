@@ -16,7 +16,7 @@ export function ContractFinanceSourcePicker({ contract, node, kind, original, on
   const [search, setSearch] = useState(''), [q, setQ] = useState('');
   const direction = kind === 'refund' ? node.direction === 'payable' ? 'refund' : 'outgoing' : node.direction === 'payable' ? 'outgoing' : 'incoming';
   const query = useInfiniteQuery({ queryKey: ['contract-finance-source-picker', contract.id, kind, original?.id, q], initialPageParam: '',
-    queryFn: ({ pageParam, signal }) => api<Page<Cost | Payment>>((kind === 'cost' ? '/costs?' : '/payments?') + new URLSearchParams({ state: kind === 'cost' ? 'confirmed' : 'recorded', ...(kind === 'refund' && node.direction === 'payable' ? {} : { currency: node.currency }), q, limit: '20', ...(kind !== 'cost' ? { direction } : {}), ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
+    queryFn: ({ pageParam, signal }) => api<Page<Cost | Payment>>((kind === 'cost' ? '/costs?' : '/payments?') + new URLSearchParams({ state: kind === 'cost' ? 'confirmed' : 'recorded', ...(kind === 'refund' ? {} : { currency: node.currency }), q, limit: '20', ...(kind !== 'cost' ? { direction } : {}), ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
   const items = query.error ? [] : query.data?.pages.flatMap(p => p.items).filter(value => contractFinanceEligible(contract, node, kind, value, original)) ?? [];
   return <Dialog title="选择准确合同财务来源" onClose={onClose}>
     <p className="form-note">{kind === 'cost' ? '选择已确认、且已关联本合同生效修订的费用。可先在费用详情登记合同依据。' : kind === 'refund' ? '选择已经发生、与原资金相符的退回记录。' : '选择相同项目、往来方及币种的已登记实际资金。'}仅列出有权查阅的资料。</p>

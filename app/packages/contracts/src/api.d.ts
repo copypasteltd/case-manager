@@ -11131,6 +11131,13 @@ export interface components {
             /** Format: date-time */
             created_at: string;
         };
+        ContractReturnFXInput: {
+            cash_amount: string;
+            rate: string;
+            source: string;
+            /** @constant */
+            acknowledged: true;
+        };
         ContractFinanceLink: {
             expected_version: number;
             contract_version: number;
@@ -11148,6 +11155,7 @@ export interface components {
             source_event_id: string | null;
             amount: string;
             refund_fx_acknowledged?: boolean;
+            return_fx?: components["schemas"]["ContractReturnFXInput"];
         };
         ContractFinanceRelease: {
             expected_version: number;
@@ -11221,6 +11229,18 @@ export interface components {
             paid_on: string;
             refund_fx: components["schemas"]["PaymentRefundFX"];
         };
+        ContractReturnCash: {
+            currency: string;
+            amount: string;
+            whole_amount: string;
+            /** Format: date */
+            paid_on: string;
+            original_amount: string;
+            original_currency: string;
+            rate: string;
+            source: string;
+            remaining_amount: string | null;
+        };
         ContractFinanceSnapshotSource: {
             /** Format: uuid */
             event_id: string;
@@ -11247,6 +11267,7 @@ export interface components {
             refund_family_fingerprint: string | null;
             attribution_currency?: string;
             refund_cash?: components["schemas"]["ContractRefundCash"];
+            return_cash?: components["schemas"]["ContractReturnCash"];
         };
         ContractFinanceSnapshot: {
             /** Format: uuid */
@@ -11291,6 +11312,7 @@ export interface components {
             can_release: boolean;
             refund_fx_acknowledged?: boolean;
             refund_cash?: components["schemas"]["ContractRefundCash"];
+            return_cash?: components["schemas"]["ContractReturnCash"];
         };
         ContractClosureNode: {
             /** Format: uuid */

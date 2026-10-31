@@ -13,15 +13,16 @@ type ContractFinanceBase struct {
 }
 type ContractFinanceLink struct {
 	ContractFinanceBase
-	MilestoneID          string  `json:"milestone_id"`
-	Kind                 string  `json:"kind"`
-	SourceID             string  `json:"source_id"`
-	SourceVersion        int64   `json:"source_version"`
-	SourceRevisionID     string  `json:"source_revision_id"`
-	SourceContentHash    string  `json:"source_content_hash"`
-	SourceEventID        *string `json:"source_event_id"`
-	Amount               string  `json:"amount"`
-	RefundFXAcknowledged bool    `json:"refund_fx_acknowledged,omitempty"`
+	MilestoneID          string                 `json:"milestone_id"`
+	Kind                 string                 `json:"kind"`
+	SourceID             string                 `json:"source_id"`
+	SourceVersion        int64                  `json:"source_version"`
+	SourceRevisionID     string                 `json:"source_revision_id"`
+	SourceContentHash    string                 `json:"source_content_hash"`
+	SourceEventID        *string                `json:"source_event_id"`
+	Amount               string                 `json:"amount"`
+	RefundFXAcknowledged bool                   `json:"refund_fx_acknowledged,omitempty"`
+	ReturnFX             *ContractReturnFXInput `json:"return_fx,omitempty"`
 }
 type ContractFinanceRelease struct {
 	ContractFinanceBase
@@ -84,6 +85,10 @@ type ContractRefundCash struct {
 }
 
 type ContractFinanceEvent struct {
+	ReturnCash                     *ContractReturnCash `json:"return_cash,omitempty"`
+	ReturnCashAmount               *string             `json:"-"`
+	ReturnFXRate                   *string             `json:"-"`
+	ReturnFXSource                 *string             `json:"-"`
 	RefundFXAcknowledged           bool                `json:"refund_fx_acknowledged,omitempty"`
 	RefundCash                     *ContractRefundCash `json:"refund_cash,omitempty"`
 	ID                             string              `json:"id"`

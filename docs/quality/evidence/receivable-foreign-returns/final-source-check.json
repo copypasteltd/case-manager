@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T02:25:00.274201+00:00",
+  "increment": 135,
+  "verification_mode": "scoped_increment",
+  "checks": [
+    {
+      "name": "Four native HTTP/PG suites actually pass without skips, including new dual-unit return journeys",
+      "passed": true
+    },
+    {
+      "name": "Complete backend and native harness inputs still match actual execution bytes",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: typecheck",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: web-tests",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: web-build",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Eight new shared return cases pass in both actual client consumers",
+      "passed": true
+    },
+    {
+      "name": "Owned durable native PostgreSQL closes without altering persistent development services",
+      "passed": true
+    },
+    {
+      "name": "Actual authenticated Web mutation, durable readback and owned-resource cleanup pass",
+      "passed": true
+    },
+    {
+      "name": "Inspected actual Web screenshots, post-authentication MP4 and screenshot-tour GIF retain exact bytes",
+      "passed": true
+    },
+    {
+      "name": "Published historical proof/media and migrations1–101 remain immutable",
+      "passed": true
+    },
+    {
+      "name": "Original first-freeze tag and artifact branch remain pinned",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and no formal model/platform/cloud acceptance is claimed",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/backend.json",
+      "sha256": "46ea9f6bbbb3d72a1a38f12d4bc2f1e01c781fdbce6826b88807837d1476ab49"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/typecheck.json",
+      "sha256": "3a25b5f3b6186534fec4460dd8b25b8c42de686d8da719eb3bf760a9319845ee"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/web-tests.json",
+      "sha256": "5789ce5dbbcb1efdf8b27f9913df84a093f2f92eb6e96ae04ee6c6b2c012d1e8"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/mobile-tests.json",
+      "sha256": "1575a784f942fb1b80a4e31157899a75798fec09bf7d1d099bdbf75dfbaa824f"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/web-build.json",
+      "sha256": "758d233ed8a8dc405f4ec6bf27b7390c92984ea9904ba468fb3ae065c713995a"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/weapp-build.json",
+      "sha256": "23603feaa8b44c664a4437bae18cadff123b14e90ed7a338df3270f9b4e119f6"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/douyin-build.json",
+      "sha256": "7269ceb16c036c4660a9aed46e90007b3e0f68e83efe6deefaa6f1a10450804c"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/native-cluster-closed.json",
+      "sha256": "af01c566dddf546631deb78ac00edafe9a8e8ca3c3b00feaadb63ab0a8f8af27"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns-web/result.json",
+      "sha256": "6be5882983b14f9b7b140eb96322fdeba1cc2a2311d701ccaa071df520601127"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns-web/source-manifest.json",
+      "sha256": "7e2d82a167049df347d30b0df798133d90cfd48e72ce8f84a32c6bc812c7ca58"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns-web/business-proof.json",
+      "sha256": "21eafd76507ab99ad356e0f81b5fbae38770c7197fed7b2f2961ed0e3ea13d11"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/media.json",
+      "sha256": "5c48c09beba9d68773ed232306ff13fdf43c53cdcdf39c2ca94a317b23b8755e"
+    },
+    {
+      "file": "docs/quality/evidence/receivable-foreign-returns/visual-review.json",
+      "sha256": "55855ac70d86ec50a4d4ceb41ee4030acc9506c1945743e2e77c3711b092ae4b"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "base_commit": "16554e916d7dc8f4a19f3864828a4fe6a79b7fa1",
+    "full_backend_increment": 121,
+    "runtime_increment": 121,
+    "android_artifact_increment": 133,
+    "freeze_tag": "v0.1.0-rc.1",
+    "current_android_apk_built": false,
+    "previous_proof_and_media_reexecuted": false
+  },
+  "interaction_kind": "receivable-foreign-returns",
+  "interaction_source_sha256": "595dfec4c0b94dbed84aa3eb1cdb5aac443b898f2b795d2eef26ab5964950fbd",
+  "verification_script_sha256": "23e115213ca08dc3f6e6d3925199c376207593e362979ca4f840de4e34c34a8c",
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": null,
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "current_android_apk_built": false,
+  "current_development_database_schema": 100,
+  "schema_migration": 102,
+  "skipped_checks": [
+    "Full backend/runtime regression",
+    "Additional mobile browser journey",
+    "New Android JS/JVM/APK build",
+    "Persistent development database100-to102 upgrade",
+    "Actual platform/cloud/model/TG/Linux/production acceptance"
+  ],
+  "skip_authority": "Explicit user instruction on2026-10-31 to preserve the main functional loop and defer selected validation for faster first release; same focused post-freeze workflow.",
+  "full_goal_complete": false,
+  "production_ready": false
+}

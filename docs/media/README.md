@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量135 · 应收异币向外退回 / Receivable foreign outgoing returns
+
+三张实际Web截图：[原归属](screenshots/receivable-foreign-returns-web-partial.png)、[人工报价核实](screenshots/receivable-foreign-returns-web-review.png)、[持久结果](screenshots/receivable-foreign-returns-web-complete.png)。[静音MP4](videos/receivable-foreign-returns-web.mp4)记录认证后真实页面和刷新；[六秒GIF](gifs/receivable-foreign-returns-web.gif)是三张真实截图各两秒的明确导览。
+
+Synthetic effective contract and actual native HTTP/PG commands only. Screens show contract principal and outgoing cash separately; no credentials or real business data. The GIF is a screenshot tour, not a new interaction recording. No new mobile recording/device claim, and all earlier media retain their bytes. [准确清单](../quality/evidence/receivable-foreign-returns/media.json)。
+
 ## 增量134：实际Web异币费用退款 / Actual Web foreign expense refund
 
 三张合成业务截图：首次部分回转、三币种人工核对及最后一笔完成；MP4为认证后的真实浏览器像素录制，GIF明确为三张截图导览。本人登录／MFA秘密未录入素材，自建上下文、页面、临时API／Web及测试PG检查后关闭。仅Web新增录制，未声称本轮移动端录制或真实银行转账。

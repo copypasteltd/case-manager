@@ -1,0 +1,4 @@
+{
+  "reason": "The new fixture expected spaces inside compact JSON; this failed before the intended partial releases and caused later balance assertions to cascade. Ordinary attribution, quote rejection, cash report and legacy suites passed. Correct only that JSON assertion, then rerun the four suites.",
+  "production_sources_changed": false
+}

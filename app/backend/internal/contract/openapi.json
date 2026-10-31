@@ -65516,6 +65516,34 @@
           "created_at"
         ]
       },
+      "ContractReturnFXInput": {
+        "type": "object",
+        "properties": {
+          "cash_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "rate": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,10})?$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "acknowledged": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cash_amount",
+          "rate",
+          "source",
+          "acknowledged"
+        ]
+      },
       "ContractFinanceLink": {
         "type": "object",
         "properties": {
@@ -65580,6 +65608,9 @@
           },
           "refund_fx_acknowledged": {
             "type": "boolean"
+          },
+          "return_fx": {
+            "$ref": "#/components/schemas/ContractReturnFXInput"
           }
         },
         "additionalProperties": false,
@@ -65988,6 +66019,66 @@
           "refund_fx"
         ]
       },
+      "ContractReturnCash": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "whole_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "paid_on": {
+            "type": "string",
+            "format": "date"
+          },
+          "original_amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "original_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "rate": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "remaining_amount": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "currency",
+          "amount",
+          "whole_amount",
+          "paid_on",
+          "original_amount",
+          "original_currency",
+          "rate",
+          "source",
+          "remaining_amount"
+        ]
+      },
       "ContractFinanceSnapshotSource": {
         "type": "object",
         "properties": {
@@ -66118,6 +66209,9 @@
           },
           "refund_cash": {
             "$ref": "#/components/schemas/ContractRefundCash"
+          },
+          "return_cash": {
+            "$ref": "#/components/schemas/ContractReturnCash"
           }
         },
         "additionalProperties": false,
@@ -66378,6 +66472,9 @@
           },
           "refund_cash": {
             "$ref": "#/components/schemas/ContractRefundCash"
+          },
+          "return_cash": {
+            "$ref": "#/components/schemas/ContractReturnCash"
           }
         },
         "additionalProperties": false,
