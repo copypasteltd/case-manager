@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "archive_sha256": "719f9dfe21264ccd098ac832f25e8a7367cebbd14896c1117c515afdedef9bb1",
+  "checks": [
+    {
+      "target": "weapp",
+      "passed": true,
+      "js_files": 26,
+      "markers": {
+        "/storage/replicas": true,
+        "/storage/replica-retries": true,
+        "READY_FOR_REVIEW": true,
+        "basis_sha256": true,
+        "storage.operations.read": true
+      }
+    },
+    {
+      "target": "tt",
+      "passed": true,
+      "js_files": 25,
+      "markers": {
+        "/storage/replicas": true,
+        "/storage/replica-retries": true,
+        "READY_FOR_REVIEW": true,
+        "basis_sha256": true,
+        "storage.operations.read": true
+      }
+    }
+  ],
+  "scope": "Actual generated miniapp JS archive contents. No platform publication, emulator or device acceptance."
+}

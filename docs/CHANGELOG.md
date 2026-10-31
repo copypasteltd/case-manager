@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## 增量148 · v0.1.0-rc.5：最新功能冻结交付 / Current functional freeze
+
+- 固定Git147／结构111，当前Linux／Web／秘书运行器、微信／抖音和Android开发包重新构建；复制运维147已进入实际APK与两小程序，补齐旧rc.4／APK146的版本差异。
+- 五包封存并附摘要：服务端、两小程序、开发APK、完整应用源码／文档、全部冻结截图／MP4／GIF；3289项源码／媒体Git blob逐字节还原，五包5227项成员展开扫描。
+- 当前检查793项服务端包文件、151项小程序输出、APK10项及185项选定源码映射。147业务证明／媒体原字节保留；28 JVM XML为UP-TO-DATE缓存，不计本轮新执行。无新增业务、结构、完整回归或录制。
+- 双语README、下载／部署／使用／核验文档及完整23项编号表同步。新标签及独立产物分支通过SSH交付，五冻15项引用回读；原四冻不移动，无强推。GitHub Releases网页沿用原API403事实，本轮未重试。
+- 真部署／模型／云／TG／平台身份、正式Android与公司完整验收继续开放；原开发PG100／API未动，八Skill仍draft。用户移出项不重新设门槛。
+
+Release148 freezes business147/schema111 as rc.5 with complete source and five current functional assets. Fresh packaging and artifact integrity checks are separate from retained147 business/media and cached native XML. Formal release/production acceptance remains open. [下载](releases/v0.1.0-rc.5/README.md) · [全部剩余项](delivery/05-functional-closure-148.md)
+
+
 ## Increment146 · Frozen functional delivery v0.1.0-rc.4
 
 - 固定业务145／结构110，包括采购／报销逐明细文案和人工采用；本轮只完成冻结交付，原三冻、旧媒体／证明和结构1–110不改。

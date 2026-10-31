@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T11:12:44.943751+00:00",
+  "checks": [
+    {
+      "name": "Current authority and four-client scope agree",
+      "passed": true
+    },
+    {
+      "name": "Original source and ID count: AC",
+      "passed": true
+    },
+    {
+      "name": "Original source and ID count: TC",
+      "passed": true
+    },
+    {
+      "name": "Every original ID appears exactly once",
+      "passed": true
+    },
+    {
+      "name": "Original wording and row hashes remain exact",
+      "passed": true
+    },
+    {
+      "name": "Classification never invents a passed case",
+      "passed": true
+    },
+    {
+      "name": "Removed categories are explicitly excluded user requirements",
+      "passed": true
+    },
+    {
+      "name": "Partial and excluded requirements have an explicit boundary",
+      "passed": true
+    },
+    {
+      "name": "AI authorization, isolation and company finance remain mandatory",
+      "passed": true
+    },
+    {
+      "name": "Counts derive from every reviewed item",
+      "passed": true
+    },
+    {
+      "name": "Markdown exactly matches the reviewed manifest",
+      "passed": true
+    },
+    {
+      "name": "Classification does not close work packages",
+      "passed": true
+    }
+  ],
+  "manifest_sha256": "7b7f14cfa964d974d7e231c84bfcfa1041060a6156c66df7f783b257a492dbda",
+  "document_sha256": "31f53102c30d050233db63c05f87e603d17755d3304125215107a2d775babc12",
+  "authority_scope_sha256": "6b901c208a5869646ad7e57e9c33171c726761d3137f1cce5460a9e9448e9921",
+  "verification_script_sha256": "fede67f8bf1214882edab11771b90e44efa3e0990df9b92a6b1206266f6fb11d",
+  "counts": {
+    "AC": {
+      "required": 18,
+      "partial": 8,
+      "excluded": 4,
+      "total": 30
+    },
+    "TC": {
+      "required": 56,
+      "partial": 14,
+      "excluded": 2,
+      "total": 72
+    }
+  },
+  "business_cases_executed": 0,
+  "business_cases_passed": 0,
+  "scope": "Source-bound applicability consistency only; no business or production acceptance."
+}

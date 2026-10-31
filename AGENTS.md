@@ -1,5 +1,8 @@
 # Repository working agreement / 仓库工作约定
 
+Increment148 freezes exact business147/schema111 as v0.1.0-rc.5 with rebuilt Linux/Web/runtime, both miniapps and developmentAPK; the APK now includes147 storage operations. Packaging/source/artifact checks are fresh;147 business/media and28 cached JVM XML are retained, not replayed. Main148 contains delivery tools/guides; source tag/ZIP fix147. Keep all four prior freezes, old proofs/media and migrations1–111 immutable, developmentPG100/API unchanged,23 work packages and eight draft Skills open. No GitHub Releases webpage was created; retained API403 was not retried. See `docs/development/148-frozen-release-delivery.md`.
+
+
 ## Current scope / 当前范围（用户修订99）
 
 - Follow `docs/delivery/04-current-scope-and-acceptance.md` and `04-current-scope.json`. Keep Web, WeChat, Douyin, Android, Codex secretary, eight Skills and TG. AI execution isolation, authorization, audit and technical resource limits remain required.

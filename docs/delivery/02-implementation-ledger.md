@@ -1,5 +1,12 @@
 # 代码实施与验证台账
 
+## 增量148：当前源码与交付包一致
+
+业务147／结构111冻结为rc.5。六个原生发布辅助脚本完成服务器／两小程序／开发APK构建、准确内容及源码映射检查、五包封存、完整源码／媒体还原和独立Git引用；旧业务／结构／证明／媒体不改。147业务检查和录制按准确来源复用，Gradle28项XML为缓存，不扩大回归。真实配置、正式签名及完整23工作包验收仍开放。
+
+[下载](../releases/v0.1.0-rc.5/README.md) · [方案](../development/148-frozen-release-delivery.md) · [准确核验](../quality/148-frozen-release-verification.md) · [全部23项](05-functional-closure-148.md)
+
+
 增量146：停止扩展业务，当前业务145／结构110冻结为v0.1.0-rc.4；服务器、两小程序、Android开发包重新构建，当前逐明细OA逻辑入包，完整源码／文档及原媒体另包附摘要。三组原生HTTP／PG共45子场景＋3汇总通过，必要产物核对保留，完整回归／额外UI延期。旧三冻、开发PG100和原API保留，23 active（14 P0／9 P1）、5 excluded、八项draft与实际接入／生产验收不变。见[交付](../development/146-frozen-release-delivery.md)、[核验](../quality/146-frozen-release-verification.md)、[下载](../releases/v0.1.0-rc.4/README.md)及[全部23项](05-functional-closure-146.md)。
 
 

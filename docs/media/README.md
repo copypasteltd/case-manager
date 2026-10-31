@@ -1,5 +1,12 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量148：原始媒体随rc.5交付 / Retained original media
+
+rc.5媒体ZIP包含准确Git147的全部docs/media；本轮没有新增截图、浏览器录制或GIF。147复制运维的三PNG、2.2秒实际无声操作MP4和6秒截图导览GIF保持原字节；截图导览不冒充连续操作录像。业务界面未改，采用原证明和原素材，未启动浏览器或临时服务。更早媒体继续按各原记录说明来源。
+
+All frozen original media is delivered without recapture. The media ZIP and compact source ZIP reconstruct the same Git147 snapshot; the current148 guide is on main. [固定下载](../releases/v0.1.0-rc.5/README.md) · [准确复用](../quality/148-frozen-release-verification.md)
+
+
 ## 增量146 · 冻结媒体 / Frozen media
 
 v0.1.0-rc.4媒体ZIP准确收录业务145提交的全部已有docs/media，包含逐明细OA三PNG、实际无声MP4及三截图导览GIF；本轮不更改原媒体、不重录页面或声称复用为新执行。[下载](../releases/v0.1.0-rc.4/README.md) · [原始145媒体说明](../development/145-oa-line-prose.md)。All existing media retain their exact captured bytes and provenance.

@@ -1,5 +1,20 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+## 增量148 · 最新冻结 v0.1.0-rc.5 / Latest frozen delivery
+
+当前功能冻结固定业务147 `4155ce9c19304b8c65f5636e09707a5eba1e21cd`／数据库结构111。四端包已重新构建并包含复制运维台账、详情与人工重试；提供Linux／Web／秘书运行器、两小程序、Android开发安装包、完整应用源码／文档和全部原始截图／MP4／GIF五包及SHA-256。旧四次冻结保持不变，下方旧版本段落为历史记录。
+
+The latest frozen candidate fixes all business source through147/schema111, including the reviewed replica operations console. All current client artifacts are rebuilt. Complete application source and documentation, original demo media and fixed checksummed downloads are delivered together. Packaging148 tools/guides live on main; the source tag/ZIP fix147, and all historical evidence remains in the full Git tag.
+
+使用顺序：核对下载摘要及内层清单，按原生手册准备Linux／持久PG／HTTPS／私有配置，正常应用结构1–111（开发PG100需101–111），激活并核对就绪。Web登录／MFA后按角色处理项目、OA、费用／现金、文件及状态；复制重试须准确依据和明确人工授权。移动端当前为本地API，真实服务使用前配置HTTPS及平台身份并重建；APK为开发签名。原开发PG／API本轮未升级或重启。
+
+Fresh148 packaging includes793 server files,151 miniapp outputs and10 APK checks with185 selected source-map modules. Prior147 business checks/media are retained without replay;28 JVM XML outcomes are cached. Real Linux/PG/OSS＋R2/Codex/TG/platform integration, formal Android release and complete company-rule acceptance remain open in23 work packages; all eight Skills remain draft. Devices, network performance/live120GB specials, historical migration/DR and AI fee controls remain excluded under the [current scope](docs/delivery/04-current-scope-and-acceptance.md).
+
+GitHub Releases网页仍受此前API403限制，本轮未重试；源码标签及五包通过授权SSH交付，以下为固定产物下载，不声称生产部署。
+
+[固定下载／摘要 · Downloads](docs/releases/v0.1.0-rc.5/README.md) · [方案／使用 · Usage](docs/development/148-frozen-release-delivery.md) · [本轮核验／复用 · Checks](docs/quality/148-frozen-release-verification.md) · [全部23项 · Remaining work](docs/delivery/05-functional-closure-148.md)
+
+
 ## 增量146 · 冻结交付 v0.1.0-rc.4 / Frozen delivery
 
 当前功能冻结在业务145／数据库结构110，已包含采购、报销逐明细起草和人工采用。提供重新构建的Linux服务器／Web／秘书运行器、微信／抖音小程序、Android开发APK，以及完整应用源码／文档与原始演示媒体，共五项下载，附准确SHA-256；旧三次冻结保持原样。本轮不新增业务模块。

@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T11:13:05.932243+00:00",
+  "scope_revision": 99,
+  "counts": {
+    "registered": 28,
+    "active": 23,
+    "excluded": 5,
+    "active_p0": 14,
+    "active_p1": 9,
+    "newly_completed": 0
+  },
+  "checks": [
+    {
+      "name": "All28 stable IDs remain unique and traceable",
+      "passed": true
+    },
+    {
+      "name": "Current scope counts are23 active/5 excluded and14 P0/9 P1, not new completions",
+      "passed": true
+    },
+    {
+      "name": "Only14/17/21/22/27 are excluded",
+      "passed": true
+    },
+    {
+      "name": "The four exclusions follow the corrected AI-cost-only instruction",
+      "passed": true
+    },
+    {
+      "name": "Secretary/Skills/TG, isolation/authorization, business finance, storage and persistence remain",
+      "passed": true
+    },
+    {
+      "name": "The visible active/excluded tables match the complete structured remaining work",
+      "passed": true
+    },
+    {
+      "name": "Current fee admission behavior and remaining real Codex acceptance are explicit",
+      "passed": true
+    },
+    {
+      "name": "All17 prior publication snapshots retain exact original Git bytes",
+      "passed": true
+    },
+    {
+      "name": "Current functional proof matches exact application inputs; this scope checker does not execute functional tests",
+      "passed": true
+    },
+    {
+      "name": "Current functional and planning baselines are explicitly separated",
+      "passed": true
+    },
+    {
+      "name": "Original97 PNG/35 MP4/35 GIF retain their published Git objects; no new capture",
+      "passed": true
+    },
+    {
+      "name": "Working agreement, both guides and affected requirement/quality/operations documents point to the current scope",
+      "passed": true
+    }
+  ],
+  "scope_manifest": "docs/delivery/04-current-scope.json",
+  "scope_manifest_sha256": "6b901c208a5869646ad7e57e9c33171c726761d3137f1cce5460a9e9448e9921",
+  "verification_script_sha256": "ee9a81b363d55eed3c6efea0269bbc3475082d3827b087f0f6859522b91b5981",
+  "input_files": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "2a37067293a7c44d7a2eefc87505e33736d57255b62f703684dbe152436ce852"
+    },
+    {
+      "file": "README.md",
+      "sha256": "b5c31bf85ecfa86d51cff9db26e8adcdb962c1823e50b626d3f7186e60b81d03"
+    },
+    {
+      "file": "docs/README.zh-CN.md",
+      "sha256": "08c1b986804526eeba045b25fd64217ef4614e88b658bec0a5d3b90007268fbb"
+    },
+    {
+      "file": "docs/README.en.md",
+      "sha256": "70cad7beb17d93b3c0932ce8d238bb8545760d61e812edd0a1e1f2004fbb45ab"
+    },
+    {
+      "file": "docs/README.md",
+      "sha256": "6b9a1925cc91aa5641acca9ea7460cdf861c86149375790daa61cbe05fb98afe"
+    },
+    {
+      "file": "docs/CHANGELOG.md",
+      "sha256": "e5129b102cabee689df97f8c1a76d1c7cc4a6b3e65dbcb0a089225b7403d0ac6"
+    },
+    {
+      "file": "docs/media/README.md",
+      "sha256": "08c6f8ee8f71d1460aceeff23764746359880315e55fefbd00f468665d589876"
+    },
+    {
+      "file": "docs/delivery/02-implementation-ledger.md",
+      "sha256": "8c7997f782d91e94bbc92f5c04e594ae1df7ddf67c23a08a34e83ba783381150"
+    },
+    {
+      "file": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "f33f37855c75454ed47f27e143dd61f84498bdf26a308158dffb29c94087f4d5"
+    },
+    {
+      "file": "docs/delivery/04-current-scope-and-acceptance.md",
+      "sha256": "557fa18e00f6c212bf9ecc5a21131c5e188fad51b9983cfa626919697bc7d440"
+    },
+    {
+      "file": "docs/delivery/04-current-scope.json",
+      "sha256": "6b901c208a5869646ad7e57e9c33171c726761d3137f1cce5460a9e9448e9921"
+    },
+    {
+      "file": "docs/requirements/01-product-and-journeys.md",
+      "sha256": "b5a7e833ff8dd582a58b98f70e0db1dd6ecfce6d18153031f162a01147a0d5e8"
+    },
+    {
+      "file": "docs/quality/02-traceability-and-release.md",
+      "sha256": "00a5c6fe00289148dca51f26dcb51bfa4ebc8247a3a508bd5547efc58a985208"
+    },
+    {
+      "file": "docs/quality/99-scope-revision-verification.md",
+      "sha256": "2e6c8b6f65b5fb50e80cfa686841cb49333b994a19ed070bbe6fdd596961f2dd"
+    },
+    {
+      "file": "docs/governance/02-decisions-and-open-questions.md",
+      "sha256": "8c60b83d839df8a3f3a5551d89d186036d4fcf46ba08d771a22f1fc1c44aff85"
+    },
+    {
+      "file": "docs/operations/01-deployment-and-operations.md",
+      "sha256": "58a931334ec460163dd09028f10740837e75c5fb4162665ab72d262b8c3282cf"
+    },
+    {
+      "file": "docs/operations/02-backup-migration-and-recovery.md",
+      "sha256": "628cc7839f9f011ee998036fced3bc79ee1620792028b2d78990385c7e19033a"
+    },
+    {
+      "file": "docs/development/86-secretary-token-budgets.md",
+      "sha256": "66a36c5c8d646de31fef5f944e486a094d82d4176c67f0b40436a1aa97ee2de6"
+    },
+    {
+      "file": "app/scripts/verify_current_scope.py",
+      "sha256": "ee9a81b363d55eed3c6efea0269bbc3475082d3827b087f0f6859522b91b5981"
+    },
+    {
+      "file": "app/scripts/verify_repository_publication.py",
+      "sha256": "fe2630c8d3e97c3aa1614ca5aa1b62c8f0f6567a12dc0b15dc98337bd124804d"
+    }
+  ],
+  "functional_evidence_group": "release-candidate-148",
+  "functional_baseline_increment": 148,
+  "mandatory_budget_gate_still_present": false,
+  "new_functional_test_execution": false,
+  "new_browser_capture": false,
+  "real_device_verification": false,
+  "virtualization_used": false,
+  "runtime_behavior_changed_since_scope_revision": true,
+  "scope_checker_executes_functional_tests": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

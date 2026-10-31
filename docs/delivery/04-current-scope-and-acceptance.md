@@ -1,5 +1,12 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+## 增量148交付说明 / Frozen delivery
+
+最新rc.5固定业务147／结构111；四端现有包全部重建，Android148已包含147复制运维。此前“APK146未含147”的差异已关闭。只完成封装子项，不将23 active／14 P0／9 P1改成工作包通过；5项移出不计通过。147业务／媒体、较早完整回归及28 JVM缓存分别保留来源，148没有新业务执行／录制。真实配置、正式签名和完整公司验收继续开放；正常升级、持久PG、OSS＋R2、AI授权／隔离／审计／技术限制保留。
+
+[当前下载](../releases/v0.1.0-rc.5/README.md) · [全部23项](05-functional-closure-148.md)
+
+
 增量146：停止扩展业务，当前业务145／结构110冻结为v0.1.0-rc.4；服务器、两小程序、Android开发包重新构建，当前逐明细OA逻辑入包，完整源码／文档及原媒体另包附摘要。三组原生HTTP／PG共45子场景＋3汇总通过，必要产物核对保留，完整回归／额外UI延期。旧三冻、开发PG100和原API保留，23 active（14 P0／9 P1）、5 excluded、八项draft与实际接入／生产验收不变。见[交付](../development/146-frozen-release-delivery.md)、[核验](../quality/146-frozen-release-verification.md)、[下载](../releases/v0.1.0-rc.4/README.md)及[全部23项](05-functional-closure-146.md)。
 
 
