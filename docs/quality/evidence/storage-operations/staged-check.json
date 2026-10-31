@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "recorded_at": "2026-10-31T10:52:04.133183+00:00",
+  "command": [
+    "python",
+    "-B",
+    "app/scripts/verify_repository_publication.py",
+    "--staged"
+  ],
+  "actual_stdout_summary": {
+    "passed": true,
+    "files": 9452,
+    "MiB": 518.3,
+    "checks": 21,
+    "failed": [],
+    "sensitive_findings": [],
+    "forbidden_paths": [],
+    "broken_local_links": [],
+    "broken_local_link_count": 0,
+    "staged": true
+  },
+  "scanned_index_tree": "ec67bf26bf97d3ef0e535fb2c51347d2479bd86e",
+  "receipt_added_after_scan": true,
+  "only_added_path_after_scan": "docs/quality/evidence/storage-operations/staged-check.json",
+  "scope": "Exact successful staged-scan stdout. This receipt is added after the scan; no application, documentation, previously checked evidence or media bytes change. This does not claim a recursively self-including receipt scan."
+}

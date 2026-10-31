@@ -41,6 +41,15 @@
 
 [使用与设计](development/143-subscription-portfolio.md) · [验证与延期](quality/143-subscription-portfolio-verification.md) · [本轮及全部余项](delivery/05-functional-closure-143.md)
 
+## Increment147 · Reviewed file replication operations
+
+- 四端加入组织级副本／任务元数据查询、明确人工重试和固定回执；独立运维权限继续叠加普通文件权限、近期MFA、准确修订／完整核对依据。原重试、审计、出站事件、台账和两组幂等键同事务保存／回滚。
+- 正常结构111、严格快照与不可变历史；新安装bootstrap同步补齐角色。查询不返回文件内容、云坐标、原始错误、会话或私有原因；历史排队不冒充当前复制核验。
+- Selected native13 business cases plus inactive hook/summary15 records; Web7/mobile7, current typecheck and Web/miniapp builds. Actual synthetic Web review/retry/readback and three PNGs/MP4/screenshot-tour GIF are recorded. All first failures and byte-specific retained evidence remain honest.
+- 原四次冻结、APK146／业务145／结构110、旧证明／媒体及开发PG100不动；147主线为结构111。全回归、额外移动UI／新APK延期，23 active、5 excluded、八项draft及真实接入边界保持。
+
+[使用](development/147-storage-operations.md) · [验证](quality/147-storage-operations-verification.md) · [全部余项](delivery/05-functional-closure-147.md)
+
 
 ## Increment142 · Project planning people and template catalogs
 

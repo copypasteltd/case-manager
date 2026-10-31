@@ -43,7 +43,8 @@
     "./telegram-inbox": "./src/telegram-inbox.ts",
     "./agent-runtime": "./src/agent-runtime.ts",
     "./project-catalog": "./src/project-catalog.ts",
-    "./subscription-portfolio": "./src/subscription-portfolio.ts"
+    "./subscription-portfolio": "./src/subscription-portfolio.ts",
+    "./storage-operations": "./src/storage-operations.ts"
   },
   "dependencies": {
     "@noble/hashes": "2.4.0"

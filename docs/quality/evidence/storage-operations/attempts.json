@@ -1,0 +1,76 @@
+{
+  "native_attempts": [
+    {
+      "record": "native-first.json",
+      "sha256": "d420f320a40be60edb9bc170f1ab2d33784a61a8671098c737733a44877cbaf3",
+      "passed_at_recorded_sources": false,
+      "current_acceptance": false,
+      "note": "Migration111 had an extra closing parenthesis; rejected before the new group ran."
+    },
+    {
+      "record": "native-schema-fixed.json",
+      "sha256": "eb6dfb37effae2d254cd08b234480d172a4e2112075d1585b1df679270d947e5",
+      "passed_at_recorded_sources": false,
+      "current_acceptance": false,
+      "note": "Fresh bootstrap did not yet seed the new roles; the real MFA enrollment therefore had no challenge. New role definitions added to ordinary bootstrap."
+    },
+    {
+      "record": "native-role-bootstrap.json",
+      "sha256": "669c3b41248c30f7f6ae4270bc4f03117a65c9ecd110b31ca305b6ea220e3f54",
+      "passed_at_recorded_sources": false,
+      "current_acceptance": false,
+      "note": "Read-only fixture had no recent MFA; write is correctly rejected403 before retry authority. Test expectation corrected; metadata can_retry remains false."
+    },
+    {
+      "record": "native-reader-mfa.json",
+      "sha256": "9c8047b0908e85f1d80e40939fa5ea93e772a3921326322948f7ee8e2d9c84f9",
+      "passed_at_recorded_sources": false,
+      "current_acceptance": false,
+      "note": "A line-ending-sensitive editing assertion aborted; the unchanged fixture was accidentally rerun and its same failure is retained. No production-code change or pass is claimed."
+    },
+    {
+      "record": "native-human-reader.json",
+      "sha256": "29d996539f322d0cdd9795e4a2e0231c6980e62ee5d2aa6ccd9fbbcdea8dbbd0",
+      "passed_at_recorded_sources": false,
+      "current_acceptance": false,
+      "note": "Injected receipt guard23514 is mapped by the existing platform to422; incorrect409 test expectation corrected. Subsequent success confirms actual rollback."
+    },
+    {
+      "record": "native-rollback-constraint.json",
+      "sha256": "a58b054e6bffd96378912deca0f3cdd79702500c95308d1dae6f46fdbc96140b",
+      "passed_at_recorded_sources": false,
+      "current_acceptance": false,
+      "note": "Actor-bound cursor rejection follows existing400 INVALID_CURSOR; incorrect422 test expectation corrected."
+    },
+    {
+      "record": "native-pre-line-ending.json",
+      "sha256": "32c50d11ecd1e197441d6e33cdaa74926be0dda2313892f3c800143368b60087",
+      "passed_at_recorded_sources": true,
+      "current_acceptance": false,
+      "note": "All15 records passed at temporarily CRLF bootstrap bytes. Original LF restored and current final native group rerun; this is not current proof."
+    },
+    {
+      "record": "native-pre-role-separation.json",
+      "sha256": "1db2fe9da274994d1e30460b6707fb9f48baefec39ed0168f026a2f7b390c243",
+      "passed_at_recorded_sources": true,
+      "current_acceptance": false,
+      "note": "Passed only before bootstrap role separation review; prior-source proof retained. Final native execution reran with the unrelated-role no-authority-bleed assertion."
+    },
+    {
+      "record": "native-final.json",
+      "sha256": "c76c3ee81555dcdeeb2153c158b61dc24042dbeccf8ad9702754e1f3f10747c7",
+      "passed_at_recorded_sources": true,
+      "current_acceptance": true,
+      "note": "Final backend and role-separation assertion passed at current unchanged sources."
+    }
+  ],
+  "client_attempts": "Initial mobile compile referenced an absent test assertion adapter and initial typecheck used Object.hasOwn outside the shared target. Native assert and hasOwnProperty.call fixes are source-bound in the final passing selected client records; all original reports remain.",
+  "transport_correction": "The earliest failed native report used the copied label no provider or model invoked. Fixtures use an isolated synthetic object store, including committed source bytes. Later records disclose this accurately. No real cloud/model acceptance.",
+  "private_startup_attempt": "After restoring original bootstrap newlines, a protected private logfile already existed. Runner refused before starting any cluster. Previous log was preserved under pre-line-ending and final execution then completed.",
+  "production_ready": false,
+  "bootstrap_role_separation": {
+    "record": "attempts/01-bootstrap-role-separation/reason.json",
+    "prior_source_record": "native-pre-role-separation.json",
+    "note": "Diff review caught accidental operations actions on the unrelated runtime-manager bootstrap role. Removed before commit/deployment, added a direct no-authority-bleed assertion to the existing native case, reran final native and actual Web at current sources. Prior passed native/UI/publication records are retained as prior-source observations only."
+  }
+}

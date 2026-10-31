@@ -9,6 +9,8 @@
 
 增量143：GAP-12／18补齐准确会话及日期内完整跨订阅集合、所有状态、缺失账期、关联费用／付款及完整依据；四端人工只读预览与秘书不可变快照分别处理。全体当前成员权限、整体拒绝上限和原子审计保持；结构109，subscription-review1.4.0仍draft。定向验证与媒体单独留证，全回归、完整移动UI和新APK延期；两冻结标签与APK137原出处不变，23 active（14 P0／9 P1）、5 excluded、八项draft及真实集成／生产边界保持。见[使用](../development/143-subscription-portfolio.md)、[检查](../quality/143-subscription-portfolio-verification.md)与[本轮及全部23项](05-functional-closure-143.md)。
 
+增量147：组织复制运维元数据台账、四端准确核对／人工重试和固定历史已补齐，仍复用原文件权限及复制执行器。主线结构111；原四冻、rc.4／APK146业务145／结构110和开发PG100保持。定向检查及实际合成Web媒体独立留证，全回归／额外移动UI／新APK延期；23 active（14 P0／9 P1）、5 excluded和八项draft不变。见[使用](../development/147-storage-operations.md)、[核验](../quality/147-storage-operations-verification.md)及[全部23项](05-functional-closure-147.md)。
+
 
 增量142：GAP-12／18已补有效人员及已发布项目模板目录、绑定分页、准确完整内容、每页不可变来源观察；四端可选择负责人／成员／模板／类型／日期，固定提案后仍由本人批准并单独创建实际项目。目录不越权或免除AI资料政策，变化来源和审计失败继续拒绝／回滚。结构108，开发PG仍100；project-create1.2.0及全部八项包仍draft，共同schema改变全部来源摘要。关键HTTP／原生PG、运行时56项、客户端类型／构建及实际Web建项留证；完整回归、新移动UI与APK延期。两冻结标签、23 active（14 P0／9 P1）、5 excluded及真实集成／生产边界保持。见[使用](../development/142-project-planning-catalog.md)、[验证](../quality/142-project-catalog-verification.md)和[全部23项](05-functional-closure-142.md)。
 

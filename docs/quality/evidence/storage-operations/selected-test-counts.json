@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "counts": {
+    "web-storage-tests": {
+      "tests": 7,
+      "passed": 7,
+      "failures": 0,
+      "record": "web-storage-tests-2.json",
+      "private_log_sha256": "c60cc3140123e06e412ef82aadfc02d09292c9e500ad1484476bbc82088e4918"
+    },
+    "mobile-storage-tests": {
+      "tests": 7,
+      "passed": 7,
+      "failures": 0,
+      "record": "mobile-storage-tests-2.json",
+      "private_log_sha256": "3be1737c5e5d08d7c3a440f35ceb21d10105cb133cf088665536cff7d1fc2589"
+    },
+    "native": {
+      "top_level": 1,
+      "substantive_subcases": 13,
+      "inactive_browser_hook": 1,
+      "passing_records": 15,
+      "record": "native-final.json",
+      "inactive_hook_is_business_pass": false
+    }
+  },
+  "scope": "Selected current cases only. Browser hook is inactive in the native suite; actual browser journey has its separate source-bound execution. Retained full regression totals are not increased."
+}

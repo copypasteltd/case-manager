@@ -2357,6 +2357,26 @@ PATHS["/agent/runtime-profiles"]["get"]["parameters"].append({"name":"skill_id",
 operation("/agent/runtime-profiles/{id}","get","getAgentProfileOperation","AgentProfileDetails")
 operation("/agent/runtime-profiles/{id}/retire","post","retireAgentProfile","AgentProfileDetails","AgentProfileRetire")
 
+# Organization storage metadata and reviewed ordinary replica retries.
+storage_error=enum("REPLICA_HASH_MISMATCH","REPLICA_SIZE_MISMATCH","REPLICA_SOURCE_UNAVAILABLE","REPLICA_SOURCE_MISMATCH","STORAGE_EPOCH_CHANGED","STORAGE_CONFIGURATION_CHANGED","STORAGE_TARGETS_NOT_CONFIGURED","STORAGE_UNAVAILABLE","OBJECT_NOT_FOUND","LEASE_EXHAUSTED","ACCESS_DENIED","RETRY_EXHAUSTED","PROVIDER_UNAVAILABLE","OTHER_STORAGE_FAILURE")
+storage_state=enum("queued","copying","verifying","verified","retry_wait","failed","missing")
+storage_job_state=enum("queued","running","succeeded","retry_wait","dead","cancelled")
+storage_job={"id":ID,"state":storage_job_state,"attempt":{"type":"integer","minimum":0},"max_attempts":VERSION,"updated_at":TIME}
+add("StorageJob",storage_job,tuple(storage_job))
+storage_snapshot={**RECORD,"provider":enum("oss","r2"),"state":storage_state,"file_id":ID,"file_version_id":ID,"file_revision":VERSION,"file_state":enum("active","trashed"),"availability":{"type":"string","minLength":1,"maxLength":64},"is_current":{"type":"boolean"},"storage_epoch":VERSION,"primary_provider":enum("oss","r2"),"source_available":{"type":"boolean"},"error_code":nullable(storage_error),"job":nullable(ref("StorageJob"))}
+add("StorageReplicaSnapshot",storage_snapshot,tuple(storage_snapshot))
+add("StorageReplicaOperation",{**storage_snapshot,"basis_sha256":HASH},(*storage_snapshot,"basis_sha256"))
+add("StorageReplicaDetails",{"item":ref("StorageReplicaOperation"),"can_open":{"type":"boolean"},"can_retry":{"type":"boolean"},"retry_block":enum("NO_FILE_RETRY_AUTHORITY","ORIGINAL_RETIRED","REPLICA_ALREADY_VERIFIED","REPLICA_JOB_ACTIVE","REPLICA_STATE_CONFLICT","STORAGE_REPAIR_PLAN_REQUIRED","REPLICA_SOURCE_UNAVAILABLE","READY_FOR_REVIEW")},("item","can_open","can_retry","retry_block"))
+add("StorageReplicaRetry",{**EXPECTED,"basis_sha256":HASH,"reviewed":{"const":True},"reason":NAME},("expected_version","basis_sha256","reviewed","reason"))
+storage_receipt={"id":ID,"replica_id":ID,"file_id":ID,"file_version_id":ID,"actor_id":ID,"business_operation_id":ID,"expected_version":VERSION,"result_version":VERSION,"basis_sha256":HASH,"before":ref("StorageReplicaSnapshot"),"after":ref("StorageReplicaSnapshot"),"created_at":TIME}
+add("StorageReplicaReceipt",storage_receipt,tuple(storage_receipt))
+operation("/storage/replicas","get","listStorageReplicas","StorageReplicaOperation",listing=True)
+PATHS["/storage/replicas"]["get"]["parameters"]=[v for v in PATHS["/storage/replicas"]["get"]["parameters"] if v.get("name") in ("cursor","limit","state")]+[{"name":"provider","in":"query","schema":enum("oss","r2")},{"name":"job_state","in":"query","schema":storage_job_state}]
+operation("/storage/replicas/{id}","get","getStorageReplica","StorageReplicaDetails")
+operation("/storage/replicas/{id}/retry","post","retryStorageReplica","StorageReplicaReceipt","StorageReplicaRetry")
+operation("/storage/replica-retries","get","listStorageReplicaRetries","StorageReplicaReceipt",listing=True)
+PATHS["/storage/replica-retries"]["get"]["parameters"]=[v for v in PATHS["/storage/replica-retries"]["get"]["parameters"] if v.get("name") in ("cursor","limit")]+[{"name":"replica_id","in":"query","required":True,"schema":ID}]
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

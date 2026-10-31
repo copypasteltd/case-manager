@@ -23,6 +23,10 @@ No new browser context or recording is created. Existing screenshots, MP4s and s
 
 实际认证Web与隔离原生耐久PG，使用合成订阅／财务资料；录屏仅保留登录后读取及依据翻页，不含密码、MFA秘密或真实记录。GIF为三张真实截图各两秒的截图导览。No model, cloud, device or production acceptance. 所有自建浏览器上下文和临时服务在记录完成后关闭；[实际检查与延期](../quality/143-subscription-portfolio-verification.md)。
 
+## 增量147 · 文件复制运维 / Replication operations
+
+[失败副本](screenshots/storage-operations-web-failure.png)、[明确核对](screenshots/storage-operations-web-review.png)、[排队回执](screenshots/storage-operations-web-queued.png)来自实际合成Web业务和隔离对象存储故障。[无声MP4](videos/storage-operations-web.mp4)为约2.2秒真实操作录制；[GIF](gifs/storage-operations-web.gif)为三张截图各两秒的六秒导览。仅录制已登录业务页面；浏览器／临时服务／PG均关闭。旧媒体及四次冻结原字节保留；147未进入APK146／rc.4。See [evidence and limits](../quality/147-storage-operations-verification.md).
+
 
 ## 增量142 · 项目规划目录 / Project planning catalog
 

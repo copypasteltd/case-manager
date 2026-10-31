@@ -1,0 +1,44 @@
+{
+  "recording": {
+    "name": "storage-operations-web",
+    "frame_count": 10,
+    "duration_ms": 2029,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/storage-operations-web/frames.json",
+    "manifest_sha256": "a779172ab403caffd7be0499682a03bd14f2cf42712068d0a4ee66bdfc7118ef"
+  },
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/storage-operations-web-failure.png",
+      "sha256": "aa63af59bd52b8f9f649a6db7b47a4a5eecb56909a8f7eccd355d761ce641890"
+    },
+    {
+      "file": "docs/media/screenshots/storage-operations-web-review.png",
+      "sha256": "70b3a49a414f396d213bde2fcffdab1237b1d20d8e6549bfbe42707b7a3e5031"
+    },
+    {
+      "file": "docs/media/screenshots/storage-operations-web-queued.png",
+      "sha256": "cd17d1c4830b53b30c9fe19e7966c153f9b477f18402ef01f8c6565ee13e04bd"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "viewport": 390
+    },
+    {
+      "width": 768,
+      "viewport": 768
+    },
+    {
+      "width": 1440,
+      "viewport": 1440
+    }
+  ],
+  "synthetic_data": true,
+  "scope": "Real Web/native HTTP/PG using an isolated synthetic object-store fault; no real cloud, device, model or production acceptance."
+}

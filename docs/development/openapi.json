@@ -41352,6 +41352,381 @@
         }
       }
     },
+    "/storage/replicas": {
+      "get": {
+        "operationId": "listStorageReplicas",
+        "tags": [
+          "storage"
+        ],
+        "summary": "listStorageReplicas",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "provider",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "oss",
+                "r2"
+              ]
+            }
+          },
+          {
+            "name": "job_state",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "queued",
+                "running",
+                "succeeded",
+                "retry_wait",
+                "dead",
+                "cancelled"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageReplicaOperationListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/storage/replicas/{id}": {
+      "get": {
+        "operationId": "getStorageReplica",
+        "tags": [
+          "storage"
+        ],
+        "summary": "getStorageReplica",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageReplicaDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/storage/replicas/{id}/retry": {
+      "post": {
+        "operationId": "retryStorageReplica",
+        "tags": [
+          "storage"
+        ],
+        "summary": "retryStorageReplica",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageReplicaReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorageReplicaRetry"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storage/replica-retries": {
+      "get": {
+        "operationId": "listStorageReplicaRetries",
+        "tags": [
+          "storage"
+        ],
+        "summary": "listStorageReplicaRetries",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "replica_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageReplicaReceiptListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/costs/{id}/amortization": {
       "get": {
         "operationId": "getCostAmortization",
@@ -87521,6 +87896,577 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/AgentProfileDetails"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "StorageJob": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "succeeded",
+              "retry_wait",
+              "dead",
+              "cancelled"
+            ]
+          },
+          "attempt": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_attempts": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "state",
+          "attempt",
+          "max_attempts",
+          "updated_at"
+        ]
+      },
+      "StorageReplicaSnapshot": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "oss",
+              "r2"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "copying",
+              "verifying",
+              "verified",
+              "retry_wait",
+              "failed",
+              "missing"
+            ]
+          },
+          "file_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_version_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "file_state": {
+            "type": "string",
+            "enum": [
+              "active",
+              "trashed"
+            ]
+          },
+          "availability": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "is_current": {
+            "type": "boolean"
+          },
+          "storage_epoch": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "primary_provider": {
+            "type": "string",
+            "enum": [
+              "oss",
+              "r2"
+            ]
+          },
+          "source_available": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "REPLICA_HASH_MISMATCH",
+                  "REPLICA_SIZE_MISMATCH",
+                  "REPLICA_SOURCE_UNAVAILABLE",
+                  "REPLICA_SOURCE_MISMATCH",
+                  "STORAGE_EPOCH_CHANGED",
+                  "STORAGE_CONFIGURATION_CHANGED",
+                  "STORAGE_TARGETS_NOT_CONFIGURED",
+                  "STORAGE_UNAVAILABLE",
+                  "OBJECT_NOT_FOUND",
+                  "LEASE_EXHAUSTED",
+                  "ACCESS_DENIED",
+                  "RETRY_EXHAUSTED",
+                  "PROVIDER_UNAVAILABLE",
+                  "OTHER_STORAGE_FAILURE"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "job": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StorageJob"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "created_at",
+          "updated_at",
+          "provider",
+          "state",
+          "file_id",
+          "file_version_id",
+          "file_revision",
+          "file_state",
+          "availability",
+          "is_current",
+          "storage_epoch",
+          "primary_provider",
+          "source_available",
+          "error_code",
+          "job"
+        ]
+      },
+      "StorageReplicaOperation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "oss",
+              "r2"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "copying",
+              "verifying",
+              "verified",
+              "retry_wait",
+              "failed",
+              "missing"
+            ]
+          },
+          "file_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_version_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "file_state": {
+            "type": "string",
+            "enum": [
+              "active",
+              "trashed"
+            ]
+          },
+          "availability": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "is_current": {
+            "type": "boolean"
+          },
+          "storage_epoch": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "primary_provider": {
+            "type": "string",
+            "enum": [
+              "oss",
+              "r2"
+            ]
+          },
+          "source_available": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "REPLICA_HASH_MISMATCH",
+                  "REPLICA_SIZE_MISMATCH",
+                  "REPLICA_SOURCE_UNAVAILABLE",
+                  "REPLICA_SOURCE_MISMATCH",
+                  "STORAGE_EPOCH_CHANGED",
+                  "STORAGE_CONFIGURATION_CHANGED",
+                  "STORAGE_TARGETS_NOT_CONFIGURED",
+                  "STORAGE_UNAVAILABLE",
+                  "OBJECT_NOT_FOUND",
+                  "LEASE_EXHAUSTED",
+                  "ACCESS_DENIED",
+                  "RETRY_EXHAUSTED",
+                  "PROVIDER_UNAVAILABLE",
+                  "OTHER_STORAGE_FAILURE"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "job": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StorageJob"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "basis_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "created_at",
+          "updated_at",
+          "provider",
+          "state",
+          "file_id",
+          "file_version_id",
+          "file_revision",
+          "file_state",
+          "availability",
+          "is_current",
+          "storage_epoch",
+          "primary_provider",
+          "source_available",
+          "error_code",
+          "job",
+          "basis_sha256"
+        ]
+      },
+      "StorageReplicaDetails": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/StorageReplicaOperation"
+          },
+          "can_open": {
+            "type": "boolean"
+          },
+          "can_retry": {
+            "type": "boolean"
+          },
+          "retry_block": {
+            "type": "string",
+            "enum": [
+              "NO_FILE_RETRY_AUTHORITY",
+              "ORIGINAL_RETIRED",
+              "REPLICA_ALREADY_VERIFIED",
+              "REPLICA_JOB_ACTIVE",
+              "REPLICA_STATE_CONFLICT",
+              "STORAGE_REPAIR_PLAN_REQUIRED",
+              "REPLICA_SOURCE_UNAVAILABLE",
+              "READY_FOR_REVIEW"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "item",
+          "can_open",
+          "can_retry",
+          "retry_block"
+        ]
+      },
+      "StorageReplicaRetry": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "basis_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "const": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "basis_sha256",
+          "reviewed",
+          "reason"
+        ]
+      },
+      "StorageReplicaReceipt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "replica_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "file_version_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "business_operation_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "result_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "basis_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "before": {
+            "$ref": "#/components/schemas/StorageReplicaSnapshot"
+          },
+          "after": {
+            "$ref": "#/components/schemas/StorageReplicaSnapshot"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "replica_id",
+          "file_id",
+          "file_version_id",
+          "actor_id",
+          "business_operation_id",
+          "expected_version",
+          "result_version",
+          "basis_sha256",
+          "before",
+          "after",
+          "created_at"
+        ]
+      },
+      "StorageReplicaOperationListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/StorageReplicaOperation"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "StorageReplicaDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/StorageReplicaDetails"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "StorageReplicaReceiptResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/StorageReplicaReceipt"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "StorageReplicaReceiptListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/StorageReplicaReceipt"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

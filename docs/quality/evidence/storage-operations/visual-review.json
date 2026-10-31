@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T10:47:24.070625+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/storage-operations-web-failure.png",
+      "sha256": "3717e4724dad2fc23931f37c90e5798dc00cdd593dcf98ccbcd472139ba97b76"
+    },
+    {
+      "file": "docs/media/screenshots/storage-operations-web-review.png",
+      "sha256": "236447f287ed5c6c99d470cd59c3031478e114de706021369e6e08990b247d9f"
+    },
+    {
+      "file": "docs/media/screenshots/storage-operations-web-queued.png",
+      "sha256": "31fc9c8cff668b9f3ec018d62e6c3906d38b773e435c522c997cd4bddc544d73"
+    },
+    {
+      "file": "docs/media/videos/storage-operations-web.mp4",
+      "sha256": "5ccb5a68fce332d43c50cb7d2b8086921e2ea56efa86b380adc16c16b8fba561",
+      "bytes": 164580
+    },
+    {
+      "file": "docs/media/gifs/storage-operations-web.gif",
+      "sha256": "5c3d22170901c8289720311687e0bae97b8d07bc32e0f8f1b16b6af6b5e1ad84",
+      "bytes": 284298
+    }
+  ],
+  "inspection": "Three final-source current PNGs inspected at full screenshot dimensions. Current MP4 samples at0/1.1/1.8 seconds and GIF samples at0/2.1/4.1 seconds inspected on a contact sheet. Sampled inspection, not uninterrupted playback.",
+  "observed": "Failed replica metadata, explicit unchecked review, disabled submission and the saved queued receipt/current state are visible. No password, MFA secret, provider coordinate or real business record is recorded.",
+  "synthetic_data": true,
+  "production_ready": false
+}

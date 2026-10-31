@@ -6466,6 +6466,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/storage/replicas": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listStorageReplicas */
+        get: operations["listStorageReplicas"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/storage/replicas/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getStorageReplica */
+        get: operations["getStorageReplica"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/storage/replicas/{id}/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** retryStorageReplica */
+        post: operations["retryStorageReplica"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/storage/replica-retries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listStorageReplicaRetries */
+        get: operations["listStorageReplicaRetries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -15557,6 +15625,130 @@ export interface components {
         };
         AgentProfileDetailsResponse: {
             data: components["schemas"]["AgentProfileDetails"];
+            meta: components["schemas"]["Meta"];
+        };
+        StorageJob: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            state: "queued" | "running" | "succeeded" | "retry_wait" | "dead" | "cancelled";
+            attempt: number;
+            max_attempts: number;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        StorageReplicaSnapshot: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** @enum {string} */
+            provider: "oss" | "r2";
+            /** @enum {string} */
+            state: "queued" | "copying" | "verifying" | "verified" | "retry_wait" | "failed" | "missing";
+            /** Format: uuid */
+            file_id: string;
+            /** Format: uuid */
+            file_version_id: string;
+            file_revision: number;
+            /** @enum {string} */
+            file_state: "active" | "trashed";
+            availability: string;
+            is_current: boolean;
+            storage_epoch: number;
+            /** @enum {string} */
+            primary_provider: "oss" | "r2";
+            source_available: boolean;
+            error_code: ("REPLICA_HASH_MISMATCH" | "REPLICA_SIZE_MISMATCH" | "REPLICA_SOURCE_UNAVAILABLE" | "REPLICA_SOURCE_MISMATCH" | "STORAGE_EPOCH_CHANGED" | "STORAGE_CONFIGURATION_CHANGED" | "STORAGE_TARGETS_NOT_CONFIGURED" | "STORAGE_UNAVAILABLE" | "OBJECT_NOT_FOUND" | "LEASE_EXHAUSTED" | "ACCESS_DENIED" | "RETRY_EXHAUSTED" | "PROVIDER_UNAVAILABLE" | "OTHER_STORAGE_FAILURE") | null;
+            job: components["schemas"]["StorageJob"] | null;
+        };
+        StorageReplicaOperation: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** @enum {string} */
+            provider: "oss" | "r2";
+            /** @enum {string} */
+            state: "queued" | "copying" | "verifying" | "verified" | "retry_wait" | "failed" | "missing";
+            /** Format: uuid */
+            file_id: string;
+            /** Format: uuid */
+            file_version_id: string;
+            file_revision: number;
+            /** @enum {string} */
+            file_state: "active" | "trashed";
+            availability: string;
+            is_current: boolean;
+            storage_epoch: number;
+            /** @enum {string} */
+            primary_provider: "oss" | "r2";
+            source_available: boolean;
+            error_code: ("REPLICA_HASH_MISMATCH" | "REPLICA_SIZE_MISMATCH" | "REPLICA_SOURCE_UNAVAILABLE" | "REPLICA_SOURCE_MISMATCH" | "STORAGE_EPOCH_CHANGED" | "STORAGE_CONFIGURATION_CHANGED" | "STORAGE_TARGETS_NOT_CONFIGURED" | "STORAGE_UNAVAILABLE" | "OBJECT_NOT_FOUND" | "LEASE_EXHAUSTED" | "ACCESS_DENIED" | "RETRY_EXHAUSTED" | "PROVIDER_UNAVAILABLE" | "OTHER_STORAGE_FAILURE") | null;
+            job: components["schemas"]["StorageJob"] | null;
+            basis_sha256: string;
+        };
+        StorageReplicaDetails: {
+            item: components["schemas"]["StorageReplicaOperation"];
+            can_open: boolean;
+            can_retry: boolean;
+            /** @enum {string} */
+            retry_block: "NO_FILE_RETRY_AUTHORITY" | "ORIGINAL_RETIRED" | "REPLICA_ALREADY_VERIFIED" | "REPLICA_JOB_ACTIVE" | "REPLICA_STATE_CONFLICT" | "STORAGE_REPAIR_PLAN_REQUIRED" | "REPLICA_SOURCE_UNAVAILABLE" | "READY_FOR_REVIEW";
+        };
+        StorageReplicaRetry: {
+            expected_version: number;
+            basis_sha256: string;
+            /** @constant */
+            reviewed: true;
+            reason: string;
+        };
+        StorageReplicaReceipt: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            replica_id: string;
+            /** Format: uuid */
+            file_id: string;
+            /** Format: uuid */
+            file_version_id: string;
+            /** Format: uuid */
+            actor_id: string;
+            /** Format: uuid */
+            business_operation_id: string;
+            expected_version: number;
+            result_version: number;
+            basis_sha256: string;
+            before: components["schemas"]["StorageReplicaSnapshot"];
+            after: components["schemas"]["StorageReplicaSnapshot"];
+            /** Format: date-time */
+            created_at: string;
+        };
+        StorageReplicaOperationListResponse: {
+            data: {
+                items: components["schemas"]["StorageReplicaOperation"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        StorageReplicaDetailsResponse: {
+            data: components["schemas"]["StorageReplicaDetails"];
+            meta: components["schemas"]["Meta"];
+        };
+        StorageReplicaReceiptResponse: {
+            data: components["schemas"]["StorageReplicaReceipt"];
+            meta: components["schemas"]["Meta"];
+        };
+        StorageReplicaReceiptListResponse: {
+            data: {
+                items: components["schemas"]["StorageReplicaReceipt"][];
+                next_cursor: string | null;
+            };
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -33488,6 +33680,156 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AgentProfileDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listStorageReplicas: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                provider?: "oss" | "r2";
+                job_state?: "queued" | "running" | "succeeded" | "retry_wait" | "dead" | "cancelled";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StorageReplicaOperationListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getStorageReplica: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StorageReplicaDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    retryStorageReplica: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StorageReplicaRetry"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StorageReplicaReceiptResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listStorageReplicaRetries: {
+        parameters: {
+            query: {
+                cursor?: string;
+                limit?: number;
+                replica_id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StorageReplicaReceiptListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

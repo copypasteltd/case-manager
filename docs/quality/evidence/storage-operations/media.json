@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T10:46:36.943523+00:00",
+  "encoder_script_sha256": "1fdbd2c58e57439b610d5394dd3dd304660e90b8e4df528e79df39848b2d3c30",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "6c226b3402add2fd8efa2a7226a187e9aaf43ad3eb5e0ecf1d5c07c1a52a2af2",
+      "build_source_sha256": "e1037495c5fd445017542e385f223657a235170a11ec67f204d5a4caedaca9bb",
+      "capture_manifest": "docs/quality/evidence/storage-operations/web-capture-manifest.json",
+      "capture_manifest_sha256": "15d4c1505602ce4d7db71a49bdd02e9f871b54adc69703080ec66daec550a472",
+      "capture_frame_count": 10,
+      "capture_duration_ms": 2029,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/storage-operations-web-failure.png",
+          "sha256": "3717e4724dad2fc23931f37c90e5798dc00cdd593dcf98ccbcd472139ba97b76"
+        },
+        {
+          "file": "docs/media/screenshots/storage-operations-web-review.png",
+          "sha256": "236447f287ed5c6c99d470cd59c3031478e114de706021369e6e08990b247d9f"
+        },
+        {
+          "file": "docs/media/screenshots/storage-operations-web-queued.png",
+          "sha256": "31fc9c8cff668b9f3ec018d62e6c3906d38b773e435c522c997cd4bddc544d73"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "22",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/storage-operations-web.mp4",
+          "sha256": "5ccb5a68fce332d43c50cb7d2b8086921e2ea56efa86b380adc16c16b8fba561",
+          "bytes": 164580
+        },
+        {
+          "file": "docs/media/gifs/storage-operations-web.gif",
+          "sha256": "5c3d22170901c8289720311687e0bae97b8d07bc32e0f8f1b16b6af6b5e1ad84",
+          "bytes": 284298
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web replica inventory, reviewed retry and immutable receipt. MP4 records human retry; GIF is a six-second tour of failure, exact version review and queued receipt. No real cloud, model, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/storage-operations-web-failure.png",
+      "sha256": "3717e4724dad2fc23931f37c90e5798dc00cdd593dcf98ccbcd472139ba97b76"
+    },
+    {
+      "file": "docs/media/screenshots/storage-operations-web-review.png",
+      "sha256": "236447f287ed5c6c99d470cd59c3031478e114de706021369e6e08990b247d9f"
+    },
+    {
+      "file": "docs/media/screenshots/storage-operations-web-queued.png",
+      "sha256": "31fc9c8cff668b9f3ec018d62e6c3906d38b773e435c522c997cd4bddc544d73"
+    },
+    {
+      "file": "docs/media/videos/storage-operations-web.mp4",
+      "sha256": "5ccb5a68fce332d43c50cb7d2b8086921e2ea56efa86b380adc16c16b8fba561",
+      "bytes": 164580
+    },
+    {
+      "file": "docs/media/gifs/storage-operations-web.gif",
+      "sha256": "5c3d22170901c8289720311687e0bae97b8d07bc32e0f8f1b16b6af6b5e1ad84",
+      "bytes": 284298
+    }
+  ]
+}

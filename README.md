@@ -50,6 +50,18 @@ Open a secretary conversation, select explicit local dates and read every eligib
 
 [使用与接口 / Usage/API](docs/development/143-subscription-portfolio.md) · [检查与延期 / Checks](docs/quality/143-subscription-portfolio-verification.md) · [本轮及全部23项 / Remaining work](docs/delivery/05-functional-closure-143.md) · [页面 / Screenshot](docs/media/screenshots/subscription-portfolio-web-coverage.png) · [MP4](docs/media/videos/subscription-portfolio-web.mp4) · [截图导览GIF](docs/media/gifs/subscription-portfolio-web.gif)
 
+## 增量147 · 文件复制运维 / File replication operations
+
+主线补齐组织异常副本查询、准确版本核对、明确人工重试及固定历史。Web从“文件复制运维”进入，微信／抖音／Android共用“我的工作空间”入口；操作人还须拥有原文件更新权限和近期两步验证。排队回执与当前复制核验状态分开显示。
+
+Main147 adds organization replica/job metadata filters, exact reviewed retries through the ordinary file executor and immutable receipts. Both organization authority and current file permission are required. Selected native HTTP/PG, shared Web/mobile logic, type/build checks and a real synthetic Web journey are current; full regression, extra mobile UI and a new APK are deferred.
+
+主线结构111；固定下载仍为rc.4／业务145／结构110／APK146，未含147。All four existing freezes retain their exact bytes. Real cloud/model/TG/platform/production acceptance and all23 work packages remain open; all eight Skills remain draft.
+
+[使用／设计](docs/development/147-storage-operations.md) · [本轮检查](docs/quality/147-storage-operations-verification.md) · [本轮完成与全部23项](docs/delivery/05-functional-closure-147.md) · [截图](docs/media/screenshots/storage-operations-web-queued.png) · [MP4](docs/media/videos/storage-operations-web.mp4) · [截图导览GIF](docs/media/gifs/storage-operations-web.gif) · [冻结下载](docs/releases/v0.1.0-rc.4/README.md)
+
+以下旧条目按当时源码／产物／证据身份保留。Earlier entries below retain their original provenance.
+
 
 ## 增量142 · 项目规划目录 / Project planning catalog
 
