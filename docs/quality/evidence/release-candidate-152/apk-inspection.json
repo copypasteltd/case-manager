@@ -1,0 +1,992 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T13:12:47.354440+00:00",
+  "checks": [
+    {
+      "name": "Separate development application ID",
+      "passed": true
+    },
+    {
+      "name": "Only required transport/upload/notification and signature-private permissions",
+      "passed": true
+    },
+    {
+      "name": "Expected arm64 architecture and declared SDK23\u201334",
+      "passed": true
+    },
+    {
+      "name": "Backup disabled and upload foreground service private without boot restart",
+      "passed": true
+    },
+    {
+      "name": "Actual development APK signature verifies",
+      "passed": true
+    },
+    {
+      "name": "Current portable JS bytes are embedded in APK",
+      "passed": true
+    },
+    {
+      "name": "Native engine and actual upload/Office bridge packaged",
+      "passed": true
+    },
+    {
+      "name": "No Expo extension or WebView entered business graph",
+      "passed": true
+    },
+    {
+      "name": "Exact deliverable submission, replica routing and earlier modules match actual current source map",
+      "passed": true
+    },
+    {
+      "name": "All twenty registered business pages are in actual native graph",
+      "passed": true
+    }
+  ],
+  "apk_sha256": "14b19045227d7797d074f76e5be1d0290fdc399b226bc188b9272f90f6a82211",
+  "apk_bytes": 43936061,
+  "build_record_sha256": "2e0e6a6b3527873301c376f43a554e371cfaceeca47251f743de5d5b5fd223a0",
+  "source_sha256": "07f2c81dc99940bb753d3977f55957670e9cf13cb7bfdb7705b249a574566beb",
+  "source_map_sha256": "70cb09436a8ecd5d3ea1757c8d0173349eec0ee78f62a418b2119cbfa5a04e40",
+  "current_source_map_files": [
+    {
+      "file": "app/mobile/src/app.config.ts",
+      "sha256": "eabf3799de258b2b876683fbed0f502d08d0dcf0fa8edb7b447ace32002a583e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/app.tsx",
+      "sha256": "f6438a44e2ccf578185b85a4da11aa50d1e6d2a87b103829f996343d53bd1660",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/budget/index.tsx",
+      "sha256": "782122041fce483db227a4e900626893077660b04e2f8a59692159f73e3f5eea",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/business/contract-finance.tsx",
+      "sha256": "b07a9833e6a2687bc6345ad87ffc7e50cc8165a2247b1f6c8b7f23ca9530263c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/business/controls.tsx",
+      "sha256": "f90d4db289ae086c02b087652903a6b47a37b1efb7f0758845280521fb282b95",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/business/editor.tsx",
+      "sha256": "196b0eef0e437edc8000eba9f966b29f10bb95b810812b7bbbd05ada3a34a72a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/business/index.tsx",
+      "sha256": "befe120c2a095bff2422bce795874517472235278f56622a11f71493c9a4cc5a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/business/request-actions.tsx",
+      "sha256": "efb640635dfa5969c2dd6fed4c49d0e34fbc0c91ebc527c4c5949e6b674885de",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/content/index.tsx",
+      "sha256": "8bc4f6aee1da82801dd26ee7b7c9981b8b994b593db9cd03c01740313ae306cd",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/content/view.rn.tsx",
+      "sha256": "9d490de140957a23a23251bc63eb697fb0c537c2c6f7dda50a7597fe7daab1ea",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/deliverable/index.tsx",
+      "sha256": "7cd6cf01497c5b1c07479bad0f9eef6f6ba9e12f5314895d005961c7a69518cf",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/detail/index.tsx",
+      "sha256": "a96455ebce24e0e414e256b8f9c2816e1a2e956f1488b3aee57d82de7cc88492",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/detail/mutations.tsx",
+      "sha256": "ea019ddb488ae126e270d7de7f4ad66ec7df133e5215e4e9554d2b65ce0c58b5",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/detail/snapshot.tsx",
+      "sha256": "4705879ac0ff4d961baafb276ac60b67387b7193fb88e874ea31d4ebe72f5e34",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/batches.tsx",
+      "sha256": "f020936d48024fc51b00e939a37a34507ed8fbd4c9d024d172c346bde0e17ab4",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/cleanup.tsx",
+      "sha256": "3f01753ae021005e11bf3e55143bf113138dcba8267977206928098f13bab03c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/comparison.tsx",
+      "sha256": "570bc21d7c416b7d38e7f56a91c54eae01d1bf257cd0d19b509d0c3e748f6c1c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/forms.tsx",
+      "sha256": "341ba02a0b37a4b853d08b893d458ed2d568be0e033b50de094553fd0c086082",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/index.tsx",
+      "sha256": "cfb966bb0be46fcfc4e815191e6c7fb78cd380602f238508a597b545fc62387d",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/office.tsx",
+      "sha256": "a19c5734c36ae61b5dfd3d2f91716d396d4f23642943877801a268b2dbc1e8a2",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/replica-retry.tsx",
+      "sha256": "498db714cbd7d6d56b1badd6aa0b12ad2809f1c6fab6d5e1d5f934a51fc33100",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/retirement.tsx",
+      "sha256": "eda42017cdb63cd19f6997b50fff19238bcabcda57f60bfb3005afe7e327006f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/files/scope-transfers.tsx",
+      "sha256": "58cf3da94847cd3eb22704d9f7dbd47fc9c3ae64922c5629908675080607c1e5",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/amortization.tsx",
+      "sha256": "c4d29c5bc09cb0eb6259dc7dc84a114c527ca7de29d5770fecd3174b67bd0e4e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/cost-payment.tsx",
+      "sha256": "54e602f094ff64db0c5b38feb79885e4774bd9c4174417f181531142c72baed9",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/editor.tsx",
+      "sha256": "4179583232edbe2727c32167e3fe9a4756e130ec627e48329b3e223461662c2f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/history.tsx",
+      "sha256": "98c484e1a4ff15158f288fbdc3fa0f4809f53f3918ae6daac5c52cdd3e099a18",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/index.tsx",
+      "sha256": "98cfc4b6c015fe0a8a4600c32cf8f053d1f95128896d8d4ff2d067d48a4cc0f8",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/operations.tsx",
+      "sha256": "427fbe48f5d552115fcd8207c5d2409e56ac1c89cfd25ee8c653de17636d9632",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/payment-fees.tsx",
+      "sha256": "18e26d9c493105420168cb7e52a34a4822d3a64c17652b7af999c238b93ad09a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/finance/subscriptions.tsx",
+      "sha256": "0752568f6d6963183b330105131dc2ee54cca9e46eeaebe271775b9f4251b012",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/home/business.tsx",
+      "sha256": "0865c47bb36d7d05e7c20b9020c95ae1eee288cecb9542adb9053fd904c81b20",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/home/index.tsx",
+      "sha256": "23967bb3cbbe2bb7d695b05ced97d1a48800718abba98ad74fc2c9788318c90e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/knowledge/comments.tsx",
+      "sha256": "6bbf7c4dbc37f3919e2565cf6065e0bc7f130a8e484c8f4eac0e4a4cee3b054d",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/knowledge/index.tsx",
+      "sha256": "9477ecbc42c84e235358974b486963b96fdafbe55fae2dda75fe9e864096a715",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/knowledge/markdown.tsx",
+      "sha256": "4ed855c2dbe42b9710cf9ca6129538f3297b8845fed5abeb0d52764fc7dbc365",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/knowledge/sources.tsx",
+      "sha256": "a432154dcf4b900d0302cd814a56f66595b1f0a3d8b03c2e7cbd8a3a3bb558e8",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/list/index.tsx",
+      "sha256": "6df124291f0f473332cfbe6577096da30c3d14ae9d131423a1c71c07e3e3ad23",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/login/index.tsx",
+      "sha256": "3a16b6eca53cbe8844cf72c5ff6e1c8d7f8322d0ea9aef2d6e9a2278c4536895",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/login/password-recovery.tsx",
+      "sha256": "10eb30a23c7df56977f5f91d61f6576ff12bf7d0634d4389ea299b2633a5a2ae",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/notifications/delivery.tsx",
+      "sha256": "1efee069632601fa04cc8b43a1f38d52645c2ff9a3d1f142b21ac7cfafb70675",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/notifications/index.tsx",
+      "sha256": "bf44a7a18986482c41477d2dead5accda243609f037f07a963bacec0a1b45352",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/notifications/reminders.tsx",
+      "sha256": "a87d60897adb30fddb126e6665b970b11854cd7c66ac3bc11fb8f6f17124e2de",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/budget-comparison.tsx",
+      "sha256": "6660172644a6ba811496a19f570651861e49c072e16b8a7b75b33f47c67d4fb6",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/business.tsx",
+      "sha256": "a539ec4c7e5b7b9196825a9c76a30dc52b22dc77ff3edee729c8d2fb04a0db82",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/change-form.tsx",
+      "sha256": "c661e1dffc88541d80758374d3cef37bfd87ed14e969dda8fd97d463b0e06256",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/change.tsx",
+      "sha256": "10ed456dff94251ff2869350cb11e1f02ff079de2cbfb64ee7696c6e1c7ca168",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/closeout.tsx",
+      "sha256": "77ea88a35c407625b6d3462d6c4f550b10a1a1b0fbc0ceeee4822ef28ffcf0b7",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/comments.tsx",
+      "sha256": "3f38cb0c28c808a01e737300cf2ab76e69257eeffe6944bf0aba16f933b53a57",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/index.tsx",
+      "sha256": "6bcb8d4fc49e79ed600a5349753115ce96e4c1025f49e41e5a2ab354469d29cd",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/members.tsx",
+      "sha256": "06ec11369bca0f72d4908bfc746375b8f38d4ff12e2cfdcee4b39d719ef788e0",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/overview.tsx",
+      "sha256": "0085fc1f0625997261a88934e17599d54b52842ee856cc8e240d67352c41e11a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/resource-forms.tsx",
+      "sha256": "6a10b4e9e32cf362512fbd3b331ed38ef3c0d3402b83c125635d61a3395d03b3",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/resources.tsx",
+      "sha256": "9bfd595436dabb672d0c91c11a2cd7b22912c5ec1af2075ba41dd0f49be8d554",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/setup.tsx",
+      "sha256": "61a6354e12a1fbe0514cf6980685790a2c53fffc7ef531b1716a2d49e4b9fc0e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/project/task-forms.tsx",
+      "sha256": "897a4d0082b331112eeb87ab01478105b28d9e5b55df7a3cc4cf609d51b340bb",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/reports/finance-fx.tsx",
+      "sha256": "b926522c6ce199aa1149ef2968bbc7c21b512c645c6f20cc8ef61a63bedececa",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/reports/index.tsx",
+      "sha256": "8ed0cc8e3c413030ae03ebd13c67fd1a7d158d7bdad935f219f2a1c68b0ab5d1",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/search/index.tsx",
+      "sha256": "144da61b9dd98baf42be53c006b88465666e2c13570f2926466dbeddeb1abba4",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/concerns.tsx",
+      "sha256": "3a17572599edabeaa1eebf47c1a6001ee0b9b9c7f47fa969c486dc6f6bd57767",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/contract-bodies.tsx",
+      "sha256": "a6d0fc704735b91006bfb867ba3f531f6a19254e58944acc92534f8d2f147e44",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/deliverable-submission.tsx",
+      "sha256": "c5699ef9d610905153fd0809e17f0792204d6f573ef37248dca3abb8ecee692d",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/file-creates.tsx",
+      "sha256": "fdd369265c8192c5765935d098a8ecbaab0267c7c859c7d6c42918dead5e5f01",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/file-recovery.tsx",
+      "sha256": "079d8ec3ad017a201974b9b99b47a5cbb1573d9746f85f982f98eeba136c0705",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/file-updates.tsx",
+      "sha256": "a0ff5adcf944c50a1673f77841ce4be129068f38a3a737e3c623e10c01feb63f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/finance-reports.tsx",
+      "sha256": "f9804587aadeaebdd0e01e80d0e29913f4de68b80369be67ebd174233b50772f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/index.tsx",
+      "sha256": "165eaed5747e82bbd5c9c604f9be685aa3f984ea932d7a4c7d0a8c6386176974",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/live.ts",
+      "sha256": "debe5c57837eba163b7ed621cecaf2885dc16014fa7d52e83e1b05c5cf45c328",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/mutations.tsx",
+      "sha256": "1274321059c82acbc74f9bc2ce53f29e6a54da74fab7268f5bb93b7780fa63f4",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/oa-requests.tsx",
+      "sha256": "ea23bb51d09e3fe0e744fa198a5e155880374d1fbf8b8f0d8634ce742221b7ca",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/oa-text.tsx",
+      "sha256": "ff27f437ade7cb2b73c3d021a7ea6c6f5e476d191891263289058e28fb2b1563",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/organization.tsx",
+      "sha256": "b373f507aae1898a9f5f52e875309e888d9413634e58c1c5b3c1dac4e7962aa6",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/plans.tsx",
+      "sha256": "3add2ccadfde050d174bced477721d63489ccf82f6b6decf304fc3b5f5dc56e9",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/post-writes.tsx",
+      "sha256": "38298bef997a49255f43fafc88b7d157df07980c252d01c0d24593c3fd3d6ef6",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/project-catalog.tsx",
+      "sha256": "9130e340b40ce7d0ea0f17cd4fef334f4f4912db9717eb390f8ffe4fff40b134",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/runtime.tsx",
+      "sha256": "b32eae9175257a81747a8cf287c26c2d27171e98b757c1158b6961ed6877e79e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/service-reports.tsx",
+      "sha256": "05b7e0dab4faaecf2634083bad4e56de225b5f2ae43582393403c178e4d1d9ec",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/sources.tsx",
+      "sha256": "86a5a9a7a763b8758c7a6f63842f2b91c06f63a0311abb3c8801cb7bafff152f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/subscription-portfolio.tsx",
+      "sha256": "798cf10c8b5c60af1a2e1db2654ab56bdd242ae1fc834b82e7f3bb563b865d75",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/task-creation.tsx",
+      "sha256": "ca1935c703f777bebe85b620cbc1a0d002e395764aa6384e65dd7528fd33bb2b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/secretary/task-dependency.tsx",
+      "sha256": "206406c498540d5fbfddb9ad59c2c6f39b1df4fdab478cd05f0ee4105d01658a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/settings/audit.tsx",
+      "sha256": "5a508ca84515fc2fefdf56937024077ec6b6ee5a18c9fcceafcefc6ffc6284f6",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/settings/index.tsx",
+      "sha256": "2c0a2634a74e4acd4151f0e889fb66e48702ec3f3519744665064fd2deb64b31",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/settings/miniapp-bindings.tsx",
+      "sha256": "c313d5c9083e62f53a26d9dce891d0a806cd050bd2a22732eb4f688633de8a4c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/settings/security.tsx",
+      "sha256": "762c01fc3e642dc3c9c13de0e1080dd7a7be65adf006e511f57a231c19c8e3cc",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/settings/storage.tsx",
+      "sha256": "4d4b64d79c3400259d955787b022821337f69932b3ee100a4d12ac3ae113731f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/status/history.tsx",
+      "sha256": "925cd0b3213c5931f8a6773036cb661630508dcf8d685567d70e0d7d56f7b9fb",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/status/incident-editor.tsx",
+      "sha256": "e382bb9565178d283e71fbf553b9a2ebf21ee474dc6570d51a4b7d122950fb74",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/status/index.tsx",
+      "sha256": "0369cc35a5f6581431a90943db7d1d96ec606d71f4f92056a870d6c94b7cc326",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/status/live.ts",
+      "sha256": "454725d547d494983cf6b81553a9f1f7415c6981d0ed17f8be519cb9379d1d0c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/status/resource-health-history.tsx",
+      "sha256": "549ea8ed0999d3b7fcb3c6b29a26de5bdd18422b0257a876381d18f287807dee",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/status/resources.tsx",
+      "sha256": "b73cc6605b2c8ff905f2e38edd6fcdb4fb1d7d6396321a8b6497a9da1f9849e2",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/subscription-period/index.tsx",
+      "sha256": "dd3be5776f6db296fafa1ab87507574fd8cdf91adb77f5ace748cdd57c58edf3",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/telegram/access.tsx",
+      "sha256": "20c040179792c93f77b3dab88a745c64a97426b49e9308741e7e65af64f47291",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/telegram/channels.tsx",
+      "sha256": "f50ff58f4912aae1dc62cd62767199eb549ebb1d22765ea69f2bff6c597e254f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/telegram/inbox.tsx",
+      "sha256": "73a933fafc654d5053b263c12b701d2cf9ba5470c581fe2be9d16ff158a385df",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/telegram/index.tsx",
+      "sha256": "b8f2022ca20372c73f37c21fbe354cf861a8f4a052a6d11fffd5404cc59baf10",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/telegram/operations.tsx",
+      "sha256": "b67bcad284b860dff35985ea7207a892a6475c7ba605d92c296dca80ed1ff198",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/uploads/index.tsx",
+      "sha256": "dbb33b398f7dda3965d09ed34b15d15077f6bf15c0155da7a502ba15f1f3a415",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/uploads/view.rn.tsx",
+      "sha256": "f0f099cbfa826d3a4915a654f7f7b758f72ea8c91fecb0108a2545c1f83cab3c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/app-root.rn.tsx",
+      "sha256": "07b8aeb61d36023cb3536802623652ca794da4032502a41f18dc0d0fdfbf8ed7",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/business-input.ts",
+      "sha256": "c4b9f2d34cee0433d7bd5b128874402902366b1f94e13fe026e07d2ad2af411c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/change-input.ts",
+      "sha256": "4413a989aa3f2e596843893175ebf46f15f33733a90a31d8f9f93f1d62d5ed1a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/collection.ts",
+      "sha256": "f7322373e336bd77dfcca5fe7b9f6a824717ee6b0dfcf42464132c7cff10f9af",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/command-keys.ts",
+      "sha256": "2ac3e15c9726b0cff5623eb0742c6387d8cc01982436af5fd0d103e15f6eb7c2",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/command.tsx",
+      "sha256": "32c5ff9c4ec28e9b5c35d40112fb957dd9b4ae339adf58a3c49b79b932510933",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/components.rn.tsx",
+      "sha256": "311d4c1fa6711f8bbb2264855c3fba284b1f61143a98af12fc2f0b69c4fd6c2a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/content-sink.rn.ts",
+      "sha256": "8fac9b434e6bf250ce8496c611959701682d368a9f87291eec5790eccd2ae750",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/content.ts",
+      "sha256": "4b1ce53ad72630b12da4a05cbd28a3e862af2b281b7bf421d280e2e4805a4277",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/drafts.ts",
+      "sha256": "7a8cf1ecb09b21930fa886c7c3c79ec234443b87ddd74bcb9c5db5666dbbd93c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/encoding.ts",
+      "sha256": "840d25b4726908fab622515506a008f9964b192c5af7f610921c9ca737b5d475",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/file-input.ts",
+      "sha256": "f5907824f5e530a7fa99c433f5bd51b7c5a8c8a7b616f96aeb20132e86cbc0dc",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/financial-input.ts",
+      "sha256": "9a7223d8cbeafa4c1123e0ac2f75b9c0f27787085126dac0abb7b8f5fb573c13",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/fixed-files.tsx",
+      "sha256": "121d0097775701c44deb173ea82eef6541657b2629d5e6f41b1084ca2c656717",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/form.ts",
+      "sha256": "19c2cfa59770daa3958dfb7b20c76968405561aa0109c9374a35e98e872b645b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/incident-input.ts",
+      "sha256": "b7a5aa64ac11b284c41b4014130db38744426f1a0d7c84653d6e03d567597e49",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/miniapp-login.rn.ts",
+      "sha256": "efd93f47c65b906f8e0d56b94b3e3645fb46664ed47b571ca7df98467d56ca18",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/native-styles.ts",
+      "sha256": "93b251aaf736579516f2a06c801eb018b276f7c9cdda5eaa8d196d11c31c0394",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/native-wire.ts",
+      "sha256": "d1c138ec91e40a7607ab4630b5c06f02ccfbca386b44a5141c851d8339b64e87",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/office-upload.rn.ts",
+      "sha256": "8b6ff546f8dd3194a06c77bacb17e99a0e1e42ee0e1388c87fe349514906e1bb",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/page.ts",
+      "sha256": "fd19daa69741eeee4e809e2023422b21d7a8a56eeb2d2b42714de0f3405e3b25",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/post-input.ts",
+      "sha256": "419fc439cf16ab2e84f02513b5789828581f0872dddd051f908c816834c74924",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/post-link.rn.ts",
+      "sha256": "7cd11f783676a1e6f74f48761913fd134dc2e8db10c4e099cd0fbb066d4e206b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/post-markdown.ts",
+      "sha256": "2f072c17c05957306fa3a552187b01c9601201d0fac9bf493ff5705c9e286eff",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/primitives.rn.tsx",
+      "sha256": "28c38aafdf923f41b9985d5a9eb0de36ea7035e75a7e5951306b07a64aa39920",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/project-closeout.ts",
+      "sha256": "ffb08b67da835acf8a73602a17a374b301f573fbaea92fa0df1996d32e01e2ae",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/project-input.ts",
+      "sha256": "fc577bd692eb45740e46bea29b1098c63af4eea82891bc1230dadb402751eefa",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/project-overview.ts",
+      "sha256": "1fc060ef26b127d9014f69fbf9c0e85908e208d949d6dceff0c5c4d851823a9c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/project-resource-input.ts",
+      "sha256": "edbb547964c3bab308ae61416e1d2c377e15dd7ed1d87ac3efbf6aba6128ec7f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/report-file.rn.ts",
+      "sha256": "2405c5756ffd132d7e7631e7fa448599e619492709fcc9c0daee76d67d6d3c18",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/secretary.ts",
+      "sha256": "56def5978593b6dedf4bd74375f34e052b929575a82f6abe8beb8b96dbae403f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/session.ts",
+      "sha256": "41a2fd8b237fa8071676e83a1e12caa9febdc9def26168687c62fe708ab70a99",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/status-proof.ts",
+      "sha256": "adb95febc29f49879fb9598f5f345818796a3f66ff99f0cb6939b28f54ad3ffd",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/status.ts",
+      "sha256": "2658ff8b83d8992ac750422b2392de810cfc614c2580a946d14b40d09a024e2f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/subscription-input.ts",
+      "sha256": "e3a18ea25d34d765638917201e5597461e860fcacaaae75be8f71b98130c4428",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/taro.rn.ts",
+      "sha256": "0712b7283e1449d275c8c023eefbc97d5a6280815f3bb08de3d8f51bd11c31ad",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/task-input.ts",
+      "sha256": "de0882ca8a985e8a443e5f57872478611a5030cb244f56aba12af29f0cb47e5d",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/telegram-clipboard.rn.ts",
+      "sha256": "ddc00793f74f581887844cc25525d8e0d4945c87cae697af2bcee8a804b1298e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/telegram-input.ts",
+      "sha256": "dc1a46425cc7bd9ed97b8ae78c4f29fb5c334fa0fadffe011eb56dd0796c0f09",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/theme.rn.ts",
+      "sha256": "017cdd4371813bdfbc6532011dcad36fff6dee09649eaf0991964cd419127489",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/upload-entry.rn.tsx",
+      "sha256": "8fd61eef4786c7817373c45cce31aebb49bf79b74932561190619a73f63afad2",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/upload-transfer.ts",
+      "sha256": "37cfbab5e26fe490db538e8a6e4e7b701449ba4708650da76ba14889aa0cb8f8",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/platform/uploads.rn.ts",
+      "sha256": "0361132700d1d6dc32dbdc1e55408e2dea92a9f56de088ce77198f070a35413a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/mobile/src/ui.tsx",
+      "sha256": "43e220a6051d2a91c36a3b778bb4b00e568f900dca58d4410a7ef0557a9f63ff",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/agent-runtime.ts",
+      "sha256": "44f3cf58c7eb5426bf2c7bba93e018a84f1caabd3f770e77e3056dd63bbd6edc",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/amortization.ts",
+      "sha256": "6ded3e13bf5132668191e2980267bf46a3448737e402f4b2a9c11dec11cfc965",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/audit.ts",
+      "sha256": "52959437a27fa25f7d85a72b6bef961dba1df61cfe2924010bd072b2610599a1",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/budget-comparison.ts",
+      "sha256": "af0ad24849350f7c1b40959d1f6342921fd5dcb7310a171ab1327677ab0c15aa",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/budget.ts",
+      "sha256": "2ebda9fce40172ea9da8ac0ac6d0073925a265ad892b97d0692062b5f36bff09",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/concern-mutation.ts",
+      "sha256": "7e370cafed6620f095147fad6aac81a6ef8f70f798b6266f3433c0f097bffb68",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/contract-body.ts",
+      "sha256": "40aa2fccab13812eca84356b87bfbf8b6faf8f5e19ab10b0cee962857e12cb3a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/contract-finance.ts",
+      "sha256": "350a1313e3d0e8468e72084a64f2a4ef68551e44d0692b71b03a249f64075f09",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/cost-business.ts",
+      "sha256": "855e8ff7706133fdef6a1768d9147e3f2241b1004d0492ba3e93bc9f038c65e2",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/cost-payment.ts",
+      "sha256": "6d4537e7d46fa675af741eab96f6f008be11b22fde5d6a88cb1e33f56e1e86d4",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/deliverable-submission.ts",
+      "sha256": "9c4c54d6509c111391f2ae392654b0d8bc499432fa3e5fd1c1cbf564c3742c22",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/file-batch.ts",
+      "sha256": "b9678a178879880e6eaf802d92e24338c7ce04d18d0d189228559a7092c31211",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/file-comparison.ts",
+      "sha256": "56fad997e79a346fd042abc9f47b7e86e8d308ef6586a9693f93e5fb24e12650",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/file-recovery.ts",
+      "sha256": "d4332009beefade3d3f6aca8c9df68eaee3a7a1b79970d751786fa3303e5bd31",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/file-replica.ts",
+      "sha256": "37bb7be7e17648f10adede9c5c650d0f01cd60a76b97d7d61ae0697a5ee7235b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/file-update.ts",
+      "sha256": "26e29cb3d6a864a1411cf1fdcd182e137881654a9e83aa90dbc98a92690987f4",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/finance-fx.ts",
+      "sha256": "1710a98dfc3a4d8f3518ea4f28bbf4f3f12c08f7b696007ca00f328d6fb8168b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/finance-reports.ts",
+      "sha256": "f4bbe7c347b425990163c5c700d2fbab4a046fda16572aab6bc965e645aa4ec5",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/host-resources.ts",
+      "sha256": "7ebda2e11ef3575df9d805d4294651b3bc93134d5fa78761c8a1d3e3433496d5",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/indexed-context.ts",
+      "sha256": "3f8b739b62a3623c36a75c9e688f2807789bb7cb2a87a70acfe68703aa8c2b2b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/multipart-cleanup.ts",
+      "sha256": "c73655b4df0506994b104d0775ec277165fd50d3321e6ecc8b66cd47edb90891",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/mutation-validation.ts",
+      "sha256": "cc957096ae368e5f935cd98611bf11f3ebddc9ceac391d32fefc84b1a1fdf908",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/mutation.ts",
+      "sha256": "9e891a59a56d558758097d6f9faa83f35285a358bc83de2e0b70555a0e6bfc1d",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/notifications.ts",
+      "sha256": "62fafbbf4c5604c15fc91e08907d051fbc526b283cd18a9fe4444c37c3df2b7c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/oa-request.ts",
+      "sha256": "26a86dfc2e270b4770634b857de9217ac7c4c605e2a9b977537fba9fef5ed5c8",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/oa-text.ts",
+      "sha256": "666eee9b3461da656554f93c3450d416340fcd74f7014f08f10d1c4c08c0b25b",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/object-retirement.ts",
+      "sha256": "5f5cef43b80ff738d20372ff4995dd29c699cd62fac1da193e74f4e624219f70",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/office-author.ts",
+      "sha256": "c2e598c738391b8775e9588975eba7a1f3f92cc8f513d3c2786da1162ed4464c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/payment-fees.ts",
+      "sha256": "98c241382a9135f9b9ac5610f5c0769b87f3f7b78c7cb33136345412c98c51e0",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/payment-fx.ts",
+      "sha256": "3e6f37cc48f82d6466916bac137592d02b447aebfa3fc8bf02db851142864292",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/post-write.ts",
+      "sha256": "1020439ce05113bd16c560299c74db1c724a2cdea465404b77412efb6cdb54c8",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/project-business.ts",
+      "sha256": "7204baad447f600f1dd448b657ff8672e809aa74aeab016dcb595f9346481248",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/project-catalog.ts",
+      "sha256": "99a46359c22bb75d88b5d3e22d50d26645623b5c42c74c06bea34813ab60c23a",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/scope-transfer.ts",
+      "sha256": "40d713c27026f4482b89164a27fe26b14f0ed6dd639f3756866d85480483f49c",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/search.ts",
+      "sha256": "e784fa816fa2fddb34a3373409e07f037785c971f81835ca06770e10a1f098d5",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/storage-operations.ts",
+      "sha256": "ab69f242fb51b750366cdb8574a3bcd6d3530d10085dfba4a4f7816e0e6e1d99",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/subscription-portfolio.ts",
+      "sha256": "49785b64d75e4f663d51c8ef36158a0c2218ddbcdc4ba2adf1f875bfe21f2a73",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/task-comment.ts",
+      "sha256": "df91d1d3416b7c807e3866e2c495bb9e046d1f54325ae190cca9cb3b1b622fed",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/task-creation.ts",
+      "sha256": "0ea36c49f839b863ff1c49b423c70e97860b910c722a48ebb2e0fd517deb472e",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/task-dependency.ts",
+      "sha256": "f9a9e5580ac151737f710287ea0918dbeb71c8fa83b6ef063d19526583f42b69",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/telegram-inbox.ts",
+      "sha256": "fdd58355f040981ea4cffae646e6387509fdaf8b0347f13c083b58f9249c0f36",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/telegram-operations.ts",
+      "sha256": "70e7f79a7ebffd4e8a52ec0308bbe1efaa2ff4b9c0a08875bbda294716b3422f",
+      "matches_actual_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/workbench.ts",
+      "sha256": "96406f5febfb490a605702aa522bed2a6850166350a2cf32bf09a565781cc575",
+      "matches_actual_map": true
+    }
+  ],
+  "inspection_script_sha256": "676dec7b4a4a1b54b666bb2b8e093ad9bb42665224a90175af904663f0dfcaf3",
+  "device_executed": false,
+  "emulator_started": false,
+  "production_release": false
+}

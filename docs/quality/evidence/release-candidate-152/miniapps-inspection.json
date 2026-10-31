@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "archive_sha256": "2e62856e1016fb16e746e288083e91da23049ccd22fd4c8fe9262c3ee0059b95",
+  "checks": [
+    {
+      "target": "weapp",
+      "passed": true,
+      "javascript_files": 26,
+      "required_markers": [
+        "replica_id",
+        "version_id",
+        "replica=",
+        "/versions/",
+        "\u901a\u77e5\u5bf9\u5e94\u526f\u672c",
+        "submit_deliverable",
+        "\u5c06\u63d0\u4ea4\u9a8c\u6536\u52a0\u5165\u8bf7\u6c42"
+      ]
+    },
+    {
+      "target": "tt",
+      "passed": true,
+      "javascript_files": 25,
+      "required_markers": [
+        "replica_id",
+        "version_id",
+        "replica=",
+        "/versions/",
+        "\u901a\u77e5\u5bf9\u5e94\u526f\u672c",
+        "submit_deliverable",
+        "\u5c06\u63d0\u4ea4\u9a8c\u6536\u52a0\u5165\u8bf7\u6c42"
+      ]
+    }
+  ],
+  "inspection_script_sha256": "676dec7b4a4a1b54b666bb2b8e093ad9bb42665224a90175af904663f0dfcaf3",
+  "platform_executed": false
+}

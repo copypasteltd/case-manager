@@ -1,5 +1,8 @@
 # 更新记录 / Changelog
 
+152 · 冻结业务151／结构112为v0.1.0-rc.7；重新构建匹配四端、服务器／运行器、完整源码和媒体五包；旧六冻与历史证据保持原字节，保留151检查但不扩大回归。 / Freeze matching151 application artifacts, complete source and media.
+
+
 151 · 实现四端准确授权的秘书交付提交、原登录／受众／固定附件复核、新修订与幂等审计；project-update1.9.0仍draft。当前112，旧冻结rc.6／APK150仍149／111；缩减检查如151核验所示。 / Exact reviewed deliverable submission; independent acceptance remains human.
 
 

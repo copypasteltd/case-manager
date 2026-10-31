@@ -1,5 +1,18 @@
 # CopyPaste 内部管理平台文档中心
 
+**增量152 · 冻结交付 / Frozen delivery · v0.1.0-rc.7**
+
+本轮停止业务扩展，将完整业务151／结构112封为同版服务器、Web、秘书运行器、微信、抖音和Android开发包，另交付完整应用源码／文档、媒体与SHA256。包含准确授权的固定交付修订提交，保留独立人工验收和既有全部业务。六个旧冻结版本保持不动。
+
+All application changes through151 are frozen in matching server, Web, runtime, miniapp and development Android artifacts. Five downloads include complete application source/docs, media and checksums. Selected151 business/runtime/UI proof is retained; fresh152 build/archive inspection is separate. Formal signing, actual external-service integration and production acceptance remain open.
+
+[固定下载与使用 / Downloads and use](releases/v0.1.0-rc.7/README.md) · [全部23项未完成 / All remaining work](delivery/05-functional-closure-152.md) · [核验与延期 / Validation](quality/152-frozen-release-verification.md)
+
+先核对摘要和包内清单，再按原生Linux／持久PG／HTTPS手册配置；旧开发库100保持不动，正常升级目标112。移动包当前指向本地API，正式连接前配置真实身份／域名并重建。GitHub Releases网页此前API403，当前通过已授权SSH标签／产物分支交付，不声称生产已部署。
+
+以下增量段落是历史来源；最新包／源码关系以rc.7固定清单为准。 Earlier increment sections below retain historical provenance; rc.7 is the latest delivery manifest.
+
+
 **增量151 · 交付修订提交 / Exact deliverable submission**
 
 四端源码新增“选择固定正式文件版本 → 人工逐项授权秘书 → 生成待验收修订”。仅允许固定交付版本、原修订、1–20个附件版本、说明和原因；保留完整旧修订及独立人工验收。无模型执行演示不计真实Codex验收。
