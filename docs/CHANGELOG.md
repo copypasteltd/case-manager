@@ -1,5 +1,8 @@
 # 更新记录 / Changelog
 
+155 · 新增首页本人申请／交付提交／独立验收三组跟进；当前授权完整计数、前5条及普通业务准确入口，补齐Web项目交付深链和父项目／选中状态隔离。选定原生12条记录、Web4／共享移动4、实际Web4及新截图／录屏／GIF；无结构升级／新APK／新冻结，rc.8／APK154保持153／113，全部23包仍开放。 / Personal OA and delivery followups with current authority, exact ordinary workflows and additive API. Focused source-bound proof is separate from frozen artifacts and deferred broad acceptance.
+
+
 154 · 将完整业务153／结构113冻结为v0.1.0-rc.8，同版服务器／Web／运行器、微信／抖音及新Android开发APK、完整源码／媒体五包；保留153业务证据，七旧冻不变。正式签名、真实环境与23项验收继续开放。 / Freeze matching153 application artifacts, complete source and media; fresh packaging checks are distinct from retained business proof.
 
 

@@ -1609,6 +1609,18 @@ workbench_summary = {"as_of": TIME, "scope": enum("my_readable_work"), "business
 add("WorkbenchSummary", workbench_summary, tuple(workbench_summary))
 operation("/dashboard/business", "get", "getWorkbenchSummary", "WorkbenchSummary")
 
+followup_item = {"id": ID, "version": VERSION, "revision_id": nullable(ID), "project_id": nullable(ID),
+    "title": NAME, "state": enum("draft", "returned", "changes_requested", "submitted"), "updated_at": TIME}
+add("FollowupItem", followup_item, tuple(followup_item))
+followup_group = {"kind": enum("requests_to_revise", "deliverables_to_submit", "deliverables_to_review"), "count": COUNT,
+    "items": array(ref("FollowupItem"), maxItems=5), "has_more": {"type": "boolean"}}
+add("FollowupGroup", followup_group, tuple(followup_group))
+followup_summary = {"as_of": TIME, "scope": enum("my_readable_followups"),
+    "groups": array(ref("FollowupGroup"), minItems=3, maxItems=3)}
+add("FollowupSummary", followup_summary, tuple(followup_summary))
+operation("/dashboard/followups", "get", "getFollowupSummary", "FollowupSummary")
+
+
 overview_kinds = enum("tasks", "milestones", "deliverables", "risks", "issues", "changes", "budgets", "files", "posts", "contracts", "purchases", "claims", "costs", "payments", "subscriptions", "services")
 overview_count = {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
 overview_item = {"id": ID, "version": VERSION, "revision_id": nullable(ID), "title": TEXT, "state": NAME, "updated_at": TIME}

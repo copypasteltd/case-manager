@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T15:48:25.705176+00:00",
+  "original_listeners": {
+    "18080": 2600,
+    "14660": 3888
+  },
+  "owned_listener_ports_open": [],
+  "checked_temporary_ports": [
+    9932,
+    5189
+  ],
+  "private_fixture_present": false,
+  "temporary_owner_files_absent": true,
+  "browser_result_sha256": "f18886fa9139d6675a620c64f26150258e5ace215baa3450fc997f6eca143a6f",
+  "original_schema": 100,
+  "original_schema_upgraded": false,
+  "scope": "Native runner cleanup receipts plus actual listener owner readback; original PG14660/API18080 are preserved. No virtualization or emulator used."
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "recorded_at": "2026-10-31T15:48:23.550152+00:00",
+  "failed_attempts_count": 4,
+  "records": {
+    "docs/quality/evidence/business-followups/native-focused.json": "411c69c7bde3a8420cc2f6a859ed8ac374b7136b8d978100035bb5b8c997c21c",
+    "docs/quality/evidence/business-followups/typecheck-1.json": "b71be1f5270650294077dfc622cc74b4aea7d149740575aac43c27551392410b",
+    "docs/quality/evidence/business-followups/native-focused2.json": "0f62dccadf1ed7456274a6c215dc7a24546a4a8bc99019f12d89ebcc0f439066",
+    "docs/quality/evidence/business-followups/native-focused3.json": "582fe5cc017697bbc3a91c4c9e72152dc582038e7900d5cc7c09af698dcf8f30"
+  },
+  "final_native_record": "docs/quality/evidence/business-followups/native-focused4.json",
+  "scope": "Preserve the failed native fixture, missing TS consumer, compile-only failure and incomplete-MFA login attempt. Earlier passing client records bind earlier inputs only; final checks use latest numeric records."
+}

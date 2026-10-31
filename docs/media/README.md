@@ -1,5 +1,10 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+155新增3张实际Web截图、4.2秒无声像素录屏和6秒实际截图导览GIF。首页概览图显示原工作台及新增区标题，办结图显示三组新增卡片；实际操作核对本人退回申请、准确项目交付、独立验收后消除和错误父项目拒绝。GIF是截图导览，并非连续录屏。仅合成业务数据；不代表真实模型／云／TG或设备验收。
+
+Source155 adds actual Web media; frozen rc.8 media and APK154 remain unchanged. [GIF](gifs/business-followups-web.gif) · [MP4](videos/business-followups-web.mp4) · [概览](screenshots/business-followups-web-overview.png) · [验收](screenshots/business-followups-web-review.png) · [办结](screenshots/business-followups-web-closed.png) · [来源与摘要](../quality/evidence/business-followups/media.json)
+
+
 154仅将153已有实际Web截图、无声MP4和六秒截图导览GIF随全部公开媒体冻结打包；未改变UI，不新录制，不将复用媒体称为本轮新交互。 / rc.8 retains exact153 media; no new recording or UI acceptance is claimed.
 
 

@@ -10,6 +10,12 @@ import (
 
 func (s *Server) workbenchRoutes(mux *http.ServeMux) {
 	service := &workbench.Service{DB: s.DB}
+	mux.HandleFunc("GET /v1/dashboard/followups", read(s, "FollowupSummaryResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "业务跟进不接受筛选参数，请从对应业务页面查询")
+		}
+		return service.Followups(ctx, a)
+	}))
 	mux.HandleFunc("GET /v1/dashboard/business", read(s, "WorkbenchSummaryResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		if r.URL.RawQuery != "" {
 			return nil, core.Invalid("query", "工作台业务汇总不接受筛选参数，请从对应业务页面查询")

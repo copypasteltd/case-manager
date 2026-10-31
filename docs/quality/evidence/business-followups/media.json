@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T15:41:49.375251+00:00",
+  "encoder_script_sha256": "10f0a631e81fca36dc4a12db0d47dabbb7dc664d9307c284d5d12252b902c951",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "7612b6f701d1c98684cc995ab33573fcf235479104ac853742eab3b41564f9d0",
+      "build_source_sha256": "f4494ef8c0e61d0d822cc65af88b196fb4bf0d944e60dd17763946587e292b37",
+      "capture_manifest": "docs/quality/evidence/business-followups/web-capture-manifest.json",
+      "capture_manifest_sha256": "f200285b14d448097131c860ff688a366313b5c87b8c4c5fe3f76aaf1635dadb",
+      "capture_frame_count": 20,
+      "capture_duration_ms": 4068,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/business-followups-web-overview.png",
+          "sha256": "02a893dd19c21b23a110ae5af32a2dae078f00874d8c15b69a7ab0766fcf230d"
+        },
+        {
+          "file": "docs/media/screenshots/business-followups-web-review.png",
+          "sha256": "16a858acf40c364ac0397a05aecd2e9b20280c984862fb8a71231051657070bb"
+        },
+        {
+          "file": "docs/media/screenshots/business-followups-web-closed.png",
+          "sha256": "8450881008a922b39306c411a3e450d5d4a792fca50a762c3bb07922b2412c1a"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "42",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/business-followups-web.mp4",
+          "sha256": "710c43c92f6e88552c2499bb5db343f1e54f0b5036563c7367e3309b9446a76e",
+          "bytes": 576829
+        },
+        {
+          "file": "docs/media/gifs/business-followups-web.gif",
+          "sha256": "d3958439546a3f678f24b19911d4842f750956932c353e6a9deb2d8df96b6e90",
+          "bytes": 317228
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web applicant/delivery followups, exact project entry and independent acceptance. MP4 records real viewport input; GIF tours three actual screenshots. No real provider, model, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/business-followups-web-overview.png",
+      "sha256": "02a893dd19c21b23a110ae5af32a2dae078f00874d8c15b69a7ab0766fcf230d"
+    },
+    {
+      "file": "docs/media/screenshots/business-followups-web-review.png",
+      "sha256": "16a858acf40c364ac0397a05aecd2e9b20280c984862fb8a71231051657070bb"
+    },
+    {
+      "file": "docs/media/screenshots/business-followups-web-closed.png",
+      "sha256": "8450881008a922b39306c411a3e450d5d4a792fca50a762c3bb07922b2412c1a"
+    },
+    {
+      "file": "docs/media/videos/business-followups-web.mp4",
+      "sha256": "710c43c92f6e88552c2499bb5db343f1e54f0b5036563c7367e3309b9446a76e",
+      "bytes": 576829
+    },
+    {
+      "file": "docs/media/gifs/business-followups-web.gif",
+      "sha256": "d3958439546a3f678f24b19911d4842f750956932c353e6a9deb2d8df96b6e90",
+      "bytes": 317228
+    }
+  ]
+}

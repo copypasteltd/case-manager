@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T15:48:23.487767+00:00",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/business-followups-web-overview.png",
+      "sha256": "02a893dd19c21b23a110ae5af32a2dae078f00874d8c15b69a7ab0766fcf230d"
+    },
+    {
+      "file": "docs/media/screenshots/business-followups-web-review.png",
+      "sha256": "16a858acf40c364ac0397a05aecd2e9b20280c984862fb8a71231051657070bb"
+    },
+    {
+      "file": "docs/media/screenshots/business-followups-web-closed.png",
+      "sha256": "8450881008a922b39306c411a3e450d5d4a792fca50a762c3bb07922b2412c1a"
+    },
+    {
+      "file": "docs/media/videos/business-followups-web.mp4",
+      "sha256": "710c43c92f6e88552c2499bb5db343f1e54f0b5036563c7367e3309b9446a76e",
+      "bytes": 576829
+    },
+    {
+      "file": "docs/media/gifs/business-followups-web.gif",
+      "sha256": "d3958439546a3f678f24b19911d4842f750956932c353e6a9deb2d8df96b6e90",
+      "bytes": 317228
+    }
+  ],
+  "reviewed_screenshots": [
+    {
+      "file": "docs/media/screenshots/business-followups-web-overview.png",
+      "sha256": "02a893dd19c21b23a110ae5af32a2dae078f00874d8c15b69a7ab0766fcf230d"
+    },
+    {
+      "file": "docs/media/screenshots/business-followups-web-review.png",
+      "sha256": "16a858acf40c364ac0397a05aecd2e9b20280c984862fb8a71231051657070bb"
+    },
+    {
+      "file": "docs/media/screenshots/business-followups-web-closed.png",
+      "sha256": "8450881008a922b39306c411a3e450d5d4a792fca50a762c3bb07922b2412c1a"
+    }
+  ],
+  "method": "Visual inspection of the three actual PNGs in a scaled local contact sheet; media hashes and capture lineage checked separately.",
+  "observations": [
+    "Overview shows the existing business desk and the start of the new followup section; the completed-state image shows all three new cards.",
+    "The actual delivery review shows fixed revision/file information, two explicit human acknowledgements and a reason before ordinary acceptance.",
+    "After acceptance the independent review count is zero while the own request and own draft delivery remain one each.",
+    "Synthetic names and fixture file metadata only; no password, token or MFA secret is visible in these screenshots."
+  ],
+  "gif_scope": "Six-second tour of these real screenshots, not a continuous screen recording.",
+  "video_scope": "Silent pixels captured after login; encoding and source lineage are recorded in media.json. No frame-by-frame manual video review claimed.",
+  "real_services_or_devices_accepted": false
+}

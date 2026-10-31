@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "files": 9857,
+  "MiB": 528.59,
+  "checks": 21,
+  "failed": [],
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "broken_local_links": [],
+  "broken_local_link_count": 0,
+  "staged": true,
+  "checked_at": "2026-10-31T15:54:50.342233+00:00",
+  "actual_command": [
+    "python",
+    "app/scripts/verify_repository_publication.py",
+    "--staged"
+  ],
+  "exit_code": 0,
+  "verification_script_sha256": "fe2630c8d3e97c3aa1614ca5aa1b62c8f0f6567a12dc0b15dc98337bd124804d",
+  "scope": "Actual staged Git bytes, all publication checks; generated self-report is staged after this check.",
+  "report_is_actual_not_placeholder": true
+}

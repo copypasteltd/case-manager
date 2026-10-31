@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T15:38:24.717Z",
+  "finished_at": "2026-10-31T15:38:36.136Z",
+  "checks": [
+    "Actual home applicant entry opens the current returned request; current metadata and title render as ordinary text.",
+    "Actual project deep link opens the exact submitted revision; independent Web decision uses both explicit checks, recent human MFA and the ordinary fixed-revision command.",
+    "After the real acceptance receipt the refreshed personal home removes the review item and preserves unrelated applicant and owner work.",
+    "A different authorized parent project cannot render or act on the linked delivery as if it belonged there."
+  ],
+  "source_count": 1043,
+  "source_sha256": "7612b6f701d1c98684cc995ab33573fcf235479104ac853742eab3b41564f9d0",
+  "source_after_sha256": "7612b6f701d1c98684cc995ab33573fcf235479104ac853742eab3b41564f9d0",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API/PG, personal applicant and delivery followups, actual independent acceptance; synthetic storage, no real provider/model/device",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "f4494ef8c0e61d0d822cc65af88b196fb4bf0d944e60dd17763946587e292b37",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "f4494ef8c0e61d0d822cc65af88b196fb4bf0d944e60dd17763946587e292b37",
+  "build_source_unchanged": true
+}

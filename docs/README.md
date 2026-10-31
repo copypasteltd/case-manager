@@ -1,5 +1,18 @@
 # CopyPaste 内部管理平台文档中心
 
+**增量155 · 首页申请与交付跟进 / Post-freeze functional update**
+
+首页新增“我发起的待推进申请”“我负责的待提交交付”“我可核对的已提交交付”。从入口进入原有申请或准确项目交付，执行修改／提交／独立验收后刷新；首页数量随当前业务状态和权限重算，已读或打开不代表完成。Web与微信、抖音、Android共享源码同步；独立验收列表表示当前有权办理，未声明专属分派。
+
+155是rc.8之后的源码更新，没有结构升级，目标仍113；**rc.8与Android开发APK154继续固定业务153，不包含155新首页**。八个既有冻结版及旧证据／媒体保持不变。本轮选定原生11场景＋套件、Web4／共享移动4、实际Web4项通过；扩大回归、移动UI和新APK延期。服务器及外部资料按用户答复后续提供，23个整体工作包仍开放。
+
+English: Three personal followup groups connect the home desk to ordinary OA and exact project-delivery workflows. Complete authorized counts, capped samples and fresh permissions drive visibility; independent acceptance remains a separate human action. Source155 passes focused native/client/Web checks and local Web/miniapp builds. Frozen rc.8/APK154 remain business153/schema113; no new APK, full regression or production acceptance is claimed.
+
+[开发与使用 / Design and use](development/155-business-followups.md) · [核验与延期 / Verification](quality/155-business-followups.md) · [全部23项 / All remaining work](delivery/05-functional-closure-155.md) · [实际演示 GIF](media/gifs/business-followups-web.gif) · [无声录屏 MP4](media/videos/business-followups-web.mp4)
+
+以下154及更早段落保留为各增量历史记录；其中“当前／最新”以当时版本为界。 / Earlier entries retain their original version context.
+
+
 **增量154 · 同版冻结交付 / Matching frozen delivery · v0.1.0-rc.8**
 
 业务153／结构113已固定，服务器、Web、秘书运行器、微信、抖音和Android开发包使用同一源码；包含本人TG提醒与既有主要业务。五项下载另含完整应用源码／文档及全部演示媒体。七个旧冻结版本、原PG100与API、既有证据和媒体保持不动。

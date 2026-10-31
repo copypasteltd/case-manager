@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "recorded_at": "2026-10-31T15:48:23.551393+00:00",
+  "records": {
+    "docs/releases/v0.1.0-rc.8/release-manifest.json": "f4f97f1e8e0e936f335c32dfd7dc04d528297f8160cbdd946f00b5de914da529",
+    "docs/quality/evidence/release-candidate-154/final-source-check.json": "e8ede617f702c96b0554f83506918477337bdbbd8c09758480aa4022dcf04e2d",
+    "docs/quality/evidence/release-candidate-154/retained-functional-proof.json": "3596ce089022d53ca2f234bf2c955a3399a0612850de1ae6cf68a2719aa1bf70",
+    "docs/quality/evidence/release-candidate-154/retained-native-proof.json": "0563d3603344d4a37b4ecd7a63ad3cb139c65e1a4386f1011440cfac8518364a",
+    "docs/quality/evidence/release-candidate-154/build.json": "7d087a01052f2f7f72205249e9090f71c2269104dcf11897b8c77d4eef2103e5",
+    "docs/quality/evidence/release-candidate-154/apk-inspection.json": "e4bbb48989ec9f3008f0a1974908c8a6e3697f7033e5b73fa30c09084237bad7"
+  },
+  "backend_full_increment": 121,
+  "client_full_increment": 136,
+  "runtime_increment": 151,
+  "runtime_tests": 58,
+  "runtime_reexecuted": false,
+  "android_business_source_increment": 153,
+  "android_schema": 113,
+  "android_artifact_increment": 154,
+  "new_android_apk": false,
+  "remaining_work_packages": 23,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "scope": "Unmodified frozen154 records transitively pin the earlier broad backend/client/runtime proof. They are retained evidence, not execution for changed155 source. APK154 is business153/schema113; no155 APK or new freeze."
+}

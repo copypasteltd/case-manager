@@ -824,6 +824,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/dashboard/followups": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getFollowupSummary */
+        get: operations["getFollowupSummary"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/projects/{id}/overview": {
         parameters: {
             query?: never;
@@ -13835,6 +13852,36 @@ export interface components {
             data: components["schemas"]["WorkbenchSummary"];
             meta: components["schemas"]["Meta"];
         };
+        FollowupItem: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            revision_id: string | null;
+            project_id: string | null;
+            title: string;
+            /** @enum {string} */
+            state: "draft" | "returned" | "changes_requested" | "submitted";
+            /** Format: date-time */
+            updated_at: string;
+        };
+        FollowupGroup: {
+            /** @enum {string} */
+            kind: "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review";
+            count: number;
+            items: components["schemas"]["FollowupItem"][];
+            has_more: boolean;
+        };
+        FollowupSummary: {
+            /** Format: date-time */
+            as_of: string;
+            /** @enum {string} */
+            scope: "my_readable_followups";
+            groups: components["schemas"]["FollowupGroup"][];
+        };
+        FollowupSummaryResponse: {
+            data: components["schemas"]["FollowupSummary"];
+            meta: components["schemas"]["Meta"];
+        };
         ProjectOverviewItem: {
             /** Format: uuid */
             id: string;
@@ -18118,6 +18165,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["WorkbenchSummaryResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getFollowupSummary: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FollowupSummaryResponse"];
                 };
             };
             400: components["responses"]["Failure"];

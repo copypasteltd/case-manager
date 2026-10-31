@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api, ApiError, type Me, type Page, type Project, type Schemas } from './api';
 import { Busy, date, Dialog, Empty, ErrorNotice, Field } from './components';
@@ -19,7 +19,13 @@ function useRefresh(project: Project) {
 
 export default function ProjectDeliverables({ project, me, users, readonly }: { project: Project; me: Me; users: User[]; readonly: boolean }) {
   const [state, setState] = useState(''), [search, setSearch] = useState(''), [q, setQ] = useState('');
-  const [creating, setCreating] = useState(false), [selected, setSelected] = useState<string | null>(null);
+  const [params, setParams] = useSearchParams();
+  const linked = params.get('deliverable');
+  const verifiedLink = linked && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(linked) ? linked : null;
+  const [creating, setCreating] = useState(false), [selected, setSelected] = useState<string | null>(verifiedLink);
+  useEffect(() => { setSelected(verifiedLink); }, [verifiedLink]);
+  const closeSelected = () => { setSelected(null); if (linked) setParams(previous => { const next = new URLSearchParams(previous); next.delete('deliverable'); return next; }, { replace: true }); };
+
   const query = useInfiniteQuery({ queryKey: ['deliverables', project.id, state, q], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Deliverable>>('/projects/' + project.id + '/deliverables?' + new URLSearchParams({ state, q, limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
   const items = query.error ? [] : query.data?.pages.flatMap(page => page.items) ?? [];
   return <><div className="section-heading compact"><div><h2>项目交付</h2><p className="muted">提交固定文件版本，由获授权人员按准确准则验收。</p></div>{!readonly && me.actions.includes('deliverable.create') && <button className="button primary" onClick={() => setCreating(true)}>新建交付</button>}</div>
@@ -27,7 +33,7 @@ export default function ProjectDeliverables({ project, me, users, readonly }: { 
     <ErrorNotice error={query.error} />{query.isPending ? <Busy label="正在读取项目交付" /> : !query.error && !items.length ? <div className="panel"><Empty title="将成果整理成可验收的交付" detail="明确准则，提交准确版本，保留每次核实与修订。" /></div> : !!items.length && <div className="panel table-panel"><div className="table-scroll" tabIndex={0} aria-label="项目交付列表"><table><thead><tr><th>交付</th><th>状态</th><th>负责人</th><th>更新时间</th><th>操作</th></tr></thead><tbody>{items.map(item => <tr key={item.id}><td><strong>{item.name}</strong>{item.protocol_version === 0 && <small>旧记录，来源待核实</small>}</td><td>{names[item.state]}</td><td>{users.find(user => user.id === item.owner_id)?.display_name ?? '项目成员'}</td><td>{date(item.updated_at)}</td><td><button className="text-button" onClick={() => setSelected(item.id)}>查看交付</button></td></tr>)}</tbody></table></div></div>}
     {query.hasNextPage && <button className="button secondary" disabled={query.isFetchingNextPage} onClick={() => void query.fetchNextPage()}>加载更多交付</button>}
     {creating && <DeliverableForm kind="edit" project={project} me={me} users={users} onClose={() => setCreating(false)} />}
-    {selected && <DeliverableDetail id={selected} project={project} me={me} users={users} readonly={readonly} onClose={() => setSelected(null)} />}
+    {selected && <DeliverableDetail key={project.id + ":" + selected} id={selected} project={project} me={me} users={users} readonly={readonly} onClose={closeSelected} />}
   </>;
 }
 function RevisionFacts({ revision }: { revision: Revision }) {
@@ -40,11 +46,13 @@ function DeliverableDetail({ id, project, me, users, readonly, onClose }: { id: 
   const query = useQuery({ queryKey: ['deliverable', id], queryFn: ({ signal }) => api<Deliverable>('/deliverables/' + id, { signal }) });
   const history = useInfiniteQuery({ queryKey: ['deliverable-revisions', id], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Revision>>('/deliverables/' + id + '/revisions?' + new URLSearchParams({ limit: '10', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
   const [selectedRevision, setSelectedRevision] = useState<string | null>(null);
-  const d = query.error ? undefined : query.data, rid = selectedRevision ?? d?.current_revision_id;
+  const wrongProject = !!query.data && query.data.project_id !== project.id;
+  const detailError = wrongProject ? new Error('交付不属于当前项目，请从正确的项目或首页入口重新打开。') : query.error;
+  const d = detailError ? undefined : query.data, rid = selectedRevision ?? d?.current_revision_id;
   const revision = useQuery({ queryKey: ['deliverable-revision', id, rid], queryFn: ({ signal }) => api<Revision>('/deliverables/' + id + '/revisions/' + rid, { signal }), enabled: !!d && !!rid });
   const r = revision.error ? undefined : revision.data, rows = history.error ? [] : history.data?.pages.flatMap(page => page.items) ?? [];
   const [editing, setEditing] = useState<{ kind: 'edit' | 'submit' | 'decide'; head: Deliverable; revision?: Revision } | null>(null);
-  return <><Dialog title="项目交付详情" onClose={onClose}><ErrorNotice error={query.error} />{query.isPending ? <Busy /> : d && <><h2 className="completion-prose">{d.name}</h2><p className="muted">{names[d.state]} · 交付版本 {d.version}</p><h3>当前资料／下次提交准则</h3><p className="completion-prose">{d.acceptance_criteria}</p>{d.protocol_version === 0 && <p className="notice neutral">旧记录缺少完整提交／验收来源，须单独核实迁移。</p>}<div className="inline-actions">{!readonly && d.can_edit && <button className="button secondary" onClick={() => setEditing({ kind: 'edit', head: d })}>编辑交付资料</button>}{!readonly && d.can_submit && <button className="button primary" onClick={() => setEditing({ kind: 'submit', head: d })}>{d.state === 'accepted' ? '提交新交付修订' : '提交固定交付'}</button>}{!readonly && d.can_decide && r?.id === d.current_revision_id && <button className="button primary" onClick={() => setEditing({ kind: 'decide', head: d, revision: r })}>核实并登记验收</button>}</div>
+  return <><Dialog title="项目交付详情" onClose={onClose}><ErrorNotice error={detailError} />{query.isPending ? <Busy /> : d && <><h2 className="completion-prose">{d.name}</h2><p className="muted">{names[d.state]} · 交付版本 {d.version}</p><h3>当前资料／下次提交准则</h3><p className="completion-prose">{d.acceptance_criteria}</p>{d.protocol_version === 0 && <p className="notice neutral">旧记录缺少完整提交／验收来源，须单独核实迁移。</p>}<div className="inline-actions">{!readonly && d.can_edit && <button className="button secondary" onClick={() => setEditing({ kind: 'edit', head: d })}>编辑交付资料</button>}{!readonly && d.can_submit && <button className="button primary" onClick={() => setEditing({ kind: 'submit', head: d })}>{d.state === 'accepted' ? '提交新交付修订' : '提交固定交付'}</button>}{!readonly && d.can_decide && r?.id === d.current_revision_id && <button className="button primary" onClick={() => setEditing({ kind: 'decide', head: d, revision: r })}>核实并登记验收</button>}</div>
       <h3>交付修订历史</h3><ErrorNotice error={history.error} /><div className="inline-actions">{rows.map(row => <button key={row.id} className="button secondary" aria-pressed={row.id === rid} onClick={() => setSelectedRevision(row.id)}>修订 {row.seq} · {row.decision ? row.decision.decision === 'accept' ? '已验收' : '已退回' : '待验收'}</button>)}</div>{history.hasNextPage && <button className="text-button" disabled={history.isFetchingNextPage} onClick={() => void history.fetchNextPage()}>加载更早修订</button>}<ErrorNotice error={revision.error} />{revision.isFetching && <Busy label="正在读取固定修订" />}{r && <RevisionFacts revision={r} />}
     </>}</Dialog>{editing && <DeliverableForm {...editing} project={project} me={me} users={users} onClose={() => setEditing(null)} />}</>;
 }
