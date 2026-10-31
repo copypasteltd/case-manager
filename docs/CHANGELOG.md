@@ -2,6 +2,8 @@
 
 ## v0.1.0-rc.1 · First frozen candidate
 
+- 封存31,104,580字节服务器包、978,338字节两小程序ZIP和43,908,022字节当前Android开发APK；公开SHA256SUMS、来源清单和构建回执。服务器包790文件／100结构，1,936个展开归档成员完成私有信息检查。
+- Pin artifact commit `8ddb3f7a98a24910af49ede2a6c8b8c744d50973`; main can receive documentation receipts without moving the frozen source tag.
 - 首次冻结四端源码；构建Linux服务器包、两小程序产物及准确当前Android开发APK，公开SHA-256及来源清单。
 - 用户明确授权缩减首发验证；保留关键业务、构建、凭据及包完整性核对，延期项目不记为通过。
 - Source tag and dedicated downloadable artifact branch; no production activation or completed external-service claim. [交付与使用 / Release guide](releases/v0.1.0-rc.1/README.md).

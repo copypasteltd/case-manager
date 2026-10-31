@@ -6,6 +6,21 @@ This first frozen candidate pins source with the Git tag. Downloadable artifacts
 
 [冻结源码 / Source](https://github.com/copypasteltd/case-manager/tree/v0.1.0-rc.1) · [发布产物 / Downloads](https://github.com/copypasteltd/case-manager/tree/codex/release-v0.1.0-rc.1/docs/releases/v0.1.0-rc.1) · [完整双语入口 / Guide](../../../README.md)
 
+## 准确下载与校验 / Exact downloads
+
+源码提交：`a95c6afbd0e76684a64dc641c6abe598ad625277`；产物提交：`8ddb3f7a98a24910af49ede2a6c8b8c744d50973`。服务器包从干净的冻结源码构建，源码标签保持固定。
+
+| 编号 | 固定产物下载 | 字节 | 用途 |
+|---|---|---:|---|
+| F-01 | [Linux amd64服务器包](https://github.com/copypasteltd/case-manager/raw/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1/case-manager-v0.1.0-rc.1-linux-amd64.tar.gz) | 31,104,580 | 原生服务器、Web、秘书JS及draft Skills |
+| F-02 | [微信／抖音小程序](https://github.com/copypasteltd/case-manager/raw/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1/case-manager-v0.1.0-rc.1-miniapps.zip) | 978,338 | 两平台151文件，本地API配置 |
+| F-03 | [Android开发APK](https://github.com/copypasteltd/case-manager/raw/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1/case-manager-v0.1.0-rc.1-android-debug.apk) | 43,908,022 | arm64开发签名，本地API配置 |
+| F-04 | [SHA256SUMS](https://github.com/copypasteltd/case-manager/raw/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1/SHA256SUMS.txt) ／ [release-manifest](release-manifest.json) | — | 三个包、清单及构建回执的准确摘要 |
+
+服务器内层清单SHA-256（用于inspect）：`f8af1313087beb53027fd8f4369a66379036235a04ba9125c1a78338f93dffab`。它与压缩包SHA-256不同。
+
+Source and artifact commits are pinned independently. Verify downloads with SHA256SUMS before inspection. Use the inner manifest hash above for inspect. The [sealed build receipt](server-build.json) records790 package files,100 schema entries and1,936 expanded artifact members checked for private material.
+
 ## 包含内容 / Included
 
 | 编号 | 产物 | 使用逻辑 |

@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T01:24:48.858143+00:00",
+  "scope": "Documentation-only release receipts after clean source freeze; no business tests rerun.",
+  "files_scanned": 10,
+  "input_files": [
+    {
+      "file": "README.md",
+      "sha256": "4d4e33516d6d197096bda3765f446d5d56b7b69fa34ece91686da9296fd50aeb"
+    },
+    {
+      "file": "docs/CHANGELOG.md",
+      "sha256": "e4c3602d021bcd6e93fddcb1dae5f3070282bface0dcbdea13ce41718955f971"
+    },
+    {
+      "file": "docs/README.en.md",
+      "sha256": "853387f15a478481877d0682f4f8274f059069c670c61bdc98fc126fe093c77c"
+    },
+    {
+      "file": "docs/README.md",
+      "sha256": "39c676e53d5a7698b548ce9181b87578e83e6a4a40bbeb2376a52c47e5014c10"
+    },
+    {
+      "file": "docs/README.zh-CN.md",
+      "sha256": "80ca88e8e4e848fd80685fead5b600098dd915e84a4fab1f57946e1f5bcf188f"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.1/README.md",
+      "sha256": "e5ff05f0e7540ff7fc4b0470c79a9bde2778bb4c7fe705a06e8246de619f550e"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.1/SHA256SUMS.txt",
+      "sha256": "955b26dc82319c703da8e501cc2a813b465b0ca524410508f5cd3d6f99c60922"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.1/publication.json",
+      "sha256": "6a5222c20c8300212731449da399771660424dbd6f3c28bdb69a1edb2eca07cc"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.1/release-manifest.json",
+      "sha256": "338c58fa46536b773c052137a7ee1499e4fc29a4962f3c932373afe5b844e267"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.1/server-build.json",
+      "sha256": "38b5a17ccb07253b7d33726b1769fed0c6da8fdc4c80929552fc260a923fdf28"
+    }
+  ],
+  "private_matches": [],
+  "broken_local_links": [],
+  "source_commit": "a95c6afbd0e76684a64dc641c6abe598ad625277",
+  "artifact_commit": "8ddb3f7a98a24910af49ede2a6c8b8c744d50973",
+  "production_ready": false
+}

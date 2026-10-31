@@ -1,6 +1,6 @@
 # CopyPaste Case Manager · Solution and usage guide
 
-**First frozen candidate: [v0.1.0-rc.1](releases/v0.1.0-rc.1/README.md).** Exact source tag, download hashes, deployment steps and deferred checks are recorded together.
+**First frozen candidate: [v0.1.0-rc.1](releases/v0.1.0-rc.1/README.md).** Exact source tag, download hashes, deployment steps and deferred checks are recorded together. Linux server, two miniapps and Android development artifacts are sealed: [downloads and SHA-256](https://github.com/copypasteltd/case-manager/tree/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1).
 
 Executed checks: five selected native HTTP/PostgreSQL suites,74 passing records;428 Web and513 shared-mobile tests. Build/native cache and inspection-only provenance are recorded separately; this is not full production acceptance.
 
