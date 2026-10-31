@@ -1,0 +1,31 @@
+{
+  "recording": {
+    "name": "deliverable-submission-web",
+    "frame_count": 14,
+    "duration_ms": 2856,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/deliverable-submission-web/frames.json",
+    "manifest_sha256": "b23e6e2df3f9439ea859c5db1311819dfa4a71d77f02dcb71f2ce36cbbb2d7ca"
+  },
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-review.png",
+      "sha256": "3ab6204196b0f8d69acde7755923a369dafa4ef961ea71003043b6175995b8f3"
+    },
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-intent.png",
+      "sha256": "b7c419b67b5de2ca17b8f9a1d5c1e4672736230a4ae1f27a2771ac1d0c1931e4"
+    },
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-authorized.png",
+      "sha256": "c7d3ec5aee57262190f4dca2fd9f55d665c8045c49adaf06b81875273e150c2f"
+    }
+  ],
+  "layouts": [],
+  "synthetic_data": true,
+  "scope": "Actual Web/native HTTP/PG fixed submission intent; controlled profile without model execution. Backend actual commits are separately tested."
+}

@@ -10096,17 +10096,19 @@ export interface components {
             resolution?: string;
             /** @enum {string} */
             state?: "open" | "mitigating" | "realized" | "investigating" | "resolved" | "closed";
+            expected_revision_id?: string | null;
+            file_version_ids?: string[];
         };
         AgentMutationInput: {
             /** @enum {string} */
-            tool: "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "submit_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             arguments: components["schemas"]["AgentMutationArguments"];
         };
         AgentMutationView: {
             /** Format: uuid */
             run_id: string;
             /** @enum {string} */
-            tool: "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            tool: "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "submit_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
             /** @enum {string} */
             resource_type: "project" | "task" | "milestone" | "deliverable" | "risk" | "issue";
             /** Format: uuid */

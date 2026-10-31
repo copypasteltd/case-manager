@@ -1,5 +1,20 @@
 # CopyPaste 内部管理平台文档中心
 
+**增量151 · 交付修订提交 / Exact deliverable submission**
+
+四端源码新增“选择固定正式文件版本 → 人工逐项授权秘书 → 生成待验收修订”。仅允许固定交付版本、原修订、1–20个附件版本、说明和原因；保留完整旧修订及独立人工验收。无模型执行演示不计真实Codex验收。
+
+Current source adds reviewed, exact deliverable submission across Web and shared mobile. The backend commits one immutable pending revision with audit and idempotent receipts; independent human acceptance remains required. Skill project-update1.9.0 remains draft.
+
+[实现与使用 / Implementation and use](development/151-agent-deliverable-submission.md) · [本轮核验 / Selected checks](quality/151-agent-deliverable-submission.md) · [全部23项待办 / All remaining work](delivery/05-functional-closure-151.md)
+
+当前151／结构112；现有冻结rc.6／开发APK150仍固定149／结构111。下一冻结包在本次收口后生成；本段不声称现有包已包含新功能。
+
+![固定交付审阅 / Fixed submission review](media/screenshots/deliverable-submission-web-review.png)
+
+[实际无声操作 / Silent recording](media/videos/deliverable-submission-web.mp4) · [三张实际截图导览 / Screenshot tour GIF](media/gifs/deliverable-submission-web.gif)
+
+
 **增量150 · 功能冻结交付 / Frozen functional delivery**
 
 最新冻结[`v0.1.0-rc.6`](releases/v0.1.0-rc.6/README.md)固定业务149／结构111，包含复制失败→人工重试→实际校验恢复通知与准确版本入口。Linux/Web/秘书运行器、微信、抖音、Android开发包已重新构建；完整源码、媒体和校验摘要共五包固定下载。150不再新增业务；原五冻保留。

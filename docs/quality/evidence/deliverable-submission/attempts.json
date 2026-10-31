@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "failed_attempts_count": 10,
+  "failed_records": [
+    {
+      "record": "native-dispatch-and-channels.json",
+      "sha256": "e1bb92a47d81d9b0a49a62879bfff2eac3e4f990488b7f5eea5009221d86ab4c",
+      "passed": false
+    },
+    {
+      "record": "native-fixed-types.json",
+      "sha256": "e64aa0aab771224fa01d4912cd1af5634984c2a9b71e3355014e758bd838ccba",
+      "passed": false
+    },
+    {
+      "record": "native-focused.json",
+      "sha256": "313b2193bc66cd5815b8b38fe1f9bab7e9fdbf0d33aaf5b079e69bde715e04ff",
+      "passed": false
+    },
+    {
+      "record": "runtime-tests-1.json",
+      "sha256": "ed623c4bdf842836f04a80e01f92b1a840496dd4f19ff5b12a87f768d24c189c",
+      "passed": false
+    },
+    {
+      "record": "runtime-tests-2.json",
+      "sha256": "c69225689f9996cc5afb3a95d442cf34b6daacacd6f83783e1e7d4c93e8b73cb",
+      "passed": false
+    },
+    {
+      "record": "typecheck-1.json",
+      "sha256": "feb3437f84f942d9a8ccd06babc76eecde3af2791c87f1f105c5441e912c30b0",
+      "passed": false
+    },
+    {
+      "record": "web-build-1.json",
+      "sha256": "6ba07fe9fded615429fd39326c4405e45363d4c068c77f6af2a5ad23164b4c16",
+      "passed": false
+    }
+  ],
+  "browser_attempts": [
+    "first fixture compile: unused import; no public media",
+    "wrong legacy run filter: no fixture; no public media",
+    "owned native init-password collision; unstarted own cluster archived",
+    "browser cancellation body mismatch: exact failed result/screenshots/checker retained under attempts/browser-cancel-contract"
+  ],
+  "failure_causes": "Fixture/type/export registration and execution route/session query issues repaired before final selected pass. Prior failures remain explicit. Native-final is the final backend proof.",
+  "real_model_used": false,
+  "production_authorization_weakened": false
+}

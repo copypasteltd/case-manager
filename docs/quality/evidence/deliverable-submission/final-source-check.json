@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Selected current native HTTP/PG suites pass with fixed sources",
+      "passed": true
+    },
+    {
+      "name": "All four actual session channels submit once and replay the original receipt",
+      "passed": true
+    },
+    {
+      "name": "Exact fields, old basis, revoked session and independent human acceptance covered",
+      "passed": true
+    },
+    {
+      "name": "web-deliverable-submission-tests matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "mobile-deliverable-submission-compile matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "mobile-deliverable-submission-tests matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "runtime-tests matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "typecheck matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "web-build matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "weapp-build matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "douyin-build matches current declared client sources",
+      "passed": true
+    },
+    {
+      "name": "Actual Web input and queued intent close owned contexts and native fixture",
+      "passed": true
+    },
+    {
+      "name": "Current screenshots, actual-pixel MP4 and disclosed screenshot GIF match hashes",
+      "passed": true
+    },
+    {
+      "name": "All six prior annotated source and artifact refs remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Prior proof/media/releases and migrations1-111 keep their exact bytes",
+      "passed": true
+    },
+    {
+      "name": "Eight Skills remain draft and ordinary evidence cleanup is complete",
+      "passed": true
+    },
+    {
+      "name": "scope-check.json passes without counting business cases",
+      "passed": true
+    },
+    {
+      "name": "acceptance-applicability-check.json passes without counting business cases",
+      "passed": true
+    },
+    {
+      "name": "Failed development attempts remain disclosed",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/deliverable-submission/native-final.json": "a1d64f3d9d25aff07e4696685d94b07debb8594348cf718b63e49d9c92012d48",
+    "docs/quality/evidence/deliverable-submission/web-deliverable-submission-tests-2.json": "3c9430da57cb732c4f7ffe6fe69db453f1f452160c25ed139bd8360cd7ea0de3",
+    "docs/quality/evidence/deliverable-submission/mobile-deliverable-submission-compile-2.json": "b9951f2bfa442e63ef88d5a16765e9193596bd738616e8052e4484ba3bf8641b",
+    "docs/quality/evidence/deliverable-submission/mobile-deliverable-submission-tests-2.json": "1de4f00e3d56bbf32b2b61d1663604b446c0868a32770eed13e472671619c2a4",
+    "docs/quality/evidence/deliverable-submission/runtime-tests-4.json": "22d7261ec489c973ab4846ac5a6e9252de5c0ed0da16fb77791b1a2c80137dcf",
+    "docs/quality/evidence/deliverable-submission/typecheck-2.json": "fce1ec756a22b37a31975be3b7a21f2a97dd7a916f743496946b700f9107fa71",
+    "docs/quality/evidence/deliverable-submission/web-build-2.json": "3a24271b3e7710c1aa42f131221d8f1a4e0cd21a1d4ea74deed6ea73db8176cb",
+    "docs/quality/evidence/deliverable-submission/weapp-build-1.json": "3ec633e13a063b10012121a51bf5cd5c4881c3b6b9b8af92e52992044f1874bc",
+    "docs/quality/evidence/deliverable-submission/douyin-build-1.json": "e7576a63fa8eb4b4ce3ba3dded89bfd5ffb5d9bc84936c10f0f49e64dbb371b5",
+    "docs/quality/evidence/deliverable-submission-web/result.json": "d2b23b06745d09009551282cbbff8433216a25e96085880a34a4ed452eab3d9d",
+    "docs/quality/evidence/deliverable-submission-web/source-manifest.json": "b0819423ccbdfbd94565565560057e968bbb486365d09a0955d9bf8cb4f75a2f",
+    "docs/quality/evidence/deliverable-submission/media.json": "adcfc8891489e66fb9eed2847f76d00b26368e86d43a2d7ede55592c46f7ded0",
+    "docs/quality/evidence/deliverable-submission/visual-review.json": "3c82835e551299e4765ea252f44dadc9b8253b7d2e6f8895fa01c1b6116d180a",
+    "docs/releases/v0.1.0-rc.6/release-manifest.json": "bb80447e65e14f284bccfd31b1d4bcb58d7c1534bc13e1d0bc6e2465a0c6738b",
+    "docs/quality/evidence/deliverable-submission/scope-check.json": "f77938fa7814ee6ce289375a9d92674d35f9da7c56d3a4ef260a35f8d9770f97",
+    "docs/quality/evidence/deliverable-submission/acceptance-applicability-check.json": "486c1a66e2d36d2034d1c810131a55f00fb7a05bb28df4372c72cb131270842d",
+    "docs/quality/evidence/deliverable-submission/attempts.json": "95ba4f0ef46bda39f1587c024b1a0f26f25b913ae2c261f95a850a6981236786"
+  },
+  "retained": {
+    "base_commit": "fd304e1d3e23f84b13fd3a3142703e9300206a4f",
+    "full_backend_increment": 121,
+    "full_client_increment": 136,
+    "android_artifact_increment": 150,
+    "android_business_increment": 149,
+    "android_schema": 111,
+    "previous_proof_and_media_reexecuted": false
+  },
+  "interaction_source_sha256": "2460b3a612a5277844d2cafac7185a47c4619ed225aa744fcc655b321f6af055",
+  "verification_script_sha256": "af11e0de4134e039350f809456488dae5912b6e91a4dc4662af9e762d19cde7f",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "virtualization_used": false,
+  "new_android_apk": false
+}

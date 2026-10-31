@@ -76,6 +76,7 @@ func toolDefinitions(skill string) []any {
 	transitionTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "action": str(map[string]any{"enum": []string{"start", "review", "return", "complete", "block", "resume", "cancel", "reopen"}})}, []string{"id", "expected_version", "reason", "action"})
 	updateDeliverable := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "name": name, "acceptance_criteria": str(map[string]any{"minLength": 1, "maxLength": 20000}), "owner_id": uuid, "milestone_id": nullable(uuid)}, []string{"id", "expected_version", "reason", "name", "acceptance_criteria", "owner_id", "milestone_id"})
 	createDeliverable := updateDeliverable
+	submitDeliverable := schema(map[string]any{"id": uuid, "expected_version": version, "expected_revision_id": nullable(uuid), "file_version_ids": map[string]any{"type": "array", "items": uuid, "minItems": 1, "maxItems": 20, "uniqueItems": true}, "description": str(map[string]any{"minLength": 1, "maxLength": 20000}), "reason": name}, []string{"id", "expected_version", "expected_revision_id", "file_version_ids", "description", "reason"})
 	createTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "body": str(map[string]any{"maxLength": 20000}),
 		"assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid), "start_at": nullable(str(map[string]any{"format": "date-time"})), "due_at": nullable(str(map[string]any{"format": "date-time"})),
 		"priority": str(map[string]any{"enum": []string{"low", "normal", "high", "urgent"}}), "review_required": map[string]any{"type": "boolean"}}, []string{"id", "expected_version", "reason", "title", "body", "assignee_id", "parent_id", "milestone_id", "start_at", "due_at", "priority", "review_required"})
@@ -136,6 +137,9 @@ func toolDefinitions(skill string) []any {
 			name, description string
 			schema            any
 		}{"update_deliverable", "仅按完整 authorized_mutation 修改指定草稿或退回交付的名称、验收准则、成员负责人和里程碑关联；不提交、不验收，不改正式修订。", updateDeliverable}, struct {
+			name, description string
+			schema            any
+		}{"submit_deliverable", "仅按 authorized_mutation 固定的交付版本、原修订、1至20个正式文件版本、说明和原因提交新的待验收修订；不读附件正文、不替换文件、不代替独立人员验收。", submitDeliverable}, struct {
 			name, description string
 			schema            any
 		}{"create_milestone", "仅在本次准确授权的项目和版本内创建一个里程碑；标题、实际成员负责人、目标时刻必须逐项一致，返回新ID及真实业务回执。", createMilestone}, struct {
@@ -289,7 +293,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

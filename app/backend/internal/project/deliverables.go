@@ -177,7 +177,11 @@ func (s *Service) deliverableMutation(ctx context.Context, c core.Command, id, a
 	check := func(tx pgx.Tx) (Deliverable, Project, error) {
 		d, p, e := deliverableRead(ctx, tx, c.Actor, id, action)
 		if e == nil && human {
-			e = identity.RequireInteractiveSession(ctx, tx, c.Actor, mfa)
+			if action == "deliverable.submit" {
+				e = deliverableSubmissionSession(ctx, tx, c, id)
+			} else {
+				e = identity.RequireInteractiveSession(ctx, tx, c.Actor, mfa)
+			}
 		}
 		if e == nil && len(references) > 0 {
 			p, e = getProject(ctx, tx, c.Actor.OrgID, p.ID, true)

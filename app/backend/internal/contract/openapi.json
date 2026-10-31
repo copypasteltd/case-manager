@@ -60244,6 +60244,27 @@
               "resolved",
               "closed"
             ]
+          },
+          "expected_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "file_version_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 1,
+            "maxItems": 20,
+            "uniqueItems": true
           }
         },
         "additionalProperties": false,
@@ -60267,6 +60288,7 @@
               "update_issue",
               "create_deliverable",
               "update_deliverable",
+              "submit_deliverable",
               "create_milestone",
               "update_project",
               "update_task",
@@ -60304,6 +60326,7 @@
               "update_issue",
               "create_deliverable",
               "update_deliverable",
+              "submit_deliverable",
               "create_milestone",
               "update_project",
               "update_task",

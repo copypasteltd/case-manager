@@ -5,6 +5,7 @@
     "outDir": "../.local/mobile-concern-tests"
   },
   "include": [
+    "src/platform/deliverable-submission.test.ts",
     "src/platform/audit.test.ts",
     "src/platform/oa-text.test.ts",
     "src/platform/storage-operations.test.ts",

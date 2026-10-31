@@ -13,6 +13,72 @@
               "additionalProperties": false,
               "properties": {
                 "tool": {
+                  "const": "submit_deliverable"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "expected_version": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "expected_revision_id": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "file_version_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "minItems": 1,
+                      "maxItems": 20,
+                      "uniqueItems": true
+                    },
+                    "description": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 20000
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "expected_version",
+                    "expected_revision_id",
+                    "file_version_ids",
+                    "description",
+                    "reason"
+                  ]
+                }
+              },
+              "required": [
+                "tool",
+                "arguments"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tool": {
                   "const": "update_task_dependency"
                 },
                 "arguments": {

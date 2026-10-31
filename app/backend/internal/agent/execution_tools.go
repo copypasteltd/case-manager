@@ -229,7 +229,7 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		content, snapshots, err = executionSearch(ctx, tx, st, lease, args)
 	case "propose_project", "create_project":
 		writeOutput, snapshots, err = s.executionProjectPlan(ctx, tx, st, tool, args)
-	case "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone":
+	case "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone":
 		writeOutput, snapshots, err = s.executionMutation(ctx, tx, st, tool, args)
 	case "inspect_operation":
 		var in struct {

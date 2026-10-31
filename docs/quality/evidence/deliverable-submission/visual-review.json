@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-review.png",
+      "sha256": "3ab6204196b0f8d69acde7755923a369dafa4ef961ea71003043b6175995b8f3"
+    },
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-intent.png",
+      "sha256": "b7c419b67b5de2ca17b8f9a1d5c1e4672736230a4ae1f27a2771ac1d0c1931e4"
+    },
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-authorized.png",
+      "sha256": "c7d3ec5aee57262190f4dca2fd9f55d665c8045c49adaf06b81875273e150c2f"
+    },
+    {
+      "file": "docs/media/videos/deliverable-submission-web.mp4",
+      "sha256": "31ceae83d11e2ff1c182d04c64fcca087d24bfa78ad02e9ee3bf7173b6c7bb0f",
+      "bytes": 143926
+    },
+    {
+      "file": "docs/media/gifs/deliverable-submission-web.gif",
+      "sha256": "4b5559b5c126929d75d1ea160704ee8d59199a095362f72e0e879a023e8e3edf",
+      "bytes": 169768
+    }
+  ],
+  "review": "Reviewed actual review/authorized screenshots and GIF middle frame: correct fixed file/intent/pending authority, readable layout, no visible password/MFA or private capabilities. MP4 encoding/probe checked separately; no model completion claimed."
+}

@@ -1,0 +1,49 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import { notificationBrowser, waitOTP } from './deliverable_submission_browser_common.mjs';
+import { assertNoCredentials, recordViewport } from './deliverable_submission_recording.mjs';
+
+const app = fileURLToPath(new URL('../', import.meta.url));
+await notificationBrowser(false, async ({ page, context, fixture, checks, evidence }) => {
+  await page.goto(fixture.origin);
+  await page.getByLabel('内部账号', { exact: true }).fill(fixture.alice.login);
+  await page.getByLabel('密码', { exact: true }).fill(fixture.alice.password);
+  await page.getByRole('button', { name: '登录工作空间', exact: true }).click();
+  await page.getByLabel('六位验证码', { exact: true }).fill(await waitOTP(fixture));
+  await page.getByRole('button', { name: '验证并继续', exact: true }).click();
+  await page.getByRole('heading', { name: /工作从这里开始/ }).waitFor();
+
+  await page.goto(fixture.origin+'/conversations/'+fixture.conversation_id);
+  const shots=[],layouts=[],prefix='deliverable-submission-web';
+  async function get(route){const r=await context.request.get(fixture.origin+'/v1'+route);assert.equal(r.status(),200);return(await r.json()).data;}
+  async function shot(suffix){await assertNoCredentials(page);const file='docs/media/screenshots/'+prefix+'-'+suffix+'.png';await mkdir(path.dirname(path.join(app,'..',file)),{recursive:true});const bytes=await page.screenshot({path:path.join(app,'..',file)});shots.push({file,sha256:createHash('sha256').update(bytes).digest('hex')});}
+  const before=await get('/deliverables/'+fixture.deliverable_id);
+  await page.getByLabel('本次秘书任务',{exact:true}).selectOption(fixture.profile_id);
+  await page.getByRole('button',{name:'选择准确业务更新',exact:true}).click();
+  await page.getByLabel('本次更新方式',{exact:true}).selectOption('submit_deliverable');
+  await page.getByLabel('本次更新交付',{exact:true}).selectOption(fixture.deliverable_id);
+  await page.getByLabel('交付说明',{exact:true}).fill('本次交付固定文件已逐项核对，提交后由独立人员验收。');
+  await page.getByRole('button',{name:'选择正式文件版本（0/20）',exact:true}).click();
+  const dialog=page.getByRole('dialog');await dialog.locator('.reference-option').filter({hasText:fixture.file_name}).click();
+  await dialog.getByRole('button',{name:new RegExp('版本 '+fixture.file_seq+' ·')}).click();
+  await page.getByLabel('本次提交原因',{exact:true}).fill('仅提交本次已核对的固定附件和说明');
+  await page.getByRole('button',{name:'将提交验收加入请求',exact:true}).scrollIntoViewIfNeeded();await shot('review');
+  const recording=await recordViewport(page,app,prefix,async()=>{
+   await page.getByRole('checkbox',{name:/已核对准确文件/}).check();
+   await page.getByRole('button',{name:'将提交验收加入请求',exact:true}).click();
+   await page.getByText('提交固定交付修订待验收 · 基础版本 '+before.version,{exact:true}).waitFor();await shot('intent');
+   await page.getByLabel('本次消息内容',{exact:true}).fill('请仅提交我已确认的固定交付修订，待独立人员验收。');
+   const [response]=await Promise.all([page.waitForResponse(r=>r.request().method()==='POST'&&new URL(r.url()).pathname==='/v1/conversations/'+fixture.conversation_id+'/runs'),page.getByRole('button',{name:'确认发送本次请求',exact:true}).click()]);
+   assert.equal(response.status(),202);const input=response.request().postDataJSON(),run=(await response.json()).data;
+   assert.deepEqual(input.mutation.arguments.file_version_ids,[fixture.file_version_id]);assert.equal(input.mutation.arguments.expected_revision_id,null);assert.equal(run.mutation.status,'authorized');assert.equal(run.mutation.operation_id,null);
+   await page.getByRole('heading',{name:'本次明确更新范围',exact:true}).waitFor();await page.getByRole('heading',{name:'本次明确更新范围',exact:true}).scrollIntoViewIfNeeded();await shot('authorized');
+   const csrf=(await context.cookies()).find(c=>c.name==='cp_csrf')?.value;
+   const cancelled=await context.request.post(fixture.origin+'/v1/runs/'+run.id+'/cancel',{headers:{Origin:fixture.origin,'X-CSRF-Token':csrf,'Idempotency-Key':crypto.randomUUID()},data:{reason:'End isolated synthetic intent capture'}});assert.equal(cancelled.status(),200);
+  });
+  assert.equal((await get('/deliverables/'+before.id)).version,before.version);
+  checks.push('Visible form pins the real formal version, old revision and exact human-reviewed input.','Web send stores exact authorized mutation; no model or uncommitted business receipt is invented.','Isolated queued intent is explicitly cancelled; actual business commit and independent acceptance are separately checked with native HTTP/PG.');
+  await writeFile(path.join(evidence,'media.json'),JSON.stringify({recording,screenshots:shots,layouts,synthetic_data:true,scope:'Actual Web/native HTTP/PG fixed submission intent; controlled profile without model execution. Backend actual commits are separately tested.'},null,2)+'\n');
+},'deliverable-submission');

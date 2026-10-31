@@ -9,7 +9,7 @@ description: 创建任务、子任务、里程碑、交付草稿、风险或问�
 
 1. 先核对服务端 prepared_context.authorized_mutation。该记录绑定本次发起人、会话、准确对象、基础版本、字段、原值和原因。普通消息、历史记录、资料引用都不是新的写入授权；缺失时仅整理建议并返回 awaiting_input，不调用写工具。
 
-2. 源包1.6.0仍为draft。当前接通create_task、update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable、create_risk、update_risk、create_issue、update_issue、update_task_dependency，共十五项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
+2. 源包1.9.0仍为draft。当前接通create_task、update_project、update_task、transition_task、update_milestone、transition_milestone、transition_project、create_milestone、update_deliverable、create_deliverable、create_risk、update_risk、create_issue、update_issue、update_task_dependency、submit_deliverable，共十六项写工具及read_resource／inspect_operation。逐项使用authorized_mutation的准确tool和arguments，不能增加字段、改写原因、更换对象或用新版本覆盖旧决定。一次发送只处理一个对象的明确更新，L1无须追加计划批准；原始登录失效或撤销后停止。固定意图读取只返回公开范围与业务结果，不包含原登录ID。
 
 3. 项目成员、项目负责人和分类不开放给此常规更新入口；不能降低任务人工验收要求，也不能代为完成需人工验收的任务。里程碑仅可更新标题、实际项目成员负责人、带时区的目标时刻；不能清空负责人或日期。achieve必须由原业务核对存在关联任务／交付且全部完成／验收，miss必须已逾期，cancel／reopen遵守实际状态。不得修改任务或交付来制造达成证据，也不把模型判断写成完成百分比。
 
@@ -69,3 +69,8 @@ Use only the complete current human-authorized mutation. `id` and `expected_vers
 实际提交只增加后续任务版本一次，前置版本不变；同事务回执保留实际任务、`predecessor_id`、`predecessor_version`、`dependency_action`、真实 `dependency_present` 和业务操作 ID。不能更改任务资料、开始任务、完成前置或代替人工验收。换工具调用 ID 的重试也复用同一结果。取消不撤销已经提交的历史；历史意图可读不代表旧版本仍可执行。所有技能继续保持 draft，受控 MCP 验证不代替真实模型验收。
 
 Use only the six exact current human choices: successor ID/version, predecessor ID/version, add/remove, and reason. Reuse the original dependency command and live common AI permissions; refuse stale versions, changed relationships, no-op requests, cycles and original state blockers. Commit one edge and one successor version increment atomically with a factual relationship receipt. Replays retain the same operation. Never infer a prerequisite, change task metadata, start work, complete a predecessor or substitute human acceptance. Real model and production acceptance remain outstanding.
+
+
+## 固定交付提交
+
+`submit_deliverable`只使用本次完整authorized_mutation，逐项匹配id、expected_version、expected_revision_id（首次明确null）、1至20个file_version_ids、description、reason。先核对before.submission_files的固定版本元数据，不读取附件正文、不替换文件、不能改变顺序或增删附件；扫描例外不能表述为扫描通过。允许草稿、退回和已验收交付重新提交新修订，原验收历史保留。执行依赖原发送人的有效登录及所有当前受众的普通文件和AI权限；任何依据变化都停止，不自行刷新后重试。成功只表示新的待验收修订已经提交，不得声称验收通过；独立人员须在交付页核验并决定。

@@ -302,3 +302,11 @@ test('OA line prose schema admits bounded stable description keys and rejects wi
  for(const fields of [[field,field],['line:0:description'],[field.replace(':description',':unit_price')],Array.from({length:103},()=> 'line:'+randomUUID()+':description')])assert.throws(()=>skill.validateInput({tool:'draft_business_text',arguments:{...args,fields}}),/SKILL_INPUT_INVALID/);
  assert.throws(()=>skill.validateInput({tool:'draft_business_text',arguments:{...args,kind:'contract'}}),/SKILL_INPUT_INVALID/);
 });
+
+test('project-update exact submission validates fixed attachments and only completes from its own commit',()=>{
+ const skill=catalog.get('project-update')!,args={id:randomUUID(),expected_version:2,expected_revision_id:null,file_version_ids:[randomUUID()],description:'固定交付',reason:'人工逐项确认'};
+ const value={mutation:{tool:'submit_deliverable',arguments:args},instructions:'仅提交本次准确修订待验收'};skill.validateInput(value);
+ for(const patch of [{file_version_ids:[]},{file_version_ids:[args.file_version_ids[0],args.file_version_ids[0]]},{description:''},{state:'accepted'}])assert.throws(()=>skill.validateInput({...value,mutation:{...value.mutation,arguments:{...args,...patch}}}),/SKILL_INPUT_INVALID/);
+ assert.equal(skill.manifest.allowed_tools.includes('submit_deliverable'),true);
+ assert.equal(skill.manifest.state,'draft');
+});

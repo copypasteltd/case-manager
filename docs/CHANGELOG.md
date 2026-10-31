@@ -1,5 +1,8 @@
 # 更新记录 / Changelog
 
+151 · 实现四端准确授权的秘书交付提交、原登录／受众／固定附件复核、新修订与幂等审计；project-update1.9.0仍draft。当前112，旧冻结rc.6／APK150仍149／111；缩减检查如151核验所示。 / Exact reviewed deliverable submission; independent acceptance remains human.
+
+
 ## 增量150 · `v0.1.0-rc.6` 当前功能冻结 / Frozen functional delivery
 
 - 停止增加业务，固定149提交`c49177e6f9f26731ce1a2f2183e2c9020b2c4d3d`／结构111；Linux/Web/runtime、微信／抖音和当前Android开发包全部包含恢复通知及准确版本／副本入口。

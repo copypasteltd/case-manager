@@ -1,5 +1,8 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+151新增三张实际Web截图、无声操作MP4与六秒截图导览GIF，位于deliverable-submission-web系列路径。示例只展示选取固定附件、准确授权入队后取消；实际后端提交另由HTTP／PG证明，未调用真实模型。
+
+
 ## 增量150 · 冻结素材包
 
 `v0.1.0-rc.6`媒体ZIP完整固定Git149的全部媒体；三张复制通知截图、2.8秒实际无声MP4及6秒三截图导览GIF按原字节复用，没有150新录制。相关界面与冻结149源码一致。[固定包及摘要](../releases/v0.1.0-rc.6/README.md)／[149媒体证据](../quality/evidence/replica-notifications/media.json)。The media ZIP retains exact149 pixels and artifact bytes; the GIF is a screenshot tour, not a continuous recording.

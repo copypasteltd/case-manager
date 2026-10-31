@@ -1,3 +1,5 @@
+import { deliverableSubmissionBasis, deliverableSubmissionReceipt } from './deliverable-submission';
+export { makeDeliverableSubmission, submissionFiles } from './deliverable-submission';
 import { taskDependencyBasis, taskDependencyReceipt } from './task-dependency';
 export { makeTaskDependency } from './task-dependency';
 import { taskCreationFields, taskCreationReceipt } from './task-creation';
@@ -9,9 +11,9 @@ import type { components } from './api';
 export type Mutation = components['schemas']['AgentMutationInput'];
 export type MutationView = components['schemas']['AgentMutationView'];
 export type MutationTool = Mutation['tool'];
-export const mutationTools: readonly (readonly [MutationTool, string])[] = [['update_task_dependency', '调整任务前置依赖'], ['create_task', '创建任务或子任务'], ['create_risk', '创建项目风险'], ['update_risk', '修改风险资料与状态'], ['create_issue', '创建项目问题'], ['update_issue', '修改问题资料与状态'], ['create_deliverable', '创建交付草稿'], ['update_deliverable', '修改交付资料与关联'], ['create_milestone', '创建里程碑'], ['update_project', '修改项目资料'], ['update_task', '修改任务资料'], ['transition_task', '推进任务状态'], ['update_milestone', '修改里程碑资料'], ['transition_milestone', '推进里程碑状态'], ['transition_project', '推进项目阶段']];
+export const mutationTools: readonly (readonly [MutationTool, string])[] = [['update_task_dependency', '调整任务前置依赖'], ['create_task', '创建任务或子任务'], ['create_risk', '创建项目风险'], ['update_risk', '修改风险资料与状态'], ['create_issue', '创建项目问题'], ['update_issue', '修改问题资料与状态'], ['create_deliverable', '创建交付草稿'], ['update_deliverable', '修改交付资料与关联'], ['submit_deliverable', '提交固定交付修订待验收'], ['create_milestone', '创建里程碑'], ['update_project', '修改项目资料'], ['update_task', '修改任务资料'], ['transition_task', '推进任务状态'], ['update_milestone', '修改里程碑资料'], ['transition_milestone', '推进里程碑状态'], ['transition_project', '推进项目阶段']];
 export function mutationCreates(tool: MutationTool): boolean { return tool.startsWith('create_'); }
-export function mutationTargetType(tool: MutationTool): 'project' | 'task' | 'milestone' | 'deliverable' | 'risk' | 'issue' { if (isConcernMutation(tool)) return tool.startsWith('create_') ? 'project' : tool === 'update_risk' ? 'risk' : 'issue'; return tool === 'update_deliverable' ? 'deliverable' : tool === 'create_task' || tool === 'create_deliverable' || tool === 'create_milestone' || tool.endsWith('_project') ? 'project' : tool.endsWith('_milestone') ? 'milestone' : 'task'; }
+export function mutationTargetType(tool: MutationTool): 'project' | 'task' | 'milestone' | 'deliverable' | 'risk' | 'issue' { if (isConcernMutation(tool)) return tool.startsWith('create_') ? 'project' : tool === 'update_risk' ? 'risk' : 'issue'; return tool === 'update_deliverable' || tool === 'submit_deliverable' ? 'deliverable' : tool === 'create_task' || tool === 'create_deliverable' || tool === 'create_milestone' || tool.endsWith('_project') ? 'project' : tool.endsWith('_milestone') ? 'milestone' : 'task'; }
 export interface MutationField { name: string; label: string; kind: 'name' | 'text' | 'date' | 'instant' | 'choice' | 'member' | 'milestone' | 'task'; nullable?: boolean; options?: readonly (readonly [string, string])[] }
 const actions = [['start', '开始处理'], ['review', '提交验收'], ['return', '退回处理'], ['complete', '完成无需人工验收的任务'], ['block', '标记阻塞'], ['resume', '恢复处理'], ['cancel', '取消任务'], ['reopen', '重新打开']] as const;
 const projectActions = [['activate','启动项目'],['hold','暂停项目'],['resume','恢复项目'],['close','进入收尾'],['cancel','取消项目'],['reopen','重新打开项目']] as const;
@@ -21,6 +23,7 @@ export const mutationFields: Record<MutationTool, readonly MutationField[]> = {
   ...concernMutationFields,
   update_task_dependency: [{name:'predecessor_id',label:'前置任务',kind:'task'},{name:'expected_predecessor_version',label:'前置任务基础版本',kind:'name'},{name:'action',label:'依赖动作',kind:'choice',options:[['add','新增依赖'],['remove','解除依赖']]}],
   create_task: taskCreationFields,
+  submit_deliverable: [{name:'description',label:'交付说明',kind:'text'},{name:'file_version_ids',label:'固定文件版本',kind:'text'},{name:'expected_revision_id',label:'原交付修订',kind:'name',nullable:true}],
   create_deliverable: [{name:'name',label:'交付名称',kind:'name'},{name:'acceptance_criteria',label:'验收准则',kind:'text'},{name:'owner_id',label:'交付负责人',kind:'member'},{name:'milestone_id',label:'关联里程碑',kind:'milestone',nullable:true}],
   update_deliverable: [{name:'name',label:'交付名称',kind:'name'},{name:'acceptance_criteria',label:'验收准则',kind:'text'},{name:'owner_id',label:'交付负责人',kind:'member'},{name:'milestone_id',label:'关联里程碑',kind:'milestone',nullable:true}],
   create_milestone: [{name:'title',label:'里程碑标题',kind:'name'},{name:'owner_id',label:'里程碑负责人',kind:'member'},{name:'due_at',label:'目标时刻',kind:'instant'}],
@@ -52,6 +55,7 @@ export function makeMutation(tool: MutationTool, target: { id: string; version: 
   if (tool === 'create_task') throw new Error('创建任务需要完整核对九项资料及人工验收要求。');
   if (isConcernMutation(tool)) throw new Error('风险与问题必须完整核对所有资料，不能发送部分修改。');
   if (tool === 'create_deliverable') throw new Error('创建交付草稿需要完整核对名称、验收准则、负责人和里程碑关联。');
+  if (tool === 'submit_deliverable') throw new Error('提交交付需要完整核对固定文件、原修订、说明和提交原因。');
   if (tool === 'update_deliverable') throw new Error('交付更新需要完整核对名称、验收准则、负责人和里程碑关联。');
   if (tool === 'create_milestone') throw new Error('创建里程碑需要完整填写标题、负责人和目标时刻。');
   const definition = mutationFields[tool]?.find(item => item.name === field);
@@ -95,6 +99,7 @@ export function mutationReceipt(run: components['schemas']['Run'], input?: Mutat
   if (!input) return !m;
   if (!m || m.run_id !== run.id || m.tool !== input.tool || m.resource_id !== input.arguments.id || m.resource_type !== mutationTargetType(input.tool) || m.base_version !== input.arguments.expected_version || !/^[a-f0-9]{64}$/.test(m.intent_sha256) || canonical(m.arguments) !== canonical(input.arguments) || m.before?.id !== m.resource_id || m.before?.version !== m.base_version) return false;
   if (m.tool === 'update_task_dependency' && !taskDependencyBasis(m)) return false;
+  if (m.tool === 'submit_deliverable' && !deliverableSubmissionBasis(m)) return false;
   if (m.status === 'authorized') return m.operation_id === null && m.result_version === null && m.result === null;
   if (m.tool === 'create_task') return taskCreationReceipt(m, run.actor_id);
   if (isConcernMutation(m.tool)) return concernMutationReceipt(m, run.actor_id);
@@ -107,6 +112,7 @@ export function mutationReceipt(run: components['schemas']['Run'], input?: Mutat
     && m.result.owner_id === m.arguments.owner_id && Date.parse(String(m.result.due_at)) === Date.parse(String(m.arguments.due_at));
   if (!(m.status === 'committed' && typeof m.operation_id === 'string' && /^[a-f0-9-]{36}$/.test(m.operation_id) && m.result_version === m.base_version + 1 && m.result?.id === m.resource_id && m.result?.version === m.result_version)) return false;
   if (m.tool === 'update_task_dependency') return taskDependencyReceipt(m);
+  if (m.tool === 'submit_deliverable') return deliverableSubmissionReceipt(m);
   if (m.tool === 'update_deliverable') return m.result.revision_id === m.before.current_revision_id;
   if (m.tool === 'transition_project' || m.tool === 'transition_milestone') {
     const expected: Record<string,string> = m.tool === 'transition_project' ? {activate:'active',hold:'on_hold',resume:'active',close:'closing',cancel:'cancelled',reopen:'active'} : {achieve:'achieved',miss:'missed',cancel:'cancelled',reopen:'open'};

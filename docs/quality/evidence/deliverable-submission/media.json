@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T12:55:46.918554+00:00",
+  "encoder_script_sha256": "59bc1b1d43be89e1e4fd55170550b60effb30508e4a32bd54abe1c68b3e69020",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "3d38d3cf8e553666e7e4a50cac55c979db137966465d00f43018c9cc4ec14c36",
+      "build_source_sha256": "2460b3a612a5277844d2cafac7185a47c4619ed225aa744fcc655b321f6af055",
+      "capture_manifest": "docs/quality/evidence/deliverable-submission/web-capture-manifest.json",
+      "capture_manifest_sha256": "b23e6e2df3f9439ea859c5db1311819dfa4a71d77f02dcb71f2ce36cbbb2d7ca",
+      "capture_frame_count": 14,
+      "capture_duration_ms": 2856,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/deliverable-submission-web-review.png",
+          "sha256": "3ab6204196b0f8d69acde7755923a369dafa4ef961ea71003043b6175995b8f3"
+        },
+        {
+          "file": "docs/media/screenshots/deliverable-submission-web-intent.png",
+          "sha256": "b7c419b67b5de2ca17b8f9a1d5c1e4672736230a4ae1f27a2771ac1d0c1931e4"
+        },
+        {
+          "file": "docs/media/screenshots/deliverable-submission-web-authorized.png",
+          "sha256": "c7d3ec5aee57262190f4dca2fd9f55d665c8045c49adaf06b81875273e150c2f"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "30",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/deliverable-submission-web.mp4",
+          "sha256": "31ceae83d11e2ff1c182d04c64fcca087d24bfa78ad02e9ee3bf7173b6c7bb0f",
+          "bytes": 143926
+        },
+        {
+          "file": "docs/media/gifs/deliverable-submission-web.gif",
+          "sha256": "4b5559b5c126929d75d1ea160704ee8d59199a095362f72e0e879a023e8e3edf",
+          "bytes": 169768
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web fixed-file selection, explicit submission authority and pending intent. MP4 records real input; GIF tours three actual screenshots. Backend commits are separately tested; no real model, cloud, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-review.png",
+      "sha256": "3ab6204196b0f8d69acde7755923a369dafa4ef961ea71003043b6175995b8f3"
+    },
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-intent.png",
+      "sha256": "b7c419b67b5de2ca17b8f9a1d5c1e4672736230a4ae1f27a2771ac1d0c1931e4"
+    },
+    {
+      "file": "docs/media/screenshots/deliverable-submission-web-authorized.png",
+      "sha256": "c7d3ec5aee57262190f4dca2fd9f55d665c8045c49adaf06b81875273e150c2f"
+    },
+    {
+      "file": "docs/media/videos/deliverable-submission-web.mp4",
+      "sha256": "31ceae83d11e2ff1c182d04c64fcca087d24bfa78ad02e9ee3bf7173b6c7bb0f",
+      "bytes": 143926
+    },
+    {
+      "file": "docs/media/gifs/deliverable-submission-web.gif",
+      "sha256": "4b5559b5c126929d75d1ea160704ee8d59199a095362f72e0e879a023e8e3edf",
+      "bytes": 169768
+    }
+  ]
+}
