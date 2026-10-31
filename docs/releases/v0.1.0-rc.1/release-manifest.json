@@ -1,0 +1,80 @@
+{
+  "format": 1,
+  "version": "v0.1.0-rc.1",
+  "created_at": "2026-10-31T01:22:24.803175+00:00",
+  "status": "frozen_candidate",
+  "source": {
+    "tag": "v0.1.0-rc.1",
+    "commit": "a95c6afbd0e76684a64dc641c6abe598ad625277",
+    "clean_at_server_build": true,
+    "server_inputs_sha256": "b6af470bcfaa50308f76788d6e194a4a8d4aa4abadcf2dca97aa3983e9835098"
+  },
+  "artifact_branch": "codex/release-v0.1.0-rc.1",
+  "schema_version": 100,
+  "server_release_id": "r-f8af1313087beb53027fd8f4",
+  "server_manifest_sha256": "f8af1313087beb53027fd8f4369a66379036235a04ba9125c1a78338f93dffab",
+  "assets": [
+    {
+      "name": "case-manager-v0.1.0-rc.1-linux-amd64.tar.gz",
+      "bytes": 31104580,
+      "sha256": "4fb7f9e5083cb827bc47e8a8e4f9f6219bbb33c96ffb13e023f1b97547209c3b",
+      "server_manifest_sha256": "f8af1313087beb53027fd8f4369a66379036235a04ba9125c1a78338f93dffab"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.1-miniapps.zip",
+      "bytes": 978338,
+      "sha256": "3d0d1239d8042ce734e895392a5d742f910c830a116e9f258b755bb9c8870c35"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.1-android-debug.apk",
+      "bytes": 43908022,
+      "sha256": "b3ab05c2214bba38f54aff82616fd4e2bcd102b904c09458471bc5e087788019"
+    }
+  ],
+  "client_profile": "local; set actual HTTPS API and platform identities and rebuild for server use",
+  "android": {
+    "development_only": true,
+    "apk_content_checks": 19,
+    "exact_source_files": 320,
+    "native28_and_jvm28": "UP-TO-DATE; exact increment132 XML and original timestamps retained",
+    "formal_signed_release": false
+  },
+  "executed": {
+    "selected_native_http_pg_records": 74,
+    "web_tests": 428,
+    "shared_mobile_tests": 513,
+    "builds": [
+      "web",
+      "weapp",
+      "douyin",
+      "android-debug",
+      "linux-amd64-cross-build",
+      "secretary-js-runtime"
+    ],
+    "schema_upgrade": "native development99-to100; original history retained",
+    "web_interaction": "actual MFA,195 HKD partial release and durable receipt",
+    "server_archive_inspection": true,
+    "expanded_archive_files_checked_for_private_material": 1936
+  },
+  "deferred": [
+    "full backend and secretary regression rerun",
+    "broader four-client scenario replay",
+    "mobile browser rerun after locator correction; mobile recording/GIF",
+    "real Linux deployment and persistent production PG acceptance",
+    "actual OSS/R2, model, TG and platform integrations",
+    "formal Android signing, platform publication and full-scope acceptance"
+  ],
+  "excluded_by_user": [
+    "real-device verification",
+    "network performance and live120GB special",
+    "historical data migration/disaster recovery",
+    "AI fee controls"
+  ],
+  "remaining_work_packages": 23,
+  "eight_skills_status": "draft",
+  "linux_executed": false,
+  "deployed": false,
+  "production_ready": false,
+  "github_release_page_created": false,
+  "github_release_api_block": "Stored API credential account suspended (HTTP403); SSH Git publication works."
+}
