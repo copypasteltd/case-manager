@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## Increment137 · Frozen candidate delivery
+
+- `v0.1.0-rc.2` freezes increments134–136, schema103, without moving the first candidate. Fresh native server/Web/runtime, both miniapps and a new development APK receive exact manifests and download hashes.
+- Complete application source/development guides and published media archives match their frozen Git blobs; large historical evidence stays in the full source tag; packaging uses an isolated index and never resets the checkout or overwrites refs.
+- 业务测试与页面媒体沿用136的准确来源，未重跑不写成新通过；完整回归、额外浏览器、开发库升级及真实集成／正式生产验收继续延期。APK仍开发签名、本地API，23包、五项移出及八项draft Skill保持。
+- [Downloads and usage](releases/v0.1.0-rc.2/README.md) · [Checks and deferrals](quality/137-frozen-candidate-verification.md) · [All remaining work](delivery/05-functional-closure-137.md)。
+
 ## Increment136 · Original cleanup reauthorization
 
 - 四端补齐原批准会话／权限失效后的明确续作：当前权限、近期MFA、固定全部剩余项、来源与制度复核，成功项和初次批准保持不变。

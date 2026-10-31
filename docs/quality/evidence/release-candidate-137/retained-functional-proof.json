@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T03:10:07.564676+00:00",
+  "increment": 136,
+  "verification_mode": "scoped_increment",
+  "checks": [
+    {
+      "name": "Seven native HTTP/PG suites pass without skips, including stopped partial renewal and current-authority guards",
+      "passed": true
+    },
+    {
+      "name": "Complete backend and native harness inputs still match actual execution bytes",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: typecheck",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: web-tests",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: web-build",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Current client execution and exact source binding: douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Eight new remaining-original authorization cases pass in both actual client consumers",
+      "passed": true
+    },
+    {
+      "name": "Owned durable native PostgreSQL closes without altering persistent development services",
+      "passed": true
+    },
+    {
+      "name": "Actual authenticated Web mutation, durable readback and owned-resource cleanup pass",
+      "passed": true
+    },
+    {
+      "name": "Inspected actual Web screenshots, post-authentication MP4 and screenshot-tour GIF retain exact bytes",
+      "passed": true
+    },
+    {
+      "name": "Published historical proof/media and migrations1\u2013102 remain immutable",
+      "passed": true
+    },
+    {
+      "name": "Original first-freeze tag and artifact branch remain pinned",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and no formal model/platform/cloud acceptance is claimed",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/backend.json",
+      "sha256": "f563bcb35d1fb33b382e9a4bbf27e86013b19cdf26505aeca146e6fd59de7b95"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/typecheck.json",
+      "sha256": "c0c3ba7aa96187151f0c83ea0feef8e0269973208d26918f0fb8a01fdcafdda9"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/web-tests.json",
+      "sha256": "e557705b3991756c0f9fabc93391b1ec82bb7e20f90720fcad0130d6f794fe1e"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/mobile-tests.json",
+      "sha256": "3ed34ed1b88e514432f75394e0904f14f23116650a59b1b6b2b5441771238de3"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/web-build.json",
+      "sha256": "c6bf011febca44fc5a3ccfffab8d417dec467014cf91e0ad7a638cce4e049921"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/weapp-build.json",
+      "sha256": "bcb9a166cb000738103f8a725d9c443be38bb89f1e5c6573af0c1105fd739a56"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/douyin-build.json",
+      "sha256": "b8bf2b67105701d4c579c788b5c2350191e5f540a7be57d5d0379b3eaf4f22b0"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/native-cluster-closed.json",
+      "sha256": "8320ac14e4e98ee75299b3c65c110417d4e8183e5e148dca7bdddafd282dc740"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization-web/result.json",
+      "sha256": "14d58de385bf57e7743009e416ba3ba178b0a317d6ce422956868adc8c4c2d46"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization-web/source-manifest.json",
+      "sha256": "9418d2add1131c153f982afab0aa4c4979a12431ea572a30fc830269617b602f"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization-web/business-proof.json",
+      "sha256": "2fea773eb32f049d005bfa9f6f2da9becfd6fe63620f51a6f83e6e36856a567a"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/media.json",
+      "sha256": "5445554cce29c8701860ba222c5bc78c29c0896b4cccb7e012cce996b40c5062"
+    },
+    {
+      "file": "docs/quality/evidence/retirement-reauthorization/visual-review.json",
+      "sha256": "97d9d24ee40f17646f91ca5fc4373957b8980033a217e2610fb038ecb9c1d34b"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "base_commit": "bebcd340f7a85d001f7505a55f1a596b4b850a4a",
+    "full_backend_increment": 121,
+    "runtime_increment": 121,
+    "android_artifact_increment": 133,
+    "freeze_tag": "v0.1.0-rc.1",
+    "current_android_apk_built": false,
+    "previous_proof_and_media_reexecuted": false
+  },
+  "interaction_kind": "retirement-reauthorization",
+  "interaction_source_sha256": "ec8592e54c69f19cc17916c905169efa2e215db8fbbe12dd64c4bdf237304ab2",
+  "verification_script_sha256": "c968ff9d9119e8e9f4d7e38fc19eedcac5577a3e4f12d0bb473c9ed8acae3495",
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": null,
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "current_android_apk_built": false,
+  "current_development_database_schema": 100,
+  "schema_migration": 103,
+  "skipped_checks": [
+    "Full backend/runtime regression",
+    "Additional mobile browser journey",
+    "New Android JS/JVM/APK build",
+    "Persistent development database100-to103 upgrade",
+    "Actual platform/cloud/model/TG/Linux/production acceptance"
+  ],
+  "skip_authority": "Explicit user instruction on2026-10-31 to preserve the main functional loop and defer selected validation for faster first release; same focused post-freeze workflow.",
+  "full_goal_complete": false,
+  "production_ready": false
+}

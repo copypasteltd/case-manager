@@ -1,0 +1,19 @@
+{
+  "published": false,
+  "reason": "Host Node22.14 was reported by the version probe. Rebuilt with explicit native Node22.23.4 on parent PATH; package bytes are identical.",
+  "first_tool_versions": {
+    "go": "go version go1.27.3 windows/amd64",
+    "node": "v22.14.0",
+    "npm": "10.9.9"
+  },
+  "second_tool_versions": {
+    "go": "go version go1.27.3 windows/amd64",
+    "node": "v22.23.4",
+    "npm": "10.9.9"
+  },
+  "source_commit": "40cd118634117204e2e310395fac32b59af5cecc",
+  "first_archive_sha256": "6ddd0ff9583cf0a952dd0adf8cd425012dba27f6f153de3e735d839ae113c434",
+  "second_archive_sha256": "6ddd0ff9583cf0a952dd0adf8cd425012dba27f6f153de3e735d839ae113c434",
+  "same_package_bytes": true,
+  "application_source_modified": false
+}

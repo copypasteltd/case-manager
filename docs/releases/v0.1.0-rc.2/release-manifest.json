@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "version": "v0.1.0-rc.2",
+  "status": "frozen_candidate",
+  "created_at": "2026-10-31T03:28:36.256990+00:00",
+  "source": {
+    "tag": "v0.1.0-rc.2",
+    "commit": "40cd118634117204e2e310395fac32b59af5cecc",
+    "server_inputs_sha256": "8a089c85a598e8004ff7635ceacb97129da93fa688e065300bf48bd39bb9b7c2",
+    "clean_at_server_build": true
+  },
+  "artifact_branch": "codex/release-v0.1.0-rc.2",
+  "schema_version": 103,
+  "server_release_id": "r-b7ac9be38c5a456db91dd969",
+  "server_manifest_sha256": "b7ac9be38c5a456db91dd969a4a01589991ce9ddd86d39cad7733bfb5cbfd5b3",
+  "assets": [
+    {
+      "name": "case-manager-v0.1.0-rc.2-linux-amd64.tar.gz",
+      "bytes": 31152401,
+      "sha256": "6ddd0ff9583cf0a952dd0adf8cd425012dba27f6f153de3e735d839ae113c434",
+      "git_blob": "d0d16301653f3ad4eb927824d5df2586f227701f"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.2-miniapps.zip",
+      "bytes": 979923,
+      "sha256": "97bd7d4cdfbde56a32d1aa05fec72475ecd2669dae2d5a82162d3b42697198c2",
+      "git_blob": "9003399344b92c8563538cf749043083ff397cf3"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.2-android-debug.apk",
+      "bytes": 43911771,
+      "sha256": "cf4a3ba788e4a4e04923904471330b23f9b8fc681741a895221675632ff91fb4",
+      "git_blob": "daddef21911299349ea10760a52bbc9c15be3d20"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.2-source.zip",
+      "bytes": 9933002,
+      "sha256": "c5e9fd1ae8ec24c844b4de1722ab413e6d5248e3c82837e24c63045f70359ff9",
+      "git_blob": "4333abf98cbc1c17b9e6dfafbfa6b4660d5d9522"
+    },
+    {
+      "name": "case-manager-v0.1.0-rc.2-media.zip",
+      "bytes": 89097550,
+      "sha256": "b3fc452b6070b678a9fd90ac7b1b6650b73d831f2bfe97ffc5237a1abc570856",
+      "git_blob": "35fb2800e66d6314f41f1ce5261f3b162854a0f2"
+    }
+  ],
+  "source_archive": {
+    "total_frozen_git_blobs": 8762,
+    "packaged_git_blob_count": 3062,
+    "complete_application_source": true,
+    "application_source_blobs": 2280,
+    "source_zip_excludes": [
+      "docs/media/",
+      "docs/quality/evidence/"
+    ],
+    "media_zip_contains_all_frozen_media": true,
+    "historical_evidence_remains_in_frozen_git": true,
+    "all_packaged_blob_bytes_match_git_source": true,
+    "compact_source_tree": "68b782994360b5bffea8c04c52ffce80e68f5185"
+  },
+  "android": {
+    "development_only": true,
+    "formal_signed_release": false,
+    "content_checks": 10,
+    "current_map_modules": 173,
+    "native_test_task": "> Task :app:testDebugUnitTest",
+    "native_test_count": 28,
+    "native_test_cached": false,
+    "new_native_test_execution": true,
+    "standalone_jvm_rerun": false
+  },
+  "client_profile": "local; set actual HTTPS API/platform identities and rebuild before server use",
+  "executed_this_increment": [
+    "Linux amd64 cross-build, Web and secretary runtime packaging",
+    "WeChat/Douyin local builds",
+    "Android development bundle/APK and native artifact inspection",
+    "Server archive inspect, exact source archive reconstruction and expanded private-material scan"
+  ],
+  "retained_not_reexecuted": {
+    "increment": 136,
+    "web_tests": 452,
+    "shared_mobile_tests": 537,
+    "native_http_pg_suites": 7,
+    "native_passing_records": 42,
+    "full_backend_and_runtime_increment": 121,
+    "screenshots_video_gif_increment": 136
+  },
+  "deferred": [
+    "Full backend/runtime regression and additional browser journeys",
+    "Persistent development PG100-to103 upgrade",
+    "Real Linux, production PG, OSS/R2, Codex, TG and platform acceptance",
+    "Formal Android signature/publication and complete current-scope acceptance"
+  ],
+  "excluded_by_user": [
+    "Real-device verification",
+    "Network performance/live120GB special",
+    "Historical migration/disaster recovery",
+    "AI fee controls"
+  ],
+  "remaining_work_packages": 23,
+  "eight_skills_status": "draft",
+  "linux_executed": false,
+  "deployed": false,
+  "production_ready": false,
+  "github_release_page_created": false,
+  "github_release_api_status": "Not retried; previous stored account returned HTTP403/suspended. SSH delivery only.",
+  "first_freeze_unchanged": {
+    "tag": "v0.1.0-rc.1",
+    "source_commit": "a95c6afbd0e76684a64dc641c6abe598ad625277",
+    "artifact_commit": "8ddb3f7a98a24910af49ede2a6c8b8c744d50973"
+  }
+}

@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 冻结交付137 / Frozen delivery137
+
+本轮仅封装已固定的业务源码，不改变页面；保留136及更早截图、MP4、GIF原始字节，没有新页面录制。[完整媒体包与摘要](../releases/v0.1.0-rc.2/README.md)来自冻结提交全部媒体文件，不能写成137新增交互或真机证据。
+
+No UI changed in this packaging increment. Existing screenshots, videos and GIFs retain their exact bytes and original execution claims; the new media archive is a download convenience, not a new capture. [构建与延期记录](../quality/137-frozen-candidate-verification.md)。
+
 ## 增量136 · 原件清理重新授权 / Original cleanup reauthorization
 
 三张实际Web截图：[停止的部分结果](screenshots/retirement-reauthorization-web-stopped.png)、[人工核对](screenshots/retirement-reauthorization-web-review.png)、[持久授权历史](screenshots/retirement-reauthorization-web-history.png)。[静音MP4](videos/retirement-reauthorization-web.mp4)记录认证后的真实重新授权提交与刷新；[六秒GIF](gifs/retirement-reauthorization-web.gif)明确为三张真实截图导览。

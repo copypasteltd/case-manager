@@ -1,0 +1,9 @@
+{
+  "status": "not_published",
+  "reason": "The exact full-Git source ZIP also contained large historical evidence archives/screenshots and exceeded the Git asset bound. Keep complete source in the immutable Git tag; the compact convenience source ZIP excludes docs/media and docs/quality/evidence. All app source, tests, lockfiles and development guides remain included; the media ZIP stays separate.",
+  "oversize_bytes": 307800470,
+  "oversize_sha256": "4932af4c274d6e8f980a69610ccd35fc74967ac3a36d088474c4ffcc637e940b",
+  "seal_script_sha256": "1fa399521e263748e8eb3ed17d037d9ef4533a8cf4bc3d02388551d404369fcf",
+  "application_source_modified": false,
+  "business_checks_repeated": false
+}

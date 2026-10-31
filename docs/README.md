@@ -1,8 +1,24 @@
 # CopyPaste 内部管理平台文档中心
 
+## 冻结交付137 · v0.1.0-rc.2
+
+已将增量134–136纳入新的冻结候选：Linux服务器／Web／秘书运行器、微信／抖音小程序和Android开发包统一到业务源码 `40cd118`、结构103。源码包包含该提交全部应用源码、测试、依赖锁与开发文档；正式媒体目录另包提供，历史验证大文件保留在完整Git标签中。首版 `v0.1.0-rc.1` 的标签与下载保持不变。
+
+[下载、SHA-256与使用步骤](releases/v0.1.0-rc.2/README.md) · [本轮交付及全部23项余项](delivery/05-functional-closure-137.md) · [实际构建与延期验证](quality/137-frozen-candidate-verification.md)
+
+本轮重新构建实际产物并检查源码／包内容，复用136的业务检查和真实页面媒体，完整回归及新增页面录制延期。APK为开发签名、移动产物使用本地API；接入服务器须配置真实HTTPS API／平台身份后重建。开发库仍100，运行此后端前正常升级101–103；真实云／模型／TG／Linux／平台／生产接入继续开放。23工作包（14 P0／9 P1）、五项移出及八项draft Skill不变。
+
+## Frozen delivery137 · v0.1.0-rc.2
+
+The new candidate includes increments134–136 at business source `40cd118`, schema103: native Linux server/Web/secretary runtime, WeChat/Douyin builds and a new Android development APK. The source archive includes all application source, tests, lockfiles and development guides. The published media directory has its own archive; large historical evidence remains available in the complete frozen Git tag. The first `v0.1.0-rc.1` tag and downloads remain immutable.
+
+[Downloads, SHA-256 and usage](releases/v0.1.0-rc.2/README.md) · [This delivery and all23 remaining packages](delivery/05-functional-closure-137.md) · [Fresh builds and deferred checks](quality/137-frozen-candidate-verification.md)
+
+Artifacts and source identity are checked freshly; increment136 business checks and actual media are retained, not rerun. Full regression and new browser recordings are deferred. Android is development-signed; mobile builds use the local API profile. Configure the actual HTTPS API and platform identities and rebuild before server use. Development PostgreSQL remains schema100; apply normal upgrades101–103 for this backend. Real integrations and formal production acceptance remain open:23 packages (14 P0/9 P1), five exclusions and eight draft Skills.
+
 **首个冻结候选：[v0.1.0-rc.1](releases/v0.1.0-rc.1/README.md)。** 源码标签、下载摘要、部署步骤与延期验证统一记录。 服务器、两小程序及Android开发包已封存：[下载与SHA-256清单](https://github.com/copypasteltd/case-manager/tree/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1)。
 
-## 当前main：增量136 · 原件清理重新授权
+## 增量136 · 原件清理重新授权
 
 四端已接通原批准会话失效后的明确恢复：所有剩余任务停止后，有权限的员工核对固定摘要、剩余原件、不可逆影响和操作依据，完成近期MFA，重新授权并排队剩余项。初次批准与观察期、已确认结果和永久停用屏障保留；新的授权历史只追加。后续再次退出／撤权仍会安全停止。
 
@@ -10,7 +26,7 @@
 
 关键验证见下方记录：Web452项、共享移动537项及类型／Web／两小程序构建；原生HTTP／PG7组42条覆盖重新授权及既有原件清理，并有真实Web提交／读回。整套回归、新移动浏览器旅程及Android包本轮延期；开发库仍100，新后端需正常升级101–103。冻结`v0.1.0-rc.1`保持原下载，不包含136。仍23个工作包（14 P0／9 P1）、五项移出、八项draft Skill，实际云／模型／TG／Linux／平台／生产接入继续开放。
 
-## Current main: increment136 · Original cleanup reauthorization
+## Increment136 · Original cleanup reauthorization
 
 All four client sources now let a currently authorized human explicitly adopt a fixed stopped remainder after an earlier approval loses its session or authority. A bounded reason, irreversible-impact acknowledgement and recent MFA are required. Only remaining items receive new execution generations. The initial observed approval, confirmed results and permanent barriers remain unchanged; renewed authorization history is append-only. Later logout or revocation still stops execution.
 

@@ -1,8 +1,16 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+## Frozen delivery137 · v0.1.0-rc.2
+
+The new candidate includes increments134–136 at business source `40cd118`, schema103: native Linux server/Web/secretary runtime, WeChat/Douyin builds and a new Android development APK. The source archive includes all application source, tests, lockfiles and development guides. The published media directory has its own archive; large historical evidence remains available in the complete frozen Git tag. The first `v0.1.0-rc.1` tag and downloads remain immutable.
+
+[Downloads, SHA-256 and usage](releases/v0.1.0-rc.2/README.md) · [This delivery and all23 remaining packages](delivery/05-functional-closure-137.md) · [Fresh builds and deferred checks](quality/137-frozen-candidate-verification.md)
+
+Artifacts and source identity are checked freshly; increment136 business checks and actual media are retained, not rerun. Full regression and new browser recordings are deferred. Android is development-signed; mobile builds use the local API profile. Configure the actual HTTPS API and platform identities and rebuild before server use. Development PostgreSQL remains schema100; apply normal upgrades101–103 for this backend. Real integrations and formal production acceptance remain open:23 packages (14 P0/9 P1), five exclusions and eight draft Skills.
+
 **First frozen candidate: [v0.1.0-rc.1](releases/v0.1.0-rc.1/README.md).** Exact source tag, download hashes, deployment steps and deferred checks are recorded together. Linux server, two miniapps and Android development artifacts are sealed: [downloads and SHA-256](https://github.com/copypasteltd/case-manager/tree/8ddb3f7a98a24910af49ede2a6c8b8c744d50973/docs/releases/v0.1.0-rc.1).
 
-## Current main: increment136 · Original cleanup reauthorization
+## Increment136 · Original cleanup reauthorization
 
 All four client sources now let a currently authorized human explicitly adopt a fixed stopped remainder after an earlier approval loses its session or authority. A bounded reason, irreversible-impact acknowledgement and recent MFA are required. Only remaining items receive new execution generations. The initial observed approval, confirmed results and permanent barriers remain unchanged; renewed authorization history is append-only. Later logout or revocation still stops execution.
 

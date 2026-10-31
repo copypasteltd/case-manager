@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量137优先冻结交付：`v0.1.0-rc.2` 固定136业务源码与结构103，重新生成服务器／两小程序／Android开发产物，并提供完整源码与文档证据、独立媒体两个互补压缩包。原始业务检查／媒体复用，完整回归及额外页面验证延期；首冻不动、开发库100保留。23 active（14 P0／9 P1）、5 excluded及八项draft Skill不变，真实集成／生产验收继续开放。见[冻结交付](../development/137-frozen-candidate-delivery.md)、[实际构建核验](../quality/137-frozen-candidate-verification.md)和[本轮及全部23项](05-functional-closure-137.md)。
+
 增量136：GAP-05／18已补原件清理重新授权：当前人近期MFA、全部剩余项固定修订、来源／制度／保护复核、不可变授权链、下一轮排队和既有成功结果保留。原批准失效后可明确续作，后续撤权仍停止；不再将该子流程列为待开发。首个冻结`v0.1.0-rc.1`不动，23 active（14 P0／9 P1）、5 excluded、八项draft Skill保持。见[实现与使用](../development/136-retirement-reauthorization.md)、[关键检查及延期](../quality/136-retirement-reauthorization-verification.md)和[本轮及全部23项](05-functional-closure-136.md)。
 
 增量135：GAP-03／18补齐应收合同异币向外退回的人工本金／实际付出归属、准确现金预留与项目报表、部分解除尾差、固定核对及全额资金冲销。4组原生52条、Web444项及共享移动529项关键检查通过；本轮是main后续源码，不移动首个冻结`v0.1.0-rc.1`。仍23 active（14 P0／9 P1）、5 excluded、八项draft Skill。见[实现与使用](../development/135-receivable-foreign-returns.md)、[关键检查与延期](../quality/135-receivable-foreign-returns-verification.md)和[本轮及全部23项](05-functional-closure-135.md)。
