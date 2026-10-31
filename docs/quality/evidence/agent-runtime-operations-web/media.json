@@ -1,0 +1,30 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/agent-runtime-operations-web-inventory.png",
+      "sha256": "ac26d40a5ca30bdaac01922a7a2be316cd23cdb62b57158173e964b0181b38e4"
+    },
+    {
+      "file": "docs/media/screenshots/agent-runtime-operations-web-detail.png",
+      "sha256": "ae6dbb7ff431afab2237c5672e4a3d16105785fa14cdd581d05c36efbc8105c6"
+    },
+    {
+      "file": "docs/media/screenshots/agent-runtime-operations-web-receipt.png",
+      "sha256": "edc7cfc7ded8dcbe6426c296a274a83c4b5e7a8c237032b5723a45db4588a849"
+    }
+  ],
+  "recording": {
+    "name": "agent-runtime-operations-web",
+    "frame_count": 10,
+    "duration_ms": 2023,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/agent-runtime-operations-web/frames.json",
+    "manifest_sha256": "4252aa392507e542dadd1dfce9c21fca2e4e8e3b7ac5d69eeef28d7662d08ead"
+  },
+  "credentials_excluded": true,
+  "synthetic_data": true
+}

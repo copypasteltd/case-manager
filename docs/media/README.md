@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量141 · 秘书运行配置 / Secretary runtime configuration
+
+[台账](screenshots/agent-runtime-operations-web-inventory.png) · [当前任务影响](screenshots/agent-runtime-operations-web-detail.png) · [停用回执](screenshots/agent-runtime-operations-web-receipt.png) · [实际视口MP4](videos/agent-runtime-operations-web.mp4) · [三截图导览GIF](gifs/agent-runtime-operations-web.gif)。
+
+隔离合成资料、实际认证Web和原生耐久PG；录屏从登录后开始，只记录配置核对／停用／回执，不含密码、MFA秘密或真实业务。GIF是三张实际截图各两秒，不标作操作录屏；没有真实模型／生产验收。
+
 ## 增量140 · 组织TG入站调度 / Organization inbound operations
 
 [台账](screenshots/telegram-inbox-web-inventory.png) · [准确调度历史](screenshots/telegram-inbox-web-detail.png) · [持久撤回回执](screenshots/telegram-inbox-web-receipt.png) · [实际视口MP4](videos/telegram-inbox-web.mp4) · [三截图导览GIF](gifs/telegram-inbox-web.gif)。

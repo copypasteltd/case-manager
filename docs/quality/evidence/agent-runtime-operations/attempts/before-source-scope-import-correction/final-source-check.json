@@ -1,0 +1,92 @@
+{
+  "passed": false,
+  "checks": [
+    {
+      "name": "selected native HTTP and execution suites actually ran at current backend sources",
+      "passed": true
+    },
+    {
+      "name": "typecheck current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "web-build current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "weapp-build current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "douyin-build current portable client sources",
+      "passed": true
+    },
+    {
+      "name": "actual Web inventory retirement readback with all owned resources closed",
+      "passed": false
+    },
+    {
+      "name": "current screenshot video GIF hashes",
+      "passed": true
+    },
+    {
+      "name": "visual review matches current media",
+      "passed": true
+    },
+    {
+      "name": "acceptance applicability remains explicit",
+      "passed": true
+    },
+    {
+      "name": "older evidence media and applied migrations remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "no private fixture or native cluster remains owned",
+      "passed": true
+    },
+    {
+      "name": "frozen candidates retain exact business commits",
+      "passed": true
+    },
+    {
+      "name": "eight Skill manifests remain draft",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/agent-runtime-operations/native-final.json": "dbd7eb587dc19e21f12bac0e10d72cb148f8abae0f735fe06a4f4cc7daa0a2b2",
+    "docs/quality/evidence/agent-runtime-operations/media.json": "4165dfd79de86cf415947434968a4f07993e50d122963cc39d329e52b1a2a4be",
+    "docs/quality/evidence/agent-runtime-operations/visual-review.json": "fef50a4e280b52705b9a9038b918c8448ccca73dbd5dcd77bfb58093fe35e583",
+    "docs/quality/evidence/agent-runtime-operations/native-cluster-closed.json": "31899d9b3244b7157ebd92323e054b60e4e1a42b3a065a06639dd416a25fb7db",
+    "docs/quality/evidence/agent-runtime-operations/acceptance-applicability-check.json": "f15c32163d4df267667abac2191c2c8e56060fe41fd6dd98c81e70f721bd08f7",
+    "docs/quality/evidence/agent-runtime-operations/typecheck-2.json": "48e5c429f6d74e9ff660c3c1df6749483d652beb3febfd64760657a907c551db",
+    "docs/quality/evidence/agent-runtime-operations/web-build-2.json": "471f08040e5c8568866825ec42f892bfd3fabb7cf6f6d20829418545ac5b7805",
+    "docs/quality/evidence/agent-runtime-operations/weapp-build-2.json": "fe122aa73422a811f854e13fab7507c674def07ae822ada0f61221e189a7d1db",
+    "docs/quality/evidence/agent-runtime-operations/douyin-build-2.json": "0f17aba8c639cec38ca39d86bb87991e674cae3f5053371ee1a1e60d5da7dc97",
+    "docs/quality/evidence/agent-runtime-operations-web/result.json": "1f53a59e2e7fa06b3a8dce89fff397782c92be1fa80c90e80ef702b7d4aabf5b",
+    "docs/quality/evidence/agent-runtime-operations-web/source-manifest.json": "f30c3940fe9efaaafbb8e8c942964f953160a75091f350dd5f6f27a4d6294dec",
+    "docs/quality/evidence/agent-runtime-operations-web/business-proof.json": "7f3d7cf0d62383326c314e2991f3e2fd7c19587ac22d5a322fc5bb33a99863ca",
+    "docs/quality/evidence/telegram-inbox/final-source-check.json": "55f0e85dd0cde33afd5e7596acff9e59c08173d12e3c5f803ab5035afb740c1c"
+  },
+  "retained": {
+    "base_commit": "85c0bc407b5769b6c81e0275df5ff84a799f933c",
+    "full_backend_increment": 121,
+    "runtime_increment": 121,
+    "business_full_client_increment": 136,
+    "android_artifact_increment": 137,
+    "android_business_source_increment": 136,
+    "android_schema": 103,
+    "previous_proof_and_media_reexecuted": false,
+    "current_android_apk_built": false
+  },
+  "interaction_source_sha256": "5edb519397d3320f0cf3650d733853e9ec80bc6d1dff4f8e00b9a09870d95522",
+  "verification_script_sha256": "22fbf46461bdaa5fa30cb6d581f7bdc30b44518d252b740d238b1d21719eb280",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "new_android_apk": false,
+  "full_regression": false,
+  "virtualization_used": false
+}

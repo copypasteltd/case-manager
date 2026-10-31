@@ -1,0 +1,78 @@
+{
+  "passed": false,
+  "test_process_finished": true,
+  "test_results": [
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/one_live_claim_and_exact_credentials_cannot_start_without_verified_native_confinement",
+      "Elapsed": 0.12
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/real_MCP_reads_have_bounded_schemas_deduplicated_receipts_and_reject_invented_references",
+      "Elapsed": 0.14
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/reply_result_event_audit_outbox_and_queue_success_roll_back_together",
+      "Elapsed": 0.06
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/read_source_changes_revoke_later_receipts_and_suppress_a_stale_answer",
+      "Elapsed": 0.05
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/final_evidence_check_and_response_commit_fence_concurrent_business_source_updates",
+      "Elapsed": 0.22
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/cancel_reports_do_not_confirm_teardown_until_the_trusted_executor_exits",
+      "Elapsed": 0.12
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/expired_lease_interrupts_without_retrying_a_model_or_inventing_confirmed_cancellation",
+      "Elapsed": 0.06
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/bounded_tool_budget_and_search_scope_do_not_allow_writes_or_other_projects",
+      "Elapsed": 0.12
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/controller_consumes_queue_and_settles_a_verified_reply_without_a_provider",
+      "Elapsed": 0.05
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/running_controller_observes_cancel_and_waits_for_its_executor_to_exit",
+      "Elapsed": 0.05
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController/current_audience_authorization_changes_stop_execution_even_after_native_start",
+      "Elapsed": 0.04
+    },
+    {
+      "Action": "pass",
+      "Test": "TestAgentExecutionController",
+      "Elapsed": 5.89
+    },
+    {
+      "Action": "fail",
+      "Test": "TestAgentRuntimeOperations/web_profile_retirement_and_replay",
+      "Elapsed": 0.11
+    },
+    {
+      "Action": "fail",
+      "Test": "TestAgentRuntimeOperations",
+      "Elapsed": 6.29
+    }
+  ],
+  "private_log_sha256": "d6ff01814d87a3273a4865c734c6bd6fd49f411a0fabc910bede343070b7f1f1",
+  "runner_error": "Completed native cluster cleanup hit an existing private closed-handle filename; final report emission was interrupted. This diagnostic reconstructs terminal test events only, not a source-bound pass."
+}

@@ -1,5 +1,15 @@
 # CopyPaste 内部管理平台文档中心
 
+## 增量141 · 秘书运行配置 / Secretary runtime operations
+
+进入“秘书运行配置”→按任务／状态筛选→核对准确配置、技术限制及当前活动任务→近期MFA并明确确认停用影响→查看永久回执与历史。活动任务改变时必须重新核对；停用仅阻止后续使用，不声称进程已退出或已经回滚业务。原配置不能重新启用，新的配置仍由专用部署身份核验后安装。
+
+Open **Secretary runtime configuration**, filter installed profiles and review the exact profile plus current task impact. An authorized human with recent MFA can permanently retire the reviewed profile. Concurrent task changes require a fresh review. Retirement does not claim process teardown or business rollback; deployment-only installation and immutable profile identities remain enforced. Private conversations, credentials and operator prose stay outside this organization view.
+
+主线141／结构107；开发PG仍100。四端源码、关键HTTP／PG、类型／Web及两小程序构建和实际Web演示单独留证；完整回归、新移动UI旅程与Android包延期。Frozen rc.2/APK137 retain business136/schema103 and do not include138–141. Both frozen tags,23 open packages, five exclusions and eight draft Skills remain unchanged; real model/Linux/cloud/platform/production acceptance stays open.
+
+[使用与接口 / Usage/API](development/141-secretary-runtime-operations.md) · [关键验证 / Checks](quality/141-secretary-runtime-verification.md) · [本轮及全部23项 / All remaining work](delivery/05-functional-closure-141.md) · [页面 / Screenshot](media/screenshots/agent-runtime-operations-web-receipt.png) · [MP4](media/videos/agent-runtime-operations-web.mp4) · [截图导览GIF](media/gifs/agent-runtime-operations-web.gif)
+
 ## 增量140 · 组织TG入站调度 / Organization TG inbound operations
 
 Telegram接入→组织TG入站调度→按状态／任务／群入口筛选→查看请求路由、等待原因与完整分页历史。经办人完成近期MFA，核对准确请求与版本后，可以撤回尚未创建秘书任务的请求；调度器同时处理时按事务顺序完成或返回冲突。请求正文、私人TG身份、绑定证明、秘书结果与自由文本备注不进入组织台账。

@@ -22,7 +22,7 @@ type BootstrapResult struct {
 
 // System administrators receive configuration authority. Business content
 // authority must be granted separately; even bootstrap does not bypass ACLs.
-var systemActions = []string{"user.invite", "user.disable", "user.password_reset", "user.read", "role.read", "role.assign", "policy.manage", "config.manage", "skill.release", "file.import", "service.manage", "audit.read", "audit.export", "telegram.operations.read", "telegram.operations.reconcile", "telegram.inbox.read", "telegram.inbox.withdraw"}
+var systemActions = []string{"user.invite", "user.disable", "user.password_reset", "user.read", "role.read", "role.assign", "policy.manage", "config.manage", "skill.release", "file.import", "service.manage", "audit.read", "audit.export", "telegram.operations.read", "telegram.operations.reconcile", "telegram.inbox.read", "telegram.inbox.withdraw", "agent.runtime.read", "agent.runtime.retire"}
 var projectActions = []string{"project.create", "project.read", "project.update", "project.manage_members", "project.archive", "project.reopen",
 	"task.read", "task.create", "task.update", "task.assign", "task.transition", "task.review", "task.reopen",
 	"milestone.read", "milestone.create", "milestone.update", "deliverable.read", "deliverable.create", "deliverable.submit", "deliverable.decide",
@@ -79,6 +79,8 @@ func Bootstrap(ctx context.Context, db platform.DBTX, input BootstrapInput) (Boo
 		mfa       bool
 		actions   []string
 	}{
+		{"agent_runtime_reader", "秘书运行配置查阅人", false, []string{"agent.runtime.read"}},
+		{"agent_runtime_manager", "秘书运行配置停用人", true, []string{"agent.runtime.read", "agent.runtime.retire"}},
 		{"system_admin", "系统管理员", true, systemActions}, {"project_manager", "项目负责人", false, projectActions},
 		{"project_change_reader", "项目变更与预算查阅人", false, []string{"change.read", "budget.read"}},
 		{"project_closeout_reader", "项目结项核查查阅人", false, closeoutReadActions},

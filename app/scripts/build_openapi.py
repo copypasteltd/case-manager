@@ -2306,6 +2306,19 @@ resource_ingest=PATHS["/resource-sources/{source}/observations"]["post"]
 resource_ingest["security"]=[]
 resource_ingest["parameters"]=[{"name":"source","in":"path","required":True,"schema":ID},{"name":"X-CP-Status-Signature","in":"header","required":True,"schema":{"type":"string","minLength":88,"maxLength":88},"description":"Ed25519 signature over CP-HOST-V1 newline lower-case source UUID newline exact JSON bytes. Cookies, Origin and Authorization headers are rejected."}]
 
+profile_op={**profile,"version":VERSION,"state":enum("active","retired"),"telegram_configuration_sha256":nullable(HASH),"installed_by":ID,"created_at":TIME}
+add("AgentProfileOperation",profile_op,tuple(profile_op))
+profile_event={"id":ID,"version":VERSION,"state":enum("active","retired"),"source":enum("installed","retired","retained_baseline"),"actor_id":nullable(ID),"created_at":TIME}
+add("AgentProfileEvent",profile_event,tuple(profile_event))
+profile_impact={**{k:{"type":"integer","minimum":0} for k in ("queued","running","awaiting_approval","committing")},"active_basis_sha256":HASH}
+add("AgentProfileImpact",profile_impact,tuple(profile_impact))
+add("AgentProfileDetails",{"item":ref("AgentProfileOperation"),"impact":ref("AgentProfileImpact"),"history":array(ref("AgentProfileEvent"),minItems=1)},("item","impact","history"))
+add("AgentProfileRetire",{**EXPECTED,"active_basis_sha256":HASH,"reviewed_impact":{"const":True},"reason":NAME},("expected_version","active_basis_sha256","reviewed_impact","reason"))
+operation("/agent/runtime-profiles","get","listAgentProfileOperations","AgentProfileOperation",listing=True)
+PATHS["/agent/runtime-profiles"]["get"]["parameters"].append({"name":"skill_id","in":"query","schema":enum("project-create","project-update","file-update","information-organize","oa-assist","subscription-review","project-briefing","incident-summary")})
+operation("/agent/runtime-profiles/{id}","get","getAgentProfileOperation","AgentProfileDetails")
+operation("/agent/runtime-profiles/{id}/retire","post","retireAgentProfile","AgentProfileDetails","AgentProfileRetire")
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

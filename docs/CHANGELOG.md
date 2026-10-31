@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## Increment141 · Secretary runtime profile operations
+
+- Added organization profile inventory, strict authorized pagination, immutable configuration history and current active-task impact across Web and shared WeChat/Douyin/Android source.
+- Added explicit irreversible human retirement with independent read/retire roles, recent MFA, exact profile/event version and active-run basis, idempotency and atomic profile/receipt/journal/audit/outbox rollback. Private conversations and operator prose remain outside metadata.
+- Schema107 preserves deployment-only installation and existing profile immutability; a narrow receipt trigger performs retirement without giving the application profile UPDATE privileges. Existing installations get honestly observed baselines.
+- 关键原生HTTP／PG及执行器、客户端类型／构建和真实Web演示单独留证；完整回归、新移动UI旅程和新Android包延期。失败尝试保留，生产与真实模型等验收继续开放；两冻结标签与APK137原出处保持，23工作包、五项移出和八项draft Skill不变。
+- [Usage/API](development/141-secretary-runtime-operations.md) · [Checks](quality/141-secretary-runtime-verification.md) · [All remaining work](delivery/05-functional-closure-141.md).
+
 ## Increment140 · Organization TG inbound operations
 
 - Added organization metadata inventory, strict filter-bound pagination, current wait/configuration diagnostics and complete immutable request history across Web and the shared WeChat/Douyin/Android source.

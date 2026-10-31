@@ -30,11 +30,16 @@ import { ConversationContractBody, ContractBodyReview } from './contract-bodies'
 import { ConversationFileCreate } from './file-creates';
 import { fileUpdateReceipt, fileCreateReceipt, type FileUpdate, type FileCreate } from '@copypaste/contracts/file-update';
 import { mutationReceipt, type Mutation } from '@copypaste/contracts/mutation';
+import AgentRuntime from './runtime';
 type Conversation = Schemas['Conversation'];
 type SelectedSource=Pick<Schemas['ConversationContextView'],'id'|'title'|'resource_version'|'version_id'>&{type:Schemas['AgentSourceSnapshot']['type']};
 const navigate = (kind: string, id?: string) => void Taro.redirectTo({ url: '/pages/secretary/index?kind=' + kind + (id ? '&id=' + identifier(id) : '') });
 
 export default function SecretaryPage() {
+  const route = useRouter();
+  return route.params.kind === 'runtime' ? <AgentRuntime /> : <SecretaryWorkspace />;
+}
+function SecretaryWorkspace() {
   const params = useRouter().params, [editing, setEditing] = useState<'title' | 'state' | 'members'>();
   useDidHide(() => setEditing(undefined));
   const page = usePage(async scope => {
@@ -59,7 +64,7 @@ export default function SecretaryPage() {
 function Conversations({ me }: { me: Schemas['Me'] }) {
   const [search, setSearch] = useState(''), [q, setQ] = useState(''), [state, setState] = useState('active'), [type, setType] = useState('');
   const query = useCollection<Conversation>('/conversations?limit=20&state=' + state + '&type=' + type + '&q=' + encodeURIComponent(q));
-  return <>{me.actions.includes('conversation.create') && <Action onClick={() => navigate('new')}>新建会话</Action>}
+  return <>{me.actions.includes('agent.runtime.read') && <Action secondary onClick={() => navigate('runtime')}>秘书运行配置</Action>}{me.actions.includes('conversation.create') && <Action onClick={() => navigate('new')}>新建会话</Action>}
     <TextField name='conversation-search' label='查找会话标题' value={search} onChange={setSearch} disabled={false} /><Action secondary onClick={() => { setQ(search.trim()); query.reload(); }}>查找会话</Action>
     <SelectField label='会话阶段' value={state} options={[[ 'active', '使用中' ], [ 'archived', '已归档' ], [ '', '全部可见会话' ]]} onChange={setState} disabled={false} />
     <SelectField label='会话范围' value={type} options={[[ '', '全部可见范围' ], [ 'private', '个人会话' ], [ 'project', '项目共享会话' ]]} onChange={setType} disabled={false} />

@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T06:03:59.401175+00:00",
+  "encoder_script_sha256": "6bcc1d2dfa3eb1210e6ecc6d0e35fe9fbf34912eab07836aa5ec5785ac2955af",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "fa91dfad9dcbeba32e3cf814526b2eb65079df4fe492f7177f50d68af2574e19",
+      "build_source_sha256": "b579fd1ebf2c635958fcd48b00f32681647305ecdb054f1a32ae968a31cf5151",
+      "capture_manifest": "docs/quality/evidence/agent-runtime-operations/web-capture-manifest.json",
+      "capture_manifest_sha256": "bc22c21d3b3347f72a90478e748fa66729bea324eac68277b75fe4d2d86d24a3",
+      "capture_frame_count": 10,
+      "capture_duration_ms": 2031,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/agent-runtime-operations-web-inventory.png",
+          "sha256": "08f338a69a41fb44e9ba0b34973905f78b619553d64c8259222d0500e97dd289"
+        },
+        {
+          "file": "docs/media/screenshots/agent-runtime-operations-web-detail.png",
+          "sha256": "b12d9bbc4ac471c11ca4cd10c6f9f4c4a98da7e60f45e86914800acad6dcb300"
+        },
+        {
+          "file": "docs/media/screenshots/agent-runtime-operations-web-receipt.png",
+          "sha256": "78878da1681bfe254dc168b71ef43209c17f002fd7a5aebe93302d6ff600e371"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "22",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/agent-runtime-operations-web.mp4",
+          "sha256": "61ca570a0681c86bdf948b8245fcb9f1a0957426dcc4d2bc3492e613af751e5d",
+          "bytes": 251716
+        },
+        {
+          "file": "docs/media/gifs/agent-runtime-operations-web.gif",
+          "sha256": "2f8de3705604dd2773340eb6a6fe2af5d243fa67e4345a2d7d8248c858eb4638",
+          "bytes": 203230
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web organization secretary runtime metadata and profile retirement. MP4 records the explicit profile retirement and durable history; GIF is a six-second three-screenshot tour. No Bot API, model, real group, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/agent-runtime-operations-web-inventory.png",
+      "sha256": "08f338a69a41fb44e9ba0b34973905f78b619553d64c8259222d0500e97dd289"
+    },
+    {
+      "file": "docs/media/screenshots/agent-runtime-operations-web-detail.png",
+      "sha256": "b12d9bbc4ac471c11ca4cd10c6f9f4c4a98da7e60f45e86914800acad6dcb300"
+    },
+    {
+      "file": "docs/media/screenshots/agent-runtime-operations-web-receipt.png",
+      "sha256": "78878da1681bfe254dc168b71ef43209c17f002fd7a5aebe93302d6ff600e371"
+    },
+    {
+      "file": "docs/media/videos/agent-runtime-operations-web.mp4",
+      "sha256": "61ca570a0681c86bdf948b8245fcb9f1a0957426dcc4d2bc3492e613af751e5d",
+      "bytes": 251716
+    },
+    {
+      "file": "docs/media/gifs/agent-runtime-operations-web.gif",
+      "sha256": "2f8de3705604dd2773340eb6a6fe2af5d243fa67e4345a2d7d8248c858eb4638",
+      "bytes": 203230
+    }
+  ]
+}

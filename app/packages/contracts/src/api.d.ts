@@ -6364,6 +6364,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/agent/runtime-profiles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listAgentProfileOperations */
+        get: operations["listAgentProfileOperations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/agent/runtime-profiles/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getAgentProfileOperation */
+        get: operations["getAgentProfileOperation"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/agent/runtime-profiles/{id}/retire": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** retireAgentProfile */
+        post: operations["retireAgentProfile"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -15298,6 +15349,69 @@ export interface components {
                 items: components["schemas"]["ResourceHealthEvent"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        AgentProfileOperation: {
+            /** Format: uuid */
+            id: string;
+            skill_id: string;
+            skill_version: string;
+            skill_sha256: string;
+            runtime_version: string;
+            configuration_sha256: string;
+            max_input_tokens: number;
+            max_output_tokens: number;
+            max_tool_calls: number;
+            timeout_seconds: number;
+            version: number;
+            /** @enum {string} */
+            state: "active" | "retired";
+            telegram_configuration_sha256: string | null;
+            /** Format: uuid */
+            installed_by: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        AgentProfileEvent: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** @enum {string} */
+            state: "active" | "retired";
+            /** @enum {string} */
+            source: "installed" | "retired" | "retained_baseline";
+            actor_id: string | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        AgentProfileImpact: {
+            queued: number;
+            running: number;
+            awaiting_approval: number;
+            committing: number;
+            active_basis_sha256: string;
+        };
+        AgentProfileDetails: {
+            item: components["schemas"]["AgentProfileOperation"];
+            impact: components["schemas"]["AgentProfileImpact"];
+            history: components["schemas"]["AgentProfileEvent"][];
+        };
+        AgentProfileRetire: {
+            expected_version: number;
+            active_basis_sha256: string;
+            /** @constant */
+            reviewed_impact: true;
+            reason: string;
+        };
+        AgentProfileOperationListResponse: {
+            data: {
+                items: components["schemas"]["AgentProfileOperation"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        AgentProfileDetailsResponse: {
+            data: components["schemas"]["AgentProfileDetails"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -33001,6 +33115,119 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ObservationAckResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listAgentProfileOperations: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                skill_id?: "project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentProfileOperationListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getAgentProfileOperation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentProfileDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    retireAgentProfile: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentProfileRetire"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentProfileDetailsResponse"];
                 };
             };
             400: components["responses"]["Failure"];
