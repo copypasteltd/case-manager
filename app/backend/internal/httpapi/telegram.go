@@ -53,6 +53,24 @@ func (s *Server) telegramRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("POST /v1/me/telegram/requests/{id}/deliveries/{delivery_id}/reconcile", command(s, "TelegramDeliveryReconcile", "TelegramDeliveryResponse", func(ctx context.Context, c core.Command, r *http.Request, in telegram.DeliveryReconcile) (core.Result, error) {
 		return s.telegramService().ReconcileDelivery(ctx, c, r.PathValue("id"), r.PathValue("delivery_id"), in)
 	}))
+	mux.HandleFunc("GET /v1/telegram/operations", read(s, "TelegramOperationListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		for key, values := range r.URL.Query() {
+			if (key != "state" && key != "channel_id" && key != "cursor" && key != "limit") || len(values) != 1 {
+				return nil, core.Invalid("filters", "查询条件无效或重复")
+			}
+		}
+		f, err := filter(r)
+		if err != nil {
+			return nil, err
+		}
+		return s.telegramService().Operations(ctx, a, f.State, r.URL.Query().Get("channel_id"), f.Cursor, f.Limit)
+	}))
+	mux.HandleFunc("GET /v1/telegram/operations/{id}", read(s, "TelegramOperationDetailsResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		return s.telegramService().Operation(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("POST /v1/telegram/operations/{id}/reconcile", command(s, "TelegramOperationReconcile", "TelegramDeliveryResponse", func(ctx context.Context, c core.Command, r *http.Request, in telegram.OperationReconcile) (core.Result, error) {
+		return s.telegramService().ReconcileOperation(ctx, c, r.PathValue("id"), in)
+	}))
 	mux.HandleFunc("GET /v1/telegram/channels", read(s, "TelegramChannelListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, err := filter(r)
 		if err != nil {

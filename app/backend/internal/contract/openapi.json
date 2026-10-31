@@ -1590,6 +1590,287 @@
         }
       }
     },
+    "/telegram/operations": {
+      "get": {
+        "operationId": "listTelegramOperations",
+        "tags": [
+          "telegram"
+        ],
+        "summary": "listTelegramOperations",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "sending",
+                "retry_wait",
+                "sent",
+                "delivery_unknown",
+                "confirmed_sent",
+                "failed",
+                "superseded",
+                "suppressed",
+                "abandoned"
+              ]
+            }
+          },
+          {
+            "name": "channel_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramOperationListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/telegram/operations/{id}": {
+      "get": {
+        "operationId": "getTelegramOperation",
+        "tags": [
+          "telegram"
+        ],
+        "summary": "getTelegramOperation",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramOperationDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/telegram/operations/{id}/reconcile": {
+      "post": {
+        "operationId": "reconcileTelegramOperation",
+        "tags": [
+          "telegram"
+        ],
+        "summary": "reconcileTelegramOperation",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramDeliveryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelegramOperationReconcile"
+              }
+            }
+          }
+        }
+      }
+    },
     "/telegram/channels": {
       "get": {
         "operationId": "listTelegramChannels",
@@ -43801,6 +44082,328 @@
           "reason"
         ]
       },
+      "TelegramOperation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "progress",
+              "result"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "sending",
+              "retry_wait",
+              "sent",
+              "delivery_unknown",
+              "confirmed_sent",
+              "failed",
+              "superseded",
+              "suppressed",
+              "abandoned"
+            ]
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "reason_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "next_attempt_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bot_id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,15}$"
+          },
+          "channel_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "channel_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "chat_id": {
+            "type": "string",
+            "pattern": "^-[1-9][0-9]{0,15}$"
+          },
+          "topic_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "requester_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "request_state": {
+            "type": "string",
+            "enum": [
+              "awaiting_executor",
+              "dispatched",
+              "withdrawn"
+            ]
+          },
+          "request_channel_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "current_channel_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "channel_state": {
+            "type": "string",
+            "enum": [
+              "active",
+              "paused"
+            ]
+          },
+          "delivery_enabled": {
+            "type": "boolean"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "retry_authorized": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "created_at",
+          "updated_at",
+          "request_id",
+          "run_id",
+          "phase",
+          "state",
+          "attempts",
+          "reason_code",
+          "next_attempt_at",
+          "message_id",
+          "bot_id",
+          "channel_id",
+          "channel_label",
+          "chat_id",
+          "topic_id",
+          "requester_id",
+          "request_state",
+          "request_channel_version",
+          "current_channel_version",
+          "channel_state",
+          "delivery_enabled",
+          "received_at",
+          "retry_authorized"
+        ]
+      },
+      "TelegramOperationEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "sending",
+              "retry_wait",
+              "sent",
+              "delivery_unknown",
+              "confirmed_sent",
+              "failed",
+              "superseded",
+              "suppressed",
+              "abandoned"
+            ]
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "reason_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "state",
+          "attempts",
+          "reason_code",
+          "message_id",
+          "actor_id",
+          "created_at"
+        ]
+      },
+      "TelegramOperationDetails": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/TelegramOperation"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TelegramOperationEvent"
+            },
+            "maxItems": 32
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "item",
+          "events"
+        ]
+      },
+      "TelegramOperationReconcile": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "confirm_sent",
+              "retry_confirmed_not_sent",
+              "abandon"
+            ]
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "reviewed_original_channel": {
+            "const": true
+          },
+          "duplicate_risk_accepted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "action",
+          "message_id",
+          "reason",
+          "reviewed_original_channel",
+          "duplicate_risk_accepted"
+        ]
+      },
       "TelegramChannelRevision": {
         "type": "object",
         "properties": {
@@ -74701,6 +75304,63 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/TelegramDelivery"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "TelegramOperationListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TelegramOperation"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "TelegramOperationDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TelegramOperationDetails"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

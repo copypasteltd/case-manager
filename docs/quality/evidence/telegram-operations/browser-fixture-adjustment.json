@@ -1,0 +1,11 @@
+{
+  "scope": "One fixture assertion only; production Go, SQL, HTTP contract and clients are unchanged after browser execution. A revoked role is hidden with404 by the current ordinary authorization check, before idempotent replay.",
+  "file": "backend/internal/httpapi/telegram_operations_integration_test.go",
+  "before_sha256": "f7db4613f3d47b329acea8275100c87f04999981a82d0c92bf29f1193d31a02e",
+  "after_sha256": "c245463da219ef34dde01d78f33799ecdf9f7547ed398e8a698034750e0ca9d3",
+  "before": "post(d, in, f.bobToken, nil, 412, key)",
+  "after": "post(d, in, f.bobToken, nil, 404, key)",
+  "replacement_count": 1,
+  "application_behavior_changed": false,
+  "browser_reexecuted": false
+}

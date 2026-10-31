@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量139：GAP-07／18补齐组织TG投递元数据查询、准确历史和明确人工对账；独立查阅／处理权限、原群核对、近期MFA、重复风险确认、当前范围／24小时／五次上限、原子审计保留。结构105；四端源码、关键HTTP／PG、类型／构建及实际Web完成。未接真实Bot／模型／生产，APK137及冻结标签原出处不动；23 active（14 P0／9 P1）、5 excluded及八项draft Skill不变。见[使用](../development/139-telegram-delivery-operations.md)、[证据与延期](../quality/139-telegram-operations-verification.md)和[本轮及全部23项](05-functional-closure-139.md)。
+
 增量138：GAP-05／18补齐已完成但未正式提交的人工新文件／替换上传清理，覆盖原上传与全部已知完成晋升对象、目录／上传修订、保留／观察期、MFA批准、永久上传停用、回执和剩余项续作。结构104；只做关键验证，APK137和两个冻结候选保持原出处。仍23 active（14 P0／9 P1）、5 excluded及八项draft Skill。见[使用与设计](../development/138-completed-upload-retirement.md)、[关键检查与延期](../quality/138-completed-upload-retirement-verification.md)和[本轮及全部23项](05-functional-closure-138.md)。
 
 增量137优先冻结交付：`v0.1.0-rc.2` 固定136业务源码与结构103，重新生成服务器／两小程序／Android开发产物，并提供完整源码与文档证据、独立媒体两个互补压缩包。原始业务检查／媒体复用，完整回归及额外页面验证延期；首冻不动、开发库100保留。23 active（14 P0／9 P1）、5 excluded及八项draft Skill不变，真实集成／生产验收继续开放。见[冻结交付](../development/137-frozen-candidate-delivery.md)、[实际构建核验](../quality/137-frozen-candidate-verification.md)和[本轮及全部23项](05-functional-closure-137.md)。

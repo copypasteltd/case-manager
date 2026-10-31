@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## Increment139 · Organization TG delivery operations
+
+- Added organization-scoped metadata lookup and immutable status history with separate human read/reconcile authority across all four client sources.
+- Added explicit original-group review, manual confirmation/abandonment and controlled unknown-outcome retry; preserve recent MFA, exact delivery revision, current recipient scope,24-hour expiry, five-attempt cap, idempotency and atomic audit/outbox. No new Bot API or model disclosure.
+- Schema105 backfills explicit roles/admin actions and paging indexes; prior migrations remain unchanged. Fresh focused native HTTP/PG, client types/builds and actual authenticated Web interaction have source-bound evidence, screenshots, MP4 and a labelled screenshot-tour GIF.
+- 仅修正隔离MFA设置及不符普通契约的测试断言，保留所有失败出处；浏览器后单个412→404断言差异单独封存核对。完整回归、新移动旅程／Android包、开发库升级及真实集成／生产验收延期。两冻结标签与APK137业务136／结构103保持；主线139结构105不在旧包内。
+- [Usage/API](development/139-telegram-delivery-operations.md) · [Checks/deferrals](quality/139-telegram-operations-verification.md) · [All remaining work](delivery/05-functional-closure-139.md).
+
 ## Increment138 · Completed uncommitted upload retirement
 
 - 四端新增目录级人工新文件／替换上传完成草稿盘点和固定清理计划，覆盖上传原件与所有已知完成晋升对象；尚无正式文件时不伪造文件身份。

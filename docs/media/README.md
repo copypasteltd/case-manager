@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量139 · 组织TG投递运维
+
+[列表](screenshots/telegram-operations-web-inventory.png) · [状态历史](screenshots/telegram-operations-web-detail.png) · [持久人工回执](screenshots/telegram-operations-web-receipt.png) · [实际操作MP4](videos/telegram-operations-web.mp4) · [三截图导览GIF](gifs/telegram-operations-web.gif)。
+
+合成群／供应商结果，真实认证Web与原生耐久PG；录屏从登录后开始，展示原群核对与人工确认，不含密码、MFA秘密或真实资料。GIF是三张实际截图各两秒，不标作操作录屏。未调用Bot／模型，不证明真实群投递、移动端或正式生产验收。原始来源及检查见[139验证](../quality/139-telegram-operations-verification.md)。
+
 ## 增量138 · 已完成上传草稿 / Completed upload drafts
 
 三张本轮真实Web截图：[目录盘点](screenshots/completed-upload-retirement-web-inventory.png)、[固定选择及原因](screenshots/completed-upload-retirement-web-selection.png)、[持久观察清单](screenshots/completed-upload-retirement-web-plan.png)。[静音MP4](videos/completed-upload-retirement-web.mp4)记录认证后的显式建单、刷新和读回；[六秒GIF](gifs/completed-upload-retirement-web.gif)明确为三张实际截图导览。

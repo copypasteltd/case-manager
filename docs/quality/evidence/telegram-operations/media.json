@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T04:46:37.687655+00:00",
+  "encoder_script_sha256": "554dac2717e2b352ca09b7c1b6a2a97eaf692283eea6600b4c576e2129e2e003",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "7ad443e7b1b9b6f844300e77384544c12e00498d116259cd770ae6112690acb0",
+      "build_source_sha256": "bf3a7ad900ae24ceb8dc0488244ce53fe345dd9c62f3c178c94b1b5b28e9564a",
+      "capture_manifest": "docs/quality/evidence/telegram-operations/web-capture-manifest.json",
+      "capture_manifest_sha256": "fb644c7c679de93b2732608ef087ab6b587962010589d7066252cbc12a03f02d",
+      "capture_frame_count": 10,
+      "capture_duration_ms": 2030,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/telegram-operations-web-inventory.png",
+          "sha256": "32b01ca328b52c32746cb71bf55858bbab9b8f1f9bc580f699d852beadf3c2a3"
+        },
+        {
+          "file": "docs/media/screenshots/telegram-operations-web-detail.png",
+          "sha256": "60382abc4093181b5ef97bf5dc1e8f298b79cf34f657ded915c451b01a5a8dd1"
+        },
+        {
+          "file": "docs/media/screenshots/telegram-operations-web-receipt.png",
+          "sha256": "bbc45e52c2e6ce1ada9da0db28cec43dcb5325d3840bf59cd159d47719ca605f"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "22",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/telegram-operations-web.mp4",
+          "sha256": "89ade5527071b3ed6597199f2ef20b9384a2ad2acdb6efc1c14659112d4cdfa6",
+          "bytes": 179146
+        },
+        {
+          "file": "docs/media/gifs/telegram-operations-web.gif",
+          "sha256": "870292c8cf6483394e1aca44068284f31818c3fe30d006683c8745ef4aafa46a",
+          "bytes": 199209
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web organization TG metadata and human reconciliation. MP4 records the explicit confirmation and durable history; GIF is a six-second three-screenshot tour. No Bot API, model, real group, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-inventory.png",
+      "sha256": "32b01ca328b52c32746cb71bf55858bbab9b8f1f9bc580f699d852beadf3c2a3"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-detail.png",
+      "sha256": "60382abc4093181b5ef97bf5dc1e8f298b79cf34f657ded915c451b01a5a8dd1"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-receipt.png",
+      "sha256": "bbc45e52c2e6ce1ada9da0db28cec43dcb5325d3840bf59cd159d47719ca605f"
+    },
+    {
+      "file": "docs/media/videos/telegram-operations-web.mp4",
+      "sha256": "89ade5527071b3ed6597199f2ef20b9384a2ad2acdb6efc1c14659112d4cdfa6",
+      "bytes": 179146
+    },
+    {
+      "file": "docs/media/gifs/telegram-operations-web.gif",
+      "sha256": "870292c8cf6483394e1aca44068284f31818c3fe30d006683c8745ef4aafa46a",
+      "bytes": 199209
+    }
+  ]
+}

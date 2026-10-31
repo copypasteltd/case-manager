@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T04:51:28.351420+00:00",
+  "review_method": "Inspected all three full-resolution screenshots, sampled first/middle/final decoded MP4 frames and first/middle/final GIF frames.",
+  "checks": [
+    "Authenticated organization list and exact status history are legible.",
+    "Manual-confirmed receipt stays distinct from provider-unknown history.",
+    "No password, MFA secret, private capability, request prose or real business data is visible.",
+    "MP4 retains actual post-authentication pixels; GIF remains a labelled three-screenshot tour."
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-inventory.png",
+      "sha256": "32b01ca328b52c32746cb71bf55858bbab9b8f1f9bc580f699d852beadf3c2a3",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-detail.png",
+      "sha256": "60382abc4093181b5ef97bf5dc1e8f298b79cf34f657ded915c451b01a5a8dd1",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-receipt.png",
+      "sha256": "bbc45e52c2e6ce1ada9da0db28cec43dcb5325d3840bf59cd159d47719ca605f",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/telegram-operations-web.mp4",
+      "sha256": "89ade5527071b3ed6597199f2ef20b9384a2ad2acdb6efc1c14659112d4cdfa6",
+      "bytes": 179146,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/telegram-operations-web.gif",
+      "sha256": "870292c8cf6483394e1aca44068284f31818c3fe30d006683c8745ef4aafa46a",
+      "bytes": 199209,
+      "reviewed": true
+    }
+  ],
+  "sample_contact_sha256": "5cf2f73dcd548036ad761b3d8b8b9b81fd670b022eb11d463bfe7d5e20de7846",
+  "full_video_watched": false,
+  "real_tg_acceptance": false,
+  "real_device_acceptance": false
+}

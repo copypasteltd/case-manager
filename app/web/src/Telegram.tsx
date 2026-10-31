@@ -5,6 +5,7 @@ import { api, type Me, type Page, type Schemas } from './api';
 import { AccountVerification } from './AccountSecurity';
 import { Busy, Dialog, ErrorNotice, Field, date } from './components';
 import { TelegramDelivery } from './TelegramDelivery';
+import TelegramOperations from './TelegramOperations';
 
 type Challenge = Schemas['TelegramChallenge'];
 type Binding = Schemas['TelegramBinding'];
@@ -35,6 +36,11 @@ function useWrite<T>(path: string, done: (value: T) => void) {
 }
 
 export default function Telegram({ me }: { me: Me }) {
+  const [search] = useSearchParams();
+  if (search.get('view') === 'operations') return me.actions.includes('telegram.operations.read') ? <TelegramOperations me={me} /> : <section className="panel"><h1>组织投递运维</h1><p>当前账号没有组织TG投递查阅权限。</p><Link to="/telegram">返回本人TG入口</Link></section>;
+  return <PersonalTelegram me={me} />;
+}
+function PersonalTelegram({ me }: { me: Me }) {
   const cache = useQueryClient();
   const [search] = useSearchParams(), selected = search.get('request');
   const selectedRequest = useQuery({ queryKey: ['telegram', 'request', selected], queryFn: ({ signal }) => api<TelegramRequest>('/me/telegram/requests/' + encodeURIComponent(selected ?? ''), { signal }), enabled: !!selected });
@@ -44,6 +50,7 @@ export default function Telegram({ me }: { me: Me }) {
   const value = status.data, items = requests.data?.pages.flatMap(page => page.items) ?? [];
   return <div className="telegram-page">
     <div className="page-heading"><div><span className="eyebrow">WORKSPACE / TELEGRAM</span><h1>Telegram 接入<span className="accent">.</span></h1><p>绑定本人数字身份，核对指定群与话题的接收范围。</p></div><button className="button primary" disabled={!value?.ingress_configured || !!status.error} onClick={() => setCreating(true)}>发起本人绑定</button></div>
+    {me.actions.includes('telegram.operations.read') && <Link className="button secondary" to="/telegram?view=operations">组织TG投递运维</Link>}
     <ErrorNotice error={status.error} />{status.isPending && <Busy label="正在读取Telegram接入状态" />}
     {value && <>
       <div className="notice neutral"><span>{value.ingress_configured ? '本入口可接收明确请求；群通知需单独启用，并只发送阶段与登录链接。' : '尚未配置Bot接收入口，请联系管理员。'}{value.delivery_available ? ' 通知进程近期在线，实际发送结果请核对投递记录。' : ' 当前未确认通知进程在线。'} 办理业务可进入<Link to="/conversations">公司秘书</Link>。</span></div>

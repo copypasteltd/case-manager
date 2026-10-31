@@ -278,6 +278,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/telegram/operations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listTelegramOperations */
+        get: operations["listTelegramOperations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/telegram/operations/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTelegramOperation */
+        get: operations["getTelegramOperation"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/telegram/operations/{id}/reconcile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** reconcileTelegramOperation */
+        post: operations["reconcileTelegramOperation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/telegram/channels": {
         parameters: {
             query?: never;
@@ -6963,6 +7014,72 @@ export interface components {
             message_id: number | null;
             reason: string;
         };
+        TelegramOperation: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: uuid */
+            request_id: string;
+            run_id: string | null;
+            /** @enum {string} */
+            phase: "accepted" | "progress" | "result";
+            /** @enum {string} */
+            state: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "superseded" | "suppressed" | "abandoned";
+            attempts: number;
+            reason_code: string;
+            /** Format: date-time */
+            next_attempt_at: string;
+            message_id: number | null;
+            bot_id: string;
+            /** Format: uuid */
+            channel_id: string;
+            channel_label: string;
+            chat_id: string;
+            topic_id: number;
+            /** Format: uuid */
+            requester_id: string;
+            /** @enum {string} */
+            request_state: "awaiting_executor" | "dispatched" | "withdrawn";
+            request_channel_version: number;
+            current_channel_version: number;
+            /** @enum {string} */
+            channel_state: "active" | "paused";
+            delivery_enabled: boolean;
+            /** Format: date-time */
+            received_at: string;
+            retry_authorized: boolean;
+        };
+        TelegramOperationEvent: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** @enum {string} */
+            state: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "superseded" | "suppressed" | "abandoned";
+            attempts: number;
+            reason_code: string;
+            message_id: number | null;
+            actor_id: string | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        TelegramOperationDetails: {
+            item: components["schemas"]["TelegramOperation"];
+            events: components["schemas"]["TelegramOperationEvent"][];
+        };
+        TelegramOperationReconcile: {
+            expected_version: number;
+            /** @enum {string} */
+            action: "confirm_sent" | "retry_confirmed_not_sent" | "abandon";
+            message_id: number | null;
+            reason: string;
+            /** @constant */
+            reviewed_original_channel: true;
+            duplicate_risk_accepted: boolean;
+        };
         TelegramChannelRevision: {
             /** Format: uuid */
             id: string;
@@ -13015,6 +13132,17 @@ export interface components {
             data: components["schemas"]["TelegramDelivery"];
             meta: components["schemas"]["Meta"];
         };
+        TelegramOperationListResponse: {
+            data: {
+                items: components["schemas"]["TelegramOperation"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramOperationDetailsResponse: {
+            data: components["schemas"]["TelegramOperationDetails"];
+            meta: components["schemas"]["Meta"];
+        };
         TelegramChannelListResponse: {
             data: {
                 items: components["schemas"]["TelegramChannel"][];
@@ -15878,6 +16006,120 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["TelegramDeliveryReconcile"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramDeliveryResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listTelegramOperations: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                state?: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "superseded" | "suppressed" | "abandoned";
+                channel_id?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramOperationListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTelegramOperation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramOperationDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    reconcileTelegramOperation: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TelegramOperationReconcile"];
             };
         };
         responses: {

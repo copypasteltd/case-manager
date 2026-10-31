@@ -199,6 +199,12 @@ tg_delivery_event={"id":ID,"delivery_id":ID,"version":VERSION,"state":TG_DELIVER
 add("TelegramDeliveryEvent",tg_delivery_event,tuple(tg_delivery_event))
 add("TelegramDeliveryDetails",{"deliveries":array(ref("TelegramDelivery")),"events":array(ref("TelegramDeliveryEvent"))},("deliveries","events"))
 add("TelegramDeliveryReconcile",{**EXPECTED,"action":enum("confirm_sent","retry_confirmed_not_sent","abandon"),"message_id":tg_delivery["message_id"],"reason":NAME},("expected_version","action","message_id","reason"))
+tg_operation={**tg_delivery,"bot_id":TG_NUMBER,"channel_id":ID,"channel_label":NAME,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"requester_id":ID,"request_state":tg_request["state"],"request_channel_version":VERSION,"current_channel_version":VERSION,"channel_state":enum("active","paused"),"delivery_enabled":{"type":"boolean"},"received_at":TIME,"retry_authorized":{"type":"boolean"}}
+add("TelegramOperation",tg_operation,tuple(tg_operation))
+tg_operation_event={k:v for k,v in tg_delivery_event.items() if k not in ("delivery_id","reason")}
+add("TelegramOperationEvent",tg_operation_event,tuple(tg_operation_event))
+add("TelegramOperationDetails",{"item":ref("TelegramOperation"),"events":array(ref("TelegramOperationEvent"),maxItems=32)},("item","events"))
+add("TelegramOperationReconcile",{**EXPECTED,"action":enum("confirm_sent","retry_confirmed_not_sent","abandon"),"message_id":tg_delivery["message_id"],"reason":NAME,"reviewed_original_channel":{"const":True},"duplicate_risk_accepted":{"type":"boolean"}},("expected_version","action","message_id","reason","reviewed_original_channel","duplicate_risk_accepted"))
 tg_revision={"id":ID,"channel_id":ID,"version":VERSION,"source":enum("portal","membership","migration"),"reason":NAME,"snapshot":ref("TelegramChannel"),"created_at":TIME}
 add("TelegramChannelRevision",tg_revision,tuple(tg_revision))
 add("TelegramWebhookAck",{"ok":{"const":True}},("ok",))
@@ -1483,6 +1489,10 @@ operation("/me/telegram/requests","get","listOwnTelegramRequests","TelegramReque
 operation("/me/telegram/requests/{id}","get","getOwnTelegramRequest","TelegramRequest")
 operation("/me/telegram/requests/{id}/deliveries","get","getOwnTelegramDeliveryDetails","TelegramDeliveryDetails")
 operation("/me/telegram/requests/{id}/deliveries/{delivery_id}/reconcile","post","reconcileOwnTelegramDelivery","TelegramDelivery","TelegramDeliveryReconcile")
+operation("/telegram/operations","get","listTelegramOperations","TelegramOperation",listing=True)
+PATHS["/telegram/operations"]["get"]["parameters"] += [{"name":"state","in":"query","schema":TG_DELIVERY_STATE},{"name":"channel_id","in":"query","schema":ID}]
+operation("/telegram/operations/{id}","get","getTelegramOperation","TelegramOperationDetails")
+operation("/telegram/operations/{id}/reconcile","post","reconcileTelegramOperation","TelegramDelivery","TelegramOperationReconcile")
 operation("/telegram/channels","get","listTelegramChannels","TelegramChannel",listing=True)
 operation("/telegram/channels","post","createTelegramChannel","TelegramChannel","TelegramChannelCreate",201)
 operation("/telegram/channels/{id}","patch","updateTelegramChannel","TelegramChannel","TelegramChannelPatch")

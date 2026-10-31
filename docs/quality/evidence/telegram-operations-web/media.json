@@ -1,0 +1,30 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-inventory.png",
+      "sha256": "32b01ca328b52c32746cb71bf55858bbab9b8f1f9bc580f699d852beadf3c2a3"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-detail.png",
+      "sha256": "60382abc4093181b5ef97bf5dc1e8f298b79cf34f657ded915c451b01a5a8dd1"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-operations-web-receipt.png",
+      "sha256": "bbc45e52c2e6ce1ada9da0db28cec43dcb5325d3840bf59cd159d47719ca605f"
+    }
+  ],
+  "recording": {
+    "name": "telegram-operations-web",
+    "frame_count": 10,
+    "duration_ms": 2030,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/telegram-operations-web/frames.json",
+    "manifest_sha256": "fb644c7c679de93b2732608ef087ab6b587962010589d7066252cbc12a03f02d"
+  },
+  "credentials_excluded": true,
+  "synthetic_data": true
+}

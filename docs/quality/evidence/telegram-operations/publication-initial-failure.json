@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "automated_test": false,
+  "diagnostic_from": "Actual preflight command output before a report could be written",
+  "error_type": "FileNotFoundError",
+  "missing_input": "docs/quality/evidence/telegram-operations/repository-check.json",
+  "cause": "The initial UTF-8 publication input list referred to its own not-yet-generated output.",
+  "correction": "Remove the circular input; retain the ordinary whole-candidate credential, forbidden-file, source and link checks.",
+  "application_changed": false
+}
