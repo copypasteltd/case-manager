@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "business_cases_executed": 0,
+  "reason": "Independent cluster bootstraps shared the existing private init-password filename. One preparation refused to start; no database was initialized. Preserve the record and run the second bootstrap after the first completes.",
+  "empty_owned_directory_removed": true,
+  "persistent_development_cluster_modified": false
+}

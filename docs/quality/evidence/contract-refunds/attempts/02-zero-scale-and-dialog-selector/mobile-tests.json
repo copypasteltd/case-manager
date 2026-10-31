@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "id": "mobile-tests",
+  "started_at": "2026-10-31T00:37:53.676784+00:00",
+  "finished_at": "2026-10-31T00:38:13.449488+00:00",
+  "elapsed_seconds": 19.772,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/mobile"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "tap",
+  "source_sha256": "cb8a02018b491c645e06b5842c744491315cf4e8bf736b91656994cbc81fc67f",
+  "source_after_sha256": "cb8a02018b491c645e06b5842c744491315cf4e8bf736b91656994cbc81fc67f",
+  "source_unchanged": true,
+  "tests": {
+    "tests": 513,
+    "pass": 513,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "cases": [],
+  "private_log_sha256": "8e9a341171f9c85b84add9689f22f128ca07d53846a92ffbe312281d2211ef91",
+  "parser_error": null,
+  "runner_script_sha256": "913ddafcf4887ed62cbea06a6125ea2084ed055c547a05d04c7a7bff66a33d04",
+  "scope": "Complete shared mobile units including nine contract principal and command integrity cases.",
+  "real_device": false,
+  "virtualization_used": false
+}

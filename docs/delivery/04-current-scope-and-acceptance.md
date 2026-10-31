@@ -1,5 +1,7 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量133：GAP-03／18已实现应付合同异币退款按合同本金归属、双重限额、部分解除、固定核对和完整共享移动合同财务中心；费用异币归属、应收合同异币向外退回、公司汇兑制度与完整业务／正式集成验收继续开放。23 active（14 P0／9 P1）、5 excluded保持。见[设计与使用](../development/133-contract-finance-closure.md)、[实际检查](../quality/133-contract-finance-verification.md)和[全部23项](05-functional-closure-133.md)。
+
 增量132：GAP-05已知历史正式原件与已提交人工上传草稿原件的受控清理已实现；已完成但未提交草稿、秘书恢复来源、未知孤儿／派生对象及重新授权续作继续开放。保持23 active（14 P0／9 P1）、5 excluded。见[设计](../development/132-known-object-retirement.md)及[核验](../quality/132-known-object-retirement-verification.md)。
 
 增量131已接通资源超阈值／只读／断流→固定负责人站内通知→本人待办→真实恢复，并记录配置、负责人、前驱及原始观测。已读不消除故障；停用／归档／转交重新计算责任。真实目标安装和独立外部告警继续GAP-23，不再把资源站内提醒代码列为待开发。[设计与使用](../development/131-resource-notifications.md) · [实际检查](../quality/131-resource-notifications-verification.md) · [本轮与全部23项](05-functional-closure-131.md)。仍23 active（14 P0／9 P1）、5 excluded、八项draft Skill。

@@ -11,9 +11,10 @@ import { Action, Busy, Empty, Fact, Notice, Page, Section, State, date } from '.
 import { PayloadSnapshot } from '../detail/snapshot';
 import { BusinessEditor } from './editor';
 import { PrepareRequest } from './request-actions';
+import { MobileContractFinance } from './contract-finance';
 
 export default function BusinessPage() {
-  const params = useRouter().params, [mode, setMode] = useState<'view' | 'edit' | 'prepare'>('view');
+  const params = useRouter().params, [mode, setMode] = useState<'view' | 'edit' | 'prepare' | 'finance'>('view');
   const page = usePage(async scope => {
     if (!['contract', 'purchase', 'claim'].includes(params.kind ?? '')) throw new MobileError('INVALID_RESOURCE', '业务地址无效，请从业务列表重新打开。');
     const kind = params.kind as BusinessKind;
@@ -42,10 +43,11 @@ export default function BusinessPage() {
           <View className='cp-choice'><State value={value.approval_state} /><Text className='cp-muted cp-small'>业务修订 {value.version} · {date(value.updated_at)}</Text></View>
           <View className='cp-notice'><Text>以下为当前业务修订。业务资料、固定申请、审批、履行及实际付款分别记录。</Text></View>
           <PayloadSnapshot snapshot={currentBusinessPayload(kind, value)} digest={value.content_hash} me={result.me} heading='当前业务修订内容' />
-          {mode === 'prepare' ? <PrepareRequest key={value.id + ':' + value.version} kind={kind} business={value} me={result.me} onCancel={() => setMode('view')} /> : <Section title='后续操作'><View className='cp-pad'>
+          {mode === 'finance' && 'contract_no' in value ? <MobileContractFinance key={value.id + ':' + value.version + ':' + result.me.authorization_version} contract={value} me={result.me} onClose={() => setMode('view')} /> : mode === 'prepare' ? <PrepareRequest key={value.id + ':' + value.version} kind={kind} business={value} me={result.me} onCancel={() => setMode('view')} /> : <Section title='后续操作'><View className='cp-pad'>
             {value.can_edit && <Action secondary onClick={() => setMode('edit')}>编辑{name}草稿</Action>}
             {value.can_prepare_request && <Action onClick={() => setMode('prepare')}>{value.request_id ? '核对并准备申请草稿' : '建立申请草稿'}</Action>}
             {!value.deleted_at && value.approval_state === 'approved' && (!('direction' in value) || value.direction === 'payable' && ['effective', 'completed', 'terminated'].includes(value.lifecycle)) && ['cost.read', 'cost.record', 'cost.confirm'].every(action => result.me.actions.includes(action)) && <Action secondary onClick={() => void Taro.navigateTo({ url: businessCostMobileEntry(kind, value.id) })}>登记实际费用并关联</Action>}
+            {'contract_no' in value && ['effective', 'completed', 'terminated'].includes(value.lifecycle) && <Action secondary onClick={() => setMode('finance')}>合同财务归属与核对</Action>}
             {value.request_id && <Action secondary onClick={() => go('request', value.request_id!)}>查看关联申请与进展</Action>}
             {!value.can_edit && !value.can_prepare_request && <Text className='cp-muted cp-small'>当前业务阶段或权限不提供编辑与准备申请操作。</Text>}
           </View></Section>}

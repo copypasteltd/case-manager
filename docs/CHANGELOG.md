@@ -1,5 +1,19 @@
 # 更新记录 / Changelog
 
+## v0.1.0-rc.1 · First frozen candidate
+
+- 首次冻结四端源码；构建Linux服务器包、两小程序产物及准确当前Android开发APK，公开SHA-256及来源清单。
+- 用户明确授权缩减首发验证；保留关键业务、构建、凭据及包完整性核对，延期项目不记为通过。
+- Source tag and dedicated downloadable artifact branch; no production activation or completed external-service claim. [交付与使用 / Release guide](releases/v0.1.0-rc.1/README.md).
+
+## Increment133 · Contract finance and foreign refund principal
+
+- 四端新增异币退款原本金归属，保留整笔实收证据；显式人工币种确认、原付款／退款双重上限及并发控制。
+- 共享移动端新增合同财务中心：节点概览、真实费用／资金／退款来源、部分解除、历史分页和固定凭证人工核对；当前权限、本人MFA和准确回执读回。
+- Existing journals remain immutable; source changes stale the current review, and full cash reversal restores current contract cash without rewriting old evidence.
+- Normal99→100 schema upgrade preserves legacy business/history. Independent foreign-expense guards remain; adopted FX policy, receivable foreign outgoing returns and complete acceptance stay open.
+- [Implementation](development/133-contract-finance-closure.md), [source-bound checks](quality/133-contract-finance-verification.md), [all23 remaining packages](delivery/05-functional-closure-133.md). Prior132 proof/media remain byte-identical; no device, network-performance, migration/DR or AI-fee acceptance is added.
+
 ## Increment132 · Known-original retention and controlled retirement
 
 - 四端新增已知历史正式原件／已提交人工上传草稿盘点、不可变观察清单、最近MFA批准、永久版本／对象键屏障和逐云回执。

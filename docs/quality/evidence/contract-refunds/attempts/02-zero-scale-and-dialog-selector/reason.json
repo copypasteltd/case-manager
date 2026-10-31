@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "backend_pass_records": 72,
+  "backend_fail_records": 2,
+  "backend_skip_records": 0,
+  "mobile_unit_tests_passed": 513,
+  "backend_failure": "The zero numeric effective amount is returned as 0 by existing SQL; the new assertion incorrectly required six fractional zeroes. All other selected business cases passed.",
+  "browser_failure": "The global last release button could select a covered history action. Scope the submit action to its actual dialog and observe click/response together. No release receipt or successful browser claim was recorded.",
+  "current_evidence": false
+}

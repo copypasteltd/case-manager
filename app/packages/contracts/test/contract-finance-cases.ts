@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import type { components } from '../src/api';
+import { contractFinanceEligible, contractFinanceLink, contractFinanceReceipt } from '../src/contract-finance';
+type S = components['schemas'];
+const id = (n: number) => '60000000-0000-4000-8000-' + String(n).padStart(12, '0');
+const c = { id: id(1), version: 3, project_id: id(2), counterparty_id: id(3), active_revision_id: id(4) } as S['Contract'];
+const node = { id: id(5), direction: 'payable', currency: 'HKD' } as S['ContractFinanceNode'];
+const view = { contract_id: c.id, contract_version: 3, version: 9, can_reconcile: true, history_visibility: 'complete', nodes: [node] } as S['ContractFinance'];
+const root = { id: id(6), contract_id: c.id, milestone_id: node.id, kind: 'cash', payment_id: id(7), remaining_amount: '780.000000', effective_amount: '780.000000' } as S['ContractFinanceEvent'];
+const refund = { id: id(8), version: 2, current_revision_id: id(9), content_hash: 'a'.repeat(64), project_id: c.project_id, counterparty: { party_id: c.counterparty_id }, employee_id: null, state: 'recorded', record_kind: 'payment', currency: 'USD', amount: '100', direction: 'refund', refund_of_id: root.payment_id, refund_fx: { original_currency: 'HKD', original_amount: '780', rate: '0.1282051282', source: 'synthetic bank fact' } } as S['Payment'];
+const command = (source = refund, amount = '195', ack = true) => contractFinanceLink(c, view, node, 'refund', source, root, amount, 'review exact principal', ack);
+export const contractFinanceCases: [string, () => void][] = [
+  ['foreign refund uses contract principal and pins the exact actual cash revision', () => { const v = command(); assert.equal(v.amount, '195'); assert.equal(v.refund_fx_acknowledged, true); assert.equal(v.source_revision_id, refund.current_revision_id); assert.equal(v.source_event_id, root.id); assert.equal(v.expected_version, 9); }],
+  ['foreign refund requires a fresh explicit unit acknowledgement', () => assert.throws(() => command(refund, '195', false))],
+  ['a different original payment, milestone or project cannot be selected', () => { for (const value of [{ ...refund, refund_of_id: id(77) }, { ...refund, project_id: null }, { ...refund, counterparty: { party_id: id(22), revision_id: id(23) } }]) assert.equal(contractFinanceEligible(c, node, 'refund', value, root), false); assert.equal(contractFinanceEligible(c, node, 'refund', refund, { ...root, milestone_id: id(80) }), false); }],
+  ['received currency alone cannot replace original principal evidence', () => { assert.equal(contractFinanceEligible(c, node, 'refund', { ...refund, refund_fx: undefined }, root), false); assert.equal(contractFinanceEligible(c, node, 'refund', { ...refund, refund_fx: { ...refund.refund_fx!, original_currency: 'CNY' } }, root), false); }],
+  ['reversed, employee and inverse cash facts cannot become refund attribution', () => { for (const value of [{ ...refund, state: 'reversed' as const }, { ...refund, employee_id: id(90) }, { ...refund, record_kind: 'reversal' as const }]) assert.equal(contractFinanceEligible(c, node, 'refund', value, root), false); for (const effective_amount of ['0', '0.000000']) assert.equal(contractFinanceEligible(c, node, 'refund', refund, { ...root, effective_amount }), false); }],
+  ['legacy same-currency refunds keep the original command shape', () => { const v = command({ ...refund, currency: 'HKD', refund_fx: undefined }, '1', false); assert.equal(Object.hasOwn(v, 'refund_fx_acknowledged'), false); }],
+  ['zero, floating point notation, negatives and precision overflow are rejected', () => { for (const amount of ['0', '-1', '1e2', '1.0000001', 'NaN', '999999999999999']) assert.throws(() => command(refund, amount)); }],
+  ['stale contract identity and restricted history prevent a write command', () => { for (const v of [{ ...view, contract_version: 2 }, { ...view, can_reconcile: false }, { ...view, history_visibility: 'restricted' as const }]) assert.throws(() => contractFinanceLink(c, v, node, 'refund', refund, root, '195', 'review', true)); }],
+  ['a command receipt must match contract, milestone and exactly the next journal version', () => { const v = { contract_id: c.id, milestone_id: node.id, version: 10, event_id: id(99) }; assert.equal(contractFinanceReceipt(v, c, view, node), true); for (const changed of [{ ...v, version: 11 }, { ...v, milestone_id: id(31) }, { ...v, contract_id: id(32) }, { ...v, event_id: 'bad' }]) assert.equal(contractFinanceReceipt(changed, c, view, node), false); }],
+];

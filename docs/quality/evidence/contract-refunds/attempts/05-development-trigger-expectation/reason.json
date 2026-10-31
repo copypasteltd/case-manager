@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "reason": "Read-only schema inspection still expected the old blanket contract foreign-refund rejection trigger. Schema100 deliberately removed only that trigger and keeps refund quotation and foreign-expense guards. Correct the inspection to verify the two retained guards, absence of the retired contract trigger and presence of the new contract-principal guard.",
+  "business_or_build_inputs_changed": false,
+  "current_pass_claim": false,
+  "exact_execution_inputs_preserved": true
+}

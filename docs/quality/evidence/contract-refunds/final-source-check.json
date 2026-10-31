@@ -1,0 +1,175 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T01:12:16.052095+00:00",
+  "verification_mode": "frozen_release",
+  "increment": 133,
+  "checks": [
+    {
+      "name": "The original business commands, selection and deadlines are unchanged",
+      "passed": true
+    },
+    {
+      "name": "Only the disclosed schema100 metadata expectation changed in the inspector",
+      "passed": true
+    },
+    {
+      "name": "Only the disclosed relative mobile history selector changed",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check backend",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check web-tests",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check mobile-tests",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check typecheck",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check web-build",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check weapp-build",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check douyin-build",
+      "passed": true
+    },
+    {
+      "name": "Executed critical check native-js-tests",
+      "passed": true
+    },
+    {
+      "name": "Five actual native HTTP/PG suites cover contract cash, refund caps, review, release and reversal",
+      "passed": true
+    },
+    {
+      "name": "Complete Web/mobile units retain their actual428/513 passing counts",
+      "passed": true
+    },
+    {
+      "name": "Normal99-to100 upgrade preserves original facts and owned native services",
+      "passed": true
+    },
+    {
+      "name": "Retained actual Web release flow binds unchanged application source and closed resources",
+      "passed": true
+    },
+    {
+      "name": "Published actual media retains inspected bytes",
+      "passed": true
+    },
+    {
+      "name": "Owned browser fixture and review ports are released",
+      "passed": true
+    },
+    {
+      "name": "Previously published proof and media remain byte-identical",
+      "passed": true
+    },
+    {
+      "name": "Eight Skills stay draft; production and external acceptance are open",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/contract-refunds/backend.json",
+      "sha256": "bef1945c737579eeaf67e1162a968819b9e2c9e449e97662233650bcfdec391d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/web-tests.json",
+      "sha256": "e60782ca508ed1de8b264b5998098c365dfb40d709b8bc5ee4f0c2fcb6d0b6b0"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/mobile-tests.json",
+      "sha256": "2c771265fd46262e5c66df5239710a8edd51b7858d5e8f1f8425ef18689704cf"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/typecheck.json",
+      "sha256": "db37a8bd5907a4ee4f9b8e160195a3699990f3e8057d6d96fcf3efba2241812d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/web-build.json",
+      "sha256": "d2bc76730efa91d082db17a23437120801f5f07dde4854435e4ef5b7dd427298"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/weapp-build.json",
+      "sha256": "2bc4a1f4d6d01741268bb8777822308d9f1e726bfa175db1e8e9770cf45533fe"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/douyin-build.json",
+      "sha256": "d483436109bddeb07a6263dbae6a59a7f4b25f9d96d8e99796e06b71c0f0a5a5"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-js-tests.json",
+      "sha256": "e4ad01052cf1a56efaed2a2314d8a65c90a78c22350b3b718c37f5aa3a63f17d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/development-update.json",
+      "sha256": "8c156d2cc7c96782244d28670f2b6f2ddec8802e0ffff69c3016f9b87b5c6d3d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/development-project-resources.json",
+      "sha256": "84d02554b1dc3f43206df493873df962544222b1d82d4e1341feb1781157e094"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/result.json",
+      "sha256": "5d92bb14a7b336712d9fb6ec5c9cc398a03cd98e89b62d48bb33d13a6465833d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/source-manifest.json",
+      "sha256": "a3b04532de7ab42da2d3e97cc421ac903e6d58b4890e801b9a38a5c4fa6d939c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/media.json",
+      "sha256": "9cf4c64395b4eeb40362918f0c82777de2bcf41c61ec42fe9fefd439643310e2"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/visual-review.json",
+      "sha256": "55d55408b6996b5d25b6170352f9df49c564af53516a50fa5d5645c03aee3995"
+    }
+  ],
+  "retained": {
+    "passed": true,
+    "source_commit": "11ac48542029ec660872189925fc7365197dc6b6",
+    "original_files": 5904,
+    "original_media": 1461,
+    "original_git_object_manifest_sha256": "18352d32a1d7c9a430df90ca7093286eabf8bd321256c211f269d9f74a02394a",
+    "baseline_sha256": "21314c0dcccf170692b25dcd9c7a83540a5ec565d0fa0806e7fd7384f3ebdfcd",
+    "baseline_increment": 132,
+    "full_regression_reexecuted": false,
+    "retained_android_apk_is_current": false,
+    "scope": "Exact published evidence/media bytes retained. Prior full regression and APK remain bound to their original sources; no current full-suite/native-artifact claim."
+  },
+  "interaction_kind": "contract-refunds",
+  "interaction_source_sha256": "528cbda4c9ed85718f50c039769e30bdc36e136e9dd8562e94a278d7554cb033",
+  "verification_script_sha256": "e74e370791ab320091481f85d5241e42ae3c9d033ae7befd03d02460484731aa",
+  "fixture_only_adjustment": null,
+  "inspection_only_adjustment": {
+    "kind": "exact_check_only_corrections",
+    "execution_source_sha256": "29a2030331ef87199550934fe5bc21c7828fc9cad587947425405798e2722fbc",
+    "application_build_and_test_inputs_unchanged": true,
+    "scope": "Original results retain original hashes. Only the schema100 inspection expectation and a mobile relative selector changed; corrected metadata was rerun. The failed mobile UI check is retained and its rerun is deferred by the user freeze instruction."
+  },
+  "skipped_checks": [
+    "Expanded browser rerun after check-only selector correction",
+    "Full backend/runtime regression rerun",
+    "Additional native/JVM regression beyond completed build outcomes",
+    "Real platform/cloud/model/TG/production acceptance"
+  ],
+  "skip_authority": "User explicitly requested a first frozen release with selected validation deferred on2026-10-31.",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

@@ -1,0 +1,203 @@
+{
+  "name": "contract-refunds",
+  "increment": 133,
+  "configuration_file": "docs/quality/evidence/contract-refunds/verification-plan.json",
+  "evidence_directory": "docs/quality/evidence/contract-refunds",
+  "retained_base_commit": "11ac48542029ec660872189925fc7365197dc6b6",
+  "retained_base_increment": 132,
+  "helper_sources": [
+    "scripts/test_backend.py",
+    "scripts/build_openapi.py",
+    "scripts/build_refund_fx_android.py",
+    "scripts/build_android.py",
+    "scripts/windows_native_path.py",
+    "scripts/verify_project_business_native_js.py",
+    "scripts/update_project_business_development.py",
+    "scripts/verify_project_business_development.py",
+    "scripts/verify_backend_batches.py",
+    "scripts/inspect_android_apk.py",
+    "deploy/native/status-bridge-host.example.json",
+    "scripts/verify_scoped_increment.py",
+    "scripts/run_contract_refunds_browser.py",
+    "scripts/contract_refunds_sources.py",
+    "scripts/contract_refunds_browser_common.mjs",
+    "scripts/check_contract_refunds.mjs",
+    "scripts/contract_refunds_recording.mjs",
+    "scripts/mobile_picker_browser.mjs",
+    "scripts/encode_contract_refunds_media.py",
+    "scripts/build_contract_refunds_android.py",
+    "scripts/retain_contract_refunds_native.py",
+    "scripts/test_contract_refunds_native.py",
+    "scripts/contract_body_native_cluster.py"
+  ],
+  "commands": [
+    {
+      "id": "backend",
+      "command": [
+        "python",
+        "scripts/test_contract_refunds_native.py",
+        "-run",
+        "^(TestContractForeignRefundAttribution|TestContractFinancialReconciliation|TestActualForeignRefunds|TestContractCompletionAndTermination|TestCrossCurrencySettlement)$",
+        "-p=1",
+        "-timeout=12m",
+        "-json"
+      ],
+      "parser": "go_json",
+      "selected_tests": [
+        "TestContractForeignRefundAttribution",
+        "TestContractFinancialReconciliation",
+        "TestActualForeignRefunds",
+        "TestContractCompletionAndTermination",
+        "TestCrossCurrencySettlement"
+      ],
+      "scope": "Actual native HTTP/PG original-principal attribution, four human channels, dual-unit fixed review, partial release, concurrent cap, audit rollback and refund reversal; contract reconciliation/closure and cash/FX regressions."
+    },
+    {
+      "id": "web-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/web",
+        "--",
+        "--reporter=json",
+        "--outputFile=../.local/scoped-increments/contract-refunds/web-vitest.json"
+      ],
+      "parser": "vitest_json",
+      "json_output": ".local/scoped-increments/contract-refunds/web-vitest.json",
+      "minimum_tests": 428,
+      "scope": "Complete Web units including nine contract principal, fixed source, acknowledgement and receipt checks."
+    },
+    {
+      "id": "mobile-tests",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 513,
+      "scope": "Complete shared mobile units including nine contract principal and command integrity cases."
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "parser": "exit",
+      "scope": "All configured workspace TypeScript checks, including shared mobile/native source."
+    },
+    {
+      "id": "web-build",
+      "command": [
+        "npm",
+        "run",
+        "build:web"
+      ],
+      "parser": "exit",
+      "scope": "Current React/Vite Web compilation."
+    },
+    {
+      "id": "weapp-build",
+      "command": [
+        "npm",
+        "run",
+        "build:weapp"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current WeChat build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "douyin-build",
+      "command": [
+        "npm",
+        "run",
+        "build:tt"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current Douyin build with explicit loopback review configuration; no AppID/platform acceptance."
+    },
+    {
+      "id": "native-js-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:native-js",
+        "--workspace",
+        "@copypaste/mobile"
+      ],
+      "parser": "tap",
+      "minimum_tests": 1,
+      "scope": "Current native Babel primitive checks; separate current development APK/JVM evidence is required."
+    },
+    {
+      "id": "native-bundle",
+      "command": [
+        "python",
+        "scripts/build_contract_refunds_android.py"
+      ],
+      "env": {
+        "CP_MOBILE_BUILD_PROFILE": "local",
+        "CP_MOBILE_API_ORIGIN": "http://127.0.0.1:8080"
+      },
+      "parser": "exit",
+      "scope": "Current complete development APK with ordinary Metro caches, four native Windows workers, checkout filesystem adapter and exact current source map/embedded bundle checks. Native/JVM incremental test outcomes disclosed; no device or formal release acceptance."
+    },
+    {
+      "id": "finance-core",
+      "command": [
+        "python",
+        "-c",
+        "import subprocess,sys; sys.exit(subprocess.call(['../.tools/go/bin/go.exe','test','./internal/finance','-count=1','-json']))"
+      ],
+      "parser": "go_json",
+      "scope": "Actual current finance package units; native HTTP suites independently exercise the database and workflow.",
+      "cwd": "backend",
+      "selected_tests": [
+        "TestAmortizationConservesEveryProjectAndCompanyMinorUnit",
+        "TestAmortizationCalendarUsesExactHalfOpenServiceDays",
+        "TestAmortizationCumulativeRoundingDoesNotCreateNegativeTails",
+        "TestAmortizationRefusesUnknownRulesInvalidPeriodsAndSourcePrecision",
+        "TestCrossCurrencySettlementMath",
+        "TestActualRefundQuote",
+        "TestPaymentShareRounding",
+        "TestReportCSVTextSafetyAndExactDecimals",
+        "TestExactFXArithmetic",
+        "TestSubscriptionCalendar",
+        "TestSubscriptionPriceTimeline"
+      ]
+    }
+  ],
+  "browser_groups": [
+    "contract-refunds-web",
+    "contract-refunds-mobile"
+  ],
+  "production_ready": false,
+  "full_goal_complete": false,
+  "formal_android_acceptance": false,
+  "full_backend_suite_executed": false,
+  "schema_upgrade": {
+    "from_count": 99,
+    "to_count": 100,
+    "new_migrations": [
+      {
+        "file": "app/backend/migrations/0100_contract_foreign_refund_attribution.sql",
+        "sha256": "66e1064d3e241ac17dd140350af774552bab51aaa51463af52ce3b8c22e1d21a"
+      }
+    ]
+  },
+  "core_record": "finance-core.json"
+}

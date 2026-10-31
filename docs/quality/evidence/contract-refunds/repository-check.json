@@ -1,0 +1,648 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T01:17:46.076447+00:00",
+  "scope": "Changed/new nonignored publication files only. Historical full-showcase replay deferred by explicit first-freeze user instruction.",
+  "files_scanned": 158,
+  "known_private_value_count": 8,
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "known_private_value_matches": [],
+  "oversize_files": [],
+  "broken_local_links": [],
+  "input_files": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "75ac2971d93b5a0e2da923e1e0b1391b03d982d218f355822ba316fc40637a97"
+    },
+    {
+      "file": "README.md",
+      "sha256": "1b6b0828e01b6a2f2b5021103633d2ac65c6643262f4fc40b582da07480161c5"
+    },
+    {
+      "file": "app/backend/internal/contract/openapi.json",
+      "sha256": "9d6197c9479aca7080fe80503347120b4f51e4a409c243a5f0487171ab4ed7e2"
+    },
+    {
+      "file": "app/backend/internal/finance/contract_finance_models.go",
+      "sha256": "85bf3f0a701db6f5a5fb2ca8b1765adfd261b237861cfd9886e3a01ae127ba6f"
+    },
+    {
+      "file": "app/backend/internal/finance/contract_finance_mutations.go",
+      "sha256": "92d1040d073145644ca8ece608b2835ab8c44b9e026659d3fa38a58b3ed2e7bb"
+    },
+    {
+      "file": "app/backend/internal/finance/contract_finance_reads.go",
+      "sha256": "4ae65b1f9a1327ca31d1f0aad2878d890a402d12a212a7dccee7e2fa515ca4d6"
+    },
+    {
+      "file": "app/backend/internal/httpapi/contract_foreign_refunds_integration_test.go",
+      "sha256": "5057f97beb88289f1c2e95b9efd1b6c35bee377ec9359d4d7a1f1c005520ab13"
+    },
+    {
+      "file": "app/backend/migrations/0100_contract_foreign_refund_attribution.sql",
+      "sha256": "66e1064d3e241ac17dd140350af774552bab51aaa51463af52ce3b8c22e1d21a"
+    },
+    {
+      "file": "app/mobile/package.json",
+      "sha256": "ca2ad3e71c7d810746c7ba4243f265a4a783a13d1b1be36b66835abbc62cd471"
+    },
+    {
+      "file": "app/mobile/src/pages/business/contract-finance.tsx",
+      "sha256": "1ed75009e580ab59c5b9a9a384a11e17c21f6c50e1046cc4b8575a70158e893c"
+    },
+    {
+      "file": "app/mobile/src/pages/business/index.tsx",
+      "sha256": "befe120c2a095bff2422bce795874517472235278f56622a11f71493c9a4cc5a"
+    },
+    {
+      "file": "app/mobile/src/platform/contract-finance.test.ts",
+      "sha256": "770a3e99f9f085e39347d9cda463a3ffb209a1b11921106e9902390dfb0addb5"
+    },
+    {
+      "file": "app/mobile/tsconfig.concern-test.json",
+      "sha256": "06334e3cdd4cdfa65137ddf8ca8c58df240d55783bc10d7e7c15260a0ee531b2"
+    },
+    {
+      "file": "app/packages/contracts/package.json",
+      "sha256": "e48f2bf045c1ae585e523d2c91de2a43fb26b9800f4ae42245c5a9d6d927582f"
+    },
+    {
+      "file": "app/packages/contracts/src/api.d.ts",
+      "sha256": "c83eb33d8127b290436530629dc6638e52be6c1f04847744d0c0c90654d510c5"
+    },
+    {
+      "file": "app/packages/contracts/src/contract-finance.ts",
+      "sha256": "c5b7ce834cddb06be53adbd342fec82220ca9f1698a07860aae23f9568fafe71"
+    },
+    {
+      "file": "app/packages/contracts/test/contract-finance-cases.ts",
+      "sha256": "921a6b9cbb5a3393de474c9373546a5c5c4d9790557d4e1253103173bb1e98d4"
+    },
+    {
+      "file": "app/scripts/build_contract_refunds_android.py",
+      "sha256": "d997e9b080e2f897ed4047d83dc005c94806d2650953fc52f23adbf09d59d731"
+    },
+    {
+      "file": "app/scripts/build_openapi.py",
+      "sha256": "ff15c63cf2720984f7847c0b5e46ac6ccf648d47bc3315598b2184050bc669dc"
+    },
+    {
+      "file": "app/scripts/check_contract_refunds.mjs",
+      "sha256": "9bf37227d8f03a8da2c569a6e3e95fc22a5dfd07017a6d54d0b49321cdcca515"
+    },
+    {
+      "file": "app/scripts/contract_refunds_browser_common.mjs",
+      "sha256": "72eba6091c7fe7523883f902020b49562256272d86ce78b5200ee912cee1d967"
+    },
+    {
+      "file": "app/scripts/contract_refunds_recording.mjs",
+      "sha256": "31161ab950b82be5d4610c6b5e5f4efa7857cde659c93b79732b3f6db70898cd"
+    },
+    {
+      "file": "app/scripts/contract_refunds_sources.py",
+      "sha256": "ebf0f39b4e6ab2e03c1668fcf33a80d5795cb2a3407f88cfd5197703a688ca08"
+    },
+    {
+      "file": "app/scripts/encode_contract_refunds_media.py",
+      "sha256": "440c127596264269f1dc07097eb9e9c61f75784117755eedf6e10cb8df1120db"
+    },
+    {
+      "file": "app/scripts/inspect_android_apk.py",
+      "sha256": "00156e84e6abf47d5f11a1e29ea04c1ba31c191a1dea3a3991909b44499cb900"
+    },
+    {
+      "file": "app/scripts/retain_contract_refunds_native.py",
+      "sha256": "e1ebafae49dadba80ac6eaff13f3ce082cae86c943997f30ea5d3e85289555a7"
+    },
+    {
+      "file": "app/scripts/run_contract_refunds_browser.py",
+      "sha256": "8c671ef90be0391d648c4ff52671fc3320499ba8ddd81cb00a6f464127c93dd2"
+    },
+    {
+      "file": "app/scripts/test_contract_refunds_native.py",
+      "sha256": "2639b3ab8ea2c89dfe91dc0d59c69dfec82494ee508111a77cccfa74ff25d734"
+    },
+    {
+      "file": "app/scripts/update_project_business_development.py",
+      "sha256": "49f42ec9da3d89042a56de6c00563120b4624923a9222d745c961e58d53042bc"
+    },
+    {
+      "file": "app/scripts/verify_first_freeze.py",
+      "sha256": "e74e370791ab320091481f85d5241e42ae3c9d033ae7befd03d02460484731aa"
+    },
+    {
+      "file": "app/scripts/verify_project_business_development.py",
+      "sha256": "36cdd865c9671eba873e9cf7b10c7e49cdcc0ed47b703dbabfb31aaf4b50df9f"
+    },
+    {
+      "file": "app/scripts/verify_project_business_native_js.py",
+      "sha256": "74b8fb0271bad85954fc842b946538ac4ea24c1b2122e3d939547026973aafe9"
+    },
+    {
+      "file": "app/scripts/verify_repository_publication.py",
+      "sha256": "fe2630c8d3e97c3aa1614ca5aa1b62c8f0f6567a12dc0b15dc98337bd124804d"
+    },
+    {
+      "file": "app/scripts/verify_scoped_increment.py",
+      "sha256": "913ddafcf4887ed62cbea06a6125ea2084ed055c547a05d04c7a7bff66a33d04"
+    },
+    {
+      "file": "app/web/src/ContractFinance.tsx",
+      "sha256": "25848ef0354624420c49a987b664062ccb614a77baf4c7fb03901a7ae68a02d6"
+    },
+    {
+      "file": "app/web/src/ContractFinanceActions.tsx",
+      "sha256": "90afcd857a10be66358df29f4c9f910157c66a58c0a484f4f08b5f0ba82db955"
+    },
+    {
+      "file": "app/web/src/ContractFinancePickers.tsx",
+      "sha256": "83a17e023178df0d4913e001d8bc8dc0a64d8c8be38aaa50aa0c6c0cc3919d04"
+    },
+    {
+      "file": "app/web/src/contract-finance.test.ts",
+      "sha256": "94f25018fe734d0008d1edf0133b0540b1e8e793e383d33b685b9d46812952a5"
+    },
+    {
+      "file": "app/web/tsconfig.json",
+      "sha256": "ee18a31da4a82b16a0ce8a7e7066f2feecf3b09e015041d0f7085856a9b9d855"
+    },
+    {
+      "file": "docs/CHANGELOG.md",
+      "sha256": "5022e02f52d6c2c2de49719ea6d445dea96dbe49e98319c5599bb13c70dfb3dd"
+    },
+    {
+      "file": "docs/README.en.md",
+      "sha256": "9e8a46b785c6e1ea822d85dee19a6de0e996993b3b249867a364f8b9f67e7f14"
+    },
+    {
+      "file": "docs/README.md",
+      "sha256": "475a5847d82cc0880e1e557f56545239f61dccb5c22b59407d85d455a2b11f04"
+    },
+    {
+      "file": "docs/README.zh-CN.md",
+      "sha256": "31bfc2fc2f728e805a1ef3f1560bec7219329f530da2a20bd6e4e26d0c25f1da"
+    },
+    {
+      "file": "docs/delivery/03-goal-gap-assessment.md",
+      "sha256": "d7459149fd2aab066587fb122a31674273926c3c73bc7d47a5e9b9bf899c466c"
+    },
+    {
+      "file": "docs/delivery/04-current-scope-and-acceptance.md",
+      "sha256": "146d0746df685ba9f44370a115434b76e54ae4e3cc0e6420f44c35a9aeafc19d"
+    },
+    {
+      "file": "docs/delivery/04-current-scope.json",
+      "sha256": "c730d6405abc67a8f7451813c498e8683eb1bbde9c3d48bae8793ad80ccfb1c2"
+    },
+    {
+      "file": "docs/delivery/05-functional-closure-133.md",
+      "sha256": "9dce522dd065345a7b529791957bcb041f46827b678e3e7eb7e48acedbf5d6fc"
+    },
+    {
+      "file": "docs/development/133-contract-finance-closure.md",
+      "sha256": "b03da617ccba01806e0e41d1357bd3c738b08a8c22298619f721f1a82bcad4c0"
+    },
+    {
+      "file": "docs/development/openapi.json",
+      "sha256": "9d6197c9479aca7080fe80503347120b4f51e4a409c243a5f0487171ab4ed7e2"
+    },
+    {
+      "file": "docs/media/README.md",
+      "sha256": "ed7344339fadd4d371cf902ea293d194f98af34a5bc7d99133eb8e5a7e8e4100"
+    },
+    {
+      "file": "docs/media/gifs/contract-refunds-web.gif",
+      "sha256": "668405c510296cd1badae4836c66a755ca1e0ae7063daecd564530627a2134dd"
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-mobile-summary.png",
+      "sha256": "2fa565f3ec74e5d39aa44d8888dd9ab6af50209f1a5fbe8b619aac37535111ab"
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-evidence.png",
+      "sha256": "3c70ebc66a86d2a3030e9d04bdcfe9beaf4c0548b268620191dfa5184675153a"
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-released.png",
+      "sha256": "9f89564da523804c0e1ec87ca64586fede4d0d1ee5d0b584d3b04b8d59c2d1d7"
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-summary.png",
+      "sha256": "01e05f03e73f7589aaab3f62a57cfbeac6994c53c63bf539d7bf11bc761633c8"
+    },
+    {
+      "file": "docs/media/videos/contract-refunds-web.mp4",
+      "sha256": "b7e76e56700d0accc02d91e3ab413ec93445d3d742293d07e927035b4ff05560"
+    },
+    {
+      "file": "docs/quality/133-contract-finance-verification.md",
+      "sha256": "7bab8399e567d17077f9477b8bf31ef8cb966df732b324c21a268797b9e2dae6"
+    },
+    {
+      "file": "docs/quality/current-functional-baseline.json",
+      "sha256": "238ae4c0ee2441ccbb7836adb2d04e1684c37f39c0cc7df06594510afe190543"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/acceptance-applicability-check.json",
+      "sha256": "d9541a5b41b91f6cf13a502a2a38be93f0e5753a1d0f1325bbde613ba35d554e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/android-final-source.json",
+      "sha256": "435857c20bafde22eca7d6a5b9950a04418adc81e93de1ec9110a003dc7cade8"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/android-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "ccdf7e876e0e7db15531dcb26d178e9ec0b51028e08e0453b174c42f3e460616"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/android-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "3decd2690911788d9c1692f26a102626b3f6025ec2706289b0662542300fde33"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/android-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "35ccbc97f6abb9a788875a896fae5f6c2137ac5a974e4f4ba97977bd8c711cc6"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/android-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "bb894f5c97c6b7c86a079157c6db901a3948875c236c4fcb49d0f12f8aaf7c8c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/apk-inspection.json",
+      "sha256": "d723dcd3820d7e38799d2ce9864dc917cce2d008e45458bc2544a7409ae31336"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/01-legacy-contract-guard/0100_contract_foreign_refund_attribution.sql.before",
+      "sha256": "423cc39ef304a33b0249b776315499e854c977c3f185b84b37cf797a6d515d3c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/01-legacy-contract-guard/backend.json",
+      "sha256": "1aecd83dea2cba3cfa39093f48044304278684ce5f311885256459cc6ed8d330"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/01-legacy-contract-guard/native-cluster.json",
+      "sha256": "45d587a8ec0171379346a8f03d8f318e861ef47682cdf929ad3ec1704b9cf0b0"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/01-legacy-contract-guard/reason.json",
+      "sha256": "fdace87ef217864c1876aeb156a7350581339134379b55345d8a9af30bbbe88e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/01-legacy-contract-guard/verification-plan.json.before",
+      "sha256": "8140ce17eb9042ad9a8fa2ba053c9817b98e04ff48bdc2091e9d64ed5037609c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/01-legacy-contract-guard/web-tests.json",
+      "sha256": "62df40e89d651d5a0573a7273e0fa334f8a40925aba62db13e9fe7125494189f"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/backend.json",
+      "sha256": "65ad64204dd7d8a2e85409b9719809f8d71e3efdbe1b2c02082f125657697c30"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/check_contract_refunds.mjs.before",
+      "sha256": "bed67502eb9de62fccb9486741632153d76b9c3490ae6436c60f6140e2f0f4f3"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/contract-refunds-web-evidence.png",
+      "sha256": "7ede521d7f11672502c18cfa90185892aabdbcee4db9f4b3aef915e5b1089e64"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/contract-refunds-web-summary.png",
+      "sha256": "01e05f03e73f7589aaab3f62a57cfbeac6994c53c63bf539d7bf11bc761633c8"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/contract_foreign_refunds_integration_test.go.before",
+      "sha256": "88d4f352943d7721b40932eafa4ab085940e217e09905b859e95edb70de86968"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/mobile-tests.json",
+      "sha256": "9b256f22a108ad0f4a2fb9e36a43972cd1424468b32981da478b68ad72b6a178"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/native-cluster-closed.json",
+      "sha256": "5833636e826c085b05daf8f9549ed55ba89e3610bb2cbfe1c9c8202347800e7a"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/native-cluster.json",
+      "sha256": "6168a3e624ed98f4d05350377fd0bd9497e8e36499d50c2f4e645a4dff2f5ebc"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/native-contract-refunds-web/native-cluster-closed.json",
+      "sha256": "e184da79dfb952c13f438fe439893c348c55beacf7c0a4c904986289690a8da4"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/native-contract-refunds-web/native-cluster.json",
+      "sha256": "4ae67636537b82a1a9f2c07235d4ab33377dfe12cefc3c49783f8a5e8cfd23cf"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/reason.json",
+      "sha256": "42de3d14b3c36225a3b91126316ab22adbd9d899e42fe697ef0528e67cf19942"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/run_contract_refunds_browser.py.before",
+      "sha256": "772832063ac52b1e66deb4f2248a934d5634e0c3b1892ae111bd0c2b832e7d38"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/02-zero-scale-and-dialog-selector/verification-plan.json",
+      "sha256": "29f0ea55906da62c13d112624d545bce8d1dca4628d3114c837225bdcf57802e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/03-native-fixture-initialization/backend.json",
+      "sha256": "8ac2ff38d8caef998f6d0de4f626d7792ef88e0b01e80745403cfc5f4c1847d7"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/03-native-fixture-initialization/reason.json",
+      "sha256": "f084d9396ab3660c9d5ad56567b96bf74464e72aa9aca968c28dd5698ad03361"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/backend.json",
+      "sha256": "28ed2be34f3cfe3143cb693ecfa919e89fcd7b3c56383ae5b44859ba66acec02"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-finance-cases.ts.before",
+      "sha256": "2d6a36109039cd6e2d861d8c9bdfd169c3e2b40fb52fb582d44c9bb7f118c80e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-finance.ts.before",
+      "sha256": "84be9a82d43fedbc2fab55aa86c8e81534eff2db02dfa8cf6d0225860fba07bd"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-finance.tsx.before",
+      "sha256": "eb6d653d467c975e157d5628084e11978ef6d7867eff921cd82a57ceebbed10d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web-evidence.png",
+      "sha256": "54917a436132687caf6b1ae13b1953bfbb2fb5f212f06e63df0dd29a23951902"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web-released.png",
+      "sha256": "518637be77ed9c8a06df6c80fb84a491711b2e4cff00601c9c840631d9db18a8"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web-summary.png",
+      "sha256": "c07e9b86b64c542c38044956d8d789cee5f8043cb5e812132863da9b76ad60df"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web/business-proof.json",
+      "sha256": "3c8aef8df81e891f6386fd3087a528bb33ac3e7dcb4779a25bc61663ea879926"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web/inbox.png",
+      "sha256": "b010f8ba374ab5017f66ba87f883f7525c17628d744db7dea7080c44014cc31f"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web/media.json",
+      "sha256": "100338e97f27dbef1dd2483239dfa65d3f5afe7a4222f901647e39ebff99c160"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web/result.json",
+      "sha256": "9b374d86a3f470284e1f87bd3242f7806804a956d12184d05faa8b3f964a26c0"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/contract-refunds-web/source-manifest.json",
+      "sha256": "244df2a20b1bbce7a70076daec212387c7394d8ef1e06a97d39b747436723a2f"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/mobile-tests.json",
+      "sha256": "9085d652b6abfa94726c41655b9671bbf5e40e6526849670f35542fe612cbe48"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/native-cluster-closed.json",
+      "sha256": "1813d34b720dd6e621e0977b8c9fc33ad829f91f1b7e0e75cc2de2bad9b6079b"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/native-cluster.json",
+      "sha256": "c90acbaf68acf004270defc4938b28b3fd0fdf979350f439e57bae2b9c62d161"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/native-contract-refunds-mobile/native-cluster-closed.json",
+      "sha256": "6afa2b5493512b9daeebc91d180323502c7131326c8b2e11fc8d2909085830c2"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/native-contract-refunds-mobile/native-cluster.json",
+      "sha256": "2ee2cdc8428980d192768a0e3950bf3aa289867f2fc87b78c398b554ac9d47c8"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/native-contract-refunds-web/native-cluster-closed.json",
+      "sha256": "efa5783cef52035046d353e77dc47a13ba8c29e6d9a4dde4ae15eb5d56048ed4"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/native-contract-refunds-web/native-cluster.json",
+      "sha256": "0b277a4dcaa651e2a7abe2eb69b2e03b63b2387c854315b18098390d030b4550"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/reason.json",
+      "sha256": "1ef866f9dc228b440fc5d46a01c375524db6901a72006c0dd4ef3d0a8fe53715"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/tsconfig.json.before",
+      "sha256": "0fbb9c375a8efd3b1cfdb8709b6862b002255744847ba4fcb8be5a556e4aefda"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/typecheck.json",
+      "sha256": "aa42c84c43637e43eed6a5051020f9f826a89b450c04477446098372d1d1b36c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/verification-plan.json.before",
+      "sha256": "29f0ea55906da62c13d112624d545bce8d1dca4628d3114c837225bdcf57802e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/04-final-source-registration/web-tests.json",
+      "sha256": "26849f2e4bd86975d3fb4d15e7d25923f24e6ce1a5f0529ee8eb9c51da96a1c2"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/05-development-trigger-expectation/development-project-resources.json",
+      "sha256": "10fc5358ee23988d9ab59bb3b3a1d2a465edbde50ba24fb65831e64789840cae"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/05-development-trigger-expectation/development-runtime.json",
+      "sha256": "0abc4afa408ea24b421c0a65e2f452e6534199a16ae41889e4ee2d9115cf14c5"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/05-development-trigger-expectation/reason.json",
+      "sha256": "ccbad55c6c4dc72288738f9cb4a58cee336f90c2a2b90f207ba9a23a1948c13f"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/05-development-trigger-expectation/verification-plan.json.before",
+      "sha256": "998beef178bc013fee4cb02078ca4eeaed8269df995111160d91c94fb5d9f7fe"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/05-development-trigger-expectation/verify_project_business_development.py.before",
+      "sha256": "7a719e8bc63ca716ffdb45b023d986b1ef3dae8dc10c6c672ea8af61d92938ce"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/05-development-trigger-expectation/verify_scoped_increment.py.before",
+      "sha256": "913ddafcf4887ed62cbea06a6125ea2084ed055c547a05d04c7a7bff66a33d04"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/check_contract_refunds.mjs.before",
+      "sha256": "4ba543da54457df2385dab92b791e572b4d7c0243681737d68a598c99320fd1f"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-mobile/failure.png",
+      "sha256": "518d80907f5b05d61e29adf6d5b7af3f3d1ec5f8597adaab7e017862aeb3ebbf"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-mobile/result.json",
+      "sha256": "4a9c8cb30dc72f858bd1eb7e3dcfa98996ec4e2a44700b3004f1043162889c6e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-mobile/source-manifest.json",
+      "sha256": "e048fdd4e4c1d6fd351fbf85403ecb6ba2cd9a2fc2c59bf66cbb805382e27dd3"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/business-proof.json",
+      "sha256": "69ded24b3db8deba452468e58f265862fa6986edc95c30844b99ac04a80225c5"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/inbox.png",
+      "sha256": "c4f94c36f79b6ea3c87816e036da3b44252285e71336b07a2fb5fc0403683066"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/media.json",
+      "sha256": "5fed6278e3edf1d32f692d320e3d06cd4ef95bb06be9273b3a123e47864bbc2e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/result.json",
+      "sha256": "5d92bb14a7b336712d9fb6ec5c9cc398a03cd98e89b62d48bb33d13a6465833d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/contract-refunds-web/source-manifest.json",
+      "sha256": "a3b04532de7ab42da2d3e97cc421ac903e6d58b4890e801b9a38a5c4fa6d939c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/native-contract-refunds-mobile/native-cluster-closed.json",
+      "sha256": "bdf7eafed449c98895bfd53d0436161687978153c35c1322d8e39443d98e7a91"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/native-contract-refunds-mobile/native-cluster.json",
+      "sha256": "66a05fc9c41df6e7cb17f01c44cab3e268e21a1bc33f1d873c97e6e001475287"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/native-contract-refunds-web/native-cluster-closed.json",
+      "sha256": "cdef7eb0e296059e08a86b3e4851c5dd43c35a419771eb81a0e1708580696df9"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/native-contract-refunds-web/native-cluster.json",
+      "sha256": "a45265421a59d7be4c7cb5daa8d81a86232ffd4d490b13ff4277a4b908b1dc20"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/attempts/06-mobile-history-selector/reason.json",
+      "sha256": "27d70c705ed056cb62c96cbb0f41089955d3073aae3e0bb385acad57f1c365f4"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/backend.json",
+      "sha256": "bef1945c737579eeaf67e1162a968819b9e2c9e449e97662233650bcfdec391d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/build.json",
+      "sha256": "323f8d7a5f7d9a9535c25b2441f792e8bd93d73ed8e2bd35f78267758714f869"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/development-project-resources.json",
+      "sha256": "84d02554b1dc3f43206df493873df962544222b1d82d4e1341feb1781157e094"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/development-runtime.json",
+      "sha256": "1de2eed4c83ec43aa3433023e954770ac0c8c4db47786f6b20930c400cfc4a06"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/development-update.json",
+      "sha256": "8c156d2cc7c96782244d28670f2b6f2ddec8802e0ffff69c3016f9b87b5c6d3d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/douyin-build.json",
+      "sha256": "d483436109bddeb07a6263dbae6a59a7f4b25f9d96d8e99796e06b71c0f0a5a5"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/final-source-check.json",
+      "sha256": "7e0675337d0a766f27d4841ea4ac84ba6eccec82d808012c362ec2e17236201e"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/jvm-unit-results/TEST-hk.copypaste.workspace.ApiHTTPTest.xml",
+      "sha256": "67136160c04423c6acc370067c61d0a0ac2eddfc8e97e5ab0beec09c778854a8"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/jvm-unit-results/TEST-hk.copypaste.workspace.ReadCacheTest.xml",
+      "sha256": "dd667def2ca133d4dbd5ff2f474e7d3d8432395997ceda1a856dbd9778dd4ff5"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/jvm-unit-results/TEST-hk.copypaste.workspace.UploadBoundariesTest.xml",
+      "sha256": "f8da941a96ccc6c7bc922394d8c47e3ddc6c8bf19851c1964799f61a69fbdcde"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/jvm-unit-results/TEST-hk.copypaste.workspace.UploadTransferTest.xml",
+      "sha256": "4a5eb20cf0363469d57253f9da4c31cb7b57d20bbaa368d42bf9b325234d873a"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/media.json",
+      "sha256": "9cf4c64395b4eeb40362918f0c82777de2bcf41c61ec42fe9fefd439643310e2"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/mobile-tests.json",
+      "sha256": "2c771265fd46262e5c66df5239710a8edd51b7858d5e8f1f8425ef18689704cf"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-bundle.json",
+      "sha256": "6263862841f768458458000a2798bf59a52240a3b862881b91a5a198458b93be"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-cluster-closed.json",
+      "sha256": "5d44ab81752d5f463575a65b66f5f4d699837a2caa7229fa46ce7623a75d65af"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-cluster.json",
+      "sha256": "742fbb23493ef7a76c01bee3ac84e71c576dd0478a54df00d49a47739e5d1e3c"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-js-tests.json",
+      "sha256": "e4ad01052cf1a56efaed2a2314d8a65c90a78c22350b3b718c37f5aa3a63f17d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-suites.json",
+      "sha256": "bdd10e9cb6bc439d4615ae23285e04cc131d284fb0aa81e64261537b29afdecb"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/native-test-scope.json",
+      "sha256": "7cca9b2b033c4a5fd15a3b0019065d117d81bf8883a01d52fbe341c8c7e773c5"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/scope-check.json",
+      "sha256": "43f15137ab7256c2b214f40b829527a1bc630b05298716b8d74d7e5d50ded91f"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/typecheck.json",
+      "sha256": "db37a8bd5907a4ee4f9b8e160195a3699990f3e8057d6d96fcf3efba2241812d"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/verification-plan.json",
+      "sha256": "998beef178bc013fee4cb02078ca4eeaed8269df995111160d91c94fb5d9f7fe"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/visual-review.json",
+      "sha256": "55d55408b6996b5d25b6170352f9df49c564af53516a50fa5d5645c03aee3995"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/weapp-build.json",
+      "sha256": "2bc4a1f4d6d01741268bb8777822308d9f1e726bfa175db1e8e9770cf45533fe"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/web-build.json",
+      "sha256": "d2bc76730efa91d082db17a23437120801f5f07dde4854435e4ef5b7dd427298"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/web-capture-manifest.json",
+      "sha256": "5fcd6f0bcb770d4cc83c754d1912fe7563803b182e19713e6f6236ef52907877"
+    },
+    {
+      "file": "docs/quality/evidence/contract-refunds/web-tests.json",
+      "sha256": "e60782ca508ed1de8b264b5998098c365dfb40d709b8bc5ee4f0c2fcb6d0b6b0"
+    },
+    {
+      "file": "docs/releases/v0.1.0-rc.1/README.md",
+      "sha256": "720f8a7fa48331beb77a05667edacc239ca6368fe2a971ba2907095859e059d8"
+    }
+  ],
+  "full_showcase_replay_executed": false,
+  "production_ready": false
+}

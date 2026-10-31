@@ -13,14 +13,15 @@ type ContractFinanceBase struct {
 }
 type ContractFinanceLink struct {
 	ContractFinanceBase
-	MilestoneID       string  `json:"milestone_id"`
-	Kind              string  `json:"kind"`
-	SourceID          string  `json:"source_id"`
-	SourceVersion     int64   `json:"source_version"`
-	SourceRevisionID  string  `json:"source_revision_id"`
-	SourceContentHash string  `json:"source_content_hash"`
-	SourceEventID     *string `json:"source_event_id"`
-	Amount            string  `json:"amount"`
+	MilestoneID          string  `json:"milestone_id"`
+	Kind                 string  `json:"kind"`
+	SourceID             string  `json:"source_id"`
+	SourceVersion        int64   `json:"source_version"`
+	SourceRevisionID     string  `json:"source_revision_id"`
+	SourceContentHash    string  `json:"source_content_hash"`
+	SourceEventID        *string `json:"source_event_id"`
+	Amount               string  `json:"amount"`
+	RefundFXAcknowledged bool    `json:"refund_fx_acknowledged,omitempty"`
 }
 type ContractFinanceRelease struct {
 	ContractFinanceBase
@@ -72,31 +73,43 @@ type ContractFinance struct {
 	HistoryVisibility string                `json:"history_visibility"`
 	Nodes             []ContractFinanceNode `json:"nodes"`
 }
+
+// RefundCash describes the entire immutable refund cash fact, not a converted
+// portion. Event Amount and RemainingAmount always use the milestone currency.
+type ContractRefundCash struct {
+	Currency string          `json:"currency"`
+	Amount   string          `json:"amount"`
+	PaidOn   string          `json:"paid_on"`
+	RefundFX PaymentRefundFX `json:"refund_fx"`
+}
+
 type ContractFinanceEvent struct {
-	ID                             string             `json:"id"`
-	ContractID                     string             `json:"contract_id"`
-	MilestoneID                    string             `json:"milestone_id"`
-	ContractRevisionID             string             `json:"contract_revision_id"`
-	Seq                            int64              `json:"seq"`
-	Kind                           string             `json:"kind"`
-	CostID                         *string            `json:"cost_id"`
-	PaymentID                      *string            `json:"payment_id"`
-	SourceVersion                  *int64             `json:"source_version"`
-	SourceRevisionID               *string            `json:"source_revision_id"`
-	SourceContentHash              *string            `json:"source_content_hash"`
-	SourceEventID                  *string            `json:"source_event_id"`
-	Amount                         *string            `json:"amount"`
-	RemainingAmount                *string            `json:"remaining_amount"`
-	EffectiveAmount                string             `json:"effective_amount"`
-	ReviewSnapshot                 json.RawMessage    `json:"review_snapshot"`
-	ReviewFingerprint              *string            `json:"review_fingerprint"`
-	ConditionsSatisfied            *bool              `json:"conditions_satisfied"`
-	AcknowledgeDifference          *bool              `json:"acknowledge_difference"`
-	AcknowledgeUnattributedRefunds *bool              `json:"acknowledge_unattributed_refunds"`
-	ActorID                        string             `json:"actor_id"`
-	ActorName                      string             `json:"actor_name"`
-	Reason                         string             `json:"reason"`
-	CreatedAt                      time.Time          `json:"created_at"`
-	Attachments                    []fileref.Evidence `json:"attachments"`
-	CanRelease                     bool               `json:"can_release"`
+	RefundFXAcknowledged           bool                `json:"refund_fx_acknowledged,omitempty"`
+	RefundCash                     *ContractRefundCash `json:"refund_cash,omitempty"`
+	ID                             string              `json:"id"`
+	ContractID                     string              `json:"contract_id"`
+	MilestoneID                    string              `json:"milestone_id"`
+	ContractRevisionID             string              `json:"contract_revision_id"`
+	Seq                            int64               `json:"seq"`
+	Kind                           string              `json:"kind"`
+	CostID                         *string             `json:"cost_id"`
+	PaymentID                      *string             `json:"payment_id"`
+	SourceVersion                  *int64              `json:"source_version"`
+	SourceRevisionID               *string             `json:"source_revision_id"`
+	SourceContentHash              *string             `json:"source_content_hash"`
+	SourceEventID                  *string             `json:"source_event_id"`
+	Amount                         *string             `json:"amount"`
+	RemainingAmount                *string             `json:"remaining_amount"`
+	EffectiveAmount                string              `json:"effective_amount"`
+	ReviewSnapshot                 json.RawMessage     `json:"review_snapshot"`
+	ReviewFingerprint              *string             `json:"review_fingerprint"`
+	ConditionsSatisfied            *bool               `json:"conditions_satisfied"`
+	AcknowledgeDifference          *bool               `json:"acknowledge_difference"`
+	AcknowledgeUnattributedRefunds *bool               `json:"acknowledge_unattributed_refunds"`
+	ActorID                        string              `json:"actor_id"`
+	ActorName                      string              `json:"actor_name"`
+	Reason                         string              `json:"reason"`
+	CreatedAt                      time.Time           `json:"created_at"`
+	Attachments                    []fileref.Evidence  `json:"attachments"`
+	CanRelease                     bool                `json:"can_release"`
 }

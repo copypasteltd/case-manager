@@ -190,12 +190,16 @@ func (s *Service) ContractFinance(ctx context.Context, a core.Actor, id string) 
 
 const contractFinanceEventColumns = `e.id,e.contract_id,e.milestone_id,e.contract_revision_id,e.seq,e.kind,e.cost_id,e.payment_id,e.source_version,e.source_revision_id,e.source_content_hash,e.source_event_id,
     e.amount::text,contract_finance_remaining(e.org_id,e.id)::text,contract_finance_effective(e.org_id,e.id)::text,COALESCE(e.review_snapshot,'null'::jsonb),e.review_fingerprint,
-    e.conditions_satisfied,e.acknowledge_difference,e.acknowledge_unattributed_refunds,e.actor_id,u.display_name,e.reason,e.created_at`
+    e.conditions_satisfied,e.acknowledge_difference,e.acknowledge_unattributed_refunds,e.actor_id,u.display_name,e.reason,e.created_at,e.refund_fx_acknowledged,
+    (SELECT jsonb_build_object('currency',pr.currency,'amount',pr.amount::text,'paid_on',pr.paid_on::text,'refund_fx',pr.payload->'refund_fx')
+     FROM payment_revisions pr WHERE pr.org_id=e.org_id AND pr.id=COALESCE(e.source_revision_id,
+       (SELECT src.source_revision_id FROM contract_finance_events src WHERE src.org_id=e.org_id AND src.id=e.source_event_id AND src.kind='refund'))
+     AND jsonb_typeof(pr.payload->'refund_fx')='object')`
 
 func scanContractFinanceEvent(row pgx.Row) (ContractFinanceEvent, error) {
 	e := ContractFinanceEvent{Attachments: []fileref.Evidence{}}
 	err := row.Scan(&e.ID, &e.ContractID, &e.MilestoneID, &e.ContractRevisionID, &e.Seq, &e.Kind, &e.CostID, &e.PaymentID, &e.SourceVersion, &e.SourceRevisionID, &e.SourceContentHash, &e.SourceEventID, &e.Amount, &e.RemainingAmount, &e.EffectiveAmount,
-		&e.ReviewSnapshot, &e.ReviewFingerprint, &e.ConditionsSatisfied, &e.AcknowledgeDifference, &e.AcknowledgeUnattributedRefunds, &e.ActorID, &e.ActorName, &e.Reason, &e.CreatedAt)
+		&e.ReviewSnapshot, &e.ReviewFingerprint, &e.ConditionsSatisfied, &e.AcknowledgeDifference, &e.AcknowledgeUnattributedRefunds, &e.ActorID, &e.ActorName, &e.Reason, &e.CreatedAt, &e.RefundFXAcknowledged, &e.RefundCash)
 	return e, platform.DatabaseError(err)
 }
 func (s *Service) ContractFinanceEvents(ctx context.Context, a core.Actor, id, mid, cursor string, limit int) (core.Page[ContractFinanceEvent], error) {

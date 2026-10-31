@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T01:07:13.343276+00:00",
+  "encoder_script_sha256": "440c127596264269f1dc07097eb9e9c61f75784117755eedf6e10cb8df1120db",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "24c169b190153291add74dfb9ef0397e28f84bb503e68b7ff78ad931d2151b2e",
+      "build_source_sha256": "1074483aa5a4f9f5f94c8a3383a4e2324958ed0410be47c6b06f8b3ecab475cd",
+      "capture_manifest": "docs/quality/evidence/contract-refunds/web-capture-manifest.json",
+      "capture_manifest_sha256": "5fcd6f0bcb770d4cc83c754d1912fe7563803b182e19713e6f6236ef52907877",
+      "capture_frame_count": 10,
+      "capture_duration_ms": 2097,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/contract-refunds-web-summary.png",
+          "sha256": "01e05f03e73f7589aaab3f62a57cfbeac6994c53c63bf539d7bf11bc761633c8"
+        },
+        {
+          "file": "docs/media/screenshots/contract-refunds-web-evidence.png",
+          "sha256": "3c70ebc66a86d2a3030e9d04bdcfe9beaf4c0548b268620191dfa5184675153a"
+        },
+        {
+          "file": "docs/media/screenshots/contract-refunds-web-released.png",
+          "sha256": "9f89564da523804c0e1ec87ca64586fede4d0d1ee5d0b584d3b04b8d59c2d1d7"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "22",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/contract-refunds-web.mp4",
+          "sha256": "b7e76e56700d0accc02d91e3ab413ec93445d3d742293d07e927035b4ff05560",
+          "bytes": 89874
+        },
+        {
+          "file": "docs/media/gifs/contract-refunds-web.gif",
+          "sha256": "668405c510296cd1badae4836c66a755ca1e0ae7063daecd564530627a2134dd",
+          "bytes": 295137
+        }
+      ]
+    }
+  ],
+  "scope": "Actual successful Web viewport recording, three actual screenshots and a labelled three-screenshot GIF tour. Shared mobile UI rerun and video are deferred under the first-freeze instruction; failed mobile attempt remains recorded.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-summary.png",
+      "sha256": "01e05f03e73f7589aaab3f62a57cfbeac6994c53c63bf539d7bf11bc761633c8"
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-evidence.png",
+      "sha256": "3c70ebc66a86d2a3030e9d04bdcfe9beaf4c0548b268620191dfa5184675153a"
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-released.png",
+      "sha256": "9f89564da523804c0e1ec87ca64586fede4d0d1ee5d0b584d3b04b8d59c2d1d7"
+    },
+    {
+      "file": "docs/media/videos/contract-refunds-web.mp4",
+      "sha256": "b7e76e56700d0accc02d91e3ab413ec93445d3d742293d07e927035b4ff05560",
+      "bytes": 89874
+    },
+    {
+      "file": "docs/media/gifs/contract-refunds-web.gif",
+      "sha256": "668405c510296cd1badae4836c66a755ca1e0ae7063daecd564530627a2134dd",
+      "bytes": 295137
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-mobile-summary.png",
+      "sha256": "2fa565f3ec74e5d39aa44d8888dd9ab6af50209f1a5fbe8b619aac37535111ab",
+      "scope": "Actual overview screenshot from failed-selector mobile attempt; no successful release flow claim."
+    }
+  ],
+  "freeze_encoder_selection": {
+    "base_source_sha256": "440c127596264269f1dc07097eb9e9c61f75784117755eedf6e10cb8df1120db",
+    "executed_source_sha256": "8371b7baaf534c4ae9441f5decb23ba2a83d5de1a4235e4f1489c66ac13366c9",
+    "changes": [
+      "Select Web capture only",
+      "Read its archived original successful result"
+    ],
+    "encoding_mechanics_changed": false
+  }
+}

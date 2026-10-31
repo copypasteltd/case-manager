@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "id": "native-bundle",
+  "started_at": "2026-10-31T00:54:12.043738+00:00",
+  "finished_at": "2026-10-31T01:13:06.019571+00:00",
+  "elapsed_seconds": 1133.954,
+  "command": [
+    "python",
+    "scripts/build_contract_refunds_android.py"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "exit",
+  "source_sha256": "29a2030331ef87199550934fe5bc21c7828fc9cad587947425405798e2722fbc",
+  "source_after_sha256": "6751450dae9657b4ab0c0fb50399cefbe87384b9a42e33d3d431390839a4df23",
+  "source_unchanged": false,
+  "tests": {},
+  "cases": [],
+  "private_log_sha256": "feb9bafabf8ad428589032d464bc4cc3ef6bc4da6f50670e3bc648dbbfe3111d",
+  "parser_error": null,
+  "runner_script_sha256": "913ddafcf4887ed62cbea06a6125ea2084ed055c547a05d04c7a7bff66a33d04",
+  "scope": "Current complete development APK with ordinary Metro caches, four native Windows workers, checkout filesystem adapter and exact current source map/embedded bundle checks. Native/JVM incremental test outcomes disclosed; no device or formal release acceptance.",
+  "real_device": false,
+  "virtualization_used": false
+}

@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "build_source_sha256": "ad32fc11589bd811ddc021d249737da14f0c8cbc469eb21ed5e1a10c868e8b0f",
+  "current_source_matches_build": true,
+  "apk_sha256": "b3ab05c2214bba38f54aff82616fd4e2bcd102b904c09458471bc5e087788019",
+  "current_source_map_files": [
+    {
+      "file": "app/mobile/src/pages/business/contract-finance.tsx",
+      "sha256": "1ed75009e580ab59c5b9a9a384a11e17c21f6c50e1046cc4b8575a70158e893c",
+      "matches_actual_source_map": true
+    },
+    {
+      "file": "app/mobile/src/pages/business/index.tsx",
+      "sha256": "befe120c2a095bff2422bce795874517472235278f56622a11f71493c9a4cc5a",
+      "matches_actual_source_map": true
+    },
+    {
+      "file": "app/packages/contracts/src/contract-finance.ts",
+      "sha256": "c5b7ce834cddb06be53adbd342fec82220ca9f1698a07860aae23f9568fafe71",
+      "matches_actual_source_map": true
+    }
+  ],
+  "apk_inspection_passed": true,
+  "build_record_sha256": "323f8d7a5f7d9a9535c25b2441f792e8bd93d73ed8e2bd35f78267758714f869",
+  "outer_plan_record_passed": false,
+  "outer_record_reason": "Inspection-only helper and freeze checker inputs changed during build; command exited0. Original outer record remains failed. Independent Android-specific source manifest, actual map and APK match current sources.",
+  "device_used": false,
+  "production_ready": false
+}

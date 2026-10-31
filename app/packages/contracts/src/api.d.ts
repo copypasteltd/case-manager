@@ -11131,6 +11131,7 @@ export interface components {
             source_content_hash: string;
             source_event_id: string | null;
             amount: string;
+            refund_fx_acknowledged?: boolean;
         };
         ContractFinanceRelease: {
             expected_version: number;
@@ -11197,6 +11198,13 @@ export interface components {
             history_visibility: "complete" | "restricted";
             nodes: components["schemas"]["ContractFinanceNode"][];
         };
+        ContractRefundCash: {
+            currency: string;
+            amount: string;
+            /** Format: date */
+            paid_on: string;
+            refund_fx: components["schemas"]["PaymentRefundFX"];
+        };
         ContractFinanceSnapshotSource: {
             /** Format: uuid */
             event_id: string;
@@ -11221,6 +11229,8 @@ export interface components {
             effective_amount: string;
             unattributed_refund_amount: string;
             refund_family_fingerprint: string | null;
+            attribution_currency?: string;
+            refund_cash?: components["schemas"]["ContractRefundCash"];
         };
         ContractFinanceSnapshot: {
             /** Format: uuid */
@@ -11263,6 +11273,8 @@ export interface components {
             created_at: string;
             attachments: components["schemas"]["BusinessFileReference"][];
             can_release: boolean;
+            refund_fx_acknowledged?: boolean;
+            refund_cash?: components["schemas"]["ContractRefundCash"];
         };
         ContractClosureNode: {
             /** Format: uuid */

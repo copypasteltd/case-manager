@@ -306,7 +306,7 @@ def main():
           and len(visual['screenshots']) == 15 and all(sha(ROOT / entry['file']) == entry['sha256']
               for entry in visual['screenshots'] + visual['gifs']))
     functional = EVIDENCE.parent / (baseline['evidence_group'] if baseline else 'mobile-project-resources')
-    if baseline and baseline.get('verification_mode') == 'scoped_increment':
+    if baseline and baseline.get('verification_mode') in ('scoped_increment', 'frozen_release'):
         verifier = module(baseline['verification_script'])
         current = verifier.verify()
         proof = read(functional / 'final-source-check.json')

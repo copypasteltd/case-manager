@@ -16,7 +16,7 @@ def sha(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'), default='project-business')
+    parser.add_argument('--feature', choices=('project-business', 'business-cost', 'cost-payment', 'file-batch', 'document-text', 'office-authoring', 'host-resources', 'resource-notifications', 'object-retirement', 'contract-refunds'), default='project-business')
     args = parser.parse_args()
     evidence = APP.parent / 'docs/quality/evidence' / args.feature
     spec = importlib.util.spec_from_file_location('current_js_review', APP / 'scripts/verify_scoped_increment.py')
@@ -45,7 +45,7 @@ def main():
         modules = ('mobile/src/pages/files/batches.tsx', 'mobile/src/pages/files/index.tsx', 'mobile/src/pages/files/scope-transfers.tsx', 'packages/contracts/src/file-batch.ts')
     if args.feature in ('document-text', 'office-authoring', 'host-resources'):
         modules = ('mobile/src/pages/search/index.tsx', 'mobile/src/pages/files/comparison.tsx', 'packages/contracts/src/search.ts', 'packages/contracts/src/file-comparison.ts')
-    if args.feature in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'):
+    if args.feature in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement', 'contract-refunds'):
         modules = ('mobile/src/pages/files/office.tsx', 'mobile/src/platform/office-upload.rn.ts', 'mobile/src/platform/uploads.rn.ts', 'packages/contracts/src/office-author.ts')
     if args.feature == 'host-resources':
         modules = ('mobile/src/pages/status/resources.tsx', 'mobile/src/pages/status/index.tsx', 'mobile/src/platform/status.ts', 'packages/contracts/src/host-resources.ts')
@@ -53,6 +53,8 @@ def main():
         modules = ('mobile/src/pages/status/resource-health-history.tsx', 'mobile/src/pages/notifications/index.tsx', 'packages/contracts/src/workbench.ts', 'packages/contracts/src/notifications.ts')
     if args.feature == 'object-retirement':
         modules = ('mobile/src/pages/files/retirement.tsx', 'mobile/src/pages/files/index.tsx', 'mobile/src/ui.tsx', 'packages/contracts/src/object-retirement.ts')
+    if args.feature == 'contract-refunds':
+        modules = ('mobile/src/pages/business/contract-finance.tsx', 'mobile/src/pages/business/index.tsx', 'mobile/src/platform/command.tsx', 'packages/contracts/src/contract-finance.ts')
     for name in modules:
         suffix = name if name.startswith('packages/') else name.removeprefix('mobile/')
         indices = [i for i, source in enumerate(paths) if source == suffix or source.endswith('/' + suffix)]
@@ -64,9 +66,9 @@ def main():
     record = {'passed': True, 'checked_at': datetime.now(timezone.utc).isoformat(), 'source_sha256': current.digest(config=config),
         'build_record_sha256': sha(evidence / 'native-bundle.json'), 'bundle_sha256': sha(bundle), 'source_map_sha256': sha(mapping),
         'modules': records, 'verification_script_sha256': sha(Path(__file__)), 'read_only_artifact_inspection': True,
-        'apk_built': args.feature in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'), 'formal_android_acceptance': False, 'real_device_used': False, 'virtualization_used': False}
+        'apk_built': args.feature in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement', 'contract-refunds'), 'formal_android_acceptance': False, 'real_device_used': False, 'virtualization_used': False}
     (evidence / 'android-js-content.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({'passed': True, 'current_modules_verified': len(records), 'apk_built': args.feature in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement')}))
+    print(json.dumps({'passed': True, 'current_modules_verified': len(records), 'apk_built': args.feature in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement', 'contract-refunds')}))
     return 0
 
 

@@ -364,7 +364,7 @@ def verify(config=None, save=False):
             probe.settimeout(.3)
             released.append(probe.connect_ex(('127.0.0.1',port)) != 0)
     check('Both owned review ports are released', all(released))
-    if config['name'] in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement'):
+    if config['name'] in ('office-authoring', 'host-resources', 'resource-notifications', 'object-retirement', 'contract-refunds'):
         spec = importlib.util.spec_from_file_location('office_native_sources', APP/'scripts/build_android.py')
         native = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(native)

@@ -1084,7 +1084,7 @@ finance_fingerprint = {"type": "string", "pattern": "^[a-f0-9]{32}$"}
 finance_base = {"expected_version": finance_version, "contract_version": VERSION, "reason": NAME}
 finance_link = {**finance_base, "milestone_id": ID, "kind": enum("cost", "cash", "refund"), "source_id": ID,
     "source_version": VERSION, "source_revision_id": ID, "source_content_hash": HASH, "source_event_id": nullable(ID), "amount": MONEY}
-add("ContractFinanceLink", finance_link, tuple(finance_link))
+add("ContractFinanceLink", {**finance_link, "refund_fx_acknowledged": {"type": "boolean"}}, tuple(finance_link))
 add("ContractFinanceRelease", {**finance_base, "amount": MONEY}, (*finance_base, "amount"))
 finance_review = {**finance_base, "expected_fingerprint": finance_fingerprint, "conditions_satisfied": {"type": "boolean"},
     "acknowledge_difference": {"type": "boolean"}, "acknowledge_unattributed_refunds": {"type": "boolean"}, "evidence_version_ids": array(ID, minItems=1, maxItems=20, uniqueItems=True)}
@@ -1104,7 +1104,9 @@ finance_snapshot_source = {"event_id": ID, "kind": enum("cost", "cash", "refund"
     "current_version": VERSION, "current_revision_id": ID, "content_hash": HASH, "state": enum("confirmed", "recorded", "reversed"),
     "source_amount": MONEY, "currency": CURRENCY, "direction": nullable(enum("outgoing", "incoming", "refund", "transfer")),
     "effective_amount": report_decimal, "unattributed_refund_amount": MONEY, "refund_family_fingerprint": nullable(finance_fingerprint)}
-add("ContractFinanceSnapshotSource", finance_snapshot_source, tuple(finance_snapshot_source))
+contract_refund_cash = {"currency": CURRENCY, "amount": MONEY, "paid_on": DATE, "refund_fx": ref("PaymentRefundFX")}
+add("ContractRefundCash", contract_refund_cash, tuple(contract_refund_cash))
+add("ContractFinanceSnapshotSource", {**finance_snapshot_source, "attribution_currency": CURRENCY, "refund_cash": ref("ContractRefundCash")}, tuple(finance_snapshot_source))
 finance_snapshot = {"milestone_id": ID, "contract_revision_id": ID, "sources": array(ref("ContractFinanceSnapshotSource"), maxItems=100)}
 add("ContractFinanceSnapshot", finance_snapshot, tuple(finance_snapshot))
 finance_event = {"id": ID, "contract_id": ID, "milestone_id": ID, "contract_revision_id": ID, "seq": VERSION, "kind": enum("cost", "cash", "refund", "release", "review"),
@@ -1112,7 +1114,7 @@ finance_event = {"id": ID, "contract_id": ID, "milestone_id": ID, "contract_revi
     "amount": nullable(MONEY), "remaining_amount": nullable(MONEY), "effective_amount": report_decimal, "review_snapshot": nullable(ref("ContractFinanceSnapshot")),
     "review_fingerprint": nullable(finance_fingerprint), "conditions_satisfied": nullable({"type": "boolean"}), "acknowledge_difference": nullable({"type": "boolean"}), "acknowledge_unattributed_refunds": nullable({"type": "boolean"}),
     "actor_id": ID, "actor_name": NAME, "reason": NAME, "created_at": TIME, "attachments": array(ref("BusinessFileReference")), "can_release": {"type": "boolean"}}
-add("ContractFinanceEvent", finance_event, tuple(finance_event))
+add("ContractFinanceEvent", {**finance_event, "refund_fx_acknowledged": {"type": "boolean"}, "refund_cash": ref("ContractRefundCash")}, tuple(finance_event))
 
 closure_node = {key: milestone_fields[key] for key in ("id", "title", "direction", "currency", "amount")}
 closure_node.update({"cash_amount": report_decimal, "has_unattributed_refunds": {"type": "boolean"}, "review_id": nullable(ID),

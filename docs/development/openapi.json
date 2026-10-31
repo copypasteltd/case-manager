@@ -65493,6 +65493,9 @@
           "amount": {
             "type": "string",
             "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "refund_fx_acknowledged": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -65874,6 +65877,33 @@
           "nodes"
         ]
       },
+      "ContractRefundCash": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "amount": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,13})(\\.[0-9]{1,6})?$"
+          },
+          "paid_on": {
+            "type": "string",
+            "format": "date"
+          },
+          "refund_fx": {
+            "$ref": "#/components/schemas/PaymentRefundFX"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "currency",
+          "amount",
+          "paid_on",
+          "refund_fx"
+        ]
+      },
       "ContractFinanceSnapshotSource": {
         "type": "object",
         "properties": {
@@ -65997,6 +66027,13 @@
                 "type": "null"
               }
             ]
+          },
+          "attribution_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "refund_cash": {
+            "$ref": "#/components/schemas/ContractRefundCash"
           }
         },
         "additionalProperties": false,
@@ -66251,6 +66288,12 @@
           },
           "can_release": {
             "type": "boolean"
+          },
+          "refund_fx_acknowledged": {
+            "type": "boolean"
+          },
+          "refund_cash": {
+            "$ref": "#/components/schemas/ContractRefundCash"
           }
         },
         "additionalProperties": false,

@@ -1,0 +1,35 @@
+{
+  "passed": false,
+  "id": "backend",
+  "started_at": "2026-10-31T00:42:45.055818+00:00",
+  "finished_at": "2026-10-31T00:42:47.812672+00:00",
+  "elapsed_seconds": 2.757,
+  "command": [
+    "python",
+    "scripts/test_contract_refunds_native.py",
+    "-run",
+    "^(TestContractForeignRefundAttribution|TestContractFinancialReconciliation|TestActualForeignRefunds|TestContractCompletionAndTermination|TestCrossCurrencySettlement)$",
+    "-p=1",
+    "-timeout=12m",
+    "-json"
+  ],
+  "cwd": "",
+  "exit_code": 1,
+  "parser": "go_json",
+  "source_sha256": "9d1ec88ab6ec2771d4bbd05dd26ad5f6a2d39275976d63b542ec2c3e64cab4f0",
+  "source_after_sha256": "9d1ec88ab6ec2771d4bbd05dd26ad5f6a2d39275976d63b542ec2c3e64cab4f0",
+  "source_unchanged": true,
+  "tests": {
+    "top_level_tests": [],
+    "pass": 0,
+    "fail": 0,
+    "skip": 0
+  },
+  "cases": [],
+  "private_log_sha256": "4798bfc74204c1a4673caab3016aa5d024df299134e98a6d8f85951d044be894",
+  "parser_error": "AssertionError",
+  "runner_script_sha256": "913ddafcf4887ed62cbea06a6125ea2084ed055c547a05d04c7a7bff66a33d04",
+  "scope": "Actual native HTTP/PG original-principal attribution, four human channels, dual-unit fixed review, partial release, concurrent cap, audit rollback and refund reversal; contract reconciliation/closure and cash/FX regressions.",
+  "real_device": false,
+  "virtualization_used": false
+}

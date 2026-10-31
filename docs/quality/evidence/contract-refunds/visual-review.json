@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "reviewed": true,
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-summary.png",
+      "sha256": "01e05f03e73f7589aaab3f62a57cfbeac6994c53c63bf539d7bf11bc761633c8",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-evidence.png",
+      "sha256": "3c70ebc66a86d2a3030e9d04bdcfe9beaf4c0548b268620191dfa5184675153a",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-web-released.png",
+      "sha256": "9f89564da523804c0e1ec87ca64586fede4d0d1ee5d0b584d3b04b8d59c2d1d7",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/contract-refunds-web.mp4",
+      "sha256": "b7e76e56700d0accc02d91e3ab413ec93445d3d742293d07e927035b4ff05560",
+      "bytes": 89874,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/contract-refunds-web.gif",
+      "sha256": "668405c510296cd1badae4836c66a755ca1e0ae7063daecd564530627a2134dd",
+      "bytes": 295137,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/contract-refunds-mobile-summary.png",
+      "sha256": "2fa565f3ec74e5d39aa44d8888dd9ab6af50209f1a5fbe8b619aac37535111ab",
+      "scope": "Actual overview screenshot from failed-selector mobile attempt; no successful release flow claim.",
+      "reviewed": true
+    }
+  ],
+  "review_scope": "All three actual Web PNGs; Web MP4 samples at0.5/1.5 seconds; GIF scenes at0/2/4 seconds; actual limited mobile overview PNG.",
+  "notes": [
+    "Whole USD100 cash and HKD780 principal are separately labelled in history.",
+    "Released net HKD195 and remaining difference HKD585 are visible.",
+    "Video/GIF show real authenticated UI without passwords or MFA fields.",
+    "Mobile overview is a limited actual screenshot, not a passing mobile release-flow check."
+  ],
+  "media_record_sha256": "9cf4c64395b4eeb40362918f0c82777de2bcf41c61ec42fe9fefd439643310e2"
+}

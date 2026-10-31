@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "id": "web-tests",
+  "started_at": "2026-10-31T00:35:50.838208+00:00",
+  "finished_at": "2026-10-31T00:36:12.047310+00:00",
+  "elapsed_seconds": 21.209,
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace",
+    "@copypaste/web",
+    "--",
+    "--reporter=json",
+    "--outputFile=../.local/scoped-increments/contract-refunds/web-vitest.json"
+  ],
+  "cwd": "",
+  "exit_code": 0,
+  "parser": "vitest_json",
+  "source_sha256": "cdcf0eafbdd48856e19b1a4ea7fcf56583925ee69a1ad0ea69fac7118ad41624",
+  "source_after_sha256": "cdcf0eafbdd48856e19b1a4ea7fcf56583925ee69a1ad0ea69fac7118ad41624",
+  "source_unchanged": true,
+  "tests": {
+    "numTotalTests": 428,
+    "numPassedTests": 428,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "cases": [],
+  "private_log_sha256": "e4170cf1ffcfe95f7fb09bcf4e61a6660e1d786df9d9fb8329cf4150c445e2cf",
+  "parser_error": null,
+  "runner_script_sha256": "913ddafcf4887ed62cbea06a6125ea2084ed055c547a05d04c7a7bff66a33d04",
+  "scope": "Complete Web units including nine contract principal, fixed source, acknowledgement and receipt checks.",
+  "real_device": false,
+  "virtualization_used": false
+}

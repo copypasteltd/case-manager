@@ -1,5 +1,15 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 合同财务演示 · 133
+
+Web三张真实页面PNG、一段本人登录／MFA后实际视口MP4、一份明确三截图各两秒GIF：合同净收付、195 HKD归属与整笔100 USD实收、解除后的查询。移动本轮仅提供实际概览PNG；失败定位器、修正与延期重跑如实保留，无移动视频／GIF通过声明。
+
+Actual synthetic Web pixels and a limited mobile overview. No credentials, real business data or bank transfer. Expanded mobile browser validation is deferred by the user’s first-freeze instruction.
+
+[Web概览](screenshots/contract-refunds-web-summary.png) · [双币依据](screenshots/contract-refunds-web-evidence.png) · [解除后](screenshots/contract-refunds-web-released.png) · [移动概览](screenshots/contract-refunds-mobile-summary.png)
+
+[Web MP4](videos/contract-refunds-web.mp4) · [Web GIF导览](gifs/contract-refunds-web.gif) · [实际边界](../quality/133-contract-finance-verification.md) · [素材摘要](../quality/evidence/contract-refunds/media.json)
+
 ## 原件清理演示 · 132
 
 六张截图、两段实际MP4与两份三截图GIF导览：已知候选、固定观察清单、此前隔离Worker的准确不存在回执。登录／MFA后真实视口，合成对象及夹具时间；不表示真实云删除。

@@ -1,5 +1,25 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+**First frozen candidate: [v0.1.0-rc.1](releases/v0.1.0-rc.1/README.md).** Exact source tag, download hashes, deployment steps and deferred checks are recorded together.
+
+Executed checks: five selected native HTTP/PostgreSQL suites,74 passing records;428 Web and513 shared-mobile tests. Build/native cache and inspection-only provenance are recorded separately; this is not full production acceptance.
+
+Increment133 completes the four-client contract finance path: effective contract → actual expense/cash attribution → foreign-refund principal attribution → partial release → evidence-bound human reconciliation → renewed review after source changes. Shared mobile now has the full contract finance center; Web distinguishes whole received cash from contract principal.
+
+Usage: on Web open the contract’s “合同财务归属”; on WeChat, Douyin or Android choose “合同财务归属与核对”. Pin the original actual cash first, select its exact refund, enter contract-currency principal and explicitly review the units. Append a partial release to correct attribution. Reconcile with fixed file versions and explicit condition/difference checks. Attribution does not transfer bank cash or create expense.
+
+Example:780 HKD paid,100 USD actually refunded,780 HKD reviewed principal. Four195 HKD attributions exhaust780 HKD; each separately labels the entire100 USD cash fact. Refund/original caps, concurrency, idempotency, current authority and recent MFA remain mandatory. Full cash reversal preserves old records while removing current effective refund principal.
+
+Normal schema99→100 preserves prior journals/reviews. Foreign expense-refund attribution, foreign outgoing returns on receivable contracts, adopted company FX policy and complete acceptance remain open. All23 packages (14 P0/9 P1), five exclusions and eight draft Skills remain explicit.
+
+[实现与使用 / Implementation](development/133-contract-finance-closure.md) · [实际检查 / Checks](quality/133-contract-finance-verification.md) · [本轮及全部23项 / All remaining work](delivery/05-functional-closure-133.md)
+
+![合同退款本金与整笔实收 / Contract principal and whole cash](media/screenshots/contract-refunds-web-evidence.png)
+
+[Web实际录制 / Web recording](media/videos/contract-refunds-web.mp4) · [Web三截图导览 / Web screenshot tour](media/gifs/contract-refunds-web.gif) · [移动概览 / Mobile overview](media/screenshots/contract-refunds-mobile-summary.png)
+
+## Increment132 · Previously published
+
 Current local checks: ten HTTP/PG suites (69 passing records),419 Web cases,504 shared-mobile cases and182 core test records pass. Build, cached-native and actual cloud/platform/production acceptance boundaries are recorded separately.
 
 Increment132 closes known historical-original and committed-upload-draft retention: exact inventory → immutable plan → at least24-hour observation → recent-MFA human approval → permanent dependency/key barrier → dedicated provider execution → immutable attempt receipts. Logical capacity is released only after both historical originals are confirmed absent. Unknown outcomes reconcile the exact original on retry; cancellation never restores deleted content.
