@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Exact153 proof retained without replay; superseded153 baseline verified from frozen Git",
+      "passed": true
+    },
+    {
+      "name": "One current153 native suite and15 records retain exact source binding",
+      "passed": true
+    },
+    {
+      "name": "Fresh Linux/Web/runtime inputs match frozen source153 and schema113",
+      "passed": true
+    },
+    {
+      "name": "Fresh WeChat and Douyin outputs contain personal TG notices and earlier modules",
+      "passed": true
+    },
+    {
+      "name": "Fresh development APK has current mapped sources and valid native inspection",
+      "passed": true
+    },
+    {
+      "name": "Actual native JVM task outcome and cached28 XML results remain explicit",
+      "passed": true
+    },
+    {
+      "name": "Five archive assets reconstruct complete application Git blobs with expanded private scan",
+      "passed": true
+    },
+    {
+      "name": "New annotated source and artifact refs fix sealed manifests and asset hashes",
+      "passed": true
+    },
+    {
+      "name": "All seven earlier source/artifact refs remain immutable",
+      "passed": true
+    },
+    {
+      "name": "Prior proof/media and113 installed migration files preserve exact bytes",
+      "passed": true
+    },
+    {
+      "name": "scope-check.json passes without business-case claims",
+      "passed": true
+    },
+    {
+      "name": "acceptance-applicability-check.json passes without business-case claims",
+      "passed": true
+    },
+    {
+      "name": "Reduced validation and unresolved production scope stay disclosed",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/release-candidate-154/retained-functional-proof.json": "3596ce089022d53ca2f234bf2c955a3399a0612850de1ae6cf68a2719aa1bf70",
+    "docs/quality/evidence/release-candidate-154/retained-native-proof.json": "0563d3603344d4a37b4ecd7a63ad3cb139c65e1a4386f1011440cfac8518364a",
+    "docs/releases/v0.1.0-rc.8/release-manifest.json": "f4f97f1e8e0e936f335c32dfd7dc04d528297f8160cbdd946f00b5de914da529",
+    "docs/releases/v0.1.0-rc.8/server-build.json": "7b59a4d6792ede8527306022d1565f82deae1f4157e3e5e15d9a799388b6254a",
+    "docs/quality/evidence/release-candidate-154/seal.json": "f7b507f13e15fd32299101e55eb122b1c27b768abf3e30a1f0eb05a7d778b9b6",
+    "docs/quality/evidence/release-candidate-154/server-build-scope.json": "6aeefaf717c4c6270b227fece24b88e79607359dd19d99637b0d6cb577838a59",
+    "docs/quality/evidence/release-candidate-154/miniapps-build.json": "bfc326f2d56fd6654312e67d6da4872cf053242b0ed68a17660518076552d1b6",
+    "docs/quality/evidence/release-candidate-154/miniapps-inspection.json": "34bdac589d57f3dd005dedfb300f847cc946d159cfc4cace9226d83cb1e2a32a",
+    "docs/quality/evidence/release-candidate-154/build.json": "7d087a01052f2f7f72205249e9090f71c2269104dcf11897b8c77d4eef2103e5",
+    "docs/quality/evidence/release-candidate-154/apk-inspection.json": "e4bbb48989ec9f3008f0a1974908c8a6e3697f7033e5b73fa30c09084237bad7",
+    "docs/quality/evidence/release-candidate-154/android-build-scope.json": "c5fef2661b062abf1f0a8b53dd6f91b78343c0a99d5c99dcdde072d70b27f75b",
+    "docs/releases/v0.1.0-rc.8/git-publication.json": "e61d29114434c9dbc31032dcf3a2f7412e653732a92026a625c26e7a9a730f50",
+    "docs/quality/evidence/release-candidate-154/scope-check.json": "76f26ecf35f5ab84548be620c9738a7434a7431ff4b250ce1c377210752313a5",
+    "docs/quality/evidence/release-candidate-154/acceptance-applicability-check.json": "08cfdb658c38131d77fd15ccc2e3779793affb25748e35d075984052b24ba29c"
+  },
+  "retained": {
+    "business_source_increment": 153,
+    "business_source_commit": "160d78f8032be21c9eab72fc28415fda598fb7df",
+    "business_tests_reexecuted": false,
+    "full_backend_increment": 121,
+    "full_client_increment": 136,
+    "runtime_tests_executed_increment": 151,
+    "runtime_tests": 58
+  },
+  "interaction_source_sha256": "103075550a6929a103ffd46c785da58e6ee5055df229331cb2449ebe51842aa9",
+  "verification_script_sha256": "ca8eae360500dd0b1a442d3a37d9d4edf1c92784ad3e1a1d7d474d62803f836a",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "new_android_apk": true,
+  "virtualization_used": false
+}

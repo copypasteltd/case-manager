@@ -1,0 +1,9 @@
+{
+  "verification_passed": true,
+  "verification_exit_code": 0,
+  "verification_checks": 21,
+  "private_wrapper_exit_code": 1,
+  "private_wrapper_error": "TypeError: object of type 'int' has no len()",
+  "cause": "Summary printing treated the numeric checks count as an array after the actual report had been written.",
+  "correction": "Read numeric checks/failed fields directly; actual verification output retained unchanged."
+}

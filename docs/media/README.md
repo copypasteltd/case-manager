@@ -1,5 +1,8 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+154仅将153已有实际Web截图、无声MP4和六秒截图导览GIF随全部公开媒体冻结打包；未改变UI，不新录制，不将复用媒体称为本轮新交互。 / rc.8 retains exact153 media; no new recording or UI acceptance is claimed.
+
+
 153新增本人TG业务提醒的三张实际Web截图、实际像素无声MP4与六秒截图导览GIF。记录本人设置核对、实际人工对账提交与明确停用；接口送达来自受控合成适配器，不代表真实TG发送。原有媒体保留。
 
 [设置截图](screenshots/notification-telegram-web-settings.png) · [人工核对](screenshots/notification-telegram-web-review.png) · [停用与回执](screenshots/notification-telegram-web-closed.png) · [实际录屏](videos/notification-telegram-web.mp4) · [六秒截图导览GIF](gifs/notification-telegram-web.gif)

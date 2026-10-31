@@ -1,5 +1,8 @@
 # 更新记录 / Changelog
 
+154 · 将完整业务153／结构113冻结为v0.1.0-rc.8，同版服务器／Web／运行器、微信／抖音及新Android开发APK、完整源码／媒体五包；保留153业务证据，七旧冻不变。正式签名、真实环境与23项验收继续开放。 / Freeze matching153 application artifacts, complete source and media; fresh packaging checks are distinct from retained business proof.
+
+
 153 · 接通四端本人TG业务提醒：明确订阅／停用、站内事件转私聊固定提示、当前授权复核、五次尝试与未知结果人工对账、不可变回执；结构113。只做集中检查与当前Web媒体；rc.7／APK152保持151／112，真实资料后续提供。 / Owner-opted personal TG business notices and immutable delivery reconciliation; frozen artifacts unchanged.
 
 

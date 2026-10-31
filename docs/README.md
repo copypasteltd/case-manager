@@ -1,5 +1,20 @@
 # CopyPaste 内部管理平台文档中心
 
+**增量154 · 同版冻结交付 / Matching frozen delivery · v0.1.0-rc.8**
+
+业务153／结构113已固定，服务器、Web、秘书运行器、微信、抖音和Android开发包使用同一源码；包含本人TG提醒与既有主要业务。五项下载另含完整应用源码／文档及全部演示媒体。七个旧冻结版本、原PG100与API、既有证据和媒体保持不动。
+
+Matching server/Web/runtime, WeChat, Douyin and development Android artifacts now bind business153/schema113, including personal TG notices. Complete application source/docs and all public media are separately downloadable. This internal candidate preserves seven earlier freezes; formal signing, real providers and production acceptance remain open.
+
+[固定下载与使用 / Downloads and use](releases/v0.1.0-rc.8/README.md) · [方案与操作 / Delivery design](development/154-frozen-release-delivery.md) · [核验边界 / Verification](quality/154-frozen-release-verification.md) · [全部23项未完成 / All remaining work](delivery/05-functional-closure-154.md)
+
+先核对SHA256与固定清单，再按原生Linux／持久PG／HTTPS手册正常升级到113。移动包为本地API构建，连接实际服务器前配置真实身份／域名并重建；APK为开发包。真实服务器、云、Codex、TG及平台资料按用户答复后续提供。GitHub Releases网页原API403，当前通过授权SSH源码标签／产物分支交付。
+
+Verify checksums before use. Upgrade normally to113 and rebuild clients with the actual HTTPS API/platform identities. Android signing and actual deployment remain separate. Selected153 business proof and media are retained exactly; fresh154 builds/archive checks do not imply full regression. [Actual Web video](media/videos/notification-telegram-web.mp4) · [Demo GIF](media/gifs/notification-telegram-web.gif).
+
+以下增量段落保留历史来源；其“当前／最新”仅指各自当时版本。当前交付以rc.8固定清单为准。 Earlier sections retain historical provenance; their current/latest wording is scoped to that increment. rc.8 is the current delivery manifest.
+
+
 **增量153 · 本人 TG 业务提醒 / Personal Telegram notices**
 
 已接通员工主动订阅、十类站内业务通知的私聊提示、不可变回执、未知结果人工核对／重试及明确停用。四端源码同步，站外只显示登录提示；实际服务器和云／模型／TG／平台资料按用户答复后续提供。本轮按加速要求只运行集中检查，记录失败并补齐受影响的实际页面媒体。

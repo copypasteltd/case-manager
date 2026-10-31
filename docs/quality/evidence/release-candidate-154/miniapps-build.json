@@ -1,0 +1,1154 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T14:32:53.165115+00:00",
+  "source_commit": "160d78f8032be21c9eab72fc28415fda598fb7df",
+  "source_files": [
+    "mobile/android/app/build.gradle",
+    "mobile/android/app/proguard-rules.pro",
+    "mobile/android/app/src/local/res/xml/network_security_config.xml",
+    "mobile/android/app/src/main/AndroidManifest.xml",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/ApiHTTP.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPClipboardModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPHTTPModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPPlatformPackage.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPReadCacheModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/CPUploadModule.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/GeneratedUploadSource.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/MainActivity.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/MainApplication.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/ReadCache.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/SAFUploadSource.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadLayout.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadManager.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadPermit.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadServiceHost.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadSource.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadStore.java",
+    "mobile/android/app/src/main/java/hk/copypaste/workspace/UploadTransfer.java",
+    "mobile/android/app/src/main/res/values/styles.xml",
+    "mobile/android/app/src/main/res/xml/data_extraction_rules.xml",
+    "mobile/android/app/src/main/res/xml/network_security_config.xml",
+    "mobile/android/app/src/main/res/xml/read_cache_paths.xml",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/ApiHTTPTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/ReadCacheTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/UploadBoundariesTest.java",
+    "mobile/android/app/src/test/java/hk/copypaste/workspace/UploadTransferTest.java",
+    "mobile/android/build.gradle",
+    "mobile/android/gradle.properties",
+    "mobile/android/gradle/wrapper/gradle-wrapper.jar",
+    "mobile/android/gradle/wrapper/gradle-wrapper.properties",
+    "mobile/android/gradlew",
+    "mobile/android/gradlew.bat",
+    "mobile/android/settings.gradle",
+    "mobile/babel.config.js",
+    "mobile/config/index.ts",
+    "mobile/index.js",
+    "mobile/metro.config.js",
+    "mobile/native/babel-primitives.cjs",
+    "mobile/native/babel-primitives.test.cjs",
+    "mobile/native/build-bundle.cjs",
+    "mobile/native/google-mirror.init.gradle",
+    "mobile/native/jvm-tests/build.gradle",
+    "mobile/native/jvm-tests/gradle.properties",
+    "mobile/native/jvm-tests/settings.gradle",
+    "mobile/package.json",
+    "mobile/react-native.config.js",
+    "mobile/src/app.config.ts",
+    "mobile/src/app.css",
+    "mobile/src/app.tsx",
+    "mobile/src/assets/logo-dark.png",
+    "mobile/src/assets/logo-light.png",
+    "mobile/src/env.d.ts",
+    "mobile/src/index.html",
+    "mobile/src/pages/budget/index.tsx",
+    "mobile/src/pages/business/contract-finance.tsx",
+    "mobile/src/pages/business/controls.tsx",
+    "mobile/src/pages/business/editor.tsx",
+    "mobile/src/pages/business/index.tsx",
+    "mobile/src/pages/business/request-actions.tsx",
+    "mobile/src/pages/content/index.tsx",
+    "mobile/src/pages/content/view.h5.tsx",
+    "mobile/src/pages/content/view.rn.tsx",
+    "mobile/src/pages/content/view.tsx",
+    "mobile/src/pages/deliverable/index.tsx",
+    "mobile/src/pages/detail/index.tsx",
+    "mobile/src/pages/detail/mutations.tsx",
+    "mobile/src/pages/detail/snapshot.tsx",
+    "mobile/src/pages/files/batches.tsx",
+    "mobile/src/pages/files/cleanup.tsx",
+    "mobile/src/pages/files/comparison.tsx",
+    "mobile/src/pages/files/forms.tsx",
+    "mobile/src/pages/files/index.tsx",
+    "mobile/src/pages/files/office.tsx",
+    "mobile/src/pages/files/replica-retry.tsx",
+    "mobile/src/pages/files/retirement.tsx",
+    "mobile/src/pages/files/scope-transfers.tsx",
+    "mobile/src/pages/finance/amortization.tsx",
+    "mobile/src/pages/finance/cost-payment.tsx",
+    "mobile/src/pages/finance/editor.tsx",
+    "mobile/src/pages/finance/history.tsx",
+    "mobile/src/pages/finance/index.tsx",
+    "mobile/src/pages/finance/operations.tsx",
+    "mobile/src/pages/finance/payment-fees.tsx",
+    "mobile/src/pages/finance/subscriptions.tsx",
+    "mobile/src/pages/home/business.tsx",
+    "mobile/src/pages/home/index.tsx",
+    "mobile/src/pages/knowledge/comments.tsx",
+    "mobile/src/pages/knowledge/index.tsx",
+    "mobile/src/pages/knowledge/markdown.tsx",
+    "mobile/src/pages/knowledge/sources.tsx",
+    "mobile/src/pages/list/index.tsx",
+    "mobile/src/pages/login/index.tsx",
+    "mobile/src/pages/login/password-recovery.tsx",
+    "mobile/src/pages/notifications/delivery.tsx",
+    "mobile/src/pages/notifications/index.tsx",
+    "mobile/src/pages/notifications/reminders.tsx",
+    "mobile/src/pages/notifications/telegram.tsx",
+    "mobile/src/pages/project/budget-comparison.tsx",
+    "mobile/src/pages/project/business.tsx",
+    "mobile/src/pages/project/change-form.tsx",
+    "mobile/src/pages/project/change.tsx",
+    "mobile/src/pages/project/closeout.tsx",
+    "mobile/src/pages/project/comments.tsx",
+    "mobile/src/pages/project/index.tsx",
+    "mobile/src/pages/project/members.tsx",
+    "mobile/src/pages/project/overview.tsx",
+    "mobile/src/pages/project/resource-forms.tsx",
+    "mobile/src/pages/project/resources.tsx",
+    "mobile/src/pages/project/setup.tsx",
+    "mobile/src/pages/project/task-forms.tsx",
+    "mobile/src/pages/reports/finance-fx.tsx",
+    "mobile/src/pages/reports/index.tsx",
+    "mobile/src/pages/search/index.tsx",
+    "mobile/src/pages/secretary/concerns.tsx",
+    "mobile/src/pages/secretary/contract-bodies.tsx",
+    "mobile/src/pages/secretary/deliverable-submission.tsx",
+    "mobile/src/pages/secretary/file-creates.tsx",
+    "mobile/src/pages/secretary/file-recovery.tsx",
+    "mobile/src/pages/secretary/file-updates.tsx",
+    "mobile/src/pages/secretary/finance-reports.tsx",
+    "mobile/src/pages/secretary/index.tsx",
+    "mobile/src/pages/secretary/live.ts",
+    "mobile/src/pages/secretary/mutations.tsx",
+    "mobile/src/pages/secretary/oa-requests.tsx",
+    "mobile/src/pages/secretary/oa-text.tsx",
+    "mobile/src/pages/secretary/organization.tsx",
+    "mobile/src/pages/secretary/plans.tsx",
+    "mobile/src/pages/secretary/post-writes.tsx",
+    "mobile/src/pages/secretary/project-catalog.tsx",
+    "mobile/src/pages/secretary/runtime.tsx",
+    "mobile/src/pages/secretary/service-reports.tsx",
+    "mobile/src/pages/secretary/sources.tsx",
+    "mobile/src/pages/secretary/subscription-portfolio.tsx",
+    "mobile/src/pages/secretary/task-creation.tsx",
+    "mobile/src/pages/secretary/task-dependency.tsx",
+    "mobile/src/pages/settings/audit.tsx",
+    "mobile/src/pages/settings/index.tsx",
+    "mobile/src/pages/settings/miniapp-bindings.tsx",
+    "mobile/src/pages/settings/security.tsx",
+    "mobile/src/pages/settings/storage.tsx",
+    "mobile/src/pages/status/history.tsx",
+    "mobile/src/pages/status/incident-editor.tsx",
+    "mobile/src/pages/status/index.tsx",
+    "mobile/src/pages/status/live.ts",
+    "mobile/src/pages/status/resource-health-history.tsx",
+    "mobile/src/pages/status/resources.tsx",
+    "mobile/src/pages/subscription-period/index.tsx",
+    "mobile/src/pages/telegram/access.tsx",
+    "mobile/src/pages/telegram/channels.tsx",
+    "mobile/src/pages/telegram/inbox.tsx",
+    "mobile/src/pages/telegram/index.tsx",
+    "mobile/src/pages/telegram/operations.tsx",
+    "mobile/src/pages/uploads/index.tsx",
+    "mobile/src/pages/uploads/view.rn.tsx",
+    "mobile/src/pages/uploads/view.tsx",
+    "mobile/src/platform/amortization.test.ts",
+    "mobile/src/platform/app-root.rn.tsx",
+    "mobile/src/platform/app-root.tsx",
+    "mobile/src/platform/audit.test.ts",
+    "mobile/src/platform/business-input.test.ts",
+    "mobile/src/platform/business-input.ts",
+    "mobile/src/platform/change-input.test.ts",
+    "mobile/src/platform/change-input.ts",
+    "mobile/src/platform/collection.ts",
+    "mobile/src/platform/command-keys.test.ts",
+    "mobile/src/platform/command-keys.ts",
+    "mobile/src/platform/command.tsx",
+    "mobile/src/platform/components.rn.tsx",
+    "mobile/src/platform/components.tsx",
+    "mobile/src/platform/concern-mutation.test.ts",
+    "mobile/src/platform/content-sink.rn.ts",
+    "mobile/src/platform/content-sink.ts",
+    "mobile/src/platform/content.test.ts",
+    "mobile/src/platform/content.ts",
+    "mobile/src/platform/contract-body.test.ts",
+    "mobile/src/platform/contract-finance.test.ts",
+    "mobile/src/platform/contract-reminders.test.ts",
+    "mobile/src/platform/cost-business.test.ts",
+    "mobile/src/platform/cost-payment.test.ts",
+    "mobile/src/platform/deliverable-submission.test.ts",
+    "mobile/src/platform/drafts.test.ts",
+    "mobile/src/platform/drafts.ts",
+    "mobile/src/platform/encoding.ts",
+    "mobile/src/platform/file-batch.test.ts",
+    "mobile/src/platform/file-comparison.test.ts",
+    "mobile/src/platform/file-input.test.ts",
+    "mobile/src/platform/file-input.ts",
+    "mobile/src/platform/file-recovery.test.ts",
+    "mobile/src/platform/financial-input.test.ts",
+    "mobile/src/platform/financial-input.ts",
+    "mobile/src/platform/fixed-files.tsx",
+    "mobile/src/platform/form.ts",
+    "mobile/src/platform/incident-input.ts",
+    "mobile/src/platform/indexed-context.test.ts",
+    "mobile/src/platform/miniapp-context.test.ts",
+    "mobile/src/platform/miniapp-context.ts",
+    "mobile/src/platform/miniapp-login.rn.ts",
+    "mobile/src/platform/miniapp-login.ts",
+    "mobile/src/platform/multipart-cleanup.test.ts",
+    "mobile/src/platform/native-styles.ts",
+    "mobile/src/platform/native-wire.test.ts",
+    "mobile/src/platform/native-wire.ts",
+    "mobile/src/platform/notification-delivery.test.ts",
+    "mobile/src/platform/notification-telegram.test.ts",
+    "mobile/src/platform/oa-text.test.ts",
+    "mobile/src/platform/object-retirement.test.ts",
+    "mobile/src/platform/office-upload.rn.ts",
+    "mobile/src/platform/office-upload.ts",
+    "mobile/src/platform/page.ts",
+    "mobile/src/platform/payment-fees.test.ts",
+    "mobile/src/platform/payment-fx.test.ts",
+    "mobile/src/platform/post-input.test.ts",
+    "mobile/src/platform/post-input.ts",
+    "mobile/src/platform/post-link.h5.ts",
+    "mobile/src/platform/post-link.rn.ts",
+    "mobile/src/platform/post-link.ts",
+    "mobile/src/platform/post-markdown.test.ts",
+    "mobile/src/platform/post-markdown.ts",
+    "mobile/src/platform/primitives.rn.tsx",
+    "mobile/src/platform/project-closeout.test.ts",
+    "mobile/src/platform/project-closeout.ts",
+    "mobile/src/platform/project-input.test.ts",
+    "mobile/src/platform/project-input.ts",
+    "mobile/src/platform/project-overview.test.ts",
+    "mobile/src/platform/project-overview.ts",
+    "mobile/src/platform/project-resource-input.test.ts",
+    "mobile/src/platform/project-resource-input.ts",
+    "mobile/src/platform/replica-notifications.test.ts",
+    "mobile/src/platform/report-file.rn.ts",
+    "mobile/src/platform/report-file.ts",
+    "mobile/src/platform/scope-transfer.test.ts",
+    "mobile/src/platform/search.test.ts",
+    "mobile/src/platform/secretary.test.ts",
+    "mobile/src/platform/secretary.ts",
+    "mobile/src/platform/session.test.ts",
+    "mobile/src/platform/session.ts",
+    "mobile/src/platform/status-proof.ts",
+    "mobile/src/platform/status.test.ts",
+    "mobile/src/platform/status.ts",
+    "mobile/src/platform/storage-operations.test.ts",
+    "mobile/src/platform/subscription-input.test.ts",
+    "mobile/src/platform/subscription-input.ts",
+    "mobile/src/platform/taro.rn.ts",
+    "mobile/src/platform/taro.ts",
+    "mobile/src/platform/task-comment.test.ts",
+    "mobile/src/platform/task-creation.test.ts",
+    "mobile/src/platform/task-dependency.test.ts",
+    "mobile/src/platform/task-input.test.ts",
+    "mobile/src/platform/task-input.ts",
+    "mobile/src/platform/telegram-clipboard.rn.ts",
+    "mobile/src/platform/telegram-clipboard.ts",
+    "mobile/src/platform/telegram-input.test.ts",
+    "mobile/src/platform/telegram-input.ts",
+    "mobile/src/platform/theme.rn.ts",
+    "mobile/src/platform/theme.ts",
+    "mobile/src/platform/upload-entry.rn.tsx",
+    "mobile/src/platform/upload-entry.tsx",
+    "mobile/src/platform/upload-transfer.test.ts",
+    "mobile/src/platform/upload-transfer.ts",
+    "mobile/src/platform/uploads.rn.ts",
+    "mobile/src/platform/uploads.ts",
+    "mobile/src/platform/workbench.test.ts",
+    "mobile/src/tokens.css",
+    "mobile/src/ui.tsx",
+    "mobile/tsconfig.concern-test.json",
+    "mobile/tsconfig.json",
+    "mobile/tsconfig.test.json",
+    "package-lock.json",
+    "package.json",
+    "packages/archive-extraction/index.cjs",
+    "packages/archive-extraction/package.json",
+    "packages/contracts/fixtures/contract-body.ts",
+    "packages/contracts/package.json",
+    "packages/contracts/src/agent-runtime.ts",
+    "packages/contracts/src/amortization.ts",
+    "packages/contracts/src/api.d.ts",
+    "packages/contracts/src/audit.ts",
+    "packages/contracts/src/budget-comparison.ts",
+    "packages/contracts/src/budget.ts",
+    "packages/contracts/src/concern-mutation.ts",
+    "packages/contracts/src/contract-body.ts",
+    "packages/contracts/src/contract-finance.ts",
+    "packages/contracts/src/cost-business.ts",
+    "packages/contracts/src/cost-payment.ts",
+    "packages/contracts/src/deliverable-submission.ts",
+    "packages/contracts/src/file-batch.ts",
+    "packages/contracts/src/file-comparison.ts",
+    "packages/contracts/src/file-recovery.ts",
+    "packages/contracts/src/file-replica.ts",
+    "packages/contracts/src/file-update.ts",
+    "packages/contracts/src/finance-fx.ts",
+    "packages/contracts/src/finance-reports.ts",
+    "packages/contracts/src/host-resources.ts",
+    "packages/contracts/src/indexed-context.ts",
+    "packages/contracts/src/multipart-cleanup.ts",
+    "packages/contracts/src/mutation-validation.ts",
+    "packages/contracts/src/mutation.ts",
+    "packages/contracts/src/notification-telegram.ts",
+    "packages/contracts/src/notifications.ts",
+    "packages/contracts/src/oa-request.ts",
+    "packages/contracts/src/oa-text.ts",
+    "packages/contracts/src/object-retirement.ts",
+    "packages/contracts/src/office-author.ts",
+    "packages/contracts/src/payment-fees.ts",
+    "packages/contracts/src/payment-fx.ts",
+    "packages/contracts/src/post-write.ts",
+    "packages/contracts/src/project-business.ts",
+    "packages/contracts/src/project-catalog.ts",
+    "packages/contracts/src/scope-transfer.ts",
+    "packages/contracts/src/search.ts",
+    "packages/contracts/src/storage-operations.ts",
+    "packages/contracts/src/subscription-portfolio.ts",
+    "packages/contracts/src/task-comment.ts",
+    "packages/contracts/src/task-creation.ts",
+    "packages/contracts/src/task-dependency.ts",
+    "packages/contracts/src/telegram-inbox.ts",
+    "packages/contracts/src/telegram-operations.ts",
+    "packages/contracts/src/workbench.ts",
+    "packages/contracts/test/amortization-cases.ts",
+    "packages/contracts/test/amortization-fixture.ts",
+    "packages/contracts/test/audit-fixture.ts",
+    "packages/contracts/test/completed-upload-retirement-checks.ts",
+    "packages/contracts/test/contract-finance-cases.ts",
+    "packages/contracts/test/contract-reminders-cases.ts",
+    "packages/contracts/test/document-text-cases.ts",
+    "packages/contracts/test/file-batch-cases.ts",
+    "packages/contracts/test/file-comparison-cases.ts",
+    "packages/contracts/test/file-recovery-cases.ts",
+    "packages/contracts/test/host-resource-cases.ts",
+    "packages/contracts/test/multipart-cleanup-fixture.ts",
+    "packages/contracts/test/notification-retry-fixture.ts",
+    "packages/contracts/test/notification-telegram-fixture.ts",
+    "packages/contracts/test/object-retirement-fixture.ts",
+    "packages/contracts/test/office-author-cases.ts",
+    "packages/contracts/test/payment-fees-cases.ts",
+    "packages/contracts/test/payment-fx-cases.ts",
+    "packages/contracts/test/retirement-renewal-fixture.ts",
+    "packages/contracts/test/scope-transfer-cases.ts",
+    "packages/contracts/test/workbench-cases.ts",
+    "packages/deepmerge-safe/LICENSE",
+    "packages/deepmerge-safe/UPSTREAM.json",
+    "packages/deepmerge-safe/index.cjs",
+    "packages/deepmerge-safe/index.d.ts",
+    "packages/deepmerge-safe/package.json",
+    "packages/design/package.json",
+    "packages/design/src/tokens.css",
+    "packages/design/src/tokens.json",
+    "packages/dev-server-compat/client/socket.js",
+    "packages/dev-server-compat/index.cjs",
+    "packages/dev-server-compat/index.d.cts",
+    "packages/dev-server-compat/package.json",
+    "packages/image-size-compat/index.cjs",
+    "packages/image-size-compat/package.json",
+    "packages/latest-version-compat/index.cjs",
+    "packages/latest-version-compat/package.json",
+    "packages/template-download/index.cjs",
+    "packages/template-download/package.json",
+    "packages/template-minifier/index.cjs",
+    "packages/template-minifier/package.json",
+    "packages/template-minifier/worker.cjs",
+    "packages/uri-decoder-compat/index.cjs",
+    "packages/uri-decoder-compat/index.d.cts",
+    "packages/uri-decoder-compat/package.json"
+  ],
+  "source_sha256": "057a9c49d5bc8599f3f8646c0b5c803592741ba4127009ad1965768248d649aa",
+  "source_unchanged": true,
+  "phases": [
+    {
+      "target": "weapp",
+      "exit_code": 0,
+      "elapsed_seconds": 28.258,
+      "private_log_sha256": "3a1daab8e4c0d7f39d00fc2e0ed56f76c8fb0269fbd96a3e1ec126e8e8e9275f"
+    },
+    {
+      "target": "tt",
+      "exit_code": 0,
+      "elapsed_seconds": 23.133,
+      "private_log_sha256": "1e1a5b88e47d0a9e8f81e9a8fe53b1e06c40f0dcb68449c7a40b4dd181ecf409"
+    }
+  ],
+  "files": [
+    {
+      "file": "weapp/app.js",
+      "bytes": 96928,
+      "sha256": "5c1712f14c2145c00cff524f899581041588e34ecb9e8c84fd6af47cdcfa8608"
+    },
+    {
+      "file": "weapp/app.js.LICENSE.txt",
+      "bytes": 749,
+      "sha256": "08604636b38ae83699d7a95fc32255f871cbee504511ee89fdef4f98cdfcc356"
+    },
+    {
+      "file": "weapp/app.json",
+      "bytes": 630,
+      "sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    },
+    {
+      "file": "weapp/app.wxss",
+      "bytes": 10568,
+      "sha256": "930e988f030c782a87c9131f267625500a60f7434366d63a5f7153bcd060a6a4"
+    },
+    {
+      "file": "weapp/assets/logo-dark.png",
+      "bytes": 27918,
+      "sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1"
+    },
+    {
+      "file": "weapp/assets/logo-light.png",
+      "bytes": 28897,
+      "sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7"
+    },
+    {
+      "file": "weapp/base.wxml",
+      "bytes": 64120,
+      "sha256": "86cf7bf16f0afe18f0a7454bd275d7d0a944de5c6d0a267b0316610404a7c638"
+    },
+    {
+      "file": "weapp/common.js",
+      "bytes": 386751,
+      "sha256": "d03101783f474731d45ea1fe2c428af6d066b7538f7b7c38fda6632f659828cc"
+    },
+    {
+      "file": "weapp/comp.js",
+      "bytes": 171,
+      "sha256": "ebc90d3920855ba0590ea8b6296d1d83e32f041756ca282e0311bebd581a2703"
+    },
+    {
+      "file": "weapp/comp.json",
+      "bytes": 86,
+      "sha256": "0ffa23661c3005b00e0167f3eb2b2cac516bd754223e8b0fa4d51e68e66d7dc0"
+    },
+    {
+      "file": "weapp/comp.wxml",
+      "bytes": 140,
+      "sha256": "904495b6e07f81d74f23d713c7f42a7450189f56879e329e5353e18d08201165"
+    },
+    {
+      "file": "weapp/pages/budget/index.js",
+      "bytes": 7057,
+      "sha256": "5bef50b8cebc720c48fbe03deb8e9138f6a662b228c79953b020bda6f9f0ab50"
+    },
+    {
+      "file": "weapp/pages/budget/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/budget/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/business/index.js",
+      "bytes": 53022,
+      "sha256": "2fd92943304d5fe745084b60e875f2613e7962eb5d4884cf736aa21d58151a88"
+    },
+    {
+      "file": "weapp/pages/business/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/business/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/content/index.js",
+      "bytes": 7625,
+      "sha256": "efbf09ef869e1900bec9581f5e1d15679fde86e3851a4b17b97a1ea353fb7e27"
+    },
+    {
+      "file": "weapp/pages/content/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/content/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/deliverable/index.js",
+      "bytes": 18624,
+      "sha256": "63cd853bf73f8e16adf716a38a6af9628ea9438ed68a32a2d75c0a6df8c50dce"
+    },
+    {
+      "file": "weapp/pages/deliverable/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/deliverable/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/detail/index.js",
+      "bytes": 37714,
+      "sha256": "c2e3cf4e895cb6633d4232f9c2c2741e7630a66f0ff81a87d506cc6061effb07"
+    },
+    {
+      "file": "weapp/pages/detail/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/detail/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/files/index.js",
+      "bytes": 126345,
+      "sha256": "de1a0657a6a25e6deee17c130bd67f8fdd134b3282bd14b8d5aa75cea1de7d7f"
+    },
+    {
+      "file": "weapp/pages/files/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/files/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/finance/index.js",
+      "bytes": 103286,
+      "sha256": "e48c64e66436335bf26715a73a41719542258cbe4945c9cead337f54eec938bb"
+    },
+    {
+      "file": "weapp/pages/finance/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/finance/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/home/index.js",
+      "bytes": 14879,
+      "sha256": "05b1cb59c574efd718279216e7159a4497a8ce0fd6e332105ba21ae4a2362479"
+    },
+    {
+      "file": "weapp/pages/home/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/home/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/list/index.js",
+      "bytes": 7041,
+      "sha256": "d465d3285ef6e99166f1834c277c09a0781e2c81f2cee8b5142a6c68ec39e725"
+    },
+    {
+      "file": "weapp/pages/list/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/list/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/login/index.js",
+      "bytes": 11641,
+      "sha256": "7a93e73768715e66bb1ac1c4c34ab8407a0c12d44d67e5d17f3f4308aa545a14"
+    },
+    {
+      "file": "weapp/pages/login/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/login/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/notifications/index.js",
+      "bytes": 37280,
+      "sha256": "2ba0f7da40026efe2f17cc09d46bca7d28dee1480d1ec8ac0a3fb9ef4a929e10"
+    },
+    {
+      "file": "weapp/pages/notifications/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/notifications/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/project/index.js",
+      "bytes": 82783,
+      "sha256": "ba42db6e4d329c16a6f66a956510c264ebf1d17f7b5b7f3653cfc068963a267a"
+    },
+    {
+      "file": "weapp/pages/project/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/project/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/reports/index.js",
+      "bytes": 28924,
+      "sha256": "1c76d19b87ce755dc32273ee67b095ec46da1fc2e1bc3b7ddb12dda3e440b988"
+    },
+    {
+      "file": "weapp/pages/reports/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/reports/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/search/index.js",
+      "bytes": 7041,
+      "sha256": "00f0132b540d6366d4b866b1c70062ea5f8c7dbafd972ae727f5a11c877f4f70"
+    },
+    {
+      "file": "weapp/pages/search/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/search/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/secretary/index.js",
+      "bytes": 220582,
+      "sha256": "d70aff15a082cedfe3f677a963aa918df56d3577082e44f2bf5e615c932f091d"
+    },
+    {
+      "file": "weapp/pages/secretary/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/secretary/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/settings/index.js",
+      "bytes": 54222,
+      "sha256": "cff6a1e97edf5b09e87f18eba01e963300965f33678a1a7972b328a47dcc10c5"
+    },
+    {
+      "file": "weapp/pages/settings/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/settings/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/status/index.js",
+      "bytes": 89262,
+      "sha256": "dc580a0222b2662db0ef9730af9e516935b0d16392a8fe37f9a8fedd4466354d"
+    },
+    {
+      "file": "weapp/pages/status/index.js.LICENSE.txt",
+      "bytes": 71,
+      "sha256": "1f780480f6f453cfd342755fdfec433714f3ac0e628de07fa2a9860b305a0265"
+    },
+    {
+      "file": "weapp/pages/status/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/status/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/subscription-period/index.js",
+      "bytes": 12091,
+      "sha256": "5b5c940cf690e55ae4e1d5e6cc527e54a5a42799826bb09dd7ebf975e97e5333"
+    },
+    {
+      "file": "weapp/pages/subscription-period/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/subscription-period/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/telegram/index.js",
+      "bytes": 58387,
+      "sha256": "b0dcb55806b0696847951b9dee8b5da740594615ce90310d73d3f55ab356f7e8"
+    },
+    {
+      "file": "weapp/pages/telegram/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/telegram/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/pages/uploads/index.js",
+      "bytes": 705,
+      "sha256": "ff3762743355ffdf3175ccdb7ae9b5a3cbd5cba3a9917ce107eb7fc71fadd37c"
+    },
+    {
+      "file": "weapp/pages/uploads/index.json",
+      "bytes": 41,
+      "sha256": "9989a3ee5e867ca0e691668b4447fa5212f4cb766aa22f009b1ac55b23aa4229"
+    },
+    {
+      "file": "weapp/pages/uploads/index.wxml",
+      "bytes": 80,
+      "sha256": "38b0088b8c33e0f5dd9b2a934df461c91ad48cc818bb5dce849a336fae6e7ff6"
+    },
+    {
+      "file": "weapp/runtime.js",
+      "bytes": 2233,
+      "sha256": "b91863aa3c4aec154b2f20c5923132651fd22687ee3ffa00463e78e65c29b776"
+    },
+    {
+      "file": "weapp/taro.js",
+      "bytes": 134925,
+      "sha256": "1bfb65c4be6d16fc28a715ebf466f6a742debdf743252d5a2ee30dcc917e6eba"
+    },
+    {
+      "file": "weapp/utils.wxs",
+      "bytes": 997,
+      "sha256": "e4ebe8c13a8ed5d58ae32d378f1f1947d51d796a620987d43bfc438631372728"
+    },
+    {
+      "file": "weapp/vendors.js",
+      "bytes": 32424,
+      "sha256": "0a38bffb0aed94ab5c6686ac86734ca49c70fed9323a27d9febff3cac07f8887"
+    },
+    {
+      "file": "weapp/vendors.js.LICENSE.txt",
+      "bytes": 651,
+      "sha256": "784f801887c62e7fca78a248e53a4d12adaa07e92a30941269d1f6408e95584f"
+    },
+    {
+      "file": "tt/app.js",
+      "bytes": 96984,
+      "sha256": "4034433475088996bcdc39be18c863a2d5764bbd36c9e27221da169d28593e79"
+    },
+    {
+      "file": "tt/app.js.LICENSE.txt",
+      "bytes": 749,
+      "sha256": "08604636b38ae83699d7a95fc32255f871cbee504511ee89fdef4f98cdfcc356"
+    },
+    {
+      "file": "tt/app.json",
+      "bytes": 630,
+      "sha256": "3db0248d647219ff08c0db037a3c4b2375996c60ce3360fe4333a995d22a6818"
+    },
+    {
+      "file": "tt/app.ttss",
+      "bytes": 10568,
+      "sha256": "930e988f030c782a87c9131f267625500a60f7434366d63a5f7153bcd060a6a4"
+    },
+    {
+      "file": "tt/assets/logo-dark.png",
+      "bytes": 27918,
+      "sha256": "e39a67400375a2dc6b5b041b234268ce31c9fb82d7b1fa865826d1670fa6ccc1"
+    },
+    {
+      "file": "tt/assets/logo-light.png",
+      "bytes": 28897,
+      "sha256": "3a3aa3354a7a0cb3af8d6737aa91b659a84f768c7bd174a3e0a796c74e6007c7"
+    },
+    {
+      "file": "tt/base.ttml",
+      "bytes": 10971,
+      "sha256": "911d4af92eac9391af03ac8b1fe1ad433abd399ee78b40f9b637d68ce9ca9b9b"
+    },
+    {
+      "file": "tt/common.js",
+      "bytes": 386718,
+      "sha256": "acf0d9a0c9b1061dfb9899f406c6d8340dfe5f3a474d76bd40f0fd00ffc0b06a"
+    },
+    {
+      "file": "tt/pages/budget/index.js",
+      "bytes": 7057,
+      "sha256": "82c1b781360dcbb30182a556bbdc5c56a1d63bab71413245cffdba33b04d4c0d"
+    },
+    {
+      "file": "tt/pages/budget/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/budget/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/business/index.js",
+      "bytes": 53022,
+      "sha256": "e99db5654c87a919f5ea20d9f8d78c14dae137bdc3fa92ce50b8dc456152fe87"
+    },
+    {
+      "file": "tt/pages/business/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/business/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/content/index.js",
+      "bytes": 7625,
+      "sha256": "724432df36f51a0f980558b7cc7612d3645243a1a53bf786fd340fe4e051c9d5"
+    },
+    {
+      "file": "tt/pages/content/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/content/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/deliverable/index.js",
+      "bytes": 18624,
+      "sha256": "ae3d97ad6d3468476c427d08827fb9b32fbc56cccc89b40a972c7994b3a0d6de"
+    },
+    {
+      "file": "tt/pages/deliverable/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/deliverable/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/detail/index.js",
+      "bytes": 37714,
+      "sha256": "609eda320a20cbcc7d85cbcc0be57fec557d2403ba5b3fa566fdc51646d8d363"
+    },
+    {
+      "file": "tt/pages/detail/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/detail/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/files/index.js",
+      "bytes": 126345,
+      "sha256": "92026443f78096a343c088526457f5f24a5a127f9f1aa2a57435118e5435ed27"
+    },
+    {
+      "file": "tt/pages/files/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/files/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/finance/index.js",
+      "bytes": 103286,
+      "sha256": "6adfd719c02c80c7000499c71ec2750e1e6c025764cdff668bf3721032efa45f"
+    },
+    {
+      "file": "tt/pages/finance/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/finance/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/home/index.js",
+      "bytes": 14879,
+      "sha256": "b20a388b1879e3a361ca03036974f4367cd3188650188832c5d7213aca186a70"
+    },
+    {
+      "file": "tt/pages/home/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/home/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/list/index.js",
+      "bytes": 7041,
+      "sha256": "c2291eed6a8e067d7af1f2ca5f4ac6fc3616e332eeb9612f9d702fa14f539801"
+    },
+    {
+      "file": "tt/pages/list/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/list/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/login/index.js",
+      "bytes": 11641,
+      "sha256": "8689b23f1f72835a53eac0b9459e3418deb8afe561bd7c2da141bc6bad98091a"
+    },
+    {
+      "file": "tt/pages/login/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/login/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/notifications/index.js",
+      "bytes": 37280,
+      "sha256": "78d7b1ee7d6efafc3ca8dc3d779af5a1e035cb4bde24b938fb09961ff402c280"
+    },
+    {
+      "file": "tt/pages/notifications/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/notifications/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/project/index.js",
+      "bytes": 82783,
+      "sha256": "2fedcecfb82cde206e82749b98c3650ac3e0f874693905813d3cf3eba1dc8acb"
+    },
+    {
+      "file": "tt/pages/project/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/project/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/reports/index.js",
+      "bytes": 28924,
+      "sha256": "93e646c0dc14687ca0b647ff5c0ce6c603ac82d56c15e402bf97b317c783035f"
+    },
+    {
+      "file": "tt/pages/reports/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/reports/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/search/index.js",
+      "bytes": 7041,
+      "sha256": "06547e25fcc7bcaf62e4d1816e9deadfd30afff57b3edfb7c59ea07418c9d37d"
+    },
+    {
+      "file": "tt/pages/search/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/search/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/secretary/index.js",
+      "bytes": 220582,
+      "sha256": "0f76a096fdbd2ac567ca0175180b6e2c407c959257f13ff7c3acea8d0019911b"
+    },
+    {
+      "file": "tt/pages/secretary/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/secretary/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/settings/index.js",
+      "bytes": 54222,
+      "sha256": "22a41aaadd622fd0a74c9030d40617ccdc6c321682da9118836d6e44e4f8bec6"
+    },
+    {
+      "file": "tt/pages/settings/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/settings/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/status/index.js",
+      "bytes": 89262,
+      "sha256": "d83bc4a0deed97d9420d6481666c98ce2c0304a36ed8f250b1aeb676275b656b"
+    },
+    {
+      "file": "tt/pages/status/index.js.LICENSE.txt",
+      "bytes": 71,
+      "sha256": "1f780480f6f453cfd342755fdfec433714f3ac0e628de07fa2a9860b305a0265"
+    },
+    {
+      "file": "tt/pages/status/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/status/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/subscription-period/index.js",
+      "bytes": 12091,
+      "sha256": "c22c5a38c7b6bdb8a9a543599732507aa0bd374f6cf0474658bd6e0943ca7653"
+    },
+    {
+      "file": "tt/pages/subscription-period/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/subscription-period/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/telegram/index.js",
+      "bytes": 58387,
+      "sha256": "c25e217478076d70829da9368682e767c687891bd5aa5e68681104efb5be6543"
+    },
+    {
+      "file": "tt/pages/telegram/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/telegram/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/pages/uploads/index.js",
+      "bytes": 705,
+      "sha256": "f113df610755bbb93a5dbc61a92d6694bdcb23ba1ca622e3c950ccc222da833c"
+    },
+    {
+      "file": "tt/pages/uploads/index.json",
+      "bytes": 22,
+      "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+    },
+    {
+      "file": "tt/pages/uploads/index.ttml",
+      "bytes": 80,
+      "sha256": "b134f6db2b337b7018d584b1f0253722368b1be77b045cfefecc5cfc4c24b24a"
+    },
+    {
+      "file": "tt/runtime.js",
+      "bytes": 2233,
+      "sha256": "c8f0e49d216f8c9b249b191ea42ef5a14b9545e1bccd3cd1196899b5b600b2e6"
+    },
+    {
+      "file": "tt/taro.js",
+      "bytes": 129030,
+      "sha256": "815dbfcbd59437811ba9846fa6d185f737700014e33dcf9a5b39e6f617bdcdff"
+    },
+    {
+      "file": "tt/utils.sjs",
+      "bytes": 391,
+      "sha256": "eceadd23ee3adbfce85e755dd0d18b1120ec236ea70b479f4f209a894bba1537"
+    },
+    {
+      "file": "tt/vendors.js",
+      "bytes": 32424,
+      "sha256": "60ee1ee93a453c67d9fc5e56d6f6e0ff0216474f0465a37df2f58232ebe0d6bc"
+    },
+    {
+      "file": "tt/vendors.js.LICENSE.txt",
+      "bytes": 651,
+      "sha256": "784f801887c62e7fca78a248e53a4d12adaa07e92a30941269d1f6408e95584f"
+    }
+  ],
+  "archive": "app/.local/frozen-releases/v0.1.0-rc.8-clients-cache/case-manager-v0.1.0-rc.8-miniapps.zip",
+  "archive_sha256": "2528eea379b3270caa69eb7df79ecab2e40d7e95ecc8bb8ac02900d780f56fb2",
+  "api_origin": "http://127.0.0.1:18080",
+  "profile": "local",
+  "node": "v22.23.4",
+  "wrapper_sha256": "08e1671f657f7fbbfcaf2a46c2da5dda852d065c7f75cec44707f8df1339f83d",
+  "platform_published": false
+}
