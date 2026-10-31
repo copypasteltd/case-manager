@@ -46,4 +46,6 @@ Android原生单元任务为 `> Task :app:testDebugUnitTest UP-TO-DATE`，28项X
 
 Deferred: full regression, extra UI journeys/recordings, development PG upgrade, real Linux/CI/HTTPS/PG/cloud/model/TG/platform acceptance and formal Android release. Excluded by the user: real devices, network performance/live120GB special, historic migration/disaster recovery and AI fee control. AI authorization/isolation/audit/resource limits, ordinary file recovery, persistent PG and OSS＋R2 remain required. All23 packages and eight draft Skills stay open.
 
-GitHub Releases网页本轮未创建；实际交付使用已授权SSH推送的新源码标签及独立下载分支，不覆盖原版本或强推。No GitHub Releases page is claimed; the source tag and downloadable artifact branch are the publication mechanism.
+源码标签、主线和五个产物已经通过已授权SSH推送，并读回核对10项远端引用，原两个冻结版本不变。随后使用现有凭据尝试创建GitHub Releases页面，API返回403：`Sorry. Your account was suspended`，因此页面未创建。固定下载入口仍完整可用，未强推或覆盖无关远端工作。
+
+The SSH publication succeeded. A subsequent GitHub Releases API attempt was rejected with403 because its credential account is suspended; no Releases page was created. The immutable source tag and all five downloadable artifacts remain available. The sealed manifest retains the earlier pre-API publication state; the later attempt is recorded in [the publication receipt](https://github.com/copypasteltd/case-manager/blob/main/docs/quality/evidence/release-candidate-144/github-release-api.json).

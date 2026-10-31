@@ -2,6 +2,8 @@
 
 ## 增量144 · 冻结发布 v0.1.0-rc.3 / Frozen delivery
 
+源码标签与五个固定下载包已通过SSH推送并核对。创建GitHub Releases页面的API请求返回403（现有凭据对应账号被停用）；页面未创建，全部下载仍可从下方交付入口取得。The source tag and all five immutable downloads are published; the API account rejection prevented a GitHub Releases page, not the SSH delivery.
+
 本次冻结当前主线143／结构109，包含138–143的上传草稿清理、TG组织运维、秘书运行配置、项目规划目录和完整订阅审阅。服务器／Web／秘书运行器、两小程序和Android开发APK重新构建；提供完整应用源码、开发文档和独立演示媒体包，全部附SHA-256。原rc.1／rc.2保持不可变。
 
 This candidate fixes business source `e1c7a671cc4c7f52888a1e6ed72d7ce1a9c042d3`. Native server, miniapps and a current development APK are newly packaged. Eight selected primary HTTP/PG suites and artifact integrity checks are current; full regression and additional browser journeys are deferred. Existing business tests/media retain their original provenance. Packaging tools and delivery records belong to main144; the frozen tag and convenience source archive remain the exact143 snapshot.

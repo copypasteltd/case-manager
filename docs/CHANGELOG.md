@@ -2,6 +2,8 @@
 
 ## Increment144 · Frozen candidate v0.1.0-rc.3
 
+- Publication follow-up: the source tag, main and all five immutable assets were pushed and ten remote refs verified. The subsequent GitHub Releases API request returned403 because its credential account is suspended; no Releases page was created. Fixed downloads remain available; frozen source/assets are unchanged.
+
 - Froze existing business source143/schema109, including completed-upload cleanup, organization TG operations, secretary profile retirement, project planning catalogs and complete subscription portfolios. No business module or UI change was introduced.
 - Rebuilt native Linux/server/Web/runtime, WeChat/Douyin and current Android development artifacts; published source/docs and exact existing media separately with SHA-256 and immutable Git identities.
 - Selected eight primary HTTP/PG business suites and artifact/source/private-material checks; deferred full regression and extra browser journeys. Prior143 runtime/business,136 full client tests and historical media retain original provenance; Gradle cache outcomes remain explicit.

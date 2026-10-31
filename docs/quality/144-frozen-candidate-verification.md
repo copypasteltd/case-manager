@@ -43,3 +43,7 @@ Android的实际Gradle任务和缓存状态、原XML时间及字节见[原生范
 已知私密值及高置信文本模式检查不等于完整秘密检测或画面OCR。便利源码ZIP完整包含应用源码，历史证据通过完整冻结Git标签查阅。新封装工具／记录在main144，业务标签和源码ZIP准确固定143；没有修改业务源码、既有迁移或早期证据。
 
 [最终来源检查](evidence/release-candidate-144/final-source-check.json) · [封装证明](evidence/release-candidate-144/seal.json) · [原证据复用](evidence/release-candidate-144/reused-evidence.json) · [下载与操作](../releases/v0.1.0-rc.3/README.md) · [全部23项](../delivery/05-functional-closure-144.md)
+
+## 远端发布结果
+
+主线db14b740ec718542a1c19187693b788786420ee1、源码标签v0.1.0-rc.3及下载分支17f0fd77a7639eeedefdbe835ce2e77a55ed97f5已通过SSH成功推送，10项远端引用逐项相符，原两个冻结标签／产物不变。随后GitHub Releases API请求因现有凭据账号停用返回403，未创建页面；五个固定下载包不受影响。[准确回执](evidence/release-candidate-144/github-release-api.json)。本说明补充提交只刷新文档／发布元数据检查，没有重跑业务测试、构建或媒体，也不修改封存的源码标签、清单和五个产物。
