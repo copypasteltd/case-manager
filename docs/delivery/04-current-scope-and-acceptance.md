@@ -1,5 +1,8 @@
 # 当前范围与验收口径 / Current scope and acceptance · 修订99
 
+增量146：停止扩展业务，当前业务145／结构110冻结为v0.1.0-rc.4；服务器、两小程序、Android开发包重新构建，当前逐明细OA逻辑入包，完整源码／文档及原媒体另包附摘要。三组原生HTTP／PG共45子场景＋3汇总通过，必要产物核对保留，完整回归／额外UI延期。旧三冻、开发PG100和原API保留，23 active（14 P0／9 P1）、5 excluded、八项draft与实际接入／生产验收不变。见[交付](../development/146-frozen-release-delivery.md)、[核验](../quality/146-frozen-release-verification.md)、[下载](../releases/v0.1.0-rc.4/README.md)及[全部23项](05-functional-closure-146.md)。
+
+
 增量145：采购／报销逐明细正文选择、不可变建议、逐项原文核对和本人普通业务权限下的采用已实现，结构110；商业事实和未选明细不由模型更改。当前定向证据与原失败记录单独保留，完整回归／额外移动UI／新APK延期；三冻结不动、APK144仍业务143／结构109、开发PG仍100。23 active（14 P0／9 P1）、5 excluded和八项draft不变。见[使用](../development/145-oa-line-prose.md)、[验证](../quality/145-oa-line-prose-verification.md)与[全部未完成项](05-functional-closure-145.md)。
 
 增量144：按用户加速冻结要求封装当前业务143／结构109为v0.1.0-rc.3；当前服务器、Web、运行器、两小程序和Android开发包单独生成，源码／文档和演示媒体另包附摘要。八组必要HTTP／原生PG主流程与产物完整性核对，完整回归／额外页面录制延期；既有证据按原出处复用。原两冻不动，开发PG100保留，23 active（14 P0／9 P1）、5 excluded和八项draft不变，实际接入与正式生产验收继续开放。见[交付](../development/144-frozen-candidate-delivery.md)、[验证](../quality/144-frozen-candidate-verification.md)、[下载](../releases/v0.1.0-rc.3/README.md)及[全部23项](05-functional-closure-144.md)。

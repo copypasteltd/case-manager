@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## Increment146 · Frozen functional delivery v0.1.0-rc.4
+
+- 固定业务145／结构110，包括采购／报销逐明细文案和人工采用；本轮只完成冻结交付，原三冻、旧媒体／证明和结构1–110不改。
+- 重新构建Linux服务器／Web／秘书运行器、两小程序和当前Android开发APK；五个完整源码／媒体／安装归档附SHA-256和准确Git身份。
+- 三组原生HTTP／耐久PG，45子场景＋3汇总共48通过；实际包／源码／摘要／私密材料核对。复用145选定逻辑／运行器／页面媒体、136完整客户端和121完整后端；全回归、额外UI与生产接入延期。
+- Updated bilingual entry points, deployment/download logic and the full numbered23-item register. Development PG100 and existing API stay unchanged. The mobile profile is local and Android is development-signed; eight Skills remain draft. The existing API403 is retained, so GitHub Releases webpage publication is not claimed; SSH tags/artifacts provide delivery.
+
+[下载／使用](releases/v0.1.0-rc.4/README.md) · [交付设计](development/146-frozen-release-delivery.md) · [核验／延期](quality/146-frozen-release-verification.md) · [本轮及全部余项](delivery/05-functional-closure-146.md)
+
+
 ## 增量145 · 采购／报销逐明细正文 / Exact selected line prose
 
 - 接通四端准确已有明细选择、原文／建议逐项对比、本人明确采用和普通业务新修订；固定明细ID、原版本／摘要，完整保留其他商业事实、未选行及顺序。原用途／备注／合同条款兼容，采用不审批、不下单、不记账或付款。

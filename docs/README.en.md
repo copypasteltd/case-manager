@@ -1,5 +1,20 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+## Increment146 · Frozen delivery v0.1.0-rc.4
+
+The current functional release fixes business145 (`294bf0509a7c87f63d9c829d5317fe33fb76a6f3`), schema110, including exact purchase/claim line prose and explicit human adoption. Five downloads contain a rebuilt Linux/server/Web/secretary runtime, WeChat/Douyin miniapps, current Android developmentAPK, complete application source/docs, and original screenshots/MP4/GIF media. Each asset has SHA-256. All three earlier freezes remain immutable; no business module is added this round.
+
+Usage: verify asset and inner-manifest hashes, provision native Linux/persistent PostgreSQL/HTTPS/private identities, apply ordinary migrations1–110 (101–110 from the retained development PG100), activate and check readiness. Employees sign in/MFA, then use role-bound projects/tasks/deliverables, OA approvals, actual expenses/cash/refunds/subscriptions, files/blogs and status/workbench. Approval never manufactures cash; AI suggestions require explicit human adoption. Mobile artifacts use an explicit local API profile: configure the real HTTPS API/platform identities and rebuild before server use. TheAPK is development-signed.
+
+Three selected native HTTP/PG suites pass45 subcases plus3 summaries; artifact/source/hash/private-material checks are current. Full regression and extra UI recordings are deferred. Selected145 checks/media,136 full client tests and121 full backend/runtime tests retain original provenance; cached Gradle XML is not new execution. Real Linux/cloud/Codex/TG/platform/production integration, formal Android signing and complete company-rule/UI acceptance remain open in23 work packages. All eight Skills remain draft. No production deployment is claimed.
+
+The earlier GitHub Releases API request returned403 because the credential account is suspended. It is not retried; no Releases webpage is created. Authorized SSH delivery publishes the exact source tag and an independent artifact branch with fixed download links. The full Git tag retains historical evidence; packaging146 tools/notes live on main, while the source archive fixes145.
+
+[Five downloads and hashes](releases/v0.1.0-rc.4/README.md) · [Design, usage and deployment](development/146-frozen-release-delivery.md) · [Checks and deferrals](quality/146-frozen-release-verification.md) · [This round and all23 remaining packages](delivery/05-functional-closure-146.md)
+
+Earlier entries below retain their historical source/artifact identities; use the delivery above for the latest freeze.
+
+
 ## 增量145 · 逐明细业务正文 / Selected line prose
 
 当前主线补齐采购／报销逐条明细说明起草：选择准确业务及已有明细→保存不可变建议→本人核对原文并采用→普通业务新修订。金额、数量、供应商、凭证、顺序及未选明细保留原值；送审、下单、记账和付款仍单独执行。

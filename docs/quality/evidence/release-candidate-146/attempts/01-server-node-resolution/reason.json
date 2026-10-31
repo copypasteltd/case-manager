@@ -1,0 +1,24 @@
+{
+  "passed": false,
+  "stage": "seal precondition; no assets or refs created",
+  "seal_exit_code": 1,
+  "reported_node": "v22.14.0",
+  "required_node": "v22.23.4",
+  "reason": "Windows bare executable version lookup used parent PATH; initial builder record read system Node22.14.0 despite a child PATH override. Initial server output is retained privately and is not published.",
+  "correction": "Rerun original native builder with process PATH set before invocation; independently compare every build input with frozen145 Git bytes. Preserve actual dirty-workspace metadata for pending release-only helpers/docs.",
+  "first_build_record_sha256": "d04d3d8c7123e32a3024f80974bbeda7b8b5b5cda09decb9c465ae6c389b9e98",
+  "first_archive_sha256": "2a6f17564b01606813bd35cd243e205c3ecf82270a9ec7832caa9e5cf7573f76",
+  "first_source": {
+    "base_commit": "294bf0509a7c87f63d9c829d5317fe33fb76a6f3",
+    "inputs_sha256": "124f9090e515629f77ea7e5659938311469f288fa6ee26b524074c4caa63fe74",
+    "working_tree_dirty": false
+  },
+  "first_tool_versions": {
+    "go": "go version go1.27.3 windows/amd64",
+    "node": "v22.14.0",
+    "npm": "10.9.9"
+  },
+  "business_source_changed": false,
+  "client_builds_affected": false,
+  "virtualization_used": false
+}

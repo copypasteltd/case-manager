@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "command": "python -B app/scripts/verify_repository_publication.py",
+  "exit_code": 1,
+  "error": "FileNotFoundError: release-candidate-146/repository-check.json",
+  "reason": "The first whitespace-input list included the current output receipt before that receipt existed. The verifier stopped on the missing output path.",
+  "correction": "Remove the verifier own output from the explicit whitespace subset. Keep the generated receipt in the full candidate and staged publication scans. No product source, artifact or test result changes.",
+  "failed_baseline_sha256": "e08762313e9fa07e218d0b662268d5f3fe3d56941c264e4afdcf452a96ae5882",
+  "artifact_bytes_unchanged": true,
+  "checks_bypassed": false
+}

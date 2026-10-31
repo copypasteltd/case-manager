@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "stage": "repository preflight",
+  "exit_code": 1,
+  "failed_checks": [
+    "Publication code/guides whitespace",
+    "Local Markdown references"
+  ],
+  "reason": "The native Gradle output has original trailing whitespace on line2; the first publication report was also absent during its own initial link scan. No secret or forbidden-path findings.",
+  "correction": "Preserve every original log byte in an exact UTF-8 JSON string and verify its length/hash/current task. Keep failed preflight bytes; the generated report link now resolves. No artifact or business source changes.",
+  "raw_log_sha256": "7f2080acfaa6cdcd72541cc2b545aba184b0e40799eeef5885e75b0bf76773cf",
+  "log_envelope": "docs/quality/evidence/release-candidate-146/native-build-log.json",
+  "failed_record_sha256": "4b0654febf301f716fa0c9ed9ce2d750f3f3cf6e974e9f8e3f80d07c2a59f025",
+  "checks_bypassed": false,
+  "artifact_bytes_unchanged": true
+}

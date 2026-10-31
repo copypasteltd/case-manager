@@ -1,5 +1,20 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+## 增量146 · 冻结交付 v0.1.0-rc.4 / Frozen delivery
+
+当前功能冻结在业务145／数据库结构110，已包含采购、报销逐明细起草和人工采用。提供重新构建的Linux服务器／Web／秘书运行器、微信／抖音小程序、Android开发APK，以及完整应用源码／文档与原始演示媒体，共五项下载，附准确SHA-256；旧三次冻结保持原样。本轮不新增业务模块。
+
+The latest frozen candidate fixes business source `294bf0509a7c87f63d9c829d5317fe33fb76a6f3` and schema110. All four client artifacts include the current selected OA line workflow. Three selected native HTTP/PG suites pass45 subcases plus3 summaries; actual artifact/source integrity checks are current. Full regression and extra UI recordings are deferred, and earlier145/136/121 evidence retains its original provenance.
+
+使用：核对下载摘要→按原生手册配置Linux／持久PG／HTTPS及私有身份→正常应用结构1–110（既有开发PG100需101–110）→Web登录／MFA→按权限使用项目／任务、OA审批、实际费用／收付款、文件／博客及状态工作台。移动包当前为本地API，正式使用前设置真实HTTPS API／平台身份并重建；Android为开发签名。真实云／模型／TG及平台、正式签名和完整验收仍为待办，八项Skill仍draft，不能据此声称生产就绪。
+
+GitHub Releases API此前因账号停用返回403，本轮不重复请求；通过SSH交付源码标签及独立产物分支，固定链接下载。Complete application source and existing screenshots/MP4/GIFs are included; the full Git tag retains all historical evidence. Packaging146 tools and delivery notes live on main, while the source tag/archive fix145.
+
+[五项下载／摘要](releases/v0.1.0-rc.4/README.md) · [方案／使用／部署](development/146-frozen-release-delivery.md) · [本轮检查／延期](quality/146-frozen-release-verification.md) · [本轮及全部23项待办](delivery/05-functional-closure-146.md)
+
+以下增量条目按当时源码／包／证据身份保留。Earlier entries below are historical snapshots; use the delivery above for the current freeze.
+
+
 ## 增量145 · 逐明细业务正文 / Selected line prose
 
 当前主线补齐采购／报销逐条明细说明起草：选择准确业务及已有明细→保存不可变建议→本人核对原文并采用→普通业务新修订。金额、数量、供应商、凭证、顺序及未选明细保留原值；送审、下单、记账和付款仍单独执行。

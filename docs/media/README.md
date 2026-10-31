@@ -1,5 +1,10 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量146 · 冻结媒体 / Frozen media
+
+v0.1.0-rc.4媒体ZIP准确收录业务145提交的全部已有docs/media，包含逐明细OA三PNG、实际无声MP4及三截图导览GIF；本轮不更改原媒体、不重录页面或声称复用为新执行。[下载](../releases/v0.1.0-rc.4/README.md) · [原始145媒体说明](../development/145-oa-line-prose.md)。All existing media retain their exact captured bytes and provenance.
+
+
 ## 增量145 / Selected line prose
 
 [原文与建议](screenshots/oa-line-prose-web-before.png)、[本人采用](screenshots/oa-line-prose-web-adopted.png)、[准确明细选择](screenshots/oa-line-prose-web-selection.png)来自实际登录的合成Web业务。无声[MP4](videos/oa-line-prose-web.mp4)记录采购／报销人工采用；[GIF](gifs/oa-line-prose-web.gif)为三张真实截图各两秒的导览，不称完整录屏。当前Web页面与旧143媒体／APK144分别保留出处，未调用真实模型或云服务。首次缩放检查失败截图留在本轮证据attempts中；浏览器／页面／临时服务／原生PG均按检查关闭。
