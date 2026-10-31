@@ -329,6 +329,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/telegram/inbox-operations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listTelegramInboxOperations */
+        get: operations["listTelegramInboxOperations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/telegram/inbox-operations/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTelegramInboxOperation */
+        get: operations["getTelegramInboxOperation"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/telegram/inbox-operations/{id}/history": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTelegramInboxOperationHistory */
+        get: operations["getTelegramInboxOperationHistory"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/telegram/inbox-operations/{id}/withdraw": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** withdrawTelegramInboxOperation */
+        post: operations["withdrawTelegramInboxOperation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/telegram/channels": {
         parameters: {
             query?: never;
@@ -7080,6 +7148,68 @@ export interface components {
             reviewed_original_channel: true;
             duplicate_risk_accepted: boolean;
         };
+        TelegramInboxOperation: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            bot_id: string;
+            /** Format: uuid */
+            channel_id: string;
+            channel_label: string;
+            chat_id: string;
+            topic_id: number;
+            /** Format: uuid */
+            requester_id: string;
+            requested_skill_id: ("project-briefing" | "incident-summary") | null;
+            request_channel_version: number;
+            current_channel_version: number;
+            /** @enum {string} */
+            channel_state: "active" | "paused";
+            /** @enum {string} */
+            state: "awaiting_executor" | "dispatched" | "withdrawn";
+            reason_code: string;
+            /** Format: date-time */
+            received_at: string;
+            /** Format: date-time */
+            dispatch_after: string;
+            /** Format: date-time */
+            dispatch_expires_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            run_id: string | null;
+            run_state: ("queued" | "running" | "awaiting_approval" | "committing" | "succeeded" | "failed" | "cancelled" | "interrupted") | null;
+            scope_current: boolean;
+            profile_configured: boolean;
+            withdrawable: boolean;
+        };
+        TelegramInboxOperationEvent: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** @enum {string} */
+            state: "awaiting_executor" | "dispatched" | "withdrawn";
+            reason_code: string;
+            /** Format: date-time */
+            dispatch_after: string;
+            /** @enum {string} */
+            source: "accepted" | "transition" | "retained_baseline";
+            actor_id: string | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        TelegramInboxOperationDetails: {
+            item: components["schemas"]["TelegramInboxOperation"];
+            history: {
+                items: components["schemas"]["TelegramInboxOperationEvent"][];
+                next_cursor: string | null;
+            };
+        };
+        TelegramInboxWithdraw: {
+            expected_version: number;
+            /** @constant */
+            reviewed_request: true;
+            reason: string;
+        };
         TelegramChannelRevision: {
             /** Format: uuid */
             id: string;
@@ -13143,6 +13273,28 @@ export interface components {
             data: components["schemas"]["TelegramOperationDetails"];
             meta: components["schemas"]["Meta"];
         };
+        TelegramInboxOperationListResponse: {
+            data: {
+                items: components["schemas"]["TelegramInboxOperation"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramInboxOperationDetailsResponse: {
+            data: components["schemas"]["TelegramInboxOperationDetails"];
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramInboxOperationEventListResponse: {
+            data: {
+                items: components["schemas"]["TelegramInboxOperationEvent"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramInboxOperationResponse: {
+            data: components["schemas"]["TelegramInboxOperation"];
+            meta: components["schemas"]["Meta"];
+        };
         TelegramChannelListResponse: {
             data: {
                 items: components["schemas"]["TelegramChannel"][];
@@ -16130,6 +16282,158 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TelegramDeliveryResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listTelegramInboxOperations: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                state?: "awaiting_executor" | "dispatched" | "withdrawn";
+                channel_id?: string;
+                skill_id?: "project-briefing" | "incident-summary";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramInboxOperationListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTelegramInboxOperation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramInboxOperationDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTelegramInboxOperationHistory: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramInboxOperationEventListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    withdrawTelegramInboxOperation: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TelegramInboxWithdraw"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramInboxOperationResponse"];
                 };
             };
             400: components["responses"]["Failure"];

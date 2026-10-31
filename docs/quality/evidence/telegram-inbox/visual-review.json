@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T05:33:56.832226+00:00",
+  "review_method": "Inspected three final full-resolution PNGs, sampled first/middle/final decoded MP4 frames and first/middle/final GIF frames.",
+  "checks": [
+    "Organization metadata inventory, pending acceptance and withdrawn receipt are legible.",
+    "Hong Kong timestamps show time-of-day for dispatch/expiry and journal history.",
+    "The manual withdrawal preserves original acceptance and shows no run link.",
+    "No password, MFA secret, private capability, request prose or real business records are visible.",
+    "Actual post-authentication MP4 pixels and labelled three-screenshot-tour GIF keep distinct claims."
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-inventory.png",
+      "sha256": "703e1984411037914f2577e845f4ce5331a708eddeb523569977097cc058e3dc",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-detail.png",
+      "sha256": "179676ceeb296ce3722e99c193357ce16f1e73dff8e25b834088e98f41fb9720",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-receipt.png",
+      "sha256": "2c26f1009f0cff882961fbff181caf7929bfa2a1a109c6edbf458a72736f2c76",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/telegram-inbox-web.mp4",
+      "sha256": "5812952ec22028685a3854afa5b02c42197430cdf946325c3db6d737d7ded600",
+      "bytes": 245684,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/telegram-inbox-web.gif",
+      "sha256": "307acf523a9b2900a2958c63a6d96930df8f8787274cbf4073e8a160754a8bd2",
+      "bytes": 195505,
+      "reviewed": true
+    }
+  ],
+  "sample_contact_sha256": "08b012ca560c100bbeab8158daa29f6d0487f6f22e310fff77514c09174687a7",
+  "full_video_watched": false,
+  "real_tg_acceptance": false,
+  "real_device_acceptance": false
+}

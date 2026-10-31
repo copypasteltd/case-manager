@@ -205,6 +205,16 @@ tg_operation_event={k:v for k,v in tg_delivery_event.items() if k not in ("deliv
 add("TelegramOperationEvent",tg_operation_event,tuple(tg_operation_event))
 add("TelegramOperationDetails",{"item":ref("TelegramOperation"),"events":array(ref("TelegramOperationEvent"),maxItems=32)},("item","events"))
 add("TelegramOperationReconcile",{**EXPECTED,"action":enum("confirm_sent","retry_confirmed_not_sent","abandon"),"message_id":tg_delivery["message_id"],"reason":NAME,"reviewed_original_channel":{"const":True},"duplicate_risk_accepted":{"type":"boolean"}},("expected_version","action","message_id","reason","reviewed_original_channel","duplicate_risk_accepted"))
+
+tg_inbox_operation={"id":ID,"version":VERSION,"bot_id":TG_NUMBER,"channel_id":ID,"channel_label":NAME,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"requester_id":ID,
+    "requested_skill_id":tg_request["requested_skill_id"],"request_channel_version":VERSION,"current_channel_version":VERSION,"channel_state":enum("active","paused"),
+    "state":tg_request["state"],"reason_code":NAME,"received_at":TIME,"dispatch_after":TIME,"dispatch_expires_at":TIME,"updated_at":TIME,
+    "run_id":nullable(ID),"run_state":tg_request["run_state"],"scope_current":{"type":"boolean"},"profile_configured":{"type":"boolean"},"withdrawable":{"type":"boolean"}}
+add("TelegramInboxOperation",tg_inbox_operation,tuple(tg_inbox_operation))
+tg_inbox_event={"id":ID,"version":VERSION,"state":tg_request["state"],"reason_code":NAME,"dispatch_after":TIME,"source":enum("accepted","transition","retained_baseline"),"actor_id":nullable(ID),"created_at":TIME}
+add("TelegramInboxOperationEvent",tg_inbox_event,tuple(tg_inbox_event))
+add("TelegramInboxOperationDetails",{"item":ref("TelegramInboxOperation"),"history":{"type":"object","additionalProperties":False,"properties":{"items":array(ref("TelegramInboxOperationEvent"),maxItems=20),"next_cursor":nullable(CURSOR)},"required":["items","next_cursor"]}},("item","history"))
+add("TelegramInboxWithdraw",{**EXPECTED,"reviewed_request":{"const":True},"reason":NAME},("expected_version","reviewed_request","reason"))
 tg_revision={"id":ID,"channel_id":ID,"version":VERSION,"source":enum("portal","membership","migration"),"reason":NAME,"snapshot":ref("TelegramChannel"),"created_at":TIME}
 add("TelegramChannelRevision",tg_revision,tuple(tg_revision))
 add("TelegramWebhookAck",{"ok":{"const":True}},("ok",))
@@ -1493,6 +1503,11 @@ operation("/telegram/operations","get","listTelegramOperations","TelegramOperati
 PATHS["/telegram/operations"]["get"]["parameters"] += [{"name":"state","in":"query","schema":TG_DELIVERY_STATE},{"name":"channel_id","in":"query","schema":ID}]
 operation("/telegram/operations/{id}","get","getTelegramOperation","TelegramOperationDetails")
 operation("/telegram/operations/{id}/reconcile","post","reconcileTelegramOperation","TelegramDelivery","TelegramOperationReconcile")
+operation("/telegram/inbox-operations","get","listTelegramInboxOperations","TelegramInboxOperation",listing=True)
+PATHS["/telegram/inbox-operations"]["get"]["parameters"] += [{"name":"state","in":"query","schema":tg_request["state"]},{"name":"channel_id","in":"query","schema":ID},{"name":"skill_id","in":"query","schema":enum("project-briefing","incident-summary")}]
+operation("/telegram/inbox-operations/{id}","get","getTelegramInboxOperation","TelegramInboxOperationDetails")
+operation("/telegram/inbox-operations/{id}/history","get","getTelegramInboxOperationHistory","TelegramInboxOperationEvent",listing=True)
+operation("/telegram/inbox-operations/{id}/withdraw","post","withdrawTelegramInboxOperation","TelegramInboxOperation","TelegramInboxWithdraw")
 operation("/telegram/channels","get","listTelegramChannels","TelegramChannel",listing=True)
 operation("/telegram/channels","post","createTelegramChannel","TelegramChannel","TelegramChannelCreate",201)
 operation("/telegram/channels/{id}","patch","updateTelegramChannel","TelegramChannel","TelegramChannelPatch")

@@ -71,6 +71,39 @@ func (s *Server) telegramRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("POST /v1/telegram/operations/{id}/reconcile", command(s, "TelegramOperationReconcile", "TelegramDeliveryResponse", func(ctx context.Context, c core.Command, r *http.Request, in telegram.OperationReconcile) (core.Result, error) {
 		return s.telegramService().ReconcileOperation(ctx, c, r.PathValue("id"), in)
 	}))
+	mux.HandleFunc("GET /v1/telegram/inbox-operations", read(s, "TelegramInboxOperationListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		for key, values := range r.URL.Query() {
+			if (key != "state" && key != "channel_id" && key != "skill_id" && key != "cursor" && key != "limit") || len(values) != 1 {
+				return nil, core.Invalid("filters", "查询条件无效或重复")
+			}
+		}
+		f, err := filter(r)
+		if err != nil {
+			return nil, err
+		}
+		return s.telegramService().InboxOperations(ctx, a, f.State, r.URL.Query().Get("channel_id"), r.URL.Query().Get("skill_id"), f.Cursor, f.Limit)
+	}))
+	mux.HandleFunc("GET /v1/telegram/inbox-operations/{id}", read(s, "TelegramInboxOperationDetailsResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if len(r.URL.Query()) != 0 {
+			return nil, core.Invalid("filters", "详情不接受查询条件")
+		}
+		return s.telegramService().InboxOperation(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("GET /v1/telegram/inbox-operations/{id}/history", read(s, "TelegramInboxOperationEventListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		for key, values := range r.URL.Query() {
+			if (key != "cursor" && key != "limit") || len(values) != 1 {
+				return nil, core.Invalid("filters", "历史分页条件无效或重复")
+			}
+		}
+		f, err := filter(r)
+		if err != nil {
+			return nil, err
+		}
+		return s.telegramService().InboxOperationHistory(ctx, a, r.PathValue("id"), f.Cursor, f.Limit)
+	}))
+	mux.HandleFunc("POST /v1/telegram/inbox-operations/{id}/withdraw", command(s, "TelegramInboxWithdraw", "TelegramInboxOperationResponse", func(ctx context.Context, c core.Command, r *http.Request, in telegram.InboxWithdraw) (core.Result, error) {
+		return s.telegramService().WithdrawInboxOperation(ctx, c, r.PathValue("id"), in)
+	}))
 	mux.HandleFunc("GET /v1/telegram/channels", read(s, "TelegramChannelListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, err := filter(r)
 		if err != nil {

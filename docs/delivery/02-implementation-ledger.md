@@ -1,5 +1,7 @@
 # 代码实施与验证台账
 
+增量140：GAP-07／18补齐组织TG入站台账、状态／任务／群入口筛选、准确分页历史和明确人工撤回未启动请求；独立权限、近期MFA、版本／幂等、调度竞争锁及原子历史／回执／审计保持。结构106；关键原生HTTP／PG、客户端类型／构建与实际Web提交读回留证；空任务旧请求兼容和所有原始尝试保留。APK137及两冻结标签仍原出处，未接真实Bot／模型／生产。23 active（14 P0／9 P1）、5 excluded、八项draft Skill保持。见[使用](../development/140-telegram-inbox-operations.md)、[验证与延期](../quality/140-telegram-inbox-verification.md)和[本轮及全部23项](05-functional-closure-140.md)。
+
 增量139：GAP-07／18补齐组织TG投递元数据查询、准确历史和明确人工对账；独立查阅／处理权限、原群核对、近期MFA、重复风险确认、当前范围／24小时／五次上限、原子审计保留。结构105；四端源码、关键HTTP／PG、类型／构建及实际Web完成。未接真实Bot／模型／生产，APK137及冻结标签原出处不动；23 active（14 P0／9 P1）、5 excluded及八项draft Skill不变。见[使用](../development/139-telegram-delivery-operations.md)、[证据与延期](../quality/139-telegram-operations-verification.md)和[本轮及全部23项](05-functional-closure-139.md)。
 
 增量138：GAP-05／18补齐已完成但未正式提交的人工新文件／替换上传清理，覆盖原上传与全部已知完成晋升对象、目录／上传修订、保留／观察期、MFA批准、永久上传停用、回执和剩余项续作。结构104；只做关键验证，APK137和两个冻结候选保持原出处。仍23 active（14 P0／9 P1）、5 excluded及八项draft Skill。见[使用与设计](../development/138-completed-upload-retirement.md)、[关键检查与延期](../quality/138-completed-upload-retirement-verification.md)和[本轮及全部23项](05-functional-closure-138.md)。

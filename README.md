@@ -1,5 +1,17 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+## 增量140 · 组织TG入站调度 / Organization TG inbound operations
+
+Telegram接入→组织TG入站调度→按状态／任务／群入口筛选→查看请求路由、等待原因与完整分页历史。经办人完成近期MFA，核对准确请求与版本后，可以撤回尚未创建秘书任务的请求；调度器同时处理时按事务顺序完成或返回冲突。请求正文、私人TG身份、绑定证明、秘书结果与自由文本备注不进入组织台账。
+
+主线140／结构106；个人开发PG仍100，使用前正常升级101–106。当前实际HTTP／耐久PG两组选定27个业务场景、四端会话、类型和Web／微信／抖音构建、实际Web撤回及持久读回单独留证。全量回归、完整移动UI和新Android包延期；rc.2／APK137仍业务136／结构103，不包含138–140，两个冻结标签不移动。23工作包、14 P0／9 P1、五项移出、八项draft Skill及真实集成／生产验收边界保持。
+
+Open **Telegram → Organization inbound operations**, filter by request state, task or channel and inspect routing metadata, actual wait reasons and the complete paginated journal. An authorized human can explicitly withdraw an exact unstarted request with recent MFA and optimistic revision checks. Dispatch and withdrawal serialize; a task already created must use its original task workflow. Private request/model prose, Telegram user identities, binding proofs and free-form notes remain outside the organization view.
+
+Main140 uses schema106; the personal development database remains100 and needs normal upgrades before using this backend. Fresh selected native HTTP/PG business checks, four human channels, client types, Web/two miniapp builds and actual authenticated Web withdrawal/readback have their own evidence. Full regression, complete mobile UI journeys and a new Android artifact are deferred. Frozen rc.2/APK137 retain business136/schema103 and do not include138–140. Both frozen tags,23 open work packages, five exclusions and eight draft Skills remain unchanged.
+
+[使用与接口 / Usage/API](docs/development/140-telegram-inbox-operations.md) · [检查与延期 / Checks](docs/quality/140-telegram-inbox-verification.md) · [本轮及全部23项 / Remaining work](docs/delivery/05-functional-closure-140.md) · [实际页面](docs/media/screenshots/telegram-inbox-web-receipt.png) · [MP4](docs/media/videos/telegram-inbox-web.mp4) · [截图导览GIF](docs/media/gifs/telegram-inbox-web.gif)
+
 ## 增量139 · 组织TG投递运维 / Organization TG delivery operations
 
 Telegram 接入→组织TG投递运维→按状态／群入口查询→查看固定通知及状态历史。经授权的人工经办人可核对原群、话题与消息编号，确认已发送、确认未发送后允许重试，或放弃重发。重试另需明确接受重复风险；当前绑定、群入口版本、24小时有效期及五次发送上限仍由服务器和独立发送进程核对。

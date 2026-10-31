@@ -6,6 +6,7 @@ import { AccountVerification } from './AccountSecurity';
 import { Busy, Dialog, ErrorNotice, Field, date } from './components';
 import { TelegramDelivery } from './TelegramDelivery';
 import TelegramOperations from './TelegramOperations';
+import TelegramInbox from './TelegramInbox';
 
 type Challenge = Schemas['TelegramChallenge'];
 type Binding = Schemas['TelegramBinding'];
@@ -20,7 +21,7 @@ function RequestCard({ value }: { value: TelegramRequest }) {
   return <article className="telegram-entry" data-telegram-request-id={value.id} data-run-state={value.run_state ?? ''}>
     <h3>{value.state === 'withdrawn' ? '已撤回' : value.run_state ? phases[value.run_state] : '已接收，等待秘书任务'}</h3>
     <p className="form-note">{date(value.received_at)}{value.requested_skill_id && <> · {skillNames[value.requested_skill_id]}</>}</p><p style={{ whiteSpace: 'pre-wrap' }}>{value.text}</p>
-    {value.state === 'withdrawn' ? <p className="form-note">请求的有效期、绑定或入口范围已变化，已停止后续执行；已经结束的任务保留实际记录。</p> : !value.run_id && <p className="form-note">{waiting[value.reason_code] ?? '请求已保存，等待渠道调度。'}</p>}
+    {value.state === 'withdrawn' ? <p className="form-note">{value.reason_code === 'manual_queue_withdrawn' ? '组织经办人已撤回此排队请求，未启动秘书任务。' : '请求的有效期、绑定或入口范围已变化，已停止后续执行；已经结束的任务保留实际记录。'}</p> : !value.run_id && <p className="form-note">{waiting[value.reason_code] ?? '请求已保存，等待渠道调度。'}</p>}
     {value.run_id && value.conversation_id && <Link className="text-button" to={'/conversations/' + value.conversation_id + '?run=' + value.run_id}>查看此秘书任务</Link>}
     <Link className="button secondary" to={'/telegram?request=' + value.id}>查看此请求及群通知回执</Link>
   </article>;
@@ -37,6 +38,7 @@ function useWrite<T>(path: string, done: (value: T) => void) {
 
 export default function Telegram({ me }: { me: Me }) {
   const [search] = useSearchParams();
+  if (search.get('view') === 'inbox') return me.actions.includes('telegram.inbox.read') ? <TelegramInbox me={me} /> : <section className="panel"><h1>组织入站调度</h1><p>当前账号没有组织TG入站查阅权限。</p><Link to="/telegram">返回本人TG入口</Link></section>;
   if (search.get('view') === 'operations') return me.actions.includes('telegram.operations.read') ? <TelegramOperations me={me} /> : <section className="panel"><h1>组织投递运维</h1><p>当前账号没有组织TG投递查阅权限。</p><Link to="/telegram">返回本人TG入口</Link></section>;
   return <PersonalTelegram me={me} />;
 }
@@ -51,6 +53,7 @@ function PersonalTelegram({ me }: { me: Me }) {
   return <div className="telegram-page">
     <div className="page-heading"><div><span className="eyebrow">WORKSPACE / TELEGRAM</span><h1>Telegram 接入<span className="accent">.</span></h1><p>绑定本人数字身份，核对指定群与话题的接收范围。</p></div><button className="button primary" disabled={!value?.ingress_configured || !!status.error} onClick={() => setCreating(true)}>发起本人绑定</button></div>
     {me.actions.includes('telegram.operations.read') && <Link className="button secondary" to="/telegram?view=operations">组织TG投递运维</Link>}
+    {me.actions.includes('telegram.inbox.read') && <Link className="button secondary" to="/telegram?view=inbox">组织TG入站调度</Link>}
     <ErrorNotice error={status.error} />{status.isPending && <Busy label="正在读取Telegram接入状态" />}
     {value && <>
       <div className="notice neutral"><span>{value.ingress_configured ? '本入口可接收明确请求；群通知需单独启用，并只发送阶段与登录链接。' : '尚未配置Bot接收入口，请联系管理员。'}{value.delivery_available ? ' 通知进程近期在线，实际发送结果请核对投递记录。' : ' 当前未确认通知进程在线。'} 办理业务可进入<Link to="/conversations">公司秘书</Link>。</span></div>

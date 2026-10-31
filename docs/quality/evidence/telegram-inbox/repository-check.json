@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T05:35:44.652385+00:00",
+  "scope": "Tracked and non-ignored candidate working files",
+  "file_count": 8997,
+  "total_bytes": 527526027,
+  "binary_files": 1634,
+  "markdown_files": 388,
+  "checks": [
+    {
+      "name": "Publication contains code, documentation and bilingual entry points",
+      "passed": true
+    },
+    {
+      "name": "No local tools, credentials, caches, databases or release binaries selected",
+      "passed": true
+    },
+    {
+      "name": "All selected Git blobs are smaller than 100 MiB",
+      "passed": true
+    },
+    {
+      "name": "High-confidence private key/token patterns absent from selected text",
+      "passed": true
+    },
+    {
+      "name": "Known private generated development values absent from all selected bytes",
+      "passed": true
+    },
+    {
+      "name": "Publication code and guides have no trailing whitespace or extra EOF blank lines",
+      "passed": true
+    },
+    {
+      "name": "All parsed local Markdown links resolve to selected repository files/directories",
+      "passed": true
+    },
+    {
+      "name": "Both full language guides cover architecture, workflows, setup, clients, gates and updates",
+      "passed": true
+    },
+    {
+      "name": "Initial capture matches historical Git sources and its explicitly recorded ignored-cache supplement",
+      "passed": true
+    },
+    {
+      "name": "Capture fixture, owned servers and isolated native database cleaned up",
+      "passed": true
+    },
+    {
+      "name": "Owned temporary browser port5189 released",
+      "passed": true
+    },
+    {
+      "name": "web actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "mobile actual UI/API flow passed and browser/context closed",
+      "passed": true
+    },
+    {
+      "name": "All fifteen screenshots and historical source match recorded hashes",
+      "passed": true
+    },
+    {
+      "name": "Three MP4/GIF pairs match verified encoder/capture and output digests",
+      "passed": true
+    },
+    {
+      "name": "Media manual review binds the exact inspected screenshots and GIFs",
+      "passed": true
+    },
+    {
+      "name": "Focused current functional checks and honest retained full-regression/artifact evidence",
+      "passed": true
+    },
+    {
+      "name": "Current user-approved scope and exclusions match source-bound planning evidence",
+      "passed": true
+    },
+    {
+      "name": "All eight Skills remain draft and source-bound dependency security gate remains open",
+      "passed": true
+    },
+    {
+      "name": "Gap register retains all twenty-eight stable IDs",
+      "passed": true
+    }
+  ],
+  "sensitive_findings": [],
+  "forbidden_paths": [],
+  "known_private_value_count": 8,
+  "known_private_value_matches": [],
+  "publication_whitespace_findings": [],
+  "publication_whitespace_exceptions": [],
+  "oversize_files": [],
+  "index_worktree_differences": [],
+  "broken_local_links": [],
+  "secret_scan_scope": "High-confidence text patterns, not exhaustive secret detection or pixel OCR.",
+  "functional_evidence": "Current focused backend/client checks and actual UI/API flows; full regression and Android APK retained at their published sources, not newly executed.",
+  "current_functional_increment": 140,
+  "current_scope_revision": 99,
+  "verification_script_sha256": "fe2630c8d3e97c3aa1614ca5aa1b62c8f0f6567a12dc0b15dc98337bd124804d",
+  "production_ready": false
+}

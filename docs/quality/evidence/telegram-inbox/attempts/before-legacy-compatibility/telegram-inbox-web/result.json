@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T05:21:21.017Z",
+  "finished_at": "2026-10-31T05:21:38.572Z",
+  "checks": [
+    "Authenticated organization inbox metadata and its actual acceptance journal are visible; request prose, private Telegram identity, binding proofs and model output are absent.",
+    "Explicit exact-request review and a recent human MFA session commit one pending withdrawal; no secretary task is created.",
+    "Reload and independent authenticated HTTP readback preserve the exact withdrawal and two journal revisions; the native fixture separately verifies one receipt/audit and zero run links."
+  ],
+  "source_count": 985,
+  "source_sha256": "cf406f4a089ddcca56e0b07fc76f6d6111724d9929d881b10982e386f4e34a87",
+  "source_after_sha256": "cf406f4a089ddcca56e0b07fc76f6d6111724d9929d881b10982e386f4e34a87",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API and committed business events",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "052fb18e71aa5efb35729f7b0de3c2808677b29033948cb4c5e04f0785e9160d",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "052fb18e71aa5efb35729f7b0de3c2808677b29033948cb4c5e04f0785e9160d",
+  "build_source_unchanged": true
+}

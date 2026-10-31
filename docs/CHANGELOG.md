@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## Increment140 · Organization TG inbound operations
+
+- Added organization metadata inventory, strict filter-bound pagination, current wait/configuration diagnostics and complete immutable request history across Web and the shared WeChat/Douyin/Android source.
+- Added explicit unstarted-request withdrawal with separate read/withdraw authority, current human sessions, recent MFA, exact versions, idempotency, dispatcher serialization and atomic request/journal/receipt/audit/outbox rollback. Private request/model prose and binding proofs stay requester-only.
+- Schema106 observes actual existing inbox transitions without changing their guards. Applications cannot forge journal inserts; old receipts start at an honestly observed retained baseline. Legacy null task selections stay readable without acquiring authority.
+- 27 selected native business scenarios and actual authenticated Web readback, client types/builds, screenshots, MP4 and screenshot-tour GIF are recorded. Earlier successful captures and one isolated legacy-fixture trigger-order failure are preserved; final backend/browser execute again on current sources.
+- 按用户要求延期全量回归、新移动完整旅程／Android包及个人开发库升级；两冻结标签不动，rc.2／APK137仍业务136／结构103，不含138–140。23工作包、五项移出、八项draft Skill及真实集成／生产验收继续开放。
+- [Usage/API](development/140-telegram-inbox-operations.md) · [Checks/deferrals](quality/140-telegram-inbox-verification.md) · [All remaining work](delivery/05-functional-closure-140.md).
+
 ## Increment139 · Organization TG delivery operations
 
 - Added organization-scoped metadata lookup and immutable status history with separate human read/reconcile authority across all four client sources.

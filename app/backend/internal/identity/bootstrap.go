@@ -22,7 +22,7 @@ type BootstrapResult struct {
 
 // System administrators receive configuration authority. Business content
 // authority must be granted separately; even bootstrap does not bypass ACLs.
-var systemActions = []string{"user.invite", "user.disable", "user.password_reset", "user.read", "role.read", "role.assign", "policy.manage", "config.manage", "skill.release", "file.import", "service.manage", "audit.read", "audit.export", "telegram.operations.read", "telegram.operations.reconcile"}
+var systemActions = []string{"user.invite", "user.disable", "user.password_reset", "user.read", "role.read", "role.assign", "policy.manage", "config.manage", "skill.release", "file.import", "service.manage", "audit.read", "audit.export", "telegram.operations.read", "telegram.operations.reconcile", "telegram.inbox.read", "telegram.inbox.withdraw"}
 var projectActions = []string{"project.create", "project.read", "project.update", "project.manage_members", "project.archive", "project.reopen",
 	"task.read", "task.create", "task.update", "task.assign", "task.transition", "task.review", "task.reopen",
 	"milestone.read", "milestone.create", "milestone.update", "deliverable.read", "deliverable.create", "deliverable.submit", "deliverable.decide",
@@ -123,6 +123,8 @@ func Bootstrap(ctx context.Context, db platform.DBTX, input BootstrapInput) (Boo
 		{"agent_plan_operator", "秘书项目计划操作人", true, []string{"agent.plan.read", "agent.plan.propose", "agent.plan.approve", "agent.plan.commit", "agent.plan.revoke"}},
 		{"telegram_operations_reader", "TG投递运维查阅人", false, []string{"telegram.operations.read"}},
 		{"telegram_operations_manager", "TG投递对账经办人", true, []string{"telegram.operations.read", "telegram.operations.reconcile"}},
+		{"telegram_inbox_reader", "TG入站台账查阅人", false, []string{"telegram.inbox.read"}},
+		{"telegram_inbox_manager", "TG入站排队经办人", true, []string{"telegram.inbox.read", "telegram.inbox.withdraw"}},
 		{"status_reader", "服务状态查阅人", false, []string{"service.read"}},
 		{"notification_operator", "通知投递运维", true, []string{"notification.delivery.read"}},
 		{"notification_retry_operator", "通知重试经办", true, []string{"notification.delivery.read", "notification.delivery.retry"}},

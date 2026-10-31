@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-31T05:34:00.633848+00:00",
+  "increment": 140,
+  "verification_mode": "scoped_increment",
+  "checks": [
+    {
+      "name": "Selected actual HTTP/PG suites execute on the complete current backend inputs",
+      "passed": true
+    },
+    {
+      "name": "Current business checks cover four channels, real dispatcher ordering, immutable journals and atomic failure",
+      "passed": true
+    },
+    {
+      "name": "Current typecheck binds exact portable client inputs",
+      "passed": true
+    },
+    {
+      "name": "Current web-build binds exact portable client inputs",
+      "passed": true
+    },
+    {
+      "name": "Current weapp-build binds exact portable client inputs",
+      "passed": true
+    },
+    {
+      "name": "Current douyin-build binds exact portable client inputs",
+      "passed": true
+    },
+    {
+      "name": "Actual authenticated Web withdrawal persists exact source-bound metadata and history",
+      "passed": true
+    },
+    {
+      "name": "Every owned browser, fixture, review service and durable native PG cluster closes",
+      "passed": true
+    },
+    {
+      "name": "Inspected screenshots, actual viewport MP4 and labelled screenshot-tour GIF retain exact bytes",
+      "passed": true
+    },
+    {
+      "name": "Prior proof/media and installed migrations1–105 remain immutable",
+      "passed": true
+    },
+    {
+      "name": "Both frozen candidates stay pinned; all eight Skills remain draft",
+      "passed": true
+    },
+    {
+      "name": "Previous functional evidence stays historical with explicit retained artifact provenance",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/telegram-inbox/native-final.json": "544a27d416f8b5106f6c1c8d49a6a4e31b8887f6ef8507e764cea1999d92619a",
+    "docs/quality/evidence/telegram-inbox/typecheck-2.json": "66443c3f0bbce0920782ba9c69d58395e90a47dc258f52c9eaf566fd56f0aef0",
+    "docs/quality/evidence/telegram-inbox/web-build-2.json": "9359f01a67fa82424f34905673c62a452b201072fc57c595471be24b31dbb9fd",
+    "docs/quality/evidence/telegram-inbox/weapp-build-2.json": "cc10eaf84e9b23794139083bc85c40bb0222820df8f73e0f34dcab0a572d9a6d",
+    "docs/quality/evidence/telegram-inbox/douyin-build-2.json": "b9cedf91c4059af7cb2185c814fac009bf7ea2414c982a95d94978d528dba97c",
+    "docs/quality/evidence/telegram-inbox-web/result.json": "374852503397e4ab7b46abe37388e3c3514b67f339b7afa8bb9e1de261f122b0",
+    "docs/quality/evidence/telegram-inbox-web/source-manifest.json": "071e23895ff3f50d0e866c40968bb862018b349545f347cfe5051ca9a1eb41d1",
+    "docs/quality/evidence/telegram-inbox-web/business-proof.json": "2bd1b029be249e91f040938fb3229195f19f39a357a559717be53ed90114b660",
+    "docs/quality/evidence/telegram-inbox/native-cluster-closed.json": "275997cb068593d4b520e376fa2d56a476d0f407d886074b1d98d4241f6c72a1",
+    "docs/quality/evidence/telegram-inbox/native-telegram-inbox-web/native-cluster-closed.json": "0ccd8fcf98fb4c0236d39714d89f1c7973df92ed8d5e228e9b5ed23f89064594",
+    "docs/quality/evidence/telegram-inbox/media.json": "bba6cb349f2e1a120f8dac1dce60e19a500fb8080c779bdbd29d1a3f5af26b48",
+    "docs/quality/evidence/telegram-inbox/visual-review.json": "d1de05f26c572788511dc566657d6d3568863d31532ce6188ee2062c3d151000",
+    "docs/quality/evidence/telegram-operations/final-source-check.json": "18247dbdb508bd6d1287f9aeb2469b1194b417e6e07eae3e86c15b23615c8fd5"
+  },
+  "retained": {
+    "passed": true,
+    "base_commit": "d891be5957c7affc7c7648691cc4355305d91b7f",
+    "full_backend_increment": 121,
+    "runtime_increment": 121,
+    "business_full_client_increment": 136,
+    "business_full_web_tests": 452,
+    "business_full_mobile_tests": 537,
+    "android_artifact_increment": 137,
+    "android_business_source_increment": 136,
+    "android_schema": 103,
+    "freeze_tags": [
+      "v0.1.0-rc.1",
+      "v0.1.0-rc.2"
+    ],
+    "previous_proof_and_media_reexecuted": false,
+    "current_android_apk_built": false
+  },
+  "interaction_kind": "telegram-inbox",
+  "interaction_source_sha256": "c74060114125b70c8a31ffe8cd35d0eb6b3e9bda78487af12a16cfd5ce441b66",
+  "verification_script_sha256": "405d247292aa7c0408a55edf7e3ad74b2cb8f882c45a884dde4944b4431b9ca8",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "current_android_apk_built": false,
+  "current_development_database_schema": 100,
+  "schema_migration": 106,
+  "skipped_checks": [
+    "Full backend/runtime and Web/mobile regression",
+    "Complete mobile UI journeys and new Android JS/JVM/APK",
+    "Existing persistent development PG100-to106 upgrade",
+    "Real Bot/model/Skills/Linux/cloud/platform/production acceptance"
+  ],
+  "skip_authority": "User authorized selected validation deferral for accelerated frozen delivery. Both frozen candidates stay immutable.",
+  "full_goal_complete": false,
+  "production_ready": false
+}

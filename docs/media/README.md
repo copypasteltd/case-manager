@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量140 · 组织TG入站调度 / Organization inbound operations
+
+[台账](screenshots/telegram-inbox-web-inventory.png) · [准确调度历史](screenshots/telegram-inbox-web-detail.png) · [持久撤回回执](screenshots/telegram-inbox-web-receipt.png) · [实际视口MP4](videos/telegram-inbox-web.mp4) · [三截图导览GIF](gifs/telegram-inbox-web.gif)。
+
+真实认证Web及隔离原生耐久PG；群、身份和业务内容为合成。录屏只记录认证后的明确核对、撤回与历史更新，不含密码、MFA秘密或真实资料。GIF为三张实际截图各两秒，不标成操作录屏。No Bot API/model, real group, device or production acceptance. Earlier compatibility-check attempts retain their original source and pixel provenance; current final media are newly captured after the backend compatibility fix. [检查及边界](../quality/140-telegram-inbox-verification.md)。
+
 ## 增量139 · 组织TG投递运维
 
 [列表](screenshots/telegram-operations-web-inventory.png) · [状态历史](screenshots/telegram-operations-web-detail.png) · [持久人工回执](screenshots/telegram-operations-web-receipt.png) · [实际操作MP4](videos/telegram-operations-web.mp4) · [三截图导览GIF](gifs/telegram-operations-web.gif)。

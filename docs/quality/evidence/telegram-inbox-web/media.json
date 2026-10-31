@@ -1,0 +1,30 @@
+{
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-inventory.png",
+      "sha256": "703e1984411037914f2577e845f4ce5331a708eddeb523569977097cc058e3dc"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-detail.png",
+      "sha256": "179676ceeb296ce3722e99c193357ce16f1e73dff8e25b834088e98f41fb9720"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-receipt.png",
+      "sha256": "2c26f1009f0cff882961fbff181caf7929bfa2a1a109c6edbf458a72736f2c76"
+    }
+  ],
+  "recording": {
+    "name": "telegram-inbox-web",
+    "frame_count": 11,
+    "duration_ms": 2229,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/telegram-inbox-web/frames.json",
+    "manifest_sha256": "e783406eac2a9bdb06a6917564ec9564b0fd2413847630176ed7761aeb8f4f42"
+  },
+  "credentials_excluded": true,
+  "synthetic_data": true
+}

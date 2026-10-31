@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T05:27:54.199803+00:00",
+  "encoder_script_sha256": "f91e174bb4b4f855b85d66c1aa12ec53bbbbe1fe9656b12dd59e6464935a706f",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "d29105504f3fa806a9fd88fe1073fe02ea2ad4cb9de0f7873007b93794420988",
+      "build_source_sha256": "6f46bc92567f397a2984859e0df4bec0c66fc3455850fa2b689440dfb4215f05",
+      "capture_manifest": "docs/quality/evidence/telegram-inbox/web-capture-manifest.json",
+      "capture_manifest_sha256": "6fdf9c0023afdf9157347f0938449690a6d8706c22e15757e6420c59fe49fc5f",
+      "capture_frame_count": 10,
+      "capture_duration_ms": 2037,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/telegram-inbox-web-inventory.png",
+          "sha256": "4edc8c21d4c4109083a96cdfa1c60b82d2e48adaf6483ade14df96f7623680b9"
+        },
+        {
+          "file": "docs/media/screenshots/telegram-inbox-web-detail.png",
+          "sha256": "af1634fcd13c212a1533c3188f41b6b3bfd94fdb42389cf5825d08afed023d6a"
+        },
+        {
+          "file": "docs/media/screenshots/telegram-inbox-web-receipt.png",
+          "sha256": "44ab2476df9a4d3404baae8c89d77412e8a2305637cdf1fc04064e86a72fe188"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "22",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/telegram-inbox-web.mp4",
+          "sha256": "9b5f0cd79a1f4ed408392a59a5125a8ae79d36881407335d24bd64fa5e00be97",
+          "bytes": 216250
+        },
+        {
+          "file": "docs/media/gifs/telegram-inbox-web.gif",
+          "sha256": "6927749c84faafa7fb0d929ee6426806118c7e5d48bb2f11f5a595776ce35ffa",
+          "bytes": 189311
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web organization TG inbound metadata and pending withdrawal. MP4 records the explicit pending-request withdrawal and durable history; GIF is a six-second three-screenshot tour. No Bot API, model, real group, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-inventory.png",
+      "sha256": "4edc8c21d4c4109083a96cdfa1c60b82d2e48adaf6483ade14df96f7623680b9"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-detail.png",
+      "sha256": "af1634fcd13c212a1533c3188f41b6b3bfd94fdb42389cf5825d08afed023d6a"
+    },
+    {
+      "file": "docs/media/screenshots/telegram-inbox-web-receipt.png",
+      "sha256": "44ab2476df9a4d3404baae8c89d77412e8a2305637cdf1fc04064e86a72fe188"
+    },
+    {
+      "file": "docs/media/videos/telegram-inbox-web.mp4",
+      "sha256": "9b5f0cd79a1f4ed408392a59a5125a8ae79d36881407335d24bd64fa5e00be97",
+      "bytes": 216250
+    },
+    {
+      "file": "docs/media/gifs/telegram-inbox-web.gif",
+      "sha256": "6927749c84faafa7fb0d929ee6426806118c7e5d48bb2f11f5a595776ce35ffa",
+      "bytes": 189311
+    }
+  ]
+}
