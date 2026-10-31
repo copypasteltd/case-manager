@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T09:04:47.682449+00:00",
+  "encoder_script_sha256": "36f75a02927adc59306c728ee4eaf6be9a86e6b006b738a2a99eb1ce96df81b8",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "2ae599f95f184404a337874970459319b6efa9bef5074a63bdb5db183d519e31",
+      "build_source_sha256": "3c8baa66f0e097ba807cd57e1cd058b4dd2dfc0a9d3ee742be00acc09ea12cde",
+      "capture_manifest": "docs/quality/evidence/oa-line-prose/web-capture-manifest.json",
+      "capture_manifest_sha256": "fe1bb1104c2e8f8c624129a92994c39c5a2fe11715143e12610af6107a70d4fd",
+      "capture_frame_count": 23,
+      "capture_duration_ms": 4674,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/oa-line-prose-web-before.png",
+          "sha256": "2f0e703ccd1e86085b635d9e7cd77ced9d4130ae4d69cd512de540435ad6c2b6"
+        },
+        {
+          "file": "docs/media/screenshots/oa-line-prose-web-adopted.png",
+          "sha256": "5cf1888e8ca4c653657e30e6298e1f32802281bae3cea0ba5482d608368cdbdb"
+        },
+        {
+          "file": "docs/media/screenshots/oa-line-prose-web-selection.png",
+          "sha256": "83c27f3f55285db47c015e74ac7e766c357100c7aeee8bd29b5c3b90536d0ae4"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "49",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "4.900000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/oa-line-prose-web.mp4",
+          "sha256": "0810fd342ecab3ffc2f03f1d872fb25fee02793b3636fc8eeb32b0f83fffd2cb",
+          "bytes": 223925
+        },
+        {
+          "file": "docs/media/gifs/oa-line-prose-web.gif",
+          "sha256": "c36180cd04ccca4179cd46224f93b3c24494ca3f4d8ffdc43063187eb5659511",
+          "bytes": 160880
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web selected-line prose review. MP4 records human purchase/claim adoption; GIF is a six-second tour of original/proposed prose, saved adoption and exact line selection. No approval, cash, Bot API, external model, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-before.png",
+      "sha256": "2f0e703ccd1e86085b635d9e7cd77ced9d4130ae4d69cd512de540435ad6c2b6"
+    },
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-adopted.png",
+      "sha256": "5cf1888e8ca4c653657e30e6298e1f32802281bae3cea0ba5482d608368cdbdb"
+    },
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-selection.png",
+      "sha256": "83c27f3f55285db47c015e74ac7e766c357100c7aeee8bd29b5c3b90536d0ae4"
+    },
+    {
+      "file": "docs/media/videos/oa-line-prose-web.mp4",
+      "sha256": "0810fd342ecab3ffc2f03f1d872fb25fee02793b3636fc8eeb32b0f83fffd2cb",
+      "bytes": 223925
+    },
+    {
+      "file": "docs/media/gifs/oa-line-prose-web.gif",
+      "sha256": "c36180cd04ccca4179cd46224f93b3c24494ca3f4d8ffdc43063187eb5659511",
+      "bytes": 160880
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "reason": "The new conditional array branches omitted an explicit array type. The strict Skill schema compiler refused to load. No production model, credentials or business mutation was involved. Added the array type; retain runtime-tests-1.json and earlier portable check records with their original source digests, then rerun current selected checks.",
+  "failed_record": "docs/quality/evidence/oa-line-prose/runtime-tests-1.json",
+  "failed_record_sha256": "cae6e304e79964001e955355b9d3c33a88713a0426777576a3f22083d1a6abc9",
+  "native_first_attempt_passed_at_its_recorded_sources": true,
+  "source_change_requires_current_native_recheck": true
+}

@@ -243,6 +243,13 @@ func prepareOARequest(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 		if b.Version != draft.ExpectedBusinessVersion || b.CurrentRevisionID != draft.BusinessRevisionID || b.ContentHash != draft.BusinessContentHash || (draft.RequestID != nil && (r.Before.Request == nil || r.Before.Request.Version != *draft.ExpectedVersion)) {
 			return nil, core.Conflict()
 		}
+		if in.Tool == "draft_business_text" {
+			var args OATextArguments
+			_ = json.Unmarshal(canonical, &args)
+			if !validOATextSelection(r.Kind, args.Fields, b.Payload.Content) {
+				return nil, core.Invalid("fields", "请仅选择准确业务修订中存在的正文字段或明细说明")
+			}
+		}
 	} else {
 		p := r.Before.Preview
 		if p == nil || p.RequestVersion != submit.ExpectedVersion || p.RevisionID != submit.RevisionID || p.ContentHash != submit.ContentHash || p.Workflow.ID != submit.WorkflowDefinitionID || p.PreviewHash != submit.PreviewHash {

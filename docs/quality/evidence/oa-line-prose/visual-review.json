@@ -1,0 +1,32 @@
+{
+  "reviewed_at": "2026-10-31T09:07:38.658311+00:00",
+  "passed": true,
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-before.png",
+      "sha256": "2f0e703ccd1e86085b635d9e7cd77ced9d4130ae4d69cd512de540435ad6c2b6"
+    },
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-adopted.png",
+      "sha256": "5cf1888e8ca4c653657e30e6298e1f32802281bae3cea0ba5482d608368cdbdb"
+    },
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-selection.png",
+      "sha256": "83c27f3f55285db47c015e74ac7e766c357100c7aeee8bd29b5c3b90536d0ae4"
+    },
+    {
+      "file": "docs/media/videos/oa-line-prose-web.mp4",
+      "sha256": "0810fd342ecab3ffc2f03f1d872fb25fee02793b3636fc8eeb32b0f83fffd2cb",
+      "bytes": 223925
+    },
+    {
+      "file": "docs/media/gifs/oa-line-prose-web.gif",
+      "sha256": "c36180cd04ccca4179cd46224f93b3c24494ca3f4d8ffdc43063187eb5659511",
+      "bytes": 160880
+    }
+  ],
+  "inspection": "Three current PNGs inspected at full screenshot dimensions; actual MP4 samples at0/2.3/4.5 seconds and GIF samples at0/2.1/4.1 seconds inspected as a contact sheet. This is sampled inspection, not a full uninterrupted video playback.",
+  "observed": "Exact original/proposed line, human-only adoption controls and actual saved revision/operation are visible. Selection distinguishes same-named lines; notes and only first line are checked. No password/MFA/private capability or real business data is recorded.",
+  "synthetic_data": true,
+  "full_video_playback_claimed": false
+}

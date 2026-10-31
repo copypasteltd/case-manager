@@ -293,3 +293,12 @@ test('OA prose remains a draft until a separate human adoption',()=>{
  assert.throws(()=>verifyResult(skill,run,value,[{...receipt,run_id:randomUUID()}]),/RESULT_REFERENCE_UNVERIFIED/);
  assert.throws(()=>skill.validateInput({...input,arguments:{...input.arguments,fields:['amount']}}),/SKILL_INPUT_INVALID/);
 });
+
+
+test('OA line prose schema admits bounded stable description keys and rejects wider fields',()=>{
+ const skill=catalog.get('oa-assist')!,field='line:'+randomUUID()+':description';
+ const args={kind:'purchase',business_id:randomUUID(),expected_business_version:2,business_revision_id:randomUUID(),business_content_hash:'a'.repeat(64),fields:['notes',field],reason:'Draft the exact selected line'};
+ skill.validateInput({tool:'draft_business_text',arguments:args});
+ for(const fields of [[field,field],['line:0:description'],[field.replace(':description',':unit_price')],Array.from({length:103},()=> 'line:'+randomUUID()+':description')])assert.throws(()=>skill.validateInput({tool:'draft_business_text',arguments:{...args,fields}}),/SKILL_INPUT_INVALID/);
+ assert.throws(()=>skill.validateInput({tool:'draft_business_text',arguments:{...args,kind:'contract'}}),/SKILL_INPUT_INVALID/);
+});

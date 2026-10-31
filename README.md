@@ -1,5 +1,16 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+## 增量145 · 逐明细业务正文 / Selected line prose
+
+当前主线补齐采购／报销逐条明细说明起草：选择准确业务及已有明细→保存不可变建议→本人核对原文并采用→普通业务新修订。金额、数量、供应商、凭证、顺序及未选明细保留原值；送审、下单、记账和付款仍单独执行。
+
+Main145 adds exact purchase/claim line-description selection, original/proposed comparison and explicit human adoption through ordinary business permissions. Every unselected and commercial fact is preserved; the model never adopts or approves. Limits remain100 existing lines/102 fields,1000 code points per description and64KiB per whole tool call.
+
+主线结构110、oa-assist1.4.0仍draft。本轮定向HTTP／PG、Web／移动逻辑、运行器、类型／Web／两小程序构建及真实Web页面单独留证；全量回归、额外移动UI与新APK延期。三个冻结候选不动：最新固定交付仍rc.3／业务143／结构109／APK144，不包含145；开发PG仍100。All23 work packages remain active; the source changes do not establish real model, cloud, platform or production acceptance.
+
+[使用与实现](docs/development/145-oa-line-prose.md) · [验证与保留证据](docs/quality/145-oa-line-prose-verification.md) · [本轮及全部23项](docs/delivery/05-functional-closure-145.md) · [逐明细选择](docs/media/screenshots/oa-line-prose-web-selection.png) · [MP4](docs/media/videos/oa-line-prose-web.mp4) · [截图导览GIF](docs/media/gifs/oa-line-prose-web.gif) · [最新冻结下载](docs/releases/v0.1.0-rc.3/README.md)
+
+
 ## 增量144 · 冻结发布 v0.1.0-rc.3 / Frozen delivery
 
 源码标签与五个固定下载包已通过SSH推送并核对。创建GitHub Releases页面的API请求返回403（现有凭据对应账号被停用）；页面未创建，全部下载仍可从下方交付入口取得。The source tag and all five immutable downloads are published; the API account rejection prevented a GitHub Releases page, not the SSH delivery.

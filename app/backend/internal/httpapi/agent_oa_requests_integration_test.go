@@ -7,6 +7,7 @@ import (
 	"copypaste.hk/platform/internal/agentworker"
 	"copypaste.hk/platform/internal/contracts"
 	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/identity"
 	"copypaste.hk/platform/internal/party"
 	"copypaste.hk/platform/internal/spend"
 	"copypaste.hk/platform/internal/workflow"
@@ -24,6 +25,7 @@ import (
 func TestAgentOARequests(t *testing.T) {
 	u, evidence, _, _, _ := restorationFixture(t, 15)
 	f := u.f
+	var oaHeaders map[string]string
 	ctx := context.Background()
 	var diagnostics bytes.Buffer
 	f.api.Logger = slog.New(slog.NewTextHandler(&diagnostics, &slog.HandlerOptions{Level: slog.LevelError}))
@@ -49,7 +51,7 @@ func TestAgentOARequests(t *testing.T) {
 	for _, key := range []string{"contract_reader", "purchase_reader", "claim_reader", "party_manager", "approval_reviewer"} {
 		bind(f.bob, key)
 	}
-	exec("INSERT INTO classification_policies(id,org_id,level,ai_allowed,policy_version) SELECT $1,$2,'project_restricted',true,max(policy_version)+1 FROM classification_policies WHERE org_id=$2 AND level='project_restricted'", core.NewID(), f.org)
+	exec("INSERT INTO classification_policies(id,org_id,level,ai_allowed,allowed_channels,policy_version) SELECT $1,$2,'project_restricted',true,ARRAY['web','wechat','douyin','android'],max(policy_version)+1 FROM classification_policies WHERE org_id=$2 AND level='project_restricted'", core.NewID(), f.org)
 	exec("UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", f.org)
 	admin := f.administratorToken()
 	ptr := func(v string) *string { return &v }
@@ -64,7 +66,7 @@ func TestAgentOARequests(t *testing.T) {
 	createBusiness := func(kind string) map[string]any {
 		if kind == "contract" {
 			in := contracts.Create{Content: contracts.Content{Title: "OA contract " + core.NewID(), Direction: ptr("payable"), Type: ptr("service"), Category: "oa.fixture", CounterpartyID: &supplier.ID, CounterpartyRevisionID: &supplier.CurrentRevisionID, OwnerID: &f.alice, Currency: ptr("HKD"), Amount: ptr("12.34"), StartDate: ptr("2026-11-01"), EndDate: ptr("2027-10-31"), DraftFileVersionID: &evidence.Version.ID}, ProjectID: evidence.File.ProjectID, Classification: "project_restricted", Reason: "isolated saved business revision"}
-			r, v := f.request("POST", "/v1/contracts", f.aliceToken, core.NewID(), in, nil)
+			r, v := f.request("POST", "/v1/contracts", f.aliceToken, core.NewID(), in, oaHeaders)
 			expect(t, r, 201, v)
 			d := data[contracts.Contract](t, v)
 			return map[string]any{"kind": kind, "business_id": d.ID, "expected_business_version": d.Version, "business_revision_id": d.CurrentRevisionID, "business_content_hash": d.ContentHash, "reason": "Only prepare the exact saved business revision"}
@@ -81,7 +83,7 @@ func TestAgentOARequests(t *testing.T) {
 			content.PeriodEnd = ptr("2026-10-31")
 			content.Lines = []spend.Line{{ID: core.NewID(), Description: "Employee expense", DeclaredAmount: ptr("12.34"), ExpenseDate: ptr("2026-10-15"), Category: "tools", Supplier: &spend.Supplier{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, ReceiptVersionIDs: []string{evidence.Version.ID}, Funding: "employee_advance", DuplicateReceiptReason: "Reviewed synthetic shared evidence"}}
 		}
-		r, v := f.request("POST", path, f.aliceToken, core.NewID(), spend.Create{Content: content, ProjectID: evidence.File.ProjectID, Classification: "project_restricted", Reason: "isolated saved commercial revision"}, nil)
+		r, v := f.request("POST", path, f.aliceToken, core.NewID(), spend.Create{Content: content, ProjectID: evidence.File.ProjectID, Classification: "project_restricted", Reason: "isolated saved commercial revision"}, oaHeaders)
 		expect(t, r, 201, v)
 		d := data[spend.Record](t, v)
 		return map[string]any{"kind": kind, "business_id": d.ID, "expected_business_version": d.Version, "business_revision_id": d.CurrentRevisionID, "business_content_hash": d.ContentHash, "reason": "Only prepare the exact saved business revision"}
@@ -126,7 +128,7 @@ func TestAgentOARequests(t *testing.T) {
 		return agent.RunCreate{ExpectedVersion: c.Version, ContextSecurityVersion: c.ContextSecurityVersion, ProfileID: profile, ClientMessageID: core.NewID(), Message: "Only execute the selected OA action. Approval, signing and payment remain separate human actions.", OARequest: &agent.OARequestInput{Tool: name, Arguments: raw}}
 	}
 	start := func(in agent.RunCreate) (agent.Run, agent.ExecutionLease) {
-		r, v := f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), in, nil)
+		r, v := f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), in, oaHeaders)
 		expect(t, r, 202, v)
 		run := data[agent.Run](t, v)
 		j, e := service.Queue().Claim(ctx, []string{agent.ExecutionJobKind}, "agent", "oa.fixture", agent.ExecutionLeaseDuration)
@@ -188,7 +190,7 @@ func TestAgentOARequests(t *testing.T) {
 		}
 	}
 	getRun := func(id string) agent.Run {
-		r, v := f.request("GET", "/v1/runs/"+id, f.aliceToken, "", nil, nil)
+		r, v := f.request("GET", "/v1/runs/"+id, f.aliceToken, "", nil, oaHeaders)
 		expect(t, r, 200, v)
 		return data[agent.Run](t, v)
 	}
@@ -242,13 +244,160 @@ func TestAgentOARequests(t *testing.T) {
 		}
 	}
 	adoptText := func(id, token, key string, body any, status int) agent.OARequestView {
-		h, v := f.request("POST", "/v1/runs/"+id+"/oa-text-adoption", token, key, body, nil)
+		headers := map[string]string(nil)
+		if token == f.aliceToken {
+			headers = oaHeaders
+		}
+		h, v := f.request("POST", "/v1/runs/"+id+"/oa-text-adoption", token, key, body, headers)
 		expect(t, h, status, v)
 		if status != 200 {
 			return agent.OARequestView{}
 		}
 		return data[agent.OARequestView](t, v)
 	}
+	lineArguments := func(kind string) map[string]any {
+		args := createBusiness(kind)
+		route := "/v1/" + map[string]string{"purchase": "purchases", "claim": "claims"}[kind] + "/" + args["business_id"].(string)
+		h, v := f.request("GET", route, f.aliceToken, "", nil, oaHeaders)
+		expect(t, h, 200, v)
+		doc := data[spend.Record](t, v)
+		// Same visible description, distinct immutable IDs: position/name is not authority.
+		second := doc.Lines[0]
+		second.ID = core.NewID()
+		doc.Lines = append(doc.Lines, second)
+		h, v = f.request("PATCH", route, f.aliceToken, core.NewID(), spend.Patch{Content: doc.Content, ExpectedVersion: doc.Version, BaseRevisionID: doc.CurrentRevisionID, Reason: "Two exact synthetic line identities"}, oaHeaders)
+		expect(t, h, 200, v)
+		doc = data[spend.Record](t, v)
+		args["expected_business_version"], args["business_revision_id"], args["business_content_hash"] = doc.Version, doc.CurrentRevisionID, doc.ContentHash
+		args["fields"] = []string{"notes", "line:" + doc.Lines[0].ID + ":description"}
+		return args
+	}
+	lineDraft := func(kind string) (agent.Run, agent.ExecutionLease, map[string]any) {
+		args := lineArguments(kind)
+		run, l := start(input("draft_business_text", args))
+		fields := args["fields"].([]string)
+		return run, l, map[string]any{"run_id": run.ID, "intent_sha256": run.OARequest.IntentSHA256, "fields": map[string]string{"notes": "Reviewed line prose only.", fields[1]: "明细说明经人工核对；付款及凭证信息保持原业务记录。"}}
+	}
+	if os.Getenv("CP_BROWSER_OA_LINE_PROSE_FIXTURE") == "1" {
+		runTest("browser_line_workbench", func(sub *testing.T) {
+			role := core.NewID()
+			exec("INSERT INTO roles(id,org_id,key,name,requires_mfa) VALUES($1,$2,'oa_line_browser_proof','Actionless isolated MFA proof',true)", role, f.org)
+			exec("INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type) VALUES($1,$2,$3,$4,'org')", core.NewID(), f.org, f.alice, role)
+			exec("UPDATE users SET auth_version=auth_version+1 WHERE org_id=$1 AND id=$2", f.org, f.alice)
+			exec("UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", f.org)
+			f.aliceToken = memberMFAToken(f, "alice", "android")
+			drafts := map[string]any{"fixture_kind": "oa-line-prose", "conversation_id": c.ID, "project_id": *evidence.File.ProjectID, "profile_id": profile}
+			for _, kind := range []string{"purchase", "claim"} {
+				run, l, proposal := lineDraft(kind)
+				if _, err := tool(l, "browser-line-prose", "draft_business_text", proposal); err != nil {
+					sub.Fatal(err)
+				}
+				completeText(l)
+				drafts[kind+"_run_id"], drafts[kind+"_business_id"] = run.ID, run.OARequest.BusinessID
+			}
+			target := lineArguments("claim")
+			drafts["target_claim_id"] = target["business_id"]
+			holdBrowserBusinessFixture(sub, f, drafts)
+		})
+		return
+	}
+	runTest("line_selection_rejects_unknown_duplicate_wrong_kind_and_commercial_fields", func(sub *testing.T) {
+		args := lineArguments("purchase")
+		field := args["fields"].([]string)[1]
+		for _, fields := range [][]string{{"line:" + core.NewID() + ":description"}, {field, field}, {"line:0:description"}, {"line:" + strings.Split(field, ":")[1] + ":unit_price"}, {"amount"}, {"renewal_terms"}} {
+			args["fields"] = fields
+			h, v := f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), input("draft_business_text", args), oaHeaders)
+			expect(sub, h, 422, v)
+		}
+		contract := createBusiness("contract")
+		contract["fields"] = []string{field}
+		h, v := f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), input("draft_business_text", contract), oaHeaders)
+		expect(sub, h, 422, v)
+	})
+	for _, channel := range []string{"web", "wechat", "douyin", "android"} {
+		for _, kind := range []string{"purchase", "claim"} {
+			runTest(channel+"_"+kind+"_selected_line_human_adoption_preserves_all_facts", func(sub *testing.T) {
+				previous := f.aliceToken
+				defer func() { f.aliceToken = previous; oaHeaders = nil }()
+				headers := map[string]string{"Origin": "http://localhost:5178"}
+				h, v := f.request("POST", "/v1/auth/login", "", "", identity.LoginInput{Login: "alice", Password: "member-test-password-long", Device: channel}, headers)
+				expect(sub, h, 200, v)
+				session := data[identity.LoginResult](sub, v)
+				f.aliceToken = session.AccessToken
+				if channel == "web" {
+					headers["X-CSRF-Token"] = session.CSRFToken
+					for _, cookie := range h.Result().Cookies() {
+						if cookie.Name == "cp_session" {
+							headers["Cookie"] = "cp_session=" + cookie.Value
+						}
+					}
+					oaHeaders = headers
+				}
+				run, l, proposal := lineDraft(kind)
+				values := proposal["fields"].(map[string]string)
+				var selected string
+				for k := range values {
+					if k != "notes" {
+						selected = k
+					}
+				}
+				for _, forged := range []map[string]string{{"notes": "same count", "line:" + core.NewID() + ":description": "unselected"}, {"notes": "same count", selected: strings.Repeat("界", 1001)}, {"notes": "same count", selected: "\x00"}} {
+					bad := map[string]any{"run_id": run.ID, "intent_sha256": run.OARequest.IntentSHA256, "fields": forged}
+					if _, err := tool(l, "rejected-"+core.NewID(), "draft_business_text", bad); err == nil {
+						sub.Fatal("invalid model field accepted")
+					}
+				}
+				if channel == "android" && kind == "purchase" {
+					var content map[string]any
+					_ = json.Unmarshal(run.OARequest.Before.Business.Payload.Content, &content)
+					var limit int
+					if err := f.owner.QueryRow(ctx, "SELECT agent_oa_text_field_limit($1,$2,$3::jsonb)", kind, selected, run.OARequest.Before.Business.Payload.Content).Scan(&limit); err != nil || limit != 1000 {
+						sub.Fatal("database identity guard", err)
+					}
+					bad, _ := json.Marshal(map[string]string{"notes": "Valid notes", selected: strings.Repeat("界", 1001)})
+					sources, _ := json.Marshal([]agent.SourceSnapshot{{SourceReference: agent.SourceReference{Type: "agent_oa_request", ID: run.ID}, ResourceVersion: 1, SHA256: run.OARequest.IntentSHA256}})
+					if _, err := f.api.DB.Exec(ctx, "INSERT INTO agent_oa_text_drafts(run_id,org_id,fields,draft_sha256,source_snapshots) VALUES($1,$2,$3,$4,$5)", run.ID, f.org, bad, core.Digest(bad), sources); err == nil {
+						sub.Fatal("direct database overlong prose bypassed binding")
+					}
+				}
+				if _, err := tool(l, "selected-line-proposal", "draft_business_text", proposal); err != nil {
+					sub.Fatal(err)
+				}
+				current := getRun(run.ID)
+				if current.OARequest.TextDraft == nil {
+					sub.Fatal("missing line suggestion")
+				}
+				body := agent.OATextAdopt{DraftSHA256: current.OARequest.TextDraft.DraftSHA256, Reviewed: true, Reason: "Human verified both line identities and all unchanged commercial facts"}
+				adoptText(run.ID, f.aliceToken, core.NewID(), body, 404)
+				completeText(l)
+				key := core.NewID()
+				saved := adoptText(run.ID, f.aliceToken, key, body, 200)
+				replay := adoptText(run.ID, f.aliceToken, key, body, 200)
+				if saved.TextDraft == nil || saved.TextDraft.Result == nil || saved.TextDraft.OperationID == nil || replay.TextDraft.OperationID == nil || *saved.TextDraft.OperationID != *replay.TextDraft.OperationID {
+					sub.Fatal("missing or duplicate adoption receipt")
+				}
+				var before, after spend.Content
+				_ = json.Unmarshal(run.OARequest.Before.Business.Payload.Content, &before)
+				_ = json.Unmarshal(saved.TextDraft.Result.Payload.Content, &after)
+				if after.Lines[0].Description != values[selected] || after.Lines[1].Description != before.Lines[1].Description || after.Notes != values["notes"] {
+					sub.Fatal("wrong line or unselected line modified")
+				}
+				after.Lines[0].Description = before.Lines[0].Description
+				after.Notes = before.Notes
+				a, _ := json.Marshal(before)
+				b, _ := json.Marshal(after)
+				if !bytes.Equal(a, b) || saved.TextDraft.Result.Version != run.OARequest.Before.Business.Version+1 {
+					sub.Fatal("commercial facts or line identities/order changed")
+				}
+				var count int
+				if err := f.owner.QueryRow(ctx, "SELECT count(*) FROM requests WHERE org_id=$1 AND business_id=$2", f.org, run.OARequest.BusinessID).Scan(&count); err != nil || count != 0 {
+					sub.Fatal("line adoption submitted an approval", err)
+				}
+				adoptText(run.ID, f.aliceToken, core.NewID(), body, 409)
+			})
+		}
+	}
+
 	for _, kind := range []string{"contract", "purchase", "claim"} {
 		runTest(kind+"_prose_draft_review_and_human_adoption", func(sub *testing.T) {
 			run, l, proposal := textDraft(kind)
@@ -362,7 +511,7 @@ func TestAgentOARequests(t *testing.T) {
 	})
 
 	runTest("prose_adoption_is_atomic_when_receipt_insert_fails", func(sub *testing.T) {
-		run, l, proposal := textDraft("claim")
+		run, l, proposal := lineDraft("claim")
 		if _, err := tool(l, "propose", "draft_business_text", proposal); err != nil {
 			sub.Fatal(err)
 		}
@@ -375,7 +524,7 @@ func TestAgentOARequests(t *testing.T) {
 		adoptText(run.ID, f.aliceToken, key, body, 422)
 		exec("ALTER TABLE agent_oa_text_adoptions DROP CONSTRAINT controlled_prose_receipt_failure")
 		var n int
-		if err := f.owner.QueryRow(ctx, "SELECT count(*) FROM spend_revisions WHERE org_id=$1 AND document_id=$2", f.org, run.OARequest.BusinessID).Scan(&n); err != nil || n != 1 {
+		if err := f.owner.QueryRow(ctx, "SELECT count(*) FROM spend_revisions WHERE org_id=$1 AND document_id=$2", f.org, run.OARequest.BusinessID).Scan(&n); err != nil || n != int(run.OARequest.Before.Business.Version) {
 			sub.Fatal("failed adoption leaked a new business revision", err)
 		}
 		adoptText(run.ID, f.aliceToken, key, body, 200)

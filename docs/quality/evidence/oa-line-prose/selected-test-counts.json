@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "counts": {
+    "web-oa-tests": {
+      "tests": 11,
+      "passed": 11,
+      "failures": 0,
+      "record": "web-oa-tests-2.json",
+      "private_log_sha256": "ee6fc0fa728f746bd1dd8a11f87af2ae41bc6d88c5bd51eeec27b5aae14ef9dd"
+    },
+    "mobile-oa-tests": {
+      "tests": 11,
+      "passed": 11,
+      "failures": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "record": "mobile-oa-tests-2.json",
+      "private_log_sha256": "be8a5d402306ca466fb93f1933eca5551a6935b4101be8be19d14a8388e4860b"
+    },
+    "runtime-tests": {
+      "tests": 57,
+      "passed": 57,
+      "failures": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "record": "runtime-tests-2.json",
+      "private_log_sha256": "b2decda844fb91ee85fd04ed5c422fddc45bd7834a65b374df6c0abf846a6f7b"
+    },
+    "native": {
+      "top_level": 2,
+      "subcases": 30,
+      "passing_records": 32,
+      "record": "native-final.json"
+    }
+  },
+  "scope": "Selected current tests only, never added to retained full-suite totals."
+}

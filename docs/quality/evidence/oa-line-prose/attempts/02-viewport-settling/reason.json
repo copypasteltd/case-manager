@@ -1,0 +1,5 @@
+{
+  "reason": "First browser attempt measured layout immediately after resizing and found overflow. Preserve the exact failed source/report/screenshot and closed-fixture records. Retry waits for fonts and two animation frames, as earlier OA captures did, and records dimensions/overflow diagnostics before each assertion. No CSS/application assertion is waived; persistent overflow will still fail.",
+  "application_changed": false,
+  "first_attempt_owned_resources_closed": true
+}

@@ -10186,8 +10186,8 @@ export interface components {
             business_revision_id: string;
             business_content_hash: string;
             reason: string;
-            fields: ("renewal_terms" | "termination_terms" | "purpose" | "notes")[];
-        };
+            fields: (("renewal_terms" | "termination_terms" | "purpose" | "notes") | string)[];
+        } & unknown;
         AgentOATextAdopt: {
             draft_sha256: string;
             /** @constant */
@@ -10235,6 +10235,11 @@ export interface components {
         AgentOATextDraftView: {
             source_refs: components["schemas"]["AgentSourceSnapshot"][];
             fields: {
+                renewal_terms?: string;
+                termination_terms?: string;
+                purpose?: string;
+                notes?: string;
+            } & {
                 [key: string]: string;
             };
             draft_sha256: string;

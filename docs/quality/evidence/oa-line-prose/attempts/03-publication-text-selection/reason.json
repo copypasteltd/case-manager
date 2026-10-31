@@ -1,0 +1,4 @@
+{
+  "reason": "The whitespace-only publication subset incorrectly included binary PNG/GIF/MP4 files. Their bytes coincidentally matched text whitespace patterns. Limit that subset to source/guides/JSON; retain binary bytes and continue full selected-blob path, size, secret and media-hash checks. No safety check was waived and no application or media bytes changed.",
+  "failed_record_sha256": "37386d855774ee4bc950c99e1ac5918724d2440c1db125d3c945bb94a251d997"
+}

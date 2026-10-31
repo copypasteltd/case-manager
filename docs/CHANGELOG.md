@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 增量145 · 采购／报销逐明细正文 / Exact selected line prose
+
+- 接通四端准确已有明细选择、原文／建议逐项对比、本人明确采用和普通业务新修订；固定明细ID、原版本／摘要，完整保留其他商业事实、未选行及顺序。原用途／备注／合同条款兼容，采用不审批、不下单、不记账或付款。
+- 正常结构110新增意图／明细数据库边界，旧结构1–109和不可变历史不变。oa-assist1.4.0仍draft；最多102字段、每说明1000码点、工具整体64KiB，超限整次拒绝。
+- 当前2组32条定向HTTP／PG／MCP、Web11、共享移动11及运行器57项，类型／Web／两小程序和实际Web独立留证。严格schema首次缺类型失败保留并修复重跑；页面首次立即缩放测量失败及已关闭资源记录保留。全回归、额外移动UI、新APK延期。
+- Main145/schema110 is a source increment. All three freezes retain their bytes; rc.3/APK144 remain business143/schema109 and do not include145. Development PG100 is unchanged, all23 packages remain active and all eight Skills remain draft. GitHub Releases API403 stays recorded; SSH assets remain available.
+
+[实现／使用](development/145-oa-line-prose.md) · [验证／延期](quality/145-oa-line-prose-verification.md) · [本轮／全部23项](delivery/05-functional-closure-145.md)
+
+
 ## Increment144 · Frozen candidate v0.1.0-rc.3
 
 - Publication follow-up: the source tag, main and all five immutable assets were pushed and ten remote refs verified. The subsequent GitHub Releases API request returned403 because its credential account is suspended; no Releases page was created. Fixed downloads remain available; frozen source/assets are unchanged.

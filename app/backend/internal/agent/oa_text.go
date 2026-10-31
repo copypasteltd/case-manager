@@ -47,13 +47,107 @@ func oaTextFields(kind string) []string {
 	}
 	return []string{"purpose", "notes"}
 }
+
+// A stable line identity, never a mutable array position, binds each selection.
+func oaTextLineID(field string) string {
+	if !strings.HasPrefix(field, "line:") || !strings.HasSuffix(field, ":description") {
+		return ""
+	}
+	id := strings.TrimSuffix(strings.TrimPrefix(field, "line:"), ":description")
+	if !exactOAID(id) {
+		return ""
+	}
+	return id
+}
+
+func oaTextFieldLimit(kind, field string) int {
+	if slices.Contains(oaTextFields(kind), field) {
+		if field == "purpose" {
+			return 4000
+		}
+		return 20000
+	}
+	if (kind == "purchase" || kind == "claim") && oaTextLineID(field) != "" {
+		return 1000
+	}
+	return 0
+}
+
+func validOATextSelection(kind string, fields []string, content json.RawMessage) bool {
+	var body struct {
+		Lines []struct {
+			ID string `json:"id"`
+		} `json:"lines"`
+	}
+	if err := json.Unmarshal(content, &body); err != nil {
+		return false
+	}
+	for _, field := range fields {
+		if oaTextFieldLimit(kind, field) == 0 {
+			return false
+		}
+		if id := oaTextLineID(field); id != "" {
+			count := 0
+			for _, line := range body.Lines {
+				if line.ID == id {
+					count++
+				}
+			}
+			if count != 1 {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+func patchOATextFields(kind string, content json.RawMessage, fields map[string]string) (json.RawMessage, error) {
+	selected := make([]string, 0, len(fields))
+	for field := range fields {
+		selected = append(selected, field)
+	}
+	if !validOATextSelection(kind, selected, content) {
+		return nil, core.Invalid("fields", "所选正文或明细已不属于准确业务修订")
+	}
+	var body map[string]json.RawMessage
+	if err := json.Unmarshal(content, &body); err != nil {
+		return nil, err
+	}
+	var lines []map[string]json.RawMessage
+	changedLines := false
+	for field, text := range fields {
+		encoded, _ := json.Marshal(text)
+		if id := oaTextLineID(field); id != "" {
+			if lines == nil {
+				if err := json.Unmarshal(body["lines"], &lines); err != nil {
+					return nil, err
+				}
+			}
+			for _, line := range lines {
+				var lineID string
+				_ = json.Unmarshal(line["id"], &lineID)
+				if lineID == id {
+					line["description"] = encoded
+				}
+			}
+			changedLines = true
+		} else {
+			body[field] = encoded
+		}
+	}
+	if changedLines {
+		body["lines"], _ = json.Marshal(lines)
+	}
+	return json.Marshal(body)
+}
+
 func validOATextArguments(in OATextArguments) bool {
-	if !slices.Contains([]string{"contract", "purchase", "claim"}, in.Kind) || !exactOAID(in.BusinessID) || !exactOAID(in.BusinessRevisionID) || !oaDigestPattern.MatchString(in.BusinessContentHash) || core.RequireVersion(in.ExpectedBusinessVersion) != nil || core.Name(in.Reason) != nil || len(in.Fields) == 0 || len(in.Fields) > 3 {
+	if !slices.Contains([]string{"contract", "purchase", "claim"}, in.Kind) || !exactOAID(in.BusinessID) || !exactOAID(in.BusinessRevisionID) || !oaDigestPattern.MatchString(in.BusinessContentHash) || core.RequireVersion(in.ExpectedBusinessVersion) != nil || core.Name(in.Reason) != nil || len(in.Fields) == 0 || len(in.Fields) > 102 {
 		return false
 	}
 	seen := map[string]bool{}
 	for _, field := range in.Fields {
-		if seen[field] || !slices.Contains(oaTextFields(in.Kind), field) {
+		if seen[field] || oaTextFieldLimit(in.Kind, field) == 0 {
 			return false
 		}
 		seen[field] = true
@@ -102,19 +196,16 @@ func executionOATextDraft(ctx context.Context, tx pgx.Tx, st executionState, r *
 	if err := json.Unmarshal(r.Arguments, &intent); err != nil {
 		return nil, nil, err
 	}
-	if in.RunID != r.RunID || in.IntentSHA256 != r.IntentSHA256 || len(in.Fields) != len(intent.Fields) {
+	if in.RunID != r.RunID || in.IntentSHA256 != r.IntentSHA256 || len(in.Fields) != len(intent.Fields) || !validOATextArguments(intent) || !validOATextSelection(r.Kind, intent.Fields, r.Before.Business.Payload.Content) {
 		return nil, nil, runtimeFailure("OA_REQUEST_INTENT_MISMATCH")
 	}
 	for _, field := range intent.Fields {
 		text, exists := in.Fields[field]
-		if field == "purpose" {
+		if field == "purpose" || oaTextLineID(field) != "" {
 			text = strings.TrimSpace(text)
 			in.Fields[field] = text
 		}
-		limit := 20000
-		if field == "purpose" {
-			limit = 4000
-		}
+		limit := oaTextFieldLimit(r.Kind, field)
 		if !exists || strings.TrimSpace(text) == "" || !utf8.ValidString(text) || strings.ContainsRune(text, '\x00') || utf8.RuneCountInString(text) > limit {
 			return nil, nil, core.Invalid("fields", "请仅提供本人选择字段的完整有限正文")
 		}
@@ -207,18 +298,13 @@ func (s *Service) AdoptOAText(ctx context.Context, command core.Command, runID s
 			return core.Result{}, core.Fail(409, "OA_TEXT_ALREADY_ADOPTED", "此正文建议已采用，请查看保存的业务修订")
 		}
 		// Decode only trusted original content, then replace the authorized prose.
-		var body map[string]json.RawMessage
-		if err := json.Unmarshal(r.Before.Business.Payload.Content, &body); err != nil {
+		patched, err := patchOATextFields(r.Kind, r.Before.Business.Payload.Content, r.TextDraft.Fields)
+		if err != nil {
 			return core.Result{}, err
 		}
-		for field, text := range r.TextDraft.Fields {
-			body[field], _ = json.Marshal(text)
-		}
-		patched, _ := json.Marshal(body)
 		inner := command
 		inner.Route, inner.Key = "/internal/agent-oa-text-adopt/"+r.Kind, "agent-oa-text:"+r.RunID
 		var saved core.Result
-		var err error
 		if r.Kind == "contract" {
 			var content contracts.Content
 			if err = json.Unmarshal(patched, &content); err != nil {

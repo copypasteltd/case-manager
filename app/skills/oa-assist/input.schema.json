@@ -315,14 +315,22 @@
             "fields": {
               "type": "array",
               "minItems": 1,
-              "maxItems": 3,
+              "maxItems": 102,
               "uniqueItems": true,
               "items": {
-                "enum": [
-                  "renewal_terms",
-                  "termination_terms",
-                  "purpose",
-                  "notes"
+                "oneOf": [
+                  {
+                    "enum": [
+                      "renewal_terms",
+                      "termination_terms",
+                      "purpose",
+                      "notes"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^line:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:description$"
+                  }
                 ]
               }
             }
@@ -335,6 +343,53 @@
             "business_content_hash",
             "reason",
             "fields"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "kind": {
+                    "const": "contract"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "fields": {
+                    "maxItems": 3,
+                    "items": {
+                      "enum": [
+                        "renewal_terms",
+                        "termination_terms",
+                        "notes"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "fields": {
+                    "items": {
+                      "oneOf": [
+                        {
+                          "enum": [
+                            "purpose",
+                            "notes"
+                          ]
+                        },
+                        {
+                          "type": "string",
+                          "pattern": "^line:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:description$"
+                        }
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            }
           ]
         }
       },

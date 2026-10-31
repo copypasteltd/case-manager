@@ -60592,15 +60592,23 @@
           "fields": {
             "type": "array",
             "minItems": 1,
-            "maxItems": 3,
+            "maxItems": 102,
             "uniqueItems": true,
             "items": {
-              "type": "string",
-              "enum": [
-                "renewal_terms",
-                "termination_terms",
-                "purpose",
-                "notes"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "renewal_terms",
+                    "termination_terms",
+                    "purpose",
+                    "notes"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "pattern": "^line:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:description$"
+                }
               ]
             }
           }
@@ -60614,6 +60622,55 @@
           "business_content_hash",
           "reason",
           "fields"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "contract"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "fields": {
+                  "type": "array",
+                  "maxItems": 3,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "renewal_terms",
+                      "termination_terms",
+                      "notes"
+                    ]
+                  }
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "purpose",
+                          "notes"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^line:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:description$"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
         ]
       },
       "AgentOATextAdopt": {
@@ -60836,10 +60893,36 @@
           "fields": {
             "type": "object",
             "minProperties": 1,
-            "maxProperties": 3,
-            "additionalProperties": {
-              "type": "string",
-              "maxLength": 20000
+            "maxProperties": 102,
+            "additionalProperties": false,
+            "properties": {
+              "renewal_terms": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 20000
+              },
+              "termination_terms": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 20000
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "notes": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 20000
+              }
+            },
+            "patternProperties": {
+              "^line:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:description$": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
             }
           },
           "draft_sha256": {

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-10-31T09:02:37.334Z",
+  "finished_at": "2026-10-31T09:03:07.919Z",
+  "checks": [
+    "Authenticated purchase review shows the exact selected original line and its proposed prose at three viewport widths; model completion remains draft.",
+    "Actual reviewed purchase and claim adoption each creates one ordinary business revision and receipt; every unselected line and monetary, receipt and supplier fact matches the exact original.",
+    "Real claim selection distinguishes identical descriptions by position and exact ID, sends only the selected line and notes and queues an authorized run without fabricating model execution."
+  ],
+  "source_count": 1005,
+  "source_sha256": "2ae599f95f184404a337874970459319b6efa9bef5074a63bdb5db183d519e31",
+  "source_after_sha256": "2ae599f95f184404a337874970459319b6efa9bef5074a63bdb5db183d519e31",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web with real native API, exact selected line prose and normal human business adoption",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "3c8baa66f0e097ba807cd57e1cd058b4dd2dfc0a9d3ee742be00acc09ea12cde",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "3c8baa66f0e097ba807cd57e1cd058b4dd2dfc0a9d3ee742be00acc09ea12cde",
+  "build_source_unchanged": true
+}

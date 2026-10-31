@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量145 / Selected line prose
+
+[原文与建议](screenshots/oa-line-prose-web-before.png)、[本人采用](screenshots/oa-line-prose-web-adopted.png)、[准确明细选择](screenshots/oa-line-prose-web-selection.png)来自实际登录的合成Web业务。无声[MP4](videos/oa-line-prose-web.mp4)记录采购／报销人工采用；[GIF](gifs/oa-line-prose-web.gif)为三张真实截图各两秒的导览，不称完整录屏。当前Web页面与旧143媒体／APK144分别保留出处，未调用真实模型或云服务。首次缩放检查失败截图留在本轮证据attempts中；浏览器／页面／临时服务／原生PG均按检查关闭。
+
+See the [current evidence and deferrals](../quality/145-oa-line-prose-verification.md). All older media retains its original bytes.
+
 ## 增量144 · 冻结媒体 / Frozen media
 
 本轮只封装现有功能，不修改页面，不新增截图、录屏或GIF。v0.1.0-rc.3的独立媒体ZIP准确包含冻结143提交的全部docs/media；138–143等各轮真实演示及原始出处保持原字节。新构建不代表媒体重新执行。[下载与SHA-256](../releases/v0.1.0-rc.3/README.md) · [验证与延期](../quality/144-frozen-candidate-verification.md)。

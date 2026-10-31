@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { makeOAText, makeOATextAdopt, oaTextAccepted, oaTextProven } from '@copypaste/contracts/oa-text';
+import { makeOAText, makeOATextAdopt, oaTextAccepted, oaTextProven, oaTextFields, oaTextName, oaTextOriginal } from '@copypaste/contracts/oa-text';
 import { oaRequestAccepted, type OABusiness, type OARequestView } from '@copypaste/contracts/oa-request';
 import type { components } from '@copypaste/contracts';
 type S=components['schemas'];
@@ -46,5 +46,37 @@ describe('selected OA prose, immutable suggestions and human adoption',()=>{
  it('cannot adopt the same suggestion twice or claim a receipt without an operation',()=>{
   expect(()=>makeOATextAdopt(adopted(),true,'again')).toThrow();
   const v=adopted();v.text_draft!.operation_id=null;expect(oaTextProven(v)).toBe(false);
+ });
+});
+
+
+describe('exact selected purchase/claim line descriptions',()=>{
+ const first=id(8),second=id(9),field='line:'+first+':description';
+ const content={title:'Synthetic purchase',purpose:'Original',notes:'',currency:'HKD',lines:[{id:first,description:'Same description',quantity:'2',unit:'licence',unit_price:'12.34',tax_amount:'1.23',receipt_version_ids:[id(10)],funding:'employee_advance'},{id:second,description:'Same description',unit_price:'7.89'}]};
+ const business={...b,lines:content.lines};
+ const view=()=>{const input=makeOAText('purchase',business,b.project_id,[field,'notes'],'Review this exact line');return {...authorized,arguments:input.arguments,before:{...before,business:{...before.business,payload:{...before.business.payload,content:structuredClone(content)}}},status:'drafted',text_draft:{...proposed().text_draft!,fields:{[field]:'Reviewed description',notes:'Reviewed notes'}}} as OARequestView;};
+ const saved=()=>{const v=view();return {...v,status:'adopted',text_draft:{...v.text_draft!,operation_id:id(6),result:{...v.before.business,version:4,current_revision_id:id(7),content_hash:'d'.repeat(64),payload:{...v.before.business.payload,content:{...structuredClone(content),notes:'Reviewed notes',lines:content.lines.map((l,i)=>i===0?{...l,description:'Reviewed description'}:structuredClone(l))}}}}} as unknown as OARequestView;};
+ it('discovers exact IDs with separate labels for identical descriptions',()=>{
+  expect(oaTextFields('purchase',business)).toEqual(['purpose','notes',field,'line:'+second+':description']);
+  expect(oaTextFields('contract',business)).toEqual(['renewal_terms','termination_terms','notes']);
+  expect(oaTextName(field,content)).toBe('明细 1 · Same description');
+  expect(oaTextOriginal(view(),field)).toBe('Same description');
+  for(const selected of [['line:'+id(20)+':description'],['line:0:description'],['line:'+first+':unit_price'],[field,field]])expect(()=>makeOAText('purchase',business,b.project_id,selected,'review')).toThrow();
+  expect(()=>makeOAText('contract',business,b.project_id,[field],'review')).toThrow();
+ });
+ it('accepts selected line prose and its exact human adoption receipt',()=>{
+  expect(oaTextProven(view())).toBe(true);expect(oaTextProven(saved())).toBe(true);
+  expect(oaRequestAccepted(run(view()),{tool:'draft_business_text',arguments:view().arguments} as S['AgentOARequestInput'])).toBe(true);
+  expect(makeOATextAdopt(view(),true,'Reviewed original and proposal').reviewed).toBe(true);
+ });
+ it('rejects unknown, duplicate, NUL, noncanonical or overlong line output',()=>{
+  for(const text of ['', ' ', 'x'.repeat(1001),'bad\0text',' padding ']){const v=view();v.text_draft!.fields[field]=text;expect(oaTextProven(v)).toBe(false);}
+  const unknown=view();unknown.text_draft!.fields['line:'+id(21)+':description']='Unknown';delete unknown.text_draft!.fields[field];expect(oaTextProven(unknown)).toBe(false);
+  const repeated=view();(repeated.arguments as S['AgentOATextArguments']).fields=[field,field];expect(oaTextProven(repeated)).toBe(false);
+ });
+ it('rejects any different commercial fact, unselected line, identity or order',()=>{
+  for(const key of ['unit_price','quantity','unit','tax_amount','receipt_version_ids','funding','id']){const v=saved();const body=v.text_draft!.result!.payload.content as typeof content;(body.lines[0] as unknown as Record<string,unknown>)[key]='changed';expect(oaTextProven(v)).toBe(false);}
+  const other=saved();(other.text_draft!.result!.payload.content as typeof content).lines[1].description='Unselected change';expect(oaTextProven(other)).toBe(false);
+  const reordered=saved();(reordered.text_draft!.result!.payload.content as typeof content).lines.reverse();expect(oaTextProven(reordered)).toBe(false);
  });
 });

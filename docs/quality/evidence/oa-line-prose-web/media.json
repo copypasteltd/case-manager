@@ -1,0 +1,71 @@
+{
+  "recording": {
+    "name": "oa-line-prose-web",
+    "frame_count": 23,
+    "duration_ms": 4674,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/oa-line-prose-web/frames.json",
+    "manifest_sha256": "fe1bb1104c2e8f8c624129a92994c39c5a2fe11715143e12610af6107a70d4fd"
+  },
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-before.png",
+      "sha256": "2f0e703ccd1e86085b635d9e7cd77ced9d4130ae4d69cd512de540435ad6c2b6"
+    },
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-adopted.png",
+      "sha256": "5cf1888e8ca4c653657e30e6298e1f32802281bae3cea0ba5482d608368cdbdb"
+    },
+    {
+      "file": "docs/media/screenshots/oa-line-prose-web-selection.png",
+      "sha256": "83c27f3f55285db47c015e74ac7e766c357100c7aeee8bd29b5c3b90536d0ae4"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "viewport": 390,
+      "overflow": []
+    },
+    {
+      "width": 768,
+      "viewport": 768,
+      "overflow": []
+    },
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "overflow": []
+    }
+  ],
+  "adoptions": [
+    {
+      "kind": "purchase",
+      "fields": [
+        "line:274388e2-906c-4f52-98b3-baad22e3dc3a:description",
+        "notes"
+      ],
+      "business_version": 3,
+      "exact_other_facts_preserved": true,
+      "approval_submitted": false,
+      "operation_confirmed": true
+    },
+    {
+      "kind": "claim",
+      "fields": [
+        "line:70f977e8-6adc-4c90-b1c5-ee212f4d8d67:description",
+        "notes"
+      ],
+      "business_version": 3,
+      "exact_other_facts_preserved": true,
+      "approval_submitted": false,
+      "operation_confirmed": true
+    }
+  ],
+  "synthetic_data": true,
+  "scope": "Real Web/native HTTP/PG with controlled MCP fixture; no external model, cloud, device or production acceptance."
+}
