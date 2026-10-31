@@ -12413,6 +12413,286 @@
         }
       }
     },
+    "/folders/{id}/completed-draft-retirement-candidates": {
+      "get": {
+        "operationId": "listCompletedDraftRetirementCandidates",
+        "tags": [
+          "folders"
+        ],
+        "summary": "listCompletedDraftRetirementCandidates",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetirementCandidateListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/folders/{id}/completed-draft-retirement-plans": {
+      "get": {
+        "operationId": "listCompletedDraftRetirementPlans",
+        "tags": [
+          "folders"
+        ],
+        "summary": "listCompletedDraftRetirementPlans",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetirementPlanListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCompletedDraftRetirementPlan",
+        "tags": [
+          "folders"
+        ],
+        "summary": "createCompletedDraftRetirementPlan",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetirementPlanResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompletedDraftRetirementCreate"
+              }
+            }
+          }
+        }
+      }
+    },
     "/files/{id}/object-retirement-candidates": {
       "get": {
         "operationId": "listObjectRetirementCandidates",
@@ -41658,7 +41938,8 @@
             "type": "string",
             "enum": [
               "history",
-              "committed_draft"
+              "committed_draft",
+              "uncommitted_draft"
             ]
           },
           "target_id": {
@@ -41671,8 +41952,7 @@
           },
           "file_version": {
             "type": "integer",
-            "minimum": 1,
-            "maximum": 9007199254740991
+            "minimum": 0
           },
           "name": {
             "type": "string",
@@ -41684,8 +41964,7 @@
           },
           "seq": {
             "type": "integer",
-            "minimum": 1,
-            "maximum": 9007199254740991
+            "minimum": 0
           },
           "policy": {
             "anyOf": [
@@ -41732,13 +42011,36 @@
               "minLength": 1,
               "maxLength": 200
             }
+          },
+          "folder_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "folder_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "upload_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "upload_state": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "object_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 66
           }
         },
         "additionalProperties": false,
         "required": [
           "kind",
           "target_id",
-          "file_id",
           "file_version",
           "name",
           "size_bytes",
@@ -41749,6 +42051,37 @@
           "source_sha256",
           "eligible",
           "blocking_reasons"
+        ]
+      },
+      "CompletedDraftRetirementCreate": {
+        "type": "object",
+        "properties": {
+          "expected_folder_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "expected_upload_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "target_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_folder_version",
+          "expected_upload_version",
+          "target_id",
+          "reason"
         ]
       },
       "RetirementCreate": {
@@ -41854,7 +42187,14 @@
           "ordinal": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 1
+            "maximum": 63
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "upload_draft",
+              "promotion_candidate"
+            ]
           }
         },
         "additionalProperties": false,
@@ -41913,7 +42253,7 @@
               "$ref": "#/components/schemas/RetirementRenewalItem"
             },
             "minItems": 1,
-            "maxItems": 2
+            "maxItems": 64
           }
         },
         "additionalProperties": false,
@@ -41976,7 +42316,7 @@
               "$ref": "#/components/schemas/RetirementAuthorizationItem"
             },
             "minItems": 1,
-            "maxItems": 2
+            "maxItems": 64
           },
           "reason": {
             "type": "string",
@@ -42111,7 +42451,7 @@
               "$ref": "#/components/schemas/RetirementItem"
             },
             "minItems": 1,
-            "maxItems": 2
+            "maxItems": 64
           },
           "authorization": {
             "anyOf": [
@@ -46662,6 +47002,10 @@
           "updated_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "retirement_plan_id": {
+            "type": "string",
+            "format": "uuid"
           },
           "folder_id": {
             "type": "string",

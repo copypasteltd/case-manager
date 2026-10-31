@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "execution_record_sha256": "ade8cb13a174c1134937fcb963d8d11a1654eb9d087a0845cd0bdfd0406af7ed",
+  "raw_report_sha256": "6b140d49418077a6774cbcd0bc028a711845107ce3b4e91e22cd3ea6770da69c",
+  "source_sha256": "c1752f40a5d148f6719dae158e4f3f4aaef5c58baccafcce1235f20f72051d73",
+  "tests": {
+    "numPassedTests": 32,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "events": [
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries pins file, target and immutable plan identity",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries requires both unique providers for historical originals",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries rejects replaced item membership and invalid ordering",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries keeps observation mandatory",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries requires explicit human impact acknowledgement and reason",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries never labels partial work complete",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries permits stopping while preserving already confirmed results",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "known-original retirement boundaries does not convert protected sources into a new selection",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal pins only the stopped remainder and accepts renewal after the initial approval deadline",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal waits until all remaining work stops and never renews cancelled or completed plans",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal requires explicit human acknowledgement and a bounded reason",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal requires a grant bound to this exact snapshot and existing item generation",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal rejects duplicate and unrelated original membership in authorization history",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal validates an atomic renewal response with the next grant and only one new generation",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal preserves the first approval and every already confirmed result",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "explicit remaining-original renewal never accepts a renewal that omits or swaps the remaining selected originals",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement new completed uploads use folder authority without inventing a formal file identity",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement replacement completed uploads retain file identity but use the exact folder workspace",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement multiple known objects may share a provider but not identity, ordinal or source role",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement the fixed object count and completed upload revisions are mandatory",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement creation pins both revisions and cannot use the formal-file creation command",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement completed upload approval keeps the human observation and irreversible acknowledgement",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/object-retirement.test.ts",
+      "name": "completed upload retirement a later grant selects every stopped object including more than two items",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client verifies bounded generated Office bytes with a complete hash and retains ordinary sample fingerprints",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client samples at most 128 KiB for a 120 GB source and computes the last part without allocating it",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client reconciles before resuming, sends only missing slices, then reconciles before freezing",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client does not freeze content based solely on client receipts",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client rejects a reselected source mismatch before signing or cloud access",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client refuses same-origin addresses, stale permits and credential headers without disclosing signatures",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client stops after an uncertain acknowledgment and never retries or finalizes automatically",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client aborts active transfer before acknowledging or freezing",
+      "status": "passed"
+    },
+    {
+      "file": "web/src/upload.test.ts",
+      "name": "bounded resumable upload client does not parse or expose raw provider error bodies",
+      "status": "passed"
+    }
+  ],
+  "reporter": "Vitest configured JSON output file, not console JSON",
+  "inspection_only": true,
+  "tests_rerun": false
+}

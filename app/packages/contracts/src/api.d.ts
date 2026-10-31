@@ -1968,6 +1968,41 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/folders/{id}/completed-draft-retirement-candidates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listCompletedDraftRetirementCandidates */
+        get: operations["listCompletedDraftRetirementCandidates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/folders/{id}/completed-draft-retirement-plans": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listCompletedDraftRetirementPlans */
+        get: operations["listCompletedDraftRetirementPlans"];
+        put?: never;
+        /** createCompletedDraftRetirementPlan */
+        post: operations["createCompletedDraftRetirementPlan"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/files/{id}/object-retirement-candidates": {
         parameters: {
             query?: never;
@@ -6560,11 +6595,11 @@ export interface components {
         };
         RetirementCandidate: {
             /** @enum {string} */
-            kind: "history" | "committed_draft";
+            kind: "history" | "committed_draft" | "uncommitted_draft";
             /** Format: uuid */
             target_id: string;
             /** Format: uuid */
-            file_id: string;
+            file_id?: string;
             file_version: number;
             name: string;
             size_bytes: string;
@@ -6575,6 +6610,19 @@ export interface components {
             source_sha256: string;
             eligible: boolean;
             blocking_reasons: string[];
+            /** Format: uuid */
+            folder_id?: string;
+            folder_version?: number;
+            upload_version?: number;
+            upload_state?: string;
+            object_count?: number;
+        };
+        CompletedDraftRetirementCreate: {
+            expected_folder_version: number;
+            expected_upload_version: number;
+            /** Format: uuid */
+            target_id: string;
+            reason: string;
         };
         RetirementCreate: {
             expected_file_version: number;
@@ -6599,6 +6647,8 @@ export interface components {
             /** @enum {string} */
             provider: "oss" | "r2";
             ordinal: number;
+            /** @enum {string} */
+            role?: "upload_draft" | "promotion_candidate";
         };
         RetirementRenewalItem: {
             /** Format: uuid */
@@ -7589,6 +7639,8 @@ export interface components {
             created_at: string;
             /** Format: date-time */
             updated_at: string;
+            /** Format: uuid */
+            retirement_plan_id?: string;
             /** Format: uuid */
             folder_id: string;
             file_id: string | null;
@@ -20581,6 +20633,123 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CleanupReceiptListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listCompletedDraftRetirementCandidates: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementCandidateListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listCompletedDraftRetirementPlans: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createCompletedDraftRetirementPlan: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CompletedDraftRetirementCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RetirementPlanResponse"];
                 };
             };
             400: components["responses"]["Failure"];

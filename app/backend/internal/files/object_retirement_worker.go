@@ -46,7 +46,7 @@ func (s *ObjectRetirementService) jobTx(ctx context.Context, j jobqueue.Job, fn 
 	if e != nil {
 		return e
 	}
-	if _, e = file(ctx, tx, j.OrgID, p.Snapshot.FileID, true); e != nil {
+	if e = s.lockPlanTarget(ctx, tx, j.OrgID, p); e != nil {
 		return e
 	}
 	item, e := retirementItem(tx.QueryRow(ctx, "SELECT "+retirementItemColumns+" FROM object_retirement_items WHERE org_id=$1 AND plan_id=$2 AND id=$3 FOR UPDATE", j.OrgID, p.ID, in.ItemID))
@@ -91,18 +91,14 @@ func (s *ObjectRetirementService) executionAllowed(ctx context.Context, tx pgx.T
 	if e := tx.QueryRow(ctx, "SELECT id FROM sessions WHERE org_id=$1 AND id=$2 FOR SHARE", org, a.SessionID).Scan(&lock); e != nil {
 		return e
 	}
-	_, e := s.actor(ctx, tx, a, p.Snapshot.FileID, false)
+	e := s.planActor(ctx, tx, a, p, false)
 	if e != nil {
 		return e
 	}
 	return s.retirementSelectionAllowed(ctx, tx, p, org)
 }
 func (s *ObjectRetirementService) retirementSelectionAllowed(ctx context.Context, tx pgx.Tx, p RetirementPlan, org string) error {
-	f, e := file(ctx, tx, org, p.Snapshot.FileID, true)
-	if e != nil {
-		return e
-	}
-	current, objects, e := s.assess(ctx, tx, org, f, p.Snapshot.Kind, p.Snapshot.TargetID, p.ID)
+	current, objects, e := s.assessPlan(ctx, tx, org, p, p.ID)
 	if e != nil {
 		return e
 	}

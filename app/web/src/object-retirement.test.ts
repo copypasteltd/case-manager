@@ -25,3 +25,6 @@ describe('explicit remaining-original renewal',()=>{
  it('preserves the first approval and every already confirmed result',()=>{const p=renewed();assert.equal(checkResult(stopped(),{...p,approval_reason:'replacement decision'}),false);assert.equal(checkResult(stopped(),{...p,items:[{...p.items[0],generation:2},p.items[1]]}),false);});
  it('never accepts a renewal that omits or swaps the remaining selected originals',()=>{const p=renewed();assert.equal(checkResult(stopped(),{...p,items:[p.items[0],{...p.items[1],state:'blocked'}]}),false);assert.throws(()=>checkResult(stopped(),{...p,authorization:{...p.authorization!,items:[]}}));});
 });
+
+import { completedRetirementChecks } from '../../packages/contracts/test/completed-upload-retirement-checks';
+describe('completed upload retirement',()=>completedRetirementChecks(it));

@@ -73,7 +73,7 @@ func (s *ObjectRetirementService) Plans(ctx context.Context, a core.Actor, fileI
 	if e != nil {
 		return out, e
 	}
-	rows, e := s.Files.DB.Query(ctx, `SELECT id FROM object_retirement_plans WHERE org_id=$1 AND file_id=$2
+	rows, e := s.Files.DB.Query(ctx, `SELECT id FROM object_retirement_plans WHERE org_id=$1 AND file_id=$2 AND scope_folder_id IS NULL
   AND ($3::timestamptz IS NULL OR (created_at,id)<($3,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5`, a.OrgID, fileID, at, id, limit+1)
 	if e != nil {
 		return out, e
@@ -176,17 +176,13 @@ func (s *ObjectRetirementService) Approve(ctx context.Context, c core.Command, i
 		if !now.Before(p.ExpiresAt) {
 			return core.Result{}, core.Fail(410, "CLEANUP_PLAN_EXPIRED", "批准期限已过，请重新盘点")
 		}
-		f, e := file(ctx, tx, c.Actor.OrgID, p.Snapshot.FileID, true)
-		if e != nil {
-			return core.Result{}, e
-		}
 		if p.Snapshot.Kind == "history" {
 			var locked string
 			if e = tx.QueryRow(ctx, "SELECT id FROM file_versions WHERE org_id=$1 AND id=$2 FOR UPDATE", c.Actor.OrgID, p.Snapshot.TargetID).Scan(&locked); e != nil {
 				return core.Result{}, e
 			}
 		}
-		snapshot, objects, e := s.assess(ctx, tx, c.Actor.OrgID, f, p.Snapshot.Kind, p.Snapshot.TargetID, "")
+		snapshot, objects, e := s.assessPlan(ctx, tx, c.Actor.OrgID, p, "")
 		if e != nil {
 			return core.Result{}, e
 		}
@@ -211,6 +207,11 @@ func (s *ObjectRetirementService) Approve(ctx context.Context, c core.Command, i
    approved_by=$5,approved_session_id=$6,approved_channel=$7,approved_auth_version=$8,approved_org_version=$9 WHERE org_id=$1 AND id=$2`, c.Actor.OrgID, id, now, in.Reason, c.Actor.UserID, c.Actor.SessionID, c.Actor.Channel, c.Actor.AuthVersion, c.Actor.OrgAuthVersion)
 		if e != nil {
 			return core.Result{}, e
+		}
+		if p.Snapshot.Kind == "uncommitted_draft" {
+			if _, e = tx.Exec(ctx, "UPDATE upload_sessions SET retirement_plan_id=$3,version=version+1,updated_at=clock_timestamp() WHERE org_id=$1 AND id=$2", c.Actor.OrgID, p.Snapshot.TargetID, p.ID); e != nil {
+				return core.Result{}, e
+			}
 		}
 		if p.Snapshot.Kind == "history" {
 			if _, e = tx.Exec(ctx, "UPDATE file_versions SET availability='retiring' WHERE org_id=$1 AND id=$2", c.Actor.OrgID, p.Snapshot.TargetID); e != nil {

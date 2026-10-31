@@ -26,9 +26,14 @@ type ObjectRetirementService struct {
 	Backends map[string]*OriginalCleanupBackend
 }
 type RetirementCandidate struct {
+	FolderID        string         `json:"folder_id,omitempty"`
+	FolderVersion   int64          `json:"folder_version,omitempty"`
+	UploadVersion   int64          `json:"upload_version,omitempty"`
+	UploadState     string         `json:"upload_state,omitempty"`
+	ObjectCount     int            `json:"object_count,omitempty"`
 	Kind            string         `json:"kind"`
 	TargetID        string         `json:"target_id"`
-	FileID          string         `json:"file_id"`
+	FileID          string         `json:"file_id,omitempty"`
 	FileVersion     int64          `json:"file_version"`
 	Name            string         `json:"name"`
 	SizeBytes       string         `json:"size_bytes"`
@@ -53,8 +58,10 @@ type RetirementObject struct {
 	ExclusiveNamespace bool
 	ReplicaID          string
 	Source             objectstore.Source
+	Role               string `json:"role,omitempty"`
 }
 type RetirementItem struct {
+	Role        string     `json:"role,omitempty"`
 	ID          string     `json:"id"`
 	Provider    string     `json:"provider"`
 	Ordinal     int        `json:"ordinal"`
@@ -67,6 +74,7 @@ type RetirementItem struct {
 	UpdatedAt   time.Time  `json:"updated_at"`
 }
 type RetirementPlan struct {
+	ScopeFolderID                                *string                  `json:"-"`
 	ID                                           string                   `json:"id"`
 	Version                                      int64                    `json:"version"`
 	State                                        string                   `json:"state"`
@@ -88,7 +96,7 @@ type RetirementPlan struct {
 	ApprovedAuthVersion, ApprovedOrgVersion      *int64                   `json:"-"`
 }
 
-const retirementColumns = `id,version,state,snapshot,snapshot_sha256,reason,created_at,ready_after,expires_at,approved_at,approval_reason,cancelled_at,cancellation_reason,objects,approved_by,approved_session_id,approved_channel,approved_auth_version,approved_org_version,execution_authorization_id`
+const retirementColumns = `id,version,state,snapshot,snapshot_sha256,reason,created_at,ready_after,expires_at,approved_at,approval_reason,cancelled_at,cancellation_reason,objects,approved_by,approved_session_id,approved_channel,approved_auth_version,approved_org_version,execution_authorization_id,scope_folder_id`
 const retirementItemColumns = `id,provider,ordinal,version,generation,state,attempts,last_error,confirmed_at,updated_at`
 
 func retirementItem(row pgx.Row) (RetirementItem, error) {
@@ -106,7 +114,7 @@ func retirementPlan(ctx context.Context, db platform.DBTX, org, id string, lock 
 		q += " FOR UPDATE"
 	}
 	var snapshot, objects []byte
-	e := db.QueryRow(ctx, q, org, id).Scan(&out.ID, &out.Version, &out.State, &snapshot, &out.SnapshotSHA256, &out.Reason, &out.CreatedAt, &out.ReadyAfter, &out.ExpiresAt, &out.ApprovedAt, &out.ApprovalReason, &out.CancelledAt, &out.CancellationReason, &objects, &out.ApprovedBy, &out.ApprovedSession, &out.ApprovedChannel, &out.ApprovedAuthVersion, &out.ApprovedOrgVersion, &out.ExecutionAuthorizationID)
+	e := db.QueryRow(ctx, q, org, id).Scan(&out.ID, &out.Version, &out.State, &snapshot, &out.SnapshotSHA256, &out.Reason, &out.CreatedAt, &out.ReadyAfter, &out.ExpiresAt, &out.ApprovedAt, &out.ApprovalReason, &out.CancelledAt, &out.CancellationReason, &objects, &out.ApprovedBy, &out.ApprovedSession, &out.ApprovedChannel, &out.ApprovedAuthVersion, &out.ApprovedOrgVersion, &out.ExecutionAuthorizationID, &out.ScopeFolderID)
 	if e != nil {
 		return out, platform.DatabaseError(e)
 	}
@@ -134,6 +142,9 @@ func retirementPlan(ctx context.Context, db platform.DBTX, org, id string, lock 
 		if e != nil {
 			return out, e
 		}
+		if v.Ordinal >= 0 && v.Ordinal < len(out.Objects) {
+			v.Role = out.Objects[v.Ordinal].Role
+		}
 		out.Items = append(out.Items, v)
 	}
 	return out, rows.Err()
@@ -157,7 +168,7 @@ func (s *ObjectRetirementService) readPlan(ctx context.Context, db platform.DBTX
 	if e != nil {
 		return p, e
 	}
-	_, e = s.actor(ctx, db, a, p.Snapshot.FileID, mfa)
+	e = s.planActor(ctx, db, a, p, mfa)
 	return p, e
 }
 func (s *ObjectRetirementService) Plan(ctx context.Context, a core.Actor, id string) (RetirementPlan, error) {

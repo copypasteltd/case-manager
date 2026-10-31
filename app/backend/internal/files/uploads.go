@@ -48,6 +48,7 @@ type UploadCreate struct {
 	SourceFingerprint string  `json:"source_fingerprint"`
 }
 type Upload struct {
+	RetirementPlanID                                          *string         `json:"retirement_plan_id,omitempty"`
 	ID                                                        string          `json:"id"`
 	Version                                                   int64           `json:"version"`
 	CreatedAt                                                 time.Time       `json:"created_at"`
@@ -119,7 +120,7 @@ const uploadColumns = `u.id,u.version,u.created_at,u.updated_at,u.target_folder_
 u.name,u.media_type,u.source_fingerprint,u.size_bytes::text,u.part_size,u.part_count,u.state,
 u.storage_epoch,u.expires_at,u.final_digest,u.committed_version_id,u.last_error,u.owner_id,
 u.provider,u.bucket,u.classification,u.provider_upload_id,u.draft_key,u.frozen_source_id,u.frozen_etag,u.frozen_native_version,u.finalize_manifest,u.source_channel,
-u.verified_bytes::text,u.scan_state,u.scan_result_ref,u.scan_waiver_ref,
+u.verified_bytes::text,u.scan_state,u.scan_result_ref,u.scan_waiver_ref,u.retirement_plan_id,
 (SELECT v.file_id FROM file_versions v WHERE v.org_id=u.org_id AND v.id=u.committed_version_id)`
 
 func upload(ctx context.Context, db platform.DBTX, org, id string, lock bool) (Upload, error) {
@@ -135,7 +136,7 @@ func upload(ctx context.Context, db platform.DBTX, org, id string, lock bool) (U
 		&u.Name, &u.MediaType, &u.SourceFingerprint, &u.SizeBytes, &u.PartBytes, &u.PartCount, &u.State,
 		&u.StorageEpoch, &u.ExpiresAt, &u.SHA256, &u.ResultVersionID, &u.ErrorCode, &u.OwnerID,
 		&u.Provider, &u.Bucket, &u.Classification, &u.UploadID, &u.DraftKey, &u.FrozenSourceID, &u.FrozenETag, &u.FrozenNativeVersion, &u.Manifest, &u.SourceChannel,
-		&u.VerifiedBytes, &u.ScanState, &u.ScanResultID, &u.ScanWaiverRef, &u.ResultFileID)
+		&u.VerifiedBytes, &u.ScanState, &u.ScanResultID, &u.ScanWaiverRef, &u.RetirementPlanID, &u.ResultFileID)
 	if u.ScanState == "quarantined" {
 		u.ScanState = "blocked"
 	}
@@ -249,6 +250,9 @@ func currentEpoch(ctx context.Context, db platform.DBTX, org string) (int64, str
 	return epoch, provider, err
 }
 func liveUpload(ctx context.Context, db platform.DBTX, a core.Actor, u Upload, expected int64, states ...string) error {
+	if u.RetirementPlanID != nil {
+		return core.Fail(409, "UPLOAD_RETIRED", "此上传已批准清理，不可继续或提交")
+	}
 	if err := core.RequireVersion(expected); err != nil {
 		return err
 	}

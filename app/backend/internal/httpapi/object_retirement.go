@@ -9,6 +9,23 @@ import (
 
 func (s *Server) objectRetirementRoutes(mux *http.ServeMux, metadata *files.Service) {
 	service := &files.ObjectRetirementService{Files: metadata, Backends: s.OriginalCleanup}
+	mux.HandleFunc("GET /v1/folders/{id}/completed-draft-retirement-candidates", read(s, "RetirementCandidateListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return service.CompletedDraftCandidates(ctx, a, r.PathValue("id"), files.Filter{Cursor: f.Cursor, Limit: f.Limit})
+	}))
+	mux.HandleFunc("GET /v1/folders/{id}/completed-draft-retirement-plans", read(s, "RetirementPlanListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return service.CompletedDraftPlans(ctx, a, r.PathValue("id"), files.Filter{Cursor: f.Cursor, Limit: f.Limit})
+	}))
+	mux.HandleFunc("POST /v1/folders/{id}/completed-draft-retirement-plans", command(s, "CompletedDraftRetirementCreate", "RetirementPlanResponse", func(ctx context.Context, c core.Command, r *http.Request, in files.CompletedDraftRetirementCreate) (core.Result, error) {
+		return service.CreateCompletedDraft(ctx, c, r.PathValue("id"), in)
+	}))
 	mux.HandleFunc("GET /v1/files/{id}/object-retirement-candidates", read(s, "RetirementCandidateListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := filter(r)
 		if e != nil {

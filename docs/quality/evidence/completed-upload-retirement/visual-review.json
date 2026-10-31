@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-31T04:18:22.368316+00:00",
+  "review_method": "Inspected all three full-resolution screenshots, sampled first/middle/final decoded MP4 frames and first/middle/final GIF frames.",
+  "checks": [
+    "Current authenticated folder inventory, explicit selection and durable fixed plan are visible.",
+    "No password, MFA secret, private capability or real business data appears.",
+    "Object roles, new-file identity, mandatory observation and unconfirmed execution state are legible.",
+    "MP4 shows actual post-authentication interaction; GIF remains an explicit screenshot tour."
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/completed-upload-retirement-web-inventory.png",
+      "sha256": "a345ed9cace416c4b9990c8217906ffd857fc3f785c00990487951f360740b03",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/completed-upload-retirement-web-selection.png",
+      "sha256": "7fc50c752129710cfb1a6456dd252b5203cf1c8e158f081285260ebb3e2df359",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/screenshots/completed-upload-retirement-web-plan.png",
+      "sha256": "f445289c03e6cb3aed9abbbab238927f4a378e266aed1914a11df9418ef912d7",
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/videos/completed-upload-retirement-web.mp4",
+      "sha256": "5e4c28180ee761297d04d42b07f7a5279ed9d42d44ca770c8eb84a498a120b9c",
+      "bytes": 153790,
+      "reviewed": true
+    },
+    {
+      "file": "docs/media/gifs/completed-upload-retirement-web.gif",
+      "sha256": "52c953bc1cde8f1e99f7b7d748949106b04d76c1cace3d6bbde47c03018f6de7",
+      "bytes": 144526,
+      "reviewed": true
+    }
+  ],
+  "sample_contact_sha256": "0739678af41d57334118395e80b2d3787a5832e1c2adc0f0d560fc055aefa388",
+  "full_video_watched": false,
+  "real_cloud_acceptance": false,
+  "real_device_acceptance": false
+}

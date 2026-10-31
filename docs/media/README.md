@@ -1,5 +1,11 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量138 · 已完成上传草稿 / Completed upload drafts
+
+三张本轮真实Web截图：[目录盘点](screenshots/completed-upload-retirement-web-inventory.png)、[固定选择及原因](screenshots/completed-upload-retirement-web-selection.png)、[持久观察清单](screenshots/completed-upload-retirement-web-plan.png)。[静音MP4](videos/completed-upload-retirement-web.mp4)记录认证后的显式建单、刷新和读回；[六秒GIF](gifs/completed-upload-retirement-web.gif)明确为三张实际截图导览。
+
+Actual authenticated synthetic data, native durable PG and current Web source. Destructive approval/worker checks execute separately through HTTP/PG with synthetic cloud transport and elapsed clocks; no live cloud deletion, real device or production claim. Mobile browser journeys and new Android artifacts are deferred. [来源与检查](../quality/138-completed-upload-retirement-verification.md)。
+
 ## 冻结交付137 / Frozen delivery137
 
 本轮仅封装已固定的业务源码，不改变页面；保留136及更早截图、MP4、GIF原始字节，没有新页面录制。[完整媒体包与摘要](../releases/v0.1.0-rc.2/README.md)来自冻结提交全部媒体文件，不能写成137新增交互或真机证据。

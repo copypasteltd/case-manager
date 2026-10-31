@@ -43,6 +43,7 @@ export function uploadedBytes(upload: Upload, parts: readonly number[] = upload.
   return count;
 }
 function match(upload: Upload, initial: Upload, source: NativeUploadSource) {
+  if (upload.retirement_plan_id) invalid('此上传已批准清理，不能继续传输或提交。');
   layout(upload); uploadedBytes(upload);
   for (const key of ['id', 'folder_id', 'file_id', 'base_version_id', 'name', 'media_type', 'size_bytes', 'source_fingerprint', 'part_bytes', 'part_count', 'storage_epoch'] as const) if (upload[key] !== initial[key]) invalid();
   if (upload.source_fingerprint !== source.fingerprint || upload.size_bytes !== source.size_bytes || upload.version < initial.version) invalid();

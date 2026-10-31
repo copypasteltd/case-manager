@@ -165,16 +165,16 @@ export function UploadQueuePage() {
 function UploadCard({ upload }: { upload: UploadSession }) {
   const queue = useUploadQueue(), local = queue.runtime.get(upload.id), [action, setAction] = useState<'abort' | 'commit' | 'rescan' | 'waivers' | null>(null), [report, setReport] = useState(false);
   const reselect = useRef<HTMLInputElement>(null);
-  const expired = Date.parse(upload.expires_at) <= Date.now() && !terminal.has(upload.state), active = !expired && !terminal.has(upload.state);
+  const expired = Date.parse(upload.expires_at) <= Date.now() && !terminal.has(upload.state), active = !upload.retirement_plan_id && !expired && !terminal.has(upload.state);
   const transferring = !!local?.controller, sent = local?.bytes ?? 0;
   let cloud = 0; try { cloud = confirmedBytes(upload); } catch {}
-  const label = expired ? '会话已过期' : transferring ? '本机分片传输中' : local?.paused && ['created', 'uploading'].includes(upload.state) ? '本机传输已暂停' : local?.desired && upload.state === 'uploading' ? '等待本机传输名额' : uploadStateNames[upload.state] ?? upload.state;
+  const label = upload.retirement_plan_id ? '已批准清理，不可继续提交' : expired ? '会话已过期' : transferring ? '本机分片传输中' : local?.paused && ['created', 'uploading'].includes(upload.state) ? '本机传输已暂停' : local?.desired && upload.state === 'uploading' ? '等待本机传输名额' : uploadStateNames[upload.state] ?? upload.state;
   return <article className="panel upload-card" data-upload-id={upload.id}><div className="section-heading"><div><h3>{upload.name}</h3><small className="muted">{bytes(upload.size_bytes)} · {date(upload.created_at)}</small></div><span className={'badge ' + (upload.state === 'committed' ? 'success' : ['blocked', 'failed'].includes(upload.state) || expired ? 'warning' : 'neutral')}>{label}</span></div>
     <dl className="upload-facts"><div><dt>云端已确认分片</dt><dd>{upload.confirmed_parts.length} / {upload.part_count} · {bytes(cloud)}</dd></div><div><dt>完整源摘要进度</dt><dd>{bytes(upload.verified_bytes)} / {bytes(upload.size_bytes)}</dd></div><div><dt>本次传输已收到的分片回执</dt><dd>{bytes(sent)}</dd></div><div><dt>会话有效至</dt><dd>{new Date(upload.expires_at).toLocaleString('zh-HK', { timeZone: 'Asia/Hong_Kong' })}</dd></div></dl>
     {transferring && <progress className="download-progress" value={sent} max={Number(upload.size_bytes)} aria-label="本机已收到分片回执的字节数" />}
     <ErrorNotice error={local?.error} />{upload.error_code && <p className="notice warning">{terminal.has(upload.state) ? '上次执行记录' : '服务端当前未完成此阶段'}，状态代码：{upload.error_code}。请查看扫描报告或联系管理员核对执行记录。</p>}
     {upload.scan_state === 'waived' && <p className="notice warning">此内容经扫描例外放行，尚未取得完整安全扫描通过的结论。</p>}
-    {upload.state === 'ready' && <p className="muted">候选内容已校验。确认后建立正式版本，再独立排队复制到备份端。</p>}
+    {!upload.retirement_plan_id && upload.state === 'ready' && <p className="muted">候选内容已校验。确认后建立正式版本，再独立排队复制到备份端。</p>}
     <div className="upload-actions"><Link className="text-button" to={'/files/folders/' + upload.folder_id}>查看目标目录<ArrowRight size={15} /></Link>
       {active && ['created', 'uploading'].includes(upload.state) && <>{transferring || local?.desired ? <button className="button secondary" onClick={() => queue.pause(upload.id)}><Pause size={15} />暂停本机传输</button> : <button className="button secondary" onClick={() => local?.source ? queue.resume(upload) : reselect.current?.click()}><Play size={15} />{local?.source ? '核对分片并继续' : '重选原文件并继续'}</button>}<input ref={reselect} type="file" className="sr-only" aria-label={'重新选择原文件 ' + upload.name} onChange={event => { const file = event.target.files?.[0]; if (file) queue.resume(upload, file); event.target.value = ''; }} /></>}
       {upload.scan_result_id && <button className="text-button" onClick={() => setReport(true)}>查看扫描报告</button>}

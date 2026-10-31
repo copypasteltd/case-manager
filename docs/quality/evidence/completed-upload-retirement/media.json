@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "encoded_at": "2026-10-31T04:17:05.230976+00:00",
+  "encoder_script_sha256": "b1af4a5f96bd9b3dfab0bf2ecd86baca6f36ecc88460acaeb80060b3ea53b022",
+  "ffmpeg_sha256": "d1e2a156261ecc675081943197a85f08f2868784a0af499171ede89353edad31",
+  "ffprobe_sha256": "70872c3ffbc43d0b2c570f9837f54d6e9a832f4ca25463e9735b6a3ec0621478",
+  "recordings": [
+    {
+      "client": "web",
+      "source_sha256": "754b97708bc07748582532f68b92663fb03c3e87ce3cfe91e6a2af342a133dfa",
+      "build_source_sha256": "692f60c83a0022c526b42a8a3a6b9e439fe02cd884e1f98a2dfe01613e833da7",
+      "capture_manifest": "docs/quality/evidence/completed-upload-retirement/web-capture-manifest.json",
+      "capture_manifest_sha256": "f8234e08942afced2b6000c1383e5ffe11cd81691f955b0c58814a4a0a8fc2e5",
+      "capture_frame_count": 12,
+      "capture_duration_ms": 2443,
+      "gif_mode": "actual_screenshot_tour",
+      "gif_is_screen_recording": false,
+      "gif_frame_duration_ms": 2000,
+      "gif_screenshots": [
+        {
+          "file": "docs/media/screenshots/completed-upload-retirement-web-inventory.png",
+          "sha256": "a345ed9cace416c4b9990c8217906ffd857fc3f785c00990487951f360740b03"
+        },
+        {
+          "file": "docs/media/screenshots/completed-upload-retirement-web-selection.png",
+          "sha256": "7fc50c752129710cfb1a6456dd252b5203cf1c8e158f081285260ebb3e2df359"
+        },
+        {
+          "file": "docs/media/screenshots/completed-upload-retirement-web-plan.png",
+          "sha256": "f445289c03e6cb3aed9abbbab238927f4a378e266aed1914a11df9418ef912d7"
+        }
+      ],
+      "gif_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 960,
+            "height": 1000,
+            "nb_frames": "24"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1440,
+            "height": 1100,
+            "nb_frames": "26",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "2.600000"
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/media/videos/completed-upload-retirement-web.mp4",
+          "sha256": "5e4c28180ee761297d04d42b07f7a5279ed9d42d44ca770c8eb84a498a120b9c",
+          "bytes": 153790
+        },
+        {
+          "file": "docs/media/gifs/completed-upload-retirement-web.gif",
+          "sha256": "52c953bc1cde8f1e99f7b7d748949106b04d76c1cace3d6bbde47c03018f6de7",
+          "bytes": 144526
+        }
+      ]
+    }
+  ],
+  "scope": "Actual authenticated synthetic Web completed-upload inventory: new-file identity, both known completed objects, explicit human fixed-plan creation and durable readback. Destructive approval/cleanup is checked separately through native HTTP/PG; no cloud operation is shown. MP4 records actual post-MFA pixels; GIF is an explicit six-second three-screenshot tour. No live cloud deletion, device or production acceptance.",
+  "artifacts": [
+    {
+      "file": "docs/media/screenshots/completed-upload-retirement-web-inventory.png",
+      "sha256": "a345ed9cace416c4b9990c8217906ffd857fc3f785c00990487951f360740b03"
+    },
+    {
+      "file": "docs/media/screenshots/completed-upload-retirement-web-selection.png",
+      "sha256": "7fc50c752129710cfb1a6456dd252b5203cf1c8e158f081285260ebb3e2df359"
+    },
+    {
+      "file": "docs/media/screenshots/completed-upload-retirement-web-plan.png",
+      "sha256": "f445289c03e6cb3aed9abbbab238927f4a378e266aed1914a11df9418ef912d7"
+    },
+    {
+      "file": "docs/media/videos/completed-upload-retirement-web.mp4",
+      "sha256": "5e4c28180ee761297d04d42b07f7a5279ed9d42d44ca770c8eb84a498a120b9c",
+      "bytes": 153790
+    },
+    {
+      "file": "docs/media/gifs/completed-upload-retirement-web.gif",
+      "sha256": "52c953bc1cde8f1e99f7b7d748949106b04d76c1cace3d6bbde47c03018f6de7",
+      "bytes": 144526
+    }
+  ]
+}

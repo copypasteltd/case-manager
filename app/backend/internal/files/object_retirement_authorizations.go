@@ -88,7 +88,7 @@ func (s *ObjectRetirementService) Authorizations(ctx context.Context, a core.Act
 // A fresh human explicitly adopts the exact remaining items. Initial approval,
 // source identities, permanent barriers and confirmed results remain untouched.
 func (s *ObjectRetirementService) Reauthorize(ctx context.Context, c core.Command, id string, in RetirementRenewal) (core.Result, error) {
-	if in.ExpectedVersion < 1 || core.Name(in.Reason) != nil || len(in.Items) < 1 || len(in.Items) > 2 {
+	if in.ExpectedVersion < 1 || core.Name(in.Reason) != nil || len(in.Items) < 1 || len(in.Items) > 64 {
 		return core.Result{}, core.Invalid("items", "请核对剩余原件及修订，并说明重新授权依据")
 	}
 	seen := map[string]bool{}

@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## Increment138 · Completed uncommitted upload retirement
+
+- 四端新增目录级人工新文件／替换上传完成草稿盘点和固定清理计划，覆盖上传原件与所有已知完成晋升对象；尚无正式文件时不伪造文件身份。
+- 普通迁移104增加不可变完成观察时刻、目录作用域及永久上传停用。保留／观察期、近期MFA、精确来源、法务／活跃作业保护、独立worker、不可变回执和全部剩余项续作复用既有控制。
+- Focused native HTTP/PG5 suites/30 result records,32 selected Web cases,23 shared-mobile retirement cases,13 upload-controller cases, type checks and Web/WeChat/Douyin builds are fresh. Actual authenticated Web inventory, explicit plan creation and durable readback have new screenshots/MP4/GIF; synthetic cloud transport and elapsed clocks are disclosed.
+- Both frozen releases stay fixed. APK137/business136/schema103, full backend/runtime121 and full client136 evidence are retained, not rerun or extended to138. Development PG100 and all23 open packages remain; additional full/mobile/native/real integration acceptance is deferred.
+- [Design and usage](development/138-completed-upload-retirement.md) · [Executed checks and deferrals](quality/138-completed-upload-retirement-verification.md) · [All remaining work](delivery/05-functional-closure-138.md).
+
 ## Increment137 · Frozen candidate delivery
 
 - `v0.1.0-rc.2` freezes increments134–136, schema103, without moving the first candidate. Fresh native server/Web/runtime, both miniapps and a new development APK receive exact manifests and download hashes.

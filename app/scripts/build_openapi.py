@@ -118,19 +118,20 @@ add("CleanupPlan",cleanup_plan,tuple(cleanup_plan))
 cleanup_receipt = {"id":ID,"generation":VERSION,"attempt":VERSION,"outcome":enum("started","confirmed_absent","retry_scheduled","failed","blocked"),
     "error_code":nullable(NAME),"created_at":TIME}
 add("CleanupReceipt",cleanup_receipt,tuple(cleanup_receipt))
-retirement_candidate={"kind":enum("history","committed_draft"),"target_id":ID,"file_id":ID,"file_version":VERSION,
-    "name":TEXT,"size_bytes":BYTES,"seq":VERSION,"policy":nullable(ref("RetentionRule")),"trash_policy":nullable(ref("RetentionRule")),
+retirement_candidate={"kind":enum("history","committed_draft","uncommitted_draft"),"target_id":ID,"file_id":ID,"file_version":{"type":"integer","minimum":0},
+    "name":TEXT,"size_bytes":BYTES,"seq":{"type":"integer","minimum":0},"policy":nullable(ref("RetentionRule")),"trash_policy":nullable(ref("RetentionRule")),
     "retain_until":nullable(TIME),"source_sha256":HASH,"eligible":{"type":"boolean"},"blocking_reasons":array(NAME)}
-add("RetirementCandidate",retirement_candidate,tuple(retirement_candidate))
+add("RetirementCandidate",{**retirement_candidate,"folder_id":ID,"folder_version":VERSION,"upload_version":VERSION,"upload_state":NAME,"object_count":{"type":"integer","minimum":0,"maximum":66}},tuple(k for k in retirement_candidate if k!="file_id"))
+add("CompletedDraftRetirementCreate",{"expected_folder_version":VERSION,"expected_upload_version":VERSION,"target_id":ID,"reason":NAME},("expected_folder_version","expected_upload_version","target_id","reason"))
 add("RetirementCreate",{"expected_file_version":VERSION,"kind":enum("history","committed_draft"),"target_id":ID,"reason":NAME},("expected_file_version","kind","target_id","reason"))
-retirement_item={**{k:v for k,v in cleanup_item.items() if k!="upload_id"},"provider":enum("oss","r2"),"ordinal":{"type":"integer","minimum":0,"maximum":1}}
-add("RetirementItem",retirement_item,tuple(retirement_item))
+retirement_item={**{k:v for k,v in cleanup_item.items() if k!="upload_id"},"provider":enum("oss","r2"),"ordinal":{"type":"integer","minimum":0,"maximum":63}}
+add("RetirementItem",{**retirement_item,"role":enum("upload_draft","promotion_candidate")},tuple(retirement_item))
 add("RetirementRenewalItem",{"id":ID,**EXPECTED},("id","expected_version"))
-add("RetirementRenewal",{**EXPECTED,"snapshot_sha256":HASH,"reason":NAME,"items":array(ref("RetirementRenewalItem"),minItems=1,maxItems=2)},("expected_version","snapshot_sha256","reason","items"))
+add("RetirementRenewal",{**EXPECTED,"snapshot_sha256":HASH,"reason":NAME,"items":array(ref("RetirementRenewalItem"),minItems=1,maxItems=64)},("expected_version","snapshot_sha256","reason","items"))
 add("RetirementAuthorizationItem",{"item_id":ID,"previous_version":VERSION,"generation":VERSION},("item_id","previous_version","generation"))
-retirement_authorization={"id":ID,"sequence":VERSION,"plan_version":VERSION,"snapshot_sha256":HASH,"items":array(ref("RetirementAuthorizationItem"),minItems=1,maxItems=2),"reason":NAME,"authorized_at":TIME,"authorized_by":ID,"channel":enum("web","android","wechat","douyin")}
+retirement_authorization={"id":ID,"sequence":VERSION,"plan_version":VERSION,"snapshot_sha256":HASH,"items":array(ref("RetirementAuthorizationItem"),minItems=1,maxItems=64),"reason":NAME,"authorized_at":TIME,"authorized_by":ID,"channel":enum("web","android","wechat","douyin")}
 add("RetirementAuthorization",retirement_authorization,tuple(retirement_authorization))
-retirement_plan={**cleanup_plan,"authorization":nullable(ref("RetirementAuthorization")),"state":enum("observing","approved","cancelled","completed"),"snapshot":ref("RetirementCandidate"),"items":array(ref("RetirementItem"),minItems=1,maxItems=2)}
+retirement_plan={**cleanup_plan,"authorization":nullable(ref("RetirementAuthorization")),"state":enum("observing","approved","cancelled","completed"),"snapshot":ref("RetirementCandidate"),"items":array(ref("RetirementItem"),minItems=1,maxItems=64)}
 add("RetirementPlan",retirement_plan,tuple(retirement_plan))
 add("ResourceRef", {"type": NAME, "id": ID, "version_id": nullable(ID)}, ("type", "id"))
 add("CommandResult", {"operation_id": ID, "resource": ref("ResourceRef"),
@@ -340,7 +341,7 @@ add("UploadCreate", {"folder_id": ID, "name": NAME, "size_bytes": BYTES, "media_
     ("folder_id", "name", "size_bytes", "media_type", "source_fingerprint"))
 SCHEMAS["UploadCreate"]["description"] = "file_id and base_version_id must both be present for an update, both absent for a new file. Max bytes=120000000000."
 SCHEMAS["UploadCreate"]["dependentRequired"] = {"file_id": ["base_version_id"], "base_version_id": ["file_id"]}
-add("Upload", {**RECORD, "folder_id": ID, "file_id": nullable(ID), "base_version_id": nullable(ID),
+add("Upload", {**RECORD, "retirement_plan_id": ID, "folder_id": ID, "file_id": nullable(ID), "base_version_id": nullable(ID),
     "name": NAME, "media_type": NAME, "source_fingerprint": NAME, "error_code": nullable(NAME),
     "verified_bytes": BYTES, "scan_state": enum("pending", "clean", "blocked", "unscannable", "waived"), "scan_result_id": nullable(ID), "scan_waiver_ref": nullable(ID),
     "size_bytes": BYTES, "part_bytes": {"type": "integer", "minimum": 5242880, "maximum": 536870912},
@@ -1656,6 +1657,9 @@ operation("/upload-cleanup-plans/{id}/approve","post","approveMultipartCleanupPl
 operation("/upload-cleanup-plans/{id}/cancel","post","cancelMultipartCleanupPlan","CleanupPlan","CleanupDecision")
 operation("/upload-cleanup-items/{id}/retry","post","retryMultipartCleanupItem","CleanupPlan","UploadFinalize",202)
 operation("/upload-cleanup-items/{id}/receipts","get","listMultipartCleanupReceipts","CleanupReceipt",listing=True)
+operation("/folders/{id}/completed-draft-retirement-candidates","get","listCompletedDraftRetirementCandidates","RetirementCandidate",listing=True)
+operation("/folders/{id}/completed-draft-retirement-plans","get","listCompletedDraftRetirementPlans","RetirementPlan",listing=True)
+operation("/folders/{id}/completed-draft-retirement-plans","post","createCompletedDraftRetirementPlan","RetirementPlan","CompletedDraftRetirementCreate",201)
 operation("/files/{id}/object-retirement-candidates","get","listObjectRetirementCandidates","RetirementCandidate",listing=True)
 operation("/files/{id}/object-retirement-plans","get","listObjectRetirementPlans","RetirementPlan",listing=True)
 operation("/files/{id}/object-retirement-plans","post","createObjectRetirementPlan","RetirementPlan","RetirementCreate",201)

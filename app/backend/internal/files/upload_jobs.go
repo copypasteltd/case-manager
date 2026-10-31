@@ -123,6 +123,9 @@ func (s *UploadService) jobTx(ctx context.Context, j jobqueue.Job, in uploadJobI
 	return tx.Commit(ctx)
 }
 func (s *UploadService) workerAllowed(ctx context.Context, tx pgx.Tx, j jobqueue.Job, u Upload) error {
+	if u.RetirementPlanID != nil {
+		return core.Fail(409, "UPLOAD_RETIRED", "此上传已批准清理")
+	}
 	var a core.Actor
 	var status string
 	a.OrgID = j.OrgID
