@@ -22,7 +22,7 @@ const hash = /^[0-9a-f]{64}$/;
 
 export function makeFileUpdate(file: Schemas['File'], version: Schemas['FileVersion'], project: string | null): FileUpdate {
   if (file.project_id !== project || file.state !== 'active' || file.current_version_id !== version.id || version.file_id !== file.id || !uuid.test(file.id) || !uuid.test(version.id) || !Number.isSafeInteger(file.version) || file.version < 1) throw new Error('请选择当前会话范围内的准确现行文件版本。');
-  if (version.scan_state !== 'clean' || !['text/plain', 'text/markdown'].includes(version.media_type) || !/^\d+$/.test(version.size_bytes) || BigInt(version.size_bytes) < 1n || BigInt(version.size_bytes) > 1048576n) throw new Error('秘书编辑支持已扫描通过、1字节至1MiB的UTF-8文本或Markdown。');
+  if (version.scan_state !== 'clean' || !fileCreateFormats.some(([media]) => media === version.media_type) || !/^\d+$/.test(version.size_bytes) || BigInt(version.size_bytes) < 1n || BigInt(version.size_bytes) > 1048576n) throw new Error('秘书编辑支持已扫描通过、1字节至1MiB的文本、Markdown、DOCX、XLSX或PPTX。');
   return { file_id: file.id, base_version_id: version.id, expected_file_version: file.version };
 }
 

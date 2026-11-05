@@ -13,12 +13,12 @@ import (
 )
 
 func validSkills(skills []string) bool {
-	if len(skills) < 1 || len(skills) > 2 {
+	if len(skills) < 1 || len(skills) > 8 {
 		return false
 	}
 	seen := map[string]bool{}
 	for _, skill := range skills {
-		if !slices.Contains([]string{"project-briefing", "incident-summary"}, skill) || seen[skill] {
+		if !slices.Contains([]string{"project-create", "project-update", "file-update", "information-organize", "oa-assist", "subscription-review", "project-briefing", "incident-summary"}, skill) || seen[skill] {
 			return false
 		}
 		seen[skill] = true

@@ -91,7 +91,8 @@ func fileRecoverySources(ctx context.Context, tx pgx.Tx, a core.Actor, c Convers
  JOIN upload_sessions u ON u.org_id=d.org_id AND u.id=d.id
  WHERE d.org_id=$1 AND d.run_id=$2 AND d.id=$3 AND d.content_sha256=$4 AND i.intent_sha256=$5
  AND old.actor_id=$6 AND old.conversation_id=$7 AND old.state IN ('succeeded','failed','cancelled')
- AND u.state NOT IN ('committed','blocked') AND u.scan_state NOT IN ('quarantined','blocked','infected','unscannable','waived')
+ AND NOT EXISTS(SELECT 1 FROM agent_file_abandonments ab WHERE ab.org_id=d.org_id AND ab.draft_id=d.id)
+ AND u.retirement_plan_id IS NULL AND u.state NOT IN ('committed','blocked') AND u.scan_state NOT IN ('quarantined','blocked','infected','unscannable','waived')
  AND NOT EXISTS(SELECT 1 FROM agent_file_commits fc WHERE fc.org_id=old.org_id AND fc.run_id=old.id))`, a.OrgID, r.Body.SourceRunID, r.Body.DraftID, r.Body.ContentSHA256, r.Body.SourceIntentSHA256, a.UserID, c.ID).Scan(&available); err != nil {
 			return err
 		}
@@ -286,6 +287,20 @@ func recoveredFileArguments(ctx context.Context, tx pgx.Tx, i *fileIntentRecord,
 			return fileDraftArguments{FolderID: i.Target.FolderID, Name: i.Target.Name, Document: &document}, nil
 		}
 		return fileDraftArguments{FolderID: i.Target.FolderID, Name: i.Target.Name, Content: &saved[0].Text}, nil
+	}
+	if files.AgentOfficeKind(i.Target.MediaType) != "" {
+		if len(saved) != 1 || saved[0].Start != 0 || saved[0].End != 0 {
+			return fileDraftArguments{}, runtimeFailure("RUNTIME_SOURCE_CHANGED")
+		}
+		var sha string
+		if err := tx.QueryRow(ctx, "SELECT sha256 FROM file_versions WHERE org_id=$1 AND file_id=$2 AND id=$3", i.OrgID, i.FileID, i.BaseVersionID).Scan(&sha); err != nil {
+			return fileDraftArguments{}, err
+		}
+		office, err := files.AgentOfficeRecoveryEdit(saved[0].Text, i.Target.MediaType, sha)
+		if err != nil {
+			return fileDraftArguments{}, err
+		}
+		return fileDraftArguments{FileID: i.FileID, BaseVersionID: i.BaseVersionID, Office: &office}, nil
 	}
 	return fileDraftArguments{FileID: i.FileID, BaseVersionID: i.BaseVersionID, Edits: saved}, nil
 }

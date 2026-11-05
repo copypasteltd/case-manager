@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-05T23:00:27.161671+00:00",
+  "group": "batch-round-157-office-current-3",
+  "encoder_sha256": "e62cea27302dd84dbbfd7c57f94c8d51e2f29574c5fb0c1cf9783ca6560294c0",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "skill-governance",
+      "file": "docs/media/batch-round-157/batch-round-157-office-current-3/skill-governance.png",
+      "sha256": "bf7dcb114a1de73771b04155a86380687d50f4adf2b5952b080106e5f7899593"
+    },
+    {
+      "name": "office-exact-version",
+      "file": "docs/media/batch-round-157/batch-round-157-office-current-3/office-exact-version.png",
+      "sha256": "6b5b8deb8f5ceca7ef714677a77654d770e26145d2b9efc3fcfdaefb83b19cbb"
+    },
+    {
+      "name": "recovery-barrier",
+      "file": "docs/media/batch-round-157/batch-round-157-office-current-3/recovery-barrier.png",
+      "sha256": "d594c8383b3fcb243b43be14efbe98e7e1c94e798ec13e3496ae95aae6aaef91"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-157/batch-round-157-office-current-3/screen-recording.mp4",
+      "sha256": "26e4f8049ef71b34d2bbd77ca4cd20ff6d9d8bfe2e58b59937401e77d7dd4e05",
+      "size_bytes": 176995
+    },
+    {
+      "file": "docs/media/batch-round-157/batch-round-157-office-current-3/screenshot-tour.gif",
+      "sha256": "457ff01ace1b6f17b3e1114de15f7cc8fe988dd5346b3f0efec64025199a4276",
+      "size_bytes": 262229
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "20",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.000000"
+    }
+  }
+}

@@ -46,6 +46,14 @@ func AgentTextFormat(mediaType string, size int64) error {
 }
 
 func (s *AgentTextService) Prepare(ctx context.Context, db platform.DBTX, a core.Actor, fileID, versionID string) (AgentTextSource, error) {
+	return s.prepare(ctx, db, a, fileID, versionID, false)
+}
+
+func (s *AgentTextService) PrepareOffice(ctx context.Context, db platform.DBTX, a core.Actor, fileID, versionID string) (AgentTextSource, error) {
+	return s.prepare(ctx, db, a, fileID, versionID, true)
+}
+
+func (s *AgentTextService) prepare(ctx context.Context, db platform.DBTX, a core.Actor, fileID, versionID string, office bool) (AgentTextSource, error) {
 	var out AgentTextSource
 	if a.RunID == "" {
 		return out, core.Forbidden()
@@ -60,7 +68,11 @@ func (s *AgentTextService) Prepare(ctx context.Context, db platform.DBTX, a core
 	if v.ScanState != "clean" {
 		return out, core.Fail(422, "AGENT_TEXT_SCAN_REQUIRED", "秘书正文处理要求此准确版本的扫描结果为通过；人工放行不能代替正文处理检查")
 	}
-	if err = AgentTextFormat(v.MediaType, v.Size); err != nil {
+	if office {
+		if AgentOfficeKind(v.MediaType) == "" || v.Size < 1 || v.Size > AgentTextMaxBytes {
+			return out, core.Invalid("file_update", "秘书Office编辑支持1字节至1MiB的DOCX、XLSX与PPTX准确原件")
+		}
+	} else if err = AgentTextFormat(v.MediaType, v.Size); err != nil {
 		return out, err
 	}
 	if s == nil {
@@ -111,33 +123,51 @@ func (s *AgentTextService) Prepare(ctx context.Context, db platform.DBTX, a core
 // Read performs no SQL. Callers release authorization locks before this bounded
 // transfer and must revalidate the current audience and exact source afterwards.
 func (s *AgentTextService) Read(ctx context.Context, source AgentTextSource) (string, error) {
-	if source.reader == nil || source.Fingerprint == "" || source.Size < 1 || source.Size > AgentTextMaxBytes || source.source.Size != source.Size {
-		return "", core.Forbidden()
+	if err := AgentTextFormat(source.MediaType, source.Size); err != nil {
+		return "", err
 	}
-	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	result, err := source.reader.Read(ctx, source.source, 0, source.Size)
+	body, err := s.readBytes(ctx, source)
 	if err != nil {
-		return "", core.Fail(503, "AGENT_TEXT_READ_FAILED", "准确文件版本暂时无法读取，请稍后重新核对")
-	}
-	if result.Body == nil {
-		return "", core.Fail(502, "AGENT_TEXT_CONTENT_INVALID", "文件正文读取证据不完整")
-	}
-	defer result.Body.Close()
-	stop := context.AfterFunc(ctx, func() { _ = result.Body.Close() })
-	defer stop()
-	if result.Size != source.Size || result.ETag != source.source.ETag || source.source.VersionID != "" && result.VersionID != source.source.VersionID {
-		return "", core.Fail(502, "AGENT_TEXT_CONTENT_INVALID", "文件正文与准确来源不一致")
-	}
-	body, err := io.ReadAll(io.LimitReader(result.Body, source.Size+1))
-	if ctx.Err() != nil {
-		return "", ctx.Err()
-	}
-	if err != nil || int64(len(body)) != source.Size || core.Digest(body) != source.SHA256 {
-		return "", core.Fail(502, "AGENT_TEXT_CONTENT_INVALID", "文件正文长度或完整摘要核验失败")
+		return "", err
 	}
 	if !utf8.Valid(body) || strings.IndexByte(string(body), 0) >= 0 {
 		return "", core.Fail(422, "AGENT_TEXT_ENCODING_UNSUPPORTED", "文件正文不是可支持的UTF-8文本，请保留原件并提供明确文本版本")
 	}
 	return string(body), nil
+}
+
+func (s *AgentTextService) ReadOffice(ctx context.Context, source AgentTextSource) ([]byte, error) {
+	if AgentOfficeKind(source.MediaType) == "" {
+		return nil, core.Invalid("file_update", "请选择Office准确原件")
+	}
+	return s.readBytes(ctx, source)
+}
+
+func (s *AgentTextService) readBytes(ctx context.Context, source AgentTextSource) ([]byte, error) {
+	if source.reader == nil || source.Fingerprint == "" || source.Size < 1 || source.Size > AgentTextMaxBytes || source.source.Size != source.Size {
+		return nil, core.Forbidden()
+	}
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	result, err := source.reader.Read(ctx, source.source, 0, source.Size)
+	if err != nil {
+		return nil, core.Fail(503, "AGENT_TEXT_READ_FAILED", "准确文件版本暂时无法读取，请稍后重新核对")
+	}
+	if result.Body == nil {
+		return nil, core.Fail(502, "AGENT_TEXT_CONTENT_INVALID", "文件正文读取证据不完整")
+	}
+	defer result.Body.Close()
+	stop := context.AfterFunc(ctx, func() { _ = result.Body.Close() })
+	defer stop()
+	if result.Size != source.Size || result.ETag != source.source.ETag || source.source.VersionID != "" && result.VersionID != source.source.VersionID {
+		return nil, core.Fail(502, "AGENT_TEXT_CONTENT_INVALID", "文件正文与准确来源不一致")
+	}
+	body, err := io.ReadAll(io.LimitReader(result.Body, source.Size+1))
+	if ctx.Err() != nil {
+		return nil, ctx.Err()
+	}
+	if err != nil || int64(len(body)) != source.Size || core.Digest(body) != source.SHA256 {
+		return nil, core.Fail(502, "AGENT_TEXT_CONTENT_INVALID", "文件正文长度或完整摘要核验失败")
+	}
+	return body, nil
 }

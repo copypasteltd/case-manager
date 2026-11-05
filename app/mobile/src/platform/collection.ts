@@ -3,13 +3,15 @@ import { Scope, type Page } from './session';
 import { client } from './taro';
 
 export function useRecord<T>(path: string | null) {
+  const [revision, setRevision] = useState(0);
+  const reload = useCallback(() => setRevision(value => value + 1), []);
   const [value, setValue] = useState<T>(), [error, setError] = useState<unknown>(), [loading, setLoading] = useState(Boolean(path));
   useEffect(() => {
     const scope = new Scope(); setValue(undefined); setError(undefined); setLoading(Boolean(path));
     if (path) void client.request<T>(path, { scope }).then(result => { if (!scope.closed) setValue(result); }).catch(cause => { if (!scope.closed) setError(cause); }).finally(() => { if (!scope.closed) setLoading(false); });
     return () => { scope.close(); };
-  }, [path]);
-  return { value, error, loading };
+  }, [path, revision]);
+  return { value, error, loading, reload };
 }
 
 // Mounted only below usePage's current /me and resource checks. Every path or

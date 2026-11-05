@@ -1,6 +1,6 @@
 {
   "skill_id": "file-update",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "state": "draft",
   "owner_role": "business_admin",
   "runtime_compatibility": "codex-sdk@0.164.0",
@@ -14,7 +14,8 @@
     "stage_file_create",
     "propose_file_create",
     "commit_file_create",
-    "recover_file_draft"
+    "recover_file_draft",
+    "read_office_workspace"
   ],
   "completion_tools": [
     "commit_file_update",

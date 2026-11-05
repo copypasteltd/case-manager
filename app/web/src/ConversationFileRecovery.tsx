@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { AccountVerification } from './AccountSecurity';
+import { useRef, useState } from 'react';
+import { useMutation, useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { fileRecoveryMessage, makeFileRecovery, type FileRecovery } from '@copypaste/contracts/file-recovery';
 import { api, type Page, type Schemas } from './api';
 import { Busy, ErrorNotice, Field } from './components';
@@ -16,6 +17,15 @@ export function ConversationFileRecovery({ conversation: c, actor, disabled, val
     <ErrorNotice error={error ?? messages.error ?? run.error} />{messages.isPending ? <Busy label="正在读取已有文件请求" /> : <Field label="选择原文件请求"><select value={source} disabled={disabled} onChange={e => { setSource(e.target.value); setDraftID(''); setReviewed(false); setError(undefined); }}><option value="">请选择已保存的原请求</option>{requests.map(m => <option key={m.run_id} value={m.run_id}>{m.body.slice(0, 70)} · {m.run_id.slice(0, 8)}</option>)}</select></Field>}
     {messages.hasNextPage && <button type="button" className="button secondary" disabled={disabled || messages.isFetchingNextPage} onClick={() => void messages.fetchNextPage()}>读取更早文件请求</button>}
     {source && run.isFetching ? <Busy label="正在重新核对原任务" /> : saved && run.data && <><FileUpdateReceipt value={saved} stopped={['succeeded', 'failed', 'cancelled', 'interrupted'].includes(run.data.state)} /><Field label="本次恢复的准确草稿"><select value={draftID} disabled={disabled} onChange={e => { setDraftID(e.target.value); setReviewed(false); setError(undefined); }}><option value="">请选择一份草稿</option>{saved.drafts.map((d, index) => <option key={d.id} value={d.id}>草稿 {index + 1} · {d.id.slice(0, 8)} · {d.size_bytes} 字节</option>)}</select></Field><label className="check-row"><input type="checkbox" checked={reviewed} disabled={disabled || !draftID} onChange={e => setReviewed(e.target.checked)} />我已核对选定草稿的差异、内容摘要及原目标</label><button type="button" className="button secondary" disabled={disabled || !draftID || !reviewed || run.isFetching} onClick={() => { try { onChange(makeFileRecovery(run.data!, c, actor, draftID, reviewed)); setOpen(false); } catch (cause) { setError(cause); } }}>将准确草稿恢复加入请求</button></>}
-    <p className="form-note">选择本身不发送。请填写继续处理要求后确认发送；原运行仍保持停止，新运行仅恢复选定内容。</p><button type="button" className="button secondary" disabled={disabled} onClick={() => { setOpen(false); setReviewed(false); }}>收起草稿恢复</button>
+    {run.data&&draftID&&<AbandonRecovery run={run.data} draftID={draftID} disabled={disabled} onSaved={()=>{setDraftID('');setReviewed(false);void run.refetch();}}/>}<p className="form-note">选择本身不发送。请填写继续处理要求后确认发送；原运行仍保持停止，新运行仅恢复选定内容。</p><button type="button" className="button secondary" disabled={disabled} onClick={() => { setOpen(false); setReviewed(false); }}>收起草稿恢复</button>
   </>}</section>;
+}
+
+function AbandonRecovery({run,draftID,disabled,onSaved}:{run: Schemas['Run'];draftID:string;disabled:boolean;onSaved():void}) {
+ const [open,setOpen]=useState(false),[reason,setReason]=useState(''),[reviewed,setReviewed]=useState(false),[verify,setVerify]=useState(false);
+ const draft=(run.file_update??run.file_create)?.drafts.find(v=>v.id===draftID), key=useRef(crypto.randomUUID());
+ const mutation=useMutation({mutationFn:()=>api('/runs/'+run.id+'/file-drafts/'+draftID+'/abandon-recovery',{method:'POST',key:key.current,body:{expected_version:run.version,content_sha256:draft!.content_sha256,reviewed:true,reason:reason.trim()}}),onSuccess:()=>{onSaved();setOpen(false);}});
+ if(!draft||!['succeeded','failed','cancelled'].includes(run.state)||draft.state==='committed')return null;
+ if(draft.recovery_abandoned)return <p className="notice neutral">此准确草稿已被本人放弃恢复。历史记录保留；实际存储清理由独立审批、观察期和工作进程处理。</p>;
+ return <section className="conversation-source-preview"><button type="button" className="button secondary" disabled={disabled||mutation.isPending} onClick={()=>setOpen(v=>!v)}>放弃此草稿的后续恢复</button>{open&&<><p className="notice neutral">这是永久恢复屏障，不能重新启用；此步骤不会删除文件。后续清理仍需独立计划和至少24小时观察。</p><Field label="放弃原因"><input value={reason} onChange={e=>setReason(e.target.value)} maxLength={200}/></Field><label><input type="checkbox" checked={reviewed} onChange={e=>setReviewed(e.target.checked)}/>已核对准确草稿及永久放弃影响</label><button type="button" className="button secondary" onClick={()=>setVerify(v=>!v)}>验证本人身份</button>{verify&&<AccountVerification/>}<ErrorNotice error={mutation.error}/><button type="button" className="button primary" disabled={disabled||mutation.isPending||!!mutation.error||!reason.trim()||!reviewed} onClick={()=>mutation.mutate()}>确认永久放弃恢复</button></>}</section>;
 }

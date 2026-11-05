@@ -15,3 +15,27 @@ export function retireInput(v: Details, note: string, reviewed: boolean): Retire
   if (!note.trim() || [...note.trim()].length > 200) throw new Error('请填写不超过200字的停用原因。');
   return { expected_version: v.item.version, active_basis_sha256: v.impact.active_basis_sha256, reviewed_impact: true, reason: note.trim() };
 }
+
+export type SkillReleaseDetails = S['AgentSkillReleaseDetails'];
+export type SkillReleaseInput = S['AgentSkillReleaseInput'];
+export const releaseStages = {pilot:'试运行',published:'已人工评估发布',disabled:'已暂停执行'} as const;
+export const releaseNotice = '发布记录绑定已安装的准确Skill摘要与本人评估运行。暂停会阻止后续执行核对，不代表进程已退出。回退须先由部署身份安装原已发布代码，再选择原发布记录；不恢复已停用配置，不撤销业务事实。';
+export function skillReleaseInput(v:SkillReleaseDetails, stage:SkillReleaseInput['stage'], runs:string, rollback:string, reason:string, reviewed:boolean):SkillReleaseInput {
+ if(!reviewed||v.profile.item.state!=='active')throw new Error('请核对当前活动配置及任务影响。');
+ const ids=runs.split(/[\s,，]+/).filter(Boolean), uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
+ if(ids.length>20||new Set(ids).size!==ids.length||ids.some(id=>!uuid.test(id))||stage==='published'&&!ids.length)throw new Error('发布需填写本人此准确配置已成功完成的评估运行，最多20项。');
+ if(rollback&&!uuid.test(rollback))throw new Error('请选择准确原发布记录。');
+ if(!reason.trim()||[...reason.trim()].length>200)throw new Error('请填写不超过200字的决定原因。');
+ return {expected_version:v.version,profile_version:v.profile.item.version,skill_sha256:v.profile.item.skill_sha256,active_basis_sha256:v.profile.impact.active_basis_sha256,stage,assessment_run_ids:ids,...(rollback?{rollback_release_id:rollback}:{}),reviewed:true,reason:reason.trim()};
+}
+
+export type TelegramHandoff = S['TelegramHandoffInput'];
+export type TelegramHandoffRequest = S['TelegramHandoffRequest'];
+export function telegramHandoffInput(v:TelegramHandoffRequest,project:string|null,skill:string,reviewed:boolean):TelegramHandoff {
+ if(!reviewed||!v.eligible||v.run_id||v.project_id!==project||v.skill_id!==skill||Date.parse(v.expires_at)<=Date.now())throw new Error('请核对当前可授权请求、相同项目范围及准确任务。');
+ return {request_id:v.id,expected_version:v.version,request_sha256:v.request_sha256,reviewed:true};
+}
+export function telegramHandoffReceipt(run:S['Run'],input?:TelegramHandoff):boolean {
+ if(!input)return !run.telegram_handoff;
+ const v=run.telegram_handoff;return !!v&&v.request_id===input.request_id&&v.expected_version===input.expected_version&&v.request_sha256===input.request_sha256&&v.reviewed;
+}

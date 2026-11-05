@@ -1,5 +1,23 @@
 package agentworker
 
+func officeEditInputSchema() map[string]any {
+	change := map[string]any{"type": "object", "additionalProperties": false, "required": []string{"id", "kind", "value"}, "properties": map[string]any{
+		"id":    map[string]any{"type": "string", "minLength": 1, "maxLength": 256},
+		"kind":  map[string]any{"type": "string", "enum": []string{"text", "number", "boolean", "formula"}},
+		"value": map[string]any{"type": "string", "maxLength": 8192}}}
+	return map[string]any{"type": "object", "additionalProperties": false, "required": []string{"workspace_sha256", "changes"}, "properties": map[string]any{
+		"workspace_sha256": map[string]any{"type": "string", "pattern": "^[0-9a-f]{64}$"},
+		"changes":          map[string]any{"type": "array", "minItems": 1, "maxItems": 64, "items": change}}}
+}
+
+func fileEditInputSchema(input map[string]any) map[string]any {
+	input["oneOf"] = []any{
+		map[string]any{"required": []string{"edits"}, "not": map[string]any{"required": []string{"office"}}},
+		map[string]any{"required": []string{"office"}, "not": map[string]any{"required": []string{"edits"}}},
+	}
+	return input
+}
+
 func fileCreationInputSchema(input map[string]any) map[string]any {
 	input["oneOf"] = []any{
 		map[string]any{"required": []string{"content"}, "not": map[string]any{"required": []string{"document"}}},

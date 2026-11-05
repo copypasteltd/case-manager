@@ -69,7 +69,7 @@ func operationsAuthority(ctx context.Context, tx pgx.Tx, a core.Actor, write boo
 
 const operationSelect = `SELECT d.id,d.inbox_id,d.run_id,d.phase,d.state,d.version,d.attempts,d.reason_code,d.next_attempt_at,d.message_id,d.created_at,d.updated_at,
  d.bot_id,d.channel_id,c.label,i.chat_id,i.topic_id,i.requester_id,i.state,i.channel_version,c.version,c.state,c.delivery_enabled,i.received_at,
- (d.state='delivery_unknown' AND d.attempts<5 AND i.received_at>clock_timestamp()-interval '24 hours' AND telegram_delivery_authorized(d.org_id,d.inbox_id))
+ (d.state='delivery_unknown' AND d.attempts<5 AND i.received_at>clock_timestamp()-interval '24 hours' AND (CASE WHEN d.phase='reviewed_result' THEN telegram_reviewed_delivery_authorized(d.org_id,d.inbox_id) ELSE telegram_delivery_authorized(d.org_id,d.inbox_id) END))
  FROM telegram_deliveries d JOIN telegram_inbox i ON i.org_id=d.org_id AND i.id=d.inbox_id
  JOIN telegram_channels c ON c.org_id=d.org_id AND c.id=d.channel_id`
 
@@ -203,7 +203,7 @@ func (s *Service) ReconcileOperation(ctx context.Context, c core.Command, id str
 				return core.Result{}, core.Fail(409, "DELIVERY_RETRY_LIMIT", "已达到此通知的发送次数上限")
 			}
 			var allowed bool
-			if err = tx.QueryRow(ctx, `SELECT telegram_delivery_authorized(org_id,id) AND received_at>clock_timestamp()-interval '24 hours' FROM telegram_inbox WHERE org_id=$1 AND id=$2`, c.Actor.OrgID, d.InboxID).Scan(&allowed); err != nil {
+			if err = tx.QueryRow(ctx, `SELECT (CASE WHEN $3='reviewed_result' THEN telegram_reviewed_delivery_authorized(org_id,id) ELSE telegram_delivery_authorized(org_id,id) END) AND received_at>clock_timestamp()-interval '24 hours' FROM telegram_inbox WHERE org_id=$1 AND id=$2`, c.Actor.OrgID, d.InboxID, d.Phase).Scan(&allowed); err != nil {
 				return core.Result{}, err
 			}
 			if !allowed {

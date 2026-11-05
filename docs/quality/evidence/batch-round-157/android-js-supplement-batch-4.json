@@ -1,0 +1,1470 @@
+{
+  "passed": true,
+  "attempt": "batch-4",
+  "checked_at": "2026-11-05T23:09:28.674364+00:00",
+  "client_source_sha256": "e6af064a9de040fdd202c821cf5f06ac8eeb6d8361c14d8fc67f35cd90ae3df0",
+  "client_source_files": [
+    "app/agent-runtime/package.json",
+    "app/agent-runtime/src/check-skills.ts",
+    "app/agent-runtime/src/codex-adapter.test.ts",
+    "app/agent-runtime/src/codex-adapter.ts",
+    "app/agent-runtime/src/concerns.test.ts",
+    "app/agent-runtime/src/describe-profile.ts",
+    "app/agent-runtime/src/evidence.ts",
+    "app/agent-runtime/src/http-boundary.test.ts",
+    "app/agent-runtime/src/http-boundary.ts",
+    "app/agent-runtime/src/indexed-file.test.ts",
+    "app/agent-runtime/src/office-create.test.ts",
+    "app/agent-runtime/src/skills.test.ts",
+    "app/agent-runtime/src/skills.ts",
+    "app/agent-runtime/src/task-creation.test.ts",
+    "app/agent-runtime/src/task-dependency.test.ts",
+    "app/agent-runtime/src/worker.ts",
+    "app/agent-runtime/tsconfig.json",
+    "app/mobile/android/app/build.gradle",
+    "app/mobile/android/app/proguard-rules.pro",
+    "app/mobile/android/app/src/local/res/xml/network_security_config.xml",
+    "app/mobile/android/app/src/main/AndroidManifest.xml",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/ApiHTTP.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/CPClipboardModule.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/CPHTTPModule.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/CPPlatformPackage.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/CPReadCacheModule.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/CPUploadModule.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/GeneratedUploadSource.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/MainActivity.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/MainApplication.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/ReadCache.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/SAFUploadSource.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadLayout.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadManager.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadPermit.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadServiceHost.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadSource.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadStore.java",
+    "app/mobile/android/app/src/main/java/hk/copypaste/workspace/UploadTransfer.java",
+    "app/mobile/android/app/src/main/res/values/styles.xml",
+    "app/mobile/android/app/src/main/res/xml/data_extraction_rules.xml",
+    "app/mobile/android/app/src/main/res/xml/network_security_config.xml",
+    "app/mobile/android/app/src/main/res/xml/read_cache_paths.xml",
+    "app/mobile/android/app/src/test/java/hk/copypaste/workspace/ApiHTTPTest.java",
+    "app/mobile/android/app/src/test/java/hk/copypaste/workspace/ReadCacheTest.java",
+    "app/mobile/android/app/src/test/java/hk/copypaste/workspace/UploadBoundariesTest.java",
+    "app/mobile/android/app/src/test/java/hk/copypaste/workspace/UploadTransferTest.java",
+    "app/mobile/android/build.gradle",
+    "app/mobile/android/gradle.properties",
+    "app/mobile/android/gradle/wrapper/gradle-wrapper.jar",
+    "app/mobile/android/gradle/wrapper/gradle-wrapper.properties",
+    "app/mobile/android/gradlew",
+    "app/mobile/android/gradlew.bat",
+    "app/mobile/android/settings.gradle",
+    "app/mobile/babel.config.js",
+    "app/mobile/config/index.ts",
+    "app/mobile/index.js",
+    "app/mobile/metro.config.js",
+    "app/mobile/native/babel-primitives.cjs",
+    "app/mobile/native/babel-primitives.test.cjs",
+    "app/mobile/native/build-bundle.cjs",
+    "app/mobile/native/google-mirror.init.gradle",
+    "app/mobile/native/jvm-tests/build.gradle",
+    "app/mobile/native/jvm-tests/gradle.properties",
+    "app/mobile/native/jvm-tests/settings.gradle",
+    "app/mobile/package.json",
+    "app/mobile/react-native.config.js",
+    "app/mobile/src/app.config.ts",
+    "app/mobile/src/app.css",
+    "app/mobile/src/app.tsx",
+    "app/mobile/src/assets/logo-dark.png",
+    "app/mobile/src/assets/logo-light.png",
+    "app/mobile/src/env.d.ts",
+    "app/mobile/src/index.html",
+    "app/mobile/src/pages/budget/index.tsx",
+    "app/mobile/src/pages/business/contract-finance.tsx",
+    "app/mobile/src/pages/business/controls.tsx",
+    "app/mobile/src/pages/business/editor.tsx",
+    "app/mobile/src/pages/business/index.tsx",
+    "app/mobile/src/pages/business/request-actions.tsx",
+    "app/mobile/src/pages/content/index.tsx",
+    "app/mobile/src/pages/content/view.h5.tsx",
+    "app/mobile/src/pages/content/view.rn.tsx",
+    "app/mobile/src/pages/content/view.tsx",
+    "app/mobile/src/pages/deliverable/index.tsx",
+    "app/mobile/src/pages/detail/index.tsx",
+    "app/mobile/src/pages/detail/mutations.tsx",
+    "app/mobile/src/pages/detail/snapshot.tsx",
+    "app/mobile/src/pages/files/batches.tsx",
+    "app/mobile/src/pages/files/cleanup.tsx",
+    "app/mobile/src/pages/files/comparison.tsx",
+    "app/mobile/src/pages/files/forms.tsx",
+    "app/mobile/src/pages/files/index.tsx",
+    "app/mobile/src/pages/files/office.tsx",
+    "app/mobile/src/pages/files/replica-retry.tsx",
+    "app/mobile/src/pages/files/retirement.tsx",
+    "app/mobile/src/pages/files/scope-transfers.tsx",
+    "app/mobile/src/pages/finance/amortization.tsx",
+    "app/mobile/src/pages/finance/cost-payment.tsx",
+    "app/mobile/src/pages/finance/editor.tsx",
+    "app/mobile/src/pages/finance/history.tsx",
+    "app/mobile/src/pages/finance/index.tsx",
+    "app/mobile/src/pages/finance/operations.tsx",
+    "app/mobile/src/pages/finance/payment-fees.tsx",
+    "app/mobile/src/pages/finance/subscriptions.tsx",
+    "app/mobile/src/pages/home/business.tsx",
+    "app/mobile/src/pages/home/followups.tsx",
+    "app/mobile/src/pages/home/index.tsx",
+    "app/mobile/src/pages/knowledge/comments.tsx",
+    "app/mobile/src/pages/knowledge/index.tsx",
+    "app/mobile/src/pages/knowledge/markdown.tsx",
+    "app/mobile/src/pages/knowledge/sources.tsx",
+    "app/mobile/src/pages/list/index.tsx",
+    "app/mobile/src/pages/login/index.tsx",
+    "app/mobile/src/pages/login/password-recovery.tsx",
+    "app/mobile/src/pages/notifications/delivery.tsx",
+    "app/mobile/src/pages/notifications/index.tsx",
+    "app/mobile/src/pages/notifications/reminders.tsx",
+    "app/mobile/src/pages/notifications/telegram.tsx",
+    "app/mobile/src/pages/project/budget-comparison.tsx",
+    "app/mobile/src/pages/project/business.tsx",
+    "app/mobile/src/pages/project/change-form.tsx",
+    "app/mobile/src/pages/project/change.tsx",
+    "app/mobile/src/pages/project/closeout.tsx",
+    "app/mobile/src/pages/project/comments.tsx",
+    "app/mobile/src/pages/project/index.tsx",
+    "app/mobile/src/pages/project/members.tsx",
+    "app/mobile/src/pages/project/overview.tsx",
+    "app/mobile/src/pages/project/resource-forms.tsx",
+    "app/mobile/src/pages/project/resources.tsx",
+    "app/mobile/src/pages/project/setup.tsx",
+    "app/mobile/src/pages/project/task-forms.tsx",
+    "app/mobile/src/pages/reports/finance-fx.tsx",
+    "app/mobile/src/pages/reports/index.tsx",
+    "app/mobile/src/pages/search/index.tsx",
+    "app/mobile/src/pages/secretary/concerns.tsx",
+    "app/mobile/src/pages/secretary/contract-bodies.tsx",
+    "app/mobile/src/pages/secretary/deliverable-submission.tsx",
+    "app/mobile/src/pages/secretary/file-creates.tsx",
+    "app/mobile/src/pages/secretary/file-recovery.tsx",
+    "app/mobile/src/pages/secretary/file-updates.tsx",
+    "app/mobile/src/pages/secretary/finance-reports.tsx",
+    "app/mobile/src/pages/secretary/index.tsx",
+    "app/mobile/src/pages/secretary/live.ts",
+    "app/mobile/src/pages/secretary/mutations.tsx",
+    "app/mobile/src/pages/secretary/oa-requests.tsx",
+    "app/mobile/src/pages/secretary/oa-text.tsx",
+    "app/mobile/src/pages/secretary/organization.tsx",
+    "app/mobile/src/pages/secretary/plans.tsx",
+    "app/mobile/src/pages/secretary/post-writes.tsx",
+    "app/mobile/src/pages/secretary/project-catalog.tsx",
+    "app/mobile/src/pages/secretary/runtime.tsx",
+    "app/mobile/src/pages/secretary/service-reports.tsx",
+    "app/mobile/src/pages/secretary/sources.tsx",
+    "app/mobile/src/pages/secretary/subscription-portfolio.tsx",
+    "app/mobile/src/pages/secretary/task-creation.tsx",
+    "app/mobile/src/pages/secretary/task-dependency.tsx",
+    "app/mobile/src/pages/settings/audit.tsx",
+    "app/mobile/src/pages/settings/index.tsx",
+    "app/mobile/src/pages/settings/miniapp-bindings.tsx",
+    "app/mobile/src/pages/settings/security.tsx",
+    "app/mobile/src/pages/settings/storage.tsx",
+    "app/mobile/src/pages/status/history.tsx",
+    "app/mobile/src/pages/status/incident-editor.tsx",
+    "app/mobile/src/pages/status/index.tsx",
+    "app/mobile/src/pages/status/live.ts",
+    "app/mobile/src/pages/status/resource-health-history.tsx",
+    "app/mobile/src/pages/status/resources.tsx",
+    "app/mobile/src/pages/subscription-period/index.tsx",
+    "app/mobile/src/pages/telegram/access.tsx",
+    "app/mobile/src/pages/telegram/channels.tsx",
+    "app/mobile/src/pages/telegram/inbox.tsx",
+    "app/mobile/src/pages/telegram/index.tsx",
+    "app/mobile/src/pages/telegram/operations.tsx",
+    "app/mobile/src/pages/uploads/index.tsx",
+    "app/mobile/src/pages/uploads/view.rn.tsx",
+    "app/mobile/src/pages/uploads/view.tsx",
+    "app/mobile/src/platform/amortization.test.ts",
+    "app/mobile/src/platform/app-root.rn.tsx",
+    "app/mobile/src/platform/app-root.tsx",
+    "app/mobile/src/platform/audit.test.ts",
+    "app/mobile/src/platform/batch157.test.ts",
+    "app/mobile/src/platform/business-input.test.ts",
+    "app/mobile/src/platform/business-input.ts",
+    "app/mobile/src/platform/change-input.test.ts",
+    "app/mobile/src/platform/change-input.ts",
+    "app/mobile/src/platform/collection.ts",
+    "app/mobile/src/platform/command-keys.test.ts",
+    "app/mobile/src/platform/command-keys.ts",
+    "app/mobile/src/platform/command.tsx",
+    "app/mobile/src/platform/components.rn.tsx",
+    "app/mobile/src/platform/components.tsx",
+    "app/mobile/src/platform/concern-mutation.test.ts",
+    "app/mobile/src/platform/content-sink.rn.ts",
+    "app/mobile/src/platform/content-sink.ts",
+    "app/mobile/src/platform/content.test.ts",
+    "app/mobile/src/platform/content.ts",
+    "app/mobile/src/platform/contract-body.test.ts",
+    "app/mobile/src/platform/contract-finance.test.ts",
+    "app/mobile/src/platform/contract-reminders.test.ts",
+    "app/mobile/src/platform/cost-business.test.ts",
+    "app/mobile/src/platform/cost-payment.test.ts",
+    "app/mobile/src/platform/deliverable-submission.test.ts",
+    "app/mobile/src/platform/drafts.test.ts",
+    "app/mobile/src/platform/drafts.ts",
+    "app/mobile/src/platform/encoding.ts",
+    "app/mobile/src/platform/file-batch.test.ts",
+    "app/mobile/src/platform/file-comparison.test.ts",
+    "app/mobile/src/platform/file-input.test.ts",
+    "app/mobile/src/platform/file-input.ts",
+    "app/mobile/src/platform/file-recovery.test.ts",
+    "app/mobile/src/platform/financial-input.test.ts",
+    "app/mobile/src/platform/financial-input.ts",
+    "app/mobile/src/platform/fixed-files.tsx",
+    "app/mobile/src/platform/followups.test.ts",
+    "app/mobile/src/platform/form.ts",
+    "app/mobile/src/platform/incident-input.ts",
+    "app/mobile/src/platform/indexed-context.test.ts",
+    "app/mobile/src/platform/miniapp-context.test.ts",
+    "app/mobile/src/platform/miniapp-context.ts",
+    "app/mobile/src/platform/miniapp-login.rn.ts",
+    "app/mobile/src/platform/miniapp-login.ts",
+    "app/mobile/src/platform/multipart-cleanup.test.ts",
+    "app/mobile/src/platform/native-styles.ts",
+    "app/mobile/src/platform/native-wire.test.ts",
+    "app/mobile/src/platform/native-wire.ts",
+    "app/mobile/src/platform/notification-delivery.test.ts",
+    "app/mobile/src/platform/notification-telegram.test.ts",
+    "app/mobile/src/platform/oa-text.test.ts",
+    "app/mobile/src/platform/object-retirement.test.ts",
+    "app/mobile/src/platform/office-create.test.ts",
+    "app/mobile/src/platform/office-upload.rn.ts",
+    "app/mobile/src/platform/office-upload.ts",
+    "app/mobile/src/platform/page.ts",
+    "app/mobile/src/platform/payment-fees.test.ts",
+    "app/mobile/src/platform/payment-fx.test.ts",
+    "app/mobile/src/platform/post-input.test.ts",
+    "app/mobile/src/platform/post-input.ts",
+    "app/mobile/src/platform/post-link.h5.ts",
+    "app/mobile/src/platform/post-link.rn.ts",
+    "app/mobile/src/platform/post-link.ts",
+    "app/mobile/src/platform/post-markdown.test.ts",
+    "app/mobile/src/platform/post-markdown.ts",
+    "app/mobile/src/platform/primitives.rn.tsx",
+    "app/mobile/src/platform/project-closeout.test.ts",
+    "app/mobile/src/platform/project-closeout.ts",
+    "app/mobile/src/platform/project-input.test.ts",
+    "app/mobile/src/platform/project-input.ts",
+    "app/mobile/src/platform/project-overview.test.ts",
+    "app/mobile/src/platform/project-overview.ts",
+    "app/mobile/src/platform/project-resource-input.test.ts",
+    "app/mobile/src/platform/project-resource-input.ts",
+    "app/mobile/src/platform/replica-notifications.test.ts",
+    "app/mobile/src/platform/report-file.rn.ts",
+    "app/mobile/src/platform/report-file.ts",
+    "app/mobile/src/platform/scope-transfer.test.ts",
+    "app/mobile/src/platform/search.test.ts",
+    "app/mobile/src/platform/secretary.test.ts",
+    "app/mobile/src/platform/secretary.ts",
+    "app/mobile/src/platform/session.test.ts",
+    "app/mobile/src/platform/session.ts",
+    "app/mobile/src/platform/status-proof.ts",
+    "app/mobile/src/platform/status.test.ts",
+    "app/mobile/src/platform/status.ts",
+    "app/mobile/src/platform/storage-operations.test.ts",
+    "app/mobile/src/platform/subscription-input.test.ts",
+    "app/mobile/src/platform/subscription-input.ts",
+    "app/mobile/src/platform/taro.rn.ts",
+    "app/mobile/src/platform/taro.ts",
+    "app/mobile/src/platform/task-comment.test.ts",
+    "app/mobile/src/platform/task-creation.test.ts",
+    "app/mobile/src/platform/task-dependency.test.ts",
+    "app/mobile/src/platform/task-input.test.ts",
+    "app/mobile/src/platform/task-input.ts",
+    "app/mobile/src/platform/telegram-clipboard.rn.ts",
+    "app/mobile/src/platform/telegram-clipboard.ts",
+    "app/mobile/src/platform/telegram-input.test.ts",
+    "app/mobile/src/platform/telegram-input.ts",
+    "app/mobile/src/platform/theme.rn.ts",
+    "app/mobile/src/platform/theme.ts",
+    "app/mobile/src/platform/upload-entry.rn.tsx",
+    "app/mobile/src/platform/upload-entry.tsx",
+    "app/mobile/src/platform/upload-transfer.test.ts",
+    "app/mobile/src/platform/upload-transfer.ts",
+    "app/mobile/src/platform/uploads.rn.ts",
+    "app/mobile/src/platform/uploads.ts",
+    "app/mobile/src/platform/workbench.test.ts",
+    "app/mobile/src/tokens.css",
+    "app/mobile/src/ui.tsx",
+    "app/mobile/tsconfig.concern-test.json",
+    "app/mobile/tsconfig.json",
+    "app/mobile/tsconfig.test.json",
+    "app/package-lock.json",
+    "app/package.json",
+    "app/packages/archive-extraction/index.cjs",
+    "app/packages/archive-extraction/package.json",
+    "app/packages/contracts/fixtures/contract-body.ts",
+    "app/packages/contracts/package.json",
+    "app/packages/contracts/src/agent-runtime.ts",
+    "app/packages/contracts/src/amortization.ts",
+    "app/packages/contracts/src/api.d.ts",
+    "app/packages/contracts/src/audit.ts",
+    "app/packages/contracts/src/budget-comparison.ts",
+    "app/packages/contracts/src/budget.ts",
+    "app/packages/contracts/src/concern-mutation.ts",
+    "app/packages/contracts/src/contract-body.ts",
+    "app/packages/contracts/src/contract-finance.ts",
+    "app/packages/contracts/src/cost-business.ts",
+    "app/packages/contracts/src/cost-payment.ts",
+    "app/packages/contracts/src/deliverable-submission.ts",
+    "app/packages/contracts/src/file-batch.ts",
+    "app/packages/contracts/src/file-comparison.ts",
+    "app/packages/contracts/src/file-recovery.ts",
+    "app/packages/contracts/src/file-replica.ts",
+    "app/packages/contracts/src/file-update.ts",
+    "app/packages/contracts/src/finance-fx.ts",
+    "app/packages/contracts/src/finance-reports.ts",
+    "app/packages/contracts/src/followups.ts",
+    "app/packages/contracts/src/host-resources.ts",
+    "app/packages/contracts/src/indexed-context.ts",
+    "app/packages/contracts/src/multipart-cleanup.ts",
+    "app/packages/contracts/src/mutation-validation.ts",
+    "app/packages/contracts/src/mutation.ts",
+    "app/packages/contracts/src/notification-telegram.ts",
+    "app/packages/contracts/src/notifications.ts",
+    "app/packages/contracts/src/oa-request.ts",
+    "app/packages/contracts/src/oa-text.ts",
+    "app/packages/contracts/src/object-retirement.ts",
+    "app/packages/contracts/src/office-author.ts",
+    "app/packages/contracts/src/payment-fees.ts",
+    "app/packages/contracts/src/payment-fx.ts",
+    "app/packages/contracts/src/post-write.ts",
+    "app/packages/contracts/src/project-business.ts",
+    "app/packages/contracts/src/project-catalog.ts",
+    "app/packages/contracts/src/scope-transfer.ts",
+    "app/packages/contracts/src/search.ts",
+    "app/packages/contracts/src/storage-operations.ts",
+    "app/packages/contracts/src/subscription-portfolio.ts",
+    "app/packages/contracts/src/task-comment.ts",
+    "app/packages/contracts/src/task-creation.ts",
+    "app/packages/contracts/src/task-dependency.ts",
+    "app/packages/contracts/src/telegram-inbox.ts",
+    "app/packages/contracts/src/telegram-operations.ts",
+    "app/packages/contracts/src/workbench.ts",
+    "app/packages/contracts/test/amortization-cases.ts",
+    "app/packages/contracts/test/amortization-fixture.ts",
+    "app/packages/contracts/test/audit-fixture.ts",
+    "app/packages/contracts/test/batch157-cases.ts",
+    "app/packages/contracts/test/completed-upload-retirement-checks.ts",
+    "app/packages/contracts/test/contract-finance-cases.ts",
+    "app/packages/contracts/test/contract-reminders-cases.ts",
+    "app/packages/contracts/test/document-text-cases.ts",
+    "app/packages/contracts/test/file-batch-cases.ts",
+    "app/packages/contracts/test/file-comparison-cases.ts",
+    "app/packages/contracts/test/file-recovery-cases.ts",
+    "app/packages/contracts/test/followup-cases.ts",
+    "app/packages/contracts/test/host-resource-cases.ts",
+    "app/packages/contracts/test/multipart-cleanup-fixture.ts",
+    "app/packages/contracts/test/notification-retry-fixture.ts",
+    "app/packages/contracts/test/notification-telegram-fixture.ts",
+    "app/packages/contracts/test/object-retirement-fixture.ts",
+    "app/packages/contracts/test/office-author-cases.ts",
+    "app/packages/contracts/test/office-create-cases.ts",
+    "app/packages/contracts/test/payment-fees-cases.ts",
+    "app/packages/contracts/test/payment-fx-cases.ts",
+    "app/packages/contracts/test/retirement-renewal-fixture.ts",
+    "app/packages/contracts/test/scope-transfer-cases.ts",
+    "app/packages/contracts/test/workbench-cases.ts",
+    "app/packages/deepmerge-safe/LICENSE",
+    "app/packages/deepmerge-safe/UPSTREAM.json",
+    "app/packages/deepmerge-safe/index.cjs",
+    "app/packages/deepmerge-safe/index.d.ts",
+    "app/packages/deepmerge-safe/package.json",
+    "app/packages/design/package.json",
+    "app/packages/design/src/tokens.css",
+    "app/packages/design/src/tokens.json",
+    "app/packages/dev-server-compat/client/socket.js",
+    "app/packages/dev-server-compat/index.cjs",
+    "app/packages/dev-server-compat/index.d.cts",
+    "app/packages/dev-server-compat/package.json",
+    "app/packages/image-size-compat/index.cjs",
+    "app/packages/image-size-compat/package.json",
+    "app/packages/latest-version-compat/index.cjs",
+    "app/packages/latest-version-compat/package.json",
+    "app/packages/template-download/index.cjs",
+    "app/packages/template-download/package.json",
+    "app/packages/template-minifier/index.cjs",
+    "app/packages/template-minifier/package.json",
+    "app/packages/template-minifier/worker.cjs",
+    "app/packages/uri-decoder-compat/index.cjs",
+    "app/packages/uri-decoder-compat/index.d.cts",
+    "app/packages/uri-decoder-compat/package.json",
+    "app/skills/common.schema.json",
+    "app/skills/file-update/input.schema.json",
+    "app/skills/file-update/manifest.json",
+    "app/skills/file-update/output.schema.json",
+    "app/skills/incident-summary/input.schema.json",
+    "app/skills/incident-summary/manifest.json",
+    "app/skills/incident-summary/output.schema.json",
+    "app/skills/information-organize/input.schema.json",
+    "app/skills/information-organize/manifest.json",
+    "app/skills/information-organize/output.schema.json",
+    "app/skills/manifest.schema.json",
+    "app/skills/oa-assist/input.schema.json",
+    "app/skills/oa-assist/manifest.json",
+    "app/skills/oa-assist/output.schema.json",
+    "app/skills/project-briefing/input.schema.json",
+    "app/skills/project-briefing/manifest.json",
+    "app/skills/project-briefing/output.schema.json",
+    "app/skills/project-create/input.schema.json",
+    "app/skills/project-create/manifest.json",
+    "app/skills/project-create/output.schema.json",
+    "app/skills/project-update/input.schema.json",
+    "app/skills/project-update/manifest.json",
+    "app/skills/project-update/output.schema.json",
+    "app/skills/subscription-review/input.schema.json",
+    "app/skills/subscription-review/manifest.json",
+    "app/skills/subscription-review/output.schema.json",
+    "app/web/index.html",
+    "app/web/package.json",
+    "app/web/public/brand/logo-dark.png",
+    "app/web/public/brand/logo-light.png",
+    "app/web/public/theme-init.js",
+    "app/web/src/AccountSecurity.tsx",
+    "app/web/src/Administration.tsx",
+    "app/web/src/AgentBudget.tsx",
+    "app/web/src/AgentRuntime.tsx",
+    "app/web/src/App.tsx",
+    "app/web/src/AuditConsole.tsx",
+    "app/web/src/BusinessCostEntry.test.ts",
+    "app/web/src/BusinessCostEntry.tsx",
+    "app/web/src/BusinessScope.tsx",
+    "app/web/src/BusinessSelectors.tsx",
+    "app/web/src/BusinessWorkbench.tsx",
+    "app/web/src/CashReport.tsx",
+    "app/web/src/ClaimSettlement.tsx",
+    "app/web/src/ClassificationPolicies.tsx",
+    "app/web/src/Comments.tsx",
+    "app/web/src/ContractClosure.tsx",
+    "app/web/src/ContractDisplay.tsx",
+    "app/web/src/ContractExecution.tsx",
+    "app/web/src/ContractFinance.tsx",
+    "app/web/src/ContractFinanceActions.tsx",
+    "app/web/src/ContractFinancePickers.tsx",
+    "app/web/src/ContractPayments.tsx",
+    "app/web/src/ContractReminders.tsx",
+    "app/web/src/Contracts.tsx",
+    "app/web/src/ConversationConcern.tsx",
+    "app/web/src/ConversationContractBody.tsx",
+    "app/web/src/ConversationDeliverableSubmission.tsx",
+    "app/web/src/ConversationFileCreate.tsx",
+    "app/web/src/ConversationFileRecovery.tsx",
+    "app/web/src/ConversationFileUpdate.tsx",
+    "app/web/src/ConversationFinanceReport.tsx",
+    "app/web/src/ConversationMessages.tsx",
+    "app/web/src/ConversationMutation.tsx",
+    "app/web/src/ConversationOARequest.tsx",
+    "app/web/src/ConversationOAText.tsx",
+    "app/web/src/ConversationOrganization.tsx",
+    "app/web/src/ConversationPlans.tsx",
+    "app/web/src/ConversationPostWrite.tsx",
+    "app/web/src/ConversationProjectCatalog.tsx",
+    "app/web/src/ConversationServiceReport.tsx",
+    "app/web/src/ConversationSources.tsx",
+    "app/web/src/ConversationSubscriptionPortfolio.tsx",
+    "app/web/src/ConversationTaskCreation.tsx",
+    "app/web/src/ConversationTaskDependency.tsx",
+    "app/web/src/Conversations.tsx",
+    "app/web/src/CostActions.tsx",
+    "app/web/src/CostAmortization.tsx",
+    "app/web/src/CostDisplay.tsx",
+    "app/web/src/CostEditor.tsx",
+    "app/web/src/CostPayment.test.ts",
+    "app/web/src/CostPayment.tsx",
+    "app/web/src/CostReport.tsx",
+    "app/web/src/Costs.tsx",
+    "app/web/src/DownloadDialog.tsx",
+    "app/web/src/FileBatches.tsx",
+    "app/web/src/FileComparison.tsx",
+    "app/web/src/Files.tsx",
+    "app/web/src/FinanceFX.tsx",
+    "app/web/src/FinancialReports.tsx",
+    "app/web/src/Followups.tsx",
+    "app/web/src/ForecastReport.tsx",
+    "app/web/src/HistoryRestores.tsx",
+    "app/web/src/HostResources.tsx",
+    "app/web/src/Knowledge.tsx",
+    "app/web/src/Login.tsx",
+    "app/web/src/MFAConfirmation.tsx",
+    "app/web/src/Markdown.test.tsx",
+    "app/web/src/Markdown.tsx",
+    "app/web/src/MiniappBindings.tsx",
+    "app/web/src/MultipartCleanup.tsx",
+    "app/web/src/NotificationDelivery.tsx",
+    "app/web/src/NotificationIndicator.tsx",
+    "app/web/src/NotificationTelegram.tsx",
+    "app/web/src/Notifications.tsx",
+    "app/web/src/ObjectRetirement.tsx",
+    "app/web/src/OfficeAuthor.tsx",
+    "app/web/src/Parties.tsx",
+    "app/web/src/PasswordRecovery.tsx",
+    "app/web/src/PasswordResetDialog.tsx",
+    "app/web/src/PaymentActions.tsx",
+    "app/web/src/PaymentDisplay.tsx",
+    "app/web/src/PaymentEditor.tsx",
+    "app/web/src/PaymentFees.tsx",
+    "app/web/src/Payments.tsx",
+    "app/web/src/ProjectBudgetComparison.tsx",
+    "app/web/src/ProjectBusinessHub.tsx",
+    "app/web/src/ProjectBusinessScope.test.ts",
+    "app/web/src/ProjectBusinessScope.tsx",
+    "app/web/src/ProjectChangeFacts.tsx",
+    "app/web/src/ProjectChanges.tsx",
+    "app/web/src/ProjectCloseout.tsx",
+    "app/web/src/ProjectCollaboration.tsx",
+    "app/web/src/ProjectDeliverables.tsx",
+    "app/web/src/ProjectOverview.test.tsx",
+    "app/web/src/ProjectOverview.tsx",
+    "app/web/src/ProjectTaskViews.test.tsx",
+    "app/web/src/ProjectTaskViews.tsx",
+    "app/web/src/ProjectTemplates.tsx",
+    "app/web/src/Projects.tsx",
+    "app/web/src/PurchaseCompletion.tsx",
+    "app/web/src/PurchaseFulfillment.tsx",
+    "app/web/src/PurchaseVarianceFacts.tsx",
+    "app/web/src/PurchaseVariances.tsx",
+    "app/web/src/Requests.tsx",
+    "app/web/src/ResourceHealthHistory.tsx",
+    "app/web/src/Retention.tsx",
+    "app/web/src/RouteBoundary.tsx",
+    "app/web/src/ScanWaivers.tsx",
+    "app/web/src/ScopeTransfers.tsx",
+    "app/web/src/Search.tsx",
+    "app/web/src/Services.tsx",
+    "app/web/src/SpendDisplay.tsx",
+    "app/web/src/SpendEditor.tsx",
+    "app/web/src/Spends.tsx",
+    "app/web/src/StatusHistory.tsx",
+    "app/web/src/StatusIncidents.tsx",
+    "app/web/src/StatusShared.tsx",
+    "app/web/src/StorageOperations.tsx",
+    "app/web/src/SubscriptionActions.tsx",
+    "app/web/src/SubscriptionDisplay.tsx",
+    "app/web/src/SubscriptionEditor.tsx",
+    "app/web/src/SubscriptionPeriods.tsx",
+    "app/web/src/Subscriptions.tsx",
+    "app/web/src/TaskComments.tsx",
+    "app/web/src/Telegram.tsx",
+    "app/web/src/TelegramDelivery.tsx",
+    "app/web/src/TelegramInbox.tsx",
+    "app/web/src/TelegramOperations.tsx",
+    "app/web/src/UploadQueue.tsx",
+    "app/web/src/Workflows.tsx",
+    "app/web/src/amortization.test.ts",
+    "app/web/src/api.test.ts",
+    "app/web/src/api.ts",
+    "app/web/src/audit.test.ts",
+    "app/web/src/batch157.test.ts",
+    "app/web/src/budget.test.ts",
+    "app/web/src/budgetComparison.test.ts",
+    "app/web/src/components.tsx",
+    "app/web/src/concernMutation.test.ts",
+    "app/web/src/contract-body.test.ts",
+    "app/web/src/contract-finance.test.ts",
+    "app/web/src/contract-reminders.test.ts",
+    "app/web/src/cost-payment-outcome.ts",
+    "app/web/src/deliverable-submission.test.ts",
+    "app/web/src/document-text.test.ts",
+    "app/web/src/download.test.ts",
+    "app/web/src/download.ts",
+    "app/web/src/file-batch.test.ts",
+    "app/web/src/file-batches.css",
+    "app/web/src/file-comparison.test.ts",
+    "app/web/src/file-create.test.ts",
+    "app/web/src/file-recovery.test.ts",
+    "app/web/src/file-update.test.ts",
+    "app/web/src/finance-fx.test.ts",
+    "app/web/src/finance-reports.test.ts",
+    "app/web/src/financial-reports.css",
+    "app/web/src/followups.test.ts",
+    "app/web/src/host-resources.test.ts",
+    "app/web/src/indexed-context.test.ts",
+    "app/web/src/main.tsx",
+    "app/web/src/multipart-cleanup.test.ts",
+    "app/web/src/mutation.test.ts",
+    "app/web/src/notification-delivery.test.ts",
+    "app/web/src/notification-telegram.test.ts",
+    "app/web/src/notifications.test.ts",
+    "app/web/src/oa-request.test.ts",
+    "app/web/src/oa-text.test.ts",
+    "app/web/src/object-retirement.test.ts",
+    "app/web/src/office-author.test.ts",
+    "app/web/src/office-create.test.ts",
+    "app/web/src/payment-fees.test.ts",
+    "app/web/src/payment-fx.test.ts",
+    "app/web/src/post-write.test.ts",
+    "app/web/src/project-changes.css",
+    "app/web/src/project-closeout.css",
+    "app/web/src/project-overview.css",
+    "app/web/src/project-tasks.css",
+    "app/web/src/project-templates.css",
+    "app/web/src/projectSchedule.test.ts",
+    "app/web/src/projectSchedule.ts",
+    "app/web/src/replica-notifications.test.ts",
+    "app/web/src/scope-transfer.test.ts",
+    "app/web/src/search.test.ts",
+    "app/web/src/statusFreshness.test.ts",
+    "app/web/src/statusFreshness.ts",
+    "app/web/src/storage-operations.test.ts",
+    "app/web/src/styles.css",
+    "app/web/src/task-comment.test.ts",
+    "app/web/src/taskCreation.test.ts",
+    "app/web/src/taskDependency.test.ts",
+    "app/web/src/upload.test.ts",
+    "app/web/src/upload.ts",
+    "app/web/src/workbench.test.ts",
+    "app/web/tsconfig.json",
+    "app/web/vite.config.ts",
+    "docs/skills/execution-boundaries.md",
+    "docs/skills/file-update/SKILL.md",
+    "docs/skills/incident-summary/SKILL.md",
+    "docs/skills/information-organize/SKILL.md",
+    "docs/skills/oa-assist/SKILL.md",
+    "docs/skills/project-briefing/SKILL.md",
+    "docs/skills/project-create/SKILL.md",
+    "docs/skills/project-update/SKILL.md",
+    "docs/skills/subscription-review/SKILL.md"
+  ],
+  "build": {
+    "passed": true,
+    "max_workers": 4,
+    "no_expo_map_guard": true,
+    "native_invocation": {
+      "command": [
+        "D:\\dev\\copypasted\\内部管理\\app\\.tools\\node-v22.23.4-win-x64\\node.exe",
+        "--require",
+        "D:\\dev\\copypasted\\内部管理\\app\\.local\\android\\refund-fx-fs-diagnostic.cjs",
+        "D:\\dev\\copypasted\\内部管理\\app\\node_modules\\react-native\\cli.js",
+        "bundle",
+        "--platform",
+        "android",
+        "--dev",
+        "false",
+        "--entry-file",
+        "index.js",
+        "--max-workers",
+        "4",
+        "--reset-cache",
+        "--config",
+        "D:\\dev\\copypasted\\内部管理\\app\\.local\\android\\refund-fx-metro.config.cjs",
+        "--bundle-output",
+        "android/app/src/main/assets/index.android.bundle",
+        "--assets-dest",
+        "android/app/src/main/res",
+        "--sourcemap-output",
+        "../.local/android/index.android.map"
+      ],
+      "max_workers": 4,
+      "exit_code": 0,
+      "generated_output_exclusions": [
+        "mobile\\android\\.gradle",
+        "mobile\\android\\app\\build",
+        "mobile\\android\\build",
+        "mobile\\dist",
+        "mobile\\.taro",
+        "mobile\\.swc"
+      ],
+      "derived_config_sha256": "59cb479c33986ec7351181b00202ba21d646bd687c502d7f8fe76ffe6ef7e6f3",
+      "filesystem_threads": 128,
+      "windows_checkout_link_bridge_sha256": "243fad66b775d46d23470a00eb4aa71f8be9b685dfa15fbe245bb2b24e3c9265",
+      "windows_checkout_link_bridge": "Native synchronous link, metadata and read results for checkout paths only; callbacks remain asynchronous, with no source or resolution substitution"
+    },
+    "owned_worker_filesystem_bridge": "--require=\"D:/dev/copypasted/内部管理/app/.local/android/refund-fx-fs-diagnostic.cjs\"",
+    "parent_node_options_inherited": false,
+    "bundle_sha256": "9add497b160461fa97dc9a469540d1f28c92a016972ed8254e24187bbe403fea",
+    "source_map_sha256": "609475b97afbe0d385a5c3d0e8b2bf85cfc5519780481532b06b1240edfc9db8",
+    "source_count": 1139,
+    "apk_created": false,
+    "formal_android_acceptance": false
+  },
+  "modules": [
+    {
+      "file": "mobile/index.js",
+      "sha256": "6d78a0ef424702cf5e2d9e5b47c78da092d0e994b1ba3d92b553c25f366580b5"
+    },
+    {
+      "file": "mobile/src/app.tsx",
+      "sha256": "f6438a44e2ccf578185b85a4da11aa50d1e6d2a87b103829f996343d53bd1660"
+    },
+    {
+      "file": "mobile/src/platform/app-root.rn.tsx",
+      "sha256": "07b8aeb61d36023cb3536802623652ca794da4032502a41f18dc0d0fdfbf8ed7"
+    },
+    {
+      "file": "mobile/src/platform/content-sink.rn.ts",
+      "sha256": "8fac9b434e6bf250ce8496c611959701682d368a9f87291eec5790eccd2ae750"
+    },
+    {
+      "file": "mobile/src/platform/session.ts",
+      "sha256": "41a2fd8b237fa8071676e83a1e12caa9febdc9def26168687c62fe708ab70a99"
+    },
+    {
+      "file": "mobile/src/platform/content.ts",
+      "sha256": "4b1ce53ad72630b12da4a05cbd28a3e862af2b281b7bf421d280e2e4805a4277"
+    },
+    {
+      "file": "mobile/src/platform/uploads.rn.ts",
+      "sha256": "0361132700d1d6dc32dbdc1e55408e2dea92a9f56de088ce77198f070a35413a"
+    },
+    {
+      "file": "mobile/src/platform/upload-transfer.ts",
+      "sha256": "37cfbab5e26fe490db538e8a6e4e7b701449ba4708650da76ba14889aa0cb8f8"
+    },
+    {
+      "file": "mobile/src/platform/taro.rn.ts",
+      "sha256": "0712b7283e1449d275c8c023eefbc97d5a6280815f3bb08de3d8f51bd11c31ad"
+    },
+    {
+      "file": "mobile/src/platform/native-wire.ts",
+      "sha256": "d1c138ec91e40a7607ab4630b5c06f02ccfbca386b44a5141c851d8339b64e87"
+    },
+    {
+      "file": "mobile/src/pages/login/index.tsx",
+      "sha256": "3a16b6eca53cbe8844cf72c5ff6e1c8d7f8322d0ea9aef2d6e9a2278c4536895"
+    },
+    {
+      "file": "packages/uri-decoder-compat/index.cjs",
+      "sha256": "04e2fa2e1d0f4a00877aeb6d318f0e838c59bb8897c2692b8ca0c81cd09ac921"
+    },
+    {
+      "file": "mobile/src/platform/miniapp-login.rn.ts",
+      "sha256": "efd93f47c65b906f8e0d56b94b3e3645fb46664ed47b571ca7df98467d56ca18"
+    },
+    {
+      "file": "mobile/src/pages/login/password-recovery.tsx",
+      "sha256": "10eb30a23c7df56977f5f91d61f6576ff12bf7d0634d4389ea299b2633a5a2ae"
+    },
+    {
+      "file": "mobile/src/ui.tsx",
+      "sha256": "43e220a6051d2a91c36a3b778bb4b00e568f900dca58d4410a7ef0557a9f63ff"
+    },
+    {
+      "file": "packages/design/src/tokens.json",
+      "sha256": "ddd5aa7093e82dccfbe4b5c2b2f01d7dcd32a82f8a2eb6c74ad49336289809ce"
+    },
+    {
+      "file": "mobile/src/platform/theme.rn.ts",
+      "sha256": "017cdd4371813bdfbc6532011dcad36fff6dee09649eaf0991964cd419127489"
+    },
+    {
+      "file": "mobile/src/platform/primitives.rn.tsx",
+      "sha256": "28c38aafdf923f41b9985d5a9eb0de36ea7035e75a7e5951306b07a64aa39920"
+    },
+    {
+      "file": "mobile/src/platform/native-styles.ts",
+      "sha256": "93b251aaf736579516f2a06c801eb018b276f7c9cdda5eaa8d196d11c31c0394"
+    },
+    {
+      "file": "mobile/src/platform/components.rn.tsx",
+      "sha256": "311d4c1fa6711f8bbb2264855c3fba284b1f61143a98af12fc2f0b69c4fd6c2a"
+    },
+    {
+      "file": "mobile/src/pages/home/index.tsx",
+      "sha256": "ad7282eee57520fa5ed296812ca9c2dd671467255f20ae9e328e4b703bc2273d"
+    },
+    {
+      "file": "mobile/src/platform/page.ts",
+      "sha256": "fd19daa69741eeee4e809e2023422b21d7a8a56eeb2d2b42714de0f3405e3b25"
+    },
+    {
+      "file": "mobile/src/platform/project-overview.ts",
+      "sha256": "1fc060ef26b127d9014f69fbf9c0e85908e208d949d6dceff0c5c4d851823a9c"
+    },
+    {
+      "file": "packages/contracts/src/workbench.ts",
+      "sha256": "96406f5febfb490a605702aa522bed2a6850166350a2cf32bf09a565781cc575"
+    },
+    {
+      "file": "packages/contracts/src/followups.ts",
+      "sha256": "ab86a129227b63ef2ca58832755af28e3f52dfc84884f60ffd13b49e6ddcb732"
+    },
+    {
+      "file": "mobile/src/pages/home/business.tsx",
+      "sha256": "0865c47bb36d7d05e7c20b9020c95ae1eee288cecb9542adb9053fd904c81b20"
+    },
+    {
+      "file": "mobile/src/pages/home/followups.tsx",
+      "sha256": "a70812659214b6db075a6a35ef7cb86f3561871078385a35d8dec2a49f1018c0"
+    },
+    {
+      "file": "packages/contracts/src/notifications.ts",
+      "sha256": "62fafbbf4c5604c15fc91e08907d051fbc526b283cd18a9fe4444c37c3df2b7c"
+    },
+    {
+      "file": "mobile/src/platform/upload-entry.rn.tsx",
+      "sha256": "8fd61eef4786c7817373c45cce31aebb49bf79b74932561190619a73f63afad2"
+    },
+    {
+      "file": "mobile/src/pages/list/index.tsx",
+      "sha256": "6df124291f0f473332cfbe6577096da30c3d14ae9d131423a1c71c07e3e3ad23"
+    },
+    {
+      "file": "mobile/src/pages/project/task-forms.tsx",
+      "sha256": "897a4d0082b331112eeb87ab01478105b28d9e5b55df7a3cc4cf609d51b340bb"
+    },
+    {
+      "file": "mobile/src/platform/collection.ts",
+      "sha256": "e896dd6e7a4e864800b5b2783041e4b74686bd57b1cb66c3a3eb968d91284fc9"
+    },
+    {
+      "file": "mobile/src/platform/task-input.ts",
+      "sha256": "de0882ca8a985e8a443e5f57872478611a5030cb244f56aba12af29f0cb47e5d"
+    },
+    {
+      "file": "mobile/src/platform/project-resource-input.ts",
+      "sha256": "3632a40bf06a80607e0453cb0b35ee971eb2f18318ab4897a4de0af309c89f52"
+    },
+    {
+      "file": "mobile/src/platform/project-input.ts",
+      "sha256": "fc577bd692eb45740e46bea29b1098c63af4eea82891bc1230dadb402751eefa"
+    },
+    {
+      "file": "mobile/src/pages/business/controls.tsx",
+      "sha256": "f90d4db289ae086c02b087652903a6b47a37b1efb7f0758845280521fb282b95"
+    },
+    {
+      "file": "mobile/src/platform/form.ts",
+      "sha256": "19c2cfa59770daa3958dfb7b20c76968405561aa0109c9374a35e98e872b645b"
+    },
+    {
+      "file": "mobile/src/platform/drafts.ts",
+      "sha256": "7a8cf1ecb09b21930fa886c7c3c79ec234443b87ddd74bcb9c5db5666dbbd93c"
+    },
+    {
+      "file": "packages/contracts/src/cost-payment.ts",
+      "sha256": "6d4537e7d46fa675af741eab96f6f008be11b22fde5d6a88cb1e33f56e1e86d4"
+    },
+    {
+      "file": "packages/contracts/src/payment-fx.ts",
+      "sha256": "3e6f37cc48f82d6466916bac137592d02b447aebfa3fc8bf02db851142864292"
+    },
+    {
+      "file": "mobile/src/platform/subscription-input.ts",
+      "sha256": "e3a18ea25d34d765638917201e5597461e860fcacaaae75be8f71b98130c4428"
+    },
+    {
+      "file": "mobile/src/platform/business-input.ts",
+      "sha256": "c4b9f2d34cee0433d7bd5b128874402902366b1f94e13fe026e07d2ad2af411c"
+    },
+    {
+      "file": "mobile/src/platform/encoding.ts",
+      "sha256": "840d25b4726908fab622515506a008f9964b192c5af7f610921c9ca737b5d475"
+    },
+    {
+      "file": "mobile/src/platform/incident-input.ts",
+      "sha256": "b7a5aa64ac11b284c41b4014130db38744426f1a0d7c84653d6e03d567597e49"
+    },
+    {
+      "file": "mobile/src/platform/financial-input.ts",
+      "sha256": "9a7223d8cbeafa4c1123e0ac2f75b9c0f27787085126dac0abb7b8f5fb573c13"
+    },
+    {
+      "file": "mobile/src/platform/change-input.ts",
+      "sha256": "4413a989aa3f2e596843893175ebf46f15f33733a90a31d8f9f93f1d62d5ed1a"
+    },
+    {
+      "file": "mobile/src/platform/command.tsx",
+      "sha256": "32c5ff9c4ec28e9b5c35d40112fb957dd9b4ae339adf58a3c49b79b932510933"
+    },
+    {
+      "file": "mobile/src/platform/command-keys.ts",
+      "sha256": "2ac3e15c9726b0cff5623eb0742c6387d8cc01982436af5fd0d103e15f6eb7c2"
+    },
+    {
+      "file": "mobile/src/pages/knowledge/index.tsx",
+      "sha256": "9477ecbc42c84e235358974b486963b96fdafbe55fae2dda75fe9e864096a715"
+    },
+    {
+      "file": "mobile/src/platform/post-input.ts",
+      "sha256": "419fc439cf16ab2e84f02513b5789828581f0872dddd051f908c816834c74924"
+    },
+    {
+      "file": "mobile/src/pages/knowledge/markdown.tsx",
+      "sha256": "4ed855c2dbe42b9710cf9ca6129538f3297b8845fed5abeb0d52764fc7dbc365"
+    },
+    {
+      "file": "mobile/src/platform/post-markdown.ts",
+      "sha256": "2f072c17c05957306fa3a552187b01c9601201d0fac9bf493ff5705c9e286eff"
+    },
+    {
+      "file": "mobile/src/platform/post-link.rn.ts",
+      "sha256": "7cd11f783676a1e6f74f48761913fd134dc2e8db10c4e099cd0fbb066d4e206b"
+    },
+    {
+      "file": "mobile/src/pages/knowledge/sources.tsx",
+      "sha256": "a432154dcf4b900d0302cd814a56f66595b1f0a3d8b03c2e7cbd8a3a3bb558e8"
+    },
+    {
+      "file": "mobile/src/pages/knowledge/comments.tsx",
+      "sha256": "6bbf7c4dbc37f3919e2565cf6065e0bc7f130a8e484c8f4eac0e4a4cee3b054d"
+    },
+    {
+      "file": "packages/contracts/src/project-business.ts",
+      "sha256": "7204baad447f600f1dd448b657ff8672e809aa74aeab016dcb595f9346481248"
+    },
+    {
+      "file": "mobile/src/pages/finance/operations.tsx",
+      "sha256": "427fbe48f5d552115fcd8207c5d2409e56ac1c89cfd25ee8c653de17636d9632"
+    },
+    {
+      "file": "packages/contracts/src/cost-business.ts",
+      "sha256": "855e8ff7706133fdef6a1768d9147e3f2241b1004d0492ba3e93bc9f038c65e2"
+    },
+    {
+      "file": "mobile/src/pages/finance/editor.tsx",
+      "sha256": "4179583232edbe2727c32167e3fe9a4756e130ec627e48329b3e223461662c2f"
+    },
+    {
+      "file": "mobile/src/platform/fixed-files.tsx",
+      "sha256": "121d0097775701c44deb173ea82eef6541657b2629d5e6f41b1084ca2c656717"
+    },
+    {
+      "file": "mobile/src/pages/detail/index.tsx",
+      "sha256": "a96455ebce24e0e414e256b8f9c2816e1a2e956f1488b3aee57d82de7cc88492"
+    },
+    {
+      "file": "mobile/src/pages/project/setup.tsx",
+      "sha256": "61a6354e12a1fbe0514cf6980685790a2c53fffc7ef531b1716a2d49e4b9fc0e"
+    },
+    {
+      "file": "mobile/src/pages/project/resources.tsx",
+      "sha256": "9bfd595436dabb672d0c91c11a2cd7b22912c5ec1af2075ba41dd0f49be8d554"
+    },
+    {
+      "file": "mobile/src/pages/project/resource-forms.tsx",
+      "sha256": "3ec95a7cc564af4d085e520ab4fbbcdbb6caaf7973d44ba567e129465f034d23"
+    },
+    {
+      "file": "mobile/src/pages/detail/mutations.tsx",
+      "sha256": "ea019ddb488ae126e270d7de7f4ad66ec7df133e5215e4e9554d2b65ce0c58b5"
+    },
+    {
+      "file": "mobile/src/pages/project/comments.tsx",
+      "sha256": "3f38cb0c28c808a01e737300cf2ab76e69257eeffe6944bf0aba16f933b53a57"
+    },
+    {
+      "file": "packages/contracts/src/task-comment.ts",
+      "sha256": "df91d1d3416b7c807e3866e2c495bb9e046d1f54325ae190cca9cb3b1b622fed"
+    },
+    {
+      "file": "mobile/src/pages/files/replica-retry.tsx",
+      "sha256": "498db714cbd7d6d56b1badd6aa0b12ad2809f1c6fab6d5e1d5f934a51fc33100"
+    },
+    {
+      "file": "packages/contracts/src/file-replica.ts",
+      "sha256": "37bb7be7e17648f10adede9c5c650d0f01cd60a76b97d7d61ae0697a5ee7235b"
+    },
+    {
+      "file": "mobile/src/pages/detail/snapshot.tsx",
+      "sha256": "4705879ac0ff4d961baafb276ac60b67387b7193fb88e874ea31d4ebe72f5e34"
+    },
+    {
+      "file": "mobile/src/pages/business/request-actions.tsx",
+      "sha256": "efb640635dfa5969c2dd6fed4c49d0e34fbc0c91ebc527c4c5949e6b674885de"
+    },
+    {
+      "file": "mobile/src/pages/settings/index.tsx",
+      "sha256": "2c0a2634a74e4acd4151f0e889fb66e48702ec3f3519744665064fd2deb64b31"
+    },
+    {
+      "file": "mobile/src/pages/settings/storage.tsx",
+      "sha256": "4d4b64d79c3400259d955787b022821337f69932b3ee100a4d12ac3ae113731f"
+    },
+    {
+      "file": "packages/contracts/src/storage-operations.ts",
+      "sha256": "ab69f242fb51b750366cdb8574a3bcd6d3530d10085dfba4a4f7816e0e6e1d99"
+    },
+    {
+      "file": "mobile/src/pages/settings/audit.tsx",
+      "sha256": "5a508ca84515fc2fefdf56937024077ec6b6ee5a18c9fcceafcefc6ffc6284f6"
+    },
+    {
+      "file": "packages/contracts/src/audit.ts",
+      "sha256": "52959437a27fa25f7d85a72b6bef961dba1df61cfe2924010bd072b2610599a1"
+    },
+    {
+      "file": "packages/contracts/src/finance-reports.ts",
+      "sha256": "f4bbe7c347b425990163c5c700d2fbab4a046fda16572aab6bc965e645aa4ec5"
+    },
+    {
+      "file": "packages/contracts/src/finance-fx.ts",
+      "sha256": "1710a98dfc3a4d8f3518ea4f28bbf4f3f12c08f7b696007ca00f328d6fb8168b"
+    },
+    {
+      "file": "mobile/src/platform/report-file.rn.ts",
+      "sha256": "2405c5756ffd132d7e7631e7fa448599e619492709fcc9c0daee76d67d6d3c18"
+    },
+    {
+      "file": "mobile/src/pages/settings/security.tsx",
+      "sha256": "762c01fc3e642dc3c9c13de0e1080dd7a7be65adf006e511f57a231c19c8e3cc"
+    },
+    {
+      "file": "mobile/src/pages/settings/miniapp-bindings.tsx",
+      "sha256": "c313d5c9083e62f53a26d9dce891d0a806cd050bd2a22732eb4f688633de8a4c"
+    },
+    {
+      "file": "mobile/src/pages/budget/index.tsx",
+      "sha256": "782122041fce483db227a4e900626893077660b04e2f8a59692159f73e3f5eea"
+    },
+    {
+      "file": "packages/contracts/src/budget.ts",
+      "sha256": "2ebda9fce40172ea9da8ac0ac6d0073925a265ad892b97d0692062b5f36bff09"
+    },
+    {
+      "file": "mobile/src/pages/project/index.tsx",
+      "sha256": "6bcb8d4fc49e79ed600a5349753115ce96e4c1025f49e41e5a2ab354469d29cd"
+    },
+    {
+      "file": "mobile/src/pages/project/overview.tsx",
+      "sha256": "0085fc1f0625997261a88934e17599d54b52842ee856cc8e240d67352c41e11a"
+    },
+    {
+      "file": "mobile/src/pages/project/business.tsx",
+      "sha256": "a539ec4c7e5b7b9196825a9c76a30dc52b22dc77ff3edee729c8d2fb04a0db82"
+    },
+    {
+      "file": "mobile/src/pages/project/budget-comparison.tsx",
+      "sha256": "6660172644a6ba811496a19f570651861e49c072e16b8a7b75b33f47c67d4fb6"
+    },
+    {
+      "file": "packages/contracts/src/budget-comparison.ts",
+      "sha256": "af0ad24849350f7c1b40959d1f6342921fd5dcb7310a171ab1327677ab0c15aa"
+    },
+    {
+      "file": "mobile/src/pages/project/closeout.tsx",
+      "sha256": "77ea88a35c407625b6d3462d6c4f550b10a1a1b0fbc0ceeee4822ef28ffcf0b7"
+    },
+    {
+      "file": "mobile/src/platform/project-closeout.ts",
+      "sha256": "ffb08b67da835acf8a73602a17a374b301f573fbaea92fa0df1996d32e01e2ae"
+    },
+    {
+      "file": "mobile/src/pages/project/change-form.tsx",
+      "sha256": "c661e1dffc88541d80758374d3cef37bfd87ed14e969dda8fd97d463b0e06256"
+    },
+    {
+      "file": "mobile/src/pages/project/members.tsx",
+      "sha256": "06ec11369bca0f72d4908bfc746375b8f38d4ff12e2cfdcee4b39d719ef788e0"
+    },
+    {
+      "file": "mobile/src/pages/deliverable/index.tsx",
+      "sha256": "7cd6cf01497c5b1c07479bad0f9eef6f6ba9e12f5314895d005961c7a69518cf"
+    },
+    {
+      "file": "mobile/src/pages/content/index.tsx",
+      "sha256": "8bc4f6aee1da82801dd26ee7b7c9981b8b994b593db9cd03c01740313ae306cd"
+    },
+    {
+      "file": "mobile/src/pages/content/view.rn.tsx",
+      "sha256": "9d490de140957a23a23251bc63eb697fb0c537c2c6f7dda50a7597fe7daab1ea"
+    },
+    {
+      "file": "mobile/src/pages/business/index.tsx",
+      "sha256": "befe120c2a095bff2422bce795874517472235278f56622a11f71493c9a4cc5a"
+    },
+    {
+      "file": "mobile/src/pages/business/editor.tsx",
+      "sha256": "196b0eef0e437edc8000eba9f966b29f10bb95b810812b7bbbd05ada3a34a72a"
+    },
+    {
+      "file": "mobile/src/pages/business/contract-finance.tsx",
+      "sha256": "b07a9833e6a2687bc6345ad87ffc7e50cc8165a2247b1f6c8b7f23ca9530263c"
+    },
+    {
+      "file": "packages/contracts/src/contract-finance.ts",
+      "sha256": "350a1313e3d0e8468e72084a64f2a4ef68551e44d0692b71b03a249f64075f09"
+    },
+    {
+      "file": "mobile/src/pages/status/index.tsx",
+      "sha256": "0369cc35a5f6581431a90943db7d1d96ec606d71f4f92056a870d6c94b7cc326"
+    },
+    {
+      "file": "mobile/src/pages/status/incident-editor.tsx",
+      "sha256": "e382bb9565178d283e71fbf553b9a2ebf21ee474dc6570d51a4b7d122950fb74"
+    },
+    {
+      "file": "mobile/src/platform/status.ts",
+      "sha256": "2658ff8b83d8992ac750422b2392de810cfc614c2580a946d14b40d09a024e2f"
+    },
+    {
+      "file": "mobile/src/pages/status/live.ts",
+      "sha256": "454725d547d494983cf6b81553a9f1f7415c6981d0ed17f8be519cb9379d1d0c"
+    },
+    {
+      "file": "mobile/src/pages/status/history.tsx",
+      "sha256": "925cd0b3213c5931f8a6773036cb661630508dcf8d685567d70e0d7d56f7b9fb"
+    },
+    {
+      "file": "mobile/src/platform/status-proof.ts",
+      "sha256": "adb95febc29f49879fb9598f5f345818796a3f66ff99f0cb6939b28f54ad3ffd"
+    },
+    {
+      "file": "mobile/src/pages/status/resources.tsx",
+      "sha256": "b73cc6605b2c8ff905f2e38edd6fcdb4fb1d7d6396321a8b6497a9da1f9849e2"
+    },
+    {
+      "file": "packages/contracts/src/host-resources.ts",
+      "sha256": "7ebda2e11ef3575df9d805d4294651b3bc93134d5fa78761c8a1d3e3433496d5"
+    },
+    {
+      "file": "mobile/src/pages/status/resource-health-history.tsx",
+      "sha256": "549ea8ed0999d3b7fcb3c6b29a26de5bdd18422b0257a876381d18f287807dee"
+    },
+    {
+      "file": "mobile/src/pages/secretary/index.tsx",
+      "sha256": "127089b73c6402519b38a28b2f3dafd278ce08bcccf1c2087f00bac4482c47d9"
+    },
+    {
+      "file": "mobile/src/pages/secretary/runtime.tsx",
+      "sha256": "60febd482e788cb855a3efa07d3591a70de623477b2278a1a8de6b6da58b82ed"
+    },
+    {
+      "file": "packages/contracts/src/agent-runtime.ts",
+      "sha256": "373ec684edb2c31a84f21da4a32659852aae9d2add4ba0a0cd5d2e63cb40c1b7"
+    },
+    {
+      "file": "mobile/src/pages/secretary/subscription-portfolio.tsx",
+      "sha256": "798cf10c8b5c60af1a2e1db2654ab56bdd242ae1fc834b82e7f3bb563b865d75"
+    },
+    {
+      "file": "packages/contracts/src/subscription-portfolio.ts",
+      "sha256": "49785b64d75e4f663d51c8ef36158a0c2218ddbcdc4ba2adf1f875bfe21f2a73"
+    },
+    {
+      "file": "packages/contracts/src/contract-body.ts",
+      "sha256": "40aa2fccab13812eca84356b87bfbf8b6faf8f5e19ab10b0cee962857e12cb3a"
+    },
+    {
+      "file": "mobile/src/pages/secretary/live.ts",
+      "sha256": "debe5c57837eba163b7ed621cecaf2885dc16014fa7d52e83e1b05c5cf45c328"
+    },
+    {
+      "file": "mobile/src/pages/secretary/organization.tsx",
+      "sha256": "b373f507aae1898a9f5f52e875309e888d9413634e58c1c5b3c1dac4e7962aa6"
+    },
+    {
+      "file": "mobile/src/pages/secretary/plans.tsx",
+      "sha256": "3add2ccadfde050d174bced477721d63489ccf82f6b6decf304fc3b5f5dc56e9"
+    },
+    {
+      "file": "packages/contracts/src/project-catalog.ts",
+      "sha256": "99a46359c22bb75d88b5d3e22d50d26645623b5c42c74c06bea34813ab60c23a"
+    },
+    {
+      "file": "mobile/src/pages/secretary/project-catalog.tsx",
+      "sha256": "9130e340b40ce7d0ea0f17cd4fef334f4f4912db9717eb390f8ffe4fff40b134"
+    },
+    {
+      "file": "mobile/src/pages/secretary/finance-reports.tsx",
+      "sha256": "f9804587aadeaebdd0e01e80d0e29913f4de68b80369be67ebd174233b50772f"
+    },
+    {
+      "file": "mobile/src/pages/secretary/service-reports.tsx",
+      "sha256": "05b7e0dab4faaecf2634083bad4e56de225b5f2ae43582393403c178e4d1d9ec"
+    },
+    {
+      "file": "mobile/src/platform/secretary.ts",
+      "sha256": "56def5978593b6dedf4bd74375f34e052b929575a82f6abe8beb8b96dbae403f"
+    },
+    {
+      "file": "packages/contracts/src/mutation.ts",
+      "sha256": "9e891a59a56d558758097d6f9faa83f35285a358bc83de2e0b70555a0e6bfc1d"
+    },
+    {
+      "file": "packages/contracts/src/concern-mutation.ts",
+      "sha256": "7e370cafed6620f095147fad6aac81a6ef8f70f798b6266f3433c0f097bffb68"
+    },
+    {
+      "file": "packages/contracts/src/mutation-validation.ts",
+      "sha256": "cc957096ae368e5f935cd98611bf11f3ebddc9ceac391d32fefc84b1a1fdf908"
+    },
+    {
+      "file": "packages/contracts/src/deliverable-submission.ts",
+      "sha256": "9c4c54d6509c111391f2ae392654b0d8bc499432fa3e5fd1c1cbf564c3742c22"
+    },
+    {
+      "file": "packages/contracts/src/task-creation.ts",
+      "sha256": "0ea36c49f839b863ff1c49b423c70e97860b910c722a48ebb2e0fd517deb472e"
+    },
+    {
+      "file": "packages/contracts/src/task-dependency.ts",
+      "sha256": "f9a9e5580ac151737f710287ea0918dbeb71c8fa83b6ef063d19526583f42b69"
+    },
+    {
+      "file": "packages/contracts/src/file-update.ts",
+      "sha256": "51898653133e4f8cbc9fed25691a76fe64ab0680f6eacda71ece4ea4d7e913fd"
+    },
+    {
+      "file": "packages/contracts/src/file-recovery.ts",
+      "sha256": "150d5d6b8a2ea90018668e9ac300158065ba92854b5ff46cdd973485ee76ddf0"
+    },
+    {
+      "file": "packages/contracts/src/oa-request.ts",
+      "sha256": "26a86dfc2e270b4770634b857de9217ac7c4c605e2a9b977537fba9fef5ed5c8"
+    },
+    {
+      "file": "packages/contracts/src/oa-text.ts",
+      "sha256": "666eee9b3461da656554f93c3450d416340fcd74f7014f08f10d1c4c08c0b25b"
+    },
+    {
+      "file": "packages/contracts/src/post-write.ts",
+      "sha256": "1020439ce05113bd16c560299c74db1c724a2cdea465404b77412efb6cdb54c8"
+    },
+    {
+      "file": "mobile/src/pages/secretary/sources.tsx",
+      "sha256": "86a5a9a7a763b8758c7a6f63842f2b91c06f63a0311abb3c8801cb7bafff152f"
+    },
+    {
+      "file": "packages/contracts/src/indexed-context.ts",
+      "sha256": "3f8b739b62a3623c36a75c9e688f2807789bb7cb2a87a70acfe68703aa8c2b2b"
+    },
+    {
+      "file": "mobile/src/pages/secretary/mutations.tsx",
+      "sha256": "1274321059c82acbc74f9bc2ce53f29e6a54da74fab7268f5bb93b7780fa63f4"
+    },
+    {
+      "file": "mobile/src/pages/secretary/task-dependency.tsx",
+      "sha256": "206406c498540d5fbfddb9ad59c2c6f39b1df4fdab478cd05f0ee4105d01658a"
+    },
+    {
+      "file": "mobile/src/pages/secretary/task-creation.tsx",
+      "sha256": "ca1935c703f777bebe85b620cbc1a0d002e395764aa6384e65dd7528fd33bb2b"
+    },
+    {
+      "file": "mobile/src/pages/secretary/concerns.tsx",
+      "sha256": "3a17572599edabeaa1eebf47c1a6001ee0b9b9c7f47fa969c486dc6f6bd57767"
+    },
+    {
+      "file": "mobile/src/pages/secretary/deliverable-submission.tsx",
+      "sha256": "c5699ef9d610905153fd0809e17f0792204d6f573ef37248dca3abb8ecee692d"
+    },
+    {
+      "file": "mobile/src/pages/secretary/post-writes.tsx",
+      "sha256": "38298bef997a49255f43fafc88b7d157df07980c252d01c0d24593c3fd3d6ef6"
+    },
+    {
+      "file": "mobile/src/pages/secretary/oa-requests.tsx",
+      "sha256": "ea23bb51d09e3fe0e744fa198a5e155880374d1fbf8b8f0d8634ce742221b7ca"
+    },
+    {
+      "file": "mobile/src/pages/secretary/oa-text.tsx",
+      "sha256": "ff27f437ade7cb2b73c3d021a7ea6c6f5e476d191891263289058e28fb2b1563"
+    },
+    {
+      "file": "mobile/src/pages/secretary/file-updates.tsx",
+      "sha256": "4c76737e1176a975e6009a3baf7b8ef42d71b6ac63c5dedf2cab516578b9a770"
+    },
+    {
+      "file": "mobile/src/pages/secretary/file-creates.tsx",
+      "sha256": "653eb9f1ae77671e43fdc8fa1b906ad1073efcf58c1f0e1b7418e2745207429d"
+    },
+    {
+      "file": "mobile/src/pages/secretary/contract-bodies.tsx",
+      "sha256": "a6d0fc704735b91006bfb867ba3f531f6a19254e58944acc92534f8d2f147e44"
+    },
+    {
+      "file": "mobile/src/pages/secretary/file-recovery.tsx",
+      "sha256": "bae4476e6f549b44d429754ddce6aedb2175eda6a1eb20999dd80c0c01a3bf84"
+    },
+    {
+      "file": "mobile/src/pages/notifications/index.tsx",
+      "sha256": "a0dda1862aabdbca92052e1d298a599fb4be9c59204f1ceb604cae1130d60b02"
+    },
+    {
+      "file": "mobile/src/pages/notifications/delivery.tsx",
+      "sha256": "1efee069632601fa04cc8b43a1f38d52645c2ff9a3d1f142b21ac7cfafb70675"
+    },
+    {
+      "file": "mobile/src/pages/notifications/telegram.tsx",
+      "sha256": "ef8a0c7d8954721df43f8c610e025901a2beeed803a0f9d21f8bb8ab570a49f1"
+    },
+    {
+      "file": "packages/contracts/src/notification-telegram.ts",
+      "sha256": "94a6a9992fde7c4e597be8614d48022c468e285a4d318658eb594c419c9301a9"
+    },
+    {
+      "file": "mobile/src/pages/notifications/reminders.tsx",
+      "sha256": "a87d60897adb30fddb126e6665b970b11854cd7c66ac3bc11fb8f6f17124e2de"
+    },
+    {
+      "file": "mobile/src/pages/subscription-period/index.tsx",
+      "sha256": "dd3be5776f6db296fafa1ab87507574fd8cdf91adb77f5ace748cdd57c58edf3"
+    },
+    {
+      "file": "mobile/src/pages/telegram/index.tsx",
+      "sha256": "214c53c95ddfd907a22d753c413466f2644405faaf69968cfd57e4dbf744ff0c"
+    },
+    {
+      "file": "mobile/src/pages/telegram/access.tsx",
+      "sha256": "20c040179792c93f77b3dab88a745c64a97426b49e9308741e7e65af64f47291"
+    },
+    {
+      "file": "mobile/src/platform/telegram-clipboard.rn.ts",
+      "sha256": "ddc00793f74f581887844cc25525d8e0d4945c87cae697af2bcee8a804b1298e"
+    },
+    {
+      "file": "mobile/src/pages/telegram/channels.tsx",
+      "sha256": "0169f60c22c06b7c997e16f5b743356fe30ae9079a05eaeadb944932d370c527"
+    },
+    {
+      "file": "mobile/src/platform/telegram-input.ts",
+      "sha256": "77670ecf4dc9834676b38b9353bdd6caff3e453eb1655c9217ab9b61425b6583"
+    },
+    {
+      "file": "mobile/src/pages/telegram/operations.tsx",
+      "sha256": "b67bcad284b860dff35985ea7207a892a6475c7ba605d92c296dca80ed1ff198"
+    },
+    {
+      "file": "packages/contracts/src/telegram-operations.ts",
+      "sha256": "9242f103933ffa334c2f4da9ece14ddd81272076083d2268f19e59fa2c847ddc"
+    },
+    {
+      "file": "mobile/src/pages/telegram/inbox.tsx",
+      "sha256": "73a933fafc654d5053b263c12b701d2cf9ba5470c581fe2be9d16ff158a385df"
+    },
+    {
+      "file": "packages/contracts/src/telegram-inbox.ts",
+      "sha256": "e13de190cb36ced5a517f38755051bdf838c446b0f970da693dbbe887ce5b8cf"
+    },
+    {
+      "file": "mobile/src/pages/uploads/index.tsx",
+      "sha256": "dbb33b398f7dda3965d09ed34b15d15077f6bf15c0155da7a502ba15f1f3a415"
+    },
+    {
+      "file": "mobile/src/pages/uploads/view.rn.tsx",
+      "sha256": "f0f099cbfa826d3a4915a654f7f7b758f72ea8c91fecb0108a2545c1f83cab3c"
+    },
+    {
+      "file": "mobile/src/pages/finance/index.tsx",
+      "sha256": "98cfc4b6c015fe0a8a4600c32cf8f053d1f95128896d8d4ff2d067d48a4cc0f8"
+    },
+    {
+      "file": "mobile/src/pages/project/change.tsx",
+      "sha256": "10ed456dff94251ff2869350cb11e1f02ff079de2cbfb64ee7696c6e1c7ca168"
+    },
+    {
+      "file": "mobile/src/pages/finance/cost-payment.tsx",
+      "sha256": "54e602f094ff64db0c5b38feb79885e4774bd9c4174417f181531142c72baed9"
+    },
+    {
+      "file": "mobile/src/pages/finance/subscriptions.tsx",
+      "sha256": "0752568f6d6963183b330105131dc2ee54cca9e46eeaebe271775b9f4251b012"
+    },
+    {
+      "file": "mobile/src/pages/finance/amortization.tsx",
+      "sha256": "c4d29c5bc09cb0eb6259dc7dc84a114c527ca7de29d5770fecd3174b67bd0e4e"
+    },
+    {
+      "file": "packages/contracts/src/amortization.ts",
+      "sha256": "6ded3e13bf5132668191e2980267bf46a3448737e402f4b2a9c11dec11cfc965"
+    },
+    {
+      "file": "mobile/src/pages/finance/payment-fees.tsx",
+      "sha256": "18e26d9c493105420168cb7e52a34a4822d3a64c17652b7af999c238b93ad09a"
+    },
+    {
+      "file": "packages/contracts/src/payment-fees.ts",
+      "sha256": "98c241382a9135f9b9ac5610f5c0769b87f3f7b78c7cb33136345412c98c51e0"
+    },
+    {
+      "file": "mobile/src/pages/finance/history.tsx",
+      "sha256": "98c484e1a4ff15158f288fbdc3fa0f4809f53f3918ae6daac5c52cdd3e099a18"
+    },
+    {
+      "file": "mobile/src/pages/reports/index.tsx",
+      "sha256": "8ed0cc8e3c413030ae03ebd13c67fd1a7d158d7bdad935f219f2a1c68b0ab5d1"
+    },
+    {
+      "file": "mobile/src/pages/reports/finance-fx.tsx",
+      "sha256": "b926522c6ce199aa1149ef2968bbc7c21b512c645c6f20cc8ef61a63bedececa"
+    },
+    {
+      "file": "mobile/src/pages/search/index.tsx",
+      "sha256": "144da61b9dd98baf42be53c006b88465666e2c13570f2926466dbeddeb1abba4"
+    },
+    {
+      "file": "packages/contracts/src/search.ts",
+      "sha256": "e784fa816fa2fddb34a3373409e07f037785c971f81835ca06770e10a1f098d5"
+    },
+    {
+      "file": "mobile/src/pages/files/index.tsx",
+      "sha256": "cfb966bb0be46fcfc4e815191e6c7fb78cd380602f238508a597b545fc62387d"
+    },
+    {
+      "file": "mobile/src/platform/file-input.ts",
+      "sha256": "f5907824f5e530a7fa99c433f5bd51b7c5a8c8a7b616f96aeb20132e86cbc0dc"
+    },
+    {
+      "file": "mobile/src/pages/files/cleanup.tsx",
+      "sha256": "3f01753ae021005e11bf3e55143bf113138dcba8267977206928098f13bab03c"
+    },
+    {
+      "file": "packages/contracts/src/multipart-cleanup.ts",
+      "sha256": "c73655b4df0506994b104d0775ec277165fd50d3321e6ecc8b66cd47edb90891"
+    },
+    {
+      "file": "mobile/src/pages/files/retirement.tsx",
+      "sha256": "eda42017cdb63cd19f6997b50fff19238bcabcda57f60bfb3005afe7e327006f"
+    },
+    {
+      "file": "packages/contracts/src/object-retirement.ts",
+      "sha256": "5f5cef43b80ff738d20372ff4995dd29c699cd62fac1da193e74f4e624219f70"
+    },
+    {
+      "file": "mobile/src/pages/files/scope-transfers.tsx",
+      "sha256": "58cf3da94847cd3eb22704d9f7dbd47fc9c3ae64922c5629908675080607c1e5"
+    },
+    {
+      "file": "packages/contracts/src/scope-transfer.ts",
+      "sha256": "40d713c27026f4482b89164a27fe26b14f0ed6dd639f3756866d85480483f49c"
+    },
+    {
+      "file": "mobile/src/pages/files/forms.tsx",
+      "sha256": "341ba02a0b37a4b853d08b893d458ed2d568be0e033b50de094553fd0c086082"
+    },
+    {
+      "file": "mobile/src/pages/files/batches.tsx",
+      "sha256": "f020936d48024fc51b00e939a37a34507ed8fbd4c9d024d172c346bde0e17ab4"
+    },
+    {
+      "file": "packages/contracts/src/file-batch.ts",
+      "sha256": "b9678a178879880e6eaf802d92e24338c7ce04d18d0d189228559a7092c31211"
+    },
+    {
+      "file": "mobile/src/pages/files/office.tsx",
+      "sha256": "a19c5734c36ae61b5dfd3d2f91716d396d4f23642943877801a268b2dbc1e8a2"
+    },
+    {
+      "file": "mobile/src/platform/office-upload.rn.ts",
+      "sha256": "8b6ff546f8dd3194a06c77bacb17e99a0e1e42ee0e1388c87fe349514906e1bb"
+    },
+    {
+      "file": "packages/contracts/src/office-author.ts",
+      "sha256": "c2e598c738391b8775e9588975eba7a1f3f92cc8f513d3c2786da1162ed4464c"
+    },
+    {
+      "file": "mobile/src/pages/files/comparison.tsx",
+      "sha256": "570bc21d7c416b7d38e7f56a91c54eae01d1bf257cd0d19b509d0c3e748f6c1c"
+    },
+    {
+      "file": "packages/contracts/src/file-comparison.ts",
+      "sha256": "56fad997e79a346fd042abc9f47b7e86e8d308ef6586a9693f93e5fb24e12650"
+    },
+    {
+      "file": "mobile/src/app.config.ts",
+      "sha256": "eabf3799de258b2b876683fbed0f502d08d0dcf0fa8edb7b447ace32002a583e"
+    }
+  ],
+  "private_log_sha256": "f5761d8081534de2a452850c4cc062c19b7609fe9fed0d265a9e73546bedccb7",
+  "recorder_sha256": "3caec26bdd8b7b645c1adca325e72514b84fd96d881d0a026164e8f1770c6700",
+  "replaces_failed_step": null,
+  "new_apk": false,
+  "formal_android_acceptance": false
+}

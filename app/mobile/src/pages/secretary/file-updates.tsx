@@ -15,7 +15,7 @@ export function ConversationFileUpdate({ conversation: c, disabled, value, onCha
   return <View><Text className='cp-row-title'>本次准确文件更新</Text>{value ? <><Text className='cp-paragraph cp-code' selectable>基础文件版本：{value.base_version_id} · 文件修订 {value.expected_file_version}</Text><Text className='cp-small cp-paragraph'>本次消息只授权更新这一文件；按现行基础版本生成可恢复的新版本。</Text><Action secondary disabled={disabled} onClick={() => { onChange(undefined); setOpen(false); }}>移除本次文件更新</Action></> : !open ? <Action secondary disabled={disabled} onClick={() => { setOpen(true); setPicking('files'); }}>选择准确文件更新</Action> : <>
     <Notice error={error ?? current.error} /><Action secondary disabled={disabled} onClick={() => setPicking('files')}>{file ? '更换文件：' + file.name : '选择本次更新文件'}</Action>{current.loading && <Busy />}
     {current.value && !current.error && <><Text className='cp-paragraph'>{current.value.name} · 文件修订 {current.value.version}</Text><Action secondary disabled={disabled} onClick={() => setPicking('versions')}>{version ? '更换基础版本：版本 ' + version.seq : '选择本次更新基础版本'}</Action></>}
-    <Text className='cp-small cp-paragraph'>支持已扫描通过、1字节至1MiB的UTF-8文本或Markdown。选择资料后仍需填写本次修改要求并发送。</Text>
+    <Text className='cp-small cp-paragraph'>支持已扫描通过、1字节至1MiB的文本、Markdown、DOCX、XLSX或PPTX。选择资料后仍需填写本次修改要求并发送。</Text>
     <Action secondary disabled={disabled || !current.value || !!current.error || current.loading || !version} onClick={() => { try { onChange(makeFileUpdate(current.value!, version!, c.project_id)); setOpen(false); } catch (cause) { setError(new MobileError('INPUT_REQUIRED', cause instanceof Error ? cause.message : '请核对准确文件版本。')); } }}>将准确文件更新加入请求</Action><Action secondary disabled={disabled} onClick={() => setOpen(false)}>收起文件选择</Action>
   </>}</View>;
 }

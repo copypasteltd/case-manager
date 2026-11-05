@@ -1,5 +1,23 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+本轮统一客户端检查：Web **494**；共享移动 **548 + 7 = 555**（常规脚本两组240／308，加本轮7项）；运行器 **60**。Web／微信／抖音构建及Windows兼容流程Android JS构建通过，后者核对194个当前应用模块；原中止构建保留为失败记录。后台、实际页面及完整边界以157核验文档为准。
+
+**增量157 · 整批功能开发与统一调试 / Batch functional implementation**
+
+按全部23编号先完成本轮功能代码，再统一检查和集中修复。新增准确原件Office更新／恢复、Skill发布与暂停台账、秘书草稿永久放弃恢复及已知对象清理、TG八类请求转门户本人授权，以及准确结果片段独立审核回群。Web／微信／抖音／Android共享源码同步；file-update **1.6.0 draft**，全部八项Skill仍待真实评估。
+
+源码157目标结构117；**rc.8／开发APK154仍固定业务153／结构113，不含155–157**。八个旧冻结版不动，不将源码／JS构建视为新APK或生产发布。23个整体工作包、真实服务配置与正式验收继续开放；资料按用户答复后续提供。
+
+English: Complete the whole declared code wave before unified checks and debugging. Exact Office edits, human Skill release decisions, stopped-draft recovery abandonment, portal-authorized TG tasks and separately reviewed original-group results share ordinary authorization and immutable receipts. All eight Skills remain drafts; source157/schema117 is separate from immutable rc.8/APK154/business153/schema113.
+
+[方案与使用 / Design and use](development/157-batch-functional-closure.md) · [本轮验证 / Checks](quality/157-batch-verification.md) · [全部23项 / Remaining work](delivery/05-functional-closure-157.md)
+
+[本轮真实页面截图、无声录屏与截图导览 GIF](media/batch-round-157/README.md)；均为隔离合成数据，并已关闭自建浏览器和临时服务。
+
+以下156及更早内容保留各自版本上下文。 / Earlier entries retain their original version context.
+
+
+
 **增量156 · 秘书新建 Word／Excel／PPT / Post-freeze source update**
 
 会话可固定目录、文件名和格式，由秘书生成真实 DOCX／XLSX／PPTX，沿用授权、草稿校验、扫描和正式第一版提交；回执直接进入准确文件版本。支持固定配方恢复，复杂既有Office更新继续待完成。Web／微信／抖音／Android共享源码同步，file-update **1.5.0 draft**；八项Skill仍未正式验收。

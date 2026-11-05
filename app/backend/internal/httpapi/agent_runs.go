@@ -40,6 +40,24 @@ func eventPosition(r *http.Request) (int64, int, error) {
 func (s *Server) agentRunRoutes(mux *http.ServeMux) {
 	service := &agent.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
 	s.agentBudgetRoutes(mux, service)
+	mux.HandleFunc("GET /v1/me/telegram/requests/{id}/outbound-preview", read(s, "TelegramDisclosurePreviewResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if len(r.URL.Query()) != 0 {
+			return nil, core.Invalid("filters", "不接受额外条件")
+		}
+		return service.TelegramDisclosurePreview(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("POST /v1/me/telegram/requests/{id}/outbound-review", command(s, "TelegramDisclosureInput", "TelegramDisclosureReceiptResponse", func(ctx context.Context, c core.Command, r *http.Request, in agent.TelegramDisclosureInput) (core.Result, error) {
+		return service.ApproveTelegramDisclosure(ctx, c, r.PathValue("id"), in)
+	}))
+	mux.HandleFunc("GET /v1/me/telegram/requests/{id}/handoff", read(s, "TelegramHandoffRequestResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if len(r.URL.Query()) != 0 {
+			return nil, core.Invalid("filters", "不接受额外条件")
+		}
+		return service.TelegramHandoffRequest(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("POST /v1/runs/{id}/file-drafts/{draft}/abandon-recovery", command(s, "AgentFileAbandonmentInput", "AgentFileAbandonmentResponse", func(ctx context.Context, c core.Command, r *http.Request, in agent.FileAbandonmentInput) (core.Result, error) {
+		return service.AbandonFileRecovery(ctx, c, r.PathValue("id"), r.PathValue("draft"), in)
+	}))
 	mux.HandleFunc("GET /v1/conversations/{id}/runtime-options", read(s, "RuntimeOptionsResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.RuntimeOptions(ctx, a, r.PathValue("id"))
 	}))

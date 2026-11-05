@@ -1,5 +1,22 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Current unified client checks: **494 Web**, **548 + 7 = 555 shared-mobile** (240/308 in the regular script plus 7 focused cases), **60 runtime**. Web, WeChat and Douyin builds pass. The disclosed native Windows adapter compiles Android JS and verifies 194 current application modules; earlier interrupted builds remain failed records. This does not create an APK. See the 157 verification record for backend/UI scope and limitations.
+
+**Increment157 · Whole-wave implementation before unified checks/debugging**
+
+The complete declared code wave covers original-bound Office updates/recovery, Skill assessment/publication/pause/rollback records, permanent abandonment of stopped draft recovery, eight-task TG intake with explicit portal authorization, and independently reviewed result fragments sent only to the original group. Ordinary business permissions, current identity checks, exact hashes and immutable receipts remain mandatory.
+
+Use the runtime administration page to inspect an installed profile and record reviewed release decisions; a published decision needs your own successful assessment runs. In a private project conversation, select the exact TG request and ordinary business authorization before sending. After completion, select the exact result fragment on the personal TG page and separately approve group disclosure. Unknown delivery results require human reconciliation. Abandoning a stopped draft permanently prevents future recovery and only makes known objects eligible for the ordinary >=24h cleanup process.
+
+Source157 targets schema117 through normal migrations114–117. All eight Skills remain drafts. Eight frozen releases are immutable; rc.8/developmentAPK154 remain business153/schema113, excluding155–157. No actual server, cloud, Codex, Bot, miniapp publishing or production acceptance is claimed. All23 packages and the five exclusions remain explicit.
+
+[Design and usage](development/157-batch-functional-closure.md) · [Checks](quality/157-batch-verification.md) · [All remaining packages](delivery/05-functional-closure-157.md)
+
+[Current screenshots, silent recordings and screenshot-tour GIFs](media/batch-round-157/README.md) use isolated synthetic records. All owned browser contexts and temporary services are closed after capture.
+
+Earlier entries retain their original version context.
+
+
 **Increment156 · Controlled Word/Excel/PowerPoint creation**
 
 Choose an exact authorized directory/revision, filename and format in a secretary conversation. The existing L1 creation authorization drives real DOCX/XLSX/PPTX generation, ordinary draft checks/scan/formal first-version commit, exact recipe recovery and a link to the formal version. Existing complex Office updates remain open. Web, WeChat, Douyin and Android shared source gain the same controls. File-update1.5.0 and all eight Skills remain drafts requiring actual installation/model acceptance.

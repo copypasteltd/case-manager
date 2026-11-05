@@ -144,6 +144,13 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 	var snapshots []SourceSnapshot
 	var writeOutput map[string]any
 	switch tool {
+	case "read_office_workspace":
+		var raw json.RawMessage
+		var handled bool
+		content, snapshots, raw, handled, err = s.executionOfficeWorkspace(ctx, tx, st, lease, key, args, work)
+		if handled || err != nil {
+			return raw, err
+		}
 	case "list_project_catalog":
 		content, snapshots, err = s.executionProjectCatalog(ctx, tx, st, lease, args)
 	case "read_finance_summary":

@@ -147,6 +147,13 @@ func NotificationRun(ctx context.Context, tx pgx.Tx, a core.Actor, id string) (R
 	} else if p != nil {
 		r.PostWrite = &p.PostWriteView
 	}
+	var handoff TelegramHandoffInput
+	err = tx.QueryRow(ctx, "SELECT inbox_id,request_version,request_sha256,reviewed FROM telegram_human_handoffs WHERE org_id=$1 AND run_id=$2", a.OrgID, id).Scan(&handoff.RequestID, &handoff.ExpectedVersion, &handoff.RequestSHA256, &handoff.Reviewed)
+	if err == nil {
+		r.TelegramHandoff = &handoff
+	} else if err != pgx.ErrNoRows {
+		return Run{}, err
+	}
 	return r, nil
 }
 func (s *Service) Messages(ctx context.Context, a core.Actor, id, cursor string, limit int) (core.Page[Message], error) {

@@ -5,7 +5,7 @@ export type TelegramInboxDetails = S['TelegramInboxOperationDetails'];
 export type TelegramInboxEvent = S['TelegramInboxOperationEvent'];
 export type TelegramInboxWithdraw = S['TelegramInboxWithdraw'];
 export const telegramInboxStates = { awaiting_executor: '等待秘书调度', dispatched: '已创建秘书任务', withdrawn: '已撤回' } as const;
-export const telegramInboxSkills = { 'project-briefing': '项目简报', 'incident-summary': '服务事件摘要' } as const;
+export const telegramInboxSkills = { 'project-create':'新建项目（门户授权）','project-update':'更新项目（门户授权）','file-update':'文件处理（门户授权）','information-organize':'信息整理（门户授权）','oa-assist':'OA辅助（门户授权）','subscription-review':'订阅审阅（门户授权）', 'project-briefing': '项目简报', 'incident-summary': '服务事件摘要' } as const;
 export const telegramInboxSources = { accepted: '实际接收', transition: '实际状态变化', retained_baseline: '启用台账时的现状快照' } as const;
 export function telegramInboxReason(code: string) {
   const values: Record<string, string> = {

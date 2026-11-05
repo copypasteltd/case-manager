@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-11-05T22:48:28.653Z",
+  "finished_at": "2026-11-05T22:49:01.882Z",
+  "checks": [
+    "Real native HTTP/PG pilot decision through current Web UI; no production publication claim"
+  ],
+  "source_count": 1121,
+  "source_sha256": "319b244510497fc77daa1784078880e8741b48afc611ea4c75312928fb7d87f8",
+  "source_after_sha256": "319b244510497fc77daa1784078880e8741b48afc611ea4c75312928fb7d87f8",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('此准确草稿已被本人放弃恢复。').first() to be visible\u001b[22m\n",
+  "scope": "Web with real native API/PG, Office update/recovery governance and explicit TG portal authorization/disclosure; controlled model driver and synthetic storage, no real provider/model/device",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "b5b67fdc15a130aacfcd6d25500a45fefd1a11f53c95500e1978a182554a5b5d",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "b5b67fdc15a130aacfcd6d25500a45fefd1a11f53c95500e1978a182554a5b5d",
+  "build_source_unchanged": true
+}

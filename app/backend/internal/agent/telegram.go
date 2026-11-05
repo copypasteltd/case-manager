@@ -47,7 +47,7 @@ func telegramExecutionAuthority(ctx context.Context, tx pgx.Tx, st executionStat
 		if st.Conversation.Type == "telegram" {
 			return runtimeFailure("TELEGRAM_ORIGIN_INVALID")
 		}
-		return nil
+		return telegramHandoffAuthority(ctx, tx, st)
 	}
 	if st.Conversation.Type != "telegram" {
 		return runtimeFailure("TELEGRAM_ORIGIN_INVALID")
@@ -78,7 +78,7 @@ func (s *Service) DispatchTelegramOnce(ctx context.Context, org, bot string) (bo
 		return false, core.Invalid("bot", "请配置准确组织和数字Bot")
 	}
 	var pending bool
-	if err = s.DB.QueryRow(ctx, `SELECT EXISTS(SELECT 1 FROM telegram_inbox WHERE org_id=$1 AND bot_id=$2 AND kind='request' AND state='awaiting_executor' AND dispatch_after<=clock_timestamp())`, org, bot).Scan(&pending); err != nil || !pending {
+	if err = s.DB.QueryRow(ctx, `SELECT EXISTS(SELECT 1 FROM telegram_inbox WHERE org_id=$1 AND bot_id=$2 AND kind='request' AND requested_skill_id IN ('project-briefing','incident-summary') AND state='awaiting_executor' AND dispatch_after<=clock_timestamp())`, org, bot).Scan(&pending); err != nil || !pending {
 		return false, err
 	}
 	tx, err := s.DB.Begin(ctx)
@@ -91,7 +91,7 @@ func (s *Service) DispatchTelegramOnce(ctx context.Context, org, bot string) (bo
 		return false, err
 	}
 	err = tx.QueryRow(ctx, `SELECT id,requester_id,actor_auth_version,channel_id,channel_version,binding_id,requested_skill_id,request_text,received_at
-  FROM telegram_inbox WHERE org_id=$1 AND bot_id=$2 AND kind='request' AND state='awaiting_executor'
+  FROM telegram_inbox WHERE org_id=$1 AND bot_id=$2 AND kind='request' AND requested_skill_id IN ('project-briefing','incident-summary') AND state='awaiting_executor'
    AND dispatch_after<=clock_timestamp() ORDER BY received_at,id LIMIT 1 FOR UPDATE`, org, bot).Scan(&in.ID, &in.Actor.UserID, &in.Actor.AuthVersion, &in.ChannelID, &in.ChannelVersion, &in.BindingID, &in.Skill, &in.Message, &in.ReceivedAt)
 	if err == pgx.ErrNoRows {
 		return false, nil
@@ -146,7 +146,7 @@ func (s *Service) DispatchTelegramOnce(ctx context.Context, org, bot string) (bo
 }
 
 func (s *Service) dispatchTelegram(ctx context.Context, tx pgx.Tx, in telegramRequest) error {
-	profile, err := scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND skill_id=$2 AND state='active' AND telegram_configuration_sha256 IS NOT NULL", in.Actor.OrgID, in.Skill))
+	profile, err := scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND skill_id=$2 AND state='active' AND agent_profile_release_enabled(org_id,id) AND telegram_configuration_sha256 IS NOT NULL", in.Actor.OrgID, in.Skill))
 	if err != nil {
 		if core.PublicError(err).Status == 404 {
 			return core.Fail(503, "RUNTIME_UNAVAILABLE", "指定任务尚无有效执行配置")

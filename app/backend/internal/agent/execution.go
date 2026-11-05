@@ -141,7 +141,7 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		if !slices.Equal(members, st.Run.audience) {
 			return fail(runtimeFailure("RUNTIME_AUTHORITY_CHANGED"))
 		}
-		st.Profile, err = scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2 AND state='active'", lease.OrgID, st.Run.ProfileID))
+		st.Profile, err = scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2 AND state='active' AND agent_profile_release_enabled(org_id,id)", lease.OrgID, st.Run.ProfileID))
 		if err != nil {
 			return fail(runtimeFailure("RUNTIME_PROFILE_RETIRED"))
 		}

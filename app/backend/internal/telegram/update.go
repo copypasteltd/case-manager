@@ -171,7 +171,7 @@ func triggered(m message, b BotConfig) bool {
 		case "bot_command":
 			if e.Offset == 0 {
 				command, target, has := strings.Cut(text, "@")
-				if (command == "/ask" || command == "/brief" || command == "/incident") && (!has || strings.EqualFold(target, b.Username)) {
+				if (command == "/ask" || command == "/brief" || command == "/incident" || command == "/task") && (!has || strings.EqualFold(target, b.Username)) {
 					return true
 				}
 			}
@@ -213,6 +213,12 @@ func requestSkill(m message, b BotConfig, c Channel) (string, bool) {
 		command, target, has := strings.Cut(text, "@")
 		if has && !strings.EqualFold(target, b.Username) {
 			continue
+		}
+		if command == "/task" {
+			fields := strings.Fields(m.Text)
+			if len(fields) >= 2 {
+				selected = fields[1]
+			}
 		}
 		if command == "/brief" {
 			selected = "project-briefing"

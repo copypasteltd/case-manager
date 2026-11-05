@@ -1,5 +1,15 @@
 # 代码实施与验证台账
 
+**增量157 · 完整代码波次后统一调试 / Whole code wave before unified debugging**
+
+全部23个编号已复核并绑定实际代码位置；本轮九项代码任务完成后再统一检查。补齐准确原件Office更新、Skill发布控制、停止草稿恢复放弃与已知对象清理衔接、TG八类请求门户授权，以及独立审核结果回原群。项目可选字段清空和四端共享入口同步。
+
+当前原生六项顶层检查产生52条结果记录；Web494、共享移动555、运行器60，客户端构建与实际页面证据分别绑定源码。保留全部首次失败、集中修复和复验记录；不把23个整体工作包或八项draft Skill记为验收完成。
+
+源码157／目标结构117；普通迁移114–117，原PG100/API保留。八个冻结版不变，rc.8／APK154仍业务153／结构113；本轮无新APK。真实资料按用户回复后续提供。
+
+[本轮与全部23项](05-functional-closure-157.md) · [设计与使用](../development/157-batch-functional-closure.md) · [统一核验](../quality/157-batch-verification.md) · [当前页面媒体](../media/batch-round-157/README.md)
+
 **增量156 · Office新建子闭环 / Post-freeze functional delivery**
 
 秘书已可按员工固定目录／名称／格式生成真实DOCX／XLSX／PPTX，沿用授权／扫描／提交并准确恢复，四端共享源码及正式版本入口同步。原生38条结果、Web7／共享移动4、运行器60和五项实际Web通过；复杂既有Office更新、真实模型及八项Skill正式验收继续开放。

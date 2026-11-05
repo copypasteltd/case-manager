@@ -43,14 +43,15 @@ type fileIntentRecord struct {
 	RecoveryRecord                                     *fileRecoveryRecord
 }
 type FileDraftView struct {
-	ID              string              `json:"id"`
-	ContentSHA256   string              `json:"content_sha256"`
-	SizeBytes       string              `json:"size_bytes"`
-	Diff            files.AgentTextDiff `json:"diff"`
-	State           string              `json:"state"`
-	ScanState       string              `json:"scan_state"`
-	PlanHash        *string             `json:"plan_hash"`
-	ResultVersionID *string             `json:"result_version_id"`
+	ID                string              `json:"id"`
+	RecoveryAbandoned bool                `json:"recovery_abandoned"`
+	ContentSHA256     string              `json:"content_sha256"`
+	SizeBytes         string              `json:"size_bytes"`
+	Diff              files.AgentTextDiff `json:"diff"`
+	State             string              `json:"state"`
+	ScanState         string              `json:"scan_state"`
+	PlanHash          *string             `json:"plan_hash"`
+	ResultVersionID   *string             `json:"result_version_id"`
 }
 
 func prepareFileIntent(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, runID string, in FileUpdateInput, members []string, request string) (*fileIntentRecord, error) {
@@ -66,13 +67,13 @@ func prepareFileIntent(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversat
 	if f.Version != in.ExpectedFileVersion {
 		return nil, core.Conflict()
 	}
-	doc, err := contextFile(ctx, tx, ai, c, ContextSource{Type: "file", ID: in.FileID, VersionID: &in.BaseVersionID}, members)
+	doc, err := contextFileUpdate(ctx, tx, ai, c, ContextSource{Type: "file", ID: in.FileID, VersionID: &in.BaseVersionID}, members)
 	if err != nil {
 		return nil, err
 	}
 	media := doc.Evidence[0].MediaType
-	if media != "text/plain" && media != "text/markdown" {
-		return nil, core.Invalid("file_update", "首期秘书编辑支持UTF-8文本与Markdown；其他格式需独立适配")
+	if media != "text/plain" && media != "text/markdown" && files.AgentOfficeKind(media) == "" {
+		return nil, core.Invalid("file_update", "秘书编辑支持UTF-8文本、Markdown及有界DOCX/XLSX/PPTX原件单位编辑")
 	}
 	sha, err := documentDigest(doc)
 	if err != nil {
@@ -156,7 +157,7 @@ func fileIntentSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversati
 	if i.Mode == "create" {
 		return fileCreateSource(ctx, tx, a, c, i, members, audience)
 	}
-	if _, err = contextFile(ctx, tx, a, c, ContextSource{Type: "file", ID: i.FileID, VersionID: &i.BaseVersionID}, members); err != nil {
+	if _, err = contextFileUpdate(ctx, tx, a, c, ContextSource{Type: "file", ID: i.FileID, VersionID: &i.BaseVersionID}, members); err != nil {
 		return out, err
 	}
 	if core.Digest([]byte(i.Intent)) != i.IntentSHA256 {
@@ -207,7 +208,7 @@ func (s *Service) executionFileIntent(ctx context.Context, tx pgx.Tx, st executi
 	return i, nil
 }
 func fileUpdateViewRead(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) (FileUpdateView, error) {
-	rows, err := tx.Query(ctx, `SELECT d.id,d.content_sha256,d.size_bytes::text,d.diff,u.state,u.scan_state,p.plan_hash,u.committed_version_id
+	rows, err := tx.Query(ctx, `SELECT d.id,d.content_sha256,d.size_bytes::text,d.diff,u.state,u.scan_state,p.plan_hash,u.committed_version_id,EXISTS(SELECT 1 FROM agent_file_abandonments ab WHERE ab.org_id=d.org_id AND ab.draft_id=d.id)
  FROM agent_file_drafts d JOIN upload_sessions u ON u.org_id=d.org_id AND u.id=d.id
  LEFT JOIN agent_file_proposals p ON p.org_id=d.org_id AND p.draft_id=d.id WHERE d.org_id=$1 AND d.run_id=$2 ORDER BY d.created_at,d.id`, i.OrgID, i.RunID)
 	if err != nil {
@@ -219,7 +220,7 @@ func fileUpdateViewRead(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) (Fi
 	for rows.Next() {
 		var d FileDraftView
 		var diff []byte
-		if err = rows.Scan(&d.ID, &d.ContentSHA256, &d.SizeBytes, &diff, &d.State, &d.ScanState, &d.PlanHash, &d.ResultVersionID); err != nil {
+		if err = rows.Scan(&d.ID, &d.ContentSHA256, &d.SizeBytes, &diff, &d.State, &d.ScanState, &d.PlanHash, &d.ResultVersionID, &d.RecoveryAbandoned); err != nil {
 			return view, err
 		}
 		if err = json.Unmarshal(diff, &d.Diff); err != nil {

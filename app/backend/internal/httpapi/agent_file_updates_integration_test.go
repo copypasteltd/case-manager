@@ -80,8 +80,9 @@ func TestAgentFileUpdates(t *testing.T) {
 		}
 		defer r.Body.Close()
 		var out map[string]json.RawMessage
-		if json.NewDecoder(io.LimitReader(r.Body, 120001)).Decode(&out) != nil || r.StatusCode != 200 {
-			t.Fatal("file update bridge response invalid")
+		decodeErr := json.NewDecoder(io.LimitReader(r.Body, 120001)).Decode(&out)
+		if decodeErr != nil || r.StatusCode != 200 {
+			t.Fatalf("file update bridge response invalid: status=%d decode=%v public_error=%s", r.StatusCode, decodeErr, out["error"])
 		}
 		return out
 	}
@@ -137,7 +138,7 @@ func TestAgentFileUpdates(t *testing.T) {
 			t.Fatal(e)
 		}
 		lease.Job = *j
-		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}}
+		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/read_office_workspace", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}}
 		proof := rpc(credential, agentworker.ControlPath+"confinement", native)
 		if len(proof["error"]) > 0 {
 			t.Fatal("file tool set confinement rejected")

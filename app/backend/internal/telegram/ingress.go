@@ -215,6 +215,9 @@ func (s *Service) classify(ctx context.Context, tx pgx.Tx, b BotConfig, u update
 	tgID, chatID := strconv.FormatInt(m.From.ID, 10), strconv.FormatInt(m.Chat.ID, 10)
 	out = inboxRecord{kind: "request", state: "awaiting_executor", reason: "executor_not_connected", requester: &userID, binding: &binding.ID, authVersion: &authVersion, channel: &channel.ID, channelVersion: &channel.Version, telegramUser: &tgID, chat: &chatID, topic: &m.Topic, messageID: &m.ID, text: &text}
 	out.skill = &skill
+	if skill != "project-briefing" && skill != "incident-summary" {
+		out.reason = "human_authorization_required"
+	}
 	return out, nil
 }
 func (s *Service) Accept(ctx context.Context, botID, secret string, raw []byte) error {

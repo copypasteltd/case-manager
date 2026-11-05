@@ -41,43 +41,45 @@ type SourceSnapshot struct {
 	SHA256          string `json:"sha256"`
 }
 type RunCreate struct {
-	ExpectedVersion        int64              `json:"expected_version"`
-	ContextSecurityVersion int64              `json:"context_security_version"`
-	ProfileID              string             `json:"profile_id"`
-	ClientMessageID        string             `json:"client_message_id"`
-	Message                string             `json:"message"`
-	SkillID                string             `json:"skill_id,omitempty"`
-	ContextRefs            []SourceReference  `json:"context_refs,omitempty"`
-	Mutation               *MutationInput     `json:"mutation,omitempty"`
-	OARequest              *OARequestInput    `json:"oa_request,omitempty"`
-	PostWrite              *PostWriteInput    `json:"post_write,omitempty"`
-	FileUpdate             *FileUpdateInput   `json:"file_update,omitempty"`
-	FileCreate             *FileCreateInput   `json:"file_create,omitempty"`
-	FileRecovery           *FileRecoveryInput `json:"file_recovery,omitempty"`
-	ContractBody           *ContractBodyInput `json:"contract_body,omitempty"`
+	TelegramHandoff        *TelegramHandoffInput `json:"telegram_handoff,omitempty"`
+	ExpectedVersion        int64                 `json:"expected_version"`
+	ContextSecurityVersion int64                 `json:"context_security_version"`
+	ProfileID              string                `json:"profile_id"`
+	ClientMessageID        string                `json:"client_message_id"`
+	Message                string                `json:"message"`
+	SkillID                string                `json:"skill_id,omitempty"`
+	ContextRefs            []SourceReference     `json:"context_refs,omitempty"`
+	Mutation               *MutationInput        `json:"mutation,omitempty"`
+	OARequest              *OARequestInput       `json:"oa_request,omitempty"`
+	PostWrite              *PostWriteInput       `json:"post_write,omitempty"`
+	FileUpdate             *FileUpdateInput      `json:"file_update,omitempty"`
+	FileCreate             *FileCreateInput      `json:"file_create,omitempty"`
+	FileRecovery           *FileRecoveryInput    `json:"file_recovery,omitempty"`
+	ContractBody           *ContractBodyInput    `json:"contract_body,omitempty"`
 }
 type Run struct {
-	ID                string            `json:"id"`
-	Version           int64             `json:"version"`
-	ConversationID    string            `json:"conversation_id"`
-	ActorID           string            `json:"actor_id"`
-	ProfileID         string            `json:"profile_id"`
-	ClientMessageID   string            `json:"client_message_id"`
-	State             string            `json:"state"`
-	LastEventSeq      int64             `json:"last_event_seq"`
-	CancelRequestedAt *time.Time        `json:"cancel_requested_at"`
-	SafeErrorCode     *string           `json:"safe_error_code"`
-	ExpiresAt         time.Time         `json:"expires_at"`
-	CreatedAt         time.Time         `json:"created_at"`
-	UpdatedAt         time.Time         `json:"updated_at"`
-	CanCancel         bool              `json:"can_cancel"`
-	Outcome           *string           `json:"outcome"`
-	Mutation          *MutationView     `json:"mutation,omitempty"`
-	OARequest         *OARequestView    `json:"oa_request,omitempty"`
-	PostWrite         *PostWriteView    `json:"post_write,omitempty"`
-	FileUpdate        *FileUpdateView   `json:"file_update,omitempty"`
-	FileCreate        *FileCreateView   `json:"file_create,omitempty"`
-	ContractBody      *ContractBodyView `json:"contract_body,omitempty"`
+	TelegramHandoff   *TelegramHandoffInput `json:"telegram_handoff,omitempty"`
+	ID                string                `json:"id"`
+	Version           int64                 `json:"version"`
+	ConversationID    string                `json:"conversation_id"`
+	ActorID           string                `json:"actor_id"`
+	ProfileID         string                `json:"profile_id"`
+	ClientMessageID   string                `json:"client_message_id"`
+	State             string                `json:"state"`
+	LastEventSeq      int64                 `json:"last_event_seq"`
+	CancelRequestedAt *time.Time            `json:"cancel_requested_at"`
+	SafeErrorCode     *string               `json:"safe_error_code"`
+	ExpiresAt         time.Time             `json:"expires_at"`
+	CreatedAt         time.Time             `json:"created_at"`
+	UpdatedAt         time.Time             `json:"updated_at"`
+	CanCancel         bool                  `json:"can_cancel"`
+	Outcome           *string               `json:"outcome"`
+	Mutation          *MutationView         `json:"mutation,omitempty"`
+	OARequest         *OARequestView        `json:"oa_request,omitempty"`
+	PostWrite         *PostWriteView        `json:"post_write,omitempty"`
+	FileUpdate        *FileUpdateView       `json:"file_update,omitempty"`
+	FileCreate        *FileCreateView       `json:"file_create,omitempty"`
+	ContractBody      *ContractBodyView     `json:"contract_body,omitempty"`
 	audience          []string
 }
 
@@ -156,7 +158,7 @@ func (s *Service) RuntimeOptions(ctx context.Context, a core.Actor, id string) (
 		reason = "CONTEXT_UNAVAILABLE"
 	}
 	if reason == "" {
-		rows, e := tx.Query(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND state='active' ORDER BY skill_id LIMIT 8", a.OrgID)
+		rows, e := tx.Query(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND state='active' AND agent_profile_release_enabled(org_id,id) ORDER BY skill_id LIMIT 8", a.OrgID)
 		if e != nil {
 			return out, e
 		}
@@ -333,6 +335,9 @@ func sourceSnapshots(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 	return out, nil
 }
 func (s *Service) CreateRun(ctx context.Context, command core.Command, id string, in RunCreate) (core.Result, error) {
+	if in.FileRecovery != nil || in.TelegramHandoff != nil {
+		command.ExclusiveOrganizationLock = true
+	}
 	if !core.ValidID(in.ProfileID) || !core.ValidID(in.ClientMessageID) || core.RequireVersion(in.ExpectedVersion) != nil || core.RequireVersion(in.ContextSecurityVersion) != nil || len([]rune(strings.TrimSpace(in.Message))) < 1 || len([]rune(in.Message)) > 20000 {
 		return core.Result{}, core.Invalid("message", "请核对会话版本、执行配置及1至20000字消息")
 	}
@@ -366,7 +371,7 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		}
 		// Commands already holds the organization shared lock. Profile retirement
 		// takes its exclusive counterpart; the application only needs SELECT.
-		profile, err := scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2 AND state='active'", command.Actor.OrgID, in.ProfileID))
+		profile, err := scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2 AND state='active' AND agent_profile_release_enabled(org_id,id)", command.Actor.OrgID, in.ProfileID))
 		if err != nil {
 			if errors.Is(err, pgx.ErrNoRows) || core.PublicError(err).Status == 404 {
 				return core.Result{}, core.Fail(503, "RUNTIME_UNAVAILABLE", "秘书执行服务尚未配置或当前配置已停用")
@@ -466,6 +471,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		if in.PostWrite != nil {
 			inputParts = append(inputParts, in.PostWrite)
 		}
+		if in.TelegramHandoff != nil {
+			inputParts = append(inputParts, in.TelegramHandoff)
+		}
 		payload, _ := json.Marshal(inputParts)
 		hash := core.Digest(payload)
 		old, e := scanRun(tx.QueryRow(ctx, "SELECT "+runColumns+" FROM agent_runs WHERE org_id=$1 AND conversation_id=$2 AND actor_id=$3 AND client_message_id=$4", command.Actor.OrgID, id, command.Actor.UserID, in.ClientMessageID))
@@ -516,6 +524,7 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				}
 				assignFileIntent(&old, intent, view)
 			}
+			old.TelegramHandoff = in.TelegramHandoff
 			return core.Result{Status: 202, Data: old, Event: core.Event{Type: "agent.run.reconciled", ResourceType: "agent_run", ResourceID: old.ID, Version: old.Version, Payload: map[string]any{"conversation_id": id}}}, nil
 		}
 		if core.PublicError(e).Status != 404 {
@@ -595,6 +604,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		if err != nil {
 			return core.Result{}, err
 		}
+		if err = recordTelegramHandoff(ctx, tx, command.Actor, c, runID, in.TelegramHandoff); err != nil {
+			return core.Result{}, err
+		}
 		if postWrite != nil {
 			if err = insertPostWrite(ctx, tx, postWrite); err != nil {
 				return core.Result{}, err
@@ -633,6 +645,7 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			return core.Result{}, err
 		}
 		r.CanCancel = true
+		r.TelegramHandoff = in.TelegramHandoff
 		if contractBody != nil {
 			r.ContractBody = &contractBody.ContractBodyView
 		}

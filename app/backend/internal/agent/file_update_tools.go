@@ -13,6 +13,7 @@ import (
 
 type executionIO struct {
 	FileRead *fileReadPrepared
+	Office   *officeReadPrepared
 	Draft    *fileDraftPrepared
 }
 type fileDraftPrepared struct {
@@ -27,13 +28,14 @@ type fileDraftPrepared struct {
 	Finalized bool
 }
 type fileDraftArguments struct {
-	FileID        string                `json:"file_id"`
-	BaseVersionID string                `json:"base_version_id"`
-	Edits         []files.AgentTextEdit `json:"edits"`
-	FolderID      string                `json:"folder_id,omitempty"`
-	Name          string                `json:"name,omitempty"`
-	Content       *string               `json:"content,omitempty"`
-	Document      *files.OfficeDocument `json:"document,omitempty"`
+	FileID        string                      `json:"file_id"`
+	BaseVersionID string                      `json:"base_version_id"`
+	Edits         []files.AgentTextEdit       `json:"edits"`
+	FolderID      string                      `json:"folder_id,omitempty"`
+	Name          string                      `json:"name,omitempty"`
+	Content       *string                     `json:"content,omitempty"`
+	Document      *files.OfficeDocument       `json:"document,omitempty"`
+	Office        *files.AgentOfficeEditInput `json:"office,omitempty"`
 }
 type fileProposalArguments struct {
 	FileID        string `json:"file_id"`
@@ -45,7 +47,7 @@ type fileProposalArguments struct {
 }
 
 func fileUpdateTool(tool string) bool {
-	return tool == "recover_file_draft" || tool == "create_file_draft" || tool == "propose_file_update" || tool == "commit_file_update" || tool == "stage_file_create" || tool == "propose_file_create" || tool == "commit_file_create"
+	return tool == "read_office_workspace" || tool == "recover_file_draft" || tool == "create_file_draft" || tool == "propose_file_update" || tool == "commit_file_update" || tool == "stage_file_create" || tool == "propose_file_create" || tool == "commit_file_create"
 }
 func fileUpdateSource(i *fileIntentRecord) SourceSnapshot {
 	return SourceSnapshot{SourceReference: SourceReference{Type: fileIntentSourceType(i), ID: i.RunID}, ResourceVersion: 1, SHA256: i.IntentSHA256}
@@ -90,11 +92,14 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 	} else if i.Recovery != nil {
 		return nil, nil, nil, false, core.Fail(409, "FILE_RECOVERY_EXACT_BYTES_REQUIRED", "恢复请求只允许重新准备已选草稿的准确内容，不能改写正文")
 	}
-	if creating && (tool != "stage_file_create" && tool != "recover_file_draft" || in.FolderID != i.Target.FolderID || in.Name != i.Target.Name || (in.Content == nil && in.Document == nil) || (in.Content != nil && in.Document != nil) || len(in.Edits) != 0 || in.FileID != "" || in.BaseVersionID != "") || !creating && (tool != "create_file_draft" && tool != "recover_file_draft" || in.FileID != i.FileID || in.BaseVersionID != i.BaseVersionID || (in.Content != nil || in.Document != nil) || in.FolderID != "" || in.Name != "") {
+	if creating && (tool != "stage_file_create" && tool != "recover_file_draft" || in.FolderID != i.Target.FolderID || in.Name != i.Target.Name || (in.Content == nil && in.Document == nil) || (in.Content != nil && in.Document != nil) || len(in.Edits) != 0 || in.Office != nil || in.FileID != "" || in.BaseVersionID != "") || !creating && (tool != "create_file_draft" && tool != "recover_file_draft" || in.FileID != i.FileID || in.BaseVersionID != i.BaseVersionID || (in.Content != nil || in.Document != nil) || in.FolderID != "" || in.Name != "") {
 		return nil, nil, nil, false, core.Fail(409, "FILE_UPDATE_SCOPE_REQUIRED", "草稿类型、位置和名称必须匹配本次发送范围")
 	}
 	if creating && ((files.AgentOfficeKind(i.Target.MediaType) != "") != (in.Document != nil)) {
 		return nil, nil, nil, false, core.Invalid("document", "请按员工选定格式提供纯文本content或结构化Office document")
+	}
+	if !creating && ((files.AgentOfficeKind(i.Target.MediaType) != "") != (in.Office != nil) || in.Office != nil && len(in.Edits) != 0) {
+		return nil, nil, nil, false, core.Invalid("office", "Office更新只能提交准确工作区编辑；文本更新只能提交edits")
 	}
 	ai := st.Actor
 	ai.RunID = st.Run.ID
@@ -103,7 +108,7 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 		prepared.Hash = i.BaseSHA256
 		prepared.Source.Fingerprint = i.BaseSHA256
 	} else {
-		prepared, err = s.prepareFileRead(ctx, tx, ai, st.Conversation, ContextSource{Type: "file", ID: i.FileID, VersionID: &i.BaseVersionID}, st.Run.audience)
+		prepared, err = s.prepareFileUpdateRead(ctx, tx, st, i)
 	}
 	if err != nil {
 		return nil, nil, nil, false, err
@@ -129,6 +134,15 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 				after = *in.Content
 				diff, e = files.AgentCreateText(after)
 				in.Edits = []files.AgentTextEdit{{Text: after}}
+			}
+		} else if in.Office != nil {
+			var original, body []byte
+			var recipe string
+			original, e = s.FileText.ReadOffice(ctx, prepared.Source)
+			if e == nil {
+				body, diff, recipe, e = files.AgentEditOffice(ctx, i.Target.MediaType, original, *in.Office)
+				after = string(body)
+				in.Edits = []files.AgentTextEdit{{Text: recipe}}
 			}
 		} else {
 			var text string

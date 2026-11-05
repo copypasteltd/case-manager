@@ -123,14 +123,14 @@ function ConcernForm({ project, kind, concern, users, readonly, onClose }: { pro
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); const form = new FormData(event.currentTarget);
     const body: Record<string, unknown> = { title: form.get('title'), description: form.get('description'), owner_id: form.get('owner_id'), severity: form.get('severity') };
-    const due = inputTime(form.get('due_at')); if (due) body.due_at = due;
-    if (risk) { body.probability = form.get('probability'); body.mitigation = form.get('mitigation'); } else body.resolution = form.get('resolution');
+    const due = inputTime(form.get('due_at')); if (due) body.due_at = due; else if (concern) body.due_at = null;
+    if (risk) { if (form.get('probability')) body.probability = form.get('probability'); else if (concern) body.probability = null; body.mitigation = form.get('mitigation'); } else body.resolution = form.get('resolution');
     if (concern) { body.expected_version = concern.version; if (state !== concern.state) { body.state = state; body.reason = form.get('reason'); } }
     mutation.mutate(body);
   }
   return <Dialog title={(concern ? '查看与跟进' : '登记') + label} onClose={onClose} busy={mutation.isPending}><form onSubmit={submit}><ErrorNotice error={mutation.error} />{concern?.issue_id && <p className="notice neutral">此风险已生成关联问题，请到项目的问题列表继续跟进。</p>}<fieldset disabled={frozen || mutation.isPending} className="form-fieldset">
     <Field label={label + '标题'}><input name="title" required maxLength={200} defaultValue={concern?.title} autoFocus /></Field><Field label="情况说明"><textarea name="description" rows={3} required maxLength={20000} defaultValue={concern?.description} /></Field><div className="form-grid"><Field label="负责人"><select name="owner_id" required defaultValue={concern?.owner_id ?? project.owner_id}>{users.filter(user => user.status === 'active').map(user => <option key={user.id} value={user.id}>{user.display_name}</option>)}</select></Field><Field label="影响程度"><select name="severity" defaultValue={concern?.severity ?? 'medium'}>{Object.entries(severities).map(([value, name]) => <option key={value} value={value}>{name}</option>)}</select></Field></div>
-    {risk && <Field label="发生概率"><select name="probability" defaultValue={concern?.probability ?? 'medium'}><option value="low">低</option><option value="medium">中</option><option value="high">高</option></select></Field>}
+    {risk && <Field label="发生概率"><select name="probability" defaultValue={concern?.probability ?? ''}><option value="">未设定</option><option value="low">低</option><option value="medium">中</option><option value="high">高</option></select></Field>}
     <Field label="截止时间（香港时间）"><input name="due_at" type="datetime-local" defaultValue={localDateTime(concern?.due_at)} /></Field>
     <Field label={risk ? '应对措施' : '解决说明'}><textarea name={risk ? 'mitigation' : 'resolution'} rows={3} maxLength={20000} defaultValue={risk ? concern?.mitigation : concern?.resolution} required={!risk && ['resolved', 'closed'].includes(state)} /></Field>
     {concern && <Field label="跟进状态"><select value={state} onChange={event => setState(event.target.value)}><option value={concern.state}>{states[concern.state]}</option>{transitions[concern.state]?.map(value => <option key={value} value={value}>{states[value]}</option>)}</select></Field>}

@@ -72,8 +72,9 @@ func TestAgentOfficeCreate(t *testing.T) {
 		}
 		defer r.Body.Close()
 		var out map[string]json.RawMessage
-		if json.NewDecoder(io.LimitReader(r.Body, 120001)).Decode(&out) != nil || r.StatusCode != 200 {
-			currentT.Fatal("file update bridge response invalid")
+		decodeErr := json.NewDecoder(io.LimitReader(r.Body, 120001)).Decode(&out)
+		if decodeErr != nil || r.StatusCode != 200 {
+			currentT.Fatalf("file update bridge response invalid: status=%d decode=%v public_error=%s", r.StatusCode, decodeErr, out["error"])
 		}
 		return out
 	}
@@ -125,7 +126,7 @@ func TestAgentOfficeCreate(t *testing.T) {
 			currentT.Fatal(e)
 		}
 		lease.Job = *j
-		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}}
+		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/read_office_workspace", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}}
 		if proof := rpc(credential, agentworker.ControlPath+"confinement", native); len(proof["error"]) > 0 {
 			currentT.Fatal("creation tool confinement rejected")
 		}
@@ -412,15 +413,19 @@ func TestAgentOfficeCreate(t *testing.T) {
 			currentT.Fatal("recovered Office did not create exactly one correct file")
 		}
 	})
-	scenario("existing_office_file_update_stays_outside_new_creation_authority", func() {
+	scenario("existing_office_update_has_independent_exact_original_authority", func() {
 		var id, version string
 		var revision int64
 		if err := f.owner.QueryRow(ctx, "SELECT id,current_version_id,version FROM files WHERE org_id=$1 AND name=$2", f.org, "秘书生成项目资料.docx").Scan(&id, &version, &revision); err != nil {
 			currentT.Fatal(err)
 		}
-		in := agent.RunCreate{ExpectedVersion: c.Version, ContextSecurityVersion: c.ContextSecurityVersion, ProfileID: profile, ClientMessageID: core.NewID(), Message: "现有Office修改尚未开放", FileUpdate: &agent.FileUpdateInput{FileID: id, BaseVersionID: version, ExpectedFileVersion: revision}}
+		in := agent.RunCreate{ExpectedVersion: c.Version, ContextSecurityVersion: c.ContextSecurityVersion, ProfileID: profile, ClientMessageID: core.NewID(), Message: "明确授权修改此准确Office原件", FileUpdate: &agent.FileUpdateInput{FileID: id, BaseVersionID: version, ExpectedFileVersion: revision}}
 		rr, rs := f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), in, nil)
-		expect(currentT, rr, 422, rs)
+		expect(currentT, rr, 202, rs)
+		accepted := data[agent.Run](currentT, rs)
+		if accepted.FileUpdate == nil || accepted.FileCreate != nil || accepted.FileUpdate.FileID != id {
+			currentT.Fatal("independent original update authorization missing")
+		}
 	})
 	scenario("format_extension_and_same_name_remain_human_scope_constraints", func() {
 		for _, input := range []agent.FileCreateInput{

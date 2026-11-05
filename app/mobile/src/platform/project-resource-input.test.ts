@@ -44,12 +44,12 @@ test('edits bind the item version and do not send unselected state changes or an
     if (kind !== 'risk') assert.equal('probability' in command.body, false);
   }
 });
-test('optional dates and risk probability remain absent or exact, never falsely reported as cleared', () => {
+test('optional dates and probability support explicit null clearing while milestone dates remain required', () => {
   assert.equal('due_at' in resourcePayload('risk', { ...input, due: '', probability: '' }, project, members).body, false);
   assert.equal('probability' in resourcePayload('risk', { ...input, due: '', probability: '' }, project, members).body, false);
   assert.throws(() => resourcePayload('milestone', { ...input, due: '' }, project, members));
-  assert.throws(() => resourcePayload('risk', { ...input, due: '' }, project, members, risk));
-  assert.throws(() => resourcePayload('risk', { ...input, probability: '' }, project, members, risk));
+  assert.equal(resourcePayload('risk', { ...input, due: '' }, project, members, risk).body.due_at,null);
+  assert.equal(resourcePayload('risk', { ...input, probability: '' }, project, members, risk).body.probability,null);
 });
 test('successful creation and edit receipts prove actual identity, fields, project, state and exact version', () => {
   for (const [kind, item] of [['milestone', milestone], ['risk', risk], ['issue', issue]] as const) {

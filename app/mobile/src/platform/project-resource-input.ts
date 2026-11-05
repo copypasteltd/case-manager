@@ -61,13 +61,13 @@ export function resourcePayload(kind: ResourceKind, input: ResourceInput, projec
   const body: Record<string, unknown> = { ...(item ? { expected_version: item.version } : {}), title: trim(input.title), owner_id: input.owner };
   if (input.due) body.due_at = resourceTime(input.due);
   else if (kind === 'milestone') throw new Error('里程碑需要明确的目标时间。');
-  else if (item?.due_at) throw new Error('当前事项的截止时间可修改，暂不支持清空；请保留原值或填写新时间。');
+  else if (item) body.due_at = null;
   if (kind !== 'milestone') {
     if (!['low', 'medium', 'high', 'critical'].includes(input.severity)) throw new Error('请选择有效的影响程度。');
     Object.assign(body, { description: input.description, severity: input.severity });
     if (kind === 'risk') {
       if (input.probability && !['low', 'medium', 'high'].includes(input.probability)) throw new Error('请选择有效的发生概率。');
-      if (!input.probability && item && 'probability' in item && item.probability) throw new Error('当前发生概率可修改，暂不支持清空。');
+      if (!input.probability && item) body.probability = null;
       if (input.probability) body.probability = input.probability;
       body.mitigation = input.mitigation;
     } else body.resolution = input.resolution;

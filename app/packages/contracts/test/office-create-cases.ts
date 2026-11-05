@@ -52,10 +52,11 @@ export const officeCreateCases: Array<readonly [string, () => void]> = [
     }
     const unknown = structuredClone(value); unknown.operation_id = null; assert.equal(fileCreateReceipt(run(unknown), input()), false);
   }],
-  ['creation does not broaden existing Office update authority or text-only request behavior', () => {
+  ['Office creation and original updates use separate explicit scopes without changing text behavior', () => {
     const file = { id: id(7), version: 1, project_id: id(2), state: 'active', current_version_id: id(6) } as Schemas['File'];
     const version = { id: id(6), file_id: id(7), scan_state: 'clean', media_type: media, size_bytes: '4567' } as Schemas['FileVersion'];
-    assert.throws(() => makeFileUpdate(file, version, id(2)));
+    assert.deepEqual(makeFileUpdate(file, version, id(2)), { file_id:file.id, base_version_id:version.id, expected_file_version:file.version });
+    assert.throws(() => makeFileUpdate(file, {...version,scan_state:'pending'}, id(2)));
     const plain = makeFileCreate(folder, '原有纪要.md', 'text/markdown', id(2));
     const view = { ...staged(), target: { ...staged().target, name: plain.name, media_type: plain.media_type }, drafts: [] };
     assert.equal(fileCreateReceipt(run(view), plain), true);

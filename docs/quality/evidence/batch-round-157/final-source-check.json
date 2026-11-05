@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Complete initial code wave precedes checks and current backend repairs precede rechecks",
+      "passed": true
+    },
+    {
+      "name": "All23 numbered packages were reviewed without closing acceptance",
+      "passed": true
+    },
+    {
+      "name": "Current native Office, release governance and TG handoff/disclosure run successfully",
+      "passed": true
+    },
+    {
+      "name": "Unified client types/tests/runtime and four builds pass for unchanged complete client dependencies",
+      "passed": true
+    },
+    {
+      "name": "Final repaired product source completes all ten client steps together",
+      "passed": true
+    },
+    {
+      "name": "Android supplement matches its recorder and actual current application modules",
+      "passed": true
+    },
+    {
+      "name": "Current native fixture cluster closes without disposable databases and preserves development services",
+      "passed": true
+    },
+    {
+      "name": "office browser instructions and exact capture sources still match",
+      "passed": true
+    },
+    {
+      "name": "office actual UI/capture uses synthetic native records and closes owned resources",
+      "passed": true
+    },
+    {
+      "name": "telegram browser instructions and exact capture sources still match",
+      "passed": true
+    },
+    {
+      "name": "telegram actual UI/capture uses synthetic native records and closes owned resources",
+      "passed": true
+    },
+    {
+      "name": "Current screenshots, real silent recordings and disclosed GIF tours match bytes",
+      "passed": true
+    },
+    {
+      "name": "Visual review binds four inspected screenshots and two GIF tours",
+      "passed": true
+    },
+    {
+      "name": "Old migrations/proofs/media remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "All eight freezes and exact latest source stay immutable",
+      "passed": true
+    },
+    {
+      "name": "All23 acceptance packages and five exclusions remain explicit",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/batch-round-157/freeze-code-repaired-wave-7.json": "732207550e0eaf4bfba42b5fb1443436467f47204d3cf1e45fdb760bee302dc9",
+    "docs/quality/evidence/batch-round-157/native-tests-batch-9.json": "85337df127bb9f00c44dfb6af9cd84b66a8a686a3f42d125bbb3bb914238daa5",
+    "docs/quality/evidence/batch-round-157/client-checks-batch-4.json": "028446506a914d0b2e114979ad25371e7f7c2394483d8bfc9426ce03ffd877a1",
+    "docs/quality/evidence/batch-round-157/client-inputs-batch-4-before.json": "86cd9b0adb61e1ddcf98ca443f6fb2bf81843b0b060185e0ed27e88406f26fe3",
+    "docs/quality/evidence/batch-round-157/client-inputs-batch-4-after.json": "60ea62b0e0d22ed9dd04ed58270f7c55e9121b487f139f299147ade7381505ae",
+    "docs/quality/evidence/batch-round-157/freeze-code-code-wave-1.json": "de6b492ea559d942f1030d3166ead20a8d7e128cf5776ee3561db40f3b25127a",
+    "docs/quality/evidence/batch-round-157/android-js-supplement-batch-4.json": "8ccd023e027100eb380e46e02e034a86bc36deb6dfc20b102cf3fccd8aeef846",
+    "docs/quality/evidence/batch-round-157/native-batch-9/native-cluster-closed.json": "5fc3abd404b98db3241de088d36432129d6d19717cad1128b81c3414e4ff0831",
+    "docs/quality/evidence/batch-round-157-office-current-3/result.json": "1a19242dfcd83fcd6fe257b1df136420a66df7fd21d31e12f4b7b75c2efb7431",
+    "docs/quality/evidence/batch-round-157-office-current-3/encoded-media.json": "80243d7b00ec1378bddb12894689adee040b83cf8fe1a748e68cbd2321362fd7",
+    "docs/quality/evidence/batch-round-157-office-current-3/media.json": "33fbbca066e36b83df1865231179ab6ce4834428cc28b843ea6a8bce37071550",
+    "docs/quality/evidence/batch-round-157-office-current-3/capture-manifest.json": "cae81ac2ccb6b1ac2f66a3c8184e18de6929459248349c34d047bdb708d2cc15",
+    "docs/quality/evidence/batch-round-157-office-current-3/source-manifest.json": "5309016f5189890fd2cc7db4c63fb4e6485520d473105a5c8677d93b30cf5904",
+    "docs/quality/evidence/batch-round-157-telegram-current-2/result.json": "e4c4d985f33387b060c7711dfed33d906c6ca6d02d2f8f73a79952f5753e71be",
+    "docs/quality/evidence/batch-round-157-telegram-current-2/encoded-media.json": "723eea6938899473243be56ad77e6bf1a0720b0321c1cf969a1e4a829199f15d",
+    "docs/quality/evidence/batch-round-157-telegram-current-2/media.json": "f1657c53c71908e9151928aeda94f2e37af75c1f65e911d08ac678997f0bce8c",
+    "docs/quality/evidence/batch-round-157-telegram-current-2/capture-manifest.json": "219258383f0e75b73df7d28555ace847692df72c75879e1020c6630511973b0d",
+    "docs/quality/evidence/batch-round-157-telegram-current-2/source-manifest.json": "5309016f5189890fd2cc7db4c63fb4e6485520d473105a5c8677d93b30cf5904",
+    "docs/quality/evidence/batch-round-157/visual-review.json": "b304e3f2565d17cafbea0d786b3395fde43129b6bf485f9ee8e36a893bf974ae"
+  },
+  "retained": {
+    "full_backend_increment": 121,
+    "development_android_increment": 154,
+    "development_android_source_increment": 153,
+    "development_android_schema": 113
+  },
+  "interaction_source_sha256": "5ef5aefef827922653505948d41a17cad71542fad49da4b939edd13f32746bd5",
+  "verification_script_sha256": "c1fd74a849cc63c5fdf70f9edbc705222670ae996eb25f7c10a27af74fd70a8c",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "virtualization_used": false,
+  "new_android_apk": false,
+  "native_result_records": 52,
+  "current_four_client_builds": true
+}

@@ -5,7 +5,7 @@ import { Busy, Dialog, ErrorNotice, Field, date } from './components';
 
 type Delivery = Schemas['TelegramDelivery'];
 export const deliveryNames: Record<Delivery['state'], string> = { pending: '等待发送', sending: '正在发送', retry_wait: '等待重试', sent: 'Bot已确认送达', delivery_unknown: '投递结果未知', confirmed_sent: '本人对账为已发送', failed: '发送失败', superseded: '已合并到后续阶段', suppressed: '已停止发送', abandoned: '本人已放弃重发' };
-const phaseNames = { accepted: '受理通知', progress: '进度通知', result: '结果通知' };
+const phaseNames = { reviewed_result:'本人审核后的结果片段', accepted: '受理通知', progress: '进度通知', result: '结果通知' };
 export function TelegramDelivery({ requestID }: { requestID: string }) {
  const cache = useQueryClient(), [target, setTarget] = useState<Delivery>();
  const query = useQuery({ queryKey: ['telegram', 'delivery', requestID], queryFn: ({ signal }) => api<Schemas['TelegramDeliveryDetails']>('/me/telegram/requests/' + requestID + '/deliveries', { signal }) });

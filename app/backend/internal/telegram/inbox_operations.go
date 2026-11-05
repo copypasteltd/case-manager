@@ -101,7 +101,7 @@ func scanInboxOperation(row pgx.Row) (InboxOperation, error) {
 func (s *Service) InboxOperations(ctx context.Context, a core.Actor, state, channel, skill, cursor string, limit int) (core.Page[InboxOperation], error) {
 	out := core.Page[InboxOperation]{Items: []InboxOperation{}}
 	if (state != "" && !slices.Contains([]string{"awaiting_executor", "dispatched", "withdrawn"}, state)) ||
-		(channel != "" && !core.ValidID(channel)) || (skill != "" && !slices.Contains([]string{"project-briefing", "incident-summary"}, skill)) ||
+		(channel != "" && !core.ValidID(channel)) || (skill != "" && !slices.Contains([]string{"project-create", "project-update", "file-update", "information-organize", "oa-assist", "subscription-review", "project-briefing", "incident-summary"}, skill)) ||
 		limit < 1 || limit > 100 || len(cursor) > 2048 {
 		return out, core.Invalid("filters", "请核对入站状态、任务、群入口和分页条件")
 	}

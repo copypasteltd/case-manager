@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-05T23:00:28.058261+00:00",
+  "group": "batch-round-157-telegram-current-2",
+  "encoder_sha256": "e62cea27302dd84dbbfd7c57f94c8d51e2f29574c5fb0c1cf9783ca6560294c0",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "telegram-reviewed-result",
+      "file": "docs/media/batch-round-157/batch-round-157-telegram-current-2/telegram-reviewed-result.png",
+      "sha256": "3bdd1d92ddf2e0947ef8e13f5f09c683da76daa840e3f37eb0d033cac16e03cc"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-157/batch-round-157-telegram-current-2/screen-recording.mp4",
+      "sha256": "751b2f4654f038c3fa58da9cc09ac36f713f6d2629bb86b86b8c80eb4126a4a7",
+      "size_bytes": 126671
+    },
+    {
+      "file": "docs/media/batch-round-157/batch-round-157-telegram-current-2/screenshot-tour.gif",
+      "sha256": "6bdae3547aeda6bc05a7826f5c685e52f3e41d807ef6f722a0d275da6696396c",
+      "size_bytes": 89776
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "23",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.300000"
+    }
+  }
+}

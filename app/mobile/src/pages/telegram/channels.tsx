@@ -14,7 +14,7 @@ export function TelegramChannels({ bots, authorization }: { bots: Schemas['Teleg
   const [editing, setEditing] = useState<Channel | 'new'>(), [history, setHistory] = useState<Channel>();
   function close() { setEditing(undefined); setHistory(undefined); list.reload(); }
   return <Section title='群与话题入口管理'><View className='cp-pad'>
-    <Text className='cp-notice cp-paragraph'>仅管理准确Bot、群号与话题的接收范围。新入口先暂停；业务正文只在有权门户显示，群通知只含阶段与登录链接。</Text>
+    <Text className='cp-notice cp-paragraph'>仅管理准确Bot、群号与话题的接收范围。新入口先暂停；业务正文只在有权门户显示，自动群通知只含阶段与登录链接；人工授权任务可另行审核公开准确结果片段。</Text>
     <Notice error={list.error} />{editing ? <ChannelEditor key={(editing === 'new' ? 'new' : editing.id + ':' + editing.version) + ':' + authorization} current={editing === 'new' ? undefined : editing} bots={bots} onClose={close} />
       : history ? <ChannelHistory current={history} onClose={() => setHistory(undefined)} /> : <>
         <Action disabled={!bots.length || list.loading || !!list.error} onClick={() => setEditing('new')}>新增暂停的TG群入口</Action>

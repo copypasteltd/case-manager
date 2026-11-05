@@ -18,7 +18,7 @@ export function ConversationFileUpdate({ conversation: c, disabled, value, onCha
     {files.isPending && <Busy label="正在读取文件候选" />}{!files.isPending && !files.error && !files.data?.pages.some(page => page.items.length) && <Empty title="暂无可见文件" detail="请先上传并完成文件扫描。" />}
     {id && <Field label="本次更新基础版本"><select value={versionID} disabled={disabled || versions.isPending || file.isFetching} onChange={event => { setVersionID(event.target.value); setError(undefined); }}><option value="">请明确选择现行版本</option>{versions.data?.pages.flatMap(page => page.items).map(version => <option key={version.id} value={version.id} disabled={version.id !== file.data?.current_version_id}>版本 {version.seq} · {version.media_type} · {version.size_bytes} 字节{version.id === file.data?.current_version_id ? ' · 现行版本' : ' · 历史只读'}</option>)}</select></Field>}
     {versions.hasNextPage && <button type="button" className="button secondary" disabled={disabled || versions.isFetchingNextPage} onClick={() => void versions.fetchNextPage()}>加载更多文件版本</button>}
-    <p className="form-note">支持已扫描通过、1字节至1MiB的UTF-8文本或Markdown。选择资料后仍需填写本次修改要求并发送。</p>
+    <p className="form-note">支持已扫描通过、1字节至1MiB的文本、Markdown、DOCX、XLSX或PPTX。选择资料后仍需填写本次修改要求并发送。</p>
     <button type="button" className="button secondary" disabled={disabled || !selected || !file.data || !!file.error || !!versions.error || file.isFetching} onClick={() => { try { onChange(makeFileUpdate(file.data!, selected!, c.project_id)); setOpen(false); } catch (cause) { setError(cause); } }}>将准确文件更新加入请求</button>
     <button type="button" className="button secondary" disabled={disabled} onClick={() => setOpen(false)}>收起文件选择</button>
   </>}</section>;

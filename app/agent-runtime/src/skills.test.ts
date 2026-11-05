@@ -15,7 +15,7 @@ test('contract-body creation accepts exact draft context but never grants human 
   const skill = catalog.get('file-update')!;
   const input = { folder_id: randomUUID(), expected_folder_version: 2, name: 'contract-body.md', media_type: 'text/markdown', instructions: 'Draft the complete body from exact facts; human adoption remains separate', contract_body: { contract_id: randomUUID(), expected_version: 3, base_revision_id: randomUUID(), content_hash: 'a'.repeat(64), reason: 'Use this exact draft' } };
   skill.validateInput(input);
-  assert.equal(skill.manifest.version, '1.5.0');
+  assert.equal(skill.manifest.version, '1.6.0');
   assert.equal(skill.manifest.state, 'draft');
   for (const field of ['contract_id', 'expected_version', 'base_revision_id', 'content_hash', 'reason']) {
     const changed = structuredClone(input); delete (changed.contract_body as Record<string, unknown>)[field];

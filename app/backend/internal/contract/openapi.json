@@ -826,6 +826,351 @@
         }
       }
     },
+    "/runs/{id}/file-drafts/{draft}/abandon-recovery": {
+      "post": {
+        "operationId": "abandonAgentFileRecovery",
+        "tags": [
+          "runs"
+        ],
+        "summary": "abandonAgentFileRecovery",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "draft",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentFileAbandonmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentFileAbandonmentInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me/telegram/requests/{id}/outbound-preview": {
+      "get": {
+        "operationId": "getTelegramDisclosurePreview",
+        "tags": [
+          "me"
+        ],
+        "summary": "getTelegramDisclosurePreview",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramDisclosurePreviewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
+    "/me/telegram/requests/{id}/outbound-review": {
+      "post": {
+        "operationId": "approveTelegramDisclosure",
+        "tags": [
+          "me"
+        ],
+        "summary": "approveTelegramDisclosure",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramDisclosureReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelegramDisclosureInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me/telegram/requests/{id}/handoff": {
+      "get": {
+        "operationId": "getTelegramHandoffRequest",
+        "tags": [
+          "me"
+        ],
+        "summary": "getTelegramHandoffRequest",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramHandoffRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/me/telegram": {
       "get": {
         "operationId": "getOwnTelegramStatus",
@@ -1932,6 +2277,12 @@
             "schema": {
               "type": "string",
               "enum": [
+                "project-create",
+                "project-update",
+                "file-update",
+                "information-organize",
+                "oa-assist",
+                "subscription-review",
                 "project-briefing",
                 "incident-summary"
               ]
@@ -41923,6 +42274,181 @@
         }
       }
     },
+    "/agent/runtime-profiles/{id}/skill-releases": {
+      "get": {
+        "operationId": "getAgentSkillReleases",
+        "tags": [
+          "agent"
+        ],
+        "summary": "getAgentSkillReleases",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "before_version",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSkillReleaseDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      },
+      "post": {
+        "operationId": "recordAgentSkillRelease",
+        "tags": [
+          "agent"
+        ],
+        "summary": "recordAgentSkillRelease",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSkillReleaseDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentSkillReleaseInput"
+              }
+            }
+          }
+        }
+      }
+    },
     "/storage/replicas": {
       "get": {
         "operationId": "listStorageReplicas",
@@ -45416,12 +45942,18 @@
             "items": {
               "type": "string",
               "enum": [
+                "project-create",
+                "project-update",
+                "file-update",
+                "information-organize",
+                "oa-assist",
+                "subscription-review",
                 "project-briefing",
                 "incident-summary"
               ]
             },
             "minItems": 1,
-            "maxItems": 2,
+            "maxItems": 8,
             "uniqueItems": true
           },
           "default_skill_id": {
@@ -45429,6 +45961,12 @@
               {
                 "type": "string",
                 "enum": [
+                  "project-create",
+                  "project-update",
+                  "file-update",
+                  "information-organize",
+                  "oa-assist",
+                  "subscription-review",
                   "project-briefing",
                   "incident-summary"
                 ]
@@ -45507,12 +46045,18 @@
             "items": {
               "type": "string",
               "enum": [
+                "project-create",
+                "project-update",
+                "file-update",
+                "information-organize",
+                "oa-assist",
+                "subscription-review",
                 "project-briefing",
                 "incident-summary"
               ]
             },
             "minItems": 1,
-            "maxItems": 2,
+            "maxItems": 8,
             "uniqueItems": true
           },
           "default_skill_id": {
@@ -45520,6 +46064,12 @@
               {
                 "type": "string",
                 "enum": [
+                  "project-create",
+                  "project-update",
+                  "file-update",
+                  "information-organize",
+                  "oa-assist",
+                  "subscription-review",
                   "project-briefing",
                   "incident-summary"
                 ]
@@ -45579,12 +46129,18 @@
             "items": {
               "type": "string",
               "enum": [
+                "project-create",
+                "project-update",
+                "file-update",
+                "information-organize",
+                "oa-assist",
+                "subscription-review",
                 "project-briefing",
                 "incident-summary"
               ]
             },
             "minItems": 1,
-            "maxItems": 2,
+            "maxItems": 8,
             "uniqueItems": true
           },
           "default_skill_id": {
@@ -45592,6 +46148,12 @@
               {
                 "type": "string",
                 "enum": [
+                  "project-create",
+                  "project-update",
+                  "file-update",
+                  "information-organize",
+                  "oa-assist",
+                  "subscription-review",
                   "project-briefing",
                   "incident-summary"
                 ]
@@ -45661,6 +46223,12 @@
               {
                 "type": "string",
                 "enum": [
+                  "project-create",
+                  "project-update",
+                  "file-update",
+                  "information-organize",
+                  "oa-assist",
+                  "subscription-review",
                   "project-briefing",
                   "incident-summary"
                 ]
@@ -45783,7 +46351,8 @@
             "enum": [
               "accepted",
               "progress",
-              "result"
+              "result",
+              "reviewed_result"
             ]
           },
           "state": {
@@ -46043,7 +46612,8 @@
             "enum": [
               "accepted",
               "progress",
-              "result"
+              "result",
+              "reviewed_result"
             ]
           },
           "state": {
@@ -46368,6 +46938,12 @@
               {
                 "type": "string",
                 "enum": [
+                  "project-create",
+                  "project-update",
+                  "file-update",
+                  "information-organize",
+                  "oa-assist",
+                  "subscription-review",
                   "project-briefing",
                   "incident-summary"
                 ]
@@ -61612,7 +62188,8 @@
           "adapter": {
             "type": "string",
             "enum": [
-              "agent-office-create-v1"
+              "agent-office-create-v1",
+              "agent-office-edit-v1"
             ]
           },
           "kind": {
@@ -61771,6 +62348,9 @@
                 "type": "null"
               }
             ]
+          },
+          "recovery_abandoned": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -61783,6 +62363,68 @@
           "scan_state",
           "plan_hash",
           "result_version_id"
+        ]
+      },
+      "AgentFileAbandonment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "draft_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "run_id",
+          "draft_id",
+          "content_sha256",
+          "created_at"
+        ]
+      },
+      "AgentFileAbandonmentInput": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "const": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "content_sha256",
+          "reviewed",
+          "reason"
         ]
       },
       "AgentFileUpdateView": {
@@ -62977,9 +63619,270 @@
           "reason"
         ]
       },
+      "TelegramDisclosurePreview": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "run_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20000
+          },
+          "body_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "total_chars": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20000
+          },
+          "channel_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "chat_id": {
+            "type": "string",
+            "pattern": "^-[1-9][0-9]{0,15}$"
+          },
+          "topic_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "request_id",
+          "run_id",
+          "run_version",
+          "body",
+          "body_sha256",
+          "total_chars",
+          "channel_label",
+          "chat_id",
+          "topic_id"
+        ]
+      },
+      "TelegramDisclosureInput": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "body_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "start_char": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20000
+          },
+          "max_chars": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "reviewed": {
+            "const": true
+          },
+          "disclosed_to_group": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "body_sha256",
+          "start_char",
+          "max_chars",
+          "reviewed",
+          "disclosed_to_group"
+        ]
+      },
+      "TelegramDisclosureReceipt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "delivery_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "body_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "start_char": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_chars": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "delivery_id",
+          "run_id",
+          "body_sha256",
+          "start_char",
+          "max_chars"
+        ]
+      },
+      "TelegramHandoffInput": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "request_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "request_id",
+          "expected_version",
+          "request_sha256",
+          "reviewed"
+        ]
+      },
+      "TelegramHandoffRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "request_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "skill_id": {
+            "type": "string",
+            "enum": [
+              "project-create",
+              "project-update",
+              "file-update",
+              "information-organize",
+              "oa-assist",
+              "subscription-review",
+              "project-briefing",
+              "incident-summary"
+            ]
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "channel_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "chat_id": {
+            "type": "string",
+            "pattern": "^-[1-9][0-9]{0,15}$"
+          },
+          "topic_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "eligible": {
+            "type": "boolean"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "request_sha256",
+          "text",
+          "skill_id",
+          "project_id",
+          "channel_label",
+          "chat_id",
+          "topic_id",
+          "eligible",
+          "expires_at",
+          "run_id"
+        ]
+      },
       "RunCreate": {
         "type": "object",
         "properties": {
+          "telegram_handoff": {
+            "$ref": "#/components/schemas/TelegramHandoffInput"
+          },
           "expected_version": {
             "type": "integer",
             "minimum": 1,
@@ -63168,6 +64071,9 @@
                 "type": "null"
               }
             ]
+          },
+          "telegram_handoff": {
+            "$ref": "#/components/schemas/TelegramHandoffInput"
           },
           "contract_body": {
             "$ref": "#/components/schemas/AgentContractBodyView"
@@ -78371,6 +79277,70 @@
           "meta"
         ]
       },
+      "AgentFileAbandonmentResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentFileAbandonment"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "TelegramDisclosurePreviewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TelegramDisclosurePreview"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "TelegramDisclosureReceiptResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TelegramDisclosureReceipt"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "TelegramHandoffRequestResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TelegramHandoffRequest"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
       "TelegramStatusResponse": {
         "type": "object",
         "properties": {
@@ -89289,6 +90259,215 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/AgentProfileDetails"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "AgentSkillRelease": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "profile_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "pilot",
+              "published",
+              "disabled"
+            ]
+          },
+          "profile_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "skill_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "active_basis_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "assessment_run_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20
+          },
+          "rollback_release_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "profile_id",
+          "version",
+          "stage",
+          "profile_version",
+          "skill_sha256",
+          "active_basis_sha256",
+          "assessment_run_ids",
+          "rollback_release_id",
+          "reason",
+          "actor_id",
+          "created_at"
+        ]
+      },
+      "AgentSkillReleaseDetails": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/AgentProfileDetails"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentSkillRelease"
+            },
+            "maxItems": 20
+          },
+          "before_version": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "profile",
+          "version",
+          "history",
+          "before_version"
+        ]
+      },
+      "AgentSkillReleaseInput": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "profile_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "skill_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "active_basis_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "pilot",
+              "published",
+              "disabled"
+            ]
+          },
+          "assessment_run_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 20,
+            "uniqueItems": true
+          },
+          "rollback_release_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reviewed": {
+            "const": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "expected_version",
+          "profile_version",
+          "skill_sha256",
+          "active_basis_sha256",
+          "stage",
+          "assessment_run_ids",
+          "reviewed",
+          "reason"
+        ]
+      },
+      "AgentSkillReleaseDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AgentSkillReleaseDetails"
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

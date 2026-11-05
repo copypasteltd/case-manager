@@ -117,7 +117,7 @@ func (s *ObjectRetirementService) assessCompletedUpload(ctx context.Context, tx 
 	if u.ResultVersionID != nil || u.State == "committed" {
 		block("FORMAL_OBJECT_PROTECTED")
 	}
-	if u.Classification == nil || *u.Classification != f.Classification || u.SourceChannel == nil || !slices.Contains([]string{"web", "android"}, *u.SourceChannel) {
+	if u.Classification == nil || *u.Classification != f.Classification || u.SourceChannel == nil || !slices.Contains([]string{"web", "android", "agent"}, *u.SourceChannel) {
 		block("AGENT_RECOVERY_SOURCE")
 	}
 	if f.State != "active" {
@@ -154,7 +154,7 @@ func (s *ObjectRetirementService) assessCompletedUpload(ctx context.Context, tx 
 	e = tx.QueryRow(ctx, `SELECT
  EXISTS(SELECT 1 FROM jobs WHERE org_id=$1 AND payload->>'session_id'=$2::text AND
    (state IN ('queued','running','retry_wait') OR updated_at>clock_timestamp()-$3::bigint*interval '1 second')),
- EXISTS(SELECT 1 FROM agent_file_drafts WHERE org_id=$1 AND id=$2::uuid),
+ EXISTS(SELECT 1 FROM agent_file_drafts d WHERE org_id=$1 AND id=$2::uuid AND NOT EXISTS(SELECT 1 FROM agent_file_abandonments ab WHERE ab.org_id=d.org_id AND ab.draft_id=d.id AND ab.content_sha256=d.content_sha256)),
  EXISTS(SELECT 1 FROM upload_attempts WHERE org_id=$1 AND session_id=$2::uuid AND draft_key<>$4 AND state IN ('starting','active','uncertain'))`, org, u.ID, int64(objectstore.MaxSignTTL/time.Second), u.DraftKey).Scan(&busy, &agent, &unknown)
 	if e != nil {
 		return out, objects, e
@@ -169,12 +169,23 @@ func (s *ObjectRetirementService) assessCompletedUpload(ctx context.Context, tx 
 		block("UNCERTAIN_OBJECT_PROTECTED")
 	}
 	// Inspect every recorded promotion, not just the latest candidate pointer.
+	var abandonedAt *time.Time
+	var abandonmentID *string
+	if e = tx.QueryRow(ctx, "SELECT (SELECT id FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2),(SELECT created_at FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2)", org, u.ID).Scan(&abandonmentID, &abandonedAt); e != nil {
+		return out, objects, e
+	}
+	if u.SourceChannel != nil && *u.SourceChannel == "agent" && abandonmentID == nil {
+		block("AGENT_RECOVERY_SOURCE")
+	}
+	if abandonedAt != nil && (observed == nil || abandonedAt.After(*observed)) {
+		observed = abandonedAt
+	}
 	rows, e := tx.Query(ctx, `SELECT id,file_id,version_id,object_key,state,source_digest,frozen_source,target_provider,target_bucket,completed_observed_at
  FROM object_transfers WHERE org_id=$1 AND session_id=$2 ORDER BY created_at,id LIMIT 65`, org, u.ID)
 	if e != nil {
 		return out, objects, e
 	}
-	identities := []any{cleanupSource(u), observed, original, candidateID, candidateKey, candidateSource}
+	identities := []any{cleanupSource(u), observed, original, candidateID, candidateKey, candidateSource, abandonmentID, abandonedAt}
 	count := 0
 	candidateMatched := false
 	for rows.Next() {
@@ -306,7 +317,7 @@ func (s *ObjectRetirementService) CompletedDraftCandidates(ctx context.Context, 
 		return out, e
 	}
 	rows, e := tx.Query(ctx, `SELECT id,created_at FROM upload_sessions WHERE org_id=$1 AND target_folder_id=$2 AND frozen_source_id IS NOT NULL
- AND committed_version_id IS NULL AND state<>'committed' AND source_channel IN ('web','android')
+ AND committed_version_id IS NULL AND state<>'committed' AND source_channel IN ('web','android','agent')
  AND ($3::timestamptz IS NULL OR (created_at,id)<($3,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5`, a.OrgID, folderID, at, id, limit+1)
 	if e != nil {
 		return out, e

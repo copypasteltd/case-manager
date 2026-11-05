@@ -38,7 +38,7 @@ func incurredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, kind strin
 func incurredFilteredReportInTx(ctx context.Context, tx pgx.Tx, a core.Actor, kind string, f Filter, supplier, owner *string) (Report, error) {
 	out := Report{Kind: "incurred", Timezone: "Asia/Hong_Kong", FXCoverage: "unconfigured", Totals: []Total{}}
 	if kind != "" && kind != "incurred" {
-		return out, core.Fail(409, "REPORT_KIND_NOT_AVAILABLE", "此接口提供发生支出；现金请使用现金报表，预测及摊销仍待接入")
+		return out, core.Fail(409, "REPORT_KIND_NOT_AVAILABLE", "此接口提供发生支出；现金、订阅预测与成本摊销请使用各自独立报表入口")
 	}
 	if err := validateFilter(f); err != nil {
 		return out, err

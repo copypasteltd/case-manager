@@ -9,7 +9,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-const ownRequestSQL = `SELECT i.id,i.bot_id,i.channel_id,i.channel_version,i.state,i.reason_code,i.request_text,i.received_at,i.requested_skill_id,l.conversation_id,l.run_id,r.state FROM telegram_inbox i LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE i.org_id=$1 AND i.requester_id=$2 AND i.kind='request' AND i.id=$3`
+const ownRequestSQL = `SELECT i.id,i.bot_id,i.channel_id,i.channel_version,i.state,i.reason_code,i.request_text,i.received_at,i.requested_skill_id,coalesce(l.conversation_id,r.conversation_id),coalesce(l.run_id,h.run_id),r.state FROM telegram_inbox i LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN telegram_human_handoffs h ON h.org_id=i.org_id AND h.inbox_id=i.id AND h.actor_id=i.requester_id LEFT JOIN agent_runs r ON r.org_id=i.org_id AND r.id=coalesce(l.run_id,h.run_id) WHERE i.org_id=$1 AND i.requester_id=$2 AND i.kind='request' AND i.id=$3`
 
 func ownRequest(ctx context.Context, tx pgx.Tx, a core.Actor, id string) (Request, error) {
 	var v Request
@@ -101,7 +101,7 @@ func (s *Service) ReconcileDelivery(ctx context.Context, c core.Command, request
 				return core.Result{}, core.Fail(409, "DELIVERY_RETRY_LIMIT", "已达到本通知的发送次数上限")
 			}
 			var allowed bool
-			if err = tx.QueryRow(ctx, "SELECT telegram_delivery_authorized($1,$2)", c.Actor.OrgID, requestID).Scan(&allowed); err != nil {
+			if err = tx.QueryRow(ctx, "SELECT CASE WHEN $3='reviewed_result' THEN telegram_reviewed_delivery_authorized($1,$2) ELSE telegram_delivery_authorized($1,$2) END", c.Actor.OrgID, requestID, d.Phase).Scan(&allowed); err != nil {
 				return core.Result{}, err
 			}
 			if !allowed {

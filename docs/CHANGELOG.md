@@ -1,5 +1,18 @@
 # 更新记录 / Changelog
 
+## 157 · 2026-11-06 · Whole-wave functional implementation / 整批功能开发
+
+- 先完成整批代码：核对全部23编号及实现位置，冻结9项本轮代码清单后统一测试；首轮失败、集中修复和受影响复验分开留证，不逐模块发布。
+- 新增准确原件DOCX／XLSX／PPTX秘书编辑及恢复、准确包／配置Skill发布台账和运行门禁、停止草稿永久放弃恢复及已知对象清理。
+- TG扩展八类任务接收，写任务须本人在门户另行授权；完成结果须独立审核准确片段并同意向原群／话题披露。保留不可变记录、普通业务权限、近期MFA和未知结果不自动重发。
+- 补齐新公司角色初始化、Office工具登记／回执／观察约束、人工审核投递的原有状态机；可选风险／问题字段允许明确清空，财务提示同步现有能力。
+- 新结构升级114–117；file-update1.6.0及全部八项Skill仍draft。四端源码同步，当前Android仅JS构建；rc.8／APK154仍153／113，八个旧冻结版、旧证据／媒体和迁移1–113不变。
+- 本轮实际验证和历史复用分开记载；全部23包及真实云／模型／平台／Linux／正式签名／生产验收仍开放，资料由用户后续提供。
+- English: Complete the declared code wave before unified checks/debugging. Exact Office edits, human Skill release governance, abandoned recovery-source retirement, portal-authorized TG tasks and independent original-group disclosure extend schema117. All eight Skills remain drafts; no new APK or production acceptance.
+
+[设计与使用](development/157-batch-functional-closure.md) · [实际核验](quality/157-batch-verification.md) · [全部编号](delivery/05-functional-closure-157.md)
+
+
 ## 156 · 2026-11-01 · Controlled Office creation / 秘书受控Office新建
 
 - 增加准确人工目录／修订／名称／格式下的DOCX／XLSX／PPTX真实生成，沿用草稿、清洁扫描、晋升、正式第一版及回执；固定配方／模板／完整二进制准确恢复。

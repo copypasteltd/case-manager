@@ -1,3 +1,4 @@
+import { disclosureInput, type DisclosurePreview, type DisclosureReceipt } from '@copypaste/contracts/telegram-operations';
 import { useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -13,15 +14,15 @@ type Binding = Schemas['TelegramBinding'];
 type Channel = Schemas['TelegramChannel'];
 type Bot = Schemas['TelegramBot'];
 type TelegramRequest = Schemas['TelegramRequest'];
-const skillNames = { 'project-briefing': '项目简报', 'incident-summary': '服务事件摘要' };
+const skillNames = { 'project-create':'新建项目（门户授权）','project-update':'更新项目（门户授权）','file-update':'文件处理（门户授权）','information-organize':'信息整理（门户授权）','oa-assist':'OA辅助（门户授权）','subscription-review':'订阅审阅（门户授权）', 'project-briefing': '项目简报', 'incident-summary': '服务事件摘要' };
 
 function RequestCard({ value }: { value: TelegramRequest }) {
   const phases = { queued: '秘书任务已排队', running: '秘书任务执行中', awaiting_approval: '秘书任务待批准', committing: '秘书任务核对结果中', succeeded: '秘书任务已结束', failed: '秘书任务失败', cancelled: '秘书任务已取消', interrupted: '秘书任务已中断' };
   const waiting: Record<string, string> = { TELEGRAM_SKILL_UNAVAILABLE: '此任务尚未接通执行工具；请求保留，等待配置。', RUNTIME_UNAVAILABLE: '等待指定任务的执行配置。', RUN_CAPACITY_EXCEEDED: '等待可用任务名额。', CONVERSATION_RUN_ACTIVE: '等待本话题的上一任务结束。' };
   return <article className="telegram-entry" data-telegram-request-id={value.id} data-run-state={value.run_state ?? ''}>
-    <h3>{value.state === 'withdrawn' ? '已撤回' : value.run_state ? phases[value.run_state] : '已接收，等待秘书任务'}</h3>
+    <h3>{value.reason_code === 'human_authorized_handoff' ? '已由本人门户授权' : value.state === 'withdrawn' ? '已撤回' : value.run_state ? phases[value.run_state] : '已接收，等待秘书任务'}</h3>
     <p className="form-note">{date(value.received_at)}{value.requested_skill_id && <> · {skillNames[value.requested_skill_id]}</>}</p><p style={{ whiteSpace: 'pre-wrap' }}>{value.text}</p>
-    {value.state === 'withdrawn' ? <p className="form-note">{value.reason_code === 'manual_queue_withdrawn' ? '组织经办人已撤回此排队请求，未启动秘书任务。' : '请求的有效期、绑定或入口范围已变化，已停止后续执行；已经结束的任务保留实际记录。'}</p> : !value.run_id && <p className="form-note">{waiting[value.reason_code] ?? '请求已保存，等待渠道调度。'}</p>}
+    {value.reason_code === 'human_authorized_handoff' ? <p className="form-note">本请求已关联本人门户的准确授权；实际任务结果在会话中核对，群内正文仍须单独审核披露。</p> : value.state === 'withdrawn' ? <p className="form-note">{value.reason_code === 'manual_queue_withdrawn' ? '组织经办人已撤回此排队请求，未启动秘书任务。' : '请求的有效期、绑定或入口范围已变化，已停止后续执行；已经结束的任务保留实际记录。'}</p> : !value.run_id && <p className="form-note">{waiting[value.reason_code] ?? '请求已保存，等待渠道调度。'}</p>}
     {value.run_id && value.conversation_id && <Link className="text-button" to={'/conversations/' + value.conversation_id + '?run=' + value.run_id}>查看此秘书任务</Link>}
     <Link className="button secondary" to={'/telegram?request=' + value.id}>查看此请求及群通知回执</Link>
   </article>;
@@ -50,7 +51,7 @@ function PersonalTelegram({ me }: { me: Me }) {
   const requests = useInfiniteQuery({ queryKey: ['telegram', 'requests', me.user.id], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Schemas['TelegramRequest']>>('/me/telegram/requests?' + new URLSearchParams({ limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined, refetchInterval: query => query.state.data?.pages.some(page => page.items.some(item => item.state === 'awaiting_executor' || (item.state === 'dispatched' && ['queued', 'running', 'awaiting_approval', 'committing'].includes(item.run_state ?? '')))) ? 3000 : false });
   const [creating, setCreating] = useState(false), [issued, setIssued] = useState<Challenge>(), [confirming, setConfirming] = useState<Challenge>(), [ending, setEnding] = useState<{ kind: 'challenge'; value: Challenge } | { kind: 'binding'; value: Binding }>();
   const value = status.data, items = requests.data?.pages.flatMap(page => page.items) ?? [];
-  return <div className="telegram-page">
+  return <div className="telegram-page"><ReviewedResultPanel canDisclose={me.actions.includes('telegram.handoff.disclose')} />
     <div className="page-heading"><div><span className="eyebrow">WORKSPACE / TELEGRAM</span><h1>Telegram 接入<span className="accent">.</span></h1><p>绑定本人数字身份，核对指定群与话题的接收范围。</p></div><button className="button primary" disabled={!value?.ingress_configured || !!status.error} onClick={() => setCreating(true)}>发起本人绑定</button></div>
     {me.actions.includes('telegram.operations.read') && <Link className="button secondary" to="/telegram?view=operations">组织TG投递运维</Link>}
     {me.actions.includes('telegram.inbox.read') && <Link className="button secondary" to="/telegram?view=inbox">组织TG入站调度</Link>}
@@ -119,4 +120,12 @@ function ChannelEditor({ value, bots, onClose }: { value?: Channel; bots: Bot[];
 function ChannelHistory({ value, onClose }: { value: Channel; onClose(): void }) {
   const query = useInfiniteQuery({ queryKey: ['telegram', 'history', value.id], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Schemas['TelegramChannelRevision']>>('/telegram/channels/' + value.id + '/history?' + new URLSearchParams({ limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined });
   return <Dialog title="群入口变更历史" onClose={onClose}><ErrorNotice error={query.error} />{query.isPending ? <Busy label="正在读取入口历史" /> : query.data?.pages.flatMap(page => page.items).map(revision => <article className="telegram-entry" key={revision.id}><h3>第 {revision.version} 版 · {revision.snapshot.state === 'active' ? '接收启用' : '接收暂停'}</h3><p>{revision.source === 'portal' ? '门户配置' : revision.source === 'migration' ? '群标识变化' : '群成员变化'} · {date(revision.created_at)}</p><p>{revision.reason}</p></article>)}{query.hasNextPage && <button className="button secondary" disabled={query.isFetchingNextPage} onClick={() => void query.fetchNextPage()}>加载更早入口历史</button>}</Dialog>;
+}
+
+function ReviewedResultPanel({canDisclose}:{canDisclose:boolean}) {
+ const [id,setID]=useState(''),[selected,setSelected]=useState(''),[start,setStart]=useState('0'),[count,setCount]=useState('1'),[reviewed,setReviewed]=useState(false),[disclosed,setDisclosed]=useState(false),[verify,setVerify]=useState(false),[error,setError]=useState<unknown>(),[receipt,setReceipt]=useState<string>();
+ const query=useQuery({queryKey:['telegram','disclosure',selected],enabled:!!selected,queryFn:({signal})=>api<DisclosurePreview>('/me/telegram/requests/'+selected+'/outbound-preview',{signal})});
+ const mutation=useWrite<DisclosureReceipt>('/me/telegram/requests/'+selected+'/outbound-review',value=>{setReceipt(value.delivery_id);setReviewed(false);setDisclosed(false);});
+ const v=query.data,offset=Number(start),size=Number(count),fragment=v&&Number.isSafeInteger(offset)&&Number.isSafeInteger(size)&&offset>=0&&size>=1&&size<=2000&&offset+size<=v.total_chars?Array.from(v.body).slice(offset,offset+size).join(''):'';
+ return <section className="panel"><h2>审核TG人工授权任务的群内结果</h2><p className="form-note">任务完成后由本人单独选择准确片段，明确同意向原群公开。自动通知仍只含阶段与登录链接；结果未知不会自动重发。</p><Field label="本人已授权TG请求编号"><input value={id} onChange={e=>setID(e.target.value)}/></Field><button className="button secondary" onClick={()=>{setSelected(id.trim());setReviewed(false);setDisclosed(false);setReceipt(undefined);}}>读取准确已完成结果</button><ErrorNotice error={error??mutation.error??query.error}/>{query.isFetching?<Busy/>:!query.error&&v&&<><p>{v.channel_label} · 群 {v.chat_id} · 话题 {v.topic_id}</p><pre>{v.body}</pre><p>完整结果 {v.total_chars} 字符</p><code className="full-digest">{v.body_sha256}</code>{canDisclose&&<><Field label="片段起始字符（从0起）"><input value={start} onChange={e=>{setStart(e.target.value);setReviewed(false);}} inputMode="numeric"/></Field><Field label="片段字符数（最多2000）"><input value={count} onChange={e=>{setCount(e.target.value);setReviewed(false);}} inputMode="numeric"/></Field><h3>将向原群公开的准确正文</h3><pre>{fragment||'请选择有效片段'}</pre><label><input type="checkbox" checked={reviewed} onChange={e=>setReviewed(e.target.checked)}/>已核对本次准确片段、原群与话题</label><label><input type="checkbox" checked={disclosed} onChange={e=>setDisclosed(e.target.checked)}/>明确同意向原群全部成员公开此业务片段</label><button className="button secondary" onClick={()=>setVerify(v=>!v)}>验证本人身份</button>{verify&&<AccountVerification/>}<button className="button primary" disabled={mutation.isPending||!!receipt||!reviewed||!disclosed||!fragment} onClick={()=>{setError(undefined);try{mutation.mutate(disclosureInput(v,start,count,reviewed,disclosed));}catch(cause){setError(cause);}}}>批准公开此准确片段</button></>}</>}{receipt&&<p className="notice neutral">审核已记录，发送结果以投递台账为准。投递编号 {receipt}</p>}</section>;
 }

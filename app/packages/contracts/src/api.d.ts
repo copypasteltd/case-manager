@@ -125,6 +125,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/runs/{id}/file-drafts/{draft}/abandon-recovery": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** abandonAgentFileRecovery */
+        post: operations["abandonAgentFileRecovery"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/telegram/requests/{id}/outbound-preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTelegramDisclosurePreview */
+        get: operations["getTelegramDisclosurePreview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/telegram/requests/{id}/outbound-review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** approveTelegramDisclosure */
+        post: operations["approveTelegramDisclosure"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/telegram/requests/{id}/handoff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTelegramHandoffRequest */
+        get: operations["getTelegramHandoffRequest"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/telegram": {
         parameters: {
             query?: never;
@@ -6569,6 +6637,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/agent/runtime-profiles/{id}/skill-releases": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getAgentSkillReleases */
+        get: operations["getAgentSkillReleases"];
+        put?: never;
+        /** recordAgentSkillRelease */
+        post: operations["recordAgentSkillRelease"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/storage/replicas": {
         parameters: {
             query?: never;
@@ -7257,8 +7343,8 @@ export interface components {
             topic_id: number;
             label: string;
             project_id: string | null;
-            allowed_skill_ids: ("project-briefing" | "incident-summary")[];
-            default_skill_id: ("project-briefing" | "incident-summary") | null;
+            allowed_skill_ids: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary")[];
+            default_skill_id: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary") | null;
             /** @constant */
             disclosure_mode: "portal_only";
             delivery_enabled: boolean;
@@ -7271,8 +7357,8 @@ export interface components {
             topic_id: number;
             label: string;
             project_id: string | null;
-            allowed_skill_ids: ("project-briefing" | "incident-summary")[];
-            default_skill_id?: ("project-briefing" | "incident-summary") | null;
+            allowed_skill_ids: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary")[];
+            default_skill_id?: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary") | null;
             reason: string;
             /** @default false */
             delivery_enabled: boolean;
@@ -7281,8 +7367,8 @@ export interface components {
             expected_version: number;
             label: string;
             project_id: string | null;
-            allowed_skill_ids: ("project-briefing" | "incident-summary")[];
-            default_skill_id?: ("project-briefing" | "incident-summary") | null;
+            allowed_skill_ids: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary")[];
+            default_skill_id?: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary") | null;
             /** @enum {string} */
             state: "active" | "paused";
             reason: string;
@@ -7298,7 +7384,7 @@ export interface components {
             channel_version: number;
             /** @enum {string} */
             state: "awaiting_executor" | "dispatched" | "withdrawn";
-            requested_skill_id: ("project-briefing" | "incident-summary") | null;
+            requested_skill_id: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary") | null;
             conversation_id: string | null;
             run_id: string | null;
             run_state: ("queued" | "running" | "awaiting_approval" | "committing" | "succeeded" | "failed" | "cancelled" | "interrupted") | null;
@@ -7319,7 +7405,7 @@ export interface components {
             request_id: string;
             run_id: string | null;
             /** @enum {string} */
-            phase: "accepted" | "progress" | "result";
+            phase: "accepted" | "progress" | "result" | "reviewed_result";
             /** @enum {string} */
             state: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "superseded" | "suppressed" | "abandoned";
             attempts: number;
@@ -7367,7 +7453,7 @@ export interface components {
             request_id: string;
             run_id: string | null;
             /** @enum {string} */
-            phase: "accepted" | "progress" | "result";
+            phase: "accepted" | "progress" | "result" | "reviewed_result";
             /** @enum {string} */
             state: "pending" | "sending" | "retry_wait" | "sent" | "delivery_unknown" | "confirmed_sent" | "failed" | "superseded" | "suppressed" | "abandoned";
             attempts: number;
@@ -7433,7 +7519,7 @@ export interface components {
             topic_id: number;
             /** Format: uuid */
             requester_id: string;
-            requested_skill_id: ("project-briefing" | "incident-summary") | null;
+            requested_skill_id: ("project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary") | null;
             request_channel_version: number;
             current_channel_version: number;
             /** @enum {string} */
@@ -10353,7 +10439,7 @@ export interface components {
         };
         AgentOfficePreview: {
             /** @enum {string} */
-            adapter: "agent-office-create-v1";
+            adapter: "agent-office-create-v1" | "agent-office-edit-v1";
             /** @enum {string} */
             kind: "docx" | "xlsx" | "pptx";
             template_sha256: string;
@@ -10386,6 +10472,25 @@ export interface components {
             scan_state: string;
             plan_hash: string | null;
             result_version_id: string | null;
+            recovery_abandoned?: boolean;
+        };
+        AgentFileAbandonment: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            run_id: string;
+            /** Format: uuid */
+            draft_id: string;
+            content_sha256: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        AgentFileAbandonmentInput: {
+            expected_version: number;
+            content_sha256: string;
+            /** @constant */
+            reviewed: true;
+            reason: string;
         };
         AgentFileUpdateView: {
             /** Format: uuid */
@@ -10619,7 +10724,67 @@ export interface components {
             reviewed: true;
             reason: string;
         };
+        TelegramDisclosurePreview: {
+            /** Format: uuid */
+            request_id: string;
+            /** Format: uuid */
+            run_id: string;
+            run_version: number;
+            body: string;
+            body_sha256: string;
+            total_chars: number;
+            channel_label: string;
+            chat_id: string;
+            topic_id: number;
+        };
+        TelegramDisclosureInput: {
+            expected_version: number;
+            body_sha256: string;
+            start_char: number;
+            max_chars: number;
+            /** @constant */
+            reviewed: true;
+            /** @constant */
+            disclosed_to_group: true;
+        };
+        TelegramDisclosureReceipt: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            delivery_id: string;
+            /** Format: uuid */
+            run_id: string;
+            body_sha256: string;
+            start_char: number;
+            max_chars: number;
+        };
+        TelegramHandoffInput: {
+            /** Format: uuid */
+            request_id: string;
+            expected_version: number;
+            request_sha256: string;
+            /** @constant */
+            reviewed: true;
+        };
+        TelegramHandoffRequest: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            request_sha256: string;
+            text: string;
+            /** @enum {string} */
+            skill_id: "project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary";
+            project_id: string | null;
+            channel_label: string;
+            chat_id: string;
+            topic_id: number;
+            eligible: boolean;
+            /** Format: date-time */
+            expires_at: string;
+            run_id: string | null;
+        };
         RunCreate: {
+            telegram_handoff?: components["schemas"]["TelegramHandoffInput"];
             expected_version: number;
             context_security_version: number;
             /** Format: uuid */
@@ -10668,6 +10833,7 @@ export interface components {
             oa_request?: components["schemas"]["AgentOARequestView"];
             post_write?: components["schemas"]["AgentPostWriteView"];
             outcome?: ("draft" | "pending" | "awaiting_input" | "completed" | "conflict" | "denied" | "failed") | null;
+            telegram_handoff?: components["schemas"]["TelegramHandoffInput"];
             contract_body?: components["schemas"]["AgentContractBodyView"];
         };
         Message: {
@@ -13681,6 +13847,22 @@ export interface components {
             data: components["schemas"]["Me"];
             meta: components["schemas"]["Meta"];
         };
+        AgentFileAbandonmentResponse: {
+            data: components["schemas"]["AgentFileAbandonment"];
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramDisclosurePreviewResponse: {
+            data: components["schemas"]["TelegramDisclosurePreview"];
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramDisclosureReceiptResponse: {
+            data: components["schemas"]["TelegramDisclosureReceipt"];
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramHandoffRequestResponse: {
+            data: components["schemas"]["TelegramHandoffRequest"];
+            meta: components["schemas"]["Meta"];
+        };
         TelegramStatusResponse: {
             data: components["schemas"]["TelegramStatus"];
             meta: components["schemas"]["Meta"];
@@ -15885,6 +16067,48 @@ export interface components {
             data: components["schemas"]["AgentProfileDetails"];
             meta: components["schemas"]["Meta"];
         };
+        AgentSkillRelease: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            profile_id: string;
+            version: number;
+            /** @enum {string} */
+            stage: "pilot" | "published" | "disabled";
+            profile_version: number;
+            skill_sha256: string;
+            active_basis_sha256: string;
+            assessment_run_ids: string[];
+            rollback_release_id: string | null;
+            reason: string;
+            /** Format: uuid */
+            actor_id: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        AgentSkillReleaseDetails: {
+            profile: components["schemas"]["AgentProfileDetails"];
+            version: number;
+            history: components["schemas"]["AgentSkillRelease"][];
+            before_version: number | null;
+        };
+        AgentSkillReleaseInput: {
+            expected_version: number;
+            profile_version: number;
+            skill_sha256: string;
+            active_basis_sha256: string;
+            /** @enum {string} */
+            stage: "pilot" | "published" | "disabled";
+            assessment_run_ids: string[];
+            rollback_release_id?: string | null;
+            /** @constant */
+            reviewed: true;
+            reason: string;
+        };
+        AgentSkillReleaseDetailsResponse: {
+            data: components["schemas"]["AgentSkillReleaseDetails"];
+            meta: components["schemas"]["Meta"];
+        };
         StorageJob: {
             /** Format: uuid */
             id: string;
@@ -16544,6 +16768,161 @@ export interface operations {
             503: components["responses"]["Failure"];
         };
     };
+    abandonAgentFileRecovery: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+                draft: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentFileAbandonmentInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentFileAbandonmentResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTelegramDisclosurePreview: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramDisclosurePreviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    approveTelegramDisclosure: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TelegramDisclosureInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramDisclosureReceiptResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTelegramHandoffRequest: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramHandoffRequestResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
     getOwnTelegramStatus: {
         parameters: {
             query?: never;
@@ -17014,7 +17393,7 @@ export interface operations {
                 limit?: number;
                 state?: "awaiting_executor" | "dispatched" | "withdrawn";
                 channel_id?: string;
-                skill_id?: "project-briefing" | "incident-summary";
+                skill_id?: "project-create" | "project-update" | "file-update" | "information-organize" | "oa-assist" | "subscription-review" | "project-briefing" | "incident-summary";
             };
             header?: never;
             path?: never;
@@ -34194,6 +34573,85 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AgentProfileDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getAgentSkillReleases: {
+        parameters: {
+            query?: {
+                before_version?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentSkillReleaseDetailsResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    recordAgentSkillRelease: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentSkillReleaseInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentSkillReleaseDetailsResponse"];
                 };
             };
             400: components["responses"]["Failure"];

@@ -8,7 +8,7 @@ export const telegramDeliveryStates = {
   delivery_unknown: '投递结果未知', confirmed_sent: '人工对账为已发送', failed: '发送失败',
   superseded: '已合并到后续阶段', suppressed: '已停止发送', abandoned: '人工已放弃重发',
 } as const;
-export const telegramDeliveryPhases = { accepted: '受理通知', progress: '进度通知', result: '结果通知' } as const;
+export const telegramDeliveryPhases = { accepted: '受理通知', progress: '进度通知', result: '结果通知', reviewed_result:'本人审核后的结果片段' } as const;
 export const telegramReconcileActions = [
   ['abandon', '保留未知事实，放弃重发'], ['confirm_sent', '已找到原群对应消息'],
   ['retry_confirmed_not_sent', '已核对未发送，允许重试'],
@@ -27,4 +27,13 @@ export function telegramOperationInput(item: TelegramOperation, action: Telegram
   if (action === 'confirm_sent' && (!/^[1-9][0-9]*$/.test(message) || !Number.isSafeInteger(id))) throw new Error('请填写原群对应消息的完整正整数编号。');
   return { expected_version: item.version, action, message_id: action === 'confirm_sent' ? id : null,
     reason: reason.trim(), reviewed_original_channel: true, duplicate_risk_accepted: action === 'retry_confirmed_not_sent' };
+}
+
+export type DisclosurePreview = S['TelegramDisclosurePreview'];
+export type DisclosureInput = S['TelegramDisclosureInput'];
+export type DisclosureReceipt = S['TelegramDisclosureReceipt'];
+export function disclosureInput(v:DisclosurePreview,start:string,count:string,reviewed:boolean,disclosed:boolean):DisclosureInput {
+ const offset=Number(start),size=Number(count);
+ if(!/^(0|[1-9][0-9]*)$/.test(start)||!/^([1-9][0-9]*)$/.test(count)||!Number.isSafeInteger(offset)||!Number.isSafeInteger(size)||offset<0||size<1||size>2000||offset+size>v.total_chars||!reviewed||!disclosed)throw new Error('请核对准确结果、1至2000字符片段，并明确同意向原群公开。');
+ return {expected_version:v.run_version,body_sha256:v.body_sha256,start_char:offset,max_chars:size,reviewed:true,disclosed_to_group:true};
 }

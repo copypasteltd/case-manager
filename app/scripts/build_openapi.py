@@ -166,7 +166,8 @@ device_session = {"id": ID, "device_type": enum("web", "wechat", "douyin", "andr
     "revoked_at": nullable(TIME), "status": enum("active", "expired", "revoked"), "is_current": {"type": "boolean"}}
 TG_NUMBER = {"type":"string","pattern":r"^[1-9][0-9]{0,15}$"}
 TG_CHAT = {"type":"string","pattern":r"^-[1-9][0-9]{0,15}$"}
-TG_SKILLS = array(enum("project-briefing","incident-summary"),minItems=1,maxItems=2,uniqueItems=True)
+TG_SKILL = enum("project-create","project-update","file-update","information-organize","oa-assist","subscription-review","project-briefing","incident-summary")
+TG_SKILLS = array(TG_SKILL,minItems=1,maxItems=8,uniqueItems=True)
 TG_TOPIC = {"type":"integer","minimum":0,"maximum":2147483647}
 add("TelegramBot",{"bot_id":TG_NUMBER,"username":NAME},("bot_id","username"))
 tg_challenge={"id":ID,"version":VERSION,"bot_id":TG_NUMBER,"telegram_user_id":nullable(TG_NUMBER),"expires_at":TIME,
@@ -182,18 +183,18 @@ add("TelegramChallengeCreate",{"bot_id":TG_NUMBER,"reason":NAME},("bot_id","reas
 add("TelegramChallengeConfirm",{**EXPECTED,"telegram_user_id":TG_NUMBER,"reason":NAME},("expected_version","telegram_user_id","reason"))
 add("TelegramReasonInput",{**EXPECTED,"reason":NAME},("expected_version","reason"))
 tg_channel={**RECORD,"bot_id":TG_NUMBER,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"label":NAME,"project_id":nullable(ID),
-    "allowed_skill_ids":TG_SKILLS,"default_skill_id":nullable(enum("project-briefing","incident-summary")),"disclosure_mode":{"const":"portal_only"},"delivery_enabled":{"type":"boolean"},"state":enum("active","paused")}
+    "allowed_skill_ids":TG_SKILLS,"default_skill_id":nullable(TG_SKILL),"disclosure_mode":{"const":"portal_only"},"delivery_enabled":{"type":"boolean"},"state":enum("active","paused")}
 add("TelegramChannel",tg_channel,tuple(tg_channel))
-tg_channel_input={"bot_id":TG_NUMBER,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"label":NAME,"project_id":nullable(ID),"allowed_skill_ids":TG_SKILLS,"default_skill_id":nullable(enum("project-briefing","incident-summary")),"reason":NAME}
+tg_channel_input={"bot_id":TG_NUMBER,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"label":NAME,"project_id":nullable(ID),"allowed_skill_ids":TG_SKILLS,"default_skill_id":nullable(TG_SKILL),"reason":NAME}
 tg_channel_input["delivery_enabled"]={"type":"boolean","default":False}
 add("TelegramChannelCreate",tg_channel_input,tuple(k for k in tg_channel_input if k not in ("default_skill_id","delivery_enabled")))
-tg_patch={**EXPECTED,"label":NAME,"project_id":nullable(ID),"allowed_skill_ids":TG_SKILLS,"default_skill_id":nullable(enum("project-briefing","incident-summary")),"state":enum("active","paused"),"reason":NAME}
+tg_patch={**EXPECTED,"label":NAME,"project_id":nullable(ID),"allowed_skill_ids":TG_SKILLS,"default_skill_id":nullable(TG_SKILL),"state":enum("active","paused"),"reason":NAME}
 tg_patch["delivery_enabled"]={"type":"boolean","default":False}
 add("TelegramChannelPatch",tg_patch,tuple(k for k in tg_patch if k not in ("default_skill_id","delivery_enabled")))
-tg_request={"id":ID,"bot_id":TG_NUMBER,"channel_id":ID,"channel_version":VERSION,"state":enum("awaiting_executor","dispatched","withdrawn"),"requested_skill_id":nullable(enum("project-briefing","incident-summary")),"conversation_id":nullable(ID),"run_id":nullable(ID),"run_state":nullable(enum("queued","running","awaiting_approval","committing","succeeded","failed","cancelled","interrupted")),"reason_code":NAME,"text":{"type":"string","minLength":1,"maxLength":4000},"received_at":TIME}
+tg_request={"id":ID,"bot_id":TG_NUMBER,"channel_id":ID,"channel_version":VERSION,"state":enum("awaiting_executor","dispatched","withdrawn"),"requested_skill_id":nullable(TG_SKILL),"conversation_id":nullable(ID),"run_id":nullable(ID),"run_state":nullable(enum("queued","running","awaiting_approval","committing","succeeded","failed","cancelled","interrupted")),"reason_code":NAME,"text":{"type":"string","minLength":1,"maxLength":4000},"received_at":TIME}
 add("TelegramRequest",tg_request,tuple(tg_request))
 TG_DELIVERY_STATE=enum("pending","sending","retry_wait","sent","delivery_unknown","confirmed_sent","failed","superseded","suppressed","abandoned")
-tg_delivery={**RECORD,"request_id":ID,"run_id":nullable(ID),"phase":enum("accepted","progress","result"),"state":TG_DELIVERY_STATE,"attempts":{"type":"integer","minimum":0,"maximum":5},"reason_code":NAME,"next_attempt_at":TIME,"message_id":nullable({"type":"integer","minimum":1,"maximum":9007199254740991})}
+tg_delivery={**RECORD,"request_id":ID,"run_id":nullable(ID),"phase":enum("accepted","progress","result","reviewed_result"),"state":TG_DELIVERY_STATE,"attempts":{"type":"integer","minimum":0,"maximum":5},"reason_code":NAME,"next_attempt_at":TIME,"message_id":nullable({"type":"integer","minimum":1,"maximum":9007199254740991})}
 add("TelegramDelivery",tg_delivery,tuple(tg_delivery))
 tg_delivery_event={"id":ID,"delivery_id":ID,"version":VERSION,"state":TG_DELIVERY_STATE,"attempts":{"type":"integer","minimum":0,"maximum":5},"reason_code":NAME,"message_id":tg_delivery["message_id"],"actor_id":nullable(ID),"reason":nullable(NAME),"created_at":TIME}
 add("TelegramDeliveryEvent",tg_delivery_event,tuple(tg_delivery_event))
@@ -832,11 +833,14 @@ add("AgentFileCreateInput", file_create_input, tuple(file_create_input))
 file_diff = {"start_char": {"type": "integer", "minimum": 0}, "removed_chars": {"type": "integer", "minimum": 0}, "added_chars": {"type": "integer", "minimum": 0},
     "removed_sha256": HASH, "added_sha256": HASH, "before": {"type": "string", "maxLength": 1000}, "after": {"type": "string", "maxLength": 1000},
     "before_complete": {"type": "boolean"}, "after_complete": {"type": "boolean"}, "line_ending": enum("none", "lf", "crlf"), "utf8_bom": {"type": "boolean"}}
-office_preview = {"adapter": enum("agent-office-create-v1"), "kind": enum("docx", "xlsx", "pptx"), "template_sha256": HASH, "workspace_sha256": HASH, "unit_count": {"type": "integer", "minimum": 0, "maximum": 2000}, "warnings": array({"type": "string", "maxLength": 2000}, maxItems=20)}
+office_preview = {"adapter": enum("agent-office-create-v1", "agent-office-edit-v1"), "kind": enum("docx", "xlsx", "pptx"), "template_sha256": HASH, "workspace_sha256": HASH, "unit_count": {"type": "integer", "minimum": 0, "maximum": 2000}, "warnings": array({"type": "string", "maxLength": 2000}, maxItems=20)}
 add("AgentOfficePreview", office_preview, tuple(office_preview))
 add("AgentFileDiff", {**file_diff, "office": ref("AgentOfficePreview")}, tuple(file_diff))
 file_draft = {"id": ID, "content_sha256": HASH, "size_bytes": BYTES, "diff": ref("AgentFileDiff"), "state": NAME, "scan_state": NAME, "plan_hash": nullable(HASH), "result_version_id": nullable(ID)}
-add("AgentFileDraft", file_draft, tuple(file_draft))
+file_draft["recovery_abandoned"] = {"type":"boolean"}
+add("AgentFileDraft", file_draft, tuple(k for k in file_draft if k!="recovery_abandoned"))
+add("AgentFileAbandonment",{"id":ID,"run_id":ID,"draft_id":ID,"content_sha256":HASH,"created_at":TIME},("id","run_id","draft_id","content_sha256","created_at"))
+add("AgentFileAbandonmentInput",{**EXPECTED,"content_sha256":HASH,"reviewed":{"const":True},"reason":NAME},("expected_version","content_sha256","reviewed","reason"))
 file_update = {"run_id": ID, "file_id": ID, "base_version_id": ID, "file_version": VERSION, "intent_sha256": HASH, "target": ref("AgentFileUpdateTarget"),
     "status": enum("authorized", "committed"), "drafts": array(ref("AgentFileDraft"), maxItems=3), "operation_id": nullable(ID), "result": nullable(ref("FileCommitResult"))}
 add("AgentFileUpdateView", {**file_update, "recovery":ref("AgentFileRecoveryView")}, tuple(file_update))
@@ -880,7 +884,12 @@ contract_body_view={"run_id":ID,"input":ref("AgentContractBodyInput"),"before":r
 add("AgentContractBodyView",contract_body_view,tuple(contract_body_view))
 contract_body_adopt={"intent_sha256":HASH,"version_id":ID,"content_sha256":HASH,"reviewed":{"const":True},"reason":NAME}
 add("AgentContractBodyAdopt",contract_body_adopt,tuple(contract_body_adopt))
-add("RunCreate", {**EXPECTED, "context_security_version": VERSION, "profile_id": ID,
+add("TelegramDisclosurePreview",{"request_id":ID,"run_id":ID,"run_version":VERSION,"body":{"type":"string","minLength":1,"maxLength":20000},"body_sha256":HASH,"total_chars":{"type":"integer","minimum":1,"maximum":20000},"channel_label":NAME,"chat_id":TG_CHAT,"topic_id":TG_TOPIC},("request_id","run_id","run_version","body","body_sha256","total_chars","channel_label","chat_id","topic_id"))
+add("TelegramDisclosureInput",{**EXPECTED,"body_sha256":HASH,"start_char":{"type":"integer","minimum":0,"maximum":20000},"max_chars":{"type":"integer","minimum":1,"maximum":2000},"reviewed":{"const":True},"disclosed_to_group":{"const":True}},("expected_version","body_sha256","start_char","max_chars","reviewed","disclosed_to_group"))
+add("TelegramDisclosureReceipt",{"id":ID,"delivery_id":ID,"run_id":ID,"body_sha256":HASH,"start_char":{"type":"integer","minimum":0},"max_chars":{"type":"integer","minimum":1,"maximum":2000}},("id","delivery_id","run_id","body_sha256","start_char","max_chars"))
+add("TelegramHandoffInput",{"request_id":ID,**EXPECTED,"request_sha256":HASH,"reviewed":{"const":True}},("request_id","expected_version","request_sha256","reviewed"))
+add("TelegramHandoffRequest",{"id":ID,"version":VERSION,"request_sha256":HASH,"text":{"type":"string","minLength":1,"maxLength":4000},"skill_id":TG_SKILL,"project_id":nullable(ID),"channel_label":NAME,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"eligible":{"type":"boolean"},"expires_at":TIME,"run_id":nullable(ID)},("id","version","request_sha256","text","skill_id","project_id","channel_label","chat_id","topic_id","eligible","expires_at","run_id"))
+add("RunCreate", {"telegram_handoff":ref("TelegramHandoffInput"),**EXPECTED, "context_security_version": VERSION, "profile_id": ID,
     "client_message_id": ID, "message": {"type": "string", "minLength": 1, "maxLength": 20000},
     "skill_id": NAME, "context_refs": array(ref("ResourceRef"), maxItems=20), "mutation": ref("AgentMutationInput"), "file_update": ref("AgentFileUpdateInput"), "file_create": ref("AgentFileCreateInput"), "file_recovery": ref("AgentFileRecoveryInput"), "oa_request": ref("AgentOARequestInput"), "post_write":ref("AgentPostWriteInput")},
     ("expected_version", "context_security_version", "profile_id", "client_message_id", "message"))
@@ -891,6 +900,7 @@ add("Run", {**RECORD, "conversation_id": ID,
     "safe_error_code": nullable(NAME), "actor_id": ID, "profile_id": ID, "client_message_id": ID, "can_cancel": {"type": "boolean"},
     "cancel_requested_at": nullable(TIME), "expires_at": TIME, "mutation": ref("AgentMutationView"), "file_update": ref("AgentFileUpdateView"), "file_create": ref("AgentFileCreateView"), "oa_request": ref("AgentOARequestView"), "post_write":ref("AgentPostWriteView"), "outcome": nullable(enum("draft", "pending", "awaiting_input", "completed", "conflict", "denied", "failed"))},
     ("id", "version", "conversation_id", "state", "last_event_seq", "actor_id", "profile_id", "client_message_id", "can_cancel", "cancel_requested_at", "expires_at"))
+SCHEMAS["Run"]["properties"]["telegram_handoff"] = ref("TelegramHandoffInput")
 SCHEMAS["Run"]["properties"]["contract_body"]=ref("AgentContractBodyView")
 add("Message", {"id": ID, "run_id": ID, "seq": VERSION, "role": enum("user", "assistant", "system"), "body": TEXT,
     "source_refs": array(ref("AgentSourceSnapshot"), maxItems=20), "visibility": enum("available", "unavailable"),
@@ -1535,6 +1545,12 @@ for action in ("publish", "retire", "revise"):
     operation("/project-templates/{id}/" + action, "post", action + "ProjectTemplate", "ProjectTemplate", "ProjectTemplateAction", 201 if action == "revise" else 200)
 
 operation("/me", "get", "getMe", "Me")
+
+operation("/runs/{id}/file-drafts/{draft}/abandon-recovery","post","abandonAgentFileRecovery","AgentFileAbandonment","AgentFileAbandonmentInput")
+operation("/me/telegram/requests/{id}/outbound-preview","get","getTelegramDisclosurePreview","TelegramDisclosurePreview")
+operation("/me/telegram/requests/{id}/outbound-review","post","approveTelegramDisclosure","TelegramDisclosureReceipt","TelegramDisclosureInput")
+operation("/me/telegram/requests/{id}/handoff","get","getTelegramHandoffRequest","TelegramHandoffRequest")
+
 operation("/me/telegram","get","getOwnTelegramStatus","TelegramStatus")
 operation("/me/telegram/challenges","post","createTelegramBindingChallenge","TelegramChallenge","TelegramChallengeCreate",201)
 operation("/me/telegram/challenges/{id}/confirm","post","confirmTelegramBinding","TelegramBinding","TelegramChallengeConfirm",201)
@@ -1549,7 +1565,7 @@ PATHS["/telegram/operations"]["get"]["parameters"] += [{"name":"state","in":"que
 operation("/telegram/operations/{id}","get","getTelegramOperation","TelegramOperationDetails")
 operation("/telegram/operations/{id}/reconcile","post","reconcileTelegramOperation","TelegramDelivery","TelegramOperationReconcile")
 operation("/telegram/inbox-operations","get","listTelegramInboxOperations","TelegramInboxOperation",listing=True)
-PATHS["/telegram/inbox-operations"]["get"]["parameters"] += [{"name":"state","in":"query","schema":tg_request["state"]},{"name":"channel_id","in":"query","schema":ID},{"name":"skill_id","in":"query","schema":enum("project-briefing","incident-summary")}]
+PATHS["/telegram/inbox-operations"]["get"]["parameters"] += [{"name":"state","in":"query","schema":tg_request["state"]},{"name":"channel_id","in":"query","schema":ID},{"name":"skill_id","in":"query","schema":TG_SKILL}]
 operation("/telegram/inbox-operations/{id}","get","getTelegramInboxOperation","TelegramInboxOperationDetails")
 operation("/telegram/inbox-operations/{id}/history","get","getTelegramInboxOperationHistory","TelegramInboxOperationEvent",listing=True)
 operation("/telegram/inbox-operations/{id}/withdraw","post","withdrawTelegramInboxOperation","TelegramInboxOperation","TelegramInboxWithdraw")
@@ -2402,6 +2418,13 @@ operation("/agent/runtime-profiles","get","listAgentProfileOperations","AgentPro
 PATHS["/agent/runtime-profiles"]["get"]["parameters"].append({"name":"skill_id","in":"query","schema":enum("project-create","project-update","file-update","information-organize","oa-assist","subscription-review","project-briefing","incident-summary")})
 operation("/agent/runtime-profiles/{id}","get","getAgentProfileOperation","AgentProfileDetails")
 operation("/agent/runtime-profiles/{id}/retire","post","retireAgentProfile","AgentProfileDetails","AgentProfileRetire")
+add("AgentSkillRelease",{"id":ID,"profile_id":ID,"version":VERSION,"stage":enum("pilot","published","disabled"),"profile_version":VERSION,"skill_sha256":HASH,"active_basis_sha256":HASH,"assessment_run_ids":array(ID,maxItems=20),"rollback_release_id":nullable(ID),"reason":NAME,"actor_id":ID,"created_at":TIME},("id","profile_id","version","stage","profile_version","skill_sha256","active_basis_sha256","assessment_run_ids","rollback_release_id","reason","actor_id","created_at"))
+add("AgentSkillReleaseDetails",{"profile":ref("AgentProfileDetails"),"version":{"type":"integer","minimum":0},"history":array(ref("AgentSkillRelease"),maxItems=20),"before_version":nullable(VERSION)},("profile","version","history","before_version"))
+add("AgentSkillReleaseInput",{"expected_version":{"type":"integer","minimum":0},"profile_version":VERSION,"skill_sha256":HASH,"active_basis_sha256":HASH,"stage":enum("pilot","published","disabled"),"assessment_run_ids":array(ID,maxItems=20,uniqueItems=True),"rollback_release_id":nullable(ID),"reviewed":{"const":True},"reason":NAME},("expected_version","profile_version","skill_sha256","active_basis_sha256","stage","assessment_run_ids","reviewed","reason"))
+operation("/agent/runtime-profiles/{id}/skill-releases","get","getAgentSkillReleases","AgentSkillReleaseDetails")
+PATHS["/agent/runtime-profiles/{id}/skill-releases"]["get"]["parameters"].append({"name":"before_version","in":"query","schema":VERSION})
+operation("/agent/runtime-profiles/{id}/skill-releases","post","recordAgentSkillRelease","AgentSkillReleaseDetails","AgentSkillReleaseInput")
+
 
 # Organization storage metadata and reviewed ordinary replica retries.
 storage_error=enum("REPLICA_HASH_MISMATCH","REPLICA_SIZE_MISMATCH","REPLICA_SOURCE_UNAVAILABLE","REPLICA_SOURCE_MISMATCH","STORAGE_EPOCH_CHANGED","STORAGE_CONFIGURATION_CHANGED","STORAGE_TARGETS_NOT_CONFIGURED","STORAGE_UNAVAILABLE","OBJECT_NOT_FOUND","LEASE_EXHAUSTED","ACCESS_DENIED","RETRY_EXHAUSTED","PROVIDER_UNAVAILABLE","OTHER_STORAGE_FAILURE")

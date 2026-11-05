@@ -3,7 +3,7 @@ import { MobileError, type Schemas } from './session';
 export type Channel = Schemas['TelegramChannel'];
 export type Challenge = Schemas['TelegramChallenge'];
 export type Binding = Schemas['TelegramBinding'];
-export const telegramSkills = { 'project-briefing': '项目简报', 'incident-summary': '服务事件摘要' };
+export const telegramSkills = { 'project-create':'新建项目（门户授权）','project-update':'更新项目（门户授权）','file-update':'文件处理（门户授权）','information-organize':'信息整理（门户授权）','oa-assist':'OA辅助（门户授权）','subscription-review':'订阅审阅（门户授权）', 'project-briefing': '项目简报', 'incident-summary': '服务事件摘要' };
 export type ChannelInput = { bot: string; chat: string; topic: string; label: string; project: string;
   allowed: Channel['allowed_skill_ids']; defaultSkill: string; state: Channel['state']; delivery: boolean };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -27,7 +27,7 @@ export function channelPayload(input: ChannelInput, current: Channel | undefined
   if (!label || [...label].length > 200 || project && !uuid.test(project)) invalid('请核对入口名称与通过候选列表选择的项目。');
   if (!['active', 'paused'].includes(input.state) || !current && input.state !== 'paused') invalid('新入口必须先以暂停状态创建。');
   const allowed = [...input.allowed];
-  if (!allowed.length || allowed.length > 2 || new Set(allowed).size !== allowed.length || allowed.some(id => !Object.prototype.hasOwnProperty.call(telegramSkills, id))) invalid('请明确选择一至两项允许任务。');
+  if (!allowed.length || allowed.length > 8 || new Set(allowed).size !== allowed.length || allowed.some(id => !Object.prototype.hasOwnProperty.call(telegramSkills, id))) invalid('请明确选择一至两项允许任务。');
   if (input.defaultSkill && !allowed.includes(input.defaultSkill as keyof typeof telegramSkills)) invalid('默认任务必须属于本次允许任务。');
   const common = { label, project_id: project || null, allowed_skill_ids: allowed,
     default_skill_id: (input.defaultSkill || null) as Channel['default_skill_id'], delivery_enabled: input.delivery, reason: reason(explanation) };

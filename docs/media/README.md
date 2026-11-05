@@ -1,5 +1,7 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+157：[整批功能当前截图／实际录屏／导览GIF](batch-round-157/README.md)。历史素材与失败尝试分别保留，真实服务验收继续开放。
+
 **增量156 / Controlled Office creation**
 
 三张实际Web截图分别记录准确目录／名称／Word选择、已授权未正式提交、真实文件提交后的Office摘录及准确版本回执。录制使用受控模型驱动和合成对象传输，实际业务API／PG／工具／扫描／提交执行；不代表真实Codex／云接入。

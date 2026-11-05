@@ -5,6 +5,7 @@
     "outDir": "../.local/mobile-concern-tests"
   },
   "include": [
+    "src/platform/batch157.test.ts",
     "src/platform/notification-telegram.test.ts",
     "src/platform/followups.test.ts",
     "src/platform/deliverable-submission.test.ts",
