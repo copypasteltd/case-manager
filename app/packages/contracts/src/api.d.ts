@@ -10587,7 +10587,7 @@ export interface components {
         };
         AgentSourceSnapshot: {
             /** @enum {string} */
-            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report" | "agent_business_draft" | "agent_business_revision";
+            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report" | "agent_business_draft" | "agent_business_revision" | "agent_fixed_delivery";
             /** Format: uuid */
             id: string;
             version_id?: string | null;
@@ -10771,6 +10771,8 @@ export interface components {
             intent_sha256: string;
             target: components["schemas"]["AgentFileUpdateTarget"];
             /** @enum {string} */
+            authorization_state: "current" | "changed" | "legacy_unbound";
+            /** @enum {string} */
             status: "authorized" | "committed";
             drafts: components["schemas"]["AgentFileDraft"][];
             operation_id: string | null;
@@ -10782,6 +10784,8 @@ export interface components {
             run_id: string;
             intent_sha256: string;
             target: components["schemas"]["AgentFileUpdateTarget"];
+            /** @enum {string} */
+            authorization_state: "current" | "changed" | "legacy_unbound";
             /** @enum {string} */
             status: "authorized" | "committed";
             drafts: components["schemas"]["AgentFileDraft"][];

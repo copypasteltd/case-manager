@@ -8,6 +8,7 @@ import (
 
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/files"
+	"copypaste.hk/platform/internal/identity"
 	"github.com/jackc/pgx/v5"
 )
 
@@ -17,17 +18,18 @@ type FileUpdateInput struct {
 	ExpectedFileVersion int64  `json:"expected_file_version"`
 }
 type FileUpdateView struct {
-	RunID         string            `json:"run_id"`
-	FileID        string            `json:"file_id"`
-	BaseVersionID string            `json:"base_version_id"`
-	FileVersion   int64             `json:"file_version"`
-	IntentSHA256  string            `json:"intent_sha256"`
-	Target        fileUpdateTarget  `json:"target"`
-	Status        string            `json:"status"`
-	Drafts        []FileDraftView   `json:"drafts"`
-	OperationID   *string           `json:"operation_id"`
-	Result        json.RawMessage   `json:"result"`
-	Recovery      *FileRecoveryView `json:"recovery,omitempty"`
+	RunID              string            `json:"run_id"`
+	FileID             string            `json:"file_id"`
+	BaseVersionID      string            `json:"base_version_id"`
+	FileVersion        int64             `json:"file_version"`
+	IntentSHA256       string            `json:"intent_sha256"`
+	Target             fileUpdateTarget  `json:"target"`
+	Status             string            `json:"status"`
+	AuthorizationState string            `json:"authorization_state"`
+	Drafts             []FileDraftView   `json:"drafts"`
+	OperationID        *string           `json:"operation_id"`
+	Result             json.RawMessage   `json:"result"`
+	Recovery           *FileRecoveryView `json:"recovery,omitempty"`
 }
 type fileUpdateTarget struct {
 	Name           string `json:"name"`
@@ -40,6 +42,7 @@ type fileIntentRecord struct {
 	FileUpdateView
 	Mode                                               string
 	OrgID, ActorID, ConversationID, BaseSHA256, Intent string
+	SessionID, OriginChannel                           *string
 	RecoveryRecord                                     *fileRecoveryRecord
 }
 type FileDraftView struct {
@@ -55,6 +58,9 @@ type FileDraftView struct {
 }
 
 func prepareFileIntent(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, runID string, in FileUpdateInput, members []string, request string) (*fileIntentRecord, error) {
+	if err := identity.RequireInteractiveSession(ctx, tx, a, false); err != nil {
+		return nil, err
+	}
 	if !core.ValidID(in.FileID) || !core.ValidID(in.BaseVersionID) || in.FileID != strings.ToLower(in.FileID) || in.BaseVersionID != strings.ToLower(in.BaseVersionID) || core.RequireVersion(in.ExpectedFileVersion) != nil {
 		return nil, core.Invalid("file_update", "请明确文件、准确基础版本及文件元数据版本")
 	}
@@ -81,9 +87,9 @@ func prepareFileIntent(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversat
 	}
 	target := fileUpdateTarget{Name: f.Name, FolderID: f.FolderID, Classification: f.Classification, MediaType: media}
 	intent, _ := json.Marshal(map[string]any{"run_id": runID, "file_id": in.FileID, "base_version_id": in.BaseVersionID, "file_version": f.Version,
-		"actor_id": a.UserID, "actor_auth_version": a.AuthVersion, "organization_auth_version": a.OrgAuthVersion, "conversation_id": c.ID,
+		"actor_id": a.UserID, "session_id": a.SessionID, "origin_channel": a.Channel, "actor_auth_version": a.AuthVersion, "organization_auth_version": a.OrgAuthVersion, "conversation_id": c.ID,
 		"conversation_revision_id": c.CurrentRevisionID, "context_security_version": c.ContextSecurityVersion, "target": target, "base_sha256": sha, "request": request})
-	return &fileIntentRecord{FileUpdateView: FileUpdateView{RunID: runID, FileID: in.FileID, BaseVersionID: in.BaseVersionID, FileVersion: f.Version, IntentSHA256: core.Digest(intent), Target: target, Status: "authorized", Drafts: []FileDraftView{}}, OrgID: a.OrgID, ActorID: a.UserID, ConversationID: c.ID, BaseSHA256: sha, Intent: string(intent)}, nil
+	return &fileIntentRecord{FileUpdateView: FileUpdateView{RunID: runID, FileID: in.FileID, BaseVersionID: in.BaseVersionID, FileVersion: f.Version, IntentSHA256: core.Digest(intent), Target: target, Status: "authorized", AuthorizationState: "current", Drafts: []FileDraftView{}}, OrgID: a.OrgID, ActorID: a.UserID, ConversationID: c.ID, SessionID: &a.SessionID, OriginChannel: &a.Channel, BaseSHA256: sha, Intent: string(intent)}, nil
 }
 func insertFileIntent(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) error {
 	target, _ := json.Marshal(i.Target)
@@ -91,8 +97,8 @@ func insertFileIntent(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) error
 	if mode == "" {
 		mode = "update"
 	}
-	_, err := tx.Exec(ctx, `INSERT INTO agent_file_intents(run_id,org_id,actor_id,conversation_id,file_id,base_version_id,file_version,target_data,base_sha256,intent,intent_sha256,mode)
- VALUES($1,$2,$3,$4,NULLIF($5,'')::uuid,NULLIF($6,'')::uuid,$7,$8,$9,$10,$11,$12)`, i.RunID, i.OrgID, i.ActorID, i.ConversationID, i.FileID, i.BaseVersionID, i.FileVersion, target, i.BaseSHA256, i.Intent, i.IntentSHA256, mode)
+	_, err := tx.Exec(ctx, `INSERT INTO agent_file_intents(run_id,org_id,actor_id,conversation_id,file_id,base_version_id,file_version,target_data,base_sha256,intent,intent_sha256,mode,session_id,origin_channel)
+ VALUES($1,$2,$3,$4,NULLIF($5,'')::uuid,NULLIF($6,'')::uuid,$7,$8,$9,$10,$11,$12,$13,$14)`, i.RunID, i.OrgID, i.ActorID, i.ConversationID, i.FileID, i.BaseVersionID, i.FileVersion, target, i.BaseSHA256, i.Intent, i.IntentSHA256, mode, i.SessionID, i.OriginChannel)
 	if err != nil {
 		return err
 	}
@@ -101,9 +107,9 @@ func insertFileIntent(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) error
 func fileIntentRecordRead(ctx context.Context, tx pgx.Tx, org, id string) (*fileIntentRecord, error) {
 	var out fileIntentRecord
 	var target []byte
-	err := tx.QueryRow(ctx, `SELECT i.run_id,i.org_id,i.actor_id,i.conversation_id,coalesce(i.file_id::text,''),coalesce(i.base_version_id::text,''),i.file_version,i.target_data,i.base_sha256,i.intent,i.intent_sha256,c.operation_id,c.result_data,i.mode
+	err := tx.QueryRow(ctx, `SELECT i.run_id,i.org_id,i.actor_id,i.conversation_id,coalesce(i.file_id::text,''),coalesce(i.base_version_id::text,''),i.file_version,i.target_data,i.base_sha256,i.intent,i.intent_sha256,c.operation_id,c.result_data,i.mode,i.session_id::text,i.origin_channel
  FROM agent_file_intents i LEFT JOIN agent_file_commits c ON c.org_id=i.org_id AND c.run_id=i.run_id WHERE i.org_id=$1 AND i.run_id=$2`, org, id).
-		Scan(&out.RunID, &out.OrgID, &out.ActorID, &out.ConversationID, &out.FileID, &out.BaseVersionID, &out.FileVersion, &target, &out.BaseSHA256, &out.Intent, &out.IntentSHA256, &out.OperationID, &out.Result, &out.Mode)
+		Scan(&out.RunID, &out.OrgID, &out.ActorID, &out.ConversationID, &out.FileID, &out.BaseVersionID, &out.FileVersion, &target, &out.BaseSHA256, &out.Intent, &out.IntentSHA256, &out.OperationID, &out.Result, &out.Mode, &out.SessionID, &out.OriginChannel)
 	if err == pgx.ErrNoRows {
 		return nil, nil
 	}
@@ -173,6 +179,10 @@ func (s *Service) executionFileIntent(ctx context.Context, tx pgx.Tx, st executi
 	if st.Profile.SkillID != "file-update" || i.ActorID != st.Actor.UserID {
 		return nil, core.Missing()
 	}
+	if err = requireFileIntentSession(ctx, tx, st.Actor, i); err != nil {
+		return nil, err
+	}
+	i.AuthorizationState = "current"
 	ai := st.Actor
 	ai.RunID = st.Run.ID
 	if _, err = fileIntentSource(ctx, tx, ai, st.Conversation, i.RunID, st.Run.audience); err != nil {
@@ -208,6 +218,10 @@ func (s *Service) executionFileIntent(ctx context.Context, tx pgx.Tx, st executi
 	return i, nil
 }
 func fileUpdateViewRead(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) (FileUpdateView, error) {
+	state, err := fileIntentAuthorizationState(ctx, tx, i)
+	if err != nil {
+		return FileUpdateView{}, err
+	}
 	rows, err := tx.Query(ctx, `SELECT d.id,d.content_sha256,d.size_bytes::text,d.diff,u.state,u.scan_state,p.plan_hash,u.committed_version_id,EXISTS(SELECT 1 FROM agent_file_abandonments ab WHERE ab.org_id=d.org_id AND ab.draft_id=d.id)
  FROM agent_file_drafts d JOIN upload_sessions u ON u.org_id=d.org_id AND u.id=d.id
  LEFT JOIN agent_file_proposals p ON p.org_id=d.org_id AND p.draft_id=d.id WHERE d.org_id=$1 AND d.run_id=$2 ORDER BY d.created_at,d.id`, i.OrgID, i.RunID)
@@ -216,6 +230,7 @@ func fileUpdateViewRead(ctx context.Context, tx pgx.Tx, i *fileIntentRecord) (Fi
 	}
 	defer rows.Close()
 	view := i.FileUpdateView
+	view.AuthorizationState = state
 	view.Drafts = []FileDraftView{}
 	for rows.Next() {
 		var d FileDraftView

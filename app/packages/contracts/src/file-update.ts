@@ -64,3 +64,10 @@ export function fileScanState(state: string): string {
   const states: Record<string, string> = { pending: '等待扫描', clean: '扫描通过', blocked: '扫描阻断', unscannable: '暂无法扫描', infected: '检出风险', failed: '扫描失败', unknown: '扫描尚未确认', waived: '人工豁免不能用于秘书提交' };
   return states[state] ?? '扫描状态待核对';
 }
+
+export function fileAuthorizationMessage(state: string | undefined): string {
+  if (state === 'current') return '本次文件授权绑定原登录；退出或登录到期后，后续处理会停止。已提交文件与历史回执继续保留。';
+  if (state === 'changed') return '原授权登录已失效，后续文件处理已停止。请重新登录后明确发起新请求，或选择准确草稿恢复；历史提交不会撤销。';
+  if (state === 'legacy_unbound') return '这份历史请求未保存原授权登录，禁止继续执行；历史回执仍可查阅，继续处理须明确建立新授权。';
+  return '文件授权来源尚未核实，请重新读取实际结果；请勿据此继续执行。';
+}

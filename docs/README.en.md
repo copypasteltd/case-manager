@@ -1,5 +1,19 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+**Current increment163 / 当前增量163**
+
+All C01–C07 code and fixtures are completed and archived before unified checks. Initial failures are retained, repairs are grouped and only affected checks repeat. All23 formal packages (14P0/9P1) remain open; all eight Skills stay draft.
+
+File creation, updates and asynchronous upload/scan/promotion bind the original human login. Logout/expiry stops subsequent work. Another login may read permitted history or explicitly recover exact saved bytes into a new run; it never renews old authority. Four clients display the authorization state, without new L1 MFA or exposed session IDs. Fixed execution, organization and notification links bind exact runs/hashes/ordinary receipts. Archive attachments and storage operations retain exact version/replica identity and current ordinary access.
+
+Choose the exact file/folder in a private conversation, then inspect actual draft/scan/commit receipts. If authorization changes, explicitly create a new request or exact-draft recovery. Read [design and usage](development/163-batch-functional-closure.md), [all23 numbered dispositions](delivery/05-functional-closure-163.md) and [actual validation](quality/163-batch-functional-verification.md).
+
+Source163 uses schema129. Matching rc.9 artifacts are prepared by the [164 delivery pipeline](development/164-frozen-release-delivery.md) after verification. Existing rc.8/APK154 remain business153/schema113; eight freezes are immutable. DevelopmentPG100/API remain unchanged. Real configuration is deferred by the user, and no production/model/cloud/platform acceptance is inferred. Excluded device/network/historical migration/DR/AI-fee gates stay excluded.
+
+本轮实际检查 / Executed: Web527 · shared mobile553 · runtime66 · native10 test entries +1 package; [screenshots / MP4 / GIF](media/batch-round-163/README.md)。完整回归、真实接入和正式签名验收保持开放。
+
+此前增量记录 / Earlier increments
+
 **当前开发增量162 / Current development increment162**
 
 本轮先完成C01–C06全部声明源码、接口、迁移、四端入口、运行器与用例，再统一检查和集中修复。全部23项正式工作包仍开放（14P0／9P1），八项Skill仍draft。详见[整轮实现与使用](development/162-batch-functional-closure.md)、[23项编号清单](delivery/05-functional-closure-162.md)和[本轮证据](quality/162-batch-functional-verification.md)。

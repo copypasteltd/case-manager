@@ -154,7 +154,8 @@ func TestAgentFileUpdates(t *testing.T) {
 		Tools []any `json:"tools"`
 	}
 	_ = json.Unmarshal(list["result"], &listed)
-	if len(listed.Tools) != 9 {
+	// The exact-original Office workspace reader was added with increment157.
+	if len(listed.Tools) != 10 {
 		t.Fatal("file update profile widened its tools")
 	}
 	args := map[string]any{"file_id": base.File.ID, "base_version_id": base.Version.ID, "edits": []storage.AgentTextEdit{{Start: 6, End: 9, Text: "新计划🙂"}}}

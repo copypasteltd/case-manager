@@ -1,0 +1,31 @@
+{
+  "reviewed": true,
+  "images": [
+    {
+      "file": "docs/media/batch-round-163/batch-round-163-functional-wave-mobile-final/mobile-history-read-receipt.png",
+      "sha256": "60c04efd2c2b88b9bb58b11d24b9620e7a399e6a3cc90e60b1a0669a394f0b68"
+    },
+    {
+      "file": "docs/media/batch-round-163/batch-round-163-functional-wave-mobile-final/mobile-original-session-changed.png",
+      "sha256": "60c04efd2c2b88b9bb58b11d24b9620e7a399e6a3cc90e60b1a0669a394f0b68"
+    },
+    {
+      "file": "docs/media/batch-round-163/batch-round-163-functional-wave-web-final/web-history-read-receipt.png",
+      "sha256": "fae4383c663a3687e04f10d2cd0934c126a90f7010d82420611a731985286a0b"
+    },
+    {
+      "file": "docs/media/batch-round-163/batch-round-163-functional-wave-web-final/web-original-session-changed.png",
+      "sha256": "764cebb6a9ce737fb270645e2760bfe1ef18f17c22ed7198a0429c1c67475fd2"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-163/visual-review-mobile-gif-frame.png",
+      "sha256": "0355aba429e4befd65c68b509d5e4f47f2aded0af524cb8166e8665a17b8e778"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-163/visual-review-web-gif-frame.png",
+      "sha256": "6dfb3a6343d99c9bd2699f0fe7cc43c11dff30c3bde4054f74620d3f18608fd1"
+    }
+  ],
+  "observations": "All four primary screenshots and both actual-recording GIF final frames were visually inspected. Original-session change is readable, saved history stays visible, no password/MFA/private capability is shown. Mobile is shared H5, not device acceptance.",
+  "formal_acceptance": false
+}

@@ -1,0 +1,24 @@
+{
+  "initial_native_record": "native-tests-initial.json",
+  "initial_native_passed": false,
+  "initial_failed_tests": [
+    "TestAgentFileUpdates",
+    "TestRound163FileOriginalSessions/legacy_bytes_remain_readable_and_explicit_recovery_binds_new_login",
+    "TestRound163FileOriginalSessions",
+    "package"
+  ],
+  "retained_initial_pass_test_entries": 38,
+  "retained_initial_passes_reexecuted": false,
+  "affected_native_record": "native-tests-repair-1.json",
+  "affected_native_passed": true,
+  "initial_client_record": "client-checks-initial.json",
+  "current_client_record": "client-checks-repair-1.json",
+  "repairs": [
+    "Add existing agent_fixed_delivery source type to contract and regenerate consumers.",
+    "Supply current authorization state in two preexisting typed file fixtures.",
+    "Update stale pre157 file tool count from9 to10.",
+    "Explicit ordinary cancellation settles the legacy recovery source before exact new-login recovery."
+  ],
+  "application_scope_widened": false,
+  "formal_acceptance": false
+}

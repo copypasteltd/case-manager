@@ -1,5 +1,24 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+**当前增量163 / Current increment163**
+
+本轮C01–C07代码先全部完成并封存，再统一检查、汇总失败并集中修复。全部23项正式工作包仍开放（14P0／9P1），八项Skill仍draft；配置与公司制度待提供的部分继续明确列出。
+
+| 编号 | 本轮功能 |
+| --- | --- |
+| C01–C02 | 秘书文件新建／修改与异步上传、扫描、晋级绑定原登录；退出／到期后停止，另一登录只能读取历史或明确新建恢复。四端显示准确授权状态，L1不新增MFA。 |
+| C03 | 固定执行、目录整理和通知结果使用准确运行、意图摘要与普通回执入口；转移后的旧范围仅保留最小身份。 |
+| C04 | 归档附件固定文件版本；复制运维入口固定文件／版本／副本，修复移动地址。 |
+| C05–C07 | 前置用例、统一检查、媒体记录、全部编号处置及当前同版冻结164工程。 |
+
+使用时在本人秘书会话明确选择文件或目录；原登录失效后不要继续旧任务，按准确草稿明确发起新恢复。普通归档与副本入口仍核对当前权限，不回落到最新版本。详见[实现和使用](docs/development/163-batch-functional-closure.md)、[23项编号](docs/delivery/05-functional-closure-163.md)、[实际验证](docs/quality/163-batch-functional-verification.md)。
+
+163为冻结后源码，schema129；同版rc.9由[164交付流程](docs/development/164-frozen-release-delivery.md)在验证后构建。此前rc.8／APK154仍business153／schema113，八个旧冻结保持不变。真实配置后续提供，开发PG100／现有API不升级；不新增真机、网络性能、历史迁移／容灾或AI费用控制门槛。
+
+本轮实际检查 / Executed: Web527 · shared mobile553 · runtime66 · native10 test entries +1 package; [screenshots / MP4 / GIF](docs/media/batch-round-163/README.md)。完整回归、真实接入和正式签名验收保持开放。
+
+此前增量记录 / Earlier increments
+
 **当前开发增量162 / Current development increment162**
 
 本轮先完成C01–C06全部声明源码、接口、迁移、四端入口、运行器与用例，再统一检查和集中修复。全部23项正式工作包仍开放（14P0／9P1），八项Skill仍draft。详见[整轮实现与使用](docs/development/162-batch-functional-closure.md)、[23项编号清单](docs/delivery/05-functional-closure-162.md)和[本轮证据](docs/quality/162-batch-functional-verification.md)。

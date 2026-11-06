@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "actual_multi_part_zip_reassembled_byte_for_byte",
+    "truncated_and_equal_size_corrupted_parts_rejected",
+    "missing_rejected",
+    "order_rejected",
+    "traversal_rejected",
+    "hash_rejected",
+    "existing_output_preserved"
+  ],
+  "script_sha256": "726bc64fd7b7e2934db5248374241cc317e5250c3bf744863ee26c015ed5d71b",
+  "helper_sha256": "1983c101047f25177da3c77eb9855c73a6b3b529cbf3f645dcbdf4b4eb0d6aa6",
+  "full_goal_complete": false,
+  "virtualization_used": false
+}

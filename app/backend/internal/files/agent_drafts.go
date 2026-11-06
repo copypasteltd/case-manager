@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/identity"
 	"copypaste.hk/platform/internal/objectstore"
 	"copypaste.hk/platform/internal/platform"
 	"github.com/jackc/pgx/v5"
@@ -72,6 +73,9 @@ func (b *AgentDraftBackend) ReserveCreate(ctx context.Context, tx pgx.Tx, a core
 
 func (b *AgentDraftBackend) reserve(ctx context.Context, tx pgx.Tx, a core.Actor, id, folderID string, fileID, baseID *string, name, classification string, projectID *string, size int64, sha, media string, expires time.Time) (Upload, error) {
 	var out Upload
+	if err := requireAgentFileSession(ctx, tx, a); err != nil {
+		return out, err
+	}
 	if b == nil || b.Writer == nil || !core.ValidID(id) || size < 1 || size > AgentTextMaxBytes || !shaPattern.MatchString(sha) || (media != "text/plain" && media != "text/markdown" && AgentOfficeKind(media) == "") {
 		return out, core.Fail(503, "AGENT_DRAFT_WRITER_UNAVAILABLE", "秘书草稿写入身份尚未配置或格式不受支持")
 	}
@@ -201,6 +205,9 @@ func agentUpload(ctx context.Context, db platform.DBTX, a core.Actor, id string)
 	if !bound {
 		return out, core.Missing()
 	}
+	if err = requireAgentFileSession(ctx, db, a); err != nil {
+		return out, err
+	}
 	out, err = upload(ctx, db, a.OrgID, id, false)
 	if err != nil {
 		return out, err
@@ -210,6 +217,27 @@ func agentUpload(ctx context.Context, db platform.DBTX, a core.Actor, id string)
 	}
 	_, err = uploadTarget(ctx, db, a, out.FolderID, out.FileID)
 	return out, err
+}
+
+// Shared by the trusted draft/ordinary commit boundary and every storage
+// worker checkpoint. Never infer a legacy session or substitute another login.
+func requireAgentFileSession(ctx context.Context, db platform.DBTX, a core.Actor) error {
+	var session, channel *string
+	err := db.QueryRow(ctx, `SELECT i.session_id::text,i.origin_channel FROM agent_file_intents i
+ JOIN agent_runs r ON r.org_id=i.org_id AND r.id=i.run_id
+ WHERE i.org_id=$1 AND i.run_id=$2 AND i.actor_id=$3 AND r.actor_id=i.actor_id
+ AND r.channel=$4 AND r.actor_auth_version=$5 AND r.organization_auth_version=$6`, a.OrgID, a.RunID, a.UserID, a.Channel, a.AuthVersion, a.OrgAuthVersion).Scan(&session, &channel)
+	if err != nil && err != pgx.ErrNoRows {
+		return err
+	}
+	if err == pgx.ErrNoRows || session == nil || channel == nil || !core.ValidID(*session) || *channel != a.Channel {
+		return core.Fail(412, "AUTHORIZATION_CHANGED", "文件操作的原始登录授权已变化或未绑定")
+	}
+	human := a
+	human.RunID = ""
+	human.SessionID = *session
+	human.Channel = *channel
+	return identity.RequireInteractiveSession(ctx, db, human, false)
 }
 
 func (s *UploadService) authorizeAgent(ctx context.Context, db platform.DBTX, a core.Actor, id string) (Upload, Folder, error) {

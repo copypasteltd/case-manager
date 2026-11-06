@@ -71,7 +71,7 @@ function ArchiveRecord({ record, projectID }: { record: Archive; projectID: stri
     <p className="muted">{record.current_basis_state === 'current' ? '当前项目仍与这次归档依据一致。' : '项目状态或核查依据已有变化。这份记录保留归档当时的情况，请查看当前核查清单。'}</p>
     <h3>成果与交付总结</h3><p className="closeout-prose">{record.summary}</p><h3>经验与复盘</h3><p className="closeout-prose">{record.lessons_learned}</p><h3>后续跟进</h3><p className="closeout-prose">{record.follow_up}</p><p>归档原因：{record.reason}</p>
     <p className="muted">归档人：{record.actor_name}。已明确确认业务闭环与合同、财务及订阅处置。记录于 {new Date(record.created_at).toLocaleString('zh-HK', { timeZone: 'Asia/Hong_Kong' })}。</p>
-    {!!record.attachments.length && <ul className="closeout-files">{record.attachments.map(file => <li key={file.version_id}><span>{file.name} · 版本 {file.seq}</span><small>{file.size_bytes} B · SHA-256 {file.sha256}</small></li>)}</ul>}
+    {!!record.attachments.length && <ul className="closeout-files">{record.attachments.map(file => <li key={file.version_id}><div><span>{file.name} · 版本 {file.seq}</span><small>{file.size_bytes} B · SHA-256 {file.sha256}</small><Link className="text-button" to={'/files/' + encodeURIComponent(file.file_id) + '?' + new URLSearchParams({ version: file.version_id })}>查看这个固定版本</Link></div></li>)}</ul>}
     <Checklist groups={record.groups} projectID={projectID} historical />
   </details>;
 }

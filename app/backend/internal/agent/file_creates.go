@@ -7,6 +7,7 @@ import (
 
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/files"
+	"copypaste.hk/platform/internal/identity"
 	"github.com/jackc/pgx/v5"
 )
 
@@ -18,18 +19,19 @@ type FileCreateInput struct {
 }
 
 type FileCreateView struct {
-	RunID        string            `json:"run_id"`
-	IntentSHA256 string            `json:"intent_sha256"`
-	Target       fileUpdateTarget  `json:"target"`
-	Status       string            `json:"status"`
-	Drafts       []FileDraftView   `json:"drafts"`
-	OperationID  *string           `json:"operation_id"`
-	Result       json.RawMessage   `json:"result"`
-	Recovery     *FileRecoveryView `json:"recovery,omitempty"`
+	RunID              string            `json:"run_id"`
+	IntentSHA256       string            `json:"intent_sha256"`
+	Target             fileUpdateTarget  `json:"target"`
+	Status             string            `json:"status"`
+	AuthorizationState string            `json:"authorization_state"`
+	Drafts             []FileDraftView   `json:"drafts"`
+	OperationID        *string           `json:"operation_id"`
+	Result             json.RawMessage   `json:"result"`
+	Recovery           *FileRecoveryView `json:"recovery,omitempty"`
 }
 
 func fileCreateView(view FileUpdateView) FileCreateView {
-	return FileCreateView{RunID: view.RunID, IntentSHA256: view.IntentSHA256, Target: view.Target, Status: view.Status, Drafts: view.Drafts, OperationID: view.OperationID, Result: view.Result, Recovery: view.Recovery}
+	return FileCreateView{RunID: view.RunID, IntentSHA256: view.IntentSHA256, Target: view.Target, Status: view.Status, AuthorizationState: view.AuthorizationState, Drafts: view.Drafts, OperationID: view.OperationID, Result: view.Result, Recovery: view.Recovery}
 }
 
 func assignFileIntent(run *Run, i *fileIntentRecord, view FileUpdateView) {
@@ -83,6 +85,9 @@ func createTargetDigest(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversa
 }
 
 func prepareFileCreateIntent(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, runID string, in FileCreateInput, members []string, request string) (*fileIntentRecord, error) {
+	if err := identity.RequireInteractiveSession(ctx, tx, a, false); err != nil {
+		return nil, err
+	}
 	ai := a
 	ai.RunID = runID
 	f, err := files.AgentCreateTarget(ctx, tx, ai, in.FolderID, in.ExpectedFolderVersion, in.Name, in.MediaType, true)
@@ -95,9 +100,9 @@ func prepareFileCreateIntent(ctx context.Context, tx pgx.Tx, a core.Actor, c Con
 		return nil, err
 	}
 	intent, _ := json.Marshal(map[string]any{"mode": "create", "run_id": runID, "file_id": "", "base_version_id": "", "file_version": 0,
-		"actor_id": a.UserID, "actor_auth_version": a.AuthVersion, "organization_auth_version": a.OrgAuthVersion, "conversation_id": c.ID,
+		"actor_id": a.UserID, "session_id": a.SessionID, "origin_channel": a.Channel, "actor_auth_version": a.AuthVersion, "organization_auth_version": a.OrgAuthVersion, "conversation_id": c.ID,
 		"conversation_revision_id": c.CurrentRevisionID, "context_security_version": c.ContextSecurityVersion, "target": target, "base_sha256": digest, "request": request})
-	return &fileIntentRecord{Mode: "create", FileUpdateView: FileUpdateView{RunID: runID, IntentSHA256: core.Digest(intent), Target: target, Status: "authorized", Drafts: []FileDraftView{}}, OrgID: a.OrgID, ActorID: a.UserID, ConversationID: c.ID, BaseSHA256: digest, Intent: string(intent)}, nil
+	return &fileIntentRecord{Mode: "create", FileUpdateView: FileUpdateView{RunID: runID, IntentSHA256: core.Digest(intent), Target: target, Status: "authorized", AuthorizationState: "current", Drafts: []FileDraftView{}}, OrgID: a.OrgID, ActorID: a.UserID, ConversationID: c.ID, SessionID: &a.SessionID, OriginChannel: &a.Channel, BaseSHA256: digest, Intent: string(intent)}, nil
 }
 
 func fileCreateSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, i *fileIntentRecord, members, audience []string) (SourceSnapshot, error) {

@@ -63305,7 +63305,8 @@
               "agent_post_write",
               "agent_finance_report",
               "agent_business_draft",
-              "agent_business_revision"
+              "agent_business_revision",
+              "agent_fixed_delivery"
             ]
           },
           "id": {
@@ -64182,6 +64183,14 @@
           "target": {
             "$ref": "#/components/schemas/AgentFileUpdateTarget"
           },
+          "authorization_state": {
+            "type": "string",
+            "enum": [
+              "current",
+              "changed",
+              "legacy_unbound"
+            ]
+          },
           "status": {
             "type": "string",
             "enum": [
@@ -64229,6 +64238,7 @@
           "file_version",
           "intent_sha256",
           "target",
+          "authorization_state",
           "status",
           "drafts",
           "operation_id",
@@ -64248,6 +64258,14 @@
           },
           "target": {
             "$ref": "#/components/schemas/AgentFileUpdateTarget"
+          },
+          "authorization_state": {
+            "type": "string",
+            "enum": [
+              "current",
+              "changed",
+              "legacy_unbound"
+            ]
           },
           "status": {
             "type": "string",
@@ -64293,6 +64311,7 @@
           "run_id",
           "intent_sha256",
           "target",
+          "authorization_state",
           "status",
           "drafts",
           "operation_id",

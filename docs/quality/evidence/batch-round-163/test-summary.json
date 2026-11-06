@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "native_record": "native-tests-repair-1.json",
+  "client_record": "client-checks-repair-1.json",
+  "native_top_level_tests": 2,
+  "native_test_entries": 10,
+  "native_result_records": 11,
+  "web_tests": 527,
+  "shared_mobile_tests": 553,
+  "shared_mobile_breakdown": [
+    240,
+    308,
+    5
+  ],
+  "runtime_tests": 66,
+  "draft_skills": 8,
+  "private_log_hashes": {
+    "web-tests": {
+      "sha256": "3e756c45d3cb47ce40b93ad355463e010017a6414873fbfcbfb9702c5cec4ab4"
+    },
+    "mobile-tests": {
+      "sha256": "1c19a1f1c11202a4b8906d7af9918050d849c867765a4f555a20dcfc97076ec6"
+    },
+    "mobile-new-contracts": {
+      "sha256": "312714efbf1fbcf136711d3532cb3de08538381feec31b2d1d26519ad07ae727"
+    },
+    "runtime-tests": {
+      "sha256": "3f39266b3ec894bc8079df91be054cfe7a561d24301cdb5b46f8ec4799d8a681"
+    }
+  },
+  "script_sha256": "ce711c3df843be75ba39a0c71b4859430804c081327715bc5cfa150ec09649d9",
+  "full_backend_regression": false,
+  "full_client_regression": false,
+  "production_ready": false
+}

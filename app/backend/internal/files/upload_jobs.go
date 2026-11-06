@@ -153,6 +153,9 @@ func (s *UploadService) workerAllowed(ctx context.Context, tx pgx.Tx, j jobqueue
 		if !live || actorVersion != a.AuthVersion || orgVersion != a.OrgAuthVersion {
 			return core.Fail(412, "AUTHORIZATION_CHANGED", "秘书草稿的原始授权已变化")
 		}
+		if err = requireAgentFileSession(ctx, tx, a); err != nil {
+			return err
+		}
 	}
 	f, err := uploadTarget(ctx, tx, a, u.FolderID, u.FileID)
 	if err != nil {

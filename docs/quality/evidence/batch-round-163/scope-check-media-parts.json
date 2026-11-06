@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "whole_declared_code_and_all23_dispositions_precede_checks",
+      "passed": true
+    },
+    {
+      "name": "pretest_archive_preserves_exact_whole_wave",
+      "passed": true
+    },
+    {
+      "name": "native_selected_execution_passed",
+      "passed": true
+    },
+    {
+      "name": "native_actual_consumer_bytes_current",
+      "passed": true
+    },
+    {
+      "name": "native_starts_after_whole_code_wave",
+      "passed": true
+    },
+    {
+      "name": "file_original_session_family_executed",
+      "passed": true
+    },
+    {
+      "name": "client_selected_execution_passed",
+      "passed": true
+    },
+    {
+      "name": "client_actual_consumer_bytes_current",
+      "passed": true
+    },
+    {
+      "name": "client_starts_after_whole_code_wave",
+      "passed": true
+    },
+    {
+      "name": "complete_selected_client_wave_executed",
+      "passed": true
+    },
+    {
+      "name": "counts_refer_to_selected_passed_records",
+      "passed": true
+    },
+    {
+      "name": "web_capture_and_owned_cleanup",
+      "passed": true
+    },
+    {
+      "name": "web_actual_capture_inputs_current",
+      "passed": true
+    },
+    {
+      "name": "web_actual_media_bytes",
+      "passed": true
+    },
+    {
+      "name": "mobile_capture_and_owned_cleanup",
+      "passed": true
+    },
+    {
+      "name": "mobile_actual_capture_inputs_current",
+      "passed": true
+    },
+    {
+      "name": "mobile_actual_media_bytes",
+      "passed": true
+    },
+    {
+      "name": "primary_screenshots_and_gif_frames_reviewed",
+      "passed": true
+    },
+    {
+      "name": "lossless_media_parts_and_rejection_checks_passed",
+      "passed": true
+    },
+    {
+      "name": "all23_formal_packages_and_eight_draft_skills_remain_open",
+      "passed": true
+    },
+    {
+      "name": "prior_proofs_media_and_migrations_preserved",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/batch-round-163/freeze-code-initial.json": "b3321c3389c3faef35d46498a28a99646c4a23b6f727a05f209a249e8bea6932",
+    "docs/quality/evidence/batch-round-163/code-wave-initial-archive.json": "64b100a3dc1e171ef440faa62b4b7311ded14158f2f49275c916bf4f66d9a8c7",
+    "docs/quality/evidence/batch-round-163/native-tests-repair-1.json": "b27794ef57e139a33a7e083ef013987c477fa347ee9073f7069975f49c31fe20",
+    "docs/quality/evidence/batch-round-163/client-checks-repair-1.json": "48672927a5f82767d984f233c65bef2ebea0181e6fa5d0bacec80995f757dcf8",
+    "docs/quality/evidence/batch-round-163/test-summary.json": "07cb71bcf234949359b03eab4f21bfeed588099580c0b1ee825316ddd174a5c7",
+    "docs/quality/evidence/batch-round-163-functional-wave-web-final/result.json": "3a29ff9336c7ce7488df2dc363bfcd48f8bb4f76c1193bfda794b82ba41ea8f2",
+    "docs/quality/evidence/batch-round-163-functional-wave-web-final/source-manifest.json": "91397f58156b393c93156d6cf52c3d46f623568dde48a59e6c77f93f4c1ad116",
+    "docs/quality/evidence/batch-round-163-functional-wave-web-final/encoded-media.json": "4a16133fa7fe7e864324013d6a8e35a1cd7135815365a8442742b96b49400d11",
+    "docs/quality/evidence/batch-round-163-functional-wave-web-final/interaction-media.json": "83ca866770c4bd6e9438f3b2dd0a15f548c4b2c9b887e23e7b59d75caf9bbd5e",
+    "docs/quality/evidence/batch-round-163-functional-wave-mobile-final/result.json": "6eea5078f0a0dc462f3c202c4a8dfdaee729595b2bc1f64accbf37401481d0bb",
+    "docs/quality/evidence/batch-round-163-functional-wave-mobile-final/source-manifest.json": "9857ea4d35b67148d7dc32e431262c532b5d00caf303ffca5d076ecc7f540885",
+    "docs/quality/evidence/batch-round-163-functional-wave-mobile-final/encoded-media.json": "78c54605c46d21444180170c3d0398eacd3de467ffc6da146466063599e7f490",
+    "docs/quality/evidence/batch-round-163-functional-wave-mobile-final/interaction-media.json": "48a9bbf2447805bb80e1dfa0738a1431a1199e33c0112c9e533a45426f28f1cf",
+    "docs/quality/evidence/batch-round-163/visual-review.json": "6d7482919722a5a47ce06a2f4d8d67cb9b5b464dc713e6d162f90227c267bcdf",
+    "docs/quality/evidence/batch-round-163/media-parts-check.json": "a143637201b35183ce3a93b3941bd145cd40be25a758ecad4929b8319f8dd5f2"
+  },
+  "retained": {
+    "prior_source": "3ad8684a3574237c497f8a8ba470cd15f2a27e73",
+    "apk": "154/business153/schema113",
+    "full_regression": "121"
+  },
+  "increment": 163,
+  "schema": 129,
+  "interaction_source_sha256": "d86dc72e8f09b3f66f1b9910169b1f572473473fdbb2239ed6d969ebe852bab4",
+  "source_sha256": "d86dc72e8f09b3f66f1b9910169b1f572473473fdbb2239ed6d969ebe852bab4",
+  "verification_script_sha256": "eea895057e1800c03e1bc0726cf4f33b5c1ac7d181faeb381e697290cea48b0e",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "real_integrations_executed": false
+}

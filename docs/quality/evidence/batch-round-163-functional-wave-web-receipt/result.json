@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T08:31:28.407Z",
+  "finished_at": "2026-11-06T08:31:46.637Z",
+  "checks": [
+    "New authenticated owner can read immutable file history after original login revocation; original authorization remains changed after another ordinary read, without creating another execution or formal file commit."
+  ],
+  "source_count": 1209,
+  "source_sha256": "e83038784d0b28d570fcf6fc4c74e72ca4c5f32cdd00857b8fbbb3d04a5bc34f",
+  "source_after_sha256": "e83038784d0b28d570fcf6fc4c74e72ca4c5f32cdd00857b8fbbb3d04a5bc34f",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web original-session file receipt and historical reading with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "12b91a8e38c270829ddc3b1a59c7926017440048aeff71aa2789bace5b0d0ede",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "12b91a8e38c270829ddc3b1a59c7926017440048aeff71aa2789bace5b0d0ede",
+  "build_source_unchanged": true
+}

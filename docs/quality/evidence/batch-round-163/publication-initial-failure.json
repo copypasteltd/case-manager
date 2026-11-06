@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "stage": "candidate publication bytes",
+  "reason": "The publication file list prematurely included its own output before that output existed; FileNotFoundError for scope-publication-check.json.",
+  "repair": "Remove nonexistent anticipated output, run once, then include the actual generated report and recheck current scope.",
+  "application_source_changed": false
+}

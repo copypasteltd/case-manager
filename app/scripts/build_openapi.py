@@ -843,7 +843,7 @@ add("AgentFileDraft", file_draft, tuple(k for k in file_draft if k!="recovery_ab
 add("AgentFileAbandonment",{"id":ID,"run_id":ID,"draft_id":ID,"content_sha256":HASH,"created_at":TIME},("id","run_id","draft_id","content_sha256","created_at"))
 add("AgentFileAbandonmentInput",{**EXPECTED,"content_sha256":HASH,"reviewed":{"const":True},"reason":NAME},("expected_version","content_sha256","reviewed","reason"))
 file_update = {"run_id": ID, "file_id": ID, "base_version_id": ID, "file_version": VERSION, "intent_sha256": HASH, "target": ref("AgentFileUpdateTarget"),
-    "status": enum("authorized", "committed"), "drafts": array(ref("AgentFileDraft"), maxItems=3), "operation_id": nullable(ID), "result": nullable(ref("FileCommitResult"))}
+    "authorization_state": enum("current", "changed", "legacy_unbound"), "status": enum("authorized", "committed"), "drafts": array(ref("AgentFileDraft"), maxItems=3), "operation_id": nullable(ID), "result": nullable(ref("FileCommitResult"))}
 add("AgentFileUpdateView", {**file_update, "recovery":ref("AgentFileRecoveryView")}, tuple(file_update))
 file_create_view = {k:v for k,v in file_update.items() if k not in ("file_id", "base_version_id", "file_version")}
 add("AgentFileCreateView", {**file_create_view, "recovery":ref("AgentFileRecoveryView")}, tuple(file_create_view))
@@ -2499,6 +2499,8 @@ operation("/derived-retirement-plans/{id}/cancel","post","cancelDerivedRetiremen
 
 # Increment159: complete human-prepared ordinary draft revisions.
 SCHEMAS["AgentSourceSnapshot"]["properties"]["type"]["enum"].append("agent_business_revision")
+# Existing fixed-delivery sources are returned by the execution/read boundary.
+SCHEMAS["AgentSourceSnapshot"]["properties"]["type"]["enum"].append("agent_fixed_delivery")
 add("AgentBusinessRevisionBasis",{"kind":enum("contract","purchase","claim","subscription"),"id":ID,"version":VERSION,"revision_id":ID,"content_hash":HASH,"title":NAME,"project_id":nullable(ID),"project_version":{"type":"integer","minimum":0,"maximum":9007199254740991},"classification":CLASS,"scope_sha256":HASH,"cross_scope":{"type":"boolean"},"content":{"type":"object","additionalProperties":True}},("kind","id","version","revision_id","content_hash","title","project_id","project_version","classification","scope_sha256","cross_scope","content"))
 SCHEMAS["AgentBusinessRevisionInput"]={"oneOf":[obj({"kind":{"const":k},"resource_id":ID,"expected_version":VERSION,"base_revision_id":ID,"content_hash":HASH,"scope_sha256":HASH,"cross_scope_reviewed":{"type":"boolean"},"arguments":ref(n)},("kind","resource_id","expected_version","base_revision_id","content_hash","scope_sha256","cross_scope_reviewed","arguments")) for k,n in [("contract","ContractPatch"),("purchase","SpendPatch"),("claim","SpendPatch"),("subscription","SubscriptionPatch")]]}
 add("PreparedBusinessRevision",{"input":ref("AgentBusinessRevisionInput"),"basis":ref("AgentBusinessRevisionBasis")},("input","basis"))

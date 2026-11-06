@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T08:34:54.119Z",
+  "finished_at": "2026-11-06T08:35:06.777Z",
+  "checks": [
+    "New authenticated owner can read immutable file history after original login revocation; original authorization remains changed after another ordinary read, without creating another execution or formal file commit."
+  ],
+  "source_count": 1249,
+  "source_sha256": "24a448ecafc1cb0057890f6a4a7e636d638b4b411baf559a8a34e458564890c0",
+  "source_after_sha256": "24a448ecafc1cb0057890f6a4a7e636d638b4b411baf559a8a34e458564890c0",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "c7d381e97974449599b75bdf06077cb740290c75554db16e6aa1b2fd717333ab",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "c7d381e97974449599b75bdf06077cb740290c75554db16e6aa1b2fd717333ab",
+  "build_source_unchanged": true
+}

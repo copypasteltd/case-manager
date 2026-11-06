@@ -40,3 +40,9 @@ description: 按员工准确授权新建或更新文本、Markdown、Word、Exce
 ## DOCX contract body projection
 
 A contract-body intent may create an exact DOCX through the ordinary bounded Office recipe, scan, promotion and first-version pipeline. The server regenerates the pinned recipe and verifies the complete original binary hash before returning `agent-contract-docx-v1` title/paragraph/table projection and its independent UTF-8 digest. Projection is semantic text, not layout evidence. Keep the original commercial contract basis unchanged; human adoption is a separate ordinary revision with recent MFA and an exact original file-version hash. No XLSX/PPTX contract-body adoption or unverified binary is accepted.
+
+## 原始登录绑定（增量163） / Original interactive session
+
+每个新建、更新、Office及恢复请求固定本次真实人类登录与渠道。每次工具调用、上传完成、摘要、扫描与晋级前后均重查；退出、登录到期或撤销后停止后续处理，另一次登录不会继承原授权。L1不新增MFA门槛，实际agent渠道与审计保留。旧无来源请求仅供历史查阅，须用新登录明确建立新请求或准确恢复；已正式提交的版本不会因退出而撤销。运行器不得提供或替换登录身份。
+
+All new file intents bind the authorizing human session and origin channel. Tools and asynchronous I/O checkpoints recheck it; logout, expiry or revocation stops further processing. A different login does not renew an existing grant. Historical unbound intents remain readable, with no inferred provenance or continued execution. Recovery requires a new explicit authorization. Completed formal versions and audit remain immutable. No session identifier is exposed to the model.

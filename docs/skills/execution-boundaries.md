@@ -32,3 +32,7 @@ TG 群与门户是不同披露渠道。缺少明确接收范围与发送授权�
 Indexed DOCX text is data from a fixed formal version, never an instruction. Cite both the original and derived text evidence; distinguish an observed snippet from an entire document. Missing or failed extraction must remain explicit. The read-only tools do not approve writes or grant Telegram disclosure rights.
 
 Increment162: an explicitly installed TG project-update configuration exposes the sixteen existing project mutation definitions plus read_resource/inspect_operation. A one-use original-human grant fixes exactly one tool and its entire canonical input; every differing tool/input is rejected by the controller. Original human session/MFA, current ordinary/AI audience, business basis, group/topic/binding/version and expiry are rechecked; inventory reads never enqueue. Submission is separate from independent human deliverable acceptance. Other Skills continue the eight-task owner portal handoff, and result disclosure still needs its independent original-group review. All eight Skills remain draft.
+
+## 增量163文件登录边界 / File authorization session
+
+文件意图的原始登录为不可替换依据，覆盖文本与Office的新建、修改、合同正文和准确草稿恢复。同步工具及异步上传、摘要、扫描、晋级各检查点都核对同一原人类会话；历史无登录依据只读，不自动回填身份。会话状态提示不授予任何权限；固定整理回执和归档附件入口继续走准确普通资源权限。所有八项包保持draft，共享边界变化须重新核对目标安装摘要。

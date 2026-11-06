@@ -7,7 +7,7 @@ const folder = { id: id(1), version: 4, state: 'active', project_id: id(2) } as 
 const media = fileCreateFormats[2][0];
 const input = () => makeFileCreate(folder, '项目说明.docx', media, id(2));
 function staged(): FileCreateView {
-  return { run_id: id(3), intent_sha256: 'a'.repeat(64), status: 'authorized', operation_id: null, result: null,
+  return { run_id: id(3), authorization_state: 'current', intent_sha256: 'a'.repeat(64), status: 'authorized', operation_id: null, result: null,
     target: { folder_id: id(1), folder_version: 4, name: '项目说明.docx', media_type: media, classification: 'project_restricted' },
     drafts: [{ id: id(4), content_sha256: 'b'.repeat(64), size_bytes: '4567', state: 'ready', scan_state: 'clean', plan_hash: 'c'.repeat(64), result_version_id: null,
       diff: { start_char: 0, removed_chars: 0, added_chars: 17, removed_sha256: 'e'.repeat(64), added_sha256: 'd'.repeat(64), before: '', after: '[paragraph] 合成Office文字摘录🙂', before_complete: true, after_complete: true, line_ending: 'lf', utf8_bom: false,

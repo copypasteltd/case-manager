@@ -5,7 +5,7 @@ import type { Schemas } from './api';
 const id=(n:number)=>'10000000-0000-4000-8000-'+String(n).padStart(12,'0');
 const folder={id:id(1),version:3,project_id:id(2),state:'active'} as Schemas['Folder'];
 const input=makeFileCreate(folder,'项目纪要.md','text/markdown',id(2));
-const authorized={run_id:id(3),intent_sha256:'a'.repeat(64),target:{folder_id:id(1),folder_version:3,name:'项目纪要.md',media_type:'text/markdown',classification:'project_restricted'},status:'authorized',drafts:[],operation_id:null,result:null} as FileCreateView;
+const authorized={run_id:id(3),authorization_state:'current',intent_sha256:'a'.repeat(64),target:{folder_id:id(1),folder_version:3,name:'项目纪要.md',media_type:'text/markdown',classification:'project_restricted'},status:'authorized',drafts:[],operation_id:null,result:null} as FileCreateView;
 const run=(value:FileCreateView)=>({id:id(3),file_create:value}) as Schemas['Run'];
 
 describe('explicit new-file scope and first formal version evidence',()=>{

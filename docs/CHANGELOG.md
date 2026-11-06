@@ -1,5 +1,12 @@
 # 更新记录 / Changelog
 
+## 2026-11-06 · Increment163 — complete code wave before unified checks
+
+- 原登录约束覆盖文件工具及异步I/O，追加schema129；历史来源不回填，正式副本独立。 Original human-login provenance and I/O guards preserve immutable history and ordinary replica responsibility.
+- 四端准确固定回执、整理结果与通知来源导航；修复归档附件／复制运维版本入口。 Exact result/source/archive/replica navigation keeps current ordinary authorization.
+- C01–C07完整代码先封存，再统一验证、集中修复；初始失败和准确输入保留。同版164交付工程已前置编写，实际结果见[163验证](quality/163-batch-functional-verification.md)。
+- 全部23包／八项draft Skills／真实配置与正式验收保持开放；旧8冻结和旧证据不变。
+
 ## 增量162 / Increment162 —2026-11-06
 
 整轮C01–C06源码与用例先完成，再统一检查与集中修复：全部16项既有准确项目操作可建立本人一次性TG固定预授权；增加当前有权可见的本人完整分页清单、原登录／权限／群／业务依据失效重检、普通取消与准确结果导航。Web及共享微信／抖音／Android入口同步，追加迁移128，project-update1.11.0及其余七包均draft。
