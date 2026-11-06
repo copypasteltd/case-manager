@@ -1,6 +1,8 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
-当前160：[6张实际页面截图、2段录屏、2个交互GIF及2个截图导览GIF / Actual Web and shared-mobile H5 media](batch-round-160/README.md)。原生HTTP／PG合成数据，首轮失败另存，非正式生产验收。
+当前161：[本轮任务参与人、完整关联选择与移动端历史恢复的实际截图／录屏／GIF](batch-round-161/README.md)。本地原生HTTP／PG合成资料，所有自建浏览器与服务使用完即关闭；不替代真实平台或生产验收。
+
+历史160：[6张实际页面截图、2段录屏、2个交互GIF及2个截图导览GIF / Actual Web and shared-mobile H5 media](batch-round-160/README.md)。原生HTTP／PG合成数据，首轮失败另存，非正式生产验收。
 
 159：[5张当前截图、实际MP4、实际视口GIF与全页概览](batch-round-159/README.md)。Actual four-form preparation, complete normalized review, explicit human intent and zero premature save; synthetic local evidence only.
 

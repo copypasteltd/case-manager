@@ -126,7 +126,7 @@ func parseMutation(in MutationInput) (mutationArguments, string, json.RawMessage
 		}
 		err = strictArguments(canonical, &typed)
 	case "update_task":
-		allowed = append(allowed, "title", "body", "priority", "assignee_id", "parent_id", "milestone_id", "start_at", "due_at")
+		allowed = append(allowed, "title", "body", "priority", "assignee_id", "parent_id", "milestone_id", "start_at", "due_at", "participant_ids")
 		var typed struct {
 			ID     string `json:"id"`
 			Reason string `json:"reason"`
@@ -533,7 +533,13 @@ func executionMutationState(ctx context.Context, tx pgx.Tx, st executionState) (
 	if st.Profile.SkillID != "project-update" || m.ActorID != st.Actor.UserID {
 		return nil, runtimeFailure("MUTATION_AUTHORITY_MISMATCH")
 	}
-	human := st.Actor
+	human, humanErr := telegramGrantHuman(ctx, tx, st)
+	if humanErr != nil {
+		return nil, humanErr
+	}
+	if st.Actor.Channel == "telegram" && human.SessionID != m.SessionID {
+		return nil, core.Forbidden()
+	}
 	human.SessionID = m.SessionID
 	if err = identity.RequireInteractiveSession(ctx, tx, human, false); err != nil {
 		return nil, err

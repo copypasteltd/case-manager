@@ -26791,6 +26791,174 @@
         }
       }
     },
+    "/conversations/{id}/telegram-write-grants": {
+      "post": {
+        "operationId": "createTelegramWriteGrant",
+        "tags": [
+          "conversations"
+        ],
+        "summary": "createTelegramWriteGrant",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramWriteGrantResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelegramWriteGrantInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/telegram-write-grants/{id}": {
+      "get": {
+        "operationId": "getTelegramWriteGrant",
+        "tags": [
+          "telegram-write-grants"
+        ],
+        "summary": "getTelegramWriteGrant",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramWriteGrantResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/runs/{id}/event-log": {
       "get": {
         "operationId": "getRunEventLog",
@@ -43861,7 +44029,11 @@
                 "resource_attention",
                 "requests_to_revise",
                 "deliverables_to_submit",
-                "deliverables_to_review"
+                "deliverables_to_review",
+                "my_tasks",
+                "my_overdue_tasks",
+                "participating_tasks",
+                "unassigned_tasks"
               ]
             }
           },
@@ -44975,10 +45147,11 @@
                 "web",
                 "wechat",
                 "douyin",
-                "android"
+                "android",
+                "telegram"
               ]
             },
-            "maxItems": 4,
+            "maxItems": 5,
             "uniqueItems": true
           },
           "reason": {
@@ -49731,6 +49904,15 @@
       "TaskCreate": {
         "type": "object",
         "properties": {
+          "participant_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
+          },
           "title": {
             "type": "string",
             "minLength": 1,
@@ -49822,6 +50004,15 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 9007199254740991
+          },
+          "participant_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
           },
           "title": {
             "type": "string",
@@ -49925,6 +50116,15 @@
             "type": "string",
             "format": "date-time"
           },
+          "participant_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
+          },
           "title": {
             "type": "string",
             "minLength": 1,
@@ -50008,6 +50208,40 @@
           "project_id": {
             "type": "string",
             "format": "uuid"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "blocked_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "resume_state": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "state": {
             "type": "string",
@@ -50185,6 +50419,14 @@
       "Dashboard": {
         "type": "object",
         "properties": {
+          "unassigned_tasks": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "participating_tasks": {
+            "type": "integer",
+            "minimum": 0
+          },
           "as_of": {
             "type": "string",
             "format": "date-time"
@@ -62882,6 +63124,9 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 9007199254740991
+          },
+          "telegram_write_authorized": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
@@ -65268,9 +65513,164 @@
           "run_id"
         ]
       },
+      "AgentScopeTransferInput": {
+        "type": "object",
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "plan_hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reviewed": {
+            "const": true
+          },
+          "authorized": {
+            "const": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "plan_id",
+          "expected_version",
+          "plan_hash",
+          "reviewed",
+          "authorized",
+          "reason"
+        ]
+      },
+      "AgentNotificationInput": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "body_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "start_char": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20000
+          },
+          "max_chars": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "reviewed": {
+            "const": true
+          },
+          "disclosed_to_group": {
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "request_id",
+          "expected_version",
+          "body_sha256",
+          "start_char",
+          "max_chars",
+          "reviewed",
+          "disclosed_to_group"
+        ]
+      },
+      "AgentFixedDeliveryView": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "scope_transfer",
+              "notification"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "preview": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "intent_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "operation_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "run_id",
+          "kind",
+          "input",
+          "preview",
+          "intent_sha256",
+          "operation_id",
+          "result"
+        ]
+      },
       "RunCreate": {
         "type": "object",
         "properties": {
+          "scope_transfer": {
+            "$ref": "#/components/schemas/AgentScopeTransferInput"
+          },
+          "notification": {
+            "$ref": "#/components/schemas/AgentNotificationInput"
+          },
           "telegram_handoff": {
             "$ref": "#/components/schemas/TelegramHandoffInput"
           },
@@ -65349,6 +65749,13 @@
       "Run": {
         "type": "object",
         "properties": {
+          "fixed_delivery": {
+            "$ref": "#/components/schemas/AgentFixedDeliveryView"
+          },
+          "telegram_write_grant_id": {
+            "type": "string",
+            "format": "uuid"
+          },
           "id": {
             "type": "string",
             "format": "uuid"
@@ -65495,6 +65902,122 @@
           "can_cancel",
           "cancel_requested_at",
           "expires_at"
+        ]
+      },
+      "TelegramWriteGrantInput": {
+        "type": "object",
+        "properties": {
+          "channel_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "channel_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "binding_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "binding_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "run": {
+            "$ref": "#/components/schemas/RunCreate"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "channel_id",
+          "channel_version",
+          "binding_id",
+          "binding_version",
+          "reason",
+          "run"
+        ]
+      },
+      "TelegramWriteGrant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "run_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "conversation_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "channel_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "channel_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "binding_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "binding_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "pending_trigger",
+              "consumed",
+              "stopped",
+              "expired"
+            ]
+          },
+          "trigger": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "run_id",
+          "conversation_id",
+          "channel_id",
+          "channel_version",
+          "binding_id",
+          "binding_version",
+          "input_sha256",
+          "state",
+          "trigger",
+          "expires_at",
+          "created_at"
         ]
       },
       "Message": {
@@ -85675,6 +86198,22 @@
           "meta"
         ]
       },
+      "TelegramWriteGrantResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TelegramWriteGrant"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
       "RunEventPageResponse": {
         "type": "object",
         "properties": {
@@ -91453,6 +91992,17 @@
               }
             ]
           },
+          "telegram_write_configuration_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "installed_by": {
             "type": "string",
             "format": "uuid"
@@ -91477,6 +92027,7 @@
           "version",
           "state",
           "telegram_configuration_sha256",
+          "telegram_write_configuration_sha256",
           "installed_by",
           "created_at"
         ]
@@ -93966,7 +94517,11 @@
               "resource_attention",
               "requests_to_revise",
               "deliverables_to_submit",
-              "deliverables_to_review"
+              "deliverables_to_review",
+              "my_tasks",
+              "my_overdue_tasks",
+              "participating_tasks",
+              "unassigned_tasks"
             ]
           },
           "basis_sha256": {

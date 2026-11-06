@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T05:38:34.939Z",
+  "finished_at": "2026-11-06T05:39:05.558Z",
+  "checks": [
+    "Web preserves exact participant intent and loads later reference pages before ordinary save"
+  ],
+  "source_count": 1195,
+  "source_sha256": "5655f069b194d5d9c7a972911cb6d9d23b196d91d1a4fe105fd2675deaa449b4",
+  "source_after_sha256": "5655f069b194d5d9c7a972911cb6d9d23b196d91d1a4fe105fd2675deaa449b4",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web task participants, complete association pagination and ordinary versioned save with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "f259df2c62e2791648b9128893cbcd356fbcd997928c9188cc1a1f73ae9c2c0a",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "f259df2c62e2791648b9128893cbcd356fbcd997928c9188cc1a1f73ae9c2c0a",
+  "build_source_unchanged": true
+}

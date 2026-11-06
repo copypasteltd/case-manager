@@ -318,3 +318,13 @@ test('an accounting transport failure cannot be presented as a completed busines
   assert.equal(outcome.state, 'interrupted'); assert.equal(outcome.reconciliation_required, true);
   assert.deepEqual(outcome.usage, tokens); assert.ok(!value.events.some(e => e.type === 'run.completed'));
 });
+
+
+test('explicit TG writes retain actual telegram confinement and exactly one fixed update tool',()=>{
+ const value=setup('project-update');
+ const config=nativeConfiguration(value.skill,value.settings,'telegram',true);
+ assert.deepEqual(config.profile.expected_tools,['company/read_resource','company/inspect_operation','company/update_task']);
+ assert.notEqual(config.profile.configuration_sha256,nativeConfiguration(value.skill,value.settings).profile.configuration_sha256);
+ assert.throws(()=>nativeConfiguration(value.skill,value.settings,'telegram',false),/SKILL_TOOLS_UNAVAILABLE/);
+ assert.throws(()=>nativeConfiguration(setup('file-update').skill,value.settings,'telegram',true),/SKILL_TOOLS_UNAVAILABLE/);
+});

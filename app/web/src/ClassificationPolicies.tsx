@@ -7,7 +7,7 @@ import { MFAConfirmation } from './MFAConfirmation';
 
 type Policy = Schemas['ClassificationPolicy'];
 const channels = { web: 'Web', wechat: '微信小程序', douyin: '抖音小程序', android: 'Android', telegram: 'Telegram' };
-const editableChannels = ['web', 'wechat', 'douyin', 'android'] as const;
+const editableChannels = ['web', 'wechat', 'douyin', 'android', 'telegram'] as const;
 const levels = ['internal', 'project_restricted', 'confidential'] as const;
 
 export default function ClassificationPolicies({ me }: { me: Me }) {

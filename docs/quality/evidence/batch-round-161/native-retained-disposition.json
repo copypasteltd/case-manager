@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "source_sha256": "db49edc7450f59d2f4b6ed63ff9ac6ffbb477ad56f9fea966554ba6b534254b3",
+  "native_record": "native-tests-batch-11.json",
+  "native_record_sha256": "7d5c02eff0c361dcc5588902ca973ad35897ee5379a802f50093fd31f1e95bfe",
+  "source_changes_after_native_checks": [
+    "app/mobile/src/pages/files/history-restores.tsx"
+  ],
+  "unchanged_backend_source_sha256": "19ff46d89ce61c7e0f584c64946d42ab65c08110c550cdd11dffc4ebcc9ce87d",
+  "backend_checks_reexecuted_after_ui_only_change": false,
+  "disposition": "Only the mobile history loading root changed after the selected backend passes: it mounts no separate loading subtree and presents one settled inventory. All backend bytes remain identical to archived batch11; affected mobile type/build/UI checks are replayed."
+}

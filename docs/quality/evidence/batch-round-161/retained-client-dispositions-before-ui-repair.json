@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "reexecuted": false,
+  "current_client_source_sha256": "5d18be8ed875c4f86754cd18806f116a38bc68c3ef4a7b1ff8586680261e19c5",
+  "retained_units": {
+    "web": 520,
+    "mobile_main": 548,
+    "mobile_extra": 4,
+    "runtime": 66,
+    "android_signing_input_python": 3,
+    "draft_skill_catalog": 8
+  },
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-2.json",
+      "sha256": "b7b4de992f68ed697ec89445fcef884231f2f29fc9729a243fe97b6e75fa1472"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-initial.json",
+      "sha256": "c14e05a1e792725c2051c7a445bba62ea54ce4c7d84bc310f39495ca1c5ac967"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-3.json",
+      "sha256": "7bfa59c1aa10252e688e5498c04d7e45aefe9b484179f02819c9454223739160"
+    }
+  ],
+  "source_changes_since_batch_2": [
+    "app/web/src/TelegramWriteGrant.tsx"
+  ],
+  "disposition": "The only client change after batch2 removes an unsupported disabled prop from the Web TG grant MFA component. Current typecheck, Web/WeChat/Douyin builds and actual Web/H5 interactions are separate checks. Batch2 unit results are retained without replay. Initial signing input and draft catalog checks have unchanged corresponding inputs. No Android JS/APK/formal signing execution."
+}

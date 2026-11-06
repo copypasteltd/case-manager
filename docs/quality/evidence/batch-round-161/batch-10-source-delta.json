@@ -1,0 +1,26 @@
+{
+  "source_sha256": "853a962cc6fe0be3124efd8c3f98f2f1b814d6f8b22258c880ec427f2b97a8c6",
+  "files": [
+    "app/agent-runtime/src/task-dependency.test.ts",
+    "app/backend/internal/agent/admission.go",
+    "app/backend/internal/agent/fixed_deliveries.go",
+    "app/backend/internal/agent/runs.go",
+    "app/backend/internal/agent/telegram_write_grants.go",
+    "app/backend/internal/agentworker/mcp.go",
+    "app/backend/internal/httpapi/round161_browser_integration_test.go",
+    "app/backend/internal/httpapi/round161_execution_fixture_test.go",
+    "app/backend/internal/httpapi/round161_notification_integration_test.go",
+    "app/backend/internal/httpapi/round161_scope_integration_test.go",
+    "app/backend/internal/httpapi/round161_tasks_integration_test.go",
+    "app/backend/internal/httpapi/round161_telegram_integration_test.go",
+    "app/backend/migrations/0125_telegram_write_grants.sql",
+    "app/backend/migrations/0126_agent_fixed_scope_transfers.sql",
+    "app/mobile/src/platform/batch161.test.ts",
+    "app/mobile/src/platform/file-operations.ts",
+    "app/packages/contracts/test/batch160-cases.ts",
+    "app/web/src/ConversationFixedDelivery.tsx",
+    "app/web/src/ConversationMessages.tsx",
+    "app/web/src/TelegramWriteGrant.tsx"
+  ],
+  "archive_sha256": "a488ab39476d530ab09c636494ad18f2e98dba9f4926e02cd2733f4319e02be3"
+}

@@ -36,7 +36,7 @@ func toolDefinitions(skill string) []any {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "deliverable", "milestone", "risk", "issue", "agent_mutation"}})
 	}
 	if skill == "information-organize" {
-		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_organization_plan"}})
+		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_organization_plan", "agent_fixed_delivery"}})
 	}
 	if skill == "oa-assist" {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_oa_request", "agent_business_draft", "agent_business_revision"}})
@@ -71,14 +71,14 @@ func toolDefinitions(skill string) []any {
 		"start_date": nullable(str(map[string]any{"format": "date"})), "due_date": nullable(str(map[string]any{"format": "date"}))}, []string{"id", "expected_version", "reason"})
 	dependency := schema(map[string]any{"id": uuid, "expected_version": version, "predecessor_id": uuid, "expected_predecessor_version": version, "action": str(map[string]any{"enum": []string{"add", "remove"}}), "reason": name}, []string{"id", "expected_version", "predecessor_id", "expected_predecessor_version", "action", "reason"})
 	updateTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "body": str(map[string]any{"maxLength": 20000}),
-		"priority": str(map[string]any{"enum": []string{"low", "normal", "high", "urgent"}}), "assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid),
+		"priority": str(map[string]any{"enum": []string{"low", "normal", "high", "urgent"}}), "participant_ids": map[string]any{"type": "array", "items": uuid, "maxItems": 50, "uniqueItems": true}, "assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid),
 		"start_at": nullable(str(map[string]any{"format": "date-time"})), "due_at": nullable(str(map[string]any{"format": "date-time"}))}, []string{"id", "expected_version", "reason"})
 	transitionTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "action": str(map[string]any{"enum": []string{"start", "review", "return", "complete", "block", "resume", "cancel", "reopen"}})}, []string{"id", "expected_version", "reason", "action"})
 	updateDeliverable := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "name": name, "acceptance_criteria": str(map[string]any{"minLength": 1, "maxLength": 20000}), "owner_id": uuid, "milestone_id": nullable(uuid)}, []string{"id", "expected_version", "reason", "name", "acceptance_criteria", "owner_id", "milestone_id"})
 	createDeliverable := updateDeliverable
 	submitDeliverable := schema(map[string]any{"id": uuid, "expected_version": version, "expected_revision_id": nullable(uuid), "file_version_ids": map[string]any{"type": "array", "items": uuid, "minItems": 1, "maxItems": 20, "uniqueItems": true}, "description": str(map[string]any{"minLength": 1, "maxLength": 20000}), "reason": name}, []string{"id", "expected_version", "expected_revision_id", "file_version_ids", "description", "reason"})
 	createTask := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "body": str(map[string]any{"maxLength": 20000}),
-		"assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid), "start_at": nullable(str(map[string]any{"format": "date-time"})), "due_at": nullable(str(map[string]any{"format": "date-time"})),
+		"participant_ids": map[string]any{"type": "array", "items": uuid, "maxItems": 50, "uniqueItems": true}, "assignee_id": nullable(uuid), "parent_id": nullable(uuid), "milestone_id": nullable(uuid), "start_at": nullable(str(map[string]any{"format": "date-time"})), "due_at": nullable(str(map[string]any{"format": "date-time"})),
 		"priority": str(map[string]any{"enum": []string{"low", "normal", "high", "urgent"}}), "review_required": map[string]any{"type": "boolean"}}, []string{"id", "expected_version", "reason", "title", "body", "assignee_id", "parent_id", "milestone_id", "start_at", "due_at", "priority", "review_required"})
 	createMilestone := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "owner_id": uuid, "due_at": str(map[string]any{"format": "date-time"})}, []string{"id", "expected_version", "reason", "title", "owner_id", "due_at"})
 	updateMilestone := schema(map[string]any{"id": uuid, "expected_version": version, "reason": name, "title": name, "owner_id": uuid, "due_at": str(map[string]any{"format": "date-time"})}, []string{"id", "expected_version", "reason"})
@@ -95,6 +95,14 @@ func toolDefinitions(skill string) []any {
 			name, description string
 			schema            any
 		}{"list_project_catalog", "在本人公司私密会话中分页读取当前允许AI处理的活动人员或已发布项目模板；人员须具组织成员管理权限。目录不是写入授权，继续next_cursor；模板正文用read_resource准确读取。", schema(map[string]any{"kind": str(map[string]any{"enum": []string{"people", "templates"}}), "query": str(map[string]any{"maxLength": 200}), "cursor": str(map[string]any{"maxLength": 2048}), "limit": map[string]any{"type": "integer", "minimum": 1, "maximum": 20}}, []string{"kind"})})
+	}
+	if skill == "information-organize" {
+		for _, name := range []string{"propose_scope_transfer", "commit_scope_transfer", "propose_notification", "send_authorized_notification"} {
+			definitions = append(definitions, struct {
+				name, description string
+				schema            any
+			}{name, "仅核对或执行本次 authorized_fixed_delivery 的准确人工审批，不允许替换源、目标、内容或收件群；范围提交后旧任务授权立即终止；通知入队不代表实际送达。", schema(map[string]any{"run_id": uuid, "intent_sha256": str(map[string]any{"pattern": "^[a-f0-9]{64}$"})}, []string{"run_id", "intent_sha256"})})
+		}
 	}
 	if skill == "project-update" {
 		definitions = append(definitions, struct {
@@ -305,7 +313,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "create_business_draft", "revise_business_draft", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"propose_scope_transfer", "commit_scope_transfer", "propose_notification", "send_authorized_notification", "recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "create_business_draft", "revise_business_draft", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out
@@ -313,6 +321,15 @@ func toolDefinitions(skill string) []any {
 
 func scopedToolDefinitions(skill, channel string) []any {
 	definitions := toolDefinitions(skill)
+	if channel == "telegram-authorized" {
+		result := []any{}
+		for _, raw := range definitions {
+			if item := raw.(map[string]any); slices.Contains([]string{"read_resource", "inspect_operation", "update_task"}, item["name"].(string)) {
+				result = append(result, item)
+			}
+		}
+		return result
+	}
 	if channel != "telegram" {
 		return definitions
 	}

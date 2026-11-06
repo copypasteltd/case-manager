@@ -176,7 +176,7 @@ func (s *Service) RevokeBinding(ctx context.Context, c core.Command, id string, 
 		if err != nil {
 			return core.Result{}, err
 		}
-		if _, err = tx.Exec(ctx, `UPDATE telegram_inbox SET state='withdrawn',reason_code='binding_revoked' WHERE org_id=$1 AND binding_id=$2 AND (state='awaiting_executor' OR (state='dispatched' AND EXISTS(SELECT 1 FROM telegram_run_links l JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE l.org_id=telegram_inbox.org_id AND l.inbox_id=telegram_inbox.id AND r.state IN ('queued','running','awaiting_approval','committing'))))`, c.Actor.OrgID, id); err != nil {
+		if _, err = tx.Exec(ctx, `UPDATE telegram_inbox SET state='withdrawn',reason_code='binding_revoked' WHERE org_id=$1 AND binding_id=$2 AND (state='awaiting_executor' OR (state='dispatched' AND EXISTS(SELECT 1 FROM telegram_effective_run_links l JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE l.org_id=telegram_inbox.org_id AND l.inbox_id=telegram_inbox.id AND r.state IN ('queued','running','awaiting_approval','committing'))))`, c.Actor.OrgID, id); err != nil {
 			return core.Result{}, err
 		}
 		return eventResult(value, "telegram.binding_revoked", id, in.Reason, value.Version, false), nil

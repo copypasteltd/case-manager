@@ -1,6 +1,6 @@
 {
   "skill_id": "information-organize",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "state": "draft",
   "owner_role": "business_admin",
   "runtime_compatibility": "codex-sdk@0.164.0",
@@ -10,10 +10,16 @@
     "read_resource",
     "propose_organization",
     "commit_organization",
-    "inspect_operation"
+    "inspect_operation",
+    "propose_scope_transfer",
+    "commit_scope_transfer",
+    "propose_notification",
+    "send_authorized_notification"
   ],
   "completion_tools": [
-    "commit_organization"
+    "commit_organization",
+    "commit_scope_transfer",
+    "send_authorized_notification"
   ],
   "input_schema_ref": "input.schema.json",
   "output_schema_ref": "output.schema.json",

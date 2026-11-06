@@ -46,6 +46,7 @@ func (s *Service) Inventory(ctx context.Context, a core.Actor, kind, cursor stri
 	}
 	var selected *query
 	followup := false
+	taskKind := false
 	for _, q := range queries() {
 		if q.kind == kind {
 			v := q
@@ -57,6 +58,13 @@ func (s *Service) Inventory(ctx context.Context, a core.Actor, kind, cursor stri
 			v := q
 			selected = &v
 			followup = true
+		}
+	}
+	for _, q := range taskQueries() {
+		if q.kind == kind {
+			v := q
+			selected = &v
+			taskKind = true
 		}
 	}
 	if selected == nil {
@@ -87,6 +95,9 @@ func (s *Service) Inventory(ctx context.Context, a core.Actor, kind, cursor stri
 	if followup {
 		order = "updated_at DESC,id DESC"
 		fields = "id,version,revision_id,project_id,NULL::uuid related_id,NULL::text due_on,title,state,updated_at"
+	}
+	if taskKind {
+		fields = "id,version,revision_id,project_id,related_id,due_on,title,state,updated_at"
 	}
 	var raw []byte
 	e = tx.QueryRow(ctx, `WITH visible AS MATERIALIZED (`+selected.sql+`), bounded AS (SELECT `+fields+` FROM visible ORDER BY `+order+` LIMIT 5001)

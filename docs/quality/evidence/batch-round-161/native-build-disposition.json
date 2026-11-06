@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "source_sha256": "f259df2c62e2791648b9128893cbcd356fbcd997928c9188cc1a1f73ae9c2c0a",
+  "build_record_sha256": "7d7fa57c53bb8cd3cf355376afbf9b8921560944cc9cfb9cee485a7629d0d0fa",
+  "source_changes_after_build": [
+    "app/backend/internal/httpapi/round161_browser_integration_test.go"
+  ],
+  "all_changes_test_fixture_only": true,
+  "executable_rebuilt_after_fixture_change": false,
+  "disposition": "Only the isolated browser fixture HTTP token channel changed after the successful native Windows command build. No executable/SQL/client/runtime source changed. Build remains explicitly retained; actual Linux installation/production acceptance is open."
+}

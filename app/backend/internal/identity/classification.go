@@ -149,12 +149,12 @@ func (s *Service) PublishClassificationPolicy(ctx context.Context, c core.Comman
 	in.BasePolicyID = strings.ToLower(in.BasePolicyID)
 	in.AllowedChannels = slices.Clone(in.AllowedChannels)
 	slices.Sort(in.AllowedChannels)
-	if len(in.AllowedChannels) > 4 || len(slices.Compact(slices.Clone(in.AllowedChannels))) != len(in.AllowedChannels) {
+	if len(in.AllowedChannels) > 5 || len(slices.Compact(slices.Clone(in.AllowedChannels))) != len(in.AllowedChannels) {
 		return core.Result{}, core.Invalid("allowed_channels", "渠道不能重复或超出已支持范围")
 	}
 	for _, channel := range in.AllowedChannels {
-		if !slices.Contains([]string{"web", "wechat", "douyin", "android"}, channel) {
-			return core.Result{}, core.Invalid("allowed_channels", "当前仅支持已接入的员工访问渠道，TG需另行验证披露规则")
+		if !slices.Contains([]string{"web", "wechat", "douyin", "android", "telegram"}, channel) {
+			return core.Result{}, core.Invalid("allowed_channels", "请选择已支持访问渠道；TG策略允许不代替群配置和独立结果披露")
 		}
 	}
 	if in.Level == "internal" && !slices.Contains(in.AllowedChannels, "web") {

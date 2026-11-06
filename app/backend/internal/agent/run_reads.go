@@ -53,6 +53,19 @@ func (s *Service) readableRun(ctx context.Context, tx pgx.Tx, a core.Actor, id s
 		return r, c, core.Missing()
 	}
 	r.CanCancel = r.ActorID == a.UserID && a.RunID == "" && r.CancelRequestedAt == nil && slices.Contains([]string{"queued", "running", "awaiting_approval"}, r.State) && require(ctx, tx, a, c, "agent.run") == nil
+	if fixed, e := fixedDeliveryRecord(ctx, tx, a.OrgID, r.ID); e != nil {
+		return r, c, e
+	} else if fixed != nil {
+		if _, e = fixedDeliverySource(ctx, tx, a, c, r.ID); e != nil {
+			return r, c, e
+		}
+		view := fixed.FixedDeliveryView
+		if fixed.Kind == "scope_transfer" && fixed.OperationID != nil {
+			view.Preview = json.RawMessage("null")
+			view.Result = json.RawMessage(`{"state":"executed","old_authority_invalidated":true}`)
+		}
+		r.FixedDelivery = &view
+	}
 	return r, c, nil
 }
 func snapshotsReadable(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, raw []SourceSnapshot) (bool, error) {
@@ -157,6 +170,7 @@ func NotificationRun(ctx context.Context, tx pgx.Tx, a core.Actor, id string) (R
 	} else if p != nil {
 		r.PostWrite = &p.PostWriteView
 	}
+
 	var handoff TelegramHandoffInput
 	err = tx.QueryRow(ctx, "SELECT inbox_id,request_version,request_sha256,reviewed FROM telegram_human_handoffs WHERE org_id=$1 AND run_id=$2", a.OrgID, id).Scan(&handoff.RequestID, &handoff.ExpectedVersion, &handoff.RequestSHA256, &handoff.Reviewed)
 	if err == nil {

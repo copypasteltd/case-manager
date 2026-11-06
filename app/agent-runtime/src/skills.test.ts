@@ -310,3 +310,13 @@ test('project-update exact submission validates fixed attachments and only compl
  assert.equal(skill.manifest.allowed_tools.includes('submit_deliverable'),true);
  assert.equal(skill.manifest.state,'draft');
 });
+
+
+test('fixed notification completion requires the exact committed queue receipt and never a proposal',()=>{
+ const skill=catalog.get('information-organize')!,run={id:randomUUID(),authority_stamp:'fixed-authority'};
+ const source={type:'agent_fixed_delivery',id:run.id},delivery={type:'telegram_delivery',id:randomUUID()},operation=randomUUID();
+ const result:ProposedResult={...baseResult(),source_refs:[source],resource_refs:[delivery],operation_ids:[operation]};
+ const receipt:ExecutionReceipt={run_id:run.id,authority_stamp:run.authority_stamp,tool:'send_authorized_notification',status:'succeeded',committed:true,operation_id:operation,source_refs:[source],resource_refs:[delivery]};
+ skill.validateOutput(result);assert.equal(verifyResult(skill,run,result,[receipt]).status,'completed');
+ assert.throws(()=>verifyResult(skill,run,result,[{...receipt,tool:'propose_notification',committed:false,operation_id:null}]),/RESULT_(OPERATION|COMPLETION)_UNVERIFIED/);
+});

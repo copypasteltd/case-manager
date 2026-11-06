@@ -18,3 +18,6 @@ description: 在本人私密会话中有限盘点目录，拟定同范围的新�
 5. 只有真实 commit_organization 成功回执，才能返回 completed；附返回的批次 operation_id 和实际对象引用。批次 operation_id 指向第一项真实业务回执，计划 results 保留全部逐项回执。pending/blocked/failed 均需明确下一步，不能把观察、预览或批准称为已执行。
 
 输出符合随包 result Schema，附准确来源、业务对象和操作引用，明确待补信息与下一动作。
+
+
+固定范围与通知（增量161）：仅使用本次 prepared_context.authorized_fixed_delivery。先以 run_id / intent_sha256 调用对应 propose 工具，核对固定输入与完整预览；人工已在发送前完整核对普通范围计划或准确原群片段，并授权本次执行。无固定授权时停止，请人工在入口准备，不补全或改写字段。commit_scope_transfer 完成后旧授权立即失效，由服务器固定普通回执终结任务；不得继续读写或宣称旧授权已更新。send_authorized_notification 只入真实原群投递队列，必须明确未证明送达；不推断未知发送成功，不自动重发。

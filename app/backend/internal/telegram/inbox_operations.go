@@ -87,7 +87,7 @@ const inboxOperationSelect = `SELECT i.id,e.version,i.bot_id,i.channel_id,c.labe
  FROM telegram_inbox i JOIN telegram_channels c ON c.org_id=i.org_id AND c.id=i.channel_id
  JOIN telegram_bindings b ON b.org_id=i.org_id AND b.id=i.binding_id JOIN users u ON u.org_id=i.org_id AND u.id=i.requester_id
  JOIN LATERAL(SELECT version,created_at FROM telegram_request_events WHERE org_id=i.org_id AND inbox_id=i.id ORDER BY version DESC LIMIT 1)e ON true
- LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id
+ LEFT JOIN telegram_effective_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id
  LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id`
 
 func scanInboxOperation(row pgx.Row) (InboxOperation, error) {

@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 增量161 / Increment161 —2026-11-06
+
+整批C01–C08实现完成后才开始统一检查：任务参与人及四类完整队列、Web完整关联分页、共享移动端历史恢复／Android扫描及独立复核、正式Android私有签名与递增版本工程、本人一次性固定TG任务更新、秘书准确普通范围计划执行、固定原群结果片段队列，以及四端／接口／运行器／八项draft Skill同步。
+
+The complete declared code and fixture wave precedes unified tests and grouped repairs. Normal migrations124–127 target schema127. A scope transfer immediately invalidates old authorization and seals a minimal independent result; original-group notification queueing never claims delivery. Direct TG write currently supports one exact `update_task`; other tasks retain human handoffs. Formal signing engineering does not provide a production key/artifact.
+
+Initial failures and exact repair sources remain retained. Current selected checks and actual Web/shared-mobile H5 captures are documented separately from retained units/builds, deferred Android JS/APK, full regression and real-service acceptance. All23 packages and eight draft Skills remain open; all eight frozen releases, old proof/media and migrations1–123 stay immutable. DevelopmentPG100/API remain unchanged; rc.8/APK154 stay business153/schema113.
+
+[设计与使用](development/161-batch-functional-closure.md) · [编号清单](delivery/05-functional-closure-161.md) · [验证](quality/161-batch-functional-verification.md) · [截图／录屏／GIF](media/batch-round-161/README.md)
+
 ## 160 · 2026-11-06 · Complete code wave: work inventories and ordinary business execution
 
 先完成C01–C06全部代码与用例、复核23个工作包，再统一检查及两批集中修复。新增外币退款结项原本金单位、已知终态上传HEAD独立观察与重新起算保留期、九类完整授权待办分页、共享移动人工目录整理，以及合同签署／生效／里程碑／结项、采购订单／验收／准确原行退货／差异重审／完成、报销结清与不可变历史入口。追加迁移122–123，独立只读观察worker使用专用配置；HEAD不证明字节正确或授权删除。

@@ -148,7 +148,7 @@ func (s *Service) Requests(ctx context.Context, a core.Actor, cursor string, lim
 		}
 		before, beforeID = &p.UpdatedAt, &p.ID
 	}
-	rows, err := tx.Query(ctx, `SELECT i.id,i.bot_id,i.channel_id,i.channel_version,i.state,i.reason_code,i.request_text,i.received_at,i.requested_skill_id,l.conversation_id,l.run_id,r.state FROM telegram_inbox i LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE i.org_id=$1 AND i.requester_id=$2 AND i.kind='request' AND ($3::timestamptz IS NULL OR (i.received_at,i.id)<($3,$4::uuid)) ORDER BY i.received_at DESC,i.id DESC LIMIT $5`, a.OrgID, a.UserID, before, beforeID, limit+1)
+	rows, err := tx.Query(ctx, `SELECT i.id,i.bot_id,i.channel_id,i.channel_version,i.state,i.reason_code,i.request_text,i.received_at,i.requested_skill_id,l.conversation_id,l.run_id,r.state FROM telegram_inbox i LEFT JOIN telegram_effective_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE i.org_id=$1 AND i.requester_id=$2 AND i.kind='request' AND ($3::timestamptz IS NULL OR (i.received_at,i.id)<($3,$4::uuid)) ORDER BY i.received_at DESC,i.id DESC LIMIT $5`, a.OrgID, a.UserID, before, beforeID, limit+1)
 	if err != nil {
 		return out, err
 	}

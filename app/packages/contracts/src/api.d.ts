@@ -4325,6 +4325,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversations/{id}/telegram-write-grants": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** createTelegramWriteGrant */
+        post: operations["createTelegramWriteGrant"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/telegram-write-grants/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTelegramWriteGrant */
+        get: operations["getTelegramWriteGrant"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/runs/{id}/event-log": {
         parameters: {
             query?: never;
@@ -7059,7 +7093,7 @@ export interface components {
             /** Format: uuid */
             base_policy_id: string;
             ai_allowed: boolean;
-            allowed_channels: ("web" | "wechat" | "douyin" | "android")[];
+            allowed_channels: ("web" | "wechat" | "douyin" | "android" | "telegram")[];
             reason: string;
         };
         RetentionRule: {
@@ -8040,6 +8074,7 @@ export interface components {
             initialization_state?: "pending" | "complete" | "partial_failed";
         };
         TaskCreate: {
+            participant_ids?: string[];
             title: string;
             body?: string;
             assignee_id?: string | null;
@@ -8053,6 +8088,7 @@ export interface components {
         };
         TaskPatch: {
             expected_version: number;
+            participant_ids?: string[];
             title?: string;
             body?: string;
             assignee_id?: string | null;
@@ -8072,6 +8108,7 @@ export interface components {
             created_at?: string;
             /** Format: date-time */
             updated_at?: string;
+            participant_ids?: string[];
             title: string;
             body?: string;
             assignee_id?: string | null;
@@ -8086,6 +8123,9 @@ export interface components {
             creator_id?: string;
             /** Format: uuid */
             project_id: string;
+            completed_at?: string | null;
+            blocked_reason?: string | null;
+            resume_state?: string | null;
             /** @enum {string} */
             state: "todo" | "in_progress" | "in_review" | "done" | "blocked" | "cancelled";
         };
@@ -8125,6 +8165,8 @@ export interface components {
             reason: string;
         };
         Dashboard: {
+            unassigned_tasks?: number;
+            participating_tasks?: number;
             /** Format: date-time */
             as_of: string;
             active_projects: number;
@@ -10519,6 +10561,7 @@ export interface components {
             max_output_tokens: number;
             max_tool_calls: number;
             timeout_seconds: number;
+            telegram_write_authorized?: boolean;
         };
         RuntimeOptions: {
             available: boolean;
@@ -10995,7 +11038,49 @@ export interface components {
             expires_at: string;
             run_id: string | null;
         };
+        AgentScopeTransferInput: {
+            /** Format: uuid */
+            plan_id: string;
+            expected_version: number;
+            plan_hash: string;
+            /** @constant */
+            reviewed: true;
+            /** @constant */
+            authorized: true;
+            reason: string;
+        };
+        AgentNotificationInput: {
+            /** Format: uuid */
+            request_id: string;
+            expected_version: number;
+            body_sha256: string;
+            start_char: number;
+            max_chars: number;
+            /** @constant */
+            reviewed: true;
+            /** @constant */
+            disclosed_to_group: true;
+        };
+        AgentFixedDeliveryView: {
+            /** Format: uuid */
+            run_id: string;
+            /** @enum {string} */
+            kind: "scope_transfer" | "notification";
+            input: {
+                [key: string]: unknown;
+            };
+            preview: {
+                [key: string]: unknown;
+            } | null;
+            intent_sha256: string;
+            operation_id: string | null;
+            result: {
+                [key: string]: unknown;
+            } | null;
+        };
         RunCreate: {
+            scope_transfer?: components["schemas"]["AgentScopeTransferInput"];
+            notification?: components["schemas"]["AgentNotificationInput"];
             telegram_handoff?: components["schemas"]["TelegramHandoffInput"];
             expected_version: number;
             context_security_version: number;
@@ -11017,6 +11102,9 @@ export interface components {
             business_revision?: components["schemas"]["AgentBusinessRevisionInput"];
         };
         Run: {
+            fixed_delivery?: components["schemas"]["AgentFixedDeliveryView"];
+            /** Format: uuid */
+            telegram_write_grant_id?: string;
             /** Format: uuid */
             id: string;
             version: number;
@@ -11051,6 +11139,38 @@ export interface components {
             contract_body?: components["schemas"]["AgentContractBodyView"];
             business_draft?: components["schemas"]["AgentBusinessDraftView"];
             business_revision?: components["schemas"]["AgentBusinessRevisionView"];
+        };
+        TelegramWriteGrantInput: {
+            /** Format: uuid */
+            channel_id: string;
+            channel_version: number;
+            /** Format: uuid */
+            binding_id: string;
+            binding_version: number;
+            reason: string;
+            run: components["schemas"]["RunCreate"];
+        };
+        TelegramWriteGrant: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            run_id: string;
+            /** Format: uuid */
+            conversation_id: string;
+            /** Format: uuid */
+            channel_id: string;
+            channel_version: number;
+            /** Format: uuid */
+            binding_id: string;
+            binding_version: number;
+            input_sha256: string;
+            /** @enum {string} */
+            state: "pending_trigger" | "consumed" | "stopped" | "expired";
+            trigger: string;
+            /** Format: date-time */
+            expires_at: string;
+            /** Format: date-time */
+            created_at: string;
         };
         Message: {
             /** Format: uuid */
@@ -15078,6 +15198,10 @@ export interface components {
             data: components["schemas"]["AgentContractBodyView"];
             meta: components["schemas"]["Meta"];
         };
+        TelegramWriteGrantResponse: {
+            data: components["schemas"]["TelegramWriteGrant"];
+            meta: components["schemas"]["Meta"];
+        };
         RunEventPageResponse: {
             data: components["schemas"]["RunEventPage"];
             meta: components["schemas"]["Meta"];
@@ -16237,6 +16361,7 @@ export interface components {
             /** @enum {string} */
             state: "active" | "retired";
             telegram_configuration_sha256: string | null;
+            telegram_write_configuration_sha256: string | null;
             /** Format: uuid */
             installed_by: string;
             /** Format: date-time */
@@ -16798,7 +16923,7 @@ export interface components {
             /** @constant */
             scope: "my_readable_inventory";
             /** @enum {string} */
-            kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention" | "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review";
+            kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention" | "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review" | "my_tasks" | "my_overdue_tasks" | "participating_tasks" | "unassigned_tasks";
             basis_sha256: string;
             count: number;
             items: components["schemas"]["WorkInventoryItem"][];
@@ -28679,6 +28804,83 @@ export interface operations {
             503: components["responses"]["Failure"];
         };
     };
+    createTelegramWriteGrant: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TelegramWriteGrantInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramWriteGrantResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTelegramWriteGrant: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramWriteGrantResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
     getRunEventLog: {
         parameters: {
             query?: {
@@ -35917,7 +36119,7 @@ export interface operations {
             };
             header?: never;
             path: {
-                kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention" | "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review";
+                kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention" | "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review" | "my_tasks" | "my_overdue_tasks" | "participating_tasks" | "unassigned_tasks";
             };
             cookie?: never;
         };

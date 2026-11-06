@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T05:49:06.542109+00:00",
+  "group": "batch-round-161-functional-wave-web-capture-5",
+  "encoder_sha256": "9375e3c5eef98f41e2025d13a748c7f9ebcfd5964a8c805ad840afeb2c7adc0e",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "web-task-participants",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/web-task-participants.png",
+      "sha256": "08950704fcd2e90abe6fa9d69c46f9e50c954b0d6763cd3620995f9ee7bd62fb"
+    },
+    {
+      "name": "web-complete-reference-pages",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/web-complete-reference-pages.png",
+      "sha256": "a6c3c3a638b7bce5c394e817e6c95426316e219ea05397246dd2d54a316acf7e"
+    },
+    {
+      "name": "web-task-current-receipt",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/web-task-current-receipt.png",
+      "sha256": "4840f883ee5a18a232b7bfd9864bfea38eb8ad0148972d1bd328418343304526"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/screen-recording.mp4",
+      "sha256": "af55059c18ebeefc84a752b68afafb86dc87327e8cd5c5bdb71302989789bc1e",
+      "size_bytes": 275799
+    },
+    {
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/screenshot-tour.gif",
+      "sha256": "dbcbd1c0e654fb032612d992036c5aebac44fe94c7ed5a4fec2c7c54c4046bf5",
+      "size_bytes": 147366
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "40",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "4.000000"
+    }
+  }
+}

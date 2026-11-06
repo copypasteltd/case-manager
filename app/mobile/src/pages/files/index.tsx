@@ -1,3 +1,4 @@
+import { HistoryRestores, RestoreHistoricalVersion } from './history-restores';
 import { TerminalObservations } from './terminal-observations';
 import { Text, View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
@@ -46,7 +47,7 @@ export default function FilesPage() {
       {!current.file && current.folder && me.actions.includes('file.retention.manage') && <><MultipartCleanup key={current.folder.id} folder={current.folder} me={me} /><CompletedDraftRetirement key={current.folder.id+':completed'} folder={current.folder} me={me}/><TerminalObservations key={current.folder.id+':terminal'} folder={current.folder} me={me}/></>}
       {!editor && (current.file || current.folder) && <ScopeTransfers kind={current.file ? 'file' : 'folder'} resource={(current.file ?? current.folder)!} me={me} />}
       {editor ? <FileEditor key={editor.mode + ':' + (editor.item?.id ?? current.folder?.id ?? 'root') + ':' + (editor.item?.version ?? 1) + ':' + me.authorization_version} {...editor} parent={editor.mode === 'create' ? current.folder : undefined} me={me} onCommitted={committed} onClose={() => setEditor(undefined)} />
-        : current.file ? <FileDetails key={current.file.id + ':' + me.authorization_version} file={current.file} authorization={me.authorization_version} onEdit={setEditor} />
+        : current.file ? <FileDetails key={current.file.id + ':' + me.authorization_version} file={current.file} authorization={me.authorization_version} refreshed={() => void page.reload()} onEdit={setEditor} />
         : <DirectoryContents current={current} me={me} canCreate={current.folder ? current.folder.can_create : !current.project && me.actions.includes('folder.create')} onEdit={setEditor} />}
     </>}
     {!page.loading && !page.error && current?.file && me && !editor && <FileBatchHistory key={current.file.id + ':' + me.authorization_version} fileID={current.file.id} me={me} />}
@@ -81,7 +82,7 @@ function DirectoryContents({ current, me, canCreate, onEdit }: { current: Worksp
   </>;
 }
 
-function FileDetails({ file, authorization, onEdit }: { file: StoredFile; authorization: string | number; onEdit(value: Editor): void }) {
+function FileDetails({ file, authorization, onEdit, refreshed }: { file: StoredFile; authorization: string | number; onEdit(value: Editor): void; refreshed(): void }) {
   const versions = useCollection<Schemas['FileVersion']>('/files/' + file.id + '/versions?limit=20');
   const [retry, setRetry] = useState<Schemas['FileReplica']>(), [receipt, setReceipt] = useState<Schemas['FileReplica']>();
   Taro.useDidHide(() => { setRetry(undefined); setReceipt(undefined); });
@@ -102,10 +103,12 @@ function FileDetails({ file, authorization, onEdit }: { file: StoredFile; author
       <View className='cp-choice'><State value={version.scan_state} /><State value={version.availability} /></View>
       <Text className='cp-muted cp-small'>SHA-256</Text><Text className='cp-code' selectable>{version.sha256}</Text>
       {version.replicas.map(replica => <View key={replica.id}><Text>{replica.provider === 'oss' ? 'OSS原件' : 'R2副本'} · </Text><State value={replica.state} />{file.can_update && file.state === 'active' && version.availability === 'available' && !retry && ['failed', 'missing'].includes(replica.state) && <Action secondary onClick={() => { setReceipt(undefined); setRetry(replica); }}>重新安排副本复制</Action>}</View>)}
+      <RestoreHistoricalVersion file={file} version={version} committed={refreshed} />
       <Action secondary disabled={file.state !== 'active' || version.availability !== 'available' || !['clean', 'waived'].includes(version.scan_state)} onClick={() => readVersion(file.id, version.id)}>查阅准确内容版本 {version.seq}</Action>
     </Fact>) : <Empty>此文件尚无正式内容版本。</Empty>}
       {versions.next && <Action secondary loading={versions.moreBusy} onClick={() => void versions.more()}>加载更多历史版本</Action>}
     </Section>
+    <HistoryRestores key={file.id+':'+file.version} file={file} committed={refreshed} />
     <FileComparisonPanel key={file.id + ':' + file.version} file={file} versions={versions.items} more={!!versions.next} loading={versions.moreBusy} loadMore={() => void versions.more()} unavailable={!!versions.error} />
   </>;
 }

@@ -43,7 +43,7 @@ func channelRevision(ctx context.Context, tx pgx.Tx, org, id string, actor *stri
 	return err
 }
 func withdrawChannel(ctx context.Context, tx pgx.Tx, org, id, reason string) error {
-	_, err := tx.Exec(ctx, `UPDATE telegram_inbox SET state='withdrawn',reason_code=$3 WHERE org_id=$1 AND channel_id=$2 AND (state='awaiting_executor' OR (state='dispatched' AND EXISTS(SELECT 1 FROM telegram_run_links l JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE l.org_id=telegram_inbox.org_id AND l.inbox_id=telegram_inbox.id AND r.state IN ('queued','running','awaiting_approval','committing'))))`, org, id, reason)
+	_, err := tx.Exec(ctx, `UPDATE telegram_inbox SET state='withdrawn',reason_code=$3 WHERE org_id=$1 AND channel_id=$2 AND (state='awaiting_executor' OR (state='dispatched' AND EXISTS(SELECT 1 FROM telegram_effective_run_links l JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id WHERE l.org_id=telegram_inbox.org_id AND l.inbox_id=telegram_inbox.id AND r.state IN ('queued','running','awaiting_approval','committing'))))`, org, id, reason)
 	return err
 }
 func (s *Service) CreateChannel(ctx context.Context, c core.Command, in ChannelCreate) (core.Result, error) {

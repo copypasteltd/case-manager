@@ -77,7 +77,7 @@ func TestAgentOrganizationTools(t *testing.T) {
 			t.Fatal(e)
 		}
 		lease.Job = *job
-		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/list_directory", "company/propose_organization", "company/commit_organization"}}
+		native := agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/list_directory", "company/propose_organization", "company/commit_organization", "company/propose_scope_transfer", "company/commit_scope_transfer", "company/propose_notification", "company/send_authorized_notification"}}
 		proof := rpc(agentworker.ControlPath+"confinement", native)
 		if len(proof["error"]) > 0 {
 			t.Fatal("organization confinement tool set rejected")
@@ -109,17 +109,17 @@ func TestAgentOrganizationTools(t *testing.T) {
 		return result.Output, ""
 	}
 	run, lease := start([]agent.SourceReference{})
-	t.Run("confinement exposes only the five organization tools", func(t *testing.T) {
+	t.Run("confinement exposes only the nine organization tools", func(t *testing.T) {
 		response := rpc(agentworker.MCPPath, map[string]any{"jsonrpc": "2.0", "id": "catalog", "method": "tools/list"})
 		var list struct {
 			Tools []struct {
 				Name string `json:"name"`
 			} `json:"tools"`
 		}
-		if json.Unmarshal(response["result"], &list) != nil || len(list.Tools) != 5 {
+		if json.Unmarshal(response["result"], &list) != nil || len(list.Tools) != 9 {
 			t.Fatal("unexpected tool catalog")
 		}
-		expected := map[string]bool{"read_resource": true, "inspect_operation": true, "list_directory": true, "propose_organization": true, "commit_organization": true}
+		expected := map[string]bool{"read_resource": true, "inspect_operation": true, "list_directory": true, "propose_organization": true, "commit_organization": true, "propose_scope_transfer": true, "commit_scope_transfer": true, "propose_notification": true, "send_authorized_notification": true}
 		for _, v := range list.Tools {
 			if !expected[v.Name] {
 				t.Fatal("unapproved tool exposed")

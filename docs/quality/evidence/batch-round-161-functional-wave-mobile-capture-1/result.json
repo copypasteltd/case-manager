@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-11-06T05:43:26.687Z",
+  "finished_at": "2026-11-06T05:43:57.980Z",
+  "checks": [
+    "Shared mobile changes explicit task participants through the exact ordinary versioned command"
+  ],
+  "source_count": 1236,
+  "source_sha256": "1f3d62fc52365671d959ffd3b174643bcdd11a6f2626a7b3e04f935770de9ea3",
+  "source_after_sha256": "1f3d62fc52365671d959ffd3b174643bcdd11a6f2626a7b3e04f935770de9ea3",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('本人历史内容恢复', { exact: true }) to be visible\u001b[22m\n",
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "f259df2c62e2791648b9128893cbcd356fbcd997928c9188cc1a1f73ae9c2c0a",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "f259df2c62e2791648b9128893cbcd356fbcd997928c9188cc1a1f73ae9c2c0a",
+  "build_source_unchanged": true
+}

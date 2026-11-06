@@ -15,11 +15,12 @@ import (
 
 type ProfileOperation struct {
 	RuntimeProfile
-	Version                     int64     `json:"version"`
-	State                       string    `json:"state"`
-	TelegramConfigurationSHA256 *string   `json:"telegram_configuration_sha256"`
-	InstalledBy                 string    `json:"installed_by"`
-	CreatedAt                   time.Time `json:"created_at"`
+	Version                          int64     `json:"version"`
+	State                            string    `json:"state"`
+	TelegramWriteConfigurationSHA256 *string   `json:"telegram_write_configuration_sha256"`
+	TelegramConfigurationSHA256      *string   `json:"telegram_configuration_sha256"`
+	InstalledBy                      string    `json:"installed_by"`
+	CreatedAt                        time.Time `json:"created_at"`
 }
 type ProfileEvent struct {
 	ID        string    `json:"id"`
@@ -62,12 +63,12 @@ func profileAuthority(ctx context.Context, tx pgx.Tx, a core.Actor, write bool) 
 }
 
 const profileOperationSelect = `SELECT p.id,p.skill_id,p.skill_version,p.skill_sha256,p.runtime_version,p.configuration_sha256,
- p.max_input_tokens,p.max_output_tokens,p.max_tool_calls,p.timeout_seconds,e.version,p.state,p.telegram_configuration_sha256,p.installed_by,p.created_at
+ p.max_input_tokens,p.max_output_tokens,p.max_tool_calls,p.timeout_seconds,e.version,p.state,p.telegram_configuration_sha256,p.telegram_write_configuration_sha256,p.installed_by,p.created_at
  FROM agent_runtime_profiles p JOIN LATERAL(SELECT version FROM agent_profile_events WHERE org_id=p.org_id AND profile_id=p.id ORDER BY version DESC LIMIT 1)e ON true`
 
 func scanProfileOperation(row pgx.Row) (ProfileOperation, error) {
 	var v ProfileOperation
-	err := row.Scan(&v.ID, &v.SkillID, &v.SkillVersion, &v.SkillSHA256, &v.RuntimeVersion, &v.ConfigurationSHA256, &v.MaxInputTokens, &v.MaxOutputTokens, &v.MaxToolCalls, &v.TimeoutSeconds, &v.Version, &v.State, &v.TelegramConfigurationSHA256, &v.InstalledBy, &v.CreatedAt)
+	err := row.Scan(&v.ID, &v.SkillID, &v.SkillVersion, &v.SkillSHA256, &v.RuntimeVersion, &v.ConfigurationSHA256, &v.MaxInputTokens, &v.MaxOutputTokens, &v.MaxToolCalls, &v.TimeoutSeconds, &v.Version, &v.State, &v.TelegramConfigurationSHA256, &v.TelegramWriteConfigurationSHA256, &v.InstalledBy, &v.CreatedAt)
 	return v, platform.DatabaseError(err)
 }
 func (s *Service) ProfileOperations(ctx context.Context, a core.Actor, state, skill, cursor string, limit int) (core.Page[ProfileOperation], error) {

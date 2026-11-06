@@ -64,7 +64,7 @@ add("ClassificationPolicy", {"id": ID, "level": POLICY_LEVEL, "version": VERSION
     "base_policy_id": nullable(ID), "reason": nullable(NAME), "created_at": TIME},
     ("id", "level", "version", "ai_allowed", "allowed_channels", "published_by", "base_policy_id", "reason", "created_at"))
 add("ClassificationPolicyInput", {"level": POLICY_LEVEL, "expected_version": VERSION, "base_policy_id": ID,
-    "ai_allowed": {"type": "boolean"}, "allowed_channels": {**array(enum("web", "wechat", "douyin", "android")), "maxItems": 4, "uniqueItems": True},
+    "ai_allowed": {"type": "boolean"}, "allowed_channels": {**array(enum("web", "wechat", "douyin", "android", "telegram")), "maxItems": 5, "uniqueItems": True},
     "reason": NAME}, ("level", "expected_version", "base_policy_id", "ai_allowed", "allowed_channels", "reason"))
 RETENTION_SECONDS = {"type": "integer", "minimum": 86400, "maximum": 315360000}
 OBSERVATION_SECONDS = {"type": "integer", "minimum": 86400, "maximum": 31536000}
@@ -269,12 +269,12 @@ add("Project", {**RECORD, **project_fields, "creator_id": ID, "project_no": NAME
     "state": enum("draft", "active", "on_hold", "closing", "archived", "cancelled"),
     "initialization_state": enum("pending", "complete", "partial_failed")},
     ("id", "version", "name", "scope", "owner_id", "state", "project_no"))
-task_fields = {"title": NAME, "body": TEXT, "assignee_id": nullable(ID),
+task_fields = {"participant_ids": array(ID,maxItems=50,uniqueItems=True), "title": NAME, "body": TEXT, "assignee_id": nullable(ID),
     "parent_id": nullable(ID), "milestone_id": nullable(ID), "start_at": nullable(TIME), "due_at": nullable(TIME),
     "priority": enum("low", "normal", "high", "urgent"), "review_required": {"type": "boolean"}}
 add("TaskCreate", task_fields, ("title", "priority", "review_required"))
 add("TaskPatch", {**EXPECTED, **task_fields}, ("expected_version",))
-add("Task", {**RECORD, **task_fields, "creator_id": ID, "project_id": ID,
+add("Task", {**RECORD, **task_fields, "creator_id": ID, "project_id": ID, "completed_at":nullable(TIME), "blocked_reason":nullable(TEXT), "resume_state":nullable(NAME),
     "state": enum("todo", "in_progress", "in_review", "done", "blocked", "cancelled")},
     ("id", "version", "project_id", "title", "state"))
 add("TaskDependency", {**EXPECTED, "predecessor_id": ID, "action": enum("add", "remove")},
@@ -287,7 +287,7 @@ add("ProjectMembers", {"items": array(ref("User")), "memberships": array(obj({"u
 add("ProjectMemberChange", {**EXPECTED, "user_id": ID, "project_role": enum("manager", "member", "viewer"),
     "action": enum("set", "remove"), "reason": NAME}, ("expected_version", "user_id", "action", "reason"))
 COUNT = {"type": "integer", "minimum": 0}
-add("Dashboard", {"as_of": TIME, "active_projects": COUNT, "my_open_tasks": COUNT, "my_overdue_tasks": COUNT,
+add("Dashboard", {"unassigned_tasks":COUNT,"participating_tasks":COUNT,"as_of": TIME, "active_projects": COUNT, "my_open_tasks": COUNT, "my_overdue_tasks": COUNT,
     "tasks": array(ref("Task"))}, ("as_of", "active_projects", "my_open_tasks", "my_overdue_tasks", "tasks"))
 post_fields = {"project_id": nullable(ID), "type": enum("project_log", "meeting_note", "sop", "article"),
     "title": NAME, "body": TEXT, "summary": TEXT, "tags": array({"type": "string", "minLength": 1, "maxLength": 50}, maxItems=20, uniqueItems=True),
@@ -800,7 +800,7 @@ budget_entry = {"id": ID, "policy_id": ID, "actor_id": ID, "project_id": nullabl
 add("BudgetEntry", budget_entry, tuple(budget_entry))
 budget_reconcile = {"expected_version":VERSION,"input_tokens":budget_tokens,"output_tokens":budget_tokens,"evidence_reference":NAME,"reason":NAME}
 add("BudgetReconcileInput", budget_reconcile, tuple(budget_reconcile))
-add("RuntimeProfile", profile, tuple(profile))
+add("RuntimeProfile", {**profile,"telegram_write_authorized":{"type":"boolean"}}, tuple(profile))
 add("RuntimeOptions", {"available": {"type": "boolean"}, "reason": nullable(NAME),
     "profiles": array(ref("RuntimeProfile"), maxItems=8)}, ("available", "reason", "profiles"))
 source_snapshot = {"type": enum("project", "task", "post", "milestone", "deliverable", "risk", "issue", "file", "service", "agent_plan", "agent_mutation", "agent_file_update", "agent_file_create", "agent_organization_plan", "agent_directory", "agent_project_person", "agent_project_template", "agent_project_catalog", "agent_oa_request", "agent_contract_body", "agent_post_write", "agent_finance_report"), "id": ID, "version_id": nullable(ID),
@@ -890,17 +890,27 @@ add("TelegramDisclosureInput",{**EXPECTED,"body_sha256":HASH,"start_char":{"type
 add("TelegramDisclosureReceipt",{"id":ID,"delivery_id":ID,"run_id":ID,"body_sha256":HASH,"start_char":{"type":"integer","minimum":0},"max_chars":{"type":"integer","minimum":1,"maximum":2000}},("id","delivery_id","run_id","body_sha256","start_char","max_chars"))
 add("TelegramHandoffInput",{"request_id":ID,**EXPECTED,"request_sha256":HASH,"reviewed":{"const":True}},("request_id","expected_version","request_sha256","reviewed"))
 add("TelegramHandoffRequest",{"id":ID,"version":VERSION,"request_sha256":HASH,"text":{"type":"string","minLength":1,"maxLength":4000},"skill_id":TG_SKILL,"project_id":nullable(ID),"channel_label":NAME,"chat_id":TG_CHAT,"topic_id":TG_TOPIC,"eligible":{"type":"boolean"},"expires_at":TIME,"run_id":nullable(ID)},("id","version","request_sha256","text","skill_id","project_id","channel_label","chat_id","topic_id","eligible","expires_at","run_id"))
-add("RunCreate", {"telegram_handoff":ref("TelegramHandoffInput"),**EXPECTED, "context_security_version": VERSION, "profile_id": ID,
+scope_auth={"plan_id":ID,**EXPECTED,"plan_hash":HASH,"reviewed":{"const":True},"authorized":{"const":True},"reason":NAME}
+add("AgentScopeTransferInput",scope_auth,tuple(scope_auth))
+notification_auth={"request_id":ID,**SCHEMAS["TelegramDisclosureInput"]["properties"]}
+add("AgentNotificationInput",notification_auth,tuple(notification_auth))
+fixed_delivery={"run_id":ID,"kind":enum("scope_transfer","notification"),"input":{"type":"object","additionalProperties":True},"preview":nullable({"type":"object","additionalProperties":True}),"intent_sha256":HASH,"operation_id":nullable(ID),"result":nullable({"type":"object","additionalProperties":True})}
+add("AgentFixedDeliveryView",fixed_delivery,tuple(fixed_delivery))
+add("RunCreate", {"scope_transfer":ref("AgentScopeTransferInput"),"notification":ref("AgentNotificationInput"),"telegram_handoff":ref("TelegramHandoffInput"),**EXPECTED, "context_security_version": VERSION, "profile_id": ID,
     "client_message_id": ID, "message": {"type": "string", "minLength": 1, "maxLength": 20000},
     "skill_id": NAME, "context_refs": array(ref("ResourceRef"), maxItems=20), "mutation": ref("AgentMutationInput"), "file_update": ref("AgentFileUpdateInput"), "file_create": ref("AgentFileCreateInput"), "file_recovery": ref("AgentFileRecoveryInput"), "oa_request": ref("AgentOARequestInput"), "post_write":ref("AgentPostWriteInput")},
     ("expected_version", "context_security_version", "profile_id", "client_message_id", "message"))
 SCHEMAS["RunCreate"]["properties"]["contract_body"]=ref("AgentContractBodyInput")
-add("Run", {**RECORD, "conversation_id": ID,
+add("Run", {"fixed_delivery":ref("AgentFixedDeliveryView"),"telegram_write_grant_id":ID,**RECORD, "conversation_id": ID,
     "state": enum("queued", "running", "awaiting_approval", "committing", "succeeded", "failed", "cancelled", "interrupted"),
     "last_event_seq": {"type": "integer", "minimum": 0}, "result_refs": array(ref("ResourceRef")),
     "safe_error_code": nullable(NAME), "actor_id": ID, "profile_id": ID, "client_message_id": ID, "can_cancel": {"type": "boolean"},
     "cancel_requested_at": nullable(TIME), "expires_at": TIME, "mutation": ref("AgentMutationView"), "file_update": ref("AgentFileUpdateView"), "file_create": ref("AgentFileCreateView"), "oa_request": ref("AgentOARequestView"), "post_write":ref("AgentPostWriteView"), "outcome": nullable(enum("draft", "pending", "awaiting_input", "completed", "conflict", "denied", "failed"))},
     ("id", "version", "conversation_id", "state", "last_event_seq", "actor_id", "profile_id", "client_message_id", "can_cancel", "cancel_requested_at", "expires_at"))
+tg_write_grant_input={"channel_id":ID,"channel_version":VERSION,"binding_id":ID,"binding_version":VERSION,"reason":NAME,"run":ref("RunCreate")}
+add("TelegramWriteGrantInput",tg_write_grant_input,tuple(tg_write_grant_input))
+tg_write_grant={"id":ID,"run_id":ID,"conversation_id":ID,"channel_id":ID,"channel_version":VERSION,"binding_id":ID,"binding_version":VERSION,"input_sha256":HASH,"state":enum("pending_trigger","consumed","stopped","expired"),"trigger":{"type":"string","minLength":1,"maxLength":100},"expires_at":TIME,"created_at":TIME}
+add("TelegramWriteGrant",tg_write_grant,tuple(tg_write_grant))
 SCHEMAS["Run"]["properties"]["telegram_handoff"] = ref("TelegramHandoffInput")
 SCHEMAS["Run"]["properties"]["contract_body"]=ref("AgentContractBodyView")
 add("Message", {"id": ID, "run_id": ID, "seq": VERSION, "role": enum("user", "assistant", "system"), "body": TEXT,
@@ -2009,6 +2019,8 @@ operation("/runs/{id}", "get", "getRun", "Run")
 operation("/runs/{id}/oa-text-adoption", "post", "adoptOAText", "AgentOARequestView", "AgentOATextAdopt")
 operation("/runs/{id}/contract-body-adoption", "post", "adoptContractBody", "AgentContractBodyView", "AgentContractBodyAdopt")
 operation("/runs/{id}/cancel", "post", "cancelRun", "Run", "Transition")
+operation("/conversations/{id}/telegram-write-grants","post","createTelegramWriteGrant","TelegramWriteGrant","TelegramWriteGrantInput",201)
+operation("/telegram-write-grants/{id}","get","getTelegramWriteGrant","TelegramWriteGrant")
 operation("/runs/{id}/event-log", "get", "getRunEventLog", "RunEventPage")
 PATHS["/runs/{id}/event-log"]["get"]["parameters"] += [
     {"name": "after_seq", "in": "query", "schema": {"type": "integer", "minimum": 0}},
@@ -2407,7 +2419,7 @@ resource_ingest=PATHS["/resource-sources/{source}/observations"]["post"]
 resource_ingest["security"]=[]
 resource_ingest["parameters"]=[{"name":"source","in":"path","required":True,"schema":ID},{"name":"X-CP-Status-Signature","in":"header","required":True,"schema":{"type":"string","minLength":88,"maxLength":88},"description":"Ed25519 signature over CP-HOST-V1 newline lower-case source UUID newline exact JSON bytes. Cookies, Origin and Authorization headers are rejected."}]
 
-profile_op={**profile,"version":VERSION,"state":enum("active","retired"),"telegram_configuration_sha256":nullable(HASH),"installed_by":ID,"created_at":TIME}
+profile_op={**profile,"version":VERSION,"state":enum("active","retired"),"telegram_configuration_sha256":nullable(HASH),"telegram_write_configuration_sha256":nullable(HASH),"installed_by":ID,"created_at":TIME}
 add("AgentProfileOperation",profile_op,tuple(profile_op))
 profile_event={"id":ID,"version":VERSION,"state":enum("active","retired"),"source":enum("installed","retired","retained_baseline"),"actor_id":nullable(ID),"created_at":TIME}
 add("AgentProfileEvent",profile_event,tuple(profile_event))
@@ -2499,7 +2511,7 @@ for path in ["/conversations/{id}/business-revisions/prepare","/conversations/{i
 
 # Increment160: all existing personal work groups have complete pinned pages.
 SCHEMAS["PurchaseCompletionPayment"]["properties"]["unattributed_refund_currency"]=CURRENCY
-inventory_kinds=enum("approvals","contracts","subscription_periods","incidents","file_attention","resource_attention","requests_to_revise","deliverables_to_submit","deliverables_to_review")
+inventory_kinds=enum("approvals","contracts","subscription_periods","incidents","file_attention","resource_attention","requests_to_revise","deliverables_to_submit","deliverables_to_review","my_tasks","my_overdue_tasks","participating_tasks","unassigned_tasks")
 inventory_item={"id":ID,"version":VERSION,"revision_id":nullable(ID),"project_id":nullable(ID),"related_id":nullable(ID),"due_on":nullable(DATE),"title":NAME,"state":NAME,"updated_at":TIME}
 add("WorkInventoryItem",inventory_item,tuple(inventory_item))
 inventory={"as_of":TIME,"scope":{"const":"my_readable_inventory"},"kind":inventory_kinds,"basis_sha256":HASH,"count":{"type":"integer","minimum":0,"maximum":5000},"items":array(ref("WorkInventoryItem"),maxItems=50),"next_cursor":nullable(CURSOR)}

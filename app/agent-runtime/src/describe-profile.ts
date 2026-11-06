@@ -10,10 +10,11 @@ export async function describeProfile(input: { skill_id: string; profile_id: str
   const settings = { ...input, enabled: false, ...(input.api_base_url ? { api_key: 'native-broker-managed' } : {}) };
   const { profile } = nativeConfiguration(skill, settings);
   const telegram = ['project-briefing', 'incident-summary'].includes(input.skill_id) ? nativeConfiguration(skill, settings, 'telegram').profile : null;
+  const telegramWrite = input.skill_id === 'project-update' ? nativeConfiguration(skill, settings, 'telegram', true).profile : null;
   const available = new Set(GATEWAY_TOOLS);
   const missing = skill.manifest.allowed_tools.filter(tool => !available.has(tool));
   return { profile: { id: input.profile_id, skill_id: skill.manifest.skill_id, skill_version: skill.manifest.version, skill_sha256: skill.sha256,
-    runtime_version: 'codex-sdk-0.164.0', configuration_sha256: profile.configuration_sha256, telegram_configuration_sha256: telegram?.configuration_sha256 ?? null }, native: profile, telegram_native: telegram, skill_state: skill.manifest.state,
+    runtime_version: 'codex-sdk-0.164.0', configuration_sha256: profile.configuration_sha256, telegram_configuration_sha256: telegram?.configuration_sha256 ?? null, telegram_write_configuration_sha256: telegramWrite?.configuration_sha256 ?? null }, native: profile, telegram_native: telegram, telegram_write_native: telegramWrite, skill_state: skill.manifest.state,
     missing_tools: missing, ready_for_controlled_installation: skill.manifest.state === 'published' && missing.length === 0,
     actual_model_invoked: false, database_modified: false };
 }

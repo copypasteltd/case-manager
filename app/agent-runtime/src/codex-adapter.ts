@@ -6,7 +6,7 @@ import { verifyResult, type ExecutionReceipt, type ProposedResult } from './evid
 
 export const CODEX_SDK_VERSION = '0.164.0';
 export interface RunBinding {
-  id: string; authority_stamp: string; skill_sha256: string; expires_at: string; channel?: 'web' | 'android' | 'wechat' | 'douyin' | 'telegram';
+  id: string; authority_stamp: string; skill_sha256: string; expires_at: string; telegram_write_authorized?: boolean; channel?: 'web' | 'android' | 'wechat' | 'douyin' | 'telegram';
   task_credential: string; input: unknown; prepared_context: string;
   max_tool_calls: number; max_input_tokens: number; max_output_tokens: number;
 }
@@ -57,6 +57,7 @@ function endpoint(value: string): string {
   return url.href;
 }
 function validateBinding(run: RunBinding) {
+  if (run.telegram_write_authorized !== undefined && typeof run.telegram_write_authorized !== 'boolean') throw new RuntimeError('RUNTIME_BINDING_INVALID');
   if (run.channel !== undefined && !['web', 'android', 'wechat', 'douyin', 'telegram'].includes(run.channel)) throw new RuntimeError('RUNTIME_BINDING_INVALID');
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(run.id) || !/^[A-Za-z0-9_-]{16,200}$/.test(run.authority_stamp)
     || !/^[A-Za-z0-9._~-]{32,4096}$/.test(run.task_credential) || typeof run.prepared_context !== 'string'
@@ -86,19 +87,21 @@ function withAbort<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
 /** Bounded adapter; a verified native profile and an authenticated Go boundary are mandatory. */
 // Used both by deployment inspection and execution, so the stored configuration
 // digest is computed from the exact options later sent to the pinned SDK.
-export function executionTools(skill: SkillPackage, channel?: RunBinding['channel']): readonly string[] {
+export function executionTools(skill: SkillPackage, channel?: RunBinding['channel'], authorized = false): readonly string[] {
+  if (authorized && (channel !== 'telegram' || skill.manifest.skill_id !== 'project-update')) throw new RuntimeError('SKILL_TOOLS_UNAVAILABLE');
+  if (authorized) return ['read_resource', 'inspect_operation', 'update_task'];
   if (channel !== 'telegram') return skill.manifest.allowed_tools;
   if (!['project-briefing', 'incident-summary'].includes(skill.manifest.skill_id)) throw new RuntimeError('SKILL_TOOLS_UNAVAILABLE');
   return skill.manifest.allowed_tools.filter(tool => ['read_resource', 'search_resources', 'inspect_operation', 'read_service_summary'].includes(tool));
 }
-export function nativeConfiguration(skill: SkillPackage, settings: Readonly<NativeSettings>, channel?: RunBinding['channel']) {
+export function nativeConfiguration(skill: SkillPackage, settings: Readonly<NativeSettings>, channel?: RunBinding['channel'], authorized = false) {
   if (settings.api_base_url !== undefined) {
     let gateway: URL;
     try { gateway = new URL(settings.api_base_url); } catch { throw new RuntimeError('RUNTIME_CONFIGURATION_INVALID'); }
     if (gateway.protocol !== 'http:' || gateway.hostname !== '127.0.0.1' || !gateway.port || Number(gateway.port) < 1024 || gateway.pathname !== '/v1'
       || gateway.username || gateway.password || gateway.search || gateway.hash || settings.api_key !== 'native-broker-managed') throw new RuntimeError('RUNTIME_CONFIGURATION_INVALID');
   }
-  const tools = executionTools(skill, channel);
+  const tools = executionTools(skill, channel, authorized);
   const config = {
     developer_instructions: skill.instructions,
     hide_agent_reasoning: true, history: { persistence: 'none' },
@@ -140,8 +143,8 @@ export class CodexAdapter {
     };
     const emit = async (event: PublicEvent) => { await current(); await withAbort(this.boundary.append(run, event, controller.signal), controller.signal); };
     try {
-      const tools = new Set(executionTools(skill, run.channel));
-      const { config, threadOptions, profile } = nativeConfiguration(skill, this.settings, run.channel);
+      const tools = new Set(executionTools(skill, run.channel, run.telegram_write_authorized === true));
+      const { config, threadOptions, profile } = nativeConfiguration(skill, this.settings, run.channel, run.telegram_write_authorized === true);
       await current();
       await withAbort(this.boundary.assertNativeConfinement(profile, controller.signal), controller.signal);
       await current(); await emit({ type: 'run.started' });

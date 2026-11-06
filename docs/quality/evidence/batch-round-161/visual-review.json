@@ -1,0 +1,58 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-11-06T06:18:05.157820+00:00",
+  "screenshots": [
+    {
+      "name": "web-task-participants",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/web-task-participants.png",
+      "sha256": "08950704fcd2e90abe6fa9d69c46f9e50c954b0d6763cd3620995f9ee7bd62fb"
+    },
+    {
+      "name": "web-complete-reference-pages",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/web-complete-reference-pages.png",
+      "sha256": "a6c3c3a638b7bce5c394e817e6c95426316e219ea05397246dd2d54a316acf7e"
+    },
+    {
+      "name": "web-task-current-receipt",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/web-task-current-receipt.png",
+      "sha256": "4840f883ee5a18a232b7bfd9864bfea38eb8ad0148972d1bd328418343304526"
+    },
+    {
+      "name": "mobile-task-participants",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/mobile-task-participants.png",
+      "sha256": "8627dba896bc2758b19fc7cc6c465c6580650e46ce4df77b84dbb12bf813c543"
+    },
+    {
+      "name": "mobile-task-current-receipt",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/mobile-task-current-receipt.png",
+      "sha256": "fb0a4ff61894acf259e29c1b0703ec3eb5b5031cfba1ab1e7068a965e6fd3f5d"
+    },
+    {
+      "name": "mobile-history-restoration",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/mobile-history-restoration.png",
+      "sha256": "0d17eb2f9af153e8e8e1e57371e49182b05d3c0052db92ba276aaa620afd4ae5"
+    }
+  ],
+  "gif_frames": [
+    {
+      "file": "docs/quality/evidence/batch-round-161/web-primary-reviewed-gif-frame.png",
+      "sha256": "a87a3b179d8fb40683944363fb67ae65b5600bbadf06e78b518f5fd6b868216f",
+      "source": "docs/media/batch-round-161/batch-round-161-functional-wave-web-capture-5/interaction.gif",
+      "source_sha256": "aa898cc4e551ee790aea6e5971c4f08f671643aca1dfb13ffc7f9d46d1418eef"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/mobile-primary-reviewed-gif-frame.png",
+      "sha256": "45a14afd8f9f9472a5772e9b99b40bbbc5a3a5e38ad269fa7b9989bc58683989",
+      "source": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/interaction.gif",
+      "source_sha256": "8844da4bfeac27f037b976a72ffb79b19a4827591130768d2e428c25e7068423"
+    }
+  ],
+  "credentials_visible": false,
+  "synthetic_data_only": true,
+  "observations": [
+    "Web exact task,20→26 references and ordinary participant receipt are visible. Mobile6 exact task shows bob; the final owner recovery inventory is empty and appears exactly once after loading.",
+    "The earlier duplicate-loading display is repaired by mounting only the settled inventory. Earlier captures/failures and the failed unsupported Busy-prop attempt remain immutable."
+  ],
+  "formal_ui_acceptance": false,
+  "production_acceptance": false
+}

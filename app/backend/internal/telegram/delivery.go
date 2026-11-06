@@ -133,7 +133,7 @@ func (s *Service) PrepareDelivery(ctx context.Context, bot DeliveryBot) (*Prepar
 	// Fold stale queued phases, revoke invalid scopes, and preserve uncertain sends.
 	rows, err := tx.Query(ctx, `SELECT d.id,d.state,(d.lease_until<clock_timestamp()),(CASE WHEN d.phase='reviewed_result' THEN telegram_reviewed_delivery_authorized(d.org_id,d.inbox_id) ELSE telegram_delivery_authorized(d.org_id,d.inbox_id) END),i.received_at<clock_timestamp()-interval '24 hours',i.state,r.state,d.phase
  FROM telegram_deliveries d JOIN telegram_inbox i ON i.org_id=d.org_id AND i.id=d.inbox_id
- LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id
+ LEFT JOIN telegram_effective_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id
  WHERE d.org_id=$1 AND d.bot_id=$2 AND d.state IN ('pending','retry_wait','sending') ORDER BY d.created_at,d.id LIMIT 100 FOR UPDATE OF d SKIP LOCKED`, bot.OrgID, bot.BotID)
 	if err != nil {
 		return nil, false, err
@@ -174,7 +174,7 @@ func (s *Service) PrepareDelivery(ctx context.Context, bot DeliveryBot) (*Prepar
 	}
 	worked := len(changes) > 0
 	rows, err = tx.Query(ctx, `SELECT i.id,i.channel_id,l.run_id,i.state,r.state FROM telegram_inbox i
- LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id
+ LEFT JOIN telegram_effective_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id
  WHERE i.org_id=$1 AND i.bot_id=$2 AND i.received_at>clock_timestamp()-interval '24 hours' AND telegram_delivery_authorized(i.org_id,i.id)
  AND NOT EXISTS(SELECT 1 FROM telegram_deliveries d WHERE d.inbox_id=i.id AND (d.phase='reviewed_result' OR d.phase=CASE WHEN r.state IS NULL OR r.state='queued' THEN 'accepted' WHEN r.state IN ('running','awaiting_approval','committing') THEN 'progress' ELSE 'result' END))
  ORDER BY i.received_at,i.id LIMIT 100`, bot.OrgID, bot.BotID)
@@ -227,7 +227,7 @@ func (s *Service) PrepareDelivery(ctx context.Context, bot DeliveryBot) (*Prepar
 	}
 	d, err := scanDelivery(tx.QueryRow(ctx, `SELECT d.id,d.inbox_id,d.run_id,d.phase,d.state,d.version,d.attempts,d.reason_code,d.next_attempt_at,d.message_id,d.created_at,d.updated_at
  FROM telegram_deliveries d JOIN telegram_inbox i ON i.org_id=d.org_id AND i.id=d.inbox_id
- LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id
+ LEFT JOIN telegram_effective_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN agent_runs r ON r.org_id=l.org_id AND r.id=l.run_id
  WHERE d.org_id=$1 AND d.bot_id=$2 AND d.state IN ('pending','retry_wait') AND d.next_attempt_at<=clock_timestamp()
  AND i.received_at>clock_timestamp()-interval '24 hours' AND (CASE WHEN d.phase='reviewed_result' THEN telegram_reviewed_delivery_authorized(d.org_id,d.inbox_id) ELSE telegram_delivery_authorized(d.org_id,d.inbox_id) END)
  AND (d.phase='reviewed_result' OR d.phase=CASE WHEN r.state IS NULL OR r.state='queued' THEN 'accepted' WHEN r.state IN ('running','awaiting_approval','committing') THEN 'progress' ELSE 'result' END)

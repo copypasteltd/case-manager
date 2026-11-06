@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T06:16:10.716886+00:00",
+  "group": "batch-round-161-functional-wave-mobile-capture-6",
+  "encoder_sha256": "9375e3c5eef98f41e2025d13a748c7f9ebcfd5964a8c805ad840afeb2c7adc0e",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "mobile-task-participants",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/mobile-task-participants.png",
+      "sha256": "8627dba896bc2758b19fc7cc6c465c6580650e46ce4df77b84dbb12bf813c543"
+    },
+    {
+      "name": "mobile-task-current-receipt",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/mobile-task-current-receipt.png",
+      "sha256": "fb0a4ff61894acf259e29c1b0703ec3eb5b5031cfba1ab1e7068a965e6fd3f5d"
+    },
+    {
+      "name": "mobile-history-restoration",
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/mobile-history-restoration.png",
+      "sha256": "0d17eb2f9af153e8e8e1e57371e49182b05d3c0052db92ba276aaa620afd4ae5"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/screen-recording.mp4",
+      "sha256": "00816a45b49bb25e467efda19e1ad4eede43b00a7869e218158b0a9faf32bb6c",
+      "size_bytes": 133820
+    },
+    {
+      "file": "docs/media/batch-round-161/batch-round-161-functional-wave-mobile-capture-6/screenshot-tour.gif",
+      "sha256": "9c9d12236a412d528c4214874a860353c2c6d1fc2eb830822518b46da2e3bb9b",
+      "size_bytes": 89776
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "36",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.600000"
+    }
+  }
+}

@@ -14,16 +14,17 @@ import (
 )
 
 type RuntimeProfile struct {
-	ID                  string `json:"id"`
-	SkillID             string `json:"skill_id"`
-	SkillVersion        string `json:"skill_version"`
-	SkillSHA256         string `json:"skill_sha256"`
-	RuntimeVersion      string `json:"runtime_version"`
-	ConfigurationSHA256 string `json:"configuration_sha256"`
-	MaxInputTokens      int    `json:"max_input_tokens"`
-	MaxOutputTokens     int    `json:"max_output_tokens"`
-	MaxToolCalls        int    `json:"max_tool_calls"`
-	TimeoutSeconds      int    `json:"timeout_seconds"`
+	TelegramWriteAuthorized bool   `json:"telegram_write_authorized,omitempty"`
+	ID                      string `json:"id"`
+	SkillID                 string `json:"skill_id"`
+	SkillVersion            string `json:"skill_version"`
+	SkillSHA256             string `json:"skill_sha256"`
+	RuntimeVersion          string `json:"runtime_version"`
+	ConfigurationSHA256     string `json:"configuration_sha256"`
+	MaxInputTokens          int    `json:"max_input_tokens"`
+	MaxOutputTokens         int    `json:"max_output_tokens"`
+	MaxToolCalls            int    `json:"max_tool_calls"`
+	TimeoutSeconds          int    `json:"timeout_seconds"`
 }
 type RuntimeOptions struct {
 	Available bool             `json:"available"`
@@ -41,6 +42,8 @@ type SourceSnapshot struct {
 	SHA256          string `json:"sha256"`
 }
 type RunCreate struct {
+	ScopeTransfer          *ScopeTransferInput    `json:"scope_transfer,omitempty"`
+	Notification           *NotificationInput     `json:"notification,omitempty"`
 	TelegramHandoff        *TelegramHandoffInput  `json:"telegram_handoff,omitempty"`
 	ExpectedVersion        int64                  `json:"expected_version"`
 	ContextSecurityVersion int64                  `json:"context_security_version"`
@@ -60,39 +63,41 @@ type RunCreate struct {
 	ContractBody           *ContractBodyInput     `json:"contract_body,omitempty"`
 }
 type Run struct {
-	TelegramHandoff   *TelegramHandoffInput `json:"telegram_handoff,omitempty"`
-	ID                string                `json:"id"`
-	Version           int64                 `json:"version"`
-	ConversationID    string                `json:"conversation_id"`
-	ActorID           string                `json:"actor_id"`
-	ProfileID         string                `json:"profile_id"`
-	ClientMessageID   string                `json:"client_message_id"`
-	State             string                `json:"state"`
-	LastEventSeq      int64                 `json:"last_event_seq"`
-	CancelRequestedAt *time.Time            `json:"cancel_requested_at"`
-	SafeErrorCode     *string               `json:"safe_error_code"`
-	ExpiresAt         time.Time             `json:"expires_at"`
-	CreatedAt         time.Time             `json:"created_at"`
-	UpdatedAt         time.Time             `json:"updated_at"`
-	CanCancel         bool                  `json:"can_cancel"`
-	Outcome           *string               `json:"outcome"`
-	Mutation          *MutationView         `json:"mutation,omitempty"`
-	BusinessRevision  *BusinessRevisionView `json:"business_revision,omitempty"`
-	BusinessDraft     *BusinessDraftView    `json:"business_draft,omitempty"`
-	OARequest         *OARequestView        `json:"oa_request,omitempty"`
-	PostWrite         *PostWriteView        `json:"post_write,omitempty"`
-	FileUpdate        *FileUpdateView       `json:"file_update,omitempty"`
-	FileCreate        *FileCreateView       `json:"file_create,omitempty"`
-	ContractBody      *ContractBodyView     `json:"contract_body,omitempty"`
-	audience          []string
+	FixedDelivery        *FixedDeliveryView    `json:"fixed_delivery,omitempty"`
+	TelegramWriteGrantID *string               `json:"telegram_write_grant_id,omitempty"`
+	TelegramHandoff      *TelegramHandoffInput `json:"telegram_handoff,omitempty"`
+	ID                   string                `json:"id"`
+	Version              int64                 `json:"version"`
+	ConversationID       string                `json:"conversation_id"`
+	ActorID              string                `json:"actor_id"`
+	ProfileID            string                `json:"profile_id"`
+	ClientMessageID      string                `json:"client_message_id"`
+	State                string                `json:"state"`
+	LastEventSeq         int64                 `json:"last_event_seq"`
+	CancelRequestedAt    *time.Time            `json:"cancel_requested_at"`
+	SafeErrorCode        *string               `json:"safe_error_code"`
+	ExpiresAt            time.Time             `json:"expires_at"`
+	CreatedAt            time.Time             `json:"created_at"`
+	UpdatedAt            time.Time             `json:"updated_at"`
+	CanCancel            bool                  `json:"can_cancel"`
+	Outcome              *string               `json:"outcome"`
+	Mutation             *MutationView         `json:"mutation,omitempty"`
+	BusinessRevision     *BusinessRevisionView `json:"business_revision,omitempty"`
+	BusinessDraft        *BusinessDraftView    `json:"business_draft,omitempty"`
+	OARequest            *OARequestView        `json:"oa_request,omitempty"`
+	PostWrite            *PostWriteView        `json:"post_write,omitempty"`
+	FileUpdate           *FileUpdateView       `json:"file_update,omitempty"`
+	FileCreate           *FileCreateView       `json:"file_create,omitempty"`
+	ContractBody         *ContractBodyView     `json:"contract_body,omitempty"`
+	audience             []string
 }
 
-const runColumns = `id,version,conversation_id,actor_id,profile_id,client_message_id,state,last_event_seq,cancel_requested_at,safe_error_code,expires_at,created_at,updated_at,audience_ids,outcome`
+const runColumns = `id,version,conversation_id,actor_id,profile_id,client_message_id,state,last_event_seq,cancel_requested_at,safe_error_code,expires_at,created_at,updated_at,audience_ids,outcome,(SELECT id FROM telegram_write_grants g WHERE g.org_id=agent_runs.org_id AND g.run_id=agent_runs.id)`
 const profileColumns = `id,skill_id,skill_version,skill_sha256,runtime_version,configuration_sha256,max_input_tokens,max_output_tokens,max_tool_calls,timeout_seconds`
 
 func scanRun(row pgx.Row) (Run, error) {
 	var r Run
-	err := row.Scan(&r.ID, &r.Version, &r.ConversationID, &r.ActorID, &r.ProfileID, &r.ClientMessageID, &r.State, &r.LastEventSeq, &r.CancelRequestedAt, &r.SafeErrorCode, &r.ExpiresAt, &r.CreatedAt, &r.UpdatedAt, &r.audience, &r.Outcome)
+	err := row.Scan(&r.ID, &r.Version, &r.ConversationID, &r.ActorID, &r.ProfileID, &r.ClientMessageID, &r.State, &r.LastEventSeq, &r.CancelRequestedAt, &r.SafeErrorCode, &r.ExpiresAt, &r.CreatedAt, &r.UpdatedAt, &r.audience, &r.Outcome, &r.TelegramWriteGrantID)
 	return r, platform.DatabaseError(err)
 }
 func scanProfile(row pgx.Row) (RuntimeProfile, error) {
@@ -272,6 +277,17 @@ func sourceSnapshots(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 			out = append(out, item)
 			continue
 		}
+		if ref.Type == "agent_fixed_delivery" {
+			if ref.VersionID != nil {
+				return nil, core.Invalid("version_id", "固定授权没有内容版本")
+			}
+			snapshot, e := fixedDeliverySource(ctx, tx, a, c, ref.ID)
+			if e != nil {
+				return nil, e
+			}
+			out = append(out, snapshot)
+			continue
+		}
 		if ref.Type == "agent_organization_plan" || ref.Type == "agent_directory" {
 			if !core.ValidID(ref.ID) || ref.VersionID != nil || len(members) != 1 || members[0] != a.UserID || seen[ref.Type+":"+ref.ID] {
 				return nil, core.Missing()
@@ -364,7 +380,7 @@ func sourceSnapshots(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 	return out, nil
 }
 func (s *Service) CreateRun(ctx context.Context, command core.Command, id string, in RunCreate) (core.Result, error) {
-	if in.FileRecovery != nil || in.TelegramHandoff != nil {
+	if in.FileRecovery != nil || in.TelegramHandoff != nil || in.ScopeTransfer != nil || in.Notification != nil {
 		command.ExclusiveOrganizationLock = true
 	}
 	if !core.ValidID(in.ProfileID) || !core.ValidID(in.ClientMessageID) || core.RequireVersion(in.ExpectedVersion) != nil || core.RequireVersion(in.ContextSecurityVersion) != nil || len([]rune(strings.TrimSpace(in.Message))) < 1 || len([]rune(in.Message)) > 20000 {
@@ -385,376 +401,7 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		return err
 	}
 	result, err := s.Commands.Do(ctx, command, authorize, func(tx pgx.Tx) (core.Result, error) {
-		c, err := metadata(ctx, tx, command.Actor.OrgID, id, true)
-		if err != nil {
-			return core.Result{}, err
-		}
-		if c.State != "active" {
-			return core.Result{}, core.Fail(409, "CONVERSATION_READ_ONLY", "请先恢复会话再发送消息")
-		}
-		if c.Version != in.ExpectedVersion {
-			return core.Result{}, core.Conflict()
-		}
-		if c.ContextSecurityVersion != in.ContextSecurityVersion {
-			return core.Result{}, core.Fail(409, "CONTEXT_SECURITY_CHANGED", "会话成员范围已变化，请重新核对资料")
-		}
-		// Commands already holds the organization shared lock. Profile retirement
-		// takes its exclusive counterpart; the application only needs SELECT.
-		profile, err := scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2 AND state='active' AND agent_profile_release_enabled(org_id,id)", command.Actor.OrgID, in.ProfileID))
-		if err != nil {
-			if errors.Is(err, pgx.ErrNoRows) || core.PublicError(err).Status == 404 {
-				return core.Result{}, core.Fail(503, "RUNTIME_UNAVAILABLE", "秘书执行服务尚未配置或当前配置已停用")
-			}
-			return core.Result{}, err
-		}
-		if in.SkillID != "" && in.SkillID != profile.SkillID {
-			return core.Result{}, core.Invalid("skill_id", "技能与所选执行配置不一致")
-		}
-		if (in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil) && profile.SkillID != "file-update" {
-			return core.Result{}, core.Invalid("file_update", "准确文件更新需选择文件更新任务")
-		}
-		if in.FileCreate != nil && (in.FileUpdate != nil || in.Mutation != nil) {
-			return core.Result{}, core.Invalid("file_create", "每次发送只能选择一项准确文件新建或更新")
-		}
-		if in.ContractBody != nil && (profile.SkillID != "file-update" || in.FileCreate == nil || in.FileUpdate != nil || in.FileRecovery != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
-			return core.Result{}, core.Invalid("contract_body", "合同完整正文需明确绑定一项新建文件授权")
-		}
-		if in.FileRecovery != nil && (in.FileUpdate != nil || in.FileCreate != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
-			return core.Result{}, core.Invalid("file_recovery", "恢复草稿需作为本次唯一的准确写入授权")
-		}
-		if in.PostWrite != nil {
-			if profile.SkillID != "project-briefing" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.OARequest != nil {
-				return core.Result{}, core.Invalid("post_write", "每次只向项目简报任务授权一项知识草稿或准确发布")
-			}
-			if err = validatePostWrite(*in.PostWrite); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if in.BusinessRevision != nil {
-			if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil || in.BusinessDraft != nil {
-				return core.Result{}, core.Invalid("business_revision", "业务草稿修订须作为本次唯一准确写入授权")
-			}
-		}
-		if in.BusinessDraft != nil {
-			if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil {
-				return core.Result{}, core.Invalid("business_draft", "业务草稿新建须作为本次唯一准确写入授权")
-			}
-		}
-		if in.OARequest != nil {
-			if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil {
-				return core.Result{}, core.Invalid("oa_request", "每次只向OA助手明确授权一项准确申请操作")
-			}
-			canonical, e := parseOARequest(*in.OARequest)
-			if e != nil {
-				return core.Result{}, e
-			}
-			in.OARequest.Arguments = canonical
-		}
-		var mutationBase mutationArguments
-		var mutationKind string
-		if in.Mutation != nil {
-			if profile.SkillID != "project-update" {
-				return core.Result{}, core.Invalid("mutation", "准确更新只能交给更新项目任务")
-			}
-			var canonical json.RawMessage
-			mutationBase, mutationKind, canonical, err = parseMutation(*in.Mutation)
-			if err != nil {
-				return core.Result{}, err
-			}
-			in.Mutation.Arguments = canonical
-		}
-		for _, ref := range in.ContextRefs {
-			if catalogSourceType(ref.Type) && profile.SkillID != "project-create" {
-				return core.Result{}, core.Invalid("context_refs", "项目人员和模板目录只用于本人公司私密会话的新建项目任务")
-			}
-			if (ref.Type == "agent_organization_plan" || ref.Type == "agent_directory") && profile.SkillID != "information-organize" {
-				return core.Result{}, core.Invalid("context_refs", "整理计划与目录观察只能交给资料整理任务核对")
-			}
-			if ref.Type == "agent_business_revision" || ref.Type == "agent_business_draft" || ref.Type == "agent_contract_body" || ref.Type == "agent_mutation" || ref.Type == "agent_file_update" || ref.Type == "agent_file_create" || ref.Type == "agent_oa_request" || ref.Type == "agent_post_write" {
-				return core.Result{}, core.Invalid("context_refs", "更新授权由本次发送建立，历史引用不能代替授权")
-			}
-			if in.Mutation != nil && ref.Type == mutationKind && ref.ID == mutationBase.ID {
-				return core.Result{}, core.Invalid("context_refs", "更新对象已包含在本次固定更新中，请移除重复资料引用")
-			}
-			if ref.Type == "agent_plan" && profile.SkillID != "project-create" {
-				return core.Result{}, core.Invalid("context_refs", "项目创建计划只能交给项目创建任务核对")
-			}
-		}
-		members, err := aiAudience(ctx, tx, command.Actor, c)
-		if err != nil {
-			return core.Result{}, err
-		}
-		snapshots, err := sourceSnapshots(ctx, tx, command.Actor, c, in.ContextRefs, members, true)
-		if err != nil {
-			return core.Result{}, err
-		}
-		inputParts := []any{in.Message, in.ProfileID, in.ExpectedVersion, in.ContextSecurityVersion, snapshots}
-		if in.Mutation != nil {
-			inputParts = append(inputParts, in.Mutation)
-		}
-		if in.FileUpdate != nil {
-			inputParts = append(inputParts, in.FileUpdate)
-		}
-		if in.FileCreate != nil {
-			inputParts = append(inputParts, in.FileCreate)
-		}
-		if in.FileRecovery != nil {
-			inputParts = append(inputParts, in.FileRecovery)
-		}
-		if in.ContractBody != nil {
-			inputParts = append(inputParts, in.ContractBody)
-		}
-		if in.OARequest != nil {
-			inputParts = append(inputParts, in.OARequest)
-		}
-		if in.BusinessRevision != nil {
-			inputParts = append(inputParts, in.BusinessRevision)
-		}
-		if in.BusinessDraft != nil {
-			inputParts = append(inputParts, in.BusinessDraft)
-		}
-		if in.PostWrite != nil {
-			inputParts = append(inputParts, in.PostWrite)
-		}
-		if in.TelegramHandoff != nil {
-			inputParts = append(inputParts, in.TelegramHandoff)
-		}
-		payload, _ := json.Marshal(inputParts)
-		hash := core.Digest(payload)
-		old, e := scanRun(tx.QueryRow(ctx, "SELECT "+runColumns+" FROM agent_runs WHERE org_id=$1 AND conversation_id=$2 AND actor_id=$3 AND client_message_id=$4", command.Actor.OrgID, id, command.Actor.UserID, in.ClientMessageID))
-		if e == nil {
-			var previous string
-			if err = tx.QueryRow(ctx, "SELECT input_sha256 FROM agent_runs WHERE id=$1", old.ID).Scan(&previous); err != nil {
-				return core.Result{}, err
-			}
-			if previous != hash {
-				return core.Result{}, core.Fail(409, "MESSAGE_ID_CONFLICT", "同一消息标识不能用于不同内容或资料")
-			}
-			old.CanCancel = old.CancelRequestedAt == nil && (old.State == "queued" || old.State == "running" || old.State == "awaiting_approval")
-			if b, e := readContractBody(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
-				return core.Result{}, e
-			} else if b != nil {
-				if _, e = contractBodySource(ctx, tx, command.Actor, c, old.ID, members); e != nil {
-					return core.Result{}, e
-				}
-				view, e := contractBodyViewRead(ctx, tx, command.Actor, b)
-				if e != nil {
-					return core.Result{}, e
-				}
-				old.ContractBody = &view
-			}
-			if p, e := readPostWrite(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
-				return core.Result{}, e
-			} else if p != nil {
-				old.PostWrite = &p.PostWriteView
-			}
-			if b, e := readBusinessRevision(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
-				return core.Result{}, e
-			} else if b != nil {
-				old.BusinessRevision = &b.BusinessRevisionView
-			}
-			if b, e := readBusinessDraft(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
-				return core.Result{}, e
-			} else if b != nil {
-				old.BusinessDraft = &b.BusinessDraftView
-			}
-			if r, e := readOARequestRecord(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
-				return core.Result{}, e
-			} else if r != nil {
-				old.OARequest = &r.OARequestView
-			}
-			if m, e := mutationRecordRead(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
-				return core.Result{}, e
-			} else if m != nil {
-				old.Mutation = &m.MutationView
-			}
-			intent, e := fileIntentRecordRead(ctx, tx, command.Actor.OrgID, old.ID)
-			if e != nil {
-				return core.Result{}, e
-			}
-			if intent != nil {
-				view, e := fileUpdateViewRead(ctx, tx, intent)
-				if e != nil {
-					return core.Result{}, e
-				}
-				assignFileIntent(&old, intent, view)
-			}
-			old.TelegramHandoff = in.TelegramHandoff
-			return core.Result{Status: 202, Data: old, Event: core.Event{Type: "agent.run.reconciled", ResourceType: "agent_run", ResourceID: old.ID, Version: old.Version, Payload: map[string]any{"conversation_id": id}}}, nil
-		}
-		if core.PublicError(e).Status != 404 {
-			return core.Result{}, e
-		}
-		if err = checkRunCapacity(ctx, tx, command.Actor.OrgID, command.Actor.UserID, id); err != nil {
-			return core.Result{}, err
-		}
-		runID := core.NewID()
-		var postWrite *postWriteRecord
-		if in.PostWrite != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "知识授权需要保留一项资料位置")
-			}
-			postWrite, err = preparePostWrite(ctx, tx, command.Actor, c, runID, *in.PostWrite, in.Message)
-			if err != nil {
-				return core.Result{}, err
-			}
-			if err = postWriteReferences(ctx, tx, command.Actor, postWrite, snapshots); err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, postWriteSnapshot(postWrite))
-		}
-		var businessRevision *businessRevisionRecord
-		if in.BusinessRevision != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "业务草稿授权需要保留一项资料位置")
-			}
-			businessRevision, err = prepareBusinessRevision(ctx, tx, command.Actor, c, runID, *in.BusinessRevision, in.Message)
-			if err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, businessRevisionSnapshot(businessRevision))
-		}
-		var businessDraft *businessDraftRecord
-		if in.BusinessDraft != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "业务草稿授权需要保留一项资料位置")
-			}
-			businessDraft, err = prepareBusinessDraft(ctx, tx, command.Actor, c, runID, *in.BusinessDraft, in.Message)
-			if err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, businessDraftSnapshot(businessDraft))
-		}
-		var oaRequest *oaRequestRecord
-		if in.OARequest != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "准确OA操作需要保留一项资料位置")
-			}
-			oaRequest, err = prepareOARequest(ctx, tx, command.Actor, c, runID, *in.OARequest, members, in.Message)
-			if err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, oaRequestSnapshot(oaRequest))
-		}
-		var fileIntent *fileIntentRecord
-		if in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "准确文件更新需要保留一项资料位置")
-			}
-			if in.FileRecovery != nil {
-				fileIntent, err = s.prepareFileRecoveryIntent(ctx, tx, command.Actor, c, runID, *in.FileRecovery, members, in.Message)
-			} else if in.FileCreate != nil {
-				fileIntent, err = prepareFileCreateIntent(ctx, tx, command.Actor, c, runID, *in.FileCreate, members, in.Message)
-			} else {
-				fileIntent, err = prepareFileIntent(ctx, tx, command.Actor, c, runID, *in.FileUpdate, members, in.Message)
-			}
-			if err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, fileUpdateSource(fileIntent))
-		}
-		var mutation *mutationRecord
-		var contractBody *contractBodyRecord
-		if in.ContractBody != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "完整合同正文需要保留一项依据位置")
-			}
-			contractBody, err = prepareContractBody(ctx, tx, command.Actor, c, runID, *in.ContractBody, fileIntent, in.Message)
-			if err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, contractBodySnapshot(contractBody))
-		}
-		if in.Mutation != nil {
-			if len(snapshots) >= 20 {
-				return core.Result{}, core.Invalid("context_refs", "固定更新需要保留一项资料位置")
-			}
-			mutation, err = prepareMutation(ctx, tx, command.Actor, c, runID, *in.Mutation, members)
-			if err != nil {
-				return core.Result{}, err
-			}
-			snapshots = append(snapshots, SourceSnapshot{SourceReference: SourceReference{Type: "agent_mutation", ID: runID}, ResourceVersion: 1, SHA256: mutation.IntentSHA256})
-		}
-		snapJSON, _ := json.Marshal(snapshots)
-		_, err = tx.Exec(ctx, `INSERT INTO agent_runs(id,org_id,conversation_id,conversation_revision_id,context_security_version,actor_id,actor_auth_version,organization_auth_version,channel,profile_id,client_message_id,input_sha256,audience_ids,state,expires_at)
-   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,'queued',clock_timestamp()+$14::integer*interval '1 second')`, runID, command.Actor.OrgID, id, c.CurrentRevisionID, c.ContextSecurityVersion, command.Actor.UserID, command.Actor.AuthVersion, command.Actor.OrgAuthVersion, command.Actor.Channel, profile.ID, in.ClientMessageID, hash, members, profile.TimeoutSeconds)
-		if err != nil {
-			return core.Result{}, err
-		}
-		if err = recordTelegramHandoff(ctx, tx, command.Actor, c, runID, in.TelegramHandoff); err != nil {
-			return core.Result{}, err
-		}
-		if postWrite != nil {
-			if err = insertPostWrite(ctx, tx, postWrite); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if mutation != nil {
-			if err = insertMutation(ctx, tx, mutation); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if businessRevision != nil {
-			if err = insertBusinessRevision(ctx, tx, businessRevision); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if businessDraft != nil {
-			if err = insertBusinessDraft(ctx, tx, businessDraft); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if oaRequest != nil {
-			if err = insertOARequest(ctx, tx, oaRequest); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if fileIntent != nil {
-			if err = insertFileIntent(ctx, tx, fileIntent); err != nil {
-				return core.Result{}, err
-			}
-		}
-		if contractBody != nil {
-			if err = insertContractBody(ctx, tx, contractBody); err != nil {
-				return core.Result{}, err
-			}
-		}
-		_, err = tx.Exec(ctx, `INSERT INTO conversation_messages(id,org_id,conversation_id,run_id,seq,role,body,author_id,audience_ids,source_snapshots)
-   SELECT $1,$2,$3,$4,coalesce(max(seq),0)+1,'user',$5,$6,$7,$8 FROM conversation_messages WHERE org_id=$2 AND conversation_id=$3`, core.NewID(), command.Actor.OrgID, id, runID, in.Message, command.Actor.UserID, members, snapJSON)
-		if err != nil {
-			return core.Result{}, err
-		}
-		if err = s.enqueueRun(ctx, tx, command.Actor.OrgID, runID); err != nil {
-			return core.Result{}, err
-		}
-		r, err := runRecord(ctx, tx, command.Actor.OrgID, runID, false)
-		if err != nil {
-			return core.Result{}, err
-		}
-		r.CanCancel = true
-		r.TelegramHandoff = in.TelegramHandoff
-		if contractBody != nil {
-			r.ContractBody = &contractBody.ContractBodyView
-		}
-		if businessRevision != nil {
-			r.BusinessRevision = &businessRevision.BusinessRevisionView
-		}
-		if businessDraft != nil {
-			r.BusinessDraft = &businessDraft.BusinessDraftView
-		}
-		if oaRequest != nil {
-			r.OARequest = &oaRequest.OARequestView
-		}
-		if postWrite != nil {
-			r.PostWrite = &postWrite.PostWriteView
-		}
-		if fileIntent != nil {
-			assignFileIntent(&r, fileIntent, fileIntent.FileUpdateView)
-		}
-		if mutation != nil {
-			r.Mutation = &mutation.MutationView
-		}
-		return core.Result{Status: 202, Data: r, Event: core.Event{Type: "agent.run.queued", ResourceType: "agent_run", ResourceID: runID, Version: 1, Payload: map[string]any{"conversation_id": id, "profile_id": profile.ID, "context_security_version": c.ContextSecurityVersion}}}, nil
+		return s.createRunTx(ctx, tx, command, id, in, nil)
 	})
 	if err == nil && result.Replayed {
 		var r Run
@@ -772,4 +419,414 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 func appendRunEvent(ctx context.Context, tx pgx.Tx, org, id string, seq int64, kind, state string, code *string) error {
 	_, err := tx.Exec(ctx, "INSERT INTO agent_run_events(id,org_id,run_id,seq,type,state,safe_code) VALUES($1,$2,$3,$4,$5,$6,$7)", core.NewID(), org, id, seq, kind, state, code)
 	return err
+}
+
+// createRunTx prepares one ordinary exact instruction. A TG grant has no job until its fixed trigger is consumed.
+func (s *Service) createRunTx(ctx context.Context, tx pgx.Tx, command core.Command, id string, in RunCreate, grant *telegramGrantMode) (core.Result, error) {
+	c, err := metadata(ctx, tx, command.Actor.OrgID, id, true)
+	if err != nil {
+		return core.Result{}, err
+	}
+	if c.State != "active" {
+		return core.Result{}, core.Fail(409, "CONVERSATION_READ_ONLY", "请先恢复会话再发送消息")
+	}
+	if c.Version != in.ExpectedVersion {
+		return core.Result{}, core.Conflict()
+	}
+	if c.ContextSecurityVersion != in.ContextSecurityVersion {
+		return core.Result{}, core.Fail(409, "CONTEXT_SECURITY_CHANGED", "会话成员范围已变化，请重新核对资料")
+	}
+	// Commands already holds the organization shared lock. Profile retirement
+	// takes its exclusive counterpart; the application only needs SELECT.
+	profile, err := scanProfile(tx.QueryRow(ctx, "SELECT "+profileColumns+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2 AND state='active' AND agent_profile_release_enabled(org_id,id)", command.Actor.OrgID, in.ProfileID))
+	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) || core.PublicError(err).Status == 404 {
+			return core.Result{}, core.Fail(503, "RUNTIME_UNAVAILABLE", "秘书执行服务尚未配置或当前配置已停用")
+		}
+		return core.Result{}, err
+	}
+	if in.ScopeTransfer != nil || in.Notification != nil {
+		if profile.SkillID != "information-organize" || in.ScopeTransfer != nil && in.Notification != nil || in.Mutation != nil || in.FileCreate != nil || in.FileUpdate != nil || in.FileRecovery != nil || in.BusinessDraft != nil || in.BusinessRevision != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil || in.TelegramHandoff != nil || in.ScopeTransfer != nil && c.ProjectID != nil {
+			return core.Result{}, core.Invalid("fixed_delivery", "准确范围执行或通知必须是本人独立会话的唯一固定授权")
+		}
+	}
+	if in.SkillID != "" && in.SkillID != profile.SkillID {
+		return core.Result{}, core.Invalid("skill_id", "技能与所选执行配置不一致")
+	}
+	if (in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil) && profile.SkillID != "file-update" {
+		return core.Result{}, core.Invalid("file_update", "准确文件更新需选择文件更新任务")
+	}
+	if in.FileCreate != nil && (in.FileUpdate != nil || in.Mutation != nil) {
+		return core.Result{}, core.Invalid("file_create", "每次发送只能选择一项准确文件新建或更新")
+	}
+	if in.ContractBody != nil && (profile.SkillID != "file-update" || in.FileCreate == nil || in.FileUpdate != nil || in.FileRecovery != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
+		return core.Result{}, core.Invalid("contract_body", "合同完整正文需明确绑定一项新建文件授权")
+	}
+	if in.FileRecovery != nil && (in.FileUpdate != nil || in.FileCreate != nil || in.Mutation != nil || in.OARequest != nil || in.PostWrite != nil) {
+		return core.Result{}, core.Invalid("file_recovery", "恢复草稿需作为本次唯一的准确写入授权")
+	}
+	if in.PostWrite != nil {
+		if profile.SkillID != "project-briefing" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.OARequest != nil {
+			return core.Result{}, core.Invalid("post_write", "每次只向项目简报任务授权一项知识草稿或准确发布")
+		}
+		if err = validatePostWrite(*in.PostWrite); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if in.BusinessRevision != nil {
+		if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil || in.BusinessDraft != nil {
+			return core.Result{}, core.Invalid("business_revision", "业务草稿修订须作为本次唯一准确写入授权")
+		}
+	}
+	if in.BusinessDraft != nil {
+		if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil {
+			return core.Result{}, core.Invalid("business_draft", "业务草稿新建须作为本次唯一准确写入授权")
+		}
+	}
+	if in.OARequest != nil {
+		if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil {
+			return core.Result{}, core.Invalid("oa_request", "每次只向OA助手明确授权一项准确申请操作")
+		}
+		canonical, e := parseOARequest(*in.OARequest)
+		if e != nil {
+			return core.Result{}, e
+		}
+		in.OARequest.Arguments = canonical
+	}
+	var mutationBase mutationArguments
+	var mutationKind string
+	if in.Mutation != nil {
+		if profile.SkillID != "project-update" {
+			return core.Result{}, core.Invalid("mutation", "准确更新只能交给更新项目任务")
+		}
+		var canonical json.RawMessage
+		mutationBase, mutationKind, canonical, err = parseMutation(*in.Mutation)
+		if err != nil {
+			return core.Result{}, err
+		}
+		in.Mutation.Arguments = canonical
+	}
+	for _, ref := range in.ContextRefs {
+		if catalogSourceType(ref.Type) && profile.SkillID != "project-create" {
+			return core.Result{}, core.Invalid("context_refs", "项目人员和模板目录只用于本人公司私密会话的新建项目任务")
+		}
+		if (ref.Type == "agent_organization_plan" || ref.Type == "agent_directory") && profile.SkillID != "information-organize" {
+			return core.Result{}, core.Invalid("context_refs", "整理计划与目录观察只能交给资料整理任务核对")
+		}
+		if ref.Type == "agent_fixed_delivery" || ref.Type == "agent_business_revision" || ref.Type == "agent_business_draft" || ref.Type == "agent_contract_body" || ref.Type == "agent_mutation" || ref.Type == "agent_file_update" || ref.Type == "agent_file_create" || ref.Type == "agent_oa_request" || ref.Type == "agent_post_write" {
+			return core.Result{}, core.Invalid("context_refs", "更新授权由本次发送建立，历史引用不能代替授权")
+		}
+		if in.Mutation != nil && ref.Type == mutationKind && ref.ID == mutationBase.ID {
+			return core.Result{}, core.Invalid("context_refs", "更新对象已包含在本次固定更新中，请移除重复资料引用")
+		}
+		if ref.Type == "agent_plan" && profile.SkillID != "project-create" {
+			return core.Result{}, core.Invalid("context_refs", "项目创建计划只能交给项目创建任务核对")
+		}
+	}
+	members, err := aiAudience(ctx, tx, command.Actor, c)
+	if err != nil {
+		return core.Result{}, err
+	}
+	snapshots, err := sourceSnapshots(ctx, tx, command.Actor, c, in.ContextRefs, members, true)
+	if err != nil {
+		return core.Result{}, err
+	}
+	inputParts := []any{in.Message, in.ProfileID, in.ExpectedVersion, in.ContextSecurityVersion, snapshots}
+	if in.Mutation != nil {
+		inputParts = append(inputParts, in.Mutation)
+	}
+	if in.FileUpdate != nil {
+		inputParts = append(inputParts, in.FileUpdate)
+	}
+	if in.FileCreate != nil {
+		inputParts = append(inputParts, in.FileCreate)
+	}
+	if in.FileRecovery != nil {
+		inputParts = append(inputParts, in.FileRecovery)
+	}
+	if in.ContractBody != nil {
+		inputParts = append(inputParts, in.ContractBody)
+	}
+	if in.OARequest != nil {
+		inputParts = append(inputParts, in.OARequest)
+	}
+	if in.BusinessRevision != nil {
+		inputParts = append(inputParts, in.BusinessRevision)
+	}
+	if in.BusinessDraft != nil {
+		inputParts = append(inputParts, in.BusinessDraft)
+	}
+	if in.PostWrite != nil {
+		inputParts = append(inputParts, in.PostWrite)
+	}
+	if in.TelegramHandoff != nil {
+		inputParts = append(inputParts, in.TelegramHandoff)
+	}
+	if in.ScopeTransfer != nil {
+		inputParts = append(inputParts, in.ScopeTransfer)
+	}
+	if in.Notification != nil {
+		inputParts = append(inputParts, in.Notification)
+	}
+	payload, _ := json.Marshal(inputParts)
+	hash := core.Digest(payload)
+	old, e := scanRun(tx.QueryRow(ctx, "SELECT "+runColumns+" FROM agent_runs WHERE org_id=$1 AND conversation_id=$2 AND actor_id=$3 AND client_message_id=$4", command.Actor.OrgID, id, command.Actor.UserID, in.ClientMessageID))
+	if e == nil {
+		var previous string
+		if err = tx.QueryRow(ctx, "SELECT input_sha256 FROM agent_runs WHERE id=$1", old.ID).Scan(&previous); err != nil {
+			return core.Result{}, err
+		}
+		if previous != hash {
+			return core.Result{}, core.Fail(409, "MESSAGE_ID_CONFLICT", "同一消息标识不能用于不同内容或资料")
+		}
+		old.CanCancel = old.CancelRequestedAt == nil && (old.State == "queued" || old.State == "running" || old.State == "awaiting_approval")
+		if b, e := readContractBody(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+			return core.Result{}, e
+		} else if b != nil {
+			if _, e = contractBodySource(ctx, tx, command.Actor, c, old.ID, members); e != nil {
+				return core.Result{}, e
+			}
+			view, e := contractBodyViewRead(ctx, tx, command.Actor, b)
+			if e != nil {
+				return core.Result{}, e
+			}
+			old.ContractBody = &view
+		}
+		if p, e := readPostWrite(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+			return core.Result{}, e
+		} else if p != nil {
+			old.PostWrite = &p.PostWriteView
+		}
+		if b, e := readBusinessRevision(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+			return core.Result{}, e
+		} else if b != nil {
+			old.BusinessRevision = &b.BusinessRevisionView
+		}
+		if b, e := readBusinessDraft(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+			return core.Result{}, e
+		} else if b != nil {
+			old.BusinessDraft = &b.BusinessDraftView
+		}
+		if r, e := readOARequestRecord(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+			return core.Result{}, e
+		} else if r != nil {
+			old.OARequest = &r.OARequestView
+		}
+		if m, e := mutationRecordRead(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+			return core.Result{}, e
+		} else if m != nil {
+			old.Mutation = &m.MutationView
+		}
+		intent, e := fileIntentRecordRead(ctx, tx, command.Actor.OrgID, old.ID)
+		if e != nil {
+			return core.Result{}, e
+		}
+		if intent != nil {
+			view, e := fileUpdateViewRead(ctx, tx, intent)
+			if e != nil {
+				return core.Result{}, e
+			}
+			assignFileIntent(&old, intent, view)
+		}
+		old.TelegramHandoff = in.TelegramHandoff
+		return core.Result{Status: 202, Data: old, Event: core.Event{Type: "agent.run.reconciled", ResourceType: "agent_run", ResourceID: old.ID, Version: old.Version, Payload: map[string]any{"conversation_id": id}}}, nil
+	}
+	if core.PublicError(e).Status != 404 {
+		return core.Result{}, e
+	}
+	if err = checkRunCapacity(ctx, tx, command.Actor.OrgID, command.Actor.UserID, id); err != nil {
+		return core.Result{}, err
+	}
+	runID := core.NewID()
+	executionChannel := command.Actor.Channel
+	if grant != nil {
+		runID = grant.RunID
+		executionChannel = "telegram"
+	}
+	var postWrite *postWriteRecord
+	if in.PostWrite != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "知识授权需要保留一项资料位置")
+		}
+		postWrite, err = preparePostWrite(ctx, tx, command.Actor, c, runID, *in.PostWrite, in.Message)
+		if err != nil {
+			return core.Result{}, err
+		}
+		if err = postWriteReferences(ctx, tx, command.Actor, postWrite, snapshots); err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, postWriteSnapshot(postWrite))
+	}
+	var businessRevision *businessRevisionRecord
+	if in.BusinessRevision != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "业务草稿授权需要保留一项资料位置")
+		}
+		businessRevision, err = prepareBusinessRevision(ctx, tx, command.Actor, c, runID, *in.BusinessRevision, in.Message)
+		if err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, businessRevisionSnapshot(businessRevision))
+	}
+	var businessDraft *businessDraftRecord
+	if in.BusinessDraft != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "业务草稿授权需要保留一项资料位置")
+		}
+		businessDraft, err = prepareBusinessDraft(ctx, tx, command.Actor, c, runID, *in.BusinessDraft, in.Message)
+		if err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, businessDraftSnapshot(businessDraft))
+	}
+	var oaRequest *oaRequestRecord
+	if in.OARequest != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "准确OA操作需要保留一项资料位置")
+		}
+		oaRequest, err = prepareOARequest(ctx, tx, command.Actor, c, runID, *in.OARequest, members, in.Message)
+		if err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, oaRequestSnapshot(oaRequest))
+	}
+	var fileIntent *fileIntentRecord
+	if in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "准确文件更新需要保留一项资料位置")
+		}
+		if in.FileRecovery != nil {
+			fileIntent, err = s.prepareFileRecoveryIntent(ctx, tx, command.Actor, c, runID, *in.FileRecovery, members, in.Message)
+		} else if in.FileCreate != nil {
+			fileIntent, err = prepareFileCreateIntent(ctx, tx, command.Actor, c, runID, *in.FileCreate, members, in.Message)
+		} else {
+			fileIntent, err = prepareFileIntent(ctx, tx, command.Actor, c, runID, *in.FileUpdate, members, in.Message)
+		}
+		if err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, fileUpdateSource(fileIntent))
+	}
+	fixed, e := prepareFixedDelivery(ctx, tx, command.Actor, c, runID, in.ScopeTransfer, in.Notification)
+	if e != nil {
+		return core.Result{}, e
+	}
+	if fixed != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "固定授权需要保留一项资料位置")
+		}
+		snapshots = append(snapshots, SourceSnapshot{SourceReference: SourceReference{Type: "agent_fixed_delivery", ID: runID}, ResourceVersion: 1, SHA256: fixed.IntentSHA256})
+	}
+	var mutation *mutationRecord
+	var contractBody *contractBodyRecord
+	if in.ContractBody != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "完整合同正文需要保留一项依据位置")
+		}
+		contractBody, err = prepareContractBody(ctx, tx, command.Actor, c, runID, *in.ContractBody, fileIntent, in.Message)
+		if err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, contractBodySnapshot(contractBody))
+	}
+	if in.Mutation != nil {
+		if len(snapshots) >= 20 {
+			return core.Result{}, core.Invalid("context_refs", "固定更新需要保留一项资料位置")
+		}
+		mutation, err = prepareMutation(ctx, tx, command.Actor, c, runID, *in.Mutation, members)
+		if err != nil {
+			return core.Result{}, err
+		}
+		snapshots = append(snapshots, SourceSnapshot{SourceReference: SourceReference{Type: "agent_mutation", ID: runID}, ResourceVersion: 1, SHA256: mutation.IntentSHA256})
+	}
+	snapJSON, _ := json.Marshal(snapshots)
+	_, err = tx.Exec(ctx, `INSERT INTO agent_runs(id,org_id,conversation_id,conversation_revision_id,context_security_version,actor_id,actor_auth_version,organization_auth_version,channel,profile_id,client_message_id,input_sha256,audience_ids,state,expires_at)
+   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,'queued',clock_timestamp()+$14::integer*interval '1 second')`, runID, command.Actor.OrgID, id, c.CurrentRevisionID, c.ContextSecurityVersion, command.Actor.UserID, command.Actor.AuthVersion, command.Actor.OrgAuthVersion, executionChannel, profile.ID, in.ClientMessageID, hash, members, profile.TimeoutSeconds)
+	if err != nil {
+		return core.Result{}, err
+	}
+	if err = recordTelegramHandoff(ctx, tx, command.Actor, c, runID, in.TelegramHandoff); err != nil {
+		return core.Result{}, err
+	}
+	if postWrite != nil {
+		if err = insertPostWrite(ctx, tx, postWrite); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if mutation != nil {
+		if err = insertMutation(ctx, tx, mutation); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if businessRevision != nil {
+		if err = insertBusinessRevision(ctx, tx, businessRevision); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if businessDraft != nil {
+		if err = insertBusinessDraft(ctx, tx, businessDraft); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if oaRequest != nil {
+		if err = insertOARequest(ctx, tx, oaRequest); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if fileIntent != nil {
+		if err = insertFileIntent(ctx, tx, fileIntent); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if contractBody != nil {
+		if err = insertContractBody(ctx, tx, contractBody); err != nil {
+			return core.Result{}, err
+		}
+	}
+	_, err = tx.Exec(ctx, `INSERT INTO conversation_messages(id,org_id,conversation_id,run_id,seq,role,body,author_id,audience_ids,source_snapshots)
+   SELECT $1,$2,$3,$4,coalesce(max(seq),0)+1,'user',$5,$6,$7,$8 FROM conversation_messages WHERE org_id=$2 AND conversation_id=$3`, core.NewID(), command.Actor.OrgID, id, runID, in.Message, command.Actor.UserID, members, snapJSON)
+	if err != nil {
+		return core.Result{}, err
+	}
+	if grant != nil {
+		if err = appendRunEvent(ctx, tx, command.Actor.OrgID, runID, 1, "run.queued", "queued", nil); err != nil {
+			return core.Result{}, err
+		}
+	}
+	if grant == nil {
+		if err = s.enqueueRun(ctx, tx, command.Actor.OrgID, runID); err != nil {
+			return core.Result{}, err
+		}
+	}
+	r, err := runRecord(ctx, tx, command.Actor.OrgID, runID, false)
+	if err != nil {
+		return core.Result{}, err
+	}
+	r.CanCancel = true
+	if fixed != nil {
+		r.FixedDelivery = &fixed.FixedDeliveryView
+	}
+	r.TelegramHandoff = in.TelegramHandoff
+	if contractBody != nil {
+		r.ContractBody = &contractBody.ContractBodyView
+	}
+	if businessRevision != nil {
+		r.BusinessRevision = &businessRevision.BusinessRevisionView
+	}
+	if businessDraft != nil {
+		r.BusinessDraft = &businessDraft.BusinessDraftView
+	}
+	if oaRequest != nil {
+		r.OARequest = &oaRequest.OARequestView
+	}
+	if postWrite != nil {
+		r.PostWrite = &postWrite.PostWriteView
+	}
+	if fileIntent != nil {
+		assignFileIntent(&r, fileIntent, fileIntent.FileUpdateView)
+	}
+	if mutation != nil {
+		r.Mutation = &mutation.MutationView
+	}
+	return core.Result{Status: 202, Data: r, Event: core.Event{Type: "agent.run.queued", ResourceType: "agent_run", ResourceID: runID, Version: 1, Payload: map[string]any{"conversation_id": id, "profile_id": profile.ID, "context_security_version": c.ContextSecurityVersion}}}, nil
 }

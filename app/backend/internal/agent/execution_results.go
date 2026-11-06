@@ -69,6 +69,11 @@ func validateProposedResult(r ProposedResult) error {
 // A response and its authority/evidence, event, audit and queue receipt commit together.
 // "succeeded" means the turn returned a verified response; outcome describes the business state.
 func (s *Service) CompleteExecution(ctx context.Context, lease ExecutionLease, result ProposedResult, usage ExecutionUsage) error {
+	if done, e := s.scopeTerminalReconciled(ctx, lease, false); e != nil {
+		return e
+	} else if done {
+		return nil
+	}
 	if err := validateProposedResult(result); err != nil {
 		return err
 	}
@@ -113,7 +118,7 @@ func (s *Service) CompleteExecution(ctx context.Context, lease ExecutionLease, r
 			if (receipt.Tool == "commit_file_update" || receipt.Tool == "commit_file_create") && slices.Contains(result.OperationIDs, *receipt.OperationID) {
 				fileCommitted = true
 			}
-			if receipt.Tool == "commit_organization" && slices.Contains(result.OperationIDs, *receipt.OperationID) {
+			if (receipt.Tool == "commit_organization" || receipt.Tool == "send_authorized_notification") && slices.Contains(result.OperationIDs, *receipt.OperationID) {
 				organizationCommitted = true
 			}
 			if (oaRequestTool(receipt.Tool) || receipt.Tool == "create_business_draft" || receipt.Tool == "revise_business_draft") && slices.Contains(result.OperationIDs, *receipt.OperationID) {

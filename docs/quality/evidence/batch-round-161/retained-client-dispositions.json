@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "reexecuted": false,
+  "current_client_source_sha256": "49fb8784328511a53e53d4a7bb84fcec70e58c15d3b5361f76f520689598f508",
+  "retained_units": {
+    "web": 520,
+    "mobile_main": 548,
+    "mobile_extra": 4,
+    "runtime": 66,
+    "android_signing_input_python": 3,
+    "draft_skill_catalog": 8
+  },
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-2.json",
+      "sha256": "b7b4de992f68ed697ec89445fcef884231f2f29fc9729a243fe97b6e75fa1472"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-initial.json",
+      "sha256": "c14e05a1e792725c2051c7a445bba62ea54ce4c7d84bc310f39495ca1c5ac967"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-3.json",
+      "sha256": "7bfa59c1aa10252e688e5498c04d7e45aefe9b484179f02819c9454223739160"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-13.json",
+      "sha256": "6b37537dff5c656ad73e3540fc8218f07c7e2c72ee1457cae9489bd803c1afe8"
+    }
+  ],
+  "source_changes_since_batch_2": [
+    "app/mobile/src/pages/files/history-restores.tsx",
+    "app/web/src/TelegramWriteGrant.tsx"
+  ],
+  "disposition": "Retain Web520/mobile548+4/runtime66 and initial Python3/catalog8 execution without replay. Changes since batch2 are the unsupported Web MFA prop removal and the mobile history loading-root repair. Current typecheck and WeChat/Douyin builds pass in batch13; Web build/capture3/5 retain identical Web application inputs. Actual final mobile6 asserts one settled inventory. No new Android JS/APK/formal signing."
+}

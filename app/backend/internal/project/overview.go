@@ -7,11 +7,13 @@ import (
 )
 
 type Dashboard struct {
-	AsOf           time.Time `json:"as_of"`
-	ActiveProjects int       `json:"active_projects"`
-	MyOpenTasks    int       `json:"my_open_tasks"`
-	MyOverdueTasks int       `json:"my_overdue_tasks"`
-	Tasks          []Task    `json:"tasks"`
+	UnassignedTasks    int       `json:"unassigned_tasks"`
+	ParticipatingTasks int       `json:"participating_tasks"`
+	AsOf               time.Time `json:"as_of"`
+	ActiveProjects     int       `json:"active_projects"`
+	MyOpenTasks        int       `json:"my_open_tasks"`
+	MyOverdueTasks     int       `json:"my_overdue_tasks"`
+	Tasks              []Task    `json:"tasks"`
 }
 
 func (s *Service) Dashboard(ctx context.Context, a core.Actor) (Dashboard, error) {
@@ -24,6 +26,16 @@ func (s *Service) Dashboard(ctx context.Context, a core.Actor) (Dashboard, error
 	err = s.DB.QueryRow(ctx, `SELECT count(*),count(*) FILTER(WHERE t.due_at<now()) FROM tasks t JOIN projects p ON p.org_id=t.org_id AND p.id=t.project_id
         WHERE t.org_id=$1 AND t.assignee_id=$2 AND t.state NOT IN ('done','cancelled') AND p.state NOT IN ('archived','cancelled')
 		AND can_access(p.org_id,$2,'task.read','task',t.id,p.id,t.creator_id,p.classification,$3,$4)`, a.OrgID, a.UserID, a.Channel, a.RunID != "").Scan(&out.MyOpenTasks, &out.MyOverdueTasks)
+	if err != nil {
+		return out, err
+	}
+	err = s.DB.QueryRow(ctx, `SELECT count(*) FILTER(WHERE t.assignee_id IS NULL AND p.state<>'closing'
+ AND can_access(t.org_id,$2,'task.assign','task',t.id,p.id,t.creator_id,p.classification,$3,$4)
+ AND can_access(t.org_id,$2,'task.update','task',t.id,p.id,t.creator_id,p.classification,$3,$4)),
+ count(*) FILTER(WHERE $2=ANY(t.participant_ids))
+ FROM tasks t JOIN projects p ON p.org_id=t.org_id AND p.id=t.project_id WHERE t.org_id=$1
+ AND t.state NOT IN ('done','cancelled') AND p.state NOT IN ('archived','cancelled')
+ AND can_access(t.org_id,$2,'task.read','task',t.id,p.id,t.creator_id,p.classification,$3,$4)`, a.OrgID, a.UserID, a.Channel, a.RunID != "").Scan(&out.UnassignedTasks, &out.ParticipatingTasks)
 	if err != nil {
 		return out, err
 	}

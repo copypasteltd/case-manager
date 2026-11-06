@@ -34,6 +34,9 @@ func (s *Service) enqueueRun(ctx context.Context, tx pgx.Tx, org, run string) er
 	if err := appendRunEvent(ctx, tx, org, run, 1, "run.queued", "queued", nil); err != nil {
 		return err
 	}
+	return s.enqueueRunJob(ctx, tx, org, run)
+}
+func (s *Service) enqueueRunJob(ctx context.Context, tx pgx.Tx, org, run string) error {
 	payload, _ := json.Marshal(map[string]string{"run_id": run})
 	jobID, _, err := s.Queue().Enqueue(ctx, tx, jobqueue.Input{OrgID: org, Kind: ExecutionJobKind, Lane: "agent", DedupKey: "agent.run:" + run, PayloadVersion: 1, Payload: payload, MaxAttempts: 1})
 	if err != nil {

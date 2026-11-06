@@ -68,9 +68,13 @@ type Task struct {
 	Priority       string     `json:"priority"`
 	State          string     `json:"state"`
 	ReviewRequired bool       `json:"review_required"`
-	CompletedAt    *time.Time `json:"-"`
+	CompletedAt    *time.Time `json:"completed_at"`
+	ParticipantIDs []string   `json:"participant_ids"`
+	BlockedReason  *string    `json:"blocked_reason"`
+	ResumeState    *string    `json:"resume_state"`
 }
 type TaskCreate struct {
+	ParticipantIDs []string   `json:"participant_ids,omitempty"`
 	Title          string     `json:"title"`
 	Body           string     `json:"body"`
 	AssigneeID     *string    `json:"assignee_id,omitempty"`
@@ -82,6 +86,7 @@ type TaskCreate struct {
 	ReviewRequired bool       `json:"review_required"`
 }
 type TaskPatch struct {
+	ParticipantIDs  *[]string                `json:"participant_ids,omitempty"`
 	ExpectedVersion int64                    `json:"expected_version"`
 	Title           *string                  `json:"title,omitempty"`
 	Body            *string                  `json:"body,omitempty"`

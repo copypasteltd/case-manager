@@ -17,6 +17,14 @@ react {
     // Taro supplies an already frozen offline bundle for every build type.
     debuggableVariants = ['debug', 'release']
 }
+def releaseConfigPath = System.getenv('CP_ANDROID_RELEASE_CONFIG')
+if (releaseConfigPath) {
+    def repository = rootProject.projectDir.parentFile.parentFile.parentFile.canonicalFile.toPath()
+    if (new File(releaseConfigPath).canonicalFile.toPath().startsWith(repository)) throw new GradleException('Release configuration must be private and outside the repository.')
+}
+def releaseConfig = releaseConfigPath ? new groovy.json.JsonSlurper().parse(new File(releaseConfigPath)) : null
+if (releaseConfig && (new File(releaseConfig.keystore).canonicalFile.toPath().startsWith(rootProject.projectDir.parentFile.parentFile.parentFile.canonicalFile.toPath()))) throw new GradleException('Signing keys must stay outside the repository.')
+if (releaseConfig && (localBuild || !(releaseConfig.version_code instanceof Number) || releaseConfig.version_code <= releaseConfig.previous_version_code || releaseConfig.version_code > 2100000000 || !(releaseConfig.version_name ==~ /[0-9]+\.[0-9]+\.[0-9]+([-+][a-zA-Z0-9.-]+)?/))) throw new GradleException('Invalid private release version or profile.')
 android {
     namespace 'hk.copypaste.workspace'
     compileSdk rootProject.ext.compileSdkVersion
@@ -25,8 +33,8 @@ android {
         applicationId 'hk.copypaste.workspace'
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName '0.1.0'
+        versionCode releaseConfig ? releaseConfig.version_code as int : 1
+        versionName releaseConfig ? releaseConfig.version_name : '0.1.0'
         buildConfigField 'String', 'CP_API_ORIGIN', '"' + apiOrigin + '"'
         buildConfigField 'boolean', 'CP_LOCAL_HTTP', localHTTP.toString()
         manifestPlaceholders = [cpCleartext: localHTTP.toString()]
@@ -38,6 +46,15 @@ android {
         debug.res.setSrcDirs(localHTTP ? ['src/local/res'] : [])
     }
     signingConfigs {
+        if (releaseConfig) {
+            formal {
+                storeFile new File(releaseConfig.keystore)
+                storePassword System.getenv(releaseConfig.store_password_env)
+                keyAlias releaseConfig.alias
+                keyPassword System.getenv(releaseConfig.key_password_env)
+                if (!storeFile.isFile() || !storePassword || !keyPassword) throw new GradleException('Private release signing inputs are incomplete.')
+            }
+        }
         debug {
             storeFile rootProject.file('../../.local/android/debug.keystore')
             storePassword 'android'
@@ -51,6 +68,7 @@ android {
             versionNameSuffix '-local'
         }
         release {
+            if (releaseConfig) signingConfig signingConfigs.formal
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -75,6 +93,6 @@ tasks.configureEach { task ->
         if (!file('src/main/assets/index.android.bundle').isFile()) throw new GradleException('Build the current Taro Android bundle before packaging.')
     }
     if (task.name in ['assembleRelease', 'bundleRelease', 'preReleaseBuild']) task.doFirst {
-        if (localBuild) throw new GradleException('A local-profile build cannot be released.')
+        if (localBuild || !releaseConfig) throw new GradleException('Formal releases require private signing inputs and an HTTPS profile.')
     }
 }

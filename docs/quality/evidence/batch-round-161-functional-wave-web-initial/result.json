@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "retrospective_failure_record": true,
+  "failure_stage": "before_browser_start",
+  "native_fixture_exit_code": 1,
+  "reason": "Synthetic setup used a token invalidated by its later role changes; HTTP401 before browser startup.",
+  "source_sha256": "f2c12bf9a7e971f31341d09fc8b091a2998404a913abc8781dce0d9aae3c7b92",
+  "source_unchanged": true,
+  "owned_browser_started": false,
+  "owned_browser_closed": true,
+  "owned_review_server_stopped": true,
+  "private_fixture_removed": true,
+  "owned_database_cluster_stopped": true,
+  "private_log_sha256": "6d218aa0bef83efbb90fdfda3c6109f15469d224f34a090d0ed17f0bd59462b2"
+}

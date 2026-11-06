@@ -70,6 +70,9 @@ func allowedReadTool(skill, tool string) bool {
 	return tool == "read_resource" || tool == "inspect_operation" || (tool == "search_resources" && (skill == "project-briefing" || skill == "project-create" || skill == "incident-summary"))
 }
 func allowedExecutionTool(st executionState, tool string) bool {
+	if st.Actor.Channel == "telegram" && st.Run.TelegramWriteGrantID != nil {
+		return st.Profile.TelegramWriteAuthorized && slices.Contains([]string{"read_resource", "inspect_operation", "update_task"}, tool)
+	}
 	if st.Actor.Channel == "telegram" && !slices.Contains([]string{"read_resource", "search_resources", "inspect_operation", "read_service_summary"}, tool) {
 		return false
 	}
@@ -144,6 +147,8 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 	var snapshots []SourceSnapshot
 	var writeOutput map[string]any
 	switch tool {
+	case "propose_scope_transfer", "commit_scope_transfer", "propose_notification", "send_authorized_notification":
+		writeOutput, snapshots, err = s.executionFixedTool(ctx, tx, st, tool, args)
 	case "read_office_workspace":
 		var raw json.RawMessage
 		var handled bool
@@ -382,11 +387,16 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		return nil, err
 	}
 	action := "agent.tool.read"
-	if tool == "propose_project" || tool == "create_project" || mutationTool(tool) || fileUpdateTool(tool) || tool == "propose_organization" || tool == "commit_organization" || oaRequestTool(tool) || tool == "create_business_draft" || tool == "revise_business_draft" || postWriteTool(tool) {
+	if tool == "propose_project" || tool == "create_project" || mutationTool(tool) || fileUpdateTool(tool) || tool == "propose_scope_transfer" || tool == "commit_scope_transfer" || tool == "propose_notification" || tool == "send_authorized_notification" || tool == "propose_organization" || tool == "commit_organization" || oaRequestTool(tool) || tool == "create_business_draft" || tool == "revise_business_draft" || postWriteTool(tool) {
 		action = "agent.tool.write"
 	}
 	if err = executionAudit(ctx, tx, st, action, map[string]any{"tool": tool, "invocation_key_sha256": core.Digest([]byte(key)), "source_count": len(snapshots)}); err != nil {
 		return nil, err
+	}
+	if tool == "commit_scope_transfer" {
+		if err = s.terminalizeScopeTransfer(ctx, tx, st, lease, output); err != nil {
+			return nil, err
+		}
 	}
 	err = tx.Commit(ctx)
 	if err == nil && work != nil && work.Draft != nil {
@@ -444,6 +454,9 @@ func executionRead(ctx context.Context, tx pgx.Tx, st executionState, args json.
 	}
 	if in.Type == "agent_contract_body" {
 		return executionContractBodyText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
+	}
+	if in.Type == "agent_fixed_delivery" {
+		return executionFixedText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
 	}
 	if in.Type == "agent_plan" {
 		return executionPlanText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)

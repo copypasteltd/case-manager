@@ -12,11 +12,11 @@ import (
 )
 
 const taskColumns = `t.id,t.version,t.created_at,t.updated_at,t.project_id,t.title,t.body,t.assignee_id,t.parent_id,t.milestone_id,
-	t.start_at,t.due_at,t.priority,t.state,t.review_required,t.completed_at,t.creator_id`
+	t.start_at,t.due_at,t.priority,t.state,t.review_required,t.completed_at,t.creator_id,t.participant_ids,t.blocked_reason,t.resume_state`
 
 func scanTask(row pgx.Row) (Task, error) {
 	var t Task
-	err := row.Scan(&t.ID, &t.Version, &t.CreatedAt, &t.UpdatedAt, &t.ProjectID, &t.Title, &t.Body, &t.AssigneeID, &t.ParentID, &t.MilestoneID, &t.StartAt, &t.DueAt, &t.Priority, &t.State, &t.ReviewRequired, &t.CompletedAt, &t.CreatorID)
+	err := row.Scan(&t.ID, &t.Version, &t.CreatedAt, &t.UpdatedAt, &t.ProjectID, &t.Title, &t.Body, &t.AssigneeID, &t.ParentID, &t.MilestoneID, &t.StartAt, &t.DueAt, &t.Priority, &t.State, &t.ReviewRequired, &t.CompletedAt, &t.CreatorID, &t.ParticipantIDs, &t.BlockedReason, &t.ResumeState)
 	return t, platform.DatabaseError(err)
 }
 func getTask(ctx context.Context, db platform.DBTX, org, id string, lock bool) (Task, error) {
@@ -108,6 +108,9 @@ func (s *Service) ListTasks(ctx context.Context, a core.Actor, projectID string,
 	return out, nil
 }
 func validateTaskFields(t TaskCreate) error {
+	if err := validateParticipantIDs(t.ParticipantIDs); err != nil {
+		return err
+	}
 	if err := core.Name(t.Title); err != nil {
 		return core.Invalid("title", "标题需为1至200个字符")
 	}
@@ -159,6 +162,9 @@ func validParent(ctx context.Context, db platform.DBTX, org, projectID string, p
 	return nil
 }
 func (s *Service) CreateTask(ctx context.Context, c core.Command, projectID string, input TaskCreate) (core.Result, error) {
+	if input.ParticipantIDs == nil {
+		input.ParticipantIDs = []string{}
+	}
 	if err := validateTaskFields(input); err != nil {
 		return core.Result{}, err
 	}
@@ -166,7 +172,7 @@ func (s *Service) CreateTask(ctx context.Context, c core.Command, projectID stri
 		if err := authorizeProject(ctx, tx, c.Actor, projectID, "task.create"); err != nil {
 			return err
 		}
-		if input.AssigneeID != nil && *input.AssigneeID != c.Actor.UserID {
+		if len(input.ParticipantIDs) > 0 || input.AssigneeID != nil && *input.AssigneeID != c.Actor.UserID {
 			return authorizeProject(ctx, tx, c.Actor, projectID, "task.assign")
 		}
 		return nil
@@ -187,9 +193,12 @@ func (s *Service) CreateTask(ctx context.Context, c core.Command, projectID stri
 		if err = validParent(ctx, tx, c.Actor.OrgID, projectID, input.ParentID); err != nil {
 			return core.Result{}, err
 		}
+		if err = validTaskParticipants(ctx, tx, c.Actor.OrgID, projectID, input.ParticipantIDs); err != nil {
+			return core.Result{}, err
+		}
 		id := core.NewID()
-		_, err = tx.Exec(ctx, `INSERT INTO tasks(id,org_id,project_id,title,body,assignee_id,parent_id,milestone_id,start_at,due_at,priority,state,review_required,creator_id)
-			VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'todo',$12,$13)`, id, c.Actor.OrgID, projectID, strings.TrimSpace(input.Title), input.Body, input.AssigneeID, input.ParentID, input.MilestoneID, input.StartAt, input.DueAt, input.Priority, input.ReviewRequired, c.Actor.UserID)
+		_, err = tx.Exec(ctx, `INSERT INTO tasks(id,org_id,project_id,title,body,assignee_id,parent_id,milestone_id,start_at,due_at,priority,state,review_required,creator_id,participant_ids)
+			VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'todo',$12,$13,$14)`, id, c.Actor.OrgID, projectID, strings.TrimSpace(input.Title), input.Body, input.AssigneeID, input.ParentID, input.MilestoneID, input.StartAt, input.DueAt, input.Priority, input.ReviewRequired, c.Actor.UserID, input.ParticipantIDs)
 		if err != nil {
 			return core.Result{}, err
 		}
@@ -205,7 +214,7 @@ func taskResult(t Task, event string) core.Result {
 	if event == "task.created" {
 		status = 201
 	}
-	return core.Result{Status: status, Data: t, Event: core.Event{Type: event, ResourceType: "task", ResourceID: t.ID, Version: t.Version, Payload: map[string]any{"task_id": t.ID, "project_id": t.ProjectID}}}
+	return core.Result{Status: status, Data: t, Event: core.Event{Type: event, ResourceType: "task", ResourceID: t.ID, Version: t.Version, Payload: map[string]any{"task_id": t.ID, "project_id": t.ProjectID, "participant_ids": t.ParticipantIDs, "state": t.State}}}
 }
 func (s *Service) UpdateTask(ctx context.Context, c core.Command, id string, input TaskPatch) (core.Result, error) {
 	if err := core.RequireVersion(input.ExpectedVersion); err != nil {
@@ -215,7 +224,7 @@ func (s *Service) UpdateTask(ctx context.Context, c core.Command, id string, inp
 		if err := authorizeTask(ctx, tx, c.Actor, id, "task.update"); err != nil {
 			return err
 		}
-		if input.AssigneeID.Set {
+		if input.AssigneeID.Set || input.ParticipantIDs != nil {
 			return authorizeTask(ctx, tx, c.Actor, id, "task.assign")
 		}
 		return nil
@@ -271,6 +280,15 @@ func (s *Service) UpdateTask(ctx context.Context, c core.Command, id string, inp
 		if input.DueAt.Set {
 			t.DueAt = input.DueAt.Value
 		}
+		if input.ParticipantIDs != nil {
+			if err = validateParticipantIDs(*input.ParticipantIDs); err != nil {
+				return core.Result{}, err
+			}
+			if err = validTaskParticipants(ctx, tx, c.Actor.OrgID, t.ProjectID, *input.ParticipantIDs); err != nil {
+				return core.Result{}, err
+			}
+			t.ParticipantIDs = *input.ParticipantIDs
+		}
 		fields := TaskCreate{Title: t.Title, Body: t.Body, AssigneeID: t.AssigneeID, ParentID: t.ParentID, MilestoneID: t.MilestoneID, StartAt: t.StartAt, DueAt: t.DueAt, Priority: t.Priority, ReviewRequired: t.ReviewRequired}
 		if err = validateTaskFields(fields); err != nil {
 			return core.Result{}, err
@@ -298,8 +316,8 @@ func (s *Service) UpdateTask(ctx context.Context, c core.Command, id string, inp
 			}
 		}
 		_, err = tx.Exec(ctx, `UPDATE tasks SET title=$3,body=$4,assignee_id=$5,parent_id=$6,milestone_id=$7,start_at=$8,due_at=$9,
-			priority=$10,review_required=$11,version=version+1,updated_at=now() WHERE org_id=$1 AND id=$2`,
-			c.Actor.OrgID, id, strings.TrimSpace(t.Title), t.Body, t.AssigneeID, t.ParentID, t.MilestoneID, t.StartAt, t.DueAt, t.Priority, t.ReviewRequired)
+			priority=$10,review_required=$11,participant_ids=$12,version=version+1,updated_at=now() WHERE org_id=$1 AND id=$2`,
+			c.Actor.OrgID, id, strings.TrimSpace(t.Title), t.Body, t.AssigneeID, t.ParentID, t.MilestoneID, t.StartAt, t.DueAt, t.Priority, t.ReviewRequired, t.ParticipantIDs)
 		if err != nil {
 			return core.Result{}, err
 		}

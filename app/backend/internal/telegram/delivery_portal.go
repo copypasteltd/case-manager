@@ -9,7 +9,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-const ownRequestSQL = `SELECT i.id,i.bot_id,i.channel_id,i.channel_version,i.state,i.reason_code,i.request_text,i.received_at,i.requested_skill_id,coalesce(l.conversation_id,r.conversation_id),coalesce(l.run_id,h.run_id),r.state FROM telegram_inbox i LEFT JOIN telegram_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN telegram_human_handoffs h ON h.org_id=i.org_id AND h.inbox_id=i.id AND h.actor_id=i.requester_id LEFT JOIN agent_runs r ON r.org_id=i.org_id AND r.id=coalesce(l.run_id,h.run_id) WHERE i.org_id=$1 AND i.requester_id=$2 AND i.kind='request' AND i.id=$3`
+const ownRequestSQL = `SELECT i.id,i.bot_id,i.channel_id,i.channel_version,i.state,i.reason_code,i.request_text,i.received_at,i.requested_skill_id,coalesce(l.conversation_id,r.conversation_id),coalesce(l.run_id,h.run_id),r.state FROM telegram_inbox i LEFT JOIN telegram_effective_run_links l ON l.org_id=i.org_id AND l.inbox_id=i.id LEFT JOIN telegram_human_handoffs h ON h.org_id=i.org_id AND h.inbox_id=i.id AND h.actor_id=i.requester_id LEFT JOIN agent_runs r ON r.org_id=i.org_id AND r.id=coalesce(l.run_id,h.run_id) WHERE i.org_id=$1 AND i.requester_id=$2 AND i.kind='request' AND i.id=$3`
 
 func ownRequest(ctx context.Context, tx pgx.Tx, a core.Actor, id string) (Request, error) {
 	var v Request

@@ -101,5 +101,9 @@ func (s *Service) ExecutionScope(ctx context.Context, lease ExecutionLease) (Run
 		return RuntimeProfile{}, "", err
 	}
 	defer tx.Rollback(ctx)
-	return st.Profile, st.Actor.Channel, tx.Commit(ctx)
+	channel := st.Actor.Channel
+	if st.Profile.TelegramWriteAuthorized {
+		channel = "telegram-authorized"
+	}
+	return st.Profile, channel, tx.Commit(ctx)
 }

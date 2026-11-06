@@ -1,0 +1,277 @@
+{
+  "initial_failures_preserved": true,
+  "affected_only_replay": true,
+  "whole_code_wave_preceded_initial_tests": true,
+  "all_modules_declared_before_checks": true,
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-1.json",
+      "sha256": "351c27a139837cf1d7861f53e22ef494f47b414e7792c73dd6037863090499ca",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-10.json",
+      "sha256": "4b6acd635d0384f51a7de710bfd38af2ce0ba59c7087d525298efed08b872af1",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-11.json",
+      "sha256": "7d5c02eff0c361dcc5588902ca973ad35897ee5379a802f50093fd31f1e95bfe",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-2.json",
+      "sha256": "b240bfbc0129ba558f3fb7026445fa56b37dd755f64ac36ab5efc6abbc2cea90",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-3.json",
+      "sha256": "ec93b8617b49b1170f16eb7b42e842bdbfa6a33d099a323491be476fd278fb0e",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-4.json",
+      "sha256": "aa67acc967d672c31a0c770e09c4bc145c2d6dec1ac10ffb8175cca162f62cd2",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-5.json",
+      "sha256": "5871d28e15bc163ba340e464a34848c663c6a072c3e2890ff5731c4e4fc3cbfb",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-6.json",
+      "sha256": "d172db71a5f949364ebbb4853aa4f96ade9b93e5d0711a5076ff0bb17ae5a053",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-7.json",
+      "sha256": "4edcc0c95f10b8e647416c13d00139e0b339efec057ba6694ad9328281dcda61",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-8.json",
+      "sha256": "30a71f14bd2520c91f914b0141607fdcc0115d811f68cb6f942ae12e2ef56537",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-batch-9.json",
+      "sha256": "bef44f3eb6352b371554b09acd2f962e174c18e0a50d659a60122e47325f3e4b",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/native-tests-initial.json",
+      "sha256": "5e47bcca23995934b58879990bde660262b030942bcbb4f88ca1324e00d030d9",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-1.json",
+      "sha256": "866c173367a67e4f60997f1d6cceac78298d057575cb733544e9c72e7f76ee20",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-12.json",
+      "sha256": "0eeedc4620b4d8ad4767f018c80feb4e758d6ef569591e7cd8d19bb0a343d976",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-13.json",
+      "sha256": "6b37537dff5c656ad73e3540fc8218f07c7e2c72ee1457cae9489bd803c1afe8",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-2.json",
+      "sha256": "b7b4de992f68ed697ec89445fcef884231f2f29fc9729a243fe97b6e75fa1472",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-batch-3.json",
+      "sha256": "7bfa59c1aa10252e688e5498c04d7e45aefe9b484179f02819c9454223739160",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161/client-checks-initial.json",
+      "sha256": "c14e05a1e792725c2051c7a445bba62ea54ce4c7d84bc310f39495ca1c5ac967",
+      "passed": false
+    }
+  ],
+  "source_archives": [
+    {
+      "archive": "initial-code-wave.zip",
+      "archive_sha256": "e7b990544f0cd9b2f616ad790709b08f615894d486c80850b9d6675f23bbce29",
+      "source_sha256": "caa2fb4ab11a03dd75b5ad647908dd02940f49405e69e20989d204cfd782afce"
+    },
+    {
+      "archive": "batch-1-source-delta.zip",
+      "archive_sha256": "78fb159092442b972087cbc00513be9edc60b388c0bad8b484cc7ea6d0ce6d69",
+      "source_sha256": "48c7de1e547507d0804a20f91f5f1aa6ebf94e7fb707867856ab5cc39b378f72"
+    },
+    {
+      "archive": "batch-10-source-delta.zip",
+      "archive_sha256": "a488ab39476d530ab09c636494ad18f2e98dba9f4926e02cd2733f4319e02be3",
+      "source_sha256": "853a962cc6fe0be3124efd8c3f98f2f1b814d6f8b22258c880ec427f2b97a8c6"
+    },
+    {
+      "archive": "batch-11-source-delta.zip",
+      "archive_sha256": "967542f4883176e388dda53f58fca2823d94bad7183e70604823ef23fcfd89c9",
+      "source_sha256": "f259df2c62e2791648b9128893cbcd356fbcd997928c9188cc1a1f73ae9c2c0a"
+    },
+    {
+      "archive": "batch-12-source-delta.zip",
+      "archive_sha256": "7e5e2cfd89d4f92d6dde11a494639fc9c974e121fc918ea9f37aa7952eccf870",
+      "source_sha256": "e8a6d17b71e895d97a5a76a3687ff0c6897403388cd378a6fa28c193c3943e4c"
+    },
+    {
+      "archive": "batch-2-source-delta.zip",
+      "archive_sha256": "6f8b64fdb746da2796943cd4d8bacf97e7654cf52884f089bce5ecf1d004bbbd",
+      "source_sha256": "4f90aef7a2f32c1a2e70bf7767f9e8a4717d333cc66bc45c799f395dc6a91ae6"
+    },
+    {
+      "archive": "batch-3-source-delta.zip",
+      "archive_sha256": "cd2b9f55c38cc568abca4d1d8feb77f3c85cb5656918aa9d392c2abc3229c817",
+      "source_sha256": "9168c22582b7d05f620a9d27b48a3c124c6d4d108aedeac115f3bea72a8025d7"
+    },
+    {
+      "archive": "batch-4-source-delta.zip",
+      "archive_sha256": "afc059c65459290f43c67870f4045df8e3249ceffcc2445bf0fc27bdfcf1f78c",
+      "source_sha256": "5ebe8731572507e04d421a11c5a8f3d93650dead67cb86ff10232108ca973739"
+    },
+    {
+      "archive": "batch-5-source-delta.zip",
+      "archive_sha256": "ea29ab5a9240bba3de1d63724b2aefa7aa8736f342c54f77c64ede5c5cfe710a",
+      "source_sha256": "885fb2ac5e9e36afd83a6f01ad00d72c184e0b12b57102770a43638a84230a22"
+    },
+    {
+      "archive": "batch-6-source-delta.zip",
+      "archive_sha256": "ae892558202799fa7d5531fc9971e25d406783673ba350b1be2cd9028f21bb17",
+      "source_sha256": "6e91e7a357553e40b6c8c77634578da24d941c5efaf5907bde1b1489fe659b94"
+    },
+    {
+      "archive": "batch-7-source-delta.zip",
+      "archive_sha256": "8cb4dea1587323ddedac543987ee85704fb94d9e6090fce4736994ddff9dcabc",
+      "source_sha256": "8e0e68afe372a078e2b97bb86265b905171cff978764d55597ce8d20d4a58512"
+    },
+    {
+      "archive": "batch-8-source-delta.zip",
+      "archive_sha256": "13310ebd59b1864c58394b00d45ebfeef4f5d13e758f27de7fdab9cd6d6f6be9",
+      "source_sha256": "f2c12bf9a7e971f31341d09fc8b091a2998404a913abc8781dce0d9aae3c7b92"
+    },
+    {
+      "archive": "batch-9-source-delta.zip",
+      "archive_sha256": "be66b4575ced87ffcc9f97af3be6f65f09cd045612a12dd575673c06ff659ef4",
+      "source_sha256": "a7d3764487767bebd36b9669c43e102d2e93718e4468ea28d23fc1133b53623b"
+    }
+  ],
+  "grouped_repairs": [
+    {
+      "batch": "initial →1–3",
+      "fix": "Canonical JSON input, TS syntax/nullable byte contracts, MCP declaration order, exact fixture version fields, unsupported MFA props. Unified client unit attempts remain recorded; current typecheck and all three selected client builds pass separately."
+    },
+    {
+      "batch": "3 →4",
+      "fix": "Correct JSON TaskPatch fixture and nested trigger-field branches; do not access activation/commit-only NEW fields on other table records."
+    },
+    {
+      "batch": "4 →5",
+      "fix": "Separate queued event from job creation; terminal scope transfer writes its own durable minimal result/assistant receipt without renewing invalidated authority; notification fixture checks existing message_id."
+    },
+    {
+      "batch": "5 →6",
+      "fix": "Canonical JSONB replay comparison and explicit TG inbox disposition assertion."
+    },
+    {
+      "batch": "6 →7",
+      "fix": "Immutable grant SELECT uses the existing organization lock; preserve denied UPDATE/DELETE privileges and propagate real SQL errors."
+    },
+    {
+      "batch": "7 →8",
+      "fix": "Exact immutable activation is recognized alongside legacy dispatch receipts; preserve inbox identity and transition rules."
+    },
+    {
+      "batch": "8 →10",
+      "fix": "Explicit UUID/text audit parameter typing. Real TG trigger, update, receipt, forbidden-tool and one-use cases pass in batch10."
+    },
+    {
+      "batch": "10 →11",
+      "fix": "Only the synthetic browser setup token is corrected to match the native HTTP helper Android header; browser sign-in remains separate."
+    },
+    {
+      "batch": "capture repairs",
+      "fix": "Retain early HTTP401, competing helper initialization, recording project-path allowlist and complete-pagination text selector attempts. The first retrospective diagnosis of a role-invalidated token was provisional; the confirmed fixture issue is channel mismatch. Subsequent native cluster preparations are sequential. Media encoding waits until the mobile fixture also closes."
+    },
+    {
+      "batch": "11 →12–13",
+      "fix": "Visual review identified retained H5 loading panels. Mount the settled owner inventory only; preserve the intermediate unsupported Busy-prop type failure. Final typecheck and both miniapp builds pass; mobile6 asserts exactly one current inventory. Backend bytes and Web app bytes are unchanged; retain their exact earlier checks/capture rather than replay."
+    }
+  ],
+  "not_a_full_regression": true,
+  "real_integrations_executed": false,
+  "capture_attempt_records": [
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-capture-1/result.json",
+      "sha256": "90021b7ae8da72ef4a0fe959f7269f64217c644add35dabdb24ae5f764adf98b",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-capture-2/result.json",
+      "sha256": "c265b258fed82a0de8061b69bb2f5142954a32072323c22b551792da1632daaa",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-capture-3/result.json",
+      "sha256": "4a50691472465b0b0bf249813ce26cd652c52bd25341bde42360aaea80dbddc3",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-capture-4/result.json",
+      "sha256": "28bf6c7e31e7099889b8e219ff4d7ae2fe5cd1fde790edeb828aa247ce67c8be",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-capture-5/result.json",
+      "sha256": "c8e77e9162e26c57ecfe29dee4b3b204ed045d91becadf05c3cb4fd47649b30b",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-capture-6/result.json",
+      "sha256": "256b630f010b9d2a613e12d590e36917b2e4b0b6c9e908ddc4495bab9198cc51",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-mobile-initial/result.json",
+      "sha256": "1e3b4cf0f24156adb9312f41689e3cba2aade9759e52224ff95b242ce36f25b1",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-web-capture-1/result.json",
+      "sha256": "ee0b01b97b9e629bd17bb02111d04770e551939fa7aeaf3cd734bcbbf8fcea2e",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-web-capture-2/result.json",
+      "sha256": "4c80be5fa2cb9ab829ab8549203c21ecf86c6fa808f0671bf2577ed4751ab58e",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-web-capture-3/result.json",
+      "sha256": "b5ef3f6b3826a92af042fe723ef3fd0327640c764321ac675c50c12e1e97b92d",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-web-capture-4/result.json",
+      "sha256": "806218fc95fdbec4e335dd758aa80ca6fa5c01ac23eebe503a7776593f5ee1bf",
+      "passed": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-web-capture-5/result.json",
+      "sha256": "ecde826d4369ed4a9e808e25e960dc94515b749f69d93f114d3f293bccdd2756",
+      "passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-161-functional-wave-web-initial/result.json",
+      "sha256": "72bde9762b3f2c4c273702a93e89f4c8b092cbe7135ad7a23f7f9d34c1673f09",
+      "passed": false
+    }
+  ],
+  "visual_disposition": "Primary Web5/mobile6 retain exact current application inputs and inspect six screenshots/two GIF frames. Earlier mobile3/4/5 media and the initial visual observation are retained; duplicate loading is fixed, no formal platform/layout acceptance inferred."
+}

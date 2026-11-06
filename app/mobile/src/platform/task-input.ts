@@ -2,11 +2,11 @@ import type { Schemas } from './session';
 import { projectReadOnly } from './project-input';
 import { resourceTime, resourceTimeInput } from './project-resource-input';
 
-export type TaskInput = { title: string; body: string; assignee: string; parent: string; milestone: string; start: string; due: string; priority: string; review: string };
+export type TaskInput = { title: string; body: string; assignee: string; parent: string; milestone: string; start: string; due: string; priority: string; review: string; participants?: string };
 type Task = Schemas['Task'];
 type Project = Schemas['Project'];
 type References = { parent?: Task; milestone?: Schemas['Milestone'] };
-const limits: Record<keyof TaskInput, number> = { title: 200, body: 20000, assignee: 36, parent: 36, milestone: 36, start: 40, due: 40, priority: 6, review: 8 };
+const limits: Record<keyof TaskInput, number> = { title: 200, body: 20000, assignee: 36, parent: 36, milestone: 36, start: 40, due: 40, priority: 6, review: 8, participants: 1849 };
 const uuid = (value: unknown): value is string => typeof value === 'string' && /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value);
 const trim = (value: string) => value.replace(/^[\s\u0085]+|[\s\u0085]+$/g, '');
 const sameTime = (left?: string | null, right?: string | null) => left && right ? resourceTime(left) === resourceTime(right) : !left && !right;
@@ -15,16 +15,17 @@ export function copyTaskInput(value: unknown): TaskInput | undefined {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return;
   const fields = value as Record<string, unknown>, copy = {} as TaskInput;
   for (const key of Object.keys(limits) as (keyof TaskInput)[]) {
+    if (key === 'participants' && fields[key] === undefined) { copy.participants = ''; continue; }
     if (typeof fields[key] !== 'string' || fields[key].length > limits[key]) return;
     copy[key] = fields[key];
   }
   return copy;
 }
-export const taskInputCharacters = (input: TaskInput) => Object.values(input).reduce((sum, field) => sum + field.length, 0);
+export const taskInputCharacters = (input: TaskInput) => Object.values(input).reduce((sum, field) => sum + (field?.length ?? 0), 0);
 export function currentTaskInput(task?: Task, parent?: Task): TaskInput {
   return { title: task?.title ?? '', body: task?.body ?? '', assignee: task?.assignee_id ?? '', parent: task?.parent_id ?? parent?.id ?? '',
     milestone: task?.milestone_id ?? '', start: resourceTimeInput(task?.start_at), due: resourceTimeInput(task?.due_at),
-    priority: task?.priority ?? 'normal', review: task?.review_required ? 'required' : 'direct' };
+    participants: (task?.participant_ids ?? []).join(','), priority: task?.priority ?? 'normal', review: task?.review_required ? 'required' : 'direct' };
 }
 export const taskEditable = (task: Task) => ['todo', 'in_progress', 'in_review', 'blocked'].includes(task.state);
 export function taskWritable(project: Project, members: Schemas['ProjectMembers'], me: Schemas['Me']) {
@@ -40,6 +41,10 @@ export function taskPayload(input: TaskInput, project: Project, members: Schemas
   if (!taskWritable(project, members, me) || !me.actions.includes(before ? 'task.update' : 'task.create')) throw new Error('当前身份与项目角色不允许保存任务。');
   if (!copyTaskInput(input) || !trim(input.title) || !['low', 'normal', 'high', 'urgent'].includes(input.priority) || !['direct', 'required'].includes(input.review)) throw new Error('请核对任务名称、文字长度、优先级和完成要求。');
   const assignmentChanged = input.assignee !== (before?.assignee_id ?? '');
+  const participants = input.participants ? input.participants.split(',') : [];
+  const participantChanged = JSON.stringify(participants) !== JSON.stringify(before?.participant_ids ?? []);
+  if (participants.length > 50 || new Set(participants).size !== participants.length || participants.some(id => !uuid(id))) throw new Error('任务参与人必须为最多50个不同有效成员。');
+  if (participantChanged && (!me.actions.includes('task.assign') || participants.some(id => !members.items.some(user => user.id === id && user.status === 'active')))) throw new Error('调整参与人需要分配权限，并选择项目当前有效成员。');
   if (input.assignee && (!uuid(input.assignee) || !members.items.some(user => user.id === input.assignee && user.status === 'active'))) throw new Error('负责人须为本项目当前有效成员；原负责人不可用时请有权人员重新分配。');
   if (!me.actions.includes('task.assign') && (before ? assignmentChanged : input.assignee && input.assignee !== me.user.id)) throw new Error('分配或清空负责人需要任务分配权限；创建时可选择本人或暂不分配。');
   for (const key of ['parent', 'milestone'] as const) {
@@ -54,7 +59,7 @@ export function taskPayload(input: TaskInput, project: Project, members: Schemas
   // Canonical strings retain six microsecond digits and sort chronologically.
   if (start && due && due < start) throw new Error('截止时间不能早于开始时间。');
   const common = { title: trim(input.title), body: input.body, priority: input.priority as Schemas['TaskCreate']['priority'], review_required: input.review === 'required',
-    parent_id: input.parent || null, milestone_id: input.milestone || null, start_at: start, due_at: due };
+    ...(participantChanged ? { participant_ids: participants } : {}), parent_id: input.parent || null, milestone_id: input.milestone || null, start_at: start, due_at: due };
   return before ? { expected_version: before.version, ...common, ...(assignmentChanged ? { assignee_id: input.assignee || null } : {}) }
     : { ...common, assignee_id: input.assignee || null };
 }
@@ -66,6 +71,7 @@ export function taskReceipt(value: unknown, input: TaskInput, project: Project, 
       && (!before || actual.id === before.id) && actual.state === (before?.state ?? 'todo') && actual.title === trim(input.title)
       && actual.body === input.body && actual.priority === input.priority && actual.review_required === (input.review === 'required')
       && (actual.assignee_id ?? '') === input.assignee && (actual.parent_id ?? '') === input.parent && (actual.milestone_id ?? '') === input.milestone
+      && JSON.stringify(actual.participant_ids ?? []) === JSON.stringify(input.participants ? input.participants.split(',') : [])
       && sameTime(actual.start_at, input.start) && sameTime(actual.due_at, input.due);
   } catch { return false; }
 }
@@ -83,6 +89,7 @@ export function dependencyTaskReceipt(value: unknown, task: Task): value is Task
       && actual.state === task.state && actual.title === task.title && actual.body === task.body && actual.priority === task.priority
       && actual.review_required === task.review_required && (actual.assignee_id ?? null) === (task.assignee_id ?? null)
       && (actual.parent_id ?? null) === (task.parent_id ?? null) && (actual.milestone_id ?? null) === (task.milestone_id ?? null)
+      && JSON.stringify(actual.participant_ids ?? []) === JSON.stringify(task.participant_ids ?? [])
       && sameTime(actual.start_at, task.start_at) && sameTime(actual.due_at, task.due_at);
   } catch { return false; }
 }

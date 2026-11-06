@@ -18,18 +18,19 @@ const ExecutionJobKind = "agent.execute.v1"
 const ExecutionLeaseDuration = 90 * time.Second
 
 type Execution struct {
-	RunID           string         `json:"id"`
-	Channel         string         `json:"channel"`
-	AuthorityStamp  string         `json:"authority_stamp"`
-	SkillSHA256     string         `json:"skill_sha256"`
-	ExpiresAt       time.Time      `json:"expires_at"`
-	Credential      string         `json:"task_credential"`
-	Input           map[string]any `json:"input"`
-	PreparedContext string         `json:"prepared_context"`
-	MaxToolCalls    int            `json:"max_tool_calls"`
-	MaxInputTokens  int            `json:"max_input_tokens"`
-	MaxOutputTokens int            `json:"max_output_tokens"`
-	Profile         RuntimeProfile `json:"profile"`
+	TelegramWriteAuthorized bool           `json:"telegram_write_authorized,omitempty"`
+	RunID                   string         `json:"id"`
+	Channel                 string         `json:"channel"`
+	AuthorityStamp          string         `json:"authority_stamp"`
+	SkillSHA256             string         `json:"skill_sha256"`
+	ExpiresAt               time.Time      `json:"expires_at"`
+	Credential              string         `json:"task_credential"`
+	Input                   map[string]any `json:"input"`
+	PreparedContext         string         `json:"prepared_context"`
+	MaxToolCalls            int            `json:"max_tool_calls"`
+	MaxInputTokens          int            `json:"max_input_tokens"`
+	MaxOutputTokens         int            `json:"max_output_tokens"`
+	Profile                 RuntimeProfile `json:"profile"`
 }
 type ExecutionLease struct {
 	RunID, OrgID, AuthorityStamp string
@@ -134,7 +135,13 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		if err = require(ctx, tx, st.Actor, st.Conversation, "agent.run"); err != nil {
 			return fail(runtimeFailure("RUNTIME_AUTHORITY_CHANGED"))
 		}
-		members, e := aiAudience(ctx, tx, st.Actor, st.Conversation)
+		var members []string
+		var e error
+		if st.Run.TelegramWriteGrantID != nil {
+			members, e = telegramGrantAudience(ctx, tx, st.Actor, st.Conversation)
+		} else {
+			members, e = aiAudience(ctx, tx, st.Actor, st.Conversation)
+		}
 		if e != nil {
 			return fail(runtimeFailure("RUNTIME_AUTHORITY_CHANGED"))
 		}
@@ -148,10 +155,15 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		var raw []byte
 		if st.Actor.Channel == "telegram" {
 			var digest *string
-			if err = tx.QueryRow(ctx, "SELECT telegram_configuration_sha256 FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2", lease.OrgID, st.Run.ProfileID).Scan(&digest); err != nil {
+			column := "telegram_configuration_sha256"
+			if st.Run.TelegramWriteGrantID != nil {
+				column = "telegram_write_configuration_sha256"
+				st.Profile.TelegramWriteAuthorized = true
+			}
+			if err = tx.QueryRow(ctx, "SELECT "+column+" FROM agent_runtime_profiles WHERE org_id=$1 AND id=$2", lease.OrgID, st.Run.ProfileID).Scan(&digest); err != nil {
 				return fail(err)
 			}
-			if digest == nil || (st.Profile.SkillID != "project-briefing" && st.Profile.SkillID != "incident-summary") {
+			if digest == nil || (!st.Profile.TelegramWriteAuthorized && st.Profile.SkillID != "project-briefing" && st.Profile.SkillID != "incident-summary") {
 				return fail(runtimeFailure("RUNTIME_PROFILE_RETIRED"))
 			}
 			st.Profile.ConfigurationSHA256 = *digest
@@ -170,6 +182,9 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		}
 		if _, err = s.executionFileIntent(ctx, tx, st); err != nil {
 			return fail(err)
+		}
+		if _, e := executionFixedDelivery(ctx, tx, st); e != nil {
+			return fail(e)
 		}
 		if _, err = executionBusinessRevisionState(ctx, tx, st); err != nil {
 			return fail(err)
@@ -293,11 +308,17 @@ func (s *Service) IssueExecution(ctx context.Context, j jobqueue.Job) (Execution
 		}
 		prepared, _ = json.Marshal(preparedValue)
 	}
+	if fixed, e := executionFixedDelivery(ctx, tx, st); e != nil {
+		return Execution{}, e
+	} else if fixed != nil {
+		preparedValue["authorized_fixed_delivery"] = fixed.FixedDeliveryView
+		prepared, _ = json.Marshal(preparedValue)
+	}
 	input := map[string]any{"request": st.Message}
 	if st.Conversation.ProjectID != nil {
 		input["context_project_id"] = *st.Conversation.ProjectID
 	}
-	out = Execution{RunID: runID, Channel: st.Actor.Channel, AuthorityStamp: stamp, SkillSHA256: st.Profile.SkillSHA256, ExpiresAt: st.Run.ExpiresAt, Credential: credential, Input: input, PreparedContext: string(prepared), MaxToolCalls: st.Profile.MaxToolCalls, MaxInputTokens: st.Profile.MaxInputTokens, MaxOutputTokens: st.Profile.MaxOutputTokens, Profile: st.Profile}
+	out = Execution{TelegramWriteAuthorized: st.Profile.TelegramWriteAuthorized, RunID: runID, Channel: st.Actor.Channel, AuthorityStamp: stamp, SkillSHA256: st.Profile.SkillSHA256, ExpiresAt: st.Run.ExpiresAt, Credential: credential, Input: input, PreparedContext: string(prepared), MaxToolCalls: st.Profile.MaxToolCalls, MaxInputTokens: st.Profile.MaxInputTokens, MaxOutputTokens: st.Profile.MaxOutputTokens, Profile: st.Profile}
 	if err = executionAudit(ctx, tx, st, "agent.execution.issued", map[string]any{"profile_id": st.Profile.ID}); err != nil {
 		return Execution{}, err
 	}
@@ -401,6 +422,11 @@ func (s *Service) FinishStoppedExecution(ctx context.Context, j jobqueue.Job, co
 		return err
 	}
 	lease := ExecutionLease{RunID: runID, OrgID: j.OrgID, Job: j}
+	if done, e := s.scopeTerminalReconciled(ctx, lease, true); e != nil {
+		return e
+	} else if done {
+		return nil
+	}
 	tx, st, err := s.executionTx(ctx, lease, false)
 	if err != nil {
 		return err

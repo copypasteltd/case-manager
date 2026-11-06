@@ -146,10 +146,13 @@ func (b *Bridge) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				expected = []string{"company/read_resource", "company/inspect_operation", "company/recover_file_draft", "company/read_office_workspace", "company/create_file_draft", "company/propose_file_update", "company/commit_file_update", "company/stage_file_create", "company/propose_file_create", "company/commit_file_create"}
 			}
 			if profile.SkillID == "information-organize" {
-				expected = []string{"company/read_resource", "company/inspect_operation", "company/list_directory", "company/propose_organization", "company/commit_organization"}
+				expected = []string{"company/read_resource", "company/inspect_operation", "company/list_directory", "company/propose_organization", "company/commit_organization", "company/propose_scope_transfer", "company/commit_scope_transfer", "company/propose_notification", "company/send_authorized_notification"}
 			}
 			if profile.SkillID == "oa-assist" {
 				expected = []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request", "company/draft_business_text", "company/create_business_draft", "company/revise_business_draft"}
+			}
+			if channel == "telegram-authorized" {
+				expected = []string{"company/read_resource", "company/inspect_operation", "company/update_task"}
 			}
 			if err == nil && (profile.RuntimeVersion != RuntimeVersion || (profile.SkillID != "project-briefing" && profile.SkillID != "project-create" && profile.SkillID != "project-update" && profile.SkillID != "file-update" && profile.SkillID != "information-organize" && profile.SkillID != "oa-assist" && profile.SkillID != "incident-summary" && profile.SkillID != "subscription-review") || in.SDKVersion != "0.164.0" || in.ProfileID != profile.ID || in.ConfigurationSHA256 != profile.ConfigurationSHA256 || in.Model != b.Model || in.WorkingDirectory != b.WorkingDirectory || !sameTools(expected, in.ExpectedTools) || b.Verifier == nil) {
 				err = core.Fail(409, "RUNTIME_CONFINEMENT_UNVERIFIED", "执行环境尚未验证")

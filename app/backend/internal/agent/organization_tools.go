@@ -14,7 +14,7 @@ import (
 )
 
 func organizationTool(tool string) bool {
-	return slices.Contains([]string{"list_directory", "propose_organization", "commit_organization"}, tool)
+	return slices.Contains([]string{"list_directory", "propose_organization", "commit_organization", "propose_scope_transfer", "commit_scope_transfer", "propose_notification", "send_authorized_notification"}, tool)
 }
 func organizationPlanSource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, id string) (SourceSnapshot, error) {
 	p, err := organizationPlanRecord(ctx, tx, a.OrgID, id, false)

@@ -1,6 +1,35 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
-**当前开发增量160 / Current development increment160**
+**当前开发增量161 / Current development increment161**
+
+已将“全部代码先完成，再统一测试、集中修复”写入仓库约束。本轮C01–C08的应用、接口、升级、四端调用、运行器、Skill及用例均先整批完成并记录，再开始统一检查。后续每轮同样执行；不能将逐模块调测或单模块发布作为一轮交付。
+
+| 编号 / ID | 新增能力 / Added capability |
+|---|---|
+| C01 | 任务参与人、完成／受阻资料及四组完整任务队列 / Participants, completion/block metadata and four complete task inventories |
+| C02 | Web父任务、里程碑及前置任务完整分页选择 / Complete paginated Web task associations |
+| C03 | 共享移动端历史内容恢复、Android扫描操作及独立例外复核 / Shared-mobile history restore, Android scan commands and independent waiver review |
+| C04 | 仓库外私有正式Android签名、递增版本、APK+AAB核对入口 / Private formal-signing, increasing-version and APK+AAB inspection entry |
+| C05 | 本人一次性固定TG任务字段更新授权 / Owner-bound one-use fixed TG task update |
+| C06 | 秘书执行已由人工核对的普通文件范围计划 / Secretary execution of an exact human-reviewed ordinary file-scope plan |
+| C07 | 本人选定已完成结果片段的原群通知队列 / Original-group queueing of an explicitly selected completed-result fragment |
+| C08 | 普通约束、接口、运行器及八项draft Skill同步 / Matching contracts, constraints, runtime and eight draft Skills |
+
+使用：从工作台选择任务完整队列，进入准确业务核对版本后明确提交。恢复历史内容须先复制与校验，再由本人提交新版本。TG写授权在本人私人会话核对固定`update_task`内容及群／绑定版本，近期MFA确认后，使用生成的原群指令触发；其他七类仍走人工入口。范围转移先由人工建立普通计划，秘书只能执行该固定计划，执行即使旧授权失效。原群通知须明确选定结果片段；入队不代表送达。
+
+本轮单测证据：Web520、移动端548＋4＝552、运行器66；已执行与保留复用分别记录。 Selected unit evidence: Web520, mobile548+4=552, runtime66; execution and retained reuse remain separate.
+
+The complete C01–C08 application, contracts, migrations, clients, runtime, Skills and fixture wave is recorded before any test. Unified checks preserve initial failures; grouped repairs repeat only affected checks. Tasks use ordinary current-version commands. Historical restoration copies and verifies before a separate human commit. Direct TG writes currently support one fixed `update_task`, triggered by the original bound person in the exact original group after a recent-MFA portal authorization. Scope transfers use an existing reviewed ordinary plan and immediately invalidate old authority. A fixed original-group disclosure queues a selected completed-result fragment; its queue receipt does not claim delivery.
+
+当前源码目标schema127，新增普通升级124–127。schema123后执行124–127；冻结schema113后执行114–127；schema100后执行101–127。DevelopmentPG100及原API保持原状。八个历史冻结标签及其产物保持不可变；rc.8／APK154仍为business153/schema113，不含155–161。本轮不新建APK、不重试Android JS构建；正式签名入口不代表已有签名密钥或正式产物。
+
+Current source targets schema127. Apply124–127 after schema123,114–127 after frozen113, or101–127 after100 before running this server. DevelopmentPG100/API and all eight frozen releases remain unchanged. rc.8/APK154 remain business153/schema113 and exclude155–161. No new APK or Android JS build is claimed. All23 work packages and eight draft Skills remain open; company decisions, unsupported wider features and real server/cloud/model/Bot/platform/signing configuration remain explicit.
+
+[本轮完整设计与使用 / Design and usage](development/161-batch-functional-closure.md) · [23项编号清单 /23 numbered packages](delivery/05-functional-closure-161.md) · [验证与保留失败 / Checks and retained failures](quality/161-batch-functional-verification.md) · [实际截图／录屏／GIF / Actual media](media/batch-round-161/README.md)
+
+---
+
+**历史增量160 / Historical increment160**
 
 本轮C01–C06代码及用例先整批完成，再统一检查与集中修复。新增外币退款原本金结项、已知终态上传的独立元数据观察、九类完整待办分页、共享移动端人工资料整理，以及合同签署／生效／结项、采购订单／验收／退货／差异重审／完成、报销实际结清与商业历史入口。
 

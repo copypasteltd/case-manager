@@ -40,6 +40,16 @@ func eventPosition(r *http.Request) (int64, int, error) {
 func (s *Server) agentRunRoutes(mux *http.ServeMux) {
 	service := &agent.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
 	s.agentBudgetRoutes(mux, service)
+	mux.HandleFunc("POST /v1/conversations/{id}/telegram-write-grants", command(s, "TelegramWriteGrantInput", "TelegramWriteGrantResponse", func(ctx context.Context, c core.Command, r *http.Request, in agent.TelegramWriteGrantInput) (core.Result, error) {
+		return service.CreateTelegramWriteGrant(ctx, c, r.PathValue("id"), in)
+	}))
+	mux.HandleFunc("GET /v1/telegram-write-grants/{id}", read(s, "TelegramWriteGrantResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "准确预授权不接受筛选")
+		}
+		return service.TelegramWriteGrant(ctx, a, r.PathValue("id"))
+	}))
+
 	mux.HandleFunc("GET /v1/me/telegram/requests/{id}/outbound-preview", read(s, "TelegramDisclosurePreviewResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		if len(r.URL.Query()) != 0 {
 			return nil, core.Invalid("filters", "不接受额外条件")
