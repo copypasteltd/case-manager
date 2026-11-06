@@ -1,0 +1,55 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-11-06T11:16:14.743906+00:00",
+  "files": [
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-web-verified/interaction.gif",
+      "sha256": "2af70cc47b990da8a359843e887826bf47958ca451c729c6151a17403b49e709"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-web-verified/web-parent-contract.png",
+      "sha256": "920261bdc71d78c8a5d297b5b161f706b8b29c876b645f64c260acd5e9751e2c"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-web-verified/web-reminder-versions.png",
+      "sha256": "16f9f8a92d76e7838429a80e9a5b92521f2e8916d39969b37b956886852c4d10"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-web-verified/web-supplement-parent-entry.png",
+      "sha256": "19de26d7dbd3cfb297fd7235f86346067297999d46fbc642f09896c32e39895d"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/interaction.gif",
+      "sha256": "cf311416d7efbb3d82d0e02596e1c4976b4e6bbd8362c98f96b96690c9294fae"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-parent-contract-stable-frame.png",
+      "sha256": "fd94a211ac99b45bd35df88d7a1cb42e29df23940b23971bc7af42edb460452e"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-parent-contract.png",
+      "sha256": "112284a84b98e607c00bc0310cba265e0c5b743107dfb875ea482045f94ab761"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-pinned-old-reminder.png",
+      "sha256": "7c660f4086005cd7d06cb6a7f930b4fd492b03ac3fd60997e11b6c358e19c679"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-reminder-versions.png",
+      "sha256": "5b3022398be7ce19e95395d6e9709231764b8b6c8db9de52b17f04d04fc46c80"
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-supplement-parent-entry.png",
+      "sha256": "5ee969fec473574c6bbc339518f59b04a5c9b02da951685a1b79403e22961199"
+    }
+  ],
+  "findings": [
+    "Web pinned reminder versions1/2/3/5 and old seven-day basis are readable; active version5 delivered, older pending versions suppressed.",
+    "Web supplement and parent contract render ordinary authorized metadata with no login or MFA screen.",
+    "Shared mobile reminder pages show both current and old pinned seven-day rules; supplement parent entry is visible.",
+    "The original mobile parent PNG captured an in-progress route slide. The actual final MP4/GIF frame is stable; its unedited derived PNG is the guide image. Original screenshot/media remain unchanged."
+  ],
+  "derived_frame_record": "docs/quality/evidence/batch-round-165-functional-wave-mobile-final/derived-parent-frame.json",
+  "scope": "Human visual review of selected synthetic captures only; no real device, complete UI regression or production acceptance.",
+  "review_method": "Exact PNGs via original views or readable crops; final frame of each actual interaction GIF and stable mobile video frame. Not a frame-by-frame review of complete videos or screenshot-tour GIFs."
+}

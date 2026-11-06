@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "started_at": "2026-11-06T10:46:51.900Z",
+  "finished_at": "2026-11-06T10:47:21.185Z",
+  "checks": [],
+  "source_count": 1211,
+  "source_sha256": "95397d9d0420fb70784ea8d4d17038c14faa2f60e944cbce75c425b0490b982c",
+  "source_after_sha256": "95397d9d0420fb70784ea8d4d17038c14faa2f60e944cbce75c425b0490b982c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [
+    {
+      "status": 500,
+      "path": "/v1/subscriptions/e5ae93b8-daa6-4cfb-9085-b53a5180abda/reminders"
+    }
+  ],
+  "failure": "page.waitForResponse: Timeout 25000ms exceeded while waiting for event \"response\"",
+  "scope": "Web subscription reminder versions and ordinary supplement reading with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "91f66ec4ecba0a94e03277438d52fef909ce39f3d596e4308d755d8a71ed5d8a",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "91f66ec4ecba0a94e03277438d52fef909ce39f3d596e4308d755d8a71ed5d8a",
+  "build_source_unchanged": true
+}

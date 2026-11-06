@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T11:13:25.663003+00:00",
+  "group": "batch-round-165-functional-wave-mobile-final",
+  "encoder_sha256": "5da222c3e03ff11dabc7a329016d68d9d206debba9888d3c4c6d48b19b5df298",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-reminder-versions.png",
+      "sha256": "5b3022398be7ce19e95395d6e9709231764b8b6c8db9de52b17f04d04fc46c80",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-pinned-old-reminder.png",
+      "sha256": "7c660f4086005cd7d06cb6a7f930b4fd492b03ac3fd60997e11b6c358e19c679",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-supplement-parent-entry.png",
+      "sha256": "5ee969fec473574c6bbc339518f59b04a5c9b02da951685a1b79403e22961199",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/mobile-parent-contract.png",
+      "sha256": "112284a84b98e607c00bc0310cba265e0c5b743107dfb875ea482045f94ab761",
+      "credentials_excluded": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/screen-recording.mp4",
+      "sha256": "c76aef64f05b42a07be9d72a7f750a6ae35fb35478e4ce6bf6accfbcdbd75bb2",
+      "size_bytes": 102779
+    },
+    {
+      "file": "docs/media/batch-round-165/batch-round-165-functional-wave-mobile-final/screenshot-tour.gif",
+      "sha256": "4d0ef256dcd9c5c13eaa25ab0a2b10385fe82a11a2733755d180b50586835ca1",
+      "size_bytes": 122544
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "26",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.600000"
+    }
+  }
+}

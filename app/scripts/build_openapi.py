@@ -674,7 +674,7 @@ period_event = {"id": ID, "version": VERSION, "revision_id": ID, "kind": enum("g
     "actor_id": nullable(ID), "job_id": nullable(ID), "evidence_version_ids": array(ID, maxItems=20), "attachments": array(ref("BusinessFileReference")), "reason": NAME, "created_at": TIME}
 period_event["cost_snapshot"] = array(ref("SubscriptionCostSnapshot"), maxItems=100)
 add("SubscriptionPeriodEvent", period_event, tuple(period_event))
-subscription_reminder = {"id": ID, "period_id": ID, "days_before": {"type": "integer", "minimum": 0, "maximum": 90}, "remind_on": DATE, "recipient_id": ID, "recipient_display_name": NAME, "period_start_date": DATE, "timezone": NAME, "delivery_state": enum("queued", "delivered", "suppressed", "retry_wait", "failed"), "created_at": TIME}
+subscription_reminder = {"id": ID, "period_id": ID, "period_version": VERSION, "days_before": {"type": "integer", "minimum": 0, "maximum": 90}, "remind_on": DATE, "recipient_id": ID, "recipient_display_name": NAME, "period_start_date": DATE, "timezone": NAME, "delivery_state": enum("queued", "delivered", "suppressed", "retry_wait", "failed"), "created_at": TIME}
 add("SubscriptionReminder", subscription_reminder, tuple(subscription_reminder))
 forecast_total = {"currency": CURRENCY, "expected_amount": report_decimal, **{key: {"type": "integer", "minimum": 0} for key in ("period_count", "awaiting_count", "reviewed_count", "anomaly_count")}}
 add("ForecastTotal", forecast_total, tuple(forecast_total))

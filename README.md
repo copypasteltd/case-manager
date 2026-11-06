@@ -1,5 +1,17 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+**当前main165整批代码 / 所选统一检查通过**
+
+订阅提醒使用账期固定规则，重估后立即排队新版本任务；Web／共享移动提醒历史显示准确版本，移动补充协议提供主合同阅读入口。每轮先完成全部声明代码与前置用例，再统一测试、集中修复。
+
+使用入口：**订阅 → 提醒与投递记录**；**补充协议 → 查看主合同**。部署main165时须普通升级至schema130；开发PG100/API保持原样。已冻结rc.9／APK164仍是业务163/schema129，不包含本轮代码；23项正式工作包、八项draft Skills继续开放。
+
+[整批设计](docs/development/165-batch-functional-closure.md) · [23项编号处置](docs/delivery/05-functional-closure-165.md) · [统一检查](docs/quality/165-batch-functional-verification.md) · [截图／MP4／GIF](docs/media/batch-round-165/README.md)
+
+统一结果：原生三个业务族36条结果、Web527、共享移动553、类型及Web／微信／抖音构建通过；当前Web／H5实际页面各两项检查通过，已补截图、MP4和GIF。运行时66项为163原证据，本轮没有重跑或新Android构建。 两项采集后交付工具修正及原失败另列于统一检查，应用和媒体字节保持匹配。
+
+Main165 fixes pinned reminder rules, version-aware immediate queueing and mobile parent navigation. The whole code wave preceded unified checks: native3/36, Web527, shared mobile553, Web/WeChat/Douyin builds and both actual UI/API captures pass. Runtime66 is retained; rc.9/APK164 remains business163/schema129.
+
 **当前冻结 v0.1.0-rc.9 / Matching release164**
 
 当前同版包含业务155–163，固定源码`c727398`、schema129；服务器／Web／秘书运行时、微信／抖音和新Android开发APK均已构建。完整源码、全部历史媒体两分卷、SHA256和重组工具一并交付；八个旧冻结保持不变。

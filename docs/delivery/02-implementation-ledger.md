@@ -1,5 +1,13 @@
 # 代码实施与验证台账
 
+**当前165 · 整批代码后统一验证 / Current whole-code-first wave**
+
+C01–C05及全部23编号处置先完成，保存完整源码后统一检查、收集失败并集中修复。订阅提醒使用账期固定配置、按版本去重及立即排队；Web／共享移动显示准确提醒历史，移动补充协议提供普通主合同入口。实际读取超时修复保留相同权限与15秒期限。
+
+当前三个原生业务族36条结果、Web527／共享移动553、类型及Web／微信／抖音构建通过，两组实际页面及接口检查通过。普通结构130；开发PG100/API不变，九冻结与APK164／业务163／schema129保留；本轮无新APK。全部23正式包及八项draft Skills开放。
+
+[当前23编号](05-functional-closure-165.md) · [整批设计](../development/165-batch-functional-closure.md) · [统一检查与失败](../quality/165-batch-functional-verification.md) · [当前媒体](../media/batch-round-165/README.md)
+
 **增量159 · 完整业务准备与准确修订 / Complete preparation and exact revision**
 
 C01–C06全部应用／契约／四端／Skill／迁移／用例代码完成后才统一测试。四类完整表单支持规范化资料准备、准确旧版本修订和独立跨范围确认，原会话近期MFA、当前引用、原子普通新修订／审计及幂等保持。实际Web检查修复了准备表单与秘书请求的提交边界，并确认不提前创建运行或保存业务。

@@ -302,6 +302,11 @@ func (s *Service) finishSubscriptionPeriod(ctx context.Context, tx pgx.Tx, a cor
 	if err = subscriptionPeriodEvent(ctx, tx, a, p, parent, e, nil); err != nil {
 		return core.Result{}, err
 	}
+	if p.RecordedState == "forecast" {
+		if err = enqueueForecastReminders(ctx, tx, a.OrgID, v, p); err != nil {
+			return core.Result{}, err
+		}
+	}
 	p, err = subscriptionPeriodMetadata(ctx, tx, a.OrgID, p.ID)
 	if err != nil {
 		return core.Result{}, err

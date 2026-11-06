@@ -10134,6 +10134,7 @@ export interface components {
             id: string;
             /** Format: uuid */
             period_id: string;
+            period_version: number;
             days_before: number;
             /** Format: date */
             remind_on: string;

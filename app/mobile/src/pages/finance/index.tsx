@@ -1,6 +1,6 @@
 import {FXJournals} from './fx-journals';
 import { CostPaymentPage } from './cost-payment';
-import { SubscriptionCommands, SubscriptionHistory, SubscriptionOperationPage } from './subscriptions';
+import { SubscriptionCommands, SubscriptionHistory, SubscriptionReminderHistory, SubscriptionOperationPage } from './subscriptions';
 import { CostAmortization } from './amortization';
 import { FinancialHistory } from './history';
 import { PaymentFees } from './payment-fees';
@@ -39,7 +39,7 @@ function FinancialRecordPage() {
     {(record.kind === 'cost' || record.kind === 'payment') && page.result && <FinancialCommands kind={record.kind} value={record.value} me={page.result.me} />}
     {record.kind === 'cost' && <><CostDetails value={record.value} />{page.scope && <CostAmortization key={record.value.id + ':' + record.value.version} cost={record.value} scope={page.scope} />}</>}
     {record.kind === 'payment' && <><PaymentDetails value={record.value} />{page.scope && page.result && <><PaymentFees payment={record.value} me={page.result.me} scope={page.scope} refresh={() => void page.reload()} /><FXJournals payment={record.value} me={page.result.me} scope={page.scope} refresh={() => void page.reload()}/></>}</>}
-    {record.kind === 'subscription' && <><SubscriptionCommands value={record.value} /><SubscriptionDetails value={record.value} /><SubscriptionHistory id={record.value.id} /></>}
+    {record.kind === 'subscription' && <><SubscriptionCommands value={record.value} /><SubscriptionDetails value={record.value} /><SubscriptionHistory id={record.value.id} /><SubscriptionReminderHistory id={record.value.id} /></>}
     {record.kind === 'change' && <ChangeDetails value={record.value} />}
     {(record.kind === 'cost' || record.kind === 'payment') && <FinancialHistory kind={record.kind} id={record.value.id} />}
     {value?.project_id && <Action secondary onClick={() => go('project', value.project_id!)}>查看所属项目</Action>}

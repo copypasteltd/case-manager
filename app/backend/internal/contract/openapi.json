@@ -60951,6 +60951,11 @@
             "type": "string",
             "format": "uuid"
           },
+          "period_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
           "days_before": {
             "type": "integer",
             "minimum": 0,
@@ -60997,6 +61002,7 @@
         "required": [
           "id",
           "period_id",
+          "period_version",
           "days_before",
           "remind_on",
           "recipient_id",

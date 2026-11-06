@@ -34,6 +34,38 @@ type SubscriptionJobResult struct {
 	Skipped              bool
 }
 
+// A forecast head change must not wait for tomorrow's daily scheduler: its
+// old queued reminder is intentionally rejected after the version changes.
+func enqueueForecastReminders(ctx context.Context, tx pgx.Tx, org string, sub Subscription, p SubscriptionPeriod) error {
+	if !slices.Contains([]string{"active", "cancelled"}, sub.State) {
+		return nil
+	}
+	today, err := subscriptionDate(ctx, tx, sub.Timezone)
+	if err != nil {
+		return err
+	}
+	date, _ := civilDate(today)
+	from := today
+	if sub.FirstChargeDate != nil && from < *sub.FirstChargeDate {
+		from = *sub.FirstChargeDate
+	}
+	to := date.AddDate(0, 0, 366).Format(time.DateOnly)
+	if from >= to {
+		return nil
+	}
+	var control int64
+	if err = tx.QueryRow(ctx, "SELECT COALESCE(max(subscription_version),0) FROM subscription_events WHERE org_id=$1 AND subscription_id=$2 AND kind IN ('activated','resumed','restored')", org, sub.ID).Scan(&control); err != nil {
+		return err
+	}
+	payload, err := json.Marshal(SubscriptionGenerationJob{SubscriptionID: sub.ID, ConfigurationRevisionID: sub.CurrentRevisionID, ConfigurationHash: sub.ContentHash, ControlVersion: control, BusinessDate: today, Window: "forward", From: from, To: to})
+	if err != nil {
+		return err
+	}
+	queue := jobqueue.Queue{}
+	_, _, err = queue.Enqueue(ctx, tx, jobqueue.Input{OrgID: org, Kind: "subscription.generate.v1", Lane: "finance", DedupKey: fmt.Sprintf("subscription/period/%s/%d", p.ID, p.Version), PayloadVersion: 1, Payload: payload, MaxAttempts: 8})
+	return err
+}
+
 // Each business date has fixed forward and catch-up windows. Long gaps remain
 // visible as coverage gaps and can be backfilled by bounded manual generation.
 func (s *Service) ScheduleSubscriptions(ctx context.Context) (SubscriptionScheduleResult, error) {
@@ -224,13 +256,18 @@ func (s *Service) ProcessSubscriptionJob(ctx context.Context, j jobqueue.Job) (S
 	return result, platform.DatabaseError(tx.Commit(ctx))
 }
 func queueSubscriptionReminders(ctx context.Context, tx pgx.Tx, j jobqueue.Job, sub Subscription) (int, bool, error) {
-	today, err := subscriptionDate(ctx, tx, sub.Timezone)
-	if err != nil {
-		return 0, false, err
-	}
-	rows, err := tx.Query(ctx, `SELECT p.id,p.version,p.start_date::text,r.owner_id,d.days,(p.start_date-d.days)::text FROM subscription_periods p JOIN subscription_period_revisions r ON r.org_id=p.org_id AND r.id=p.current_revision_id CROSS JOIN unnest($3::integer[]) d(days)
-        WHERE p.org_id=$1 AND p.subscription_id=$2 AND p.state='forecast' AND subscription_charge_eligible(p.org_id,p.subscription_id,p.start_date) AND p.start_date-d.days<=$4::date AND p.start_date-d.days>=$4::date-366
-        AND NOT EXISTS(SELECT 1 FROM subscription_reminders n WHERE n.org_id=p.org_id AND n.period_id=p.id AND n.days_before=d.days) ORDER BY p.start_date,d.days,p.id LIMIT 501`, j.OrgID, sub.ID, sub.ReminderDays, today)
+	// Existing forecasts retain their configuration, including an empty reminder
+	// schedule. Only explicit reforecasting adopts the subscription's new rules.
+	rows, err := tx.Query(ctx, `SELECT p.id,p.version,p.start_date::text,r.owner_id,d.days,(p.start_date-d.days)::text
+        FROM subscription_periods p JOIN subscription_period_revisions r ON r.org_id=p.org_id AND r.period_id=p.id AND r.id=p.current_revision_id
+        JOIN subscription_revisions cfg ON cfg.org_id=p.org_id AND cfg.subscription_id=p.subscription_id AND cfg.id=r.configuration_revision_id
+        CROSS JOIN LATERAL (SELECT value::integer AS days FROM jsonb_array_elements_text(cfg.payload->'reminder_days')) d
+        CROSS JOIN LATERAL (SELECT (statement_timestamp() AT TIME ZONE r.timezone)::date AS today) clock
+        WHERE p.org_id=$1 AND p.subscription_id=$2 AND p.state='forecast' AND subscription_charge_eligible(p.org_id,p.subscription_id,p.start_date)
+        AND p.start_date-d.days<=clock.today AND p.start_date-d.days>=clock.today-366
+        AND NOT EXISTS(SELECT 1 FROM subscription_reminders n JOIN outbox_events e ON e.id=n.outbox_id AND e.org_id=n.org_id
+            WHERE n.org_id=p.org_id AND n.period_id=p.id AND n.days_before=d.days AND e.aggregate_version=p.version)
+        ORDER BY p.start_date,d.days,p.id LIMIT 501`, j.OrgID, sub.ID)
 	if err != nil {
 		return 0, false, err
 	}
@@ -263,7 +300,7 @@ func queueSubscriptionReminders(ctx context.Context, tx pgx.Tx, j jobqueue.Job, 
 		if _, err = tx.Exec(ctx, `INSERT INTO outbox_events(id,org_id,event_type,aggregate_type,aggregate_id,aggregate_version,payload,request_id) VALUES($1,$2,'subscription.reminder.due','subscription_period',$3,$4,$5,$6)`, outbox, j.OrgID, n.ID, n.Version, payload, "job/"+j.ID); err != nil {
 			return 0, false, err
 		}
-		if _, err = tx.Exec(ctx, `INSERT INTO subscription_reminders(id,org_id,period_id,days_before,remind_on,recipient_id,outbox_id,job_id,job_fence,job_owner) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`, core.NewID(), j.OrgID, n.ID, n.Days, n.Remind, n.Owner, outbox, j.ID, j.FencingToken, j.LeaseOwner); err != nil {
+		if _, err = tx.Exec(ctx, `INSERT INTO subscription_reminders(id,org_id,period_id,period_version,days_before,remind_on,recipient_id,outbox_id,job_id,job_fence,job_owner) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`, core.NewID(), j.OrgID, n.ID, n.Version, n.Days, n.Remind, n.Owner, outbox, j.ID, j.FencingToken, j.LeaseOwner); err != nil {
 			return 0, false, err
 		}
 	}

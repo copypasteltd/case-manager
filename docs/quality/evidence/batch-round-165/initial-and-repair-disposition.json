@@ -1,0 +1,55 @@
+{
+  "initial_native": "native-tests-initial.json",
+  "initial_client": "client-checks-initial.json",
+  "initial_native_failed": true,
+  "initial_client_passed": true,
+  "repairs": [
+    {
+      "path": "app/backend/migrations/0130_subscription_reminder_basis.sql",
+      "reason": "PL/pgSQL OLD trigger record conflicted with an outbox alias; rename the alias without weakening any predicate."
+    },
+    {
+      "path": "app/backend/internal/httpapi/round165_subscription_reminders_integration_test.go",
+      "reason": "Fixture lease owner used a slash, rejected by existing ordinary queue validation; use the supported dotted identity."
+    },
+    {
+      "path": "app/scripts/summarize_batch165.py",
+      "reason": "Source review found package events could sum None; count only explicit named tests. No summary execution failure is claimed."
+    }
+  ],
+  "rerun_scope": "All three selected native families consume the changed SQL guard and test package. Client application bytes/builds remain unchanged and initial7 passed steps are retained.",
+  "production_acceptance": false,
+  "repair_1": "native-tests-repair-1.json",
+  "repair_1_passed": true,
+  "followup_same_chain_review": "Reforecast is not the only forecast head mutation. Reopen and actual-cost linking also invalidate old pending versions. Queue all ordinary mutations that retain forecast state atomically; add a void/reopen business case before unified notification dispatch. No current client source changed.",
+  "browser_capture_failure": {
+    "group": "batch-round-165-functional-wave-web-final",
+    "business_checks_passed": 2,
+    "reason": "Continuous screenshot recording crossed a full page reload, destroying its execution context. Use normal SPA history navigation for the intermediate Web route; retain real parent-link click/API checks and strict credential guards.",
+    "application_changed": false,
+    "only_capture_repeated": true
+  },
+  "web_followup_failure": {
+    "group": "batch-round-165-functional-wave-web-complete",
+    "code_change": "capture-only SPA navigation",
+    "observed": "reminder GET returned500 before recording, no page or console errors",
+    "next_action": "Retain failure; record only public error code/field metadata and investigate the actual response rather than treating a retry as a fix."
+  },
+  "repair_2": "native-tests-repair-2.json",
+  "repair_2_passed": true,
+  "actual_reminder_read_fix": "reminder-query-diagnosis.json; same exact subscription authority evaluated once per SQL statement, unchanged15s deadline and unrelated-user denial",
+  "repair_4": "native-tests-repair-4.json",
+  "repair_4_passed": true,
+  "final_selected_native_records": 36,
+  "preparation_repair_3": {
+    "record": "native-preparation-repair-3-failure.json",
+    "tests_executed": false,
+    "reason": "Shared native database preparation password-file guard rejected overlapping initializations. Later initializations are serialized; no application test pass is inferred."
+  },
+  "final_browser_groups": [
+    "batch-round-165-functional-wave-web-verified",
+    "batch-round-165-functional-wave-mobile-final"
+  ],
+  "retained_old_query_repass": "batch-round-165-functional-wave-web-diagnostic passed before the actual scalar authority-query fix, so it is not the current source proof.",
+  "current_client_consumer_bytes_unchanged": true
+}

@@ -1,0 +1,16 @@
+{
+  "path": "app/backend/internal/httpapi/round165_subscription_reminders_integration_test.go",
+  "before_sha256": "b34731d5f24030765396ed81ca527154eabd4e15ed8281f83d4e392345a5f8a4",
+  "current_sha256": "749ff2cb0db7815d891f9d294d7380662bec503493055b7b39da1f6cffcae913",
+  "before_file": "docs/quality/evidence/batch-round-165/fixture-before-browser-repair.go.txt",
+  "exact_removed_line": "\t\tf.bobToken = memberMFAToken(f, \"bob\", \"android\")\n",
+  "native_execution_record": "native-tests-repair-2.json",
+  "native_fixture_branch_executed": false,
+  "reason": "The existing ordinary reviewer roles do not require MFA, so the login has no enrollment challenge. Reuse the actual ordinary Bob session, as existing contract acceptance fixtures do; keep independent approval and all server policies unchanged.",
+  "first_failed_fixture_group": "batch-round-165-functional-wave-web-initial",
+  "application_sources_changed": false,
+  "browser_fixture_will_execute_corrected_source": true,
+  "native_tests_replayed_for_fixture_only": false,
+  "later_application_fix_native_record": "native-tests-repair-4.json",
+  "intermediate_preparation_failure_record": "native-preparation-repair-3-failure.json"
+}

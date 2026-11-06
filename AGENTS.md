@@ -1,5 +1,8 @@
 # Repository working agreement / 仓库工作约定
 
+- 每轮必须先盘点全部未完成编号与未定事项，完成全部可明确实现的应用代码、前置用例及工具，保存整批源码后才统一测试。收集首次失败后集中修复，仅复测受影响输入；不得逐模块调测／局部发版循环。未提供的公司制度／配置及未实现能力须逐项明列，不得伪造验收。
+- Increment165 declares C01–C05 and all23 dispositions before any checks. It pins reminder rules to exact period configuration/timezone, uses immutable period-version dedup with immediate reforecast jobs, adds Web/shared-mobile history and ordinary mobile parent links. Append schema130 without rewriting prior reminders, migrations or proofs. Nine freezes and APK164/business163/schema129 remain immutable; devPG100/API, all23 formal packages and eight draft Skills remain open. See docs/development/165-batch-functional-closure.md.
+
 - Increment159 completes the entire declared code/fixture wave before unified checks. Add full ordinary contract/purchase/claim/subscription preparation and fixed human-authorized existing-draft revisions, explicit cross-scope review, original-session recent MFA, exact current references and atomic ordinary receipts. Append schema121; oa-assist1.6.0 is L2 and all8 Skills remain draft. Preserve all8 freezes,120 prior migrations/proofs/media; rc.8/APK154 stay153/113, developmentPG100/API unchanged. Keep23 packages and real configurations/formal acceptance open; Android JS rebuild/newAPK remain deferred. See docs/development/159-batch-functional-closure.md.
 
 

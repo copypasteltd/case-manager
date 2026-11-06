@@ -1,6 +1,8 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
-[增量163 / Current163：原登录变化与历史重读的实际截图、MP4、GIF](batch-round-163/README.md)。当前两端均完成自建资源清理；此前失败和中间证据按原源码保留。
+[增量165 / Current165：固定账期提醒、版本历史和补充协议主合同入口的实际截图、MP4、GIF](batch-round-165/README.md)。Web／共享移动H5使用隔离合成资料；原始侧滑瞬间图保留，指南中的稳定主合同图取自同次实际录屏。自建浏览器、页面服务与原生测试PG均已关闭。
+
+[历史163 / Frozen rc.9：原登录变化与历史重读的实际截图、MP4、GIF](batch-round-163/README.md)。两端均完成自建资源清理；此前失败和中间证据按原源码保留。
 
 当前162：[TG本人固定预授权清单、核对取消与实际回执的6张主截图、2段实际录屏、2个互动GIF及2个截图导览GIF](batch-round-162/README.md)。香港到期时分秒已补；Web首录保留。Actual authenticated synthetic Web/H5 pixels; no real Bot/model/cloud or production acceptance.
 

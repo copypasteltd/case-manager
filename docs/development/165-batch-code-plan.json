@@ -1,0 +1,423 @@
+{
+  "increment": 165,
+  "base_commit": "3dc6deeba29298fbff101e818ac6b68e944db07a",
+  "protocol": "Complete every declared numbered code/fixture/tool task and review all23 packages before ANY round tests/builds/browser; retain first failures, batch repairs, rerun only affected checks.",
+  "code_wave_complete": true,
+  "validation_state": "unified checks follow the preserved whole-wave snapshot",
+  "schema": 130,
+  "round_tasks": [
+    {
+      "id": "C01",
+      "name": "账期快照提醒与重估版本隔离",
+      "state": "implemented",
+      "implementation": "Go scheduler + append-only130 SQL, immutable legacy history and exact-version dedup"
+    },
+    {
+      "id": "C02",
+      "name": "四端提醒历史与移动补充合同入口",
+      "state": "implemented",
+      "implementation": "public reminder period_version; Web/shared-mobile history and ordinary parent navigation"
+    },
+    {
+      "id": "C03",
+      "name": "完整前置业务／SQL／媒体场景",
+      "state": "implemented",
+      "implementation": "native HTTP/PG pin/reforecast/duplicate/permission evidence; synthetic supplement fixture"
+    },
+    {
+      "id": "C04",
+      "name": "统一检查与留证工具",
+      "state": "implemented",
+      "implementation": "whole-wave snapshot; selected native + client batch; Web/H5 owned capture and media"
+    },
+    {
+      "id": "C05",
+      "name": "23编号完整处置与双语交付文档",
+      "state": "implemented",
+      "implementation": "current register, root/docs guides, changelog, current proof/publication boundaries"
+    }
+  ],
+  "packages": [
+    {
+      "id": "GAP-01",
+      "name": "项目完整管理",
+      "original_remaining": "继续核对任务→交付→OA履行→结项／归档的完整跨模块旅程及公司角色／目录配置；增量124已完成项目内六类业务的固定范围新建、查询与返回，不将草稿保存当作审批或财务履行。",
+      "acceptance_state": "open",
+      "code_wave_review": "AC03 source audit found no new confirmed implementation deviation in inspected lifecycle; company roles and full journeys remain open.",
+      "implementation_locations": [
+        "app/backend/internal/project",
+        "app/backend/internal/project/task_participants.go",
+        "app/backend/internal/workbench/task_inventory.go",
+        "app/backend/migrations/0124_task_collaboration.sql",
+        "app/mobile/src/pages/home/task-inventory.tsx",
+        "app/mobile/src/pages/project",
+        "app/web/src/ProjectReferenceSelect.tsx",
+        "app/web/src/Projects.tsx",
+        "app/web/src/TaskWorkbench.tsx",
+        "app/web/src/ProjectCloseout.tsx"
+      ],
+      "current_review": "C04 adds exact archived file-version entry; complete company project journeys/roles remain open."
+    },
+    {
+      "id": "GAP-02",
+      "name": "合同、采购、报销",
+      "original_remaining": "确定审批人、金额阈值、本人审批和撤回规则；完成合同→采购／报销→费用→付款→结项的正常、退回、冲突及部分履行业务核验。",
+      "acceptance_state": "open",
+      "code_wave_review": "C02 closes shared-mobile existing supplement parent navigation; company approval rules and formal journeys remain open.",
+      "implementation_locations": [
+        "app/backend/internal/contracts",
+        "app/backend/internal/spend",
+        "app/backend/internal/workflow",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-03",
+      "name": "费用、订阅与报表",
+      "original_remaining": "继续确认公司财务制度及本轮独立汇兑台账适用的会计口径，并完成四端完整财务旅程验收。增量158已实现固定人工汇率版本、双事实日期折算、有效余额损益登记／撤销及完整历史；不再把该有界台账列为待开发，也不据此宣称公司会计政策已采用。",
+      "acceptance_state": "open",
+      "code_wave_review": "C01 closes confirmed FIN10 reminder snapshot and reforecast-version suppression defects; company accounting policies remain open.",
+      "implementation_locations": [
+        "app/backend/internal/finance",
+        "app/mobile/src/pages/finance"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-04",
+      "name": "文件正文、预览与检索",
+      "original_remaining": "继续完成复杂Office结构／版式、真实PDF／OCR业务样本准确性、完整文件旅程及目标原生部署验收。增量158已实现DOCX合同完整语义正文、原件／配方／投影独立校验和本人准确采用；XLSX／PPTX合同正文采用仍不支持。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/files",
+        "app/backend/internal/documenttext",
+        "app/backend/internal/agent/file_session.go"
+      ],
+      "current_review": "C01/C02 bind exact original human login across all supported text/Office create/update/recovery; complex formats/samples remain open."
+    },
+    {
+      "id": "GAP-05",
+      "name": "文件生命周期",
+      "original_remaining": "继续完成未知／完成状态不确定的外部对象及复杂派生对象的可信原生身份核实和受控清理，并确认公司保留制度。增量158已实现已知DB文字完整盘点、原件完成历史清理后独立观察／执行／取消、不可变证据及永久再提取屏障；缺失原生身份的外部键保持阻止。真实云按GAP-20验收。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/agent/file_abandonment.go",
+        "app/backend/internal/files",
+        "app/mobile/src/pages/files/history-restores.tsx",
+        "app/mobile/src/pages/scan/index.tsx",
+        "app/mobile/src/pages/uploads/scan-controls.tsx",
+        "app/backend/internal/files/agent_drafts.go",
+        "app/backend/migrations/0129_agent_file_sessions.sql"
+      ],
+      "current_review": "C01 stops draft async work after original login ends; C04 fixes exact file/version/replica navigation. Formal committed replication stays independent. Unknown object identities and retention company policy remain open."
+    },
+    {
+      "id": "GAP-06",
+      "name": "账号生命周期",
+      "original_remaining": "确定普通身份核验、账号／凭证交付和实际管理员分工；核对邀请、改密、单用恢复、MFA及会话撤销的普通流程。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/identity",
+        "app/backend/internal/authz"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-07",
+      "name": "统一后台管理",
+      "original_remaining": "继续完成真实模型／Skill安装配置、TG／存储运行配置和统一后台完整业务验收。增量157已补准确安装包的人工试运行／发布／停用及回退引用台账、当前运行门禁、八类TG任务门户转接和独立原群披露；发布台账不等于真实评估或安装。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/agent/skill_releases.go",
+        "app/backend/internal/telegram",
+        "app/backend/internal/storageconfig",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx",
+        "app/web/src/StorageOperations.tsx",
+        "app/packages/contracts/src/fixed-delivery-navigation.ts"
+      ],
+      "current_review": "C03/C04 close confirmed fixed-result and replica metadata navigation defects without new content authority. Real services/organization acceptance remain open."
+    },
+    {
+      "id": "GAP-08",
+      "name": "工作台与通知",
+      "original_remaining": "继续完成公司整体业务聚合制度、跨模块异常旅程、群／其他渠道规则及真实服务商送达核对。本人TG订阅／固定提示／人工对账153、复制故障／恢复站内通知149及申请／交付跟进155已实现源码子闭环；不将其等同整个工作包验收，真实OSS＋R2另按GAP-20验收。",
+      "acceptance_state": "open",
+      "code_wave_review": "C01/C02 provide exact reminder basis versions and current ordinary notification checks; actual cross-channel delivery remains open.",
+      "implementation_locations": [
+        "app/backend/internal/notification",
+        "app/backend/internal/project/task_participants.go",
+        "app/backend/internal/workbench",
+        "app/backend/internal/workbench/task_inventory.go",
+        "app/backend/migrations/0124_task_collaboration.sql",
+        "app/backend/migrations/0127_agent_fixed_notifications.sql",
+        "app/mobile/src/pages/secretary/fixed-delivery.tsx",
+        "app/packages/contracts/src/fixed-deliveries.ts",
+        "app/web/src/ConversationFixedDelivery.tsx",
+        "app/packages/contracts/src/fixed-delivery-navigation.ts"
+      ],
+      "current_review": "C03 distinguishes exact queued notification receipts from delivery and source/run identity; actual independent channel delivery remains open."
+    },
+    {
+      "id": "GAP-09",
+      "name": "真实Codex秘书接入",
+      "original_remaining": "配置真实模型、专用凭据和运行配置，跑通请求→推理→工具→回复，并核验真实结果、取消、超时与权限变化。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/agent-runtime/src",
+        "app/backend/internal/agentworker"
+      ],
+      "current_review": "C01 repairs an original-session write boundary; real Codex remains unconfigured."
+    },
+    {
+      "id": "GAP-10",
+      "name": "AI原生执行隔离",
+      "original_remaining": "部署并验证增量105原生控制器，在目标服务器核验身份、目录／网络／工具／资源限制、真实证明、取消和重启回收；修复实际环境不兼容。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/nativeruntime",
+        "app/deploy/native"
+      ],
+      "current_review": "C01 covers synchronous and asynchronous original authorization checks; actual native target isolation remains unconfigured."
+    },
+    {
+      "id": "GAP-11",
+      "name": "AI计划与授权",
+      "original_remaining": "补更多业务动作、可见性影响、跨项目／分类操作及预授权；补TG写入预授权和群外发授权。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/agent/business_revisions.go",
+        "app/backend/internal/agent/fixed_deliveries.go",
+        "app/backend/internal/agent/mutations.go",
+        "app/backend/internal/agent/telegram_disclosure.go",
+        "app/backend/internal/agent/telegram_handoff.go",
+        "app/backend/internal/agent/telegram_write_grants.go",
+        "app/backend/internal/files/agent_scope_transfer.go",
+        "app/backend/migrations/0125_telegram_write_grants.sql",
+        "app/backend/migrations/0126_agent_fixed_scope_transfers.sql",
+        "app/backend/migrations/0127_agent_fixed_notifications.sql",
+        "app/mobile/src/pages/secretary/business-preparation.tsx",
+        "app/mobile/src/pages/secretary/fixed-delivery.tsx",
+        "app/mobile/src/pages/secretary/telegram-write-grant.tsx",
+        "app/packages/contracts/src/fixed-deliveries.ts",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/web/src/ConversationFixedDelivery.tsx",
+        "app/web/src/TelegramWriteGrant.tsx",
+        "app/backend/internal/agent/file_session.go",
+        "app/packages/contracts/src/fixed-delivery-navigation.ts"
+      ],
+      "current_review": "C01 preserves original file delegation; C03 preserves minimal post-transfer receipts; broader actions remain explicitly unsupported."
+    },
+    {
+      "id": "GAP-12",
+      "name": "秘书业务工具",
+      "original_remaining": "继续完成更广业务工具、复杂Office与真实模型完整业务旅程。增量158已实现固定类型化合同／采购／报销／订阅草稿创建及普通准确回执，并支持DOCX合同正文独立人工采用；模型不能改商业条件、审批、启用订阅或制造费用／现金，未支持功能继续明确拒绝。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/agent",
+        "app/backend/internal/agentworker",
+        "app/skills",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx"
+      ],
+      "current_review": "C01/C02 strengthen existing file tools and all eight draft package boundaries; real model/complete wider tools remain open."
+    },
+    {
+      "id": "GAP-13",
+      "name": "八项Skill正式发布",
+      "original_remaining": "继续完成八项Skill在真实原生运行环境的逐包安装、真实样本评估、公司发布和回退验收；全部仍draft。增量157已补准确安装配置、本人成功运行依据、不可变发布决定及运行门禁代码，不能以本地台账／合成驱动替代真实Skill验收。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/agent/skill_releases.go",
+        "app/agent-runtime/src/skills.ts",
+        "app/skills",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx"
+      ],
+      "current_review": "file-update1.7.0 and all eight packages stay draft; shared boundary changes need installation digest reverification."
+    },
+    {
+      "id": "GAP-15",
+      "name": "股东TG入口",
+      "original_remaining": "继续完成真实Bot、股东群／话题、人员绑定、真实模型和结果送达验收。增量157已补八类任务接收、本人门户转接和独立人工核对的准确结果片段原群发布；未知送达不自动重发，只有原两类只读任务自动调度。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/telegram",
+        "app/backend/internal/agent/telegram_handoff.go"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-16",
+      "name": "Android构建与发布",
+      "original_remaining": "补正式签名、版本升级及发布配置；核对目标SDK／原生库兼容、原生桥接、构建和APK内容。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/mobile/android",
+        "app/mobile/android/app/build.gradle",
+        "app/mobile/src/platform",
+        "app/scripts/android_release.py",
+        "app/scripts/build_android.py",
+        "app/scripts/test_android_release161.py",
+        "app/scripts/build_candidate_164.py"
+      ],
+      "current_review": "C06 prepares fresh matching development bundle/APK via native tools; formal company signing/publication remains unprovided."
+    },
+    {
+      "id": "GAP-18",
+      "name": "四端业务覆盖",
+      "original_remaining": "继续完成四端正常／失败／冲突及跨模块完整UI旅程和正式交付。增量155–158已同步Web与三类移动共享源码，本轮四组实际Web／原生业务及6张截图、4段录屏、4个GIF单独留证；额外移动UI及新APK延期。Android JS本轮900秒索引超时，保留失败并明确延期，不能以旧产物替代。开发APK154固定业务153／结构113，不包含155–158。真机验证已移出，平台及正式Android验收分别仍GAP-19／16。",
+      "acceptance_state": "open",
+      "code_wave_review": "C02 updates Web/shared mobile source; C03/C04 selected local checks/media are separate from APK164/business163/schema129.",
+      "implementation_locations": [
+        "app/backend/internal/agent/business_revisions.go",
+        "app/backend/internal/httpapi/round161_notification_integration_test.go",
+        "app/backend/internal/httpapi/round161_scope_integration_test.go",
+        "app/backend/internal/httpapi/round161_tasks_integration_test.go",
+        "app/backend/internal/httpapi/round161_telegram_integration_test.go",
+        "app/backend/internal/project/task_participants.go",
+        "app/backend/internal/workbench/task_inventory.go",
+        "app/backend/migrations/0124_task_collaboration.sql",
+        "app/mobile/src",
+        "app/mobile/src/pages/secretary/business-preparation.tsx",
+        "app/mobile/src/platform/batch161.test.ts",
+        "app/packages/contracts/src",
+        "app/scripts/check_batch_round161.mjs",
+        "app/scripts/run_batch_round161.py",
+        "app/scripts/verify_batch_round161.py",
+        "app/web/src",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/file-updates.tsx"
+      ],
+      "current_review": "C02/C03/C04 synchronize confirmed entry/receipt corrections across Web/shared mobile; current local checks and matching artifacts do not establish real platform/full journey acceptance."
+    },
+    {
+      "id": "GAP-19",
+      "name": "微信／抖音平台接入与发布准备",
+      "original_remaining": "补真实AppID、密钥、域名及主体资料；完成平台接口／文件能力适配、源码与构建核对、提审材料和发布配置。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/miniapp",
+        "app/mobile/config",
+        "app/mobile/src/platform"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-20",
+      "name": "实际OSS＋R2",
+      "original_remaining": "配置实际桶与用途身份、CORS、签名、回读、分片、双端复制、失败重试及对象内容校验。 核对原件清理专用身份、OSS真实原生版本、R2独占不可变目录及准确不存在／删除语义。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/objectstore",
+        "app/backend/internal/files",
+        "app/backend/internal/uploadworker"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-23",
+      "name": "服务监控与告警",
+      "original_remaining": "部署实际Prometheus／Blackbox／node_exporter及获准目标，核对目标环境的真实故障、恢复、采集断流unknown、站内告警实际触发及独立外部告警送达。增量130已实现资源采集／签名／四端配置显示／历史；增量131已实现资源主动站内提醒、本人待办、真实恢复与责任重算。剩余为真实目标接入及独立外部通道，不再把已实现代码列为待开发。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/internal/servicestatus",
+        "app/backend/internal/statusbridge",
+        "app/backend/internal/notification"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-24",
+      "name": "生产部署与发布工程",
+      "original_remaining": "接入真实原生CI Runner和目标服务器；配置生产HTTPS、独立身份与密钥，核对全部旧进程归属；完成配置版本、正常结构升级、启动、就绪、失败处置和应用回退的实际发布验收。增量119已提供发布工程代码，137已封存结构103的本地候选包、完整源码和下载摘要；本地冻结包与构建检查不等于目标服务器上线。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/deploy/release",
+        "app/deploy/native",
+        ".github/workflows",
+        "app/scripts/build_candidate_164_server.py"
+      ],
+      "current_review": "C06 freezes schema129 matching native artifacts without changing PG100/API or claiming target deployment."
+    },
+    {
+      "id": "GAP-25",
+      "name": "生产数据持久化",
+      "original_remaining": "接入生产持久PostgreSQL，完成权限、连接、建表／结构升级、事务和实际读写核对；正式文件由OSS＋R2管理。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/backend/migrations",
+        "app/backend/internal/platform"
+      ],
+      "current_review": "Existing implementation retained. Remaining current package work depends on actual company rules, external configuration or formal acceptance; not closed by this source wave."
+    },
+    {
+      "id": "GAP-26",
+      "name": "依赖安全与产物",
+      "original_remaining": "增量108完整npm审计已由63项降至0项；继续完成目标正式发布版本的依赖冻结与产物安全核对，覆盖目标Linux部署及正式Android等产物，不以本地开发构建替代生产安全验收。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/package-lock.json",
+        "app/deploy/release",
+        "app/scripts/verify_candidate_164.py"
+      ],
+      "current_review": "C06 binds actual build inputs, full source/media archives and matching APK graph; formal production artifact acceptance remains open."
+    },
+    {
+      "id": "GAP-28",
+      "name": "当前范围完整验收",
+      "original_remaining": "按已逐项分类的30项AC／72项TC继续补全四端业务旅程、可追溯证据、操作手册、平台／正式产物及当前范围发布验收；适用性分类不代表业务测试通过。",
+      "acceptance_state": "open",
+      "code_wave_review": "Retain prior source and explicit unresolved company rules, bounded wider capabilities, external configuration or formal acceptance; no invented integration or acceptance.",
+      "implementation_locations": [
+        "app/scripts/verify_current_scope.py",
+        "app/scripts/verify_acceptance_applicability.py",
+        "app/scripts/run_batch_round.py",
+        "app/scripts/run_batch_round163.py"
+      ],
+      "current_review": "C05/C07 enforce whole-code-before-checks and honest evidence; all30AC/72TC classifications and23 formal packages remain open."
+    }
+  ],
+  "excluded_ids": [
+    "GAP-14",
+    "GAP-17",
+    "GAP-21",
+    "GAP-22",
+    "GAP-27"
+  ],
+  "new_android_apk": false,
+  "current_android_js_rebuild_deferred": true,
+  "production_acceptance": false,
+  "implementation_completed_before_tests": true,
+  "audit_method": "Independent AC03/04/07 source traces and FIN10 countercheck; partial compliance review, not full23 formal acceptance.",
+  "bounded_support": [
+    "No historical reminder/outbox bytes are rewritten. Legacy reminders derive their exact period version from their immutable outbox.",
+    "A reforecast invalidates old pending events and can enqueue one reminder per new period version/day; delivered history stays immutable.",
+    "Current pause/cancel/recipient permissions remain enforced. No actual fee or payment is inferred from reminders.",
+    "Nine frozen releases and APK164/business163/schema129 remain immutable; main165 requires ordinary130 upgrade."
+  ],
+  "code_development_finished_at": "2026-11-06T10:16:26.747731+00:00"
+}

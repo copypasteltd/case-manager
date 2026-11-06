@@ -174,6 +174,7 @@ type SubscriptionPeriodBase struct {
 type SubscriptionReminder struct {
 	ID                   string    `json:"id"`
 	PeriodID             string    `json:"period_id"`
+	PeriodVersion        int64     `json:"period_version"`
 	DaysBefore           int       `json:"days_before"`
 	RemindOn             string    `json:"remind_on"`
 	RecipientID          string    `json:"recipient_id"`

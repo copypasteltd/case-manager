@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "python_files": [
+    "app/scripts/derive_batch_round165_interaction.py",
+    "app/scripts/render_batch_round165_media.py",
+    "app/scripts/run_batch_round165.py",
+    "app/scripts/run_batch_round165_browser.py",
+    "app/scripts/summarize_batch165.py",
+    "app/scripts/verify_batch_round165.py"
+  ],
+  "coverage_note": "Includes browser/encoder/derivative names omitted by the narrower first glob; JS3 initial checks retained.",
+  "services_started": false
+}

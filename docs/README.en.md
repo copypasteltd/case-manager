@@ -1,5 +1,15 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+**Main165 source wave / selected unified checks passed**
+
+Subscription reminders now use pinned period rules and exact period versions; explicit reforecasting queues a new job immediately. Reminder history shows the basis version on Web and shared mobile. Existing mobile supplements link to their authorized parent contract. All declared code finishes before unified checks and batch fixes.
+
+Current checks pass: three native HTTP/PG business families with 36 result records, Web 527, shared mobile 553, type checks, Web/WeChat/Douyin builds, and two actual UI/API checks per Web/mobile session. Screenshots, silent MP4s and actual interaction GIFs are linked below. Runtime 66 is retained from increment163; no new Android APK or complete regression is claimed. The reminder read fix keeps the same authority and the 15-second deadline. Failed inputs and repairs remain auditable. Two post-capture publication helpers have exact before/after records; application and media bytes remain unchanged. The verification guide explains the bounded source reconstruction.
+
+Use **Subscriptions → Reminder delivery history** or **Supplement → View parent contract**. Apply the ordinary schema130 upgrade with matching main165 server code; developmentPG100/API stays unchanged. The immutable rc.9/APK164 still contains business163/schema129. All23 formal packages and eight draft Skills remain open.
+
+[Whole-wave design](development/165-batch-functional-closure.md) · [23 numbered packages](delivery/05-functional-closure-165.md) · [Selected verification](quality/165-batch-functional-verification.md) · [Screenshots / MP4 / GIF](media/batch-round-165/README.md)
+
 **Current frozen delivery v0.1.0-rc.9 / Release164**
 
 Business155–163 are fixed at source `c727398`, schema129. Fresh native server/Web/runtime, WeChat/Douyin builds and a development Android APK match that source. Six downloads provide five artifact categories, including complete application source and all historical media in two lossless SHA256-verified parts. Eight prior freezes stay immutable.

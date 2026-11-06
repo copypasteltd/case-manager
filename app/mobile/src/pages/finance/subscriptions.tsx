@@ -10,7 +10,7 @@ import { useFormDraft } from '../../platform/form';
 import { CommandNotice, DraftNotice, MFAConfirmation, useCommand } from '../../platform/command';
 import { subscriptionBase, subscriptionContent, subscriptionInput, type SubscriptionInput } from '../../platform/subscription-input';
 import { fromHongKongInput } from '../../platform/financial-input';
-import { Action, Busy, Fact, Notice, Page, Section } from '../../ui';
+import { Action, Busy, Empty, Fact, Notice, Page, Section } from '../../ui';
 import { ChoiceList, FileChoice, PartyChoice, SelectField, TextField } from '../business/controls';
 import { FixedFiles } from '../../platform/fixed-files';
 
@@ -74,3 +74,9 @@ function SubscriptionAction({ value, action, me, onCommitted, onCancel }: { valu
       {field('reason', '操作依据')}{needsAck && <SelectField label='人工核实声明' value={ack ? 'yes' : ''} options={[['', '尚未确认'], ['yes', '已核对本次范围、历史保留与供应方实际状态的区别']]} disabled={disabled} onChange={v => setAck(v === 'yes')} />}<MFAConfirmation disabled={disabled} onFresh={setFresh} /><Action disabled={disabled || !fresh || needsAck && !ack} loading={command.busy} onClick={submit}>{subscriptionActionNames[action]}</Action><Action secondary disabled={command.busy} onClick={onCancel}>返回，保留文字输入</Action></>}</View></Section>{picker && <FileChoice project={value.project_id ?? ''} classification={value.classification} onClose={() => setPicker(false)} onSelect={file => { setFiles(old => old.some(f => f.version_id === file.version_id) ? old : [...old, file]); setPicker(false); }} />}</>;
 }
 export function SubscriptionHistory({ id }: { id: string }) { const list = useCollection<Schemas['SubscriptionRevision']>('/subscriptions/' + id + '/revisions?limit=20'); return <Section title='订阅固定修订历史'><Notice error={list.error} />{list.loading ? <Busy /> : !list.error && list.items.map(r => <Fact key={r.id} label={'修订 ' + r.seq}><Text>{r.reason}</Text><Text className='cp-code'>{r.content_hash}</Text></Fact>)}{list.next && <Action secondary loading={list.moreBusy} onClick={() => void list.more()}>加载更早订阅修订</Action>}</Section>; }
+
+export function SubscriptionReminderHistory({ id }: { id: string }) {
+  const list = useCollection<Schemas['SubscriptionReminder']>('/subscriptions/' + id + '/reminders?limit=20');
+  const labels = { queued: '已排队', delivered: '已送达站内通知', suppressed: '已按当前职责或权限抑制', retry_wait: '等待重试', failed: '投递失败' };
+  return <Section title='提醒与投递记录'><View className='cp-pad'><Text className='cp-muted cp-small'>提醒采用账期固定规则；重估后按新版本重新排队，旧记录继续保留。送达不代表已读，不会登记付款。</Text></View><Notice error={list.error} />{list.loading ? <Busy /> : !list.error && (list.items.length ? list.items.map(n => <View key={n.id} className='cp-pad'><Action secondary onClick={() => go('subscription_period', n.period_id)}>{n.period_start_date} 账期 · 版本 {n.period_version}</Action><Fact label='提醒状态'><Text>{labels[n.delivery_state]}</Text></Fact><Fact label='原提醒计划'><Text>{n.days_before === 0 ? '计费当日' : '提前 ' + n.days_before + ' 日'} · {n.remind_on} · {n.timezone}</Text></Fact><Fact label='责任人'><Text>{n.recipient_display_name}（当前显示名）</Text></Fact></View>) : <Empty>尚无持久提醒记录。</Empty>)}{list.next && <Action secondary loading={list.moreBusy} onClick={() => void list.more()}>加载更早提醒</Action>}</Section>;
+}

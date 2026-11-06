@@ -1,0 +1,319 @@
+package httpapi
+
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"os"
+	"testing"
+	"time"
+
+	"copypaste.hk/platform/internal/contracts"
+	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/finance"
+	"copypaste.hk/platform/internal/jobqueue"
+	"copypaste.hk/platform/internal/party"
+	"copypaste.hk/platform/internal/workflow"
+	"github.com/jackc/pgx/v5/pgconn"
+)
+
+func TestRound165SubscriptionReminders(t *testing.T) { round165Reminders(t, false) }
+func TestRound165ReminderBrowserFixture(t *testing.T) {
+	if os.Getenv("CP_BROWSER_ROUND165") != "1" {
+		t.Skip("explicit isolated browser fixture only")
+	}
+	round165Reminders(t, true)
+}
+func round165Reminders(t *testing.T, browser bool) {
+	u, file, _, _, _ := restorationFixture(t, 15)
+	f, ctx := u.f, context.Background()
+	ptr := func(v string) *string { return &v }
+	exec := func(q string, args ...any) {
+		t.Helper()
+		if _, e := f.owner.Exec(ctx, q, args...); e != nil {
+			t.Fatal(e)
+		}
+	}
+	for _, key := range []string{"subscription_manager", "forecast_reporter", "party_manager"} {
+		exec(`INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type,classification_ceiling) SELECT $1,$2,$3,id,'org','project_restricted' FROM roles WHERE org_id=$2 AND key=$4`, core.NewID(), f.org, f.alice, key)
+	}
+	f.aliceToken = memberMFAToken(f, "alice", "android")
+	r, v := f.with(t).request("POST", "/v1/parties", f.aliceToken, core.NewID(), party.Create{Content: party.Content{Name: "Synthetic wave165 supplier", Kind: "organization", Relationships: []string{"supplier"}}, ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "isolated fixed basis"}, nil)
+	expect(t, r, 201, v)
+	supplier := data[party.Party](t, v)
+	var today, tomorrow string
+	if err := f.owner.QueryRow(ctx, `SELECT (clock_timestamp() AT TIME ZONE 'Asia/Hong_Kong')::date::text,((clock_timestamp() AT TIME ZONE 'Asia/Hong_Kong')::date+1)::text`).Scan(&today, &tomorrow); err != nil {
+		t.Fatal(err)
+	}
+	one, cycle := 1, "custom"
+	content := finance.SubscriptionContent{Product: "合成订阅 · 固定提醒与重估", Supplier: &finance.PartyRef{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, OwnerID: &f.alice, Category: "round165", StartDate: &today, FirstChargeDate: &today, Cycle: &cycle, CustomIntervalDays: &one, Timezone: "Asia/Hong_Kong", RenewalMode: "manual", VendorState: "unknown", ReminderDays: []int{7}, VendorEvidenceVersionIDs: []string{}, Prices: []finance.SubscriptionPriceInput{{EffectiveFrom: today, Currency: "HKD", Amount: "1", Plan: "Synthetic daily plan"}}}
+	r, v = f.with(t).request("POST", "/v1/subscriptions", f.aliceToken, core.NewID(), finance.SubscriptionCreate{SubscriptionContent: content, SourceKey: "synthetic:" + core.NewID(), ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "fixed synthetic billing"}, nil)
+	expect(t, r, 201, v)
+	sub := data[finance.Subscription](t, v)
+	base := func(s finance.Subscription) finance.Base {
+		return finance.Base{ExpectedVersion: s.Version, RevisionID: s.CurrentRevisionID, ContentHash: s.ContentHash, Reason: "explicit exact human configuration"}
+	}
+	getSub := func() finance.Subscription {
+		t.Helper()
+		r, v := f.with(t).request("GET", "/v1/subscriptions/"+sub.ID, f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		return data[finance.Subscription](t, v)
+	}
+	getPeriod := func(id string) finance.SubscriptionPeriod {
+		t.Helper()
+		r, v := f.with(t).request("GET", "/v1/subscription-periods/"+id, f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		return data[finance.SubscriptionPeriod](t, v)
+	}
+	r, v = f.with(t).request("POST", "/v1/subscriptions/"+sub.ID+"/transition", f.aliceToken, core.NewID(), finance.SubscriptionTransition{Base: base(sub), Action: "activate", VendorEvidenceVersionIDs: []string{}}, nil)
+	expect(t, r, 200, v)
+	sub = data[finance.Subscription](t, v)
+	date, _ := time.Parse(time.DateOnly, tomorrow)
+	r, v = f.with(t).request("POST", "/v1/subscriptions/"+sub.ID+"/periods/generate", f.aliceToken, core.NewID(), finance.SubscriptionGenerate{Base: base(sub), From: today, To: tomorrow}, nil)
+	expect(t, r, 200, v)
+	generated := data[finance.SubscriptionGeneration](t, v)
+	if len(generated.GeneratedIDs) != 1 {
+		t.Fatal(generated)
+	}
+	p := getPeriod(generated.GeneratedIDs[0])
+	original := p
+	service, queue := &finance.Service{DB: f.api.DB}, jobqueue.Queue{DB: f.api.DB}
+	claim := func() jobqueue.Job {
+		t.Helper()
+		j, e := queue.Claim(ctx, []string{"subscription.generate.v1"}, "finance", "round165."+core.NewID(), 2*time.Minute)
+		if e != nil || j == nil {
+			t.Fatal(j, e)
+		}
+		return *j
+	}
+	process := func(j jobqueue.Job, want int) {
+		t.Helper()
+		out, e := service.ProcessSubscriptionJob(ctx, j)
+		if e != nil || out.Skipped || out.RemindersQueued != want {
+			t.Fatal(out, e)
+		}
+	}
+	schedule := func(want int) {
+		t.Helper()
+		out, e := service.ScheduleSubscriptions(ctx)
+		if e != nil || out.Enqueued != 1 {
+			t.Fatal(out, e)
+		}
+		process(claim(), want)
+	}
+	patch := func(days []int) {
+		t.Helper()
+		sub = getSub()
+		c := sub.SubscriptionContent
+		c.ReminderDays = days
+		r, v := f.with(t).request("PATCH", "/v1/subscriptions/"+sub.ID, f.aliceToken, core.NewID(), finance.SubscriptionPatch{SubscriptionContent: c, Base: base(sub)}, nil)
+		expect(t, r, 200, v)
+		sub = data[finance.Subscription](t, v)
+	}
+	reforecast := func() {
+		t.Helper()
+		sub = getSub()
+		p = getPeriod(p.ID)
+		r, v := f.with(t).request("POST", "/v1/subscription-periods/"+p.ID+"/reforecast", f.aliceToken, core.NewID(), finance.SubscriptionPeriodReforecast{SubscriptionPeriodBase: finance.SubscriptionPeriodBase{ExpectedVersion: p.Version, RevisionID: p.CurrentRevisionID, ContentHash: p.ContentHash, Reason: "human explicitly adopts current exact forecast"}, ConfigurationRevisionID: sub.CurrentRevisionID, ConfigurationHash: sub.ContentHash}, nil)
+		expect(t, r, 200, v)
+		p = data[finance.SubscriptionPeriod](t, v)
+	}
+	history := func() []finance.SubscriptionReminder {
+		t.Helper()
+		r, v := f.with(t).request("GET", "/v1/subscriptions/"+sub.ID+"/reminders?limit=100", f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		return data[core.Page[finance.SubscriptionReminder]](t, v).Items
+	}
+	var originalHash string
+	t.Run("clearing current rules retains the old period schedule", func(t *testing.T) {
+		patch([]int{})
+		schedule(1)
+		rows := history()
+		if len(rows) != 1 || rows[0].PeriodID != p.ID || rows[0].PeriodVersion != 1 || rows[0].DaysBefore != 7 || rows[0].DeliveryState != "queued" {
+			t.Fatal(rows)
+		}
+		if err := f.owner.QueryRow(ctx, `SELECT md5(row_to_json(n)::text) FROM subscription_reminders n WHERE period_id=$1`, p.ID).Scan(&originalHash); err != nil {
+			t.Fatal(err)
+		}
+		if got := getPeriod(p.ID); got.CurrentRevisionID != original.CurrentRevisionID || got.ConfigurationRevisionID != original.ConfigurationRevisionID {
+			t.Fatal("ordinary config edit rewrote a period", got)
+		}
+	})
+	t.Run("changed rules do not add reminders to existing snapshots", func(t *testing.T) {
+		patch([]int{1})
+		schedule(0)
+		rows := history()
+		if len(rows) != 1 || rows[0].DaysBefore != 7 {
+			t.Fatal(rows)
+		}
+	})
+	t.Run("reforecast has an immediate durable job and preserves every old event", func(t *testing.T) {
+		reforecast()
+		process(claim(), 1)
+		reforecast()
+		j := claim()
+		process(j, 1)
+		// Replay the same fixed generation window under a fresh valid lease.
+		tx, e := f.api.DB.Begin(ctx)
+		if e != nil {
+			t.Fatal(e)
+		}
+		_, _, e = queue.Enqueue(ctx, tx, jobqueue.Input{OrgID: f.org, Kind: j.Kind, Lane: j.Lane, DedupKey: "round165/repeat/" + core.NewID(), PayloadVersion: j.PayloadVersion, Payload: j.Payload, MaxAttempts: 8})
+		if e != nil {
+			tx.Rollback(ctx)
+			t.Fatal(e)
+		}
+		if e = tx.Commit(ctx); e != nil {
+			t.Fatal(e)
+		}
+		process(claim(), 0)
+		rows := history()
+		if len(rows) != 3 {
+			t.Fatal(rows)
+		}
+		seen := map[int64]int{}
+		for _, n := range rows {
+			seen[n.PeriodVersion]++
+			if n.PeriodVersion > 1 && n.DaysBefore != 1 {
+				t.Fatal(n)
+			}
+		}
+		if seen[1] != 1 || seen[2] != 1 || seen[3] != 1 {
+			t.Fatal(seen)
+		}
+		var old string
+		if e := f.owner.QueryRow(ctx, `SELECT md5(row_to_json(n)::text) FROM subscription_reminders n WHERE period_id=$1 AND period_version=1`, p.ID).Scan(&old); e != nil || old != originalHash {
+			t.Fatal("old immutable reminder changed", e)
+		}
+	})
+	t.Run("reopening a forecast queues its new version without waiting for tomorrow", func(t *testing.T) {
+		for _, action := range []string{"void", "reopen"} {
+			p = getPeriod(p.ID)
+			r, v := f.with(t).request("POST", "/v1/subscription-periods/"+p.ID+"/review", f.aliceToken, core.NewID(), finance.SubscriptionPeriodDecision{SubscriptionPeriodBase: finance.SubscriptionPeriodBase{ExpectedVersion: p.Version, RevisionID: p.CurrentRevisionID, ContentHash: p.ContentHash, Reason: "human explicitly changes the exact forecast state"}, Action: action, EvidenceVersionIDs: []string{}}, nil)
+			expect(t, r, 200, v)
+			p = data[finance.SubscriptionPeriod](t, v)
+		}
+		process(claim(), 1)
+		if p.Version != 5 || len(history()) != 4 {
+			t.Fatal(p, history())
+		}
+	})
+	t.Run("current notifications suppress stale versions and retain independent history", func(t *testing.T) {
+		drainNotifications(t, f)
+		rows := history()
+		states := map[int64]string{}
+		for _, n := range rows {
+			states[n.PeriodVersion] = n.DeliveryState
+		}
+		if states[1] != "suppressed" || states[2] != "suppressed" || states[3] != "suppressed" || states[5] != "delivered" {
+			t.Fatal(states)
+		}
+		requireBusinessNotification(t, f, f.aliceToken, p.ID, "subscription_due", true)
+		if notificationFor(t, f, f.bobToken, p.ID) != nil {
+			t.Fatal("unrelated user received reminder")
+		}
+		r, v := f.with(t).request("GET", "/v1/subscriptions/"+sub.ID+"/reminders", f.bobToken, "", nil, nil)
+		expect(t, r, 404, v)
+		var facts int
+		if e := f.owner.QueryRow(ctx, `SELECT (SELECT count(*) FROM actual_cost_entries)+(SELECT count(*) FROM payment_records)`).Scan(&facts); e != nil || facts != 0 {
+			t.Fatal("reminder invented financial facts", facts, e)
+		}
+	})
+	t.Run("SQL independently rejects current-rule forgery stale basis and unbound legacy inserts", func(t *testing.T) {
+		// A fresh existing period still pins the empty rule snapshot despite current [1].
+		var emptyPeriod string
+		if e := f.owner.QueryRow(ctx, `SELECT p.id FROM subscription_periods p JOIN subscription_period_revisions r ON r.id=p.current_revision_id JOIN subscription_revisions cfg ON cfg.id=r.configuration_revision_id WHERE p.subscription_id=$1 AND cfg.payload->'reminder_days'='[]'::jsonb ORDER BY p.start_date LIMIT 1`, sub.ID).Scan(&emptyPeriod); e != nil {
+			t.Fatal(e)
+		}
+		sub = getSub()
+		var control int64
+		if e := f.owner.QueryRow(ctx, `SELECT max(subscription_version) FROM subscription_events WHERE subscription_id=$1 AND kind IN ('activated','resumed','restored')`, sub.ID).Scan(&control); e != nil {
+			t.Fatal(e)
+		}
+		payload, _ := json.Marshal(finance.SubscriptionGenerationJob{SubscriptionID: sub.ID, ConfigurationRevisionID: sub.CurrentRevisionID, ConfigurationHash: sub.ContentHash, ControlVersion: control, BusinessDate: today, Window: "forward", From: today, To: tomorrow})
+		tx, e := f.api.DB.Begin(ctx)
+		if e != nil {
+			t.Fatal(e)
+		}
+		_, _, e = queue.Enqueue(ctx, tx, jobqueue.Input{OrgID: f.org, Kind: "subscription.generate.v1", Lane: "finance", DedupKey: "round165/guard/" + core.NewID(), PayloadVersion: 1, Payload: payload, MaxAttempts: 8})
+		if e != nil {
+			tx.Rollback(ctx)
+			t.Fatal(e)
+		}
+		if e = tx.Commit(ctx); e != nil {
+			t.Fatal(e)
+		}
+		j := claim()
+		for _, tc := range []struct {
+			name, id string
+			version  any
+			days     int
+		}{{"wrong pinned configuration", emptyPeriod, int64(1), 1}, {"stale version", p.ID, int64(1), 1}, {"legacy provenance cannot be invented", p.ID, nil, 1}} {
+			t.Run(tc.name, func(t *testing.T) {
+				current := getPeriod(tc.id)
+				stamp, _ := time.Parse(time.DateOnly, current.StartDate)
+				remind := stamp.AddDate(0, 0, -tc.days).Format(time.DateOnly)
+				tx, e := f.owner.Begin(ctx)
+				if e != nil {
+					t.Fatal(e)
+				}
+				defer tx.Rollback(ctx)
+				eid := core.NewID()
+				body, _ := json.Marshal(map[string]any{"subscription_id": sub.ID, "period_id": current.ID, "period_version": current.Version, "recipient_id": current.OwnerID, "days_before": tc.days, "remind_on": remind, "delivery_state": "queued"})
+				if _, e = tx.Exec(ctx, `INSERT INTO outbox_events(id,org_id,event_type,aggregate_type,aggregate_id,aggregate_version,payload,request_id) VALUES($1,$2,'subscription.reminder.due','subscription_period',$3,$4,$5,$6)`, eid, f.org, current.ID, current.Version, body, "synthetic/"+core.NewID()); e != nil {
+					t.Fatal(e)
+				}
+				_, e = tx.Exec(ctx, `INSERT INTO subscription_reminders(id,org_id,period_id,period_version,days_before,remind_on,recipient_id,outbox_id,job_id,job_fence,job_owner) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`, core.NewID(), f.org, current.ID, tc.version, tc.days, remind, current.OwnerID, eid, j.ID, j.FencingToken, j.LeaseOwner)
+				var pe *pgconn.PgError
+				if !errors.As(e, &pe) || pe.Code != "23514" {
+					t.Fatal("SQL did not reject invalid reminder", e)
+				}
+			})
+		}
+		process(j, 0)
+	})
+	if browser && !t.Failed() {
+		// Parent/supplement objects are created and activated only through ordinary
+		// HTTP commands, real independent approval and an exact signature receipt.
+		for user, keys := range map[string][]string{f.alice: {"contract_manager", "request_manager", "contract_operator"}, f.bob: {"contract_reader", "party_manager", "approval_reviewer"}} {
+			for _, key := range keys {
+				exec(`INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type,classification_ceiling) SELECT $1,$2,$3,id,'org','project_restricted' FROM roles WHERE org_id=$2 AND key=$4`, core.NewID(), f.org, user, key)
+			}
+		}
+		f.bobToken = memberMFAToken(f, "bob", "android")
+		r, v = f.with(t).request("POST", "/v1/workflow-definitions", f.administratorToken(), core.NewID(), workflow.DefinitionInput{Key: "round165", Name: "Synthetic independent contract review", Kind: "contract", Category: "round165", Currency: "HKD", MinAmount: "0", Enabled: true, SelfApprovalPolicy: "deny", WithdrawalAllowed: true, Steps: []workflow.StepInput{{Title: "Independent reviewer", AssignedUserID: f.bob}}, Reason: "synthetic policy only"}, nil)
+		expect(t, r, 201, v)
+		end := date.AddDate(1, 0, 0).Format(time.DateOnly)
+		in := contracts.Create{Content: contracts.Content{Title: "合成主合同 · 服务协议", Direction: ptr("payable"), Type: ptr("service"), Category: "round165", CounterpartyID: &supplier.ID, CounterpartyRevisionID: &supplier.CurrentRevisionID, OwnerID: &f.alice, Currency: ptr("HKD"), Amount: ptr("100"), StartDate: &today, EndDate: &end, DraftFileVersionID: &file.Version.ID}, ProjectID: file.File.ProjectID, Classification: "project_restricted", Reason: "isolated ordinary supplement navigation"}
+		r, v = f.with(t).request("POST", "/v1/contracts", f.aliceToken, core.NewID(), in, nil)
+		expect(t, r, 201, v)
+		parent := data[contracts.Contract](t, v)
+		r, v = f.with(t).request("POST", "/v1/requests", f.aliceToken, core.NewID(), workflow.RequestCreate{Kind: "contract", BusinessID: parent.ID, ExpectedBusinessVersion: parent.Version, BusinessRevisionID: parent.CurrentRevisionID, BusinessContentHash: parent.ContentHash, Reason: "fixed synthetic parent approval"}, nil)
+		expect(t, r, 201, v)
+		req := data[workflow.Request](t, v)
+		r, v = f.with(t).request("GET", "/v1/requests/"+req.ID+"/submission-preview", f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		preview := data[workflow.SubmissionPreview](t, v)
+		r, v = f.with(t).request("POST", "/v1/requests/"+req.ID+"/submit", f.aliceToken, core.NewID(), workflow.SubmitInput{ExpectedVersion: req.Version, RevisionID: req.CurrentRevisionID, ContentHash: req.ContentHash, WorkflowDefinitionID: preview.Workflow.ID, PreviewHash: preview.PreviewHash, Reason: "human approves fixed submission"}, nil)
+		expect(t, r, 200, v)
+		req = data[workflow.Request](t, v)
+		r, v = f.with(t).request("POST", fmt.Sprintf("/v1/approval-steps/%s/decisions", req.Steps[0].ID), f.bobToken, core.NewID(), workflow.DecisionInput{ExpectedVersion: req.Steps[0].Version, RequestVersion: req.Version, RevisionID: req.CurrentRevisionID, ContentHash: req.ContentHash, Decision: "approve", Reason: "independent human approval"}, nil)
+		expect(t, r, 200, v)
+		r, v = f.with(t).request("GET", "/v1/contracts/"+parent.ID, f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		parent = data[contracts.Contract](t, v)
+		r, v = f.with(t).request("POST", "/v1/contracts/"+parent.ID+"/signature", f.aliceToken, core.NewID(), contracts.SignatureInput{ExpectedVersion: parent.Version, RevisionID: parent.CurrentRevisionID, ContentHash: parent.ContentHash, SignedOn: today, SignedFileVersionID: file.Version.ID, Attestation: "Synthetic signature checked against approved terms", Reason: "explicit exact signature evidence"}, nil)
+		expect(t, r, 201, v)
+		parent = data[contracts.Contract](t, v)
+		r, v = f.with(t).request("POST", "/v1/contracts/"+parent.ID+"/transition", f.aliceToken, core.NewID(), contracts.ActivationInput{ExpectedVersion: parent.Version, Action: "activate", RevisionID: parent.CurrentRevisionID, ContentHash: parent.ContentHash, SignatureID: parent.Signature.ID, Reason: "explicit reached effective date"}, nil)
+		expect(t, r, 200, v)
+		parent = data[contracts.Contract](t, v)
+		in.Title = "合成补充协议 · 当前主合同入口"
+		in.ParentContractID = &parent.ID
+		r, v = f.with(t).request("POST", "/v1/contracts", f.aliceToken, core.NewID(), in, nil)
+		expect(t, r, 201, v)
+		child := data[contracts.Contract](t, v)
+		holdBrowserBusinessFixture(t, f, map[string]any{"fixture_kind": "batch165-reminder-supplement", "subscription_id": sub.ID, "period_id": p.ID, "parent_contract_id": parent.ID, "supplement_id": child.ID})
+	}
+}

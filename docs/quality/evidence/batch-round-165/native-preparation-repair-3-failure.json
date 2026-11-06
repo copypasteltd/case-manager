@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "stage": "native cluster preparation",
+  "attempt": "repair-3",
+  "tests_executed": false,
+  "reason": "Simultaneous native/browser PG initialization encountered the shared helper password-file guard. Native tests did not start; the browser owns its separate initialized cluster. Preserve the failed unstarted owner and serialize further cluster initialization.",
+  "application_changed": false,
+  "credentials_published": false,
+  "retry_attempt": "repair-4"
+}

@@ -1,0 +1,23 @@
+{
+  "files": {
+    "app/scripts/run_batch_round165.py": {
+      "before_sha256": "656de5ffedb715efe6a9ea59eb81e7fbb133c60416e172e756389b44da98da4f",
+      "after_sha256": "72be99cfca6e8a5f257052721d6b579d063ffa92e703da72624535d6b47fece4"
+    },
+    "app/scripts/verify_batch_round165.py": {
+      "before_sha256": "bf2eb14948e8093f51e703f1e774211471474a29614887678403b0755d1c77c9",
+      "after_sha256": "8fa6ceaf6be0b46cc7d8de662d21fab1ebab30166613826c4df64795a6211e3b"
+    }
+  },
+  "before_source_record": "docs/quality/evidence/batch-round-165/publication-helpers-before.json",
+  "captured_source_sha256": "876812f68677641bd7ca3fc792d47c21bf4951121c58246f12d3c94c49cdf084",
+  "application_sources_changed": false,
+  "business_tests_replayed": false,
+  "captures_replayed": false,
+  "reasons": {
+    "app/scripts/run_batch_round165.py": "Remove exactly32 spaces on two otherwise blank lines; preserve all other bytes and behavior.",
+    "app/scripts/verify_batch_round165.py": "Bind exactly these two helper before/after hashes, reconstruct the complete captured inputs, and permit only the media Markdown index update while preserving every prior media artifact/proof/migration byte."
+  },
+  "failure_record": "docs/quality/evidence/batch-round-165/scope-publication-check-initial-failed.json",
+  "scope": "Post-capture publication-helper repair only; current application consumers match actual tested/captured bytes, and every other source input must match."
+}

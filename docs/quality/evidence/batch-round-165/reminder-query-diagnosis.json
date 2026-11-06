@@ -1,0 +1,15 @@
+{
+  "confirmed": true,
+  "observations": [
+    {
+      "private_log_sha256": "be0f5d45d1519245e11ea76e53febe48df4b626b7f9625c165438b9d1ea8ce57",
+      "observed": "statement timeout in the selected reminder history query",
+      "raw_log_published": false
+    }
+  ],
+  "failed_browser_group": "batch-round-165-functional-wave-web-complete",
+  "subsequent_old_source_diagnostic_passed": true,
+  "meaning": "The15s query failure was intermittent; a later pass does not resolve it. Bind the SQL authorization to the selected organization/subscription as a scalar initplan while retaining current session/channel checks, row joins and the same statement timeout. Add default20 pagination and unrelated-user denial regression.",
+  "network_benchmark": false,
+  "time_limits_weakened": false
+}

@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## 增量165 / Whole-code-first functional closure
+
+- 声明全部C01–C05代码／前置用例／工具及23编号处置后统一检查；首次失败与集中修复按实际输入保留。
+- 修复旧订阅账期使用当前提醒规则的问题，按固定配置与时区；显式重估立即排队，按账期版本去重，旧提醒／事件不改写。
+- Web和共享移动显示提醒版本与真实投递状态；移动现有补充合同支持普通主合同入口。追加130迁移，开发PG100/API不变。
+- 原生3族36条结果、Web527／共享移动553、类型及Web／微信／抖音构建和当前两组实际UI／API检查通过；查询超时、准备／前置／录屏失败与修复依据均保留。提醒读取采用同一准确权限的一次语句求值，原15秒期限不变。
+- Actual screenshots/MP4s/interaction GIFs and stable video-frame provenance accompany the selected unified checks. Runtime66 is retained, with no new Android build. Nine freezes and APK164/business163/schema129 remain unchanged; all23 formal packages and real integrations remain open.
+- 首次发布检查的格式／媒体索引规则失败保留；两项后置工具修正有完整原文及前后摘要，最终24项源码核对准确还原采集输入，应用和媒体不重跑、不重标。
+
 ## 2026-11-06 · Increment164 — v0.1.0-rc.9 matching frozen delivery
 
 - 固定业务163／schema129／c727398，重建服务器、Web／运行时、微信／抖音和Android开发APK，完整应用源码与全部公开媒体六文件交付；此前八冻结不变。
