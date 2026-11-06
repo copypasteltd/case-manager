@@ -1,5 +1,17 @@
 # CopyPaste 内部管理平台文档中心
 
+**当前冻结 v0.1.0-rc.9 / Matching release164**
+
+当前同版包含业务155–163，固定源码`c727398`、schema129；服务器／Web／秘书运行时、微信／抖音和新Android开发APK均已构建。完整源码、全部历史媒体两分卷、SHA256和重组工具一并交付；八个旧冻结保持不变。
+
+[下载、校验与使用](releases/v0.1.0-rc.9/README.md) · [发版设计](development/164-frozen-release-delivery.md) · [实际检查／保留失败](quality/164-frozen-release-verification.md) · [23项编号处置](delivery/05-functional-closure-163.md) · [本版业务源码对应截图／MP4／GIF](media/batch-round-163/README.md)
+
+本次新产物检查与163业务证据保留明确分开；Android实际打包为开发签名，28 JVM XML为真实UP-TO-DATE结果。首个过时20页面断言保留，修正后21页面全在实际图中。真实配置仍按用户要求后续提供，开发PG100／API不变，全部23正式包与八项draft Skills保持开放。
+
+后续每轮固定执行：全部编号代码／接口／四端消费者／用例先完成并封存 → 统一检查 → 汇总失败并集中修复 → 仅重跑受影响检查 → 文档与Git同步。未提供的配置／制度单列，不虚构规则或验收通过；不重启逐模块调测发版循环。
+
+前一业务轮次 / Previous business wave
+
 **当前增量163 / Current increment163**
 
 本轮C01–C07代码先全部完成并封存，再统一检查、汇总失败并集中修复。全部23项正式工作包仍开放（14P0／9P1），八项Skill仍draft；配置与公司制度待提供的部分继续明确列出。

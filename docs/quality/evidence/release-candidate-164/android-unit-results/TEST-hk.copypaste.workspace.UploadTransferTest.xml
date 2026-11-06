@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hk.copypaste.workspace.UploadTransferTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-31T03:23:13" hostname="WIKIGSPC" time="0.119">
+  <properties/>
+  <testcase name="streamingBufferAndProgressRemainBounded" classname="hk.copypaste.workspace.UploadTransferTest" time="0.05"/>
+  <testcase name="actualPutUsesExactLongRangeWithoutBearerOrCookies" classname="hk.copypaste.workspace.UploadTransferTest" time="0.026"/>
+  <testcase name="anIncompleteSourceStopsBeforeAnySuccessReceipt" classname="hk.copypaste.workspace.UploadTransferTest" time="0.014"/>
+  <testcase name="changedSourceAfterCloudResponseCannotBeReportedAsConfirmed" classname="hk.copypaste.workspace.UploadTransferTest" time="0.011"/>
+  <testcase name="cancellationStopsTheLiveRequestWithoutRetry" classname="hk.copypaste.workspace.UploadTransferTest" time="0.005"/>
+  <testcase name="missingReceiptCannotBeAcknowledged" classname="hk.copypaste.workspace.UploadTransferTest" time="0.004"/>
+  <testcase name="redirectIsNotFollowedOrAutomaticallyRetried" classname="hk.copypaste.workspace.UploadTransferTest" time="0.004"/>
+  <testcase name="providerErrorsAndSignedUrlsNeverEnterTheReportedError" classname="hk.copypaste.workspace.UploadTransferTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[10月 31, 2026 11:23:14 上午 okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+警告: MockWebServer[6348] connection from /127.0.0.1 didn't make a request
+10月 31, 2026 11:23:14 上午 okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+警告: MockWebServer[6352] connection from /127.0.0.1 didn't make a request
+]]></system-err>
+</testsuite>

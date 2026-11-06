@@ -1,0 +1,22 @@
+{
+  "source_commit": "c72739820534cd178ee0a67b0fe8cebb7589c6d8",
+  "files": [
+    {
+      "file": "app/scripts/inspect_candidate_164.py",
+      "frozen_sha256": "3eabe14505e69bbbe4a4b981072a124a7e31da4b27253cb720dda2c5bb9e4d5a",
+      "current_sha256": "4c6722ee35b6592ffe45b49a16b50d0c1d4425ad3e1e760634d48fe6f51b0248"
+    },
+    {
+      "file": "app/scripts/verify_candidate_164.py",
+      "frozen_sha256": "388e7c1cb5aa0f79f056e6ee8f608355d0adeecdf80c9a9445f0b9c32a6343cf",
+      "current_sha256": "a1e10e86d5a3a5009c9f1a3fa634dd82a617b0affe71effed42f619c2c0fb328"
+    }
+  ],
+  "reason": "The actual current app config has21 registered pages, all present in the native graph. The retained inspector incorrectly required20. Update that fixed assertion and normalize only these two packaging/verification files when comparing the frozen163 whole-wave digest.",
+  "initial_failure_retained": "inspection-initial/apk-inspection.json",
+  "application_or_build_inputs_changed": false,
+  "native_artifacts_rebuilt": false,
+  "business_tests_reexecuted": false,
+  "source_zip_retains_frozen_tools": true,
+  "current_inspection_tools_on_main": true
+}

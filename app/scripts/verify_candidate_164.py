@@ -20,7 +20,17 @@ def verify():
  def record(p):records[p.relative_to(ROOT).as_posix()]=sha(p);return read(p)
  lock=record(E/'source-lock.json');prior=record(E/'retained-functional-proof.json');current=business.verify()
  original=ROOT/'docs/quality/evidence/batch-round-163/final-source-check.json'
- check('exact163_business_proof_retained_without_replay',prior==read(original) and current['passed'] and current['checks']==prior['checks'] and current['records']==prior['records'] and current['interaction_source_sha256']==prior['interaction_source_sha256'] and git('show',SOURCE+':'+original.relative_to(ROOT).as_posix())==original.read_bytes())
+ adjustment=record(E/'inspection-only-source-adjustment.json');allowed={'app/scripts/inspect_candidate_164.py','app/scripts/verify_candidate_164.py'}
+ assert {r['file'] for r in adjustment['files']}==allowed
+ normalized=hashlib.sha256()
+ for name in business.source_names():
+  data=(ROOT/name).read_bytes()
+  if name in allowed:
+   row=next(r for r in adjustment['files'] if r['file']==name);frozen=git('show',SOURCE+':'+name)
+   assert hashlib.sha256(data).hexdigest()==row['current_sha256'] and hashlib.sha256(frozen).hexdigest()==row['frozen_sha256']
+   data=frozen
+  normalized.update(name.encode()+b'\0'+data+b'\0')
+ check('exact163_business_proof_retained_without_replay',prior==read(original) and current['passed'] and current['checks']==prior['checks'] and current['records']==prior['records'] and normalized.hexdigest()==prior['interaction_source_sha256'] and git('show',SOURCE+':'+original.relative_to(ROOT).as_posix())==original.read_bytes())
  smoke=record(E/'retained-native-proof.json');clients=record(E/'retained-client-proof.json');summary=record(E/'retained-test-summary.json')
  check('selected_native_client_results_and_counts_retained_exactly',smoke['passed'] and clients['passed'] and summary['passed'] and all((ROOT/name).read_bytes()==(E/target).read_bytes() for target,name in lock['retained_files'].items()))
  m=record(RELEASE/'release-manifest.json');s=record(RELEASE/'server-build.json');scope=record(E/'server-build-scope.json');seal=record(E/'seal.json')
@@ -35,6 +45,6 @@ def verify():
  protected=git('diff',SOURCE,'--name-only','--diff-filter=MD','--','docs/quality/evidence','docs/media','app/backend/migrations').decode().splitlines()
  check('all163_and_earlier_proof_media_migration_bytes_retained',not protected)
  check('honest_formal_boundaries_and_all23_open_packages',m['remaining_work_packages']==23 and m['eight_skills_status']=='draft' and not m['production_ready'] and not m['deployed'] and not m['github_release_page_created'])
- return {'passed':all(v['passed'] for v in checks),'checks':checks,'records':records,'retained':{'business_source_increment':163,'business_source_commit':SOURCE,'business_tests_reexecuted':False,'full_backend_increment':121,'full_client_increment':136,'test_summary_sha256':sha(E/'retained-test-summary.json')},'interaction_source_sha256':digest(),'verification_script_sha256':sha(Path(__file__)),'full_backend_suite_executed':False,'formal_android_acceptance':False,'full_goal_complete':False,'production_ready':False,'new_android_apk':True,'virtualization_used':False}
+ return {'passed':all(v['passed'] for v in checks),'checks':checks,'records':records,'retained':{'business_source_increment':163,'business_source_commit':SOURCE,'business_tests_reexecuted':False,'full_backend_increment':121,'full_client_increment':136,'test_summary_sha256':sha(E/'retained-test-summary.json')},'interaction_source_sha256':digest(),'verification_script_sha256':sha(Path(__file__)),'full_backend_suite_executed':False,'formal_android_acceptance':False,'full_goal_complete':False,'production_ready':False,'new_android_apk':True,'virtualization_used':False,'inspection_only_adjustment':{'record':(E/'inspection-only-source-adjustment.json').relative_to(ROOT).as_posix(),'sha256':sha(E/'inspection-only-source-adjustment.json'),'application_source_unchanged':True}}
 if __name__=='__main__':
  r=verify();p=E/'final-source-check.json';assert not p.exists();p.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf8');print(json.dumps({'passed':r['passed'],'checks':len(r['checks']),'failed':[v['name'] for v in r['checks'] if not v['passed']]}));raise SystemExit(0 if r['passed'] else 1)

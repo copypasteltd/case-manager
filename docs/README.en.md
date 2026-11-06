@@ -1,5 +1,17 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+**Current frozen delivery v0.1.0-rc.9 / Release164**
+
+Business155–163 are fixed at source `c727398`, schema129. Fresh native server/Web/runtime, WeChat/Douyin builds and a development Android APK match that source. Six downloads provide five artifact categories, including complete application source and all historical media in two lossless SHA256-verified parts. Eight prior freezes stay immutable.
+
+[Download, verify and use](releases/v0.1.0-rc.9/README.md) · [Delivery design](development/164-frozen-release-delivery.md) · [Actual checks and retained failure](quality/164-frozen-release-verification.md) · [All23 dispositions](delivery/05-functional-closure-163.md) · [Source-matched screenshots/MP4/GIF](media/batch-round-163/README.md)
+
+Fresh artifact checks remain separate from retained163 business evidence. The APK uses development signing;28 JVM XML results are the actual UP-TO-DATE Gradle outcome. An obsolete20-page assertion is preserved, then corrected to verify all21 real registered pages. Real configuration remains deferred, developmentPG100/API stay unchanged, all23 formal packages and eight draft Skills remain open.
+
+Every later round follows the same rule: finish and archive all numbered code/contracts/client consumers/fixtures, run unified checks, group failures and repairs, rerun affected checks only, then synchronize guides and Git. Missing configuration/company decisions remain explicit; no per-module release/test loop or invented acceptance.
+
+前一业务轮次 / Previous business wave
+
 **Current increment163 / 当前增量163**
 
 All C01–C07 code and fixtures are completed and archived before unified checks. Initial failures are retained, repairs are grouped and only affected checks repeat. All23 formal packages (14P0/9P1) remain open; all eight Skills stay draft.

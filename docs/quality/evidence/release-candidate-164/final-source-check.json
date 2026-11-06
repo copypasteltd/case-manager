@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "exact163_business_proof_retained_without_replay",
+      "passed": true
+    },
+    {
+      "name": "selected_native_client_results_and_counts_retained_exactly",
+      "passed": true
+    },
+    {
+      "name": "fresh_native_server_web_runtime_match_frozen_schema129_source",
+      "passed": true
+    },
+    {
+      "name": "fresh_miniapps_and_current_android_sources_pass_actual_artifact_inspection",
+      "passed": true
+    },
+    {
+      "name": "actual_cached_or_executed_JVM_outcome_remains_explicit",
+      "passed": true
+    },
+    {
+      "name": "all_five_archives_sealed_and_complete_source_reconstructed",
+      "passed": true
+    },
+    {
+      "name": "new_immutable_source_and_artifact_refs_fix_the_sealed_assets",
+      "passed": true
+    },
+    {
+      "name": "all_eight_earlier_freezes_preserve_exact_refs",
+      "passed": true
+    },
+    {
+      "name": "all163_and_earlier_proof_media_migration_bytes_retained",
+      "passed": true
+    },
+    {
+      "name": "honest_formal_boundaries_and_all23_open_packages",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/release-candidate-164/source-lock.json": "2e434fe62cf5901bf917d3be46a46b260d449786f5fe91825c5ad3b537ab95f4",
+    "docs/quality/evidence/release-candidate-164/retained-functional-proof.json": "12fd53a80e99fb380bc0cad0e2798218e273b293a541d0bf1b29077cc785328a",
+    "docs/quality/evidence/release-candidate-164/inspection-only-source-adjustment.json": "dad60a413d62ed6651d3cf65f8a0ab5bb5dc5975237c90609c177d82ecfd2bb8",
+    "docs/quality/evidence/release-candidate-164/retained-native-proof.json": "b27794ef57e139a33a7e083ef013987c477fa347ee9073f7069975f49c31fe20",
+    "docs/quality/evidence/release-candidate-164/retained-client-proof.json": "48672927a5f82767d984f233c65bef2ebea0181e6fa5d0bacec80995f757dcf8",
+    "docs/quality/evidence/release-candidate-164/retained-test-summary.json": "07cb71bcf234949359b03eab4f21bfeed588099580c0b1ee825316ddd174a5c7",
+    "docs/releases/v0.1.0-rc.9/release-manifest.json": "d215edd86041437413e17ff2d41f35d1ad3acd55e1498cd6fcf67fd66b5a8d13",
+    "docs/releases/v0.1.0-rc.9/server-build.json": "b2207e490895c24df84afab8f4e4e58d1722d2d58c0595ccd58ffcf4be73c806",
+    "docs/quality/evidence/release-candidate-164/server-build-scope.json": "66f3626e09d807962561948d450f4dce08e09d5cdb8a5385272c4b6fc9a7eb51",
+    "docs/quality/evidence/release-candidate-164/seal.json": "83fd39a3078f43a41cde6162c2ccb70bd19e446ea23d31cb44a1ee5c422035fe",
+    "docs/quality/evidence/release-candidate-164/miniapps-build.json": "baeac8bbc67edd4e1ae276c51b91a08c868be75bebcfcf9c83e4ba68e02b2ff7",
+    "docs/quality/evidence/release-candidate-164/miniapps-inspection.json": "b59afd90277660653e07e2e2c8a528746685ad37b870b3e742f366b446f9655a",
+    "docs/quality/evidence/release-candidate-164/build.json": "9948de1383c2b8fe73cb5b6aeadd83862b0a1909717cc6b732173d5a99348767",
+    "docs/quality/evidence/release-candidate-164/apk-inspection.json": "9e07da437c11f3e49be591a9ecbe590e23ff9de4a009e159d64f1ba8ad2f6da4",
+    "docs/quality/evidence/release-candidate-164/android-build-scope.json": "7497fa12fdab8ea7a0b1e1fcb7cd980c290a0ebba9180ff7b3e6e48bf91957d0",
+    "docs/releases/v0.1.0-rc.9/git-publication.json": "b4076b818748eae863b5eefed29e35a3fb8e28b744bc781d9ea157d0b36e0db0"
+  },
+  "retained": {
+    "business_source_increment": 163,
+    "business_source_commit": "c72739820534cd178ee0a67b0fe8cebb7589c6d8",
+    "business_tests_reexecuted": false,
+    "full_backend_increment": 121,
+    "full_client_increment": 136,
+    "test_summary_sha256": "07cb71bcf234949359b03eab4f21bfeed588099580c0b1ee825316ddd174a5c7"
+  },
+  "interaction_source_sha256": "09003ea05cc1092f9636c6af7aa09b8ea410b63580782dc5d5be45a701f6989d",
+  "verification_script_sha256": "a1e10e86d5a3a5009c9f1a3fa634dd82a617b0affe71effed42f619c2c0fb328",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "new_android_apk": true,
+  "virtualization_used": false,
+  "inspection_only_adjustment": {
+    "record": "docs/quality/evidence/release-candidate-164/inspection-only-source-adjustment.json",
+    "sha256": "dad60a413d62ed6651d3cf65f8a0ab5bb5dc5975237c90609c177d82ecfd2bb8",
+    "application_source_unchanged": true
+  }
+}

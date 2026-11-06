@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## 2026-11-06 · Increment164 — v0.1.0-rc.9 matching frozen delivery
+
+- 固定业务163／schema129／c727398，重建服务器、Web／运行时、微信／抖音和Android开发APK，完整应用源码与全部公开媒体六文件交付；此前八冻结不变。
+- 新鲜产物检查通过，163 selected native/Web527/mobile553/runtime66与媒体按原输入保留，JVM28为实际UP-TO-DATE结果。首次20页面断言失败保留，main检查修正后核对全部21页面／223实际模块；源码ZIP保持冻结工具原件。
+- 完整媒体约143.33MiB，90MiB分卷＋每卷／全文SHA256和原生重组工具，3838源Git blob／5788展开成员核对。
+- 授权SSH标签及独立产物分支交付；未创建GitHub Releases网页，未部署真实服务器。全部23包、八项draft Skills及正式真实服务验收开放。
+- [Download and use](releases/v0.1.0-rc.9/README.md) · [Fresh/retained checks](quality/164-frozen-release-verification.md)
+
 ## 2026-11-06 · Increment163 — complete code wave before unified checks
 
 - 原登录约束覆盖文件工具及异步I/O，追加schema129；历史来源不回填，正式副本独立。 Original human-login provenance and I/O guards preserve immutable history and ordinary replica responsibility.

@@ -119,7 +119,7 @@ def main():
          'packages/contracts/src/oa-text.ts'}.issubset(selected)
         and len(rows) >= 80)
     pages = re.findall(r"'([^']+)'", (APP / 'mobile/src/app.config.ts').read_text(encoding='utf-8').split('window:')[0])
-    check('All twenty registered business pages are in actual native graph', len(pages) == 20
+    check('All21 unique registered business pages are in actual native graph', len(pages) == len(set(pages)) == 21
         and all('mobile/src/' + p + '.tsx' in selected for p in pages))
     report = {'passed': all(r['passed'] for r in checks), 'checked_at': datetime.now(timezone.utc).isoformat(),
         'checks': checks, 'apk_sha256': sha(apk), 'apk_bytes': apk.stat().st_size,
