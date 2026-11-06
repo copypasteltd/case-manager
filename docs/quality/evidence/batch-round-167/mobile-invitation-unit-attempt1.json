@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "tests": 2,
+  "source_file_sha256": {
+    "app/mobile/src/platform/invitations.test.ts": "90d7ff5e2eb13876b7bd36278dae69a68c5aa8bdbf657e15cd3f11e2989db483",
+    "app/packages/contracts/src/invitations.ts": "58c409e6a26fae5b101dcadaa79c384e429659caf97323c604a6763386bcc3d2",
+    "app/packages/contracts/package.json": "2d2c1eeb9ec9bd85af1997a00714dfc77831df0ca23f757d0b77a89294b0b2c9",
+    "app/package-lock.json": "4ad26084af43cfc792970934d708e5cd699cf0c62a76346bf280880c42cb09b9"
+  },
+  "command": [
+    "node",
+    "--import",
+    "tsx",
+    "--test",
+    "mobile/src/platform/invitations.test.ts"
+  ],
+  "private_log_sha256": "bdb1e40aa81dcccbce78f670d3fe8d6960d70576fad06eb2972552c64382ee4e",
+  "supplements_explicit_existing_mobile_test_selectors": true,
+  "actual_mobile_runtime": false
+}

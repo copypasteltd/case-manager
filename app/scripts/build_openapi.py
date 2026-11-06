@@ -142,6 +142,7 @@ add("Transition", {**EXPECTED, "action": NAME, "reason": NAME},
 add("User", {**RECORD, "display_name": NAME, "status": enum("invited", "active", "disabled")},
     ("id", "version", "display_name", "status"))
 add("UserInvite", {"login_key": NAME, "display_name": NAME}, ("login_key", "display_name"))
+add("InvitationReissueInput", {"expected_version": VERSION, "invitation_id": ID, "reason": NAME}, ("expected_version", "invitation_id", "reason"))
 TOKEN = {"type": "string", "minLength": 40, "maxLength": 100}
 add("LoginInput", {"login": NAME, "password": {"type": "string", "minLength": 1, "maxLength": 1024},
     "device_type": enum("web", "wechat", "douyin", "android")}, ("login", "password", "device_type"))
@@ -157,7 +158,7 @@ add("MFAEnrollInput", {"challenge": TOKEN}, ("challenge",))
 add("RefreshInput", {"refresh_token": TOKEN})
 add("EmptyInput", {})
 add("LogoutResult", {"logged_out": {"type": "boolean"}}, ("logged_out",))
-add("InvitationReceipt", {"user": ref("User"), "invitation_id": ID, "expires_at": TIME, "activation_token": TOKEN},
+add("InvitationReceipt", {"user": ref("User"), "invitation_id": ID, "expires_at": TIME, "activation_token": TOKEN, "replaces_id": ID, "revoked_at": TIME, "consumed_at": TIME},
     ("user", "invitation_id", "expires_at"))
 add("ActivateInput", {"token": TOKEN, "password": {"type": "string", "minLength": 12, "maxLength": 1024}}, ("token", "password"))
 add("ActivationResult", {"activated": {"type": "boolean"}}, ("activated",))
@@ -1681,6 +1682,7 @@ operation("/tasks/{id}/dependencies", "get", "getTaskDependencies", "TaskDepende
 operation("/users", "get", "listUsers", "User", listing=True)
 operation("/users", "post", "inviteUser", "InvitationReceipt", "UserInvite", 201)
 operation("/users/{id}/invitation", "get", "getUserInvitation", "InvitationReceipt")
+operation("/users/{id}/invitation-reissues", "post", "reissueUserInvitation", "InvitationReceipt", "InvitationReissueInput", 201)
 operation("/users/{id}/disable", "post", "disableUser", "User", "Transition")
 operation("/roles", "get", "listRoles", "Role", listing=True)
 operation("/role-bindings", "get", "listRoleBindings", "RoleBinding", listing=True)

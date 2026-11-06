@@ -1,5 +1,15 @@
 # 更新记录 / Changelog
 
+## 167 — Complete invitation/upload/deployment wave / 整批邀请、上传与部署闭环
+
+- Inventory all23 packages; independently refute and address five confirmed source differences before running tests.
+- Add fixed human invitation reissue, original live-session/MFA checks, migration133, immutable replacement history, no plaintext permanent receipts, and Web/shared-mobile member entry points.
+- Bind new ordinary Web/Android resumable uploads to a streaming full-source SHA-256 expectation, independently checked by the server before scan/promotion; preserve and explicitly retire legacy sampled client journeys.
+- Include all four installed release modules and the dedicated original-cleanup worker; add isolated installed-CLI, complete worker-consumer and native JVM fixtures.
+- Finish all application, consumers, fixtures, source-freeze/batch/media tools and bilingual guides first; actual unified results and batch repairs are recorded in [verification167](quality/167-batch-functional-verification.md).
+- Actual selected results: native5/21, Web531/mobile555, release45, pure JVM8, current schema133/802-file native artifact and actual Web/H5 three-check journeys with2PNG/MP4/GIF per client. Retain the first release-parser failure, exact browser-fixture MFA adjustment and failed mobile test loading/registration attempts; rerun only affected inputs.
+- Preserve all prior migrations/proofs/media, nine freezes/APK164, developmentPG100/API, eight draft Skills and all23 formal packages. No Android JS/newAPK or actual integration acceptance claim.
+
 ## 166 — Complete code wave / 完整代码轮次
 
 - Complete subscription-local project closeout dates and four-client safe calendar projection; append131 with no fabricated historical dates.

@@ -25,6 +25,22 @@ func (s *Server) administrationRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /v1/users/{id}/invitation", read(s, "InvitationReceiptResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return s.Identity.Invitation(ctx, a, r.PathValue("id"))
 	}))
+	mux.HandleFunc("POST /v1/users/{id}/invitation-reissues", command(s, "InvitationReissueInput", "InvitationReceiptResponse", func(ctx context.Context, c core.Command, r *http.Request, in identity.InvitationReissueInput) (core.Result, error) {
+		result, err := s.Identity.ReissueInvitation(ctx, c, r.PathValue("id"), in)
+		if err != nil {
+			return result, err
+		}
+		body, err := json.Marshal(result.Data)
+		if err != nil {
+			return result, err
+		}
+		var receipt identity.InvitationReceipt
+		if err = json.Unmarshal(body, &receipt); err != nil {
+			return result, err
+		}
+		result.Data, err = s.Identity.DecorateInvitation(ctx, c.Actor, receipt)
+		return result, err
+	}))
 	mux.HandleFunc("POST /v1/auth/activate", func(w http.ResponseWriter, r *http.Request) {
 		input, _, err := decode[identity.ActivateInput](s, w, r, "ActivateInput")
 		if err != nil {

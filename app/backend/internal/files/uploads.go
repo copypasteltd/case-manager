@@ -323,7 +323,7 @@ func (s *UploadService) Create(ctx context.Context, c core.Command, in UploadCre
 	if err != nil || len(params) > 0 || media != in.MediaType || len(media) > 200 || strings.Contains(media, "*") {
 		return core.Result{}, core.Invalid("media_type", "请提供不含参数的有效媒体类型")
 	}
-	if !validOpaque(in.SourceFingerprint) {
+	if !validOpaque(in.SourceFingerprint) || (strings.HasPrefix(in.SourceFingerprint, "source-sha256-v2:") && !validSourceSHA256(in.SourceFingerprint)) {
 		return core.Result{}, core.Invalid("source_fingerprint", "源文件指纹无效")
 	}
 	if strings.HasPrefix(in.SourceFingerprint, "office-artifact-v1:") && (size > OfficeAuthorMaxOutput || !shaPattern.MatchString(strings.TrimPrefix(in.SourceFingerprint, "office-artifact-v1:"))) {
@@ -632,4 +632,16 @@ func cloudError(err error) error {
 		code = e.Code
 	}
 	return core.Fail(502, code, "存储请求未能完成，请稍后重试或查看任务状态")
+}
+
+func validSourceSHA256(value string) bool {
+	if !strings.HasPrefix(value, "source-sha256-v2:") || len(value) != len("source-sha256-v2:")+64 {
+		return false
+	}
+	for _, r := range strings.TrimPrefix(value, "source-sha256-v2:") {
+		if !(r >= '0' && r <= '9' || r >= 'a' && r <= 'f') {
+			return false
+		}
+	}
+	return true
 }

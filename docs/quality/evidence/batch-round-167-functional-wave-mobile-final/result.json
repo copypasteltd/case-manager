@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T14:13:20.026Z",
+  "finished_at": "2026-11-06T14:13:34.398Z",
+  "checks": [
+    "actual authorized API exposes expired invitation metadata without an activation token",
+    "ordinary human reissue preserves the invited user and replaces the exact reviewed invitation",
+    "new activation capability remains hidden throughout actual screenshot and viewport recording"
+  ],
+  "source_count": 1267,
+  "source_sha256": "2f6ed3a08b2ff2b949d5789b024339a3343ed5e1df9ffed9cd6cb9dba6b45b59",
+  "source_after_sha256": "2f6ed3a08b2ff2b949d5789b024339a3343ed5e1df9ffed9cd6cb9dba6b45b59",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "f15dec1315e9b29fbb5961c55300bd78645c1482db951532efff29a1bb5186d2",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "f15dec1315e9b29fbb5961c55300bd78645c1482db951532efff29a1bb5186d2",
+  "build_source_unchanged": true
+}

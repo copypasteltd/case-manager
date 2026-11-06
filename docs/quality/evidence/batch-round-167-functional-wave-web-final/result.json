@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T13:59:54.620Z",
+  "finished_at": "2026-11-06T14:00:12.297Z",
+  "checks": [
+    "actual authorized API exposes expired invitation metadata without an activation token",
+    "ordinary human reissue preserves the invited user and replaces the exact reviewed invitation",
+    "new activation capability remains hidden throughout actual screenshot and viewport recording"
+  ],
+  "source_count": 1226,
+  "source_sha256": "3ef7a75e7607c45b9b4691cc880418dd516cf496ad2080d5e79c23ff327524ac",
+  "source_after_sha256": "3ef7a75e7607c45b9b4691cc880418dd516cf496ad2080d5e79c23ff327524ac",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web same-user invitation reissue with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "4053a8ae0b59122230d72d13d51b528618a56a1225c5ee3abb00c216b9e72656",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "4053a8ae0b59122230d72d13d51b528618a56a1225c5ee3abb00c216b9e72656",
+  "build_source_unchanged": true
+}

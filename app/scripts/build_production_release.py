@@ -15,7 +15,7 @@ APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
 sys.path.insert(0, str(APP / 'deploy/release'))
 from bundle import canonical, digest, file_sha, inventory, require, safe_name, write_archive
-from catalog import SERVICES, nginx_site, render, unit
+from catalog import RELEASE_TOOLS, SERVICES, nginx_site, render, unit
 
 
 def inputs():
@@ -60,6 +60,13 @@ def copy_public_tree(source, destination):
         shutil.copyfile(path, target)
 
 
+def copy_release_tools(destination):
+    destination = Path(destination)
+    destination.mkdir()
+    for name in RELEASE_TOOLS:
+        shutil.copyfile(APP / 'deploy/release' / name, destination / name)
+
+
 def build(output):
     output = Path(output).absolute()
     require(not output.exists() and (APP / '.local').resolve() in output.resolve().parents, 'Use a new output directory within app/.local.')
@@ -101,9 +108,7 @@ def build(output):
     (metadata / 'runtime.json').write_bytes(canonical({k: v for k, v in runtime.items() if k != 'created_at'}))
     (metadata / 'source-inputs.json').write_bytes(canonical(source))
     tools = metadata / 'release-tools'
-    tools.mkdir()
-    for name in ('bundle.py', 'catalog.py', 'controller.py'):
-        shutil.copyfile(APP / 'deploy/release' / name, tools / name)
+    copy_release_tools(tools)
     (metadata / 'nginx.conf.template').write_text(nginx_site('case.example.invalid'), encoding='utf-8', newline='\n')
     units = package / 'systemd'
     units.mkdir()

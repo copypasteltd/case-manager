@@ -81,7 +81,8 @@ export class UploadTransferController {
       const me = await read<Schemas['Me']>('/me'); if (me.user.id !== owner) invalid();
       await this.native.scope(owner); current();
       const source = (await this.native.list()).find(value => value.handle === handle); current();
-      if (!source || !source.has_source || !/^android-saf-v1:[a-f0-9]{64}$/.test(source.fingerprint)) invalid('请重新选择原文件并确认持久读取授权。');
+      if (source?.fingerprint.startsWith('android-saf-v1:')) invalid('旧上传使用抽样身份，请取消旧上传、移除本机记录并重新创建完整校验上传。');
+      if (!source || !source.has_source || !/^source-sha256-v2:[a-f0-9]{64}$/.test(source.fingerprint)) invalid('请重新选择原文件并确认持久读取授权。');
       this.update({ size: Number(source.size_bytes) }); await this.beforeStart(); current();
       active.run = await this.native.begin(handle); current();
       await this.native.touch(handle, active.run, '0', '0'); current();

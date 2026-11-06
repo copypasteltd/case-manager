@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T14:06:12.989657+00:00",
+  "group": "batch-round-167-functional-wave-web-final",
+  "encoder_sha256": "453131d50c9d6e4475d328369315840b35dc74e9bf63f08a31f0182845b57789",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-web-final/web-expired-invitation.png",
+      "sha256": "da50e50e7cac34457ecb5b88a2838ef2bf57fc53855e252def47f8abf88bfa2f",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-web-final/web-reissued-invitation.png",
+      "sha256": "b2d8f8dec1e681f0f79dfd82f8992be9b5fc702a50d23b1b7d5dc362be0c181b",
+      "credentials_excluded": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-web-final/screen-recording.mp4",
+      "sha256": "0ed0b514971830f568ce31c4fe92064d4d9a12029e8280bbadd04a1b13177a7c",
+      "size_bytes": 97037
+    },
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-web-final/screenshot-tour.gif",
+      "sha256": "a578c6a6bace35f78b4a2ecd3995fe81c76a8934ff39e442440209dbae2806e3",
+      "size_bytes": 111146
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "35",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.500000"
+    }
+  }
+}

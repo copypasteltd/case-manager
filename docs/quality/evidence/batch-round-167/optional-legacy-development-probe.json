@@ -1,0 +1,13 @@
+{
+  "status": "not_established",
+  "passed": false,
+  "counted_in_round_passes": false,
+  "attempted_wrapper": "app/scripts/verify_repository_publication_development.py",
+  "wrapper_sha256": "92fc8eb441a13fc7fdc1953e7274f075b4bdf081c0c5471963958692b2825f58",
+  "report_produced": false,
+  "default_legacy_target": "verify_mobile_project_resources_development.py",
+  "legacy_expected_schema": 69,
+  "current_preserved_development_schema": 100,
+  "disposition": "Legacy optional wrapper has no current167 report and is not a scoped-increment publication gate. No current development-runtime success is claimed. Do not change the preserved development database or source solely to satisfy this obsolete probe.",
+  "production_or_external_acceptance": false
+}

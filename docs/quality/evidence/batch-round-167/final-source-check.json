@@ -1,0 +1,177 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "complete23_code_inventory_and_five_exclusions",
+      "passed": true
+    },
+    {
+      "name": "full_code_and_tools_archived_before_testing",
+      "passed": true
+    },
+    {
+      "name": "native_business_passes_with_exact_disclosed_browser_fixture_only_repair",
+      "passed": true
+    },
+    {
+      "name": "all_seven_current_client_consumers_pass",
+      "passed": true
+    },
+    {
+      "name": "current_controlled_release_and_jvm_and_packager_pass",
+      "passed": true
+    },
+    {
+      "name": "native_java_full_source_tests_are_fresh_and_bounded",
+      "passed": true
+    },
+    {
+      "name": "actual_native_artifact_has_all_four_standalone_modules",
+      "passed": true
+    },
+    {
+      "name": "artifact_source_and_archive_are_exact",
+      "passed": true
+    },
+    {
+      "name": "batch-round-167-functional-wave-web-final_current_real_browser_checks",
+      "passed": true
+    },
+    {
+      "name": "batch-round-167-functional-wave-web-final_owned_resources_closed",
+      "passed": true
+    },
+    {
+      "name": "batch-round-167-functional-wave-web-final_actual_media_and_no_credentials",
+      "passed": true
+    },
+    {
+      "name": "batch-round-167-functional-wave-mobile-final_current_real_browser_checks",
+      "passed": true
+    },
+    {
+      "name": "batch-round-167-functional-wave-mobile-final_owned_resources_closed",
+      "passed": true
+    },
+    {
+      "name": "batch-round-167-functional-wave-mobile-final_actual_media_and_no_credentials",
+      "passed": true
+    },
+    {
+      "name": "all132_prior_sql_migrations_immutable",
+      "passed": true
+    },
+    {
+      "name": "all_eight_skills_remain_draft_and_no_new_android_claim",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-167/verification-inputs.json",
+      "sha256": "d285c8ce33f750508516ddd9afccdb15db6725e8683667b4dc3a103f43dcac88"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/freeze-code-initial.json",
+      "sha256": "e72c64b8015af194ddb92f0fc6501cc3af322c4658797579510793a00955b322"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/code-wave-initial-archive.json",
+      "sha256": "f859adeb792ac29107e0a8476e7be88924bcaa6f06653b020a7cc049b26d5f5c"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/native-tests-initial.json",
+      "sha256": "62e27d5eecef669302ea1305ed8328f2e248f8c4a4735b1b0c098f4aa63eea04"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/fixture-only-repair.json",
+      "sha256": "1d438add8e7686b5855a8ce2baffe10a6026b786b0c59a2c1ef4818de8208c08"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/test-summary.json",
+      "sha256": "be49c58fa93d7c7c5d8b7a963cc698c34fbd23cc1118b9f217c6fc05370d14fd"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/engineering-repair-1.json",
+      "sha256": "76f335fa5bb984ef91bd06b1193c6ac9530728fcd118ed503f9680848c9a1224"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/engineering-initial.json",
+      "sha256": "8ac52058de24fd5866706a98a58de4d39d8fd59427867ed34f3a1748a782d84f"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/engineering-repair-3.json",
+      "sha256": "a481bc44dfa49e6e99e081fff4ce4d71fbcc8943fb9c9c0e83b69e73389d7e51"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/jvm-initial.json",
+      "sha256": "93dab6e5b5dcc7d907e05c14b7eb2ffaffc7ca59e358e6e36f0295dda382b452"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167/production-repair-3.json",
+      "sha256": "63e681cc39b700321b53c0a1b4201393978cadb62814c873f3cb4c27b78dc1ae"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-web-final/result.json",
+      "sha256": "98036d9cf7dbc5762b384744b6d4317a0b89aa97670b7b3d36e500ff0c8002a1"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-web-final/source-manifest.json",
+      "sha256": "4fa5af37a360bc53e59463c9a7bf118f113c9501d837445beebc37c7c34e997a"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-web-final/encoded-media.json",
+      "sha256": "64428b93f10bdf9281497c83cba0715ba795b981f91dcba38d42f6e75cbf73c8"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-web-final/interaction-media.json",
+      "sha256": "5b21d2ba3cf996eedff933fa990315975ef82e9ba4bc3b59d6a4ea11e249017d"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-web-final/business-proof.json",
+      "sha256": "da88330a6f0d5baf34e533a956af33ddeba2e9375222f1aee4942e78e3af6fe8"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-mobile-final/result.json",
+      "sha256": "2a5185af7832eefed7e54c4d0337158d7ee08ebc4dced5a3ac66da8ae35f7193"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-mobile-final/source-manifest.json",
+      "sha256": "54bb9469c75e9c7f9f91828a519f6561b356e4056724dbd10ca8dca4223a2da3"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-mobile-final/encoded-media.json",
+      "sha256": "b007e830740f51139d9f1eaa146ae2a714801fb81a311570bd2c3e8fe68e3bcc"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-mobile-final/interaction-media.json",
+      "sha256": "1c8b64f754eca80018cc82ed689e1264d4d36905f3f2baf0a21ed350374190e4"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-167-functional-wave-mobile-final/business-proof.json",
+      "sha256": "e194ee913909a82514aa14f5656eead21378fc21adff012dfa1b8eeaf912aecf"
+    }
+  ],
+  "retained": {
+    "runtime": "increment163/66 retained, not replayed",
+    "full_backend_regression": "increment121 retained, not replayed",
+    "frozen_release": "v0.1.0-rc.9/business163/schema129/APK164; nine freezes immutable",
+    "real_configuration": "user deferred; all23 formal packages open"
+  },
+  "fixture_only_adjustment": {
+    "reason": "Prepare an actual ordinary Alice MFA session before the browser helper reads its owned credential. Selected native business cases had already passed; application implementation and their fixtures remain unchanged.",
+    "file": "app/backend/internal/httpapi/round167_browser_integration_test.go",
+    "before_sha256": "42d31ddde8308f9083cda47813070c1ec51debb29722e0d6864fe412e33d2693",
+    "after_sha256": "2c54e6b74b1714272c1a48d30382b38bec8a62795ebebc96696dcc23eb2f2230",
+    "application_sources_changed": false,
+    "selected_business_cases_reexecuted": false,
+    "initial_source_archive": "docs/quality/evidence/batch-round-167/code-wave-initial.zip",
+    "new_browser_fixture_requires_execution_after_repair": true
+  },
+  "interaction_source_sha256": "f15dec1315e9b29fbb5961c55300bd78645c1482db951532efff29a1bb5186d2",
+  "verification_script_sha256": "ab4d437994b097a7b278d78008595c529324e024c5afcc3be3d53a0e893898b3",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

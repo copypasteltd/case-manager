@@ -50,27 +50,36 @@ function harness(initial: UploadSession, options: { omitLast?: boolean; ackError
 afterEach(() => vi.unstubAllGlobals());
 
 describe('bounded resumable upload client', () => {
-  it('verifies bounded generated Office bytes with a complete hash and retains ordinary sample fingerprints', async () => {
+  it('verifies bounded generated Office bytes with a complete hash and binds ordinary bytes to complete content identity', async () => {
     const source = new File(['abc'], 'office.docx', { lastModified: 0 });
     const expected = 'office-artifact-v1:ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad';
     expect(await sourceFingerprint(source, undefined, expected)).toBe(expected);
-    expect(await sourceFingerprint(source)).toMatch(/^web-sample-v1:/);
+    expect(await sourceFingerprint(source)).toMatch(/^source-sha256-v2:/);
     await expect(sourceFingerprint({ name: source.name, size: 12 * MiB + 1, lastModified: 0, slice: source.slice.bind(source) }, undefined, expected)).rejects.toThrow('Office');
     const different = new File(['abd'], 'office.docx', { lastModified: 0 });
     await expect(harness(upload(source, expected)).run(different)).rejects.toThrow('原上传源');
   });
-  it('samples at most 128 KiB for a 120 GB source and computes the last part without allocating it', async () => {
-    const slice = vi.fn((start: number, end: number) => new Blob([new Uint8Array(end - start)]));
+  it('reads bounded complete-content chunks, can cancel at 120 GB, and keeps exact long part offsets', async () => {
+    const control = new AbortController();
+    const slice = vi.fn((start: number, end: number) => { if (start > 0) control.abort(); return new Blob([new Uint8Array(end - start)]); });
     const source = { name: 'large.bin', size: 120_000_000_000, lastModified: 123456, slice };
-    const fingerprint = await sourceFingerprint(source);
-    expect(fingerprint).toMatch(/^web-sample-v1:[0-9a-f]{64}$/);
-    expect(slice.mock.calls).toEqual([[0, 65536], [119999934464, 120000000000]]);
-    const meta = upload(new File(['x'], 'large.bin'), fingerprint, { size_bytes: '120000000000', part_bytes: 32 * MiB, part_count: 3577 });
+    await expect(sourceFingerprint(source, control.signal)).rejects.toThrow();
+    expect(slice.mock.calls).toEqual([[0, MiB], [MiB, 2*MiB]]);
+    const meta = upload(new File(['x'], 'large.bin'), 'source-sha256-v2:'+'a'.repeat(64), { size_bytes: '120000000000', part_bytes: 32 * MiB, part_count: 3577 });
     expect(partBounds(meta, 3577)).toEqual({ start: 119990648832, end: 120000000000 });
     expect(() => partBounds(meta, 3578)).toThrow();
     expect(() => confirmedBytes({ ...meta, confirmed_parts: [1, 1] })).toThrow();
     await expect(sourceFingerprint({ ...source, size: 120_000_000_001 })).rejects.toThrow('120 GB');
-    expect(slice).toHaveBeenCalledTimes(2);
+  });
+  it('rejects changed middle bytes with identical metadata and sampled edges, before any server call', async () => {
+    const bytes = new Uint8Array(3*MiB), altered = bytes.slice(); altered[MiB+17]=1;
+    const first = new File([bytes], 'same.bin', { lastModified: 10 }), second = new File([altered], 'same.bin', { lastModified: 10 });
+    const original = await sourceFingerprint(first);
+    expect(original).not.toBe(await sourceFingerprint(second));
+    const h = harness(upload(first,original,{confirmed_parts:[1]}));
+    await expect(h.run(second)).rejects.toThrow('原上传源'); expect(h.command).not.toHaveBeenCalled();
+    await expect(sourceFingerprint(first,undefined,'web-sample-v1:'+'a'.repeat(64))).rejects.toThrow('旧上传');
+    expect(await sourceFingerprint(new File(['abc'],'a.bin'))).toBe('source-sha256-v2:ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');
   });
   it('reconciles before resuming, sends only missing slices, then reconciles before freezing', async () => {
     const source = new File([new Uint8Array(12 * MiB + 3)], 'parts.bin', { lastModified: 456 });

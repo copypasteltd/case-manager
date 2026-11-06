@@ -1,0 +1,10 @@
+{
+  "reason": "Prepare an actual ordinary Alice MFA session before the browser helper reads its owned credential. Selected native business cases had already passed; application implementation and their fixtures remain unchanged.",
+  "file": "app/backend/internal/httpapi/round167_browser_integration_test.go",
+  "before_sha256": "42d31ddde8308f9083cda47813070c1ec51debb29722e0d6864fe412e33d2693",
+  "after_sha256": "2c54e6b74b1714272c1a48d30382b38bec8a62795ebebc96696dcc23eb2f2230",
+  "application_sources_changed": false,
+  "selected_business_cases_reexecuted": false,
+  "initial_source_archive": "docs/quality/evidence/batch-round-167/code-wave-initial.zip",
+  "new_browser_fixture_requires_execution_after_repair": true
+}

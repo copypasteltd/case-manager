@@ -1,4 +1,6 @@
 """Fixed service commands and identities; operator input cannot add executables."""
+RELEASE_TOOLS = ('bundle.py', 'catalog.py', 'controller.py', 'telegram_config.py')
+
 SERVICES = {
     'agent-native': ('root', None, None),
     'api': ('copypaste-api', 'api', 'api.env'),
@@ -6,6 +8,7 @@ SERVICES = {
     'subscription': ('copypaste-subscription', 'worker-subscription', 'subscription.env'),
     'report-export': ('copypaste-report', 'worker-report-export', 'report-export.env'),
     'file-text': ('copypaste-text', 'worker-file-text', 'file-text.env'),
+    'original-cleanup': ('copypaste-retire', 'worker-original-cleanup', 'original-cleanup.env'),
     'original-observation': ('copypaste-observer', 'worker-original-observation', 'original-observation.env'),
     'multipart-cleanup': ('copypaste-cleanup', 'worker-multipart-cleanup', 'multipart-cleanup.env'),
     'upload': ('copypaste-upload', 'worker-upload', 'upload.env'),

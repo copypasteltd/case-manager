@@ -1,0 +1,21 @@
+{
+  "native": "initial",
+  "clients": {
+    "typecheck": "repair-3",
+    "web-tests": "initial",
+    "mobile-tests": "repair-3",
+    "mobile-new-contracts": "repair-3",
+    "web-build": "initial",
+    "weapp-build": "repair-3",
+    "douyin-build": "repair-3"
+  },
+  "engineering": {
+    "release": "repair-1",
+    "jvm": "initial",
+    "production": "repair-3"
+  },
+  "browsers": [
+    "batch-round-167-functional-wave-web-final",
+    "batch-round-167-functional-wave-mobile-final"
+  ]
+}

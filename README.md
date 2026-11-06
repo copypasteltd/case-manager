@@ -1,5 +1,17 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+本轮实际结果：Web **531**、共享移动端 **555**、原生HTTP/PG **5组/21记录**、受控发布 **45**、纯JVM **8**，选定构建及Web/H5操作通过；首次失败与精确修复均保留。[验证与边界](docs/quality/167-batch-functional-verification.md)。
+
+## 增量167 / Increment167 — 整批邀请、上传与部署闭环
+
+本轮先盘点全部23个编号及未定事项，完成5处确认的代码缺口、四端相关消费端、前置用例与验证工具后，再整批封存、统一测试和集中修复。新增同一成员的过期邀请重发和原会话复核；Web/Android改用有界流式全文件来源摘要，服务器终验与原件绑定；受控发布补齐原件清理服务及独立控制器的全部四个Python依赖。
+
+使用：Web「成员与授权 → 查看邀请 → 重新签发邀请」；共享移动端「我的工作空间 → 管理成员与邀请」。邀请码默认隐藏，管理员核对当前版本、原因和最近MFA后重发，旧码立即失效。旧抽样上传需取消后重新创建完整校验上传。普通部署升级至schema133；开发PG100/API保持原样。新Android JS/APK延期，APK164与九个冻结版本仍固定业务163/schema129。
+
+[设计和使用](docs/development/167-batch-functional-closure.md) · [23编号当前余项](docs/delivery/05-functional-closure-167.md) · [验证结果](docs/quality/167-batch-functional-verification.md) · [媒体](docs/media/batch-round-167/README.md)。真实配置由用户后续提供；八项Skill仍draft，23项正式工作包开放。本文段的执行结果以链接记录为准，尚未执行不写为通过。
+
+This round completes the whole declared application, consumer, fixture and tool wave before validation. It adds same-user invitation reissue with current-session checks, streaming full-source upload identity on Web/Android plus independent server verification, and the missing controlled cleanup service / installed Python dependency closure. Review the [design](docs/development/167-batch-functional-closure.md), [remaining23 packages](docs/delivery/05-functional-closure-167.md), [actual checks](docs/quality/167-batch-functional-verification.md) and [media](docs/media/batch-round-167/README.md). Schema133 is post-freeze development; nine frozen releases/APK164 remain163/129. Actual configuration, formal acceptance and all eight draft Skills stay open.
+
 ## 增量166 / Increment166 — complete code wave
 
 本轮按“全部代码、用例和工具完成→整轮封存→统一测试→集中修复”推进。新增订阅当地日期结项核查、TG预授权任务完整通知及授权失效停止、独立原生监控工程、个人TG受控发布与私密配置文件。实际验证结果见[整轮说明](docs/development/166-batch-functional-closure.md)、[验证记录](docs/quality/166-batch-functional-verification.md)；[独立监控](docs/operations/26-independent-monitoring.md)、[TG部署](docs/operations/27-telegram-controlled-release.md)说明配置与使用逻辑。

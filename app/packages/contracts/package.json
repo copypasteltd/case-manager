@@ -59,7 +59,9 @@
     "./business-execution": "./src/business-execution.ts",
     "./fixed-deliveries": "./src/fixed-deliveries.ts",
     "./telegram-grants": "./src/telegram-grants.ts",
-    "./fixed-delivery-navigation": "./src/fixed-delivery-navigation.ts"
+    "./fixed-delivery-navigation": "./src/fixed-delivery-navigation.ts",
+    "./upload-source": "./src/upload-source.ts",
+    "./invitations": "./src/invitations.ts"
   },
   "dependencies": {
     "@noble/hashes": "2.4.0"

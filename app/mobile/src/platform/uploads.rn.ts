@@ -20,7 +20,7 @@ function source(input: unknown): NativeUploadSource {
   const value = input as NativeUploadSource, size = Number(value.size_bytes);
   if (!UUID.test(value.handle) || typeof value.name !== 'string' || value.name.length > 255 || typeof value.media_type !== 'string' ||
       !Number.isSafeInteger(size) || size < 1 || size > 120_000_000_000 || String(size) !== value.size_bytes ||
-      !/^(android-saf-v1|office-artifact-v1):[a-f0-9]{64}$/.test(value.fingerprint) || value.fingerprint.startsWith('office-artifact-v1:') && size > 12 * 1024 * 1024 || typeof value.has_source !== 'boolean' ||
+      !/^(source-sha256-v2|android-saf-v1|office-artifact-v1):[a-f0-9]{64}$/.test(value.fingerprint) || value.fingerprint.startsWith('office-artifact-v1:') && size > 12 * 1024 * 1024 || typeof value.has_source !== 'boolean' ||
       typeof value.state !== 'string' || typeof value.upload_id !== 'string' || value.upload_id !== '' && !UUID.test(value.upload_id) ||
       !Number.isSafeInteger(value.prepared_at_ms) || value.prepared_at_ms < 0 || typeof value.create_key !== 'string' || typeof value.create_body !== 'string' || value.create_body.length > 4096) throw new MobileError('INVALID_RESPONSE', '本机上传记录无法核对。');
   return value;

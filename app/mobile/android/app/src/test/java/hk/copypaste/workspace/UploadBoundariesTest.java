@@ -25,22 +25,26 @@ public class UploadBoundariesTest {
         assertThrows(IllegalArgumentException.class, () -> layout.confirmed(new int[] {1, 1}));
         assertThrows(IllegalArgumentException.class, () -> layout.start(0)); assertThrows(IllegalArgumentException.class, () -> layout.length(2));
     }
-    @Test public void fingerprintSamplesOnlyHeadAndTailAtFullCapacity() throws Exception {
-        List<long[]> reads = new ArrayList<>(); final long[] total = {0};
-        UploadSource source = new UploadSource() {
-            @Override public void check() { }
-            @Override public InputStream open(long offset, long length) {
-                reads.add(new long[] {offset, length});
-                return new InputStream() {
-                    long remaining = length;
-                    @Override public int read() { throw new AssertionError(); }
-                    @Override public int read(byte[] buffer, int start, int count) { assertTrue(count <= 65536); int value = (int) Math.min(count, remaining); if (value == 0) return -1; Arrays.fill(buffer, start, start + value, (byte) 42); remaining -= value; total[0] += value; return value; }
-                };
-            }
-        };
-        String fingerprint = UploadSource.fingerprint(source, "archive.bin", 120_000_000_000L, 123);
-        assertTrue(fingerprint.matches("android-saf-v1:[a-f0-9]{64}")); assertEquals(131_072, total[0]);
-        assertArrayEquals(new long[] {0, 65536}, reads.get(0)); assertArrayEquals(new long[] {119_999_934_464L, 65536}, reads.get(1));
+    @Test public void fingerprintReadsEveryByteWithBoundedBuffersAndDetectsMiddleChanges() throws Exception {
+        byte[] bytes=new byte[3*1024*1024]; final long[] total={0}; final int[] max={0};
+        UploadSource source=new UploadSource(){ public void check(){} public InputStream open(long offset,long length){
+            assertEquals(0,offset);assertEquals(bytes.length,length);
+            return new ByteArrayInputStream(bytes){ @Override public synchronized int read(byte[] b,int start,int count){
+                max[0]=Math.max(max[0],count);int n=super.read(b,start,count);if(n>0)total[0]+=n;return n;
+            }};
+        }};
+        String first=UploadSource.fingerprint(source,"same.bin",bytes.length,123);
+        assertTrue(first.matches("source-sha256-v2:[a-f0-9]{64}"));assertEquals(bytes.length,total[0]);assertTrue(max[0]<=65536);
+        bytes[1024*1024+17]=1;
+        assertNotEquals(first,UploadSource.fingerprint(source,"same.bin",bytes.length,123));
+        UploadSource abc=new UploadSource(){public void check(){} public InputStream open(long o,long n){return new ByteArrayInputStream(new byte[]{97,98,99});}};
+        assertEquals("source-sha256-v2:ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",UploadSource.fingerprint(abc,"abc",3,0));
+    }
+    @Test public void fingerprintCancelsWithoutReadingFullCapacity() throws Exception {
+        UploadSource source=new UploadSource(){public void check(){} public InputStream open(long o,long n){assertEquals(120_000_000_000L,n);return new ByteArrayInputStream(new byte[1]);}};
+        Thread.currentThread().interrupt();
+        try {assertThrows(java.io.InterruptedIOException.class,()->UploadSource.fingerprint(source,"large.bin",120_000_000_000L,0));}
+        finally {Thread.interrupted();}
     }
     @Test public void officeFingerprintChecksAllBytesAndRejectsShortOrOversizedSources() throws Exception {
         byte[] bytes=new byte[196608]; Arrays.fill(bytes,(byte)42);

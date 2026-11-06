@@ -1,0 +1,27 @@
+{
+  "screenshots_reviewed": true,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-web-final/web-expired-invitation.png",
+      "sha256": "da50e50e7cac34457ecb5b88a2838ef2bf57fc53855e252def47f8abf88bfa2f",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-web-final/web-reissued-invitation.png",
+      "sha256": "b2d8f8dec1e681f0f79dfd82f8992be9b5fc702a50d23b1b7d5dc362be0c181b",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-mobile-final/mobile-expired-invitation.png",
+      "sha256": "8f12e674ebcc828e3a2ab240371b21005bc9ed29588ac0fa1d3778def0e66436",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-167/batch-round-167-functional-wave-mobile-final/mobile-reissued-invitation.png",
+      "sha256": "032cacf010a4eb02670849ff8c63de6d32f8e1c304bc63a97e7556042069e7f3",
+      "credentials_excluded": true
+    }
+  ],
+  "notes": "All four inspected PNG states show the expired invitation or same-user reissue confirmation, with activation tokens hidden. MP4/GIF derive from authenticated source-bound viewport pixels; no separate full playback approval claimed.",
+  "real_platform_acceptance": false
+}

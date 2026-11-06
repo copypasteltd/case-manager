@@ -31,10 +31,13 @@ func user(ctx context.Context, db platform.DBTX, org, id string) (User, error) {
 }
 
 type InvitationReceipt struct {
-	User      User      `json:"user"`
-	ID        string    `json:"invitation_id"`
-	ExpiresAt time.Time `json:"expires_at"`
-	Token     string    `json:"activation_token,omitempty"`
+	User       User       `json:"user"`
+	ID         string     `json:"invitation_id"`
+	ExpiresAt  time.Time  `json:"expires_at"`
+	Token      string     `json:"activation_token,omitempty"`
+	ReplacesID *string    `json:"replaces_id,omitempty"`
+	RevokedAt  *time.Time `json:"revoked_at,omitempty"`
+	ConsumedAt *time.Time `json:"consumed_at,omitempty"`
 }
 type InviteInput struct {
 	Login       string `json:"login_key"`
@@ -107,7 +110,7 @@ func (s *Service) Invite(ctx context.Context, c core.Command, input InviteInput)
 	}
 	c.AuthorizationMutation = true
 	return (platform.Commands{DB: s.DB}).Do(ctx, c, func(tx pgx.Tx) error {
-		if err := recentMFA(c.Actor); err != nil {
+		if err := RequireInteractiveSession(ctx, tx, c.Actor, true); err != nil {
 			return err
 		}
 		return authz.RequireOrganization(ctx, tx, c.Actor, "user.invite")
@@ -132,26 +135,7 @@ func (s *Service) Invite(ctx context.Context, c core.Command, input InviteInput)
 	})
 }
 func (s *Service) DecorateInvitation(ctx context.Context, a core.Actor, receipt InvitationReceipt) (InvitationReceipt, error) {
-	if err := recentMFA(a); err != nil {
-		return receipt, err
-	}
-	if err := authz.RequireOrganization(ctx, s.DB, a, "user.invite"); err != nil {
-		return receipt, err
-	}
-	var hash string
-	var active bool
-	err := s.DB.QueryRow(ctx, `SELECT i.token_hash,i.consumed_at IS NULL AND i.expires_at>now() AND u.status='invited'
-        FROM invitations i JOIN users u ON u.org_id=i.org_id AND u.id=i.user_id WHERE i.org_id=$1 AND i.id=$2 AND i.user_id=$3`, a.OrgID, receipt.ID, receipt.User.ID).Scan(&hash, &active)
-	if err != nil {
-		return receipt, platform.DatabaseError(err)
-	}
-	if active {
-		token := s.invitationToken(a.OrgID, receipt.ID, receipt.User.ID, receipt.ExpiresAt)
-		if core.Digest([]byte(token)) == hash {
-			receipt.Token = token
-		}
-	}
-	return receipt, nil
+	return s.readInvitation(ctx, a, receipt.User.ID, receipt.ID)
 }
 
 type ActivateInput struct {
@@ -160,27 +144,10 @@ type ActivateInput struct {
 }
 
 func (s *Service) Invitation(ctx context.Context, a core.Actor, id string) (InvitationReceipt, error) {
-	var receipt InvitationReceipt
 	if !core.ValidID(id) {
-		return receipt, core.Missing()
+		return InvitationReceipt{}, core.Missing()
 	}
-	if err := recentMFA(a); err != nil {
-		return receipt, err
-	}
-	if err := authz.RequireOrganization(ctx, s.DB, a, "user.invite"); err != nil {
-		return receipt, err
-	}
-	u, err := user(ctx, s.DB, a.OrgID, id)
-	if err != nil {
-		return receipt, err
-	}
-	receipt.User = u
-	err = s.DB.QueryRow(ctx, `SELECT id,expires_at FROM invitations WHERE org_id=$1 AND user_id=$2
-        AND consumed_at IS NULL AND expires_at>now() ORDER BY created_at DESC,id DESC LIMIT 1`, a.OrgID, id).Scan(&receipt.ID, &receipt.ExpiresAt)
-	if err != nil {
-		return receipt, platform.DatabaseError(err)
-	}
-	return s.DecorateInvitation(ctx, a, receipt)
+	return s.readInvitation(ctx, a, id, "")
 }
 
 func (s *Service) Activate(ctx context.Context, input ActivateInput, ip, requestID string) error {
@@ -206,7 +173,7 @@ func (s *Service) Activate(ctx context.Context, input ActivateInput, ip, request
 	}
 	var invitation, id string
 	err = tx.QueryRow(ctx, `SELECT i.id,i.user_id FROM invitations i JOIN users u ON u.org_id=i.org_id AND u.id=i.user_id
-        WHERE i.org_id=$1 AND i.token_hash=$2 AND i.consumed_at IS NULL AND i.expires_at>now() AND u.status='invited' FOR UPDATE OF i,u`, org, core.Digest([]byte(input.Token))).Scan(&invitation, &id)
+        WHERE i.org_id=$1 AND i.token_hash=$2 AND i.consumed_at IS NULL AND i.revoked_at IS NULL AND i.expires_at>now() AND u.status='invited' FOR UPDATE OF i,u`, org, core.Digest([]byte(input.Token))).Scan(&invitation, &id)
 	if err != nil {
 		return invalid
 	}
@@ -247,7 +214,7 @@ func (s *Service) Disable(ctx context.Context, c core.Command, id string, input 
 	}
 	c.AuthorizationMutation = true
 	return (platform.Commands{DB: s.DB}).Do(ctx, c, func(tx pgx.Tx) error {
-		if err := recentMFA(c.Actor); err != nil {
+		if err := RequireInteractiveSession(ctx, tx, c.Actor, true); err != nil {
 			return err
 		}
 		return authz.RequireOrganization(ctx, tx, c.Actor, "user.disable")

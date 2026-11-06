@@ -1066,6 +1066,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/users/{id}/invitation-reissues": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** reissueUserInvitation */
+        post: operations["reissueUserInvitation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/users/{id}/disable": {
         parameters: {
             query?: never;
@@ -7475,6 +7492,12 @@ export interface components {
             login_key: string;
             display_name: string;
         };
+        InvitationReissueInput: {
+            expected_version: number;
+            /** Format: uuid */
+            invitation_id: string;
+            reason: string;
+        };
         LoginInput: {
             login: string;
             password: string;
@@ -7526,6 +7549,12 @@ export interface components {
             /** Format: date-time */
             expires_at: string;
             activation_token?: string;
+            /** Format: uuid */
+            replaces_id?: string;
+            /** Format: date-time */
+            revoked_at?: string;
+            /** Format: date-time */
+            consumed_at?: string;
         };
         ActivateInput: {
             token: string;
@@ -19888,6 +19917,49 @@ export interface operations {
         responses: {
             /** @description Success */
             200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InvitationReceiptResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    reissueUserInvitation: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InvitationReissueInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };

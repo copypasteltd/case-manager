@@ -1,5 +1,17 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+Actual current checks: Web **531**, shared mobile **555**, native HTTP/PG **5 families/21 records**, controlled release **45**, native JVM **8**, selected builds and actual Web/H5 journeys pass. Original failures and exact repairs remain explicit in the [verification record](quality/167-batch-functional-verification.md).
+
+## Increment167: complete invitation, upload and deployment code wave
+
+All23 numbered packages and pending decisions are reviewed before the complete code/fixture/tool wave, source freeze and unified checks. Five confirmed differences are addressed: expired invitation reissue, original-session checks before invitation mutation/secret display, complete streaming source identity for resumable Web/Android uploads, the missing installed Python module, and the controlled original-cleanup service. Local execution outcomes are reported separately, never inferred from source review.
+
+Use Web **Members and permissions → View invitation → Reissue** or shared mobile **My workspace → Manage members and invitations**. An explicit human action pins the same user/version/invitation, reason and recent MFA; a new24-hour credential revokes the old one without resetting active users or granting roles. Credentials stay hidden until requested. New ordinary uploads read every local source byte with bounded buffers and use `source-sha256-v2`; the server independently rejects a different final object before scan/promotion. Cancel/recreate legacy sampled uploads rather than relabeling them.
+
+Enable controlled `original-cleanup` with its dedicated identity and fixed environment file. Install the complete four-module `metadata/release-tools` directory; the produced controller is tested outside the source checkout. Apply normal schema133 upgrades when deploying this backend. DevelopmentPG100/API are unchanged. New Android JS/APK remain deferred; nine freezes and APK164 retain business163/schema129. Actual credentials/server, company policies, eight draft Skills and all23 formal packages remain open.
+
+[Design and usage](development/167-batch-functional-closure.md) · [Numbered remaining work](delivery/05-functional-closure-167.md) · [Actual unified checks](quality/167-batch-functional-verification.md) · [Screenshots, recordings and GIFs](media/batch-round-167/README.md).
+
 ## Increment166: complete functional and deployment code wave
 
 Finish all seven code/fixture/tool tasks before unified validation and consolidated repair. Project closeout shows the pinned subscription timezone, business date and cancellation date. TG grant status prompts keep their exact task origin and stop pending delivery when organization authorization changes. Install the independent monitoring role on a separate native host; configure personal TG notices through the fixed release service and private credentials.

@@ -1,4 +1,5 @@
 import type { Schemas } from './api';
+import { fullSourceFingerprint, isFullSourceFingerprint } from '@copypaste/contracts/upload-source';
 
 export type UploadSession = Schemas['Upload'];
 type PartPermit = Schemas['SignedParts']['items'][number];
@@ -6,7 +7,7 @@ export type UploadSource = Pick<File, 'name' | 'size' | 'lastModified' | 'slice'
 const MAX_BYTES = 120_000_000_000;
 const MIN_PART = 5 * 1024 * 1024;
 const MAX_PART = 512 * 1024 * 1024;
-const SAMPLE = 64 * 1024;
+const immutableSources = new WeakMap<UploadSource, string>();
 
 function invalid(message: string): never { throw new Error(message); }
 export function partBounds(upload: UploadSession, number: number): { start: number; end: number } {
@@ -27,8 +28,8 @@ export function confirmedBytes(upload: UploadSession): number {
   }, 0);
 }
 
-// A bounded re-selection aid, not a full-file checksum or authenticity proof.
-// Only the server's frozen-source SHA-256 is authoritative.
+// Complete byte identity, read in bounded slices. Existing sampling sessions
+// remain historical; they cannot be resumed as verified full-source sessions.
 export async function sourceFingerprint(source: UploadSource, signal?: AbortSignal, expected?: string): Promise<string> {
   signal?.throwIfAborted();
   if (!Number.isSafeInteger(source.size) || source.size < 1 || source.size > MAX_BYTES ||
@@ -38,15 +39,13 @@ export async function sourceFingerprint(source: UploadSource, signal?: AbortSign
     const hash = await crypto.subtle.digest('SHA-256', await source.slice(0, source.size).arrayBuffer()); signal?.throwIfAborted();
     return 'office-artifact-v1:' + [...new Uint8Array(hash)].map(value => value.toString(16).padStart(2, '0')).join('');
   }
-  const head = new Uint8Array(await source.slice(0, Math.min(SAMPLE, source.size)).arrayBuffer());
-  signal?.throwIfAborted();
-  const tail = new Uint8Array(await source.slice(Math.max(head.byteLength, source.size - SAMPLE), source.size).arrayBuffer());
-  const metadata = new TextEncoder().encode(JSON.stringify([source.name, source.size, source.lastModified]));
-  const bytes = new Uint8Array(metadata.byteLength + head.byteLength + tail.byteLength);
-  bytes.set(metadata); bytes.set(head, metadata.byteLength); bytes.set(tail, metadata.byteLength + head.byteLength);
-  const digest = await crypto.subtle.digest('SHA-256', bytes);
-  signal?.throwIfAborted();
-  return 'web-sample-v1:' + [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, '0')).join('');
+  if (expected && !isFullSourceFingerprint(expected)) invalid('旧上传使用抽样身份，请取消旧上传并重新创建完整校验上传。');
+  const immutable = source instanceof File;
+  const known = immutable ? immutableSources.get(source) : undefined;
+  if (known) return known;
+  const value = await fullSourceFingerprint(source, signal);
+  if (immutable) immutableSources.set(source, value);
+  return value;
 }
 
 function validatePermit(permit: PartPermit, number: number, origin: string): Record<string, string> {

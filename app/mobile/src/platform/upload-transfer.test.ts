@@ -5,7 +5,7 @@ import { UploadTransferController, uploadedBytes, type NativeUploadPort, type Na
 
 const id = '11111111-1111-4111-8111-111111111111', handle = '22222222-2222-4222-8222-222222222222';
 const owner = '33333333-3333-4333-8333-333333333333', run = '44444444-4444-4444-8444-444444444444';
-const folder = '55555555-5555-4555-8555-555555555555', fingerprint = 'android-saf-v1:' + 'a'.repeat(64), MiB = 1024 * 1024;
+const folder = '55555555-5555-4555-8555-555555555555', fingerprint = 'source-sha256-v2:' + 'a'.repeat(64), MiB = 1024 * 1024;
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
 const response = (data: unknown): WireResponse => ({ status: 200, data: { data, meta: { request_id: 'native-upload-test-request' } } });
 function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(done => { resolve = done; }); return { promise, resolve }; }

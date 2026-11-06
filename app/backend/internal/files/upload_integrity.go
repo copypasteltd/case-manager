@@ -198,6 +198,9 @@ func (s *UploadService) RunIntegrityJob(ctx context.Context, j jobqueue.Job, sto
 	if strings.HasPrefix(current.SourceFingerprint, "office-artifact-v1:") && (source.Size > OfficeAuthorMaxOutput || current.SourceFingerprint != "office-artifact-v1:"+authority.SHA256) {
 		return core.Fail(409, "OFFICE_ARTIFACT_HASH_MISMATCH", "上传正文与确认的Office候选摘要不一致")
 	}
+	if strings.HasPrefix(current.SourceFingerprint, "source-sha256-v2:") && current.SourceFingerprint != "source-sha256-v2:"+authority.SHA256 {
+		return core.Fail(409, "UPLOAD_SOURCE_HASH_MISMATCH", "完整上传内容与最初选择的原文件不一致，请重新创建上传")
+	}
 	// Delay opening cloud data until the scanner actually reads. A policy-size
 	// rejection or disabled engine therefore performs no extra object read.
 	lazy := newLazySource(ctx, store, source)
