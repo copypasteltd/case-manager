@@ -1,5 +1,12 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+## Increment166: complete functional and deployment code wave
+
+Finish all seven code/fixture/tool tasks before unified validation and consolidated repair. Project closeout shows the pinned subscription timezone, business date and cancellation date. TG grant status prompts keep their exact task origin and stop pending delivery when organization authorization changes. Install the independent monitoring role on a separate native host; configure personal TG notices through the fixed release service and private credentials.
+
+[Design and all23 dispositions](development/166-batch-functional-closure.md) · [Validation and limits](quality/166-batch-functional-verification.md) · [Monitoring operations](operations/26-independent-monitoring.md) · [Controlled TG release](operations/27-telegram-controlled-release.md). Migrations131/132 are append-only; developmentPG100/API, nine freezes and APK164 remain unchanged. Real configuration and all23 formal packages remain open.
+
+
 **Main165 source wave / selected unified checks passed**
 
 Subscription reminders now use pinned period rules and exact period versions; explicit reforecasting queues a new job immediately. Reminder history shows the basis version on Web and shared mobile. Existing mobile supplements link to their authorized parent contract. All declared code finishes before unified checks and batch fixes.
@@ -257,6 +264,9 @@ The latest freeze includes all business149 changes in matching server, Web, mini
 
 [149实际无声操作MP4 · Actual silent recording](media/videos/replica-notifications-web.mp4) · [149截图导览GIF · Screenshot tour](media/gifs/replica-notifications-web.gif)（150原字节复用，未重新录制）。
 
+
+
+166验证 / Validation: 原生4族40条结果、发布42、Web527/移动553、7客户端步骤及实际Web/H5通过。All23 formal packages remain open. [Screens / 截图、MP4、GIF](media/README.md) · [Evidence / 失败与源码边界](quality/166-batch-functional-verification.md).
 
 ## 增量149 · 文件复制失败／恢复闭环 / Replica failure and recovery
 

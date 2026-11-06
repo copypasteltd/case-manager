@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "deployment_id": "company-production",
+  "monitor_host_id": "monitor-hk",
+  "application_host_id": "application-cn",
+  "separate_host_reviewed": true,
+  "targets": [
+    {"id": "workspace_web", "url": "https://workspace.example.com/", "approved_ip": "93.184.216.34", "expected_status_codes": [200]}
+  ],
+  "ssh": {
+    "host": "application.example.com",
+    "port": 22,
+    "user": "copypaste-monitor",
+    "identity_file": "/etc/copypaste-monitoring/secrets/ssh-key",
+    "known_hosts_file": "/etc/copypaste-monitoring/secrets/known-hosts",
+    "api_port": 8080,
+    "node_port": 9100
+  },
+  "required_units": ["copypaste-release-api.service", "copypaste-release-notification.service", "copypaste-release-notification-telegram.service"],
+  "receiver": {
+    "kind": "telegram",
+    "bot_token_file": "/etc/copypaste-monitoring/secrets/telegram-token",
+    "chat_id_file": "/etc/copypaste-monitoring/secrets/telegram-chat"
+  },
+  "watchdog_url_file": "/etc/copypaste-monitoring/secrets/watchdog-url"
+}

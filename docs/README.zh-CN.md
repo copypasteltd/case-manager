@@ -1,5 +1,12 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+## 增量166：整轮功能与部署闭环
+
+先完成全部7项代码/用例/工具再统一验证。使用项目结项页查看订阅固定时区、核查业务日和取消生效日；TG普通状态提示沿用内部入口，组织授权变化后停止旧待发通知。独立监控在另一台原生主机安装；个人TG通知通过固定发布服务和私密凭据文件配置。
+
+[完整设计与23编号处置](development/166-batch-functional-closure.md) · [验证与限制](quality/166-batch-functional-verification.md) · [独立监控安装/使用](operations/26-independent-monitoring.md) · [TG受控发布](operations/27-telegram-controlled-release.md)。schema131/132追加升级，开发PG100/API及九次冻结/APK164保留；真实集成和23包正式验收仍开放。
+
+
 **当前main165整批代码 / 所选统一检查通过**
 
 订阅提醒使用账期固定规则，重估后立即排队新版本任务；Web／共享移动提醒历史显示准确版本，移动补充协议提供主合同阅读入口。每轮先完成全部声明代码与前置用例，再统一测试、集中修复。
@@ -265,6 +272,9 @@ The latest freeze includes all business149 changes in matching server, Web, mini
 
 [149实际无声操作MP4 · Actual silent recording](media/videos/replica-notifications-web.mp4) · [149截图导览GIF · Screenshot tour](media/gifs/replica-notifications-web.gif)（150原字节复用，未重新录制）。
 
+
+
+166验证 / Validation: 原生4族40条结果、发布42、Web527/移动553、7客户端步骤及实际Web/H5通过。All23 formal packages remain open. [Screens / 截图、MP4、GIF](media/README.md) · [Evidence / 失败与源码边界](quality/166-batch-functional-verification.md).
 
 ## 增量149 · 文件复制失败／恢复闭环 / Replica failure and recovery
 

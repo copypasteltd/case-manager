@@ -1,5 +1,8 @@
 # Repository working agreement / 仓库工作约定
 
+- Increment166 implements the entire seven-task code/fixture/tool wave before unified checks: subscription-local closeout calendar projection, effective TG grant delivery origin/current organization authorization, independent native monitoring/pins/rules, and controlled personal TG release/private file credentials. Append131/132; do not backfill prior archives/notices. Keep all23 formal packages and eight draft Skills open, nine freezes/APK164 at163/129, developmentPG100/API unchanged. No Android JS/APK rebuild or actual integration claim. Native4/40, release42, Web527/mobile553, seven client steps and actual Web/H5 pass; retain fixture/capture/proof-helper failures and exact archived helper reconstruction. All owned contexts/services/native PG are closed. See docs/development/166-batch-functional-closure.md.
+
+
 - 每轮必须先盘点全部未完成编号与未定事项，完成全部可明确实现的应用代码、前置用例及工具，保存整批源码后才统一测试。收集首次失败后集中修复，仅复测受影响输入；不得逐模块调测／局部发版循环。未提供的公司制度／配置及未实现能力须逐项明列，不得伪造验收。
 - Increment165 declares C01–C05 and all23 dispositions before any checks. It pins reminder rules to exact period configuration/timezone, uses immutable period-version dedup with immediate reforecast jobs, adds Web/shared-mobile history and ordinary mobile parent links. Append schema130 without rewriting prior reminders, migrations or proofs. Nine freezes and APK164/business163/schema129 remain immutable; devPG100/API, all23 formal packages and eight draft Skills remain open. See docs/development/165-batch-functional-closure.md.
 

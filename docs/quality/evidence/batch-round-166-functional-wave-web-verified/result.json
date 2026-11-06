@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T12:36:42.683Z",
+  "finished_at": "2026-11-06T12:36:56.697Z",
+  "checks": [
+    "actual authorized project closeout API returns all four exact subscription calendars",
+    "local effective and future cancellation dates remain separate visible checklist decisions"
+  ],
+  "source_count": 1218,
+  "source_sha256": "ec7d191b53147080e7eca83e5dd3488472db71fd07f227ad9766e4917378a7ac",
+  "source_after_sha256": "ec7d191b53147080e7eca83e5dd3488472db71fd07f227ad9766e4917378a7ac",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web subscription-local project closeout dates with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "9017cac3d5d21408d58c3bf9404ffc266fc15435facfd31d923fddaf8e812e69",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "9017cac3d5d21408d58c3bf9404ffc266fc15435facfd31d923fddaf8e812e69",
+  "build_source_unchanged": true
+}

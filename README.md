@@ -1,5 +1,12 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+## 增量166 / Increment166 — complete code wave
+
+本轮按“全部代码、用例和工具完成→整轮封存→统一测试→集中修复”推进。新增订阅当地日期结项核查、TG预授权任务完整通知及授权失效停止、独立原生监控工程、个人TG受控发布与私密配置文件。实际验证结果见[整轮说明](docs/development/166-batch-functional-closure.md)、[验证记录](docs/quality/166-batch-functional-verification.md)；[独立监控](docs/operations/26-independent-monitoring.md)、[TG部署](docs/operations/27-telegram-controlled-release.md)说明配置与使用逻辑。
+
+All seven declared code/fixture/tool tasks precede unified checks. Subscription-local closeout, exact authorized TG grant notices, independent monitoring and private Telegram service credentials are one complete source wave. All23 formal packages remain open; nine freezes and APK164/business163/schema129 are retained. Actual server/cloud/model/Bot/platform/signing configuration remains deferred.
+
+
 **当前main165整批代码 / 所选统一检查通过**
 
 订阅提醒使用账期固定规则，重估后立即排队新版本任务；Web／共享移动提醒历史显示准确版本，移动补充协议提供主合同阅读入口。每轮先完成全部声明代码与前置用例，再统一测试、集中修复。
@@ -276,6 +283,9 @@ The latest freeze includes all business149 changes in matching server, Web, mini
 
 [149实际无声操作MP4 · Actual silent recording](docs/media/videos/replica-notifications-web.mp4) · [149截图导览GIF · Screenshot tour](docs/media/gifs/replica-notifications-web.gif)（150原字节复用，未重新录制）。
 
+
+
+166验证 / Validation: 原生4族40条结果、发布42、Web527/移动553、7客户端步骤及实际Web/H5通过。All23 formal packages remain open. [Screens / 截图、MP4、GIF](docs/media/README.md) · [Evidence / 失败与源码边界](docs/quality/166-batch-functional-verification.md).
 
 ## 增量149 · 文件复制失败／恢复闭环 / Replica failure and recovery
 

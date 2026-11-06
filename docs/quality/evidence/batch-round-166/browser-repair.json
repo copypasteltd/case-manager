@@ -1,0 +1,16 @@
+{
+  "application_sources_changed": false,
+  "failed_group": "batch-round-166-functional-wave-web-initial",
+  "failure": "The check toggled an already-open blocking subscription details group closed before waiting for its calendar.",
+  "current_fix": "Open the group only when it is closed.",
+  "file": "app/scripts/check_batch_round166.mjs",
+  "before_sha256": "684cfff37dd57e1af7d2c9f5d96aa0cbeeb9104a8c94c25b9a072f13945d58d6",
+  "after_sha256": "aa1d6ac00007df19cedd4d31745fd3dba8632b82df76ca1cb8a71012d92fed75",
+  "prior_attempt_and_source_archive_retained": true,
+  "owned_browser_and_fixture_cleanup_verified": true,
+  "affected_retest": [
+    "Web/H5 browser capture"
+  ],
+  "native_business_and_client_checks_replayed": false,
+  "hashes_bound_to_exact_archive_bytes": true
+}

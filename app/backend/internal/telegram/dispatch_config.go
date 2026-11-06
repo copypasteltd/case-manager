@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
-	"os"
 	"strings"
 )
 
@@ -16,7 +15,10 @@ type DispatchBot struct {
 }
 
 func LoadDispatchBots() ([]DispatchBot, error) {
-	raw := os.Getenv("CP_TELEGRAM_DISPATCH_BOTS")
+	raw, err := botConfiguration("CP_TELEGRAM_DISPATCH_BOTS")
+	if err != nil {
+		return nil, err
+	}
 	if raw == "" || raw == "disabled" {
 		return nil, nil
 	}

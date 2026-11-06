@@ -14,8 +14,19 @@ SERVICES = {
     'status-bridge': ('copypaste-status', None, None),
     'telegram': ('copypaste-telegram', 'worker-telegram', 'telegram.env'),
     'telegram-delivery': ('copypaste-delivery', 'worker-telegram-delivery', 'telegram-delivery.env'),
+    'notification-telegram': ('copypaste-notice-tg', 'worker-notification-telegram', 'notification-telegram.env'),
     'agent': ('copypaste-agent', 'worker-agent', 'agent.env'),
     'agent-reconcile': ('copypaste-agent', 'worker-agent-reconcile', 'agent.env'),
+}
+
+# API ingress deliberately accepts an explicit empty JSON array when disabled.
+# File names and environment keys are fixed; plain environment files cannot
+# override either credential source or introduce inline provider JSON.
+TELEGRAM_CREDENTIALS = {
+    'api': ('CP_TELEGRAM_INGRESS', 'telegram-ingress.json'),
+    'telegram': ('CP_TELEGRAM_DISPATCH_BOTS', 'telegram-dispatch.json'),
+    'telegram-delivery': ('CP_TELEGRAM_DELIVERY_BOTS', 'telegram-delivery.json'),
+    'notification-telegram': ('CP_TELEGRAM_DELIVERY_BOTS', 'telegram-delivery.json'),
 }
 
 
@@ -32,6 +43,9 @@ def render(name):
         '/opt/copypaste/current/bin/agent-native serve --config /etc/copypaste/active/agent-native.json' if name == 'agent-native'
         else '/opt/copypaste/current/bin/status-bridge --config %d/status-bridge.json')
     settings = f'EnvironmentFile=/etc/copypaste/active/{env_file}\n' if env_file else ''
+    if name in TELEGRAM_CREDENTIALS:
+        key, filename = TELEGRAM_CREDENTIALS[name]
+        settings += f'LoadCredential={filename}:/etc/copypaste/active/{filename}\nEnvironment={key}_FILE=%d/{filename}\n'
     if name == 'status-bridge':
         settings += 'LoadCredential=status-bridge.json:/etc/copypaste/active/status-bridge.json\n'
     settings += ('ExecStartPre=/opt/copypaste/current/bin/agent-native check --config /etc/copypaste/active/agent-native.json\n'

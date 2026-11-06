@@ -1,5 +1,10 @@
 # CopyPaste 内部管理平台文档中心
 
+## 当前开发轮166 / Current code wave166
+
+[整轮设计与23编号](development/166-batch-functional-closure.md) · [当前验证记录](quality/166-batch-functional-verification.md) · [独立原生监控](operations/26-independent-monitoring.md) · [TG私密配置和发布](operations/27-telegram-controlled-release.md)。先全部开发再统一调测；正常升级131/132，保留九次冻结和APK164，23包与真实配置验收仍开放。
+
+
 **当前main165整批代码 / 所选统一检查通过**
 
 订阅提醒使用账期固定规则，重估后立即排队新版本任务；Web／共享移动提醒历史显示准确版本，移动补充协议提供主合同阅读入口。每轮先完成全部声明代码与前置用例，再统一测试、集中修复。

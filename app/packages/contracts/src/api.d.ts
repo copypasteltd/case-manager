@@ -13835,6 +13835,13 @@ export interface components {
             /** Format: uuid */
             revision_id: string;
         };
+        CloseoutSubscriptionCalendar: {
+            timezone: string;
+            /** Format: date */
+            business_date: string;
+            cancel_effective_on: string | null;
+            cancellation_effective: boolean;
+        };
         ProjectCloseoutItem: {
             /** @enum {string} */
             kind: "tasks" | "milestones" | "deliverables" | "risks" | "issues" | "changes" | "budgets" | "contracts" | "purchases" | "claims" | "costs" | "payments" | "subscriptions";
@@ -13844,6 +13851,7 @@ export interface components {
             title: string;
             state: string;
             blocking: boolean;
+            subscription_calendar?: components["schemas"]["CloseoutSubscriptionCalendar"];
         };
         ProjectCloseoutGroup: {
             /** @enum {string} */

@@ -35,7 +35,7 @@ function Checklist({ groups, projectID, historical = false }: { groups: Group[];
       {group.count !== null && <small>共 {group.count} 项{historical ? ' · 归档时' : ''}</small>}</summary>
     <p className="muted">{explanations[group.kind]}</p>
     {group.visibility === 'restricted' ? <p className="notice neutral">当前权限无法完整核对本类别。请安排具备相应查阅权限的人员处理。</p> : !group.items.length ? <p className="muted">核查范围内暂无此类记录。</p> : <ul className="closeout-items">{group.items.map(item => <li key={item.id}>
-      <div><Link to={destination(item, projectID)} reloadDocument>{item.title || labels[group.kind] + '记录'}</Link><small>版本 {item.version} · {stateLabels[item.state] ?? '状态待核实'}</small></div>
+      <div><Link to={destination(item, projectID)} reloadDocument>{item.title || labels[group.kind] + '记录'}</Link><small>版本 {item.version} · {stateLabels[item.state] ?? '状态待核实'}</small>{item.kind === 'subscriptions' && <small>{item.subscription_calendar ? `核查业务日 ${item.subscription_calendar.business_date} · ${item.subscription_calendar.timezone}；取消生效日 ${item.subscription_calendar.cancel_effective_on ?? '未固定'}；${item.subscription_calendar.cancellation_effective ? '日期条件已满足' : '日期条件未满足'}，其他处置仍按完整核查。` : '原核查未记录订阅日期依据，历史不补算今日状态。'}</small>}</div>
       <span className={'badge ' + (item.blocking ? 'warning' : 'neutral')}>{item.blocking ? '待处置' : group.kind === 'budgets' ? '参考版本' : '未构成阻塞'}</span>
     </li>)}</ul>}
   </details>)}</div>;

@@ -1,5 +1,14 @@
 # 更新记录 / Changelog
 
+## 166 — Complete code wave / 完整代码轮次
+
+- Complete subscription-local project closeout dates and four-client safe calendar projection; append131 with no fabricated historical dates.
+- Align accepted/progress/result TG grant delivery origin and organization authorization; append132, preserve immutable private generic prompts and human disclosure.
+- Add independent native Prometheus/Blackbox/Alertmanager/node/SSH monitoring plans, official component pins, failure/unknown/watchdog rules and installation guide.
+- Add the controlled personal TG notice service and three bounded private JSON credential contracts without loosening environment syntax.
+- Finish all business/engineering fixtures, complete pretest source archive, batch runners and actual browser/media tools before validation. Native4/40, repaired release42, Web527/mobile553, seven client steps, native parser/rule checks and actual Web/H5 pass. Preserve initial fixture/capture failures and exact post-capture proof-helper/newline metadata repairs; no application or media bytes changed for that final repair. Keep all23 packages, eight draft Skills, nine freezes, APK164 and user-deferred real configuration explicit.
+
+
 ## 增量165 / Whole-code-first functional closure
 
 - 声明全部C01–C05代码／前置用例／工具及23编号处置后统一检查；首次失败与集中修复按实际输入保留。

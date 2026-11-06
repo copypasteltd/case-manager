@@ -1,0 +1,41 @@
+{
+  "application_sources_changed": false,
+  "first_batch_completed_before_repair": true,
+  "initial_failures": [
+    {
+      "step": "release",
+      "case": "test_personal_telegram_fixed_credentials_and_complete_catalog",
+      "reason": "Fixture helper method was placed under non-fixture command-boundary test class."
+    },
+    {
+      "step": "release",
+      "case": "test_private_telegram_contract_denies_bad_and_oversized_sources",
+      "reason": "Same test class placement."
+    }
+  ],
+  "repairs": [
+    {
+      "file": "app/deploy/release/test_native_release.py",
+      "before_sha256": "671f21ed973b56b50140c4d9a239a1884684d43e7f76ad7e4d99be5a9e74f424",
+      "after_sha256": "57dc300837c6eb3c2d762f020aa701a86662ae1c845d5cb9cc5cbb1f9c9e8038",
+      "change": "Insert a dedicated PrivateTelegramReleaseTests(Fixture) class before the two new methods."
+    },
+    {
+      "file": "app/scripts/verify_batch_round166.py",
+      "before_sha256": "5a7cbd285c0f0c3b2117e8a41e7afebcbfdffd1945c4770a4a8af74a5e38b723",
+      "after_sha256": "f96dea715fe4d924a55e9c9e7f2e71caa7f556fcdc184692e2efcd5aea250015",
+      "change": "Verify actual selected repair separately from the three passing engineering steps with unchanged consumer sources."
+    }
+  ],
+  "affected_retest": [
+    "release"
+  ],
+  "reused_checks": [
+    "native business40",
+    "client7",
+    "monitor plan4",
+    "Go private/calendar",
+    "five upstream native tool checks"
+  ],
+  "no_prior_attempt_overwritten": true
+}

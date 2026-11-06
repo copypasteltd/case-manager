@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T12:40:41.834108+00:00",
+  "group": "batch-round-166-functional-wave-mobile-verified",
+  "encoder_sha256": "69b82ae46f532579d05c19d7263a61ba55277fa7f46605b156ff1d3a6d24304c",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-166/batch-round-166-functional-wave-mobile-verified/mobile-local-calendar.png",
+      "sha256": "11c8eef574b61091760b97ffa23a4ef707b5dc1ee06809cf68790b982b5fbb78",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-166/batch-round-166-functional-wave-mobile-verified/mobile-opposite-calendar.png",
+      "sha256": "11c8eef574b61091760b97ffa23a4ef707b5dc1ee06809cf68790b982b5fbb78",
+      "credentials_excluded": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-166/batch-round-166-functional-wave-mobile-verified/screen-recording.mp4",
+      "sha256": "08a9549eadcba94efa20ea69c73eb43be38cf3541bdb072b2919ab7fa00d3b20",
+      "size_bytes": 103107
+    },
+    {
+      "file": "docs/media/batch-round-166/batch-round-166-functional-wave-mobile-verified/screenshot-tour.gif",
+      "sha256": "0102383c679cd7102a0451b822cf062c42251ec1bae480a2ee827b41141566d5",
+      "size_bytes": 75622
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "29",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.900000"
+    }
+  }
+}

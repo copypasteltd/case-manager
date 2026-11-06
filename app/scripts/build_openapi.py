@@ -1446,7 +1446,8 @@ add("ChangeImplement",change_implement,tuple(change_implement))
 add("ChangeReceipt",{"id":ID,"version":VERSION,"revision_id":ID},("id","version","revision_id"))
 closeout_kinds = enum("tasks","milestones","deliverables","risks","issues","changes","budgets","contracts","purchases","claims","costs","payments","subscriptions")
 closeout_item = {"kind":closeout_kinds,"id":ID,"version":VERSION,"title":{"type":"string"},"state":{"type":"string"},"blocking":{"type":"boolean"}}
-add("ProjectCloseoutItem",closeout_item,tuple(closeout_item))
+add("CloseoutSubscriptionCalendar",{"timezone":{"type":"string","minLength":1,"maxLength":100},"business_date":DATE,"cancel_effective_on":nullable(DATE),"cancellation_effective":{"type":"boolean"}},("timezone","business_date","cancel_effective_on","cancellation_effective"))
+add("ProjectCloseoutItem",{**closeout_item,"subscription_calendar":ref("CloseoutSubscriptionCalendar")},tuple(closeout_item))
 closeout_group = {"kind":closeout_kinds,"visibility":enum("complete","restricted"),"count":nullable(COUNT),"open_count":nullable(COUNT),"items":array(ref("ProjectCloseoutItem"),maxItems=5000)}
 add("ProjectCloseoutGroup",closeout_group,tuple(closeout_group))
 closeout = {"project":ref("Project"),"as_of":TIME,"visibility":enum("complete","restricted"),"fingerprint":nullable({"type":"string","pattern":"^[0-9a-f]{32}$"}),"groups":array(ref("ProjectCloseoutGroup"),minItems=13,maxItems=13),"can_close":{"type":"boolean"},"can_archive":{"type":"boolean"}}

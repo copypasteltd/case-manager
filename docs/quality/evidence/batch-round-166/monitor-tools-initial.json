@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "prometheus-config",
+      "passed": true,
+      "exit_code": 0,
+      "private_log_sha256": "211a2a4cffb16c649dc320092e5f50111751e1e83aa0b87e3660a2339ca412df"
+    },
+    {
+      "name": "prometheus-rules",
+      "passed": true,
+      "exit_code": 0,
+      "private_log_sha256": "7540905822dace27b6dd699a68d1b0166cb65eb56950a66d835a768ae955e06d"
+    },
+    {
+      "name": "prometheus-rule-cases",
+      "passed": true,
+      "exit_code": 0,
+      "private_log_sha256": "0f85f19e256052df1bb8b84a438fc105ddb1977bc7317823b081ce0b88574eb6"
+    },
+    {
+      "name": "alertmanager-config",
+      "passed": true,
+      "exit_code": 0,
+      "private_log_sha256": "5b664b9d5edc3520bf9e074a4cb9062ebef5f82e29ea693b9cd5be4f5c91dad5"
+    },
+    {
+      "name": "blackbox-config",
+      "passed": true,
+      "exit_code": 0,
+      "private_log_sha256": "181567d475ad0552d8d698a47d31457cefeeb58ed4cdbec189f0069b34d32a2f"
+    }
+  ],
+  "exact_generated_files": {
+    "config/prometheus.yml": "ea5ed3399589734faa46c4ee72a0bbc718695b124de55419546c9beff3e0d9db",
+    "config/blackbox.yml": "b6bfe30e858b2341e42b0f35284e96039706499961493154403c5bc7b8f2730a",
+    "config/rules.yml": "b9ef79f30deae20a166bc18ca1391c67d653bc282184c1c859e6fa12d2f48816",
+    "config/alertmanager.yml": "98673e9e6c9657971e8ffa07242beeae53269fe7321a23c90be13ce22301eee6",
+    "monitor-host/copypaste-monitor-prometheus.service": "8a628d49096211c4883a8934cba95ac0ae73f686dfa141474d5c1889e4e9383e",
+    "monitor-host/copypaste-monitor-blackbox.service": "d3bd08f9fa79bb8d59dd9f6aadc8b7de7d7dc449f038c4e71164c6c3dbf0a99b",
+    "monitor-host/copypaste-monitor-alertmanager.service": "28cb2a5de4d2093b51b4237a90e1da0bb62ea227b1dff12733b93e42164d5c25",
+    "monitor-host/copypaste-monitor-tunnel.service": "1896ff4f7ef53a38d3ea6b6a582353cdc3771d62c94bb9aab5c1fd64923dbb2f",
+    "application-host/copypaste-monitor-node.service": "0e1c35f40cffeff8c8322c411f47837e1db81d7eeef175e938961b246968f882"
+  },
+  "components": {
+    "platform": "windows-amd64",
+    "lock_sha256": "9cf08b026c0bb839aecf7d30cbd7cb5cf3ea5c6d59b04d804e9042edaa7a9005",
+    "components": [
+      {
+        "component": "prometheus",
+        "version": "3.16.0",
+        "archive_sha256": "89c03c2f24400fb58668440b6d7226f68564acda27d657e77acfbda42be32cb3",
+        "files": {
+          "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "NOTICE": "ac9e304462a58a4d71b6488423d4447e614c8b31d517fe24345016522c102a78",
+          "prometheus.exe": "ac39610df6a7a45face0a08476ac9ae85b1e13d82da891d33739dea448100eb4",
+          "promtool.exe": "b18a0f297fd3350a104cfcb9745c9e7f3b71cc6474875159fd56195a8289c570"
+        }
+      },
+      {
+        "component": "alertmanager",
+        "version": "0.34.2",
+        "archive_sha256": "7c322f966693f3aed7f62c643fa75de42312ab27ae4957b077c2e12ee78c153a",
+        "files": {
+          "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "NOTICE": "24f7d73529defd2e28b4bb5e0f0396cebb6d3e74b7f66a26b62d0d3251431582",
+          "alertmanager.exe": "11e02670de685968e367b2f76a034c804525f4f8e95d879a53e0fb7beca03965",
+          "amtool.exe": "e7bf0cfe26fcc849b135b2f8fd9c93a035939a997c21184b4cb19346dcc43d36"
+        }
+      },
+      {
+        "component": "blackbox_exporter",
+        "version": "0.29.1",
+        "archive_sha256": "d997412c28d6a8949eb1880197c77f7b6dc887915ae0303c4e48f674a54f7081",
+        "files": {
+          "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "NOTICE": "ebd21f88b3413fefc5d4a6e5065965ebdc4ff5e1fc9282749865a533dc4fabd7",
+          "blackbox_exporter.exe": "f9a53416d48aebe42d4298ccb5827e89e252f3a2133a4ede480c44c682f35bae"
+        }
+      }
+    ],
+    "services_started": false
+  },
+  "validation_projection": "Only private synthetic credential paths and absolute rule include paths replace production locations.",
+  "services_started": false,
+  "real_target_probed": false,
+  "real_receiver_contacted": false,
+  "systemd_executed": false,
+  "linux_binaries_executed": false,
+  "component_lock_sha256": "9cf08b026c0bb839aecf7d30cbd7cb5cf3ea5c6d59b04d804e9042edaa7a9005"
+}

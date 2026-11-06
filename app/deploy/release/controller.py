@@ -22,7 +22,8 @@ from urllib.request import build_opener, ProxyHandler, HTTPRedirectHandler
 import uuid
 
 from bundle import ReleaseError, canonical, digest, extract_archive, file_sha, read_json, require, verify_tree
-from catalog import SERVICES, nginx_site, unit
+from catalog import SERVICES, TELEGRAM_CREDENTIALS, nginx_site, unit
+from telegram_config import validate_telegram_file
 
 
 def release_id(value):
@@ -239,6 +240,12 @@ class Coordinator:
             if env_file:
                 required.add(env_file)
                 env = parse_env(root / env_file)
+                credential_keys = {key + suffix for key, _ in TELEGRAM_CREDENTIALS.values() for suffix in ('', '_FILE')}
+                require(not credential_keys & env.keys(), 'Telegram sources are fixed private service credentials, not environment entries.')
+                if name in TELEGRAM_CREDENTIALS:
+                    key, filename = TELEGRAM_CREDENTIALS[name]
+                    required.add(filename)
+                    validate_telegram_file(root / filename, key)
                 require(env.get('CP_ENV') == 'production' and 'CP_MIGRATION_DATABASE_URL' not in env, 'Runtime identities must be production and exclude migration credentials.')
                 if name == 'api':
                     require(env.get('CP_HTTP_ADDR') == '127.0.0.1:8080' and env.get('CP_PUBLIC_ORIGIN') == 'https://' + value['hostname'], 'API must bind loopback and its exact public HTTPS origin.')

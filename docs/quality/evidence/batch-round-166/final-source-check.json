@@ -1,0 +1,132 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "post_capture_verifier_only_all_application_inputs_unchanged",
+      "passed": true
+    },
+    {
+      "name": "complete_all7_tasks_all23_dispositions_pretest_archive",
+      "passed": true
+    },
+    {
+      "name": "all_current_declared_tasks_implemented_before_tests",
+      "passed": true
+    },
+    {
+      "name": "native_actual_selected_pass_and_current_sources",
+      "passed": true
+    },
+    {
+      "name": "all4_native_business_families_executed",
+      "passed": true
+    },
+    {
+      "name": "clients_actual_selected_pass_and_current_sources",
+      "passed": true
+    },
+    {
+      "name": "all7_declared_client_steps_pass",
+      "passed": true
+    },
+    {
+      "name": "engineering_actual_selected_pass_and_current_sources",
+      "passed": true
+    },
+    {
+      "name": "all4_engineering_steps_pass_with_exact_unchanged_consumer_reuse",
+      "passed": true
+    },
+    {
+      "name": "only_two_fixture_cases_moved_to_their_own_fixture_class",
+      "passed": true
+    },
+    {
+      "name": "actual_pinned_native_prometheus_alertmanager_blackbox_validation",
+      "passed": true
+    },
+    {
+      "name": "summary_from_actual_native_and_client_records",
+      "passed": true
+    },
+    {
+      "name": "batch-round-166-functional-wave-web-verified_actual_api_and_owned_cleanup",
+      "passed": true
+    },
+    {
+      "name": "batch-round-166-functional-wave-web-verified_authenticated_synthetic_media",
+      "passed": true
+    },
+    {
+      "name": "batch-round-166-functional-wave-web-verified_exact_media_and_actual_recording_gif",
+      "passed": true
+    },
+    {
+      "name": "batch-round-166-functional-wave-mobile-verified_actual_api_and_owned_cleanup",
+      "passed": true
+    },
+    {
+      "name": "batch-round-166-functional-wave-mobile-verified_authenticated_synthetic_media",
+      "passed": true
+    },
+    {
+      "name": "batch-round-166-functional-wave-mobile-verified_exact_media_and_actual_recording_gif",
+      "passed": true
+    },
+    {
+      "name": "earlier130_migrations_nine_freezes_proof_media_immutable",
+      "passed": true
+    },
+    {
+      "name": "all23_formal_packages_and_5_exclusions_preserved",
+      "passed": true
+    },
+    {
+      "name": "no_unclaimed_new_apk_real_services_or_production_acceptance",
+      "passed": true
+    }
+  ],
+  "records": {
+    "docs/quality/evidence/batch-round-166/post-capture-verifier-repair.json": "d4a0804efc218147d8184576b5cfa0fb093c69af01ce7a985406dec3b447556b",
+    "docs/quality/evidence/batch-round-166/code-wave-browser-repair-archive.json": "2f87fb544485ee5ae6867469b6c015f4b413720256308a7d173690874fe5df0c",
+    "docs/quality/evidence/batch-round-166/freeze-code-initial.json": "33382c032f53d10f17e2c3d2a7a6b3db8fcf23a351db1c39606d230e9e689a2b",
+    "docs/quality/evidence/batch-round-166/code-wave-initial-archive.json": "ef908da7864e697afa46fe0164e7358aa9ff077c23e09035e5e57e8212b15649",
+    "docs/quality/evidence/batch-round-166/native-tests-initial.json": "f300da801918d1f7ffd57308ea9a56f9274eef6b640b1e85cfebe6e8cda8c56e",
+    "docs/quality/evidence/batch-round-166/client-checks-initial.json": "bd58900208f0d466b53cfca37981ad721cd2468a0db26f88ad68c753b0f8d3bd",
+    "docs/quality/evidence/batch-round-166/engineering-release-repair.json": "4a38e6a0d0906f716324afca5f1f5fd38c8b95090d6632c363d735e6b73ace87",
+    "docs/quality/evidence/batch-round-166/engineering-initial.json": "44e98650d64239027e5d73dfccca27a9ab74fda5378cbc49c6a238545dd1fc5e",
+    "docs/quality/evidence/batch-round-166/unified-repair.json": "7e7f7a0c7de25512a0345facf730eb640c4f8f3e6698c3648c5e8e32918f3407",
+    "docs/quality/evidence/batch-round-166/monitor-tools-initial.json": "e418b143ce1b23b82c767a37821588b1d41207034d6925460219e2edc6956eb4",
+    "docs/quality/evidence/batch-round-166/test-summary.json": "5d8ec5d112f59b90a566bf5736dc716726b61474eca244e77e44e6e031567287",
+    "docs/quality/evidence/batch-round-166-functional-wave-web-verified/result.json": "38528bc18c4951e4f94089a2a34d18793eeb7051c249e08627344aed7e7c1729",
+    "docs/quality/evidence/batch-round-166-functional-wave-web-verified/media.json": "5214b9f02be62ee1786377888dafaf8e64aeca22e1e68bc7d4472402e61bdc10",
+    "docs/quality/evidence/batch-round-166-functional-wave-web-verified/encoded-media.json": "234228f8171e137b61e0c7093e6e5acb1c02242c1943fe2d40115ae428f46e75",
+    "docs/quality/evidence/batch-round-166-functional-wave-web-verified/interaction-media.json": "f221bd0e26ec3c46e98f1a0c99a58f0d6cf4560018b95236aa15f5acfb85108d",
+    "docs/quality/evidence/batch-round-166-functional-wave-mobile-verified/result.json": "d6b4c7f6b799975d89f2994c8d95d0a1c45f20fb0f0d16bc24bbf7ec8f97a23f",
+    "docs/quality/evidence/batch-round-166-functional-wave-mobile-verified/media.json": "f1ebdcedde5f4d3eb88f76da1f297ffb5f45a1ea96fdff5a24ebf90bef96b6bd",
+    "docs/quality/evidence/batch-round-166-functional-wave-mobile-verified/encoded-media.json": "d0e61df4fd4a841dc4b5bbe75b89dc5a8215615323396385e8727cc49d31826a",
+    "docs/quality/evidence/batch-round-166-functional-wave-mobile-verified/interaction-media.json": "9d87fbaa497dc3f5889e487a66f06f8f02ba0c9204a3419806aae576b1ab8891"
+  },
+  "retained": {
+    "full_regression_increment": 121,
+    "runtime_increment": 163,
+    "runtime_tests_reexecuted": false,
+    "android_artifact_increment": 164,
+    "android_business_increment": 163,
+    "android_schema": 129,
+    "nine_freezes_immutable": true,
+    "real_configurations": "deferred by user"
+  },
+  "inspection_only_adjustment": {
+    "record": "docs/quality/evidence/batch-round-166/post-capture-verifier-repair.json",
+    "sha256": "d4a0804efc218147d8184576b5cfa0fb093c69af01ce7a985406dec3b447556b",
+    "application_source_unchanged": true,
+    "captured_source_sha256": "9017cac3d5d21408d58c3bf9404ffc266fc15435facfd31d923fddaf8e812e69"
+  },
+  "interaction_source_sha256": "64037efc2e9f528ac6ef158d01db3498ef85d4a4919c817f654ad2a07ef75d86",
+  "verification_script_sha256": "89955ebaa6424b7a43f42c6a1ea6c5dbd21c3e0ebc0724385204fd70a97da52d",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "full_goal_complete": false,
+  "production_ready": false
+}

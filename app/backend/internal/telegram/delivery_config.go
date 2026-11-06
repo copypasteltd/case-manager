@@ -5,7 +5,6 @@ import (
 	"errors"
 	"io"
 	"net/url"
-	"os"
 	"regexp"
 	"strings"
 
@@ -34,7 +33,10 @@ func (b DeliveryBot) valid() bool {
 		u.Path == "" && u.Opaque == "" && u.RawPath == "" && b.PortalOrigin == "https://"+u.Host && !strings.ContainsAny(b.PortalOrigin, "\r\n\\")
 }
 func LoadDeliveryBots() ([]DeliveryBot, error) {
-	raw := os.Getenv("CP_TELEGRAM_DELIVERY_BOTS")
+	raw, err := botConfiguration("CP_TELEGRAM_DELIVERY_BOTS")
+	if err != nil {
+		return nil, err
+	}
 	if raw == "" || raw == "disabled" {
 		return nil, nil
 	}

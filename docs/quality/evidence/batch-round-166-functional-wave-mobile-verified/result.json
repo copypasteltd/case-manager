@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T12:39:51.459Z",
+  "finished_at": "2026-11-06T12:40:01.695Z",
+  "checks": [
+    "actual authorized project closeout API returns all four exact subscription calendars",
+    "local effective and future cancellation dates remain separate visible checklist decisions"
+  ],
+  "source_count": 1258,
+  "source_sha256": "756457f758abfeed890cc4fb858ac35490bdebe4256910999b1282c4b939cc0c",
+  "source_after_sha256": "756457f758abfeed890cc4fb858ac35490bdebe4256910999b1282c4b939cc0c",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "9017cac3d5d21408d58c3bf9404ffc266fc15435facfd31d923fddaf8e812e69",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "9017cac3d5d21408d58c3bf9404ffc266fc15435facfd31d923fddaf8e812e69",
+  "build_source_unchanged": true
+}

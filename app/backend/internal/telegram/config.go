@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -49,7 +48,10 @@ func ValidateBots(bots []BotConfig) error {
 	return nil
 }
 func LoadBots() ([]BotConfig, error) {
-	raw := os.Getenv("CP_TELEGRAM_INGRESS")
+	raw, err := botConfiguration("CP_TELEGRAM_INGRESS")
+	if err != nil {
+		return nil, err
+	}
 	if raw == "" || raw == "disabled" {
 		return nil, nil
 	}

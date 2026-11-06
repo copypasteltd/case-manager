@@ -1,0 +1,476 @@
+{
+  "checks": [
+    {
+      "phase": "release",
+      "attempt": "initial",
+      "executed": 42,
+      "expected": 42,
+      "passed": false,
+      "results": [
+        {
+          "case": "test_actual_portable_inspect_cli_checks_the_pinned_archive (test_native_release.BundleTests.test_actual_portable_inspect_cli_checks_the_pinned_archive)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_archive_traversal_links_duplicates_and_devices_are_rejected (test_native_release.BundleTests.test_archive_traversal_links_duplicates_and_devices_are_rejected)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_changed_missing_extra_and_wrong_pinned_digest_are_refused (test_native_release.BundleTests.test_changed_missing_extra_and_wrong_pinned_digest_are_refused)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_declared_size_and_archive_total_bounds (test_native_release.BundleTests.test_declared_size_and_archive_total_bounds)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_deterministic_round_trip_and_complete_inventory (test_native_release.BundleTests.test_deterministic_round_trip_and_complete_inventory)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_extraction_never_overwrites_existing_directory (test_native_release.BundleTests.test_extraction_never_overwrites_existing_directory)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_inventory_order_is_canonical_across_directory_prefixes_and_host_case_rules (test_native_release.BundleTests.test_inventory_order_is_canonical_across_directory_prefixes_and_host_case_rules)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_json_duplicates_nonfinite_and_unsafe_names_fail_closed (test_native_release.BundleTests.test_json_duplicates_nonfinite_and_unsafe_names_fail_closed)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_public_dependency_dotfiles_round_trip_without_allowing_private_names (test_native_release.BundleTests.test_public_dependency_dotfiles_round_trip_without_allowing_private_names)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_stage_preserves_existing_assets_and_blocks_collisions (test_native_release.BundleTests.test_stage_preserves_existing_assets_and_blocks_collisions)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_no_shell_evaluation_or_migration_identity_in_runtime (test_native_release.ConfigurationTests.test_no_shell_evaluation_or_migration_identity_in_runtime)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_releasing_to_another_database_is_not_an_application_upgrade (test_native_release.ConfigurationTests.test_releasing_to_another_database_is_not_an_application_upgrade)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_runtime_and_migration_logins_cannot_be_the_same (test_native_release.ConfigurationTests.test_runtime_and_migration_logins_cannot_be_the_same)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_status_configuration_uses_pid1_credentials_and_separate_roles (test_native_release.ConfigurationTests.test_status_configuration_uses_pid1_credentials_and_separate_roles)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_unknown_files_units_duplicate_env_and_mismatched_database_rejected (test_native_release.ConfigurationTests.test_unknown_files_units_duplicate_env_and_mismatched_database_rejected)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_ci_does_not_forward_provider_or_frontend_injection_values (test_native_release.NativeCommandBoundaryTests.test_ci_does_not_forward_provider_or_frontend_injection_values)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_migration_password_is_not_a_process_argument_or_public_error (test_native_release.NativeCommandBoundaryTests.test_migration_password_is_not_a_process_argument_or_public_error)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_native_process_failures_emit_only_fixed_non_secret_diagnoses (test_native_release.NativeCommandBoundaryTests.test_native_process_failures_emit_only_fixed_non_secret_diagnoses)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_personal_telegram_fixed_credentials_and_complete_catalog (test_native_release.NativeCommandBoundaryTests.test_personal_telegram_fixed_credentials_and_complete_catalog)",
+          "passed": false,
+          "status": "ERROR"
+        },
+        {
+          "case": "test_private_telegram_contract_denies_bad_and_oversized_sources (test_native_release.NativeCommandBoundaryTests.test_private_telegram_contract_denies_bad_and_oversized_sources)",
+          "passed": false,
+          "status": "ERROR"
+        },
+        {
+          "case": "test_audit_events_form_preserved_chains_without_configuration_values (test_native_release.TransitionTests.test_audit_events_form_preserved_chains_without_configuration_values)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_broken_pending_event_chain_refuses_before_recovery_service_effects (test_native_release.TransitionTests.test_broken_pending_event_chain_refuses_before_recovery_service_effects)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_configuration_changed_after_prepare_cannot_be_silently_adopted (test_native_release.TransitionTests.test_configuration_changed_after_prepare_cannot_be_silently_adopted)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_connection_queries_cannot_override_host_database_or_login (test_native_release.TransitionTests.test_connection_queries_cannot_override_host_database_or_login)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_durable_event_tail_recovers_after_pending_record_interrupt (test_native_release.TransitionTests.test_durable_event_tail_recovers_after_pending_record_interrupt)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_failed_stop_keeps_gate_and_does_not_start_any_program (test_native_release.TransitionTests.test_failed_stop_keeps_gate_and_does_not_start_any_program)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_first_install_explicit_migration_and_ordered_service_start (test_native_release.TransitionTests.test_first_install_explicit_migration_and_ordered_service_start)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_interrupted_temporary_event_never_becomes_a_partial_journal_member (test_native_release.TransitionTests.test_interrupted_temporary_event_never_becomes_a_partial_journal_member)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_native_file_lock_excludes_a_concurrent_operator (test_native_release.TransitionTests.test_native_file_lock_excludes_a_concurrent_operator)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_partial_migration_requires_explicit_forward_recovery (test_native_release.TransitionTests.test_partial_migration_requires_explicit_forward_recovery)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_percent_encoded_database_and_safe_tls_options_share_actual_identity (test_native_release.TransitionTests.test_percent_encoded_database_and_safe_tls_options_share_actual_identity)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_percent_encoded_runtime_login_is_not_a_separate_migration_identity (test_native_release.TransitionTests.test_percent_encoded_runtime_login_is_not_a_separate_migration_identity)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_process_interrupt_retains_gate_and_can_restore_previous_exact_release (test_native_release.TransitionTests.test_process_interrupt_retains_gate_and_can_restore_previous_exact_release)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_readiness_failure_restores_exact_previous_program_and_configuration (test_native_release.TransitionTests.test_readiness_failure_restores_exact_previous_program_and_configuration)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_recovery_intent_in_durable_tail_is_not_replaced_by_stale_pending (test_native_release.TransitionTests.test_recovery_intent_in_durable_tail_is_not_replaced_by_stale_pending)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_same_schema_switch_and_explicit_application_only_rollback (test_native_release.TransitionTests.test_same_schema_switch_and_explicit_application_only_rollback)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_stage_public_ancestors_remain_traversable_under_private_umask (test_native_release.TransitionTests.test_stage_public_ancestors_remain_traversable_under_private_umask)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_status_reports_interrupted_operation_without_mutating_release_records (test_native_release.TransitionTests.test_status_reports_interrupted_operation_without_mutating_release_records)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_tampered_artifact_and_changed_configuration_block_recovery (test_native_release.TransitionTests.test_tampered_artifact_and_changed_configuration_block_recovery)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_unrelated_pointer_cannot_be_adopted_by_recovery (test_native_release.TransitionTests.test_unrelated_pointer_cannot_be_adopted_by_recovery)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_upgraded_schema_failure_never_restarts_incompatible_old_program (test_native_release.TransitionTests.test_upgraded_schema_failure_never_restarts_incompatible_old_program)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_wrong_current_schema_and_recovery_identity_have_no_service_effects (test_native_release.TransitionTests.test_wrong_current_schema_and_recovery_identity_have_no_service_effects)",
+          "passed": true,
+          "status": "ok"
+        }
+      ],
+      "private_log_sha256": "3dfeb34ea8a58f117e99f2b25064b3612e1438eae0af62fb71c06d00942a95f8"
+    },
+    {
+      "phase": "release",
+      "attempt": "release-repair",
+      "executed": 42,
+      "expected": 42,
+      "passed": true,
+      "results": [
+        {
+          "case": "test_actual_portable_inspect_cli_checks_the_pinned_archive (test_native_release.BundleTests.test_actual_portable_inspect_cli_checks_the_pinned_archive)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_archive_traversal_links_duplicates_and_devices_are_rejected (test_native_release.BundleTests.test_archive_traversal_links_duplicates_and_devices_are_rejected)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_changed_missing_extra_and_wrong_pinned_digest_are_refused (test_native_release.BundleTests.test_changed_missing_extra_and_wrong_pinned_digest_are_refused)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_declared_size_and_archive_total_bounds (test_native_release.BundleTests.test_declared_size_and_archive_total_bounds)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_deterministic_round_trip_and_complete_inventory (test_native_release.BundleTests.test_deterministic_round_trip_and_complete_inventory)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_extraction_never_overwrites_existing_directory (test_native_release.BundleTests.test_extraction_never_overwrites_existing_directory)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_inventory_order_is_canonical_across_directory_prefixes_and_host_case_rules (test_native_release.BundleTests.test_inventory_order_is_canonical_across_directory_prefixes_and_host_case_rules)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_json_duplicates_nonfinite_and_unsafe_names_fail_closed (test_native_release.BundleTests.test_json_duplicates_nonfinite_and_unsafe_names_fail_closed)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_public_dependency_dotfiles_round_trip_without_allowing_private_names (test_native_release.BundleTests.test_public_dependency_dotfiles_round_trip_without_allowing_private_names)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_stage_preserves_existing_assets_and_blocks_collisions (test_native_release.BundleTests.test_stage_preserves_existing_assets_and_blocks_collisions)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_no_shell_evaluation_or_migration_identity_in_runtime (test_native_release.ConfigurationTests.test_no_shell_evaluation_or_migration_identity_in_runtime)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_releasing_to_another_database_is_not_an_application_upgrade (test_native_release.ConfigurationTests.test_releasing_to_another_database_is_not_an_application_upgrade)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_runtime_and_migration_logins_cannot_be_the_same (test_native_release.ConfigurationTests.test_runtime_and_migration_logins_cannot_be_the_same)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_status_configuration_uses_pid1_credentials_and_separate_roles (test_native_release.ConfigurationTests.test_status_configuration_uses_pid1_credentials_and_separate_roles)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_unknown_files_units_duplicate_env_and_mismatched_database_rejected (test_native_release.ConfigurationTests.test_unknown_files_units_duplicate_env_and_mismatched_database_rejected)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_ci_does_not_forward_provider_or_frontend_injection_values (test_native_release.NativeCommandBoundaryTests.test_ci_does_not_forward_provider_or_frontend_injection_values)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_migration_password_is_not_a_process_argument_or_public_error (test_native_release.NativeCommandBoundaryTests.test_migration_password_is_not_a_process_argument_or_public_error)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_native_process_failures_emit_only_fixed_non_secret_diagnoses (test_native_release.NativeCommandBoundaryTests.test_native_process_failures_emit_only_fixed_non_secret_diagnoses)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_personal_telegram_fixed_credentials_and_complete_catalog (test_native_release.PrivateTelegramReleaseTests.test_personal_telegram_fixed_credentials_and_complete_catalog)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_private_telegram_contract_denies_bad_and_oversized_sources (test_native_release.PrivateTelegramReleaseTests.test_private_telegram_contract_denies_bad_and_oversized_sources)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_audit_events_form_preserved_chains_without_configuration_values (test_native_release.TransitionTests.test_audit_events_form_preserved_chains_without_configuration_values)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_broken_pending_event_chain_refuses_before_recovery_service_effects (test_native_release.TransitionTests.test_broken_pending_event_chain_refuses_before_recovery_service_effects)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_configuration_changed_after_prepare_cannot_be_silently_adopted (test_native_release.TransitionTests.test_configuration_changed_after_prepare_cannot_be_silently_adopted)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_connection_queries_cannot_override_host_database_or_login (test_native_release.TransitionTests.test_connection_queries_cannot_override_host_database_or_login)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_durable_event_tail_recovers_after_pending_record_interrupt (test_native_release.TransitionTests.test_durable_event_tail_recovers_after_pending_record_interrupt)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_failed_stop_keeps_gate_and_does_not_start_any_program (test_native_release.TransitionTests.test_failed_stop_keeps_gate_and_does_not_start_any_program)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_first_install_explicit_migration_and_ordered_service_start (test_native_release.TransitionTests.test_first_install_explicit_migration_and_ordered_service_start)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_interrupted_temporary_event_never_becomes_a_partial_journal_member (test_native_release.TransitionTests.test_interrupted_temporary_event_never_becomes_a_partial_journal_member)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_native_file_lock_excludes_a_concurrent_operator (test_native_release.TransitionTests.test_native_file_lock_excludes_a_concurrent_operator)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_partial_migration_requires_explicit_forward_recovery (test_native_release.TransitionTests.test_partial_migration_requires_explicit_forward_recovery)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_percent_encoded_database_and_safe_tls_options_share_actual_identity (test_native_release.TransitionTests.test_percent_encoded_database_and_safe_tls_options_share_actual_identity)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_percent_encoded_runtime_login_is_not_a_separate_migration_identity (test_native_release.TransitionTests.test_percent_encoded_runtime_login_is_not_a_separate_migration_identity)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_process_interrupt_retains_gate_and_can_restore_previous_exact_release (test_native_release.TransitionTests.test_process_interrupt_retains_gate_and_can_restore_previous_exact_release)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_readiness_failure_restores_exact_previous_program_and_configuration (test_native_release.TransitionTests.test_readiness_failure_restores_exact_previous_program_and_configuration)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_recovery_intent_in_durable_tail_is_not_replaced_by_stale_pending (test_native_release.TransitionTests.test_recovery_intent_in_durable_tail_is_not_replaced_by_stale_pending)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_same_schema_switch_and_explicit_application_only_rollback (test_native_release.TransitionTests.test_same_schema_switch_and_explicit_application_only_rollback)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_stage_public_ancestors_remain_traversable_under_private_umask (test_native_release.TransitionTests.test_stage_public_ancestors_remain_traversable_under_private_umask)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_status_reports_interrupted_operation_without_mutating_release_records (test_native_release.TransitionTests.test_status_reports_interrupted_operation_without_mutating_release_records)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_tampered_artifact_and_changed_configuration_block_recovery (test_native_release.TransitionTests.test_tampered_artifact_and_changed_configuration_block_recovery)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_unrelated_pointer_cannot_be_adopted_by_recovery (test_native_release.TransitionTests.test_unrelated_pointer_cannot_be_adopted_by_recovery)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_upgraded_schema_failure_never_restarts_incompatible_old_program (test_native_release.TransitionTests.test_upgraded_schema_failure_never_restarts_incompatible_old_program)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_wrong_current_schema_and_recovery_identity_have_no_service_effects (test_native_release.TransitionTests.test_wrong_current_schema_and_recovery_identity_have_no_service_effects)",
+          "passed": true,
+          "status": "ok"
+        }
+      ],
+      "private_log_sha256": "b01800098eae29942b60f1a2bb6f0b2093b1a35e55dabb6d685ccd5d47bd113a"
+    },
+    {
+      "phase": "monitor-plan",
+      "attempt": "initial",
+      "executed": 4,
+      "expected": 4,
+      "passed": true,
+      "results": [
+        {
+          "case": "test_generation_reads_no_secrets_and_refuses_overwrite_and_duplicate_json (test_monitoring.MonitoringTests.test_generation_reads_no_secrets_and_refuses_overwrite_and_duplicate_json)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_independent_loopback_stack_with_fixed_network_targets (test_monitoring.MonitoringTests.test_independent_loopback_stack_with_fixed_network_targets)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_target_and_service_input_cannot_inject_or_probe_private_addresses (test_monitoring.MonitoringTests.test_target_and_service_input_cannot_inject_or_probe_private_addresses)",
+          "passed": true,
+          "status": "ok"
+        },
+        {
+          "case": "test_webhook_and_watchdog_have_distinct_controlled_credential_slots (test_monitoring.MonitoringTests.test_webhook_and_watchdog_have_distinct_controlled_credential_slots)",
+          "passed": true,
+          "status": "ok"
+        }
+      ],
+      "private_log_sha256": "bcd3a7027067d8fecbc42f42a743b73c4651a3af5c7b572ce775700ca44470e2"
+    }
+  ],
+  "first_failure_retained": true,
+  "no_systemd_or_real_receiver_execution": true
+}

@@ -79657,6 +79657,41 @@
           "revision_id"
         ]
       },
+      "CloseoutSubscriptionCalendar": {
+        "type": "object",
+        "properties": {
+          "timezone": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "business_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "cancel_effective_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cancellation_effective": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "timezone",
+          "business_date",
+          "cancel_effective_on",
+          "cancellation_effective"
+        ]
+      },
       "ProjectCloseoutItem": {
         "type": "object",
         "properties": {
@@ -79695,6 +79730,9 @@
           },
           "blocking": {
             "type": "boolean"
+          },
+          "subscription_calendar": {
+            "$ref": "#/components/schemas/CloseoutSubscriptionCalendar"
           }
         },
         "additionalProperties": false,

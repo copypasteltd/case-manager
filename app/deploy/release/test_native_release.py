@@ -109,6 +109,7 @@ class Fixture(unittest.TestCase):
         (root / 'deployment.json').write_bytes(canonical({'format': 1, 'units': list(units), 'hostname': 'case.example.invalid'}))
         connection = 'postgresql://fixture@db.example.invalid/' + database + '?sslmode=verify-full'
         (root / 'migration.env').write_text('CP_MIGRATION_DATABASE_URL=' + connection.replace('fixture@', 'migrator@') + '\n')
+        (root / 'telegram-ingress.json').write_text('[]\n', encoding='utf-8')
         for name in units:
             env = catalog.SERVICES.get(name, (None, None, None))[2]
             if env:
@@ -640,6 +641,43 @@ class NativeCommandBoundaryTests(unittest.TestCase):
         clean = child_env_from({'PATH': '/usr/bin', 'CP_DATABASE_URL': 'private', 'OPENAI_API_KEY': 'private',
                                 'VITE_SECRET': 'private', 'TARO_APP_SECRET': 'private', 'AWS_TOKEN': 'private'})
         self.assertEqual(clean, {'PATH': '/usr/bin'})
+
+
+
+class PrivateTelegramReleaseTests(Fixture):
+    def test_personal_telegram_fixed_credentials_and_complete_catalog(self):
+        self.assertIn('notification-telegram', catalog.SERVICES)
+        rendered = catalog.render('notification-telegram')
+        self.assertIn('User=copypaste-notice-tg', rendered)
+        self.assertIn('/current/bin/platform worker-notification-telegram', rendered)
+        self.assertIn('LoadCredential=telegram-delivery.json:/etc/copypaste/active/telegram-delivery.json', rendered)
+        self.assertIn('Environment=CP_TELEGRAM_DELIVERY_BOTS_FILE=%d/telegram-delivery.json', rendered)
+        root = self.configuration('cfg-telegram', units=('api', 'notification-telegram', 'telegram-delivery'))
+        (root / 'telegram-delivery.json').write_text('[{"bot_id":"123456","organization_id":"10000000-0000-4000-8000-000000000001","token":"123456:abcdefghijklmnopqrstuvwxyz123456","portal_origin":"https://case.example.invalid"}]')
+        first, _ = self.coordinator.configuration('cfg-telegram')
+        self.assertIn('notification-telegram', first['units'])
+        (root / 'telegram-delivery.json').write_text('[{"bot_id":"123456","organization_id":"10000000-0000-4000-8000-000000000001","token":"123456:abcdefghijklmnopqrstuvwxyz654321","portal_origin":"https://case.example.invalid"}]')
+        second, _ = self.coordinator.configuration('cfg-telegram')
+        self.assertNotEqual(first['configuration_sha256'], second['configuration_sha256'])
+        path = root / 'notification-telegram.env'
+        path.write_text(path.read_text() + 'CP_TELEGRAM_DELIVERY_BOTS_FILE=/tmp/unapproved\n')
+        with self.assertRaises(ReleaseError):
+            self.coordinator.configuration('cfg-telegram')
+
+    def test_private_telegram_contract_denies_bad_and_oversized_sources(self):
+        from telegram_config import validate_telegram_file
+        root = self.configuration('cfg-private')
+        path = root / 'telegram-ingress.json'
+        self.coordinator.configuration('cfg-private')
+        for raw in ('null', '{}', '[{"bot_id":"123","unknown":"secret-marker"}]', '[]{}', 'x' * 8193,
+                    '[{"bot_id":"1","bot_id":"2"}]'):
+            path.write_text(raw)
+            with self.assertRaises(ReleaseError) as caught:
+                validate_telegram_file(path, 'CP_TELEGRAM_INGRESS')
+            self.assertNotIn('secret-marker', str(caught.exception))
+        path.unlink()
+        with self.assertRaises(ReleaseError):
+            self.coordinator.configuration('cfg-private')
 
 
 if __name__ == '__main__':

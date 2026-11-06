@@ -1,5 +1,17 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+## 增量166实际页面 / Actual166 screens
+
+合成数据、正常本人登录后的原生API与Web/Taro H5页面；两个相反时区、4条订阅核查，其中2条当地未来取消仍阻塞。每组2张截图、实际静音录屏、截图导览与实际录屏GIF。首次失败Web截图保留在独立证据组，不作为通过素材。所有自建浏览器与临时服务已关闭；无模型/云/平台/生产验收。
+
+| 来源 | 截图 | 实际录屏 | 实际录屏GIF | 截图导览GIF |
+|---|---|---|---|---|
+| Web | [日期核查](batch-round-166/batch-round-166-functional-wave-web-verified/web-opposite-calendar.png) | [MP4](batch-round-166/batch-round-166-functional-wave-web-verified/screen-recording.mp4) | [GIF](batch-round-166/batch-round-166-functional-wave-web-verified/interaction.gif) | [导览](batch-round-166/batch-round-166-functional-wave-web-verified/screenshot-tour.gif) |
+| Taro H5 | [日期核查](batch-round-166/batch-round-166-functional-wave-mobile-verified/mobile-opposite-calendar.png) | [MP4](batch-round-166/batch-round-166-functional-wave-mobile-verified/screen-recording.mp4) | [GIF](batch-round-166/batch-round-166-functional-wave-mobile-verified/interaction.gif) | [导览](batch-round-166/batch-round-166-functional-wave-mobile-verified/screenshot-tour.gif) |
+
+[实际核查与失败说明](../quality/166-batch-functional-verification.md)。These are actual synthetic local Web/H5 captures, with exact source/byte binding and owned cleanup; no device or production claim.
+
+
 [增量165 / Current165：固定账期提醒、版本历史和补充协议主合同入口的实际截图、MP4、GIF](batch-round-165/README.md)。Web／共享移动H5使用隔离合成资料；原始侧滑瞬间图保留，指南中的稳定主合同图取自同次实际录屏。自建浏览器、页面服务与原生测试PG均已关闭。
 
 [历史163 / Frozen rc.9：原登录变化与历史重读的实际截图、MP4、GIF](batch-round-163/README.md)。两端均完成自建资源清理；此前失败和中间证据按原源码保留。

@@ -2,19 +2,53 @@ package project
 
 import (
 	"copypaste.hk/platform/internal/fileref"
+	"encoding/json"
 	"time"
 )
+
+type CloseoutSubscriptionCalendar struct {
+	Timezone              string  `json:"timezone"`
+	BusinessDate          string  `json:"business_date"`
+	CancelEffectiveOn     *string `json:"cancel_effective_on"`
+	CancellationEffective bool    `json:"cancellation_effective"`
+}
 
 // Facts are kept in the immutable database record. Clients receive only the
 // authorized checklist, never the raw nested financial/party/file payloads.
 type CloseoutItem struct {
-	Kind     string `json:"kind"`
-	ID       string `json:"id"`
-	Version  int64  `json:"version"`
-	Title    string `json:"title"`
-	State    string `json:"state"`
-	Blocking bool   `json:"blocking"`
+	Kind                 string                        `json:"kind"`
+	ID                   string                        `json:"id"`
+	Version              int64                         `json:"version"`
+	Title                string                        `json:"title"`
+	State                string                        `json:"state"`
+	Blocking             bool                          `json:"blocking"`
+	SubscriptionCalendar *CloseoutSubscriptionCalendar `json:"subscription_calendar,omitempty"`
 }
+
+// The date basis is an allowlisted fact from this exact snapshot. Do not expose
+// nested financial facts or calculate today's date for a historical archive.
+func (i *CloseoutItem) UnmarshalJSON(raw []byte) error {
+	type publicItem CloseoutItem
+	*i = CloseoutItem{}
+	in := struct {
+		*publicItem
+		Facts struct {
+			Calendar *CloseoutSubscriptionCalendar `json:"calendar"`
+		} `json:"facts"`
+	}{publicItem: (*publicItem)(i)}
+	if err := json.Unmarshal(raw, &in); err != nil {
+		return err
+	}
+	if i.Kind == "subscriptions" {
+		if in.Facts.Calendar != nil {
+			i.SubscriptionCalendar = in.Facts.Calendar
+		}
+	} else {
+		i.SubscriptionCalendar = nil
+	}
+	return nil
+}
+
 type CloseoutGroup struct {
 	Kind       string         `json:"kind"`
 	Visibility string         `json:"visibility"`

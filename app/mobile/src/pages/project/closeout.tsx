@@ -104,7 +104,7 @@ function ChecklistGroup({ group, projectID, historical }: { group: Schemas['Proj
       <Text className='cp-small'>{historical ? '归档时' : '完整核查'}共 {group.count} 项 · {group.open_count ? group.open_count + ' 项待处置' : group.kind === 'budgets' ? '参考版本' : '未发现阻塞'}</Text>
       {group.items.length > 0 && <Action secondary onClick={() => setExpanded(old => !old)}>{expanded ? '收起' : '展开'}{closeoutLabels[group.kind]}清单</Action>}
       {expanded && <>
-        {group.items.slice(0, limit).map(item => <Row key={item.id} title={item.title || closeoutLabels[item.kind]} subtitle={'版本 ' + item.version + ' · ' + overviewState(item.state) + ' · ' + (item.blocking ? '待处置' : '未构成阻塞')}
+        {group.items.slice(0, limit).map(item => <Row key={item.id} title={item.title || closeoutLabels[item.kind]} subtitle={'版本 ' + item.version + ' · ' + overviewState(item.state) + ' · ' + (item.blocking ? '待处置' : '未构成阻塞') + (item.kind === 'subscriptions' ? item.subscription_calendar ? ` · 核查业务日 ${item.subscription_calendar.business_date} · ${item.subscription_calendar.timezone} · 取消生效日 ${item.subscription_calendar.cancel_effective_on ?? '未固定'} · ${item.subscription_calendar.cancellation_effective ? '日期条件已满足' : '日期条件未满足'}，其他处置仍按完整核查。` : ' · 原核查未记录订阅日期依据，历史不补算今日状态。' : '')}
           onClick={() => void Taro.navigateTo({ url: overviewItemURL(projectID, item.kind, item.id) })} />)}
         <Text className='cp-muted cp-small'>已读取本类完整清单，当前展示 {Math.min(limit, group.items.length)}/{group.items.length} 项。{historical && '原记录链接按当前权限读取当前资料。'}</Text>
         {limit < group.items.length && <Action secondary onClick={() => setLimit(old => old + 20)}>继续显示本类已核查事项</Action>}
