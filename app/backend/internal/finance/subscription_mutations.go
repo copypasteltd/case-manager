@@ -221,6 +221,12 @@ func (s *Service) mutateSubscription(ctx context.Context, cmd core.Command, id, 
 		if e = authz.Require(ctx, tx, cmd.Actor, action, subscriptionResource(v)); e != nil {
 			return v, e
 		}
+		if cmd.Actor.RunID != "" {
+			if action != "subscription.update" || v.State != "draft" {
+				return v, core.Forbidden()
+			}
+			return v, agentSubscriptionRevisionCommand(ctx, tx, cmd, id)
+		}
 		return v, identity.RequireInteractiveSession(ctx, tx, cmd.Actor, mfa || v.State != "draft")
 	}
 	return s.Commands.Do(ctx, cmd, func(tx pgx.Tx) error { _, e := check(tx); return e }, func(tx pgx.Tx) (core.Result, error) {

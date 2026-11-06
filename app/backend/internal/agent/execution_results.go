@@ -116,7 +116,7 @@ func (s *Service) CompleteExecution(ctx context.Context, lease ExecutionLease, r
 			if receipt.Tool == "commit_organization" && slices.Contains(result.OperationIDs, *receipt.OperationID) {
 				organizationCommitted = true
 			}
-			if (oaRequestTool(receipt.Tool) || receipt.Tool == "create_business_draft") && slices.Contains(result.OperationIDs, *receipt.OperationID) {
+			if (oaRequestTool(receipt.Tool) || receipt.Tool == "create_business_draft" || receipt.Tool == "revise_business_draft") && slices.Contains(result.OperationIDs, *receipt.OperationID) {
 				oaCommitted = true
 			}
 			if postWriteTool(receipt.Tool) && slices.Contains(result.OperationIDs, *receipt.OperationID) {

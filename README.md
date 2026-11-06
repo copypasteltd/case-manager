@@ -1,5 +1,23 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
+**当前开发增量159 / Current development increment159**
+
+先完成整批C01–C06代码和用例，再统一测试、集中修复。新增四类业务完整表单准备，以及秘书按本人固定的原版本、全部商业资料和附件引用修订合同／采购／报销／订阅草稿。跨项目或分类须独立确认目标范围；执行核对原会话近期MFA和当前权限。预览不保存业务，成功须有普通原子新修订回执；审批、生效和资金动作独立办理。
+
+使用：私人会话选择OA助手 → 整理完整新建或选择现有草稿 → 核对全部规范化资料／前后变化 → 明确加入请求 → 本人发送授权 → 核对真实业务新修订并继续办理。Web和微信／抖音／Android共享源码同步，目标schema121；oa-assist1.6.0为L2且仍draft，全部8项Skill保持draft。
+
+详见[设计与使用](docs/development/159-batch-functional-closure.md)、[编号23项差异](docs/delivery/05-functional-closure-159.md)、[本轮实际验证与保留失败](docs/quality/159-batch-functional-verification.md)及[本轮截图／录屏／GIF](docs/media/batch-round-159/README.md)。全部8个冻结版与旧证据保持固定；**rc.8／APK154仍153／113，不含155–159**。开发PG100和现有API不升级，无新APK；158 Android JS超时保留并延期。真实配置后续提供，23包和正式验收继续开放。
+
+Complete the entire C01–C06 implementation/fixture wave before unified testing and batch repairs. Four complete ordinary editors now prepare fixed creation or exact existing-draft revisions, including all commercial fields and pinned evidence. Cross-project/classification changes require separate exact-scope acknowledgement; execution rechecks the original human MFA session, current authority and references. Preparation does not save business data. Only a real ordinary atomic revision receipt establishes success; approval, activation, expense and cash remain independent.
+
+Use a private OA conversation → prepare a full new draft or select an existing one → review every normalized field/change → explicitly attach the fixed intent → authorize the run → inspect the real ordinary revision. Web and shared WeChat/Douyin/Android source target schema121. oa-assist1.6.0 is L2 and remains draft; all8 Skills and all23 acceptance packages stay open.
+
+See [workflow and design](docs/development/159-batch-functional-closure.md), [numbered remaining work](docs/delivery/05-functional-closure-159.md), [actual evidence and retained failures](docs/quality/159-batch-functional-verification.md) and [current media](docs/media/batch-round-159/README.md). All8 freezes remain fixed; **rc.8/APK154 are still business153/schema113 and exclude155–159**. DevelopmentPG100/API stay unchanged. No new APK; the failed158 Android JS indexing attempt is retained/deferred. Real configuration remains deferred by the user.
+
+当前统一检查：Web509、共享移动548＋14＝562、运行器64及Web／微信／抖音构建通过；后端新159夹具8条结果，另3套50条通过结果明确保留。Current checks: Web509, shared mobile562, runtime64; Web/WeChat/Douyin builds pass. Native159 has8 current result records;50 unaffected selected records are explicitly retained.
+
+**以下为历史增量记录 / Prior increment history**
+
 158：[6张当前截图／4段实际录屏／4个截图导览GIF · Current screenshots, recordings and tours](docs/media/batch-round-158/README.md)。
 
 **当前开发增量158 / Current development increment158**

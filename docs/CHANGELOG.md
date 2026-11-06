@@ -1,5 +1,11 @@
 # 更新记录 / Changelog
 
+## 159 · Complete business preparation and exact human draft revision
+
+整批C01–C06先实现，再统一测试和集中修复。复用四类完整业务表单准备新建／修订；新增原版本／范围指纹、单独跨项目／分类确认、原会话近期MFA、当前引用核对、唯一固定写授权和普通原子新修订回执。追加迁移121；oa-assist1.6.0为L2且仍draft，共同契约改变全部8项包摘要。普通保存、审批、启用、费用及现金分别办理。
+
+Complete the entire code/fixture wave before unified checks and batch repairs. Add full typed contract/purchase/claim/subscription preparation, exact existing-draft revisions, separate cross-scope human review and immutable ordinary receipts. Keep all8 freezes,120 old migrations and historical proofs/media; rc.8/APK154 remain153/113, developmentPG100/API unchanged. No new APK or production acceptance; all23 packages and real integrations remain open. See [implementation](development/159-batch-functional-closure.md), [verification](quality/159-batch-functional-verification.md) and [media](media/batch-round-159/README.md).
+
 
 ## 158 · Whole code wave: DOCX contracts, FX journals, ordinary business drafts and derived text
 

@@ -153,7 +153,7 @@ func TestRound158AgentBusinessDrafts(t *testing.T) {
 		}
 		l.Job = *j
 		credentials[l.RunID] = x.Credential
-		post(l, agentworker.ControlPath+"confinement", agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request", "company/draft_business_text", "company/create_business_draft"}}, 200)
+		post(l, agentworker.ControlPath+"confinement", agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request", "company/draft_business_text", "company/create_business_draft", "company/revise_business_draft"}}, 200)
 		if e = service.StartExecution(ctx, l); e != nil {
 			t.Fatal(e)
 		}

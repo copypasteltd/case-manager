@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import{mkdir,readFile,writeFile}from'node:fs/promises';import{createHash}from'node:crypto';import{fileURLToPath}from'node:url';import path from'node:path';
+import{batchBrowser,waitOTP}from'./batch_round_browser159_common.mjs';import{assertNoCredentials,recordViewport}from'./batch_round159_recording.mjs';
+const app=fileURLToPath(new URL('../',import.meta.url));
+await batchBrowser(false,async({page,fixture,checks,evidence})=>{
+ await page.goto(fixture.origin);await page.getByLabel('内部账号',{exact:true}).fill(fixture.alice.login);await page.getByLabel('密码',{exact:true}).fill(fixture.alice.password);await page.getByRole('button',{name:'登录工作空间',exact:true}).click();await page.getByLabel('六位验证码',{exact:true}).fill(await waitOTP(fixture));await page.getByRole('button',{name:'验证并继续',exact:true}).click();await page.getByRole('heading',{name:/工作从这里开始/}).waitFor();
+ const kind='business-revisions',group=process.env.CP_BROWSER_EVIDENCE_GROUP,media=path.resolve(app,'../docs/media/batch-round-159',group);await mkdir(media,{recursive:true});const shots=[];
+ async function shot(name){await assertNoCredentials(page);const target=path.join(media,name+'.png');await page.screenshot({path:target,fullPage:true,mask:[page.locator('input[type="password"],input[maxlength="6"],.cp-secret,[data-private-capability]')]});shots.push({name,file:path.relative(path.resolve(app,'..'),target).replaceAll('\\','/'),sha256:createHash('sha256').update(await readFile(target)).digest('hex')});}
+ const target='/conversations/'+fixture.conversation_id;await page.goto(fixture.origin+target);
+ const premature=[];page.on('request',r=>{const p=new URL(r.url()).pathname;if(r.method()==='POST'&&/^\/v1\/conversations\/[0-9a-f-]+\/runs$/.test(p)||r.method()==='PATCH'&&/^\/v1\/(contracts|purchases|claims|subscriptions)\//.test(p))premature.push(r.method()+' '+p);});
+ const recording=await recordViewport(page,app,group,async()=>{
+  await page.getByLabel('本次秘书任务',{exact:true}).selectOption(fixture.profile_id);await page.getByRole('heading',{name:'修改现有业务草稿',exact:true}).waitFor();await shot('complete-business-preparation');checks.push('Current Web offers exact existing-draft preparation; prior completed run sources remain correctly stale after the negative project-version fixture');
+  for(const k of ['contract','purchase','claim','subscription']){
+   const route={contract:'contracts',purchase:'purchases',claim:'claims',subscription:'subscriptions'}[k],name={contract:'合同',purchase:'采购',claim:'报销',subscription:'订阅'}[k],id=fixture[k+'_id'];
+   const record=await page.evaluate(async p=>{const r=await fetch('/v1/'+p,{credentials:'same-origin'});if(!r.ok)throw new Error('Authorized ordinary source read failed');return(await r.json()).data;},route+'/'+id);
+   const section=page.locator('section').filter({has:page.getByRole('heading',{name:'修改现有业务草稿',exact:true})}).last();
+   await section.getByLabel('现有草稿业务类型',{exact:true}).selectOption(k);await section.getByRole('button',{name:'选择现有'+name+'草稿',exact:true}).click();const picker=page.getByRole('dialog').last();await picker.getByRole('button').filter({hasText:record.title??record.product}).first().click();await section.getByRole('button',{name:'整理此草稿的准确修改',exact:true}).click();const editor=page.getByRole('dialog').last();
+   await editor.getByLabel(k==='contract'?'补充说明':'备注',{exact:true}).fill('合成演示：本人完整核对的'+name+'修订资料，保留准确商业明细和附件。');await editor.getByLabel(k==='contract'?'本次修改依据':k==='subscription'?'登记或修订依据':'修改依据',{exact:true}).fill('合成演示：完整原版本和本次固定修改均经本人核对');await editor.getByRole('button',{name:'预览本次授权资料',exact:true}).click();await section.getByText('操作依据：',{exact:false}).waitFor();await section.getByLabel('我已核对全部前后资料及固定引用，并授权保存此准确新修订；发送时须通过两步验证',{exact:true}).check();await shot(k+'-complete-human-review');await section.getByRole('button',{name:'将准确业务修订加入请求',exact:true}).click();await section.getByText('已加入固定修订：',{exact:false}).waitFor();
+   const after=await page.evaluate(async p=>(await(await fetch('/v1/'+p,{credentials:'same-origin'})).json()).data,route+'/'+id);assert.equal(after.version,record.version,'Preparing/joining a revision must not save ordinary business');assert.equal(after.content_hash,record.content_hash);checks.push('Actual '+k+' full form, normalized complete review, explicit fixed intent and zero premature save');
+   await section.getByRole('button',{name:'移除本次业务修订授权',exact:true}).click();
+  }
+ });
+ assert.deepEqual(premature,[],'Preparing complete business data must never submit a secretary request or save ordinary business');assert.ok(recording.frame_count>=5);await writeFile(path.join(evidence,'media.json'),JSON.stringify({synthetic_data:true,controlled_model:true,real_cloud:false,kind,screenshots:shots,recording},null,2)+'\n');
+},'batch-round-159');

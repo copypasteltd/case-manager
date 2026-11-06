@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-11-06T01:34:03.849476+00:00",
+  "purpose": "Implementation artifact generation, before the unified validation wave",
+  "tests_executed": false,
+  "passed": true,
+  "records": [
+    {
+      "step": "openapi",
+      "exit_code": 0,
+      "output": "{\"artifact\": \"D:\\\\dev\\\\copypasted\\\\\\u5185\\u90e8\\u7ba1\\u7406\\\\docs\\\\development\\\\openapi.json\", \"paths\": 404, \"operations\": 488, \"schemas\": 925}\n"
+    },
+    {
+      "step": "typescript",
+      "exit_code": 0,
+      "output": "✨ openapi-typescript 7.13.0\n🚀 ../docs/development/openapi.json → packages/contracts/src/api.d.ts [3.3s]\n"
+    }
+  ]
+}

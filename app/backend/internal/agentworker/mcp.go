@@ -39,7 +39,7 @@ func toolDefinitions(skill string) []any {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_organization_plan"}})
 	}
 	if skill == "oa-assist" {
-		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_oa_request", "agent_business_draft"}})
+		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_oa_request", "agent_business_draft", "agent_business_revision"}})
 	}
 	if skill == "file-update" {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_contract_body"}})
@@ -233,6 +233,10 @@ func toolDefinitions(skill string) []any {
 		definitions = append(definitions, struct {
 			name, description string
 			schema            any
+		}{"revise_business_draft", "只按 authorized_business_revision 固定的原版本、范围确认与完整资料保存普通合同、采购、报销或订阅草稿新修订。不能更换商业资料、送审、启用订阅、制造费用或付款。参数仅为准确run_id与intent_sha256。", schema(map[string]any{"run_id": uuid, "intent_sha256": str(map[string]any{"pattern": "^[0-9a-f]{64}$"})}, []string{"run_id", "intent_sha256"})})
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
 		}{"create_business_draft", "只按 authorized_business_draft 固定资料创建普通合同、采购、报销或订阅草稿。不能更换商业资料、送审、启用订阅、制造费用或付款。参数仅为准确run_id与intent_sha256。", schema(map[string]any{"run_id": uuid, "intent_sha256": str(map[string]any{"pattern": "^[0-9a-f]{64}$"})}, []string{"run_id", "intent_sha256"})})
 		definitions = append(definitions, struct {
 			name, description string
@@ -301,7 +305,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "create_business_draft", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "create_business_draft", "revise_business_draft", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

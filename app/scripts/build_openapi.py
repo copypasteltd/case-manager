@@ -2450,7 +2450,7 @@ PATHS["/storage/replica-retries"]["get"]["parameters"]=[v for v in PATHS["/stora
 # Increment158: exact ordinary business drafts and reviewed settlement differences.
 SCHEMAS["AgentSourceSnapshot"]["properties"]["type"]["enum"].append("agent_business_draft")
 SCHEMAS["AgentBusinessDraftInput"]={"oneOf":[obj({"kind":{"const":k},"arguments":ref(n)},("kind","arguments")) for k,n in [("contract","ContractCreate"),("purchase","SpendCreate"),("claim","SpendCreate"),("subscription","SubscriptionCreate")]]}
-add("AgentBusinessDraftReceipt",{"id":ID,"kind":enum("contract","purchase","claim","subscription"),"version":VERSION,"revision_id":ID,"content_hash":HASH,"title":NAME,"project_id":nullable(ID),"classification":CLASS,"state":enum("draft"),"content":{"type":"object"},"source_key":NAME},("id","kind","version","revision_id","content_hash","title","project_id","classification","state","content"))
+add("AgentBusinessDraftReceipt",{"id":ID,"kind":enum("contract","purchase","claim","subscription"),"version":VERSION,"revision_id":ID,"content_hash":HASH,"title":NAME,"project_id":nullable(ID),"classification":CLASS,"state":enum("draft"),"content":{"type":"object","additionalProperties":True},"source_key":NAME},("id","kind","version","revision_id","content_hash","title","project_id","classification","state","content"))
 add("AgentBusinessDraftView",{"run_id":ID,"input":ref("AgentBusinessDraftInput"),"intent_sha256":HASH,"status":enum("authorized","committed"),"operation_id":nullable(ID),"result":nullable(ref("AgentBusinessDraftReceipt"))},("run_id","input","intent_sha256","status","operation_id","result"))
 SCHEMAS["RunCreate"]["properties"]["business_draft"]=ref("AgentBusinessDraftInput")
 SCHEMAS["Run"]["properties"]["business_draft"]=ref("AgentBusinessDraftView")
@@ -2480,6 +2480,22 @@ operation("/files/{id}/versions/{version}/derived-retirement","get","readDerived
 operation("/files/{id}/versions/{version}/derived-retirement","post","createDerivedRetirement","DerivedRetirementPlan","DerivedRetirementCreate",201)
 operation("/derived-retirement-plans/{id}/execute","post","executeDerivedRetirement","DerivedRetirementPlan","DerivedRetirementDecision")
 operation("/derived-retirement-plans/{id}/cancel","post","cancelDerivedRetirement","DerivedRetirementPlan","DerivedRetirementDecision")
+
+# Increment159: complete human-prepared ordinary draft revisions.
+SCHEMAS["AgentSourceSnapshot"]["properties"]["type"]["enum"].append("agent_business_revision")
+add("AgentBusinessRevisionBasis",{"kind":enum("contract","purchase","claim","subscription"),"id":ID,"version":VERSION,"revision_id":ID,"content_hash":HASH,"title":NAME,"project_id":nullable(ID),"project_version":{"type":"integer","minimum":0,"maximum":9007199254740991},"classification":CLASS,"scope_sha256":HASH,"cross_scope":{"type":"boolean"},"content":{"type":"object","additionalProperties":True}},("kind","id","version","revision_id","content_hash","title","project_id","project_version","classification","scope_sha256","cross_scope","content"))
+SCHEMAS["AgentBusinessRevisionInput"]={"oneOf":[obj({"kind":{"const":k},"resource_id":ID,"expected_version":VERSION,"base_revision_id":ID,"content_hash":HASH,"scope_sha256":HASH,"cross_scope_reviewed":{"type":"boolean"},"arguments":ref(n)},("kind","resource_id","expected_version","base_revision_id","content_hash","scope_sha256","cross_scope_reviewed","arguments")) for k,n in [("contract","ContractPatch"),("purchase","SpendPatch"),("claim","SpendPatch"),("subscription","SubscriptionPatch")]]}
+add("PreparedBusinessRevision",{"input":ref("AgentBusinessRevisionInput"),"basis":ref("AgentBusinessRevisionBasis")},("input","basis"))
+add("AgentBusinessRevisionView",{"run_id":ID,"input":ref("AgentBusinessRevisionInput"),"basis":ref("AgentBusinessRevisionBasis"),"intent_sha256":HASH,"status":enum("authorized","committed"),"operation_id":nullable(ID),"result":nullable(ref("AgentBusinessDraftReceipt"))},("run_id","input","basis","intent_sha256","status","operation_id","result"))
+SCHEMAS["RunCreate"]["properties"]["business_revision"]=ref("AgentBusinessRevisionInput")
+SCHEMAS["Run"]["properties"]["business_revision"]=ref("AgentBusinessRevisionView")
+operation("/conversations/{id}/business-revisions/{kind}/{resource}","get","getBusinessRevisionBasis","AgentBusinessRevisionBasis")
+for parameter in PATHS["/conversations/{id}/business-revisions/{kind}/{resource}"]["get"]["parameters"]:
+    if parameter.get("name")=="kind":parameter["schema"]=enum("contract","purchase","claim","subscription")
+operation("/conversations/{id}/business-revisions/prepare","post","prepareBusinessRevision","PreparedBusinessRevision","AgentBusinessRevisionInput")
+operation("/conversations/{id}/business-drafts/prepare","post","prepareBusinessDraft","AgentBusinessDraftInput","AgentBusinessDraftInput")
+for path in ["/conversations/{id}/business-revisions/prepare","/conversations/{id}/business-drafts/prepare"]:
+    PATHS[path]["post"]["parameters"]=[v for v in PATHS[path]["post"]["parameters"] if v.get("$ref")!="#/components/parameters/IdempotencyKey"]
 
 document = {
     "openapi": "3.1.0",

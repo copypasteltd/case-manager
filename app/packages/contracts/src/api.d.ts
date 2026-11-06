@@ -6827,6 +6827,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversations/{id}/business-revisions/{kind}/{resource}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getBusinessRevisionBasis */
+        get: operations["getBusinessRevisionBasis"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversations/{id}/business-revisions/prepare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** prepareBusinessRevision */
+        post: operations["prepareBusinessRevision"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversations/{id}/business-drafts/prepare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** prepareBusinessDraft */
+        post: operations["prepareBusinessDraft"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -10424,7 +10475,7 @@ export interface components {
         };
         AgentSourceSnapshot: {
             /** @enum {string} */
-            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report" | "agent_business_draft";
+            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report" | "agent_business_draft" | "agent_business_revision";
             /** Format: uuid */
             id: string;
             version_id?: string | null;
@@ -10911,6 +10962,7 @@ export interface components {
             post_write?: components["schemas"]["AgentPostWriteInput"];
             contract_body?: components["schemas"]["AgentContractBodyInput"];
             business_draft?: components["schemas"]["AgentBusinessDraftInput"];
+            business_revision?: components["schemas"]["AgentBusinessRevisionInput"];
         };
         Run: {
             /** Format: uuid */
@@ -10946,6 +10998,7 @@ export interface components {
             telegram_handoff?: components["schemas"]["TelegramHandoffInput"];
             contract_body?: components["schemas"]["AgentContractBodyView"];
             business_draft?: components["schemas"]["AgentBusinessDraftView"];
+            business_revision?: components["schemas"]["AgentBusinessRevisionView"];
         };
         Message: {
             /** Format: uuid */
@@ -16376,7 +16429,9 @@ export interface components {
             classification: "internal" | "project_restricted" | "confidential";
             /** @enum {string} */
             state: "draft";
-            content: Record<string, never>;
+            content: {
+                [key: string]: unknown;
+            };
             source_key?: string;
         };
         AgentBusinessDraftView: {
@@ -16573,6 +16628,102 @@ export interface components {
         };
         DerivedRetirementPlanResponse: {
             data: components["schemas"]["DerivedRetirementPlan"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentBusinessRevisionBasis: {
+            /** @enum {string} */
+            kind: "contract" | "purchase" | "claim" | "subscription";
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            title: string;
+            project_id: string | null;
+            project_version: number;
+            /** @enum {string} */
+            classification: "internal" | "project_restricted" | "confidential";
+            scope_sha256: string;
+            cross_scope: boolean;
+            content: {
+                [key: string]: unknown;
+            };
+        };
+        AgentBusinessRevisionInput: {
+            /** @constant */
+            kind: "contract";
+            /** Format: uuid */
+            resource_id: string;
+            expected_version: number;
+            /** Format: uuid */
+            base_revision_id: string;
+            content_hash: string;
+            scope_sha256: string;
+            cross_scope_reviewed: boolean;
+            arguments: components["schemas"]["ContractPatch"];
+        } | {
+            /** @constant */
+            kind: "purchase";
+            /** Format: uuid */
+            resource_id: string;
+            expected_version: number;
+            /** Format: uuid */
+            base_revision_id: string;
+            content_hash: string;
+            scope_sha256: string;
+            cross_scope_reviewed: boolean;
+            arguments: components["schemas"]["SpendPatch"];
+        } | {
+            /** @constant */
+            kind: "claim";
+            /** Format: uuid */
+            resource_id: string;
+            expected_version: number;
+            /** Format: uuid */
+            base_revision_id: string;
+            content_hash: string;
+            scope_sha256: string;
+            cross_scope_reviewed: boolean;
+            arguments: components["schemas"]["SpendPatch"];
+        } | {
+            /** @constant */
+            kind: "subscription";
+            /** Format: uuid */
+            resource_id: string;
+            expected_version: number;
+            /** Format: uuid */
+            base_revision_id: string;
+            content_hash: string;
+            scope_sha256: string;
+            cross_scope_reviewed: boolean;
+            arguments: components["schemas"]["SubscriptionPatch"];
+        };
+        PreparedBusinessRevision: {
+            input: components["schemas"]["AgentBusinessRevisionInput"];
+            basis: components["schemas"]["AgentBusinessRevisionBasis"];
+        };
+        AgentBusinessRevisionView: {
+            /** Format: uuid */
+            run_id: string;
+            input: components["schemas"]["AgentBusinessRevisionInput"];
+            basis: components["schemas"]["AgentBusinessRevisionBasis"];
+            intent_sha256: string;
+            /** @enum {string} */
+            status: "authorized" | "committed";
+            operation_id: string | null;
+            result: components["schemas"]["AgentBusinessDraftReceipt"] | null;
+        };
+        AgentBusinessRevisionBasisResponse: {
+            data: components["schemas"]["AgentBusinessRevisionBasis"];
+            meta: components["schemas"]["Meta"];
+        };
+        PreparedBusinessRevisionResponse: {
+            data: components["schemas"]["PreparedBusinessRevision"];
+            meta: components["schemas"]["Meta"];
+        };
+        AgentBusinessDraftInputResponse: {
+            data: components["schemas"]["AgentBusinessDraftInput"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -35467,6 +35618,124 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DerivedRetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getBusinessRevisionBasis: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                kind: "contract" | "purchase" | "claim" | "subscription";
+                resource: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentBusinessRevisionBasisResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    prepareBusinessRevision: {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentBusinessRevisionInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PreparedBusinessRevisionResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    prepareBusinessDraft: {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AgentBusinessDraftInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentBusinessDraftInputResponse"];
                 };
             };
             400: components["responses"]["Failure"];

@@ -1,5 +1,15 @@
 # 代码实施与验证台账
 
+**增量159 · 完整业务准备与准确修订 / Complete preparation and exact revision**
+
+C01–C06全部应用／契约／四端／Skill／迁移／用例代码完成后才统一测试。四类完整表单支持规范化资料准备、准确旧版本修订和独立跨范围确认，原会话近期MFA、当前引用、原子普通新修订／审计及幂等保持。实际Web检查修复了准备表单与秘书请求的提交边界，并确认不提前创建运行或保存业务。
+
+原生159六子用例／8结果通过，另外3套50条结果明确保留；Web509／共享移动562／运行器64通过，受影响Web修复后只重跑3步，其他代码按归档源重建。Web／微信／抖音构建通过；5张PNG、实际MP4／交互GIF及全页概览已交付。源码结构121；PG100／现有API不升级，无新APK，rc.8／APK154仍153／113。全部23包、8项draft Skill及真实配置／正式验收继续开放。
+
+[全部23项](05-functional-closure-159.md) · [设计与使用](../development/159-batch-functional-closure.md) · [检查及保留失败](../quality/159-batch-functional-verification.md) · [当前媒体](../media/batch-round-159/README.md)
+
+此前[158批次](../development/158-batch-functional-closure.md)的DOCX合同正文、固定汇率独立差额、四类草稿新建和已知文字清理保持原证据；本轮不重写其证明／素材。
+
 **增量157 · 完整代码波次后统一调试 / Whole code wave before unified debugging**
 
 全部23个编号已复核并绑定实际代码位置；本轮九项代码任务完成后再统一检查。补齐准确原件Office更新、Skill发布控制、停止草稿恢复放弃与已知对象清理衔接、TG八类请求门户授权，以及独立审核结果回原群。项目可选字段清空和四端共享入口同步。

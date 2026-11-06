@@ -80,6 +80,7 @@ func (s *Server) Handler() http.Handler {
 	s.requestRoutes(mux)
 	s.conversationRoutes(mux)
 	s.agentRunRoutes(mux)
+	s.agentBusinessRevisionRoutes(mux)
 	s.agentRuntimeRoutes(mux)
 	s.agentPlanRoutes(mux)
 	s.agentProjectCatalogRoutes(mux)

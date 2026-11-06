@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "started_at": "2026-11-06T02:17:32.326Z",
+  "finished_at": "2026-11-06T02:18:28.800Z",
+  "checks": [
+    "Current Web offers exact existing-draft preparation; prior completed run sources remain correctly stale after the negative project-version fixture"
+  ],
+  "source_count": 1157,
+  "source_sha256": "4f7d33828d333d7e646c429aa2ecf35705acb5ef7e3849a933a89bfa2628b2b3",
+  "source_after_sha256": "4f7d33828d333d7e646c429aa2ecf35705acb5ef7e3849a933a89bfa2628b2b3",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').last().getByLabel('备注', { exact: true })\u001b[22m\n",
+  "scope": "Web with actual native API/PG, exact DOCX adoption, fixed business drafts, pinned FX journals and known DB-text retirement; controlled model driver and synthetic storage, no real provider/model/device",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "8b76a4f2b69d171229c9de16bd22ae12df8134ad419989c3e82da716bee2f9bf",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "8b76a4f2b69d171229c9de16bd22ae12df8134ad419989c3e82da716bee2f9bf",
+  "build_source_unchanged": true
+}

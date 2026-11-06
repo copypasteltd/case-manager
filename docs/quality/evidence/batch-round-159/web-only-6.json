@@ -1,0 +1,15 @@
+{
+  "affected_file": "app/web/src/ConversationBusinessPreparation.tsx",
+  "retained_original": "docs/quality/evidence/batch-round-159/history/web-business-preparation-before-portal.tsx.source",
+  "retained_original_sha256": "00e3b743cc5f304209c66200af842e82c471e9b321fc20ec60f8808c066749eb",
+  "web_only": true,
+  "backend_mobile_runtime_changed": false,
+  "retained_native_record": "native-tests-batch-5.json",
+  "retained_clients_record": "client-checks-batch-2.json",
+  "replayed_steps": [
+    "typecheck",
+    "web-tests",
+    "web-build"
+  ],
+  "actual_browser_assertion": "No POST /runs or PATCH ordinary business during full-form preparation; current record version/hash unchanged."
+}

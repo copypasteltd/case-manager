@@ -12,10 +12,11 @@ import { semantic } from '../../platform/components';
 import { ChoiceList, FileChoice, PartyChoice, SelectField, TextField } from './controls';
 
 type Picking = 'project' | 'owner' | 'parent' | 'counterparty' | 'body' | 'candidate' | 'quote' | { supplier: string } | { receipt: string };
-export function BusinessEditor({ kind, value, initialProject, me, onCommitted, onCancel }: { kind: BusinessKind; value?: Business; initialProject?: Schemas['Project']; me: Schemas['Me']; onCommitted(value: Business): void; onCancel(): void }) {
+export function BusinessEditor({ kind, value, initialProject, me, onCommitted, onCancel, onPrepared, preparationID, preparationScope }: { kind: BusinessKind; value?: Business; initialProject?: Schemas['Project']; me: Schemas['Me']; onCommitted(value: Business): void; onCancel(): void; preparationID?: string; preparationScope?: {project_id:string|null;classification:Schemas['Conversation']['classification']}; onPrepared?(body: Schemas['ContractCreate'] | Schemas['ContractPatch'] | Schemas['SpendCreate'] | Schemas['SpendPatch']): Promise<void> }) {
   const initial = businessInput(kind, value, me.user.id);
+  if (!value && preparationScope) Object.assign(initial, {project:preparationScope.project_id ?? '',classification:preparationScope.classification});
   if (!value && initialProject) Object.assign(initial, { project: initialProject.id, classification: initialProject.classification });
-  const draft = useFormDraft(me, { kind: ('business-' + kind) as 'business-contract' | 'business-purchase' | 'business-claim', id: value?.id ?? 'new-' + kind + ':' + (initialProject?.id ?? 'all'), version: value?.version ?? 1 }, 'save', { business: initial });
+  const draft = useFormDraft(me, { kind: ('business-' + kind) as 'business-contract' | 'business-purchase' | 'business-claim', id: preparationID ? 'agent-prepare:' + preparationID : value?.id ?? 'new-' + kind + ':' + (initialProject?.id ?? 'all'), version: value?.version ?? 1 }, 'save', { business: initial });
   const input = draft.fields.business!, [evidence, setEvidence] = useState(() => businessEvidence(value));
   const project = useRecord<Schemas['Project']>(input.project && me.actions.includes('project.read') ? '/projects/' + input.project : null);
   const parent = useRecord<Schemas['Contract']>(input.parent ? '/contracts/' + input.parent : null);
@@ -28,7 +29,8 @@ export function BusinessEditor({ kind, value, initialProject, me, onCommitted, o
     const serverIssues = serverBusinessIssues(command.error, input);
     if (serverIssues.length) { setIssues(serverIssues); setValidation(true); locate(serverIssues[0]); }
   }, [command.error]);
-  const disabled = command.busy || command.blocked;
+  const [preparationBusy,setPreparationBusy]=useState(false),[preparationError,setPreparationError]=useState<unknown>();
+  const disabled = command.busy || command.blocked || preparationBusy;
   function change(patch: Partial<BusinessInput>) { draft.update({ business: { ...input, ...patch } }); setFocus(undefined); }
   function changeLine(id: string, patch: Partial<BusinessLine>) { change({ lines: input.lines.map(line => line.id === id ? { ...line, ...patch } : line) }); }
   function changePlan(id: string, patch: Partial<BusinessPlan>) { change({ plans: input.plans.map(plan => plan.id === id ? { ...plan, ...patch } : plan) }); }
@@ -41,7 +43,7 @@ export function BusinessEditor({ kind, value, initialProject, me, onCommitted, o
     if (focusTimer.current) clearTimeout(focusTimer.current);
     focusTimer.current = setTimeout(() => { void Taro.pageScrollTo({ selector: '#oa-' + issue.path, duration: 150 }).catch(() => {}); }, 30);
   }
-  function save() {
+  async function save() {
     if (disabled || initialProject && input.project !== initialProject.id) return;
     const errors = businessIssues(input); setIssues(errors); setValidation(true);
     if (errors.length) { locate(errors[0]); return; }
@@ -50,10 +52,12 @@ export function BusinessEditor({ kind, value, initialProject, me, onCommitted, o
     if (kind === 'contract') {
       const content = contractContent(input, evidence);
       const body: Schemas['ContractCreate'] | Schemas['ContractPatch'] = value ? { ...content, expected_version: value.version, base_revision_id: value.current_revision_id, reason } : { ...content, project_id, classification, parent_contract_id: input.parent || null, reason };
+      if(onPrepared){setPreparationBusy(true);try{await onPrepared(body);draft.forget();}catch(e){setPreparationError(e);}finally{setPreparationBusy(false);}return;}
       void command.submit(businessRoutes[kind] + (value ? '/' + value.id : ''), body, value ? 'PATCH' : 'POST');
     } else {
       const content = spendContent(input, evidence);
       const body: Schemas['SpendCreate'] | Schemas['SpendPatch'] = value ? { ...content, expected_version: value.version, base_revision_id: value.current_revision_id, reason } : { ...content, project_id, classification, reason };
+      if(onPrepared){setPreparationBusy(true);try{await onPrepared(body);draft.forget();}catch(e){setPreparationError(e);}finally{setPreparationBusy(false);}return;}
       void command.submit(businessRoutes[kind] + (value ? '/' + value.id : ''), body, value ? 'PATCH' : 'POST');
     }
   }
@@ -84,7 +88,7 @@ export function BusinessEditor({ kind, value, initialProject, me, onCommitted, o
   }
   return <>
     <Text className='cp-muted cp-small cp-paragraph'>可先保存不完整的业务草稿；送审前由服务器核对完整资料和审批制度。尚未保存的输入仅在本次登录的有界内存中保留。</Text>
-    <DraftNotice restored={draft.restored} /><Notice error={command.error} /><CommandNotice blocked={command.blocked} />
+    <DraftNotice restored={draft.restored} /><Notice error={preparationError ?? command.error} /><CommandNotice blocked={command.blocked} />
     {!draft.retained && <View className='cp-notice cp-danger'><Text>当前输入未进入会话草稿缓存，可能已超过共享的10万字符容量。当前页面仍保留输入，请先保存业务草稿；离开或刷新后不保证恢复。</Text></View>}
     {issues.length > 0 && <View className='cp-notice cp-danger' {...semantic('alert')}><Text className='cp-row-title'>有 {issues.length} 处需要补充或修正</Text>{issues.map(issue => <Action secondary key={issue.path} onClick={() => locate(issue)}>{issue.label}：{issue.message}</Action>)}</View>}
     {evidence.unresolved && <View className='cp-notice cp-danger'><Text>原修订包含当前无法完整读取的引用，保存已停止，避免静默移除依据。请刷新或明确清除全部引用后重新选择。</Text><Action secondary disabled={disabled} onClick={clearEvidence}>清除当前全部往来方与文件引用</Action></View>}
@@ -165,7 +169,7 @@ export function BusinessEditor({ kind, value, initialProject, me, onCommitted, o
     </>}
     <View id='oa-save'><Section title='保存业务草稿'><View className='cp-pad'>{text('notes', kind === 'contract' ? '补充说明' : '备注', 20000, true)}{text('reason', value ? '本次修改依据' : '创建依据', 200, true)}
       <Text className='cp-muted cp-small cp-paragraph'>保存仅生成业务修订。之后还需明确建立申请、核对预览并送审。</Text>
-      <Action disabled={disabled || evidence.unresolved} loading={command.busy} onClick={save}>{value ? '保存为新的业务修订' : '保存' + businessNames[kind] + '草稿'}</Action>
+      <Action disabled={disabled || evidence.unresolved} loading={command.busy} onClick={save}>{onPrepared ? '预览本次授权资料' : value ? '保存为新的业务修订' : '保存' + businessNames[kind] + '草稿'}</Action>
       <Action secondary disabled={command.busy} onClick={onCancel}>返回，保留未提交输入</Action>
     </View></Section></View>
   </>;

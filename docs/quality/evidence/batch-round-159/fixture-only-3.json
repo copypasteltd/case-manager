@@ -1,0 +1,14 @@
+{
+  "affected_file": "app/backend/internal/httpapi/round159_business_revisions_integration_test.go",
+  "retained_original": "docs/quality/evidence/batch-round-159/history/round159-business-fixture-before-mfa.go.source",
+  "retained_original_sha256": "8a8531309da7d09997df5c22fa9a989030fa6bfbc3dd83f4574fe4dec8f4f4ba",
+  "retained_native_record": "native-tests-batch-2.json",
+  "fixture_only": true,
+  "production_mfa_behavior_changed": false,
+  "credential_or_last_step_reset": false,
+  "actual_existing_credential_verification": true,
+  "maximum_wait_seconds": 35,
+  "replay": "TestRound159AgentBusinessRevisions only; the three unaffected native suites retain their exact prior source proof.",
+  "additional_fixture_adjustment": "Publish explicit synthetic internal-classification AI policy as well as the target project policy; production default-deny is unchanged.",
+  "scope_denial_fixture_adjustment": "Capture intent before changing project version, then assert ordinary old-source read and MCP write both deny; do not expect stale source to remain readable."
+}

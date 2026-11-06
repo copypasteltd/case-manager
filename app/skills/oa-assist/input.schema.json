@@ -428,6 +428,37 @@
         "tool",
         "arguments"
       ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "const": "revise_business_draft"
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "run_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "intent_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "run_id",
+            "intent_sha256"
+          ]
+        }
+      },
+      "required": [
+        "tool",
+        "arguments"
+      ]
     }
   ]
 }

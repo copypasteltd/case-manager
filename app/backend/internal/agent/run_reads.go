@@ -137,6 +137,11 @@ func NotificationRun(ctx context.Context, tx pgx.Tx, a core.Actor, id string) (R
 	} else if m != nil {
 		r.Mutation = &m.MutationView
 	}
+	if b, e := readBusinessRevision(ctx, tx, a.OrgID, id); e != nil {
+		return Run{}, e
+	} else if b != nil {
+		r.BusinessRevision = &b.BusinessRevisionView
+	}
 	if b, e := readBusinessDraft(ctx, tx, a.OrgID, id); e != nil {
 		return Run{}, e
 	} else if b != nil {
@@ -314,6 +319,11 @@ func (s *Service) RunEvents(ctx context.Context, a core.Actor, id string, after 
 		return out, e
 	} else if m != nil {
 		out.Run.Mutation = &m.MutationView
+	}
+	if b, e := readBusinessRevision(ctx, tx, a.OrgID, id); e != nil {
+		return out, e
+	} else if b != nil {
+		out.Run.BusinessRevision = &b.BusinessRevisionView
 	}
 	if b, e := readBusinessDraft(ctx, tx, a.OrgID, id); e != nil {
 		return out, e

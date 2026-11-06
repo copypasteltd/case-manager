@@ -1,0 +1,416 @@
+package httpapi
+
+import (
+	"bytes"
+	"context"
+	"copypaste.hk/platform/internal/agent"
+	"copypaste.hk/platform/internal/agentworker"
+	"copypaste.hk/platform/internal/contracts"
+	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/finance"
+	"copypaste.hk/platform/internal/party"
+	"copypaste.hk/platform/internal/spend"
+	"copypaste.hk/platform/internal/workflow"
+	"encoding/json"
+	"fmt"
+	"log/slog"
+	"net/http"
+	"net/http/httptest"
+	"os"
+	"strings"
+	"testing"
+)
+
+// Actual authenticated HTTP, native PostgreSQL and MCP; only native confinement
+// proof is controlled. No model, external object store or Telegram is invoked.
+func TestRound159AgentBusinessRevisions(t *testing.T) {
+	u, evidence, _, _, _ := restorationFixture(t, 15)
+	f := u.f
+	var oaHeaders map[string]string
+	ctx := context.Background()
+	var diagnostics bytes.Buffer
+	f.api.Logger = slog.New(slog.NewTextHandler(&diagnostics, &slog.HandlerOptions{Level: slog.LevelError}))
+	defer func() {
+		if t.Failed() {
+			t.Log(diagnostics.String())
+		}
+	}()
+	exec := func(sql string, args ...any) {
+		t.Helper()
+		if _, e := f.owner.Exec(ctx, sql, args...); e != nil {
+			t.Fatal(e)
+		}
+	}
+	bind := func(user, key string) string {
+		id := core.NewID()
+		exec(`INSERT INTO role_bindings(id,org_id,user_id,role_id,scope_type,classification_ceiling) SELECT $1,$2,$3,id,'org','project_restricted' FROM roles WHERE org_id=$2 AND key=$4`, id, f.org, user, key)
+		return id
+	}
+	for _, key := range []string{"contract_manager", "purchase_manager", "claim_submitter", "request_manager", "party_manager", "agent_user", "subscription_manager"} {
+		bind(f.alice, key)
+	}
+	for _, key := range []string{"contract_reader", "purchase_reader", "claim_reader", "party_manager", "approval_reviewer"} {
+		bind(f.bob, key)
+	}
+	exec("INSERT INTO classification_policies(id,org_id,level,ai_allowed,allowed_channels,policy_version) SELECT $1,$2,'project_restricted',true,ARRAY['web','wechat','douyin','android'],max(policy_version)+1 FROM classification_policies WHERE org_id=$2 AND level='project_restricted'", core.NewID(), f.org)
+	exec("UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", f.org)
+	f.aliceToken = memberMFAToken(f, "alice", "android")
+	admin := f.administratorToken()
+	ptr := func(v string) *string { return &v }
+	rec, res := f.request("POST", "/v1/parties", f.aliceToken, core.NewID(), party.Create{Content: party.Content{Name: "Synthetic OA supplier", Kind: "organization", Relationships: []string{"supplier"}}, ProjectID: evidence.File.ProjectID, Classification: "project_restricted", Reason: "isolated OA fixture"}, nil)
+	expect(t, rec, 201, res)
+	supplier := data[party.Party](t, res)
+	for _, kind := range []string{"contract", "purchase", "claim"} {
+		input := workflow.DefinitionInput{Key: "oa.fixture." + kind, Name: "Real OA " + kind + " reviewer", Kind: kind, Category: "oa.fixture", Currency: "HKD", MinAmount: "0", Enabled: true, SelfApprovalPolicy: "deny", WithdrawalAllowed: true, Reason: "isolated explicit OA approval policy", Steps: []workflow.StepInput{{Title: "Actual employee review", AssignedUserID: f.bob}}}
+		rec, res = f.request("POST", "/v1/workflow-definitions", admin, core.NewID(), input, nil)
+		expect(t, rec, 201, res)
+	}
+	createBusiness := func(kind string) map[string]any {
+		if kind == "contract" {
+			in := contracts.Create{Content: contracts.Content{Title: "OA contract " + core.NewID(), Direction: ptr("payable"), Type: ptr("service"), Category: "oa.fixture", CounterpartyID: &supplier.ID, CounterpartyRevisionID: &supplier.CurrentRevisionID, OwnerID: &f.alice, Currency: ptr("HKD"), Amount: ptr("12.34"), StartDate: ptr("2026-11-01"), EndDate: ptr("2027-10-31"), DraftFileVersionID: &evidence.Version.ID}, ProjectID: evidence.File.ProjectID, Classification: "project_restricted", Reason: "isolated saved business revision"}
+			r, v := f.request("POST", "/v1/contracts", f.aliceToken, core.NewID(), in, oaHeaders)
+			expect(t, r, 201, v)
+			d := data[contracts.Contract](t, v)
+			return map[string]any{"kind": kind, "business_id": d.ID, "expected_business_version": d.Version, "business_revision_id": d.CurrentRevisionID, "business_content_hash": d.ContentHash, "reason": "Only prepare the exact saved business revision"}
+		}
+		content := spend.Content{Title: "OA " + kind + " " + core.NewID(), Category: "oa.fixture", Purpose: "Project tools", OwnerID: &f.alice, Currency: ptr("HKD"), PricingBasis: "net_plus_tax", RoundingMode: "half_up", ExpectedDeliveryDate: ptr("2026-11-20"), SupplierCandidates: []spend.Supplier{{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}}, QuoteVersionIDs: []string{evidence.Version.ID}, Lines: []spend.Line{{ID: core.NewID(), Description: "Project tools", Quantity: ptr("1"), Unit: "licence", UnitPrice: ptr("12.34")}}}
+		path := "/v1/purchases"
+		if kind == "claim" {
+			path = "/v1/claims"
+			content.PricingBasis = "gross_includes_tax"
+			content.ExpectedDeliveryDate = nil
+			content.SupplierCandidates = nil
+			content.QuoteVersionIDs = nil
+			content.PeriodStart = ptr("2026-10-01")
+			content.PeriodEnd = ptr("2026-10-31")
+			content.Lines = []spend.Line{{ID: core.NewID(), Description: "Employee expense", DeclaredAmount: ptr("12.34"), ExpenseDate: ptr("2026-10-15"), Category: "tools", Supplier: &spend.Supplier{PartyID: supplier.ID, RevisionID: supplier.CurrentRevisionID}, ReceiptVersionIDs: []string{evidence.Version.ID}, Funding: "employee_advance", DuplicateReceiptReason: "Reviewed synthetic shared evidence"}}
+		}
+		r, v := f.request("POST", path, f.aliceToken, core.NewID(), spend.Create{Content: content, ProjectID: evidence.File.ProjectID, Classification: "project_restricted", Reason: "isolated saved commercial revision"}, oaHeaders)
+		expect(t, r, 201, v)
+		d := data[spend.Record](t, v)
+		return map[string]any{"kind": kind, "business_id": d.ID, "expected_business_version": d.Version, "business_revision_id": d.CurrentRevisionID, "business_content_hash": d.ContentHash, "reason": "Only prepare the exact saved business revision"}
+	}
+	profile := core.NewID()
+	exec(`INSERT INTO agent_runtime_profiles(id,org_id,skill_id,skill_version,skill_sha256,runtime_version,configuration_sha256,state,max_input_tokens,max_output_tokens,max_tool_calls,timeout_seconds,installed_by,installation_reason) VALUES($1,$2,'oa-assist','controlled-test',repeat('a',64),$3,repeat('b',64),'active',20000,2000,20,600,$4,'Isolated OA fixture only')`, profile, f.org, agentworker.RuntimeVersion, f.admin)
+	rec, res = f.request("POST", "/v1/conversations", f.aliceToken, core.NewID(), agent.ConversationCreate{Type: "private", ProjectID: evidence.File.ProjectID, Title: "Exact OA authorization conversation", MemberIDs: []string{}}, nil)
+	expect(t, rec, 201, res)
+	c := data[agent.Conversation](t, res)
+	service := &agent.Service{DB: f.api.DB}
+	bridge := &agentworker.Bridge{Service: service, Verifier: &controlledNativeVerifier{}, Model: "controlled-test", WorkingDirectory: "controlled-empty-scope"}
+	server := httptest.NewServer(bridge)
+	defer server.Close()
+	bridge.Address = strings.TrimPrefix(server.URL, "http://")
+	credentials := map[string]string{}
+	post := func(l agent.ExecutionLease, path string, body any, status int) map[string]json.RawMessage {
+		t.Helper()
+		raw, _ := json.Marshal(body)
+		req, e := http.NewRequest("POST", server.URL+path, bytes.NewReader(raw))
+		if e != nil {
+			t.Fatal(e)
+		}
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("Authorization", "Bearer "+credentials[l.RunID])
+		response, e := server.Client().Do(req)
+		if e != nil {
+			t.Fatal(e)
+		}
+		defer response.Body.Close()
+		var out map[string]json.RawMessage
+		if e = json.NewDecoder(response.Body).Decode(&out); e != nil {
+			t.Fatal(e)
+		}
+		if response.StatusCode != status {
+			t.Fatalf("owned update bridge returned %d, want %d", response.StatusCode, status)
+		}
+		return out
+	}
+
+	start := func(in agent.RunCreate) (agent.Run, agent.ExecutionLease) {
+		r, v := f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), in, oaHeaders)
+		expect(t, r, 202, v)
+		run := data[agent.Run](t, v)
+		j, e := service.Queue().Claim(ctx, []string{agent.ExecutionJobKind}, "agent", "oa.fixture", agent.ExecutionLeaseDuration)
+		if e != nil || j == nil {
+			t.Fatal(e)
+		}
+		x, e := service.IssueExecution(ctx, *j)
+		if e != nil {
+			t.Fatal(e)
+		}
+		var prepared struct {
+			OA *agent.BusinessRevisionView `json:"authorized_business_revision"`
+		}
+		if json.Unmarshal([]byte(x.PreparedContext), &prepared) != nil || prepared.OA == nil || prepared.OA.RunID != run.ID || strings.Contains(x.PreparedContext, "session_id") {
+			t.Fatal("public exact OA preparation missing or leaked session")
+		}
+		l, e := service.LeaseForCredential(ctx, x.Credential)
+		if e != nil {
+			t.Fatal(e)
+		}
+		l.Job = *j
+		credentials[l.RunID] = x.Credential
+		post(l, agentworker.ControlPath+"confinement", agentworker.NativeProfile{SDKVersion: "0.164.0", ProfileID: profile, Model: bridge.Model, WorkingDirectory: bridge.WorkingDirectory, ConfigurationSHA256: strings.Repeat("b", 64), ExpectedTools: []string{"company/read_resource", "company/inspect_operation", "company/draft_request", "company/submit_request", "company/draft_business_text", "company/create_business_draft", "company/revise_business_draft"}}, 200)
+		if e = service.StartExecution(ctx, l); e != nil {
+			t.Fatal(e)
+		}
+		return run, l
+	}
+	tool := func(l agent.ExecutionLease, key, name string, in any) (json.RawMessage, error) {
+		response := post(l, agentworker.MCPPath, map[string]any{"jsonrpc": "2.0", "id": key, "method": "tools/call", "params": map[string]any{"name": name, "arguments": in}}, 200)
+		if raw := response["error"]; len(raw) > 0 {
+			var rpcError struct {
+				Message string `json:"message"`
+			}
+			if json.Unmarshal(raw, &rpcError) != nil {
+				t.Fatal("invalid MCP error")
+			}
+			return nil, core.Fail(409, rpcError.Message, "Controlled MCP authority denial")
+		}
+		var rpc struct {
+			IsError bool `json:"isError"`
+			Content []struct {
+				Text string `json:"text"`
+			} `json:"content"`
+			Output json.RawMessage `json:"structuredContent"`
+		}
+		if e := json.Unmarshal(response["result"], &rpc); e != nil {
+			t.Fatalf("MCP %s returned no result: %s", name, string(response["error"]))
+		}
+		if rpc.IsError {
+			// Synthetic diagnostics only: a failed atomic tool transaction rolls
+			// back. Repeating its exact key exposes the native error to this test,
+			// never to a model or public API. Successful calls stay ordinary MCP.
+			raw, _ := json.Marshal(in)
+			invocation, _ := json.Marshal(key)
+			_, detail := service.ExecutionTool(ctx, l, "mcp:"+string(invocation), name, raw)
+			if detail != nil {
+				return nil, fmt.Errorf("MCP %s; exact failed-command diagnostic: %w", rpc.Content[0].Text, detail)
+			}
+			return nil, core.Fail(409, rpc.Content[0].Text, "Controlled MCP denial")
+		}
+		return rpc.Output, nil
+	}
+
+	finish := func(l agent.ExecutionLease) {
+		if e := service.FinishStoppedExecution(ctx, l.Job, "RUNTIME_EXECUTOR_EXITED"); e != nil {
+			t.Fatal(e)
+		}
+	}
+	getRun := func(id string) agent.Run {
+		r, v := f.request("GET", "/v1/runs/"+id, f.aliceToken, "", nil, oaHeaders)
+		expect(t, r, 200, v)
+		return data[agent.Run](t, v)
+	}
+
+	_ = createBusiness
+	input := func(v agent.BusinessRevisionInput) agent.RunCreate {
+		return agent.RunCreate{ExpectedVersion: c.Version, ContextSecurityVersion: c.ContextSecurityVersion, ProfileID: profile, ClientMessageID: core.NewID(), Message: "Execute only the fixed complete revision. Approval, activation and money remain human actions.", BusinessRevision: &v}
+	}
+	paths := map[string]string{"contract": "contracts", "purchase": "purchases", "claim": "claims", "subscription": "subscriptions"}
+	prepare := func(kind, id string, review bool) (agent.PreparedBusinessRevision, any) {
+		t.Helper()
+		r, v := f.request("GET", "/v1/conversations/"+c.ID+"/business-revisions/"+kind+"/"+id, f.aliceToken, "", nil, nil)
+		expect(t, r, 200, v)
+		b := data[agent.BusinessRevisionBasis](t, v)
+		var patch any
+		switch kind {
+		case "contract":
+			var content contracts.Content
+			_ = json.Unmarshal(b.Content, &content)
+			content.Notes = "Exact human revised contract prose"
+			content.Amount = ptr("13.45")
+			patch = contracts.Patch{Content: content, ExpectedVersion: b.Version, BaseRevisionID: b.RevisionID, Reason: "Human reviewed complete contract revision"}
+		case "purchase", "claim":
+			var content spend.Content
+			_ = json.Unmarshal(b.Content, &content)
+			content.Notes = "Exact human revised spend prose"
+			content.Lines[0].Description = "Fixed complete commercial line"
+			if kind == "purchase" {
+				content.Lines[0].UnitPrice = ptr("13.45")
+			} else {
+				content.Lines[0].DeclaredAmount = ptr("13.45")
+			}
+			patch = spend.Patch{Content: content, ExpectedVersion: b.Version, BaseRevisionID: b.RevisionID, Reason: "Human reviewed complete spend revision"}
+		case "subscription":
+			var content finance.SubscriptionContent
+			_ = json.Unmarshal(b.Content, &content)
+			content.Notes = "Exact human revised subscription prose"
+			content.Prices = []finance.SubscriptionPriceInput{{EffectiveFrom: "2026-11-01", Currency: "HKD", Amount: "13.45", Plan: "Human selected exact plan"}}
+			patch = finance.SubscriptionPatch{SubscriptionContent: content, Base: finance.Base{ExpectedVersion: b.Version, RevisionID: b.RevisionID, ContentHash: b.ContentHash, Reason: "Human reviewed exact price and calendar"}}
+		}
+		raw, _ := json.Marshal(patch)
+		selected := agent.BusinessRevisionInput{Kind: kind, ResourceID: id, ExpectedVersion: b.Version, BaseRevisionID: b.RevisionID, ContentHash: b.ContentHash, ScopeSHA256: b.ScopeSHA256, CrossScopeReviewed: review, Arguments: raw}
+		r, v = f.request("POST", "/v1/conversations/"+c.ID+"/business-revisions/prepare", f.aliceToken, "", selected, nil)
+		expect(t, r, 200, v)
+		return data[agent.PreparedBusinessRevision](t, v), patch
+	}
+	var mediaIDs = map[string]string{}
+	for _, kind := range []string{"contract", "purchase", "claim", "subscription"} {
+		kind := kind
+		t.Run(kind+" exact ordinary revision and boundaries", func(sub *testing.T) {
+			previous := t
+			t = sub
+			f.t = sub
+			defer func() { t = previous; f.t = previous }()
+			var id string
+			if kind == "subscription" {
+				r, v := f.request("POST", "/v1/subscriptions", f.aliceToken, core.NewID(), finance.SubscriptionCreate{SubscriptionContent: finance.SubscriptionContent{Product: "Exact human subscription original", VendorState: "unknown", ReminderDays: []int{}, VendorEvidenceVersionIDs: []string{}, Prices: []finance.SubscriptionPriceInput{}}, ProjectID: c.ProjectID, Classification: c.Classification, SourceKey: "round159:" + core.NewID(), Reason: "Isolated original draft"}, nil)
+				expect(t, r, 201, v)
+				id = data[finance.Subscription](t, v).ID
+			} else {
+				id = createBusiness(kind)["business_id"].(string)
+			}
+			selected, _ := prepare(kind, id, false)
+			// Preparation must not save, create an intent, or increment the business head.
+			r, v := f.request("GET", "/v1/"+paths[kind]+"/"+id, f.aliceToken, "", nil, nil)
+			expect(t, r, 200, v)
+			var before struct {
+				Version int64 `json:"version"`
+			}
+			raw, _ := json.Marshal(v.Data)
+			_ = json.Unmarshal(raw, &before)
+			if before.Version != selected.Basis.Version {
+				t.Fatal("preview saved ordinary data")
+			}
+			bad := selected.Input
+			bad.ExpectedVersion++
+			r, v = f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), input(bad), nil)
+			expect(t, r, 409, v)
+			run, l := start(input(selected.Input))
+			done := false
+			defer func() {
+				if !done {
+					finish(l)
+				}
+			}()
+			current := getRun(run.ID)
+			if current.BusinessRevision == nil || current.BusinessDraft != nil {
+				t.Fatal("exact revision intent missing")
+			}
+			request := map[string]any{"run_id": run.ID, "intent_sha256": current.BusinessRevision.IntentSHA256}
+			forged := map[string]any{"run_id": run.ID, "intent_sha256": current.BusinessRevision.IntentSHA256, "amount": "999"}
+			if _, e := tool(l, "deny-commercial-override", "revise_business_draft", forged); e == nil {
+				t.Fatal("model changed selected commercial values")
+			}
+			if _, e := tool(l, "deny-other-tool", "create_business_draft", request); e == nil {
+				t.Fatal("revision created a different draft")
+			}
+			out, e := tool(l, "fixed-revision", "revise_business_draft", request)
+			if e != nil {
+				t.Fatal(e)
+			}
+			var receipt struct {
+				Committed   bool                       `json:"committed"`
+				OperationID string                     `json:"operation_id"`
+				Content     agent.BusinessRevisionView `json:"content"`
+			}
+			if json.Unmarshal(out, &receipt) != nil || !receipt.Committed || receipt.Content.Result == nil || receipt.Content.Result.ID != id || receipt.Content.Result.Version != selected.Basis.Version+1 || receipt.Content.Result.State != "draft" {
+				t.Fatal("exact ordinary revision receipt missing", string(out))
+			}
+			again, e := tool(l, "exact-replay", "revise_business_draft", request)
+			if e != nil {
+				t.Fatal(e)
+			}
+			var replay struct {
+				OperationID string `json:"operation_id"`
+			}
+			_ = json.Unmarshal(again, &replay)
+			if replay.OperationID != receipt.OperationID {
+				t.Fatal("retry changed the ordinary operation")
+			}
+			if _, e = f.owner.Exec(ctx, "UPDATE agent_business_revision_intents SET intent_sha256=repeat('e',64) WHERE run_id=$1", run.ID); e == nil {
+				t.Fatal("immutable revision intent changed")
+			}
+			if e = service.CompleteExecution(ctx, l, agent.ProposedResult{Status: "completed", Summary: "准确普通业务新修订已保存；审批、生效及财务动作由本人另行办理", ResourceRefs: []agent.ResultReference{{Type: kind, ID: id}}, SourceRefs: []agent.ResultReference{{Type: "agent_business_revision", ID: run.ID}}, OperationIDs: []string{receipt.OperationID}, MissingFields: []string{}}, agent.ExecutionUsage{}); e != nil {
+				t.Fatal(e)
+			}
+			done = true
+			current = getRun(run.ID)
+			if current.BusinessRevision == nil || current.BusinessRevision.Status != "committed" {
+				t.Fatal("formal run lost revision")
+			}
+			r, v = f.request("GET", "/v1/"+paths[kind]+"/"+id, f.aliceToken, "", nil, nil)
+			expect(t, r, 200, v)
+			raw, _ = json.Marshal(v.Data)
+			var after struct {
+				Version       int64  `json:"version"`
+				Notes         string `json:"notes"`
+				Lifecycle     string `json:"lifecycle"`
+				ApprovalState string `json:"approval_state"`
+				State         string `json:"state"`
+			}
+			_ = json.Unmarshal(raw, &after)
+			if after.Version != before.Version+1 || after.Notes == "" || kind == "subscription" && after.State != "draft" || kind != "subscription" && (after.Lifecycle != "draft" || after.ApprovalState != "not_submitted") {
+				t.Fatal("revision changed state or lost selected values")
+			}
+			// The exact old input is stale after the new ordinary revision.
+			r, v = f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), input(selected.Input), nil)
+			expect(t, r, 409, v)
+			mediaIDs[kind+"_id"] = id
+			mediaIDs[kind+"_run_id"] = run.ID
+		})
+	}
+
+	t.Run("original MFA cannot expire during exact execution", func(sub *testing.T) {
+		previous := t
+		t = sub
+		f.t = sub
+		defer func() { t = previous; f.t = previous }()
+		id := createBusiness("contract")["business_id"].(string)
+		selected, _ := prepare("contract", id, false)
+		run, l := start(input(selected.Input))
+		defer finish(l)
+		current := getRun(run.ID)
+		exec("UPDATE sessions SET mfa_verified_at=clock_timestamp()-interval '30 minutes' WHERE id=(SELECT session_id FROM agent_business_revision_intents WHERE run_id=$1)", run.ID)
+		if _, e := tool(l, "expired-original-mfa", "revise_business_draft", map[string]any{"run_id": run.ID, "intent_sha256": current.BusinessRevision.IntentSHA256}); e == nil {
+			t.Fatal("expired original MFA allowed execution")
+		}
+		f.aliceToken = memberMFAToken(f, "alice", "android")
+	})
+	t.Run("cross scope needs separate authority and exact acknowledgement", func(sub *testing.T) {
+		previous := t
+		t = sub
+		f.t = sub
+		defer func() { t = previous; f.t = previous }()
+		original := c
+		r, v := f.request("POST", "/v1/conversations", f.aliceToken, core.NewID(), agent.ConversationCreate{Type: "private", Title: "Explicit organization scope review", MemberIDs: []string{}}, nil)
+		expect(t, r, 201, v)
+		c = data[agent.Conversation](t, v)
+		defer func() { c = original }()
+		id := mediaIDs["contract_id"]
+		r, v = f.request("GET", "/v1/conversations/"+c.ID+"/business-revisions/contract/"+id, f.aliceToken, "", nil, nil)
+		if r.Code < 400 {
+			t.Fatal("cross scope discovery granted authority")
+		}
+		bind(f.alice, "agent_plan_operator")
+		exec("UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", f.org)
+		// Existing exact role keys are normal deployment roles, never fabricated in production.
+		selected, _ := prepare("contract", id, true)
+		if !selected.Basis.CrossScope {
+			t.Fatal("cross scope not disclosed")
+		}
+		bad := selected.Input
+		bad.CrossScopeReviewed = false
+		r, v = f.request("POST", "/v1/conversations/"+c.ID+"/runs", f.aliceToken, core.NewID(), input(bad), nil)
+		if r.Code < 400 {
+			t.Fatal("missing separate acknowledgement accepted")
+		}
+		run, l := start(input(selected.Input))
+		defer finish(l)
+		exec("UPDATE projects SET version=version+1 WHERE org_id=$1 AND id=$2", f.org, *selected.Basis.ProjectID)
+		current := getRun(run.ID)
+		if current.BusinessRevision == nil {
+			t.Fatal("fixed input disappeared")
+		}
+		if _, e := tool(l, "changed-scope", "revise_business_draft", map[string]any{"run_id": run.ID, "intent_sha256": current.BusinessRevision.IntentSHA256}); e == nil {
+			t.Fatal("project basis changed without stopping exact revision")
+		}
+	})
+	if os.Getenv("CP_BROWSER_BATCH159_FIXTURE") == "1" {
+		values := map[string]any{"fixture_kind": "batch159-business-revisions", "conversation_id": c.ID, "project_id": *c.ProjectID, "profile_id": profile, "completed_run_id": mediaIDs["subscription_run_id"]}
+		for k, v := range mediaIDs {
+			values[k] = v
+		}
+		holdBrowserBusinessFixture(t, f, values)
+	}
+}

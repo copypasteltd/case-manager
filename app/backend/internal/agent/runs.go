@@ -41,22 +41,23 @@ type SourceSnapshot struct {
 	SHA256          string `json:"sha256"`
 }
 type RunCreate struct {
-	TelegramHandoff        *TelegramHandoffInput `json:"telegram_handoff,omitempty"`
-	ExpectedVersion        int64                 `json:"expected_version"`
-	ContextSecurityVersion int64                 `json:"context_security_version"`
-	ProfileID              string                `json:"profile_id"`
-	ClientMessageID        string                `json:"client_message_id"`
-	Message                string                `json:"message"`
-	SkillID                string                `json:"skill_id,omitempty"`
-	ContextRefs            []SourceReference     `json:"context_refs,omitempty"`
-	Mutation               *MutationInput        `json:"mutation,omitempty"`
-	BusinessDraft          *BusinessDraftInput   `json:"business_draft,omitempty"`
-	OARequest              *OARequestInput       `json:"oa_request,omitempty"`
-	PostWrite              *PostWriteInput       `json:"post_write,omitempty"`
-	FileUpdate             *FileUpdateInput      `json:"file_update,omitempty"`
-	FileCreate             *FileCreateInput      `json:"file_create,omitempty"`
-	FileRecovery           *FileRecoveryInput    `json:"file_recovery,omitempty"`
-	ContractBody           *ContractBodyInput    `json:"contract_body,omitempty"`
+	TelegramHandoff        *TelegramHandoffInput  `json:"telegram_handoff,omitempty"`
+	ExpectedVersion        int64                  `json:"expected_version"`
+	ContextSecurityVersion int64                  `json:"context_security_version"`
+	ProfileID              string                 `json:"profile_id"`
+	ClientMessageID        string                 `json:"client_message_id"`
+	Message                string                 `json:"message"`
+	SkillID                string                 `json:"skill_id,omitempty"`
+	ContextRefs            []SourceReference      `json:"context_refs,omitempty"`
+	Mutation               *MutationInput         `json:"mutation,omitempty"`
+	BusinessRevision       *BusinessRevisionInput `json:"business_revision,omitempty"`
+	BusinessDraft          *BusinessDraftInput    `json:"business_draft,omitempty"`
+	OARequest              *OARequestInput        `json:"oa_request,omitempty"`
+	PostWrite              *PostWriteInput        `json:"post_write,omitempty"`
+	FileUpdate             *FileUpdateInput       `json:"file_update,omitempty"`
+	FileCreate             *FileCreateInput       `json:"file_create,omitempty"`
+	FileRecovery           *FileRecoveryInput     `json:"file_recovery,omitempty"`
+	ContractBody           *ContractBodyInput     `json:"contract_body,omitempty"`
 }
 type Run struct {
 	TelegramHandoff   *TelegramHandoffInput `json:"telegram_handoff,omitempty"`
@@ -76,6 +77,7 @@ type Run struct {
 	CanCancel         bool                  `json:"can_cancel"`
 	Outcome           *string               `json:"outcome"`
 	Mutation          *MutationView         `json:"mutation,omitempty"`
+	BusinessRevision  *BusinessRevisionView `json:"business_revision,omitempty"`
 	BusinessDraft     *BusinessDraftView    `json:"business_draft,omitempty"`
 	OARequest         *OARequestView        `json:"oa_request,omitempty"`
 	PostWrite         *PostWriteView        `json:"post_write,omitempty"`
@@ -227,6 +229,18 @@ func sourceSnapshots(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversatio
 			}
 			seen[ref.Type+":"+ref.ID] = true
 			item, err := postWriteSource(ctx, tx, a, c, ref.ID, members)
+			if err != nil {
+				return nil, err
+			}
+			out = append(out, item)
+			continue
+		}
+		if ref.Type == "agent_business_revision" {
+			if !core.ValidID(ref.ID) || ref.VersionID != nil || seen[ref.Type+":"+ref.ID] {
+				return nil, core.Missing()
+			}
+			seen[ref.Type+":"+ref.ID] = true
+			item, err := businessRevisionSource(ctx, tx, a, c, ref.ID, members)
 			if err != nil {
 				return nil, err
 			}
@@ -416,6 +430,11 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				return core.Result{}, err
 			}
 		}
+		if in.BusinessRevision != nil {
+			if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil || in.BusinessDraft != nil {
+				return core.Result{}, core.Invalid("business_revision", "业务草稿修订须作为本次唯一准确写入授权")
+			}
+		}
 		if in.BusinessDraft != nil {
 			if profile.SkillID != "oa-assist" || in.Mutation != nil || in.FileUpdate != nil || in.FileCreate != nil || in.FileRecovery != nil || in.OARequest != nil || in.PostWrite != nil || in.ContractBody != nil {
 				return core.Result{}, core.Invalid("business_draft", "业务草稿新建须作为本次唯一准确写入授权")
@@ -451,7 +470,7 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 			if (ref.Type == "agent_organization_plan" || ref.Type == "agent_directory") && profile.SkillID != "information-organize" {
 				return core.Result{}, core.Invalid("context_refs", "整理计划与目录观察只能交给资料整理任务核对")
 			}
-			if ref.Type == "agent_business_draft" || ref.Type == "agent_contract_body" || ref.Type == "agent_mutation" || ref.Type == "agent_file_update" || ref.Type == "agent_file_create" || ref.Type == "agent_oa_request" || ref.Type == "agent_post_write" {
+			if ref.Type == "agent_business_revision" || ref.Type == "agent_business_draft" || ref.Type == "agent_contract_body" || ref.Type == "agent_mutation" || ref.Type == "agent_file_update" || ref.Type == "agent_file_create" || ref.Type == "agent_oa_request" || ref.Type == "agent_post_write" {
 				return core.Result{}, core.Invalid("context_refs", "更新授权由本次发送建立，历史引用不能代替授权")
 			}
 			if in.Mutation != nil && ref.Type == mutationKind && ref.ID == mutationBase.ID {
@@ -487,6 +506,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		}
 		if in.OARequest != nil {
 			inputParts = append(inputParts, in.OARequest)
+		}
+		if in.BusinessRevision != nil {
+			inputParts = append(inputParts, in.BusinessRevision)
 		}
 		if in.BusinessDraft != nil {
 			inputParts = append(inputParts, in.BusinessDraft)
@@ -525,6 +547,11 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				return core.Result{}, e
 			} else if p != nil {
 				old.PostWrite = &p.PostWriteView
+			}
+			if b, e := readBusinessRevision(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
+				return core.Result{}, e
+			} else if b != nil {
+				old.BusinessRevision = &b.BusinessRevisionView
 			}
 			if b, e := readBusinessDraft(ctx, tx, command.Actor.OrgID, old.ID); e != nil {
 				return core.Result{}, e
@@ -575,6 +602,17 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				return core.Result{}, err
 			}
 			snapshots = append(snapshots, postWriteSnapshot(postWrite))
+		}
+		var businessRevision *businessRevisionRecord
+		if in.BusinessRevision != nil {
+			if len(snapshots) >= 20 {
+				return core.Result{}, core.Invalid("context_refs", "业务草稿授权需要保留一项资料位置")
+			}
+			businessRevision, err = prepareBusinessRevision(ctx, tx, command.Actor, c, runID, *in.BusinessRevision, in.Message)
+			if err != nil {
+				return core.Result{}, err
+			}
+			snapshots = append(snapshots, businessRevisionSnapshot(businessRevision))
 		}
 		var businessDraft *businessDraftRecord
 		if in.BusinessDraft != nil {
@@ -656,6 +694,11 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 				return core.Result{}, err
 			}
 		}
+		if businessRevision != nil {
+			if err = insertBusinessRevision(ctx, tx, businessRevision); err != nil {
+				return core.Result{}, err
+			}
+		}
 		if businessDraft != nil {
 			if err = insertBusinessDraft(ctx, tx, businessDraft); err != nil {
 				return core.Result{}, err
@@ -692,6 +735,9 @@ func (s *Service) CreateRun(ctx context.Context, command core.Command, id string
 		r.TelegramHandoff = in.TelegramHandoff
 		if contractBody != nil {
 			r.ContractBody = &contractBody.ContractBodyView
+		}
+		if businessRevision != nil {
+			r.BusinessRevision = &businessRevision.BusinessRevisionView
 		}
 		if businessDraft != nil {
 			r.BusinessDraft = &businessDraft.BusinessDraftView
