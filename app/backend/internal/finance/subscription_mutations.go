@@ -163,7 +163,11 @@ func (s *Service) CreateSubscription(ctx context.Context, cmd core.Command, in S
 	}
 	v := Subscription{ID: core.NewID(), Version: 1, SourceKey: in.SourceKey, ProjectID: in.ProjectID, CreatorID: cmd.Actor.UserID, Classification: in.Classification, State: "draft", CurrentRevisionID: core.NewID()}
 	authorize := func(tx pgx.Tx) error {
-		if e := identity.RequireInteractiveSession(ctx, tx, cmd.Actor, false); e != nil {
+		if cmd.Actor.RunID != "" {
+			if e := agentSubscriptionCommand(ctx, tx, cmd); e != nil {
+				return e
+			}
+		} else if e := identity.RequireInteractiveSession(ctx, tx, cmd.Actor, false); e != nil {
 			return e
 		}
 		for _, action := range []string{"subscription.read", "subscription.create"} {

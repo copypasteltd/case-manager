@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-11-06T01:06:26.093894+00:00",
+  "method": "Visual inspection of exact full PNGs and decoded GIF frames; long pages retain full originals and readable viewport MP4 links.",
+  "synthetic_data": true,
+  "credentials_observed": false,
+  "layout_findings": "No overlap or clipped dialog content observed; full-page GIF tours reduce long-page text and are explicitly labelled as tours.",
+  "production_acceptance": false,
+  "files": [
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/business-draft-human-authorization.png",
+      "sha256": "cbeb1f1491c422896cd21c6aeee88f2ad9ff29e82947d7b93943444d667f6ec9"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/business-draft-ordinary-receipt.png",
+      "sha256": "22754aba5d8fc37c0c383ca97f533b231d21ddd7097eabfe071c0c1c338d883c"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-derived-retirement-current-3/derived-immutable-receipt.png",
+      "sha256": "aaf8250e17a1b706ede81f706cebceed32416c37e9e86210872a8da99c49d0db"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-docx-contract-current-2/docx-contract-semantic-projection.png",
+      "sha256": "6c570d11e785abb83abea96aec964130b29dd1b95aa7b3fbf31e184c05eb3f47"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/fx-immutable-history.png",
+      "sha256": "64807cb1509d9d220c0fa1b79484bafb6197c5a4db69e50abd0c5952b380b6ac"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/fx-reviewed-basis.png",
+      "sha256": "ce2f45069f17786f95f3d930dc10c891481101746482db4e8352cdb5cec27f58"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/screenshot-tour.gif",
+      "sha256": "65694be7923a77529ffa14db5f08588bec31a63499ec9d1e91d3e49f73e3e41f"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-derived-retirement-current-3/screenshot-tour.gif",
+      "sha256": "576728e52c7246dc6616bed2a1c13de7b263944131dbbfd91839a8e57008180c"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-docx-contract-current-2/screenshot-tour.gif",
+      "sha256": "b0cef8b39cc4728f7c1dad060c6f4a7ec2bfccdd597bbce317337c576a29f05f"
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/screenshot-tour.gif",
+      "sha256": "fa4cc7ad0ed117b86efdafa2eb7f1de8f82c9ff8fd4f7e6a86109861d2a1c8bb"
+    }
+  ]
+}

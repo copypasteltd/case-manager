@@ -14,6 +14,7 @@ func paymentFilter(r *http.Request) (finance.PaymentFilter, error) {
 }
 func (s *Server) paymentRoutes(mux *http.ServeMux) {
 	v := &finance.Service{DB: s.DB, Commands: platform.Commands{DB: s.DB}, Pager: platform.Pager{Key: s.Config.CursorKey}}
+	s.fxJournalRoutes(mux, v)
 	mux.HandleFunc("GET /v1/payments/{id}/fees", read(s, "PaymentFeeLedgerResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := filter(r)
 		if e != nil {

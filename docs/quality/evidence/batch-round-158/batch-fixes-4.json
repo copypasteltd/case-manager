@@ -1,0 +1,24 @@
+{
+  "attempt": "batch-4",
+  "initial_native_record": "docs/quality/evidence/batch-round-158/native-tests-batch-3.json",
+  "findings": [
+    {
+      "id": "F10",
+      "detail": "Fixture MFA Web login uses the protected browser-cookie session rather than a native bearer token. The native fixture had no cookie/CSRF headers.",
+      "fix": "Use the actual Android bearer MFA session for native calls; the independent actual browser check performs its own ordinary Web login/cookie/CSRF flow."
+    },
+    {
+      "id": "F11",
+      "detail": "The derived-retirement trigger referenced files.project_id, but actual file scope is inherited from its folder. Native diagnostics reported PostgreSQL42703.",
+      "fix": "Resolve the exact current folder and use its project scope with the current session channel for ordinary read/manage checks."
+    }
+  ],
+  "application_changes_batched": true,
+  "initial_failures_preserved": true,
+  "affected_selector": "^TestRound158(AgentBusinessDrafts|DerivedTextRetirement)$",
+  "retained_selected_native_record": "docs/quality/evidence/batch-round-158/native-tests-batch-3.json",
+  "retained_source_inventory": "docs/quality/evidence/batch-round-158/native-batch-3-source-inventory.json",
+  "client_inputs_unchanged": true,
+  "tests_passed_claimed": false,
+  "production_acceptance": false
+}

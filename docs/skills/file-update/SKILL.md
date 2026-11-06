@@ -35,3 +35,8 @@ description: 按员工准确授权新建或更新文本、Markdown、Word、Exce
 合同完整正文采用继续限UTF-8文本／Markdown，最多48KiB，文件与合同项目／分类一致。文件提交成功后仍须本人核对完整正文并独立采用；模型没有合同采用、批准、签署或生效工具。Office普通文件创建／更新不自动获得合同正文采用权。
 
 输出符合随包result Schema，包含准确来源、业务对象、操作引用、待补信息与下一步。所有八包仍为draft；门户评估／发布决定不替代真实模型、安装或目标环境验收。
+
+
+## DOCX contract body projection
+
+A contract-body intent may create an exact DOCX through the ordinary bounded Office recipe, scan, promotion and first-version pipeline. The server regenerates the pinned recipe and verifies the complete original binary hash before returning `agent-contract-docx-v1` title/paragraph/table projection and its independent UTF-8 digest. Projection is semantic text, not layout evidence. Keep the original commercial contract basis unchanged; human adoption is a separate ordinary revision with recent MFA and an exact original file-version hash. No XLSX/PPTX contract-body adoption or unverified binary is accepted.

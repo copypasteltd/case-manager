@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "assembled_at": "2026-11-06T01:08:55.127367+00:00",
+  "application_code_changed_between_selected_captures": false,
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-158-docx-contract-current-2/result.json",
+      "sha256": "b57d9cfa839040c0889fbdea0d7dd53a0c69cdf579981e95b6ac0298626dfcd1",
+      "retained_second_capture": true,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "isolated_database_cleanup_passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-158-fx-journals-current-2/result.json",
+      "sha256": "544a4c9b68ec601c17732f8988ff55db034fcf5bd3dbcecc2c6d07cda9ca8cf7",
+      "retained_second_capture": true,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "isolated_database_cleanup_passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-158-business-drafts-current-2/result.json",
+      "sha256": "94a539b3fabd1b5de47c01ca57c0ecc45b0bb798387c3b4caa1d36b626d65d49",
+      "retained_second_capture": true,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "isolated_database_cleanup_passed": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-158-derived-retirement-current-3/result.json",
+      "sha256": "8462ed511cb21931a8d08ff2b78eadfdfb1a98926acdd6e2980acc7db48a70da",
+      "retained_second_capture": false,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "isolated_database_cleanup_passed": true
+    }
+  ],
+  "controller_compatibility_record": "docs/quality/evidence/batch-round-158/browser-fixes-3.json",
+  "earlier_failed_attempts_preserved": true,
+  "android_js_build_passed": false,
+  "new_android_apk": false,
+  "production_acceptance": false
+}

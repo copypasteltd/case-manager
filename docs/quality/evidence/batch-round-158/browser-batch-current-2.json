@@ -1,0 +1,31 @@
+{
+  "started_at": "2026-11-06T00:55:25.931694+00:00",
+  "finished_at": "2026-11-06T00:59:06.221249+00:00",
+  "source_sha256": "b6156b8457faea9b968e3e8a4e229e9d0c6d626ae0b3b4aee3d73909b4d947d0",
+  "source_after_sha256": "b6156b8457faea9b968e3e8a4e229e9d0c6d626ae0b3b4aee3d73909b4d947d0",
+  "results": [
+    {
+      "kind": "docx-contract",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "kind": "fx-journals",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "kind": "business-drafts",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "kind": "derived-retirement",
+      "exit_code": 1,
+      "passed": false
+    }
+  ],
+  "passed": false,
+  "real_integrations_executed": false,
+  "production_acceptance": false
+}

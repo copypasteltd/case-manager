@@ -1,0 +1,15 @@
+{
+  "attempt": "batch-8",
+  "initial_native_record": "docs/quality/evidence/batch-round-158/native-tests-batch-7.json",
+  "finding": {
+    "id": "F16",
+    "detail": "All four ordinary draft commands, replay, completion and formal reads succeeded, then fixture cleanup incorrectly called FinishStoppedExecution on an already completed job and received JOB_LEASE_LOST.",
+    "fix": "Finish only incomplete fixture executions; preserve normal completed-job lease rules. No product authorization or lease rule is weakened."
+  },
+  "fixture_only": true,
+  "application_changes_batched": true,
+  "initial_failures_preserved": true,
+  "client_inputs_unchanged": true,
+  "tests_passed_claimed": false,
+  "production_acceptance": false
+}

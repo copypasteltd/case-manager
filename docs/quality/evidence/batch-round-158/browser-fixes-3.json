@@ -1,0 +1,20 @@
+{
+  "attempt": "derived-current-3",
+  "initial_record": "docs/quality/evidence/batch-round-158-derived-retirement-current-2/result.json",
+  "finding": {
+    "id": "B02",
+    "detail": "The file page legitimately exposes the same action for three versions; the capture selector did not pin its target region.",
+    "fix": "Select the exact notification-linked version region before opening the derived inventory, then scroll its immutable receipt into view."
+  },
+  "old_statement": "await page.getByRole('button',{name:'盘点此版本的派生资料',exact:true}).click();await page.getByRole('heading',{name:'文字已清理',exact:true}).waitFor();",
+  "new_statement": "await page.getByLabel('通知对应版本',{exact:true}).getByRole('button',{name:'盘点此版本的派生资料',exact:true}).click();await page.getByRole('heading',{name:'文字已清理',exact:true}).scrollIntoViewIfNeeded();",
+  "retained_controller": "docs/quality/evidence/batch-round-158/browser-before-fix-2/check_batch_round158.mjs.source",
+  "retained_passed_capture_groups": [
+    "batch-round-158-docx-contract-current-2",
+    "batch-round-158-fx-journals-current-2",
+    "batch-round-158-business-drafts-current-2"
+  ],
+  "compatibility": "Only the derived-retirement branch statement changes; every application source and every other controller branch remains byte-identical. Retain those three passed captures with their archived exact controller, not a replay claim.",
+  "application_code_changed": false,
+  "production_acceptance": false
+}

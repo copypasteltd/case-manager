@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import{mkdir,readFile,writeFile}from'node:fs/promises';import{createHash}from'node:crypto';import{fileURLToPath}from'node:url';import path from'node:path';
+import{batchBrowser,waitOTP}from'./batch_round_browser158_common.mjs';import{assertNoCredentials,recordViewport}from'./batch_round158_recording.mjs';
+const app=fileURLToPath(new URL('../',import.meta.url));
+await batchBrowser(false,async({page,fixture,checks,evidence})=>{
+ await page.goto(fixture.origin);await page.getByLabel('内部账号',{exact:true}).fill(fixture.alice.login);await page.getByLabel('密码',{exact:true}).fill(fixture.alice.password);await page.getByRole('button',{name:'登录工作空间',exact:true}).click();await page.getByLabel('六位验证码',{exact:true}).fill(await waitOTP(fixture));await page.getByRole('button',{name:'验证并继续',exact:true}).click();await page.getByRole('heading',{name:/工作从这里开始/}).waitFor();
+ const kind=fixture.fixture_kind.replace('batch158-',''),group=process.env.CP_BROWSER_EVIDENCE_GROUP,media=path.resolve(app,'../docs/media/batch-round-158',group);await mkdir(media,{recursive:true});const shots=[];
+ async function shot(name){await assertNoCredentials(page);const target=path.join(media,name+'.png');await page.screenshot({path:target,fullPage:true,mask:[page.locator('input[type="password"],input[maxlength="6"],.cp-secret,[data-private-capability]')]});shots.push({name,file:path.relative(path.resolve(app,'..'),target).replaceAll('\\','/'),sha256:createHash('sha256').update(await readFile(target)).digest('hex')});}
+ const recording=await recordViewport(page,app,group,async()=>{
+  if(kind==='fx-journals'){
+   await page.goto(fixture.origin+'/payments/'+fixture.payment_id);await page.getByRole('button',{name:'查阅汇兑差额',exact:true}).click();await page.getByRole('heading',{name:'已撤销',exact:true}).waitFor();await shot('fx-immutable-history');await page.getByRole('button',{name:'登记汇兑差额',exact:true}).click();await page.getByLabel('汇兑原分配',{exact:true}).selectOption({index:1});await page.getByLabel('汇兑固定汇率版本',{exact:true}).selectOption({index:1});await page.getByLabel('损益确认日期',{exact:true}).fill('2025-02-03');await page.getByText('已实现收益',{exact:false}).last().waitFor();await shot('fx-reviewed-basis');checks.push('Current Web reads complete immutable FX history and previews exact remaining dual-unit settlement with a pinned quote book');
+  }else if(kind==='derived-retirement'){
+   await page.goto(fixture.origin+'/files/'+fixture.file_id+'?version='+fixture.version_id);await page.getByRole('button',{name:'盘点此版本的派生资料',exact:true}).click();await page.getByRole('heading',{name:'文字已清理',exact:true}).waitFor();await shot('derived-immutable-receipt');checks.push('Current Web reads exact purged-version DB-text inventory and independent immutable clearance receipt without derived body or storage key disclosure');
+  }else{
+   await page.goto(fixture.origin+'/conversations/'+fixture.conversation_id+'?run='+fixture.completed_run_id);await page.getByLabel('本次秘书任务',{exact:true}).selectOption(fixture.profile_id);
+   if(kind==='business-drafts'){await page.getByRole('button',{name:'填写业务草稿',exact:true}).click();await page.getByLabel('新建业务类型',{exact:true}).selectOption('purchase');await page.getByLabel('业务草稿标题',{exact:true}).fill('合成演示：固定采购草稿');await page.getByLabel('草稿正文与备注',{exact:true}).fill('项目工具资料，商业明细及凭证由本人继续核对。');await page.getByLabel('新建草稿依据',{exact:true}).fill('合成演示：本人固定本次草稿资料');await shot('business-draft-human-authorization');await page.getByText('普通草稿已保存',{exact:false}).first().waitFor();await shot('business-draft-ordinary-receipt');checks.push('Current Web exposes typed fixed human draft creation and exact ordinary committed subscription draft follow-up, independent of approvals or activation');}
+   else{await page.getByText('准确文件的完整内容投影',{exact:false}).first().waitFor();await shot('docx-contract-semantic-projection');checks.push('Current Web reads the exact DOCX original-version semantic projection, independent binary/recipe/projection digests and ordinary human contract adoption');}
+  }
+ });
+ assert.ok(recording.frame_count>=5);await writeFile(path.join(evidence,'media.json'),JSON.stringify({synthetic_data:true,controlled_model:true,real_cloud:false,kind,screenshots:shots,recording},null,2)+'\n');
+},'batch-round-158');

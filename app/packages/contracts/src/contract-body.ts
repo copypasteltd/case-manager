@@ -4,6 +4,11 @@ import type { components } from './api';
 type S = components['schemas'];
 export type ContractBodyInput = S['AgentContractBodyInput'];
 export type ContractBodyView = S['AgentContractBodyView'];
+export const contractDOCXMedia = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+export function contractDOCXProjection(document: S['OfficeDocument']): string {
+  if (document.kind !== 'docx' || typeof document.title !== 'string' || !Array.isArray(document.paragraphs) || !Array.isArray(document.table) || document.paragraphs.some(v => typeof v !== 'string') || document.table.some(row => !Array.isArray(row) || row.some(v => typeof v !== 'string')) || (document.sheets?.length ?? 0) !== 0 || (document.slides?.length ?? 0) !== 0) throw new Error('DOCX正文投影依据无效。');
+  return ['[标题] ' + document.title, ...document.paragraphs.map((v, i) => '[段落 ' + (i + 1) + '] ' + v), ...document.table.flatMap((row, r) => row.map((v, c) => '[单元格 ' + (r + 1) + ':' + (c + 1) + '] ' + v))].join('\n\n');
+}
 const uuid = (value: string) => /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(value);
 const digest = (value: string) => /^[a-f0-9]{64}$/.test(value);
 const canonical = (value: unknown): string => Array.isArray(value) ? '[' + value.map(canonical).join(',') + ']' : value && typeof value === 'object' ? '{' + Object.keys(value).sort().map(key => JSON.stringify(key) + ':' + canonical((value as Record<string, unknown>)[key])).join(',') + '}' : JSON.stringify(value);
@@ -30,6 +35,7 @@ function reason(value: string) {
 }
 
 export function makeContractBody(contract: S['Contract'], folder: S['Folder'], file: S['AgentFileCreateInput'], project: string | null, why: string, conversationClass: string): ContractBodyInput {
+  if (!['text/plain', 'text/markdown', contractDOCXMedia].includes(file.media_type)) throw new Error('完整合同正文请选择文本、Markdown或DOCX文件。');
   if (!contract.can_edit || contract.lifecycle !== 'draft' || !['not_submitted', 'returned', 'withdrawn'].includes(contract.approval_state) || contract.project_id !== project || folder.project_id !== project || conversationClass !== contract.classification || folder.classification !== contract.classification || folder.id !== file.folder_id || folder.version !== file.expected_folder_version || folder.state !== 'active' || !uuid(contract.id) || !uuid(contract.current_revision_id) || !digest(contract.content_hash) || !Number.isSafeInteger(contract.version) || contract.version < 1) throw new Error('请选择会话范围内可编辑的合同，以及分类一致的准确新文件目录。');
   return { contract_id: contract.id, expected_version: contract.version, base_revision_id: contract.current_revision_id, content_hash: contract.content_hash, reason: reason(why) };
 }
@@ -39,10 +45,14 @@ export function contractBodyProven(value: ContractBodyView): boolean {
   if (!uuid(value.run_id) || !digest(value.intent_sha256) || !digest(value.file_intent_sha256) || !input || !before || before.kind !== 'contract' || before.id !== input.contract_id || !uuid(input.contract_id) || !uuid(input.base_revision_id) || !digest(input.content_hash) || before.version !== input.expected_version || before.current_revision_id !== input.base_revision_id || before.content_hash !== input.content_hash || before.lifecycle !== 'draft' || !['not_submitted', 'returned', 'withdrawn'].includes(before.approval_state) || !before.payload?.content || !Number.isSafeInteger(before.version) || before.version < 1) return false;
   if (value.status === 'authorized') return value.file === null && value.operation_id === null && value.result === null;
   const file = value.file, evidence = file?.evidence;
-  if (!file || !evidence || !uuid(file.draft_id) || !uuid(evidence.file_id) || !uuid(evidence.version_id) || evidence.seq !== 1 || evidence.scan_state !== 'clean' || evidence.scan_waiver_ref !== null || !['text/plain', 'text/markdown'].includes(evidence.media_type) || !digest(evidence.sha256) || typeof file.content !== 'string' || !file.content.trim() || !evidence.name?.trim()) return false;
+  if (!file || !evidence || !uuid(file.draft_id) || !uuid(evidence.file_id) || !uuid(evidence.version_id) || evidence.seq !== 1 || evidence.scan_state !== 'clean' || evidence.scan_waiver_ref !== null || !['text/plain', 'text/markdown', contractDOCXMedia].includes(evidence.media_type) || !digest(evidence.sha256) || typeof file.content !== 'string' || !file.content.trim() || !evidence.name?.trim()) return false;
   try {
     const bytes = contractBodyBytes(file.content);
-    if (bytes.length < 1 || bytes.length > 49152 || evidence.size_bytes !== String(bytes.length) || Array.from(sha256(bytes), byte => byte.toString(16).padStart(2, '0')).join('') !== evidence.sha256) return false;
+    if (bytes.length < 1 || bytes.length > 49152) return false;
+    const textSHA = Array.from(sha256(bytes), byte => byte.toString(16).padStart(2, '0')).join('');
+    if (evidence.media_type === contractDOCXMedia) {
+      if (!file.office_document || file.projection_adapter !== 'agent-contract-docx-v1' || !file.recipe_sha256 || !digest(file.recipe_sha256) || textSHA !== file.projection_sha256 || contractDOCXProjection(file.office_document) !== file.content || !/^[1-9][0-9]*$/.test(evidence.size_bytes) || BigInt(evidence.size_bytes) > 1048576n) return false;
+    } else if (file.office_document || file.projection_adapter || file.projection_sha256 || file.recipe_sha256 || evidence.size_bytes !== String(bytes.length) || textSHA !== evidence.sha256) return false;
   } catch { return false; }
   if (value.status === 'file_committed') return value.operation_id === null && value.result === null;
   const saved = value.result;

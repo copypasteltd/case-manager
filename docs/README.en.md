@@ -1,5 +1,19 @@
 # CopyPaste Case Manager · Solution and usage guide
 
+158：[6张当前截图／4段实际录屏／4个截图导览GIF · Current screenshots, recordings and tours](media/batch-round-158/README.md)。
+
+**Current development increment158**
+
+The complete C01–C06 code/fixture wave precedes unified checks and batch repairs. This round adds exact DOCX contract-body adoption, independent FX-difference journals pinned to published quote versions, secretary creation of fixed ordinary contract/purchase/claim/subscription drafts, and observed cleanup of known derived DB text after historical-original purge. Web and shared WeChat/Douyin/Android sources target schema120.
+
+Usage: select exact human scope/data → execute an ordinary command → verify its real receipt → independently review, submit, fulfill and account. FX journals, contract-body adoption and cleanup require explicit human review and recent MFA. A saved draft does not establish approval or cash. See the [implementation and workflow guide](development/158-batch-functional-closure.md), [all23 remaining packages](delivery/05-functional-closure-158.md) and [unified evidence/boundaries](quality/158-batch-functional-verification.md).
+
+All8 Skills remain draft, including file-update1.7.0 and oa-assist1.5.0. Real configuration remains deferred by the user. Eight frozen tags and historical evidence remain unchanged; **rc.8/APK154 is business153/schema113 and excludes155–158**. Current source/client builds are not a new APK or production acceptance.
+
+本轮已执行客户端业务用例 / Current executed client cases: Web **502**，共享移动 **548 + 15 = 563**，运行器 **62**。Web／微信／抖音构建通过；Android JS本机依赖索引900秒超时，按已授权加速要求延期重跑，保留失败；**没有当前Android JS成功或新APK声明**。Backend/current UI evidence is separately source-bound; the timed-out Android JS rebuild remains explicitly deferred.
+
+Earlier delivered evidence / 历史交付证据：
+
 Current unified client checks: **494 Web**, **548 + 7 = 555 shared-mobile** (240/308 in the regular script plus 7 focused cases), **60 runtime**. Web, WeChat and Douyin builds pass. The disclosed native Windows adapter compiles Android JS and verifies 194 current application modules; earlier interrupted builds remain failed records. This does not create an APK. See the 157 verification record for backend/UI scope and limitations.
 
 **Increment157 · Whole-wave implementation before unified checks/debugging**

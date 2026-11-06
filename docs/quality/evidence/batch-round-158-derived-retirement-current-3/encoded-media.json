@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T01:04:09.219117+00:00",
+  "group": "batch-round-158-derived-retirement-current-3",
+  "encoder_sha256": "dfdbbae8585b17507ff7620de0359d58e6400fb18962202f0f2ef18ea0228d6b",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "derived-immutable-receipt",
+      "file": "docs/media/batch-round-158/batch-round-158-derived-retirement-current-3/derived-immutable-receipt.png",
+      "sha256": "aaf8250e17a1b706ede81f706cebceed32416c37e9e86210872a8da99c49d0db"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-derived-retirement-current-3/screen-recording.mp4",
+      "sha256": "702ee3b10e69294972995c29f7b7d02e4ed7cb02fbc8b2aa7b3b0443db8ef200",
+      "size_bytes": 256344
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-derived-retirement-current-3/screenshot-tour.gif",
+      "sha256": "576728e52c7246dc6616bed2a1c13de7b263944131dbbfd91839a8e57008180c",
+      "size_bytes": 86936
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "35",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.500000"
+    }
+  }
+}

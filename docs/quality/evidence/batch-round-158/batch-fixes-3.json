@@ -1,0 +1,40 @@
+{
+  "attempt": "batch-3",
+  "initial_native_record": "docs/quality/evidence/batch-round-158/native-tests-batch-2.json",
+  "findings": [
+    {
+      "id": "F05",
+      "source": "legacy Office-create suite",
+      "detail": "An earlier exact Office-update admission scenario left its accepted run queued, so the next independent scenario correctly rejected a second active run.",
+      "fix": "Cancel the accepted queued run through the ordinary human command before leaving its scenario."
+    },
+    {
+      "id": "F06",
+      "source": "four-kind draft fixture",
+      "detail": "Adding the privileged subscription-manager role requires actual MFA authentication.",
+      "fix": "Acquire a real fixture MFA human session after role installation."
+    },
+    {
+      "id": "F07",
+      "source": "FX fixture",
+      "detail": "System administrator does not grant ordinary finance FX-policy management.",
+      "fix": "Bind the ordinary finance_fx_manager role to the human financial actor and publish with that MFA session."
+    },
+    {
+      "id": "F08",
+      "source": "derived-retirement native HTTP500",
+      "detail": "Shared plan/decision trigger referenced a decision-only NEW field inside one combined condition.",
+      "fix": "Resolve decision-only fields only inside the explicit decision-table branch; capture unexpected fixture diagnostics."
+    },
+    {
+      "id": "F09",
+      "source": "whole-wave shared-boundary review",
+      "detail": "Malformed ready/expiry dates must fail closed instead of relying on NaN comparisons.",
+      "fix": "Validate all three observation timestamps and add malformed-clock assertions to the existing shared case."
+    }
+  ],
+  "application_changes_batched": true,
+  "initial_failures_preserved": true,
+  "tests_passed_claimed": false,
+  "production_acceptance": false
+}

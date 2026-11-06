@@ -55,7 +55,7 @@ func allowedReadTool(skill, tool string) bool {
 	if skill == "information-organize" && organizationTool(tool) {
 		return true
 	}
-	if skill == "oa-assist" && oaRequestTool(tool) {
+	if skill == "oa-assist" && (oaRequestTool(tool) || tool == "create_business_draft") {
 		return true
 	}
 	if skill == "project-briefing" && postWriteTool(tool) {
@@ -161,6 +161,8 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		content, snapshots, err = executionServiceSummary(ctx, tx, st, args)
 	case "draft_post", "publish_post":
 		writeOutput, snapshots, err = s.executionPostWrite(ctx, tx, st, tool, args)
+	case "create_business_draft":
+		writeOutput, snapshots, err = s.executionBusinessDraft(ctx, tx, st, args)
 	case "draft_request", "submit_request", "draft_business_text":
 		writeOutput, snapshots, err = s.executionOARequest(ctx, tx, st, tool, args, observedSources)
 	case "list_directory", "propose_organization", "commit_organization":
@@ -378,7 +380,7 @@ func (s *Service) executionTool(ctx context.Context, lease ExecutionLease, key, 
 		return nil, err
 	}
 	action := "agent.tool.read"
-	if tool == "propose_project" || tool == "create_project" || mutationTool(tool) || fileUpdateTool(tool) || tool == "propose_organization" || tool == "commit_organization" || oaRequestTool(tool) || postWriteTool(tool) {
+	if tool == "propose_project" || tool == "create_project" || mutationTool(tool) || fileUpdateTool(tool) || tool == "propose_organization" || tool == "commit_organization" || oaRequestTool(tool) || tool == "create_business_draft" || postWriteTool(tool) {
 		action = "agent.tool.write"
 	}
 	if err = executionAudit(ctx, tx, st, action, map[string]any{"tool": tool, "invocation_key_sha256": core.Digest([]byte(key)), "source_count": len(snapshots)}); err != nil {
@@ -419,6 +421,12 @@ func executionRead(ctx context.Context, tx pgx.Tx, st executionState, args json.
 			return nil, nil, core.Missing()
 		}
 		return executionPostWriteText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
+	}
+	if in.Type == "agent_business_draft" {
+		if st.Profile.SkillID != "oa-assist" {
+			return nil, nil, runtimeFailure("SKILL_TOOL_DENIED")
+		}
+		return executionBusinessDraftText(ctx, tx, st, in.ID, in.VersionID, in.Offset, in.MaxChars)
 	}
 	if in.Type == "agent_oa_request" {
 		if st.Profile.SkillID != "oa-assist" {

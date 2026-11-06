@@ -1,3 +1,4 @@
+import {DerivedRetirement} from './DerivedRetirement';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -109,7 +110,7 @@ export function RetentionVersionActions({ file, version, canManage }: { file: St
   const [mode, setMode] = useState<'hold' | 'assess' | null>(null);
   if (!canManage) return null;
   return <><button className="button secondary" onClick={() => setMode('assess')}><ClipboardCheck size={16} />保留评估</button>
-    <button className="text-button" onClick={() => setMode('hold')}>保留此版本</button>
+    <button className="text-button" onClick={() => setMode('hold')}>保留此版本</button><DerivedRetirement file={file} version={version}/>
     {mode === 'hold' && <HoldEditor file={file} version={version} onClose={() => setMode(null)} />}
     {mode === 'assess' && <AssessmentDialog file={file} version={version} onClose={() => setMode(null)} />}</>;
 }

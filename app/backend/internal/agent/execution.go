@@ -171,6 +171,9 @@ func (s *Service) executionTx(ctx context.Context, lease ExecutionLease, authori
 		if _, err = s.executionFileIntent(ctx, tx, st); err != nil {
 			return fail(err)
 		}
+		if _, err = executionBusinessDraftState(ctx, tx, st); err != nil {
+			return fail(err)
+		}
 		if _, err = executionOARequestState(ctx, tx, st); err != nil {
 			return fail(err)
 		}
@@ -244,6 +247,11 @@ func (s *Service) IssueExecution(ctx context.Context, j jobqueue.Job) (Execution
 		return Execution{}, e
 	} else if p != nil {
 		preparedValue["authorized_post_write"] = p.PostWriteView
+	}
+	if b, e := executionBusinessDraftState(ctx, tx, st); e != nil {
+		return Execution{}, e
+	} else if b != nil {
+		preparedValue["authorized_business_draft"] = b.BusinessDraftView
 	}
 	if r, e := executionOARequestState(ctx, tx, st); e != nil {
 		return Execution{}, e

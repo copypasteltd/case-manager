@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T00:56:42.191619+00:00",
+  "group": "batch-round-158-docx-contract-current-2",
+  "encoder_sha256": "dfdbbae8585b17507ff7620de0359d58e6400fb18962202f0f2ef18ea0228d6b",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "docx-contract-semantic-projection",
+      "file": "docs/media/batch-round-158/batch-round-158-docx-contract-current-2/docx-contract-semantic-projection.png",
+      "sha256": "6c570d11e785abb83abea96aec964130b29dd1b95aa7b3fbf31e184c05eb3f47"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-docx-contract-current-2/screen-recording.mp4",
+      "sha256": "77d1ca18550db9627f80bc3fbf72cfa5d1266887495d2a1fdacd290e7166d0f5",
+      "size_bytes": 102938
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-docx-contract-current-2/screenshot-tour.gif",
+      "sha256": "b0cef8b39cc4728f7c1dad060c6f4a7ec2bfccdd597bbce317337c576a29f05f",
+      "size_bytes": 70931
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "35",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.500000"
+    }
+  }
+}

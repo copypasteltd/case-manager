@@ -1,5 +1,8 @@
 # Repository working agreement / 仓库工作约定
 
+
+- Increment158 completes the declared whole code wave before unified checks: exact DOCX contract-body adoption with binary/recipe/projection provenance, pinned dual-date independent FX journals, fixed ordinary contract/purchase/claim/subscription secretary drafts, and observed known DB-derived text retirement after original historical purge. Append migrations118–120; file-update1.7.0 and oa-assist1.5.0/all eight Skills remain draft. Preserve all eight freezes and old proofs/media/migrations1–117; rc.8/APK154 remain153/113. Unknown external object identity, complex Office, company policy adoption and actual integrations/formal acceptance stay explicit; all23 packages remain open. See docs/development/158-batch-functional-closure.md. Native batch8 passes two affected suites/45 result records; current client business cases are Web502/mobile563/runtime62, with nine passing client steps and Web/WeChat/Douyin builds. The native900-second Android JS indexing timeout stays explicitly failed/deferred under the user acceleration direction; no current Android JS success or new APK is claimed. Keep its source-bound disposition and close owned browser/temporary services.
+
 - Increment150 freezes exact business149/schema111 as v0.1.0-rc.6 with fresh four-client artifacts, full app source/media and fixed SSH delivery. Preserve all five earlier freezes;149 evidence is retained without replay, native cached outcomes remain explicit. Keep23 work packages, eight draft Skills and actual integration/formal acceptance open. See `docs/development/150-frozen-release-delivery.md`.
 
 

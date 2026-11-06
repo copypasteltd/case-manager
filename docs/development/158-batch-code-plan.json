@@ -1,0 +1,323 @@
+{
+  "increment": 158,
+  "protocol": "Finish the entire declared implementation wave across all numbered packages before unified checks and batch repairs. Configuration, company policy adoption and formal acceptance stay explicit.",
+  "code_wave_complete": true,
+  "base_commit": "cd0f4a96df103840a5a0bff71323109afbb28475",
+  "round_tasks": [
+    {
+      "id": "C01",
+      "title": "DOCX contract full-body drafting and exact human adoption with binary/projection provenance",
+      "state": "implemented"
+    },
+    {
+      "id": "C02",
+      "title": "Pinned FX-book actual settlement difference journals, review/reversal/history across four clients",
+      "state": "implemented"
+    },
+    {
+      "id": "C03",
+      "title": "Secretary fixed ordinary contract/purchase/claim/subscription draft creation and exact receipts",
+      "state": "implemented"
+    },
+    {
+      "id": "C04",
+      "title": "Known derived-data inventory and reviewed retirement with immutable source proof and active-source barriers",
+      "state": "implemented"
+    },
+    {
+      "id": "C05",
+      "title": "Shared API contracts, Web and all shared mobile entry points for all preceding tasks",
+      "state": "implemented"
+    },
+    {
+      "id": "C06",
+      "title": "All-package reconciliation, unified native/client fixtures, source-bound delivery documentation and media",
+      "state": "implemented"
+    }
+  ],
+  "packages": [
+    {
+      "id": "GAP-01",
+      "name": "项目完整管理",
+      "implementation_locations": [
+        "app/backend/internal/project",
+        "app/web/src/Projects.tsx",
+        "app/mobile/src/pages/project"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续核对任务→交付→OA履行→结项／归档的完整跨模块旅程及公司角色／目录配置；增量124已完成项目内六类业务的固定范围新建、查询与返回，不将草稿保存当作审批或财务履行。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-02",
+      "name": "合同、采购、报销",
+      "implementation_locations": [
+        "app/backend/internal/contracts",
+        "app/backend/internal/spend",
+        "app/backend/internal/workflow"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "确定审批人、金额阈值、本人审批和撤回规则；完成合同→采购／报销→费用→付款→结项的正常、退回、冲突及部分履行业务核验。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-03",
+      "name": "费用、订阅与报表",
+      "implementation_locations": [
+        "app/backend/internal/finance",
+        "app/mobile/src/pages/finance"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续确认公司财务制度、汇兑差额会计处理与完整四端财务业务旅程；增量133已补应付合同异币退款本金归属，134已补异币退款费用回转，135已补应收合同异币向外退回的独立本金／实际付出、准确尾差和现金占用，不再把这些子流程列为待开发。公司政策与逐项完整业务验收继续开放。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-04",
+      "name": "文件正文、预览与检索",
+      "implementation_locations": [
+        "app/backend/internal/files",
+        "app/backend/internal/documenttext"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续完成复杂既有Office编辑、原件版式与真实PDF／OCR业务样本的准确性核对和目标原生部署验收。增量129已补有界人工Office正文构建；增量156已补员工固定目录／名称／格式下的秘书DOCX／XLSX／PPTX真实新建、扫描、正式第一版和准确版本入口，不再列为待开发；复杂原件更新与完整文件业务验收仍开放。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-05",
+      "name": "文件生命周期",
+      "implementation_locations": [
+        "app/backend/internal/files",
+        "app/backend/internal/agent/file_abandonment.go"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续处理秘书恢复来源、未知／完成状态不确定的历史对象和复杂派生对象的盘点／受控清理及完整公司制度，真实云另按GAP-20验收。增量132／136保留已知历史原件及授权续作，138已补证据完整的人工完成但未提交对象清理，104覆盖未完成分片；增量156新增Office新建草稿的固定配方／模板／完整字节准确恢复，不代表恢复来源清理或整个生命周期验收。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-06",
+      "name": "账号生命周期",
+      "implementation_locations": [
+        "app/backend/internal/identity",
+        "app/backend/internal/authz"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "确定普通身份核验、账号／凭证交付和实际管理员分工；核对邀请、改密、单用恢复、MFA及会话撤销的普通流程。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-07",
+      "name": "统一后台管理",
+      "implementation_locations": [
+        "app/backend/internal/agent/skill_releases.go",
+        "app/backend/internal/telegram",
+        "app/backend/internal/storageconfig"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续补Skill／模型正式管理、TG更多任务／披露／运行配置与真实送达管理、存储配置及必要运行状态管理；继续完成统一后台真实配置与业务验收。增量139已补组织TG通知元数据查询、固定历史、独立查阅／处理权限及明确人工对账，不再列为待开发；真实Bot和完整TG业务仍开放。 增量140已补组织入站元数据台账、等待原因、完整分页状态历史及准确未启动请求的人工撤回；不再列为待开发。更广入站任务、运行配置、披露及真实TG验收继续开放。 增量141完成组织秘书运行配置元数据台账、准确任务影响核对和不可逆人工停用，四端源码及关键本地验证单独留证；部署核验／安装、真实模型和完整移动旅程仍开放，APK137不含138–141。 增量147已补组织文件复制元数据台账、筛选、准确副本核对及固定人工重试记录；独立运维权限不授予文件内容权限，真实存储配置／云接入仍开放。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-08",
+      "name": "工作台与通知",
+      "implementation_locations": [
+        "app/backend/internal/notification",
+        "app/backend/internal/workbench"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续完成公司整体业务聚合制度、跨模块异常旅程、群／其他渠道规则及真实服务商送达核对。本人TG订阅／固定提示／人工对账153、复制故障／恢复站内通知149及申请／交付跟进155已实现源码子闭环；不将其等同整个工作包验收，真实OSS＋R2另按GAP-20验收。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-09",
+      "name": "真实Codex秘书接入",
+      "implementation_locations": [
+        "app/agent-runtime/src",
+        "app/backend/internal/agentworker"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "配置真实模型、专用凭据和运行配置，跑通请求→推理→工具→回复，并核验真实结果、取消、超时与权限变化。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-10",
+      "name": "AI原生执行隔离",
+      "implementation_locations": [
+        "app/backend/internal/nativeruntime",
+        "app/deploy/native"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "部署并验证增量105原生控制器，在目标服务器核验身份、目录／网络／工具／资源限制、真实证明、取消和重启回收；修复实际环境不兼容。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-11",
+      "name": "AI计划与授权",
+      "implementation_locations": [
+        "app/backend/internal/agent/mutations.go",
+        "app/backend/internal/agent/telegram_handoff.go",
+        "app/backend/internal/agent/telegram_disclosure.go"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "补更多业务动作、可见性影响、跨项目／分类操作及预授权；补TG写入预授权和群外发授权。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-12",
+      "name": "秘书业务工具",
+      "implementation_locations": [
+        "app/backend/internal/agent",
+        "app/backend/internal/agentworker",
+        "app/skills"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续补更广项目／文件／OA工具、复杂既有Office更新、正文模板及真实模型质量验收。142项目规划目录、143订阅组合、145准确行说明建议及人工采用、156员工预授权目录／名称／格式下的DOCX／XLSX／PPTX真实新建与准确恢复已实现，不再重复待开发；合同正文绑定继续限文本，全部业务工具及模型验收仍开放。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-13",
+      "name": "八项Skill正式发布",
+      "implementation_locations": [
+        "app/backend/internal/agent/skill_releases.go",
+        "app/agent-runtime/src/skills.ts",
+        "app/skills"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "八项Skill仍为draft，继续完成新包摘要的真实安装核验、真实模型评测、正式发布／停用／回滚与审计。156将file-update更新为1.5.0 draft、九工具不变，当前运行器60项与实际目录核对不替代真实模型／目标Linux／八包正式验收；其余七包字节保留。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-15",
+      "name": "股东TG入口",
+      "implementation_locations": [
+        "app/backend/internal/telegram",
+        "app/backend/internal/agent/telegram_handoff.go"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "接入实际Bot、群、模型和已发布配置；核对成员身份、群内正文披露、入站接单、授权执行、回复和送达回执。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-16",
+      "name": "Android构建与发布",
+      "implementation_locations": [
+        "app/mobile/android",
+        "app/mobile/src/platform"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "补正式签名、版本升级及发布配置；核对目标SDK／原生库兼容、原生桥接、构建和APK内容。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-18",
+      "name": "四端业务覆盖",
+      "implementation_locations": [
+        "app/web/src",
+        "app/mobile/src",
+        "app/packages/contracts/src"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "继续完成四端正常／失败／冲突及跨模块完整UI旅程和正式交付。155首页申请／交付跟进及156Office新建格式／摘录／准确版本入口已同步Web与三类移动共享源码并完成选定本地检查；本轮Web实际操作单独留证，额外移动UI及新APK延期。开发APK154继续固定业务153／结构113，不包含155／156。真机验证已移出，平台及正式Android验收分别仍GAP-19／16。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-19",
+      "name": "微信／抖音平台接入与发布准备",
+      "implementation_locations": [
+        "app/backend/internal/miniapp",
+        "app/mobile/config",
+        "app/mobile/src/platform"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "补真实AppID、密钥、域名及主体资料；完成平台接口／文件能力适配、源码与构建核对、提审材料和发布配置。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-20",
+      "name": "实际OSS＋R2",
+      "implementation_locations": [
+        "app/backend/internal/objectstore",
+        "app/backend/internal/files",
+        "app/backend/internal/uploadworker"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "配置实际桶与用途身份、CORS、签名、回读、分片、双端复制、失败重试及对象内容校验。 核对原件清理专用身份、OSS真实原生版本、R2独占不可变目录及准确不存在／删除语义。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-23",
+      "name": "服务监控与告警",
+      "implementation_locations": [
+        "app/backend/internal/servicestatus",
+        "app/backend/internal/statusbridge",
+        "app/backend/internal/notification"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "部署实际Prometheus／Blackbox／node_exporter及获准目标，核对目标环境的真实故障、恢复、采集断流unknown、站内告警实际触发及独立外部告警送达。增量130已实现资源采集／签名／四端配置显示／历史；增量131已实现资源主动站内提醒、本人待办、真实恢复与责任重算。剩余为真实目标接入及独立外部通道，不再把已实现代码列为待开发。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-24",
+      "name": "生产部署与发布工程",
+      "implementation_locations": [
+        "app/deploy/release",
+        "app/deploy/native",
+        ".github/workflows"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "接入真实原生CI Runner和目标服务器；配置生产HTTPS、独立身份与密钥，核对全部旧进程归属；完成配置版本、正常结构升级、启动、就绪、失败处置和应用回退的实际发布验收。增量119已提供发布工程代码，137已封存结构103的本地候选包、完整源码和下载摘要；本地冻结包与构建检查不等于目标服务器上线。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-25",
+      "name": "生产数据持久化",
+      "implementation_locations": [
+        "app/backend/migrations",
+        "app/backend/internal/platform"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "接入生产持久PostgreSQL，完成权限、连接、建表／结构升级、事务和实际读写核对；正式文件由OSS＋R2管理。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-26",
+      "name": "依赖安全与产物",
+      "implementation_locations": [
+        "app/package-lock.json",
+        "app/deploy/release"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "增量108完整npm审计已由63项降至0项；继续完成目标正式发布版本的依赖冻结与产物安全核对，覆盖目标Linux部署及正式Android等产物，不以本地开发构建替代生产安全验收。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    },
+    {
+      "id": "GAP-28",
+      "name": "当前范围完整验收",
+      "implementation_locations": [
+        "app/scripts/verify_current_scope.py",
+        "app/scripts/verify_acceptance_applicability.py",
+        "app/scripts/run_batch_round.py"
+      ],
+      "acceptance_state": "open",
+      "original_remaining": "按已逐项分类的30项AC／72项TC继续补全四端业务旅程、可追溯证据、操作手册、平台／正式产物及当前范围发布验收；适用性分类不代表业务测试通过。",
+      "assessment": "Existing application paths and this round changes are reviewed together; a present implementation is not formal acceptance."
+    }
+  ],
+  "full_goal_complete": false,
+  "production_ready": false,
+  "real_configuration": "Deferred by user; do not request credentials again.",
+  "retained_freezes": 8,
+  "retained_apk": 154,
+  "retained_apk_business": 153,
+  "retained_apk_schema": 113,
+  "schema": 120,
+  "validation_state": "not_started",
+  "evidence_policy": "First unified failures remain immutable. Apply one batch of fixes and repeat only checks affected by changed inputs. No production or formal-acceptance claim.",
+  "implementation_boundaries": [
+    "Only current explicit company policy is enforceable; unknown adoption/configuration remains open.",
+    "DOCX contract semantics are projected; original page layout is inspected in the original file.",
+    "FX journal is an explicit independent reviewed accounting basis, not an automatic company policy.",
+    "Secretary creates fixed typed ordinary drafts only; no approval, activation, cost or cash inferred.",
+    "Known DB plaintext may be retired only after original historical purge; external keys without trusted native identity remain blocked.",
+    "Existing frozen APK154 remains business153/schema113; current shared mobile source and JS artifact are not a new APK."
+  ]
+}

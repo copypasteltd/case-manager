@@ -1,0 +1,26 @@
+{
+  "attempt": "batch-5",
+  "initial_native_record": "docs/quality/evidence/batch-round-158/native-tests-batch-4.json",
+  "findings": [
+    {
+      "id": "F12",
+      "detail": "SELECT FOR UPDATE on immutable plans required an UPDATE privilege that the application deliberately does not have.",
+      "fix": "Serialize all decisions through the existing ordinary file lock, re-read the immutable plan, and preserve immutable-table SELECT/INSERT-only grants."
+    },
+    {
+      "id": "F13",
+      "detail": "Native subscription fixture omitted the explicit unknown supplier state and non-null bounded arrays required by the actual API.",
+      "fix": "Use the complete existing ordinary minimal subscription payload."
+    },
+    {
+      "id": "F14",
+      "detail": "The first actual draft tool execution returned an opaque INTERNAL_ERROR; the native underlying cause needs inspection.",
+      "fix": "Retain the MCP failure; on fixture failure only, diagnose the same exact failed atomic command key through the internal service. Successful commands still use MCP. This is synthetic test-only instrumentation, not a public/model error disclosure."
+    }
+  ],
+  "application_changes_batched": true,
+  "initial_failures_preserved": true,
+  "client_inputs_unchanged": true,
+  "tests_passed_claimed": false,
+  "production_acceptance": false
+}

@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+
+## 158 · Whole code wave: DOCX contracts, FX journals, ordinary business drafts and derived text
+
+增量158构建边界：Web／微信／抖音通过；Android JS900秒索引超时，保留失败并延期，无新APK。Current158 Android JS indexing timed out and is explicitly deferred.
+
+先完成本轮C01–C06全部应用／四端／约束／Skill／测试代码，再统一检查、集中修复和重测受影响项。新增准确DOCX合同正文独立人工采用，固定人工汇率版本的费用日／付款日独立汇兑差额台账，秘书按固定类型化资料创建四类普通草稿，以及原件历史清理后已知DB文字的完整盘点、观察、执行／取消及永久屏障。正常追加迁移118–120。
+
+Complete all declared code/fixtures before unified checks and repairs. Add exact DOCX contract adoption, pinned dual-date independent FX journals, four fixed ordinary secretary draft kinds, and observed known DB-text retirement after original historical purge. All existing commercial/cash facts, current authority and immutable receipts remain separate.
+
+file-update1.7.0、oa-assist1.5.0及全部8项Skill仍draft；共享schema改变所有包摘要，须重新核验实际安装。保留8个冻结版与全部旧证明／素材，rc.8/APK154仍153/113。23工作包和真实配置／正式验收继续开放；不增加已移出的验证门槛。本轮发布6张实际截图、4段无声录屏与4个截图导览GIF，见[媒体索引](media/batch-round-158/README.md)。初次失败、批量修复、实际页面及产物范围见[统一验证](quality/158-batch-functional-verification.md)，使用见[实现指南](development/158-batch-functional-closure.md)。
+
 ## 157 · 2026-11-06 · Whole-wave functional implementation / 整批功能开发
 
 - 先完成整批代码：核对全部23编号及实现位置，冻结9项本轮代码清单后统一测试；首轮失败、集中修复和受影响复验分开留证，不逐模块发布。

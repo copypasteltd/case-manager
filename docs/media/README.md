@@ -1,5 +1,7 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
+158：[整批功能当前6张截图／4段录屏／4个GIF](batch-round-158/README.md)。Actual native Web journeys; synthetic controlled integrations, with initial failures and exact retained controller bytes disclosed.
+
 157：[整批功能当前截图／实际录屏／导览GIF](batch-round-157/README.md)。历史素材与失败尝试分别保留，真实服务验收继续开放。
 
 **增量156 / Controlled Office creation**

@@ -1,0 +1,15 @@
+{
+  "attempt": "current-2",
+  "initial_batch_record": "docs/quality/evidence/batch-round-158/browser-batch-current-1.json",
+  "finding": {
+    "id": "B01",
+    "detail": "The copied recording guard permitted only prior routes and was invoked on the initial dashboard, so every capture stopped before recording any credentials or business action.",
+    "fix": "Enter the exact intended file/version, conversation/run or payment route before recording; explicitly add only ordinary payment UUID routes. Preserve empty-secret/private-capability/query guards and masking."
+  },
+  "other_tooling_change": "Rename the final current screenshot to batch158-final-state.png; keep earlier failed files unchanged.",
+  "initial_checker_sources": "docs/quality/evidence/batch-round-158/browser-before-fix-1",
+  "application_code_changed": false,
+  "all_initial_native_fixtures_passed": true,
+  "initial_resources_closed": true,
+  "production_acceptance": false
+}

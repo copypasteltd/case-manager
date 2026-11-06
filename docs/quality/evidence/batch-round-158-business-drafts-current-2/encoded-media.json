@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T01:00:37.058876+00:00",
+  "group": "batch-round-158-business-drafts-current-2",
+  "encoder_sha256": "dfdbbae8585b17507ff7620de0359d58e6400fb18962202f0f2ef18ea0228d6b",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "business-draft-human-authorization",
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/business-draft-human-authorization.png",
+      "sha256": "cbeb1f1491c422896cd21c6aeee88f2ad9ff29e82947d7b93943444d667f6ec9"
+    },
+    {
+      "name": "business-draft-ordinary-receipt",
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/business-draft-ordinary-receipt.png",
+      "sha256": "22754aba5d8fc37c0c383ca97f533b231d21ddd7097eabfe071c0c1c338d883c"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/screen-recording.mp4",
+      "sha256": "1b6532e44231a5c0cd9d29ec7fc59ece0325d5f740375708026ecd8435dc7285",
+      "size_bytes": 155565
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-business-drafts-current-2/screenshot-tour.gif",
+      "sha256": "65694be7923a77529ffa14db5f08588bec31a63499ec9d1e91d3e49f73e3e41f",
+      "size_bytes": 104461
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "40",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "4.000000"
+    }
+  }
+}

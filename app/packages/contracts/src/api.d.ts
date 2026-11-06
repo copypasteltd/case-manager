@@ -6723,6 +6723,110 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/payments/{id}/fx-differences": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readFXJournalLedger */
+        get: operations["readFXJournalLedger"];
+        put?: never;
+        /** recordFXJournal */
+        post: operations["recordFXJournal"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/payments/{id}/fx-differences/basis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** previewFXJournal */
+        get: operations["previewFXJournal"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/payments/{id}/fx-differences/{journal}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** revokeFXJournal */
+        post: operations["revokeFXJournal"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/files/{id}/versions/{version}/derived-retirement": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** readDerivedRetirement */
+        get: operations["readDerivedRetirement"];
+        put?: never;
+        /** createDerivedRetirement */
+        post: operations["createDerivedRetirement"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/derived-retirement-plans/{id}/execute": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** executeDerivedRetirement */
+        post: operations["executeDerivedRetirement"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/derived-retirement-plans/{id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** cancelDerivedRetirement */
+        post: operations["cancelDerivedRetirement"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -10320,7 +10424,7 @@ export interface components {
         };
         AgentSourceSnapshot: {
             /** @enum {string} */
-            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report";
+            type: "project" | "task" | "post" | "milestone" | "deliverable" | "risk" | "issue" | "file" | "service" | "agent_plan" | "agent_mutation" | "agent_file_update" | "agent_file_create" | "agent_organization_plan" | "agent_directory" | "agent_project_person" | "agent_project_template" | "agent_project_catalog" | "agent_oa_request" | "agent_contract_body" | "agent_post_write" | "agent_finance_report" | "agent_business_draft";
             /** Format: uuid */
             id: string;
             version_id?: string | null;
@@ -10701,6 +10805,11 @@ export interface components {
             draft_id: string;
             evidence: components["schemas"]["BusinessFileReference"];
             content: string;
+            office_document?: components["schemas"]["OfficeDocument"];
+            projection_sha256?: string;
+            recipe_sha256?: string;
+            /** @enum {string} */
+            projection_adapter?: "agent-contract-docx-v1";
         };
         AgentContractBodyView: {
             /** Format: uuid */
@@ -10801,6 +10910,7 @@ export interface components {
             oa_request?: components["schemas"]["AgentOARequestInput"];
             post_write?: components["schemas"]["AgentPostWriteInput"];
             contract_body?: components["schemas"]["AgentContractBodyInput"];
+            business_draft?: components["schemas"]["AgentBusinessDraftInput"];
         };
         Run: {
             /** Format: uuid */
@@ -10835,6 +10945,7 @@ export interface components {
             outcome?: ("draft" | "pending" | "awaiting_input" | "completed" | "conflict" | "denied" | "failed") | null;
             telegram_handoff?: components["schemas"]["TelegramHandoffInput"];
             contract_body?: components["schemas"]["AgentContractBodyView"];
+            business_draft?: components["schemas"]["AgentBusinessDraftView"];
         };
         Message: {
             /** Format: uuid */
@@ -16231,6 +16342,237 @@ export interface components {
                 items: components["schemas"]["StorageReplicaReceipt"][];
                 next_cursor: string | null;
             };
+            meta: components["schemas"]["Meta"];
+        };
+        AgentBusinessDraftInput: {
+            /** @constant */
+            kind: "contract";
+            arguments: components["schemas"]["ContractCreate"];
+        } | {
+            /** @constant */
+            kind: "purchase";
+            arguments: components["schemas"]["SpendCreate"];
+        } | {
+            /** @constant */
+            kind: "claim";
+            arguments: components["schemas"]["SpendCreate"];
+        } | {
+            /** @constant */
+            kind: "subscription";
+            arguments: components["schemas"]["SubscriptionCreate"];
+        };
+        AgentBusinessDraftReceipt: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            kind: "contract" | "purchase" | "claim" | "subscription";
+            version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            title: string;
+            project_id: string | null;
+            /** @enum {string} */
+            classification: "internal" | "project_restricted" | "confidential";
+            /** @enum {string} */
+            state: "draft";
+            content: Record<string, never>;
+            source_key?: string;
+        };
+        AgentBusinessDraftView: {
+            /** Format: uuid */
+            run_id: string;
+            input: components["schemas"]["AgentBusinessDraftInput"];
+            intent_sha256: string;
+            /** @enum {string} */
+            status: "authorized" | "committed";
+            operation_id: string | null;
+            result: components["schemas"]["AgentBusinessDraftReceipt"] | null;
+        };
+        FXJournalBasis: {
+            payment: components["schemas"]["PaymentFeeFact"];
+            cost: components["schemas"]["PaymentFeeFact"];
+            allocation: components["schemas"]["PaymentAllocation"];
+            book: components["schemas"]["FinanceFXBook"];
+            /** Format: date */
+            cost_date: string;
+            /** Format: date */
+            payment_date: string;
+            carrying: components["schemas"]["FinancialSourceValuation"];
+            settled: components["schemas"]["FinancialSourceValuation"];
+            gain: string;
+            loss: string;
+            /** @enum {string} */
+            method: "reviewed_remaining_allocation_v1";
+        };
+        FXJournalPreview: {
+            /** Format: uuid */
+            payment_id: string;
+            journal_version: number;
+            basis: string;
+            basis_sha256: string;
+        };
+        FXJournalCreate: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_journal_version: number;
+            /** Format: uuid */
+            allocation_id: string;
+            /** Format: uuid */
+            fx_book_id: string;
+            basis_sha256: string;
+            /** Format: date */
+            recognized_on: string;
+            /** @constant */
+            reviewed: true;
+        };
+        FXJournalRevoke: {
+            expected_version: number;
+            /** Format: uuid */
+            revision_id: string;
+            content_hash: string;
+            reason: string;
+            expected_journal_version: number;
+            basis_sha256: string;
+            /** @constant */
+            reviewed: true;
+        };
+        FXJournal: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            payment_id: string;
+            version: number;
+            basis: string;
+            basis_sha256: string;
+            /** Format: date */
+            recognized_on: string;
+            /** Format: uuid */
+            actor_id: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            revocation: components["schemas"]["PaymentFeeRevocation"] | null;
+        };
+        FXJournalItem: {
+            journal: components["schemas"]["FXJournal"];
+            /** @enum {string} */
+            state: "active" | "basis_changed" | "revoked";
+        };
+        FXJournalTotal: {
+            currency: string;
+            gain: string;
+            loss: string;
+            count: number;
+        };
+        FXJournalLedger: {
+            /** Format: uuid */
+            payment_id: string;
+            journal_version: number;
+            can_manage: boolean;
+            items: components["schemas"]["FXJournalItem"][];
+            totals: components["schemas"]["FXJournalTotal"][];
+            /** @constant */
+            complete: true;
+        };
+        FXJournalLedgerResponse: {
+            data: components["schemas"]["FXJournalLedger"];
+            meta: components["schemas"]["Meta"];
+        };
+        FXJournalPreviewResponse: {
+            data: components["schemas"]["FXJournalPreview"];
+            meta: components["schemas"]["Meta"];
+        };
+        FXJournalResponse: {
+            data: components["schemas"]["FXJournal"];
+            meta: components["schemas"]["Meta"];
+        };
+        DerivedTextFact: {
+            extractor: string;
+            state: string;
+            source_sha256: string;
+            text_sha256: string | null;
+            characters: number | null;
+            engine_sha256: string | null;
+            page_count: number | null;
+            ocr_page_count: number | null;
+            indexed_at: string | null;
+        };
+        DerivedRetirementBasis: {
+            /** Format: uuid */
+            file_id: string;
+            file_version: number;
+            /** Format: uuid */
+            version_id: string;
+            source_sha256: string;
+            original_plan_id: string | null;
+            policy: components["schemas"]["RetentionRule"] | null;
+            texts: components["schemas"]["DerivedTextFact"][];
+            unknown_external_count: number;
+            eligible: boolean;
+            blocking_reasons: string[];
+        };
+        DerivedRetirementReceipt: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            action: "execute" | "cancel";
+            /** Format: uuid */
+            actor_id: string;
+            reason: string;
+            removed_count: number;
+            /** Format: date-time */
+            created_at: string;
+        };
+        DerivedRetirementPlan: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            file_id: string;
+            /** Format: uuid */
+            version_id: string;
+            basis: string;
+            basis_sha256: string;
+            /** Format: uuid */
+            actor_id: string;
+            reason: string;
+            /** Format: date-time */
+            ready_after: string;
+            /** Format: date-time */
+            expires_at: string;
+            /** Format: date-time */
+            created_at: string;
+            receipt: components["schemas"]["DerivedRetirementReceipt"] | null;
+        };
+        DerivedRetirementOverview: {
+            basis: string;
+            basis_sha256: string;
+            plans: components["schemas"]["DerivedRetirementPlan"][];
+            /** @constant */
+            complete: true;
+        };
+        DerivedRetirementCreate: {
+            expected_file_version: number;
+            basis_sha256: string;
+            reason: string;
+            /** @constant */
+            reviewed: true;
+        };
+        DerivedRetirementDecision: {
+            basis_sha256: string;
+            reason: string;
+            /** @constant */
+            reviewed: true;
+        };
+        DerivedRetirementOverviewResponse: {
+            data: components["schemas"]["DerivedRetirementOverview"];
+            meta: components["schemas"]["Meta"];
+        };
+        DerivedRetirementPlanResponse: {
+            data: components["schemas"]["DerivedRetirementPlan"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -34802,6 +35144,329 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["StorageReplicaReceiptListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readFXJournalLedger: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FXJournalLedgerResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    recordFXJournal: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FXJournalCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FXJournalResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    previewFXJournal: {
+        parameters: {
+            query: {
+                allocation_id: string;
+                fx_book_id: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FXJournalPreviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    revokeFXJournal: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+                journal: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FXJournalRevoke"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FXJournalResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    readDerivedRetirement: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                version: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DerivedRetirementOverviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    createDerivedRetirement: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+                version: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DerivedRetirementCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DerivedRetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    executeDerivedRetirement: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DerivedRetirementDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DerivedRetirementPlanResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    cancelDerivedRetirement: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DerivedRetirementDecision"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DerivedRetirementPlanResponse"];
                 };
             };
             400: components["responses"]["Failure"];

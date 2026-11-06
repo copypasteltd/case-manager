@@ -426,6 +426,8 @@ func TestAgentOfficeCreate(t *testing.T) {
 		if accepted.FileUpdate == nil || accepted.FileCreate != nil || accepted.FileUpdate.FileID != id {
 			currentT.Fatal("independent original update authorization missing")
 		}
+		rr, rs = f.request("POST", "/v1/runs/"+accepted.ID+"/cancel", f.aliceToken, core.NewID(), agent.RunCancel{ExpectedVersion: accepted.Version, Action: "cancel", Reason: "结束本场景的准确原件更新授权"}, nil)
+		expect(currentT, rr, 200, rs)
 	})
 	scenario("format_extension_and_same_name_remain_human_scope_constraints", func() {
 		for _, input := range []agent.FileCreateInput{

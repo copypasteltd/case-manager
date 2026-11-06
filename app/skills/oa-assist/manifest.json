@@ -1,6 +1,6 @@
 {
   "skill_id": "oa-assist",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "state": "draft",
   "owner_role": "business_admin",
   "runtime_compatibility": "codex-sdk@0.164.0",
@@ -10,11 +10,13 @@
     "draft_request",
     "submit_request",
     "inspect_operation",
-    "draft_business_text"
+    "draft_business_text",
+    "create_business_draft"
   ],
   "completion_tools": [
     "draft_request",
-    "submit_request"
+    "submit_request",
+    "create_business_draft"
   ],
   "input_schema_ref": "input.schema.json",
   "output_schema_ref": "output.schema.json",

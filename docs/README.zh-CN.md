@@ -1,5 +1,19 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
+158：[6张当前截图／4段实际录屏／4个截图导览GIF · Current screenshots, recordings and tours](media/batch-round-158/README.md)。
+
+**当前开发增量158 / Current development increment158**
+
+本轮先完成C01–C06全部代码与测试用例，再统一检查和集中调试：新增DOCX合同正文准确采纳、固定汇率版本的独立汇兑差额台账、秘书创建合同／采购／报销／订阅普通草稿，以及原件已完成历史清理后的已知文字派生资料观察与清理。Web、微信、抖音和Android共享源码同步，目标数据库结构120。
+
+使用顺序：本人固定范围与资料 → 秘书或普通页面执行准确命令 → 核对真实业务回执 → 分别送审、履行及记账。汇兑登记、合同正文采用和资料清理均需独立人工核对与近期MFA；草稿不代表审批通过或实际付款。详见[本轮方案与使用](development/158-batch-functional-closure.md)和[完整23项差异](delivery/05-functional-closure-158.md)。
+
+全部8个Skill仍为draft（file-update1.7.0／oa-assist1.5.0）；真实资料后续提供。8个旧冻结tag与全部历史证据保留；**rc.8／APK154固定业务153／结构113，不含155–158**。本轮源码／客户端构建不等于新APK或生产验收。当前验证的实际范围、失败与修复见[统一验证说明](quality/158-batch-functional-verification.md)。
+
+本轮已执行客户端业务用例 / Current executed client cases: Web **502**，共享移动 **548 + 15 = 563**，运行器 **62**。Web／微信／抖音构建通过；Android JS本机依赖索引900秒超时，按已授权加速要求延期重跑，保留失败；**没有当前Android JS成功或新APK声明**。Backend/current UI evidence is separately source-bound; the timed-out Android JS rebuild remains explicitly deferred.
+
+Earlier delivered evidence / 历史交付证据：
+
 本轮统一客户端检查：Web **494**；共享移动 **548 + 7 = 555**（常规脚本两组240／308，加本轮7项）；运行器 **60**。Web／微信／抖音构建及Windows兼容流程Android JS构建通过，后者核对194个当前应用模块；原中止构建保留为失败记录。后台、实际页面及完整边界以157核验文档为准。
 
 **增量157 · 整批功能开发与统一调试 / Batch functional implementation**

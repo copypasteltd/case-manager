@@ -101,6 +101,15 @@ func (s *Service) createFileDraftStep(ctx context.Context, tx pgx.Tx, st executi
 	if !creating && ((files.AgentOfficeKind(i.Target.MediaType) != "") != (in.Office != nil) || in.Office != nil && len(in.Edits) != 0) {
 		return nil, nil, nil, false, core.Invalid("office", "Office更新只能提交准确工作区编辑；文本更新只能提交edits")
 	}
+	if creating && in.Document != nil {
+		contract, e := readContractBody(ctx, tx, st.Actor.OrgID, st.Run.ID)
+		if e != nil {
+			return nil, nil, nil, false, e
+		}
+		if contract != nil && (in.Document.Kind != "docx" || len(contractDOCXProjection(*in.Document)) > 49152) {
+			return nil, nil, nil, false, core.Invalid("document", "合同DOCX完整内容投影不得超过48KiB")
+		}
+	}
 	ai := st.Actor
 	ai.RunID = st.Run.ID
 	var prepared fileReadPrepared

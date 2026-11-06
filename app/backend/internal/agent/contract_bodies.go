@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"strconv"
+	"strings"
 
 	"copypaste.hk/platform/internal/authz"
 	"copypaste.hk/platform/internal/contracts"
@@ -27,9 +28,13 @@ type ContractBodyInput struct {
 }
 
 type ContractBodyFile struct {
-	DraftID  string           `json:"draft_id"`
-	Evidence fileref.Evidence `json:"evidence"`
-	Content  string           `json:"content"`
+	DraftID           string                `json:"draft_id"`
+	Evidence          fileref.Evidence      `json:"evidence"`
+	Content           string                `json:"content"`
+	OfficeDocument    *files.OfficeDocument `json:"office_document,omitempty"`
+	ProjectionSHA256  string                `json:"projection_sha256,omitempty"`
+	RecipeSHA256      string                `json:"recipe_sha256,omitempty"`
+	ProjectionAdapter string                `json:"projection_adapter,omitempty"`
 }
 
 type ContractBodyView struct {
@@ -70,6 +75,9 @@ func contractBodyBasis(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversat
 func prepareContractBody(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, runID string, in ContractBodyInput, file *fileIntentRecord, message string) (*contractBodyRecord, error) {
 	if !exactOAID(in.ContractID) || !exactOAID(in.BaseRevisionID) || !oaDigestPattern.MatchString(in.ContentHash) || core.RequireVersion(in.ExpectedVersion) != nil || core.Name(in.Reason) != nil || file == nil || file.Mode != "create" || file.Recovery != nil {
 		return nil, core.Invalid("contract_body", "请明确选择可编辑合同、准确修订及新建正文文件位置")
+	}
+	if file.Target.MediaType != "text/plain" && file.Target.MediaType != "text/markdown" && files.AgentOfficeKind(file.Target.MediaType) != "docx" {
+		return nil, core.Invalid("contract_body", "完整合同正文请选择文本、Markdown或DOCX文件")
 	}
 	if err := identity.RequireInteractiveSession(ctx, tx, a, false); err != nil {
 		return nil, err
@@ -164,10 +172,43 @@ func contractBodyFile(ctx context.Context, tx pgx.Tx, a core.Actor, r *contractB
 		return nil, err
 	}
 	var full []files.AgentTextEdit
-	if json.Unmarshal(edits, &full) != nil || len(full) != 1 || full[0].Start != 0 || full[0].End != 0 || len(full[0].Text) > 49152 || e.ScanState != "clean" || e.FileID != saved.File.ID || e.SHA256 != sha || e.SizeBytes != size || e.Name != i.Target.Name || e.MediaType != i.Target.MediaType || strconv.Itoa(len([]byte(full[0].Text))) != size || core.Digest([]byte(full[0].Text)) != sha {
+	if json.Unmarshal(edits, &full) != nil || len(full) != 1 || full[0].Start != 0 || full[0].End != 0 || len(full[0].Text) > 49152 || e.ScanState != "clean" || e.FileID != saved.File.ID || e.SHA256 != sha || e.SizeBytes != size || e.Name != i.Target.Name || e.MediaType != i.Target.MediaType {
+		return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
+	}
+	if files.AgentOfficeKind(e.MediaType) == "docx" {
+		document, err := files.AgentOfficeRecoveryDocument(full[0].Text, e.MediaType)
+		if err != nil {
+			return nil, err
+		}
+		body, _, recipe, err := files.AgentCreateOffice(ctx, document, e.MediaType)
+		if err != nil || recipe != full[0].Text || strconv.Itoa(len(body)) != size || core.Digest(body) != sha {
+			return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
+		}
+		projection := contractDOCXProjection(document)
+		if len(projection) > 49152 {
+			return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
+		}
+		return &ContractBodyFile{DraftID: draft, Evidence: e, Content: projection, OfficeDocument: &document, ProjectionSHA256: core.Digest([]byte(projection)), RecipeSHA256: core.Digest([]byte(recipe)), ProjectionAdapter: "agent-contract-docx-v1"}, nil
+	}
+	if e.MediaType != "text/plain" && e.MediaType != "text/markdown" || strconv.Itoa(len([]byte(full[0].Text))) != size || core.Digest([]byte(full[0].Text)) != sha {
 		return nil, runtimeFailure("RUNTIME_SOURCE_CHANGED")
 	}
 	return &ContractBodyFile{DraftID: draft, Evidence: e, Content: full[0].Text}, nil
+}
+
+// A complete semantic projection of our bounded generated document. It is not
+// a byte-equivalent DOCX rendering. The original OOXML SHA remains in Evidence.
+func contractDOCXProjection(document files.OfficeDocument) string {
+	lines := []string{"[标题] " + document.Title}
+	for n, value := range document.Paragraphs {
+		lines = append(lines, "[段落 "+strconv.Itoa(n+1)+"] "+value)
+	}
+	for n, row := range document.Table {
+		for c, value := range row {
+			lines = append(lines, "[单元格 "+strconv.Itoa(n+1)+":"+strconv.Itoa(c+1)+"] "+value)
+		}
+	}
+	return strings.Join(lines, "\n\n")
 }
 
 func contractBodySource(ctx context.Context, tx pgx.Tx, a core.Actor, c Conversation, id string, members []string) (SourceSnapshot, error) {

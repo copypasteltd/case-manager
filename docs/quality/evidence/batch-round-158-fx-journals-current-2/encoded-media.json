@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T00:58:27.181010+00:00",
+  "group": "batch-round-158-fx-journals-current-2",
+  "encoder_sha256": "dfdbbae8585b17507ff7620de0359d58e6400fb18962202f0f2ef18ea0228d6b",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "fx-immutable-history",
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/fx-immutable-history.png",
+      "sha256": "64807cb1509d9d220c0fa1b79484bafb6197c5a4db69e50abd0c5952b380b6ac"
+    },
+    {
+      "name": "fx-reviewed-basis",
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/fx-reviewed-basis.png",
+      "sha256": "ce2f45069f17786f95f3d930dc10c891481101746482db4e8352cdb5cec27f58"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/screen-recording.mp4",
+      "sha256": "40aa070804f2119ab4b2d1d658a3c17bc153a300edc5c36e4aeb8f956c1513d3",
+      "size_bytes": 291434
+    },
+    {
+      "file": "docs/media/batch-round-158/batch-round-158-fx-journals-current-2/screenshot-tour.gif",
+      "sha256": "fa4cc7ad0ed117b86efdafa2eb7f1de8f82c9ff8fd4f7e6a86109861d2a1c8bb",
+      "size_bytes": 123760
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "37",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.700000"
+    }
+  }
+}

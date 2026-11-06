@@ -39,7 +39,7 @@ func toolDefinitions(skill string) []any {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_organization_plan"}})
 	}
 	if skill == "oa-assist" {
-		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_oa_request"}})
+		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_oa_request", "agent_business_draft"}})
 	}
 	if skill == "file-update" {
 		read["properties"].(map[string]any)["type"] = str(map[string]any{"enum": []string{"project", "task", "post", "file", "agent_contract_body"}})
@@ -233,6 +233,10 @@ func toolDefinitions(skill string) []any {
 		definitions = append(definitions, struct {
 			name, description string
 			schema            any
+		}{"create_business_draft", "只按 authorized_business_draft 固定资料创建普通合同、采购、报销或订阅草稿。不能更换商业资料、送审、启用订阅、制造费用或付款。参数仅为准确run_id与intent_sha256。", schema(map[string]any{"run_id": uuid, "intent_sha256": str(map[string]any{"pattern": "^[0-9a-f]{64}$"})}, []string{"run_id", "intent_sha256"})})
+		definitions = append(definitions, struct {
+			name, description string
+			schema            any
 		}{"draft_business_text", "仅起草 authorized_oa_request 指定的合同条款/备注或采购报销用途/备注/准确line:<UUID>:description明细说明。只保存不可变建议，必须返回draft并等待员工核对采用；不能改金额、交易方、附件、审批人或直接写入业务。", schema(map[string]any{"run_id": uuid, "intent_sha256": str(map[string]any{"pattern": "^[0-9a-f]{64}$"}), "fields": map[string]any{"type": "object", "minProperties": 1, "maxProperties": 102, "additionalProperties": false, "patternProperties": map[string]any{"^line:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:description$": str(map[string]any{"minLength": 1, "maxLength": 1000})}, "properties": map[string]any{"renewal_terms": str(map[string]any{"minLength": 1, "maxLength": 20000}), "termination_terms": str(map[string]any{"minLength": 1, "maxLength": 20000}), "purpose": str(map[string]any{"minLength": 1, "maxLength": 4000}), "notes": str(map[string]any{"minLength": 1, "maxLength": 20000})}}}, []string{"run_id", "intent_sha256", "fields"})})
 		digest := str(map[string]any{"pattern": "^[0-9a-f]{64}$"})
 		reason := str(map[string]any{"minLength": 1, "maxLength": 200})
@@ -297,7 +301,7 @@ func toolDefinitions(skill string) []any {
 		if d.name == "search_resources" && skill != "project-briefing" && skill != "project-create" && skill != "incident-summary" {
 			continue
 		}
-		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
+		write := slices.Contains([]string{"recover_file_draft", "propose_project", "create_project", "update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone", "create_file_draft", "propose_file_update", "commit_file_update", "propose_organization", "commit_organization", "stage_file_create", "propose_file_create", "commit_file_create", "create_business_draft", "draft_request", "submit_request", "draft_business_text", "draft_post", "publish_post"}, d.name)
 		out = append(out, map[string]any{"name": d.name, "description": d.description, "inputSchema": d.schema, "annotations": map[string]any{"readOnlyHint": !write, "destructiveHint": false, "openWorldHint": false}})
 	}
 	return out

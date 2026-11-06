@@ -1,0 +1,17 @@
+{
+  "attempt": "batch-7",
+  "initial_native_record": "docs/quality/evidence/batch-round-158/native-tests-batch-5.json",
+  "duplicate_unchanged_failure_record": "docs/quality/evidence/batch-round-158/native-tests-batch-6.json",
+  "finding": {
+    "id": "F15",
+    "detail": "Actual ordinary draft creation rolled back at the tool-receipt whitelist constraint.",
+    "fix": "Migration119 preserves every value from the actual latest prior114 whitelist and adds exactly create_business_draft. Earlier migrations stay fixed."
+  },
+  "previous_whitelist_source": "app/backend/migrations/0114_skill_release_governance.sql",
+  "previous_whitelist_tool_count": 44,
+  "application_changes_batched": true,
+  "initial_failures_preserved": true,
+  "client_inputs_unchanged": true,
+  "tests_passed_claimed": false,
+  "production_acceptance": false
+}

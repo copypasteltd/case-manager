@@ -880,6 +880,7 @@ contract_body_input={"contract_id":ID,"expected_version":VERSION,"base_revision_
 add("AgentContractBodyInput",contract_body_input,tuple(contract_body_input))
 contract_body_file={"draft_id":ID,"evidence":ref("BusinessFileReference"),"content":{"type":"string","minLength":1,"maxLength":49152}}
 add("AgentContractBodyFile",contract_body_file,tuple(contract_body_file))
+SCHEMAS["AgentContractBodyFile"]["properties"].update({"office_document":ref("OfficeDocument"),"projection_sha256":HASH,"recipe_sha256":HASH,"projection_adapter":enum("agent-contract-docx-v1")})
 contract_body_view={"run_id":ID,"input":ref("AgentContractBodyInput"),"before":ref("AgentOABusinessView"),"intent_sha256":HASH,"file_intent_sha256":HASH,"status":enum("authorized","file_committed","adopted"),"file":nullable(ref("AgentContractBodyFile")),"operation_id":nullable(ID),"result":nullable(ref("AgentOABusinessView"))}
 add("AgentContractBodyView",contract_body_view,tuple(contract_body_view))
 contract_body_adopt={"intent_sha256":HASH,"version_id":ID,"content_sha256":HASH,"reviewed":{"const":True},"reason":NAME}
@@ -2445,6 +2446,40 @@ operation("/storage/replicas/{id}","get","getStorageReplica","StorageReplicaDeta
 operation("/storage/replicas/{id}/retry","post","retryStorageReplica","StorageReplicaReceipt","StorageReplicaRetry")
 operation("/storage/replica-retries","get","listStorageReplicaRetries","StorageReplicaReceipt",listing=True)
 PATHS["/storage/replica-retries"]["get"]["parameters"]=[v for v in PATHS["/storage/replica-retries"]["get"]["parameters"] if v.get("name") in ("cursor","limit")]+[{"name":"replica_id","in":"query","required":True,"schema":ID}]
+
+# Increment158: exact ordinary business drafts and reviewed settlement differences.
+SCHEMAS["AgentSourceSnapshot"]["properties"]["type"]["enum"].append("agent_business_draft")
+SCHEMAS["AgentBusinessDraftInput"]={"oneOf":[obj({"kind":{"const":k},"arguments":ref(n)},("kind","arguments")) for k,n in [("contract","ContractCreate"),("purchase","SpendCreate"),("claim","SpendCreate"),("subscription","SubscriptionCreate")]]}
+add("AgentBusinessDraftReceipt",{"id":ID,"kind":enum("contract","purchase","claim","subscription"),"version":VERSION,"revision_id":ID,"content_hash":HASH,"title":NAME,"project_id":nullable(ID),"classification":CLASS,"state":enum("draft"),"content":{"type":"object"},"source_key":NAME},("id","kind","version","revision_id","content_hash","title","project_id","classification","state","content"))
+add("AgentBusinessDraftView",{"run_id":ID,"input":ref("AgentBusinessDraftInput"),"intent_sha256":HASH,"status":enum("authorized","committed"),"operation_id":nullable(ID),"result":nullable(ref("AgentBusinessDraftReceipt"))},("run_id","input","intent_sha256","status","operation_id","result"))
+SCHEMAS["RunCreate"]["properties"]["business_draft"]=ref("AgentBusinessDraftInput")
+SCHEMAS["Run"]["properties"]["business_draft"]=ref("AgentBusinessDraftView")
+journal_seq={"type":"integer","minimum":0,"maximum":9007199254740991}
+add("FXJournalBasis",{"payment":ref("PaymentFeeFact"),"cost":ref("PaymentFeeFact"),"allocation":ref("PaymentAllocation"),"book":ref("FinanceFXBook"),"cost_date":DATE,"payment_date":DATE,"carrying":ref("FinancialSourceValuation"),"settled":ref("FinancialSourceValuation"),"gain":MONEY,"loss":MONEY,"method":enum("reviewed_remaining_allocation_v1")},("payment","cost","allocation","book","cost_date","payment_date","carrying","settled","gain","loss","method"))
+add("FXJournalPreview",{"payment_id":ID,"journal_version":journal_seq,"basis":{"type":"string","minLength":1,"maxLength":131072},"basis_sha256":HASH},("payment_id","journal_version","basis","basis_sha256"))
+add("FXJournalCreate",{**cost_base,"expected_journal_version":journal_seq,"allocation_id":ID,"fx_book_id":ID,"basis_sha256":HASH,"recognized_on":DATE,"reviewed":{"const":True}},tuple(cost_base)+("expected_journal_version","allocation_id","fx_book_id","basis_sha256","recognized_on","reviewed"))
+add("FXJournalRevoke",{**cost_base,"expected_journal_version":journal_seq,"basis_sha256":HASH,"reviewed":{"const":True}},tuple(cost_base)+("expected_journal_version","basis_sha256","reviewed"))
+add("FXJournal",{"id":ID,"payment_id":ID,"version":VERSION,"basis":{"type":"string","minLength":1,"maxLength":131072},"basis_sha256":HASH,"recognized_on":DATE,"actor_id":ID,"reason":NAME,"created_at":TIME,"revocation":nullable(ref("PaymentFeeRevocation"))},("id","payment_id","version","basis","basis_sha256","recognized_on","actor_id","reason","created_at","revocation"))
+add("FXJournalItem",{"journal":ref("FXJournal"),"state":enum("active","basis_changed","revoked")},("journal","state"))
+add("FXJournalTotal",{"currency":CURRENCY,"gain":MONEY,"loss":MONEY,"count":{"type":"integer","minimum":0}},("currency","gain","loss","count"))
+add("FXJournalLedger",{"payment_id":ID,"journal_version":journal_seq,"can_manage":{"type":"boolean"},"items":array(ref("FXJournalItem"),maxItems=1000),"totals":array(ref("FXJournalTotal"),maxItems=1000),"complete":{"const":True}},("payment_id","journal_version","can_manage","items","totals","complete"))
+operation("/payments/{id}/fx-differences","get","readFXJournalLedger","FXJournalLedger")
+operation("/payments/{id}/fx-differences/basis","get","previewFXJournal","FXJournalPreview")
+PATHS["/payments/{id}/fx-differences/basis"]["get"]["parameters"] += [{"name":k,"in":"query","required":True,"schema":ID} for k in ["allocation_id","fx_book_id"]]
+operation("/payments/{id}/fx-differences","post","recordFXJournal","FXJournal","FXJournalCreate",201)
+operation("/payments/{id}/fx-differences/{journal}/revoke","post","revokeFXJournal","FXJournal","FXJournalRevoke")
+
+add("DerivedTextFact",{"extractor":NAME,"state":NAME,"source_sha256":HASH,"text_sha256":nullable(HASH),"characters":nullable({"type":"integer","minimum":0}),"engine_sha256":nullable(HASH),"page_count":nullable({"type":"integer","minimum":0}),"ocr_page_count":nullable({"type":"integer","minimum":0}),"indexed_at":nullable(TIME)},("extractor","state","source_sha256","text_sha256","characters","engine_sha256","page_count","ocr_page_count","indexed_at"))
+add("DerivedRetirementBasis",{"file_id":ID,"file_version":VERSION,"version_id":ID,"source_sha256":HASH,"original_plan_id":nullable(ID),"policy":nullable(ref("RetentionRule")),"texts":array(ref("DerivedTextFact"),maxItems=17),"unknown_external_count":{"type":"integer","minimum":0},"eligible":{"type":"boolean"},"blocking_reasons":array(NAME)},("file_id","file_version","version_id","source_sha256","original_plan_id","policy","texts","unknown_external_count","eligible","blocking_reasons"))
+add("DerivedRetirementReceipt",{"id":ID,"action":enum("execute","cancel"),"actor_id":ID,"reason":NAME,"removed_count":{"type":"integer","minimum":0,"maximum":16},"created_at":TIME},("id","action","actor_id","reason","removed_count","created_at"))
+add("DerivedRetirementPlan",{"id":ID,"file_id":ID,"version_id":ID,"basis":{"type":"string","minLength":1,"maxLength":131072},"basis_sha256":HASH,"actor_id":ID,"reason":NAME,"ready_after":TIME,"expires_at":TIME,"created_at":TIME,"receipt":nullable(ref("DerivedRetirementReceipt"))},("id","file_id","version_id","basis","basis_sha256","actor_id","reason","ready_after","expires_at","created_at","receipt"))
+add("DerivedRetirementOverview",{"basis":{"type":"string","minLength":1,"maxLength":131072},"basis_sha256":HASH,"plans":array(ref("DerivedRetirementPlan"),maxItems=100),"complete":{"const":True}},("basis","basis_sha256","plans","complete"))
+add("DerivedRetirementCreate",{"expected_file_version":VERSION,"basis_sha256":HASH,"reason":NAME,"reviewed":{"const":True}},("expected_file_version","basis_sha256","reason","reviewed"))
+add("DerivedRetirementDecision",{"basis_sha256":HASH,"reason":NAME,"reviewed":{"const":True}},("basis_sha256","reason","reviewed"))
+operation("/files/{id}/versions/{version}/derived-retirement","get","readDerivedRetirement","DerivedRetirementOverview")
+operation("/files/{id}/versions/{version}/derived-retirement","post","createDerivedRetirement","DerivedRetirementPlan","DerivedRetirementCreate",201)
+operation("/derived-retirement-plans/{id}/execute","post","executeDerivedRetirement","DerivedRetirementPlan","DerivedRetirementDecision")
+operation("/derived-retirement-plans/{id}/cancel","post","cancelDerivedRetirement","DerivedRetirementPlan","DerivedRetirementDecision")
 
 document = {
     "openapi": "3.1.0",

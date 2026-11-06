@@ -9,6 +9,7 @@ import (
 )
 
 func (s *Server) retentionRoutes(mux *http.ServeMux, service *files.Service) {
+	s.derivedRetirementRoutes(mux, service)
 	mux.HandleFunc("GET /v1/storage/retention-policies", read(s, "RetentionPolicyListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.RetentionPolicies(ctx, a)
 	}))

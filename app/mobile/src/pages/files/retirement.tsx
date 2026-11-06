@@ -1,3 +1,4 @@
+import {DerivedRetirement} from './derived-retirement';
 import { Text, View } from '@tarojs/components';
 import { useState } from 'react';
 import { checkedRetirementPlan, checkedCompletedDraftRetirementPlan, checkedRetirementScope, completedDraftRetirementCreate, retirementCandidateLabel, retirementObjectLabel, checkedCleanupReceipts, retirementKinds, retirementStates, retirementBlockers, retirementCreate, retirementDecision, retirementCanRenew, retirementRenewal, checkedRetirementRenewalResult, checkedRetirementAuthorization, type RetirementAuthorization, type RetirementCandidate, type RetirementPlan, type RetirementItem } from '@copypaste/contracts/object-retirement';
@@ -10,7 +11,7 @@ import { TextField } from '../business/controls';
 export function ObjectRetirement({ file, me }: { file: Schemas['File']; me: Schemas['Me'] }) {
  const [open,setOpen] = useState(false), [revision,setRevision] = useState(0), [selected,setSelected] = useState<string>();
  function refresh(id = selected) { setSelected(id); setRevision(v => v + 1); }
- return <Section title='原件保留与清理'><Text className='cp-muted cp-paragraph'>盘点这个文件的历史正式原件与已提交上传的草稿，经过保留期、观察期和人工批准后逐项处理。</Text><Action secondary onClick={() => setOpen(!open)}>{open ? '收起原件清理' : '盘点历史与草稿原件'}</Action>{open && <><Action secondary onClick={() => refresh()}>刷新原件与清单</Action><Workspace key={[file.id,file.version,me.user.id,me.authorization_version,revision].join(':')} file={file} me={me} selected={selected} refresh={refresh} /></>}</Section>;
+ return <Section title='原件保留与清理'><DerivedRetirement file={file} me={me}/><Text className='cp-muted cp-paragraph'>盘点这个文件的历史正式原件与已提交上传的草稿，经过保留期、观察期和人工批准后逐项处理。</Text><Action secondary onClick={() => setOpen(!open)}>{open ? '收起原件清理' : '盘点历史与草稿原件'}</Action>{open && <><Action secondary onClick={() => refresh()}>刷新原件与清单</Action><Workspace key={[file.id,file.version,me.user.id,me.authorization_version,revision].join(':')} file={file} me={me} selected={selected} refresh={refresh} /></>}</Section>;
 }
 export function CompletedDraftRetirement({folder,me}:{folder:Schemas['Folder'];me:Schemas['Me']}) {
  const [open,setOpen]=useState(false),[revision,setRevision]=useState(0),[selected,setSelected]=useState<string>();

@@ -1,0 +1,37 @@
+{
+  "attempt": "batch-2",
+  "initial_records": [
+    "docs/quality/evidence/batch-round-158/native-tests-initial.json",
+    "docs/quality/evidence/batch-round-158/client-checks-initial.json"
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "source": "native initial compile",
+      "detail": "contracts.PrepareAgentCreate passed a read/query interface to validateParent, which requires a transaction.",
+      "fix": "Accept the actual pgx.Tx already provided by admission/execution."
+    },
+    {
+      "id": "F02",
+      "source": "client initial typecheck",
+      "detail": "Four new imported shared TypeScript inputs were missing from the explicit Web composite project.",
+      "fix": "Declare all four shared input files in the Web project."
+    },
+    {
+      "id": "F03",
+      "source": "manual whole-wave review",
+      "detail": "Subscription creation must additionally bind a currently active profile and unexpired run.",
+      "fix": "Add both current checks before the fixed ordinary command."
+    },
+    {
+      "id": "F04",
+      "source": "manual whole-wave review",
+      "detail": "Derived-retirement SQL must use the actual validated human session device type.",
+      "fix": "Resolve the session channel and apply its ordinary read/manage policy."
+    }
+  ],
+  "application_changes_batched": true,
+  "initial_failures_preserved": true,
+  "tests_passed_claimed": false,
+  "production_acceptance": false
+}
