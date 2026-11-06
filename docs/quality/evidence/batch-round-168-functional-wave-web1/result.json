@@ -1,0 +1,27 @@
+{
+  "passed": false,
+  "started_at": "2026-11-06T16:30:23.525Z",
+  "finished_at": "2026-11-06T16:30:59.216Z",
+  "checks": [
+    "actual authorized current project tasks render a state board",
+    "same current tasks render basic timeline without inferred progress"
+  ],
+  "source_count": 1244,
+  "source_sha256": "19b45029108cc0d54a12e82eee1a9b7e1e88f5f402deb1968118d40a7e096de2",
+  "source_after_sha256": "19b45029108cc0d54a12e82eee1a9b7e1e88f5f402deb1968118d40a7e096de2",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main').getByRole('button', { name: '查看节点关联任务', exact: true })\u001b[22m\n",
+  "scope": "Web current task references with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "03e60055134b70f5785121dfca77860602a009b4409709479d4a0dfdab88ffaf",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "03e60055134b70f5785121dfca77860602a009b4409709479d4a0dfdab88ffaf",
+  "build_source_unchanged": true
+}

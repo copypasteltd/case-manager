@@ -242,7 +242,7 @@ func (s *ObjectRetirementService) TerminalCandidates(ctx context.Context, a core
 		return out, e
 	}
 	rows, e := tx.Query(ctx, `SELECT id,created_at FROM upload_sessions WHERE org_id=$1 AND target_folder_id=$2 AND state<>'committed' AND committed_version_id IS NULL
-  AND expires_at<=clock_timestamp() AND source_channel IN('web','android','agent') AND ($3::timestamptz IS NULL OR (created_at,id)<($3,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5`, a.OrgID, id, at, rid, limit+1)
+  AND expires_at<=clock_timestamp() AND source_channel IN('web','android','wechat','douyin','agent') AND ($3::timestamptz IS NULL OR (created_at,id)<($3,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5`, a.OrgID, id, at, rid, limit+1)
 	if e != nil {
 		return out, e
 	}

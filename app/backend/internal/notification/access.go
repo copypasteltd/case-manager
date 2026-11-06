@@ -6,6 +6,7 @@ import (
 	"copypaste.hk/platform/internal/contracts"
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/finance"
+	"copypaste.hk/platform/internal/identity"
 	"copypaste.hk/platform/internal/knowledge"
 	"copypaste.hk/platform/internal/platform"
 	"copypaste.hk/platform/internal/project"
@@ -31,7 +32,7 @@ func snapshot(ctx context.Context, tx pgx.Tx, a core.Actor) error {
 	if org != a.OrgAuthVersion || user != a.AuthVersion || state != "active" {
 		return core.Fail(412, "AUTHORIZATION_CHANGED", "权限已变更，请重新获取授权")
 	}
-	return nil
+	return identity.RequireInteractiveSession(ctx, tx, a, false)
 }
 
 // There is deliberately no stored business title/body. The current domain read

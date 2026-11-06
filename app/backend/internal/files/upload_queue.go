@@ -19,6 +19,9 @@ type UploadCapabilities struct {
 // It is not proof that a worker, scanner or either cloud is currently healthy.
 func (s *UploadService) UploadCapabilities(ctx context.Context, a core.Actor) (UploadCapabilities, error) {
 	out := UploadCapabilities{MaxBytes: "120000000000", SessionHours: 48}
+	if a.Channel == "wechat" || a.Channel == "douyin" {
+		out.MaxBytes = "20971520"
+	}
 	if err := uploadChannel(a); err != nil {
 		return out, err
 	}

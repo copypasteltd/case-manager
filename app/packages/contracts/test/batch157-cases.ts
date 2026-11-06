@@ -11,7 +11,7 @@ export const batch157Cases: Array<readonly [string,()=>void]> = [
   assert.throws(()=>skillReleaseInput(release,'published',id(3),'','发布',false));
   assert.throws(()=>skillReleaseInput(release,'published',id(3)+','+id(3),'','发布',true));
   assert.throws(()=>skillReleaseInput({...release,profile:{...release.profile,item:{...release.profile.item,state:'retired'}}},'pilot','','','试行',true));
-  const value=skillReleaseInput(release,'published',id(3),id(4),' 完成评估 ',true);
+  const value=skillReleaseInput(release,'published',id(3),id(4),' 完成评估 ',true,{set_version:'synthetic-v168',set_sha256:'c'.repeat(64),results_sha256:'d'.repeat(64),reference:'isolated client fixture',passed:1,failed:0,skipped:0});
   assert.equal(value.expected_version,0);assert.equal(value.profile_version,3);assert.equal(value.skill_sha256,release.profile.item.skill_sha256);assert.deepEqual(value.assessment_run_ids,[id(3)]);assert.equal(value.reason,'完成评估');assert.equal(value.rollback_release_id,id(4));
  }],
  ['TG handoff cannot cross project, task, ownership state, expiry or reviewed request basis',()=>{

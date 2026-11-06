@@ -1,0 +1,27 @@
+{
+  "passed": false,
+  "started_at": "2026-11-06T16:38:48.899Z",
+  "finished_at": "2026-11-06T16:39:28.455Z",
+  "checks": [
+    "actual authorized current project tasks render a state board",
+    "same current tasks render basic timeline without inferred progress"
+  ],
+  "source_count": 1244,
+  "source_sha256": "f294bf639de206ca5e8a524e03832363e351c61862883b0f59c9b55fb89721e4",
+  "source_after_sha256": "f294bf639de206ca5e8a524e03832363e351c61862883b0f59c9b55fb89721e4",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main').getByText('168 current delivery progress', { exact: true }).first() to be visible\u001b[22m\n",
+  "scope": "Web current task references with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "84eeced670371580bcacaba9412c2cc2d18806ec57db424b8d370ccb1a91a239",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "84eeced670371580bcacaba9412c2cc2d18806ec57db424b8d370ccb1a91a239",
+  "build_source_unchanged": true
+}

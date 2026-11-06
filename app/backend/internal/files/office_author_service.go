@@ -60,6 +60,9 @@ func officeInteractive(a core.Actor, write bool) error {
 		return err
 	}
 	if write {
+		if a.Channel != "web" && a.Channel != "android" {
+			return core.Fail(403, "UPLOAD_CHANNEL_UNSUPPORTED", "此操作请使用 Web／Android")
+		}
 		return uploadChannel(a)
 	}
 	return nil

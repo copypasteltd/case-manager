@@ -14,18 +14,19 @@ import (
 )
 
 type SkillRelease struct {
-	ID                string    `json:"id"`
-	ProfileID         string    `json:"profile_id"`
-	Version           int64     `json:"version"`
-	Stage             string    `json:"stage"`
-	ProfileVersion    int64     `json:"profile_version"`
-	SkillSHA256       string    `json:"skill_sha256"`
-	ActiveBasisSHA256 string    `json:"active_basis_sha256"`
-	AssessmentRunIDs  []string  `json:"assessment_run_ids"`
-	RollbackReleaseID *string   `json:"rollback_release_id"`
-	Reason            string    `json:"reason"`
-	ActorID           string    `json:"actor_id"`
-	CreatedAt         time.Time `json:"created_at"`
+	Evaluation        *SkillEvaluation `json:"evaluation"`
+	ID                string           `json:"id"`
+	ProfileID         string           `json:"profile_id"`
+	Version           int64            `json:"version"`
+	Stage             string           `json:"stage"`
+	ProfileVersion    int64            `json:"profile_version"`
+	SkillSHA256       string           `json:"skill_sha256"`
+	ActiveBasisSHA256 string           `json:"active_basis_sha256"`
+	AssessmentRunIDs  []string         `json:"assessment_run_ids"`
+	RollbackReleaseID *string          `json:"rollback_release_id"`
+	Reason            string           `json:"reason"`
+	ActorID           string           `json:"actor_id"`
+	CreatedAt         time.Time        `json:"created_at"`
 }
 
 type SkillReleaseDetails struct {
@@ -36,15 +37,16 @@ type SkillReleaseDetails struct {
 }
 
 type SkillReleaseInput struct {
-	ExpectedVersion   int64    `json:"expected_version"`
-	ProfileVersion    int64    `json:"profile_version"`
-	SkillSHA256       string   `json:"skill_sha256"`
-	ActiveBasisSHA256 string   `json:"active_basis_sha256"`
-	Stage             string   `json:"stage"`
-	AssessmentRunIDs  []string `json:"assessment_run_ids"`
-	RollbackReleaseID *string  `json:"rollback_release_id"`
-	Reviewed          bool     `json:"reviewed"`
-	Reason            string   `json:"reason"`
+	Evaluation        *SkillEvaluation `json:"evaluation"`
+	ExpectedVersion   int64            `json:"expected_version"`
+	ProfileVersion    int64            `json:"profile_version"`
+	SkillSHA256       string           `json:"skill_sha256"`
+	ActiveBasisSHA256 string           `json:"active_basis_sha256"`
+	Stage             string           `json:"stage"`
+	AssessmentRunIDs  []string         `json:"assessment_run_ids"`
+	RollbackReleaseID *string          `json:"rollback_release_id"`
+	Reviewed          bool             `json:"reviewed"`
+	Reason            string           `json:"reason"`
 }
 
 func skillReleaseAuthority(ctx context.Context, tx pgx.Tx, a core.Actor, write bool) error {
@@ -70,7 +72,7 @@ func skillReleaseDetails(ctx context.Context, tx pgx.Tx, org, id string, before 
 	if err = tx.QueryRow(ctx, "SELECT coalesce(max(version),0) FROM agent_skill_releases WHERE org_id=$1 AND profile_id=$2", org, id).Scan(&out.Version); err != nil {
 		return out, err
 	}
-	rows, err := tx.Query(ctx, `SELECT id,profile_id,version,stage,profile_version,skill_sha256,active_basis_sha256,assessment_run_ids,rollback_release_id,reason,actor_id,created_at
+	rows, err := tx.Query(ctx, `SELECT id,profile_id,version,stage,profile_version,skill_sha256,active_basis_sha256,assessment_run_ids,rollback_release_id,reason,actor_id,created_at,evaluation
  FROM agent_skill_releases WHERE org_id=$1 AND profile_id=$2 AND ($3::bigint=0 OR version<$3) ORDER BY version DESC LIMIT 21`, org, id, before)
 	if err != nil {
 		return out, err
@@ -78,7 +80,7 @@ func skillReleaseDetails(ctx context.Context, tx pgx.Tx, org, id string, before 
 	defer rows.Close()
 	for rows.Next() {
 		var v SkillRelease
-		if err = rows.Scan(&v.ID, &v.ProfileID, &v.Version, &v.Stage, &v.ProfileVersion, &v.SkillSHA256, &v.ActiveBasisSHA256, &v.AssessmentRunIDs, &v.RollbackReleaseID, &v.Reason, &v.ActorID, &v.CreatedAt); err != nil {
+		if err = rows.Scan(&v.ID, &v.ProfileID, &v.Version, &v.Stage, &v.ProfileVersion, &v.SkillSHA256, &v.ActiveBasisSHA256, &v.AssessmentRunIDs, &v.RollbackReleaseID, &v.Reason, &v.ActorID, &v.CreatedAt, &v.Evaluation); err != nil {
 			return out, err
 		}
 		out.History = append(out.History, v)
@@ -116,6 +118,14 @@ func (s *Service) RecordSkillRelease(ctx context.Context, c core.Command, id str
 	if in.ExpectedVersion < 0 || core.RequireVersion(in.ProfileVersion) != nil || !slices.Contains([]string{"pilot", "published", "disabled"}, in.Stage) || !in.Reviewed || core.Name(in.Reason) != nil || len(in.AssessmentRunIDs) > 20 || in.Stage == "published" && len(in.AssessmentRunIDs) == 0 || len(in.SkillSHA256) != 64 || strings.Trim(in.SkillSHA256, "0123456789abcdef") != "" || len(in.ActiveBasisSHA256) != 64 || strings.Trim(in.ActiveBasisSHA256, "0123456789abcdef") != "" {
 		return core.Result{}, core.Invalid("release", "请核对准确配置、任务影响、评估运行与发布决定")
 	}
+	if in.Stage == "published" && in.Evaluation == nil {
+		return core.Result{}, core.Invalid("evaluation", "正式发布须固定外部评测版本与结果")
+	}
+	if in.Evaluation != nil {
+		if err := in.Evaluation.Validate(in.Stage == "published"); err != nil {
+			return core.Result{}, err
+		}
+	}
 	seen := map[string]bool{}
 	for _, v := range in.AssessmentRunIDs {
 		if !core.ValidID(v) || seen[v] {
@@ -149,8 +159,8 @@ func (s *Service) RecordSkillRelease(ctx context.Context, c core.Command, id str
 			}
 		}
 		receiptID := core.NewID()
-		_, err = tx.Exec(ctx, `INSERT INTO agent_skill_releases(id,org_id,profile_id,version,stage,profile_version,skill_sha256,active_basis_sha256,assessment_run_ids,rollback_release_id,reviewed,reason,actor_id,session_id)
- VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,true,$11,$12,$13)`, receiptID, c.Actor.OrgID, id, current.Version+1, in.Stage, in.ProfileVersion, in.SkillSHA256, in.ActiveBasisSHA256, in.AssessmentRunIDs, in.RollbackReleaseID, strings.TrimSpace(in.Reason), c.Actor.UserID, c.Actor.SessionID)
+		_, err = tx.Exec(ctx, `INSERT INTO agent_skill_releases(id,org_id,profile_id,version,stage,profile_version,skill_sha256,active_basis_sha256,assessment_run_ids,rollback_release_id,reviewed,reason,actor_id,session_id,evaluation)
+ VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,true,$11,$12,$13,$14)`, receiptID, c.Actor.OrgID, id, current.Version+1, in.Stage, in.ProfileVersion, in.SkillSHA256, in.ActiveBasisSHA256, in.AssessmentRunIDs, in.RollbackReleaseID, strings.TrimSpace(in.Reason), c.Actor.UserID, c.Actor.SessionID, in.Evaluation)
 		if err != nil {
 			return core.Result{}, err
 		}

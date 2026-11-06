@@ -1,6 +1,18 @@
 # CopyPaste Case Manager · Solution and usage guide
 
-Actual current checks: Web **531**, shared mobile **555**, native HTTP/PG **5 families/21 records**, controlled release **45**, native JVM **8**, selected builds and actual Web/H5 journeys pass. Original failures and exact repairs remain explicit in the [verification record](quality/167-batch-functional-verification.md).
+Current selected checks pass: native **13 families/79 records**, Web **534**, shared mobile **559**, runtime **66**, wave guards **6**, release tools **45**, and source verification **16**. Web/WeChat/Douyin builds and Web 5/H5 6 actual views pass; **9 PNG,2 MP4,4 GIF** are linked below. Native schema136 package:803 files. JVM167, nine freezes and APK164 are retained.
+
+## Increment168 — complete numbered code wave and functional closure
+
+Review all23 active packages, retain nine independent refutations, then finish all12 confirmed application/consumer/fixture/tool tasks before freezing the first2843 raw source files and starting unified checks. Collect each batch's failures before a combined repair; replay only affected consumers. The [development agreement](development/00-batch-development-policy.md) makes this order permanent.
+
+Add shared mobile task boards/basic timelines; exact contract-milestone task links with human cross-scope review and immutable revocation history; original-session checks for role decisions, notification/secretary/status reads and disabling a user after invitation reissue; bounded ordinary miniapp upload sources; deployment-only initial dual-storage provisioning/profile installation; and separately versioned external assessment evidence.
+
+Use the task-list view selector; expand a contract milestone's task links and confirm the exact current task/scope with recent personal MFA; select ordinary sources up to20 MiB in the miniapp upload workspace; inspect versioned assessment results in the secretary runtime release ledger. WeChat offers ordinary message files/photos, Douyin photos; Web/Android retain large-file handling. Uploads still require scanning, promotion and explicit human commit. Operators use the [private deployment guide](operations/05-initial-storage-and-agent-install.md); ordinary application accounts cannot initialize storage or install profiles.
+
+[Implementation and usage](development/168-batch-functional-closure.md) · [All23 remaining packages](delivery/05-functional-closure-168.md) · [Unified verification and limits](quality/168-batch-functional-verification.md) · [Screenshots, recordings and GIFs](media/batch-round-168/README.md). Source schema136 follows nine unchanged freezes; developmentPG100/API and APK164/business163/schema129 remain retained. Android JS/newAPK stay deferred. All23 formal packages and eight draft Skills remain open; the user will provide real configuration later.
+
+Increment167 checks: Web **531**, shared mobile **555**, native HTTP/PG **5 families/21 records**, controlled release **45**, native JVM **8**, selected builds and actual Web/H5 journeys pass. Original failures and exact repairs remain explicit in the [verification record](quality/167-batch-functional-verification.md).
 
 ## Increment167: complete invitation, upload and deployment code wave
 

@@ -51,6 +51,23 @@ func (s *Server) contractRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /v1/contracts/{id}/milestones", read(s, "ContractMilestoneListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		return service.Milestones(ctx, a, r.PathValue("id"))
 	}))
+	mux.HandleFunc("GET /v1/contracts/{id}/milestones/{milestone}/task-links", read(s, "ContractMilestoneTaskEventListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, err := filter(r)
+		if err != nil {
+			return nil, err
+		}
+		history, err := queryBoolean(r, "history")
+		if err != nil {
+			return nil, err
+		}
+		return service.MilestoneTasks(ctx, a, r.PathValue("id"), r.PathValue("milestone"), f.Cursor, f.Limit, history)
+	}))
+	mux.HandleFunc("POST /v1/contracts/{id}/milestones/{milestone}/task-links", command(s, "ContractMilestoneTaskInput", "ContractMilestoneTaskEventResponse", func(ctx context.Context, c core.Command, r *http.Request, in contracts.MilestoneTaskInput) (core.Result, error) {
+		return service.LinkMilestoneTask(ctx, c, r.PathValue("id"), r.PathValue("milestone"), "", in)
+	}))
+	mux.HandleFunc("POST /v1/contracts/{id}/milestones/{milestone}/task-links/{link}/revoke", command(s, "ContractMilestoneTaskInput", "ContractMilestoneTaskEventResponse", func(ctx context.Context, c core.Command, r *http.Request, in contracts.MilestoneTaskInput) (core.Result, error) {
+		return service.LinkMilestoneTask(ctx, c, r.PathValue("id"), r.PathValue("milestone"), r.PathValue("link"), in)
+	}))
 	mux.HandleFunc("POST /v1/contracts/{id}/transition", command(s, "ContractActivation", "ContractResponse", func(ctx context.Context, c core.Command, r *http.Request, in contracts.ActivationInput) (core.Result, error) {
 		return service.Activate(ctx, c, r.PathValue("id"), in)
 	}))

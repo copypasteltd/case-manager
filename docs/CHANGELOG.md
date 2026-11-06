@@ -1,5 +1,16 @@
 # 更新记录 / Changelog
 
+## 168 — Whole-register code wave / 全编号代码批次与功能闭环
+
+- Review all23 active packages and preserve nine independent refutations. Complete all12 confirmed application/consumer/fixture/tool tasks before the first2843-file source freeze and unified checks; add the permanent batch-development policy and reusable source-wave runner.
+- Add shared mobile task boards/basic timelines and reuse Web scheduling rules. Add exact contract-milestone task links, explicit human cross-scope review, current task projections, immutable revocation history, ordinary atomic receipts and Web/shared-mobile consumers.
+- Fix disable-after-invitation-reissue atomicity and original-session checks for role decisions, notification human reads/acknowledgements, secretary human reads/cancellation and service-status human snapshots; preserve intentional worker/TG/model authorization paths.
+- Add bounded20 MiB WeChat ordinary file/photo and Douyin photo sources, full-source hashing, owner-bound resumable queues and ordinary server scan/promotion/human-commit/cleanup consumers. Keep large-file Web/Android handling; native pickers and real cloud/platform acceptance remain open.
+- Add deployment-only initial OSS/R2 metadata provisioning and exact installed-profile inspection/installation. Bind versioned external dataset/result hashes, references and actual assessment counts into release ledgers; published decisions still require exact successful ordinary runs and an all-pass external assessment. External prerequisites are operator-attested file evidence; synthetic fixtures do not establish model/Linux acceptance.
+- Append schema134–136 and preserve1–133, prior proof/media, all nine freezes and APK164/business163/schema129. Eight Skills remain draft; all23 formal packages, real configuration, company policy and production acceptance remain open. DevelopmentPG100/API stay unchanged; Android JS/newAPK remain deferred. See the [implementation](development/168-batch-functional-closure.md), [verification](quality/168-batch-functional-verification.md), [media](media/batch-round-168/README.md) and [remaining register](delivery/05-functional-closure-168.md).
+
+中文：新增共享移动看板／时间线、合同准确节点关联任务、小程序普通附件上传、原会话边界修复、首次存储／秘书配置部署入口及外部评估资料。每轮先完成完整代码批次，再统一测试和集中修复；全部未完成编号及真实验收边界继续明列。
+
 ## 167 — Complete invitation/upload/deployment wave / 整批邀请、上传与部署闭环
 
 - Inventory all23 packages; independently refute and address five confirmed source differences before running tests.

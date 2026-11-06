@@ -1,0 +1,675 @@
+{
+  "increment": 168,
+  "base_commit": "930cdde97b9d5d2e85d892664b0857a10a811739",
+  "protocol": "Inventory all23 active numbered packages in separate requirement contexts; independently refute findings; implement every confirmed actionable application/consumer/fixture/tool change before any test/build/debug run. Then preserve the complete source wave, run unified checks, batch fixes and rerun affected inputs only.",
+  "code_wave_complete": true,
+  "tests_started": false,
+  "schema_before": 133,
+  "packages": [
+    {
+      "id": "GAP-01",
+      "name": "项目完整管理",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-01.md",
+      "implementation_locations": [
+        "app/backend/internal/project",
+        "app/backend/internal/project/task_participants.go",
+        "app/backend/internal/workbench/task_inventory.go",
+        "app/backend/migrations/0124_task_collaboration.sql",
+        "app/mobile/src/pages/home/task-inventory.tsx",
+        "app/mobile/src/pages/project",
+        "app/web/src/ProjectReferenceSelect.tsx",
+        "app/web/src/Projects.tsx",
+        "app/web/src/TaskWorkbench.tsx",
+        "app/web/src/ProjectCloseout.tsx",
+        "app/backend/migrations/0131_closeout_subscription_calendar.sql"
+      ],
+      "prior_remaining": "公司项目模板、目录、角色与结项制度配置；真实完整项目旅程验收。166当地日期核查保持。",
+      "confirmed_code_tasks": [
+        "C168-01"
+      ],
+      "current_remaining": "公司项目模板、目录、角色与结项制度配置；真实完整项目旅程验收。166当地日期核查保持。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-02",
+      "name": "合同、采购、报销",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-02.md",
+      "implementation_locations": [
+        "app/backend/internal/contracts",
+        "app/backend/internal/spend",
+        "app/backend/internal/workflow",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx"
+      ],
+      "prior_remaining": "合同、采购、报销审批制度、金额权限及实际样本验收；邀请与上传补齐不等于OA制度已采纳。",
+      "confirmed_code_tasks": [
+        "C168-02"
+      ],
+      "current_remaining": "合同、采购、报销审批制度、金额权限及实际样本验收；邀请与上传补齐不等于OA制度已采纳。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-03",
+      "name": "费用、订阅与报表",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-03.md",
+      "implementation_locations": [
+        "app/backend/internal/finance",
+        "app/mobile/src/pages/finance"
+      ],
+      "prior_remaining": "公司币种、汇率、舍入、费用及摊销制度采纳与实际财务旅程验收；保留独立本金/现金单位和期次证据。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "公司币种、汇率、舍入、费用及摊销制度采纳与实际财务旅程验收；保留独立本金/现金单位和期次证据。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-04",
+      "name": "文件正文、预览与检索",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-04.md",
+      "implementation_locations": [
+        "app/backend/internal/files",
+        "app/backend/internal/documenttext",
+        "app/backend/internal/agent/file_session.go"
+      ],
+      "prior_remaining": "本轮补全新上传的全文来源身份；复杂Office版式/高级编辑仍未支持，PDF/OCR及Office真实样本效果待验收。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "本轮补全新上传的全文来源身份；复杂Office版式/高级编辑仍未支持，PDF/OCR及Office真实样本效果待验收。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-05",
+      "name": "文件生命周期",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-05.md",
+      "implementation_locations": [
+        "app/backend/internal/agent/file_abandonment.go",
+        "app/backend/internal/files",
+        "app/mobile/src/pages/files/history-restores.tsx",
+        "app/mobile/src/pages/scan/index.tsx",
+        "app/mobile/src/pages/uploads/scan-controls.tsx",
+        "app/backend/internal/files/agent_drafts.go",
+        "app/backend/migrations/0129_agent_file_sessions.sql"
+      ],
+      "prior_remaining": "本轮接通已有原件及已完成未提交上传清理服务；未知对象身份、未知孤儿及云上实际清理验收仍开放。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "本轮接通已有原件及已完成未提交上传清理服务；未知对象身份、未知孤儿及云上实际清理验收仍开放。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-06",
+      "name": "账号生命周期",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-06.md",
+      "implementation_locations": [
+        "app/backend/internal/identity",
+        "app/backend/internal/authz",
+        "app/backend/internal/identity/invitation_reissues.go",
+        "app/mobile/src/pages/settings/members.tsx"
+      ],
+      "prior_remaining": "本轮补齐过期邀请重发、原会话复核与四端成员入口；公司开户/可信交付/MFA恢复制度及正式验收待定。",
+      "confirmed_code_tasks": [
+        "C168-03",
+        "C168-04"
+      ],
+      "current_remaining": "本轮补齐过期邀请重发、原会话复核与四端成员入口；公司开户/可信交付/MFA恢复制度及正式验收待定。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-07",
+      "name": "统一后台管理",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-07.md",
+      "implementation_locations": [
+        "app/backend/internal/agent/skill_releases.go",
+        "app/backend/internal/telegram",
+        "app/backend/internal/storageconfig",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx",
+        "app/web/src/StorageOperations.tsx",
+        "app/packages/contracts/src/fixed-delivery-navigation.ts",
+        "app/backend/migrations/0132_telegram_grant_delivery.sql"
+      ],
+      "prior_remaining": "保留已有组织审计、运行时、TG、存储运维与精确回执；实际服务配置及组织管理员验收仍开放。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "保留已有组织审计、运行时、TG、存储运维与精确回执；实际服务配置及组织管理员验收仍开放。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-08",
+      "name": "工作台与通知",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-08.md",
+      "implementation_locations": [
+        "app/backend/internal/notification",
+        "app/backend/internal/project/task_participants.go",
+        "app/backend/internal/workbench",
+        "app/backend/internal/workbench/task_inventory.go",
+        "app/backend/migrations/0124_task_collaboration.sql",
+        "app/backend/migrations/0127_agent_fixed_notifications.sql",
+        "app/mobile/src/pages/secretary/fixed-delivery.tsx",
+        "app/packages/contracts/src/fixed-deliveries.ts",
+        "app/web/src/ConversationFixedDelivery.tsx",
+        "app/packages/contracts/src/fixed-delivery-navigation.ts",
+        "app/backend/migrations/0132_telegram_grant_delivery.sql"
+      ],
+      "prior_remaining": "保留工作台、普通站内通知及个人TG同意/未知状态对账；真实群组/接收人和跨渠道收件验收待提供配置。",
+      "confirmed_code_tasks": [
+        "C168-05"
+      ],
+      "current_remaining": "保留工作台、普通站内通知及个人TG同意/未知状态对账；真实群组/接收人和跨渠道收件验收待提供配置。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-09",
+      "name": "真实Codex秘书接入",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-09.md",
+      "implementation_locations": [
+        "app/agent-runtime/src",
+        "app/backend/internal/agentworker"
+      ],
+      "prior_remaining": "真实Codex供应商/模型/服务配置后验证完整会话及工具执行；已有固定SDK/原生broker代码不冒充真实模型通过。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "真实Codex供应商/模型/服务配置后验证完整会话及工具执行；已有固定SDK/原生broker代码不冒充真实模型通过。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-10",
+      "name": "AI原生执行隔离",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-10.md",
+      "implementation_locations": [
+        "app/backend/internal/nativeruntime",
+        "app/deploy/native"
+      ],
+      "prior_remaining": "目标Linux的systemd/cgroup/身份/网络隔离与资源限制安装验收；Windows检查不证明目标隔离已部署。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "目标Linux的systemd/cgroup/身份/网络隔离与资源限制安装验收；Windows检查不证明目标隔离已部署。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-11",
+      "name": "AI计划与授权",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-11.md",
+      "implementation_locations": [
+        "app/backend/internal/agent/business_revisions.go",
+        "app/backend/internal/agent/fixed_deliveries.go",
+        "app/backend/internal/agent/mutations.go",
+        "app/backend/internal/agent/telegram_disclosure.go",
+        "app/backend/internal/agent/telegram_handoff.go",
+        "app/backend/internal/agent/telegram_write_grants.go",
+        "app/backend/internal/files/agent_scope_transfer.go",
+        "app/backend/migrations/0125_telegram_write_grants.sql",
+        "app/backend/migrations/0126_agent_fixed_scope_transfers.sql",
+        "app/backend/migrations/0127_agent_fixed_notifications.sql",
+        "app/mobile/src/pages/secretary/business-preparation.tsx",
+        "app/mobile/src/pages/secretary/fixed-delivery.tsx",
+        "app/mobile/src/pages/secretary/telegram-write-grant.tsx",
+        "app/packages/contracts/src/fixed-deliveries.ts",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/web/src/ConversationFixedDelivery.tsx",
+        "app/web/src/TelegramWriteGrant.tsx",
+        "app/backend/internal/agent/file_session.go",
+        "app/packages/contracts/src/fixed-delivery-navigation.ts"
+      ],
+      "prior_remaining": "保留固定人工授权、现有文件范围迁移和原任务回执；真实模型计划/授权/失效旅程待验收。",
+      "confirmed_code_tasks": [
+        "C168-06"
+      ],
+      "current_remaining": "保留固定人工授权、现有文件范围迁移和原任务回执；真实模型计划/授权/失效旅程待验收。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-12",
+      "name": "秘书业务工具",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-12.md",
+      "implementation_locations": [
+        "app/backend/internal/agent",
+        "app/backend/internal/agentworker",
+        "app/skills",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx"
+      ],
+      "prior_remaining": "保留当前各固定业务工具及受控参数边界；超出现有工具协议的自由业务处理未开放，真实Codex执行待验收。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "保留当前各固定业务工具及受控参数边界；超出现有工具协议的自由业务处理未开放，真实Codex执行待验收。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-13",
+      "name": "八项Skill正式发布",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-13.md",
+      "implementation_locations": [
+        "app/backend/internal/agent/skill_releases.go",
+        "app/agent-runtime/src/skills.ts",
+        "app/skills",
+        "app/backend/internal/agent/business_revisions.go",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/business-preparation.tsx"
+      ],
+      "prior_remaining": "全部八项Skill仍draft；目标原生环境的精确包安装、真实模型调用及业务验收未完成。",
+      "confirmed_code_tasks": [
+        "C168-09",
+        "C168-10"
+      ],
+      "current_remaining": "全部八项Skill仍draft；目标原生环境的精确包安装、真实模型调用及业务验收未完成。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-15",
+      "name": "股东TG入口",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-15.md",
+      "implementation_locations": [
+        "app/backend/internal/telegram",
+        "app/backend/internal/agent/telegram_handoff.go",
+        "app/deploy/release/telegram_config.py",
+        "app/backend/internal/telegram/config_file.go"
+      ],
+      "prior_remaining": "股东群、Bot及绑定配置后验证真实入站/投递/披露和人工对账；本轮修复独立工具包依赖。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "股东群、Bot及绑定配置后验证真实入站/投递/披露和人工对账；本轮修复独立工具包依赖。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-16",
+      "name": "Android构建与发布",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-16.md",
+      "implementation_locations": [
+        "app/mobile/android",
+        "app/mobile/android/app/build.gradle",
+        "app/mobile/src/platform",
+        "app/scripts/android_release.py",
+        "app/scripts/build_android.py",
+        "app/scripts/test_android_release161.py",
+        "app/scripts/build_candidate_164.py"
+      ],
+      "prior_remaining": "Android Java摘要代码与纯JVM用例本轮更新；Android JS/新APK继续按加速指令延期，APK164固定163/129，正式签名资料待提供。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "Android Java摘要代码与纯JVM用例本轮更新；Android JS/新APK继续按加速指令延期，APK164固定163/129，正式签名资料待提供。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-18",
+      "name": "四端业务覆盖",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-18.md",
+      "implementation_locations": [
+        "app/backend/internal/agent/business_revisions.go",
+        "app/backend/internal/httpapi/round161_notification_integration_test.go",
+        "app/backend/internal/httpapi/round161_scope_integration_test.go",
+        "app/backend/internal/httpapi/round161_tasks_integration_test.go",
+        "app/backend/internal/httpapi/round161_telegram_integration_test.go",
+        "app/backend/internal/project/task_participants.go",
+        "app/backend/internal/workbench/task_inventory.go",
+        "app/backend/migrations/0124_task_collaboration.sql",
+        "app/mobile/src",
+        "app/mobile/src/pages/secretary/business-preparation.tsx",
+        "app/mobile/src/platform/batch161.test.ts",
+        "app/packages/contracts/src",
+        "app/scripts/check_batch_round161.mjs",
+        "app/scripts/run_batch_round161.py",
+        "app/scripts/verify_batch_round161.py",
+        "app/web/src",
+        "app/web/src/ConversationBusinessPreparation.tsx",
+        "app/mobile/src/pages/secretary/file-updates.tsx"
+      ],
+      "prior_remaining": "四端当前源码入口和本轮统一本地验证单列；121完整回归与APK164明确复用，当前业务正式验收仍开放。",
+      "confirmed_code_tasks": [
+        "C168-08"
+      ],
+      "current_remaining": "四端当前源码入口和本轮统一本地验证单列；121完整回归与APK164明确复用，当前业务正式验收仍开放。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-19",
+      "name": "微信／抖音平台接入与发布准备",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-19.md",
+      "implementation_locations": [
+        "app/backend/internal/miniapp",
+        "app/mobile/config",
+        "app/mobile/src/platform"
+      ],
+      "prior_remaining": "微信/抖音的AppID、服务域名、主体资质及平台审核资料待提供；本轮构建结果不替代平台准入。",
+      "confirmed_code_tasks": [
+        "C168-08"
+      ],
+      "current_remaining": "微信/抖音的AppID、服务域名、主体资质及平台审核资料待提供；本轮构建结果不替代平台准入。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-20",
+      "name": "实际OSS＋R2",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-20.md",
+      "implementation_locations": [
+        "app/backend/internal/objectstore",
+        "app/backend/internal/files",
+        "app/backend/internal/uploadworker"
+      ],
+      "prior_remaining": "真实OSS/R2账号、Bucket/CORS/版本及独立身份配置待提供；大文件吞吐/实网120GB专项仍在移出范围。",
+      "confirmed_code_tasks": [
+        "C168-11"
+      ],
+      "current_remaining": "真实OSS/R2账号、Bucket/CORS/版本及独立身份配置待提供；大文件吞吐/实网120GB专项仍在移出范围。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-23",
+      "name": "服务监控与告警",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-23.md",
+      "implementation_locations": [
+        "app/backend/internal/servicestatus",
+        "app/backend/internal/statusbridge",
+        "app/backend/internal/notification",
+        "app/deploy/monitoring"
+      ],
+      "prior_remaining": "独立监控目标机、应用机及真实外部收件地址/通道配置与验收；166原生方案和上游锁定保持。",
+      "confirmed_code_tasks": [
+        "C168-07"
+      ],
+      "current_remaining": "独立监控目标机、应用机及真实外部收件地址/通道配置与验收；166原生方案和上游锁定保持。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-24",
+      "name": "生产部署与发布工程",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-24.md",
+      "implementation_locations": [
+        "app/deploy/release",
+        "app/deploy/native",
+        ".github/workflows",
+        "app/scripts/build_candidate_164_server.py",
+        "app/deploy/release/telegram_config.py",
+        "app/backend/internal/telegram/config_file.go"
+      ],
+      "prior_remaining": "本轮修复受控清理服务和全部四个Python工具依赖；真实Linux/HTTPS/systemd/受控切换验收待服务器资料。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "本轮修复受控清理服务和全部四个Python工具依赖；真实Linux/HTTPS/systemd/受控切换验收待服务器资料。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-25",
+      "name": "生产数据持久化",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-25.md",
+      "implementation_locations": [
+        "app/backend/migrations",
+        "app/backend/internal/platform"
+      ],
+      "prior_remaining": "生产PostgreSQL普通升级、独立应用/迁移身份与TLS的目标安装验收；开发PG100/API保持原样，历史迁移/容灾不重列门槛。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "生产PostgreSQL普通升级、独立应用/迁移身份与TLS的目标安装验收；开发PG100/API保持原样，历史迁移/容灾不重列门槛。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-26",
+      "name": "依赖安全与产物",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-26.md",
+      "implementation_locations": [
+        "app/package-lock.json",
+        "app/deploy/release",
+        "app/scripts/verify_candidate_164.py"
+      ],
+      "prior_remaining": "本轮打包后隔离运行安装版控制器并校验全部服务；真实目标产物/正式签名验收仍开放，旧依赖审查不冒充本轮重跑。",
+      "confirmed_code_tasks": [],
+      "current_remaining": "本轮打包后隔离运行安装版控制器并校验全部服务；真实目标产物/正式签名验收仍开放，旧依赖审查不冒充本轮重跑。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    },
+    {
+      "id": "GAP-28",
+      "name": "当前范围完整验收",
+      "acceptance_state": "open",
+      "audit_state": "reviewed",
+      "audit_record": "docs/development/168-audit/GAP-28.md",
+      "implementation_locations": [
+        "app/scripts/verify_current_scope.py",
+        "app/scripts/verify_acceptance_applicability.py",
+        "app/scripts/run_batch_round.py",
+        "app/scripts/run_batch_round163.py"
+      ],
+      "prior_remaining": "23项正式验收仍开放；本轮完成明确的代码/用例/工具后统一验证，未提供制度/配置及延期项逐项保留。",
+      "confirmed_code_tasks": [
+        "C168-12"
+      ],
+      "current_remaining": "23项正式验收仍开放；本轮完成明确的代码/用例/工具后统一验证，未提供制度/配置及延期项逐项保留。 Full formal acceptance remains open; source-only audit is not execution or external acceptance."
+    }
+  ],
+  "excluded_ids": [
+    "GAP-14",
+    "GAP-17",
+    "GAP-21",
+    "GAP-22",
+    "GAP-27"
+  ],
+  "code_tasks": [
+    {
+      "id": "C168-01",
+      "packages": [
+        "GAP-01"
+      ],
+      "description": "shared mobile task board/basic timeline",
+      "state": "implemented",
+      "files": [
+        "app/mobile/src/pages/project/task-views.tsx",
+        "app/packages/contracts/src/project-schedule.ts"
+      ]
+    },
+    {
+      "id": "C168-02",
+      "packages": [
+        "GAP-02"
+      ],
+      "description": "exact contract node task associations, immutable ordinary receipts and all clients",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/contracts/task_links.go",
+        "app/backend/migrations/0134_contract_milestone_tasks.sql",
+        "app/web/src/ContractTaskLinks.tsx",
+        "app/mobile/src/pages/business/contract-tasks.tsx",
+        "app/backend/internal/httpapi/round168_contract_tasks_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-03",
+      "packages": [
+        "GAP-06"
+      ],
+      "description": "disable after reissued invitation preserves revoked predecessor",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/identity/administration.go",
+        "app/backend/internal/httpapi/round168_identity_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-04",
+      "packages": [
+        "GAP-06"
+      ],
+      "description": "role decisions recheck original human session/MFA before replay",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/identity/roles.go",
+        "app/backend/internal/httpapi/round168_identity_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-05",
+      "packages": [
+        "GAP-08"
+      ],
+      "description": "notification human reads/acknowledgment recheck original session",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/notification/access.go",
+        "app/backend/internal/httpapi/round168_read_sessions_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-06",
+      "packages": [
+        "GAP-11"
+      ],
+      "description": "secretary human reads/cancel recheck original session, preserve intentional worker/TG contexts",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/agent/conversations.go",
+        "app/backend/internal/agent/run_cancel.go",
+        "app/backend/internal/httpapi/round168_read_sessions_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-07",
+      "packages": [
+        "GAP-23"
+      ],
+      "description": "status human read snapshot retains original-session authority",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/servicestatus/human_read.go",
+        "app/backend/internal/httpapi/round168_read_sessions_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-08",
+      "packages": [
+        "GAP-18",
+        "GAP-19"
+      ],
+      "description": "bounded mini ordinary attachment/photo source and ordinary upload/scan/promotion/commit/cleanup consumers",
+      "state": "implemented",
+      "files": [
+        "app/mobile/src/platform/mini-upload-source.ts",
+        "app/mobile/src/platform/uploads.ts",
+        "app/mobile/src/pages/uploads/workspace.tsx",
+        "app/backend/migrations/0135_miniapp_ordinary_uploads.sql",
+        "app/backend/internal/httpapi/round168_mini_upload_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-09",
+      "packages": [
+        "GAP-13"
+      ],
+      "description": "controlled deployment package inspection/prerequisite evidence and exact profile installation",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/deployment/provision.go",
+        "app/backend/cmd/platform/main.go",
+        "app/agent-runtime/src/describe-profile.ts",
+        "app/backend/internal/httpapi/round168_deployment_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-10",
+      "packages": [
+        "GAP-13"
+      ],
+      "description": "versioned external evaluation identity/results bound to exact installation/release with both client consumers",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/agent/evaluation.go",
+        "app/backend/internal/agent/skill_releases.go",
+        "app/backend/migrations/0136_deployment_provision_and_evaluation.sql",
+        "app/web/src/AgentRuntime.tsx",
+        "app/mobile/src/pages/secretary/runtime.tsx",
+        "app/packages/contracts/test/batch168-cases.ts"
+      ]
+    },
+    {
+      "id": "C168-11",
+      "packages": [
+        "GAP-20"
+      ],
+      "description": "deployment-only atomic initial storage quota/epoch/dual-target provision, exact replay and no switch",
+      "state": "implemented",
+      "files": [
+        "app/backend/internal/deployment/provision.go",
+        "app/backend/internal/httpapi/round168_deployment_integration_test.go"
+      ]
+    },
+    {
+      "id": "C168-12",
+      "packages": [
+        "GAP-28"
+      ],
+      "description": "complete code-wave gate, authored regression fixtures, actual browser/media tools and source-bound verifier",
+      "state": "implemented",
+      "files": [
+        "app/scripts/development_wave.py",
+        "app/scripts/test_development_wave.py",
+        "app/scripts/check_batch_round168.mjs",
+        "app/scripts/run_batch_round168_browser.py",
+        "app/scripts/verify_batch_round168.py"
+      ]
+    }
+  ],
+  "first_failure_preservation_required": true,
+  "new_android_apk": false,
+  "current_android_js_rebuild_deferred": true,
+  "actual_configurations_deferred_by_user": true,
+  "formal_acceptance_closed": false,
+  "preserve_nine_frozen_releases": true,
+  "preserve_apk164_business163_schema129": true,
+  "preserve_development_pg100_api": true,
+  "independent_refutations": [
+    "docs/development/168-audit/refutation-GAP-01.md",
+    "docs/development/168-audit/refutation-GAP-02.md",
+    "docs/development/168-audit/refutation-GAP-06.md",
+    "docs/development/168-audit/refutation-GAP-08.md",
+    "docs/development/168-audit/refutation-GAP-11.md",
+    "docs/development/168-audit/refutation-GAP-13.md",
+    "docs/development/168-audit/refutation-GAP-18.md",
+    "docs/development/168-audit/refutation-GAP-20.md",
+    "docs/development/168-audit/refutation-GAP-23.md"
+  ],
+  "schema_after": 136,
+  "plan_state_note": "This source-bound plan is the pre-test code-wave snapshot; tests_started remains false here permanently. Actual execution belongs to immutable phase/attempt records.",
+  "validation": {
+    "native_packages": [
+      "./internal/httpapi",
+      "./internal/deployment"
+    ],
+    "native_selector": "^(TestRound168.*|TestPrivateDeploymentInputs|TestExternalSkillEvaluation|TestRound157SkillGovernance|TestAgentRunLedger|TestNotifications|TestServiceStatus|TestAgentServiceSummary)$",
+    "steps": {
+      "native": [
+        "native-tests"
+      ],
+      "clients": [
+        "typecheck",
+        "web-tests",
+        "mobile-tests",
+        "mobile-concern-extra",
+        "web-build",
+        "weapp-build",
+        "douyin-build"
+      ],
+      "runtime": [
+        "runtime-tests"
+      ],
+      "release": [
+        "wave-tool-tests",
+        "release-tests"
+      ]
+    },
+    "full_backend_regression": false,
+    "android_bundle_or_apk": false,
+    "real_integrations": false,
+    "browser_fixture": "TestRound168ContractTaskLinks"
+  }
+}

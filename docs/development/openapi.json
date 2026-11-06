@@ -32850,6 +32850,327 @@
         }
       }
     },
+    "/contracts/{id}/milestones/{milestone}/task-links": {
+      "get": {
+        "operationId": "listContractMilestoneTaskLinks",
+        "tags": [
+          "contracts"
+        ],
+        "summary": "listContractMilestoneTaskLinks",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "milestone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "history",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractMilestoneTaskEventListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      },
+      "post": {
+        "operationId": "linkContractMilestoneTask",
+        "tags": [
+          "contracts"
+        ],
+        "summary": "linkContractMilestoneTask",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "milestone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractMilestoneTaskEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractMilestoneTaskInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contracts/{id}/milestones/{milestone}/task-links/{link}/revoke": {
+      "post": {
+        "operationId": "revokeContractMilestoneTask",
+        "tags": [
+          "contracts"
+        ],
+        "summary": "revokeContractMilestoneTask",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "milestone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "link",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/CsrfToken"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractMilestoneTaskEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractMilestoneTaskInput"
+              }
+            }
+          }
+        }
+      }
+    },
     "/contracts/{id}/finance": {
       "get": {
         "operationId": "getContractFinance",
@@ -73140,6 +73461,221 @@
           "created_at"
         ]
       },
+      "ContractMilestoneTaskInput": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "contract_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "task_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "task_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "acknowledge_scope_difference": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "contract_revision_id",
+          "task_id",
+          "task_version",
+          "acknowledge_scope_difference",
+          "reason"
+        ]
+      },
+      "ContractMilestoneTaskCurrent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "project_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "todo",
+              "in_progress",
+              "in_review",
+              "blocked",
+              "done",
+              "cancelled"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "project_id",
+          "title",
+          "state"
+        ]
+      },
+      "ContractMilestoneTaskEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contract_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "milestone_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contract_revision_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contract_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "link",
+              "revoke"
+            ]
+          },
+          "source_link_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "task_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "task_project_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "task_title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "task_state": {
+            "type": "string",
+            "enum": [
+              "todo",
+              "in_progress",
+              "in_review",
+              "blocked",
+              "done",
+              "cancelled"
+            ]
+          },
+          "cross_scope": {
+            "type": "boolean"
+          },
+          "scope_difference_acknowledged": {
+            "type": "boolean"
+          },
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "revoked": {
+            "type": "boolean"
+          },
+          "current_task": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ContractMilestoneTaskCurrent"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "contract_id",
+          "milestone_id",
+          "contract_revision_id",
+          "contract_version",
+          "seq",
+          "action",
+          "source_link_id",
+          "task_id",
+          "task_version",
+          "task_project_id",
+          "task_title",
+          "task_state",
+          "cross_scope",
+          "scope_difference_acknowledged",
+          "actor_id",
+          "created_at",
+          "reason",
+          "revoked",
+          "current_task"
+        ]
+      },
       "ContractReturnFXInput": {
         "type": "object",
         "properties": {
@@ -87343,6 +87879,63 @@
           "meta"
         ]
       },
+      "ContractMilestoneTaskEventListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ContractMilestoneTaskEvent"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "ContractMilestoneTaskEventResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ContractMilestoneTaskEvent"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
       "ContractFinanceResponse": {
         "type": "object",
         "properties": {
@@ -92618,6 +93211,54 @@
           "meta"
         ]
       },
+      "AgentSkillEvaluation": {
+        "type": "object",
+        "properties": {
+          "set_version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "set_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "results_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "passed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "failed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "skipped": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "set_version",
+          "set_sha256",
+          "results_sha256",
+          "reference",
+          "passed",
+          "failed",
+          "skipped"
+        ]
+      },
       "AgentSkillRelease": {
         "type": "object",
         "properties": {
@@ -92654,6 +93295,16 @@
           "active_basis_sha256": {
             "type": "string",
             "pattern": "^[a-f0-9]{64}$"
+          },
+          "evaluation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentSkillEvaluation"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "assessment_run_ids": {
             "type": "array",
@@ -92698,6 +93349,7 @@
           "skill_sha256",
           "active_basis_sha256",
           "assessment_run_ids",
+          "evaluation",
           "rollback_release_id",
           "reason",
           "actor_id",
@@ -92768,6 +93420,16 @@
               "pilot",
               "published",
               "disabled"
+            ]
+          },
+          "evaluation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentSkillEvaluation"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "assessment_run_ids": {

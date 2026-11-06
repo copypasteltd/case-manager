@@ -117,7 +117,7 @@ func (s *ObjectRetirementService) assessCompletedUpload(ctx context.Context, tx 
 	if u.ResultVersionID != nil || u.State == "committed" {
 		block("FORMAL_OBJECT_PROTECTED")
 	}
-	if u.Classification == nil || *u.Classification != f.Classification || u.SourceChannel == nil || !slices.Contains([]string{"web", "android", "agent"}, *u.SourceChannel) {
+	if u.Classification == nil || *u.Classification != f.Classification || u.SourceChannel == nil || !slices.Contains([]string{"web", "android", "wechat", "douyin", "agent"}, *u.SourceChannel) {
 		block("AGENT_RECOVERY_SOURCE")
 	}
 	if f.State != "active" {
@@ -349,7 +349,7 @@ func (s *ObjectRetirementService) CompletedDraftCandidates(ctx context.Context, 
 		return out, e
 	}
 	rows, e := tx.Query(ctx, `SELECT id,created_at FROM upload_sessions WHERE org_id=$1 AND target_folder_id=$2 AND (frozen_source_id IS NOT NULL OR EXISTS(SELECT 1 FROM terminal_upload_observation_results x JOIN terminal_upload_observations q ON q.org_id=x.org_id AND q.id=x.request_id WHERE q.org_id=upload_sessions.org_id AND q.upload_id=upload_sessions.id AND x.all_present))
- AND committed_version_id IS NULL AND state<>'committed' AND source_channel IN ('web','android','agent')
+ AND committed_version_id IS NULL AND state<>'committed' AND source_channel IN ('web','android','wechat','douyin','agent')
  AND ($3::timestamptz IS NULL OR (created_at,id)<($3,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5`, a.OrgID, folderID, at, id, limit+1)
 	if e != nil {
 		return out, e

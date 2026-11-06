@@ -1,6 +1,28 @@
 # CopyPaste Case Manager · 企业内部管理平台
 
-本轮实际结果：Web **531**、共享移动端 **555**、原生HTTP/PG **5组/21记录**、受控发布 **45**、纯JVM **8**，选定构建及Web/H5操作通过；首次失败与精确修复均保留。[验证与边界](docs/quality/167-batch-functional-verification.md)。
+本轮统一检查已通过：原生 **13组／79记录**、Web **534**、共享移动端 **559**、运行器 **66**、批次门禁 **6**、受控发布 **45**、来源核对 **16**；Web／微信／抖音构建及Web 5项／H5 6项实际页面通过。已补 **9张截图、2段录屏、4个GIF**；当前服务器包schema136／803文件。JVM167、九个冻结版本及APK164明确复用。
+
+## 增量168 / Increment168 — 全编号代码批次与功能闭环
+
+已对全部23个有效编号逐项审查并完成9份独立反证；12项确认代码任务及初始计划中的相关调用方、前置用例和采集工具完成后，才封存首批2843份源码并统一检查。后续按批次收集失败、集中修复，仅复测受影响输入。[每轮开发约定](docs/development/00-batch-development-policy.md)已固定这一顺序。
+
+新增共享移动端任务看板／基本时间线；合同准确履约节点的任务关联、跨范围人工确认和不可变撤销历史；重发邀请后停用、角色决策及通知／秘书／状态读取的原会话检查；微信普通附件／照片和抖音照片的有界上传来源，复用完整上传、扫描、提升及人工提交；部署专用的首次双存储初始化、秘书配置安装，以及版本化外部评测资料的登记与查阅。
+
+使用：项目任务列表切换“任务呈现方式”；合同节点展开关联任务后选择准确当前任务，核对范围差异并以最近本人MFA提交；小程序上传工作区选择不超过20 MiB的普通来源，大文件仍由Web／Android承担；管理员在秘书运行配置中读取准确发布台账，分别核对真实运行与外部评测。首次存储及秘书安装遵守[部署操作指南](docs/operations/05-initial-storage-and-agent-install.md)，由迁移身份读取私有配置，普通应用账号无权初始化。
+
+[开发与使用细节](docs/development/168-batch-functional-closure.md) · [23编号未完成表](docs/delivery/05-functional-closure-168.md) · [统一检查与边界](docs/quality/168-batch-functional-verification.md) · [截图、录屏和GIF](docs/media/batch-round-168/README.md)。源码升级至schema136；开发PG100/API保持原样，九个冻结版本及APK164仍固定业务163/schema129。Android JS／新APK延期；全部23项正式工作包和8项draft Skill保持开放，真实配置由用户后续提供。
+
+## Increment168 — complete numbered code wave and functional closure
+
+Review all23 active packages, retain nine independent refutations, then finish all12 confirmed application/consumer/fixture/tool tasks before freezing the first2843 raw source files and starting unified checks. Collect each batch's failures before a combined repair; replay only affected consumers. The [development agreement](docs/development/00-batch-development-policy.md) makes this order permanent.
+
+Add shared mobile task boards/basic timelines; exact contract-milestone task links with human cross-scope review and immutable revocation history; original-session checks for role decisions, notification/secretary/status reads and disabling a user after invitation reissue; bounded ordinary miniapp upload sources; deployment-only initial dual-storage provisioning/profile installation; and separately versioned external assessment evidence.
+
+Use the task-list view selector; expand a contract milestone's task links and confirm the exact current task/scope with recent personal MFA; select ordinary sources up to20 MiB in the miniapp upload workspace; inspect versioned assessment results in the secretary runtime release ledger. WeChat offers ordinary message files/photos, Douyin photos; Web/Android retain large-file handling. Uploads still require scanning, promotion and explicit human commit. Operators use the [private deployment guide](docs/operations/05-initial-storage-and-agent-install.md); ordinary application accounts cannot initialize storage or install profiles.
+
+[Implementation and usage](docs/development/168-batch-functional-closure.md) · [All23 remaining packages](docs/delivery/05-functional-closure-168.md) · [Unified verification and limits](docs/quality/168-batch-functional-verification.md) · [Screenshots, recordings and GIFs](docs/media/batch-round-168/README.md). Source schema136 follows nine unchanged freezes; developmentPG100/API and APK164/business163/schema129 remain retained. Android JS/newAPK stay deferred. All23 formal packages and eight draft Skills remain open; the user will provide real configuration later.
+
+增量167当时结果：Web **531**、共享移动端 **555**、原生HTTP/PG **5组/21记录**、受控发布 **45**、纯JVM **8**，选定构建及Web/H5操作通过；首次失败与精确修复均保留。[验证与边界](docs/quality/167-batch-functional-verification.md)。
 
 ## 增量167 / Increment167 — 整批邀请、上传与部署闭环
 

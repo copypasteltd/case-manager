@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T16:47:39.619099+00:00",
+  "group": "batch-round-168-functional-wave-mobile3",
+  "encoder_sha256": "4d23a583f348a06e53add63c39cddb037d2804a5e16aa40ec0efa5deb87878a9",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-task-board.png",
+      "sha256": "ca8c0d2bc4e0c823fb81b765a1a249829a1df5a94ffc76cc6f57b136034e9755",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-task-timeline.png",
+      "sha256": "8745823463d2ba13175aecc2f7168e2101027c67b9c4b23848dcafe4a6e4c138",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-contract-task-links.png",
+      "sha256": "9c83d309c423bd1d78f35f1e0412fcd246de882129c0e438d1d69c35263c584e",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-skill-assessment-evidence.png",
+      "sha256": "ffeef26e8f970de56a5e0800ce94dfbc45f74f9142064ad27c7c8adfda9a679b",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-ordinary-upload-workspace.png",
+      "sha256": "b4c2f26f2358d79a1d0cb51dda2f6b9e1076ee0a8689b61bb41c62a8dc476cd8",
+      "credentials_excluded": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/screen-recording.mp4",
+      "sha256": "da2690127276153a5e2b1dd443600a59ae6ae5d661f8a806159e02d711d5dbac",
+      "size_bytes": 241663
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/screenshot-tour.gif",
+      "sha256": "dcdba0c1a9b66fa1ecb2b7cd8a8be118f0e2a192e5ffa47f0ee9cc815b556af4",
+      "size_bytes": 158188
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "74",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "7.400000"
+    }
+  }
+}

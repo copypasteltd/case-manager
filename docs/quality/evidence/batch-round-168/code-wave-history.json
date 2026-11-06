@@ -1,0 +1,142 @@
+{
+  "whole_initial_code_wave_before_any_tests": true,
+  "initial_and_repair1_results_collected_before_repairs": true,
+  "waves": [
+    {
+      "attempt": "initial",
+      "record": "docs/quality/evidence/batch-round-168/freeze-code-initial.json",
+      "sha256": "0910ff7b1a209f0f9cb1d32ddb88d5f6275322b56d6d939d558280b8db4e2f32",
+      "source_sha256": "3f21372bed3144572b2bea07c11ee34d41ed54eae2a9ea7b9547ead1b8331073",
+      "source_files": 2843,
+      "changes_from_previous": [],
+      "tests_executed_at_freeze": false
+    },
+    {
+      "attempt": "repair1",
+      "record": "docs/quality/evidence/batch-round-168/freeze-code-repair1.json",
+      "sha256": "93a1b505ce2bac28e41ca2d27c1ecb761d9206c195b83b95c5c3d07729c7a5e1",
+      "source_sha256": "ceec5e928f8d33e520cbe1643ca39224a46faa96e25da08f7b55c57b38f1308a",
+      "source_files": 2843,
+      "changes_from_previous": [
+        {
+          "file": "app/backend/internal/httpapi/round168_contract_tasks_integration_test.go",
+          "before": "23d662153be4f352e18569f1524bd9d284607155ba436680711e4e32e207ab39",
+          "after": "353c5a1d0a216ef1579de0fd8bef7e042442947163d58c3f32975a23352f9538"
+        },
+        {
+          "file": "app/backend/internal/httpapi/round168_mini_upload_integration_test.go",
+          "before": "c4b7677279b0bd178f7cd3eed8e01fd21e617792b4539d5ea533985fcffd6485",
+          "after": "34bb8a6201c203122c2637d49d3ec28770cb368b28e2631b77d8628b0fa25d8a"
+        },
+        {
+          "file": "app/backend/internal/httpapi/round168_read_sessions_integration_test.go",
+          "before": "d677bfe48b4b70f79426b52b7c169041cb51c6ff4739581a8d0b9bbf16f4e072",
+          "after": "389e8628020ba90d362e32007a7be4714ed8683120eadc5fbf0377dd98aaa573"
+        },
+        {
+          "file": "app/mobile/src/pages/business/contract-tasks.tsx",
+          "before": "5f7a858bab5a0fc7cc5be8482d18a079ab4776e1206a91fda0fe99c44f2d8e4d",
+          "after": "e1912fcf0f16d4e704ca0ae5a23b622f76caafa5be93b2da3037f8ace6748d06"
+        },
+        {
+          "file": "app/mobile/src/pages/project/task-forms.tsx",
+          "before": "d27e9782bdad30b8d7a2e960e7b04bb3946d326d9f20ec9cb9a73e188efd5f8d",
+          "after": "e18f166ea09ee69a8c3ff2125878b4020ede840c6a8e41da146710045940fe59"
+        },
+        {
+          "file": "app/mobile/src/pages/project/task-views.tsx",
+          "before": "4579e5b5e24a5cb14ee61c320b9e07a47fd791386e76141732c1908093d9b9af",
+          "after": "84b1d88defa333050b5ef055b7f470b7bd1146dc563bfb205b2c7111f12d98f6"
+        },
+        {
+          "file": "app/mobile/src/platform/mini-upload-source.ts",
+          "before": "03ff0496c78520063de3486ba4728999ead62e6de95a43c7b59c893e56f4d281",
+          "after": "baebe48f643ba0a7a0c063985c5c8a2ca419d9e8a625f2eacddac8736a6c05c0"
+        },
+        {
+          "file": "app/packages/contracts/test/batch168-cases.ts",
+          "before": "e0cf8c1829f5342051bdc62359caca55d6be73433b43591cd63b8570a5c8776c",
+          "after": "1915b90c20a637693b2239ce5c4ff11d8d574022e3af20a9c9312aa5a7a42a35"
+        },
+        {
+          "file": "app/web/tsconfig.json",
+          "before": "3b53324421bf27f83e3f2141997bfc7480af4fb1fdf397eaeed2ff252149d780",
+          "after": "fd45e5fa8b43ff1cf14d599ad3f904cf63afa20406a47fb5d8402d2242a44672"
+        }
+      ],
+      "tests_executed_at_freeze": false
+    },
+    {
+      "attempt": "repair2",
+      "record": "docs/quality/evidence/batch-round-168/freeze-code-repair2.json",
+      "sha256": "eead8f9013912d032ecc8be66697f6a740e1153febf81834a824cfaa843a4cc0",
+      "source_sha256": "03e60055134b70f5785121dfca77860602a009b4409709479d4a0dfdab88ffaf",
+      "source_files": 2844,
+      "changes_from_previous": [
+        {
+          "file": "app/backend/internal/httpapi/round168_read_sessions_integration_test.go",
+          "before": "389e8628020ba90d362e32007a7be4714ed8683120eadc5fbf0377dd98aaa573",
+          "after": "585501f416340e1244d1ff1a9296f2b909eabb99670aa6b97a13c221bc2ece13"
+        },
+        {
+          "file": "app/scripts/check_batch_round168.mjs",
+          "before": "4c9eb3ed33626e59a02b713c4c07d2f84c1db4ef98c933974b439feb2a7d88fd",
+          "after": "cb3e908d42edc9715fa25b785b9d94478ee1a39f5da2d6e6a16c880ae7095af8"
+        },
+        {
+          "file": "app/scripts/check_batch_round168_package.py",
+          "before": null,
+          "after": "16ac85ebb73438bda2f98463c8e5a7c935da04505233437b228d0b361ad04b95"
+        },
+        {
+          "file": "app/scripts/run_batch_round168_browser.py",
+          "before": "5e609ecc8f0e1a041cfbba6a9b3839a77469d07924c1af1d228f01b0e732c73f",
+          "after": "18e46e63001b5fc4ba123ba560d67eb5a3c63a65d0d54a09d52c49d13a8e566e"
+        },
+        {
+          "file": "app/scripts/verify_batch_round168.py",
+          "before": "750028c69ddc36f0223c8af4091204b71e696932da730eb866337234bc0de8c9",
+          "after": "131ee896eb27ef50e868ca2b7a4c04b8e5932516d8daeaa824b1b67e91008ef4"
+        }
+      ],
+      "tests_executed_at_freeze": false
+    },
+    {
+      "attempt": "repair3",
+      "record": "docs/quality/evidence/batch-round-168/freeze-code-repair3.json",
+      "sha256": "88a991e80dbeef5642459afe8257133074a96ae244d7ddf8cf0aa1c738f83411",
+      "source_sha256": "84eeced670371580bcacaba9412c2cc2d18806ec57db424b8d370ccb1a91a239",
+      "source_files": 2844,
+      "changes_from_previous": [
+        {
+          "file": "app/scripts/check_batch_round168.mjs",
+          "before": "cb3e908d42edc9715fa25b785b9d94478ee1a39f5da2d6e6a16c880ae7095af8",
+          "after": "210206144dfa9a33165ef8fc8dbafa79027e9d5e76bc6284fe8031383f6a18fd"
+        },
+        {
+          "file": "app/scripts/verify_batch_round168.py",
+          "before": "131ee896eb27ef50e868ca2b7a4c04b8e5932516d8daeaa824b1b67e91008ef4",
+          "after": "c9fb1b414329caca0f50b4fb75ddb093c1e7cf2161514c0a88b0ee2dbc936bcc"
+        }
+      ],
+      "tests_executed_at_freeze": false
+    },
+    {
+      "attempt": "repair4",
+      "record": "docs/quality/evidence/batch-round-168/freeze-code-repair4.json",
+      "sha256": "7906f6c1d9f4af6af0f91acb22cfc64aa38009e0e06cba862171917d12c4475f",
+      "source_sha256": "a5a4cded6607cae3e874712d221b97fd7a36c68c62dee15f984827bd90c84773",
+      "source_files": 2844,
+      "changes_from_previous": [
+        {
+          "file": "app/scripts/check_batch_round168.mjs",
+          "before": "210206144dfa9a33165ef8fc8dbafa79027e9d5e76bc6284fe8031383f6a18fd",
+          "after": "e020d5d8b7ac1ee5eed9eb205ebe0fe91b8fa388ca21538013732ad70ba6c3d6"
+        }
+      ],
+      "tests_executed_at_freeze": false
+    }
+  ],
+  "formal_acceptance": false,
+  "post_initial_tool_addition": "check_batch_round168_package.py first appears in repair2, sealed before its own actual package check; not represented as present in the initial2843-file wave."
+}

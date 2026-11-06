@@ -137,7 +137,7 @@ func (s *Service) CreateBinding(ctx context.Context, c core.Command, input Bindi
 	}
 	c.AuthorizationMutation = true
 	return (platform.Commands{DB: s.DB}).Do(ctx, c, func(tx pgx.Tx) error {
-		if err := recentMFA(c.Actor); err != nil {
+		if err := RequireInteractiveSession(ctx, tx, c.Actor, true); err != nil {
 			return err
 		}
 		return authz.RequireOrganization(ctx, tx, c.Actor, "role.assign")
@@ -202,7 +202,7 @@ func (s *Service) RevokeBinding(ctx context.Context, c core.Command, id string, 
 	}
 	c.AuthorizationMutation = true
 	return (platform.Commands{DB: s.DB}).Do(ctx, c, func(tx pgx.Tx) error {
-		if err := recentMFA(c.Actor); err != nil {
+		if err := RequireInteractiveSession(ctx, tx, c.Actor, true); err != nil {
 			return err
 		}
 		return authz.RequireOrganization(ctx, tx, c.Actor, "role.assign")

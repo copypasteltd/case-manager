@@ -18,7 +18,7 @@
 | `/etc/copypaste/active` | 协调器维护的配置链接；普通应用账号不能遍历配置目录 |
 | `/etc/copypaste/private` | root秘密引用；与包和普通服务账号隔离 |
 | `/var/lib/copypaste-release` | root所有、0755，供HTTPS入口确认维护标记；事件子目录0700、操作记录0600 |
-| `/usr/local/lib/copypaste-release` | 经管理员核对的三份发布工具，root所有，目录0755、源码0644 |
+| `/usr/local/lib/copypaste-release` | 经管理员核对的四份发布工具，root所有，目录0755、源码0644 |
 
 准备原生systemd、Nginx、Python3、psql以及持久PG18；生产连接使用可信证书和验证主机名。为固定服务目录里的非root用户创建独立系统账号，核对其UID、组与目录权限，不能仅凭账号名称推断隔离已经生效。执行器另外完成[原生隔离安装与验收](../development/105-native-agent-runtime.md)。
 
@@ -42,7 +42,7 @@ Windows或Linux均可离线检查，不需要root或虚拟化；检查目录必�
 python -B app/deploy/release/bundle.py inspect --archive PACKAGE.tar.gz --manifest-sha256 FULL_SHA256 --output app/.local/inspection-UNIQUE
 ```
 
-检查清单、Web、运行器、原生程序、91项结构摘要、固定服务模板及工具源码。将核对过的 `bundle.py`、`catalog.py`、`controller.py` 安装到上述root工具目录；后续通过该目录运行。不要以root执行来源未核对、普通账号可更改的发布工具。
+检查清单、Web、运行器、原生程序、清单声明的完整结构摘要（168正常升级至136）、固定服务模板及工具源码。将核对过的 `bundle.py`、`catalog.py`、`controller.py`、`telegram_config.py` 安装到上述root工具目录；后续通过该目录运行。不要以root执行来源未核对、普通账号可更改的发布工具。
 
 ## 3. HTTPS和服务单元
 
@@ -122,3 +122,5 @@ sudo python3 -B /usr/local/lib/copypaste-release/controller.py recover --operati
 人工触发 `Native release build` 的main版本。工作流只构建并上传明确产物，不部署服务器；Node／Go／原生PG检查和源代码回归必须真实完成后才能采纳CI回执。当前工作流代码已提供，本轮没有注册Runner或触发真实作业。
 
 失败作业的原始日志和PG只留在作业私有目录。再次清理工作区前先停止可核对归属的遗留测试PG；若无法确认归属，停止该Runner并由管理员核查，不能删除仍活动数据库目录。本轮不引入容器、模拟器、迁移或容灾任务。
+
+首次空组织存储元数据及准确秘书运行配置安装参见[受控初始化说明](05-initial-storage-and-agent-install.md)。API不接收部署迁移身份。

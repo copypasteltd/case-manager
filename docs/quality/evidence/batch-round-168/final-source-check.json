@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "increment": 168,
+  "checks": [
+    {
+      "name": "whole23_requirement_contexts_and_open_formal_acceptance",
+      "passed": true
+    },
+    {
+      "name": "every_confirmed_code_task_implemented_before_checks",
+      "passed": true
+    },
+    {
+      "name": "independent_refutations_preserved",
+      "passed": true
+    },
+    {
+      "name": "whole_code_tools_and_fixtures_preserved_before_any_test",
+      "passed": true
+    },
+    {
+      "name": "native_all_selected_current_consumers_pass",
+      "passed": true
+    },
+    {
+      "name": "clients_all_selected_current_consumers_pass",
+      "passed": true
+    },
+    {
+      "name": "runtime_all_selected_current_consumers_pass",
+      "passed": true
+    },
+    {
+      "name": "release_all_selected_current_consumers_pass",
+      "passed": true
+    },
+    {
+      "name": "batch-round-168-functional-wave-web3_actual_views_closed_and_current",
+      "passed": true
+    },
+    {
+      "name": "batch-round-168-functional-wave-web3_actual_redacted_media",
+      "passed": true
+    },
+    {
+      "name": "batch-round-168-functional-wave-mobile3_actual_views_closed_and_current",
+      "passed": true
+    },
+    {
+      "name": "batch-round-168-functional-wave-mobile3_actual_redacted_media",
+      "passed": true
+    },
+    {
+      "name": "native_server_artifact_binds_current_sources_and136_migrations",
+      "passed": true
+    },
+    {
+      "name": "historical133_migrations_immutable",
+      "passed": true
+    },
+    {
+      "name": "eight_skills_stay_draft",
+      "passed": true
+    },
+    {
+      "name": "development_and_frozen_artifacts_remain_retained",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-168/freeze-code-initial.json",
+      "sha256": "0910ff7b1a209f0f9cb1d32ddb88d5f6275322b56d6d939d558280b8db4e2f32"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/native-repair2.json",
+      "sha256": "130d9b018be374209fca82b0983e013e9c8f5354d1f7f22a510a97a401f3a948"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/clients-repair1.json",
+      "sha256": "177eda9a28a27da60cc2dbb0ab6cbf797c388524560dcb1e77c37768e731c920"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/runtime-repair1.json",
+      "sha256": "a7128d9e10175ab221e78961f995b98d563740a909eb0617f2f49681573a345e"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/release-initial.json",
+      "sha256": "fe6b81be7c129b2b73a34e15f00ea1089ee0e62cabcb9191956e5d86c64213e8"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-web3/result.json",
+      "sha256": "765ac43987bd349b0edb10d1a42f874673a4d703fb034a5bdc4399e25b8a5af6"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-web3/encoded-media.json",
+      "sha256": "cb630ea80e1e710b18df5488212112316b9ca683d1af8bc97f3fc051f49791a2"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-mobile3/result.json",
+      "sha256": "0c89b554c466666108fe882f49dfd8a1f4c6c1d139046b7cf2679bcb05882739"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-mobile3/encoded-media.json",
+      "sha256": "31fa8760cbe0a050c5384f07f64ce9be675a8d74ba576e5147d01795c510fd82"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/production-initial.json",
+      "sha256": "7c4c85252b2d688d526194c6449135aa0150649a52427d497664bdd92745b7dc"
+    }
+  ],
+  "retained": {
+    "full_backend_regression": "increment121 retained, not replayed",
+    "native_jvm": "increment167 retained, not replayed",
+    "frozen_release": "v0.1.0-rc.9/business163/schema129/APK164; nine freezes immutable",
+    "development_database": "schema100/API unchanged",
+    "real_configuration": "user deferred; all23 formal packages open; eight Skills draft"
+  },
+  "interaction_source_sha256": "a5a4cded6607cae3e874712d221b97fd7a36c68c62dee15f984827bd90c84773",
+  "verification_script_sha256": "c9fb1b414329caca0f50b4fb75ddb093c1e7cf2161514c0a88b0ee2dbc936bcc",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "business_tests_replayed": false,
+  "full_goal_complete": false,
+  "production_ready": false,
+  "formal_acceptance": false
+}

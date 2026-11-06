@@ -68,6 +68,9 @@ func scanImportEntry(row pgx.Row) (ImportEntry, error) {
 }
 
 func (s *ImportService) actor(ctx context.Context, db platform.DBTX, a core.Actor) error {
+	if a.Channel != "web" && a.Channel != "android" {
+		return core.Fail(403, "UPLOAD_CHANNEL_UNSUPPORTED", "此操作请使用 Web／Android")
+	}
 	if err := uploadChannel(a); err != nil {
 		return err
 	}

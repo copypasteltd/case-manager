@@ -131,7 +131,7 @@ func (s *MultipartCleanupService) actor(ctx context.Context, db platform.DBTX, a
 	return cleanupFolder(ctx, db, a, folderID)
 }
 func cleanupUploadAccess(ctx context.Context, db platform.DBTX, a core.Actor, f Folder, u Upload) error {
-	if u.FolderID != f.ID || u.Classification == nil || *u.Classification != f.Classification || u.SourceChannel == nil || !slices.Contains([]string{"web", "android"}, *u.SourceChannel) {
+	if u.FolderID != f.ID || u.Classification == nil || *u.Classification != f.Classification || u.SourceChannel == nil || !slices.Contains([]string{"web", "android", "wechat", "douyin"}, *u.SourceChannel) {
 		return core.Missing()
 	}
 	if u.FileID != nil {

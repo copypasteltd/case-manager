@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "phase": "first_staged_publication_attempt",
+  "failure": "KeyError: app/backend/internal/agent/evaluation.go",
+  "cause": "The dependent staged verifier was started before the preceding git-add session had returned terminal completion. It observed the incomplete prior index while the working baseline already referenced the new source.",
+  "business_code_changed": false,
+  "business_tests_replayed": false,
+  "earlier_working_publication_check_passed": true,
+  "resolution": "Wait for the exact git-add session to complete, inspect the full staged file set, then rerun the staged verifier. Preserve this abort; do not relabel it as passed."
+}

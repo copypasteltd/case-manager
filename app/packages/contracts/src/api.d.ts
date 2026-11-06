@@ -5207,6 +5207,41 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/contracts/{id}/milestones/{milestone}/task-links": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listContractMilestoneTaskLinks */
+        get: operations["listContractMilestoneTaskLinks"];
+        put?: never;
+        /** linkContractMilestoneTask */
+        post: operations["linkContractMilestoneTask"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/contracts/{id}/milestones/{milestone}/task-links/{link}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** revokeContractMilestoneTask */
+        post: operations["revokeContractMilestoneTask"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/contracts/{id}/finance": {
         parameters: {
             query?: never;
@@ -12508,6 +12543,58 @@ export interface components {
             /** Format: date-time */
             created_at: string;
         };
+        ContractMilestoneTaskInput: {
+            contract_version: number;
+            /** Format: uuid */
+            contract_revision_id: string;
+            /** Format: uuid */
+            task_id: string;
+            task_version: number;
+            acknowledge_scope_difference: boolean;
+            reason: string;
+        };
+        ContractMilestoneTaskCurrent: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            /** Format: uuid */
+            project_id: string;
+            title: string;
+            /** @enum {string} */
+            state: "todo" | "in_progress" | "in_review" | "blocked" | "done" | "cancelled";
+        };
+        ContractMilestoneTaskEvent: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            contract_id: string;
+            /** Format: uuid */
+            milestone_id: string;
+            /** Format: uuid */
+            contract_revision_id: string;
+            contract_version: number;
+            seq: number;
+            /** @enum {string} */
+            action: "link" | "revoke";
+            source_link_id: string | null;
+            /** Format: uuid */
+            task_id: string;
+            task_version: number;
+            /** Format: uuid */
+            task_project_id: string;
+            task_title: string;
+            /** @enum {string} */
+            task_state: "todo" | "in_progress" | "in_review" | "blocked" | "done" | "cancelled";
+            cross_scope: boolean;
+            scope_difference_acknowledged: boolean;
+            /** Format: uuid */
+            actor_id: string;
+            /** Format: date-time */
+            created_at: string;
+            reason: string;
+            revoked: boolean;
+            current_task: components["schemas"]["ContractMilestoneTaskCurrent"] | null;
+        };
         ContractReturnFXInput: {
             cash_amount: string;
             rate: string;
@@ -15425,6 +15512,17 @@ export interface components {
             };
             meta: components["schemas"]["Meta"];
         };
+        ContractMilestoneTaskEventListResponse: {
+            data: {
+                items: components["schemas"]["ContractMilestoneTaskEvent"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        ContractMilestoneTaskEventResponse: {
+            data: components["schemas"]["ContractMilestoneTaskEvent"];
+            meta: components["schemas"]["Meta"];
+        };
         ContractFinanceResponse: {
             data: components["schemas"]["ContractFinance"];
             meta: components["schemas"]["Meta"];
@@ -16483,6 +16581,15 @@ export interface components {
             data: components["schemas"]["AgentProfileDetails"];
             meta: components["schemas"]["Meta"];
         };
+        AgentSkillEvaluation: {
+            set_version: string;
+            set_sha256: string;
+            results_sha256: string;
+            reference: string;
+            passed: number;
+            failed: number;
+            skipped: number;
+        };
         AgentSkillRelease: {
             /** Format: uuid */
             id: string;
@@ -16494,6 +16601,7 @@ export interface components {
             profile_version: number;
             skill_sha256: string;
             active_basis_sha256: string;
+            evaluation: components["schemas"]["AgentSkillEvaluation"] | null;
             assessment_run_ids: string[];
             rollback_release_id: string | null;
             reason: string;
@@ -16515,6 +16623,7 @@ export interface components {
             active_basis_sha256: string;
             /** @enum {string} */
             stage: "pilot" | "published" | "disabled";
+            evaluation?: components["schemas"]["AgentSkillEvaluation"] | null;
             assessment_run_ids: string[];
             rollback_release_id?: string | null;
             /** @constant */
@@ -31460,6 +31569,134 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ContractResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listContractMilestoneTaskLinks: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                history?: boolean;
+            };
+            header?: never;
+            path: {
+                id: string;
+                milestone: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContractMilestoneTaskEventListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    linkContractMilestoneTask: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+                milestone: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ContractMilestoneTaskInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContractMilestoneTaskEventResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    revokeContractMilestoneTask: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+                milestone: string;
+                link: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ContractMilestoneTaskInput"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContractMilestoneTaskEventResponse"];
                 };
             };
             400: components["responses"]["Failure"];

@@ -2,12 +2,14 @@ package servicestatus
 
 import (
 	"copypaste.hk/platform/internal/platform"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"time"
 )
 
 type Service struct {
 	DB       *pgxpool.Pool
+	readTx   pgx.Tx
 	Commands platform.Commands
 	Pager    platform.Pager
 }

@@ -1,0 +1,77 @@
+{
+  "reviewed": true,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-task-board.png",
+      "sha256": "15a5b6adc88117738864661d510930c430ce1be324ad9d6d1aa57703f98e8b39",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-task-timeline.png",
+      "sha256": "60d71044d4ea5fe57c2e4fddddf992b98e41e9704243481eb604d8492447bc61",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-contract-task-links.png",
+      "sha256": "cc17a1ac5964ee9250aecb3eb6a30d63d1babdbd62e9cf6f329f2cbe573bff7c",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-skill-assessment-evidence.png",
+      "sha256": "3ab9e20d65cf3b0add805fa9b4261425463a043514d7f8207a513be619f61dea",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-task-board.png",
+      "sha256": "ca8c0d2bc4e0c823fb81b765a1a249829a1df5a94ffc76cc6f57b136034e9755",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-task-timeline.png",
+      "sha256": "8745823463d2ba13175aecc2f7168e2101027c67b9c4b23848dcafe4a6e4c138",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-contract-task-links.png",
+      "sha256": "9c83d309c423bd1d78f35f1e0412fcd246de882129c0e438d1d69c35263c584e",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-skill-assessment-evidence.png",
+      "sha256": "ffeef26e8f970de56a5e0800ce94dfbc45f74f9142064ad27c7c8adfda9a679b",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/mobile-ordinary-upload-workspace.png",
+      "sha256": "b4c2f26f2358d79a1d0cb51dda2f6b9e1076ee0a8689b61bb41c62a8dc476cd8",
+      "credentials_excluded": true
+    }
+  ],
+  "actual_recording_gifs": [
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/interaction.gif",
+      "sha256": "6a08a5305028df88bfc44797c87ff09f793643f36f3302bd356243e44f8bb55e",
+      "source_mp4_sha256": "aaf75e67ab79091ba2b8271ff9fea7634ace1c891328275e9361d6b3e9aa3a19",
+      "frames_reviewed": "first, middle, last"
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/interaction.gif",
+      "sha256": "301faa91a58190ba37dd547ab21f78c4c0619afdc295bc7aacdebf412e07e058",
+      "source_mp4_sha256": "da2690127276153a5e2b1dd443600a59ae6ae5d661f8a806159e02d711d5dbac",
+      "frames_reviewed": "first, middle, last"
+    }
+  ],
+  "screenshot_tours_inputs_reviewed": true,
+  "review_method": "nine screenshot contact sheet plus first/middle/last actual-recording GIF frames, inspected with local image viewer",
+  "findings": [
+    "Current task board and actual dated basic timeline visible.",
+    "Exact node/task history and current progress are separate.",
+    "Synthetic assessment failure1 remains visible; no publication claim.",
+    "Miniapp workspace shows20MiB boundary and human scan/commit journey.",
+    "No login inputs, MFA secrets, tokens or real business records visible in inspected captures."
+  ],
+  "real_device": false,
+  "real_cloud": false,
+  "real_model": false,
+  "production_acceptance": false
+}

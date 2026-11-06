@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"copypaste.hk/platform/internal/contract"
+	"copypaste.hk/platform/internal/deployment"
 	"copypaste.hk/platform/internal/files"
 	"copypaste.hk/platform/internal/filescan"
 	"copypaste.hk/platform/internal/httpapi"
@@ -59,6 +60,17 @@ func run(logger *slog.Logger) error {
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	if command == "provision-storage" || command == "install-agent-profile" {
+		if len(os.Args) != 4 || os.Args[2] != "--file" {
+			return &startupError{"deployment command requires --file with reviewed private JSON"}
+		}
+		receipt, err := deployment.Run(ctx, command, os.Args[3])
+		if err != nil {
+			return &startupError{"deployment configuration rejected; retain private inputs and inspect target state"}
+		}
+		logger.Info("deployment configuration recorded", "receipt_id", receipt)
+		return nil
+	}
 	if command == "worker-multipart-cleanup" {
 		return runMultipartCleanupWorker(ctx, logger)
 	}

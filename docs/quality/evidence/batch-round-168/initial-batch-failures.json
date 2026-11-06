@@ -1,0 +1,36 @@
+{
+  "all_initial_phases_completed_before_repairs": true,
+  "failed_steps": [
+    {
+      "phase": "native",
+      "step": "native-tests",
+      "exit_code": 1,
+      "private_log_sha256": "479e39ee73badd719390aca9bea4109ac7ef9089095f966e99a3b7ccc92da3d7"
+    },
+    {
+      "phase": "clients",
+      "step": "typecheck",
+      "exit_code": 2,
+      "private_log_sha256": "b340adfb9fbdcb81a70a44a3e90799cad1fb910facb0337cd7b7166c146084bb"
+    },
+    {
+      "phase": "clients",
+      "step": "web-tests",
+      "exit_code": 1,
+      "private_log_sha256": "a19053becad187402361d46ae53ef82369a3213fa554ec3af35472b444c256c4"
+    },
+    {
+      "phase": "clients",
+      "step": "mobile-tests",
+      "exit_code": 2,
+      "private_log_sha256": "f35d98f1a41af79d47e6a47b4c096047cea613ab9b2a86f9681131932874d745"
+    },
+    {
+      "phase": "clients",
+      "step": "web-build",
+      "exit_code": 1,
+      "private_log_sha256": "fb5b1eccefaca90450fd260f58e34cca4d564d23617a1d01e1fef650bf6996f7"
+    }
+  ],
+  "scope": "Original results, sources and logs retained; no business pass inferred from failed fixture prerequisites."
+}

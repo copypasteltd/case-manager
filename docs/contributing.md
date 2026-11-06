@@ -1,5 +1,7 @@
 # 开发、文档与仓库同步 / Development and repository synchronization
 
+每轮必须按[完整代码批次约定](development/00-batch-development-policy.md)先盘点所有有效编号和TODO，写完全部确认应用／调用方／用例／工具并封存，再统一检查、收齐失败和集中修复。Do not alternate per-module implementation and testing; complete and seal the entire confirmed code wave first. 当前实例见[168开发](development/168-batch-functional-closure.md)及[统一验证](quality/168-batch-functional-verification.md)。
+
 增量111的合同提醒策略采用原生PG、真实HTTP、签名合同及租约Worker检查。运行入口、发布日边界、旧部署兼容和失败尝试来源见[设计](development/111-contract-reminder-policies.md)及[验证](quality/111-contract-reminder-policies-verification.md)。最新汇总脚本为`app/scripts/verify_contract_reminders_sources.py`；默认移动测试须继续包含提醒策略算例，不能用未选中新算例的旧结果替代当前验证。
 
 增量110的通知重试实现、浏览器来源和受控清理记录见[设计](development/110-notification-retry.md)及[验证](quality/110-notification-retry-verification.md)。当前检查仍按`current-functional-baseline.json`选择；不得用早期成功记录覆盖随后的失败。通知重试使用真实API、原生PG与Worker，临时浏览器和PG结束后按归属关闭。

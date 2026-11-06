@@ -47,7 +47,7 @@ func (s *MultipartCleanupService) Candidates(ctx context.Context, a core.Actor, 
 		return out, e
 	}
 	rows, e := s.Files.DB.Query(ctx, `SELECT u.id FROM upload_sessions u WHERE u.org_id=$1 AND u.target_folder_id=$2 AND u.state<>'committed'
- AND u.classification=$3 AND u.source_channel IN ('web','android')
+ AND u.classification=$3 AND u.source_channel IN ('web','android','wechat','douyin')
  AND (u.file_id IS NULL OR EXISTS(SELECT 1 FROM files f JOIN folders d ON d.org_id=f.org_id AND d.id=f.folder_id
   WHERE f.org_id=u.org_id AND f.id=u.file_id AND f.folder_id=u.target_folder_id AND f.classification=u.classification
   AND can_access(f.org_id,$4,'file.read','file',f.id,d.project_id,f.creator_id,f.classification,$5,$6)

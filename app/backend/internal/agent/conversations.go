@@ -10,6 +10,7 @@ import (
 	"copypaste.hk/platform/internal/authz"
 	"copypaste.hk/platform/internal/core"
 	"copypaste.hk/platform/internal/files"
+	"copypaste.hk/platform/internal/identity"
 	"copypaste.hk/platform/internal/platform"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -187,6 +188,14 @@ func (s *Service) readSnapshot(ctx context.Context, a core.Actor) (pgx.Tx, error
 	if status != "active" || organizationVersion != a.OrgAuthVersion || userVersion != a.AuthVersion {
 		tx.Rollback(ctx)
 		return nil, core.Fail(412, "AUTHORIZATION_CHANGED", "权限已变更，请重新获取授权")
+	}
+	// Background/TG audience identities use their own origin and grant checks.
+	// Public employee readers must retain the original live human session.
+	if a.RunID == "" && slices.Contains([]string{"web", "android", "wechat", "douyin"}, a.Channel) {
+		if err = identity.RequireInteractiveSession(ctx, tx, a, false); err != nil {
+			tx.Rollback(ctx)
+			return nil, err
+		}
 	}
 	return tx, nil
 }

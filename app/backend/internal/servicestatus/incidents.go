@@ -58,14 +58,21 @@ func incidentAccess(ctx context.Context, db platform.DBTX, a core.Actor, ids []s
 	return nil
 }
 func (s *Service) GetIncident(ctx context.Context, a core.Actor, id string) (Incident, error) {
-	v, e := incidentMetadata(ctx, s.DB, a.OrgID, id)
+	reader, releaseRead, readError := s.humanReader(ctx, a)
+	if readError != nil {
+		return Incident{}, readError
+	}
+	defer releaseRead()
+	s = reader
+
+	v, e := incidentMetadata(ctx, s.readDB(), a.OrgID, id)
 	if e != nil {
 		return v, e
 	}
-	if e = incidentAccess(ctx, s.DB, a, v.ServiceIDs, false, false); e != nil {
+	if e = incidentAccess(ctx, s.readDB(), a, v.ServiceIDs, false, false); e != nil {
 		return Incident{}, e
 	}
-	v.CanUpdate = incidentCapability(ctx, s.DB, a, v.ServiceIDs) == nil
+	v.CanUpdate = incidentCapability(ctx, s.readDB(), a, v.ServiceIDs) == nil
 	return v, nil
 }
 
@@ -232,6 +239,13 @@ func (s *Service) UpdateIncident(ctx context.Context, c core.Command, id string,
 	})
 }
 func (s *Service) Incidents(ctx context.Context, a core.Actor, state, cursor string, limit int) (core.Page[Incident], error) {
+	reader, releaseRead, readError := s.humanReader(ctx, a)
+	if readError != nil {
+		return core.Page[Incident]{}, readError
+	}
+	defer releaseRead()
+	s = reader
+
 	out := core.Page[Incident]{Items: []Incident{}}
 	if !slices.Contains([]string{"", "open", "investigating", "monitoring", "resolved"}, state) {
 		return out, core.Invalid("state", "事件状态筛选无效")
@@ -240,7 +254,7 @@ func (s *Service) Incidents(ctx context.Context, a core.Actor, state, cursor str
 	if e != nil {
 		return out, e
 	}
-	rows, e := s.DB.Query(ctx, "SELECT "+incidentColumns+` FROM incidents i WHERE i.org_id=$1 AND ($2='' OR i.state=$2)
+	rows, e := s.readDB().Query(ctx, "SELECT "+incidentColumns+` FROM incidents i WHERE i.org_id=$1 AND ($2='' OR i.state=$2)
  AND NOT EXISTS(SELECT 1 FROM incident_services x JOIN services s ON s.org_id=x.org_id AND s.id=x.service_id WHERE x.org_id=i.org_id AND x.incident_id=i.id
  AND NOT can_access(s.org_id,$3,'service.read','service',s.id,s.project_id,s.creator_id,s.classification,$4,$5))
  AND ($6::timestamptz IS NULL OR (i.updated_at,i.id)<($6,$7::uuid)) ORDER BY i.updated_at DESC,i.id DESC LIMIT $8`, a.OrgID, state, a.UserID, a.Channel, a.RunID != "", at, id, limit+1)
@@ -267,11 +281,18 @@ func (s *Service) Incidents(ctx context.Context, a core.Actor, state, cursor str
 		out.NextCursor = &c
 	}
 	for i := range out.Items {
-		out.Items[i].CanUpdate = incidentCapability(ctx, s.DB, a, out.Items[i].ServiceIDs) == nil
+		out.Items[i].CanUpdate = incidentCapability(ctx, s.readDB(), a, out.Items[i].ServiceIDs) == nil
 	}
 	return out, nil
 }
 func (s *Service) IncidentTimeline(ctx context.Context, a core.Actor, incident, cursor string, limit int) (core.Page[IncidentEntry], error) {
+	reader, releaseRead, readError := s.humanReader(ctx, a)
+	if readError != nil {
+		return core.Page[IncidentEntry]{}, readError
+	}
+	defer releaseRead()
+	s = reader
+
 	out := core.Page[IncidentEntry]{Items: []IncidentEntry{}}
 	if _, e := s.GetIncident(ctx, a, incident); e != nil {
 		return out, e
@@ -282,7 +303,7 @@ func (s *Service) IncidentTimeline(ctx context.Context, a core.Actor, incident, 
 	}
 	// The immutable sequence defines event order even if transactions began
 	// out of order or a database clock was adjusted.
-	rows, e := s.DB.Query(ctx, `SELECT id,incident_id,seq,state,note,resolution,postmortem,actor_id,created_at FROM incident_timeline WHERE org_id=$1 AND incident_id=$2
+	rows, e := s.readDB().Query(ctx, `SELECT id,incident_id,seq,state,note,resolution,postmortem,actor_id,created_at FROM incident_timeline WHERE org_id=$1 AND incident_id=$2
  AND ($3::uuid IS NULL OR seq<(SELECT seq FROM incident_timeline WHERE org_id=$1 AND incident_id=$2 AND id=$3))
  ORDER BY seq DESC LIMIT $4`, a.OrgID, incident, id, limit+1)
 	if e != nil {

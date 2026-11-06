@@ -1,0 +1,74 @@
+{
+  "attempts": [
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-web1/result.json",
+      "sha256": "6889ae3f44262a4138de85e9601a86925e34101510e98dd5b8e0e2dca35b8b0f",
+      "passed": false,
+      "checks_completed": 2,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "native_fixture_exit_code": 0,
+      "source_unchanged": true,
+      "selected": false,
+      "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main').getByRole('button', { name: '查看节点关联任务', exact: true })\u001b[22m\n"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-mobile1/result.json",
+      "sha256": "48d2b76da9350ec122b7fc38c1b91df3c000839ee72ad0904e78a7d574f70be9",
+      "passed": true,
+      "checks_completed": 6,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "native_fixture_exit_code": 0,
+      "source_unchanged": true,
+      "selected": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-web2/result.json",
+      "sha256": "428e8e95302ea4ca4fa3dbc6dac7990e54136e44c9d2535b514fd1c04da225c8",
+      "passed": false,
+      "checks_completed": 2,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "native_fixture_exit_code": 0,
+      "source_unchanged": true,
+      "selected": false,
+      "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main').getByText('168 current delivery progress', { exact: true }).first() to be visible\u001b[22m\n"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-mobile2/result.json",
+      "sha256": "50e5b1c1304c42937ab443c727bf5ac4be50617928ed56c3d526b4dcfbf6bdd8",
+      "passed": true,
+      "checks_completed": 6,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "native_fixture_exit_code": 0,
+      "source_unchanged": true,
+      "selected": false
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-web3/result.json",
+      "sha256": "765ac43987bd349b0edb10d1a42f874673a4d703fb034a5bdc4399e25b8a5af6",
+      "passed": true,
+      "checks_completed": 5,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "native_fixture_exit_code": 0,
+      "source_unchanged": true,
+      "selected": true
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168-functional-wave-mobile3/result.json",
+      "sha256": "0c89b554c466666108fe882f49dfd8a1f4c6c1d139046b7cf2679bcb05882739",
+      "passed": true,
+      "checks_completed": 6,
+      "owned_browser_closed": true,
+      "owned_review_server_stopped": true,
+      "native_fixture_exit_code": 0,
+      "source_unchanged": true,
+      "selected": true
+    }
+  ],
+  "no_failed_attempt_relabelled": true,
+  "all_owned_resources_closed": true
+}

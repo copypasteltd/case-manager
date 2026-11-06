@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T16:41:16.988Z",
+  "finished_at": "2026-11-06T16:41:30.729Z",
+  "checks": [
+    "actual authorized current project tasks render a state board",
+    "same current tasks render basic timeline without inferred progress",
+    "ordinary current contract node shows exact historical association and separately current task progress",
+    "immutable association and actual revocation history remain visible under both sides current permissions",
+    "real ordinary release receipt preserves versioned synthetic external failure result, without claiming publication",
+    "actual shared miniapp workspace exposes bounded ordinary upload and scan/promotion/human-commit queue; native picker/provider execution not claimed"
+  ],
+  "source_count": 1288,
+  "source_sha256": "ae2dc84b8d1081ae807c89ebe56c222cb9274c99b9e8a9bba23071aaa8729afd",
+  "source_after_sha256": "ae2dc84b8d1081ae807c89ebe56c222cb9274c99b9e8a9bba23071aaa8729afd",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "84eeced670371580bcacaba9412c2cc2d18806ec57db424b8d370ccb1a91a239",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "84eeced670371580bcacaba9412c2cc2d18806ec57db424b8d370ccb1a91a239",
+  "build_source_unchanged": true
+}

@@ -131,13 +131,27 @@ func (s *Service) present(ctx context.Context, db platform.DBTX, a core.Actor, d
 	return d, nil
 }
 func (s *Service) Get(ctx context.Context, a core.Actor, id string) (Record, error) {
-	d, err := metadata(ctx, s.DB, a.OrgID, id)
+	reader, releaseRead, readError := s.humanReader(ctx, a)
+	if readError != nil {
+		return Record{}, readError
+	}
+	defer releaseRead()
+	s = reader
+
+	d, err := metadata(ctx, s.readDB(), a.OrgID, id)
 	if err != nil {
 		return Record{}, err
 	}
-	return s.present(ctx, s.DB, a, d)
+	return s.present(ctx, s.readDB(), a, d)
 }
 func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[Record], error) {
+	reader, releaseRead, readError := s.humanReader(ctx, a)
+	if readError != nil {
+		return core.Page[Record]{}, readError
+	}
+	defer releaseRead()
+	s = reader
+
 	out := core.Page[Record]{Items: []Record{}}
 	if len([]rune(f.Query)) > 200 || !slices.Contains([]string{"", "active", "archived"}, f.Lifecycle) || (f.ProjectID != nil && !core.ValidID(*f.ProjectID)) {
 		return out, core.Invalid("filter", "服务筛选无效")
@@ -160,7 +174,7 @@ func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[R
 		at = &c.UpdatedAt
 		id = &c.ID
 	}
-	rows, err := s.DB.Query(ctx, "SELECT "+serviceColumns+` FROM services s WHERE s.org_id=$1 AND ($2='' OR s.lifecycle=$2)
+	rows, err := s.readDB().Query(ctx, "SELECT "+serviceColumns+` FROM services s WHERE s.org_id=$1 AND ($2='' OR s.lifecycle=$2)
  AND ($3='' OR position(lower($3) in lower(s.name))>0) AND ($4::uuid IS NULL OR s.project_id=$4)
  AND can_access(s.org_id,$5,'service.read','service',s.id,s.project_id,s.creator_id,s.classification,$6,$7)
  AND ($8::timestamptz IS NULL OR (s.updated_at,s.id)<($8,$9::uuid)) ORDER BY s.updated_at DESC,s.id DESC LIMIT $10`, a.OrgID, f.Lifecycle, f.Query, f.ProjectID, a.UserID, a.Channel, a.RunID != "", at, id, f.Limit+1)
@@ -187,7 +201,7 @@ func (s *Service) List(ctx context.Context, a core.Actor, f Filter) (core.Page[R
 		out.NextCursor = &c
 	}
 	for i, d := range out.Items {
-		out.Items[i], err = s.present(ctx, s.DB, a, d)
+		out.Items[i], err = s.present(ctx, s.readDB(), a, d)
 		if err != nil {
 			return core.Page[Record]{Items: []Record{}}, err
 		}

@@ -247,7 +247,7 @@ func (s *Service) Disable(ctx context.Context, c core.Command, id string, input 
 		if _, err = tx.Exec(ctx, "UPDATE sessions SET revoked_at=coalesce(revoked_at,now()) WHERE org_id=$1 AND user_id=$2", c.Actor.OrgID, id); err != nil {
 			return core.Result{}, err
 		}
-		if _, err = tx.Exec(ctx, "UPDATE invitations SET consumed_at=coalesce(consumed_at,now()) WHERE org_id=$1 AND user_id=$2", c.Actor.OrgID, id); err != nil {
+		if _, err = tx.Exec(ctx, "UPDATE invitations SET consumed_at=coalesce(consumed_at,now()) WHERE org_id=$1 AND user_id=$2 AND revoked_at IS NULL", c.Actor.OrgID, id); err != nil {
 			return core.Result{}, err
 		}
 		if _, err = tx.Exec(ctx, "UPDATE organizations SET authorization_version=authorization_version+1 WHERE id=$1", c.Actor.OrgID); err != nil {

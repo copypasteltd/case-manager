@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T16:47:38.626499+00:00",
+  "group": "batch-round-168-functional-wave-web3",
+  "encoder_sha256": "4d23a583f348a06e53add63c39cddb037d2804a5e16aa40ec0efa5deb87878a9",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-task-board.png",
+      "sha256": "15a5b6adc88117738864661d510930c430ce1be324ad9d6d1aa57703f98e8b39",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-task-timeline.png",
+      "sha256": "60d71044d4ea5fe57c2e4fddddf992b98e41e9704243481eb604d8492447bc61",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-contract-task-links.png",
+      "sha256": "cc17a1ac5964ee9250aecb3eb6a30d63d1babdbd62e9cf6f329f2cbe573bff7c",
+      "credentials_excluded": true
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/web-skill-assessment-evidence.png",
+      "sha256": "3ab9e20d65cf3b0add805fa9b4261425463a043514d7f8207a513be619f61dea",
+      "credentials_excluded": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/screen-recording.mp4",
+      "sha256": "aaf75e67ab79091ba2b8271ff9fea7634ace1c891328275e9361d6b3e9aa3a19",
+      "size_bytes": 274779
+    },
+    {
+      "file": "docs/media/batch-round-168/batch-round-168-functional-wave-web3/screenshot-tour.gif",
+      "sha256": "d883dfb3fa5188551e59fc4764f1fd69ae1e00311b81ef78402f8944745dfc66",
+      "size_bytes": 255001
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "62",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "6.200000"
+    }
+  }
+}

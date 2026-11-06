@@ -3,6 +3,7 @@ package agent
 import (
 	"context"
 	"copypaste.hk/platform/internal/core"
+	"copypaste.hk/platform/internal/identity"
 	"encoding/json"
 	"github.com/jackc/pgx/v5"
 	"slices"
@@ -19,6 +20,9 @@ func (s *Service) CancelRun(ctx context.Context, command core.Command, id string
 		return core.Result{}, core.Invalid("reason", "请明确取消、准确版本与操作依据")
 	}
 	authorize := func(tx pgx.Tx) error {
+		if err := identity.RequireInteractiveSession(ctx, tx, command.Actor, false); err != nil {
+			return err
+		}
 		r, c, err := s.readableRun(ctx, tx, command.Actor, id)
 		if err != nil {
 			return err

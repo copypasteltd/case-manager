@@ -1,5 +1,6 @@
 import { Text, View } from '@tarojs/components';
 import { useState } from 'react';
+import { distinctTasks, type TaskView } from '@copypaste/contracts/project-schedule';
 import { useCollection, useRecord } from '../../platform/collection';
 import { CommandNotice, DraftNotice, useCommand } from '../../platform/command';
 import { useFormDraft } from '../../platform/form';
@@ -8,7 +9,8 @@ import { currentTaskInput, dependencyPayload, dependencyProof, dependencyTaskRec
 import { MobileError, Scope, type Schemas } from '../../platform/session';
 import { client } from '../../platform/taro';
 import { ChoiceList, SelectField, TextField } from '../business/controls';
-import { Action, Busy, Empty, Fact, Notice, Page, Row, Section, State } from '../../ui';
+import { Action, Busy, Empty, Fact, Notice, Page, Section, State } from '../../ui';
+import { TaskViews } from './task-views';
 
 type Task = Schemas['Task'];
 type Context = { project: Schemas['Project']; members: Schemas['ProjectMembers']; task?: Task; parent?: Task };
@@ -31,16 +33,17 @@ export function ProjectTaskList({ projectID }: { projectID?: string }) {
 }
 
 function TaskList({ project, members, me }: Context & { me: Schemas['Me'] }) {
-  const [search, setSearch] = useState(''), [query, setQuery] = useState(''), [state, setState] = useState('');
+  const [search, setSearch] = useState(''), [query, setQuery] = useState(''), [state, setState] = useState(''), [view, setView] = useState<TaskView>('list');
   const tasks = useCollection<Task>('/projects/' + project.id + '/tasks?limit=20' + (query ? '&q=' + encodeURIComponent(query) : '') + (state ? '&state=' + state : ''));
   return <>
     {taskWritable(project, members, me) && me.actions.includes('task.create') && <Action onClick={() => projectTaskForm(project.id)}>新建任务</Action>}
     <Section title='查找项目任务'><View className='cp-pad'>
+      <SelectField disabled={tasks.loading} label='任务呈现方式' value={view} options={[[ 'list', '列表' ], ['board', '看板' ], ['timeline', '时间线' ]]} onChange={value => setView(value === 'board' || value === 'timeline' ? value : 'list')} />
       <TextField name='task-search' label='任务标题关键词' value={search} onChange={setSearch} disabled={tasks.loading} />
       <SelectField label='任务状态' value={state} options={[[ '', '全部状态' ], ['todo', '待开始'], ['in_progress', '进行中'], ['in_review', '待验收'], ['blocked', '受阻'], ['done', '已完成'], ['cancelled', '已取消']]} onChange={setState} disabled={tasks.loading} />
       <Action secondary loading={tasks.loading} onClick={() => { setQuery(search.trim()); tasks.reload(); }}>查找任务</Action>
     </View></Section>
-    <Notice error={tasks.error} />{tasks.loading ? <Busy /> : <Section title='当前可读任务'>{tasks.items.length ? tasks.items.map(task => <Row key={task.id} title={task.title} state={task.state} subtitle={(priorities.find(value => value[0] === task.priority)?.[1] ?? '普通') + '优先级' + (task.parent_id ? ' · 子任务' : '')} onClick={() => go('task', task.id)} />) : !tasks.error && <Empty>没有符合条件的可读任务。</Empty>}</Section>}
+    <Notice error={tasks.error} />{tasks.loading ? <Busy /> : !tasks.error && <TaskViews items={distinctTasks([{ items: tasks.items }])} view={view} members={members} hasMore={!!tasks.next} filtered={!!query || !!state} />}
     {Boolean(tasks.error) && <Action secondary onClick={tasks.reload}>重新读取任务列表</Action>}
     {tasks.next && <Action secondary loading={tasks.moreBusy} onClick={() => void tasks.more()}>加载更多任务</Action>}
   </>;

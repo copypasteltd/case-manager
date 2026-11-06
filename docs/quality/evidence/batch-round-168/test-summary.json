@@ -1,0 +1,54 @@
+{
+  "native": {
+    "top_level_tests": 13,
+    "result_records": 79,
+    "passed": true,
+    "top_level_names": [
+      "TestAgentRunLedger",
+      "TestAgentServiceSummary",
+      "TestRound157SkillGovernance",
+      "TestRound168ContractTaskLinks",
+      "TestRound168InitialStorageProvision",
+      "TestRound168DeploymentProfile",
+      "TestRound168DisableAfterInvitationReissue",
+      "TestRound168RoleOriginalSession",
+      "TestRound168MiniOrdinaryUploads",
+      "TestRound168ReadSessionBoundary",
+      "TestServiceStatus",
+      "TestPrivateDeploymentInputs",
+      "TestExternalSkillEvaluation"
+    ]
+  },
+  "web": {
+    "passed": 534
+  },
+  "mobile": {
+    "passed": 559,
+    "tap_groups": [
+      240,
+      314
+    ],
+    "extra_passed": 5
+  },
+  "runtime": {
+    "passed": 66,
+    "tap_groups": [
+      66
+    ]
+  },
+  "release": {
+    "wave-tool-tests": {
+      "passed": 6,
+      "private_log_sha256": "43e72d1ddf65969c80d8b7df1f9d1e86cc24f41bfa8343bf9f2e1a5359501fca"
+    },
+    "release-tests": {
+      "passed": 45,
+      "private_log_sha256": "6b6132ab2d76588596ce47ff95bb38039196cd71fbd28296dccdae1e4ee88101"
+    }
+  },
+  "source_selection": "verification-inputs.json",
+  "retained_jvm_increment": 167,
+  "full_backend_regression_executed": false,
+  "android_js_built": false,
+  "apk_built": false
+}

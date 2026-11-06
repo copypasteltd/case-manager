@@ -1,0 +1,33 @@
+{
+  "all_repair1_phases_completed_before_repairs": true,
+  "records": [
+    {
+      "file": "docs/quality/evidence/batch-round-168/native-repair1.json",
+      "sha256": "aac77e78078bbb0b531b7f72f7787e39ede4f32ec642ad032631ee9387822d2a",
+      "passed": false,
+      "failed_steps": [
+        {
+          "step": "native-tests",
+          "private_log_sha256": "63f5a49eabad3fbfbf43cc79f42b9e75ef05a94afcc177045d2b1b6d22c1d04a",
+          "failed_tests": [
+            "TestRound168ReadSessionBoundary/logout",
+            "TestRound168ReadSessionBoundary/family",
+            "TestRound168ReadSessionBoundary"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/clients-repair1.json",
+      "sha256": "177eda9a28a27da60cc2dbb0ab6cbf797c388524560dcb1e77c37768e731c920",
+      "passed": true,
+      "failed_steps": []
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-168/runtime-repair1.json",
+      "sha256": "a7128d9e10175ab221e78961f995b98d563740a909eb0617f2f49681573a345e",
+      "passed": true,
+      "failed_steps": []
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "phase": "release",
+  "attempt": "initial",
+  "increment": 168,
+  "source_unchanged": true,
+  "source_sha256": "3f21372bed3144572b2bea07c11ee34d41ed54eae2a9ea7b9547ead1b8331073",
+  "freeze_record_sha256": "0910ff7b1a209f0f9cb1d32ddb88d5f6275322b56d6d939d558280b8db4e2f32",
+  "steps": [
+    {
+      "step": "wave-tool-tests",
+      "exit_code": 0,
+      "passed": true,
+      "elapsed_seconds": 2.564,
+      "source_file_sha256": {
+        "app/deploy/release/bundle.py": "1906490d33e41b753588c6bca95e9a4f994d2473db51eacae7bd869fd92923ad",
+        "app/deploy/release/catalog.py": "8acf04f0d0dcf0f47929236eaaf9c2aab9301f8e75de8387ca7b76f0320f7c4f",
+        "app/deploy/release/controller.py": "47fd77defd618472a11feb2aeaa95b9485cfb3fd79b18bbf6619c781a5b809e3",
+        "app/deploy/release/telegram_config.py": "e1518667dbdeba2a1105a6a7b4d059dab450594e84ff0ef417be20d3ca1303a2",
+        "app/deploy/release/test_deployment_closure.py": "c6c3654f97c255ac80d4df08b922b2ea4b8b1b2ca1a24be690ff44ccf5dfa45e",
+        "app/deploy/release/test_native_release.py": "315d491c61e793b2b8cbf24440fe20dbe8c38b2916160664ff2c14ece14605e6",
+        "app/scripts/build_production_release.py": "71d9a24421e9ddd491f4fb24a9a70c40369c3364f91fd18b66f05421d6aad3bc",
+        "app/scripts/development_wave.py": "179a26c393a9f08e2303a91ec3b89b7f25d95ebd0897d0b95cdcd342f7da1491",
+        "app/scripts/test_development_wave.py": "5016d9b1c4ff790f07650ced2a84affb775a1a85df3ab0cad3e90dfcec3a7917"
+      },
+      "private_log_sha256": "43e72d1ddf65969c80d8b7df1f9d1e86cc24f41bfa8343bf9f2e1a5359501fca"
+    },
+    {
+      "step": "release-tests",
+      "exit_code": 0,
+      "passed": true,
+      "elapsed_seconds": 25.667,
+      "source_file_sha256": {
+        "app/deploy/release/bundle.py": "1906490d33e41b753588c6bca95e9a4f994d2473db51eacae7bd869fd92923ad",
+        "app/deploy/release/catalog.py": "8acf04f0d0dcf0f47929236eaaf9c2aab9301f8e75de8387ca7b76f0320f7c4f",
+        "app/deploy/release/controller.py": "47fd77defd618472a11feb2aeaa95b9485cfb3fd79b18bbf6619c781a5b809e3",
+        "app/deploy/release/telegram_config.py": "e1518667dbdeba2a1105a6a7b4d059dab450594e84ff0ef417be20d3ca1303a2",
+        "app/deploy/release/test_deployment_closure.py": "c6c3654f97c255ac80d4df08b922b2ea4b8b1b2ca1a24be690ff44ccf5dfa45e",
+        "app/deploy/release/test_native_release.py": "315d491c61e793b2b8cbf24440fe20dbe8c38b2916160664ff2c14ece14605e6",
+        "app/scripts/build_production_release.py": "71d9a24421e9ddd491f4fb24a9a70c40369c3364f91fd18b66f05421d6aad3bc",
+        "app/scripts/development_wave.py": "179a26c393a9f08e2303a91ec3b89b7f25d95ebd0897d0b95cdcd342f7da1491",
+        "app/scripts/test_development_wave.py": "5016d9b1c4ff790f07650ced2a84affb775a1a85df3ab0cad3e90dfcec3a7917"
+      },
+      "private_log_sha256": "6b6132ab2d76588596ce47ff95bb38039196cd71fbd28296dccdae1e4ee88101"
+    }
+  ],
+  "tests_executed": true,
+  "virtualization_used": false,
+  "android_apk_built": false,
+  "formal_acceptance": false,
+  "real_integrations_executed": false
+}

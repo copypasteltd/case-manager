@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "file": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/interaction.gif",
+  "sha256": "301faa91a58190ba37dd547ab21f78c4c0619afdc295bc7aacdebf412e07e058",
+  "size_bytes": 1083416,
+  "source_mp4": "docs/media/batch-round-168/batch-round-168-functional-wave-mobile3/screen-recording.mp4",
+  "source_mp4_sha256": "da2690127276153a5e2b1dd443600a59ae6ae5d661f8a806159e02d711d5dbac",
+  "source_encoding_record_sha256": "31fa8760cbe0a050c5384f07f64ce9be675a8d74ba576e5147d01795c510fd82",
+  "filter": "[0:v]fps=8,scale=min(960\\,iw):-2,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3",
+  "mode": "actual authenticated silent viewport recording converted to GIF; not a screenshot tour",
+  "credentials_excluded": true,
+  "synthetic_data": true,
+  "real_model": false,
+  "real_cloud": false,
+  "real_device": false
+}

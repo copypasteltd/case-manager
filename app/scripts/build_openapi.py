@@ -1172,6 +1172,18 @@ add("ContractScheduleInput", {**EXPECTED, "base_revision_id": ID, "payment_sched
 milestone_fields = {"id": ID, "contract_id": ID, "revision_id": ID, "plan_item_id": ID, "position": {"type": "integer", "minimum": 1, "maximum": 100},
     "title": NAME, "direction": enum("receivable", "payable"), "currency": CURRENCY, "amount": MONEY, "due_date": DATE, "conditions": TEXT, "created_at": TIME}
 add("ContractMilestone", milestone_fields, (*milestone_fields,))
+milestone_task_input = {"contract_version": VERSION, "contract_revision_id": ID, "task_id": ID, "task_version": VERSION,
+    "acknowledge_scope_difference": {"type": "boolean"}, "reason": NAME}
+add("ContractMilestoneTaskInput", milestone_task_input, (*milestone_task_input,))
+milestone_task_current = {"id": ID, "version": VERSION, "project_id": ID, "title": NAME,
+    "state": enum("todo", "in_progress", "in_review", "blocked", "done", "cancelled")}
+add("ContractMilestoneTaskCurrent", milestone_task_current, (*milestone_task_current,))
+milestone_task_event = {"id": ID, "contract_id": ID, "milestone_id": ID, "contract_revision_id": ID,
+    "contract_version": VERSION, "seq": VERSION, "action": enum("link", "revoke"), "source_link_id": nullable(ID),
+    "task_id": ID, "task_version": VERSION, "task_project_id": ID, "task_title": NAME,
+    "task_state": milestone_task_current["state"], "cross_scope": {"type": "boolean"}, "scope_difference_acknowledged": {"type": "boolean"},
+    "actor_id": ID, "created_at": TIME, "reason": NAME, "revoked": {"type": "boolean"}, "current_task": nullable(ref("ContractMilestoneTaskCurrent"))}
+add("ContractMilestoneTaskEvent", milestone_task_event, (*milestone_task_event,))
 
 finance_version = {"type": "integer", "minimum": 0, "maximum": 9007199254740990}
 finance_fingerprint = {"type": "string", "pattern": "^[a-f0-9]{32}$"}
@@ -2126,6 +2138,10 @@ operation("/contracts/{id}/transition", "post", "transitionContract", "Contract"
 operation("/contracts/{id}/signature", "post", "registerContractSignature", "Contract", "ContractSignature", 201)
 operation("/contracts/{id}/milestones", "post", "reviseContractPaymentSchedule", "Contract", "ContractScheduleInput")
 operation("/contracts/{id}/milestones", "get", "listContractMilestones", "ContractMilestone", listing=True)
+operation("/contracts/{id}/milestones/{milestone}/task-links", "get", "listContractMilestoneTaskLinks", "ContractMilestoneTaskEvent", listing=True)
+PATHS["/contracts/{id}/milestones/{milestone}/task-links"]["get"]["parameters"].append({"name": "history", "in": "query", "schema": {"type": "boolean", "default": False}})
+operation("/contracts/{id}/milestones/{milestone}/task-links", "post", "linkContractMilestoneTask", "ContractMilestoneTaskEvent", "ContractMilestoneTaskInput", 201)
+operation("/contracts/{id}/milestones/{milestone}/task-links/{link}/revoke", "post", "revokeContractMilestoneTask", "ContractMilestoneTaskEvent", "ContractMilestoneTaskInput", 201)
 operation("/contracts/{id}/finance", "get", "getContractFinance", "ContractFinance")
 operation("/contracts/{id}/finance/events", "get", "listContractFinanceEvents", "ContractFinanceEvent", listing=True)
 PATHS["/contracts/{id}/finance/events"]["get"]["parameters"].append({"name": "milestone_id", "in": "query", "schema": ID})
@@ -2438,9 +2454,10 @@ operation("/agent/runtime-profiles","get","listAgentProfileOperations","AgentPro
 PATHS["/agent/runtime-profiles"]["get"]["parameters"].append({"name":"skill_id","in":"query","schema":enum("project-create","project-update","file-update","information-organize","oa-assist","subscription-review","project-briefing","incident-summary")})
 operation("/agent/runtime-profiles/{id}","get","getAgentProfileOperation","AgentProfileDetails")
 operation("/agent/runtime-profiles/{id}/retire","post","retireAgentProfile","AgentProfileDetails","AgentProfileRetire")
-add("AgentSkillRelease",{"id":ID,"profile_id":ID,"version":VERSION,"stage":enum("pilot","published","disabled"),"profile_version":VERSION,"skill_sha256":HASH,"active_basis_sha256":HASH,"assessment_run_ids":array(ID,maxItems=20),"rollback_release_id":nullable(ID),"reason":NAME,"actor_id":ID,"created_at":TIME},("id","profile_id","version","stage","profile_version","skill_sha256","active_basis_sha256","assessment_run_ids","rollback_release_id","reason","actor_id","created_at"))
+add("AgentSkillEvaluation",{"set_version":NAME,"set_sha256":HASH,"results_sha256":HASH,"reference":NAME,"passed":{"type":"integer","minimum":0,"maximum":10000},"failed":{"type":"integer","minimum":0,"maximum":10000},"skipped":{"type":"integer","minimum":0,"maximum":10000}},("set_version","set_sha256","results_sha256","reference","passed","failed","skipped"))
+add("AgentSkillRelease",{"id":ID,"profile_id":ID,"version":VERSION,"stage":enum("pilot","published","disabled"),"profile_version":VERSION,"skill_sha256":HASH,"active_basis_sha256":HASH,"evaluation":nullable(ref("AgentSkillEvaluation")),"assessment_run_ids":array(ID,maxItems=20),"rollback_release_id":nullable(ID),"reason":NAME,"actor_id":ID,"created_at":TIME},("id","profile_id","version","stage","profile_version","skill_sha256","active_basis_sha256","assessment_run_ids","evaluation","rollback_release_id","reason","actor_id","created_at"))
 add("AgentSkillReleaseDetails",{"profile":ref("AgentProfileDetails"),"version":{"type":"integer","minimum":0},"history":array(ref("AgentSkillRelease"),maxItems=20),"before_version":nullable(VERSION)},("profile","version","history","before_version"))
-add("AgentSkillReleaseInput",{"expected_version":{"type":"integer","minimum":0},"profile_version":VERSION,"skill_sha256":HASH,"active_basis_sha256":HASH,"stage":enum("pilot","published","disabled"),"assessment_run_ids":array(ID,maxItems=20,uniqueItems=True),"rollback_release_id":nullable(ID),"reviewed":{"const":True},"reason":NAME},("expected_version","profile_version","skill_sha256","active_basis_sha256","stage","assessment_run_ids","reviewed","reason"))
+add("AgentSkillReleaseInput",{"expected_version":{"type":"integer","minimum":0},"profile_version":VERSION,"skill_sha256":HASH,"active_basis_sha256":HASH,"stage":enum("pilot","published","disabled"),"evaluation":nullable(ref("AgentSkillEvaluation")),"assessment_run_ids":array(ID,maxItems=20,uniqueItems=True),"rollback_release_id":nullable(ID),"reviewed":{"const":True},"reason":NAME},("expected_version","profile_version","skill_sha256","active_basis_sha256","stage","assessment_run_ids","reviewed","reason"))
 operation("/agent/runtime-profiles/{id}/skill-releases","get","getAgentSkillReleases","AgentSkillReleaseDetails")
 PATHS["/agent/runtime-profiles/{id}/skill-releases"]["get"]["parameters"].append({"name":"before_version","in":"query","schema":VERSION})
 operation("/agent/runtime-profiles/{id}/skill-releases","post","recordAgentSkillRelease","AgentSkillReleaseDetails","AgentSkillReleaseInput")

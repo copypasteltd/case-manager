@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Plus, Trash2 } from 'lucide-react';
 import { api, type Page, type Schemas } from './api';
 import { Busy, ErrorNotice, Field, date } from './components';
+import { ContractTaskLinks } from './ContractTaskLinks';
 
 type Plan = Schemas['ContractPaymentSchedule'];
 type Item = Schemas['ContractPaymentPlanItem'];
@@ -19,8 +20,8 @@ export function PaymentScheduleFacts({ schedule, currency }: { schedule?: Plan |
   return <section className="contract-attachment"><h3>收付款计划</h3>{!schedule ? <p className="muted">尚未整理收付款计划。</p> : <>{schedule.mode === 'no_payment' ? <p>明确无收付款义务</p> : <ol className="payment-plan-list">{schedule.items.map(item => <li key={item.id}><div className="section-heading"><h4>{item.title}</h4><strong>{amount(item.amount, currency)}</strong></div><p>到期日：{date(item.due_date)}</p>{item.conditions && <p className="payment-conditions">{item.conditions}</p>}</li>)}</ol>}{schedule.reason && <p className="payment-conditions">{schedule.reason}</p>}</>}</section>;
 }
 
-export function ContractMilestones({ contract }: { contract: Schemas['Contract'] }) {
-  const query = useQuery({ queryKey: ['contract-milestones', contract.id, contract.version], queryFn: ({ signal }) => api<Page<Schemas['ContractMilestone']>>('/contracts/' + contract.id + '/milestones', { signal }), enabled: contract.lifecycle === 'effective' });
-  if (contract.lifecycle !== 'effective') return null;
-  return <section className="panel party-detail"><div className="section-heading"><h2>履约节点</h2><span className="muted">按生效合同计划固定</span></div><ErrorNotice error={query.error} />{query.isPending ? <Busy label="正在读取履约节点" /> : !query.error && (!query.data?.items.length ? <p className="muted">{contract.payment_schedule?.mode === 'no_payment' ? '本合同无收付款节点。' : '生效修订未列收付款节点。'}</p> : <ol className="payment-plan-list">{query.data.items.map(item => <li key={item.id}><div className="section-heading"><h3>{item.title}</h3><strong>{item.direction === 'receivable' ? '应收' : '应付'} {amount(item.amount, item.currency)}</strong></div><p>到期日：{date(item.due_date)}</p>{item.conditions && <p className="payment-conditions">{item.conditions}</p>}</li>)}</ol>)}</section>;
+export function ContractMilestones({ contract, me }: { contract: Schemas['Contract']; me: Schemas['Me'] }) {
+  const query = useQuery({ queryKey: ['contract-milestones', contract.id, contract.version], queryFn: ({ signal }) => api<Page<Schemas['ContractMilestone']>>('/contracts/' + contract.id + '/milestones', { signal }), enabled: !!contract.active_revision_id });
+  if (!contract.active_revision_id) return null;
+  return <section className="panel party-detail"><div className="section-heading"><h2>履约节点</h2><span className="muted">按生效合同计划固定</span></div><ErrorNotice error={query.error} />{query.isPending ? <Busy label="正在读取履约节点" /> : !query.error && (!query.data?.items.length ? <p className="muted">{contract.payment_schedule?.mode === 'no_payment' ? '本合同无收付款节点。' : '生效修订未列收付款节点。'}</p> : <ol className="payment-plan-list">{query.data.items.map(item => <li key={item.id}><div className="section-heading"><h3>{item.title}</h3><strong>{item.direction === 'receivable' ? '应收' : '应付'} {amount(item.amount, item.currency)}</strong></div><p>到期日：{date(item.due_date)}</p>{item.conditions && <p className="payment-conditions">{item.conditions}</p>}<ContractTaskLinks key={item.id + ':' + me.authorization_version} contract={contract} node={item} me={me} /></li>)}</ol>)}</section>;
 }

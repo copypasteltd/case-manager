@@ -169,8 +169,8 @@ func (u Upload) multipart() objectstore.Multipart {
 	return objectstore.Multipart{Key: u.DraftKey, UploadID: id}
 }
 func uploadChannel(a core.Actor) error {
-	if (a.Channel != "web" && a.Channel != "android") || a.RunID != "" {
-		return core.Fail(403, "UPLOAD_CHANNEL_UNSUPPORTED", "请使用 Web 或 Android 上传文件")
+	if (a.Channel != "web" && a.Channel != "android" && a.Channel != "wechat" && a.Channel != "douyin") || a.RunID != "" {
+		return core.Fail(403, "UPLOAD_CHANNEL_UNSUPPORTED", "请使用已登录的 Web、Android 或小程序普通附件上传")
 	}
 	return nil
 }
@@ -198,6 +198,9 @@ func (s *UploadService) authorize(ctx context.Context, db platform.DBTX, a core.
 		return Upload{}, Folder{}, err
 	}
 	u, err := upload(ctx, db, a.OrgID, id, false)
+	if err == nil && (a.Channel == "wechat" || a.Channel == "douyin") && u.layout().Size > 20*1024*1024 {
+		return Upload{}, Folder{}, core.Fail(403, "MINI_UPLOAD_SIZE_EXCEEDED", "大文件请在 Web／Android 原上传端继续")
+	}
 	if err != nil {
 		return u, Folder{}, err
 	}
@@ -314,6 +317,9 @@ func (s *UploadService) Create(ctx context.Context, c core.Command, in UploadCre
 	size, err := strconv.ParseInt(in.SizeBytes, 10, 64)
 	if err != nil || strconv.FormatInt(size, 10) != in.SizeBytes {
 		return core.Result{}, core.Invalid("size_bytes", "文件大小需为十进制整数字符串")
+	}
+	if (c.Actor.Channel == "wechat" || c.Actor.Channel == "douyin") && (size > 20*1024*1024 || !validSourceSHA256(in.SourceFingerprint)) {
+		return core.Result{}, core.Invalid("size_bytes", "小程序附件上限20 MiB，需先完成原件完整校验")
 	}
 	layout, err := objectstore.Plan(size, 0)
 	if err != nil {

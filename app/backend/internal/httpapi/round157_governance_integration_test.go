@@ -29,7 +29,7 @@ func TestRound157SkillGovernance(t *testing.T) {
 	if initial.Version != 0 || len(initial.History) != 0 {
 		t.Fatal("unassessed installation was mislabeled")
 	}
-	in := agent.SkillReleaseInput{ExpectedVersion: 0, ProfileVersion: initial.Profile.Item.Version, SkillSHA256: strings.Repeat("a", 64), ActiveBasisSHA256: initial.Profile.Impact.ActiveBasisSHA256, Stage: "published", AssessmentRunIDs: []string{core.NewID()}, Reviewed: true, Reason: "核对固定代码与本人评估"}
+	in := agent.SkillReleaseInput{Evaluation: &agent.SkillEvaluation{SetVersion: "synthetic-v168", SetSHA256: strings.Repeat("c", 64), ResultsSHA256: strings.Repeat("d", 64), Reference: "isolated assessment fixture; no external acceptance", Passed: 1}, ExpectedVersion: 0, ProfileVersion: initial.Profile.Item.Version, SkillSHA256: strings.Repeat("a", 64), ActiveBasisSHA256: initial.Profile.Impact.ActiveBasisSHA256, Stage: "published", AssessmentRunIDs: []string{core.NewID()}, Reviewed: true, Reason: "核对固定代码与本人评估"}
 	r, v = f.request("POST", path, admin, core.NewID(), in, nil)
 	expect(t, r, 409, v)
 	in.Stage = "pilot"

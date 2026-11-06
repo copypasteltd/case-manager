@@ -91,3 +91,16 @@ page { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'P
 .cp-diff-delete { border-left-color:var(--cp-danger-fill); }
 .cp-diff-insert { border-left-color:var(--cp-accent-fg); }
 .cp-diff-text { display:block; white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.7; margin:8px 0; }
+
+.cp-task-board-scroll { width: 100%; }
+.cp-task-board { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 24px; }
+.cp-task-column { width: 520px; min-width: 520px; flex-shrink: 0; padding: 20px; border: 2px solid var(--cp-border-subtle); border-radius: 14px; background: var(--cp-bg-canvas); }
+.cp-task-column-title { display: block; font-weight: 650; font-size: 28px; margin-bottom: 20px; }
+.cp-task-card { padding: 18px; margin-bottom: 18px; border: 2px solid var(--cp-border-subtle); border-radius: 12px; background: var(--cp-bg-surface); }
+.cp-task-card .cp-small { margin-top: 12px; }
+.cp-task-axis { display: flex; justify-content: space-between; gap: 24px; padding: 20px 0; }
+.cp-task-axis .cp-small { flex: 1; }
+.cp-task-schedule-row { border-top: 2px solid var(--cp-border-subtle); padding: 24px 0; }
+.cp-task-track { height: 32px; position: relative; background: var(--cp-bg-canvas); border-radius: 8px; margin: 16px 12px 0; }
+.cp-task-mark { position: absolute; top: 8px; height: 16px; background: var(--cp-accent-fg); border-radius: 8px; }
+.cp-task-point { width: 16px; }
