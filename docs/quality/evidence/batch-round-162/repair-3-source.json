@@ -1,0 +1,16 @@
+{
+  "file": "docs/quality/evidence/batch-round-162/repair-3-source.zip",
+  "sha256": "9e35a95fbd80cc8ef8ea3c6c5cae58758e475c2a39d123e1fb14b6c82a89aff0",
+  "changed_files": [
+    "app/agent-runtime/src/task-dependency.test.ts",
+    "app/backend/internal/contract/openapi.json",
+    "app/backend/internal/httpapi/round162_telegram_integration_test.go",
+    "app/backend/migrations/0128_telegram_project_grants.sql",
+    "app/mobile/src/pages/telegram/write-grants.tsx",
+    "app/mobile/src/platform/telegram-grants.test.ts",
+    "app/packages/contracts/src/api.d.ts",
+    "app/scripts/build_openapi.py",
+    "app/scripts/verify_batch_round162.py",
+    "app/web/src/telegram-grants.test.ts"
+  ]
+}

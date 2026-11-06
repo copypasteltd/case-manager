@@ -1,0 +1,17 @@
+{
+  "changed_files": [
+    "app/web/src/telegram-grant-time.ts",
+    "app/web/src/TelegramWriteGrant.tsx",
+    "app/web/src/TelegramGrantInventory.tsx"
+  ],
+  "archive": "docs/quality/evidence/batch-round-162/web-time-source.zip",
+  "sha256": "74848af96faa7d1dfe52ac716401c8d41974c06f6caf9a9794f9943f3059b34b",
+  "reason": "Actual screenshot inspection exposed date-only Web expiry for ten-minute grants. Show explicit Hong Kong date, hour, minute and second.",
+  "retained_clients": "client-checks-repair-3.json; all other actual client/unit/runtime/mobile inputs unchanged.",
+  "affected_replay": [
+    "typecheck",
+    "web-build",
+    "new Web capture"
+  ],
+  "retained_mobile_capture": "batch-round-162-functional-wave-mobile-initial"
+}

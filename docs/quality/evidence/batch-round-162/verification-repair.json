@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-11-06T07:28:24.437195+00:00",
+  "attempt": "scope-check-final.json",
+  "failed_check": "prior_evidence_media_migrations_preserved",
+  "actual_change": "docs/media/README.md",
+  "diagnosis": "The media navigation README is a maintained documentation entry point, not immutable captured media. The check incorrectly treated it as a frozen artifact.",
+  "repair": "Allow only this exact current navigation file; preserve every other prior media/evidence/migration byte check.",
+  "pre_repair_verifier_sha256": "ec0170ecabbb236c48b6427132ef4470c84f20196e12d36f9b3173a22f2d9e7a",
+  "source_archive": {
+    "file": "docs/quality/evidence/batch-round-162/verification-repair-source.zip",
+    "sha256": "7315d3299374fcd77133e10f0f4c5bea9f88aec3292283e54a55705308ada163"
+  },
+  "business_source_changed": false,
+  "business_tests_reexecuted": false
+}

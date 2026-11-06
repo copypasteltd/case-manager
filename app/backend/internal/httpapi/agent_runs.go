@@ -43,6 +43,18 @@ func (s *Server) agentRunRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("POST /v1/conversations/{id}/telegram-write-grants", command(s, "TelegramWriteGrantInput", "TelegramWriteGrantResponse", func(ctx context.Context, c core.Command, r *http.Request, in agent.TelegramWriteGrantInput) (core.Result, error) {
 		return service.CreateTelegramWriteGrant(ctx, c, r.PathValue("id"), in)
 	}))
+	mux.HandleFunc("GET /v1/me/telegram/write-grants", read(s, "TelegramWriteGrantListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		for key, values := range r.URL.Query() {
+			if (key != "state" && key != "limit" && key != "cursor") || len(values) != 1 {
+				return nil, core.Invalid("query", "只接受单项状态和分页条件")
+			}
+		}
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return service.TelegramWriteGrants(ctx, a, f.State, f.Cursor, f.Limit)
+	}))
 	mux.HandleFunc("GET /v1/telegram-write-grants/{id}", read(s, "TelegramWriteGrantResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		if r.URL.RawQuery != "" {
 			return nil, core.Invalid("query", "准确预授权不接受筛选")

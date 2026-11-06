@@ -322,9 +322,12 @@ func toolDefinitions(skill string) []any {
 func scopedToolDefinitions(skill, channel string) []any {
 	definitions := toolDefinitions(skill)
 	if channel == "telegram-authorized" {
+		if skill != "project-update" {
+			return []any{}
+		}
 		result := []any{}
 		for _, raw := range definitions {
-			if item := raw.(map[string]any); slices.Contains([]string{"read_resource", "inspect_operation", "update_task"}, item["name"].(string)) {
+			if item := raw.(map[string]any); agent.TelegramProjectTool(item["name"].(string)) {
 				result = append(result, item)
 			}
 		}

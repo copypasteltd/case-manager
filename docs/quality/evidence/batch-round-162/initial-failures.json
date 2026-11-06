@@ -1,0 +1,36 @@
+{
+  "failures": [
+    {
+      "source": "typecheck-initial.log",
+      "diagnostics": [
+        "src/telegram-grants.test.ts(11,141): error TS2739: Type '{}' is missing the following properties from type '{ id: string; expected_version: number; reason: string; name?: string | undefined; scope?: string | undefined; type?: string | undefined; start_date?: string | null | undefined; due_date?: string | ... 1 more ... | undefined; ... 21 more ...; file_version_ids?: string[] | undefined; }': id, expected_version, reason",
+        "src/pages/telegram/write-grants.tsx(13,118): error TS2741: Property 'disabled' is missing in type '{ label: string; value: string; options: (readonly [string, string])[]; onChange: Dispatch<SetStateAction<string>>; }' but required in type '{ label: string; value: string; options: readonly (readonly [string, string])[]; onChange(value: string): void; disabled: boolean; hint?: string | undefined; }'."
+      ]
+    },
+    {
+      "source": "mobile-tests-initial.log",
+      "diagnostics": [
+        "src/platform/telegram-grants.test.ts(3,106): error TS2307: Cannot find module '@copypaste/contracts/telegram-grants' or its corresponding type declarations."
+      ]
+    },
+    {
+      "source": "runtime-tests-initial.log",
+      "diagnostics": [
+        "not ok 65 - only project-update accepts a complete exact dependency authority",
+        "    '1.11.0' !== '1.10.0'"
+      ]
+    },
+    {
+      "source": "native-initial.jsonl",
+      "diagnostics": [
+        "TestRound162TelegramProjectGrants: channel-create fixture returned RESOURCE_NOT_FOUND because the administrator had not been added to the existing file project. Other selected native old families and new MCP catalog passed."
+      ]
+    }
+  ],
+  "original_sources": "initial-code-wave.zip",
+  "original_records": [
+    "native-tests-initial.json",
+    "client-checks-initial.json"
+  ],
+  "attempts_not_overwritten": true
+}

@@ -4359,6 +4359,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/telegram/write-grants": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listOwnTelegramWriteGrants */
+        get: operations["listOwnTelegramWriteGrants"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/runs/{id}/event-log": {
         parameters: {
             query?: never;
@@ -10615,6 +10632,7 @@ export interface components {
             state?: "open" | "mitigating" | "realized" | "investigating" | "resolved" | "closed";
             expected_revision_id?: string | null;
             file_version_ids?: string[];
+            participant_ids?: string[];
         };
         AgentMutationInput: {
             /** @enum {string} */
@@ -11165,12 +11183,19 @@ export interface components {
             binding_version: number;
             input_sha256: string;
             /** @enum {string} */
-            state: "pending_trigger" | "consumed" | "stopped" | "expired";
+            state: "pending_trigger" | "consumed" | "stopped" | "expired" | "invalidated";
             trigger: string;
             /** Format: date-time */
             expires_at: string;
             /** Format: date-time */
             created_at: string;
+            /** @enum {string} */
+            tool: "submit_deliverable" | "update_task_dependency" | "create_task" | "create_risk" | "update_risk" | "create_issue" | "update_issue" | "create_deliverable" | "update_deliverable" | "create_milestone" | "update_project" | "update_task" | "transition_task" | "transition_project" | "update_milestone" | "transition_milestone";
+            run_version: number;
+            /** @enum {string} */
+            run_state: "queued" | "running" | "awaiting_approval" | "committing" | "succeeded" | "failed" | "cancelled" | "interrupted";
+            /** Format: uuid */
+            client_message_id: string;
         };
         Message: {
             /** Format: uuid */
@@ -15200,6 +15225,13 @@ export interface components {
         };
         TelegramWriteGrantResponse: {
             data: components["schemas"]["TelegramWriteGrant"];
+            meta: components["schemas"]["Meta"];
+        };
+        TelegramWriteGrantListResponse: {
+            data: {
+                items: components["schemas"]["TelegramWriteGrant"][];
+                next_cursor: string | null;
+            };
             meta: components["schemas"]["Meta"];
         };
         RunEventPageResponse: {
@@ -28865,6 +28897,42 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TelegramWriteGrantResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listOwnTelegramWriteGrants: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+                state?: "pending_trigger" | "consumed" | "stopped" | "expired" | "invalidated";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TelegramWriteGrantListResponse"];
                 };
             };
             400: components["responses"]["Failure"];

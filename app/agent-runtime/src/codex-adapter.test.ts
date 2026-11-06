@@ -320,10 +320,11 @@ test('an accounting transport failure cannot be presented as a completed busines
 });
 
 
-test('explicit TG writes retain actual telegram confinement and exactly one fixed update tool',()=>{
+test('explicit TG writes bind the full eligible project catalog while retaining actual telegram confinement',()=>{
  const value=setup('project-update');
  const config=nativeConfiguration(value.skill,value.settings,'telegram',true);
- assert.deepEqual(config.profile.expected_tools,['company/read_resource','company/inspect_operation','company/update_task']);
+ assert.deepEqual([...config.profile.expected_tools].sort(),value.skill.manifest.allowed_tools.map(t=>'company/'+t).sort());
+ assert.equal(config.profile.expected_tools.length,18);
  assert.notEqual(config.profile.configuration_sha256,nativeConfiguration(value.skill,value.settings).profile.configuration_sha256);
  assert.throws(()=>nativeConfiguration(value.skill,value.settings,'telegram',false),/SKILL_TOOLS_UNAVAILABLE/);
  assert.throws(()=>nativeConfiguration(setup('file-update').skill,value.settings,'telegram',true),/SKILL_TOOLS_UNAVAILABLE/);

@@ -1,0 +1,40 @@
+{
+  "increment": 162,
+  "checked_at": "2026-11-06T07:29:39.717556+00:00",
+  "latest_affected_web_checks": {
+    "file": "docs/quality/evidence/batch-round-162/client-checks-web-time.json",
+    "sha256": "83922db94cb3d703aacc0ac05a9104489ae351e5032ddda560ba6e856f021151",
+    "steps": [
+      "typecheck",
+      "web-build"
+    ]
+  },
+  "retained_unaffected_client_wave": {
+    "file": "docs/quality/evidence/batch-round-162/client-checks-repair-3.json",
+    "sha256": "d96f26888b69d74f165456521fdefe85640531f461c93147637c92c08b753541",
+    "web_tests": 522,
+    "mobile_tests": 550,
+    "mobile_breakdown": [
+      240,
+      308,
+      2
+    ],
+    "runtime_tests": 66,
+    "draft_skills": 8,
+    "steps": 9
+  },
+  "changed_display_sources": [
+    "app/web/src/TelegramWriteGrant.tsx",
+    "app/web/src/TelegramGrantInventory.tsx",
+    "app/web/src/telegram-grant-time.ts"
+  ],
+  "fresh_mobile_extra_contracts": 2,
+  "retained_increment161_extra_mobile_contracts": {
+    "tests": 4,
+    "reexecuted": false
+  },
+  "fresh_android_native_bundle": false,
+  "fresh_apk_or_aab": false,
+  "full_client_regression": false,
+  "scope": "The final source verifier compares unchanged actual consumer bytes, rather than labelling earlier whole-source digests as current executions."
+}

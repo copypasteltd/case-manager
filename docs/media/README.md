@@ -1,6 +1,8 @@
 # 实际页面与操作演示 / Actual pages and interactions
 
-当前161：[本轮任务参与人、完整关联选择与移动端历史恢复的实际截图／录屏／GIF](batch-round-161/README.md)。本地原生HTTP／PG合成资料，所有自建浏览器与服务使用完即关闭；不替代真实平台或生产验收。
+当前162：[TG本人固定预授权清单、核对取消与实际回执的6张主截图、2段实际录屏、2个互动GIF及2个截图导览GIF](batch-round-162/README.md)。香港到期时分秒已补；Web首录保留。Actual authenticated synthetic Web/H5 pixels; no real Bot/model/cloud or production acceptance.
+
+历史161：[本轮任务参与人、完整关联选择与移动端历史恢复的实际截图／录屏／GIF](batch-round-161/README.md)。本地原生HTTP／PG合成资料，所有自建浏览器与服务使用完即关闭；不替代真实平台或生产验收。
 
 历史160：[6张实际页面截图、2段录屏、2个交互GIF及2个截图导览GIF / Actual Web and shared-mobile H5 media](batch-round-160/README.md)。原生HTTP／PG合成数据，首轮失败另存，非正式生产验收。
 

@@ -69,9 +69,14 @@ func allowedReadTool(skill, tool string) bool {
 	}
 	return tool == "read_resource" || tool == "inspect_operation" || (tool == "search_resources" && (skill == "project-briefing" || skill == "project-create" || skill == "incident-summary"))
 }
+
+// TelegramProjectTool describes catalog eligibility; the stored per-run intent is checked independently.
+func TelegramProjectTool(tool string) bool {
+	return tool == "read_resource" || tool == "inspect_operation" || mutationTool(tool)
+}
 func allowedExecutionTool(st executionState, tool string) bool {
 	if st.Actor.Channel == "telegram" && st.Run.TelegramWriteGrantID != nil {
-		return st.Profile.TelegramWriteAuthorized && slices.Contains([]string{"read_resource", "inspect_operation", "update_task"}, tool)
+		return st.Profile.TelegramWriteAuthorized && TelegramProjectTool(tool)
 	}
 	if st.Actor.Channel == "telegram" && !slices.Contains([]string{"read_resource", "search_resources", "inspect_operation", "read_service_summary"}, tool) {
 		return false

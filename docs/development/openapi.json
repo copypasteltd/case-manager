@@ -26959,6 +26959,106 @@
         }
       }
     },
+    "/me/telegram/write-grants": {
+      "get": {
+        "operationId": "listOwnTelegramWriteGrants",
+        "tags": [
+          "me"
+        ],
+        "summary": "listOwnTelegramWriteGrants",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pending_trigger",
+                "consumed",
+                "stopped",
+                "expired",
+                "invalidated"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramWriteGrantListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "401": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "403": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "404": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "409": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "410": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "412": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "413": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "422": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "429": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "500": {
+            "$ref": "#/components/responses/Failure"
+          },
+          "503": {
+            "$ref": "#/components/responses/Failure"
+          }
+        }
+      }
+    },
     "/runs/{id}/event-log": {
       "get": {
         "operationId": "getRunEventLog",
@@ -63475,6 +63575,15 @@
             "minItems": 1,
             "maxItems": 20,
             "uniqueItems": true
+          },
+          "participant_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
           }
         },
         "additionalProperties": false,
@@ -65987,7 +66096,8 @@
               "pending_trigger",
               "consumed",
               "stopped",
-              "expired"
+              "expired",
+              "invalidated"
             ]
           },
           "trigger": {
@@ -66002,6 +66112,49 @@
           "created_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "submit_deliverable",
+              "update_task_dependency",
+              "create_task",
+              "create_risk",
+              "update_risk",
+              "create_issue",
+              "update_issue",
+              "create_deliverable",
+              "update_deliverable",
+              "create_milestone",
+              "update_project",
+              "update_task",
+              "transition_task",
+              "transition_project",
+              "update_milestone",
+              "transition_milestone"
+            ]
+          },
+          "run_version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "run_state": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "awaiting_approval",
+              "committing",
+              "succeeded",
+              "failed",
+              "cancelled",
+              "interrupted"
+            ]
+          },
+          "client_message_id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false,
@@ -66017,7 +66170,11 @@
           "state",
           "trigger",
           "expires_at",
-          "created_at"
+          "created_at",
+          "tool",
+          "run_version",
+          "run_state",
+          "client_message_id"
         ]
       },
       "Message": {
@@ -86203,6 +86360,47 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/TelegramWriteGrant"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
+      "TelegramWriteGrantListResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TelegramWriteGrant"
+                }
+              },
+              "next_cursor": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "items",
+              "next_cursor"
+            ]
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"

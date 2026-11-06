@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-11-06T07:33:59.280709+00:00",
+  "initial_failed_publication_record": "docs/quality/evidence/batch-round-162/scope-publication-check-initial.json",
+  "finding": "One whitespace-only line118 in app/scripts/run_batch_round162.py has 16 trailing spaces.",
+  "source_archive": {
+    "file": "docs/quality/evidence/batch-round-162/publication-format-source.zip",
+    "sha256": "77cc68aa6ada771a2c1fa8cb12b63e046bdc66a9fc64b4e5e6b1c0f56843f7f7"
+  },
+  "before_sha256": "4159690da25c94de9fd0300137a606a520bf55b69a310d19514a4ea1df1d1308",
+  "after_sha256": "879e0f2c38f2e9a49ad04afda227c5cf7b9e248885512ccd8e9a0bfcb57930b6",
+  "repair": "Remove only 16 spaces on that blank line; retain CRLF and all executable source bytes.",
+  "business_or_capture_inputs_changed": false,
+  "business_checks_reexecuted": false,
+  "prior_current_proof_preserved": {
+    "file": "docs/quality/evidence/batch-round-162/final-source-check-before-format-repair.json",
+    "sha256": "747ecb0e35b31517ae541e1c6c5fa2a6b31e3ee597c31934997669938c77fb19"
+  },
+  "final_alias_update": "Recompute this uncommitted round final-source-check.json after preserving its exact original bytes and original scope-check-publication-repair.json. Historical repository evidence is untouched."
+}

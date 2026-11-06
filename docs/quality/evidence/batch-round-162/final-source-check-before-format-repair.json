@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "declared_wave_finished_before_checks",
+      "passed": true
+    },
+    {
+      "name": "initial_archive_matches_all_pretest_source_bytes",
+      "passed": true
+    },
+    {
+      "name": "native_execution_passed",
+      "passed": true
+    },
+    {
+      "name": "native_actual_consumer_bytes_current",
+      "passed": true
+    },
+    {
+      "name": "native_starts_after_whole_code_wave",
+      "passed": true
+    },
+    {
+      "name": "client_execution_passed",
+      "passed": true
+    },
+    {
+      "name": "client_actual_consumer_bytes_current",
+      "passed": true
+    },
+    {
+      "name": "client_starts_after_whole_code_wave",
+      "passed": true
+    },
+    {
+      "name": "retained_unaffected_units_runtime_mobile_and_builds_have_exact_inputs",
+      "passed": true
+    },
+    {
+      "name": "current_web_time_repair_typechecks_and_builds",
+      "passed": true
+    },
+    {
+      "name": "web_capture_and_cleanup",
+      "passed": true
+    },
+    {
+      "name": "web_actual_capture_inputs_current",
+      "passed": true
+    },
+    {
+      "name": "web_primary_media_bytes",
+      "passed": true
+    },
+    {
+      "name": "mobile_capture_and_cleanup",
+      "passed": true
+    },
+    {
+      "name": "mobile_actual_capture_inputs_current",
+      "passed": true
+    },
+    {
+      "name": "mobile_primary_media_bytes",
+      "passed": true
+    },
+    {
+      "name": "retained_initial_MCP_catalog_pass_has_unchanged_actual_inputs",
+      "passed": true
+    },
+    {
+      "name": "all_23_packages_still_open",
+      "passed": true
+    },
+    {
+      "name": "eight_skills_remain_draft",
+      "passed": true
+    },
+    {
+      "name": "schema128_is_append_only",
+      "passed": true
+    },
+    {
+      "name": "prior_evidence_media_migrations_preserved",
+      "passed": true
+    },
+    {
+      "name": "primary_images_reviewed",
+      "passed": true
+    }
+  ],
+  "increment": 162,
+  "schema": 128,
+  "source_sha256": "fb870fdb7cc0508a9e2c91c9627f62234ecd06e3f4cefc5d706befa99873ab74",
+  "interaction_source_sha256": "fb870fdb7cc0508a9e2c91c9627f62234ecd06e3f4cefc5d706befa99873ab74",
+  "records": {
+    "docs/quality/evidence/batch-round-162/freeze-code-initial.json": "fba376f59be77fd0471de57686dfb50236de546f020ffc0b8bd7918cf377c6fb",
+    "docs/quality/evidence/batch-round-162/initial-source-archive.json": "8937a28bd6b81ea873c8a81493723ca7d66b0dd02ba480e6293eb6c52c2d4e18",
+    "docs/quality/evidence/batch-round-162/native-tests-repair-4.json": "944b71d711079fa0f9e52eea0b69814b1656b4ad7791bfd09b7fb8202081b583",
+    "docs/quality/evidence/batch-round-162/client-checks-web-time.json": "83922db94cb3d703aacc0ac05a9104489ae351e5032ddda560ba6e856f021151",
+    "docs/quality/evidence/batch-round-162/client-checks-repair-3.json": "d96f26888b69d74f165456521fdefe85640531f461c93147637c92c08b753541",
+    "docs/quality/evidence/batch-round-162-functional-wave-web-time/result.json": "dc836171d15c8f02d0728a9ebf4828b380193e6fb85d53162266f91a391e5974",
+    "docs/quality/evidence/batch-round-162-functional-wave-web-time/source-manifest.json": "17c2bfca98f2896089d8e184a6ef528f52101012680579a81ed1da52561b8fb3",
+    "docs/quality/evidence/batch-round-162-functional-wave-web-time/encoded-media.json": "771fd4a46ac0cbe5e5abc7d51be6d952052a6c461d3162d868d47cc7151ef700",
+    "docs/quality/evidence/batch-round-162-functional-wave-web-time/interaction-media.json": "a793d14285823a9048135fd9ef8f3d6d8632322a16d353e1bd9d1da58abcac9e",
+    "docs/quality/evidence/batch-round-162-functional-wave-mobile-initial/result.json": "d9672d04f7224a03e37f350d2560ca6234489922a7996e1f8b5d78a1aa262ed8",
+    "docs/quality/evidence/batch-round-162-functional-wave-mobile-initial/source-manifest.json": "b0631b64f0c50642d4fcc747cde37401db367ecacd9100a847f6743405bba588",
+    "docs/quality/evidence/batch-round-162-functional-wave-mobile-initial/encoded-media.json": "c05bf713d5c6bedfae4d9e43dcce30afb84b7854e2f88ba1e6154ffe12808264",
+    "docs/quality/evidence/batch-round-162-functional-wave-mobile-initial/interaction-media.json": "2b24bba77a2a0af336820d9d5055eb56d70f5a9c383ff57b93cf9070473dc438",
+    "docs/quality/evidence/batch-round-162/native-tests-initial.json": "5024d4846b4a07878933c5ed7dd4f1a25a1544fa70cdee14219d1970d72dda98",
+    "docs/quality/evidence/batch-round-162/visual-review.json": "9a9b4db2efba2aa59f3624fa087ac1475b729296d1412bf626a17c55cc3c2fd2"
+  },
+  "retained": {
+    "prior_source": "42e8540db539cb6a97f62a2d442742f3206a5aca",
+    "apk": "154/business153/schema113",
+    "full_regression": "121"
+  },
+  "verification_script_sha256": "ac9491e2d3e60be166d0b086ada962c27ba87f5849a095e70d2ecdbd8287f247",
+  "full_backend_suite_executed": false,
+  "formal_android_acceptance": false,
+  "production_ready": false,
+  "formal_acceptance": false,
+  "real_integrations_executed": false,
+  "full_goal_complete": false
+}

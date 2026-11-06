@@ -1,6 +1,34 @@
 # CopyPaste Case Manager · 中文方案与使用指南
 
-**当前开发增量161 / Current development increment161**
+**当前开发增量162 / Current development increment162**
+
+本轮先完成C01–C06全部声明源码、接口、迁移、四端入口、运行器与用例，再统一检查和集中修复。全部23项正式工作包仍开放（14P0／9P1），八项Skill仍draft。详见[整轮实现与使用](development/162-batch-functional-closure.md)、[23项编号清单](delivery/05-functional-closure-162.md)和[本轮证据](quality/162-batch-functional-verification.md)。
+
+| 编号 / ID | 具体能力 / Capability |
+|---|---|
+| C01 | 全部16项既有准确项目操作的一次性TG预授权 / All16 existing exact project mutations |
+| C02 | 本人完整分页清单、准确依据失效与普通取消 / Owner inventory, invalidation and cancellation |
+| C03 | MCP／运行器／原生配置目录及接口同步 / Consistent controlled tool catalogs and contracts |
+| C04 | Web、微信、抖音、Android共享入口与准确结果导航 / Four-client grant and result entry |
+| C05 | 原生HTTP／PG、客户端与运行器用例及真实像素留证 / Source-bound checks and synthetic media |
+| C06 | 全23编号处置、旧冻结／证据保留及双语说明 / Complete register and delivery boundaries |
+
+使用：在本人项目秘书会话核对一项完整指令 → 选择准确原群／话题／绑定并确认近期MFA → 建立一次性授权 → 本人在原群发送固定触发 → 独立查阅实际业务回执。TG页面的“我的固定预授权”可分页查阅、确认失效、取消未触发执行及查看准确结果。查询不触发执行；触发已使用、业务完成与原群结果披露分别呈现。
+
+Create a grant only after reviewing one complete project instruction, its exact group/topic, own binding and recent MFA. The original employee triggers it in that group; each tool call rechecks the fixed input and current authority. The personal TG inventory provides complete pagination, invalidation, ordinary cancellation and exact result links. Deliverable submission still requires independent human acceptance; other seven Skills keep the existing owner portal handoff. Group disclosure remains a separate review.
+
+本轮统一检查：原生31测试结果、Web522、共享移动550（240＋308＋2）、运行器66及八包目录均通过；类型、Web和两小程序构建通过。增量161的4项附加移动契约结果保留、未重跑。Web／H5媒体仅证明所录合成流程。
+
+页面复核后补齐Web香港到期时分秒，仅重跑类型／Web构建和受影响录制；其余结果保留准确原输入。[当前截图／MP4／GIF与保留首录](media/batch-round-162/README.md)。
+
+Current media: [Web recording](media/batch-round-162/batch-round-162-functional-wave-web-time/screen-recording.mp4), [Web interaction GIF](media/batch-round-162/batch-round-162-functional-wave-web-time/interaction.gif), [shared-mobile recording](media/batch-round-162/batch-round-162-functional-wave-mobile-initial/screen-recording.mp4) and [mobile interaction GIF](media/batch-round-162/batch-round-162-functional-wave-mobile-initial/interaction.gif). The late timestamp repair repeats only affected Web checks; unaffected results remain source-bound retained evidence.
+
+普通升级追加128；部署配置须核对新TG工具目录与全部八包摘要，现有配置不会自动启用。保留八个冻结版本；**rc.8／APK154仍为业务153／schema113**，不含155–162。真实服务器／云／模型／Bot／平台资料由用户后续提供，正式接入与发布验收继续开放。本轮无新APK、无正式签名或实际Linux部署认定。
+
+Normal schema128 is an append-only source upgrade. All eight frozen releases and prior proof/media bytes remain immutable. This source increment does not establish real model/Bot/cloud/platform/production acceptance. [Usage and evidence limits](development/162-batch-functional-closure.md).
+
+
+**保留增量161 / Retained increment161**
 
 已将“全部代码先完成，再统一测试、集中修复”写入仓库约束。本轮C01–C08的应用、接口、升级、四端调用、运行器、Skill及用例均先整批完成并记录，再开始统一检查。后续每轮同样执行；不能将逐模块调测或单模块发布作为一轮交付。
 

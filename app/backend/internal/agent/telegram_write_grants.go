@@ -12,8 +12,8 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-// A fixed task-field update is the first direct TG write. Other task kinds keep
-// their existing human portal handoff; this is never a free-text write grant.
+// Each grant binds one complete existing project mutation. Other Skills retain
+// their human portal handoff; group text never supplies or widens write fields.
 type TelegramWriteGrantInput struct {
 	ChannelID      string    `json:"channel_id"`
 	ChannelVersion int64     `json:"channel_version"`
@@ -23,18 +23,22 @@ type TelegramWriteGrantInput struct {
 	Run            RunCreate `json:"run"`
 }
 type TelegramWriteGrant struct {
-	ID             string    `json:"id"`
-	RunID          string    `json:"run_id"`
-	ConversationID string    `json:"conversation_id"`
-	ChannelID      string    `json:"channel_id"`
-	ChannelVersion int64     `json:"channel_version"`
-	BindingID      string    `json:"binding_id"`
-	BindingVersion int64     `json:"binding_version"`
-	InputSHA256    string    `json:"input_sha256"`
-	State          string    `json:"state"`
-	Trigger        string    `json:"trigger"`
-	ExpiresAt      time.Time `json:"expires_at"`
-	CreatedAt      time.Time `json:"created_at"`
+	ID              string    `json:"id"`
+	RunID           string    `json:"run_id"`
+	ConversationID  string    `json:"conversation_id"`
+	ChannelID       string    `json:"channel_id"`
+	ChannelVersion  int64     `json:"channel_version"`
+	BindingID       string    `json:"binding_id"`
+	BindingVersion  int64     `json:"binding_version"`
+	InputSHA256     string    `json:"input_sha256"`
+	State           string    `json:"state"`
+	Tool            string    `json:"tool"`
+	ClientMessageID string    `json:"client_message_id"`
+	RunVersion      int64     `json:"run_version"`
+	RunState        string    `json:"run_state"`
+	Trigger         string    `json:"trigger"`
+	ExpiresAt       time.Time `json:"expires_at"`
+	CreatedAt       time.Time `json:"created_at"`
 }
 type telegramGrantMode struct{ RunID string }
 
@@ -42,9 +46,10 @@ func grantRead(ctx context.Context, db platform.DBTX, a core.Actor, id string) (
 	var out TelegramWriteGrant
 	e := db.QueryRow(ctx, `SELECT g.id,g.run_id,g.conversation_id,g.channel_id,g.channel_version,g.binding_id,g.binding_version,g.input_sha256,
  CASE WHEN a.inbox_id IS NOT NULL THEN 'consumed' WHEN r.cancel_requested_at IS NOT NULL OR r.state<>'queued' THEN 'stopped'
- WHEN g.expires_at<=clock_timestamp() THEN 'expired' ELSE 'pending_trigger' END,g.expires_at,g.created_at
+ WHEN g.expires_at<=clock_timestamp() THEN 'expired' ELSE 'pending_trigger' END,g.expires_at,g.created_at,
+ (SELECT tool FROM agent_run_mutations m WHERE m.org_id=g.org_id AND m.run_id=g.run_id),r.version,r.state,r.client_message_id
  FROM telegram_write_grants g JOIN agent_runs r ON r.org_id=g.org_id AND r.id=g.run_id
- LEFT JOIN telegram_write_activations a ON a.org_id=g.org_id AND a.grant_id=g.id WHERE g.org_id=$1 AND g.id=$2 AND g.actor_id=$3`, a.OrgID, id, a.UserID).Scan(&out.ID, &out.RunID, &out.ConversationID, &out.ChannelID, &out.ChannelVersion, &out.BindingID, &out.BindingVersion, &out.InputSHA256, &out.State, &out.ExpiresAt, &out.CreatedAt)
+ LEFT JOIN telegram_write_activations a ON a.org_id=g.org_id AND a.grant_id=g.id WHERE g.org_id=$1 AND g.id=$2 AND g.actor_id=$3`, a.OrgID, id, a.UserID).Scan(&out.ID, &out.RunID, &out.ConversationID, &out.ChannelID, &out.ChannelVersion, &out.BindingID, &out.BindingVersion, &out.InputSHA256, &out.State, &out.ExpiresAt, &out.CreatedAt, &out.Tool, &out.RunVersion, &out.RunState, &out.ClientMessageID)
 	out.Trigger = "/task project-update authorize:" + out.ID
 	return out, platform.DatabaseError(e)
 }
@@ -64,13 +69,16 @@ func (s *Service) TelegramWriteGrant(ctx context.Context, a core.Actor, id strin
 	if e != nil {
 		return out, e
 	}
-	_, _, e = s.readableRun(ctx, tx, a, out.RunID)
+	if _, _, e = s.readableRun(ctx, tx, a, out.RunID); e != nil {
+		return out, e
+	}
+	e = s.refreshGrantState(ctx, tx, a, &out)
 	return out, e
 }
 func (s *Service) CreateTelegramWriteGrant(ctx context.Context, c core.Command, conversation string, in TelegramWriteGrantInput) (core.Result, error) {
 	r := in.Run
-	if !core.ValidID(in.ChannelID) || !core.ValidID(in.BindingID) || core.RequireVersion(in.ChannelVersion) != nil || core.RequireVersion(in.BindingVersion) != nil || core.Name(in.Reason) != nil || !core.ValidID(r.ProfileID) || !core.ValidID(r.ClientMessageID) || core.RequireVersion(r.ExpectedVersion) != nil || core.RequireVersion(r.ContextSecurityVersion) != nil || strings.TrimSpace(r.Message) == "" || len([]rune(r.Message)) > 20000 || r.Mutation == nil || r.Mutation.Tool != "update_task" || r.FileCreate != nil || r.FileUpdate != nil || r.FileRecovery != nil || r.OARequest != nil || r.PostWrite != nil || r.BusinessDraft != nil || r.BusinessRevision != nil || r.ContractBody != nil || r.TelegramHandoff != nil || r.ScopeTransfer != nil || r.Notification != nil {
-		return core.Result{}, core.Invalid("grant", "请仅预授权一项完整固定的任务字段更新，其他任务继续使用人工入口")
+	if !core.ValidID(in.ChannelID) || !core.ValidID(in.BindingID) || core.RequireVersion(in.ChannelVersion) != nil || core.RequireVersion(in.BindingVersion) != nil || core.Name(in.Reason) != nil || !core.ValidID(r.ProfileID) || !core.ValidID(r.ClientMessageID) || core.RequireVersion(r.ExpectedVersion) != nil || core.RequireVersion(r.ContextSecurityVersion) != nil || strings.TrimSpace(r.Message) == "" || len([]rune(r.Message)) > 20000 || r.Mutation == nil || !mutationTool(r.Mutation.Tool) || r.FileCreate != nil || r.FileUpdate != nil || r.FileRecovery != nil || r.OARequest != nil || r.PostWrite != nil || r.BusinessDraft != nil || r.BusinessRevision != nil || r.ContractBody != nil || r.TelegramHandoff != nil || r.ScopeTransfer != nil || r.Notification != nil {
+		return core.Result{}, core.Invalid("grant", "请仅预授权一项完整固定的项目变更，其他技能继续使用人工入口")
 	}
 	c.ExclusiveOrganizationLock = true
 	return s.Commands.Do(ctx, c, func(tx pgx.Tx) error { return identity.RequireInteractiveSession(ctx, tx, c.Actor, true) }, func(tx pgx.Tx) (core.Result, error) {

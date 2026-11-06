@@ -1,0 +1,7 @@
+{
+  "scope": "fixture-only; no business or client implementation changed",
+  "source_archive": "docs/quality/evidence/batch-round-162/repair-2-source.zip",
+  "sha256": "e228629504926d4ef4a8d1b968f7613dbade7acfd60400686493a263084955fd",
+  "retained_failure": "native-tests-repair-1.json",
+  "diagnostic": "A second immediate login used the same single-use MFA step. Retain the first valid human sessions after ordinary member addition; do not weaken MFA."
+}

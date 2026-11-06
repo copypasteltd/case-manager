@@ -1,3 +1,4 @@
+import TelegramWriteGrantsPage from './write-grants';
 import { disclosureInput, type DisclosurePreview, type DisclosureReceipt } from '@copypaste/contracts/telegram-operations';
 import { TextField } from '../business/controls';
 import { Text, View } from '@tarojs/components';
@@ -20,7 +21,7 @@ const names: Record<Delivery['state'], string> = { pending: '等待发送', send
 const phases = { reviewed_result:'本人审核后的结果片段', accepted: '受理通知', progress: '进度通知', result: '结果通知' };
 export default function TelegramPage() {
  const route = useRouter();
- return route.params.section === 'inbox' ? <TelegramInbox /> : route.params.section === 'operations' ? <TelegramOperations /> : route.params.section === 'access' ? <TelegramAccess /> : <TelegramRequests />;
+ return route.params.section === 'grants' ? <TelegramWriteGrantsPage /> : route.params.section === 'inbox' ? <TelegramInbox /> : route.params.section === 'operations' ? <TelegramOperations /> : route.params.section === 'access' ? <TelegramAccess /> : <TelegramRequests />;
 }
 function TelegramRequests() {
  const route = useRouter(), requestID = route.params.request;
@@ -37,7 +38,7 @@ function TelegramRequests() {
 }
 function RequestList() {
  const list = useCollection<Schemas['TelegramRequest']>('/me/telegram/requests?limit=20');
- return <Section title='本人从TG发出的请求'><Notice error={list.error} />{list.loading ? <Busy /> : list.items.length ? list.items.map(r => <Row key={r.id} title={r.text} subtitle={date(r.received_at) + ' · ' + (r.reason_code === 'human_authorized_handoff' ? '已由本人门户授权' : r.run_state ?? r.state)} onClick={() => void Taro.navigateTo({ url: '/pages/telegram/index?request=' + r.id })} />) : !list.error && <Empty>尚无已接收的本人请求。</Empty>}{list.next && <Action secondary loading={list.moreBusy} onClick={() => void list.more()}>加载更早TG请求</Action>}</Section>;
+ return <Section title='本人从TG发出的请求'><Action secondary onClick={()=>void Taro.navigateTo({url:'/pages/telegram/index?section=grants'})}>我的固定预授权</Action><Notice error={list.error} />{list.loading ? <Busy /> : list.items.length ? list.items.map(r => <Row key={r.id} title={r.text} subtitle={date(r.received_at) + ' · ' + (r.reason_code === 'human_authorized_handoff' ? '已由本人门户授权' : r.run_state ?? r.state)} onClick={() => void Taro.navigateTo({ url: '/pages/telegram/index?request=' + r.id })} />) : !list.error && <Empty>尚无已接收的本人请求。</Empty>}{list.next && <Action secondary loading={list.moreBusy} onClick={() => void list.more()}>加载更早TG请求</Action>}</Section>;
 }
 function Reconcile({ requestID, value, onClose, onSaved }: { requestID: string; value: Delivery; onClose(): void; onSaved(): void }) {
  const [action, setAction] = useState<Schemas['TelegramDeliveryReconcile']['action']>('abandon'), [message, setMessage] = useState(''), [reason, setReason] = useState(''), [fresh, setFresh] = useState(false), [confirmed, setConfirmed] = useState(false);

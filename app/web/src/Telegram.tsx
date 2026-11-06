@@ -1,3 +1,4 @@
+import TelegramGrantInventory from './TelegramGrantInventory';
 import { disclosureInput, type DisclosurePreview, type DisclosureReceipt } from '@copypaste/contracts/telegram-operations';
 import { useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -39,6 +40,7 @@ function useWrite<T>(path: string, done: (value: T) => void) {
 
 export default function Telegram({ me }: { me: Me }) {
   const [search] = useSearchParams();
+  if (search.get('view') === 'grants') return <TelegramGrantInventory />;
   if (search.get('view') === 'inbox') return me.actions.includes('telegram.inbox.read') ? <TelegramInbox me={me} /> : <section className="panel"><h1>组织入站调度</h1><p>当前账号没有组织TG入站查阅权限。</p><Link to="/telegram">返回本人TG入口</Link></section>;
   if (search.get('view') === 'operations') return me.actions.includes('telegram.operations.read') ? <TelegramOperations me={me} /> : <section className="panel"><h1>组织投递运维</h1><p>当前账号没有组织TG投递查阅权限。</p><Link to="/telegram">返回本人TG入口</Link></section>;
   return <PersonalTelegram me={me} />;
@@ -51,7 +53,7 @@ function PersonalTelegram({ me }: { me: Me }) {
   const requests = useInfiniteQuery({ queryKey: ['telegram', 'requests', me.user.id], initialPageParam: '', queryFn: ({ pageParam, signal }) => api<Page<Schemas['TelegramRequest']>>('/me/telegram/requests?' + new URLSearchParams({ limit: '20', ...(pageParam ? { cursor: pageParam } : {}) }), { signal }), getNextPageParam: page => page.next_cursor ?? undefined, refetchInterval: query => query.state.data?.pages.some(page => page.items.some(item => item.state === 'awaiting_executor' || (item.state === 'dispatched' && ['queued', 'running', 'awaiting_approval', 'committing'].includes(item.run_state ?? '')))) ? 3000 : false });
   const [creating, setCreating] = useState(false), [issued, setIssued] = useState<Challenge>(), [confirming, setConfirming] = useState<Challenge>(), [ending, setEnding] = useState<{ kind: 'challenge'; value: Challenge } | { kind: 'binding'; value: Binding }>();
   const value = status.data, items = requests.data?.pages.flatMap(page => page.items) ?? [];
-  return <div className="telegram-page"><ReviewedResultPanel canDisclose={me.actions.includes('telegram.handoff.disclose')} />
+  return <div className="telegram-page"><Link className="button secondary" to="/telegram?view=grants">我的固定预授权</Link><ReviewedResultPanel canDisclose={me.actions.includes('telegram.handoff.disclose')} />
     <div className="page-heading"><div><span className="eyebrow">WORKSPACE / TELEGRAM</span><h1>Telegram 接入<span className="accent">.</span></h1><p>绑定本人数字身份，核对指定群与话题的接收范围。</p></div><button className="button primary" disabled={!value?.ingress_configured || !!status.error} onClick={() => setCreating(true)}>发起本人绑定</button></div>
     {me.actions.includes('telegram.operations.read') && <Link className="button secondary" to="/telegram?view=operations">组织TG投递运维</Link>}
     {me.actions.includes('telegram.inbox.read') && <Link className="button secondary" to="/telegram?view=inbox">组织TG入站调度</Link>}

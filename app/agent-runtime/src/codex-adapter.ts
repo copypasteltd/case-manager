@@ -87,9 +87,10 @@ function withAbort<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
 /** Bounded adapter; a verified native profile and an authenticated Go boundary are mandatory. */
 // Used both by deployment inspection and execution, so the stored configuration
 // digest is computed from the exact options later sent to the pinned SDK.
+const telegramProjectMutations = ['submit_deliverable', 'update_task_dependency', 'create_task', 'create_risk', 'update_risk', 'create_issue', 'update_issue', 'create_deliverable', 'update_deliverable', 'create_milestone', 'update_project', 'update_task', 'transition_task', 'transition_project', 'update_milestone', 'transition_milestone'] as const;
 export function executionTools(skill: SkillPackage, channel?: RunBinding['channel'], authorized = false): readonly string[] {
   if (authorized && (channel !== 'telegram' || skill.manifest.skill_id !== 'project-update')) throw new RuntimeError('SKILL_TOOLS_UNAVAILABLE');
-  if (authorized) return ['read_resource', 'inspect_operation', 'update_task'];
+  if (authorized) return ['read_resource', 'inspect_operation', ...telegramProjectMutations.filter(tool => skill.manifest.allowed_tools.includes(tool))];
   if (channel !== 'telegram') return skill.manifest.allowed_tools;
   if (!['project-briefing', 'incident-summary'].includes(skill.manifest.skill_id)) throw new RuntimeError('SKILL_TOOLS_UNAVAILABLE');
   return skill.manifest.allowed_tools.filter(tool => ['read_resource', 'search_resources', 'inspect_operation', 'read_service_summary'].includes(tool));

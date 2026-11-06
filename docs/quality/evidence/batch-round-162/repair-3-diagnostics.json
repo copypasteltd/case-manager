@@ -1,0 +1,11 @@
+{
+  "retained_attempt": "native-tests-repair-2.json",
+  "functional_fixes": [
+    "Append exact tool/argument matching in migration128 immediate agent mutation guard; original1-127 unchanged.",
+    "Add optional bounded unique participant_ids to AgentMutationArguments, matching existing ordinary/Go/MCP support."
+  ],
+  "fixture_fixes": [
+    "Compare complete canonical JSON receipts across PostgreSQL jsonb serialization, including all fields; do not require whitespace/key-order identity."
+  ],
+  "selected_replay": "Complete16-operation native suite and clients affected by the public contract change."
+}

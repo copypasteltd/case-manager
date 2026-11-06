@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T07:14:37.248104+00:00",
+  "group": "batch-round-162-functional-wave-mobile-initial",
+  "encoder_sha256": "07a9e90bb4c9f612c83730eeb9423cbdc2da8a1e607e40533d3c54384107d4ec",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": false,
+  "model_exercised": false,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/mobile-owner-grant-inventory.png",
+      "sha256": "5caf8b070ab45fe783c08411f4fa18ee6e25d5419bf63471e523a2682b437d45",
+      "fixed_trigger_commands_masked": true
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/mobile-grant-cancel-review.png",
+      "sha256": "0b1af872366ef68b12b8a4af74a63613d4a66434adab4b41e04aa9a0a07969fe",
+      "fixed_trigger_commands_masked": true
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/mobile-grant-cancelled-receipt.png",
+      "sha256": "fe0eaaabbedb5de386c2a64a0c58275eb400354e9632242d4782e4aebb4a8e04",
+      "fixed_trigger_commands_masked": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/screen-recording.mp4",
+      "sha256": "bdb05e11ba7263a8b3ad3da4412d92cf185230a4fe036e9f1b2b3a24d1d3e1ae",
+      "size_bytes": 51893
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/screenshot-tour.gif",
+      "sha256": "16aa041409775e4979c9da0079bc873c839ee1a96f6aa6c892c0592c1f1f374b",
+      "size_bytes": 62637
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "28",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.800000"
+    }
+  }
+}

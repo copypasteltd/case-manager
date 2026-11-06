@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T07:10:39.113Z",
+  "finished_at": "2026-11-06T07:11:04.367Z",
+  "checks": [
+    "Current owner inventory reads never trigger work; explicit ordinary cancellation persists and removes the untriggered execution action."
+  ],
+  "source_count": 1202,
+  "source_sha256": "bce94c3bb9da41d300b0eb2dd7a95d70cc33097f505203da648a818db83a04f0",
+  "source_after_sha256": "bce94c3bb9da41d300b0eb2dd7a95d70cc33097f505203da648a818db83a04f0",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Web task participants, complete association pagination and ordinary versioned save with actual native API/PG; synthetic data, no model/provider/device acceptance",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "60b5c02a651f7cd65e5726c4291a2ab283c8b657fa070ad41e61ea437a8dae12",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "60b5c02a651f7cd65e5726c4291a2ab283c8b657fa070ad41e61ea437a8dae12",
+  "build_source_unchanged": true
+}

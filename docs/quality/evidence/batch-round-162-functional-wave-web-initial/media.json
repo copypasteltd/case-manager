@@ -1,0 +1,34 @@
+{
+  "synthetic_data": true,
+  "real_cloud": false,
+  "kind": "functional-wave",
+  "screenshots": [
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-web-initial/web-owner-grant-inventory.png",
+      "sha256": "909d13e21b745274355f75f708697208bd1c0a688750e44d0788dda04424a6a3",
+      "fixed_trigger_commands_masked": true
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-web-initial/web-grant-cancel-review.png",
+      "sha256": "15b3d199969031d0885e3b3c99227022e0700f091cc66b1ec72d6bd7f99256d9",
+      "fixed_trigger_commands_masked": true
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-web-initial/web-grant-cancelled-receipt.png",
+      "sha256": "c47f9e16a2f188653ee91c62cd29ab2ebe6b9d254df3c14a4f8aa4efe1bfd495",
+      "fixed_trigger_commands_masked": true
+    }
+  ],
+  "recording": {
+    "name": "batch-round-162-functional-wave-web-initial",
+    "frame_count": 10,
+    "duration_ms": 2032,
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "credentials_excluded": true,
+    "manifest": ".local/repository-showcase/batch-round-162-functional-wave-web-initial/frames.json",
+    "manifest_sha256": "7efc21af92797ac47c4840685422eb9542335817fdfbbeeca6665ddcf0bc2da5"
+  }
+}

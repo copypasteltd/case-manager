@@ -1,5 +1,20 @@
 # 更新记录 / Changelog
 
+## 增量162 / Increment162 —2026-11-06
+
+整轮C01–C06源码与用例先完成，再统一检查与集中修复：全部16项既有准确项目操作可建立本人一次性TG固定预授权；增加当前有权可见的本人完整分页清单、原登录／权限／群／业务依据失效重检、普通取消与准确结果导航。Web及共享微信／抖音／Android入口同步，追加迁移128，project-update1.11.0及其余七包均draft。
+
+The controller retains the actual telegram business/audit channel and matches exactly one stored canonical intent. Native configuration/MCP/runtime catalogs contain the same18 eligible definitions; they do not authorize other calls. Exact deliverable submission validates its original human session and activated grant without granting independent acceptance. Reads never enqueue; grant consumption, actual result and separately reviewed original-group disclosure remain distinct.
+
+修复与验证按本轮实际记录更新；首次失败与原源码保留，不改写历史结论。23项正式工作包、公司规则与真实接入／正式发布验收保持开放，五项移出范围保持不变。全部八冻结及旧媒体／证明／1–127升级不变，rc.8/APK154仍153/113，本轮不重发APK。
+
+统一验证：原生31测试结果、Web522、共享移动550、运行器66及八包目录通过；类型、Web与两小程序构建通过。集中修复保留全部首次失败、SQL跨层门槛与准确源码。页面复核补齐Web香港时分秒，仅重跑受影响检查与Web录制；移动及其余结果保留。新增6张主截图、2段实际静音录屏、2个互动GIF及2个独立截图导览，Web首录另外保留。
+
+Selected local checks and all primary media bind their actual inputs and cleanup records. No full backend regression, new Android bundle/APK, real integration, Skill publication or production acceptance is inferred. [截图／录屏／GIF](media/batch-round-162/README.md)
+
+[完整实现与约束](development/162-batch-functional-closure.md) · [23项清单](delivery/05-functional-closure-162.md) · [验证记录](quality/162-batch-functional-verification.md)
+
+
 ## 增量161 / Increment161 —2026-11-06
 
 整批C01–C08实现完成后才开始统一检查：任务参与人及四类完整队列、Web完整关联分页、共享移动端历史恢复／Android扫描及独立复核、正式Android私有签名与递增版本工程、本人一次性固定TG任务更新、秘书准确普通范围计划执行、固定原群结果片段队列，以及四端／接口／运行器／八项draft Skill同步。

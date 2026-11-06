@@ -1,0 +1,14 @@
+{
+  "archive": "docs/quality/evidence/batch-round-162/repair-1-source.zip",
+  "archive_sha256": "2f00c8983e9852113d567c0ffd8ebddebadaaab0f8f841afe70580e692293ad9",
+  "changed": [
+    "app/agent-runtime/src/task-dependency.test.ts",
+    "app/backend/internal/httpapi/round162_telegram_integration_test.go",
+    "app/mobile/src/pages/telegram/write-grants.tsx",
+    "app/mobile/src/platform/telegram-grants.test.ts",
+    "app/scripts/verify_batch_round162.py",
+    "app/web/src/telegram-grants.test.ts"
+  ],
+  "repair_group": "Complete initial diagnostics grouped before affected replay",
+  "retained_initial": "initial-failures.json"
+}

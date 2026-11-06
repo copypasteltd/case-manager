@@ -814,6 +814,7 @@ mutation_arguments.update({"predecessor_id":ID,"expected_predecessor_version":VE
     "probability":nullable(enum("low","medium","high")),"mitigation":TEXT,"resolution":TEXT,
     "state":enum("open","mitigating","realized","investigating","resolved","closed")})
 mutation_arguments.update({"expected_revision_id":nullable(ID),"file_version_ids":array(ID,minItems=1,maxItems=20,uniqueItems=True)})
+mutation_arguments["participant_ids"]=array(ID,maxItems=50,uniqueItems=True)
 add("AgentMutationArguments", mutation_arguments, ("id", "expected_version", "reason"))
 add("AgentMutationInput", {"tool": enum("update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "arguments": ref("AgentMutationArguments")}, ("tool", "arguments"))
 mutation_view = {"run_id": ID, "tool": enum("update_task_dependency", "create_task", "create_risk", "update_risk", "create_issue", "update_issue", "create_deliverable", "update_deliverable", "submit_deliverable", "create_milestone", "update_project", "update_task", "transition_task", "transition_project", "update_milestone", "transition_milestone"), "resource_type": enum("project", "task", "milestone", "deliverable", "risk", "issue"),
@@ -909,7 +910,8 @@ add("Run", {"fixed_delivery":ref("AgentFixedDeliveryView"),"telegram_write_grant
     ("id", "version", "conversation_id", "state", "last_event_seq", "actor_id", "profile_id", "client_message_id", "can_cancel", "cancel_requested_at", "expires_at"))
 tg_write_grant_input={"channel_id":ID,"channel_version":VERSION,"binding_id":ID,"binding_version":VERSION,"reason":NAME,"run":ref("RunCreate")}
 add("TelegramWriteGrantInput",tg_write_grant_input,tuple(tg_write_grant_input))
-tg_write_grant={"id":ID,"run_id":ID,"conversation_id":ID,"channel_id":ID,"channel_version":VERSION,"binding_id":ID,"binding_version":VERSION,"input_sha256":HASH,"state":enum("pending_trigger","consumed","stopped","expired"),"trigger":{"type":"string","minLength":1,"maxLength":100},"expires_at":TIME,"created_at":TIME}
+tg_write_grant={"id":ID,"run_id":ID,"conversation_id":ID,"channel_id":ID,"channel_version":VERSION,"binding_id":ID,"binding_version":VERSION,"input_sha256":HASH,"state":enum("pending_trigger","consumed","stopped","expired","invalidated"),"trigger":{"type":"string","minLength":1,"maxLength":100},"expires_at":TIME,"created_at":TIME}
+tg_write_grant.update({"tool":enum("submit_deliverable","update_task_dependency","create_task","create_risk","update_risk","create_issue","update_issue","create_deliverable","update_deliverable","create_milestone","update_project","update_task","transition_task","transition_project","update_milestone","transition_milestone"),"run_version":VERSION,"run_state":SCHEMAS["Run"]["properties"]["state"],"client_message_id":ID})
 add("TelegramWriteGrant",tg_write_grant,tuple(tg_write_grant))
 SCHEMAS["Run"]["properties"]["telegram_handoff"] = ref("TelegramHandoffInput")
 SCHEMAS["Run"]["properties"]["contract_body"]=ref("AgentContractBodyView")
@@ -2021,6 +2023,8 @@ operation("/runs/{id}/contract-body-adoption", "post", "adoptContractBody", "Age
 operation("/runs/{id}/cancel", "post", "cancelRun", "Run", "Transition")
 operation("/conversations/{id}/telegram-write-grants","post","createTelegramWriteGrant","TelegramWriteGrant","TelegramWriteGrantInput",201)
 operation("/telegram-write-grants/{id}","get","getTelegramWriteGrant","TelegramWriteGrant")
+operation("/me/telegram/write-grants","get","listOwnTelegramWriteGrants","TelegramWriteGrant",listing=True)
+PATHS["/me/telegram/write-grants"]["get"]["parameters"].append({"name":"state","in":"query","schema":enum("pending_trigger","consumed","stopped","expired","invalidated")})
 operation("/runs/{id}/event-log", "get", "getRunEventLog", "RunEventPage")
 PATHS["/runs/{id}/event-log"]["get"]["parameters"] += [
     {"name": "after_seq", "in": "query", "schema": {"type": "integer", "minimum": 0}},

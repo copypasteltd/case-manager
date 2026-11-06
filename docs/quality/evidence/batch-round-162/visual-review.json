@@ -1,0 +1,47 @@
+{
+  "reviewed": true,
+  "reviewed_at": "2026-11-06T07:24:16.904806+00:00",
+  "method": "Agent inspected all six primary PNGs and the final decoded frame of both actual-recording GIFs with view_image.",
+  "findings": [
+    "Both clients show the owner inventory, explicit reason and confirmation, then current ordinary cancelled receipts without obsolete trigger or cancel inputs.",
+    "Web creation/expiry includes Hong Kong hours, minutes and seconds after the disclosed timestamp-only repair.",
+    "Original-group fixed triggers are masked; no login, password or MFA secret is present."
+  ],
+  "images": [
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-web-time/web-owner-grant-inventory.png",
+      "sha256": "f80758d4d3ea37bd6b333c716c5fba60c5491df7d88a3533176312f5780733ae"
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-web-time/web-grant-cancel-review.png",
+      "sha256": "37ace268c34ef875b99df4ddc70f28c1377f8a37237ef8e0fbb45547e34f659a"
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-web-time/web-grant-cancelled-receipt.png",
+      "sha256": "122c713fae478559cf12ba7d73f84b9ea22754d530ee4dc5df7a01f74eafb41a"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-162/visual-review-web-gif-frame.png",
+      "sha256": "a9f1b95bc5e2773d25aba393c5bc288a5a8494bd8db9b59cfe7680ecb8347826"
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/mobile-owner-grant-inventory.png",
+      "sha256": "5caf8b070ab45fe783c08411f4fa18ee6e25d5419bf63471e523a2682b437d45"
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/mobile-grant-cancel-review.png",
+      "sha256": "0b1af872366ef68b12b8a4af74a63613d4a66434adab4b41e04aa9a0a07969fe"
+    },
+    {
+      "file": "docs/media/batch-round-162/batch-round-162-functional-wave-mobile-initial/mobile-grant-cancelled-receipt.png",
+      "sha256": "fe0eaaabbedb5de386c2a64a0c58275eb400354e9632242d4782e4aebb4a8e04"
+    },
+    {
+      "file": "docs/quality/evidence/batch-round-162/visual-review-mobile-gif-frame.png",
+      "sha256": "d5e9822a325de50c491dc53554398afb0a8f53b43310320b011b5e4247c42a07"
+    }
+  ],
+  "synthetic_data": true,
+  "real_device_acceptance": false,
+  "production_acceptance": false
+}
