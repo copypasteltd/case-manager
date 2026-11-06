@@ -6878,6 +6878,58 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/dashboard/work-items/{kind}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getWorkInventory */
+        get: operations["getWorkInventory"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/folders/{id}/terminal-upload-candidates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** listTerminalUploadCandidates */
+        get: operations["listTerminalUploadCandidates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/uploads/{id}/terminal-observations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** getTerminalUploadObservations */
+        get: operations["getTerminalUploadObservations"];
+        put?: never;
+        /** requestTerminalUploadObservation */
+        post: operations["requestTerminalUploadObservation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/costs/{id}/amortization": {
         parameters: {
             query?: never;
@@ -13088,6 +13140,7 @@ export interface components {
             refund_of_id: string | null;
             unattributed_refund_amount: string;
             allocations: components["schemas"]["PurchaseCompletionAllocation"][];
+            unattributed_refund_currency?: string;
         };
         PurchaseCompletionSnapshot: {
             /** Format: uuid */
@@ -16724,6 +16777,110 @@ export interface components {
         };
         AgentBusinessDraftInputResponse: {
             data: components["schemas"]["AgentBusinessDraftInput"];
+            meta: components["schemas"]["Meta"];
+        };
+        WorkInventoryItem: {
+            /** Format: uuid */
+            id: string;
+            version: number;
+            revision_id: string | null;
+            project_id: string | null;
+            related_id: string | null;
+            due_on: string | null;
+            title: string;
+            state: string;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        WorkInventory: {
+            /** Format: date-time */
+            as_of: string;
+            /** @constant */
+            scope: "my_readable_inventory";
+            /** @enum {string} */
+            kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention" | "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review";
+            basis_sha256: string;
+            count: number;
+            items: components["schemas"]["WorkInventoryItem"][];
+            next_cursor: string | null;
+        };
+        WorkInventoryResponse: {
+            data: components["schemas"]["WorkInventory"];
+            meta: components["schemas"]["Meta"];
+        };
+        TerminalObjectView: {
+            /** Format: uuid */
+            target_id: string;
+            /** @enum {string} */
+            role: "upload_draft" | "promotion_candidate";
+            /** @enum {string} */
+            provider: "oss" | "r2";
+            /** @enum {string} */
+            outcome: "observed_present" | "not_observed" | "failed" | "identity_unconfirmed";
+            identity_sha256: string | null;
+            native_version_present: boolean;
+            size_bytes: string | null;
+        };
+        TerminalObservation: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            upload_id: string;
+            /** Format: uuid */
+            actor_id: string;
+            basis_sha256: string;
+            reason: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            expires_at: string;
+            /** @enum {string} */
+            outcome: "pending" | "observed" | "incomplete" | "stopped";
+            error_code: string | null;
+            observed_at: string | null;
+            objects: components["schemas"]["TerminalObjectView"][];
+            all_present: boolean;
+        };
+        TerminalCandidate: {
+            /** Format: uuid */
+            upload_id: string;
+            upload_version: number;
+            /** Format: uuid */
+            folder_id: string;
+            folder_version: number;
+            name: string;
+            state: string;
+            basis_sha256: string;
+            object_count: number;
+            can_observe: boolean;
+            blocking_reasons: string[];
+        };
+        TerminalOverview: {
+            candidate: components["schemas"]["TerminalCandidate"];
+            items: components["schemas"]["TerminalObservation"][];
+            has_more: boolean;
+        };
+        TerminalObserveCreate: {
+            expected_folder_version: number;
+            expected_upload_version: number;
+            basis_sha256: string;
+            reason: string;
+            /** @constant */
+            reviewed: true;
+        };
+        TerminalCandidateListResponse: {
+            data: {
+                items: components["schemas"]["TerminalCandidate"][];
+                next_cursor: string | null;
+            };
+            meta: components["schemas"]["Meta"];
+        };
+        TerminalOverviewResponse: {
+            data: components["schemas"]["TerminalOverview"];
+            meta: components["schemas"]["Meta"];
+        };
+        TerminalObservationResponse: {
+            data: components["schemas"]["TerminalObservation"];
             meta: components["schemas"]["Meta"];
         };
         AmortizationPeriod: {
@@ -35736,6 +35893,157 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AgentBusinessDraftInputResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getWorkInventory: {
+        parameters: {
+            query?: {
+                limit?: number;
+                cursor?: string;
+            };
+            header?: never;
+            path: {
+                kind: "approvals" | "contracts" | "subscription_periods" | "incidents" | "file_attention" | "resource_attention" | "requests_to_revise" | "deliverables_to_submit" | "deliverables_to_review";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkInventoryResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    listTerminalUploadCandidates: {
+        parameters: {
+            query?: {
+                cursor?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TerminalCandidateListResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    getTerminalUploadObservations: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TerminalOverviewResponse"];
+                };
+            };
+            400: components["responses"]["Failure"];
+            401: components["responses"]["Failure"];
+            403: components["responses"]["Failure"];
+            404: components["responses"]["Failure"];
+            409: components["responses"]["Failure"];
+            410: components["responses"]["Failure"];
+            412: components["responses"]["Failure"];
+            413: components["responses"]["Failure"];
+            422: components["responses"]["Failure"];
+            429: components["responses"]["Failure"];
+            500: components["responses"]["Failure"];
+            503: components["responses"]["Failure"];
+        };
+    };
+    requestTerminalUploadObservation: {
+        parameters: {
+            query?: never;
+            header: {
+                /** @description Stable across retries, scoped to actor and route. */
+                "Idempotency-Key": components["parameters"]["IdempotencyKey"];
+                /** @description Server requires for every cookie-authenticated write; Bearer-only excluded. */
+                "X-CSRF-Token"?: components["parameters"]["CsrfToken"];
+            };
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TerminalObserveCreate"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TerminalObservationResponse"];
                 };
             };
             400: components["responses"]["Failure"];

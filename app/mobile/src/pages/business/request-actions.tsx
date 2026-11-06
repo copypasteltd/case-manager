@@ -10,6 +10,7 @@ import { Action, Busy, Check, Empty, Fact, Notice, Section, State, date } from '
 import { PayloadSnapshot } from '../detail/snapshot';
 import { currentChange, currentChangePayload, changeRequestProof } from '../../platform/change-input';
 import { TextField } from './controls';
+import { ReviseVarianceRequest } from './purchase-variances';
 
 export function PrepareRequest({ kind, business, me, onCancel }: { kind: BusinessKind; business: Business; me: Schemas['Me']; onCancel(): void }) {
   const draft = useFormDraft(me, { kind: 'request-prepare', id: business.id, version: business.version }, 'prepare');
@@ -24,7 +25,7 @@ export function PrepareRequest({ kind, business, me, onCancel }: { kind: Busines
 function nameOf(kind: BusinessKind) { return businessNames[kind]; }
 export function RequestActions({ request, me, onCommitted }: { request: Schemas['Request']; me: Schemas['Me']; onCommitted(): void }) {
   const [mode, setMode] = useState<'none' | 'submit' | 'revise' | 'withdraw' | 'history'>('none');
-  const supported = request.kind === 'contract' || request.kind === 'purchase' || request.kind === 'claim' || request.kind === 'change';
+  const supported = request.kind === 'contract' || request.kind === 'purchase' || request.kind === 'claim' || request.kind === 'purchase_variance' || request.kind === 'change';
   return <Section title='申请操作与历史'><View className='cp-pad'>
     {mode === 'none' ? <>
       {supported && <Action secondary onClick={() => go(request.kind, request.business_id)}>查看当前业务资料</Action>}
@@ -34,7 +35,7 @@ export function RequestActions({ request, me, onCommitted }: { request: Schemas[
       <Action secondary onClick={() => setMode('history')}>查看申请修订历史</Action>
     </> : <>
       {mode === 'submit' && request.can_submit && <SubmitRequest request={request} me={me} onCommitted={onCommitted} />}
-      {mode === 'revise' && supported && request.can_revise && (request.kind === 'change' ? <ReviseChangeRequest request={request} me={me} onCommitted={onCommitted} /> : <ReviseRequest request={request} me={me} onCommitted={onCommitted} />)}
+      {mode === 'revise' && supported && request.can_revise && (request.kind === 'purchase_variance' ? <ReviseVarianceRequest request={request} me={me} onCommitted={onCommitted}/> : request.kind === 'change' ? <ReviseChangeRequest request={request} me={me} onCommitted={onCommitted} /> : <ReviseRequest request={request} me={me} onCommitted={onCommitted} />)}
       {mode === 'withdraw' && request.can_withdraw && <WithdrawRequest request={request} me={me} onCommitted={onCommitted} />}
       {mode === 'history' && <RequestHistory request={request} me={me} />}
       <Action secondary onClick={() => setMode('none')}>返回申请详情</Action>

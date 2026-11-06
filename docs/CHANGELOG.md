@@ -1,5 +1,13 @@
 # 更新记录 / Changelog
 
+## 160 · 2026-11-06 · Complete code wave: work inventories and ordinary business execution
+
+先完成C01–C06全部代码与用例、复核23个工作包，再统一检查及两批集中修复。新增外币退款结项原本金单位、已知终态上传HEAD独立观察与重新起算保留期、九类完整授权待办分页、共享移动人工目录整理，以及合同签署／生效／里程碑／结项、采购订单／验收／准确原行退货／差异重审／完成、报销结清与不可变历史入口。追加迁移122–123，独立只读观察worker使用专用配置；HEAD不证明字节正确或授权删除。
+
+Current Web520/shared-mobile566 and Web/WeChat/Douyin builds pass. Keep85 unaffected selected native test records with exact archived-source reconstruction; five current terminal-observation result records pass. Initial failures and two repairs remain immutable; runtime64/Skill catalog checks are explicitly retained. Publish six current screenshots, two actual silent recordings and both interaction/tour GIF pairs; preserve the wrong-group Web attempt and failed mobile locator. See [workflow](development/160-batch-functional-closure.md), [verification](quality/160-batch-functional-verification.md), [all23 packages](delivery/05-functional-closure-160.md) and [media](media/batch-round-160/README.md).
+
+全部8个旧冻结、历史证明／素材及迁移1–121不变；rc.8/APK154固定business153/schema113，不含155–160。本轮源代码schema123，开发PG100/API不升级，无新APK／Android JS重试。23包、8个draft Skills与真实配置／正式验收仍开放；保留用户移出的5项边界。
+
 ## 159 · Complete business preparation and exact human draft revision
 
 整批C01–C06先实现，再统一测试和集中修复。复用四类完整业务表单准备新建／修订；新增原版本／范围指纹、单独跨项目／分类确认、原会话近期MFA、当前引用核对、唯一固定写授权和普通原子新修订回执。追加迁移121；oa-assist1.6.0为L2且仍draft，共同契约改变全部8项包摘要。普通保存、审批、启用、费用及现金分别办理。
@@ -830,3 +838,10 @@ Added complete `create_task` authorization, original business authority/atomic r
 包含 Go/PostgreSQL 权限与版本化业务、Web 业务入口、Taro 公共页面及 Android 原生宿主、合同采购报销、费用与订阅、项目模板及协作／交付／变更／结项、文件版本与双云适配、知识、通知、安全、服务状态、受控秘书工具与 TG 渠道实现。增量75加入移动立项、成员与负责人管理。所有能力的精确范围、历史证据和未完成工作以对应协议与差异表为准。
 
 Includes versioned Go/PostgreSQL business and authorization, Web workflows, shared Taro pages and Android host, contracts/procurement/claims, costs/subscriptions, project templates/collaboration/deliverables/changes/closeout, file versions and dual-cloud adapters, knowledge, notifications, security, status, controlled secretary tools and TG channel implementation. Increment75 added mobile project/member/owner management. Exact scope, evidence and remaining work are defined by the relevant protocols and gap register.
+
+
+## Increment160 — complete-wave functional closure
+
+- 原付款本金结项与独立币种、终态已知位置HEAD观察、九类完整待办、共享移动端人工资料整理和合同／采购／报销履行入口。
+- Whole C01–C06 code and fixture wave before unified validation; first failures and affected-only repairs retained in160 evidence. Schema122–123 append normally; all eight frozen tags, old media, PG100/API and APK154 remain unchanged.
+-23 packages,8 draft Skills and actual cloud/model/platform/production acceptance stay open; exclusions are unchanged.

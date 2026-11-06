@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T03:47:25.924203+00:00",
+  "group": "batch-round-160-functional-wave-mobile-capture-2",
+  "encoder_sha256": "30e575bb7a7b47d6c3539c0cfc472d18a29d2c79cdd6fbc6aaec61792082544b",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "mobile-fulfillment-completion",
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-fulfillment-completion.png",
+      "sha256": "77c4c6a86429533551bc8b309755b2556b0cdab0c701db7468b4c2a71e91907e"
+    },
+    {
+      "name": "mobile-order-fixed-evidence",
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-order-fixed-evidence.png",
+      "sha256": "33c006ce82be36ff339986cc4ccaa5629535e9b2d71bd41ee3cca030561c495d"
+    },
+    {
+      "name": "mobile-immutable-receipt-history",
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-immutable-receipt-history.png",
+      "sha256": "968f53b2c8ed7b284ffde934ad2ecf86b634c1b3f601e54ac6c223849c31442a"
+    },
+    {
+      "name": "mobile-return-source-review",
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-return-source-review.png",
+      "sha256": "d9d3d23af9a92e598cbd0578a3cde97bad0c608f76bc413a3a1c335fa6bdd74c"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/screen-recording.mp4",
+      "sha256": "44918fc698cc0d4e88ffa4cc5b09d4ca848c7b93683965e3cd9e79e1911523b5",
+      "size_bytes": 102649
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/screenshot-tour.gif",
+      "sha256": "965fdf8298e54fc06cbdf9eba69921c09cb980672d107eb492dbfa5568d8d10d",
+      "size_bytes": 135721
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 390,
+        "height": 900,
+        "nb_frames": "26",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "2.600000"
+    }
+  }
+}

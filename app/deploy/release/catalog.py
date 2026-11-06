@@ -6,6 +6,7 @@ SERVICES = {
     'subscription': ('copypaste-subscription', 'worker-subscription', 'subscription.env'),
     'report-export': ('copypaste-report', 'worker-report-export', 'report-export.env'),
     'file-text': ('copypaste-text', 'worker-file-text', 'file-text.env'),
+    'original-observation': ('copypaste-observer', 'worker-original-observation', 'original-observation.env'),
     'multipart-cleanup': ('copypaste-cleanup', 'worker-multipart-cleanup', 'multipart-cleanup.env'),
     'upload': ('copypaste-upload', 'worker-upload', 'upload.env'),
     **{f'{mode}-{size}': (f'copypaste-{mode}', f'worker-{mode}-{size}', f'{mode}.env')

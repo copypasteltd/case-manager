@@ -9,6 +9,22 @@ import (
 
 func (s *Server) objectRetirementRoutes(mux *http.ServeMux, metadata *files.Service) {
 	service := &files.ObjectRetirementService{Files: metadata, Backends: s.OriginalCleanup}
+	mux.HandleFunc("GET /v1/folders/{id}/terminal-upload-candidates", read(s, "TerminalCandidateListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		f, e := filter(r)
+		if e != nil {
+			return nil, e
+		}
+		return service.TerminalCandidates(ctx, a, r.PathValue("id"), files.Filter{Cursor: f.Cursor, Limit: f.Limit})
+	}))
+	mux.HandleFunc("GET /v1/uploads/{id}/terminal-observations", read(s, "TerminalOverviewResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
+		if r.URL.RawQuery != "" {
+			return nil, core.Invalid("query", "准确观察历史不接受筛选参数")
+		}
+		return service.TerminalOverview(ctx, a, r.PathValue("id"))
+	}))
+	mux.HandleFunc("POST /v1/uploads/{id}/terminal-observations", command(s, "TerminalObserveCreate", "TerminalObservationResponse", func(ctx context.Context, c core.Command, r *http.Request, in files.TerminalObserveCreate) (core.Result, error) {
+		return service.ObserveTerminal(ctx, c, r.PathValue("id"), in)
+	}))
 	mux.HandleFunc("GET /v1/folders/{id}/completed-draft-retirement-candidates", read(s, "RetirementCandidateListResponse", func(ctx context.Context, a core.Actor, r *http.Request) (any, error) {
 		f, e := filter(r)
 		if e != nil {

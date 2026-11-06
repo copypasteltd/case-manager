@@ -12,9 +12,15 @@ import { PayloadSnapshot } from '../detail/snapshot';
 import { BusinessEditor } from './editor';
 import { PrepareRequest } from './request-actions';
 import { MobileContractFinance } from './contract-finance';
+import { MobileContractExecution } from './contract-execution';
+import { MobilePurchaseExecution } from './purchase-execution';
+import { MobileBusinessHistory, MobileClaimSettlement } from './history';
+import { VarianceRecord } from './purchase-variances';
 
-export default function BusinessPage() {
-  const params = useRouter().params, [mode, setMode] = useState<'view' | 'edit' | 'prepare' | 'finance'>('view');
+export default function BusinessPage() {const params=useRouter().params;return params.kind==='purchase_variance'?<VariancePage/>:<OrdinaryBusinessPage/>;}
+function VariancePage(){const params=useRouter().params;const page=usePage(async scope=>{const id=identifier(params.id??''),value=await client.request<import('../../platform/session').Schemas['PurchaseVariance']>('/purchase-variances/'+id,{scope}),purchase=await client.request<import('../../platform/session').Schemas['Spend']>('/purchases/'+value.basis.purchase_id,{scope}),plan=await client.request<import('../../platform/session').Schemas['PurchaseExecutionPlan']>('/purchases/'+purchase.id+'/execution-plan',{scope});return {id,purchase,plan};});return <Page title='采购差异提案' home><Notice error={page.error}/>{page.loading?<Busy/>:page.result&&<VarianceRecord {...page.result.value} me={page.result.me} onCommitted={()=>void page.reload()} onClose={()=>go('purchase',page.result!.value.purchase.id)}/>}<Action secondary onClick={()=>void page.reload()}>重新读取当前依据</Action></Page>;}
+function OrdinaryBusinessPage() {
+  const params = useRouter().params, [mode, setMode] = useState<'view' | 'edit' | 'prepare' | 'finance' | 'execution' | 'history'>('view');
   const page = usePage(async scope => {
     if (!['contract', 'purchase', 'claim'].includes(params.kind ?? '')) throw new MobileError('INVALID_RESOURCE', '业务地址无效，请从业务列表重新打开。');
     const kind = params.kind as BusinessKind;
@@ -43,7 +49,9 @@ export default function BusinessPage() {
           <View className='cp-choice'><State value={value.approval_state} /><Text className='cp-muted cp-small'>业务修订 {value.version} · {date(value.updated_at)}</Text></View>
           <View className='cp-notice'><Text>以下为当前业务修订。业务资料、固定申请、审批、履行及实际付款分别记录。</Text></View>
           <PayloadSnapshot snapshot={currentBusinessPayload(kind, value)} digest={value.content_hash} me={result.me} heading='当前业务修订内容' />
-          {mode === 'finance' && 'contract_no' in value ? <MobileContractFinance key={value.id + ':' + value.version + ':' + result.me.authorization_version} contract={value} me={result.me} onClose={() => setMode('view')} /> : mode === 'prepare' ? <PrepareRequest key={value.id + ':' + value.version} kind={kind} business={value} me={result.me} onCancel={() => setMode('view')} /> : <Section title='后续操作'><View className='cp-pad'>
+          {mode === 'history' ? <MobileBusinessHistory value={value} kind={kind} me={result.me} onCommitted={()=>{setMode('view');void page.reload();}} onClose={()=>setMode('view')}/> : mode === 'execution' ? ('contract_no' in value ? <MobileContractExecution value={value} me={result.me} onCommitted={()=>{setMode('view');void page.reload();}} onClose={()=>setMode('view')}/> : kind==='purchase' ? <MobilePurchaseExecution value={value} me={result.me} onCommitted={()=>{setMode('view');void page.reload();}} onClose={()=>setMode('view')}/> : <MobileClaimSettlement value={value} onClose={()=>setMode('view')}/>) : mode === 'finance' && 'contract_no' in value ? <MobileContractFinance key={value.id + ':' + value.version + ':' + result.me.authorization_version} contract={value} me={result.me} onClose={() => setMode('view')} /> : mode === 'prepare' ? <PrepareRequest key={value.id + ':' + value.version} kind={kind} business={value} me={result.me} onCancel={() => setMode('view')} /> : <Section title='后续操作'><View className='cp-pad'>
+            {!value.deleted_at&&(('contract_no' in value&&value.lifecycle!=='draft')||value.approval_state==='approved')&&<Action onClick={()=>setMode('execution')}>{kind==='contract'?'签署、生效与结项':kind==='purchase'?'订单、验收、退货与结项':'报销实际结清核对'}</Action>}
+            {(value.can_read_history||('contract_no' in value?value.can_trash:value.can_archive))&&<Action secondary onClick={()=>setMode('history')}>商业修订历史与草稿归档</Action>}
             {value.can_edit && <Action secondary onClick={() => setMode('edit')}>编辑{name}草稿</Action>}
             {value.can_prepare_request && <Action onClick={() => setMode('prepare')}>{value.request_id ? '核对并准备申请草稿' : '建立申请草稿'}</Action>}
             {!value.deleted_at && value.approval_state === 'approved' && (!('direction' in value) || value.direction === 'payable' && ['effective', 'completed', 'terminated'].includes(value.lifecycle)) && ['cost.read', 'cost.record', 'cost.confirm'].every(action => result.me.actions.includes(action)) && <Action secondary onClick={() => void Taro.navigateTo({ url: businessCostMobileEntry(kind, value.id) })}>登记实际费用并关联</Action>}

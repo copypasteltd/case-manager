@@ -40,7 +40,7 @@ func (s *ObjectRetirementService) planActor(ctx context.Context, db platform.DBT
 	if e != nil {
 		return e
 	}
-	return cleanupUploadAccess(ctx, db, a, f, u)
+	return completedDraftUploadAccess(ctx, db, a, f, u)
 }
 func (s *ObjectRetirementService) lockPlanTarget(ctx context.Context, tx pgx.Tx, org string, p RetirementPlan) error {
 	if p.Snapshot.Kind == "uncommitted_draft" {
@@ -135,101 +135,133 @@ func (s *ObjectRetirementService) assessCompletedUpload(ctx context.Context, tx 
 	if now.Before(u.ExpiresAt.Add(objectstore.MaxSignTTL)) {
 		block("UPLOAD_OR_PERMIT_ACTIVE")
 	}
-	if observed == nil {
-		block("COMPLETION_EVIDENCE_REQUIRED")
+	observedObjects, observedAt, observationBasis, observationErr := s.terminalObservedObjects(ctx, tx, org, u)
+	if observationErr != nil {
+		return out, objects, observationErr
 	}
-	var original objectstore.Source
-	var attempt string
-	e = tx.QueryRow(ctx, "SELECT id FROM upload_attempts WHERE org_id=$1 AND session_id=$2 AND draft_key=$3 AND state='active'", org, u.ID, u.DraftKey).Scan(&attempt)
-	if e != nil && e != pgx.ErrNoRows {
-		return out, objects, e
-	}
-	expected, _ := objectstore.DraftKey(org, attempt)
-	if e == pgx.ErrNoRows || expected != u.DraftKey || u.FrozenSourceID == nil || u.Provider == nil || u.Bucket == nil || json.Unmarshal([]byte(valueString(u.FrozenSourceID)), &original) != nil || original.Key != u.DraftKey || original.ETag == "" || original.Size != u.layout().Size || original.Size <= 0 {
-		block("SOURCE_CHANGED")
+	identities := []any{cleanupSource(u), observed}
+	if len(observedObjects) > 0 {
+		objects = observedObjects
+		observed = observedAt
+		identities = append(identities, observationBasis)
+		// Metadata observations do not waive live jobs or active agent recovery.
+		var liveJob, activeAgent bool
+		var abandonedAt *time.Time
+		if e = tx.QueryRow(ctx, `SELECT
+    EXISTS(SELECT 1 FROM jobs WHERE org_id=$1 AND payload->>'session_id'=$2::text AND (state IN ('queued','running','retry_wait') OR updated_at>clock_timestamp()-$3::bigint*interval '1 second')),
+    EXISTS(SELECT 1 FROM agent_file_drafts d WHERE org_id=$1 AND id=$2::uuid AND NOT EXISTS(SELECT 1 FROM agent_file_abandonments ab WHERE ab.org_id=d.org_id AND ab.draft_id=d.id AND ab.content_sha256=d.content_sha256)),
+    (SELECT created_at FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2::uuid)`, org, u.ID, int64(objectstore.MaxSignTTL/time.Second)).Scan(&liveJob, &activeAgent, &abandonedAt); e != nil {
+			return out, objects, e
+		}
+		if liveJob {
+			block("UPLOAD_JOB_ACTIVE")
+		}
+		if activeAgent || u.SourceChannel != nil && *u.SourceChannel == "agent" && abandonedAt == nil {
+			block("AGENT_RECOVERY_SOURCE")
+		}
+		if abandonedAt != nil && (observed == nil || abandonedAt.After(*observed)) {
+			observed = abandonedAt
+		}
+		identities = append(identities, abandonedAt)
+
 	} else {
-		objects = append(objects, RetirementObject{Provider: *u.Provider, Bucket: *u.Bucket, Source: original, Role: "upload_draft"})
-	}
-	var busy, agent, unknown bool
-	e = tx.QueryRow(ctx, `SELECT
+		if observed == nil {
+			block("COMPLETION_EVIDENCE_REQUIRED")
+		}
+		var original objectstore.Source
+		var attempt string
+		e = tx.QueryRow(ctx, "SELECT id FROM upload_attempts WHERE org_id=$1 AND session_id=$2 AND draft_key=$3 AND state='active'", org, u.ID, u.DraftKey).Scan(&attempt)
+		if e != nil && e != pgx.ErrNoRows {
+			return out, objects, e
+		}
+		expected, _ := objectstore.DraftKey(org, attempt)
+		if e == pgx.ErrNoRows || expected != u.DraftKey || u.FrozenSourceID == nil || u.Provider == nil || u.Bucket == nil || json.Unmarshal([]byte(valueString(u.FrozenSourceID)), &original) != nil || original.Key != u.DraftKey || original.ETag == "" || original.Size != u.layout().Size || original.Size <= 0 {
+			block("SOURCE_CHANGED")
+		} else {
+			objects = append(objects, RetirementObject{Provider: *u.Provider, Bucket: *u.Bucket, Source: original, Role: "upload_draft"})
+		}
+		var busy, agent, unknown bool
+		e = tx.QueryRow(ctx, `SELECT
  EXISTS(SELECT 1 FROM jobs WHERE org_id=$1 AND payload->>'session_id'=$2::text AND
    (state IN ('queued','running','retry_wait') OR updated_at>clock_timestamp()-$3::bigint*interval '1 second')),
  EXISTS(SELECT 1 FROM agent_file_drafts d WHERE org_id=$1 AND id=$2::uuid AND NOT EXISTS(SELECT 1 FROM agent_file_abandonments ab WHERE ab.org_id=d.org_id AND ab.draft_id=d.id AND ab.content_sha256=d.content_sha256)),
  EXISTS(SELECT 1 FROM upload_attempts WHERE org_id=$1 AND session_id=$2::uuid AND draft_key<>$4 AND state IN ('starting','active','uncertain'))`, org, u.ID, int64(objectstore.MaxSignTTL/time.Second), u.DraftKey).Scan(&busy, &agent, &unknown)
-	if e != nil {
-		return out, objects, e
-	}
-	if busy {
-		block("UPLOAD_JOB_ACTIVE")
-	}
-	if agent {
-		block("AGENT_RECOVERY_SOURCE")
-	}
-	if unknown {
-		block("UNCERTAIN_OBJECT_PROTECTED")
-	}
-	// Inspect every recorded promotion, not just the latest candidate pointer.
-	var abandonedAt *time.Time
-	var abandonmentID *string
-	if e = tx.QueryRow(ctx, "SELECT (SELECT id FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2),(SELECT created_at FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2)", org, u.ID).Scan(&abandonmentID, &abandonedAt); e != nil {
-		return out, objects, e
-	}
-	if u.SourceChannel != nil && *u.SourceChannel == "agent" && abandonmentID == nil {
-		block("AGENT_RECOVERY_SOURCE")
-	}
-	if abandonedAt != nil && (observed == nil || abandonedAt.After(*observed)) {
-		observed = abandonedAt
-	}
-	rows, e := tx.Query(ctx, `SELECT id,file_id,version_id,object_key,state,source_digest,frozen_source,target_provider,target_bucket,completed_observed_at
- FROM object_transfers WHERE org_id=$1 AND session_id=$2 ORDER BY created_at,id LIMIT 65`, org, u.ID)
-	if e != nil {
-		return out, objects, e
-	}
-	identities := []any{cleanupSource(u), observed, original, candidateID, candidateKey, candidateSource, abandonmentID, abandonedAt}
-	count := 0
-	candidateMatched := false
-	for rows.Next() {
-		count++
-		var id, fileID, versionID, key, state, sourceDigest, provider, bucket string
-		var raw []byte
-		var completed *time.Time
-		if e = rows.Scan(&id, &fileID, &versionID, &key, &state, &sourceDigest, &raw, &provider, &bucket, &completed); e != nil {
-			break
+		if e != nil {
+			return out, objects, e
 		}
-		identities = append(identities, []any{id, fileID, versionID, key, state, sourceDigest, json.RawMessage(raw), provider, bucket, completed})
-		if state != "complete" || completed == nil {
+		if busy {
+			block("UPLOAD_JOB_ACTIVE")
+		}
+		if agent {
+			block("AGENT_RECOVERY_SOURCE")
+		}
+		if unknown {
 			block("UNCERTAIN_OBJECT_PROTECTED")
-			continue
 		}
-		if observed == nil || completed.After(*observed) {
-			v := *completed
-			observed = &v
+		// Inspect every recorded promotion, not just the latest candidate pointer.
+		var abandonedAt *time.Time
+		var abandonmentID *string
+		if e = tx.QueryRow(ctx, "SELECT (SELECT id FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2),(SELECT created_at FROM agent_file_abandonments WHERE org_id=$1 AND draft_id=$2)", org, u.ID).Scan(&abandonmentID, &abandonedAt); e != nil {
+			return out, objects, e
 		}
-		var source objectstore.Source
-		expected, _ := objectstore.VersionKey(org, fileID, versionID)
-		if key != expected || u.Provider == nil || provider != *u.Provider || u.Bucket == nil || bucket != *u.Bucket || sourceDigest != digest(original) || json.Unmarshal(raw, &source) != nil || source.Key != key || source.ETag == "" || source.Size != original.Size || u.FileID != nil && fileID != *u.FileID {
+		if u.SourceChannel != nil && *u.SourceChannel == "agent" && abandonmentID == nil {
+			block("AGENT_RECOVERY_SOURCE")
+		}
+		if abandonedAt != nil && (observed == nil || abandonedAt.After(*observed)) {
+			observed = abandonedAt
+		}
+		rows, e := tx.Query(ctx, `SELECT id,file_id,version_id,object_key,state,source_digest,frozen_source,target_provider,target_bucket,completed_observed_at
+ FROM object_transfers WHERE org_id=$1 AND session_id=$2 ORDER BY created_at,id LIMIT 65`, org, u.ID)
+		if e != nil {
+			return out, objects, e
+		}
+		identities = append(identities, []any{cleanupSource(u), observed, original, candidateID, candidateKey, candidateSource, abandonmentID, abandonedAt})
+		count := 0
+		candidateMatched := false
+		for rows.Next() {
+			count++
+			var id, fileID, versionID, key, state, sourceDigest, provider, bucket string
+			var raw []byte
+			var completed *time.Time
+			if e = rows.Scan(&id, &fileID, &versionID, &key, &state, &sourceDigest, &raw, &provider, &bucket, &completed); e != nil {
+				break
+			}
+			identities = append(identities, []any{id, fileID, versionID, key, state, sourceDigest, json.RawMessage(raw), provider, bucket, completed})
+			if state != "complete" || completed == nil {
+				block("UNCERTAIN_OBJECT_PROTECTED")
+				continue
+			}
+			if observed == nil || completed.After(*observed) {
+				v := *completed
+				observed = &v
+			}
+			var source objectstore.Source
+			expected, _ := objectstore.VersionKey(org, fileID, versionID)
+			if key != expected || u.Provider == nil || provider != *u.Provider || u.Bucket == nil || bucket != *u.Bucket || sourceDigest != digest(original) || json.Unmarshal(raw, &source) != nil || source.Key != key || source.ETag == "" || source.Size != original.Size || u.FileID != nil && fileID != *u.FileID {
+				block("SOURCE_CHANGED")
+				continue
+			}
+			if candidateID != nil && id == *candidateID {
+				var selected objectstore.Source
+				candidateMatched = candidateKey != nil && *candidateKey == key && candidateSource != nil && json.Unmarshal([]byte(*candidateSource), &selected) == nil && selected == source
+			}
+			objects = append(objects, RetirementObject{Provider: provider, Bucket: bucket, Source: source, Role: "promotion_candidate"})
+		}
+		if e == nil {
+			e = rows.Err()
+		}
+		rows.Close()
+		if e != nil {
+			return out, objects, e
+		}
+		if count > 63 || len(objects) > 64 {
+			block("OBJECT_REVIEW_LIMIT")
+		}
+		if (u.State == "ready" || candidateID != nil || candidateKey != nil || candidateSource != nil) && !candidateMatched {
 			block("SOURCE_CHANGED")
-			continue
 		}
-		if candidateID != nil && id == *candidateID {
-			var selected objectstore.Source
-			candidateMatched = candidateKey != nil && *candidateKey == key && candidateSource != nil && json.Unmarshal([]byte(*candidateSource), &selected) == nil && selected == source
-		}
-		objects = append(objects, RetirementObject{Provider: provider, Bucket: bucket, Source: source, Role: "promotion_candidate"})
 	}
-	if e == nil {
-		e = rows.Err()
-	}
-	rows.Close()
-	if e != nil {
-		return out, objects, e
-	}
-	if count > 63 || len(objects) > 64 {
-		block("OBJECT_REVIEW_LIMIT")
-	}
-	if (u.State == "ready" || candidateID != nil || candidateKey != nil || candidateSource != nil) && !candidateMatched {
-		block("SOURCE_CHANGED")
-	}
+
 	p, e := scanRetentionPolicy(tx.QueryRow(ctx, "SELECT "+retentionPolicyColumns+" FROM retention_policies WHERE org_id=$1 AND kind='draft' ORDER BY version DESC LIMIT 1", org))
 	if e != nil {
 		if core.PublicError(e).Status != 404 {
@@ -316,7 +348,7 @@ func (s *ObjectRetirementService) CompletedDraftCandidates(ctx context.Context, 
 	if e != nil {
 		return out, e
 	}
-	rows, e := tx.Query(ctx, `SELECT id,created_at FROM upload_sessions WHERE org_id=$1 AND target_folder_id=$2 AND frozen_source_id IS NOT NULL
+	rows, e := tx.Query(ctx, `SELECT id,created_at FROM upload_sessions WHERE org_id=$1 AND target_folder_id=$2 AND (frozen_source_id IS NOT NULL OR EXISTS(SELECT 1 FROM terminal_upload_observation_results x JOIN terminal_upload_observations q ON q.org_id=x.org_id AND q.id=x.request_id WHERE q.org_id=upload_sessions.org_id AND q.upload_id=upload_sessions.id AND x.all_present))
  AND committed_version_id IS NULL AND state<>'committed' AND source_channel IN ('web','android','agent')
  AND ($3::timestamptz IS NULL OR (created_at,id)<($3,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5`, a.OrgID, folderID, at, id, limit+1)
 	if e != nil {
@@ -349,7 +381,7 @@ func (s *ObjectRetirementService) CompletedDraftCandidates(ctx context.Context, 
 		if e != nil {
 			return out, e
 		}
-		if e = cleanupUploadAccess(ctx, tx, a, f, u); e != nil {
+		if e = completedDraftUploadAccess(ctx, tx, a, f, u); e != nil {
 			if slices.Contains([]int{403, 404}, core.PublicError(e).Status) {
 				continue
 			}
@@ -437,7 +469,7 @@ func (s *ObjectRetirementService) CreateCompletedDraft(ctx context.Context, c co
 		if e != nil {
 			return e
 		}
-		return cleanupUploadAccess(ctx, tx, c.Actor, f, u)
+		return completedDraftUploadAccess(ctx, tx, c.Actor, f, u)
 	}, func(tx pgx.Tx) (core.Result, error) {
 		f, e := folder(ctx, tx, c.Actor.OrgID, folderID, true)
 		if e != nil {
@@ -478,4 +510,22 @@ func (s *ObjectRetirementService) CreateCompletedDraft(ctx context.Context, c co
 		p, e := retirementPlan(ctx, tx, c.Actor.OrgID, id, false)
 		return core.Result{Status: 201, Data: p, Event: retirementEvent("file.original.retirement.created", p, in.Reason)}, e
 	})
+}
+
+func completedDraftUploadAccess(ctx context.Context, db platform.DBTX, a core.Actor, f Folder, u Upload) error {
+	if u.SourceChannel == nil || *u.SourceChannel != "agent" {
+		return cleanupUploadAccess(ctx, db, a, f, u)
+	}
+	var abandoned bool
+	e := db.QueryRow(ctx, `SELECT EXISTS(SELECT 1 FROM agent_file_drafts d JOIN agent_file_abandonments ab ON ab.org_id=d.org_id AND ab.draft_id=d.id AND ab.content_sha256=d.content_sha256 WHERE d.org_id=$1 AND d.id=$2)`, a.OrgID, u.ID).Scan(&abandoned)
+	if e != nil {
+		return e
+	}
+	if !abandoned {
+		return core.Missing()
+	}
+	copy := u
+	channel := "web"
+	copy.SourceChannel = &channel
+	return cleanupUploadAccess(ctx, db, a, f, copy)
 }

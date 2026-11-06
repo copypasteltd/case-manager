@@ -1,3 +1,4 @@
+import { OrganizationBuilder } from './organization-builder';
 import { Text, View } from '@tarojs/components';
 import { useEffect, useRef, useState } from 'react';
 import { CommandNotice, MFAConfirmation, useCommand } from '../../platform/command';
@@ -18,6 +19,7 @@ export function ConversationOrganization({ conversation: c, me, onReference, ref
 }) {
   const [value, setValue] = useState<Schemas['AgentOrganizationPlanList']>(), [error, setError] = useState<unknown>(), [loading, setLoading] = useState(true);
   const [revision, setRevision] = useState(0), [verifiedAt, setVerifiedAt] = useState<string | null>(null);
+  const [creating,setCreating]=useState(false);
   const enabled = c.type === 'private' && c.creator_id === me.user.id && me.actions.includes('agent.plan.read');
   useEffect(() => {
     const scope = new Scope(); let flight = false; setValue(undefined); setError(undefined); setLoading(enabled);
@@ -39,9 +41,11 @@ export function ConversationOrganization({ conversation: c, me, onReference, ref
     {loading ? <Busy /> : value && <>{value.items.map(p => <OrganizationCard key={p.id + ':' + p.version} plan={p} me={me}
       recentMFA={!!verifiedAt && Date.parse(verifiedAt) <= Date.now() + 5000 && Date.now() - Date.parse(verifiedAt) < 9 * 60000}
       onDone={() => setRevision(v => v + 1)} onReference={onReference} referenceDisabled={referenceDisabled} />)}
-      {!value.items.length && <Empty>尚无资料整理计划。可以在 Web 选择目录拟定，或请秘书在此私密会话中拟定。</Empty>}
+      {!value.items.length && <Empty>尚无资料整理计划。可以在此选择目录拟定，或请秘书在此私密会话中拟定。</Empty>}
       {value.has_more && <Text>当前显示最近50份整理计划。</Text>}
     </>}
+    {c.state==='active'&&me.actions.includes('agent.plan.propose')&&me.actions.includes('agent.run')&&<Action secondary onClick={()=>setCreating(v=>!v)}>拟定资料整理计划</Action>}
+    {creating&&<OrganizationBuilder key={c.id+':'+c.version+':'+me.authorization_version} conversation={c} me={me} onDone={()=>{setCreating(false);setRevision(v=>v+1);}} onClose={()=>setCreating(false)}/>}
     <Action secondary onClick={() => setRevision(v => v + 1)}>重新核对整理计划</Action>
   </View></Section>;
 }

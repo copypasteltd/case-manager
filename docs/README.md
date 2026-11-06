@@ -1,6 +1,23 @@
 # CopyPaste 内部管理平台文档中心
 
-**当前开发增量159 / Current development increment159**
+**当前开发增量160 / Current development increment160**
+
+本轮C01–C06代码及用例先整批完成，再统一检查与集中修复。新增外币退款原本金结项、已知终态上传的独立元数据观察、九类完整待办分页、共享移动端人工资料整理，以及合同签署／生效／结项、采购订单／验收／退货／差异重审／完成、报销实际结清与商业历史入口。
+
+使用：从工作台打开“完整列表”查阅所有当前授权事项 → 进入对应业务 → 核对准确修订及完整依据 → 本人验证并明确提交 → 查阅不可变业务回执。采购差异获批后仍须另行启用；费用、实际现金和审批各自记录。文件观察只读已知位置，全部来源核实后重新起算保留期，清理仍独立批准。
+
+The entire C01–C06 implementation and fixture wave precedes unified checks and concentrated repairs. This increment adds original-principal refund closeout, exact known-terminal-upload observations, nine complete authorized work inventories, shared-mobile organization planning, and ordinary contract/purchase execution with claim settlement/history. Fixed revisions, human MFA, independent approvals and immutable receipts apply; reading work does not complete it. An observed object is not proof of byte validation or permission to delete.
+
+Current source targets schema123. This increment adds migrations122–123. Apply122–123 after schema121,114–123 after frozen schema113, or101–123 after schema100; do not point the new server at an unupgraded database. DevelopmentPG100/API stay unchanged; all8 frozen releases remain fixed at their original sources. rc.8/APK154 stay business153/schema113 and exclude155–160. No new APK or Android JS retry.23 packages and8 draft Skills remain open; real cloud/model/TG/platform/server configuration remains deferred.
+
+详见 / See [方案与使用流程](development/160-batch-functional-closure.md), [全部23项编号](delivery/05-functional-closure-160.md), [本轮实际验证](quality/160-batch-functional-verification.md), [截图／录屏／GIF](media/batch-round-160/README.md).
+
+本轮实际检查：Web **520**、共享移动 **548＋18＝566**；Web／微信／抖音构建通过。后端保留10套不受第二批SQL修复影响的85条通过记录，受影响HEAD套件当前5条结果全部通过；运行器64及8包目录检查从本轮首批明确复用。实际Web2项／移动H5 4项检查与6张截图、2段录屏及对应GIF见本轮素材。
+
+Current evidence: Web **520**, shared mobile **566** and Web/WeChat/Douyin builds pass. Preserve85 unaffected native test records with exact source reconstruction; the affected current HEAD suite has5 passing result records. Runtime64/catalog results remain explicitly retained from the initial attempt. Actual Web2/H5 4 navigation/form checks, six screenshots and two recordings/GIF sets are source-bound; no new APK or full-goal acceptance.
+
+
+**增量159历史说明 / Retained increment159 notes**
 
 先完成整批C01–C06代码和用例，再统一测试、集中修复。新增四类业务完整表单准备，以及秘书按本人固定的原版本、全部商业资料和附件引用修订合同／采购／报销／订阅草稿。跨项目或分类须独立确认目标范围；执行核对原会话近期MFA和当前权限。预览不保存业务，成功须有普通原子新修订回执；审批、生效和资金动作独立办理。
 

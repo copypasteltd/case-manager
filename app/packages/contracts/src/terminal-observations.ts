@@ -1,0 +1,18 @@
+import type { components } from './api';
+type S=components['schemas'];export type TerminalCandidate=S['TerminalCandidate'];export type TerminalOverview=S['TerminalOverview'];export type TerminalObservation=S['TerminalObservation'];
+export const terminalNotice='只核对记录中已知准确位置的原生身份，不上传、不复制、不删除，也不改写原来的成功状态。未见对象不代表分片不存在；观察完整后仍须另行通过保留期、观察期和人工清理批准。';
+export const terminalOutcomes={pending:'已受理，尚无核对回执',observed:'已形成准确观察回执',incomplete:'部分身份仍未核实',stopped:'授权或依据变化，已停止'};
+export const objectOutcomes={observed_present:'已观察到准确原生身份',not_observed:'本次未见完整对象，其他状态仍未知',failed:'读取未成功',identity_unconfirmed:'原生身份、大小或版本未核实'};
+const uuid=(v:unknown):v is string=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);
+const clock=(v:unknown)=>typeof v==='string'&&Number.isFinite(Date.parse(v));const hash=(v:unknown)=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v);const invalid=()=>new Error('准确原生观察回执尚未核实，请重新读取。');
+export function checkedTerminalCandidate(v:TerminalCandidate,folder:string):TerminalCandidate {
+ if(!v||!uuid(v.upload_id)||v.folder_id!==folder||!uuid(folder)||!Number.isSafeInteger(v.upload_version)||v.upload_version<1||!Number.isSafeInteger(v.folder_version)||v.folder_version<1||!hash(v.basis_sha256)||!Number.isSafeInteger(v.object_count)||v.object_count<0||v.object_count>65||!Array.isArray(v.blocking_reasons)||typeof v.can_observe!=='boolean'||v.can_observe!==(v.blocking_reasons.length===0)||v.can_observe&&(v.object_count<1||v.object_count>64))throw invalid();return v;
+}
+export function checkedTerminalObservation(v:TerminalObservation,id:string,basis?:string):TerminalObservation {
+ if(!v||!uuid(v.id)||v.upload_id!==id||!uuid(v.actor_id)||!hash(v.basis_sha256)||basis!==undefined&&v.basis_sha256!==basis||!clock(v.created_at)||!clock(v.expires_at)||!(v.outcome in terminalOutcomes)||!Array.isArray(v.objects)||v.objects.length>64||typeof v.all_present!=='boolean'||v.observed_at!==null&&!clock(v.observed_at)||v.outcome==='pending'&&(v.observed_at!==null||v.objects.length!==0||v.all_present)||v.outcome!=='pending'&&v.observed_at===null||v.outcome==='stopped'&&v.objects.length!==0)throw invalid();
+ for(const o of v.objects){if(!uuid(o.target_id)||!['upload_draft','promotion_candidate'].includes(o.role)||!['oss','r2'].includes(o.provider)||!(o.outcome in objectOutcomes)||o.outcome==='observed_present'&&(!hash(o.identity_sha256)||typeof o.size_bytes!=='string'||!/^[1-9][0-9]*$/.test(o.size_bytes)||o.provider==='oss'&&!o.native_version_present)||o.outcome!=='observed_present'&&(o.identity_sha256!==null||o.size_bytes!==null))throw invalid();}
+ if(v.all_present&&(v.outcome!=='observed'||!v.objects.length||v.objects.some(o=>o.outcome!=='observed_present')))throw invalid();return v;
+}
+export function terminalObservationInput(v:TerminalCandidate,reason:string,reviewed:boolean):S['TerminalObserveCreate'] {checkedTerminalCandidate(v,v.folder_id);if(!v.can_observe||!reviewed||!reason.trim()||[...reason].length>200)throw new Error('请完整核对准确来源并填写观察原因。');return{expected_folder_version:v.folder_version,expected_upload_version:v.upload_version,basis_sha256:v.basis_sha256,reason,reviewed:true};}
+
+export const terminalBlockers:Record<string,string>={FORMAL_OBJECT_PROTECTED:'已形成正式文件，须从普通文件入口查阅',ORIGINAL_ALREADY_RETIRED:'已有清理保护，须查阅原清理计划',UPLOAD_OR_PERMIT_ACTIVE:'上传会话或已签发操作仍在有效期内',UPLOAD_TARGET_CHANGED:'目标目录或权限已变化',OBJECT_REVIEW_LIMIT:'准确已知位置不在1至64项的可核对范围内',UPLOAD_JOB_ACTIVE:'仍有未结束或近期执行的上传任务',CLEANUP_BACKEND_UNAVAILABLE:'尚未配置此存储位置的核对服务',EXCLUSIVE_NAMESPACE_REQUIRED:'此存储位置尚未确认独占且不可变',SOURCE_CHANGED:'已知来源与记录不一致',FORMAL_OR_SHARED_OBJECT_PROTECTED:'位置已被正式文件或其他会话引用'};

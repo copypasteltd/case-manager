@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "encoded_at": "2026-11-06T03:44:18.624592+00:00",
+  "group": "batch-round-160-functional-wave-web-capture-2",
+  "encoder_sha256": "30e575bb7a7b47d6c3539c0cfc472d18a29d2c79cdd6fbc6aaec61792082544b",
+  "mp4_mode": "actual_authenticated_silent_viewport_recording",
+  "gif_mode": "actual_screenshot_tour",
+  "synthetic_data": true,
+  "controlled_model": true,
+  "real_cloud": false,
+  "production_acceptance": false,
+  "screenshots": [
+    {
+      "name": "web-current-purchase-closeout",
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/web-current-purchase-closeout.png",
+      "sha256": "a269a8eacff660a2c6a42e34b8ce0cbeecc56c197a624c6987b1e8deaa8869b9"
+    },
+    {
+      "name": "web-complete-work-inventory",
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/web-complete-work-inventory.png",
+      "sha256": "7ba2154a5a387acf4033a2602fd4637d3a745c562cf15db1ea4f17f71825d257"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/screen-recording.mp4",
+      "sha256": "f33c25c2fc5b4d3c299c98c3c8496839c248f9b95bf34022931fb916db656c36",
+      "size_bytes": 343779
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/screenshot-tour.gif",
+      "sha256": "574ae00ad074d509093303c524b8974cef1112769e9dc9b601f10c4c5673b5ca",
+      "size_bytes": 150817
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1100,
+        "nb_frames": "36",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "3.600000"
+    }
+  }
+}

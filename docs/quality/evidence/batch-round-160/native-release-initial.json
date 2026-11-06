@@ -1,0 +1,36 @@
+{
+  "started_at": "2026-11-06T03:36:08.748497+00:00",
+  "passed": true,
+  "exit_code": 0,
+  "elapsed_seconds": 26.681,
+  "sources": [
+    {
+      "file": "app/deploy/release/catalog.py",
+      "sha256": "b1081e4ec00e73eab685f08e99594fb7d282fd83c077021ea4205f6198320bab"
+    },
+    {
+      "file": "app/deploy/release/controller.py",
+      "sha256": "3922a6f48f4ebf5c549750e55dd77869abb464fca9aa61d106fc0e11ce67527c"
+    },
+    {
+      "file": "app/deploy/release/bundle.py",
+      "sha256": "1906490d33e41b753588c6bca95e9a4f994d2473db51eacae7bd869fd92923ad"
+    },
+    {
+      "file": "app/deploy/release/test_native_release.py",
+      "sha256": "92aa08df51bd3acb634e79b9d4aa91e28fde41373e9026568e37ba00600cb843"
+    },
+    {
+      "file": "app/deploy/native/copypaste-original-observation-worker.service",
+      "sha256": "b272f15d4c89113db99bac3b13469f324b4757fca52523f7604ab402963ae103"
+    },
+    {
+      "file": "app/deploy/native/original-observation-worker.env.example",
+      "sha256": "4b441e4fde7108f3dbc615d983eecfa5d1993e0281cb24dc0d882ee5e414adf9"
+    }
+  ],
+  "private_log_sha256": "5b800b5df1a427ef2fcbc4ea1ef71d0349a5c880dd213f3c33d1dafd3c152d3f",
+  "scope": "Native Windows archive/filesystem/controller tests and injected process effects; no actual Linux/systemd or production deployment acceptance.",
+  "production_acceptance": false,
+  "virtualization_used": false
+}

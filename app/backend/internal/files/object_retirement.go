@@ -19,6 +19,7 @@ type OriginalCleaner interface {
 type OriginalCleanupBackend struct {
 	Provider, Bucket, BindingSHA256 string
 	ExclusiveNamespace              bool
+	Observer                        OriginalObserver
 	Cleaner                         OriginalCleaner
 }
 type ObjectRetirementService struct {

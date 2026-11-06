@@ -62,6 +62,9 @@ func run(logger *slog.Logger) error {
 	if command == "worker-multipart-cleanup" {
 		return runMultipartCleanupWorker(ctx, logger)
 	}
+	if command == "worker-original-observation" {
+		return runOriginalObservationWorker(ctx, logger)
+	}
 	if command == "worker-original-cleanup" {
 		return runOriginalCleanupWorker(ctx, logger)
 	}

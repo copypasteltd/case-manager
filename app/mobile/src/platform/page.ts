@@ -42,7 +42,7 @@ export function go(kind: string, id?: string) {
   if (kind === 'notifications') { void Taro.navigateTo({ url: '/pages/notifications/index' }); return; }
   if (kind === 'conversations' || kind === 'conversation') { void Taro.navigateTo({ url: '/pages/secretary/index?kind=' + (id ? 'conversation&id=' + identifier(id) : 'list') }); return; }
   if (['services', 'service', 'incidents', 'incident', 'new-incident'].includes(kind)) { void Taro.navigateTo({ url: '/pages/status/index?kind=' + kind + (id ? '&id=' + identifier(id) : '') }); return; }
-  if (['contract', 'purchase', 'claim'].includes(kind)) { void Taro.navigateTo({ url: '/pages/business/index?kind=' + kind + (id ? '&id=' + identifier(id) : '') }); return; }
+  if (['contract', 'purchase', 'claim', 'purchase_variance'].includes(kind)) { void Taro.navigateTo({ url: '/pages/business/index?kind=' + kind + (id ? '&id=' + identifier(id) : '') }); return; }
   if (kind === 'deliverable' && id) { void Taro.navigateTo({ url: '/pages/deliverable/index?id=' + identifier(id) }); return; }
   void Taro.navigateTo({ url: '/pages/' + (id ? 'detail' : 'list') + '/index?kind=' + encodeURIComponent(kind) + (id ? '&id=' + encodeURIComponent(id) : '') });
 }

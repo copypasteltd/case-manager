@@ -1,3 +1,4 @@
+import { organizationAction, organizationQueue, organizationReceipt } from '@copypaste/contracts/organization-preparation';
 import { useRef, useState } from 'react';
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api, type Me, type Page, type Schemas } from './api';
@@ -27,12 +28,12 @@ export function ConversationOrganization({ conversation: c, me, onReference, ref
       {query.data?.has_more && <p>当前显示最近 50 份整理计划。</p>}
     </>}
     {c.state === 'active' && me.actions.includes('agent.plan.propose') && me.actions.includes('agent.run') && <button className="button secondary" onClick={() => setCreating(v => !v)}>{creating ? '收起资料整理' : '拟定资料整理计划'}</button>}
-    {creating && <OrganizationBuilder conversation={c} onDone={() => { setCreating(false); void query.refetch(); }} />}
+    {creating && <OrganizationBuilder conversation={c} actor={me.user.id} onDone={() => { setCreating(false); void query.refetch(); }} />}
     <button className="text-button" onClick={() => void query.refetch()}>重新核对整理计划</button>
   </section>;
 }
 
-function OrganizationBuilder({ conversation: c, onDone }: { conversation: Schemas['Conversation']; onDone(): void }) {
+function OrganizationBuilder({ conversation: c, actor, onDone }: { conversation: Schemas['Conversation']; actor:string; onDone(): void }) {
   const [folderID, setFolderID] = useState(''), [source, setSource] = useState<Entry>(), [target, setTarget] = useState<Entry>();
   const [kind, setKind] = useState<Action['kind']>('folder.create'), [name, setName] = useState(''), [reason, setReason] = useState('');
   const [actions, setActions] = useState<{ action: Action; label: string }[]>([]), [blocked, setBlocked] = useState(false), [localError, setLocalError] = useState<unknown>();
@@ -45,7 +46,7 @@ function OrganizationBuilder({ conversation: c, onDone }: { conversation: Schema
   const create = useMutation({ mutationFn: async () => {
     intent.current ??= { key: crypto.randomUUID(), body: { expected_version: c.version, context_security_version: c.context_security_version, actions: actions.map(v => v.action), reason } };
     const result = await api<Plan>('/conversations/' + c.id + '/organization-plans', { method: 'POST', body: intent.current.body, key: intent.current.key });
-    if (result.conversation_id !== c.id || result.state !== 'proposed' || result.preview.length !== intent.current.body.actions.length) throw new Error('计划回执待核对，请使用原请求重新核对。');
+    if (!organizationReceipt(result,c,intent.current.body,actor)) throw new Error('计划回执待核对，请使用原请求重新核对。');
   }, onSuccess: onDone, onError: () => setBlocked(true), retry: false });
   const disabled = !!intent.current || create.isPending;
   function add() {
@@ -53,10 +54,11 @@ function OrganizationBuilder({ conversation: c, onDone }: { conversation: Schema
     const parent = directory.error ? undefined : directory.data?.folder;
     if (actions.length >= 10 || (kind === 'folder.create' ? !parent || !name.trim() : !source || (!target && (!name.trim() || name === source.name)))) { setLocalError(new Error('请选择资料，并填写新名称或指定目标目录。')); return; }
     const entry = kind === 'folder.create' ? parent! : source!;
-    const action: Action = { kind, id: entry.id, expected_version: entry.version,
-      ...(name.trim() && (kind === 'folder.create' || name !== entry.name) ? { name } : {}),
-      ...(kind !== 'folder.create' && target ? { target_folder_id: target.id, expected_target_version: target.version } : {}) };
-    setActions(old => [...old, { action, label: kinds[kind] + '：' + entry.name + (action.name ? ' → ' + action.name : '') + (target && kind !== 'folder.create' ? '；移至 ' + target.name : '') }]);
+    try {
+      const action = organizationAction(kind,entry,kind==='folder.create'?undefined:target,name);
+      organizationQueue(actions.map(v=>v.action),action);
+      setActions(old => [...old, { action, label: kinds[kind] + '：' + entry.name + (action.name ? ' → ' + action.name : '') + (target && kind !== 'folder.create' ? '；移至 ' + target.name : '') }]);
+    } catch(e) { setLocalError(e); return; }
     setName(''); setSource(undefined); setTarget(undefined);
   }
   return <div className="conversation-source-preview"><h3>选择资料与整理动作</h3><ErrorNotice error={create.error || localError || roots.error || directory.error} />

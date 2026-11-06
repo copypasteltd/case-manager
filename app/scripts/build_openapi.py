@@ -2497,6 +2497,31 @@ operation("/conversations/{id}/business-drafts/prepare","post","prepareBusinessD
 for path in ["/conversations/{id}/business-revisions/prepare","/conversations/{id}/business-drafts/prepare"]:
     PATHS[path]["post"]["parameters"]=[v for v in PATHS[path]["post"]["parameters"] if v.get("$ref")!="#/components/parameters/IdempotencyKey"]
 
+# Increment160: all existing personal work groups have complete pinned pages.
+SCHEMAS["PurchaseCompletionPayment"]["properties"]["unattributed_refund_currency"]=CURRENCY
+inventory_kinds=enum("approvals","contracts","subscription_periods","incidents","file_attention","resource_attention","requests_to_revise","deliverables_to_submit","deliverables_to_review")
+inventory_item={"id":ID,"version":VERSION,"revision_id":nullable(ID),"project_id":nullable(ID),"related_id":nullable(ID),"due_on":nullable(DATE),"title":NAME,"state":NAME,"updated_at":TIME}
+add("WorkInventoryItem",inventory_item,tuple(inventory_item))
+inventory={"as_of":TIME,"scope":{"const":"my_readable_inventory"},"kind":inventory_kinds,"basis_sha256":HASH,"count":{"type":"integer","minimum":0,"maximum":5000},"items":array(ref("WorkInventoryItem"),maxItems=50),"next_cursor":nullable(CURSOR)}
+add("WorkInventory",inventory,tuple(inventory))
+operation("/dashboard/work-items/{kind}","get","getWorkInventory","WorkInventory")
+PATHS["/dashboard/work-items/{kind}"]["get"]["parameters"] += [{"name":"limit","in":"query","schema":{"type":"integer","minimum":1,"maximum":50,"default":20}},{"name":"cursor","in":"query","schema":CURSOR}]
+for parameter in PATHS["/dashboard/work-items/{kind}"]["get"]["parameters"]:
+    if parameter.get("name")=="kind":parameter["schema"]=inventory_kinds
+
+terminal_object={"target_id":ID,"role":enum("upload_draft","promotion_candidate"),"provider":enum("oss","r2"),"outcome":enum("observed_present","not_observed","failed","identity_unconfirmed"),"identity_sha256":nullable(HASH),"native_version_present":{"type":"boolean"},"size_bytes":nullable(BYTES)}
+add("TerminalObjectView",terminal_object,tuple(terminal_object))
+terminal_observation={"id":ID,"upload_id":ID,"actor_id":ID,"basis_sha256":HASH,"reason":NAME,"created_at":TIME,"expires_at":TIME,"outcome":enum("pending","observed","incomplete","stopped"),"error_code":nullable(NAME),"observed_at":nullable(TIME),"objects":array(ref("TerminalObjectView"),maxItems=64),"all_present":{"type":"boolean"}}
+add("TerminalObservation",terminal_observation,tuple(terminal_observation))
+terminal_candidate={"upload_id":ID,"upload_version":VERSION,"folder_id":ID,"folder_version":VERSION,"name":NAME,"state":NAME,"basis_sha256":HASH,"object_count":{"type":"integer","minimum":0,"maximum":65},"can_observe":{"type":"boolean"},"blocking_reasons":array(NAME,maxItems=20)}
+add("TerminalCandidate",terminal_candidate,tuple(terminal_candidate))
+add("TerminalOverview",{"candidate":ref("TerminalCandidate"),"items":array(ref("TerminalObservation"),maxItems=50),"has_more":{"type":"boolean"}},("candidate","items","has_more"))
+terminal_create={"expected_folder_version":VERSION,"expected_upload_version":VERSION,"basis_sha256":HASH,"reason":NAME,"reviewed":{"const":True}}
+add("TerminalObserveCreate",terminal_create,tuple(terminal_create))
+operation("/folders/{id}/terminal-upload-candidates","get","listTerminalUploadCandidates","TerminalCandidate",listing=True)
+operation("/uploads/{id}/terminal-observations","get","getTerminalUploadObservations","TerminalOverview")
+operation("/uploads/{id}/terminal-observations","post","requestTerminalUploadObservation","TerminalObservation","TerminalObserveCreate",201)
+
 document = {
     "openapi": "3.1.0",
     "info": {"title": "CopyPaste internal platform core contract", "version": "1.0.0-draft",

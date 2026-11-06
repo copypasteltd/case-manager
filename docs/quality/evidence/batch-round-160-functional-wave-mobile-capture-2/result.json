@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "started_at": "2026-11-06T03:45:08.363Z",
+  "finished_at": "2026-11-06T03:45:20.115Z",
+  "checks": [
+    "Shared mobile reads exact approved purchase, complete current execution, immutable orders and closeout basis",
+    "Shared mobile offers typed exact-baseline supplier/line order form and separate human MFA evidence",
+    "Shared mobile reads original fixed receipt lines and offers exact-source return",
+    "Shared mobile pins original accepted source line and current returnable quantity"
+  ],
+  "source_count": 1212,
+  "source_sha256": "25c5dc02d9a1384d30476846e33c5a2ef623d848e3d3d838b27d8cead9341a01",
+  "source_after_sha256": "25c5dc02d9a1384d30476846e33c5a2ef623d848e3d3d838b27d8cead9341a01",
+  "source_unchanged": true,
+  "browser_contexts_closed": 1,
+  "owned_browser_closed": true,
+  "console_errors": [],
+  "server_errors": [],
+  "scope": "Taro H5 with real native API; no device or store approval claim",
+  "native_fixture_exit_code": 0,
+  "isolated_database_cleanup_passed": true,
+  "owned_review_server_stopped": true,
+  "build_source_sha256": "012b77bb70fc496fcbf6f55e4d5dd02aa33446c411ffacc18aaa63100c0ded15",
+  "owned_build_process_stopped": true,
+  "owned_browser_runner_stopped": true,
+  "build_source_after_sha256": "012b77bb70fc496fcbf6f55e4d5dd02aa33446c411ffacc18aaa63100c0ded15",
+  "build_source_unchanged": true
+}

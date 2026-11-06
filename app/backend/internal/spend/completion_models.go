@@ -67,18 +67,19 @@ type CompletionAllocation struct {
 	Amount         string `json:"amount"`
 }
 type CompletionPayment struct {
-	ID                       string                 `json:"id"`
-	Version                  int64                  `json:"version"`
-	RevisionID               string                 `json:"revision_id"`
-	ContentHash              string                 `json:"content_hash"`
-	State                    string                 `json:"state"`
-	RecordKind               string                 `json:"record_kind"`
-	Direction                *string                `json:"direction"`
-	Currency                 *string                `json:"currency"`
-	Amount                   *string                `json:"amount"`
-	RefundOfID               *string                `json:"refund_of_id"`
-	UnattributedRefundAmount string                 `json:"unattributed_refund_amount"`
-	Allocations              []CompletionAllocation `json:"allocations"`
+	ID                         string                 `json:"id"`
+	Version                    int64                  `json:"version"`
+	RevisionID                 string                 `json:"revision_id"`
+	ContentHash                string                 `json:"content_hash"`
+	State                      string                 `json:"state"`
+	RecordKind                 string                 `json:"record_kind"`
+	Direction                  *string                `json:"direction"`
+	Currency                   *string                `json:"currency"`
+	Amount                     *string                `json:"amount"`
+	RefundOfID                 *string                `json:"refund_of_id"`
+	UnattributedRefundAmount   string                 `json:"unattributed_refund_amount"`
+	UnattributedRefundCurrency *string                `json:"unattributed_refund_currency,omitempty"`
+	Allocations                []CompletionAllocation `json:"allocations"`
 }
 type CompletionSnapshot struct {
 	RevisionID              string               `json:"revision_id"`

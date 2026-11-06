@@ -41,7 +41,10 @@ type Summary struct {
 	Groups           []Group   `json:"groups"`
 }
 
-type Service struct{ DB *pgxpool.Pool }
+type Service struct {
+	DB    *pgxpool.Pool
+	Pager platform.Pager
+}
 
 type query struct{ kind, sql string }
 

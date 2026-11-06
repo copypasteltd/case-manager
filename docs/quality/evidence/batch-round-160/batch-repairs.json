@@ -1,0 +1,49 @@
+{
+  "increment": 160,
+  "initial_results": [
+    "native-tests-initial.json",
+    "client-checks-initial.json"
+  ],
+  "repairs": [
+    {
+      "batch": 1,
+      "changes": [
+        "Add all new shared sources/fixtures to composite TypeScript inputs",
+        "Correct command receipt, request payload references and full typed variance content guard",
+        "Correct empty-state props, boolean error rendering and unused imports",
+        "Remove unused copied fixture helper compile failures",
+        "Show actionable upload-protection labels"
+      ],
+      "affected_checks": [
+        "native-tests",
+        "typecheck",
+        "web-tests",
+        "mobile-tests",
+        "mobile-new-contracts",
+        "web-build",
+        "weapp-build",
+        "douyin-build"
+      ],
+      "retained_unaffected": [
+        "initial runtime64 and Skill catalog checks"
+      ]
+    },
+    {
+      "batch": 2,
+      "changes": [
+        "Explicit uuid casts for the common live-job/agent-recovery guard when consuming terminal HEAD receipts"
+      ],
+      "affected_checks": [
+        "TestRound160TerminalObservation"
+      ],
+      "retained_unaffected": [
+        "batch-1 existing ordinary cleanup/organization/purchase suites and new current-unit/inventory cases",
+        "batch-1 all client inputs unchanged"
+      ],
+      "production_source_adjustment": true,
+      "before_file": "docs/quality/evidence/batch-round-160/before-batch-2-completed-upload-retirement.txt",
+      "before_sha256": "5897da2d701db018a40a0fdc70dc0146045f827a00a645b3314b6f46a38fdc5c"
+    }
+  ],
+  "full_goal_complete": false
+}

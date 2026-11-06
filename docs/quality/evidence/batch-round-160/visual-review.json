@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-11-06T03:53:34.151408+00:00",
+  "files": [
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/web-current-purchase-closeout.png",
+      "sha256": "a269a8eacff660a2c6a42e34b8ce0cbeecc56c197a624c6987b1e8deaa8869b9"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/web-complete-work-inventory.png",
+      "sha256": "7ba2154a5a387acf4033a2602fd4637d3a745c562cf15db1ea4f17f71825d257"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-web-capture-2/interaction.gif",
+      "sha256": "49be19ae4e7bc56a6d6e9c0a9e5bdaee9ed020a2da38eaa19c65880919ce96af"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-fulfillment-completion.png",
+      "sha256": "77c4c6a86429533551bc8b309755b2556b0cdab0c701db7468b4c2a71e91907e"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-order-fixed-evidence.png",
+      "sha256": "33c006ce82be36ff339986cc4ccaa5629535e9b2d71bd41ee3cca030561c495d"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-immutable-receipt-history.png",
+      "sha256": "968f53b2c8ed7b284ffde934ad2ecf86b634c1b3f601e54ac6c223849c31442a"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/mobile-return-source-review.png",
+      "sha256": "d9d3d23af9a92e598cbd0578a3cde97bad0c608f76bc413a3a1c335fa6bdd74c"
+    },
+    {
+      "file": "docs/media/batch-round-160/batch-round-160-functional-wave-mobile-capture-2/interaction.gif",
+      "sha256": "98e616ec898d155a52ea8590873e8525f400d9885520aa53239e510c1d5a5d1a"
+    }
+  ],
+  "synthetic_data": true,
+  "production_acceptance": false,
+  "review_method": "Inspect six current screenshots and first/middle/final frames of both actual-recording GIFs.",
+  "findings": [
+    "Correct Web dialog shows exactly seven authorized incident routes, beyond the five summary samples; synthetic HTML-like titles render as literal text.",
+    "Web purchase screenshot shows current order, accepted lines and independent expense/payment closeout basis.",
+    "Mobile exact order, original receipt history and accepted-source return form are visible at390px; MFA/evidence remains independent human entry.",
+    "The first mobile fulfillment screenshot includes an in-flight loading line; it is navigation evidence only. The subsequent order screenshot displays the completed execution basis.",
+    "Recordings retain actual loading/transition frames. No evidence credentials are visible; no new cloud/model/device or business-write UI acceptance is asserted."
+  ]
+}

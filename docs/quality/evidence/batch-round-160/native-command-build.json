@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-06T03:56:39.532561+00:00",
+  "source_sha256": "012b77bb70fc496fcbf6f55e4d5dd02aa33446c411ffacc18aaa63100c0ded15",
+  "source_unchanged": true,
+  "exit_code": 0,
+  "elapsed_seconds": 7.911,
+  "private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "command": "native Windows go build ./cmd/platform",
+  "private_output": "app/.local/batch-round-160/platform160.exe",
+  "output_sha256": "3e039546c9e6e3c14a7b96033f9bf31dbd28fa2ee8713c0b943f91c03765b724",
+  "production_acceptance": false,
+  "virtualization_used": false
+}

@@ -59,3 +59,26 @@ func LoadOriginalCleaners() (map[string]*files.OriginalCleanupBackend, error) {
 	}
 	return out, nil
 }
+
+// Dedicated HEAD-only IAM purpose. Never borrow cleaner, writer or API keys.
+func LoadOriginalObservers() (map[string]*files.OriginalCleanupBackend, error) {
+	out, e := LoadOriginalCleanupTargets()
+	if e != nil {
+		return nil, e
+	}
+	for provider, b := range out {
+		if provider == "r2" && !b.ExclusiveNamespace {
+			return nil, errors.New("R2 observation requires an attested exclusive immutable namespace")
+		}
+		store, settings, err := roleStore(provider, "ORIGINAL_OBSERVER")
+		if err != nil {
+			return nil, err
+		}
+		binding, err := objectstore.LocationFingerprint(provider, settings)
+		if err != nil || binding != b.BindingSHA256 {
+			return nil, errors.New("original observation location changed")
+		}
+		b.Observer = store
+	}
+	return out, nil
+}
